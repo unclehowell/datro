@@ -1,0 +1,166 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_reward-modeling.md:1
+msgid "Reward Modeling"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:3
+msgid "Guide to training reward models with TRL for RLHF pipelines."
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:5
+msgid "Overview"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:7
+msgid "Reward models score completions based on human preferences. Used in:"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:8
+msgid "PPO training (RL feedback)"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:9
+msgid "GRPO online RL"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:10
+msgid "Completion ranking"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:12
+msgid "Basic Training"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:47
+msgid "Dataset Format"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:49
+msgid "Required fields:"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:58
+msgid "Bradley-Terry Loss"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:60
+msgid "Default loss function:"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:65
+msgid "Learns to score chosen > rejected."
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:67
+msgid "Using Reward Models"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:69
+msgid "Inference"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:83
+msgid "In PPO"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:99
+msgid "Hyperparameters"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "Model Size"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "Learning Rate"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "Batch Size"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "Epochs"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "<1B"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "2e-5"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "4-8"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "1-2"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "1-7B"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "1e-5"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "2-4"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "1"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "7-13B"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md
+msgid "5e-6"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:107
+msgid "Evaluation"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:109
+msgid "Check reward separation:"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:119
+msgid "References"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:121
+msgid "InstructGPT paper: https://arxiv.org/abs/2203.02155"
+msgstr ""
+
+#: ../../source/references_reward-modeling.md:122
+msgid "TRL docs: https://huggingface.co/docs/trl/reward_trainer"
+msgstr ""
+

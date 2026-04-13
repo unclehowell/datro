@@ -1,0 +1,1279 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/xmlbuilder_CHANGELOG.md:1
+msgid "Change Log"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:3
+msgid ""
+"All notable changes to this project are documented in this file. This "
+"project adheres to [Semantic Versioning](http://semver.org/#semantic-"
+"versioning-200)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:5
+msgid "[13.0.1] - 2019-05-10"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:7
+msgid ""
+"Corrected typings for doctype and character data nodes. See "
+"[#211](https://github.com/oozcitak/xmlbuilder-js/issues/211)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:9
+msgid "[13.0.0] - 2019-05-07"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:11
+msgid ""
+"Rewrote all TypeSript typings to be strictly compatible with the API. "
+"This is a breaking change for TypeScript users only."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:13
+msgid "[12.0.1] - 2019-04-30"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:15
+msgid "Added option for pretty printing attributes."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:17
+msgid "[12.0.0] - 2019-04-03"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:19
+#: ../../source/xmlbuilder_CHANGELOG.md:93
+msgid ""
+"Removed support for node.js 4.0 and 5.0\\. Minimum required version is "
+"now 6.0."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:21
+msgid "[11.0.1] - 2019-03-22"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:23
+msgid ""
+"Added TypeScript typings. See [#200](https://github.com/oozcitak"
+"/xmlbuilder-js/issues/200)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:25
+msgid "[11.0.0] - 2019-02-18"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:27
+msgid ""
+"Calling `end()` with arguments no longer overwrites writer options. See "
+"[#120](https://github.com/oozcitak/xmlbuilder-js/issues/120)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:28
+msgid ""
+"Added writer state and customizable space and endline functions to help "
+"customize writer behavior. Also added `openNode` and `closeNode` "
+"functions to writer. See [#193](https://github.com/oozcitak/xmlbuilder-"
+"js/issues/193)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:29
+msgid ""
+"Fixed a bug where writer functions would not be called for nodes with a "
+"single child node in pretty print mode. See "
+"[#195](https://github.com/oozcitak/xmlbuilder-js/issues/195)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:30
+msgid "Renamed `elEscape` to `textEscape` in `XMLStringifier`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:31
+msgid ""
+"Fixed a bug where empty arrays would produce child nodes. See "
+"[#190](https://github.com/oozcitak/xmlbuilder-js/issues/190)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:32
+msgid ""
+"Removed the `skipNullAttributes` option. `null` attributes are now "
+"skipped by default. Added the `keepNullAttributes` option in case someone"
+" needs the old behavior."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:33
+msgid ""
+"Removed the `skipNullNodes` option. `null` nodes are now skipped by "
+"default. Added the `keepNullNodes` option in case someone needs the old "
+"behavior."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:34
+msgid "`undefined` values are now skipped when converting JS objects."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:35
+msgid ""
+"Renamed stringify functions. See [#194](https://github.com/oozcitak"
+"/xmlbuilder-js/issues/194):"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:37
+msgid "`eleName` -> `name`"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:38
+msgid "`attName` -> `name`"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:39
+msgid "`eleText` -> `text`"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:41
+msgid ""
+"Fixed argument order for `attribute` function in the writer. See "
+"[#196](https://github.com/oozcitak/xmlbuilder-js/issues/196)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:42
+msgid ""
+"Added `openAttribute` and `closeAttribute` functions to writer. See "
+"[#196](https://github.com/oozcitak/xmlbuilder-js/issues/196)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:43
+msgid ""
+"Added node types to node objects. Node types and writer states are "
+"exported by the module with the `nodeType` and `writerState` properties."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:44
+msgid ""
+"Fixed a bug where array items would not be correctly converted. See "
+"[#159](https://github.com/oozcitak/xmlbuilder-js/issues/159)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:45
+msgid ""
+"Fixed a bug where mixed-content inside JS objects with `#text` decorator "
+"would not be correctly converted. See [#171](https://github.com/oozcitak"
+"/xmlbuilder-js/issues/171)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:46
+msgid ""
+"Fixed a bug where JS objects would not be expanded in callback mode. See "
+"[#173](https://github.com/oozcitak/xmlbuilder-js/issues/173)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:47
+msgid ""
+"Fixed a bug where character validation would not obey document's XML "
+"version. Added separate validation for XML 1.0 and XML 1.1 documents. See"
+" [#169](https://github.com/oozcitak/xmlbuilder-js/issues/169)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:48
+msgid ""
+"Fixed a bug where names would not be validated according to the spec. See"
+" [#49](https://github.com/oozcitak/xmlbuilder-js/issues/49)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:49
+msgid ""
+"Renamed `text` property to `value` in comment and cdata nodes to unify "
+"the API."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:50
+msgid ""
+"Removed `doctype` function to prevent name clash with DOM implementation."
+" Use the `dtd` function instead."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:51
+msgid ""
+"Removed dummy nodes from the XML tree (Those were created while chain-"
+"building the tree)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:52
+msgid ""
+"Renamed `attributes`property to `attribs` to prevent name clash with DOM "
+"property with the same name."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:53
+msgid ""
+"Implemented the DOM standard (read-only) to support XPath lookups. XML "
+"namespaces are not currently supported. See "
+"[#122](https://github.com/oozcitak/xmlbuilder-js/issues/122)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:55
+msgid "[10.1.1] - 2018-10-24"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:57
+msgid ""
+"Fixed an edge case where a null node at root level would be printed "
+"although `skipNullNodes` was set. See [#187](https://github.com/oozcitak"
+"/xmlbuilder-js/issues/187)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:59
+msgid "[10.1.0] - 2018-10-10"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:61
+msgid ""
+"Added the `skipNullNodes` option to skip nodes with null values. See "
+"[#158](https://github.com/oozcitak/xmlbuilder-js/issues/158)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:63
+msgid "[10.0.0] - 2018-04-26"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:65
+msgid ""
+"Added current indentation level as a parameter to the onData function "
+"when in callback mode. See [#125](https://github.com/oozcitak/xmlbuilder-"
+"js/issues/125)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:66
+msgid ""
+"Added name of the current node and parent node to error messages where "
+"possible. See [#152](https://github.com/oozcitak/xmlbuilder-"
+"js/issues/152). This has the potential to break code depending on the "
+"content of error messages."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:67
+msgid ""
+"Fixed an issue where objects created with Object.create(null) created an "
+"error. See [#176](https://github.com/oozcitak/xmlbuilder-js/issues/176)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:68
+msgid "Added test builds for node.js v8 and v10."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:70
+msgid "[9.0.7] - 2018-02-09"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:72
+msgid "Simplified regex used for validating encoding."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:74
+msgid "[9.0.4] - 2017-08-16"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:76
+msgid "`spacebeforeslash` writer option accepts `true` as well as space char(s)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:78
+msgid "[9.0.3] - 2017-08-15"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:80
+msgid "`spacebeforeslash` writer option can now be used with XML fragments."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:82
+msgid "[9.0.2] - 2017-08-15"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:84
+msgid ""
+"Added the `spacebeforeslash` writer option to add a space character "
+"before closing tags of empty elements. See "
+"[#157](https://github.com/oozcitak/xmlbuilder-js/issues/157)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:86
+msgid "[9.0.1] - 2017-06-19"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:88
+msgid ""
+"Fixed character validity checks to work with node.js 4.0 and 5.0\\. See "
+"[#161](https://github.com/oozcitak/xmlbuilder-js/issues/161)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:90
+msgid "[9.0.0] - 2017-05-05"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:92
+msgid "Removed case conversion options."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:94
+msgid ""
+"Fixed valid char filter to use XML 1.1 instead of 1.0\\. See "
+"[#147](https://github.com/oozcitak/xmlbuilder-js/issues/147)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:95
+msgid ""
+"Added options for negative indentation and suppressing pretty printing of"
+" text nodes. See [#145](https://github.com/oozcitak/xmlbuilder-"
+"js/issues/145)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:97
+msgid "[8.2.2] - 2016-04-08"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:99
+msgid "Falsy values can now be used as a text node in callback mode."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:101
+msgid "[8.2.1] - 2016-04-07"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:103
+msgid ""
+"Falsy values can now be used as a text node. See "
+"[#117](https://github.com/oozcitak/xmlbuilder-js/issues/117)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:105
+msgid "[8.2.0] - 2016-04-01"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:107
+msgid ""
+"Removed lodash dependency to keep the library small and simple. See "
+"[#114](https://github.com/oozcitak/xmlbuilder-js/issues/114), "
+"[#53](https://github.com/oozcitak/xmlbuilder-js/issues/53), and "
+"[#43](https://github.com/oozcitak/xmlbuilder-js/issues/43)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:108
+msgid "Added title case to name conversion options."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:110
+msgid "[8.1.0] - 2016-03-29"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:112
+msgid ""
+"Added the callback option to the `begin` export function. When used with "
+"a callback function, the XML document will be generated in chunks and "
+"each chunk will be passed to the supplied function. In this mode, `begin`"
+" uses a different code path and the builder should use much less memory "
+"since the entire XML tree is not kept. There are a few drawbacks though. "
+"For example, traversing the document tree or adding attributes to a node "
+"after it is written is not possible. It is also not possible to remove "
+"nodes or attributes."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:124
+msgid ""
+"Replaced native `Object.assign` with `lodash.assign` to support old JS "
+"engines. See [#111](https://github.com/oozcitak/xmlbuilder-"
+"js/issues/111)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:126
+msgid "[8.0.0] - 2016-03-25"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:128
+msgid "Added the `begin` export function. See the wiki for details."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:129
+msgid ""
+"Added the ability to add comments and processing instructions before and "
+"after the root element. Added `commentBefore`, `commentAfter`, "
+"`instructionBefore` and `instructionAfter` functions for this purpose."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:130
+msgid ""
+"Dropped support for old node.js releases. Minimum required node.js "
+"version is now 4.0."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:132
+msgid "[7.0.0] - 2016-03-21"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:134
+msgid ""
+"Processing instructions are now created as regular nodes. This is a major"
+" breaking change if you are using processing instructions. Previously "
+"processing instructions were inserted before their parent node. After "
+"this change processing instructions are appended to the children of the "
+"parent node. Note that it is not currently possible to insert processing "
+"instructions before or after the root element."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:144
+msgid "[6.0.0] - 2016-03-20"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:146
+msgid ""
+"Added custom XML writers. The default string conversion functions are now"
+" collected under the `XMLStringWriter` class which can be accessed by the"
+" `stringWriter(options)` function exported by the module. An "
+"`XMLStreamWriter` is also added which outputs the XML document to a "
+"writable stream. A stream writer can be created by calling the "
+"`streamWriter(stream, options)` function exported by the module. Both "
+"classes are heavily customizable and the details are added to the wiki. "
+"It is also possible to write an XML writer from scratch and use it when "
+"calling `end()` on the XML document."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:148
+msgid "[5.0.1] - 2016-03-08"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:150
+msgid ""
+"Moved require statements for text case conversion to the top of files to "
+"reduce lazy requires."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:152
+msgid "[5.0.0] - 2016-03-05"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:154
+msgid ""
+"Added text case option for element names and attribute names. Valid cases"
+" are `lower`, `upper`, `camel`, `kebab` and `snake`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:155
+msgid ""
+"Attribute and element values are escaped according to the [Canonical XML "
+"1.0 specification](http://www.w3.org/TR/2000/WD-xml-"
+"c14n-20000119.html#charescaping). See [#54](https://github.com/oozcitak"
+"/xmlbuilder-js/issues/54) and [#86](https://github.com/oozcitak"
+"/xmlbuilder-js/issues/86)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:156
+msgid ""
+"Added the `allowEmpty` option to `end()`. When this option is set, empty "
+"elements are not self-closed."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:157
+msgid ""
+"Added support for [nested "
+"CDATA](https://en.wikipedia.org/wiki/CDATA#Nesting). The triad `]]>` in "
+"CDATA is now automatically replaced with `]]]]><![CDATA[>`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:159
+msgid "[4.2.1] - 2016-01-15"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:161
+msgid "Updated lodash dependency to 4.0.0."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:163
+msgid "[4.2.0] - 2015-12-16"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:165
+msgid ""
+"Added the `noDoubleEncoding` option to `create()` to control whether "
+"existing html entities are encoded."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:167
+msgid "[4.1.0] - 2015-11-11"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:169
+msgid ""
+"Added the `separateArrayItems` option to `create()` to control how arrays"
+" are handled when converting from objects. e.g."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:183
+msgid "[4.0.0] - 2015-11-01"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:185
+msgid ""
+"Removed the `#list` decorator. Array items are now created as child nodes"
+" by default."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:186
+msgid "Fixed a bug where the XML encoding string was checked partially."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:188
+msgid "[3.1.0] - 2015-09-19"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:190
+msgid "`#list` decorator ignores empty arrays."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:192
+msgid "[3.0.0] - 2015-09-10"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:194
+msgid ""
+"Allow `\\r`, `\\n` and `\\t` in attribute values without escaping. See "
+"[#86](https://github.com/oozcitak/xmlbuilder-js/issues/86)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:196
+msgid "[2.6.5] - 2015-09-09"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:198
+msgid "Use native `isArray` instead of lodash."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:199
+msgid "Indentation of processing instructions are set to the parent element's."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:201
+msgid "[2.6.4] - 2015-05-27"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:203
+#: ../../source/xmlbuilder_CHANGELOG.md:211
+msgid "Updated lodash dependency to 3.5.0."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:205
+msgid "[2.6.3] - 2015-05-27"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:207
+#: ../../source/xmlbuilder_CHANGELOG.md:279
+msgid "Bumped version because previous release was not published on npm."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:209
+msgid "[2.6.2] - 2015-03-10"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:213
+msgid "[2.6.1] - 2015-02-20"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:215
+msgid "Updated lodash dependency to 3.3.0."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:217
+msgid "[2.6.0] - 2015-02-20"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:219
+msgid ""
+"Fixed a bug where the `XMLNode` constructor overwrote the super class "
+"parent."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:220
+msgid "Removed document property from cloned nodes."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:221
+msgid "Switched to mocha.js for testing."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:223
+msgid "[2.5.2] - 2015-02-16"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:225
+msgid "Updated lodash dependency to 3.2.0."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:227
+msgid "[2.5.1] - 2015-02-09"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:229
+msgid "Updated lodash dependency to 3.1.0."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:230
+msgid "Support all node >= 0.8."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:232
+msgid "[2.5.0] - 2015-00-03"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:234
+msgid "Updated lodash dependency to 3.0.0."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:236
+msgid "[2.4.6] - 2015-01-26"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:238
+msgid "Show more information from attribute creation with null values."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:239
+msgid "Added iojs as an engine."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:240
+msgid "Self close elements with empty text."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:242
+msgid "[2.4.5] - 2014-11-15"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:244
+msgid "Fixed prepublish script to run on windows."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:245
+msgid ""
+"Fixed bug in XMLStringifier where an undefined value was used while "
+"reporting an invalid encoding value."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:246
+msgid ""
+"Moved require statements to the top of files to reduce lazy requires. See"
+" [#62](https://github.com/oozcitak/xmlbuilder-js/issues/62)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:248
+msgid "[2.4.4] - 2014-09-08"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:250
+msgid "Added the `offset` option to `toString()` for use in XML fragments."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:252
+msgid "[2.4.3] - 2014-08-13"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:254
+msgid "Corrected license in package description."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:256
+msgid "[2.4.2] - 2014-08-13"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:258
+msgid "Dropped performance test and memwatch dependency."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:260
+msgid "[2.4.1] - 2014-08-12"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:262
+msgid ""
+"Fixed a bug where empty indent string was omitted when pretty printing. "
+"See [#59](https://github.com/oozcitak/xmlbuilder-js/issues/59)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:264
+msgid "[2.4.0] - 2014-08-04"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:266
+msgid "Correct cases of pubID and sysID."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:267
+msgid ""
+"Use single lodash instead of separate npm modules. See "
+"[#53](https://github.com/oozcitak/xmlbuilder-js/issues/53)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:268
+msgid ""
+"Escape according to Canonical XML 1.0\\. See "
+"[#54](https://github.com/oozcitak/xmlbuilder-js/issues/54)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:270
+msgid "[2.3.0] - 2014-07-17"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:272
+msgid "Convert objects to JS primitives while sanitizing user input."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:273
+msgid ""
+"Object builder preserves items with null values. See "
+"[#44](https://github.com/oozcitak/xmlbuilder-js/issues/44)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:274
+msgid "Use modularized lodash functions to cut down dependencies."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:275
+msgid ""
+"Process empty objects when converting from objects so that we don't throw"
+" on empty child objects."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:277
+msgid "[2.2.1] - 2014-04-04"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:281
+msgid "[2.2.0] - 2014-04-04"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:283
+msgid "Switch to lodash from underscore."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:284
+msgid "Removed legacy `ext` option from `create()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:285
+msgid ""
+"Drop old node versions: 0.4, 0.5, 0.6\\. 0.8 is the minimum requirement "
+"from now on."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:287
+msgid "[2.1.0] - 2013-12-30"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:289
+msgid "Removed duplicate null checks from constructors."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:290
+msgid "Fixed node count in performance test."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:291
+msgid ""
+"Added option for skipping null attribute values. See "
+"[#26](https://github.com/oozcitak/xmlbuilder-js/issues/26)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:292
+msgid "Allow multiple values in `att()` and `ins()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:293
+msgid "Added ability to run individual performance tests."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:294
+msgid "Added flag for ignoring decorator strings."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:296
+msgid "[2.0.1] - 2013-12-24"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:298
+msgid "Removed performance tests from npm package."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:300
+msgid "[2.0.0] - 2013-12-24"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:302
+msgid "Combined loops for speed up."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:303
+msgid "Added support for the DTD and XML declaration."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:304
+msgid "`clone` includes attributes."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:305
+msgid "Added performance tests."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:306
+msgid "Evaluate attribute value if function."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:307
+msgid "Evaluate instruction value if function."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:309
+msgid "[1.1.2] - 2013-12-11"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:311
+msgid "Changed processing instruction decorator to `?`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:313
+msgid "[1.1.1] - 2013-12-11"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:315
+msgid "Added processing instructions to JS object conversion."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:317
+msgid "[1.1.0] - 2013-12-10"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:319
+msgid "Added license to package."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:320
+msgid "`create()` and `element()` accept JS object to fully build the document."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:321
+msgid "Added `nod()` and `n()` aliases for `node()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:322
+msgid "Renamed `convertAttChar` decorator to `convertAttKey`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:323
+msgid "Ignore empty decorator strings when converting JS objects."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:325
+msgid "[1.0.2] - 2013-11-27"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:327
+msgid "Removed temp file which was accidentally included in the package."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:329
+msgid "[1.0.1] - 2013-11-27"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:331
+msgid "Custom stringify functions affect current instance only."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:333
+msgid "[1.0.0] - 2013-11-27"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:335
+msgid "Added processing instructions."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:336
+msgid "Added stringify functions to sanitize and convert input values."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:337
+msgid "Added option for headless XML documents."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:338
+msgid "Added vows tests."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:339
+msgid "Removed Makefile. Using npm publish scripts instead."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:340
+msgid ""
+"Removed the `begin()` function. `create()` begins the document by "
+"creating the root node."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:342
+msgid "[0.4.3] - 2013-11-08"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:344
+msgid ""
+"Added option to include surrogate pairs in XML content. See "
+"[#29](https://github.com/oozcitak/xmlbuilder-js/issues/29)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:345
+msgid "Fixed empty value string representation in pretty mode."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:346
+msgid "Added pre and postpublish scripts to package.json."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:347
+msgid ""
+"Filtered out prototype properties when appending attributes. See "
+"[#31](https://github.com/oozcitak/xmlbuilder-js/issues/31)."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:349
+msgid "[0.4.2] - 2012-09-14"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:351
+msgid "Removed README.md from `.npmignore`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:353
+msgid "[0.4.1] - 2012-08-31"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:355
+msgid "Removed `begin()` calls in favor of `XMLBuilder` constructor."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:356
+msgid ""
+"Added the `end()` function. `end()` is a convenience over "
+"`doc().toString()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:358
+msgid "[0.4.0] - 2012-08-31"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:360
+msgid ""
+"Added arguments to `XMLBuilder` constructor to allow the name of the root"
+" element and XML prolog to be defined in one line."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:361
+msgid "Soft deprecated `begin()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:363
+msgid "[0.3.11] - 2012-08-13"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:365
+msgid "Package keywords are fixed to be an array of values."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:367
+msgid "[0.3.10] - 2012-08-13"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:369
+msgid ""
+"Brought back npm package contents which were lost due to incorrect "
+"configuration of `package.json` in previous releases."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:371
+msgid "[0.3.3] - 2012-07-27"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:373
+msgid "Implemented `importXMLBuilder()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:375
+msgid "[0.3.2] - 2012-07-20"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:377
+msgid "Fixed a duplicated escaping problem on `element()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:378
+msgid "Fixed a problem with text node creation from empty string."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:379
+msgid "Calling `root()` on the document element returns the root element."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:380
+msgid "`XMLBuilder` no longer extends `XMLFragment`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:382
+msgid "[0.3.1] - 2011-11-28"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:384
+msgid ""
+"Added guards for document element so that nodes cannot be inserted at "
+"document level."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:386
+msgid "[0.3.0] - 2011-11-28"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:388
+msgid "Added `doc()` to return the document element."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:390
+msgid "[0.2.2] - 2011-11-28"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:392
+msgid "Prevent code relying on `up()`'s older behavior to break."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:394
+msgid "[0.2.1] - 2011-11-28"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:396
+msgid "Added the `root()` function."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:398
+msgid "[0.2.0] - 2011-11-21"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:400
+msgid "Added Travis-CI integration."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:401
+msgid "Added coffee-script dependency."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:402
+msgid "Added insert, traversal and delete functions."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:404
+msgid "[0.1.7] - 2011-10-25"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:406
+msgid "No changes. Accidental release."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:408
+msgid "[0.1.6] - 2011-10-25"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:410
+msgid "Corrected `package.json` bugs link to `url` from `web`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:412
+msgid "[0.1.5] - 2011-08-08"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:414
+msgid "Added missing npm package contents."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:416
+msgid "[0.1.4] - 2011-07-29"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:418
+msgid "Text-only nodes are no longer indented."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:419
+msgid "Added documentation for multiple instances."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:421
+msgid "[0.1.3] - 2011-07-27"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:423
+msgid ""
+"Exported the `create()` function to return a new instance. This allows "
+"multiple builder instances to be constructed."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:424
+msgid "Fixed `u()` function so that it now correctly calls `up()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:425
+msgid ""
+"Fixed typo in `element()` so that `attributes` and `text` can be passed "
+"interchangeably."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:427
+msgid "[0.1.2] - 2011-06-03"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:429
+msgid "`ele()` accepts element text."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:430
+msgid ""
+"`attributes()` now overrides existing attributes if passed the same "
+"attribute name."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:432
+msgid "[0.1.1] - 2011-05-19"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:434
+msgid "Added the raw output option."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:435
+msgid "Removed most validity checks."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:437
+msgid "[0.1.0] - 2011-04-27"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:439
+msgid "`text()` and `cdata()` now return parent element."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:440
+msgid "Attribute values are escaped."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:442
+msgid "[0.0.7] - 2011-04-23"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:444
+msgid "Coerced text values to string."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:446
+msgid "[0.0.6] - 2011-02-23"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:448
+msgid "Added support for XML comments."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:449
+msgid "Text nodes are checked against CharData."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:451
+msgid "[0.0.5] - 2010-12-31"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:453
+msgid "Corrected the name of the main npm module in `package.json`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:455
+msgid "[0.0.4] - 2010-12-28"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:457
+msgid "Added `.npmignore`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:459
+msgid "[0.0.3] - 2010-12-27"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:461
+msgid "root element is now constructed in `begin()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:462
+msgid "moved prolog to `begin()`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:463
+msgid "Added the ability to have CDATA in element text."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:464
+msgid "Removed unused prolog aliases."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:465
+msgid "Removed `builder()` function from main module."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:466
+msgid "Added the name of the main npm module in `package.json`."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:468
+msgid "[0.0.2] - 2010-11-03"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:470
+msgid "`element()` expands nested arrays."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:471
+msgid "Added pretty printing."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:472
+msgid "Added the `up()`, `build()` and `prolog()` functions."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:473
+msgid "Added readme."
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:475
+msgid "0.0.1 - 2010-11-02"
+msgstr ""
+
+#: ../../source/xmlbuilder_CHANGELOG.md:477
+msgid "Initial release"
+msgstr ""
+

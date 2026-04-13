@@ -1,0 +1,466 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/class-utils_README.md:1
+msgid ""
+"class-utils [![NPM version](https://img.shields.io/npm/v/class-"
+"utils.svg?style=flat)](https://www.npmjs.com/package/class-utils) [![NPM "
+"monthly downloads](https://img.shields.io/npm/dm/class-"
+"utils.svg?style=flat)](https://npmjs.org/package/class-utils) [![NPM "
+"total downloads](https://img.shields.io/npm/dt/class-"
+"utils.svg?style=flat)](https://npmjs.org/package/class-utils) [![Linux "
+"Build Status](https://img.shields.io/travis/jonschlinkert/class-"
+"utils.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert"
+"/class-utils)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/class-utils_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/class-utils_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/class-utils_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/class-utils_README.md:3
+msgid "Utils for working with JavaScript classes and prototype methods."
+msgstr ""
+
+#: ../../source/class-utils_README.md:5
+msgid ""
+"Please consider following this project's author, [Jon "
+"Schlinkert](https://github.com/jonschlinkert), and consider starring the "
+"project to show your :heart: and support."
+msgstr ""
+
+#: ../../source/class-utils_README.md:7
+msgid "Install"
+msgstr ""
+
+#: ../../source/class-utils_README.md:9
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/class-utils_README.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/class-utils_README.md:21
+msgid "API"
+msgstr ""
+
+#: ../../source/class-utils_README.md:23
+msgid "[.has](index.js#L43)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:25
+msgid ""
+"Returns true if an array has any of the given elements, or an object has "
+"any of the give keys."
+msgstr ""
+
+#: ../../source/class-utils_README.md:27 ../../source/class-utils_README.md:50
+#: ../../source/class-utils_README.md:73 ../../source/class-utils_README.md:92
+#: ../../source/class-utils_README.md:111
+#: ../../source/class-utils_README.md:130
+#: ../../source/class-utils_README.md:159
+#: ../../source/class-utils_README.md:184
+#: ../../source/class-utils_README.md:196
+#: ../../source/class-utils_README.md:207
+#: ../../source/class-utils_README.md:232
+msgid "**Params**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:29 ../../source/class-utils_README.md:132
+#, python-brace-format
+msgid "`obj` **{Object}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:30 ../../source/class-utils_README.md:75
+#, python-brace-format
+msgid "`val` **{String|Array}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:31 ../../source/class-utils_README.md:54
+#: ../../source/class-utils_README.md:95
+#, python-brace-format
+msgid "`returns` **{Boolean}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:33 ../../source/class-utils_README.md:56
+#: ../../source/class-utils_README.md:78 ../../source/class-utils_README.md:97
+#: ../../source/class-utils_README.md:116
+#: ../../source/class-utils_README.md:136
+#: ../../source/class-utils_README.md:166
+#: ../../source/class-utils_README.md:215
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:46
+msgid "[.hasAll](index.js#L90)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:48
+msgid "Returns true if an array or object has all of the given values."
+msgstr ""
+
+#: ../../source/class-utils_README.md:52
+#, python-brace-format
+msgid "`val` **{Object|Array}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:53
+#, python-brace-format
+msgid "`values` **{String|Array}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:69
+msgid "[.arrayify](index.js#L117)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:71
+msgid "Cast the given value to an array."
+msgstr ""
+
+#: ../../source/class-utils_README.md:76
+#, python-brace-format
+msgid "`returns` **{Array}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:88
+msgid "[.hasConstructor](index.js#L152)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:90
+msgid "Returns true if a value has a `contructor`"
+msgstr ""
+
+#: ../../source/class-utils_README.md:94
+#, python-brace-format
+msgid "`value` **{Object}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:107
+msgid "[.nativeKeys](index.js#L174)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:109
+msgid ""
+"Get the native `ownPropertyNames` from the constructor of the given "
+"`object`. An empty array is returned if the object does not have a "
+"constructor."
+msgstr ""
+
+#: ../../source/class-utils_README.md:113
+#, python-brace-format
+msgid "`obj` **{Object}**: Object that has a `constructor`."
+msgstr ""
+
+#: ../../source/class-utils_README.md:114
+#, python-brace-format
+msgid "`returns` **{Array}**: Array of keys."
+msgstr ""
+
+#: ../../source/class-utils_README.md:126
+msgid "[.getDescriptor](index.js#L208)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:128
+msgid ""
+"Returns property descriptor `key` if it's an \"own\" property of the "
+"given object."
+msgstr ""
+
+#: ../../source/class-utils_README.md:133
+#, python-brace-format
+msgid "`key` **{String}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:134
+#, python-brace-format
+msgid "`returns` **{Object}**: Returns descriptor `key`"
+msgstr ""
+
+#: ../../source/class-utils_README.md:155
+msgid "[.copyDescriptor](index.js#L238)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:157
+msgid "Copy a descriptor from one object to another."
+msgstr ""
+
+#: ../../source/class-utils_README.md:161
+#: ../../source/class-utils_README.md:186
+#: ../../source/class-utils_README.md:198
+#, python-brace-format
+msgid "`receiver` **{Object}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:162
+#: ../../source/class-utils_README.md:187
+#: ../../source/class-utils_README.md:199
+#, python-brace-format
+msgid "`provider` **{Object}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:163
+#, python-brace-format
+msgid "`name` **{String}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:164
+#: ../../source/class-utils_README.md:189
+#: ../../source/class-utils_README.md:201
+#: ../../source/class-utils_README.md:213
+#, python-brace-format
+msgid "`returns` **{Object}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:179
+msgid "[.copy](index.js#L264)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:181
+msgid ""
+"Copy static properties, prototype properties, and descriptors from one "
+"object to another."
+msgstr ""
+
+#: ../../source/class-utils_README.md:188
+#: ../../source/class-utils_README.md:200
+#, python-brace-format
+msgid "`omit` **{String|Array}**: One or more properties to omit"
+msgstr ""
+
+#: ../../source/class-utils_README.md:191
+msgid "[.inherit](index.js#L299)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:193
+msgid ""
+"Inherit the static properties, prototype properties, and descriptors from"
+" of an object."
+msgstr ""
+
+#: ../../source/class-utils_README.md:203
+msgid "[.extend](index.js#L343)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:205
+msgid ""
+"Returns a function for extending the static properties, prototype "
+"properties, and descriptors from the `Parent` constructor onto `Child` "
+"constructors."
+msgstr ""
+
+#: ../../source/class-utils_README.md:209
+#, python-brace-format
+msgid "`Parent` **{Function}**: Parent ctor"
+msgstr ""
+
+#: ../../source/class-utils_README.md:210
+#, python-brace-format
+msgid ""
+"`extend` **{Function}**: Optional extend function to handle custom "
+"extensions. Useful when updating methods that require a specific "
+"prototype."
+msgstr ""
+
+#: ../../source/class-utils_README.md:211
+#, python-brace-format
+msgid "`Child` **{Function}**: Child ctor"
+msgstr ""
+
+#: ../../source/class-utils_README.md:212
+#, python-brace-format
+msgid ""
+"`proto` **{Object}**: Optionally pass additional prototype properties to "
+"inherit."
+msgstr ""
+
+#: ../../source/class-utils_README.md:228
+msgid "[.bubble](index.js#L356)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:230
+msgid "Bubble up events emitted from static methods on the Parent ctor."
+msgstr ""
+
+#: ../../source/class-utils_README.md:234
+#, python-brace-format
+msgid "`Parent` **{Object}**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:235
+#, python-brace-format
+msgid "`events` **{Array}**: Event names to bubble up"
+msgstr ""
+
+#: ../../source/class-utils_README.md:237
+msgid "About"
+msgstr ""
+
+#: ../../source/class-utils_README.md:242
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/class-utils_README.md:249
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/class-utils_README.md:259
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/class-utils_README.md:261
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/class-utils_README.md:269
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/class-utils_README.md:271
+msgid "You might also be interested in these projects:"
+msgstr ""
+
+#: ../../source/class-utils_README.md:273
+msgid ""
+"[define-property](https://www.npmjs.com/package/define-property): Define "
+"a non-enumerable property on an object. Uses Reflect.defineProperty when "
+"available, otherwise Object.defineProperty. | "
+"[homepage](https://github.com/jonschlinkert/define-property \"Define a "
+"non-enumerable property on an object. Uses Reflect.defineProperty when "
+"available, otherwise Object.defineProperty.\")"
+msgstr ""
+
+#: ../../source/class-utils_README.md:274
+msgid ""
+"[delegate-properties](https://www.npmjs.com/package/delegate-properties):"
+" Deep-clone properties from one object to another and make them non-"
+"enumerable, or make existing properties… "
+"[more](https://github.com/jonschlinkert/delegate-properties) | "
+"[homepage](https://github.com/jonschlinkert/delegate-properties \"Deep-"
+"clone properties from one object to another and make them non-enumerable,"
+" or make existing properties on an object non-enumerable.\")"
+msgstr ""
+
+#: ../../source/class-utils_README.md:275
+msgid ""
+"[is-descriptor](https://www.npmjs.com/package/is-descriptor): Returns "
+"true if a value has the characteristics of a valid JavaScript descriptor."
+" Works for… [more](https://github.com/jonschlinkert/is-descriptor) | "
+"[homepage](https://github.com/jonschlinkert/is-descriptor \"Returns true "
+"if a value has the characteristics of a valid JavaScript descriptor. "
+"Works for data descriptors and accessor descriptors.\")"
+msgstr ""
+
+#: ../../source/class-utils_README.md:277
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/class-utils_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/class-utils_README.md
+msgid "**Contributor**"
+msgstr ""
+
+#: ../../source/class-utils_README.md
+msgid "34"
+msgstr ""
+
+#: ../../source/class-utils_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/class-utils_README.md
+msgid "8"
+msgstr ""
+
+#: ../../source/class-utils_README.md
+msgid "[doowb](https://github.com/doowb)"
+msgstr ""
+
+#: ../../source/class-utils_README.md
+msgid "2"
+msgstr ""
+
+#: ../../source/class-utils_README.md
+msgid "[wtgtybhertgeghgtwtg](https://github.com/wtgtybhertgeghgtwtg)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:285
+msgid "Author"
+msgstr ""
+
+#: ../../source/class-utils_README.md:287
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/class-utils_README.md:289
+msgid "[linkedin/in/jonschlinkert](https://linkedin.com/in/jonschlinkert)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:290
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:291
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/class-utils_README.md:293
+msgid "License"
+msgstr ""
+
+#: ../../source/class-utils_README.md:295
+msgid ""
+"Copyright © 2018, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/class-utils_README.md:300
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on "
+"January 11, 2018._"
+msgstr ""
+

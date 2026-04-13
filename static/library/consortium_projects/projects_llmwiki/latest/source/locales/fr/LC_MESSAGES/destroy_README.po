@@ -1,0 +1,112 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/destroy_README.md:1
+msgid "destroy"
+msgstr ""
+
+#: ../../source/destroy_README.md:3
+msgid ""
+"[![NPM version][npm-image]][npm-url] [![Build Status][github-actions-ci-"
+"image]][github-actions-ci-url] [![Test coverage][coveralls-image"
+"]][coveralls-url] [![License][license-image]][license-url] [![Downloads"
+"][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/destroy_README.md:3
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/destroy_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/destroy_README.md:3
+msgid "Test coverage"
+msgstr ""
+
+#: ../../source/destroy_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/destroy_README.md:9
+msgid "Destroy a stream."
+msgstr ""
+
+#: ../../source/destroy_README.md:11
+msgid ""
+"This module is meant to ensure a stream gets destroyed, handling "
+"different APIs and Node.js bugs."
+msgstr ""
+
+#: ../../source/destroy_README.md:14
+msgid "API"
+msgstr ""
+
+#: ../../source/destroy_README.md:20
+msgid "destroy(stream [, suppress])"
+msgstr ""
+
+#: ../../source/destroy_README.md:22
+msgid ""
+"Destroy the given stream, and optionally suppress any future `error` "
+"events."
+msgstr ""
+
+#: ../../source/destroy_README.md:24
+msgid ""
+"In most cases, this is identical to a simple `stream.destroy()` call. The"
+" rules are as follows for a given stream:"
+msgstr ""
+
+#: ../../source/destroy_README.md:27
+msgid ""
+"If the `stream` is an instance of `ReadStream`, then call "
+"`stream.destroy()` and add a listener to the `open` event to call "
+"`stream.close()` if it is fired. This is for a Node.js bug that will leak"
+" a file descriptor if `.destroy()` is called before `open`."
+msgstr ""
+
+#: ../../source/destroy_README.md:31
+msgid ""
+"If the `stream` is an instance of a zlib stream, then call "
+"`stream.destroy()` and close the underlying zlib handle if open, "
+"otherwise call `stream.close()`. This is for consistency across Node.js "
+"versions and a Node.js bug that will leak a native zlib handle."
+msgstr ""
+
+#: ../../source/destroy_README.md:35
+msgid "If the `stream` is not an instance of `Stream`, then nothing happens."
+msgstr ""
+
+#: ../../source/destroy_README.md:36
+msgid "If the `stream` has a `.destroy()` method, then call it."
+msgstr ""
+
+#: ../../source/destroy_README.md:38
+msgid "The function returns the `stream` passed in as the argument."
+msgstr ""
+
+#: ../../source/destroy_README.md:40
+msgid "Example"
+msgstr ""
+

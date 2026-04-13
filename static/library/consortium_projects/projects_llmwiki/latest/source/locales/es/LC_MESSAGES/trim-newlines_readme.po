@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/trim-newlines_readme.md:1
+msgid ""
+"trim-newlines [![Build Status](https://travis-ci.org/sindresorhus/trim-"
+"newlines.svg?branch=master)](https://travis-ci.org/sindresorhus/trim-"
+"newlines)"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:3
+msgid ""
+"Trim [newlines](https://en.wikipedia.org/wiki/Newline) from the start "
+"and/or end of a string"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:23
+msgid "API"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:25
+msgid "trimNewlines(input)"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:27
+msgid "Trim from the start and end of a string."
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:29
+msgid "trimNewlines.start(input)"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:31
+msgid "Trim from the start of a string."
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:33
+msgid "trimNewlines.end(input)"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:35
+msgid "Trim from the end of a string."
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:38
+msgid "Related"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:40
+msgid ""
+"[trim-left](https://github.com/sindresorhus/trim-left) - Similar to "
+"`String#trim()` but removes only whitespace on the left"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:41
+msgid ""
+"[trim-right](https://github.com/sindresorhus/trim-right) - Similar to "
+"`String#trim()` but removes only whitespace on the right."
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:44
+msgid "License"
+msgstr ""
+
+#: ../../source/trim-newlines_readme.md:46
+msgid "MIT © [Sindre Sorhus](http://sindresorhus.com)"
+msgstr ""
+

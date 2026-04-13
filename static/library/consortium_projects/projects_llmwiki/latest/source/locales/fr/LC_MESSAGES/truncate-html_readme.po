@@ -1,0 +1,189 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/truncate-html_readme.md:24
+msgid ""
+"**Notice** This is a node module depends on "
+"[cheerio](https://github.com/cheeriojs/cheerio) _can only run on nodejs_."
+" If you need a browser version, you may consider "
+"[truncate](https://github.com/pathable/truncate) or [nodejs-html-"
+"truncate](https://github.com/huang47/nodejs-html-truncate)."
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:32
+msgid "Installation"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:34
+msgid "`npm install truncate-html` <br> or <br> `yarn add truncate-html`"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:38
+msgid "Try it online"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:40
+msgid "Click **<https://npm.runkit.com/truncate-html>** to try."
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:42
+msgid "API"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:120
+msgid "Default options"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:135
+msgid "You can change default options by using `truncate.setup`"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:137
+msgid "e.g."
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:145
+msgid ""
+"or use existing [cheerio "
+"instance](https://github.com/cheeriojs/cheerio#loading)"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:162
+msgid "Notice"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:164
+msgid "Typescript support"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:166
+msgid ""
+"This lib is written with typescript and has a type definition file along "
+"with it. ~~You may need to update your `tsconfig.json` by adding "
+"`\"esModuleInterop\": true` to the `compilerOptions` if you encounter "
+"some typing errors, see [#19](https://github.com/oe/truncate-"
+"html/issues/19).~~"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:183
+msgid "custom node truncate strategy"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:184
+msgid ""
+"In complex html string, you may want to keep some special elements and "
+"truncate the others. You can use `customNodeStrategy` to achieve this:"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:185
+msgid "return `'remove'` to remove the node"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:186
+msgid ""
+"`keep` to keep the node(and anything inside it) anyway, and won't be "
+"counted as there is no text content in it"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:187
+msgid ""
+"`Cheerio<AnyNode>` to truncate the returned node, or any falsy value to "
+"truncate the original node."
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:221
+msgid "About final string length"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:223
+msgid ""
+"If the html string content's length is shorter than `options.length`, "
+"then no ellipsis will be appended to the final html string. If longer, "
+"then the final string length will be `options.length` + "
+"`options.ellipsis`. And if you set `reserveLastWord` to true or none zero"
+" number or using `customNodeStrategy`, the final string will be various."
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:225
+msgid "About html comments"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:227
+msgid "All html comments `<!-- xxx -->` will be removed"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:229
+msgid "About dealing with none alphabetic languages"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:231
+msgid ""
+"When dealing with none alphabetic languages, such as "
+"Chinese/Japanese/Korean, they don't separate words with whitespaces, so "
+"options `byWords` and `reserveLastWord` should only works well with "
+"alphabetic languages."
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:233
+msgid ""
+"And the only dependency of this project `cheerio` has an issue when "
+"dealing with none alphabetic languages, see [Known Issues](#known-issues)"
+" for details."
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:235
+msgid "Using existing cheerio instance"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:237
+msgid ""
+"If you want to use existing cheerio instance, truncate option "
+"`decodeEntities` will not work, you should set it in your own cheerio "
+"instance:"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:249
+msgid "Examples"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:371
+msgid "for More usages, check [truncate.spec.ts](./test/truncate.spec.ts)"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:373
+msgid "Credits"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:375
+msgid "Thanks to:"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:377
+msgid "[@calebeno](https://github.com/calebeno) es6 support and unit tests"
+msgstr ""
+
+#: ../../source/truncate-html_readme.md:378
+msgid ""
+"[@aaditya-thakkar](https://github.com/aaditya-thakkar) emoji truncating "
+"support"
+msgstr ""
+

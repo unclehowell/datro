@@ -1,0 +1,165 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_review-output-template.md:1
+msgid "Review Output Template"
+msgstr ""
+
+#: ../../source/references_review-output-template.md:3
+msgid ""
+"Use this as the structure for PR review summary comments. Copy and fill "
+"in the sections."
+msgstr ""
+
+#: ../../source/references_review-output-template.md:5
+msgid "For PR Summary Comment"
+msgstr ""
+
+#: ../../source/references_review-output-template.md:36
+msgid "Severity Guide"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Icon"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "When to use"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Blocks merge?"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Critical"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "🔴"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid ""
+"Security vulnerabilities, data loss risk, crashes, broken core "
+"functionality"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Yes"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Warning"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "⚠️"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid ""
+"Bugs in non-critical paths, missing error handling, missing tests for new"
+" code"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Usually yes"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Suggestion"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "💡"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid ""
+"Style improvements, refactoring ideas, performance hints, documentation "
+"gaps"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "No"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Looks Good"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "✅"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "Clean patterns, good test coverage, clear naming, smart design decisions"
+msgstr ""
+
+#: ../../source/references_review-output-template.md
+msgid "N/A"
+msgstr ""
+
+#: ../../source/references_review-output-template.md:45
+msgid "Verdict Decision"
+msgstr ""
+
+#: ../../source/references_review-output-template.md:47
+msgid ""
+"**Approved ✅** — Zero critical/warning items. Only suggestions or all "
+"clear."
+msgstr ""
+
+#: ../../source/references_review-output-template.md:48
+msgid "**Changes Requested 🔴** — Any critical or warning item exists."
+msgstr ""
+
+#: ../../source/references_review-output-template.md:49
+msgid ""
+"**Reviewed 💬** — Observations only (draft PRs, uncertain findings, "
+"informational)."
+msgstr ""
+
+#: ../../source/references_review-output-template.md:51
+msgid "For Inline Comments"
+msgstr ""
+
+#: ../../source/references_review-output-template.md:53
+msgid "Prefix inline comments with the severity icon so they're scannable:"
+msgstr ""
+
+#: ../../source/references_review-output-template.md:72
+msgid "For Local (Pre-Push) Review"
+msgstr ""
+
+#: ../../source/references_review-output-template.md:74
+msgid ""
+"When reviewing locally before push, use the same structure but present it"
+" as a message to the user instead of a PR comment. Skip the PR metadata "
+"header and just start with the severity sections."
+msgstr ""
+

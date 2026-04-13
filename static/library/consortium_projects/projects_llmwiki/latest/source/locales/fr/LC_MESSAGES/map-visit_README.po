@@ -1,0 +1,260 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/map-visit_README.md:1
+msgid ""
+"map-visit [![NPM version](https://img.shields.io/npm/v/map-"
+"visit.svg?style=flat)](https://www.npmjs.com/package/map-visit) [![NPM "
+"monthly downloads](https://img.shields.io/npm/dm/map-"
+"visit.svg?style=flat)](https://npmjs.org/package/map-visit)  [![NPM total"
+" downloads](https://img.shields.io/npm/dt/map-"
+"visit.svg?style=flat)](https://npmjs.org/package/map-visit) [![Linux "
+"Build Status](https://img.shields.io/travis/jonschlinkert/map-"
+"visit.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert"
+"/map-visit)"
+msgstr ""
+
+#: ../../source/map-visit_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/map-visit_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/map-visit_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/map-visit_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/map-visit_README.md:3
+msgid "Map `visit` over an array of objects."
+msgstr ""
+
+#: ../../source/map-visit_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/map-visit_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/map-visit_README.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/map-visit_README.md:19
+msgid "What does this do?"
+msgstr ""
+
+#: ../../source/map-visit_README.md:21
+msgid "**Assign/Merge/Extend vs. Visit**"
+msgstr ""
+
+#: ../../source/map-visit_README.md:23
+msgid "Let's say you want to add a `set` method to your application that will:"
+msgstr ""
+
+#: ../../source/map-visit_README.md:25
+msgid "set key-value pairs on a `data` object"
+msgstr ""
+
+#: ../../source/map-visit_README.md:26
+msgid "extend objects onto the `data` object"
+msgstr ""
+
+#: ../../source/map-visit_README.md:27
+msgid "extend arrays of objects onto the data object"
+msgstr ""
+
+#: ../../source/map-visit_README.md:29
+msgid "**Example using `extend`**"
+msgstr ""
+
+#: ../../source/map-visit_README.md:31
+msgid ""
+"Here is one way to accomplish this using Lo-Dash's `extend` (comparable "
+"to `Object.assign`):"
+msgstr ""
+
+#: ../../source/map-visit_README.md:57
+msgid ""
+"The above approach works fine for most use cases. However, **if you also "
+"want to emit an event** each time a property is added to the `data` "
+"object, or you want more control over what happens as the object is "
+"extended, a better approach would be to use `visit`."
+msgstr ""
+
+#: ../../source/map-visit_README.md:59
+msgid "**Example using `visit`**"
+msgstr ""
+
+#: ../../source/map-visit_README.md:61
+msgid "In this approach:"
+msgstr ""
+
+#: ../../source/map-visit_README.md:63
+msgid ""
+"when an array is passed to `set`, the `mapVisit` library calls the `set` "
+"method on each object in the array."
+msgstr ""
+
+#: ../../source/map-visit_README.md:64
+msgid ""
+"when an object is passed, `visit` calls `set` on each property in the "
+"object."
+msgstr ""
+
+#: ../../source/map-visit_README.md:66
+msgid ""
+"As a result, the `data` event will be emitted every time a property is "
+"added to `data` (events are just an example, you can use this approach to"
+" perform any necessary logic every time the method is called)."
+msgstr ""
+
+#: ../../source/map-visit_README.md:105
+msgid "About"
+msgstr ""
+
+#: ../../source/map-visit_README.md:107
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/map-visit_README.md:109
+msgid ""
+"[collection-visit](https://www.npmjs.com/package/collection-visit): Visit"
+" a method over the items in an object, or map visit over the objects… "
+"[more](https://github.com/jonschlinkert/collection-visit) | "
+"[homepage](https://github.com/jonschlinkert/collection-visit \"Visit a "
+"method over the items in an object, or map visit over the objects in an "
+"array.\")"
+msgstr ""
+
+#: ../../source/map-visit_README.md:110
+msgid ""
+"[object-visit](https://www.npmjs.com/package/object-visit): Call a "
+"specified method on each value in the given object. | "
+"[homepage](https://github.com/jonschlinkert/object-visit \"Call a "
+"specified method on each value in the given object.\")"
+msgstr ""
+
+#: ../../source/map-visit_README.md:112
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/map-visit_README.md:114
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/map-visit_README.md:116
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/map-visit_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/map-visit_README.md
+msgid "**Contributor**"
+msgstr ""
+
+#: ../../source/map-visit_README.md
+msgid "15"
+msgstr ""
+
+#: ../../source/map-visit_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/map-visit_README.md
+msgid "7"
+msgstr ""
+
+#: ../../source/map-visit_README.md
+msgid "[doowb](https://github.com/doowb)"
+msgstr ""
+
+#: ../../source/map-visit_README.md:123
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/map-visit_README.md:125
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/map-visit_README.md:127
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/map-visit_README.md:133
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/map-visit_README.md:135
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/map-visit_README.md:141
+msgid "Author"
+msgstr ""
+
+#: ../../source/map-visit_README.md:143
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/map-visit_README.md:145
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/map-visit_README.md:146
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/map-visit_README.md:148
+msgid "License"
+msgstr ""
+
+#: ../../source/map-visit_README.md:150
+msgid ""
+"Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/map-visit_README.md:155
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.5.0, on "
+"April 09, 2017._"
+msgstr ""
+

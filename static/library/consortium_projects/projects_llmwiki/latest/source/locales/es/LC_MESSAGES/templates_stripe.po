@@ -1,0 +1,1665 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_stripe.md:1
+msgid "Design System: Stripe"
+msgstr ""
+
+#: ../../source/templates_stripe.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_stripe.md:7
+msgid "**Primary:** `Source Sans 3` | **Mono:** `Source Code Pro`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Source Sans 3', system-ui, -apple-"
+"system, 'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'Source Code Pro', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_stripe.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_stripe.md:18
+msgid ""
+"Stripe's website is the gold standard of fintech design -- a system that "
+"manages to feel simultaneously technical and luxurious, precise and warm."
+" The page opens on a clean white canvas (`#ffffff`) with deep navy "
+"headings (`#061b31`) and a signature purple (`#533afd`) that functions as"
+" both brand anchor and interactive accent. This isn't the cold, clinical "
+"purple of enterprise software; it's a rich, saturated violet that reads "
+"as confident and premium. The overall impression is of a financial "
+"institution redesigned by a world-class type foundry."
+msgstr ""
+
+#: ../../source/templates_stripe.md:20
+msgid ""
+"The custom `sohne-var` variable font is the defining element of Stripe's "
+"visual identity. Every text element enables the OpenType `\"ss01\"` "
+"stylistic set, which modifies character shapes for a distinctly "
+"geometric, modern feel. At display sizes (48px-56px), sohne-var runs at "
+"weight 300 -- an extraordinarily light weight for headlines that creates "
+"an ethereal, almost whispered authority. This is the opposite of the "
+"\"bold hero headline\" convention; Stripe's headlines feel like they "
+"don't need to shout. The negative letter-spacing (-1.4px at 56px, -0.96px"
+" at 48px) tightens the text into dense, engineered blocks. At smaller "
+"sizes, the system also uses weight 300 with proportionally reduced "
+"tracking, and tabular numerals via `\"tnum\"` for financial data display."
+msgstr ""
+
+#: ../../source/templates_stripe.md:22
+msgid ""
+"What truly distinguishes Stripe is its shadow system. Rather than the "
+"flat or single-layer approach of most sites, Stripe uses multi-layer, "
+"blue-tinted shadows: the signature `rgba(50,50,93,0.25)` combined with "
+"`rgba(0,0,0,0.1)` creates shadows with a cool, almost atmospheric depth "
+"-- like elements are floating in a twilight sky. The blue-gray undertone "
+"of the primary shadow color (50,50,93) ties directly to the navy-purple "
+"brand palette, making even elevation feel on-brand."
+msgstr ""
+
+#: ../../source/templates_stripe.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:25
+msgid ""
+"sohne-var with OpenType `\"ss01\"` on all text -- a custom stylistic set "
+"that defines the brand's letterforms"
+msgstr ""
+
+#: ../../source/templates_stripe.md:26
+msgid ""
+"Weight 300 as the signature headline weight -- light, confident, anti-"
+"convention"
+msgstr ""
+
+#: ../../source/templates_stripe.md:27
+msgid ""
+"Negative letter-spacing at display sizes (-1.4px at 56px, progressive "
+"relaxation downward)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:28
+msgid ""
+"Blue-tinted multi-layer shadows using `rgba(50,50,93,0.25)` -- elevation "
+"that feels brand-colored"
+msgstr ""
+
+#: ../../source/templates_stripe.md:29
+msgid ""
+"Deep navy (`#061b31`) headings instead of black -- warm, premium, "
+"financial-grade"
+msgstr ""
+
+#: ../../source/templates_stripe.md:30
+msgid "Conservative border-radius (4px-8px) -- nothing pill-shaped, nothing harsh"
+msgstr ""
+
+#: ../../source/templates_stripe.md:31
+msgid ""
+"Ruby (`#ea2261`) and magenta (`#f96bee`) accents for gradient and "
+"decorative elements"
+msgstr ""
+
+#: ../../source/templates_stripe.md:32
+msgid "`SourceCodePro` as the monospace companion for code and technical labels"
+msgstr ""
+
+#: ../../source/templates_stripe.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_stripe.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_stripe.md:37
+msgid ""
+"**Stripe Purple** (`#533afd`): Primary brand color, CTA backgrounds, link"
+" text, interactive highlights. A saturated blue-violet that anchors the "
+"entire system."
+msgstr ""
+
+#: ../../source/templates_stripe.md:38
+msgid ""
+"**Deep Navy** (`#061b31`): `--hds-color-heading-solid`. Primary heading "
+"color. Not black, not gray -- a very dark blue that adds warmth and depth"
+" to text."
+msgstr ""
+
+#: ../../source/templates_stripe.md:39
+msgid ""
+"**Pure White** (`#ffffff`): Page background, card surfaces, button text "
+"on dark backgrounds."
+msgstr ""
+
+#: ../../source/templates_stripe.md:41
+msgid "Brand & Dark"
+msgstr ""
+
+#: ../../source/templates_stripe.md:42
+msgid ""
+"**Brand Dark** (`#1c1e54`): `--hds-color-util-brand-900`. Deep indigo for"
+" dark sections, footer backgrounds, and immersive brand moments."
+msgstr ""
+
+#: ../../source/templates_stripe.md:43
+msgid ""
+"**Dark Navy** (`#0d253d`): `--hds-color-core-neutral-975`. The darkest "
+"neutral -- almost-black with a blue undertone for maximum depth without "
+"harshness."
+msgstr ""
+
+#: ../../source/templates_stripe.md:45
+msgid "Accent Colors"
+msgstr ""
+
+#: ../../source/templates_stripe.md:46
+msgid ""
+"**Ruby** (`#ea2261`): `--hds-color-accentColorMode-ruby-icon-solid`. Warm"
+" red-pink for icons, alerts, and accent elements."
+msgstr ""
+
+#: ../../source/templates_stripe.md:47
+msgid ""
+"**Magenta** (`#f96bee`): `--hds-color-accentColorMode-magenta-icon-"
+"gradientMiddle`. Vivid pink-purple for gradients and decorative "
+"highlights."
+msgstr ""
+
+#: ../../source/templates_stripe.md:48
+msgid ""
+"**Magenta Light** (`#ffd7ef`): `--hds-color-util-accent-magenta-100`. "
+"Tinted surface for magenta-themed cards and badges."
+msgstr ""
+
+#: ../../source/templates_stripe.md:50
+msgid "Interactive"
+msgstr ""
+
+#: ../../source/templates_stripe.md:51
+msgid ""
+"**Primary Purple** (`#533afd`): Primary link color, active states, "
+"selected elements."
+msgstr ""
+
+#: ../../source/templates_stripe.md:52
+msgid ""
+"**Purple Hover** (`#4434d4`): Darker purple for hover states on primary "
+"elements."
+msgstr ""
+
+#: ../../source/templates_stripe.md:53
+msgid ""
+"**Purple Deep** (`#2e2b8c`): `--hds-color-button-ui-iconHover`. Dark "
+"purple for icon hover states."
+msgstr ""
+
+#: ../../source/templates_stripe.md:54
+msgid ""
+"**Purple Light** (`#b9b9f9`): `--hds-color-action-bg-subduedHover`. Soft "
+"lavender for subdued hover backgrounds."
+msgstr ""
+
+#: ../../source/templates_stripe.md:55
+msgid ""
+"**Purple Mid** (`#665efd`): `--hds-color-input-selector-text-range`. "
+"Range selector and input highlight color."
+msgstr ""
+
+#: ../../source/templates_stripe.md:57
+msgid "Neutral Scale"
+msgstr ""
+
+#: ../../source/templates_stripe.md:58
+msgid "**Heading** (`#061b31`): Primary headings, nav text, strong labels."
+msgstr ""
+
+#: ../../source/templates_stripe.md:59
+msgid ""
+"**Label** (`#273951`): `--hds-color-input-text-label`. Form labels, "
+"secondary headings."
+msgstr ""
+
+#: ../../source/templates_stripe.md:60
+msgid "**Body** (`#64748d`): Secondary text, descriptions, captions."
+msgstr ""
+
+#: ../../source/templates_stripe.md:61
+msgid ""
+"**Success Green** (`#15be53`): Status badges, success indicators (with "
+"0.2-0.4 alpha for backgrounds/borders)."
+msgstr ""
+
+#: ../../source/templates_stripe.md:62
+msgid "**Success Text** (`#108c3d`): Success badge text color."
+msgstr ""
+
+#: ../../source/templates_stripe.md:63
+msgid ""
+"**Lemon** (`#9b6829`): `--hds-color-core-lemon-500`. Warning and "
+"highlight accent."
+msgstr ""
+
+#: ../../source/templates_stripe.md:65
+msgid "Surface & Borders"
+msgstr ""
+
+#: ../../source/templates_stripe.md:66
+msgid ""
+"**Border Default** (`#e5edf5`): Standard border color for cards, "
+"dividers, and containers."
+msgstr ""
+
+#: ../../source/templates_stripe.md:67
+msgid ""
+"**Border Purple** (`#b9b9f9`): Active/selected state borders on buttons "
+"and inputs."
+msgstr ""
+
+#: ../../source/templates_stripe.md:68
+msgid ""
+"**Border Soft Purple** (`#d6d9fc`): Subtle purple-tinted borders for "
+"secondary elements."
+msgstr ""
+
+#: ../../source/templates_stripe.md:69
+msgid ""
+"**Border Magenta** (`#ffd7ef`): Pink-tinted borders for magenta-themed "
+"elements."
+msgstr ""
+
+#: ../../source/templates_stripe.md:70
+msgid ""
+"**Border Dashed** (`#362baa`): Dashed borders for drop zones and "
+"placeholder elements."
+msgstr ""
+
+#: ../../source/templates_stripe.md:72
+msgid "Shadow Colors"
+msgstr ""
+
+#: ../../source/templates_stripe.md:73
+msgid ""
+"**Shadow Blue** (`rgba(50,50,93,0.25)`): The signature -- blue-tinted "
+"primary shadow color."
+msgstr ""
+
+#: ../../source/templates_stripe.md:74
+msgid ""
+"**Shadow Dark Blue** (`rgba(3,3,39,0.25)`): Deeper blue shadow for "
+"elevated elements."
+msgstr ""
+
+#: ../../source/templates_stripe.md:75
+msgid ""
+"**Shadow Black** (`rgba(0,0,0,0.1)`): Secondary shadow layer for depth "
+"reinforcement."
+msgstr ""
+
+#: ../../source/templates_stripe.md:76
+msgid ""
+"**Shadow Ambient** (`rgba(23,23,23,0.08)`): Soft ambient shadow for "
+"subtle elevation."
+msgstr ""
+
+#: ../../source/templates_stripe.md:77
+msgid ""
+"**Shadow Soft** (`rgba(23,23,23,0.06)`): Minimal ambient shadow for light"
+" lift."
+msgstr ""
+
+#: ../../source/templates_stripe.md:79
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_stripe.md:81
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_stripe.md:82
+msgid "**Primary**: `sohne-var`, with fallback: `SF Pro Display`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:83
+msgid "**Monospace**: `SourceCodePro`, with fallback: `SFMono-Regular`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:84
+msgid ""
+"**OpenType Features**: `\"ss01\"` enabled globally on all sohne-var text;"
+" `\"tnum\"` for tabular numbers on financial data and captions."
+msgstr ""
+
+#: ../../source/templates_stripe.md:86
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Features"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "sohne-var"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "56px (3.50rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "300"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1.03 (tight)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "-1.4px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "ss01"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Maximum size, whisper-weight authority"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Display Large"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "48px (3.00rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1.15 (tight)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "-0.96px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Secondary hero headlines"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "32px (2.00rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1.10 (tight)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "-0.64px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Feature section titles"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Sub-heading Large"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "26px (1.63rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1.12 (tight)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "-0.26px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Card headings, sub-sections"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "22px (1.38rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "-0.22px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Smaller section heads"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Feature descriptions, intro text"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "300-400"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Standard reading text"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Primary button text"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Button Small"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Secondary/compact buttons"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Link"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Navigation links"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "13px (0.81rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Small labels, metadata"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Caption Small"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1.33-1.45"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Fine print, timestamps"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Caption Tabular"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "-0.36px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "tnum"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Financial data, numbers"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "10px (0.63rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "0.1px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Tiny labels, axis markers"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Micro Tabular"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "-0.3px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Chart data, small numbers"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Nano"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "8px (0.50rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1.07 (tight)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Smallest labels"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Code Body"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "SourceCodePro"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "2.00 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "--"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Code blocks, syntax"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Code Bold"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Bold code, keywords"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Code Label"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "uppercase"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Technical labels"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Code Micro"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "9px (0.56rem)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Tiny code annotations"
+msgstr ""
+
+#: ../../source/templates_stripe.md:111
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_stripe.md:112
+msgid ""
+"**Light weight as signature**: Weight 300 at display sizes is Stripe's "
+"most distinctive typographic choice. Where others use 600-700 to command "
+"attention, Stripe uses lightness as luxury -- the text is so confident it"
+" doesn't need weight to be authoritative."
+msgstr ""
+
+#: ../../source/templates_stripe.md:113
+msgid ""
+"**ss01 everywhere**: The `\"ss01\"` stylistic set is non-negotiable. It "
+"modifies specific glyphs (likely alternate `a`, `g`, `l` forms) to create"
+" a more geometric, contemporary feel across all sohne-var text."
+msgstr ""
+
+#: ../../source/templates_stripe.md:114
+msgid ""
+"**Two OpenType modes**: `\"ss01\"` for display/body text, `\"tnum\"` for "
+"tabular numerals in financial data. These never overlap -- a number in a "
+"paragraph uses ss01, a number in a data table uses tnum."
+msgstr ""
+
+#: ../../source/templates_stripe.md:115
+msgid ""
+"**Progressive tracking**: Letter-spacing tightens proportionally with "
+"size: -1.4px at 56px, -0.96px at 48px, -0.64px at 32px, -0.26px at 26px, "
+"normal at 16px and below."
+msgstr ""
+
+#: ../../source/templates_stripe.md:116
+msgid ""
+"**Two-weight simplicity**: Primarily 300 (body and headings) and 400 "
+"(UI/buttons). No bold (700) in the primary font -- SourceCodePro uses "
+"500/700 for code contrast."
+msgstr ""
+
+#: ../../source/templates_stripe.md:118
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_stripe.md:120
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_stripe.md:122
+msgid "**Primary Purple**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:123
+msgid "Background: `#533afd`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:124
+msgid "Text: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:125 ../../source/templates_stripe.md:134
+#: ../../source/templates_stripe.md:144 ../../source/templates_stripe.md:152
+msgid "Padding: 8px 16px"
+msgstr ""
+
+#: ../../source/templates_stripe.md:126 ../../source/templates_stripe.md:135
+#: ../../source/templates_stripe.md:145 ../../source/templates_stripe.md:153
+#: ../../source/templates_stripe.md:170 ../../source/templates_stripe.md:178
+#: ../../source/templates_stripe.md:184
+msgid "Radius: 4px"
+msgstr ""
+
+#: ../../source/templates_stripe.md:127 ../../source/templates_stripe.md:137
+msgid "Font: 16px sohne-var weight 400, `\"ss01\"`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:128
+msgid "Hover: `#4434d4` background"
+msgstr ""
+
+#: ../../source/templates_stripe.md:129
+msgid "Use: Primary CTA (\"Start now\", \"Contact sales\")"
+msgstr ""
+
+#: ../../source/templates_stripe.md:131
+msgid "**Ghost / Outlined**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:132 ../../source/templates_stripe.md:142
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_stripe.md:133
+msgid "Text: `#533afd`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:136
+msgid "Border: `1px solid #b9b9f9`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:138
+msgid "Hover: background shifts to `rgba(83,58,253,0.05)`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:139
+msgid "Use: Secondary actions"
+msgstr ""
+
+#: ../../source/templates_stripe.md:141
+msgid "**Transparent Info**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:143
+msgid "Text: `#2874ad`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:146
+msgid "Border: `1px solid rgba(43,145,223,0.2)`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:147
+msgid "Use: Tertiary/info-level actions"
+msgstr ""
+
+#: ../../source/templates_stripe.md:149
+msgid "**Neutral Ghost**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:150
+msgid "Background: transparent (`rgba(255,255,255,0)`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:151
+msgid "Text: `rgba(16,16,16,0.3)`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:154
+msgid "Outline: `1px solid rgb(212,222,233)`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:155
+msgid "Use: Disabled or muted actions"
+msgstr ""
+
+#: ../../source/templates_stripe.md:157
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_stripe.md:158 ../../source/templates_stripe.md:167
+msgid "Background: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:159
+msgid ""
+"Border: `1px solid #e5edf5` (standard) or `1px solid #061b31` (dark "
+"accent)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:160
+msgid "Radius: 4px (tight), 5px (standard), 6px (comfortable), 8px (featured)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:161
+msgid ""
+"Shadow (standard): `rgba(50,50,93,0.25) 0px 30px 45px -30px, "
+"rgba(0,0,0,0.1) 0px 18px 36px -18px`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:162
+msgid "Shadow (ambient): `rgba(23,23,23,0.08) 0px 15px 35px 0px`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:163
+msgid "Hover: shadow intensifies, often adding the blue-tinted layer"
+msgstr ""
+
+#: ../../source/templates_stripe.md:165
+msgid "Badges / Tags / Pills"
+msgstr ""
+
+#: ../../source/templates_stripe.md:166
+msgid "**Neutral Pill**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:168
+msgid "Text: `#000000`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:169
+msgid "Padding: 0px 6px"
+msgstr ""
+
+#: ../../source/templates_stripe.md:171
+msgid "Border: `1px solid #f6f9fc`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:172
+msgid "Font: 11px weight 400"
+msgstr ""
+
+#: ../../source/templates_stripe.md:174
+msgid "**Success Badge**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:175
+msgid "Background: `rgba(21,190,83,0.2)`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:176
+msgid "Text: `#108c3d`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:177
+msgid "Padding: 1px 6px"
+msgstr ""
+
+#: ../../source/templates_stripe.md:179
+msgid "Border: `1px solid rgba(21,190,83,0.4)`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:180
+msgid "Font: 10px weight 300"
+msgstr ""
+
+#: ../../source/templates_stripe.md:182
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_stripe.md:183
+msgid "Border: `1px solid #e5edf5`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:185
+msgid "Focus: `1px solid #533afd` or purple ring"
+msgstr ""
+
+#: ../../source/templates_stripe.md:186
+msgid "Label: `#273951`, 14px sohne-var"
+msgstr ""
+
+#: ../../source/templates_stripe.md:187
+msgid "Text: `#061b31`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:188
+msgid "Placeholder: `#64748d`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:190
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_stripe.md:191
+msgid "Clean horizontal nav on white, sticky with blur backdrop"
+msgstr ""
+
+#: ../../source/templates_stripe.md:192
+msgid "Brand logotype left-aligned"
+msgstr ""
+
+#: ../../source/templates_stripe.md:193
+msgid "Links: sohne-var 14px weight 400, `#061b31` text with `\"ss01\"`"
+msgstr ""
+
+#: ../../source/templates_stripe.md:194
+msgid "Radius: 6px on nav container"
+msgstr ""
+
+#: ../../source/templates_stripe.md:195
+msgid "CTA: purple button right-aligned (\"Sign in\", \"Start now\")"
+msgstr ""
+
+#: ../../source/templates_stripe.md:196
+msgid "Mobile: hamburger toggle with 6px radius"
+msgstr ""
+
+#: ../../source/templates_stripe.md:198
+msgid "Decorative Elements"
+msgstr ""
+
+#: ../../source/templates_stripe.md:199
+msgid "**Dashed Borders**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:200
+msgid "`1px dashed #362baa` (purple) for placeholder/drop zones"
+msgstr ""
+
+#: ../../source/templates_stripe.md:201
+msgid "`1px dashed #ffd7ef` (magenta) for magenta-themed decorative borders"
+msgstr ""
+
+#: ../../source/templates_stripe.md:203
+msgid "**Gradient Accents**"
+msgstr ""
+
+#: ../../source/templates_stripe.md:204
+msgid "Ruby-to-magenta gradients (`#ea2261` to `#f96bee`) for hero decorations"
+msgstr ""
+
+#: ../../source/templates_stripe.md:205
+msgid "Brand dark sections use `#1c1e54` backgrounds with white text"
+msgstr ""
+
+#: ../../source/templates_stripe.md:207
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_stripe.md:209
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_stripe.md:210
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_stripe.md:211
+msgid "Scale: 1px, 2px, 4px, 6px, 8px, 10px, 11px, 12px, 14px, 16px, 18px, 20px"
+msgstr ""
+
+#: ../../source/templates_stripe.md:212
+msgid ""
+"Notable: The scale is dense at the small end (every 2px from 4-12), "
+"reflecting Stripe's precision-oriented UI for financial data"
+msgstr ""
+
+#: ../../source/templates_stripe.md:214
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_stripe.md:215
+msgid "Max content width: approximately 1080px"
+msgstr ""
+
+#: ../../source/templates_stripe.md:216
+msgid "Hero: centered single-column with generous padding, lightweight headlines"
+msgstr ""
+
+#: ../../source/templates_stripe.md:217
+msgid "Feature sections: 2-3 column grids for feature cards"
+msgstr ""
+
+#: ../../source/templates_stripe.md:218
+msgid "Full-width dark sections with `#1c1e54` background for brand immersion"
+msgstr ""
+
+#: ../../source/templates_stripe.md:219
+msgid "Code/dashboard previews as contained cards with blue-tinted shadows"
+msgstr ""
+
+#: ../../source/templates_stripe.md:221
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_stripe.md:222
+msgid ""
+"**Precision spacing**: Unlike the vast emptiness of minimalist systems, "
+"Stripe uses measured, purposeful whitespace. Every gap is a deliberate "
+"typographic choice."
+msgstr ""
+
+#: ../../source/templates_stripe.md:223
+msgid ""
+"**Dense data, generous chrome**: Financial data displays (tables, charts)"
+" are tightly packed, but the UI chrome around them is generously spaced. "
+"This creates a sense of controlled density -- like a well-organized "
+"spreadsheet in a beautiful frame."
+msgstr ""
+
+#: ../../source/templates_stripe.md:224
+msgid ""
+"**Section rhythm**: White sections alternate with dark brand sections "
+"(`#1c1e54`), creating a dramatic light/dark cadence that prevents "
+"monotony without introducing arbitrary color."
+msgstr ""
+
+#: ../../source/templates_stripe.md:226
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_stripe.md:227
+msgid "Micro (1px): Fine-grained elements, subtle rounding"
+msgstr ""
+
+#: ../../source/templates_stripe.md:228
+msgid "Standard (4px): Buttons, inputs, badges, cards -- the workhorse"
+msgstr ""
+
+#: ../../source/templates_stripe.md:229
+msgid "Comfortable (5px): Standard card containers"
+msgstr ""
+
+#: ../../source/templates_stripe.md:230
+msgid "Relaxed (6px): Navigation, larger interactive elements"
+msgstr ""
+
+#: ../../source/templates_stripe.md:231
+msgid "Large (8px): Featured cards, hero elements"
+msgstr ""
+
+#: ../../source/templates_stripe.md:232
+msgid ""
+"Compound: `0px 0px 6px 6px` for bottom-rounded containers (tab panels, "
+"dropdown footers)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:234
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Page background, inline text"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Ambient (Level 1)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "`rgba(23,23,23,0.06) 0px 3px 6px`"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Subtle card lift, hover hints"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Standard (Level 2)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "`rgba(23,23,23,0.08) 0px 15px 35px`"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Standard cards, content panels"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Elevated (Level 3)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid ""
+"`rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px 36px "
+"-18px`"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Featured cards, dropdowns, popovers"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Deep (Level 4)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "`rgba(3,3,39,0.25) 0px 14px 21px -14px, rgba(0,0,0,0.1) 0px 8px 17px -8px`"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Modals, floating panels"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Ring (Accessibility)"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "`2px solid #533afd` outline"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Keyboard focus ring"
+msgstr ""
+
+#: ../../source/templates_stripe.md:245
+msgid ""
+"**Shadow Philosophy**: Stripe's shadow system is built on a principle of "
+"chromatic depth. Where most design systems use neutral gray or black "
+"shadows, Stripe's primary shadow color (`rgba(50,50,93,0.25)`) is a deep "
+"blue-gray that echoes the brand's navy palette. This creates shadows that"
+" don't just add depth -- they add brand atmosphere. The multi-layer "
+"approach pairs this blue-tinted shadow with a pure black secondary layer "
+"(`rgba(0,0,0,0.1)`) at a different offset, creating a parallax-like depth"
+" where the branded shadow sits farther from the element and the neutral "
+"shadow sits closer. The negative spread values (-30px, -18px) ensure "
+"shadows don't extend beyond the element's footprint horizontally, keeping"
+" elevation vertical and controlled."
+msgstr ""
+
+#: ../../source/templates_stripe.md:247
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_stripe.md:248
+msgid ""
+"Dark brand sections (`#1c1e54`) create immersive depth through background"
+" color contrast"
+msgstr ""
+
+#: ../../source/templates_stripe.md:249
+msgid "Gradient overlays with ruby-to-magenta transitions for hero decorations"
+msgstr ""
+
+#: ../../source/templates_stripe.md:250
+msgid ""
+"Shadow color `rgba(0,55,112,0.08)` (`--hds-color-shadow-sm-top`) for top-"
+"edge shadows on sticky elements"
+msgstr ""
+
+#: ../../source/templates_stripe.md:252
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_stripe.md:254
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_stripe.md:255
+msgid ""
+"Use sohne-var with `\"ss01\"` on every text element -- the stylistic set "
+"IS the brand"
+msgstr ""
+
+#: ../../source/templates_stripe.md:256
+msgid ""
+"Use weight 300 for all headlines and body text -- lightness is the "
+"signature"
+msgstr ""
+
+#: ../../source/templates_stripe.md:257
+msgid ""
+"Apply blue-tinted shadows (`rgba(50,50,93,0.25)`) for all elevated "
+"elements"
+msgstr ""
+
+#: ../../source/templates_stripe.md:258
+msgid ""
+"Use `#061b31` (deep navy) for headings instead of `#000000` -- the warmth"
+" matters"
+msgstr ""
+
+#: ../../source/templates_stripe.md:259
+msgid "Keep border-radius between 4px-8px -- conservative rounding is intentional"
+msgstr ""
+
+#: ../../source/templates_stripe.md:260
+msgid "Use `\"tnum\"` for any tabular/financial number display"
+msgstr ""
+
+#: ../../source/templates_stripe.md:261
+msgid "Layer shadows: blue-tinted far + neutral close for depth parallax"
+msgstr ""
+
+#: ../../source/templates_stripe.md:262
+msgid "Use `#533afd` purple as the primary interactive/CTA color"
+msgstr ""
+
+#: ../../source/templates_stripe.md:264
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_stripe.md:265
+msgid ""
+"Don't use weight 600-700 for sohne-var headlines -- weight 300 is the "
+"brand voice"
+msgstr ""
+
+#: ../../source/templates_stripe.md:266
+msgid ""
+"Don't use large border-radius (12px+, pill shapes) on cards or buttons --"
+" Stripe is conservative"
+msgstr ""
+
+#: ../../source/templates_stripe.md:267
+msgid ""
+"Don't use neutral gray shadows -- always tint with blue "
+"(`rgba(50,50,93,...)`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:268
+msgid ""
+"Don't skip `\"ss01\"` on any sohne-var text -- the alternate glyphs "
+"define the personality"
+msgstr ""
+
+#: ../../source/templates_stripe.md:269
+msgid ""
+"Don't use pure black (`#000000`) for headings -- always `#061b31` deep "
+"navy"
+msgstr ""
+
+#: ../../source/templates_stripe.md:270
+msgid ""
+"Don't use warm accent colors (orange, yellow) for interactive elements --"
+" purple is primary"
+msgstr ""
+
+#: ../../source/templates_stripe.md:271
+msgid ""
+"Don't apply positive letter-spacing at display sizes -- Stripe tracks "
+"tight"
+msgstr ""
+
+#: ../../source/templates_stripe.md:272
+msgid ""
+"Don't use the magenta/ruby accents for buttons or links -- they're "
+"decorative/gradient only"
+msgstr ""
+
+#: ../../source/templates_stripe.md:274
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_stripe.md:276
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "<640px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Single column, reduced heading sizes, stacked cards"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "640-1024px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "2-column grids, moderate padding"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "1024-1280px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Full layout, 3-column feature grids"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid ">1280px"
+msgstr ""
+
+#: ../../source/templates_stripe.md
+msgid "Centered content with generous margins"
+msgstr ""
+
+#: ../../source/templates_stripe.md:284
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_stripe.md:285
+msgid "Buttons use comfortable padding (8px-16px vertical)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:286
+msgid "Navigation links at 14px with adequate spacing"
+msgstr ""
+
+#: ../../source/templates_stripe.md:287
+msgid "Badges have 6px horizontal padding minimum for tap targets"
+msgstr ""
+
+#: ../../source/templates_stripe.md:288
+msgid "Mobile nav toggle with 6px radius button"
+msgstr ""
+
+#: ../../source/templates_stripe.md:290
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_stripe.md:291
+msgid "Hero: 56px display -> 32px on mobile, weight 300 maintained"
+msgstr ""
+
+#: ../../source/templates_stripe.md:292
+msgid "Navigation: horizontal links + CTAs -> hamburger toggle"
+msgstr ""
+
+#: ../../source/templates_stripe.md:293
+msgid "Feature cards: 3-column -> 2-column -> single column stacked"
+msgstr ""
+
+#: ../../source/templates_stripe.md:294
+msgid ""
+"Dark brand sections: maintain full-width treatment, reduce internal "
+"padding"
+msgstr ""
+
+#: ../../source/templates_stripe.md:295
+msgid "Financial data tables: horizontal scroll on mobile"
+msgstr ""
+
+#: ../../source/templates_stripe.md:296
+msgid "Section spacing: 64px+ -> 40px on mobile"
+msgstr ""
+
+#: ../../source/templates_stripe.md:297
+msgid ""
+"Typography scale compresses: 56px -> 48px -> 32px hero sizes across "
+"breakpoints"
+msgstr ""
+
+#: ../../source/templates_stripe.md:299
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_stripe.md:300
+msgid "Dashboard/product screenshots maintain blue-tinted shadow at all sizes"
+msgstr ""
+
+#: ../../source/templates_stripe.md:301
+msgid "Hero gradient decorations simplify on mobile"
+msgstr ""
+
+#: ../../source/templates_stripe.md:302
+msgid "Code blocks maintain `SourceCodePro` treatment, may horizontally scroll"
+msgstr ""
+
+#: ../../source/templates_stripe.md:303
+msgid "Card images maintain consistent 4px-6px border-radius"
+msgstr ""
+
+#: ../../source/templates_stripe.md:305
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_stripe.md:307
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_stripe.md:308
+msgid "Primary CTA: Stripe Purple (`#533afd`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:309
+msgid "CTA Hover: Purple Dark (`#4434d4`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:310
+msgid "Background: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:311
+msgid "Heading text: Deep Navy (`#061b31`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:312
+msgid "Body text: Slate (`#64748d`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:313
+msgid "Label text: Dark Slate (`#273951`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:314
+msgid "Border: Soft Blue (`#e5edf5`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:315
+msgid "Link: Stripe Purple (`#533afd`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:316
+msgid "Dark section: Brand Dark (`#1c1e54`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:317
+msgid "Success: Green (`#15be53`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:318
+msgid "Accent decorative: Ruby (`#ea2261`), Magenta (`#f96bee`)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:320
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_stripe.md:321
+msgid ""
+"\"Create a hero section on white background. Headline at 48px sohne-var "
+"weight 300, line-height 1.15, letter-spacing -0.96px, color #061b31, "
+"font-feature-settings 'ss01'. Subtitle at 18px weight 300, line-height "
+"1.40, color #64748d. Purple CTA button (#533afd, 4px radius, 8px 16px "
+"padding, white text) and ghost button (transparent, 1px solid #b9b9f9, "
+"#533afd text, 4px radius).\""
+msgstr ""
+
+#: ../../source/templates_stripe.md:322
+msgid ""
+"\"Design a card: white background, 1px solid #e5edf5 border, 6px radius. "
+"Shadow: rgba(50,50,93,0.25) 0px 30px 45px -30px, rgba(0,0,0,0.1) 0px 18px"
+" 36px -18px. Title at 22px sohne-var weight 300, letter-spacing -0.22px, "
+"color #061b31, 'ss01'. Body at 16px weight 300, #64748d.\""
+msgstr ""
+
+#: ../../source/templates_stripe.md:323
+msgid ""
+"\"Build a success badge: rgba(21,190,83,0.2) background, #108c3d text, "
+"4px radius, 1px 6px padding, 10px sohne-var weight 300, border 1px solid "
+"rgba(21,190,83,0.4).\""
+msgstr ""
+
+#: ../../source/templates_stripe.md:324
+msgid ""
+"\"Create navigation: white sticky header with backdrop-filter blur(12px)."
+" sohne-var 14px weight 400 for links, #061b31 text, 'ss01'. Purple CTA "
+"'Start now' right-aligned (#533afd bg, white text, 4px radius). Nav "
+"container 6px radius.\""
+msgstr ""
+
+#: ../../source/templates_stripe.md:325
+msgid ""
+"\"Design a dark brand section: #1c1e54 background, white text. Headline "
+"32px sohne-var weight 300, letter-spacing -0.64px, 'ss01'. Body 16px "
+"weight 300, rgba(255,255,255,0.7). Cards inside use rgba(255,255,255,0.1)"
+" border with 6px radius.\""
+msgstr ""
+
+#: ../../source/templates_stripe.md:327
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_stripe.md:328
+msgid ""
+"Always enable `font-feature-settings: \"ss01\"` on sohne-var text -- this"
+" is the brand's typographic DNA"
+msgstr ""
+
+#: ../../source/templates_stripe.md:329
+msgid "Weight 300 is the default; use 400 only for buttons/links/navigation"
+msgstr ""
+
+#: ../../source/templates_stripe.md:330
+msgid ""
+"Shadow formula: `rgba(50,50,93,0.25) 0px Y1 B1 -S1, rgba(0,0,0,0.1) 0px "
+"Y2 B2 -S2` where Y1/B1 are larger (far shadow) and Y2/B2 are smaller "
+"(near shadow)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:331
+msgid ""
+"Heading color is `#061b31` (deep navy), body is `#64748d` (slate), labels"
+" are `#273951` (dark slate)"
+msgstr ""
+
+#: ../../source/templates_stripe.md:332
+msgid ""
+"Border-radius stays in the 4px-8px range -- never use pill shapes or "
+"large rounding"
+msgstr ""
+
+#: ../../source/templates_stripe.md:333
+msgid "Use `\"tnum\"` for any numbers in tables, charts, or financial displays"
+msgstr ""
+
+#: ../../source/templates_stripe.md:334
+msgid ""
+"Dark sections use `#1c1e54` -- not black, not gray, but a deep branded "
+"indigo"
+msgstr ""
+
+#: ../../source/templates_stripe.md:335
+msgid ""
+"SourceCodePro for code at 12px/500 with 2.00 line-height (very generous "
+"for readability)"
+msgstr ""
+

@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/resolve-url_readme.md:1
+msgid "Overview"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:4
+msgid ""
+"[![browser support](https://ci.testling.com/lydell/resolve-"
+"url.png)](https://ci.testling.com/lydell/resolve-url)"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:4
+msgid "browser support"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:6
+msgid "Like Node.js’ [`path.resolve`]/[`url.resolve`] for the browser."
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:35
+msgid "Installation"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:38
+msgid "`npm install resolve-url`"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:39
+msgid "`bower install resolve-url`"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:40
+msgid "`component install lydell/resolve-url`"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:42
+msgid "Works with CommonJS, AMD and browser globals, through UMD."
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:45
+msgid "Usage"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:48
+msgid "`resolveUrl(...urls)`"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:50
+msgid ""
+"Pass one or more urls. Resolves the last one to an absolute url, using "
+"the previous ones and `window.location`."
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:53
+msgid ""
+"It’s like starting out on `window.location`, and then clicking links with"
+" the urls as `href` attributes in order, from left to right."
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:56
+msgid ""
+"Unlike Node.js’ [`path.resolve`], this function always goes through all "
+"of the arguments, from left to right. `path.resolve` goes from right to "
+"left and only in the worst case goes through them all. Should that "
+"matter."
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:60
+msgid ""
+"Actually, the function is _really_ like clicking a lot of links in "
+"series: An actual `<a>` gets its `href` attribute set for each url! This "
+"means that the url resolution of the browser is used, which makes this "
+"module really light-weight."
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:65
+msgid ""
+"Also note that this functions deals with urls, not paths, so in that "
+"respect it has more in common with Node.js’ [`url.resolve`]. But the "
+"arguments are more like [`path.resolve`]."
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:73
+msgid "Tests"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:76
+msgid ""
+"Run `npm test`, which lints the code and then gives you a link to open in"
+" a browser of choice (using `testling`)."
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:80
+msgid "License"
+msgstr ""
+
+#: ../../source/resolve-url_readme.md:83
+msgid "[The X11 (“MIT”) License](LICENSE)."
+msgstr ""
+

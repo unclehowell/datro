@@ -1,0 +1,109 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/decode-uri-component_readme.md:1
+msgid "decode-uri-component"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:3
+msgid ""
+"![CI](https://github.com/SamVerschueren/decode-uri-"
+"component/workflows/CI/badge.svg) [![Coverage "
+"Status](https://coveralls.io/repos/SamVerschueren/decode-uri-"
+"component/badge.svg?branch=master&service=github)](https://coveralls.io/github/SamVerschueren"
+"/decode-uri-component?branch=master)"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:3
+msgid "CI"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:3
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:5
+msgid ""
+"A better "
+"[decodeURIComponent](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/decodeURIComponent)"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:8
+msgid "Why?"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:10
+msgid "Decodes `+` to a space."
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:11
+msgid ""
+"Converts the [BOM](https://en.wikipedia.org/wiki/Byte_order_mark) to a "
+"[replacement "
+"character](https://en.wikipedia.org/wiki/Specials_(Unicode_block)#Replacement_character)"
+" `�`."
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:12
+msgid "Does not throw with invalid encoded input."
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:13
+msgid "Decodes as much of the string as possible."
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:16
+msgid "Install"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:23
+msgid "Usage"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:57
+msgid "API"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:59
+msgid "decodeUriComponent(encodedURI)"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:61
+msgid "encodedURI"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:63
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:65
+msgid "An encoded component of a Uniform Resource Identifier."
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:68
+msgid "License"
+msgstr ""
+
+#: ../../source/decode-uri-component_readme.md:70
+msgid "MIT © [Sam Verschueren](https://github.com/SamVerschueren)"
+msgstr ""
+

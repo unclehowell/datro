@@ -1,0 +1,441 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/readdir-enhanced_README.md:1
+msgid "Enhanced `fs.readdir()`"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:4
+msgid ""
+":warning: This is «fork» for original `readdir-enhanced` package but with"
+" some monkey fixes."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:6
+#, python-format
+msgid ""
+"[![Build Status](https://api.travis-ci.org/BigstickCarpet/readdir-"
+"enhanced.svg?branch=master)](https://travis-ci.org/BigstickCarpet"
+"/readdir-enhanced) [![Windows Build "
+"Status](https://ci.appveyor.com/api/projects/status/github/bigstickcarpet"
+"/readdir-"
+"enhanced?svg=true&branch=master&failingText=Windows%20build%20failing&passingText=Windows%20build%20passing)](https://ci.appveyor.com/project/BigstickCarpet"
+"/readdir-enhanced/branch/master)"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:6
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:6
+msgid "Windows Build Status"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:9
+msgid ""
+"[![Coverage Status](https://coveralls.io/repos/github/BigstickCarpet"
+"/readdir-"
+"enhanced/badge.svg?branch=master)](https://coveralls.io/github/BigstickCarpet"
+"/readdir-enhanced?branch=master) [![Codacy "
+"Score](https://api.codacy.com/project/badge/Grade/178a817b6c864de7813fef457c0ed5ae)](https://www.codacy.com/public/jamesmessinger"
+"/readdir-enhanced) [![Inline docs](http://inch-"
+"ci.org/github/BigstickCarpet/readdir-"
+"enhanced.svg?branch=master&style=shields)](http://inch-"
+"ci.org/github/BigstickCarpet/readdir-enhanced) [![Dependencies](https"
+"://david-dm.org/BigstickCarpet/readdir-enhanced.svg)](https://david-"
+"dm.org/BigstickCarpet/readdir-enhanced)"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:9
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:9
+msgid "Codacy Score"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:9
+msgid "Inline docs"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:9
+msgid "Dependencies"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:14
+msgid ""
+"[![npm](https://img.shields.io/npm/v/readdir-"
+"enhanced.svg?maxAge=43200)](https://www.npmjs.com/package/readdir-"
+"enhanced) [![License](https://img.shields.io/npm/l/readdir-"
+"enhanced.svg?maxAge=2592000)](LICENSE)"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:14
+msgid "npm"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:14
+#: ../../source/readdir-enhanced_README.md:344
+msgid "License"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:17
+msgid ""
+"`readdir-enhanced` is a [backward-compatible](#backward-compatible) drop-"
+"in replacement for "
+"[`fs.readdir()`](https://nodejs.org/api/fs.html#fs_fs_readdir_path_options_callback)"
+" and "
+"[`fs.readdirSync()`](https://nodejs.org/api/fs.html#fs_fs_readdirsync_path_options)"
+" with tons of extra features ([filtering](#filter), [recursion](#deep), "
+"[absolute paths](#basepath), [stats](#stats), and more) as well as "
+"additional APIs for Promises, Streams, and EventEmitters."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:20
+msgid "Pick Your API"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:22
+msgid ""
+"`readdir-enhanced` has multiple APIs, so you can pick whichever one you "
+"prefer.  There are three main APIs:"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:24
+msgid ""
+"**Synchronous API**<br> aliases: `readdir.sync`, "
+"`readdir.readdirSync`<br> Blocks the thread until all directory contents "
+"are read, and then returns all the results."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:28
+msgid ""
+"**Async API**<br> aliases: `readdir`, `readdir.async`, "
+"`readdir.readdirAsync`<br> Reads the starting directory contents "
+"asynchronously and buffers all the results until all contents have been "
+"read. Supports callback or Promise syntax (see example below)."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:32
+msgid ""
+"**Streaming API**<br> aliases: `readdir.stream`, "
+"`readdir.readdirStream`<br> The streaming API reads the starting "
+"directory asynchronously and returns the results in real-time as they are"
+" read. The results can be "
+"[piped](https://nodejs.org/api/stream.html#stream_readable_pipe_destination_options)"
+" to other Node.js streams, or you can listen for specific events via the "
+"[EventEmitter](https://nodejs.org/api/events.html#events_class_eventemitter)"
+" interface. (see example below)"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:69
+msgid "<a id=\"options\"></a> Enhanced Features"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:72
+msgid ""
+"`readdir-enhanced` adds several features to the built-in `fs.readdir()` "
+"function.  All of the enhanced features are opt-in, which makes `readdir-"
+"enhanced` [fully backward compatible by default](#backward-compatible).  "
+"You can enable any of the features by passing-in an `options` argument as"
+" the second parameter."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:75
+msgid "<a id=\"deep\"></a>"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:76
+msgid "Recursion"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:77
+msgid ""
+"By default, `readdir-enhanced` will only return the top-level contents of"
+" the starting directory. But you can set the `deep` option to recursively"
+" traverse the subdirectories and return their contents as well."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:79
+msgid "Crawl ALL subdirectories"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:81
+msgid ""
+"The `deep` option can be set to `true` to traverse the entire directory "
+"structure."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:97
+msgid "Crawl to a specific depth"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:98
+#, python-brace-format
+msgid ""
+"The `deep` option can be set to a number to only traverse that many "
+"levels deep.  For example, calling `readdir('my/directory', {deep: 2})` "
+"will return `subdir1/file.txt` and `subdir1/subdir2/file.txt`, but it "
+"_won't_ return `subdir1/subdir2/subdir3/file.txt`."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:113
+msgid "Crawl subdirectories by name"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:114
+msgid ""
+"For simple use-cases, you can use a [regular "
+"expression](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) or a [glob "
+"pattern](https://github.com/isaacs/node-glob#glob-primer) to crawl only "
+"the directories whose path matches the pattern.  The path is relative to "
+"the starting directory by default, but you can customize this via "
+"[`options.basePath`](#basepath)."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:116
+#: ../../source/readdir-enhanced_README.md:166
+msgid ""
+"**NOTE:** Glob patterns [_always_ use forward-"
+"slashes](https://github.com/isaacs/node-glob#windows), even on Windows. "
+"This _does not_ apply to regular expressions though. Regular expressions "
+"should use the appropraite path separator for the environment. Or, you "
+"can match both types of separators using `[\\\\/]`."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:134
+msgid "Custom recursion logic"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:135
+msgid ""
+"For more advanced recursion, you can set the `deep` option to a function "
+"that accepts an "
+"[`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) object and"
+" returns a truthy value if the starting directory should be crawled."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:137
+msgid ""
+"**NOTE:** The "
+"[`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) object "
+"that's passed to the function has additional `path` and `depth` "
+"properties. The `path` is relative to the starting directory by default, "
+"but you can customize this via [`options.basePath`](#basepath). The "
+"`depth` is the number of subdirectories beneath the base path (see "
+"[`options.deep`](#deep))."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:159
+msgid "<a id=\"filter\"></a>"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:160
+msgid "Filtering"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:161
+msgid ""
+"The `filter` option lets you limit the results based on any criteria you "
+"want."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:163
+msgid "Filter by name"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:164
+msgid ""
+"For simple use-cases, you can use a [regular "
+"expression](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Global_Objects/RegExp) or a [glob "
+"pattern](https://github.com/isaacs/node-glob#glob-primer) to filter items"
+" by their path.  The path is relative to the starting directory by "
+"default, but you can customize this via [`options.basePath`](#basepath)."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:181
+msgid "Custom filtering logic"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:182
+msgid ""
+"For more advanced filtering, you can specify a filter function that "
+"accepts an [`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats)"
+" object and returns a truthy value if the item should be included in the "
+"results."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:184
+msgid ""
+"**NOTE:** The "
+"[`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) object "
+"that's passed to the filter function has additional `path` and `depth` "
+"properties. The `path` is relative to the starting directory by default, "
+"but you can customize this via [`options.basePath`](#basepath). The "
+"`depth` is the number of subdirectories beneath the base path (see "
+"[`options.deep`](#deep))."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:204
+msgid "<a id=\"basepath\"></a>"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:205
+msgid "Base Path"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:206
+msgid ""
+"By default all `readdir-enhanced` functions return paths that are "
+"relative to the starting directory. But you can use the `basePath` option"
+" to customize this.  The `basePath` will be prepended to all of the "
+"returned paths.  One common use-case for this is to set `basePath` to the"
+" absolute path of the starting directory, so that all of the returned "
+"paths will be absolute."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:231
+msgid "<a id=\"sep\"></a>"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:232
+msgid "Path Separator"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:233
+msgid ""
+"By default, `readdir-enhanced` uses the correct path separator for your "
+"OS (`\\` on Windows, `/` on Linux & MacOS). But you can set the `sep` "
+"option to any separator character(s) that you want to use instead.  This "
+"is usually used to ensure consistent path separators across different "
+"OSes."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:250
+msgid "<a id=\"fs\"></a>"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:251
+msgid "Custom FS methods"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:252
+msgid ""
+"By default, `readdir-enhanced` uses the default [Node.js FileSystem "
+"module](https://nodejs.org/api/fs.html) for methods like `fs.stat`, "
+"`fs.readdir` and `fs.lstat`. But in some situations, you can want to use "
+"your own FS methods (FTP, SSH, remote drive and etc). So you can provide "
+"your own implementation of FS methods by setting `options.fs` or specific"
+" methods, such as `options.fs.stat`."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:273
+msgid "<a id=\"stats\"></a> Get `fs.Stats` objects instead of strings"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:276
+msgid ""
+"All of the `readdir-enhanced` functions listed above return an array of "
+"strings (paths). But in some situations, the path isn't enough "
+"information.  So, `readdir-enhanced` provides alternative versions of "
+"each function, which return an array of "
+"[`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) objects "
+"instead of strings.  The `fs.Stats` object contains all sorts of useful "
+"information, such as the size, the creation date/time, and helper methods"
+" such as `isFile()`, `isDirectory()`, `isSymbolicLink()`, etc."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:278
+msgid ""
+"**NOTE:** The "
+"[`fs.Stats`](https://nodejs.org/api/fs.html#fs_class_fs_stats) objects "
+"that are returned also have additional `path` and `depth` properties. The"
+" `path` is relative to the starting directory by default, but you can "
+"customize this via [`options.basePath`](#basepath). The `depth` is the "
+"number of subdirectories beneath the base path (see "
+"[`options.deep`](#deep))."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:280
+msgid ""
+"To get `fs.Stats` objects instead of strings, just add the word \"Stat\" "
+"to the function name.  As with the normal functions, each one is aliased "
+"(e.g. `readdir.async.stat` is the same as `readdir.readdirAsyncStat`), so"
+" you can use whichever naming style you prefer."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:308
+msgid "<a id=\"backward-compatible\"></a> Backward Compatible"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:311
+msgid ""
+"`readdir-enhanced` is fully backward-compatible with Node.js' built-in "
+"`fs.readdir()` and `fs.readdirSync()` functions, so you can use it as a "
+"drop-in replacement in existing projects without affecting existing "
+"functionality, while still being able to use the enhanced features as "
+"needed."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:326
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:328
+msgid ""
+"I welcome any contributions, enhancements, and bug-fixes.  [File an "
+"issue](https://github.com/BigstickCarpet/readdir-enhanced/issues) on "
+"GitHub and [submit a pull request](https://github.com/BigstickCarpet"
+"/readdir-enhanced/pulls)."
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:330
+msgid "Building"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:331
+msgid "To build the project locally on your computer:"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:333
+msgid ""
+"__Clone this repo__<br> `git clone https://github.com/bigstickcarpet"
+"/readdir-enhanced.git`"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:336
+msgid "__Install dependencies__<br> `npm install`"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:339
+msgid "__Run the tests__<br> `npm test`"
+msgstr ""
+
+#: ../../source/readdir-enhanced_README.md:346
+#, python-format
+msgid ""
+"`readdir-enhanced` is 100% free and open-source, under the [MIT "
+"license](LICENSE). Use it however you want."
+msgstr ""
+

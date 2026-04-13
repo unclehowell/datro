@@ -1,0 +1,949 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_spacex.md:1
+msgid "Design System: SpaceX"
+msgstr ""
+
+#: ../../source/templates_spacex.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_spacex.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_spacex.md:7
+msgid "**Primary:** `Inter` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_spacex.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_spacex.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_spacex.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_spacex.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_spacex.md:18
+#, python-format
+msgid ""
+"SpaceX's website is a full-screen cinematic experience that treats "
+"aerospace engineering like a film — every section is a scene, every "
+"photograph is a frame, and the interface disappears entirely behind the "
+"imagery. The design is pure black (`#000000`) with photography of "
+"rockets, space, and planets occupying 100% of the viewport. Text overlays"
+" sit directly on these photographs with no background panels, cards, or "
+"containers — just type on image, bold and unapologetic."
+msgstr ""
+
+#: ../../source/templates_spacex.md:20
+msgid ""
+"The typography system uses D-DIN, an industrial geometric typeface with "
+"DIN heritage (the German industrial standard). The defining "
+"characteristic is that virtually ALL text is uppercase with positive "
+"letter-spacing (0.96px–1.17px), creating a military/aerospace labeling "
+"system where every word feels stenciled onto a spacecraft hull. D-DIN-"
+"Bold at 48px with uppercase and 0.96px tracking for the hero creates "
+"headlines that feel like mission briefing titles. Even body text at 16px "
+"maintains the uppercase/tracked treatment at smaller scales."
+msgstr ""
+
+#: ../../source/templates_spacex.md:22
+msgid ""
+"What makes SpaceX distinctive is its radical minimalism: no shadows, no "
+"borders (except one ghost button border at `rgba(240,240,250,0.35)`), no "
+"color (only black and a spectral near-white `#f0f0fa`), no cards, no "
+"grids. The only visual element is photography + text. The ghost button "
+"with `rgba(240,240,250,0.1)` background and 32px radius is the sole "
+"interactive element — barely visible, floating over the imagery like a "
+"heads-up display. This isn't a design system in the traditional sense — "
+"it's a photographic exhibition with a type system and a single button."
+msgstr ""
+
+#: ../../source/templates_spacex.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_spacex.md:25
+msgid ""
+"Pure black canvas with full-viewport cinematic photography — the "
+"interface is invisible"
+msgstr ""
+
+#: ../../source/templates_spacex.md:26
+msgid "D-DIN / D-DIN-Bold — industrial DIN-heritage typeface"
+msgstr ""
+
+#: ../../source/templates_spacex.md:27
+msgid ""
+"Universal uppercase + positive letter-spacing (0.96px–1.17px) — aerospace"
+" stencil aesthetic"
+msgstr ""
+
+#: ../../source/templates_spacex.md:28
+msgid ""
+"Near-white spectral text (`#f0f0fa`) — not pure white, a slight blue-"
+"violet tint"
+msgstr ""
+
+#: ../../source/templates_spacex.md:29
+msgid "Zero shadows, zero cards, zero containers — text on image only"
+msgstr ""
+
+#: ../../source/templates_spacex.md:30
+msgid ""
+"Single ghost button: `rgba(240,240,250,0.1)` background with spectral "
+"border"
+msgstr ""
+
+#: ../../source/templates_spacex.md:31
+msgid "Full-viewport sections — each section is a cinematic \"scene\""
+msgstr ""
+
+#: ../../source/templates_spacex.md:32
+msgid "No decorative elements — every pixel serves the photography"
+msgstr ""
+
+#: ../../source/templates_spacex.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_spacex.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_spacex.md:37
+#, python-format
+msgid ""
+"**Space Black** (`#000000`): Page background, the void of space — at 50% "
+"opacity for overlay gradient"
+msgstr ""
+
+#: ../../source/templates_spacex.md:38
+msgid ""
+"**Spectral White** (`#f0f0fa`): Text color — not pure white, a slight "
+"blue-violet tint that mimics starlight"
+msgstr ""
+
+#: ../../source/templates_spacex.md:40
+msgid "Interactive"
+msgstr ""
+
+#: ../../source/templates_spacex.md:41
+#, python-format
+msgid ""
+"**Ghost Surface** (`rgba(240, 240, 250, 0.1)`): Button background — "
+"nearly invisible, 10% opacity"
+msgstr ""
+
+#: ../../source/templates_spacex.md:42
+#, python-format
+msgid ""
+"**Ghost Border** (`rgba(240, 240, 250, 0.35)`): Button border — spectral,"
+" 35% opacity"
+msgstr ""
+
+#: ../../source/templates_spacex.md:43
+msgid ""
+"**Hover White** (`var(--white-100)`): Link hover state — full spectral "
+"white"
+msgstr ""
+
+#: ../../source/templates_spacex.md:45
+msgid "Gradient"
+msgstr ""
+
+#: ../../source/templates_spacex.md:46
+msgid ""
+"**Dark Overlay** (`rgba(0, 0, 0, 0.5)`): Gradient overlay on photographs "
+"to ensure text legibility"
+msgstr ""
+
+#: ../../source/templates_spacex.md:48
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_spacex.md:50
+msgid "Font Families"
+msgstr ""
+
+#: ../../source/templates_spacex.md:51
+msgid "**Display**: `D-DIN-Bold` — bold industrial geometric"
+msgstr ""
+
+#: ../../source/templates_spacex.md:52
+msgid "**Body / UI**: `D-DIN`, fallbacks: `Arial, Verdana`"
+msgstr ""
+
+#: ../../source/templates_spacex.md:54
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "D-DIN-Bold"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "48px (3.00rem)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "0.96px"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "`text-transform: uppercase`"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "D-DIN"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "1.50–1.70"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Standard reading text"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Nav Link Bold"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "13px (0.81rem)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "0.94 (tight)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "1.17px"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Nav Link"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "2.00 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Caption Bold"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "10px (0.63rem)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "1px"
+msgstr ""
+
+#: ../../source/templates_spacex.md:66
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_spacex.md:67
+msgid ""
+"**Universal uppercase**: Nearly every text element uses `text-transform: "
+"uppercase`. This creates a systematic military/aerospace voice where all "
+"communication feels like official documentation."
+msgstr ""
+
+#: ../../source/templates_spacex.md:68
+msgid ""
+"**Positive letter-spacing as identity**: 0.96px on display, 1.17px on nav"
+" — the wide tracking creates the stenciled, industrial feel that connects"
+" to DIN's heritage as a German engineering standard."
+msgstr ""
+
+#: ../../source/templates_spacex.md:69
+msgid ""
+"**Two weights, strict hierarchy**: D-DIN-Bold (700) for headlines and nav"
+" emphasis, D-DIN (400) for body. No medium or semibold weights exist in "
+"the system."
+msgstr ""
+
+#: ../../source/templates_spacex.md:70
+msgid ""
+"**Tight line-heights**: 0.94–1.00 across most text — compressed, "
+"efficient, mission-critical communication."
+msgstr ""
+
+#: ../../source/templates_spacex.md:72
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_spacex.md:74
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_spacex.md:76
+msgid "**Ghost Button**"
+msgstr ""
+
+#: ../../source/templates_spacex.md:77
+msgid "Background: `rgba(240, 240, 250, 0.1)` (barely visible)"
+msgstr ""
+
+#: ../../source/templates_spacex.md:78 ../../source/templates_spacex.md:190
+msgid "Text: Spectral White (`#f0f0fa`)"
+msgstr ""
+
+#: ../../source/templates_spacex.md:79
+msgid "Padding: 18px"
+msgstr ""
+
+#: ../../source/templates_spacex.md:80
+msgid "Radius: 32px"
+msgstr ""
+
+#: ../../source/templates_spacex.md:81
+msgid "Border: `1px solid rgba(240, 240, 250, 0.35)`"
+msgstr ""
+
+#: ../../source/templates_spacex.md:82
+msgid "Hover: background brightens, text to `var(--white-100)`"
+msgstr ""
+
+#: ../../source/templates_spacex.md:83
+msgid "Use: The only button variant — \"LEARN MORE\" CTAs on photography"
+msgstr ""
+
+#: ../../source/templates_spacex.md:85
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_spacex.md:86
+msgid ""
+"**None.** SpaceX does not use cards, panels, or containers. All content "
+"is text directly on full-viewport photographs. The absence of containers "
+"IS the design."
+msgstr ""
+
+#: ../../source/templates_spacex.md:88
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_spacex.md:89
+msgid "Not present on the homepage. The site is purely presentational."
+msgstr ""
+
+#: ../../source/templates_spacex.md:91
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_spacex.md:92
+msgid "Transparent overlay nav on photography"
+msgstr ""
+
+#: ../../source/templates_spacex.md:93
+msgid "D-DIN 13px weight 700, uppercase, 1.17px tracking"
+msgstr ""
+
+#: ../../source/templates_spacex.md:94
+msgid "Spectral white text on dark imagery"
+msgstr ""
+
+#: ../../source/templates_spacex.md:95
+msgid "Logo: SpaceX wordmark at 147x19px"
+msgstr ""
+
+#: ../../source/templates_spacex.md:96
+msgid "Mobile: hamburger collapse"
+msgstr ""
+
+#: ../../source/templates_spacex.md:98
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_spacex.md:99
+msgid "Full-viewport (100vh) photography sections"
+msgstr ""
+
+#: ../../source/templates_spacex.md:100
+msgid "Professional aerospace photography: rockets, Mars, space"
+msgstr ""
+
+#: ../../source/templates_spacex.md:101
+msgid "Dark gradient overlays (`rgba(0,0,0,0.5)`) for text legibility"
+msgstr ""
+
+#: ../../source/templates_spacex.md:102
+msgid "Each section = one full-screen photograph with text overlay"
+msgstr ""
+
+#: ../../source/templates_spacex.md:103
+msgid "No border radius, no frames — edge-to-edge imagery"
+msgstr ""
+
+#: ../../source/templates_spacex.md:105
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_spacex.md:107
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_spacex.md:108
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_spacex.md:109
+msgid "Scale: 3px, 5px, 12px, 15px, 18px, 20px, 24px, 30px"
+msgstr ""
+
+#: ../../source/templates_spacex.md:110
+msgid "Minimal scale — spacing is not the organizing principle; photography is"
+msgstr ""
+
+#: ../../source/templates_spacex.md:112
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_spacex.md:113
+msgid "No traditional grid — each section is a full-viewport cinematic frame"
+msgstr ""
+
+#: ../../source/templates_spacex.md:114
+msgid "Text is positioned absolutely or with generous padding over imagery"
+msgstr ""
+
+#: ../../source/templates_spacex.md:115
+msgid "Left-aligned text blocks on photography backgrounds"
+msgstr ""
+
+#: ../../source/templates_spacex.md:116
+msgid "No max-width container — content bleeds to viewport edges"
+msgstr ""
+
+#: ../../source/templates_spacex.md:118
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_spacex.md:119
+msgid ""
+"**Photography IS the whitespace**: Empty space in the design is never "
+"empty — it's filled with the dark expanse of space, the curve of a "
+"planet, or the flame of a rocket engine. Traditional whitespace concepts "
+"don't apply."
+msgstr ""
+
+#: ../../source/templates_spacex.md:120
+msgid ""
+"**Vertical pacing through viewport**: Each section is exactly one "
+"viewport tall, creating a rhythmic scroll where each \"page\" reveals a "
+"new scene."
+msgstr ""
+
+#: ../../source/templates_spacex.md:122
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_spacex.md:123
+msgid "Sharp (4px): Small dividers, utility elements"
+msgstr ""
+
+#: ../../source/templates_spacex.md:124
+msgid "Button (32px): Ghost buttons — the only rounded element"
+msgstr ""
+
+#: ../../source/templates_spacex.md:126
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Photography (Level 0)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Full-viewport imagery"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Background layer — always present"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Overlay (Level 1)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "`rgba(0, 0, 0, 0.5)` gradient"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Text legibility layer over photography"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Text (Level 2)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Spectral white text, no shadow"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Content layer — text floats directly on image"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Ghost (Level 3)"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "`rgba(240, 240, 250, 0.1)` surface"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Barely-visible interactive layer"
+msgstr ""
+
+#: ../../source/templates_spacex.md:135
+msgid ""
+"**Shadow Philosophy**: SpaceX uses ZERO shadows. In a design built "
+"entirely on photography, shadows are meaningless — every surface is "
+"already a photograph with natural lighting. Depth comes from the "
+"photographic content itself: the receding curvature of Earth, the "
+"diminishing trail of a rocket, the atmospheric haze around Mars."
+msgstr ""
+
+#: ../../source/templates_spacex.md:137
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_spacex.md:139
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_spacex.md:140
+msgid ""
+"Use full-viewport photography as the primary design element — every "
+"section is a scene"
+msgstr ""
+
+#: ../../source/templates_spacex.md:141
+msgid ""
+"Apply uppercase + positive letter-spacing to ALL text — the aerospace "
+"stencil voice"
+msgstr ""
+
+#: ../../source/templates_spacex.md:142
+msgid "Use D-DIN exclusively — no other fonts exist in the system"
+msgstr ""
+
+#: ../../source/templates_spacex.md:143
+msgid "Keep the color palette to black + spectral white (`#f0f0fa`) only"
+msgstr ""
+
+#: ../../source/templates_spacex.md:144
+msgid ""
+"Use ghost buttons (`rgba(240,240,250,0.1)`) as the sole interactive "
+"element"
+msgstr ""
+
+#: ../../source/templates_spacex.md:145
+msgid "Apply dark gradient overlays for text legibility on photographs"
+msgstr ""
+
+#: ../../source/templates_spacex.md:146
+msgid ""
+"Let photography carry the emotional weight — the type system is "
+"functional, not expressive"
+msgstr ""
+
+#: ../../source/templates_spacex.md:148
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_spacex.md:149
+msgid "Don't add cards, panels, or containers — text sits directly on photography"
+msgstr ""
+
+#: ../../source/templates_spacex.md:150
+msgid "Don't use shadows — they have no meaning in a photographic context"
+msgstr ""
+
+#: ../../source/templates_spacex.md:151
+msgid ""
+"Don't introduce colors — the palette is strictly achromatic with spectral"
+" tint"
+msgstr ""
+
+#: ../../source/templates_spacex.md:152
+msgid "Don't use sentence case — everything is uppercase"
+msgstr ""
+
+#: ../../source/templates_spacex.md:153
+msgid ""
+"Don't use negative letter-spacing — all tracking is positive "
+"(0.96px–1.17px)"
+msgstr ""
+
+#: ../../source/templates_spacex.md:154
+msgid "Don't reduce photography to thumbnails — every image is full-viewport"
+msgstr ""
+
+#: ../../source/templates_spacex.md:155
+msgid ""
+"Don't add decorative elements (icons, badges, dividers) — the design is "
+"photography + type + one button"
+msgstr ""
+
+#: ../../source/templates_spacex.md:157
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_spacex.md:159
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "<600px"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Stacked, reduced padding, smaller type"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Tablet Small"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "600–960px"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Adjusted layout"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "960–1280px"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Standard scaling"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "1280–1350px"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Full layout"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "1350–1500px"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Expanded"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Ultra-wide"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid ">1500px"
+msgstr ""
+
+#: ../../source/templates_spacex.md
+msgid "Maximum viewport"
+msgstr ""
+
+#: ../../source/templates_spacex.md:169
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_spacex.md:170
+msgid "Ghost buttons: 18px padding provides adequate touch area"
+msgstr ""
+
+#: ../../source/templates_spacex.md:171
+msgid "Navigation links: uppercase with generous letter-spacing aids readability"
+msgstr ""
+
+#: ../../source/templates_spacex.md:173
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_spacex.md:174
+msgid "Photography: maintains full-viewport at all sizes, content reposition"
+msgstr ""
+
+#: ../../source/templates_spacex.md:175
+msgid "Hero text: 48px → scales down proportionally"
+msgstr ""
+
+#: ../../source/templates_spacex.md:176
+msgid "Navigation: horizontal → hamburger"
+msgstr ""
+
+#: ../../source/templates_spacex.md:177
+msgid "Text blocks: reposition but maintain overlay-on-photography pattern"
+msgstr ""
+
+#: ../../source/templates_spacex.md:178
+msgid "Full-viewport sections maintained on mobile"
+msgstr ""
+
+#: ../../source/templates_spacex.md:180
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_spacex.md:181
+msgid "Edge-to-edge photography at all viewport sizes"
+msgstr ""
+
+#: ../../source/templates_spacex.md:182
+msgid "Background-size: cover with center focus"
+msgstr ""
+
+#: ../../source/templates_spacex.md:183
+msgid "Dark overlay gradients adapt to content position"
+msgstr ""
+
+#: ../../source/templates_spacex.md:184
+msgid "No art direction changes — same photographs, responsive positioning"
+msgstr ""
+
+#: ../../source/templates_spacex.md:186
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_spacex.md:188
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_spacex.md:189
+msgid "Background: Space Black (`#000000`)"
+msgstr ""
+
+#: ../../source/templates_spacex.md:191
+msgid "Button background: Ghost (`rgba(240, 240, 250, 0.1)`)"
+msgstr ""
+
+#: ../../source/templates_spacex.md:192
+msgid "Button border: Ghost Border (`rgba(240, 240, 250, 0.35)`)"
+msgstr ""
+
+#: ../../source/templates_spacex.md:193
+msgid "Overlay: `rgba(0, 0, 0, 0.5)`"
+msgstr ""
+
+#: ../../source/templates_spacex.md:195
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_spacex.md:196
+msgid ""
+"\"Create a full-viewport hero: background-image covering 100vh, dark "
+"gradient overlay rgba(0,0,0,0.5). Headline at 48px D-DIN-Bold, uppercase,"
+" letter-spacing 0.96px, spectral white (#f0f0fa) text. Ghost CTA button: "
+"rgba(240,240,250,0.1) bg, 1px solid rgba(240,240,250,0.35) border, 32px "
+"radius, 18px padding.\""
+msgstr ""
+
+#: ../../source/templates_spacex.md:197
+msgid ""
+"\"Design a navigation: transparent over photography. D-DIN 13px weight "
+"700, uppercase, letter-spacing 1.17px, spectral white text. SpaceX "
+"wordmark left-aligned.\""
+msgstr ""
+
+#: ../../source/templates_spacex.md:198
+msgid ""
+"\"Build a content section: full-viewport height, background photography "
+"with dark overlay. Left-aligned text block with 48px D-DIN-Bold uppercase"
+" heading, 16px D-DIN body text, and ghost button below.\""
+msgstr ""
+
+#: ../../source/templates_spacex.md:199
+msgid ""
+"\"Create a micro label: D-DIN 10px, uppercase, letter-spacing 1px, "
+"spectral white, line-height 0.94.\""
+msgstr ""
+
+#: ../../source/templates_spacex.md:201
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_spacex.md:202
+msgid "Start with photography — the image IS the design"
+msgstr ""
+
+#: ../../source/templates_spacex.md:203
+msgid "All text is uppercase with positive letter-spacing — no exceptions"
+msgstr ""
+
+#: ../../source/templates_spacex.md:204
+msgid "Only two colors: black and spectral white (#f0f0fa)"
+msgstr ""
+
+#: ../../source/templates_spacex.md:205
+msgid ""
+"Ghost buttons are the only interactive element — transparent, spectral-"
+"bordered"
+msgstr ""
+
+#: ../../source/templates_spacex.md:206
+msgid "Zero shadows, zero cards, zero decorative elements"
+msgstr ""
+
+#: ../../source/templates_spacex.md:207
+msgid "Every section is full-viewport (100vh) — cinematic pacing"
+msgstr ""
+

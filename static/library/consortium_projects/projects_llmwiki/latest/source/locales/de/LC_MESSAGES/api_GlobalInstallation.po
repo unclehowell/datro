@@ -1,0 +1,231 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_GlobalInstallation.md:1
+msgid "Global Installation"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:3
+msgid ""
+"Undici provides an `install()` function to add all WHATWG fetch classes "
+"to `globalThis`, making them available globally without requiring "
+"imports."
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:5
+msgid "`install()`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:7
+msgid "Install all WHATWG fetch classes globally on `globalThis`."
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:9
+msgid "**Example:**"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:29
+msgid "Installed Classes"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:31
+msgid "The `install()` function adds the following classes to `globalThis`:"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "Class"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`fetch`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "The fetch function for making HTTP requests"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`Headers`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "HTTP headers management"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`Response`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "HTTP response representation"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`Request`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "HTTP request representation"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`FormData`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "Form data handling"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`WebSocket`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "WebSocket client"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`CloseEvent`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "WebSocket close event"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`ErrorEvent`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "WebSocket error event"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`MessageEvent`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "WebSocket message event"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "`EventSource`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md
+msgid "Server-sent events client"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:46
+msgid "Using `FormData` with `fetch`"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:48
+msgid ""
+"If you send a `FormData` body, use matching implementations for `fetch` "
+"and `FormData`."
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:51
+msgid "These two patterns are safe:"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:75
+msgid ""
+"After `install()`, `fetch`, `Headers`, `Response`, `Request`, and "
+"`FormData` all come from the installed `undici` package, so they work as "
+"a matching set."
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:78
+msgid "If you do not want to install globals, import both from `undici` instead:"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:90
+msgid ""
+"Avoid mixing a global `FormData` with `undici.fetch()`, or "
+"`undici.FormData` with the built-in global `fetch()`. Keeping them paired"
+" avoids surprising multipart behavior across Node.js and undici versions."
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:94
+msgid "Use Cases"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:96
+msgid "Global installation is useful for:"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:98
+msgid "**Polyfilling environments** that don't have native fetch support"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:99
+msgid "**Ensuring consistent behavior** across different Node.js versions"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:100
+msgid "**Library compatibility** when third-party libraries expect global fetch"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:101
+msgid "**Migration scenarios** where you want to replace built-in implementations"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:102
+msgid "**Testing environments** where you need predictable fetch behavior"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:104
+msgid "Example: Polyfilling an Environment"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:119
+msgid "Example: Testing Environment"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:134
+msgid "Notes"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:136
+msgid "The `install()` function overwrites any existing global implementations"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:137
+msgid "Classes installed are undici's implementations, not Node.js built-ins"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:138
+msgid ""
+"This provides access to undici's latest features and performance "
+"improvements"
+msgstr ""
+
+#: ../../source/api_GlobalInstallation.md:139
+msgid "The global installation persists for the lifetime of the process"
+msgstr ""
+

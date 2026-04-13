@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/semver-regex_readme.md:1
+msgid ""
+"semver-regex [![Build Status](https://travis-ci.org/sindresorhus/semver-"
+"regex.svg?branch=master)](https://travis-ci.org/sindresorhus/semver-"
+"regex)"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:3
+msgid ""
+"Regular expression for matching [semver](https://github.com/npm/node-"
+"semver) versions"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:32
+msgid "Related"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:34
+msgid ""
+"[find-versions](https://github.com/sindresorhus/find-versions) - Find "
+"semver versions in a string"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:35
+msgid ""
+"[latest-semver](https://github.com/sindresorhus/latest-semver) - Get the "
+"latest stable semver version from an array of versions"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:36
+msgid ""
+"[to-semver](https://github.com/sindresorhus/to-semver) - Get an array of "
+"valid, sorted, and cleaned semver versions from an array of strings"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:37
+msgid ""
+"[semver-diff](https://github.com/sindresorhus/semver-diff) - Get the diff"
+" type of two semver versions: `0.0.1` `0.0.2` → `patch`"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:38
+msgid ""
+"[semver-truncate](https://github.com/sindresorhus/semver-truncate) - "
+"Truncate a semver version: `1.2.3` → `1.2.0`"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:41
+msgid "License"
+msgstr ""
+
+#: ../../source/semver-regex_readme.md:43
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

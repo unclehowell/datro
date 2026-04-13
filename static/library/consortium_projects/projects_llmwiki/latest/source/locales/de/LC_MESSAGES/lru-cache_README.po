@@ -1,0 +1,289 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/lru-cache_README.md:1
+msgid "lru cache"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:3
+msgid "A cache object that deletes the least-recently-used items."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:5
+msgid ""
+"[![Build Status](https://travis-ci.org/isaacs/node-lru-"
+"cache.svg?branch=master)](https://travis-ci.org/isaacs/node-lru-cache) "
+"[![Coverage Status](https://coveralls.io/repos/isaacs/node-lru-"
+"cache/badge.svg?service=github)](https://coveralls.io/github/isaacs/node-"
+"lru-cache)"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:5
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:5
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:7
+msgid "Installation:"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:13
+msgid "Usage:"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:42
+msgid "If you put more stuff in it, then items will fall out."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:44
+msgid ""
+"If you try to put an oversized thing in it, then it'll fall out right "
+"away."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:47
+msgid "Options"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:49
+msgid ""
+"`max` The maximum size of the cache, checked by applying the length "
+"function to all values in the cache.  Not setting this is kind of silly, "
+"since that's the whole purpose of this lib, but it defaults to "
+"`Infinity`.  Setting it to a non-number or negative number will throw a "
+"`TypeError`.  Setting it to 0 makes it be `Infinity`."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:54
+msgid ""
+"`maxAge` Maximum age in ms.  Items are not pro-actively pruned out as "
+"they age, but if you try to get an item that is too old, it'll drop it "
+"and return undefined instead of giving it to you. Setting this to a "
+"negative value will make everything seem old! Setting it to a non-number "
+"will throw a `TypeError`."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:59
+#, python-brace-format
+msgid ""
+"`length` Function that is used to calculate the length of stored items.  "
+"If you're storing strings or buffers, then you probably want to do "
+"something like `function(n, key){return n.length}`.  The default is "
+"`function(){return 1}`, which is fine if you want to store `max` like-"
+"sized things.  The item is passed as the first argument, and the key is "
+"passed as the second argumnet."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:65
+msgid ""
+"`dispose` Function that is called on items when they are dropped from the"
+" cache.  This can be handy if you want to close file descriptors or do "
+"other cleanup tasks when items are no longer accessible.  Called with "
+"`key, value`.  It's called *before* actually removing the item from the "
+"internal cache, so if you want to immediately put it back in, you'll have"
+" to do that in a `nextTick` or `setTimeout` callback or it won't do "
+"anything."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:72
+msgid ""
+"`stale` By default, if you set a `maxAge`, it'll only actually pull stale"
+" items out of the cache when you `get(key)`.  (That is, it's not pre-"
+"emptively doing a `setTimeout` or anything.)  If you set `stale:true`, "
+"it'll return the stale value before deleting it.  If you don't set this, "
+"then it'll return `undefined` when you try to get a stale entry, as if it"
+" had already been deleted."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:78
+msgid ""
+"`noDisposeOnSet` By default, if you set a `dispose()` method, then it'll "
+"be called whenever a `set()` operation overwrites an existing key.  If "
+"you set this option, `dispose()` will only be called when a key falls out"
+" of the cache, not when it is overwritten."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:82
+msgid ""
+"`updateAgeOnGet` When using time-expiring entries with `maxAge`, setting "
+"this to `true` will make each item's effective time update to the current"
+" time whenever it is retrieved from cache, causing it to not expire.  (It"
+" can still fall out of cache based on recency of use, of course.)"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:88
+msgid "API"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:90
+msgid "`set(key, value, maxAge)`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:91
+msgid "`get(key) => value`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:93
+msgid ""
+"Both of these will update the \"recently used\"-ness of the key.   They "
+"do what you think. `maxAge` is optional and overrides the   cache "
+"`maxAge` option if provided."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:97
+msgid "If the key is not found, `get()` will return `undefined`."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:99
+msgid "The key and val can be any value."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:101
+msgid "`peek(key)`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:103
+msgid ""
+"Returns the key value (or `undefined` if not found) without   updating "
+"the \"recently used\"-ness of the key."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:106
+msgid ""
+"(If you find yourself using this a lot, you *might* be using the   wrong "
+"sort of data structure, but there are some use cases where   it's handy.)"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:110
+msgid "`del(key)`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:112
+msgid "Deletes a key out of the cache."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:114
+msgid "`reset()`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:116
+msgid "Clear the cache entirely, throwing away all values."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:118
+msgid "`has(key)`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:120
+msgid ""
+"Check if a key is in the cache, without updating the recent-ness   or "
+"deleting it for being stale."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:123
+msgid "`forEach(function(value,key,cache), [thisp])`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:125
+msgid ""
+"Just like `Array.prototype.forEach`.  Iterates over all the keys   in the"
+" cache, in order of recent-ness.  (Ie, more recently used   items are "
+"iterated over first.)"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:129
+msgid "`rforEach(function(value,key,cache), [thisp])`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:131
+msgid ""
+"The same as `cache.forEach(...)` but items are iterated over in   reverse"
+" order.  (ie, less recently used items are iterated over   first.)"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:135
+msgid "`keys()`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:137
+msgid "Return an array of the keys in the cache."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:139
+msgid "`values()`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:141
+msgid "Return an array of the values in the cache."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:143
+msgid "`length`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:145
+msgid ""
+"Return total length of objects in cache taking into account   `length` "
+"options function."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:148
+msgid "`itemCount`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:150
+msgid ""
+"Return total quantity of objects currently in cache. Note, that   `stale`"
+" (see options) items are returned as part of this item   count."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:154
+msgid "`dump()`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:156
+msgid ""
+"Return an array of the cache entries ready for serialization and usage   "
+"with 'destinationCache.load(arr)`."
+msgstr ""
+
+#: ../../source/lru-cache_README.md:159
+msgid "`load(cacheEntriesArray)`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:161
+msgid ""
+"Loads another cache entries array, obtained with `sourceCache.dump()`,   "
+"into the cache. The destination cache is reset before loading new entries"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:164
+msgid "`prune()`"
+msgstr ""
+
+#: ../../source/lru-cache_README.md:166
+msgid "Manually iterates over the entire cache proactively pruning old entries"
+msgstr ""
+

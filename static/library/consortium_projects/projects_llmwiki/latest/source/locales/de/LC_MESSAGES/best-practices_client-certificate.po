@@ -1,0 +1,57 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/best-practices_client-certificate.md:1
+msgid "Client certificate"
+msgstr ""
+
+#: ../../source/best-practices_client-certificate.md:3
+msgid ""
+"Client certificate authentication can be configured with the `Client`, "
+"the required options are passed along through the `connect` option."
+msgstr ""
+
+#: ../../source/best-practices_client-certificate.md:5
+msgid ""
+"The client certificates must be signed by a trusted CA. The Node.js "
+"default is to trust the well-known CAs curated by Mozilla."
+msgstr ""
+
+#: ../../source/best-practices_client-certificate.md:7
+msgid ""
+"Setting the server option `requestCert: true` tells the server to request"
+" the client certificate."
+msgstr ""
+
+#: ../../source/best-practices_client-certificate.md:9
+msgid ""
+"The server option `rejectUnauthorized: false` allows us to handle any "
+"invalid certificate errors in client code. The `authorized` property on "
+"the socket of the incoming request will show if the client certificate "
+"was valid. The `authorizationError` property will give the reason if the "
+"certificate was not valid."
+msgstr ""
+
+#: ../../source/best-practices_client-certificate.md:11
+msgid "Client Certificate Authentication"
+msgstr ""
+

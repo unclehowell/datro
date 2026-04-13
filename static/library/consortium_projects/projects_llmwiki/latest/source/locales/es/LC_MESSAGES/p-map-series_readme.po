@@ -1,0 +1,128 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/p-map-series_readme.md:1
+msgid ""
+"p-map-series [![Build Status](https://travis-ci.org/sindresorhus/p-map-"
+"series.svg?branch=master)](https://travis-ci.org/sindresorhus/p-map-"
+"series)"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:3
+msgid "Map over promises serially"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:5
+msgid ""
+"Useful as a side-effect mapper. Use "
+"[`p-map`](https://github.com/sindresorhus/p-map) if you don't need side-"
+"effects, as it's concurrent."
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:8
+msgid "Install"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:51
+msgid "API"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:53
+msgid "pMapSeries(input, mapper)"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:55
+msgid ""
+"Returns a `Promise` that is fulfilled when all promises in `input` and "
+"ones returned from `mapper` are fulfilled, or rejects if any of the "
+"promises reject. The fulfilled value is an `Array` of the `mapper` "
+"created promises fulfillment values."
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:57
+msgid "input"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:59
+msgid "Type: `Iterable<Promise|any>`"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:61
+msgid "Mapped over serially in the `mapper` function."
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:63
+msgid "mapper(element, index)"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:65
+msgid "Type: `Function`"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:67
+msgid ""
+"Expected to return a value. If it's a `Promise`, it's awaited before "
+"continuing with the next iteration."
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:70
+msgid "Related"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:72
+msgid ""
+"[p-each-series](https://github.com/sindresorhus/p-each-series) - Iterate "
+"over promises serially"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:73
+msgid ""
+"[p-reduce](https://github.com/sindresorhus/p-reduce) - Reduce a list of "
+"values using promises into a promise for a value"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:74
+msgid ""
+"[p-map](https://github.com/sindresorhus/p-map) - Map over promises "
+"concurrently"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:75
+msgid "[More…](https://github.com/sindresorhus/promise-fun)"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:78
+msgid "License"
+msgstr ""
+
+#: ../../source/p-map-series_readme.md:80
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

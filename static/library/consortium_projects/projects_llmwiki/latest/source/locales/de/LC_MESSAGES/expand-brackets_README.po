@@ -1,0 +1,549 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/expand-brackets_README.md:1
+msgid ""
+"expand-brackets [![NPM version](https://img.shields.io/npm/v/expand-"
+"brackets.svg?style=flat)](https://www.npmjs.com/package/expand-brackets) "
+"[![NPM monthly downloads](https://img.shields.io/npm/dm/expand-"
+"brackets.svg?style=flat)](https://npmjs.org/package/expand-brackets)  "
+"[![NPM total downloads](https://img.shields.io/npm/dt/expand-"
+"brackets.svg?style=flat)](https://npmjs.org/package/expand-brackets) "
+"[![Linux Build Status](https://img.shields.io/travis/jonschlinkert"
+"/expand-brackets.svg?style=flat&label=Travis)](https://travis-"
+"ci.org/jonschlinkert/expand-brackets) [![Windows Build "
+"Status](https://img.shields.io/appveyor/ci/jonschlinkert/expand-"
+"brackets.svg?style=flat&label=AppVeyor)](https://ci.appveyor.com/project/jonschlinkert"
+"/expand-brackets)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:1
+msgid "Windows Build Status"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:3
+msgid "Expand POSIX bracket expressions (character classes) in glob patterns."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:20
+#: ../../source/expand-brackets_README.md:42
+#: ../../source/expand-brackets_README.md:63
+#: ../../source/expand-brackets_README.md:85
+#: ../../source/expand-brackets_README.md:108
+#: ../../source/expand-brackets_README.md:127
+#: ../../source/expand-brackets_README.md:166
+msgid "**Params**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:22
+msgid "The main export is a function that takes the following parameters:"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:24
+#, python-brace-format
+msgid "`pattern` **{String}**: the pattern to convert"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:25
+#, python-brace-format
+msgid "`options` **{Object}**: optionally supply an options object"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:26
+#, python-brace-format
+msgid ""
+"`returns` **{String}**: returns a string that can be used to create a "
+"regex"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:28
+#: ../../source/expand-brackets_README.md:52
+#: ../../source/expand-brackets_README.md:74
+#: ../../source/expand-brackets_README.md:96
+#: ../../source/expand-brackets_README.md:118
+#: ../../source/expand-brackets_README.md:137
+#: ../../source/expand-brackets_README.md:178
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:35
+msgid "API"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:37
+msgid "[brackets](index.js#L29)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:39
+msgid ""
+"Parses the given POSIX character class `pattern` and returns a string "
+"that can be used for creating regular expressions for matching."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:44
+#: ../../source/expand-brackets_README.md:168
+#, python-brace-format
+msgid "`pattern` **{String}**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:45
+#: ../../source/expand-brackets_README.md:67
+#: ../../source/expand-brackets_README.md:130
+#: ../../source/expand-brackets_README.md:169
+#, python-brace-format
+msgid "`options` **{Object}**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:46
+#: ../../source/expand-brackets_README.md:170
+#, python-brace-format
+msgid "`returns` **{Object}**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:48
+msgid "[.match](index.js#L54)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:50
+msgid ""
+"Takes an array of strings and a POSIX character class pattern, and "
+"returns a new array with only the strings that matched the pattern."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:65
+#, python-brace-format
+msgid "`arr` **{Array}**: Array of strings to match"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:66
+#, python-brace-format
+msgid "`pattern` **{String}**: POSIX character class pattern(s)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:68
+#, python-brace-format
+msgid "`returns` **{Array}**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:70
+msgid "[.isMatch](index.js#L100)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:72
+msgid ""
+"Returns true if the specified `string` matches the given brackets "
+"`pattern`."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:87
+#, python-brace-format
+msgid "`string` **{String}**: String to match"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:88
+#: ../../source/expand-brackets_README.md:110
+#, python-brace-format
+msgid "`pattern` **{String}**: Poxis pattern"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:89
+#: ../../source/expand-brackets_README.md:111
+#, python-brace-format
+msgid "`options` **{String}**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:90
+#: ../../source/expand-brackets_README.md:112
+#, python-brace-format
+msgid "`returns` **{Boolean}**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:92
+msgid "[.matcher](index.js#L123)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:94
+msgid ""
+"Takes a POSIX character class pattern and returns a matcher function. The"
+" returned function takes the string to match as its only argument."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:114
+msgid "[.makeRe](index.js#L145)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:116
+msgid "Create a regular expression from the given `pattern`."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:129
+#, python-brace-format
+msgid "`pattern` **{String}**: The pattern to convert to regex."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:131
+#, python-brace-format
+msgid "`returns` **{RegExp}**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:133
+msgid "[.create](index.js#L187)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:135
+msgid ""
+"Parses the given POSIX character class `pattern` and returns an object "
+"with the compiled `output` and optional source `map`."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:172
+msgid "Options"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:174
+msgid "options.sourcemap"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:176
+msgid "Generate a source map for the given pattern."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:191
+msgid "POSIX Character classes"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:193
+msgid "The following named POSIX bracket expressions are supported:"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:195
+msgid "`[:alnum:]`: Alphanumeric characters (`a-zA-Z0-9]`)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:196
+msgid "`[:alpha:]`: Alphabetic characters (`a-zA-Z]`)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:197
+msgid "`[:blank:]`: Space and tab (`[ t]`)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:198
+msgid "`[:digit:]`: Digits (`[0-9]`)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:199
+msgid "`[:lower:]`: Lowercase letters (`[a-z]`)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:200
+#, python-brace-format
+msgid ""
+"`[:punct:]`: Punctuation and symbols. (`[!\"#$%&'()*+, -./:;<=>?@ "
+"[\\]^_``{|}~]`)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:201
+msgid "`[:upper:]`: Uppercase letters (`[A-Z]`)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:202
+msgid ""
+"`[:word:]`: Word characters (letters, numbers and underscores) "
+"(`[A-Za-z0-9_]`)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:203
+msgid "`[:xdigit:]`: Hexadecimal digits (`[A-Fa-f0-9]`)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:205
+msgid ""
+"See [posix-character-classes](https://github.com/jonschlinkert/posix-"
+"character-classes) for more details."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:207
+msgid "**Not supported**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:209
+msgid ""
+"[equivalence classes](https://www.gnu.org/software/gawk/manual/html_node"
+"/Bracket-Expressions.html) are not supported"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:210
+msgid ""
+"[POSIX.2 collating "
+"symbols](https://www.gnu.org/software/gawk/manual/html_node/Bracket-"
+"Expressions.html) are not supported"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:212
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:214
+msgid "v2.0.0"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:216
+msgid "**Breaking changes**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:218
+msgid ""
+"The main export now returns the compiled string, instead of the object "
+"returned from the compiler"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:220
+#: ../../source/expand-brackets_README.md:228
+msgid "**Added features**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:222
+msgid "Adds a `.create` method to do what the main function did before v2.0.0"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:224
+msgid "v0.2.0"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:226
+msgid ""
+"In addition to performance and matching improvements, the v0.2.0 refactor"
+" adds complete POSIX character class support, with the exception of "
+"equivalence classes and POSIX.2 collating symbols which are not relevant "
+"to node.js usage."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:230
+msgid ""
+"parser is exposed, so that expand-brackets parsers can be used by "
+"upstream parsers (like "
+"[micromatch](https://github.com/jonschlinkert/micromatch))"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:231
+msgid ""
+"compiler is exposed, so that expand-brackets compilers can be used by "
+"upstream compilers"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:232
+msgid "source maps"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:234
+msgid "**source map example**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:248
+msgid "About"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:250
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:252
+msgid ""
+"[braces](https://www.npmjs.com/package/braces): Fast, comprehensive, "
+"bash-like brace expansion implemented in JavaScript. Complete support for"
+" the Bash 4.3 braces… [more](https://github.com/jonschlinkert/braces) | "
+"[homepage](https://github.com/jonschlinkert/braces \"Fast, comprehensive,"
+" bash-like brace expansion implemented in JavaScript. Complete support "
+"for the Bash 4.3 braces specification, without sacrificing speed.\")"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:253
+msgid ""
+"[extglob](https://www.npmjs.com/package/extglob): Extended glob support "
+"for JavaScript. Adds (almost) the expressive power of regular expressions"
+" to glob… [more](https://github.com/jonschlinkert/extglob) | "
+"[homepage](https://github.com/jonschlinkert/extglob \"Extended glob "
+"support for JavaScript. Adds (almost) the expressive power of regular "
+"expressions to glob patterns.\")"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:254
+msgid ""
+"[micromatch](https://www.npmjs.com/package/micromatch): Glob matching for"
+" javascript/node.js. A drop-in replacement and faster alternative to "
+"minimatch and multimatch. | "
+"[homepage](https://github.com/jonschlinkert/micromatch \"Glob matching "
+"for javascript/node.js. A drop-in replacement and faster alternative to "
+"minimatch and multimatch.\")"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:255
+msgid ""
+"[nanomatch](https://www.npmjs.com/package/nanomatch): Fast, minimal glob "
+"matcher for node.js. Similar to micromatch, minimatch and multimatch, but"
+" complete Bash… [more](https://github.com/jonschlinkert/nanomatch) | "
+"[homepage](https://github.com/jonschlinkert/nanomatch \"Fast, minimal "
+"glob matcher for node.js. Similar to micromatch, minimatch and "
+"multimatch, but complete Bash 4.3 wildcard support only (no support for "
+"exglobs, posix brackets or braces)\")"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:257
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:259
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:261
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md
+msgid "**Contributor**<br/>"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md
+msgid "66"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md
+msgid "2"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md
+msgid "[MartinKolarik](https://github.com/MartinKolarik)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md
+msgid "[es128](https://github.com/es128)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md
+msgid "1"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md
+msgid "[eush77](https://github.com/eush77)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:270
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:272
+msgid ""
+"_(This document was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme) (a "
+"[verb](https://github.com/verbose/verb) generator), please don't edit the"
+" readme directly. Any changes to the readme must be made in "
+"[.verb.md](.verb.md).)_"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:274
+msgid ""
+"To generate the readme and API documentation with "
+"[verb](https://github.com/verbose/verb):"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:280
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:282
+msgid "Install dev dependencies:"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:288
+msgid "Author"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:290
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:292
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:293
+msgid "[twitter/jonschlinkert](http://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:295
+msgid "License"
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:297
+msgid ""
+"Copyright © 2016, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT license](https://github.com/jonschlinkert/expand-"
+"brackets/blob/master/LICENSE)."
+msgstr ""
+
+#: ../../source/expand-brackets_README.md:302
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.2.0, on "
+"December 12, 2016._"
+msgstr ""
+

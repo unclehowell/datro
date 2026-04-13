@@ -1,0 +1,200 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/expand-range_README.md:1
+msgid ""
+"expand-range [![NPM version](https://img.shields.io/npm/v/expand-"
+"range.svg?style=flat)](https://www.npmjs.com/package/expand-range) [![NPM"
+" downloads](https://img.shields.io/npm/dm/expand-"
+"range.svg?style=flat)](https://npmjs.org/package/expand-range) [![Build "
+"Status](https://img.shields.io/travis/jonschlinkert/expand-"
+"range.svg?style=flat)](https://travis-ci.org/jonschlinkert/expand-range)"
+msgstr ""
+
+#: ../../source/expand-range_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/expand-range_README.md:1
+msgid "NPM downloads"
+msgstr ""
+
+#: ../../source/expand-range_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/expand-range_README.md:3
+msgid ""
+"Fast, bash-like range expansion. Expand a range of numbers or letters, "
+"uppercase or lowercase. See the benchmarks. Used by micromatch."
+msgstr ""
+
+#: ../../source/expand-range_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/expand-range_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/expand-range_README.md:13
+msgid ""
+"Wraps [fill-range] to do range expansion using `..` separated strings. "
+"See [fill-range] for the full list of options and features."
+msgstr ""
+
+#: ../../source/expand-range_README.md:15
+msgid "Example usage"
+msgstr ""
+
+#: ../../source/expand-range_README.md:21
+msgid "**Params**"
+msgstr ""
+
+#: ../../source/expand-range_README.md:27
+msgid "`start`: the number or letter to start with"
+msgstr ""
+
+#: ../../source/expand-range_README.md:28
+msgid "`end`: the number or letter to end with"
+msgstr ""
+
+#: ../../source/expand-range_README.md:29
+msgid ""
+"`increment`: optionally pass the increment to use. works for letters or "
+"numbers"
+msgstr ""
+
+#: ../../source/expand-range_README.md:31
+msgid "**Examples**"
+msgstr ""
+
+#: ../../source/expand-range_README.md:59
+msgid "Custom function"
+msgstr ""
+
+#: ../../source/expand-range_README.md:61
+msgid "Optionally pass a custom function as the second argument:"
+msgstr ""
+
+#: ../../source/expand-range_README.md:73
+msgid "Benchmarks"
+msgstr ""
+
+#: ../../source/expand-range_README.md:97
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/expand-range_README.md:99
+msgid "You might also be interested in these projects:"
+msgstr ""
+
+#: ../../source/expand-range_README.md:101
+msgid ""
+"[braces](https://www.npmjs.com/package/braces): Fastest brace expansion "
+"for node.js, with the most complete support for the Bash 4.3 braces… "
+"[more](https://www.npmjs.com/package/braces) | "
+"[homepage](https://github.com/jonschlinkert/braces)"
+msgstr ""
+
+#: ../../source/expand-range_README.md:102
+msgid ""
+"[fill-range](https://www.npmjs.com/package/fill-range): Fill in a range "
+"of numbers or letters, optionally passing an increment or multiplier to… "
+"[more](https://www.npmjs.com/package/fill-range) | "
+"[homepage](https://github.com/jonschlinkert/fill-range)"
+msgstr ""
+
+#: ../../source/expand-range_README.md:103
+msgid ""
+"[micromatch](https://www.npmjs.com/package/micromatch): Glob matching for"
+" javascript/node.js. A drop-in replacement and faster alternative to "
+"minimatch and multimatch. | "
+"[homepage](https://github.com/jonschlinkert/micromatch)"
+msgstr ""
+
+#: ../../source/expand-range_README.md:105
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/expand-range_README.md:107
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](https://github.com/jonschlinkert"
+"/expand-range/issues/new)."
+msgstr ""
+
+#: ../../source/expand-range_README.md:109
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/expand-range_README.md:111
+msgid ""
+"Generate readme and API documentation with "
+"[verb](https://github.com/verbose/verb):"
+msgstr ""
+
+#: ../../source/expand-range_README.md:117
+msgid "Or, if [verb](https://github.com/verbose/verb) is installed globally:"
+msgstr ""
+
+#: ../../source/expand-range_README.md:123
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/expand-range_README.md:125
+msgid "Install dev dependencies:"
+msgstr ""
+
+#: ../../source/expand-range_README.md:131
+msgid "Author"
+msgstr ""
+
+#: ../../source/expand-range_README.md:133
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/expand-range_README.md:135
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/expand-range_README.md:136
+msgid "[twitter/jonschlinkert](http://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/expand-range_README.md:138
+msgid "License"
+msgstr ""
+
+#: ../../source/expand-range_README.md:140
+msgid ""
+"Copyright © 2016, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT license](https://github.com/jonschlinkert/expand-"
+"range/blob/master/LICENSE)."
+msgstr ""
+
+#: ../../source/expand-range_README.md:145
+msgid ""
+"_This file was generated by [verb](https://github.com/verbose/verb), "
+"v0.9.0, on May 05, 2016._"
+msgstr ""
+

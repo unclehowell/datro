@@ -1,0 +1,310 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/graceful-fs_README.md:1
+msgid "graceful-fs"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:3
+msgid ""
+"graceful-fs functions as a drop-in replacement for the fs module, making "
+"various improvements."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:6
+msgid ""
+"The improvements are meant to normalize behavior across different "
+"platforms and environments, and to make filesystem access more resilient "
+"to errors."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:10
+msgid "Improvements over [fs module](https://nodejs.org/api/fs.html)"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:12
+msgid ""
+"Queues up `open` and `readdir` calls, and retries them once something "
+"closes if there is an EMFILE error from too many file descriptors."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:15
+msgid "fixes `lchmod` for Node versions prior to 0.6.2."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:16
+msgid "implements `fs.lutimes` if possible. Otherwise it becomes a noop."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:17
+msgid ""
+"ignores `EINVAL` and `EPERM` errors in `chown`, `fchown` or `lchown` if "
+"the user isn't root."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:19
+msgid "makes `lchmod` and `lchown` become noops, if not available."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:20
+msgid "retries reading a file if `read` results in EAGAIN error."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:22
+msgid ""
+"On Windows, it retries renaming a file for up to one second if `EACCESS` "
+"or `EPERM` error occurs, likely because antivirus software has locked the"
+" directory."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:26
+msgid "USAGE"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:38
+msgid "Sync methods"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:40
+msgid ""
+"This module cannot intercept or handle `EMFILE` or `ENFILE` errors from "
+"sync methods.  If you use sync methods which open file descriptors then "
+"you are responsible for dealing with any errors."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:44
+msgid "This is a known limitation, not a bug."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:46
+msgid "Global Patching"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:48
+msgid ""
+"If you want to patch the global fs module (or any other fs-like module) "
+"you can do this:"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:58
+msgid ""
+"This should only ever be done at the top-level application layer, in "
+"order to delay on EMFILE errors from any fs-using dependencies.  You "
+"should **not** do this in a library, because it can cause unexpected "
+"delays in other parts of the program."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:63
+msgid "Changes"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:65
+msgid ""
+"This module is fairly stable at this point, and used by a lot of things."
+"  That being said, because it implements a subtle behavior change in a "
+"core part of the node API, even modest changes can be extremely breaking,"
+" and the versioning is thus biased towards bumping the major when in "
+"doubt."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:71
+msgid ""
+"The main change between major versions has been switching between "
+"providing a fully-patched `fs` module vs monkey-patching the node core "
+"builtin, and the approach by which a non-monkey-patched `fs` was created."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:76
+msgid ""
+"The goal is to trade `EMFILE` errors for slower fs operations.  So, if "
+"you try to open a zillion files, rather than crashing, `open` operations "
+"will be queued up and wait for something else to `close`."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:80
+msgid ""
+"There are advantages to each approach.  Monkey-patching the fs means that"
+" no `EMFILE` errors can possibly occur anywhere in your application, "
+"because everything is using the same core `fs` module, which is patched."
+"  However, it can also obviously cause undesirable side-effects, "
+"especially if the module is loaded multiple times."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:86
+msgid ""
+"Implementing a separate-but-identical patched `fs` module is more "
+"surgical (and doesn't run the risk of patching multiple times), but also "
+"imposes the challenge of keeping in sync with the core module."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:90
+msgid ""
+"The current approach loads the `fs` module, and then creates a lookalike "
+"object that has all the same methods, except a few that are patched.  It "
+"is safe to use in all versions of Node from 0.8 through 7.0."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:95
+msgid "v4"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:97
+msgid ""
+"Do not monkey-patch the fs module.  This module may now be used as a "
+"drop-in dep, and users can opt into monkey-patching the fs builtin if "
+"their app requires it."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:101
+msgid "v3"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:103
+msgid "Monkey-patch fs, because the eval approach no longer works on recent node."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:105
+msgid "fixed possible type-error throw if rename fails on windows"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:106
+msgid "verify that we *never* get EMFILE errors"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:107
+msgid "Ignore ENOSYS from chmod/chown"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:108
+msgid "clarify that graceful-fs must be used as a drop-in"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:110
+msgid "v2.1.0"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:112
+msgid "Use eval rather than monkey-patching fs."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:113
+msgid "readdir: Always sort the results"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:114
+msgid "win32: requeue a file if error has an OK status"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:116
+msgid "v2.0"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:118
+msgid "A return to monkey patching"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:119
+msgid "wrap process.cwd"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:121
+msgid "v1.1"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:123
+msgid "wrap readFile"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:124
+msgid "Wrap fs.writeFile."
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:125
+msgid "readdir protection"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:126
+msgid "Don't clobber the fs builtin"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:127
+msgid "Handle fs.read EAGAIN errors by trying again"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:128
+msgid "Expose the curOpen counter"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:129
+msgid "No-op lchown/lchmod if not implemented"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:130
+msgid "fs.rename patch only for win32"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:131
+msgid "Patch fs.rename to handle AV software on Windows"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:132
+msgid "Close #4 Chown should not fail on einval or eperm if non-root"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:133
+msgid "Fix isaacs/fstream#1 Only wrap fs one time"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:134
+msgid "Fix #3 Start at 1024 max files, then back off on EMFILE"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:135
+msgid "lutimes that doens't blow up on Linux"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:136
+msgid ""
+"A full on-rewrite using a queue instead of just swallowing the EMFILE "
+"error"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:137
+msgid "Wrap Read/Write streams as well"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:139
+msgid "1.0"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:141
+msgid "Update engines for node 0.6"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:142
+msgid "Be lstat-graceful on Windows"
+msgstr ""
+
+#: ../../source/graceful-fs_README.md:143
+msgid "first"
+msgstr ""
+

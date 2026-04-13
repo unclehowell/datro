@@ -1,0 +1,163 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/error-ex_README.md:1
+msgid ""
+"node-error-ex [![Travis-CI.org Build "
+"Status](https://img.shields.io/travis/Qix-/node-error-ex.svg?style=flat-"
+"square)](https://travis-ci.org/Qix-/node-error-ex) [![Coveralls.io "
+"Coverage Rating](https://img.shields.io/coveralls/Qix-/node-error-"
+"ex.svg?style=flat-square)](https://coveralls.io/r/Qix-/node-error-ex)"
+msgstr ""
+
+#: ../../source/error-ex_README.md:1
+msgid "Travis-CI.org Build Status"
+msgstr ""
+
+#: ../../source/error-ex_README.md:1
+msgid "Coveralls.io Coverage Rating"
+msgstr ""
+
+#: ../../source/error-ex_README.md:2
+msgid "Easily subclass and customize new Error types"
+msgstr ""
+
+#: ../../source/error-ex_README.md:4
+msgid "Examples"
+msgstr ""
+
+#: ../../source/error-ex_README.md:5
+msgid "To include in your project:"
+msgstr ""
+
+#: ../../source/error-ex_README.md:10
+msgid ""
+"To create an error message type with a specific name (note, that "
+"`ErrorFn.name` will not reflect this):"
+msgstr ""
+
+#: ../../source/error-ex_README.md:20
+msgid "To add a stack line:"
+msgstr ""
+
+#: ../../source/error-ex_README.md:29
+msgid "To append to the error message:"
+msgstr ""
+
+#: ../../source/error-ex_README.md:38
+msgid "API"
+msgstr ""
+
+#: ../../source/error-ex_README.md:40
+msgid "`errorEx([name], [properties])`"
+msgstr ""
+
+#: ../../source/error-ex_README.md:41
+msgid "Creates a new ErrorEx error type"
+msgstr ""
+
+#: ../../source/error-ex_README.md:43
+msgid ""
+"`name`: the name of the new type (appears in the error message upon "
+"throw; defaults to `Error.name`)"
+msgstr ""
+
+#: ../../source/error-ex_README.md:45
+msgid ""
+"`properties`: if supplied, used as a key/value dictionary of properties "
+"to use when building up the stack message. Keys are property names that "
+"are looked up on the error message, and then passed to function values."
+msgstr ""
+
+#: ../../source/error-ex_README.md:48
+msgid ""
+"`line`: if specified and is a function, return value is added as a stack "
+"entry (error-ex will indent for you). Passed the property value given the"
+" key."
+msgstr ""
+
+#: ../../source/error-ex_README.md:51
+msgid ""
+"`stack`: if specified and is a function, passed the value of the property"
+" using the key, and the raw stack lines as a second argument. Takes no "
+"return value (but the stack can be modified directly)."
+msgstr ""
+
+#: ../../source/error-ex_README.md:54
+msgid ""
+"`message`: if specified and is a function, return value is used as new "
+"`.message` value upon get. Passed the property value of the property "
+"named by key, and the existing message is passed as the second argument "
+"as an array of lines (suitable for multi-line messages)."
+msgstr ""
+
+#: ../../source/error-ex_README.md:59
+msgid ""
+"Returns a constructor (Function) that can be used just like the regular "
+"Error constructor."
+msgstr ""
+
+#: ../../source/error-ex_README.md:93
+msgid "`errorEx.line(str)`"
+msgstr ""
+
+#: ../../source/error-ex_README.md:94
+msgid "Creates a stack line using a delimiter"
+msgstr ""
+
+#: ../../source/error-ex_README.md:96 ../../source/error-ex_README.md:121
+msgid ""
+"This is a helper function. It is to be used in lieu of writing a value "
+"object for `properties` values."
+msgstr ""
+
+#: ../../source/error-ex_README.md:99
+msgid "`str`: The string to create"
+msgstr ""
+
+#: ../../source/error-ex_README.md:100 ../../source/error-ex_README.md:125
+#, python-format
+msgid "Use the delimiter `%s` to specify where in the string the value should go"
+msgstr ""
+
+#: ../../source/error-ex_README.md:118
+msgid "`errorEx.append(str)`"
+msgstr ""
+
+#: ../../source/error-ex_README.md:119
+msgid "Appends to the `error.message` string"
+msgstr ""
+
+#: ../../source/error-ex_README.md:124
+msgid "`str`: The string to append"
+msgstr ""
+
+#: ../../source/error-ex_README.md:142
+msgid "License"
+msgstr ""
+
+#: ../../source/error-ex_README.md:143
+msgid ""
+"Licensed under the [MIT License](http://opensource.org/licenses/MIT). You"
+" can find a copy of it in [LICENSE](LICENSE)."
+msgstr ""
+

@@ -1,0 +1,293 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/minecraft-modpack-server_SKILL.md:7
+msgid "Minecraft Modpack Server Setup"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:9
+msgid "When to use"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:10
+msgid "User wants to set up a modded Minecraft server from a server pack zip"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:11
+msgid "User needs help with NeoForge/Forge server configuration"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:12
+msgid "User asks about Minecraft server performance tuning or backups"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:14
+msgid "Gather User Preferences First"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:15
+msgid "Before starting setup, ask the user for:"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:16
+msgid "**Server name / MOTD** — what should it say in the server list?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:17
+msgid "**Seed** — specific seed or random?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:18
+msgid "**Difficulty** — peaceful / easy / normal / hard?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:19
+msgid "**Gamemode** — survival / creative / adventure?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:20
+msgid ""
+"**Online mode** — true (Mojang auth, legit accounts) or false "
+"(LAN/cracked friendly)?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:21
+msgid ""
+"**Player count** — how many players expected? (affects RAM & view "
+"distance tuning)"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:22
+msgid ""
+"**RAM allocation** — or let agent decide based on mod count & available "
+"RAM?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:23
+msgid ""
+"**View distance / simulation distance** — or let agent pick based on "
+"player count & hardware?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:24
+msgid "**PvP** — on or off?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:25
+msgid "**Whitelist** — open server or whitelist only?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:26
+msgid "**Backups** — want automated backups? How often?"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:28
+msgid ""
+"Use sensible defaults if the user doesn't care, but always ask before "
+"generating the config."
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:30
+msgid "Steps"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:32
+msgid "1. Download & Inspect the Pack"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:40
+msgid ""
+"Look for: `startserver.sh`, installer jar (neoforge/forge), "
+"`user_jvm_args.txt`, `mods/` folder. Check the script to determine: mod "
+"loader type, version, and required Java version."
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:43
+msgid "2. Install Java"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:44
+msgid "Minecraft 1.21+ → Java 21: `sudo apt install openjdk-21-jre-headless`"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:45
+msgid "Minecraft 1.18-1.20 → Java 17: `sudo apt install openjdk-17-jre-headless`"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:46
+msgid ""
+"Minecraft 1.16 and below → Java 8: `sudo apt install openjdk-8-jre-"
+"headless`"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:47
+msgid "Verify: `java -version`"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:49
+msgid "3. Install the Mod Loader"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:50
+msgid ""
+"Most server packs include an install script. Use the INSTALL_ONLY env var"
+" to install without launching:"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:57
+msgid "This downloads libraries, patches the server jar, etc."
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:59
+msgid "4. Accept EULA"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:64
+msgid "5. Configure server.properties"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:65
+msgid "Key settings for modded/LAN:"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:78
+msgid "Performance settings (scale to hardware):"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:93
+msgid "6. Tune JVM Args (user_jvm_args.txt)"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:94
+msgid "Scale RAM to player count and mod count. Rule of thumb for modded:"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:95
+msgid "100-200 mods: 6-12GB"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:96
+msgid "200-350+ mods: 12-24GB"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:97
+msgid "Leave at least 8GB free for the OS/other tasks"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:122
+msgid "7. Open Firewall"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:126
+msgid "Check with: `sudo ufw status | grep 25565`"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:128
+msgid "8. Create Launch Script"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:137
+msgid ""
+"Note: For Forge (not NeoForge), the args file path differs. Check "
+"`startserver.sh` for the exact path."
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:139
+msgid "9. Set Up Automated Backups"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:140
+msgid "Create backup script:"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:167
+msgid "Add hourly cron:"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:172
+msgid "Pitfalls"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:173
+msgid ""
+"ALWAYS set `allow-flight=true` for modded — mods with jetpacks/flight "
+"will kick players otherwise"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:174
+msgid ""
+"`max-tick-time=180000` or higher — modded servers often have long ticks "
+"during worldgen"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:175
+msgid "First startup is SLOW (several minutes for big packs) — don't panic"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:176
+msgid ""
+"\"Can't keep up!\" warnings on first launch are normal, settles after "
+"initial chunk gen"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:177
+msgid ""
+"If online-mode=false, set enforce-secure-profile=false too or clients get"
+" rejected"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:178
+msgid ""
+"The pack's startserver.sh often has an auto-restart loop — make a clean "
+"launch script without it"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:179
+msgid "Delete the world/ folder to regenerate with a new seed"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:180
+msgid ""
+"Some packs have env vars to control behavior (e.g., ATM10 uses "
+"ATM10_JAVA, ATM10_RESTART, ATM10_INSTALL_ONLY)"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:182
+msgid "Verification"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:183
+msgid "`pgrep -fa neoforge` or `pgrep -fa minecraft` to check if running"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:184
+msgid "Check logs: `tail -f ~/minecraft-server/server/logs/latest.log`"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:185
+msgid "Look for \"Done (Xs)!\" in the log = server is ready"
+msgstr ""
+
+#: ../../source/minecraft-modpack-server_SKILL.md:186
+msgid "Test connection: player adds server IP in Multiplayer"
+msgstr ""
+

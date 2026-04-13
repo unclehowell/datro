@@ -1,0 +1,543 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/pipeline_README.md:1
+msgid "Extension pipelining"
+msgstr ""
+
+#: ../../source/pipeline_README.md:3
+msgid ""
+"`websocket-extensions` models the extension negotiation and processing "
+"pipeline of the WebSocket protocol. Between the driver parsing messages "
+"from the TCP stream and handing those messages off to the application, "
+"there may exist a stack of extensions that transform the message somehow."
+msgstr ""
+
+#: ../../source/pipeline_README.md:8
+msgid ""
+"In the parlance of this framework, a *session* refers to a single "
+"instance of an extension, acting on a particular socket on either the "
+"server or the client side. A session may transform messages both incoming"
+" to the application and outgoing from the application, for example the "
+"`permessage-deflate` extension compresses outgoing messages and "
+"decompresses incoming messages. Message streams in either direction are "
+"independent; that is, incoming and outgoing messages cannot be assumed to"
+" 'pair up' as in a request-response protocol."
+msgstr ""
+
+#: ../../source/pipeline_README.md:16
+msgid ""
+"Asynchronous processing of messages poses a number of problems that this "
+"pipeline construction is intended to solve."
+msgstr ""
+
+#: ../../source/pipeline_README.md:20
+msgid "Overview"
+msgstr ""
+
+#: ../../source/pipeline_README.md:22
+msgid "Logically, we have the following:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:37
+msgid "For outgoing messages, the driver receives the result of"
+msgstr ""
+
+#: ../../source/pipeline_README.md:43
+msgid "For incoming messages, the application receives the result of"
+msgstr ""
+
+#: ../../source/pipeline_README.md:49
+msgid ""
+"A session is of the following type, to borrow notation from pseudo-"
+"Haskell:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:57
+msgid ""
+"(That `() -> ()` syntax is intended to mean that `close()` is a nullary "
+"void method; I apologise to any Haskell readers for not using the right "
+"monad.)"
+msgstr ""
+
+#: ../../source/pipeline_README.md:60
+msgid ""
+"The `incoming()` and `outgoing()` methods perform message transformation "
+"in the respective directions; `close()` is called when a socket closes so"
+" the session can release any resources it's holding, for example a "
+"DEFLATE de/compression context."
+msgstr ""
+
+#: ../../source/pipeline_README.md:65
+msgid ""
+"However because this is JavaScript, the `incoming()` and `outgoing()` "
+"methods may be asynchronous (indeed, `permessage-deflate` is based on "
+"`zlib`, whose API is stream-based). So their interface is strictly:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:77
+msgid ""
+"This means a message *m2* can be pushed into a session while it's still "
+"processing the preceding message *m1*. The messages can be processed "
+"concurrently but they *must* be given to the next session in line (or to "
+"the application) in the same order they came in. Applications will expect"
+" to receive messages in the order they arrived over the wire, and "
+"sessions require this too. So ordering of messages must be preserved "
+"throughout the pipeline."
+msgstr ""
+
+#: ../../source/pipeline_README.md:84
+msgid ""
+"Consider the following highly simplified extension that deflates messages"
+" on the wire. `message` is a value conforming the type:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:95
+msgid "Here's the extension:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:119
+msgid ""
+"We can call it with a large message followed by a small one, and the "
+"small one will be returned first:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:139
+msgid ""
+"So a session that processes messages asynchronously may fail to preserve "
+"message ordering."
+msgstr ""
+
+#: ../../source/pipeline_README.md:142
+msgid ""
+"Now, this extension is stateless, so it can process messages in any order"
+" and still produce the same output. But some extensions are stateful and "
+"require message order to be preserved."
+msgstr ""
+
+#: ../../source/pipeline_README.md:146
+msgid ""
+"For example, when using `permessage-deflate` without "
+"`no_context_takeover` set, the session retains a DEFLATE de/compression "
+"context between messages, which accumulates state as it consumes data "
+"(later messages can refer to sections of previous ones to improve "
+"compression). Reordering parts of the DEFLATE stream will result in a "
+"failed decompression. Messages must be decompressed in the same order "
+"they were compressed by the peer in order for the DEFLATE protocol to "
+"work."
+msgstr ""
+
+#: ../../source/pipeline_README.md:154
+msgid ""
+"Finally, there is the problem of closing a socket. When a WebSocket is "
+"closed by the application, or receives a closing request from the other "
+"peer, there may be messages outgoing from the application and incoming "
+"from the peer in the pipeline. If we close the socket and pipeline "
+"immediately, two problems arise:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:159
+msgid ""
+"We may send our own closing frame to the peer before all prior messages "
+"we sent have been written to the socket, and before we have finished "
+"processing all prior messages from the peer"
+msgstr ""
+
+#: ../../source/pipeline_README.md:162
+msgid ""
+"The session may be instructed to close its resources (e.g. its "
+"de/compression context) while it's in the middle of processing a message,"
+" or before it has received messages that are upstream of it in the "
+"pipeline"
+msgstr ""
+
+#: ../../source/pipeline_README.md:166
+msgid ""
+"Essentially, we must defer closing the sessions and sending a closing "
+"frame until after all prior messages have exited the pipeline."
+msgstr ""
+
+#: ../../source/pipeline_README.md:170
+msgid "Design goals"
+msgstr ""
+
+#: ../../source/pipeline_README.md:172
+msgid ""
+"Message order must be preserved between the protocol driver, the "
+"extension sessions, and the application"
+msgstr ""
+
+#: ../../source/pipeline_README.md:174
+msgid ""
+"Messages should be handed off to sessions and endpoints as soon as "
+"possible, to maximise throughput of stateless sessions"
+msgstr ""
+
+#: ../../source/pipeline_README.md:176
+msgid ""
+"The closing procedure should block any further messages from entering the"
+" pipeline, and should allow all existing messages to drain"
+msgstr ""
+
+#: ../../source/pipeline_README.md:178
+msgid ""
+"Sessions should be closed as soon as possible to prevent them holding "
+"memory and other resources when they have no more messages to handle"
+msgstr ""
+
+#: ../../source/pipeline_README.md:180
+msgid ""
+"The closing API should allow the caller to detect when the pipeline is "
+"empty and it is safe to continue the WebSocket closing procedure"
+msgstr ""
+
+#: ../../source/pipeline_README.md:182
+msgid ""
+"Individual extensions should remain as simple as possible to facilitate "
+"modularity and independent authorship"
+msgstr ""
+
+#: ../../source/pipeline_README.md:185
+msgid ""
+"The final point about modularity is an important one: this framework is "
+"designed to facilitate extensions existing as plugins, by decoupling the "
+"protocol driver, extensions, and application. In an ideal world, plugins "
+"should only need to contain code for their specific functionality, and "
+"not solve these problems that apply to all sessions. Also, solving some "
+"of these problems requires consideration of all active sessions "
+"collectively, which an individual session is incapable of doing."
+msgstr ""
+
+#: ../../source/pipeline_README.md:193
+msgid ""
+"For example, it is entirely possible to take the simple `deflate` "
+"extension above and wrap its `incoming()` and `outgoing()` methods in two"
+" `Transform` streams, producing this type:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:203
+msgid ""
+"The `Transform` class makes it easy to wrap an async function such that "
+"message order is preserved:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:219
+msgid ""
+"However, this has a negative impact on throughput: it works by deferring "
+"`callback()` until the async function has 'returned', which blocks "
+"`Transform` from passing further input into the `_transform()` method "
+"until the current message is dealt with completely. This would prevent "
+"sessions from processing messages concurrently, and would unnecessarily "
+"reduce the throughput of stateless extensions."
+msgstr ""
+
+#: ../../source/pipeline_README.md:226
+msgid ""
+"So, input should be handed off to sessions as soon as possible, and all "
+"we need is a mechanism to reorder the output so that message order is "
+"preserved for the next session in line."
+msgstr ""
+
+#: ../../source/pipeline_README.md:231
+msgid "Solution"
+msgstr ""
+
+#: ../../source/pipeline_README.md:233
+msgid ""
+"We now describe the model implemented here and how it meets the above "
+"design goals. The above diagram where a stack of extensions sit between "
+"the driver and application describes the data flow, but not the object "
+"graph. That looks like this:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:255
+msgid ""
+"A driver using this framework holds an instance of the `Extensions` "
+"class, which it uses to register extension plugins, negotiate headers and"
+" transform messages. The `Extensions` instance itself holds a `Pipeline`,"
+" which contains an array of `Cell` objects, each of which wraps one of "
+"the sessions."
+msgstr ""
+
+#: ../../source/pipeline_README.md:261
+msgid "Message processing"
+msgstr ""
+
+#: ../../source/pipeline_README.md:263
+msgid ""
+"Both the `Pipeline` and `Cell` classes have `incoming()` and `outgoing()`"
+" methods; the `Pipeline` interface pushes messages into the pipe, "
+"delegates the message to each `Cell` in turn, then returns it back to the"
+" driver. Outgoing messages pass through `A` then `B` then `C`, and "
+"incoming messages in the reverse order."
+msgstr ""
+
+#: ../../source/pipeline_README.md:269
+msgid ""
+"Internally, a `Cell` contains two `Functor` objects. A `Functor` wraps an"
+" async function and makes sure its output messages maintain the order of "
+"its input messages. This name is due to "
+"[@fronx](https://github.com/fronx), on the basis that, by preserving "
+"message order, the abstraction preserves the *mapping* between input and "
+"output messages. To use our simple `deflate` extension from above:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:291
+msgid "A `Cell` contains two of these, one for each direction:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:303
+msgid ""
+"This satisfies the message transformation requirements: the `Pipeline` "
+"simply loops over the cells in the appropriate direction to transform "
+"each message. Because each `Cell` will preserve message order, we can "
+"pass a message to the next `Cell` in line as soon as the current `Cell` "
+"returns it. This gives each `Cell` all the messages in order while "
+"maximising throughput."
+msgstr ""
+
+#: ../../source/pipeline_README.md:310
+msgid "Session closing"
+msgstr ""
+
+#: ../../source/pipeline_README.md:312
+msgid ""
+"We want to close each session as soon as possible, after all existing "
+"messages have drained. To do this, each `Cell` begins with a pending "
+"message counter in each direction, labelled `in` and `out` below."
+msgstr ""
+
+#: ../../source/pipeline_README.md:330
+msgid ""
+"When a message *m1* enters the pipeline, say in the `outgoing` direction,"
+" we increment the `pending.out` counter on all cells immediately."
+msgstr ""
+
+#: ../../source/pipeline_README.md:347
+msgid ""
+"*m1* is handed off to `A`, meanwhile a second message `m2` arrives in the"
+" same direction. All `pending.out` counters are again incremented."
+msgstr ""
+
+#: ../../source/pipeline_README.md:364
+msgid ""
+"When the first cell's `A.outgoing` functor finishes processing *m1*, the "
+"first `pending.out` counter is decremented and *m1* is handed off to cell"
+" `B`."
+msgstr ""
+
+#: ../../source/pipeline_README.md:382
+msgid ""
+"As `B` finishes with *m1*, and as `A` finishes with *m2*, the "
+"`pending.out` counters continue to decrement."
+msgstr ""
+
+#: ../../source/pipeline_README.md:400
+msgid ""
+"Say `C` is a little slow, and begins processing *m2* while still "
+"processing *m1*. That's fine, the `Functor` mechanism will keep *m1* "
+"ahead of *m2* in the output."
+msgstr ""
+
+#: ../../source/pipeline_README.md:418
+msgid "Once all messages are dealt with, the counters return to `0`."
+msgstr ""
+
+#: ../../source/pipeline_README.md:434
+msgid ""
+"The same process applies in the `incoming` direction, the only difference"
+" being that messages are passed to `C` first."
+msgstr ""
+
+#: ../../source/pipeline_README.md:437
+msgid ""
+"This makes closing the sessions quite simple. When the driver wants to "
+"close the socket, it calls `Pipeline.close()`. This *immediately* calls "
+"`close()` on all the cells. If a cell has `in == out == 0`, then it "
+"immediately calls `session.close()`. Otherwise, it stores the closing "
+"call and defers it until `in` and `out` have both ticked down to zero. "
+"The pipeline will not accept new messages after `close()` has been "
+"called, so we know the pending counts will not increase after this point."
+msgstr ""
+
+#: ../../source/pipeline_README.md:445
+msgid ""
+"This means each session is closed as soon as possible: `A` can close "
+"while the slow `C` session is still working, because it knows there are "
+"no more messages on the way. Similarly, `C` will defer closing if "
+"`close()` is called while *m1* is still in `B`, and *m2* in `A`, because "
+"its pending count means it knows it has work yet to do, even if it's not "
+"received those messages yet. This concern cannot be addressed by "
+"extensions acting only on their own local state, unless we pollute "
+"individual extensions by making them all implement this same mechanism."
+msgstr ""
+
+#: ../../source/pipeline_README.md:454
+msgid "The actual closing API at each level is slightly different:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:468
+msgid ""
+"This might appear inconsistent so it's worth explaining. Remember that a "
+"`Pipeline` holds a list of `Cell` objects, each wrapping a `Session`. The"
+" driver talks (via the `Extensions` API) to the `Pipeline` interface, and"
+" it wants `Pipeline.close()` to do two things: close all the sessions, "
+"and tell me when it's safe to start the closing procedure (i.e. when all "
+"messages have drained from the pipe and been handed off to the "
+"application or socket). A callback API works well for that."
+msgstr ""
+
+#: ../../source/pipeline_README.md:476
+msgid ""
+"At the other end of the stack, `Session.close()` is a nullary void method"
+" with no callback or promise API because we don't care what it does, and "
+"whatever it does do will not block the WebSocket protocol; we're not "
+"going to hold off processing messages while a session closes its "
+"de/compression context. We just tell it to close itself, and don't want "
+"to wait while it does that."
+msgstr ""
+
+#: ../../source/pipeline_README.md:482
+msgid ""
+"In the middle, `Cell.close()` returns a promise rather than using a "
+"callback. This is for two reasons. First, `Cell.close()` might not do "
+"anything immediately, it might have to defer its effect while messages "
+"drain. So, if given a callback, it would have to store it in a queue for "
+"later execution. Callbacks work fine if your method does something and "
+"can then invoke the callback itself, but if you need to store callbacks "
+"somewhere so another method can execute them, a promise is a better fit. "
+"Second, it better serves the purposes of `Pipeline.close()`: it wants to "
+"call `close()` on each of a list of cells, and wait for all of them to "
+"finish. This is simple and idiomatic using promises:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:498
+msgid ""
+"(We don't actually use a full *Promises/A+* compatible promise here, we "
+"use a much simplified construction that acts as a callback aggregater and"
+" resolves synchronously and does not support chaining, but the principle "
+"is the same.)"
+msgstr ""
+
+#: ../../source/pipeline_README.md:503
+msgid "Error handling"
+msgstr ""
+
+#: ../../source/pipeline_README.md:505
+msgid ""
+"We've not mentioned error handling so far but it bears some explanation. "
+"The above counter system still applies, but behaves slightly differently "
+"in the presence of errors."
+msgstr ""
+
+#: ../../source/pipeline_README.md:509
+msgid "Say we push three messages into the pipe in the outgoing direction:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:525
+msgid "They pass through the cells successfully up to this point:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:541
+msgid ""
+"At this point, session `B` produces an error while processing *m2*, that "
+"is *m2* becomes *e2*. *m1* is still in the pipeline, and *m3* is queued "
+"behind *m2*. What ought to happen is that *m1* is handed off to the "
+"socket, then *m2* is released to the driver, which will detect the error "
+"and begin closing the socket. No further processing should be done on "
+"*m3* and it should not be released to the driver after the error is "
+"emitted."
+msgstr ""
+
+#: ../../source/pipeline_README.md:548
+msgid ""
+"To handle this, we allow errors to pass down the pipeline just like "
+"messages do, to maintain ordering. But, once a cell sees its session "
+"produce an error, or it receives an error from upstream, it should refuse"
+" to accept any further messages. Session `B` might have begun processing "
+"*m3* by the time it produces the error *e2*, but `C` will have been given"
+" *e2* before it receives *m3*, and can simply drop *m3*."
+msgstr ""
+
+#: ../../source/pipeline_README.md:555
+msgid ""
+"Now, say *e2* reaches the slow session `C` while *m1* is still present, "
+"meanwhile *m3* has been dropped. `C` will never receive *m3* since it "
+"will have been dropped upstream. Under the present model, its `out` "
+"counter will be `3` but it is only going to emit two more values: *m1* "
+"and *e2*. In order for closing to work, we need to decrement `out` to "
+"reflect this. The situation should look like this:"
+msgstr ""
+
+#: ../../source/pipeline_README.md:576
+msgid ""
+"When a cell sees its session emit an error, or when it receives an error "
+"from upstream, it sets its pending count in the appropriate direction to "
+"equal the number of messages it is *currently* processing. It will not "
+"accept any messages after it sees the error, so this will allow the "
+"counter to reach zero."
+msgstr ""
+
+#: ../../source/pipeline_README.md:581
+msgid ""
+"Note that while *e2* is in the pipeline, `Pipeline` should drop any "
+"further messages in the outgoing direction, but should continue to accept"
+" incoming messages. Until *e2* makes it out of the pipe to the driver, "
+"behind previous successful messages, the driver does not know an error "
+"has happened, and a message may arrive over the socket and make it all "
+"the way through the incoming pipe in the meantime. We only halt "
+"processing in the affected direction to avoid doing unnecessary work "
+"since messages arriving after an error should not be processed."
+msgstr ""
+
+#: ../../source/pipeline_README.md:590
+msgid ""
+"Some unnecessary work may happen, for example any messages already in the"
+" pipeline following *m2* will be processed by `A`, since it's upstream of"
+" the error. Those messages will be dropped by `B`."
+msgstr ""
+
+#: ../../source/pipeline_README.md:595
+msgid "Alternative ideas"
+msgstr ""
+
+#: ../../source/pipeline_README.md:597
+msgid ""
+"I am considering implementing `Functor` as an object-mode transform "
+"stream rather than what is essentially an async function. Being object-"
+"mode, a stream would preserve message boundaries and would also possibly "
+"help address back-pressure. I'm not sure whether this would require "
+"external API changes so that such streams could be connected to the "
+"downstream driver's streams."
+msgstr ""
+
+#: ../../source/pipeline_README.md:604
+msgid "Acknowledgements"
+msgstr ""
+
+#: ../../source/pipeline_README.md:606
+msgid ""
+"Credit is due to [@mnowster](https://github.com/mnowster) for helping "
+"with the design and to [@fronx](https://github.com/fronx) for helping "
+"name things."
+msgstr ""
+

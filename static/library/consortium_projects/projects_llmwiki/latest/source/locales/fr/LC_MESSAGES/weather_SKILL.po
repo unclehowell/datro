@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/weather_SKILL.md:8
+msgid "Weather"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:10
+msgid ""
+"Use the most reliable location match first. For Chinese city names or "
+"other non-Latin input, prefer `wttr.in` with the original query because "
+"it resolves native names directly. Use Open-Meteo for structured current "
+"conditions and forecasts only after you have confirmed the exact city."
+msgstr ""
+
+#: ../../source/weather_SKILL.md:12
+msgid "Accuracy Rules"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:14
+msgid ""
+"Always restate the matched location, region/country, and observation time"
+" in the final answer."
+msgstr ""
+
+#: ../../source/weather_SKILL.md:15
+msgid ""
+"Do not trust the first geocoding hit blindly. Check `country`, `admin1`, "
+"`admin2`, and `population`."
+msgstr ""
+
+#: ../../source/weather_SKILL.md:16
+msgid ""
+"For Chinese city queries, do not send Hanzi directly to Open-Meteo "
+"geocoding unless the top result is obviously correct. Prefer `wttr.in` "
+"with the original Chinese name, or geocode the English/pinyin city name "
+"instead."
+msgstr ""
+
+#: ../../source/weather_SKILL.md:17
+msgid ""
+"If multiple plausible matches remain, ask a follow-up question or state "
+"the assumption clearly."
+msgstr ""
+
+#: ../../source/weather_SKILL.md:18
+msgid ""
+"Use `timezone=auto` when calling Open-Meteo so the reported time matches "
+"the location."
+msgstr ""
+
+#: ../../source/weather_SKILL.md:20
+msgid "wttr.in (best for direct city-name queries)"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:22
+msgid "Quick current conditions:"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:27
+msgid "Chinese city example:"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:33
+msgid "JSON output if you need more detail:"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:38
+msgid "Tips:"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:39
+msgid "URL-encode spaces: `New York` -> `New+York`"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:40
+msgid "URL-encode non-ASCII text before sending the request"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:41
+msgid "Use `?m` for metric units and `?u` for US units"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:43
+msgid "Open-Meteo (best for structured forecasts)"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:45
+msgid "Geocode the city and verify the returned location metadata:"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:50
+msgid "Query current weather and today's forecast with the verified coordinates:"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:55
+msgid "Important:"
+msgstr ""
+
+#: ../../source/weather_SKILL.md:56
+#, python-format
+msgid ""
+"For Chinese inputs like `成都`, geocoding `name=%E6%88%90%E9%83%BD` may "
+"return smaller homonym locations first. Prefer `Chengdu` after verifying "
+"it matches Sichuan, China."
+msgstr ""
+
+#: ../../source/weather_SKILL.md:57
+msgid ""
+"If geocoding looks suspicious, fall back to `wttr.in` for the original "
+"city name instead of presenting a likely wrong result."
+msgstr ""
+
+#: ../../source/weather_SKILL.md:59
+msgid "Docs: https://open-meteo.com/en/docs"
+msgstr ""
+

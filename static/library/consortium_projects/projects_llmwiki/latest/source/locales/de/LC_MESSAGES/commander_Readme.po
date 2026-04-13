@@ -1,0 +1,329 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/commander_Readme.md:1
+msgid "Commander.js"
+msgstr ""
+
+#: ../../source/commander_Readme.md:4
+msgid ""
+"[![Build Status](https://api.travis-"
+"ci.org/tj/commander.js.svg?branch=master)](http://travis-"
+"ci.org/tj/commander.js) [![NPM "
+"Version](http://img.shields.io/npm/v/commander.svg?style=flat)](https://www.npmjs.org/package/commander)"
+" [![NPM "
+"Downloads](https://img.shields.io/npm/dm/commander.svg?style=flat)](https://npmcharts.com/compare/commander?minimal=true)"
+" [![Install "
+"Size](https://packagephobia.now.sh/badge?p=commander)](https://packagephobia.now.sh/result?p=commander)"
+" [![Join the chat at "
+"https://gitter.im/tj/commander.js](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/tj/commander.js?utm_source=badge&utm_medium=badge&utm_campaign"
+"=pr-badge&utm_content=badge)"
+msgstr ""
+
+#: ../../source/commander_Readme.md:4
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/commander_Readme.md:4
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/commander_Readme.md:4
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/commander_Readme.md:4
+msgid "Install Size"
+msgstr ""
+
+#: ../../source/commander_Readme.md:4
+msgid "Join the chat at https://gitter.im/tj/commander.js"
+msgstr ""
+
+#: ../../source/commander_Readme.md:10
+msgid ""
+"The complete solution for [node.js](http://nodejs.org) command-line "
+"interfaces, inspired by Ruby's [commander](https://github.com/commander-"
+"rb/commander).     [API "
+"documentation](http://tj.github.com/commander.js/)"
+msgstr ""
+
+#: ../../source/commander_Readme.md:14
+msgid "Installation"
+msgstr ""
+
+#: ../../source/commander_Readme.md:18
+msgid "Option parsing"
+msgstr ""
+
+#: ../../source/commander_Readme.md:20
+msgid ""
+"Options with commander are defined with the `.option()` method, also "
+"serving as documentation for the options. The example below parses args "
+"and options from `process.argv`, leaving remaining args as the "
+"`program.args` array which were not consumed by options."
+msgstr ""
+
+#: ../../source/commander_Readme.md:46
+msgid ""
+"Short flags may be passed as a single arg, for example `-abc` is "
+"equivalent to `-a -b -c`. Multi-word options such as \"--template-"
+"engine\" are camel-cased, becoming `program.templateEngine` etc."
+msgstr ""
+
+#: ../../source/commander_Readme.md:48
+msgid ""
+"Note that multi-word options starting with `--no` prefix negate the "
+"boolean value of the following word. For example, `--no-sauce` sets the "
+"value of `program.sauce` to false."
+msgstr ""
+
+#: ../../source/commander_Readme.md:68
+msgid ""
+"To get string arguments from options you will need to use angle brackets "
+"<> for required inputs or square brackets [] for optional inputs."
+msgstr ""
+
+#: ../../source/commander_Readme.md:70
+msgid "e.g. ```.option('-m --myarg [myVar]', 'my super cool description')```"
+msgstr ""
+
+#: ../../source/commander_Readme.md:72
+msgid "Then to access the input if it was passed in."
+msgstr ""
+
+#: ../../source/commander_Readme.md:74
+msgid "e.g. ```var myInput = program.myarg```"
+msgstr ""
+
+#: ../../source/commander_Readme.md:76
+msgid ""
+"**NOTE**: If you pass a argument without using brackets the example above"
+" will return true and not the value passed in."
+msgstr ""
+
+#: ../../source/commander_Readme.md:79
+msgid "Version option"
+msgstr ""
+
+#: ../../source/commander_Readme.md:81
+msgid ""
+"Calling the `version` implicitly adds the `-V` and `--version` options to"
+" the command. When either of these options is present, the command prints"
+" the version number and exits."
+msgstr ""
+
+#: ../../source/commander_Readme.md:87
+msgid ""
+"If you want your program to respond to the `-v` option instead of the "
+"`-V` option, simply pass custom flags to the `version` method using the "
+"same syntax as the `option` method."
+msgstr ""
+
+#: ../../source/commander_Readme.md:94
+msgid "The version flags can be named anything, but the long option is required."
+msgstr ""
+
+#: ../../source/commander_Readme.md:96
+msgid "Command-specific options"
+msgstr ""
+
+#: ../../source/commander_Readme.md:98
+msgid "You can attach options to a command."
+msgstr ""
+
+#: ../../source/commander_Readme.md:115
+msgid ""
+"A command's options are validated when the command is used. Any unknown "
+"options will be reported as an error. However, if an action-based command"
+" does not define an action, then the options are not validated."
+msgstr ""
+
+#: ../../source/commander_Readme.md:117
+msgid "Coercion"
+msgstr ""
+
+#: ../../source/commander_Readme.md:160
+msgid "Regular Expression"
+msgstr ""
+
+#: ../../source/commander_Readme.md:172
+msgid "Variadic arguments"
+msgstr ""
+
+#: ../../source/commander_Readme.md:174
+msgid ""
+"The last argument of a command can be variadic, and only the last "
+"argument.  To make an argument variadic you have to  append `...` to the "
+"argument name.  Here is an example:"
+msgstr ""
+
+#: ../../source/commander_Readme.md:201
+msgid ""
+"An `Array` is used for the value of a variadic argument.  This applies to"
+" `program.args` as well as the argument passed  to your action as "
+"demonstrated above."
+msgstr ""
+
+#: ../../source/commander_Readme.md:204
+msgid "Specify the argument syntax"
+msgstr ""
+
+#: ../../source/commander_Readme.md:228
+msgid ""
+"Angled brackets (e.g. `<cmd>`) indicate required input. Square brackets "
+"(e.g. `[env]`) indicate optional input."
+msgstr ""
+
+#: ../../source/commander_Readme.md:230
+msgid "Git-style sub-commands"
+msgstr ""
+
+#: ../../source/commander_Readme.md:244
+msgid ""
+"When `.command()` is invoked with a description argument, no "
+"`.action(callback)` should be called to handle sub-commands, otherwise "
+"there will be an error. This tells commander that you're going to use "
+"separate executables for sub-commands, much like `git(1)` and other "
+"popular tools.   The commander will try to search the executables in the "
+"directory of the entry script (like `./examples/pm`) with the name "
+"`program-command`, like `pm-install`, `pm-search`."
+msgstr ""
+
+#: ../../source/commander_Readme.md:247
+msgid ""
+"Options can be passed with the call to `.command()`. Specifying `true` "
+"for `opts.noHelp` will remove the subcommand from the generated help "
+"output. Specifying `true` for `opts.isDefault` will run the subcommand if"
+" no other subcommand is specified."
+msgstr ""
+
+#: ../../source/commander_Readme.md:249
+msgid ""
+"If the program is designed to be installed globally, make sure the "
+"executables have proper modes, like `755`."
+msgstr ""
+
+#: ../../source/commander_Readme.md:251
+msgid "`--harmony`"
+msgstr ""
+
+#: ../../source/commander_Readme.md:253
+msgid "You can enable `--harmony` option in two ways:"
+msgstr ""
+
+#: ../../source/commander_Readme.md:254
+msgid ""
+"Use `#! /usr/bin/env node --harmony` in the sub-commands scripts. Note "
+"some os version don’t support this pattern."
+msgstr ""
+
+#: ../../source/commander_Readme.md:255
+msgid ""
+"Use the `--harmony` option when call the command, like `node --harmony "
+"examples/pm publish`. The `--harmony` option will be preserved when "
+"spawning sub-command process."
+msgstr ""
+
+#: ../../source/commander_Readme.md:257
+msgid "Automated --help"
+msgstr ""
+
+#: ../../source/commander_Readme.md:259
+msgid ""
+"The help information is auto-generated based on the information commander"
+" already knows about your program, so the following `--help` info is for "
+"free:"
+msgstr ""
+
+#: ../../source/commander_Readme.md:277
+msgid "Custom help"
+msgstr ""
+
+#: ../../source/commander_Readme.md:279
+msgid ""
+"You can display arbitrary `-h, --help` information  by listening for \"--"
+"help\". Commander will automatically  exit once you are done so that the "
+"remainder of your program  does not execute causing undesired behaviors, "
+"for example  in the following executable \"stuff\" will not output when  "
+"`--help` is used."
+msgstr ""
+
+#: ../../source/commander_Readme.md:316
+msgid ""
+"Yields the following help output when `node script-name.js -h` or `node "
+"script-name.js --help` are run:"
+msgstr ""
+
+#: ../../source/commander_Readme.md:333
+msgid ".outputHelp(cb)"
+msgstr ""
+
+#: ../../source/commander_Readme.md:335
+msgid ""
+"Output help information without exiting. Optional callback cb allows "
+"post-processing of help text before it is displayed."
+msgstr ""
+
+#: ../../source/commander_Readme.md:338
+msgid ""
+"If you want to display help by default (e.g. if no command was provided),"
+" you can use something like:"
+msgstr ""
+
+#: ../../source/commander_Readme.md:358
+msgid ".help(cb)"
+msgstr ""
+
+#: ../../source/commander_Readme.md:360
+msgid ""
+"Output help information and exit immediately.   Optional callback cb "
+"allows post-processing of help text before it is displayed."
+msgstr ""
+
+#: ../../source/commander_Readme.md:364
+msgid "Custom event listeners"
+msgstr ""
+
+#: ../../source/commander_Readme.md:365
+msgid "You can execute custom actions by listening to command and option events."
+msgstr ""
+
+#: ../../source/commander_Readme.md:379
+msgid "Examples"
+msgstr ""
+
+#: ../../source/commander_Readme.md:424
+msgid ""
+"More Demos can be found in the "
+"[examples](https://github.com/tj/commander.js/tree/master/examples) "
+"directory."
+msgstr ""
+
+#: ../../source/commander_Readme.md:426
+msgid "License"
+msgstr ""
+
+#: ../../source/commander_Readme.md:428
+msgid "[MIT](https://github.com/tj/commander.js/blob/master/LICENSE)"
+msgstr ""
+

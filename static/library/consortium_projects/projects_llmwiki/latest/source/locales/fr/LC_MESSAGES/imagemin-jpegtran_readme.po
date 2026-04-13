@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/imagemin-jpegtran_readme.md:1
+msgid ""
+"imagemin-jpegtran [![Build Status](https://travis-ci.org/imagemin"
+"/imagemin-jpegtran.svg?branch=master)](https://travis-ci.org/imagemin"
+"/imagemin-jpegtran) [![Build "
+"status](https://ci.appveyor.com/api/projects/status/rwf4by6qcbne1qet?svg=true)](https://ci.appveyor.com/project/ShinnosukeWatanabe"
+"/imagemin-jpegtran)"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:1
+msgid "Build status"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:3
+msgid "jpegtran imagemin plugin"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:25
+msgid "API"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:27
+msgid "imageminJpegtran([options])(buffer)"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:29
+msgid "Returns a promise for a buffer."
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:31
+msgid "options"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:33
+msgid "progressive"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:35
+#: ../../source/imagemin-jpegtran_readme.md:42
+msgid "Type: `boolean`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:38
+msgid "Lossless conversion to progressive."
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:40
+msgid "arithmetic"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:45
+msgid "Use [arithmetic coding](http://en.wikipedia.org/wiki/Arithmetic_coding)."
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:47
+msgid "buffer"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:49
+msgid "Type: `buffer`"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:51
+msgid "Buffer to optimize."
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:54
+msgid "License"
+msgstr ""
+
+#: ../../source/imagemin-jpegtran_readme.md:56
+msgid "MIT © [imagemin](https://github.com/imagemin)"
+msgstr ""
+

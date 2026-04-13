@@ -1,0 +1,362 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/hermes-profile-audit_SKILL.md:7
+msgid "Hermes Profile Audit and Cleanup"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:9
+msgid "When to run this"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:10
+msgid "Adding a new bot (Telegram, Discord, etc.)"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:11
+msgid "After migrating from another system"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:12
+msgid "When sessions land in the wrong profile"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:13
+msgid "Periodic security review"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:15
+msgid "Systematic Approach"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:17
+msgid "Step 1: Map all profiles and gateways"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:38
+msgid "Step 1b: Consolidate profiles (purge) + handle the reserved `default`"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:39
+msgid "Use this when you want to keep ONLY a small set of profiles."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:41
+msgid "Key findings:"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:42
+msgid ""
+"Hermes refuses to rename the reserved `default` profile (\"Cannot rename "
+"the default profile\")."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:43
+msgid ""
+"On some installs, `default` lives at `~/.hermes` (root), while other "
+"profiles live under `~/.hermes/profiles/<name>`."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:45
+msgid ""
+"Procedure (example: keep `backup` and `commandfallback`, and create "
+"`commanddefaut` as the effective default):"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:90
+msgid "Notes:"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:91
+msgid ""
+"`hermes profile export default` can fail if it tries to follow/bundle "
+"broken symlinks; the tarball approach above is a robust backup."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:92
+msgid ""
+"After retiring root `default`, `hermes profile show default` should "
+"display something like `Model: RETIRED (retired)` and `Gateway: stopped`."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:94
+msgid "Step 2: Check profile config against running process"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:116
+msgid ""
+"Key finding: Active sessions must be in the same profile as the running "
+"gateway. If not, sessions are orphaned."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:118
+msgid "Step 3: Audit for hardcoded secrets"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:132
+msgid ""
+"Fix: Replace `api_key: actual_value` with `api_key_env: VAR_NAME` Then "
+"put the actual value in the profile's .env file or ~/.env"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:135
+msgid "Step 4: Ensure explicit telegram config in each profile"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:144
+msgid "Each profile needs:"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:150
+msgid ""
+"The global config.yaml should NOT carry additional_bots — each profile "
+"owns its bot."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:152
+msgid "Step 5: Add bot tokens to .env files"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:153
+msgid "For each profile that has a unique bot:"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:158
+msgid "Step 5b: Verify config key names AND structure (CRITICAL)"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:160
+msgid ""
+"**Root cause of \"No messaging platforms enabled\" with correct-looking "
+"configs:**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:162
+msgid ""
+"The `GatewayConfig.from_dict()` method in `gateway/config.py` ONLY reads "
+"from the `platforms:` section (line 344-350). A flat `telegram:` section "
+"at top level is IGNORED for `enabled` and `token`. The "
+"`load_gateway_config()` merge function only bridges "
+"`unauthorized_dm_behavior`, `reply_prefix`, `require_mention`, and "
+"`mention_patterns` — NOT `enabled` or `token`."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:164
+msgid "**WRONG (gateway ignores this):**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:171
+msgid "**CORRECT:**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:182
+msgid "**Automated fix for broken configs:**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:199
+msgid ""
+"**Systemd service files must also set env vars** — even when config.yaml "
+"has tokens, the gateway adapters read from env vars during connection:"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:207
+msgid "**Key naming rules:**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:208
+msgid "Config yaml: `token:` (NOT `bot_token:`)"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:209
+msgid "Env var: `TELEGRAM_BOT_TOKEN`"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:210
+msgid ""
+"Missing `TELEGRAM_ALLOWED_USERS` in service = all DMs rejected with \"No "
+"user allowlists configured\""
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:212
+msgid "**Diagnostic command:**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:220
+msgid "Step 5c: Verify pairing status"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:221
+msgid ""
+"If a bot responds with \"I don't recognize you yet! Here's your pairing "
+"code:\", the user hasn't been approved yet:"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:225
+msgid ""
+"Pairing codes expire quickly — the gateway agent must be running "
+"continuously for the approval to stick before the user reconnects."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:227
+msgid "Step 6: Restart gateways after changes"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:240
+msgid "Step 7: Archive orphaned session learnings to brain"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:247
+msgid "Pitfalls"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:248
+msgid ""
+"Profiles inherit telegram from global config.yaml if no explicit section "
+"— this causes bot routing confusion"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:249
+msgid ""
+"Hardcoded keys in custom_providers are invisible to the main model key "
+"check"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:250
+msgid "The gateway process env (HERMES_HOME) must match where you expect sessions"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:251
+msgid "`--replace` flag on gateway run kills any other gateway on the same bot"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:252
+msgid "Multiple gateways can run if they use different bot tokens"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:254
+msgid "Skip Pairing Codes — Allow All Users"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:256
+msgid ""
+"If bots respond with \"I don't recognize you yet! Here's your pairing "
+"code:\" for every DM, either:"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:258
+msgid ""
+"**Option A — Set GATEWAY_ALLOW_ALL_USERS=true in systemd service "
+"(fastest):**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:264
+msgid "**Option B — Approve the user:**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:268
+msgid ""
+"Pairing codes expire within minutes — the gateway must stay running for "
+"approval to stick. GATEWAY_ALLOW_ALL_USERS is the reliable approach for "
+"personal setups."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:270
+msgid "Disable Exec Approvals Permanently"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:272
+msgid ""
+"To eliminate interactive exec approval prompts (\"This command is "
+"dangerous. Approve?\"):"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:281
+msgid "After changing, **restart the gateway** for the setting to take effect:"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:286
+msgid ""
+"**WARNING:** Only use `mode: off` on personal/trusted machines. Combined "
+"with `GATEWAY_ALLOW_ALL_USERS=true`, this gives the agent full shell "
+"access with zero human-in-the-loop — no warnings, no confirmations."
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:288
+msgid "Roll Call Video Generator"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:290
+msgid ""
+"Reusable script that generates a 5-second status card video and delivers "
+"it to Jellyfin:"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:292
+msgid "**Location:** `/home/ubuntu/.hermes/scripts/rollcall_video.py`"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:294
+msgid "**What it does:**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:295
+msgid "Scans all hermes gateway processes + systemd services for agent status"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:296
+msgid ""
+"Creates a 1920x1080 PNG title card with Hermes green accent (#04da97), "
+"showing each agent with status icon"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:297
+msgid "Uses ffmpeg to render a 5-second H.264 MP4"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:298
+msgid ""
+"Copies to Jellyfin library: `/var/lib/jellyfin/root/default/Videos/Manim "
+"- Roll Call Status YYYYMMDD_HHMMSS.mp4`"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:299
+msgid "Triggers Jellyfin library scan via API"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:301
+msgid "**Usage:**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:306
+msgid "**Schedule as cron (every 4 hours):**"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:311
+msgid ""
+"**Dependencies:** ffmpeg (system), Pillow (Python 3 — `pip install "
+"--break-system-packages Pillow`)"
+msgstr ""
+
+#: ../../source/hermes-profile-audit_SKILL.md:313
+msgid "**Jellyfin path note:** Videos dir must be writable by the running user:"
+msgstr ""
+

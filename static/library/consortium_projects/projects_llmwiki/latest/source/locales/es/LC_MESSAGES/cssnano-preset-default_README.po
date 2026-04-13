@@ -1,0 +1,605 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/cssnano-preset-default_README.md:1
+msgid "cssnano-preset-default"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:3
+msgid "Safe defaults for cssnano which require minimal configuration."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:6
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:8
+msgid "[Overview](#overview)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:10
+msgid "[Usage](#usage)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:12
+msgid "[Install](#install)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:13
+msgid "[Configuration](#configuration)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:15
+msgid "[Plugins](#plugins)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:17
+msgid "[cssnano-util-raw-cache](#cssnano-util-raw-cache)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:18
+msgid "[postcss-calc (external)](#postcss-calc-external)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:19
+msgid "[postcss-colormin](#postcss-colormin)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:20
+msgid "[postcss-convert-values](#postcss-convert-values)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:21
+msgid "[postcss-discard-comments](#postcss-discard-comments)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:22
+msgid "[postcss-discard-duplicates](#postcss-discard-duplicates)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:23
+msgid "[postcss-discard-empty](#postcss-discard-empty)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:24
+msgid "[postcss-discard-overridden](#postcss-discard-overridden)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:25
+msgid "[postcss-merge-longhand](#postcss-merge-longhand)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:26
+msgid "[postcss-merge-rules](#postcss-merge-rules)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:27
+msgid "[postcss-minify-font-values](#postcss-minify-font-values)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:28
+msgid "[postcss-minify-gradients](#postcss-minify-gradients)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:29
+msgid "[postcss-minify-params](#postcss-minify-params)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:30
+msgid "[postcss-minify-selectors](#postcss-minify-selectors)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:31
+msgid "[postcss-normalize-charset](#postcss-normalize-charset)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:32
+msgid "[postcss-normalize-display-values](#postcss-normalize-display-values)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:33
+msgid "[postcss-normalize-positions](#postcss-normalize-positions)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:34
+msgid "[postcss-normalize-repeat-style](#postcss-normalize-repeat-style)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:35
+msgid "[postcss-normalize-string](#postcss-normalize-string)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:36
+msgid "[postcss-normalize-timing-functions](#postcss-normalize-timing-functions)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:37
+msgid "[postcss-normalize-unicode](#postcss-normalize-unicode)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:38
+msgid "[postcss-normalize-url](#postcss-normalize-url)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:39
+msgid "[postcss-normalize-whitespace](#postcss-normalize-whitespace)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:40
+msgid "[postcss-ordered-values](#postcss-ordered-values)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:41
+msgid "[postcss-reduce-initial](#postcss-reduce-initial)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:42
+msgid "[postcss-reduce-transforms](#postcss-reduce-transforms)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:43
+msgid "[postcss-svgo](#postcss-svgo)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:44
+msgid "[postcss-unique-selectors](#postcss-unique-selectors)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:46
+msgid "[Contributors](#contributors)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:48
+msgid "[License](#license)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:51
+msgid "Overview"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:53
+msgid ""
+"This default preset for cssnano only includes transforms that make no "
+"assumptions about your CSS other than what is passed in. In previous "
+"iterations of cssnano, assumptions were made about your CSS which caused "
+"output to look different in certain use cases, but not others. These "
+"transforms have been moved from the defaults to other presets, to make "
+"this preset require only minimal configuration."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:61
+msgid "Usage"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:63
+msgid "Install"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:65
+msgid ""
+"Note that this preset comes bundled with cssnano _by default_, so you "
+"don't need to install it separately."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:67
+msgid "Configuration"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:69
+msgid ""
+"If you would like to use the default configuration, then you don't need "
+"to add anything to your `package.json`."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:71
+msgid ""
+"But should you wish to customise this, you can pass an array with the "
+"second parameter as the options object to use. For example, to remove all"
+" comments:"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:85
+msgid ""
+"Depending on your usage, the JSON configuration might not work for you, "
+"such as in cases where you would like to use options with customisable "
+"function parameters. For this use case, we recommend a "
+"`cssnano.config.js` at the same location as your `package.json`. You can "
+"then load a preset and export it with your custom parameters:"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:97
+msgid ""
+"Note that you may wish to publish your own preset to npm for reusability,"
+" should it differ a lot from this one. This is highly encouraged!"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:100
+msgid "Plugins"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:102
+msgid ""
+"[`css-declaration-sorter`](https://github.com/Siilwyn/css-declaration-"
+"sorter) (external)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:104
+msgid "Sorts CSS declarations fast and automatically in a certain order."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:106
+#: ../../source/cssnano-preset-default_README.md:112
+#: ../../source/cssnano-preset-default_README.md:118
+#: ../../source/cssnano-preset-default_README.md:124
+#: ../../source/cssnano-preset-default_README.md:142
+#: ../../source/cssnano-preset-default_README.md:148
+#: ../../source/cssnano-preset-default_README.md:154
+#: ../../source/cssnano-preset-default_README.md:160
+#: ../../source/cssnano-preset-default_README.md:166
+#: ../../source/cssnano-preset-default_README.md:172
+#: ../../source/cssnano-preset-default_README.md:178
+#: ../../source/cssnano-preset-default_README.md:184
+#: ../../source/cssnano-preset-default_README.md:190
+#: ../../source/cssnano-preset-default_README.md:196
+#: ../../source/cssnano-preset-default_README.md:214
+#: ../../source/cssnano-preset-default_README.md:220
+#: ../../source/cssnano-preset-default_README.md:226
+#: ../../source/cssnano-preset-default_README.md:232
+#: ../../source/cssnano-preset-default_README.md:238
+#: ../../source/cssnano-preset-default_README.md:244
+#: ../../source/cssnano-preset-default_README.md:250
+#: ../../source/cssnano-preset-default_README.md:256
+#: ../../source/cssnano-preset-default_README.md:262
+#: ../../source/cssnano-preset-default_README.md:268
+#: ../../source/cssnano-preset-default_README.md:274
+#: ../../source/cssnano-preset-default_README.md:280
+#: ../../source/cssnano-preset-default_README.md:286
+msgid "This plugin is loaded with its default configuration."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:108
+msgid ""
+"[`cssnano-util-raw-"
+"cache`](https://github.com/cssnano/cssnano/tree/master/packages/cssnano-"
+"util-raw-cache)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:110
+msgid "Manages the raw value formatting for generated AST nodes."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:114
+msgid "[`postcss-calc`](https://github.com/postcss/postcss-calc) (external)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:116
+msgid "PostCSS plugin to reduce calc()"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:120
+msgid ""
+"[`postcss-"
+"colormin`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-colormin)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:122
+msgid "Minify colors in your CSS files with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:126
+msgid ""
+"[`postcss-convert-"
+"values`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"convert-values)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:128
+msgid "Convert values with PostCSS (e.g. ms -> s)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:130
+#: ../../source/cssnano-preset-default_README.md:202
+msgid "This plugin is loaded with the following configuration:"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:138
+msgid ""
+"[`postcss-discard-"
+"comments`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-discard-comments)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:140
+msgid "Discard comments in your CSS files with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:144
+msgid ""
+"[`postcss-discard-"
+"duplicates`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-discard-duplicates)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:146
+msgid "Discard duplicate rules in your CSS files with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:150
+msgid ""
+"[`postcss-discard-"
+"empty`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"discard-empty)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:152
+msgid "Discard empty rules and values with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:156
+msgid ""
+"[`postcss-discard-"
+"overridden`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-discard-overridden)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:158
+msgid "PostCSS plugin to discard overridden @keyframes or @counter-style."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:162
+msgid ""
+"[`postcss-merge-"
+"longhand`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-merge-longhand)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:164
+msgid "Merge longhand properties into shorthand with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:168
+msgid ""
+"[`postcss-merge-"
+"rules`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"merge-rules)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:170
+msgid "Merge CSS rules with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:174
+msgid ""
+"[`postcss-minify-font-"
+"values`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"minify-font-values)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:176
+msgid "Minify font declarations with PostCSS"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:180
+msgid ""
+"[`postcss-minify-"
+"gradients`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-minify-gradients)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:182
+msgid "Minify gradient parameters with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:186
+msgid ""
+"[`postcss-minify-"
+"params`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"minify-params)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:188
+msgid "Minify at-rule params with PostCSS"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:192
+msgid ""
+"[`postcss-minify-"
+"selectors`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-minify-selectors)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:194
+msgid "Minify selectors with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:198
+msgid ""
+"[`postcss-normalize-"
+"charset`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-normalize-charset)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:200
+msgid "Add necessary or remove extra charset with PostCSS"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:210
+msgid ""
+"[`postcss-normalize-display-"
+"values`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"normalize-display-values)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:212
+msgid "Normalize multiple value display syntaxes into single values."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:216
+msgid ""
+"[`postcss-normalize-"
+"positions`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-normalize-positions)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:218
+msgid "Normalize keyword values for position into length values."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:222
+msgid ""
+"[`postcss-normalize-repeat-"
+"style`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"normalize-repeat-style)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:224
+msgid "Convert two value syntax for repeat-style into one value."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:228
+msgid ""
+"[`postcss-normalize-"
+"string`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"normalize-string)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:230
+msgid "Normalize wrapping quotes for CSS string literals."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:234
+msgid ""
+"[`postcss-normalize-timing-"
+"functions`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-normalize-timing-functions)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:236
+msgid "Normalize CSS animation/transition timing functions."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:240
+msgid ""
+"[`postcss-normalize-"
+"unicode`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-normalize-unicode)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:242
+msgid "Normalize unicode-range descriptors, and can convert to wildcard ranges."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:246
+msgid ""
+"[`postcss-normalize-"
+"url`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"normalize-url)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:248
+msgid "Normalize URLs with PostCSS"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:252
+msgid ""
+"[`postcss-normalize-"
+"whitespace`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-normalize-whitespace)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:254
+msgid "Trim whitespace inside and around CSS rules & declarations."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:258
+msgid ""
+"[`postcss-ordered-"
+"values`](https://github.com/cssnano/cssnano/tree/master/packages/postcss-"
+"ordered-values)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:260
+msgid "Ensure values are ordered consistently in your CSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:264
+msgid ""
+"[`postcss-reduce-"
+"initial`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-reduce-initial)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:266
+msgid "Reduce initial definitions to the actual initial value, where possible."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:270
+msgid ""
+"[`postcss-reduce-"
+"transforms`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-reduce-transforms)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:272
+msgid "Reduce transform functions with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:276
+msgid ""
+"[`postcss-svgo`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-svgo)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:278
+msgid "Optimise inline SVG with PostCSS."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:282
+msgid ""
+"[`postcss-unique-"
+"selectors`](https://github.com/cssnano/cssnano/tree/master/packages"
+"/postcss-unique-selectors)"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:284
+msgid "Ensure CSS selectors are unique."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:289
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:291
+msgid ""
+"See "
+"[CONTRIBUTORS.md](https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md)."
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:294
+msgid "License"
+msgstr ""
+
+#: ../../source/cssnano-preset-default_README.md:296
+msgid "MIT © [Ben Briggs](http://beneb.info)"
+msgstr ""
+

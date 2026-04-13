@@ -1,0 +1,124 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/executivesummary.rst:2
+msgid "Executive Summary"
+msgstr ""
+
+#: ../../source/executivesummary.rst:4
+msgid ""
+"DATRO Consortium operates an automated outbound email marketing system on"
+" a dedicated AWS EC2 Ubuntu 24.04 server. The system targets UK-based "
+"consumers with information about the FCA car finance mis-selling claim "
+"process, directing recipients to the DATRO-affiliated portal at "
+"``car.financecheque.uk``."
+msgstr ""
+
+#: ../../source/executivesummary.rst:6
+msgid ""
+"The system uses the `Resend.com <https://resend.com>`__ transactional "
+"email API as its delivery backbone, driven by a Node.js script executed "
+"on a scheduled basis via the Linux ``cron`` daemon. Emails are dispatched"
+" one at a time at randomised intervals, cycling through a curated list of"
+" recipient addresses, with full progress tracking and logging."
+msgstr ""
+
+#: ../../source/executivesummary.rst:8
+msgid "**Key characteristics:**"
+msgstr ""
+
+#: ../../source/executivesummary.rst:10
+msgid "Fully automated, zero-intervention delivery pipeline"
+msgstr ""
+
+#: ../../source/executivesummary.rst:11
+msgid "Resend.com API for reliable transactional email delivery"
+msgstr ""
+
+#: ../../source/executivesummary.rst:12
+msgid "Progress-resumable: survives restarts without re-sending"
+msgstr ""
+
+#: ../../source/executivesummary.rst:13
+msgid "Randomised send intervals to avoid rate-limit bursts"
+msgstr ""
+
+#: ../../source/executivesummary.rst:14
+msgid "Comprehensive per-send log with timestamps and Resend message IDs"
+msgstr ""
+
+#: ../../source/executivesummary.rst:15
+msgid "Domain: ``car.financecheque.uk`` with custom SSL certificate"
+msgstr ""
+
+#: ../../source/executivesummary.rst:17
+msgid "**Campaign Details:**"
+msgstr ""
+
+#: ../../source/executivesummary.rst:20
+msgid "Subject Line"
+msgstr ""
+
+#: ../../source/executivesummary.rst:20
+msgid "Car Finance Cheque UK"
+msgstr ""
+
+#: ../../source/executivesummary.rst:22
+msgid "From Address"
+msgstr ""
+
+#: ../../source/executivesummary.rst:22
+msgid "noreply@car.financecheque.uk"
+msgstr ""
+
+#: ../../source/executivesummary.rst:24
+msgid "Delivery Method"
+msgstr ""
+
+#: ../../source/executivesummary.rst:24
+msgid "Resend.com API (transactional)"
+msgstr ""
+
+#: ../../source/executivesummary.rst:26
+msgid "Send Rate"
+msgstr ""
+
+#: ../../source/executivesummary.rst:26
+msgid "1 email per cron trigger (every 2 minutes)"
+msgstr ""
+
+#: ../../source/executivesummary.rst:28
+msgid "Daily Limit"
+msgstr ""
+
+#: ../../source/executivesummary.rst:28
+msgid "100 emails/day (Resend free tier)"
+msgstr ""
+
+#: ../../source/executivesummary.rst:30
+msgid "List Size"
+msgstr ""
+
+#: ../../source/executivesummary.rst:30
+msgid "6,369 recipients"
+msgstr ""
+

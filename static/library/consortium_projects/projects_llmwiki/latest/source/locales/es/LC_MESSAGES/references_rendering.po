@@ -1,0 +1,303 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_rendering.md:1
+msgid "Rendering Reference"
+msgstr ""
+
+#: ../../source/references_rendering.md:3
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../source/references_rendering.md:11
+msgid "CLI Reference"
+msgstr ""
+
+#: ../../source/references_rendering.md:21
+msgid "Quality Presets"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "Flag"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "Resolution"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "FPS"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "Use case"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "`-ql`"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "854x480"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "15"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "Draft iteration (layout, timing)"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "`-qm`"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "1280x720"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "30"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "Preview (use for text-heavy scenes)"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "`-qh`"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "1920x1080"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "60"
+msgstr ""
+
+#: ../../source/references_rendering.md
+msgid "Production"
+msgstr ""
+
+#: ../../source/references_rendering.md:29
+msgid ""
+"**Text rendering quality:** `-ql` (480p15) produces noticeably poor text "
+"kerning and readability. For scenes with significant text, preview stills"
+" at `-qm` to catch issues invisible at 480p. Use `-ql` only for testing "
+"layout and animation timing."
+msgstr ""
+
+#: ../../source/references_rendering.md:31
+msgid "Output Structure"
+msgstr ""
+
+#: ../../source/references_rendering.md:38
+msgid "Stitching with ffmpeg"
+msgstr ""
+
+#: ../../source/references_rendering.md:48
+msgid "Add Voiceover"
+msgstr ""
+
+#: ../../source/references_rendering.md:62
+msgid "Add Background Music"
+msgstr ""
+
+#: ../../source/references_rendering.md:70
+msgid "GIF Export"
+msgstr ""
+
+#: ../../source/references_rendering.md:78
+msgid "Aspect Ratios"
+msgstr ""
+
+#: ../../source/references_rendering.md:85
+msgid "Render Workflow"
+msgstr ""
+
+#: ../../source/references_rendering.md:87
+msgid "Draft render all scenes at `-ql`"
+msgstr ""
+
+#: ../../source/references_rendering.md:88
+msgid "Preview stills at key moments (`-s`)"
+msgstr ""
+
+#: ../../source/references_rendering.md:89
+msgid "Fix and re-render only broken scenes"
+msgstr ""
+
+#: ../../source/references_rendering.md:90
+msgid "Stitch with ffmpeg"
+msgstr ""
+
+#: ../../source/references_rendering.md:91
+msgid "Review stitched output"
+msgstr ""
+
+#: ../../source/references_rendering.md:92
+msgid "Production render at `-qh`"
+msgstr ""
+
+#: ../../source/references_rendering.md:93
+msgid "Re-stitch + add audio"
+msgstr ""
+
+#: ../../source/references_rendering.md:95
+msgid "manim.cfg — Project Configuration"
+msgstr ""
+
+#: ../../source/references_rendering.md:97
+msgid "Create `manim.cfg` in the project directory for per-project defaults:"
+msgstr ""
+
+#: ../../source/references_rendering.md:112
+msgid ""
+"This eliminates repetitive CLI flags and `self.camera.background_color` "
+"in every scene."
+msgstr ""
+
+#: ../../source/references_rendering.md:114
+msgid "Sections — Chapter Markers"
+msgstr ""
+
+#: ../../source/references_rendering.md:116
+msgid "Mark sections within a scene for organized output:"
+msgstr ""
+
+#: ../../source/references_rendering.md:131
+msgid ""
+"Render individual sections: `manim --save_sections script.py LongVideo` "
+"This outputs separate video files per section — useful for long videos "
+"where you want to re-render only one part."
+msgstr ""
+
+#: ../../source/references_rendering.md:134
+msgid "manim-voiceover Plugin (Recommended for Narrated Videos)"
+msgstr ""
+
+#: ../../source/references_rendering.md:136
+msgid ""
+"The official `manim-voiceover` plugin integrates TTS directly into scene "
+"code, auto-syncing animation duration to voiceover length. This is "
+"significantly cleaner than the manual ffmpeg muxing approach above."
+msgstr ""
+
+#: ../../source/references_rendering.md:138
+msgid "Installation"
+msgstr ""
+
+#: ../../source/references_rendering.md:147
+msgid "Usage"
+msgstr ""
+
+#: ../../source/references_rendering.md:169
+msgid "Key Features"
+msgstr ""
+
+#: ../../source/references_rendering.md:171
+msgid "`tracker.duration` — total voiceover duration in seconds"
+msgstr ""
+
+#: ../../source/references_rendering.md:172
+msgid ""
+"`tracker.time_until_bookmark(\"mark1\")` — sync specific animations to "
+"specific words"
+msgstr ""
+
+#: ../../source/references_rendering.md:173
+msgid "Auto-generates subtitle `.srt` files"
+msgstr ""
+
+#: ../../source/references_rendering.md:174
+msgid "Caches audio locally — re-renders don't re-generate TTS"
+msgstr ""
+
+#: ../../source/references_rendering.md:175
+msgid ""
+"Works with: ElevenLabs, Azure, Google TTS, pyttsx3 (offline), and custom "
+"services"
+msgstr ""
+
+#: ../../source/references_rendering.md:177
+msgid "Bookmarks for Precise Sync"
+msgstr ""
+
+#: ../../source/references_rendering.md:185
+msgid ""
+"This is the recommended approach for any video with narration. The manual"
+" ffmpeg muxing workflow above is still useful for adding background music"
+" or post-production audio mixing."
+msgstr ""
+
+#: ../../source/references_rendering.md:187
+msgid "Jellyfin Integration — Final Output"
+msgstr ""
+
+#: ../../source/references_rendering.md:189
+msgid ""
+"**Always deliver the final video to the Jellyfin library so it appears in"
+" the user's video library automatically.**"
+msgstr ""
+
+#: ../../source/references_rendering.md:191
+msgid "The Jellyfin video library lives at:"
+msgstr ""
+
+#: ../../source/references_rendering.md:196
+msgid "Delivery Protocol"
+msgstr ""
+
+#: ../../source/references_rendering.md:198
+msgid "After stitching the final `.mp4`:"
+msgstr ""
+
+#: ../../source/references_rendering.md:213
+msgid "Naming Conventions for Jellyfin"
+msgstr ""
+
+#: ../../source/references_rendering.md:215
+msgid "Jellyfin parses metadata from filenames. Use clear, descriptive names:"
+msgstr ""
+
+#: ../../source/references_rendering.md:228
+msgid ""
+"**Prefix with \"Manim - \"** so all AI-generated videos sort together in "
+"Jellyfin."
+msgstr ""
+
+#: ../../source/references_rendering.md:230
+msgid "Automated Delivery Step"
+msgstr ""
+
+#: ../../source/references_rendering.md:232
+msgid "Add this to the render pipeline after stitching:"
+msgstr ""
+
+#: ../../source/references_rendering.md:253
+msgid ""
+"Jellyfin's `LibraryMonitorDelay` is set to 60 seconds, so even without "
+"the API trigger the video will appear within ~1-2 minutes."
+msgstr ""
+

@@ -1,0 +1,248 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_conventional-commits.md:1
+msgid "Conventional Commits Quick Reference"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:3
+msgid "Format: `type(scope): description`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:5
+msgid "Types"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Type"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "When to use"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Example"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`feat`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "New feature or capability"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`feat(auth): add OAuth2 login flow`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`fix`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Bug fix"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`fix(api): handle null response from /users endpoint`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`refactor`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Code restructuring, no behavior change"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`refactor(db): extract query builder into separate module`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`docs`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Documentation only"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`docs: update API usage examples in README`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`test`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Adding or updating tests"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`test(auth): add integration tests for token refresh`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`ci`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "CI/CD configuration"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`ci: add Python 3.12 to test matrix`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`chore`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Maintenance, dependencies, tooling"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`chore: upgrade pytest to 8.x`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`perf`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Performance improvement"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`perf(search): add index on users.email column`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`style`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Formatting, whitespace, semicolons"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`style: run black formatter on src/`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`build`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Build system or external deps"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`build: switch from setuptools to hatch`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`revert`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "Reverts a previous commit"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md
+msgid "`revert: revert \"feat(auth): add OAuth2 login flow\"`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:21
+msgid "Scope (optional)"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:23
+msgid ""
+"Short identifier for the area of the codebase: `auth`, `api`, `db`, `ui`,"
+" `cli`, etc."
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:25
+msgid "Breaking Changes"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:27
+msgid "Add `!` after type or `BREAKING CHANGE:` in footer:"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:36
+msgid "Multi-line Body"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:38
+msgid "Wrap at 72 characters. Use bullet points for multiple changes:"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:51
+msgid "Linking Issues"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:53
+msgid "In the commit body or footer:"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:62
+msgid "Quick Decision Guide"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:64
+msgid "Added something new? → `feat`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:65
+msgid "Something was broken and you fixed it? → `fix`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:66
+msgid "Changed how code is organized but not what it does? → `refactor`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:67
+msgid "Only touched tests? → `test`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:68
+msgid "Only touched docs? → `docs`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:69
+msgid "Updated CI/CD pipelines? → `ci`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:70
+msgid "Updated dependencies or tooling? → `chore`"
+msgstr ""
+
+#: ../../source/references_conventional-commits.md:71
+msgid "Made something faster? → `perf`"
+msgstr ""
+

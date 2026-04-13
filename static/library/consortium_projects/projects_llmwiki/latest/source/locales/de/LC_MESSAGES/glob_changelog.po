@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/glob_changelog.md:1
+msgid "7.0"
+msgstr ""
+
+#: ../../source/glob_changelog.md:3
+msgid "Raise error if `options.cwd` is specified, and not a directory"
+msgstr ""
+
+#: ../../source/glob_changelog.md:5
+msgid "6.0"
+msgstr ""
+
+#: ../../source/glob_changelog.md:7
+msgid "Remove comment and negation pattern support"
+msgstr ""
+
+#: ../../source/glob_changelog.md:8
+msgid "Ignore patterns are always in `dot:true` mode"
+msgstr ""
+
+#: ../../source/glob_changelog.md:10
+msgid "5.0"
+msgstr ""
+
+#: ../../source/glob_changelog.md:12
+msgid "Deprecate comment and negation patterns"
+msgstr ""
+
+#: ../../source/glob_changelog.md:13
+msgid ""
+"Fix regression in `mark` and `nodir` options from making all cache keys "
+"absolute path."
+msgstr ""
+
+#: ../../source/glob_changelog.md:15
+msgid "Abort if `fs.readdir` returns an error that's unexpected"
+msgstr ""
+
+#: ../../source/glob_changelog.md:16
+msgid "Don't emit `match` events for ignored items"
+msgstr ""
+
+#: ../../source/glob_changelog.md:17
+msgid "Treat ENOTSUP like ENOTDIR in readdir"
+msgstr ""
+
+#: ../../source/glob_changelog.md:19
+msgid "4.5"
+msgstr ""
+
+#: ../../source/glob_changelog.md:21
+msgid "Add `options.follow` to always follow directory symlinks in globstar"
+msgstr ""
+
+#: ../../source/glob_changelog.md:22
+msgid "Add `options.realpath` to call `fs.realpath` on all results"
+msgstr ""
+
+#: ../../source/glob_changelog.md:23
+msgid "Always cache based on absolute path"
+msgstr ""
+
+#: ../../source/glob_changelog.md:25
+msgid "4.4"
+msgstr ""
+
+#: ../../source/glob_changelog.md:27
+msgid "Add `options.ignore`"
+msgstr ""
+
+#: ../../source/glob_changelog.md:28
+msgid "Fix handling of broken symlinks"
+msgstr ""
+
+#: ../../source/glob_changelog.md:30
+msgid "4.3"
+msgstr ""
+
+#: ../../source/glob_changelog.md:32
+msgid "Bump minimatch to 2.x"
+msgstr ""
+
+#: ../../source/glob_changelog.md:33
+msgid "Pass all tests on Windows"
+msgstr ""
+
+#: ../../source/glob_changelog.md:35
+msgid "4.2"
+msgstr ""
+
+#: ../../source/glob_changelog.md:37
+msgid "Add `glob.hasMagic` function"
+msgstr ""
+
+#: ../../source/glob_changelog.md:38
+msgid "Add `options.nodir` flag"
+msgstr ""
+
+#: ../../source/glob_changelog.md:40
+msgid "4.1"
+msgstr ""
+
+#: ../../source/glob_changelog.md:42
+msgid "Refactor sync and async implementations for performance"
+msgstr ""
+
+#: ../../source/glob_changelog.md:43
+msgid "Throw if callback provided to sync glob function"
+msgstr ""
+
+#: ../../source/glob_changelog.md:44
+msgid "Treat symbolic links in globstar results the same as Bash 4.3"
+msgstr ""
+
+#: ../../source/glob_changelog.md:46
+msgid "4.0"
+msgstr ""
+
+#: ../../source/glob_changelog.md:48
+msgid ""
+"Use `^` for dependency versions (bumped major because this breaks older "
+"npm versions)"
+msgstr ""
+
+#: ../../source/glob_changelog.md:50
+msgid "Ensure callbacks are only ever called once"
+msgstr ""
+
+#: ../../source/glob_changelog.md:51
+msgid "switch to ISC license"
+msgstr ""
+
+#: ../../source/glob_changelog.md:53
+msgid "3.x"
+msgstr ""
+
+#: ../../source/glob_changelog.md:55
+msgid "Rewrite in JavaScript"
+msgstr ""
+
+#: ../../source/glob_changelog.md:56
+msgid "Add support for setting root, cwd, and windows support"
+msgstr ""
+
+#: ../../source/glob_changelog.md:57
+msgid "Cache many fs calls"
+msgstr ""
+
+#: ../../source/glob_changelog.md:58
+msgid "Add globstar support"
+msgstr ""
+
+#: ../../source/glob_changelog.md:59
+msgid "emit match events"
+msgstr ""
+
+#: ../../source/glob_changelog.md:61
+msgid "2.x"
+msgstr ""
+
+#: ../../source/glob_changelog.md:63
+msgid "Use `glob.h` and `fnmatch.h` from NetBSD"
+msgstr ""
+
+#: ../../source/glob_changelog.md:65
+msgid "1.x"
+msgstr ""
+
+#: ../../source/glob_changelog.md:67
+msgid "`glob.h` static binding."
+msgstr ""
+

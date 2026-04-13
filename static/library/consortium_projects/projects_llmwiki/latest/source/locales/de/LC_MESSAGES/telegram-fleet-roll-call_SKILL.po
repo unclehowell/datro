@@ -1,0 +1,128 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:11
+msgid "Telegram Fleet Roll Call Setup"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:13
+msgid "Problem"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:15
+msgid ""
+"Each Hermes gateway filters incoming messages by `allowed_users` in its "
+"config.yaml. If Agent A sends a message to Agent B's bot, Agent B sees it"
+" as coming from Agent A's bot user ID, not Agent B's allowed user. "
+"Without cross-listing, agents can't reply to each other and roll calls "
+"fail silently."
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:20
+msgid "Steps"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:22
+msgid "1. Discover all bot user IDs"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:57
+msgid "2. Update each agent's config.yaml"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:59
+msgid "Edit `platforms.telegram.allowed_users` in every agent:"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:68
+msgid "3. Restart all gateway processes"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:74
+msgid "Verify running:"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:79
+msgid "Should return the expected number of agent processes."
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:81
+msgid "4. Verify roll call"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:83
+msgid ""
+"Send a message to ALL bots simultaneously. Each bot should now reply "
+"because they recognize the sender (which is another bot's user ID, now in"
+" their allowed_users)."
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:86
+msgid "5. Check pairing for new bots"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:88
+msgid "When a new bot is first started, it may need pairing approval:"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:93
+msgid ""
+"The code is printed by the bot when it first receives a message from an "
+"unknown user."
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:95
+msgid "Pitfalls"
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:97
+msgid ""
+"**Restart required:** Changing `allowed_users` does NOT take effect until"
+" the gateway process restarts. There is no hot-reload for this setting."
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:99
+msgid ""
+"**Quote the string:** `allowed_users` must be a string in YAML, use "
+"`'ID1,ID2,ID3'`."
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:100
+msgid ""
+"**Don't forget the human user:** The human user's chat_id (5837518218) "
+"must remain in the list, or they lose access."
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:102
+msgid ""
+"**Each machine is separate:** If agents are spread across machines "
+"(command, ai, laptop), you must update configs on each machine "
+"separately."
+msgstr ""
+
+#: ../../source/telegram-fleet-roll-call_SKILL.md:104
+msgid ""
+"**Roll call delivery:** Use `cronjob(action='list')` to find the roll "
+"call cron job and check its `deliver` target. If it delivers to `origin`,"
+" it sends back through whatever channel the user contacted from."
+msgstr ""
+

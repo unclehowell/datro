@@ -1,0 +1,173 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/define-property_CHANGELOG.md:1
+msgid "Release history"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](http://keepachangelog.com/en/1.0.0/) and this project adheres "
+"to [Semantic Versioning](http://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:11
+msgid "Changelogs are for humans, not machines."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:12
+msgid "There should be an entry for every single version."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:13
+msgid "The same types of changes should be grouped."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:14
+msgid "Versions and sections should be linkable."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:15
+msgid "The latest version comes first."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:16
+msgid "The release date of each versions is displayed."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:17
+msgid "Mention whether you follow Semantic Versioning."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:24
+msgid ""
+"Changelog entries are classified using the following labels _(from "
+"[keep-a-changelog](http://keepachangelog.com/)_):"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:26
+msgid "`Added` for new features."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:27
+msgid "`Changed` for changes in existing functionality."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:28
+msgid "`Deprecated` for soon-to-be removed features."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:29
+msgid "`Removed` for now removed features."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:30
+msgid "`Fixed` for any bug fixes."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:31
+msgid "`Security` in case of vulnerabilities."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:35
+msgid "[2.0.0] - 2017-04-20"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:37
+msgid "Changed"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:39
+msgid "Now supports data descriptors in addition to accessor descriptors."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:40
+msgid ""
+"Now uses [Reflect.defineProperty][reflect] when available, otherwise "
+"falls back to [Object.defineProperty][object]."
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:42
+msgid "[1.0.0] - 2017-04-20"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:44
+msgid "stable release"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:46
+msgid "[0.2.5] - 2015-08-31"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:48
+msgid "use is-descriptor"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:50
+msgid "[0.2.3] - 2015-08-29"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:52
+msgid "check keys length"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:54
+msgid "[0.2.2] - 2015-08-27"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:56
+msgid "ensure val is an object"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:58
+msgid "[0.2.1] - 2015-08-27"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:60
+msgid "support functions"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:62
+msgid "[0.2.0] - 2015-08-27"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:64
+msgid "support get/set"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:65
+msgid "update docs"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:67
+msgid "[0.1.0] - 2015-08-12"
+msgstr ""
+
+#: ../../source/define-property_CHANGELOG.md:69
+msgid "first commit"
+msgstr ""
+

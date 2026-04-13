@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_server-deployment.md:1
+msgid "Server Deployment Patterns"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:3
+msgid "Contents"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:4
+#: ../../source/references_server-deployment.md:11
+msgid "Docker deployment"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:5
+#: ../../source/references_server-deployment.md:56
+msgid "Kubernetes deployment"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:6
+#: ../../source/references_server-deployment.md:119
+msgid "Load balancing with Nginx"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:7
+#: ../../source/references_server-deployment.md:165
+msgid "Multi-node distributed serving"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:8
+#: ../../source/references_server-deployment.md:193
+msgid "Production configuration examples"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:9
+#: ../../source/references_server-deployment.md:221
+msgid "Health checks and monitoring"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:13
+msgid "**Basic Dockerfile**:"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:27
+msgid "**Build and run**:"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:33
+msgid "**Docker Compose** (with metrics):"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:58
+msgid "**Deployment manifest**:"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:121
+msgid "**Nginx configuration**:"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:150
+msgid "**Start multiple vLLM instances**:"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:167
+msgid "For models too large for single node:"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:169
+msgid "**Node 1** (master):"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:181
+msgid "**Node 2** (worker):"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:195
+msgid "**High throughput** (batch-heavy workload):"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:204
+msgid "**Low latency** (interactive workload):"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:212
+msgid "**Memory-constrained** (40GB GPU for 70B model):"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:223
+msgid "**Health check endpoint**:"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:229
+msgid "**Readiness check** (wait for model loaded):"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:239
+msgid "**Prometheus scraping**:"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:250
+msgid "**Grafana dashboard** (key metrics):"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:251
+msgid "Requests per second: `rate(vllm_request_success_total[5m])`"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:252
+msgid ""
+"TTFT p50: `histogram_quantile(0.5, "
+"vllm_time_to_first_token_seconds_bucket)`"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:253
+msgid ""
+"TTFT p99: `histogram_quantile(0.99, "
+"vllm_time_to_first_token_seconds_bucket)`"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:254
+msgid "GPU cache usage: `vllm_gpu_cache_usage_perc`"
+msgstr ""
+
+#: ../../source/references_server-deployment.md:255
+msgid "Active requests: `vllm_num_requests_running`"
+msgstr ""
+

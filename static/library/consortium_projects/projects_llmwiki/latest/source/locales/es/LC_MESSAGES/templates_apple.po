@@ -1,0 +1,1633 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_apple.md:1
+msgid "Design System: Apple"
+msgstr ""
+
+#: ../../source/templates_apple.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_apple.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_apple.md:7
+msgid "**Primary:** `system-ui` | **Mono:** `SF Mono (system)`"
+msgstr ""
+
+#: ../../source/templates_apple.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: system-ui, -apple-system, 'Segoe UI',"
+" Roboto, 'Helvetica Neue', Arial, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_apple.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'SF Mono (system)', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_apple.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_apple.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_apple.md:18
+msgid ""
+"Apple's website is a masterclass in controlled drama — vast expanses of "
+"pure black and near-white serve as cinematic backdrops for products that "
+"are photographed as if they were sculptures in a gallery. The design "
+"philosophy is reductive to its core: every pixel exists in service of the"
+" product, and the interface itself retreats until it becomes invisible. "
+"This is not minimalism as aesthetic preference; it is minimalism as "
+"reverence for the object."
+msgstr ""
+
+#: ../../source/templates_apple.md:20
+msgid ""
+"The typography anchors everything. San Francisco (SF Pro Display for "
+"large sizes, SF Pro Text for body) is Apple's proprietary typeface, "
+"engineered with optical sizing that automatically adjusts letterforms "
+"depending on point size. At display sizes (56px), weight 600 with a tight"
+" line-height of 1.07 and subtle negative letter-spacing (-0.28px) creates"
+" headlines that feel machined rather than typeset — precise, confident, "
+"and unapologetically direct. At body sizes (17px), the tracking loosens "
+"slightly (-0.374px) and line-height opens to 1.47, creating a reading "
+"rhythm that is comfortable without ever feeling slack."
+msgstr ""
+
+#: ../../source/templates_apple.md:22
+msgid ""
+"The color story is starkly binary. Product sections alternate between "
+"pure black (`#000000`) backgrounds with white text and light gray "
+"(`#f5f5f7`) backgrounds with near-black text (`#1d1d1f`). This creates a "
+"cinematic pacing — dark sections feel immersive and premium, light "
+"sections feel open and informational. The only chromatic accent is Apple "
+"Blue (`#0071e3`), reserved exclusively for interactive elements: links, "
+"buttons, and focus states. This singular accent color in a sea of "
+"neutrals gives every clickable element unmistakable visibility."
+msgstr ""
+
+#: ../../source/templates_apple.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_apple.md:25
+msgid ""
+"SF Pro Display/Text with optical sizing — letterforms adapt automatically"
+" to size context"
+msgstr ""
+
+#: ../../source/templates_apple.md:26
+msgid ""
+"Binary light/dark section rhythm: black (`#000000`) alternating with "
+"light gray (`#f5f5f7`)"
+msgstr ""
+
+#: ../../source/templates_apple.md:27
+msgid ""
+"Single accent color: Apple Blue (`#0071e3`) reserved exclusively for "
+"interactive elements"
+msgstr ""
+
+#: ../../source/templates_apple.md:28
+msgid ""
+"Product-as-hero photography on solid color fields — no gradients, no "
+"textures, no distractions"
+msgstr ""
+
+#: ../../source/templates_apple.md:29
+msgid ""
+"Extremely tight headline line-heights (1.07-1.14) creating compressed, "
+"billboard-like impact"
+msgstr ""
+
+#: ../../source/templates_apple.md:30
+msgid ""
+"Full-width section layout with centered content — the viewport IS the "
+"canvas"
+msgstr ""
+
+#: ../../source/templates_apple.md:31
+msgid "Pill-shaped CTAs (980px radius) creating soft, approachable action buttons"
+msgstr ""
+
+#: ../../source/templates_apple.md:32
+msgid ""
+"Generous whitespace between sections allowing each product moment to "
+"breathe"
+msgstr ""
+
+#: ../../source/templates_apple.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_apple.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_apple.md:37
+msgid ""
+"**Pure Black** (`#000000`): Hero section backgrounds, immersive product "
+"showcases. The darkest canvas for the brightest products."
+msgstr ""
+
+#: ../../source/templates_apple.md:38
+msgid ""
+"**Light Gray** (`#f5f5f7`): Alternate section backgrounds, informational "
+"areas. Not white — the slight blue-gray tint prevents sterility."
+msgstr ""
+
+#: ../../source/templates_apple.md:39
+msgid ""
+"**Near Black** (`#1d1d1f`): Primary text on light backgrounds, dark "
+"button fills. Slightly warmer than pure black for comfortable reading."
+msgstr ""
+
+#: ../../source/templates_apple.md:41
+msgid "Interactive"
+msgstr ""
+
+#: ../../source/templates_apple.md:42
+msgid ""
+"**Apple Blue** (`#0071e3`): `--sk-focus-color`, primary CTA backgrounds, "
+"focus rings. The ONLY chromatic color in the interface."
+msgstr ""
+
+#: ../../source/templates_apple.md:43
+msgid ""
+"**Link Blue** (`#0066cc`): `--sk-body-link-color`, inline text links. "
+"Slightly darker than Apple Blue for text-level readability."
+msgstr ""
+
+#: ../../source/templates_apple.md:44
+msgid ""
+"**Bright Blue** (`#2997ff`): Links on dark backgrounds. Higher luminance "
+"for contrast on black sections."
+msgstr ""
+
+#: ../../source/templates_apple.md:46
+msgid "Text"
+msgstr ""
+
+#: ../../source/templates_apple.md:47
+msgid ""
+"**White** (`#ffffff`): Text on dark backgrounds, button text on blue/dark"
+" CTAs."
+msgstr ""
+
+#: ../../source/templates_apple.md:48
+msgid "**Near Black** (`#1d1d1f`): Primary body text on light backgrounds."
+msgstr ""
+
+#: ../../source/templates_apple.md:49
+msgid ""
+"**Black 80%** (`rgba(0, 0, 0, 0.8)`): Secondary text, nav items on light "
+"backgrounds. Slightly softened."
+msgstr ""
+
+#: ../../source/templates_apple.md:50
+msgid ""
+"**Black 48%** (`rgba(0, 0, 0, 0.48)`): Tertiary text, disabled states, "
+"carousel controls."
+msgstr ""
+
+#: ../../source/templates_apple.md:52
+msgid "Surface & Dark Variants"
+msgstr ""
+
+#: ../../source/templates_apple.md:53
+msgid "**Dark Surface 1** (`#272729`): Card backgrounds in dark sections."
+msgstr ""
+
+#: ../../source/templates_apple.md:54
+msgid "**Dark Surface 2** (`#262628`): Subtle surface variation in dark contexts."
+msgstr ""
+
+#: ../../source/templates_apple.md:55
+msgid "**Dark Surface 3** (`#28282a`): Elevated cards on dark backgrounds."
+msgstr ""
+
+#: ../../source/templates_apple.md:56
+msgid "**Dark Surface 4** (`#2a2a2d`): Highest dark surface elevation."
+msgstr ""
+
+#: ../../source/templates_apple.md:57
+msgid "**Dark Surface 5** (`#242426`): Deepest dark surface tone."
+msgstr ""
+
+#: ../../source/templates_apple.md:59
+msgid "Button States"
+msgstr ""
+
+#: ../../source/templates_apple.md:60
+msgid "**Button Active** (`#ededf2`): Active/pressed state for light buttons."
+msgstr ""
+
+#: ../../source/templates_apple.md:61
+msgid "**Button Default Light** (`#fafafc`): Search/filter button backgrounds."
+msgstr ""
+
+#: ../../source/templates_apple.md:62
+msgid "**Overlay** (`rgba(210, 210, 215, 0.64)`): Media control scrims, overlays."
+msgstr ""
+
+#: ../../source/templates_apple.md:63
+msgid ""
+"**White 32%** (`rgba(255, 255, 255, 0.32)`): Hover state on dark modal "
+"close buttons."
+msgstr ""
+
+#: ../../source/templates_apple.md:65
+msgid "Shadows"
+msgstr ""
+
+#: ../../source/templates_apple.md:66
+msgid ""
+"**Card Shadow** (`rgba(0, 0, 0, 0.22) 3px 5px 30px 0px`): Soft, diffused "
+"elevation for product cards. Offset and wide blur create a natural, "
+"photographic shadow."
+msgstr ""
+
+#: ../../source/templates_apple.md:68
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_apple.md:70
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_apple.md:71
+msgid ""
+"**Display**: `SF Pro Display`, with fallbacks: `SF Pro Icons, Helvetica "
+"Neue, Helvetica, Arial, sans-serif`"
+msgstr ""
+
+#: ../../source/templates_apple.md:72
+msgid ""
+"**Body**: `SF Pro Text`, with fallbacks: `SF Pro Icons, Helvetica Neue, "
+"Helvetica, Arial, sans-serif`"
+msgstr ""
+
+#: ../../source/templates_apple.md:73
+msgid ""
+"SF Pro Display is used at 20px and above; SF Pro Text is optimized for "
+"19px and below."
+msgstr ""
+
+#: ../../source/templates_apple.md:75
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "SF Pro Display"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "56px (3.50rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.07 (tight)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "-0.28px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Product launch headlines, maximum impact"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "40px (2.50rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.10 (tight)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Feature section titles"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Tile Heading"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "28px (1.75rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.14 (tight)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "0.196px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Product tile headlines"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Card Title"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "21px (1.31rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.19 (tight)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "0.231px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Bold card headings"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Regular card headings"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Nav Heading"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "SF Pro Text"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "34px (2.13rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.47"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "-0.374px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Large navigation headings"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Sub-nav"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "24px (1.50rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "300"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Light sub-navigation text"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "17px (1.06rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Standard reading text"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Body Emphasis"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.24 (tight)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Emphasized body text, labels"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Button Large"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Large button text, light weight"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "2.41 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Standard button text"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Link"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.43"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "-0.224px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Body links, \"Learn more\""
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.29 (tight)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Secondary text, descriptions"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Caption Bold"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Emphasized captions"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "-0.12px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Fine print, footnotes"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Micro Bold"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Bold fine print"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Nano"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "10px (0.63rem)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "-0.08px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Legal text, smallest size"
+msgstr ""
+
+#: ../../source/templates_apple.md:97
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_apple.md:98
+msgid ""
+"**Optical sizing as philosophy**: SF Pro automatically switches between "
+"Display and Text optical sizes. Display versions have wider letter "
+"spacing and thinner strokes optimized for large sizes; Text versions are "
+"tighter and sturdier for small sizes. This means the font literally "
+"changes its DNA based on context."
+msgstr ""
+
+#: ../../source/templates_apple.md:99
+msgid ""
+"**Weight restraint**: The scale spans 300 (light) to 700 (bold) but most "
+"text lives at 400 (regular) and 600 (semibold). Weight 300 appears only "
+"on large decorative text. Weight 700 is rare, used only for bold card "
+"titles."
+msgstr ""
+
+#: ../../source/templates_apple.md:100
+msgid ""
+"**Negative tracking at all sizes**: Unlike most systems that only track "
+"headlines, Apple applies subtle negative letter-spacing even at body "
+"sizes (-0.374px at 17px, -0.224px at 14px, -0.12px at 12px). This creates"
+" universally tight, efficient text."
+msgstr ""
+
+#: ../../source/templates_apple.md:101
+msgid ""
+"**Extreme line-height range**: Headlines compress to 1.07 while body text"
+" opens to 1.47, and some button contexts stretch to 2.41. This dramatic "
+"range creates clear visual hierarchy through rhythm alone."
+msgstr ""
+
+#: ../../source/templates_apple.md:103
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_apple.md:105
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_apple.md:107
+msgid "**Primary Blue (CTA)**"
+msgstr ""
+
+#: ../../source/templates_apple.md:108
+msgid "Background: `#0071e3` (Apple Blue)"
+msgstr ""
+
+#: ../../source/templates_apple.md:109 ../../source/templates_apple.md:121
+msgid "Text: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_apple.md:110 ../../source/templates_apple.md:122
+msgid "Padding: 8px 15px"
+msgstr ""
+
+#: ../../source/templates_apple.md:111 ../../source/templates_apple.md:123
+msgid "Radius: 8px"
+msgstr ""
+
+#: ../../source/templates_apple.md:112
+msgid "Border: 1px solid transparent"
+msgstr ""
+
+#: ../../source/templates_apple.md:113 ../../source/templates_apple.md:124
+msgid "Font: SF Pro Text, 17px, weight 400"
+msgstr ""
+
+#: ../../source/templates_apple.md:114
+msgid "Hover: background brightens slightly"
+msgstr ""
+
+#: ../../source/templates_apple.md:115
+msgid "Active: `#ededf2` background shift"
+msgstr ""
+
+#: ../../source/templates_apple.md:116 ../../source/templates_apple.md:142
+msgid "Focus: `2px solid var(--sk-focus-color, #0071E3)` outline"
+msgstr ""
+
+#: ../../source/templates_apple.md:117
+msgid "Use: Primary call-to-action (\"Buy\", \"Shop iPhone\")"
+msgstr ""
+
+#: ../../source/templates_apple.md:119
+msgid "**Primary Dark**"
+msgstr ""
+
+#: ../../source/templates_apple.md:120
+msgid "Background: `#1d1d1f`"
+msgstr ""
+
+#: ../../source/templates_apple.md:125
+msgid "Use: Secondary CTA, dark variant"
+msgstr ""
+
+#: ../../source/templates_apple.md:127
+msgid "**Pill Link (Learn More / Shop)**"
+msgstr ""
+
+#: ../../source/templates_apple.md:128
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_apple.md:129
+msgid "Text: `#0066cc` (light bg) or `#2997ff` (dark bg)"
+msgstr ""
+
+#: ../../source/templates_apple.md:130
+msgid "Radius: 980px (full pill)"
+msgstr ""
+
+#: ../../source/templates_apple.md:131
+msgid "Border: 1px solid `#0066cc`"
+msgstr ""
+
+#: ../../source/templates_apple.md:132
+msgid "Font: SF Pro Text, 14px-17px"
+msgstr ""
+
+#: ../../source/templates_apple.md:133
+msgid "Hover: underline decoration"
+msgstr ""
+
+#: ../../source/templates_apple.md:134
+msgid "Use: \"Learn more\" and \"Shop\" links — the signature Apple inline CTA"
+msgstr ""
+
+#: ../../source/templates_apple.md:136
+msgid "**Filter / Search Button**"
+msgstr ""
+
+#: ../../source/templates_apple.md:137
+msgid "Background: `#fafafc`"
+msgstr ""
+
+#: ../../source/templates_apple.md:138
+msgid "Text: `rgba(0, 0, 0, 0.8)`"
+msgstr ""
+
+#: ../../source/templates_apple.md:139
+msgid "Padding: 0px 14px"
+msgstr ""
+
+#: ../../source/templates_apple.md:140
+msgid "Radius: 11px"
+msgstr ""
+
+#: ../../source/templates_apple.md:141
+msgid "Border: 3px solid `rgba(0, 0, 0, 0.04)`"
+msgstr ""
+
+#: ../../source/templates_apple.md:143
+msgid "Use: Search bars, filter controls"
+msgstr ""
+
+#: ../../source/templates_apple.md:145
+msgid "**Media Control**"
+msgstr ""
+
+#: ../../source/templates_apple.md:146
+msgid "Background: `rgba(210, 210, 215, 0.64)`"
+msgstr ""
+
+#: ../../source/templates_apple.md:147
+msgid "Text: `rgba(0, 0, 0, 0.48)`"
+msgstr ""
+
+#: ../../source/templates_apple.md:148
+msgid "Radius: 50% (circular)"
+msgstr ""
+
+#: ../../source/templates_apple.md:149
+msgid "Active: scale(0.9), background shifts"
+msgstr ""
+
+#: ../../source/templates_apple.md:150
+msgid ""
+"Focus: `2px solid var(--sk-focus-color, #0071e3)` outline, white bg, "
+"black text"
+msgstr ""
+
+#: ../../source/templates_apple.md:151
+msgid "Use: Play/pause, carousel arrows"
+msgstr ""
+
+#: ../../source/templates_apple.md:153
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_apple.md:154
+msgid "Background: `#f5f5f7` (light) or `#272729`-`#2a2a2d` (dark)"
+msgstr ""
+
+#: ../../source/templates_apple.md:155
+msgid "Border: none (borders are rare in Apple's system)"
+msgstr ""
+
+#: ../../source/templates_apple.md:156
+msgid "Radius: 5px-8px"
+msgstr ""
+
+#: ../../source/templates_apple.md:157
+msgid "Shadow: `rgba(0, 0, 0, 0.22) 3px 5px 30px 0px` for elevated product cards"
+msgstr ""
+
+#: ../../source/templates_apple.md:158
+msgid "Content: centered, generous padding"
+msgstr ""
+
+#: ../../source/templates_apple.md:159
+msgid ""
+"Hover: no standard hover state — cards are static, links within them are "
+"interactive"
+msgstr ""
+
+#: ../../source/templates_apple.md:161
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_apple.md:162
+msgid ""
+"Background: `rgba(0, 0, 0, 0.8)` (translucent dark) with `backdrop-"
+"filter: saturate(180%) blur(20px)`"
+msgstr ""
+
+#: ../../source/templates_apple.md:163
+msgid "Height: 48px (compact)"
+msgstr ""
+
+#: ../../source/templates_apple.md:164
+msgid "Text: `#ffffff` at 12px, weight 400"
+msgstr ""
+
+#: ../../source/templates_apple.md:165
+msgid "Active: underline on hover"
+msgstr ""
+
+#: ../../source/templates_apple.md:166
+msgid "Logo: Apple logomark (SVG) centered or left-aligned, 17x48px viewport"
+msgstr ""
+
+#: ../../source/templates_apple.md:167
+msgid "Mobile: collapses to hamburger with full-screen overlay menu"
+msgstr ""
+
+#: ../../source/templates_apple.md:168
+msgid ""
+"The nav floats above content, maintaining its dark translucent glass "
+"regardless of section background"
+msgstr ""
+
+#: ../../source/templates_apple.md:170
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_apple.md:171
+msgid ""
+"Products on solid-color fields (black or white) — no backgrounds, no "
+"context, just the object"
+msgstr ""
+
+#: ../../source/templates_apple.md:172
+msgid "Full-bleed section images that span the entire viewport width"
+msgstr ""
+
+#: ../../source/templates_apple.md:173
+msgid "Product photography at extremely high resolution with subtle shadows"
+msgstr ""
+
+#: ../../source/templates_apple.md:174
+msgid "Lifestyle images confined to rounded-corner containers (12px+ radius)"
+msgstr ""
+
+#: ../../source/templates_apple.md:176
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_apple.md:178
+msgid "**Product Hero Module**"
+msgstr ""
+
+#: ../../source/templates_apple.md:179
+msgid "Full-viewport-width section with solid background (black or `#f5f5f7`)"
+msgstr ""
+
+#: ../../source/templates_apple.md:180
+msgid "Product name as the primary headline (SF Pro Display, 56px, weight 600)"
+msgstr ""
+
+#: ../../source/templates_apple.md:181
+msgid "One-line descriptor below in lighter weight"
+msgstr ""
+
+#: ../../source/templates_apple.md:182
+msgid ""
+"Two pill CTAs side by side: \"Learn more\" (outline) and \"Buy\" / "
+"\"Shop\" (filled)"
+msgstr ""
+
+#: ../../source/templates_apple.md:184
+msgid "**Product Grid Tile**"
+msgstr ""
+
+#: ../../source/templates_apple.md:185
+msgid "Square or near-square card on contrasting background"
+msgstr ""
+
+#: ../../source/templates_apple.md:186
+#, python-format
+msgid "Product image dominating 60-70% of the tile"
+msgstr ""
+
+#: ../../source/templates_apple.md:187
+msgid "Product name + one-line description below"
+msgstr ""
+
+#: ../../source/templates_apple.md:188
+msgid "\"Learn more\" and \"Shop\" link pair at bottom"
+msgstr ""
+
+#: ../../source/templates_apple.md:190
+msgid "**Feature Comparison Strip**"
+msgstr ""
+
+#: ../../source/templates_apple.md:191
+msgid "Horizontal scroll of product variants"
+msgstr ""
+
+#: ../../source/templates_apple.md:192
+msgid "Each variant as a vertical card with image, name, and key specs"
+msgstr ""
+
+#: ../../source/templates_apple.md:193
+msgid "Minimal chrome — the products speak for themselves"
+msgstr ""
+
+#: ../../source/templates_apple.md:195
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_apple.md:197
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_apple.md:198
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_apple.md:199
+msgid ""
+"Scale: 2px, 4px, 5px, 6px, 7px, 8px, 9px, 10px, 11px, 14px, 15px, 17px, "
+"20px, 24px"
+msgstr ""
+
+#: ../../source/templates_apple.md:200
+msgid ""
+"Notable characteristic: the scale is dense at small sizes (2-11px) with "
+"granular 1px increments, then jumps in larger steps. This allows precise "
+"micro-adjustments for typography and icon alignment."
+msgstr ""
+
+#: ../../source/templates_apple.md:202
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_apple.md:203
+msgid ""
+"Max content width: approximately 980px (the recurring \"980px radius\" in"
+" pill buttons echoes this width)"
+msgstr ""
+
+#: ../../source/templates_apple.md:204
+msgid "Hero: full-viewport-width sections with centered content block"
+msgstr ""
+
+#: ../../source/templates_apple.md:205
+msgid "Product grids: 2-3 column layouts within centered container"
+msgstr ""
+
+#: ../../source/templates_apple.md:206
+msgid "Single-column for hero moments — one product, one message, full attention"
+msgstr ""
+
+#: ../../source/templates_apple.md:207
+msgid "No visible grid lines or gutters — spacing creates implied structure"
+msgstr ""
+
+#: ../../source/templates_apple.md:209
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_apple.md:210
+msgid ""
+"**Cinematic breathing room**: Each product section occupies a full "
+"viewport height (or close to it). The whitespace between products is not "
+"empty — it is the pause between scenes in a film."
+msgstr ""
+
+#: ../../source/templates_apple.md:211
+msgid ""
+"**Vertical rhythm through color blocks**: Rather than using spacing alone"
+" to separate sections, Apple uses alternating background colors (black, "
+"`#f5f5f7`, white). Each color change signals a new \"scene.\""
+msgstr ""
+
+#: ../../source/templates_apple.md:212
+msgid ""
+"**Compression within, expansion between**: Text blocks are tightly set "
+"(negative letter-spacing, tight line-heights) while the space surrounding"
+" them is vast. This creates a tension between density and openness."
+msgstr ""
+
+#: ../../source/templates_apple.md:214
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_apple.md:215
+msgid "Micro (5px): Small containers, link tags"
+msgstr ""
+
+#: ../../source/templates_apple.md:216
+msgid "Standard (8px): Buttons, product cards, image containers"
+msgstr ""
+
+#: ../../source/templates_apple.md:217
+msgid "Comfortable (11px): Search inputs, filter buttons"
+msgstr ""
+
+#: ../../source/templates_apple.md:218
+msgid "Large (12px): Feature panels, lifestyle image containers"
+msgstr ""
+
+#: ../../source/templates_apple.md:219
+msgid "Full Pill (980px): CTA links (\"Learn more\", \"Shop\"), navigation pills"
+msgstr ""
+
+#: ../../source/templates_apple.md:220
+msgid "Circle (50%): Media controls (play/pause, arrows)"
+msgstr ""
+
+#: ../../source/templates_apple.md:222
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "No shadow, solid background"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Standard content sections, text blocks"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Navigation Glass"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "`backdrop-filter: saturate(180%) blur(20px)` on `rgba(0,0,0,0.8)`"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Sticky navigation bar — the glass effect"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Subtle Lift (Level 1)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "`rgba(0, 0, 0, 0.22) 3px 5px 30px 0px`"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Product cards, floating elements"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Media Control"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "`rgba(210, 210, 215, 0.64)` background with scale transforms"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Play/pause buttons, carousel controls"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Focus (Accessibility)"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "`2px solid #0071e3` outline"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Keyboard focus on all interactive elements"
+msgstr ""
+
+#: ../../source/templates_apple.md:232
+msgid ""
+"**Shadow Philosophy**: Apple uses shadow extremely sparingly. The primary"
+" shadow (`3px 5px 30px` with 0.22 opacity) is soft, wide, and offset — "
+"mimicking a diffused studio light casting a natural shadow beneath a "
+"physical object. This reinforces the \"product as physical sculpture\" "
+"metaphor. Most elements have NO shadow at all; elevation comes from "
+"background color contrast (dark card on darker background, or light card "
+"on slightly different gray)."
+msgstr ""
+
+#: ../../source/templates_apple.md:234
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_apple.md:235
+msgid ""
+"Navigation glass: the translucent, blurred navigation bar is the most "
+"recognizable depth element, creating a sense of floating UI above "
+"scrolling content"
+msgstr ""
+
+#: ../../source/templates_apple.md:236
+msgid ""
+"Section color transitions: depth is implied by the alternation between "
+"black and light gray sections rather than by shadows"
+msgstr ""
+
+#: ../../source/templates_apple.md:237
+msgid ""
+"Product photography shadows: the products themselves cast shadows in "
+"their photography, so the UI doesn't need to add synthetic ones"
+msgstr ""
+
+#: ../../source/templates_apple.md:239
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_apple.md:241
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_apple.md:242
+msgid ""
+"Use SF Pro Display at 20px+ and SF Pro Text below 20px — respect the "
+"optical sizing boundary"
+msgstr ""
+
+#: ../../source/templates_apple.md:243
+msgid ""
+"Apply negative letter-spacing at all text sizes (not just headlines) — "
+"Apple tracks tight universally"
+msgstr ""
+
+#: ../../source/templates_apple.md:244
+msgid ""
+"Use Apple Blue (`#0071e3`) ONLY for interactive elements — it must be the"
+" singular accent"
+msgstr ""
+
+#: ../../source/templates_apple.md:245
+msgid ""
+"Alternate between black and light gray (`#f5f5f7`) section backgrounds "
+"for cinematic rhythm"
+msgstr ""
+
+#: ../../source/templates_apple.md:246
+msgid "Use 980px pill radius for CTA links — the signature Apple link shape"
+msgstr ""
+
+#: ../../source/templates_apple.md:247
+msgid ""
+"Keep product imagery on solid-color fields with no competing visual "
+"elements"
+msgstr ""
+
+#: ../../source/templates_apple.md:248
+msgid ""
+"Use the translucent dark glass (`rgba(0,0,0,0.8)` + blur) for sticky "
+"navigation"
+msgstr ""
+
+#: ../../source/templates_apple.md:249
+msgid ""
+"Compress headline line-heights to 1.07-1.14 — Apple headlines are "
+"famously tight"
+msgstr ""
+
+#: ../../source/templates_apple.md:251
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_apple.md:252
+msgid ""
+"Don't introduce additional accent colors — the entire chromatic budget is"
+" spent on blue"
+msgstr ""
+
+#: ../../source/templates_apple.md:253
+msgid ""
+"Don't use heavy shadows or multiple shadow layers — Apple's shadow system"
+" is one soft diffused shadow or nothing"
+msgstr ""
+
+#: ../../source/templates_apple.md:254
+msgid ""
+"Don't use borders on cards or containers — Apple almost never uses "
+"visible borders (except on specific buttons)"
+msgstr ""
+
+#: ../../source/templates_apple.md:255
+msgid ""
+"Don't apply wide letter-spacing to SF Pro — it is designed to run tight "
+"at every size"
+msgstr ""
+
+#: ../../source/templates_apple.md:256
+msgid ""
+"Don't use weight 800 or 900 — the maximum is 700 (bold), and even that is"
+" rare"
+msgstr ""
+
+#: ../../source/templates_apple.md:257
+msgid ""
+"Don't add textures, patterns, or gradients to backgrounds — solid colors "
+"only"
+msgstr ""
+
+#: ../../source/templates_apple.md:258
+msgid ""
+"Don't make the navigation opaque — the glass blur effect is essential to "
+"the Apple UI identity"
+msgstr ""
+
+#: ../../source/templates_apple.md:259
+msgid ""
+"Don't center-align body text — Apple body copy is left-aligned; only "
+"headlines center"
+msgstr ""
+
+#: ../../source/templates_apple.md:260
+msgid ""
+"Don't use rounded corners larger than 12px on rectangular elements (980px"
+" is for pills only)"
+msgstr ""
+
+#: ../../source/templates_apple.md:262
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_apple.md:264
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Small Mobile"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "<360px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Minimum supported, single column"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "360-480px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Standard mobile layout"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Mobile Large"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "480-640px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Wider single column, larger images"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Tablet Small"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "640-834px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "2-column product grids begin"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "834-1024px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Full tablet layout, expanded nav"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Desktop Small"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1024-1070px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Standard desktop layout begins"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "1070-1440px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Full layout, max content width"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid ">1440px"
+msgstr ""
+
+#: ../../source/templates_apple.md
+msgid "Centered with generous margins"
+msgstr ""
+
+#: ../../source/templates_apple.md:276
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_apple.md:277
+msgid "Primary CTAs: 8px 15px padding creating ~44px touch height"
+msgstr ""
+
+#: ../../source/templates_apple.md:278
+msgid "Navigation links: 48px height with adequate spacing"
+msgstr ""
+
+#: ../../source/templates_apple.md:279
+#, python-format
+msgid "Media controls: 50% radius circular buttons, minimum 44x44px"
+msgstr ""
+
+#: ../../source/templates_apple.md:280
+msgid "\"Learn more\" pills: generous padding for comfortable tapping"
+msgstr ""
+
+#: ../../source/templates_apple.md:282
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_apple.md:283
+msgid ""
+"Hero headlines: 56px Display → 40px → 28px on mobile, maintaining tight "
+"line-height proportionally"
+msgstr ""
+
+#: ../../source/templates_apple.md:284
+msgid "Product grids: 3-column → 2-column → single column stacked"
+msgstr ""
+
+#: ../../source/templates_apple.md:285
+msgid "Navigation: full horizontal nav → compact mobile menu (hamburger)"
+msgstr ""
+
+#: ../../source/templates_apple.md:286
+msgid "Product hero modules: full-bleed maintained at all sizes, text scales down"
+msgstr ""
+
+#: ../../source/templates_apple.md:287
+msgid ""
+"Section backgrounds: maintain full-width color blocks at all breakpoints "
+"— the cinematic rhythm never breaks"
+msgstr ""
+
+#: ../../source/templates_apple.md:288
+msgid ""
+"Image sizing: products scale proportionally, never crop — the product "
+"silhouette is sacred"
+msgstr ""
+
+#: ../../source/templates_apple.md:290
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_apple.md:291
+msgid "Product photography maintains aspect ratio at all breakpoints"
+msgstr ""
+
+#: ../../source/templates_apple.md:292
+msgid "Hero product images scale down but stay centered"
+msgstr ""
+
+#: ../../source/templates_apple.md:293
+msgid "Full-bleed section backgrounds persist at every size"
+msgstr ""
+
+#: ../../source/templates_apple.md:294
+msgid "Lifestyle images may crop on mobile but maintain their rounded corners"
+msgstr ""
+
+#: ../../source/templates_apple.md:295
+msgid "Lazy loading for below-fold product images"
+msgstr ""
+
+#: ../../source/templates_apple.md:297
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_apple.md:299
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_apple.md:300
+msgid "Primary CTA: Apple Blue (`#0071e3`)"
+msgstr ""
+
+#: ../../source/templates_apple.md:301
+msgid "Page background (light): `#f5f5f7`"
+msgstr ""
+
+#: ../../source/templates_apple.md:302
+msgid "Page background (dark): `#000000`"
+msgstr ""
+
+#: ../../source/templates_apple.md:303
+msgid "Heading text (light): `#1d1d1f`"
+msgstr ""
+
+#: ../../source/templates_apple.md:304
+msgid "Heading text (dark): `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_apple.md:305
+msgid "Body text: `rgba(0, 0, 0, 0.8)` on light, `#ffffff` on dark"
+msgstr ""
+
+#: ../../source/templates_apple.md:306
+msgid "Link (light bg): `#0066cc`"
+msgstr ""
+
+#: ../../source/templates_apple.md:307
+msgid "Link (dark bg): `#2997ff`"
+msgstr ""
+
+#: ../../source/templates_apple.md:308
+msgid "Focus ring: `#0071e3`"
+msgstr ""
+
+#: ../../source/templates_apple.md:309
+msgid "Card shadow: `rgba(0, 0, 0, 0.22) 3px 5px 30px 0px`"
+msgstr ""
+
+#: ../../source/templates_apple.md:311
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_apple.md:312
+msgid ""
+"\"Create a hero section on black background. Headline at 56px SF Pro "
+"Display weight 600, line-height 1.07, letter-spacing -0.28px, color "
+"white. One-line subtitle at 21px SF Pro Display weight 400, line-height "
+"1.19, color white. Two pill CTAs: 'Learn more' (transparent bg, white "
+"text, 1px solid white border, 980px radius) and 'Buy' (Apple Blue #0071e3"
+" bg, white text, 8px radius, 8px 15px padding).\""
+msgstr ""
+
+#: ../../source/templates_apple.md:313
+#, python-format
+msgid ""
+"\"Design a product card: #f5f5f7 background, 8px border-radius, no "
+"border, no shadow. Product image top 60% of card on solid background. "
+"Title at 28px SF Pro Display weight 400, letter-spacing 0.196px, line-"
+"height 1.14. Description at 14px SF Pro Text weight 400, color "
+"rgba(0,0,0,0.8). 'Learn more' and 'Shop' links in #0066cc at 14px.\""
+msgstr ""
+
+#: ../../source/templates_apple.md:314
+msgid ""
+"\"Build the Apple navigation: sticky, 48px height, background "
+"rgba(0,0,0,0.8) with backdrop-filter: saturate(180%) blur(20px). Links at"
+" 12px SF Pro Text weight 400, white text. Apple logo left, links "
+"centered, search and bag icons right.\""
+msgstr ""
+
+#: ../../source/templates_apple.md:315
+msgid ""
+"\"Create an alternating section layout: first section black bg with white"
+" text and centered product image, second section #f5f5f7 bg with #1d1d1f "
+"text. Each section near full-viewport height with 56px headline and two "
+"pill CTAs below.\""
+msgstr ""
+
+#: ../../source/templates_apple.md:316
+msgid ""
+"\"Design a 'Learn more' link: text #0066cc on light bg or #2997ff on dark"
+" bg, 14px SF Pro Text, underline on hover. After the text, include a "
+"right-arrow chevron character (>). Wrap in a container with 980px border-"
+"radius for pill shape when used as a standalone CTA.\""
+msgstr ""
+
+#: ../../source/templates_apple.md:318
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_apple.md:319
+msgid ""
+"Every interactive element gets Apple Blue (`#0071e3`) — no other accent "
+"colors"
+msgstr ""
+
+#: ../../source/templates_apple.md:320
+msgid ""
+"Section backgrounds alternate: black for immersive moments, `#f5f5f7` for"
+" informational moments"
+msgstr ""
+
+#: ../../source/templates_apple.md:321
+msgid ""
+"Typography optical sizing: SF Pro Display at 20px+, SF Pro Text below — "
+"never mix"
+msgstr ""
+
+#: ../../source/templates_apple.md:322
+msgid ""
+"Negative letter-spacing at all sizes: -0.28px at 56px, -0.374px at 17px, "
+"-0.224px at 14px, -0.12px at 12px"
+msgstr ""
+
+#: ../../source/templates_apple.md:323
+msgid ""
+"The navigation glass effect (translucent dark + blur) is non-negotiable —"
+" it defines the Apple web experience"
+msgstr ""
+
+#: ../../source/templates_apple.md:324
+msgid ""
+"Products always appear on solid color fields — never on gradients, "
+"textures, or lifestyle backgrounds in hero modules"
+msgstr ""
+
+#: ../../source/templates_apple.md:325
+msgid ""
+"Shadow is rare and always soft: `3px 5px 30px 0.22 opacity` or nothing at"
+" all"
+msgstr ""
+
+#: ../../source/templates_apple.md:326
+msgid ""
+"Pill CTAs use 980px radius — this creates the signature Apple rounded-"
+"rectangle-that-looks-like-a-capsule shape"
+msgstr ""
+

@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/polymarket_SKILL.md:9
+msgid "Polymarket — Prediction Market Data"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:11
+msgid ""
+"Query prediction market data from Polymarket using their public REST "
+"APIs. All endpoints are read-only and require zero authentication."
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:14
+msgid ""
+"See `references/api-endpoints.md` for the full endpoint reference with "
+"curl examples."
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:16
+msgid "When to Use"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:18
+msgid "User asks about prediction markets, betting odds, or event probabilities"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:19
+msgid "User wants to know \"what are the odds of X happening?\""
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:20
+msgid "User asks about Polymarket specifically"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:21
+msgid "User wants market prices, orderbook data, or price history"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:22
+msgid "User asks to monitor or track prediction market movements"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:24
+msgid "Key Concepts"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:26
+msgid "**Events** contain one or more **Markets** (1:many relationship)"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:27
+msgid "**Markets** are binary outcomes with Yes/No prices between 0.00 and 1.00"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:28
+#, python-format
+msgid "Prices ARE probabilities: price 0.65 means the market thinks 65% likely"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:29
+msgid "`outcomePrices` field: JSON-encoded array like `[\"0.80\", \"0.20\"]`"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:30
+msgid ""
+"`clobTokenIds` field: JSON-encoded array of two token IDs [Yes, No] for "
+"price/book queries"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:31
+msgid "`conditionId` field: hex string used for price history queries"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:32
+msgid "Volume is in USDC (US dollars)"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:34
+msgid "Three Public APIs"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:36
+msgid "**Gamma API** at `gamma-api.polymarket.com` — Discovery, search, browsing"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:37
+msgid ""
+"**CLOB API** at `clob.polymarket.com` — Real-time prices, orderbooks, "
+"history"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:38
+msgid "**Data API** at `data-api.polymarket.com` — Trades, open interest"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:40
+msgid "Typical Workflow"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:42
+msgid "When a user asks about prediction market odds:"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:44
+msgid "**Search** using the Gamma API public-search endpoint with their query"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:45
+msgid "**Parse** the response — extract events and their nested markets"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:46
+msgid "**Present** market question, current prices as percentages, and volume"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:47
+msgid ""
+"**Deep dive** if asked — use clobTokenIds for orderbook, conditionId for "
+"history"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:49
+msgid "Presenting Results"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:51
+msgid "Format prices as percentages for readability:"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:52
+msgid "outcomePrices `[\"0.652\", \"0.348\"]` becomes \"Yes: 65.2%, No: 34.8%\""
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:53
+msgid "Always show the market question and probability"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:54
+msgid "Include volume when available"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:56
+msgid "Example: `\"Will X happen?\" — 65.2% Yes ($1.2M volume)`"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:58
+msgid "Parsing Double-Encoded Fields"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:60
+msgid ""
+"The Gamma API returns `outcomePrices`, `outcomes`, and `clobTokenIds` as "
+"JSON strings inside JSON responses (double-encoded). When processing with"
+" Python, parse them with `json.loads(market['outcomePrices'])` to get the"
+" actual array."
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:64
+msgid "Rate Limits"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:66
+msgid "Generous — unlikely to hit for normal usage:"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:67
+msgid "Gamma: 4,000 requests per 10 seconds (general)"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:68
+msgid "CLOB: 9,000 requests per 10 seconds (general)"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:69
+msgid "Data: 1,000 requests per 10 seconds (general)"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:71
+msgid "Limitations"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:73
+msgid "This skill is read-only — it does not support placing trades"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:74
+msgid "Trading requires wallet-based crypto authentication (EIP-712 signatures)"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:75
+msgid "Some new markets may have empty price history"
+msgstr ""
+
+#: ../../source/polymarket_SKILL.md:76
+msgid ""
+"Geographic restrictions apply to trading but read-only data is globally "
+"accessible"
+msgstr ""
+

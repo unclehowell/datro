@@ -1,0 +1,290 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/consortium_projects_email-marketing-config.md:1
+msgid "Email Marketing System Configuration"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:3
+msgid "**Date:** 2026-04-12"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:5
+msgid "Summary"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:7
+msgid ""
+"This document describes the automated email marketing system deployed on "
+"this server. The system uses the Resend.com API to send marketing emails "
+"on a scheduled basis via cron jobs. The system tracks progress and "
+"prevents overlapping runs."
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:9
+msgid "Architecture"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:23
+msgid "How It Works"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:25
+msgid "1. Email List Management"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:27
+msgid "**email_list.txt**: Contains one email address per line"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:28
+msgid ""
+"**email_progress.txt**: Tracks current line number (cycles 1 to "
+"TOTAL_LINES)"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:30
+msgid "2. Progress Tracking"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:32
+msgid ""
+"The system reads `email_progress.txt` to determine which email to send "
+"next:"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:44
+msgid "3. Lockfile Mechanism"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:46
+msgid "Prevents overlapping runs:"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:57
+msgid "4. Cycle Completion"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:59
+msgid "When all emails processed, cycle back to start:"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:68
+msgid "Cron Job Configuration"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:74
+msgid ""
+"Runs every 2 minutes. One email per run to respect free tier (100/month ="
+" ~3/day)."
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:76
+msgid "Resend.com API"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:78
+msgid "API Endpoint"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:84
+msgid "Headers"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:91
+msgid "Payload"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:102
+msgid "Response Handling"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:116
+msgid "Email Content"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:118
+msgid "Subject Line"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:124
+msgid "HTML Body"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:130
+msgid "Plain Text Alternative"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:147
+msgid "File Dependencies"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:149
+msgid "Non-Standard Files (Not part of fresh Ubuntu install)"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "File"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "Purpose"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "`/home/ubuntu/send_emails_resend_safe.sh`"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "Main sender script"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "`/home/ubuntu/send_emails_resend_all.sh`"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "Bulk sender"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "`/home/ubuntu/send_emails_resend.sh`"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "Legacy sender"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "`/home/ubuntu/mail_script.sh`"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "Alternative using `mail` command"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "`/home/ubuntu/email_list.txt`"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "Target email addresses"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "`/home/ubuntu/email_progress.txt`"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "Line number tracker"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "`/home/ubuntu/email_send.log`"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "Send activity log"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "`/home/ubuntu/.secrets/.env.resend`"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "API key storage"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "`/tmp/send_emails.lock`"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md
+msgid "Lockfile"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:163
+msgid "Key Scripts"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:176
+msgid "PM2 Process Management"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:178
+msgid "The system can also run under PM2:"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:188
+msgid "View PM2 status:"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:194
+msgid "Monitoring"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:196
+msgid "Check Logs"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:202
+msgid "View Progress"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:208
+msgid "Count Emails"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:214
+msgid "Security Notes"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:216
+msgid ""
+"API key stored in `/home/ubuntu/.secrets/.env.resend` (not committed to "
+"git)"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:217
+msgid "Lockfile prevents concurrent runs"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:218
+msgid "Only sends 1 email per cron cycle (respects free tier)"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:219
+msgid "HTTP response codes checked for success"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:221
+msgid "Files Tree View"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:237
+msgid "See Also"
+msgstr ""
+
+#: ../../source/consortium_projects_email-marketing-config.md:239
+msgid "[FCUK Clone Workflow](../fcuk-clone-workflow.md) - Related deployment"
+msgstr ""
+

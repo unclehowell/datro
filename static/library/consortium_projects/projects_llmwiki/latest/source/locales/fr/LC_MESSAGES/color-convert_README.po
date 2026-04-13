@@ -1,0 +1,130 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/color-convert_README.md:1
+msgid "color-convert"
+msgstr ""
+
+#: ../../source/color-convert_README.md:3
+msgid ""
+"[![Build Status](https://travis-ci.org/Qix-/color-"
+"convert.svg?branch=master)](https://travis-ci.org/Qix-/color-convert)"
+msgstr ""
+
+#: ../../source/color-convert_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/color-convert_README.md:5
+msgid ""
+"Color-convert is a color conversion library for JavaScript and node. It "
+"converts all ways between `rgb`, `hsl`, `hsv`, `hwb`, `cmyk`, `ansi`, "
+"`ansi16`, `hex` strings, and CSS `keyword`s (will round to closest):"
+msgstr ""
+
+#: ../../source/color-convert_README.md:19
+msgid "Install"
+msgstr ""
+
+#: ../../source/color-convert_README.md:25
+msgid "API"
+msgstr ""
+
+#: ../../source/color-convert_README.md:27
+msgid ""
+"Simply get the property of the _from_ and _to_ conversion that you're "
+"looking for."
+msgstr ""
+
+#: ../../source/color-convert_README.md:29
+msgid ""
+"All functions have a rounded and unrounded variant. By default, return "
+"values are rounded. To get the unrounded (raw) results, simply tack on "
+"`.raw` to the function."
+msgstr ""
+
+#: ../../source/color-convert_README.md:31
+msgid ""
+"All 'from' functions have a hidden property called `.channels` that "
+"indicates the number of channels the function expects (not including "
+"alpha)."
+msgstr ""
+
+#: ../../source/color-convert_README.md:45
+msgid "Arrays"
+msgstr ""
+
+#: ../../source/color-convert_README.md:46
+msgid ""
+"All functions that accept multiple arguments also support passing an "
+"array."
+msgstr ""
+
+#: ../../source/color-convert_README.md:48
+msgid ""
+"Note that this does **not** apply to functions that convert from a color "
+"that only requires one value (e.g. `keyword`, `ansi256`, `hex`, etc.)"
+msgstr ""
+
+#: ../../source/color-convert_README.md:57
+msgid "Routing"
+msgstr ""
+
+#: ../../source/color-convert_README.md:59
+msgid ""
+"Conversions that don't have an _explicitly_ defined conversion (in "
+"[conversions.js](conversions.js)), but can be converted by means of sub-"
+"conversions (e.g. XYZ -> **RGB** -> CMYK), are automatically routed "
+"together. This allows just about any color model supported by `color-"
+"convert` to be converted to any other model, so long as a sub-conversion "
+"path exists. This is also true for conversions requiring more than one "
+"step in between (e.g. LCH -> **LAB** -> **XYZ** -> **RGB** -> Hex)."
+msgstr ""
+
+#: ../../source/color-convert_README.md:61
+msgid ""
+"Keep in mind that extensive conversions _may_ result in a loss of "
+"precision, and exist only to be complete. For a list of \"direct\" "
+"(single-step) conversions, see [conversions.js](conversions.js)."
+msgstr ""
+
+#: ../../source/color-convert_README.md:63
+msgid "Contribute"
+msgstr ""
+
+#: ../../source/color-convert_README.md:65
+msgid ""
+"If there is a new model you would like to support, or want to add a "
+"direct conversion between two existing models, please send us a pull "
+"request."
+msgstr ""
+
+#: ../../source/color-convert_README.md:67
+msgid "License"
+msgstr ""
+
+#: ../../source/color-convert_README.md:68
+msgid ""
+"Copyright &copy; 2011-2016, Heather Arthur and Josh Junon. Licensed under"
+" the [MIT License](LICENSE)."
+msgstr ""
+

@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/buffer-fill_readme.md:1
+msgid "Buffer Fill"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:3
+msgid "A [ponyfill](https://ponyfill.com) for `Buffer.fill`."
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:5
+msgid "Works as Node.js: `v6.4.0` <br> Works on Node.js: `v0.10.0`"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:8
+msgid "Installation"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:14
+msgid "Usage"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:33
+msgid "API"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:35
+msgid "fill(buf, value[, offset[, end]][, encoding])"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:37
+msgid ""
+"`value` &lt;String&gt; | &lt;Buffer&gt; | &lt;Integer&gt; The value to "
+"fill `buf` with"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:38
+msgid "`offset` &lt;Integer&gt; Where to start filling `buf`. **Default:** `0`"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:39
+msgid ""
+"`end` &lt;Integer&gt; Where to stop filling `buf` (not inclusive). "
+"**Default:** `buf.length`"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:40
+msgid ""
+"`encoding` &lt;String&gt; If `value` is a string, this is its encoding. "
+"**Default:** `'utf8'`"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:41
+msgid "Return: &lt;Buffer&gt; A reference to `buf`"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:43
+msgid ""
+"Fills `buf` with the specified `value`. If the `offset` and `end` are not"
+" given, the entire `buf` will be filled. This is meant to be a small "
+"simplification to allow the creation and filling of a `Buffer` to be done"
+" on a single line."
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:47
+msgid ""
+"If the final write of a `fill()` operation falls on a multi-byte "
+"character, then only the first bytes of that character that fit into "
+"`buf` are written."
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:50
+msgid "See also"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:52
+msgid ""
+"[buffer-alloc-unsafe](https://github.com/LinusU/buffer-alloc-unsafe) A "
+"ponyfill for `Buffer.allocUnsafe`"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:53
+msgid ""
+"[buffer-alloc](https://github.com/LinusU/buffer-alloc) A ponyfill for "
+"`Buffer.alloc`"
+msgstr ""
+
+#: ../../source/buffer-fill_readme.md:54
+msgid ""
+"[buffer-from](https://github.com/LinusU/buffer-from) A ponyfill for "
+"`Buffer.from`"
+msgstr ""
+

@@ -1,0 +1,81 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/expand-brackets_changelog.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:3
+msgid "v2.0.0"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:5
+msgid "**Breaking changes**"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:7
+msgid ""
+"The main export now returns the compiled string, instead of the object "
+"returned from the compiler"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:9
+#: ../../source/expand-brackets_changelog.md:17
+msgid "**Added features**"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:11
+msgid "Adds a `.create` method to do what the main function did before v2.0.0"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:13
+msgid "v0.2.0"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:15
+msgid ""
+"In addition to performance and matching improvements, the v0.2.0 refactor"
+" adds complete POSIX character class support, with the exception of "
+"equivalence classes and POSIX.2 collating symbols which are not relevant "
+"to node.js usage."
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:19
+msgid ""
+"parser is exposed, so that expand-brackets parsers can be used by "
+"upstream parsers (like [micromatch][])"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:20
+msgid ""
+"compiler is exposed, so that expand-brackets compilers can be used by "
+"upstream compilers"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:21
+msgid "source maps"
+msgstr ""
+
+#: ../../source/expand-brackets_changelog.md:23
+msgid "**source map example**"
+msgstr ""
+

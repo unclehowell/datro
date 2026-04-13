@@ -1,0 +1,95 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/shell-quote_CHANGELOG.md:1
+msgid "acorn-node change log"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:5
+msgid "This project adheres to [Semantic Versioning](http://semver.org/)."
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:7
+msgid "1.7.2"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:8
+msgid ""
+"Fix a regression introduced in 1.6.3. This reverts the Windows path "
+"quoting fix. ([144e1c2](https://github.com/substack/node-shell-"
+"quote/commit/144e1c20cd57549a414c827fb3032e60b7b8721c))"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:10
+msgid "1.7.1"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:11
+msgid ""
+"Fix `$` being removed when not part of an environment variable name. "
+"([@Adman](https://github.com/Admin) in [#32](https://github.com/substack"
+"/node-shell-quote/pull/32))"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:13
+msgid "1.7.0"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:14
+msgid ""
+"Add support for parsing `>>` and `>&` redirection operators. "
+"([@forivall](https://github.com/forivall) in "
+"[#16](https://github.com/substack/node-shell-quote/pull/16))"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:15
+msgid ""
+"Add support for parsing `<(` process substitution operator. "
+"([@cuonglm](https://github.com/cuonglm) in "
+"[#15](https://github.com/substack/node-shell-quote/pull/15))"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:17
+msgid "1.6.3"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:18
+msgid ""
+"Fix Windows path quoting problems. ([@dy](https://github.com/dy) in "
+"[#34](https://github.com/substack/node-shell-quote/pull/34))"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:20
+msgid "1.6.2"
+msgstr ""
+
+#: ../../source/shell-quote_CHANGELOG.md:21
+msgid ""
+"Remove dependencies in favour of native methods. "
+"([@zertosh](https://github.com/zertosh) in "
+"[#21](https://github.com/substack/node-shell-quote/pull/21))"
+msgstr ""
+

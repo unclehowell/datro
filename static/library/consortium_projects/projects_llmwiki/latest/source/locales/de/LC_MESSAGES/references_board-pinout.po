@@ -1,0 +1,249 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_board-pinout.md:1
+msgid "Board Pinout & Pinmux Reference"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:3
+msgid "LicheeRV Nano (SG2002)"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:5
+#: ../../source/references_board-pinout.md:61
+#: ../../source/references_board-pinout.md:87
+msgid "I2C Buses"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Bus"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Pins"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "I2C-1"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "P18 (SCL), P21 (SDA)"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "**Shared with WiFi SDIO** — must stop WiFi first"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "I2C-3"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Available on header"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Check device tree for pin assignment"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "I2C-5"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Software (BitBang)"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Slower but no pin conflicts"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:13
+msgid "SPI Buses"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "SPI-2"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "P18 (CS), P21 (MISO), P22 (MOSI), P23 (SCK)"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "**Shared with WiFi** — must stop WiFi first"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "SPI-4"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:20
+msgid "Setup Steps for I2C-1"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:37
+msgid "Setup Steps for SPI-2"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:53
+msgid "Max Tested SPI Speed"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:54
+msgid "SPI-2 hardware: tested up to **93 MHz**"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:55
+msgid "`spidev_test` is pre-installed on the official image for loopback testing"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:59
+msgid "MaixCAM"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Overlaps with WiFi"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Not recommended"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "A15 (SCL), A27 (SDA)"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "**Recommended** — software I2C, no conflicts"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:69
+msgid "Setup Steps for I2C-5"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:85
+msgid "MaixCAM2"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "I2C-6"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "A1 (SCL), A0 (SDA)"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "I2C-7"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Available"
+msgstr ""
+
+#: ../../source/references_board-pinout.md
+msgid "Check device tree"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:94
+msgid "Setup Steps"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:107
+msgid "NanoKVM"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:109
+msgid ""
+"Uses the same SG2002 SoC as LicheeRV Nano. GPIO and I2C access follows "
+"the same pinmux procedure. Refer to the LicheeRV Nano section above."
+msgstr ""
+
+#: ../../source/references_board-pinout.md:111
+msgid "Check NanoKVM-specific pin headers for available I2C/SPI lines:"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:112
+msgid "https://wiki.sipeed.com/hardware/en/kvm/NanoKVM/introduction.html"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:116
+msgid "Common Issues"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:118
+msgid "devmem not found"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:119
+msgid "The `devmem` utility may not be in the default image. Options:"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:120
+msgid "Use `busybox devmem` if busybox is installed"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:121
+msgid "Download devmem from the Sipeed package repository"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:122
+msgid "Cross-compile from source (single C file)"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:124
+msgid "Dynamic bus numbering"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:125
+msgid ""
+"I2C adapter numbers can change between boots depending on driver load "
+"order. Always use `i2c detect` to find current bus assignments rather "
+"than hardcoding bus numbers."
+msgstr ""
+
+#: ../../source/references_board-pinout.md:127
+msgid "Permissions"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:128
+msgid "`/dev/i2c-*` and `/dev/spidev*` typically require root access. Options:"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:129
+msgid "Run with appropriate permissions (root or i2c/spi group)"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:130
+msgid "Add user to `i2c` and `spi` groups"
+msgstr ""
+
+#: ../../source/references_board-pinout.md:131
+msgid "Create udev rules: `SUBSYSTEM==\"i2c-dev\", MODE=\"0666\"`"
+msgstr ""
+

@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/unpipe_README.md:1
+msgid "unpipe"
+msgstr ""
+
+#: ../../source/unpipe_README.md:3
+msgid ""
+"[![NPM Version][npm-image]][npm-url] [![NPM Downloads][downloads-image"
+"]][downloads-url] [![Node.js Version][node-image]][node-url] [![Build "
+"Status][travis-image]][travis-url] [![Test Coverage][coveralls-image"
+"]][coveralls-url]"
+msgstr ""
+
+#: ../../source/unpipe_README.md:3
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/unpipe_README.md:3
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/unpipe_README.md:3
+msgid "Node.js Version"
+msgstr ""
+
+#: ../../source/unpipe_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/unpipe_README.md:3
+msgid "Test Coverage"
+msgstr ""
+
+#: ../../source/unpipe_README.md:9
+msgid "Unpipe a stream from all destinations."
+msgstr ""
+
+#: ../../source/unpipe_README.md:11
+msgid "Installation"
+msgstr ""
+
+#: ../../source/unpipe_README.md:17
+msgid "API"
+msgstr ""
+
+#: ../../source/unpipe_README.md:23
+msgid "unpipe(stream)"
+msgstr ""
+
+#: ../../source/unpipe_README.md:25
+msgid ""
+"Unpipes all destinations from a given stream. With stream 2+, this is "
+"equivalent to `stream.unpipe()`. When used with streams 1 style streams "
+"(typically Node.js 0.8 and below), this module attempts to undo the "
+"actions done in `stream.pipe(dest)`."
+msgstr ""
+
+#: ../../source/unpipe_README.md:30
+msgid "License"
+msgstr ""
+
+#: ../../source/unpipe_README.md:32
+msgid "[MIT](LICENSE)"
+msgstr ""
+

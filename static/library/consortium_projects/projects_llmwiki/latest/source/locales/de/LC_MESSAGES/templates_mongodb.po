@@ -1,0 +1,1391 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_mongodb.md:1
+msgid "Design System: MongoDB"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:7
+msgid "**Primary:** `Inter` | **Mono:** `Source Code Pro`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'Source Code Pro', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:18
+msgid ""
+"MongoDB's website is a deep-forest-meets-terminal experience — a design "
+"system rooted in the darkest teal-black (`#001e2b`) that evokes both the "
+"density of a database and the depth of a forest canopy. Against this "
+"near-black canvas, a striking neon green (`#00ed64`) pulses as the brand "
+"accent — bright enough to feel electric, organic enough to feel alive. "
+"This isn't the cold neon of cyberpunk; it's the bioluminescent green of "
+"something growing in the dark."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:20
+msgid ""
+"The typography system is architecturally ambitious: MongoDB Value Serif "
+"for massive hero headlines (96px) creates an editorial, authoritative "
+"presence — serif type at database-company scale is a bold choice that "
+"says \"we're not just another tech company.\" Euclid Circular A handles "
+"the heavy lifting of body and UI text with an unusually wide weight range"
+" (300–700), while Source Code Pro serves as the code and label font with "
+"distinctive uppercase treatments featuring very wide letter-spacing "
+"(1px–3px). This three-font system creates a hierarchy that spans "
+"editorial elegance → geometric professionalism → engineering precision."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:22
+msgid ""
+"What makes MongoDB distinctive is its dual-mode design: a dark "
+"hero/feature section world (`#001e2b` with neon green accents) and a "
+"light content world (white with teal-gray borders `#b8c4c2`). The "
+"transition between these modes creates dramatic contrast. The shadow "
+"system uses teal-tinted dark shadows (`rgba(0, 30, 43, 0.12)`) that "
+"maintain the forest-dark atmosphere even on light surfaces. Buttons use "
+"pill shapes (100px–999px radius) with MongoDB Green borders (`#00684a`), "
+"and the entire component system references the LeafyGreen design system."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:25
+msgid "Deep teal-black backgrounds (`#001e2b`) — forest-dark, not space-dark"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:26
+msgid ""
+"Neon MongoDB Green (`#00ed64`) as the singular brand accent — electric "
+"and organic"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:27
+msgid "MongoDB Value Serif for hero headlines — editorial authority at tech scale"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:28
+msgid ""
+"Euclid Circular A for body with weight 300 (light) as a distinctive body "
+"weight"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:29
+msgid ""
+"Source Code Pro with wide uppercase letter-spacing (1px–3px) for "
+"technical labels"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:30
+msgid ""
+"Teal-tinted shadows: `rgba(0, 30, 43, 0.12)` — shadows carry the forest "
+"color"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:31
+msgid "Dual-mode: dark teal hero sections + light white content sections"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:32
+msgid "Pill buttons (100px radius) with green borders (`#00684a`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:33
+msgid "Link Blue (`#006cfa`) and hover transition to `#3860be`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:35
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:37
+msgid "Primary Brand"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:38
+msgid ""
+"**Forest Black** (`#001e2b`): Primary dark background — the deepest teal-"
+"black"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:39
+msgid ""
+"**MongoDB Green** (`#00ed64`): Primary brand accent — neon green for "
+"highlights, underlines, gradients"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:40
+msgid ""
+"**Dark Green** (`#00684a`): Button borders, link text on light — muted "
+"green for functional use"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:42
+msgid "Interactive"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:43
+msgid ""
+"**Action Blue** (`#006cfa`): Secondary accent — links, interactive "
+"highlights"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:44
+msgid "**Hover Blue** (`#3860be`): All link hover states transition to this blue"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:45
+msgid "**Teal Active** (`#1eaedb`): Button hover background — bright teal"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:47
+msgid "Neutral Scale"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:48
+msgid ""
+"**Deep Teal** (`#1c2d38`): Dark button backgrounds, secondary dark "
+"surfaces"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:49
+msgid "**Teal Gray** (`#3d4f58`): Dark borders on dark surfaces"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:50
+msgid "**Dark Slate** (`#21313c`): Dark link text variant"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:51
+msgid "**Cool Gray** (`#5c6c75`): Muted text on dark, secondary button text"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:52
+msgid "**Silver Teal** (`#b8c4c2`): Borders on light surfaces, dividers"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:53
+msgid "**Light Input** (`#e8edeb`): Input text on dark surfaces"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:54
+msgid "**Pure White** (`#ffffff`): Light section background, button text on dark"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:55
+msgid "**Black** (`#000000`): Text on light surfaces, darkest elements"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:57
+msgid "Shadows"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:58
+msgid ""
+"**Forest Shadow** (`rgba(0, 30, 43, 0.12) 0px 26px 44px, rgba(0, 0, 0, "
+"0.13) 0px 7px 13px`): Primary card elevation — teal-tinted"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:59
+msgid ""
+"**Standard Shadow** (`rgba(0, 0, 0, 0.15) 0px 3px 20px`): General "
+"elevation"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:60
+msgid "**Subtle Shadow** (`rgba(0, 0, 0, 0.1) 0px 2px 4px`): Light card lift"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:62
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:64
+msgid "Font Families"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:65
+msgid "**Display Serif**: `MongoDB Value Serif` — editorial hero headlines"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:66
+msgid "**Body / UI**: `Euclid Circular A` — geometric sans-serif workhorse"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:67
+msgid ""
+"**Code / Labels**: `Source Code Pro` — monospace with uppercase label "
+"treatments"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:68
+msgid ""
+"**Fallbacks**: `Akzidenz-Grotesk Std` (with CJK: Noto Sans KR/SC/JP), "
+"`Times`, `Arial`, `system-ui`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:70
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "MongoDB Value Serif"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "96px (6.00rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Serif authority"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Display Secondary"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "64px (4.00rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Serif sub-hero"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Euclid Circular A"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "36px (2.25rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Geometric precision"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "24px (1.50rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Feature titles"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.60 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Introductions"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Standard body"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Body Light"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "300"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.50–2.00"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Light-weight reading text"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Nav / UI"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.00–1.88"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "0.16px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Navigation, emphasized"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Body Bold"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "15px (0.94rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Strong emphasis"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "13.5px–16px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "500–700"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.00"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "0.135px–0.9px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "CTA labels"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.71 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Metadata"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Small"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "11px (0.69rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.82 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "0.2px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Tags, annotations"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Code Heading"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Source Code Pro"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "40px (2.50rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Code showcase titles"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Code Body"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Code blocks"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Code Label"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1.14 (tight)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1px–2px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "`text-transform: uppercase`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Code Micro"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "9px (0.56rem)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "2.67 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "2.5px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:91
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:92
+msgid ""
+"**Serif for authority**: MongoDB Value Serif at hero scale creates an "
+"editorial presence unusual in tech — it communicates that MongoDB is an "
+"institution, not a startup."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:93
+msgid ""
+"**Weight 300 as body default**: Euclid Circular A uses light (300) for "
+"body text, creating an airy reading experience that contrasts with the "
+"dense, dark backgrounds."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:94
+msgid ""
+"**Wide-tracked monospace labels**: Source Code Pro uppercase at 1px–3px "
+"letter-spacing creates technical signposts that feel like database field "
+"labels — systematic, structured, classified."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:95
+msgid ""
+"**Four-weight range**: 300 (light body) → 400 (standard) → 500 (UI/nav) →"
+" 700 (bold CTA) — a wider range than most systems, enabling fine-grained "
+"hierarchy."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:97
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:99
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:101
+msgid "**Primary Green (Dark Surface)**"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:102
+msgid "Background: `#00684a` (muted MongoDB green)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:103
+msgid "Text: `#000000`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:104
+msgid "Radius: 50% (circular) or 100px (pill)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:105
+msgid "Border: `1px solid #00684a`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:106
+msgid "Shadow: `rgba(0,0,0,0.06) 0px 1px 6px`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:107
+msgid "Hover: scale 1.1"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:108
+msgid "Active: scale 0.85"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:110
+msgid "**Dark Teal Button**"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:111
+msgid "Background: `#1c2d38`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:112
+msgid "Text: `#5c6c75`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:113
+msgid "Radius: 100px (pill)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:114
+msgid "Border: `1px solid #3d4f58`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:115
+msgid "Hover: background `#1eaedb`, text white, translateX(5px)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:117
+msgid "**Outlined Button (Light Surface)**"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:118
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:119
+msgid "Text: `#001e2b`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:120
+msgid "Border: `1px solid #b8c4c2`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:121
+msgid "Radius: 4px–8px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:122
+msgid "Hover: background tint"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:124
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:125
+msgid "Light mode: white background with `1px solid #b8c4c2` border"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:126
+msgid "Dark mode: `#001e2b` or `#1c2d38` background with `1px solid #3d4f58`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:127
+msgid "Radius: 16px (standard), 24px (medium), 48px (large/hero)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:128
+msgid "Shadow: `rgba(0,30,43,0.12) 0px 26px 44px` (forest-tinted)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:129
+msgid "Image containers: 30px–32px radius"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:131
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:132
+msgid "Textarea: text `#e8edeb`, padding 12px 12px 12px 8px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:133
+msgid "Borders: `1px solid #b8c4c2` on light, `1px solid #3d4f58` on dark"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:134
+msgid "Input radius: 4px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:136
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:137
+msgid "Dark header on forest-black background"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:138
+msgid "Euclid Circular A 16px weight 500 for nav links"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:139
+msgid "MongoDB logo (leaf icon + wordmark) left-aligned"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:140
+msgid "Green CTA pill buttons right-aligned"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:141
+msgid "Mega-menu dropdowns with product categories"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:143
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:144
+msgid "Dashboard screenshots on dark backgrounds"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:145
+msgid "Green-accented UI elements in screenshots"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:146
+msgid "30px–32px radius on image containers"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:147
+msgid "Full-width dark sections for product showcases"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:149
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:151
+msgid "**Neon Green Accent Underlines**"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:152
+msgid ""
+"`0px 2px 2px 0px solid #00ed64` — bottom + right border creating accent "
+"underlines"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:153
+msgid "Used on feature headings and highlighted text"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:154
+msgid "Also appears as `#006cfa` (blue) variant"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:156
+msgid "**Source Code Label System**"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:157
+msgid "14px uppercase Source Code Pro with 1px–2px letter-spacing"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:158
+msgid "Used as section category markers above headings"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:159
+msgid "Creates a \"database field label\" aesthetic"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:161
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:163
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:164
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:165
+msgid ""
+"Scale: 1px, 4px, 7px, 8px, 10px, 12px, 14px, 15px, 16px, 18px, 20px, "
+"24px, 32px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:167
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:168
+msgid "Max content width centered"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:169
+msgid "Dark hero section with contained content"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:170
+msgid "Light content sections below"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:171
+msgid "Card grids: 2–3 columns"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:172
+msgid "Full-width dark footer"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:174
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:175
+msgid ""
+"**Dramatic mode transitions**: The shift from dark teal sections to white"
+" content creates built-in visual breathing through contrast, not just "
+"space."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:176
+msgid ""
+"**Generous dark sections**: Dark hero and feature areas use extra "
+"vertical padding (80px+) to let the forest-dark background breathe."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:177
+msgid ""
+"**Compact light sections**: White content areas are denser, with tighter "
+"card grids and less vertical spacing."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:179
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:180
+msgid "Minimal (1px–2px): Small spans, badges"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:181
+msgid "Subtle (4px): Inputs, small buttons"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:182
+msgid "Standard (8px): Cards, links"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:183
+msgid "Card (16px): Standard cards, containers"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:184
+msgid "Toggle (20px): Switch elements"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:185
+msgid "Large (24px): Large panels"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:186
+msgid "Image (30px–32px): Image containers"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:187
+msgid "Hero (48px): Hero cards"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:188
+msgid "Pill (100px–999px): Buttons, navigation pills"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:189
+msgid "Full (9999px): Maximum pill"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:191
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Default surfaces"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Subtle (Level 1)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "`rgba(0,0,0,0.1) 0px 2px 4px`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Light card lift"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Standard (Level 2)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "`rgba(0,0,0,0.15) 0px 3px 9px`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Standard cards"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Prominent (Level 3)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "`rgba(0,0,0,0.15) 0px 3px 20px`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Elevated panels"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Forest (Level 4)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "`rgba(0,30,43,0.12) 0px 26px 44px, rgba(0,0,0,0.13) 0px 7px 13px`"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Hero cards — teal-tinted"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:201
+msgid ""
+"**Shadow Philosophy**: MongoDB's shadow system is unique in that the "
+"primary elevation shadow uses `rgba(0, 30, 43, 0.12)` — a teal-tinted "
+"shadow that carries the forest-dark brand color into the depth system. "
+"This means even on white surfaces, shadows feel like they belong to the "
+"MongoDB color world rather than being generic neutral black."
+msgstr ""
+
+#: ../../source/templates_mongodb.md:203
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:205
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:206
+msgid "Use `#001e2b` (forest-black) for dark sections — not pure black"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:207
+msgid "Apply MongoDB Green (`#00ed64`) sparingly for maximum electric impact"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:208
+msgid ""
+"Use MongoDB Value Serif ONLY for hero/display headings — Euclid Circular "
+"A for everything else"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:209
+msgid ""
+"Apply Source Code Pro uppercase with wide tracking (1px–3px) for "
+"technical labels"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:210
+msgid "Use teal-tinted shadows (`rgba(0,30,43,0.12)`) for primary card elevation"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:211
+msgid "Maintain the dark/light section duality — dramatic contrast between modes"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:212
+msgid "Use weight 300 for body text — the light weight is the readable voice"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:213
+msgid "Apply pill radius (100px) to primary action buttons"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:215
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:216
+msgid ""
+"Don't use pure black (`#000000`) for dark backgrounds — always use teal-"
+"black (`#001e2b`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:217
+msgid ""
+"Don't use MongoDB Green (`#00ed64`) on backgrounds — it's an accent for "
+"text, underlines, and small highlights"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:218
+msgid ""
+"Don't use standard gray shadows — always use teal-tinted "
+"(`rgba(0,30,43,...)`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:219
+msgid "Don't apply serif font to body text — MongoDB Value Serif is hero-only"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:220
+msgid ""
+"Don't use narrow letter-spacing on Source Code Pro labels — the wide "
+"tracking IS the identity"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:221
+msgid "Don't mix dark and light section treatments within the same section"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:222
+msgid "Don't use warm colors — the palette is strictly cool (teal, green, blue)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:223
+msgid ""
+"Don't forget the green accent underlines — they're the signature "
+"decorative element"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:225
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:227
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Mobile Small"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "<425px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Tight single column"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "425–768px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Standard mobile"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "768–1024px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "2-column grids begin"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1024–1280px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Standard layout"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "1280–1440px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Expanded layout"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Ultra-wide"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid ">1440px"
+msgstr ""
+
+#: ../../source/templates_mongodb.md
+msgid "Maximum width, generous margins"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:237
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:238
+msgid "Pill buttons with generous padding"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:239
+msgid "Navigation links at 16px with adequate spacing"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:240
+msgid "Card surfaces as full-area touch targets"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:242
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:243
+msgid "Hero: MongoDB Value Serif 96px → 64px → scales further"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:244
+msgid "Navigation: horizontal mega-menu → hamburger"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:245
+msgid "Feature cards: multi-column → stacked"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:246
+msgid "Dark/light sections maintain their mode at all sizes"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:247
+msgid "Source Code Pro labels maintain uppercase treatment"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:249
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:250
+msgid "Dashboard screenshots scale proportionally"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:251
+msgid "Dark section backgrounds maintained full-width"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:252
+msgid "Image radius maintained across breakpoints"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:254
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:256
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:257
+msgid "Dark background: Forest Black (`#001e2b`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:258
+msgid "Brand accent: MongoDB Green (`#00ed64`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:259
+msgid "Functional green: Dark Green (`#00684a`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:260
+msgid "Link blue: Action Blue (`#006cfa`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:261
+msgid "Text on light: Black (`#000000`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:262
+msgid "Text on dark: White (`#ffffff`) or Light Input (`#e8edeb`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:263
+msgid "Border light: Silver Teal (`#b8c4c2`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:264
+msgid "Border dark: Teal Gray (`#3d4f58`)"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:266
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:267
+msgid ""
+"\"Create a hero on forest-black (#001e2b) background. Headline at 96px "
+"MongoDB Value Serif weight 400, line-height 1.20, white text with "
+"'potential' highlighted in MongoDB Green (#00ed64). Subtitle at 18px "
+"Euclid Circular A weight 400. Green pill CTA (#00684a, 100px radius). "
+"Neon green gradient glow behind product screenshot.\""
+msgstr ""
+
+#: ../../source/templates_mongodb.md:268
+msgid ""
+"\"Design a card on white background: 1px solid #b8c4c2 border, 16px "
+"radius, shadow rgba(0,30,43,0.12) 0px 26px 44px. Title at 24px Euclid "
+"Circular A weight 500. Body at 16px weight 300. Source Code Pro 14px "
+"uppercase label above title with 2px letter-spacing.\""
+msgstr ""
+
+#: ../../source/templates_mongodb.md:269
+msgid ""
+"\"Build a dark section: #001e2b background, 1px solid #3d4f58 border on "
+"cards. White text. MongoDB Green (#00ed64) accent underlines on headings "
+"using bottom-border 2px solid.\""
+msgstr ""
+
+#: ../../source/templates_mongodb.md:270
+msgid ""
+"\"Create technical label: Source Code Pro 14px, text-transform uppercase,"
+" letter-spacing 2px, weight 500, #00ed64 color on dark background.\""
+msgstr ""
+
+#: ../../source/templates_mongodb.md:271
+msgid ""
+"\"Design a pill button: #1c2d38 background, 1px solid #3d4f58 border, "
+"100px radius, #5c6c75 text. Hover: #1eaedb background, white text, "
+"translateX(5px).\""
+msgstr ""
+
+#: ../../source/templates_mongodb.md:273
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:274
+msgid ""
+"Start with the mode decision: dark (#001e2b) for hero/features, white for"
+" content"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:275
+msgid ""
+"MongoDB Green (#00ed64) is electric — use once per section for maximum "
+"impact"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:276
+msgid ""
+"Serif headlines (MongoDB Value Serif) create the editorial authority — "
+"never use for body"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:277
+msgid ""
+"Weight 300 body text creates the airy reading experience — don't default "
+"to 400"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:278
+msgid ""
+"Source Code Pro uppercase with wide tracking for technical labels — the "
+"database voice"
+msgstr ""
+
+#: ../../source/templates_mongodb.md:279
+msgid "Teal-tinted shadows keep everything in the MongoDB color world"
+msgstr ""
+

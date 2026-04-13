@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/vary_HISTORY.md:1
+msgid "1.1.2 / 2017-09-23"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:4
+msgid "perf: improve header token parsing speed"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:6
+msgid "1.1.1 / 2017-03-20"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:9
+msgid "perf: hoist regular expression"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:11
+msgid "1.1.0 / 2015-09-29"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:14
+msgid "Only accept valid field names in the `field` argument"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:15
+msgid "Ensures the resulting string is a valid HTTP header value"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:17
+msgid "1.0.1 / 2015-07-08"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:20
+msgid "Fix setting empty header from empty `field`"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:21
+msgid "perf: enable strict mode"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:22
+msgid "perf: remove argument reassignments"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:24
+msgid "1.0.0 / 2014-08-10"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:27
+msgid "Accept valid `Vary` header string as `field`"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:28
+msgid "Add `vary.append` for low-level string manipulation"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:29
+msgid "Move to `jshttp` orgainzation"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:31
+msgid "0.1.0 / 2014-06-05"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:34
+msgid "Support array of fields to set"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:36
+msgid "0.0.0 / 2014-06-04"
+msgstr ""
+
+#: ../../source/vary_HISTORY.md:39
+msgid "Initial release"
+msgstr ""
+

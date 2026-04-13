@@ -1,0 +1,573 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_citation-workflow.md:1
+msgid "Citation Management & Hallucination Prevention"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:3
+msgid ""
+"This reference provides a complete workflow for managing citations "
+"programmatically, preventing AI-generated citation hallucinations, and "
+"maintaining clean bibliographies."
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:7
+msgid "Contents"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:9
+msgid "[Why Citation Verification Matters](#why-citation-verification-matters)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:10
+msgid "[Citation APIs Overview](#citation-apis-overview)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:11
+msgid "[Verified Citation Workflow](#verified-citation-workflow)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:12
+msgid "[Python Implementation](#python-implementation)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:13
+msgid "[BibTeX Management](#bibtex-management)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:14
+msgid "[Common Citation Formats](#common-citation-formats)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:15
+msgid "[Troubleshooting](#troubleshooting)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:19
+msgid "Why Citation Verification Matters"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:21
+msgid "The Hallucination Problem"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:23
+msgid "Research has documented significant issues with AI-generated citations:"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:24
+#, python-format
+msgid "**~40% error rate** in AI-generated citations (Enago Academy research)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:25
+msgid "NeurIPS 2025 found **100+ hallucinated citations** slipped through review"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:26
+msgid "Common errors include:"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:27
+msgid "Fabricated paper titles with real author names"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:28
+msgid "Wrong publication venues or years"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:29
+msgid "Non-existent papers with plausible metadata"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:30
+msgid "Incorrect DOIs or arXiv IDs"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:32
+msgid "Consequences"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:34
+msgid "Desk rejection at some venues"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:35
+msgid "Loss of credibility with reviewers"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:36
+msgid "Potential retraction if published"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:37
+msgid "Wasted time chasing non-existent sources"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:39
+msgid "Solution"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:41
+msgid "**Never generate citations from memory—always verify programmatically.**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:45
+msgid "Citation APIs Overview"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:47
+msgid "Primary APIs"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "API"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Coverage"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Rate Limits"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Best For"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "**Semantic Scholar**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "214M papers"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "1 RPS (free key)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "ML/AI papers, citation graphs"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "**CrossRef**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "140M+ DOIs"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Polite pool with mailto"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "DOI lookup, BibTeX retrieval"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "**arXiv**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Preprints"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "3-second delays"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "ML preprints, PDF access"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "**OpenAlex**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "240M+ works"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "100K/day, 10 RPS"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Open alternative to MAG"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:56
+msgid "API Selection Guide"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:65
+msgid "No Official Google Scholar API"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:67
+msgid ""
+"Google Scholar has no official API. Scraping violates ToS. Use SerpApi "
+"($75-275/month) only if Semantic Scholar coverage is insufficient."
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:71
+msgid "Verified Citation Workflow"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:73
+msgid "5-Step Process"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:87
+msgid "Step 1: Search"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:89
+msgid "Use Semantic Scholar for ML/AI papers:"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:106
+msgid "Step 2: Verify Existence"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:108
+msgid "Confirm paper exists in at least two sources:"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:141
+msgid "Step 3: Retrieve BibTeX"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:143
+msgid "Use DOI content negotiation for guaranteed accuracy:"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:163
+msgid "Step 4: Validate Claims"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:165
+msgid "Before citing a paper for a specific claim, verify the claim exists:"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:181
+msgid "Step 5: Add to Bibliography"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:183
+msgid "Add verified entry to your .bib file with consistent key format:"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:214
+msgid "Python Implementation"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:216
+msgid "Complete Citation Manager Class"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:218
+#, python-brace-format, python-format
+msgid "{% raw %}"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:381
+#, python-brace-format, python-format
+msgid "{% endraw %}"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:383
+msgid "Quick Functions"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:411
+msgid "BibTeX Management"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:413
+msgid "BibTeX vs BibLaTeX"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Feature"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "BibTeX"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "BibLaTeX"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Unicode support"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Limited"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Full"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Entry types"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Standard"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Extended (@online, @dataset)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Customization"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Highly flexible"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Backend"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "bibtex"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md
+msgid "Biber (recommended)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:422
+msgid ""
+"**Recommendation**: Use natbib with BibTeX for conference submissions — "
+"all major venue templates (NeurIPS, ICML, ICLR, ACL, AAAI, COLM) ship "
+"with natbib and `.bst` files. BibLaTeX with Biber is an option for "
+"journals or personal projects where you control the template."
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:424
+msgid "LaTeX Setup"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:442
+msgid "Citation Commands"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:452
+msgid "Consistent Citation Keys"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:454
+msgid "Use format: `author_year_firstword`"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:464
+msgid "Common Citation Formats"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:466
+msgid "Conference Paper"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:481
+msgid "Journal Article"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:496
+msgid "arXiv Preprint"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:511
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:513
+msgid "Common Issues"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:515
+msgid "**Issue: Semantic Scholar returns no results**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:516
+msgid "Try more specific keywords"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:517
+msgid "Check spelling of author names"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:518
+msgid "Use quotation marks for exact phrases"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:520
+msgid "**Issue: DOI doesn't resolve to BibTeX**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:521
+msgid "DOI may be registered but not linked to CrossRef"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:522
+msgid "Try arXiv ID instead if available"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:523
+msgid "Generate BibTeX from metadata manually"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:525
+msgid "**Issue: Rate limiting errors**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:526
+msgid "Add delays between requests (1-3 seconds)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:527
+msgid "Use API key if available"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:528
+msgid "Cache results to avoid repeat queries"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:530
+msgid "**Issue: Encoding problems in BibTeX**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:531
+#, python-brace-format
+msgid "Use proper LaTeX escaping: `{\\\"u}` for ü"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:532
+msgid "Ensure file is UTF-8 encoded"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:533
+msgid "Use BibLaTeX with Biber for better Unicode"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:535
+msgid "Verification Checklist"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:537
+msgid "Before adding a citation:"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:539
+msgid "[ ] Paper found in at least 2 sources"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:540
+msgid "[ ] DOI or arXiv ID verified"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:541
+msgid "[ ] BibTeX retrieved (not generated from memory)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:542
+msgid "[ ] Entry type correct (@inproceedings vs @article)"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:543
+msgid "[ ] Author names complete and correctly formatted"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:544
+msgid "[ ] Year and venue verified"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:545
+msgid "[ ] Citation key follows consistent format"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:549
+msgid "Additional Resources"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:551
+msgid "**APIs:**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:552
+msgid "Semantic Scholar: https://api.semanticscholar.org/api-docs/"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:553
+msgid ""
+"CrossRef: https://www.crossref.org/documentation/retrieve-metadata/rest-"
+"api/"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:554
+msgid "arXiv: https://info.arxiv.org/help/api/basics.html"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:555
+msgid "OpenAlex: https://docs.openalex.org/"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:557
+msgid "**Python Libraries:**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:558
+msgid "`semanticscholar`: https://pypi.org/project/semanticscholar/"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:559
+msgid "`arxiv`: https://pypi.org/project/arxiv/"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:560
+msgid "`habanero` (CrossRef): https://github.com/sckott/habanero"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:562
+msgid "**Verification Tools:**"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:563
+msgid "Citely: https://citely.ai/citation-checker"
+msgstr ""
+
+#: ../../source/references_citation-workflow.md:564
+msgid "ReciteWorks: https://reciteworks.com/"
+msgstr ""
+

@@ -1,0 +1,1245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_checklists.md:1
+msgid "Conference Paper Checklists"
+msgstr ""
+
+#: ../../source/references_checklists.md:3
+msgid ""
+"This reference documents the mandatory checklist requirements for major "
+"ML/AI conferences. All major venues now require paper checklists—missing "
+"them results in desk rejection."
+msgstr ""
+
+#: ../../source/references_checklists.md:7
+msgid "Contents"
+msgstr ""
+
+#: ../../source/references_checklists.md:9
+msgid "[NeurIPS Paper Checklist](#neurips-paper-checklist)"
+msgstr ""
+
+#: ../../source/references_checklists.md:10
+msgid "[ICML Paper Checklist](#icml-paper-checklist)"
+msgstr ""
+
+#: ../../source/references_checklists.md:11
+msgid "[ICLR Requirements](#iclr-requirements)"
+msgstr ""
+
+#: ../../source/references_checklists.md:12
+msgid "[ACL Requirements](#acl-requirements)"
+msgstr ""
+
+#: ../../source/references_checklists.md:13
+msgid "[AAAI Requirements](#aaai-requirements)"
+msgstr ""
+
+#: ../../source/references_checklists.md:14
+msgid "[COLM Requirements](#colm-requirements)"
+msgstr ""
+
+#: ../../source/references_checklists.md:15
+msgid "[Universal Pre-Submission Checklist](#universal-pre-submission-checklist)"
+msgstr ""
+
+#: ../../source/references_checklists.md:19
+msgid "NeurIPS Paper Checklist"
+msgstr ""
+
+#: ../../source/references_checklists.md:21
+msgid "Mandatory Components"
+msgstr ""
+
+#: ../../source/references_checklists.md:23
+msgid ""
+"All NeurIPS submissions must include a completed paper checklist. Papers "
+"lacking this element face **automatic desk rejection**. The checklist "
+"appears after references and supplemental material, outside the page "
+"limit."
+msgstr ""
+
+#: ../../source/references_checklists.md:25
+msgid "16 Required Checklist Items"
+msgstr ""
+
+#: ../../source/references_checklists.md:27
+msgid "1. Claims Alignment"
+msgstr ""
+
+#: ../../source/references_checklists.md:28
+msgid ""
+"Authors must verify that abstract and introduction claims match "
+"theoretical and experimental results, with clearly stated contributions, "
+"assumptions, and limitations."
+msgstr ""
+
+#: ../../source/references_checklists.md:30
+#: ../../source/references_checklists.md:46
+msgid "**What to check:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:31
+msgid "[ ] Abstract claims match actual results"
+msgstr ""
+
+#: ../../source/references_checklists.md:32
+msgid "[ ] Introduction doesn't overclaim"
+msgstr ""
+
+#: ../../source/references_checklists.md:33
+msgid "[ ] Contributions are specific and falsifiable"
+msgstr ""
+
+#: ../../source/references_checklists.md:35
+msgid "2. Limitations Discussion"
+msgstr ""
+
+#: ../../source/references_checklists.md:36
+msgid ""
+"Papers should include a dedicated \"Limitations\" section addressing "
+"strong assumptions, robustness to violations, scope constraints, and "
+"performance-influencing factors."
+msgstr ""
+
+#: ../../source/references_checklists.md:38
+#: ../../source/references_checklists.md:62
+#: ../../source/references_checklists.md:78
+#: ../../source/references_checklists.md:135
+#: ../../source/references_checklists.md:253
+msgid "**What to include:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:39
+msgid "[ ] Dedicated Limitations section"
+msgstr ""
+
+#: ../../source/references_checklists.md:40
+msgid "[ ] Honest assessment of scope"
+msgstr ""
+
+#: ../../source/references_checklists.md:41
+msgid "[ ] Conditions where method may fail"
+msgstr ""
+
+#: ../../source/references_checklists.md:43
+msgid "3. Theory & Proofs"
+msgstr ""
+
+#: ../../source/references_checklists.md:44
+msgid ""
+"Theoretical contributions require full assumption statements and complete"
+" proofs (main paper or appendix with proof sketches for intuition)."
+msgstr ""
+
+#: ../../source/references_checklists.md:47
+msgid "[ ] All assumptions stated formally"
+msgstr ""
+
+#: ../../source/references_checklists.md:48
+msgid "[ ] Complete proofs provided (main text or appendix)"
+msgstr ""
+
+#: ../../source/references_checklists.md:49
+msgid "[ ] Proof sketches for intuition in main text"
+msgstr ""
+
+#: ../../source/references_checklists.md:51
+msgid "4. Reproducibility"
+msgstr ""
+
+#: ../../source/references_checklists.md:52
+msgid ""
+"Authors must describe steps ensuring results verification through code "
+"release, detailed instructions, model access, or checkpoints appropriate "
+"to their contribution type."
+msgstr ""
+
+#: ../../source/references_checklists.md:54
+msgid "**What to provide:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:55
+msgid "[ ] Clear reproducibility statement"
+msgstr ""
+
+#: ../../source/references_checklists.md:56
+msgid "[ ] Code availability information"
+msgstr ""
+
+#: ../../source/references_checklists.md:57
+msgid "[ ] Model checkpoints if applicable"
+msgstr ""
+
+#: ../../source/references_checklists.md:59
+msgid "5. Data & Code Access"
+msgstr ""
+
+#: ../../source/references_checklists.md:60
+msgid ""
+"Instructions for reproducing main experimental results should be provided"
+" (supplemental material or URLs), including exact commands and "
+"environment specifications."
+msgstr ""
+
+#: ../../source/references_checklists.md:63
+msgid "[ ] Exact commands to run experiments"
+msgstr ""
+
+#: ../../source/references_checklists.md:64
+msgid "[ ] Environment specifications (requirements.txt, conda env)"
+msgstr ""
+
+#: ../../source/references_checklists.md:65
+msgid "[ ] Data access instructions"
+msgstr ""
+
+#: ../../source/references_checklists.md:67
+msgid "6. Experimental Details"
+msgstr ""
+
+#: ../../source/references_checklists.md:68
+msgid ""
+"Papers must specify training details: data splits, hyperparameters, and "
+"selection methods in the main paper or supplementary materials."
+msgstr ""
+
+#: ../../source/references_checklists.md:70
+#: ../../source/references_checklists.md:86
+#: ../../source/references_checklists.md:119
+msgid "**What to document:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:71
+msgid "[ ] Train/val/test split details"
+msgstr ""
+
+#: ../../source/references_checklists.md:72
+msgid "[ ] All hyperparameters used"
+msgstr ""
+
+#: ../../source/references_checklists.md:73
+msgid "[ ] Hyperparameter selection method"
+msgstr ""
+
+#: ../../source/references_checklists.md:75
+msgid "7. Statistical Significance"
+msgstr ""
+
+#: ../../source/references_checklists.md:76
+msgid ""
+"Results require error bars, confidence intervals, or statistical tests "
+"with clearly stated calculation methods and underlying assumptions."
+msgstr ""
+
+#: ../../source/references_checklists.md:79
+msgid "[ ] Error bars or confidence intervals"
+msgstr ""
+
+#: ../../source/references_checklists.md:80
+msgid "[ ] Number of runs/seeds"
+msgstr ""
+
+#: ../../source/references_checklists.md:81
+msgid "[ ] Calculation method (std dev vs std error)"
+msgstr ""
+
+#: ../../source/references_checklists.md:83
+msgid "8. Compute Resources"
+msgstr ""
+
+#: ../../source/references_checklists.md:84
+msgid ""
+"Specifications needed: compute worker types (CPU/GPU), memory, storage, "
+"execution time per run, and total project compute requirements."
+msgstr ""
+
+#: ../../source/references_checklists.md:87
+msgid "[ ] GPU type and count"
+msgstr ""
+
+#: ../../source/references_checklists.md:88
+msgid "[ ] Training time per run"
+msgstr ""
+
+#: ../../source/references_checklists.md:89
+msgid "[ ] Total compute used"
+msgstr ""
+
+#: ../../source/references_checklists.md:91
+msgid "9. Ethics Code Compliance"
+msgstr ""
+
+#: ../../source/references_checklists.md:92
+msgid ""
+"Authors confirm adherence to the NeurIPS Code of Ethics, noting any "
+"necessary deviations."
+msgstr ""
+
+#: ../../source/references_checklists.md:94
+#: ../../source/references_checklists.md:143
+msgid "**What to verify:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:95
+msgid "[ ] Read NeurIPS Code of Ethics"
+msgstr ""
+
+#: ../../source/references_checklists.md:96
+msgid "[ ] Confirm compliance"
+msgstr ""
+
+#: ../../source/references_checklists.md:97
+msgid "[ ] Note any deviations with justification"
+msgstr ""
+
+#: ../../source/references_checklists.md:99
+msgid "10. Broader Impacts"
+msgstr ""
+
+#: ../../source/references_checklists.md:100
+msgid ""
+"Discussion of potential negative societal applications, fairness "
+"concerns, privacy risks, and possible mitigation strategies when "
+"applicable."
+msgstr ""
+
+#: ../../source/references_checklists.md:102
+msgid "**What to address:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:103
+msgid "[ ] Potential negative applications"
+msgstr ""
+
+#: ../../source/references_checklists.md:104
+msgid "[ ] Fairness considerations"
+msgstr ""
+
+#: ../../source/references_checklists.md:105
+msgid "[ ] Privacy implications"
+msgstr ""
+
+#: ../../source/references_checklists.md:106
+msgid "[ ] Mitigation strategies"
+msgstr ""
+
+#: ../../source/references_checklists.md:108
+msgid "11. Safeguards"
+msgstr ""
+
+#: ../../source/references_checklists.md:109
+msgid ""
+"High-risk models (language models, internet-scraped datasets) require "
+"controlled release mechanisms and usage guidelines."
+msgstr ""
+
+#: ../../source/references_checklists.md:111
+msgid "**What to consider:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:112
+msgid "[ ] Release strategy for sensitive models"
+msgstr ""
+
+#: ../../source/references_checklists.md:113
+msgid "[ ] Usage guidelines if needed"
+msgstr ""
+
+#: ../../source/references_checklists.md:114
+msgid "[ ] Access controls if appropriate"
+msgstr ""
+
+#: ../../source/references_checklists.md:116
+msgid "12. License Respect"
+msgstr ""
+
+#: ../../source/references_checklists.md:117
+msgid ""
+"All existing assets require creator citations, license names, URLs, "
+"version numbers, and terms-of-service acknowledgment."
+msgstr ""
+
+#: ../../source/references_checklists.md:120
+msgid "[ ] Dataset licenses cited"
+msgstr ""
+
+#: ../../source/references_checklists.md:121
+msgid "[ ] Code licenses respected"
+msgstr ""
+
+#: ../../source/references_checklists.md:122
+msgid "[ ] Version numbers included"
+msgstr ""
+
+#: ../../source/references_checklists.md:124
+msgid "13. Asset Documentation"
+msgstr ""
+
+#: ../../source/references_checklists.md:125
+msgid ""
+"New releases need structured templates documenting training details, "
+"limitations, consent procedures, and licensing information."
+msgstr ""
+
+#: ../../source/references_checklists.md:127
+msgid "**For new datasets/models:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:128
+msgid "[ ] Datasheet or model card"
+msgstr ""
+
+#: ../../source/references_checklists.md:129
+msgid "[ ] Training data documentation"
+msgstr ""
+
+#: ../../source/references_checklists.md:130
+msgid "[ ] Known limitations"
+msgstr ""
+
+#: ../../source/references_checklists.md:132
+msgid "14. Human Subjects"
+msgstr ""
+
+#: ../../source/references_checklists.md:133
+msgid ""
+"Crowdsourcing studies must include participant instructions, screenshots,"
+" compensation details, and comply with minimum wage requirements."
+msgstr ""
+
+#: ../../source/references_checklists.md:136
+msgid "[ ] Task instructions"
+msgstr ""
+
+#: ../../source/references_checklists.md:137
+msgid "[ ] Compensation details"
+msgstr ""
+
+#: ../../source/references_checklists.md:138
+msgid "[ ] Time estimates"
+msgstr ""
+
+#: ../../source/references_checklists.md:140
+msgid "15. IRB Approvals"
+msgstr ""
+
+#: ../../source/references_checklists.md:141
+msgid ""
+"Human subjects research requires documented institutional review board "
+"approval or equivalent, with risk descriptions disclosed (maintaining "
+"anonymity at submission)."
+msgstr ""
+
+#: ../../source/references_checklists.md:144
+msgid "[ ] IRB approval obtained"
+msgstr ""
+
+#: ../../source/references_checklists.md:145
+msgid "[ ] Risk assessment completed"
+msgstr ""
+
+#: ../../source/references_checklists.md:146
+msgid "[ ] Anonymized at submission"
+msgstr ""
+
+#: ../../source/references_checklists.md:148
+msgid "16. LLM Declaration"
+msgstr ""
+
+#: ../../source/references_checklists.md:149
+msgid ""
+"Usage of large language models as core methodology components requires "
+"disclosure; writing/editing use doesn't require declaration."
+msgstr ""
+
+#: ../../source/references_checklists.md:151
+msgid "**What to disclose:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:152
+msgid "[ ] LLM used as core methodology component"
+msgstr ""
+
+#: ../../source/references_checklists.md:153
+msgid "[ ] How LLM was used"
+msgstr ""
+
+#: ../../source/references_checklists.md:154
+msgid "[ ] (Writing assistance doesn't require disclosure)"
+msgstr ""
+
+#: ../../source/references_checklists.md:156
+msgid "Response Format"
+msgstr ""
+
+#: ../../source/references_checklists.md:158
+msgid ""
+"Authors select \"yes,\" \"no,\" or \"N/A\" per question, with optional "
+"1-2 sentence justifications."
+msgstr ""
+
+#: ../../source/references_checklists.md:160
+msgid ""
+"**Important:** Reviewers are explicitly instructed not to penalize honest"
+" limitation acknowledgment."
+msgstr ""
+
+#: ../../source/references_checklists.md:164
+msgid "ICML Paper Checklist"
+msgstr ""
+
+#: ../../source/references_checklists.md:166
+msgid "Broader Impact Statement"
+msgstr ""
+
+#: ../../source/references_checklists.md:168
+msgid ""
+"ICML requires a Broader Impact Statement at the end of the paper, before "
+"references. This does NOT count toward the page limit."
+msgstr ""
+
+#: ../../source/references_checklists.md:170
+msgid "**Required elements:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:171
+msgid "Potential positive impacts"
+msgstr ""
+
+#: ../../source/references_checklists.md:172
+msgid "Potential negative impacts"
+msgstr ""
+
+#: ../../source/references_checklists.md:173
+msgid "Mitigation strategies"
+msgstr ""
+
+#: ../../source/references_checklists.md:174
+msgid "Who may be affected"
+msgstr ""
+
+#: ../../source/references_checklists.md:176
+msgid "ICML Specific Requirements"
+msgstr ""
+
+#: ../../source/references_checklists.md:178
+msgid "Reproducibility Checklist"
+msgstr ""
+
+#: ../../source/references_checklists.md:180
+msgid "[ ] Data splits clearly specified"
+msgstr ""
+
+#: ../../source/references_checklists.md:181
+msgid "[ ] Hyperparameters listed"
+msgstr ""
+
+#: ../../source/references_checklists.md:182
+msgid "[ ] Search ranges documented"
+msgstr ""
+
+#: ../../source/references_checklists.md:183
+msgid "[ ] Selection method explained"
+msgstr ""
+
+#: ../../source/references_checklists.md:184
+msgid "[ ] Compute resources specified"
+msgstr ""
+
+#: ../../source/references_checklists.md:185
+msgid "[ ] Code availability stated"
+msgstr ""
+
+#: ../../source/references_checklists.md:187
+msgid "Statistical Reporting"
+msgstr ""
+
+#: ../../source/references_checklists.md:189
+msgid "[ ] Error bars on all figures"
+msgstr ""
+
+#: ../../source/references_checklists.md:190
+msgid "[ ] Standard deviation vs standard error specified"
+msgstr ""
+
+#: ../../source/references_checklists.md:191
+msgid "[ ] Number of runs stated"
+msgstr ""
+
+#: ../../source/references_checklists.md:192
+msgid "[ ] Significance tests if comparing methods"
+msgstr ""
+
+#: ../../source/references_checklists.md:194
+msgid "Anonymization"
+msgstr ""
+
+#: ../../source/references_checklists.md:196
+msgid "[ ] No author names in paper"
+msgstr ""
+
+#: ../../source/references_checklists.md:197
+msgid "[ ] No acknowledgments"
+msgstr ""
+
+#: ../../source/references_checklists.md:198
+msgid "[ ] No grant numbers"
+msgstr ""
+
+#: ../../source/references_checklists.md:199
+msgid "[ ] Prior work cited in third person"
+msgstr ""
+
+#: ../../source/references_checklists.md:200
+msgid "[ ] No identifiable repository URLs"
+msgstr ""
+
+#: ../../source/references_checklists.md:204
+msgid "ICLR Requirements"
+msgstr ""
+
+#: ../../source/references_checklists.md:206
+msgid "LLM Disclosure Policy (New for 2026)"
+msgstr ""
+
+#: ../../source/references_checklists.md:208
+msgid "ICLR has a specific LLM disclosure requirement:"
+msgstr ""
+
+#: ../../source/references_checklists.md:210
+msgid ""
+"\"If LLMs played a significant role in research ideation and/or writing "
+"to the extent that they could be regarded as a contributor, authors must "
+"describe their precise role in a separate appendix section.\""
+msgstr ""
+
+#: ../../source/references_checklists.md:212
+msgid "**When disclosure is required:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:213
+msgid "LLM used for significant research ideation"
+msgstr ""
+
+#: ../../source/references_checklists.md:214
+msgid "LLM used for substantial writing"
+msgstr ""
+
+#: ../../source/references_checklists.md:215
+msgid "LLM could be considered a contributor"
+msgstr ""
+
+#: ../../source/references_checklists.md:217
+msgid "**When disclosure is NOT required:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:218
+msgid "Grammar checking"
+msgstr ""
+
+#: ../../source/references_checklists.md:219
+msgid "Minor editing assistance"
+msgstr ""
+
+#: ../../source/references_checklists.md:220
+msgid "Code completion tools"
+msgstr ""
+
+#: ../../source/references_checklists.md:222
+msgid "**Consequences of non-disclosure:**"
+msgstr ""
+
+#: ../../source/references_checklists.md:223
+msgid "Desk rejection"
+msgstr ""
+
+#: ../../source/references_checklists.md:224
+msgid "Potential post-publication issues"
+msgstr ""
+
+#: ../../source/references_checklists.md:226
+msgid "ICLR Specific Requirements"
+msgstr ""
+
+#: ../../source/references_checklists.md:228
+msgid "Reproducibility Statement (Optional but Recommended)"
+msgstr ""
+
+#: ../../source/references_checklists.md:230
+msgid "Add a statement referencing:"
+msgstr ""
+
+#: ../../source/references_checklists.md:231
+msgid "Supporting materials"
+msgstr ""
+
+#: ../../source/references_checklists.md:232
+msgid "Code availability"
+msgstr ""
+
+#: ../../source/references_checklists.md:233
+msgid "Data availability"
+msgstr ""
+
+#: ../../source/references_checklists.md:234
+msgid "Model checkpoints"
+msgstr ""
+
+#: ../../source/references_checklists.md:236
+msgid "Ethics Statement (Optional)"
+msgstr ""
+
+#: ../../source/references_checklists.md:238
+msgid "Address potential concerns in ≤1 page. Does not count toward page limit."
+msgstr ""
+
+#: ../../source/references_checklists.md:240
+msgid "Reciprocal Reviewing"
+msgstr ""
+
+#: ../../source/references_checklists.md:242
+msgid "Authors on 3+ papers must serve as reviewers for ≥6 papers"
+msgstr ""
+
+#: ../../source/references_checklists.md:243
+msgid "Each submission needs ≥1 author registered to review ≥3 papers"
+msgstr ""
+
+#: ../../source/references_checklists.md:247
+msgid "ACL Requirements"
+msgstr ""
+
+#: ../../source/references_checklists.md:249
+msgid "Limitations Section (Mandatory)"
+msgstr ""
+
+#: ../../source/references_checklists.md:251
+msgid "ACL specifically requires a Limitations section:"
+msgstr ""
+
+#: ../../source/references_checklists.md:254
+msgid "Strong assumptions made"
+msgstr ""
+
+#: ../../source/references_checklists.md:255
+msgid "Scope limitations"
+msgstr ""
+
+#: ../../source/references_checklists.md:256
+msgid "When method may fail"
+msgstr ""
+
+#: ../../source/references_checklists.md:257
+msgid "Generalization concerns"
+msgstr ""
+
+#: ../../source/references_checklists.md:259
+msgid ""
+"**Important:** The Limitations section does NOT count toward the page "
+"limit."
+msgstr ""
+
+#: ../../source/references_checklists.md:261
+msgid "ACL Specific Checklist"
+msgstr ""
+
+#: ../../source/references_checklists.md:263
+msgid "Responsible NLP"
+msgstr ""
+
+#: ../../source/references_checklists.md:265
+msgid "[ ] Bias considerations addressed"
+msgstr ""
+
+#: ../../source/references_checklists.md:266
+msgid "[ ] Fairness evaluated if applicable"
+msgstr ""
+
+#: ../../source/references_checklists.md:267
+msgid "[ ] Dual-use concerns discussed"
+msgstr ""
+
+#: ../../source/references_checklists.md:269
+msgid "Multilingual Considerations"
+msgstr ""
+
+#: ../../source/references_checklists.md:271
+#: ../../source/references_checklists.md:278
+msgid "If applicable:"
+msgstr ""
+
+#: ../../source/references_checklists.md:272
+msgid "[ ] Language diversity addressed"
+msgstr ""
+
+#: ../../source/references_checklists.md:273
+msgid "[ ] Non-English languages included"
+msgstr ""
+
+#: ../../source/references_checklists.md:274
+msgid "[ ] Translation quality verified"
+msgstr ""
+
+#: ../../source/references_checklists.md:276
+msgid "Human Evaluation"
+msgstr ""
+
+#: ../../source/references_checklists.md:279
+msgid "[ ] Annotator details provided"
+msgstr ""
+
+#: ../../source/references_checklists.md:280
+msgid "[ ] Agreement metrics reported"
+msgstr ""
+
+#: ../../source/references_checklists.md:281
+msgid "[ ] Compensation documented"
+msgstr ""
+
+#: ../../source/references_checklists.md:285
+msgid "AAAI Requirements"
+msgstr ""
+
+#: ../../source/references_checklists.md:287
+msgid "Formatting (Strictest of All Venues)"
+msgstr ""
+
+#: ../../source/references_checklists.md:289
+msgid ""
+"AAAI enforces formatting rules more strictly than any other major venue. "
+"Papers that deviate from the template are desk-rejected."
+msgstr ""
+
+#: ../../source/references_checklists.md:291
+msgid ""
+"[ ] Use the **exact** AAAI style file without modification — no "
+"`\\setlength`, no `\\vspace` hacks, no font overrides"
+msgstr ""
+
+#: ../../source/references_checklists.md:292
+msgid "[ ] 7 pages main content (8 for camera-ready with author info)"
+msgstr ""
+
+#: ../../source/references_checklists.md:293
+msgid "[ ] Two-column format, Times font (set by template)"
+msgstr ""
+
+#: ../../source/references_checklists.md:294
+msgid "[ ] References and appendices do not count toward page limit"
+msgstr ""
+
+#: ../../source/references_checklists.md:295
+msgid "[ ] Abstract must be a single paragraph"
+msgstr ""
+
+#: ../../source/references_checklists.md:296
+msgid "[ ] Do not modify margins, column widths, or font sizes"
+msgstr ""
+
+#: ../../source/references_checklists.md:298
+#: ../../source/references_checklists.md:333
+msgid "Required Sections"
+msgstr ""
+
+#: ../../source/references_checklists.md:300
+msgid "[ ] Abstract (single paragraph, no math or citations)"
+msgstr ""
+
+#: ../../source/references_checklists.md:301
+msgid "[ ] Introduction with clear contribution statement"
+msgstr ""
+
+#: ../../source/references_checklists.md:302
+msgid "[ ] References in AAAI format (uses `aaai2026.bst`)"
+msgstr ""
+
+#: ../../source/references_checklists.md:303
+msgid "[ ] Appendix (optional, unlimited)"
+msgstr ""
+
+#: ../../source/references_checklists.md:305
+msgid "Ethics and Reproducibility"
+msgstr ""
+
+#: ../../source/references_checklists.md:307
+msgid ""
+"[ ] Broader impact statement (encouraged but not always mandatory — check"
+" current year's CFP)"
+msgstr ""
+
+#: ../../source/references_checklists.md:308
+msgid "[ ] Reproducibility details (datasets, code availability)"
+msgstr ""
+
+#: ../../source/references_checklists.md:309
+msgid "[ ] Acknowledge use of AI writing tools if applicable"
+msgstr ""
+
+#: ../../source/references_checklists.md:311
+#: ../../source/references_checklists.md:346
+msgid "Key Differences from Other Venues"
+msgstr ""
+
+#: ../../source/references_checklists.md:313
+msgid ""
+"**No separate limitations section required** (unlike ACL), but discussing"
+" limitations is recommended"
+msgstr ""
+
+#: ../../source/references_checklists.md:314
+msgid ""
+"**Strictest formatting enforcement** — the style checker will reject non-"
+"compliant PDFs"
+msgstr ""
+
+#: ../../source/references_checklists.md:315
+msgid ""
+"**No paper checklist** like NeurIPS has, but the universal checklist "
+"below still applies"
+msgstr ""
+
+#: ../../source/references_checklists.md:316
+msgid "**Unified template** covers main paper and supplementary in the same file"
+msgstr ""
+
+#: ../../source/references_checklists.md:320
+msgid "COLM Requirements"
+msgstr ""
+
+#: ../../source/references_checklists.md:322
+msgid "Overview"
+msgstr ""
+
+#: ../../source/references_checklists.md:324
+msgid ""
+"COLM (Conference on Language Modeling) focuses specifically on language "
+"model research. Framing must target this community."
+msgstr ""
+
+#: ../../source/references_checklists.md:326
+#: ../../source/references_checklists.md:369
+msgid "Formatting"
+msgstr ""
+
+#: ../../source/references_checklists.md:328
+msgid "[ ] 9 pages main content (10 for camera-ready)"
+msgstr ""
+
+#: ../../source/references_checklists.md:329
+msgid "[ ] Use COLM template (based on ICLR template with modifications)"
+msgstr ""
+
+#: ../../source/references_checklists.md:330
+msgid "[ ] Double-blind review"
+msgstr ""
+
+#: ../../source/references_checklists.md:331
+msgid "[ ] References and appendices unlimited"
+msgstr ""
+
+#: ../../source/references_checklists.md:335
+msgid "[ ] Abstract"
+msgstr ""
+
+#: ../../source/references_checklists.md:336
+msgid "[ ] Introduction framed for language modeling community"
+msgstr ""
+
+#: ../../source/references_checklists.md:337
+msgid "[ ] Conclusion"
+msgstr ""
+
+#: ../../source/references_checklists.md:338
+msgid "[ ] References"
+msgstr ""
+
+#: ../../source/references_checklists.md:340
+msgid "Content Expectations"
+msgstr ""
+
+#: ../../source/references_checklists.md:342
+msgid ""
+"[ ] Contribution must be relevant to language models (broadly "
+"interpreted: training, evaluation, applications, theory, alignment, "
+"safety)"
+msgstr ""
+
+#: ../../source/references_checklists.md:343
+msgid "[ ] If the method is general, frame with language model examples"
+msgstr ""
+
+#: ../../source/references_checklists.md:344
+msgid "[ ] Baselines should include recent LM-specific methods where applicable"
+msgstr ""
+
+#: ../../source/references_checklists.md:348
+msgid "**Narrower scope** than NeurIPS/ICML — must frame for LM community"
+msgstr ""
+
+#: ../../source/references_checklists.md:349
+msgid "**Template derived from ICLR** — similar formatting rules"
+msgstr ""
+
+#: ../../source/references_checklists.md:350
+msgid ""
+"**Newer venue** — reviewer norms are still establishing; err on the side "
+"of thorough evaluation"
+msgstr ""
+
+#: ../../source/references_checklists.md:351
+msgid ""
+"**No mandatory checklist** like NeurIPS, but broader impact discussion is"
+" expected"
+msgstr ""
+
+#: ../../source/references_checklists.md:352
+msgid ""
+"**LLM disclosure**: If LLMs were used in research (code generation, data "
+"annotation, writing assistance), disclose this"
+msgstr ""
+
+#: ../../source/references_checklists.md:356
+msgid "Universal Pre-Submission Checklist"
+msgstr ""
+
+#: ../../source/references_checklists.md:358
+msgid "Before Every Submission"
+msgstr ""
+
+#: ../../source/references_checklists.md:360
+msgid "Paper Content"
+msgstr ""
+
+#: ../../source/references_checklists.md:362
+msgid "[ ] Abstract ≤ word limit (usually 250-300 words)"
+msgstr ""
+
+#: ../../source/references_checklists.md:363
+msgid "[ ] Main content within page limit"
+msgstr ""
+
+#: ../../source/references_checklists.md:364
+msgid "[ ] References complete and verified"
+msgstr ""
+
+#: ../../source/references_checklists.md:365
+msgid "[ ] Limitations section included"
+msgstr ""
+
+#: ../../source/references_checklists.md:366
+msgid "[ ] All figures/tables have captions"
+msgstr ""
+
+#: ../../source/references_checklists.md:367
+msgid "[ ] Captions are self-contained"
+msgstr ""
+
+#: ../../source/references_checklists.md:371
+msgid "[ ] Correct template used (venue + year specific)"
+msgstr ""
+
+#: ../../source/references_checklists.md:372
+msgid "[ ] Margins not modified"
+msgstr ""
+
+#: ../../source/references_checklists.md:373
+msgid "[ ] Font sizes not modified"
+msgstr ""
+
+#: ../../source/references_checklists.md:374
+msgid "[ ] Double-blind requirements met"
+msgstr ""
+
+#: ../../source/references_checklists.md:375
+msgid "[ ] Page numbers (for review) or none (camera-ready)"
+msgstr ""
+
+#: ../../source/references_checklists.md:377
+msgid "Technical"
+msgstr ""
+
+#: ../../source/references_checklists.md:379
+msgid "[ ] All claims supported by evidence"
+msgstr ""
+
+#: ../../source/references_checklists.md:380
+msgid "[ ] Error bars included"
+msgstr ""
+
+#: ../../source/references_checklists.md:381
+msgid "[ ] Baselines appropriate"
+msgstr ""
+
+#: ../../source/references_checklists.md:382
+msgid "[ ] Hyperparameters documented"
+msgstr ""
+
+#: ../../source/references_checklists.md:383
+msgid "[ ] Compute resources stated"
+msgstr ""
+
+#: ../../source/references_checklists.md:385
+msgid "Reproducibility"
+msgstr ""
+
+#: ../../source/references_checklists.md:387
+msgid "[ ] Code will be available (or justification)"
+msgstr ""
+
+#: ../../source/references_checklists.md:388
+msgid "[ ] Data will be available (or justification)"
+msgstr ""
+
+#: ../../source/references_checklists.md:389
+msgid "[ ] Environment documented"
+msgstr ""
+
+#: ../../source/references_checklists.md:390
+msgid "[ ] Commands to reproduce provided"
+msgstr ""
+
+#: ../../source/references_checklists.md:392
+msgid "Ethics"
+msgstr ""
+
+#: ../../source/references_checklists.md:394
+msgid "[ ] Broader impacts considered"
+msgstr ""
+
+#: ../../source/references_checklists.md:395
+msgid "[ ] Limitations honestly stated"
+msgstr ""
+
+#: ../../source/references_checklists.md:396
+msgid "[ ] Licenses respected"
+msgstr ""
+
+#: ../../source/references_checklists.md:397
+msgid "[ ] IRB obtained if needed"
+msgstr ""
+
+#: ../../source/references_checklists.md:399
+msgid "Final Checks"
+msgstr ""
+
+#: ../../source/references_checklists.md:401
+msgid "[ ] PDF compiles without errors"
+msgstr ""
+
+#: ../../source/references_checklists.md:402
+msgid "[ ] All figures render correctly"
+msgstr ""
+
+#: ../../source/references_checklists.md:403
+msgid "[ ] All citations resolve"
+msgstr ""
+
+#: ../../source/references_checklists.md:404
+msgid "[ ] Supplementary material organized"
+msgstr ""
+
+#: ../../source/references_checklists.md:405
+msgid "[ ] Conference checklist completed"
+msgstr ""
+
+#: ../../source/references_checklists.md:409
+msgid "Quick Reference: Page Limits"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "Conference"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "Main Content"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "References"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "Appendix"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "NeurIPS 2025"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "9 pages"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "Unlimited"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "Unlimited (checklist separate)"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "ICML 2026"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "8 pages (+1 camera)"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "ICLR 2026"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "9 pages (+1 camera)"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "ACL 2025"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "8 pages (long)"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "AAAI 2026"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "7 pages (+1 camera)"
+msgstr ""
+
+#: ../../source/references_checklists.md
+msgid "COLM 2025"
+msgstr ""
+
+#: ../../source/references_checklists.md:422
+msgid "Template Locations"
+msgstr ""
+
+#: ../../source/references_checklists.md:424
+msgid "All conference templates are in the `templates/` directory:"
+msgstr ""
+

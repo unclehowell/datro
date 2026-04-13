@@ -1,0 +1,676 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/body-parser_README.md:1
+msgid "body-parser"
+msgstr ""
+
+#: ../../source/body-parser_README.md:3
+msgid ""
+"[![NPM Version][npm-version-image]][npm-url] [![NPM Downloads][npm-"
+"downloads-image]][npm-url] [![Build Status][ci-image]][ci-url] [![Test "
+"Coverage][coveralls-image]][coveralls-url] [![OpenSSF Scorecard Badge"
+"][ossf-scorecard-badge]][ossf-scorecard-visualizer]"
+msgstr ""
+
+#: ../../source/body-parser_README.md:3
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/body-parser_README.md:3
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/body-parser_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/body-parser_README.md:3
+msgid "Test Coverage"
+msgstr ""
+
+#: ../../source/body-parser_README.md:3
+msgid "OpenSSF Scorecard Badge"
+msgstr ""
+
+#: ../../source/body-parser_README.md:9
+msgid "Node.js body parsing middleware."
+msgstr ""
+
+#: ../../source/body-parser_README.md:11
+msgid ""
+"Parse incoming request bodies in a middleware before your handlers, "
+"available under the `req.body` property."
+msgstr ""
+
+#: ../../source/body-parser_README.md:14
+msgid ""
+"**Note** As `req.body`'s shape is based on user-controlled input, all "
+"properties and values in this object are untrusted and should be "
+"validated before trusting. For example, `req.body.foo.toString()` may "
+"fail in multiple ways, for example the `foo` property may not be there or"
+" may not be a string, and `toString` may not be a function and instead a "
+"string or other user input."
+msgstr ""
+
+#: ../../source/body-parser_README.md:20
+msgid ""
+"[Learn about the anatomy of an HTTP transaction in "
+"Node.js](https://nodejs.org/en/docs/guides/anatomy-of-an-http-"
+"transaction/)."
+msgstr ""
+
+#: ../../source/body-parser_README.md:22
+msgid ""
+"_This does not handle multipart bodies_, due to their complex and "
+"typically large nature. For multipart bodies, you may be interested in "
+"the following modules:"
+msgstr ""
+
+#: ../../source/body-parser_README.md:26
+msgid ""
+"[busboy](https://www.npmjs.org/package/busboy#readme) and [connect-"
+"busboy](https://www.npmjs.org/package/connect-busboy#readme)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:28
+msgid ""
+"[multiparty](https://www.npmjs.org/package/multiparty#readme) and "
+"[connect-multiparty](https://www.npmjs.org/package/connect-"
+"multiparty#readme)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:30
+msgid "[formidable](https://www.npmjs.org/package/formidable#readme)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:31
+msgid "[multer](https://www.npmjs.org/package/multer#readme)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:33
+msgid "This module provides the following parsers:"
+msgstr ""
+
+#: ../../source/body-parser_README.md:35
+msgid "[JSON body parser](#bodyparserjsonoptions)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:36
+msgid "[Raw body parser](#bodyparserrawoptions)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:37
+msgid "[Text body parser](#bodyparsertextoptions)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:38
+msgid "[URL-encoded form body parser](#bodyparserurlencodedoptions)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:40
+msgid "Other body parsers you might be interested in:"
+msgstr ""
+
+#: ../../source/body-parser_README.md:42
+msgid "[body](https://www.npmjs.org/package/body#readme)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:43
+msgid "[co-body](https://www.npmjs.org/package/co-body#readme)"
+msgstr ""
+
+#: ../../source/body-parser_README.md:45
+msgid "Installation"
+msgstr ""
+
+#: ../../source/body-parser_README.md:51
+msgid "API"
+msgstr ""
+
+#: ../../source/body-parser_README.md:57
+#, python-brace-format
+msgid ""
+"The `bodyParser` object exposes various factories to create middlewares. "
+"All middlewares will populate the `req.body` property with the parsed "
+"body when the `Content-Type` request header matches the `type` option, or"
+" an empty object (`{}`) if there was no body to parse, the `Content-Type`"
+" was not matched, or an error occurred."
+msgstr ""
+
+#: ../../source/body-parser_README.md:63
+msgid ""
+"The various errors returned by this module are described in the [errors "
+"section](#errors)."
+msgstr ""
+
+#: ../../source/body-parser_README.md:66
+msgid "bodyParser.json([options])"
+msgstr ""
+
+#: ../../source/body-parser_README.md:68
+msgid ""
+"Returns middleware that only parses `json` and only looks at requests "
+"where the `Content-Type` header matches the `type` option. This parser "
+"accepts any Unicode encoding of the body and supports automatic inflation"
+" of `gzip` and `deflate` encodings."
+msgstr ""
+
+#: ../../source/body-parser_README.md:73
+msgid ""
+"A new `body` object containing the parsed data is populated on the "
+"`request` object after the middleware (i.e. `req.body`)."
+msgstr ""
+
+#: ../../source/body-parser_README.md:76 ../../source/body-parser_README.md:131
+#: ../../source/body-parser_README.md:176
+#: ../../source/body-parser_README.md:227
+msgid "Options"
+msgstr ""
+
+#: ../../source/body-parser_README.md:78
+msgid ""
+"The `json` function takes an optional `options` object that may contain "
+"any of the following keys:"
+msgstr ""
+
+#: ../../source/body-parser_README.md:81 ../../source/body-parser_README.md:136
+#: ../../source/body-parser_README.md:186
+#: ../../source/body-parser_README.md:245
+msgid "inflate"
+msgstr ""
+
+#: ../../source/body-parser_README.md:83 ../../source/body-parser_README.md:138
+#: ../../source/body-parser_README.md:188
+#: ../../source/body-parser_README.md:247
+msgid ""
+"When set to `true`, then deflated (compressed) bodies will be inflated; "
+"when `false`, deflated bodies are rejected. Defaults to `true`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:86 ../../source/body-parser_README.md:141
+#: ../../source/body-parser_README.md:191
+#: ../../source/body-parser_README.md:250
+msgid "limit"
+msgstr ""
+
+#: ../../source/body-parser_README.md:88 ../../source/body-parser_README.md:143
+#: ../../source/body-parser_README.md:193
+#: ../../source/body-parser_README.md:252
+msgid ""
+"Controls the maximum request body size. If this is a number, then the "
+"value specifies the number of bytes; if it is a string, the value is "
+"passed to the [bytes](https://www.npmjs.com/package/bytes) library for "
+"parsing. Defaults to `'100kb'`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:93
+msgid "reviver"
+msgstr ""
+
+#: ../../source/body-parser_README.md:95
+msgid ""
+"The `reviver` option is passed directly to `JSON.parse` as the second "
+"argument. You can find more information on this argument [in the MDN "
+"documentation about JSON.parse](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse#Example.3A_Using_the_reviver_parameter)."
+msgstr ""
+
+#: ../../source/body-parser_README.md:99
+msgid "strict"
+msgstr ""
+
+#: ../../source/body-parser_README.md:101
+msgid ""
+"When set to `true`, will only accept arrays and objects; when `false` "
+"will accept anything `JSON.parse` accepts. Defaults to `true`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:104
+#: ../../source/body-parser_README.md:148
+#: ../../source/body-parser_README.md:198
+#: ../../source/body-parser_README.md:263
+msgid "type"
+msgstr ""
+
+#: ../../source/body-parser_README.md:106
+msgid ""
+"The `type` option is used to determine what media type the middleware "
+"will parse. This option can be a string, array of strings, or a function."
+" If not a function, `type` option is passed directly to the [type-"
+"is](https://www.npmjs.org/package/type-is#readme) library and this can be"
+" an extension name (like `json`), a mime type (like `application/json`), "
+"or a mime type with a wildcard (like `*/*` or `*/json`). If a function, "
+"the `type` option is called as `fn(req)` and the request is parsed if it "
+"returns a truthy value. Defaults to `application/json`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:115
+#: ../../source/body-parser_README.md:160
+#: ../../source/body-parser_README.md:209
+#: ../../source/body-parser_README.md:275
+msgid "verify"
+msgstr ""
+
+#: ../../source/body-parser_README.md:117
+#: ../../source/body-parser_README.md:162
+#: ../../source/body-parser_README.md:211
+#: ../../source/body-parser_README.md:277
+msgid ""
+"The `verify` option, if supplied, is called as `verify(req, res, buf, "
+"encoding)`, where `buf` is a `Buffer` of the raw request body and "
+"`encoding` is the encoding of the request. The parsing can be aborted by "
+"throwing an error."
+msgstr ""
+
+#: ../../source/body-parser_README.md:121
+msgid "bodyParser.raw([options])"
+msgstr ""
+
+#: ../../source/body-parser_README.md:123
+msgid ""
+"Returns middleware that parses all bodies as a `Buffer` and only looks at"
+" requests where the `Content-Type` header matches the `type` option. This"
+" parser supports automatic inflation of `gzip` and `deflate` encodings."
+msgstr ""
+
+#: ../../source/body-parser_README.md:127
+msgid ""
+"A new `body` object containing the parsed data is populated on the "
+"`request` object after the middleware (i.e. `req.body`). This will be a "
+"`Buffer` object of the body."
+msgstr ""
+
+#: ../../source/body-parser_README.md:133
+msgid ""
+"The `raw` function takes an optional `options` object that may contain "
+"any of the following keys:"
+msgstr ""
+
+#: ../../source/body-parser_README.md:150
+msgid ""
+"The `type` option is used to determine what media type the middleware "
+"will parse. This option can be a string, array of strings, or a function."
+" If not a function, `type` option is passed directly to the [type-"
+"is](https://www.npmjs.org/package/type-is#readme) library and this can be"
+" an extension name (like `bin`), a mime type (like `application/octet-"
+"stream`), or a mime type with a wildcard (like `*/*` or `application/*`)."
+" If a function, the `type` option is called as `fn(req)` and the request "
+"is parsed if it returns a truthy value. Defaults to `application/octet-"
+"stream`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:166
+msgid "bodyParser.text([options])"
+msgstr ""
+
+#: ../../source/body-parser_README.md:168
+msgid ""
+"Returns middleware that parses all bodies as a string and only looks at "
+"requests where the `Content-Type` header matches the `type` option. This "
+"parser supports automatic inflation of `gzip` and `deflate` encodings."
+msgstr ""
+
+#: ../../source/body-parser_README.md:172
+msgid ""
+"A new `body` string containing the parsed data is populated on the "
+"`request` object after the middleware (i.e. `req.body`). This will be a "
+"string of the body."
+msgstr ""
+
+#: ../../source/body-parser_README.md:178
+msgid ""
+"The `text` function takes an optional `options` object that may contain "
+"any of the following keys:"
+msgstr ""
+
+#: ../../source/body-parser_README.md:181
+msgid "defaultCharset"
+msgstr ""
+
+#: ../../source/body-parser_README.md:183
+msgid ""
+"Specify the default character set for the text content if the charset is "
+"not specified in the `Content-Type` header of the request. Defaults to "
+"`utf-8`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:200
+msgid ""
+"The `type` option is used to determine what media type the middleware "
+"will parse. This option can be a string, array of strings, or a function."
+" If not a function, `type` option is passed directly to the [type-"
+"is](https://www.npmjs.org/package/type-is#readme) library and this can be"
+" an extension name (like `txt`), a mime type (like `text/plain`), or a "
+"mime type with a wildcard (like `*/*` or `text/*`). If a function, the "
+"`type` option is called as `fn(req)` and the request is parsed if it "
+"returns a truthy value. Defaults to `text/plain`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:215
+msgid "bodyParser.urlencoded([options])"
+msgstr ""
+
+#: ../../source/body-parser_README.md:217
+msgid ""
+"Returns middleware that only parses `urlencoded` bodies and only looks at"
+" requests where the `Content-Type` header matches the `type` option. This"
+" parser accepts only UTF-8 encoding of the body and supports automatic "
+"inflation of `gzip` and `deflate` encodings."
+msgstr ""
+
+#: ../../source/body-parser_README.md:222
+msgid ""
+"A new `body` object containing the parsed data is populated on the "
+"`request` object after the middleware (i.e. `req.body`). This object will"
+" contain key-value pairs, where the value can be a string or array (when "
+"`extended` is `false`), or any type (when `extended` is `true`)."
+msgstr ""
+
+#: ../../source/body-parser_README.md:229
+msgid ""
+"The `urlencoded` function takes an optional `options` object that may "
+"contain any of the following keys:"
+msgstr ""
+
+#: ../../source/body-parser_README.md:232
+msgid "extended"
+msgstr ""
+
+#: ../../source/body-parser_README.md:234
+msgid ""
+"The `extended` option allows to choose between parsing the URL-encoded "
+"data with the `querystring` library (when `false`) or the `qs` library "
+"(when `true`). The \"extended\" syntax allows for rich objects and arrays"
+" to be encoded into the URL-encoded format, allowing for a JSON-like "
+"experience with URL-encoded. For more information, please [see the qs "
+"library](https://www.npmjs.org/package/qs#readme)."
+msgstr ""
+
+#: ../../source/body-parser_README.md:241
+msgid ""
+"Defaults to `true`, but using the default has been deprecated. Please "
+"research into the difference between `qs` and `querystring` and choose "
+"the appropriate setting."
+msgstr ""
+
+#: ../../source/body-parser_README.md:257
+msgid "parameterLimit"
+msgstr ""
+
+#: ../../source/body-parser_README.md:259
+msgid ""
+"The `parameterLimit` option controls the maximum number of parameters "
+"that are allowed in the URL-encoded data. If a request contains more "
+"parameters than this value, a 413 will be returned to the client. "
+"Defaults to `1000`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:265
+msgid ""
+"The `type` option is used to determine what media type the middleware "
+"will parse. This option can be a string, array of strings, or a function."
+" If not a function, `type` option is passed directly to the [type-"
+"is](https://www.npmjs.org/package/type-is#readme) library and this can be"
+" an extension name (like `urlencoded`), a mime type (like `application/x"
+"-www-form-urlencoded`), or a mime type with a wildcard (like `*/x-www-"
+"form-urlencoded`). If a function, the `type` option is called as "
+"`fn(req)` and the request is parsed if it returns a truthy value. "
+"Defaults to `application/x-www-form-urlencoded`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:281
+msgid "depth"
+msgstr ""
+
+#: ../../source/body-parser_README.md:283
+msgid ""
+"The `depth` option is used to configure the maximum depth of the `qs` "
+"library when `extended` is `true`. This allows you to limit the amount of"
+" keys that are parsed and can be useful to prevent certain types of "
+"abuse. Defaults to `32`. It is recommended to keep this value as low as "
+"possible."
+msgstr ""
+
+#: ../../source/body-parser_README.md:285
+msgid "Errors"
+msgstr ""
+
+#: ../../source/body-parser_README.md:287
+msgid ""
+"The middlewares provided by this module create errors using the [`http-"
+"errors` module](https://www.npmjs.com/package/http-errors). The errors "
+"will typically have a `status`/`statusCode` property that contains the "
+"suggested HTTP response code, an `expose` property to determine if the "
+"`message` property should be displayed to the client, a `type` property "
+"to determine the type of error without matching against the `message`, "
+"and a `body` property containing the read body, if available."
+msgstr ""
+
+#: ../../source/body-parser_README.md:295
+msgid ""
+"The following are the common errors created, though any error can come "
+"through for various reasons."
+msgstr ""
+
+#: ../../source/body-parser_README.md:298
+msgid "content encoding unsupported"
+msgstr ""
+
+#: ../../source/body-parser_README.md:300
+msgid ""
+"This error will occur when the request had a `Content-Encoding` header "
+"that contained an encoding but the \"inflation\" option was set to "
+"`false`. The `status` property is set to `415`, the `type` property is "
+"set to `'encoding.unsupported'`, and the `charset` property will be set "
+"to the encoding that is unsupported."
+msgstr ""
+
+#: ../../source/body-parser_README.md:306
+msgid "entity parse failed"
+msgstr ""
+
+#: ../../source/body-parser_README.md:308
+msgid ""
+"This error will occur when the request contained an entity that could not"
+" be parsed by the middleware. The `status` property is set to `400`, the "
+"`type` property is set to `'entity.parse.failed'`, and the `body` "
+"property is set to the entity value that failed parsing."
+msgstr ""
+
+#: ../../source/body-parser_README.md:313
+msgid "entity verify failed"
+msgstr ""
+
+#: ../../source/body-parser_README.md:315
+msgid ""
+"This error will occur when the request contained an entity that could not"
+" be failed verification by the defined `verify` option. The `status` "
+"property is set to `403`, the `type` property is set to "
+"`'entity.verify.failed'`, and the `body` property is set to the entity "
+"value that failed verification."
+msgstr ""
+
+#: ../../source/body-parser_README.md:320
+msgid "request aborted"
+msgstr ""
+
+#: ../../source/body-parser_README.md:322
+msgid ""
+"This error will occur when the request is aborted by the client before "
+"reading the body has finished. The `received` property will be set to the"
+" number of bytes received before the request was aborted and the "
+"`expected` property is set to the number of expected bytes. The `status` "
+"property is set to `400` and `type` property is set to "
+"`'request.aborted'`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:328
+msgid "request entity too large"
+msgstr ""
+
+#: ../../source/body-parser_README.md:330
+msgid ""
+"This error will occur when the request body's size is larger than the "
+"\"limit\" option. The `limit` property will be set to the byte limit and "
+"the `length` property will be set to the request body's length. The "
+"`status` property is set to `413` and the `type` property is set to "
+"`'entity.too.large'`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:335
+msgid "request size did not match content length"
+msgstr ""
+
+#: ../../source/body-parser_README.md:337
+msgid ""
+"This error will occur when the request's length did not match the length "
+"from the `Content-Length` header. This typically occurs when the request "
+"is malformed, typically when the `Content-Length` header was calculated "
+"based on characters instead of bytes. The `status` property is set to "
+"`400` and the `type` property is set to `'request.size.invalid'`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:343
+msgid "stream encoding should not be set"
+msgstr ""
+
+#: ../../source/body-parser_README.md:345
+msgid ""
+"This error will occur when something called the `req.setEncoding` method "
+"prior to this middleware. This module operates directly on bytes only and"
+" you cannot call `req.setEncoding` when using this module. The `status` "
+"property is set to `500` and the `type` property is set to "
+"`'stream.encoding.set'`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:350
+msgid "stream is not readable"
+msgstr ""
+
+#: ../../source/body-parser_README.md:352
+msgid ""
+"This error will occur when the request is no longer readable when this "
+"middleware attempts to read it. This typically means something other than"
+" a middleware from this module read the request body already and the "
+"middleware was also configured to read the same request. The `status` "
+"property is set to `500` and the `type` property is set to "
+"`'stream.not.readable'`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:358
+msgid "too many parameters"
+msgstr ""
+
+#: ../../source/body-parser_README.md:360
+msgid ""
+"This error will occur when the content of the request exceeds the "
+"configured `parameterLimit` for the `urlencoded` parser. The `status` "
+"property is set to `413` and the `type` property is set to "
+"`'parameters.too.many'`."
+msgstr ""
+
+#: ../../source/body-parser_README.md:364
+msgid "unsupported charset \"BOGUS\""
+msgstr ""
+
+#: ../../source/body-parser_README.md:366
+msgid ""
+"This error will occur when the request had a charset parameter in the "
+"`Content-Type` header, but the `iconv-lite` module does not support it OR"
+" the parser does not support it. The charset is contained in the message "
+"as well as in the `charset` property. The `status` property is set to "
+"`415`, the `type` property is set to `'charset.unsupported'`, and the "
+"`charset` property is set to the charset that is unsupported."
+msgstr ""
+
+#: ../../source/body-parser_README.md:373
+msgid "unsupported content encoding \"bogus\""
+msgstr ""
+
+#: ../../source/body-parser_README.md:375
+msgid ""
+"This error will occur when the request had a `Content-Encoding` header "
+"that contained an unsupported encoding. The encoding is contained in the "
+"message as well as in the `encoding` property. The `status` property is "
+"set to `415`, the `type` property is set to `'encoding.unsupported'`, and"
+" the `encoding` property is set to the encoding that is unsupported."
+msgstr ""
+
+#: ../../source/body-parser_README.md:381
+msgid "The input exceeded the depth"
+msgstr ""
+
+#: ../../source/body-parser_README.md:383
+msgid ""
+"This error occurs when using `bodyParser.urlencoded` with the `extended` "
+"property set to `true` and the input exceeds the configured `depth` "
+"option. The `status` property is set to `400`. It is recommended to "
+"review the `depth` option and evaluate if it requires a higher value. "
+"When the `depth` option is set to `32` (default value), the error will "
+"not be thrown."
+msgstr ""
+
+#: ../../source/body-parser_README.md:385
+msgid "Examples"
+msgstr ""
+
+#: ../../source/body-parser_README.md:387
+msgid "Express/Connect top-level generic"
+msgstr ""
+
+#: ../../source/body-parser_README.md:389
+msgid ""
+"This example demonstrates adding a generic JSON and URL-encoded parser as"
+" a top-level middleware, which will parse the bodies of all incoming "
+"requests. This is the simplest setup."
+msgstr ""
+
+#: ../../source/body-parser_README.md:412
+msgid "Express route-specific"
+msgstr ""
+
+#: ../../source/body-parser_README.md:414
+msgid ""
+"This example demonstrates adding body parsers specifically to the routes "
+"that need them. In general, this is the most recommended way to use body-"
+"parser with Express."
+msgstr ""
+
+#: ../../source/body-parser_README.md:441
+msgid "Change accepted type for parsers"
+msgstr ""
+
+#: ../../source/body-parser_README.md:443
+msgid ""
+"All the parsers accept a `type` option which allows you to change the "
+"`Content-Type` that the middleware will parse."
+msgstr ""
+
+#: ../../source/body-parser_README.md:462
+msgid "License"
+msgstr ""
+
+#: ../../source/body-parser_README.md:464
+msgid "[MIT](LICENSE)"
+msgstr ""
+

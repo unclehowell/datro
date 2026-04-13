@@ -1,0 +1,210 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/has-value_README.md:1
+msgid ""
+"has-value [![NPM version](https://img.shields.io/npm/v/has-"
+"value.svg?style=flat)](https://www.npmjs.com/package/has-value) [![NPM "
+"downloads](https://img.shields.io/npm/dm/has-"
+"value.svg?style=flat)](https://npmjs.org/package/has-value) [![Build "
+"Status](https://img.shields.io/travis/jonschlinkert/has-"
+"value.svg?style=flat)](https://travis-ci.org/jonschlinkert/has-value)"
+msgstr ""
+
+#: ../../source/has-value_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/has-value_README.md:1
+msgid "NPM downloads"
+msgstr ""
+
+#: ../../source/has-value_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/has-value_README.md:3
+msgid ""
+"Returns true if a value exists, false if empty. Works with deeply nested "
+"values using object paths."
+msgstr ""
+
+#: ../../source/has-value_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/has-value_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/has-value_README.md:13
+msgid "**Works for:**"
+msgstr ""
+
+#: ../../source/has-value_README.md:15
+msgid "booleans"
+msgstr ""
+
+#: ../../source/has-value_README.md:16
+msgid "functions"
+msgstr ""
+
+#: ../../source/has-value_README.md:17
+msgid ""
+"numbers (pass `true` as the last arg to treat zero as a value instead of "
+"falsey)"
+msgstr ""
+
+#: ../../source/has-value_README.md:18
+msgid "strings"
+msgstr ""
+
+#: ../../source/has-value_README.md:19
+msgid "nulls"
+msgstr ""
+
+#: ../../source/has-value_README.md:20
+msgid "object"
+msgstr ""
+
+#: ../../source/has-value_README.md:21
+msgid "arrays"
+msgstr ""
+
+#: ../../source/has-value_README.md:23
+msgid "Usage"
+msgstr ""
+
+#: ../../source/has-value_README.md:25
+msgid "Works with nested object paths or a single value:"
+msgstr ""
+
+#: ../../source/has-value_README.md:71
+msgid "isEmpty"
+msgstr ""
+
+#: ../../source/has-value_README.md:73
+msgid "To do the opposite and test for empty values, do:"
+msgstr ""
+
+#: ../../source/has-value_README.md:81
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/has-value_README.md:83
+msgid "You might also be interested in these projects:"
+msgstr ""
+
+#: ../../source/has-value_README.md:85
+msgid ""
+"[get-object](https://www.npmjs.com/package/get-object): Get a property "
+"from an object using dot (object path) notation. | "
+"[homepage](https://github.com/jonschlinkert/get-object)"
+msgstr ""
+
+#: ../../source/has-value_README.md:86
+msgid ""
+"[get-property](https://www.npmjs.com/package/get-property): Get a nested "
+"property or its value from an object using simple `a.b.c` paths. | "
+"[homepage](https://github.com/jonschlinkert/get-property)"
+msgstr ""
+
+#: ../../source/has-value_README.md:87
+msgid ""
+"[get-value](https://www.npmjs.com/package/get-value): Use property paths "
+"(`a.b.c`) to get a nested value from an object. | "
+"[homepage](https://github.com/jonschlinkert/get-value)"
+msgstr ""
+
+#: ../../source/has-value_README.md:88
+msgid ""
+"[set-value](https://www.npmjs.com/package/set-value): Create nested "
+"values and any intermediaries using dot notation (`'a.b.c'`) paths. | "
+"[homepage](https://github.com/jonschlinkert/set-value)"
+msgstr ""
+
+#: ../../source/has-value_README.md:90
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/has-value_README.md:92
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](https://github.com/jonschlinkert/has-"
+"value/issues/new)."
+msgstr ""
+
+#: ../../source/has-value_README.md:94
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/has-value_README.md:96
+msgid ""
+"Generate readme and API documentation with "
+"[verb](https://github.com/verbose/verb):"
+msgstr ""
+
+#: ../../source/has-value_README.md:102
+msgid "Or, if [verb](https://github.com/verbose/verb) is installed globally:"
+msgstr ""
+
+#: ../../source/has-value_README.md:108
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/has-value_README.md:110
+msgid "Install dev dependencies:"
+msgstr ""
+
+#: ../../source/has-value_README.md:116
+msgid "Author"
+msgstr ""
+
+#: ../../source/has-value_README.md:118
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/has-value_README.md:120
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/has-value_README.md:121
+msgid "[twitter/jonschlinkert](http://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/has-value_README.md:123
+msgid "License"
+msgstr ""
+
+#: ../../source/has-value_README.md:125
+msgid ""
+"Copyright © 2016, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT license](https://github.com/jonschlinkert/has-"
+"value/blob/master/LICENSE)."
+msgstr ""
+
+#: ../../source/has-value_README.md:130
+msgid ""
+"_This file was generated by [verb](https://github.com/verbose/verb), v, "
+"on March 27, 2016._"
+msgstr ""
+

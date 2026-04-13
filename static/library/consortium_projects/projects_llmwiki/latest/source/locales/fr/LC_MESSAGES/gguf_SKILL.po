@@ -1,0 +1,551 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/gguf_SKILL.md:14
+msgid "GGUF - Quantization Format for llama.cpp"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:16
+msgid ""
+"The GGUF (GPT-Generated Unified Format) is the standard file format for "
+"llama.cpp, enabling efficient inference on CPUs, Apple Silicon, and GPUs "
+"with flexible quantization options."
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:18
+msgid "When to use GGUF"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:20
+msgid "**Use GGUF when:**"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:21
+msgid "Deploying on consumer hardware (laptops, desktops)"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:22
+msgid "Running on Apple Silicon (M1/M2/M3) with Metal acceleration"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:23
+msgid "Need CPU inference without GPU requirements"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:24
+msgid "Want flexible quantization (Q2_K to Q8_0)"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:25
+msgid "Using local AI tools (LM Studio, Ollama, text-generation-webui)"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:27
+msgid "**Key advantages:**"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:28
+msgid "**Universal hardware**: CPU, Apple Silicon, NVIDIA, AMD support"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:29
+msgid "**No Python runtime**: Pure C/C++ inference"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:30
+msgid "**Flexible quantization**: 2-8 bit with various methods (K-quants)"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:31
+msgid "**Ecosystem support**: LM Studio, Ollama, koboldcpp, and more"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:32
+msgid "**imatrix**: Importance matrix for better low-bit quality"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:34
+msgid "**Use alternatives instead:**"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:35
+msgid "**AWQ/GPTQ**: Maximum accuracy with calibration on NVIDIA GPUs"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:36
+msgid "**HQQ**: Fast calibration-free quantization for HuggingFace"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:37
+msgid "**bitsandbytes**: Simple integration with transformers library"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:38
+msgid "**TensorRT-LLM**: Production NVIDIA deployment with maximum speed"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:40
+msgid "Quick start"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:42
+msgid "Installation"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:62
+msgid "Convert model to GGUF"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:77
+msgid "Quantize model"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:88
+msgid "Run inference"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:101
+msgid "Quantization types"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:103
+msgid "K-quant methods (recommended)"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Type"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Bits"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Size (7B)"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Quality"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Use Case"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q2_K"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "2.5"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "~2.8 GB"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Low"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Extreme compression"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q3_K_S"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "3.0"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "~3.0 GB"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Low-Med"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Memory constrained"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q3_K_M"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "3.3"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "~3.3 GB"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Medium"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Balance"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q4_K_S"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "4.0"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "~3.8 GB"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Med-High"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Good balance"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q4_K_M"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "4.5"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "~4.1 GB"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "High"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "**Recommended default**"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q5_K_S"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "5.0"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "~4.6 GB"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Quality focused"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q5_K_M"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "5.5"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "~4.8 GB"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Very High"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "High quality"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q6_K"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "6.0"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "~5.5 GB"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Excellent"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Near-original"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q8_0"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "8.0"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "~7.2 GB"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Best"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Maximum quality"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:117
+msgid "Legacy methods"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q4_0"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "4-bit, basic"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q4_1"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "4-bit with delta"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q5_0"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "5-bit, basic"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "Q5_1"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md
+msgid "5-bit with delta"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:126
+msgid ""
+"**Recommendation**: Use K-quant methods (Q4_K_M, Q5_K_M) for best "
+"quality/size ratio."
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:128
+msgid "Conversion workflows"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:130
+msgid "Workflow 1: HuggingFace to GGUF"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:148
+msgid "Workflow 2: With importance matrix (better quality)"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:176
+msgid "Workflow 3: Multiple quantizations"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:194
+msgid "Python usage"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:196
+msgid "llama-cpp-python"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:219
+msgid "Chat completion"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:244
+msgid "Streaming"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:260
+msgid "Server mode"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:262
+msgid "Start OpenAI-compatible server"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:280
+msgid "Use with OpenAI client"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:298
+msgid "Hardware optimization"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:300
+msgid "Apple Silicon (Metal)"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:317
+msgid "NVIDIA CUDA"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:330
+msgid "CPU optimization"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:348
+msgid "Integration with tools"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:350
+msgid "Ollama"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:369
+msgid "LM Studio"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:371
+msgid "Place GGUF file in `~/.cache/lm-studio/models/`"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:372
+msgid "Open LM Studio and select the model"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:373
+msgid "Configure context length and GPU offload"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:374
+msgid "Start inference"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:376
+msgid "text-generation-webui"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:386
+msgid "Best practices"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:388
+msgid "**Use K-quants**: Q4_K_M offers best quality/size balance"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:389
+msgid "**Use imatrix**: Always use importance matrix for Q4 and below"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:390
+msgid "**GPU offload**: Offload as many layers as VRAM allows"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:391
+msgid "**Context length**: Start with 4096, increase if needed"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:392
+msgid "**Thread count**: Match physical CPU cores, not logical"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:393
+msgid "**Batch size**: Increase n_batch for faster prompt processing"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:395
+msgid "Common issues"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:397
+msgid "**Model loads slowly:**"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:403
+msgid "**Out of memory:**"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:412
+msgid "**Poor quality at low bits:**"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:419
+msgid "References"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:421
+msgid ""
+"**[Advanced Usage](references/advanced-usage.md)** - Batching, "
+"speculative decoding, custom builds"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:422
+msgid ""
+"**[Troubleshooting](references/troubleshooting.md)** - Common issues, "
+"debugging, benchmarks"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:424
+msgid "Resources"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:426
+msgid "**Repository**: https://github.com/ggml-org/llama.cpp"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:427
+msgid "**Python Bindings**: https://github.com/abetlen/llama-cpp-python"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:428
+msgid "**Pre-quantized Models**: https://huggingface.co/TheBloke"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:429
+msgid "**GGUF Converter**: https://huggingface.co/spaces/ggml-org/gguf-my-repo"
+msgstr ""
+
+#: ../../source/gguf_SKILL.md:430
+msgid "**License**: MIT"
+msgstr ""
+

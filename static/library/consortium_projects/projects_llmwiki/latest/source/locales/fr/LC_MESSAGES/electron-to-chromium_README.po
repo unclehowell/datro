@@ -1,0 +1,308 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/electron-to-chromium_README.md:1
+msgid "Made by [@kilianvalkhof](https://twitter.com/kilianvalkhof)"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:3
+msgid "Other projects:"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:5
+msgid ""
+"💻 [Polypane](https://polypane.app) - Develop responsive websites and apps"
+" twice as fast on multiple screens at once"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:6
+msgid ""
+"🖌️ [Superposition](https://superposition.design) - Kickstart your design "
+"system by extracting design tokens from your website"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:7
+msgid ""
+"🗒️ [FromScratch](https://fromscratch.rocks) - A smart but simple "
+"autosaving scratchpad"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:11
+#, python-format
+msgid ""
+"Electron-to-Chromium [![npm](https://img.shields.io/npm/v/electron-to-"
+"chromium.svg)](https://www.npmjs.com/package/electron-to-chromium) "
+"[![npm-downloads](https://img.shields.io/npm/dm/electron-to-"
+"chromium.svg)](https://www.npmjs.com/package/electron-to-chromium) "
+"[![codecov](https://codecov.io/gh/Kilian/electron-to-"
+"chromium/branch/master/graph/badge.svg)](https://codecov.io/gh/Kilian"
+"/electron-to-chromium)[![FOSSA "
+"Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FKilian"
+"%2Felectron-to-"
+"chromium.svg?type=shield)](https://app.fossa.io/projects/git%2Bgithub.com%2FKilian"
+"%2Felectron-to-chromium?ref=badge_shield)"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:11
+msgid "npm"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:11
+msgid "npm-downloads"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:11
+msgid "codecov"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:11
+#: ../../source/electron-to-chromium_README.md:186
+msgid "FOSSA Status"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:13
+msgid ""
+"This repository provides a mapping of Electron versions to the Chromium "
+"version that it uses."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:15
+msgid ""
+"This package is used in "
+"[Browserslist](https://github.com/ai/browserslist), so you can use e.g. "
+"`electron >= 1.4` in "
+"[Autoprefixer](https://github.com/postcss/autoprefixer), "
+"[Stylelint](https://github.com/stylelint/stylelint), [babel-preset-"
+"env](https://github.com/babel/babel-preset-env) and [eslint-plugin-"
+"compat](https://github.com/amilajack/eslint-plugin-compat)."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:17
+msgid "**Supported by:**"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:24
+msgid "Install"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:25
+msgid "Install using `npm install electron-to-chromium`."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:27
+msgid "Usage"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:28
+msgid "To include Electron-to-Chromium, require it:"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:34
+msgid "Properties"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:35
+msgid "The Electron-to-Chromium object has 4 properties to use:"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:37
+#: ../../source/electron-to-chromium_README.md:153
+msgid "`versions`"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:38
+msgid ""
+"An object of key-value pairs with a _major_ Electron version as the key, "
+"and the corresponding major Chromium version as the value."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:46
+#: ../../source/electron-to-chromium_README.md:159
+msgid "`fullVersions`"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:47
+msgid ""
+"An object of key-value pairs with a Electron version as the key, and the "
+"corresponding full Chromium version as the value."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:55
+#: ../../source/electron-to-chromium_README.md:165
+msgid "`chromiumVersions`"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:56
+msgid ""
+"An object of key-value pairs with a _major_ Chromium version as the key, "
+"and the corresponding major Electron version as the value."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:64
+#: ../../source/electron-to-chromium_README.md:171
+msgid "`fullChromiumVersions`"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:65
+msgid ""
+"An object of key-value pairs with a Chromium version as the key, and an "
+"array of the corresponding major Electron versions as the value."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:72
+msgid "Functions"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:74
+msgid "`electronToChromium(query)`"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:75
+#: ../../source/electron-to-chromium_README.md:102
+#: ../../source/electron-to-chromium_README.md:129
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:76
+msgid "Query: string or number, required. A major or full Electron version."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:78
+msgid ""
+"A function that returns the corresponding Chromium version for a given "
+"Electron function. Returns a string."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:80
+msgid ""
+"If you provide it with a major Electron version, it will return a major "
+"Chromium version:"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:87
+msgid ""
+"If you provide it with a full Electron version, it will return the full "
+"Chromium version."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:94
+#: ../../source/electron-to-chromium_README.md:143
+msgid "If a query does not match a Chromium version, it will return `undefined`."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:101
+msgid "`chromiumToElectron(query)`"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:103
+msgid "Query: string or number, required. A major or full Chromium version."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:105
+msgid ""
+"Returns a string with the corresponding Electron version for a given "
+"Chromium query."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:107
+msgid ""
+"If you provide it with a major Chromium version, it will return a major "
+"Electron version:"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:114
+msgid ""
+"If you provide it with a full Chrome version, it will return an array of "
+"full Electron versions."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:121
+msgid "If a query does not match an Electron version, it will return `undefined`."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:128
+msgid "`electronToBrowserList(query)` **DEPRECATED**"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:130
+msgid "Query: string or number, required. A major Electron version."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:132
+msgid "_**Deprecated**: Browserlist already includes electron-to-chromium._"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:134
+msgid ""
+"A function that returns a "
+"[Browserslist](https://github.com/ai/browserslist) query that matches the"
+" given major Electron version. Returns a string."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:136
+msgid ""
+"If you provide it with a major Electron version, it will return a "
+"Browserlist query string that matches the Chromium capabilities:"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:150
+msgid ""
+"Importing just versions, fullVersions, chromiumVersions and "
+"fullChromiumVersions"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:151
+msgid "All lists can be imported on their own, if file size is a concern."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:177
+msgid "Updating"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:178
+msgid "This package will be updated with each new Electron release."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:180
+msgid ""
+"To update the list, run `npm run build.js`. Requires internet access as "
+"it downloads from the canonical list of Electron versions."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:182
+msgid "To verify correct behaviour, run `npm test`."
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:185
+msgid "License"
+msgstr ""
+
+#: ../../source/electron-to-chromium_README.md:186
+#, python-format
+msgid ""
+"[![FOSSA "
+"Status](https://app.fossa.io/api/projects/git%2Bgithub.com%2FKilian"
+"%2Felectron-to-"
+"chromium.svg?type=large)](https://app.fossa.io/projects/git%2Bgithub.com%2FKilian"
+"%2Felectron-to-chromium?ref=badge_large)"
+msgstr ""
+

@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_equations.md:1
+msgid "Equations and LaTeX Reference"
+msgstr ""
+
+#: ../../source/references_equations.md:3
+msgid "Basic LaTeX"
+msgstr ""
+
+#: ../../source/references_equations.md:10
+msgid "**Always use raw strings (`r\"\"`).**"
+msgstr ""
+
+#: ../../source/references_equations.md:12
+msgid "Step-by-Step Derivations"
+msgstr ""
+
+#: ../../source/references_equations.md:22
+msgid "Selective Color"
+msgstr ""
+
+#: ../../source/references_equations.md:30
+msgid "Building Incrementally"
+msgstr ""
+
+#: ../../source/references_equations.md:41
+msgid "Highlighting"
+msgstr ""
+
+#: ../../source/references_equations.md:49
+msgid "Annotation"
+msgstr ""
+
+#: ../../source/references_equations.md:57
+msgid "Common LaTeX"
+msgstr ""
+
+#: ../../source/references_equations.md:68
+msgid "Derivation Pattern"
+msgstr ""
+
+#: ../../source/references_equations.md:82
+msgid "substrings_to_isolate for Complex Equations"
+msgstr ""
+
+#: ../../source/references_equations.md:84
+msgid ""
+"For dense equations where manually splitting into parts is impractical, "
+"use `substrings_to_isolate` to tell Manim which substrings to track as "
+"individual elements:"
+msgstr ""
+
+#: ../../source/references_equations.md:102
+msgid ""
+"Essential for `TransformMatchingTex` on complex equations — without "
+"isolation, matching fails on dense expressions."
+msgstr ""
+
+#: ../../source/references_equations.md:104
+msgid "Multi-Line Complex Equations"
+msgstr ""
+
+#: ../../source/references_equations.md:106
+msgid ""
+"For equations with multiple related lines, pass each line as a separate "
+"argument:"
+msgstr ""
+
+#: ../../source/references_equations.md:120
+msgid "TransformMatchingTex with key_map"
+msgstr ""
+
+#: ../../source/references_equations.md:122
+msgid ""
+"Map specific substrings between source and target equations during "
+"transformation:"
+msgstr ""
+
+#: ../../source/references_equations.md:135
+msgid "set_color_by_tex — Color by Substring"
+msgstr ""
+
+#: ../../source/references_equations.md:144
+msgid "TransformMatchingTex with matched_keys"
+msgstr ""
+
+#: ../../source/references_equations.md:146
+msgid "When matching substrings are ambiguous, specify which to align explicitly:"
+msgstr ""
+
+#: ../../source/references_equations.md:165
+msgid ""
+"Without `matched_keys`, the animation matches the longest common "
+"substrings, which can produce unexpected results on complex equations "
+"(e.g., \"^2 = C^2\" matching across terms)."
+msgstr ""
+

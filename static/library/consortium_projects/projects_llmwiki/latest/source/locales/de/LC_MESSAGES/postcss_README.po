@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/postcss_README.md:1
+msgid "PostCSS [![Gitter][chat-img]][chat]"
+msgstr ""
+
+#: ../../source/postcss_README.md:1
+msgid "Gitter"
+msgstr ""
+
+#: ../../source/postcss_README.md:3
+msgid ""
+"<img align=\"right\" width=\"95\" height=\"95\"      alt=\"Philosopher’s "
+"stone, logo of PostCSS\"      "
+"src=\"http://postcss.github.io/postcss/logo.svg\">"
+msgstr ""
+
+#: ../../source/postcss_README.md:10
+msgid ""
+"PostCSS is a tool for transforming styles with JS plugins. These plugins "
+"can lint your CSS, support variables and mixins, transpile future CSS "
+"syntax, inline images, and more."
+msgstr ""
+
+#: ../../source/postcss_README.md:14
+msgid ""
+"PostCSS is used by industry leaders including Wikipedia, Twitter, "
+"Alibaba, and JetBrains. The [Autoprefixer] PostCSS plugin is one of the "
+"most popular CSS processors."
+msgstr ""
+
+#: ../../source/postcss_README.md:18
+msgid ""
+"PostCSS takes a CSS file and provides an API to analyze and modify its "
+"rules (by transforming them into an [Abstract Syntax Tree]). This API can"
+" then be used by [plugins] to do a lot of useful things, e.g. to find "
+"errors automatically insert vendor prefixes."
+msgstr ""
+
+#: ../../source/postcss_README.md:23
+msgid ""
+"**Support / Discussion:** [Gitter](https://gitter.im/postcss/postcss)<br>"
+" **Twitter account:**      [@postcss](https://twitter.com/postcss)<br> "
+"**VK.com page:**          [postcss](https://vk.com/postcss)<br> **中文翻译**:"
+"              [`README-cn.md`](./README-cn.md)"
+msgstr ""
+
+#: ../../source/postcss_README.md:28
+msgid ""
+"For PostCSS commercial support (consulting, improving the front-end "
+"culture of your company, PostCSS plugins), contact [Evil Martians] at "
+"<surrender@evilmartians.com>."
+msgstr ""
+
+#: ../../source/postcss_README.md:42
+msgid "Docs"
+msgstr ""
+
+#: ../../source/postcss_README.md:43
+msgid "Read **[full docs](https://github.com/postcss/postcss#readme)** on GitHub."
+msgstr ""
+

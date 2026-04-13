@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:1
+msgid "Contributing Guidelines"
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:3
+msgid "Contributions are always welcome!"
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:5
+msgid ""
+"**Before spending lots of time on something, ask for feedback on your "
+"idea first!**"
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:7
+msgid ""
+"Please search issues and pull requests before adding something new to "
+"avoid duplicating efforts and conversations."
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:10
+msgid "Installing"
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:12
+msgid ""
+"Fork and clone the repo, then `npm install` to install all dependencies "
+"and `npm test` to ensure all is okey before you start anything."
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:15
+msgid "Testing"
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:17
+msgid ""
+"Tests are run with `npm test`. Please ensure all tests are passing before"
+" submitting a pull request (unless you're creating a failing test to "
+"increase test coverage or show a problem)."
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:19
+msgid "Code Style"
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:21
+msgid "[![standard][standard-image]][standard-url]"
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:21
+msgid "standard"
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:23
+msgid ""
+"This repository uses [`standard`][standard-url] to maintain code style "
+"and consistency, and to avoid style arguments. You are encouraged to "
+"install it globally. `npm test` runs `standard` so you don't have to!"
+msgstr ""
+
+#: ../../source/hex-color-regex_CONTRIBUTING.md:29
+msgid ""
+"It is intentional to don't have `standard`, `istanbul` and `coveralls` in"
+" the devDependencies. Travis will handle all that stuffs. That approach "
+"will save bandwidth also installing and development time."
+msgstr ""
+

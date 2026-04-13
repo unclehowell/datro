@@ -1,0 +1,1795 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_voltagent.md:1
+msgid "Design System: VoltAgent"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:7
+msgid "**Primary:** `system-ui` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: system-ui, -apple-system, 'Segoe UI',"
+" Roboto, 'Helvetica Neue', Arial, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:18
+msgid ""
+"VoltAgent's interface is a deep-space command terminal for the AI age — a"
+" developer-facing darkness built on near-pure-black surfaces (`#050507`) "
+"where the only interruption is the electric pulse of emerald green "
+"energy. The entire experience evokes the feeling of staring into a high-"
+"powered IDE at 2am: dark, focused, and alive with purpose. This is not a "
+"friendly SaaS landing page — it's an engineering platform that announces "
+"itself through code snippets, architectural diagrams, and raw technical "
+"confidence."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:20
+msgid ""
+"The green accent (`#00d992`) is used with surgical precision — it glows "
+"from headlines, borders, and interactive elements like a circuit board "
+"carrying a signal. Against the carbon-black canvas, this green reads as "
+"\"power on\" — a deliberate visual metaphor for an AI agent engineering "
+"platform. The supporting palette is built entirely from warm-neutral "
+"grays (`#3d3a39`, `#8b949e`, `#b8b3b0`) that soften the darkness without "
+"introducing color noise, creating a cockpit-like warmth that pure blue-"
+"grays would lack."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:22
+msgid ""
+"Typography leans on the system font stack for headings — achieving "
+"maximum rendering speed and native-feeling authority — while Inter "
+"carries the body and UI text with geometric precision. Code blocks use "
+"SFMono-Regular, the same font developers see in their terminals, "
+"reinforcing the tool's credibility at every scroll."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:25
+msgid ""
+"Carbon-black canvas (`#050507`) with warm-gray border containment "
+"(`#3d3a39`) — not cold or sterile"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:26
+msgid ""
+"Single-accent identity: Emerald Signal Green (`#00d992`) as the sole "
+"chromatic energy source"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:27
+msgid ""
+"Dual-typography system: system-ui for authoritative headings, Inter for "
+"precise UI/body text, SFMono for code credibility"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:28
+msgid ""
+"Ultra-tight heading line-heights (1.0–1.11) creating dense, compressed "
+"power blocks"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:29
+msgid ""
+"Warm neutral palette (`#3d3a39`, `#8b949e`, `#b8b3b0`) that prevents the "
+"dark theme from feeling clinical"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:30
+msgid "Developer-terminal aesthetic where code snippets ARE the hero content"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:31
+msgid ""
+"Green glow effects (`drop-shadow`, border accents) that make UI elements "
+"feel electrically alive"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:33
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:35
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:36
+msgid ""
+"**Emerald Signal Green** (`#00d992`): The core brand energy — used for "
+"accent borders, glow effects, and the highest-signal interactive moments."
+" This is the \"power-on\" indicator of the entire interface."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:37
+msgid ""
+"**VoltAgent Mint** (`#2fd6a1`): The button-text variant of the brand "
+"green — slightly warmer and more readable than pure Signal Green, used "
+"specifically for CTA text on dark surfaces."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:38
+msgid ""
+"**Tailwind Emerald** (`#10b981`): The ecosystem-standard green used at "
+"low opacity (30%) for subtle background tints and link defaults. Bridges "
+"VoltAgent's custom palette with Tailwind's utility classes."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:40
+msgid "Secondary & Accent"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:41
+msgid ""
+"**Soft Purple** (`#818cf8`): A cool indigo-violet used sparingly for "
+"secondary categorization, code syntax highlights, and visual variety "
+"without competing with green."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:42
+msgid ""
+"**Cobalt Primary** (`#306cce`): Docusaurus primary dark — used in "
+"documentation contexts for links and interactive focus states."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:43
+msgid ""
+"**Deep Cobalt** (`#2554a0`): The darkest primary shade, reserved for "
+"pressed/active states in documentation UI."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:44
+#, python-format
+msgid ""
+"**Ring Blue** (`#3b82f6`): Tailwind's ring color at 50% opacity — visible"
+" only during keyboard focus for accessibility compliance."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:46
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:47
+msgid ""
+"**Abyss Black** (`#050507`): The landing page canvas — a near-pure black "
+"with the faintest warm undertone, darker than most \"dark themes\" for "
+"maximum contrast with green accents."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:48
+msgid ""
+"**Carbon Surface** (`#101010`): The primary card and button background — "
+"one shade lighter than Abyss, creating a barely perceptible elevation "
+"layer. Used across all contained surfaces."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:49
+msgid ""
+"**Warm Charcoal Border** (`#3d3a39`): The signature containment color — "
+"not a cold gray but a warm, almost brownish dark tone that prevents "
+"borders from feeling harsh against the black canvas."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:51
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:52
+msgid ""
+"**Snow White** (`#f2f2f2`): The primary text color on dark surfaces — not"
+" pure white (`#ffffff`) but a softened, eye-friendly off-white. The most-"
+"used color on the site (1008 instances)."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:53
+msgid ""
+"**Pure White** (`#ffffff`): Reserved for the highest-emphasis moments — "
+"ghost button text and maximum-contrast headings. Used at low opacity (5%)"
+" for subtle overlay effects."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:54
+msgid ""
+"**Warm Parchment** (`#b8b3b0`): Secondary body text — a warm light gray "
+"with a slight pinkish undertone that reads as \"paper\" against the dark "
+"canvas."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:55
+msgid ""
+"**Steel Slate** (`#8b949e`): Tertiary text, metadata, timestamps, and de-"
+"emphasized content. A cool blue-gray that provides clear hierarchy below "
+"Warm Parchment."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:56
+msgid ""
+"**Fog Gray** (`#bdbdbd`): Footer links and supporting navigation text — "
+"brightens on hover to Pure White."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:57
+msgid ""
+"**Mist Gray** (`#dcdcdc`): Slightly brighter than Fog, used for secondary"
+" link text that transitions to bright green on hover."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:58
+msgid ""
+"**Near White** (`#eeeeee`): Highest-contrast secondary text, one step "
+"below Snow White."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:60
+msgid "Semantic & Accent"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:61
+msgid ""
+"**Success Emerald** (`#008b00`): Deep green for success states and "
+"positive confirmations in documentation contexts."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:62
+msgid ""
+"**Success Light** (`#80d280`): Soft pastel green for success backgrounds "
+"and subtle positive indicators."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:63
+msgid ""
+"**Warning Amber** (`#ffba00`): Bright amber for warning alerts and "
+"caution states."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:64
+msgid "**Warning Pale** (`#ffdd80`): Softened amber for warning background fills."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:65
+msgid ""
+"**Danger Coral** (`#fb565b`): Vivid red for error states and destructive "
+"action warnings."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:66
+msgid "**Danger Rose** (`#fd9c9f`): Softened coral-pink for error backgrounds."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:67
+msgid ""
+"**Info Teal** (`#4cb3d4`): Cool teal-blue for informational callouts and "
+"tip admonitions."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:68
+msgid ""
+"**Dashed Border Slate** (`#4f5d75` at 40%): A muted blue-gray used "
+"exclusively for decorative dashed borders in workflow diagrams."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:70
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:71
+msgid ""
+"**Green Signal Glow**: `drop-shadow(0 0 2px #00d992)` animating to `drop-"
+"shadow(0 0 8px #00d992)` — creates a pulsing \"electric charge\" effect "
+"on the VoltAgent bolt logo and interactive elements. The glow expands and"
+" contracts like a heartbeat."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:72
+msgid ""
+"**Warm Ambient Haze**: `rgba(92, 88, 85, 0.2) 0px 0px 15px` — a warm-"
+"toned diffused shadow that creates a soft atmospheric glow around "
+"elevated cards, visible at the edges without sharp boundaries."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:73
+msgid ""
+"**Deep Dramatic Elevation**: `rgba(0, 0, 0, 0.7) 0px 20px 60px` with "
+"`rgba(148, 163, 184, 0.1) 0px 0px 0px 1px inset` — a heavy, dramatic "
+"downward shadow paired with a faint inset slate ring for the most "
+"prominent floating elements."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:75
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:77
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:78
+msgid ""
+"**Primary (Headings)**: `system-ui`, with fallbacks: `-apple-system, "
+"Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, Helvetica, Arial, Apple "
+"Color Emoji, Segoe UI Emoji, Segoe UI Symbol`"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:79
+msgid ""
+"**Secondary (Body/UI)**: `Inter`, with fallbacks inheriting from system-"
+"ui stack. OpenType features: `\"calt\", \"rlig\"` (contextual alternates "
+"and required ligatures)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:80
+msgid ""
+"**Monospace (Code)**: `SFMono-Regular`, with fallbacks: `Menlo, Monaco, "
+"Consolas, Liberation Mono, Courier New, monospace`"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:82
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Display / Hero"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "system-ui"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "60px (3.75rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "-0.65px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Maximum impact, compressed blocks"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "36px (2.25rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.11 (tight)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "-0.9px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Tightest letter-spacing in the system"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "24px (1.50rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "-0.6px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Bold weight for emphasis at this size"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Sub-heading Light"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "system-ui / Inter"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "300–400"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Light weight variant for softer hierarchy"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Overline"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "0.5px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Uppercase transform, positive letter-spacing"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Inter"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "500–600"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Card headings, feature names"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Overline Small"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.56"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "0.45px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Uppercase section labels"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Body / Button"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "400–600"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.50–1.65"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Standard text, nav links, buttons"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Nav Link"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "14.45px (0.90rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.65"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Navigation-specific sizing"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Caption / Label"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.43–1.65"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Descriptions, metadata, badge text"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Tag / Overline Tiny"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.43"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "2.52px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Widest letter-spacing — reserved for uppercase tags"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Smallest sans-serif text"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Code Body"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "SFMono-Regular"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "13–14px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "400–686"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.23–1.43"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Inline code, terminal output, variable weight for syntax"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Code Small"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "11–12px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1.33–1.45"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Tiny code references, line numbers"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Code Button"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "monospace"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "13px (0.81rem)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Copy-to-clipboard button labels"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:102
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:103
+msgid ""
+"**System-native authority**: Display headings use system-ui rather than a"
+" custom web font — this means the largest text renders instantly (no "
+"FOIT/FOUT) and inherits the operating system's native personality. On "
+"macOS it's SF Pro, on Windows it's Segoe UI. The design accepts this "
+"variability as a feature, not a bug."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:104
+msgid ""
+"**Tight compression creates density**: Hero line-heights are extremely "
+"compressed (1.0) with negative letter-spacing (-0.65px to -0.9px), "
+"creating text blocks that feel like dense technical specifications rather"
+" than airy marketing copy."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:105
+msgid ""
+"**Weight gradient, not weight contrast**: The system uses a gentle "
+"300→400→500→600→700 weight progression. Bold (700) is reserved for sub-"
+"headings and code-button emphasis. Most body text lives at 400–500, "
+"creating subtle rather than dramatic hierarchy."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:106
+msgid ""
+"**Uppercase is earned and wide**: When uppercase appears, it's always "
+"paired with generous letter-spacing (0.45px–2.52px), transforming dense "
+"words into spaced-out overline labels. This treatment is never applied to"
+" headings."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:107
+msgid ""
+"**OpenType by default**: Both system-ui and Inter enable `\"calt\"` and "
+"`\"rlig\"` features, ensuring contextual character adjustments and "
+"ligature rendering throughout."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:109
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:111
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:113
+msgid "**Ghost / Outline (Standard)**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:114
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:115
+msgid "Text: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:116
+#: ../../source/templates_voltagent.md:126
+msgid "Padding: comfortable (12px 16px)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:117
+msgid "Border: thin solid Warm Charcoal (`1px solid #3d3a39`)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:118
+msgid "Radius: comfortably rounded (6px)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:119
+msgid "Hover: background darkens to `rgba(0, 0, 0, 0.2)`, opacity drops to 0.4"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:120
+msgid "Outline: subtle green tint (`rgba(33, 196, 93, 0.5)`)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:121
+msgid "The default interactive element — unassuming but clearly clickable"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:123
+msgid "**Primary Green CTA**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:124
+#: ../../source/templates_voltagent.md:133
+msgid "Background: Carbon Surface (`#101010`)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:125
+msgid "Text: VoltAgent Mint (`#2fd6a1`)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:127
+msgid "Border: none visible (outline-based focus indicator)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:128
+msgid "Outline: VoltAgent Mint (`rgb(47, 214, 161)`)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:129
+msgid "Hover: same darkening behavior as Ghost"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:130
+msgid ""
+"The \"powered on\" button — green text on dark surface reads as an active"
+" terminal command"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:132
+msgid "**Tertiary / Emphasized Container Button**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:134
+msgid "Text: Snow White (`#f2f2f2`)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:135
+msgid "Padding: generous (20px all sides)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:136
+msgid "Border: thick solid Warm Charcoal (`3px solid #3d3a39`)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:137
+msgid "Radius: comfortably rounded (8px)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:138
+msgid ""
+"A card-like button treatment for larger interactive surfaces (code copy "
+"blocks, feature CTAs)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:140
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:141
+msgid ""
+"Background: Carbon Surface (`#101010`) — one shade lighter than the page "
+"canvas"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:142
+msgid ""
+"Border: `1px solid #3d3a39` (Warm Charcoal) for standard containment; "
+"`2px solid #00d992` for highlighted/active cards"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:143
+msgid ""
+"Radius: comfortably rounded (8px) for content cards; subtly rounded "
+"(4–6px) for smaller inline containers"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:144
+msgid ""
+"Shadow Level 1: Warm Ambient Haze (`rgba(92, 88, 85, 0.2) 0px 0px 15px`) "
+"for standard elevation"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:145
+msgid ""
+"Shadow Level 2: Deep Dramatic (`rgba(0, 0, 0, 0.7) 0px 20px 60px` + "
+"`rgba(148, 163, 184, 0.1) 0px 0px 0px 1px inset`) for hero/feature "
+"showcase cards"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:146
+msgid ""
+"Hover behavior: likely border color shift toward green accent or subtle "
+"opacity increase"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:147
+msgid ""
+"Dashed variant: `1px dashed rgba(79, 93, 117, 0.4)` for workflow/diagram "
+"containers — visually distinct from solid-border content cards"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:149
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:150
+msgid ""
+"No explicit input token data extracted — the site is landing-page focused"
+" with minimal form UI"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:151
+msgid ""
+"The npm install command (`npm create voltagent-app@latest`) is presented "
+"as a code block rather than an input field"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:152
+msgid ""
+"Inferred style: Carbon Surface background, Warm Charcoal border, "
+"VoltAgent Mint focus ring, Snow White text"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:154
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:155
+msgid "Sticky top nav bar on Abyss Black canvas"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:156
+msgid ""
+"Logo: VoltAgent bolt icon with animated green glow (`drop-shadow` cycling"
+" 2px–8px)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:157
+msgid ""
+"Nav structure: Logo → Product dropdown → Use Cases dropdown → Resources "
+"dropdown → GitHub stars badge → Docs CTA"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:158
+msgid "Link text: Snow White (`#f2f2f2`) at 14–16px Inter, weight 500"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:159
+msgid "Hover: links transition to green variants (`#00c182` or `#00ffaa`)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:160
+msgid "GitHub badge: social proof element integrated directly into nav"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:161
+msgid "Mobile: collapses to hamburger menu, single-column vertical layout"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:163
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:164
+msgid "Dark-themed product screenshots and architectural diagrams dominate"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:165
+msgid ""
+"Code blocks are treated as primary visual content — syntax-highlighted "
+"with SFMono-Regular"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:166
+msgid ""
+"Agent workflow visualizations appear as interactive node graphs with "
+"green connection lines"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:167
+msgid "Decorative dot-pattern backgrounds appear behind hero sections"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:168
+msgid "Full-bleed within card containers, respecting 8px radius rounding"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:170
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:172
+msgid "**npm Install Command Block**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:173
+msgid ""
+"A prominent code snippet (`npm create voltagent-app@latest`) styled as a "
+"copyable command"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:174
+msgid "SFMono-Regular on Carbon Surface with a copy-to-clipboard button"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:175
+msgid ""
+"Functions as the primary CTA — \"install first, read later\" developer "
+"psychology"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:177
+msgid "**Company Logo Marquee**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:178
+msgid "Horizontal scrolling strip of developer/company logos"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:179
+msgid "Infinite animation (`scrollLeft`/`scrollRight`, 25–80s durations)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:180
+msgid "Pauses on hover and for users with reduced-motion preferences"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:181
+msgid "Demonstrates ecosystem adoption without cluttering the layout"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:183
+msgid "**Feature Section Cards**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:184
+msgid "Large cards combining code examples with descriptive text"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:185
+msgid "Left: code snippet with syntax highlighting; Right: feature description"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:186
+msgid "Green accent border (`2px solid #00d992`) on highlighted/active features"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:187
+msgid "Internal padding: generous (24–32px estimated)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:189
+msgid "**Agent Flow Diagrams**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:190
+msgid "Interactive node-graph visualizations showing agent coordination"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:191
+msgid "Connection lines use VoltAgent green variants"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:192
+msgid "Nodes styled as mini-cards within the Warm Charcoal border system"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:194
+msgid "**Community / GitHub Section**"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:195
+msgid "Large GitHub icon as the visual anchor"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:196
+msgid "Star count and contributor metrics prominently displayed"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:197
+msgid "Warm social proof: Discord, X, Reddit, LinkedIn, YouTube links in footer"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:199
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:201
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:202
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:203
+msgid ""
+"Scale: 2px, 4px, 5px, 6px, 6.4px, 8px, 12px, 16px, 20px, 24px, 28px, "
+"32px, 40px, 48px, 64px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:204
+msgid "Button padding: 12px 16px (standard), 20px (container-button)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:205
+msgid "Card internal padding: approximately 24–32px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:206
+msgid ""
+"Section vertical spacing: generous (estimated 64–96px between major "
+"sections)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:207
+msgid "Component gap: 16–24px between sibling cards/elements"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:209
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:210
+msgid "Max container width: approximately 1280–1440px, centered"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:211
+msgid "Hero: centered single-column with maximum breathing room"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:212
+msgid ""
+"Feature sections: alternating asymmetric layouts (code left / text right,"
+" then reversed)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:213
+msgid ""
+"Logo marquee: full-width horizontal scroll, breaking the container "
+"constraint"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:214
+msgid "Card grids: 2–3 column for feature showcases"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:215
+msgid "Integration grid: responsive multi-column for partner/integration icons"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:217
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:218
+msgid ""
+"**Cinematic breathing room between sections**: Massive vertical gaps "
+"create a \"scroll-through-chapters\" experience — each section feels like"
+" a new scene."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:219
+msgid ""
+"**Dense within components**: Cards and code blocks are internally "
+"compact, with tight line-heights and controlled padding. Information is "
+"concentrated, not spread thin."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:220
+msgid ""
+"**Border-defined separation**: Rather than relying solely on whitespace, "
+"VoltAgent uses the Warm Charcoal border system (`#3d3a39`) to delineate "
+"content zones. The border IS the whitespace signal."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:221
+msgid ""
+"**Hero-first hierarchy**: The top of the page commands the most space — "
+"the \"AI Agent Engineering Platform\" headline and npm command get "
+"maximum vertical runway before the first content section appears."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:223
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:224
+msgid ""
+"Nearly squared (4px): Small inline elements, SVG containers, code spans —"
+" the sharpest treatment, conveying technical precision"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:225
+msgid ""
+"Subtly rounded (6px): Buttons, links, clipboard actions — the workhorse "
+"radius for interactive elements"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:226
+msgid ""
+"Code-specific (6.4px): Code blocks, `pre` elements, clipboard copy "
+"targets — a deliberate micro-distinction from standard 6px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:227
+msgid ""
+"Comfortably rounded (8px): Content cards, feature containers, emphasized "
+"buttons — the standard containment radius"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:228
+msgid ""
+"Pill-shaped (9999px): Tags, badges, status indicators, pill-shaped "
+"navigation elements — the roundest treatment for small categorical labels"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:230
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "No shadow, no border"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Page background (`#050507`), inline text"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Contained (Level 1)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "`1px solid #3d3a39`, no shadow"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Standard cards, nav bar, code blocks"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Emphasized (Level 2)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "`3px solid #3d3a39`, no shadow"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Large interactive buttons, emphasized containers"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Accent (Level 3)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "`2px solid #00d992`, no shadow"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Active/highlighted feature cards, selected states"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Ambient Glow (Level 4)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "`rgba(92, 88, 85, 0.2) 0px 0px 15px`"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Elevated cards, hover states, soft atmospheric lift"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Dramatic Float (Level 5)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "`rgba(0, 0, 0, 0.7) 0px 20px 60px` + `rgba(148, 163, 184, 0.1) 1px inset`"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Hero feature showcase, modals, maximum-elevation content"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:241
+msgid ""
+"**Shadow Philosophy**: VoltAgent communicates depth primarily through "
+"**border weight and color**, not shadows. The standard `1px solid "
+"#3d3a39` border IS the elevation — adding a `3px` border weight or "
+"switching to green (`#00d992`) communicates importance more than adding "
+"shadow does. When shadows do appear, they're either warm and diffused "
+"(Level 4) or cinematic and dramatic (Level 5) — never medium or generic."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:243
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:244
+msgid ""
+"**Green Signal Glow**: The VoltAgent bolt logo pulses with a `drop-"
+"shadow` animation cycling between 2px and 8px blur radius in Emerald "
+"Signal Green. This is the most distinctive decorative element — it makes "
+"the logo feel \"powered on.\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:245
+msgid ""
+"**Warm Charcoal Containment Lines**: The warm tone of `#3d3a39` borders "
+"creates a subtle visual warmth against the cool black, as if the cards "
+"are faintly heated from within."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:246
+msgid ""
+"**Dashed Workflow Lines**: `1px dashed rgba(79, 93, 117, 0.4)` creates a "
+"blueprint-like aesthetic for architecture diagrams, visually distinct "
+"from solid content borders."
+msgstr ""
+
+#: ../../source/templates_voltagent.md:248
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:250
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:251
+msgid ""
+"Use Abyss Black (`#050507`) as the landing page background and Carbon "
+"Surface (`#101010`) for all contained elements — the two-shade dark "
+"system is essential"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:252
+msgid ""
+"Reserve Emerald Signal Green (`#00d992`) exclusively for high-signal "
+"moments: active borders, glow effects, and the most important interactive"
+" accents"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:253
+msgid ""
+"Use VoltAgent Mint (`#2fd6a1`) for button text on dark surfaces — it's "
+"more readable than pure Signal Green"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:254
+msgid ""
+"Keep heading line-heights compressed (1.0–1.11) with negative letter-"
+"spacing for dense, authoritative text blocks"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:255
+msgid ""
+"Use the warm gray palette (`#3d3a39`, `#8b949e`, `#b8b3b0`) for borders "
+"and secondary text — warmth prevents the dark theme from feeling sterile"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:256
+msgid ""
+"Present code snippets as primary content — they're hero elements, not "
+"supporting illustrations"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:257
+msgid ""
+"Use border weight (1px → 2px → 3px) and color shifts (`#3d3a39` → "
+"`#00d992`) to communicate depth and importance, rather than relying on "
+"shadows"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:258
+msgid ""
+"Pair system-ui for headings with Inter for body text — the "
+"speed/authority of native fonts combined with the precision of a "
+"geometric sans"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:259
+msgid ""
+"Use SFMono-Regular for all code content — it's the developer credibility "
+"signal"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:260
+msgid "Apply `\"calt\"` and `\"rlig\"` OpenType features across all text"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:262
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:263
+msgid ""
+"Don't use bright or light backgrounds as primary surfaces — the entire "
+"identity lives on near-black"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:264
+msgid ""
+"Don't introduce warm colors (orange, red, yellow) as decorative accents —"
+" the palette is strictly green + warm neutrals on black. Warm colors are "
+"reserved for semantic states (warning, error) only"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:265
+msgid ""
+"Don't use Emerald Signal Green (`#00d992`) on large surfaces or as "
+"background fills — it's an accent, never a surface"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:266
+msgid ""
+"Don't increase heading line-heights beyond 1.33 — the compressed density "
+"is core to the engineering-platform identity"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:267
+msgid ""
+"Don't use heavy shadows generously — depth comes from border treatment, "
+"not box-shadow. Shadows are reserved for Level 4–5 elevation only"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:268
+msgid ""
+"Don't use pure white (`#ffffff`) as default body text — Snow White "
+"(`#f2f2f2`) is the standard. Pure white is reserved for maximum-emphasis "
+"headings and button text"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:269
+msgid ""
+"Don't mix in serif or decorative fonts — the entire system is geometric "
+"sans + monospace"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:270
+msgid ""
+"Don't use border-radius larger than 8px on content cards — 9999px (pill) "
+"is only for small tags and badges"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:271
+msgid ""
+"Don't skip the warm-gray border system — cards without `#3d3a39` borders "
+"lose their containment and float ambiguously on the dark canvas"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:272
+msgid ""
+"Don't animate aggressively — animations are slow and subtle (25–100s "
+"durations for marquee, gentle glow pulses). Fast motion contradicts the "
+"\"engineering precision\" atmosphere"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:274
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:276
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Small Mobile"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "<420px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Minimum layout, stacked everything, reduced hero text to ~24px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "420–767px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Single column, hamburger nav, full-width cards, hero text ~36px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "768–1024px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "2-column grids begin, condensed nav, medium hero text"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "1025–1440px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Full multi-column layout, expanded nav with dropdowns, large hero (60px)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid ">1440px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md
+msgid ""
+"Max-width container centered (est. 1280–1440px), generous horizontal "
+"margins"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:285
+msgid ""
+"*23 breakpoints detected in total, ranging from 360px to 1992px — "
+"indicating a fluid, heavily responsive grid system rather than fixed "
+"breakpoint snapping.*"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:287
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:288
+msgid ""
+"Buttons use comfortable padding (12px 16px minimum) ensuring adequate "
+"touch area"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:289
+msgid "Navigation links spaced with sufficient gap for thumb navigation"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:290
+msgid "Interactive card surfaces are large enough to serve as full touch targets"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:291
+msgid "Minimum recommended touch target: 44x44px"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:293
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:294
+msgid ""
+"**Navigation**: Full horizontal nav with dropdowns collapses to hamburger"
+" menu on mobile"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:295
+msgid "**Feature grids**: 3-column → 2-column → single-column vertical stacking"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:296
+msgid ""
+"**Hero text**: 60px → 36px → 24px progressive scaling with maintained "
+"compression ratios"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:297
+msgid ""
+"**Logo marquee**: Adjusts scroll speed and item sizing; maintains "
+"infinite loop"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:298
+msgid ""
+"**Code blocks**: Horizontal scroll on smaller viewports rather than "
+"wrapping — preserving code readability"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:299
+msgid ""
+"**Section padding**: Reduces proportionally but maintains generous "
+"vertical rhythm between chapters"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:300
+msgid ""
+"**Cards**: Stack vertically on mobile with full-width treatment and "
+"maintained internal padding"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:302
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:303
+msgid ""
+"Dark-themed screenshots and diagrams scale proportionally within "
+"containers"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:304
+msgid "Agent flow diagrams simplify or scroll horizontally on narrow viewports"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:305
+msgid "Dot-pattern decorative backgrounds scale with viewport"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:306
+msgid ""
+"No visible art direction changes between breakpoints — same crops, "
+"proportional scaling"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:307
+msgid "Lazy loading for below-fold images (Docusaurus default behavior)"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:309
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:311
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:312
+msgid "Brand Accent: \"Emerald Signal Green (#00d992)\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:313
+msgid "Button Text: \"VoltAgent Mint (#2fd6a1)\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:314
+msgid "Page Background: \"Abyss Black (#050507)\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:315
+msgid "Card Surface: \"Carbon Surface (#101010)\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:316
+msgid "Border / Containment: \"Warm Charcoal (#3d3a39)\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:317
+msgid "Primary Text: \"Snow White (#f2f2f2)\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:318
+msgid "Secondary Text: \"Warm Parchment (#b8b3b0)\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:319
+msgid "Tertiary Text: \"Steel Slate (#8b949e)\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:321
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:322
+msgid ""
+"\"Create a feature card on Carbon Surface (#101010) with a 1px solid Warm"
+" Charcoal (#3d3a39) border, comfortably rounded corners (8px). Use Snow "
+"White (#f2f2f2) for the title in system-ui at 24px weight 700, and Warm "
+"Parchment (#b8b3b0) for the description in Inter at 16px. Add a subtle "
+"Warm Ambient shadow (rgba(92, 88, 85, 0.2) 0px 0px 15px).\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:323
+msgid ""
+"\"Design a ghost button with transparent background, Snow White (#f2f2f2)"
+" text in Inter at 16px, a 1px solid Warm Charcoal (#3d3a39) border, and "
+"subtly rounded corners (6px). Padding: 12px vertical, 16px horizontal. On"
+" hover, background shifts to rgba(0, 0, 0, 0.2).\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:324
+msgid ""
+"\"Build a hero section on Abyss Black (#050507) with a massive heading at"
+" 60px system-ui, line-height 1.0, letter-spacing -0.65px. The word "
+"'Platform' should be colored in Emerald Signal Green (#00d992). Below the"
+" heading, place a code block showing 'npm create voltagent-app@latest' in"
+" SFMono-Regular at 14px on Carbon Surface (#101010) with a copy button.\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:325
+msgid ""
+"\"Create a highlighted feature card using a 2px solid Emerald Signal "
+"Green (#00d992) border instead of the standard Warm Charcoal. Keep Carbon"
+" Surface background, comfortably rounded corners (8px), and include a "
+"code snippet on the left with feature description text on the right.\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:326
+msgid ""
+"\"Design a navigation bar on Abyss Black (#050507) with the VoltAgent "
+"logo (bolt icon with animated green glow) on the left, nav links in Inter"
+" at 14px weight 500 in Snow White, and a green CTA button (Carbon Surface"
+" bg, VoltAgent Mint text) on the right. Add a 1px solid Warm Charcoal "
+"bottom border.\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:328
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:329
+msgid "When refining existing screens generated with this design system:"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:330
+msgid "Focus on ONE component at a time"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:331
+msgid ""
+"Reference specific color names and hex codes — \"use Warm Parchment "
+"(#b8b3b0)\" not \"make it lighter\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:332
+msgid ""
+"Use border treatment to communicate elevation: \"change the border to 2px"
+" solid Emerald Signal Green (#00d992)\" for emphasis"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:333
+msgid ""
+"Describe the desired \"feel\" alongside measurements — \"compressed and "
+"authoritative heading at 36px with line-height 1.11 and -0.9px letter-"
+"spacing\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:334
+msgid ""
+"For glow effects, specify \"Emerald Signal Green (#00d992) as a drop-"
+"shadow with 2–8px blur radius\""
+msgstr ""
+
+#: ../../source/templates_voltagent.md:335
+msgid ""
+"Always specify which font — system-ui for headings, Inter for body/UI, "
+"SFMono-Regular for code"
+msgstr ""
+
+#: ../../source/templates_voltagent.md:336
+msgid ""
+"Keep animations slow and subtle — marquee scrolls at 25–80s, glow pulses "
+"gently"
+msgstr ""
+

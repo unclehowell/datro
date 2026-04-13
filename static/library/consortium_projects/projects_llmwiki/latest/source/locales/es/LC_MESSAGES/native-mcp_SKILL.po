@@ -1,0 +1,679 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/native-mcp_SKILL.md:13
+msgid "Native MCP Client"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:15
+msgid ""
+"Hermes Agent has a built-in MCP client that connects to MCP servers at "
+"startup, discovers their tools, and makes them available as first-class "
+"tools the agent can call directly. No bridge CLI needed -- tools from MCP"
+" servers appear alongside built-in tools like `terminal`, `read_file`, "
+"etc."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:17
+msgid "When to Use"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:19
+msgid "Use this whenever you want to:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:20
+msgid "Connect to MCP servers and use their tools from within Hermes Agent"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:21
+msgid ""
+"Add external capabilities (filesystem access, GitHub, databases, APIs) "
+"via MCP"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:22
+msgid "Run local stdio-based MCP servers (npx, uvx, or any command)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:23
+msgid "Connect to remote HTTP/StreamableHTTP MCP servers"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:24
+msgid "Have MCP tools auto-discovered and available in every conversation"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:26
+msgid ""
+"For ad-hoc, one-off MCP tool calls from the terminal without configuring "
+"anything, see the `mcporter` skill instead."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:28
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:30
+msgid ""
+"**mcp Python package** -- optional dependency; install with `pip install "
+"mcp`. If not installed, MCP support is silently disabled."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:31
+msgid ""
+"**Node.js** -- required for `npx`-based MCP servers (most community "
+"servers)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:32
+msgid "**uv** -- required for `uvx`-based MCP servers (Python-based servers)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:34
+msgid "Install the MCP SDK:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:42
+msgid "Quick Start"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:44
+msgid "Add MCP servers to `~/.hermes/config.yaml` under the `mcp_servers` key:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:53
+msgid "Restart Hermes Agent. On startup it will:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:54
+msgid "Connect to the server"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:55
+msgid "Discover available tools"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:56
+msgid "Register them with the prefix `mcp_time_*`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:57
+msgid "Inject them into all platform toolsets"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:59
+msgid ""
+"You can then use the tools naturally -- just ask the agent to get the "
+"current time."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:61
+msgid "Configuration Reference"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:63
+msgid ""
+"Each entry under `mcp_servers` is a server name mapped to its config. "
+"There are two transport types: **stdio** (command-based) and **HTTP** "
+"(url-based)."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:65
+msgid "Stdio Transport (command + args)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:78
+msgid "HTTP Transport (url)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:90
+msgid "All Config Options"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Option"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Type"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Default"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`command`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "string"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "--"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Executable to run (stdio transport, required)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`args`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "list"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`[]`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Arguments passed to the command"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`env`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "dict"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+#, python-brace-format
+msgid "`{}`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Extra environment variables for the subprocess"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`url`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Server URL (HTTP transport, required)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`headers`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "HTTP headers sent with every request"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`timeout`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "int"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`120`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Per-tool-call timeout in seconds"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`connect_timeout`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "`60`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md
+msgid "Timeout for initial connection and discovery"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:102
+msgid ""
+"Note: A server config must have either `command` (stdio) or `url` (HTTP),"
+" not both."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:104
+msgid "How It Works"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:106
+msgid "Startup Discovery"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:108
+msgid ""
+"When Hermes Agent starts, `discover_mcp_tools()` is called during tool "
+"initialization:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:110
+msgid "Reads `mcp_servers` from `~/.hermes/config.yaml`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:111
+msgid "For each server, spawns a connection in a dedicated background event loop"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:112
+msgid ""
+"Initializes the MCP session and calls `list_tools()` to discover "
+"available tools"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:113
+msgid "Registers each tool in the Hermes tool registry"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:115
+msgid "Tool Naming Convention"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:117
+msgid "MCP tools are registered with the naming pattern:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:123
+msgid ""
+"Hyphens and dots in names are replaced with underscores for LLM API "
+"compatibility."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:125
+msgid "Examples:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:126
+msgid "Server `filesystem`, tool `read_file` → `mcp_filesystem_read_file`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:127
+msgid "Server `github`, tool `list-issues` → `mcp_github_list_issues`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:128
+msgid "Server `my-api`, tool `fetch.data` → `mcp_my_api_fetch_data`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:130
+msgid "Auto-Injection"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:132
+msgid ""
+"After discovery, MCP tools are automatically injected into all `hermes-*`"
+" platform toolsets (CLI, Discord, Telegram, etc.). This means MCP tools "
+"are available in every conversation without any additional configuration."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:134
+msgid "Connection Lifecycle"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:136
+msgid ""
+"Each server runs as a long-lived asyncio Task in a background daemon "
+"thread"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:137
+msgid "Connections persist for the lifetime of the agent process"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:138
+msgid ""
+"If a connection drops, automatic reconnection with exponential backoff "
+"kicks in (up to 5 retries, max 60s backoff)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:139
+msgid "On agent shutdown, all connections are gracefully closed"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:141
+msgid "Idempotency"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:143
+msgid ""
+"`discover_mcp_tools()` is idempotent -- calling it multiple times only "
+"connects to servers that aren't already connected. Failed servers are "
+"retried on subsequent calls."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:145
+msgid "Transport Types"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:147
+msgid "Stdio Transport"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:149
+msgid ""
+"The most common transport. Hermes launches the MCP server as a subprocess"
+" and communicates over stdin/stdout."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:158
+msgid ""
+"The subprocess inherits a **filtered** environment (see Security section "
+"below) plus any variables you specify in `env`."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:160
+msgid "HTTP / StreamableHTTP Transport"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:162
+msgid ""
+"For remote or shared MCP servers. Requires the `mcp` package to include "
+"HTTP client support (`mcp.client.streamable_http`)."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:172
+msgid ""
+"If HTTP support is not available in your installed `mcp` version, the "
+"server will fail with an ImportError and other servers will continue "
+"normally."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:174
+msgid "Security"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:176
+msgid "Environment Variable Filtering"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:178
+msgid ""
+"For stdio servers, Hermes does NOT pass your full shell environment to "
+"MCP subprocesses. Only safe baseline variables are inherited:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:180
+msgid "`PATH`, `HOME`, `USER`, `LANG`, `LC_ALL`, `TERM`, `SHELL`, `TMPDIR`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:181
+msgid "Any `XDG_*` variables"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:183
+msgid ""
+"All other environment variables (API keys, tokens, secrets) are excluded "
+"unless you explicitly add them via the `env` config key. This prevents "
+"accidental credential leakage to untrusted MCP servers."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:195
+msgid "Credential Stripping in Error Messages"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:197
+msgid ""
+"If an MCP tool call fails, any credential-like patterns in the error "
+"message are automatically redacted before being shown to the LLM. This "
+"covers:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:199
+msgid "GitHub PATs (`ghp_...`)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:200
+msgid "OpenAI-style keys (`sk-...`)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:201
+msgid "Bearer tokens"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:202
+msgid "Generic `token=`, `key=`, `API_KEY=`, `password=`, `secret=` patterns"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:204
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:206
+msgid "\"MCP SDK not available -- skipping MCP tool discovery\""
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:208
+msgid "The `mcp` Python package is not installed. Install it:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:214
+msgid "\"No MCP servers configured\""
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:216
+msgid ""
+"No `mcp_servers` key in `~/.hermes/config.yaml`, or it's empty. Add at "
+"least one server."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:218
+msgid "\"Failed to connect to MCP server 'X'\""
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:220
+msgid "Common causes:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:221
+msgid ""
+"**Command not found**: The `command` binary isn't on PATH. Ensure `npx`, "
+"`uvx`, or the relevant command is installed."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:222
+msgid ""
+"**Package not found**: For npx servers, the npm package may not exist or "
+"may need `-y` in args to auto-install."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:223
+msgid ""
+"**Timeout**: The server took too long to start. Increase "
+"`connect_timeout`."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:224
+msgid "**Port conflict**: For HTTP servers, the URL may be unreachable."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:226
+msgid ""
+"\"MCP server 'X' requires HTTP transport but mcp.client.streamable_http "
+"is not available\""
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:228
+msgid "Your `mcp` package version doesn't include HTTP client support. Upgrade:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:234
+msgid "Tools not appearing"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:236
+msgid ""
+"Check that the server is listed under `mcp_servers` (not `mcp` or "
+"`servers`)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:237
+msgid "Ensure the YAML indentation is correct"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:238
+msgid "Look at Hermes Agent startup logs for connection messages"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:239
+#, python-brace-format
+msgid ""
+"Tool names are prefixed with `mcp_{server}_{tool}` -- look for that "
+"pattern"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:241
+msgid "Connection keeps dropping"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:243
+msgid ""
+"The client retries up to 5 times with exponential backoff (1s, 2s, 4s, "
+"8s, 16s, capped at 60s). If the server is fundamentally unreachable, it "
+"gives up after 5 attempts. Check the server process and network "
+"connectivity."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:245
+msgid "Examples"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:247
+msgid "Time Server (uvx)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:256
+msgid "Registers tools like `mcp_time_get_current_time`."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:258
+msgid "Filesystem Server (npx)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:268
+msgid ""
+"Registers tools like `mcp_filesystem_read_file`, "
+"`mcp_filesystem_write_file`, `mcp_filesystem_list_directory`."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:270
+msgid "GitHub Server with Authentication"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:282
+msgid ""
+"Registers tools like `mcp_github_list_issues`, "
+"`mcp_github_create_pull_request`, etc."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:284
+msgid "Remote HTTP Server"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:297
+msgid "Multiple Servers"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:322
+msgid ""
+"All tools from all servers are registered and available simultaneously. "
+"Each server's tools are prefixed with its name to avoid collisions."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:324
+msgid "Sampling (Server-Initiated LLM Requests)"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:326
+msgid ""
+"Hermes supports MCP's `sampling/createMessage` capability — MCP servers "
+"can request LLM completions through the agent during tool execution. This"
+" enables agent-in-the-loop workflows (data analysis, content generation, "
+"decision-making)."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:328
+msgid "Sampling is **enabled by default**. Configure per server:"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:346
+msgid ""
+"Servers can also include `tools` in sampling requests for multi-turn "
+"tool-augmented workflows. The `max_tool_rounds` config prevents infinite "
+"tool loops. Per-server audit metrics (requests, errors, tokens, tool use "
+"count) are tracked via `get_mcp_status()`."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:348
+#, python-brace-format
+msgid ""
+"Disable sampling for untrusted servers with `sampling: { enabled: false "
+"}`."
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:350
+msgid "Notes"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:352
+msgid ""
+"MCP tools are called synchronously from the agent's perspective but run "
+"asynchronously on a dedicated background event loop"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:353
+#, python-brace-format
+msgid ""
+"Tool results are returned as JSON with either `{\"result\": \"...\"}` or "
+"`{\"error\": \"...\"}`"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:354
+msgid ""
+"The native MCP client is independent of `mcporter` -- you can use both "
+"simultaneously"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:355
+msgid ""
+"Server connections are persistent and shared across all conversations in "
+"the same agent process"
+msgstr ""
+
+#: ../../source/native-mcp_SKILL.md:356
+msgid ""
+"Adding or removing servers requires restarting the agent (no hot-reload "
+"currently)"
+msgstr ""
+

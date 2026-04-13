@@ -1,0 +1,1776 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/core-js_README.md:1
+msgid "core-js"
+msgstr ""
+
+#: ../../source/core-js_README.md:3
+msgid ""
+"[![Sponsors on Open Collective](https://opencollective.com/core-"
+"js/sponsors/badge.svg)](#raising-funds) [![Backers on Open "
+"Collective](https://opencollective.com/core-js/backers/badge.svg"
+")](#raising-funds) "
+"[![Gitter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/zloirock"
+"/core-js?utm_source=badge&utm_medium=badge&utm_campaign=pr-"
+"badge&utm_content=badge) [![version](https://img.shields.io/npm/v/core-"
+"js.svg)](https://www.npmjs.com/package/core-js) [![npm "
+"downloads](https://img.shields.io/npm/dm/core-js.svg)](http://npm-"
+"stat.com/charts.html?package=core-js&author=&from=2014-11-18) [![Build "
+"Status](https://travis-ci.org/zloirock/core-js.svg)](https://travis-"
+"ci.org/zloirock/core-js) [![devDependency status](https://david-"
+"dm.org/zloirock/core-js/dev-status.svg)](https://david-dm.org/zloirock"
+"/core-js?type=dev)"
+msgstr ""
+
+#: ../../source/core-js_README.md:3
+msgid "Gitter"
+msgstr ""
+
+#: ../../source/core-js_README.md:3
+msgid "version"
+msgstr ""
+
+#: ../../source/core-js_README.md:3
+msgid "npm downloads"
+msgstr ""
+
+#: ../../source/core-js_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/core-js_README.md:3
+msgid "devDependency status"
+msgstr ""
+
+#: ../../source/core-js_README.md:4
+msgid "As advertising: the author is looking for a good job :)"
+msgstr ""
+
+#: ../../source/core-js_README.md:6
+msgid ""
+"[core-js@3, babel and a look into the future](https://github.com/zloirock"
+"/core-js/tree/master/docs/2019-03-19-core-js-3-babel-and-a-look-into-the-"
+"future.md)"
+msgstr ""
+
+#: ../../source/core-js_README.md:8
+msgid "Raising funds"
+msgstr ""
+
+#: ../../source/core-js_README.md:10
+msgid ""
+"`core-js` isn't backed by a company, so the future of this project "
+"depends on you. Become a sponsor or a backer [**on Open "
+"Collective**](https://opencollective.com/core-js) or [**on "
+"Patreon**](https://www.patreon.com/zloirock) if you are interested in "
+"`core-js`."
+msgstr ""
+
+#: ../../source/core-js_README.md:14
+msgid ""
+"<a href=\"https://opencollective.com/core-js/sponsor/0/website\" "
+"target=\"_blank\"><img src=\"https://opencollective.com/core-"
+"js/sponsor/0/avatar.svg\"></a><a href=\"https://opencollective.com/core-"
+"js/sponsor/1/website\" target=\"_blank\"><img "
+"src=\"https://opencollective.com/core-js/sponsor/1/avatar.svg\"></a><a "
+"href=\"https://opencollective.com/core-js/sponsor/2/website\" "
+"target=\"_blank\"><img src=\"https://opencollective.com/core-"
+"js/sponsor/2/avatar.svg\"></a><a href=\"https://opencollective.com/core-"
+"js/sponsor/3/website\" target=\"_blank\"><img "
+"src=\"https://opencollective.com/core-js/sponsor/3/avatar.svg\"></a><a "
+"href=\"https://opencollective.com/core-js/sponsor/4/website\" "
+"target=\"_blank\"><img src=\"https://opencollective.com/core-"
+"js/sponsor/4/avatar.svg\"></a><a href=\"https://opencollective.com/core-"
+"js/sponsor/5/website\" target=\"_blank\"><img "
+"src=\"https://opencollective.com/core-js/sponsor/5/avatar.svg\"></a><a "
+"href=\"https://opencollective.com/core-js/sponsor/6/website\" "
+"target=\"_blank\"><img src=\"https://opencollective.com/core-"
+"js/sponsor/6/avatar.svg\"></a><a href=\"https://opencollective.com/core-"
+"js/sponsor/7/website\" target=\"_blank\"><img "
+"src=\"https://opencollective.com/core-js/sponsor/7/avatar.svg\"></a><a "
+"href=\"https://opencollective.com/core-js/sponsor/8/website\" "
+"target=\"_blank\"><img src=\"https://opencollective.com/core-"
+"js/sponsor/8/avatar.svg\"></a><a href=\"https://opencollective.com/core-"
+"js/sponsor/9/website\" target=\"_blank\"><img "
+"src=\"https://opencollective.com/core-js/sponsor/9/avatar.svg\"></a>"
+msgstr ""
+
+#: ../../source/core-js_README.md:18
+msgid ""
+"<a href=\"https://opencollective.com/core-js#backers\" "
+"target=\"_blank\"><img src=\"https://opencollective.com/core-"
+"js/backers.svg?width=890\"></a>"
+msgstr ""
+
+#: ../../source/core-js_README.md:22
+msgid ""
+"**It's documentation for obsolete `core-js@2`. If you looking "
+"documentation for actual `core-js` version, please, check [this "
+"branch](https://github.com/zloirock/core-js/tree/master).**"
+msgstr ""
+
+#: ../../source/core-js_README.md:24
+msgid ""
+"Modular standard library for JavaScript. Includes polyfills for "
+"[ECMAScript 5](#ecmascript-5), [ECMAScript 6](#ecmascript-6): "
+"[promises](#ecmascript-6-promise), [symbols](#ecmascript-6-symbol), "
+"[collections](#ecmascript-6-collections), iterators, [typed "
+"arrays](#ecmascript-6-typed-arrays), [ECMAScript 7+ "
+"proposals](#ecmascript-7-proposals), [setImmediate](#setimmediate), etc. "
+"Some additional features such as [dictionaries](#dict) or [extended "
+"partial application](#partial-application). You can require only needed "
+"features or use it without global namespace pollution."
+msgstr ""
+
+#: ../../source/core-js_README.md:26
+msgid "[*Example*](http://goo.gl/a2xexl):"
+msgstr ""
+
+#: ../../source/core-js_README.md:34
+msgid "[*Without global namespace pollution*](http://goo.gl/paOHb0):"
+msgstr ""
+
+#: ../../source/core-js_README.md:43
+msgid "Index"
+msgstr ""
+
+#: ../../source/core-js_README.md:44
+msgid "[Usage](#usage)"
+msgstr ""
+
+#: ../../source/core-js_README.md:45
+msgid "[Basic](#basic)"
+msgstr ""
+
+#: ../../source/core-js_README.md:46
+msgid "[CommonJS](#commonjs)"
+msgstr ""
+
+#: ../../source/core-js_README.md:47
+msgid "[Custom build](#custom-build-from-the-command-line)"
+msgstr ""
+
+#: ../../source/core-js_README.md:48
+msgid "[Supported engines](#supported-engines)"
+msgstr ""
+
+#: ../../source/core-js_README.md:49
+msgid "[Features](#features)"
+msgstr ""
+
+#: ../../source/core-js_README.md:50
+msgid "[ECMAScript 5](#ecmascript-5)"
+msgstr ""
+
+#: ../../source/core-js_README.md:51
+msgid "[ECMAScript 6](#ecmascript-6)"
+msgstr ""
+
+#: ../../source/core-js_README.md:52
+msgid "[ECMAScript 6: Object](#ecmascript-6-object)"
+msgstr ""
+
+#: ../../source/core-js_README.md:53
+msgid "[ECMAScript 6: Function](#ecmascript-6-function)"
+msgstr ""
+
+#: ../../source/core-js_README.md:54
+msgid "[ECMAScript 6: Array](#ecmascript-6-array)"
+msgstr ""
+
+#: ../../source/core-js_README.md:55
+msgid "[ECMAScript 6: String](#ecmascript-6-string)"
+msgstr ""
+
+#: ../../source/core-js_README.md:56
+msgid "[ECMAScript 6: RegExp](#ecmascript-6-regexp)"
+msgstr ""
+
+#: ../../source/core-js_README.md:57
+msgid "[ECMAScript 6: Number](#ecmascript-6-number)"
+msgstr ""
+
+#: ../../source/core-js_README.md:58
+msgid "[ECMAScript 6: Math](#ecmascript-6-math)"
+msgstr ""
+
+#: ../../source/core-js_README.md:59
+msgid "[ECMAScript 6: Date](#ecmascript-6-date)"
+msgstr ""
+
+#: ../../source/core-js_README.md:60
+msgid "[ECMAScript 6: Promise](#ecmascript-6-promise)"
+msgstr ""
+
+#: ../../source/core-js_README.md:61
+msgid "[ECMAScript 6: Symbol](#ecmascript-6-symbol)"
+msgstr ""
+
+#: ../../source/core-js_README.md:62
+msgid "[ECMAScript 6: Collections](#ecmascript-6-collections)"
+msgstr ""
+
+#: ../../source/core-js_README.md:63
+msgid "[ECMAScript 6: Typed Arrays](#ecmascript-6-typed-arrays)"
+msgstr ""
+
+#: ../../source/core-js_README.md:64
+msgid "[ECMAScript 6: Reflect](#ecmascript-6-reflect)"
+msgstr ""
+
+#: ../../source/core-js_README.md:65
+msgid "[ECMAScript 7+ proposals](#ecmascript-7-proposals)"
+msgstr ""
+
+#: ../../source/core-js_README.md:66
+msgid "[stage 4 proposals](#stage-4-proposals)"
+msgstr ""
+
+#: ../../source/core-js_README.md:67
+msgid "[stage 3 proposals](#stage-3-proposals)"
+msgstr ""
+
+#: ../../source/core-js_README.md:68
+msgid "[stage 2 proposals](#stage-2-proposals)"
+msgstr ""
+
+#: ../../source/core-js_README.md:69
+msgid "[stage 1 proposals](#stage-1-proposals)"
+msgstr ""
+
+#: ../../source/core-js_README.md:70
+msgid "[stage 0 proposals](#stage-0-proposals)"
+msgstr ""
+
+#: ../../source/core-js_README.md:71
+msgid "[pre-stage 0 proposals](#pre-stage-0-proposals)"
+msgstr ""
+
+#: ../../source/core-js_README.md:72
+msgid "[Web standards](#web-standards)"
+msgstr ""
+
+#: ../../source/core-js_README.md:73
+msgid "[setTimeout / setInterval](#settimeout--setinterval)"
+msgstr ""
+
+#: ../../source/core-js_README.md:74
+msgid "[setImmediate](#setimmediate)"
+msgstr ""
+
+#: ../../source/core-js_README.md:75
+msgid "[iterable DOM collections](#iterable-dom-collections)"
+msgstr ""
+
+#: ../../source/core-js_README.md:76
+msgid "[Non-standard](#non-standard)"
+msgstr ""
+
+#: ../../source/core-js_README.md:77
+msgid "[Object](#object)"
+msgstr ""
+
+#: ../../source/core-js_README.md:78
+msgid "[Dict](#dict)"
+msgstr ""
+
+#: ../../source/core-js_README.md:79
+msgid "[partial application](#partial-application)"
+msgstr ""
+
+#: ../../source/core-js_README.md:80
+msgid "[Number Iterator](#number-iterator)"
+msgstr ""
+
+#: ../../source/core-js_README.md:81
+msgid "[escaping strings](#escaping-strings)"
+msgstr ""
+
+#: ../../source/core-js_README.md:82
+msgid "[delay](#delay)"
+msgstr ""
+
+#: ../../source/core-js_README.md:83
+msgid "[helpers for iterators](#helpers-for-iterators)"
+msgstr ""
+
+#: ../../source/core-js_README.md:84
+msgid "[Missing polyfills](#missing-polyfills)"
+msgstr ""
+
+#: ../../source/core-js_README.md:85
+msgid "[Changelog](./CHANGELOG.md)"
+msgstr ""
+
+#: ../../source/core-js_README.md:87
+msgid "Usage"
+msgstr ""
+
+#: ../../source/core-js_README.md:88
+msgid "Basic"
+msgstr ""
+
+#: ../../source/core-js_README.md:102
+msgid ""
+"If you need complete build for browser, use builds from `core-js/client` "
+"path:"
+msgstr ""
+
+#: ../../source/core-js_README.md:104
+msgid ""
+"[default](https://raw.githack.com/zloirock/core-"
+"js/v2.6.12/client/core.min.js): Includes all features, standard and non-"
+"standard."
+msgstr ""
+
+#: ../../source/core-js_README.md:105
+msgid ""
+"[as a library](https://raw.githack.com/zloirock/core-"
+"js/v2.6.12/client/library.min.js): Like \"default\", but does not pollute"
+" the global namespace (see [2nd example at the top](#core-js))."
+msgstr ""
+
+#: ../../source/core-js_README.md:106
+msgid ""
+"[shim only](https://raw.githack.com/zloirock/core-"
+"js/v2.6.12/client/shim.min.js): Only includes the standard methods."
+msgstr ""
+
+#: ../../source/core-js_README.md:108
+msgid ""
+"Warning: if you use `core-js` with the extension of native objects, "
+"require all needed `core-js` modules at the beginning of entry point of "
+"your application, otherwise, conflicts may occur."
+msgstr ""
+
+#: ../../source/core-js_README.md:110
+msgid "CommonJS"
+msgstr ""
+
+#: ../../source/core-js_README.md:111
+msgid "You can require only needed modules."
+msgstr ""
+
+#: ../../source/core-js_README.md:128
+msgid ""
+"Available entry points for methods / constructors, as above examples, and"
+" namespaces: for example, `core-js/es6/array` (`core-"
+"js/library/es6/array`) contains all [ES6 `Array` "
+"features](#ecmascript-6-array), `core-js/es6` (`core-js/library/es6`) "
+"contains all ES6 features."
+msgstr ""
+
+#: ../../source/core-js_README.md:130
+msgid "Caveats when using CommonJS API:"
+msgstr ""
+
+#: ../../source/core-js_README.md:132
+msgid ""
+"`modules` path is internal API, does not inject all required dependencies"
+" and can be changed in minor or patch releases. Use it only for a custom "
+"build and / or if you know what are you doing."
+msgstr ""
+
+#: ../../source/core-js_README.md:133
+msgid ""
+"`core-js` is extremely modular and uses a lot of very tiny modules, "
+"because of that for usage in browsers bundle up `core-js` instead of "
+"usage loader for each file, otherwise, you will have hundreds of "
+"requests."
+msgstr ""
+
+#: ../../source/core-js_README.md:135
+msgid "CommonJS and prototype methods without global namespace pollution"
+msgstr ""
+
+#: ../../source/core-js_README.md:136
+msgid ""
+"In the `library` version, we can't pollute prototypes of native "
+"constructors. Because of that, prototype methods transformed to static "
+"methods like in examples above. `babel` `runtime` transformer also can't "
+"transform them. But with transpilers we can use one more trick - [bind "
+"operator and virtual methods](https://github.com/zenparsing/es-function-"
+"bind). Special for that, available `/virtual/` entry points. Example:"
+msgstr ""
+
+#: ../../source/core-js_README.md:151
+msgid "Custom build (from the command-line)"
+msgstr ""
+
+#: ../../source/core-js_README.md:156
+msgid ""
+"Where `core.dict` and `es6` are modules (namespaces) names, which will be"
+" added to the build, `es6.promise` and `es6.math` are modules "
+"(namespaces) names, which will be excluded from the build, `--library=on`"
+" is flag for build without global namespace pollution and `custom` is "
+"target file name."
+msgstr ""
+
+#: ../../source/core-js_README.md:158
+msgid ""
+"Available namespaces: for example, `es6.array` contains [ES6 `Array` "
+"features](#ecmascript-6-array), `es6` contains all modules whose names "
+"start with `es6`."
+msgstr ""
+
+#: ../../source/core-js_README.md:160
+msgid "Custom build (from external scripts)"
+msgstr ""
+
+#: ../../source/core-js_README.md:162
+msgid ""
+"[`core-js-builder`](https://www.npmjs.com/package/core-js-builder) "
+"package exports a function that takes the same parameters as the `build` "
+"target from the previous section. This will conditionally include or "
+"exclude certain parts of `core-js`:"
+msgstr ""
+
+#: ../../source/core-js_README.md:176
+msgid "Supported engines"
+msgstr ""
+
+#: ../../source/core-js_README.md:177
+msgid "**Tested in:**"
+msgstr ""
+
+#: ../../source/core-js_README.md:178
+msgid "Chrome 26+"
+msgstr ""
+
+#: ../../source/core-js_README.md:179
+msgid "Firefox 4+"
+msgstr ""
+
+#: ../../source/core-js_README.md:180
+msgid "Safari 5+"
+msgstr ""
+
+#: ../../source/core-js_README.md:181
+msgid "Opera 12+"
+msgstr ""
+
+#: ../../source/core-js_README.md:182
+msgid "Internet Explorer 6+ (sure, IE8- with ES3 limitations)"
+msgstr ""
+
+#: ../../source/core-js_README.md:183
+msgid "Edge"
+msgstr ""
+
+#: ../../source/core-js_README.md:184
+msgid "Android Browser 2.3+"
+msgstr ""
+
+#: ../../source/core-js_README.md:185
+msgid "iOS Safari 5.1+"
+msgstr ""
+
+#: ../../source/core-js_README.md:186
+msgid "PhantomJS 1.9 / 2.1"
+msgstr ""
+
+#: ../../source/core-js_README.md:187
+msgid "NodeJS 0.8+"
+msgstr ""
+
+#: ../../source/core-js_README.md:189
+msgid ""
+"...and it doesn't mean `core-js` will not work in other engines, they "
+"just have not been tested."
+msgstr ""
+
+#: ../../source/core-js_README.md:191
+msgid "Features:"
+msgstr ""
+
+#: ../../source/core-js_README.md:192 ../../source/core-js_README.md:245
+#: ../../source/core-js_README.md:251 ../../source/core-js_README.md:281
+#: ../../source/core-js_README.md:335 ../../source/core-js_README.md:380
+#: ../../source/core-js_README.md:490 ../../source/core-js_README.md:580
+#: ../../source/core-js_README.md:628 ../../source/core-js_README.md:668
+#: ../../source/core-js_README.md:699 ../../source/core-js_README.md:724
+#: ../../source/core-js_README.md:867 ../../source/core-js_README.md:961
+#: ../../source/core-js_README.md:1014 ../../source/core-js_README.md:1052
+#: ../../source/core-js_README.md:1095 ../../source/core-js_README.md:1198
+#: ../../source/core-js_README.md:1271 ../../source/core-js_README.md:1308
+#: ../../source/core-js_README.md:1326 ../../source/core-js_README.md:1347
+#: ../../source/core-js_README.md:1368 ../../source/core-js_README.md:1388
+#: ../../source/core-js_README.md:1405 ../../source/core-js_README.md:1427
+#: ../../source/core-js_README.md:1436 ../../source/core-js_README.md:1446
+#: ../../source/core-js_README.md:1460 ../../source/core-js_README.md:1483
+#: ../../source/core-js_README.md:1505 ../../source/core-js_README.md:1511
+#: ../../source/core-js_README.md:1520 ../../source/core-js_README.md:1536
+#: ../../source/core-js_README.md:1566 ../../source/core-js_README.md:1588
+#: ../../source/core-js_README.md:1611 ../../source/core-js_README.md:1644
+#: ../../source/core-js_README.md:1659 ../../source/core-js_README.md:1673
+#: ../../source/core-js_README.md:1682 ../../source/core-js_README.md:1699
+#: ../../source/core-js_README.md:1709 ../../source/core-js_README.md:1721
+#: ../../source/core-js_README.md:1732 ../../source/core-js_README.md:1742
+#: ../../source/core-js_README.md:1759 ../../source/core-js_README.md:1781
+#: ../../source/core-js_README.md:1791 ../../source/core-js_README.md:1809
+#: ../../source/core-js_README.md:1871 ../../source/core-js_README.md:1887
+#: ../../source/core-js_README.md:1901 ../../source/core-js_README.md:2028
+#: ../../source/core-js_README.md:2164 ../../source/core-js_README.md:2194
+#: ../../source/core-js_README.md:2221 ../../source/core-js_README.md:2243
+#: ../../source/core-js_README.md:2267
+msgid "[*CommonJS entry points:*](#commonjs)"
+msgstr ""
+
+#: ../../source/core-js_README.md:197
+msgid "ECMAScript 5"
+msgstr ""
+
+#: ../../source/core-js_README.md:198
+msgid ""
+"All features moved to the [`es6` namespace](#ecmascript-6), here just a "
+"list of features:"
+msgstr ""
+
+#: ../../source/core-js_README.md:250
+msgid "ECMAScript 6"
+msgstr ""
+
+#: ../../source/core-js_README.md:255
+msgid "ECMAScript 6: Object"
+msgstr ""
+
+#: ../../source/core-js_README.md:256
+msgid ""
+"Modules [`es6.object.assign`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.assign.js), "
+"[`es6.object.is`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.is.js), [`es6.object.set-prototype-"
+"of`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.object"
+".set-prototype-of.js) and [`es6.object.to-"
+"string`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.to-string.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:258
+msgid ""
+"In ES6 most `Object` static methods should work with primitives. Modules "
+"[`es6.object.freeze`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.freeze.js), "
+"[`es6.object.seal`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.seal.js), [`es6.object.prevent-"
+"extensions`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.prevent-extensions.js), [`es6.object"
+".is-frozen`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.is-frozen.js), [`es6.object.is-"
+"sealed`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.is-sealed.js), [`es6.object.is-"
+"extensible`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.is-extensible.js), [`es6.object.get-"
+"own-property-descriptor`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.get-own-property-descriptor.js), "
+"[`es6.object.get-prototype-of`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.get-prototype-of.js), "
+"[`es6.object.keys`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.keys.js) and [`es6.object.get-own-"
+"property-names`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.get-own-property-names.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:260
+msgid ""
+"Just ES5 features: [`es6.object.create`](https://github.com/zloirock"
+"/core-js/blob/v2.6.12/modules/es6.object.create.js), [`es6.object.define-"
+"property`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.define-property.js) and [`es6.object"
+".define-properties`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.object.es6.object.define-properties.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:302
+msgid "[*Examples*](http://goo.gl/ywdwPz):"
+msgstr ""
+
+#: ../../source/core-js_README.md:327
+msgid "ECMAScript 6: Function"
+msgstr ""
+
+#: ../../source/core-js_README.md:328
+msgid ""
+"Modules [`es6.function.name`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.function.name.js), [`es6.function.has-"
+"instance`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.function.has-instance.js). Just ES5: "
+"[`es6.function.bind`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.function.bind.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:343
+msgid "[*Example*](http://goo.gl/zqu3Wp):"
+msgstr ""
+
+#: ../../source/core-js_README.md:349
+msgid "ECMAScript 6: Array"
+msgstr ""
+
+#: ../../source/core-js_README.md:350
+msgid ""
+"Modules [`es6.array.from`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.from.js), "
+"[`es6.array.of`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.of.js), [`es6.array.copy-"
+"within`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.copy-within.js), "
+"[`es6.array.fill`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.fill.js), "
+"[`es6.array.find`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.find.js), [`es6.array.find-"
+"index`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.find-index.js), "
+"[`es6.array.iterator`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.iterator.js). ES5 features with fixes: "
+"[`es6.array.is-array`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.is-array.js), "
+"[`es6.array.slice`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.slice.js), "
+"[`es6.array.join`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.join.js), [`es6.array.index-"
+"of`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.array"
+".index-of.js), [`es6.array.last-index-of`](https://github.com/zloirock"
+"/core-js/blob/v2.6.12/modules/es6.array.last-index-of.js), "
+"[`es6.array.every`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.every.js), "
+"[`es6.array.some`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.some.js), [`es6.array.for-"
+"each`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.array"
+".for-each.js), [`es6.array.map`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.map.js), "
+"[`es6.array.filter`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.filter.js), "
+"[`es6.array.reduce`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.reduce.js), [`es6.array.reduce-"
+"right`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.reduce-right.js), "
+"[`es6.array.sort`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.array.sort.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:427
+msgid "[*Examples*](http://goo.gl/oaUFUf):"
+msgstr ""
+
+#: ../../source/core-js_README.md:461
+msgid "ECMAScript 6: String"
+msgstr ""
+
+#: ../../source/core-js_README.md:462
+msgid ""
+"Modules [`es6.string.from-code-point`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.from-code-point.js), "
+"[`es6.string.raw`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.raw.js), "
+"[`es6.string.iterator`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.iterator.js), [`es6.string.code-point-"
+"at`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.string"
+".code-point-at.js), [`es6.string.ends-with`](https://github.com/zloirock"
+"/core-js/blob/v2.6.12/modules/es6.string.ends-with.js), "
+"[`es6.string.includes`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.includes.js), "
+"[`es6.string.repeat`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.repeat.js), [`es6.string.starts-"
+"with`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.starts-with.js) and "
+"[`es6.string.trim`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.trim.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:464
+msgid ""
+"Annex B HTML methods. Ugly, but it's also the part of the spec. Modules "
+"[`es6.string.anchor`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.anchor.js), "
+"[`es6.string.big`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.big.js), "
+"[`es6.string.blink`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.blink.js), "
+"[`es6.string.bold`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.bold.js), "
+"[`es6.string.fixed`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.fixed.js), "
+"[`es6.string.fontcolor`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.fontcolor.js), "
+"[`es6.string.fontsize`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.fontsize.js), "
+"[`es6.string.italics`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.italics.js), "
+"[`es6.string.link`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.link.js), "
+"[`es6.string.small`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.small.js), "
+"[`es6.string.strike`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.strike.js), "
+"[`es6.string.sub`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.sub.js) and "
+"[`es6.string.sup`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.string.sup.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:536
+msgid "[*Examples*](http://goo.gl/3UaQ93):"
+msgstr ""
+
+#: ../../source/core-js_README.md:562
+msgid "ECMAScript 6: RegExp"
+msgstr ""
+
+#: ../../source/core-js_README.md:563
+msgid ""
+"Modules [`es6.regexp.constructor`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.regexp.constructor.js) and "
+"[`es6.regexp.flags`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.regexp.flags.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:565
+msgid ""
+"Support well-known [symbols](#ecmascript-6-symbol) `@@match`, "
+"`@@replace`, `@@search` and `@@split`, modules "
+"[`es6.regexp.match`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.regexp.match.js), "
+"[`es6.regexp.replace`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.regexp.replace.js), "
+"[`es6.regexp.search`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.regexp.search.js) and "
+"[`es6.regexp.split`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.regexp.split.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:591
+msgid "[*Examples*](http://goo.gl/PiJxBD):"
+msgstr ""
+
+#: ../../source/core-js_README.md:605
+msgid "ECMAScript 6: Number"
+msgstr ""
+
+#: ../../source/core-js_README.md:606
+msgid ""
+"Module [`es6.number.constructor`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.number.constructor.js). `Number` constructor "
+"support binary and octal literals, [*example*](http://goo.gl/jRd6b3):"
+msgstr ""
+
+#: ../../source/core-js_README.md:611
+msgid ""
+"Modules [`es6.number.epsilon`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.number.epsilon.js), [`es6.number.is-"
+"finite`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.number.is-finite.js), [`es6.number.is-"
+"integer`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.number.is-integer.js), [`es6.number.is-"
+"nan`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.number"
+".is-nan.js), [`es6.number.is-safe-integer`](https://github.com/zloirock"
+"/core-js/blob/v2.6.12/modules/es6.number.is-safe-integer.js), "
+"[`es6.number.max-safe-integer`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.number.max-safe-integer.js), [`es6.number"
+".min-safe-integer`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.number.min-safe-integer.js), [`es6.number"
+".parse-float`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.number.parse-float.js), [`es6.number.parse-"
+"int`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.number"
+".parse-int.js), [`es6.number.to-fixed`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.number.to-fixed.js), [`es6.number.to-"
+"precision`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.number.to-precision.js), [`es6.parse-"
+"int`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.parse-"
+"int.js), [`es6.parse-float`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.parse-float.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:646
+msgid "ECMAScript 6: Math"
+msgstr ""
+
+#: ../../source/core-js_README.md:647
+msgid ""
+"Modules [`es6.math.acosh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.acosh.js), "
+"[`es6.math.asinh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.asinh.js), "
+"[`es6.math.atanh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.atanh.js), "
+"[`es6.math.cbrt`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.cbrt.js), "
+"[`es6.math.clz32`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.clz32.js), "
+"[`es6.math.cosh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.cosh.js), "
+"[`es6.math.expm1`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.expm1.js), "
+"[`es6.math.fround`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.fround.js), "
+"[`es6.math.hypot`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.hypot.js), "
+"[`es6.math.imul`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.imul.js), "
+"[`es6.math.log10`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.log10.js), "
+"[`es6.math.log1p`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.log1p.js), "
+"[`es6.math.log2`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.log2.js), "
+"[`es6.math.sign`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.sign.js), "
+"[`es6.math.sinh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.sinh.js), "
+"[`es6.math.tanh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.tanh.js), "
+"[`es6.math.trunc`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.math.trunc.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:689
+msgid "ECMAScript 6: Date"
+msgstr ""
+
+#: ../../source/core-js_README.md:690
+msgid ""
+"Modules [`es6.date.to-string`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.date.to-string.js), ES5 features with fixes: "
+"[`es6.date.now`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.date.now.js), [`es6.date.to-iso-"
+"string`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.date.to-iso-string.js), [`es6.date.to-"
+"json`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.date"
+".to-json.js) and [`es6.date.to-primitive`](https://github.com/zloirock"
+"/core-js/blob/v2.6.12/modules/es6.date.to-primitive.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:708
+msgid "[*Example*](http://goo.gl/haeHLR):"
+msgstr ""
+
+#: ../../source/core-js_README.md:713
+msgid "ECMAScript 6: Promise"
+msgstr ""
+
+#: ../../source/core-js_README.md:714
+msgid ""
+"Module [`es6.promise`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.promise.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:729
+msgid "Basic [*example*](http://goo.gl/vGrtUC):"
+msgstr ""
+
+#: ../../source/core-js_README.md:750
+msgid "`Promise.resolve` and `Promise.reject` [*example*](http://goo.gl/vr8TN3):"
+msgstr ""
+
+#: ../../source/core-js_README.md:757
+msgid "`Promise.all` [*example*](http://goo.gl/RdoDBZ):"
+msgstr ""
+
+#: ../../source/core-js_README.md:766
+msgid "`Promise.race` [*example*](http://goo.gl/L8ovkJ):"
+msgstr ""
+
+#: ../../source/core-js_README.md:777
+msgid ""
+"ECMAScript 7 [async functions](https://tc39.github.io/ecmascript-"
+"asyncawait) [example](http://goo.gl/wnQS4j):"
+msgstr ""
+
+#: ../../source/core-js_README.md:808
+msgid "Unhandled rejection tracking"
+msgstr ""
+
+#: ../../source/core-js_README.md:810
+msgid ""
+"In Node.js, like in native implementation, available events "
+"[`unhandledRejection`](https://nodejs.org/api/process.html#process_event_unhandledrejection)"
+" and "
+"[`rejectionHandled`](https://nodejs.org/api/process.html#process_event_rejectionhandled):"
+msgstr ""
+
+#: ../../source/core-js_README.md:821
+msgid ""
+"In a browser on rejection, by default, you will see notify in the "
+"console, or you can add a custom handler and a handler on handling "
+"unhandled, [*example*](http://goo.gl/Wozskl):"
+msgstr ""
+
+#: ../../source/core-js_README.md:833
+msgid "ECMAScript 6: Symbol"
+msgstr ""
+
+#: ../../source/core-js_README.md:834
+msgid ""
+"Module [`es6.symbol`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.symbol.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:855
+msgid "Also wrapped some methods for correct work with `Symbol` polyfill."
+msgstr ""
+
+#: ../../source/core-js_README.md:885
+msgid "[*Basic example*](http://goo.gl/BbvWFc):"
+msgstr ""
+
+#: ../../source/core-js_README.md:904
+msgid "`Symbol.for` & `Symbol.keyFor` [*example*](http://goo.gl/0pdJjX):"
+msgstr ""
+
+#: ../../source/core-js_README.md:910
+msgid ""
+"[*Example*](http://goo.gl/mKVOQJ) with methods for getting own object "
+"keys:"
+msgstr ""
+
+#: ../../source/core-js_README.md:920
+msgid "Caveats when using `Symbol` polyfill:"
+msgstr ""
+
+#: ../../source/core-js_README.md:922
+msgid "We can't add new primitive type, `Symbol` returns object."
+msgstr ""
+
+#: ../../source/core-js_README.md:923
+msgid "`Symbol.for` and `Symbol.keyFor` can't be shimmed cross-realm."
+msgstr ""
+
+#: ../../source/core-js_README.md:924
+#, python-brace-format
+msgid ""
+"By default, to hide the keys, `Symbol` polyfill defines setter in "
+"`Object.prototype`. For this reason, uncontrolled creation of symbols can"
+" cause memory leak and the `in` operator is not working correctly with "
+"`Symbol` polyfill: `Symbol() in {} // => true`."
+msgstr ""
+
+#: ../../source/core-js_README.md:926
+msgid ""
+"You can disable defining setters in `Object.prototype`. "
+"[Example](http://goo.gl/N5UD7J):"
+msgstr ""
+
+#: ../../source/core-js_README.md:940
+msgid ""
+"Currently, `core-js` not adds setters to `Object.prototype` for well-"
+"known symbols for correct work something like `Symbol.iterator in foo`. "
+"It can cause problems with their enumerability."
+msgstr ""
+
+#: ../../source/core-js_README.md:941
+msgid ""
+"Some problems possible with environment exotic objects (for example, IE "
+"`localStorage`)."
+msgstr ""
+
+#: ../../source/core-js_README.md:943
+msgid "ECMAScript 6: Collections"
+msgstr ""
+
+#: ../../source/core-js_README.md:944
+msgid ""
+"`core-js` uses native collections in most case, just fixes methods / "
+"constructor, if it's required, and in old environment uses fast polyfill "
+"(O(1) lookup)."
+msgstr ""
+
+#: ../../source/core-js_README.md:945
+msgid "Map"
+msgstr ""
+
+#: ../../source/core-js_README.md:946
+msgid ""
+"Module [`es6.map`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.map.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:966
+msgid "[*Examples*](http://goo.gl/GWR7NI):"
+msgstr ""
+
+#: ../../source/core-js_README.md:999
+msgid "Set"
+msgstr ""
+
+#: ../../source/core-js_README.md:1000
+msgid ""
+"Module [`es6.set`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.set.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:1019
+msgid "[*Examples*](http://goo.gl/bmhLwg):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1043
+msgid "WeakMap"
+msgstr ""
+
+#: ../../source/core-js_README.md:1044
+msgid ""
+"Module [`es6.weak-map`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.weak-map.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:1057
+msgid "[*Examples*](http://goo.gl/SILXyw):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1087
+msgid "WeakSet"
+msgstr ""
+
+#: ../../source/core-js_README.md:1088
+msgid ""
+"Module [`es6.weak-set`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.weak-set.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:1100
+msgid "[*Examples*](http://goo.gl/TdFbEx):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1113
+msgid "Caveats when using collections polyfill:"
+msgstr ""
+
+#: ../../source/core-js_README.md:1115
+msgid ""
+"Weak-collections polyfill stores values as hidden properties of keys. It "
+"works correct and not leak in most cases. However, it is desirable to "
+"store a collection longer than its keys."
+msgstr ""
+
+#: ../../source/core-js_README.md:1117
+msgid "ECMAScript 6: Typed Arrays"
+msgstr ""
+
+#: ../../source/core-js_README.md:1118
+msgid ""
+"Implementations and fixes `ArrayBuffer`, `DataView`, typed arrays "
+"constructors, static and prototype methods. Typed Arrays work only in "
+"environments with support descriptors (IE9+), `ArrayBuffer` and "
+"`DataView` should work anywhere."
+msgstr ""
+
+#: ../../source/core-js_README.md:1120
+msgid ""
+"Modules [`es6.typed.array-buffer`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.typed.array-buffer.js), [`es6.typed.data-"
+"view`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.typed"
+".data-view.js), [`es6.typed.int8-array`](https://github.com/zloirock"
+"/core-js/blob/v2.6.12/modules/es6.typed.int8-array.js), "
+"[`es6.typed.uint8-array`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.typed.uint8-array.js), [`es6.typed.uint8"
+"-clamped-array`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.typed.uint8-clamped-array.js), "
+"[`es6.typed.int16-array`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.typed.int16-array.js), "
+"[`es6.typed.uint16-array`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.typed.uint16-array.js), "
+"[`es6.typed.int32-array`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.typed.int32-array.js), "
+"[`es6.typed.uint32-array`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.typed.uint32-array.js), "
+"[`es6.typed.float32-array`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.typed.float32-array.js) and "
+"[`es6.typed.float64-array`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.typed.float64-array.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:1214
+msgid "[*Examples*](http://goo.gl/yla75z):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1246
+msgid "Caveats when using typed arrays:"
+msgstr ""
+
+#: ../../source/core-js_README.md:1248
+msgid ""
+"Typed Arrays polyfills works completely how should work by the spec, but "
+"because of internal use getter / setters on each instance, is slow and "
+"consumes significant memory. However, typed arrays polyfills required "
+"mainly for IE9 (and for `Uint8ClampedArray` in IE10 and early IE11), all "
+"modern engines have native typed arrays and requires only constructors "
+"fixes and methods."
+msgstr ""
+
+#: ../../source/core-js_README.md:1249
+msgid ""
+"The current version hasn't special entry points for methods, they can be "
+"added only with constructors. It can be added in the future."
+msgstr ""
+
+#: ../../source/core-js_README.md:1250
+msgid ""
+"In the `library` version we can't pollute native prototypes, so prototype"
+" methods available as constructors static."
+msgstr ""
+
+#: ../../source/core-js_README.md:1252
+msgid "ECMAScript 6: Reflect"
+msgstr ""
+
+#: ../../source/core-js_README.md:1253
+msgid ""
+"Modules [`es6.reflect.apply`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.apply.js), "
+"[`es6.reflect.construct`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.construct.js), [`es6.reflect.define-"
+"property`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.define-property.js), [`es6.reflect"
+".delete-property`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.delete-property.js), "
+"[`es6.reflect.enumerate`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.enumerate.js), "
+"[`es6.reflect.get`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.get.js), [`es6.reflect.get-own-"
+"property-descriptor`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.get-own-property-descriptor.js), "
+"[`es6.reflect.get-prototype-of`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.get-prototype-of.js), "
+"[`es6.reflect.has`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.has.js), [`es6.reflect.is-"
+"extensible`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.is-extensible.js), [`es6.reflect.own-"
+"keys`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.own-keys.js), [`es6.reflect.prevent-"
+"extensions`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.prevent-extensions.js), "
+"[`es6.reflect.set`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es6.reflect.set.js), [`es6.reflect.set-prototype-"
+"of`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es6.reflect"
+".set-prototype-of.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:1290
+msgid "[*Examples*](http://goo.gl/gVT0cH):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1305
+msgid "ECMAScript 7+ proposals"
+msgstr ""
+
+#: ../../source/core-js_README.md:1306
+msgid "[The TC39 process.](https://tc39.github.io/process-document/)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1323
+msgid ""
+"`core-js/stage/4` entry point contains only stage 4 proposals, `core-"
+"js/stage/3` - stage 3 and stage 4, etc."
+msgstr ""
+
+#: ../../source/core-js_README.md:1324
+msgid "Stage 4 proposals"
+msgstr ""
+
+#: ../../source/core-js_README.md:1330
+#, python-brace-format
+msgid ""
+"`{Array, %TypedArray%}#includes` "
+"[proposal](https://github.com/tc39/Array.prototype.includes) - module "
+"[`es7.array.includes`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.array.includes.js), `%TypedArray%` version in"
+" modules from [this section](#ecmascript-6-typed-arrays)."
+msgstr ""
+
+#: ../../source/core-js_README.md:1351
+msgid "[*Examples*](http://goo.gl/2Gq4ma):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1362
+msgid ""
+"`Object.values`, `Object.entries` [proposal](https://github.com/tc39"
+"/proposal-object-values-entries) - modules "
+"[`es7.object.values`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.object.values.js), "
+"[`es7.object.entries`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.object.entries.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1373
+msgid "[*Examples*](http://goo.gl/6kuGOn):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1383
+msgid ""
+"`Object.getOwnPropertyDescriptors` [proposal](https://github.com/tc39"
+"/proposal-object-getownpropertydescriptors) - module [`es7.object.get-"
+"own-property-descriptors`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.object.get-own-property-descriptors.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1392
+msgid "*Examples*:"
+msgstr ""
+
+#: ../../source/core-js_README.md:1399
+msgid ""
+"`String#padStart`, `String#padEnd` [proposal](https://github.com/tc39"
+"/proposal-string-pad-start-end) - modules [`es7.string.pad-"
+"start`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.string.pad-start.js), [`es7.string.pad-"
+"end`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es7.string"
+".pad-end.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1412
+msgid "[*Examples*](http://goo.gl/hK5ccv):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1419
+msgid ""
+"`Object#__(define|lookup)[GS]etter__`, [annex B "
+"ES2017](https://github.com/tc39/ecma262/pull/381), but we haven't special"
+" namespace for that - modules [`es7.object.define-"
+"setter`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.object.define-setter.js), [`es7.object"
+".define-getter`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.object.define-getter.js), [`es7.object"
+".lookup-setter`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.object.lookup-setter.js) and [`es7.object"
+".lookup-getter`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.object.lookup-getter.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:1435
+msgid "Stage 3 proposals"
+msgstr ""
+
+#: ../../source/core-js_README.md:1440
+msgid ""
+"`global` [proposal](https://github.com/tc39/proposal-global) - modules "
+"[`es7.global`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.global.js) and "
+"[`es7.system.global`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.system.global.js) (obsolete)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1451
+msgid "[*Examples*](http://goo.gl/gEqMl7):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1455
+msgid ""
+"`Promise#finally` [proposal](https://github.com/tc39/proposal-promise-"
+"finally) - module [`es7.promise.finally`](https://github.com/zloirock"
+"/core-js/blob/v2.6.12/modules/es7.promise.finally.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1464
+msgid "[*Examples*](https://goo.gl/AhyBbJ):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1475
+msgid ""
+"`String#trimLeft`, `String#trimRight` / `String#trimStart`, "
+"`String#trimEnd` [proposal](https://github.com/sebmarkbage/ecmascript-"
+"string-left-right-trim) - modules [`es7.string.trim-"
+"left`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.string.trim-right.js), [`es7.string.trim-"
+"right`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.string.trim-right.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1494
+msgid "[*Examples*](http://goo.gl/Er5lMJ):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1510
+msgid "Stage 1 proposals"
+msgstr ""
+
+#: ../../source/core-js_README.md:1515
+msgid ""
+"`Promise.try` [proposal](https://github.com/tc39/proposal-promise-try) - "
+"module [`es7.promise.try`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.promise.try.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1524
+msgid "[*Examples*](https://goo.gl/k5GGRo):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1530
+msgid ""
+"`Array#flatten` and `Array#flatMap` [proposal](https://tc39.github.io"
+"/proposal-flatMap) - modules "
+"[`es7.array.flatten`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.array.flatten.js) and [`es7.array.flat-"
+"map`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es7.array"
+".flat-map.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1543
+msgid "[*Examples*](https://goo.gl/jTXsZi):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1551
+msgid ""
+"`.of` and `.from` methods on collection constructors "
+"[proposal](https://github.com/tc39/proposal-setmap-offrom) - modules "
+"[`es7.set.of`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.set.of.js), "
+"[`es7.set.from`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.set.from.js), "
+"[`es7.map.of`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.map.of.js), "
+"[`es7.map.from`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.map.from.js), [`es7.weak-"
+"set.of`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es7"
+".weak-set.of.js), [`es7.weak-set.from`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.weak-set.from.js), [`es7.weak-"
+"map.of`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es7"
+".weak-map.of.js), [`es7.weak-map.from`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.weak-map.from.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1577
+msgid "[*Examples*](https://goo.gl/mSC7eU):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1583
+msgid ""
+"`String#matchAll` "
+"[proposal](https://github.com/tc39/String.prototype.matchAll) - module "
+"[`es7.string.match-all`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.string.match-all.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1593
+msgid "[*Examples*](http://goo.gl/6kp9EB):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1599
+msgid ""
+"`Observable` [proposal](https://github.com/zenparsing/es-observable) - "
+"modules [`es7.observable`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.observable.js) and "
+"[`es7.symbol.observable`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.symbol.observable.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1616
+msgid "[*Examples*](http://goo.gl/1LDywi):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1625
+#, python-brace-format
+msgid ""
+"`Math.{clamp, DEG_PER_RAD, degrees, fscale, rad-per-deg, radians, scale}`"
+"  [proposal](https://github.com/rwaldron/proposal-math-extensions) - "
+"modules  [`es7.math.clamp`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.clamp.js),  "
+"[`es7.math.DEG_PER_RAD`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.DEG_PER_RAD.js),  "
+"[`es7.math.degrees`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.degrees.js), "
+"[`es7.math.fscale`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.fscale.js),  "
+"[`es7.math.RAD_PER_DEG`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.RAD_PER_DEG.js),  "
+"[`es7.math.radians`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.radians.js) and "
+"[`es7.math.scale`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.scale.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1654
+msgid ""
+"`Math.signbit` "
+"[proposal](http://jfbastien.github.io/papers/Math.signbit.html) - module "
+"[`es7.math.signbit`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.signbit.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1663
+msgid "[*Examples*](http://es6.zloirock.ru/):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1672
+msgid "Stage 0 proposals"
+msgstr ""
+
+#: ../../source/core-js_README.md:1677
+msgid ""
+"`String#at` "
+"[proposal](https://github.com/mathiasbynens/String.prototype.at) - module"
+" [`es7.string.at`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.string.at.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1687
+msgid "[*Examples*](http://goo.gl/XluXI8):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1692
+msgid ""
+"`Map#toJSON`, `Set#toJSON` [proposal](https://github.com/DavidBruant/Map-"
+"Set.prototype.toJSON) - modules [`es7.map.to-"
+"json`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/es7.map"
+".to-json.js), [`es7.set.to-json`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.set.to-json.js) (rejected and will be removed"
+" from `core-js@3`)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1704
+msgid ""
+"`Error.isError` [proposal](https://github.com/ljharb/proposal-is-error) -"
+" module [`es7.error.is-error`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.error.is-error.js) (withdrawn and will be "
+"removed from `core-js@3`)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1713
+#, python-brace-format
+msgid ""
+"`Math.{iaddh, isubh, imulh, umulh}` "
+"[proposal](https://gist.github.com/BrendanEich/4294d5c212a6d2254703) - "
+"modules [`es7.math.iaddh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.iaddh.js), "
+"[`es7.math.isubh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.isubh.js), "
+"[`es7.math.imulh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.imulh.js) and "
+"[`es7.math.umulh`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.math.umulh.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1728
+msgid ""
+"`global.asap`, [TC39 "
+"discussion](https://github.com/rwaldron/tc39-notes/blob/master/es6/2014-09/sept-25.md#510"
+"-globalasap-for-enqueuing-a-microtask), module "
+"[`es7.asap`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.asap.js)"
+msgstr ""
+
+#: ../../source/core-js_README.md:1736
+msgid "[*Examples*](http://goo.gl/tx3SRK):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1741
+msgid "Pre-stage 0 proposals"
+msgstr ""
+
+#: ../../source/core-js_README.md:1746
+msgid ""
+"`Reflect` metadata "
+"[proposal](https://github.com/jonathandturner/decorators/blob/master/specs/metadata.md)"
+" - modules [`es7.reflect.define-metadata`](https://github.com/zloirock"
+"/core-js/blob/v2.6.12/modules/es7.reflect.define-metadata.js), "
+"[`es7.reflect.delete-metadata`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.reflect.delete-metadata.js), [`es7.reflect"
+".get-metadata`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.reflect.get-metadata.js), [`es7.reflect.get-"
+"metadata-keys`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.reflect.get-metadata-keys.js), [`es7.reflect"
+".get-own-metadata`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.reflect.get-own-metadata.js), [`es7.reflect"
+".get-own-metadata-keys`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.reflect.get-own-metadata-keys.js), "
+"[`es7.reflect.has-metadata`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.reflect.has-metadata.js), [`es7.reflect.has-"
+"own-metadata`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.reflect.has-own-metadata.js) and "
+"[`es7.reflect.metadata`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/es7.reflect.metadata.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:1771
+msgid "[*Examples*](http://goo.gl/KCo3PS):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1780
+msgid "Web standards"
+msgstr ""
+
+#: ../../source/core-js_README.md:1785
+msgid "setTimeout / setInterval"
+msgstr ""
+
+#: ../../source/core-js_README.md:1786
+msgid ""
+"Module [`web.timers`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/web.timers.js). Additional arguments fix for "
+"IE9-."
+msgstr ""
+
+#: ../../source/core-js_README.md:1803
+msgid "setImmediate"
+msgstr ""
+
+#: ../../source/core-js_README.md:1804
+msgid ""
+"Module [`web.immediate`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/web.immediate.js). [`setImmediate` "
+"proposal](https://developer.mozilla.org/en-"
+"US/docs/Web/API/Window.setImmediate) polyfill."
+msgstr ""
+
+#: ../../source/core-js_README.md:1815
+msgid "[*Examples*](http://goo.gl/6nXGrx):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1825
+msgid "Iterable DOM collections"
+msgstr ""
+
+#: ../../source/core-js_README.md:1826
+msgid ""
+"Some DOM collections should have [iterable "
+"interface](https://heycam.github.io/webidl/#idl-iterable) or should be "
+"[inherited from "
+"`Array`](https://heycam.github.io/webidl/#LegacyArrayClass). That mean "
+"they should have `keys`, `values`, `entries` and `@@iterator` methods for"
+" iteration. So add them. Module "
+"[`web.dom.iterable`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/web.dom.iterable.js):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1876
+msgid "[*Examples*](http://goo.gl/lfXVFl):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1886
+msgid "Non-standard"
+msgstr ""
+
+#: ../../source/core-js_README.md:1891
+msgid "Object"
+msgstr ""
+
+#: ../../source/core-js_README.md:1892
+msgid ""
+"Modules [`core.object.is-object`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.object.is-object.js), "
+"[`core.object.classof`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.object.classof.js), "
+"[`core.object.define`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.object.define.js), "
+"[`core.object.make`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.object.make.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:1908
+msgid "Object classify [*examples*](http://goo.gl/YZQmGo):"
+msgstr ""
+
+#: ../../source/core-js_README.md:1955
+msgid "`Object.define` and `Object.make` [*examples*](http://goo.gl/rtpD5Z):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2004
+msgid "Dict"
+msgstr ""
+
+#: ../../source/core-js_README.md:2005
+msgid ""
+"Module [`core.dict`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.dict.js). Based on [TC39 "
+"discuss](https://github.com/rwaldron/tc39-notes/blob/master/es6/2012-11/nov-29.md"
+"#collection-apis-review) / "
+"[strawman](http://wiki.ecmascript.org/doku.php?id=harmony:modules_standard#dictionaries)."
+msgstr ""
+
+#: ../../source/core-js_README.md:2033
+msgid "`Dict` create object without prototype from iterable or simple object."
+msgstr ""
+
+#: ../../source/core-js_README.md:2035
+msgid "[*Examples*](http://goo.gl/pnp8Vr):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2054
+msgid ""
+"`Dict.keys`, `Dict.values` and `Dict.entries` returns iterators for "
+"objects."
+msgstr ""
+
+#: ../../source/core-js_README.md:2056
+msgid "[*Examples*](http://goo.gl/xAvECH):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2071
+msgid ""
+"Basic dict operations for objects with prototype "
+"[*examples*](http://goo.gl/B28UnG):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2099
+msgid ""
+"Other methods of `Dict` module are static equivalents of "
+"`Array.prototype` methods for dictionaries."
+msgstr ""
+
+#: ../../source/core-js_README.md:2101
+msgid "[*Examples*](http://goo.gl/xFi1RH):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2157
+msgid "Partial application"
+msgstr ""
+
+#: ../../source/core-js_README.md:2158
+msgid ""
+"Module [`core.function.part`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.function.part.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:2171
+msgid ""
+"`Function#part` partial apply function without `this` binding. Uses "
+"global variable `_` (`core._` for builds without global namespace "
+"pollution) as placeholder and not conflict with `Underscore` / `LoDash`."
+msgstr ""
+
+#: ../../source/core-js_README.md:2173
+msgid "[*Examples*](http://goo.gl/p9ZJ8K):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2187
+msgid "Number Iterator"
+msgstr ""
+
+#: ../../source/core-js_README.md:2188
+msgid ""
+"Module [`core.number.iterator`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.number.iterator.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:2200
+msgid "[*Examples*](http://goo.gl/o45pCN):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2212
+msgid "Escaping strings"
+msgstr ""
+
+#: ../../source/core-js_README.md:2213
+msgid ""
+"Modules [`core.regexp.escape`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.regexp.escape.js), [`core.string.escape-"
+"html`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.string.escape-html.js) and [`core.string"
+".unescape-html`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.string.unescape-html.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:2231
+msgid "[*Examples*](http://goo.gl/6bOvsQ):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2238
+msgid "delay"
+msgstr ""
+
+#: ../../source/core-js_README.md:2239
+msgid ""
+"Module [`core.delay`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.delay.js). "
+"[Promise](#ecmascript-6-promise)-returning delay function, "
+"[esdiscuss](https://esdiscuss.org/topic/promise-returning-delay-"
+"function)."
+msgstr ""
+
+#: ../../source/core-js_README.md:2248
+msgid "[*Examples*](http://goo.gl/lbucba):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2259
+msgid "Helpers for iterators"
+msgstr ""
+
+#: ../../source/core-js_README.md:2260
+msgid ""
+"Modules [`core.is-iterable`](https://github.com/zloirock/core-"
+"js/blob/v2.6.12/modules/core.is-iterable.js), [`core.get-"
+"iterator`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/core"
+".get-iterator.js), [`core.get-iterator-"
+"method`](https://github.com/zloirock/core-js/blob/v2.6.12/modules/core"
+".get-iterator-method.js) - helpers for check iterability / get iterator "
+"in the `library` version or, for example, for `arguments` object:"
+msgstr ""
+
+#: ../../source/core-js_README.md:2273
+msgid "[*Examples*](http://goo.gl/SXsM6D):"
+msgstr ""
+
+#: ../../source/core-js_README.md:2300
+msgid "Missing polyfills"
+msgstr ""
+
+#: ../../source/core-js_README.md:2301
+msgid ""
+"ES5 `JSON` is missing now only in IE7- and never will it be added to "
+"`core-js`, if you need it in these old browsers, many implementations are"
+" available, for example, [json3](https://github.com/bestiejs/json3)."
+msgstr ""
+
+#: ../../source/core-js_README.md:2302
+msgid ""
+"ES6 `String#normalize` is not a very useful feature, but this polyfill "
+"will be very large. If you need it, you can use "
+"[unorm](https://github.com/walling/unorm/)."
+msgstr ""
+
+#: ../../source/core-js_README.md:2303
+msgid ""
+"ES6 `Proxy` can't be polyfilled, but for Node.js / Chromium with "
+"additional flags you can try [harmony-"
+"reflect](https://github.com/tvcutsem/harmony-reflect) for adapt old style"
+" `Proxy` API to final ES6 version."
+msgstr ""
+
+#: ../../source/core-js_README.md:2304
+msgid ""
+"ES6 logic for `@@isConcatSpreadable` and `@@species` (in most places) can"
+" be polyfilled without problems, but it will cause a serious slowdown in "
+"popular cases in some engines. It will be polyfilled when it will be "
+"implemented in modern engines."
+msgstr ""
+
+#: ../../source/core-js_README.md:2305
+msgid ""
+"ES7 `SIMD`. `core-js` doesn't add polyfill of this feature because of "
+"large size and some other reasons. You can use [this "
+"polyfill](https://github.com/tc39/ecmascript_simd/blob/master/src/ecmascript_simd.js)."
+msgstr ""
+
+#: ../../source/core-js_README.md:2306
+msgid ""
+"`window.fetch` is not a cross-platform feature, in some environments it "
+"makes no sense. For this reason, I don't think it should be in `core-js`."
+" Looking at a large number of requests it *may be*  added in the future. "
+"Now you can use, for example, [this "
+"polyfill](https://github.com/github/fetch)."
+msgstr ""
+
+#: ../../source/core-js_README.md:2307
+msgid ""
+"ECMA-402 `Intl` is missed because of size. You can use [this "
+"polyfill](https://github.com/andyearnshaw/Intl.js/)."
+msgstr ""
+

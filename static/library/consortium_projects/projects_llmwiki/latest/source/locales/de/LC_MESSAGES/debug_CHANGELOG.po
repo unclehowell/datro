@@ -1,0 +1,940 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/debug_CHANGELOG.md:2
+msgid "2.6.9 / 2017-09-22"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:5
+#, python-format
+msgid "remove ReDoS regexp in %o formatter (#504)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:7
+msgid "2.6.8 / 2017-05-18"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:10
+msgid "Fix: Check for undefined on browser globals (#462, @marbemac)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:12
+msgid "2.6.7 / 2017-05-16"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:15
+msgid ""
+"Fix: Update ms to 2.0.0 to fix regular expression denial of service "
+"vulnerability (#458, @hubdotcom)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:16
+msgid "Fix: Inline extend function in node implementation (#452, @dougwilson)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:17
+msgid "Docs: Fix typo (#455, @msasad)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:19
+msgid "2.6.5 / 2017-04-27"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:22
+msgid ""
+"Fix: null reference check on "
+"window.documentElement.style.WebkitAppearance (#447, @thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:23
+msgid "Misc: clean up browser reference checks (#447, @thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:24
+msgid "Misc: add npm-debug.log to .gitignore (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:27
+msgid "2.6.4 / 2017-04-20"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:30
+msgid ""
+"Fix: bug that would occure if process.env.DEBUG is a non-string value. "
+"(#444, @LucianBuzzo)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:31
+msgid "Chore: ignore bower.json in npm installations. (#437, @joaovieira)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:32
+msgid "Misc: update \"ms\" to v0.7.3 (@tootallnate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:34
+msgid "2.6.3 / 2017-03-13"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:37
+msgid "Fix: Electron reference to `process.env.DEBUG` (#431, @paulcbetts)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:38
+msgid "Docs: Changelog fix (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:40
+msgid "2.6.2 / 2017-03-10"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:43
+msgid "Fix: DEBUG_MAX_ARRAY_LENGTH (#420, @slavaGanzin)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:44
+msgid "Docs: Add backers and sponsors from Open Collective (#422, @piamancini)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:45
+msgid "Docs: Add Slackin invite badge (@tootallnate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:47
+msgid "2.6.1 / 2017-02-10"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:50
+msgid ""
+"Fix: Module's `export default` syntax fix for IE8 `Expected identifier` "
+"error"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:51
+msgid "Fix: Whitelist DEBUG_FD for values 1 and 2 only (#415, @pi0)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:52
+msgid "Fix: IE8 \"Expected identifier\" error (#414, @vgoma)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:53
+msgid "Fix: Namespaces would not disable once enabled (#409, @musikov)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:55
+msgid "2.6.0 / 2016-12-28"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:58
+msgid ""
+"Fix: added better null pointer checks for browser useColors "
+"(@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:59
+msgid "Improvement: removed explicit `window.debug` export (#404, @tootallnate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:60
+msgid ""
+"Improvement: deprecated `DEBUG_FD` environment variable (#405, "
+"@tootallnate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:62
+msgid "2.5.2 / 2016-12-25"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:65
+msgid "Fix: reference error on window within webworkers (#393, @KlausTrainer)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:66
+msgid "Docs: fixed README typo (#391, @lurch)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:67
+msgid "Docs: added notice about v3 api discussion (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:69
+msgid "2.5.1 / 2016-12-20"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:72
+msgid "Fix: babel-core compatibility"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:74
+msgid "2.5.0 / 2016-12-20"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:77
+msgid "Fix: wrong reference in bower file (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:78
+msgid "Fix: webworker compatibility (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:79
+msgid "Fix: output formatting issue (#388, @kribblo)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:80
+msgid "Fix: babel-loader compatibility (#383, @escwald)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:81
+msgid "Misc: removed built asset from repo and publications (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:82
+msgid "Misc: moved source files to /src (#378, @yamikuronue)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:83
+msgid ""
+"Test: added karma integration and replaced babel with browserify for "
+"browser tests (#378, @yamikuronue)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:84
+msgid "Test: coveralls integration (#378, @yamikuronue)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:85
+msgid "Docs: simplified language in the opening paragraph (#373, @yamikuronue)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:87
+msgid "2.4.5 / 2016-12-17"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:90
+msgid "Fix: `navigator` undefined in Rhino (#376, @jochenberger)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:91
+msgid "Fix: custom log function (#379, @hsiliev)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:92
+msgid "Improvement: bit of cleanup + linting fixes (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:93
+msgid "Improvement: rm non-maintainted `dist/` dir (#375, @freewil)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:94
+msgid "Docs: simplified language in the opening paragraph. (#373, @yamikuronue)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:96
+msgid "2.4.4 / 2016-12-14"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:99
+msgid ""
+"Fix: work around debug being loaded in preload scripts for electron "
+"(#368, @paulcbetts)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:101
+msgid "2.4.3 / 2016-12-14"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:104
+msgid "Fix: navigation.userAgent error for react native (#364, @escwald)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:106
+msgid "2.4.2 / 2016-12-14"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:109
+msgid "Fix: browser colors (#367, @tootallnate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:110
+msgid "Misc: travis ci integration (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:111
+msgid ""
+"Misc: added linting and testing boilerplate with sanity check "
+"(@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:113
+msgid "2.4.1 / 2016-12-13"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:116
+msgid "Fix: typo that broke the package (#356)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:118
+msgid "2.4.0 / 2016-12-13"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:121
+msgid "Fix: bower.json references unbuilt src entry point (#342, @justmatt)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:122
+msgid "Fix: revert \"handle regex special characters\" (@tootallnate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:123
+msgid ""
+"Feature: configurable util.inspect()`options for NodeJS (#327, "
+"@tootallnate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:124
+msgid "Feature: %O`(big O) pretty-prints objects (#322, @tootallnate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:125
+msgid "Improvement: allow colors in workers (#335, @botverse)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:126
+msgid "Improvement: use same color for same namespace. (#338, @lchenay)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:128
+msgid "2.3.3 / 2016-11-09"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:131
+msgid "Fix: Catch `JSON.stringify()` errors (#195, Jovan Alleyne)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:132
+msgid "Fix: Returning `localStorage` saved values (#331, Levi Thomason)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:133
+msgid ""
+"Improvement: Don't create an empty object when no `process` (Nathan "
+"Rajlich)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:135
+msgid "2.3.2 / 2016-11-09"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:138
+msgid "Fix: be super-safe in index.js as well (@TooTallNate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:139
+msgid "Fix: should check whether process exists (Tom Newby)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:141
+msgid "2.3.1 / 2016-11-09"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:144
+msgid "Fix: Added electron compatibility (#324, @paulcbetts)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:145
+msgid "Improvement: Added performance optimizations (@tootallnate)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:146
+msgid "Readme: Corrected PowerShell environment variable example (#252, @gimre)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:147
+msgid "Misc: Removed yarn lock file from source control (#321, @fengmk2)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:149
+msgid "2.3.0 / 2016-11-07"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:152
+msgid "Fix: Consistent placement of ms diff at end of output (#215, @gorangajic)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:153
+msgid ""
+"Fix: Escaping of regex special characters in namespace strings (#250, "
+"@zacronos)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:154
+msgid "Fix: Fixed bug causing crash on react-native (#282, @vkarpov15)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:155
+msgid "Feature: Enabled ES6+ compatible import via default export (#212 @bucaran)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:156
+msgid ""
+"Feature: Added %O formatter to reflect Chrome's console.log capability "
+"(#279, @oncletom)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:157
+msgid "Package: Update \"ms\" to 0.7.2 (#315, @DevSide)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:158
+msgid ""
+"Package: removed superfluous version property from bower.json (#207 "
+"@kkirsche)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:159
+msgid "Readme: fix USE_COLORS to DEBUG_COLORS"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:160
+msgid "Readme: Doc fixes for format string sugar (#269, @mlucool)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:161
+msgid ""
+"Readme: Updated docs for DEBUG_FD and DEBUG_COLORS environment variables "
+"(#232, @mattlyons0)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:162
+msgid "Readme: doc fixes for PowerShell (#271 #243, @exoticknight @unreadable)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:163
+msgid "Readme: better docs for browser support (#224, @matthewmueller)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:164
+msgid "Tooling: Added yarn integration for development (#317, @thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:165
+msgid "Misc: Renamed History.md to CHANGELOG.md (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:166
+msgid "Misc: Added license file (#226 #274, @CantemoInternal @sdaitzman)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:167
+msgid "Misc: Updated contributors (@thebigredgeek)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:169
+msgid "2.2.0 / 2015-05-09"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:172
+msgid "package: update \"ms\" to v0.7.1 (#202, @dougwilson)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:173
+msgid "README: add logging to file example (#193, @DanielOchoa)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:174
+msgid "README: fixed a typo (#191, @amir-s)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:175
+msgid "browser: expose `storage` (#190, @stephenmathieson)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:176
+msgid "Makefile: add a `distclean` target (#189, @stephenmathieson)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:178
+msgid "2.1.3 / 2015-03-13"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:181
+msgid "Updated stdout/stderr example (#186)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:182
+msgid "Updated example/stdout.js to match debug current behaviour"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:183
+msgid "Renamed example/stderr.js to stdout.js"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:184
+msgid "Update Readme.md (#184)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:185
+msgid "replace high intensity foreground color for bold (#182, #183)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:187
+msgid "2.1.2 / 2015-03-01"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:190 ../../source/debug_CHANGELOG.md:223
+msgid "dist: recompile"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:191
+msgid "update \"ms\" to v0.7.0"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:192
+msgid "package: update \"browserify\" to v9.0.3"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:193
+msgid "component: fix \"ms.js\" repo location"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:194
+msgid "changed bower package name"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:195
+msgid "updated documentation about using debug in a browser"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:196
+msgid "fix: security error on safari (#167, #168, @yields)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:198
+msgid "2.1.1 / 2014-12-29"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:201
+msgid "browser: use `typeof` to check for `console` existence"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:202
+msgid "browser: check for `console.log` truthiness (fix IE 8/9)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:203
+msgid "browser: add support for Chrome apps"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:204
+msgid "Readme: added Windows usage remarks"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:205
+msgid "Add `bower.json` to properly support bower install"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:207
+msgid "2.1.0 / 2014-10-15"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:210
+msgid "node: implement `DEBUG_FD` env variable support"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:211
+msgid "package: update \"browserify\" to v6.1.0"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:212
+msgid "package: add \"license\" field to package.json (#135, @panuhorsmalahti)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:214
+msgid "2.0.0 / 2014-09-01"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:217
+msgid "package: update \"browserify\" to v5.11.0"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:218
+msgid "node: use stderr rather than stdout for logging (#29, @stephenmathieson)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:220
+msgid "1.0.4 / 2014-07-15"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:224
+msgid "example: remove `console.info()` log usage"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:225
+msgid "example: add \"Content-Type\" UTF-8 header to browser example"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:226
+#, python-format
+msgid "browser: place %c marker after the space character"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:227
+msgid "browser: reset the \"content\" color via `color: inherit`"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:228
+msgid "browser: add colors support for Firefox >= v31"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:229
+msgid "debug: prefer an instance `log()` function over the global one (#119)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:230
+msgid ""
+"Readme: update documentation about styled console logs for FF v31 (#116, "
+"@wryk)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:232
+msgid "1.0.3 / 2014-07-09"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:235
+msgid "Add support for multiple wildcards in namespaces (#122, @seegno)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:236
+msgid "browser: fix lint"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:238
+msgid "1.0.2 / 2014-06-10"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:241
+msgid "browser: update color palette (#113, @gscottolson)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:242
+msgid "common: make console logging function configurable (#108, @timoxley)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:243
+#, python-format
+msgid "node: fix %o colors on old node <= 0.8.x"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:244
+msgid "Makefile: find node path using shell/which (#109, @timoxley)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:246
+msgid "1.0.1 / 2014-06-06"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:249
+msgid "browser: use `removeItem()` to clear localStorage"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:250
+msgid ""
+"browser, node: don't set DEBUG if namespaces is undefined (#107, "
+"@leedm777)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:251
+msgid "package: add \"contributors\" section"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:252
+msgid "node: fix comment typo"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:253
+msgid "README: list authors"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:255
+msgid "1.0.0 / 2014-06-04"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:258
+msgid "make ms diff be global, not be scope"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:259
+msgid "debug: ignore empty strings in enable()"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:260
+msgid "node: make DEBUG_COLORS able to disable coloring"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:261
+msgid "*: export the `colors` array"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:262
+msgid "npmignore: don't publish the `dist` dir"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:263
+msgid "Makefile: refactor to use browserify"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:264
+msgid "package: add \"browserify\" as a dev dependency"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:265
+msgid "Readme: add Web Inspector Colors section"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:266
+msgid "node: reset terminal color for the debug content"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:267
+#, python-format
+msgid "node: map \"%o\" to `util.inspect()`"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:268
+msgid "browser: map \"%j\" to `JSON.stringify()`"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:269
+msgid "debug: add custom \"formatters\""
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:270
+msgid "debug: use \"ms\" module for humanizing the diff"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:271
+msgid "Readme: add \"bash\" syntax highlighting"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:272
+msgid "browser: add Firebug color support"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:273
+msgid "browser: add colors for WebKit browsers"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:274
+msgid "node: apply log to `console`"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:275
+msgid "rewrite: abstract common logic for Node & browsers"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:276
+msgid "add .jshintrc file"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:278
+msgid "0.8.1 / 2014-04-14"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:281
+msgid "package: re-add the \"component\" section"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:283
+msgid "0.8.0 / 2014-03-30"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:286
+msgid "add `enable()` method for nodejs. Closes #27"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:287
+msgid "change from stderr to stdout"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:288
+msgid "remove unnecessary index.js file"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:290
+msgid "0.7.4 / 2013-11-13"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:293
+msgid ""
+"remove \"browserify\" key from package.json (fixes something in "
+"browserify)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:295
+msgid "0.7.3 / 2013-10-30"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:298
+msgid "fix: catch localStorage security error when cookies are blocked (Chrome)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:299
+msgid "add debug(err) support. Closes #46"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:300
+msgid "add .browser prop to package.json. Closes #42"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:302
+msgid "0.7.2 / 2013-02-06"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:305
+msgid "fix package.json"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:306
+msgid "fix: Mobile Safari (private mode) is broken with debug"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:307
+msgid ""
+"fix: Use unicode to send escape character to shell instead of octal to "
+"work with strict mode javascript"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:309
+msgid "0.7.1 / 2013-02-05"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:312
+msgid "add repository URL to package.json"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:313
+msgid "add DEBUG_COLORED to force colored output"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:314
+msgid "add browserify support"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:315
+msgid "fix component. Closes #24"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:317
+msgid "0.7.0 / 2012-05-04"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:320
+msgid "Added .component to package.json"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:321
+msgid "Added debug.component.js build"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:323
+msgid "0.6.0 / 2012-03-16"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:326
+msgid "Added support for \"-\" prefix in DEBUG [Vinay Pulim]"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:327
+msgid "Added `.enabled` flag to the node version [TooTallNate]"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:329
+msgid "0.5.0 / 2012-02-02"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:332
+msgid "Added: humanize diffs. Closes #8"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:333
+msgid "Added `debug.disable()` to the CS variant"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:334
+msgid "Removed padding. Closes #10"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:335
+msgid "Fixed: persist client-side variant again. Closes #9"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:337
+msgid "0.4.0 / 2012-02-01"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:340
+msgid "Added browser variant support for older browsers [TooTallNate]"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:341
+msgid "Added `debug.enable('project:*')` to browser variant [TooTallNate]"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:342
+msgid "Added padding to diff (moved it to the right)"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:344
+msgid "0.3.0 / 2012-01-26"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:347
+msgid "Added millisecond diff when isatty, otherwise UTC string"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:349
+msgid "0.2.0 / 2012-01-22"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:352
+msgid "Added wildcard support"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:354
+msgid "0.1.0 / 2011-12-02"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:357
+msgid "Added: remove colors unless stderr isatty [TooTallNate]"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:359
+msgid "0.0.1 / 2010-01-03"
+msgstr ""
+
+#: ../../source/debug_CHANGELOG.md:362
+msgid "Initial release"
+msgstr ""
+

@@ -1,0 +1,1451 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_nvidia.md:1
+msgid "Design System: NVIDIA"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:7
+msgid "**Primary:** `Inter` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:18
+msgid ""
+"NVIDIA's website is a high-contrast, technology-forward experience that "
+"communicates raw computational power through design restraint. The page "
+"is built on a stark black (`#000000`) and white (`#ffffff`) foundation, "
+"punctuated by NVIDIA's signature green (`#76b900`) -- a color so specific"
+" it functions as a brand fingerprint. This is not the lush green of "
+"nature; it's the electric, lime-shifted green of GPU-rendered light, a "
+"color that sits between chartreuse and kelly green and immediately "
+"signals \"NVIDIA\" to anyone in technology."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:20
+msgid ""
+"The custom NVIDIA-EMEA font family (with Arial and Helvetica fallbacks) "
+"creates a clean, industrial typographic voice. Headings at 36px bold with"
+" tight 1.25 line-height create dense, authoritative blocks of text. The "
+"font lacks the geometric playfulness of Silicon Valley sans-serifs -- "
+"it's European, pragmatic, and engineering-focused. Body text runs at "
+"15-16px, comfortable for reading but not generous, maintaining the sense "
+"that screen real estate is optimized like GPU memory."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:22
+msgid ""
+"What distinguishes NVIDIA's design from other dark-background tech sites "
+"is the disciplined use of the green accent. The `#76b900` appears in "
+"borders (`2px solid #76b900`), link underlines (`underline 2px rgb(118, "
+"185, 0)`), and CTAs -- but never as backgrounds or large surface areas on"
+" the main content. The green is a signal, not a surface. Combined with a "
+"deep shadow system (`rgba(0, 0, 0, 0.3) 0px 0px 5px`) and minimal border "
+"radius (1-2px), the overall effect is of precision engineering hardware "
+"rendered in pixels."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:25
+msgid ""
+"NVIDIA Green (`#76b900`) as pure accent -- borders, underlines, and "
+"interactive highlights only"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:26
+msgid ""
+"Black (`#000000`) dominant background with white (`#ffffff`) text on dark"
+" sections"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:27
+msgid ""
+"NVIDIA-EMEA custom font with Arial/Helvetica fallback -- industrial, "
+"European, clean"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:28
+msgid ""
+"Tight line-heights (1.25 for headings) creating dense, authoritative text"
+" blocks"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:29
+msgid "Minimal border radius (1-2px) -- sharp, engineered corners throughout"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:30
+msgid ""
+"Green-bordered buttons (`2px solid #76b900`) as primary interactive "
+"pattern"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:31
+msgid "Font Awesome 6 Pro/Sharp icon system at weight 900 for sharp iconography"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:32
+msgid ""
+"Multi-framework architecture (PrimeReact, Fluent UI, Element Plus) "
+"enabling rich interactive components"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:36
+msgid "Primary Brand"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:37
+msgid ""
+"**NVIDIA Green** (`#76b900`): The signature -- borders, link underlines, "
+"CTA outlines, active indicators. Never used as large surface fills."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:38
+msgid ""
+"**True Black** (`#000000`): Primary page background, text on light "
+"surfaces, dominant tone."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:39
+msgid ""
+"**Pure White** (`#ffffff`): Text on dark backgrounds, light section "
+"backgrounds, card surfaces."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:41
+msgid "Extended Brand Palette"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:42
+msgid ""
+"**NVIDIA Green Light** (`#bff230`): Bright lime accent for highlights and"
+" hover states."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:43
+msgid ""
+"**Orange 400** (`#df6500`): Warm accent for alerts, featured badges, or "
+"energy-related contexts."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:44
+msgid ""
+"**Yellow 300** (`#ef9100`): Secondary warm accent, product category "
+"highlights."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:45
+msgid "**Yellow 050** (`#feeeb2`): Light warm surface for callout backgrounds."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:47
+msgid "Status & Semantic"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:48
+msgid ""
+"**Red 500** (`#e52020`): Error states, destructive actions, critical "
+"alerts."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:49
+msgid "**Red 800** (`#650b0b`): Deep red for severe warning backgrounds."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:50
+msgid ""
+"**Green 500** (`#3f8500`): Success states, positive indicators (darker "
+"than brand green)."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:51
+msgid "**Blue 700** (`#0046a4`): Informational accents, link hover alternative."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:53
+msgid "Decorative"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:54
+msgid ""
+"**Purple 800** (`#4d1368`): Deep purple for gradient ends, premium/AI "
+"contexts."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:55
+msgid "**Purple 100** (`#f9d4ff`): Light purple surface tint."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:56
+msgid ""
+"**Fuchsia 700** (`#8c1c55`): Rich accent for special promotions or "
+"featured content."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:58
+msgid "Neutral Scale"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:59
+msgid "**Gray 300** (`#a7a7a7`): Muted text, disabled labels."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:60
+msgid "**Gray 400** (`#898989`): Secondary text, metadata."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:61
+msgid "**Gray 500** (`#757575`): Tertiary text, placeholders, footers."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:62
+msgid "**Gray Border** (`#5e5e5e`): Subtle borders, divider lines."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:63
+msgid ""
+"**Near Black** (`#1a1a1a`): Dark surfaces, card backgrounds on black "
+"pages."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:65
+msgid "Interactive States"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:66
+msgid "**Link Default (dark bg)** (`#ffffff`): White links on dark backgrounds."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:67
+msgid ""
+"**Link Default (light bg)** (`#000000`): Black links with green underline"
+" on light backgrounds."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:68
+msgid "**Link Hover** (`#3860be`): Blue shift on hover across all link variants."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:69
+msgid "**Button Hover** (`#1eaedb`): Teal highlight for button hover states."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:70
+msgid ""
+"**Button Active** (`#007fff`): Bright blue for active/pressed button "
+"states."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:71
+msgid "**Focus Ring** (`#000000 solid 2px`): Black outline for keyboard focus."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:73
+msgid "Shadows & Depth"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:74
+msgid ""
+"**Card Shadow** (`rgba(0, 0, 0, 0.3) 0px 0px 5px 0px`): Subtle ambient "
+"shadow for elevated cards."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:76
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:78
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:79
+msgid "**Primary**: `NVIDIA-EMEA`, with fallbacks: `Arial, Helvetica, sans-serif`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:80
+msgid ""
+"**Icon Font**: `Font Awesome 6 Pro` (weight 900 for solid icons, 700 for "
+"regular)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:81
+msgid ""
+"**Icon Sharp**: `Font Awesome 6 Sharp` (weight 300 for light icons, 400 "
+"for regular)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:83
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "NVIDIA-EMEA"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "36px (2.25rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "1.25 (tight)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Maximum impact headlines"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "24px (1.50rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Section titles, card headings"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "22px (1.38rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "1.75 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Feature descriptions, subtitles"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Card Title"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Card and module headings"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "1.67 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Emphasized body, lead paragraphs"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Standard reading text"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Body Bold"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Strong labels, nav items"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Body Small"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "15px (0.94rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Secondary content, descriptions"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Body Small Bold"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Emphasized secondary content"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Button Large"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Primary CTA buttons"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Standard buttons"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Button Compact"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "14.4px (0.90rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "0.144px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Small/compact buttons"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Link"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "1.43"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Navigation links"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Link Uppercase"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "`text-transform: uppercase`, nav labels"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Metadata, timestamps"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Caption Small"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Fine print, legal"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Micro Label"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "10px (0.63rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "`text-transform: uppercase`, tiny badges"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "11px (0.69rem)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Smallest UI text"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:106
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:107
+msgid ""
+"**Bold as the default voice**: NVIDIA leans heavily on weight 700 for "
+"headings, buttons, links, and labels. The 400 weight is reserved for body"
+" text and descriptions -- everything else is bold, projecting confidence "
+"and authority."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:108
+msgid ""
+"**Tight headings, relaxed body**: Heading line-height is consistently "
+"1.25 (tight), while body text relaxes to 1.50-1.67. This contrast creates"
+" visual density at the top of content blocks and comfortable readability "
+"in paragraphs."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:109
+msgid ""
+"**Uppercase for navigation**: Link labels use `text-transform: uppercase`"
+" with weight 700, creating a navigation voice that reads like hardware "
+"specification labels."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:110
+msgid ""
+"**No decorative tracking**: Letter-spacing is normal throughout, except "
+"for compact buttons (0.144px). The font itself carries the industrial "
+"character without manipulation."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:112
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:114
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:116
+msgid "**Primary (Green Border)**"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:117
+msgid "Background: `transparent`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:118
+msgid "Text: `#000000`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:119
+msgid "Padding: 11px 13px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:120
+msgid "Border: `2px solid #76b900`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:121 ../../source/templates_nvidia.md:131
+#: ../../source/templates_nvidia.md:143
+msgid "Radius: 2px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:122
+msgid "Font: 16px weight 700"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:123
+msgid "Hover: background `#1eaedb`, text `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:124
+msgid ""
+"Active: background `#007fff`, text `#ffffff`, border `1px solid #003eff`,"
+" scale(1)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:125
+msgid ""
+"Focus: background `#1eaedb`, text `#ffffff`, outline `#000000 solid 2px`,"
+" opacity 0.9"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:126
+msgid "Use: Primary CTA (\"Learn More\", \"Explore Solutions\")"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:128
+msgid "**Secondary (Green Border Thin)**"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:129
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:130
+msgid "Border: `1px solid #76b900`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:132
+msgid "Use: Secondary actions, alternative CTAs"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:134
+msgid "**Compact / Inline**"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:135
+msgid "Font: 14.4px weight 700"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:136
+msgid "Letter-spacing: 0.144px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:137
+msgid "Line-height: 1.00"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:138
+msgid "Use: Inline CTAs, compact navigation"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:140
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:141
+msgid "Background: `#ffffff` (light) or `#1a1a1a` (dark sections)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:142
+msgid "Border: none (clean edges) or `1px solid #5e5e5e`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:144
+msgid "Shadow: `rgba(0, 0, 0, 0.3) 0px 0px 5px 0px` for elevated cards"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:145
+msgid "Hover: shadow intensification"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:146
+msgid "Padding: 16-24px internal"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:148
+msgid "Links"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:149
+msgid "**On Dark Background**: `#ffffff`, no underline, hover shifts to `#3860be`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:150
+msgid ""
+"**On Light Background**: `#000000` or `#1a1a1a`, underline `2px solid "
+"#76b900`, hover shifts to `#3860be`, underline removed"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:151
+msgid "**Green Links**: `#76b900`, hover shifts to `#3860be`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:152
+msgid "**Muted Links**: `#666666`, hover shifts to `#3860be`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:154
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:155
+msgid "Dark black background (`#000000`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:156
+msgid "Logo left-aligned, prominent NVIDIA wordmark"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:157
+msgid "Links: NVIDIA-EMEA 14px weight 700 uppercase, `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:158
+msgid "Hover: color shift, no underline change"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:159
+msgid "Mega-menu dropdowns for product categories"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:160
+msgid "Sticky on scroll with backdrop"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:162
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:163
+msgid "Product/GPU renders as hero images, often full-width"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:164
+msgid "Screenshot images with subtle shadow for depth"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:165
+msgid "Green gradient overlays on dark hero sections"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:166
+#, python-format
+msgid "Circular avatar containers with 50% radius"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:168
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:170
+msgid "**Product Cards**"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:171
+msgid "Clean white or dark card with minimal radius (2px)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:172
+msgid "Green accent border or underline on title"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:173
+msgid "Bold heading + lighter description pattern"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:174
+msgid "CTA with green border at bottom"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:176
+msgid "**Tech Spec Tables**"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:177
+msgid "Industrial grid layouts"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:178
+msgid "Alternating row backgrounds (subtle gray shift)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:179
+msgid "Bold labels, regular values"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:180
+msgid "Green highlights for key metrics"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:182
+msgid "**Cookie/Consent Banner**"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:183
+msgid "Fixed bottom positioning"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:184
+msgid "Rounded buttons (2px radius)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:185
+msgid "Gray border treatments"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:187
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:189
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:190
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:191
+msgid ""
+"Scale: 1px, 2px, 3px, 4px, 5px, 6px, 7px, 8px, 9px, 10px, 11px, 12px, "
+"13px, 15px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:192
+msgid "Primary padding values: 8px, 11px, 13px, 16px, 24px, 32px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:193
+msgid "Section spacing: 48-80px vertical padding"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:195
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:196
+msgid "Max content width: approximately 1200px (contained)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:197
+msgid "Full-width hero sections with contained text"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:198
+msgid "Feature sections: 2-3 column grids for product cards"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:199
+msgid "Single-column for article/blog content"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:200
+msgid "Sidebar layouts for documentation"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:202
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:203
+msgid ""
+"**Purposeful density**: NVIDIA uses tighter spacing than typical SaaS "
+"sites, reflecting the density of technical content. White space exists to"
+" separate concepts, not to create luxury emptiness."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:204
+msgid ""
+"**Section rhythm**: Dark sections alternate with white sections, using "
+"background color (not just spacing) to separate content blocks."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:205
+msgid ""
+"**Card density**: Product cards sit close together with 16-20px gaps, "
+"creating a catalog feel rather than a gallery feel."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:207
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:208
+msgid "Micro (1px): Inline spans, tiny elements"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:209
+msgid ""
+"Standard (2px): Buttons, cards, containers, inputs -- the default for "
+"nearly everything"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:210
+msgid "Circle (50%): Avatar images, circular tab indicators"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:212
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Page backgrounds, inline text"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Subtle (Level 1)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "`rgba(0,0,0,0.3) 0px 0px 5px 0px`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Standard cards, modals"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Border (Level 1b)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "`1px solid #5e5e5e`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Content dividers, section borders"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Green accent (Level 2)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "`2px solid #76b900`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Active elements, CTAs, selected items"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Focus (Accessibility)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "`2px solid #000000` outline"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Keyboard focus ring"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:222
+#, python-format
+msgid ""
+"**Shadow Philosophy**: NVIDIA's depth system is minimal and utilitarian. "
+"There is essentially one shadow value -- a 5px ambient blur at 30% "
+"opacity -- used sparingly for cards and modals. The primary depth signal "
+"is not shadow but _color contrast_: black backgrounds next to white "
+"sections, green borders on black surfaces. This creates hardware-like "
+"visual layering where depth comes from material difference, not simulated"
+" light."
+msgstr ""
+
+#: ../../source/templates_nvidia.md:224
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:225
+msgid "Green gradient washes behind hero content"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:226
+msgid "Dark-to-darker gradients (black to near-black) for section transitions"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:227
+msgid "No glassmorphism or blur effects -- clarity over atmosphere"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:229
+msgid "7. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:231
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Mobile Small"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "<375px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Compact single column, reduced padding"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "375-425px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Standard mobile layout"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Mobile Large"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "425-600px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Wider mobile, some 2-col hints"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Tablet Small"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "600-768px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "2-column grids begin"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "768-1024px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Full card grids, expanded nav"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "1024-1350px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Standard desktop layout"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid ">1350px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md
+msgid "Maximum content width, generous margins"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:242
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:243
+msgid "Buttons use 11px 13px padding for comfortable tap targets"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:244
+msgid "Navigation links at 14px uppercase with adequate spacing"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:245
+msgid ""
+"Green-bordered buttons provide high-contrast touch targets on dark "
+"backgrounds"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:246
+msgid "Mobile: hamburger menu collapse with full-screen overlay"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:248
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:249
+msgid "Hero: 36px heading scales down proportionally"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:250
+msgid "Navigation: full horizontal nav collapses to hamburger menu at ~1024px"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:251
+msgid "Product cards: 3-column to 2-column to single column stacked"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:252
+msgid "Footer: multi-column grid collapses to single stacked column"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:253
+msgid "Section spacing: 64-80px reduces to 32-48px on mobile"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:254
+msgid "Images: maintain aspect ratio, scale to container width"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:256
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:257
+msgid "GPU/product renders maintain high resolution at all sizes"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:258
+msgid "Hero images scale proportionally with viewport"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:259
+msgid "Card images use consistent aspect ratios"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:260
+msgid "Full-bleed dark sections maintain edge-to-edge treatment"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:262
+msgid "8. Responsive Behavior (Extended)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:264
+msgid "Typography Scaling"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:265
+msgid "Display 36px scales to ~24px on mobile"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:266
+msgid "Section headings 24px scale to ~20px on mobile"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:267
+msgid "Body text maintains 15-16px across all breakpoints"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:268
+msgid "Button text maintains 16px for consistent tap targets"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:270
+msgid "Dark/Light Section Strategy"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:271
+msgid ""
+"Dark sections (black bg, white text) alternate with light sections (white"
+" bg, black text)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:272
+msgid "The green accent remains consistent across both surface types"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:273
+msgid "On dark: links are white, underlines are green"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:274
+msgid "On light: links are black, underlines are green"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:275
+msgid "This alternation creates natural scroll rhythm and content grouping"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:277
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:279
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:280
+msgid "Primary accent: NVIDIA Green (`#76b900`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:281
+msgid "Background dark: True Black (`#000000`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:282
+msgid "Background light: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:283
+msgid "Heading text (dark bg): White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:284
+msgid "Heading text (light bg): Black (`#000000`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:285
+msgid "Body text (light bg): Black (`#000000`) or Near Black (`#1a1a1a`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:286
+msgid "Body text (dark bg): White (`#ffffff`) or Gray 300 (`#a7a7a7`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:287
+msgid "Link hover: Blue (`#3860be`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:288
+msgid "Border accent: `2px solid #76b900`"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:289
+msgid "Button hover: Teal (`#1eaedb`)"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:291
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:292
+msgid ""
+"\"Create a hero section on black background. Headline at 36px NVIDIA-EMEA"
+" weight 700, line-height 1.25, color #ffffff. Subtitle at 18px weight "
+"400, line-height 1.67, color #a7a7a7. CTA button with transparent "
+"background, 2px solid #76b900 border, 2px radius, 11px 13px padding, text"
+" #ffffff. Hover: background #1eaedb, text white.\""
+msgstr ""
+
+#: ../../source/templates_nvidia.md:293
+msgid ""
+"\"Design a product card: white background, 2px border-radius, box-shadow "
+"rgba(0,0,0,0.3) 0px 0px 5px. Title at 20px NVIDIA-EMEA weight 700, line-"
+"height 1.25, color #000000. Body at 15px weight 400, line-height 1.67, "
+"color #757575. Green underline accent on title: border-bottom 2px solid "
+"#76b900.\""
+msgstr ""
+
+#: ../../source/templates_nvidia.md:294
+msgid ""
+"\"Build a navigation bar: #000000 background, sticky top. NVIDIA logo "
+"left-aligned. Links at 14px NVIDIA-EMEA weight 700 uppercase, color "
+"#ffffff. Hover: color #3860be. Green-bordered CTA button right-aligned.\""
+msgstr ""
+
+#: ../../source/templates_nvidia.md:295
+msgid ""
+"\"Create a dark feature section: #000000 background. Section label at "
+"14px weight 700 uppercase, color #76b900. Heading at 24px weight 700, "
+"color #ffffff. Description at 16px weight 400, color #a7a7a7. Three "
+"product cards in a row with 20px gap.\""
+msgstr ""
+
+#: ../../source/templates_nvidia.md:296
+msgid ""
+"\"Design a footer: #000000 background. Multi-column layout with link "
+"groups. Links at 14px weight 400, color #a7a7a7. Hover: color #76b900. "
+"Bottom bar with legal text at 12px, color #757575.\""
+msgstr ""
+
+#: ../../source/templates_nvidia.md:298
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:299
+msgid ""
+"Always use `#76b900` as accent, never as a background fill -- it's a "
+"signal color for borders, underlines, and highlights"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:300
+msgid ""
+"Buttons are transparent with green borders by default -- filled "
+"backgrounds appear only on hover/active states"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:301
+msgid ""
+"Weight 700 is the dominant voice for all interactive and heading "
+"elements; 400 is only for body paragraphs"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:302
+msgid ""
+"Border radius is 2px for everything -- this sharp, minimal rounding is "
+"core to the industrial aesthetic"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:303
+msgid ""
+"Dark sections use white text; light sections use black text -- green "
+"accent works identically on both"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:304
+msgid ""
+"Link hover is always `#3860be` (blue) regardless of the link's default "
+"color"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:305
+msgid ""
+"Line-height 1.25 for headings, 1.50-1.67 for body text -- maintain this "
+"contrast for visual hierarchy"
+msgstr ""
+
+#: ../../source/templates_nvidia.md:306
+msgid ""
+"Navigation uses uppercase 14px bold -- this hardware-label typography is "
+"part of the brand voice"
+msgstr ""
+

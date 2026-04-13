@@ -1,0 +1,96 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/define-properties_README.md:1
+msgid ""
+"define-properties <sup>[![Version Badge][npm-version-svg]][package-"
+"url]</sup>"
+msgstr ""
+
+#: ../../source/define-properties_README.md:1
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/define-properties_README.md:3
+msgid ""
+"[![github actions][actions-image]][actions-url] [![coverage][codecov-"
+"image]][codecov-url] [![dependency status][deps-svg]][deps-url] [![dev "
+"dependency status][dev-deps-svg]][dev-deps-url] [![License][license-image"
+"]][license-url] [![Downloads][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/define-properties_README.md:3
+msgid "github actions"
+msgstr ""
+
+#: ../../source/define-properties_README.md:3
+msgid "coverage"
+msgstr ""
+
+#: ../../source/define-properties_README.md:3
+msgid "dependency status"
+msgstr ""
+
+#: ../../source/define-properties_README.md:3
+msgid "dev dependency status"
+msgstr ""
+
+#: ../../source/define-properties_README.md:3
+msgid "License"
+msgstr ""
+
+#: ../../source/define-properties_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/define-properties_README.md:10
+msgid "[![npm badge][npm-badge-png]][package-url]"
+msgstr ""
+
+#: ../../source/define-properties_README.md:10
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/define-properties_README.md:12
+msgid ""
+"Define multiple non-enumerable properties at once. Uses "
+"`Object.defineProperty` when available; falls back to standard assignment"
+" in older engines. Existing properties are not overridden. Accepts a map "
+"of property names to a predicate that, when true, force-overrides."
+msgstr ""
+
+#: ../../source/define-properties_README.md:15
+msgid "Example"
+msgstr ""
+
+#: ../../source/define-properties_README.md:40
+msgid "Then, with predicates:"
+msgstr ""
+
+#: ../../source/define-properties_README.md:67
+msgid "Tests"
+msgstr ""
+
+#: ../../source/define-properties_README.md:68
+msgid "Simply clone the repo, `npm install`, and run `npm test`"
+msgstr ""
+

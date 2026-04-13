@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/caseless_README.md:1
+msgid ""
+"Caseless -- wrap an object to set and get property with caseless "
+"semantics but also preserve caseing."
+msgstr ""
+
+#: ../../source/caseless_README.md:3
+msgid ""
+"This library is incredibly useful when working with HTTP headers. It "
+"allows you to get/set/check for headers in a caseless manner while also "
+"preserving the caseing of headers the first time they are set."
+msgstr ""
+
+#: ../../source/caseless_README.md:5
+msgid "Usage"
+msgstr ""
+
+#: ../../source/caseless_README.md:15
+msgid "has(key)"
+msgstr ""
+
+#: ../../source/caseless_README.md:17
+msgid ""
+"Has takes a name and if it finds a matching header will return that "
+"header name with the preserved caseing it was set with."
+msgstr ""
+
+#: ../../source/caseless_README.md:23
+msgid "set(key, value[, clobber=true])"
+msgstr ""
+
+#: ../../source/caseless_README.md:25
+msgid ""
+"Set is fairly straight forward except that if the header exists and "
+"clobber is disabled it will add `','+value` to the existing header."
+msgstr ""
+
+#: ../../source/caseless_README.md:33
+msgid "swap(key)"
+msgstr ""
+
+#: ../../source/caseless_README.md:35
+msgid "Swaps the casing of a header with the new one that is passed in."
+msgstr ""
+

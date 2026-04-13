@@ -1,0 +1,1241 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_opencode.ai.md:1
+msgid "Design System: OpenCode"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:7
+msgid "**Primary:** `JetBrains Mono` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'JetBrains Mono', system-ui, -apple-"
+"system, 'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:18
+msgid ""
+"OpenCode's website embodies a terminal-native, monospace-first aesthetic "
+"that reflects its identity as an open source AI coding agent. The entire "
+"visual system is built on a stark dark-on-light contrast using a near-"
+"black background (`#201d1d`) with warm off-white text (`#fdfcfc`). This "
+"isn't a generic dark theme -- it's a warm, slightly reddish-brown dark "
+"that feels like a sophisticated terminal emulator rather than a cold IDE."
+" The warm undertone in both the darks and lights (notice the subtle red "
+"channel in `#201d1d` -- rgb(32, 29, 29)) creates a cohesive, lived-in "
+"quality."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:20
+msgid ""
+"Berkeley Mono is the sole typeface, establishing an unapologetic "
+"monospace identity. Every element -- headings, body text, buttons, "
+"navigation -- shares this single font family, creating a unified "
+"\"everything is code\" philosophy. The heading at 38px bold with 1.50 "
+"line-height is generous and readable, while body text at 16px with weight"
+" 500 provides a slightly heavier-than-normal reading weight that enhances"
+" legibility on screen. The monospace grid naturally enforces alignment "
+"and rhythm across the layout."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:22
+msgid ""
+"The color system is deliberately minimal. The primary palette consists of"
+" just three functional tones: the warm near-black (`#201d1d`), a medium "
+"warm gray (`#9a9898`), and a bright off-white (`#fdfcfc`). Semantic "
+"colors borrow from the Apple HIG palette -- blue accent (`#007aff`), red "
+"danger (`#ff3b30`), green success (`#30d158`), orange warning (`#ff9f0a`)"
+" -- giving the interface familiar, trustworthy signal colors without "
+"adding brand complexity. Borders use a subtle warm transparency "
+"(`rgba(15, 0, 0, 0.12)`) that ties into the warm undertone of the entire "
+"system."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:25
+msgid ""
+"Berkeley Mono as the sole typeface -- monospace everywhere, no sans-serif"
+" or serif voices"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:26
+msgid ""
+"Warm near-black primary (`#201d1d`) with reddish-brown undertone, not "
+"pure black"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:27
+msgid "Off-white text (`#fdfcfc`) with warm tint, not pure white"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:28
+msgid "Minimal 4px border radius throughout -- sharp, utilitarian corners"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:29
+msgid "8px base spacing system scaling up to 96px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:30
+msgid "Apple HIG-inspired semantic colors (blue, red, green, orange)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:31
+msgid "Transparent warm borders using `rgba(15, 0, 0, 0.12)`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:32
+msgid ""
+"Email input with generous 20px padding and 6px radius -- the most "
+"generous component radius"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:33
+msgid ""
+"Single button variant: dark background, light text, tight vertical "
+"padding (4px 20px)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:34
+msgid ""
+"Underlined links as default link style, reinforcing the text-centric "
+"identity"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:36
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:38
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:39
+msgid ""
+"**OpenCode Dark** (`#201d1d`): Primary background, button fills, link "
+"text. A warm near-black with subtle reddish-brown warmth -- rgb(32, 29, "
+"29)."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:40
+msgid ""
+"**OpenCode Light** (`#fdfcfc`): Primary text on dark surfaces, button "
+"text. A barely-warm off-white that avoids clinical pure white."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:41
+msgid ""
+"**Mid Gray** (`#9a9898`): Secondary text, muted links. A neutral warm "
+"gray that bridges dark and light."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:43
+msgid "Secondary"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:44
+msgid ""
+"**Dark Surface** (`#302c2c`): Slightly lighter than primary dark, used "
+"for elevated surfaces and subtle differentiation."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:45
+msgid ""
+"**Border Gray** (`#646262`): Stronger borders, outline rings on "
+"interactive elements."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:46
+msgid ""
+"**Light Surface** (`#f1eeee`): Light mode surface, subtle background "
+"variation."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:48
+msgid "Accent"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:49
+msgid ""
+"**Accent Blue** (`#007aff`): Primary accent, links, interactive "
+"highlights. Apple system blue."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:50
+msgid "**Accent Blue Hover** (`#0056b3`): Darker blue for hover states."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:51
+msgid ""
+"**Accent Blue Active** (`#004085`): Deepest blue for pressed/active "
+"states."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:53
+msgid "Semantic"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:54
+msgid ""
+"**Danger Red** (`#ff3b30`): Error states, destructive actions. Apple "
+"system red."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:55
+msgid "**Danger Hover** (`#d70015`): Darker red for hover on danger elements."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:56
+msgid "**Danger Active** (`#a50011`): Deepest red for pressed danger states."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:57
+msgid ""
+"**Success Green** (`#30d158`): Success states, positive feedback. Apple "
+"system green."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:58
+msgid ""
+"**Warning Orange** (`#ff9f0a`): Warning states, caution signals. Apple "
+"system orange."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:59
+msgid ""
+"**Warning Hover** (`#cc7f08`): Darker orange for hover on warning "
+"elements."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:60
+msgid "**Warning Active** (`#995f06`): Deepest orange for pressed warning states."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:62
+msgid "Text Scale"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:63
+msgid ""
+"**Text Muted** (`#6e6e73`): Muted labels, disabled text, placeholder "
+"content."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:64
+msgid ""
+"**Text Secondary** (`#424245`): Secondary text on light backgrounds, "
+"captions."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:66
+msgid "Border"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:67
+msgid ""
+"**Border Warm** (`rgba(15, 0, 0, 0.12)`): Primary border color, warm "
+"transparent black with red tint."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:68
+msgid "**Border Tab** (`#9a9898`): Tab underline border, 2px solid bottom."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:69
+msgid "**Border Outline** (`#646262`): 1px solid outline border for containers."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:71
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:73
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:74
+msgid ""
+"**Universal**: `Berkeley Mono`, with fallbacks: `IBM Plex Mono, ui-"
+"monospace, SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, "
+"Courier New, monospace`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:76
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Heading 1"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "38px (2.38rem)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Hero headlines, page titles"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Heading 2"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Section titles, bold emphasis"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Standard body text, paragraphs"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Body Medium"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Links, button text, nav items"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Body Tight"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Compact labels, tab items"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "2.00 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Footnotes, metadata, small labels"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:87
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:88
+msgid ""
+"**One font, one voice**: Berkeley Mono is used exclusively. There is no "
+"typographic variation between display, body, and code -- everything "
+"speaks in the same monospace register. Hierarchy is achieved through size"
+" and weight alone."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:89
+msgid ""
+"**Weight as hierarchy**: 700 for headings, 500 for interactive/medium "
+"emphasis, 400 for body text. Three weight levels create the entire "
+"hierarchy."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:90
+msgid ""
+"**Generous line-height**: 1.50 as the standard line-height gives text "
+"room to breathe within the monospace grid. The relaxed 2.00 line-height "
+"on captions creates clear visual separation."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:91
+msgid ""
+"**Tight for interaction**: Interactive elements (tabs, compact labels) "
+"use 1.00 line-height for dense, clickable targets."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:93
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:95
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:97
+msgid "**Primary (Dark Fill)**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:98
+msgid "Background: `#201d1d` (OpenCode Dark)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:99
+msgid "Text: `#fdfcfc` (OpenCode Light)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:100
+msgid "Padding: 4px 20px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:101
+msgid "Radius: 4px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:102
+msgid "Font: 16px Berkeley Mono, weight 500, line-height 2.00 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:103
+msgid "Outline: `rgb(253, 252, 252) none 0px`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:104
+msgid "Use: Primary CTAs, main actions"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:106
+msgid "Inputs"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:108
+msgid "**Email Input**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:109
+msgid "Background: `#f8f7f7` (light neutral)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:110
+msgid "Text: `#201d1d`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:111
+msgid "Border: `1px solid rgba(15, 0, 0, 0.12)`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:112
+msgid "Padding: 20px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:113
+msgid "Radius: 6px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:114
+msgid "Font: Berkeley Mono, standard size"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:115
+msgid "Use: Form fields, email capture"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:117
+msgid "Links"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:119
+msgid "**Default Link**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:120
+msgid "Color: `#201d1d`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:121
+msgid "Decoration: underline 1px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:122
+msgid "Font-weight: 500"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:123
+msgid "Use: Primary text links in body content"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:125
+msgid "**Light Link**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:126
+msgid "Color: `#fdfcfc`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:127
+#: ../../source/templates_opencode.ai.md:132
+msgid "Decoration: none"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:128
+msgid "Use: Links on dark backgrounds, navigation"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:130
+msgid "**Muted Link**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:131
+msgid "Color: `#9a9898`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:133
+msgid "Use: Footer links, secondary navigation"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:135
+msgid "Tabs"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:137
+msgid "**Tab Navigation**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:138
+msgid "Border-bottom: `2px solid #9a9898` (active tab indicator)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:139
+msgid "Font: 16px, weight 500, line-height 1.00"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:140
+msgid "Use: Section switching, content filtering"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:142
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:143
+msgid "Clean horizontal layout with Berkeley Mono throughout"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:144
+msgid "Brand logotype left-aligned in monospace"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:145
+msgid "Links at 16px weight 500 with underline decoration"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:146
+msgid "Dark background matching page background"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:147
+msgid "No backdrop blur or transparency -- solid surfaces only"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:149
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:150
+msgid "Terminal/code screenshots as hero imagery"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:151
+msgid "Dark terminal aesthetic with monospace type"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:152
+msgid "Minimal borders, content speaks for itself"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:154
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:156
+msgid "**Terminal Hero**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:157
+msgid "Full-width dark terminal window as hero element"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:158
+msgid "ASCII art / stylized logo within terminal frame"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:159
+msgid "Monospace command examples with syntax highlighting"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:160
+msgid "Reinforces the CLI-first identity of the product"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:162
+msgid "**Feature List**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:163
+msgid "Bulleted feature items with Berkeley Mono text"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:164
+msgid "Weight 500 for feature names, 400 for descriptions"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:165
+msgid "Tight vertical spacing between items"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:166
+msgid "No cards or borders -- pure text layout"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:168
+msgid "**Email Capture**"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:169
+msgid "Light background input (`#f8f7f7`) contrasting dark page"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:170
+msgid "Generous 20px padding for comfortable typing"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:171
+msgid "6px radius -- the roundest element in the system"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:172
+msgid "Newsletter/waitlist pattern"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:174
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:176
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:177
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:178
+msgid "Fine scale: 1px, 2px, 4px (sub-8px for borders and micro-adjustments)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:179
+msgid "Standard scale: 8px, 12px, 16px, 20px, 24px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:180
+msgid "Extended scale: 32px, 40px, 48px, 64px, 80px, 96px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:181
+msgid "The system follows a clean 4/8px grid with consistent doubling"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:183
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:184
+msgid "Max content width: approximately 800-900px (narrow, reading-optimized)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:185
+msgid "Single-column layout as the primary pattern"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:186
+msgid "Centered content with generous horizontal margins"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:187
+msgid "Hero section: full-width dark terminal element"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:188
+msgid "Feature sections: single-column text blocks"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:189
+msgid "Footer: multi-column link grid"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:191
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:192
+msgid ""
+"**Monospace rhythm**: The fixed-width nature of Berkeley Mono creates a "
+"natural vertical grid. Line-heights of 1.50 and 2.00 maintain consistent "
+"rhythm."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:193
+msgid ""
+"**Narrow and focused**: Content is constrained to a narrow column, "
+"creating generous side margins that focus attention on the text."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:194
+msgid ""
+"**Sections through spacing**: No decorative dividers. Sections are "
+"separated by generous vertical spacing (48-96px) rather than borders or "
+"background changes."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:196
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:197
+msgid "Micro (4px): Default for all elements -- buttons, containers, badges"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:198
+msgid "Input (6px): Form inputs get slightly more roundness"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:199
+msgid ""
+"The entire system uses just two radius values, reinforcing the "
+"utilitarian aesthetic"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:201
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "No shadow, no border"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Default state for most elements"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Border Subtle (Level 1)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "`1px solid rgba(15, 0, 0, 0.12)`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Section dividers, input borders, horizontal rules"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Border Tab (Level 2)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "`2px solid #9a9898` bottom only"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Active tab indicator"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Border Outline (Level 3)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "`1px solid #646262`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Container outlines, elevated elements"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:210
+msgid ""
+"**Shadow Philosophy**: OpenCode's depth system is intentionally flat. "
+"There are no box-shadows in the extracted tokens -- zero shadow values "
+"were detected. Depth is communicated exclusively through border "
+"treatments and background color shifts. This flatness is consistent with "
+"the terminal aesthetic: terminals don't have shadows, and neither does "
+"OpenCode. The three border levels (transparent warm, tab indicator, solid"
+" outline) create sufficient visual hierarchy without any elevation "
+"illusion."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:212
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:213
+msgid ""
+"Background color shifts between `#201d1d` and `#302c2c` create subtle "
+"surface differentiation"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:214
+#, python-format
+msgid "Transparent borders at 12% opacity provide barely-visible structure"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:215
+msgid ""
+"The warm reddish tint in border colors (`rgba(15, 0, 0, 0.12)`) ties "
+"borders to the overall warm dark palette"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:216
+msgid "No gradients, no blurs, no ambient effects -- pure flat terminal aesthetic"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:218
+msgid "7. Interaction & Motion"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:220
+msgid "Hover States"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:221
+msgid ""
+"Links: color shift from default to accent blue (`#007aff`) or underline "
+"style change"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:222
+msgid "Buttons: subtle background lightening or border emphasis"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:223
+msgid ""
+"Accent blue provides a three-stage hover sequence: `#007aff` → `#0056b3` "
+"→ `#004085` (default → hover → active)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:224
+msgid "Danger red: `#ff3b30` → `#d70015` → `#a50011`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:225
+msgid "Warning orange: `#ff9f0a` → `#cc7f08` → `#995f06`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:227
+msgid "Focus States"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:228
+msgid "Border-based focus: increased border opacity or solid border color"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:229
+msgid ""
+"No shadow-based focus rings -- consistent with the flat, no-shadow "
+"aesthetic"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:230
+msgid "Keyboard focus likely uses outline or border color shift to accent blue"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:232
+msgid "Transitions"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:233
+msgid ""
+"Minimal transitions expected -- terminal-inspired interfaces favor "
+"instant state changes"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:234
+msgid "Color transitions: 100-150ms for subtle state feedback"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:235
+msgid "No scale, rotate, or complex transform animations"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:237
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:239
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "<640px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Single column, reduced padding, heading scales down"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "640-1024px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Content width expands, slight padding increase"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid ">1024px"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md
+msgid "Full content width (~800-900px centered), maximum whitespace"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:246
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:247
+msgid "Buttons with 4px 20px padding provide adequate horizontal touch area"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:248
+msgid "Input fields with 20px padding ensure comfortable mobile typing"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:249
+msgid "Tab items at 16px with tight line-height may need mobile adaptation"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:251
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:252
+msgid "Hero heading: 38px → 28px → 24px on smaller screens"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:253
+msgid "Navigation: horizontal links → hamburger/drawer on mobile"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:254
+msgid "Feature lists: maintain single-column, reduce horizontal padding"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:255
+msgid "Terminal hero: maintain full-width, reduce internal padding"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:256
+msgid "Footer columns: multi-column → stacked single column"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:257
+msgid "Section spacing: 96px → 64px → 48px on mobile"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:259
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:260
+msgid "Terminal screenshots maintain aspect ratio and border treatment"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:261
+msgid "Full-width elements scale proportionally"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:262
+msgid ""
+"Monospace type maintains readability at all sizes due to fixed-width "
+"nature"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:264
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:266
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:267
+msgid "Page background: `#201d1d` (warm near-black)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:268
+msgid "Primary text: `#fdfcfc` (warm off-white)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:269
+msgid "Secondary text: `#9a9898` (warm gray)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:270
+msgid "Muted text: `#6e6e73`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:271
+msgid "Accent: `#007aff` (blue)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:272
+msgid "Danger: `#ff3b30` (red)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:273
+msgid "Success: `#30d158` (green)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:274
+msgid "Warning: `#ff9f0a` (orange)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:275
+msgid "Button bg: `#201d1d`, button text: `#fdfcfc`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:276
+msgid "Border: `rgba(15, 0, 0, 0.12)` (warm transparent)"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:277
+msgid "Input bg: `#f8f7f7`, input border: `rgba(15, 0, 0, 0.12)`"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:279
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:280
+msgid ""
+"\"Create a hero section on `#201d1d` warm dark background. Headline at "
+"38px Berkeley Mono weight 700, line-height 1.50, color `#fdfcfc`. "
+"Subtitle at 16px weight 400, color `#9a9898`. Primary CTA button "
+"(`#201d1d` bg with `1px solid #646262` border, 4px radius, 4px 20px "
+"padding, `#fdfcfc` text at weight 500).\""
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:281
+msgid ""
+"\"Design a feature list: single-column on `#201d1d` background. Feature "
+"name at 16px Berkeley Mono weight 700, color `#fdfcfc`. Description at "
+"16px weight 400, color `#9a9898`. No cards, no borders -- pure text with "
+"16px vertical gap between items.\""
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:282
+msgid ""
+"\"Build an email capture form: `#f8f7f7` background input, `1px solid "
+"rgba(15, 0, 0, 0.12)` border, 6px radius, 20px padding. Adjacent dark "
+"button (`#201d1d` bg, `#fdfcfc` text, 4px radius, 4px 20px padding). "
+"Berkeley Mono throughout.\""
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:283
+msgid ""
+"\"Create navigation: sticky `#201d1d` background. 16px Berkeley Mono "
+"weight 500 for links, `#fdfcfc` text. Brand name left-aligned in "
+"monospace. Links with underline decoration. No blur, no transparency -- "
+"solid dark surface.\""
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:284
+msgid ""
+"\"Design a footer: `#201d1d` background, multi-column link grid. Links at"
+" 16px Berkeley Mono weight 400, color `#9a9898`. Section headers at "
+"weight 700. Border-top `1px solid rgba(15, 0, 0, 0.12)` separator.\""
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:286
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:287
+msgid ""
+"Berkeley Mono is the only font -- never introduce a second typeface. Size"
+" and weight create all hierarchy."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:288
+msgid ""
+"Keep surfaces flat: no shadows, no gradients, no blur effects. Use "
+"borders and background shifts only."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:289
+msgid ""
+"The warm undertone matters: use `#201d1d` not `#000000`, use `#fdfcfc` "
+"not `#ffffff`. The reddish warmth is subtle but essential."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:290
+msgid ""
+"Border radius is 4px everywhere except inputs (6px). Never use rounded "
+"pills or large radii."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:291
+msgid ""
+"Semantic colors follow Apple HIG: `#007aff` blue, `#ff3b30` red, "
+"`#30d158` green, `#ff9f0a` orange. Each has hover and active darkened "
+"variants."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:292
+msgid ""
+"Three-stage interaction: default → hover (darkened) → active (deeply "
+"darkened) for all semantic colors."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:293
+msgid ""
+"Borders use `rgba(15, 0, 0, 0.12)` -- a warm transparent dark, not "
+"neutral gray. This ties borders to the warm palette."
+msgstr ""
+
+#: ../../source/templates_opencode.ai.md:294
+msgid ""
+"Spacing follows an 8px grid: 8, 16, 24, 32, 40, 48, 64, 80, 96px. Use 4px"
+" for fine adjustments only."
+msgstr ""
+

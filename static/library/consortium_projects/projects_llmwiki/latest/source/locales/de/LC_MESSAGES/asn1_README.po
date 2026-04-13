@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/asn1_README.md:1
+msgid ""
+"node-asn1 is a library for encoding and decoding ASN.1 datatypes in pure "
+"JS. Currently BER encoding is supported; at some point I'll likely have "
+"to do DER."
+msgstr ""
+
+#: ../../source/asn1_README.md:4
+msgid "Usage"
+msgstr ""
+
+#: ../../source/asn1_README.md:6
+msgid ""
+"Mostly, if you're *actually* needing to read and write ASN.1, you "
+"probably don't need this readme to explain what and why.  If you have no "
+"idea what ASN.1 is, see this: ftp://ftp.rsa.com/pub/pkcs/ascii/layman.asc"
+msgstr ""
+
+#: ../../source/asn1_README.md:10
+msgid ""
+"The source is pretty much self-explanatory, and has read/write methods "
+"for the common types out there."
+msgstr ""
+
+#: ../../source/asn1_README.md:13
+msgid "Decoding"
+msgstr ""
+
+#: ../../source/asn1_README.md:15
+msgid "The following reads an ASN.1 sequence with a boolean."
+msgstr ""
+
+#: ../../source/asn1_README.md:26
+msgid "Encoding"
+msgstr ""
+
+#: ../../source/asn1_README.md:28
+msgid "The following generates the same payload as above."
+msgstr ""
+
+#: ../../source/asn1_README.md:40
+msgid "Installation"
+msgstr ""
+
+#: ../../source/asn1_README.md:44
+msgid "License"
+msgstr ""
+
+#: ../../source/asn1_README.md:46
+msgid "MIT."
+msgstr ""
+
+#: ../../source/asn1_README.md:48
+msgid "Bugs"
+msgstr ""
+
+#: ../../source/asn1_README.md:50
+msgid "See <https://github.com/joyent/node-asn1/issues>."
+msgstr ""
+

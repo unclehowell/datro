@@ -1,0 +1,547 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_llms.md:1 ../../source/references_llms.md:3
+msgid "Unsloth Documentation"
+msgstr ""
+
+#: ../../source/references_llms.md:5
+msgid ""
+"[Unsloth Docs](/get-started/unsloth-docs.md): Train your own model with "
+"Unsloth, an open-source framework for LLM fine-tuning and reinforcement "
+"learning."
+msgstr ""
+
+#: ../../source/references_llms.md:6
+msgid "[Beginner? Start here!](/get-started/beginner-start-here.md)"
+msgstr ""
+
+#: ../../source/references_llms.md:7
+msgid ""
+"[Unsloth Requirements](/get-started/beginner-start-here/unsloth-"
+"requirements.md): Here are Unsloth's requirements including system and "
+"GPU VRAM requirements."
+msgstr ""
+
+#: ../../source/references_llms.md:8
+msgid ""
+"[FAQ + Is Fine-tuning Right For Me?](/get-started/beginner-start-here/faq"
+"-+-is-fine-tuning-right-for-me.md): If you're stuck on if fine-tuning is "
+"right for you, see here! Learn about fine-tuning misconceptions, how it "
+"compared to RAG and more:"
+msgstr ""
+
+#: ../../source/references_llms.md:9
+msgid ""
+"[Unsloth Notebooks](/get-started/unsloth-notebooks.md): Explore our "
+"catalog of Unsloth notebooks:"
+msgstr ""
+
+#: ../../source/references_llms.md:10
+msgid "[All Our Models](/get-started/all-our-models.md)"
+msgstr ""
+
+#: ../../source/references_llms.md:11
+msgid ""
+"[Install & Update](/get-started/install-and-update.md): Learn to install "
+"Unsloth locally or online."
+msgstr ""
+
+#: ../../source/references_llms.md:12
+msgid ""
+"[Updating](/get-started/install-and-update/updating.md): To update or use"
+" an old version of Unsloth, follow the steps below:"
+msgstr ""
+
+#: ../../source/references_llms.md:13
+msgid ""
+"[Pip Install](/get-started/install-and-update/pip-install.md): To install"
+" Unsloth locally via Pip, follow the steps below:"
+msgstr ""
+
+#: ../../source/references_llms.md:14
+msgid ""
+"[Docker](/get-started/install-and-update/docker.md): Install Unsloth "
+"using our official Docker container"
+msgstr ""
+
+#: ../../source/references_llms.md:15
+msgid ""
+"[Windows Installation](/get-started/install-and-update/windows-"
+"installation.md): See how to install Unsloth on Windows with or without "
+"WSL."
+msgstr ""
+
+#: ../../source/references_llms.md:16
+msgid ""
+"[AMD](/get-started/install-and-update/amd.md): Fine-tune with Unsloth on "
+"AMD GPUs."
+msgstr ""
+
+#: ../../source/references_llms.md:17
+msgid ""
+"[Conda Install](/get-started/install-and-update/conda-install.md): To "
+"install Unsloth locally on Conda, follow the steps below:"
+msgstr ""
+
+#: ../../source/references_llms.md:18
+msgid ""
+"[Google Colab](/get-started/install-and-update/google-colab.md): To "
+"install and run Unsloth on Google Colab, follow the steps below:"
+msgstr ""
+
+#: ../../source/references_llms.md:19
+msgid ""
+"[Fine-tuning LLMs Guide](/get-started/fine-tuning-llms-guide.md): Learn "
+"all the basics and best practices of fine-tuning. Beginner-friendly."
+msgstr ""
+
+#: ../../source/references_llms.md:20
+msgid ""
+"[What Model Should I Use?](/get-started/fine-tuning-llms-guide/what-"
+"model-should-i-use.md)"
+msgstr ""
+
+#: ../../source/references_llms.md:21
+msgid ""
+"[Datasets Guide](/get-started/fine-tuning-llms-guide/datasets-guide.md): "
+"Learn how to create & prepare a dataset for fine-tuning."
+msgstr ""
+
+#: ../../source/references_llms.md:22
+msgid ""
+"[LoRA Hyperparameters Guide](/get-started/fine-tuning-llms-guide/lora-"
+"hyperparameters-guide.md): Optimal lora rank. alpha, number of epochs, "
+"batch size & gradient accumulation, QLoRA vs LoRA, target modules and "
+"more!"
+msgstr ""
+
+#: ../../source/references_llms.md:23
+msgid ""
+"[Tutorial: How to Finetune Llama-3 and Use In Ollama](/get-started/fine-"
+"tuning-llms-guide/tutorial-how-to-finetune-llama-3-and-use-in-ollama.md):"
+" Beginner's Guide for creating a customized personal assistant (like "
+"ChatGPT) to run locally on Ollama"
+msgstr ""
+
+#: ../../source/references_llms.md:24
+msgid ""
+"[Reinforcement Learning (RL) Guide](/get-started/reinforcement-learning-"
+"rl-guide.md): Learn all about Reinforcement Learning (RL) and how to "
+"train your own DeepSeek-R1 reasoning model with Unsloth using GRPO. A "
+"complete guide from beginner to advanced."
+msgstr ""
+
+#: ../../source/references_llms.md:25
+msgid ""
+"[Tutorial: Train your own Reasoning model with GRPO](/get-started"
+"/reinforcement-learning-rl-guide/tutorial-train-your-own-reasoning-model-"
+"with-grpo.md): Beginner's Guide to transforming a model like Llama 3.1 "
+"(8B) into a reasoning model by using Unsloth and GRPO."
+msgstr ""
+
+#: ../../source/references_llms.md:26
+msgid ""
+"[Advanced RL Documentation](/get-started/reinforcement-learning-rl-guide"
+"/advanced-rl-documentation.md): Advanced documentation settings when "
+"using Unsloth with GRPO."
+msgstr ""
+
+#: ../../source/references_llms.md:27
+msgid ""
+"[Memory Efficient RL](/get-started/reinforcement-learning-rl-guide"
+"/memory-efficient-rl.md)"
+msgstr ""
+
+#: ../../source/references_llms.md:28
+msgid ""
+"[RL Reward Hacking](/get-started/reinforcement-learning-rl-guide/rl-"
+"reward-hacking.md): Learn what is Reward Hacking in Reinforcement "
+"Learning and how to counter it."
+msgstr ""
+
+#: ../../source/references_llms.md:29
+msgid ""
+"[GSPO Reinforcement Learning](/get-started/reinforcement-learning-rl-"
+"guide/gspo-reinforcement-learning.md): Train with GSPO (Group Sequence "
+"Policy Optimization) RL in Unsloth."
+msgstr ""
+
+#: ../../source/references_llms.md:30
+msgid ""
+"[Reinforcement Learning - DPO, ORPO & KTO](/get-started/reinforcement-"
+"learning-rl-guide/reinforcement-learning-dpo-orpo-and-kto.md): To use the"
+" reward modelling functions for DPO, GRPO, ORPO or KTO with Unsloth, "
+"follow the steps below:"
+msgstr ""
+
+#: ../../source/references_llms.md:31
+msgid ""
+"[DeepSeek-OCR: How to Run & Fine-tune](/new/deepseek-ocr-how-to-run-and-"
+"fine-tune.md): Guide on how to run and fine-tune DeepSeek-OCR locally."
+msgstr ""
+
+#: ../../source/references_llms.md:32
+msgid ""
+"[How to Fine-tune LLMs with Unsloth & Docker](/new/how-to-fine-tune-llms-"
+"with-unsloth-and-docker.md): Learn how to fine-tune LLMs or do "
+"Reinforcement Learning (RL) with Unsloth's Docker image."
+msgstr ""
+
+#: ../../source/references_llms.md:33
+msgid ""
+"[Vision Reinforcement Learning (VLM RL)](/new/vision-reinforcement-"
+"learning-vlm-rl.md): Train Vision/multimodal models via GRPO and RL with "
+"Unsloth!"
+msgstr ""
+
+#: ../../source/references_llms.md:34
+msgid "[gpt-oss Reinforcement Learning](/new/gpt-oss-reinforcement-learning.md)"
+msgstr ""
+
+#: ../../source/references_llms.md:35
+msgid ""
+"[Tutorial: How to Train gpt-oss with RL](/new/gpt-oss-reinforcement-"
+"learning/tutorial-how-to-train-gpt-oss-with-rl.md): Learn to train OpenAI"
+" gpt-oss with GRPO to autonomously beat 2048 locally or on Colab."
+msgstr ""
+
+#: ../../source/references_llms.md:36
+msgid ""
+"[Unsloth Dynamic GGUFs on Aider Polyglot](/new/unsloth-dynamic-ggufs-on-"
+"aider-polyglot.md): Performance of Unsloth Dynamic GGUFs on Aider "
+"Polyglot Benchmarks"
+msgstr ""
+
+#: ../../source/references_llms.md:37
+msgid ""
+"[Qwen3-VL: How to Run & Fine-tune](/models/qwen3-vl-how-to-run-and-fine-"
+"tune.md): Learn to fine-tune and run Qwen3-VL locally with Unsloth."
+msgstr ""
+
+#: ../../source/references_llms.md:38
+msgid ""
+"[gpt-oss: How to Run & Fine-tune](/models/gpt-oss-how-to-run-and-fine-"
+"tune.md): Run & fine-tune OpenAI's new open-source models!"
+msgstr ""
+
+#: ../../source/references_llms.md:39
+msgid ""
+"[Tutorial: How to Fine-tune gpt-oss](/models/gpt-oss-how-to-run-and-fine-"
+"tune/tutorial-how-to-fine-tune-gpt-oss.md): Learn step-by-step how to "
+"train OpenAI gpt-oss locally with Unsloth."
+msgstr ""
+
+#: ../../source/references_llms.md:40
+msgid ""
+"[Long Context gpt-oss Training](/models/gpt-oss-how-to-run-and-fine-tune"
+"/long-context-gpt-oss-training.md)"
+msgstr ""
+
+#: ../../source/references_llms.md:41
+msgid ""
+"[GLM-4.6: How to Run Locally](/models/glm-4.6-how-to-run-locally.md): A "
+"guide on how to run Z.ai's new GLM-4.6 model on your own local device!"
+msgstr ""
+
+#: ../../source/references_llms.md:42
+msgid ""
+"[IBM Granite 4.0](/models/ibm-granite-4.0.md): How to run IBM Granite-4.0"
+" with Unsloth GGUFs on llama.cpp, Ollama and how to fine-tune!"
+msgstr ""
+
+#: ../../source/references_llms.md:43
+msgid ""
+"[DeepSeek-V3.1: How to Run Locally](/models/deepseek-v3.1-how-to-run-"
+"locally.md): A guide on how to run DeepSeek-V3.1 and Terminus on your own"
+" local device!"
+msgstr ""
+
+#: ../../source/references_llms.md:44
+msgid ""
+"[Qwen3-Coder: How to Run Locally](/models/qwen3-coder-how-to-run-"
+"locally.md): Run Qwen3-Coder-30B-A3B-Instruct and 480B-A35B locally with "
+"Unsloth Dynamic quants."
+msgstr ""
+
+#: ../../source/references_llms.md:45
+msgid ""
+"[Gemma 3: How to Run & Fine-tune](/models/gemma-3-how-to-run-and-fine-"
+"tune.md): How to run Gemma 3 effectively with our GGUFs on llama.cpp, "
+"Ollama, Open WebUI and how to fine-tune with Unsloth!"
+msgstr ""
+
+#: ../../source/references_llms.md:46
+msgid ""
+"[Gemma 3n: How to Run & Fine-tune](/models/gemma-3-how-to-run-and-fine-"
+"tune/gemma-3n-how-to-run-and-fine-tune.md): Run Google's new Gemma 3n "
+"locally with Dynamic GGUFs on llama.cpp, Ollama, Open WebUI and fine-tune"
+" with Unsloth!"
+msgstr ""
+
+#: ../../source/references_llms.md:47
+msgid ""
+"[Qwen3: How to Run & Fine-tune](/models/qwen3-how-to-run-and-fine-"
+"tune.md): Learn to run & fine-tune Qwen3 locally with Unsloth + our "
+"Dynamic 2.0 quants"
+msgstr ""
+
+#: ../../source/references_llms.md:48
+msgid ""
+"[Qwen3-2507](/models/qwen3-how-to-run-and-fine-tune/qwen3-2507.md): Run "
+"Qwen3-30B-A3B-2507 and 235B-A22B Thinking and Instruct versions locally "
+"on your device!"
+msgstr ""
+
+#: ../../source/references_llms.md:49
+#, python-format
+msgid ""
+"[Tutorials: How To Fine-tune & Run LLMs](/models/tutorials-how-to-fine-"
+"tune-and-run-llms.md): Learn how to run and fine-tune models for optimal "
+"performance 100% locally with Unsloth."
+msgstr ""
+
+#: ../../source/references_llms.md:50
+msgid ""
+"[DeepSeek-R1-0528: How to Run Locally](/models/tutorials-how-to-fine-"
+"tune-and-run-llms/deepseek-r1-0528-how-to-run-locally.md): A guide on how"
+" to run DeepSeek-R1-0528 including Qwen3 on your own local device!"
+msgstr ""
+
+#: ../../source/references_llms.md:51
+msgid ""
+"[Magistral: How to Run & Fine-tune](/models/tutorials-how-to-fine-tune-"
+"and-run-llms/magistral-how-to-run-and-fine-tune.md): Meet Magistral - "
+"Mistral's new reasoning models."
+msgstr ""
+
+#: ../../source/references_llms.md:52
+msgid ""
+"[Llama 4: How to Run & Fine-tune](/models/tutorials-how-to-fine-tune-and-"
+"run-llms/llama-4-how-to-run-and-fine-tune.md): How to run Llama 4 locally"
+" using our dynamic GGUFs which recovers accuracy compared to standard "
+"quantization."
+msgstr ""
+
+#: ../../source/references_llms.md:53
+msgid ""
+"[Kimi K2: How to Run Locally](/models/tutorials-how-to-fine-tune-and-run-"
+"llms/kimi-k2-how-to-run-locally.md): Guide on running Kimi K2 and "
+"Kimi-K2-Instruct-0905 on your own local device!"
+msgstr ""
+
+#: ../../source/references_llms.md:54
+msgid ""
+"[Grok 2](/models/tutorials-how-to-fine-tune-and-run-llms/grok-2.md): Run "
+"xAI's Grok 2 model locally!"
+msgstr ""
+
+#: ../../source/references_llms.md:55
+msgid ""
+"[Devstral: How to Run & Fine-tune](/models/tutorials-how-to-fine-tune-"
+"and-run-llms/devstral-how-to-run-and-fine-tune.md): Run and fine-tune "
+"Mistral Devstral 1.1, including Small-2507 and 2505."
+msgstr ""
+
+#: ../../source/references_llms.md:56
+msgid ""
+"[DeepSeek-V3-0324: How to Run Locally](/models/tutorials-how-to-fine-"
+"tune-and-run-llms/deepseek-v3-0324-how-to-run-locally.md): How to run "
+"DeepSeek-V3-0324 locally using our dynamic quants which recovers accuracy"
+msgstr ""
+
+#: ../../source/references_llms.md:57
+msgid ""
+"[DeepSeek-R1: How to Run Locally](/models/tutorials-how-to-fine-tune-and-"
+"run-llms/deepseek-r1-how-to-run-locally.md): A guide on how you can run "
+"our 1.58-bit Dynamic Quants for DeepSeek-R1 using llama.cpp."
+msgstr ""
+
+#: ../../source/references_llms.md:58
+msgid ""
+"[DeepSeek-R1 Dynamic 1.58-bit](/models/tutorials-how-to-fine-tune-and-"
+"run-llms/deepseek-r1-how-to-run-locally/deepseek-r1-dynamic-1.58-bit.md):"
+" See performance comparison tables for Unsloth's Dynamic GGUF Quants vs "
+"Standard IMatrix Quants."
+msgstr ""
+
+#: ../../source/references_llms.md:59
+msgid ""
+"[QwQ-32B: How to Run effectively](/models/tutorials-how-to-fine-tune-and-"
+"run-llms/qwq-32b-how-to-run-effectively.md): How to run QwQ-32B "
+"effectively with our bug fixes and without endless generations + GGUFs."
+msgstr ""
+
+#: ../../source/references_llms.md:60
+msgid ""
+"[Phi-4 Reasoning: How to Run & Fine-tune](/models/tutorials-how-to-fine-"
+"tune-and-run-llms/phi-4-reasoning-how-to-run-and-fine-tune.md): Learn to "
+"run & fine-tune Phi-4 reasoning models locally with Unsloth + our Dynamic"
+" 2.0 quants"
+msgstr ""
+
+#: ../../source/references_llms.md:61
+msgid ""
+"[Running & Saving Models](/basics/running-and-saving-models.md): Learn "
+"how to save your finetuned model so you can run it in your favorite "
+"inference engine."
+msgstr ""
+
+#: ../../source/references_llms.md:62
+msgid ""
+"[Saving to GGUF](/basics/running-and-saving-models/saving-to-gguf.md): "
+"Saving models to 16bit for GGUF so you can use it for Ollama, Jan AI, "
+"Open WebUI and more!"
+msgstr ""
+
+#: ../../source/references_llms.md:63
+msgid "[Saving to Ollama](/basics/running-and-saving-models/saving-to-ollama.md)"
+msgstr ""
+
+#: ../../source/references_llms.md:64
+msgid ""
+"[Saving to vLLM for deployment](/basics/running-and-saving-models/saving-"
+"to-vllm-for-deployment.md): Saving models to 16bit for vLLM deployment "
+"and serving"
+msgstr ""
+
+#: ../../source/references_llms.md:65
+msgid ""
+"[Saving to SGLang for deployment](/basics/running-and-saving-models"
+"/saving-to-sglang-for-deployment.md): Saving models to 16bit for SGLang "
+"for deployment and serving"
+msgstr ""
+
+#: ../../source/references_llms.md:66
+msgid ""
+"[Unsloth Inference](/basics/running-and-saving-models/unsloth-"
+"inference.md): Learn how to run your finetuned model with Unsloth's "
+"faster inference."
+msgstr ""
+
+#: ../../source/references_llms.md:67
+msgid ""
+"[Troubleshooting Inference](/basics/running-and-saving-models"
+"/troubleshooting-inference.md): If you're experiencing issues when "
+"running or saving your model."
+msgstr ""
+
+#: ../../source/references_llms.md:68
+msgid ""
+"[vLLM Engine Arguments](/basics/running-and-saving-models/vllm-engine-"
+"arguments.md)"
+msgstr ""
+
+#: ../../source/references_llms.md:69
+msgid ""
+"[LoRA Hot Swapping Guide](/basics/running-and-saving-models/lora-hot-"
+"swapping-guide.md)"
+msgstr ""
+
+#: ../../source/references_llms.md:70
+msgid ""
+"[Text-to-Speech (TTS) Fine-tuning](/basics/text-to-speech-tts-fine-"
+"tuning.md): Learn how to fine-tune TTS & STT voice models with Unsloth."
+msgstr ""
+
+#: ../../source/references_llms.md:71
+msgid ""
+"[Unsloth Dynamic 2.0 GGUFs](/basics/unsloth-dynamic-2.0-ggufs.md): A big "
+"new upgrade to our Dynamic Quants!"
+msgstr ""
+
+#: ../../source/references_llms.md:72
+msgid ""
+"[Vision Fine-tuning](/basics/vision-fine-tuning.md): Learn how to fine-"
+"tune vision/multimodal LLMs with Unsloth"
+msgstr ""
+
+#: ../../source/references_llms.md:73
+msgid ""
+"[Fine-tuning LLMs with NVIDIA DGX Spark and Unsloth](/basics/fine-tuning-"
+"llms-with-nvidia-dgx-spark-and-unsloth.md): Tutorial on how to fine-tune "
+"and do reinforcement learning (RL) with OpenAI gpt-oss on NVIDIA DGX "
+"Spark."
+msgstr ""
+
+#: ../../source/references_llms.md:74
+msgid ""
+"[Fine-tuning LLMs with Blackwell, RTX 50 series & Unsloth](/basics/fine-"
+"tuning-llms-with-blackwell-rtx-50-series-and-unsloth.md): Learn how to "
+"fine-tune LLMs on NVIDIA's Blackwell RTX 50 series and B200 GPUs with our"
+" step-by-step guide."
+msgstr ""
+
+#: ../../source/references_llms.md:75
+msgid ""
+"[Multi-GPU Training with Unsloth](/basics/multi-gpu-training-with-"
+"unsloth.md): Learn how to fine-tune LLMs on multiple GPUs and parallelism"
+" with Unsloth."
+msgstr ""
+
+#: ../../source/references_llms.md:76
+msgid ""
+"[Finetuning from Last Checkpoint](/basics/finetuning-from-last-"
+"checkpoint.md): Checkpointing allows you to save your finetuning progress"
+" so you can pause it and then continue."
+msgstr ""
+
+#: ../../source/references_llms.md:77
+msgid ""
+"[Troubleshooting & FAQs](/basics/troubleshooting-and-faqs.md): Tips to "
+"solve issues, and frequently asked questions."
+msgstr ""
+
+#: ../../source/references_llms.md:78
+msgid ""
+"[Chat Templates](/basics/chat-templates.md): Learn the fundamentals and "
+"customization options of chat templates, including Conversational, "
+"ChatML, ShareGPT, Alpaca formats, and more!"
+msgstr ""
+
+#: ../../source/references_llms.md:79
+msgid ""
+"[Quantization-Aware Training (QAT)](/basics/quantization-aware-training-"
+"qat.md): Quantize models to 4-bit with Unsloth and PyTorch to recover "
+"accuracy."
+msgstr ""
+
+#: ../../source/references_llms.md:80
+msgid ""
+"[Unsloth Environment Flags](/basics/unsloth-environment-flags.md): "
+"Advanced flags which might be useful if you see breaking finetunes, or "
+"you want to turn stuff off."
+msgstr ""
+
+#: ../../source/references_llms.md:81
+msgid ""
+"[Continued Pretraining](/basics/continued-pretraining.md): AKA as "
+"Continued Finetuning. Unsloth allows you to continually pretrain so a "
+"model can learn a new language."
+msgstr ""
+
+#: ../../source/references_llms.md:82
+msgid ""
+"[Unsloth Benchmarks](/basics/unsloth-benchmarks.md): Unsloth recorded "
+"benchmarks on NVIDIA GPUs."
+msgstr ""
+

@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/fresh_README.md:1
+msgid "fresh"
+msgstr ""
+
+#: ../../source/fresh_README.md:3
+msgid ""
+"[![NPM Version][npm-image]][npm-url] [![NPM Downloads][downloads-image"
+"]][downloads-url] [![Node.js Version][node-version-image]][node-version-"
+"url] [![Build Status][travis-image]][travis-url] [![Test Coverage"
+"][coveralls-image]][coveralls-url]"
+msgstr ""
+
+#: ../../source/fresh_README.md:3
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/fresh_README.md:3
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/fresh_README.md:3
+msgid "Node.js Version"
+msgstr ""
+
+#: ../../source/fresh_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/fresh_README.md:3
+msgid "Test Coverage"
+msgstr ""
+
+#: ../../source/fresh_README.md:9
+msgid "HTTP response freshness testing"
+msgstr ""
+
+#: ../../source/fresh_README.md:11
+msgid "Installation"
+msgstr ""
+
+#: ../../source/fresh_README.md:13
+msgid ""
+"This is a [Node.js](https://nodejs.org/en/) module available through the "
+"[npm registry](https://www.npmjs.com/). Installation is done using the "
+"[`npm install` command](https://docs.npmjs.com/getting-started"
+"/installing-npm-packages-locally):"
+msgstr ""
+
+#: ../../source/fresh_README.md:21
+msgid "API"
+msgstr ""
+
+#: ../../source/fresh_README.md:29
+msgid "fresh(reqHeaders, resHeaders)"
+msgstr ""
+
+#: ../../source/fresh_README.md:31
+msgid "Check freshness of the response using request and response headers."
+msgstr ""
+
+#: ../../source/fresh_README.md:33
+msgid ""
+"When the response is still \"fresh\" in the client's cache `true` is "
+"returned, otherwise `false` is returned to indicate that the client cache"
+" is now stale and the full response should be sent."
+msgstr ""
+
+#: ../../source/fresh_README.md:37
+msgid ""
+"When a client sends the `Cache-Control: no-cache` request header to "
+"indicate an end-to-end reload request, this module will return `false` to"
+" make handling these requests transparent."
+msgstr ""
+
+#: ../../source/fresh_README.md:41
+msgid "Known Issues"
+msgstr ""
+
+#: ../../source/fresh_README.md:43
+msgid ""
+"This module is designed to only follow the HTTP specifications, not to "
+"work-around all kinda of client bugs (especially since this module "
+"typically does not recieve enough information to understand what the "
+"client actually is)."
+msgstr ""
+
+#: ../../source/fresh_README.md:48
+msgid ""
+"There is a known issue that in certain versions of Safari, Safari will "
+"incorrectly make a request that allows this module to validate freshness "
+"of the resource even when Safari does not have a representation of the "
+"resource in the cache. The module "
+"[jumanji](https://www.npmjs.com/package/jumanji) can be used in an "
+"Express application to work-around this issue and also provides links to "
+"further reading on this Safari bug."
+msgstr ""
+
+#: ../../source/fresh_README.md:56
+msgid "Example"
+msgstr ""
+
+#: ../../source/fresh_README.md:58
+msgid "API usage"
+msgstr ""
+
+#: ../../source/fresh_README.md:74
+msgid "Using with Node.js http server"
+msgstr ""
+
+#: ../../source/fresh_README.md:106
+msgid "License"
+msgstr ""
+
+#: ../../source/fresh_README.md:108
+msgid "[MIT](LICENSE)"
+msgstr ""
+

@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_pr-body-feature.md:1
+msgid "Summary"
+msgstr ""
+
+#: ../../source/templates_pr-body-feature.md:7
+msgid "Motivation"
+msgstr ""
+
+#: ../../source/templates_pr-body-feature.md:11
+msgid "Closes #"
+msgstr ""
+
+#: ../../source/templates_pr-body-feature.md:13
+msgid "Changes"
+msgstr ""
+
+#: ../../source/templates_pr-body-feature.md:19
+msgid "Test Plan"
+msgstr ""
+
+#: ../../source/templates_pr-body-feature.md:23
+msgid "[ ] Unit tests pass (`pytest`)"
+msgstr ""
+
+#: ../../source/templates_pr-body-feature.md:24
+msgid "[ ] Manual testing of new functionality"
+msgstr ""
+
+#: ../../source/templates_pr-body-feature.md:25
+msgid "[ ] No regressions in existing behavior"
+msgstr ""
+
+#: ../../source/templates_pr-body-feature.md:27
+msgid "Screenshots / Examples"
+msgstr ""
+
+#: ../../source/templates_pr-body-feature.md:31
+msgid "Notes for Reviewers"
+msgstr ""
+

@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/replace-ext_README.md:7
+msgid "replace-ext"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:9
+msgid ""
+"[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-"
+"url] [![Azure Pipelines Build Status][azure-pipelines-image]][azure-"
+"pipelines-url] [![Travis Build Status][travis-image]][travis-url] "
+"[![AppVeyor Build Status][appveyor-image]][appveyor-url] [![Coveralls "
+"Status][coveralls-image]][coveralls-url] [![Gitter chat][gitter-image"
+"]][gitter-url]"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:9
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:9
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:9
+msgid "Azure Pipelines Build Status"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:9
+msgid "Travis Build Status"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:9
+msgid "AppVeyor Build Status"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:9
+msgid "Coveralls Status"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:9
+msgid "Gitter chat"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:11
+msgid "Replaces a file extension with another one."
+msgstr ""
+
+#: ../../source/replace-ext_README.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:24
+msgid "API"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:26
+msgid "`replaceExt(path, extension)`"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:28
+msgid ""
+"Replaces the extension from `path` with `extension` and returns the "
+"updated path string."
+msgstr ""
+
+#: ../../source/replace-ext_README.md:30
+msgid "Does not replace the extension if `path` is not a string or is empty."
+msgstr ""
+
+#: ../../source/replace-ext_README.md:33
+msgid "replace-ext for enterprise"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:35
+msgid "Available as part of the Tidelift Subscription"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:37
+msgid ""
+"The maintainers of replace-ext and thousands of other packages are "
+"working with Tidelift to deliver commercial support and maintenance for "
+"the open source dependencies you use to build your applications. Save "
+"time, reduce risk, and improve code health, while paying the maintainers "
+"of the exact dependencies you use. [Learn "
+"more.](https://tidelift.com/subscription/pkg/npm-replace-ext?utm_source"
+"=npm-replace-"
+"ext&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:40
+msgid "License"
+msgstr ""
+
+#: ../../source/replace-ext_README.md:42
+msgid "MIT"
+msgstr ""
+

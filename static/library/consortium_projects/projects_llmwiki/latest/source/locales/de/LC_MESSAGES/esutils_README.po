@@ -1,0 +1,348 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/esutils_README.md:1
+msgid ""
+"esutils [![Build Status](https://secure.travis-"
+"ci.org/estools/esutils.svg)](http://travis-ci.org/estools/esutils)"
+msgstr ""
+
+#: ../../source/esutils_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/esutils_README.md:2
+msgid ""
+"esutils ([esutils](http://github.com/estools/esutils)) is utility box for"
+" ECMAScript language tools."
+msgstr ""
+
+#: ../../source/esutils_README.md:5
+msgid "API"
+msgstr ""
+
+#: ../../source/esutils_README.md:7
+msgid "ast"
+msgstr ""
+
+#: ../../source/esutils_README.md:9
+msgid "ast.isExpression(node)"
+msgstr ""
+
+#: ../../source/esutils_README.md:11
+msgid ""
+"Returns true if `node` is an Expression as defined in ECMA262 edition 5.1"
+" section [11](https://es5.github.io/#x11)."
+msgstr ""
+
+#: ../../source/esutils_README.md:14
+msgid "ast.isStatement(node)"
+msgstr ""
+
+#: ../../source/esutils_README.md:16
+msgid ""
+"Returns true if `node` is a Statement as defined in ECMA262 edition 5.1 "
+"section [12](https://es5.github.io/#x12)."
+msgstr ""
+
+#: ../../source/esutils_README.md:19
+msgid "ast.isIterationStatement(node)"
+msgstr ""
+
+#: ../../source/esutils_README.md:21
+msgid ""
+"Returns true if `node` is an IterationStatement as defined in ECMA262 "
+"edition 5.1 section [12.6](https://es5.github.io/#x12.6)."
+msgstr ""
+
+#: ../../source/esutils_README.md:24
+msgid "ast.isSourceElement(node)"
+msgstr ""
+
+#: ../../source/esutils_README.md:26
+msgid ""
+"Returns true if `node` is a SourceElement as defined in ECMA262 edition "
+"5.1 section [14](https://es5.github.io/#x14)."
+msgstr ""
+
+#: ../../source/esutils_README.md:29
+msgid "ast.trailingStatement(node)"
+msgstr ""
+
+#: ../../source/esutils_README.md:31
+msgid "Returns `Statement?` if `node` has trailing `Statement`."
+msgstr ""
+
+#: ../../source/esutils_README.md:36
+msgid "When taking this `IfStatement`, returns `consequent;` statement."
+msgstr ""
+
+#: ../../source/esutils_README.md:38
+msgid "ast.isProblematicIfStatement(node)"
+msgstr ""
+
+#: ../../source/esutils_README.md:40
+msgid ""
+"Returns true if `node` is a problematic IfStatement. If `node` is a "
+"problematic `IfStatement`, `node` cannot be represented as an one on one "
+"JavaScript code."
+msgstr ""
+
+#: ../../source/esutils_README.md:54
+msgid ""
+"The above node cannot be represented as a JavaScript code, since the top "
+"level `else` alternate belongs to an inner `IfStatement`."
+msgstr ""
+
+#: ../../source/esutils_README.md:57
+msgid "code"
+msgstr ""
+
+#: ../../source/esutils_README.md:59
+msgid "code.isDecimalDigit(code)"
+msgstr ""
+
+#: ../../source/esutils_README.md:61
+msgid "Return true if provided code is decimal digit."
+msgstr ""
+
+#: ../../source/esutils_README.md:63
+msgid "code.isHexDigit(code)"
+msgstr ""
+
+#: ../../source/esutils_README.md:65
+msgid "Return true if provided code is hexadecimal digit."
+msgstr ""
+
+#: ../../source/esutils_README.md:67
+msgid "code.isOctalDigit(code)"
+msgstr ""
+
+#: ../../source/esutils_README.md:69
+msgid "Return true if provided code is octal digit."
+msgstr ""
+
+#: ../../source/esutils_README.md:71
+msgid "code.isWhiteSpace(code)"
+msgstr ""
+
+#: ../../source/esutils_README.md:73
+msgid ""
+"Return true if provided code is white space. White space characters are "
+"formally defined in ECMA262."
+msgstr ""
+
+#: ../../source/esutils_README.md:75
+msgid "code.isLineTerminator(code)"
+msgstr ""
+
+#: ../../source/esutils_README.md:77
+msgid ""
+"Return true if provided code is line terminator. Line terminator "
+"characters are formally defined in ECMA262."
+msgstr ""
+
+#: ../../source/esutils_README.md:79
+msgid "code.isIdentifierStart(code)"
+msgstr ""
+
+#: ../../source/esutils_README.md:81
+msgid ""
+"Return true if provided code can be the first character of ECMA262 "
+"Identifier. They are formally defined in ECMA262."
+msgstr ""
+
+#: ../../source/esutils_README.md:83
+msgid "code.isIdentifierPart(code)"
+msgstr ""
+
+#: ../../source/esutils_README.md:85
+msgid ""
+"Return true if provided code can be the trailing character of ECMA262 "
+"Identifier. They are formally defined in ECMA262."
+msgstr ""
+
+#: ../../source/esutils_README.md:87
+msgid "keyword"
+msgstr ""
+
+#: ../../source/esutils_README.md:89
+msgid "keyword.isKeywordES5(id, strict)"
+msgstr ""
+
+#: ../../source/esutils_README.md:91
+msgid ""
+"Returns `true` if provided identifier string is a Keyword or Future "
+"Reserved Word in ECMA262 edition 5.1. They are formally defined in "
+"ECMA262 sections [7.6.1.1](http://es5.github.io/#x7.6.1.1) and "
+"[7.6.1.2](http://es5.github.io/#x7.6.1.2), respectively. If the `strict` "
+"flag is truthy, this function additionally checks whether `id` is a "
+"Keyword or Future Reserved Word under strict mode."
+msgstr ""
+
+#: ../../source/esutils_README.md:97
+msgid "keyword.isKeywordES6(id, strict)"
+msgstr ""
+
+#: ../../source/esutils_README.md:99
+msgid ""
+"Returns `true` if provided identifier string is a Keyword or Future "
+"Reserved Word in ECMA262 edition 6. They are formally defined in ECMA262 "
+"sections [11.6.2.1](http://ecma-international.org/ecma-262/6.0/#sec-"
+"keywords) and [11.6.2.2](http://ecma-international.org/ecma-262/6.0/#sec-"
+"future-reserved-words), respectively. If the `strict` flag is truthy, "
+"this function additionally checks whether `id` is a Keyword or Future "
+"Reserved Word under strict mode."
+msgstr ""
+
+#: ../../source/esutils_README.md:106
+msgid "keyword.isReservedWordES5(id, strict)"
+msgstr ""
+
+#: ../../source/esutils_README.md:108
+msgid ""
+"Returns `true` if provided identifier string is a Reserved Word in "
+"ECMA262 edition 5.1. They are formally defined in ECMA262 section "
+"[7.6.1](http://es5.github.io/#x7.6.1). If the `strict` flag is truthy, "
+"this function additionally checks whether `id` is a Reserved Word under "
+"strict mode."
+msgstr ""
+
+#: ../../source/esutils_README.md:113
+msgid "keyword.isReservedWordES6(id, strict)"
+msgstr ""
+
+#: ../../source/esutils_README.md:115
+msgid ""
+"Returns `true` if provided identifier string is a Reserved Word in "
+"ECMA262 edition 6. They are formally defined in ECMA262 section "
+"[11.6.2](http://ecma-international.org/ecma-262/6.0/#sec-reserved-words)."
+" If the `strict` flag is truthy, this function additionally checks "
+"whether `id` is a Reserved Word under strict mode."
+msgstr ""
+
+#: ../../source/esutils_README.md:120
+msgid "keyword.isRestrictedWord(id)"
+msgstr ""
+
+#: ../../source/esutils_README.md:122
+msgid ""
+"Returns `true` if provided identifier string is one of `eval` or "
+"`arguments`. They are restricted in strict mode code throughout ECMA262 "
+"edition 5.1 and in ECMA262 edition 6 section [12.1.1](http://ecma-"
+"international.org/ecma-262/6.0/#sec-identifiers-static-semantics-early-"
+"errors)."
+msgstr ""
+
+#: ../../source/esutils_README.md:126
+msgid "keyword.isIdentifierNameES5(id)"
+msgstr ""
+
+#: ../../source/esutils_README.md:128
+msgid ""
+"Return true if provided identifier string is an IdentifierName as "
+"specified in ECMA262 edition 5.1 section "
+"[7.6](https://es5.github.io/#x7.6)."
+msgstr ""
+
+#: ../../source/esutils_README.md:131
+msgid "keyword.isIdentifierNameES6(id)"
+msgstr ""
+
+#: ../../source/esutils_README.md:133
+msgid ""
+"Return true if provided identifier string is an IdentifierName as "
+"specified in ECMA262 edition 6 section [11.6](http://ecma-"
+"international.org/ecma-262/6.0/#sec-names-and-keywords)."
+msgstr ""
+
+#: ../../source/esutils_README.md:136
+msgid "keyword.isIdentifierES5(id, strict)"
+msgstr ""
+
+#: ../../source/esutils_README.md:138
+msgid ""
+"Return true if provided identifier string is an Identifier as specified "
+"in ECMA262 edition 5.1 section [7.6](https://es5.github.io/#x7.6). If the"
+" `strict` flag is truthy, this function additionally checks whether `id` "
+"is an Identifier under strict mode."
+msgstr ""
+
+#: ../../source/esutils_README.md:143
+msgid "keyword.isIdentifierES6(id, strict)"
+msgstr ""
+
+#: ../../source/esutils_README.md:145
+msgid ""
+"Return true if provided identifier string is an Identifier as specified "
+"in ECMA262 edition 6 section [12.1](http://ecma-"
+"international.org/ecma-262/6.0/#sec-identifiers). If the `strict` flag is"
+" truthy, this function additionally checks whether `id` is an Identifier "
+"under strict mode."
+msgstr ""
+
+#: ../../source/esutils_README.md:150
+msgid "License"
+msgstr ""
+
+#: ../../source/esutils_README.md:152
+msgid ""
+"Copyright (C) 2013 [Yusuke Suzuki](http://github.com/Constellation)  "
+"(twitter: [@Constellation](http://twitter.com/Constellation)) and other "
+"contributors."
+msgstr ""
+
+#: ../../source/esutils_README.md:155
+msgid ""
+"Redistribution and use in source and binary forms, with or without "
+"modification, are permitted provided that the following conditions are "
+"met:"
+msgstr ""
+
+#: ../../source/esutils_README.md:158
+msgid ""
+"Redistributions of source code must retain the above copyright notice, "
+"this list of conditions and the following disclaimer."
+msgstr ""
+
+#: ../../source/esutils_README.md:161
+msgid ""
+"Redistributions in binary form must reproduce the above copyright notice,"
+" this list of conditions and the following disclaimer in the "
+"documentation and/or other materials provided with the distribution."
+msgstr ""
+
+#: ../../source/esutils_README.md:165
+msgid ""
+"THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS "
+"IS\" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED "
+"TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A "
+"PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL <COPYRIGHT HOLDER> "
+"BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR "
+"CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF "
+"SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS "
+"INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN "
+"CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) "
+"ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF "
+"THE POSSIBILITY OF SUCH DAMAGE."
+msgstr ""
+

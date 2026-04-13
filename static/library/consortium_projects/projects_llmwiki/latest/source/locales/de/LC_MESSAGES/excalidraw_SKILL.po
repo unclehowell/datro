@@ -1,0 +1,443 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/excalidraw_SKILL.md:15
+msgid "Excalidraw Diagram Skill"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:17
+msgid ""
+"Create diagrams by writing standard Excalidraw element JSON and saving as"
+" `.excalidraw` files. These files can be drag-and-dropped onto "
+"[excalidraw.com](https://excalidraw.com) for viewing and editing. No "
+"accounts, no API keys, no rendering libraries -- just JSON."
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:19
+msgid "Workflow"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:21
+msgid "**Load this skill** (you already did)"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:22
+msgid "**Write the elements JSON** -- an array of Excalidraw element objects"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:23
+msgid "**Save the file** using `write_file` to create a `.excalidraw` file"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:24
+msgid ""
+"**Optionally upload** for a shareable link using `scripts/upload.py` via "
+"`terminal`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:26
+msgid "Saving a Diagram"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:28
+msgid ""
+"Wrap your elements array in the standard `.excalidraw` envelope and save "
+"with `write_file`:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:42
+msgid "Save to any path, e.g. `~/diagrams/my_diagram.excalidraw`."
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:44
+msgid "Uploading for a Shareable Link"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:46
+msgid ""
+"Run the upload script (located in this skill's `scripts/` directory) via "
+"terminal:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:52
+msgid ""
+"This uploads to excalidraw.com (no account needed) and prints a shareable"
+" URL. Requires the `cryptography` pip package (`pip install "
+"cryptography`)."
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:56
+msgid "Element Format Reference"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:58
+msgid "Required Fields (all elements)"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:59
+msgid "`type`, `id` (unique string), `x`, `y`, `width`, `height`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:61
+msgid "Defaults (skip these -- they're applied automatically)"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:62
+msgid "`strokeColor`: `\"#1e1e1e\"`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:63
+msgid "`backgroundColor`: `\"transparent\"`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:64
+msgid "`fillStyle`: `\"solid\"`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:65
+msgid "`strokeWidth`: `2`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:66
+msgid "`roughness`: `1` (hand-drawn look)"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:67
+msgid "`opacity`: `100`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:69
+msgid "Canvas background is white."
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:71
+msgid "Element Types"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:73
+msgid "**Rectangle**:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:77
+#, python-brace-format
+msgid "`roundness: { \"type\": 3 }` for rounded corners"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:78
+msgid "`backgroundColor: \"#a5d8ff\"`, `fillStyle: \"solid\"` for filled"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:80
+msgid "**Ellipse**:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:85
+msgid "**Diamond**:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:90
+msgid ""
+"**Labeled shape (container binding)** -- create a text element bound to "
+"the shape:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:92
+#, python-brace-format
+msgid ""
+"**WARNING:** Do NOT use `\"label\": { \"text\": \"...\" }` on shapes. "
+"This is NOT a valid Excalidraw property and will be silently ignored, "
+"producing blank shapes. You MUST use the container binding approach "
+"below."
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:96
+msgid ""
+"The shape needs `boundElements` listing the text, and the text needs "
+"`containerId` pointing back:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:106
+msgid "Works on rectangle, ellipse, diamond"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:107
+msgid "Text is auto-centered by Excalidraw when `containerId` is set"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:108
+msgid ""
+"The text `x`/`y`/`width`/`height` are approximate -- Excalidraw "
+"recalculates them on load"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:109
+msgid "`originalText` should match `text`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:110
+msgid "Always include `fontFamily: 1` (Virgil/hand-drawn font)"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:112
+msgid "**Labeled arrow** -- same container binding approach:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:123
+msgid "**Standalone text** (titles and annotations only -- no container):"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:128
+msgid ""
+"`x` is the LEFT edge. To center at position `cx`: `x = cx - (text.length "
+"* fontSize * 0.5) / 2`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:129
+msgid "Do NOT rely on `textAlign` or `width` for positioning"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:131
+msgid "**Arrow**:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:136
+msgid "`points`: `[dx, dy]` offsets from element `x`, `y`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:137
+msgid ""
+"`endArrowhead`: `null` | `\"arrow\"` | `\"bar\"` | `\"dot\"` | "
+"`\"triangle\"`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:138
+msgid "`strokeStyle`: `\"solid\"` (default) | `\"dashed\"` | `\"dotted\"`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:140
+msgid "Arrow Bindings (connect arrows to shapes)"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:151
+msgid ""
+"`fixedPoint` coordinates: `top=[0.5,0]`, `bottom=[0.5,1]`, "
+"`left=[0,0.5]`, `right=[1,0.5]`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:153
+msgid "Drawing Order (z-order)"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:154
+msgid "Array order = z-order (first = back, last = front)"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:155
+msgid ""
+"Emit progressively: background zones → shape → its bound text → its "
+"arrows → next shape"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:156
+msgid "BAD: all rectangles, then all texts, then all arrows"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:157
+msgid ""
+"GOOD: bg_zone → shape1 → text_for_shape1 → arrow1 → arrow_label_text → "
+"shape2 → text_for_shape2 → ..."
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:158
+msgid "Always place the bound text element immediately after its container shape"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:160
+msgid "Sizing Guidelines"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:162
+msgid "**Font sizes:**"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:163
+msgid "Minimum `fontSize`: **16** for body text, labels, descriptions"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:164
+msgid "Minimum `fontSize`: **20** for titles and headings"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:165
+msgid "Minimum `fontSize`: **14** for secondary annotations only (sparingly)"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:166
+msgid "NEVER use `fontSize` below 14"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:168
+msgid "**Element sizes:**"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:169
+msgid "Minimum shape size: 120x60 for labeled rectangles/ellipses"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:170
+msgid "Leave 20-30px gaps between elements minimum"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:171
+msgid "Prefer fewer, larger elements over many tiny ones"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:173
+msgid "Color Palette"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:175
+msgid "See `references/colors.md` for full color tables. Quick reference:"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Fill Color"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Hex"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Primary / Input"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Light Blue"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "`#a5d8ff`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Success / Output"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Light Green"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "`#b2f2bb`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Warning / External"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Light Orange"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "`#ffd8a8`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Processing / Special"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Light Purple"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "`#d0bfff`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Error / Critical"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Light Red"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "`#ffc9c9`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Notes / Decisions"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Light Yellow"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "`#fff3bf`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Storage / Data"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "Light Teal"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md
+msgid "`#c3fae8`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:187
+msgid "Tips"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:188
+msgid "Use the color palette consistently across the diagram"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:189
+msgid ""
+"**Text contrast is CRITICAL** -- never use light gray on white "
+"backgrounds. Minimum text color on white: `#757575`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:190
+msgid "Do NOT use emoji in text -- they don't render in Excalidraw's font"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:191
+msgid "For dark mode diagrams, see `references/dark-mode.md`"
+msgstr ""
+
+#: ../../source/excalidraw_SKILL.md:192
+msgid "For larger examples, see `references/examples.md`"
+msgstr ""
+

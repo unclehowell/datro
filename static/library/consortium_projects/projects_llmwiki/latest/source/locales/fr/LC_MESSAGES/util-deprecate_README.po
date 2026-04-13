@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/util-deprecate_README.md:1
+msgid "util-deprecate"
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:3
+msgid "The Node.js `util.deprecate()` function with browser support"
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:5
+msgid "In Node.js, this module simply re-exports the `util.deprecate()` function."
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:7
+msgid ""
+"In the web browser (i.e. via browserify), a browser-specific "
+"implementation of the `util.deprecate()` function is used."
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:11
+msgid "API"
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:13
+msgid "A `deprecate()` function is the only thing exposed by this module."
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:28
+msgid "License"
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:30
+msgid "(The MIT License)"
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:32
+msgid "Copyright (c) 2014 Nathan Rajlich <nathan@tootallnate.net>"
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:34
+msgid ""
+"Permission is hereby granted, free of charge, to any person obtaining a "
+"copy of this software and associated documentation files (the "
+"\"Software\"), to deal in the Software without restriction, including "
+"without limitation the rights to use, copy, modify, merge, publish, "
+"distribute, sublicense, and/or sell copies of the Software, and to permit"
+" persons to whom the Software is furnished to do so, subject to the "
+"following conditions:"
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:43
+msgid ""
+"The above copyright notice and this permission notice shall be included "
+"in all copies or substantial portions of the Software."
+msgstr ""
+
+#: ../../source/util-deprecate_README.md:46
+msgid ""
+"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS"
+" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF "
+"MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN"
+" NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,"
+" DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR "
+"OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE"
+" USE OR OTHER DEALINGS IN THE SOFTWARE."
+msgstr ""
+

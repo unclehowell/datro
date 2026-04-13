@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/error_MIGRATION.md:1
+msgid "Migration"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:3
+msgid "Version 7"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:5
+msgid ""
+"The `message` parameter to `TypedError` is now required. Previously "
+"`message` was optional for `TypedError`."
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:9
+msgid "Version 6"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:11
+msgid ""
+"The `WrappedError` class now exposes the error that is being wrapped as a"
+" `cause` field instead of an `original` field."
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:15
+msgid ""
+"The following properties have been reserver on the wrapped error class: "
+"`cause`, `fullType`, `causeMessage`"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:18
+msgid "Version 5"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:20
+msgid "There were no breaking changes..."
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:22
+msgid "Version 4"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:24
+msgid ""
+"The `TypedError` function now has mandatory arguments. The `type` and "
+"`message` arguments for `TypedError` are required."
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:28
+msgid "Version 3"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:30
+msgid "The `TypedError` class now uses `string-template` for message formatting."
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:33
+msgid "Previously:"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:44
+msgid "Currently:"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:56
+msgid "Version 2"
+msgstr ""
+
+#: ../../source/error_MIGRATION.md:58
+msgid "Original version"
+msgstr ""
+

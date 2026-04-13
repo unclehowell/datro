@@ -1,0 +1,493 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/guidance_SKILL.md:14
+msgid "Guidance: Constrained LLM Generation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:16
+msgid "When to Use This Skill"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:18
+msgid "Use Guidance when you need to:"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:19
+msgid "**Control LLM output syntax** with regex or grammars"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:20
+msgid "**Guarantee valid JSON/XML/code** generation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:21
+msgid "**Reduce latency** vs traditional prompting approaches"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:22
+msgid "**Enforce structured formats** (dates, emails, IDs, etc.)"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:23
+msgid "**Build multi-step workflows** with Pythonic control flow"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:24
+msgid "**Prevent invalid outputs** through grammatical constraints"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:26
+msgid "**GitHub Stars**: 18,000+ | **From**: Microsoft Research"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:28
+msgid "Installation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:39
+msgid "Quick Start"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:41
+msgid "Basic Example: Structured Generation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:55
+msgid "With Anthropic Claude"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:74
+msgid "Core Concepts"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:76
+msgid "1. Context Managers"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:78
+msgid "Guidance uses Pythonic context managers for chat-style interactions."
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:100 ../../source/guidance_SKILL.md:180
+msgid "**Benefits:**"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:101
+msgid "Natural chat flow"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:102
+msgid "Clear role separation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:103
+msgid "Easy to read and maintain"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:105
+msgid "2. Constrained Generation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:107
+msgid "Guidance ensures outputs match specified patterns using regex or grammars."
+msgstr ""
+
+#: ../../source/guidance_SKILL.md ../../source/guidance_SKILL.md:109
+msgid "Regex Constraints"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:129
+msgid "**How it works:**"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:130
+msgid "Regex converted to grammar at token level"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:131
+msgid "Invalid tokens filtered during generation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:132
+msgid "Model can only produce matching outputs"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:134
+msgid "Selection Constraints"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:154
+msgid "3. Token Healing"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:156
+msgid ""
+"Guidance automatically \"heals\" token boundaries between prompt and "
+"generation."
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:158
+msgid "**Problem:** Tokenization creates unnatural boundaries."
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:168
+msgid "**Solution:** Guidance backs up one token and regenerates."
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:181
+msgid "Natural text boundaries"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:182
+msgid "No awkward spacing issues"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:183
+msgid "Better model performance (sees natural token sequences)"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:185
+msgid "4. Grammar-Based Generation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:187
+msgid "Define complex structures using context-free grammars."
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:209
+msgid "**Use cases:**"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:210
+msgid "Complex structured outputs"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:211
+msgid "Nested data structures"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:212
+msgid "Programming language syntax"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:213
+msgid "Domain-specific languages"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:215
+msgid "5. Guidance Functions"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:217
+msgid "Create reusable generation patterns with the `@guidance` decorator."
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:237
+msgid "**Stateful Functions:**"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:266
+msgid "Backend Configuration"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:268
+msgid "Anthropic Claude"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:279
+msgid "OpenAI"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:288
+msgid "Local Models (Transformers)"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:299
+msgid "Local Models (llama.cpp)"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:311
+msgid "Common Patterns"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:313
+msgid "Pattern 1: JSON Generation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:336
+msgid "Pattern 2: Classification"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:353
+msgid "Pattern 3: Multi-Step Reasoning"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:378
+msgid "Pattern 4: ReAct Agent"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:419
+msgid "Pattern 5: Data Extraction"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:454
+msgid "Best Practices"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:456
+msgid "1. Use Regex for Format Validation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:466
+msgid "2. Use select() for Fixed Categories"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:476
+msgid "3. Leverage Token Healing"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:484
+msgid "4. Use stop Sequences"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:494
+msgid "5. Create Reusable Functions"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:510
+msgid "6. Balance Constraints"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:520
+msgid "Comparison to Alternatives"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Feature"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Guidance"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Instructor"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Outlines"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "LMQL"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "✅ Yes"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "❌ No"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Grammar Support"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "✅ CFG"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Pydantic Validation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Token Healing"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Local Models"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "⚠️ Limited"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "API Models"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Pythonic Syntax"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "❌ SQL-like"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Learning Curve"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Low"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "Medium"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md
+msgid "High"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:533
+msgid "**When to choose Guidance:**"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:534
+msgid "Need regex/grammar constraints"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:535
+msgid "Want token healing"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:536
+msgid "Building complex workflows with control flow"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:537
+msgid "Using local models (Transformers, llama.cpp)"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:538
+msgid "Prefer Pythonic syntax"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:540
+msgid "**When to choose alternatives:**"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:541
+msgid "Instructor: Need Pydantic validation with automatic retrying"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:542
+msgid "Outlines: Need JSON schema validation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:543
+msgid "LMQL: Prefer declarative query syntax"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:545
+msgid "Performance Characteristics"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:547
+msgid "**Latency Reduction:**"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:548
+#, python-format
+msgid "30-50% faster than traditional prompting for constrained outputs"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:549
+msgid "Token healing reduces unnecessary regeneration"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:550
+msgid "Grammar constraints prevent invalid token generation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:552
+msgid "**Memory Usage:**"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:553
+msgid "Minimal overhead vs unconstrained generation"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:554
+msgid "Grammar compilation cached after first use"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:555
+msgid "Efficient token filtering at inference time"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:557
+msgid "**Token Efficiency:**"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:558
+msgid "Prevents wasted tokens on invalid outputs"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:559
+msgid "No need for retry loops"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:560
+msgid "Direct path to valid outputs"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:562
+msgid "Resources"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:564
+msgid "**Documentation**: https://guidance.readthedocs.io"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:565
+msgid "**GitHub**: https://github.com/guidance-ai/guidance (18k+ stars)"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:566
+msgid "**Notebooks**: https://github.com/guidance-ai/guidance/tree/main/notebooks"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:567
+msgid "**Discord**: Community support available"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:569
+msgid "See Also"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:571
+msgid "`references/constraints.md` - Comprehensive regex and grammar patterns"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:572
+msgid "`references/backends.md` - Backend-specific configuration"
+msgstr ""
+
+#: ../../source/guidance_SKILL.md:573
+msgid "`references/examples.md` - Production-ready examples"
+msgstr ""
+

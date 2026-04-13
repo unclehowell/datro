@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/at-least-node_README.md:1
+msgid "at-least-node"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:3
+msgid ""
+"![npm](https://img.shields.io/npm/v/at-least-node) "
+"![node](https://img.shields.io/node/v/at-least-node) "
+"![NPM](https://img.shields.io/npm/l/at-least-node)"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:3
+msgid "npm"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:3
+msgid "node"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:3
+msgid "NPM"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:7
+msgid ""
+"Sometimes you need to check if you're on _at least_ a given Node.js "
+"version, but you don't want to pull in the whole "
+"[`semver`](https://www.npmjs.com/package/semver) kitchen sink. That's "
+"what `at-least-node` is for."
+msgstr ""
+
+#: ../../source/at-least-node_README.md
+msgid "Package"
+msgstr ""
+
+#: ../../source/at-least-node_README.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/at-least-node_README.md
+msgid "`at-least-node`"
+msgstr ""
+
+#: ../../source/at-least-node_README.md
+msgid "2.6 kB"
+msgstr ""
+
+#: ../../source/at-least-node_README.md
+msgid "`semver`"
+msgstr ""
+
+#: ../../source/at-least-node_README.md
+msgid "75.5 kB"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:20
+msgid "When passing in a version string:"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:22
+msgid "You cannot include a leading `v` (i.e. `v10.12.0`)"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:23
+msgid "You cannot omit sections (i.e. `10.12`)"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:24
+msgid "You cannot use pre-releases (i.e. `1.0.0-beta`)"
+msgstr ""
+
+#: ../../source/at-least-node_README.md:25
+msgid ""
+"There is no input validation, if you make a mistake, the resulting "
+"behavior is undefined"
+msgstr ""
+

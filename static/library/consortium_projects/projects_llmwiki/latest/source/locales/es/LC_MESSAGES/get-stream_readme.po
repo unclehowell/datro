@@ -1,0 +1,199 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/get-stream_readme.md:1
+msgid ""
+"get-stream [![Build Status](https://travis-ci.org/sindresorhus/get-"
+"stream.svg?branch=master)](https://travis-ci.org/sindresorhus/get-stream)"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:3
+msgid "Get a stream as a string, buffer, or array"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:48
+msgid "API"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:50
+msgid ""
+"The methods returns a promise that resolves when the `end` event fires on"
+" the stream, indicating that there is no more data to be read. The stream"
+" is switched to flowing mode."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:52
+msgid "getStream(stream, [options])"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:54
+msgid "Get the `stream` as a string."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:56
+msgid "options"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:58
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:60
+msgid "encoding"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:62
+msgid "Type: `string`<br> Default: `utf8`"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:65
+msgid ""
+"[Encoding](https://nodejs.org/api/buffer.html#buffer_buffer) of the "
+"incoming stream."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:67
+msgid "maxBuffer"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:69
+msgid "Type: `number`<br> Default: `Infinity`"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:72
+msgid ""
+"Maximum length of the returned string. If it exceeds this value before "
+"the stream ends, the promise will be rejected with a "
+"`getStream.MaxBufferError` error."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:74
+msgid "getStream.buffer(stream, [options])"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:76
+msgid "Get the `stream` as a buffer."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:78
+msgid ""
+"It honors the `maxBuffer` option as above, but it refers to byte length "
+"rather than string length."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:80
+msgid "getStream.array(stream, [options])"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:82
+msgid "Get the `stream` as an array of values."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:84
+msgid ""
+"It honors both the `maxBuffer` and `encoding` options. The behavior "
+"changes slightly based on the encoding chosen:"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:86
+msgid ""
+"When `encoding` is unset, it assumes an [object mode "
+"stream](https://nodesource.com/blog/understanding-object-streams/) and "
+"collects values emitted from `stream` unmodified. In this case "
+"`maxBuffer` refers to the number of items in the array (not the sum of "
+"their sizes)."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:88
+msgid ""
+"When `encoding` is set to `buffer`, it collects an array of buffers. "
+"`maxBuffer` refers to the summed byte lengths of every buffer in the "
+"array."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:90
+msgid ""
+"When `encoding` is set to anything else, it collects an array of strings."
+" `maxBuffer` refers to the summed character lengths of every string in "
+"the array."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:93
+msgid "Errors"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:95
+msgid ""
+"If the input stream emits an `error` event, the promise will be rejected "
+"with the error. The buffered data will be attached to the `bufferedData` "
+"property of the error."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:109
+msgid "FAQ"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:111
+msgid ""
+"How is this different from [`concat-stream`](https://github.com/maxogden"
+"/concat-stream)?"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:113
+msgid ""
+"This module accepts a stream instead of being one and returns a promise "
+"instead of using a callback. The API is simpler and it only supports "
+"returning a string, buffer, or array. It doesn't have a fragile type "
+"inference. You explicitly choose what you want. And it doesn't depend on "
+"the huge `readable-stream` package."
+msgstr ""
+
+#: ../../source/get-stream_readme.md:116
+msgid "Related"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:118
+msgid ""
+"[get-stdin](https://github.com/sindresorhus/get-stdin) - Get stdin as a "
+"string or buffer"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:121
+msgid "License"
+msgstr ""
+
+#: ../../source/get-stream_readme.md:123
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

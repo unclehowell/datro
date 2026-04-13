@@ -1,0 +1,312 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/ipaddr.js_README.md:1
+msgid ""
+"ipaddr.js — an IPv6 and IPv4 address manipulation library [![Build "
+"Status](https://travis-ci.org/whitequark/ipaddr.js.svg)](https://travis-"
+"ci.org/whitequark/ipaddr.js)"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:3
+msgid ""
+"ipaddr.js is a small (1.9K minified and gzipped) library for manipulating"
+" IP addresses in JavaScript environments. It runs on both CommonJS "
+"runtimes (e.g. [nodejs]) and in a web browser."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:7
+msgid ""
+"ipaddr.js allows you to verify and parse string representation of an IP "
+"address, match it against a CIDR range or range list, determine if it "
+"falls into some reserved ranges (examples include loopback and private "
+"ranges), and convert between IPv4 and IPv4-mapped IPv6 addresses."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:14
+msgid "Installation"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:16
+msgid "`npm install ipaddr.js`"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:18 ../../source/ipaddr.js_README.md:213
+#: ../../source/ipaddr.js_README.md:228
+msgid "or"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:20
+msgid "`bower install ipaddr.js`"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:22
+msgid "API"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:24
+msgid ""
+"ipaddr.js defines one object in the global scope: `ipaddr`. In CommonJS, "
+"it is exported from the module:"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:31
+msgid ""
+"The API consists of several global methods and two classes: ipaddr.IPv6 "
+"and ipaddr.IPv4."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:33
+msgid "Global methods"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:35
+msgid ""
+"There are three global methods defined: `ipaddr.isValid`, `ipaddr.parse` "
+"and `ipaddr.process`. All of them receive a string as a single parameter."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:38
+msgid ""
+"The `ipaddr.isValid` method returns `true` if the address is a valid IPv4"
+" or IPv6 address, and `false` otherwise. It does not throw any "
+"exceptions."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:41
+msgid ""
+"The `ipaddr.parse` method returns an object representing the IP address, "
+"or throws an `Error` if the passed string is not a valid representation "
+"of an IP address."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:45
+msgid ""
+"The `ipaddr.process` method works just like the `ipaddr.parse` one, but "
+"it automatically converts IPv4-mapped IPv6 addresses to their IPv4 "
+"counterparts before returning. It is useful when you have a Node.js "
+"instance listening on an IPv6 socket, and the `net.ivp6.bindv6only` "
+"sysctl parameter (or its equivalent on non-Linux OS) is set to 0. In this"
+" case, you can accept IPv4 connections on your IPv6-only socket, but the "
+"remote address will be mangled. Use `ipaddr.process` method to "
+"automatically demangle it."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:53
+msgid "Object representation"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:55
+msgid ""
+"Parsing methods return an object which descends from `ipaddr.IPv6` or "
+"`ipaddr.IPv4`. These objects share some properties, but most of them "
+"differ."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:58
+msgid "Shared properties"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:60
+msgid ""
+"One can determine the type of address by calling `addr.kind()`. It will "
+"return either `\"ipv6\"` or `\"ipv4\"`."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:63
+msgid ""
+"An address can be converted back to its string representation with "
+"`addr.toString()`. Note that this method:"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:65
+msgid ""
+"does not return the original string used to create the object (in fact, "
+"there is no way of getting that string)"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:67
+msgid "returns a compact representation (when it is applicable)"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:69
+msgid ""
+"A `match(range, bits)` method can be used to check if the address falls "
+"into a certain CIDR range. Note that an address can be (obviously) "
+"matched only against an address of the same type."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:73 ../../source/ipaddr.js_README.md:86
+#: ../../source/ipaddr.js_README.md:139 ../../source/ipaddr.js_README.md:207
+#: ../../source/ipaddr.js_README.md:222
+msgid "For example:"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:82
+msgid ""
+"Alternatively, `match` can also be called as `match([range, bits])`. In "
+"this way, it can be used together with the `parseCIDR(string)` method, "
+"which parses an IP address together with a CIDR range."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:94
+msgid ""
+"A `range()` method returns one of predefined names for several special "
+"ranges defined by IP protocols. The exact names (and their respective "
+"CIDR ranges) can be looked up in the source: [IPv6 ranges] and [IPv4 "
+"ranges]. Some common ones include `\"unicast\"` (the default one) and "
+"`\"reserved\"`."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:99
+msgid ""
+"You can match against your own range list by using "
+"`ipaddr.subnetMatch(address, rangeList, defaultName)` method. It can work"
+" with a mix of IPv6 or IPv4 addresses, and accepts a name-to-subnet map "
+"as the range list. For example:"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:113
+msgid ""
+"The addresses can be converted to their byte representation with "
+"`toByteArray()`. (Actually, JavaScript mostly does not know about byte "
+"buffers. They are emulated with arrays of numbers, each in range of "
+"0..255.)"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:122
+msgid ""
+"The `ipaddr.IPv4` and `ipaddr.IPv6` objects have some methods defined, "
+"too. All of them have the same interface for both protocols, and are "
+"similar to global methods."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:125
+msgid ""
+"`ipaddr.IPvX.isValid(string)` can be used to check if the string is a "
+"valid address for particular protocol, and `ipaddr.IPvX.parse(string)` is"
+" the error-throwing parser."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:128
+msgid ""
+"`ipaddr.IPvX.isValid(string)` uses the same format for parsing as the "
+"POSIX `inet_ntoa` function, which accepts unusual formats like "
+"`0xc0.168.1.1` or `0x10000000`. The function "
+"`ipaddr.IPv4.isValidFourPartDecimal(string)` validates the IPv4 address "
+"and also ensures that it is written in four-part decimal format."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:133
+msgid "IPv6 properties"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:135
+msgid ""
+"Sometimes you will want to convert IPv6 not to a compact string "
+"representation (with the `::` substitution); the `toNormalizedString()` "
+"method will return an address where all zeroes are explicit."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:147
+msgid ""
+"The `isIPv4MappedAddress()` method will return `true` if this address is "
+"an IPv4-mapped one, and `toIPv4Address()` will return an IPv4 object "
+"address."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:150
+msgid ""
+"To access the underlying binary representation of the address, use "
+"`addr.parts`."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:157
+msgid "A IPv6 zone index can be accessed via `addr.zoneId`:"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:164
+msgid "IPv4 properties"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:166
+msgid ""
+"`toIPv4MappedAddress()` will return a corresponding IPv4-mapped IPv6 "
+"address."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:168
+msgid "To access the underlying representation of the address, use `addr.octets`."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:175
+msgid ""
+"`prefixLengthFromSubnetMask()` will return a CIDR prefix length for a "
+"valid IPv4 netmask or null if the netmask is not valid."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:183
+msgid ""
+"`subnetMaskFromPrefixLength()` will return an IPv4 netmask for a valid "
+"CIDR prefix length."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:190
+msgid ""
+"`broadcastAddressFromCIDR()` will return the broadcast address for a "
+"given IPv4 interface and netmask in CIDR notation."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:194
+msgid ""
+"`networkAddressFromCIDR()` will return the network address for a given "
+"IPv4 interface and netmask in CIDR notation."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:199
+msgid "Conversion"
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:201
+msgid ""
+"IPv4 and IPv6 can be converted bidirectionally to and from network byte "
+"order (MSB) byte arrays."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:203
+msgid ""
+"The `fromByteArray()` method will take an array and create an appropriate"
+" IPv4 or IPv6 object if the input satisfies the requirements. For IPv4 it"
+" has to be an array of four 8-bit values, while for IPv6 it has to be an "
+"array of sixteen 8-bit values."
+msgstr ""
+
+#: ../../source/ipaddr.js_README.md:220
+msgid ""
+"Both objects also offer a `toByteArray()` method, which returns an array "
+"in network byte order (MSB)."
+msgstr ""
+

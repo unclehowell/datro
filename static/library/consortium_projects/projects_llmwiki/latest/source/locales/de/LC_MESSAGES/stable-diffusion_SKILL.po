@@ -1,0 +1,635 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/stable-diffusion_SKILL.md:14
+msgid "Stable Diffusion Image Generation"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:16
+msgid ""
+"Comprehensive guide to generating images with Stable Diffusion using the "
+"HuggingFace Diffusers library."
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:18
+msgid "When to use Stable Diffusion"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:20
+msgid "**Use Stable Diffusion when:**"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:21
+msgid "Generating images from text descriptions"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:22
+msgid "Performing image-to-image translation (style transfer, enhancement)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:23
+msgid "Inpainting (filling in masked regions)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:24
+msgid "Outpainting (extending images beyond boundaries)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:25
+msgid "Creating variations of existing images"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:26
+msgid "Building custom image generation workflows"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:28
+msgid "**Key features:**"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:29
+msgid "**Text-to-Image**: Generate images from natural language prompts"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:30
+msgid "**Image-to-Image**: Transform existing images with text guidance"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:31
+msgid "**Inpainting**: Fill masked regions with context-aware content"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:32
+msgid "**ControlNet**: Add spatial conditioning (edges, poses, depth)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:33
+msgid "**LoRA Support**: Efficient fine-tuning and style adaptation"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:34
+msgid "**Multiple Models**: SD 1.5, SDXL, SD 3.0, Flux support"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:36
+msgid "**Use alternatives instead:**"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:37
+msgid "**DALL-E 3**: For API-based generation without GPU"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:38
+msgid "**Midjourney**: For artistic, stylized outputs"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:39
+msgid "**Imagen**: For Google Cloud integration"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:40
+msgid "**Leonardo.ai**: For web-based creative workflows"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:42
+msgid "Quick start"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:44
+msgid "Installation"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:51
+msgid "Basic text-to-image"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:74
+msgid "Using SDXL (higher quality)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:98
+msgid "Architecture overview"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:100
+msgid "Three-pillar design"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:102
+msgid "Diffusers is built around three core components:"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:113
+msgid "Pipeline inference flow"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:125
+msgid "Core concepts"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:127
+msgid "Pipelines"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:129
+msgid "Pipelines orchestrate complete workflows:"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Pipeline"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Purpose"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`StableDiffusionPipeline`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Text-to-image (SD 1.x/2.x)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`StableDiffusionXLPipeline`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Text-to-image (SDXL)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`StableDiffusion3Pipeline`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Text-to-image (SD 3.0)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`FluxPipeline`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Text-to-image (Flux models)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`StableDiffusionImg2ImgPipeline`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+#: ../../source/stable-diffusion_SKILL.md:205
+msgid "Image-to-image"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`StableDiffusionInpaintPipeline`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+#: ../../source/stable-diffusion_SKILL.md:228
+msgid "Inpainting"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:140
+msgid "Schedulers"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:142
+msgid "Schedulers control the denoising process:"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Scheduler"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Steps"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Quality"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Use Case"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`EulerDiscreteScheduler`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "20-50"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Good"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Default choice"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`EulerAncestralDiscreteScheduler`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "More variation"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`DPMSolverMultistepScheduler`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "15-25"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Excellent"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Fast, high quality"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`DDIMScheduler`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "50-100"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Deterministic"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`LCMScheduler`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "4-8"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Very fast"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`UniPCMultistepScheduler`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Fast convergence"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:153
+msgid "Swapping schedulers"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:167
+msgid "Generation parameters"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:169
+msgid "Key parameters"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Parameter"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Default"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`prompt`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Required"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Text description of desired image"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`negative_prompt`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "None"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "What to avoid in the image"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`num_inference_steps`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "50"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Denoising steps (more = better quality)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`guidance_scale`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "7.5"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Prompt adherence (7-12 typical)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`height`, `width`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "512/1024"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Output dimensions (multiples of 8)"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`generator`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Torch generator for reproducibility"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`num_images_per_prompt`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "1"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Batch size"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:181
+msgid "Reproducible generation"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:195
+msgid "Negative prompts"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:207
+msgid "Transform existing images with text guidance:"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:230
+msgid "Fill masked regions:"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+#: ../../source/stable-diffusion_SKILL.md:252
+msgid "ControlNet"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:254
+msgid "Add spatial conditioning for precise control:"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:282
+msgid "Available ControlNets"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Input Type"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`canny`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Edge maps"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Preserve structure"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`openpose`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Pose skeletons"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Human poses"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`depth`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Depth maps"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "3D-aware generation"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`normal`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Normal maps"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Surface details"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`mlsd`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Line segments"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Architectural lines"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "`scribble`"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Rough sketches"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md
+msgid "Sketch-to-image"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:293
+msgid "LoRA adapters"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:295
+msgid "Load fine-tuned style adapters:"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:318
+msgid "Multiple LoRAs"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:331
+msgid "Memory optimization"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:333
+msgid "Enable CPU offloading"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:343
+msgid "Attention slicing"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:353
+msgid "xFormers memory-efficient attention"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:360
+msgid "VAE slicing for large images"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:368
+msgid "Model variants"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:370
+msgid "Loading different precisions"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:387
+msgid "Loading specific components"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:403
+msgid "Batch generation"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:405
+msgid "Generate multiple images efficiently:"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:425
+msgid "Common workflows"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:427
+msgid "Workflow 1: High-quality generation"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:454
+msgid "Workflow 2: Fast prototyping"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:479
+msgid "Common issues"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:481
+msgid "**CUDA out of memory:**"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:492
+msgid "**Black/noise images:**"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:502
+msgid "**Slow generation:**"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:512
+msgid "References"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:514
+msgid ""
+"**[Advanced Usage](references/advanced-usage.md)** - Custom pipelines, "
+"fine-tuning, deployment"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:515
+msgid ""
+"**[Troubleshooting](references/troubleshooting.md)** - Common issues and "
+"solutions"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:517
+msgid "Resources"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:519
+msgid "**Documentation**: https://huggingface.co/docs/diffusers"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:520
+msgid "**Repository**: https://github.com/huggingface/diffusers"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:521
+msgid "**Model Hub**: https://huggingface.co/models?library=diffusers"
+msgstr ""
+
+#: ../../source/stable-diffusion_SKILL.md:522
+msgid "**Discord**: https://discord.gg/diffusers"
+msgstr ""
+

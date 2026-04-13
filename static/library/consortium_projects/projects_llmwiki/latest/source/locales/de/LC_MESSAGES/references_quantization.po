@@ -1,0 +1,566 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_quantization.md:1
+msgid "GGUF Quantization Guide"
+msgstr ""
+
+#: ../../source/references_quantization.md:3
+msgid "Complete guide to GGUF quantization formats and model conversion."
+msgstr ""
+
+#: ../../source/references_quantization.md:5
+msgid "Quantization Overview"
+msgstr ""
+
+#: ../../source/references_quantization.md:7
+msgid ""
+"**GGUF** (GPT-Generated Unified Format) - Standard format for llama.cpp "
+"models."
+msgstr ""
+
+#: ../../source/references_quantization.md:9
+msgid "Format Comparison"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Format"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Perplexity"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Size (7B)"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Tokens/sec"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "FP16"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "5.9565 (baseline)"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "13.0 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "15 tok/s"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Original quality"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Q8_0"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "5.9584 (+0.03%)"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "7.0 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "25 tok/s"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Nearly lossless"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "**Q6_K**"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "5.9642 (+0.13%)"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "5.5 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "30 tok/s"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Best quality/size"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "**Q5_K_M**"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "5.9796 (+0.39%)"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "4.8 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "35 tok/s"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Balanced"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "**Q4_K_M**"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "6.0565 (+1.68%)"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "4.1 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "40 tok/s"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "**Recommended**"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Q4_K_S"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "6.1125 (+2.62%)"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "3.9 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "42 tok/s"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Faster, lower quality"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Q3_K_M"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "6.3184 (+6.07%)"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "3.3 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "45 tok/s"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Small models only"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Q2_K"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "6.8673 (+15.3%)"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "2.7 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "50 tok/s"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Not recommended"
+msgstr ""
+
+#: ../../source/references_quantization.md:22
+msgid "**Recommendation**: Use **Q4_K_M** for best balance of quality and speed."
+msgstr ""
+
+#: ../../source/references_quantization.md:24
+msgid "Converting Models"
+msgstr ""
+
+#: ../../source/references_quantization.md:26
+msgid "HuggingFace to GGUF"
+msgstr ""
+
+#: ../../source/references_quantization.md:46
+msgid "Batch quantization"
+msgstr ""
+
+#: ../../source/references_quantization.md:58
+msgid "K-Quantization Methods"
+msgstr ""
+
+#: ../../source/references_quantization.md:60
+msgid "**K-quants** use mixed precision for better quality:"
+msgstr ""
+
+#: ../../source/references_quantization.md:61
+msgid "Attention weights: Higher precision"
+msgstr ""
+
+#: ../../source/references_quantization.md:62
+msgid "Feed-forward weights: Lower precision"
+msgstr ""
+
+#: ../../source/references_quantization.md:64
+msgid "**Variants**:"
+msgstr ""
+
+#: ../../source/references_quantization.md:65
+msgid "`_S` (Small): Faster, lower quality"
+msgstr ""
+
+#: ../../source/references_quantization.md:66
+msgid "`_M` (Medium): Balanced (recommended)"
+msgstr ""
+
+#: ../../source/references_quantization.md:67
+msgid "`_L` (Large): Better quality, larger size"
+msgstr ""
+
+#: ../../source/references_quantization.md:69
+msgid "**Example**: `Q4_K_M`"
+msgstr ""
+
+#: ../../source/references_quantization.md:70
+msgid "`Q4`: 4-bit quantization"
+msgstr ""
+
+#: ../../source/references_quantization.md:71
+msgid "`K`: Mixed precision method"
+msgstr ""
+
+#: ../../source/references_quantization.md:72
+msgid "`M`: Medium quality"
+msgstr ""
+
+#: ../../source/references_quantization.md:74
+msgid "Quality Testing"
+msgstr ""
+
+#: ../../source/references_quantization.md:89
+msgid "Use Case Guide"
+msgstr ""
+
+#: ../../source/references_quantization.md:91
+msgid "General purpose (chatbots, assistants)"
+msgstr ""
+
+#: ../../source/references_quantization.md:97
+msgid "Code generation"
+msgstr ""
+
+#: ../../source/references_quantization.md:102
+msgid "Creative writing"
+msgstr ""
+
+#: ../../source/references_quantization.md:108
+msgid "Technical/medical"
+msgstr ""
+
+#: ../../source/references_quantization.md:113
+msgid "Edge devices (Raspberry Pi)"
+msgstr ""
+
+#: ../../source/references_quantization.md:118
+msgid "Model Size Scaling"
+msgstr ""
+
+#: ../../source/references_quantization.md:120
+msgid "7B parameter models"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "RAM needed"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "5 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "6 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Q4_K_M"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "7 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Q5_K_M"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "8 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "Q6_K"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "9 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "11 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md:131
+msgid "13B parameter models"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "5.1 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "6.2 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "10 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "7.9 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "12 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "9.2 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "14 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "10.7 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "16 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md:141
+msgid "70B parameter models"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "26 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "32 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "40 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "41 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "48 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "39 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "46 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md
+msgid "56 GB"
+msgstr ""
+
+#: ../../source/references_quantization.md:151
+msgid ""
+"**Recommendation for 70B**: Use Q3_K_M or Q4_K_S to fit in consumer "
+"hardware."
+msgstr ""
+
+#: ../../source/references_quantization.md:153
+msgid "Finding Pre-Quantized Models"
+msgstr ""
+
+#: ../../source/references_quantization.md:155
+msgid "**TheBloke** on HuggingFace:"
+msgstr ""
+
+#: ../../source/references_quantization.md:156
+msgid "https://huggingface.co/TheBloke"
+msgstr ""
+
+#: ../../source/references_quantization.md:157
+msgid "Most models available in all GGUF formats"
+msgstr ""
+
+#: ../../source/references_quantization.md:158
+msgid "No conversion needed"
+msgstr ""
+
+#: ../../source/references_quantization.md:160
+msgid "**Example**:"
+msgstr ""
+
+#: ../../source/references_quantization.md:169
+msgid "Importance Matrices (imatrix)"
+msgstr ""
+
+#: ../../source/references_quantization.md:171
+msgid "**What**: Calibration data to improve quantization quality."
+msgstr ""
+
+#: ../../source/references_quantization.md:173
+msgid "**Benefits**:"
+msgstr ""
+
+#: ../../source/references_quantization.md:174
+msgid "10-20% perplexity improvement with Q4"
+msgstr ""
+
+#: ../../source/references_quantization.md:175
+msgid "Essential for Q3 and below"
+msgstr ""
+
+#: ../../source/references_quantization.md:177
+msgid "**Usage**:"
+msgstr ""
+
+#: ../../source/references_quantization.md:193
+msgid "**Calibration data**:"
+msgstr ""
+
+#: ../../source/references_quantization.md:194
+msgid "Use domain-specific text (e.g., code for code models)"
+msgstr ""
+
+#: ../../source/references_quantization.md:195
+msgid "~100MB of representative text"
+msgstr ""
+
+#: ../../source/references_quantization.md:196
+msgid "Higher quality data = better quantization"
+msgstr ""
+
+#: ../../source/references_quantization.md:198
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../source/references_quantization.md:200
+msgid "**Model outputs gibberish**:"
+msgstr ""
+
+#: ../../source/references_quantization.md:201
+msgid "Quantization too aggressive (Q2_K)"
+msgstr ""
+
+#: ../../source/references_quantization.md:202
+msgid "Try Q4_K_M or Q5_K_M"
+msgstr ""
+
+#: ../../source/references_quantization.md:203
+msgid "Verify model converted correctly"
+msgstr ""
+
+#: ../../source/references_quantization.md:205
+msgid "**Out of memory**:"
+msgstr ""
+
+#: ../../source/references_quantization.md:206
+msgid "Use lower quantization (Q4_K_S instead of Q5_K_M)"
+msgstr ""
+
+#: ../../source/references_quantization.md:207
+msgid "Offload fewer layers to GPU (`-ngl`)"
+msgstr ""
+
+#: ../../source/references_quantization.md:208
+msgid "Use smaller context (`-c 2048`)"
+msgstr ""
+
+#: ../../source/references_quantization.md:210
+msgid "**Slow inference**:"
+msgstr ""
+
+#: ../../source/references_quantization.md:211
+msgid "Higher quantization uses more compute"
+msgstr ""
+
+#: ../../source/references_quantization.md:212
+msgid "Q8_0 much slower than Q4_K_M"
+msgstr ""
+
+#: ../../source/references_quantization.md:213
+msgid "Consider speed vs quality trade-off"
+msgstr ""
+

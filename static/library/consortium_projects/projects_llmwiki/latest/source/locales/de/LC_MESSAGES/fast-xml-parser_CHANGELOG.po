@@ -1,0 +1,2076 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:1
+msgid ""
+"<small>Note: If you find missing information about particular minor "
+"version, that version must have been changed without any functional "
+"change in this library.</small>"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:3
+msgid "**4.5.4 / 2026-02-26**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:4
+msgid "support strictReservedNames"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:5
+msgid "support captureMetaData"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:6
+msgid "support maxNestedTags"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:7
+msgid ""
+"handle non-array input for XML builder when preserveOrder is true (By "
+"Angelo Coetzee)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:8
+msgid "Improve security and performance of entity processing"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:9
+msgid ""
+"new options maxEntitySize, maxExpansionDepth, maxTotalExpansions, "
+"maxExpandedLength, allowedTags,tagFilter"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:10
+msgid "fast return when no edtity is present"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:11
+msgid "improvement replacement logic to reduce number of calls"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:12
+msgid "fix: Escape regex char in entity name"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:13
+msgid "fix: handle HTML numeric and hex entities when out of range"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:14
+msgid ""
+"fix #775: transformTagName with allowBooleanAttributes adds an "
+"unnecessary attribute"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:15
+msgid "Use Uint8Array in place of Buffer in Parser"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:16
+msgid "Support EMPTY and ANY with ELEMENT in DOCTYPE"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:17
+msgid ""
+"fix: support numeric entities with values over 0xFFFF (#726) (By Marc "
+"Durdin)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:20
+msgid "**4.5.2 / 2025-02-18**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:21
+msgid ""
+"Fix null CDATA to comply with undefined behavior (#701) (By [Matthieu "
+"BOHEAS](https://github.com/Kelgors))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:22
+msgid ""
+"Fix(performance): Update check for leaf node in saveTextToParentTag "
+"function in OrderedObjParser.js (#707) (By "
+"[...](https://github.com/tomingtoming))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:23
+msgid ""
+"Fix: emit full JSON string from CLI when no output filename specified "
+"(#710) (By [Matt Benson](https://github.com/mbenson))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:25
+msgid "**4.5.1 / 2024-12-15**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:26
+msgid "Fix empty tag key name for v5 (#697).  no impact on v4"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:27
+msgid "Fixes entity parsing when used in strict mode (#699)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:29
+msgid "**4.5.0 / 2024-09-03**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:30
+msgid ""
+"feat #666: ignoreAttributes support function, and array of string or "
+"regex (By [ArtemM](https://github.com/mav-rik))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:32
+msgid "**4.4.1 / 2024-07-28**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:33
+msgid "v5 fix: maximum length limit to currency value"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:34
+msgid ""
+"fix #634: build attributes with oneListGroup and attributesGroupName "
+"(#653)(By [Andreas Naziris](https://github.com/a-rasin))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:35
+msgid ""
+"fix: get oneListGroup to work as expected for array of strings (#662)(By "
+"[Andreas Naziris](https://github.com/a-rasin))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:37
+msgid "**4.4.0 / 2024-05-18**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:38
+msgid "fix #654: parse attribute list correctly for self closing stop node."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:39
+msgid ""
+"fix: validator bug when closing tag is not opened. (#647) (By [Ryosuke "
+"Fukatani](https://github.com/RyosukeFukatani))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:40
+msgid ""
+"fix #581: typings; return type of `tagValueProcessor` & "
+"`attributeValueProcessor` (#582) (By [monholm]())"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:42
+msgid "**4.3.6 / 2024-03-16**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:43
+msgid ""
+"Add support for parsing HTML numeric entities (#645) (By [Jonas Schade "
+"](https://github.com/DerZade))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:45
+msgid "**4.3.5 / 2024-02-24**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:46
+msgid "code for v5 is added for experimental use"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:48
+msgid "**4.3.4 / 2024-01-10**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:49
+msgid ""
+"fix: Don't escape entities in CDATA sections (#633) (By "
+"[wackbyte](https://github.com/wackbyte))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:51
+msgid "**4.3.3 / 2024-01-10**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:52
+msgid "Remove unnecessary regex"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:54
+msgid "**4.3.2 / 2023-10-02**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:55
+msgid ""
+"fix `jObj.hasOwnProperty` when give input is null (By [Arda "
+"TANRIKULU](https://github.com/ardatan))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:57
+msgid "**4.3.1 / 2023-09-24**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:58
+msgid ""
+"revert back \"Fix typings for builder and parser to make return type "
+"generic\" to avoid failure of existing projects. Need to decide a common "
+"approach."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:60
+msgid "**4.3.0 / 2023-09-20**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:61
+msgid ""
+"Fix stopNodes to work with removeNSPrefix (#607) (#608) (By [Craig "
+"Andrews]https://github.com/candrews))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:62
+msgid "Fix #610 ignore properties set to Object.prototype"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:63
+msgid ""
+"Fix typings for builder and parser to make return type generic (By [Sarah"
+" Dayan](https://github.com/sarahdayan))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:65
+msgid "**4.2.7 / 2023-07-30**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:66
+msgid ""
+"Fix: builder should set text node correctly when only textnode is present"
+" (#589) (By [qianqing](https://github.com/joneqian))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:67
+msgid ""
+"Fix: Fix for null and undefined attributes when building xml (#585) "
+"(#598). A null or undefined value should be ignored. (By [Eugenio "
+"Ceschia](https://github.com/cecia234))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:69
+msgid "**4.2.6 / 2023-07-17**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:70
+msgid ""
+"Fix: Remove trailing slash from jPath for self-closing tags (#595) (By "
+"[Maciej Radzikowski](https://github.com/m-radzikowski))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:72
+msgid "**4.2.5 / 2023-06-22**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:73
+msgid "change code implementation"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:75
+msgid "**4.2.4 / 2023-06-06**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:76
+#: ../../source/fast-xml-parser_CHANGELOG.md:79
+msgid "fix security bug"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:78
+msgid "**4.2.3 / 2023-06-05**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:81
+msgid "**4.2.2 / 2023-04-18**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:82
+msgid ""
+"fix #562: fix unpaired tag when it comes in last of a nested tag. Also "
+"throw error when unpaired tag is used as closing tag"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:84
+msgid "**4.2.1 / 2023-04-18**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:85
+msgid "fix: jpath after unpaired tags"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:87
+msgid "**4.2.0 / 2023-04-09**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:88
+msgid "support `updateTag` parser property"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:90
+msgid "**4.1.4 / 2023-04-08**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:91
+msgid ""
+"update typings to let user create XMLBuilder instance without options "
+"(#556) (By [Patrick](https://github.com/omggga))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:92
+msgid ""
+"fix: IsArray option isn't parsing tags with 0 as value correctly #490 "
+"(#557) (By [Aleksandr Murashkin](https://github.com/p-kuen))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:93
+msgid ""
+"feature: support `oneListGroup` to group repeated children tags udder "
+"single group"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:95
+msgid "**4.1.3 / 2023-02-26**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:96
+msgid "fix #546: Support complex entity value"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:98
+msgid "**4.1.2 / 2023-02-12**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:99
+msgid "Security Fix"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:101
+msgid "**4.1.1 / 2023-02-03**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:102
+msgid "Fix #540: ignoreAttributes breaks unpairedTags"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:103
+msgid "Refactor XML builder code"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:105
+msgid "**4.1.0 / 2023-02-02**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:106
+msgid ""
+"Fix '<' or '>' in DTD comment throwing an error. (#533) (By [Adam "
+"Baker](https://github.com/Cwazywierdo))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:107
+msgid "Set \"eNotation\" to 'true' as default"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:109
+msgid "**4.0.15 / 2023-01-25**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:110
+msgid "make \"eNotation\" optional"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:112
+msgid "**4.0.14 / 2023-01-22**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:113
+msgid "fixed: add missed typing \"eNotation\" to parse values"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:115
+msgid "**4.0.13 / 2023-01-07**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:116
+msgid "preserveorder formatting (By [mdeknowis](https://github.com/mdeknowis))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:117
+msgid ""
+"support `transformAttributeName` (By [Erik Rothoff "
+"Andersson](https://github.com/erkie))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:119
+msgid "**4.0.12 / 2022-11-19**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:120
+msgid "fix typescript"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:122
+msgid "**4.0.11 / 2022-10-05**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:123
+msgid "fix #501: parse for entities only once"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:125
+msgid "**4.0.10 / 2022-09-14**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:126
+msgid ""
+"fix broken links in demo site (By [Yannick "
+"Lang](https://github.com/layaxx))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:127
+msgid ""
+"fix #491: tagValueProcessor type definition (By [Andrea Francesco "
+"Speziale](https://github.com/andreafspeziale))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:128
+msgid "Add jsdocs for tagValueProcessor"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:131
+msgid "**4.0.9 / 2022-07-10**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:132
+msgid "fix #470: stop-tag can have self-closing tag with same name"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:133
+msgid "fix #472: stopNode can have any special tag inside"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:134
+msgid "Allow !ATTLIST and !NOTATION with DOCTYPE"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:135
+msgid ""
+"Add transformTagName option to transform tag names when parsing (#469) "
+"(By [Erik Rothoff Andersson](https://github.com/erkie))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:137
+msgid "**4.0.8 / 2022-05-28**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:138
+msgid ""
+"Fix CDATA parsing returning empty string when value = 0 (#451) (By "
+"[ndelanou](https://github.com/ndelanou))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:139
+msgid ""
+"Fix stopNodes when same tag appears inside node (#456) (By "
+"[patrickshipe](https://github.com/patrickshipe))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:140
+msgid "fix #468: prettify own properties only"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:142
+msgid "**4.0.7 / 2022-03-18**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:143
+msgid "support CDATA even if tag order is not preserved"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:144
+msgid "support Comments even if tag order is not preserved"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:145
+msgid "fix #446: XMLbuilder should not indent XML declaration"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:147
+msgid "**4.0.6 / 2022-03-08**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:148
+msgid "fix: call tagValueProcessor only once for array items"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:149
+msgid "fix: missing changed for #437"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:151
+msgid "**4.0.5 / 2022-03-06**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:152
+msgid "fix #437: call tagValueProcessor from XML builder"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:154
+msgid "**4.0.4 / 2022-03-03**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:155
+msgid ""
+"fix #435: should skip unpaired and self-closing nodes when set as "
+"stopnodes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:157
+msgid "**4.0.3 / 2022-02-15**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:158
+msgid ""
+"fix: ReferenceError when Bundled with Strict (#431) (By [Andreas "
+"Heissenberger](https://github.com/aheissenberger))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:161
+msgid "**4.0.2 / 2022-02-04**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:162
+msgid "builder supports `suppressUnpairedNode`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:163
+msgid "parser supports `ignoreDeclaration` and `ignorePiTags`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:164
+msgid "fix: when comment is parsed as text value if given as `<!--> ...` #423"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:165
+msgid "builder supports decoding `&`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:167
+msgid "**4.0.1 / 2022-01-08**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:168
+msgid "fix builder for pi tag"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:169
+msgid "fix: support suppressBooleanAttrs by builder"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:171
+msgid "**4.0.0 / 2022-01-06**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:172
+msgid ""
+"Generating different combined, parser only, builder only, validator only "
+"browser bundles"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:173
+msgid ""
+"Keeping cjs modules as they can be imported in cjs and esm modules both. "
+"Otherwise refer `esm` branch."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:175
+msgid "**4.0.0-beta.8 / 2021-12-13**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:176
+msgid "call tagValueProcessor for stop nodes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:178
+msgid "**4.0.0-beta.7 / 2021-12-09**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:179
+msgid "fix Validator bug when an attribute has no value but '=' only"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:180
+msgid "XML Builder should suppress unpaired tags by default."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:181
+msgid "documents update for missing features"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:182
+msgid "refactoring to use Object.assign"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:183
+msgid "refactoring to remove repeated code"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:185
+msgid "**4.0.0-beta.6 / 2021-12-05**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:186
+msgid "Support PI Tags processing"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:187
+msgid ""
+"Support `suppressBooleanAttributes` by XML Builder for attributes with "
+"value `true`."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:189
+msgid "**4.0.0-beta.5 / 2021-12-04**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:190
+msgid "fix: when a tag with name \"attributes\""
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:192
+msgid "**4.0.0-beta.4 / 2021-12-02**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:193
+msgid "Support HTML document parsing"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:194
+msgid "skip stop nodes parsing when building the XML from JS object"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:195
+msgid "Support external entites without DOCTYPE"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:196
+msgid "update dev dependency: strnum v1.0.5 to fix long number issue"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:198
+msgid "**4.0.0-beta.3 / 2021-11-30**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:199
+msgid "support global stopNodes expression like \"*.stop\""
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:200
+msgid "support self-closing and paired unpaired tags"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:201
+msgid "fix: CDATA should not be parsed."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:202
+msgid ""
+"Fix typings for XMLBuilder (#396)(By [Anders Emil "
+"Salvesen](https://github.com/andersem))"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:203
+msgid "supports XML entities, HTML entities, DOCTYPE entities"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:205
+msgid "**⚠️ 4.0.0-beta.2 / 2021-11-19**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:206
+msgid "rename `attrMap` to `attibutes` in parser output when `preserveOrder:true`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:207
+msgid "supports unpairedTags"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:209
+msgid "**⚠️ 4.0.0-beta.1 / 2021-11-18**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:210
+msgid "Parser returns an array now"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:211
+msgid "to make the structure common"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:212
+msgid "and to return root level detail"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:213
+msgid "renamed `cdataTagName` to `cdataPropName`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:214
+msgid "Added `commentPropName`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:215
+msgid "fix typings"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:217
+msgid "**⚠️ 4.0.0-beta.0 / 2021-11-16**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:218
+msgid "Name change of many configuration properties."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:219
+msgid "`attrNodeName` to `attributesGroupName`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:220
+msgid "`attrValueProcessor` to `attributeValueProcessor`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:221
+msgid "`parseNodeValue` to `parseTagValue`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:222
+msgid "`ignoreNameSpace` to `removeNSPrefix`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:223
+msgid "`numParseOptions` to `numberParseOptions`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:224
+msgid "spelling correction for `suppressEmptyNode`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:225
+msgid "Name change of cli and browser bundle to **fxparser**"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:226
+msgid "`isArray` option is added to parse a tag into array"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:227
+msgid ""
+"`preserveOrder` option is added to render XML in such a way that the "
+"result js Object maintains the order of properties same as in XML."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:228
+msgid ""
+"Processing behaviour of `tagValueProcessor` and `attributeValueProcessor`"
+" are changes with extra input parameters"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:229
+msgid "j2xparser is renamed to XMLBuilder."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:230
+msgid ""
+"You need to build XML parser instance for given options first before "
+"parsing XML."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:231
+msgid "fix #327, #336: throw error when extra text after XML content"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:232
+msgid "fix #330: attribute value can have '\\n',"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:233
+msgid "fix #350: attrbiutes can be separated by '\\n' from tagname"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:235
+msgid "3.21.1 / 2021-10-31"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:236
+msgid ""
+"Correctly format JSON elements with a text prop but no attribute props ( "
+"By [haddadnj](https://github.com/haddadnj) )"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:238
+msgid "3.21.0 / 2021-10-25"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:239
+msgid ""
+"feat: added option `rootNodeName` to set tag name for array input when "
+"converting js object to XML."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:240
+msgid ""
+"feat: added option `alwaysCreateTextNode` to force text node creation "
+"(by: *@massimo-ua*)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:241
+msgid "⚠️ feat: Better error location for unclosed tags. (by *@Gei0r*)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:242
+msgid "Some error messages would be changed when validating XML. Eg"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:243
+#, python-brace-format
+msgid ""
+"`{ InvalidXml: \"Invalid '[    \\\"rootNode\\\"]' found.\" }` → "
+"`{InvalidTag: \"Unclosed tag 'rootNode'.\"}`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:244
+#, python-brace-format
+msgid ""
+"`{ InvalidTag: \"Closing tag 'rootNode' is expected inplace of "
+"'rootnode'.\" }` → `{ InvalidTag: \"Expected closing tag 'rootNode' "
+"(opened in line 1) instead of closing tag 'rootnode'.\"}`"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:245
+msgid "⚠️ feat: Column in error response when validating XML"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:255
+msgid "3.20.1 / 2021-09-25"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:256
+msgid "update strnum package"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:258
+msgid "3.20.0 / 2021-09-10"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:259
+msgid "Use strnum npm package to parse string to number"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:260
+msgid "breaking change: long number will be parsed to scientific notation."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:262
+msgid "3.19.0 / 2021-03-14"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:263
+msgid "License changed to MIT original"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:264
+msgid "Fix #321 : namespace tag parsing"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:266
+msgid "3.18.0 / 2021-02-05"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:267
+msgid "Support RegEx and function in arrayMode option"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:268
+msgid "Fix #317 : validate nested PI tags"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:270
+msgid "3.17.4 / 2020-06-07"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:271
+msgid "Refactor some code to support IE11"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:272
+msgid "Fix: `<tag >` space as attribute string"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:274
+msgid "3.17.3 / 2020-05-23"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:275
+msgid "Fix: tag name separated by \\n \\t"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:276
+msgid "Fix: throw error for unclosed tags"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:278
+msgid "3.17.2 / 2020-05-23"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:279
+msgid "Fixed an issue in processing doctype tag"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:280
+msgid "Fixed tagName where it should not have whitespace chars"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:282
+msgid "3.17.1 / 2020-05-19"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:283
+msgid "Fixed an issue in checking opening tag"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:285
+msgid "3.17.0 / 2020-05-18"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:286
+msgid "parser: fix '<' issue when it comes in aatr value"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:287
+msgid "parser: refactoring to remove dependency from regex"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:288
+msgid "validator: fix IE 11 issue for error messages"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:289
+msgid "updated dev dependencies"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:290
+msgid "separated benchmark module to sub-module"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:291
+msgid "breaking change: comments will not be removed from CDATA data"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:293
+msgid "3.16.0 / 2020-01-12"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:294
+msgid "validaor: fix for ampersand characters (#215)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:295
+msgid "refactoring to support unicode chars in tag name"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:296
+msgid "update typing for validator error"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:298
+msgid "3.15.1 / 2019-12-09"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:299
+msgid "validaor: fix multiple roots are not allowed"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:301
+msgid "3.15.0 / 2019-11-23"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:302
+msgid "validaor: improve error messaging"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:303
+msgid "validator: add line number in case of error"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:304
+msgid "validator: add more error scenarios to make it more descriptive"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:306
+msgid "3.14.0 / 2019-10-25"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:307
+msgid "arrayMode for XML to JS obj parsing"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:309
+msgid "3.13.0 / 2019-10-02"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:310
+msgid "pass tag/attr name to tag/attr value processor"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:311
+msgid "inbuilt  optional validation with XML parser"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:313
+msgid "3.12.21 / 2019-10-02"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:314
+msgid "Fix validator for unclosed XMLs"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:315
+msgid "move nimnjs dependency to dev dependency"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:316
+#: ../../source/fast-xml-parser_CHANGELOG.md:390
+msgid "update dependencies"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:318
+msgid "3.12.20 / 2019-08-16"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:319
+msgid ""
+"Revert:  Fix #167: '>' in attribute value as it is causing high "
+"performance degrade."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:321
+msgid "3.12.19 / 2019-07-28"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:322
+msgid ""
+"Fix js to xml parser should work for date values. (broken: "
+"`tagValueProcessor` will receive the original value instead of string "
+"always) (breaking change)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:324
+msgid "3.12.18 / 2019-07-27"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:325
+msgid "remove configstore dependency"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:327
+msgid "3.12.17 / 2019-07-14"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:328
+msgid "Fix #167: '>' in attribute value"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:330
+msgid "3.12.16 / 2019-03-23"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:331
+msgid ""
+"Support a new option \"stopNodes\". (#150) Accept the list of tags which "
+"are not required to be parsed. Instead, all the nested tag and data will "
+"be assigned as string."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:333
+msgid "Don't show post-install message"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:335
+msgid "3.12.12 / 2019-01-11"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:336
+msgid "fix : IE parseInt, parseFloat error"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:338
+msgid "3.12.11 / 2018-12-24"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:339
+msgid ""
+"fix #132: \"/\" should not be parsed as boolean attr in case of self "
+"closing tags"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:341
+msgid "3.12.9 / 2018-11-23"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:342
+msgid "fix #129 : validator should not fail when an atrribute name is 'length'"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:344
+msgid "3.12.8 / 2018-11-22"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:345
+msgid ""
+"fix #128 : use 'attrValueProcessor' to process attribute value in "
+"json2xml parser"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:347
+msgid "3.12.6 / 2018-11-10"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:348
+msgid "Fix #126: check for type"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:350
+msgid "3.12.4 / 2018-09-12"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:351
+msgid "Fix: include tasks in npm package"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:353
+msgid "3.12.3 / 2018-09-12"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:354
+msgid "Fix CLI issue raised in last PR"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:356
+msgid "3.12.2 / 2018-09-11"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:357
+msgid "Fix formatting for JSON to XML output"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:358
+msgid "Migrate to webpack (PR merged)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:359
+msgid "fix cli (PR merged)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:361
+msgid "3.12.0 / 2018-08-06"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:362
+msgid "Support hexadecimal values"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:363
+msgid "Support true number parsing"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:365
+msgid "3.11.2 / 2018-07-23"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:366
+msgid "Update Demo for more options"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:367
+msgid "Update license information"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:368
+msgid "Update readme for formatting, users, and spelling mistakes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:369
+msgid "Add missing typescript definition for j2xParser"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:370
+msgid "refactoring: change filenames"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:372
+msgid "3.11.1 / 2018-06-05"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:373
+msgid "fix #93: read the text after self closing tag"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:375
+msgid "3.11.0 / 2018-05-20"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:376
+msgid "return defaultOptions if there are not options in buildOptions function"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:377
+msgid "added localeRange declaration in parser.d.ts"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:378
+msgid "Added support of cyrillic characters in validator XML"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:379
+msgid "fixed bug in validator work when XML data with byte order marker"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:381
+msgid "3.10.0 / 2018-05-13"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:382
+msgid "Added support of cyrillic characters in parsing XML to JSON"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:384
+msgid "3.9.11 / 2018-05-09"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:385
+msgid ""
+"fix https://github.com/NaturalIntelligence/fast-xml-parser/issues/80 fix "
+"nimn chars"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:386
+msgid "update package information"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:387
+msgid ""
+"fix https://github.com/NaturalIntelligence/fast-xml-parser/issues/86: "
+"json 2 xml parser : property with null value should be parsed to self "
+"closing tag."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:388
+msgid "update online demo"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:389
+msgid "revert zombiejs to old version to support old version of node"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:392
+msgid "3.3.10 / 2018-04-23"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:393
+msgid "fix #77 : parse even if closing tag has space before '>'"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:394
+msgid "include all css & js lib in demo app"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:395
+msgid "remove babel dependencies until needed"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:397
+msgid "3.3.9 / 2018-04-18"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:398
+msgid "fix #74 : TS2314 TypeScript compiler error"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:400
+msgid "3.3.8 / 2018-04-17"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:401
+msgid "fix #73 : IE doesn't support Object.assign"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:403
+msgid "3.3.7 / 2018-04-14"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:404
+msgid "fix: use let insted of const in for loop of validator"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:405
+msgid ""
+"Merge pull request https://github.com/NaturalIntelligence/fast-xml-"
+"parser/issues/71 from bb/master first draft of typings for typescript "
+"https://github.com/NaturalIntelligence/fast-xml-parser/issues/69"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:409
+msgid ""
+"Merge pull request https://github.com/NaturalIntelligence/fast-xml-"
+"parser/issues/70 from bb/patch-1 fix some typos in readme"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:413
+msgid "3.3.6 / 2018-03-21"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:414
+msgid "change arrow functions to full notation for IE compatibility"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:416
+msgid "3.3.5 / 2018-03-15"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:417
+msgid ""
+"fix https://github.com/NaturalIntelligence/fast-xml-parser/issues/67 : "
+"attrNodeName invalid behavior"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:418
+msgid "fix: remove decodeHTML char condition"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:420
+msgid "3.3.4 / 2018-03-14"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:421
+msgid "remove dependency on \"he\" package"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:422
+msgid "refactor code to separate methods in separate files."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:423
+msgid ""
+"draft code for transforming XML to json string. It is not officially "
+"documented due to performance issue."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:425
+msgid "3.3.0 / 2018-03-05"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:426
+msgid ""
+"use common default options for XML parsing for consistency. And add "
+"`parseToNimn` method."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:427
+msgid "update nexttodo"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:428
+msgid ""
+"update README about XML to Nimn transformation and remove special notes "
+"about 3.x release"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:429
+msgid "update CONTRIBUTING.ms mentioning nexttodo"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:430
+msgid "add negative case for XML PIs"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:431
+msgid ""
+"validate xml processing instruction tags    "
+"https://github.com/NaturalIntelligence/fast-xml-parser/issues/62"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:432
+msgid "nimndata: handle array with object"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:433
+msgid "nimndata: node with nested node and text node"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:434
+msgid "nimndata: handle attributes and text node"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:435
+msgid "nimndata: add options, handle array"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:436
+msgid "add xml to nimn data converter"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:437
+msgid "x2j: direct access property with tagname"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:438
+msgid "update changelog"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:439
+msgid ""
+"fix validator when single quote presents in value enclosed with double "
+"quotes or vice versa"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:440
+msgid ""
+"Revert \"remove unneded nimnjs dependency, move opencollective to "
+"devDependencies and replace it with more light opencollective-"
+"postinstall\" This reverts commit "
+"d47aa7181075d82db4fee97fd8ea32b056fe3f46."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:443
+msgid ""
+"Merge pull request: https://github.com/NaturalIntelligence/fast-xml-"
+"parser/issues/63 from HaroldPutman/suppress-undefined Keep undefined "
+"nodes out of the XML output :     This is useful when you are deleting "
+"nodes from the JSON and rewriting XML."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:446
+msgid "3.2.4 / 2018-03-01"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:447
+msgid "fix #59 fix in validator when open quote presents in attribute value"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:448
+msgid "Create nexttodo.md"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:449
+msgid "exclude static from bitHound tests"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:450
+msgid "add package lock"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:452
+msgid "3.2.3 / 2018-02-28"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:453
+msgid ""
+"Merge pull request from  Delagen/master: fix namespaces can contain the "
+"same characters as xml names"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:455
+msgid "3.2.2 / 2018-02-22"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:456
+msgid "fix: attribute xmlns should not be removed if ignoreNameSpace is false"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:457
+msgid "create CONTRIBUTING.md"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:459
+msgid "3.2.1 / 2018-02-17"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:460
+msgid "fix: empty attribute should be parsed"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:462
+msgid "3.2.0 / 2018-02-16"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:463
+msgid "Merge pull request : Dev to Master"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:464
+msgid "Update README and version"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:465
+msgid "j2x:add performance test"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:466
+msgid "j2x: Remove extra empty line before closing tag"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:467
+msgid "j2x: suppress empty nodes to self closing node if configured"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:468
+msgid "j2x: provide option to give indentation depth"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:469
+msgid "j2x: make optional formatting"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:470
+msgid "j2x: encodeHTMLchat"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:471
+msgid "j2x: handle cdata tag"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:472
+msgid "j2x: handle grouped attributes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:473
+msgid "convert json to xml"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:474
+msgid "nested object"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:475
+msgid "array"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:476
+msgid "attributes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:477
+msgid "text value"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:478
+msgid "small refactoring"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:479
+msgid "Merge pull request: Update cli.js to let user validate XML file or data"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:480
+msgid "Add option for rendering CDATA as separate property"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:482
+msgid "3.0.1 / 2018-02-09"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:483
+msgid "fix CRLF: replace it with single space in attributes value only."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:485
+msgid "3.0.0 / 2018-02-08"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:486
+msgid "change online tool with new changes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:487
+msgid "update info about new options"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:488
+msgid "separate tag value processing to separate function"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:489
+msgid "make HTML decoding optional"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:490
+msgid "give an option to allow boolean attributes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:491
+msgid "change cli options as per v3"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:492
+msgid "Correct comparison table format on README"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:493
+msgid "update v3 information"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:494
+msgid "some performance improvement changes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:495
+msgid "Make regex object local to the method and move some common methods to util"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:496
+msgid "Change parser to"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:497
+msgid "handle multiple instances of CDATA"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:498
+msgid "make triming of value optionals"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:499
+msgid "HTML decode attribute and text value"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:500
+msgid "refactor code to separate files"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:501
+msgid "Ignore newline chars without RE (in validator)"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:502
+msgid "validate for XML prolog"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:503
+msgid "Validate DOCTYPE without RE"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:504
+msgid "Update validator to return error response"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:505
+msgid "Update README to add detail about V3"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:506
+msgid "Separate xmlNode model class"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:507
+msgid "include vscode debug config"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:508
+msgid "fix for repeated object"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:509
+msgid "fix attribute regex for boolean attributes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:510
+msgid "Fix validator for invalid attributes 2.9.4 / 2018-02-02"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:512
+msgid "Merge pull request: Decode HTML characters"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:513
+msgid "refactor source folder name"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:514
+msgid "ignore bundle / browser js to be published to npm 2.9.3 / 2018-01-26"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:516
+msgid "Merge pull request: Correctly remove CRLF line breaks"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:517
+msgid "Enable to parse attribute in online editor"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:518
+msgid "Fix testing demo app test"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:519
+msgid "Describe parsing options"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:520
+msgid "Add options for online demo 2.9.2 / 2018-01-18"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:522
+msgid "Remove check if tag starting with \"XML\""
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:523
+msgid "Fix: when there are spaces before / after CDATA"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:525
+msgid "2.9.1 / 2018-01-16"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:526
+msgid "Fix: newline should be replaced with single space"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:527
+msgid "Fix: for single and multiline comments"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:528
+msgid "validate xml with CDATA"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:529
+msgid "Fix: the issue when there is no space between 2 attributes"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:530
+msgid ""
+"Fix: https://github.com/NaturalIntelligence/fast-xml-parser/issues/33: "
+"when there is newline char in attr val, it doesn't parse"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:531
+msgid "Merge pull request: fix ignoreNamespace"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:532
+msgid "fix: don't wrap attributes if only namespace attrs"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:533
+msgid "fix: use portfinder for run tests, update deps"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:534
+msgid "fix: don't treat namespaces as attributes when ignoreNamespace enabled"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:536
+msgid "2.9.0 / 2018-01-10"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:537
+msgid "Rewrite the validator to handle large files. Ignore DOCTYPE validation."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:539
+msgid "Fix: When attribute value has equal sign"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:541
+msgid "2.8.3 / 2017-12-15"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:542
+msgid "Fix: when a tag has value along with subtags"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:544
+msgid "2.8.2 / 2017-12-04"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:545
+msgid "Fix value parsing for IE"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:547
+msgid "2.8.1 / 2017-12-01"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:548
+msgid "fix: validator should return false instead of err when invalid XML"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:550
+msgid "2.8.0 / 2017-11-29"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:551
+msgid "Add CLI option to ignore value conversion"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:552
+msgid "Fix variable name when filename is given on CLI"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:553
+msgid "Update CLI help text"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:554
+msgid "Merge pull request: xml2js: Accept standard input"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:555
+msgid "Test Node 8"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:556
+msgid "Update dependencies"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:557
+msgid "Bundle readToEnd"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:558
+msgid "Add ability to read from standard input"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:560
+msgid "2.7.4 / 2017-09-22"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:561
+msgid ""
+"Merge pull request: Allow wrap attributes with subobject to compatible "
+"with other parsers output"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:563
+msgid "2.7.3 / 2017-08-02"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:564
+msgid "fix: handle CDATA with regx"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:566
+msgid "2.7.2 / 2017-07-30"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:567
+msgid "Change travis config for yarn caching"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:568
+msgid "fix validator: when tag property is same as array property"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:569
+msgid "Merge pull request: Failing test case in validator for valid SVG"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:571
+msgid "2.7.1 / 2017-07-26"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:572
+msgid "Fix: Handle val 0"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:574
+msgid "2.7.0 / 2017-07-25"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:575
+msgid "Fix test for arrayMode"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:576
+msgid "Merge pull request: Add arrayMode option to parse any nodes as arrays"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:578
+msgid "2.6.0 / 2017-07-14"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:579
+msgid "code improvement"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:580
+msgid "Add unit tests for value conversion for attr"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:581
+msgid ""
+"Merge pull request: option of an attribute value conversion to a number "
+"(textAttrConversion) the same way as the textNodeConversion option does. "
+"Default value is false."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:583
+msgid "2.5.1 / 2017-07-01"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:584
+msgid "Fix XML element name pattern"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:585
+msgid "Fix XML element name pattern while parsing"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:586
+msgid "Fix validation for xml tag element"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:588
+msgid "2.5.0 / 2017-06-25"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:589
+msgid "Improve Validator performance"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:590
+msgid "update attr matching regex"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:591
+msgid "Add perf tests"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:592
+msgid "Improve atrr regex to handle all cases"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:594
+msgid "2.4.4 / 2017-06-08"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:595
+msgid "Bug fix: when an attribute has single or double quote in value"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:597
+msgid "2.4.3 / 2017-06-05"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:598
+msgid "Bug fix: when multiple CDATA tags are given"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:599
+msgid "Merge pull request: add option \"textNodeConversion\""
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:600
+msgid "add option \"textNodeConversion\""
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:602
+msgid "2.4.1 / 2017-04-14"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:603
+msgid "fix tests"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:604
+msgid "Bug fix: preserve initial space of node value"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:605
+msgid "Handle CDATA"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:607
+msgid "2.3.1 / 2017-03-15"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:608
+msgid "Bug fix: when single self closing tag"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:609
+msgid "Merge pull request: fix .codeclimate.yml"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:610
+msgid "Update .codeclimate.yml - Fixed config so it does not error anymore."
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:611
+msgid "Update .codeclimate.yml"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:613
+msgid "2.3.0 / 2017-02-26"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:614
+msgid "Code improvement"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:615
+msgid "add bithound config"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:616
+msgid "Update usage"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:617
+msgid "Update travis to generate bundle js before running tests"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:618
+msgid "1.Browserify, 2. add more tests for validator"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:619
+msgid "Add validator"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:620
+msgid "Fix CLI default parameter bug"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:622
+msgid "2.2.1 / 2017-02-05"
+msgstr ""
+
+#: ../../source/fast-xml-parser_CHANGELOG.md:623
+msgid "Bug fix: CLI default option"
+msgstr ""
+

@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/object.assign_README.md:1
+msgid "object.assign <sup>[![Version Badge][npm-version-svg]][npm-url]</sup>"
+msgstr ""
+
+#: ../../source/object.assign_README.md:1
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/object.assign_README.md:3
+msgid ""
+"[![github actions][actions-image]][actions-url] [![coverage][codecov-"
+"image]][codecov-url] [![dependency status][deps-svg]][deps-url] [![dev "
+"dependency status][dev-deps-svg]][dev-deps-url] [![License][license-image"
+"]][license-url] [![Downloads][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/object.assign_README.md:3
+msgid "github actions"
+msgstr ""
+
+#: ../../source/object.assign_README.md:3
+msgid "coverage"
+msgstr ""
+
+#: ../../source/object.assign_README.md:3
+msgid "dependency status"
+msgstr ""
+
+#: ../../source/object.assign_README.md:3
+msgid "dev dependency status"
+msgstr ""
+
+#: ../../source/object.assign_README.md:3
+msgid "License"
+msgstr ""
+
+#: ../../source/object.assign_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/object.assign_README.md:10
+msgid "[![npm badge][npm-badge-png]][npm-url]"
+msgstr ""
+
+#: ../../source/object.assign_README.md:10
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/object.assign_README.md:12
+msgid ""
+"An Object.assign shim. Invoke its \"shim\" method to shim Object.assign "
+"if it is unavailable."
+msgstr ""
+
+#: ../../source/object.assign_README.md:14
+msgid ""
+"This package implements the [es-shim API](https://github.com/es-"
+"shims/api) interface. It works in an ES3-supported environment and "
+"complies with the [spec](http://www.ecma-international.org/ecma-262/6.0"
+"/#sec-object.assign). In an ES6 environment, it will also work properly "
+"with `Symbol`s."
+msgstr ""
+
+#: ../../source/object.assign_README.md:16
+msgid ""
+"Takes a minimum of 2 arguments: `target` and `source`. Takes a variable "
+"sized list of source arguments - at least 1, as many as you want. Throws "
+"a TypeError if the `target` argument is `null` or `undefined`."
+msgstr ""
+
+#: ../../source/object.assign_README.md:20
+msgid "Most common usage:"
+msgstr ""
+
+#: ../../source/object.assign_README.md:27
+msgid "Example"
+msgstr ""
+
+#: ../../source/object.assign_README.md:117
+msgid "Tests"
+msgstr ""
+
+#: ../../source/object.assign_README.md:118
+msgid "Simply clone the repo, `npm install`, and run `npm test`"
+msgstr ""
+

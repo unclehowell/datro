@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/source-map-url_changelog.md:1
+msgid "Version 0.4.1 (2021-02-01)"
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:3
+#, python-format
+msgid ""
+"Improved: The package is now about 50% smaller, by excluding unnecessary "
+"files. Thanks to Piotr Kuczynski (@pkuczynski)!"
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:6
+msgid "Version 0.4.0 (2015-11-12)"
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:8
+msgid ""
+"Changed: sourceMappingURL comments used to be matched only when placed at"
+" the end of the script. However, since several commonly used JavaScript "
+"libraries do not follow this convention and all popular web browsers "
+"accept non-trailing comments, this has been revised."
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:13
+msgid "So now non-trailing SourceMappingURL comments are matched as well."
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:16
+msgid "Version 0.3.0 (2014-08-16)"
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:18
+msgid ""
+"Changed: sourceMappingURL comments used to be matched only if they "
+"appeared on their own line. However, the spec only says:"
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:21
+msgid ""
+"The generated code may include a line at the end of the source, with the "
+"following form:"
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:25
+msgid "So now they are matched also when they appear on the same line as code."
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:27
+msgid ""
+"Removed: The `.set()` method. I couldn’t decide how it should work "
+"considering the above change. Moreover, it was unnecessarily complex (and"
+" would have gotten worse) for very little gain. It is much easier to run "
+"`.remove()` if needed, and then simply `code += \"\\n//# "
+"sourceMappingURL=\" + url` (using the appropriate comment syntax and "
+"newline). KISS."
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:33
+msgid ""
+"Changed: The `.insertBefore()` method now always inserts the string "
+"exactly before the sourceMappingURL comment; not before the newline "
+"before the comment (if any). Moreover, it does not ensure that the "
+"comment will be on a new line anymore. This is up to the caller. KISS."
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:38
+msgid ""
+"Changed: The `.remove()` method no longer removes the newline before the "
+"sourceMappingURL (if any)."
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:41
+msgid "Changed: Renamed `.get()` to `.getFrom()`."
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:42
+msgid "Changed: Renamed `.remove()` to `.removeFrom()`."
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:44
+msgid "Added: The `.existsIn()` method."
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:47
+msgid "Version 0.2.0 (2014-02-23)"
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:49
+msgid ""
+"Changed: A space is no longer inserted before the closing comment syntax."
+" If such a space is desired, it needs to be put in the closing comment "
+"syntax itself (such as `[\"/*\", \" */\"]` instead of `[\"/*\", "
+"\"*/\"]`). (Backwards incompatible change.)"
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:55
+msgid "Version 0.1.0 (2014-02-22)"
+msgstr ""
+
+#: ../../source/source-map-url_changelog.md:57
+msgid "Initial release."
+msgstr ""
+

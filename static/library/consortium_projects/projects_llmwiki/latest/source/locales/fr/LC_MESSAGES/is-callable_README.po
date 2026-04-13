@@ -1,0 +1,168 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/is-callable_README.md:1
+msgid "is-callable <sup>[![Version Badge][2]][1]</sup>"
+msgstr ""
+
+#: ../../source/is-callable_README.md:1
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/is-callable_README.md:3
+msgid ""
+"[![github actions][actions-image]][actions-url] [![coverage][codecov-"
+"image]][codecov-url] [![dependency status][5]][6] [![dev dependency "
+"status][7]][8] [![License][license-image]][license-url] [![Downloads"
+"][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/is-callable_README.md:3
+msgid "github actions"
+msgstr ""
+
+#: ../../source/is-callable_README.md:3
+msgid "coverage"
+msgstr ""
+
+#: ../../source/is-callable_README.md:3
+msgid "dependency status"
+msgstr ""
+
+#: ../../source/is-callable_README.md:3
+msgid "dev dependency status"
+msgstr ""
+
+#: ../../source/is-callable_README.md:3
+msgid "License"
+msgstr ""
+
+#: ../../source/is-callable_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/is-callable_README.md:10
+msgid "[![npm badge][11]][1]"
+msgstr ""
+
+#: ../../source/is-callable_README.md:10
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/is-callable_README.md:12
+msgid ""
+"Is this JS value callable? Works with Functions and GeneratorFunctions, "
+"despite ES6 @@toStringTag."
+msgstr ""
+
+#: ../../source/is-callable_README.md:14
+msgid "Supported engines"
+msgstr ""
+
+#: ../../source/is-callable_README.md:15
+msgid "Automatically tested in every minor version of node."
+msgstr ""
+
+#: ../../source/is-callable_README.md:17
+msgid "Manually tested in:"
+msgstr ""
+
+#: ../../source/is-callable_README.md:18
+msgid ""
+"Safari: v4 - v15 <sub>(4, 5, 5.1, 6.0.5, 6.2, 7.1, 8, 9.1.3, 10.1.2, "
+"11.1.2, 12.1, 13.1.2, 14.1.2, 15.3, 15.6.1)</sub>"
+msgstr ""
+
+#: ../../source/is-callable_README.md:19
+msgid ""
+"Note: Safari 9 has `class`, but `Function.prototype.toString` hides that "
+"progeny and makes them look like functions, so `class` constructors will "
+"be reported by this package as callable, when they are not in fact "
+"callable."
+msgstr ""
+
+#: ../../source/is-callable_README.md:20
+msgid "Chrome: v15 - v81, v83 - v106<sub>(every integer version)</sub>"
+msgstr ""
+
+#: ../../source/is-callable_README.md:21
+msgid "Note: This includes Edge v80+ and Opera v15+, which matches Chrome"
+msgstr ""
+
+#: ../../source/is-callable_README.md:22
+msgid "Firefox: v3, v3.6, v4 - v105 <sub>(every integer version)</sub>"
+msgstr ""
+
+#: ../../source/is-callable_README.md:23
+msgid ""
+"Note: v45 - v54 has `class`, but `Function.prototype.toString` hides that"
+" progeny and makes them look like functions, so `class` constructors will"
+" be reported by this package as callable, when they are not in fact "
+"callable."
+msgstr ""
+
+#: ../../source/is-callable_README.md:24
+msgid ""
+"Note: in v42 - v63, `Function.prototype.toString` throws on HTML element "
+"constructors, or a Proxy to a function"
+msgstr ""
+
+#: ../../source/is-callable_README.md:25
+msgid ""
+"Note: in v20 - v35, HTML element constructors are not callable, despite "
+"having typeof `function`."
+msgstr ""
+
+#: ../../source/is-callable_README.md:26
+msgid "Note: in v19, `document.all` is not callable."
+msgstr ""
+
+#: ../../source/is-callable_README.md:27
+msgid "IE: v6 - v11<sub>(every integer version</sub>"
+msgstr ""
+
+#: ../../source/is-callable_README.md:28
+msgid ""
+"Opera: v11.1, v11.5, v11.6, v12.1, v12.14, v12.15, v12.16, v15+ <sub>v15+"
+" matches Chrome</sub>"
+msgstr ""
+
+#: ../../source/is-callable_README.md:30
+msgid "Example"
+msgstr ""
+
+#: ../../source/is-callable_README.md:57
+msgid "Install"
+msgstr ""
+
+#: ../../source/is-callable_README.md:59
+msgid "Install with"
+msgstr ""
+
+#: ../../source/is-callable_README.md:65
+msgid "Tests"
+msgstr ""
+
+#: ../../source/is-callable_README.md:67
+msgid "Simply clone the repo, `npm install`, and run `npm test`"
+msgstr ""
+

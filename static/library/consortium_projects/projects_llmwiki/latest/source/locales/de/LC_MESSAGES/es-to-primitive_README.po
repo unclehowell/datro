@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/es-to-primitive_README.md:1
+msgid ""
+"es-to-primitive <sup>[![Version Badge][npm-version-svg]][package-"
+"url]</sup>"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:1
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:3
+msgid ""
+"[![github actions][actions-image]][actions-url] [![coverage][codecov-"
+"image]][codecov-url] [![dependency status][deps-svg]][deps-url] [![dev "
+"dependency status][dev-deps-svg]][dev-deps-url] [![License][license-image"
+"]][license-url] [![Downloads][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:3
+msgid "github actions"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:3
+msgid "coverage"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:3
+msgid "dependency status"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:3
+msgid "dev dependency status"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:3
+msgid "License"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:10
+msgid "[![npm badge][npm-badge-png]][package-url]"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:10
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:12
+msgid ""
+"ECMAScript “ToPrimitive” algorithm. Provides ES5 and ES2015 versions. "
+"When different versions of the spec conflict, the default export will be "
+"the latest version of the abstract operation. Alternative versions will "
+"also be available under an `es5`/`es2015` exported property if you "
+"require a specific version."
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:16
+msgid "Example"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:35
+msgid "Tests"
+msgstr ""
+
+#: ../../source/es-to-primitive_README.md:36
+msgid "Simply clone the repo, `npm install`, and run `npm test`"
+msgstr ""
+

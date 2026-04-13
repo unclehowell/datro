@@ -1,0 +1,289 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/source-map-support_README.md:1
+msgid "Source Map Support"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:2
+msgid ""
+"[![Build Status](https://travis-ci.org/evanw/node-source-map-"
+"support.svg?branch=master)](https://travis-ci.org/evanw/node-source-map-"
+"support)"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:2
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:4
+msgid ""
+"This module provides source map support for stack traces in node via the "
+"[V8 stack trace API](https://github.com/v8/v8/wiki/Stack-Trace-API). It "
+"uses the [source-map](https://github.com/mozilla/source-map) module to "
+"replace the paths and line numbers of source-mapped files with their "
+"original paths and line numbers. The output mimics node's stack trace "
+"format with the goal of making every compile-to-JS language more of a "
+"first-class citizen. Source maps are completely general (not specific to "
+"any one language) so you can use source maps with multiple compile-to-JS "
+"languages in the same node process."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:6
+msgid "Installation and Usage"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:8
+msgid "Node support"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:14
+msgid ""
+"Source maps can be generated using libraries such as [source-map-index-"
+"generator](https://github.com/twolfson/source-map-index-generator). Once "
+"you have a valid source map, place a source mapping comment somewhere in "
+"the file (usually done automatically or with an option by your "
+"transpiler):"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:20
+msgid ""
+"If multiple sourceMappingURL comments exist in one file, the last "
+"sourceMappingURL comment will be respected (e.g. if a file mentions the "
+"comment in code, or went through multiple transpilers). The path should "
+"either be absolute or relative to the compiled file."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:24
+msgid "From here you have two options."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:26
+msgid "CLI Usage"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:32
+msgid "Programmatic Usage"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:34
+msgid "Put the following line at the top of the compiled file."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:40
+msgid ""
+"It is also possible to install the source map support directly by "
+"requiring the `register` module which can be handy with ES6:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:50
+msgid ""
+"Note: if you're using babel-register, it includes source-map-support "
+"already."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:52
+msgid "It is also very useful with Mocha:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:58
+msgid "Browser support"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:60
+msgid ""
+"This library also works in Chrome. While the DevTools console already "
+"supports source maps, the V8 engine doesn't and `Error.prototype.stack` "
+"will be incorrect without this library. Everything will just work if you "
+"deploy your source files using [browserify](http://browserify.org/). Just"
+" make sure to pass the `--debug` flag to the browserify command so your "
+"source maps are included in the bundled code."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:62
+msgid ""
+"This library also works if you use another build process or just include "
+"the source files directly. In this case, include the file `browser-"
+"source-map-support.js` in your page and call "
+"`sourceMapSupport.install()`. It contains the whole library already "
+"bundled for the browser using browserify."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:69
+msgid ""
+"This library also works if you use AMD (Asynchronous Module Definition), "
+"which is used in tools like [RequireJS](http://requirejs.org/). Just list"
+" `browser-source-map-support` as a dependency:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:79
+msgid "Options"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:81
+msgid ""
+"This module installs two things: a change to the `stack` property on "
+"`Error` objects and a handler for uncaught exceptions that mimics node's "
+"default exception handler (the handler can be seen in the demos below). "
+"You may want to disable the handler if you have your own uncaught "
+"exception handler. This can be done by passing an argument to the "
+"installer:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:89
+msgid ""
+"This module loads source maps from the filesystem by default. You can "
+"provide alternate loading behavior through a callback as shown below. For"
+" example, [Meteor](https://github.com/meteor) keeps all source maps "
+"cached in memory to avoid disk access."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:105
+msgid ""
+"The module will by default assume a browser environment if XMLHttpRequest"
+" and window are defined. If either of these do not exist it will instead "
+"assume a node environment. In some rare cases, e.g. when running a "
+"browser emulation and where both variables are also set, you can "
+"explictly specify the environment to be either 'browser' or 'node'."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:114
+msgid ""
+"To support files with inline source maps, the `hookRequire` options can "
+"be specified, which will monitor all source files for inline source maps."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:123
+msgid ""
+"This monkey patches the `require` module loading chain, so is not enabled"
+" by default and is not recommended for any sort of production usage."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:125
+msgid "Demos"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:127
+msgid "Basic Demo"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:129
+msgid "original.js:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:135
+msgid "compiled.js:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:145
+msgid "compiled.js.map:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:157
+msgid ""
+"Run compiled.js using node (notice how the stack trace uses original.js "
+"instead of compiled.js):"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:176
+msgid "TypeScript Demo"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:178
+msgid "demo.ts:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:190
+msgid "Compile and run the file using the TypeScript compiler from the terminal:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:213
+msgid ""
+"There is also the option to use `-r source-map-support/register` with "
+"typescript, without the need add the `require('source-map-"
+"support').install()` in the code base:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:236
+msgid "CoffeeScript Demo"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:238
+msgid "demo.coffee:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:248
+msgid ""
+"Compile and run the file using the CoffeeScript compiler from the "
+"terminal:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:271
+msgid "Tests"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:273
+msgid ""
+"This repo contains both automated tests for node and manual tests for the"
+" browser. The automated tests can be run using mocha (type `mocha` in the"
+" root directory). To run the manual tests:"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:275
+msgid "Build the tests using `build.js`"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:276
+msgid "Launch the HTTP server (`npm run serve-tests`) and visit"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:277
+msgid "http://127.0.0.1:1336/amd-test"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:278
+msgid "http://127.0.0.1:1336/browser-test"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:279
+msgid ""
+"http://127.0.0.1:1336/browserify-test - **Currently not working** due to "
+"a bug with browserify (see [pull request #66](https://github.com/evanw"
+"/node-source-map-support/pull/66) for details)."
+msgstr ""
+
+#: ../../source/source-map-support_README.md:280
+msgid ""
+"For `header-test`, run `server.js` inside that directory and visit "
+"http://127.0.0.1:1337/"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:282
+msgid "License"
+msgstr ""
+
+#: ../../source/source-map-support_README.md:284
+msgid ""
+"This code is available under the [MIT "
+"license](http://opensource.org/licenses/MIT)."
+msgstr ""
+

@@ -1,0 +1,52 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/react_README.md:1
+msgid "`react`"
+msgstr ""
+
+#: ../../source/react_README.md:3
+msgid "React is a JavaScript library for creating user interfaces."
+msgstr ""
+
+#: ../../source/react_README.md:5
+msgid ""
+"The `react` package contains only the functionality necessary to define "
+"React components. It is typically used together with a React renderer "
+"like `react-dom` for the web, or `react-native` for the native "
+"environments."
+msgstr ""
+
+#: ../../source/react_README.md:7
+msgid ""
+"**Note:** by default, React will be in development mode. The development "
+"version includes extra warnings about common mistakes, whereas the "
+"production version includes extra performance optimizations and strips "
+"all error messages. Don't forget to use the [production "
+"build](https://reactjs.org/docs/optimizing-performance.html#use-the-"
+"production-build) when deploying your application."
+msgstr ""
+
+#: ../../source/react_README.md:9
+msgid "Example Usage"
+msgstr ""
+

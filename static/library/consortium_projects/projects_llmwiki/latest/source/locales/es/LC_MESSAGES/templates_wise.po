@@ -1,0 +1,879 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_wise.md:1
+msgid "Design System: Wise"
+msgstr ""
+
+#: ../../source/templates_wise.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_wise.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_wise.md:7
+msgid "**Primary:** `Inter` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_wise.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_wise.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_wise.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_wise.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_wise.md:18
+msgid ""
+"Wise's website is a bold, confident fintech platform that communicates "
+"\"money without borders\" through massive typography and a distinctive "
+"lime-green accent. The design operates on a warm off-white canvas with "
+"near-black text (`#0e0f0c`) and a signature Wise Green (`#9fe870`) — a "
+"fresh, lime-bright color that feels alive and optimistic, unlike the "
+"corporate blues of traditional banking."
+msgstr ""
+
+#: ../../source/templates_wise.md:20
+msgid ""
+"The typography uses Wise Sans — a proprietary font used at extreme weight"
+" 900 (black) for display headings with a remarkably tight line-height of "
+"0.85 and OpenType `\"calt\"` (contextual alternates). At 126px, the text "
+"is so dense it feels like a protest sign — bold, urgent, and impossible "
+"to ignore. Inter serves as the body font with weight 600 as the default "
+"for emphasis, creating a consistently confident voice."
+msgstr ""
+
+#: ../../source/templates_wise.md:22
+msgid ""
+"What distinguishes Wise is its green-on-white-on-black material palette. "
+"Lime Green (`#9fe870`) appears on buttons with dark green text "
+"(`#163300`), creating a nature-inspired CTA that feels fresh. Hover "
+"states use `scale(1.05)` expansion rather than color changes — buttons "
+"physically grow on interaction. The border-radius system uses 9999px for "
+"buttons (pill), 30px–40px for cards, and the shadow system is minimal — "
+"just `rgba(14,15,12,0.12) 0px 0px 0px 1px` ring shadows."
+msgstr ""
+
+#: ../../source/templates_wise.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_wise.md:25
+msgid "Wise Sans at weight 900, 0.85 line-height — billboard-scale bold headlines"
+msgstr ""
+
+#: ../../source/templates_wise.md:26
+msgid ""
+"Lime Green (`#9fe870`) accent with dark green text (`#163300`) — nature-"
+"inspired fintech"
+msgstr ""
+
+#: ../../source/templates_wise.md:27
+msgid "Inter body at weight 600 as default — confident, not light"
+msgstr ""
+
+#: ../../source/templates_wise.md:28
+msgid "Near-black (`#0e0f0c`) primary with warm green undertone"
+msgstr ""
+
+#: ../../source/templates_wise.md:29
+msgid "Scale(1.05) hover animations — buttons physically grow"
+msgstr ""
+
+#: ../../source/templates_wise.md:30
+msgid "OpenType `\"calt\"` on all text"
+msgstr ""
+
+#: ../../source/templates_wise.md:31
+msgid "Pill buttons (9999px) and large rounded cards (30px–40px)"
+msgstr ""
+
+#: ../../source/templates_wise.md:32
+msgid "Semantic color system with comprehensive state management"
+msgstr ""
+
+#: ../../source/templates_wise.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_wise.md:36
+msgid "Primary Brand"
+msgstr ""
+
+#: ../../source/templates_wise.md:37
+msgid "**Near Black** (`#0e0f0c`): Primary text, background for dark sections"
+msgstr ""
+
+#: ../../source/templates_wise.md:38
+msgid "**Wise Green** (`#9fe870`): Primary CTA button, brand accent"
+msgstr ""
+
+#: ../../source/templates_wise.md:39
+msgid "**Dark Green** (`#163300`): Button text on green, deep green accent"
+msgstr ""
+
+#: ../../source/templates_wise.md:40
+msgid "**Light Mint** (`#e2f6d5`): Soft green surface, badge backgrounds"
+msgstr ""
+
+#: ../../source/templates_wise.md:41
+msgid ""
+"**Pastel Green** (`#cdffad`): `--color-interactive-contrast-hover`, hover"
+" accent"
+msgstr ""
+
+#: ../../source/templates_wise.md:43
+msgid "Semantic"
+msgstr ""
+
+#: ../../source/templates_wise.md:44
+msgid ""
+"**Positive Green** (`#054d28`): `--color-sentiment-positive-primary`, "
+"success"
+msgstr ""
+
+#: ../../source/templates_wise.md:45
+msgid ""
+"**Danger Red** (`#d03238`): `--color-interactive-negative-hover`, "
+"error/destructive"
+msgstr ""
+
+#: ../../source/templates_wise.md:46
+msgid ""
+"**Warning Yellow** (`#ffd11a`): `--color-sentiment-warning-hover`, "
+"warnings"
+msgstr ""
+
+#: ../../source/templates_wise.md:47
+msgid ""
+"**Background Cyan** (`rgba(56,200,255,0.10)`): `--color-background-"
+"accent`, info tint"
+msgstr ""
+
+#: ../../source/templates_wise.md:48
+msgid "**Bright Orange** (`#ffc091`): `--color-bright-orange`, warm accent"
+msgstr ""
+
+#: ../../source/templates_wise.md:50
+msgid "Neutral"
+msgstr ""
+
+#: ../../source/templates_wise.md:51
+msgid "**Warm Dark** (`#454745`): Secondary text, borders"
+msgstr ""
+
+#: ../../source/templates_wise.md:52
+msgid "**Gray** (`#868685`): Muted text, tertiary"
+msgstr ""
+
+#: ../../source/templates_wise.md:53
+msgid "**Light Surface** (`#e8ebe6`): Subtle green-tinted light surface"
+msgstr ""
+
+#: ../../source/templates_wise.md:55
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_wise.md:57
+msgid "Font Families"
+msgstr ""
+
+#: ../../source/templates_wise.md:58
+msgid ""
+"**Display**: `Wise Sans`, fallback: `Inter` — OpenType `\"calt\"` on all "
+"text"
+msgstr ""
+
+#: ../../source/templates_wise.md:59
+msgid "**Body / UI**: `Inter`, fallbacks: `Helvetica, Arial`"
+msgstr ""
+
+#: ../../source/templates_wise.md:61
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Display Mega"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Wise Sans"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "126px (7.88rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "900"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "0.85 (ultra-tight)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "`\"calt\"`"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "96px (6.00rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "0.85"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "64px (4.00rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "40px (2.50rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Alt Heading"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Inter"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "78px (4.88rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "1.10 (tight)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "-2.34px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Card Title"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "26px (1.62rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "1.23 (tight)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "-0.39px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "22px (1.38rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "1.25 (tight)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "-0.396px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "1.44"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "0.18px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Body Semibold"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "-0.108px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "18px–22px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "1.00–1.44"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "400–600"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "1.50–1.86"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "-0.084px to -0.108px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Small"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "1.00–2.17"
+msgstr ""
+
+#: ../../source/templates_wise.md:78
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_wise.md:79
+msgid ""
+"**Weight 900 as identity**: Wise Sans Black (900) is used exclusively for"
+" display — the heaviest weight in any analyzed system. It creates text "
+"that feels stamped, pressed, physical."
+msgstr ""
+
+#: ../../source/templates_wise.md:80
+msgid ""
+"**0.85 line-height**: The tightest display line-height analyzed. Letters "
+"overlap vertically, creating dense, billboard-like text blocks."
+msgstr ""
+
+#: ../../source/templates_wise.md:81
+msgid ""
+"**\"calt\" everywhere**: Contextual alternates enabled on ALL text — both"
+" Wise Sans and Inter."
+msgstr ""
+
+#: ../../source/templates_wise.md:82
+msgid ""
+"**Weight 600 as body default**: Inter Semibold is the standard reading "
+"weight — confident, not light."
+msgstr ""
+
+#: ../../source/templates_wise.md:84
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_wise.md:86
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_wise.md:88
+msgid "**Primary Green Pill**"
+msgstr ""
+
+#: ../../source/templates_wise.md:89
+msgid "Background: `#9fe870` (Wise Green)"
+msgstr ""
+
+#: ../../source/templates_wise.md:90
+msgid "Text: `#163300` (Dark Green)"
+msgstr ""
+
+#: ../../source/templates_wise.md:91
+msgid "Padding: 5px 16px"
+msgstr ""
+
+#: ../../source/templates_wise.md:92 ../../source/templates_wise.md:101
+msgid "Radius: 9999px"
+msgstr ""
+
+#: ../../source/templates_wise.md:93
+msgid "Hover: scale(1.05) — button physically grows"
+msgstr ""
+
+#: ../../source/templates_wise.md:94
+msgid "Active: scale(0.95) — button compresses"
+msgstr ""
+
+#: ../../source/templates_wise.md:95
+msgid "Focus: inset ring + outline"
+msgstr ""
+
+#: ../../source/templates_wise.md:97
+msgid "**Secondary Subtle Pill**"
+msgstr ""
+
+#: ../../source/templates_wise.md:98
+#, python-format
+msgid "Background: `rgba(22, 51, 0, 0.08)` (dark green at 8% opacity)"
+msgstr ""
+
+#: ../../source/templates_wise.md:99
+msgid "Text: `#0e0f0c`"
+msgstr ""
+
+#: ../../source/templates_wise.md:100
+msgid "Padding: 8px 12px 8px 16px"
+msgstr ""
+
+#: ../../source/templates_wise.md:102
+msgid "Same scale hover/active behavior"
+msgstr ""
+
+#: ../../source/templates_wise.md:104
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_wise.md:105
+msgid "Radius: 16px (small), 30px (medium), 40px (large cards/tables)"
+msgstr ""
+
+#: ../../source/templates_wise.md:106
+msgid ""
+"Border: `1px solid rgba(14,15,12,0.12)` or `1px solid #9fe870` (green "
+"accent)"
+msgstr ""
+
+#: ../../source/templates_wise.md:107
+msgid "Shadow: `rgba(14,15,12,0.12) 0px 0px 0px 1px` (ring shadow)"
+msgstr ""
+
+#: ../../source/templates_wise.md:109
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_wise.md:110
+msgid "Green-tinted navigation hover: `rgba(211,242,192,0.4)`"
+msgstr ""
+
+#: ../../source/templates_wise.md:111
+msgid "Clean header with Wise wordmark"
+msgstr ""
+
+#: ../../source/templates_wise.md:112
+msgid "Pill CTAs right-aligned"
+msgstr ""
+
+#: ../../source/templates_wise.md:114
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_wise.md:116
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_wise.md:117
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_wise.md:118
+msgid ""
+"Scale: 1px, 2px, 3px, 4px, 5px, 8px, 10px, 11px, 12px, 16px, 18px, 19px, "
+"20px, 22px, 24px"
+msgstr ""
+
+#: ../../source/templates_wise.md:120
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_wise.md:121
+msgid "Minimal (2px): Links, inputs"
+msgstr ""
+
+#: ../../source/templates_wise.md:122
+msgid "Standard (10px): Comboboxes, inputs"
+msgstr ""
+
+#: ../../source/templates_wise.md:123
+msgid "Card (16px): Small cards, buttons, radio"
+msgstr ""
+
+#: ../../source/templates_wise.md:124
+msgid "Medium (20px): Links, medium cards"
+msgstr ""
+
+#: ../../source/templates_wise.md:125
+msgid "Large (30px): Feature cards"
+msgstr ""
+
+#: ../../source/templates_wise.md:126
+msgid "Section (40px): Tables, large cards"
+msgstr ""
+
+#: ../../source/templates_wise.md:127
+msgid "Mega (1000px): Presentation elements"
+msgstr ""
+
+#: ../../source/templates_wise.md:128
+msgid "Pill (9999px): All buttons, images"
+msgstr ""
+
+#: ../../source/templates_wise.md:129
+msgid "Circle (50%): Icons, badges"
+msgstr ""
+
+#: ../../source/templates_wise.md:131
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Default"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Ring (Level 1)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "`rgba(14,15,12,0.12) 0px 0px 0px 1px`"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Card borders"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Inset (Level 2)"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "`rgb(134,134,133) 0px 0px 0px 1px inset`"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Input focus"
+msgstr ""
+
+#: ../../source/templates_wise.md:139
+msgid ""
+"**Shadow Philosophy**: Wise uses minimal shadows — ring shadows only. "
+"Depth comes from the bold green accent against the neutral canvas."
+msgstr ""
+
+#: ../../source/templates_wise.md:141
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_wise.md:143
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_wise.md:144
+msgid "Use Wise Sans weight 900 for display — the extreme boldness IS the brand"
+msgstr ""
+
+#: ../../source/templates_wise.md:145
+msgid "Apply line-height 0.85 on Wise Sans display — ultra-tight is intentional"
+msgstr ""
+
+#: ../../source/templates_wise.md:146
+msgid "Use Lime Green (#9fe870) for primary CTAs with Dark Green (#163300) text"
+msgstr ""
+
+#: ../../source/templates_wise.md:147
+msgid "Apply scale(1.05) hover and scale(0.95) active on buttons"
+msgstr ""
+
+#: ../../source/templates_wise.md:148
+msgid "Enable \"calt\" on all text"
+msgstr ""
+
+#: ../../source/templates_wise.md:149
+msgid "Use Inter weight 600 as the body default"
+msgstr ""
+
+#: ../../source/templates_wise.md:151
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_wise.md:152
+msgid "Don't use light font weights for Wise Sans — only 900"
+msgstr ""
+
+#: ../../source/templates_wise.md:153
+msgid "Don't relax the 0.85 line-height on display — the density is the identity"
+msgstr ""
+
+#: ../../source/templates_wise.md:154
+msgid ""
+"Don't use the Wise Green as background for large surfaces — it's for "
+"buttons and accents"
+msgstr ""
+
+#: ../../source/templates_wise.md:155
+msgid "Don't skip the scale animation on buttons"
+msgstr ""
+
+#: ../../source/templates_wise.md:156
+msgid "Don't use traditional shadows — ring shadows only"
+msgstr ""
+
+#: ../../source/templates_wise.md:158
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_wise.md:160
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "<576px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Single column"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "576–992px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "2-column"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "992–1440px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Full layout"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Large"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid ">1440px"
+msgstr ""
+
+#: ../../source/templates_wise.md
+msgid "Expanded"
+msgstr ""
+
+#: ../../source/templates_wise.md:168
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_wise.md:170
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_wise.md:171
+msgid "Text: Near Black (`#0e0f0c`)"
+msgstr ""
+
+#: ../../source/templates_wise.md:172
+msgid "Background: White (`#ffffff` / off-white)"
+msgstr ""
+
+#: ../../source/templates_wise.md:173
+msgid "Accent: Wise Green (`#9fe870`)"
+msgstr ""
+
+#: ../../source/templates_wise.md:174
+msgid "Button text: Dark Green (`#163300`)"
+msgstr ""
+
+#: ../../source/templates_wise.md:175
+msgid "Secondary: Gray (`#868685`)"
+msgstr ""
+
+#: ../../source/templates_wise.md:177
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_wise.md:178
+msgid ""
+"\"Create hero: white background. Headline at 96px Wise Sans weight 900, "
+"line-height 0.85, 'calt' enabled, #0e0f0c text. Green pill CTA (#9fe870, "
+"9999px radius, 5px 16px padding, #163300 text). Hover: scale(1.05).\""
+msgstr ""
+
+#: ../../source/templates_wise.md:179
+msgid ""
+"\"Build a card: 30px radius, 1px solid rgba(14,15,12,0.12). Title at 22px"
+" Inter weight 600, body at 18px weight 400.\""
+msgstr ""
+
+#: ../../source/templates_wise.md:181
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_wise.md:182
+msgid "Wise Sans 900 at 0.85 line-height — the extreme weight IS the brand"
+msgstr ""
+
+#: ../../source/templates_wise.md:183
+msgid "Lime Green for buttons only — dark green text on green background"
+msgstr ""
+
+#: ../../source/templates_wise.md:184
+msgid "Scale animations (1.05 hover, 0.95 active) on all interactive elements"
+msgstr ""
+
+#: ../../source/templates_wise.md:185
+msgid "\"calt\" on everything — contextual alternates are mandatory"
+msgstr ""
+
+#: ../../source/templates_wise.md:186
+msgid "Inter 600 for body — confident reading weight"
+msgstr ""
+

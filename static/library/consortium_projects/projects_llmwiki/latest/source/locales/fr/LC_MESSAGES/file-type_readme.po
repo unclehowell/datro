@@ -1,0 +1,482 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/file-type_readme.md:1
+msgid ""
+"file-type [![Build Status](https://travis-ci.org/sindresorhus/file-"
+"type.svg?branch=master)](https://travis-ci.org/sindresorhus/file-type)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/file-type_readme.md:3
+msgid "Detect the file type of a Buffer/Uint8Array"
+msgstr ""
+
+#: ../../source/file-type_readme.md:5
+msgid ""
+"The file type is detected by checking the [magic "
+"number](http://en.wikipedia.org/wiki/Magic_number_(programming)#Magic_numbers_in_files)"
+" of the buffer."
+msgstr ""
+
+#: ../../source/file-type_readme.md:8
+msgid "Install"
+msgstr ""
+
+#: ../../source/file-type_readme.md:19
+msgid "Usage"
+msgstr ""
+
+#: ../../source/file-type_readme.md:21
+msgid "Node.js"
+msgstr ""
+
+#: ../../source/file-type_readme.md:32
+msgid "Or from a remote location:"
+msgstr ""
+
+#: ../../source/file-type_readme.md:48
+msgid "Browser"
+msgstr ""
+
+#: ../../source/file-type_readme.md:64
+msgid "API"
+msgstr ""
+
+#: ../../source/file-type_readme.md:66
+msgid "fileType(input)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:68
+msgid "Returns an `Object` with:"
+msgstr ""
+
+#: ../../source/file-type_readme.md:70
+msgid "`ext` - One of the [supported file types](#supported-file-types)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:71
+msgid "`mime` - The [MIME type](http://en.wikipedia.org/wiki/Internet_media_type)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:73
+msgid "Or `null` when no match."
+msgstr ""
+
+#: ../../source/file-type_readme.md:75
+msgid "input"
+msgstr ""
+
+#: ../../source/file-type_readme.md:77
+msgid "Type: `Buffer` `Uint8Array`"
+msgstr ""
+
+#: ../../source/file-type_readme.md:79
+msgid "It only needs the first 4100 bytes."
+msgstr ""
+
+#: ../../source/file-type_readme.md:82
+msgid "Supported file types"
+msgstr ""
+
+#: ../../source/file-type_readme.md:84
+msgid "[`jpg`](https://en.wikipedia.org/wiki/JPEG)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:85
+msgid "[`png`](https://en.wikipedia.org/wiki/Portable_Network_Graphics)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:86
+msgid "[`gif`](https://en.wikipedia.org/wiki/GIF)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:87
+msgid "[`webp`](https://en.wikipedia.org/wiki/WebP)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:88
+msgid "[`flif`](https://en.wikipedia.org/wiki/Free_Lossless_Image_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:89
+msgid "[`cr2`](http://fileinfo.com/extension/cr2)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:90
+msgid "[`tif`](https://en.wikipedia.org/wiki/Tagged_Image_File_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:91
+msgid "[`bmp`](https://en.wikipedia.org/wiki/BMP_file_format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:92
+msgid "[`jxr`](https://en.wikipedia.org/wiki/JPEG_XR)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:93
+msgid "[`psd`](https://en.wikipedia.org/wiki/Adobe_Photoshop#File_format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:94
+msgid "[`zip`](https://en.wikipedia.org/wiki/Zip_(file_format))"
+msgstr ""
+
+#: ../../source/file-type_readme.md:95
+msgid "[`tar`](https://en.wikipedia.org/wiki/Tar_(computing)#File_format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:96
+msgid "[`rar`](https://en.wikipedia.org/wiki/RAR_(file_format))"
+msgstr ""
+
+#: ../../source/file-type_readme.md:97
+msgid "[`gz`](https://en.wikipedia.org/wiki/Gzip)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:98
+msgid "[`bz2`](https://en.wikipedia.org/wiki/Bzip2)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:99
+msgid "[`7z`](https://en.wikipedia.org/wiki/7z)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:100
+msgid "[`dmg`](https://en.wikipedia.org/wiki/Apple_Disk_Image)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:101
+msgid "[`mp4`](https://en.wikipedia.org/wiki/MPEG-4_Part_14#Filename_extensions)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:102
+msgid "[`m4v`](https://en.wikipedia.org/wiki/M4V)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:103
+msgid "[`mid`](https://en.wikipedia.org/wiki/MIDI)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:104
+msgid "[`mkv`](https://en.wikipedia.org/wiki/Matroska)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:105
+msgid "[`webm`](https://en.wikipedia.org/wiki/WebM)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:106
+msgid "[`mov`](https://en.wikipedia.org/wiki/QuickTime_File_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:107
+msgid "[`avi`](https://en.wikipedia.org/wiki/Audio_Video_Interleave)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:108
+msgid "[`wmv`](https://en.wikipedia.org/wiki/Windows_Media_Video)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:109
+msgid "[`mpg`](https://en.wikipedia.org/wiki/MPEG-1)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:110
+msgid "[`mp2`](https://en.wikipedia.org/wiki/MPEG-1_Audio_Layer_II)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:111
+msgid "[`mp3`](https://en.wikipedia.org/wiki/MP3)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:112
+msgid "[`m4a`](https://en.wikipedia.org/wiki/MPEG-4_Part_14#.MP4_versus_.M4A)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:113
+msgid "[`ogg`](https://en.wikipedia.org/wiki/Ogg)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:114
+msgid "[`opus`](https://en.wikipedia.org/wiki/Opus_(audio_format))"
+msgstr ""
+
+#: ../../source/file-type_readme.md:115
+msgid "[`flac`](https://en.wikipedia.org/wiki/FLAC)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:116
+msgid "[`wav`](https://en.wikipedia.org/wiki/WAV)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:117
+msgid "[`qcp`](https://en.wikipedia.org/wiki/QCP)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:118
+msgid "[`amr`](https://en.wikipedia.org/wiki/Adaptive_Multi-Rate_audio_codec)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:119
+msgid "[`pdf`](https://en.wikipedia.org/wiki/Portable_Document_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:120
+msgid "[`epub`](https://en.wikipedia.org/wiki/EPUB)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:121
+msgid "[`mobi`](https://en.wikipedia.org/wiki/Mobipocket) - Mobipocket"
+msgstr ""
+
+#: ../../source/file-type_readme.md:122
+msgid "[`exe`](https://en.wikipedia.org/wiki/.exe)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:123
+msgid "[`swf`](https://en.wikipedia.org/wiki/SWF)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:124
+msgid "[`rtf`](https://en.wikipedia.org/wiki/Rich_Text_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:125
+msgid "[`woff`](https://en.wikipedia.org/wiki/Web_Open_Font_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:126
+msgid "[`woff2`](https://en.wikipedia.org/wiki/Web_Open_Font_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:127
+msgid "[`eot`](https://en.wikipedia.org/wiki/Embedded_OpenType)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:128
+msgid "[`ttf`](https://en.wikipedia.org/wiki/TrueType)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:129
+msgid "[`otf`](https://en.wikipedia.org/wiki/OpenType)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:130
+msgid "[`ico`](https://en.wikipedia.org/wiki/ICO_(file_format))"
+msgstr ""
+
+#: ../../source/file-type_readme.md:131
+msgid "[`flv`](https://en.wikipedia.org/wiki/Flash_Video)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:132
+msgid "[`ps`](https://en.wikipedia.org/wiki/Postscript)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:133
+msgid "[`xz`](https://en.wikipedia.org/wiki/Xz)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:134
+msgid "[`sqlite`](https://www.sqlite.org/fileformat2.html)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:135
+msgid "[`nes`](http://fileinfo.com/extension/nes)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:136
+msgid "[`crx`](https://developer.chrome.com/extensions/crx)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:137
+msgid "[`xpi`](https://en.wikipedia.org/wiki/XPInstall)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:138
+msgid "[`cab`](https://en.wikipedia.org/wiki/Cabinet_(file_format))"
+msgstr ""
+
+#: ../../source/file-type_readme.md:139
+msgid "[`deb`](https://en.wikipedia.org/wiki/Deb_(file_format))"
+msgstr ""
+
+#: ../../source/file-type_readme.md:140
+msgid "[`ar`](https://en.wikipedia.org/wiki/Ar_(Unix))"
+msgstr ""
+
+#: ../../source/file-type_readme.md:141
+msgid "[`rpm`](http://fileinfo.com/extension/rpm)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:142
+msgid "[`Z`](http://fileinfo.com/extension/z)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:143
+msgid "[`lz`](https://en.wikipedia.org/wiki/Lzip)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:144
+msgid "[`msi`](https://en.wikipedia.org/wiki/Windows_Installer)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:145
+msgid "[`mxf`](https://en.wikipedia.org/wiki/Material_Exchange_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:146
+msgid "[`mts`](https://en.wikipedia.org/wiki/.m2ts)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:147
+msgid "[`wasm`](https://en.wikipedia.org/wiki/WebAssembly)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:148
+msgid "[`blend`](https://wiki.blender.org/index.php/Dev:Source/Architecture/File_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:149
+msgid "[`bpg`](https://bellard.org/bpg/)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:150
+msgid "[`docx`](https://en.wikipedia.org/wiki/Office_Open_XML)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:151
+msgid "[`pptx`](https://en.wikipedia.org/wiki/Office_Open_XML)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:152
+msgid "[`xlsx`](https://en.wikipedia.org/wiki/Office_Open_XML)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:153
+msgid "[`3gp`](https://en.wikipedia.org/wiki/3GP_and_3G2)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:154
+msgid "[`jp2`](https://en.wikipedia.org/wiki/JPEG_2000) - JPEG 2000"
+msgstr ""
+
+#: ../../source/file-type_readme.md:155
+msgid "[`jpm`](https://en.wikipedia.org/wiki/JPEG_2000) - JPEG 2000"
+msgstr ""
+
+#: ../../source/file-type_readme.md:156
+msgid "[`jpx`](https://en.wikipedia.org/wiki/JPEG_2000) - JPEG 2000"
+msgstr ""
+
+#: ../../source/file-type_readme.md:157
+msgid "[`mj2`](https://en.wikipedia.org/wiki/Motion_JPEG_2000) - Motion JPEG 2000"
+msgstr ""
+
+#: ../../source/file-type_readme.md:158
+msgid "[`aif`](https://en.wikipedia.org/wiki/Audio_Interchange_File_Format)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:159
+msgid ""
+"[`odt`](https://en.wikipedia.org/wiki/OpenDocument) - OpenDocument for "
+"word processing"
+msgstr ""
+
+#: ../../source/file-type_readme.md:160
+msgid ""
+"[`ods`](https://en.wikipedia.org/wiki/OpenDocument) - OpenDocument for "
+"spreadsheets"
+msgstr ""
+
+#: ../../source/file-type_readme.md:161
+msgid ""
+"[`odp`](https://en.wikipedia.org/wiki/OpenDocument) - OpenDocument for "
+"presentations"
+msgstr ""
+
+#: ../../source/file-type_readme.md:162
+msgid "[`xml`](https://en.wikipedia.org/wiki/XML)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:163
+msgid "[`heic`](http://nokiatech.github.io/heif/technical.html)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:164
+msgid "[`cur`](https://en.wikipedia.org/wiki/ICO_(file_format))"
+msgstr ""
+
+#: ../../source/file-type_readme.md:165
+msgid "[`ktx`](https://www.khronos.org/opengles/sdk/tools/KTX/file_format_spec/)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:166
+#, python-format
+msgid "[`ape`](https://en.wikipedia.org/wiki/Monkey%27s_Audio) - Monkey's Audio"
+msgstr ""
+
+#: ../../source/file-type_readme.md:168
+msgid ""
+"*SVG isn't included as it requires the whole file to be read, but you can"
+" get it [here](https://github.com/sindresorhus/is-svg).*"
+msgstr ""
+
+#: ../../source/file-type_readme.md:170
+msgid "*Pull request welcome for additional commonly used file types.*"
+msgstr ""
+
+#: ../../source/file-type_readme.md:173
+msgid "Related"
+msgstr ""
+
+#: ../../source/file-type_readme.md:175
+msgid ""
+"[file-type-cli](https://github.com/sindresorhus/file-type-cli) - CLI for "
+"this module"
+msgstr ""
+
+#: ../../source/file-type_readme.md:178
+msgid "Created by"
+msgstr ""
+
+#: ../../source/file-type_readme.md:180
+msgid "[Sindre Sorhus](https://github.com/sindresorhus)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:181
+msgid "[Mikael Finstad](https://github.com/mifi)"
+msgstr ""
+
+#: ../../source/file-type_readme.md:184
+msgid "License"
+msgstr ""
+
+#: ../../source/file-type_readme.md:186
+msgid "MIT"
+msgstr ""
+

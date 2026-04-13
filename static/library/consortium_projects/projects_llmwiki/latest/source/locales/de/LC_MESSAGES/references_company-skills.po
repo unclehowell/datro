@@ -1,0 +1,344 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_company-skills.md:1
+msgid "Company Skills Workflow"
+msgstr ""
+
+#: ../../source/references_company-skills.md:3
+msgid ""
+"Use this reference when a board user, CEO, or manager asks you to find a "
+"skill, install it into the company library, or assign it to an agent."
+msgstr ""
+
+#: ../../source/references_company-skills.md:5
+msgid "What Exists"
+msgstr ""
+
+#: ../../source/references_company-skills.md:7
+msgid ""
+"Company skill library: install, inspect, update, and read imported skills"
+" for the whole company."
+msgstr ""
+
+#: ../../source/references_company-skills.md:8
+msgid "Agent skill assignment: add or remove company skills on an existing agent."
+msgstr ""
+
+#: ../../source/references_company-skills.md:9
+msgid ""
+"Hire/create composition: pass `desiredSkills` when creating or hiring an "
+"agent so the same assignment model applies immediately."
+msgstr ""
+
+#: ../../source/references_company-skills.md:11
+msgid "The canonical model is:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:13
+msgid "install the skill into the company"
+msgstr ""
+
+#: ../../source/references_company-skills.md:14
+msgid "assign the company skill to the agent"
+msgstr ""
+
+#: ../../source/references_company-skills.md:15
+msgid "optionally do step 2 during hire/create with `desiredSkills`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:17
+msgid "Permission Model"
+msgstr ""
+
+#: ../../source/references_company-skills.md:19
+msgid "Company skill reads: any same-company actor"
+msgstr ""
+
+#: ../../source/references_company-skills.md:20
+msgid ""
+"Company skill mutations: board, CEO, or an agent with the effective "
+"`agents:create` capability"
+msgstr ""
+
+#: ../../source/references_company-skills.md:21
+msgid "Agent skill assignment: same permission model as updating that agent"
+msgstr ""
+
+#: ../../source/references_company-skills.md:23
+msgid "Core Endpoints"
+msgstr ""
+
+#: ../../source/references_company-skills.md:25
+msgid "`GET /api/companies/:companyId/skills`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:26
+msgid "`GET /api/companies/:companyId/skills/:skillId`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:27
+msgid "`POST /api/companies/:companyId/skills/import`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:28
+msgid "`POST /api/companies/:companyId/skills/scan-projects`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:29
+msgid "`POST /api/companies/:companyId/skills/:skillId/install-update`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:30
+msgid "`GET /api/agents/:agentId/skills`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:31
+msgid "`POST /api/agents/:agentId/skills/sync`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:32
+msgid "`POST /api/companies/:companyId/agent-hires`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:33
+msgid "`POST /api/companies/:companyId/agents`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:35
+msgid "Install A Skill Into The Company"
+msgstr ""
+
+#: ../../source/references_company-skills.md:37
+msgid ""
+"Import using a **skills.sh URL**, a key-style source string, a GitHub "
+"URL, or a local path."
+msgstr ""
+
+#: ../../source/references_company-skills.md:39
+msgid "Source types (in order of preference)"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "Source format"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "Example"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "When to use"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "**skills.sh URL**"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "`https://skills.sh/google-labs-code/stitch-skills/design-md`"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid ""
+"When a user gives you a `skills.sh` link. This is the managed skill "
+"registry — **always prefer it when available**."
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "**Key-style string**"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+#: ../../source/references_company-skills.md:85
+msgid "`google-labs-code/stitch-skills/design-md`"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid ""
+"Shorthand for the same skill — `org/repo/skill-name` format. Equivalent "
+"to the skills.sh URL."
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "**GitHub URL**"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "`https://github.com/vercel-labs/agent-browser`"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "When the skill is in a GitHub repo but not on skills.sh."
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "**Local path**"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "`/abs/path/to/skill-dir`"
+msgstr ""
+
+#: ../../source/references_company-skills.md
+msgid "When the skill is on disk (dev/testing only)."
+msgstr ""
+
+#: ../../source/references_company-skills.md:48
+msgid ""
+"**Critical:** If a user gives you a `https://skills.sh/...` URL, use that"
+" URL or its key-style equivalent (`org/repo/skill-name`) as the `source`."
+" Do **not** convert it to a GitHub URL — skills.sh is the managed "
+"registry and the source of truth for versioning, discovery, and updates."
+msgstr ""
+
+#: ../../source/references_company-skills.md:50
+msgid "Example: skills.sh import (preferred)"
+msgstr ""
+
+#: ../../source/references_company-skills.md:61
+msgid "Or equivalently using the key-style string:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:72
+msgid "Example: GitHub import"
+msgstr ""
+
+#: ../../source/references_company-skills.md:83
+msgid "You can also use source strings such as:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:86
+msgid "`vercel-labs/agent-browser/agent-browser`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:87
+msgid ""
+"`npx skills add https://github.com/vercel-labs/agent-browser --skill "
+"agent-browser`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:89
+msgid ""
+"If the task is to discover skills from the company project workspaces "
+"first:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:98
+msgid "Inspect What Was Installed"
+msgstr ""
+
+#: ../../source/references_company-skills.md:105
+msgid "Read the skill entry and its `SKILL.md`:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:115
+msgid "Assign Skills To An Existing Agent"
+msgstr ""
+
+#: ../../source/references_company-skills.md:117
+msgid "`desiredSkills` accepts:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:119
+msgid "exact company skill key"
+msgstr ""
+
+#: ../../source/references_company-skills.md:120
+msgid "exact company skill id"
+msgstr ""
+
+#: ../../source/references_company-skills.md:121
+msgid "exact slug when it is unique in the company"
+msgstr ""
+
+#: ../../source/references_company-skills.md:123
+msgid "The server persists canonical company skill keys."
+msgstr ""
+
+#: ../../source/references_company-skills.md:136
+msgid "If you need the current state first:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:143
+msgid "Include Skills During Hire Or Create"
+msgstr ""
+
+#: ../../source/references_company-skills.md:145
+msgid ""
+"Use the same company skill keys or references in `desiredSkills` when "
+"hiring or creating an agent:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:164
+msgid "For direct create without approval:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:183
+msgid "Notes"
+msgstr ""
+
+#: ../../source/references_company-skills.md:185
+msgid ""
+"Built-in Paperclip runtime skills are still added automatically when "
+"required by the adapter."
+msgstr ""
+
+#: ../../source/references_company-skills.md:186
+msgid "If a reference is missing or ambiguous, the API returns `422`."
+msgstr ""
+
+#: ../../source/references_company-skills.md:187
+msgid ""
+"Prefer linking back to the relevant issue, approval, and agent when you "
+"comment about skill changes."
+msgstr ""
+
+#: ../../source/references_company-skills.md:188
+msgid ""
+"Use company portability routes when you need whole-package import/export,"
+" not just a skill:"
+msgstr ""
+
+#: ../../source/references_company-skills.md:189
+msgid "`POST /api/companies/:companyId/imports/preview`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:190
+msgid "`POST /api/companies/:companyId/imports/apply`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:191
+msgid "`POST /api/companies/:companyId/exports/preview`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:192
+msgid "`POST /api/companies/:companyId/exports`"
+msgstr ""
+
+#: ../../source/references_company-skills.md:193
+msgid ""
+"Use skill-only import when the task is specifically to add a skill to the"
+" company library without importing the surrounding company/team/package "
+"structure."
+msgstr ""
+

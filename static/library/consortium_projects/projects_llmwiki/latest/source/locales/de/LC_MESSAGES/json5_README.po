@@ -1,0 +1,495 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/json5_README.md:1
+msgid "JSON5 – JSON for Humans"
+msgstr ""
+
+#: ../../source/json5_README.md:3
+msgid ""
+"[![Build Status](https://app.travis-"
+"ci.com/json5/json5.svg?branch=main)][Build Status] [![Coverage "
+"Status](https://coveralls.io/repos/github/json5/json5/badge.svg)][Coverage"
+" Status]"
+msgstr ""
+
+#: ../../source/json5_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/json5_README.md:3
+msgid "CoverageStatus"
+msgstr ""
+
+#: ../../source/json5_README.md:8
+msgid ""
+"JSON5 is an extension to the popular [JSON] file format that aims to be "
+"easier to **write and maintain _by hand_ (e.g. for config files)**. It is"
+" _not intended_ to be used for machine-to-machine communication. (Keep "
+"using JSON or other file formats for that. 🙂)"
+msgstr ""
+
+#: ../../source/json5_README.md:13
+msgid ""
+"JSON5 was started in 2012, and as of 2022, now gets **[>65M "
+"downloads/week](https://www.npmjs.com/package/json5)**, ranks in the "
+"**[top 0.1%](https://gist.github.com/anvaka/8e8fa57c7ee1350e3491)** of "
+"the most depended-upon packages on npm, and has been adopted by major "
+"projects like "
+"**[Chromium](https://source.chromium.org/chromium/chromium/src/+/main:third_party/blink/renderer/platform/runtime_enabled_features.json5;drc=5de823b36e68fd99009a29281b17bc3a1d6b329c),"
+" "
+"[Next.js](https://github.com/vercel/next.js/blob/b88f20c90bf4659b8ad5cb2a27956005eac2c7e8/packages/next/lib"
+"/find-config.ts#L43-L46), [Babel](https://babeljs.io/docs/en/config-files"
+"#supported-file-extensions), [Retool](https://community.retool.com/t/i"
+"-am-attempting-to-append-several-text-fields-to-a-google-sheet-but-"
+"receiving-a-json5-invalid-character-error/7626), "
+"[WebStorm](https://www.jetbrains.com/help/webstorm/json.html), and "
+"[more](https://github.com/json5/json5/wiki/In-the-Wild)**. It's also "
+"natively supported on **[Apple "
+"platforms](https://developer.apple.com/documentation/foundation/jsondecoder/3766916-allowsjson5)**"
+" like **MacOS** and **iOS**."
+msgstr ""
+
+#: ../../source/json5_README.md:25
+msgid ""
+"Formally, the **[JSON5 Data Interchange "
+"Format](https://spec.json5.org/)** is a superset of JSON (so valid JSON "
+"files will always be valid JSON5 files) that expands its syntax to "
+"include some productions from [ECMAScript 5.1] (ES5). It's also a strict "
+"_subset_ of ES5, so valid JSON5 files will always be valid ES5."
+msgstr ""
+
+#: ../../source/json5_README.md:30
+msgid ""
+"This JavaScript library is a reference implementation for JSON5 parsing "
+"and serialization, and is directly used in many of the popular projects "
+"mentioned above (where e.g. extreme performance isn't necessary), but "
+"others have created [many other "
+"libraries](https://github.com/json5/json5/wiki/In-the-Wild) across many "
+"other platforms."
+msgstr ""
+
+#: ../../source/json5_README.md:44
+msgid "Summary of Features"
+msgstr ""
+
+#: ../../source/json5_README.md:45
+msgid ""
+"The following ECMAScript 5.1 features, which are not supported in JSON, "
+"have been extended to JSON5."
+msgstr ""
+
+#: ../../source/json5_README.md:48
+msgid "Objects"
+msgstr ""
+
+#: ../../source/json5_README.md:49
+msgid "Object keys may be an ECMAScript 5.1 _[IdentifierName]_."
+msgstr ""
+
+#: ../../source/json5_README.md:50
+msgid "Objects may have a single trailing comma."
+msgstr ""
+
+#: ../../source/json5_README.md:52
+msgid "Arrays"
+msgstr ""
+
+#: ../../source/json5_README.md:53
+msgid "Arrays may have a single trailing comma."
+msgstr ""
+
+#: ../../source/json5_README.md:55
+msgid "Strings"
+msgstr ""
+
+#: ../../source/json5_README.md:56
+msgid "Strings may be single quoted."
+msgstr ""
+
+#: ../../source/json5_README.md:57
+msgid "Strings may span multiple lines by escaping new line characters."
+msgstr ""
+
+#: ../../source/json5_README.md:58
+msgid "Strings may include character escapes."
+msgstr ""
+
+#: ../../source/json5_README.md:60
+msgid "Numbers"
+msgstr ""
+
+#: ../../source/json5_README.md:61
+msgid "Numbers may be hexadecimal."
+msgstr ""
+
+#: ../../source/json5_README.md:62
+msgid "Numbers may have a leading or trailing decimal point."
+msgstr ""
+
+#: ../../source/json5_README.md:63
+msgid "Numbers may be [IEEE 754] positive infinity, negative infinity, and NaN."
+msgstr ""
+
+#: ../../source/json5_README.md:64
+msgid "Numbers may begin with an explicit plus sign."
+msgstr ""
+
+#: ../../source/json5_README.md:66
+msgid "Comments"
+msgstr ""
+
+#: ../../source/json5_README.md:67
+msgid "Single and multi-line comments are allowed."
+msgstr ""
+
+#: ../../source/json5_README.md:69
+msgid "White Space"
+msgstr ""
+
+#: ../../source/json5_README.md:70
+msgid "Additional white space characters are allowed."
+msgstr ""
+
+#: ../../source/json5_README.md:76
+msgid "Example"
+msgstr ""
+
+#: ../../source/json5_README.md:77
+msgid "Kitchen-sink example:"
+msgstr ""
+
+#: ../../source/json5_README.md:94
+msgid ""
+"A more real-world example is [this config "
+"file](https://github.com/chromium/chromium/blob/feb3c9f670515edf9a88f185301cbd7794ee3e52/third_party/blink/renderer/platform/runtime_enabled_features.json5)"
+" from the Chromium/Blink project."
+msgstr ""
+
+#: ../../source/json5_README.md:97
+msgid "Specification"
+msgstr ""
+
+#: ../../source/json5_README.md:98
+msgid ""
+"For a detailed explanation of the JSON5 format, please read the [official"
+" specification](https://json5.github.io/json5-spec/)."
+msgstr ""
+
+#: ../../source/json5_README.md:101
+msgid "Installation and Usage"
+msgstr ""
+
+#: ../../source/json5_README.md:102
+msgid "Node.js"
+msgstr ""
+
+#: ../../source/json5_README.md:107
+msgid "CommonJS"
+msgstr ""
+
+#: ../../source/json5_README.md:112 ../../source/json5_README.md:124
+msgid "Modules"
+msgstr ""
+
+#: ../../source/json5_README.md:117
+msgid "Browsers"
+msgstr ""
+
+#: ../../source/json5_README.md:118
+msgid "UMD"
+msgstr ""
+
+#: ../../source/json5_README.md:131
+msgid "API"
+msgstr ""
+
+#: ../../source/json5_README.md:132
+msgid "The JSON5 API is compatible with the [JSON API]."
+msgstr ""
+
+#: ../../source/json5_README.md:137
+msgid "JSON5.parse()"
+msgstr ""
+
+#: ../../source/json5_README.md:138
+msgid ""
+"Parses a JSON5 string, constructing the JavaScript value or object "
+"described by the string. An optional reviver function can be provided to "
+"perform a transformation on the resulting object before it is returned."
+msgstr ""
+
+#: ../../source/json5_README.md:142 ../../source/json5_README.md:158
+msgid "Syntax"
+msgstr ""
+
+#: ../../source/json5_README.md:145 ../../source/json5_README.md:162
+msgid "Parameters"
+msgstr ""
+
+#: ../../source/json5_README.md:146
+msgid "`text`: The string to parse as JSON5."
+msgstr ""
+
+#: ../../source/json5_README.md:147
+msgid ""
+"`reviver`: If a function, this prescribes how the value originally "
+"produced by parsing is transformed, before being returned."
+msgstr ""
+
+#: ../../source/json5_README.md:150 ../../source/json5_README.md:183
+msgid "Return value"
+msgstr ""
+
+#: ../../source/json5_README.md:151
+msgid "The object corresponding to the given JSON5 text."
+msgstr ""
+
+#: ../../source/json5_README.md:153
+msgid "JSON5.stringify()"
+msgstr ""
+
+#: ../../source/json5_README.md:154
+msgid ""
+"Converts a JavaScript value to a JSON5 string, optionally replacing "
+"values if a replacer function is specified, or optionally including only "
+"the specified properties if a replacer array is specified."
+msgstr ""
+
+#: ../../source/json5_README.md:163
+msgid "`value`: The value to convert to a JSON5 string."
+msgstr ""
+
+#: ../../source/json5_README.md:164
+msgid ""
+"`replacer`: A function that alters the behavior of the stringification "
+"process, or an array of String and Number objects that serve as a "
+"whitelist for selecting/filtering the properties of the value object to "
+"be included in the JSON5 string. If this value is null or not provided, "
+"all properties of the object are included in the resulting JSON5 string."
+msgstr ""
+
+#: ../../source/json5_README.md:169
+msgid ""
+"`space`: A String or Number object that's used to insert white space into"
+" the output JSON5 string for readability purposes. If this is a Number, "
+"it indicates the number of space characters to use as white space; this "
+"number is capped at 10 (if it is greater, the value is just 10). Values "
+"less than 1 indicate that no space should be used. If this is a String, "
+"the string (or the first 10 characters of the string, if it's longer than"
+" that) is used as white space. If this parameter is not provided (or is "
+"null), no white space is used. If white space is used, trailing commas "
+"will be used in objects and arrays."
+msgstr ""
+
+#: ../../source/json5_README.md:177
+msgid "`options`: An object with the following properties:"
+msgstr ""
+
+#: ../../source/json5_README.md:178
+msgid "`replacer`: Same as the `replacer` parameter."
+msgstr ""
+
+#: ../../source/json5_README.md:179
+msgid "`space`: Same as the `space` parameter."
+msgstr ""
+
+#: ../../source/json5_README.md:180
+msgid ""
+"`quote`: A String representing the quote character to use when "
+"serializing strings."
+msgstr ""
+
+#: ../../source/json5_README.md:184
+msgid "A JSON5 string representing the value."
+msgstr ""
+
+#: ../../source/json5_README.md:186
+msgid "Node.js `require()` JSON5 files"
+msgstr ""
+
+#: ../../source/json5_README.md:187
+msgid ""
+"When using Node.js, you can `require()` JSON5 files by adding the "
+"following statement."
+msgstr ""
+
+#: ../../source/json5_README.md:194
+msgid ""
+"Then you can load a JSON5 file with a Node.js `require()` statement. For "
+"example:"
+msgstr ""
+
+#: ../../source/json5_README.md:201
+msgid "CLI"
+msgstr ""
+
+#: ../../source/json5_README.md:202
+msgid ""
+"Since JSON is more widely used than JSON5, this package includes a CLI "
+"for converting JSON5 to JSON and for validating the syntax of JSON5 "
+"documents."
+msgstr ""
+
+#: ../../source/json5_README.md:205
+msgid "Installation"
+msgstr ""
+
+#: ../../source/json5_README.md:210
+msgid "Usage"
+msgstr ""
+
+#: ../../source/json5_README.md:215
+msgid "If `<file>` is not provided, then STDIN is used."
+msgstr ""
+
+#: ../../source/json5_README.md:217
+msgid "Options:"
+msgstr ""
+
+#: ../../source/json5_README.md:218
+msgid "`-s`, `--space`: The number of spaces to indent or `t` for tabs"
+msgstr ""
+
+#: ../../source/json5_README.md:219
+msgid "`-o`, `--out-file [file]`: Output to the specified file, otherwise STDOUT"
+msgstr ""
+
+#: ../../source/json5_README.md:220
+msgid "`-v`, `--validate`: Validate JSON5 but do not output JSON"
+msgstr ""
+
+#: ../../source/json5_README.md:221
+msgid "`-V`, `--version`: Output the version number"
+msgstr ""
+
+#: ../../source/json5_README.md:222
+msgid "`-h`, `--help`: Output usage information"
+msgstr ""
+
+#: ../../source/json5_README.md:224
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/json5_README.md:225
+msgid "Development"
+msgstr ""
+
+#: ../../source/json5_README.md:232
+msgid ""
+"When contributing code, please write relevant tests and run `npm test` "
+"and `npm run lint` before submitting pull requests. Please use an editor "
+"that supports [EditorConfig](http://editorconfig.org/)."
+msgstr ""
+
+#: ../../source/json5_README.md:236
+msgid "Issues"
+msgstr ""
+
+#: ../../source/json5_README.md:237
+msgid ""
+"To report bugs or request features regarding the JSON5 **data format**, "
+"please submit an issue to the official **[_specification_ "
+"repository](https://github.com/json5/json5-spec)**."
+msgstr ""
+
+#: ../../source/json5_README.md:241
+msgid ""
+"Note that we will never add any features that make JSON5 incompatible "
+"with ES5; that compatibility is a fundamental premise of JSON5."
+msgstr ""
+
+#: ../../source/json5_README.md:244
+msgid ""
+"To report bugs or request features regarding this **JavaScript "
+"implementation** of JSON5, please submit an issue to **_this_ "
+"repository**."
+msgstr ""
+
+#: ../../source/json5_README.md:247
+msgid "Security Vulnerabilities and Disclosures"
+msgstr ""
+
+#: ../../source/json5_README.md:248
+msgid ""
+"To report a security vulnerability, please follow the follow the "
+"guidelines described in our [security policy](./SECURITY.md)."
+msgstr ""
+
+#: ../../source/json5_README.md:251
+msgid "License"
+msgstr ""
+
+#: ../../source/json5_README.md:252
+msgid "MIT. See [LICENSE.md](./LICENSE.md) for details."
+msgstr ""
+
+#: ../../source/json5_README.md:254
+msgid "Credits"
+msgstr ""
+
+#: ../../source/json5_README.md:255
+msgid ""
+"[Aseem Kishore](https://github.com/aseemk) founded this project. He wrote"
+" a [blog post](https://aseemk.substack.com/p/ignore-the-f-ing-haters-"
+"json5) about the journey and lessons learned 10 years in."
+msgstr ""
+
+#: ../../source/json5_README.md:259
+msgid ""
+"[Michael Bolin](http://bolinfest.com/) independently arrived at and "
+"published some of these same ideas with awesome explanations and detail. "
+"Recommended reading: [Suggested Improvements to "
+"JSON](http://bolinfest.com/essays/json.html)"
+msgstr ""
+
+#: ../../source/json5_README.md:263
+msgid ""
+"[Douglas Crockford](http://www.crockford.com/) of course designed and "
+"built JSON, but his state machine diagrams on the [JSON "
+"website](http://json.org/), as cheesy as it may sound, gave us motivation"
+" and confidence that building a new parser to implement these ideas was "
+"within reach! The original implementation of JSON5 was also modeled "
+"directly off of Doug’s open-source [json_parse.js] parser. We’re grateful"
+" for that clean and well-documented code."
+msgstr ""
+
+#: ../../source/json5_README.md:274
+msgid ""
+"[Max Nanasy](https://github.com/MaxNanasy) has been an early and prolific"
+" supporter, contributing multiple patches and ideas."
+msgstr ""
+
+#: ../../source/json5_README.md:277
+msgid ""
+"[Andrew Eisenberg](https://github.com/aeisenberg) contributed the "
+"original `stringify` method."
+msgstr ""
+
+#: ../../source/json5_README.md:280
+msgid ""
+"[Jordan Tucker](https://github.com/jordanbtucker) has aligned JSON5 more "
+"closely with ES5, wrote the official JSON5 specification, completely "
+"rewrote the codebase from the ground up, and is actively maintaining this"
+" project."
+msgstr ""
+

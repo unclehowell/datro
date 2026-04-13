@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/is-png_readme.md:1
+msgid ""
+"is-png [![Build Status](https://travis-ci.org/sindresorhus/is-"
+"png.svg?branch=master)](https://travis-ci.org/sindresorhus/is-png)"
+msgstr ""
+
+#: ../../source/is-png_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/is-png_readme.md:3
+msgid ""
+"Check if a Buffer/Uint8Array is a "
+"[PNG](http://en.wikipedia.org/wiki/Portable_Network_Graphics) image"
+msgstr ""
+
+#: ../../source/is-png_readme.md:5
+msgid "Used by [image-type](https://github.com/sindresorhus/image-type)."
+msgstr ""
+
+#: ../../source/is-png_readme.md:8
+msgid "Install"
+msgstr ""
+
+#: ../../source/is-png_readme.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/is-png_readme.md:17
+msgid "Node.js"
+msgstr ""
+
+#: ../../source/is-png_readme.md:28
+msgid "Browser"
+msgstr ""
+
+#: ../../source/is-png_readme.md:44
+msgid "API"
+msgstr ""
+
+#: ../../source/is-png_readme.md:46
+msgid "isPng(buffer)"
+msgstr ""
+
+#: ../../source/is-png_readme.md:48
+msgid "Accepts a Buffer (Node.js) or Uint8Array."
+msgstr ""
+
+#: ../../source/is-png_readme.md:50
+msgid "It only needs the first 8 bytes."
+msgstr ""
+
+#: ../../source/is-png_readme.md:53
+msgid "License"
+msgstr ""
+
+#: ../../source/is-png_readme.md:55
+msgid "MIT © [Sindre Sorhus](http://sindresorhus.com)"
+msgstr ""
+

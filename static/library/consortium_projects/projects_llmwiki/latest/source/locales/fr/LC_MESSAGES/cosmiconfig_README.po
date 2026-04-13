@@ -1,0 +1,880 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/cosmiconfig_README.md:1
+msgid "cosmiconfig"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:3
+msgid ""
+"[![Build "
+"Status](https://img.shields.io/travis/davidtheclark/cosmiconfig/master.svg?label=unix%20build)](https"
+"://travis-ci.org/davidtheclark/cosmiconfig) [![Build "
+"status](https://img.shields.io/appveyor/ci/davidtheclark/cosmiconfig/master.svg?label=windows%20build)](https://ci.appveyor.com/project/davidtheclark/cosmiconfig/branch/master)"
+" "
+"[![codecov](https://codecov.io/gh/davidtheclark/cosmiconfig/branch/master/graph/badge.svg)](https://codecov.io/gh/davidtheclark/cosmiconfig)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:3
+msgid "Build status"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:3
+msgid "codecov"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:6
+msgid "Cosmiconfig searches for and loads configuration for your program."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:8
+msgid ""
+"It features smart defaults based on conventional expectations in the "
+"JavaScript ecosystem. But it's also flexible enough to search wherever "
+"you'd like to search, and load whatever you'd like to load."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:11
+msgid ""
+"By default, Cosmiconfig will start where you tell it to start and search "
+"up the directory tree for the following:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:13
+msgid "a `package.json` property"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:14
+msgid "a JSON or YAML, extensionless \"rc file\""
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:15
+msgid "an \"rc file\" with the extensions `.json`, `.yaml`, `.yml`, or `.js`."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:16
+msgid "a `.config.js` CommonJS module"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:18
+msgid ""
+"For example, if your module's name is \"soursocks\", cosmiconfig will "
+"search up the directory tree for configuration in the following places:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:20
+msgid "a `soursocks` property in `package.json`"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:21
+msgid "a `.soursocksrc` file in JSON or YAML format"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:22
+msgid "a `.soursocksrc.json` file"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:23
+msgid "a `.soursocksrc.yaml`, `.soursocksrc.yml`, or `.soursocksrc.js` file"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:24
+msgid "a `soursocks.config.js` file exporting a JS object"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:26
+msgid ""
+"Cosmiconfig continues to search up the directory tree, checking each of "
+"these places in each directory, until it finds some acceptable "
+"configuration (or hits the home directory)."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:28
+msgid ""
+"👀 **Looking for the v4 docs?** v5 involves significant revisions to "
+"Cosmiconfig's API, allowing for much greater flexibility and clarifying "
+"some things. If you have trouble switching from v4 to v5, please file an "
+"issue. If you are still using v4, those v4 docs are available [in the "
+"`4.0.0` tag](https://github.com/davidtheclark/cosmiconfig/tree/4.0.0)."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:33
+msgid "Table of contents"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:35
+msgid "[Installation](#installation)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:36
+msgid "[Usage](#usage)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:37
+msgid "[Result](#result)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:38
+msgid "[cosmiconfig()](#cosmiconfig-1)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:39
+msgid "[moduleName](#modulename)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:40
+msgid "[explorer.search()](#explorersearch)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:41
+msgid "[searchFrom](#searchfrom)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:42
+msgid "[explorer.searchSync()](#explorersearchsync)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:43
+msgid "[explorer.load()](#explorerload)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:44
+msgid "[explorer.loadSync()](#explorerloadsync)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:45
+msgid "[explorer.clearLoadCache()](#explorerclearloadcache)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:46
+msgid "[explorer.clearSearchCache()](#explorerclearsearchcache)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:47
+msgid "[explorer.clearCaches()](#explorerclearcaches)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:48
+msgid "[cosmiconfigOptions](#cosmiconfigoptions)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:49
+msgid "[searchPlaces](#searchplaces)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:50
+msgid "[loaders](#loaders)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:51
+msgid "[packageProp](#packageprop)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:52
+msgid "[stopDir](#stopdir)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:53
+msgid "[cache](#cache)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:54
+msgid "[transform](#transform)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:55
+msgid "[ignoreEmptySearchPlaces](#ignoreemptysearchplaces)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:56
+msgid "[Caching](#caching)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:57
+msgid "[Differences from rc](#differences-from-rc)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:58
+msgid "[Contributing & Development](#contributing--development)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:60
+msgid "Installation"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:66
+msgid "Tested in Node 4+."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:68
+msgid "Usage"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:70
+msgid ""
+"Create a Cosmiconfig explorer, then either `search` for or directly "
+"`load` a configuration file."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:99
+msgid "Result"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:101
+msgid ""
+"The result object you get from `search` or `load` has the following "
+"properties:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:103
+msgid ""
+"**config:** The parsed configuration object. `undefined` if the file is "
+"empty."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:104
+msgid "**filepath:** The path to the configuration file that was found."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:105
+msgid ""
+"**isEmpty:** `true` if the configuration file is empty. This property "
+"will not be present if the configuration file is not empty."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:107
+msgid "cosmiconfig()"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:113
+msgid ""
+"Creates a cosmiconfig instance (\"explorer\") configured according to the"
+" arguments, and initializes its caches."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:115
+msgid "moduleName"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:117
+msgid "Type: `string`. **Required.**"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:119
+msgid ""
+"Your module name. This is used to create the default [`searchPlaces`] and"
+" [`packageProp`]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:121
+msgid ""
+"**[`cosmiconfigOptions`] are documented below.** You may not need them, "
+"and should first read about the functions you'll use."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:124
+msgid "explorer.search()"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:130
+msgid ""
+"Searches for a configuration file. Returns a Promise that resolves with a"
+" [result] or with `null`, if no configuration file is found."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:132
+msgid "You can do the same thing synchronously with [`searchSync()`]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:134
+msgid ""
+"Let's say your module name is `goldengrahams` so you initialized with "
+"`const explorer = cosmiconfig('goldengrahams');`. Here's how your default"
+" [`search()`] will work:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:137
+msgid ""
+"Starting from `process.cwd()` (or some other directory defined by the "
+"`searchFrom` argument to [`search()`]), look for configuration objects in"
+" the following places:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:138
+msgid "A `goldengrahams` property in a `package.json` file."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:139
+msgid "A `.goldengrahamsrc` file with JSON or YAML syntax."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:140
+msgid "A `.goldengrahamsrc.json` file."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:141
+msgid ""
+"A `.goldengrahamsrc.yaml`, `.goldengrahamsrc.yml`, or "
+"`.goldengrahamsrc.js` file."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:142
+msgid "A `goldengrahams.config.js` JS file exporting the object."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:143
+msgid ""
+"If none of those searches reveal a configuration object, move up one "
+"directory level and try again. So the search continues in `./`, `../`, "
+"`../../`, `../../../`, etc., checking the same places in each directory."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:145
+msgid ""
+"Continue searching until arriving at your home directory (or some other "
+"directory defined by the cosmiconfig option [`stopDir`])."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:146
+msgid ""
+"If at any point a parseable configuration is found, the [`search()`] "
+"Promise resolves with its [result] \\(or, with [`searchSync()`], the "
+"[result] is returned)."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:147
+msgid ""
+"If no configuration object is found, the [`search()`] Promise resolves "
+"with `null` (or, with [`searchSync()`], `null` is returned)."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:148
+msgid ""
+"If a configuration object is found *but is malformed* (causing a parsing "
+"error), the [`search()`] Promise rejects with that error (so you should "
+"`.catch()` it). (Or, with [`searchSync()`], the error is thrown.)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:150
+msgid ""
+"**If you know exactly where your configuration file should be, you can "
+"use [`load()`], instead.**"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:152
+msgid ""
+"**The search process is highly customizable.** Use the cosmiconfig "
+"options [`searchPlaces`] and [`loaders`] to precisely define where you "
+"want to look for configurations and how you want to load them."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:155
+msgid "searchFrom"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:157
+msgid "Type: `string`. Default: `process.cwd()`."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:160
+msgid "A filename. [`search()`] will start its search here."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:163
+msgid ""
+"If the value is a directory, that's where the search starts. If it's a "
+"file, the search starts in that file's directory."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:166
+msgid "explorer.searchSync()"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:172
+msgid "Synchronous version of [`search()`]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:174
+msgid "Returns a [result] or `null`."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:176
+msgid "explorer.load()"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:182
+msgid ""
+"Loads a configuration file. Returns a Promise that resolves with a "
+"[result] or rejects with an error (if the file does not exist or cannot "
+"be loaded)."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:184
+msgid ""
+"Use `load` if you already know where the configuration file is and you "
+"just need to load it."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:190
+msgid ""
+"If you load a `package.json` file, the result will be derived from "
+"whatever property is specified as your [`packageProp`]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:192
+msgid "explorer.loadSync()"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:198
+msgid "Synchronous version of [`load()`]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:200
+msgid "Returns a [result]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:202
+msgid "explorer.clearLoadCache()"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:204
+msgid "Clears the cache used in [`load()`]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:206
+msgid "explorer.clearSearchCache()"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:208
+msgid "Clears the cache used in [`search()`]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:210
+msgid "explorer.clearCaches()"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:212
+msgid "Performs both [`clearLoadCache()`] and [`clearSearchCache()`]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:214
+msgid "cosmiconfigOptions"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:216
+msgid "Type: `Object`."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:218
+msgid "Possible options are documented below."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:220
+msgid "searchPlaces"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:222
+msgid "Type: `Array<string>`. Default: See below."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:225
+msgid ""
+"An array of places that [`search()`] will check in each directory as it "
+"moves up the directory tree. Each place is relative to the directory "
+"being searched, and the places are checked in the specified order."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:228
+msgid "**Default `searchPlaces`:**"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:242
+msgid ""
+"Create your own array to search more, fewer, or altogether different "
+"places."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:244
+msgid ""
+"Every item in `searchPlaces` needs to have a loader in [`loaders`] that "
+"corresponds to its extension. (Common extensions are covered by default "
+"loaders.) Read more about [`loaders`] below."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:248
+msgid ""
+"`package.json` is a special value: When it is included in `searchPlaces`,"
+" Cosmiconfig will always parse it as JSON and load a property within it, "
+"not the whole file. That property is defined with the [`packageProp`] "
+"option, and defaults to your module name."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:251
+msgid "Examples, with a module named `porgy`:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:297
+msgid "loaders"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:299
+msgid "Type: `Object`. Default: See below."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:302
+msgid ""
+"An object that maps extensions to the loader functions responsible for "
+"loading and parsing files with those extensions."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:304
+msgid ""
+"Cosmiconfig exposes its default loaders for `.js`, `.json`, and `.yaml` "
+"as `cosmiconfig.loadJs`, `cosmiconfig.loadJson`, and "
+"`cosmiconfig.loadYaml`, respectively."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:306
+msgid "**Default `loaders`:**"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:318
+msgid ""
+"(YAML is a superset of JSON; which means YAML parsers can parse JSON; "
+"which is how extensionless files can be either YAML *or* JSON with only "
+"one parser.)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:320
+msgid ""
+"**If you provide a `loaders` object, your object will be *merged* with "
+"the defaults.** So you can override one or two without having to override"
+" them all."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:323
+msgid ""
+"**Keys in `loaders`** are extensions (starting with a period), or `noExt`"
+" to specify the loader for files *without* extensions, like "
+"`.soursocksrc`."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:325
+msgid ""
+"**Values in `loaders`** are either a loader function (described below) or"
+" an object with `sync` and/or `async` properties, whose values are loader"
+" functions."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:327
+msgid ""
+"**The most common use case for custom loaders value is to load "
+"extensionless `rc` files as strict JSON**, instead of JSON *or* YAML (the"
+" default). To accomplish that, provide the following `loaders` value:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:336
+msgid ""
+"If you want to load files that are not handled by the loader functions "
+"Cosmiconfig exposes, you can write a custom loader function or use one "
+"from NPM if it exists."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:338
+msgid "**Third-party loaders:**"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:340
+msgid ""
+"[@endemolshinegroup/cosmiconfig-typescript-"
+"loader](https://github.com/EndemolShineGroup/cosmiconfig-typescript-"
+"loader)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:342
+msgid "**Use cases for custom loader function:**"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:344
+msgid ""
+"Allow configuration syntaxes that aren't handled by Cosmiconfig's "
+"defaults, like JSON5, INI, or XML."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:345
+msgid "Allow ES2015 modules from `.mjs` configuration files."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:346
+msgid "Parse JS files with Babel before deriving the configuration."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:348
+msgid "**Custom loader functions** have the following signature:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:358
+msgid ""
+"Cosmiconfig reads the file when it checks whether the file exists, so it "
+"will provide you with both the file's path and its content. Do whatever "
+"you need to, and return either a configuration object or `null` (or, for "
+"async-only loaders, a Promise that resolves with one of those). `null` "
+"indicates that no real configuration was found and the search should "
+"continue."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:362
+msgid ""
+"It's easiest if you make your custom loader function synchronous. Then it"
+" can be used regardless of whether you end up calling [`search()`] or "
+"[`searchSync()`], [`load()`] or [`loadSync()`]. If you want or need to "
+"provide an async-only loader, you can do so by making the value of "
+"`loaders` an object with an `async` property whose value is the async "
+"loader. You can also add a `sync` property to designate a sync loader, if"
+" you want to use both async and sync search and load functions."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:367
+msgid "A few things to note:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:369
+msgid ""
+"If you use a custom loader, be aware of whether it's sync or async and "
+"how that aligned with your usage of sync or async search and load "
+"functions."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:370
+msgid ""
+"**Special JS syntax can also be handled by using a `require` hook**, "
+"because `cosmiconfig.loadJs` just uses `require`. Whether you use custom "
+"loaders or a `require` hook is up to you."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:373
+msgid "Examples:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:406
+msgid "packageProp"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:408
+#, python-brace-format
+msgid "Type: `string | Array<string>`. Default: `` `${moduleName}` ``."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:411
+msgid "Name of the property in `package.json` to look for."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:413
+msgid ""
+"Use a period-delimited string or an array of strings to describe a path "
+"to nested properties."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:415
+msgid ""
+"For example, the value `'configs.myPackage'` or `['configs', "
+"'myPackage']` will get you the `\"myPackage\"` value in a `package.json` "
+"like this:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:425
+msgid ""
+"If nested property names within the path include periods, you need to use"
+" an array of strings. For example, the value `['configs', 'foo.bar', "
+"'baz']` will get you the `\"baz\"` value in a `package.json` like this:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:437
+msgid ""
+"If a string includes period but corresponds to a top-level property name,"
+" it will not be interpreted as a period-delimited path. For example, the "
+"value `'one.two'` will get you the `\"three\"` value in a `package.json` "
+"like this:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:448
+msgid "stopDir"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:450
+msgid "Type: `string`. Default: Absolute path to your home directory."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:453
+msgid "Directory where the search will stop."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:455
+msgid "cache"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:457
+#: ../../source/cosmiconfig_README.md:476
+msgid "Type: `boolean`. Default: `true`."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:460
+msgid ""
+"If `false`, no caches will be used. Read more about "
+"[\"Caching\"](#caching) below."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:463
+msgid "transform"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:465
+msgid "Type: `(Result) => Promise<Result> | Result`."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:467
+msgid ""
+"A function that transforms the parsed configuration. Receives the "
+"[result]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:469
+msgid ""
+"If using [`search()`] or [`load()`] \\(which are async), the transform "
+"function can return the transformed result or return a Promise that "
+"resolves with the transformed result. If using [`searchSync()`] or "
+"[`loadSync()`], the function must be synchronous and return the "
+"transformed result."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:472
+msgid ""
+"The reason you might use this option — instead of simply applying your "
+"transform function some other way — is that *the transformed result will "
+"be cached*. If your transformation involves additional filesystem I/O or "
+"other potentially slow processing, you can use this option to avoid "
+"repeating those steps every time a given configuration is searched or "
+"loaded."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:474
+msgid "ignoreEmptySearchPlaces"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:479
+msgid ""
+"By default, if [`search()`] encounters an empty file (containing nothing "
+"but whitespace) in one of the [`searchPlaces`], it will ignore the empty "
+"file and move on. If you'd like to load empty configuration files, "
+"instead, set this option to `false`."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:482
+msgid ""
+"Why might you want to load empty configuration files? If you want to "
+"throw an error, or if an empty configuration file means something to your"
+" program."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:485
+msgid "Caching"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:487
+msgid ""
+"As of v2, cosmiconfig uses caching to reduce the need for repetitious "
+"reading of the filesystem or expensive transforms. Every new cosmiconfig "
+"instance (created with `cosmiconfig()`) has its own caches."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:489
+msgid "To avoid or work around caching, you can do the following:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:491
+msgid "Set the `cosmiconfig` option [`cache`] to `false`."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:492
+msgid ""
+"Use the cache-clearing methods [`clearLoadCache()`], "
+"[`clearSearchCache()`], and [`clearCaches()`]."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:493
+msgid "Create separate instances of cosmiconfig (separate \"explorers\")."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:495
+msgid "Differences from [rc](https://github.com/dominictarr/rc)"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:497
+msgid ""
+"[rc](https://github.com/dominictarr/rc) serves its focused purpose well. "
+"cosmiconfig differs in a few key ways — making it more useful for some "
+"projects, less useful for others:"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:499
+msgid ""
+"Looks for configuration in some different places: in a `package.json` "
+"property, an rc file, a `.config.js` file, and rc files with extensions."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:500
+msgid "Built-in support for JSON, YAML, and CommonJS formats."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:501
+msgid ""
+"Stops at the first configuration found, instead of finding all that can "
+"be found up the directory tree and merging them automatically."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:502
+msgid "Options."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:503
+msgid "Asynchronous by default (though can be run synchronously)."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:505
+msgid "Contributing & Development"
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:507
+msgid ""
+"Please note that this project is released with a [Contributor Code of "
+"Conduct](CODE_OF_CONDUCT.md). By participating in this project you agree "
+"to abide by its terms."
+msgstr ""
+
+#: ../../source/cosmiconfig_README.md:509
+msgid "And please do participate!"
+msgstr ""
+

@@ -1,0 +1,72 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/once_README.md:1
+msgid "once"
+msgstr ""
+
+#: ../../source/once_README.md:3
+msgid "Only call a function once."
+msgstr ""
+
+#: ../../source/once_README.md:5
+msgid "usage"
+msgstr ""
+
+#: ../../source/once_README.md:18
+msgid "Or add to the Function.prototype in a responsible way:"
+msgstr ""
+
+#: ../../source/once_README.md:32
+msgid ""
+"Ironically, the prototype feature makes this module twice as complicated "
+"as necessary."
+msgstr ""
+
+#: ../../source/once_README.md:35
+msgid ""
+"To check whether you function has been called, use `fn.called`. Once the "
+"function is called for the first time the return value of the original "
+"function is saved in `fn.value` and subsequent calls will continue to "
+"return this value."
+msgstr ""
+
+#: ../../source/once_README.md:53
+msgid "`once.strict(func)`"
+msgstr ""
+
+#: ../../source/once_README.md:55
+msgid "Throw an error if the function is called twice."
+msgstr ""
+
+#: ../../source/once_README.md:57
+msgid ""
+"Some functions are expected to be called only once. Using `once` for them"
+" would potentially hide logical errors."
+msgstr ""
+
+#: ../../source/once_README.md:60
+msgid ""
+"In the example below, the `greet` function has to call the callback only "
+"once:"
+msgstr ""
+

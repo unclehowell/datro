@@ -1,0 +1,210 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/bin-wrapper_readme.md:1
+msgid ""
+"bin-wrapper [![Build Status](https://travis-ci.org/kevva/bin-"
+"wrapper.svg?branch=master)](https://travis-ci.org/kevva/bin-wrapper)"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:3
+msgid ""
+"Binary wrapper that makes your programs seamlessly available as local "
+"dependencies"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:33
+msgid "Get the path to your binary with `bin.path()`:"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:41
+msgid "API"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:43
+msgid "`new BinWrapper(options)`"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:45
+msgid "Creates a new `BinWrapper` instance."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:47
+msgid "options"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:49
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:51
+msgid "skipCheck"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:53
+msgid "Type: `boolean`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:56
+msgid "Whether to skip the binary check or not."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:58
+msgid "strip"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:60
+msgid "Type: `number`<br> Default: `1`"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:63
+msgid "Strip a number of leading paths from file names on extraction."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:65
+msgid ".src(url, [os], [arch])"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:67
+msgid "Adds a source to download."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:69
+msgid "url"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:71 ../../source/bin-wrapper_readme.md:77
+#: ../../source/bin-wrapper_readme.md:83 ../../source/bin-wrapper_readme.md:91
+#: ../../source/bin-wrapper_readme.md:99 ../../source/bin-wrapper_readme.md:111
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:73
+msgid "Accepts a URL pointing to a file to download."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:75
+msgid "os"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:79
+msgid "Tie the source to a specific OS."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:81
+msgid "arch"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:85
+msgid "Tie the source to a specific arch."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:87
+msgid ".dest(destination)"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:89
+msgid "destination"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:93
+msgid "Accepts a path which the files will be downloaded to."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:95
+msgid ".use(binary)"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:97
+msgid "binary"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:101
+msgid "Define which file to use as the binary."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:103
+msgid ".path()"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:105
+msgid "Returns the full path to your binary."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:107
+msgid ".version(range)"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:109
+msgid "range"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:113
+msgid ""
+"Define a [semver range](https://github.com/isaacs/node-semver#ranges) to "
+"check the binary against."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:116
+msgid ".run([arguments])"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:118
+msgid ""
+"Runs the search for the binary. If no binary is found it will download "
+"the file using the URL provided in `.src()`."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:121
+msgid "arguments"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:123
+msgid "Type: `Array`<br> Default: `['--version']`"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:126
+msgid ""
+"Command to run the binary with. If it exits with code `0` it means that "
+"the binary is working."
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:130
+msgid "License"
+msgstr ""
+
+#: ../../source/bin-wrapper_readme.md:132
+msgid "MIT © [Kevin Mårtensson](http://kevinmartensson.com)"
+msgstr ""
+

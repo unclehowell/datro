@@ -1,0 +1,258 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/2nd-brain_SKILL.md:6
+msgid "2nd Brain — Persistent Memory System"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:8
+msgid "What This Is"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:9
+msgid ""
+"`~/brain/` (resolves to `/home/ubuntu/datro/static/llmwiki/` on this "
+"server) is the shared intelligence between all agents on this machine. "
+"Everything we learn flows through here."
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:12
+#, python-brace-format
+msgid ""
+"**Important:** The brain path may vary by user profile. Always use "
+"`~/brain/` or `${BRAIN_ROOT}` rather than hardcoding "
+"`/home/ubuntu/datro/static/llmwiki/`. On this machine, the home directory"
+" is `/home/ubuntu`, not `/home/unclehowell`."
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:15
+msgid "Memory Architecture (3 tiers)"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:17
+msgid "Tier 1: Hermes Memory Tool"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:18
+msgid "survives sessions via memory tool (add/replace/remove actions)"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:19
+msgid ""
+"Two targets: \"memory\" (facts, lessons) and \"user\" (preferences, "
+"corrections)"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:20
+msgid "queried via session_search across all past sessions"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:21
+msgid "fast, searchable, always injected into context"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:23
+msgid "Tier 2: Brain Files"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:24
+msgid "~/brain/memory/ — structured memory files"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:25
+msgid "~/brain/memory/archive/learned/ — dated lesson archives"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:26
+msgid "synced to GitHub via ~/brain/scripts/sync.sh"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:27
+msgid "accessible to ALL agents (hermes, claude, opencode, etc.)"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:29
+msgid "Tier 3: Skills"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:30
+msgid "~/brain/skills/ — procedural memory (how-to guides)"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:31
+msgid "loaded via skill_view(name)"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:32
+msgid "created via skill_manage(action=\"create\") when workflows repeat"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:34
+msgid "The Closed Loop Protocol"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:36
+msgid "AT SESSION START:"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:37
+msgid "Load this skill (2nd-brain)"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:38
+msgid "Run session_search to check for relevant past sessions"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:39
+#, python-brace-format
+msgid "Read ${BRAIN_ROOT}/memory/context/current.md for active priorities"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:40
+msgid "Load relevant skills matching the task"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:42
+#, python-brace-format
+msgid ""
+"DURING WORK: 5. Save durable facts immediately with "
+"memory(action=\"add\") 6. Save user corrections with "
+"memory(action=\"add\", target=\"user\") 7. Discover recurring pattern? "
+"Create a skill in ${BRAIN_ROOT}/skills/"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:47
+#, python-brace-format
+msgid ""
+"AFTER TASK COMPLETION: 8. Write a brief summary to "
+"${BRAIN_ROOT}/memory/archive/learned/YYYY-MM-DD/agent-name.md 9. Run: "
+"bash ~/brain/scripts/sync.sh 10. Sync must complete before session ends"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:52
+msgid "Quick Reference"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:54
+msgid "Recall past learnings"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:55
+msgid "session_search query=\"keywords OR topics\""
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:57
+msgid "Load a skill"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:58
+msgid "skills_list [category=devops] skill_view name=skill-name"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:61
+msgid "Save a durable fact"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:62
+msgid "Write to brain memory files or archive directly"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:64
+msgid "Archive to brain (cross-agent sharing)"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:65
+#, python-brace-format
+msgid "Write to ${BRAIN_ROOT}/memory/archive/learned/YYYY-MM-DD/"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:67
+msgid "Close the loop"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:68
+msgid "bash ~/brain/scripts/sync.sh"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:70
+msgid "Wiring (do this once)"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:72
+#, python-brace-format
+msgid ""
+"Symlink brain skills into Hermes profile skills dir: ln -sf "
+"~/brain/skills /home/ubuntu/.hermes/profiles/{profile}/skills/_brain"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:75
+msgid ""
+"CRITICAL: The symlink must go into the PROFILE skills dir "
+"(~/.hermes/profiles/*/skills/), NOT into ~/.hermes/skills/. The profile "
+"dir is where Hermes actually discovers skills."
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:78
+msgid ""
+"Ensure 2nd-brain/skills/brain-sync have SKILL.md files. The 2nd-brain "
+"directory will exist but may be EMPTY (no SKILL.md) after a git sync. If "
+"SKILL.md is missing, recreate it before loading."
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:82
+msgid ""
+"Deploy Hermes post-session hook (fires agent:end, session:end): "
+"~.hermes/hooks/brain-sync/HOOK.yaml + handler.py This auto-archives "
+"session summaries to brain and syncs to GitHub."
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:86
+msgid "Pitfalls"
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:88
+msgid ""
+"The old sync.sh used `git reset --hard origin/main` which WIPES "
+"uncommitted local changes. The fixed version uses stash -> pull --rebase "
+"-> pop. If you see local changes vanishing after sync, this is the bug. "
+"Re-check git status after every sync."
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:92
+msgid ""
+"Brain files are PUBLIC on GitHub. .env is in .gitignore but verify before"
+" committing."
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:93
+msgid ""
+"The archive/learned/ folder can go stale — agents skip archiving if dirs "
+"dont exist. Always create dirs first with mkdir -p."
+msgstr ""
+
+#: ../../source/2nd-brain_SKILL.md:96
+msgid ""
+"Hermes memory tool session-level store and brain files are NOT "
+"automatically synced. An agent must explicitly write to BOTH to close the"
+" loop fully."
+msgstr ""
+

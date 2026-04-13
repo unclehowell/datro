@@ -1,0 +1,384 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/js-yaml_README.md:1
+msgid "JS-YAML - YAML 1.2 parser / writer for JavaScript"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:4
+msgid ""
+"[![Build Status](https://travis-ci.org/nodeca/js-"
+"yaml.svg?branch=master)](https://travis-ci.org/nodeca/js-yaml) [![NPM "
+"version](https://img.shields.io/npm/v/js-"
+"yaml.svg)](https://www.npmjs.org/package/js-yaml)"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:4
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:4
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:7
+msgid "__[Online Demo](http://nodeca.github.com/js-yaml/)__"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:10
+msgid ""
+"This is an implementation of [YAML](http://yaml.org/), a human-friendly "
+"data serialization language. Started as [PyYAML](http://pyyaml.org/) "
+"port, it was completely rewritten from scratch. Now it's very fast, and "
+"supports 1.2 spec."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:15
+msgid "Installation"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:18
+msgid "YAML module for node.js"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:25
+msgid "CLI executable"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:27
+msgid "If you want to inspect your YAML files from CLI, install js-yaml globally:"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:33
+msgid "Usage"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:49
+msgid "Bundled YAML library for browsers"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:60
+msgid ""
+"Browser support was done mostly for the online demo. If you find any "
+"errors - feel free to send pull requests with fixes. Also note, that IE "
+"and other old browsers needs "
+"[es5-shims](https://github.com/kriskowal/es5-shim) to operate."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:64
+msgid "Notes:"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:66
+msgid ""
+"We have no resources to support browserified version. Don't expect it to "
+"be well tested. Don't expect fast fixes if something goes wrong there."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:68
+msgid ""
+"`!!js/function` in browser bundle will not work by default. If you really"
+" need it - load `esprima` parser first (via amd or directly)."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:70
+msgid ""
+"`!!bin` in browser will return `Array`, because browsers do not support "
+"node.js `Buffer` and adding Buffer shims is completely useless on "
+"practice."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:74
+msgid "API"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:77
+msgid ""
+"Here we cover the most 'useful' methods. If you need advanced details "
+"(creating your own tags), see [wiki](https://github.com/nodeca/js-"
+"yaml/wiki) and [examples](https://github.com/nodeca/js-"
+"yaml/tree/master/examples) for more info."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:96
+msgid "safeLoad (string [ , options ])"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:98
+msgid ""
+"**Recommended loading way.** Parses `string` as single YAML document. "
+"Returns either a plain object, a string or `undefined`, or throws "
+"`YAMLException` on error. By default, does not support regexps, functions"
+" and undefined. This method is safe for untrusted data."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:102 ../../source/js-yaml_README.md:170
+msgid "options:"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:104
+msgid ""
+"`filename` _(default: null)_ - string to be used as a file path in "
+"error/warning messages."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:106
+msgid ""
+"`onWarning` _(default: null)_ - function to call on warning messages. "
+"Loader will call this function with an instance of `YAMLException` for "
+"each warning."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:108
+msgid "`schema` _(default: `DEFAULT_SAFE_SCHEMA`)_ - specifies a schema to use."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:109
+msgid ""
+"`FAILSAFE_SCHEMA` - only strings, arrays and plain objects: "
+"http://www.yaml.org/spec/1.2/spec.html#id2802346"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:111
+msgid ""
+"`JSON_SCHEMA` - all JSON-supported types: "
+"http://www.yaml.org/spec/1.2/spec.html#id2803231"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:113
+msgid ""
+"`CORE_SCHEMA` - same as `JSON_SCHEMA`: "
+"http://www.yaml.org/spec/1.2/spec.html#id2804923"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:115
+msgid ""
+"`DEFAULT_SAFE_SCHEMA` - all supported YAML types, without unsafe ones "
+"(`!!js/undefined`, `!!js/regexp` and `!!js/function`): "
+"http://yaml.org/type/"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:118
+msgid "`DEFAULT_FULL_SCHEMA` - all supported YAML types."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:119
+msgid ""
+"`json` _(default: false)_ - compatibility with JSON.parse behaviour. If "
+"true, then duplicate keys in a mapping will override values rather than "
+"throwing an error."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:121
+msgid ""
+"NOTE: This function **does not** understand multi-document sources, it "
+"throws exception on those."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:124
+msgid ""
+"NOTE: JS-YAML **does not** support schema-specific tag resolution "
+"restrictions. So, the JSON schema is not as strictly defined in the YAML "
+"specification. It allows numbers in any notation, use `Null` and `NULL` "
+"as `null`, etc. The core schema also has no such restrictions. It allows "
+"binary notation for integers."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:130
+msgid "load (string [ , options ])"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:132
+msgid ""
+"**Use with care with untrusted sources**. The same as `safeLoad()` but "
+"uses `DEFAULT_FULL_SCHEMA` by default - adds some JavaScript-specific "
+"types: `!!js/function`, `!!js/regexp` and `!!js/undefined`. For untrusted"
+" sources, you must additionally validate object structure to avoid "
+"injections:"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:145
+msgid "safeLoadAll (string [, iterator] [, options ])"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:147
+msgid ""
+"Same as `safeLoad()`, but understands multi-document sources. Applies "
+"`iterator` to each document if specified, or returns array of documents."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:159
+msgid "loadAll (string [, iterator] [ , options ])"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:161
+msgid "Same as `safeLoadAll()` but uses `DEFAULT_FULL_SCHEMA` by default."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:164
+msgid "safeDump (object [ , options ])"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:166
+msgid ""
+"Serializes `object` as a YAML document. Uses `DEFAULT_SAFE_SCHEMA`, so it"
+" will throw an exception if you try to dump regexps or functions. "
+"However, you can disable exceptions by setting the `skipInvalid` option "
+"to `true`."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:172
+msgid "`indent` _(default: 2)_ - indentation width to use (in spaces)."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:173
+msgid ""
+"`noArrayIndent` _(default: false)_ - when true, will not add an "
+"indentation level to array elements"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:174
+msgid ""
+"`skipInvalid` _(default: false)_ - do not throw on invalid types (like "
+"function in the safe schema) and skip pairs and single values with such "
+"types."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:176
+msgid ""
+"`flowLevel` (default: -1) - specifies level of nesting, when to switch "
+"from block to flow style for collections. -1 means block style everwhere"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:178
+msgid "`styles` - \"tag\" => \"style\" map. Each tag may have own set of styles."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:179
+msgid "`schema` _(default: `DEFAULT_SAFE_SCHEMA`)_ specifies a schema to use."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:180
+msgid ""
+"`sortKeys` _(default: `false`)_ - if `true`, sort keys when dumping YAML."
+" If a function, use the function to sort the keys."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:182
+msgid "`lineWidth` _(default: `80`)_ - set max line width."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:183
+msgid ""
+"`noRefs` _(default: `false`)_ - if `true`, don't convert duplicate "
+"objects into references"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:184
+msgid ""
+"`noCompatMode` _(default: `false`)_ - if `true` don't try to be "
+"compatible with older yaml versions. Currently: don't quote \"yes\", "
+"\"no\" and so on, as required for YAML 1.1"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:186
+#, python-brace-format, python-format
+msgid ""
+"`condenseFlow` _(default: `false`)_ - if `true` flow sequences will be "
+"condensed, omitting the space between `a, b`. Eg. `'[a,b]'`, and omitting"
+" the space between `key: value` and quoting the key. Eg. `'{\"a\":b}'` "
+"Can be useful when using yaml for pretty URL query params as spaces are "
+"%-encoded."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:188
+msgid ""
+"The following table show availlable styles (e.g. \"canonical\", "
+"\"binary\"...) available for each tag (.e.g. !!null, !!int ...). Yaml "
+"output is shown on the right side after `=>` (default setting) or `->`:"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:216
+msgid "Example:"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:227
+msgid "dump (object [ , options ])"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:229
+msgid ""
+"Same as `safeDump()` but without limits (uses `DEFAULT_FULL_SCHEMA` by "
+"default)."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:232
+msgid "Supported YAML types"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:235
+msgid ""
+"The list of standard YAML tags and corresponding JavaScipt types. See "
+"also [YAML tag discussion](http://pyyaml.org/wiki/YAMLTagDiscussion) and "
+"[YAML types repository](http://yaml.org/type/)."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:254
+msgid "**JavaScript-specific tags**"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:262
+msgid "Caveats"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:265
+msgid ""
+"Note, that you use arrays or objects as key in JS-YAML. JS does not allow"
+" objects or arrays as keys, and stringifies (by calling `toString()` "
+"method) them at the moment of adding them."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:282
+msgid ""
+"Also, reading of properties on implicit block mapping keys is not "
+"supported yet. So, the following YAML document cannot be loaded."
+msgstr ""
+
+#: ../../source/js-yaml_README.md:294
+msgid "js-yaml for enterprise"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:297
+msgid "Available as part of the Tidelift Subscription"
+msgstr ""
+
+#: ../../source/js-yaml_README.md:299
+msgid ""
+"The maintainers of js-yaml and thousands of other packages are working "
+"with Tidelift to deliver commercial support and maintenance for the open "
+"source dependencies you use to build your applications. Save time, reduce"
+" risk, and improve code health, while paying the maintainers of the exact"
+" dependencies you use. [Learn "
+"more.](https://tidelift.com/subscription/pkg/npm-js-yaml?utm_source=npm-"
+"js-yaml&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)"
+msgstr ""
+

@@ -1,0 +1,310 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/.github_THREAT_MODEL.md:1
+msgid "Threat Model for qs (querystring parsing library)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:3
+msgid "1. Library Overview"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:5
+msgid "**Library Name:** qs"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:6
+msgid ""
+"**Brief Description:** A JavaScript library for parsing and stringifying "
+"URL query strings, supporting nested objects and arrays. It is widely "
+"used in Node.js and web applications for processing query "
+"parameters[2][6][8]."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:7
+msgid "**Key Public APIs/Functions:** `qs.parse()`, `qs.stringify()`"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:9
+msgid "2. Define Scope"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:11
+msgid ""
+"This threat model focuses on the core parsing and stringifying "
+"functionality, specifically the handling of nested objects and arrays, "
+"option validation, and cycle management in stringification."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:13
+msgid "3. Conceptual System Diagram"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:26
+msgid "**Trust Boundaries:**"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:27
+msgid ""
+"**Input string (parse):** May come from untrusted sources (e.g., user "
+"input, network requests)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:28
+msgid ""
+"**Input object (stringify):** May contain cycles, which can lead to "
+"infinite loops during stringification"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:29
+msgid "**Options:** Provided by the caller"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:30
+msgid ""
+"**Cycle Tracking:** Used only during stringification to detect and handle"
+" circular references"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:32
+msgid "4. Identify Assets"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:34
+msgid ""
+"**Integrity of parsed output:** Prevent malicious manipulation of the "
+"output object structure, especially ensuring builtins/globals are not "
+"modified as a result of parse[3][4][8]."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:35
+msgid ""
+"**Confidentiality of processed data:** Avoid leaking sensitive "
+"information through errors or output."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:36
+msgid ""
+"**Availability/performance for host application:** Prevent crashes or "
+"resource exhaustion in the consuming application."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:37
+msgid ""
+"**Security of host application:** Prevent the library from being a vector"
+" for attacks (e.g., prototype pollution, DoS)."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:38
+msgid ""
+"**Reputation of library:** Maintain trust by avoiding supply chain "
+"attacks and vulnerabilities[1]."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:40
+msgid "5. Identify Threats"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Component / API / Interaction"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "S"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "T"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "R"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "I"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "D"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "E"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Public API Call (`parse`)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "–"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "✓"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Public API Call (`stringify`)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Options Handling"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Dependency Interaction"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:49
+msgid "**Key Threats:**"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:50
+msgid ""
+"**Tampering:** Malicious input can, if not prevented, alter parsed output"
+" (e.g., prototype pollution via `__proto__`, modification of "
+"builtins/globals)[3][4][8]."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:51
+msgid ""
+"**Information Disclosure:** Error messages may expose internal details or"
+" sensitive data."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:52
+msgid "**Denial of Service:** Large or malformed input can exhaust memory or CPU."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:53
+msgid ""
+"**Elevation of Privilege:** Prototype pollution can lead to unintended "
+"privilege escalation in the host application[3][4][8]."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:55
+msgid "6. Mitigation/Countermeasures"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Threat Identified"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Proposed Mitigation"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Tampering (malicious input, prototype pollution)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid ""
+"Strict input validation; keep `allowPrototypes: false` by default; use "
+"`plainObjects` for output; ensure builtins/globals are never modified by "
+"parse[4][8]."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Information Disclosure (error messages)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Generic error messages without stack traces or internal paths."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Denial of Service (memory/CPU exhaustion)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid ""
+"Enforce `arrayLimit` and `parameterLimit` with safe defaults; enable "
+"`throwOnLimitExceeded`; limit nesting depth[7]."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid "Elevation of Privilege (prototype pollution)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md
+msgid ""
+"Keep `allowPrototypes: false`; validate options against allowlist; use "
+"`plainObjects` to avoid prototype pollution[4][8]."
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:64
+msgid "7. Risk Ranking"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:66
+msgid ""
+"**High:** Denial of Service via array parsing or malformed input "
+"(historical vulnerability)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:67
+msgid ""
+"**Medium:** Prototype pollution via options or input (if "
+"`allowPrototypes` enabled)"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:68
+msgid "**Low:** Information disclosure in errors"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:70
+msgid "8. Next Steps & Review"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:72
+msgid "**Audit option validation logic.**"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:73
+msgid "**Add depth limiting to nested parsing and stringification.**"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:74
+msgid "**Implement fuzz testing for parser and stringifier edge cases.**"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:75
+msgid "**Regularly review dependencies for vulnerabilities.**"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:76
+msgid "**Keep documentation and threat model up to date.**"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:77
+msgid "**Ensure builtins/globals are never modified as a result of parse.**"
+msgstr ""
+
+#: ../../source/.github_THREAT_MODEL.md:78
+msgid ""
+"**Support round-trip consistency between parse and stringify as a non-"
+"security goal, with the right options[5][9].**"
+msgstr ""
+

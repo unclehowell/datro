@@ -1,0 +1,1414 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_cal.md:1
+msgid "Design System: Cal.com"
+msgstr ""
+
+#: ../../source/templates_cal.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_cal.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_cal.md:7
+msgid "**Primary:** `Inter` | **Mono:** `Roboto Mono`"
+msgstr ""
+
+#: ../../source/templates_cal.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_cal.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'Roboto Mono', ui-monospace, SFMono-"
+"Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', "
+"monospace;`"
+msgstr ""
+
+#: ../../source/templates_cal.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_cal.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_cal.md:18
+msgid ""
+"Cal.com's website is a masterclass in monochromatic restraint — a "
+"grayscale world where boldness comes not from color but from the sheer "
+"confidence of black text on white space. Inspired by Uber's minimal "
+"aesthetic, the palette is deliberately stripped of hue: near-black "
+"headings (`#242424`), mid-gray secondary text (`#898989`), and pure white"
+" surfaces. Color is treated as a foreign substance — when it appears (a "
+"rare blue link, a green trust badge), it feels like a controlled accent "
+"in an otherwise black-and-white photograph."
+msgstr ""
+
+#: ../../source/templates_cal.md:20
+msgid ""
+"Cal Sans, the brand's custom geometric display typeface designed by Mark "
+"Davis, is the visual centerpiece. Letters are intentionally spaced "
+"extremely close at large sizes, creating dense, architectural headlines "
+"that feel like they're carved into the page. At 64px and 48px, Cal Sans "
+"headings sit at weight 600 with a tight 1.10 line-height — confident, "
+"compressed, and immediately recognizable. For body text, the system "
+"switches to Inter, providing \"rock-solid\" readability that complements "
+"Cal Sans's display personality. The typography pairing creates a clear "
+"division: Cal Sans speaks, Inter explains."
+msgstr ""
+
+#: ../../source/templates_cal.md:22
+msgid ""
+"The elevation system is notably sophisticated for a minimal site — 11 "
+"shadow definitions create a nuanced depth hierarchy using multi-layered "
+"shadows that combine ring borders (`0px 0px 0px 1px`), soft diffused "
+"shadows, and inset highlights. This shadow-first approach to depth "
+"(rather than border-first) gives surfaces a subtle three-dimensionality "
+"that feels modern and polished. Built on Framer with a border-radius "
+"scale from 2px to 9999px (pill), Cal.com balances geometric precision "
+"with soft, rounded interactive elements."
+msgstr ""
+
+#: ../../source/templates_cal.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_cal.md:25
+msgid ""
+"Purely grayscale brand palette — no brand colors, boldness through "
+"monochrome"
+msgstr ""
+
+#: ../../source/templates_cal.md:26
+msgid ""
+"Cal Sans custom geometric display font with extremely tight default "
+"letter-spacing"
+msgstr ""
+
+#: ../../source/templates_cal.md:27
+msgid ""
+"Multi-layered shadow system (11 definitions) with ring borders + diffused"
+" shadows + inset highlights"
+msgstr ""
+
+#: ../../source/templates_cal.md:28
+msgid "Cal Sans for headings, Inter for body — clean typographic division"
+msgstr ""
+
+#: ../../source/templates_cal.md:29
+msgid "Wide border-radius scale from 2px to 9999px (pill) — versatile rounding"
+msgstr ""
+
+#: ../../source/templates_cal.md:30
+msgid ""
+"White canvas with near-black (#242424) text — maximum contrast, zero "
+"decoration"
+msgstr ""
+
+#: ../../source/templates_cal.md:31
+msgid ""
+"Product screenshots as primary visual content — the scheduling UI sells "
+"itself"
+msgstr ""
+
+#: ../../source/templates_cal.md:32
+msgid "Built on Framer platform"
+msgstr ""
+
+#: ../../source/templates_cal.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_cal.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_cal.md:37
+msgid ""
+"**Charcoal** (`#242424`): Primary heading and button text — Cal.com's "
+"signature near-black, warmer than pure black"
+msgstr ""
+
+#: ../../source/templates_cal.md:38
+#, python-format
+msgid ""
+"**Midnight** (`#111111`): Deepest text/overlay color — used at 50% "
+"opacity for subtle overlays"
+msgstr ""
+
+#: ../../source/templates_cal.md:39
+msgid ""
+"**White** (`#ffffff`): Primary background and surface — the dominant "
+"canvas"
+msgstr ""
+
+#: ../../source/templates_cal.md:41
+msgid "Secondary & Accent"
+msgstr ""
+
+#: ../../source/templates_cal.md:42
+msgid ""
+"**Link Blue** (`#0099ff`): In-text links with underline decoration — the "
+"only blue in the system, reserved strictly for hyperlinks"
+msgstr ""
+
+#: ../../source/templates_cal.md:43
+#, python-format
+msgid ""
+"**Focus Ring** (`#3b82f6` at 50% opacity): Keyboard focus indicator — "
+"accessibility-only, invisible in normal interaction"
+msgstr ""
+
+#: ../../source/templates_cal.md:44
+msgid ""
+"**Default Link** (`#0000ee`): Browser-default link color on some elements"
+" — unmodified, signaling openness"
+msgstr ""
+
+#: ../../source/templates_cal.md:46
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_cal.md:47
+msgid "**Pure White** (`#ffffff`): Primary page background and card surfaces"
+msgstr ""
+
+#: ../../source/templates_cal.md:48
+msgid ""
+"**Light Gray** (approx `#f5f5f5`): Subtle section differentiation — "
+"barely visible tint"
+msgstr ""
+
+#: ../../source/templates_cal.md:49
+msgid "**Mid Gray** (`#898989`): Secondary text, descriptions, and muted labels"
+msgstr ""
+
+#: ../../source/templates_cal.md:51
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_cal.md:52
+msgid "**Charcoal** (`#242424`): Headlines, buttons, primary UI text"
+msgstr ""
+
+#: ../../source/templates_cal.md:53
+msgid "**Midnight** (`#111111`): Deep black for high-contrast links and nav text"
+msgstr ""
+
+#: ../../source/templates_cal.md:54
+msgid "**Mid Gray** (`#898989`): Descriptions, secondary labels, muted content"
+msgstr ""
+
+#: ../../source/templates_cal.md:55
+msgid "**Pure Black** (`#000000`): Certain link text elements"
+msgstr ""
+
+#: ../../source/templates_cal.md:56
+msgid ""
+"**Border Gray** (approx `rgba(34, 42, 53, 0.08–0.10)`): Shadow-based "
+"borders using ring shadows instead of CSS borders"
+msgstr ""
+
+#: ../../source/templates_cal.md:58
+msgid "Semantic & Accent"
+msgstr ""
+
+#: ../../source/templates_cal.md:59
+msgid ""
+"Cal.com is deliberately colorless for brand elements — \"a grayscale "
+"brand to emphasise on boldness and professionalism\""
+msgstr ""
+
+#: ../../source/templates_cal.md:60
+msgid ""
+"Product UI screenshots show color (blues, greens in the scheduling "
+"interface), but the marketing site itself stays monochrome"
+msgstr ""
+
+#: ../../source/templates_cal.md:61
+msgid ""
+"The philosophy mirrors Uber's approach: let the content carry color, the "
+"frame stays neutral"
+msgstr ""
+
+#: ../../source/templates_cal.md:63
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_cal.md:64
+msgid ""
+"No gradients on the marketing site — the design is fully flat and "
+"monochrome"
+msgstr ""
+
+#: ../../source/templates_cal.md:65
+msgid "Depth is achieved entirely through shadows, not color transitions"
+msgstr ""
+
+#: ../../source/templates_cal.md:67
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_cal.md:69
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_cal.md:70
+msgid ""
+"**Display**: `Cal Sans` — custom geometric sans-serif by Mark Davis. "
+"Open-source, available on Google Fonts and GitHub. Extremely tight "
+"default letter-spacing designed for large headlines. Has 6 character "
+"variants (Cc, j, t, u, 0, 1)"
+msgstr ""
+
+#: ../../source/templates_cal.md:71
+msgid ""
+"**Body**: `Inter` — \"rock-solid\" standard body font. Fallback: `Inter "
+"Placeholder`"
+msgstr ""
+
+#: ../../source/templates_cal.md:72
+msgid ""
+"**UI Light**: `Cal Sans UI Variable Light` — light-weight variant (300) "
+"for softer UI text with -0.2px letter-spacing"
+msgstr ""
+
+#: ../../source/templates_cal.md:73
+msgid ""
+"**UI Medium**: `Cal Sans UI Medium` — medium-weight variant (500) for "
+"emphasized captions"
+msgstr ""
+
+#: ../../source/templates_cal.md:74
+msgid "**Mono**: `Roboto Mono` — for code blocks and technical content"
+msgstr ""
+
+#: ../../source/templates_cal.md:75
+msgid ""
+"**Tertiary**: `Matter Regular` / `Matter SemiBold` / `Matter Medium` — "
+"additional body fonts for specific contexts"
+msgstr ""
+
+#: ../../source/templates_cal.md:77
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Cal Sans"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "64px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "1.10"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "0px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Maximum impact, tight default spacing"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "48px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Large section titles"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Feature Heading"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "24px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "1.30"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Feature block headlines"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "20px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "1.20"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "+0.2px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Positive spacing for readability at smaller size"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Sub-heading Alt"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Relaxed line-height variant"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Card Title"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "16px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Smallest Cal Sans usage"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Caption Label"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "12px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Small labels in Cal Sans"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Body Light"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Cal Sans UI Light"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "18px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "300"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "-0.2px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Light-weight body intro text"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Body Light Standard"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Light-weight body text"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Caption Light"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "14px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "1.40–1.50"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "-0.2 to -0.28px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Light captions and descriptions"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "UI Label"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Inter"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "1.00"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "UI buttons and nav labels"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Caption Inter"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "1.14"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Small UI text"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Smallest Inter text"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Code"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Roboto Mono"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Code snippets, technical text"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Body Matter"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Matter Regular"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Alternate body text (product UI)"
+msgstr ""
+
+#: ../../source/templates_cal.md:97
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_cal.md:98
+msgid ""
+"**Cal Sans at large, Inter at small**: Cal Sans is exclusively for "
+"headings and display — never for body text. The system enforces this "
+"division strictly"
+msgstr ""
+
+#: ../../source/templates_cal.md:99
+msgid ""
+"**Tight by default, space when small**: Cal Sans letters are "
+"\"intentionally spaced to be extremely close\" at large sizes. At 20px "
+"and below, positive letter-spacing (+0.2px) must be applied to prevent "
+"cramming"
+msgstr ""
+
+#: ../../source/templates_cal.md:100
+msgid ""
+"**Weight 300 body variant**: Cal Sans UI Variable Light at 300 weight "
+"creates an elegant, airy body text that contrasts with the dense "
+"600-weight headlines"
+msgstr ""
+
+#: ../../source/templates_cal.md:101
+msgid ""
+"**Weight 600 dominance**: Nearly all Cal Sans usage is at weight 600 "
+"(semi-bold) — the font was designed to perform at this weight"
+msgstr ""
+
+#: ../../source/templates_cal.md:102
+msgid ""
+"**Negative tracking on light text**: Cal Sans UI Light uses -0.2px to "
+"-0.28px letter-spacing, subtly tightening the already-compact letterforms"
+msgstr ""
+
+#: ../../source/templates_cal.md:104
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_cal.md:106
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_cal.md:107
+msgid ""
+"**Dark Primary**: `#242424` (or `#1e1f23`) background, white text, 6–8px "
+"radius. Hover: opacity reduction to 0.7. The signature CTA — maximally "
+"dark on white"
+msgstr ""
+
+#: ../../source/templates_cal.md:108
+msgid ""
+"**White/Ghost**: White background with shadow-ring border, dark text. "
+"Uses the multi-layered shadow system for subtle elevation"
+msgstr ""
+
+#: ../../source/templates_cal.md:109
+msgid "**Pill**: 9999px radius for rounded pill-shaped actions and badges"
+msgstr ""
+
+#: ../../source/templates_cal.md:110
+msgid "**Compact**: 4px padding, small text — utility actions within product UI"
+msgstr ""
+
+#: ../../source/templates_cal.md:111
+msgid ""
+"**Inset highlight**: Some buttons feature `rgba(255, 255, 255, 0.15) 0px "
+"2px 0px inset` — a subtle inner-top highlight creating a 3D pressed "
+"effect"
+msgstr ""
+
+#: ../../source/templates_cal.md:113
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_cal.md:114
+msgid ""
+"**Shadow Card**: White background, multi-layered shadow — `rgba(19, 19, "
+"22, 0.7) 0px 1px 5px -4px, rgba(34, 42, 53, 0.08) 0px 0px 0px 1px, "
+"rgba(34, 42, 53, 0.05) 0px 4px 8px 0px`. The ring shadow (0px 0px 0px "
+"1px) acts as a shadow-border"
+msgstr ""
+
+#: ../../source/templates_cal.md:115
+msgid ""
+"**Product UI Cards**: Screenshots of the scheduling interface displayed "
+"in card containers with shadow elevation"
+msgstr ""
+
+#: ../../source/templates_cal.md:116
+msgid ""
+"**Radius**: 8px for standard cards, 12px for larger containers, 16px for "
+"prominent sections"
+msgstr ""
+
+#: ../../source/templates_cal.md:117
+msgid "**Hover**: Likely subtle shadow deepening or scale transform"
+msgstr ""
+
+#: ../../source/templates_cal.md:119
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_cal.md:120
+msgid ""
+"**Select dropdown**: White background, `#000000` text, 1px solid "
+"`rgb(118, 118, 118)` border"
+msgstr ""
+
+#: ../../source/templates_cal.md:121
+msgid "**Focus**: Uses Framer's focus outline system (`--framer-focus-outline`)"
+msgstr ""
+
+#: ../../source/templates_cal.md:122
+msgid "**Text input**: 8px radius, standard border treatment"
+msgstr ""
+
+#: ../../source/templates_cal.md:123
+msgid ""
+"**Minimal form presence**: The marketing site prioritizes CTA buttons "
+"over complex forms"
+msgstr ""
+
+#: ../../source/templates_cal.md:125
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_cal.md:126
+msgid "**Top nav**: White/transparent background, Cal Sans links at near-black"
+msgstr ""
+
+#: ../../source/templates_cal.md:127
+msgid ""
+"**Nav text**: `#111111` (Midnight) for primary links, `#000000` for "
+"emphasis"
+msgstr ""
+
+#: ../../source/templates_cal.md:128
+msgid "**CTA button**: Dark Primary in the nav — high contrast call-to-action"
+msgstr ""
+
+#: ../../source/templates_cal.md:129
+msgid "**Mobile**: Collapses to hamburger with simplified navigation"
+msgstr ""
+
+#: ../../source/templates_cal.md:130
+msgid "**Sticky**: Fixed on scroll"
+msgstr ""
+
+#: ../../source/templates_cal.md:132
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_cal.md:133
+msgid ""
+"**Product screenshots**: Large scheduling UI screenshots — the product is"
+" the primary visual"
+msgstr ""
+
+#: ../../source/templates_cal.md:134
+msgid "**Trust logos**: Grayscale company logos in a horizontal trust bar"
+msgstr ""
+
+#: ../../source/templates_cal.md:135
+msgid "**Aspect ratios**: Wide landscape for product UI screenshots"
+msgstr ""
+
+#: ../../source/templates_cal.md:136
+msgid ""
+"**No decorative imagery**: No illustrations, photos, or abstract graphics"
+" — pure product + typography"
+msgstr ""
+
+#: ../../source/templates_cal.md:138
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_cal.md:140
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_cal.md:141
+msgid "**Base unit**: 8px"
+msgstr ""
+
+#: ../../source/templates_cal.md:142
+msgid ""
+"**Scale**: 1px, 2px, 3px, 4px, 6px, 8px, 12px, 16px, 20px, 24px, 28px, "
+"80px, 96px"
+msgstr ""
+
+#: ../../source/templates_cal.md:143
+msgid "**Section padding**: 80px–96px vertical between major sections (generous)"
+msgstr ""
+
+#: ../../source/templates_cal.md:144
+msgid "**Card padding**: 12px–24px internal"
+msgstr ""
+
+#: ../../source/templates_cal.md:145
+msgid "**Component gaps**: 4px–8px between related elements"
+msgstr ""
+
+#: ../../source/templates_cal.md:146
+msgid ""
+"**Notable jump**: From 28px to 80px — a deliberate gap emphasizing the "
+"section-level spacing tier"
+msgstr ""
+
+#: ../../source/templates_cal.md:148
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_cal.md:149
+msgid "**Max width**: ~1200px content container, centered"
+msgstr ""
+
+#: ../../source/templates_cal.md:150
+msgid ""
+"**Column patterns**: Full-width hero, centered text blocks, 2-3 column "
+"feature grids"
+msgstr ""
+
+#: ../../source/templates_cal.md:151
+msgid "**Feature showcase**: Product screenshots flanked by description text"
+msgstr ""
+
+#: ../../source/templates_cal.md:152
+msgid ""
+"**Breakpoints**: 98px, 640px, 768px, 810px, 1024px, 1199px — Framer-"
+"generated"
+msgstr ""
+
+#: ../../source/templates_cal.md:154
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_cal.md:155
+msgid ""
+"**Lavish section spacing**: 80px–96px between sections creates a "
+"breathable, premium feel"
+msgstr ""
+
+#: ../../source/templates_cal.md:156
+msgid ""
+"**Product-first content**: Screenshots dominate the visual space — "
+"minimal surrounding decoration"
+msgstr ""
+
+#: ../../source/templates_cal.md:157
+msgid ""
+"**Centered headlines**: Cal Sans headings centered with generous margins "
+"above and below"
+msgstr ""
+
+#: ../../source/templates_cal.md:159
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_cal.md:160
+msgid "**2px**: Subtle rounding on inline elements"
+msgstr ""
+
+#: ../../source/templates_cal.md:161
+msgid "**4px**: Small UI components"
+msgstr ""
+
+#: ../../source/templates_cal.md:162
+msgid "**6px–7px**: Buttons, small cards, images"
+msgstr ""
+
+#: ../../source/templates_cal.md:163
+msgid "**8px**: Standard interactive elements — buttons, inputs, images"
+msgstr ""
+
+#: ../../source/templates_cal.md:164
+msgid "**12px**: Medium containers — links, larger cards, images"
+msgstr ""
+
+#: ../../source/templates_cal.md:165
+msgid "**16px**: Large section containers"
+msgstr ""
+
+#: ../../source/templates_cal.md:166
+msgid "**29px**: Special rounded elements"
+msgstr ""
+
+#: ../../source/templates_cal.md:167
+msgid "**100px**: Large rounding — nearly circular on small elements"
+msgstr ""
+
+#: ../../source/templates_cal.md:168
+msgid "**1000px**: Very large rounding"
+msgstr ""
+
+#: ../../source/templates_cal.md:169
+msgid "**9999px**: Full pill shape — badges, links"
+msgstr ""
+
+#: ../../source/templates_cal.md:171
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Level 0 (Flat)"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Page canvas, basic text containers"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Level 1 (Inset)"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "`rgba(0,0,0,0.16) 0px 1px 1.9px 0px inset`"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Pressed/recessed elements, input wells"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Level 2 (Ring + Soft)"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid ""
+"`rgba(19,19,22,0.7) 0px 1px 5px -4px, rgba(34,42,53,0.08) 0px 0px 0px "
+"1px, rgba(34,42,53,0.05) 0px 4px 8px`"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Cards, containers — the workhorse shadow"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Level 3 (Ring + Soft Alt)"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "`rgba(36,36,36,0.7) 0px 1px 5px -4px, rgba(36,36,36,0.05) 0px 4px 8px`"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Alt card elevation without ring border"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Level 4 (Inset Highlight)"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid ""
+"`rgba(255,255,255,0.15) 0px 2px 0px inset` or `rgb(255,255,255) 0px 2px "
+"0px inset`"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Button inner highlight — 3D pressed effect"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Level 5 (Soft Only)"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "`rgba(34,42,53,0.05) 0px 4px 8px`"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Subtle ambient shadow"
+msgstr ""
+
+#: ../../source/templates_cal.md:182
+msgid "Shadow Philosophy"
+msgstr ""
+
+#: ../../source/templates_cal.md:183
+msgid ""
+"Cal.com's shadow system is the most sophisticated element of the design —"
+" 11 shadow definitions using a multi-layered compositing technique:"
+msgstr ""
+
+#: ../../source/templates_cal.md:184
+msgid ""
+"**Ring borders**: `0px 0px 0px 1px` shadows act as borders, avoiding CSS "
+"`border` entirely. This creates hairline containment without affecting "
+"layout"
+msgstr ""
+
+#: ../../source/templates_cal.md:185
+#, python-format
+msgid ""
+"**Diffused soft shadows**: `0px 4px 8px` at 5% opacity add gentle ambient"
+" depth"
+msgstr ""
+
+#: ../../source/templates_cal.md:186
+#, python-format
+msgid ""
+"**Sharp contact shadows**: `0px 1px 5px -4px` at 70% opacity create tight"
+" bottom-edge shadows for grounding"
+msgstr ""
+
+#: ../../source/templates_cal.md:187
+msgid ""
+"**Inset highlights**: White inset shadows at the top of buttons create a "
+"subtle 3D bevel"
+msgstr ""
+
+#: ../../source/templates_cal.md:188
+msgid ""
+"Shadows are composed in comma-separated stacks — each surface gets 2-3 "
+"layered shadow definitions working together"
+msgstr ""
+
+#: ../../source/templates_cal.md:190
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_cal.md:191
+msgid "No gradients or glow effects"
+msgstr ""
+
+#: ../../source/templates_cal.md:192
+msgid "All depth comes from the sophisticated shadow compositing system"
+msgstr ""
+
+#: ../../source/templates_cal.md:193
+msgid ""
+"The overall effect is subtle but precise — surfaces feel like physical "
+"cards sitting on a table"
+msgstr ""
+
+#: ../../source/templates_cal.md:195
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_cal.md:197
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_cal.md:198
+msgid ""
+"Use Cal Sans exclusively for headings (24px+) and never for body text — "
+"it's a display font with tight default spacing"
+msgstr ""
+
+#: ../../source/templates_cal.md:199
+msgid ""
+"Apply positive letter-spacing (+0.2px) when using Cal Sans below 24px — "
+"the font cramps at small sizes without it"
+msgstr ""
+
+#: ../../source/templates_cal.md:200
+msgid "Maintain the grayscale palette — boldness comes from contrast, not color"
+msgstr ""
+
+#: ../../source/templates_cal.md:201
+msgid ""
+"Use the multi-layered shadow system for card elevation — ring shadow + "
+"diffused shadow + contact shadow"
+msgstr ""
+
+#: ../../source/templates_cal.md:202
+msgid ""
+"Keep backgrounds pure white — the monochrome philosophy requires a clean "
+"canvas"
+msgstr ""
+
+#: ../../source/templates_cal.md:203
+msgid ""
+"Use Inter for all body text at weight 300–600 — it's the reliable "
+"counterpart to Cal Sans's display personality"
+msgstr ""
+
+#: ../../source/templates_cal.md:204
+msgid ""
+"Let product screenshots be the visual content — no illustrations, no "
+"decorative graphics"
+msgstr ""
+
+#: ../../source/templates_cal.md:205
+msgid ""
+"Apply generous section spacing (80px–96px) — the breathing room is "
+"essential to the premium feel"
+msgstr ""
+
+#: ../../source/templates_cal.md:207
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_cal.md:208
+msgid ""
+"Use Cal Sans for body text or text below 16px — it wasn't designed for "
+"extended reading"
+msgstr ""
+
+#: ../../source/templates_cal.md:209
+msgid ""
+"Add brand colors — Cal.com is intentionally grayscale, color is reserved "
+"for links and UI states only"
+msgstr ""
+
+#: ../../source/templates_cal.md:210
+msgid ""
+"Use CSS borders when shadows can achieve the same containment — the ring-"
+"shadow technique is the system's approach"
+msgstr ""
+
+#: ../../source/templates_cal.md:211
+msgid ""
+"Apply negative letter-spacing to Cal Sans at small sizes — it needs "
+"positive spacing (+0.2px) below 24px"
+msgstr ""
+
+#: ../../source/templates_cal.md:212
+#, python-format
+msgid ""
+"Create heavy, dark shadows — Cal.com's shadows are subtle (5% opacity "
+"diffused) with sharp contact edges"
+msgstr ""
+
+#: ../../source/templates_cal.md:213
+msgid ""
+"Use illustrations, abstract graphics, or decorative elements — the visual"
+" language is typography + product UI only"
+msgstr ""
+
+#: ../../source/templates_cal.md:214
+msgid ""
+"Mix Cal Sans weights — the font is designed for weight 600, other weights"
+" break the intended character"
+msgstr ""
+
+#: ../../source/templates_cal.md:215
+msgid ""
+"Reduce section spacing below 48px — the generous whitespace is core to "
+"the premium monochrome aesthetic"
+msgstr ""
+
+#: ../../source/templates_cal.md:217
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_cal.md:219
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "<640px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Single column, hero text ~36px, stacked features, hamburger nav"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Tablet Small"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "640px–768px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "2-column begins for some elements"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "768px–810px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Layout adjustments, fuller grid"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Tablet Large"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "810px–1024px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Multi-column feature grids"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "1024px–1199px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Full layout, expanded navigation"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid ">1199px"
+msgstr ""
+
+#: ../../source/templates_cal.md
+msgid "Max-width container, centered content"
+msgstr ""
+
+#: ../../source/templates_cal.md:229
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_cal.md:230
+msgid "Buttons: 8px radius with comfortable padding (10px+ vertical)"
+msgstr ""
+
+#: ../../source/templates_cal.md:231
+msgid "Nav links: Dark text with adequate spacing"
+msgstr ""
+
+#: ../../source/templates_cal.md:232
+msgid "Mobile CTAs: Full-width dark buttons for easy thumb access"
+msgstr ""
+
+#: ../../source/templates_cal.md:233
+msgid "Pill badges: 9999px radius creates large, tappable targets"
+msgstr ""
+
+#: ../../source/templates_cal.md:235
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_cal.md:236
+msgid "**Navigation**: Full horizontal nav → hamburger on mobile"
+msgstr ""
+
+#: ../../source/templates_cal.md:237
+msgid "**Hero**: 64px Cal Sans display → ~36px on mobile"
+msgstr ""
+
+#: ../../source/templates_cal.md:238
+msgid "**Feature grids**: Multi-column → 2-column → single stacked column"
+msgstr ""
+
+#: ../../source/templates_cal.md:239
+msgid ""
+"**Product screenshots**: Scale within containers, maintaining aspect "
+"ratios"
+msgstr ""
+
+#: ../../source/templates_cal.md:240
+msgid "**Section spacing**: Reduces from 80px–96px to ~48px on mobile"
+msgstr ""
+
+#: ../../source/templates_cal.md:242
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_cal.md:243
+msgid "Product screenshots scale responsively"
+msgstr ""
+
+#: ../../source/templates_cal.md:244
+msgid "Trust logos reflow to multi-row grid on mobile"
+msgstr ""
+
+#: ../../source/templates_cal.md:245
+msgid "No art direction changes — same compositions at all sizes"
+msgstr ""
+
+#: ../../source/templates_cal.md:246
+msgid "Images use 7px–12px border-radius for consistent rounded corners"
+msgstr ""
+
+#: ../../source/templates_cal.md:248
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_cal.md:250
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_cal.md:251
+msgid "Primary Text: Charcoal (`#242424`)"
+msgstr ""
+
+#: ../../source/templates_cal.md:252
+msgid "Deep Text: Midnight (`#111111`)"
+msgstr ""
+
+#: ../../source/templates_cal.md:253
+msgid "Secondary Text: Mid Gray (`#898989`)"
+msgstr ""
+
+#: ../../source/templates_cal.md:254
+msgid "Background: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_cal.md:255
+msgid "Link: Link Blue (`#0099ff`)"
+msgstr ""
+
+#: ../../source/templates_cal.md:256
+msgid "CTA Button: Charcoal (`#242424`) bg, white text"
+msgstr ""
+
+#: ../../source/templates_cal.md:257
+msgid "Shadow Border: `rgba(34, 42, 53, 0.08)` ring"
+msgstr ""
+
+#: ../../source/templates_cal.md:259
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_cal.md:260
+msgid ""
+"\"Create a hero section with white background, 64px Cal Sans heading at "
+"weight 600, line-height 1.10, #242424 text, centered layout with a dark "
+"CTA button (#242424, 8px radius, white text)\""
+msgstr ""
+
+#: ../../source/templates_cal.md:261
+msgid ""
+"\"Design a scheduling card with white background, multi-layered shadow "
+"(0px 1px 5px -4px rgba(19,19,22,0.7), 0px 0px 0px 1px "
+"rgba(34,42,53,0.08), 0px 4px 8px rgba(34,42,53,0.05)), 12px radius\""
+msgstr ""
+
+#: ../../source/templates_cal.md:262
+msgid ""
+"\"Build a navigation bar with white background, Inter links at 14px "
+"weight 500 in #111111, a dark CTA button (#242424), sticky positioning\""
+msgstr ""
+
+#: ../../source/templates_cal.md:263
+msgid ""
+"\"Create a trust bar with grayscale company logos, horizontally centered,"
+" 16px gap between logos, on white background\""
+msgstr ""
+
+#: ../../source/templates_cal.md:264
+msgid ""
+"\"Design a feature section with 48px Cal Sans heading (weight 600, "
+"#242424), 16px Inter body text (weight 300, #898989, line-height 1.50), "
+"and a product screenshot with 12px radius and the card shadow\""
+msgstr ""
+
+#: ../../source/templates_cal.md:266
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_cal.md:267
+msgid "When refining existing screens generated with this design system:"
+msgstr ""
+
+#: ../../source/templates_cal.md:268
+msgid ""
+"Verify headings use Cal Sans at weight 600, body uses Inter — never mix "
+"them"
+msgstr ""
+
+#: ../../source/templates_cal.md:269
+msgid ""
+"Check that the palette is purely grayscale — if you see brand colors, "
+"remove them"
+msgstr ""
+
+#: ../../source/templates_cal.md:270
+msgid "Ensure card elevation uses the multi-layered shadow stack, not CSS borders"
+msgstr ""
+
+#: ../../source/templates_cal.md:271
+msgid ""
+"Confirm section spacing is generous (80px+) — if sections feel cramped, "
+"add more space"
+msgstr ""
+
+#: ../../source/templates_cal.md:272
+msgid ""
+"The overall tone should feel like a clean, professional scheduling tool —"
+" monochrome confidence without any decorative flourishes"
+msgstr ""
+

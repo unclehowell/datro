@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/buffer-indexof-polyfill_README.md:1
+msgid "buffer-indexof-polyfill"
+msgstr ""
+
+#: ../../source/buffer-indexof-polyfill_README.md:3
+msgid ""
+"[![Build Status][travis-image]][travis-url] [![NPM Version][npm-image"
+"]][npm-url] [![NPM Downloads][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/buffer-indexof-polyfill_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/buffer-indexof-polyfill_README.md:3
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/buffer-indexof-polyfill_README.md:3
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/buffer-indexof-polyfill_README.md:7
+msgid ""
+"This is a polyfill for "
+"[`Buffer#indexOf`](https://nodejs.org/api/buffer.html#buffer_buf_indexof_value_byteoffset)"
+" and Buffer#lastIndexOf introduced in NodeJS 4.0."
+msgstr ""
+
+#: ../../source/buffer-indexof-polyfill_README.md:9
+msgid "Example"
+msgstr ""
+
+#: ../../source/buffer-indexof-polyfill_README.md:18
+msgid "Installation"
+msgstr ""
+
+#: ../../source/buffer-indexof-polyfill_README.md:24
+msgid "License"
+msgstr ""
+
+#: ../../source/buffer-indexof-polyfill_README.md:26
+msgid "[MIT](LICENSE)"
+msgstr ""
+

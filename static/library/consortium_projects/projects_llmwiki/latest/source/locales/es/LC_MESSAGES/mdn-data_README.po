@@ -1,0 +1,169 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/mdn-data_README.md:1
+msgid "MDN data"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:3
+msgid "[https://github.com/mdn/data](https://github.com/mdn/data)"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:5
+msgid "Maintained by the [MDN team at Mozilla](https://wiki.mozilla.org/MDN)."
+msgstr ""
+
+#: ../../source/mdn-data_README.md:7
+msgid "This repository contains general data for Web technologies."
+msgstr ""
+
+#: ../../source/mdn-data_README.md:9
+msgid ""
+"This data is used in MDN documentation, to build [information "
+"boxes](https://developer.mozilla.org/en-US/docs/Web/CSS/background) or "
+"[sidebar navigation](https://developer.mozilla.org/en-"
+"US/docs/Web/API/Window). External tools have started to make use of this "
+"data as well. For example, the "
+"[CSSTree](https://github.com/csstree/csstree/) CSS parser."
+msgstr ""
+
+#: ../../source/mdn-data_README.md:16
+msgid ""
+"[![NPM version](https://img.shields.io/npm/v/mdn-"
+"data.svg)](https://www.npmjs.com/package/mdn-data) [![Build Status](https"
+"://travis-ci.org/mdn/data.svg?branch=master)](https://travis-"
+"ci.org/mdn/data)"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:16
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:16
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:19
+msgid "Repository contents"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:21
+msgid ""
+"There's a top-level directory for each broad area covered: for example, "
+"\"api\", \"css\", \"svg\". Inside each of these directories is one or "
+"more JSON files containing the data."
+msgstr ""
+
+#: ../../source/mdn-data_README.md:25
+msgid "api"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:26
+msgid "Contains data about Web APIs:"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:27
+msgid "API inheritance (interface inheritance and mixin implementations)"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:29
+msgid "css"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:30
+msgid "Contains data about:"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:31
+msgid "CSS at-rules"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:32
+msgid "CSS properties"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:33
+msgid "CSS selectors"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:34
+msgid "CSS syntaxes"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:35
+msgid "CSS types"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:36
+msgid "CSS units"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:38
+msgid ""
+"Read more about [CSS "
+"data](https://github.com/mdn/data/blob/master/css/readme.md) and the "
+"format of the files."
+msgstr ""
+
+#: ../../source/mdn-data_README.md:41
+msgid "l10n"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:42
+msgid ""
+"The l10n folder contains localization strings that are used in the "
+"various json files throughout this repository."
+msgstr ""
+
+#: ../../source/mdn-data_README.md:45
+msgid "Problems?"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:47
+msgid ""
+"If you find a problem, please [file an "
+"issue](https://github.com/mdn/data/issues/new)."
+msgstr ""
+
+#: ../../source/mdn-data_README.md:49
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:51
+msgid ""
+"We're very happy to accept contributions to this data. Please familiarize"
+" yourself with the schema for the data you're editing, and send us a pull"
+" request. See also the [Contributing "
+"file](https://github.com/mdn/data/blob/master/CONTRIBUTING.md) for more "
+"information."
+msgstr ""
+
+#: ../../source/mdn-data_README.md:54
+msgid "See also"
+msgstr ""
+
+#: ../../source/mdn-data_README.md:55
+msgid ""
+"[https://github.com/mdn/browser-compat-data](https://github.com/mdn"
+"/browser-compat-data) for compatibility data for Web technologies."
+msgstr ""
+

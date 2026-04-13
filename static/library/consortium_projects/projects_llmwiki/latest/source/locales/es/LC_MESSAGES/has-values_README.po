@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/has-values_README.md:1
+msgid ""
+"has-values [![NPM version](https://img.shields.io/npm/v/has-"
+"values.svg?style=flat)](https://www.npmjs.com/package/has-values) [![NPM "
+"monthly downloads](https://img.shields.io/npm/dm/has-"
+"values.svg?style=flat)](https://npmjs.org/package/has-values) [![NPM "
+"total downloads](https://img.shields.io/npm/dt/has-"
+"values.svg?style=flat)](https://npmjs.org/package/has-values) [![Linux "
+"Build Status](https://img.shields.io/travis/jonschlinkert/has-"
+"values.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert"
+"/has-values)"
+msgstr ""
+
+#: ../../source/has-values_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/has-values_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/has-values_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/has-values_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/has-values_README.md:3
+msgid ""
+"Returns true if any values exist, false if empty. Works for booleans, "
+"functions, numbers, strings, nulls, objects and arrays."
+msgstr ""
+
+#: ../../source/has-values_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/has-values_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/has-values_README.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/has-values_README.md:65
+msgid "isEmpty"
+msgstr ""
+
+#: ../../source/has-values_README.md:67
+msgid "To test for empty values, do:"
+msgstr ""
+
+#: ../../source/has-values_README.md:75
+msgid "Release history"
+msgstr ""
+
+#: ../../source/has-values_README.md:77
+msgid "v1.0.0"
+msgstr ""
+
+#: ../../source/has-values_README.md:79
+msgid "`zero` always returns true"
+msgstr ""
+
+#: ../../source/has-values_README.md:80
+msgid "`array` now recurses, so that an array of empty arrays will return `false`"
+msgstr ""
+
+#: ../../source/has-values_README.md:81
+msgid "`null` now returns true"
+msgstr ""
+
+#: ../../source/has-values_README.md:83
+msgid "About"
+msgstr ""
+
+#: ../../source/has-values_README.md:85
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/has-values_README.md:87
+msgid ""
+"[has-value](https://www.npmjs.com/package/has-value): Returns true if a "
+"value exists, false if empty. Works with deeply nested values using… "
+"[more](https://github.com/jonschlinkert/has-value) | "
+"[homepage](https://github.com/jonschlinkert/has-value \"Returns true if a"
+" value exists, false if empty. Works with deeply nested values using "
+"object paths.\")"
+msgstr ""
+
+#: ../../source/has-values_README.md:88
+msgid ""
+"[is-number](https://www.npmjs.com/package/is-number): Returns true if the"
+" value is a number. comprehensive tests. | "
+"[homepage](https://github.com/jonschlinkert/is-number \"Returns true if "
+"the value is a number. comprehensive tests.\")"
+msgstr ""
+
+#: ../../source/has-values_README.md:89
+msgid ""
+"[is-plain-object](https://www.npmjs.com/package/is-plain-object): Returns"
+" true if an object was created by the `Object` constructor. | "
+"[homepage](https://github.com/jonschlinkert/is-plain-object \"Returns "
+"true if an object was created by the `Object` constructor.\")"
+msgstr ""
+
+#: ../../source/has-values_README.md:90
+msgid ""
+"[isobject](https://www.npmjs.com/package/isobject): Returns true if the "
+"value is an object and not an array or null. | "
+"[homepage](https://github.com/jonschlinkert/isobject \"Returns true if "
+"the value is an object and not an array or null.\")"
+msgstr ""
+
+#: ../../source/has-values_README.md:91
+msgid ""
+"[kind-of](https://www.npmjs.com/package/kind-of): Get the native type of "
+"a value. | [homepage](https://github.com/jonschlinkert/kind-of \"Get the "
+"native type of a value.\")"
+msgstr ""
+
+#: ../../source/has-values_README.md:93
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/has-values_README.md:95
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/has-values_README.md:97
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/has-values_README.md:99
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/has-values_README.md:101
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/has-values_README.md:107
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/has-values_README.md:109
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/has-values_README.md:115
+msgid "Author"
+msgstr ""
+
+#: ../../source/has-values_README.md:117
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/has-values_README.md:119
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/has-values_README.md:120
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/has-values_README.md:122
+msgid "License"
+msgstr ""
+
+#: ../../source/has-values_README.md:124
+msgid ""
+"Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/has-values_README.md:129
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on May "
+"19, 2017._"
+msgstr ""
+

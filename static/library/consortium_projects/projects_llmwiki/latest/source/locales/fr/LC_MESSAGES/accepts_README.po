@@ -1,0 +1,223 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/accepts_README.md:1
+msgid "accepts"
+msgstr ""
+
+#: ../../source/accepts_README.md:3
+msgid ""
+"[![NPM Version][npm-version-image]][npm-url] [![NPM Downloads][npm-"
+"downloads-image]][npm-url] [![Node.js Version][node-version-image]][node-"
+"version-url] [![Build Status][github-actions-ci-image]][github-actions-"
+"ci-url] [![Test Coverage][coveralls-image]][coveralls-url]"
+msgstr ""
+
+#: ../../source/accepts_README.md:3
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/accepts_README.md:3
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/accepts_README.md:3
+msgid "Node.js Version"
+msgstr ""
+
+#: ../../source/accepts_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/accepts_README.md:3
+msgid "Test Coverage"
+msgstr ""
+
+#: ../../source/accepts_README.md:9
+msgid ""
+"Higher level content negotiation based on "
+"[negotiator](https://www.npmjs.com/package/negotiator). Extracted from "
+"[koa](https://www.npmjs.com/package/koa) for general use."
+msgstr ""
+
+#: ../../source/accepts_README.md:12
+msgid "In addition to negotiator, it allows:"
+msgstr ""
+
+#: ../../source/accepts_README.md:14
+msgid ""
+"Allows types as an array or arguments list, ie `(['text/html', "
+"'application/json'])` as well as `('text/html', 'application/json')`."
+msgstr ""
+
+#: ../../source/accepts_README.md:16
+msgid "Allows type shorthands such as `json`."
+msgstr ""
+
+#: ../../source/accepts_README.md:17
+msgid "Returns `false` when no types match"
+msgstr ""
+
+#: ../../source/accepts_README.md:18
+msgid "Treats non-existent headers as `*`"
+msgstr ""
+
+#: ../../source/accepts_README.md:20
+msgid "Installation"
+msgstr ""
+
+#: ../../source/accepts_README.md:22
+msgid ""
+"This is a [Node.js](https://nodejs.org/en/) module available through the "
+"[npm registry](https://www.npmjs.com/). Installation is done using the "
+"[`npm install` command](https://docs.npmjs.com/getting-started"
+"/installing-npm-packages-locally):"
+msgstr ""
+
+#: ../../source/accepts_README.md:30
+msgid "API"
+msgstr ""
+
+#: ../../source/accepts_README.md:36
+msgid "accepts(req)"
+msgstr ""
+
+#: ../../source/accepts_README.md:38
+msgid "Create a new `Accepts` object for the given `req`."
+msgstr ""
+
+#: ../../source/accepts_README.md:40
+msgid ".charset(charsets)"
+msgstr ""
+
+#: ../../source/accepts_README.md:42
+msgid ""
+"Return the first accepted charset. If nothing in `charsets` is accepted, "
+"then `false` is returned."
+msgstr ""
+
+#: ../../source/accepts_README.md:45
+msgid ".charsets()"
+msgstr ""
+
+#: ../../source/accepts_README.md:47
+msgid ""
+"Return the charsets that the request accepts, in the order of the "
+"client's preference (most preferred first)."
+msgstr ""
+
+#: ../../source/accepts_README.md:50
+msgid ".encoding(encodings)"
+msgstr ""
+
+#: ../../source/accepts_README.md:52
+msgid ""
+"Return the first accepted encoding. If nothing in `encodings` is "
+"accepted, then `false` is returned."
+msgstr ""
+
+#: ../../source/accepts_README.md:55
+msgid ".encodings()"
+msgstr ""
+
+#: ../../source/accepts_README.md:57
+msgid ""
+"Return the encodings that the request accepts, in the order of the "
+"client's preference (most preferred first)."
+msgstr ""
+
+#: ../../source/accepts_README.md:60
+msgid ".language(languages)"
+msgstr ""
+
+#: ../../source/accepts_README.md:62
+msgid ""
+"Return the first accepted language. If nothing in `languages` is "
+"accepted, then `false` is returned."
+msgstr ""
+
+#: ../../source/accepts_README.md:65
+msgid ".languages()"
+msgstr ""
+
+#: ../../source/accepts_README.md:67
+msgid ""
+"Return the languages that the request accepts, in the order of the "
+"client's preference (most preferred first)."
+msgstr ""
+
+#: ../../source/accepts_README.md:70
+msgid ".type(types)"
+msgstr ""
+
+#: ../../source/accepts_README.md:72
+msgid ""
+"Return the first accepted type (and it is returned as the same text as "
+"what appears in the `types` array). If nothing in `types` is accepted, "
+"then `false` is returned."
+msgstr ""
+
+#: ../../source/accepts_README.md:76
+msgid ""
+"The `types` array can contain full MIME types or file extensions. Any "
+"value that is not a full MIME types is passed to `require('mime-"
+"types').lookup`."
+msgstr ""
+
+#: ../../source/accepts_README.md:79
+msgid ".types()"
+msgstr ""
+
+#: ../../source/accepts_README.md:81
+msgid ""
+"Return the types that the request accepts, in the order of the client's "
+"preference (most preferred first)."
+msgstr ""
+
+#: ../../source/accepts_README.md:84
+msgid "Examples"
+msgstr ""
+
+#: ../../source/accepts_README.md:86
+msgid "Simple type negotiation"
+msgstr ""
+
+#: ../../source/accepts_README.md:88
+msgid ""
+"This simple example shows how to use `accepts` to return a different "
+"typed respond body based on what the client wants to accept. The server "
+"lists it's preferences in order and will get back the best match between "
+"the client and server."
+msgstr ""
+
+#: ../../source/accepts_README.md:123
+msgid "You can test this out with the cURL program:"
+msgstr ""
+
+#: ../../source/accepts_README.md:128
+msgid "License"
+msgstr ""
+
+#: ../../source/accepts_README.md:130
+msgid "[MIT](LICENSE)"
+msgstr ""
+

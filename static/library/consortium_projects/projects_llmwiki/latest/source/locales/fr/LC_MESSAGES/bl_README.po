@@ -1,0 +1,441 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/bl_README.md:1
+msgid "bl *(BufferList)*"
+msgstr ""
+
+#: ../../source/bl_README.md:3
+msgid ""
+"[![Build Status](https://travis-ci.org/rvagg/bl.svg?branch=master)](https"
+"://travis-ci.org/rvagg/bl)"
+msgstr ""
+
+#: ../../source/bl_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/bl_README.md:5
+msgid "**A Node.js Buffer list collector, reader and streamer thingy.**"
+msgstr ""
+
+#: ../../source/bl_README.md:7
+msgid ""
+"[![NPM](https://nodei.co/npm/bl.png?downloads=true&downloadRank=true)](https://nodei.co/npm/bl/)"
+" [![NPM](https://nodei.co/npm-"
+"dl/bl.png?months=6&height=3)](https://nodei.co/npm/bl/)"
+msgstr ""
+
+#: ../../source/bl_README.md:7
+msgid "NPM"
+msgstr ""
+
+#: ../../source/bl_README.md:10
+msgid ""
+"**bl** is a storage object for collections of Node Buffers, exposing them"
+" with the main Buffer readable API. Also works as a duplex stream so you "
+"can collect buffers from a stream that emits them and emit buffers to a "
+"stream that consumes them!"
+msgstr ""
+
+#: ../../source/bl_README.md:12
+msgid ""
+"The original buffers are kept intact and copies are only done as "
+"necessary. Any reads that require the use of a single original buffer "
+"will return a slice of that buffer only (which references the same memory"
+" as the original buffer). Reads that span buffers perform concatenation "
+"as required and return the results transparently."
+msgstr ""
+
+#: ../../source/bl_README.md:42
+msgid ""
+"Give it a callback in the constructor and use it just like **[concat-"
+"stream](https://github.com/maxogden/node-concat-stream)**:"
+msgstr ""
+
+#: ../../source/bl_README.md:55
+msgid ""
+"Note that when you use the *callback* method like this, the resulting "
+"`data` parameter is a concatenation of all `Buffer` objects in the list. "
+"If you want to avoid the overhead of this concatenation (in cases of "
+"extreme performance consciousness), then avoid the *callback* method and "
+"just listen to `'end'` instead, like a standard Stream."
+msgstr ""
+
+#: ../../source/bl_README.md:57
+msgid ""
+"Or to fetch a URL using "
+"[hyperquest](https://github.com/substack/hyperquest) (should work with "
+"[request](http://github.com/mikeal/request) and even plain Node http "
+"too!):"
+msgstr ""
+
+#: ../../source/bl_README.md:68
+msgid ""
+"Or, use it as a readable stream to recompose a list of Buffers to an "
+"output source:"
+msgstr ""
+
+#: ../../source/bl_README.md:83
+msgid "API"
+msgstr ""
+
+#: ../../source/bl_README.md:85
+msgid "<a href=\"#ctor\"><code><b>new BufferList([ callback ])</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:86
+msgid "<a href=\"#length\"><code>bl.<b>length</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:87
+msgid "<a href=\"#append\"><code>bl.<b>append(buffer)</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:88
+msgid "<a href=\"#get\"><code>bl.<b>get(index)</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:89
+msgid "<a href=\"#slice\"><code>bl.<b>slice([ start[, end ] ])</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:90
+msgid ""
+"<a href=\"#shallowSlice\"><code>bl.<b>shallowSlice([ start[, end ] "
+"])</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:91
+msgid ""
+"<a href=\"#copy\"><code>bl.<b>copy(dest, [ destStart, [ srcStart [, "
+"srcEnd ] ] ])</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:92
+msgid "<a href=\"#duplicate\"><code>bl.<b>duplicate()</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:93
+msgid "<a href=\"#consume\"><code>bl.<b>consume(bytes)</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:94
+msgid ""
+"<a href=\"#toString\"><code>bl.<b>toString([encoding, [ start, [ end "
+"]]])</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:95
+msgid ""
+"<a href=\"#readXX\"><code>bl.<b>readDoubleBE()</b></code>, "
+"<code>bl.<b>readDoubleLE()</b></code>, "
+"<code>bl.<b>readFloatBE()</b></code>, "
+"<code>bl.<b>readFloatLE()</b></code>, "
+"<code>bl.<b>readInt32BE()</b></code>, "
+"<code>bl.<b>readInt32LE()</b></code>, "
+"<code>bl.<b>readUInt32BE()</b></code>, "
+"<code>bl.<b>readUInt32LE()</b></code>, "
+"<code>bl.<b>readInt16BE()</b></code>, "
+"<code>bl.<b>readInt16LE()</b></code>, "
+"<code>bl.<b>readUInt16BE()</b></code>, "
+"<code>bl.<b>readUInt16LE()</b></code>, <code>bl.<b>readInt8()</b></code>,"
+" <code>bl.<b>readUInt8()</b></code></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:96
+msgid "<a href=\"#streams\">Streams</a>"
+msgstr ""
+
+#: ../../source/bl_README.md:99
+msgid "<a name=\"ctor\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:100
+msgid ""
+"new BufferList([ callback | Buffer | Buffer array | BufferList | "
+"BufferList array | String ])"
+msgstr ""
+
+#: ../../source/bl_README.md:101
+msgid ""
+"The constructor takes an optional callback, if supplied, the callback "
+"will be called with an error argument followed by a reference to the "
+"**bl** instance, when `bl.end()` is called (i.e. from a piped stream). "
+"This is a convenient method of collecting the entire contents of a "
+"stream, particularly when the stream is *chunky*, such as a network "
+"stream."
+msgstr ""
+
+#: ../../source/bl_README.md:103
+msgid ""
+"Normally, no arguments are required for the constructor, but you can "
+"initialise the list by passing in a single `Buffer` object or an array of"
+" `Buffer` object."
+msgstr ""
+
+#: ../../source/bl_README.md:105
+msgid ""
+"`new` is not strictly required, if you don't instantiate a new object, it"
+" will be done automatically for you so you can create a new instance "
+"simply with:"
+msgstr ""
+
+#: ../../source/bl_README.md:118
+msgid "<a name=\"length\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:119
+msgid "bl.length"
+msgstr ""
+
+#: ../../source/bl_README.md:120
+msgid ""
+"Get the length of the list in bytes. This is the sum of the lengths of "
+"all of the buffers contained in the list, minus any initial offset for a "
+"semi-consumed buffer at the beginning. Should accurately represent the "
+"total number of bytes that can be read from the list."
+msgstr ""
+
+#: ../../source/bl_README.md:123
+msgid "<a name=\"append\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:124
+msgid "bl.append(Buffer | Buffer array | BufferList | BufferList array | String)"
+msgstr ""
+
+#: ../../source/bl_README.md:125
+msgid ""
+"`append(buffer)` adds an additional buffer or BufferList to the internal "
+"list. `this` is returned so it can be chained."
+msgstr ""
+
+#: ../../source/bl_README.md:128
+msgid "<a name=\"get\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:129
+msgid "bl.get(index)"
+msgstr ""
+
+#: ../../source/bl_README.md:130
+msgid "`get()` will return the byte at the specified index."
+msgstr ""
+
+#: ../../source/bl_README.md:133
+msgid "<a name=\"slice\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:134
+msgid "bl.slice([ start, [ end ] ])"
+msgstr ""
+
+#: ../../source/bl_README.md:135
+msgid ""
+"`slice()` returns a new `Buffer` object containing the bytes within the "
+"range specified. Both `start` and `end` are optional and will default to "
+"the beginning and end of the list respectively."
+msgstr ""
+
+#: ../../source/bl_README.md:137
+msgid ""
+"If the requested range spans a single internal buffer then a slice of "
+"that buffer will be returned which shares the original memory range of "
+"that Buffer. If the range spans multiple buffers then copy operations "
+"will likely occur to give you a uniform Buffer."
+msgstr ""
+
+#: ../../source/bl_README.md:140
+msgid "<a name=\"shallowSlice\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:141
+msgid "bl.shallowSlice([ start, [ end ] ])"
+msgstr ""
+
+#: ../../source/bl_README.md:142
+msgid ""
+"`shallowSlice()` returns a new `BufferList` object containing the bytes "
+"within the range specified. Both `start` and `end` are optional and will "
+"default to the beginning and end of the list respectively."
+msgstr ""
+
+#: ../../source/bl_README.md:144
+msgid ""
+"No copies will be performed. All buffers in the result share memory with "
+"the original list."
+msgstr ""
+
+#: ../../source/bl_README.md:147
+msgid "<a name=\"copy\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:148
+msgid "bl.copy(dest, [ destStart, [ srcStart [, srcEnd ] ] ])"
+msgstr ""
+
+#: ../../source/bl_README.md:149
+msgid ""
+"`copy()` copies the content of the list in the `dest` buffer, starting "
+"from `destStart` and containing the bytes within the range specified with"
+" `srcStart` to `srcEnd`. `destStart`, `start` and `end` are optional and "
+"will default to the beginning of the `dest` buffer, and the beginning and"
+" end of the list respectively."
+msgstr ""
+
+#: ../../source/bl_README.md:152
+msgid "<a name=\"duplicate\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:153
+msgid "bl.duplicate()"
+msgstr ""
+
+#: ../../source/bl_README.md:154
+msgid ""
+"`duplicate()` performs a **shallow-copy** of the list. The internal "
+"Buffers remains the same, so if you change the underlying Buffers, the "
+"change will be reflected in both the original and the duplicate. This "
+"method is needed if you want to call `consume()` or `pipe()` and still "
+"keep the original list.Example:"
+msgstr ""
+
+#: ../../source/bl_README.md:169
+msgid "<a name=\"consume\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:170
+msgid "bl.consume(bytes)"
+msgstr ""
+
+#: ../../source/bl_README.md:171
+msgid ""
+"`consume()` will shift bytes *off the start of the list*. The number of "
+"bytes consumed don't need to line up with the sizes of the internal "
+"Buffers&mdash;initial offsets will be calculated accordingly in order to "
+"give you a consistent view of the data."
+msgstr ""
+
+#: ../../source/bl_README.md:174
+msgid "<a name=\"toString\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:175
+msgid "bl.toString([encoding, [ start, [ end ]]])"
+msgstr ""
+
+#: ../../source/bl_README.md:176
+msgid ""
+"`toString()` will return a string representation of the buffer. The "
+"optional `start` and `end` arguments are passed on to `slice()`, while "
+"the `encoding` is passed on to `toString()` of the resulting Buffer. See "
+"the "
+"[Buffer#toString()](http://nodejs.org/docs/latest/api/buffer.html#buffer_buf_tostring_encoding_start_end)"
+" documentation for more information."
+msgstr ""
+
+#: ../../source/bl_README.md:179
+msgid "<a name=\"readXX\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:180
+msgid ""
+"bl.readDoubleBE(), bl.readDoubleLE(), bl.readFloatBE(), bl.readFloatLE(),"
+" bl.readInt32BE(), bl.readInt32LE(), bl.readUInt32BE(), "
+"bl.readUInt32LE(), bl.readInt16BE(), bl.readInt16LE(), bl.readUInt16BE(),"
+" bl.readUInt16LE(), bl.readInt8(), bl.readUInt8()"
+msgstr ""
+
+#: ../../source/bl_README.md:182
+msgid ""
+"All of the standard byte-reading methods of the `Buffer` interface are "
+"implemented and will operate across internal Buffer boundaries "
+"transparently."
+msgstr ""
+
+#: ../../source/bl_README.md:184
+msgid ""
+"See the "
+"<b><code>[Buffer](http://nodejs.org/docs/latest/api/buffer.html)</code></b>"
+" documentation for how these work."
+msgstr ""
+
+#: ../../source/bl_README.md:187
+msgid "<a name=\"streams\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:188
+msgid "Streams"
+msgstr ""
+
+#: ../../source/bl_README.md:189
+msgid ""
+"**bl** is a Node **[Duplex "
+"Stream](http://nodejs.org/docs/latest/api/stream.html#stream_class_stream_duplex)**,"
+" so it can be read from and written to like a standard Node stream. You "
+"can also `pipe()` to and from a **bl** instance."
+msgstr ""
+
+#: ../../source/bl_README.md:193
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/bl_README.md:195
+msgid "**bl** is brought to you by the following hackers:"
+msgstr ""
+
+#: ../../source/bl_README.md:197
+msgid "[Rod Vagg](https://github.com/rvagg)"
+msgstr ""
+
+#: ../../source/bl_README.md:198
+msgid "[Matteo Collina](https://github.com/mcollina)"
+msgstr ""
+
+#: ../../source/bl_README.md:199
+msgid "[Jarett Cruger](https://github.com/jcrugzz)"
+msgstr ""
+
+#: ../../source/bl_README.md:201
+msgid "======="
+msgstr ""
+
+#: ../../source/bl_README.md:203
+msgid "<a name=\"license\"></a>"
+msgstr ""
+
+#: ../../source/bl_README.md:204
+msgid "License &amp; copyright"
+msgstr ""
+
+#: ../../source/bl_README.md:206
+msgid "Copyright (c) 2013-2016 bl contributors (listed above)."
+msgstr ""
+
+#: ../../source/bl_README.md:208
+msgid ""
+"bl is licensed under the MIT license. All rights not explicitly granted "
+"in the MIT license are reserved. See the included LICENSE.md file for "
+"more details."
+msgstr ""
+

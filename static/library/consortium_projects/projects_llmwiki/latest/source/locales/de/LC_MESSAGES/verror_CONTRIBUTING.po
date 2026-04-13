@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/verror_CONTRIBUTING.md:1
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/verror_CONTRIBUTING.md:3
+msgid ""
+"This repository uses [cr.joyent.us](https://cr.joyent.us) (Gerrit) for "
+"new changes.  Anyone can submit changes.  To get started, see the "
+"[cr.joyent.us user guide](https://github.com/joyent/joyent-"
+"gerrit/blob/master/docs/user/README.md). This repo does not use GitHub "
+"pull requests."
+msgstr ""
+
+#: ../../source/verror_CONTRIBUTING.md:8
+msgid ""
+"See the [Joyent Engineering "
+"Guidelines](https://github.com/joyent/eng/blob/master/docs/index.md) for "
+"general best practices expected in this repository."
+msgstr ""
+
+#: ../../source/verror_CONTRIBUTING.md:12
+msgid ""
+"Contributions should be \"make prepush\" clean.  The \"prepush\" target "
+"runs the \"check\" target, which requires these separate tools:"
+msgstr ""
+
+#: ../../source/verror_CONTRIBUTING.md:15
+msgid "https://github.com/davepacheco/jsstyle"
+msgstr ""
+
+#: ../../source/verror_CONTRIBUTING.md:16
+msgid "https://github.com/davepacheco/javascriptlint"
+msgstr ""
+
+#: ../../source/verror_CONTRIBUTING.md:18
+msgid ""
+"If you're changing something non-trivial or user-facing, you may want to "
+"submit an issue first."
+msgstr ""
+

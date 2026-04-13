@@ -1,0 +1,771 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/grpo-rl-training_SKILL.md:14
+msgid "GRPO/RL Training with TRL"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:16
+msgid ""
+"Expert-level guidance for implementing Group Relative Policy Optimization"
+" (GRPO) using the Transformer Reinforcement Learning (TRL) library. This "
+"skill provides battle-tested patterns, critical insights, and production-"
+"ready workflows for fine-tuning language models with custom reward "
+"functions."
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:18
+msgid "When to Use This Skill"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:20
+msgid "Use GRPO training when you need to:"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:21
+msgid ""
+"**Enforce specific output formats** (e.g., XML tags, JSON, structured "
+"reasoning)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:22
+msgid ""
+"**Teach verifiable tasks** with objective correctness metrics (math, "
+"coding, fact-checking)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:23
+msgid "**Improve reasoning capabilities** by rewarding chain-of-thought patterns"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:24
+msgid ""
+"**Align models to domain-specific behaviors** without labeled preference "
+"data"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:25
+msgid ""
+"**Optimize for multiple objectives** simultaneously (format + correctness"
+" + style)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:27
+msgid "**Do NOT use GRPO for:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:28
+msgid "Simple supervised fine-tuning tasks (use SFT instead)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:29
+msgid "Tasks without clear reward signals"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:30
+msgid "When you already have high-quality preference pairs (use DPO/PPO instead)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:34
+msgid "Core Concepts"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:36
+msgid "1. GRPO Algorithm Fundamentals"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:38
+msgid "**Key Mechanism:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:39
+msgid "Generates **multiple completions** for each prompt (group size: 4-16)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:40
+msgid "Compares completions within each group using reward functions"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:41
+msgid "Updates policy to favor higher-rewarded responses relative to the group"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:43
+msgid "**Critical Difference from PPO:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:44
+msgid "No separate reward model needed"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:45
+msgid "More sample-efficient (learns from within-group comparisons)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:46
+msgid "Simpler to implement and debug"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:48
+msgid "**Mathematical Intuition:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:57
+msgid "2. Reward Function Design Philosophy"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:59
+msgid "**Golden Rules:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:60
+msgid ""
+"**Compose multiple reward functions** - Each handles one aspect (format, "
+"correctness, style)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:61
+msgid "**Scale rewards appropriately** - Higher weight = stronger signal"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:62
+msgid "**Use incremental rewards** - Partial credit for partial compliance"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:63
+msgid "**Test rewards independently** - Debug each reward function in isolation"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:65
+msgid "**Reward Function Types:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Type"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Use Case"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Example Weight"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "**Correctness**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Verifiable tasks (math, code)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "2.0 (highest)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "**Format**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Strict structure enforcement"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "0.5-1.0"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "**Length**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Encourage verbosity/conciseness"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "0.1-0.5"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "**Style**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Penalize unwanted patterns"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "-0.5 to 0.5"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:76
+msgid "Implementation Workflow"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:78
+msgid "Step 1: Dataset Preparation"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:80
+msgid "**Critical Requirements:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:81
+msgid "Prompts in chat format (list of dicts with 'role' and 'content')"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:82
+msgid "Include system prompts to set expectations"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:83
+msgid "For verifiable tasks, include ground truth answers as additional columns"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:85
+msgid "**Example Structure:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:116
+msgid "**Pro Tips:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:117
+msgid "Use one-shot or few-shot examples in system prompt for complex formats"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:118
+msgid "Keep prompts concise (max_prompt_length: 256-512 tokens)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:119
+msgid "Validate data quality before training (garbage in = garbage out)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:121
+msgid "Step 2: Reward Function Implementation"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:123
+msgid "**Template Structure:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:148
+msgid "**Example 1: Correctness Reward (Math/Coding)**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:158
+msgid "**Example 2: Format Reward (Structured Output)**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:170
+msgid "**Example 3: Incremental Format Reward (Partial Credit)**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:196
+msgid ""
+"**Critical Insight:** Combine 3-5 reward functions for robust training. "
+"Order matters less than diversity of signals."
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:199
+msgid "Step 3: Training Configuration"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:201
+msgid "**Memory-Optimized Config (Small GPU)**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:241
+msgid "**High-Performance Config (Large GPU)**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:258
+msgid "**Critical Hyperparameters:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Parameter"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Impact"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Tuning Advice"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "`num_generations`"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Group size for comparison"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Start with 8, increase to 16 if GPU allows"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "`learning_rate`"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Convergence speed/stability"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "5e-6 (safe), 1e-5 (faster, riskier)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "`max_completion_length`"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Output verbosity"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Match your task (512 for reasoning, 256 for short answers)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "`gradient_accumulation_steps`"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Effective batch size"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Increase if GPU memory limited"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:267
+msgid "Step 4: Model Setup and Training"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:269
+msgid "**Standard Setup (Transformers)**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:321
+msgid "**Unsloth Setup (2-3x Faster)**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:349
+msgid "Critical Training Insights"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:351
+msgid "1. Loss Behavior (EXPECTED PATTERN)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:352
+msgid "**Loss starts near 0 and INCREASES during training**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:353
+msgid "This is CORRECT - loss measures KL divergence from initial policy"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:354
+msgid "Model is learning (diverging from original behavior to optimize rewards)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:355
+msgid "Monitor reward metrics instead of loss for progress"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:357
+msgid "2. Reward Tracking"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:358
+msgid "Key metrics to watch:"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:359
+msgid "`reward`: Average across all completions"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:360
+msgid "`reward_std`: Diversity within groups (should remain > 0)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:361
+msgid "`kl`: KL divergence from reference (should grow moderately)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:363
+msgid "**Healthy Training Pattern:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:372
+msgid "**Warning Signs:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:373
+msgid "Reward std → 0 (model collapsing to single response)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:374
+msgid "KL exploding (> 0.5) (diverging too much, reduce LR)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:375
+msgid "Reward stuck (reward functions too harsh or model capacity issue)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:377
+msgid "3. Common Pitfalls and Solutions"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Problem"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Symptom"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Solution"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "**Mode collapse**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "All completions identical"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Increase `num_generations`, add diversity penalty"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "**No learning**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Flat rewards"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Check reward function logic, increase LR"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "**OOM errors**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "GPU memory exceeded"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Reduce `num_generations`, enable gradient checkpointing"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "**Slow training**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "< 1 it/s"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Enable `use_vllm=True`, use Unsloth, reduce seq length"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "**Format ignored**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Model doesn't follow structure"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md
+msgid "Increase format reward weight, add incremental rewards"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:389
+msgid "Advanced Patterns"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:391
+msgid "1. Multi-Stage Training"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:392
+msgid "For complex tasks, train in stages:"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:412
+msgid "2. Adaptive Reward Scaling"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:431
+msgid "3. Custom Dataset Integration"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:450
+msgid "Deployment and Inference"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:452
+msgid "Save and Merge LoRA"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:461
+msgid "Inference Example"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:486
+msgid "Best Practices Checklist"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:488
+msgid "**Before Training:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:489
+msgid "[ ] Validate dataset format (prompts as List[Dict])"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:490
+msgid "[ ] Test reward functions on sample data"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:491
+msgid "[ ] Calculate expected max_prompt_length from data"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:492
+msgid "[ ] Choose appropriate num_generations based on GPU memory"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:493
+msgid "[ ] Set up logging (wandb recommended)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:495
+msgid "**During Training:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:496
+msgid "[ ] Monitor reward progression (should increase)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:497
+msgid "[ ] Check reward_std (should stay > 0.1)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:498
+msgid "[ ] Watch for OOM errors (reduce batch size if needed)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:499
+msgid "[ ] Sample generations every 50-100 steps"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:500
+msgid "[ ] Validate format compliance on holdout set"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:502
+msgid "**After Training:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:503
+msgid "[ ] Merge LoRA weights if using PEFT"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:504
+msgid "[ ] Test on diverse prompts"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:505
+msgid "[ ] Compare to baseline model"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:506
+msgid "[ ] Document reward weights and hyperparameters"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:507
+msgid "[ ] Save reproducibility config"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:511
+msgid "Troubleshooting Guide"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:513
+msgid "Debugging Workflow"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:514
+msgid "**Isolate reward functions** - Test each independently"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:515
+msgid "**Check data distribution** - Ensure diversity in prompts"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:516
+msgid "**Reduce complexity** - Start with single reward, add gradually"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:517
+msgid "**Monitor generations** - Print samples every N steps"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:518
+msgid "**Validate extraction logic** - Ensure answer parsing works"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:520
+msgid "Quick Fixes"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:536
+msgid "References and Resources"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:538
+msgid "**Official Documentation:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:539
+msgid "TRL GRPO Trainer: https://huggingface.co/docs/trl/grpo_trainer"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:540
+msgid "DeepSeek R1 Paper: https://arxiv.org/abs/2501.12948"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:541
+msgid "Unsloth Docs: https://docs.unsloth.ai/"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:543
+msgid "**Example Repositories:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:544
+msgid "Open R1 Implementation: https://github.com/huggingface/open-r1"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:545
+msgid "TRL Examples: https://github.com/huggingface/trl/tree/main/examples"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:547
+msgid "**Recommended Reading:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:548
+msgid "Progressive Disclosure Pattern for agent instructions"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:549
+msgid "Reward shaping in RL (Ng et al.)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:550
+msgid "LoRA paper (Hu et al., 2021)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:554
+msgid "Usage Instructions for Agents"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:556
+msgid "When this skill is loaded:"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:558
+msgid "**Read this entire file** before implementing GRPO training"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:559
+msgid ""
+"**Start with the simplest reward function** (e.g., length-based) to "
+"validate setup"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:560
+msgid "**Use the templates** in `templates/` directory as starting points"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:561
+msgid "**Reference examples** in `examples/` for task-specific implementations"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:562
+msgid "**Follow the workflow** sequentially (don't skip steps)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:563
+msgid "**Debug incrementally** - add one reward function at a time"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:565
+msgid "**Critical Reminders:**"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:566
+msgid "Always use multiple reward functions (3-5 is optimal)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:567
+msgid "Monitor reward metrics, not loss"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:568
+msgid "Test reward functions before training"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:569
+msgid "Start small (num_generations=4), scale up gradually"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:570
+msgid "Save checkpoints frequently (every 100 steps)"
+msgstr ""
+
+#: ../../source/grpo-rl-training_SKILL.md:572
+msgid ""
+"This skill is designed for **expert-level implementation**. Beginners "
+"should start with supervised fine-tuning before attempting GRPO."
+msgstr ""
+

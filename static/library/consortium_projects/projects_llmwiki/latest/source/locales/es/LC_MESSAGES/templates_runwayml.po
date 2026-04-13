@@ -1,0 +1,1215 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_runwayml.md:1
+msgid "Design System: Runway"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:7
+msgid "**Primary:** `Inter` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:18
+msgid ""
+"Runway's interface is a cinematic reel brought to life as a website — a "
+"dark, editorial, film-production-grade design where full-bleed "
+"photography and video ARE the primary UI elements. This is not a typical "
+"tech product page; it's a visual manifesto for AI-powered creativity. "
+"Every section feels like a frame from a film: dramatic lighting, sweeping"
+" landscapes, and intimate human moments captured in high-quality imagery "
+"that dominates the viewport."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:20
+msgid ""
+"The design language is built on a single typeface — abcNormal — a clean, "
+"geometric sans-serif that handles everything from 48px display headlines "
+"to 11px uppercase labels. This single-font commitment creates an extreme "
+"typographic uniformity that lets the visual content speak louder than the"
+" text. Headlines use tight line-heights (1.0) with negative letter-"
+"spacing (-0.9px to -1.2px), creating compressed text blocks that feel "
+"like film titles rather than marketing copy."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:22
+msgid ""
+"What makes Runway distinctive is its complete commitment to visual "
+"content as design. Rather than illustrating features with icons or "
+"diagrams, Runway shows actual AI-generated and AI-enhanced imagery — cars"
+" driving through cinematic landscapes, artistic portraits, architectural "
+"renders. The interface itself retreats into near-invisibility: minimal "
+"borders, zero shadows, subtle cool-gray text, and a dark palette that "
+"puts maximum focus on the photography."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:25
+msgid "Cinematic full-bleed photography and video as primary UI elements"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:26
+msgid ""
+"Single typeface system: abcNormal for everything from display to micro "
+"labels"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:27
+msgid "Dark-dominant palette with cool-toned neutrals (#767d88, #7d848e)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:28
+msgid "Zero shadows, minimal borders — the interface is intentionally invisible"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:29
+msgid ""
+"Tight display typography (line-height 1.0) with negative tracking (-0.9px"
+" to -1.2px)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:30
+msgid "Uppercase labels with positive letter-spacing for navigational structure"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:31
+msgid ""
+"Weight 450 (unusual intermediate) for small uppercase text — precision "
+"craft"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:32
+msgid "Editorial magazine layout with mixed-size image grids"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:37
+msgid ""
+"**Runway Black** (`#000000`): The primary page background and maximum-"
+"emphasis text."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:38
+msgid ""
+"**Deep Black** (`#030303`): A near-imperceptible variant for layered dark"
+" surfaces."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:39
+msgid ""
+"**Dark Surface** (`#1a1a1a`): Card backgrounds and elevated dark "
+"containers."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:40
+msgid ""
+"**Pure White** (`#ffffff`): Primary text on dark surfaces and light-"
+"section backgrounds."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:42
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:43
+msgid ""
+"**Near White** (`#fefefe`): The lightest surface — barely distinguishable"
+" from pure white."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:44
+msgid ""
+"**Cool Cloud** (`#e9ecf2`): Light section backgrounds with a cool blue-"
+"gray tint."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:45
+msgid ""
+"**Border Dark** (`#27272a`): The single dark-mode border color — barely "
+"visible containment."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:47
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:48
+msgid ""
+"**Charcoal** (`#404040`): Primary body text on light surfaces and "
+"secondary text."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:49
+msgid ""
+"**Near Charcoal** (`#3f3f3f`): Slightly lighter variant for dark-section "
+"secondary text."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:50
+msgid ""
+"**Cool Slate** (`#767d88`): Secondary body text — a distinctly blue-gray "
+"cool neutral."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:51
+msgid "**Mid Slate** (`#7d848e`): Tertiary text, metadata descriptions."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:52
+msgid "**Muted Gray** (`#a7a7a7`): De-emphasized content, timestamps."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:53
+msgid "**Cool Silver** (`#c9ccd1`): Light borders and dividers."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:54
+msgid "**Light Silver** (`#d0d4d4`): The lightest border/divider variant."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:55
+msgid ""
+"**Tailwind Gray** (`#6b7280`): Standard Tailwind neutral for "
+"supplementary text."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:56
+msgid "**Dark Link** (`#0c0c0c`): Darkest link text — nearly black."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:57
+msgid "**Footer Gray** (`#999999`): Footer links and deeply muted content."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:59
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:60
+msgid ""
+"**None in the interface.** Visual richness comes entirely from "
+"photographic content — AI-generated and enhanced imagery provides all the"
+" color and gradient the design needs. The interface itself is "
+"intentionally colorless."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:62
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:64
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:65
+msgid "**Universal**: `abcNormal`, with fallback: `abcNormal Fallback`"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:67
+msgid ""
+"*Note: abcNormal is a custom geometric sans-serif. For external "
+"implementations, Inter or DM Sans serve as close substitutes.*"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:69
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Display / Hero"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "abcNormal"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "48px (3rem)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "-1.2px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Maximum size, film-title presence"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "40px (2.5rem)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "1.00–1.10"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "-1px to 0px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Feature section titles"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "36px (2.25rem)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "-0.9px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Secondary section markers"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Card Title"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "24px (1.5rem)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Article and card headings"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Small headings"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Body / Button"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "16px (1rem)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "400–600"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "1.30–1.50"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "-0.16px to normal"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Standard body, nav links"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Caption / Label"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "500–600"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "1.25–1.43"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "0.35px (uppercase)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Metadata, section labels"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Small"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "13px (0.81rem)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "1.30 (tight)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "-0.16px to -0.26px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Compact descriptions"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Micro / Tag"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "11px (0.69rem)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "450"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Uppercase tags, tiny labels"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:83
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:84
+msgid ""
+"**One typeface, complete expression**: abcNormal handles every text role."
+" The design achieves variety through size, weight, case, and letter-"
+"spacing rather than font-family switching."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:85
+msgid ""
+"**Tight everywhere**: Nearly every size uses line-height 1.0–1.30 — even "
+"body text is relatively compressed. This creates a dense, editorial feel."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:86
+msgid ""
+"**Weight 450 — the precision detail**: Some small uppercase labels use "
+"weight 450, an uncommon intermediate between regular (400) and medium "
+"(500). This micro-craft signals typographic sophistication."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:87
+msgid ""
+"**Negative tracking as default**: Even body text uses -0.16px to -0.26px "
+"letter-spacing, keeping everything slightly tighter than default."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:88
+msgid ""
+"**Uppercase as structure**: Labels at 14px and 11px use `text-transform: "
+"uppercase` with positive letter-spacing (0.35px) to create navigational "
+"signposts that contrast with the tight lowercase text."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:90
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:92
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:93
+msgid "Text: weight 600 at 14px abcNormal"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:94
+msgid "Background: likely transparent or dark, with minimal border"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:95
+msgid "Radius: small (4px) for button-like links"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:96
+msgid ""
+"The button design is extremely restrained — no heavy fills or borders "
+"detected"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:97
+msgid "Interactive elements blend into the editorial flow"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:99
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:100
+msgid "Background: transparent or Dark Surface (`#1a1a1a`)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:101
+msgid "Border: `1px solid #27272a` (dark mode) — barely visible containment"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:102
+msgid ""
+"Radius: small (4–8px) for functional elements; 16px for alert-style "
+"containers"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:103
+msgid "Shadow: zero — no shadows on any element"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:104
+msgid "Cards are primarily photographic — the image IS the card"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:106
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:107
+msgid "Minimal horizontal nav — transparent over hero content"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:108
+msgid "Logo: Runway wordmark in white/black"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:109
+msgid "Links: abcNormal at 16px, weight 400–600"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:110
+msgid "Hover: text shifts to white or higher opacity"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:111
+msgid "Extremely subtle — designed to not compete with visual content"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:113
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:114
+msgid "Full-bleed cinematic photography and video dominate"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:115
+msgid "AI-generated content shown at large scale as primary visual elements"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:116
+msgid "Mixed-size image grids creating editorial magazine layouts"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:117
+msgid "Dark overlays on hero images for text readability"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:118
+msgid "Product screenshots with subtle rounded corners (8px)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:120
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:122
+msgid "**Cinematic Hero**"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:123
+msgid "Full-viewport image or video with text overlay"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:124
+msgid "Headline in 48px abcNormal, white on dark imagery"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:125
+msgid "The image is always cinematic quality — film-grade composition"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:127
+msgid "**Research Article Cards**"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:128
+msgid "Photographic thumbnails with article titles"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:129
+msgid "Mixed-size grid layout (large feature + smaller supporting)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:130
+msgid "Clean text overlay or below-image caption style"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:132
+msgid "**Trust Bar**"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:133
+msgid "Company logos (leading organizations across industries)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:134
+msgid "Clean, monochrome treatment"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:135
+msgid "Horizontal layout with generous spacing"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:137
+msgid "**Mission Statement**"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:138
+msgid ""
+"\"We are building AI to simulate the world through imagination, art and "
+"aesthetics\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:139
+msgid "On a dark background with white text"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:140
+msgid "The emotional close — artistic and philosophical"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:142
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:144
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:145
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:146
+msgid "Scale: 4px, 6px, 8px, 12px, 16px, 20px, 24px, 28px, 32px, 48px, 64px, 78px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:147
+msgid "Section vertical spacing: generous (48–78px)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:148
+msgid "Component gaps: 16–24px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:150
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:151
+msgid "Max container width: up to 1600px (cinema-wide)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:152
+msgid "Hero: full-viewport, edge-to-edge"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:153
+msgid "Content sections: centered with generous margins"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:154
+msgid "Image grids: asymmetric, magazine-style mixed sizes"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:155
+msgid "Footer: full-width dark section"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:157
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:158
+msgid ""
+"**Cinema-grade breathing**: Large vertical gaps between sections create a"
+" scrolling experience that feels like watching scenes change."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:159
+msgid ""
+"**Images replace whitespace**: Where other sites use empty space, Runway "
+"fills it with photography. The visual content IS the breathing room."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:160
+msgid ""
+"**Editorial grid asymmetry**: The image grid uses intentionally varied "
+"sizes — large hero images paired with smaller supporting images, creating"
+" visual rhythm."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:162
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:163
+msgid "Sharp (4px): Buttons, small interactive elements"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:164
+msgid "Subtle (6px): Links, small containers"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:165
+msgid "Comfortable (8px): Standard containers, image cards"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:166
+msgid "Generous (16px): Alert-style containers, featured elements"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:168
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "No shadow, no border"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Everything — the dominant state"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Bordered (Level 1)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "`1px solid #27272a`"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Alert containers only"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Dark Section (Level 2)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Dark bg (#000000 / #1a1a1a) with light text"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Hero, features, footer"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Light Section (Level 3)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "White/Cool Cloud bg with dark text"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Content sections, research"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:177
+msgid ""
+"**Shadow Philosophy**: Runway uses **zero shadows**. This is a film-"
+"production design decision — in cinema, depth comes from lighting, focus,"
+" and composition, not drop shadows. The interface mirrors this "
+"philosophy: depth is communicated through dark/light section alternation,"
+" photographic depth-of-field, and overlay transparency — never through "
+"CSS box-shadow."
+msgstr ""
+
+#: ../../source/templates_runwayml.md:179
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:181
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:182
+msgid "Use full-bleed cinematic photography as the primary visual element"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:183
+msgid "Use abcNormal for all text — maintain the single-typeface commitment"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:184
+msgid ""
+"Keep display line-heights at 1.0 with negative letter-spacing for film-"
+"title density"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:185
+msgid "Use the cool-gray neutral palette (#767d88, #7d848e) for secondary text"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:186
+msgid ""
+"Maintain zero shadows — depth comes from photography and section "
+"backgrounds"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:187
+msgid ""
+"Use uppercase with letter-spacing for navigational labels (14px, 0.35px "
+"spacing)"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:188
+msgid "Apply small border-radius (4–8px) — the design is NOT pill-shaped"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:189
+msgid "Let visual content (photos, videos) dominate — the UI should be invisible"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:190
+msgid "Use weight 450 for micro labels — the precision matters"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:192
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:193
+msgid ""
+"Don't add decorative colors to the interface — the only color comes from "
+"photography"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:194
+msgid ""
+"Don't use heavy borders or shadows — the interface must be nearly "
+"invisible"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:195
+msgid ""
+"Don't use pill-shaped radius — Runway's geometry is subtly rounded, not "
+"circular"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:196
+msgid ""
+"Don't use bold (700+) weight — 400–600 is the full range, with 450 as a "
+"precision tool"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:197
+msgid ""
+"Don't compete with the visual content — text overlays should be minimal "
+"and restrained"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:198
+msgid ""
+"Don't use gradient backgrounds in the interface — gradients exist only in"
+" photography"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:199
+msgid "Don't use more than one typeface — abcNormal handles everything"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:200
+msgid "Don't use body line-height above 1.50 — the tight, editorial feel is core"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:201
+msgid "Don't reduce image quality — cinematic photography IS the design"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:203
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:205
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "<640px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Single column, stacked images, reduced hero text"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "640–768px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "2-column image grids begin"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Small Desktop"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "768–1024px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Standard layout"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "1024–1280px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Full layout, expanded hero"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "1280–1600px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md
+msgid "Maximum cinema-width container"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:214
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:215
+msgid "Navigation links at comfortable 16px"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:216
+msgid "Article cards serve as large touch targets"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:217
+msgid "Buttons at 14px weight 600 with adequate padding"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:219
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:220
+msgid "**Navigation**: Collapses to hamburger on mobile"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:221
+msgid "**Hero**: Full-bleed maintained, text scales down"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:222
+msgid "**Image grids**: Multi-column → 2-column → single column"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:223
+msgid "**Research articles**: Feature-size cards → stacked full-width"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:224
+msgid "**Trust logos**: Horizontal scroll or reduced grid"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:226
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:227
+msgid "Cinematic images scale proportionally"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:228
+msgid "Full-bleed hero maintained across all sizes"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:229
+msgid "Image grids reflow to fewer columns"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:230
+msgid "Video content maintains aspect ratio"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:232
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:234
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:235
+msgid "Background Dark: \"Runway Black (#000000)\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:236
+msgid "Background Light: \"Pure White (#ffffff)\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:237
+msgid "Primary Text Dark: \"Charcoal (#404040)\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:238
+msgid "Secondary Text: \"Cool Slate (#767d88)\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:239
+msgid "Muted Text: \"Muted Gray (#a7a7a7)\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:240
+msgid "Light Border: \"Cool Silver (#c9ccd1)\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:241
+msgid "Dark Border: \"Border Dark (#27272a)\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:242
+msgid "Card Surface: \"Dark Surface (#1a1a1a)\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:244
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:245
+msgid ""
+"\"Create a cinematic hero section: full-bleed dark background with a "
+"cinematic image overlay. Headline at 48px abcNormal weight 400, line-"
+"height 1.0, letter-spacing -1.2px in white. Minimal text below in Cool "
+"Slate (#767d88) at 16px.\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:246
+msgid ""
+"\"Design a research article grid: one large card (50% width) with a "
+"cinematic image and 24px title, next to two smaller cards stacked. All "
+"images with 8px border-radius. Titles in white (dark bg) or Charcoal "
+"(#404040, light bg).\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:247
+msgid ""
+"\"Build a section label: 14px abcNormal weight 500, uppercase, letter-"
+"spacing 0.35px in Cool Slate (#767d88). No border, no background.\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:248
+msgid ""
+"\"Create a trust bar: company logos in monochrome, horizontal layout with"
+" generous spacing. On dark background with white/gray logo treatments.\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:249
+msgid ""
+"\"Design a mission statement section: Runway Black background, white text"
+" at 36px abcNormal, line-height 1.0, letter-spacing -0.9px. Centered, "
+"with generous vertical padding.\""
+msgstr ""
+
+#: ../../source/templates_runwayml.md:251
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:252
+msgid "Visual content first — always include cinematic photography"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:253
+msgid ""
+"Use abcNormal for everything — specify size and weight, never change the "
+"font"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:254
+msgid ""
+"Keep the interface invisible — no heavy borders, no shadows, no bright "
+"colors"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:255
+msgid ""
+"Use the cool slate grays (#767d88, #7d848e) for secondary text — not warm"
+" grays"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:256
+msgid "Uppercase labels need letter-spacing (0.35px) — never tight uppercase"
+msgstr ""
+
+#: ../../source/templates_runwayml.md:257
+msgid ""
+"Dark sections should be truly dark (#000000 or #1a1a1a) — no medium grays"
+" as surfaces"
+msgstr ""
+

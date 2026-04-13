@@ -1,0 +1,917 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/got_readme.md:14
+msgid "Simplified HTTP requests"
+msgstr ""
+
+#: ../../source/got_readme.md:16
+msgid ""
+"[![Build Status](https://travis-"
+"ci.org/sindresorhus/got.svg?branch=master)](https://travis-"
+"ci.org/sindresorhus/got) [![Coverage "
+"Status](https://coveralls.io/repos/github/sindresorhus/got/badge.svg?branch=master)](https://coveralls.io/github/sindresorhus/got?branch=master)"
+" "
+"[![Downloads](https://img.shields.io/npm/dm/got.svg)](https://npmjs.com/got)"
+msgstr ""
+
+#: ../../source/got_readme.md:16
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/got_readme.md:16
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/got_readme.md:16
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/got_readme.md:18
+msgid ""
+"A nicer interface to the built-in "
+"[`http`](http://nodejs.org/api/http.html) module."
+msgstr ""
+
+#: ../../source/got_readme.md:20
+msgid ""
+"Created because [`request`](https://github.com/request/request) is "
+"bloated *(several megabytes!)*."
+msgstr ""
+
+#: ../../source/got_readme.md:23
+msgid "Highlights"
+msgstr ""
+
+#: ../../source/got_readme.md:25
+msgid "[Promise & stream API](#api)"
+msgstr ""
+
+#: ../../source/got_readme.md:26
+msgid "[Request cancelation](#aborting-the-request)"
+msgstr ""
+
+#: ../../source/got_readme.md:27
+msgid "[RFC compliant caching](#cache-adapters)"
+msgstr ""
+
+#: ../../source/got_readme.md:28
+msgid "[Follows redirects](#followredirect)"
+msgstr ""
+
+#: ../../source/got_readme.md:29
+msgid "[Retries on network failure](#retries)"
+msgstr ""
+
+#: ../../source/got_readme.md:30
+msgid "[Progress events](#onuploadprogress-progress)"
+msgstr ""
+
+#: ../../source/got_readme.md:31
+msgid "[Handles gzip/deflate](#decompress)"
+msgstr ""
+
+#: ../../source/got_readme.md:32
+msgid "[Timeout handling](#timeout)"
+msgstr ""
+
+#: ../../source/got_readme.md:33
+msgid "[Errors with metadata](#errors)"
+msgstr ""
+
+#: ../../source/got_readme.md:34
+msgid "[JSON mode](#json)"
+msgstr ""
+
+#: ../../source/got_readme.md:35
+msgid "[WHATWG URL support](#url)"
+msgstr ""
+
+#: ../../source/got_readme.md:36
+msgid "[Electron support](#useelectronnet)"
+msgstr ""
+
+#: ../../source/got_readme.md:39
+msgid "Install"
+msgstr ""
+
+#: ../../source/got_readme.md:50
+msgid "Usage"
+msgstr ""
+
+#: ../../source/got_readme.md:67 ../../source/got_readme.md:225
+msgid "Streams"
+msgstr ""
+
+#: ../../source/got_readme.md:80
+msgid "API"
+msgstr ""
+
+#: ../../source/got_readme.md:82
+msgid ""
+"It's a `GET` request by default, but can be changed by using different "
+"methods or in the `options`."
+msgstr ""
+
+#: ../../source/got_readme.md:84
+msgid "got(url, [options])"
+msgstr ""
+
+#: ../../source/got_readme.md:86
+msgid ""
+"Returns a Promise for a `response` object with a `body` property, a `url`"
+" property with the request URL or the final URL after redirects, and a "
+"`requestUrl` property with the original request URL."
+msgstr ""
+
+#: ../../source/got_readme.md:88
+msgid ""
+"The response object will normally be a [Node.js HTTP response "
+"stream](https://nodejs.org/api/http.html#http_class_http_incomingmessage),"
+" however if returned from the cache it will be a [responselike "
+"object](https://github.com/lukechilds/responselike) which behaves in the "
+"same way."
+msgstr ""
+
+#: ../../source/got_readme.md:90
+msgid ""
+"The response will also have a `fromCache` property set with a boolean "
+"value."
+msgstr ""
+
+#: ../../source/got_readme.md:92
+msgid "url"
+msgstr ""
+
+#: ../../source/got_readme.md:94
+msgid "Type: `string` `Object`"
+msgstr ""
+
+#: ../../source/got_readme.md:96
+msgid ""
+"The URL to request as simple string, a [`http.request` "
+"options](https://nodejs.org/api/http.html#http_http_request_options_callback),"
+" or a [WHATWG `URL`](https://nodejs.org/api/url.html#url_class_url)."
+msgstr ""
+
+#: ../../source/got_readme.md:98
+msgid "Properties from `options` will override properties in the parsed `url`."
+msgstr ""
+
+#: ../../source/got_readme.md:100
+msgid "If no protocol is specified, it will default to `https`."
+msgstr ""
+
+#: ../../source/got_readme.md:102
+msgid "options"
+msgstr ""
+
+#: ../../source/got_readme.md:104
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/got_readme.md:106
+msgid ""
+"Any of the "
+"[`http.request`](http://nodejs.org/api/http.html#http_http_request_options_callback)"
+" options."
+msgstr ""
+
+#: ../../source/got_readme.md:108
+msgid "stream"
+msgstr ""
+
+#: ../../source/got_readme.md:110 ../../source/got_readme.md:136
+#: ../../source/got_readme.md:147 ../../source/got_readme.md:211
+msgid "Type: `boolean`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/got_readme.md:113
+msgid ""
+"Returns a `Stream` instead of a `Promise`. This is equivalent to calling "
+"`got.stream(url, [options])`."
+msgstr ""
+
+#: ../../source/got_readme.md:115
+msgid "body"
+msgstr ""
+
+#: ../../source/got_readme.md:117
+msgid "Type: `string` `Buffer` `stream.Readable`"
+msgstr ""
+
+#: ../../source/got_readme.md:119 ../../source/got_readme.md:139
+#: ../../source/got_readme.md:150
+msgid "*This is mutually exclusive with stream mode.*"
+msgstr ""
+
+#: ../../source/got_readme.md:121
+msgid "Body that will be sent with a `POST` request."
+msgstr ""
+
+#: ../../source/got_readme.md:123
+msgid ""
+"If present in `options` and `options.method` is not set, `options.method`"
+" will be set to `POST`."
+msgstr ""
+
+#: ../../source/got_readme.md:125
+msgid ""
+"If `content-length` or `transfer-encoding` is not set in "
+"`options.headers` and `body` is a string or buffer, `content-length` will"
+" be set to the body length."
+msgstr ""
+
+#: ../../source/got_readme.md:127
+msgid "encoding"
+msgstr ""
+
+#: ../../source/got_readme.md:129
+msgid "Type: `string` `null`<br> Default: `'utf8'`"
+msgstr ""
+
+#: ../../source/got_readme.md:132
+msgid ""
+"[Encoding](https://nodejs.org/api/buffer.html#buffer_buffers_and_character_encodings)"
+" to be used on `setEncoding` of the response data. If `null`, the body is"
+" returned as a [`Buffer`](https://nodejs.org/api/buffer.html) (binary "
+"data)."
+msgstr ""
+
+#: ../../source/got_readme.md:134
+msgid "form"
+msgstr ""
+
+#: ../../source/got_readme.md:141
+msgid ""
+"If set to `true` and `Content-Type` header is not set, it will be set to "
+"`application/x-www-form-urlencoded`."
+msgstr ""
+
+#: ../../source/got_readme.md:143 ../../source/got_readme.md:156
+msgid "`body` must be a plain object or array and will be stringified."
+msgstr ""
+
+#: ../../source/got_readme.md:145
+msgid "json"
+msgstr ""
+
+#: ../../source/got_readme.md:152
+msgid ""
+"If set to `true` and `Content-Type` header is not set, it will be set to "
+"`application/json`."
+msgstr ""
+
+#: ../../source/got_readme.md:154
+msgid ""
+"Parse response body with `JSON.parse` and set `accept` header to "
+"`application/json`. If used in conjunction with the `form` option, the "
+"`body` will the stringified as querystring and the response parsed as "
+"JSON."
+msgstr ""
+
+#: ../../source/got_readme.md:158
+msgid "query"
+msgstr ""
+
+#: ../../source/got_readme.md:160
+msgid "Type: `string` `Object`<br>"
+msgstr ""
+
+#: ../../source/got_readme.md:162
+msgid ""
+"Query string object that will be added to the request URL. This will "
+"override the query string in `url`."
+msgstr ""
+
+#: ../../source/got_readme.md:164
+msgid "timeout"
+msgstr ""
+
+#: ../../source/got_readme.md:166
+msgid "Type: `number` `Object`"
+msgstr ""
+
+#: ../../source/got_readme.md:168
+msgid ""
+"Milliseconds to wait for the server to end the response before aborting "
+"request with `ETIMEDOUT` error."
+msgstr ""
+
+#: ../../source/got_readme.md:170
+msgid ""
+"This also accepts an object with separate `connect`, `socket`, and "
+"`request` fields for connection, socket, and entire request timeouts."
+msgstr ""
+
+#: ../../source/got_readme.md:172
+msgid "retries"
+msgstr ""
+
+#: ../../source/got_readme.md:174
+msgid "Type: `number` `Function`<br> Default: `2`"
+msgstr ""
+
+#: ../../source/got_readme.md:177
+msgid ""
+"Number of request retries when network errors happens. Delays between "
+"retries counts with function `1000 * Math.pow(2, retry) + Math.random() *"
+" 100`, where `retry` is attempt number (starts from 0)."
+msgstr ""
+
+#: ../../source/got_readme.md:179
+msgid ""
+"Option accepts `function` with `retry` and `error` arguments. Function "
+"must return delay in milliseconds (`0` return value cancels retry)."
+msgstr ""
+
+#: ../../source/got_readme.md:181
+msgid ""
+"**Note:** if `retries` is `number`, `ENOTFOUND` and `ENETUNREACH` error "
+"will not be retried (see full list in [`is-retry-"
+"allowed`](https://github.com/floatdrop/is-retry-"
+"allowed/blob/master/index.js#L12) module)."
+msgstr ""
+
+#: ../../source/got_readme.md:183
+msgid "followRedirect"
+msgstr ""
+
+#: ../../source/got_readme.md:185 ../../source/got_readme.md:195
+#: ../../source/got_readme.md:218
+msgid "Type: `boolean`<br> Default: `true`"
+msgstr ""
+
+#: ../../source/got_readme.md:188
+msgid "Defines if redirect responses should be followed automatically."
+msgstr ""
+
+#: ../../source/got_readme.md:190
+msgid ""
+"Note that if a `303` is sent by the server in response to any request "
+"type (`POST`, `DELETE`, etc.), got will automatically request the "
+"resource pointed to in the location header via `GET`. This is in "
+"accordance with [the "
+"spec](https://tools.ietf.org/html/rfc7231#section-6.4.4)."
+msgstr ""
+
+#: ../../source/got_readme.md:193
+msgid "decompress"
+msgstr ""
+
+#: ../../source/got_readme.md:198
+msgid ""
+"Decompress the response automatically. This will set the `accept-"
+"encoding` header to `gzip, deflate` unless you set it yourself."
+msgstr ""
+
+#: ../../source/got_readme.md:200
+msgid ""
+"If this is disabled, a compressed response is returned as a `Buffer`. "
+"This may be useful if you want to handle decompression yourself or stream"
+" the raw compressed data."
+msgstr ""
+
+#: ../../source/got_readme.md:202
+msgid "cache"
+msgstr ""
+
+#: ../../source/got_readme.md:204
+msgid "Type: `Object`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/got_readme.md:207
+msgid "[Cache adapter instance](#cache-adapters) for storing cached data."
+msgstr ""
+
+#: ../../source/got_readme.md:209
+msgid "useElectronNet"
+msgstr ""
+
+#: ../../source/got_readme.md:214
+msgid ""
+"When used in Electron, Got will use "
+"[`electron.net`](https://electronjs.org/docs/api/net/) instead of the "
+"Node.js `http` module. According to the Electron docs, it should be fully"
+" compatible, but it's not entirely. See "
+"[#315](https://github.com/sindresorhus/got/issues/315)."
+msgstr ""
+
+#: ../../source/got_readme.md:216
+msgid "throwHttpErrors"
+msgstr ""
+
+#: ../../source/got_readme.md:221
+msgid ""
+"Determines if a `got.HTTPError` is thrown for error responses (non-2xx "
+"status codes)."
+msgstr ""
+
+#: ../../source/got_readme.md:223
+msgid ""
+"If this is disabled, requests that encounter an error status code will be"
+" resolved with the `response` instead of throwing. This may be useful if "
+"you are checking for resource availability and are expecting error "
+"responses."
+msgstr ""
+
+#: ../../source/got_readme.md:227
+msgid "got.stream(url, [options])"
+msgstr ""
+
+#: ../../source/got_readme.md:229
+msgid "`stream` method will return Duplex stream with additional events:"
+msgstr ""
+
+#: ../../source/got_readme.md:231
+msgid ".on('request', request)"
+msgstr ""
+
+#: ../../source/got_readme.md:233
+msgid "`request` event to get the request object of the request."
+msgstr ""
+
+#: ../../source/got_readme.md:235
+msgid "**Tip**: You can use `request` event to abort request:"
+msgstr ""
+
+#: ../../source/got_readme.md:242
+msgid ".on('response', response)"
+msgstr ""
+
+#: ../../source/got_readme.md:244
+msgid "`response` event to get the response object of the final request."
+msgstr ""
+
+#: ../../source/got_readme.md:246
+msgid ".on('redirect', response, nextOptions)"
+msgstr ""
+
+#: ../../source/got_readme.md:248
+msgid ""
+"`redirect` event to get the response object of a redirect. The second "
+"argument is options for the next request to the redirect location."
+msgstr ""
+
+#: ../../source/got_readme.md:250
+msgid ".on('uploadProgress', progress)"
+msgstr ""
+
+#: ../../source/got_readme.md:251
+msgid ".on('downloadProgress', progress)"
+msgstr ""
+
+#: ../../source/got_readme.md:253
+msgid ""
+"Progress events for uploading (sending request) and downloading "
+"(receiving response). The `progress` argument is an object like:"
+msgstr ""
+
+#: ../../source/got_readme.md:263
+msgid ""
+"If it's not possible to retrieve the body size (can happen when "
+"streaming), `total` will be `null`."
+msgstr ""
+
+#: ../../source/got_readme.md:265
+msgid "**Note**: Progress events can also be used with promises."
+msgstr ""
+
+#: ../../source/got_readme.md:281
+msgid ".on('error', error, body, response)"
+msgstr ""
+
+#: ../../source/got_readme.md:283
+msgid ""
+"`error` event emitted in case of protocol error (like `ENOTFOUND` etc.) "
+"or status error (4xx or 5xx). The second argument is the body of the "
+"server response in case of status error. The third argument is response "
+"object."
+msgstr ""
+
+#: ../../source/got_readme.md:285
+msgid "got.get(url, [options])"
+msgstr ""
+
+#: ../../source/got_readme.md:286
+msgid "got.post(url, [options])"
+msgstr ""
+
+#: ../../source/got_readme.md:287
+msgid "got.put(url, [options])"
+msgstr ""
+
+#: ../../source/got_readme.md:288
+msgid "got.patch(url, [options])"
+msgstr ""
+
+#: ../../source/got_readme.md:289
+msgid "got.head(url, [options])"
+msgstr ""
+
+#: ../../source/got_readme.md:290
+msgid "got.delete(url, [options])"
+msgstr ""
+
+#: ../../source/got_readme.md:292
+msgid "Sets `options.method` to the method name and makes a request."
+msgstr ""
+
+#: ../../source/got_readme.md:295
+msgid "Errors"
+msgstr ""
+
+#: ../../source/got_readme.md:297
+msgid ""
+"Each error contains (if available) `statusCode`, `statusMessage`, `host`,"
+" `hostname`, `method`, `path`, `protocol` and `url` properties to make "
+"debugging easier."
+msgstr ""
+
+#: ../../source/got_readme.md:299
+msgid "In Promise mode, the `response` is attached to the error."
+msgstr ""
+
+#: ../../source/got_readme.md:301
+msgid "got.CacheError"
+msgstr ""
+
+#: ../../source/got_readme.md:303
+msgid ""
+"When a cache method fails, for example if the database goes down, or "
+"there's a filesystem error."
+msgstr ""
+
+#: ../../source/got_readme.md:305
+msgid "got.RequestError"
+msgstr ""
+
+#: ../../source/got_readme.md:307
+msgid ""
+"When a request fails. Contains a `code` property with error class code, "
+"like `ECONNREFUSED`."
+msgstr ""
+
+#: ../../source/got_readme.md:309
+msgid "got.ReadError"
+msgstr ""
+
+#: ../../source/got_readme.md:311
+msgid "When reading from response stream fails."
+msgstr ""
+
+#: ../../source/got_readme.md:313
+msgid "got.ParseError"
+msgstr ""
+
+#: ../../source/got_readme.md:315
+msgid ""
+"When `json` option is enabled, server response code is 2xx, and "
+"`JSON.parse` fails."
+msgstr ""
+
+#: ../../source/got_readme.md:317
+msgid "got.HTTPError"
+msgstr ""
+
+#: ../../source/got_readme.md:319
+msgid ""
+"When server response code is not 2xx. Includes `statusCode`, "
+"`statusMessage`, and `redirectUrls` properties."
+msgstr ""
+
+#: ../../source/got_readme.md:321
+msgid "got.MaxRedirectsError"
+msgstr ""
+
+#: ../../source/got_readme.md:323
+msgid ""
+"When server redirects you more than 10 times. Includes a `redirectUrls` "
+"property, which is an array of the URLs Got was redirected to before "
+"giving up."
+msgstr ""
+
+#: ../../source/got_readme.md:325
+msgid "got.UnsupportedProtocolError"
+msgstr ""
+
+#: ../../source/got_readme.md:327
+msgid "When given an unsupported protocol."
+msgstr ""
+
+#: ../../source/got_readme.md:329
+msgid "got.CancelError"
+msgstr ""
+
+#: ../../source/got_readme.md:331
+msgid "When the request is aborted with `.cancel()`."
+msgstr ""
+
+#: ../../source/got_readme.md:334
+msgid "Aborting the request"
+msgstr ""
+
+#: ../../source/got_readme.md:336
+msgid ""
+"The promise returned by Got has a "
+"[`.cancel()`](https://github.com/sindresorhus/p-cancelable) method which,"
+" when called, aborts the request."
+msgstr ""
+
+#: ../../source/got_readme.md:363
+msgid "<a name=\"cache-adapters\"></a>"
+msgstr ""
+
+#: ../../source/got_readme.md:364
+msgid "Cache"
+msgstr ""
+
+#: ../../source/got_readme.md:366
+msgid ""
+"Got implements [RFC 7234](http://httpwg.org/specs/rfc7234.html) compliant"
+" HTTP caching which works out of the box in memory or is easily pluggable"
+" with a wide range of storage adapters. Fresh cache entries are served "
+"directly from cache and stale cache entries are revalidated with `If-"
+"None-Match`/`If-Modified-Since` headers. You can read more about the "
+"underlying cache behaviour in the `cacheable-request` "
+"[documentation](https://github.com/lukechilds/cacheable-request)."
+msgstr ""
+
+#: ../../source/got_readme.md:368
+msgid "You can use the JavaScript `Map` type as an in memory cache:"
+msgstr ""
+
+#: ../../source/got_readme.md:385
+msgid ""
+"Got uses [Keyv](https://github.com/lukechilds/keyv) internally to support"
+" a wide range of storage adapters. For something more scalable you could "
+"use an [official Keyv storage adapter](https://github.com/lukechilds/keyv"
+"#official-storage-adapters):"
+msgstr ""
+
+#: ../../source/got_readme.md:400
+msgid ""
+"Got supports anything that follows the Map API, so it's easy to write "
+"your own storage adapter or use a third-party solution."
+msgstr ""
+
+#: ../../source/got_readme.md:402
+msgid "For example, the following are all valid storage adapters:"
+msgstr ""
+
+#: ../../source/got_readme.md:415
+msgid ""
+"View the [Keyv docs](https://github.com/lukechilds/keyv) for more "
+"information on how to use storage adapters."
+msgstr ""
+
+#: ../../source/got_readme.md:418
+msgid "Proxies"
+msgstr ""
+
+#: ../../source/got_readme.md:420
+msgid ""
+"You can use the [`tunnel`](https://github.com/koichik/node-tunnel) module"
+" with the `agent` option to work with proxies:"
+msgstr ""
+
+#: ../../source/got_readme.md:435
+msgid ""
+"If you require different agents for different protocols, you can pass a "
+"map of agents to the `agent` option. This is necessary because a request "
+"to one protocol might redirect to another. In such a scenario, `got` will"
+" switch over to the right protocol agent for you."
+msgstr ""
+
+#: ../../source/got_readme.md:451
+msgid "Cookies"
+msgstr ""
+
+#: ../../source/got_readme.md:453
+msgid ""
+"You can use the [`cookie`](https://github.com/jshttp/cookie) module to "
+"include cookies in a request:"
+msgstr ""
+
+#: ../../source/got_readme.md:467
+msgid "Form data"
+msgstr ""
+
+#: ../../source/got_readme.md:469
+msgid ""
+"You can use the [`form-data`](https://github.com/form-data/form-data) "
+"module to create POST request with form data:"
+msgstr ""
+
+#: ../../source/got_readme.md:485
+msgid "OAuth"
+msgstr ""
+
+#: ../../source/got_readme.md:487
+msgid ""
+"You can use the [`oauth-1.0a`](https://github.com/ddo/oauth-1.0a) module "
+"to create a signed OAuth request:"
+msgstr ""
+
+#: ../../source/got_readme.md:517
+msgid "Unix Domain Sockets"
+msgstr ""
+
+#: ../../source/got_readme.md:519
+msgid ""
+"Requests can also be sent via [unix domain "
+"sockets](http://serverfault.com/questions/124517/whats-the-difference-"
+"between-unix-socket-and-tcp-ip-socket). Use the following URL scheme: "
+"`PROTOCOL://unix:SOCKET:PATH`."
+msgstr ""
+
+#: ../../source/got_readme.md:521
+msgid "`PROTOCOL` - `http` or `https` *(optional)*"
+msgstr ""
+
+#: ../../source/got_readme.md:522
+msgid ""
+"`SOCKET` - absolute path to a unix domain socket, e.g. "
+"`/var/run/docker.sock`"
+msgstr ""
+
+#: ../../source/got_readme.md:523
+msgid "`PATH` - request path, e.g. `/v2/keys`"
+msgstr ""
+
+#: ../../source/got_readme.md:532
+msgid "AWS"
+msgstr ""
+
+#: ../../source/got_readme.md:534
+msgid ""
+"Requests to AWS services need to have their headers signed. This can be "
+"accomplished by using the [`aws4`](https://www.npmjs.com/package/aws4) "
+"package. This is an example for querying an [\"Elasticsearch "
+"Service\"](https://aws.amazon.com/elasticsearch-service/) host with a "
+"signed request."
+msgstr ""
+
+#: ../../source/got_readme.md:572
+msgid "Testing"
+msgstr ""
+
+#: ../../source/got_readme.md:574
+msgid ""
+"You can test your requests by using the [`nock`](https://github.com/node-"
+"nock/nock) module to mock an endpoint:"
+msgstr ""
+
+#: ../../source/got_readme.md:591
+msgid ""
+"If you need real integration tests you can use [`create-test-"
+"server`](https://github.com/lukechilds/create-test-server):"
+msgstr ""
+
+#: ../../source/got_readme.md:610
+msgid "Tips"
+msgstr ""
+
+#: ../../source/got_readme.md:612
+msgid "User Agent"
+msgstr ""
+
+#: ../../source/got_readme.md:614
+msgid ""
+"It's a good idea to set the `'user-agent'` header so the provider can "
+"more easily see how their resource is used. By default, it's the URL to "
+"this repo."
+msgstr ""
+
+#: ../../source/got_readme.md:627
+msgid "304 Responses"
+msgstr ""
+
+#: ../../source/got_readme.md:629
+msgid ""
+"Bear in mind, if you send an `if-modified-since` header and receive a "
+"`304 Not Modified` response, the body will be empty. It's your "
+"responsibility to cache and retrieve the body contents."
+msgstr ""
+
+#: ../../source/got_readme.md:632
+msgid "Related"
+msgstr ""
+
+#: ../../source/got_readme.md:634
+msgid ""
+"[gh-got](https://github.com/sindresorhus/gh-got) - Got convenience "
+"wrapper to interact with the GitHub API"
+msgstr ""
+
+#: ../../source/got_readme.md:635
+msgid ""
+"[gl-got](https://github.com/singapore/gl-got) - Got convenience wrapper "
+"to interact with the GitLab API"
+msgstr ""
+
+#: ../../source/got_readme.md:636
+msgid ""
+"[travis-got](https://github.com/samverschueren/travis-got) - Got "
+"convenience wrapper to interact with the Travis API"
+msgstr ""
+
+#: ../../source/got_readme.md:637
+msgid ""
+"[graphql-got](https://github.com/kevva/graphql-got) - Got convenience "
+"wrapper to interact with GraphQL"
+msgstr ""
+
+#: ../../source/got_readme.md:638
+msgid ""
+"[GotQL](https://github.com/khaosdoctor/gotql) - Got convenience wrapper "
+"to interact with GraphQL using JSON-parsed queries instead of strings"
+msgstr ""
+
+#: ../../source/got_readme.md:641
+msgid "Created by"
+msgstr ""
+
+#: ../../source/got_readme.md
+msgid ""
+"[![Sindre "
+"Sorhus](https://github.com/sindresorhus.png?size=100)](https://sindresorhus.com)"
+msgstr ""
+
+#: ../../source/got_readme.md:643
+msgid "Sindre Sorhus"
+msgstr ""
+
+#: ../../source/got_readme.md
+msgid ""
+"[![Vsevolod "
+"Strukchinsky](https://github.com/floatdrop.png?size=100)](https://github.com/floatdrop)"
+msgstr ""
+
+#: ../../source/got_readme.md:643
+msgid "Vsevolod Strukchinsky"
+msgstr ""
+
+#: ../../source/got_readme.md
+msgid ""
+"[![Alexander "
+"Tesfamichael](https://github.com/AlexTes.png?size=100)](https://github.com/AlexTes)"
+msgstr ""
+
+#: ../../source/got_readme.md:643
+msgid "Alexander Tesfamichael"
+msgstr ""
+
+#: ../../source/got_readme.md
+msgid ""
+"[![Luke "
+"Childs](https://github.com/lukechilds.png?size=100)](https://github.com/lukechilds)"
+msgstr ""
+
+#: ../../source/got_readme.md:643
+msgid "Luke Childs"
+msgstr ""
+
+#: ../../source/got_readme.md
+msgid "[Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+
+#: ../../source/got_readme.md
+msgid "[Vsevolod Strukchinsky](https://github.com/floatdrop)"
+msgstr ""
+
+#: ../../source/got_readme.md
+msgid "[Alexander Tesfamichael](https://alextes.me)"
+msgstr ""
+
+#: ../../source/got_readme.md
+msgid "[Luke Childs](https://github.com/lukechilds)"
+msgstr ""
+
+#: ../../source/got_readme.md:648
+msgid "License"
+msgstr ""
+
+#: ../../source/got_readme.md:650
+msgid "MIT"
+msgstr ""
+

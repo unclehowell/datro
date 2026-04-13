@@ -1,0 +1,137 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/caniuse-api_README.md:1
+msgid ""
+"caniuse-api [![Build Status](https://travis-ci.org/Nyalab/caniuse-"
+"api.svg?branch=master)](https://travis-ci.org/Nyalab/caniuse-api) "
+"[![Build "
+"status](https://ci.appveyor.com/api/projects/status/6j3na522bv3bxfa5/branch/master?svg=true)](https://ci.appveyor.com/project/MoOx"
+"/caniuse-api/branch/master)"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:1
+msgid "Build status"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:3
+msgid "request the caniuse data to check browsers compatibilities"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:5
+msgid "Installation"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:11
+msgid "Usage"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:23
+msgid "API"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:25
+msgid "`caniuse.getSupport(feature)`"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:27
+msgid "_ask since which browsers versions a feature is available_"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:29
+msgid "`y`: Since which browser version the feature is available"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:30
+msgid "`n`: Up to which browser version the feature is unavailable"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:31
+msgid "`a`: Up to which browser version the feature is partially supported"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:32
+msgid "`x`: Up to which browser version the feature is prefixed"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:57
+msgid "`caniuse.isSupported(feature, browsers)`"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:59
+msgid "_ask if a feature is supported by some browsers_"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:66
+msgid "`caniuse.find(query)`"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:68
+msgid "_search for a caniuse feature name_"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:70
+msgid "Ex:"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:87
+msgid "`caniuse.getLatestStableBrowsers()`"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:89
+msgid "_get the current version for each browser_"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:115
+msgid "`caniuse.getBrowserScope()`"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:117
+msgid "_returns a list of browsers currently used for the scope of operations_"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:142
+msgid "`caniuse.setBrowserScope(browserscope)`"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:144
+msgid ""
+"_if you do not like the default browser scope, you can set it globally by"
+" using this method_"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:146
+msgid "browserscope should be a 'autoprefixer' formatted string"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:155
+msgid "[Changelog](CHANGELOG.md)"
+msgstr ""
+
+#: ../../source/caniuse-api_README.md:157
+msgid "[License](LICENSE)"
+msgstr ""
+

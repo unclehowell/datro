@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_integrations.md:1
+msgid "Framework Integrations Guide"
+msgstr ""
+
+#: ../../source/references_integrations.md:3
+msgid "Complete guide to integrating W&B with popular ML frameworks."
+msgstr ""
+
+#: ../../source/references_integrations.md:5
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../source/references_integrations.md:6
+#: ../../source/references_integrations.md:14
+msgid "HuggingFace Transformers"
+msgstr ""
+
+#: ../../source/references_integrations.md:7
+#: ../../source/references_integrations.md:131
+msgid "PyTorch Lightning"
+msgstr ""
+
+#: ../../source/references_integrations.md:8
+#: ../../source/references_integrations.md:271
+msgid "Keras/TensorFlow"
+msgstr ""
+
+#: ../../source/references_integrations.md:9
+#: ../../source/references_integrations.md:387
+msgid "Fast.ai"
+msgstr ""
+
+#: ../../source/references_integrations.md:10
+#: ../../source/references_integrations.md:425
+msgid "XGBoost/LightGBM"
+msgstr ""
+
+#: ../../source/references_integrations.md:11
+#: ../../source/references_integrations.md:531
+msgid "PyTorch Native"
+msgstr ""
+
+#: ../../source/references_integrations.md:12
+#: ../../source/references_integrations.md:627
+msgid "Custom Integrations"
+msgstr ""
+
+#: ../../source/references_integrations.md:16
+msgid "Automatic Integration"
+msgstr ""
+
+#: ../../source/references_integrations.md:68
+msgid "Custom Logging"
+msgstr ""
+
+#: ../../source/references_integrations.md:95
+msgid "Log Model to Registry"
+msgstr ""
+
+#: ../../source/references_integrations.md:133
+msgid "Basic Integration"
+msgstr ""
+
+#: ../../source/references_integrations.md:194
+msgid "Log Media"
+msgstr ""
+
+#: ../../source/references_integrations.md:224
+msgid "Hyperparameter Sweeps"
+msgstr ""
+
+#: ../../source/references_integrations.md:273
+#: ../../source/references_integrations.md:389
+msgid "With Callback"
+msgstr ""
+
+#: ../../source/references_integrations.md:331
+msgid "Custom Training Loop"
+msgstr ""
+
+#: ../../source/references_integrations.md:427
+msgid "XGBoost"
+msgstr ""
+
+#: ../../source/references_integrations.md:482
+msgid "LightGBM"
+msgstr ""
+
+#: ../../source/references_integrations.md:533
+msgid "Training Loop Integration"
+msgstr ""
+
+#: ../../source/references_integrations.md:629
+msgid "Generic Framework Integration"
+msgstr ""
+
+#: ../../source/references_integrations.md:694
+msgid "Resources"
+msgstr ""
+
+#: ../../source/references_integrations.md:696
+msgid "**Integrations Guide**: https://docs.wandb.ai/guides/integrations"
+msgstr ""
+
+#: ../../source/references_integrations.md:697
+msgid "**HuggingFace**: https://docs.wandb.ai/guides/integrations/huggingface"
+msgstr ""
+
+#: ../../source/references_integrations.md:698
+msgid "**PyTorch Lightning**: https://docs.wandb.ai/guides/integrations/lightning"
+msgstr ""
+
+#: ../../source/references_integrations.md:699
+msgid "**Keras**: https://docs.wandb.ai/guides/integrations/keras"
+msgstr ""
+
+#: ../../source/references_integrations.md:700
+msgid "**Examples**: https://github.com/wandb/examples"
+msgstr ""
+

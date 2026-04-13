@@ -1,0 +1,131 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/archive-type_readme.md:1
+msgid ""
+"archive-type [![Build Status](https://travis-ci.org/kevva/archive-"
+"type.svg?branch=master)](https://travis-ci.org/kevva/archive-type)"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:3
+msgid "Detect the archive type of a Buffer/Uint8Array"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:25
+msgid "API"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:27
+msgid "archiveType(input)"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:29
+msgid "Returns an `Object` with:"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:31
+msgid "`ext` - One of the [supported file types](#supported-file-types)"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:32
+msgid "`mime` - The [MIME type](http://en.wikipedia.org/wiki/Internet_media_type)"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:34
+msgid "Or `null` when no match."
+msgstr ""
+
+#: ../../source/archive-type_readme.md:36
+msgid "input"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:38
+msgid "Type: `Buffer` `Uint8Array`"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:40
+msgid "It only needs the first 262 bytes."
+msgstr ""
+
+#: ../../source/archive-type_readme.md:43
+msgid "Supported file types"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:45
+msgid "`7z`"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:46
+msgid "`bz2`"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:47
+#: ../../source/archive-type_readme.md:52
+msgid "`gz`"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:48
+msgid "`rar`"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:49
+msgid "`tar`"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:50
+msgid "`zip`"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:51
+msgid "`xz`"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:55
+msgid "Related"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:57
+msgid ""
+"[archive-type-cli](https://github.com/kevva/archive-type-cli) - CLI for "
+"this module"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:60
+msgid "License"
+msgstr ""
+
+#: ../../source/archive-type_readme.md:62
+msgid "MIT © [Kevin Mårtensson](https://github.com/kevva)"
+msgstr ""
+

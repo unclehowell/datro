@@ -1,0 +1,217 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/squeak_readme.md:1
+msgid ""
+"squeak [![Build "
+"Status](http://img.shields.io/travis/kevva/squeak.svg?style=flat)](https"
+"://travis-ci.org/kevva/squeak)"
+msgstr ""
+
+#: ../../source/squeak_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/squeak_readme.md:3
+msgid "A tiny stream log"
+msgstr ""
+
+#: ../../source/squeak_readme.md:5
+msgid ""
+"![](https://cloud.githubusercontent.com/assets/709159/5165451/f0ca124e-"
+"73e4-11e4-8a49-9e278b7aff16.png)"
+msgstr ""
+
+#: ../../source/squeak_readme.md:8
+msgid "Install"
+msgstr ""
+
+#: ../../source/squeak_readme.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/squeak_readme.md:43
+msgid ""
+"You can also customize the different types to use a custom prefix using "
+"the  `prefix` option:"
+msgstr ""
+
+#: ../../source/squeak_readme.md:62
+msgid "API"
+msgstr ""
+
+#: ../../source/squeak_readme.md:64
+msgid "new Squeak(options)"
+msgstr ""
+
+#: ../../source/squeak_readme.md:66
+msgid "Creates a new `Squeak` instance."
+msgstr ""
+
+#: ../../source/squeak_readme.md:68
+msgid "options.align"
+msgstr ""
+
+#: ../../source/squeak_readme.md:70
+msgid "Type: `boolean`   Default: `true`"
+msgstr ""
+
+#: ../../source/squeak_readme.md:73
+msgid "Whether to align the prefixes or not. E.g:"
+msgstr ""
+
+#: ../../source/squeak_readme.md:80
+msgid "options.indent"
+msgstr ""
+
+#: ../../source/squeak_readme.md:82
+msgid "Type: `number`   Default: `2`"
+msgstr ""
+
+#: ../../source/squeak_readme.md:85
+msgid "Sets the indentation."
+msgstr ""
+
+#: ../../source/squeak_readme.md:87
+msgid "options.separator"
+msgstr ""
+
+#: ../../source/squeak_readme.md:89
+msgid "Type: `string`   Default: `  :  `"
+msgstr ""
+
+#: ../../source/squeak_readme.md:92
+msgid "Customize the separator between the `prefix` and the message."
+msgstr ""
+
+#: ../../source/squeak_readme.md:94
+msgid "options.stream"
+msgstr ""
+
+#: ../../source/squeak_readme.md:96
+msgid "Type: `stream`   Default: `process.stderr`"
+msgstr ""
+
+#: ../../source/squeak_readme.md:99
+msgid "Which `stream` to write to."
+msgstr ""
+
+#: ../../source/squeak_readme.md:101
+msgid ".write(args)"
+msgstr ""
+
+#: ../../source/squeak_readme.md:103 ../../source/squeak_readme.md:109
+#: ../../source/squeak_readme.md:115 ../../source/squeak_readme.md:125
+#: ../../source/squeak_readme.md:131 ../../source/squeak_readme.md:137
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/squeak_readme.md:105
+msgid "Writes to `options.stream`, using `process.stderr` by default."
+msgstr ""
+
+#: ../../source/squeak_readme.md:107
+msgid ".writeln(args)"
+msgstr ""
+
+#: ../../source/squeak_readme.md:111
+msgid "Same as `.write()` but with a new line."
+msgstr ""
+
+#: ../../source/squeak_readme.md:113
+msgid ".writelpad(args)"
+msgstr ""
+
+#: ../../source/squeak_readme.md:117
+msgid "Same as `.write()` but with padding."
+msgstr ""
+
+#: ../../source/squeak_readme.md:119
+msgid ".type(type, options, callback)"
+msgstr ""
+
+#: ../../source/squeak_readme.md:121
+msgid "Adds a type."
+msgstr ""
+
+#: ../../source/squeak_readme.md:123
+msgid "type"
+msgstr ""
+
+#: ../../source/squeak_readme.md:127
+msgid "The name of the type. Will be used as `prefix` by default."
+msgstr ""
+
+#: ../../source/squeak_readme.md:129
+msgid "options.color"
+msgstr ""
+
+#: ../../source/squeak_readme.md:133
+msgid ""
+"Sets the prefix color. Supported colors can be found "
+"[here](https://github.com/sindresorhus/ansi-styles#colors)."
+msgstr ""
+
+#: ../../source/squeak_readme.md:135
+msgid "options.prefix"
+msgstr ""
+
+#: ../../source/squeak_readme.md:139
+msgid "Sets the `type` prefix. Uses `type` by default."
+msgstr ""
+
+#: ../../source/squeak_readme.md:141
+msgid "callback"
+msgstr ""
+
+#: ../../source/squeak_readme.md:143 ../../source/squeak_readme.md:153
+msgid "Type: `function`"
+msgstr ""
+
+#: ../../source/squeak_readme.md:145
+msgid "An optional callback to be called when the `type` is called."
+msgstr ""
+
+#: ../../source/squeak_readme.md:147
+msgid ".emit(event, data)"
+msgstr ""
+
+#: ../../source/squeak_readme.md:149
+msgid "Emits an event."
+msgstr ""
+
+#: ../../source/squeak_readme.md:151
+msgid ".end(callback)"
+msgstr ""
+
+#: ../../source/squeak_readme.md:155
+msgid "Writes a newline and executes an optional callback function."
+msgstr ""
+
+#: ../../source/squeak_readme.md:158
+msgid "License"
+msgstr ""
+
+#: ../../source/squeak_readme.md:160
+msgid "MIT © [Kevin Mårtensson](https://github.com/kevva)"
+msgstr ""
+

@@ -1,0 +1,911 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_scenes.md:1
+msgid "Scene System & Creative Composition"
+msgstr ""
+
+#: ../../source/references_scenes.md:3
+msgid "**See also:** architecture.md · composition.md · effects.md · shaders.md"
+msgstr ""
+
+#: ../../source/references_scenes.md:5
+msgid "Scene Design Philosophy"
+msgstr ""
+
+#: ../../source/references_scenes.md:7
+msgid "Scenes are storytelling units, not effect demos. Every scene needs:"
+msgstr ""
+
+#: ../../source/references_scenes.md:8
+msgid ""
+"A **concept** — what is happening visually? Not \"plasma + rings\" but "
+"\"emergence from void\" or \"crystallization\""
+msgstr ""
+
+#: ../../source/references_scenes.md:9
+msgid ""
+"An **arc** — how does it change over its duration? Build, decay, "
+"transform, reveal?"
+msgstr ""
+
+#: ../../source/references_scenes.md:10
+msgid ""
+"A **role** — how does it serve the larger video narrative? Opening "
+"tension, peak energy, resolution?"
+msgstr ""
+
+#: ../../source/references_scenes.md:12
+msgid ""
+"The design patterns below provide compositional techniques. The scene "
+"examples show them in practice at increasing complexity. The protocol "
+"section covers the technical contract."
+msgstr ""
+
+#: ../../source/references_scenes.md:14
+msgid ""
+"Good scene design starts with the concept, then selects effects and "
+"parameters that serve it. The design patterns section shows *how* to "
+"compose layers intentionally. The examples section shows complete working"
+" scenes at every complexity level. The protocol section covers the "
+"technical contract that all scenes must follow."
+msgstr ""
+
+#: ../../source/references_scenes.md:18
+msgid "Scene Design Patterns"
+msgstr ""
+
+#: ../../source/references_scenes.md:20
+msgid ""
+"Higher-order patterns for composing scenes that feel intentional rather "
+"than random. These patterns use the existing building blocks (value "
+"fields, blend modes, shaders, feedback) but organize them with "
+"compositional intent."
+msgstr ""
+
+#: ../../source/references_scenes.md:22
+msgid "Layer Hierarchy"
+msgstr ""
+
+#: ../../source/references_scenes.md:24
+msgid "Every scene should have clear visual layers with distinct roles:"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Layer"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Grid"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Brightness"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Purpose"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "**Background**"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "xs or sm (dense)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "0.1–0.25"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Atmosphere, texture. Never competes with content."
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "**Content**"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "md (balanced)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "0.4–0.8"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "The main visual idea. Carries the scene's concept."
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "**Accent**"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "lg or sm (sparse)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "0.5–1.0 (sparse coverage)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Highlights, punctuation, sparse bright points."
+msgstr ""
+
+#: ../../source/references_scenes.md:32
+msgid ""
+"The background sets mood. The content layer is what the scene *is about*."
+" The accent adds visual interest without overwhelming."
+msgstr ""
+
+#: ../../source/references_scenes.md:58
+msgid "Directional Parameter Arcs"
+msgstr ""
+
+#: ../../source/references_scenes.md:60
+msgid ""
+"Parameters should *go somewhere* over the scene's duration — not "
+"oscillate aimlessly with `sin(t * N)`."
+msgstr ""
+
+#: ../../source/references_scenes.md:62
+msgid ""
+"**Bad:** `twist = 3.0 + 2.0 * math.sin(t * 0.6)` — wobbles back and "
+"forth, feels aimless."
+msgstr ""
+
+#: ../../source/references_scenes.md:64
+msgid ""
+"**Good:** `twist = 2.0 + progress * 5.0` — starts gentle, ends intense. "
+"The scene *builds*."
+msgstr ""
+
+#: ../../source/references_scenes.md:66
+msgid ""
+"Use `progress = min(local / duration, 1.0)` (0→1 over the scene) to drive"
+" directional change:"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Pattern"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Formula"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Feel"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Linear ramp"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "`progress * range`"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Steady buildup"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Ease-out"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "`1 - (1 - progress) ** 2`"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Fast start, gentle finish"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Ease-in"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "`progress ** 2`"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Slow start, accelerating"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Step reveal"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "`np.clip((progress - 0.5) / 0.25, 0, 1)`"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Nothing until 50%, then fades in"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Build + plateau"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "`min(1.0, progress * 1.5)`"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Reaches full at 67%, holds"
+msgstr ""
+
+#: ../../source/references_scenes.md:76
+msgid ""
+"Oscillation is fine for *secondary* parameters (saturation shimmer, hue "
+"drift). But the *defining* parameter of the scene should have a "
+"direction."
+msgstr ""
+
+#: ../../source/references_scenes.md:78
+msgid "Examples of Directional Arcs"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Scene concept"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Parameter"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Arc"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Emergence"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Ring radius"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "0 → max (ease-out)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Shatter"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Voronoi cell count"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "8 → 38 (linear)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Descent"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Tunnel speed"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "2.0 → 10.0 (linear)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Mandala"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Shape complexity"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "ring → +polygon → +star → +rosette (step reveals)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Crescendo"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Layer count"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "1 → 7 (staggered entry)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Entropy"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Geometry visibility"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "1.0 → 0.0 (consumed)"
+msgstr ""
+
+#: ../../source/references_scenes.md:89
+msgid "Scene Concepts"
+msgstr ""
+
+#: ../../source/references_scenes.md:91
+msgid "Each scene should be built around a *visual idea*, not an effect name."
+msgstr ""
+
+#: ../../source/references_scenes.md:93
+msgid ""
+"**Bad:** \"fx_plasma_cascade\" — named after the effect. No concept. "
+"**Good:** \"fx_emergence\" — a point of light expands into a field. The "
+"name tells you *what happens*."
+msgstr ""
+
+#: ../../source/references_scenes.md:96
+msgid "Good scene concepts have:"
+msgstr ""
+
+#: ../../source/references_scenes.md:97
+msgid "A **visual metaphor** (emergence, descent, collision, entropy)"
+msgstr ""
+
+#: ../../source/references_scenes.md:98
+msgid "A **directional arc** (things change from A to B, not oscillate)"
+msgstr ""
+
+#: ../../source/references_scenes.md:99
+msgid "**Motivated layer choices** (each layer serves the concept)"
+msgstr ""
+
+#: ../../source/references_scenes.md:100
+msgid "**Motivated feedback** (transform direction matches the metaphor)"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Concept"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Metaphor"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Feedback transform"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Why"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Birth, expansion"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "zoom-out"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Past frames expand outward"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Falling, acceleration"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "zoom-in"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Past frames rush toward center"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Inferno"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Rising fire"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "shift-up"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Past frames rise with the flames"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Decay, dissolution"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "none"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Clean, no persistence — things disappear"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Accumulation"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "zoom + hue_shift"
+msgstr ""
+
+#: ../../source/references_scenes.md
+msgid "Everything compounds and shifts"
+msgstr ""
+
+#: ../../source/references_scenes.md:110
+msgid "Compositional Techniques"
+msgstr ""
+
+#: ../../source/references_scenes.md:112
+msgid "Counter-Rotating Dual Systems"
+msgstr ""
+
+#: ../../source/references_scenes.md:114
+msgid ""
+"Two instances of the same effect rotating in opposite directions create "
+"visual interference:"
+msgstr ""
+
+#: ../../source/references_scenes.md:127
+msgid ""
+"Works with spirals, vortexes, rings. The counter-rotation creates "
+"constantly shifting interference patterns."
+msgstr ""
+
+#: ../../source/references_scenes.md:129
+msgid "Wave Collision"
+msgstr ""
+
+#: ../../source/references_scenes.md:131
+msgid ""
+"Two wave fronts converging from opposite sides, meeting at a collision "
+"point:"
+msgstr ""
+
+#: ../../source/references_scenes.md:148
+msgid "Progressive Fragmentation"
+msgstr ""
+
+#: ../../source/references_scenes.md:150
+msgid "Voronoi with cell count increasing over time — visual shattering:"
+msgstr ""
+
+#: ../../source/references_scenes.md:158
+msgid ""
+"The edge glow width can also increase with progress to emphasize the "
+"cracks."
+msgstr ""
+
+#: ../../source/references_scenes.md:160
+msgid "Entropy / Consumption"
+msgstr ""
+
+#: ../../source/references_scenes.md:162
+msgid "A clean geometric pattern being overtaken by an organic process:"
+msgstr ""
+
+#: ../../source/references_scenes.md:174
+msgid "Staggered Layer Entry (Crescendo)"
+msgstr ""
+
+#: ../../source/references_scenes.md:176
+msgid "Layers enter one at a time, building to overwhelming density:"
+msgstr ""
+
+#: ../../source/references_scenes.md:195
+msgid ""
+"For a 15-second crescendo, 7 layers entering every 2 seconds works well. "
+"Use different blend modes (screen for most, add for energy, colordodge "
+"for the final wash)."
+msgstr ""
+
+#: ../../source/references_scenes.md:197
+msgid "Scene Ordering"
+msgstr ""
+
+#: ../../source/references_scenes.md:199
+msgid "For a multi-scene reel or video:"
+msgstr ""
+
+#: ../../source/references_scenes.md:200
+msgid ""
+"**Vary mood between adjacent scenes** — don't put two calm scenes next to"
+" each other"
+msgstr ""
+
+#: ../../source/references_scenes.md:201
+msgid ""
+"**Randomize order** rather than grouping by type — prevents \"effect "
+"demo\" feel"
+msgstr ""
+
+#: ../../source/references_scenes.md:202
+msgid ""
+"**End on the strongest scene** — crescendo or something with a clear "
+"payoff"
+msgstr ""
+
+#: ../../source/references_scenes.md:203
+msgid "**Open with energy** — grab attention in the first 2 seconds"
+msgstr ""
+
+#: ../../source/references_scenes.md:207
+msgid "Scene Protocol"
+msgstr ""
+
+#: ../../source/references_scenes.md:209
+msgid ""
+"Scenes are the top-level creative unit. Each scene is a time-bounded "
+"segment with its own effect function, shader chain, feedback "
+"configuration, and tone-mapping gamma."
+msgstr ""
+
+#: ../../source/references_scenes.md:211
+msgid "Scene Protocol (v2)"
+msgstr ""
+
+#: ../../source/references_scenes.md:213
+msgid "Function Signature"
+msgstr ""
+
+#: ../../source/references_scenes.md:229
+msgid ""
+"**Local time convention:** Scene functions receive `t` starting at 0.0 "
+"for the first frame of the scene, regardless of where the scene appears "
+"in the timeline. The render loop subtracts the scene's start time before "
+"calling the function:"
+msgstr ""
+
+#: ../../source/references_scenes.md:237
+msgid ""
+"This makes scenes reorderable without modifying their code. Compute scene"
+" progress as:"
+msgstr ""
+
+#: ../../source/references_scenes.md:243
+msgid ""
+"This replaces the v1 protocol where scenes returned `(chars, colors)` "
+"tuples. The v2 protocol gives scenes full control over multi-grid "
+"rendering and pixel-level composition internally."
+msgstr ""
+
+#: ../../source/references_scenes.md:245
+msgid "The Renderer Class"
+msgstr ""
+
+#: ../../source/references_scenes.md:267
+msgid ""
+"**Key difference from v1**: scenes call `r.get_grid(\"sm\")`, "
+"`r.get_grid(\"lg\")`, etc. to access multiple grids. Each grid is lazy-"
+"initialized and cached. The `set_grid()` method still works for single-"
+"grid scenes."
+msgstr ""
+
+#: ../../source/references_scenes.md:269
+msgid "Minimal Scene (Single Grid)"
+msgstr ""
+
+#: ../../source/references_scenes.md:280
+msgid "Standard Scene (Two Grids + Blend)"
+msgstr ""
+
+#: ../../source/references_scenes.md:297
+msgid "Complex Scene (Three Grids + Conditional + Custom Rendering)"
+msgstr ""
+
+#: ../../source/references_scenes.md:359
+msgid "Scene with Custom Character Rendering (Matrix Rain)"
+msgstr ""
+
+#: ../../source/references_scenes.md:361
+msgid "When you need per-cell control beyond what `_render_vf()` provides:"
+msgstr ""
+
+#: ../../source/references_scenes.md:409
+msgid "Scene Table"
+msgstr ""
+
+#: ../../source/references_scenes.md:411
+msgid ""
+"The scene table defines the timeline: which scene plays when, with what "
+"configuration."
+msgstr ""
+
+#: ../../source/references_scenes.md:413
+msgid "Structure"
+msgstr ""
+
+#: ../../source/references_scenes.md:451
+msgid "Beat-Synced Scene Cutting"
+msgstr ""
+
+#: ../../source/references_scenes.md:453
+msgid "Derive cut points from audio analysis:"
+msgstr ""
+
+#: ../../source/references_scenes.md:470
+msgid "`render_clip()` — The Render Loop"
+msgstr ""
+
+#: ../../source/references_scenes.md:472
+msgid "This function renders one scene to a clip file:"
+msgstr ""
+
+#: ../../source/references_scenes.md:525
+msgid "Building Segments from Scene Table"
+msgstr ""
+
+#: ../../source/references_scenes.md:543
+msgid "Parallel Rendering"
+msgstr ""
+
+#: ../../source/references_scenes.md:545
+msgid "Scenes are independent units dispatched to a process pool:"
+msgstr ""
+
+#: ../../source/references_scenes.md:562
+msgid ""
+"**Pickling constraint**: `ProcessPoolExecutor` serializes arguments via "
+"pickle. Module-level functions can be pickled; lambdas and closures "
+"cannot. All `fx_*` scene functions MUST be defined at module level, not "
+"as closures or class methods."
+msgstr ""
+
+#: ../../source/references_scenes.md:564
+msgid "Test-Frame Mode"
+msgstr ""
+
+#: ../../source/references_scenes.md:566
+msgid ""
+"Render a single frame at a specific timestamp to verify visuals without a"
+" full render:"
+msgstr ""
+
+#: ../../source/references_scenes.md:586
+msgid "CLI: `python reel.py --test-frame 10.0`"
+msgstr ""
+
+#: ../../source/references_scenes.md:590
+msgid "Scene Design Checklist"
+msgstr ""
+
+#: ../../source/references_scenes.md:592
+msgid "For each scene:"
+msgstr ""
+
+#: ../../source/references_scenes.md:594
+msgid "**Choose 2-3 grid sizes** — different scales create interference"
+msgstr ""
+
+#: ../../source/references_scenes.md:595
+msgid ""
+"**Choose different value fields** per layer — don't use the same effect "
+"on every grid"
+msgstr ""
+
+#: ../../source/references_scenes.md:596
+msgid ""
+"**Choose different hue fields** per layer — or at minimum different hue "
+"offsets"
+msgstr ""
+
+#: ../../source/references_scenes.md:597
+msgid ""
+"**Choose different palettes** per layer — mixing PAL_RUNE with PAL_BLOCKS"
+" looks different from PAL_RUNE with PAL_DENSE"
+msgstr ""
+
+#: ../../source/references_scenes.md:598
+msgid ""
+"**Choose a blend mode** that matches the energy — screen for bright, "
+"difference for psychedelic, exclusion for subtle"
+msgstr ""
+
+#: ../../source/references_scenes.md:599
+msgid "**Add conditional effects** on beat — kaleidoscope, mirror, glitch"
+msgstr ""
+
+#: ../../source/references_scenes.md:600
+msgid ""
+"**Configure feedback** for trailing/recursive looks — or None for clean "
+"cuts"
+msgstr ""
+
+#: ../../source/references_scenes.md:601
+msgid "**Set gamma** if using destructive shaders (solarize, posterize)"
+msgstr ""
+
+#: ../../source/references_scenes.md:602
+msgid "**Test with --test-frame** at the scene's midpoint before full render"
+msgstr ""
+
+#: ../../source/references_scenes.md:606
+msgid "Scene Examples"
+msgstr ""
+
+#: ../../source/references_scenes.md:608
+msgid ""
+"Copy-paste-ready scene functions at increasing complexity. Each is a "
+"complete, working v2 scene function that returns a pixel canvas. See the "
+"Scene Protocol section above for the scene protocol and `composition.md` "
+"for blend modes and tonemap."
+msgstr ""
+
+#: ../../source/references_scenes.md:612
+msgid "Minimal — Single Grid, Single Effect"
+msgstr ""
+
+#: ../../source/references_scenes.md:614
+msgid "Breathing Plasma"
+msgstr ""
+
+#: ../../source/references_scenes.md:616
+msgid "One grid, one value field, one hue field. The simplest possible scene."
+msgstr ""
+
+#: ../../source/references_scenes.md:627
+msgid "Reaction-Diffusion Coral"
+msgstr ""
+
+#: ../../source/references_scenes.md:629
+msgid "Single grid, simulation-based field. Evolves organically over time."
+msgstr ""
+
+#: ../../source/references_scenes.md:642
+msgid "SDF Geometry"
+msgstr ""
+
+#: ../../source/references_scenes.md:644
+msgid "Geometric shapes from SDFs. Clean, precise, graphic."
+msgstr ""
+
+#: ../../source/references_scenes.md:661
+msgid "Standard — Two Grids + Blend"
+msgstr ""
+
+#: ../../source/references_scenes.md:663
+msgid "Tunnel Through Noise"
+msgstr ""
+
+#: ../../source/references_scenes.md:665
+msgid ""
+"Two grids at different densities, screen blended. The fine noise texture "
+"shows through the coarser tunnel characters."
+msgstr ""
+
+#: ../../source/references_scenes.md:681
+msgid "Voronoi Cells + Spiral Overlay"
+msgstr ""
+
+#: ../../source/references_scenes.md:683
+msgid "Voronoi cell edges with a spiral arm pattern overlaid."
+msgstr ""
+
+#: ../../source/references_scenes.md:700
+msgid "Domain-Warped fBM"
+msgstr ""
+
+#: ../../source/references_scenes.md:702
+msgid ""
+"Two layers of the same fBM, one domain-warped, difference-blended for "
+"psychedelic organic texture."
+msgstr ""
+
+#: ../../source/references_scenes.md:721
+msgid "Complex — Three Grids + Conditional + Feedback"
+msgstr ""
+
+#: ../../source/references_scenes.md:723
+msgid "Psychedelic Cathedral"
+msgstr ""
+
+#: ../../source/references_scenes.md:725
+msgid ""
+"Three-grid composition with beat-triggered kaleidoscope and feedback zoom"
+" tunnel. The most visually complex pattern."
+msgstr ""
+
+#: ../../source/references_scenes.md:766
+msgid "Masked Reaction-Diffusion with Attractor Overlay"
+msgstr ""
+
+#: ../../source/references_scenes.md:768
+msgid ""
+"Reaction-diffusion visible only through an animated iris mask, with a "
+"strange attractor density field underneath."
+msgstr ""
+
+#: ../../source/references_scenes.md:807
+msgid "Morphing Field Sequence with Eased Keyframes"
+msgstr ""
+
+#: ../../source/references_scenes.md:809
+msgid ""
+"Demonstrates temporal coherence: smooth morphing between effects with "
+"keyframed parameters."
+msgstr ""
+
+#: ../../source/references_scenes.md:847
+msgid "Specialized — Unique State Patterns"
+msgstr ""
+
+#: ../../source/references_scenes.md:849
+msgid "Game of Life with Ghost Trails"
+msgstr ""
+
+#: ../../source/references_scenes.md:851
+msgid "Cellular automaton with analog fade trails. Beat injects random cells."
+msgstr ""
+
+#: ../../source/references_scenes.md:871
+msgid "Boids Flock Over Voronoi"
+msgstr ""
+
+#: ../../source/references_scenes.md:873
+msgid "Emergent swarm movement over a cellular background."
+msgstr ""
+
+#: ../../source/references_scenes.md:902
+msgid "Fire Rising Through SDF Text Stencil"
+msgstr ""
+
+#: ../../source/references_scenes.md:904
+msgid "Fire effect visible only through text letterforms."
+msgstr ""
+
+#: ../../source/references_scenes.md:936
+msgid "Portrait Mode: Vertical Rain + Quote"
+msgstr ""
+
+#: ../../source/references_scenes.md:938
+msgid ""
+"Optimized for 9:16. Uses vertical space for long rain trails and stacked "
+"text."
+msgstr ""
+
+#: ../../source/references_scenes.md:980
+msgid "Scene Table Template"
+msgstr ""
+
+#: ../../source/references_scenes.md:982
+msgid "Wire scenes into a complete video:"
+msgstr ""
+

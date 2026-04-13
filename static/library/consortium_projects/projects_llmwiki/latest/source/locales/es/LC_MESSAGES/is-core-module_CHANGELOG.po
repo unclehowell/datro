@@ -1,0 +1,790 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/is-core-module_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres"
+" to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:8
+msgid ""
+"[v2.16.1](https://github.com/inspect-js/is-core-"
+"module/compare/v2.16.0...v2.16.1) - 2024-12-21"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:10
+msgid "Fixed"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:12
+msgid ""
+"[Fix] `node:sqlite` is available in node ^22.13 "
+"[`#17`](https://github.com/inspect-js/is-core-module/issues/17)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:14
+msgid ""
+"[v2.16.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.15.1...v2.16.0) - 2024-12-13"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:16
+#: ../../source/is-core-module_CHANGELOG.md:23
+#: ../../source/is-core-module_CHANGELOG.md:33
+#: ../../source/is-core-module_CHANGELOG.md:39
+#: ../../source/is-core-module_CHANGELOG.md:48
+#: ../../source/is-core-module_CHANGELOG.md:55
+#: ../../source/is-core-module_CHANGELOG.md:62
+#: ../../source/is-core-module_CHANGELOG.md:68
+#: ../../source/is-core-module_CHANGELOG.md:77
+#: ../../source/is-core-module_CHANGELOG.md:85
+#: ../../source/is-core-module_CHANGELOG.md:92
+#: ../../source/is-core-module_CHANGELOG.md:101
+#: ../../source/is-core-module_CHANGELOG.md:111
+#: ../../source/is-core-module_CHANGELOG.md:119
+#: ../../source/is-core-module_CHANGELOG.md:129
+#: ../../source/is-core-module_CHANGELOG.md:138
+#: ../../source/is-core-module_CHANGELOG.md:145
+#: ../../source/is-core-module_CHANGELOG.md:155
+#: ../../source/is-core-module_CHANGELOG.md:170
+#: ../../source/is-core-module_CHANGELOG.md:180
+#: ../../source/is-core-module_CHANGELOG.md:187
+#: ../../source/is-core-module_CHANGELOG.md:203
+#: ../../source/is-core-module_CHANGELOG.md:209
+#: ../../source/is-core-module_CHANGELOG.md:216
+msgid "Commits"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:18
+msgid ""
+"[New] add `node:sqlite` [`1ee94d2`](https://github.com/inspect-js/is-"
+"core-module/commit/1ee94d20857e22cdb24e9b4bb1a2097f2e03e26f)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:19
+msgid ""
+"[Dev Deps] update `auto-changelog`, `tape` [`aa84aa3`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/aa84aa34face677f14e08ec1c737f0c4bba27260)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:21
+msgid ""
+"[v2.15.1](https://github.com/inspect-js/is-core-"
+"module/compare/v2.15.0...v2.15.1) - 2024-08-21"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:25
+msgid ""
+"[Tests] add `process.getBuiltinModule` tests "
+"[`28c7791`](https://github.com/inspect-js/is-core-"
+"module/commit/28c7791c196d58c64cfdf638b7e68ed1b62a4da0)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:26
+msgid ""
+"[Fix] `test/mock_loader` is no longer exposed as of v22.7 "
+"[`68b08b0`](https://github.com/inspect-js/is-core-"
+"module/commit/68b08b0d7963447dbffa5142e8810dca550383af)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:27
+msgid ""
+"[Tests] replace `aud` with `npm audit` [`32f8060`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/32f806026dac14f9016be4401a643851240c76b9)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:28
+msgid ""
+"[Dev Deps] update `mock-property` [`f7d3c8f`](https://github.com/inspect-"
+"js/is-core-module/commit/f7d3c8f01e922be49621683eb41477c4f50522e1)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:29
+msgid ""
+"[Dev Deps] add missing peer dep [`eaee885`](https://github.com/inspect-js"
+"/is-core-module/commit/eaee885b67238819e9c8ed5bd2098766e1d05331)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:31
+msgid ""
+"[v2.15.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.14.0...v2.15.0) - 2024-07-17"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:35
+msgid ""
+"[New] add `node:sea` [`2819fb3`](https://github.com/inspect-js/is-core-"
+"module/commit/2819fb3eae312fa64643bc5430ebd06ec0f3fb88)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:37
+msgid ""
+"[v2.14.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.13.1...v2.14.0) - 2024-06-20"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:41
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config`, `aud`, `mock-property`, "
+"`npmignore`, `tape` [`0e43200`](https://github.com/inspect-js/is-core-"
+"module/commit/0e432006d97237cc082d41e6a593e87c81068364)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:42
+msgid ""
+"[meta] add missing `engines.node` [`4ea3af8`](https://github.com/inspect-"
+"js/is-core-module/commit/4ea3af88891a1d4f96026f0ec0ef08c67cd1bd24)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:43
+msgid ""
+"[New] add `test/mock_loader` [`e9fbd29`](https://github.com/inspect-js"
+"/is-core-module/commit/e9fbd2951383be070aeffb9ebbf3715237282610)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:44
+msgid ""
+"[Deps] update `hasown` [`57f1940`](https://github.com/inspect-js/is-core-"
+"module/commit/57f1940947b3e368abdf529232d2f17d88909358)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:46
+msgid ""
+"[v2.13.1](https://github.com/inspect-js/is-core-"
+"module/compare/v2.13.0...v2.13.1) - 2023-10-20"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:50
+msgid ""
+"[Refactor] use `hasown` instead of `has` [`0e52096`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/0e520968b0a725276b67420ab4b877486b243ae0)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:51
+msgid ""
+"[Dev Deps] update `mock-property`, `tape` [`8736b35`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/8736b35464d0f297b55da2c6b30deee04b8303c5)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:53
+msgid ""
+"[v2.13.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.12.1...v2.13.0) - 2023-08-05"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:57
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config`, `aud`, `semver`, `tape` "
+"[`c75b263`](https://github.com/inspect-js/is-core-"
+"module/commit/c75b263d047cb53430c3970107e5eb64d6cd6c0c)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:58
+msgid ""
+"[New] `node:test/reporters` and `wasi`/`node:wasi` are in v18.17 "
+"[`d76cbf8`](https://github.com/inspect-js/is-core-"
+"module/commit/d76cbf8e9b208acfd98913fed5a5f45cb15fe5dc)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:60
+msgid ""
+"[v2.12.1](https://github.com/inspect-js/is-core-"
+"module/compare/v2.12.0...v2.12.1) - 2023-05-16"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:64
+msgid ""
+"[Fix] `test/reporters` now requires the `node:` prefix as of v20.2 "
+"[`12183d0`](https://github.com/inspect-js/is-core-"
+"module/commit/12183d0d8e4edf56b6ce18a1b3be54bfce10175b)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:66
+msgid ""
+"[v2.12.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.11.0...v2.12.0) - 2023-04-10"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:70
+msgid ""
+"[actions] update rebase action to use reusable workflow "
+"[`c0a7251`](https://github.com/inspect-js/is-core-"
+"module/commit/c0a7251f734f3c621932c5fcdfd1bf966b42ca32)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:71
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config`, `aud`, `tape` "
+"[`9ae8b7f`](https://github.com/inspect-js/is-core-"
+"module/commit/9ae8b7fac03c369861d0991b4a2ce8d4848e6a7d)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:72
+msgid ""
+"[New] `test/reporters` added in v19.9, `wasi` added in v20 "
+"[`9d5341a`](https://github.com/inspect-js/is-core-"
+"module/commit/9d5341ab32053f25b7fa7db3c0e18461db24a79c)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:73
+msgid ""
+"[Dev Deps] add missing `in-publish` dep [`5980245`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/59802456e9ac919fa748f53be9d8fbf304a197df)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:75
+msgid ""
+"[v2.11.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.10.0...v2.11.0) - 2022-10-18"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:79
+msgid ""
+"[meta] use `npmignore` to autogenerate an npmignore file "
+"[`3360011`](https://github.com/inspect-js/is-core-"
+"module/commit/33600118857b46177178072fba2affcdeb009d12)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:80
+msgid ""
+"[Dev Deps] update `aud`, `tape` [`651c6b0`](https://github.com/inspect-js"
+"/is-core-module/commit/651c6b0cc2799d4130866cf43ad333dcade3d26c)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:81
+msgid ""
+"[New] `inspector/promises` and `node:inspector/promises` is now available"
+" in node 19 [`22d332f`](https://github.com/inspect-js/is-core-"
+"module/commit/22d332fe22ac050305444e0781ff85af819abcb0)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:83
+msgid ""
+"[v2.10.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.9.0...v2.10.0) - 2022-08-03"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:87
+msgid ""
+"[New] `node:test` is now available in node ^16.17 "
+"[`e8fd36e`](https://github.com/inspect-js/is-core-"
+"module/commit/e8fd36e9b86c917775a07cc473b62a3294f459f2)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:88
+msgid ""
+"[Tests] improve skip message [`c014a4c`](https://github.com/inspect-js"
+"/is-core-module/commit/c014a4c0cd6eb15fff573ae4709191775e70cab4)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:90
+msgid ""
+"[v2.9.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.8.1...v2.9.0) - 2022-04-19"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:94
+msgid ""
+"[New] add `node:test`, in node 18+ [`f853eca`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/f853eca801d0a7d4e1dbb670f1b6d9837d9533c5)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:95
+msgid ""
+"[Tests] use `mock-property` [`03b3644`](https://github.com/inspect-js/is-"
+"core-module/commit/03b3644dff4417f4ba5a7d0aa0138f5f6b3e5c46)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:96
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `auto-"
+"changelog`, `tape` [`7c0e2d0`](https://github.com/inspect-js/is-core-"
+"module/commit/7c0e2d06ed2a89acf53abe2ab34d703ed5b03455)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:97
+msgid ""
+"[meta] simplify \"exports\" [`d6ed201`](https://github.com/inspect-js/is-"
+"core-module/commit/d6ed201eba7fbba0e59814a9050fc49a6e9878c8)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:99
+msgid ""
+"[v2.8.1](https://github.com/inspect-js/is-core-"
+"module/compare/v2.8.0...v2.8.1) - 2022-01-05"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:103
+msgid ""
+"[actions] reuse common workflows [`cd2cf9b`](https://github.com/inspect-"
+"js/is-core-module/commit/cd2cf9b3b66c8d328f65610efe41e9325db7716d)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:104
+msgid ""
+"[Fix] update node 0.4 results [`062195d`](https://github.com/inspect-js"
+"/is-core-module/commit/062195d89f0876a88b95d378b43f7fcc1205bc5b)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:105
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `safe-publish-"
+"latest`, `tape` [`0790b62`](https://github.com/inspect-js/is-core-"
+"module/commit/0790b6222848c6167132f9f73acc3520fa8d1298)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:106
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `tape` "
+"[`7d139a6`](https://github.com/inspect-js/is-core-"
+"module/commit/7d139a6d767709eabf0a0251e074ec1fb230c06e)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:107
+msgid ""
+"[Tests] run `nyc` in `tests-only`, not `test` "
+"[`780e8a0`](https://github.com/inspect-js/is-core-"
+"module/commit/780e8a049951c71cf78b1707f0871c48a28bde14)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:109
+msgid ""
+"[v2.8.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.7.0...v2.8.0) - 2021-10-14"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:113
+msgid ""
+"[actions] update codecov uploader [`0cfe94e`](https://github.com/inspect-"
+"js/is-core-module/commit/0cfe94e106a7d005ea03e008c0a21dec13a77904)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:114
+msgid ""
+"[New] add `readline/promises` to node v17+ [`4f78c30`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/4f78c3008b1b58b4db6dc91d99610b1bc859da7e)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:115
+msgid ""
+"[Tests] node ^14.18 supports `node:` prefixes for CJS "
+"[`43e2f17`](https://github.com/inspect-js/is-core-"
+"module/commit/43e2f177452cea2f0eaf34f61b5407217bbdb6f4)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:117
+msgid ""
+"[v2.7.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.6.0...v2.7.0) - 2021-09-27"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:121
+msgid ""
+"[New] node `v14.18` added `node:`-prefixed core modules to `require` "
+"[`6d943ab`](https://github.com/inspect-js/is-core-"
+"module/commit/6d943abe81382b9bbe344384d80fbfebe1cc0526)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:122
+msgid ""
+"[Tests] add coverage for Object.prototype pollution "
+"[`c6baf5f`](https://github.com/inspect-js/is-core-"
+"module/commit/c6baf5f942311a1945c1af41167bb80b84df2af7)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:123
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config` [`6717f00`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/6717f000d063ea57beb772bded36c2f056ac404c)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:124
+msgid ""
+"[eslint] fix linter warning [`594c10b`](https://github.com/inspect-js/is-"
+"core-module/commit/594c10bb7d39d7eb00925c90924199ff596184b2)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:125
+msgid ""
+"[meta] add `sideEffects` flag [`c32cfa5`](https://github.com/inspect-js"
+"/is-core-module/commit/c32cfa5195632944c4dd4284a142b8476e75be13)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:127
+msgid ""
+"[v2.6.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.5.0...v2.6.0) - 2021-08-17"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:131
+msgid ""
+"[Dev Deps] update `eslint`, `tape` [`6cc928f`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/6cc928f8a4bba66aeeccc4f6beeac736d4bd3081)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:132
+msgid ""
+"[New] add `stream/consumers` to node `&gt;= 16.7` "
+"[`a1a423e`](https://github.com/inspect-js/is-core-"
+"module/commit/a1a423e467e4cc27df180234fad5bab45943e67d)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:133
+msgid ""
+"[Refactor] Remove duplicated `&&` operand [`86faea7`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/86faea738213a2433c62d1098488dc9314dca832)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:134
+msgid ""
+"[Tests] include prereleases [`a4da7a6`](https://github.com/inspect-js/is-"
+"core-module/commit/a4da7a6abf7568e2aa4fd98e69452179f1850963)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:136
+msgid ""
+"[v2.5.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.4.0...v2.5.0) - 2021-07-12"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:140
+msgid ""
+"[Dev Deps] update `auto-changelog`, `eslint` "
+"[`6334cc9`](https://github.com/inspect-js/is-core-"
+"module/commit/6334cc94f3af7469685bd8f236740991baaf2705)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:141
+msgid ""
+"[New] add `stream/web` to node v16.5+ [`17ac59b`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/17ac59b662d63e220a2e5728625f005c24f177b2)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:143
+msgid ""
+"[v2.4.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.3.0...v2.4.0) - 2021-05-09"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:147
+msgid ""
+"[readme] add actions and codecov badges [`82b7faa`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/82b7faa12b56dbe47fbea67e1a5b9e447027ba40)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:148
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config`, `aud` "
+"[`8096868`](https://github.com/inspect-js/is-core-"
+"module/commit/8096868c024a161ccd4d44110b136763e92eace8)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:149
+msgid ""
+"[Dev Deps] update `eslint` [`6726824`](https://github.com/inspect-js/is-"
+"core-module/commit/67268249b88230018c510f6532a8046d7326346f)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:150
+msgid ""
+"[New] add `diagnostics_channel` to node `^14.17` "
+"[`86c6563`](https://github.com/inspect-js/is-core-"
+"module/commit/86c65634201b8ff9b3e48a9a782594579c7f5c3c)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:151
+msgid ""
+"[meta] fix prepublish script [`697a01e`](https://github.com/inspect-js"
+"/is-core-module/commit/697a01e3c9c0be074066520954f30fb28532ec57)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:153
+msgid ""
+"[v2.3.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.2.0...v2.3.0) - 2021-04-24"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:157
+msgid ""
+"[meta] do not publish github action workflow files "
+"[`060d4bb`](https://github.com/inspect-js/is-core-"
+"module/commit/060d4bb971a29451c19ff336eb56bee27f9fa95a)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:158
+msgid ""
+"[New] add support for `node:` prefix, in node 16+ "
+"[`7341223`](https://github.com/inspect-js/is-core-"
+"module/commit/73412230a769f6e81c05eea50b6520cebf54ed2f)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:159
+msgid ""
+"[actions] use `node/install` instead of `node/run`; use `codecov` action "
+"[`016269a`](https://github.com/inspect-js/is-core-"
+"module/commit/016269abae9f6657a5254adfbb813f09a05067f9)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:160
+msgid ""
+"[patch] remove unneeded `.0` in version ranges "
+"[`cb466a6`](https://github.com/inspect-js/is-core-"
+"module/commit/cb466a6d89e52b8389e5c12715efcd550c41cea3)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:161
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `tape` "
+"[`c9f9c39`](https://github.com/inspect-js/is-core-"
+"module/commit/c9f9c396ace60ef81906f98059c064e6452473ed)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:162
+msgid ""
+"[actions] update workflows [`3ee4a89`](https://github.com/inspect-js/is-"
+"core-module/commit/3ee4a89fd5a02fccd43882d905448ea6a98e9a3c)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:163
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config` "
+"[`dee4fed`](https://github.com/inspect-js/is-core-"
+"module/commit/dee4fed79690c1d43a22f7fa9426abebdc6d727f)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:164
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config` "
+"[`7d046ba`](https://github.com/inspect-js/is-core-"
+"module/commit/7d046ba07ae8c9292e43652694ca808d7b309de8)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:165
+msgid ""
+"[meta] use `prepublishOnly` script for npm 7+ "
+"[`149e677`](https://github.com/inspect-js/is-core-"
+"module/commit/149e6771a5ede6d097e71785b467a9c4b4977cc7)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:166
+msgid ""
+"[readme] remove travis badge [`903b51d`](https://github.com/inspect-js"
+"/is-core-module/commit/903b51d6b69b98abeabfbc3695c345b02646f19c)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:168
+msgid ""
+"[v2.2.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.1.0...v2.2.0) - 2020-11-26"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:172
+msgid ""
+"[Tests] migrate tests to Github Actions [`c919f57`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/c919f573c0a92d10a0acad0b650b5aecb033d426)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:173
+#, python-format
+msgid ""
+"[patch] `core.json`: %s/    /\\t/g [`db3f685`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/db3f68581f53e73cc09cd675955eb1bdd6a5a39b)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:174
+msgid ""
+"[Tests] run `nyc` on all tests [`b2f925f`](https://github.com/inspect-js"
+"/is-core-module/commit/b2f925f8866f210ef441f39fcc8cc42692ab89b1)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:175
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`; add `safe-"
+"publish-latest` [`89f02a2`](https://github.com/inspect-js/is-core-"
+"module/commit/89f02a2b4162246dea303a6ee31bb9a550b05c72)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:176
+msgid ""
+"[New] add `path/posix`, `path/win32`, `util/types` "
+"[`77f94f1`](https://github.com/inspect-js/is-core-"
+"module/commit/77f94f1e90ffd7c0be2a3f1aa8574ebf7fd981b3)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:178
+msgid ""
+"[v2.1.0](https://github.com/inspect-js/is-core-"
+"module/compare/v2.0.0...v2.1.0) - 2020-11-04"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:182
+msgid ""
+"[Dev Deps] update `eslint` [`5e0034e`](https://github.com/inspect-js/is-"
+"core-module/commit/5e0034eae57c09c8f1bd769f502486a00f56c6e4)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:183
+msgid ""
+"[New] Add `diagnostics_channel` [`c2d83d0`](https://github.com/inspect-js"
+"/is-core-module/commit/c2d83d0a0225a1a658945d9bab7036ea347d29ec)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:185
+msgid ""
+"[v2.0.0](https://github.com/inspect-js/is-core-"
+"module/compare/v1.0.2...v2.0.0) - 2020-09-29"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:189
+msgid ""
+"v2 implementation [`865aeb5`](https://github.com/inspect-js/is-core-"
+"module/commit/865aeb5ca0e90248a3dfff5d7622e4751fdeb9cd)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:190
+msgid ""
+"Only apps should have lockfiles [`5a5e660`](https://github.com/inspect-js"
+"/is-core-module/commit/5a5e660d568e37eb44e17fb1ebb12a105205fc2b)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:191
+msgid ""
+"Initial commit for v2 [`5a51524`](https://github.com/inspect-js/is-core-"
+"module/commit/5a51524e06f92adece5fbb138c69b7b9748a2348)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:192
+msgid ""
+"Tests [`116eae4`](https://github.com/inspect-js/is-core-"
+"module/commit/116eae4fccd01bc72c1fd3cc4b7561c387afc496)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:193
+msgid ""
+"[meta] add `auto-changelog` [`c24388b`](https://github.com/inspect-js/is-"
+"core-module/commit/c24388bee828d223040519d1f5b226ca35beee63)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:194
+msgid ""
+"[actions] add \"Automatic Rebase\" and \"require allow edits\" actions "
+"[`34292db`](https://github.com/inspect-js/is-core-"
+"module/commit/34292dbcbadae0868aff03c22dbd8b7b8a11558a)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:195
+msgid ""
+"[Tests] add `npm run lint` [`4f9eeee`](https://github.com/inspect-js/is-"
+"core-module/commit/4f9eeee7ddff10698bbf528620f4dc8d4fa3e697)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:196
+msgid ""
+"[readme] fix travis badges, https all URLs [`e516a73`](https://github.com"
+"/inspect-js/is-core-"
+"module/commit/e516a73b0dccce20938c432b1ba512eae8eff9e9)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:197
+msgid ""
+"[meta] create FUNDING.yml [`1aabebc`](https://github.com/inspect-js/is-"
+"core-module/commit/1aabebca98d01f8a04e46bc2e2520fa93cf21ac6)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:198
+msgid ""
+"[Fix] `domain`: domain landed sometime &gt; v0.7.7 and &lt;= v0.7.12 "
+"[`2df7d37`](https://github.com/inspect-js/is-core-"
+"module/commit/2df7d37595d41b15eeada732b706b926c2771655)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:199
+msgid ""
+"[Fix] `sys`: worked in 0.6, not 0.7, and 0.8+ "
+"[`a75c134`](https://github.com/inspect-js/is-core-"
+"module/commit/a75c134229e1e9441801f6b73f6a52489346eb65)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:201
+msgid ""
+"[v1.0.2](https://github.com/inspect-js/is-core-"
+"module/compare/v1.0.1...v1.0.2) - 2014-09-28"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:205
+msgid ""
+"simpler [`66fe90f`](https://github.com/inspect-js/is-core-"
+"module/commit/66fe90f9771581b9adc0c3900baa52c21b5baea2)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:207
+msgid ""
+"[v1.0.1](https://github.com/inspect-js/is-core-"
+"module/compare/v1.0.0...v1.0.1) - 2014-09-28"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:211
+msgid ""
+"remove stupid [`f21f906`](https://github.com/inspect-js/is-core-"
+"module/commit/f21f906f882c2bd656a5fc5ed6fbe48ddaffb2ac)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:212
+msgid ""
+"update readme [`1eff0ec`](https://github.com/inspect-js/is-core-"
+"module/commit/1eff0ec69798d1ec65771552d1562911e90a8027)"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:214
+msgid "v1.0.0 - 2014-09-28"
+msgstr ""
+
+#: ../../source/is-core-module_CHANGELOG.md:218
+msgid ""
+"init [`48e5e76`](https://github.com/inspect-js/is-core-"
+"module/commit/48e5e76cac378fddb8c1f7d4055b8dfc943d6b96)"
+msgstr ""
+

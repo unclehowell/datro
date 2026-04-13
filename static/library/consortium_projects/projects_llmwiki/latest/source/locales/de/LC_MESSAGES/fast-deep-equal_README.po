@@ -1,0 +1,159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/fast-deep-equal_README.md:1
+msgid "fast-deep-equal"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:2
+msgid "The fastest deep equal with ES6 Map, Set and Typed arrays support."
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:4
+msgid ""
+"[![Build Status](https://travis-ci.org/epoberezkin/fast-deep-"
+"equal.svg?branch=master)](https://travis-ci.org/epoberezkin/fast-deep-"
+"equal) [![npm](https://img.shields.io/npm/v/fast-deep-"
+"equal.svg)](https://www.npmjs.com/package/fast-deep-equal) [![Coverage "
+"Status](https://coveralls.io/repos/github/epoberezkin/fast-deep-"
+"equal/badge.svg?branch=master)](https://coveralls.io/github/epoberezkin"
+"/fast-deep-equal?branch=master)"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:4
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:4
+msgid "npm"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:4
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:9
+msgid "Install"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:16
+msgid "Features"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:18
+msgid "ES5 compatible"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:19
+msgid "works in node.js (8+) and browsers (IE9+)"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:20
+msgid "checks equality of Date and RegExp objects by value."
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:22
+msgid "ES6 equal (`require('fast-deep-equal/es6')`) also supports:"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:23
+msgid "Maps"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:24
+msgid "Sets"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:25
+msgid "Typed arrays"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:28
+msgid "Usage"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:35
+msgid "To support ES6 Maps, Sets and Typed arrays equality use:"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:42
+msgid ""
+"To use with React (avoiding the traversal of React elements' _owner "
+"property that contains circular references and is not needed when "
+"comparing the elements - borrowed from [react-fast-"
+"compare](https://github.com/FormidableLabs/react-fast-compare)):"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:52
+msgid "Performance benchmark"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:54
+msgid "Node.js v12.6.0:"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:73
+msgid "To run benchmark (requires node.js 6+):"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:79
+msgid ""
+"__Please note__: this benchmark runs against the available test cases. To"
+" choose the most performant library for your application, it is "
+"recommended to benchmark against your data and to NOT expect this "
+"benchmark to reflect the performance difference in your application."
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:82
+msgid "Enterprise support"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:84
+msgid ""
+"fast-deep-equal package is a part of [Tidelift enterprise "
+"subscription](https://tidelift.com/subscription/pkg/npm-fast-deep-"
+"equal?utm_source=npm-fast-deep-"
+"equal&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) - it "
+"provides a centralised commercial support to open-source software users, "
+"in addition to the support provided by software maintainers."
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:87
+msgid "Security contact"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:89
+msgid ""
+"To report a security vulnerability, please use the [Tidelift security "
+"contact](https://tidelift.com/security). Tidelift will coordinate the fix"
+" and disclosure. Please do NOT report security vulnerability via GitHub "
+"issues."
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:94
+msgid "License"
+msgstr ""
+
+#: ../../source/fast-deep-equal_README.md:96
+msgid "[MIT](https://github.com/epoberezkin/fast-deep-equal/blob/master/LICENSE)"
+msgstr ""
+

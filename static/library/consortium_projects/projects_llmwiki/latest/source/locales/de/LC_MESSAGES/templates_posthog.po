@@ -1,0 +1,1452 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_posthog.md:1
+msgid "Design System: PostHog"
+msgstr ""
+
+#: ../../source/templates_posthog.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_posthog.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_posthog.md:7
+msgid "**Primary:** `Inter` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_posthog.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_posthog.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_posthog.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_posthog.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_posthog.md:18
+msgid ""
+"PostHog's website feels like a startup's internal wiki that escaped into "
+"the wild — warm, irreverent, and deliberately anti-corporate. The "
+"background isn't the expected crisp white or dark void of developer "
+"tools; it's a warm, sage-tinted cream (`#fdfdf8`) that gives every "
+"surface a handmade, paper-like quality. Colors lean into earthy olive "
+"greens and muted sage rather than the conventional blues and purples of "
+"the SaaS world. It's as if someone designed a developer analytics "
+"platform inside a cozy garden shed."
+msgstr ""
+
+#: ../../source/templates_posthog.md:20
+msgid ""
+"The personality is the star: hand-drawn hedgehog illustrations, quirky "
+"action figures, and playful imagery replace the stock photography and "
+"abstract gradients typical of B2B SaaS. IBM Plex Sans Variable serves as "
+"the typographic foundation — a font with genuine technical credibility "
+"(created by IBM, widely used in developer contexts) deployed here with "
+"bold weights (700, 800) on headings and generous line-heights on body "
+"text. The typography says \"we're serious engineers\" while everything "
+"around it says \"but we don't take ourselves too seriously.\""
+msgstr ""
+
+#: ../../source/templates_posthog.md:22
+msgid ""
+"The interaction design carries the same spirit: hover states flash "
+"PostHog Orange (`#F54E00`) text — a hidden brand color that doesn't "
+"appear at rest but surprises on interaction. Dark near-black buttons "
+"(`#1e1f23`) use opacity reduction on hover rather than color shifts, and "
+"active states scale slightly. The border system uses sage-tinted grays "
+"(`#bfc1b7`) that harmonize with the olive text palette. Built on Tailwind"
+" CSS with Radix UI and shadcn/ui primitives, the technical foundation is "
+"modern and component-driven, but the visual output is stubbornly unique."
+msgstr ""
+
+#: ../../source/templates_posthog.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_posthog.md:25
+msgid ""
+"Warm sage/olive color palette instead of conventional blues — earthy and "
+"approachable"
+msgstr ""
+
+#: ../../source/templates_posthog.md:26
+msgid ""
+"IBM Plex Sans Variable font at bold weights (700/800) for headings with "
+"generous 1.50+ line-heights"
+msgstr ""
+
+#: ../../source/templates_posthog.md:27
+msgid ""
+"Hidden brand orange (`#F54E00`) that only appears on hover interactions —"
+" a delightful surprise"
+msgstr ""
+
+#: ../../source/templates_posthog.md:28
+msgid ""
+"Hand-drawn hedgehog illustrations and playful imagery — deliberately "
+"anti-corporate"
+msgstr ""
+
+#: ../../source/templates_posthog.md:29
+msgid ""
+"Sage-tinted borders (`#bfc1b7`) and backgrounds (`#eeefe9`) creating a "
+"unified warm-green system"
+msgstr ""
+
+#: ../../source/templates_posthog.md:30
+msgid "Dark near-black CTAs (`#1e1f23`) with opacity-based hover states"
+msgstr ""
+
+#: ../../source/templates_posthog.md:31
+msgid ""
+"Content-heavy editorial layout — the site reads like a magazine, not a "
+"typical landing page"
+msgstr ""
+
+#: ../../source/templates_posthog.md:32
+msgid "Tailwind CSS + Radix UI + shadcn/ui component architecture"
+msgstr ""
+
+#: ../../source/templates_posthog.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_posthog.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_posthog.md:37
+msgid ""
+"**Olive Ink** (`#4d4f46`): Primary text color — a distinctive olive-gray "
+"that gives all text a warm, earthy tone"
+msgstr ""
+
+#: ../../source/templates_posthog.md:38
+msgid ""
+"**Deep Olive** (`#23251d`): Link text and high-emphasis headings — near-"
+"black with green undertone"
+msgstr ""
+
+#: ../../source/templates_posthog.md:39
+msgid ""
+"**PostHog Orange** (`#F54E00`): Hidden brand accent — appears only on "
+"hover states, a vibrant orange that surprises"
+msgstr ""
+
+#: ../../source/templates_posthog.md:41
+msgid "Secondary & Accent"
+msgstr ""
+
+#: ../../source/templates_posthog.md:42
+msgid ""
+"**Amber Gold** (`#F7A501`): Secondary hover accent on dark buttons — warm"
+" gold that pairs with the orange"
+msgstr ""
+
+#: ../../source/templates_posthog.md:43
+msgid ""
+"**Gold Border** (`#b17816`): Special button borders — an amber-gold for "
+"featured CTAs"
+msgstr ""
+
+#: ../../source/templates_posthog.md:44
+msgid ""
+"**Focus Blue** (`#3b82f6`): Focus ring color (Tailwind default) — the "
+"only blue in the system, reserved for accessibility"
+msgstr ""
+
+#: ../../source/templates_posthog.md:46
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_posthog.md:47
+msgid ""
+"**Warm Parchment** (`#fdfdf8`): Primary page background — warm near-white"
+" with yellow-green undertone"
+msgstr ""
+
+#: ../../source/templates_posthog.md:48
+msgid ""
+"**Sage Cream** (`#eeefe9`): Input backgrounds, secondary surfaces — light"
+" sage tint"
+msgstr ""
+
+#: ../../source/templates_posthog.md:49
+msgid ""
+"**Light Sage** (`#e5e7e0`): Button backgrounds, tertiary surfaces — muted"
+" sage-green"
+msgstr ""
+
+#: ../../source/templates_posthog.md:50
+msgid ""
+"**Warm Tan** (`#d4c9b8`): Featured button backgrounds — warm tan/khaki "
+"for emphasis"
+msgstr ""
+
+#: ../../source/templates_posthog.md:51
+msgid "**Hover White** (`#f4f4f4`): Universal hover background state"
+msgstr ""
+
+#: ../../source/templates_posthog.md:53
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_posthog.md:54
+msgid "**Olive Ink** (`#4d4f46`): Primary body and UI text"
+msgstr ""
+
+#: ../../source/templates_posthog.md:55
+msgid ""
+"**Muted Olive** (`#65675e`): Secondary text, button labels on light "
+"backgrounds"
+msgstr ""
+
+#: ../../source/templates_posthog.md:56
+msgid ""
+"**Sage Placeholder** (`#9ea096`): Placeholder text, disabled states — "
+"warm sage-green"
+msgstr ""
+
+#: ../../source/templates_posthog.md:57
+msgid ""
+"**Sage Border** (`#bfc1b7`): Primary border color — olive-tinted gray for"
+" all borders"
+msgstr ""
+
+#: ../../source/templates_posthog.md:58
+msgid ""
+"**Light Border** (`#b6b7af`): Secondary border, toolbar borders — "
+"slightly darker sage"
+msgstr ""
+
+#: ../../source/templates_posthog.md:60
+msgid "Semantic & Accent"
+msgstr ""
+
+#: ../../source/templates_posthog.md:61
+msgid ""
+"**PostHog Orange** (`#F54E00`): Hover text accent — signals interactivity"
+" and brand personality"
+msgstr ""
+
+#: ../../source/templates_posthog.md:62
+msgid "**Amber Gold** (`#F7A501`): Dark button hover accent — warmth signal"
+msgstr ""
+
+#: ../../source/templates_posthog.md:63
+#, python-format
+msgid ""
+"**Focus Blue** (`#3b82f6` at 50% opacity): Keyboard focus rings — "
+"accessibility-only color"
+msgstr ""
+
+#: ../../source/templates_posthog.md:64
+msgid ""
+"**Dark Text** (`#111827`): High-contrast link text — near-black for "
+"important links"
+msgstr ""
+
+#: ../../source/templates_posthog.md:66
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_posthog.md:67
+msgid ""
+"No gradients on the marketing site — PostHog's visual language is "
+"deliberately flat and warm"
+msgstr ""
+
+#: ../../source/templates_posthog.md:68
+msgid ""
+"Depth is achieved through layered surfaces and border containment, not "
+"color transitions"
+msgstr ""
+
+#: ../../source/templates_posthog.md:70
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_posthog.md:72
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_posthog.md:73
+msgid ""
+"**Display & Body**: `IBM Plex Sans Variable` — variable font (100–700+ "
+"weight range). Fallbacks: `IBM Plex Sans, -apple-system, system-ui, "
+"Avenir Next, Avenir, Segoe UI, Helvetica Neue, Helvetica, Ubuntu, Roboto,"
+" Noto, Arial`"
+msgstr ""
+
+#: ../../source/templates_posthog.md:74
+msgid ""
+"**Monospace**: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "
+"Liberation Mono, Courier New` — system monospace stack"
+msgstr ""
+
+#: ../../source/templates_posthog.md:75
+msgid ""
+"**Code Display**: `Source Code Pro` — with fallbacks: `Menlo, Consolas, "
+"Monaco`"
+msgstr ""
+
+#: ../../source/templates_posthog.md:77
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "IBM Plex Sans Variable"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "30px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "800"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1.20"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "-0.75px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Extra-bold, tight, maximum impact"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "36px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "0px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Large but generous line-height"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Feature Heading"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "24px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Feature section titles"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Card Heading"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "21.4px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "-0.54px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Slightly unusual size (scaled)"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "20px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "-0.5px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Content sub-sections"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Sub-heading Uppercase"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Uppercase transform for labels"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Body Emphasis"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "19.3px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1.56"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "-0.48px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Semi-bold callout text"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Label Uppercase"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "18px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Uppercase category labels"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Body Semi"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Semi-bold body text"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "16px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Standard reading text"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Body Medium"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Medium-weight body"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Body Relaxed"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "15px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1.71"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Relaxed line-height for long reads"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Nav / UI"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Navigation and UI labels"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "14px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "400–700"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1.43"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Small text, various weights"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Small Label"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "13px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "500–700"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1.00–1.50"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Tags, badges, micro labels"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "12px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Smallest text, some uppercase"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Code"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Source Code Pro"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Code snippets and terminal"
+msgstr ""
+
+#: ../../source/templates_posthog.md:99
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_posthog.md:100
+msgid ""
+"**Bold heading dominance**: Headings use 700–800 weight — PostHog's "
+"typography is confident and assertive, not whispery"
+msgstr ""
+
+#: ../../source/templates_posthog.md:101
+msgid ""
+"**Generous body line-heights**: Body text at 1.50–1.71 line-height "
+"creates extremely comfortable reading — the site is content-heavy and "
+"optimized for long sessions"
+msgstr ""
+
+#: ../../source/templates_posthog.md:102
+msgid ""
+"**Fractional sizes**: Several sizes (21.4px, 19.3px, 13.7px) suggest a "
+"fluid/scaled type system rather than fixed stops — likely computed from "
+"Tailwind's rem scale at non-standard base"
+msgstr ""
+
+#: ../../source/templates_posthog.md:103
+msgid ""
+"**Uppercase as category signal**: Bold uppercase labels (18px–20px weight"
+" 700) are used for product category headings — a magazine-editorial "
+"convention"
+msgstr ""
+
+#: ../../source/templates_posthog.md:104
+msgid ""
+"**Selective negative tracking**: Letter-spacing tightens on display text "
+"(-0.75px at 30px) but relaxes to 0px on body — headlines compress, body "
+"breathes"
+msgstr ""
+
+#: ../../source/templates_posthog.md:106
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_posthog.md:108
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_posthog.md:109
+msgid ""
+"**Dark Primary**: `#1e1f23` background, white text, 6px radius, `10px "
+"12px` padding. Hover: opacity 0.7 with Amber Gold text. Active: opacity "
+"0.8 with slight scale transform. The main CTA — dark and confident"
+msgstr ""
+
+#: ../../source/templates_posthog.md:110
+msgid ""
+"**Sage Light**: `#e5e7e0` background, Olive Ink (`#4d4f46`) text, 4px "
+"radius, `4px` padding. Hover: `#f4f4f4` bg with PostHog Orange text. "
+"Compact utility button"
+msgstr ""
+
+#: ../../source/templates_posthog.md:111
+msgid ""
+"**Warm Tan Featured**: `#d4c9b8` background, black text, no visible "
+"radius. Hover: same orange text flash. Featured/premium actions"
+msgstr ""
+
+#: ../../source/templates_posthog.md:112
+msgid ""
+"**Input-style**: `#eeefe9` background, Sage Placeholder (`#9ea096`) text,"
+" 4px radius, 1px `#b6b7af` border. Looks like a search/filter control"
+msgstr ""
+
+#: ../../source/templates_posthog.md:113
+msgid ""
+"**Near-white Ghost**: `#fdfdf8` background, Olive Ink text, 4px radius, "
+"transparent 1px border. Minimal presence"
+msgstr ""
+
+#: ../../source/templates_posthog.md:114
+msgid ""
+"**Hover pattern**: All buttons flash PostHog Orange (`#F54E00`) or Amber "
+"Gold (`#F7A501`) text on hover — the brand's signature interaction "
+"surprise"
+msgstr ""
+
+#: ../../source/templates_posthog.md:116
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_posthog.md:117
+msgid ""
+"**Bordered Card**: Warm Parchment (`#fdfdf8`) or white background, 1px "
+"`#bfc1b7` border, 4px–6px radius — clean and minimal"
+msgstr ""
+
+#: ../../source/templates_posthog.md:118
+msgid ""
+"**Sage Surface Card**: `#eeefe9` background for secondary content "
+"containers"
+msgstr ""
+
+#: ../../source/templates_posthog.md:119
+msgid ""
+"**Shadow Card**: `0px 25px 50px -12px rgba(0, 0, 0, 0.25)` — a single "
+"deep shadow for elevated content (modals, dropdowns)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:120
+msgid ""
+"**Hover**: Orange text flash on interactive cards — consistent with "
+"button behavior"
+msgstr ""
+
+#: ../../source/templates_posthog.md:122
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_posthog.md:123
+msgid ""
+"**Default**: `#eeefe9` background, `#9ea096` placeholder text, 1px "
+"`#b6b7af` border, 4px radius, `2px 0px 2px 8px` padding"
+msgstr ""
+
+#: ../../source/templates_posthog.md:124
+#, python-format
+msgid "**Focus**: `#3b82f6` ring at 50% opacity (Tailwind blue focus ring)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:125
+msgid ""
+"**Text color**: `#374151` for input values — darker than primary text for"
+" readability"
+msgstr ""
+
+#: ../../source/templates_posthog.md:126
+msgid ""
+"**Border variations**: Multiple border patterns — some inputs use "
+"compound borders (top, left, bottom-only)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:128
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_posthog.md:129
+msgid "**Top nav**: Warm background, IBM Plex Sans at 15px weight 600"
+msgstr ""
+
+#: ../../source/templates_posthog.md:130
+msgid "**Dropdown menus**: Rich mega-menu structure with product categories"
+msgstr ""
+
+#: ../../source/templates_posthog.md:131
+msgid "**Link color**: Deep Olive (`#23251d`) for nav links, underline on hover"
+msgstr ""
+
+#: ../../source/templates_posthog.md:132
+msgid "**CTA**: Dark Primary button (#1e1f23) in the nav — \"Get started - free\""
+msgstr ""
+
+#: ../../source/templates_posthog.md:133
+msgid "**Mobile**: Collapses to hamburger with simplified menu"
+msgstr ""
+
+#: ../../source/templates_posthog.md:135
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_posthog.md:136
+msgid ""
+"**Hand-drawn illustrations**: Hedgehog mascot and quirky illustrations — "
+"the signature visual element"
+msgstr ""
+
+#: ../../source/templates_posthog.md:137
+msgid ""
+"**Product screenshots**: UI screenshots embedded in device frames or "
+"clean containers"
+msgstr ""
+
+#: ../../source/templates_posthog.md:138
+msgid ""
+"**Action figures**: Playful product photography of hedgehog figurines — "
+"anti-corporate"
+msgstr ""
+
+#: ../../source/templates_posthog.md:139
+msgid ""
+"**Trust logos**: Enterprise logos (Airbus, GOV.UK) displayed in a muted "
+"trust bar"
+msgstr ""
+
+#: ../../source/templates_posthog.md:140
+msgid ""
+"**Aspect ratios**: Mixed — illustrations are irregular, screenshots are "
+"16:9 or widescreen"
+msgstr ""
+
+#: ../../source/templates_posthog.md:142
+msgid "AI Chat Widget"
+msgstr ""
+
+#: ../../source/templates_posthog.md:143
+msgid ""
+"Floating PostHog AI assistant with speech bubble — an interactive product"
+" demo embedded in the marketing site"
+msgstr ""
+
+#: ../../source/templates_posthog.md:145
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_posthog.md:147
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_posthog.md:148
+msgid "**Base unit**: 8px"
+msgstr ""
+
+#: ../../source/templates_posthog.md:149
+msgid "**Scale**: 2px, 4px, 6px, 8px, 10px, 12px, 16px, 18px, 24px, 32px, 34px"
+msgstr ""
+
+#: ../../source/templates_posthog.md:150
+msgid ""
+"**Section padding**: 32px–48px vertical between sections (compact for a "
+"content-heavy site)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:151
+msgid "**Card padding**: 4px–12px internal (notably compact)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:152
+msgid "**Component gaps**: 4px–8px between related elements"
+msgstr ""
+
+#: ../../source/templates_posthog.md:154
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_posthog.md:155
+msgid ""
+"**Max width**: 1536px (largest breakpoint), with content containers "
+"likely 1200px–1280px"
+msgstr ""
+
+#: ../../source/templates_posthog.md:156
+msgid ""
+"**Column patterns**: Varied — single column for text content, 2-3 column "
+"grids for feature cards, asymmetric layouts for product demos"
+msgstr ""
+
+#: ../../source/templates_posthog.md:157
+msgid ""
+"**Breakpoints**: 13 defined — 1px, 425px, 482px, 640px, 768px, 767px, "
+"800px, 900px, 1024px, 1076px, 1160px, 1280px, 1536px"
+msgstr ""
+
+#: ../../source/templates_posthog.md:159
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_posthog.md:160
+msgid ""
+"**Content-dense by design**: PostHog's site is information-rich — "
+"whitespace is measured, not lavish"
+msgstr ""
+
+#: ../../source/templates_posthog.md:161
+msgid ""
+"**Editorial pacing**: Content sections flow like a magazine with varied "
+"layouts keeping the eye moving"
+msgstr ""
+
+#: ../../source/templates_posthog.md:162
+msgid ""
+"**Illustrations as breathing room**: Hand-drawn hedgehog art breaks up "
+"dense content sections naturally"
+msgstr ""
+
+#: ../../source/templates_posthog.md:164
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_posthog.md:165
+msgid "**2px**: Small inline elements, tags (`span`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:166
+msgid ""
+"**4px**: Primary UI components — buttons, inputs, dropdowns, menu items "
+"(`button`, `div`, `combobox`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:167
+msgid ""
+"**6px**: Secondary containers — larger buttons, list items, card variants"
+" (`button`, `div`, `li`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:168
+msgid ""
+"**9999px**: Pill shape — badges, status indicators, rounded tags (`span`,"
+" `div`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:170
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Level 0 (Flat)"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "No shadow, warm parchment background"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Page canvas, most surfaces"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Level 1 (Border)"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "`1px solid #bfc1b7` (Sage Border)"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Card containment, input borders, section dividers"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Level 2 (Compound Border)"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Multiple 1px borders on different sides"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Input groupings, toolbar elements"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Level 3 (Deep Shadow)"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "`0px 25px 50px -12px rgba(0, 0, 0, 0.25)`"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Modals, floating elements, mega-menu dropdowns"
+msgstr ""
+
+#: ../../source/templates_posthog.md:179
+msgid "Shadow Philosophy"
+msgstr ""
+
+#: ../../source/templates_posthog.md:180
+msgid ""
+"PostHog's elevation system is remarkably minimal — only one shadow "
+"definition exists in the entire system. Depth is communicated through:"
+msgstr ""
+
+#: ../../source/templates_posthog.md:181
+msgid ""
+"**Border containment**: Sage-tinted borders (`#bfc1b7`) at 1px create "
+"gentle warm separation"
+msgstr ""
+
+#: ../../source/templates_posthog.md:182
+msgid ""
+"**Surface color shifts**: Moving from `#fdfdf8` to `#eeefe9` to `#e5e7e0`"
+" creates layered depth without shadows"
+msgstr ""
+
+#: ../../source/templates_posthog.md:183
+msgid ""
+"**The single shadow**: The one defined shadow (`0 25px 50px -12px`) is "
+"reserved for floating elements — modals, dropdowns, popovers. It's a "
+"deep, dramatic shadow that creates clear separation when needed"
+msgstr ""
+
+#: ../../source/templates_posthog.md:185
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_posthog.md:186
+msgid ""
+"**Illustration layering**: Hand-drawn hedgehog art creates visual depth "
+"naturally"
+msgstr ""
+
+#: ../../source/templates_posthog.md:187
+msgid ""
+"**No gradients or glow**: The flat, warm surface system relies entirely "
+"on border and surface-color differentiation"
+msgstr ""
+
+#: ../../source/templates_posthog.md:188
+msgid "**No glassmorphism**: Fully opaque surfaces throughout"
+msgstr ""
+
+#: ../../source/templates_posthog.md:190
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_posthog.md:192
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_posthog.md:193
+msgid ""
+"Use the olive/sage color family (#4d4f46, #23251d, #bfc1b7) for text and "
+"borders — the warm green undertone is essential to the brand"
+msgstr ""
+
+#: ../../source/templates_posthog.md:194
+msgid ""
+"Flash PostHog Orange (#F54E00) on hover states — it's the hidden brand "
+"signature"
+msgstr ""
+
+#: ../../source/templates_posthog.md:195
+msgid ""
+"Use IBM Plex Sans at bold weights (700/800) for headings — the font "
+"carries technical credibility"
+msgstr ""
+
+#: ../../source/templates_posthog.md:196
+msgid ""
+"Keep body text at generous line-heights (1.50–1.71) — the content-heavy "
+"site demands readability"
+msgstr ""
+
+#: ../../source/templates_posthog.md:197
+msgid ""
+"Maintain the warm parchment background (#fdfdf8) — not pure white, never "
+"cold"
+msgstr ""
+
+#: ../../source/templates_posthog.md:198
+msgid ""
+"Use 4px border-radius for most UI elements — keep corners subtle and "
+"functional"
+msgstr ""
+
+#: ../../source/templates_posthog.md:199
+msgid ""
+"Include playful, hand-drawn illustration elements — the personality is "
+"the differentiator"
+msgstr ""
+
+#: ../../source/templates_posthog.md:200
+msgid ""
+"Apply opacity-based hover states (0.7 opacity) on dark buttons rather "
+"than color shifts"
+msgstr ""
+
+#: ../../source/templates_posthog.md:202
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_posthog.md:203
+msgid ""
+"Use blue, purple, or typical tech-SaaS colors — PostHog's palette is "
+"deliberately olive/sage"
+msgstr ""
+
+#: ../../source/templates_posthog.md:204
+msgid ""
+"Add heavy shadows — the system uses one shadow for floating elements "
+"only; everything else uses borders"
+msgstr ""
+
+#: ../../source/templates_posthog.md:205
+msgid ""
+"Make the design look \"polished\" or \"premium\" in a conventional sense "
+"— PostHog's charm is its irreverent, scrappy energy"
+msgstr ""
+
+#: ../../source/templates_posthog.md:206
+msgid ""
+"Use tight line-heights on body text — the generous 1.50+ spacing is "
+"essential for the content-heavy layout"
+msgstr ""
+
+#: ../../source/templates_posthog.md:207
+msgid ""
+"Apply large border-radius (12px+) on cards — PostHog uses 4px–6px, "
+"keeping things tight and functional"
+msgstr ""
+
+#: ../../source/templates_posthog.md:208
+msgid ""
+"Remove the orange hover flash — it's a core interaction pattern, not "
+"decoration"
+msgstr ""
+
+#: ../../source/templates_posthog.md:209
+msgid ""
+"Replace illustrations with stock photography — the hand-drawn hedgehog "
+"art is the brand"
+msgstr ""
+
+#: ../../source/templates_posthog.md:210
+msgid ""
+"Use pure white (#ffffff) as page background — the warm sage-cream "
+"(#fdfdf8) tint is foundational"
+msgstr ""
+
+#: ../../source/templates_posthog.md:212
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_posthog.md:214
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Mobile Small"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "<425px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Single column, compact padding, stacked cards"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "425px–640px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Slight layout adjustments, larger touch targets"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "640px–768px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "2-column grids begin, nav partially visible"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Tablet Large"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "768px–1024px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Multi-column layouts, expanded navigation"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1024px–1280px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Full layout, 3-column feature grids, expanded mega-menu"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "1280px–1536px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Max-width container, generous margins"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Extra Large"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid ">1536px"
+msgstr ""
+
+#: ../../source/templates_posthog.md
+msgid "Centered container at max-width"
+msgstr ""
+
+#: ../../source/templates_posthog.md:225
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_posthog.md:226
+msgid "Buttons: 4px–6px radius with `4px–12px` padding — compact but usable"
+msgstr ""
+
+#: ../../source/templates_posthog.md:227
+msgid "Nav links: 15px text at weight 600 with adequate padding"
+msgstr ""
+
+#: ../../source/templates_posthog.md:228
+msgid "Mobile: Hamburger menu with simplified navigation"
+msgstr ""
+
+#: ../../source/templates_posthog.md:229
+msgid "Inputs: Generous vertical padding for thumb-friendly forms"
+msgstr ""
+
+#: ../../source/templates_posthog.md:231
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_posthog.md:232
+msgid "**Navigation**: Full mega-menu with dropdowns → hamburger menu on mobile"
+msgstr ""
+
+#: ../../source/templates_posthog.md:233
+msgid "**Feature grids**: 3-column → 2-column → single column stacked"
+msgstr ""
+
+#: ../../source/templates_posthog.md:234
+msgid "**Typography**: Display sizes reduce across breakpoints (30px → smaller)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:235
+msgid ""
+"**Illustrations**: Scale within containers, some may hide on mobile for "
+"space"
+msgstr ""
+
+#: ../../source/templates_posthog.md:236
+msgid "**Section spacing**: Reduces proportionally while maintaining readability"
+msgstr ""
+
+#: ../../source/templates_posthog.md:238
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_posthog.md:239
+msgid "Illustrations scale responsively within containers"
+msgstr ""
+
+#: ../../source/templates_posthog.md:240
+msgid "Product screenshots maintain aspect ratios"
+msgstr ""
+
+#: ../../source/templates_posthog.md:241
+msgid "Trust logos reflow into multi-row grids on mobile"
+msgstr ""
+
+#: ../../source/templates_posthog.md:242
+msgid "AI chat widget may reposition or simplify on small screens"
+msgstr ""
+
+#: ../../source/templates_posthog.md:244
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_posthog.md:246
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_posthog.md:247
+msgid "Primary Text: Olive Ink (`#4d4f46`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:248
+msgid "Dark Text: Deep Olive (`#23251d`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:249
+msgid "Hover Accent: PostHog Orange (`#F54E00`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:250
+msgid "Dark CTA: Near-Black (`#1e1f23`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:251
+msgid "Button Surface: Light Sage (`#e5e7e0`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:252
+msgid "Page Background: Warm Parchment (`#fdfdf8`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:253
+msgid "Border: Sage Border (`#bfc1b7`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:254
+msgid "Placeholder: Sage Placeholder (`#9ea096`)"
+msgstr ""
+
+#: ../../source/templates_posthog.md:256
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_posthog.md:257
+msgid ""
+"\"Create a hero section on warm parchment background (#fdfdf8) with 30px "
+"IBM Plex Sans heading at weight 800, line-height 1.20, letter-spacing "
+"-0.75px, olive ink text (#4d4f46), and a dark CTA button (#1e1f23, 6px "
+"radius, white text, opacity 0.7 on hover)\""
+msgstr ""
+
+#: ../../source/templates_posthog.md:258
+msgid ""
+"\"Design a feature card with #fdfdf8 background, 1px #bfc1b7 border, 4px "
+"radius, IBM Plex Sans heading at 20px weight 700, and 16px body text at "
+"weight 400 with 1.50 line-height in olive ink (#4d4f46)\""
+msgstr ""
+
+#: ../../source/templates_posthog.md:259
+msgid ""
+"\"Build a navigation bar with warm background, IBM Plex Sans links at "
+"15px weight 600 in deep olive (#23251d), underline on hover, and a dark "
+"CTA button (#1e1f23) at the right\""
+msgstr ""
+
+#: ../../source/templates_posthog.md:260
+msgid ""
+"\"Create a button group: primary dark (#1e1f23, white text, 6px radius), "
+"secondary sage (#e5e7e0, #4d4f46 text, 4px radius), and ghost/text button"
+" — all flash #F54E00 orange text on hover\""
+msgstr ""
+
+#: ../../source/templates_posthog.md:261
+#, python-format
+msgid ""
+"\"Design an input field with #eeefe9 background, 1px #b6b7af border, 4px "
+"radius, #9ea096 placeholder text, focus ring in #3b82f6 at 50% opacity\""
+msgstr ""
+
+#: ../../source/templates_posthog.md:263
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_posthog.md:264
+msgid "When refining existing screens generated with this design system:"
+msgstr ""
+
+#: ../../source/templates_posthog.md:265
+msgid ""
+"Verify the background is warm parchment (#fdfdf8) not pure white — the "
+"sage-cream warmth is essential"
+msgstr ""
+
+#: ../../source/templates_posthog.md:266
+msgid ""
+"Check that all text uses the olive family (#4d4f46, #23251d) not pure "
+"black or neutral gray"
+msgstr ""
+
+#: ../../source/templates_posthog.md:267
+msgid ""
+"Ensure hover states flash PostHog Orange (#F54E00) — if hovering feels "
+"bland, you're missing this"
+msgstr ""
+
+#: ../../source/templates_posthog.md:268
+msgid ""
+"Confirm borders use sage-tinted gray (#bfc1b7) not neutral gray — warmth "
+"runs through every element"
+msgstr ""
+
+#: ../../source/templates_posthog.md:269
+msgid ""
+"The overall tone should feel like a fun, scrappy startup wiki — never "
+"corporate-polished or sterile"
+msgstr ""
+

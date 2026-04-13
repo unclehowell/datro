@@ -1,0 +1,329 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/github-auth_SKILL.md:13
+msgid "GitHub Authentication Setup"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:15
+msgid ""
+"This skill sets up authentication so the agent can work with GitHub "
+"repositories, PRs, issues, and CI. It covers two paths:"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:17
+msgid ""
+"**`git` (always available)** — uses HTTPS personal access tokens or SSH "
+"keys"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:18
+msgid ""
+"**`gh` CLI (if installed)** — richer GitHub API access with a simpler "
+"auth flow"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:20
+msgid "Detection Flow"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:22
+msgid "When a user asks you to work with GitHub, run this check first:"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:34
+msgid "**Decision tree:**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:35
+msgid ""
+"If `gh auth status` shows authenticated → you're good, use `gh` for "
+"everything"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:36
+msgid "If `gh` is installed but not authenticated → use \"gh auth\" method below"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:37
+msgid "If `gh` is not installed → use \"git-only\" method below (no sudo needed)"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:41
+msgid "Method 1: Git-Only Authentication (No gh, No sudo)"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:43
+msgid "This works on any machine with `git` installed. No root access needed."
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:45
+msgid "Option A: HTTPS with Personal Access Token (Recommended)"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:47
+msgid "This is the most portable method — works everywhere, no SSH config needed."
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:49
+msgid "**Step 1: Create a personal access token**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:51
+msgid "Tell the user to go to: **https://github.com/settings/tokens**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:53
+msgid "Click \"Generate new token (classic)\""
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:54
+msgid "Give it a name like \"hermes-agent\""
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:55
+msgid "Select scopes:"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:56
+msgid "`repo` (full repository access — read, write, push, PRs)"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:57
+msgid "`workflow` (trigger and manage GitHub Actions)"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:58
+msgid "`read:org` (if working with organization repos)"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:59
+msgid "Set expiration (90 days is a good default)"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:60
+msgid "Copy the token — it won't be shown again"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:62
+msgid "**Step 2: Configure git to store the token**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:75
+msgid ""
+"After entering credentials once, they're saved and reused for all future "
+"operations."
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:77
+msgid "**Alternative: cache helper (credentials expire from memory)**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:84
+msgid "**Alternative: set the token directly in the remote URL (per-repo)**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:91
+msgid "**Step 3: Configure git identity**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:99
+msgid "**Step 4: Verify**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:110
+msgid "Option B: SSH Key Authentication"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:112
+msgid "Good for users who prefer SSH or already have keys set up."
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:114
+msgid "**Step 1: Check for existing SSH keys**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:120
+msgid "**Step 2: Generate a key if needed**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:130
+msgid ""
+"Tell the user to add the public key at: "
+"**https://github.com/settings/keys**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:131
+msgid "Click \"New SSH key\""
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:132
+msgid "Paste the public key content"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:133
+msgid "Give it a title like \"hermes-agent-<machine-name>\""
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:135
+msgid "**Step 3: Test the connection**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:142
+msgid "**Step 4: Configure git to use SSH for GitHub**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:149
+msgid "**Step 5: Configure git identity**"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:158
+msgid "Method 2: gh CLI Authentication"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:160
+msgid ""
+"If `gh` is installed, it handles both API access and git credentials in "
+"one step."
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:162
+msgid "Interactive Browser Login (Desktop)"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:171
+msgid "Token-Based Login (Headless / SSH Servers)"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:180
+msgid "Verify"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:188
+msgid "Using the GitHub API Without gh"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:190
+msgid ""
+"When `gh` is not available, you can still access the full GitHub API "
+"using `curl` with a personal access token. This is how the other GitHub "
+"skills implement their fallbacks."
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:192
+msgid "Setting the Token for API Calls"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:203
+msgid "Extracting the Token from Git Credentials"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:205
+msgid ""
+"If git credentials are already configured (via credential.helper store), "
+"the token can be extracted:"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:212
+msgid "Helper: Detect Auth Method"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:214
+msgid "Use this pattern at the start of any GitHub workflow:"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md:236
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "Problem"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "Solution"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "`git push` asks for password"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid ""
+"GitHub disabled password auth. Use a personal access token as the "
+"password, or switch to SSH"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "`remote: Permission to X denied`"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "Token may lack `repo` scope — regenerate with correct scopes"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "`fatal: Authentication failed`"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid ""
+"Cached credentials may be stale — run `git credential reject` then re-"
+"authenticate"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "`ssh: connect to host github.com port 22: Connection refused`"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid ""
+"Try SSH over HTTPS port: add `Host github.com` with `Port 443` and "
+"`Hostname ssh.github.com` to `~/.ssh/config`"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "Credentials not persisting"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "Check `git config --global credential.helper` — must be `store` or `cache`"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "Multiple GitHub accounts"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid ""
+"Use SSH with different keys per host alias in `~/.ssh/config`, or per-"
+"repo credential URLs"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "`gh: command not found` + no sudo"
+msgstr ""
+
+#: ../../source/github-auth_SKILL.md
+msgid "Use git-only Method 1 above — no installation needed"
+msgstr ""
+

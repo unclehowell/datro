@@ -1,0 +1,380 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/js-tokens_README.md:1
+msgid ""
+"Overview [![Build Status](https://travis-ci.org/lydell/js-"
+"tokens.svg?branch=master)](https://travis-ci.org/lydell/js-tokens)"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:4
+msgid "A regex that tokenizes JavaScript."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:16
+msgid "Installation"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:19
+msgid "`npm install js-tokens`"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:28
+msgid "Usage"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:31
+msgid "`jsTokens`"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:33
+msgid "A regex with the `g` flag that matches JavaScript tokens."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:35
+msgid "The regex _always_ matches, even invalid JavaScript and the empty string."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:37
+msgid "The next match is always directly after the previous."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:39
+msgid "`var token = matchToToken(match)`"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:47
+#, python-brace-format
+msgid ""
+"Takes a `match` returned by `jsTokens.exec(string)`, and returns a "
+"`{type: String, value: String}` object. The following types are "
+"available:"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:50
+msgid "string"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:51
+msgid "comment"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:52
+msgid "regex"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:53
+msgid "number"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:54
+msgid "name"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:55
+msgid "punctuator"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:56
+msgid "whitespace"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:57
+msgid "invalid"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:59
+msgid ""
+"Multi-line comments and strings also have a `closed` property indicating "
+"if the token was closed or not (see below)."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:62
+msgid ""
+"Comments and strings both come in several flavors. To distinguish them, "
+"check if the token starts with `//`, `/*`, `'`, `\"` or `` ` ``."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:65
+msgid ""
+"Names are ECMAScript IdentifierNames, that is, including both identifiers"
+" and keywords. You may use [is-keyword-js] to tell them apart."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:68
+msgid "Whitespace includes both line terminators and other whitespace."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:73
+msgid "ECMAScript support"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:76
+msgid ""
+"The intention is to always support the latest ECMAScript version whose "
+"feature set has been finalized."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:79
+msgid ""
+"If adding support for a newer version requires changes, a new version "
+"with a major verion bump will be released."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:82
+msgid "Currently, ECMAScript 2018 is supported."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:85
+msgid "Invalid code handling"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:88
+msgid ""
+"Unterminated strings are still matched as strings. JavaScript strings "
+"cannot contain (unescaped) newlines, so unterminated strings simply end "
+"at the end of the line. Unterminated template strings can contain "
+"unescaped newlines, though, so they go on to the end of input."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:93
+msgid ""
+"Unterminated multi-line comments are also still matched as comments. They"
+" simply go on to the end of the input."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:96
+msgid ""
+"Unterminated regex literals are likely matched as division and whatever "
+"is inside the regex."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:99
+msgid "Invalid ASCII characters have their own capturing group."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:101
+msgid ""
+"Invalid non-ASCII characters are treated as names, to simplify the "
+"matching of names (except unicode spaces which are treated as "
+"whitespace). Note: See also the [ES2018](#es2018) section."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:105
+msgid ""
+"Regex literals may contain invalid regex syntax. They are still matched "
+"as regex literals. They may also contain repeated regex flags, to keep "
+"the regex simple."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:109
+msgid "Strings may contain invalid escape sequences."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:112
+msgid "Limitations"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:115
+msgid ""
+"Tokenizing JavaScript using regexes—in fact, _one single regex_—won’t be "
+"perfect. But that’s not the point either."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:118
+msgid ""
+"You may compare jsTokens with [esprima] by using `esprima-compare.js`. "
+"See `npm run esprima-compare`!"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:123
+msgid "Template string interpolation"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:125
+msgid ""
+"Template strings are matched as single tokens, from the starting `` ` `` "
+"to the ending `` ` ``, including interpolations (whose tokens are not "
+"matched individually)."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:129
+#, python-brace-format
+msgid ""
+"Matching template string interpolations requires recursive balancing of "
+"`{` and `}`—something that JavaScript regexes cannot do. Only one level "
+"of nesting is supported."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:133
+msgid "Division and regex literals collision"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:135
+msgid "Consider this example:"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:144
+msgid ""
+"A human can easily understand that in the `number` line we’re dealing "
+"with division, and in the `regex` line we’re dealing with a regex "
+"literal. How come? Because humans can look at the whole code to put the "
+"`/` characters in context. A JavaScript regex cannot. It only sees "
+"forwards. (Well, ES2018 regexes can also look backwards. See the "
+"[ES2018](#es2018) section)."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:150
+msgid ""
+"When the `jsTokens` regex scans throught the above, it will see the "
+"following at the end of both the `number` and `regex` rows:"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:157
+msgid ""
+"It is then impossible to know if that is a regex literal, or part of an "
+"expression dealing with division."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:160
+msgid "Here is a similar case:"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:167
+msgid ""
+"The first line divides the `foo` variable with `2/g`. The second line "
+"calls the `foo` function with the regex literal `/= 2/g`. Again, since "
+"`jsTokens` only sees forwards, it cannot tell the two cases apart."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:171
+msgid ""
+"There are some cases where we _can_ tell division and regex literals "
+"apart, though."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:174
+msgid ""
+"First off, we have the simple cases where there’s only one slash in the "
+"line:"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:181
+msgid ""
+"Regex literals cannot contain newlines, so the above cases are correctly "
+"identified as division. Things are only problematic when there are more "
+"than one non-comment slash in a single line."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:185
+msgid "Secondly, not every character is a valid regex flag."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:191
+msgid ""
+"The above example is also correctly identified as division, because `e` "
+"is not a valid regex flag. I initially wanted to future-proof by allowing"
+" `[a-zA-Z]*` (any letter) as flags, but it is not worth it since it "
+"increases the amount of ambigous cases. So only the standard `g`, `m`, "
+"`i`, `y` and `u` flags are allowed. This means that the above example "
+"will be identified as division as long as you don’t rename the `e` "
+"variable to some permutation of `gmiyus` 1 to 6 characters long."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:199
+msgid "Lastly, we can look _forward_ for information."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:201
+msgid ""
+"If the token following what looks like a regex literal is not valid after"
+" a regex literal, but is valid in a division expression, then the regex "
+"literal is treated as division instead. For example, a flagless regex "
+"cannot be followed by a string, number or name, but all of those three "
+"can be the denominator of a division."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:206
+msgid ""
+"Generally, if what looks like a regex literal is followed by an operator,"
+" the regex literal is treated as division instead. This is because "
+"regexes are seldomly used with operators (such as `+`, `*`, `&&` and "
+"`==`), but division could likely be part of such an expression."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:211
+msgid ""
+"Please consult the regex source and the test cases for precise "
+"information on when regex or division is matched (should you need to "
+"know). In short, you could sum it up as:"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:215
+msgid ""
+"If the end of a statement looks like a regex literal (even if it isn’t), "
+"it will be treated as one. Otherwise it should work as expected (if you "
+"write sane code)."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:219
+msgid "ES2018"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:221
+msgid "ES2018 added some nice regex improvements to the language."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:223
+msgid ""
+"[Unicode property escapes] should allow telling names and invalid non-"
+"ASCII characters apart without blowing up the regex size."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:225
+msgid ""
+"[Lookbehind assertions] should allow matching telling division and regex "
+"literals apart in more cases."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:227
+msgid "[Named capture groups] might simplify some things."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:229
+msgid ""
+"These things would be nice to do, but are not critical. They probably "
+"have to wait until the oldest maintained Node.js LTS release supports "
+"those features."
+msgstr ""
+
+#: ../../source/js-tokens_README.md:237
+msgid "License"
+msgstr ""
+
+#: ../../source/js-tokens_README.md:240
+msgid "[MIT](LICENSE)."
+msgstr ""
+

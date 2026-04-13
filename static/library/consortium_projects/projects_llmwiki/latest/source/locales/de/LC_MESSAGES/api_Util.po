@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_Util.md:1
+msgid "Util"
+msgstr ""
+
+#: ../../source/api_Util.md:3
+msgid "Utility API for third-party implementations of the dispatcher API."
+msgstr ""
+
+#: ../../source/api_Util.md:5
+msgid "`parseHeaders(headers, [obj])`"
+msgstr ""
+
+#: ../../source/api_Util.md:7
+msgid "Receives a header object and returns the parsed value."
+msgstr ""
+
+#: ../../source/api_Util.md:9 ../../source/api_Util.md:21
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/api_Util.md:11
+msgid ""
+"**headers** `(Buffer | string | (Buffer | string)[])[]` (required) - "
+"Header object."
+msgstr ""
+
+#: ../../source/api_Util.md:13
+msgid ""
+"**obj** `Record<string, string | string[]>` (optional) - Object to "
+"specify a proxy object. The parsed value is assigned to this object. But,"
+" if **headers** is an object, it is not used."
+msgstr ""
+
+#: ../../source/api_Util.md:15
+msgid ""
+"Returns: `Record<string, string | string[]>` If **obj** is specified, it "
+"is equivalent to **obj**."
+msgstr ""
+
+#: ../../source/api_Util.md:17
+msgid "`headerNameToString(value)`"
+msgstr ""
+
+#: ../../source/api_Util.md:19
+msgid "Retrieves a header name and returns its lowercase value."
+msgstr ""
+
+#: ../../source/api_Util.md:23
+msgid "**value** `string | Buffer` (required) - Header name."
+msgstr ""
+
+#: ../../source/api_Util.md:25
+msgid "Returns: `string`"
+msgstr ""
+

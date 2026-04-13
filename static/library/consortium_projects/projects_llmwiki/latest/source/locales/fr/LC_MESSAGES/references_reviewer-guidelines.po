@@ -1,0 +1,1227 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_reviewer-guidelines.md:1
+msgid "Reviewer Guidelines & Evaluation Criteria"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:3
+msgid ""
+"This reference documents how reviewers evaluate papers at major ML/AI "
+"conferences, helping authors anticipate and address reviewer concerns."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:7
+msgid "Contents"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:9
+msgid "[Universal Evaluation Dimensions](#universal-evaluation-dimensions)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:10
+msgid "[NeurIPS Reviewer Guidelines](#neurips-reviewer-guidelines)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:11
+msgid "[ICML Reviewer Guidelines](#icml-reviewer-guidelines)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:12
+msgid "[ICLR Reviewer Guidelines](#iclr-reviewer-guidelines)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:13
+msgid "[ACL Reviewer Guidelines](#acl-reviewer-guidelines)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:14
+msgid "[What Makes Reviews Strong](#what-makes-reviews-strong)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:15
+msgid "[Common Reviewer Concerns](#common-reviewer-concerns)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:16
+msgid "[How to Address Reviewer Feedback](#how-to-address-reviewer-feedback)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:20
+msgid "Universal Evaluation Dimensions"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:22
+msgid "All major ML conferences assess papers across four core dimensions:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:24
+msgid "1. Quality (Technical Soundness)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:26
+#: ../../source/references_reviewer-guidelines.md:40
+#: ../../source/references_reviewer-guidelines.md:54
+#: ../../source/references_reviewer-guidelines.md:68
+msgid "**What reviewers ask:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:27
+msgid "Are claims well-supported by theoretical analysis or experimental results?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:28
+msgid "Are the proofs correct? Are the experiments properly controlled?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:29
+msgid "Are baselines appropriate and fairly compared?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:30
+msgid "Is the methodology sound?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:32
+msgid "**How to ensure high quality:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:33
+msgid "Include complete proofs (main paper or appendix with sketches)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:34
+msgid "Use appropriate baselines (not strawmen)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:35
+msgid "Report variance/error bars with methodology"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:36
+msgid "Document hyperparameter selection process"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:38
+msgid "2. Clarity (Writing & Organization)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:41
+msgid "Is the paper clearly written and well organized?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:42
+msgid "Can an expert in the field reproduce the results?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:43
+msgid "Is notation consistent? Are terms defined?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:44
+msgid "Is the paper self-contained?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:46
+msgid "**How to ensure clarity:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:47
+msgid "Use consistent terminology throughout"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:48
+msgid "Define all notation at first use"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:49
+msgid "Include reproducibility details (appendix acceptable)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:50
+msgid "Have non-authors read before submission"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:52
+msgid "3. Significance (Impact & Importance)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:55
+msgid "Are the results impactful for the community?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:56
+msgid "Will others build upon this work?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:57
+msgid "Does it address an important problem?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:58
+msgid "What is the potential for real-world impact?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:60
+msgid "**How to demonstrate significance:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:61
+msgid "Clearly articulate the problem's importance"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:62
+msgid "Connect to broader research themes"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:63
+msgid "Discuss potential applications"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:64
+msgid "Compare to existing approaches meaningfully"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:66
+msgid "4. Originality (Novelty & Contribution)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:69
+msgid "Does this provide new insights?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:70
+msgid "How does it differ from prior work?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:71
+msgid "Is the contribution non-trivial?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:73
+msgid "**Key insight from NeurIPS guidelines:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:74
+msgid ""
+"\"Originality does not necessarily require introducing an entirely new "
+"method. Papers that provide novel insights from evaluating existing "
+"approaches or shed light on why methods succeed can also be highly "
+"original.\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:78
+msgid "NeurIPS Reviewer Guidelines"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:80
+msgid "Scoring System (1-6 Scale)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Score"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Label"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**6**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Strong Accept"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+#, python-format
+msgid "Groundbreaking, flawless work; top 2-3% of submissions"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**5**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Accept"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Technically solid, high impact; would benefit the community"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**4**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Borderline Accept"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Solid work with limited evaluation; leans accept"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**3**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Borderline Reject"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Solid but weaknesses outweigh strengths; leans reject"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**2**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Reject"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Technical flaws or weak evaluation"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**1**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Strong Reject"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Well-known results or unaddressed ethics concerns"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:91
+msgid "Reviewer Instructions"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:93
+msgid "Reviewers are explicitly instructed to:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:95
+msgid "**Evaluate the paper as written** - not what it could be with revisions"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:96
+msgid "**Provide constructive feedback** - 3-5 actionable points"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:97
+msgid ""
+"**Not penalize honest limitations** - acknowledging weaknesses is "
+"encouraged"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:98
+msgid "**Assess reproducibility** - can the work be verified?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:99
+msgid "**Consider ethical implications** - potential misuse or harm"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:101
+msgid "What Reviewers Should Avoid"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:103
+msgid "Superficial, uninformed reviews"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:104
+msgid "Demanding unreasonable additional experiments"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:105
+msgid "Penalizing authors for honest limitation acknowledgment"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:106
+msgid "Rejecting for missing citations to reviewer's own work"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:108
+msgid "Timeline (NeurIPS 2025 — verify dates for current year)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:110
+msgid "Bidding: May 17-21"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:111
+msgid "Reviewing period: May 29 - July 2"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:112
+msgid "Author rebuttals: July 24-30"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:113
+msgid "Discussion period: July 31 - August 13"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:114
+msgid "Final notifications: September 18"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:116
+msgid ""
+"**Note**: These dates are from the 2025 cycle. Always check the current "
+"year's call for papers at the venue website."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:120
+msgid "ICML Reviewer Guidelines"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:122
+msgid "Review Structure"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:124
+msgid "ICML reviewers provide:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:126
+msgid "**Summary** - Brief description of contributions"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:127
+msgid "**Strengths** - Positive aspects"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:128
+msgid "**Weaknesses** - Areas for improvement"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:129
+msgid "**Questions** - Clarifications for authors"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:130
+msgid "**Limitations** - Assessment of stated limitations"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:131
+msgid "**Ethics** - Any concerns"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:132
+msgid "**Overall Score** - Recommendation"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:134
+msgid "Scoring Guidelines"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:136
+msgid "ICML uses a similar 1-6 scale with calibration:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:137
+#, python-format
+msgid "Top 25% of accepted papers: Score 5-6"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:138
+msgid "Typical accepted paper: Score 4-5"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:139
+msgid "Borderline: Score 3-4"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:140
+msgid "Clear reject: Score 1-2"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:142
+msgid "Key Evaluation Points"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:144
+msgid "**Reproducibility** - Are there enough details?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:145
+msgid "**Experimental rigor** - Multiple seeds, proper baselines?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:146
+msgid "**Writing quality** - Clear, organized, well-structured?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:147
+msgid "**Novelty** - Non-trivial contribution?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:151
+msgid "ICLR Reviewer Guidelines"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:153
+msgid "OpenReview Process"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:155
+msgid "ICLR uses OpenReview with:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:156
+msgid "Public reviews (after acceptance decisions)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:157
+msgid "Author responses visible to reviewers"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:158
+msgid "Discussion between reviewers and ACs"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:160
+#: ../../source/references_reviewer-guidelines.md:256
+msgid "Scoring"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:162
+msgid "ICLR reviews include:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:163
+msgid "**Soundness**: 1-4 scale"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:164
+msgid "**Presentation**: 1-4 scale"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:165
+msgid "**Contribution**: 1-4 scale"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:166
+msgid "**Overall**: 1-10 scale"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:167
+msgid "**Confidence**: 1-5 scale"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:169
+msgid "Unique ICLR Considerations"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:171
+msgid ""
+"**LLM Disclosure** - Reviewers assess whether LLM use is properly "
+"disclosed"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:172
+msgid "**Reproducibility** - Emphasis on code availability"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:173
+msgid "**Reciprocal Reviewing** - Authors must also serve as reviewers"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:177
+msgid "ACL Reviewer Guidelines"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:179
+msgid "ACL-Specific Criteria"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:181
+msgid "ACL adds NLP-specific evaluation:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:183
+msgid "**Linguistic soundness** - Are linguistic claims accurate?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:184
+msgid "**Resource documentation** - Are datasets/models properly documented?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:185
+msgid ""
+"**Multilingual consideration** - If applicable, is language diversity "
+"addressed?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:187
+msgid "Limitations Section"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:189
+msgid "ACL specifically requires a Limitations section. Reviewers check:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:190
+msgid "Are limitations honest and comprehensive?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:191
+msgid "Do limitations undermine core claims?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:192
+msgid "Are potential negative impacts addressed?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:194
+msgid "Ethics Review"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:196
+msgid "ACL has a dedicated ethics review process for:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:197
+msgid "Dual-use concerns"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:198
+msgid "Data privacy issues"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:199
+msgid "Bias and fairness implications"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:203
+msgid "AAAI Reviewer Guidelines"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:205
+#: ../../source/references_reviewer-guidelines.md:237
+msgid "Evaluation Criteria"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:207
+msgid ""
+"AAAI reviewers evaluate along similar axes to NeurIPS/ICML but with some "
+"differences:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Criterion"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**Technical quality**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "High"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Soundness of approach, correctness of results"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**Significance**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Importance of the problem and contribution"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**Novelty**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Medium-High"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "New ideas, methods, or insights"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**Clarity**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Medium"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Clear writing, well-organized presentation"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**Reproducibility**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Sufficient detail to reproduce results"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:217
+msgid "AAAI-Specific Considerations"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:219
+msgid ""
+"**Broader AI scope**: AAAI covers all of AI, not just ML. Papers on "
+"planning, reasoning, knowledge representation, NLP, vision, robotics, and"
+" multi-agent systems are all in scope. Reviewers may not be deep ML "
+"specialists."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:220
+msgid ""
+"**Formatting strictness**: AAAI reviewers are instructed to flag "
+"formatting violations. Non-compliant papers may be desk-rejected before "
+"review."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:221
+msgid ""
+"**Application papers**: AAAI is more receptive to application-focused "
+"work than NeurIPS/ICML. Framing a strong application contribution is "
+"viable."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:222
+msgid ""
+"**Senior Program Committee**: AAAI uses SPCs (Senior Program Committee "
+"members) who mediate between reviewers and make accept/reject "
+"recommendations."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:224
+msgid "Scoring (AAAI Scale)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:226
+msgid "**Strong Accept**: Clearly above threshold, excellent contribution"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:227
+msgid "**Accept**: Above threshold, good contribution with minor issues"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:228
+msgid "**Weak Accept**: Borderline, merits outweigh concerns"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:229
+msgid "**Weak Reject**: Borderline, concerns outweigh merits"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:230
+msgid "**Reject**: Below threshold, significant issues"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:231
+msgid "**Strong Reject**: Well below threshold"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:235
+msgid "COLM Reviewer Guidelines"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:239
+msgid ""
+"COLM reviews focus on relevance to language modeling in addition to "
+"standard criteria:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "**Relevance**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Must be relevant to language modeling community"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Sound methodology, well-supported claims"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "New insights about language models"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Clear presentation, reproducible"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Impact on LM research and practice"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:249
+msgid "COLM-Specific Considerations"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:251
+msgid ""
+"**Language model focus**: Reviewers will assess whether the contribution "
+"advances understanding of language models. General ML contributions need "
+"explicit LM framing."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:252
+msgid ""
+"**Newer venue norms**: COLM is newer than NeurIPS/ICML, so reviewer "
+"calibration varies more. Write more defensively — anticipate a wider "
+"range of reviewer expertise."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:253
+msgid ""
+"**ICLR-derived process**: Review process is modeled on ICLR (open "
+"reviews, author response period, discussion among reviewers)."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:254
+msgid ""
+"**Broad interpretation of \"language modeling\"**: Includes training, "
+"evaluation, alignment, safety, efficiency, applications, theory, "
+"multimodality (if language is central), and social impact of LMs."
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:258
+msgid "COLM uses an ICLR-style scoring system:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:259
+msgid "**8-10**: Strong accept (top papers)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:260
+msgid "**6-7**: Weak accept (solid contribution)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:261
+msgid "**5**: Borderline"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:262
+msgid "**3-4**: Weak reject (below threshold)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:263
+msgid "**1-2**: Strong reject"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:267
+msgid "What Makes Reviews Strong"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:269
+msgid "Following Daniel Dennett's Rules"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:271
+msgid "Good reviewers follow these principles:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:273
+msgid "**Re-express the position fairly** - Show you understand the paper"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:274
+msgid "**List agreements** - Acknowledge what works well"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:275
+msgid "**List what you learned** - Credit the contribution"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:276
+msgid "**Only then critique** - After establishing understanding"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:278
+msgid "Review Structure Best Practices"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:280
+msgid "**Strong Review Structure:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:309
+msgid "Common Reviewer Concerns"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:311
+msgid "Technical Concerns"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Concern"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "How to Pre-empt"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Baselines too weak\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Use state-of-the-art baselines, cite recent work"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Missing ablations\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Include systematic ablation study"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"No error bars\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Report std dev/error, multiple runs"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Hyperparameters not tuned\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Document tuning process, search ranges"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Claims not supported\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Ensure every claim has evidence"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:321
+msgid "Novelty Concerns"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Incremental contribution\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Clearly articulate what's new vs prior work"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Similar to [paper X]\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Explicitly compare to X in Related Work"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Straightforward extension\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Highlight non-obvious aspects"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:329
+msgid "Clarity Concerns"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Hard to follow\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Use clear structure, signposting"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Notation inconsistent\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Review all notation, create notation table"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Missing details\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Include reproducibility appendix"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Figures unclear\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Self-contained captions, proper sizing"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:338
+msgid "Significance Concerns"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Limited impact\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Discuss broader implications"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Narrow evaluation\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Evaluate on multiple benchmarks"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "\"Only works in restricted setting\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md
+msgid "Acknowledge scope, explain why still valuable"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:348
+msgid "How to Address Reviewer Feedback"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:350
+msgid "Rebuttal Best Practices"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:352
+msgid "**Do:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:353
+msgid "Thank reviewers for their time"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:354
+msgid "Address each concern specifically"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:355
+msgid "Provide evidence (new experiments if possible)"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:356
+msgid "Be concise—reviewers are busy"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:357
+msgid "Acknowledge valid criticisms"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:359
+msgid "**Don't:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:360
+msgid "Be defensive or dismissive"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:361
+msgid "Make promises you can't keep"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:362
+msgid "Ignore difficult criticisms"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:363
+msgid "Write excessively long rebuttals"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:364
+msgid "Argue about subjective assessments"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:366
+msgid "Rebuttal Template"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:390
+msgid "When to Accept Criticism"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:392
+msgid "Some reviewer feedback should simply be accepted:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:393
+msgid "Valid technical errors"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:394
+msgid "Missing important related work"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:395
+msgid "Unclear explanations"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:396
+msgid "Missing experimental details"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:398
+msgid ""
+"Acknowledge these gracefully: \"The reviewer is correct that... We will "
+"revise to...\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:400
+msgid "When to Push Back"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:402
+msgid "You can respectfully disagree when:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:403
+msgid "Reviewer misunderstood the paper"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:404
+msgid "Requested experiments are out of scope"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:405
+msgid "Criticism is factually incorrect"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:407
+msgid ""
+"Frame disagreements constructively: \"We appreciate this perspective. "
+"However, [explanation]...\""
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:411
+msgid "Pre-Submission Reviewer Simulation"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:413
+msgid "Before submitting, ask yourself:"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:415
+msgid "**Quality:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:416
+msgid "[ ] Would I trust these results if I saw them?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:417
+msgid "[ ] Are all claims supported by evidence?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:418
+msgid "[ ] Are baselines fair and recent?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:420
+msgid "**Clarity:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:421
+msgid "[ ] Can someone reproduce this from the paper?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:422
+msgid "[ ] Is the writing clear to non-experts in this subfield?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:423
+msgid "[ ] Are all terms and notation defined?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:425
+msgid "**Significance:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:426
+msgid "[ ] Why should the community care about this?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:427
+msgid "[ ] What can people do with this work?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:428
+msgid "[ ] Is the problem important?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:430
+msgid "**Originality:**"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:431
+msgid "[ ] What specifically is new here?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:432
+msgid "[ ] How does this differ from closest related work?"
+msgstr ""
+
+#: ../../source/references_reviewer-guidelines.md:433
+msgid "[ ] Is the contribution non-trivial?"
+msgstr ""
+

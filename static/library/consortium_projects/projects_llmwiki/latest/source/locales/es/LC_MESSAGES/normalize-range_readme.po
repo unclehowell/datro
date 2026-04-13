@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/normalize-range_readme.md:1
+msgid "normalize-range"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:3
+msgid ""
+"Utility for normalizing a numeric range, with a wrapping function useful "
+"for polar coordinates."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:5
+msgid ""
+"[![Build Status](https://travis-ci.org/jamestalmage/normalize-"
+"range.svg?branch=master)](https://travis-ci.org/jamestalmage/normalize-"
+"range) [![Coverage Status](https://coveralls.io/repos/jamestalmage"
+"/normalize-"
+"range/badge.svg?branch=master&service=github)](https://coveralls.io/github/jamestalmage"
+"/normalize-range?branch=master) [![Code "
+"Climate](https://codeclimate.com/github/jamestalmage/normalize-"
+"range/badges/gpa.svg)](https://codeclimate.com/github/jamestalmage"
+"/normalize-range) [![Dependency Status](https://david-dm.org/jamestalmage"
+"/normalize-range.svg)](https://david-dm.org/jamestalmage/normalize-range)"
+" [![devDependency Status](https://david-dm.org/jamestalmage/normalize-"
+"range/dev-status.svg)](https://david-dm.org/jamestalmage/normalize-"
+"range#info=devDependencies)"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:5
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:5
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:5
+msgid "Code Climate"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:5
+msgid "Dependency Status"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:5
+msgid "devDependency Status"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:11
+msgid ""
+"[![NPM](https://nodei.co/npm/normalize-range.png)](https://nodei.co/npm"
+"/normalize-range/)"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:11
+msgid "NPM"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:37
+msgid "API"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:39
+msgid "wrap(min, max, value)"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:41
+msgid ""
+"Normalizes a values that \"wraps around\". For example, in a polar "
+"coordinate system, 270˚ can also be represented as -90˚.  For wrapping "
+"purposes we assume `max` is functionally equivalent to `min`, and that "
+"`wrap(max + 1) === wrap(min + 1)`. Wrap always assumes that `min` is "
+"*inclusive*, and `max` is *exclusive*. In other words, if `value === max`"
+" the function will wrap it, and return `min`, but `min` will not be "
+"wrapped."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:54
+msgid "You are not restricted to whole numbers, and ranges can be negative."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:65
+msgid "limit(min, max, value)"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:67
+msgid ""
+"Normalize the value by bringing it within the range. If `value` is "
+"greater than `max`, `max` will be returned. If `value` is less than "
+"`min`, `min` will be returned. Otherwise, `value` is returned unaltered. "
+"Both ends of this range are *inclusive*."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:73
+msgid "test(min, max, value, [minExclusive], [maxExclusive])"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:75
+msgid ""
+"Returns `true` if `value` is within the range, `false` otherwise. It "
+"defaults to `inclusive` on both ends of the range, but that can be "
+"changed by setting `minExclusive` and/or `maxExclusive` to a truthy "
+"value."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:79
+msgid "validate(min, max, value, [minExclusive], [maxExclusive])"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:81
+msgid ""
+"Returns `value` or throws an error if `value` is outside the specified "
+"range."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:83
+msgid "name(min, max, value, [minExclusive], [maxExclusive])"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:85
+msgid ""
+"Returns a string representing this range in  [range "
+"notation](https://en.wikipedia.org/wiki/Interval_(mathematics)#Classification_of_intervals)."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:88
+msgid "curry(min, max, [minExclusive], [maxExclusive])"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:90
+msgid "Convenience method for currying all method arguments except `value`."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:111
+msgid "min"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:113
+#: ../../source/normalize-range_readme.md:120
+#: ../../source/normalize-range_readme.md:127
+msgid "*Required*   Type: `number`"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:116
+msgid "The minimum value (inclusive) of the range."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:118
+msgid "max"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:123
+msgid "The maximum value (exclusive) of the range."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:125
+msgid "value"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:130
+msgid "The value to be normalized."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:132
+msgid "returns"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:134
+msgid "Type: `number`"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:136
+msgid "The normalized value."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:138
+msgid "Building and Releasing"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:140
+msgid "`npm test`: tests, linting, coverage and style checks."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:141
+msgid "`npm run watch`: autotest mode for active development."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:142
+msgid ""
+"`npm run debug`: run tests without coverage (istanbul can obscure line "
+"#'s)"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:144
+msgid "Release via `cut-release` tool."
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:146
+msgid "License"
+msgstr ""
+
+#: ../../source/normalize-range_readme.md:148
+msgid "MIT © [James Talmage](http://github.com/jamestalmage)"
+msgstr ""
+

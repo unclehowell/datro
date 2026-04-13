@@ -1,0 +1,1403 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_expo.md:1
+msgid "Design System: Expo"
+msgstr ""
+
+#: ../../source/templates_expo.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_expo.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_expo.md:7
+msgid "**Primary:** `Inter` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_expo.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_expo.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_expo.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_expo.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_expo.md:18
+msgid ""
+"Expo's interface is a luminous, confidence-radiating developer platform "
+"built on the premise that tools for building apps should feel as polished"
+" as the apps themselves. The entire experience lives on a bright, airy "
+"canvas — a cool-tinted off-white (`#f0f0f3`) that gives the page a subtle"
+" technological coolness without the starkness of pure white. This is a "
+"site that breathes: enormous vertical spacing between sections creates a "
+"gallery-like pace where each feature gets its own \"room.\""
+msgstr ""
+
+#: ../../source/templates_expo.md:20
+msgid ""
+"The design language is decisively monochromatic — pure black (`#000000`) "
+"headlines against the lightest possible backgrounds, with a spectrum of "
+"cool blue-grays (`#60646c`, `#b0b4ba`, `#555860`) handling all secondary "
+"communication. Color is almost entirely absent from the interface itself;"
+" when it appears, it's reserved for product screenshots, app icons, and "
+"the React universe illustration — making the actual content burst with "
+"life against the neutral canvas."
+msgstr ""
+
+#: ../../source/templates_expo.md:22
+msgid ""
+"What makes Expo distinctive is its pill-shaped geometry. Buttons, tabs, "
+"video containers, and even images use generously rounded or fully pill-"
+"shaped corners (24px–9999px), creating an organic, approachable feel that"
+" contradicts the typical sharp-edged developer tool aesthetic. Combined "
+"with tight letter-spacing on massive headlines (-1.6px to -3px at 64px), "
+"the result is a design that's simultaneously premium and friendly — like "
+"an Apple product page reimagined for developers."
+msgstr ""
+
+#: ../../source/templates_expo.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_expo.md:25
+msgid "Luminous cool-white canvas (`#f0f0f3`) with gallery-like vertical spacing"
+msgstr ""
+
+#: ../../source/templates_expo.md:26
+msgid ""
+"Strictly monochromatic: pure black headlines, cool blue-gray body text, "
+"no decorative color"
+msgstr ""
+
+#: ../../source/templates_expo.md:27
+msgid ""
+"Pill-shaped geometry everywhere — buttons, tabs, containers, images "
+"(24px–9999px radius)"
+msgstr ""
+
+#: ../../source/templates_expo.md:28
+msgid ""
+"Massive display headlines (64px) with extreme negative letter-spacing "
+"(-1.6px to -3px)"
+msgstr ""
+
+#: ../../source/templates_expo.md:29
+msgid ""
+"Inter as the sole typeface, used at weights 400–900 for full expressive "
+"range"
+msgstr ""
+
+#: ../../source/templates_expo.md:30
+msgid "Whisper-soft shadows that barely lift elements from the surface"
+msgstr ""
+
+#: ../../source/templates_expo.md:31
+msgid "Product screenshots as the only source of color in the interface"
+msgstr ""
+
+#: ../../source/templates_expo.md:33
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_expo.md:35
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_expo.md:36
+msgid ""
+"**Expo Black** (`#000000`): The absolute anchor — used for primary "
+"headlines, CTA buttons, and the brand identity. Pure black on cool white "
+"creates maximum contrast without feeling aggressive."
+msgstr ""
+
+#: ../../source/templates_expo.md:37
+msgid ""
+"**Near Black** (`#1c2024`): The primary text color for body content — a "
+"barely perceptible blue-black that's softer than pure #000 for extended "
+"reading."
+msgstr ""
+
+#: ../../source/templates_expo.md:39
+msgid "Secondary & Accent"
+msgstr ""
+
+#: ../../source/templates_expo.md:40
+msgid ""
+"**Link Cobalt** (`#0d74ce`): The standard link color — a trustworthy, "
+"saturated blue that signals interactivity without competing with the "
+"monochrome hierarchy."
+msgstr ""
+
+#: ../../source/templates_expo.md:41
+msgid ""
+"**Legal Blue** (`#476cff`): A brighter, more saturated blue for "
+"legal/footer links — slightly more attention-grabbing than Link Cobalt."
+msgstr ""
+
+#: ../../source/templates_expo.md:42
+msgid ""
+"**Widget Sky** (`#47c2ff`): A light, friendly cyan-blue for widget "
+"branding elements — the brightest accent in the system."
+msgstr ""
+
+#: ../../source/templates_expo.md:43
+msgid ""
+"**Preview Purple** (`#8145b5`): A rich violet used for \"preview\" or "
+"beta feature indicators — creating clear visual distinction from standard"
+" content."
+msgstr ""
+
+#: ../../source/templates_expo.md:45
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_expo.md:46
+msgid ""
+"**Cloud Gray** (`#f0f0f3`): The primary page background — a cool off-"
+"white with the faintest blue-violet tint. Not warm, not sterile — "
+"precisely technological."
+msgstr ""
+
+#: ../../source/templates_expo.md:47
+msgid ""
+"**Pure White** (`#ffffff`): Card surfaces, button backgrounds, and "
+"elevated content containers. Creates a clear \"lifted\" distinction from "
+"Cloud Gray."
+msgstr ""
+
+#: ../../source/templates_expo.md:48
+msgid ""
+"**Widget Dark** (`#1a1a1a`): Dark surface for dark-theme widgets and "
+"overlay elements."
+msgstr ""
+
+#: ../../source/templates_expo.md:49
+msgid ""
+"**Banner Dark** (`#171717`): The darkest surface variant, used for "
+"promotional banners and high-contrast containers."
+msgstr ""
+
+#: ../../source/templates_expo.md:51
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_expo.md:52
+msgid ""
+"**Slate Gray** (`#60646c`): The workhorse secondary text color (305 "
+"instances). A cool blue-gray that's authoritative without being heavy."
+msgstr ""
+
+#: ../../source/templates_expo.md:53
+msgid ""
+"**Mid Slate** (`#555860`): Slightly darker than Slate, used for "
+"emphasized secondary text."
+msgstr ""
+
+#: ../../source/templates_expo.md:54
+msgid ""
+"**Silver** (`#b0b4ba`): Tertiary text, placeholders, and de-emphasized "
+"metadata. Comfortably readable but clearly receded."
+msgstr ""
+
+#: ../../source/templates_expo.md:55
+msgid ""
+"**Pewter** (`#999999`): Accordion icons and deeply de-emphasized UI "
+"elements in dark contexts."
+msgstr ""
+
+#: ../../source/templates_expo.md:56
+msgid ""
+"**Light Silver** (`#cccccc`): Arrow icons and decorative elements in dark"
+" contexts."
+msgstr ""
+
+#: ../../source/templates_expo.md:57
+msgid ""
+"**Dark Slate** (`#363a3f`): Borders on dark surfaces, switch tracks, and "
+"emphasized containment."
+msgstr ""
+
+#: ../../source/templates_expo.md:58
+msgid ""
+"**Charcoal** (`#333333`): Dark mode switch backgrounds and deep secondary"
+" surfaces."
+msgstr ""
+
+#: ../../source/templates_expo.md:60
+msgid "Semantic & Accent"
+msgstr ""
+
+#: ../../source/templates_expo.md:61
+msgid ""
+"**Warning Amber** (`#ab6400`): A warm, deep amber for warning states — "
+"deliberately not bright yellow, conveying seriousness."
+msgstr ""
+
+#: ../../source/templates_expo.md:62
+msgid ""
+"**Destructive Rose** (`#eb8e90`): A soft pink-coral for disabled "
+"destructive actions — gentler than typical red, reducing alarm fatigue."
+msgstr ""
+
+#: ../../source/templates_expo.md:63
+msgid ""
+"**Border Lavender** (`#e0e1e6`): Standard card/container borders — a cool"
+" lavender-gray that's visible without being heavy."
+msgstr ""
+
+#: ../../source/templates_expo.md:64
+msgid ""
+"**Input Border** (`#d9d9e0`): Button and form element borders — slightly "
+"warmer/darker than card borders for interactive elements."
+msgstr ""
+
+#: ../../source/templates_expo.md:65
+msgid ""
+"**Dark Focus Ring** (`#2547d0`): Deep blue for keyboard focus indicators "
+"in dark theme contexts."
+msgstr ""
+
+#: ../../source/templates_expo.md:67
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_expo.md:68
+msgid ""
+"The design is notably **gradient-free** in the interface layer. Visual "
+"richness comes from product screenshots, the React universe illustration,"
+" and careful shadow layering rather than color gradients. This absence IS"
+" the design decision — gradients would undermine the clinical precision."
+msgstr ""
+
+#: ../../source/templates_expo.md:70
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_expo.md:72
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_expo.md:73
+msgid "**Primary**: `Inter`, with fallbacks: `-apple-system, system-ui`"
+msgstr ""
+
+#: ../../source/templates_expo.md:74
+msgid "**Monospace**: `JetBrains Mono`, with fallback: `ui-monospace`"
+msgstr ""
+
+#: ../../source/templates_expo.md:75
+msgid ""
+"**System Fallback**: `system-ui, Segoe UI, Roboto, Helvetica, Arial, "
+"Apple Color Emoji, Segoe UI Emoji`"
+msgstr ""
+
+#: ../../source/templates_expo.md:77
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Display / Hero"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Inter"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "64px (4rem)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "700–900"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "1.10 (tight)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "-1.6px to -3px"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Maximum impact, extreme tracking"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "48px (3rem)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "-2px"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Feature section anchors"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "-0.25px"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Card titles, feature names"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Intro paragraphs, section descriptions"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Body / Button"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "16px (1rem)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "400–700"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "1.25–1.40"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Standard text, nav links, buttons"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Caption / Label"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "400–600"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "1.00–1.40"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Descriptions, metadata, badge text"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Tag / Small"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "1.00–1.60"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Smallest sans-serif text, badges"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Code Body"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "JetBrains Mono"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Inline code, terminal commands"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Code Caption"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Code snippets, technical labels"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Code Small"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "1.60"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Uppercase tech tags"
+msgstr ""
+
+#: ../../source/templates_expo.md:92
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_expo.md:93
+msgid ""
+"**One typeface, full expression**: Inter is the only sans-serif, used "
+"from weight 400 (regular) through 900 (black). This gives the design a "
+"unified voice while still achieving dramatic contrast between whisper-"
+"light body text and thundering display headlines."
+msgstr ""
+
+#: ../../source/templates_expo.md:94
+msgid ""
+"**Extreme negative tracking at scale**: Headlines at 64px use -1.6px to "
+"-3px letter-spacing, creating ultra-dense text blocks that feel like "
+"logotypes. This aggressive compression is the signature typographic move."
+msgstr ""
+
+#: ../../source/templates_expo.md:95
+msgid ""
+"**Weight as hierarchy**: 700–900 for display, 600 for headings, 500 for "
+"emphasis, 400 for body. The jumps are decisive — no ambiguous in-between "
+"weights."
+msgstr ""
+
+#: ../../source/templates_expo.md:96
+msgid ""
+"**Consistent 1.40 body line-height**: Nearly all body and UI text shares "
+"1.40 line-height, creating a rhythmic vertical consistency."
+msgstr ""
+
+#: ../../source/templates_expo.md:98
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_expo.md:100
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_expo.md:102
+msgid "**Primary (White on border)**"
+msgstr ""
+
+#: ../../source/templates_expo.md:103 ../../source/templates_expo.md:132
+msgid "Background: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_expo.md:104 ../../source/templates_expo.md:133
+msgid "Text: Near Black (`#1c2024`)"
+msgstr ""
+
+#: ../../source/templates_expo.md:105
+msgid "Padding: 0px 12px (compact, content-driven height)"
+msgstr ""
+
+#: ../../source/templates_expo.md:106 ../../source/templates_expo.md:134
+msgid "Border: thin solid Input Border (`1px solid #d9d9e0`)"
+msgstr ""
+
+#: ../../source/templates_expo.md:107 ../../source/templates_expo.md:136
+msgid "Radius: subtly rounded (6px)"
+msgstr ""
+
+#: ../../source/templates_expo.md:108
+msgid "Shadow: subtle combined shadow on hover"
+msgstr ""
+
+#: ../../source/templates_expo.md:109
+msgid "The understated default — clean, professional, unheroic"
+msgstr ""
+
+#: ../../source/templates_expo.md:111
+msgid "**Primary Pill**"
+msgstr ""
+
+#: ../../source/templates_expo.md:112
+msgid "Same as Primary but with pill-shaped radius (9999px)"
+msgstr ""
+
+#: ../../source/templates_expo.md:113
+msgid "Used for hero CTAs and high-emphasis actions"
+msgstr ""
+
+#: ../../source/templates_expo.md:114
+msgid "The extra roundness signals \"start here\""
+msgstr ""
+
+#: ../../source/templates_expo.md:116
+msgid "**Dark Primary**"
+msgstr ""
+
+#: ../../source/templates_expo.md:117
+msgid "Background: Expo Black (`#000000`)"
+msgstr ""
+
+#: ../../source/templates_expo.md:118
+msgid "Text: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_expo.md:119
+msgid "Pill-shaped (9999px) or generously rounded (32–36px)"
+msgstr ""
+
+#: ../../source/templates_expo.md:120
+msgid "No border (black IS the border)"
+msgstr ""
+
+#: ../../source/templates_expo.md:121
+msgid "The maximum-emphasis CTA — reserved for primary conversion actions"
+msgstr ""
+
+#: ../../source/templates_expo.md:123
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_expo.md:124
+msgid "Background: Pure White (`#ffffff`) — clearly lifted from Cloud Gray page"
+msgstr ""
+
+#: ../../source/templates_expo.md:125
+msgid ""
+"Border: thin solid Border Lavender (`1px solid #e0e1e6`) for standard "
+"cards"
+msgstr ""
+
+#: ../../source/templates_expo.md:126
+msgid ""
+"Radius: comfortably rounded (8px) for standard cards; generously rounded "
+"(16–24px) for featured containers"
+msgstr ""
+
+#: ../../source/templates_expo.md:127
+msgid ""
+"Shadow Level 1: Whisper (`rgba(0,0,0,0.08) 0px 3px 6px, rgba(0,0,0,0.07) "
+"0px 2px 4px`) — barely perceptible lift"
+msgstr ""
+
+#: ../../source/templates_expo.md:128
+msgid ""
+"Shadow Level 2: Standard (`rgba(0,0,0,0.1) 0px 10px 20px, "
+"rgba(0,0,0,0.05) 0px 3px 6px`) — clear floating elevation"
+msgstr ""
+
+#: ../../source/templates_expo.md:129
+msgid "Hover: likely subtle shadow deepening or background shift"
+msgstr ""
+
+#: ../../source/templates_expo.md:131
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_expo.md:135
+msgid "Padding: 0px 12px (inline with button sizing)"
+msgstr ""
+
+#: ../../source/templates_expo.md:137
+msgid "Focus: blue ring shadow via CSS custom property"
+msgstr ""
+
+#: ../../source/templates_expo.md:139
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_expo.md:140
+msgid "Sticky top nav on transparent/blurred background"
+msgstr ""
+
+#: ../../source/templates_expo.md:141
+msgid "Logo: Expo wordmark in black"
+msgstr ""
+
+#: ../../source/templates_expo.md:142
+msgid ""
+"Links: Near Black (`#1c2024`) or Slate Gray (`#60646c`) at 14–16px Inter "
+"weight 500"
+msgstr ""
+
+#: ../../source/templates_expo.md:143
+msgid "CTA: Black pill button (\"Sign Up\") on the right"
+msgstr ""
+
+#: ../../source/templates_expo.md:144
+msgid "GitHub star badge as social proof"
+msgstr ""
+
+#: ../../source/templates_expo.md:145
+msgid "Status indicator (\"All Systems Operational\") with green dot"
+msgstr ""
+
+#: ../../source/templates_expo.md:147
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_expo.md:148
+msgid "Product screenshots and device mockups are the visual heroes"
+msgstr ""
+
+#: ../../source/templates_expo.md:149
+msgid "Generously rounded corners (24px) on video and image containers"
+msgstr ""
+
+#: ../../source/templates_expo.md:150
+msgid "Screenshots shown in realistic device frames"
+msgstr ""
+
+#: ../../source/templates_expo.md:151
+msgid "Dark UI screenshots provide contrast against the light canvas"
+msgstr ""
+
+#: ../../source/templates_expo.md:152
+msgid "Full-bleed within rounded containers"
+msgstr ""
+
+#: ../../source/templates_expo.md:154
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_expo.md:156
+msgid "**Universe React Logo**"
+msgstr ""
+
+#: ../../source/templates_expo.md:157
+msgid "Animated/illustrated React logo as the visual centerpiece"
+msgstr ""
+
+#: ../../source/templates_expo.md:158
+msgid "Connects Expo's identity to the React ecosystem"
+msgstr ""
+
+#: ../../source/templates_expo.md:159
+msgid "The only illustrative element on an otherwise photographic page"
+msgstr ""
+
+#: ../../source/templates_expo.md:161
+msgid "**Device Preview Grid**"
+msgstr ""
+
+#: ../../source/templates_expo.md:162
+msgid "Multiple device types (phone, tablet, web) shown simultaneously"
+msgstr ""
+
+#: ../../source/templates_expo.md:163
+msgid "Demonstrates cross-platform capability visually"
+msgstr ""
+
+#: ../../source/templates_expo.md:164
+msgid "Each device uses realistic device chrome"
+msgstr ""
+
+#: ../../source/templates_expo.md:166
+msgid "**Status Badge**"
+msgstr ""
+
+#: ../../source/templates_expo.md:167
+msgid "\"All Systems Operational\" pill in the nav"
+msgstr ""
+
+#: ../../source/templates_expo.md:168
+msgid "Green dot + text — compact trust signal"
+msgstr ""
+
+#: ../../source/templates_expo.md:169
+msgid "Pill-shaped (36px radius)"
+msgstr ""
+
+#: ../../source/templates_expo.md:171
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_expo.md:173
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_expo.md:174
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_expo.md:175
+msgid ""
+"Scale: 1px, 2px, 4px, 8px, 12px, 16px, 24px, 32px, 40px, 48px, 64px, "
+"80px, 96px, 144px"
+msgstr ""
+
+#: ../../source/templates_expo.md:176
+msgid ""
+"Button padding: 0px 12px (unusually compact — height driven by line-"
+"height)"
+msgstr ""
+
+#: ../../source/templates_expo.md:177
+msgid "Card internal padding: approximately 24–32px"
+msgstr ""
+
+#: ../../source/templates_expo.md:178
+msgid ""
+"Section vertical spacing: enormous (estimated 96–144px between major "
+"sections)"
+msgstr ""
+
+#: ../../source/templates_expo.md:179
+msgid "Component gap: 16–24px between sibling elements"
+msgstr ""
+
+#: ../../source/templates_expo.md:181
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_expo.md:182
+msgid "Max container width: approximately 1200–1400px, centered"
+msgstr ""
+
+#: ../../source/templates_expo.md:183
+msgid "Hero: centered single-column with massive breathing room"
+msgstr ""
+
+#: ../../source/templates_expo.md:184
+msgid ""
+"Feature sections: alternating layouts (image left/right, full-width "
+"showcases)"
+msgstr ""
+
+#: ../../source/templates_expo.md:185
+msgid "Card grids: 2–3 column for feature highlights"
+msgstr ""
+
+#: ../../source/templates_expo.md:186
+msgid "Full-width sections with contained inner content"
+msgstr ""
+
+#: ../../source/templates_expo.md:188
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_expo.md:189
+msgid ""
+"**Gallery-like pacing**: Each section feels like its own exhibit, "
+"surrounded by vast empty space. This creates a premium, unhurried "
+"browsing experience."
+msgstr ""
+
+#: ../../source/templates_expo.md:190
+msgid ""
+"**Breathing room is the design**: The generous whitespace IS the primary "
+"design element — it communicates confidence, quality, and that each "
+"feature deserves individual attention."
+msgstr ""
+
+#: ../../source/templates_expo.md:191
+msgid ""
+"**Content islands**: Sections float as isolated \"islands\" in the white "
+"space, connected by scrolling rather than visual continuation."
+msgstr ""
+
+#: ../../source/templates_expo.md:193
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_expo.md:194
+msgid "Nearly squared (4px): Small inline elements, tags"
+msgstr ""
+
+#: ../../source/templates_expo.md:195
+msgid ""
+"Subtly rounded (6px): Buttons, form inputs, combo boxes — the functional "
+"interactive radius"
+msgstr ""
+
+#: ../../source/templates_expo.md:196
+msgid "Comfortably rounded (8px): Standard content cards, containers"
+msgstr ""
+
+#: ../../source/templates_expo.md:197
+msgid "Generously rounded (16px): Feature tabs, content panels"
+msgstr ""
+
+#: ../../source/templates_expo.md:198
+msgid ""
+"Very rounded (24px): Buttons, video/image containers, tabpanels — the "
+"signature softness"
+msgstr ""
+
+#: ../../source/templates_expo.md:199
+msgid "Highly rounded (32–36px): Hero CTAs, status badges, nav buttons"
+msgstr ""
+
+#: ../../source/templates_expo.md:200
+msgid ""
+"Pill-shaped (9999px): Primary action buttons, tags, avatars — maximum "
+"friendliness"
+msgstr ""
+
+#: ../../source/templates_expo.md:202
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Cloud Gray page background, inline text"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Surface (Level 1)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "White bg, no shadow"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Standard white cards on Cloud Gray"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Whisper (Level 2)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "`rgba(0,0,0,0.08) 0px 3px 6px` + `rgba(0,0,0,0.07) 0px 2px 4px`"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Subtle card lift, hover states"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Elevated (Level 3)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "`rgba(0,0,0,0.1) 0px 10px 20px` + `rgba(0,0,0,0.05) 0px 3px 6px`"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Feature showcases, product screenshots"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Modal (Level 4)"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Dark overlay (`--dialog-overlay-background-color`) + heavy shadow"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Dialogs, overlays"
+msgstr ""
+
+#: ../../source/templates_expo.md:212
+msgid ""
+"**Shadow Philosophy**: Expo uses shadows as gentle whispers rather than "
+"architectural statements. The primary depth mechanism is **background "
+"color contrast** — white cards floating on Cloud Gray — rather than "
+"shadow casting. When shadows appear, they're soft, diffused, and "
+"directional (downward), creating the feeling of paper hovering "
+"millimeters above a desk."
+msgstr ""
+
+#: ../../source/templates_expo.md:214
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_expo.md:216
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_expo.md:217
+msgid ""
+"Use Cloud Gray (`#f0f0f3`) as the page background and Pure White "
+"(`#ffffff`) for elevated cards — the two-tone light system is essential"
+msgstr ""
+
+#: ../../source/templates_expo.md:218
+msgid ""
+"Keep display headlines at extreme negative letter-spacing (-1.6px to -3px"
+" at 64px) for the signature compressed look"
+msgstr ""
+
+#: ../../source/templates_expo.md:219
+msgid ""
+"Use pill-shaped (9999px) radius for primary CTA buttons — the organic "
+"shape is core to the identity"
+msgstr ""
+
+#: ../../source/templates_expo.md:220
+msgid ""
+"Reserve black (`#000000`) for headlines and primary CTAs — it carries "
+"maximum authority on the light canvas"
+msgstr ""
+
+#: ../../source/templates_expo.md:221
+msgid ""
+"Use Slate Gray (`#60646c`) for secondary text — it's the precise balance "
+"between readable and receded"
+msgstr ""
+
+#: ../../source/templates_expo.md:222
+msgid ""
+"Maintain enormous vertical spacing between sections (96px+) — the gallery"
+" pacing defines the premium feel"
+msgstr ""
+
+#: ../../source/templates_expo.md:223
+msgid ""
+"Use product screenshots as the primary visual content — the interface "
+"stays monochrome, the products bring color"
+msgstr ""
+
+#: ../../source/templates_expo.md:224
+msgid ""
+"Apply Inter at the full weight range (400–900) — weight contrast IS the "
+"hierarchy"
+msgstr ""
+
+#: ../../source/templates_expo.md:226
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_expo.md:227
+msgid ""
+"Don't introduce decorative colors into the interface chrome — the "
+"monochromatic palette is intentional"
+msgstr ""
+
+#: ../../source/templates_expo.md:228
+msgid ""
+"Don't use sharp corners (border-radius < 6px) on interactive elements — "
+"the pill/rounded geometry is the signature"
+msgstr ""
+
+#: ../../source/templates_expo.md:229
+msgid "Don't reduce section spacing below 64px — the breathing room is the design"
+msgstr ""
+
+#: ../../source/templates_expo.md:230
+msgid ""
+"Don't use heavy drop shadows — depth comes from background contrast and "
+"whisper-soft shadows"
+msgstr ""
+
+#: ../../source/templates_expo.md:231
+msgid ""
+"Don't mix in additional typefaces — Inter handles everything from display"
+" to caption"
+msgstr ""
+
+#: ../../source/templates_expo.md:232
+msgid ""
+"Don't use letter-spacing wider than -0.25px on body text — extreme "
+"tracking is reserved for display only"
+msgstr ""
+
+#: ../../source/templates_expo.md:233
+msgid ""
+"Don't use borders heavier than 2px — containment is subtle, achieved "
+"through background color and gentle borders"
+msgstr ""
+
+#: ../../source/templates_expo.md:234
+msgid ""
+"Don't add gradients to the interface — visual richness comes from "
+"content, not decoration"
+msgstr ""
+
+#: ../../source/templates_expo.md:235
+msgid ""
+"Don't use saturated colors outside of semantic contexts — the palette is "
+"strictly grayscale + functional blue"
+msgstr ""
+
+#: ../../source/templates_expo.md:237
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_expo.md:239
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "<640px"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Single column, hamburger nav, stacked cards, hero text scales to ~36px"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "640–1024px"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "2-column grids, condensed nav, medium hero text"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid ">1024px"
+msgstr ""
+
+#: ../../source/templates_expo.md
+msgid "Full multi-column layout, expanded nav, massive hero (64px)"
+msgstr ""
+
+#: ../../source/templates_expo.md:246
+msgid ""
+"*Only one explicit breakpoint detected (640px), suggesting a fluid, "
+"container-query or min()/clamp()-based responsive system rather than "
+"fixed breakpoint snapping.*"
+msgstr ""
+
+#: ../../source/templates_expo.md:248
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_expo.md:249
+msgid ""
+"Buttons use generous radius (24–36px) creating large, finger-friendly "
+"surfaces"
+msgstr ""
+
+#: ../../source/templates_expo.md:250
+msgid "Navigation links spaced with adequate gap"
+msgstr ""
+
+#: ../../source/templates_expo.md:251
+msgid "Status badge sized for touch (36px radius)"
+msgstr ""
+
+#: ../../source/templates_expo.md:252
+msgid "Minimum recommended: 44x44px"
+msgstr ""
+
+#: ../../source/templates_expo.md:254
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_expo.md:255
+msgid ""
+"**Navigation**: Full horizontal nav with CTA collapses to hamburger on "
+"mobile"
+msgstr ""
+
+#: ../../source/templates_expo.md:256
+msgid "**Feature sections**: Multi-column → stacked single column"
+msgstr ""
+
+#: ../../source/templates_expo.md:257
+msgid "**Hero text**: 64px → ~36px progressive scaling"
+msgstr ""
+
+#: ../../source/templates_expo.md:258
+msgid "**Device previews**: Grid → stacked/carousel"
+msgstr ""
+
+#: ../../source/templates_expo.md:259
+msgid "**Cards**: Side-by-side → vertical stacking"
+msgstr ""
+
+#: ../../source/templates_expo.md:260
+msgid "**Spacing**: Reduces proportionally but maintains generous rhythm"
+msgstr ""
+
+#: ../../source/templates_expo.md:262
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_expo.md:263
+msgid "Product screenshots scale proportionally"
+msgstr ""
+
+#: ../../source/templates_expo.md:264
+msgid "Device mockups may simplify or show fewer devices on mobile"
+msgstr ""
+
+#: ../../source/templates_expo.md:265
+msgid "Rounded corners maintained at all sizes"
+msgstr ""
+
+#: ../../source/templates_expo.md:266
+msgid "Lazy loading for below-fold content"
+msgstr ""
+
+#: ../../source/templates_expo.md:268
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_expo.md:270
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_expo.md:271
+msgid "Primary CTA / Headlines: \"Expo Black (#000000)\""
+msgstr ""
+
+#: ../../source/templates_expo.md:272
+msgid "Page Background: \"Cloud Gray (#f0f0f3)\""
+msgstr ""
+
+#: ../../source/templates_expo.md:273
+msgid "Card Surface: \"Pure White (#ffffff)\""
+msgstr ""
+
+#: ../../source/templates_expo.md:274
+msgid "Body Text: \"Near Black (#1c2024)\""
+msgstr ""
+
+#: ../../source/templates_expo.md:275
+msgid "Secondary Text: \"Slate Gray (#60646c)\""
+msgstr ""
+
+#: ../../source/templates_expo.md:276
+msgid "Borders: \"Border Lavender (#e0e1e6)\""
+msgstr ""
+
+#: ../../source/templates_expo.md:277
+msgid "Links: \"Link Cobalt (#0d74ce)\""
+msgstr ""
+
+#: ../../source/templates_expo.md:278
+msgid "Tertiary Text: \"Silver (#b0b4ba)\""
+msgstr ""
+
+#: ../../source/templates_expo.md:280
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_expo.md:281
+msgid ""
+"\"Create a hero section on Cloud Gray (#f0f0f3) with a massive headline "
+"at 64px Inter weight 700, line-height 1.10, letter-spacing -3px. Text in "
+"Expo Black (#000000). Below, add a subtitle in Slate Gray (#60646c) at "
+"18px. Place a black pill-shaped CTA button (9999px radius) beneath.\""
+msgstr ""
+
+#: ../../source/templates_expo.md:282
+msgid ""
+"\"Design a feature card on Pure White (#ffffff) with a 1px solid Border "
+"Lavender (#e0e1e6) border and comfortably rounded corners (8px). Title in"
+" Near Black (#1c2024) at 20px Inter weight 600, description in Slate Gray"
+" (#60646c) at 16px. Add a whisper shadow (rgba(0,0,0,0.08) 0px 3px "
+"6px).\""
+msgstr ""
+
+#: ../../source/templates_expo.md:283
+msgid ""
+"\"Build a navigation bar with Expo logo on the left, text links in Near "
+"Black (#1c2024) at 14px Inter weight 500, and a black pill CTA button on "
+"the right. Background: transparent with blur backdrop. Bottom border: 1px"
+" solid Border Lavender (#e0e1e6).\""
+msgstr ""
+
+#: ../../source/templates_expo.md:284
+msgid ""
+"\"Create a code block using JetBrains Mono at 14px on a Pure White "
+"surface with Border Lavender border and 8px radius. Code in Near Black, "
+"keywords in Link Cobalt (#0d74ce).\""
+msgstr ""
+
+#: ../../source/templates_expo.md:285
+msgid ""
+"\"Design a status badge pill (9999px radius) with a green dot and 'All "
+"Systems Operational' text in Inter 12px weight 500. Background: Pure "
+"White, border: 1px solid Input Border (#d9d9e0).\""
+msgstr ""
+
+#: ../../source/templates_expo.md:287
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_expo.md:288
+msgid "Focus on ONE component at a time"
+msgstr ""
+
+#: ../../source/templates_expo.md:289
+msgid ""
+"Reference specific color names and hex codes — \"use Slate Gray "
+"(#60646c)\" not \"make it gray\""
+msgstr ""
+
+#: ../../source/templates_expo.md:290
+msgid ""
+"Use radius values deliberately — 6px for buttons, 8px for cards, 24px for"
+" images, 9999px for pills"
+msgstr ""
+
+#: ../../source/templates_expo.md:291
+msgid ""
+"Describe the \"feel\" alongside measurements — \"enormous breathing room "
+"with 96px section spacing\""
+msgstr ""
+
+#: ../../source/templates_expo.md:292
+msgid ""
+"Always specify Inter and the exact weight — weight contrast IS the "
+"hierarchy"
+msgstr ""
+
+#: ../../source/templates_expo.md:293
+msgid ""
+"For shadows, specify \"whisper shadow\" or \"standard elevation\" from "
+"the elevation table"
+msgstr ""
+
+#: ../../source/templates_expo.md:294
+msgid "Keep the interface monochrome — let product content be the color"
+msgstr ""
+

@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/domutils_readme.md:1
+msgid ""
+"domutils [![Node.js "
+"CI](https://github.com/fb55/domutils/actions/workflows/nodejs-"
+"test.yml/badge.svg)](https://github.com/fb55/domutils/actions/workflows"
+"/nodejs-test.yml)"
+msgstr ""
+
+#: ../../source/domutils_readme.md:1
+msgid "Node.js CI"
+msgstr ""
+
+#: ../../source/domutils_readme.md:3
+msgid ""
+"Utilities for working with "
+"[htmlparser2](https://github.com/fb55/htmlparser2)'s DOM."
+msgstr ""
+
+#: ../../source/domutils_readme.md:5
+msgid ""
+"All functions are exported as a single module. Look [through the "
+"docs](https://domutils.js.org/modules.html) to see what is available."
+msgstr ""
+
+#: ../../source/domutils_readme.md:7
+msgid "Ecosystem"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "[htmlparser2](https://github.com/fb55/htmlparser2)"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "Fast & forgiving HTML/XML parser"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "[domhandler](https://github.com/fb55/domhandler)"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "Handler for htmlparser2 that turns documents into a DOM"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "[domutils](https://github.com/fb55/domutils)"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "Utilities for working with domhandler's DOM"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "[css-select](https://github.com/fb55/css-select)"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "CSS selector engine, compatible with domhandler's DOM"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "[cheerio](https://github.com/cheeriojs/cheerio)"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "The jQuery API for domhandler's DOM"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "[dom-serializer](https://github.com/cheeriojs/dom-serializer)"
+msgstr ""
+
+#: ../../source/domutils_readme.md
+msgid "Serializer for domhandler's DOM"
+msgstr ""
+
+#: ../../source/domutils_readme.md:20
+msgid "License: BSD-2-Clause"
+msgstr ""
+
+#: ../../source/domutils_readme.md:22
+msgid "Security contact information"
+msgstr ""
+
+#: ../../source/domutils_readme.md:24
+msgid ""
+"To report a security vulnerability, please use the [Tidelift security "
+"contact](https://tidelift.com/security). Tidelift will coordinate the fix"
+" and disclosure."
+msgstr ""
+
+#: ../../source/domutils_readme.md:27
+msgid "`domutils` for enterprise"
+msgstr ""
+
+#: ../../source/domutils_readme.md:29
+msgid "Available as part of the Tidelift Subscription"
+msgstr ""
+
+#: ../../source/domutils_readme.md:31
+msgid ""
+"The maintainers of `domutils` and thousands of other packages are working"
+" with Tidelift to deliver commercial support and maintenance for the open"
+" source dependencies you use to build your applications. Save time, "
+"reduce risk, and improve code health, while paying the maintainers of the"
+" exact dependencies you use. [Learn "
+"more.](https://tidelift.com/subscription/pkg/npm-domutils?utm_source=npm-"
+"domutils&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)"
+msgstr ""
+

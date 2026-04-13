@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/pinkie_readme.md:8
+msgid ""
+"Itty bitty little widdle twinkie pinkie [ES2015 "
+"Promise](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-"
+"promise-objects) implementation"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:10
+msgid ""
+"[![Build Status](https://travis-"
+"ci.org/floatdrop/pinkie.svg?branch=master)](https://travis-"
+"ci.org/floatdrop/pinkie)  [![Coverage "
+"Status](https://coveralls.io/repos/floatdrop/pinkie/badge.svg?branch=master&service=github)](https://coveralls.io/github/floatdrop/pinkie?branch=master)"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:10
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:10
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:12
+msgid ""
+"There are [tons of Promise implementations](https://github.com/promises-"
+"aplus/promises-spec/blob/master/implementations.md#standalone) out there,"
+" but all of them focus on browser compatibility and are often bloated "
+"with functionality."
+msgstr ""
+
+#: ../../source/pinkie_readme.md:14
+msgid ""
+"This module is an exact Promise specification polyfill (like [native-"
+"promise-only](https://github.com/getify/native-promise-only)), but in "
+"Node.js land (it should be browserify-able though)."
+msgstr ""
+
+#: ../../source/pinkie_readme.md:17
+msgid "Install"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:24
+msgid "Usage"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:44
+msgid "API"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:46
+msgid ""
+"`pinkie` exports bare [ES2015 "
+"Promise](https://people.mozilla.org/~jorendorff/es6-draft.html#sec-"
+"promise-objects) implementation and polyfills [Node.js rejection "
+"events](https://nodejs.org/api/process.html#process_event_unhandledrejection)."
+" In case you forgot:"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:48
+msgid "new Promise(executor)"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:50
+msgid "Returns new instance of `Promise`."
+msgstr ""
+
+#: ../../source/pinkie_readme.md:52
+msgid "executor"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:54
+msgid "*Required*   Type: `function`"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:57
+msgid ""
+"Function with two arguments `resolve` and `reject`. The first argument "
+"fulfills the promise, the second argument rejects it."
+msgstr ""
+
+#: ../../source/pinkie_readme.md:59
+msgid "pinkie.all(promises)"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:61
+msgid ""
+"Returns a promise that resolves when all of the promises in the "
+"`promises` Array argument have resolved."
+msgstr ""
+
+#: ../../source/pinkie_readme.md:63
+msgid "pinkie.race(promises)"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:65
+msgid ""
+"Returns a promise that resolves or rejects as soon as one of the promises"
+" in the `promises` Array resolves or rejects, with the value or reason "
+"from that promise."
+msgstr ""
+
+#: ../../source/pinkie_readme.md:67
+msgid "pinkie.reject(reason)"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:69
+msgid "Returns a Promise object that is rejected with the given `reason`."
+msgstr ""
+
+#: ../../source/pinkie_readme.md:71
+msgid "pinkie.resolve(value)"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:73
+msgid ""
+"Returns a Promise object that is resolved with the given `value`. If the "
+"`value` is a thenable (i.e. has a then method), the returned promise will"
+" \"follow\" that thenable, adopting its eventual state; otherwise the "
+"returned promise will be fulfilled with the `value`."
+msgstr ""
+
+#: ../../source/pinkie_readme.md:76
+msgid "Related"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:78
+msgid ""
+"[pinkie-promise](https://github.com/floatdrop/pinkie-promise) - Returns "
+"the native Promise or this module"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:81
+msgid "License"
+msgstr ""
+
+#: ../../source/pinkie_readme.md:83
+msgid "MIT © [Vsevolod Strukchinsky](http://github.com/floatdrop)"
+msgstr ""
+

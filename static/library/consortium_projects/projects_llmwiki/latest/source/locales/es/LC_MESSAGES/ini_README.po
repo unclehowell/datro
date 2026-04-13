@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/ini_README.md:1
+msgid "An ini format parser and serializer for node."
+msgstr ""
+
+#: ../../source/ini_README.md:3
+msgid ""
+"Sections are treated as nested objects.  Items before the first heading "
+"are saved on the object directly."
+msgstr ""
+
+#: ../../source/ini_README.md:6
+msgid "Usage"
+msgstr ""
+
+#: ../../source/ini_README.md:8
+msgid "Consider an ini-file `config.ini` that looks like this:"
+msgstr ""
+
+#: ../../source/ini_README.md:24
+msgid "You can read, manipulate and write the ini-file like so:"
+msgstr ""
+
+#: ../../source/ini_README.md:39
+msgid ""
+"This will result in a file called `config_modified.ini` being written to "
+"the filesystem with the following content:"
+msgstr ""
+
+#: ../../source/ini_README.md:56
+msgid "API"
+msgstr ""
+
+#: ../../source/ini_README.md:58
+msgid "decode(inistring)"
+msgstr ""
+
+#: ../../source/ini_README.md:60
+msgid "Decode the ini-style formatted `inistring` into a nested object."
+msgstr ""
+
+#: ../../source/ini_README.md:62
+msgid "parse(inistring)"
+msgstr ""
+
+#: ../../source/ini_README.md:64
+msgid "Alias for `decode(inistring)`"
+msgstr ""
+
+#: ../../source/ini_README.md:66
+msgid "encode(object, [options])"
+msgstr ""
+
+#: ../../source/ini_README.md:68
+msgid ""
+"Encode the object `object` into an ini-style formatted string. If the "
+"optional parameter `section` is given, then all top-level properties of "
+"the object are put into this section and the `section`-string is "
+"prepended to all sub-sections, see the usage example above."
+msgstr ""
+
+#: ../../source/ini_README.md:73
+msgid "The `options` object may contain the following:"
+msgstr ""
+
+#: ../../source/ini_README.md:75
+msgid ""
+"`section` A string which will be the first `section` in the encoded ini "
+"data.  Defaults to none."
+msgstr ""
+
+#: ../../source/ini_README.md:77
+msgid ""
+"`whitespace` Boolean to specify whether to put whitespace around the `=` "
+"character.  By default, whitespace is omitted, to be friendly to some "
+"persnickety old parsers that don't tolerate it well.  But some find that "
+"it's more human-readable and pretty with the whitespace."
+msgstr ""
+
+#: ../../source/ini_README.md:82
+msgid ""
+"For backwards compatibility reasons, if a `string` options is passed in, "
+"then it is assumed to be the `section` value."
+msgstr ""
+
+#: ../../source/ini_README.md:85
+msgid "stringify(object, [options])"
+msgstr ""
+
+#: ../../source/ini_README.md:87
+msgid "Alias for `encode(object, [options])`"
+msgstr ""
+
+#: ../../source/ini_README.md:89
+msgid "safe(val)"
+msgstr ""
+
+#: ../../source/ini_README.md:91
+msgid ""
+"Escapes the string `val` such that it is safe to be used as a key or "
+"value in an ini-file. Basically escapes quotes. For example"
+msgstr ""
+
+#: ../../source/ini_README.md:96
+msgid "would result in"
+msgstr ""
+
+#: ../../source/ini_README.md:100
+msgid "unsafe(val)"
+msgstr ""
+
+#: ../../source/ini_README.md:102
+msgid "Unescapes the string `val`"
+msgstr ""
+

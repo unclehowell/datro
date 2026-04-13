@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/cookie-signature_History.md:1
+msgid "1.0.7 / 2023-04-12"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:4
+msgid ""
+"backport the buffer support from the 1.2.x release branch (thanks "
+"@FadhiliNjagi!)"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:6
+msgid "1.0.6 / 2015-02-03"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:9
+msgid "use `npm test` instead of `make test` to run tests"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:10
+msgid "clearer assertion messages when checking input"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:12
+msgid "1.0.5 / 2014-09-05"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:15
+msgid "add license to package.json"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:17
+msgid "1.0.4 / 2014-06-25"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:20
+msgid "corrected avoidance of timing attacks (thanks @tenbits!)"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:22
+msgid "1.0.3 / 2014-01-28"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:25
+msgid "[incorrect] fix for timing attacks"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:27
+msgid "1.0.2 / 2014-01-28"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:30
+msgid "fix missing repository warning"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:31
+msgid "fix typo in test"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:33
+msgid "1.0.1 / 2013-04-15"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:36
+msgid "Revert \"Changed underlying HMAC algo. to sha512.\""
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:37
+msgid "Revert \"Fix for timing attacks on MAC verification.\""
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:39
+msgid "0.0.1 / 2010-01-03"
+msgstr ""
+
+#: ../../source/cookie-signature_History.md:42
+msgid "Initial release"
+msgstr ""
+

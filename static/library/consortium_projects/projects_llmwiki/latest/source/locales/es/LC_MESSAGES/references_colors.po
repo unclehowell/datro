@@ -1,0 +1,314 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_colors.md:1
+msgid "Excalidraw Color Palette"
+msgstr ""
+
+#: ../../source/references_colors.md:3
+msgid "Use these colors consistently across diagrams."
+msgstr ""
+
+#: ../../source/references_colors.md:5
+msgid "Primary Colors (for strokes, arrows, and accents)"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Hex"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Blue"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#4a9eed`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Primary actions, links, data series 1"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Amber"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#f59e0b`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Warnings, highlights, data series 2"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Green"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#22c55e`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Success, positive, data series 3"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Red"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#ef4444`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Errors, negative, data series 4"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Purple"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#8b5cf6`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Accents, special items, data series 5"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Pink"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#ec4899`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Decorative, data series 6"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Cyan"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#06b6d4`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Info, secondary, data series 7"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Lime"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#84cc16`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Extra, data series 8"
+msgstr ""
+
+#: ../../source/references_colors.md:18
+msgid "Pastel Fills (for shape backgrounds)"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Color"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Good For"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Light Blue"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#a5d8ff`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Input, sources, primary nodes"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Light Green"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#b2f2bb`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Success, output, completed"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Light Orange"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#ffd8a8`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Warning, pending, external"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Light Purple"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#d0bfff`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Processing, middleware, special"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Light Red"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#ffc9c9`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Error, critical, alerts"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Light Yellow"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#fff3bf`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Notes, decisions, planning"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Light Teal"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#c3fae8`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Storage, data, memory"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Light Pink"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#eebefa`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Analytics, metrics"
+msgstr ""
+
+#: ../../source/references_colors.md:31
+msgid "Background Zones (use with opacity: 30-35 for layered diagrams)"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Blue zone"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#dbe4ff`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "UI / frontend layer"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Purple zone"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#e5dbff`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Logic / agent layer"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Green zone"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "`#d3f9d8`"
+msgstr ""
+
+#: ../../source/references_colors.md
+msgid "Data / tool layer"
+msgstr ""
+
+#: ../../source/references_colors.md:39
+msgid "Text Contrast Rules"
+msgstr ""
+
+#: ../../source/references_colors.md:41
+msgid ""
+"**On white backgrounds**: minimum text color is `#757575`. Default "
+"`#1e1e1e` is best."
+msgstr ""
+
+#: ../../source/references_colors.md:42
+msgid ""
+"**Colored text on light fills**: use dark variants (`#15803d` not "
+"`#22c55e`, `#2563eb` not `#4a9eed`)"
+msgstr ""
+
+#: ../../source/references_colors.md:43
+msgid "**White text**: only on dark backgrounds (`#9a5030` not `#c4795b`)"
+msgstr ""
+
+#: ../../source/references_colors.md:44
+msgid "**Never**: light gray (`#b0b0b0`, `#999`) on white -- unreadable"
+msgstr ""
+

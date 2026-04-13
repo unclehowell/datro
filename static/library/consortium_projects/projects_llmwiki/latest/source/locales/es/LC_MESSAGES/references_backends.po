@@ -1,0 +1,404 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_backends.md:1
+msgid "Backend Configuration Guide"
+msgstr ""
+
+#: ../../source/references_backends.md:3
+msgid "Complete guide to configuring Guidance with different LLM backends."
+msgstr ""
+
+#: ../../source/references_backends.md:5
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../source/references_backends.md:6
+msgid "API-Based Models (Anthropic, OpenAI)"
+msgstr ""
+
+#: ../../source/references_backends.md:7
+#: ../../source/references_backends.md:419
+msgid "Local Models (Transformers, llama.cpp)"
+msgstr ""
+
+#: ../../source/references_backends.md:8
+#: ../../source/references_backends.md:329
+msgid "Backend Comparison"
+msgstr ""
+
+#: ../../source/references_backends.md:9
+#: ../../source/references_backends.md:387
+msgid "Performance Tuning"
+msgstr ""
+
+#: ../../source/references_backends.md:10
+#: ../../source/references_backends.md:196
+#: ../../source/references_backends.md:284
+#: ../../source/references_backends.md:495
+msgid "Advanced Configuration"
+msgstr ""
+
+#: ../../source/references_backends.md:12
+msgid "API-Based Models"
+msgstr ""
+
+#: ../../source/references_backends.md:14
+msgid "Anthropic Claude"
+msgstr ""
+
+#: ../../source/references_backends.md:16
+#: ../../source/references_backends.md:83
+#: ../../source/references_backends.md:165
+#: ../../source/references_backends.md:253
+msgid "Basic Setup"
+msgstr ""
+
+#: ../../source/references_backends.md:32
+#: ../../source/references_backends.md:99
+msgid "Available Models"
+msgstr ""
+
+#: ../../source/references_backends.md:48
+#: ../../source/references_backends.md:115
+msgid "Configuration Options"
+msgstr ""
+
+#: ../../source/references_backends.md:62
+msgid "With Context Managers"
+msgstr ""
+
+#: ../../source/references_backends.md ../../source/references_backends.md:81
+msgid "OpenAI"
+msgstr ""
+
+#: ../../source/references_backends.md:130
+msgid "Chat Format"
+msgstr ""
+
+#: ../../source/references_backends.md:147
+msgid "Azure OpenAI"
+msgstr ""
+
+#: ../../source/references_backends.md:161
+msgid "Local Models"
+msgstr ""
+
+#: ../../source/references_backends.md:163
+msgid "Transformers (Hugging Face)"
+msgstr ""
+
+#: ../../source/references_backends.md:174
+#: ../../source/references_backends.md:265
+msgid "GPU Configuration"
+msgstr ""
+
+#: ../../source/references_backends.md:209
+msgid "Popular Models"
+msgstr ""
+
+#: ../../source/references_backends.md:231
+msgid "Generation Configuration"
+msgstr ""
+
+#: ../../source/references_backends.md ../../source/references_backends.md:251
+msgid "llama.cpp"
+msgstr ""
+
+#: ../../source/references_backends.md:300
+msgid "Quantized Models"
+msgstr ""
+
+#: ../../source/references_backends.md:316
+msgid "Popular GGUF Models"
+msgstr ""
+
+#: ../../source/references_backends.md:331
+msgid "Feature Matrix"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Feature"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Anthropic"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Transformers"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Constrained Generation"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "✅ Full"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Token Healing"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "✅ Yes"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Streaming"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "GPU Support"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "N/A"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Quantization"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Cost"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "$$$"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Free"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Latency"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Low"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Medium"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Setup Difficulty"
+msgstr ""
+
+#: ../../source/references_backends.md
+msgid "Easy"
+msgstr ""
+
+#: ../../source/references_backends.md:344
+msgid "Performance Characteristics"
+msgstr ""
+
+#: ../../source/references_backends.md:346
+msgid "**Anthropic Claude:**"
+msgstr ""
+
+#: ../../source/references_backends.md:347
+msgid "**Latency**: 200-500ms (API call)"
+msgstr ""
+
+#: ../../source/references_backends.md:348
+#: ../../source/references_backends.md:354
+msgid "**Throughput**: Limited by API rate limits"
+msgstr ""
+
+#: ../../source/references_backends.md:349
+msgid "**Cost**: $3-15 per 1M input tokens"
+msgstr ""
+
+#: ../../source/references_backends.md:350
+msgid "**Best for**: Production systems, high-quality outputs"
+msgstr ""
+
+#: ../../source/references_backends.md:352
+msgid "**OpenAI:**"
+msgstr ""
+
+#: ../../source/references_backends.md:353
+msgid "**Latency**: 200-400ms (API call)"
+msgstr ""
+
+#: ../../source/references_backends.md:355
+msgid "**Cost**: $0.15-30 per 1M input tokens"
+msgstr ""
+
+#: ../../source/references_backends.md:356
+msgid "**Best for**: Cost-sensitive production, gpt-4o-mini"
+msgstr ""
+
+#: ../../source/references_backends.md:358
+msgid "**Transformers:**"
+msgstr ""
+
+#: ../../source/references_backends.md:359
+msgid "**Latency**: 50-200ms (local inference)"
+msgstr ""
+
+#: ../../source/references_backends.md:360
+msgid "**Throughput**: GPU-dependent (10-100 tokens/sec)"
+msgstr ""
+
+#: ../../source/references_backends.md:361
+#: ../../source/references_backends.md:367
+msgid "**Cost**: Hardware cost only"
+msgstr ""
+
+#: ../../source/references_backends.md:362
+msgid "**Best for**: Privacy-sensitive, high-volume, experimentation"
+msgstr ""
+
+#: ../../source/references_backends.md:364
+msgid "**llama.cpp:**"
+msgstr ""
+
+#: ../../source/references_backends.md:365
+msgid "**Latency**: 30-150ms (local inference)"
+msgstr ""
+
+#: ../../source/references_backends.md:366
+msgid "**Throughput**: Hardware-dependent (20-150 tokens/sec)"
+msgstr ""
+
+#: ../../source/references_backends.md:368
+msgid "**Best for**: Edge deployment, Apple Silicon, CPU inference"
+msgstr ""
+
+#: ../../source/references_backends.md:370
+msgid "Memory Requirements"
+msgstr ""
+
+#: ../../source/references_backends.md:372
+msgid "**Transformers (FP16):**"
+msgstr ""
+
+#: ../../source/references_backends.md:373
+msgid "7B model: ~14GB GPU VRAM"
+msgstr ""
+
+#: ../../source/references_backends.md:374
+msgid "13B model: ~26GB GPU VRAM"
+msgstr ""
+
+#: ../../source/references_backends.md:375
+msgid "70B model: ~140GB GPU VRAM (multi-GPU)"
+msgstr ""
+
+#: ../../source/references_backends.md:377
+msgid "**llama.cpp (Q4_K_M):**"
+msgstr ""
+
+#: ../../source/references_backends.md:378
+msgid "7B model: ~4.5GB RAM"
+msgstr ""
+
+#: ../../source/references_backends.md:379
+msgid "13B model: ~8GB RAM"
+msgstr ""
+
+#: ../../source/references_backends.md:380
+msgid "70B model: ~40GB RAM"
+msgstr ""
+
+#: ../../source/references_backends.md:382
+msgid "**Optimization Tips:**"
+msgstr ""
+
+#: ../../source/references_backends.md:383
+msgid "Use quantized models (Q4_K_M) for lower memory"
+msgstr ""
+
+#: ../../source/references_backends.md:384
+msgid "Use GPU offloading for faster inference"
+msgstr ""
+
+#: ../../source/references_backends.md:385
+msgid "Use CPU inference for smaller models (<7B)"
+msgstr ""
+
+#: ../../source/references_backends.md:389
+msgid "API Models (Anthropic, OpenAI)"
+msgstr ""
+
+#: ../../source/references_backends.md:391
+msgid "Reduce Latency"
+msgstr ""
+
+#: ../../source/references_backends.md:406
+msgid "Reduce Cost"
+msgstr ""
+
+#: ../../source/references_backends.md:421
+msgid "Optimize GPU Usage"
+msgstr ""
+
+#: ../../source/references_backends.md:448
+msgid "Optimize llama.cpp"
+msgstr ""
+
+#: ../../source/references_backends.md:474
+msgid "Batch Processing"
+msgstr ""
+
+#: ../../source/references_backends.md:497
+msgid "Custom Model Configurations"
+msgstr ""
+
+#: ../../source/references_backends.md:515
+msgid "Environment Variables"
+msgstr ""
+
+#: ../../source/references_backends.md:530
+msgid "Debugging"
+msgstr ""
+
+#: ../../source/references_backends.md:548
+msgid "Resources"
+msgstr ""
+
+#: ../../source/references_backends.md:550
+msgid "**Anthropic Docs**: https://docs.anthropic.com"
+msgstr ""
+
+#: ../../source/references_backends.md:551
+msgid "**OpenAI Docs**: https://platform.openai.com/docs"
+msgstr ""
+
+#: ../../source/references_backends.md:552
+msgid "**Hugging Face Models**: https://huggingface.co/models"
+msgstr ""
+
+#: ../../source/references_backends.md:553
+msgid "**llama.cpp**: https://github.com/ggerganov/llama.cpp"
+msgstr ""
+
+#: ../../source/references_backends.md:554
+msgid "**GGUF Models**: https://huggingface.co/models?library=gguf"
+msgstr ""
+

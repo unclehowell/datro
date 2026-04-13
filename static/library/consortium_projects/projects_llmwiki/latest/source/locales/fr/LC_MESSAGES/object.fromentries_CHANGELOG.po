@@ -1,0 +1,324 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/object.fromentries_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres"
+" to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:8
+msgid ""
+"[v2.0.8](https://github.com/es-"
+"shims/Object.fromEntries/compare/v2.0.7...v2.0.8) - 2024-03-18"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:10
+#: ../../source/object.fromentries_CHANGELOG.md:19
+#: ../../source/object.fromentries_CHANGELOG.md:26
+msgid "Commits"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:12
+msgid ""
+"[actions] remove redundant finisher [`70e8717`](https://github.com/es-"
+"shims/Object.fromEntries/commit/70e8717d348e7d2b919c48ce7ab8cdc403664250)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:13
+msgid ""
+"[Deps] update `call-bind`, `define-properties`, `es-abstract` "
+"[`f4b1a93`](https://github.com/es-"
+"shims/Object.fromEntries/commit/f4b1a93c665224e02724d3984eac0ce8508407cc)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:14
+msgid ""
+"[Refactor] use `es-object-atoms` where possible "
+"[`252ffa7`](https://github.com/es-"
+"shims/Object.fromEntries/commit/252ffa73b503b29a7751730f5bca52f5136469e2)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:15
+msgid ""
+"[Dev Deps] update `aud`, `tape` [`200ccd5`](https://github.com/es-"
+"shims/Object.fromEntries/commit/200ccd563a4bf5a55603be7877646dae1f67675c)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:17
+msgid ""
+"[v2.0.7](https://github.com/es-"
+"shims/Object.fromEntries/compare/v2.0.6...v2.0.7) - 2023-08-28"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:21
+msgid ""
+"[Deps] update `define-properties`, `es-abstract` "
+"[`dbf1467`](https://github.com/es-"
+"shims/Object.fromEntries/commit/dbf1467c5586bbf0183ebdee1239176eaf1f94d6)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:22
+msgid ""
+"[Dev Deps] update `@es-shims/api`, `@ljharb/eslint-config`, `aud`, `tape`"
+" [`495556f`](https://github.com/es-"
+"shims/Object.fromEntries/commit/495556fd641f1c6b9f2f1eedf1be98ed7dad1c43)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:24
+msgid ""
+"[v2.0.6](https://github.com/es-"
+"shims/Object.fromEntries/compare/v2.0.5...v2.0.6) - 2022-11-06"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:28
+msgid ""
+"[actions] reuse common workflows [`867603d`](https://github.com/es-"
+"shims/Object.fromEntries/commit/867603ddb384887d25749488579a4c74fa9c1443)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:29
+msgid ""
+"[meta] add `auto-changelog` [`3621c90`](https://github.com/es-"
+"shims/Object.fromEntries/commit/3621c90294140f0139cf65c9ed852e7ace01c40f)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:30
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `@es-shims/api`, "
+"`safe-publish-latest`, `tape` [`d6c3de7`](https://github.com/es-"
+"shims/Object.fromEntries/commit/d6c3de793e1f2055b5b11102f778270378956f71)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:31
+msgid ""
+"[Deps] update `define-properties`, `es-abstract` "
+"[`a0eca66`](https://github.com/es-"
+"shims/Object.fromEntries/commit/a0eca66c2d21c1030430b8c06c36d9235d0f5870)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:32
+msgid ""
+"[actions] update rebase action to use reusable workflow "
+"[`91df159`](https://github.com/es-"
+"shims/Object.fromEntries/commit/91df159d076da80dcb62dd4a27cc303e4bdaf76e)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:33
+msgid ""
+"[actions] update codecov uploader [`e7f2c96`](https://github.com/es-"
+"shims/Object.fromEntries/commit/e7f2c965103df04dc21042bd735ce1a5d1446193)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:34
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `tape` "
+"[`ec22968`](https://github.com/es-"
+"shims/Object.fromEntries/commit/ec22968b61d5888816c66d8416bb045f6584e3a1)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:38
+msgid "2.0.5 / 2021-10-03"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:40
+msgid "[readme] add actions and codecov badges"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:41
+msgid "[Deps] update `es-abstract`"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:42
+msgid "[Deps] remove unused `has` dep"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:43
+msgid "[meta] use `prepublishOnly` script for npm 7+"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:44
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `@es-shims/api`, "
+"`aud`, `tape`"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:45
+#: ../../source/object.fromentries_CHANGELOG.md:55
+msgid "[actions] update workflows"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:46
+msgid "[actions] use `node/install` instead of `node/run`; use `codecov` action"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:47
+msgid "[Tests] increase coverage"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:49
+msgid "2.0.4 / 2021-02-21"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:51
+msgid "[readme] fix repo URLs; remove travis badge"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:52
+msgid "[meta] do not publish github action workflow files"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:53
+msgid "[Deps] update `call-bind`, `es-abstract`"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:54
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `has-strict-"
+"mode`, `tape`"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:57
+msgid "2.0.3 / 2020-11-26"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:59
+msgid ""
+"[Deps] update `es-abstract`; remove `function-bind`; use `call-bind` "
+"where applicable"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:60
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `tape`; add `aud`, "
+"`safe-publish-latest`"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:61
+msgid "[actions] add \"Allow Edits\" workflow"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:62
+msgid "[actions] switch Automatic Rebase workflow to `pull_request_target` event"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:63
+msgid "[Tests] migrate tests to Github Actions"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:64
+msgid "[Tests] run `nyc` on all tests"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:65
+msgid ""
+"[Tests] add `implementation` test; run `es-shim-api` in postlint; use "
+"`tape` runner"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:66
+msgid "[Tests] only audit prod deps"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:68
+msgid "2.0.2 / 2019-12-12"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:70
+msgid "[Refactor] use split-up `es-abstract` (63% bundle size decrease)"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:71
+msgid "[readme] remove testling"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:72
+msgid "[Dev Deps] update `eslint`, `@ljharb/eslint-config`"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:73
+msgid "[meta] add `funding` field"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:74
+msgid "[Tests] use shared travis-ci configs"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:75
+msgid "[actions] add automatic rebasing / merge commit blocking"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:77
+msgid "2.0.1 / 2019-10-03"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:79
+msgid "[Fix] do not mutate `Object.fromEntries` when already present"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:80
+msgid "[Deps] update `define-properties`, `es-abstract`, `has`"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:81
+msgid "[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `covert`, `tape`"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:82
+msgid ""
+"[Tests] up to `node` `v12.9`, `v11.15`, `v10.16`, `v9.11`, `v8.16`, "
+"`v6.17`, `v4.9`"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:83
+msgid "[Tests] use `npx aud` instead of `nsp` or `npm audit` with hoops"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:85
+msgid "2.0.0 / 2018-08-09"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:87
+msgid "[Breaking] throw when `iterable` is nullish"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:88
+msgid "[Docs] Fix link to proposed spec"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:90
+msgid "1.0.0 / 2018-03-21"
+msgstr ""
+
+#: ../../source/object.fromentries_CHANGELOG.md:92
+msgid "v1.0.0"
+msgstr ""
+

@@ -1,0 +1,146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/math-intrinsics_README.md:1
+msgid ""
+"math-intrinsics <sup>[![Version Badge][npm-version-svg]][package-"
+"url]</sup>"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:1
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:3
+msgid ""
+"[![github actions][actions-image]][actions-url] [![coverage][codecov-"
+"image]][codecov-url] [![License][license-image]][license-url] "
+"[![Downloads][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:3
+msgid "github actions"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:3
+msgid "coverage"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:3
+msgid "License"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:8
+msgid "[![npm badge][npm-badge-png]][package-url]"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:8
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:10
+msgid "ES Math-related intrinsics and helpers, robustly cached."
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:12
+msgid "`abs`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:13
+msgid "`floor`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:14
+msgid "`isFinite`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:15
+msgid "`isInteger`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:16
+msgid "`isNaN`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:17
+msgid "`isNegativeZero`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:18
+msgid "`max`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:19
+msgid "`min`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:20
+msgid "`mod`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:21
+msgid "`pow`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:22
+msgid "`round`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:23
+msgid "`sign`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:24
+msgid "`constants/maxArrayLength`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:25
+msgid "`constants/maxSafeInteger`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:26
+msgid "`constants/maxValue`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:29
+msgid "Tests"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:30
+msgid "Simply clone the repo, `npm install`, and run `npm test`"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:32
+msgid "Security"
+msgstr ""
+
+#: ../../source/math-intrinsics_README.md:34
+msgid ""
+"Please email [@ljharb](https://github.com/ljharb) or see "
+"https://tidelift.com/security if you have a potential security "
+"vulnerability to report."
+msgstr ""
+

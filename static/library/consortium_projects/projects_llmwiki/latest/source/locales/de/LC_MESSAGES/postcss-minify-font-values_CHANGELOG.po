@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:1
+msgid "4.0.0-rc.0"
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:3
+msgid "Breaking: Drops support for Node 0.12, we now require at least Node 4."
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:4
+msgid "Breaking: Update PostCSS to 6.0.0."
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:5
+msgid ""
+"Breaking: `removeAfterKeyword` is now set to `false` by default. This is "
+"to avoid incorrectly discarding emoji font families."
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:7
+msgid ""
+"Removed support for compressing whitespace, this is now delegated to "
+"postcss-normalize-whitespace."
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:10
+msgid "1.0.5"
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:12
+msgid ""
+"Resolves an issue where `var` would be removed from `font-family` values "
+"(@ben-eb)."
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:15
+msgid "1.0.4"
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:17
+msgid "Ignores duplicated `monospace` definitions (@ben-eb)."
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:19
+msgid "1.0.3"
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:21
+msgid ""
+"Resolves an issue where the module would remove quotes from font families"
+" that began with numbers (@ben-eb)."
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:24
+msgid "1.0.2"
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:26
+msgid "Upgraded postcss-value-parser to version 3 (@TrySound)."
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:28
+msgid "1.0.1"
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:30
+msgid "Add repository link to `package.json` (@TrySound)."
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:32
+msgid "1.0.0"
+msgstr ""
+
+#: ../../source/postcss-minify-font-values_CHANGELOG.md:34
+msgid "Initial release (@TrySound)."
+msgstr ""
+

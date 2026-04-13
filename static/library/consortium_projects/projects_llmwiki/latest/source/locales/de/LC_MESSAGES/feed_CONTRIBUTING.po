@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/feed_CONTRIBUTING.md:1
+msgid "How to contribute"
+msgstr ""
+
+#: ../../source/feed_CONTRIBUTING.md:3
+msgid ""
+"We'd love to accept your patches and contributions to this project. There"
+" are a just a few small guidelines you need to follow."
+msgstr ""
+
+#: ../../source/feed_CONTRIBUTING.md:5
+msgid "Submitting a patch"
+msgstr ""
+
+#: ../../source/feed_CONTRIBUTING.md:7
+msgid ""
+"It's generally best to start by opening a new issue describing the bug or"
+" feature you're intending to fix. Even if you think it's relatively "
+"minor, it's helpful to know what people are working on. Mention in the "
+"initial issue that you are planning to work on that bug or feature so "
+"that it can be assigned to you."
+msgstr ""
+
+#: ../../source/feed_CONTRIBUTING.md:13
+msgid ""
+"Considering each syndication client seem to have their own specificities,"
+" make sure you provide enough information about the client in question if"
+" you want to add new elements or update existing ones. Link to their "
+"official documentation and provide examples."
+msgstr ""
+
+#: ../../source/feed_CONTRIBUTING.md:18
+msgid "Create and run tests. Your new addition must be covered by unit tests."
+msgstr ""
+
+#: ../../source/feed_CONTRIBUTING.md:20
+msgid ""
+"Follow the normal process of [forking][] the project, and setup a new "
+"branch to work in."
+msgstr ""
+
+#: ../../source/feed_CONTRIBUTING.md:23
+msgid ""
+"Do your best to have [well-formed commit messages][] for each change. "
+"This provides consistency throughout the project, and ensures that commit"
+" messages are able to be formatted properly by various git tools."
+msgstr ""
+
+#: ../../source/feed_CONTRIBUTING.md:27
+msgid "Finally, push the commits to your fork and submit a [pull request][]."
+msgstr ""
+

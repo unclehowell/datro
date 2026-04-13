@@ -1,0 +1,381 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/iconv-lite_Changelog.md:1
+msgid "0.4.24 / 2018-08-22"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:3
+msgid "Added MIK encoding (#196, by @Ivan-Kalatchev)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:6
+msgid "0.4.23 / 2018-05-07"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:8
+msgid ""
+"Fix deprecation warning in Node v10 due to the last usage of `new Buffer`"
+" (#185, by @felixbuenemann)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:9
+msgid ""
+"Switched from NodeBuffer to Buffer in typings (#155 by @felixfbecker, "
+"#186 by @larssn)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:12
+msgid "0.4.22 / 2018-05-05"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:14
+msgid ""
+"Use older semver style for dependencies to be compatible with Node "
+"version 0.10 (#182, by @dougwilson)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:15
+msgid "Fix tests to accomodate fixes in Node v10 (#182, by @dougwilson)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:18
+msgid "0.4.21 / 2018-04-06"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:20
+msgid "Fix encoding canonicalization (#156)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:21
+msgid "Fix the paths in the \"browser\" field in package.json (#174 by @LMLB)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:22
+msgid ""
+"Removed \"contributors\" section in package.json - see Git history "
+"instead."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:25
+msgid "0.4.20 / 2018-04-06"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:27
+msgid ""
+"Updated `new Buffer()` usages with recommended replacements as it's being"
+" deprecated in Node v10 (#176, #178 by @ChALkeR)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:30
+msgid "0.4.19 / 2017-09-09"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:32
+msgid ""
+"Fixed iso8859-1 codec regression in handling untranslatable characters "
+"(#162, caused by #147)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:33
+msgid "Re-generated windows1255 codec, because it was updated in iconv project"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:34
+msgid ""
+"Fixed grammar in error message when iconv-lite is loaded with encoding "
+"other than utf8"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:37
+msgid "0.4.18 / 2017-06-13"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:39
+msgid "Fixed CESU-8 regression in Node v8."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:42
+msgid "0.4.17 / 2017-04-22"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:44
+msgid ""
+"Updated typescript definition file to support Angular 2 AoT mode (#153 by"
+" @larssn)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:47
+msgid "0.4.16 / 2017-04-22"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:49
+msgid "Added support for React Native (#150)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:50
+msgid ""
+"Changed iso8859-1 encoding to usine internal 'binary' encoding, as it's "
+"the same thing (#147 by @mscdex)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:51
+msgid "Fixed typo in Readme (#138 by @jiangzhuo)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:52
+msgid "Fixed build for Node v6.10+ by making correct version comparison"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:53
+msgid "Added a warning if iconv-lite is loaded not as utf-8 (see #142)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:56
+msgid "0.4.15 / 2016-11-21"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:58
+msgid "Fixed typescript type definition (#137)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:61
+msgid "0.4.14 / 2016-11-20"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:63
+msgid "Preparation for v1.0"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:64
+msgid "Added Node v6 and latest Node versions to Travis CI test rig"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:65
+msgid "Deprecated Node v0.8 support"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:66
+msgid "Typescript typings (@larssn)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:67
+msgid "Fix encoding of Euro character in GB 18030 (inspired by @lygstate)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:68
+msgid "Add ms prefix to dbcs windows encodings (@rokoroku)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:71
+msgid "0.4.13 / 2015-10-01"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:73
+msgid "Fix silly mistake in deprecation notice."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:76
+msgid "0.4.12 / 2015-09-26"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:78
+msgid "Node v4 support:"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:79
+msgid "Added CESU-8 decoding (#106)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:80
+msgid "Added deprecation notice for `extendNodeEncodings`"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:81
+msgid "Added Travis tests for Node v4 and io.js latest (#105 by @Mithgol)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:84
+msgid "0.4.11 / 2015-07-03"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:86
+msgid "Added CESU-8 encoding."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:89
+msgid "0.4.10 / 2015-05-26"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:91
+msgid ""
+"Changed UTF-16 endianness heuristic to take into account any ASCII chars,"
+" not just spaces. This should minimize the importance of \"default\" "
+"endianness."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:95
+msgid "0.4.9 / 2015-05-24"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:97
+msgid ""
+"Streamlined BOM handling: strip BOM by default, add BOM when encoding if"
+"  addBOM: true. Added docs to Readme."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:99
+msgid "UTF16 now uses UTF16-LE by default."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:100
+msgid "Fixed minor issue with big5 encoding."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:101
+msgid ""
+"Added io.js testing on Travis; updated node-iconv version to test "
+"against. Now we just skip testing SBCS encodings that node-iconv doesn't "
+"support."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:103
+msgid "(internal refactoring) Updated codec interface to use classes."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:104
+msgid "Use strict mode in all files."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:107
+msgid "0.4.8 / 2015-04-14"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:109
+msgid "added alias UNICODE-1-1-UTF-7 for UTF-7 encoding (#94)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:112
+msgid "0.4.7 / 2015-02-05"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:114
+msgid ""
+"stop official support of Node.js v0.8. Should still work, but no "
+"guarantees. reason: Packages needed for testing are hard to get on Travis"
+" CI."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:116
+msgid ""
+"work in environment where Object.prototype is monkey patched with "
+"enumerable  props (#89)."
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:120
+msgid "0.4.6 / 2015-01-12"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:122
+msgid "fix rare aliases of single-byte encodings (thanks @mscdex)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:123
+msgid "double the timeout for dbcs tests to make them less flaky on travis"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:126
+msgid "0.4.5 / 2014-11-20"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:128
+msgid "fix windows-31j and x-sjis encoding support (@nleush)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:129
+msgid "minor fix: undefined variable reference when internal error happens"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:132
+msgid "0.4.4 / 2014-07-16"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:134
+msgid "added encodings UTF-7 (RFC2152) and UTF-7-IMAP (RFC3501 Section 5.1.3)"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:135
+msgid "fixed streaming base64 encoding"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:138
+msgid "0.4.3 / 2014-06-14"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:140
+msgid "added encodings UTF-16BE and UTF-16 with BOM"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:143
+msgid "0.4.2 / 2014-06-12"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:145
+msgid "don't throw exception if `extendNodeEncodings()` is called more than once"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:148
+msgid "0.4.1 / 2014-06-11"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:150
+msgid "codepage 808 added"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:153
+msgid "0.4.0 / 2014-06-10"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:155
+msgid "code is rewritten from scratch"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:156
+msgid "all widespread encodings are supported"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:157
+msgid "streaming interface added"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:158
+msgid "browserify compatibility added"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:159
+msgid "(optional) extend core primitive encodings to make usage even simpler"
+msgstr ""
+
+#: ../../source/iconv-lite_Changelog.md:160
+msgid "moved from vows to mocha as the testing framework"
+msgstr ""
+

@@ -1,0 +1,1527 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_resend.md:1
+msgid "Design System: Resend"
+msgstr ""
+
+#: ../../source/templates_resend.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_resend.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_resend.md:7
+msgid "**Primary:** `Geist` | **Mono:** `Geist Mono`"
+msgstr ""
+
+#: ../../source/templates_resend.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Geist', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_resend.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'Geist Mono', ui-monospace, SFMono-"
+"Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', "
+"monospace;`"
+msgstr ""
+
+#: ../../source/templates_resend.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_resend.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_resend.md:18
+msgid ""
+"Resend's website is a dark, cinematic canvas that treats email "
+"infrastructure like a luxury product. The entire page is draped in pure "
+"black (`#000000`) with text that glows in near-white (`#f0f0f0`), "
+"creating a theater-like experience where content performs on a void "
+"stage. This isn't the typical developer-tool darkness — it's the "
+"controlled darkness of a photography gallery, where every element is lit "
+"with intention and nothing competes for attention."
+msgstr ""
+
+#: ../../source/templates_resend.md:20
+msgid ""
+"The typography system is the star of the show. Three carefully chosen "
+"typefaces create a hierarchy that feels both editorial and technical: "
+"Domaine Display (a Klim Type Foundry serif) appears at massive 96px for "
+"hero headlines with barely-there line-height (1.00) and negative tracking"
+" (-0.96px), creating display text that feels like a magazine cover. ABC "
+"Favorit (by Dinamo) handles section headings with an even more aggressive"
+" letter-spacing (-2.8px at 56px), giving a compressed, engineered quality"
+" to mid-tier text. Inter takes over for body and UI, providing the clean "
+"readability that lets the display fonts shine. Commit Mono rounds out the"
+" family for code blocks."
+msgstr ""
+
+#: ../../source/templates_resend.md:22
+#, python-format
+msgid ""
+"What makes Resend distinctive is its icy, blue-tinted border system. "
+"Instead of neutral gray borders, Resend uses `rgba(214, 235, 253, 0.19)` "
+"— a frosty, slightly blue-tinted line at 19% opacity that gives every "
+"container and divider a cold, crystalline quality against the black "
+"background. Combined with pill-shaped buttons (9999px radius), multi-"
+"color accent system (orange, green, blue, yellow, red — each with its own"
+" CSS variable scale), and OpenType stylistic sets (`\"ss01\"`, "
+"`\"ss03\"`, `\"ss04\"`, `\"ss11\"`), the result is a design system that "
+"feels premium, precise, and quietly confident."
+msgstr ""
+
+#: ../../source/templates_resend.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_resend.md:25
+msgid ""
+"Pure black background with near-white (`#f0f0f0`) text — theatrical, "
+"gallery-like darkness"
+msgstr ""
+
+#: ../../source/templates_resend.md:26
+msgid ""
+"Three-font hierarchy: Domaine Display (serif hero), ABC Favorit "
+"(geometric sections), Inter (body/UI)"
+msgstr ""
+
+#: ../../source/templates_resend.md:27
+msgid ""
+"Icy blue-tinted borders: `rgba(214, 235, 253, 0.19)` — every border has a"
+" cold, crystalline shimmer"
+msgstr ""
+
+#: ../../source/templates_resend.md:28
+msgid ""
+"Multi-color accent system: orange, green, blue, yellow, red — each with "
+"numbered CSS variable scales"
+msgstr ""
+
+#: ../../source/templates_resend.md:29
+msgid "Pill-shaped buttons and tags (9999px radius) with transparent backgrounds"
+msgstr ""
+
+#: ../../source/templates_resend.md:30
+msgid ""
+"OpenType stylistic sets (`\"ss01\"`, `\"ss03\"`, `\"ss04\"`, `\"ss11\"`) "
+"on display fonts"
+msgstr ""
+
+#: ../../source/templates_resend.md:31
+msgid "Commit Mono for code — monospace as a design element, not an afterthought"
+msgstr ""
+
+#: ../../source/templates_resend.md:32
+msgid ""
+"Whisper-level shadows using blue-tinted ring: `rgba(176, 199, 217, 0.145)"
+" 0px 0px 0px 1px`"
+msgstr ""
+
+#: ../../source/templates_resend.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_resend.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_resend.md:37
+#, python-format
+msgid ""
+"**Void Black** (`#000000`): Page background, the defining canvas color "
+"(95% opacity via `--color-black-12`)"
+msgstr ""
+
+#: ../../source/templates_resend.md:38
+msgid ""
+"**Near White** (`#f0f0f0`): Primary text, button text, high-contrast "
+"elements"
+msgstr ""
+
+#: ../../source/templates_resend.md:39
+msgid ""
+"**Pure White** (`#ffffff`): `--color-white`, maximum emphasis text, link "
+"highlights"
+msgstr ""
+
+#: ../../source/templates_resend.md:41
+msgid "Accent Scale — Orange"
+msgstr ""
+
+#: ../../source/templates_resend.md:42
+#, python-format
+msgid ""
+"**Orange 4** (`#ff5900`): `--color-orange-4`, at 22% opacity — subtle "
+"warm glow"
+msgstr ""
+
+#: ../../source/templates_resend.md:43
+msgid ""
+"**Orange 10** (`#ff801f`): `--color-orange-10`, primary orange accent — "
+"warm, energetic"
+msgstr ""
+
+#: ../../source/templates_resend.md:44
+msgid ""
+"**Orange 11** (`#ffa057`): `--color-orange-11`, lighter orange for "
+"secondary use"
+msgstr ""
+
+#: ../../source/templates_resend.md:46
+msgid "Accent Scale — Green"
+msgstr ""
+
+#: ../../source/templates_resend.md:47
+#, python-format
+msgid ""
+"**Green 3** (`#22ff99`): `--color-green-3`, at 12% opacity — faint "
+"emerald wash"
+msgstr ""
+
+#: ../../source/templates_resend.md:48
+#, python-format
+msgid ""
+"**Green 4** (`#11ff99`): `--color-green-4`, at 18% opacity — success "
+"indicator glow"
+msgstr ""
+
+#: ../../source/templates_resend.md:50
+msgid "Accent Scale — Blue"
+msgstr ""
+
+#: ../../source/templates_resend.md:51
+#, python-format
+msgid ""
+"**Blue 4** (`#0075ff`): `--color-blue-4`, at 34% opacity — medium blue "
+"accent"
+msgstr ""
+
+#: ../../source/templates_resend.md:52
+#, python-format
+msgid "**Blue 5** (`#0081fd`): `--color-blue-5`, at 42% opacity — stronger blue"
+msgstr ""
+
+#: ../../source/templates_resend.md:53
+msgid ""
+"**Blue 10** (`#3b9eff`): `--color-blue-10`, bright blue — links, "
+"interactive elements"
+msgstr ""
+
+#: ../../source/templates_resend.md:55
+msgid "Accent Scale — Other"
+msgstr ""
+
+#: ../../source/templates_resend.md:56
+msgid ""
+"**Yellow 9** (`#ffc53d`): `--color-yellow-9`, warm gold for warnings or "
+"highlights"
+msgstr ""
+
+#: ../../source/templates_resend.md:57
+#, python-format
+msgid ""
+"**Red 5** (`#ff2047`): `--color-red-5`, at 34% opacity — error states, "
+"destructive actions"
+msgstr ""
+
+#: ../../source/templates_resend.md:59
+msgid "Neutral Scale"
+msgstr ""
+
+#: ../../source/templates_resend.md:60
+msgid "**Silver** (`#a1a4a5`): Secondary text, muted links, descriptions"
+msgstr ""
+
+#: ../../source/templates_resend.md:61
+msgid "**Dark Gray** (`#464a4d`): Tertiary text, de-emphasized content"
+msgstr ""
+
+#: ../../source/templates_resend.md:62
+msgid "**Mid Gray** (`#5c5c5c`): Hover states, subtle emphasis"
+msgstr ""
+
+#: ../../source/templates_resend.md:63
+msgid "**Medium Gray** (`#494949`): Quaternary text"
+msgstr ""
+
+#: ../../source/templates_resend.md:64
+msgid "**Light Gray** (`#f8f8f8`): Light mode surface (if applicable)"
+msgstr ""
+
+#: ../../source/templates_resend.md:65
+msgid "**Border Gray** (`#eaeaea`): Light context borders"
+msgstr ""
+
+#: ../../source/templates_resend.md:66
+msgid "**Edge Gray** (`#ececec`): Subtle borders on light surfaces"
+msgstr ""
+
+#: ../../source/templates_resend.md:67
+msgid "**Mist Gray** (`#dedfdf`): Light dividers"
+msgstr ""
+
+#: ../../source/templates_resend.md:68
+msgid "**Soft Gray** (`#e5e6e6`): Alternate light border"
+msgstr ""
+
+#: ../../source/templates_resend.md:70
+msgid "Surface & Overlay"
+msgstr ""
+
+#: ../../source/templates_resend.md:71
+#, python-format
+msgid ""
+"**Frost Primary** (`#fcfdff`): Primary color token (slight blue tint, 94%"
+" opacity)"
+msgstr ""
+
+#: ../../source/templates_resend.md:72
+msgid "**White Hover** (`rgba(255, 255, 255, 0.28)`): Button hover state on dark"
+msgstr ""
+
+#: ../../source/templates_resend.md:73
+msgid ""
+"**White 60%** (`oklab(0.999994 ... / 0.577)`): Semi-transparent white for"
+" muted text"
+msgstr ""
+
+#: ../../source/templates_resend.md:74
+msgid ""
+"**White 64%** (`oklab(0.999994 ... / 0.642)`): Slightly brighter semi-"
+"transparent white"
+msgstr ""
+
+#: ../../source/templates_resend.md:76
+msgid "Borders & Shadows"
+msgstr ""
+
+#: ../../source/templates_resend.md:77
+#, python-format
+msgid ""
+"**Frost Border** (`rgba(214, 235, 253, 0.19)`): The signature — icy blue-"
+"tinted borders at 19% opacity"
+msgstr ""
+
+#: ../../source/templates_resend.md:78
+msgid ""
+"**Frost Border Alt** (`rgba(217, 237, 254, 0.145)`): Slightly lighter "
+"variant for list items"
+msgstr ""
+
+#: ../../source/templates_resend.md:79
+msgid ""
+"**Ring Shadow** (`rgba(176, 199, 217, 0.145) 0px 0px 0px 1px`): Blue-"
+"tinted shadow-as-border"
+msgstr ""
+
+#: ../../source/templates_resend.md:80
+msgid "**Focus Ring** (`rgb(0, 0, 0) 0px 0px 0px 8px`): Heavy black focus ring"
+msgstr ""
+
+#: ../../source/templates_resend.md:81
+msgid ""
+"**Subtle Shadow** (`rgba(0, 0, 0, 0.1) 0px 1px 3px, rgba(0, 0, 0, 0.1) "
+"0px 1px 2px -1px`): Minimal card elevation"
+msgstr ""
+
+#: ../../source/templates_resend.md:83
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_resend.md:85
+msgid "Font Families"
+msgstr ""
+
+#: ../../source/templates_resend.md:86
+msgid ""
+"**Display Serif**: `domaine` (Domaine Display by Klim Type Foundry) — "
+"hero headlines"
+msgstr ""
+
+#: ../../source/templates_resend.md:87
+msgid ""
+"**Display Sans**: `aBCFavorit` (ABC Favorit by Dinamo), fallbacks: `ui-"
+"sans-serif, system-ui` — section headings"
+msgstr ""
+
+#: ../../source/templates_resend.md:88
+msgid ""
+"**Body / UI**: `inter`, fallbacks: `ui-sans-serif, system-ui` — body "
+"text, buttons, navigation"
+msgstr ""
+
+#: ../../source/templates_resend.md:89
+msgid ""
+"**Monospace**: `commitMono`, fallbacks: `ui-monospace, SFMono-Regular, "
+"Menlo, Monaco, Consolas`"
+msgstr ""
+
+#: ../../source/templates_resend.md:90
+msgid "**Secondary**: `Helvetica` — fallback for specific UI contexts"
+msgstr ""
+
+#: ../../source/templates_resend.md:91
+msgid ""
+"**System**: `-apple-system, system-ui, Segoe UI, Roboto` — embedded "
+"content"
+msgstr ""
+
+#: ../../source/templates_resend.md:93
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "domaine"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "96px (6.00rem)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "-0.96px"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "`\"ss01\", \"ss04\", \"ss11\"`"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Display Hero Mobile"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "76.8px (4.80rem)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "-0.768px"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Scaled for mobile"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "aBCFavorit"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "56px (3.50rem)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "-2.8px"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "1.30 (tight)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Sub-heading Compact"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "-0.8px"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "inter"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "24px (1.50rem)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Section sub-headings"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Introductions"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Standard body text"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Body Semibold"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Emphasis, active states"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Nav Link"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "1.43"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "0.35px"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "`\"ss01\", \"ss03\", \"ss04\"` — positive tracking"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Button / Link"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "500–600"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Buttons, nav, CTAs"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "1.60 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Descriptions"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Helvetica Caption"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Helvetica"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "400–600"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "1.00–1.71"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "UI elements"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Small"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Tags, meta, fine print"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Small Uppercase"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "`text-transform: uppercase`"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Small Capitalize"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "`text-transform: capitalize`"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Code Body"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "commitMono"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Code blocks"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Code Small"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Inline code"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Code Tiny"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Small code labels"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Heading (Helvetica)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Alternate heading context"
+msgstr ""
+
+#: ../../source/templates_resend.md:118
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_resend.md:119
+msgid ""
+"**Three-font editorial hierarchy**: Domaine Display (serif, hero), ABC "
+"Favorit (geometric sans, sections), Inter (readable body). Each font has "
+"a strict role — they never cross lanes."
+msgstr ""
+
+#: ../../source/templates_resend.md:120
+msgid ""
+"**Aggressive negative tracking on display**: Domaine at -0.96px, ABC "
+"Favorit at -2.8px. The display type feels compressed, urgent, and "
+"designed — like a magazine masthead."
+msgstr ""
+
+#: ../../source/templates_resend.md:121
+msgid ""
+"**Positive tracking on nav**: ABC Favorit nav links use +0.35px letter-"
+"spacing — the only positive tracking in the system. This creates airy, "
+"spaced-out navigation text that contrasts with the compressed headings."
+msgstr ""
+
+#: ../../source/templates_resend.md:122
+msgid ""
+"**OpenType as identity**: The `\"ss01\"`, `\"ss03\"`, `\"ss04\"`, "
+"`\"ss11\"` stylistic sets are enabled on all ABC Favorit and Domaine "
+"text, activating alternate glyphs that give Resend's typography its "
+"unique character."
+msgstr ""
+
+#: ../../source/templates_resend.md:123
+msgid ""
+"**Commit Mono as design element**: The monospace font isn't hidden in "
+"code blocks — it's used prominently for code examples and technical "
+"content, treated as a first-class visual element."
+msgstr ""
+
+#: ../../source/templates_resend.md:125
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_resend.md:127
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_resend.md:129
+msgid "**Primary Transparent Pill**"
+msgstr ""
+
+#: ../../source/templates_resend.md:130 ../../source/templates_resend.md:146
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_resend.md:131 ../../source/templates_resend.md:147
+msgid "Text: `#f0f0f0`"
+msgstr ""
+
+#: ../../source/templates_resend.md:132 ../../source/templates_resend.md:141
+msgid "Padding: 5px 12px"
+msgstr ""
+
+#: ../../source/templates_resend.md:133
+msgid "Radius: 9999px (full pill)"
+msgstr ""
+
+#: ../../source/templates_resend.md:134 ../../source/templates_resend.md:155
+msgid "Border: `1px solid rgba(214, 235, 253, 0.19)` (frost border)"
+msgstr ""
+
+#: ../../source/templates_resend.md:135
+msgid "Hover: background `rgba(255, 255, 255, 0.28)` (white glass)"
+msgstr ""
+
+#: ../../source/templates_resend.md:136
+msgid "Use: Primary CTA on dark backgrounds"
+msgstr ""
+
+#: ../../source/templates_resend.md:138
+msgid "**White Solid Pill**"
+msgstr ""
+
+#: ../../source/templates_resend.md:139
+msgid "Background: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_resend.md:140
+msgid "Text: `#000000`"
+msgstr ""
+
+#: ../../source/templates_resend.md:142
+msgid "Radius: 9999px"
+msgstr ""
+
+#: ../../source/templates_resend.md:143
+msgid "Use: High-contrast CTA (\"Get started\")"
+msgstr ""
+
+#: ../../source/templates_resend.md:145
+msgid "**Ghost Button**"
+msgstr ""
+
+#: ../../source/templates_resend.md:148 ../../source/templates_resend.md:163
+msgid "Radius: 4px"
+msgstr ""
+
+#: ../../source/templates_resend.md:149
+msgid "No border"
+msgstr ""
+
+#: ../../source/templates_resend.md:150
+msgid "Hover: subtle background tint"
+msgstr ""
+
+#: ../../source/templates_resend.md:151
+msgid "Use: Secondary actions, tab items"
+msgstr ""
+
+#: ../../source/templates_resend.md:153
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_resend.md:154
+msgid "Background: transparent or very subtle dark tint"
+msgstr ""
+
+#: ../../source/templates_resend.md:156
+msgid "Radius: 16px (standard cards), 24px (large sections/panels)"
+msgstr ""
+
+#: ../../source/templates_resend.md:157
+msgid "Shadow: `rgba(176, 199, 217, 0.145) 0px 0px 0px 1px` (ring shadow)"
+msgstr ""
+
+#: ../../source/templates_resend.md:158
+msgid "Dark product screenshots and code demos as card content"
+msgstr ""
+
+#: ../../source/templates_resend.md:159
+msgid "No traditional box-shadow elevation"
+msgstr ""
+
+#: ../../source/templates_resend.md:161
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_resend.md:162
+msgid "Text: `#f0f0f0` on dark, `#000000` on light"
+msgstr ""
+
+#: ../../source/templates_resend.md:164
+msgid "Focus: shadow-based ring"
+msgstr ""
+
+#: ../../source/templates_resend.md:165
+msgid "Minimal styling — inherits dark theme"
+msgstr ""
+
+#: ../../source/templates_resend.md:167
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_resend.md:168
+msgid ""
+"Sticky dark header with frost border bottom: `1px solid rgba(214, 235, "
+"253, 0.19)`"
+msgstr ""
+
+#: ../../source/templates_resend.md:169
+msgid "\"Resend\" wordmark left-aligned"
+msgstr ""
+
+#: ../../source/templates_resend.md:170
+msgid "ABC Favorit 14px weight 500 with +0.35px tracking for nav links"
+msgstr ""
+
+#: ../../source/templates_resend.md:171
+msgid "Pill CTAs right-aligned"
+msgstr ""
+
+#: ../../source/templates_resend.md:172
+msgid "Mobile: hamburger collapse"
+msgstr ""
+
+#: ../../source/templates_resend.md:174
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_resend.md:175
+msgid "Product screenshots and code demos dominate content sections"
+msgstr ""
+
+#: ../../source/templates_resend.md:176
+msgid "Dark-themed screenshots on dark background — seamless integration"
+msgstr ""
+
+#: ../../source/templates_resend.md:177
+msgid "Rounded corners: 12px–16px on images"
+msgstr ""
+
+#: ../../source/templates_resend.md:178
+msgid "Full-width sections with subtle gradient overlays"
+msgstr ""
+
+#: ../../source/templates_resend.md:180
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_resend.md:182
+msgid "**Tab Navigation**"
+msgstr ""
+
+#: ../../source/templates_resend.md:183
+msgid "Horizontal tabs with subtle selection indicator"
+msgstr ""
+
+#: ../../source/templates_resend.md:184
+msgid "Tab items: 8px radius"
+msgstr ""
+
+#: ../../source/templates_resend.md:185
+msgid "Active state with subtle background differentiation"
+msgstr ""
+
+#: ../../source/templates_resend.md:187
+msgid "**Code Preview Panels**"
+msgstr ""
+
+#: ../../source/templates_resend.md:188
+msgid "Dark code blocks using Commit Mono"
+msgstr ""
+
+#: ../../source/templates_resend.md:189
+msgid "Frost borders (`rgba(214, 235, 253, 0.19)`)"
+msgstr ""
+
+#: ../../source/templates_resend.md:190
+msgid ""
+"Syntax-highlighted with multi-color accent tokens (orange, blue, green, "
+"yellow)"
+msgstr ""
+
+#: ../../source/templates_resend.md:192
+msgid "**Multi-color Accent Badges**"
+msgstr ""
+
+#: ../../source/templates_resend.md:193
+msgid "Each product feature has its own accent color from the CSS variable scale"
+msgstr ""
+
+#: ../../source/templates_resend.md:194
+msgid ""
+"Badges use the accent color at low opacity (12–42%) for background, full "
+"opacity for text"
+msgstr ""
+
+#: ../../source/templates_resend.md:196
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_resend.md:198
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_resend.md:199
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_resend.md:200
+msgid ""
+"Scale: 1px, 2px, 4px, 5px, 6px, 7px, 8px, 10px, 12px, 16px, 20px, 24px, "
+"30px, 32px, 40px"
+msgstr ""
+
+#: ../../source/templates_resend.md:202
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_resend.md:203
+msgid "Centered content with generous max-width"
+msgstr ""
+
+#: ../../source/templates_resend.md:204
+msgid "Full-width black sections with contained inner content"
+msgstr ""
+
+#: ../../source/templates_resend.md:205
+msgid "Single-column hero, expanding to feature grids below"
+msgstr ""
+
+#: ../../source/templates_resend.md:206
+msgid "Code preview panels as full-width or contained showcases"
+msgstr ""
+
+#: ../../source/templates_resend.md:208
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_resend.md:209
+msgid ""
+"**Cinematic black space**: The black background IS the whitespace. "
+"Generous vertical spacing (80px–120px+) between sections creates a "
+"scroll-through-darkness experience where each section emerges like a "
+"scene."
+msgstr ""
+
+#: ../../source/templates_resend.md:210
+msgid ""
+"**Tight content, vast surrounds**: Text blocks and cards are compact "
+"internally, but float in vast dark space — creating isolated \"islands\" "
+"of content."
+msgstr ""
+
+#: ../../source/templates_resend.md:211
+msgid ""
+"**Typography-led rhythm**: The massive display fonts (96px) create their "
+"own vertical rhythm — each headline is a visual event that anchors the "
+"surrounding space."
+msgstr ""
+
+#: ../../source/templates_resend.md:213
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_resend.md:214
+msgid "Sharp (4px): Buttons (ghost), inputs, small interactive elements"
+msgstr ""
+
+#: ../../source/templates_resend.md:215
+msgid "Subtle (6px): Menu panels, navigation items"
+msgstr ""
+
+#: ../../source/templates_resend.md:216
+msgid "Standard (8px): Tabs, content blocks"
+msgstr ""
+
+#: ../../source/templates_resend.md:217
+msgid "Comfortable (10px): Accent elements"
+msgstr ""
+
+#: ../../source/templates_resend.md:218
+msgid "Card (12px): Clipboard buttons, medium containers"
+msgstr ""
+
+#: ../../source/templates_resend.md:219
+msgid "Large (16px): Feature cards, images, main buttons"
+msgstr ""
+
+#: ../../source/templates_resend.md:220
+msgid "Section (24px): Large panels, section containers"
+msgstr ""
+
+#: ../../source/templates_resend.md:221
+msgid "Pill (9999px): Primary CTAs, tags, badges"
+msgstr ""
+
+#: ../../source/templates_resend.md:223
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "No shadow, transparent background"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Default — most elements on dark void"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Ring (Level 1)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "`rgba(176, 199, 217, 0.145) 0px 0px 0px 1px`"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Shadow-as-border for cards, containers"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Frost Border (Level 1b)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "`1px solid rgba(214, 235, 253, 0.19)`"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Explicit borders — buttons, dividers, tabs"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Subtle (Level 2)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "`rgba(0, 0, 0, 0.1) 0px 1px 3px, rgba(0, 0, 0, 0.1) 0px 1px 2px -1px`"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Light card elevation"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Focus (Level 3)"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "`rgb(0, 0, 0) 0px 0px 0px 8px`"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Heavy black focus ring — accessibility"
+msgstr ""
+
+#: ../../source/templates_resend.md:233
+msgid ""
+"**Shadow Philosophy**: Resend barely uses shadows at all. On a pure black"
+" background, traditional shadows are invisible — you can't cast a shadow "
+"into the void. Instead, Resend creates depth through its signature frost "
+"borders (`rgba(214, 235, 253, 0.19)`) — thin, icy blue-tinted lines that "
+"catch light against the darkness. This creates a \"glass panel floating "
+"in space\" aesthetic where borders are the primary depth mechanism."
+msgstr ""
+
+#: ../../source/templates_resend.md:235
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_resend.md:236
+msgid "Subtle warm gradient glows behind hero content (orange/amber tints)"
+msgstr ""
+
+#: ../../source/templates_resend.md:237
+msgid "Product screenshots create visual depth through their own internal UI"
+msgstr ""
+
+#: ../../source/templates_resend.md:238
+msgid ""
+"No gradient backgrounds — depth comes from border luminance and content "
+"contrast"
+msgstr ""
+
+#: ../../source/templates_resend.md:240
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_resend.md:242
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_resend.md:243
+msgid "Use pure black (`#000000`) as the page background — the void is the canvas"
+msgstr ""
+
+#: ../../source/templates_resend.md:244
+msgid ""
+"Apply frost borders (`rgba(214, 235, 253, 0.19)`) for all structural "
+"lines — they're the blue-tinted signature"
+msgstr ""
+
+#: ../../source/templates_resend.md:245
+msgid ""
+"Use Domaine Display ONLY for hero headings (96px), ABC Favorit for "
+"section headings, Inter for everything else"
+msgstr ""
+
+#: ../../source/templates_resend.md:246
+msgid ""
+"Enable OpenType `\"ss01\"`, `\"ss04\"`, `\"ss11\"` on Domaine and ABC "
+"Favorit text"
+msgstr ""
+
+#: ../../source/templates_resend.md:247
+msgid "Apply pill radius (9999px) to primary CTAs and tags"
+msgstr ""
+
+#: ../../source/templates_resend.md:248
+msgid ""
+"Use the multi-color accent scale (orange/green/blue/yellow/red) with "
+"opacity variants for context-specific highlighting"
+msgstr ""
+
+#: ../../source/templates_resend.md:249
+msgid ""
+"Keep shadows at ring level (`0px 0px 0px 1px`) — on black, traditional "
+"shadows don't work"
+msgstr ""
+
+#: ../../source/templates_resend.md:250
+msgid ""
+"Use +0.35px letter-spacing on ABC Favorit nav links — the only positive "
+"tracking"
+msgstr ""
+
+#: ../../source/templates_resend.md:252
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_resend.md:253
+msgid ""
+"Don't lighten the background above `#000000` — the pure black void is "
+"non-negotiable"
+msgstr ""
+
+#: ../../source/templates_resend.md:254
+msgid "Don't use neutral gray borders — all borders must have the frost blue tint"
+msgstr ""
+
+#: ../../source/templates_resend.md:255
+msgid "Don't apply Domaine Display to body text — it's a display-only serif"
+msgstr ""
+
+#: ../../source/templates_resend.md:256
+msgid ""
+"Don't mix accent colors in the same component — each feature gets one "
+"accent color"
+msgstr ""
+
+#: ../../source/templates_resend.md:257
+msgid ""
+"Don't use box-shadow for elevation on the dark background — use frost "
+"borders instead"
+msgstr ""
+
+#: ../../source/templates_resend.md:258
+msgid ""
+"Don't skip the OpenType stylistic sets — they define the typographic "
+"character"
+msgstr ""
+
+#: ../../source/templates_resend.md:259
+msgid ""
+"Don't use negative letter-spacing on nav links — ABC Favorit nav uses "
+"positive +0.35px"
+msgstr ""
+
+#: ../../source/templates_resend.md:260
+msgid ""
+"Don't make buttons opaque on dark — transparency with frost border is the"
+" pattern"
+msgstr ""
+
+#: ../../source/templates_resend.md:262
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_resend.md:264
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Mobile Small"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "<480px"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Single column, tight padding, 76.8px hero"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "480–600px"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Standard mobile, stacked layout"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid ">600px"
+msgstr ""
+
+#: ../../source/templates_resend.md
+msgid "Full layout, 96px hero, expanded sections"
+msgstr ""
+
+#: ../../source/templates_resend.md:271
+msgid ""
+"*Note: Resend uses a minimal breakpoint system — only 480px and 600px "
+"detected. The design is desktop-first with a clean mobile collapse.*"
+msgstr ""
+
+#: ../../source/templates_resend.md:273
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_resend.md:274
+msgid "Pill buttons: adequate padding (5px 12px minimum)"
+msgstr ""
+
+#: ../../source/templates_resend.md:275
+msgid "Tab items: 8px radius with comfortable hit areas"
+msgstr ""
+
+#: ../../source/templates_resend.md:276
+msgid "Navigation links spaced with 0.35px tracking for visual separation"
+msgstr ""
+
+#: ../../source/templates_resend.md:278
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_resend.md:279
+msgid "Hero: Domaine 96px → 76.8px on mobile"
+msgstr ""
+
+#: ../../source/templates_resend.md:280
+msgid "Navigation: horizontal → hamburger"
+msgstr ""
+
+#: ../../source/templates_resend.md:281
+msgid "Feature sections: side-by-side → stacked"
+msgstr ""
+
+#: ../../source/templates_resend.md:282
+msgid "Code panels: maintain width, horizontal scroll if needed"
+msgstr ""
+
+#: ../../source/templates_resend.md:283
+msgid "Spacing compresses proportionally"
+msgstr ""
+
+#: ../../source/templates_resend.md:285
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_resend.md:286
+msgid "Product screenshots maintain aspect ratio"
+msgstr ""
+
+#: ../../source/templates_resend.md:287
+msgid "Dark screenshots blend seamlessly with dark background at all sizes"
+msgstr ""
+
+#: ../../source/templates_resend.md:288
+msgid "Rounded corners (12px–16px) maintained across breakpoints"
+msgstr ""
+
+#: ../../source/templates_resend.md:290
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_resend.md:292
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_resend.md:293
+msgid "Background: Void Black (`#000000`)"
+msgstr ""
+
+#: ../../source/templates_resend.md:294
+msgid "Primary text: Near White (`#f0f0f0`)"
+msgstr ""
+
+#: ../../source/templates_resend.md:295
+msgid "Secondary text: Silver (`#a1a4a5`)"
+msgstr ""
+
+#: ../../source/templates_resend.md:296
+msgid "Border: Frost Border (`rgba(214, 235, 253, 0.19)`)"
+msgstr ""
+
+#: ../../source/templates_resend.md:297
+msgid "Orange accent: `#ff801f`"
+msgstr ""
+
+#: ../../source/templates_resend.md:298
+#, python-format
+msgid "Green accent: `#11ff99` (at 18% opacity)"
+msgstr ""
+
+#: ../../source/templates_resend.md:299
+msgid "Blue accent: `#3b9eff`"
+msgstr ""
+
+#: ../../source/templates_resend.md:300
+msgid "Focus ring: `rgb(0, 0, 0) 0px 0px 0px 8px`"
+msgstr ""
+
+#: ../../source/templates_resend.md:302
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_resend.md:303
+msgid ""
+"\"Create a hero section on pure black (#000000) background. Headline at "
+"96px Domaine Display weight 400, line-height 1.00, letter-spacing "
+"-0.96px, near-white (#f0f0f0) text, OpenType 'ss01 ss04 ss11'. Subtitle "
+"at 20px ABC Favorit weight 400, line-height 1.30. Two pill buttons: white"
+" solid (#ffffff, 9999px radius) and transparent with frost border "
+"(rgba(214,235,253,0.19)).\""
+msgstr ""
+
+#: ../../source/templates_resend.md:304
+msgid ""
+"\"Design a navigation bar: dark background with frost border bottom (1px "
+"solid rgba(214,235,253,0.19)). Nav links at 14px ABC Favorit weight 500, "
+"letter-spacing +0.35px, OpenType 'ss01 ss03 ss04'. White pill CTA right-"
+"aligned.\""
+msgstr ""
+
+#: ../../source/templates_resend.md:305
+msgid ""
+"\"Build a feature card: transparent background, frost border "
+"(rgba(214,235,253,0.19)), 16px radius. Title at 56px ABC Favorit weight "
+"400, letter-spacing -2.8px. Body at 16px Inter weight 400, #a1a4a5 "
+"text.\""
+msgstr ""
+
+#: ../../source/templates_resend.md:306
+msgid ""
+"\"Create a code block using Commit Mono 16px on dark background. Frost "
+"border container (24px radius). Syntax colors: orange (#ff801f), blue "
+"(#3b9eff), green (#11ff99), yellow (#ffc53d).\""
+msgstr ""
+
+#: ../../source/templates_resend.md:307
+#, python-format
+msgid ""
+"\"Design an accent badge: background #ff5900 at 22% opacity, text "
+"#ffa057, 9999px radius, 12px Inter weight 500.\""
+msgstr ""
+
+#: ../../source/templates_resend.md:309
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_resend.md:310
+msgid "Start with pure black — everything floats in the void"
+msgstr ""
+
+#: ../../source/templates_resend.md:311
+msgid ""
+"Frost borders (`rgba(214, 235, 253, 0.19)`) are the universal structural "
+"element — not gray, not neutral"
+msgstr ""
+
+#: ../../source/templates_resend.md:312
+msgid ""
+"Three fonts, three roles: Domaine (hero), ABC Favorit (sections), Inter "
+"(body) — never cross"
+msgstr ""
+
+#: ../../source/templates_resend.md:313
+msgid ""
+"OpenType stylistic sets are mandatory on display fonts — they define the "
+"character"
+msgstr ""
+
+#: ../../source/templates_resend.md:314
+msgid ""
+"Multi-color accents at low opacity (12–42%) for backgrounds, full opacity"
+" for text"
+msgstr ""
+
+#: ../../source/templates_resend.md:315
+msgid ""
+"Pill shape (9999px) for CTAs and badges, standard radius (4px–16px) for "
+"containers"
+msgstr ""
+
+#: ../../source/templates_resend.md:316
+msgid "No shadows — use frost borders for depth against the void"
+msgstr ""
+

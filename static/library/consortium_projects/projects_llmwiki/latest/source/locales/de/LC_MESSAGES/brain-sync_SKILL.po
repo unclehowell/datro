@@ -1,0 +1,265 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/brain-sync_SKILL.md:6
+msgid "Brain Sync — Close The Loop"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:8
+msgid "Architecture"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:10
+msgid ""
+"Brain sync is now **on-change (instant)** via `watch-sync.sh`, NOT cron-"
+"based. The `inotifywait` daemon watches the brain directory and auto-"
+"commits+pushes within 1-2 seconds of any file change."
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:13
+msgid "Sync Methods (choose based on situation)"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:15
+msgid "Method 1: On-Change Watcher (automatic, primary)"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:16
+msgid ""
+"The watcher (`scripts/watch-sync.sh`) runs in the background and handles "
+"all commits/pushes automatically."
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:18
+msgid "Check if running:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:22
+msgid "Restart if not:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:27
+msgid "Method 2: Manual Sync (fallback)"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:28
+msgid "If watcher is not available:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:32
+msgid ""
+"The sync script auto-detects the brain directory from the current user's "
+"home — no hardcoded paths."
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:34
+msgid "Method 3: Direct Git (when sync.sh fails)"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:42
+msgid "GitHub Auth Setup (one-time per machine)"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:44
+msgid "If git push fails with 401:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:46
+msgid "Install gh CLI: `sudo apt-get install gh -y`"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:47
+msgid ""
+"Authenticate with PAT: `gh auth login --git-protocol ssh --hostname "
+"github.com --with-token <<< \"YOUR_TOKEN\"`"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:48
+msgid "Set up git credential helper: `gh auth setup-git`"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:49
+msgid ""
+"Switch to HTTPS: `git remote set-url origin "
+"https://github.com/unclehowell/unclehowell.git`"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:50
+msgid "Test: `git fetch origin main`"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:52
+msgid ""
+"IMPORTANT: When auth is needed, ask the user for their GitHub PAT — do "
+"NOT try to extract it from other machines via SSH/scp."
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:54
+msgid "Cross-Machine Sync"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:56
+msgid ""
+"Brain folders on different machines (laptop vs server) are independent "
+"via git. Each machine:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:57
+msgid "Has its own local brain directory at `~/brain/`"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:58
+msgid "Pushes to the shared GitHub repo `github.com/unclehowell/unclehowell.git`"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:59
+msgid "Other machines pull changes via `git pull` or the on-change watcher"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:61
+msgid ""
+"The watch-sync.sh coalesces rapid changes and uses `flock` for race "
+"condition safety."
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:63
+msgid "Architecture: Star Network Sync"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:65
+msgid ""
+"All devices sync via `github.com/unclehowell/unclehowell.git` as the "
+"central hub:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:74
+msgid ""
+"Each device has its own `~/brain/` clone that auto-pushes on change and "
+"auto-pulls when remote advances."
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:76
+msgid "Concurrent Edit Resolution"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:78
+msgid ""
+"When two devices edit the same file simultaneously, the **second pusher's"
+" Git push is rejected**. The watcher handles this automatically with the "
+"built-in retry loop:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:86
+msgid ""
+"This is identical to what software teams do: fetch → rebase → push. Git's"
+" distributed merge engine handles conflict resolution natively."
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:88
+msgid "Deploying Watcher to New Machines"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:90
+msgid "Via Tailscale SSH (for Linux machines):"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:101
+msgid "Via ADB (for Termux on Android):"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:102
+msgid ""
+"Termux requires special setup — ADB shell runs as 'shell' user, not "
+"Termux. Use:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:113 ../../source/brain-sync_SKILL.md:124
+msgid "What to Archive"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:115
+#, python-brace-format
+msgid ""
+"All scripts use `${BRAIN_DIR:-$(eval echo ~$(whoami))/brain}` to resolve "
+"the correct brain path:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:116
+msgid "Server: `/home/ubuntu/datro/static/llmwiki`"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:117
+msgid "Laptop: `/home/ubuntu/datro/static/llmwiki`"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:119 ../../source/brain-sync_SKILL.md:138
+msgid "When to Skip"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:121 ../../source/brain-sync_SKILL.md:140
+msgid "Quick one-shot answers with no new information"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:122 ../../source/brain-sync_SKILL.md:141
+msgid "Trivial conversations"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:126
+msgid "Always archive:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:127
+msgid "Decisions made and why"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:128
+msgid "Errors encountered and how they were resolved"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:129
+msgid "New skills created"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:130
+msgid "Updated skills"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:131
+msgid "User corrections/preferences (also save via memory tool)"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:132
+msgid "Environment discoveries (tool paths, API quirks, etc.)"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:134
+msgid "Never archive:"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:135
+msgid "API keys, passwords, or other secrets"
+msgstr ""
+
+#: ../../source/brain-sync_SKILL.md:136
+msgid "Temporary/ephemeral state"
+msgstr ""
+

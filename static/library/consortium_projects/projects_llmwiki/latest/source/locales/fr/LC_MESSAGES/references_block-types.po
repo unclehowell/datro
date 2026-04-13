@@ -1,0 +1,260 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_block-types.md:1
+msgid "Notion Block Types"
+msgstr ""
+
+#: ../../source/references_block-types.md:3
+msgid ""
+"Reference for creating and reading all common Notion block types via the "
+"API."
+msgstr ""
+
+#: ../../source/references_block-types.md:5
+msgid "Creating blocks"
+msgstr ""
+
+#: ../../source/references_block-types.md:7
+#, python-brace-format
+msgid ""
+"Use `PATCH /v1/blocks/{page_id}/children` with a `children` array. Each "
+"block follows this structure:"
+msgstr ""
+
+#: ../../source/references_block-types.md:13
+msgid "Paragraph"
+msgstr ""
+
+#: ../../source/references_block-types.md:19
+msgid "Headings"
+msgstr ""
+
+#: ../../source/references_block-types.md:27
+msgid "Bulleted list"
+msgstr ""
+
+#: ../../source/references_block-types.md:33
+msgid "Numbered list"
+msgstr ""
+
+#: ../../source/references_block-types.md:39
+msgid "To-do / checkbox"
+msgstr ""
+
+#: ../../source/references_block-types.md:45
+msgid "Quote"
+msgstr ""
+
+#: ../../source/references_block-types.md:51
+msgid "Callout"
+msgstr ""
+
+#: ../../source/references_block-types.md:57
+msgid "Code"
+msgstr ""
+
+#: ../../source/references_block-types.md:63
+msgid "Toggle"
+msgstr ""
+
+#: ../../source/references_block-types.md:69
+msgid "Divider"
+msgstr ""
+
+#: ../../source/references_block-types.md:75
+msgid "Bookmark"
+msgstr ""
+
+#: ../../source/references_block-types.md:81
+msgid "Image (external URL)"
+msgstr ""
+
+#: ../../source/references_block-types.md:87
+msgid "Reading blocks"
+msgstr ""
+
+#: ../../source/references_block-types.md:89
+#, python-brace-format
+msgid ""
+"When reading blocks from `GET /v1/blocks/{page_id}/children`, each block "
+"has a `type` field. Extract readable text like this:"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "Type"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "Text location"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "Extra fields"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`paragraph`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.paragraph.rich_text`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "—"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`heading_1/2/3`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.heading_N.rich_text`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`bulleted_list_item`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.bulleted_list_item.rich_text`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`numbered_list_item`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.numbered_list_item.rich_text`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`to_do`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.to_do.rich_text`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.to_do.checked` (bool)"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`toggle`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.toggle.rich_text`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "has children"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`code`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.code.rich_text`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.code.language`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`quote`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.quote.rich_text`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`callout`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.callout.rich_text`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.callout.icon.emoji`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`divider`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`image`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.image.caption`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.image.file.url` or `.image.external.url`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`bookmark`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.bookmark.caption`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.bookmark.url`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`child_page`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.child_page.title`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`child_database`"
+msgstr ""
+
+#: ../../source/references_block-types.md
+msgid "`.child_database.title`"
+msgstr ""
+
+#: ../../source/references_block-types.md:108
+msgid ""
+"Rich text arrays contain objects with `.plain_text` — concatenate them "
+"for readable output."
+msgstr ""
+
+#: ../../source/references_block-types.md:112
+msgid "*Contributed by [@dogiladeveloper](https://github.com/dogiladeveloper)*"
+msgstr ""
+

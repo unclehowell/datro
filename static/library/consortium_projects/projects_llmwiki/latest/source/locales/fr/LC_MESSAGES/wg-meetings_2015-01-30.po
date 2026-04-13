@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/wg-meetings_2015-01-30.md:1
+msgid "streams WG Meeting 2015-01-30"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:3
+msgid "Links"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:5
+msgid "**Google Hangouts Video**: http://www.youtube.com/watch?v=I9nDOSGfwZg"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:6
+msgid "**GitHub Issue**: https://github.com/iojs/readable-stream/issues/106"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:7
+msgid ""
+"**Original Minutes Google Doc**: "
+"https://docs.google.com/document/d/17aTgLnjMXIrfjgNaTUnHQO7m3xgzHR2VXBTmi03Qii4/"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:9
+msgid "Agenda"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:11
+msgid ""
+"Extracted from https://github.com/iojs/readable-stream/labels/wg-agenda "
+"prior to meeting."
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:13
+msgid "adopt a charter [#105](https://github.com/iojs/readable-stream/issues/105)"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:14
+msgid ""
+"release and versioning strategy [#101](https://github.com/iojs/readable-"
+"stream/issues/101)"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:15
+msgid ""
+"simpler stream creation [#102](https://github.com/iojs/readable-"
+"stream/issues/102)"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:16
+msgid ""
+"proposal: deprecate implicit flowing of streams "
+"[#99](https://github.com/iojs/readable-stream/issues/99)"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:18
+msgid "Minutes"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:20
+msgid "adopt a charter"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:22
+msgid "group: +1's all around"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:24
+msgid "What versioning scheme should be adopted?"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:25
+msgid "group: +1’s 3.0.0"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:26
+msgid "domenic+group: pulling in patches from other sources where appropriate"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:27
+msgid "mikeal: version independently, suggesting versions for io.js"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:28
+msgid ""
+"mikeal+domenic: work with TC to notify in advance of changes simpler "
+"stream creation"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:31
+msgid "streamline creation of streams"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:32
+msgid "sam: streamline creation of streams"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:33
+msgid ""
+"domenic: nice simple solution posted but, we lose the opportunity to "
+"change the model may not be backwards incompatible (double check keys)"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:37
+msgid "**action item:** domenic will check"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:39
+msgid "remove implicit flowing of streams on(‘data’)"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:40
+msgid "add isFlowing / isPaused"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:41
+msgid "mikeal: worrying that we’re documenting polyfill methods – confuses users"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:42
+msgid ""
+"domenic: more reflective API is probably good, with warning labels for "
+"users"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:43
+msgid "new section for mad scientists (reflective stream access)"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:44
+msgid "calvin: name the “third state”"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:45
+msgid "mikeal: maybe borrow the name from whatwg?"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:46
+msgid "domenic: we’re missing the “third state”"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:47
+msgid "consensus: kind of difficult to name the third state"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:48
+msgid "mikeal: figure out differences in states / compat"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:49
+msgid "mathias: always flow on data – eliminates third state"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:50
+msgid "explore what it breaks"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:52
+msgid "**action items:**"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:53
+msgid ""
+"ask isaac for ability to list packages by what public io.js APIs they use"
+" (esp. Stream)"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:54
+msgid "ask rod/build for infrastructure"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:55
+msgid "**chris**: explore the “flow on data” approach"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:56
+msgid "add isPaused/isFlowing"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:57
+msgid "add new docs section"
+msgstr ""
+
+#: ../../source/wg-meetings_2015-01-30.md:58
+msgid "move isPaused to that section"
+msgstr ""
+

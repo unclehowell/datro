@@ -1,0 +1,1271 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_together.ai.md:1
+msgid "Design System: Together AI"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:7
+msgid "**Primary:** `Inter` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:18
+msgid ""
+"Together AI's interface is a pastel-gradient dreamscape built for "
+"enterprise AI infrastructure — a design that somehow makes GPU clusters "
+"and model inference feel light, airy, and optimistic. The hero section "
+"blooms with soft pink-blue-lavender gradients and abstract, painterly "
+"illustrations that evoke clouds and flight, establishing a visual "
+"metaphor for the \"AI-Native Cloud\" proposition. Against this softness, "
+"the typography cuts through with precision: \"The Future\" display font "
+"at 64px with aggressive negative tracking (-1.92px) creates dense, "
+"authoritative headline blocks."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:20
+msgid ""
+"The design straddles two worlds: a bright, white-canvas light side where "
+"pastel gradients and stats cards create an approachable platform "
+"overview, and a dark navy universe (`#010120` — not gray-black but a deep"
+" midnight blue) where research papers and technical content live. This "
+"dual-world approach elegantly separates the \"business\" messaging "
+"(light, friendly, stat-driven) from the \"research\" messaging (dark, "
+"serious, academic)."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:22
+msgid ""
+"What makes Together AI distinctive is its type system. \"The Future\" "
+"handles all display and body text with a geometric modernist aesthetic, "
+"while \"PP Neue Montreal Mono\" provides uppercase labels with meticulous"
+" letter-spacing — creating a \"technical infrastructure company with "
+"taste\" personality. The brand accents — magenta (`#ef2cc1`) and orange "
+"(`#fc4c02`) — appear sparingly in the gradient and illustrations, never "
+"polluting the clean UI."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:25
+msgid "Soft pastel gradients (pink, blue, lavender) against pure white canvas"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:26
+msgid "Deep midnight blue (`#010120`) for dark/research sections — not gray-black"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:27
+msgid ""
+"Custom \"The Future\" font with aggressive negative letter-spacing "
+"throughout"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:28
+msgid "PP Neue Montreal Mono for uppercase technical labels"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:29
+msgid "Sharp geometry (4px, 8px radius) — not rounded, not pill"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:30
+msgid "Magenta (#ef2cc1) + orange (#fc4c02) brand accents in illustrations only"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:31
+msgid "Lavender (#bdbbff) as a soft secondary accent"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:32
+msgid "Enterprise stats prominently displayed (2x, 60%, 90%)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:33
+msgid "Dark-blue-tinted shadows (rgba(1, 1, 32, 0.1))"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:35
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:37
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:38
+msgid ""
+"**Brand Magenta** (`#ef2cc1`): The primary brand accent — a vivid pink-"
+"magenta used in gradient illustrations and the highest-signal brand "
+"moments. Never used as UI chrome."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:39
+msgid ""
+"**Brand Orange** (`#fc4c02`): The secondary brand accent — a vivid orange"
+" for gradient endpoints and warm accent moments."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:40
+msgid ""
+"**Dark Blue** (`#010120`): The primary dark surface — a deep midnight "
+"blue-black used for research sections, footer, and dark containers. Not "
+"gray, not black — distinctly blue."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:42
+msgid "Secondary & Accent"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:43
+msgid ""
+"**Soft Lavender** (`#bdbbff`): A gentle blue-violet used for subtle "
+"accents, secondary indicators, and soft UI highlights."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:44
+msgid ""
+"**Black 40** (`#00000066`): Semi-transparent black for de-emphasized "
+"overlays and secondary text."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:46
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:47
+msgid "**Pure White** (`#ffffff`): The primary light-section page background."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:48
+msgid ""
+"**Dark Blue** (`#010120`): Dark-section backgrounds — research, footer, "
+"technical content."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:49
+msgid ""
+"**Glass Light** (`rgba(255, 255, 255, 0.12)`): Frosted glass button "
+"backgrounds on dark sections."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:50
+msgid ""
+"**Glass Dark** (`rgba(0, 0, 0, 0.08)`): Subtle tinted surfaces on light "
+"sections."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:52
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:53
+msgid "**Pure Black** (`#000000`): Primary text on light surfaces."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:54
+msgid "**Pure White** (`#ffffff`): Primary text on dark surfaces."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:55
+msgid ""
+"**Black 8%** (`rgba(0, 0, 0, 0.08)`): Borders and subtle containment on "
+"light surfaces."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:56
+msgid ""
+"**White 12%** (`rgba(255, 255, 255, 0.12)`): Borders and containment on "
+"dark surfaces."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:58
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:59
+msgid ""
+"**Pastel Cloud Gradient**: Soft pink → lavender → soft blue gradients in "
+"hero illustrations. These appear in abstract, painterly forms — clouds, "
+"feathers, flowing shapes — that create visual warmth without literal "
+"meaning."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:60
+msgid ""
+"**Hero Gradient**: The hero background uses soft pastel tints layered "
+"over white, creating a dawn-like atmospheric effect."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:62
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:64
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:65
+msgid "**Primary**: `The Future`, with fallback: `Arial`"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:66
+msgid "**Monospace / Labels**: `PP Neue Montreal Mono`, with fallback: `Georgia`"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:68
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Display / Hero"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "The Future"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "64px (4rem)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "1.00–1.10 (tight)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "-1.92px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Maximum impact, dense blocks"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "40px (2.5rem)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "-0.8px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Feature section titles"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "28px (1.75rem)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "1.15 (tight)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "-0.42px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Card headings"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "22px (1.38rem)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "-0.22px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Small feature headings"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "1.30 (tight)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "-0.18px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Descriptions, sections"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Body / Button"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "16px (1rem)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "1.25–1.30"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "-0.16px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Standard body, nav, buttons"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Metadata, descriptions"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Mono Label"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "PP Neue Montreal Mono"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "0.08px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Uppercase section labels"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Mono Small"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "11px (0.69rem)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "1.00–1.40"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "0.055–0.08px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Small uppercase tags"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Mono Micro"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "10px (0.63rem)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "0.05px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Smallest uppercase labels"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:83
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:84
+msgid ""
+"**Negative tracking everywhere**: Every size of \"The Future\" uses "
+"negative letter-spacing (-0.16px to -1.92px), creating consistently "
+"tight, modern text."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:85
+msgid ""
+"**Mono for structure**: PP Neue Montreal Mono in uppercase with positive "
+"letter-spacing creates technical \"label\" moments that structure the "
+"page without competing with display text."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:86
+msgid ""
+"**Weight 500 as emphasis**: The system uses 400 (regular) and 500 "
+"(medium) — no bold. Medium weight marks headings and emphasis."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:87
+msgid ""
+"**Tight line-heights throughout**: Even body text uses 1.25–1.30 line-"
+"height — tighter than typical, creating a dense, information-rich feel."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:89
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:91
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:93
+msgid "**Glass on Dark**"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:94
+msgid "Background: `rgba(255, 255, 255, 0.12)` (frosted glass)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:95
+msgid "Text: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:96
+#: ../../source/templates_together.ai.md:104
+#: ../../source/templates_together.ai.md:111
+#: ../../source/templates_together.ai.md:125
+msgid "Radius: sharp (4px)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:97
+msgid "Opacity: 0.5"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:98
+msgid "Hover: transparent dark overlay"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:99
+msgid "Used on dark sections — subtle, glass-like"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:101
+msgid "**Dark Solid**"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:102
+msgid "Background: Dark Blue (`#010120`) or Pure Black"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:103
+msgid "Text: Pure White"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:105
+msgid "The primary CTA on light surfaces"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:107
+msgid "**Outlined Light**"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:108
+#: ../../source/templates_together.ai.md:126
+msgid "Border: `1px solid rgba(0, 0, 0, 0.08)`"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:109
+msgid "Background: transparent or subtle glass"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:110
+msgid "Text: Pure Black"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:112
+msgid "Secondary actions on light surfaces"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:114
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:115
+msgid "Background: Pure White or subtle glass tint"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:116
+msgid ""
+"Border: `1px solid rgba(0, 0, 0, 0.08)` on light; `1px solid rgba(255, "
+"255, 255, 0.12)` on dark"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:117
+msgid ""
+"Radius: sharp (4px) for badges and small elements; comfortable (8px) for "
+"larger containers"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:118
+msgid ""
+"Shadow: dark-blue-tinted (`rgba(1, 1, 32, 0.1) 0px 4px 10px`) — warm and "
+"subtle"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:119
+msgid "Stats cards with large numbers prominently displayed"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:121
+msgid "Badges / Tags"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:122
+msgid ""
+"Background: `rgba(0, 0, 0, 0.04)` (light) or `rgba(255, 255, 255, 0.12)` "
+"(dark)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:123
+msgid "Text: Black (light) or White (dark)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:124
+msgid "Padding: 2px 8px (compact)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:127
+msgid "PP Neue Montreal Mono, uppercase, 16px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:129
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:130
+msgid "Clean horizontal nav on white/transparent"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:131
+msgid "Logo: Together AI wordmark"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:132
+msgid "Links: The Future at 16px, weight 400"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:133
+msgid "CTA: Dark solid button"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:134
+msgid "Hover: no text-decoration"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:136
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:137
+msgid "Abstract pastel gradient illustrations (cloud/feather forms)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:138
+msgid "Product UI screenshots on dark/light surfaces"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:139
+msgid "Team photos in editorial style"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:140
+msgid "Research paper cards with dark backgrounds"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:142
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:144
+msgid "**Stats Bar**"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:145
+msgid "Large performance metrics (2x, 60%, 90%)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:146
+msgid "Bold display numbers"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:147
+msgid "Short descriptive captions beneath"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:148
+msgid "Clean horizontal layout"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:150
+msgid "**Mono Section Labels**"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:151
+msgid "PP Neue Montreal Mono, uppercase, 11px, letter-spacing 0.055px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:152
+msgid "Used as navigational signposts throughout the page"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:153
+msgid "Technical, structured feel"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:155
+msgid "**Research Section**"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:156
+msgid "Dark Blue (#010120) background"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:157
+msgid "White text, research paper thumbnails"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:158
+msgid "Creates a distinct \"academic\" zone"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:160
+msgid "**Large Footer Logo**"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:161
+msgid "\"together\" wordmark rendered at massive scale in the dark footer"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:162
+msgid "Creates a brand-statement closing moment"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:164
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:166
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:167
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:168
+msgid ""
+"Scale: 1px, 2px, 4px, 8px, 10px, 12px, 16px, 20px, 24px, 32px, 44px, "
+"48px, 80px, 100px, 120px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:169
+msgid "Button/badge padding: 2px 8px (compact)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:170
+msgid "Card internal padding: approximately 24–32px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:171
+msgid "Section vertical spacing: generous (80–120px)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:173
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:174
+msgid "Max container width: approximately 1200px, centered"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:175
+msgid "Hero: centered with pastel gradient background"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:176
+msgid "Feature sections: multi-column card grids"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:177
+msgid "Stats: horizontal row of metric cards"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:178
+msgid "Research: dark full-width section"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:180
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:181
+msgid ""
+"**Optimistic breathing room**: Generous spacing between sections creates "
+"an open, inviting feel that makes enterprise AI infrastructure feel "
+"accessible."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:182
+msgid ""
+"**Dual atmosphere**: Light sections breathe with whitespace; dark "
+"sections are denser with content."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:183
+msgid ""
+"**Stats as visual anchors**: Large numbers with small captions create "
+"natural focal points."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:185
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:186
+msgid ""
+"Sharp (4px): Buttons, badges, tags, small interactive elements — the "
+"primary radius"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:187
+msgid "Comfortable (8px): Larger containers, feature cards"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:189
+msgid ""
+"*This is a deliberately restrained radius system — no pills, no generous "
+"rounding. The sharp geometry contrasts with the soft pastel gradients.*"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:191
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "No shadow, no border"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Page background, text blocks"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Contained (Level 1)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "`1px solid rgba(0,0,0,0.08)` (light) or `rgba(255,255,255,0.12)` (dark)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Cards, badges, containers"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Elevated (Level 2)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "`rgba(1, 1, 32, 0.1) 0px 4px 10px`"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Feature cards, hover states"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Dark Zone (Level 3)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Dark Blue (#010120) full-width background"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Research, footer, technical sections"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:200
+msgid ""
+"**Shadow Philosophy**: Together AI uses a single, distinctive shadow — "
+"tinted with Dark Blue (`rgba(1, 1, 32, 0.1)`) rather than generic black. "
+"This gives elevated elements a subtle blue-ish cast that ties them to the"
+" brand's midnight-blue dark mode. The shadow is soft (10px blur, 4px "
+"offset) and always downward — creating gentle paper-hover elevation."
+msgstr ""
+
+#: ../../source/templates_together.ai.md:202
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:204
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:205
+msgid ""
+"Use pastel gradients (pink/blue/lavender) for hero illustrations and "
+"decorative backgrounds"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:206
+msgid "Use Dark Blue (#010120) for dark sections — never generic gray-black"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:207
+msgid "Apply negative letter-spacing on all \"The Future\" text (scaled by size)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:208
+msgid ""
+"Use PP Neue Montreal Mono in uppercase for section labels and technical "
+"markers"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:209
+msgid "Keep border-radius sharp (4px) for badges and interactive elements"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:210
+msgid "Use the dark-blue-tinted shadow for elevation"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:211
+msgid ""
+"Maintain the light/dark section duality — business (light) vs research "
+"(dark)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:212
+msgid "Show enterprise stats prominently with large display numbers"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:214
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:215
+msgid ""
+"Don't use Brand Magenta (#ef2cc1) or Brand Orange (#fc4c02) as UI colors "
+"— they're for illustrations only"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:216
+msgid ""
+"Don't use pill-shaped or generously rounded corners — the geometry is "
+"sharp"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:217
+msgid ""
+"Don't use generic gray-black for dark sections — always Dark Blue "
+"(#010120)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:218
+msgid "Don't use positive letter-spacing on \"The Future\" — it's always negative"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:219
+msgid "Don't use bold (700+) weight — 400–500 is the full range"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:220
+msgid "Don't use warm-toned shadows — always dark-blue-tinted"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:221
+msgid "Don't reduce section spacing below 48px — the open feeling is core"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:222
+msgid ""
+"Don't mix in additional typefaces — \"The Future\" + PP Neue Montreal "
+"Mono is the pair"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:224
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:226
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "<479px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Compact layout, stacked everything"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Large Mobile"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "479–767px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Single column, hamburger nav"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "768–991px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "2-column grids begin"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "992px+"
+msgstr ""
+
+#: ../../source/templates_together.ai.md
+msgid "Full multi-column layout"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:234
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:235
+msgid "Buttons with adequate padding"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:236
+msgid "Card surfaces as touch targets"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:237
+msgid "Navigation links at comfortable 16px"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:239
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:240
+msgid "**Navigation**: Collapses to hamburger on mobile"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:241
+msgid "**Hero text**: 64px → 40px → 28px progressive scaling"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:242
+msgid "**Stats bar**: Horizontal → stacked vertical"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:243
+msgid "**Feature grids**: Multi-column → single column"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:244
+msgid "**Research section**: Cards stack vertically"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:246
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:247
+msgid "Pastel illustrations scale proportionally"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:248
+msgid "Product screenshots maintain aspect ratio"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:249
+msgid "Team photos scale within containers"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:251
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:253
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:254
+msgid "Primary Text (light): \"Pure Black (#000000)\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:255
+msgid "Primary Text (dark): \"Pure White (#ffffff)\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:256
+msgid "Page Background: \"Pure White (#ffffff)\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:257
+msgid "Dark Surface: \"Dark Blue (#010120)\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:258
+msgid "Brand Accent 1: \"Brand Magenta (#ef2cc1)\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:259
+msgid "Brand Accent 2: \"Brand Orange (#fc4c02)\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:260
+msgid "Soft Accent: \"Soft Lavender (#bdbbff)\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:261
+msgid "Border (light): \"rgba(0, 0, 0, 0.08)\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:263
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:264
+msgid ""
+"\"Create a hero section on white with soft pastel gradients (pink → "
+"lavender → blue) as background. Headline at 64px 'The Future' weight 500,"
+" line-height 1.10, letter-spacing -1.92px. Pure Black text. Include a "
+"dark blue CTA button (#010120, 4px radius).\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:265
+msgid ""
+"\"Design a stats card: large display number (64px, weight 500) with a "
+"small caption below (14px). White background, 8px radius, dark-blue-"
+"tinted shadow (rgba(1, 1, 32, 0.1) 0px 4px 10px).\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:266
+msgid ""
+"\"Build a section label: PP Neue Montreal Mono, 11px, weight 500, "
+"uppercase, letter-spacing 0.055px. Black text on light, white on dark.\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:267
+msgid ""
+"\"Create a dark research section: Dark Blue (#010120) background. White "
+"text, section heading at 40px 'The Future' weight 500, letter-spacing "
+"-0.8px. Cards with rgba(255, 255, 255, 0.12) border.\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:268
+msgid ""
+"\"Design a badge: 4px radius, rgba(0, 0, 0, 0.04) background, 1px solid "
+"rgba(0, 0, 0, 0.08) border, 'The Future' 16px text. Padding: 2px 8px.\""
+msgstr ""
+
+#: ../../source/templates_together.ai.md:270
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:271
+msgid ""
+"Always specify negative letter-spacing for \"The Future\" — it's scaled "
+"by size"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:272
+msgid "Dark sections use #010120 (midnight blue), never generic black"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:273
+msgid "Shadows are always dark-blue-tinted: rgba(1, 1, 32, 0.1)"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:274
+msgid "Mono labels are always uppercase with positive letter-spacing"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:275
+msgid "Keep radius sharp (4px or 8px) — no pills, no generous rounding"
+msgstr ""
+
+#: ../../source/templates_together.ai.md:276
+msgid "Pastel gradients are for decoration, not UI chrome"
+msgstr ""
+

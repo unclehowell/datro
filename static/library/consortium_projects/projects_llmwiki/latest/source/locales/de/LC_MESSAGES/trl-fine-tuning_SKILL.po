@@ -1,0 +1,389 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/trl-fine-tuning_SKILL.md:14
+msgid "TRL - Transformer Reinforcement Learning"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:16
+msgid "Quick start"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:18
+msgid ""
+"TRL provides post-training methods for aligning language models with "
+"human preferences."
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:20
+msgid "**Installation**:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:25
+msgid "**Supervised Fine-Tuning** (instruction tuning):"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:36
+msgid "**DPO** (align with preferences):"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:50
+msgid "Common workflows"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:52
+msgid "Workflow 1: Full RLHF pipeline (SFT → Reward Model → PPO)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:54
+msgid "Complete pipeline from base model to human-aligned model."
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:56
+#: ../../source/trl-fine-tuning_SKILL.md:173
+#: ../../source/trl-fine-tuning_SKILL.md:255
+msgid "Copy this checklist:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:66
+msgid "**Step 1: Supervised fine-tuning**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:68
+msgid "Train base model on instruction-following data:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:103
+msgid "**Step 2: Train reward model**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:105
+msgid "Train model to predict human preferences:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:140
+msgid "**Step 3: PPO reinforcement learning**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:142
+msgid "Optimize policy using reward model:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:155
+msgid "**Step 4: Evaluate**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:169
+msgid "Workflow 2: Simple preference alignment with DPO"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:171
+msgid "Align model with preferences without reward model."
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:183
+msgid "**Step 1: Prepare preference dataset**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:185
+msgid "Dataset format:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:194
+msgid "Load dataset:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:203
+msgid "**Step 2: Configure DPO**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:220
+msgid "**Step 3: Train with DPOTrainer**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:240
+msgid "**CLI alternative**:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:251
+msgid "Workflow 3: Memory-efficient online RL with GRPO"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:253
+msgid "Train with reinforcement learning using minimal memory."
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:264
+msgid "**Step 1: Define reward function**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:286
+msgid "Or use a reward model:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:300
+msgid "**Step 2: Configure GRPO**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:315
+msgid "**Step 3: Train with GRPOTrainer**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:334
+msgid "**CLI**:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:343
+msgid "When to use vs alternatives"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:345
+msgid "**Use TRL when:**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:346
+msgid "Need to align model with human preferences"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:347
+msgid "Have preference data (chosen/rejected pairs)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:348
+msgid "Want to use reinforcement learning (PPO, GRPO)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:349
+msgid "Need reward model training"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:350
+msgid "Doing RLHF (full pipeline)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:352
+msgid "**Method selection**:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:353
+msgid "**SFT**: Have prompt-completion pairs, want basic instruction following"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:354
+msgid "**DPO**: Have preferences, want simple alignment (no reward model needed)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:355
+msgid "**PPO**: Have reward model, need maximum control over RL"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:356
+msgid "**GRPO**: Memory-constrained, want online RL"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:357
+msgid "**Reward Model**: Building RLHF pipeline, need to score generations"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:359
+msgid "**Use alternatives instead:**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:360
+msgid "**HuggingFace Trainer**: Basic fine-tuning without RL"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:361
+msgid "**Axolotl**: YAML-based training configuration"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:362
+msgid "**LitGPT**: Educational, minimal fine-tuning"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:363
+msgid "**Unsloth**: Fast LoRA training"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:365
+msgid "Common issues"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:367
+msgid "**Issue: OOM during DPO training**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:369
+msgid "Reduce batch size and sequence length:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:378
+msgid "Or use gradient checkpointing:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:383
+msgid "**Issue: Poor alignment quality**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:385
+msgid "Tune beta parameter:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:394
+msgid "**Issue: Reward model not learning**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:396
+msgid "Check loss type and learning rate:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:404
+msgid "Ensure preference dataset has clear winners:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:411
+msgid "**Issue: PPO training unstable**"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:413
+msgid "Adjust KL coefficient:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:421
+msgid "Advanced topics"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:423
+msgid ""
+"**SFT training guide**: See [references/sft-training.md](references/sft-"
+"training.md) for dataset formats, chat templates, packing strategies, and"
+" multi-GPU training."
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:425
+msgid ""
+"**DPO variants**: See [references/dpo-variants.md](references/dpo-"
+"variants.md) for IPO, cDPO, RPO, and other DPO loss functions with "
+"recommended hyperparameters."
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:427
+msgid ""
+"**Reward modeling**: See [references/reward-modeling.md](references"
+"/reward-modeling.md) for outcome vs process rewards, Bradley-Terry loss, "
+"and reward model evaluation."
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:429
+msgid ""
+"**Online RL methods**: See [references/online-rl.md](references/online-"
+"rl.md) for PPO, GRPO, RLOO, and OnlineDPO with detailed configurations."
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:431
+msgid "Hardware requirements"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:433
+msgid "**GPU**: NVIDIA (CUDA required)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:434
+msgid "**VRAM**: Depends on model and method"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:435
+msgid "SFT 7B: 16GB (with LoRA)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:436
+msgid "DPO 7B: 24GB (stores reference model)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:437
+msgid "PPO 7B: 40GB (policy + reward model)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:438
+msgid "GRPO 7B: 24GB (more memory efficient)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:439
+msgid "**Multi-GPU**: Supported via `accelerate`"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:440
+msgid "**Mixed precision**: BF16 recommended (A100/H100)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:442
+msgid "**Memory optimization**:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:443
+msgid "Use LoRA/QLoRA for all methods"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:444
+msgid "Enable gradient checkpointing"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:445
+msgid "Use smaller batch sizes with gradient accumulation"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:447
+msgid "Resources"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:449
+msgid "Docs: https://huggingface.co/docs/trl/"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:450
+msgid "GitHub: https://github.com/huggingface/trl"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:451
+msgid "Papers:"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:452
+msgid ""
+"\"Training language models to follow instructions with human feedback\" "
+"(InstructGPT, 2022)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:453
+msgid ""
+"\"Direct Preference Optimization: Your Language Model is Secretly a "
+"Reward Model\" (DPO, 2023)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:454
+msgid "\"Group Relative Policy Optimization\" (GRPO, 2024)"
+msgstr ""
+
+#: ../../source/trl-fine-tuning_SKILL.md:455
+msgid "Examples: https://github.com/huggingface/trl/tree/main/examples/scripts"
+msgstr ""
+

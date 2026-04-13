@@ -1,0 +1,340 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_custom-tasks.md:1
+msgid "Custom Tasks"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:3
+msgid ""
+"Complete guide to creating domain-specific evaluation tasks in lm-"
+"evaluation-harness."
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:5
+msgid "Overview"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:7
+msgid ""
+"Custom tasks allow you to evaluate models on your own datasets and "
+"metrics. Tasks are defined using YAML configuration files with optional "
+"Python utilities for complex logic."
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:9
+msgid "**Why create custom tasks**:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:10
+msgid "Evaluate on proprietary/domain-specific data"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:11
+msgid "Test specific capabilities not covered by existing benchmarks"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:12
+msgid "Create evaluation pipelines for internal models"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:13
+msgid "Reproduce research experiments"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:15
+msgid "Quick Start"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:17
+msgid "Minimal Custom Task"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:19
+msgid "Create `my_tasks/simple_qa.yaml`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:33
+msgid "**Run it**:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:41
+msgid "Task Configuration Reference"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:43
+msgid "Essential Fields"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:80
+msgid "Output Types"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:82
+msgid "**`generate_until`**: Free-form generation"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:93
+msgid "**`loglikelihood`**: Compute log probability of targets"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:99
+msgid "**`multiple_choice`**: Choose from options"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:105
+msgid "Data Formats"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:107
+msgid "Local JSONL File"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:109
+msgid "`data/my_data.jsonl`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:115
+#: ../../source/references_custom-tasks.md:140
+msgid "**Task config**:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:123
+msgid "HuggingFace Dataset"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:131
+msgid "CSV File"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:133
+msgid "`data/my_data.csv`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:148
+msgid "Prompt Engineering"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:150
+msgid "Simple Template"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:157
+msgid "Conditional Logic"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:168
+msgid "Multiple Choice"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:183
+msgid "Few-Shot Formatting"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:192
+msgid "Custom Python Functions"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:194
+msgid "For complex logic, use Python functions in `utils.py`."
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:196
+msgid "Create `my_tasks/utils.py`"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:228
+msgid "Use in Task Config"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:245
+msgid "Real-World Examples"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:247
+msgid "Example 1: Domain QA Task"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:249
+msgid "**Goal**: Evaluate medical question answering."
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:251
+msgid "`medical_qa/medical_qa.yaml`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:290
+msgid "`medical_qa/utils.py`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:320
+msgid "Example 2: Code Evaluation"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:322
+msgid "`code_eval/python_challenges.yaml`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:356
+msgid "`code_eval/utils.py`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:389
+msgid "Example 3: Instruction Following"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:391
+msgid "`instruction_eval/instruction_eval.yaml`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:422
+msgid "`instruction_eval/utils.py`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:466
+msgid "Advanced Features"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:468
+msgid "Output Filtering"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:481
+msgid "Multiple Metrics"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:496
+msgid "Task Groups"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:498
+msgid "Create `my_tasks/_default.yaml`:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:507
+msgid "**Run entire suite**:"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:515
+msgid "Testing Your Task"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:517
+msgid "Validate Configuration"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:531
+msgid "Debug Mode"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:542
+msgid "Best Practices"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:544
+msgid "**Start simple**: Test with minimal config first"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:545
+msgid "**Version your tasks**: Use `metadata.version`"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:546
+msgid "**Document your metrics**: Explain custom metrics in comments"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:547
+msgid "**Test with multiple models**: Ensure robustness"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:548
+msgid "**Validate on known examples**: Include sanity checks"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:549
+msgid "**Use filters carefully**: Can hide errors"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:550
+msgid "**Handle edge cases**: Empty strings, missing fields"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:552
+msgid "Common Patterns"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:554
+msgid "Classification Task"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:565
+msgid "Perplexity Evaluation"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:575
+msgid "Ranking Task"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:586
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:588
+msgid "**\"Task not found\"**: Check `--include_path` and task name"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:590
+msgid "**Empty results**: Verify `doc_to_text` and `doc_to_target` templates"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:592
+msgid ""
+"**Metric errors**: Ensure metric names are correct (exact_match, not "
+"exact-match)"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:594
+msgid "**Filter issues**: Test filters with `--log_samples`"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:596
+msgid ""
+"**Python function not found**: Check `!function module.function_name` "
+"syntax"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:598
+msgid "References"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:600
+msgid "Task system: EleutherAI/lm-evaluation-harness docs"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:601
+msgid "Example tasks: `lm_eval/tasks/` directory"
+msgstr ""
+
+#: ../../source/references_custom-tasks.md:602
+msgid "TaskConfig: `lm_eval/api/task.py`"
+msgstr ""
+

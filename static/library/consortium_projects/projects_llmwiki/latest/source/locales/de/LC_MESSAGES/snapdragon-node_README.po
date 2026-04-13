@@ -1,0 +1,562 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/snapdragon-node_README.md:1
+msgid ""
+"snapdragon-node [![NPM version](https://img.shields.io/npm/v/snapdragon-"
+"node.svg?style=flat)](https://www.npmjs.com/package/snapdragon-node) "
+"[![NPM monthly downloads](https://img.shields.io/npm/dm/snapdragon-"
+"node.svg?style=flat)](https://npmjs.org/package/snapdragon-node) [![NPM "
+"total downloads](https://img.shields.io/npm/dt/snapdragon-"
+"node.svg?style=flat)](https://npmjs.org/package/snapdragon-node) [![Linux"
+" Build Status](https://img.shields.io/travis/jonschlinkert/snapdragon-"
+"node.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert"
+"/snapdragon-node)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:3
+msgid ""
+"Snapdragon utility for creating a new AST node in custom code, such as "
+"plugins."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:15
+msgid ""
+"With [snapdragon](https://github.com/jonschlinkert/snapdragon) v0.9.0 and"
+" higher you can use `this.node()` to create a new `Node`, whenever it "
+"makes sense."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:40
+msgid "API"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:42
+msgid "[Node](index.js#L22)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:44
+msgid "Create a new AST `Node` with the given `val` and `type`."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:46
+#: ../../source/snapdragon-node_README.md:63
+#: ../../source/snapdragon-node_README.md:81
+#: ../../source/snapdragon-node_README.md:98
+#: ../../source/snapdragon-node_README.md:116
+#: ../../source/snapdragon-node_README.md:133
+#: ../../source/snapdragon-node_README.md:192
+#: ../../source/snapdragon-node_README.md:207
+#: ../../source/snapdragon-node_README.md:225
+#: ../../source/snapdragon-node_README.md:243
+msgid "**Params**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:48
+#, python-brace-format
+msgid ""
+"`val` **{String|Object}**: Pass a matched substring, or an object to "
+"merge onto the node."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:49
+#, python-brace-format
+msgid "`type` **{String}**: The node type to use when `val` is a string."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:50
+#, python-brace-format
+msgid "`returns` **{Object}**: node instance"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:52
+#: ../../source/snapdragon-node_README.md:68
+#: ../../source/snapdragon-node_README.md:87
+#: ../../source/snapdragon-node_README.md:103
+#: ../../source/snapdragon-node_README.md:121
+#: ../../source/snapdragon-node_README.md:138
+#: ../../source/snapdragon-node_README.md:152
+#: ../../source/snapdragon-node_README.md:173
+#: ../../source/snapdragon-node_README.md:197
+#: ../../source/snapdragon-node_README.md:212
+#: ../../source/snapdragon-node_README.md:230
+#: ../../source/snapdragon-node_README.md:248
+#: ../../source/snapdragon-node_README.md:262
+#: ../../source/snapdragon-node_README.md:277
+#: ../../source/snapdragon-node_README.md:295
+#: ../../source/snapdragon-node_README.md:309
+#: ../../source/snapdragon-node_README.md:324
+#: ../../source/snapdragon-node_README.md:340
+#: ../../source/snapdragon-node_README.md:356
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:59
+msgid "[.isNode](index.js#L61)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:61
+msgid "Returns true if the given value is a node."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:65
+#: ../../source/snapdragon-node_README.md:118
+#: ../../source/snapdragon-node_README.md:135
+#: ../../source/snapdragon-node_README.md:194
+#, python-brace-format
+msgid "`node` **{Object}**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:66
+#: ../../source/snapdragon-node_README.md:101
+#: ../../source/snapdragon-node_README.md:228
+#: ../../source/snapdragon-node_README.md:246
+#, python-brace-format
+msgid "`returns` **{Boolean}**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:77
+msgid "[.define](index.js#L80)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:79
+msgid ""
+"Define a non-enumberable property on the node instance. Useful for adding"
+" properties that shouldn't be extended or visible during debugging."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:83
+#, python-brace-format
+msgid "`name` **{String}**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:84
+#, python-brace-format
+msgid "`val` **{any}**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:85
+#, python-brace-format
+msgid "`returns` **{Object}**: returns the node instance"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:94
+msgid "[.isEmpty](index.js#L100)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:96
+msgid ""
+"Returns true if `node.val` is an empty string, or `node.nodes` does not "
+"contain any non-empty text nodes."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:100
+#, python-brace-format
+msgid ""
+"`fn` **{Function}**: (optional) Filter function that is called on `node` "
+"and/or child nodes. `isEmpty` will return false immediately when the "
+"filter function returns false on any nodes."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:112
+msgid "[.push](index.js#L118)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:114
+msgid ""
+"Given node `foo` and node `bar`, push node `bar` onto `foo.nodes`, and "
+"set `foo` as `bar.parent`."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:119
+#: ../../source/snapdragon-node_README.md:136
+#, python-brace-format
+msgid "`returns` **{Number}**: Returns the length of `node.nodes`"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:129
+msgid "[.unshift](index.js#L140)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:131
+msgid ""
+"Given node `foo` and node `bar`, unshift node `bar` onto `foo.nodes`, and"
+" set `foo` as `bar.parent`."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:146
+msgid "[.pop](index.js#L167)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:148
+msgid "Pop a node from `node.nodes`."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:150
+#, python-brace-format
+msgid "`returns` **{Number}**: Returns the popped `node`"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:167
+msgid "[.shift](index.js#L190)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:169
+msgid "Shift a node from `node.nodes`."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:171
+#, python-brace-format
+msgid "`returns` **{Object}**: Returns the shifted `node`"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:188
+msgid "[.remove](index.js#L205)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:190
+msgid "Remove `node` from `node.nodes`."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:195
+#, python-brace-format
+msgid "`returns` **{Object}**: Returns the removed node."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:203
+msgid "[.find](index.js#L231)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:205
+msgid ""
+"Get the first child node from `node.nodes` that matches the given `type`."
+" If `type` is a number, the child node at that index is returned."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:209
+#: ../../source/snapdragon-node_README.md:227
+#: ../../source/snapdragon-node_README.md:245
+#, python-brace-format
+msgid "`type` **{String}**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:210
+#, python-brace-format
+msgid "`returns` **{Object}**: Returns a child node or undefined."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:221
+msgid "[.isType](index.js#L249)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:223
+msgid "Return true if the node is the given `type`."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:239
+msgid "[.hasType](index.js#L270)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:241
+msgid "Return true if the `node.nodes` has the given `type`."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:260
+#, python-brace-format
+msgid "`returns` **{Array}**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:275
+#, python-brace-format
+msgid "`returns` **{Number}**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:293
+#: ../../source/snapdragon-node_README.md:307
+#, python-brace-format
+msgid "`returns` **{Object}**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:322
+#, python-brace-format
+msgid "`returns` **{Object}**: The first node, or undefiend"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:338
+#: ../../source/snapdragon-node_README.md:354
+#, python-brace-format
+msgid "`returns` **{Object}**: The last node, or undefiend"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:370
+msgid "Release history"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:372
+msgid ""
+"Changelog entries are classified using the following labels from "
+"[keep-a-changelog](https://github.com/olivierlacan/keep-a-changelog):"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:374
+msgid "`added`: for new features"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:375
+msgid "`changed`: for changes in existing functionality"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:376
+msgid "`deprecated`: for once-stable features removed in upcoming releases"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:377
+msgid "`removed`: for deprecated features removed in this release"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:378
+msgid "`fixed`: for any bug fixes"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:380
+msgid "Custom labels used in this changelog:"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:382
+msgid "`dependencies`: bumps dependencies"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:383
+msgid ""
+"`housekeeping`: code re-organization, minor edits, or other changes that "
+"don't fit in one of the other categories."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:385
+msgid "[2.0.0] - 2017-05-01"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:387
+msgid "**Changed**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:389
+msgid "`.unshiftNode` was renamed to [.unshift](#unshift)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:390
+msgid "`.pushNode` was renamed to [.push](#push)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:391
+msgid "`.getNode` was renamed to [.find](#find)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:393
+msgid "**Added**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:395
+msgid "[.isNode](#isNode)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:396
+msgid "[.isEmpty](#isEmpty)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:397
+msgid "[.pop](#pop)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:398
+msgid "[.shift](#shift)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:399
+msgid "[.remove](#remove)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:401
+msgid "[0.1.0]"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:403
+msgid "First release."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:405
+msgid "About"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:407
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:409
+msgid ""
+"[breakdance](https://www.npmjs.com/package/breakdance): Breakdance is a "
+"node.js library for converting HTML to markdown. Highly pluggable, "
+"flexible and easy… [more](http://breakdance.io) | "
+"[homepage](http://breakdance.io \"Breakdance is a node.js library for "
+"converting HTML to markdown. Highly pluggable, flexible and easy to use. "
+"It's time for your markup to get down.\")"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:410
+msgid ""
+"[snapdragon-capture](https://www.npmjs.com/package/snapdragon-capture): "
+"Snapdragon plugin that adds a capture method to the parser instance. | "
+"[homepage](https://github.com/jonschlinkert/snapdragon-capture "
+"\"Snapdragon plugin that adds a capture method to the parser instance.\")"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:411
+msgid ""
+"[snapdragon-cheerio](https://www.npmjs.com/package/snapdragon-cheerio): "
+"Snapdragon plugin for converting a cheerio AST to a snapdragon AST. | "
+"[homepage](https://github.com/jonschlinkert/snapdragon-cheerio "
+"\"Snapdragon plugin for converting a cheerio AST to a snapdragon AST.\")"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:412
+msgid ""
+"[snapdragon-util](https://www.npmjs.com/package/snapdragon-util): "
+"Utilities for the snapdragon parser/compiler. | "
+"[homepage](https://github.com/jonschlinkert/snapdragon-util \"Utilities "
+"for the snapdragon parser/compiler.\")"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:413
+msgid ""
+"[snapdragon](https://www.npmjs.com/package/snapdragon): Easy-to-use "
+"plugin system for creating powerful, fast and versatile parsers and "
+"compilers, with built-in source-map… "
+"[more](https://github.com/jonschlinkert/snapdragon) | "
+"[homepage](https://github.com/jonschlinkert/snapdragon \"Easy-to-use "
+"plugin system for creating powerful, fast and versatile parsers and "
+"compilers, with built-in source-map support.\")"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:415
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:417
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:419
+msgid ""
+"Please read the [contributing guide](.github/contributing.md) for advice "
+"on opening issues, pull requests, and coding standards."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:421
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:423
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:425
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:431
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:433
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:439
+msgid "Author"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:441
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:443
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:444
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:446
+msgid "License"
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:448
+msgid ""
+"Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/snapdragon-node_README.md:453
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on June"
+" 25, 2017._"
+msgstr ""
+

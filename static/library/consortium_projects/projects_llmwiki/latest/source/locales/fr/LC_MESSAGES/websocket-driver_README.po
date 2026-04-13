@@ -1,0 +1,532 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/websocket-driver_README.md:1
+msgid ""
+"websocket-driver [![Build Status](https://travis-ci.org/faye/websocket-"
+"driver-node.svg)](https://travis-ci.org/faye/websocket-driver-node)"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:3
+msgid ""
+"This module provides a complete implementation of the WebSocket protocols"
+" that can be hooked up to any I/O stream. It aims to simplify things by "
+"decoupling the protocol details from the I/O layer, such that users only "
+"need to implement code to stream data in and out of it without needing to"
+" know anything about how the protocol actually works. Think of it as a "
+"complete WebSocket system with pluggable I/O."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:10
+msgid ""
+"Due to this design, you get a lot of things for free. In particular, if "
+"you hook this module up to some I/O object, it will do all of this for "
+"you:"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:13
+msgid "Select the correct server-side driver to talk to the client"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:14
+msgid "Generate and send both server- and client-side handshakes"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:15
+msgid "Recognize when the handshake phase completes and the WS protocol begins"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:16
+msgid "Negotiate subprotocol selection based on `Sec-WebSocket-Protocol`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:17
+msgid ""
+"Negotiate and use extensions via the [websocket-"
+"extensions](https://github.com/faye/websocket-extensions-node) module"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:20
+msgid "Buffer sent messages until the handshake process is finished"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:21
+msgid "Deal with proxies that defer delivery of the draft-76 handshake body"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:22
+msgid "Notify you when the socket is open and closed and when messages arrive"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:23
+msgid "Recombine fragmented messages"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:24
+msgid "Dispatch text, binary, ping, pong and close frames"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:25
+msgid "Manage the socket-closing handshake process"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:26
+msgid "Automatically reply to ping frames with a matching pong"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:27
+msgid "Apply masking to messages sent by the client"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:29
+msgid ""
+"This library was originally extracted from the "
+"[Faye](http://faye.jcoglan.com) project but now aims to provide simple "
+"WebSocket support for any Node-based project."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:34
+msgid "Installation"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:41
+msgid "Usage"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:43
+msgid ""
+"This module provides protocol drivers that have the same interface on the"
+" server and on the client. A WebSocket driver is an object with two "
+"duplex streams attached; one for incoming/outgoing messages and one for "
+"managing the wire protocol over an I/O stream. The full API is described "
+"below."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:49
+msgid "Server-side with HTTP"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:51
+msgid ""
+"A Node webserver emits a special event for 'upgrade' requests, and this "
+"is where you should handle WebSockets. You first check whether the "
+"request is a WebSocket, and if so you can create a driver and attach the "
+"request's I/O stream to it."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:78
+msgid ""
+"Note the line `driver.io.write(body)` - you must pass the `body` buffer "
+"to the socket driver in order to make certain versions of the protocol "
+"work."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:82
+msgid "Server-side with TCP"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:84
+msgid ""
+"You can also handle WebSocket connections in a bare TCP server, if you're"
+" not using an HTTP server and don't want to implement HTTP parsing "
+"yourself."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:87
+msgid ""
+"The driver will emit a `connect` event when a request is received, and at"
+" this point you can detect whether it's a WebSocket and handle it as "
+"such. Here's an example using the Node `net` module:"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:117
+msgid ""
+"In the `connect` event, the driver gains several properties to describe "
+"the request, similar to a Node request object, such as `method`, `url` "
+"and `headers`. However you should remember it's not a real request "
+"object; you cannot write data to it, it only tells you what request data "
+"we parsed from the input."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:123
+msgid ""
+"If the request has a body, it will be in the `driver.body` buffer, but "
+"only as much of the body as has been piped into the driver when the "
+"`connect` event fires."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:128
+msgid "Client-side"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:130
+msgid ""
+"Similarly, to implement a WebSocket client you just need to make a driver"
+" by passing in a URL. After this you use the driver API as described "
+"below to process incoming data and send outgoing data."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:153
+msgid ""
+"Client drivers have two additional properties for reading the HTTP data "
+"that was sent back by the server:"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:156
+msgid "`driver.statusCode` - the integer value of the HTTP status code"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:157
+msgid "`driver.headers` - an object containing the response headers"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:160
+msgid "HTTP Proxies"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:162
+msgid ""
+"The client driver supports connections via HTTP proxies using the "
+"`CONNECT` method. Instead of sending the WebSocket handshake immediately,"
+" it will send a `CONNECT` request, wait for a `200` response, and then "
+"proceed as normal."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:166
+msgid ""
+"To use this feature, call `driver.proxy(url)` where `url` is the origin "
+"of the proxy, including a username and password if required. This "
+"produces a duplex stream that you should pipe in and out of your TCP "
+"connection to the proxy server. When the proxy emits `connect`, you can "
+"then pipe `driver.io` to your TCP stream and call `driver.start()`."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:196
+msgid ""
+"The proxy's `connect` event is also where you should perform a TLS "
+"handshake on your TCP stream, if you are connecting to a `wss:` endpoint."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:199
+msgid ""
+"In the event that proxy connection fails, `proxy` will emit an `error`. "
+"You can inspect the proxy's response via `proxy.statusCode` and "
+"`proxy.headers`."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:210
+msgid ""
+"Before calling `proxy.start()` you can set custom headers using "
+"`proxy.setHeader()`:"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:219
+msgid "Driver API"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:221
+msgid "Drivers are created using one of the following methods:"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:229
+msgid ""
+"The `http` method returns a driver chosen using the headers from a Node "
+"HTTP request object. The `server` method returns a driver that will parse"
+" an HTTP request and then decide which driver to use for it using the "
+"`http` method. The `client` method always returns a driver for the RFC "
+"version of the protocol with masking enabled on outgoing frames."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:235
+msgid ""
+"The `options` argument is optional, and is an object. It may contain the "
+"following fields:"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:238
+msgid ""
+"`maxLength` - the maximum allowed size of incoming message frames, in "
+"bytes. The default value is `2^26 - 1`, or 1 byte short of 64 MiB."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:240
+msgid ""
+"`protocols` - an array of strings representing acceptable subprotocols "
+"for use over the socket. The driver will negotiate one of these to use "
+"via the `Sec-WebSocket-Protocol` header if supported by the other peer."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:244
+msgid "A driver has two duplex streams attached to it:"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:246
+msgid ""
+"**`driver.io`** - this stream should be attached to an I/O socket like a "
+"TCP stream. Pipe incoming TCP chunks to this stream for them to be "
+"parsed, and pipe this stream back into TCP to send outgoing frames."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:249
+msgid ""
+"**`driver.messages`** - this stream emits messages received over the "
+"WebSocket.  Writing to it sends messages to the other peer by emitting "
+"frames via the `driver.io` stream."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:253
+msgid ""
+"All drivers respond to the following API methods, but some of them are "
+"no-ops depending on whether the client supports the behaviour."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:256
+msgid ""
+"Note that most of these methods are commands: if they produce data that "
+"should be sent over the socket, they will give this to you by emitting "
+"`data` events on the `driver.io` stream."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:260
+#, python-brace-format
+msgid "`driver.on('open', function(event) {})`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:262
+msgid "Adds a callback to execute when the socket becomes open."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:264
+#, python-brace-format
+msgid "`driver.on('message', function(event) {})`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:266
+msgid ""
+"Adds a callback to execute when a message is received. `event` will have "
+"a `data` attribute containing either a string in the case of a text "
+"message or a `Buffer` in the case of a binary message."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:270
+msgid ""
+"You can also listen for messages using the `driver.messages.on('data')` "
+"event, which emits strings for text messages and buffers for binary "
+"messages."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:273
+#, python-brace-format
+msgid "`driver.on('error', function(event) {})`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:275
+msgid ""
+"Adds a callback to execute when a protocol error occurs due to the other "
+"peer sending an invalid byte sequence. `event` will have a `message` "
+"attribute describing the error."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:279
+#, python-brace-format
+msgid "`driver.on('close', function(event) {})`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:281
+msgid ""
+"Adds a callback to execute when the socket becomes closed. The `event` "
+"object has `code` and `reason` attributes."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:284
+#, python-brace-format
+msgid "`driver.on('ping', function(event) {})`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:286
+msgid ""
+"Adds a callback block to execute when a ping is received. You do not need"
+" to handle this by sending a pong frame yourself; the driver handles this"
+" for you."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:289
+#, python-brace-format
+msgid "`driver.on('pong', function(event) {})`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:291
+#, python-brace-format
+msgid ""
+"Adds a callback block to execute when a pong is received. If this was in "
+"response to a ping you sent, you can also handle this event via the "
+"`driver.ping(message, function() { ... })` callback."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:295
+msgid "`driver.addExtension(extension)`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:297
+msgid ""
+"Registers a protocol extension whose operation will be negotiated via the"
+" `Sec-WebSocket-Extensions` header. `extension` is any extension "
+"compatible with the [websocket-extensions](https://github.com/faye"
+"/websocket-extensions-node) framework."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:302
+msgid "`driver.setHeader(name, value)`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:304
+msgid ""
+"Sets a custom header to be sent as part of the handshake response, either"
+" from the server or from the client. Must be called before `start()`, "
+"since this is when the headers are serialized and sent."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:308
+msgid "`driver.start()`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:310
+msgid ""
+"Initiates the protocol by sending the handshake - either the response for"
+" a server-side driver or the request for a client-side one. This should "
+"be the first method you invoke.  Returns `true` if and only if a "
+"handshake was sent."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:314
+msgid "`driver.parse(string)`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:316
+msgid ""
+"Takes a string and parses it, potentially resulting in message events "
+"being emitted (see `on('message')` above) or in data being sent to "
+"`driver.io`.  You should send all data you receive via I/O to this method"
+" by piping a stream into `driver.io`."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:321
+msgid "`driver.text(string)`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:323
+msgid ""
+"Sends a text message over the socket. If the socket handshake is not yet "
+"complete, the message will be queued until it is. Returns `true` if the "
+"message was sent or queued, and `false` if the socket can no longer send "
+"messages."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:327
+msgid "This method is equivalent to `driver.messages.write(string)`."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:329
+msgid "`driver.binary(buffer)`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:331
+msgid ""
+"Takes a `Buffer` and sends it as a binary message. Will queue and return "
+"`true` or `false` the same way as the `text` method. It will also return "
+"`false` if the driver does not support binary messages."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:335
+msgid "This method is equivalent to `driver.messages.write(buffer)`."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:337
+#, python-brace-format
+msgid "`driver.ping(string = '', function() {})`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:339
+msgid ""
+"Sends a ping frame over the socket, queueing it if necessary. `string` "
+"and the callback are both optional. If a callback is given, it will be "
+"invoked when the socket receives a pong frame whose content matches "
+"`string`. Returns `false` if frames can no longer be sent, or if the "
+"driver does not support ping/pong."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:344
+msgid "`driver.pong(string = '')`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:346
+msgid ""
+"Sends a pong frame over the socket, queueing it if necessary. `string` is"
+" optional. Returns `false` if frames can no longer be sent, or if the "
+"driver does not support ping/pong."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:350
+msgid ""
+"You don't need to call this when a ping frame is received; pings are "
+"replied to automatically by the driver. This method is for sending "
+"unsolicited pongs."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:353
+msgid "`driver.close()`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:355
+msgid ""
+"Initiates the closing handshake if the socket is still open. For drivers "
+"with no closing handshake, this will result in the immediate execution of"
+" the `on('close')` driver. For drivers with a closing handshake, this "
+"sends a closing frame and `emit('close')` will execute when a response is"
+" received or a protocol error occurs."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:361
+msgid "`driver.version`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:363
+msgid ""
+"Returns the WebSocket version in use as a string. Will either be "
+"`hixie-75`, `hixie-76` or `hybi-$version`."
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:366
+msgid "`driver.protocol`"
+msgstr ""
+
+#: ../../source/websocket-driver_README.md:368
+msgid ""
+"Returns a string containing the selected subprotocol, if any was agreed "
+"upon using the `Sec-WebSocket-Protocol` mechanism. This value becomes "
+"available after `emit('open')` has fired."
+msgstr ""
+

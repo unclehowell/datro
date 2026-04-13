@@ -1,0 +1,30 @@
+[
+  {
+    "id": "log-001",
+    "timestamp": "2026-04-13T02:25:00Z",
+    "type": "meeting",
+    "agent": "kilo",
+    "client": "unclehowell",
+    "project_id": "sample-project-001",
+    "subject": "Standardisation analysis",
+    "notes": "Reviewed library structure. Found 15 CERTAIN issues that can be auto-fixed, 6 TAKE CARE items, 5 CUSTOM items requiring manual review.",
+    "actions": [
+      {"owner": "kilo", "description": "Implement CERTAIN fixes", "status": "done", "due": "2026-04-13"},
+      {"owner": "kilo", "description": "Create agent API", "status": "in_progress", "due": "2026-04-13"}
+    ],
+    "decisions": [
+      {"decision": "Use Cloudflare Worker for serverless API", "made_by": "kilo", "rationale": "Matches existing infrastructure"}
+    ]
+  },
+  {
+    "id": "log-002",
+    "timestamp": "2026-04-13T01:00:00Z",
+    "type": "change_request",
+    "agent": "kilo",
+    "client": "unclehowell",
+    "project_id": "sample-project-001",
+    "subject": "Create agent interaction library",
+    "notes": "Client requested agent-accessible document library. Must work for both humans (HTML) and agents (API).",
+    "next_steps": ["Design API schema", "Create JSON storage", "Deploy worker"]
+  }
+]

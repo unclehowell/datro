@@ -1,0 +1,51 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/react-error-overlay_README.md:1
+msgid "`react-error-overlay`"
+msgstr ""
+
+#: ../../source/react-error-overlay_README.md:3
+msgid ""
+"`react-error-overlay` is an overlay which displays when there is a "
+"runtime error."
+msgstr ""
+
+#: ../../source/react-error-overlay_README.md:5
+msgid "Development"
+msgstr ""
+
+#: ../../source/react-error-overlay_README.md:7
+msgid ""
+"When developing within this package, make sure you run `npm start` (or "
+"`yarn start`) so that the files are compiled as you work. This is run in "
+"watch mode by default."
+msgstr ""
+
+#: ../../source/react-error-overlay_README.md:10
+msgid ""
+"If you would like to build this for production, run `npm run build:prod` "
+"(or `yarn build:prod`).<br> If you would like to build this one-off for "
+"development, you can run `NODE_ENV=development npm run build` (or "
+"`NODE_ENV=development yarn build`)."
+msgstr ""
+

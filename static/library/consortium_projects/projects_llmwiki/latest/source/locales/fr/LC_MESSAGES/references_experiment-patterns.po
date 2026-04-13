@@ -1,0 +1,1256 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_experiment-patterns.md:1
+msgid "Experiment Design Patterns"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:3
+msgid ""
+"Patterns and best practices distilled from running research experiments "
+"at scale with the Hermes agent. These cover experiment infrastructure, "
+"evaluation protocols, monitoring, and failure recovery."
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:7
+msgid "Experiment Infrastructure"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:9
+msgid "Directory Structure"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:11
+msgid "Organize experiments with a consistent structure:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:39
+msgid "Script Design Principles"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:41
+msgid "**1. Incremental Saving (Crash Recovery)**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:43
+msgid ""
+"Every experiment script should save results after each unit of work, and "
+"skip already-completed work on restart:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:66
+msgid ""
+"This pattern makes re-runs safe and efficient. If a process crashes at "
+"problem 47/150, restarting skips the first 46."
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:68
+msgid "**2. Artifact Preservation**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:70
+msgid ""
+"Save all intermediate outputs, not just final results. This enables post-"
+"hoc analysis without re-running:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:83
+msgid "**3. Configuration Management**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:85
+msgid "Use YAML configs for reproducibility:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:105
+msgid "**4. Separation of Concerns**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:107
+msgid "Keep generation, evaluation, and visualization in separate scripts:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Script"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Purpose"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`run_experiment.py`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Core method execution"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`run_baselines.py`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Baseline comparisons at same compute"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`run_eval.py`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Blind evaluation / judge panels"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`analyze_results.py`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Statistical analysis"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`make_charts.py`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Figure generation"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:117
+msgid ""
+"This lets you re-run evaluation without re-running expensive generation, "
+"and regenerate figures without re-running analysis."
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:121
+msgid "Evaluation Protocols"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:123
+msgid "Blind Judge Panels (for Subjective Tasks)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:125
+msgid ""
+"When evaluating subjective outputs (writing, analysis, recommendations), "
+"use a blind judge panel:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:171
+msgid "Key design decisions:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:172
+msgid "**Randomize both labels AND order** per judge to prevent position bias"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:173
+msgid "**Use odd number of judges** (3, 5, 7) to break ties"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:174
+msgid ""
+"**Conservative tiebreak**: Incumbent/baseline wins ties (prevents false "
+"positives)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:175
+#, python-format
+msgid ""
+"**CoT judges** match non-CoT quality at ~40% cost (1 CoT judge ≈ 3 "
+"standard judges)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:177
+msgid "Code/Objective Evaluation"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:179
+msgid "For tasks with ground-truth evaluation (code, math, factual):"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:212
+msgid "Compute-Matched Comparison"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:214
+msgid ""
+"Always compare methods at equal compute budget. If your method uses N API"
+" calls, baselines get N calls too:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Method"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Call Budget"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Allocation"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Single pass"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "6 calls"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "6 independent generations"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Critique & revise"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "1 generate + 5 revise rounds"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Autoreason"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "1 generate + 1 analysis + 4 revisions"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Best-of-N"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "6 independent, pick best on public test"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:223
+msgid "Human Evaluation Design"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:225
+msgid ""
+"Many ML/NLP papers require human evaluation, especially for subjective "
+"tasks (text generation, summarization, dialogue, creative writing). "
+"Poorly designed human evals are a common rejection reason."
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:227
+msgid "When Human Evaluation Is Required"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Task Type"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Required?"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Text generation (open-ended)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Yes"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "LLM-as-judge alone is insufficient for acceptance at ACL/EMNLP"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Summarization"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Usually"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "At minimum for a subset of outputs"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Dialogue systems"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "User studies or annotation"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Code generation"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "No"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Test suites are objective ground truth"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Classification"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Standard metrics suffice"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Any task with subjective quality"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Strongly recommended"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Strengthens the paper significantly"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:238
+msgid "Annotation Protocol Design"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:250
+msgid "**Evaluation dimensions** (pick relevant subset):"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Dimension"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Definition"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Scale"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Fluency"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Grammaticality and naturalness"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "1-5 Likert"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Relevance"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Does it address the task?"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Factual accuracy"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Are stated facts correct?"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Binary or 1-5"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Coherence"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Logical flow and consistency"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Informativeness"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Does it provide useful information?"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Overall preference"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Which output is better?"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "A/B/Tie (pairwise)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:261
+msgid "**Pairwise comparison** (preferred over absolute scoring — more reliable):"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:262
+msgid "Present two outputs side-by-side (randomize left/right position)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:263
+msgid "Ask: \"Which is better? A / B / Tie\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:264
+msgid "More discriminative and less susceptible to annotator calibration drift"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:266
+msgid "Inter-Annotator Agreement"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:268
+msgid ""
+"Always report agreement metrics. Without them, reviewers assume your "
+"annotations are unreliable."
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Metric"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "When to Use"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Annotators"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Krippendorff's alpha"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Default choice"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Any number"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Any (ordinal, nominal, ratio)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Cohen's kappa"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "2 annotators, categorical"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Exactly 2"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Nominal/ordinal"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Fleiss' kappa"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "3+ annotators, categorical"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "3+"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Nominal"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Pearson/Spearman"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Continuous scores"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "2"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Interval/ratio"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:304
+msgid "Crowdsourcing Platforms"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Platform"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Best For"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Cost"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Quality"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Prolific**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Academic research, higher quality"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "$8-15/hr"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "High — academic participant pool"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**MTurk**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Large-scale, fast turnaround"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "$2-10/hr"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Variable — use qualifications"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Surge AI**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "NLP-specific annotations"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Premium"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "High — trained annotators"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Expert annotators**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Domain-specific (medical, legal)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Highest"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Highest — but slow"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:313
+msgid "**Ethics requirements**:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:314
+msgid "Report compensation rate (must be at minimum local minimum wage)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:315
+msgid "Describe annotator demographics if relevant"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:316
+msgid "Obtain IRB/ethics approval if required by your institution"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:317
+msgid "ACL venues explicitly require compensation documentation"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:319
+msgid "What to Report in the Paper"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:337
+msgid "Statistical Analysis"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:339
+msgid "Required Tests"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Test"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Python"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "McNemar's test"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Comparing two methods on same problems"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`scipy.stats.binomtest` for small n"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Two-proportion z-test"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Comparing success rates"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Custom or `statsmodels`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Fisher's exact test"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Small sample pairwise comparison"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`scipy.stats.fisher_exact`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Bootstrapped CI"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Confidence intervals for any metric"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Custom bootstrap"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Cohen's h"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Effect size for proportions"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Manual calculation"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:349
+msgid "Standard Analysis Script"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:406
+msgid "Reporting Standards"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:408
+msgid "Always include in the paper:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:409
+msgid "**Sample sizes**: n=X problems/tasks"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:410
+msgid "**Number of runs**: K independent runs if applicable"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:411
+msgid "**Error bars**: Specify standard deviation or standard error"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:412
+msgid "**Confidence intervals**: 95% CI for key results"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:413
+msgid "**Significance tests**: p-values for key comparisons"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:414
+msgid "**Effect sizes**: Cohen's d or h for practical significance"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:418
+msgid "Monitoring (Cron Pattern)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:420
+msgid "Cron Prompt Template"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:422
+msgid "For each experiment batch, create a monitoring prompt:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:442
+msgid "Monitoring Best Practices"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:444
+msgid ""
+"**Check processes first** — don't read results if the experiment is still"
+" running and results are incomplete"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:445
+msgid ""
+"**Read the log tail** — look for errors, progress indicators, completion "
+"messages"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:446
+msgid ""
+"**Count completed vs expected** — \"45/150 problems done\" is more useful"
+" than \"some results exist\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:447
+msgid "**Report in structured tables** — always include key metrics in a table"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:448
+msgid ""
+"**Answer the key question** — each experiment should have a specific "
+"analytical question to answer when done"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:449
+msgid "**[SILENT] for no-news** — suppress notifications when nothing has changed"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:450
+msgid ""
+"**Commit on completion** — every completed batch gets committed with a "
+"descriptive message"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:452
+msgid "Example Monitoring Report"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:473
+msgid "Failure Recovery"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:475
+msgid "Common Failures and Recovery"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Failure"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Detection"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Recovery"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**API credit exhaustion**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "402 errors in logs, incomplete results"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Top up credits, re-run (skips completed work automatically)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Rate limiting**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "429 errors, slow progress"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Add retry logic with exponential backoff"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Process crash**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "PID gone, log stops mid-problem"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Re-run script (resumes from last checkpoint)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Wrong model ID**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Model not found errors"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Fix ID (e.g., `claude-opus-4-6` not `claude-opus-4.6`)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Parallel slowdown**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Each experiment taking 2x longer"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Reduce parallel experiments to 2-3 max"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Security scan blocks**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Commands blocked by security"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Use `execute_code` instead of piped `terminal` commands"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Delegation failures**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`delegate_task` returns errors"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Fall back to doing work directly"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Timeout on hard problems**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Process stuck, no log progress"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Kill, skip problem, note in results"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "**Dataset path mismatch**"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "File not found errors"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Verify paths before launching"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:489
+msgid "Retry Naming Convention"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:491
+msgid "When re-running failed experiments, use a suffix to track rounds:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:499
+msgid "Pre-Flight Checklist"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:501
+msgid "Before launching any experiment batch:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:516
+msgid "Task/Benchmark Design"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:518
+msgid "Open-Ended Tasks (Subjective Evaluation)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:520
+msgid "Design tasks that have clear objectives but subjective quality:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:536
+msgid "Constrained Tasks (for Testing Scope Effects)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:538
+msgid ""
+"Constrained tasks test whether methods respect scope boundaries. Design "
+"with:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:540
+msgid "**Fixed facts**: \"Use only these N data points, add nothing else\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:541
+msgid ""
+"**Fixed deliverable**: Specific format (pitch, postmortem, memo — not "
+"\"improve this\")"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:542
+msgid "**Fixed structure**: \"These sections in this order, do not add/remove\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:543
+msgid "**Fixed change items**: \"Address exactly these N points, nothing else\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:545
+msgid ""
+"**Do NOT use word count as a scope constraint.** Word limits cause false "
+"convergence — outputs get rejected for length, not quality. Constrain "
+"scope (what to include) not length."
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:547
+msgid "Example: Good vs Bad Constraints"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Bad Constraint"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Why"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Good Constraint"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "\"Max 500 words\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Judges reject for length"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "\"Exactly 4 sections, each with 3 numbered items\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "\"Be concise\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Too vague"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "\"Each prohibition must reference a specific base fact\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "\"Improve this\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Unbounded scope"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "\"Write a 600-word incident postmortem with this exact structure\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "\"Make it better\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "No clear criterion"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "\"Address exactly these 3 reviewer concerns\""
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:558
+msgid "Visualization Best Practices"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:560
+msgid "Setup: SciencePlots + matplotlib"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:562
+msgid "Install SciencePlots for publication-ready defaults:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:568
+msgid ""
+"**Option A: SciencePlots styles** (recommended — handles most defaults "
+"automatically):"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:586
+msgid "**Option B: Manual rcParams** (when you need full control):"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:613
+msgid "Standard Figure Sizes (Two-Column Format)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Use Case"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "figsize"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Single column"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`(3.5, 2.5)`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Fits in one column of two-column layout"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Double column"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`(7.0, 3.0)`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Spans full page width"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Square (heatmap, confusion matrix)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`(3.5, 3.5)`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Tall single (many rows)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "`(3.5, 5.0)`"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Use sparingly"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:622
+msgid "Colorblind-Safe Palette (Okabe-Ito)"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:624
+msgid ""
+"Use this palette for all paper figures. It is distinguishable by people "
+"with all common forms of color vision deficiency:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:642
+msgid "Also differentiate lines by **marker and linestyle**, not just color:"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:652
+msgid "Complete Example: Method Comparison Bar Chart"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:686
+msgid "Complete Example: Convergence/Trajectory Line Chart"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:713
+msgid "Output Rules"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:715
+msgid ""
+"**Always save as PDF**: `fig.savefig('fig.pdf')` — vector graphics, sharp"
+" at any zoom"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:716
+msgid ""
+"**Never save as PNG** for paper figures — raster PNGs look blurry when "
+"printed/zoomed"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:717
+msgid ""
+"**Exception**: Screenshots, photographs, or pixel-art visualizations → "
+"PNG at 600 DPI"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:718
+msgid ""
+"**Verify grayscale**: Print to grayscale PDF and check all information is"
+" still visible"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md:720
+msgid "Chart Types for Common Comparisons"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Comparison Type"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Chart"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Method vs method"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Grouped bar chart"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Include error bars"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Across model sizes"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Line chart with CI bands"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Log scale for model size axis"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Ablation study"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Stacked/grouped bar"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Highlight removed component"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Trajectory/convergence"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Line chart over iterations"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Show winner per iteration"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Per-task breakdown"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Heatmap or grouped bar"
+msgstr ""
+
+#: ../../source/references_experiment-patterns.md
+msgid "Show variance across tasks"
+msgstr ""
+

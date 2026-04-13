@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/nearley_README.md:1
+msgid "[nearley](http://nearley.js.org) ↗️"
+msgstr ""
+
+#: ../../source/nearley_README.md:2
+msgid ""
+"[![JS.ORG](https://img.shields.io/badge/js.org-nearley-ffb400.svg?style"
+"=flat-square)](http://js.org) [![npm "
+"version](https://badge.fury.io/js/nearley.svg)](https://badge.fury.io/js/nearley)"
+msgstr ""
+
+#: ../../source/nearley_README.md:2
+msgid "JS.ORG"
+msgstr ""
+
+#: ../../source/nearley_README.md:2
+msgid "npm version"
+msgstr ""
+
+#: ../../source/nearley_README.md:5
+msgid "nearley is a simple, fast and powerful parsing toolkit. It consists of:"
+msgstr ""
+
+#: ../../source/nearley_README.md:6
+msgid ""
+"[A powerful, modular DSL for describing "
+"languages](https://nearley.js.org/docs/grammar)"
+msgstr ""
+
+#: ../../source/nearley_README.md:8
+msgid ""
+"[An efficient, lightweight Earley "
+"parser](https://nearley.js.org/docs/parser)"
+msgstr ""
+
+#: ../../source/nearley_README.md:10
+msgid ""
+"[Loads of tools, editor plug-ins, and other "
+"goodies!](https://nearley.js.org/docs/tooling)"
+msgstr ""
+
+#: ../../source/nearley_README.md:13
+msgid ""
+"nearley is a **streaming** parser with support for catching **errors** "
+"gracefully and providing _all_ parsings for **ambiguous** grammars. It is"
+" compatible with a variety of **lexers** (we recommend "
+"[moo](http://github.com/tjvr/moo)). It comes with tools for creating "
+"**tests**, **railroad diagrams** and **fuzzers** from your grammars, and "
+"has support for a variety of editors and platforms. It works in both node"
+" and the browser."
+msgstr ""
+
+#: ../../source/nearley_README.md:20
+msgid ""
+"Unlike most other parser generators, nearley can handle *any* grammar you"
+" can define in BNF (and more!). In particular, while most existing JS "
+"parsers such as PEGjs and Jison choke on certain grammars (e.g. [left "
+"recursive ones](http://en.wikipedia.org/wiki/Left_recursion)), nearley "
+"handles them easily and efficiently by using the [Earley parsing "
+"algorithm](https://en.wikipedia.org/wiki/Earley_parser)."
+msgstr ""
+
+#: ../../source/nearley_README.md:27
+msgid "nearley is used by a wide variety of projects:"
+msgstr ""
+
+#: ../../source/nearley_README.md:29
+msgid ""
+"[artificial intelligence](https://github.com/ChalmersGU-AI-course"
+"/shrdlite-course-project) and"
+msgstr ""
+
+#: ../../source/nearley_README.md:32
+msgid ""
+"[computational "
+"linguistics](https://wiki.eecs.yorku.ca/course_archive/2014-15/W/6339/useful_handouts)"
+" classes at universities;"
+msgstr ""
+
+#: ../../source/nearley_README.md:35
+msgid "[file format parsers](https://github.com/raymond-h/node-dmi);"
+msgstr ""
+
+#: ../../source/nearley_README.md:36
+msgid ""
+"[data-driven markup languages](https://github.com/idyll-lang/idyll-"
+"compiler);"
+msgstr ""
+
+#: ../../source/nearley_README.md:37
+msgid ""
+"[compilers for real-world programming "
+"languages](https://github.com/sizigi/lp5562);"
+msgstr ""
+
+#: ../../source/nearley_README.md:39
+msgid "and nearley itself! The nearley compiler is bootstrapped."
+msgstr ""
+
+#: ../../source/nearley_README.md:41
+msgid ""
+"nearley is an npm [staff pick](https://www.npmjs.com/package/npm-"
+"collection-staff-picks)."
+msgstr ""
+
+#: ../../source/nearley_README.md:44
+msgid "Documentation"
+msgstr ""
+
+#: ../../source/nearley_README.md:46
+msgid ""
+"Please visit our website https://nearley.js.org to get started! You will "
+"find a tutorial, detailed reference documents, and links to several real-"
+"world examples to get inspired."
+msgstr ""
+
+#: ../../source/nearley_README.md:50
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/nearley_README.md:52
+msgid ""
+"Please read [this document](.github/CONTRIBUTING.md) *before* working on "
+"nearley. If you are interested in contributing but unsure where to start,"
+" take a look at the issues labeled \"up for grabs\" on the issue tracker,"
+" or message a maintainer (@kach or @tjvr on Github)."
+msgstr ""
+
+#: ../../source/nearley_README.md:57
+msgid "nearley is MIT licensed."
+msgstr ""
+
+#: ../../source/nearley_README.md:59
+msgid ""
+"A big thanks to Nathan Dinsmore for teaching me how to Earley, Aria "
+"Stewart for helping structure nearley into a mature module, and Robin "
+"Windels for bootstrapping the grammar. Additionally, Jacob Edelman wrote "
+"an experimental JavaScript parser with nearley and contributed ideas for "
+"EBNF support. Joshua T. Corbin refactored the compiler to be much, much "
+"prettier. Bojidar Marinov implemented postprocessors-in-other-languages. "
+"Shachar Itzhaky fixed a subtle bug with nullables."
+msgstr ""
+
+#: ../../source/nearley_README.md:67
+msgid "Citing nearley"
+msgstr ""
+
+#: ../../source/nearley_README.md:69
+msgid ""
+"If you are citing nearley in academic work, please use the following "
+"BibTeX entry."
+msgstr ""
+

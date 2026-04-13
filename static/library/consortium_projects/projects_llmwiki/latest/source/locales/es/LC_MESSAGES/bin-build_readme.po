@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/bin-build_readme.md:1
+msgid ""
+"bin-build [![Build Status](https://travis-ci.org/kevva/bin-"
+"build.svg?branch=master)](https://travis-ci.org/kevva/bin-build)"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:3
+msgid "Easily build binaries"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:34
+msgid "API"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:36
+msgid "binBuild.directory(directory, commands)"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:38
+msgid "directory"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:40 ../../source/bin-build_readme.md:54
+#: ../../source/bin-build_readme.md:79
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:42
+msgid "Path to a directory containing the source code."
+msgstr ""
+
+#: ../../source/bin-build_readme.md:44 ../../source/bin-build_readme.md:58
+#: ../../source/bin-build_readme.md:83
+msgid "commands"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:46 ../../source/bin-build_readme.md:60
+#: ../../source/bin-build_readme.md:85
+msgid "Type: `Array`"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:48 ../../source/bin-build_readme.md:62
+#: ../../source/bin-build_readme.md:87
+msgid "Commands to run when building."
+msgstr ""
+
+#: ../../source/bin-build_readme.md:50
+msgid "binBuild.file(file, commands, [options])"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:52
+msgid "file"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:56
+msgid "Path to a archive file containing the source code."
+msgstr ""
+
+#: ../../source/bin-build_readme.md:64 ../../source/bin-build_readme.md:89
+msgid "options"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:66 ../../source/bin-build_readme.md:91
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:68 ../../source/bin-build_readme.md:93
+msgid "strip"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:70 ../../source/bin-build_readme.md:95
+msgid "Type: `number`<br> Default: `1`"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:73 ../../source/bin-build_readme.md:98
+msgid "Strip a number of leading paths from file names on extraction."
+msgstr ""
+
+#: ../../source/bin-build_readme.md:75
+msgid "binBuild.url(url, commands, [options])"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:77
+msgid "url"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:81
+msgid "URL to a archive file containing the source code."
+msgstr ""
+
+#: ../../source/bin-build_readme.md:101
+msgid "License"
+msgstr ""
+
+#: ../../source/bin-build_readme.md:103
+msgid "MIT © [Kevin Mårtensson](https://github.com/kevva)"
+msgstr ""
+

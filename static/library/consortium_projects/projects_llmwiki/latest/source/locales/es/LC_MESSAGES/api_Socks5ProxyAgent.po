@@ -1,0 +1,373 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_Socks5ProxyAgent.md:1
+msgid "Class: Socks5ProxyAgent"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:3
+msgid "Extends: `undici.Dispatcher`"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:5
+msgid ""
+"A SOCKS5 proxy wrapper class that implements the Dispatcher API. It "
+"enables HTTP requests to be routed through a SOCKS5 proxy server, "
+"providing connection tunneling and authentication support."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:7
+msgid "`new Socks5ProxyAgent(proxyUrl[, options])`"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:9
+#: ../../source/api_Socks5ProxyAgent.md:192
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:11
+msgid ""
+"**proxyUrl** `string | URL` (required) - The SOCKS5 proxy server URL. "
+"Must use `socks5://` or `socks://` protocol."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:12
+msgid ""
+"**options** `Socks5ProxyAgent.Options` (optional) - Additional "
+"configuration options."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:14
+msgid "Returns: `Socks5ProxyAgent`"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:16
+msgid "Parameter: `Socks5ProxyAgent.Options`"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:18
+msgid "Extends: [`PoolOptions`](/docs/docs/api/Pool.md#parameter-pooloptions)"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:20
+msgid ""
+"**headers** `IncomingHttpHeaders` (optional) - Additional headers to send"
+" with proxy connections."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:21
+msgid ""
+"**username** `string` (optional) - SOCKS5 proxy username for "
+"authentication. Can also be provided in the proxy URL."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:22
+msgid ""
+"**password** `string` (optional) - SOCKS5 proxy password for "
+"authentication. Can also be provided in the proxy URL."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:23
+msgid ""
+"**connect** `Function` (optional) - Custom connector function for the "
+"proxy connection."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:24
+msgid ""
+"**proxyTls** `BuildOptions` (optional) - TLS options for the proxy "
+"connection (when using SOCKS5 over TLS)."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:26
+msgid "Examples:"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:42
+msgid "Example - Basic SOCKS5 Proxy instantiation"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:44
+msgid ""
+"This will instantiate the Socks5ProxyAgent. It will not do anything until"
+" registered as the dispatcher to use with requests."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:52
+msgid "Example - Basic SOCKS5 Proxy Request with global dispatcher"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:69
+msgid "Example - Basic SOCKS5 Proxy Request with local dispatcher"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:88
+msgid "Example - SOCKS5 Proxy Request with authentication"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:113
+msgid "Example - SOCKS5 Proxy with HTTPS requests"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:115
+msgid "SOCKS5 proxy supports both HTTP and HTTPS requests through tunneling:"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:131
+msgid "Example - SOCKS5 Proxy with Fetch"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:147
+msgid "Example - Connection Pooling"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:149
+msgid ""
+"SOCKS5ProxyWrapper automatically manages connection pooling for better "
+"performance:"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:169
+msgid "`Socks5ProxyAgent.close()`"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:171
+msgid ""
+"Closes the SOCKS5 proxy wrapper and waits for all underlying pools and "
+"connections to close before resolving."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:173
+#: ../../source/api_Socks5ProxyAgent.md:195
+msgid "Returns: `Promise<void>`"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:175
+msgid "Example - clean up after tests are complete"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:188
+msgid "`Socks5ProxyAgent.destroy([err])`"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:190
+msgid ""
+"Destroys the SOCKS5 proxy wrapper and all underlying connections "
+"immediately."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:193
+msgid "**err** `Error` (optional) - The error that caused the destruction."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:197
+msgid "Example - force close all connections"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:208
+msgid "`Socks5ProxyAgent.dispatch(options, handlers)`"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:210
+msgid ""
+"Implements [`Dispatcher.dispatch(options, "
+"handlers)`](/docs/docs/api/Dispatcher.md#dispatcherdispatchoptions-"
+"handlers)."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:212
+msgid "`Socks5ProxyAgent.request(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:214
+msgid ""
+"See [`Dispatcher.request(options [, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherrequestoptions-"
+"callback)."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:216
+msgid "Debugging"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:218
+msgid "SOCKS5 proxy connections can be debugged using Node.js diagnostics:"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:224
+msgid ""
+"This will output detailed information about the SOCKS5 handshake, "
+"authentication, and connection establishment."
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:226
+msgid "SOCKS5 Protocol Support"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:228
+msgid "The Socks5ProxyAgent supports the following SOCKS5 features:"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:230
+msgid "Authentication Methods"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:232
+msgid "**No Authentication** (`0x00`) - For public or internal proxies"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:233
+msgid "**Username/Password** (`0x02`) - RFC 1929 authentication"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:235
+msgid "Address Types"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:237
+msgid "**IPv4** (`0x01`) - Standard IPv4 addresses"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:238
+msgid "**Domain Name** (`0x03`) - Domain names (recommended for flexibility)"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:239
+msgid ""
+"**IPv6** (`0x04`) - IPv6 addresses (full support for standard and "
+"compressed notation)"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:241
+msgid "Commands"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:243
+msgid ""
+"**CONNECT** (`0x01`) - Establish TCP connection (primary use case for "
+"HTTP)"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:245
+msgid "Error Handling"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:247
+msgid "The wrapper handles various SOCKS5 error conditions:"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:249
+msgid "Connection refused by proxy"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:250
+msgid "Authentication failures"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:251
+msgid "Network unreachable"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:252
+msgid "Host unreachable"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:253
+msgid "Unsupported address types or commands"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:255
+msgid "Performance Considerations"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:257
+msgid ""
+"**Connection Pooling**: Automatically pools connections through the "
+"SOCKS5 tunnel for better performance"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:258
+msgid "**HTTP/1.1 Pipelining**: Supports pipelining when enabled"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:259
+msgid ""
+"**DNS Resolution**: Domain names are resolved by the SOCKS5 proxy, "
+"reducing local DNS queries"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:260
+msgid ""
+"**TLS Termination**: HTTPS connections are encrypted end-to-end, with the"
+" SOCKS5 proxy only handling the TCP tunnel"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:262
+msgid "Security Notes"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:264
+msgid ""
+"**Authentication**: Credentials are sent to the SOCKS5 proxy in plaintext"
+" unless using SOCKS5 over TLS"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:265
+msgid ""
+"**DNS Leaks**: All DNS resolution happens on the proxy server, preventing"
+" DNS leaks"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:266
+msgid ""
+"**End-to-end Encryption**: HTTPS traffic remains encrypted between client"
+" and final destination"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:267
+msgid ""
+"**Connection Security**: Consider using authenticated proxies and secure "
+"networks"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:269
+msgid "Compatibility"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:271
+msgid ""
+"**Protocol**: SOCKS5 (RFC 1928) with Username/Password Authentication "
+"(RFC 1929)"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:272
+msgid "**Transport**: TCP only (UDP support not implemented)"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:273
+msgid "**Node.js**: Compatible with all supported Node.js versions"
+msgstr ""
+
+#: ../../source/api_Socks5ProxyAgent.md:274
+msgid "**HTTP Versions**: Works with HTTP/1.1 and HTTP/2 over the tunnel"
+msgstr ""
+

@@ -1,0 +1,100 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/caw_readme.md:1
+msgid ""
+"caw [![Build Status](https://travis-"
+"ci.org/kevva/caw.svg?branch=master)](https://travis-ci.org/kevva/caw)"
+msgstr ""
+
+#: ../../source/caw_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/caw_readme.md:3
+msgid "Construct HTTP/HTTPS agents for tunneling proxies"
+msgstr ""
+
+#: ../../source/caw_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/caw_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/caw_readme.md:25
+msgid "API"
+msgstr ""
+
+#: ../../source/caw_readme.md:27
+msgid "caw([proxy], [options])"
+msgstr ""
+
+#: ../../source/caw_readme.md:29
+msgid "proxy"
+msgstr ""
+
+#: ../../source/caw_readme.md:31
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/caw_readme.md:33
+msgid ""
+"Proxy URL. If not set, it'll try getting it using [`get-"
+"proxy`](https://github.com/kevva/get-proxy)."
+msgstr ""
+
+#: ../../source/caw_readme.md:35
+msgid "options"
+msgstr ""
+
+#: ../../source/caw_readme.md:37
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/caw_readme.md:39
+msgid ""
+"Besides the options below, you can pass in options allowed in [tunnel-"
+"agent](https://github.com/request/tunnel-agent)."
+msgstr ""
+
+#: ../../source/caw_readme.md:41
+msgid "protocol"
+msgstr ""
+
+#: ../../source/caw_readme.md:43
+msgid "Type: `string`<br> Default: `http`"
+msgstr ""
+
+#: ../../source/caw_readme.md:46
+msgid "Endpoint protocol."
+msgstr ""
+
+#: ../../source/caw_readme.md:49
+msgid "License"
+msgstr ""
+
+#: ../../source/caw_readme.md:51
+msgid "MIT © [Kevin Mårtensson](https://github.com/kevva)"
+msgstr ""
+

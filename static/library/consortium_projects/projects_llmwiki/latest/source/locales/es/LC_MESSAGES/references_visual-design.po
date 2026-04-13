@@ -1,0 +1,320 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_visual-design.md:1
+msgid "Visual Design Principles"
+msgstr ""
+
+#: ../../source/references_visual-design.md:3
+msgid "12 Core Principles"
+msgstr ""
+
+#: ../../source/references_visual-design.md:5
+msgid "**Geometry Before Algebra** — Show the shape first, the equation second."
+msgstr ""
+
+#: ../../source/references_visual-design.md:6
+msgid ""
+"**Opacity Layering** — PRIMARY=1.0, CONTEXT=0.4, GRID=0.15. Direct "
+"attention through brightness."
+msgstr ""
+
+#: ../../source/references_visual-design.md:7
+msgid "**One New Idea Per Scene** — Each scene introduces exactly one concept."
+msgstr ""
+
+#: ../../source/references_visual-design.md:8
+msgid ""
+"**Spatial Consistency** — Same concept occupies the same screen region "
+"throughout."
+msgstr ""
+
+#: ../../source/references_visual-design.md:9
+msgid ""
+"**Color = Meaning** — Assign colors to concepts, not mobjects. If "
+"velocity is blue, it stays blue."
+msgstr ""
+
+#: ../../source/references_visual-design.md:10
+msgid ""
+"**Progressive Disclosure** — Show simplest version first, add complexity "
+"incrementally."
+msgstr ""
+
+#: ../../source/references_visual-design.md:11
+msgid ""
+"**Transform, Don't Replace** — Use Transform/ReplacementTransform to show"
+" connections."
+msgstr ""
+
+#: ../../source/references_visual-design.md:12
+msgid "**Breathing Room** — `self.wait(1.5)` minimum after showing something new."
+msgstr ""
+
+#: ../../source/references_visual-design.md:13
+msgid "**Visual Weight Balance** — Don't cluster everything on one side."
+msgstr ""
+
+#: ../../source/references_visual-design.md:14
+msgid ""
+"**Consistent Motion Vocabulary** — Pick a small set of animation types "
+"and reuse them."
+msgstr ""
+
+#: ../../source/references_visual-design.md:15
+msgid ""
+"**Dark Background, Light Content** — #1C1C1C to #2D2B55 backgrounds "
+"maximize contrast."
+msgstr ""
+
+#: ../../source/references_visual-design.md:16
+#, python-format
+msgid "**Intentional Empty Space** — Leave at least 15% of the frame empty."
+msgstr ""
+
+#: ../../source/references_visual-design.md:18
+msgid "Layout Templates"
+msgstr ""
+
+#: ../../source/references_visual-design.md:20
+msgid "FULL_CENTER"
+msgstr ""
+
+#: ../../source/references_visual-design.md:21
+msgid ""
+"One main element centered, title above, note below. Best for: single "
+"equations, single diagrams, title cards."
+msgstr ""
+
+#: ../../source/references_visual-design.md:24
+msgid "LEFT_RIGHT"
+msgstr ""
+
+#: ../../source/references_visual-design.md:25
+msgid ""
+"Two elements side by side at x=-3.5 and x=3.5. Best for: equation + "
+"visual, before/after, comparison."
+msgstr ""
+
+#: ../../source/references_visual-design.md:28
+msgid "TOP_BOTTOM"
+msgstr ""
+
+#: ../../source/references_visual-design.md:29
+msgid ""
+"Main element at y=1.5, supporting content at y=-1.5. Best for: concept + "
+"examples, theorem + cases."
+msgstr ""
+
+#: ../../source/references_visual-design.md:32
+msgid "GRID"
+msgstr ""
+
+#: ../../source/references_visual-design.md:33
+msgid ""
+"Multiple elements via `arrange_in_grid()`. Best for: comparison matrices,"
+" multi-step processes."
+msgstr ""
+
+#: ../../source/references_visual-design.md:36
+msgid "PROGRESSIVE"
+msgstr ""
+
+#: ../../source/references_visual-design.md:37
+msgid ""
+"Elements appear one at a time, arranged DOWN with aligned_edge=LEFT. Best"
+" for: algorithms, proofs, step-by-step processes."
+msgstr ""
+
+#: ../../source/references_visual-design.md:40
+msgid "ANNOTATED_DIAGRAM"
+msgstr ""
+
+#: ../../source/references_visual-design.md:41
+msgid ""
+"Central diagram with floating labels connected by arrows. Best for: "
+"architecture diagrams, annotated figures."
+msgstr ""
+
+#: ../../source/references_visual-design.md:44
+msgid "Color Palettes"
+msgstr ""
+
+#: ../../source/references_visual-design.md:46
+msgid "Classic 3B1B"
+msgstr ""
+
+#: ../../source/references_visual-design.md:51
+msgid "Warm Academic"
+msgstr ""
+
+#: ../../source/references_visual-design.md:56
+msgid "Neon Tech"
+msgstr ""
+
+#: ../../source/references_visual-design.md:61
+msgid "Font Selection"
+msgstr ""
+
+#: ../../source/references_visual-design.md:63
+msgid ""
+"**Use monospace fonts for all text.** Manim's Pango text renderer "
+"produces broken kerning with proportional fonts (Helvetica, Inter, SF "
+"Pro, Arial) at all sizes and resolutions. Characters overlap and spacing "
+"is inconsistent. This is a fundamental Pango limitation, not a Manim bug."
+msgstr ""
+
+#: ../../source/references_visual-design.md:65
+msgid ""
+"Monospace fonts have fixed character widths — zero kerning issues by "
+"design."
+msgstr ""
+
+#: ../../source/references_visual-design.md:67
+msgid "Recommended Fonts"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "Use case"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "Fallback"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "**All text (default)**"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "`\"Menlo\"`"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "`\"Courier New\"`, `\"DejaVu Sans Mono\"`"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "Code, labels"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "`\"JetBrains Mono\"`, `\"SF Mono\"`"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "Math"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "Use `MathTex` (renders via LaTeX, not Pango)"
+msgstr ""
+
+#: ../../source/references_visual-design.md
+msgid "—"
+msgstr ""
+
+#: ../../source/references_visual-design.md:86
+msgid "When Proportional Fonts Are Acceptable"
+msgstr ""
+
+#: ../../source/references_visual-design.md:88
+msgid ""
+"Large title text (font_size >= 48) with short strings (1-3 words) can use"
+" proportional fonts without visible kerning issues. For anything else — "
+"labels, descriptions, multi-word text, small sizes — use monospace."
+msgstr ""
+
+#: ../../source/references_visual-design.md:90
+msgid "Font Availability"
+msgstr ""
+
+#: ../../source/references_visual-design.md:92
+msgid "**macOS**: Menlo (pre-installed), SF Mono"
+msgstr ""
+
+#: ../../source/references_visual-design.md:93
+msgid "**Linux**: DejaVu Sans Mono (pre-installed), Liberation Mono"
+msgstr ""
+
+#: ../../source/references_visual-design.md:94
+msgid "**Cross-platform**: JetBrains Mono (install from jetbrains.com)"
+msgstr ""
+
+#: ../../source/references_visual-design.md:96
+msgid ""
+"`\"Menlo\"` is the safest default — pre-installed on macOS, and Linux "
+"systems fall back to DejaVu Sans Mono."
+msgstr ""
+
+#: ../../source/references_visual-design.md:98
+msgid "Fine-Grained Text Control"
+msgstr ""
+
+#: ../../source/references_visual-design.md:100
+msgid ""
+"`Text()` does not support `letter_spacing` or kerning parameters. For "
+"fine control, use `MarkupText` with Pango attributes:"
+msgstr ""
+
+#: ../../source/references_visual-design.md:113
+msgid "Minimum Font Size"
+msgstr ""
+
+#: ../../source/references_visual-design.md:115
+msgid ""
+"`font_size=18` is the minimum for readable text at any resolution. Below "
+"18, characters become blurry at `-ql` and barely readable even at `-qh`."
+msgstr ""
+
+#: ../../source/references_visual-design.md:117
+msgid "Visual Hierarchy Checklist"
+msgstr ""
+
+#: ../../source/references_visual-design.md:119
+msgid "For every frame:"
+msgstr ""
+
+#: ../../source/references_visual-design.md:120
+msgid "What is the ONE thing to look at? (brightest/largest)"
+msgstr ""
+
+#: ../../source/references_visual-design.md:121
+msgid "What is context? (dimmed to 0.3-0.4)"
+msgstr ""
+
+#: ../../source/references_visual-design.md:122
+msgid "What is structural? (dimmed to 0.15)"
+msgstr ""
+
+#: ../../source/references_visual-design.md:123
+msgid "Enough empty space? (>15%)"
+msgstr ""
+
+#: ../../source/references_visual-design.md:124
+msgid "All text readable at phone size?"
+msgstr ""
+

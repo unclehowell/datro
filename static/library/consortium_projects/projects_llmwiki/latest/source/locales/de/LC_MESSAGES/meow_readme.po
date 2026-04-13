@@ -1,0 +1,290 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/meow_readme.md:1
+msgid ""
+"meow [![Build Status](https://travis-"
+"ci.org/sindresorhus/meow.svg?branch=master)](https://travis-"
+"ci.org/sindresorhus/meow)"
+msgstr ""
+
+#: ../../source/meow_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/meow_readme.md:3
+msgid "CLI app helper"
+msgstr ""
+
+#: ../../source/meow_readme.md:5
+msgid "![](meow.gif)"
+msgstr ""
+
+#: ../../source/meow_readme.md:8
+msgid "Features"
+msgstr ""
+
+#: ../../source/meow_readme.md:10
+msgid "Parses arguments using [minimist](https://github.com/substack/minimist)"
+msgstr ""
+
+#: ../../source/meow_readme.md:11
+msgid "Converts flags to [camelCase](https://github.com/sindresorhus/camelcase)"
+msgstr ""
+
+#: ../../source/meow_readme.md:12
+msgid "Outputs version when `--version`"
+msgstr ""
+
+#: ../../source/meow_readme.md:13
+msgid "Outputs description and supplied help text when `--help`"
+msgstr ""
+
+#: ../../source/meow_readme.md:14
+msgid ""
+"Makes unhandled rejected promises [fail "
+"loudly](https://github.com/sindresorhus/loud-rejection) instead of the "
+"default silent fail"
+msgstr ""
+
+#: ../../source/meow_readme.md:15
+msgid "Sets the process title to the binary name defined in package.json"
+msgstr ""
+
+#: ../../source/meow_readme.md:18
+msgid "Install"
+msgstr ""
+
+#: ../../source/meow_readme.md:25
+msgid "Usage"
+msgstr ""
+
+#: ../../source/meow_readme.md:64
+msgid "API"
+msgstr ""
+
+#: ../../source/meow_readme.md:66
+msgid "meow(options, [minimistOptions])"
+msgstr ""
+
+#: ../../source/meow_readme.md:68
+msgid "Returns an object with:"
+msgstr ""
+
+#: ../../source/meow_readme.md:70
+msgid "`input` *(array)* - Non-flag arguments"
+msgstr ""
+
+#: ../../source/meow_readme.md:71
+msgid "`flags` *(object)* - Flags converted to camelCase"
+msgstr ""
+
+#: ../../source/meow_readme.md:72
+msgid "`pkg` *(object)* - The `package.json` object"
+msgstr ""
+
+#: ../../source/meow_readme.md:73
+msgid "`help` *(object)* - The help text used with `--help`"
+msgstr ""
+
+#: ../../source/meow_readme.md:74
+msgid ""
+"`showHelp([code=0])` *(function)* - Show the help text and exit with "
+"`code`"
+msgstr ""
+
+#: ../../source/meow_readme.md:76
+msgid "options"
+msgstr ""
+
+#: ../../source/meow_readme.md:78
+msgid "Type: `object`, `array`, `string`"
+msgstr ""
+
+#: ../../source/meow_readme.md:80
+msgid "Can either be a string/array that is the `help` or an options object."
+msgstr ""
+
+#: ../../source/meow_readme.md:82
+msgid "description"
+msgstr ""
+
+#: ../../source/meow_readme.md:84
+msgid ""
+"Type: `string`, `boolean` Default: The package.json `\"description\"` "
+"property"
+msgstr ""
+
+#: ../../source/meow_readme.md:87
+msgid "A description to show above the help text."
+msgstr ""
+
+#: ../../source/meow_readme.md:89 ../../source/meow_readme.md:104
+#: ../../source/meow_readme.md:113
+msgid "Set it to `false` to disable it altogether."
+msgstr ""
+
+#: ../../source/meow_readme.md:91
+msgid "help"
+msgstr ""
+
+#: ../../source/meow_readme.md:93
+msgid "Type: `string`, `boolean`"
+msgstr ""
+
+#: ../../source/meow_readme.md:95
+msgid "The help text you want shown."
+msgstr ""
+
+#: ../../source/meow_readme.md:97
+msgid ""
+"The input is reindented and starting/ending newlines are trimmed which "
+"means you can use a [template "
+"literal](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/template_strings)"
+" without having to care about using the correct amount of indent."
+msgstr ""
+
+#: ../../source/meow_readme.md:99
+msgid ""
+"<del>If it's an array each item will be a line.</del>   *(Still "
+"supported, but you should use a template literal instead.)*"
+msgstr ""
+
+#: ../../source/meow_readme.md:102
+msgid "The description will be shown above your help text automatically."
+msgstr ""
+
+#: ../../source/meow_readme.md:106
+msgid "version"
+msgstr ""
+
+#: ../../source/meow_readme.md:108
+msgid ""
+"Type: `string`, `boolean`   Default: The package.json `\"version\"` "
+"property"
+msgstr ""
+
+#: ../../source/meow_readme.md:111
+msgid "Set a custom version output."
+msgstr ""
+
+#: ../../source/meow_readme.md:115
+msgid "pkg"
+msgstr ""
+
+#: ../../source/meow_readme.md:117
+msgid "Type: `string`, `object`   Default: Closest package.json upwards"
+msgstr ""
+
+#: ../../source/meow_readme.md:120
+msgid "Relative path to package.json or as an object."
+msgstr ""
+
+#: ../../source/meow_readme.md:122
+msgid "argv"
+msgstr ""
+
+#: ../../source/meow_readme.md:124
+msgid "Type: `array`   Default: `process.argv.slice(2)`"
+msgstr ""
+
+#: ../../source/meow_readme.md:127
+msgid "Custom arguments object."
+msgstr ""
+
+#: ../../source/meow_readme.md:129
+msgid "minimistOptions"
+msgstr ""
+
+#: ../../source/meow_readme.md:131
+#, python-brace-format
+msgid "Type: `object`   Default: `{}`"
+msgstr ""
+
+#: ../../source/meow_readme.md:134
+msgid ""
+"Minimist [options](https://github.com/substack/minimist#var-argv"
+"--parseargsargs-opts)."
+msgstr ""
+
+#: ../../source/meow_readme.md:136
+msgid ""
+"Keys passed to the minimist `default` option are "
+"[decamelized](https://github.com/sindresorhus/decamelize), so you can for"
+" example pass in `fooBar: 'baz'` and have it be the default for the "
+"`--foo-bar` flag."
+msgstr ""
+
+#: ../../source/meow_readme.md:139
+msgid "Promises"
+msgstr ""
+
+#: ../../source/meow_readme.md:141
+msgid ""
+"Meow will make unhandled rejected promises [fail "
+"loudly](https://github.com/sindresorhus/loud-rejection) instead of the "
+"default silent fail. Meaning you don't have to manually `.catch()` "
+"promises used in your CLI."
+msgstr ""
+
+#: ../../source/meow_readme.md:144
+msgid "Tips"
+msgstr ""
+
+#: ../../source/meow_readme.md:146
+msgid ""
+"See [`chalk`](https://github.com/chalk/chalk) if you want to colorize the"
+" terminal output."
+msgstr ""
+
+#: ../../source/meow_readme.md:148
+msgid ""
+"See [`get-stdin`](https://github.com/sindresorhus/get-stdin) if you want "
+"to accept input from stdin."
+msgstr ""
+
+#: ../../source/meow_readme.md:150
+msgid ""
+"See [`update-notifier`](https://github.com/yeoman/update-notifier) if you"
+" want update notifications."
+msgstr ""
+
+#: ../../source/meow_readme.md:152
+msgid ""
+"See [`configstore`](https://github.com/yeoman/configstore) if you need to"
+" persist some data."
+msgstr ""
+
+#: ../../source/meow_readme.md:154
+msgid ""
+"[More useful CLI utilities.](https://github.com/sindresorhus/awesome-"
+"nodejs#command-line-utilities)"
+msgstr ""
+
+#: ../../source/meow_readme.md:157
+msgid "License"
+msgstr ""
+
+#: ../../source/meow_readme.md:159
+msgid "MIT © [Sindre Sorhus](http://sindresorhus.com)"
+msgstr ""
+

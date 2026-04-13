@@ -1,0 +1,1202 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/mime-db_HISTORY.md:1
+msgid "1.52.0 / 2022-02-21"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:4
+msgid "Add extensions from IANA for more `image/*` types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:5
+msgid "Add extension `.asc` to `application/pgp-keys`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:6
+msgid "Add extensions to various XML types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:7 ../../source/mime-db_HISTORY.md:12
+#: ../../source/mime-db_HISTORY.md:20 ../../source/mime-db_HISTORY.md:26
+#: ../../source/mime-db_HISTORY.md:32 ../../source/mime-db_HISTORY.md:38
+#: ../../source/mime-db_HISTORY.md:48 ../../source/mime-db_HISTORY.md:59
+#: ../../source/mime-db_HISTORY.md:67 ../../source/mime-db_HISTORY.md:75
+#: ../../source/mime-db_HISTORY.md:81 ../../source/mime-db_HISTORY.md:87
+#: ../../source/mime-db_HISTORY.md:101 ../../source/mime-db_HISTORY.md:108
+#: ../../source/mime-db_HISTORY.md:115 ../../source/mime-db_HISTORY.md:122
+#: ../../source/mime-db_HISTORY.md:128 ../../source/mime-db_HISTORY.md:136
+#: ../../source/mime-db_HISTORY.md:144 ../../source/mime-db_HISTORY.md:151
+#: ../../source/mime-db_HISTORY.md:162 ../../source/mime-db_HISTORY.md:172
+#: ../../source/mime-db_HISTORY.md:183 ../../source/mime-db_HISTORY.md:189
+#: ../../source/mime-db_HISTORY.md:196 ../../source/mime-db_HISTORY.md:202
+#: ../../source/mime-db_HISTORY.md:208 ../../source/mime-db_HISTORY.md:214
+#: ../../source/mime-db_HISTORY.md:219 ../../source/mime-db_HISTORY.md:227
+#: ../../source/mime-db_HISTORY.md:235 ../../source/mime-db_HISTORY.md:241
+#: ../../source/mime-db_HISTORY.md:247 ../../source/mime-db_HISTORY.md:252
+msgid "Add new upstream MIME types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:9
+msgid "1.51.0 / 2021-11-08"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:13
+msgid "Mark `image/vnd.microsoft.icon` as compressible"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:14
+msgid "Mark `image/vnd.ms-dds` as compressible"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:16
+msgid "1.50.0 / 2021-09-15"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:19
+msgid "Add deprecated iWorks mime types and extensions"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:22
+msgid "1.49.0 / 2021-07-26"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:25
+msgid "Add extension `.trig` to `application/trig`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:28
+msgid "1.48.0 / 2021-05-30"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:31
+msgid "Add extension `.mvt` to `application/vnd.mapbox-vector-tile`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:33
+msgid "Mark `text/yaml` as compressible"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:35
+msgid "1.47.0 / 2021-04-01"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:39
+msgid "Remove ambigious extensions from IANA for `application/*+xml` types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:40
+msgid "Update primary extension to `.es` for `application/ecmascript`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:42
+msgid "1.46.0 / 2021-02-13"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:45
+msgid "Add extension `.amr` to `audio/amr`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:46
+msgid "Add extension `.m4s` to `video/iso.segment`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:47
+msgid "Add extension `.opus` to `audio/ogg`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:50
+msgid "1.45.0 / 2020-09-22"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:53
+msgid "Add `application/ubjson` with extension `.ubj`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:54
+msgid "Add `image/avif` with extension `.avif`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:55
+msgid "Add `image/ktx2` with extension `.ktx2`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:56
+msgid "Add extension `.dbf` to `application/vnd.dbf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:57
+msgid "Add extension `.rar` to `application/vnd.rar`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:58
+msgid "Add extension `.td` to `application/urc-targetdesc+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:60
+msgid "Fix extension of `application/vnd.apple.keynote` to be `.key`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:62
+msgid "1.44.0 / 2020-04-22"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:65
+msgid "Add charsets from IANA"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:66
+msgid "Add extension `.cjs` to `application/node`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:69
+msgid "1.43.0 / 2020-01-05"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:72
+msgid "Add `application/x-keepass2` with extension `.kdbx`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:73
+msgid "Add extension `.mxmf` to `audio/mobile-xmf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:74
+msgid "Add extensions from IANA for `application/*+xml` types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:77
+msgid "1.42.0 / 2019-09-25"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:80
+msgid "Add `image/vnd.ms-dds` with extension `.dds`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:82
+msgid "Remove compressible from `multipart/mixed`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:84
+msgid "1.41.0 / 2019-08-30"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:88
+msgid "Add `application/toml` with extension `.toml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:89
+msgid "Mark `font/ttf` as compressible"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:91
+msgid "1.40.0 / 2019-04-20"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:94
+msgid "Add extensions from IANA for `model/*` types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:95
+msgid "Add `text/mdx` with extension `.mdx`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:97
+msgid "1.39.0 / 2019-04-04"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:100
+msgid "Add extensions `.siv` and `.sieve` to `application/sieve`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:103
+msgid "1.38.0 / 2019-02-04"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:106
+msgid "Add extension `.nq` to `application/n-quads`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:107
+msgid "Add extension `.nt` to `application/n-triples`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:109
+msgid "Mark `text/less` as compressible"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:111
+msgid "1.37.0 / 2018-10-19"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:114
+msgid "Add extensions to HEIC image types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:117
+msgid "1.36.0 / 2018-08-20"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:120
+msgid "Add Apple file extensions from IANA"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:121
+msgid "Add extensions from IANA for `image/*` types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:124
+msgid "1.35.0 / 2018-07-15"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:127
+msgid "Add extension `.owl` to `application/rdf+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:129
+msgid "Removes extension `.woff` from `application/font-woff`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:131
+msgid "1.34.0 / 2018-06-03"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:134
+msgid "Add extension `.csl` to `application/vnd.citationstyles.style+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:135
+msgid "Add extension `.es` to `application/ecmascript`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:137
+msgid "Add `UTF-8` as default charset for `text/turtle`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:138
+msgid "Mark all XML-derived types as compressible"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:140
+msgid "1.33.0 / 2018-02-15"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:143
+msgid "Add extensions from IANA for `message/*` types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:145
+msgid "Fix some incorrect OOXML types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:146
+msgid "Remove `application/font-woff2`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:148
+msgid "1.32.0 / 2017-11-29"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:152
+msgid "Update `text/hjson` to registered `application/hjson`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:153
+msgid "Add `text/shex` with extension `.shex`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:155
+msgid "1.31.0 / 2017-10-25"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:158
+msgid "Add `application/raml+yaml` with extension `.raml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:159
+msgid "Add `application/wasm` with extension `.wasm`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:160
+msgid "Add new `font` type from IANA"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:161
+msgid "Add new upstream font extensions"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:163
+msgid "Add extensions for JPEG-2000 images"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:165
+msgid "1.30.0 / 2017-08-27"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:168
+msgid "Add `application/vnd.ms-outlook`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:169
+msgid "Add `application/x-arj`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:170
+msgid "Add extension `.mjs` to `application/javascript`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:171
+msgid "Add glTF types and extensions"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:173
+msgid "Add `text/x-org`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:174
+msgid "Add VirtualBox MIME types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:175
+msgid "Fix `source` records for `video/*` types that are IANA"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:176
+msgid "Update `font/opentype` to registered `font/otf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:178
+msgid "1.29.0 / 2017-07-10"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:181
+msgid "Add `application/fido.trusted-apps+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:182
+msgid "Add extension `.wadl` to `application/vnd.sun.wadl+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:184
+msgid "Add `UTF-8` as default charset for `text/css`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:186
+msgid "1.28.0 / 2017-05-14"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:190
+msgid "Add extension `.gz` to `application/gzip`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:191
+msgid "Update extensions `.md` and `.markdown` to be `text/markdown`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:193
+msgid "1.27.0 / 2017-03-16"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:197
+msgid "Add `image/apng` with extension `.apng`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:199
+msgid "1.26.0 / 2017-01-14"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:203
+msgid "Add extension `.geojson` to `application/geo+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:205
+msgid "1.25.0 / 2016-11-11"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:210
+msgid "1.24.0 / 2016-09-18"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:213
+msgid "Add `audio/mp3`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:216
+msgid "1.23.0 / 2016-05-01"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:220
+msgid "Add extension `.3gpp` to `audio/3gpp`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:222
+msgid "1.22.0 / 2016-02-15"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:225
+msgid "Add `text/slim`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:226
+msgid "Add extension `.rng` to `application/xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:228
+msgid "Fix extension of `application/dash+xml` to be `.mpd`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:229
+msgid "Update primary extension to `.m4a` for `audio/mp4`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:231
+msgid "1.21.0 / 2016-01-06"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:234
+msgid "Add Google document types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:237
+msgid "1.20.0 / 2015-11-10"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:240
+msgid "Add `text/x-suse-ymp`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:243
+msgid "1.19.0 / 2015-09-17"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:246
+msgid "Add `application/vnd.apple.pkpass`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:249
+msgid "1.18.0 / 2015-09-03"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:254
+msgid "1.17.0 / 2015-08-13"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:257
+msgid "Add `application/x-msdos-program`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:258
+msgid "Add `audio/g711-0`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:259
+msgid "Add `image/vnd.mozilla.apng`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:260
+msgid "Add extension `.exe` to `application/x-msdos-program`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:262
+msgid "1.16.0 / 2015-07-29"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:265
+msgid "Add `application/vnd.uri-map`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:267
+msgid "1.15.0 / 2015-07-13"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:270
+msgid "Add `application/x-httpd-php`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:272
+msgid "1.14.0 / 2015-06-25"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:275
+msgid "Add `application/scim+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:276
+msgid "Add `application/vnd.3gpp.ussd+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:277
+msgid "Add `application/vnd.biopax.rdf+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:278
+msgid "Add `text/x-processing`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:280
+msgid "1.13.0 / 2015-06-07"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:283
+msgid "Add nginx as a source"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:284
+msgid "Add `application/x-cocoa`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:285
+msgid "Add `application/x-java-archive-diff`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:286
+msgid "Add `application/x-makeself`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:287
+msgid "Add `application/x-perl`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:288
+msgid "Add `application/x-pilot`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:289
+msgid "Add `application/x-redhat-package-manager`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:290
+msgid "Add `application/x-sea`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:291
+msgid "Add `audio/x-m4a`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:292
+msgid "Add `audio/x-realaudio`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:293
+msgid "Add `image/x-jng`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:294
+msgid "Add `text/mathml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:296
+msgid "1.12.0 / 2015-06-05"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:299
+msgid "Add `application/bdoc`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:300
+msgid "Add `application/vnd.hyperdrive+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:301
+msgid "Add `application/x-bdoc`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:302
+msgid "Add extension `.rtf` to `text/rtf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:304
+msgid "1.11.0 / 2015-05-31"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:307
+msgid "Add `audio/wav`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:308
+msgid "Add `audio/wave`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:309
+msgid "Add extension `.litcoffee` to `text/coffeescript`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:310
+msgid "Add extension `.sfd-hdstx` to `application/vnd.hydrostatix.sof-data`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:311
+msgid "Add extension `.n-gage` to `application/vnd.nokia.n-gage.symbian.install`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:313
+msgid "1.10.0 / 2015-05-19"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:316
+msgid "Add `application/vnd.balsamiq.bmpr`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:317
+msgid "Add `application/vnd.microsoft.portable-executable`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:318
+msgid "Add `application/x-ns-proxy-autoconfig`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:320
+msgid "1.9.1 / 2015-04-19"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:323
+msgid "Remove `.json` extension from `application/manifest+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:324
+msgid "This is causing bugs downstream"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:326
+msgid "1.9.0 / 2015-04-19"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:329
+msgid "Add `application/manifest+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:330
+msgid "Add `application/vnd.micro+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:331
+msgid "Add `image/vnd.zbrush.pcx`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:332
+msgid "Add `image/x-ms-bmp`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:334
+msgid "1.8.0 / 2015-03-13"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:337
+msgid "Add `application/vnd.citationstyles.style+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:338
+msgid "Add `application/vnd.fastcopy-disk-image`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:339
+msgid "Add `application/vnd.gov.sk.xmldatacontainer+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:340
+msgid "Add extension `.jsonld` to `application/ld+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:342
+msgid "1.7.0 / 2015-02-08"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:345
+msgid "Add `application/vnd.gerber`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:346
+msgid "Add `application/vnd.msa-disk-image`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:348
+msgid "1.6.1 / 2015-02-05"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:351
+msgid "Community extensions ownership transferred from `node-mime`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:353
+msgid "1.6.0 / 2015-01-29"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:356
+msgid "Add `application/jose`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:357
+msgid "Add `application/jose+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:358
+msgid "Add `application/json-seq`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:359
+msgid "Add `application/jwk+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:360
+msgid "Add `application/jwk-set+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:361
+msgid "Add `application/jwt`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:362
+msgid "Add `application/rdap+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:363
+msgid "Add `application/vnd.gov.sk.e-form+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:364
+msgid "Add `application/vnd.ims.imsccv1p3`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:366
+msgid "1.5.0 / 2014-12-30"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:369
+msgid "Add `application/vnd.oracle.resource+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:370 ../../source/mime-db_HISTORY.md:380
+msgid "Fix various invalid MIME type entries"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:371
+msgid "`application/mbox+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:372
+msgid "`application/oscp-response`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:373
+msgid "`application/vwg-multiplexed`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:374
+msgid "`audio/g721`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:376
+msgid "1.4.0 / 2014-12-21"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:379
+msgid "Add `application/vnd.ims.imsccv1p2`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:381
+msgid "`application/vnd-acucobol`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:382
+msgid "`application/vnd-curl`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:383
+msgid "`application/vnd-dart`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:384
+msgid "`application/vnd-dxr`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:385
+msgid "`application/vnd-fdf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:386
+msgid "`application/vnd-mif`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:387
+msgid "`application/vnd-sema`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:388
+msgid "`application/vnd-wap-wmlc`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:389
+msgid "`application/vnd.adobe.flash-movie`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:390
+msgid "`application/vnd.dece-zip`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:391
+msgid "`application/vnd.dvb_service`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:392
+msgid "`application/vnd.micrografx-igx`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:393
+msgid "`application/vnd.sealed-doc`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:394
+msgid "`application/vnd.sealed-eml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:395
+msgid "`application/vnd.sealed-mht`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:396
+msgid "`application/vnd.sealed-ppt`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:397
+msgid "`application/vnd.sealed-tiff`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:398
+msgid "`application/vnd.sealed-xls`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:399
+msgid "`application/vnd.sealedmedia.softseal-html`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:400
+msgid "`application/vnd.sealedmedia.softseal-pdf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:401
+msgid "`application/vnd.wap-slc`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:402
+msgid "`application/vnd.wap-wbxml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:403
+msgid "`audio/vnd.sealedmedia.softseal-mpeg`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:404
+msgid "`image/vnd-djvu`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:405
+msgid "`image/vnd-svf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:406
+msgid "`image/vnd-wap-wbmp`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:407
+msgid "`image/vnd.sealed-png`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:408
+msgid "`image/vnd.sealedmedia.softseal-gif`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:409
+msgid "`image/vnd.sealedmedia.softseal-jpg`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:410
+msgid "`model/vnd-dwf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:411
+msgid "`model/vnd.parasolid.transmit-binary`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:412
+msgid "`model/vnd.parasolid.transmit-text`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:413
+msgid "`text/vnd-a`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:414
+msgid "`text/vnd-curl`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:415
+msgid "`text/vnd.wap-wml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:416
+msgid "Remove example template MIME types"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:417
+msgid "`application/example`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:418
+msgid "`audio/example`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:419
+msgid "`image/example`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:420
+msgid "`message/example`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:421
+msgid "`model/example`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:422
+msgid "`multipart/example`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:423
+msgid "`text/example`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:424
+msgid "`video/example`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:426
+msgid "1.3.1 / 2014-12-16"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:429
+msgid "Fix missing extensions"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:430
+msgid "`application/json5`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:431
+msgid "`text/hjson`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:433
+msgid "1.3.0 / 2014-12-07"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:436
+msgid "Add `application/a2l`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:437
+msgid "Add `application/aml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:438
+msgid "Add `application/atfx`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:439
+msgid "Add `application/atxml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:440
+msgid "Add `application/cdfx+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:441
+msgid "Add `application/dii`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:442
+msgid "Add `application/json5`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:443
+msgid "Add `application/lxf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:444
+msgid "Add `application/mf4`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:445
+msgid "Add `application/vnd.apache.thrift.compact`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:446
+msgid "Add `application/vnd.apache.thrift.json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:447
+msgid "Add `application/vnd.coffeescript`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:448
+msgid "Add `application/vnd.enphase.envoy`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:449
+msgid "Add `application/vnd.ims.imsccv1p1`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:450
+msgid "Add `text/csv-schema`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:451
+msgid "Add `text/hjson`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:452
+msgid "Add `text/markdown`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:453
+msgid "Add `text/yaml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:455
+msgid "1.2.0 / 2014-11-09"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:458
+msgid "Add `application/cea`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:459
+msgid "Add `application/dit`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:460
+msgid "Add `application/vnd.gov.sk.e-form+zip`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:461
+msgid "Add `application/vnd.tmd.mediaflex.api+xml`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:462
+msgid "Type `application/epub+zip` is now IANA-registered"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:464
+msgid "1.1.2 / 2014-10-23"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:467
+msgid "Rebuild database for `application/x-www-form-urlencoded` change"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:469
+msgid "1.1.1 / 2014-10-20"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:472
+msgid "Mark `application/x-www-form-urlencoded` as compressible."
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:474
+msgid "1.1.0 / 2014-09-28"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:477
+msgid "Add `application/font-woff2`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:479
+msgid "1.0.3 / 2014-09-25"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:482
+msgid "Fix engine requirement in package"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:484
+msgid "1.0.2 / 2014-09-25"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:487
+msgid "Add `application/coap-group+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:488
+msgid "Add `application/dcd`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:489
+msgid "Add `application/vnd.apache.thrift.binary`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:490
+msgid "Add `image/vnd.tencent.tap`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:491
+msgid "Mark all JSON-derived types as compressible"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:492
+msgid "Update `text/vtt` data"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:494
+msgid "1.0.1 / 2014-08-30"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:497
+msgid "Fix extension ordering"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:499
+msgid "1.0.0 / 2014-08-30"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:502
+msgid "Add `application/atf`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:503
+msgid "Add `application/merge-patch+json`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:504
+msgid "Add `multipart/x-mixed-replace`"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:505
+msgid "Add `source: 'apache'` metadata"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:506
+msgid "Add `source: 'iana'` metadata"
+msgstr ""
+
+#: ../../source/mime-db_HISTORY.md:507
+msgid "Remove badly-assumed charset data"
+msgstr ""
+

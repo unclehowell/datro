@@ -1,0 +1,190 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/p-limit_readme.md:1
+msgid ""
+"p-limit [![Build Status](https://travis-"
+"ci.org/sindresorhus/p-limit.svg?branch=master)](https://travis-"
+"ci.org/sindresorhus/p-limit)"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:3
+msgid "Run multiple promise-returning & async functions with limited concurrency"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:11
+msgid "Usage"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:31
+msgid "API"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:33
+msgid "pLimit(concurrency)"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:35
+msgid "Returns a `limit` function."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:37
+msgid "concurrency"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:39
+msgid "Type: `number` Minimum: `1` Default: `Infinity`"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:43
+msgid "Concurrency limit."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:45
+msgid "limit(fn, ...args)"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:47
+msgid "Returns the promise returned by calling `fn(...args)`."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:49
+msgid "fn"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:51
+msgid "Type: `Function`"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:53
+msgid "Promise-returning/async function."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:55
+msgid "args"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:57
+msgid "Any arguments to pass through to `fn`."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:59
+msgid ""
+"Support for passing arguments on to the `fn` is provided in order to be "
+"able to avoid creating unnecessary closures. You probably don't need this"
+" optimization unless you're pushing a *lot* of functions."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:61
+msgid "limit.activeCount"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:63
+msgid "The number of promises that are currently running."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:65
+msgid "limit.pendingCount"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:67
+msgid ""
+"The number of promises that are waiting to run (i.e. their internal `fn` "
+"was not called yet)."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:69
+msgid "limit.clearQueue()"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:71
+msgid "Discard pending promises that are waiting to run."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:73
+msgid ""
+"This might be useful if you want to teardown the queue at the end of your"
+" program's lifecycle or discard any function calls referencing an "
+"intermediary state of your app."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:75
+msgid "Note: This does not cancel promises that are already running."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:77
+msgid "FAQ"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:79
+msgid ""
+"How is this different from the "
+"[`p-queue`](https://github.com/sindresorhus/p-queue) package?"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:81
+msgid ""
+"This package is only about limiting the number of concurrent executions, "
+"while `p-queue` is a fully featured queue implementation with lots of "
+"different options, introspection, and ability to pause the queue."
+msgstr ""
+
+#: ../../source/p-limit_readme.md:83
+msgid "Related"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:85
+msgid ""
+"[p-queue](https://github.com/sindresorhus/p-queue) - Promise queue with "
+"concurrency control"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:86
+msgid ""
+"[p-throttle](https://github.com/sindresorhus/p-throttle) - Throttle "
+"promise-returning & async functions"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:87
+msgid ""
+"[p-debounce](https://github.com/sindresorhus/p-debounce) - Debounce "
+"promise-returning & async functions"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:88
+msgid ""
+"[p-all](https://github.com/sindresorhus/p-all) - Run promise-returning & "
+"async functions concurrently with optional limited concurrency"
+msgstr ""
+
+#: ../../source/p-limit_readme.md:89
+msgid "[More…](https://github.com/sindresorhus/promise-fun)"
+msgstr ""
+

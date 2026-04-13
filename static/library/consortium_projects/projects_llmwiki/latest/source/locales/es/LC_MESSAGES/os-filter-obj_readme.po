@@ -1,0 +1,76 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/os-filter-obj_readme.md:1
+msgid ""
+"os-filter-obj [![Build Status](https://travis-ci.org/kevva/os-filter-"
+"obj.svg?branch=master)](https://travis-ci.org/kevva/os-filter-obj)"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:3
+msgid "Filter an array of objects to a specific OS"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:47
+msgid "API"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:49
+msgid "osFilterObj(objects)"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:51
+msgid "Returns an `Array` with the filtered objects."
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:53
+msgid "objects"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:55
+msgid "Type: `Array`"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:57
+msgid "The `Array` to filter."
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:60
+msgid "License"
+msgstr ""
+
+#: ../../source/os-filter-obj_readme.md:62
+msgid "MIT © [Kevin Mårtensson](https://github.com/kevva)"
+msgstr ""
+

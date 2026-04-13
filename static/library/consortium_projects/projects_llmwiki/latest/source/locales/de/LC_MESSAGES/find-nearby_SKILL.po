@@ -1,0 +1,214 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/find-nearby_SKILL.md:11
+msgid "Find Nearby — Local Place Discovery"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:13
+msgid ""
+"Find restaurants, cafes, bars, pharmacies, and other places near any "
+"location. Uses OpenStreetMap (free, no API keys). Works with:"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:15
+msgid ""
+"**Coordinates** from Telegram location pins (latitude/longitude in "
+"conversation)"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:16
+msgid "**Addresses** (\"near 123 Main St, Springfield\")"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:17
+msgid "**Cities** (\"restaurants in downtown Austin\")"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:18
+msgid "**Zip codes** (\"pharmacies near 90210\")"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:19
+msgid "**Landmarks** (\"cafes near Times Square\")"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:21
+msgid "Quick Reference"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:37
+msgid "Parameters"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "Flag"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "Default"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "`--lat`, `--lon`"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "Exact coordinates"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "—"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "`--near`"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "Address, city, zip, or landmark (geocoded)"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "`--type`"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "Place type (repeatable for multiple)"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "restaurant"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "`--radius`"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "Search radius in meters"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "1500"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "`--limit`"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "Max results"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "15"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "`--json`"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "Machine-readable JSON output"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md
+msgid "off"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:48
+msgid "Common Place Types"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:50
+msgid ""
+"`restaurant`, `cafe`, `bar`, `pub`, `fast_food`, `pharmacy`, `hospital`, "
+"`bank`, `atm`, `fuel`, `parking`, `supermarket`, `convenience`, `hotel`"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:52
+msgid "Workflow"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:54
+msgid ""
+"**Get the location.** Look for coordinates (`latitude: ... / longitude: "
+"...`) from a Telegram pin, or ask the user for an address/city/zip."
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:56
+msgid ""
+"**Ask for preferences** (only if not already stated): place type, how far"
+" they're willing to go, any specifics (cuisine, \"open now\", etc.)."
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:58
+msgid ""
+"**Run the script** with appropriate flags. Use `--json` if you need to "
+"process results programmatically."
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:60
+msgid ""
+"**Present results** with names, distances, and Google Maps links. If the "
+"user asked about hours or \"open now,\" check the `hours` field in "
+"results — if missing or unclear, verify with `web_search`."
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:62
+msgid ""
+"**For directions**, use the `directions_url` from results, or construct: "
+"`https://www.google.com/maps/dir/?api=1&origin=<LAT>,<LON>&destination=<LAT>,<LON>`"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:64
+msgid "Tips"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:66
+msgid "If results are sparse, widen the radius (1500 → 3000m)"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:67
+msgid ""
+"For \"open now\" requests: check the `hours` field in results, cross-"
+"reference with `web_search` for accuracy since OSM hours aren't always "
+"complete"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:68
+msgid ""
+"Zip codes alone can be ambiguous globally — prompt the user for "
+"country/state if results look wrong"
+msgstr ""
+
+#: ../../source/find-nearby_SKILL.md:69
+msgid ""
+"The script uses OpenStreetMap data which is community-maintained; "
+"coverage varies by region"
+msgstr ""
+

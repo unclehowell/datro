@@ -1,0 +1,180 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/fast-json-stable-stringify_README.md:1
+msgid "fast-json-stable-stringify"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:3
+msgid ""
+"Deterministic `JSON.stringify()` - a faster version of "
+"[@substack](https://github.com/substack)'s json-stable-strigify without "
+"[jsonify](https://github.com/substack/jsonify)."
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:5
+msgid "You can also pass in a custom comparison function."
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:7
+msgid ""
+"[![Build Status](https://travis-ci.org/epoberezkin/fast-json-stable-"
+"stringify.svg?branch=master)](https://travis-ci.org/epoberezkin/fast-"
+"json-stable-stringify) [![Coverage "
+"Status](https://coveralls.io/repos/github/epoberezkin/fast-json-stable-"
+"stringify/badge.svg?branch=master)](https://coveralls.io/github/epoberezkin"
+"/fast-json-stable-stringify?branch=master)"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:7
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:7
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:10
+msgid "example"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:18
+msgid "output:"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:25
+msgid "methods"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:31
+msgid "var str = stringify(obj, opts)"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:33
+msgid "Return a deterministic stringified string `str` from the object `obj`."
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:36
+msgid "options"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:38
+msgid "cmp"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:40
+msgid ""
+"If `opts` is given, you can supply an `opts.cmp` to have a custom "
+"comparison function for object keys. Your function `opts.cmp` is called "
+"with these parameters:"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:48
+msgid ""
+"For example, to sort on the object key names in reverse order you could "
+"write:"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:60
+msgid "which results in the output string:"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:66
+msgid ""
+"Or if you wanted to sort on the object values in reverse order, you could"
+" write:"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:78
+msgid "which outputs:"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:84
+msgid "cycles"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:86
+msgid ""
+"Pass `true` in `opts.cycles` to stringify circular property as "
+"`__cycle__` - the result will not be a valid JSON string in this case."
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:88
+msgid "TypeError will be thrown in case of circular object without this option."
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:91
+msgid "install"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:93
+msgid "With [npm](https://npmjs.org) do:"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:100
+msgid "benchmark"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:102
+msgid "To run benchmark (requires Node.js 6+):"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:107
+msgid "Results:"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:117
+msgid "Enterprise support"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:119
+msgid ""
+"fast-json-stable-stringify package is a part of [Tidelift enterprise "
+"subscription](https://tidelift.com/subscription/pkg/npm-fast-json-stable-"
+"stringify?utm_source=npm-fast-json-stable-"
+"stringify&utm_medium=referral&utm_campaign=enterprise&utm_term=repo) - it"
+" provides a centralised commercial support to open-source software users,"
+" in addition to the support provided by software maintainers."
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:122
+msgid "Security contact"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:124
+msgid ""
+"To report a security vulnerability, please use the [Tidelift security "
+"contact](https://tidelift.com/security). Tidelift will coordinate the fix"
+" and disclosure. Please do NOT report security vulnerability via GitHub "
+"issues."
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:129
+msgid "license"
+msgstr ""
+
+#: ../../source/fast-json-stable-stringify_README.md:131
+msgid ""
+"[MIT](https://github.com/epoberezkin/fast-json-stable-"
+"stringify/blob/master/LICENSE)"
+msgstr ""
+

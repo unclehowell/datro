@@ -1,0 +1,133 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/postcss-svgo_README.md:1
+msgid "[postcss][postcss]-svgo"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:3
+msgid "Optimise inline SVG with PostCSS."
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:8
+msgid "With [npm](https://npmjs.org/package/postcss-svgo) do:"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:15
+msgid "Example"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:17
+msgid "Input"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:29
+msgid "Output"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:42
+msgid "API"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:44
+msgid "`svgo([options])`"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:46
+msgid ""
+"Note that postcss-svgo is an *asynchronous* processor. It cannot be used "
+"like this:"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:54
+msgid "Instead make sure your PostCSS runner uses the asynchronous API:"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:62
+msgid "options"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:64
+msgid "encode"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:66
+msgid "Type: `boolean` Default: `undefined`"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:69
+msgid ""
+"If `true`, it will encode URL-unsafe characters such as `<`, `>` and `&`;"
+" `false` will decode these characters, and `undefined` will neither "
+"encode nor decode the original input. Note that regardless of this "
+"setting, `#` will always be URL-encoded."
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:74
+msgid "plugins"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:76
+msgid ""
+"Optionally, you can customise the output by specifying the `plugins` "
+"option. You will need to provide the config in comma separated objects, "
+"like the example below. Note that you can either disable the plugin by "
+"setting it to `false`, or pass different options to change the default "
+"behaviour."
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:107
+msgid "You can view the [full list of plugins here][plugins]."
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:110
+msgid "Usage"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:112
+msgid ""
+"See the [PostCSS documentation](https://github.com/postcss/postcss#usage)"
+" for examples for your environment."
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:116
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:118
+msgid ""
+"See "
+"[CONTRIBUTORS.md](https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md)."
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:121
+msgid "License"
+msgstr ""
+
+#: ../../source/postcss-svgo_README.md:123
+msgid "MIT © [Ben Briggs](http://beneb.info)"
+msgstr ""
+

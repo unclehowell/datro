@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/color_README.md:1
+msgid ""
+"color [![Build Status](https://travis-"
+"ci.org/Qix-/color.svg?branch=master)](https://travis-ci.org/Qix-/color)"
+msgstr ""
+
+#: ../../source/color_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/color_README.md:3
+msgid ""
+"JavaScript library for immutable color conversion and manipulation with "
+"support for CSS color strings."
+msgstr ""
+
+#: ../../source/color_README.md:14
+msgid "Install"
+msgstr ""
+
+#: ../../source/color_README.md:19
+msgid "Usage"
+msgstr ""
+
+#: ../../source/color_README.md:24
+msgid "Constructors"
+msgstr ""
+
+#: ../../source/color_README.md:32
+msgid ""
+"Set the values for individual channels with `alpha`, `red`, `green`, "
+"`blue`, `hue`, `saturationl` (hsl), `saturationv` (hsv), `lightness`, "
+"`whiteness`, `blackness`, `cyan`, `magenta`, `yellow`, `black`"
+msgstr ""
+
+#: ../../source/color_README.md:34
+msgid ""
+"String constructors are handled by [color-"
+"string](https://www.npmjs.com/package/color-string)"
+msgstr ""
+
+#: ../../source/color_README.md:36
+msgid "Getters"
+msgstr ""
+
+#: ../../source/color_README.md:40
+msgid "Convert a color to a different space (`hsl()`, `cmyk()`, etc.)."
+msgstr ""
+
+#: ../../source/color_README.md:45
+msgid ""
+"Get a hash of the color value. Reflects the color's current model (see "
+"above)."
+msgstr ""
+
+#: ../../source/color_README.md:50
+msgid ""
+"Get an array of the values with `array()`. Reflects the color's current "
+"model (see above)."
+msgstr ""
+
+#: ../../source/color_README.md:55
+msgid "Get the rgb number value."
+msgstr ""
+
+#: ../../source/color_README.md:60
+msgid "Get the hex value."
+msgstr ""
+
+#: ../../source/color_README.md:65
+msgid "Get the value for an individual channel."
+msgstr ""
+
+#: ../../source/color_README.md:67
+msgid "CSS Strings"
+msgstr ""
+
+#: ../../source/color_README.md:72
+msgid ""
+"Calling `.string()` with a number rounds the numbers to that decimal "
+"place. It defaults to 1."
+msgstr ""
+
+#: ../../source/color_README.md:74
+msgid "Luminosity"
+msgstr ""
+
+#: ../../source/color_README.md:78
+msgid ""
+"The [WCAG luminosity](http://www.w3.org/TR/WCAG20/#relativeluminancedef) "
+"of the color. 0 is black, 1 is white."
+msgstr ""
+
+#: ../../source/color_README.md:83
+msgid ""
+"The [WCAG contrast ratio](http://www.w3.org/TR/WCAG20/#contrast-ratiodef)"
+" to another color, from 1 (same color) to 21 (contrast b/w white and "
+"black)."
+msgstr ""
+
+#: ../../source/color_README.md:89
+msgid ""
+"Get whether the color is \"light\" or \"dark\", useful for deciding text "
+"color."
+msgstr ""
+
+#: ../../source/color_README.md:91
+msgid "Manipulation"
+msgstr ""
+
+#: ../../source/color_README.md:122
+msgid "Propers"
+msgstr ""
+
+#: ../../source/color_README.md:123
+msgid ""
+"The API was inspired by [color-js](https://github.com/brehaut/color-js). "
+"Manipulation functions by CSS tools like Sass, LESS, and Stylus."
+msgstr ""
+

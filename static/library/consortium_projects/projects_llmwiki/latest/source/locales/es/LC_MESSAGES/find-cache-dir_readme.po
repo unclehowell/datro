@@ -1,0 +1,198 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/find-cache-dir_readme.md:1
+msgid ""
+"find-cache-dir [![Build Status](https://travis-ci.org/avajs/find-cache-"
+"dir.svg?branch=master)](https://travis-ci.org/avajs/find-cache-dir) "
+"[![Coverage Status](https://coveralls.io/repos/github/avajs/find-cache-"
+"dir/badge.svg?branch=master)](https://coveralls.io/github/avajs/find-"
+"cache-dir?branch=master)"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:1
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:3
+msgid "Finds the common standard cache directory"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:5
+msgid ""
+"The [`nyc`](https://github.com/istanbuljs/nyc) and "
+"[`AVA`](https://ava.li) projects decided to standardize on a common "
+"directory structure for storing cache information:"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:18
+msgid ""
+"This module makes it easy to correctly locate the cache directory "
+"according to this shared spec. If this pattern becomes ubiquitous, "
+"clearing the cache for multiple dependencies becomes easy and consistent:"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:24
+msgid ""
+"If you decide to adopt this pattern, please file a PR adding your name to"
+" the list of adopters below."
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:27
+msgid "Install"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:34
+msgid "Usage"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:44
+msgid "API"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:46
+msgid "findCacheDir([options])"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:48
+msgid ""
+"Finds the cache directory using the supplied options. The algorithm tries"
+" to find a `package.json` file, searching every parent directory of the "
+"`cwd` specified (or implied from other options). It returns a `string` "
+"containing the absolute path to the cache directory, or `null` if "
+"`package.json` was never found."
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:50
+msgid "options"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:52
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:54
+msgid "name"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:56
+msgid "*Required*<br> Type: `string`"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:59
+msgid "Should be the same as your project name in `package.json`."
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:61
+msgid "files"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:63
+msgid "Type: `string[]` `string`"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:65
+msgid ""
+"An array of files that will be searched for a common parent directory. "
+"This common parent directory will be used in lieu of the `cwd` option "
+"below."
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:67
+msgid "cwd"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:69
+msgid "Type: `string`<br> Default `process.cwd()`"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:72
+msgid "Directory to start searching for a `package.json` from."
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:74
+msgid "create"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:76
+#: ../../source/find-cache-dir_readme.md:83
+msgid "Type: `boolean`<br> Default `false`"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:79
+msgid "If `true`, the directory will be created synchronously before returning."
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:81
+msgid "thunk"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:86
+msgid ""
+"If `true`, this modifies the return type to be a function that is a thunk"
+" for `path.join(theFoundCacheDirectory)`."
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:101
+msgid "This is helpful for actually putting actual files in the cache!"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:104
+msgid "Adopters"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:106
+msgid "[`AVA`](https://ava.li)"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:107
+msgid "[`nyc`](https://github.com/istanbuljs/nyc)"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:108
+msgid "[`babel-loader`](https://github.com/babel/babel-loader)"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:109
+msgid "[`eslint-loader`](https://github.com/MoOx/eslint-loader)"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:110
+msgid "[`Phenomic`](https://phenomic.io)"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:111
+msgid "[`javascripthon-loader`](https://github.com/Beg-in/javascripthon-loader)"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:114
+msgid "License"
+msgstr ""
+
+#: ../../source/find-cache-dir_readme.md:116
+msgid "MIT"
+msgstr ""
+

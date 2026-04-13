@@ -1,0 +1,630 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/source-map_CHANGELOG.md:1
+msgid "Change Log"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:3
+msgid "0.5.6"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:5
+msgid ""
+"Fix for regression when people were using numbers as names in source "
+"maps. See #236."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:8
+msgid "0.5.5"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:10
+msgid ""
+"Fix \"regression\" of unsupported, implementation behavior that half the "
+"world happens to have come to depend on. See #235."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:13
+msgid "Fix regression involving function hoisting in SpiderMonkey. See #233."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:15
+msgid "0.5.4"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:17
+msgid ""
+"Large performance improvements to source-map serialization. See #228 and "
+"#229."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:19
+msgid "0.5.3"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:21
+msgid ""
+"Do not include unnecessary distribution files. See commit "
+"ef7006f8d1647e0a83fdc60f04f5a7ca54886f86."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:24
+msgid "0.5.2"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:26
+msgid ""
+"Include browser distributions of the library in package.json's `files`. "
+"See issue #212."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:29
+msgid "0.5.1"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:31
+msgid ""
+"Fix latent bugs in IndexedSourceMapConsumer.prototype._parseMappings. See"
+" ff05274becc9e6e1295ed60f3ea090d31d843379."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:34
+msgid "0.5.0"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:36
+msgid "Node 0.8 is no longer supported."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:38
+msgid "Use webpack instead of dryice for bundling."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:40
+msgid "Big speedups serializing source maps. See pull request #203."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:42
+msgid ""
+"Fix a bug with `SourceMapConsumer.prototype.sourceContentFor` and sources"
+" that explicitly start with the source root. See issue #199."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:45
+msgid "0.4.4"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:47
+msgid ""
+"Fix an issue where using a `SourceMapGenerator` after having created a "
+"`SourceMapConsumer` from it via `SourceMapConsumer.fromSourceMap` failed."
+" See issue #191."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:51
+msgid ""
+"Fix an issue with where `SourceMapGenerator` would mistakenly consider "
+"different mappings as duplicates of each other and avoid generating them."
+" See issue #192."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:55
+msgid "0.4.3"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:57
+#, python-format
+msgid ""
+"A very large number of performance improvements, particularly when "
+"parsing source maps. Collectively about 75% of time shaved off of the "
+"source map parsing benchmark!"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:61
+msgid ""
+"Fix a bug in `SourceMapConsumer.prototype.allGeneratedPositionsFor` and "
+"fuzzy searching in the presence of a column option. See issue #177."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:64
+msgid ""
+"Fix a bug with joining a source and its source root when the source is "
+"above the root. See issue #182."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:67
+msgid ""
+"Add the `SourceMapConsumer.prototype.hasContentsOfAllSources` method to "
+"determine when all sources' contents are inlined into the source map. See"
+" issue #190."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:71
+msgid "0.4.2"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:73
+msgid ""
+"Add an `.npmignore` file so that the benchmarks aren't pulled down by "
+"dependent projects. Issue #169."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:76
+msgid ""
+"Add an optional `column` argument to "
+"`SourceMapConsumer.prototype.allGeneratedPositionsFor` and better handle "
+"lines with no mappings. Issues #172 and #173."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:80
+msgid "0.4.1"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:82
+msgid "Fix accidentally defining a global variable. #170."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:84
+msgid "0.4.0"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:86
+msgid ""
+"The default direction for fuzzy searching was changed back to its "
+"original direction. See #164."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:89
+msgid ""
+"There is now a `bias` option you can supply to `SourceMapConsumer` to "
+"control the fuzzy searching direction. See #167."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:92
+#, python-format
+msgid "About an 8% speed up in parsing source maps. See #159."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:94
+msgid "Added a benchmark for parsing and generating source maps."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:96
+msgid "0.3.0"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:98
+msgid ""
+"Change the default direction that searching for positions fuzzes when "
+"there is not an exact match. See #154."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:101
+msgid "Support for environments using json2.js for JSON serialization. See #156."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:103
+msgid "0.2.0"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:105
+msgid ""
+"Support for consuming \"indexed\" source maps which do not have any "
+"remote sections. See pull request #127. This introduces a minor backwards"
+" incompatibility if you are monkey patching `SourceMapConsumer.prototype`"
+" methods."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:110
+msgid "0.1.43"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:112
+msgid ""
+"Performance improvements for `SourceMapGenerator` and `SourceNode`. See "
+"issue #148 for some discussion and issues #150, #151, and #152 for "
+"implementations."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:115
+msgid "0.1.42"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:117
+msgid ""
+"Fix an issue where `SourceNode`s from different versions of the source-"
+"map library couldn't be used in conjunction with each other. See issue "
+"#142."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:120
+msgid "0.1.41"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:122
+msgid ""
+"Fix a bug with getting the source content of relative sources with a "
+"\"./\" prefix. See issue #145 and [Bug 1090768](bugzil.la/1090768)."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:125
+msgid ""
+"Add the `SourceMapConsumer.prototype.computeColumnSpans` method to "
+"compute the column span of each mapping."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:128
+msgid ""
+"Add the `SourceMapConsumer.prototype.allGeneratedPositionsFor` method to "
+"find all generated positions associated with a given original source and "
+"line."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:131
+msgid "0.1.40"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:133
+msgid "Performance improvements for parsing source maps in SourceMapConsumer."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:135
+msgid "0.1.39"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:137
+msgid ""
+"Fix a bug where setting a source's contents to null before any source "
+"content had been set before threw a TypeError. See issue #131."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:140
+msgid "0.1.38"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:142
+msgid ""
+"Fix a bug where finding relative paths from an empty path were creating "
+"absolute paths. See issue #129."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:145
+msgid "0.1.37"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:147
+msgid ""
+"Fix a bug where if the source root was an empty string, relative source "
+"paths would turn into absolute source paths. Issue #124."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:150
+msgid "0.1.36"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:152
+msgid "Allow the `names` mapping property to be an empty string. Issue #121."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:154
+msgid "0.1.35"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:156
+msgid ""
+"A third optional parameter was added to "
+"`SourceNode.fromStringWithSourceMap` to specify a path that relative "
+"sources in the second parameter should be relative to. Issue #105."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:160
+msgid ""
+"If no file property is given to a `SourceMapGenerator`, then the "
+"resulting source map will no longer have a `null` file property. The "
+"property will simply not exist. Issue #104."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:164
+msgid ""
+"Fixed a bug where consecutive newlines were ignored in `SourceNode`s. "
+"Issue #116."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:167
+msgid "0.1.34"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:169
+msgid ""
+"Make `SourceNode` work with windows style (\"\\r\\n\") newlines. Issue "
+"#103."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:171
+msgid ""
+"Fix bug involving source contents and the "
+"`SourceMapGenerator.prototype.applySourceMap`. Issue #100."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:174
+msgid "0.1.33"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:176
+msgid "Fix some edge cases surrounding path joining and URL resolution."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:178
+msgid ""
+"Add a third parameter for relative path to "
+"`SourceMapGenerator.prototype.applySourceMap`."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:181
+msgid "Fix issues with mappings and EOLs."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:183
+msgid "0.1.32"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:185
+msgid ""
+"Fixed a bug where SourceMapConsumer couldn't handle negative relative "
+"columns (issue 92)."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:188
+msgid ""
+"Fixed test runner to actually report number of failed tests as its "
+"process exit code."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:191
+msgid "Fixed a typo when reporting bad mappings (issue 87)."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:193
+msgid "0.1.31"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:195
+msgid ""
+"Delay parsing the mappings in SourceMapConsumer until queried for a "
+"source location."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:198
+msgid ""
+"Support Sass source maps (which at the time of writing deviate from the "
+"spec in small ways) in SourceMapConsumer."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:201
+msgid "0.1.30"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:203
+msgid "Do not join source root with a source, when the source is a data URI."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:205
+msgid ""
+"Extend the test runner to allow running single specific test files at a "
+"time."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:207
+msgid ""
+"Performance improvements in `SourceNode.prototype.walk` and "
+"`SourceMapConsumer.prototype.eachMapping`."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:210
+msgid "Source map browser builds will now work inside Workers."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:212
+msgid ""
+"Better error messages when attempting to add an invalid mapping to a "
+"`SourceMapGenerator`."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:215
+msgid "0.1.29"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:217
+msgid ""
+"Allow duplicate entries in the `names` and `sources` arrays of source "
+"maps (usually from TypeScript) we are parsing. Fixes github issue 72."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:220
+msgid "0.1.28"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:222
+msgid ""
+"Skip duplicate mappings when creating source maps from SourceNode; github"
+" issue 75."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:225
+msgid "0.1.27"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:227
+msgid ""
+"Don't throw an error when the `file` property is missing in "
+"SourceMapConsumer, we don't use it anyway."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:230
+msgid "0.1.26"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:232
+msgid ""
+"Fix SourceNode.fromStringWithSourceMap for empty maps. Fixes github issue"
+" 70."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:234
+msgid "0.1.25"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:236
+msgid "Make compatible with browserify"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:238
+msgid "0.1.24"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:240
+msgid ""
+"Fix issue with absolute paths and `file://` URIs. See "
+"https://bugzilla.mozilla.org/show_bug.cgi?id=885597"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:243
+msgid "0.1.23"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:245
+msgid "Fix issue with absolute paths and sourcesContent, github issue 64."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:247
+msgid "0.1.22"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:249
+msgid "Ignore duplicate mappings in SourceMapGenerator. Fixes github issue 21."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:251
+msgid "0.1.21"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:253
+msgid ""
+"Fixed handling of sources that start with a slash so that they are "
+"relative to the source root's host."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:256
+msgid "0.1.20"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:258
+msgid ""
+"Fixed github issue #43: absolute URLs aren't joined with the source root "
+"anymore."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:261
+msgid "0.1.19"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:263
+msgid "Using Travis CI to run tests."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:265
+msgid "0.1.18"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:267
+msgid "Fixed a bug in the handling of sourceRoot."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:269
+msgid "0.1.17"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:271
+msgid "Added SourceNode.fromStringWithSourceMap."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:273
+msgid "0.1.16"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:275
+msgid "Added missing documentation."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:277
+msgid "Fixed the generating of empty mappings in SourceNode."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:279
+msgid "0.1.15"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:281
+msgid "Added SourceMapGenerator.applySourceMap."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:283
+msgid "0.1.14"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:285
+msgid "The sourceRoot is now handled consistently."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:287
+msgid "0.1.13"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:289
+msgid "Added SourceMapGenerator.fromSourceMap."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:291
+msgid "0.1.12"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:293
+msgid "SourceNode now generates empty mappings too."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:295
+msgid "0.1.11"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:297
+msgid "Added name support to SourceNode."
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:299
+msgid "0.1.10"
+msgstr ""
+
+#: ../../source/source-map_CHANGELOG.md:301
+msgid "Added sourcesContent support to the customer and generator."
+msgstr ""
+

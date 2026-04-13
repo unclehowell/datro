@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/kleur_readme.md:22
+msgid "Features"
+msgstr ""
+
+#: ../../source/kleur_readme.md:24
+msgid "No dependencies"
+msgstr ""
+
+#: ../../source/kleur_readme.md:25
+msgid "Super [lightweight](#load-time) & [performant](#performance)"
+msgstr ""
+
+#: ../../source/kleur_readme.md:26
+msgid "Supports [nested](#nested-methods) & [chained](#chained-methods) colors"
+msgstr ""
+
+#: ../../source/kleur_readme.md:27
+msgid "No `String.prototype` modifications"
+msgstr ""
+
+#: ../../source/kleur_readme.md:28
+msgid "Conditional [color support](#conditional-support)"
+msgstr ""
+
+#: ../../source/kleur_readme.md:29
+msgid "Familiar [API](#api)"
+msgstr ""
+
+#: ../../source/kleur_readme.md:33
+msgid ""
+"As of `v3.0` the Chalk-style syntax (magical getter) is no longer "
+"used.<br>If you need or require that syntax, consider using [`ansi-"
+"colors`](https://github.com/doowb/ansi-colors), which maintains `chalk` "
+"parity."
+msgstr ""
+
+#: ../../source/kleur_readme.md:38
+msgid "Install"
+msgstr ""
+
+#: ../../source/kleur_readme.md:45
+msgid "Usage"
+msgstr ""
+
+#: ../../source/kleur_readme.md:60
+msgid "Chained Methods"
+msgstr ""
+
+#: ../../source/kleur_readme.md:71
+msgid "Nested Methods"
+msgstr ""
+
+#: ../../source/kleur_readme.md:83
+msgid "Conditional Support"
+msgstr ""
+
+#: ../../source/kleur_readme.md:85
+msgid ""
+"Toggle color support as needed; `kleur` includes simple auto-detection "
+"which may not cover all cases."
+msgstr ""
+
+#: ../../source/kleur_readme.md:100
+msgid "API"
+msgstr ""
+
+#: ../../source/kleur_readme.md:102
+msgid ""
+"Any `kleur` method returns a `String` when invoked with input; otherwise "
+"chaining is expected."
+msgstr ""
+
+#: ../../source/kleur_readme.md:104
+msgid ""
+"It's up to the developer to pass the output to destinations like "
+"`console.log`, `process.stdout.write`, etc."
+msgstr ""
+
+#: ../../source/kleur_readme.md:106
+msgid ""
+"The methods below are grouped by type for legibility purposes only. They "
+"each can be [chained](#chained-methods) or [nested](#nested-methods) with"
+" one another."
+msgstr ""
+
+#: ../../source/kleur_readme.md:108
+msgid "***Colors:***"
+msgstr ""
+
+#: ../../source/kleur_readme.md:109
+msgid ""
+"black &mdash; red &mdash; green &mdash; yellow &mdash; blue &mdash; "
+"magenta &mdash; cyan &mdash; white &mdash; gray &mdash; grey"
+msgstr ""
+
+#: ../../source/kleur_readme.md:111
+msgid "***Backgrounds:***"
+msgstr ""
+
+#: ../../source/kleur_readme.md:112
+msgid ""
+"bgBlack &mdash; bgRed &mdash; bgGreen &mdash; bgYellow &mdash; bgBlue "
+"&mdash; bgMagenta &mdash; bgCyan &mdash; bgWhite"
+msgstr ""
+
+#: ../../source/kleur_readme.md:114
+msgid "***Modifiers:***"
+msgstr ""
+
+#: ../../source/kleur_readme.md:115
+msgid ""
+"reset &mdash; bold &mdash; dim &mdash; italic* &mdash; underline &mdash; "
+"inverse &mdash; hidden &mdash; strikethrough*"
+msgstr ""
+
+#: ../../source/kleur_readme.md:117
+msgid "<sup>* <em>Not widely supported</em></sup>"
+msgstr ""
+
+#: ../../source/kleur_readme.md:120
+msgid "Benchmarks"
+msgstr ""
+
+#: ../../source/kleur_readme.md:122
+msgid "Using Node v10.13.0"
+msgstr ""
+
+#: ../../source/kleur_readme.md:124
+msgid "Load time"
+msgstr ""
+
+#: ../../source/kleur_readme.md:132
+msgid "Performance"
+msgstr ""
+
+#: ../../source/kleur_readme.md:152
+msgid "Credits"
+msgstr ""
+
+#: ../../source/kleur_readme.md:154
+msgid ""
+"This project originally forked [Brian "
+"Woodward](https://github.com/doowb)'s awesome [`ansi-"
+"colors`](https://github.com/doowb/ansi-colors) library."
+msgstr ""
+
+#: ../../source/kleur_readme.md:156
+msgid ""
+"Beginning with `kleur@3.0`, the Chalk-style syntax (magical getter) has "
+"been replaced with function calls per key:"
+msgstr ""
+
+#: ../../source/kleur_readme.md:165
+msgid ""
+"<sup><em>As I work more with Rust, the newer syntax feels so much better "
+"& more natural!</em></sup>"
+msgstr ""
+
+#: ../../source/kleur_readme.md:167
+msgid ""
+"If you prefer the old syntax, you may migrate to `ansi-colors`. Versions "
+"below `kleur@3.0` have been deprecated."
+msgstr ""
+
+#: ../../source/kleur_readme.md:170
+msgid "License"
+msgstr ""
+
+#: ../../source/kleur_readme.md:172
+msgid "MIT © [Luke Edwards](https://lukeed.com)"
+msgstr ""
+

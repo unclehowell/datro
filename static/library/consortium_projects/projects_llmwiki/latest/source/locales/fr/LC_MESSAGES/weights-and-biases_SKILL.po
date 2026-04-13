@@ -1,0 +1,314 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/weights-and-biases_SKILL.md:14
+msgid "Weights & Biases: ML Experiment Tracking & MLOps"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:16
+msgid "When to Use This Skill"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:18
+msgid "Use Weights & Biases (W&B) when you need to:"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:19
+msgid "**Track ML experiments** with automatic metric logging"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:20
+msgid "**Visualize training** in real-time dashboards"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:21
+msgid "**Compare runs** across hyperparameters and configurations"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:22
+msgid "**Optimize hyperparameters** with automated sweeps"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:23
+msgid "**Manage model registry** with versioning and lineage"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:24
+msgid "**Collaborate on ML projects** with team workspaces"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:25
+msgid "**Track artifacts** (datasets, models, code) with lineage"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:27
+msgid ""
+"**Users**: 200,000+ ML practitioners | **GitHub Stars**: 10.5k+ | "
+"**Integrations**: 100+"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:29
+msgid "Installation"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:42
+msgid "Quick Start"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:44
+msgid "Basic Experiment Tracking"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:79
+msgid "With PyTorch"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:121
+msgid "Core Concepts"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:123
+msgid "1. Projects and Runs"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:125
+msgid ""
+"**Project**: Collection of related experiments **Run**: Single execution "
+"of your training script"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:142
+msgid "2. Configuration Tracking"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:144
+msgid "Track hyperparameters automatically:"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:170
+msgid "3. Metric Logging"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:200
+msgid "4. Model Checkpointing"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:225
+msgid "Hyperparameter Sweeps"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:227
+msgid "Automatically search for optimal hyperparameters."
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:229
+msgid "Define Sweep Configuration"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:262
+msgid "Define Training Function"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:293
+msgid "Sweep Strategies"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:324
+msgid "Artifacts"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:326
+msgid "Track datasets, models, and other files with lineage."
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:328
+msgid "Log Artifacts"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:347
+msgid "Use Artifacts"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:361
+msgid "Model Registry"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:378
+msgid "Integration Examples"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:380
+msgid "HuggingFace Transformers"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:409
+msgid "PyTorch Lightning"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:431
+msgid "Keras/TensorFlow"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:449
+msgid "Visualization & Analysis"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:451
+msgid "Custom Charts"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:470
+msgid "Reports"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:472
+msgid "Create shareable reports in W&B UI:"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:473
+msgid "Combine runs, charts, and text"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:474
+msgid "Markdown support"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:475
+msgid "Embeddable visualizations"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:476
+msgid "Team collaboration"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:478
+msgid "Best Practices"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:480
+msgid "1. Organize with Tags and Groups"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:491
+msgid "2. Log Everything Relevant"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:511
+msgid "3. Use Descriptive Names"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:524
+msgid "4. Save Important Artifacts"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:540
+msgid "5. Use Offline Mode for Unstable Connections"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:555
+msgid "Team Collaboration"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:557
+msgid "Share Runs"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:565
+msgid "Team Projects"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:567
+msgid "Create team account at wandb.ai"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:568
+msgid "Add team members"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:569
+msgid "Set project visibility (private/public)"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:570
+msgid "Use team-level artifacts and model registry"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:572
+msgid "Pricing"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:574
+msgid "**Free**: Unlimited public projects, 100GB storage"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:575
+msgid "**Academic**: Free for students/researchers"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:576
+msgid "**Teams**: $50/seat/month, private projects, unlimited storage"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:577
+msgid "**Enterprise**: Custom pricing, on-prem options"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:579
+msgid "Resources"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:581
+msgid "**Documentation**: https://docs.wandb.ai"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:582
+msgid "**GitHub**: https://github.com/wandb/wandb (10.5k+ stars)"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:583
+msgid "**Examples**: https://github.com/wandb/examples"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:584
+msgid "**Community**: https://wandb.ai/community"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:585
+msgid "**Discord**: https://wandb.me/discord"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:587
+msgid "See Also"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:589
+msgid "`references/sweeps.md` - Comprehensive hyperparameter optimization guide"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:590
+msgid "`references/artifacts.md` - Data and model versioning patterns"
+msgstr ""
+
+#: ../../source/weights-and-biases_SKILL.md:591
+msgid "`references/integrations.md` - Framework-specific examples"
+msgstr ""
+

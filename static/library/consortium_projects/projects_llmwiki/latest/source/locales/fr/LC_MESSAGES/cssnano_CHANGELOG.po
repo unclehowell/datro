@@ -1,0 +1,1487 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/cssnano_CHANGELOG.md:1
+msgid "4.1.11"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:3 ../../source/cssnano_CHANGELOG.md:9
+#: ../../source/cssnano_CHANGELOG.md:32 ../../source/cssnano_CHANGELOG.md:48
+#: ../../source/cssnano_CHANGELOG.md:54 ../../source/cssnano_CHANGELOG.md:60
+#: ../../source/cssnano_CHANGELOG.md:66 ../../source/cssnano_CHANGELOG.md:93
+#: ../../source/cssnano_CHANGELOG.md:99 ../../source/cssnano_CHANGELOG.md:119
+#: ../../source/cssnano_CHANGELOG.md:129 ../../source/cssnano_CHANGELOG.md:136
+#: ../../source/cssnano_CHANGELOG.md:144 ../../source/cssnano_CHANGELOG.md:150
+#: ../../source/cssnano_CHANGELOG.md:157 ../../source/cssnano_CHANGELOG.md:171
+#: ../../source/cssnano_CHANGELOG.md:203 ../../source/cssnano_CHANGELOG.md:214
+msgid "Bug Fixes"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:5
+msgid "fix [CVE-2021-28092](https://nvd.nist.gov/vuln/detail/CVE-2021-28092)"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:7
+msgid "4.1.10"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:11
+msgid "`stylehacks` does not throw error on `[attr]` selector"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:13
+msgid "4.1.9"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:15 ../../source/cssnano_CHANGELOG.md:44
+msgid "Performance Improvements"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:17
+msgid "`postcss-colormin`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:18
+msgid "`postcss-discard-comments`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:19
+msgid "`postcss-merge-rules` increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:20
+msgid "`postcss-minify-params` increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:21
+msgid "`postcss-minify-selectors`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:22
+msgid "`postcss-normalize-display-values`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:23
+msgid "`postcss-normalize-positions`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:24
+msgid "`postcss-normalize-repeat-style`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:25
+msgid "`postcss-normalize-string`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:26
+msgid "`postcss-normalize-timing-functions`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:27
+msgid "`postcss-normalize-whitespace`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:28
+msgid "`postcss-ordered-values`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:29
+msgid "`postcss-reduce-transforms`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:30
+msgid "`postcss-svgo`: increase performance"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:34
+msgid "`postcss-merge-longhand` handle uppercase properties and values"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:35
+msgid "`postcss-minify-gradients` handle uppercase properties and values"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:36
+msgid "`postcss-minify-params` do break `@page` rules"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:37
+msgid "`postcss-reduce-idents` handle uppercase at-rules"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:38
+msgid ""
+"`postcss-reduce-initial` now uses `repeat` as initial value for `mask-"
+"repeat`"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:39
+msgid ""
+"`postcss-reduce-initial` handle uppercase value when you convert to "
+"initial"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:40
+msgid "`stylehacks` handle uppercase properties and values"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:42
+msgid "4.1.8"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:46
+msgid "initial loading time (`require('cssnano')`)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:50
+msgid ""
+"`postcss-merge-longhand` correctly merging border properties with custom "
+"properties."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:52
+msgid "4.1.7"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:56
+msgid "republish `cssnano` due broken release."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:58
+msgid "4.1.6"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:62
+msgid "`postcss-merge-longhand` doesn't throw error when merge a border property."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:64
+msgid "4.1.5"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:68
+msgid ""
+"`cssnano` now allow to toggling of plugins in presets using boolean "
+"configuration option."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:69
+msgid "`postcss-merge-longhand` doesn't merge properties with `unset`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:70
+msgid "`postcss-merge-longhand` correctly merge borders with custom properties."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:71
+msgid ""
+"`postcss-merge-longhand` doesn't merge redundant values if declarations "
+"are of different importance."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:73 ../../source/cssnano_CHANGELOG.md:79
+#: ../../source/cssnano_CHANGELOG.md:86 ../../source/cssnano_CHANGELOG.md:112
+#: ../../source/cssnano_CHANGELOG.md:184 ../../source/cssnano_CHANGELOG.md:284
+msgid "Other changes"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:75
+msgid "`postcss-calc` updated to `7.0.0` version."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:77
+msgid "4.1.4"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:81
+msgid "`css-declaration-sorter` now use PostCSS 7."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:82
+msgid "`postcss-calc` now use PostCSS 7."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:84
+msgid "4.1.3"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:88
+msgid "`postcss-minify-font-values` now use PostCSS 7."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:89
+msgid "`postcss-discard-duplicates` now use PostCSS 7."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:91
+msgid "4.1.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:95
+msgid ""
+"`postcss-svgo` now handle DataURI with uppercase `data` value "
+"(`DATA:image/*;...`)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:97
+msgid "4.1.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:101
+msgid "`css-declaration-sorter` was removed from default prevent."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:102
+msgid "`postcss-normalize-timing-functions` doesn't lowercased property anymore."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:103
+msgid "`postcss-normalize-positons` now handles uppercase properties."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:104
+msgid "`postcss-normalize-url` now is case-insensitive."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:105
+msgid "`postcss-merge-idents` now is case-insensitive."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:106
+msgid "`postcss-merge-rules` now is case-insensitive."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:107
+msgid "`postcss-minify-selectors` now is case-insensitive."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:108
+msgid "`postcss-minify-font-values` now is case-insensitive."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:109
+msgid "`postcss-normalize-unicode` now has correct dependencies."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:110
+msgid "`postcss-minify-params` now has correct dependencies."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:114
+msgid "`cssnano-preset-advanced` use Autoprefixer 9."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:115
+msgid "use PostCSS 7 in all plugins."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:117
+msgid "4.1.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:121
+msgid "`postcss-merge-longhand` doesn't mangle borders."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:123 ../../source/cssnano_CHANGELOG.md:167
+#: ../../source/cssnano_CHANGELOG.md:191
+msgid "Features"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:125
+msgid "`postcss-ordered-values` support ordering animation values."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:127
+msgid "4.0.5"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:131
+msgid ""
+"`postcss-merge-longhand` now correctly merges borders with custom "
+"properties."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:132
+msgid "`postcss-merge-longhand` doesn't throw error in some `border` merge cases."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:134
+msgid "4.0.4"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:138
+msgid ""
+"`postcss-merge-longhand` doesn't drop border-width with custom property "
+"from border shorthand."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:139
+msgid "`postcss-merge-longhand` doesn't convert `currentColor`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:140
+msgid ""
+"`postcss-merge-longhand` doesn't merge border properties if there is a "
+"shorthand property between them."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:142
+msgid "4.0.3"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:146
+msgid ""
+"`postcss-merge-longhand` incorrect minification of `border` (`border-*`) "
+"declarations."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:148
+msgid "4.0.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:152
+msgid ""
+"`postcss-merge-longhand` don't explode declarations with custom "
+"properties."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:153
+msgid "`postcss-colormin` now better transform to `hsl`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:155
+msgid "4.0.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:159
+msgid "`browserslist` version incompatibility with `caniuse-api`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:161
+msgid "4.0.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:163 ../../source/cssnano_CHANGELOG.md:227
+msgid "Breaking changes"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:165
+msgid "We dropped support for Node 4, now requiring at least Node 6.9."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:169
+msgid "postcss-merge-longhand now optimises `border-spacing` property."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:173
+msgid ""
+"postcss-normalize-unicode doesn't change `U` to lowercase for `IE` <= 11 "
+"and `Edge` <= 15."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:174
+#, python-brace-format
+msgid ""
+"postcss-merge-longhand works with custom properties (Example `a { border-"
+"style:dotted; border-style:var(--variable) }`) correctly."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:175
+msgid ""
+"postcss-ordered-values handle `border` property with invalid border width"
+" value correctly."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:176
+msgid ""
+"postcss-merge-rules handles `:-ms-input-placeholder` and `::-ms-input-"
+"placeholder` selectors correctly."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:177
+msgid "postcss-merge-rules works with `all` property correctly."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:178
+msgid "postcss-normalize-url don't handle empty `url` function."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:179
+msgid "postcss-normalize-url handles `data` and `*-extension://` URLs correctly."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:180
+msgid "postcss-colormin adds whitespace after minified value and before function."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:181
+msgid "postcss-minify-font-values better escapes font name."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:182
+msgid "postcss-minify-params doesn't remove `all` for IE."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:186
+msgid "update all dependencies to latest."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:187
+msgid "better handles uppercase selectors/properties/values/units."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:189
+msgid "4.0.0-rc.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:193
+msgid "Includes the new release candidate for postcss-selector-parser 3."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:194
+msgid ""
+"Refactors comments tokenizing in postcss-discard-comments to be more "
+"memory efficient."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:196
+msgid ""
+"Adds css-declaration-sorter for improved gzip compression efficiencies "
+"(thanks to @Siilwyn)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:198
+msgid ""
+"postcss-svgo now optimises base 64 encoded SVG where possible (thanks to "
+"@evilebottnawi)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:200
+#, python-brace-format
+msgid ""
+"stylehacks now supports `@media \\0screen\\,screen\\9 {}` hacks (thanks "
+"to @evilebottnawi)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:205
+msgid "Fixed handling of package.json configuration (thanks to @andyjansson)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:206
+msgid ""
+"Fixed `resolveConfig` for a `Root` node without a `source` property "
+"(thanks to @darthmaim)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:208
+msgid "Improved radial gradient handling (thanks to @pigcan)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:209
+msgid ""
+"stylehacks now properly accounts for vendor prefixes (thanks to "
+"@evilebottnawi)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:212
+msgid "4.0.0-rc.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:216
+msgid ""
+"cssnano: Resolved an issue with external configuration which wasn't being"
+" loaded correctly (thanks to @andyjansson)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:218
+msgid ""
+"postcss-minify-params: Resolved an issue with cssnano's handling of the "
+"`@value` syntax from css-modules to better integrate with css-loader."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:221
+msgid "4.0.0-rc.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:223
+msgid ""
+"Since version 4 has been in-development for some time, we thought it "
+"would be best to release an alpha version so that we could catch any "
+"issues before the actual release."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:229
+msgid ""
+"cssnano & its plugins have been upgraded to PostCSS 6.x. Please ensure "
+"that for optimal results that you use cssnano with a PostCSS 6 compatible"
+" runner & that any other plugins are also using PostCSS 6."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:232
+msgid ""
+"cssnano is now essentially a preset loader and does not contain any "
+"built-in transforms (instead, it delegates to `cssnano-preset-default` by"
+" default). Due to the new architecture, it's not possible to exclude "
+"asynchronous transforms and run it synchronously, unlike in 3.x. Any "
+"transforms that were \"core\" modules have now been extracted out into "
+"separate packages."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:237
+msgid ""
+"Because of the new preset system, cssnano will not accept any "
+"transformation options; these must be set in the preset. The option names"
+" remain mostly the same, except some cases where \"core\" modules have "
+"been extracted out:"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:241
+msgid "`core` is now `normalizeWhitespace`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:242
+msgid "`reduceBackgroundRepeat` is now `normalizeRepeatStyle`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:243
+msgid "`reduceDisplayValues` is now `normalizeDisplayValues`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:244
+msgid "`reducePositions` is now `normalizePositions`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:245
+msgid "`reduceTimingFunctions` is now `normalizeTimingFunctions`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:246
+msgid "`styleCache` is now `rawCache`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:248
+msgid ""
+"When excluding transforms, we now have an `exclude` option (in 3.x this "
+"was named `disable`). Similarly, the `safe` option was removed; the "
+"defaults are now much less aggressive."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:251
+msgid ""
+"By default, the following transforms are no longer applied to any input "
+"CSS. You may see an increased output file size as a result:"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:254
+msgid "`autoprefixer`"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:255
+msgid "`postcss-discard-unused`"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:256
+msgid "`postcss-merge-idents`"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:257
+msgid "`postcss-reduce-idents`"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:258
+msgid "`postcss-zindex`"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:260
+msgid ""
+"Note that you can load `cssnano-preset-advanced` instead which *does* "
+"contain these transforms."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:262
+msgid ""
+"We no longer detect previous plugins to silently exclude our own, and now"
+" consider this to be an anti-pattern. So `postcss-filter-plugins` was "
+"removed."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:264
+msgid "We also changed some options to make the default transforms safer:"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:266
+msgid ""
+"`postcss-minify-font-values`: `removeAfterKeyword` set to `false` from "
+"`true`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:267
+msgid "`postcss-normalize-url`: `stripWWW` set to `false` from `true`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:269
+msgid ""
+"cssnano now does not accept the `sourcemap` shortcut option; please refer"
+" to the PostCSS documentation on sourcemaps. The `quickstart.js` file "
+"included with this module will give you a good starting point."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:272
+msgid ""
+"`cssnano.process` is no longer a custom method; we use the built-in "
+"`process` method exposed on each PostCSS plugin. The new signature is "
+"`cssnano.process(css, postcssOpts, cssnanoOpts)`, in 3.x it was "
+"`cssnano.process(css, cssnanoOpts)`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:276
+msgid "We dropped support for Node 0.12, now requiring at least Node 4."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:277
+msgid ""
+"Finally, cssnano is now developed as a monorepo, due to the fact that "
+"some transforms have a lot of grey area/overlap. Due to this, some "
+"modules have been refactored to delegate responsibility to others, such "
+"that duplication of functionality is minimized. For instance, `postcss-"
+"colormin` will no longer compress whitespace or compress numbers, as "
+"those are handled by `postcss-normalize-whitespace` & `postcss-convert-"
+"values` respectively."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:286
+msgid ""
+"Due to the PostCSS 6 upgrade, we have been able to reduce usage of custom"
+" methods, such as node `clone` behaviour. In cases where some utility has"
+" been used by several plugins it is now a separate package, reducing "
+"cssnano's footprint."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:290
+msgid ""
+"cssnano now makes much better use of Browserslist. `postcss-colormin` & "
+"`postcss-reduce-initial` were enhanced with different behaviour depending"
+" on which browsers are passed. And now, the footprint for the `caniuse-"
+"db` dependency is much smaller thanks to `caniuse-lite` - 7 times smaller"
+" as of this writing. This makes cssnano much faster to download from npm!"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:296
+msgid "3.10.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:298
+msgid ""
+"cssnano will no longer `console.warn` any messages when using deprecated "
+"options; these are now sent to PostCSS. You will be able to see them if "
+"you use a PostCSS runner with built-in messages support, or alternately "
+"by loading `postcss-reporter` or `postcss-browser-reporter` in your "
+"plugins list."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:302
+msgid ""
+"Prepares support for `grid` identifier reduction by adding it to the list"
+" of optimisations turned off when `options.safe` is set to `true`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:304
+msgid ""
+"Adds support for normalizing `unicode-range` descriptors. Values will be "
+"converted when the code matches `0` & `f` in the same place on both sides"
+" of the range. So, `u+2000-2fff` can be converted to `u+2???`, but "
+"`u+2100-2fff` will be left as it is."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:309
+msgid "3.9.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:311
+msgid ""
+"Resolves an integration issue with `v3.9.0`, where `undefined` values "
+"would attempt to be parsed."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:314
+msgid "3.9.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:316
+msgid ""
+"Adds a new option to normalize wrapping quotes for strings & joining "
+"multiple-line strings into a single line. This optimisation can "
+"potentially reduce the final gzipped size of your CSS file."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:320
+msgid "3.8.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:322
+msgid ""
+"Resolves an issue where `display: list-item inline flow` would be "
+"normalized to `inline list-item` rather than `inline-list-item` (thanks "
+"to @mattbasta)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:325
+msgid "3.8.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:327
+msgid ""
+"Adds a quick start file for easy integration with Runkit. Try cssnano "
+"online at https://runkit.com/npm/cssnano."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:330
+msgid "3.8.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:332
+msgid ""
+"Adds support for normalizing multiple values for the `display` property. "
+"For example `block flow` can be simplified to `block`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:335
+msgid "3.7.7"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:337
+msgid ""
+"Further improves CSS mixin handling; semicolons will no longer be "
+"stripped from *rules* as well as declarations."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:340
+msgid "3.7.6"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:342
+msgid ""
+"Resolves an issue where the semicolon was being incorrectly stripped from"
+" CSS mixins."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:345
+msgid "3.7.5"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:347
+msgid ""
+"Resolves an issue where the `safe` flag was not being persisted across "
+"multiple files (thanks to @techmatt101)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:350
+msgid "3.7.4"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:352
+msgid ""
+"Improves performance of the reducePositions transform by testing against "
+"`hasOwnProperty` instead of using an array of object keys."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:354
+msgid "Removes the redundant `indexes-of` dependency."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:356
+msgid "3.7.3"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:358
+msgid ""
+"Unpins postcss-filter-plugins from `2.0.0` as a fix has landed in the new"
+" version of uniqid."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:361
+msgid "3.7.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:363
+msgid ""
+"Temporarily pins postcss-filter-plugins to version `2.0.0` in order to "
+"mitigate an issue with uniqid `3.0.0`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:366
+msgid "3.7.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:368
+msgid ""
+"Enabling safe mode now turns off both postcss-merge-idents & postcss-"
+"normalize-url's `stripWWW` option."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:371
+msgid "3.7.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:373
+msgid ""
+"Added: Reduce `background-repeat` definitions; works with both this "
+"property & the `background` shorthand, and aims to compress the extended "
+"two value syntax into the single value syntax."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:376
+msgid ""
+"Added: Reduce `initial` values for properties when the *actual* initial "
+"value is shorter; for example, `min-width: initial` becomes `min-width: "
+"0`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:379
+msgid "3.6.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:381
+msgid "Fixed an issue where cssnano would crash on `steps(1)`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:383
+msgid "3.6.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:385
+msgid ""
+"Fixed an issue where cssnano would crash on `steps` functions with a "
+"single argument."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:388
+msgid "3.6.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:390
+msgid ""
+"Added `postcss-discard-overridden` to safely discard overridden rules "
+"with the same identifier (thanks to @Justineo)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:392
+msgid ""
+"Added: Reduce animation/transition timing functions. Detects `cubic-"
+"bezier` functions that are equivalent to the timing keywords and "
+"compresses, as well as normalizing the `steps` timing function."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:395
+msgid ""
+"Added the `perspective-origin` property to the list of supported "
+"properties transformed by the `reduce-positions` transform."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:398
+msgid "3.5.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:400
+msgid ""
+"Resolves an issue where the 3 or 4 value syntax for `background-position`"
+" were being incorrectly converted."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:403
+msgid "3.5.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:405
+msgid ""
+"Improves checking for `background-position` values in the `background` "
+"shorthand property."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:408
+msgid "3.5.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:410
+msgid ""
+"Adds a new optimisation path which can minimise keyword values for "
+"`background-position` and the `background` shorthand."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:412
+msgid "Tweaks to performance in the `core` module, now performs less AST passes."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:413
+msgid "Now compiled with Babel 6."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:415
+msgid "3.4.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:417
+msgid ""
+"Adds a new optimisation path which can minimise gradient parameters "
+"automatically."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:420
+msgid "3.3.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:422
+msgid ""
+"Fixes an issue where using `options.safe` threw an error when cssnano was"
+" not used as part of a PostCSS instance, but standalone (such as in "
+"modules like gulp-cssnano). cssnano now renames `safe` internally to "
+"`isSafe`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:426
+msgid "3.3.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:428
+msgid ""
+"Unpins postcss-colormin from `2.1.2`, as the `2.1.3` & `2.1.4` patches "
+"had optimization regressions that are now resolved in `2.1.5`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:431
+msgid "3.3.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:433
+msgid ""
+"Updated modules to use postcss-value-parser version 3 (thanks to "
+"@TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:434
+msgid ""
+"Now converts between transform functions with postcss-reduce-transforms. "
+"e.g. `translate3d(0, 0, 0)` becomes `translateZ(0)`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:437
+msgid "3.2.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:439
+msgid ""
+"cssnano no longer converts `outline: none` to `outline: 0`, as there are "
+"some cases where the values are not equivalent (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:441
+#, python-brace-format
+msgid ""
+"cssnano no longer converts for example `16px` to `1pc` *by default*. "
+"Length optimisations can be turned on via `{convertValues: {length: "
+"true}}`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:443
+msgid "Improved minimization of css functions (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:445
+msgid "3.1.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:447
+msgid ""
+"This release swaps postcss-single-charset for postcss-normalize-charset, "
+"which can detect encoding to determine whether a charset is necessary. "
+"Optionally, you can set the `add` option to `true` to prepend a UTF-8 "
+"charset to the output automatically (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:451
+msgid ""
+"A `safe` option was added, which disables more aggressive optimisations, "
+"as a convenient preset configuration (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:453
+msgid ""
+"Added an option to convert from `deg` to `turn` & vice versa, & improved "
+"minification performance in functions (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:456
+msgid "3.0.3"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:458
+msgid ""
+"Fixes an issue where cssnano was removing spaces around forward slashes "
+"in string literals (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:461
+msgid "3.0.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:463
+msgid ""
+"Fixes an issue where cssnano was removing spaces around forward slashes "
+"in calc functions."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:466
+msgid "3.0.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:468
+msgid ""
+"Replaced css-list & balanced-match with postcss-value-parser, reducing "
+"the module's overall size (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:471
+msgid "3.0.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:473
+msgid ""
+"All cssnano plugins and cssnano itself have migrated to PostCSS 5.x. "
+"Please make sure that when using the 3.x releases that you use a 5.x "
+"compatible PostCSS runner."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:476
+msgid ""
+"cssnano will now compress inline SVG through SVGO. Because of this "
+"change, interfacing with cssnano must now be done through an asynchronous"
+" API. The main `process` method has the same signature as a PostCSS "
+"processor instance."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:479
+msgid ""
+"The old options such as `merge` & `fonts` that were deprecated in release"
+" `2.5.0` were removed. The new architecture allows you to specify any "
+"module name to disable it."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:482
+msgid ""
+"postcss-minify-selectors' at-rule compression was extracted out into "
+"postcss-minify-params (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:484
+msgid ""
+"Overall performance of the module has improved dramatically, thanks to "
+"work by @TrySound and input from the community."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:486
+msgid "Improved selector merging/deduplication in certain use cases."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:487
+msgid ""
+"cssnano no longer compresses hex colours in filter properties, to better "
+"support old versions of Internet Explorer (thanks to @faddee)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:489
+msgid "cssnano will not merge properties together that have an `inherit` keyword."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:490
+msgid ""
+"postcss-minify-font-weight & postcss-font-family were consolidated into "
+"postcss-minify-font-values. Using the old options will print deprecation "
+"warnings (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:493
+msgid ""
+"The cssnano CLI was extracted into a separate module, so that dependent "
+"modules such as gulp-cssnano don't download unnecessary extras."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:496
+msgid "2.6.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:498
+msgid "Improved performance of the core module `functionOptimiser`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:500
+msgid "2.6.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:502
+msgid ""
+"Adds a new optimisation which re-orders properties that accept values in "
+"an arbitrary order. This can lead to improved merging behaviour in "
+"certain cases."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:506
+msgid "2.5.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:508
+msgid ""
+"Adds support for disabling modules of the user's choosing, with new "
+"option names. The old options (such as `merge` & `fonts`) will be removed"
+" in `3.0`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:511
+msgid "2.4.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:513
+msgid ""
+"postcss-minify-selectors was extended to add support for conversion of "
+"`::before` to `:before`; this release removes the dedicated postcss-"
+"pseudoelements module."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:517
+msgid "2.3.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:519
+msgid ""
+"Consolidated postcss-minify-trbl & two integrated modules into postcss-"
+"merge-longhand."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:522
+msgid "2.2.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:524
+msgid "Replaced integrated plugin filter with postcss-filter-plugins."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:525
+msgid "Improved rule merging logic."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:526
+msgid ""
+"Improved performance across the board by reducing AST iterations where it"
+" was possible to do so."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:528
+msgid ""
+"cssnano will now perform better whitespace compression when used with "
+"other PostCSS plugins."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:531
+msgid "2.1.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:533
+msgid "Fixes an issue where options were not passed to normalize-url."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:535
+msgid "2.1.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:537
+msgid "Allow `postcss-font-family` to be disabled."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:539
+msgid "2.0.3"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:541
+msgid ""
+"cssnano can now be consumed with the parentheses-less method in PostCSS; "
+"e.g. `postcss([ cssnano ])`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:543
+msgid ""
+"Fixes an issue where 'Din' was being picked up by the logic as a numeric "
+"value, causing the full font name to be incorrectly rearranged."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:546
+msgid "2.0.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:548
+msgid "Extract trbl value reducing into a separate module."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:549
+msgid "Refactor core longhand optimiser to not rely on trbl cache."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:550
+msgid "Adds support for `ch` units; previously they were removed."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:551
+msgid "Fixes parsing of some selector hacks."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:552
+msgid ""
+"Fixes an issue where embedded base 64 data was being converted as if it "
+"were a URL."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:555
+msgid "2.0.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:557
+msgid "Add `postcss-plugin` keyword to package.json."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:558
+msgid "Wraps all core processors with the PostCSS 4.1 plugin API."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:560
+msgid "2.0.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:562
+msgid "Adds removal of outdated vendor prefixes based on browser support."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:563
+msgid ""
+"Addresses an issue where relative path separators were converted to "
+"backslashes on Windows."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:565
+msgid ""
+"cssnano will now detect previous plugins and silently disable them when "
+"the functionality overlaps. This is to enable faster interoperation with "
+"cssnext."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:567
+msgid ""
+"cssnano now exports as a PostCSS plugin. The simple interface is exposed "
+"at `cssnano.process(css, opts)` instead of `cssnano(css, opts)`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:569
+msgid "Improved URL detection when using two or more in the same declaration."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:570
+msgid "node 0.10 is no longer officially supported."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:572
+msgid "1.4.3"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:574
+msgid "Fixes incorrect minification of `background:none` to `background:0 0`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:576
+msgid "1.4.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:578
+msgid "Fixes an issue with nested URLs inside `url()` functions."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:580
+msgid "1.4.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:582
+msgid ""
+"Addresses an issue where whitespace removal after a CSS function would "
+"cause rendering issues in Internet Explorer."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:585
+msgid "1.4.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:587
+msgid ""
+"Adds support for removal of unused `@keyframes` and `@counter-style` at-"
+"rules."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:588
+msgid ""
+"comments: adds support for user-directed removal of comments, with the "
+"`remove` option (thanks to @dmitrykiselyov)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:590
+msgid ""
+"comments: `removeAllButFirst` now operates on each CSS tree, rather than "
+"the first one passed to cssnano."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:593
+msgid "1.3.3"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:595
+msgid "Fixes incorrect minification of `border:none` to `border:0 0`."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:597
+msgid "1.3.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:599
+msgid ""
+"Improved selector minifying logic, leading to better compression of "
+"attribute selectors."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:601
+msgid "Improved comment discarding logic."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:603
+msgid "1.3.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:605
+msgid "Fixes crash on undefined `decl.before` from prior AST."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:607
+msgid "1.3.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:609
+msgid "Added support for bundling cssnano using webpack (thanks to @MoOx)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:611
+msgid "1.2.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:613
+msgid ""
+"Fixed a bug where a CSS function keyword inside its value would throw an "
+"error."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:616
+msgid "1.2.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:618
+msgid ""
+"Better support for merging properties without the existance of a "
+"shorthand override."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:620
+msgid ""
+"Can now 'merge forward' adjacent rules as well as the previous 'merge "
+"behind' behaviour, leading to better compression."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:622
+msgid ""
+"Selector re-ordering now happens last in the chain of plugins, to help "
+"clean up merged selectors."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:625
+msgid "1.1.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:627
+msgid ""
+"Now can merge identifiers such as `@keyframes` and `@counter-style` if "
+"they have duplicated properties but are named differently."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:629
+msgid ""
+"Fixes an issue where duplicated keyframes with the same name would cause "
+"an infinite loop."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:632
+msgid "1.0.2"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:634
+msgid "Improve module loading logic (thanks to @tunnckoCore)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:635
+msgid ""
+"Improve minification of numeric values, with better support for `rem`, "
+"trailing zeroes and slash/comma separated values (thanks to @TrySound & "
+"@tunnckoCore)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:638
+msgid ""
+"Fixed an issue where `-webkit-tap-highlight-color` values were being "
+"incorrectly transformed to `transparent`. This is not supported in "
+"Safari."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:640
+msgid "Added support for viewport units (thanks to @TrySound)."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:641
+msgid "Add MIT license file."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:643
+msgid "1.0.1"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:645
+msgid "Add repository/author links to package.json."
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:647
+msgid "1.0.0"
+msgstr ""
+
+#: ../../source/cssnano_CHANGELOG.md:649
+msgid "Initial release."
+msgstr ""
+

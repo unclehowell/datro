@@ -1,0 +1,527 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_animation-design-thinking.md:1
+msgid "Animation Design Thinking"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:3
+msgid ""
+"How to decide WHAT to animate and HOW to structure it — before writing "
+"any code."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:5
+msgid "Should I animate this?"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:7
+msgid ""
+"Not everything benefits from animation. Motion adds cognitive load. Bad "
+"animation is worse than a good static diagram."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:9
+msgid "**Animate when:**"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:10
+msgid ""
+"A sequence unfolds over time (algorithm steps, derivation, pipeline "
+"stages)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:11
+msgid "Spatial relationships change (transformation, deformation, rotation)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:12
+msgid "Something is built from parts (construction, assembly, accumulation)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:13
+msgid "You're comparing states (before/after, method A vs method B)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:14
+msgid ""
+"Temporal evolution is the point (training curves, wave propagation, "
+"gradient descent)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:16
+msgid "**Show static when:**"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:17
+msgid ""
+"The concept is a single labeled diagram (circuit, anatomy, architecture "
+"overview)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:18
+msgid "Motion would distract from spatial layout"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:19
+msgid "The viewer needs to study it carefully (dense table, reference chart)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:20
+msgid "The concept is already intuitive from a well-labeled figure"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:22
+msgid ""
+"**Rule of thumb:** If you'd explain it with \"first X, then Y, then Z\" —"
+" animate it. If you'd explain it by pointing at parts of one picture — "
+"show it static."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:24
+msgid "Decomposing a concept into animation"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:26
+msgid "Step 1: Write the narration first"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:28
+msgid "Before any code, write what the narrator would say. This determines:"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:29
+msgid "**Order** — what concept comes first"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:30
+msgid "**Duration** — how long each idea gets"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:31
+msgid "**Visuals** — what the viewer must SEE when they HEAR each sentence"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:33
+msgid ""
+"A scene where the narration says \"the gradient points uphill\" must show"
+" a gradient arrow at that moment. If the visual doesn't match the audio, "
+"the viewer's brain splits attention and both tracks are lost."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:35
+msgid "Step 2: Identify visual beats"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:37
+msgid ""
+"A \"beat\" is a moment where something changes on screen. Mark each beat "
+"in your narration:"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:46
+msgid ""
+"Each beat is one `self.play()` call or a small group of simultaneous "
+"animations."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:48
+msgid "Step 3: Choose the right tool per beat"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Visual need"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Manim approach"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Object appears for first time"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "`Create`, `Write`, `FadeIn`, `GrowFromCenter`"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Object transforms into another"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "`Transform`, `ReplacementTransform`, `FadeTransform`"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Attention drawn to existing object"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "`Indicate`, `Circumscribe`, `Flash`, `ShowPassingFlash`"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Continuous relationship maintained"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "`add_updater`, `always_redraw`, `ValueTracker`"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Object leaves the scene"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "`FadeOut`, `Uncreate`, `ShrinkToCenter`"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Static context that stays visible"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "`self.add()` (no animation)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:59
+msgid "Pacing: the universal mistake is too fast"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:61
+msgid "Timing rules"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Content type"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Minimum on-screen time"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "New equation appearing"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "2.0s animation + 2.0s pause"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "New concept label"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "1.0s animation + 1.0s pause"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Key insight (\"aha moment\")"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "2.5s animation + 3.0s pause"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Supporting annotation"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "0.8s animation + 0.5s pause"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "Scene transition (FadeOut all)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md
+msgid "0.5s animation + 0.3s pause"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:71
+msgid "Breathing room"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:73
+msgid "After every reveal, add `self.wait()`. The viewer needs time to:"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:74
+msgid "Read the new text"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:75
+msgid "Connect it to what's already on screen"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:76
+msgid "Form an expectation about what comes next"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:78
+msgid ""
+"**No wait = the viewer is always behind you.** They're still reading the "
+"equation when you've already started transforming it."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:80
+msgid "Tempo variation"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:82
+msgid "Monotonous pacing feels like a lecture. Vary the tempo:"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:83
+msgid "**Slow build** for core concepts (long run_time, long pauses)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:84
+msgid ""
+"**Quick succession** for supporting details (short run_time, minimal "
+"pauses)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:85
+msgid ""
+"**Dramatic pause** before the key reveal (extra `self.wait(2.0)` before "
+"the \"aha\")"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:86
+msgid ""
+"**Rapid montage** for \"and this applies to X, Y, Z...\" sequences "
+"(`LaggedStart` with tight lag_ratio)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:88
+msgid "Narration synchronization"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:90
+msgid "The \"see then hear\" principle"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:92
+msgid ""
+"The visual should appear slightly BEFORE the narration describes it. When"
+" the viewer sees a circle appear and THEN hears \"consider a circle,\" "
+"the visual primes their brain for the concept. The reverse — hearing "
+"first, seeing second — creates confusion because they're searching the "
+"screen for something that isn't there yet."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:94
+msgid "Practical timing"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:106
+msgid "Equation decomposition strategy"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:108
+msgid "The \"dim and reveal\" pattern"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:110
+msgid "When building a complex equation step by step:"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:111
+msgid ""
+"Show the full equation dimmed at `opacity=0.2` (sets expectation for "
+"where you're going)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:112
+msgid "Highlight the first term at full opacity"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:113
+msgid "Explain it"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:114
+msgid "Highlight the next term, dim the first to `0.5` (it's now context)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:115
+msgid "Repeat until the full equation is bright"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:117
+msgid ""
+"This is better than building left-to-right because the viewer always sees"
+" the destination."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:119
+msgid "Term ordering"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:121
+msgid ""
+"Animate terms in the order the viewer needs to understand them, not in "
+"the order they appear in the equation. For `E = mc²`:"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:122
+msgid "Show `E` (the thing we want to know)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:123
+msgid "Then `m` (the input)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:124
+msgid "Then `c²` (the constant that makes it work)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:125
+msgid "Then the `=` (connecting them)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:127
+msgid "Architecture and pipeline diagrams"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:129
+msgid "Box granularity"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:131
+msgid ""
+"The most common mistake: too many boxes. Each box is a concept the viewer"
+" must track. Five boxes with clear labels beats twelve boxes with "
+"abbreviations."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:133
+msgid ""
+"**Rule:** If two consecutive boxes could be labeled \"X\" and \"process X"
+" output,\" merge them into one box."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:135
+msgid "Animation strategy"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:137
+msgid ""
+"Build pipelines left-to-right (or top-to-bottom) with arrows connecting "
+"them:"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:138
+msgid "First box appears alone → explain it"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:139
+msgid "Arrow grows from first to second → \"the output feeds into...\""
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:140
+msgid "Second box appears → explain it"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:141
+msgid "Repeat"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:143
+msgid ""
+"Then show data flowing through: `ShowPassingFlash` along the arrows, or a"
+" colored dot traversing the path."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:145
+msgid "The zoom-and-return pattern"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:147
+msgid "For complex systems:"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:148
+msgid "Show the full overview (all boxes, small)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:149
+msgid "Zoom into one box (`MovingCameraScene.camera.frame.animate`)"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:150
+msgid "Expand that box into its internal components"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:151
+msgid "Zoom back out to the overview"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:152
+msgid "Zoom into the next box"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:154
+msgid "Common design mistakes"
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:156
+msgid ""
+"**Animating everything at once.** The viewer can track 1-2 simultaneous "
+"animations. More than that and nothing registers."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:157
+msgid ""
+"**No visual hierarchy.** Everything at the same opacity/size/color means "
+"nothing stands out. Use opacity layering."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:158
+msgid ""
+"**Equations without context.** An equation appearing alone means nothing."
+" Always show the geometric/visual interpretation first or simultaneously."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:159
+msgid ""
+"**Skipping the \"why.\"** Showing HOW a transformation works without WHY "
+"it matters. Add a sentence/label explaining the purpose."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:160
+msgid ""
+"**Identical pacing throughout.** Every animation at run_time=1.5, every "
+"wait at 1.0. Vary it."
+msgstr ""
+
+#: ../../source/references_animation-design-thinking.md:161
+msgid ""
+"**Forgetting the audience.** A video for high schoolers needs different "
+"pacing and complexity than one for PhD students. Decide the audience in "
+"the planning phase."
+msgstr ""
+

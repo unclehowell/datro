@@ -1,0 +1,383 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_RoundRobinPool.md:1
+msgid "Class: RoundRobinPool"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:3
+msgid "Extends: `undici.Dispatcher`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:5
+msgid ""
+"A pool of [Client](/docs/docs/api/Client.md) instances connected to the "
+"same upstream target with round-robin client selection."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:7
+msgid ""
+"Unlike [`Pool`](/docs/docs/api/Pool.md), which always selects the first "
+"available client, `RoundRobinPool` cycles through clients in a round-"
+"robin fashion. This ensures even distribution of requests across all "
+"connections, which is particularly useful when the upstream target is "
+"behind a load balancer that round-robins TCP connections across multiple "
+"backend servers (e.g., Kubernetes Services)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:9
+msgid "Requests are not guaranteed to be dispatched in order of invocation."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:11
+msgid "`new RoundRobinPool(url[, options])`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:13
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:15
+msgid ""
+"**url** `URL | string` - It should only include the **protocol, hostname,"
+" and port**."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:16
+msgid "**options** `RoundRobinPoolOptions` (optional)"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:18
+msgid "Parameter: `RoundRobinPoolOptions`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:20
+msgid ""
+"Extends: [`ClientOptions`](/docs/docs/api/Client.md#parameter-"
+"clientoptions)"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:22
+msgid ""
+"**factory** `(origin: URL, opts: Object) => Dispatcher` - Default: "
+"`(origin, opts) => new Client(origin, opts)`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:23
+msgid ""
+"**connections** `number | null` (optional) - Default: `null` - The number"
+" of `Client` instances to create. When set to `null`, the "
+"`RoundRobinPool` instance will create an unlimited amount of `Client` "
+"instances."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:24
+msgid ""
+"**clientTtl** `number | null` (optional) - Default: `null` - The amount "
+"of time before a `Client` instance is removed from the `RoundRobinPool` "
+"and closed. When set to `null`, `Client` instances will not be removed or"
+" closed based on age."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:26
+msgid "Use Case"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:28
+msgid "`RoundRobinPool` is designed for scenarios where:"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:30
+msgid "You connect to a single origin (e.g., `http://my-service.namespace.svc`)"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:31
+msgid ""
+"That origin is backed by a load balancer distributing TCP connections "
+"across multiple servers"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:32
+msgid "You want requests evenly distributed across all backend servers"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:34
+msgid ""
+"**Example**: In Kubernetes, when using a Service DNS name with multiple "
+"Pod replicas, kube-proxy load balances TCP connections. `RoundRobinPool` "
+"ensures each connection (and thus each Pod) receives an equal share of "
+"requests."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:36
+msgid "Important: Backend Distribution Considerations"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:38
+msgid ""
+"`RoundRobinPool` distributes **HTTP requests** evenly across **TCP "
+"connections**. Whether this translates to even backend server "
+"distribution depends on the load balancer's behavior:"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:40
+msgid "**✓ Works when the load balancer**:"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:41
+msgid ""
+"Assigns different backends to different TCP connections from the same "
+"client"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:42
+msgid ""
+"Uses algorithms like: round-robin, random, least-connections (without "
+"client affinity)"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:43
+msgid "Example: Default Kubernetes Services without `sessionAffinity`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:45
+msgid "**✗ Does NOT work when**:"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:46
+msgid ""
+"Load balancer has client/source IP affinity (all connections from one IP "
+"→ same backend)"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:47
+msgid "Load balancer uses source-IP-hash or sticky sessions"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:49
+msgid "**How it works:**"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:50
+msgid "`RoundRobinPool` creates N TCP connections to the load balancer endpoint"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:51
+msgid "Load balancer assigns each TCP connection to a backend (per its algorithm)"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:52
+msgid "`RoundRobinPool` cycles HTTP requests across those N connections"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:53
+msgid ""
+"Result: Requests distributed proportionally to how the LB distributed the"
+" connections"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:55
+msgid ""
+"If the load balancer assigns all connections to the same backend (e.g., "
+"due to session affinity), `RoundRobinPool` cannot overcome this. In such "
+"cases, consider using [`BalancedPool`](/docs/docs/api/BalancedPool.md) "
+"with direct backend addresses (e.g., individual pod IPs) instead of a "
+"load-balanced endpoint."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:57
+msgid "Instance Properties"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:59
+msgid "`RoundRobinPool.closed`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:61
+msgid "Implements [Client.closed](/docs/docs/api/Client.md#clientclosed)"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:63
+msgid "`RoundRobinPool.destroyed`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:65
+msgid "Implements [Client.destroyed](/docs/docs/api/Client.md#clientdestroyed)"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:67
+msgid "`RoundRobinPool.stats`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:69
+msgid "Returns [`PoolStats`](PoolStats.md) instance for this pool."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:71
+msgid "Instance Methods"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:73
+msgid "`RoundRobinPool.close([callback])`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:75
+msgid ""
+"Implements [`Dispatcher.close([callback])`](/docs/docs/api/Dispatcher.md"
+"#dispatcherclosecallback-promise)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:77
+msgid "`RoundRobinPool.destroy([error, callback])`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:79
+msgid ""
+"Implements [`Dispatcher.destroy([error, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherdestroyerror-"
+"callback-promise)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:81
+msgid "`RoundRobinPool.connect(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:83
+msgid ""
+"See [`Dispatcher.connect(options[, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherconnectoptions-"
+"callback)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:85
+msgid "`RoundRobinPool.dispatch(options, handler)`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:87
+msgid ""
+"Implements [`Dispatcher.dispatch(options, "
+"handler)`](/docs/docs/api/Dispatcher.md#dispatcherdispatchoptions-"
+"handler)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:89
+msgid "`RoundRobinPool.pipeline(options, handler)`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:91
+msgid ""
+"See [`Dispatcher.pipeline(options, "
+"handler)`](/docs/docs/api/Dispatcher.md#dispatcherpipelineoptions-"
+"handler)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:93
+msgid "`RoundRobinPool.request(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:95
+msgid ""
+"See [`Dispatcher.request(options [, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherrequestoptions-"
+"callback)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:97
+msgid "`RoundRobinPool.stream(options, factory[, callback])`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:99
+msgid ""
+"See [`Dispatcher.stream(options, factory[, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherstreamoptions-"
+"factory-callback)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:101
+msgid "`RoundRobinPool.upgrade(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:103
+msgid ""
+"See [`Dispatcher.upgrade(options[, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherupgradeoptions-"
+"callback)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:105
+msgid "Instance Events"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:107
+msgid "Event: `'connect'`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:109
+msgid ""
+"See [Dispatcher Event: `'connect'`](/docs/docs/api/Dispatcher.md#event-"
+"connect)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:111
+msgid "Event: `'disconnect'`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:113
+msgid ""
+"See [Dispatcher Event: `'disconnect'`](/docs/docs/api/Dispatcher.md"
+"#event-disconnect)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:115
+msgid "Event: `'drain'`"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:117
+msgid ""
+"See [Dispatcher Event: `'drain'`](/docs/docs/api/Dispatcher.md#event-"
+"drain)."
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:119
+msgid "Example"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:140
+msgid "See Also"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:142
+msgid "[Pool](/docs/docs/api/Pool.md) - Connection pool without round-robin"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:143
+msgid ""
+"[BalancedPool](/docs/docs/api/BalancedPool.md) - Load balancing across "
+"multiple origins"
+msgstr ""
+
+#: ../../source/api_RoundRobinPool.md:144
+msgid ""
+"[Issue #3648](https://github.com/nodejs/undici/issues/3648) - Original "
+"issue describing uneven distribution"
+msgstr ""
+

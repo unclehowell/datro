@@ -1,0 +1,1235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_writing-guide.md:1
+msgid "ML Paper Writing Philosophy & Best Practices"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:3
+msgid ""
+"This reference compiles writing advice from prominent ML researchers "
+"including Neel Nanda, Andrej Karpathy, Sebastian Farquhar, Zachary "
+"Lipton, and Jacob Steinhardt."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:7
+msgid "Contents"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:9
+msgid "[The Narrative Principle](#the-narrative-principle)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:10
+msgid "[Time Allocation](#time-allocation)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:11
+msgid "[Abstract Writing Formula](#abstract-writing-formula)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:12
+msgid "[Introduction Structure](#introduction-structure)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:13
+msgid "[Sentence-Level Clarity](#sentence-level-clarity)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:14
+msgid "[Word Choice and Precision](#word-choice-and-precision)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:15
+msgid "[Mathematical Writing](#mathematical-writing)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:16
+msgid "[Figure Design](#figure-design)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:17
+msgid "[Common Mistakes to Avoid](#common-mistakes-to-avoid)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:21
+msgid "The Narrative Principle"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:23
+#: ../../source/references_writing-guide.md:47
+#: ../../source/references_writing-guide.md:374
+msgid "From Neel Nanda"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:25
+msgid ""
+"\"A paper is a short, rigorous, evidence-based technical story with a "
+"takeaway readers care about.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:27
+msgid ""
+"The narrative rests on three pillars that must be crystal clear by the "
+"end of your introduction:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:29
+msgid ""
+"**The \"What\"**: One to three specific novel claims fitting within a "
+"cohesive theme. Vague contributions like \"we study X\" fail "
+"immediately—reviewers need precise, falsifiable claims."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:31
+msgid ""
+"**The \"Why\"**: Rigorous empirical evidence that convincingly supports "
+"those claims, including strong baselines honestly tuned and experiments "
+"that distinguish between competing hypotheses rather than merely showing "
+"\"decent results.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:33
+msgid ""
+"**The \"So What\"**: Why readers should care, connecting your "
+"contribution to problems the community recognizes as important."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:35
+msgid "From Andrej Karpathy"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:37
+msgid ""
+"\"A paper is not a random collection of experiments you report on. The "
+"paper sells a single thing that was not obvious or present before. The "
+"entire paper is organized around this core contribution with surgical "
+"precision.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:39
+msgid ""
+"This applies whether you're presenting a new architecture, a theoretical "
+"result, or improved understanding of existing methods—NeurIPS explicitly "
+"notes that \"originality does not necessarily require an entirely new "
+"method.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:41
+msgid ""
+"**Practical Implication**: If you cannot state your contribution in one "
+"sentence, you don't yet have a paper. Everything else—experiments, "
+"related work, discussion—exists only to support that core claim."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:45
+msgid "Time Allocation"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:49
+msgid "Spend approximately **the same amount of time** on each of:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:50
+msgid "The abstract"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:51
+msgid "The introduction"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:52
+msgid "The figures"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:53
+msgid "Everything else combined"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:55
+msgid ""
+"This isn't hyperbole—most reviewers form preliminary judgments before "
+"reaching your methods section. Readers encounter your paper in a "
+"predictable pattern: **title → abstract → introduction → figures → maybe "
+"the rest.**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:57
+msgid "Reviewer Reading Patterns"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:59
+msgid "Studies of reviewer behavior show:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:60
+#, python-format
+msgid "Abstract is read 100% of the time"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:61
+msgid "Introduction is skimmed by 90%+ of reviewers"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:62
+msgid "Figures are examined before methods by most reviewers"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:63
+msgid "Full methods are read only if interest is established"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:65
+msgid ""
+"**Implication**: Front-load your paper's value. Don't bury the "
+"contribution."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:69
+msgid "Abstract Writing Formula"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:71
+msgid "Sebastian Farquhar's 5-Sentence Formula"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:73
+msgid ""
+"**What you achieved**: \"We introduce...\", \"We prove...\", \"We "
+"demonstrate...\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:74
+msgid "**Why this is hard and important**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:75
+msgid "**How you do it** (with specialist keywords for discoverability)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:76
+msgid "**What evidence you have**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:77
+msgid "**Your most remarkable number/result**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:79
+msgid "Example (Good Abstract)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:95
+msgid "What to Avoid"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:97
+msgid ""
+"From Zachary Lipton: \"If the first sentence can be pre-pended to any ML "
+"paper, delete it.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:99
+msgid "**Delete these openings**:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:100
+msgid "\"Large language models have achieved remarkable success...\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:101
+msgid "\"Deep learning has revolutionized...\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:102
+msgid "\"In recent years, neural networks have...\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:104
+msgid "**Start with your specific contribution instead.**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:108
+msgid "Introduction Structure"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:110
+msgid "Requirements"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:112
+msgid "**1-1.5 pages maximum** (in two-column format)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:113
+msgid "**Methods should start by page 2-3**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:114
+msgid "Must include **2-4 bullet contribution list** (max 1-2 lines each)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:116
+msgid "Structure Template"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:143
+msgid "Contribution Bullets: Good vs Bad"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:145
+msgid "**Good:**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:146
+msgid "We prove that X converges in O(n log n) time under assumption Y"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:147
+msgid "We introduce Z, a 3-layer architecture that reduces memory by 40%"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:148
+#, python-format
+msgid "We demonstrate that A outperforms B by 15% on benchmark C"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:150
+msgid "**Bad:**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:151
+msgid "We study the problem of X (not a contribution)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:152
+msgid "We provide extensive experiments (too vague)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:153
+msgid "We make several contributions to the field (says nothing)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:157
+msgid "Sentence-Level Clarity"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:159
+msgid "From Gopen & Swan: \"The Science of Scientific Writing\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:161
+msgid ""
+"The seminal 1990 paper by George Gopen and Judith Swan establishes that "
+"**readers have structural expectations** about where information appears "
+"in prose. Violating these expectations forces readers to spend energy on "
+"structure rather than content."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:163
+msgid ""
+"\"If the reader is to grasp what the writer means, the writer must "
+"understand what the reader needs.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:165
+msgid "The 7 Principles of Reader Expectations"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:167
+msgid "**Principle 1: Subject-Verb Proximity**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:169
+msgid ""
+"Keep grammatical subject and verb close together. Anything intervening "
+"reads as interruption of lesser importance."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:171
+msgid ""
+"**Weak**: \"The model, which was trained on 100M tokens and fine-tuned on"
+" domain-specific data using LoRA with rank 16, achieves state-of-the-art "
+"results\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:173
+msgid ""
+"**Strong**: \"The model achieves state-of-the-art results after training "
+"on 100M tokens and fine-tuning with LoRA (rank 16)\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:175
+msgid "**Principle 2: Stress Position (Save the Best for Last)**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:177
+msgid ""
+"Readers naturally emphasize the **last words of a sentence**. Place your "
+"most important information there."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:179
+msgid ""
+"**Weak**: \"Accuracy improves by 15% when using attention\" **Strong**: "
+"\"When using attention, accuracy improves by **15%**\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:182
+msgid "**Principle 3: Topic Position (First Things First)**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:184
+msgid ""
+"The beginning of a sentence establishes perspective. Put the \"whose "
+"story\" element first—readers expect the sentence to be about whoever "
+"shows up first."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:186
+msgid ""
+"**Weak**: \"A novel attention mechanism that computes alignment scores is"
+" introduced\" **Strong**: \"To address the alignment problem, we "
+"introduce a novel attention mechanism\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:189
+msgid "**Principle 4: Old Information Before New**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:191
+msgid ""
+"Put familiar information (old) in the topic position for backward "
+"linkage; put new information in the stress position for emphasis."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:193
+msgid ""
+"**Weak**: \"Sparse attention was introduced by Child et al. The quadratic"
+" complexity of standard attention motivates this work.\" **Strong**: "
+"\"Standard attention has quadratic complexity. To address this, Child et "
+"al. introduced sparse attention.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:196
+msgid "**Principle 5: One Unit, One Function**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:198
+msgid ""
+"Each unit of discourse (sentence, paragraph, section) should serve a "
+"single function. If you have two points, use two units."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:200
+msgid "**Principle 6: Articulate Action in the Verb**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:202
+msgid "Express the action of each sentence in its verb, not in nominalized nouns."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:204
+msgid ""
+"**Weak**: \"We performed an analysis of the results\" (nominalization) "
+"**Strong**: \"We analyzed the results\" (action in verb)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:207
+msgid "**Principle 7: Context Before New Information**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:209
+msgid ""
+"Provide context before asking the reader to consider anything new. This "
+"applies at all levels—sentence, paragraph, section."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:211
+msgid ""
+"**Weak**: \"Equation 3 shows that convergence is guaranteed when the "
+"learning rate satisfies...\" **Strong**: \"For convergence to be "
+"guaranteed, the learning rate must satisfy the condition in Equation "
+"3...\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:214
+msgid "Summary Table"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Principle"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Rule"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Mnemonic"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Subject-Verb Proximity"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Keep subject and verb close"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "\"Don't interrupt yourself\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Stress Position"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Emphasis at sentence end"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "\"Save the best for last\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Topic Position"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Context at sentence start"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "\"First things first\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Old Before New"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Familiar → unfamiliar"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "\"Build on known ground\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "One Unit, One Function"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Each paragraph = one point"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "\"One idea per container\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Action in Verb"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Use verbs, not nominalizations"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "\"Verbs do, nouns sit\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Context Before New"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Explain before presenting"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "\"Set the stage first\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:228
+msgid "Micro-Level Writing Tips"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:230
+msgid "From Ethan Perez (Anthropic)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:232
+msgid ""
+"These practical micro-level tips improve clarity at the sentence and word"
+" level."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:234
+msgid "Pronoun Management"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:236
+msgid ""
+"**Minimize pronouns** (\"this,\" \"it,\" \"these,\" \"that\"). When "
+"pronouns are necessary, use them as adjectives with a noun:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:238
+msgid ""
+"**Weak**: \"This shows that the model converges.\" **Strong**: \"This "
+"result shows that the model converges.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:241
+msgid ""
+"**Weak**: \"It improves performance.\" **Strong**: \"This modification "
+"improves performance.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:244
+msgid "Verb Placement"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:246
+msgid "**Position verbs early** in sentences for better parsing:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:248
+msgid ""
+"**Weak**: \"The gradient, after being computed and normalized, updates "
+"the weights.\" **Strong**: \"The gradient updates the weights after being"
+" computed and normalized.\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:251
+msgid "Apostrophe Unfolding"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:253
+msgid "Transform possessive constructions for clarity:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:255
+msgid "**Original**: \"X's Y\" → **Unfolded**: \"The Y of X\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:257
+msgid ""
+"**Before**: \"The model's accuracy on the test set\" **After**: \"The "
+"accuracy of the model on the test set\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:260
+msgid "This isn't always better, but when sentences feel awkward, try unfolding."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:262
+msgid "Words to Eliminate"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:264
+msgid "Delete these filler words in almost all cases:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:265
+msgid "\"actually\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:266
+msgid "\"a bit\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:267
+msgid "\"fortunately\" / \"unfortunately\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:268
+msgid "\"very\" / \"really\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:269
+msgid "\"quite\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:270
+msgid "\"basically\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:271
+msgid "\"essentially\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:272
+msgid ""
+"Excessive connectives (\"however,\" \"moreover,\" \"furthermore\" when "
+"not needed)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:274
+msgid "Sentence Construction Rules"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:276
+msgid ""
+"**One idea per sentence** - If struggling to express an idea in one "
+"sentence, it needs two"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:277
+msgid "**No repeated sounds** - Avoid similar-sounding words in the same sentence"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:278
+msgid "**Every sentence adds information** - Delete sentences that merely restate"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:279
+msgid ""
+"**Active voice always** - Specify the actor (\"We find...\" not \"It is "
+"found...\")"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:280
+msgid "**Expand contractions** - \"don't\" → \"do not\" for formality"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:282
+msgid "Paragraph Architecture"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:284
+msgid "**First sentence**: State the point clearly"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:285
+msgid "**Middle sentences**: Support with evidence"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:286
+msgid "**Last sentence**: Reinforce or transition"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:288
+msgid "Don't bury key information in the middle of paragraphs."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:292
+msgid "Word Choice and Precision"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:294
+msgid "From Zachary Lipton"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:296
+msgid "**Eliminate hedging** unless genuine uncertainty exists:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:297
+msgid "Delete \"may\" and \"can\" unless necessary"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:298
+msgid "\"provides *very* tight approximation\" drips with insecurity"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:299
+msgid "\"provides tight approximation\" is confident"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:301
+msgid "**Avoid vacuous intensifiers**:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:302
+msgid "Delete: very, extremely, highly, significantly (unless statistical)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:303
+msgid "These words signal insecurity, not strength"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:305
+msgid "From Jacob Steinhardt"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:307
+msgid "**Precision over brevity**: Replace vague terms with specific ones."
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Vague"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Specific"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "performance"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "accuracy, latency, throughput"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "improves"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "increases accuracy by X%, reduces latency by Y"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "large"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "1B parameters, 100M tokens"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "fast"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "3x faster, 50ms latency"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "good results"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "92% accuracy, 0.85 F1"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:317
+msgid ""
+"**Consistent terminology**: Referring to the same concept with different "
+"terms creates confusion."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:319
+msgid "**Choose one and stick with it**:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:320
+msgid "\"model\" vs \"network\" vs \"architecture\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:321
+msgid "\"training\" vs \"learning\" vs \"optimization\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:322
+msgid "\"sample\" vs \"example\" vs \"instance\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:324
+msgid "Vocabulary Signaling"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:326
+msgid "**Avoid words signaling incremental work**:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:327
+msgid "Never: \"combine,\" \"modify,\" \"expand,\" \"extend\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:328
+msgid "Instead: \"develop,\" \"propose,\" \"introduce\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:330
+msgid ""
+"**Why**: \"We combine X and Y\" sounds like you stapled two existing "
+"ideas together. \"We develop a method that leverages X for Y\" sounds "
+"like genuine contribution."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:334
+msgid "Mathematical Writing"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:336
+msgid "From Ethan Perez"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:338
+msgid "**Unfold apostrophes** for clarity:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:339
+msgid "Weak: \"X's Y\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:340
+msgid "Strong: \"The Y of X\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:342
+msgid "Example: \"the model's accuracy\" → \"the accuracy of the model\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md:344
+msgid "General Principles"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:346
+msgid "**State all assumptions formally** before theorems"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:347
+msgid "**Provide intuitive explanations** alongside proofs"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:348
+msgid "**Use consistent notation** throughout the paper"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:349
+msgid "**Define symbols at first use**"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:351
+msgid "Notation Conventions"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:372
+msgid "Figure Design"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:376
+msgid ""
+"Figures should tell a coherent story even if the reader skips the text. "
+"Many readers DO skip the text initially."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:378
+msgid "Design Principles"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:380
+msgid ""
+"**Figure 1 is crucial**: Often the first thing readers examine after "
+"abstract"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:381
+msgid ""
+"**Self-contained captions**: Reader should understand figure without main"
+" text"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:382
+msgid ""
+"**No title inside figure**: The caption serves this function "
+"(ICML/NeurIPS rule)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:383
+msgid "**Vector graphics**: PDF/EPS for plots, PNG (600 DPI) only for photographs"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:385
+msgid "Accessibility Requirements"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:387
+#, python-format
+msgid "8% of men have color vision deficiency. Your figures must work for them."
+msgstr ""
+
+#: ../../source/references_writing-guide.md:389
+msgid "**Solutions**:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:390
+msgid "Use colorblind-safe palettes: Okabe-Ito or Paul Tol"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:391
+msgid "Avoid red-green combinations"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:392
+msgid "Verify figures work in grayscale"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:393
+msgid "Use different line styles (solid, dashed, dotted) in addition to colors"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:395
+msgid "Tools"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:408
+msgid "Common Mistakes to Avoid"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:410
+msgid "Structure Mistakes"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Mistake"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Solution"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Introduction too long (>1.5 pages)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Move background to Related Work"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Methods buried (after page 3)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Front-load contribution, cut intro"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Missing contribution bullets"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Add 2-4 specific, falsifiable claims"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Experiments without explicit claims"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "State what each experiment tests"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:419
+msgid "Writing Mistakes"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Generic abstract opening"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Start with your specific contribution"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Inconsistent terminology"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Choose one term per concept"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Passive voice overuse"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Use active voice: \"We show\" not \"It is shown\""
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Hedging everywhere"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Be confident unless genuinely uncertain"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:428
+msgid "Figure Mistakes"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Raster graphics for plots"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Use vector (PDF/EPS)"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Red-green color scheme"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Use colorblind-safe palette"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Title inside figure"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Put title in caption"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Captions require main text"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Make captions self-contained"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:437
+msgid "Citation Mistakes"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Paper-by-paper Related Work"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Organize methodologically"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Missing relevant citations"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Reviewers authored papers—cite generously"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "AI-generated citations"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Always verify via APIs"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Inconsistent citation format"
+msgstr ""
+
+#: ../../source/references_writing-guide.md
+msgid "Use BibLaTeX with consistent keys"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:448
+msgid "Pre-Submission Checklist"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:450
+msgid "Before submitting, verify:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:452
+msgid "**Narrative**:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:453
+msgid "[ ] Can state contribution in one sentence"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:454
+msgid "[ ] Three pillars (What/Why/So What) clear in intro"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:455
+msgid "[ ] Every experiment supports a specific claim"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:457
+msgid "**Structure**:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:458
+msgid "[ ] Abstract follows 5-sentence formula"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:459
+msgid "[ ] Introduction ≤1.5 pages"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:460
+msgid "[ ] Methods start by page 2-3"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:461
+msgid "[ ] 2-4 contribution bullets included"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:462
+msgid "[ ] Limitations section present"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:464
+msgid "**Writing**:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:465
+msgid "[ ] Consistent terminology throughout"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:466
+msgid "[ ] No generic opening sentences"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:467
+msgid "[ ] Hedging removed unless necessary"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:468
+msgid "[ ] All figures have self-contained captions"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:470
+msgid "**Technical**:"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:471
+msgid "[ ] All citations verified via API"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:472
+msgid "[ ] Error bars included with methodology"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:473
+msgid "[ ] Compute resources documented"
+msgstr ""
+
+#: ../../source/references_writing-guide.md:474
+msgid "[ ] Code/data availability stated"
+msgstr ""
+

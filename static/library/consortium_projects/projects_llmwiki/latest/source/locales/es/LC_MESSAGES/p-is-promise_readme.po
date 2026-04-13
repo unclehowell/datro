@@ -1,0 +1,80 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/p-is-promise_readme.md:1
+msgid ""
+"p-is-promise [![Build Status](https://travis-ci.org/sindresorhus/p-is-"
+"promise.svg?branch=master)](https://travis-ci.org/sindresorhus/p-is-"
+"promise)"
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:3
+msgid "Check if something is a promise"
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:5
+msgid ""
+"Why not [`is-promise`](https://github.com/then/is-promise)? That module "
+"[checks for a thenable](https://github.com/then/is-promise/issues/6), not"
+" an ES2015 promise. This one is stricter."
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:7
+msgid ""
+"You most likely don't need this. Just pass your value to "
+"`Promise.resolve()` and let it handle it."
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:9
+msgid ""
+"Can be useful if you need to create a fast path for a synchronous "
+"operation."
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:12
+msgid "Install"
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:19
+msgid "Usage"
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:36
+msgid "Related"
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:38
+msgid "[More…](https://github.com/sindresorhus/promise-fun)"
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:41
+msgid "License"
+msgstr ""
+
+#: ../../source/p-is-promise_readme.md:43
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

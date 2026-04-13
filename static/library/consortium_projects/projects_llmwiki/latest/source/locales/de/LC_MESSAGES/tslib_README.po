@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/tslib_README.md:1
+msgid "tslib"
+msgstr ""
+
+#: ../../source/tslib_README.md:3
+msgid ""
+"This is a runtime library for "
+"[TypeScript](https://www.typescriptlang.org/) that contains all of the "
+"TypeScript helper functions."
+msgstr ""
+
+#: ../../source/tslib_README.md:5
+msgid ""
+"This library is primarily used by the `--importHelpers` flag in "
+"TypeScript. When using `--importHelpers`, a module that uses helper "
+"functions like `__extends` and `__assign` in the following emitted file:"
+msgstr ""
+
+#: ../../source/tslib_README.md:22
+msgid "will instead be emitted as something like the following:"
+msgstr ""
+
+#: ../../source/tslib_README.md:30
+msgid ""
+"Because this can avoid duplicate declarations of things like `__extends`,"
+" `__assign`, etc., this means delivering users smaller files on average, "
+"as well as less runtime overhead. For optimized bundles with TypeScript, "
+"you should absolutely consider using `tslib` and `--importHelpers`."
+msgstr ""
+
+#: ../../source/tslib_README.md:33
+msgid "Installing"
+msgstr ""
+
+#: ../../source/tslib_README.md:35
+msgid "For the latest stable version, run:"
+msgstr ""
+
+#: ../../source/tslib_README.md:37
+msgid "npm"
+msgstr ""
+
+#: ../../source/tslib_README.md:50
+msgid "yarn"
+msgstr ""
+
+#: ../../source/tslib_README.md:63
+msgid "bower"
+msgstr ""
+
+#: ../../source/tslib_README.md:76
+msgid "JSPM"
+msgstr ""
+
+#: ../../source/tslib_README.md:89
+msgid "Usage"
+msgstr ""
+
+#: ../../source/tslib_README.md:91
+msgid "Set the `importHelpers` compiler option on the command line:"
+msgstr ""
+
+#: ../../source/tslib_README.md:97
+msgid "or in your tsconfig.json:"
+msgstr ""
+
+#: ../../source/tslib_README.md:107
+msgid "For bower and JSPM users"
+msgstr ""
+
+#: ../../source/tslib_README.md:109
+msgid "You will need to add a `paths` mapping for `tslib`, e.g. For Bower users:"
+msgstr ""
+
+#: ../../source/tslib_README.md:124
+msgid "For JSPM users:"
+msgstr ""
+
+#: ../../source/tslib_README.md:139
+msgid "Deployment"
+msgstr ""
+
+#: ../../source/tslib_README.md:141
+msgid "Choose your new version number"
+msgstr ""
+
+#: ../../source/tslib_README.md:142
+msgid "Set it in `package.json` and `bower.json`"
+msgstr ""
+
+#: ../../source/tslib_README.md:143
+msgid "Create a tag: `git tag [version]`"
+msgstr ""
+
+#: ../../source/tslib_README.md:144
+msgid "Push the tag: `git push --tags`"
+msgstr ""
+
+#: ../../source/tslib_README.md:145
+msgid "Create a [release in GitHub](https://github.com/microsoft/tslib/releases)"
+msgstr ""
+
+#: ../../source/tslib_README.md:146
+msgid ""
+"Run the [publish to "
+"npm](https://github.com/microsoft/tslib/actions?query=workflow%3A%22Publish+to+NPM%22)"
+" workflow"
+msgstr ""
+
+#: ../../source/tslib_README.md:148
+msgid "Done."
+msgstr ""
+
+#: ../../source/tslib_README.md:150
+msgid "Contribute"
+msgstr ""
+
+#: ../../source/tslib_README.md:152
+msgid ""
+"There are many ways to "
+"[contribute](https://github.com/Microsoft/TypeScript/blob/master/CONTRIBUTING.md)"
+" to TypeScript."
+msgstr ""
+
+#: ../../source/tslib_README.md:154
+msgid ""
+"[Submit bugs](https://github.com/Microsoft/TypeScript/issues) and help us"
+" verify fixes as they are checked in."
+msgstr ""
+
+#: ../../source/tslib_README.md:155
+msgid ""
+"Review the [source code "
+"changes](https://github.com/Microsoft/TypeScript/pulls)."
+msgstr ""
+
+#: ../../source/tslib_README.md:156
+msgid ""
+"Engage with other TypeScript users and developers on "
+"[StackOverflow](http://stackoverflow.com/questions/tagged/typescript)."
+msgstr ""
+
+#: ../../source/tslib_README.md:157
+msgid ""
+"Join the "
+"[#typescript](http://twitter.com/#!/search/realtime/%23typescript) "
+"discussion on Twitter."
+msgstr ""
+
+#: ../../source/tslib_README.md:158
+msgid ""
+"[Contribute bug "
+"fixes](https://github.com/Microsoft/TypeScript/blob/master/CONTRIBUTING.md)."
+msgstr ""
+
+#: ../../source/tslib_README.md:160
+msgid "Documentation"
+msgstr ""
+
+#: ../../source/tslib_README.md:162
+msgid "[Quick tutorial](http://www.typescriptlang.org/Tutorial)"
+msgstr ""
+
+#: ../../source/tslib_README.md:163
+msgid "[Programming handbook](http://www.typescriptlang.org/Handbook)"
+msgstr ""
+
+#: ../../source/tslib_README.md:164
+msgid "[Homepage](http://www.typescriptlang.org/)"
+msgstr ""
+

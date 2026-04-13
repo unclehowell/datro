@@ -1,0 +1,1410 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/sshpk_README.md:1
+msgid "sshpk"
+msgstr ""
+
+#: ../../source/sshpk_README.md:4
+msgid ""
+"Parse, convert, fingerprint and use SSH keys (both public and private) in"
+" pure node -- no `ssh-keygen` or other external dependencies."
+msgstr ""
+
+#: ../../source/sshpk_README.md:7
+msgid ""
+"Supports RSA, DSA, ECDSA (nistp-\\*) and ED25519 key types, in PEM "
+"(PKCS#1,  PKCS#8) and OpenSSH formats."
+msgstr ""
+
+#: ../../source/sshpk_README.md:10
+msgid ""
+"This library has been extracted from [`node-http-"
+"signature`](https://github.com/joyent/node-http-signature) (work by [Mark"
+" Cavage](https://github.com/mcavage) and [Dave "
+"Eddy](https://github.com/bahamas10)) and [`node-ssh-"
+"fingerprint`](https://github.com/bahamas10/node-ssh-fingerprint) (work by"
+" Dave Eddy), with additions (including ECDSA support) by [Alex "
+"Wilson](https://github.com/arekinath)."
+msgstr ""
+
+#: ../../source/sshpk_README.md:18
+msgid "Install"
+msgstr ""
+
+#: ../../source/sshpk_README.md:25
+msgid "Examples"
+msgstr ""
+
+#: ../../source/sshpk_README.md:47
+msgid "Example output:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:57
+msgid "More examples: converting between formats:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:71
+msgid "Signing and verifying:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:96
+msgid "Matching fingerprints with keys:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:109
+msgid "Usage"
+msgstr ""
+
+#: ../../source/sshpk_README.md:112
+msgid "Public keys"
+msgstr ""
+
+#: ../../source/sshpk_README.md:114
+msgid "`parseKey(data[, format = 'auto'[, options]])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:116
+msgid "Parses a key from a given data format and returns a new `Key` object."
+msgstr ""
+
+#: ../../source/sshpk_README.md:118 ../../source/sshpk_README.md:144
+#: ../../source/sshpk_README.md:172 ../../source/sshpk_README.md:184
+#: ../../source/sshpk_README.md:199 ../../source/sshpk_README.md:230
+#: ../../source/sshpk_README.md:252 ../../source/sshpk_README.md:266
+#: ../../source/sshpk_README.md:290 ../../source/sshpk_README.md:320
+#: ../../source/sshpk_README.md:337 ../../source/sshpk_README.md:348
+#: ../../source/sshpk_README.md:366 ../../source/sshpk_README.md:374
+#: ../../source/sshpk_README.md:389 ../../source/sshpk_README.md:406
+#: ../../source/sshpk_README.md:419 ../../source/sshpk_README.md:427
+#: ../../source/sshpk_README.md:449 ../../source/sshpk_README.md:457
+#: ../../source/sshpk_README.md:474 ../../source/sshpk_README.md:552
+#: ../../source/sshpk_README.md:563 ../../source/sshpk_README.md:575
+#: ../../source/sshpk_README.md:588 ../../source/sshpk_README.md:596
+#: ../../source/sshpk_README.md:616 ../../source/sshpk_README.md:626
+#: ../../source/sshpk_README.md:636 ../../source/sshpk_README.md:647
+#: ../../source/sshpk_README.md:658 ../../source/sshpk_README.md:719
+msgid "Parameters"
+msgstr ""
+
+#: ../../source/sshpk_README.md:120 ../../source/sshpk_README.md:232
+msgid "`data` -- Either a Buffer or String, containing the key"
+msgstr ""
+
+#: ../../source/sshpk_README.md:121 ../../source/sshpk_README.md:233
+msgid "`format` -- String name of format to use, valid options are:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:122 ../../source/sshpk_README.md:234
+msgid "`auto`: choose automatically from all below"
+msgstr ""
+
+#: ../../source/sshpk_README.md:123 ../../source/sshpk_README.md:235
+msgid "`pem`: supports both PKCS#1 and PKCS#8"
+msgstr ""
+
+#: ../../source/sshpk_README.md:124
+msgid "`ssh`: standard OpenSSH format,"
+msgstr ""
+
+#: ../../source/sshpk_README.md:125 ../../source/sshpk_README.md:238
+msgid "`pkcs1`, `pkcs8`: variants of `pem`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:126 ../../source/sshpk_README.md:239
+msgid "`rfc4253`: raw OpenSSH wire format"
+msgstr ""
+
+#: ../../source/sshpk_README.md:127
+msgid ""
+"`openssh`: new post-OpenSSH 6.5 internal format, produced by             "
+"`ssh-keygen -o`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:129
+msgid "`dnssec`: `.key` file format output by `dnssec-keygen` etc"
+msgstr ""
+
+#: ../../source/sshpk_README.md:130
+msgid ""
+"`putty`: the PuTTY `.ppk` file format (supports truncated variant without"
+"          all the lines from `Private-Lines:` onwards)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:132 ../../source/sshpk_README.md:241
+msgid "`options` -- Optional Object, extra options, with keys:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:133
+msgid ""
+"`filename` -- Optional String, name for the key being parsed"
+"                (eg. the filename that was opened). Used to generate"
+"               Error messages"
+msgstr ""
+
+#: ../../source/sshpk_README.md:136 ../../source/sshpk_README.md:245
+msgid ""
+"`passphrase` -- Optional String, encryption passphrase used to decrypt an"
+"                 encrypted PEM file"
+msgstr ""
+
+#: ../../source/sshpk_README.md:139
+msgid "`Key.isKey(obj)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:141
+msgid ""
+"Returns `true` if the given object is a valid `Key` object created by a "
+"version of `sshpk` compatible with this one."
+msgstr ""
+
+#: ../../source/sshpk_README.md:146 ../../source/sshpk_README.md:268
+#: ../../source/sshpk_README.md:368 ../../source/sshpk_README.md:421
+msgid "`obj` -- Object to identify"
+msgstr ""
+
+#: ../../source/sshpk_README.md:148
+msgid "`Key#type`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:150 ../../source/sshpk_README.md:272
+msgid "String, the type of key. Valid options are `rsa`, `dsa`, `ecdsa`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:152
+msgid "`Key#size`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:154 ../../source/sshpk_README.md:276
+msgid ""
+"Integer, \"size\" of the key in bits. For RSA/DSA this is the size of the"
+" modulus; for ECDSA this is the bit size of the curve in use."
+msgstr ""
+
+#: ../../source/sshpk_README.md:157
+msgid "`Key#comment`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:159
+msgid "Optional string, a key comment used by some formats (eg the `ssh` format)."
+msgstr ""
+
+#: ../../source/sshpk_README.md:161
+msgid "`Key#curve`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:163 ../../source/sshpk_README.md:281
+msgid ""
+"Only present if `this.type === 'ecdsa'`, string containing the name of "
+"the named curve used with this key. Possible values include `nistp256`, "
+"`nistp384` and `nistp521`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:167
+msgid "`Key#toBuffer([format = 'ssh'])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:169 ../../source/sshpk_README.md:287
+msgid ""
+"Convert the key into a given data format and return the serialized key as"
+" a Buffer."
+msgstr ""
+
+#: ../../source/sshpk_README.md:174
+msgid ""
+"`format` -- String name of format to use, for valid options see "
+"`parseKey()`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:176
+msgid "`Key#toString([format = 'ssh])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:178 ../../source/sshpk_README.md:298
+msgid "Same as `this.toBuffer(format).toString()`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:180
+msgid "`Key#fingerprint([algorithm = 'sha256'[, hashType = 'ssh']])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:182
+msgid "Creates a new `Fingerprint` object representing this Key's fingerprint."
+msgstr ""
+
+#: ../../source/sshpk_README.md:186
+msgid ""
+"`algorithm` -- String name of hash algorithm to use, valid options are "
+"`md5`,                `sha1`, `sha256`, `sha384`, `sha512`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:188
+msgid ""
+"`hashType` -- String name of fingerprint hash type to use, valid options "
+"are               `ssh` (the type of fingerprint used by OpenSSH, e.g. in"
+"               `ssh-keygen`), `spki` (used by HPKP, some OpenSSL "
+"applications)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:192
+msgid "`Key#createVerify([hashAlgorithm])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:194
+msgid ""
+"Creates a `crypto.Verifier` specialized to use this Key (and the correct "
+"public key algorithm to match it). The returned Verifier has the same API"
+" as a regular one, except that the `verify()` function takes only the "
+"target signature as an argument."
+msgstr ""
+
+#: ../../source/sshpk_README.md:201 ../../source/sshpk_README.md:322
+msgid ""
+"`hashAlgorithm` -- optional String name of hash algorithm to use, any"
+"                    supported by OpenSSL are valid, usually including"
+"                    `sha1`, `sha256`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:205
+msgid "`v.verify(signature[, format])` Parameters"
+msgstr ""
+
+#: ../../source/sshpk_README.md:207
+msgid "`signature` -- either a Signature object, or a Buffer or String"
+msgstr ""
+
+#: ../../source/sshpk_README.md:208
+msgid ""
+"`format` -- optional String, name of format to interpret given String "
+"with.             Not valid if `signature` is a Signature or Buffer."
+msgstr ""
+
+#: ../../source/sshpk_README.md:211
+msgid "`Key#createDiffieHellman()`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:212
+msgid "`Key#createDH()`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:214
+msgid ""
+"Creates a Diffie-Hellman key exchange object initialized with this key "
+"and all necessary parameters. This has the same API as a "
+"`crypto.DiffieHellman` instance, except that functions take `Key` and "
+"`PrivateKey` objects as arguments, and return them where indicated for."
+msgstr ""
+
+#: ../../source/sshpk_README.md:219
+msgid ""
+"This is only valid for keys belonging to a cryptosystem that supports DHE"
+" or a close analogue (i.e. `dsa`, `ecdsa` and `curve25519` keys). An "
+"attempt to call this function on other keys will yield an `Error`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:223
+msgid "Private keys"
+msgstr ""
+
+#: ../../source/sshpk_README.md:225
+msgid "`parsePrivateKey(data[, format = 'auto'[, options]])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:227
+msgid ""
+"Parses a private key from a given data format and returns a new "
+"`PrivateKey` object."
+msgstr ""
+
+#: ../../source/sshpk_README.md:236
+msgid ""
+"`ssh`, `openssh`: new post-OpenSSH 6.5 internal format, produced by"
+"                   `ssh-keygen -o`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:240
+msgid "`dnssec`: `.private` format output by `dnssec-keygen` etc."
+msgstr ""
+
+#: ../../source/sshpk_README.md:242
+msgid ""
+"`filename` -- Optional String, name for the key being parsed"
+"               (eg. the filename that was opened). Used to generate"
+"               Error messages"
+msgstr ""
+
+#: ../../source/sshpk_README.md:248
+msgid "`generatePrivateKey(type[, options])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:250
+msgid "Generates a new private key of a certain key type, from random data."
+msgstr ""
+
+#: ../../source/sshpk_README.md:254
+msgid ""
+"`type` -- String, type of key to generate. Currently supported are "
+"`'ecdsa'`           and `'ed25519'`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:256 ../../source/sshpk_README.md:463
+#: ../../source/sshpk_README.md:480
+msgid "`options` -- optional Object, with keys:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:257
+msgid ""
+"`curve` -- optional String, for `'ecdsa'` keys, specifies the curve to "
+"use.            If ECDSA is specified and this option is not given, "
+"defaults to            using `'nistp256'`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:261
+msgid "`PrivateKey.isPrivateKey(obj)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:263
+msgid ""
+"Returns `true` if the given object is a valid `PrivateKey` object created"
+" by a version of `sshpk` compatible with this one."
+msgstr ""
+
+#: ../../source/sshpk_README.md:270
+msgid "`PrivateKey#type`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:274
+msgid "`PrivateKey#size`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:279
+msgid "`PrivateKey#curve`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:285
+msgid "`PrivateKey#toBuffer([format = 'pkcs1'])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:292
+msgid ""
+"`format` -- String name of format to use, valid options are listed under"
+"              `parsePrivateKey`. Note that ED25519 keys default to "
+"`openssh`             format instead (as they have no `pkcs1` "
+"representation)."
+msgstr ""
+
+#: ../../source/sshpk_README.md:296
+msgid "`PrivateKey#toString([format = 'pkcs1'])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:300
+msgid "`PrivateKey#toPublic()`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:302
+msgid ""
+"Extract just the public part of this private key, and return it as a "
+"`Key` object."
+msgstr ""
+
+#: ../../source/sshpk_README.md:305
+msgid "`PrivateKey#fingerprint([algorithm = 'sha256'])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:307
+msgid "Same as `this.toPublic().fingerprint()`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:309
+msgid "`PrivateKey#createVerify([hashAlgorithm])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:311
+msgid "Same as `this.toPublic().createVerify()`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:313
+msgid "`PrivateKey#createSign([hashAlgorithm])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:315
+msgid ""
+"Creates a `crypto.Sign` specialized to use this PrivateKey (and the "
+"correct key algorithm to match it). The returned Signer has the same API "
+"as a regular one, except that the `sign()` function takes no arguments, "
+"and returns a `Signature` object."
+msgstr ""
+
+#: ../../source/sshpk_README.md:326
+msgid "`v.sign()` Parameters"
+msgstr ""
+
+#: ../../source/sshpk_README.md:328
+msgid "none"
+msgstr ""
+
+#: ../../source/sshpk_README.md:330
+msgid "`PrivateKey#derive(newType)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:332
+msgid ""
+"Derives a related key of type `newType` from this key. Currently this is "
+"only supported to change between `ed25519` and `curve25519` keys which "
+"are stored with the same private key (but usually distinct public keys in"
+" order to avoid degenerate keys that lead to a weak Diffie-Hellman "
+"exchange)."
+msgstr ""
+
+#: ../../source/sshpk_README.md:339
+msgid ""
+"`newType` -- String, type of key to derive, either `ed25519` or "
+"`curve25519`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:341
+msgid "Fingerprints"
+msgstr ""
+
+#: ../../source/sshpk_README.md:343
+msgid "`parseFingerprint(fingerprint[, options])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:345
+msgid ""
+"Pre-parses a fingerprint, creating a `Fingerprint` object that can be "
+"used to quickly locate a key by using the `Fingerprint#matches` function."
+msgstr ""
+
+#: ../../source/sshpk_README.md:350
+msgid "`fingerprint` -- String, the fingerprint value, in any supported format"
+msgstr ""
+
+#: ../../source/sshpk_README.md:351
+msgid "`options` -- Optional Object, with properties:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:352
+msgid ""
+"`algorithms` -- Array of strings, names of hash algorithms to limit"
+"             support to. If `fingerprint` uses a hash algorithm not on"
+"             this list, throws `InvalidAlgorithmError`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:355
+msgid ""
+"`hashType` -- String, the type of hash the fingerprint uses, either `ssh`"
+"               or `spki` (normally auto-detected based on the format, but"
+"               can be overridden)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:358
+msgid ""
+"`type` -- String, the entity this fingerprint identifies, either `key` or"
+"           `certificate`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:361
+msgid "`Fingerprint.isFingerprint(obj)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:363
+msgid ""
+"Returns `true` if the given object is a valid `Fingerprint` object "
+"created by a version of `sshpk` compatible with this one."
+msgstr ""
+
+#: ../../source/sshpk_README.md:370
+msgid "`Fingerprint#toString([format])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:372
+msgid "Returns a fingerprint as a string, in the given format."
+msgstr ""
+
+#: ../../source/sshpk_README.md:376
+msgid ""
+"`format` -- Optional String, format to use, valid options are `hex` and"
+"             `base64`. If this `Fingerprint` uses the `md5` algorithm, "
+"the             default format is `hex`. Otherwise, the default is "
+"`base64`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:380
+msgid "`Fingerprint#matches(keyOrCertificate)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:382
+msgid ""
+"Verifies whether or not this `Fingerprint` matches a given `Key` or "
+"`Certificate`. This function uses double-hashing to avoid leaking timing "
+"information. Returns a boolean."
+msgstr ""
+
+#: ../../source/sshpk_README.md:386
+msgid ""
+"Note that a `Key`-type Fingerprint will always return `false` if asked to"
+" match a `Certificate` and vice versa."
+msgstr ""
+
+#: ../../source/sshpk_README.md:391
+msgid ""
+"`keyOrCertificate` -- a `Key` object or `Certificate` object, the entity "
+"to                       match this fingerprint against"
+msgstr ""
+
+#: ../../source/sshpk_README.md:394
+msgid "Signatures"
+msgstr ""
+
+#: ../../source/sshpk_README.md:396
+msgid "`parseSignature(signature, algorithm, format)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:398
+msgid ""
+"Parses a signature in a given format, creating a `Signature` object. "
+"Useful for converting between the SSH and ASN.1 (PKCS/OpenSSL) signature "
+"formats, and also returned as output from "
+"`PrivateKey#createSign().sign()`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:402
+msgid ""
+"A Signature object can also be passed to a verifier produced by "
+"`Key#createVerify()` and it will automatically be converted internally "
+"into the correct format for verification."
+msgstr ""
+
+#: ../../source/sshpk_README.md:408
+msgid ""
+"`signature` -- a Buffer (binary) or String (base64), data of the actual"
+"                signature in the given format"
+msgstr ""
+
+#: ../../source/sshpk_README.md:410
+msgid ""
+"`algorithm` -- a String, name of the algorithm to be used, possible "
+"values                are `rsa`, `dsa`, `ecdsa`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:412 ../../source/sshpk_README.md:429
+msgid "`format` -- a String, either `asn1` or `ssh`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:414
+msgid "`Signature.isSignature(obj)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:416
+msgid ""
+"Returns `true` if the given object is a valid `Signature` object created "
+"by a version of `sshpk` compatible with this one."
+msgstr ""
+
+#: ../../source/sshpk_README.md:423
+msgid "`Signature#toBuffer([format = 'asn1'])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:425
+msgid "Converts a Signature to the given format and returns it as a Buffer."
+msgstr ""
+
+#: ../../source/sshpk_README.md:431
+msgid "`Signature#toString([format = 'asn1'])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:433
+msgid "Same as `this.toBuffer(format).toString('base64')`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:435
+msgid "Certificates"
+msgstr ""
+
+#: ../../source/sshpk_README.md:437
+msgid ""
+"`sshpk` includes basic support for parsing certificates in X.509 (PEM) "
+"format and the OpenSSH certificate format. This feature is intended to be"
+" used mainly to access basic metadata about certificates, extract public "
+"keys from them, and also to generate simple self-signed certificates from"
+" an existing key."
+msgstr ""
+
+#: ../../source/sshpk_README.md:442
+msgid ""
+"Notably, there is no implementation of CA chain-of-trust verification, "
+"and only very minimal support for key usage restrictions. Please do the "
+"security world a favour, and DO NOT use this code for certificate "
+"verification in the traditional X.509 CA chain style."
+msgstr ""
+
+#: ../../source/sshpk_README.md:447
+msgid "`parseCertificate(data, format)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:451
+msgid "`data` -- a Buffer or String"
+msgstr ""
+
+#: ../../source/sshpk_README.md:452
+msgid ""
+"`format` -- a String, format to use, one of `'openssh'`, `'pem'` (X.509 "
+"in a             PEM wrapper), or `'x509'` (raw DER encoded)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:455
+msgid "`createSelfSignedCertificate(subject, privateKey[, options])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:459 ../../source/sshpk_README.md:476
+msgid "`subject` -- an Identity, the subject of the certificate"
+msgstr ""
+
+#: ../../source/sshpk_README.md:460
+msgid ""
+"`privateKey` -- a PrivateKey, the key of the subject: will be used both "
+"to be                 placed in the certificate and also to sign it "
+"(since this is                 a self-signed certificate)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:464 ../../source/sshpk_README.md:481
+msgid ""
+"`lifetime` -- optional Number, lifetime of the certificate from now in"
+"               seconds"
+msgstr ""
+
+#: ../../source/sshpk_README.md:466 ../../source/sshpk_README.md:483
+msgid ""
+"`validFrom`, `validUntil` -- optional Dates, beginning and end of"
+"                              certificate validity period. If given"
+"                              `lifetime` will be ignored"
+msgstr ""
+
+#: ../../source/sshpk_README.md:469 ../../source/sshpk_README.md:486
+msgid "`serial` -- optional Buffer, the serial number of the certificate"
+msgstr ""
+
+#: ../../source/sshpk_README.md:470 ../../source/sshpk_README.md:487
+msgid "`purposes` -- optional Array of String, X.509 key usage restrictions"
+msgstr ""
+
+#: ../../source/sshpk_README.md:472
+msgid "`createCertificate(subject, key, issuer, issuerKey[, options])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:477
+msgid "`key` -- a Key, the public key of the subject"
+msgstr ""
+
+#: ../../source/sshpk_README.md:478
+msgid "`issuer` -- an Identity, the issuer of the certificate who will sign it"
+msgstr ""
+
+#: ../../source/sshpk_README.md:479
+msgid "`issuerKey` -- a PrivateKey, the issuer's private key for signing"
+msgstr ""
+
+#: ../../source/sshpk_README.md:489
+msgid "`Certificate#subjects`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:491
+msgid "Array of `Identity` instances describing the subject of this certificate."
+msgstr ""
+
+#: ../../source/sshpk_README.md:493
+msgid "`Certificate#issuer`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:495
+msgid "The `Identity` of the Certificate's issuer (signer)."
+msgstr ""
+
+#: ../../source/sshpk_README.md:497
+msgid "`Certificate#subjectKey`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:499
+msgid "The public key of the subject of the certificate, as a `Key` instance."
+msgstr ""
+
+#: ../../source/sshpk_README.md:501
+msgid "`Certificate#issuerKey`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:503
+msgid ""
+"The public key of the signing issuer of this certificate, as a `Key` "
+"instance. May be `undefined` if the issuer's key is unknown (e.g. on an "
+"X509 certificate)."
+msgstr ""
+
+#: ../../source/sshpk_README.md:506
+msgid "`Certificate#serial`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:508
+msgid ""
+"The serial number of the certificate. As this is normally a 64-bit or "
+"wider integer, it is returned as a Buffer."
+msgstr ""
+
+#: ../../source/sshpk_README.md:511
+msgid "`Certificate#purposes`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:513
+msgid ""
+"Array of Strings indicating the X.509 key usage purposes that this "
+"certificate is valid for. The possible strings at the moment are:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:516
+msgid "`'signature'` -- key can be used for digital signatures"
+msgstr ""
+
+#: ../../source/sshpk_README.md:517
+msgid ""
+"`'identity'` -- key can be used to attest about the identity of the "
+"signer                 (X.509 calls this `nonRepudiation`)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:519
+msgid "`'codeSigning'` -- key can be used to sign executable code"
+msgstr ""
+
+#: ../../source/sshpk_README.md:520
+msgid "`'keyEncryption'` -- key can be used to encrypt other keys"
+msgstr ""
+
+#: ../../source/sshpk_README.md:521
+msgid "`'encryption'` -- key can be used to encrypt data (only applies for RSA)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:522
+msgid ""
+"`'keyAgreement'` -- key can be used for key exchange protocols such as"
+"                     Diffie-Hellman"
+msgstr ""
+
+#: ../../source/sshpk_README.md:524
+msgid ""
+"`'ca'` -- key can be used to sign other certificates (is a Certificate"
+"           Authority)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:526
+msgid "`'crl'` -- key can be used to sign Certificate Revocation Lists (CRLs)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:528
+msgid "`Certificate#getExtension(nameOrOid)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:530
+msgid ""
+"Retrieves information about a certificate extension, if present, or "
+"returns `undefined` if not. The string argument `nameOrOid` should be "
+"either the OID (for X509 extensions) or the name (for OpenSSH extensions)"
+" of the extension to retrieve."
+msgstr ""
+
+#: ../../source/sshpk_README.md:535
+msgid "The object returned will have the following properties:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:537
+msgid "`format` -- String, set to either `'x509'` or `'openssh'`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:538
+msgid "`name` or `oid` -- String, only one set based on value of `format`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:539
+msgid "`data` -- Buffer, the raw data inside the extension"
+msgstr ""
+
+#: ../../source/sshpk_README.md:541
+msgid "`Certificate#getExtensions()`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:543
+msgid ""
+"Returns an Array of all present certificate extensions, in the same "
+"manner and format as `getExtension()`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:546
+msgid "`Certificate#isExpired([when])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:548
+msgid ""
+"Tests whether the Certificate is currently expired (i.e. the `validFrom` "
+"and `validUntil` dates specify a range of time that does not include the "
+"current time)."
+msgstr ""
+
+#: ../../source/sshpk_README.md:554
+msgid ""
+"`when` -- optional Date, if specified, tests whether the Certificate was "
+"or           will be expired at the specified time instead of now"
+msgstr ""
+
+#: ../../source/sshpk_README.md:557 ../../source/sshpk_README.md:567
+#: ../../source/sshpk_README.md:579
+msgid "Returns a Boolean."
+msgstr ""
+
+#: ../../source/sshpk_README.md:559
+msgid "`Certificate#isSignedByKey(key)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:561
+msgid ""
+"Tests whether the Certificate was validly signed by the given (public) "
+"Key."
+msgstr ""
+
+#: ../../source/sshpk_README.md:565
+msgid "`key` -- a Key instance"
+msgstr ""
+
+#: ../../source/sshpk_README.md:569
+msgid "`Certificate#isSignedBy(certificate)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:571
+msgid ""
+"Tests whether this Certificate was validly signed by the subject of the "
+"given certificate. Also tests that the issuer Identity of this "
+"Certificate and the subject Identity of the other Certificate are "
+"equivalent."
+msgstr ""
+
+#: ../../source/sshpk_README.md:577
+msgid "`certificate` -- another Certificate instance"
+msgstr ""
+
+#: ../../source/sshpk_README.md:581
+msgid "`Certificate#fingerprint([hashAlgo])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:583
+msgid ""
+"Returns the X509-style fingerprint of the entire certificate (as a "
+"Fingerprint instance). This matches what a web-browser or similar would "
+"display as the certificate fingerprint and should not be confused with "
+"the fingerprint of the subject's public key."
+msgstr ""
+
+#: ../../source/sshpk_README.md:590
+msgid "`hashAlgo` -- an optional String, any hash function name"
+msgstr ""
+
+#: ../../source/sshpk_README.md:592
+msgid "`Certificate#toBuffer([format])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:594
+msgid "Serializes the Certificate to a Buffer and returns it."
+msgstr ""
+
+#: ../../source/sshpk_README.md:598
+msgid ""
+"`format` -- an optional String, output format, one of `'openssh'`, "
+"`'pem'` or             `'x509'`. Defaults to `'x509'`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:601
+msgid "Returns a Buffer."
+msgstr ""
+
+#: ../../source/sshpk_README.md:603
+msgid "`Certificate#toString([format])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:605
+msgid ""
+"`format` -- an optional String, output format, one of `'openssh'`, "
+"`'pem'` or             `'x509'`. Defaults to `'pem'`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:608
+msgid "Returns a String."
+msgstr ""
+
+#: ../../source/sshpk_README.md:610
+msgid "Certificate identities"
+msgstr ""
+
+#: ../../source/sshpk_README.md:612
+msgid "`identityForHost(hostname)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:614
+msgid "Constructs a host-type Identity for a given hostname."
+msgstr ""
+
+#: ../../source/sshpk_README.md:618
+msgid "`hostname` -- the fully qualified DNS name of the host"
+msgstr ""
+
+#: ../../source/sshpk_README.md:620 ../../source/sshpk_README.md:630
+#: ../../source/sshpk_README.md:640 ../../source/sshpk_README.md:651
+#: ../../source/sshpk_README.md:662
+msgid "Returns an Identity instance."
+msgstr ""
+
+#: ../../source/sshpk_README.md:622
+msgid "`identityForUser(uid)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:624
+msgid "Constructs a user-type Identity for a given UID."
+msgstr ""
+
+#: ../../source/sshpk_README.md:628
+msgid "`uid` -- a String, user identifier (login name)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:632
+msgid "`identityForEmail(email)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:634
+msgid "Constructs an email-type Identity for a given email address."
+msgstr ""
+
+#: ../../source/sshpk_README.md:638
+msgid "`email` -- a String, email address"
+msgstr ""
+
+#: ../../source/sshpk_README.md:642
+msgid "`identityFromDN(dn)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:644
+msgid ""
+"Parses an LDAP-style DN string (e.g. `'CN=foo, C=US'`) and turns it into "
+"an Identity instance."
+msgstr ""
+
+#: ../../source/sshpk_README.md:649
+msgid "`dn` -- a String"
+msgstr ""
+
+#: ../../source/sshpk_README.md:653
+msgid "`identityFromArray(arr)`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:655
+msgid ""
+"Constructs an Identity from an array of DN components (see "
+"`Identity#toArray()` for the format)."
+msgstr ""
+
+#: ../../source/sshpk_README.md:660
+msgid "`arr` -- an Array of Objects, DN components with `name` and `value`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:665
+msgid "Supported attributes in DNs:"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "Attribute name"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "OID"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`cn`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.3`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`o`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.10`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`ou`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.11`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`l`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.7`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`s`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.8`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`c`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.6`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`sn`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.4`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`postalCode`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.17`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`serialNumber`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.5`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`street`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.9`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`x500UniqueIdentifier`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.45`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`role`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.72`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`telephoneNumber`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.20`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`description`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.13`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`dc`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`0.9.2342.19200300.100.1.25`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`uid`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`0.9.2342.19200300.100.1.1`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`mail`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`0.9.2342.19200300.100.1.3`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`title`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.12`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`gn`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.42`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`initials`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.43`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`pseudonym`"
+msgstr ""
+
+#: ../../source/sshpk_README.md
+msgid "`2.5.4.65`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:691
+msgid "`Identity#toString()`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:693
+msgid ""
+"Returns the identity as an LDAP-style DN string. e.g. `'CN=foo, O=bar "
+"corp, C=us'`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:696
+msgid "`Identity#type`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:698
+msgid "The type of identity. One of `'host'`, `'user'`, `'email'` or `'unknown'`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:700
+msgid "`Identity#hostname`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:701
+msgid "`Identity#uid`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:702
+msgid "`Identity#email`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:704
+msgid ""
+"Set when `type` is `'host'`, `'user'`, or `'email'`, respectively. "
+"Strings."
+msgstr ""
+
+#: ../../source/sshpk_README.md:706
+msgid "`Identity#cn`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:708
+msgid ""
+"The value of the first `CN=` in the DN, if any. It's probably better to "
+"use the `#get()` method instead of this property."
+msgstr ""
+
+#: ../../source/sshpk_README.md:711
+msgid "`Identity#get(name[, asArray])`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:713
+msgid ""
+"Returns the value of a named attribute in the Identity DN. If there is no"
+" attribute of the given name, returns `undefined`. If multiple components"
+" of the DN contain an attribute of this name, an exception is thrown "
+"unless the `asArray` argument is given as `true` -- then they will be "
+"returned as an Array in the same order they appear in the DN."
+msgstr ""
+
+#: ../../source/sshpk_README.md:721
+msgid "`name` -- a String"
+msgstr ""
+
+#: ../../source/sshpk_README.md:722
+msgid "`asArray` -- an optional Boolean"
+msgstr ""
+
+#: ../../source/sshpk_README.md:724
+msgid "`Identity#toArray()`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:726
+msgid "Returns the Identity as an Array of DN component objects. This looks like:"
+msgstr ""
+
+#: ../../source/sshpk_README.md:739
+msgid ""
+"Each object has a `name` and a `value` property. The returned objects may"
+" be safely modified."
+msgstr ""
+
+#: ../../source/sshpk_README.md:742
+msgid "Errors"
+msgstr ""
+
+#: ../../source/sshpk_README.md:745
+msgid "`InvalidAlgorithmError`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:747
+msgid ""
+"The specified algorithm is not valid, either because it is not supported,"
+" or because it was not included on a list of allowed algorithms."
+msgstr ""
+
+#: ../../source/sshpk_README.md:750
+msgid "Thrown by `Fingerprint.parse`, `Key#fingerprint`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:752 ../../source/sshpk_README.md:763
+#: ../../source/sshpk_README.md:772 ../../source/sshpk_README.md:783
+#: ../../source/sshpk_README.md:793
+msgid "Properties"
+msgstr ""
+
+#: ../../source/sshpk_README.md:754
+msgid "`algorithm` -- the algorithm that could not be validated"
+msgstr ""
+
+#: ../../source/sshpk_README.md:756
+msgid "`FingerprintFormatError`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:758
+msgid ""
+"The fingerprint string given could not be parsed as a supported "
+"fingerprint format, or the specified fingerprint format is invalid."
+msgstr ""
+
+#: ../../source/sshpk_README.md:761
+msgid "Thrown by `Fingerprint.parse`, `Fingerprint#toString`."
+msgstr ""
+
+#: ../../source/sshpk_README.md:765
+msgid "`fingerprint` -- if caused by a fingerprint, the string value given"
+msgstr ""
+
+#: ../../source/sshpk_README.md:766
+msgid ""
+"`format` -- if caused by an invalid format specification, the string "
+"value given"
+msgstr ""
+
+#: ../../source/sshpk_README.md:768
+msgid "`KeyParseError`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:770
+msgid "The key data given could not be parsed as a valid key."
+msgstr ""
+
+#: ../../source/sshpk_README.md:774 ../../source/sshpk_README.md:785
+msgid "`keyName` -- `filename` that was given to `parseKey`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:775
+msgid "`format` -- the `format` that was trying to parse the key (see `parseKey`)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:776 ../../source/sshpk_README.md:798
+msgid "`innerErr` -- the inner Error thrown by the format parser"
+msgstr ""
+
+#: ../../source/sshpk_README.md:778
+msgid "`KeyEncryptedError`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:780
+msgid ""
+"The key is encrypted with a symmetric key (ie, it is password protected)."
+" The parsing operation would succeed if it was given the `passphrase` "
+"option."
+msgstr ""
+
+#: ../../source/sshpk_README.md:786
+msgid ""
+"`format` -- the `format` that was trying to parse the key (currently can "
+"only             be `\"pem\"`)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:789
+msgid "`CertificateParseError`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:791
+msgid "The certificate data given could not be parsed as a valid certificate."
+msgstr ""
+
+#: ../../source/sshpk_README.md:795
+msgid "`certName` -- `filename` that was given to `parseCertificate`"
+msgstr ""
+
+#: ../../source/sshpk_README.md:796
+msgid ""
+"`format` -- the `format` that was trying to parse the key             "
+"(see `parseCertificate`)"
+msgstr ""
+
+#: ../../source/sshpk_README.md:800
+msgid "Friends of sshpk"
+msgstr ""
+
+#: ../../source/sshpk_README.md:803
+msgid ""
+"[`sshpk-agent`](https://github.com/arekinath/node-sshpk-agent) is a "
+"library for speaking the `ssh-agent` protocol from node.js, which uses "
+"`sshpk`"
+msgstr ""
+

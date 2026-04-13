@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres"
+" to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:8
+msgid ""
+"[v1.0.2](https://github.com/inspect-js/has-property-"
+"descriptors/compare/v1.0.1...v1.0.2) - 2024-02-12"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:10
+#: ../../source/has-property-descriptors_CHANGELOG.md:18
+#: ../../source/has-property-descriptors_CHANGELOG.md:29
+msgid "Commits"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:12
+msgid ""
+"[Refactor] use `es-define-property` [`f93a8c8`](https://github.com"
+"/inspect-js/has-property-"
+"descriptors/commit/f93a8c85eba70cbceab500f2619fb5cce73a1805)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:13
+msgid ""
+"[Dev Deps] update `aud`, `npmignore`, `tape` "
+"[`42b0c9d`](https://github.com/inspect-js/has-property-"
+"descriptors/commit/42b0c9d1c23e747755f0f2924923c418ea34a9ee)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:14
+msgid ""
+"[Deps] update `get-intrinsic` [`35e9b46`](https://github.com/inspect-js"
+"/has-property-"
+"descriptors/commit/35e9b46a7f14331bf0de98b644dd803676746037)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:16
+msgid ""
+"[v1.0.1](https://github.com/inspect-js/has-property-"
+"descriptors/compare/v1.0.0...v1.0.1) - 2023-10-20"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:20
+msgid ""
+"[meta] use `npmignore` to autogenerate an npmignore file "
+"[`5bbf4da`](https://github.com/inspect-js/has-property-"
+"descriptors/commit/5bbf4dae1b58950d87bb3af508bee7513e640868)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:21
+msgid ""
+"[actions] update rebase action to use reusable workflow "
+"[`3a5585b`](https://github.com/inspect-js/has-property-"
+"descriptors/commit/3a5585bf74988f71a8f59e67a07d594e62c51fd8)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:22
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config`, `aud`, `tape` "
+"[`e5c1212`](https://github.com/inspect-js/has-property-"
+"descriptors/commit/e5c1212048a8fda549794c47863724ca60b89cae)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:23
+msgid ""
+"[Dev Deps] update `aud`, `tape` [`e942917`](https://github.com/inspect-js"
+"/has-property-"
+"descriptors/commit/e942917b6c2f7c090d5623048989cf20d0834ebf)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:24
+msgid ""
+"[Deps] update `get-intrinsic` [`f4a44ec`](https://github.com/inspect-js"
+"/has-property-"
+"descriptors/commit/f4a44ec6d94146fa6c550d3c15c31a2062c83ef4)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:25
+msgid ""
+"[Deps] update `get-intrinsic` [`eeb275b`](https://github.com/inspect-js"
+"/has-property-"
+"descriptors/commit/eeb275b473e5d72ca843b61ca25cfcb06a5d4300)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:27
+msgid "v1.0.0 - 2022-04-14"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:31
+msgid ""
+"Initial implementation, tests [`303559f`](https://github.com/inspect-js"
+"/has-property-"
+"descriptors/commit/303559f2a72dfe7111573a1aec475ed4a184c35a)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:32
+msgid ""
+"Initial commit [`3a7ca2d`](https://github.com/inspect-js/has-property-"
+"descriptors/commit/3a7ca2dc49f1fff0279a28bb16265e7615e14749)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:33
+msgid ""
+"read me [`dd73dce`](https://github.com/inspect-js/has-property-"
+"descriptors/commit/dd73dce09d89d0f7a4a6e3b1e562a506f979a767)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:34
+msgid ""
+"npm init [`c1e6557`](https://github.com/inspect-js/has-property-"
+"descriptors/commit/c1e655779de632d68cb944c50da6b71bcb7b8c85)"
+msgstr ""
+
+#: ../../source/has-property-descriptors_CHANGELOG.md:35
+msgid ""
+"Only apps should have lockfiles [`e72f7c6`](https://github.com/inspect-js"
+"/has-property-"
+"descriptors/commit/e72f7c68de534b2d273ee665f8b18d4ecc7f70b0)"
+msgstr ""
+

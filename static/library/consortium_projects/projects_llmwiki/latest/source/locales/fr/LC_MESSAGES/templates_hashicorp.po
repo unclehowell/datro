@@ -1,0 +1,1404 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_hashicorp.md:1
+msgid "Design System: HashiCorp"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:7
+msgid "**Primary:** `Inter` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:18
+msgid ""
+"HashiCorp's website is enterprise infrastructure made tangible — a design"
+" system that must communicate the complexity of cloud infrastructure "
+"management while remaining approachable. The visual language splits "
+"between two modes: a clean white light-mode for informational sections "
+"and a dramatic dark-mode (`#15181e`, `#0d0e12`) for hero areas and "
+"product showcases, creating a day/night duality that mirrors the \"build "
+"in light, deploy in dark\" developer workflow."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:20
+msgid ""
+"The typography is anchored by a custom brand font (HashiCorp Sans, loaded"
+" as `__hashicorpSans_96f0ca`) that carries substantial weight — "
+"literally. Headings use 600–700 weights with tight line-heights "
+"(1.17–1.19), creating dense, authoritative text blocks that communicate "
+"enterprise confidence. The hero headline at 82px weight 600 with OpenType"
+" `\"kern\"` enabled is not decorative — it's infrastructure-grade "
+"typography."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:22
+msgid ""
+"What distinguishes HashiCorp is its multi-product color system. Each "
+"product in the portfolio has its own brand color — Terraform purple "
+"(`#7b42bc`), Vault yellow (`#ffcf25`), Waypoint teal (`#14c6cb`), Vagrant"
+" blue (`#1868f2`) — and these colors appear throughout as accent tokens "
+"via a CSS custom property system (`--mds-color-*`). This creates a design"
+" system within a design system: the parent brand is black-and-white with "
+"blue accents, while each child product injects its own chromatic "
+"identity."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:24
+msgid ""
+"The component system uses the `mds` (Markdown Design System) prefix, "
+"indicating a systematic, token-driven approach where colors, spacing, and"
+" states are all managed through CSS variables. Shadows are remarkably "
+"subtle — dual-layer micro-shadows using `rgba(97, 104, 117, 0.05)` that "
+"are nearly invisible but provide just enough depth to separate "
+"interactive surfaces from the background."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:26
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:27
+msgid ""
+"Dual-mode: clean white sections + dramatic dark (`#15181e`) hero/product "
+"areas"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:28
+msgid "Custom HashiCorp Sans font with 600–700 weights and `\"kern\"` feature"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:29
+msgid "Multi-product color system via `--mds-color-*` CSS custom properties"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:30
+msgid ""
+"Product brand colors: Terraform purple, Vault yellow, Waypoint teal, "
+"Vagrant blue"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:31
+msgid "Uppercase letter-spaced captions (13px, weight 600, 1.3px letter-spacing)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:32
+msgid ""
+"Micro-shadows: dual-layer at 0.05 opacity — depth through whisper, not "
+"shout"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:33
+msgid "Token-driven `mds` component system with semantic variable names"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:34
+msgid "Tight border radius: 2px–8px, nothing pill-shaped or circular"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:35
+msgid "System-ui fallback stack for secondary text"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:37
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:39
+msgid "Brand Primary"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:40
+msgid ""
+"**Black** (`#000000`): Primary brand color, text on light surfaces, "
+"`--mds-color-hcp-brand`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:41
+msgid "**Dark Charcoal** (`#15181e`): Dark mode backgrounds, hero sections"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:42
+msgid "**Near Black** (`#0d0e12`): Deepest dark mode surface, form inputs on dark"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:44
+msgid "Neutral Scale"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:45
+msgid "**Light Gray** (`#f1f2f3`): Light backgrounds, subtle surfaces"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:46
+msgid "**Mid Gray** (`#d5d7db`): Borders, button text on dark"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:47
+msgid "**Cool Gray** (`#b2b6bd`): Border accents (at 0.1–0.4 opacity)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:48
+msgid ""
+"**Dark Gray** (`#656a76`): Helper text, secondary labels, `--mds-form-"
+"helper-text-color`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:49
+msgid "**Charcoal** (`#3b3d45`): Secondary text on light, button borders"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:50
+msgid "**Near White** (`#efeff1`): Primary text on dark surfaces"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:52
+msgid "Product Brand Colors"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:53
+msgid ""
+"**Terraform Purple** (`#7b42bc`): `--mds-color-terraform-button-"
+"background`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:54
+msgid "**Vault Yellow** (`#ffcf25`): `--mds-color-vault-button-background`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:55
+msgid ""
+"**Waypoint Teal** (`#14c6cb`): `--mds-color-waypoint-button-background-"
+"focus`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:56
+msgid ""
+"**Waypoint Teal Hover** (`#12b6bb`): `--mds-color-waypoint-button-"
+"background-hover`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:57
+msgid "**Vagrant Blue** (`#1868f2`): `--mds-color-vagrant-brand`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:58
+msgid "**Purple Accent** (`#911ced`): `--mds-color-palette-purple-300`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:59
+msgid "**Visited Purple** (`#a737ff`): `--mds-color-foreground-action-visited`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:61
+msgid "Semantic Colors"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:62
+msgid "**Action Blue** (`#1060ff`): Primary action links on dark"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:63
+msgid "**Link Blue** (`#2264d6`): Primary links on light"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:64
+msgid "**Bright Blue** (`#2b89ff`): Active links, hover accent"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:65
+msgid "**Amber** (`#bb5a00`): `--mds-color-palette-amber-200`, warning states"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:66
+msgid ""
+"**Amber Light** (`#fbeabf`): `--mds-color-palette-amber-100`, warning "
+"backgrounds"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:67
+msgid ""
+"**Vault Faint Yellow** (`#fff9cf`): `--mds-color-vault-radar-gradient-"
+"faint-stop`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:68
+msgid "**Orange** (`#a9722e`): `--mds-color-unified-core-orange-6`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:69
+msgid "**Red** (`#731e25`): `--mds-color-unified-core-red-7`, error states"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:70
+msgid "**Navy** (`#101a59`): `--mds-color-unified-core-blue-7`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:72
+msgid "Shadows"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:73
+msgid ""
+"**Micro Shadow** (`rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, "
+"117, 0.05) 0px 2px 2px`): Default card/button elevation"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:74
+msgid ""
+"**Focus Outline**: `3px solid var(--mds-color-focus-action-external)` — "
+"systematic focus ring"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:76
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:78
+msgid "Font Families"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:79
+msgid ""
+"**Primary Brand**: `__hashicorpSans_96f0ca` (HashiCorp Sans), with "
+"fallback: `__hashicorpSans_Fallback_96f0ca`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:80
+msgid ""
+"**System UI**: `system-ui, -apple-system, BlinkMacSystemFont, Segoe UI, "
+"Helvetica, Arial`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:82
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "HashiCorp Sans"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "82px (5.13rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.17 (tight)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "`\"kern\"` enabled"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "52px (3.25rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.19 (tight)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Feature Heading"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "42px (2.63rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "-0.42px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Negative tracking"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "34px (2.13rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "600–700"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.18 (tight)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Feature blocks"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Card Title"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "26px (1.63rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Card and panel headings"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Small Title"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "19px (1.19rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.21 (tight)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Compact headings"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Body Emphasis"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "17px (1.06rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.18–1.35"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Bold body text"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "system-ui"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "400–600"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Hero descriptions"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.63–1.69 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Standard body text"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Nav Link"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "15px (0.94rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.60 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Navigation items"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Small Body"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.29–1.71"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Secondary content"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "13px (0.81rem)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.23–1.69"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Metadata, footer links"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Uppercase Label"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.69 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1.3px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "`text-transform: uppercase`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:100
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:101
+msgid ""
+"**Brand/System split**: HashiCorp Sans for headings and brand-critical "
+"text; system-ui for body, navigation, and functional text. The brand font"
+" carries the weight, system-ui carries the words."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:102
+msgid ""
+"**Kern always on**: All HashiCorp Sans text enables OpenType `\"kern\"` —"
+" letterfitting is non-negotiable."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:103
+msgid ""
+"**Tight headings**: Every heading uses 1.17–1.21 line-height, creating "
+"dense, stacked text blocks that feel infrastructural — solid, load-"
+"bearing."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:104
+msgid ""
+"**Relaxed body**: Body text uses 1.50–1.69 line-height (notably "
+"generous), creating comfortable reading rhythm beneath the dense "
+"headings."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:105
+msgid ""
+"**Uppercase labels as wayfinding**: 13px uppercase with 1.3px letter-"
+"spacing serves as the systematic category/section marker — always "
+"HashiCorp Sans weight 600."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:107
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:109
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:111
+msgid "**Primary Dark**"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:112
+msgid "Background: `#15181e`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:113
+msgid "Text: `#d5d7db`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:114
+msgid "Padding: 9px 9px 9px 15px (asymmetric, more left padding)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:115
+#: ../../source/templates_hashicorp.md:140
+#: ../../source/templates_hashicorp.md:151
+msgid "Radius: 5px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:116
+msgid "Border: `1px solid rgba(178, 182, 189, 0.4)`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:117
+msgid ""
+"Shadow: `rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) "
+"0px 2px 2px`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:118
+msgid "Focus: `3px solid var(--mds-color-focus-action-external)`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:119
+msgid "Hover: uses `--mds-color-surface-interactive` token"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:121
+msgid "**Secondary White**"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:122
+msgid "Background: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:123
+msgid "Text: `#3b3d45`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:124
+msgid "Padding: 8px 12px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:125
+msgid "Radius: 4px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:126
+msgid "Hover: `--mds-color-surface-interactive` + low-shadow elevation"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:127
+msgid "Focus: `3px solid transparent` outline"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:128
+msgid "Clean, minimal appearance"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:130
+msgid "**Product-Colored Buttons**"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:131
+msgid "Terraform: background `#7b42bc`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:132
+msgid "Vault: background `#ffcf25` (dark text)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:133
+msgid "Waypoint: background `#14c6cb`, hover `#12b6bb`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:134
+msgid ""
+"Each product button follows the same structural pattern but uses its "
+"brand color"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:136
+msgid "Badges / Pills"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:137
+msgid "Background: `#42225b` (deep purple)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:138
+#: ../../source/templates_hashicorp.md:148
+msgid "Text: `#efeff1`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:139
+msgid "Padding: 3px 7px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:141
+msgid "Border: `1px solid rgb(180, 87, 255)`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:142
+msgid "Font: 16px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:144
+msgid "Inputs"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:146
+msgid "**Text Input (Dark Mode)**"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:147
+#: ../../source/templates_hashicorp.md:155
+msgid "Background: `#0d0e12`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:149
+#: ../../source/templates_hashicorp.md:156
+msgid "Border: `1px solid rgb(97, 104, 117)`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:150
+msgid "Padding: 11px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:152
+msgid "Focus: `3px solid var(--mds-color-focus-action-external)` outline"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:154
+msgid "**Checkbox**"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:157
+msgid "Radius: 3px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:159
+msgid "Links"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:160
+msgid ""
+"**Action Blue on Light**: `#2264d6`, hover → blue-600 variable, underline"
+" on hover"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:161
+msgid "**Action Blue on Dark**: `#1060ff` or `#2b89ff`, underline on hover"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:162
+msgid ""
+"**White on Dark**: `#ffffff`, transparent underline → visible underline "
+"on hover"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:163
+msgid ""
+"**Neutral on Light**: `#3b3d45`, transparent underline → visible "
+"underline on hover"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:164
+msgid "**Light on Dark**: `#efeff1`, similar hover pattern"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:165
+msgid "All links use `var(--wpl-blue-600)` as hover color"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:167
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:168
+msgid "Light mode: white background, micro-shadow elevation"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:169
+msgid "Dark mode: `#15181e` or darker surfaces"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:170
+msgid "Radius: 8px for cards and containers"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:171
+msgid "Product showcase cards with gradient borders or accent lighting"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:173
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:174
+msgid "Clean horizontal nav with mega-menu dropdowns"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:175
+msgid "HashiCorp logo left-aligned"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:176
+msgid "system-ui 15px weight 500 for links"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:177
+msgid "Product categories organized by lifecycle management group"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:178
+msgid "\"Get started\" and \"Contact us\" CTAs in header"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:179
+msgid "Dark mode variant for hero sections"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:181
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:183
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:184
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:185
+msgid ""
+"Scale: 2px, 3px, 4px, 6px, 7px, 8px, 9px, 11px, 12px, 16px, 20px, 24px, "
+"32px, 40px, 48px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:187
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:188
+msgid "Max content width: ~1150px (xl breakpoint)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:189
+msgid "Full-width dark hero sections with contained content"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:190
+msgid "Card grids: 2–3 column layouts"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:191
+msgid "Generous horizontal padding at desktop scale"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:193
+#: ../../source/templates_hashicorp.md:251
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Mobile Small"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "<375px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Tight single column"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "375–480px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Standard mobile"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Small Tablet"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "480–600px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Minor adjustments"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "600–768px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "2-column grids begin"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Small Desktop"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "768–992px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Full nav visible"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "992–1120px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Standard layout"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "1120–1440px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Max-width content"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Ultra-wide"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid ">1440px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Centered, generous margins"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:205
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:206
+msgid ""
+"**Enterprise breathing room**: Generous vertical spacing between sections"
+" (48px–80px+) communicates stability and seriousness."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:207
+msgid ""
+"**Dense headings, spacious body**: Tight line-height headings sit above "
+"relaxed body text, creating visual \"weight at the top\" of each section."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:208
+msgid ""
+"**Dark as canvas**: Dark hero sections use extra vertical padding to let "
+"3D illustrations and gradients breathe."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:210
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:211
+msgid "Minimal (2px): Links, small inline elements"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:212
+msgid "Subtle (3px): Checkboxes, small inputs"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:213
+msgid "Standard (4px): Secondary buttons"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:214
+msgid "Comfortable (5px): Primary buttons, badges, inputs"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:215
+msgid "Card (8px): Cards, containers, images"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:217
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Default surfaces, text blocks"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Whisper (Level 1)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid ""
+"`rgba(97, 104, 117, 0.05) 0px 1px 1px, rgba(97, 104, 117, 0.05) 0px 2px "
+"2px`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Cards, buttons, interactive surfaces"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Focus (Level 2)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "`3px solid var(--mds-color-focus-action-external)` outline"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Focus rings — color-matched to context"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:225
+#, python-format
+msgid ""
+"**Shadow Philosophy**: HashiCorp uses arguably the subtlest shadow system"
+" in modern web design. The dual-layer shadows at 5% opacity are nearly "
+"invisible — they exist not to create visual depth but to signal "
+"interactivity. If you can see the shadow, it's too strong. This restraint"
+" communicates the enterprise value of stability — nothing floats, nothing"
+" is uncertain."
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:227
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:229
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:230
+msgid ""
+"Use HashiCorp Sans for headings and brand text, system-ui for body and UI"
+" text"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:231
+msgid "Enable `\"kern\"` on all HashiCorp Sans text"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:232
+msgid ""
+"Use product brand colors ONLY for their respective products (Terraform = "
+"purple, Vault = yellow, etc.)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:233
+msgid ""
+"Apply uppercase labels at 13px weight 600 with 1.3px letter-spacing for "
+"section markers"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:234
+msgid "Keep shadows at the \"whisper\" level (0.05 opacity dual-layer)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:235
+msgid "Use the `--mds-color-*` token system for consistent color application"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:236
+msgid ""
+"Maintain the tight-heading / relaxed-body rhythm (1.17–1.21 vs 1.50–1.69 "
+"line-heights)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:237
+msgid "Use `3px solid` focus outlines for accessibility"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:239
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:240
+msgid ""
+"Don't use product brand colors outside their product context (no "
+"Terraform purple on Vault content)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:241
+msgid "Don't increase shadow opacity above 0.1 — the whisper level is intentional"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:242
+msgid ""
+"Don't use pill-shaped buttons (>8px radius) — the sharp, minimal radius "
+"is structural"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:243
+msgid "Don't skip the `\"kern\"` feature on headings — the font requires it"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:244
+msgid ""
+"Don't use HashiCorp Sans for small body text — it's designed for 17px+ "
+"heading use"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:245
+msgid ""
+"Don't mix product colors in the same component — each product has one "
+"color"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:246
+msgid ""
+"Don't use pure black (`#000000`) for dark backgrounds — use `#15181e` or "
+"`#0d0e12`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:247
+msgid ""
+"Don't forget the asymmetric button padding — 9px 9px 9px 15px is "
+"intentional"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:249
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "<768px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Single column, hamburger nav, stacked CTAs"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "2-column grids, nav begins expanding"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "992–1150px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Full layout, mega-menu nav"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Large"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid ">1150px"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md
+msgid "Max-width centered, generous margins"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:259
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:260
+msgid "Hero: 82px → 52px → 42px heading sizes"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:261
+msgid "Navigation: mega-menu → hamburger"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:262
+msgid "Product cards: 3-column → 2-column → stacked"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:263
+msgid "Dark sections maintain full-width but compress padding"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:264
+msgid "Buttons: inline → full-width stacked on mobile"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:266
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:268
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:269
+msgid "Light bg: `#ffffff`, `#f1f2f3`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:270
+msgid "Dark bg: `#15181e`, `#0d0e12`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:271
+msgid "Text light: `#000000`, `#3b3d45`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:272
+msgid "Text dark: `#efeff1`, `#d5d7db`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:273
+msgid "Links: `#2264d6` (light), `#1060ff` (dark), `#2b89ff` (active)"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:274
+msgid "Helper text: `#656a76`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:275
+msgid "Borders: `rgba(178, 182, 189, 0.4)`, `rgb(97, 104, 117)`"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:276
+msgid "Focus: `3px solid` product-appropriate color"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:278
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:279
+msgid ""
+"\"Create a hero on dark background (#15181e). Headline at 82px HashiCorp "
+"Sans weight 600, line-height 1.17, kern enabled, white text. Sub-text at "
+"20px system-ui weight 400, line-height 1.50, #d5d7db text. Two buttons: "
+"primary dark (#15181e, 5px radius, 9px 15px padding) and secondary white "
+"(#ffffff, 4px radius, 8px 12px padding).\""
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:280
+msgid ""
+"\"Design a product card: white background, 8px radius, dual-layer shadow "
+"at rgba(97,104,117,0.05). Title at 26px HashiCorp Sans weight 700, body "
+"at 16px system-ui weight 400 line-height 1.63.\""
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:281
+msgid ""
+"\"Build an uppercase section label: 13px HashiCorp Sans weight 600, line-"
+"height 1.69, letter-spacing 1.3px, text-transform uppercase, #656a76 "
+"color.\""
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:282
+msgid ""
+"\"Create a product-specific CTA button: Terraform → #7b42bc background, "
+"Vault → #ffcf25 with dark text, Waypoint → #14c6cb. All: 5px radius, 500 "
+"weight text, 16px system-ui.\""
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:283
+msgid ""
+"\"Design a dark form: #0d0e12 input background, #efeff1 text, 1px solid "
+"rgb(97,104,117) border, 5px radius, 11px padding. Focus: 3px solid "
+"accent-color outline.\""
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:285
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:286
+msgid ""
+"Always start with the mode decision: light (white) for informational, "
+"dark (#15181e) for hero/product"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:287
+msgid "HashiCorp Sans for headings only (17px+), system-ui for everything else"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:288
+msgid "Shadows are at whisper level (0.05 opacity) — if visible, reduce"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:289
+msgid "Product colors are sacred — each product owns exactly one color"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:290
+msgid "Focus rings are always 3px solid, color-matched to product context"
+msgstr ""
+
+#: ../../source/templates_hashicorp.md:291
+msgid ""
+"Uppercase labels are the systematic wayfinding pattern — 13px, 600, 1.3px"
+" tracking"
+msgstr ""
+

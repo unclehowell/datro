@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/__fixtures___getTOC.md:1 ../../source/__fixtures___getTOC.md:3
+#: ../../source/__fixtures___getTOC.md:11
+msgid "foo"
+msgstr ""
+
+#: ../../source/__fixtures___getTOC.md:5 ../../source/__fixtures___getTOC.md:7
+msgid "foo 1"
+msgstr ""
+
+#: ../../source/__fixtures___getTOC.md:9
+msgid "foo 2"
+msgstr ""
+
+#: ../../source/__fixtures___getTOC.md:13
+msgid "4th level headings"
+msgstr ""
+
+#: ../../source/__fixtures___getTOC.md:15
+msgid "All 4th level headings should not be shown by default"
+msgstr ""
+
+#: ../../source/__fixtures___getTOC.md:17
+#: ../../source/__fixtures___getTOC.md:19
+#: ../../source/__fixtures___getTOC.md:21
+#: ../../source/__fixtures___getTOC.md:29
+#: ../../source/__fixtures___getTOC.md:31
+#: ../../source/__fixtures___getTOC.md:33
+#: ../../source/__fixtures___getTOC.md:35
+msgid "bar"
+msgstr ""
+
+#: ../../source/__fixtures___getTOC.md:23
+msgid ""
+"4th level heading should be ignored by default, but is should be always "
+"taken into account, when generating slugs"
+msgstr ""
+
+#: ../../source/__fixtures___getTOC.md:25
+#: ../../source/__fixtures___getTOC.md:27
+msgid "`bar`"
+msgstr ""
+

@@ -1,0 +1,293 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/emojis-list_CHANGELOG.md:1
+msgid "<a name=\"3.0.0\"></a>"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:2
+msgid "3.0.0 (2019-05-12)"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:4
+msgid ""
+"build: bye bower ([4acc7c0](https://github.com/kikobeats/emojis-"
+"list/commit/4acc7c0))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:5
+msgid ""
+"build: remove gulp and bower ([12c83f3](https://github.com/kikobeats"
+"/emojis-list/commit/12c83f3))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:6
+msgid ""
+"build: update meta ([de14b12](https://github.com/kikobeats/emojis-"
+"list/commit/de14b12))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:7
+msgid ""
+"moar emojis ([b4a153f](https://github.com/kikobeats/emojis-"
+"list/commit/b4a153f))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:8
+msgid ""
+"chore: drop support for Node.js 0.10 "
+"([20ed4f1](https://github.com/kikobeats/emojis-list/commit/20ed4f1))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:11
+msgid "BREAKING CHANGE"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:13
+msgid "This module no longer supports Node.js 0.10"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:16
+msgid "<a name=\"2.1.0\"></a>"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:17
+msgid "2.1.0 (2016-10-03)"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:19
+msgid ""
+"Fetch new emoji ([7dbe84d](https://github.com/kikobeats/emojis-"
+"list/commit/7dbe84d))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:23
+msgid "<a name=\"2.0.1\"></a>"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:24
+msgid "2.0.1 (2016-05-12)"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:26
+msgid ""
+"Fix typo ([3808909](https://github.com/kikobeats/emojis-"
+"list/commit/3808909))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:30
+msgid "<a name=\"2.0.0\"></a>"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:31
+msgid "2.0.0 (2016-05-12)"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:33
+msgid ""
+"Add update script ([f846dd6](https://github.com/kikobeats/emojis-"
+"list/commit/f846dd6))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:34
+msgid ""
+"Block dependencies in last version "
+"([1d9e0a5](https://github.com/kikobeats/emojis-list/commit/1d9e0a5))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:35
+msgid ""
+"Extract main file name ([9ffe7bb](https://github.com/kikobeats/emojis-"
+"list/commit/9ffe7bb))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:36
+msgid ""
+"Remove unnecessary files ([4c34729](https://github.com/kikobeats/emojis-"
+"list/commit/4c34729))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:37
+msgid ""
+"Update docs, special webpack setup is not necessary "
+"([c4aefe9](https://github.com/kikobeats/emojis-list/commit/c4aefe9))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:38
+msgid ""
+"Update example ([1e2ae03](https://github.com/kikobeats/emojis-"
+"list/commit/1e2ae03))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:39
+msgid ""
+"Update how to generate emojis array "
+"([b56bad9](https://github.com/kikobeats/emojis-list/commit/b56bad9))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:40
+msgid ""
+"Update main file based in the new interface "
+"([996fccb](https://github.com/kikobeats/emojis-list/commit/996fccb))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:44
+msgid "<a name=\"1.0.3\"></a>"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:45
+msgid "1.0.3 (2016-05-12)"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:47
+msgid ""
+"Add standard as linter ([5e939d6](https://github.com/kikobeats/emojis-"
+"list/commit/5e939d6))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:48
+msgid ""
+"Change interface ([16bc0c0](https://github.com/kikobeats/emojis-"
+"list/commit/16bc0c0))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:49
+msgid ""
+"Generate emoji file ([fbcf8e9](https://github.com/kikobeats/emojis-"
+"list/commit/fbcf8e9))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:50
+msgid ""
+"Remove unnecessary special doc ([2b12bec](https://github.com/kikobeats"
+"/emojis-list/commit/2b12bec))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:51
+msgid ""
+"chore(package): update browserify to version 13.0.1 "
+"([e2c98bf](https://github.com/kikobeats/emojis-list/commit/e2c98bf))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:52
+msgid ""
+"chore(package): update gulp-header to version 1.8.1 "
+"([28de793](https://github.com/kikobeats/emojis-list/commit/28de793))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:56
+msgid "<a name=\"1.0.2\"></a>"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:57
+msgid "1.0.2 (2016-05-05)"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:59
+msgid ""
+"fixed #2 ([9a6abe7](https://github.com/kikobeats/emojis-"
+"list/commit/9a6abe7)), closes [#2](https://github.com/kikobeats/emojis-"
+"list/issues/2)"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:60
+msgid ""
+"Fomar using standard ([5202f9f](https://github.com/kikobeats/emojis-"
+"list/commit/5202f9f))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:61
+msgid ""
+"Update badge ([53fad9b](https://github.com/kikobeats/emojis-"
+"list/commit/53fad9b))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:65
+msgid "<a name=\"1.0.1\"></a>"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:66
+msgid "1.0.1 (2016-04-13)"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:68
+msgid ""
+"lock versions ([4a5d82e](https://github.com/kikobeats/emojis-"
+"list/commit/4a5d82e))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:69
+msgid ""
+"setup devDependencies ([d1de0fc](https://github.com/kikobeats/emojis-"
+"list/commit/d1de0fc))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:70
+msgid ""
+"update bumped ([9941038](https://github.com/kikobeats/emojis-"
+"list/commit/9941038))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:71
+msgid ""
+"Update package.json ([6c14b74](https://github.com/kikobeats/emojis-"
+"list/commit/6c14b74))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:72
+msgid ""
+"Update README.md ([1d9beeb](https://github.com/kikobeats/emojis-"
+"list/commit/1d9beeb))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:73
+msgid ""
+"Update README.md ([73f215e](https://github.com/kikobeats/emojis-"
+"list/commit/73f215e))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:74
+msgid ""
+"Update tests ([a94f7dc](https://github.com/kikobeats/emojis-"
+"list/commit/a94f7dc))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:78
+msgid "<a name=\"1.0.0\"></a>"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:79
+msgid "1.0.0 (2015-05-12)"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:81
+msgid ""
+"first commit ([a65b79d](https://github.com/kikobeats/emojis-"
+"list/commit/a65b79d))"
+msgstr ""
+
+#: ../../source/emojis-list_CHANGELOG.md:82
+msgid ""
+"updated ([9f0564c](https://github.com/kikobeats/emojis-"
+"list/commit/9f0564c))"
+msgstr ""
+

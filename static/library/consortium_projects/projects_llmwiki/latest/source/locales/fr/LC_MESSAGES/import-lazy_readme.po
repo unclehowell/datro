@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/import-lazy_readme.md:1
+msgid ""
+"import-lazy [![Build Status](https://travis-ci.org/sindresorhus/import-"
+"lazy.svg?branch=master)](https://travis-ci.org/sindresorhus/import-lazy)"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:3
+msgid "Import a module lazily"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:5
+msgid ""
+"Note: Version 3 is exclusively `Proxy`-based and requires Node.js 6+. Use"
+" [version 2](https://github.com/sindresorhus/import-"
+"lazy/tree/ed6c2fac31aaf8a7d91a27295756383487f3965d) if you need Node.js "
+"<=5 support."
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:8
+msgid "Install"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:38
+msgid "Related"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:40
+msgid ""
+"[resolve-from](https://github.com/sindresorhus/resolve-from) - Resolve "
+"the path of a module from a given path"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:41
+msgid ""
+"[import-from](https://github.com/sindresorhus/import-from) - Import a "
+"module from a given path"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:42
+msgid ""
+"[resolve-pkg](https://github.com/sindresorhus/resolve-pkg) - Resolve the "
+"path of a package regardless of it having an entry point"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:43
+msgid ""
+"[lazy-value](https://github.com/sindresorhus/lazy-value) - Create a "
+"lazily evaluated value"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:44
+msgid ""
+"[define-lazy-prop](https://github.com/sindresorhus/define-lazy-prop) - "
+"Define a lazily evaluated property on an object"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:47
+msgid "License"
+msgstr ""
+
+#: ../../source/import-lazy_readme.md:49
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

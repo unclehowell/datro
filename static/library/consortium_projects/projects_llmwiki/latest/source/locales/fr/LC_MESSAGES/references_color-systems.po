@@ -1,0 +1,270 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_color-systems.md:1
+msgid "Color Systems"
+msgstr ""
+
+#: ../../source/references_color-systems.md:3
+msgid "Color Modes"
+msgstr ""
+
+#: ../../source/references_color-systems.md:5
+msgid "HSB (Recommended for Generative Art)"
+msgstr ""
+
+#: ../../source/references_color-systems.md:18
+msgid "HSB advantages:"
+msgstr ""
+
+#: ../../source/references_color-systems.md:19
+msgid "Rotate hue: `(baseHue + offset) % 360`"
+msgstr ""
+
+#: ../../source/references_color-systems.md:20
+msgid "Desaturate: reduce S"
+msgstr ""
+
+#: ../../source/references_color-systems.md:21
+msgid "Darken: reduce B"
+msgstr ""
+
+#: ../../source/references_color-systems.md:22
+msgid "Monochrome variations: fix H, vary S and B"
+msgstr ""
+
+#: ../../source/references_color-systems.md:23
+msgid "Complementary: `(hue + 180) % 360`"
+msgstr ""
+
+#: ../../source/references_color-systems.md:24
+msgid "Analogous: `hue +/- 30`"
+msgstr ""
+
+#: ../../source/references_color-systems.md:26
+msgid "HSL"
+msgstr ""
+
+#: ../../source/references_color-systems.md:34
+msgid "RGB"
+msgstr ""
+
+#: ../../source/references_color-systems.md:41
+msgid "Color Objects"
+msgstr ""
+
+#: ../../source/references_color-systems.md:65
+msgid "Color Interpolation"
+msgstr ""
+
+#: ../../source/references_color-systems.md:67
+msgid "lerpColor"
+msgstr ""
+
+#: ../../source/references_color-systems.md:76
+msgid "paletteLerp (p5.js 1.11+)"
+msgstr ""
+
+#: ../../source/references_color-systems.md:78
+msgid "Interpolate through multiple colors at once."
+msgstr ""
+
+#: ../../source/references_color-systems.md:90
+msgid "Manual Multi-Stop Gradient"
+msgstr ""
+
+#: ../../source/references_color-systems.md:103
+msgid "Gradient Rendering"
+msgstr ""
+
+#: ../../source/references_color-systems.md:105
+msgid "Linear Gradient"
+msgstr ""
+
+#: ../../source/references_color-systems.md:124
+msgid "Radial Gradient"
+msgstr ""
+
+#: ../../source/references_color-systems.md:137
+msgid "Noise-Based Gradient"
+msgstr ""
+
+#: ../../source/references_color-systems.md:157
+msgid "Procedural Palette Generation"
+msgstr ""
+
+#: ../../source/references_color-systems.md:159
+msgid "Complementary"
+msgstr ""
+
+#: ../../source/references_color-systems.md:167
+msgid "Analogous"
+msgstr ""
+
+#: ../../source/references_color-systems.md:179
+msgid "Triadic"
+msgstr ""
+
+#: ../../source/references_color-systems.md:187
+msgid "Split Complementary"
+msgstr ""
+
+#: ../../source/references_color-systems.md:195
+msgid "Tetradic (Rectangle)"
+msgstr ""
+
+#: ../../source/references_color-systems.md:203
+msgid "Monochromatic Variations"
+msgstr ""
+
+#: ../../source/references_color-systems.md:217
+msgid "Curated Palette Library"
+msgstr ""
+
+#: ../../source/references_color-systems.md:219
+msgid "Warm Palettes"
+msgstr ""
+
+#: ../../source/references_color-systems.md:228
+msgid "Cool Palettes"
+msgstr ""
+
+#: ../../source/references_color-systems.md:237
+msgid "Neutral Palettes"
+msgstr ""
+
+#: ../../source/references_color-systems.md:245
+msgid "Vivid Palettes"
+msgstr ""
+
+#: ../../source/references_color-systems.md:254
+msgid "Earth Tones"
+msgstr ""
+
+#: ../../source/references_color-systems.md:262
+msgid "Blend Modes"
+msgstr ""
+
+#: ../../source/references_color-systems.md:285
+msgid "Blend Mode Recipes"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Effect"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Mode"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Use case"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Additive glow"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "`ADD`"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Light beams, fire, particles"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Shadow overlay"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "`MULTIPLY`"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Texture, vignette"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Soft light mix"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "`SCREEN`"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Fog, mist, backlight"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "High contrast"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "`OVERLAY`"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Dramatic compositing"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Color negative"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "`DIFFERENCE`"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Glitch, psychedelic"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Layer compositing"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "`BLEND`"
+msgstr ""
+
+#: ../../source/references_color-systems.md
+msgid "Standard alpha layering"
+msgstr ""
+
+#: ../../source/references_color-systems.md:296
+msgid "Background Techniques"
+msgstr ""
+
+#: ../../source/references_color-systems.md:298
+msgid "Textured Background"
+msgstr ""
+
+#: ../../source/references_color-systems.md:317
+msgid "Vignette"
+msgstr ""
+
+#: ../../source/references_color-systems.md:339
+msgid "Film Grain"
+msgstr ""
+

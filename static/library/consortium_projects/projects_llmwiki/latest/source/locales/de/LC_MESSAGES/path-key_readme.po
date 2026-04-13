@@ -1,0 +1,94 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/path-key_readme.md:1
+msgid ""
+"path-key [![Build Status](https://travis-ci.org/sindresorhus/path-"
+"key.svg?branch=master)](https://travis-ci.org/sindresorhus/path-key)"
+msgstr ""
+
+#: ../../source/path-key_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/path-key_readme.md:3
+msgid ""
+"Get the [PATH](https://en.wikipedia.org/wiki/PATH_(variable)) environment"
+" variable key cross-platform"
+msgstr ""
+
+#: ../../source/path-key_readme.md:5
+msgid "It's usually `PATH`, but on Windows it can be any casing like `Path`..."
+msgstr ""
+
+#: ../../source/path-key_readme.md:8
+msgid "Install"
+msgstr ""
+
+#: ../../source/path-key_readme.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/path-key_readme.md:28
+msgid "API"
+msgstr ""
+
+#: ../../source/path-key_readme.md:30
+msgid "pathKey(options?)"
+msgstr ""
+
+#: ../../source/path-key_readme.md:32
+msgid "options"
+msgstr ""
+
+#: ../../source/path-key_readme.md:34
+msgid "Type: `object`"
+msgstr ""
+
+#: ../../source/path-key_readme.md:36
+msgid "env"
+msgstr ""
+
+#: ../../source/path-key_readme.md:38
+msgid ""
+"Type: `object`<br> Default: "
+"[`process.env`](https://nodejs.org/api/process.html#process_process_env)"
+msgstr ""
+
+#: ../../source/path-key_readme.md:41
+msgid "Use a custom environment variables object."
+msgstr ""
+
+#: ../../source/path-key_readme.md:43
+msgid "platform"
+msgstr ""
+
+#: ../../source/path-key_readme.md:45
+msgid ""
+"Type: `string`<br> Default: "
+"[`process.platform`](https://nodejs.org/api/process.html#process_process_platform)"
+msgstr ""
+
+#: ../../source/path-key_readme.md:48
+msgid "Get the PATH key for a specific platform."
+msgstr ""
+

@@ -1,0 +1,69 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "DATRO Interaction Log",
+  "type": "object",
+  "required": ["id", "timestamp", "type", "agent", "client"],
+  "properties": {
+    "id": {
+      "type": "string",
+      "format": "uuid"
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "type": {
+      "type": "string",
+      "enum": ["meeting", "change_request", "update", "escalation", "handover", "decision"]
+    },
+    "agent": {
+      "type": "string",
+      "description": "Agent identifier (e.g., 'kilo', 'hermes', 'claude')"
+    },
+    "client": {
+      "type": "string",
+      "const": "unclehowell"
+    },
+    "project_id": {
+      "type": ["string", "null"],
+      "format": "uuid"
+    },
+    "subject": {
+      "type": "string"
+    },
+    "notes": {
+      "type": "string",
+      "description": "Markdown-formatted notes"
+    },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["owner", "description"],
+        "properties": {
+          "id": {"type": "string", "format": "uuid"},
+          "owner": {"type": "string"},
+          "description": {"type": "string"},
+          "status": {"type": "string", "enum": ["pending", "in_progress", "completed"]},
+          "due": {"type": "string", "format": "date"},
+          "completed": {"type": "string", "format": "date-time"}
+        }
+      }
+    },
+    "decisions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "decision": {"type": "string"},
+          "made_by": {"type": "string"},
+          "rationale": {"type": "string"}
+        }
+      }
+    },
+    "next_steps": {
+      "type": "array",
+      "items": {"type": "string"}
+    }
+  }
+}

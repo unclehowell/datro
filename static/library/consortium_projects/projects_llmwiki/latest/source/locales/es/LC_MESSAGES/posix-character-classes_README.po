@@ -1,0 +1,368 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/posix-character-classes_README.md:1
+msgid ""
+"posix-character-classes [![NPM version](https://img.shields.io/npm/v"
+"/posix-character-classes.svg?style=flat)](https://www.npmjs.com/package"
+"/posix-character-classes) [![NPM monthly "
+"downloads](https://img.shields.io/npm/dm/posix-character-"
+"classes.svg?style=flat)](https://npmjs.org/package/posix-character-"
+"classes)  [![NPM total downloads](https://img.shields.io/npm/dt/posix-"
+"character-classes.svg?style=flat)](https://npmjs.org/package/posix-"
+"character-classes) [![Linux Build "
+"Status](https://img.shields.io/travis/jonschlinkert/posix-character-"
+"classes.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert"
+"/posix-character-classes)"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:3
+msgid "POSIX character classes for creating regular expressions."
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:13
+msgid "Install with [yarn](https://yarnpkg.com):"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:19
+msgid "Usage"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:27
+msgid "POSIX Character classes"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:29
+msgid ""
+"The POSIX standard supports the following classes or categories of "
+"charactersh (note that classes must be defined within brackets)<sup class"
+"=\"footnote-ref\"><a href=\"#fn1\" id=\"fnref1\">[1]</a></sup>:"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "**POSIX class**"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "**Equivalent to**"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "**Matches**"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:alnum:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[A-Za-z0-9]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "digits, uppercase and lowercase letters"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:alpha:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[A-Za-z]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "upper- and lowercase letters"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:ascii:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[\\x00-\\x7F]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "ASCII characters"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:blank:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[ \\t]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "space and TAB characters only"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:cntrl:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[\\x00-\\x1F\\x7F]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "Control characters"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:digit:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[0-9]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "digits"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:graph:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[^[:cntrl:]]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "graphic characters (all characters which have graphic representation)"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:lower:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[a-z]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "lowercase letters"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:print:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[[:graph] ]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "graphic characters and space"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:punct:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "``[-!\"#$%&'()*+,./:;<=>?@[]^_`{"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "}~]``"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:space:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[ \\t\\n\\r\\f\\v]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid ""
+"all blank (whitespace) characters, including spaces, tabs, new lines, "
+"carriage returns, form feeds, and vertical tabs"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:upper:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[A-Z]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "uppercase letters"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:word:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[A-Za-z0-9_]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "word characters"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[:xdigit:]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "`[0-9A-Fa-f]`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md
+msgid "hexadecimal digits"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:48
+msgid "Examples"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:50
+msgid "`a[[:digit:]]b` matches `a0b`, `a1b`, ..., `a9b`."
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:51
+msgid "`a[:digit:]b` is invalid, character classes must be enclosed in brackets"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:52
+msgid "`[[:digit:]abc]` matches any digit, as well as `a`, `b`, and `c`."
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:53
+msgid ""
+"`[abc[:digit:]]` is the same as the previous, matching any digit, as well"
+" as `a`, `b`, and `c`"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:54
+msgid ""
+"`[^ABZ[:lower:]]` matches any character except lowercase letters, `A`, "
+"`B`, and `Z`."
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:56
+msgid "About"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:58
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:60
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:62
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:64
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:66
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:72
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:74
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:80
+msgid "Author"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:82
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:84
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:85
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:87
+msgid "License"
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:89
+msgid ""
+"Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/posix-character-classes_README.md:94
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.5.0, on "
+"April 20, 2017._"
+msgstr ""
+

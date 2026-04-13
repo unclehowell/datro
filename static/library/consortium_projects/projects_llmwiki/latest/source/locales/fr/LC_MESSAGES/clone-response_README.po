@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/clone-response_README.md:1
+msgid "clone-response"
+msgstr ""
+
+#: ../../source/clone-response_README.md:3
+msgid "Clone a Node.js HTTP response stream"
+msgstr ""
+
+#: ../../source/clone-response_README.md:5
+msgid ""
+"[![Build Status](https://travis-ci.org/lukechilds/clone-"
+"response.svg?branch=master)](https://travis-ci.org/lukechilds/clone-"
+"response) [![Coverage "
+"Status](https://coveralls.io/repos/github/lukechilds/clone-"
+"response/badge.svg?branch=master)](https://coveralls.io/github/lukechilds"
+"/clone-response?branch=master) [![npm](https://img.shields.io/npm/dm"
+"/clone-response.svg)](https://www.npmjs.com/package/clone-response) "
+"[![npm](https://img.shields.io/npm/v/clone-"
+"response.svg)](https://www.npmjs.com/package/clone-response)"
+msgstr ""
+
+#: ../../source/clone-response_README.md:5
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/clone-response_README.md:5
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/clone-response_README.md:5
+msgid "npm"
+msgstr ""
+
+#: ../../source/clone-response_README.md:10
+msgid ""
+"Returns a new stream and copies over all properties and methods from the "
+"original response giving you a complete duplicate."
+msgstr ""
+
+#: ../../source/clone-response_README.md:12
+msgid ""
+"This is useful in situations where you need to consume the response "
+"stream but also want to pass an unconsumed stream somewhere else to be "
+"consumed later."
+msgstr ""
+
+#: ../../source/clone-response_README.md:14
+msgid "Install"
+msgstr ""
+
+#: ../../source/clone-response_README.md:20
+msgid "Usage"
+msgstr ""
+
+#: ../../source/clone-response_README.md:38
+msgid ""
+"Please bear in mind that the process of cloning a stream consumes it. "
+"However, you can consume a stream multiple times in the same tick, "
+"therefore allowing you to create multiple clones. e.g:"
+msgstr ""
+
+#: ../../source/clone-response_README.md:48
+msgid "API"
+msgstr ""
+
+#: ../../source/clone-response_README.md:50
+msgid "cloneResponse(response)"
+msgstr ""
+
+#: ../../source/clone-response_README.md:52
+msgid "Returns a clone of the passed in response."
+msgstr ""
+
+#: ../../source/clone-response_README.md:54
+msgid "response"
+msgstr ""
+
+#: ../../source/clone-response_README.md:56
+msgid "Type: `stream`"
+msgstr ""
+
+#: ../../source/clone-response_README.md:58
+msgid ""
+"A [Node.js HTTP response "
+"stream](https://nodejs.org/api/http.html#http_class_http_incomingmessage)"
+" to clone."
+msgstr ""
+
+#: ../../source/clone-response_README.md:60
+msgid "License"
+msgstr ""
+
+#: ../../source/clone-response_README.md:62
+msgid "MIT © Luke Childs"
+msgstr ""
+

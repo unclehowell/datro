@@ -1,0 +1,50 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/util-deprecate_History.md:2
+msgid "1.0.2 / 2015-10-07"
+msgstr ""
+
+#: ../../source/util-deprecate_History.md:5
+msgid "use try/catch when checking `localStorage` (#3, @kumavis)"
+msgstr ""
+
+#: ../../source/util-deprecate_History.md:7
+msgid "1.0.1 / 2014-11-25"
+msgstr ""
+
+#: ../../source/util-deprecate_History.md:10
+msgid "browser: use `console.warn()` for deprecation calls"
+msgstr ""
+
+#: ../../source/util-deprecate_History.md:11
+msgid "browser: more jsdocs"
+msgstr ""
+
+#: ../../source/util-deprecate_History.md:13
+msgid "1.0.0 / 2014-04-30"
+msgstr ""
+
+#: ../../source/util-deprecate_History.md:16
+msgid "initial commit"
+msgstr ""
+

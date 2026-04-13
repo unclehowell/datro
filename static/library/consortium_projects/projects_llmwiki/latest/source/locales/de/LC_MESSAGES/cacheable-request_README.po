@@ -1,0 +1,373 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/cacheable-request_README.md:1
+msgid "cacheable-request"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:3
+msgid "Wrap native HTTP requests with RFC compliant cache support"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:5
+msgid ""
+"[![Build Status](https://travis-ci.org/lukechilds/cacheable-"
+"request.svg?branch=master)](https://travis-ci.org/lukechilds/cacheable-"
+"request) [![Coverage Status](https://coveralls.io/repos/github/lukechilds"
+"/cacheable-"
+"request/badge.svg?branch=master)](https://coveralls.io/github/lukechilds"
+"/cacheable-request?branch=master) [![npm](https://img.shields.io/npm/dm"
+"/cacheable-request.svg)](https://www.npmjs.com/package/cacheable-request)"
+" [![npm](https://img.shields.io/npm/v/cacheable-"
+"request.svg)](https://www.npmjs.com/package/cacheable-request)"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:5
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:5
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:5
+msgid "npm"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:10
+msgid ""
+"[RFC 7234](http://httpwg.org/specs/rfc7234.html) compliant HTTP caching "
+"for native Node.js HTTP/HTTPS requests. Caching works out of the box in "
+"memory or is easily pluggable with a wide range of storage adapters."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:12
+msgid ""
+"**Note:** This is a low level wrapper around the core HTTP modules, it's "
+"not a high level request library."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:14
+msgid "Features"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:16
+msgid "Only stores cacheable responses as defined by RFC 7234"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:17
+msgid "Fresh cache entries are served directly from cache"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:18
+msgid ""
+"Stale cache entries are revalidated with `If-None-Match`/`If-Modified-"
+"Since` headers"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:19
+msgid "304 responses from revalidation requests use cached body"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:20
+msgid "Updates `Age` header on cached responses"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:21
+msgid "Can completely bypass cache on a per request basis"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:22
+msgid "In memory cache by default"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:23
+msgid ""
+"Official support for Redis, MongoDB, SQLite, PostgreSQL and MySQL storage"
+" adapters"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:24
+msgid "Easily plug in your own or third-party storage adapters"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:25
+msgid ""
+"If DB connection fails, cache is automatically bypassed ([disabled by "
+"default](#optsautomaticfailover))"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:26
+msgid "Adds cache support to any existing HTTP code with minimal changes"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:27
+msgid ""
+"Uses [http-cache-semantics](https://github.com/pornel/http-cache-"
+"semantics) internally for HTTP RFC 7234 compliance"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:29
+msgid "Install"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:35
+msgid "Usage"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:56
+msgid "Storage Adapters"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:58
+msgid ""
+"`cacheable-request` uses [Keyv](https://github.com/lukechilds/keyv) to "
+"support a wide range of storage adapters."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:60
+msgid ""
+"For example, to use Redis as a cache backend, you just need to install "
+"the official Redis Keyv storage adapter:"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:66
+msgid "And then you can pass `CacheableRequest` your connection string:"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:72
+msgid ""
+"[View all official Keyv storage "
+"adapters.](https://github.com/lukechilds/keyv#official-storage-adapters)"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:74
+msgid ""
+"Keyv also supports anything that follows the Map API so it's easy to "
+"write your own storage adapter or use a third-party solution."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:76
+msgid "e.g The following are all valid storage adapters"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:89
+msgid ""
+"View the [Keyv docs](https://github.com/lukechilds/keyv) for more "
+"information on how to use storage adapters."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:91
+msgid "API"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:93
+msgid "new cacheableRequest(request, [storageAdapter])"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:95
+msgid "Returns the provided request function wrapped with cache support."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:97
+msgid "request"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:99
+#: ../../source/cacheable-request_README.md:147
+msgid "Type: `function`"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:101
+msgid ""
+"Request function to wrap with cache support. Should be "
+"[`http.request`](https://nodejs.org/api/http.html#http_http_request_options_callback)"
+" or a similar API compatible request function."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:103
+msgid "storageAdapter"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:105
+msgid "Type: `Keyv storage adapter`<br> Default: `new Map()`"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:108
+msgid ""
+"A [Keyv](https://github.com/lukechilds/keyv) storage adapter instance, or"
+" connection string if using with an official Keyv storage adapter."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:110
+msgid "Instance"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:112
+msgid "cacheableRequest(opts, [cb])"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:114
+msgid "Returns an event emitter."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:116
+msgid "opts"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:118
+msgid "Type: `object`, `string`"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:120
+msgid "Any of the default request functions options plus:"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:122
+msgid "opts.cache"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:124
+msgid "Type: `boolean`<br> Default: `true`"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:127
+msgid ""
+"If the cache should be used. Setting this to false will completely bypass"
+" the cache for the current request."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:129
+msgid "opts.strictTtl"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:131
+#: ../../source/cacheable-request_README.md:140
+msgid "Type: `boolean`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:134
+msgid ""
+"If set to `false`, after a cached resource's TTL expires it is kept in "
+"the cache and will be revalidated on the next request with `If-None-Match"
+"`/`If-Modified-Since` headers."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:136
+msgid ""
+"If set to `true` once a cached resource has expired it is deleted and "
+"will have to be re-requested."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:138
+msgid "opts.automaticFailover"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:143
+msgid ""
+"When set to `true`, if the DB connection fails we will automatically "
+"fallback to a network request. DB errors will still be emitted to notify "
+"you of the problem even though the request callback may succeed."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:145
+msgid "cb"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:149
+msgid "The callback function which will receive the response as an argument."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:151
+msgid ""
+"The response can be either a [Node.js HTTP response "
+"stream](https://nodejs.org/api/http.html#http_class_http_incomingmessage)"
+" or a [responselike object](https://github.com/lukechilds/responselike). "
+"The response will also have a `fromCache` property set with a boolean "
+"value."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:153
+msgid ".on('request', request)"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:155
+msgid "`request` event to get the request object of the request."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:157
+msgid ""
+"**Note:** This event will only fire if an HTTP request is actually made, "
+"not when a response is retrieved from cache. However, you should always "
+"handle the `request` event to end the request and handle any potential "
+"request errors."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:159
+msgid ".on('response', response)"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:161
+msgid ""
+"`response` event to get the response object from the HTTP request or "
+"cache."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:163
+msgid ".on('error', error)"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:165
+msgid "`error` event emitted in case of an error with the cache."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:167
+msgid ""
+"Errors emitted here will be an instance of "
+"`CacheableRequest.RequestError` or `CacheableRequest.CacheError`. You "
+"will only ever receive a `RequestError` if the request function throws "
+"(normally caused by invalid user input). Normal request errors should be "
+"handled inside the `request` event."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:169
+msgid ""
+"To properly handle all error scenarios you should use the following "
+"pattern:"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:186
+msgid ""
+"**Note:** Database connection errors are emitted here, however "
+"`cacheable-request` will attempt to re-request the resource and bypass "
+"the cache on a connection error. Therefore a database connection error "
+"doesn't necessarily mean the request won't be fulfilled."
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:188
+msgid "License"
+msgstr ""
+
+#: ../../source/cacheable-request_README.md:190
+msgid "MIT © Luke Childs"
+msgstr ""
+

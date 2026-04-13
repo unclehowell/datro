@@ -1,0 +1,357 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/whatwg-url_README.md:1
+msgid "whatwg-url"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:3
+msgid ""
+"whatwg-url is a full implementation of the WHATWG [URL "
+"Standard](https://url.spec.whatwg.org/). It can be used standalone, but "
+"it also exposes a lot of the internal algorithms that are useful for "
+"integrating a URL parser into a project like "
+"[jsdom](https://github.com/tmpvar/jsdom)."
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:5
+msgid "Specification conformance"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:7
+msgid ""
+"whatwg-url is currently up to date with the URL spec up to commit "
+"[7ae1c69](https://github.com/whatwg/url/commit/7ae1c691c96f0d82fafa24c33aa1e8df9ffbf2bc)."
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:9
+msgid ""
+"For `file:` URLs, whose [origin is left "
+"unspecified](https://url.spec.whatwg.org/#concept-url-origin), whatwg-url"
+" chooses to use a new opaque origin (which serializes to `\"null\"`)."
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:11
+msgid "API"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:13
+msgid "The `URL` and `URLSearchParams` classes"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:15
+msgid ""
+"The main API is provided by the [`URL`](https://url.spec.whatwg.org/#url-"
+"class) and [`URLSearchParams`](https://url.spec.whatwg.org/#interface-"
+"urlsearchparams) exports, which follows the spec's behavior in all ways "
+"(including e.g. `USVString` conversion). Most consumers of this library "
+"will want to use these."
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:17
+msgid "Low-level URL Standard API"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:19
+msgid ""
+"The following methods are exported for use by places like jsdom that need"
+" to implement things like "
+"[`HTMLHyperlinkElementUtils`](https://html.spec.whatwg.org/#htmlhyperlinkelementutils)."
+" They mostly operate on or return an \"internal URL\" or [\"URL "
+"record\"](https://url.spec.whatwg.org/#concept-url) type."
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:21
+#, python-brace-format
+msgid ""
+"[URL parser](https://url.spec.whatwg.org/#concept-url-parser): "
+"`parseURL(input, { baseURL, encodingOverride })`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:22
+#, python-brace-format
+msgid ""
+"[Basic URL parser](https://url.spec.whatwg.org/#concept-basic-url-"
+"parser): `basicURLParse(input, { baseURL, encodingOverride, url, "
+"stateOverride })`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:23
+msgid ""
+"[URL serializer](https://url.spec.whatwg.org/#concept-url-serializer): "
+"`serializeURL(urlRecord, excludeFragment)`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:24
+msgid ""
+"[Host serializer](https://url.spec.whatwg.org/#concept-host-serializer): "
+"`serializeHost(hostFromURLRecord)`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:25
+msgid ""
+"[Serialize an integer](https://url.spec.whatwg.org/#serialize-an-"
+"integer): `serializeInteger(number)`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:26
+msgid ""
+"[Origin](https://url.spec.whatwg.org/#concept-url-origin) "
+"[serializer](https://html.spec.whatwg.org/multipage/origin.html#ascii-"
+"serialisation-of-an-origin): `serializeURLOrigin(urlRecord)`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:27
+msgid ""
+"[Set the username](https://url.spec.whatwg.org/#set-the-username): "
+"`setTheUsername(urlRecord, usernameString)`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:28
+msgid ""
+"[Set the password](https://url.spec.whatwg.org/#set-the-password): "
+"`setThePassword(urlRecord, passwordString)`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:29
+msgid ""
+"[Cannot have a username/password/port](https://url.spec.whatwg.org"
+"/#cannot-have-a-username-password-port): "
+"`cannotHaveAUsernamePasswordPort(urlRecord)`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:30
+msgid ""
+"[Percent decode](https://url.spec.whatwg.org/#percent-decode): "
+"`percentDecode(buffer)`"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:32
+msgid "The `stateOverride` parameter is one of the following strings:"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:34
+msgid "[`\"scheme start\"`](https://url.spec.whatwg.org/#scheme-start-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:35
+msgid "[`\"scheme\"`](https://url.spec.whatwg.org/#scheme-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:36
+msgid "[`\"no scheme\"`](https://url.spec.whatwg.org/#no-scheme-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:37
+msgid ""
+"[`\"special relative or authority\"`](https://url.spec.whatwg.org"
+"/#special-relative-or-authority-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:38
+msgid ""
+"[`\"path or authority\"`](https://url.spec.whatwg.org/#path-or-authority-"
+"state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:39
+msgid "[`\"relative\"`](https://url.spec.whatwg.org/#relative-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:40
+msgid "[`\"relative slash\"`](https://url.spec.whatwg.org/#relative-slash-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:41
+msgid ""
+"[`\"special authority slashes\"`](https://url.spec.whatwg.org/#special-"
+"authority-slashes-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:42
+msgid ""
+"[`\"special authority ignore slashes\"`](https://url.spec.whatwg.org"
+"/#special-authority-ignore-slashes-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:43
+msgid "[`\"authority\"`](https://url.spec.whatwg.org/#authority-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:44
+msgid "[`\"host\"`](https://url.spec.whatwg.org/#host-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:45
+msgid "[`\"hostname\"`](https://url.spec.whatwg.org/#hostname-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:46
+msgid "[`\"port\"`](https://url.spec.whatwg.org/#port-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:47
+msgid "[`\"file\"`](https://url.spec.whatwg.org/#file-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:48
+msgid "[`\"file slash\"`](https://url.spec.whatwg.org/#file-slash-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:49
+msgid "[`\"file host\"`](https://url.spec.whatwg.org/#file-host-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:50
+msgid "[`\"path start\"`](https://url.spec.whatwg.org/#path-start-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:51
+msgid "[`\"path\"`](https://url.spec.whatwg.org/#path-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:52
+msgid ""
+"[`\"cannot-be-a-base-URL path\"`](https://url.spec.whatwg.org/#cannot-"
+"be-a-base-url-path-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:53
+msgid "[`\"query\"`](https://url.spec.whatwg.org/#query-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:54
+msgid "[`\"fragment\"`](https://url.spec.whatwg.org/#fragment-state)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:56
+msgid "The URL record type has the following API:"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:58
+msgid "[`scheme`](https://url.spec.whatwg.org/#concept-url-scheme)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:59
+msgid "[`username`](https://url.spec.whatwg.org/#concept-url-username)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:60
+msgid "[`password`](https://url.spec.whatwg.org/#concept-url-password)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:61
+msgid "[`host`](https://url.spec.whatwg.org/#concept-url-host)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:62
+msgid "[`port`](https://url.spec.whatwg.org/#concept-url-port)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:63
+msgid "[`path`](https://url.spec.whatwg.org/#concept-url-path) (as an array)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:64
+msgid "[`query`](https://url.spec.whatwg.org/#concept-url-query)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:65
+msgid "[`fragment`](https://url.spec.whatwg.org/#concept-url-fragment)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:66
+msgid ""
+"[`cannotBeABaseURL`](https://url.spec.whatwg.org/#url-cannot-be-a-base-"
+"url-flag) (as a boolean)"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:68
+msgid ""
+"These properties should be treated with care, as in general changing them"
+" will cause the URL record to be in an inconsistent state until the "
+"appropriate invocation of `basicURLParse` is used to fix it up. You can "
+"see examples of this in the URL Standard, where there are many step "
+"sequences like \"4. Set context object’s url’s fragment to the empty "
+"string. 5. Basic URL parse _input_ with context object’s url as _url_ and"
+" fragment state as _state override_.\" In between those two steps, a URL "
+"record is in an unusable state."
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:70
+msgid ""
+"The return value of \"failure\" in the spec is represented by `null`. "
+"That is, functions like `parseURL` and `basicURLParse` can return "
+"_either_ a URL record _or_ `null`."
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:72
+msgid "Development instructions"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:74
+msgid ""
+"First, install [Node.js](https://nodejs.org/). Then, fetch the "
+"dependencies of whatwg-url, by running from this directory:"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:78
+msgid "To run tests:"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:82
+msgid "To generate a coverage report:"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:86
+msgid "To build and run the live viewer:"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:91
+msgid "Serve the contents of the `live-viewer` directory using any web server."
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:93
+msgid "Supporting whatwg-url"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:95
+msgid ""
+"The jsdom project (including whatwg-url) is a community-driven project "
+"maintained by a team of "
+"[volunteers](https://github.com/orgs/jsdom/people). You could support us "
+"by:"
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:97
+msgid ""
+"[Getting professional support for whatwg-"
+"url](https://tidelift.com/subscription/pkg/npm-whatwg-url?utm_source=npm-"
+"whatwg-url&utm_medium=referral&utm_campaign=readme) as part of a Tidelift"
+" subscription. Tidelift helps making open source sustainable for us while"
+" giving teams assurances for maintenance, licensing, and security."
+msgstr ""
+
+#: ../../source/whatwg-url_README.md:98
+msgid "Contributing directly to the project."
+msgstr ""
+

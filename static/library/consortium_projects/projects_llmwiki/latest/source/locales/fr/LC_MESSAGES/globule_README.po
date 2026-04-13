@@ -1,0 +1,250 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/globule_README.md:1
+msgid ""
+"globule [![Build Status: Linux](https://travis-ci.org/cowboy/node-"
+"globule.svg?branch=master)](https://travis-ci.org/cowboy/node-globule) "
+"[![Build Status: "
+"Windows](https://ci.appveyor.com/api/projects/status/i9fnc38q952r9nc0/branch/master?svg=true)](https://ci.appveyor.com/project/gruntjs"
+"/node-globule/branch/master)"
+msgstr ""
+
+#: ../../source/globule_README.md:1
+msgid "Build Status: Linux"
+msgstr ""
+
+#: ../../source/globule_README.md:1
+msgid "Build Status: Windows"
+msgstr ""
+
+#: ../../source/globule_README.md:3
+msgid "An easy-to-use wildcard globbing library."
+msgstr ""
+
+#: ../../source/globule_README.md:5
+msgid "Getting Started"
+msgstr ""
+
+#: ../../source/globule_README.md:6
+msgid "Install the module with: `npm install globule`"
+msgstr ""
+
+#: ../../source/globule_README.md:13
+msgid "Documentation"
+msgstr ""
+
+#: ../../source/globule_README.md:15
+msgid "globule.find"
+msgstr ""
+
+#: ../../source/globule_README.md:16
+msgid ""
+"Returns a unique array of all file or directory paths that match the "
+"given globbing pattern(s). This method accepts either comma separated "
+"globbing patterns or an array of globbing patterns. Paths matching "
+"patterns that begin with `!` will be excluded from the returned array. "
+"Patterns are processed in order, so inclusion and exclusion order is "
+"significant. Patterns may be specified as function arguments or as a "
+"`src` property of the options object."
+msgstr ""
+
+#: ../../source/globule_README.md:23
+msgid ""
+"The `options` object supports all [glob][] library options, along with a "
+"few extras. These are the most commonly used:"
+msgstr ""
+
+#: ../../source/globule_README.md:25
+msgid ""
+"`src` This property may be used instead of specifying patterns as "
+"function arguments."
+msgstr ""
+
+#: ../../source/globule_README.md:26
+msgid ""
+"`filter` Either a valid [fs.Stats method "
+"name](http://nodejs.org/docs/latest/api/fs.html#fs_class_fs_stats) or a "
+"function that will be passed the matched `src` filepath and `options` "
+"object as arguments. This function should return a `Boolean` value."
+msgstr ""
+
+#: ../../source/globule_README.md:27
+msgid ""
+"`nonull` Retain globbing patterns in result set even if they fail to "
+"match files."
+msgstr ""
+
+#: ../../source/globule_README.md:28
+msgid ""
+"`matchBase` Patterns without slashes will match just the basename part. "
+"Eg. this makes `*.js` work like `**/*.js`."
+msgstr ""
+
+#: ../../source/globule_README.md:29
+msgid ""
+"`srcBase` Patterns will be matched relative to the specified path instead"
+" of the current working directory. This is a synonym for `cwd`."
+msgstr ""
+
+#: ../../source/globule_README.md:30
+msgid ""
+"`prefixBase` Any specified `srcBase` will be prefixed to all returned "
+"filepaths."
+msgstr ""
+
+#: ../../source/globule_README.md:34
+msgid "globule.match"
+msgstr ""
+
+#: ../../source/globule_README.md:35
+msgid ""
+"Match one or more globbing patterns against one or more file paths. "
+"Returns a uniqued array of all file paths that match any of the specified"
+" globbing patterns. Both the `patterns` and `filepaths` arguments can be "
+"a single string or array of strings. Paths matching patterns that begin "
+"with `!` will be excluded from the returned array. Patterns are processed"
+" in order, so inclusion and exclusion order is significant."
+msgstr ""
+
+#: ../../source/globule_README.md:41
+msgid "globule.isMatch"
+msgstr ""
+
+#: ../../source/globule_README.md:42
+msgid ""
+"This method contains the same signature and logic as the `globule.match` "
+"method, but returns `true` if any files were matched, otherwise `false`."
+msgstr ""
+
+#: ../../source/globule_README.md:48
+msgid "globule.mapping"
+msgstr ""
+
+#: ../../source/globule_README.md:49
+msgid ""
+"Given a set of source file paths, returns an array of src-dest file "
+"mapping objects. Both src and dest paths may be renamed, depending on the"
+" options specified. Patterns may be specified as function arguments or as"
+" a `src` property of the options object."
+msgstr ""
+
+#: ../../source/globule_README.md:56
+msgid ""
+"In addition to the options the `globule.find` method supports, the "
+"options object also supports these properties:"
+msgstr ""
+
+#: ../../source/globule_README.md:58
+msgid ""
+"`srcBase` The directory from which patterns are matched. Any string "
+"specified as `srcBase` is effectively stripped from the beginning of all "
+"matched paths."
+msgstr ""
+
+#: ../../source/globule_README.md:59
+msgid "`destBase` The specified path is prefixed to all `dest` filepaths."
+msgstr ""
+
+#: ../../source/globule_README.md:60
+msgid ""
+"`ext` Remove anything after (and including) the first `.` in the "
+"destination path, then append this value."
+msgstr ""
+
+#: ../../source/globule_README.md:61
+msgid ""
+"`extDot` Change the behavior of `ext`, `\"first\"` and `\"last\"` will "
+"remove anything after the first or last `.` in the destination filename, "
+"respectively. Defaults to `\"first\"`."
+msgstr ""
+
+#: ../../source/globule_README.md:62
+msgid ""
+"`flatten` Remove the path component from all matched src files. The src "
+"file path is still joined to the specified destBase."
+msgstr ""
+
+#: ../../source/globule_README.md:63
+msgid ""
+"`rename` If specified, this function will be responsible for returning "
+"the final `dest` filepath. By default, it flattens paths (if specified), "
+"changes extensions (if specified) and joins the matched path to the "
+"`destBase`."
+msgstr ""
+
+#: ../../source/globule_README.md:65
+msgid "globule.findMapping"
+msgstr ""
+
+#: ../../source/globule_README.md:66
+msgid ""
+"This method is a convenience wrapper around the `globule.find` and "
+"`globule.mapping` methods."
+msgstr ""
+
+#: ../../source/globule_README.md:73
+msgid "Examples"
+msgstr ""
+
+#: ../../source/globule_README.md:75
+msgid "Given the files `foo/a.js` and `foo/b.js`:"
+msgstr ""
+
+#: ../../source/globule_README.md:77
+msgid "srcBase and destBase"
+msgstr ""
+
+#: ../../source/globule_README.md:118
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/globule_README.md:119
+msgid ""
+"In lieu of a formal styleguide, take care to maintain the existing coding"
+" style. Add unit tests for any new or changed functionality. Lint and "
+"test your code using [Grunt](http://gruntjs.com/)."
+msgstr ""
+
+#: ../../source/globule_README.md:121
+msgid "Release History"
+msgstr ""
+
+#: ../../source/globule_README.md:122
+msgid ""
+"2018-05-29 - v1.2.1 - Update dependencies, lodash@4.17.10 to avoid errant"
+" security warnings.   2017-06-10 - v1.2.0 - Update dependencies, "
+"lodash@4.17.   2016-10-23 - v1.1.0 - Update dependencies, lodash@4.16, "
+"glob@7.1.   2016-04-14 - v1.0.0 - Update dependencies, lodash@4.9, "
+"glob@7.0, minimatch@3.0. Paths are unix-style with prefixBase enabled.   "
+"2014-01-07 - v0.2.0 - Updated dependencies. Added `src` option. Improved "
+"exclusion speed significantly.   2013-04-11 - v0.1.0 - Initial release."
+msgstr ""
+
+#: ../../source/globule_README.md:129
+msgid "License"
+msgstr ""
+
+#: ../../source/globule_README.md:130
+msgid "Copyright (c) 2018 \"Cowboy\" Ben Alman   Licensed under the MIT license."
+msgstr ""
+

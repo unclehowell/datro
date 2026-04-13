@@ -1,0 +1,906 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/manim-video_SKILL.md:7
+msgid "Manim Video Production Pipeline"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:9
+msgid "Creative Standard"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:11
+msgid ""
+"This is educational cinema. Every frame teaches. Every animation reveals "
+"structure."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:13
+msgid ""
+"**Before writing a single line of code**, articulate the narrative arc. "
+"What misconception does this correct? What is the \"aha moment\"? What "
+"visual story takes the viewer from confusion to understanding? The user's"
+" prompt is a starting point — interpret it with pedagogical ambition."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:15
+msgid ""
+"**Geometry before algebra.** Show the shape first, the equation second. "
+"Visual memory encodes faster than symbolic memory. When the viewer sees "
+"the geometric pattern before the formula, the equation feels earned."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:17
+msgid ""
+"**First-render excellence is non-negotiable.** The output must be "
+"visually clear and aesthetically cohesive without revision rounds. If "
+"something looks cluttered, poorly timed, or like \"AI-generated slides,\""
+" it is wrong."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:19
+msgid ""
+"**Opacity layering directs attention.** Never show everything at full "
+"brightness. Primary elements at 1.0, contextual elements at 0.4, "
+"structural elements (axes, grids) at 0.15. The brain processes visual "
+"salience in layers."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:21
+msgid ""
+"**Breathing room.** Every animation needs `self.wait()` after it. The "
+"viewer needs time to absorb what just appeared. Never rush from one "
+"animation to the next. A 2-second pause after a key reveal is never "
+"wasted."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:23
+msgid ""
+"**Cohesive visual language.** All scenes share a color palette, "
+"consistent typography sizing, matching animation speeds. A technically "
+"correct video where every scene uses random different colors is an "
+"aesthetic failure."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:25
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:27
+msgid ""
+"Run `scripts/setup.sh` to verify all dependencies. Requires: Python "
+"3.10+, Manim Community Edition (`pip install manim`), LaTeX (`texlive-"
+"full` on Linux, `mactex` on macOS), and ffmpeg."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:29
+msgid "Modes"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Mode"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Input"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Output"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Reference"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Concept explainer**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Topic/concept"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Animated explanation with geometric intuition"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/scene-planning.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Equation derivation**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Math expressions"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Step-by-step animated proof"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/equations.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Algorithm visualization**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Algorithm description"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Step-by-step execution with data structures"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/graphs-and-data.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Data story**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Data/metrics"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Animated charts, comparisons, counters"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Architecture diagram**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "System description"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Components building up with connections"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/mobjects.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Paper explainer**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Research paper"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Key findings and methods animated"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**3D visualization**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "3D concept"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Rotating surfaces, parametric curves, spatial geometry"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/camera-and-3d.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:41
+msgid "Stack"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:43
+msgid "Single Python script per project. No browser, no Node.js, no GPU required."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Layer"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Tool"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Purpose"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Core"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Manim Community Edition"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Scene rendering, animation engine"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Math"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "LaTeX (texlive/MiKTeX)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Equation rendering via `MathTex`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Video I/O"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "ffmpeg"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Scene stitching, format conversion, audio muxing"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "TTS"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "ElevenLabs / Qwen3-TTS (optional)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Narration voiceover"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:52
+msgid "Pipeline"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:58
+msgid ""
+"**PLAN** — Write `plan.md` with narrative arc, scene list, visual "
+"elements, color palette, voiceover script"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:59
+msgid ""
+"**CODE** — Write `script.py` with one class per scene, each independently"
+" renderable"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:60
+msgid ""
+"**RENDER** — `manim -ql script.py Scene1 Scene2 ...` for draft, `-qh` for"
+" production"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:61
+msgid "**STITCH** — ffmpeg concat of scene clips into `final.mp4`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:62
+msgid ""
+"**AUDIO** (optional) — Add voiceover and/or background music via ffmpeg. "
+"See `references/rendering.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:63
+msgid ""
+"**DELIVER** — Copy final video to Jellyfin library "
+"(`/var/lib/jellyfin/root/default/Videos/`) and trigger scan. See "
+"`references/rendering.md` for the delivery protocol."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:64
+msgid "**REVIEW** — Render preview stills, verify against plan, adjust"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:66
+msgid "Project Structure"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:78
+msgid "Creative Direction"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:80
+msgid "Color Palettes"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Palette"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Background"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Primary"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Secondary"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Accent"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Use case"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Classic 3B1B**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#1C1C1C`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#58C4DD` (BLUE)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#83C167` (GREEN)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#FFFF00` (YELLOW)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "General math/CS"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Warm academic**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#2D2B55`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#FF6B6B`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#FFD93D`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#6BCB77`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Approachable"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Neon tech**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#0A0A0A`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#00F5FF`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#FF00FF`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#39FF14`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Systems, architecture"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "**Monochrome**"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#1A1A2E`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#EAEAEA`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#888888`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`#FFFFFF`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Minimalist"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:89
+msgid "Animation Speed"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Context"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "run_time"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "self.wait() after"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Title/intro appear"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "1.5s"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "1.0s"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Key equation reveal"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "2.0s"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Transform/morph"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Supporting label"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "0.8s"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "0.5s"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "FadeOut cleanup"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "0.3s"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "\"Aha moment\" reveal"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "2.5s"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "3.0s"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:100
+msgid "Typography Scale"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Font size"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Usage"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Title"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "48"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Scene titles, opening text"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Heading"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "36"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Section headers within a scene"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "30"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Explanatory text"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Label"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "24"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Annotations, axis labels"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "20"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Subtitles, fine print"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:110
+msgid "Fonts"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:112
+msgid ""
+"**Use monospace fonts for all text.** Manim's Pango renderer produces "
+"broken kerning with proportional fonts at all sizes. See `references"
+"/visual-design.md` for full recommendations."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:122
+msgid "Minimum `font_size=18` for readability."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:124
+msgid "Per-Scene Variation"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:126
+msgid "Never use identical config for all scenes. For each scene:"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:127
+msgid "**Different dominant color** from the palette"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:128
+msgid "**Different layout** — don't always center everything"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:129
+msgid ""
+"**Different animation entry** — vary between Write, FadeIn, "
+"GrowFromCenter, Create"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:130
+msgid "**Different visual weight** — some scenes dense, others sparse"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:132
+msgid "Workflow"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:134
+msgid "Step 1: Plan (plan.md)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:136
+msgid ""
+"Before any code, write `plan.md`. See `references/scene-planning.md` for "
+"the comprehensive template."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:138
+msgid "Step 2: Code (script.py)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:140
+msgid "One class per scene. Every scene is independently renderable."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:161
+msgid "Key patterns:"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:162
+msgid ""
+"**Subtitles** on every animation: `self.add_subcaption(\"text\", "
+"duration=N)` or `subcaption=\"text\"` on `self.play()`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:163
+msgid "**Shared color constants** at file top for cross-scene consistency"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:164
+msgid "**`self.camera.background_color`** set in every scene"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:165
+msgid ""
+"**Clean exits** — FadeOut all mobjects at scene end: "
+"`self.play(FadeOut(Group(*self.mobjects)))`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:167
+msgid "Step 3: Render"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:174
+msgid "Step 4: Stitch"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:184
+msgid "Step 5: Review"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:190
+msgid "Critical Implementation Notes"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:192
+msgid "Raw Strings for LaTeX"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:199
+msgid "buff >= 0.5 for Edge Text"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:204
+msgid "FadeOut Before Replacing Text"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:209
+msgid "Never Animate Non-Added Mobjects"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:215
+msgid "Performance Targets"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Quality"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Resolution"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "FPS"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Speed"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`-ql` (draft)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "854x480"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "15"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "5-15s/scene"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`-qm` (medium)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "1280x720"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "15-60s/scene"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`-qh` (production)"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "1920x1080"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "60"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "30-120s/scene"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:223
+msgid "Always iterate at `-ql`. Only render `-qh` for final output."
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md:225
+msgid "References"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "File"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Contents"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/animations.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid ""
+"Core animations, rate functions, composition, `.animate` syntax, timing "
+"patterns"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Text, shapes, VGroup/Group, positioning, styling, custom mobjects"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/visual-design.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "12 design principles, opacity layering, layout templates, color palettes"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "LaTeX in Manim, TransformMatchingTex, derivation patterns"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Axes, plotting, BarChart, animated data, algorithm visualization"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "MovingCameraScene, ThreeDScene, 3D surfaces, camera control"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Narrative arcs, layout templates, scene transitions, planning template"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/rendering.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "CLI reference, quality presets, ffmpeg, voiceover workflow, GIF export"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/troubleshooting.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "LaTeX errors, animation errors, common mistakes, debugging"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/animation-design-thinking.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "When to animate vs show static, decomposition, pacing, narration sync"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/updaters-and-trackers.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "ValueTracker, add_updater, always_redraw, time-based updaters, patterns"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/paper-explainer.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid ""
+"Turning research papers into animations — workflow, templates, domain "
+"patterns"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/decorations.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid ""
+"SurroundingRectangle, Brace, arrows, DashedLine, Angle, annotation "
+"lifecycle"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "`references/production-quality.md`"
+msgstr ""
+
+#: ../../source/manim-video_SKILL.md
+msgid "Pre-code, pre-render, post-render checklists, spatial layout, color, tempo"
+msgstr ""
+

@@ -1,0 +1,235 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/query-string_readme.md:1
+msgid ""
+"query-string [![Build Status](https://travis-ci.org/sindresorhus/query-"
+"string.svg?branch=master)](https://travis-ci.org/sindresorhus/query-"
+"string)"
+msgstr ""
+
+#: ../../source/query-string_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/query-string_readme.md:3
+msgid ""
+"Parse and stringify URL [query "
+"strings](https://en.wikipedia.org/wiki/Query_string)"
+msgstr ""
+
+#: ../../source/query-string_readme.md:12
+msgid "Install"
+msgstr ""
+
+#: ../../source/query-string_readme.md:23
+msgid "Usage"
+msgstr ""
+
+#: ../../source/query-string_readme.md:55
+msgid "API"
+msgstr ""
+
+#: ../../source/query-string_readme.md:57
+msgid ".parse(*string*, *[options]*)"
+msgstr ""
+
+#: ../../source/query-string_readme.md:59
+msgid ""
+"Parse a query string into an object. Leading `?` or `#` are ignored, so "
+"you can pass `location.search` or `location.hash` directly."
+msgstr ""
+
+#: ../../source/query-string_readme.md:61
+msgid ""
+"The returned object is created with "
+"[`Object.create(null)`](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Global_Objects/Object/create) and thus "
+"does not have a `prototype`."
+msgstr ""
+
+#: ../../source/query-string_readme.md:63
+msgid ""
+"URI components are decoded with [`decode-uri-"
+"component`](https://github.com/SamVerschueren/decode-uri-component)."
+msgstr ""
+
+#: ../../source/query-string_readme.md:65
+#: ../../source/query-string_readme.md:112
+msgid "arrayFormat"
+msgstr ""
+
+#: ../../source/query-string_readme.md:67
+#: ../../source/query-string_readme.md:114
+msgid "Type: `string`<br> Default: `'none'`"
+msgstr ""
+
+#: ../../source/query-string_readme.md:70
+#: ../../source/query-string_readme.md:117
+msgid ""
+"Supports both `index` for an indexed array representation or `bracket` "
+"for a *bracketed* array representation."
+msgstr ""
+
+#: ../../source/query-string_readme.md:72
+#: ../../source/query-string_readme.md:119
+msgid ""
+"`bracket`: stands for parsing correctly arrays with bracket "
+"representation on the query string, such as:"
+msgstr ""
+
+#: ../../source/query-string_readme.md:79
+#: ../../source/query-string_readme.md:126
+msgid "`index`: stands for parsing taking the index into account, such as:"
+msgstr ""
+
+#: ../../source/query-string_readme.md:86
+msgid ""
+"`none`: is the **default** option and removes any bracket representation,"
+" such as:"
+msgstr ""
+
+#: ../../source/query-string_readme.md:93
+msgid ".stringify(*object*, *[options]*)"
+msgstr ""
+
+#: ../../source/query-string_readme.md:95
+msgid "Stringify an object into a query string, sorting the keys."
+msgstr ""
+
+#: ../../source/query-string_readme.md:97
+msgid "strict"
+msgstr ""
+
+#: ../../source/query-string_readme.md:99
+#: ../../source/query-string_readme.md:107
+msgid "Type: `boolean`<br> Default: `true`"
+msgstr ""
+
+#: ../../source/query-string_readme.md:102
+msgid ""
+"Strictly encode URI components with [strict-uri-"
+"encode](https://github.com/kevva/strict-uri-encode). It uses "
+"[encodeURIComponent](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)"
+" if set to false. You probably [don't "
+"care](https://github.com/sindresorhus/query-string/issues/42) about this "
+"option."
+msgstr ""
+
+#: ../../source/query-string_readme.md:105
+msgid "encode"
+msgstr ""
+
+#: ../../source/query-string_readme.md:110
+msgid ""
+"[URL "
+"encode](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/encodeURIComponent)"
+" the keys and values."
+msgstr ""
+
+#: ../../source/query-string_readme.md:133
+msgid ""
+"`none`: is the __default__ option and removes any bracket representation,"
+" such as:"
+msgstr ""
+
+#: ../../source/query-string_readme.md:140
+msgid "sort"
+msgstr ""
+
+#: ../../source/query-string_readme.md:142
+msgid "Type: `Function` `boolean`"
+msgstr ""
+
+#: ../../source/query-string_readme.md:144
+msgid ""
+"Supports both `Function` as a custom sorting function or `false` to "
+"disable sorting."
+msgstr ""
+
+#: ../../source/query-string_readme.md:159
+msgid ""
+"If omitted, keys are sorted using `Array#sort`, which means, converting "
+"them to strings and comparing strings in Unicode code point order."
+msgstr ""
+
+#: ../../source/query-string_readme.md:161
+msgid ".extract(*string*)"
+msgstr ""
+
+#: ../../source/query-string_readme.md:163
+msgid "Extract a query string from a URL that can be passed into `.parse()`."
+msgstr ""
+
+#: ../../source/query-string_readme.md:165
+msgid ".parseUrl(*string*, *[options]*)"
+msgstr ""
+
+#: ../../source/query-string_readme.md:167
+msgid "Extract the URL and the query string as an object."
+msgstr ""
+
+#: ../../source/query-string_readme.md:169
+msgid "The `options` are the same as for `.parse()`."
+msgstr ""
+
+#: ../../source/query-string_readme.md:171
+msgid "Returns an object with a `url` and `query` property."
+msgstr ""
+
+#: ../../source/query-string_readme.md:179
+msgid "Nesting"
+msgstr ""
+
+#: ../../source/query-string_readme.md:181
+msgid ""
+"This module intentionally doesn't support nesting as it's not spec'd and "
+"varies between implementations, which causes a lot of [edge "
+"cases](https://github.com/visionmedia/node-querystring/issues)."
+msgstr ""
+
+#: ../../source/query-string_readme.md:183
+msgid "You're much better off just converting the object to a JSON string:"
+msgstr ""
+
+#: ../../source/query-string_readme.md:195
+msgid "However, there is support for multiple instances of the same key:"
+msgstr ""
+
+#: ../../source/query-string_readme.md:206
+msgid "Falsy values"
+msgstr ""
+
+#: ../../source/query-string_readme.md:208
+msgid ""
+"Sometimes you want to unset a key, or maybe just make it present without "
+"assigning a value to it. Here is how falsy values are stringified:"
+msgstr ""
+
+#: ../../source/query-string_readme.md:222
+msgid "License"
+msgstr ""
+
+#: ../../source/query-string_readme.md:224
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

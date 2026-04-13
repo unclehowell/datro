@@ -1,0 +1,374 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/fs.walk_README.md:1
+msgid "@nodelib/fs.walk"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:3
+msgid "A library for efficiently walking a directory recursively."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:5
+msgid ":bulb: Highlights"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:7
+msgid ""
+":moneybag: Returns useful information: `name`, `path`, `dirent` and "
+"`stats` (optional)."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:8
+msgid ""
+":rocket: On Node.js 10.10+ uses the mechanism without additional calls to"
+" determine the entry type for performance reasons. See [`old` and "
+"`modern` "
+"mode](https://github.com/nodelib/nodelib/blob/master/packages/fs/fs.scandir/README.md"
+"#old-and-modern-mode)."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:9
+msgid ":gear: Built-in directories/files and error filtering system."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:10
+msgid ":link: Can safely work with broken symbolic links."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:12
+msgid "Install"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:18
+msgid "Usage"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:26
+msgid "API"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:28
+msgid ".walk(path, [optionsOrSettings], callback)"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:30
+msgid ""
+"Reads the directory recursively and asynchronously. Requires a callback "
+"function."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:32
+msgid ":book: If you want to use the Promise API, use `util.promisify`."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:40
+msgid ".walkStream(path, [optionsOrSettings])"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:42
+msgid ""
+"Reads the directory recursively and asynchronously. [Readable "
+"Stream](https://nodejs.org/dist/latest-v12.x/docs/api/stream.html#stream_readable_streams)"
+" is used as a provider."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:50
+msgid ".walkSync(path, [optionsOrSettings])"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:52
+msgid ""
+"Reads the directory recursively and synchronously. Returns an array of "
+"entries."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:60
+msgid "path"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:62
+msgid "Required: `true`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:63
+msgid "Type: `string | Buffer | URL`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:65
+msgid "A path to a file. If a URL is provided, it must use the `file:` protocol."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:67
+msgid "optionsOrSettings"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:69
+msgid "Required: `false`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:70
+msgid "Type: `Options | Settings`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:71
+msgid "Default: An instance of `Settings` class"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:73
+msgid ""
+"An [`Options`](#options) object or an instance of [`Settings`](#settings)"
+" class."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:75
+msgid ""
+":book: When you pass a plain object, an instance of the `Settings` class "
+"will be created automatically. If you plan to call the method frequently,"
+" use a pre-created instance of the `Settings` class."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:77
+msgid "Settings([options])"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:79
+msgid "A class of full settings of the package."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:87
+msgid "Entry"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:89
+msgid "`name` — The name of the entry (`unknown.txt`)."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:90
+msgid ""
+"`path` — The path of the entry relative to call directory "
+"(`root/unknown.txt`)."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:91
+msgid "`dirent` — An instance of [`fs.Dirent`](./src/types/index.ts) class."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:92
+msgid "[`stats`] — An instance of `fs.Stats` class."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:94
+msgid "Options"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:96
+msgid "basePath"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:98 ../../source/fs.walk_README.md:182
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:99 ../../source/fs.walk_README.md:122
+#: ../../source/fs.walk_README.md:134 ../../source/fs.walk_README.md:146
+msgid "Default: `undefined`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:101
+msgid ""
+"By default, all paths are built relative to the root path. You can use "
+"this option to set custom root path."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:103
+msgid ""
+"In the example below we read the files from the `root` directory, but in "
+"the results the root path will be `custom`."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:110
+msgid "concurrency"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:112
+msgid "Type: `number`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:113
+msgid "Default: `Infinity`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:115
+msgid "The maximum number of concurrent calls to `fs.readdir`."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:117
+msgid ""
+":book: The higher the number, the higher performance and the load on the "
+"File System. If you want to read in quiet mode, set the value to `4 * "
+"os.cpus().length` (4 is default size of [thread pool work "
+"scheduling](http://docs.libuv.org/en/v1.x/threadpool.html#thread-pool-"
+"work-scheduling))."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:119
+msgid "deepFilter"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:121
+msgid "Type: [`DeepFilterFunction`](./src/settings.ts)"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:124
+msgid "A function that indicates whether the directory will be read deep or not."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:131
+msgid "entryFilter"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:133
+msgid "Type: [`EntryFilterFunction`](./src/settings.ts)"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:136
+msgid ""
+"A function that indicates whether the entry will be included to results "
+"or not."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:143
+msgid "errorFilter"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:145
+msgid "Type: [`ErrorFilterFunction`](./src/settings.ts)"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:148
+msgid ""
+"A function that allows you to skip errors that occur when reading "
+"directories."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:150
+msgid "For example, you can skip `ENOENT` errors if required:"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:157
+msgid "stats"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:159 ../../source/fs.walk_README.md:168
+#: ../../source/fs.walk_README.md:175
+msgid "Type: `boolean`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:160 ../../source/fs.walk_README.md:169
+msgid "Default: `false`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:162
+msgid "Adds an instance of `fs.Stats` class to the [`Entry`](#entry)."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:164
+msgid ""
+":book: Always use `fs.readdir` with additional `fs.lstat/fs.stat` calls "
+"to determine the entry type."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:166
+msgid "followSymbolicLinks"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:171
+msgid "Follow symbolic links or not. Call `fs.stat` on symbolic link if `true`."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:173
+msgid "`throwErrorOnBrokenSymbolicLink`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:176
+msgid "Default: `true`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:178
+msgid ""
+"Throw an error when symbolic link is broken if `true` or safely return "
+"`lstat` call if `false`."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:180
+msgid "`pathSegmentSeparator`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:183
+msgid "Default: `path.sep`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:185
+msgid ""
+"By default, this package uses the correct path separator for your OS "
+"(`\\` on Windows, `/` on Unix-like systems). But you can set this option "
+"to any separator character(s) that you want to use instead."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:187
+msgid "`fs`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:189
+msgid "Type: `FileSystemAdapter`"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:190
+msgid "Default: A default FS methods"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:192
+msgid ""
+"By default, the built-in Node.js module (`fs`) is used to work with the "
+"file system. You can replace any method with your own."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:209
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:211
+msgid ""
+"See the [Releases section of our GitHub "
+"project](https://github.com/nodelib/nodelib/releases) for changelog for "
+"each release version."
+msgstr ""
+
+#: ../../source/fs.walk_README.md:213
+msgid "License"
+msgstr ""
+
+#: ../../source/fs.walk_README.md:215
+msgid "This software is released under the terms of the MIT license."
+msgstr ""
+

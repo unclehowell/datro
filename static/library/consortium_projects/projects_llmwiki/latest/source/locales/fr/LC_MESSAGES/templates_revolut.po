@@ -1,0 +1,934 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_revolut.md:1
+msgid "Design System: Revolut"
+msgstr ""
+
+#: ../../source/templates_revolut.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_revolut.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_revolut.md:7
+msgid "**Primary:** `Inter` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_revolut.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_revolut.md:18
+msgid ""
+"Revolut's website is fintech confidence distilled into pixels — a design "
+"system that communicates \"your money is in capable hands\" through "
+"massive typography, generous whitespace, and a disciplined neutral "
+"palette. The visual language is built on Aeonik Pro, a geometric "
+"grotesque that creates billboard-scale headlines at 136px with weight 500"
+" and aggressive negative tracking (-2.72px). This isn't subtle branding; "
+"it's fintech at stadium scale."
+msgstr ""
+
+#: ../../source/templates_revolut.md:20
+msgid ""
+"The color system is built on a comprehensive `--rui-*` (Revolut UI) token"
+" architecture with semantic naming for every state: danger (`#e23b4a`), "
+"warning (`#ec7e00`), teal (`#00a87e`), blue (`#494fdf`), deep-pink "
+"(`#e61e49`), and more. But the marketing surface itself is remarkably "
+"restrained — near-black (`#191c1f`) and pure white (`#ffffff`) dominate, "
+"with the colorful semantic tokens reserved for the product interface, not"
+" the marketing page."
+msgstr ""
+
+#: ../../source/templates_revolut.md:22
+msgid ""
+"What distinguishes Revolut is its pill-everything button system. Every "
+"button uses 9999px radius — primary dark (`#191c1f`), secondary light "
+"(`#f4f4f4`), outlined (`transparent + 2px solid`), and ghost on dark "
+"(`rgba(244,244,244,0.1) + 2px solid`). The padding is generous (14px "
+"32px–34px), creating large, confident touch targets. Combined with Inter "
+"for body text at various weights and positive letter-spacing "
+"(0.16px–0.24px), the result is a design that feels both premium and "
+"accessible — banking for the modern era."
+msgstr ""
+
+#: ../../source/templates_revolut.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_revolut.md:25
+msgid "Aeonik Pro display at 136px weight 500 — billboard-scale fintech headlines"
+msgstr ""
+
+#: ../../source/templates_revolut.md:26
+msgid ""
+"Near-black (`#191c1f`) + white binary with comprehensive `--rui-*` "
+"semantic tokens"
+msgstr ""
+
+#: ../../source/templates_revolut.md:27
+msgid "Universal pill buttons (9999px radius) with generous padding (14px 32px)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:28
+msgid "Inter for body text with positive letter-spacing (0.16px–0.24px)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:29
+msgid ""
+"Rich semantic color system: blue, teal, pink, yellow, green, brown, "
+"danger, warning"
+msgstr ""
+
+#: ../../source/templates_revolut.md:30
+msgid "Zero shadows detected — depth through color contrast only"
+msgstr ""
+
+#: ../../source/templates_revolut.md:31
+msgid "Tight display line-heights (1.00) with relaxed body (1.50–1.56)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:33
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_revolut.md:35
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_revolut.md:36
+msgid ""
+"**Revolut Dark** (`#191c1f`): Primary dark surface, button background, "
+"near-black text"
+msgstr ""
+
+#: ../../source/templates_revolut.md:37
+msgid ""
+"**Pure White** (`#ffffff`): `--rui-color-action-label`, primary light "
+"surface"
+msgstr ""
+
+#: ../../source/templates_revolut.md:38
+msgid "**Light Surface** (`#f4f4f4`): Secondary button background, subtle surface"
+msgstr ""
+
+#: ../../source/templates_revolut.md:40
+msgid "Brand / Interactive"
+msgstr ""
+
+#: ../../source/templates_revolut.md:41
+msgid "**Revolut Blue** (`#494fdf`): `--rui-color-blue`, primary brand blue"
+msgstr ""
+
+#: ../../source/templates_revolut.md:42
+msgid ""
+"**Action Blue** (`#4f55f1`): `--rui-color-action-photo-header-text`, "
+"header accent"
+msgstr ""
+
+#: ../../source/templates_revolut.md:43
+msgid "**Blue Text** (`#376cd5`): `--website-color-blue-text`, link blue"
+msgstr ""
+
+#: ../../source/templates_revolut.md:45
+msgid "Semantic"
+msgstr ""
+
+#: ../../source/templates_revolut.md:46
+msgid "**Danger Red** (`#e23b4a`): `--rui-color-danger`, error/destructive"
+msgstr ""
+
+#: ../../source/templates_revolut.md:47
+msgid "**Deep Pink** (`#e61e49`): `--rui-color-deep-pink`, critical accent"
+msgstr ""
+
+#: ../../source/templates_revolut.md:48
+msgid "**Warning Orange** (`#ec7e00`): `--rui-color-warning`, warning states"
+msgstr ""
+
+#: ../../source/templates_revolut.md:49
+msgid "**Yellow** (`#b09000`): `--rui-color-yellow`, attention"
+msgstr ""
+
+#: ../../source/templates_revolut.md:50
+msgid "**Teal** (`#00a87e`): `--rui-color-teal`, success/positive"
+msgstr ""
+
+#: ../../source/templates_revolut.md:51
+msgid "**Light Green** (`#428619`): `--rui-color-light-green`, secondary success"
+msgstr ""
+
+#: ../../source/templates_revolut.md:52
+msgid "**Green Text** (`#006400`): `--website-color-green-text`, green text"
+msgstr ""
+
+#: ../../source/templates_revolut.md:53
+msgid "**Light Blue** (`#007bc2`): `--rui-color-light-blue`, informational"
+msgstr ""
+
+#: ../../source/templates_revolut.md:54
+msgid "**Brown** (`#936d62`): `--rui-color-brown`, warm neutral accent"
+msgstr ""
+
+#: ../../source/templates_revolut.md:55
+msgid "**Red Text** (`#8b0000`): `--website-color-red-text`, dark red text"
+msgstr ""
+
+#: ../../source/templates_revolut.md:57
+msgid "Neutral Scale"
+msgstr ""
+
+#: ../../source/templates_revolut.md:58
+msgid "**Mid Slate** (`#505a63`): Secondary text"
+msgstr ""
+
+#: ../../source/templates_revolut.md:59
+msgid "**Cool Gray** (`#8d969e`): Muted text, tertiary"
+msgstr ""
+
+#: ../../source/templates_revolut.md:60
+msgid "**Gray Tone** (`#c9c9cd`): `--rui-color-grey-tone-20`, borders/dividers"
+msgstr ""
+
+#: ../../source/templates_revolut.md:62
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_revolut.md:64
+msgid "Font Families"
+msgstr ""
+
+#: ../../source/templates_revolut.md:65
+msgid "**Display**: `Aeonik Pro` — geometric grotesque, no detected fallbacks"
+msgstr ""
+
+#: ../../source/templates_revolut.md:66
+msgid "**Body / UI**: `Inter` — standard system sans"
+msgstr ""
+
+#: ../../source/templates_revolut.md:67
+msgid "**Fallback**: `Arial` for specific button contexts"
+msgstr ""
+
+#: ../../source/templates_revolut.md:69
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Display Mega"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Aeonik Pro"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "136px (8.50rem)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "-2.72px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Stadium-scale hero"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "80px (5.00rem)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "-0.8px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Primary hero"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "48px (3.00rem)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1.21 (tight)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "-0.48px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Feature sections"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "40px (2.50rem)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "-0.4px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Sub-sections"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Card Title"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "32px (2.00rem)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1.19 (tight)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "-0.32px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Card headings"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "24px (1.50rem)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Light headings"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Nav / UI"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Navigation, buttons"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Inter"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1.56"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "-0.09px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Introductions"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "0.24px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Standard reading"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Body Semibold"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "0.16px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Emphasized body"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Body Bold Link"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Bold links"
+msgstr ""
+
+#: ../../source/templates_revolut.md:85
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_revolut.md:86
+msgid ""
+"**Weight 500 as display default**: Aeonik Pro uses medium (500) for ALL "
+"headings — no bold. This creates authority through size and tracking, not"
+" weight."
+msgstr ""
+
+#: ../../source/templates_revolut.md:87
+msgid ""
+"**Billboard tracking**: -2.72px at 136px is extremely compressed — text "
+"designed to be read at a glance, like airport signage."
+msgstr ""
+
+#: ../../source/templates_revolut.md:88
+msgid ""
+"**Positive tracking on body**: Inter uses +0.16px to +0.24px, creating "
+"airy, well-spaced reading text that contrasts with the compressed "
+"headings."
+msgstr ""
+
+#: ../../source/templates_revolut.md:90
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_revolut.md:92
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_revolut.md:94
+msgid "**Primary Dark Pill**"
+msgstr ""
+
+#: ../../source/templates_revolut.md:95
+msgid "Background: `#191c1f`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:96
+msgid "Text: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:97 ../../source/templates_revolut.md:113
+#: ../../source/templates_revolut.md:120
+msgid "Padding: 14px 32px"
+msgstr ""
+
+#: ../../source/templates_revolut.md:98
+msgid "Radius: 9999px (full pill)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:99 ../../source/templates_revolut.md:107
+msgid "Hover: opacity 0.85"
+msgstr ""
+
+#: ../../source/templates_revolut.md:100
+msgid "Focus: `0 0 0 0.125rem` ring"
+msgstr ""
+
+#: ../../source/templates_revolut.md:102
+msgid "**Secondary Light Pill**"
+msgstr ""
+
+#: ../../source/templates_revolut.md:103
+msgid "Background: `#f4f4f4`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:104
+msgid "Text: `#000000`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:105
+msgid "Padding: 14px 34px"
+msgstr ""
+
+#: ../../source/templates_revolut.md:106 ../../source/templates_revolut.md:114
+#: ../../source/templates_revolut.md:121
+msgid "Radius: 9999px"
+msgstr ""
+
+#: ../../source/templates_revolut.md:109
+msgid "**Outlined Pill**"
+msgstr ""
+
+#: ../../source/templates_revolut.md:110
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_revolut.md:111
+msgid "Text: `#191c1f`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:112
+msgid "Border: `2px solid #191c1f`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:116
+msgid "**Ghost on Dark**"
+msgstr ""
+
+#: ../../source/templates_revolut.md:117
+msgid "Background: `rgba(244, 244, 244, 0.1)`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:118
+msgid "Text: `#f4f4f4`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:119
+msgid "Border: `2px solid #f4f4f4`"
+msgstr ""
+
+#: ../../source/templates_revolut.md:123
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_revolut.md:124
+msgid "Radius: 12px (small), 20px (cards)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:125
+msgid "No shadows — flat surfaces with color contrast"
+msgstr ""
+
+#: ../../source/templates_revolut.md:126
+msgid "Dark and light section alternation"
+msgstr ""
+
+#: ../../source/templates_revolut.md:128
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_revolut.md:129
+msgid "Aeonik Pro 20px weight 500"
+msgstr ""
+
+#: ../../source/templates_revolut.md:130
+msgid "Clean header, hamburger toggle at 12px radius"
+msgstr ""
+
+#: ../../source/templates_revolut.md:131
+msgid "Pill CTAs right-aligned"
+msgstr ""
+
+#: ../../source/templates_revolut.md:133
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_revolut.md:135
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_revolut.md:136
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_revolut.md:137
+msgid ""
+"Scale: 4px, 6px, 8px, 14px, 16px, 20px, 24px, 32px, 40px, 48px, 80px, "
+"88px, 120px"
+msgstr ""
+
+#: ../../source/templates_revolut.md:138
+msgid "Large section spacing: 80px–120px"
+msgstr ""
+
+#: ../../source/templates_revolut.md:140
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_revolut.md:141
+msgid "Standard (12px): Navigation, small buttons"
+msgstr ""
+
+#: ../../source/templates_revolut.md:142
+msgid "Card (20px): Feature cards"
+msgstr ""
+
+#: ../../source/templates_revolut.md:143
+msgid "Pill (9999px): All buttons"
+msgstr ""
+
+#: ../../source/templates_revolut.md:145
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Everything — Revolut uses zero shadows"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Focus"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "`0 0 0 0.125rem` ring"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Accessibility focus"
+msgstr ""
+
+#: ../../source/templates_revolut.md:152
+msgid ""
+"**Shadow Philosophy**: Revolut uses ZERO shadows. Depth comes entirely "
+"from the dark/light section contrast and the generous whitespace between "
+"elements."
+msgstr ""
+
+#: ../../source/templates_revolut.md:154
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_revolut.md:156
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_revolut.md:157
+msgid "Use Aeonik Pro weight 500 for all display headings"
+msgstr ""
+
+#: ../../source/templates_revolut.md:158
+msgid "Apply 9999px radius to all buttons — pill shape is universal"
+msgstr ""
+
+#: ../../source/templates_revolut.md:159
+msgid "Use generous button padding (14px 32px)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:160
+msgid "Keep the palette to near-black + white for marketing surfaces"
+msgstr ""
+
+#: ../../source/templates_revolut.md:161
+msgid "Apply positive letter-spacing on Inter body text"
+msgstr ""
+
+#: ../../source/templates_revolut.md:163
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_revolut.md:164
+msgid "Don't use shadows — Revolut is flat by design"
+msgstr ""
+
+#: ../../source/templates_revolut.md:165
+msgid "Don't use bold (700) for Aeonik Pro headings — 500 is the weight"
+msgstr ""
+
+#: ../../source/templates_revolut.md:166
+msgid "Don't use small buttons — the generous padding is intentional"
+msgstr ""
+
+#: ../../source/templates_revolut.md:167
+msgid ""
+"Don't apply semantic colors to marketing surfaces — they're for the "
+"product"
+msgstr ""
+
+#: ../../source/templates_revolut.md:169
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_revolut.md:171
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Mobile Small"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "<400px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Compact, single column"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "400–720px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Standard mobile"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "720–1024px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "2-column layouts"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1024–1280px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Standard desktop"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Large"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "1280–1920px"
+msgstr ""
+
+#: ../../source/templates_revolut.md
+msgid "Full layout"
+msgstr ""
+
+#: ../../source/templates_revolut.md:180
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_revolut.md:182
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_revolut.md:183
+msgid "Dark: Revolut Dark (`#191c1f`)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:184
+msgid "Light: White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:185
+msgid "Surface: Light (`#f4f4f4`)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:186
+msgid "Blue: Revolut Blue (`#494fdf`)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:187
+msgid "Danger: Red (`#e23b4a`)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:188
+msgid "Success: Teal (`#00a87e`)"
+msgstr ""
+
+#: ../../source/templates_revolut.md:190
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_revolut.md:191
+msgid ""
+"\"Create a hero: white background. Headline at 136px Aeonik Pro weight "
+"500, line-height 1.00, letter-spacing -2.72px, #191c1f text. Dark pill "
+"CTA (#191c1f, 9999px, 14px 32px). Outlined pill secondary (transparent, "
+"2px solid #191c1f).\""
+msgstr ""
+
+#: ../../source/templates_revolut.md:192
+msgid ""
+"\"Build a pill button: #191c1f background, white text, 9999px radius, "
+"14px 32px padding, 20px Aeonik Pro weight 500. Hover: opacity 0.85.\""
+msgstr ""
+
+#: ../../source/templates_revolut.md:194
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_revolut.md:195
+msgid "Aeonik Pro 500 for headings — never bold"
+msgstr ""
+
+#: ../../source/templates_revolut.md:196
+msgid "All buttons are pills (9999px) with generous padding"
+msgstr ""
+
+#: ../../source/templates_revolut.md:197
+msgid "Zero shadows — flat is the Revolut identity"
+msgstr ""
+
+#: ../../source/templates_revolut.md:198
+msgid "Near-black + white for marketing, semantic colors for product"
+msgstr ""
+

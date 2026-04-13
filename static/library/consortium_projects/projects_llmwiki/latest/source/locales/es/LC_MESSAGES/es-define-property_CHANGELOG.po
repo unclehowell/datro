@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/es-define-property_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres"
+" to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:8
+msgid ""
+"[v1.0.1](https://github.com/ljharb/es-define-"
+"property/compare/v1.0.0...v1.0.1) - 2024-12-06"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:10
+#: ../../source/es-define-property_CHANGELOG.md:24
+msgid "Commits"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:12
+msgid ""
+"[types] use shared tsconfig [`954a663`](https://github.com/ljharb/es-"
+"define-property/commit/954a66360326e508a0e5daa4b07493d58f5e110e)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:13
+msgid ""
+"[actions] split out node 10-20, and 20+ "
+"[`3a8e84b`](https://github.com/ljharb/es-define-"
+"property/commit/3a8e84b23883f26ff37b3e82ff283834228e18c6)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:14
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config`, `@ljharb/tsconfig`, `@types"
+"/get-intrinsic`, `@types/tape`, `auto-changelog`, `gopd`, `tape` "
+"[`86ae27b`](https://github.com/ljharb/es-define-"
+"property/commit/86ae27bb8cc857b23885136fad9cbe965ae36612)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:15
+msgid ""
+"[Refactor] avoid using `get-intrinsic` "
+"[`02480c0`](https://github.com/ljharb/es-define-"
+"property/commit/02480c0353ef6118965282977c3864aff53d98b1)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:16
+msgid ""
+"[Tests] replace `aud` with `npm audit` "
+"[`f6093ff`](https://github.com/ljharb/es-define-"
+"property/commit/f6093ff74ab51c98015c2592cd393bd42478e773)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:17
+msgid ""
+"[Tests] configure testling [`7139e66`](https://github.com/ljharb/es-"
+"define-property/commit/7139e66959247a56086d9977359caef27c6849e7)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:18
+msgid ""
+"[Dev Deps] update `tape` [`b901b51`](https://github.com/ljharb/es-define-"
+"property/commit/b901b511a75e001a40ce1a59fef7d9ffcfc87482)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:19
+msgid ""
+"[Tests] fix types in tests [`469d269`](https://github.com/ljharb/es-"
+"define-property/commit/469d269fd141b1e773ec053a9fa35843493583e0)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:20
+msgid ""
+"[Dev Deps] add missing peer dep [`733acfb`](https://github.com/ljharb/es-"
+"define-property/commit/733acfb0c4c96edf337e470b89a25a5b3724c352)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:22
+msgid "v1.0.0 - 2024-02-12"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:26
+msgid ""
+"Initial implementation, tests, readme, types "
+"[`3e154e1`](https://github.com/ljharb/es-define-"
+"property/commit/3e154e11a2fee09127220f5e503bf2c0a31dd480)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:27
+msgid ""
+"Initial commit [`07d98de`](https://github.com/ljharb/es-define-"
+"property/commit/07d98de34a4dc31ff5e83a37c0c3f49e0d85cd50)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:28
+msgid ""
+"npm init [`c4eb634`](https://github.com/ljharb/es-define-"
+"property/commit/c4eb6348b0d3886aac36cef34ad2ee0665ea6f3e)"
+msgstr ""
+
+#: ../../source/es-define-property_CHANGELOG.md:29
+msgid ""
+"Only apps should have lockfiles [`7af86ec`](https://github.com/ljharb/es-"
+"define-property/commit/7af86ec1d311ec0b17fdfe616a25f64276903856)"
+msgstr ""
+

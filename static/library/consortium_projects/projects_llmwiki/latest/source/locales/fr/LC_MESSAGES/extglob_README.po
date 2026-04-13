@@ -1,0 +1,644 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/extglob_README.md:1
+msgid ""
+"extglob [![NPM "
+"version](https://img.shields.io/npm/v/extglob.svg?style=flat)](https://www.npmjs.com/package/extglob)"
+" [![NPM monthly "
+"downloads](https://img.shields.io/npm/dm/extglob.svg?style=flat)](https://npmjs.org/package/extglob)"
+" [![NPM total "
+"downloads](https://img.shields.io/npm/dt/extglob.svg?style=flat)](https://npmjs.org/package/extglob)"
+" [![Linux Build "
+"Status](https://img.shields.io/travis/micromatch/extglob.svg?style=flat&label=Travis)](https"
+"://travis-ci.org/micromatch/extglob) [![Windows Build "
+"Status](https://img.shields.io/appveyor/ci/micromatch/extglob.svg?style=flat&label=AppVeyor)](https://ci.appveyor.com/project/micromatch/extglob)"
+msgstr ""
+
+#: ../../source/extglob_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/extglob_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/extglob_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/extglob_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/extglob_README.md:1
+msgid "Windows Build Status"
+msgstr ""
+
+#: ../../source/extglob_README.md:3
+msgid ""
+"Extended glob support for JavaScript. Adds (almost) the expressive power "
+"of regular expressions to glob patterns."
+msgstr ""
+
+#: ../../source/extglob_README.md:5
+msgid ""
+"Please consider following this project's author, [Jon "
+"Schlinkert](https://github.com/jonschlinkert), and consider starring the "
+"project to show your :heart: and support."
+msgstr ""
+
+#: ../../source/extglob_README.md:7
+msgid "Install"
+msgstr ""
+
+#: ../../source/extglob_README.md:9
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/extglob_README.md:15
+msgid "Convert an extglob string to a regex-compatible string."
+msgstr ""
+
+#: ../../source/extglob_README.md:16
+msgid ""
+"More complete (and correct) support than "
+"[minimatch](https://github.com/isaacs/minimatch) (minimatch fails a large"
+" percentage of the extglob tests)"
+msgstr ""
+
+#: ../../source/extglob_README.md:17
+msgid "Handles [negation patterns](#extglob-patterns)"
+msgstr ""
+
+#: ../../source/extglob_README.md:18
+msgid "Handles [nested patterns](#extglob-patterns)"
+msgstr ""
+
+#: ../../source/extglob_README.md:19
+msgid ""
+"Organized code base, easy to maintain and make changes when edge cases "
+"arise"
+msgstr ""
+
+#: ../../source/extglob_README.md:20
+msgid ""
+"As you can see by the [benchmarks](#benchmarks), extglob doesn't pay with"
+" speed for it's completeness, accuracy and quality."
+msgstr ""
+
+#: ../../source/extglob_README.md:22
+msgid ""
+"**Heads up!**: This library only supports extglobs, to handle full glob "
+"patterns and other extended globbing features use "
+"[micromatch](https://github.com/jonschlinkert/micromatch) instead."
+msgstr ""
+
+#: ../../source/extglob_README.md:24
+msgid "Usage"
+msgstr ""
+
+#: ../../source/extglob_README.md:26
+msgid ""
+"The main export is a function that takes a string and options, and "
+"returns an object with the parsed AST and the compiled `.output`, which "
+"is a regex-compatible string that can be used for matching."
+msgstr ""
+
+#: ../../source/extglob_README.md:33
+msgid "Extglob cheatsheet"
+msgstr ""
+
+#: ../../source/extglob_README.md:35
+msgid ""
+"Extended globbing patterns can be defined as follows (as described by the"
+" [bash man page](https://www.gnu.org/software/bash/manual/html_node"
+"/Pattern-Matching.html)):"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "**pattern**"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "**regex equivalent**"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "**description**"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "`?(pattern-list)`"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "`(..."
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "...)?`"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "`*(pattern-list)`"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "...)*`"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "`+(pattern-list)`"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "...)+`"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "`@(pattern-list)`"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid ""
+"...)` <sup class=\"footnote-ref\"><a href=\"#fn1\" "
+"id=\"fnref1\">[1]</a></sup>"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "`!(pattern-list)`"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "N/A"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "Matches anything except one of the given pattern(s)"
+msgstr ""
+
+#: ../../source/extglob_README.md:45
+msgid "API"
+msgstr ""
+
+#: ../../source/extglob_README.md:47
+msgid "[extglob](index.js#L36)"
+msgstr ""
+
+#: ../../source/extglob_README.md:49 ../../source/extglob_README.md:151
+msgid ""
+"Convert the given `extglob` pattern into a regex-compatible string. "
+"Returns an object with the compiled result and the parsed AST."
+msgstr ""
+
+#: ../../source/extglob_README.md:51 ../../source/extglob_README.md:69
+#: ../../source/extglob_README.md:88 ../../source/extglob_README.md:110
+#: ../../source/extglob_README.md:131 ../../source/extglob_README.md:153
+#: ../../source/extglob_README.md:171 ../../source/extglob_README.md:194
+msgid "**Params**"
+msgstr ""
+
+#: ../../source/extglob_README.md:53
+#, python-brace-format
+msgid "`pattern` **{String}**"
+msgstr ""
+
+#: ../../source/extglob_README.md:54 ../../source/extglob_README.md:73
+#: ../../source/extglob_README.md:114 ../../source/extglob_README.md:156
+#: ../../source/extglob_README.md:197
+#, python-brace-format
+msgid "`options` **{Object}**"
+msgstr ""
+
+#: ../../source/extglob_README.md:55 ../../source/extglob_README.md:157
+#, python-brace-format
+msgid "`returns` **{String}**"
+msgstr ""
+
+#: ../../source/extglob_README.md:57 ../../source/extglob_README.md:76
+#: ../../source/extglob_README.md:95 ../../source/extglob_README.md:117
+#: ../../source/extglob_README.md:137 ../../source/extglob_README.md:159
+#: ../../source/extglob_README.md:178 ../../source/extglob_README.md:200
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/extglob_README.md:65
+msgid "[.match](index.js#L56)"
+msgstr ""
+
+#: ../../source/extglob_README.md:67
+msgid ""
+"Takes an array of strings and an extglob pattern and returns a new array "
+"that contains only the strings that match the pattern."
+msgstr ""
+
+#: ../../source/extglob_README.md:71
+#, python-brace-format
+msgid "`list` **{Array}**: Array of strings to match"
+msgstr ""
+
+#: ../../source/extglob_README.md:72 ../../source/extglob_README.md:91
+#: ../../source/extglob_README.md:133
+#, python-brace-format
+msgid "`pattern` **{String}**: Extglob pattern"
+msgstr ""
+
+#: ../../source/extglob_README.md:74
+#, python-brace-format
+msgid "`returns` **{Array}**: Returns an array of matches"
+msgstr ""
+
+#: ../../source/extglob_README.md:84
+msgid "[.isMatch](index.js#L111)"
+msgstr ""
+
+#: ../../source/extglob_README.md:86
+msgid ""
+"Returns true if the specified `string` matches the given extglob "
+"`pattern`."
+msgstr ""
+
+#: ../../source/extglob_README.md:90 ../../source/extglob_README.md:174
+#, python-brace-format
+msgid "`string` **{String}**: String to match"
+msgstr ""
+
+#: ../../source/extglob_README.md:92 ../../source/extglob_README.md:134
+#, python-brace-format
+msgid "`options` **{String}**"
+msgstr ""
+
+#: ../../source/extglob_README.md:93 ../../source/extglob_README.md:135
+#, python-brace-format
+msgid "`returns` **{Boolean}**"
+msgstr ""
+
+#: ../../source/extglob_README.md:106
+msgid "[.contains](index.js#L150)"
+msgstr ""
+
+#: ../../source/extglob_README.md:108
+msgid ""
+"Returns true if the given `string` contains the given pattern. Similar to"
+" `.isMatch` but the pattern can match any part of the string."
+msgstr ""
+
+#: ../../source/extglob_README.md:112
+#, python-brace-format
+msgid "`str` **{String}**: The string to match."
+msgstr ""
+
+#: ../../source/extglob_README.md:113 ../../source/extglob_README.md:173
+#, python-brace-format
+msgid "`pattern` **{String}**: Glob pattern to use for matching."
+msgstr ""
+
+#: ../../source/extglob_README.md:115
+#, python-brace-format
+msgid ""
+"`returns` **{Boolean}**: Returns true if the patter matches any part of "
+"`str`."
+msgstr ""
+
+#: ../../source/extglob_README.md:127
+msgid "[.matcher](index.js#L184)"
+msgstr ""
+
+#: ../../source/extglob_README.md:129
+msgid ""
+"Takes an extglob pattern and returns a matcher function. The returned "
+"function takes the string to match as its only argument."
+msgstr ""
+
+#: ../../source/extglob_README.md:149
+msgid "[.create](index.js#L214)"
+msgstr ""
+
+#: ../../source/extglob_README.md:155
+#, python-brace-format
+msgid "`str` **{String}**"
+msgstr ""
+
+#: ../../source/extglob_README.md:167
+msgid "[.capture](index.js#L248)"
+msgstr ""
+
+#: ../../source/extglob_README.md:169
+msgid ""
+"Returns an array of matches captured by `pattern` in `string`, or `null` "
+"if the pattern did not match."
+msgstr ""
+
+#: ../../source/extglob_README.md:175
+#, python-brace-format
+msgid ""
+"`options` **{Object}**: See available [options](#options) for changing "
+"how matches are performed"
+msgstr ""
+
+#: ../../source/extglob_README.md:176
+#, python-brace-format
+msgid ""
+"`returns` **{Boolean}**: Returns an array of captures if the string "
+"matches the glob pattern, otherwise `null`."
+msgstr ""
+
+#: ../../source/extglob_README.md:190
+msgid "[.makeRe](index.js#L281)"
+msgstr ""
+
+#: ../../source/extglob_README.md:192
+msgid "Create a regular expression from the given `pattern` and `options`."
+msgstr ""
+
+#: ../../source/extglob_README.md:196
+#, python-brace-format
+msgid "`pattern` **{String}**: The pattern to convert to regex."
+msgstr ""
+
+#: ../../source/extglob_README.md:198
+#, python-brace-format
+msgid "`returns` **{RegExp}**"
+msgstr ""
+
+#: ../../source/extglob_README.md:209
+msgid "Options"
+msgstr ""
+
+#: ../../source/extglob_README.md:211
+msgid ""
+"Available options are based on the options from Bash (and the option "
+"names used in bash)."
+msgstr ""
+
+#: ../../source/extglob_README.md:213
+msgid "options.nullglob"
+msgstr ""
+
+#: ../../source/extglob_README.md:215 ../../source/extglob_README.md:227
+#: ../../source/extglob_README.md:235
+msgid "**Type**: `boolean`"
+msgstr ""
+
+#: ../../source/extglob_README.md:217 ../../source/extglob_README.md:229
+#: ../../source/extglob_README.md:237
+msgid "**Default**: `undefined`"
+msgstr ""
+
+#: ../../source/extglob_README.md:219
+msgid ""
+"When enabled, the pattern itself will be returned when no matches are "
+"found."
+msgstr ""
+
+#: ../../source/extglob_README.md:221
+msgid "options.nonull"
+msgstr ""
+
+#: ../../source/extglob_README.md:223
+msgid ""
+"Alias for [options.nullglob](#optionsnullglob), included for parity with "
+"minimatch."
+msgstr ""
+
+#: ../../source/extglob_README.md:225
+msgid "options.cache"
+msgstr ""
+
+#: ../../source/extglob_README.md:231
+msgid ""
+"Functions are memoized based on the given glob patterns and options. "
+"Disable memoization by setting `options.cache` to false."
+msgstr ""
+
+#: ../../source/extglob_README.md:233
+msgid "options.failglob"
+msgstr ""
+
+#: ../../source/extglob_README.md:239
+msgid "Throw an error is no matches are found."
+msgstr ""
+
+#: ../../source/extglob_README.md:241
+msgid "Benchmarks"
+msgstr ""
+
+#: ../../source/extglob_README.md:243
+msgid "Last run on December 21, 2017"
+msgstr ""
+
+#: ../../source/extglob_README.md:278
+msgid "Differences from Bash"
+msgstr ""
+
+#: ../../source/extglob_README.md:280
+msgid ""
+"This library has complete parity with Bash 4.3 with only a couple of "
+"minor differences."
+msgstr ""
+
+#: ../../source/extglob_README.md:282
+msgid ""
+"In some cases Bash returns true if the given string \"contains\" the "
+"pattern, whereas this library returns true if the string is an exact "
+"match for the pattern. You can relax this by setting `options.contains` "
+"to true."
+msgstr ""
+
+#: ../../source/extglob_README.md:283
+msgid ""
+"This library is more accurate than Bash and thus does not fail some of "
+"the tests that Bash 4.3 still lists as failing in their unit tests"
+msgstr ""
+
+#: ../../source/extglob_README.md:285
+msgid "About"
+msgstr ""
+
+#: ../../source/extglob_README.md:290
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/extglob_README.md:297
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/extglob_README.md:307
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/extglob_README.md:309
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/extglob_README.md:317
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/extglob_README.md:319
+msgid "You might also be interested in these projects:"
+msgstr ""
+
+#: ../../source/extglob_README.md:321
+msgid ""
+"[braces](https://www.npmjs.com/package/braces): Bash-like brace "
+"expansion, implemented in JavaScript. Safer than other brace expansion "
+"libs, with complete support… [more](https://github.com/micromatch/braces)"
+" | [homepage](https://github.com/micromatch/braces \"Bash-like brace "
+"expansion, implemented in JavaScript. Safer than other brace expansion "
+"libs, with complete support for the Bash 4.3 braces specification, "
+"without sacrificing speed.\")"
+msgstr ""
+
+#: ../../source/extglob_README.md:322
+msgid ""
+"[expand-brackets](https://www.npmjs.com/package/expand-brackets): Expand "
+"POSIX bracket expressions (character classes) in glob patterns. | "
+"[homepage](https://github.com/jonschlinkert/expand-brackets \"Expand "
+"POSIX bracket expressions (character classes) in glob patterns.\")"
+msgstr ""
+
+#: ../../source/extglob_README.md:323
+msgid ""
+"[expand-range](https://www.npmjs.com/package/expand-range): Fast, bash-"
+"like range expansion. Expand a range of numbers or letters, uppercase or "
+"lowercase. Used… [more](https://github.com/jonschlinkert/expand-range) | "
+"[homepage](https://github.com/jonschlinkert/expand-range \"Fast, bash-"
+"like range expansion. Expand a range of numbers or letters, uppercase or "
+"lowercase. Used by [micromatch].\")"
+msgstr ""
+
+#: ../../source/extglob_README.md:324
+msgid ""
+"[fill-range](https://www.npmjs.com/package/fill-range): Fill in a range "
+"of numbers or letters, optionally passing an increment or `step` to… "
+"[more](https://github.com/jonschlinkert/fill-range) | "
+"[homepage](https://github.com/jonschlinkert/fill-range \"Fill in a range "
+"of numbers or letters, optionally passing an increment or `step` to use, "
+"or create a regex-compatible range with `options.toRegex`\")"
+msgstr ""
+
+#: ../../source/extglob_README.md:325
+msgid ""
+"[micromatch](https://www.npmjs.com/package/micromatch): Glob matching for"
+" javascript/node.js. A drop-in replacement and faster alternative to "
+"minimatch and multimatch. | "
+"[homepage](https://github.com/micromatch/micromatch \"Glob matching for "
+"javascript/node.js. A drop-in replacement and faster alternative to "
+"minimatch and multimatch.\")"
+msgstr ""
+
+#: ../../source/extglob_README.md:327
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "**Contributor**"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "49"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "2"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "[isiahmeadows](https://github.com/isiahmeadows)"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "1"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "[doowb](https://github.com/doowb)"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "[devongovett](https://github.com/devongovett)"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "[mjbvz](https://github.com/mjbvz)"
+msgstr ""
+
+#: ../../source/extglob_README.md
+msgid "[shinnn](https://github.com/shinnn)"
+msgstr ""
+
+#: ../../source/extglob_README.md:338
+msgid "Author"
+msgstr ""
+
+#: ../../source/extglob_README.md:340
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/extglob_README.md:342
+msgid "[linkedin/in/jonschlinkert](https://linkedin.com/in/jonschlinkert)"
+msgstr ""
+
+#: ../../source/extglob_README.md:343
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/extglob_README.md:344
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/extglob_README.md:346
+msgid "License"
+msgstr ""
+
+#: ../../source/extglob_README.md:348
+msgid ""
+"Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/extglob_README.md:353
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on "
+"December 21, 2017._"
+msgstr ""
+

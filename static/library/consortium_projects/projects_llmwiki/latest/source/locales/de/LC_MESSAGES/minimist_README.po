@@ -1,0 +1,197 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/minimist_README.md:1
+msgid "minimist <sup>[![Version Badge][npm-version-svg]][package-url]</sup>"
+msgstr ""
+
+#: ../../source/minimist_README.md:1
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/minimist_README.md:3
+msgid ""
+"[![github actions][actions-image]][actions-url] [![coverage][codecov-"
+"image]][codecov-url] [![License][license-image]][license-url] "
+"[![Downloads][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/minimist_README.md:3
+msgid "github actions"
+msgstr ""
+
+#: ../../source/minimist_README.md:3
+msgid "coverage"
+msgstr ""
+
+#: ../../source/minimist_README.md:3
+msgid "License"
+msgstr ""
+
+#: ../../source/minimist_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/minimist_README.md:8
+msgid "[![npm badge][npm-badge-png]][package-url]"
+msgstr ""
+
+#: ../../source/minimist_README.md:8
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/minimist_README.md:10
+msgid "parse argument options"
+msgstr ""
+
+#: ../../source/minimist_README.md:12
+msgid ""
+"This module is the guts of optimist's argument parser without all the "
+"fanciful decoration."
+msgstr ""
+
+#: ../../source/minimist_README.md:15
+msgid "example"
+msgstr ""
+
+#: ../../source/minimist_README.md:41
+msgid "security"
+msgstr ""
+
+#: ../../source/minimist_README.md:43
+msgid ""
+"Previous versions had a prototype pollution bug that could cause "
+"privilege escalation in some circumstances when handling untrusted user "
+"input."
+msgstr ""
+
+#: ../../source/minimist_README.md:46
+msgid "Please use version 1.2.6 or later:"
+msgstr ""
+
+#: ../../source/minimist_README.md:48
+msgid "https://security.snyk.io/vuln/SNYK-JS-MINIMIST-2429795 (version <=1.2.5)"
+msgstr ""
+
+#: ../../source/minimist_README.md:49
+msgid "https://snyk.io/vuln/SNYK-JS-MINIMIST-559764 (version <=1.2.3)"
+msgstr ""
+
+#: ../../source/minimist_README.md:51
+msgid "methods"
+msgstr ""
+
+#: ../../source/minimist_README.md:57
+#, python-brace-format
+msgid "var argv = parseArgs(args, opts={})"
+msgstr ""
+
+#: ../../source/minimist_README.md:59
+msgid ""
+"Return an argument object `argv` populated with the array arguments from "
+"`args`."
+msgstr ""
+
+#: ../../source/minimist_README.md:61
+msgid ""
+"`argv._` contains all the arguments that didn't have an option associated"
+" with them."
+msgstr ""
+
+#: ../../source/minimist_README.md:64
+msgid ""
+"Numeric-looking arguments will be returned as numbers unless "
+"`opts.string` or `opts.boolean` is set for that argument name."
+msgstr ""
+
+#: ../../source/minimist_README.md:67
+msgid "Any arguments after `'--'` will not be parsed and will end up in `argv._`."
+msgstr ""
+
+#: ../../source/minimist_README.md:69
+msgid "options can be:"
+msgstr ""
+
+#: ../../source/minimist_README.md:71
+msgid ""
+"`opts.string` - a string or array of strings argument names to always "
+"treat as strings"
+msgstr ""
+
+#: ../../source/minimist_README.md:73
+msgid ""
+"`opts.boolean` - a boolean, string or array of strings to always treat as"
+" booleans. if `true` will treat all double hyphenated arguments without "
+"equal signs as boolean (e.g. affects `--foo`, not `-f` or `--foo=bar`)"
+msgstr ""
+
+#: ../../source/minimist_README.md:76
+msgid ""
+"`opts.alias` - an object mapping string names to strings or arrays of "
+"string argument names to use as aliases"
+msgstr ""
+
+#: ../../source/minimist_README.md:78
+msgid "`opts.default` - an object mapping string argument names to default values"
+msgstr ""
+
+#: ../../source/minimist_README.md:79
+msgid ""
+"`opts.stopEarly` - when true, populate `argv._` with everything after the"
+" first non-option"
+msgstr ""
+
+#: ../../source/minimist_README.md:81
+msgid ""
+"`opts['--']` - when true, populate `argv._` with everything before the "
+"`--` and `argv['--']` with everything after the `--`. Here's an example:"
+msgstr ""
+
+#: ../../source/minimist_README.md:92
+msgid ""
+"Note that with `opts['--']` set, parsing for arguments still stops after "
+"the `--`."
+msgstr ""
+
+#: ../../source/minimist_README.md:95
+msgid ""
+"`opts.unknown` - a function which is invoked with a command line "
+"parameter not defined in the `opts` configuration object. If the function"
+" returns `false`, the unknown option is not added to `argv`."
+msgstr ""
+
+#: ../../source/minimist_README.md:99
+msgid "install"
+msgstr ""
+
+#: ../../source/minimist_README.md:101
+msgid "With [npm](https://npmjs.org) do:"
+msgstr ""
+
+#: ../../source/minimist_README.md:107
+msgid "license"
+msgstr ""
+
+#: ../../source/minimist_README.md:109
+msgid "MIT"
+msgstr ""
+

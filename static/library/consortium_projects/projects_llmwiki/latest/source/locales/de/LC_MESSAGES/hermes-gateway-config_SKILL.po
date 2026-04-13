@@ -1,0 +1,412 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/hermes-gateway-config_SKILL.md:11
+msgid "Hermes Gateway Configuration"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:13
+msgid "Config File Hierarchy"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:15
+msgid ""
+"Hermes reads config from multiple files — **different components read "
+"different files**:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "File"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Read By"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Purpose"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "`~/.hermes/config.yaml`"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Gateway, agent core"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Platform configs, model settings, memory provider config"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "`~/.env`"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Gateway at startup"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "API keys and secrets (loaded internally by gateway)"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "`~/.hermes/gateway.env`"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Shell sessions (via bashrc source)"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Env vars available to ALL shell commands including opencode"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "`~/.hermes/honcho.json`"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Honcho plugin (via `from_global_config()`)"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Honcho API key and host config"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "`~/.hermes/honcho_api_key.env`"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Shell sessions + gateway wrapper (when sourced)"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid ""
+"Preferred place for `HONCHO_API_KEY` (avoid storing the key directly in "
+"`config.yaml`)"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:25
+msgid ""
+"CRITICAL: Shell commands (like opencode) source `~/.bashrc` which loads "
+"`gateway.env` (and may load `honcho_api_key.env` depending on your shell "
+"config), but NOT `~/.env`. The `.env` file is typically read by the "
+"gateway process itself."
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:27
+msgid ""
+"**Best practice for Honcho:** ensure the gateway startup wrapper (e.g. "
+"`~/.hermes/gateway-run.sh`) sources `~/.hermes/honcho_api_key.env` so "
+"`HONCHO_API_KEY` is present for the gateway process, and keep "
+"`honcho.api_key` out of `config.yaml`."
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:29
+msgid "Setting Up Messaging Platforms"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:31
+msgid "Telegram"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:33
+msgid "Verify the bot token is valid:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:43
+msgid "Add telegram to `~/.hermes/config.yaml`:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:52
+msgid "Set the token in both `.env` AND `gateway.env`:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:61
+msgid "Set allow-all or allowlist:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:70
+msgid ""
+"Common Error: \"Another local Hermes gateway is already using this "
+"Telegram bot token\""
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:72
+msgid ""
+"This is **NOT a 401 auth error or Telegram API failure**. It means "
+"multiple gateway processes are running and competing for the same token "
+"via a scoped lock on disk."
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:74
+msgid "How the Lock Mechanism Works"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:76
+msgid ""
+"Lock files live at `~/.local/state/hermes/gateway-locks/` with naming "
+"pattern:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:77
+#, python-brace-format
+msgid "`telegram-bot-token-{identity_hash}.lock` — one per unique bot token"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:78
+#, python-brace-format
+msgid "`whatsapp-session-{identity_hash}.lock` — one per unique session"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:80
+msgid ""
+"Each lock file stores the PID of the gateway that owns it. When a new "
+"gateway starts, it:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:81
+msgid "Checks if a lock file exists for this token"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:82
+msgid "If yes, tests if the PID is still alive via `os.kill(pid, 0)`"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:83
+msgid ""
+"If the PID is alive → blocks with \"Another gateway is already using this"
+" token\""
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:84
+msgid "If the PID is dead → removes stale lock and proceeds"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:86
+msgid "Multi-Token Architecture"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:88
+msgid ""
+"On this server, there are **5 agents** with **4 distinct Telegram "
+"tokens**:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Agent"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Token Owner"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "PID"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Status"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "cmd_agent1"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Unique bot"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "7514"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Connected"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "cmd_agent2"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "7511"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "cmd_agent3"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "7508"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "cmd_agent4"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "7512"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "**default**"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "Same as cmd_agent1"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "--"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md
+msgid "**LOCK CONFLICT**"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:97
+msgid ""
+"The default agent shares its token with one of the cmd agents, causing "
+"the lock conflict."
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:99
+msgid "Fix Options"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:101
+msgid ""
+"**Option A: Disable Telegram on default agent** (recommended when cmd "
+"agents cover Telegram)"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:110
+msgid "**Option B: Kill all and start fresh single gateway**"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:149
+msgid ""
+"**Option C: Assign unique token to default agent** (gives it its own "
+"Telegram bot) Get a new bot token from @BotFather, then update "
+"`~/.hermes/config.yaml`:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:159
+msgid "WhatsApp"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:161
+msgid ""
+"WhatsApp shows the same lock conflict if two gateways run. Same fix as "
+"above."
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:163
+msgid "Setting Up API Keys"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:165
+msgid "OpenAI (for opencode and agents)"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:167
+msgid "The key must be in `gateway.env` so shell sessions can see it:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:176
+msgid "After updating, new shell sessions will pick it up via bashrc sourcing."
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:178
+msgid "Honcho"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:180
+msgid "Three files must have matching keys:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:193
+msgid "After updating keys, the gateway must be restarted."
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:195
+msgid "Gateway Process Management"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:197
+msgid "Start"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:202
+msgid "Stop"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:209
+msgid "Check status"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:215
+msgid "Adding a New Platform to config.yaml"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:217
+msgid "When `config.yaml` is missing the `platforms` section entirely:"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:232
+msgid "Troubleshooting Checklist"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:234
+msgid ""
+"**\"No bot token configured\"**: Token missing from `config.yaml` "
+"platforms section"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:235
+msgid ""
+"**\"Another gateway already using this token\"**: Kill all gateway "
+"processes, start one"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:236
+msgid ""
+"**\"Port already in use\"**: Clear the port with `sudo fuser -k "
+"<port>/tcp`"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:237
+msgid ""
+"**API key not found**: Check which file the component actually reads (see"
+" hierarchy table)"
+msgstr ""
+
+#: ../../source/hermes-gateway-config_SKILL.md:238
+msgid ""
+"**Honcho initialization failed**: Check all 3 config files have the full "
+"(non-truncated) key"
+msgstr ""
+

@@ -1,0 +1,557 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_Client.md:1
+msgid "Class: Client"
+msgstr ""
+
+#: ../../source/api_Client.md:3
+msgid "Extends: `undici.Dispatcher`"
+msgstr ""
+
+#: ../../source/api_Client.md:5
+msgid ""
+"A basic HTTP/1.1 client, mapped on top a single TCP/TLS connection. "
+"Pipelining is disabled by default."
+msgstr ""
+
+#: ../../source/api_Client.md:7
+msgid "Requests are not guaranteed to be dispatched in order of invocation."
+msgstr ""
+
+#: ../../source/api_Client.md:9
+msgid "`new Client(url[, options])`"
+msgstr ""
+
+#: ../../source/api_Client.md:11
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/api_Client.md:13
+msgid ""
+"**url** `URL | string` - Should only include the **protocol, hostname, "
+"and port**."
+msgstr ""
+
+#: ../../source/api_Client.md:14
+msgid "**options** `ClientOptions` (optional)"
+msgstr ""
+
+#: ../../source/api_Client.md:16
+msgid "Returns: `Client`"
+msgstr ""
+
+#: ../../source/api_Client.md:18
+msgid "Parameter: `ClientOptions`"
+msgstr ""
+
+#: ../../source/api_Client.md:20
+msgid ""
+"**bodyTimeout** `number | null` (optional) - Default: `300e3` - The "
+"timeout after which a request will time out, in milliseconds. Monitors "
+"time between receiving body data. Use `0` to disable it entirely. "
+"Defaults to 300 seconds. Please note the `timeout` will be reset if you "
+"keep writing data to the socket everytime."
+msgstr ""
+
+#: ../../source/api_Client.md:21
+msgid ""
+"**headersTimeout** `number | null` (optional) - Default: `300e3` - The "
+"amount of time, in milliseconds, the parser will wait to receive the "
+"complete HTTP headers while not sending the request. Defaults to 300 "
+"seconds."
+msgstr ""
+
+#: ../../source/api_Client.md:22
+msgid ""
+"**keepAliveMaxTimeout** `number | null` (optional) - Default: `600e3` - "
+"The maximum allowed `keepAliveTimeout`, in milliseconds, when overridden "
+"by *keep-alive* hints from the server. Defaults to 10 minutes."
+msgstr ""
+
+#: ../../source/api_Client.md:23
+msgid ""
+"**keepAliveTimeout** `number | null` (optional) - Default: `4e3` - The "
+"timeout, in milliseconds, after which a socket without active requests "
+"will time out. Monitors time between activity on a connected socket. This"
+" value may be overridden by *keep-alive* hints from the server. See [MDN:"
+" HTTP - Headers - Keep-Alive directives](https://developer.mozilla.org"
+"/en-US/docs/Web/HTTP/Headers/Keep-Alive#directives) for more details. "
+"Defaults to 4 seconds."
+msgstr ""
+
+#: ../../source/api_Client.md:24
+msgid ""
+"**keepAliveTimeoutThreshold** `number | null` (optional) - Default: `2e3`"
+" - A number of milliseconds subtracted from server *keep-alive* hints "
+"when overriding `keepAliveTimeout` to account for timing inaccuracies "
+"caused by e.g. transport latency. Defaults to 2 seconds."
+msgstr ""
+
+#: ../../source/api_Client.md:25
+msgid ""
+"**maxHeaderSize** `number | null` (optional) - Default: `--max-http-"
+"header-size` or `16384` - The maximum length of request headers in bytes."
+" Defaults to Node.js' --max-http-header-size or 16KiB."
+msgstr ""
+
+#: ../../source/api_Client.md:26
+msgid ""
+"**maxResponseSize** `number | null` (optional) - Default: `-1` - The "
+"maximum length of response body in bytes. Set to `-1` to disable."
+msgstr ""
+
+#: ../../source/api_Client.md:27
+msgid ""
+"**pipelining** `number | null` (optional) - Default: `1` - The amount of "
+"concurrent requests to be sent over the single TCP/TLS connection "
+"according to "
+"[RFC7230](https://tools.ietf.org/html/rfc7230#section-6.3.2). Carefully "
+"consider your workload and environment before enabling concurrent "
+"requests as pipelining may reduce performance if used incorrectly. "
+"Pipelining is sensitive to network stack settings as well as head of line"
+" blocking caused by e.g. long running requests. Set to `0` to disable "
+"keep-alive connections."
+msgstr ""
+
+#: ../../source/api_Client.md:28
+msgid ""
+"**connect** `ConnectOptions | Function | null` (optional) - Default: "
+"`null`."
+msgstr ""
+
+#: ../../source/api_Client.md:29
+msgid ""
+"**strictContentLength** `Boolean` (optional) - Default: `true` - Whether "
+"to treat request content length mismatches as errors. If true, an error "
+"is thrown when the request content-length header doesn't match the length"
+" of the request body. **Security Warning:** Disabling this option can "
+"expose your application to HTTP Request Smuggling attacks, where "
+"mismatched content-length headers cause servers and proxies to interpret "
+"request boundaries differently. This can lead to cache poisoning, "
+"credential hijacking, and bypassing security controls. Only disable this "
+"in controlled environments where you fully trust the request source."
+msgstr ""
+
+#: ../../source/api_Client.md:30
+msgid ""
+"**autoSelectFamily**: `boolean` (optional) - Default: depends on local "
+"Node version, on Node 18.13.0 and above is `false`. Enables a family "
+"autodetection algorithm that loosely implements section 5 of [RFC "
+"8305](https://tools.ietf.org/html/rfc8305#section-5). See "
+"[here](https://nodejs.org/api/net.html#socketconnectoptions-"
+"connectlistener) for more details. This option is ignored if not "
+"supported by the current Node version."
+msgstr ""
+
+#: ../../source/api_Client.md:31
+msgid ""
+"**autoSelectFamilyAttemptTimeout**: `number` - Default: depends on local "
+"Node version, on Node 18.13.0 and above is `250`. The amount of time in "
+"milliseconds to wait for a connection attempt to finish before trying the"
+" next address when using the `autoSelectFamily` option. See "
+"[here](https://nodejs.org/api/net.html#socketconnectoptions-"
+"connectlistener) for more details."
+msgstr ""
+
+#: ../../source/api_Client.md:32
+msgid ""
+"**allowH2**: `boolean` - Default: `false`. Enables support for H2 if the "
+"server has assigned bigger priority to it through ALPN negotiation."
+msgstr ""
+
+#: ../../source/api_Client.md:33
+msgid ""
+"**useH2c**: `boolean` - Default: `false`. Enforces h2c for non-https "
+"connections."
+msgstr ""
+
+#: ../../source/api_Client.md:34
+msgid ""
+"**maxConcurrentStreams**: `number` - Default: `100`. Dictates the maximum"
+" number of concurrent streams for a single H2 session. It can be "
+"overridden by a SETTINGS remote frame."
+msgstr ""
+
+#: ../../source/api_Client.md:35
+msgid ""
+"**initialWindowSize**: `number` (optional) - Default: `262144` (256KB). "
+"Sets the HTTP/2 stream-level flow-control window size "
+"(SETTINGS_INITIAL_WINDOW_SIZE). Must be a positive integer greater than "
+"0. This default is higher than Node.js core's default (65535 bytes) to "
+"improve throughput, Node's choice is very conservative for current high-"
+"bandwith networks. See [RFC 7540 Section "
+"6.9.2](https://datatracker.ietf.org/doc/html/rfc7540#section-6.9.2) for "
+"more details."
+msgstr ""
+
+#: ../../source/api_Client.md:36
+msgid ""
+"**connectionWindowSize**: `number` (optional) - Default `524288` (512KB)."
+" Sets the HTTP/2 connection-level flow-control window size using "
+"`ClientHttp2Session.setLocalWindowSize()`. Must be a positive integer "
+"greater than 0. This provides better flow control for the entire "
+"connection across multiple streams. See [Node.js HTTP/2 "
+"documentation](https://nodejs.org/api/http2.html#clienthttp2sessionsetlocalwindowsize)"
+" for more details."
+msgstr ""
+
+#: ../../source/api_Client.md:37
+msgid ""
+"**pingInterval**: `number` - Default: `60e3`. The time interval in "
+"milliseconds between PING frames sent to the server. Set to `0` to "
+"disable PING frames. This is only applicable for HTTP/2 connections. This"
+" will emit a `ping` event on the client with the duration of the ping in "
+"milliseconds."
+msgstr ""
+
+#: ../../source/api_Client.md:39
+msgid "**Notes about HTTP/2**"
+msgstr ""
+
+#: ../../source/api_Client.md:40
+msgid "It only works under TLS connections. h2c is not supported."
+msgstr ""
+
+#: ../../source/api_Client.md:41
+msgid ""
+"The server must support HTTP/2 and choose it as the protocol during the "
+"ALPN negotiation."
+msgstr ""
+
+#: ../../source/api_Client.md:42
+msgid "The server must not have a bigger priority for HTTP/1.1 than HTTP/2."
+msgstr ""
+
+#: ../../source/api_Client.md:43
+msgid ""
+"Pseudo headers are automatically attached to the request. If you try to "
+"set them, they will be overwritten."
+msgstr ""
+
+#: ../../source/api_Client.md:44
+msgid "The `:path` header is automatically set to the request path."
+msgstr ""
+
+#: ../../source/api_Client.md:45
+msgid "The `:method` header is automatically set to the request method."
+msgstr ""
+
+#: ../../source/api_Client.md:46
+msgid "The `:scheme` header is automatically set to the request scheme."
+msgstr ""
+
+#: ../../source/api_Client.md:47
+msgid "The `:authority` header is automatically set to the request `host[:port]`."
+msgstr ""
+
+#: ../../source/api_Client.md:48
+msgid "`PUSH` frames are yet not supported."
+msgstr ""
+
+#: ../../source/api_Client.md:50
+msgid "Parameter: `ConnectOptions`"
+msgstr ""
+
+#: ../../source/api_Client.md:52
+msgid ""
+"Every Tls option, see "
+"[here](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)."
+" Furthermore, the following options can be passed:"
+msgstr ""
+
+#: ../../source/api_Client.md:55
+msgid ""
+"**socketPath** `string | null` (optional) - Default: `null` - An IPC "
+"endpoint, either Unix domain socket or Windows named pipe."
+msgstr ""
+
+#: ../../source/api_Client.md:56
+msgid ""
+"**maxCachedSessions** `number | null` (optional) - Default: `100` - "
+"Maximum number of TLS cached sessions. Use 0 to disable TLS session "
+"caching. Default: 100."
+msgstr ""
+
+#: ../../source/api_Client.md:57
+msgid "**timeout** `number | null` (optional) -  In milliseconds, Default `10e3`."
+msgstr ""
+
+#: ../../source/api_Client.md:58
+msgid "**servername** `string | null` (optional)"
+msgstr ""
+
+#: ../../source/api_Client.md:59
+msgid ""
+"**keepAlive** `boolean | null` (optional) - Default: `true` - TCP keep-"
+"alive enabled"
+msgstr ""
+
+#: ../../source/api_Client.md:60
+msgid ""
+"**keepAliveInitialDelay** `number | null` (optional) - Default: `60000` -"
+" TCP keep-alive interval for the socket in milliseconds"
+msgstr ""
+
+#: ../../source/api_Client.md:62
+msgid "Example - Basic Client instantiation"
+msgstr ""
+
+#: ../../source/api_Client.md:64
+msgid ""
+"This will instantiate the undici Client, but it will not connect to the "
+"origin until something is queued. Consider using `client.connect` to "
+"prematurely connect to the origin, or just call `client.request`."
+msgstr ""
+
+#: ../../source/api_Client.md:73
+msgid "Example - Custom connector"
+msgstr ""
+
+#: ../../source/api_Client.md:75
+msgid ""
+"This will allow you to perform some additional check on the socket that "
+"will be used for the next request."
+msgstr ""
+
+#: ../../source/api_Client.md:98
+msgid "Instance Methods"
+msgstr ""
+
+#: ../../source/api_Client.md:100
+msgid "`Client.close([callback])`"
+msgstr ""
+
+#: ../../source/api_Client.md:102
+msgid ""
+"Implements [`Dispatcher.close([callback])`](/docs/docs/api/Dispatcher.md"
+"#dispatcherclosecallback-promise)."
+msgstr ""
+
+#: ../../source/api_Client.md:104
+msgid "`Client.destroy([error, callback])`"
+msgstr ""
+
+#: ../../source/api_Client.md:106
+msgid ""
+"Implements [`Dispatcher.destroy([error, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherdestroyerror-"
+"callback-promise)."
+msgstr ""
+
+#: ../../source/api_Client.md:108
+msgid ""
+"Waits until socket is closed before invoking the callback (or returning a"
+" promise if no callback is provided)."
+msgstr ""
+
+#: ../../source/api_Client.md:110
+msgid "`Client.connect(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_Client.md:112
+msgid ""
+"See [`Dispatcher.connect(options[, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherconnectoptions-"
+"callback)."
+msgstr ""
+
+#: ../../source/api_Client.md:114
+msgid "`Client.dispatch(options, handlers)`"
+msgstr ""
+
+#: ../../source/api_Client.md:116
+msgid ""
+"Implements [`Dispatcher.dispatch(options, "
+"handlers)`](/docs/docs/api/Dispatcher.md#dispatcherdispatchoptions-"
+"handler)."
+msgstr ""
+
+#: ../../source/api_Client.md:118
+msgid "`Client.pipeline(options, handler)`"
+msgstr ""
+
+#: ../../source/api_Client.md:120
+msgid ""
+"See [`Dispatcher.pipeline(options, "
+"handler)`](/docs/docs/api/Dispatcher.md#dispatcherpipelineoptions-"
+"handler)."
+msgstr ""
+
+#: ../../source/api_Client.md:122
+msgid "`Client.request(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_Client.md:124
+msgid ""
+"See [`Dispatcher.request(options [, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherrequestoptions-"
+"callback)."
+msgstr ""
+
+#: ../../source/api_Client.md:126
+msgid "`Client.stream(options, factory[, callback])`"
+msgstr ""
+
+#: ../../source/api_Client.md:128
+msgid ""
+"See [`Dispatcher.stream(options, factory[, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherstreamoptions-"
+"factory-callback)."
+msgstr ""
+
+#: ../../source/api_Client.md:130
+msgid "`Client.upgrade(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_Client.md:132
+msgid ""
+"See [`Dispatcher.upgrade(options[, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherupgradeoptions-"
+"callback)."
+msgstr ""
+
+#: ../../source/api_Client.md:134
+msgid "Instance Properties"
+msgstr ""
+
+#: ../../source/api_Client.md:136
+msgid "`Client.closed`"
+msgstr ""
+
+#: ../../source/api_Client.md:138 ../../source/api_Client.md:144
+msgid "`boolean`"
+msgstr ""
+
+#: ../../source/api_Client.md:140
+msgid "`true` after `client.close()` has been called."
+msgstr ""
+
+#: ../../source/api_Client.md:142
+msgid "`Client.destroyed`"
+msgstr ""
+
+#: ../../source/api_Client.md:146
+msgid ""
+"`true` after `client.destroyed()` has been called or `client.close()` has"
+" been called and the client shutdown has completed."
+msgstr ""
+
+#: ../../source/api_Client.md:148
+msgid "`Client.pipelining`"
+msgstr ""
+
+#: ../../source/api_Client.md:150
+msgid "`number`"
+msgstr ""
+
+#: ../../source/api_Client.md:152
+msgid "Property to get and set the pipelining factor."
+msgstr ""
+
+#: ../../source/api_Client.md:154
+msgid "Instance Events"
+msgstr ""
+
+#: ../../source/api_Client.md:156
+msgid "Event: `'connect'`"
+msgstr ""
+
+#: ../../source/api_Client.md:158
+msgid ""
+"See [Dispatcher Event: `'connect'`](/docs/docs/api/Dispatcher.md#event-"
+"connect)."
+msgstr ""
+
+#: ../../source/api_Client.md:160 ../../source/api_Client.md:206
+msgid "Parameters:"
+msgstr ""
+
+#: ../../source/api_Client.md:162 ../../source/api_Client.md:208
+msgid "**origin** `URL`"
+msgstr ""
+
+#: ../../source/api_Client.md:163 ../../source/api_Client.md:209
+msgid "**targets** `Array<Dispatcher>`"
+msgstr ""
+
+#: ../../source/api_Client.md:165
+msgid ""
+"Emitted when a socket has been created and connected. The client will "
+"connect once `client.size > 0`."
+msgstr ""
+
+#: ../../source/api_Client.md:167
+msgid "Example - Client connect event"
+msgstr ""
+
+#: ../../source/api_Client.md:202
+msgid "Event: `'disconnect'`"
+msgstr ""
+
+#: ../../source/api_Client.md:204
+msgid ""
+"See [Dispatcher Event: `'disconnect'`](/docs/docs/api/Dispatcher.md"
+"#event-disconnect)."
+msgstr ""
+
+#: ../../source/api_Client.md:210
+msgid "**error** `Error`"
+msgstr ""
+
+#: ../../source/api_Client.md:212
+msgid ""
+"Emitted when socket has disconnected. The error argument of the event is "
+"the error which caused the socket to disconnect. The client will "
+"reconnect if or once `client.size > 0`."
+msgstr ""
+
+#: ../../source/api_Client.md:214
+msgid "Example - Client disconnect event"
+msgstr ""
+
+#: ../../source/api_Client.md:245
+msgid "Event: `'drain'`"
+msgstr ""
+
+#: ../../source/api_Client.md:247
+msgid "Emitted when pipeline is no longer busy."
+msgstr ""
+
+#: ../../source/api_Client.md:249
+msgid ""
+"See [Dispatcher Event: `'drain'`](/docs/docs/api/Dispatcher.md#event-"
+"drain)."
+msgstr ""
+
+#: ../../source/api_Client.md:251
+msgid "Example - Client drain event"
+msgstr ""
+
+#: ../../source/api_Client.md:283
+msgid "Event: `'error'`"
+msgstr ""
+
+#: ../../source/api_Client.md:285
+msgid "Invoked for users errors such as throwing in the `onError` handler."
+msgstr ""
+

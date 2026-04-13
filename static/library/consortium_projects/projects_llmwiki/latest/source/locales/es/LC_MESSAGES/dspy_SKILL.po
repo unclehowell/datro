@@ -1,0 +1,436 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/dspy_SKILL.md:14
+msgid "DSPy: Declarative Language Model Programming"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:16
+msgid "When to Use This Skill"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:18
+msgid "Use DSPy when you need to:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:19
+msgid "**Build complex AI systems** with multiple components and workflows"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:20
+msgid "**Program LMs declaratively** instead of manual prompt engineering"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:21
+msgid "**Optimize prompts automatically** using data-driven methods"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:22
+msgid "**Create modular AI pipelines** that are maintainable and portable"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:23
+msgid "**Improve model outputs systematically** with optimizers"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:24
+msgid "**Build RAG systems, agents, or classifiers** with better reliability"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:26
+msgid "**GitHub Stars**: 22,000+ | **Created By**: Stanford NLP"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:28
+msgid "Installation"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:43
+msgid "Quick Start"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:45
+msgid "Basic Example: Question Answering"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:68
+msgid "Chain of Thought Reasoning"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:90
+msgid "Core Concepts"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:92
+msgid "1. Signatures"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:94
+msgid "Signatures define the structure of your AI task (inputs → outputs):"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:109
+msgid "**When to use each:**"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:110
+msgid "**Inline**: Quick prototyping, simple tasks"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:111
+msgid "**Class**: Complex tasks, type hints, better documentation"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:113
+msgid "2. Modules"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:115
+msgid "Modules are reusable components that transform inputs to outputs:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:117
+msgid "dspy.Predict"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:118
+msgid "Basic prediction module:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:126
+msgid "dspy.ChainOfThought"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:127
+msgid "Generates reasoning steps before answering:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:136
+msgid "dspy.ReAct"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:137
+msgid "Agent-like reasoning with tools:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:156
+msgid "dspy.ProgramOfThought"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:157
+msgid "Generates and executes code for reasoning:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:165
+msgid "3. Optimizers"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:167
+msgid "Optimizers improve your modules automatically using training data:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:169
+msgid "BootstrapFewShot"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:170
+msgid "Learns from examples:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:192
+msgid "MIPRO (Most Important Prompt Optimization)"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:193
+msgid "Iteratively improves prompts:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:211
+msgid "BootstrapFinetune"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:212
+msgid "Creates datasets for model fine-tuning:"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:223
+msgid "4. Building Complex Systems"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:225
+msgid "Multi-Stage Pipeline"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:254
+msgid "RAG System with Optimization"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:286
+msgid "LM Provider Configuration"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:288
+msgid "Anthropic Claude"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:302
+msgid "OpenAI"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:313
+msgid "Local Models (Ollama)"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:323
+msgid "Multiple Models"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:338
+msgid "Common Patterns"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:340
+msgid "Pattern 1: Structured Output"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:361
+msgid "Pattern 2: Assertion-Driven Optimization"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:385
+msgid "Pattern 3: Self-Consistency"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:409
+msgid "Pattern 4: Retrieval with Reranking"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:437
+msgid "Evaluation and Metrics"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:439
+msgid "Custom Metrics"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:463
+msgid "Evaluation"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:486
+msgid "Best Practices"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:488
+msgid "1. Start Simple, Iterate"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:501
+msgid "2. Use Descriptive Signatures"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:516
+msgid "3. Optimize with Representative Data"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:531
+msgid "4. Save and Load Optimized Models"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:542
+msgid "5. Monitor and Debug"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:557
+msgid "Comparison to Other Approaches"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Feature"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Manual Prompting"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "LangChain"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "DSPy"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Prompt Engineering"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Manual"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Automatic"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Optimization"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Trial & error"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "None"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Data-driven"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Modularity"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Low"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Medium"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "High"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Type Safety"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "No"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Limited"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Yes (Signatures)"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Portability"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Learning Curve"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md
+msgid "Medium-High"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:568
+msgid "**When to choose DSPy:**"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:569
+msgid "You have training data or can generate it"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:570
+msgid "You need systematic prompt improvement"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:571
+msgid "You're building complex multi-stage systems"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:572
+msgid "You want to optimize across different LMs"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:574
+msgid "**When to choose alternatives:**"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:575
+msgid "Quick prototypes (manual prompting)"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:576
+msgid "Simple chains with existing tools (LangChain)"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:577
+msgid "Custom optimization logic needed"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:579
+msgid "Resources"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:581
+msgid "**Documentation**: https://dspy.ai"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:582
+msgid "**GitHub**: https://github.com/stanfordnlp/dspy (22k+ stars)"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:583
+msgid "**Discord**: https://discord.gg/XCGy2WDCQB"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:584
+msgid "**Twitter**: @DSPyOSS"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:585
+msgid ""
+"**Paper**: \"DSPy: Compiling Declarative Language Model Calls into Self-"
+"Improving Pipelines\""
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:587
+msgid "See Also"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:589
+msgid ""
+"`references/modules.md` - Detailed module guide (Predict, ChainOfThought,"
+" ReAct, ProgramOfThought)"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:590
+msgid ""
+"`references/optimizers.md` - Optimization algorithms (BootstrapFewShot, "
+"MIPRO, BootstrapFinetune)"
+msgstr ""
+
+#: ../../source/dspy_SKILL.md:591
+msgid "`references/examples.md` - Real-world examples (RAG, agents, classifiers)"
+msgstr ""
+

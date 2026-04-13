@@ -1,0 +1,279 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:15
+msgid "UI Redesign with DESIGN.md"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:17
+msgid ""
+"Install this as a skill first: `awesome-design-md` from the Brain skills "
+"directory."
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:19
+msgid "Workflow Overview"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:21
+msgid ""
+"When the user asks to improve or redesign a web UI, use the awesome-"
+"design-md skill to apply a proven design system rather than improvising."
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:23
+msgid "Step 1: Install the Skill"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:25
+msgid ""
+"The LobeHub marketplace CLI requires credentials. Skip it and install "
+"from GitHub directly:"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:33
+msgid "Read the installed SKILL.md: `skill_view(name='awesome-design-md')`"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:35
+msgid "Step 2: Fetch Relevant DESIGN.md Files"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:37
+msgid ""
+"Download design systems from the VoltAgent/awesome-design-md repo. Choose"
+" based on the use case:"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "Target Style"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "DESIGN.md URL"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "Best For"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "Linear (dark precision)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid ""
+"`https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main"
+"/design-md/linear.app/DESIGN.md`"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "AI agent dashboards, developer tools"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "Vercel (minimal monochrome)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid ""
+"`https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main"
+"/design-md/vercel/DESIGN.md`"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "Clean SaaS, developer infrastructure"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "Stripe (purple gradients)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid ""
+"`https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main"
+"/design-md/stripe/DESIGN.md`"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "Fintech, payment products"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "Supabase (dark emerald)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid ""
+"`https://raw.githubusercontent.com/VoltAgent/awesome-design-md/main"
+"/design-md/supabase/DESIGN.md`"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md
+msgid "Dark dashboards, data tools"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:46
+msgid "Download to project root:"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:52
+msgid "Step 3: Read Design Tokens"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:54
+msgid "Read the DESIGN.md file and extract:"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:55
+msgid ""
+"**Color palette** (background surfaces, text hierarchy, accent colors, "
+"borders)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:56
+msgid "**Typography** (font families, weights, letter-spacing, hierarchy table)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:57
+msgid "**Components** (buttons, cards, inputs, nav with states)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:58
+msgid "**Spacing** (sizing scale, grid system)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:59
+msgid "**Shadows/depth** (elevation system)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:61
+msgid "Step 4: Apply to Existing UI"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:63
+msgid ""
+"**DO NOT** ask the user to pick a style — choose the best match and "
+"implement it directly."
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:65
+msgid "**Read the current HTML/CSS** — identify what exists"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:66
+msgid ""
+"**Replace the design tokens** — swap colors, fonts, spacing for the new "
+"system"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:67
+msgid ""
+"**Preserve functionality** — keep all iframes, navigation, event "
+"handlers, login systems"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:68
+msgid ""
+"**Strip dead dependencies** — remove unused jQuery, old CSS frameworks, "
+"tracking cruft"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:69
+msgid ""
+"**Modernize the structure** — use CSS custom properties (`:root`), "
+"semantic HTML, flex/grid"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:71
+msgid "Key patterns:"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:72
+#, python-brace-format
+msgid "All colors → CSS variables in `:root {}`"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:73
+msgid "Font imports via Google Fonts or system fallbacks"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:74
+msgid "Mobile-first responsive with `@media` queries"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:75
+msgid "Vanilla JS only — no jQuery dependency for simple UI"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:77
+msgid "Step 5: Verify"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:79
+msgid "Check nginx is serving: `curl -sI https://<domain>` → 200 OK"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:80
+msgid "Check content-length changed (new file is live)"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:81
+msgid "If browser is available, visually verify with browser_vision"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:82
+msgid "Report what changed to the user"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:84
+msgid "Pitfalls"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:86
+msgid "**LobeHub CLI needs auth** — always use `git clone` instead"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:87
+msgid ""
+"**DESIGN.md repo is VoltAgent/awesome-design-md** — Aradotso's repo is "
+"just the marketplace aggregator"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:88
+msgid ""
+"**Don't break existing functionality** — login gates, sandboxes, iframes,"
+" event listeners must all survive the redesign"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:89
+msgid ""
+"**Hardcoded passwords** — never remove or alter authentication logic, "
+"even if it's client-side"
+msgstr ""
+
+#: ../../source/ui-redesign-with-design-md_SKILL.md:90
+msgid ""
+"**Caching** — nginx may cache old files; check `Last-Modified` header to "
+"confirm new version"
+msgstr ""
+

@@ -1,0 +1,250 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/delayed-stream_Readme.md:1
+msgid "delayed-stream"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:3
+msgid "Buffers events from a stream until you are ready to handle them."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:5
+msgid "Installation"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:11
+msgid "Usage"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:13
+msgid ""
+"The following example shows how to write a http echo server that delays "
+"its response by 1000 ms."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:30
+msgid ""
+"If you are not using `Stream#pipe`, you can also manually release the "
+"buffered events by calling `delayedStream.resume()`:"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:42
+msgid "Implementation"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:44
+msgid ""
+"In order to use this meta stream properly, here are a few things you "
+"should know about the implementation."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:47
+msgid "Event Buffering / Proxying"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:49
+msgid ""
+"All events of the `source` stream are hijacked by overwriting the "
+"`source.emit` method. Until node implements a catch-all event listener, "
+"this is the only way."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:52
+msgid ""
+"However, delayed-stream still continues to emit all events it captures on"
+" the `source`, regardless of whether you have released the delayed stream"
+" yet or not."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:56
+msgid ""
+"Upon creation, delayed-stream captures all `source` events and stores "
+"them in an internal event buffer. Once `delayedStream.release()` is "
+"called, all buffered events are emitted on the `delayedStream`, and the "
+"event buffer is cleared. After that, delayed-stream merely acts as a "
+"proxy for the underlaying source."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:62
+msgid "Error handling"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:64
+msgid ""
+"Error events on `source` are buffered / proxied just like any other "
+"events. However, `delayedStream.create` attaches a no-op `'error'` "
+"listener to the `source`. This way you only have to handle errors on the "
+"`delayedStream` object, rather than in two places."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:69
+msgid "Buffer limits"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:71
+msgid ""
+"delayed-stream provides a `maxDataSize` property that can be used to "
+"limit the amount of data being buffered. In order to protect you from bad"
+" `source` streams that don't react to `source.pause()`, this feature is "
+"enabled by default."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:76
+msgid "API"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:78
+msgid "DelayedStream.create(source, [options])"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:80
+msgid "Returns a new `delayedStream`. Available options are:"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:82
+msgid "`pauseStream`"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:83
+msgid "`maxDataSize`"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:85
+msgid "The description for those properties can be found below."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:87
+msgid "delayedStream.source"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:89
+msgid ""
+"The `source` stream managed by this object. This is useful if you are "
+"passing your `delayedStream` around, and you still want to access "
+"properties on the `source` object."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:93
+msgid "delayedStream.pauseStream = true"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:95
+msgid ""
+"Whether to pause the underlaying `source` when calling "
+"`DelayedStream.create()`. Modifying this property afterwards has no "
+"effect."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:98
+msgid "delayedStream.maxDataSize = 1024 * 1024"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:100
+msgid "The amount of data to buffer before emitting an `error`."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:102
+msgid ""
+"If the underlaying source is emitting `Buffer` objects, the `maxDataSize`"
+" refers to bytes."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:105
+msgid ""
+"If the underlaying source is emitting JavaScript strings, the size refers"
+" to characters."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:108
+msgid ""
+"If you know what you are doing, you can set this property to `Infinity` "
+"to disable this feature. You can also modify this property during "
+"runtime."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:111
+msgid "delayedStream.dataSize = 0"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:113
+msgid "The amount of data buffered so far."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:115
+msgid "delayedStream.readable"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:117
+msgid "An ECMA5 getter that returns the value of `source.readable`."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:119
+msgid "delayedStream.resume()"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:121
+msgid ""
+"If the `delayedStream` has not been released so far, "
+"`delayedStream.release()` is called."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:124
+msgid "In either case, `source.resume()` is called."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:126
+msgid "delayedStream.pause()"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:128
+msgid "Calls `source.pause()`."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:130
+msgid "delayedStream.pipe(dest)"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:132
+msgid ""
+"Calls `delayedStream.resume()` and then proxies the arguments to "
+"`source.pipe`."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:134
+msgid "delayedStream.release()"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:136
+msgid ""
+"Emits and clears all events that have been buffered up so far. This does "
+"not resume the underlaying source, use `delayedStream.resume()` instead."
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:139
+msgid "License"
+msgstr ""
+
+#: ../../source/delayed-stream_Readme.md:141
+msgid "delayed-stream is licensed under the MIT license."
+msgstr ""
+

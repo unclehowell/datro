@@ -1,0 +1,118 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/esprima_README.md:1
+msgid ""
+"[![NPM "
+"version](https://img.shields.io/npm/v/esprima.svg)](https://www.npmjs.com/package/esprima)"
+" [![npm "
+"download](https://img.shields.io/npm/dm/esprima.svg)](https://www.npmjs.com/package/esprima)"
+" [![Build "
+"Status](https://img.shields.io/travis/jquery/esprima/master.svg)](https"
+"://travis-ci.org/jquery/esprima) [![Coverage "
+"Status](https://img.shields.io/codecov/c/github/jquery/esprima/master.svg)](https://codecov.io/github/jquery/esprima)"
+msgstr ""
+
+#: ../../source/esprima_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/esprima_README.md:1
+msgid "npm download"
+msgstr ""
+
+#: ../../source/esprima_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/esprima_README.md:1
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/esprima_README.md:6
+msgid ""
+"**Esprima** ([esprima.org](http://esprima.org), BSD license) is a high "
+"performance, standard-compliant [ECMAScript](http://www.ecma-"
+"international.org/publications/standards/Ecma-262.htm) parser written in "
+"ECMAScript (also popularly known as "
+"[JavaScript](https://en.wikipedia.org/wiki/JavaScript)). Esprima is "
+"created and maintained by [Ariya "
+"Hidayat](https://twitter.com/ariyahidayat), with the help of [many "
+"contributors](https://github.com/jquery/esprima/contributors)."
+msgstr ""
+
+#: ../../source/esprima_README.md:13
+msgid "Features"
+msgstr ""
+
+#: ../../source/esprima_README.md:15
+msgid ""
+"Full support for ECMAScript 2017 ([ECMA-262 8th Edition](http://www.ecma-"
+"international.org/publications/standards/Ecma-262.htm))"
+msgstr ""
+
+#: ../../source/esprima_README.md:16
+msgid ""
+"Sensible [syntax tree "
+"format](https://github.com/estree/estree/blob/master/es5.md) as "
+"standardized by [ESTree project](https://github.com/estree/estree)"
+msgstr ""
+
+#: ../../source/esprima_README.md:17
+msgid ""
+"Experimental support for [JSX](https://facebook.github.io/jsx/), a syntax"
+" extension for [React](https://facebook.github.io/react/)"
+msgstr ""
+
+#: ../../source/esprima_README.md:18
+msgid "Optional tracking of syntax node location (index-based and line-column)"
+msgstr ""
+
+#: ../../source/esprima_README.md:19
+msgid ""
+"[Heavily tested](http://esprima.org/test/ci.html) (~1500 [unit "
+"tests](https://github.com/jquery/esprima/tree/master/test/fixtures) with "
+"[full code coverage](https://codecov.io/github/jquery/esprima))"
+msgstr ""
+
+#: ../../source/esprima_README.md:21
+msgid "API"
+msgstr ""
+
+#: ../../source/esprima_README.md:23
+msgid ""
+"Esprima can be used to perform [lexical "
+"analysis](https://en.wikipedia.org/wiki/Lexical_analysis) (tokenization) "
+"or [syntactic analysis](https://en.wikipedia.org/wiki/Parsing) (parsing) "
+"of a JavaScript program."
+msgstr ""
+
+#: ../../source/esprima_README.md:25
+msgid "A simple example on Node.js REPL:"
+msgstr ""
+
+#: ../../source/esprima_README.md:46
+msgid ""
+"For more information, please read the [complete "
+"documentation](http://esprima.org/doc)."
+msgstr ""
+

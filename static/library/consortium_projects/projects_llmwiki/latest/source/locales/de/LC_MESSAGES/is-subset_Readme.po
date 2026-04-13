@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/is-subset_Readme.md:1
+#, python-format
+msgid ""
+"[![Coveralls – test coverage "
+"](https://img.shields.io/coveralls/studio-b12/is-subset.svg?style=flat-"
+"square) ](https://coveralls.io/r/studio-b12/is-subset)  [![Travis – build"
+" status ](https://img.shields.io/travis/studio-b12/is-"
+"subset/master.svg?style=flat-square) ](https://travis-ci.org/studio-b12"
+"/is-subset)  [![David – status of dependencies "
+"](https://img.shields.io/david/studio-b12/is-subset.svg?style=flat-"
+"square) ](https://david-dm.org/studio-b12/is-subset)  [![Code style: "
+"airbnb ](https://img.shields.io/badge/code%20style-airbnb-blue.svg?style"
+"=flat-square) ](https://github.com/airbnb/javascript)"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:1
+msgid "Coveralls – test coverage"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:1
+msgid "Travis – build status"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:1
+msgid "David – status of dependencies"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:1
+msgid "Code style: airbnb"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:17
+msgid "is-subset"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:20
+msgid "**Check if an object is contained within another one.**"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:25
+msgid "Installation"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:35
+msgid "Usage"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:38
+msgid "Import the module:"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:47
+msgid "These are true:"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:66
+msgid "…and these are false:"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:85
+msgid "See the [specs][] for more info."
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:92
+msgid "API"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:95
+msgid "*isSubset*(*superset*, *subset*)"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:97
+msgid "Check if an object is contained within another object."
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:99
+msgid "Returns `true` if:"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:100
+msgid "all enumerable keys of *subset* are also enumerable in *superset*, and"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:101
+msgid ""
+"every value assigned to an enumerable key of *subset* strictly equals the"
+" value assigned to the same key of *superset* – or is a subset of it."
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:103
+msgid "**Parameters:**"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:104
+msgid "`Object` *superset*"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:105
+msgid "`Object` *subset*"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:107
+msgid "**Return value:**"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:108
+msgid "`Boolean`"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:113
+msgid "License"
+msgstr ""
+
+#: ../../source/is-subset_Readme.md:116
+msgid "[MIT][] © [Studio B12 GmbH][]"
+msgstr ""
+

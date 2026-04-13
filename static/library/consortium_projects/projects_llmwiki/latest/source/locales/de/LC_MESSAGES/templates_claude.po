@@ -1,0 +1,1575 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_claude.md:1
+msgid "Design System: Claude (Anthropic)"
+msgstr ""
+
+#: ../../source/templates_claude.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_claude.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_claude.md:7
+msgid "**Primary:** `Inter` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_claude.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_claude.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_claude.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_claude.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_claude.md:18
+msgid ""
+"Claude's interface is a literary salon reimagined as a product page — "
+"warm, unhurried, and quietly intellectual. The entire experience is built"
+" on a parchment-toned canvas (`#f5f4ed`) that deliberately evokes the "
+"feeling of high-quality paper rather than a digital surface. Where most "
+"AI product pages lean into cold, futuristic aesthetics, Claude's design "
+"radiates human warmth, as if the AI itself has good taste in interior "
+"design."
+msgstr ""
+
+#: ../../source/templates_claude.md:20
+msgid ""
+"The signature move is the custom Anthropic Serif typeface — a medium-"
+"weight serif with generous proportions that gives every headline the "
+"gravitas of a book title. Combined with organic, hand-drawn-feeling "
+"illustrations in terracotta (`#c96442`), black, and muted green, the "
+"visual language says \"thoughtful companion\" rather than \"powerful "
+"tool.\" The serif headlines breathe at tight-but-comfortable line-heights"
+" (1.10–1.30), creating a cadence that feels more like reading an essay "
+"than scanning a product page."
+msgstr ""
+
+#: ../../source/templates_claude.md:22
+msgid ""
+"What makes Claude's design truly distinctive is its warm neutral palette."
+" Every gray has a yellow-brown undertone (`#5e5d59`, `#87867f`, "
+"`#4d4c48`) — there are no cool blue-grays anywhere. Borders are cream-"
+"tinted (`#f0eee6`, `#e8e6dc`), shadows use warm transparent blacks, and "
+"even the darkest surfaces (`#141413`, `#30302e`) carry a barely "
+"perceptible olive warmth. This chromatic consistency creates a space that"
+" feels lived-in and trustworthy."
+msgstr ""
+
+#: ../../source/templates_claude.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_claude.md:25
+msgid "Warm parchment canvas (`#f5f4ed`) evoking premium paper, not screens"
+msgstr ""
+
+#: ../../source/templates_claude.md:26
+msgid ""
+"Custom Anthropic type family: Serif for headlines, Sans for UI, Mono for "
+"code"
+msgstr ""
+
+#: ../../source/templates_claude.md:27
+msgid "Terracotta brand accent (`#c96442`) — warm, earthy, deliberately un-tech"
+msgstr ""
+
+#: ../../source/templates_claude.md:28
+msgid "Exclusively warm-toned neutrals — every gray has a yellow-brown undertone"
+msgstr ""
+
+#: ../../source/templates_claude.md:29
+msgid "Organic, editorial illustrations replacing typical tech iconography"
+msgstr ""
+
+#: ../../source/templates_claude.md:30
+msgid ""
+"Ring-based shadow system (`0px 0px 0px 1px`) creating border-like depth "
+"without visible borders"
+msgstr ""
+
+#: ../../source/templates_claude.md:31
+msgid ""
+"Magazine-like pacing with generous section spacing and serif-driven "
+"hierarchy"
+msgstr ""
+
+#: ../../source/templates_claude.md:33
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_claude.md:35
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_claude.md:36
+msgid ""
+"**Anthropic Near Black** (`#141413`): The primary text color and dark-"
+"theme surface — not pure black but a warm, almost olive-tinted dark "
+"that's gentler on the eyes. The warmest \"black\" in any major tech "
+"brand."
+msgstr ""
+
+#: ../../source/templates_claude.md:37
+msgid ""
+"**Terracotta Brand** (`#c96442`): The core brand color — a burnt orange-"
+"brown used for primary CTA buttons, brand moments, and the signature "
+"accent. Deliberately earthy and un-tech."
+msgstr ""
+
+#: ../../source/templates_claude.md:38
+msgid ""
+"**Coral Accent** (`#d97757`): A lighter, warmer variant of the brand "
+"color used for text accents, links on dark surfaces, and secondary "
+"emphasis."
+msgstr ""
+
+#: ../../source/templates_claude.md:40
+msgid "Secondary & Accent"
+msgstr ""
+
+#: ../../source/templates_claude.md:41
+msgid ""
+"**Error Crimson** (`#b53333`): A deep, warm red for error states — "
+"serious without being alarming."
+msgstr ""
+
+#: ../../source/templates_claude.md:42
+msgid ""
+"**Focus Blue** (`#3898ec`): Standard blue for input focus rings — the "
+"only cool color in the entire system, used purely for accessibility."
+msgstr ""
+
+#: ../../source/templates_claude.md:44
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_claude.md:45
+msgid ""
+"**Parchment** (`#f5f4ed`): The primary page background — a warm cream "
+"with a yellow-green tint that feels like aged paper. The emotional "
+"foundation of the entire design."
+msgstr ""
+
+#: ../../source/templates_claude.md:46
+msgid ""
+"**Ivory** (`#faf9f5`): The lightest surface — used for cards and elevated"
+" containers on the Parchment background. Barely distinguishable but "
+"creates subtle layering."
+msgstr ""
+
+#: ../../source/templates_claude.md:47
+msgid ""
+"**Pure White** (`#ffffff`): Reserved for specific button surfaces and "
+"maximum-contrast elements."
+msgstr ""
+
+#: ../../source/templates_claude.md:48
+msgid ""
+"**Warm Sand** (`#e8e6dc`): Button backgrounds and prominent interactive "
+"surfaces — a noticeably warm light gray."
+msgstr ""
+
+#: ../../source/templates_claude.md:49
+msgid ""
+"**Dark Surface** (`#30302e`): Dark-theme containers, nav borders, and "
+"elevated dark elements — warm charcoal."
+msgstr ""
+
+#: ../../source/templates_claude.md:50
+msgid ""
+"**Deep Dark** (`#141413`): Dark-theme page background and primary dark "
+"surface."
+msgstr ""
+
+#: ../../source/templates_claude.md:52
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_claude.md:53
+msgid ""
+"**Charcoal Warm** (`#4d4c48`): Button text on light warm surfaces — the "
+"go-to dark-on-light text."
+msgstr ""
+
+#: ../../source/templates_claude.md:54
+msgid ""
+"**Olive Gray** (`#5e5d59`): Secondary body text — a distinctly warm "
+"medium-dark gray."
+msgstr ""
+
+#: ../../source/templates_claude.md:55
+msgid ""
+"**Stone Gray** (`#87867f`): Tertiary text, footnotes, and de-emphasized "
+"metadata."
+msgstr ""
+
+#: ../../source/templates_claude.md:56
+msgid "**Dark Warm** (`#3d3d3a`): Dark text links and emphasized secondary text."
+msgstr ""
+
+#: ../../source/templates_claude.md:57
+msgid ""
+"**Warm Silver** (`#b0aea5`): Text on dark surfaces — a warm, parchment-"
+"tinted light gray."
+msgstr ""
+
+#: ../../source/templates_claude.md:59
+msgid "Semantic & Accent"
+msgstr ""
+
+#: ../../source/templates_claude.md:60
+msgid ""
+"**Border Cream** (`#f0eee6`): Standard light-theme border — barely "
+"visible warm cream, creating the gentlest possible containment."
+msgstr ""
+
+#: ../../source/templates_claude.md:61
+msgid ""
+"**Border Warm** (`#e8e6dc`): Prominent borders, section dividers, and "
+"emphasized containment on light surfaces."
+msgstr ""
+
+#: ../../source/templates_claude.md:62
+msgid ""
+"**Border Dark** (`#30302e`): Standard border on dark surfaces — maintains"
+" the warm tone."
+msgstr ""
+
+#: ../../source/templates_claude.md:63
+msgid ""
+"**Ring Warm** (`#d1cfc5`): Shadow ring color for button hover/focus "
+"states."
+msgstr ""
+
+#: ../../source/templates_claude.md:64
+msgid ""
+"**Ring Subtle** (`#dedc01`): Secondary ring variant for lighter "
+"interactive surfaces."
+msgstr ""
+
+#: ../../source/templates_claude.md:65
+msgid "**Ring Deep** (`#c2c0b6`): Deeper ring for active/pressed states."
+msgstr ""
+
+#: ../../source/templates_claude.md:67
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_claude.md:68
+msgid ""
+"Claude's design is **gradient-free** in the traditional sense. Depth and "
+"visual richness come from the interplay of warm surface tones, organic "
+"illustrations, and light/dark section alternation. The warm palette "
+"itself creates a \"gradient\" effect as the eye moves through cream → "
+"sand → stone → charcoal → black sections."
+msgstr ""
+
+#: ../../source/templates_claude.md:70
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_claude.md:72
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_claude.md:73
+msgid "**Headline**: `Anthropic Serif`, with fallback: `Georgia`"
+msgstr ""
+
+#: ../../source/templates_claude.md:74
+msgid "**Body / UI**: `Anthropic Sans`, with fallback: `Arial`"
+msgstr ""
+
+#: ../../source/templates_claude.md:75
+msgid "**Code**: `Anthropic Mono`, with fallback: `Arial`"
+msgstr ""
+
+#: ../../source/templates_claude.md:77
+msgid ""
+"*Note: These are custom typefaces. For external implementations, Georgia "
+"serves as the serif substitute and system-ui/Inter as the sans "
+"substitute.*"
+msgstr ""
+
+#: ../../source/templates_claude.md:79
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Display / Hero"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Anthropic Serif"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "64px (4rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "1.10 (tight)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Maximum impact, book-title presence"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "52px (3.25rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Feature section anchors"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Sub-heading Large"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "36–36.8px (~2.3rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "1.30"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Secondary section markers"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "32px (2rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Card titles, feature names"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Sub-heading Small"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "25–25.6px (~1.6rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "1.20"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Smaller section titles"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "20.8px (1.3rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Small feature headings"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Body Serif"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "17px (1.06rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "1.60 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Serif body text (editorial passages)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Anthropic Sans"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Intro paragraphs"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Body / Nav"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "1.00–1.60"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Navigation links, UI text"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Body Standard"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "16px (1rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "1.25–1.60"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Standard body, button text"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Body Small"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "15px (0.94rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Compact body text"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "1.43"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Metadata, descriptions"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Label"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "0.12px"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Badges, small labels"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Overline"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "10px (0.63rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "1.60"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "0.5px"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Uppercase overline labels"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "9.6px (0.6rem)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "0.096px"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Smallest text"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Code"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Anthropic Mono"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "-0.32px"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Inline code, terminal"
+msgstr ""
+
+#: ../../source/templates_claude.md:100
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_claude.md:101
+msgid ""
+"**Serif for authority, sans for utility**: Anthropic Serif carries all "
+"headline content with medium weight (500), giving every heading the "
+"gravitas of a published title. Anthropic Sans handles all functional UI "
+"text — buttons, labels, navigation — with quiet efficiency."
+msgstr ""
+
+#: ../../source/templates_claude.md:102
+msgid ""
+"**Single weight for serifs**: All Anthropic Serif headings use weight 500"
+" — no bold, no light. This creates a consistent \"voice\" across all "
+"headline sizes, as if the same author wrote every heading."
+msgstr ""
+
+#: ../../source/templates_claude.md:103
+msgid ""
+"**Relaxed body line-height**: Most body text uses 1.60 line-height — "
+"significantly more generous than typical tech sites (1.4–1.5). This "
+"creates a reading experience closer to a book than a dashboard."
+msgstr ""
+
+#: ../../source/templates_claude.md:104
+msgid ""
+"**Tight-but-not-compressed headings**: Line-heights of 1.10–1.30 for "
+"headings are tight but never claustrophobic. The serif letterforms need "
+"breathing room that sans-serif fonts don't."
+msgstr ""
+
+#: ../../source/templates_claude.md:105
+msgid ""
+"**Micro letter-spacing on labels**: Small sans text (12px and below) uses"
+" deliberate letter-spacing (0.12px–0.5px) to maintain readability at tiny"
+" sizes."
+msgstr ""
+
+#: ../../source/templates_claude.md:107
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_claude.md:109
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_claude.md:111
+msgid "**Warm Sand (Secondary)**"
+msgstr ""
+
+#: ../../source/templates_claude.md:112
+msgid "Background: Warm Sand (`#e8e6dc`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:113
+msgid "Text: Charcoal Warm (`#4d4c48`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:114
+msgid "Padding: 0px 12px 0px 8px (asymmetric — icon-first layout)"
+msgstr ""
+
+#: ../../source/templates_claude.md:115 ../../source/templates_claude.md:131
+msgid "Radius: comfortably rounded (8px)"
+msgstr ""
+
+#: ../../source/templates_claude.md:116
+msgid "Shadow: ring-based (`#e8e6dc 0px 0px 0px 0px, #d1cfc5 0px 0px 0px 1px`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:117
+msgid "The workhorse button — warm, unassuming, clearly interactive"
+msgstr ""
+
+#: ../../source/templates_claude.md:119
+msgid "**White Surface**"
+msgstr ""
+
+#: ../../source/templates_claude.md:120
+msgid "Background: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:121 ../../source/templates_claude.md:159
+msgid "Text: Anthropic Near Black (`#141413`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:122
+msgid "Padding: 8px 16px 8px 12px"
+msgstr ""
+
+#: ../../source/templates_claude.md:123 ../../source/templates_claude.md:146
+#: ../../source/templates_claude.md:163
+msgid "Radius: generously rounded (12px)"
+msgstr ""
+
+#: ../../source/templates_claude.md:124
+msgid "Hover: shifts to secondary background color"
+msgstr ""
+
+#: ../../source/templates_claude.md:125
+msgid "Clean, elevated button for light surfaces"
+msgstr ""
+
+#: ../../source/templates_claude.md:127
+msgid "**Dark Charcoal**"
+msgstr ""
+
+#: ../../source/templates_claude.md:128
+msgid "Background: Dark Surface (`#30302e`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:129 ../../source/templates_claude.md:137
+msgid "Text: Ivory (`#faf9f5`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:130
+msgid "Padding: 0px 12px 0px 8px"
+msgstr ""
+
+#: ../../source/templates_claude.md:132
+msgid "Shadow: ring-based (`#30302e 0px 0px 0px 0px, ring 0px 0px 0px 1px`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:133
+msgid "The inverted variant for dark-on-light emphasis"
+msgstr ""
+
+#: ../../source/templates_claude.md:135
+msgid "**Brand Terracotta**"
+msgstr ""
+
+#: ../../source/templates_claude.md:136
+msgid "Background: Terracotta Brand (`#c96442`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:138
+msgid "Radius: 8–12px"
+msgstr ""
+
+#: ../../source/templates_claude.md:139
+msgid "Shadow: ring-based (`#c96442 0px 0px 0px 0px, #c96442 0px 0px 0px 1px`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:140
+msgid "The primary CTA — the only button with chromatic color"
+msgstr ""
+
+#: ../../source/templates_claude.md:142
+msgid "**Dark Primary**"
+msgstr ""
+
+#: ../../source/templates_claude.md:143
+msgid "Background: Anthropic Near Black (`#141413`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:144
+msgid "Text: Warm Silver (`#b0aea5`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:145
+msgid "Padding: 9.6px 16.8px"
+msgstr ""
+
+#: ../../source/templates_claude.md:147
+msgid "Border: thin solid Dark Surface (`1px solid #30302e`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:148
+msgid "Used on dark theme surfaces"
+msgstr ""
+
+#: ../../source/templates_claude.md:150
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_claude.md:151
+msgid ""
+"Background: Ivory (`#faf9f5`) or Pure White (`#ffffff`) on light "
+"surfaces; Dark Surface (`#30302e`) on dark"
+msgstr ""
+
+#: ../../source/templates_claude.md:152
+msgid ""
+"Border: thin solid Border Cream (`1px solid #f0eee6`) on light; `1px "
+"solid #30302e` on dark"
+msgstr ""
+
+#: ../../source/templates_claude.md:153
+msgid ""
+"Radius: comfortably rounded (8px) for standard cards; generously rounded "
+"(16px) for featured; very rounded (32px) for hero containers and embedded"
+" media"
+msgstr ""
+
+#: ../../source/templates_claude.md:154
+msgid ""
+"Shadow: whisper-soft (`rgba(0,0,0,0.05) 0px 4px 24px`) for elevated "
+"content"
+msgstr ""
+
+#: ../../source/templates_claude.md:155
+msgid "Ring shadow: `0px 0px 0px 1px` patterns for interactive card states"
+msgstr ""
+
+#: ../../source/templates_claude.md:156
+msgid "Section borders: `1px 0px 0px` (top-only) for list item separators"
+msgstr ""
+
+#: ../../source/templates_claude.md:158
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_claude.md:160
+msgid "Padding: 1.6px 12px (very compact vertical)"
+msgstr ""
+
+#: ../../source/templates_claude.md:161
+msgid "Border: standard warm borders"
+msgstr ""
+
+#: ../../source/templates_claude.md:162
+msgid ""
+"Focus: ring with Focus Blue (`#3898ec`) border-color — the only cool "
+"color moment"
+msgstr ""
+
+#: ../../source/templates_claude.md:165
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_claude.md:166
+msgid "Sticky top nav with warm background"
+msgstr ""
+
+#: ../../source/templates_claude.md:167
+msgid "Logo: Claude wordmark in Anthropic Near Black"
+msgstr ""
+
+#: ../../source/templates_claude.md:168
+msgid ""
+"Links: mix of Near Black (`#141413`), Olive Gray (`#5e5d59`), and Dark "
+"Warm (`#3d3d3a`)"
+msgstr ""
+
+#: ../../source/templates_claude.md:169
+msgid "Nav border: `1px solid #30302e` (dark) or `1px solid #f0eee6` (light)"
+msgstr ""
+
+#: ../../source/templates_claude.md:170
+msgid "CTA: Terracotta Brand button or White Surface button"
+msgstr ""
+
+#: ../../source/templates_claude.md:171
+msgid "Hover: text shifts to foreground-primary, no decoration"
+msgstr ""
+
+#: ../../source/templates_claude.md:173
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_claude.md:174
+msgid "Product screenshots showing the Claude chat interface"
+msgstr ""
+
+#: ../../source/templates_claude.md:175
+msgid "Generous border-radius on media (16–32px)"
+msgstr ""
+
+#: ../../source/templates_claude.md:176
+msgid "Embedded video players with rounded corners"
+msgstr ""
+
+#: ../../source/templates_claude.md:177
+msgid "Dark UI screenshots provide contrast against warm light canvas"
+msgstr ""
+
+#: ../../source/templates_claude.md:178
+msgid "Organic, hand-drawn illustrations for conceptual sections"
+msgstr ""
+
+#: ../../source/templates_claude.md:180
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_claude.md:182
+msgid "**Model Comparison Cards**"
+msgstr ""
+
+#: ../../source/templates_claude.md:183
+msgid "Opus 4.5, Sonnet 4.5, Haiku 4.5 presented in a clean card grid"
+msgstr ""
+
+#: ../../source/templates_claude.md:184
+msgid ""
+"Each model gets a bordered card with name, description, and capability "
+"badges"
+msgstr ""
+
+#: ../../source/templates_claude.md:185
+msgid "Border Warm (`#e8e6dc`) separation between items"
+msgstr ""
+
+#: ../../source/templates_claude.md:187
+msgid "**Organic Illustrations**"
+msgstr ""
+
+#: ../../source/templates_claude.md:188
+msgid ""
+"Hand-drawn-feeling vector illustrations in terracotta, black, and muted "
+"green"
+msgstr ""
+
+#: ../../source/templates_claude.md:189
+msgid "Abstract, conceptual rather than literal product diagrams"
+msgstr ""
+
+#: ../../source/templates_claude.md:190
+msgid "The primary visual personality — no other AI company uses this style"
+msgstr ""
+
+#: ../../source/templates_claude.md:192
+msgid "**Dark/Light Section Alternation**"
+msgstr ""
+
+#: ../../source/templates_claude.md:193
+msgid "The page alternates between Parchment light and Near Black dark sections"
+msgstr ""
+
+#: ../../source/templates_claude.md:194
+msgid "Creates a reading rhythm like chapters in a book"
+msgstr ""
+
+#: ../../source/templates_claude.md:195
+msgid "Each section feels like a distinct environment"
+msgstr ""
+
+#: ../../source/templates_claude.md:197
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_claude.md:199
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_claude.md:200
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_claude.md:201
+msgid "Scale: 3px, 4px, 6px, 8px, 10px, 12px, 16px, 20px, 24px, 30px"
+msgstr ""
+
+#: ../../source/templates_claude.md:202
+msgid "Button padding: asymmetric (0px 12px 0px 8px) or balanced (8px 16px)"
+msgstr ""
+
+#: ../../source/templates_claude.md:203
+msgid "Card internal padding: approximately 24–32px"
+msgstr ""
+
+#: ../../source/templates_claude.md:204
+msgid ""
+"Section vertical spacing: generous (estimated 80–120px between major "
+"sections)"
+msgstr ""
+
+#: ../../source/templates_claude.md:206
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_claude.md:207
+msgid "Max container width: approximately 1200px, centered"
+msgstr ""
+
+#: ../../source/templates_claude.md:208
+msgid "Hero: centered with editorial layout"
+msgstr ""
+
+#: ../../source/templates_claude.md:209
+msgid "Feature sections: single-column or 2–3 column card grids"
+msgstr ""
+
+#: ../../source/templates_claude.md:210
+msgid "Model comparison: clean 3-column grid"
+msgstr ""
+
+#: ../../source/templates_claude.md:211
+msgid "Full-width dark sections breaking the container for emphasis"
+msgstr ""
+
+#: ../../source/templates_claude.md:213
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_claude.md:214
+msgid ""
+"**Editorial pacing**: Each section breathes like a magazine spread — "
+"generous top/bottom margins create natural reading pauses."
+msgstr ""
+
+#: ../../source/templates_claude.md:215
+msgid ""
+"**Serif-driven rhythm**: The serif headings establish a literary cadence "
+"that demands more whitespace than sans-serif designs."
+msgstr ""
+
+#: ../../source/templates_claude.md:216
+msgid ""
+"**Content island approach**: Sections alternate between light and dark "
+"environments, creating distinct \"rooms\" for each message."
+msgstr ""
+
+#: ../../source/templates_claude.md:218
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_claude.md:219
+msgid "Sharp (4px): Minimal inline elements"
+msgstr ""
+
+#: ../../source/templates_claude.md:220
+msgid "Subtly rounded (6–7.5px): Small buttons, secondary interactive elements"
+msgstr ""
+
+#: ../../source/templates_claude.md:221
+msgid "Comfortably rounded (8–8.5px): Standard buttons, cards, containers"
+msgstr ""
+
+#: ../../source/templates_claude.md:222
+msgid "Generously rounded (12px): Primary buttons, input fields, nav elements"
+msgstr ""
+
+#: ../../source/templates_claude.md:223
+msgid "Very rounded (16px): Featured containers, video players, tab lists"
+msgstr ""
+
+#: ../../source/templates_claude.md:224
+msgid "Highly rounded (24px): Tag-like elements, highlighted containers"
+msgstr ""
+
+#: ../../source/templates_claude.md:225
+msgid "Maximum rounded (32px): Hero containers, embedded media, large cards"
+msgstr ""
+
+#: ../../source/templates_claude.md:227
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "No shadow, no border"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Parchment background, inline text"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Contained (Level 1)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "`1px solid #f0eee6` (light) or `1px solid #30302e` (dark)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Standard cards, sections"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Ring (Level 2)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "`0px 0px 0px 1px` ring shadows using warm grays"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Interactive cards, buttons, hover states"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Whisper (Level 3)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "`rgba(0,0,0,0.05) 0px 4px 24px`"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Elevated feature cards, product screenshots"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Inset (Level 4)"
+msgstr ""
+
+#: ../../source/templates_claude.md
+#, python-format
+msgid "`inset 0px 0px 0px 1px` at 15% opacity"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Active/pressed button states"
+msgstr ""
+
+#: ../../source/templates_claude.md:237
+msgid ""
+"**Shadow Philosophy**: Claude communicates depth through **warm-toned "
+"ring shadows** rather than traditional drop shadows. The signature `0px "
+"0px 0px 1px` pattern creates a border-like halo that's softer than an "
+"actual border — it's a shadow pretending to be a border, or a border "
+"that's technically a shadow. When drop shadows do appear, they're "
+"extremely soft (0.05 opacity, 24px blur) — barely visible lifts that "
+"suggest floating rather than casting."
+msgstr ""
+
+#: ../../source/templates_claude.md:239
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_claude.md:240
+msgid ""
+"**Light/Dark alternation**: The most dramatic depth effect comes from "
+"alternating between Parchment (`#f5f4ed`) and Near Black (`#141413`) "
+"sections — entire sections shift elevation by changing the ambient light "
+"level."
+msgstr ""
+
+#: ../../source/templates_claude.md:241
+msgid ""
+"**Warm ring halos**: Button and card interactions use ring shadows that "
+"match the warm palette — never cool-toned or generic gray."
+msgstr ""
+
+#: ../../source/templates_claude.md:243
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_claude.md:245
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_claude.md:246
+msgid ""
+"Use Parchment (`#f5f4ed`) as the primary light background — the warm "
+"cream tone IS the Claude personality"
+msgstr ""
+
+#: ../../source/templates_claude.md:247
+msgid ""
+"Use Anthropic Serif at weight 500 for all headlines — the single-weight "
+"consistency is intentional"
+msgstr ""
+
+#: ../../source/templates_claude.md:248
+msgid ""
+"Use Terracotta Brand (`#c96442`) only for primary CTAs and the highest-"
+"signal brand moments"
+msgstr ""
+
+#: ../../source/templates_claude.md:249
+msgid ""
+"Keep all neutrals warm-toned — every gray should have a yellow-brown "
+"undertone"
+msgstr ""
+
+#: ../../source/templates_claude.md:250
+msgid ""
+"Use ring shadows (`0px 0px 0px 1px`) for interactive element states "
+"instead of drop shadows"
+msgstr ""
+
+#: ../../source/templates_claude.md:251
+msgid ""
+"Maintain the editorial serif/sans hierarchy — serif for content "
+"headlines, sans for UI"
+msgstr ""
+
+#: ../../source/templates_claude.md:252
+msgid "Use generous body line-height (1.60) for a literary reading experience"
+msgstr ""
+
+#: ../../source/templates_claude.md:253
+msgid ""
+"Alternate between light and dark sections to create chapter-like page "
+"rhythm"
+msgstr ""
+
+#: ../../source/templates_claude.md:254
+msgid "Apply generous border-radius (12–32px) for a soft, approachable feel"
+msgstr ""
+
+#: ../../source/templates_claude.md:256
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_claude.md:257
+msgid "Don't use cool blue-grays anywhere — the palette is exclusively warm-toned"
+msgstr ""
+
+#: ../../source/templates_claude.md:258
+msgid ""
+"Don't use bold (700+) weight on Anthropic Serif — weight 500 is the "
+"ceiling for serifs"
+msgstr ""
+
+#: ../../source/templates_claude.md:259
+msgid ""
+"Don't introduce saturated colors beyond Terracotta — the palette is "
+"deliberately muted"
+msgstr ""
+
+#: ../../source/templates_claude.md:260
+msgid ""
+"Don't use sharp corners (< 6px radius) on buttons or cards — softness is "
+"core to the identity"
+msgstr ""
+
+#: ../../source/templates_claude.md:261
+msgid ""
+"Don't apply heavy drop shadows — depth comes from ring shadows and "
+"background color shifts"
+msgstr ""
+
+#: ../../source/templates_claude.md:262
+msgid ""
+"Don't use pure white (`#ffffff`) as a page background — Parchment "
+"(`#f5f4ed`) or Ivory (`#faf9f5`) are always warmer"
+msgstr ""
+
+#: ../../source/templates_claude.md:263
+msgid ""
+"Don't use geometric/tech-style illustrations — Claude's illustrations are"
+" organic and hand-drawn-feeling"
+msgstr ""
+
+#: ../../source/templates_claude.md:264
+msgid ""
+"Don't reduce body line-height below 1.40 — the generous spacing supports "
+"the editorial personality"
+msgstr ""
+
+#: ../../source/templates_claude.md:265
+msgid ""
+"Don't use monospace fonts for non-code content — Anthropic Mono is "
+"strictly for code"
+msgstr ""
+
+#: ../../source/templates_claude.md:266
+msgid ""
+"Don't mix in sans-serif for headlines — the serif/sans split is the "
+"typographic identity"
+msgstr ""
+
+#: ../../source/templates_claude.md:268
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_claude.md:270
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Small Mobile"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "<479px"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Minimum layout, stacked everything, compact typography"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "479–640px"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Single column, hamburger nav, reduced heading sizes"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Large Mobile"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "640–767px"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Slightly wider content area"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "768–991px"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "2-column grids begin, condensed nav"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "992px+"
+msgstr ""
+
+#: ../../source/templates_claude.md
+msgid "Full multi-column layout, expanded nav, maximum hero typography (64px)"
+msgstr ""
+
+#: ../../source/templates_claude.md:279
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_claude.md:280
+msgid "Buttons use generous padding (8–16px vertical minimum)"
+msgstr ""
+
+#: ../../source/templates_claude.md:281
+msgid "Navigation links adequately spaced for thumb navigation"
+msgstr ""
+
+#: ../../source/templates_claude.md:282
+msgid "Card surfaces serve as large touch targets"
+msgstr ""
+
+#: ../../source/templates_claude.md:283
+msgid "Minimum recommended: 44x44px"
+msgstr ""
+
+#: ../../source/templates_claude.md:285
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_claude.md:286
+msgid "**Navigation**: Full horizontal nav collapses to hamburger on mobile"
+msgstr ""
+
+#: ../../source/templates_claude.md:287
+msgid "**Feature sections**: Multi-column → stacked single column"
+msgstr ""
+
+#: ../../source/templates_claude.md:288
+msgid "**Hero text**: 64px → 36px → ~25px progressive scaling"
+msgstr ""
+
+#: ../../source/templates_claude.md:289
+msgid "**Model cards**: 3-column → stacked vertical"
+msgstr ""
+
+#: ../../source/templates_claude.md:290
+msgid "**Section padding**: Reduces proportionally but maintains editorial rhythm"
+msgstr ""
+
+#: ../../source/templates_claude.md:291
+msgid "**Illustrations**: Scale proportionally, maintain aspect ratios"
+msgstr ""
+
+#: ../../source/templates_claude.md:293
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_claude.md:294
+msgid "Product screenshots scale proportionally within rounded containers"
+msgstr ""
+
+#: ../../source/templates_claude.md:295
+msgid "Illustrations maintain quality at all sizes"
+msgstr ""
+
+#: ../../source/templates_claude.md:296
+msgid "Video embeds maintain 16:9 aspect ratio with rounded corners"
+msgstr ""
+
+#: ../../source/templates_claude.md:297
+msgid "No art direction changes between breakpoints"
+msgstr ""
+
+#: ../../source/templates_claude.md:299
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_claude.md:301
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_claude.md:302
+msgid "Brand CTA: \"Terracotta Brand (#c96442)\""
+msgstr ""
+
+#: ../../source/templates_claude.md:303
+msgid "Page Background: \"Parchment (#f5f4ed)\""
+msgstr ""
+
+#: ../../source/templates_claude.md:304
+msgid "Card Surface: \"Ivory (#faf9f5)\""
+msgstr ""
+
+#: ../../source/templates_claude.md:305
+msgid "Primary Text: \"Anthropic Near Black (#141413)\""
+msgstr ""
+
+#: ../../source/templates_claude.md:306
+msgid "Secondary Text: \"Olive Gray (#5e5d59)\""
+msgstr ""
+
+#: ../../source/templates_claude.md:307
+msgid "Tertiary Text: \"Stone Gray (#87867f)\""
+msgstr ""
+
+#: ../../source/templates_claude.md:308
+msgid "Borders (light): \"Border Cream (#f0eee6)\""
+msgstr ""
+
+#: ../../source/templates_claude.md:309
+msgid "Dark Surface: \"Dark Surface (#30302e)\""
+msgstr ""
+
+#: ../../source/templates_claude.md:311
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_claude.md:312
+msgid ""
+"\"Create a hero section on Parchment (#f5f4ed) with a headline at 64px "
+"Anthropic Serif weight 500, line-height 1.10. Use Anthropic Near Black "
+"(#141413) text. Add a subtitle in Olive Gray (#5e5d59) at 20px Anthropic "
+"Sans with 1.60 line-height. Place a Terracotta Brand (#c96442) CTA button"
+" with Ivory text, 12px radius.\""
+msgstr ""
+
+#: ../../source/templates_claude.md:313
+msgid ""
+"\"Design a feature card on Ivory (#faf9f5) with a 1px solid Border Cream "
+"(#f0eee6) border and comfortably rounded corners (8px). Title in "
+"Anthropic Serif at 25px weight 500, description in Olive Gray (#5e5d59) "
+"at 16px Anthropic Sans. Add a whisper shadow (rgba(0,0,0,0.05) 0px 4px "
+"24px).\""
+msgstr ""
+
+#: ../../source/templates_claude.md:314
+msgid ""
+"\"Build a dark section on Anthropic Near Black (#141413) with Ivory "
+"(#faf9f5) headline text in Anthropic Serif at 52px weight 500. Use Warm "
+"Silver (#b0aea5) for body text. Borders in Dark Surface (#30302e).\""
+msgstr ""
+
+#: ../../source/templates_claude.md:315
+msgid ""
+"\"Create a button in Warm Sand (#e8e6dc) with Charcoal Warm (#4d4c48) "
+"text, 8px radius, and a ring shadow (0px 0px 0px 1px #d1cfc5). Padding: "
+"0px 12px 0px 8px.\""
+msgstr ""
+
+#: ../../source/templates_claude.md:316
+msgid ""
+"\"Design a model comparison grid with three cards on Ivory surfaces. Each"
+" card gets a Border Warm (#e8e6dc) top border, model name in Anthropic "
+"Serif at 25px, and description in Olive Gray at 15px Anthropic Sans.\""
+msgstr ""
+
+#: ../../source/templates_claude.md:318
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_claude.md:319
+msgid "Focus on ONE component at a time"
+msgstr ""
+
+#: ../../source/templates_claude.md:320
+msgid ""
+"Reference specific color names — \"use Olive Gray (#5e5d59)\" not \"make "
+"it gray\""
+msgstr ""
+
+#: ../../source/templates_claude.md:321
+msgid "Always specify warm-toned variants — no cool grays"
+msgstr ""
+
+#: ../../source/templates_claude.md:322
+msgid ""
+"Describe serif vs sans usage explicitly — \"Anthropic Serif for the "
+"heading, Anthropic Sans for the label\""
+msgstr ""
+
+#: ../../source/templates_claude.md:323
+msgid ""
+"For shadows, use \"ring shadow (0px 0px 0px 1px)\" or \"whisper shadow\" "
+"— never generic \"drop shadow\""
+msgstr ""
+
+#: ../../source/templates_claude.md:324
+msgid ""
+"Specify the warm background — \"on Parchment (#f5f4ed)\" or \"on Near "
+"Black (#141413)\""
+msgstr ""
+
+#: ../../source/templates_claude.md:325
+msgid ""
+"Keep illustrations organic and conceptual — describe \"hand-drawn-"
+"feeling\" style"
+msgstr ""
+

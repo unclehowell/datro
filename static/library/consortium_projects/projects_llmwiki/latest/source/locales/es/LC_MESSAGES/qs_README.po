@@ -1,0 +1,651 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/qs_README.md:5
+msgid "qs <sup>[![Version Badge][npm-version-svg]][package-url]</sup>"
+msgstr ""
+
+#: ../../source/qs_README.md:5
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/qs_README.md:7
+msgid ""
+"[![github actions][actions-image]][actions-url] [![coverage][codecov-"
+"image]][codecov-url] [![License][license-image]][license-url] "
+"[![Downloads][downloads-image]][downloads-url] [![CII Best "
+"Practices](https://bestpractices.coreinfrastructure.org/projects/9058/badge)](https://bestpractices.coreinfrastructure.org/projects/9058)"
+msgstr ""
+
+#: ../../source/qs_README.md:7
+msgid "github actions"
+msgstr ""
+
+#: ../../source/qs_README.md:7
+msgid "coverage"
+msgstr ""
+
+#: ../../source/qs_README.md:7
+msgid "License"
+msgstr ""
+
+#: ../../source/qs_README.md:7
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/qs_README.md:7
+msgid "CII Best Practices"
+msgstr ""
+
+#: ../../source/qs_README.md:13
+msgid "[![npm badge][npm-badge-png]][package-url]"
+msgstr ""
+
+#: ../../source/qs_README.md:13
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/qs_README.md:15
+msgid "A querystring parsing and stringifying library with some added security."
+msgstr ""
+
+#: ../../source/qs_README.md:17
+msgid "Lead Maintainer: [Jordan Harband](https://github.com/ljharb)"
+msgstr ""
+
+#: ../../source/qs_README.md:19
+msgid ""
+"The **qs** module was originally created and maintained by [TJ "
+"Holowaychuk](https://github.com/visionmedia/node-querystring)."
+msgstr ""
+
+#: ../../source/qs_README.md:21
+msgid "Usage"
+msgstr ""
+
+#: ../../source/qs_README.md:34
+msgid "Parsing Objects"
+msgstr ""
+
+#: ../../source/qs_README.md:36 ../../source/qs_README.md:356
+msgid "[](#preventEval)"
+msgstr ""
+
+#: ../../source/qs_README.md:41
+msgid ""
+"**qs** allows you to create nested objects within your query strings, by "
+"surrounding the name of sub-keys with square brackets `[]`. For example, "
+"the string `'foo[bar]=baz'` converts to:"
+msgstr ""
+
+#: ../../source/qs_README.md:52
+#, python-brace-format
+msgid ""
+"When using the `plainObjects` option the parsed value is returned as a "
+"null object, created via `{ __proto__: null }` and as such you should be "
+"aware that prototype methods will not exist on it and a user may set "
+"those names to whatever value they like:"
+msgstr ""
+
+#: ../../source/qs_README.md:59
+msgid ""
+"By default parameters that would overwrite properties on the object "
+"prototype are ignored, if you wish to keep the data from those fields "
+"either use `plainObjects` as mentioned above, or set `allowPrototypes` to"
+" `true` which will allow user input to overwrite those properties. "
+"*WARNING* It is generally a bad idea to enable this option as it can "
+"cause problems when attempting to use the properties that have been "
+"overwritten. Always be careful with this option."
+msgstr ""
+
+#: ../../source/qs_README.md:68
+msgid "URI encoded strings work too:"
+msgstr ""
+
+#: ../../source/qs_README.md:76
+msgid "You can also nest your objects, like `'foo[bar][baz]=foobarbaz'`:"
+msgstr ""
+
+#: ../../source/qs_README.md:88
+msgid ""
+"By default, when nesting objects **qs** will only parse up to 5 children "
+"deep. This means if you attempt to parse a string like "
+"`'a[b][c][d][e][f][g][h][i]=j'` your resulting object will be:"
+msgstr ""
+
+#: ../../source/qs_README.md:111
+msgid ""
+"This depth can be overridden by passing a `depth` option to "
+"`qs.parse(string, [options])`:"
+msgstr ""
+
+#: ../../source/qs_README.md:118
+msgid ""
+"You can configure **qs** to throw an error when parsing nested input "
+"beyond this depth using the `strictDepth` option (defaulted to false):"
+msgstr ""
+
+#: ../../source/qs_README.md:129
+msgid ""
+"The depth limit helps mitigate abuse when **qs** is used to parse user "
+"input, and it is recommended to keep it a reasonably small number. The "
+"strictDepth option adds a layer of protection by throwing an error when "
+"the limit is exceeded, allowing you to catch and handle such cases."
+msgstr ""
+
+#: ../../source/qs_README.md:131
+msgid ""
+"For similar reasons, by default **qs** will only parse up to 1000 "
+"parameters. This can be overridden by passing a `parameterLimit` option:"
+msgstr ""
+
+#: ../../source/qs_README.md:138
+msgid ""
+"If you want an error to be thrown whenever the a limit is exceeded (eg, "
+"`parameterLimit`, `arrayLimit`), set the `throwOnLimitExceeded` option to"
+" `true`. This option will generate a descriptive error if the query "
+"string exceeds a configured limit."
+msgstr ""
+
+#: ../../source/qs_README.md:148
+msgid ""
+"When `throwOnLimitExceeded` is set to `false` (default), **qs** will "
+"parse up to the specified `parameterLimit` and ignore the rest without "
+"throwing an error."
+msgstr ""
+
+#: ../../source/qs_README.md:150
+msgid "To bypass the leading question mark, use `ignoreQueryPrefix`:"
+msgstr ""
+
+#: ../../source/qs_README.md:157
+msgid "An optional delimiter can also be passed:"
+msgstr ""
+
+#: ../../source/qs_README.md:164
+msgid "Delimiters can be a regular expression too:"
+msgstr ""
+
+#: ../../source/qs_README.md:171
+msgid "Option `allowDots` can be used to enable dot notation:"
+msgstr ""
+
+#: ../../source/qs_README.md:178
+msgid ""
+"Option `decodeDotInKeys` can be used to decode dots in keys Note: it "
+"implies `allowDots`, so `parse` will error if you set `decodeDotInKeys` "
+"to `true`, and `allowDots` to `false`."
+msgstr ""
+
+#: ../../source/qs_README.md:186
+msgid ""
+"Option `allowEmptyArrays` can be used to allowing empty array values in "
+"object"
+msgstr ""
+
+#: ../../source/qs_README.md:192
+msgid ""
+"Option `duplicates` can be used to change the behavior when duplicate "
+"keys are encountered"
+msgstr ""
+
+#: ../../source/qs_README.md:200
+msgid ""
+"If you have to deal with legacy browsers or services, there's also "
+"support for decoding percent-encoded octets as iso-8859-1:"
+msgstr ""
+
+#: ../../source/qs_README.md:207
+msgid ""
+"Some services add an initial `utf8=✓` value to forms so that old Internet"
+" Explorer versions are more likely to submit the form as utf-8. "
+"Additionally, the server can check the value against wrong encodings of "
+"the checkmark character and detect that a query string or `application/x"
+"-www-form-urlencoded` body was *not* sent as utf-8, eg. if the form had "
+"an `accept-charset` parameter or the containing page had a different "
+"character set."
+msgstr ""
+
+#: ../../source/qs_README.md:210
+msgid ""
+"**qs** supports this mechanism via the `charsetSentinel` option. If "
+"specified, the `utf8` parameter will be omitted from the returned object."
+" It will be used to switch to `iso-8859-1`/`utf-8` mode depending on how "
+"the checkmark is encoded."
+msgstr ""
+
+#: ../../source/qs_README.md:214
+msgid ""
+"**Important**: When you specify both the `charset` option and the "
+"`charsetSentinel` option, the `charset` will be overridden when the "
+"request contains a `utf8` parameter from which the actual charset can be "
+"deduced. In that sense the `charset` will behave as the default charset "
+"rather than the authoritative charset."
+msgstr ""
+
+#: ../../source/qs_README.md:232
+msgid ""
+"If you want to decode the `&#...;` syntax to the actual character, you "
+"can specify the `interpretNumericEntities` option as well:"
+msgstr ""
+
+#: ../../source/qs_README.md:242
+msgid ""
+"It also works when the charset has been detected in `charsetSentinel` "
+"mode."
+msgstr ""
+
+#: ../../source/qs_README.md:244
+msgid "Parsing Arrays"
+msgstr ""
+
+#: ../../source/qs_README.md:246
+msgid "**qs** can also parse arrays using a similar `[]` notation:"
+msgstr ""
+
+#: ../../source/qs_README.md:253
+msgid "You may specify an index as well:"
+msgstr ""
+
+#: ../../source/qs_README.md:260
+msgid ""
+"Note that the only difference between an index in an array and a key in "
+"an object is that the value between the brackets must be a number to "
+"create an array. When creating arrays with specific indices, **qs** will "
+"compact a sparse array to only the existing values preserving their "
+"order:"
+msgstr ""
+
+#: ../../source/qs_README.md:268
+msgid "You may also use `allowSparse` option to parse sparse arrays:"
+msgstr ""
+
+#: ../../source/qs_README.md:275
+msgid "Note that an empty string is also a value, and will be preserved:"
+msgstr ""
+
+#: ../../source/qs_README.md:285
+msgid ""
+"**qs** will also limit arrays to a maximum of `20` elements. Any array "
+"members with an index of `20` or greater will instead be converted to an "
+"object with the index as the key. This is needed to handle cases when "
+"someone sent, for example, `a[999999999]` and it will take significant "
+"time to iterate over this huge array."
+msgstr ""
+
+#: ../../source/qs_README.md:294
+msgid "This limit can be overridden by passing an `arrayLimit` option:"
+msgstr ""
+
+#: ../../source/qs_README.md:301
+msgid ""
+"If you want to throw an error whenever the array limit is exceeded, set "
+"the `throwOnLimitExceeded` option to `true`. This option will generate a "
+"descriptive error if the query string exceeds a configured limit."
+msgstr ""
+
+#: ../../source/qs_README.md:311
+msgid ""
+"When `throwOnLimitExceeded` is set to `false` (default), **qs** will "
+"parse up to the specified `arrayLimit` and if the limit is exceeded, the "
+"array will instead be converted to an object with the index as the key"
+msgstr ""
+
+#: ../../source/qs_README.md:313
+msgid ""
+"To prevent array syntax (`a[]`, `a[0]`) from being parsed as arrays, set "
+"`parseArrays` to `false`. Note that duplicate keys (e.g. `a=b&a=c`) may "
+"still produce arrays when `duplicates` is `'combine'` (the default)."
+msgstr ""
+
+#: ../../source/qs_README.md:321
+msgid "If you mix notations, **qs** will merge the two items into an object:"
+msgstr ""
+
+#: ../../source/qs_README.md:328
+msgid "You can also create arrays of objects:"
+msgstr ""
+
+#: ../../source/qs_README.md:335
+msgid "Some people use comma to join array, **qs** can parse it:"
+msgstr ""
+
+#: ../../source/qs_README.md:340
+#, python-brace-format
+msgid "(_this cannot convert nested objects, such as `a={b:1},{c:d}`_)"
+msgstr ""
+
+#: ../../source/qs_README.md:342
+msgid "Parsing primitive/scalar values (numbers, booleans, null, etc)"
+msgstr ""
+
+#: ../../source/qs_README.md:344
+msgid ""
+"By default, all values are parsed as strings. This behavior will not "
+"change and is explained in [issue "
+"#91](https://github.com/ljharb/qs/issues/91)."
+msgstr ""
+
+#: ../../source/qs_README.md:352
+msgid ""
+"If you wish to auto-convert values which look like numbers, booleans, and"
+" other values into their primitive counterparts, you can use the [query-"
+"types Express JS middleware](https://github.com/xpepermint/query-types) "
+"which will auto-convert all request query parameters."
+msgstr ""
+
+#: ../../source/qs_README.md:354
+msgid "Stringifying"
+msgstr ""
+
+#: ../../source/qs_README.md:361
+msgid ""
+"When stringifying, **qs** by default URI encodes output. Objects are "
+"stringified as you would expect:"
+msgstr ""
+
+#: ../../source/qs_README.md:368
+msgid "This encoding can be disabled by setting the `encode` option to `false`:"
+msgstr ""
+
+#: ../../source/qs_README.md:375
+msgid ""
+"Encoding can be disabled for keys by setting the `encodeValuesOnly` "
+"option to `true`:"
+msgstr ""
+
+#: ../../source/qs_README.md:384
+msgid ""
+"This encoding can also be replaced by a custom encoding method set as "
+"`encoder` option:"
+msgstr ""
+
+#: ../../source/qs_README.md:393
+msgid "_(Note: the `encoder` option does not apply if `encode` is `false`)_"
+msgstr ""
+
+#: ../../source/qs_README.md:395
+msgid ""
+"Analogue to the `encoder` there is a `decoder` option for `parse` to "
+"override decoding of properties and values:"
+msgstr ""
+
+#: ../../source/qs_README.md:404
+msgid ""
+"You can encode keys and values using different logic by using the type "
+"argument provided to the encoder:"
+msgstr ""
+
+#: ../../source/qs_README.md:416
+msgid "The type argument is also provided to the decoder:"
+msgstr ""
+
+#: ../../source/qs_README.md:428
+msgid ""
+"Examples beyond this point will be shown as though the output is not URI "
+"encoded for clarity. Please note that the return values in these cases "
+"*will* be URI encoded during real usage."
+msgstr ""
+
+#: ../../source/qs_README.md:431
+msgid ""
+"When arrays are stringified, they follow the `arrayFormat` option, which "
+"defaults to `indices`:"
+msgstr ""
+
+#: ../../source/qs_README.md:438
+msgid ""
+"You may override this by setting the `indices` option to `false`, or to "
+"be more explicit, the `arrayFormat` option to `repeat`:"
+msgstr ""
+
+#: ../../source/qs_README.md:445
+msgid ""
+"You may use the `arrayFormat` option to specify the format of the output "
+"array:"
+msgstr ""
+
+#: ../../source/qs_README.md:458
+msgid ""
+"Note: when using `arrayFormat` set to `'comma'`, you can also pass the "
+"`commaRoundTrip` option set to `true` or `false`, to append `[]` on "
+"single-item arrays, so that they can round trip through a parse."
+msgstr ""
+
+#: ../../source/qs_README.md:460
+msgid "When objects are stringified, by default they use bracket notation:"
+msgstr ""
+
+#: ../../source/qs_README.md:467
+msgid ""
+"You may override this to use dot notation by setting the `allowDots` "
+"option to `true`:"
+msgstr ""
+
+#: ../../source/qs_README.md:474
+msgid ""
+"You may encode the dot notation in the keys of object with option "
+"`encodeDotInKeys` by setting it to `true`: Note: it implies `allowDots`, "
+"so `stringify` will error if you set `decodeDotInKeys` to `true`, and "
+"`allowDots` to `false`. Caveat: when `encodeValuesOnly` is `true` as well"
+" as `encodeDotInKeys`, only dots in keys and nothing else will be "
+"encoded."
+msgstr ""
+
+#: ../../source/qs_README.md:482
+msgid ""
+"You may allow empty array values by setting the `allowEmptyArrays` option"
+" to `true`:"
+msgstr ""
+
+#: ../../source/qs_README.md:488
+msgid ""
+"Empty strings and null values will omit the value, but the equals sign "
+"(=) remains in place:"
+msgstr ""
+
+#: ../../source/qs_README.md:494
+msgid "Key with no values (such as an empty object or array) will return nothing:"
+msgstr ""
+
+#: ../../source/qs_README.md:504
+msgid "Properties that are set to `undefined` will be omitted entirely:"
+msgstr ""
+
+#: ../../source/qs_README.md:510
+msgid "The query string may optionally be prepended with a question mark:"
+msgstr ""
+
+#: ../../source/qs_README.md:516
+msgid ""
+"Note that when the output is an empty string, the prefix will not be "
+"added:"
+msgstr ""
+
+#: ../../source/qs_README.md:522
+msgid "The delimiter may be overridden with stringify as well:"
+msgstr ""
+
+#: ../../source/qs_README.md:528
+msgid ""
+"If you only want to override the serialization of `Date` objects, you can"
+" provide a `serializeDate` option:"
+msgstr ""
+
+#: ../../source/qs_README.md:539
+msgid "You may use the `sort` option to affect the order of parameter keys:"
+msgstr ""
+
+#: ../../source/qs_README.md:548
+msgid ""
+"Finally, you can use the `filter` option to restrict which keys will be "
+"included in the stringified output. If you pass a function, it will be "
+"called for each key to obtain the replacement value. Otherwise, if you "
+"pass an array, it will be used to select properties and array indices for"
+" stringification:"
+msgstr ""
+
+#: ../../source/qs_README.md:574
+msgid ""
+"You could also use `filter` to inject custom serialization for user "
+"defined types. Consider you're working with some api that expects query "
+"strings of the format for ranges:"
+msgstr ""
+
+#: ../../source/qs_README.md:581
+msgid "For which you model as:"
+msgstr ""
+
+#: ../../source/qs_README.md:592
+msgid "You could _inject_ a custom serializer to handle values of this type:"
+msgstr ""
+
+#: ../../source/qs_README.md:612
+msgid "Handling of `null` values"
+msgstr ""
+
+#: ../../source/qs_README.md:614
+msgid "By default, `null` values are treated like empty strings:"
+msgstr ""
+
+#: ../../source/qs_README.md:621
+msgid ""
+"Parsing does not distinguish between parameters with and without equal "
+"signs. Both are converted to empty strings."
+msgstr ""
+
+#: ../../source/qs_README.md:629
+msgid ""
+"To distinguish between `null` values and empty strings use the "
+"`strictNullHandling` flag. In the result string the `null` values have no"
+" `=` sign:"
+msgstr ""
+
+#: ../../source/qs_README.md:637
+msgid ""
+"To parse values without `=` back to `null` use the `strictNullHandling` "
+"flag:"
+msgstr ""
+
+#: ../../source/qs_README.md:644
+msgid ""
+"To completely skip rendering keys with `null` values, use the `skipNulls`"
+" flag:"
+msgstr ""
+
+#: ../../source/qs_README.md:651
+msgid ""
+"If you're communicating with legacy systems, you can switch to "
+"`iso-8859-1` using the `charset` option:"
+msgstr ""
+
+#: ../../source/qs_README.md:658
+msgid ""
+"Characters that don't exist in `iso-8859-1` will be converted to numeric "
+"entities, similar to what browsers do:"
+msgstr ""
+
+#: ../../source/qs_README.md:665
+msgid ""
+"You can use the `charsetSentinel` option to announce the character by "
+"including an `utf8=✓` parameter with the proper encoding if the "
+"checkmark, similar to what Ruby on Rails and others do when submitting "
+"forms."
+msgstr ""
+
+#: ../../source/qs_README.md:675
+msgid "Dealing with special character sets"
+msgstr ""
+
+#: ../../source/qs_README.md:677
+msgid ""
+"By default the encoding and decoding of characters is done in `utf-8`, "
+"and `iso-8859-1` support is also built in via the `charset` parameter."
+msgstr ""
+
+#: ../../source/qs_README.md:679
+msgid ""
+"If you wish to encode querystrings to a different character set (i.e. "
+"[Shift JIS](https://en.wikipedia.org/wiki/Shift_JIS)) you can use the "
+"[`qs-iconv`](https://github.com/martinheidegger/qs-iconv) library:"
+msgstr ""
+
+#: ../../source/qs_README.md:689
+msgid "This also works for decoding of query strings:"
+msgstr ""
+
+#: ../../source/qs_README.md:697
+msgid "RFC 3986 and RFC 1738 space encoding"
+msgstr ""
+
+#: ../../source/qs_README.md:699
+msgid ""
+"RFC3986 used as default option and encodes ' ' to *%20* which is backward"
+" compatible. In the same time, output can be stringified as per RFC1738 "
+"with ' ' equal to '+'."
+msgstr ""
+
+#: ../../source/qs_README.md:708
+msgid "Security"
+msgstr ""
+
+#: ../../source/qs_README.md:710
+msgid ""
+"Please email [@ljharb](https://github.com/ljharb) or see "
+"https://tidelift.com/security if you have a potential security "
+"vulnerability to report."
+msgstr ""
+
+#: ../../source/qs_README.md:712
+msgid "qs for enterprise"
+msgstr ""
+
+#: ../../source/qs_README.md:714
+msgid "Available as part of the Tidelift Subscription"
+msgstr ""
+
+#: ../../source/qs_README.md:716
+msgid ""
+"The maintainers of qs and thousands of other packages are working with "
+"Tidelift to deliver commercial support and maintenance for the open "
+"source dependencies you use to build your applications. Save time, reduce"
+" risk, and improve code health, while paying the maintainers of the exact"
+" dependencies you use. [Learn "
+"more.](https://tidelift.com/subscription/pkg/npm-qs?utm_source=npm-"
+"qs&utm_medium=referral&utm_campaign=enterprise&utm_term=repo)"
+msgstr ""
+
+#: ../../source/qs_README.md:736
+msgid "Acknowledgements"
+msgstr ""
+
+#: ../../source/qs_README.md:738
+msgid "qs logo by [NUMI](https://github.com/numi-hq/open-design):"
+msgstr ""
+
+#: ../../source/qs_README.md:740
+msgid ""
+"[<img src=\"https://raw.githubusercontent.com/numi-hq/open-"
+"design/main/assets/numi-lockup.png\" alt=\"NUMI Logo\" style=\"width: "
+"200px;\"/>](https://numi.tech/?ref=qs)"
+msgstr ""
+

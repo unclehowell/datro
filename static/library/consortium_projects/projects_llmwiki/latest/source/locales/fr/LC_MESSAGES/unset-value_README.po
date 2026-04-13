@@ -1,0 +1,266 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/unset-value_README.md:1
+msgid ""
+"unset-value [![NPM version](https://img.shields.io/npm/v/unset-"
+"value.svg?style=flat)](https://www.npmjs.com/package/unset-value) [![NPM "
+"monthly downloads](https://img.shields.io/npm/dm/unset-"
+"value.svg?style=flat)](https://npmjs.org/package/unset-value)  [![NPM "
+"total downloads](https://img.shields.io/npm/dt/unset-"
+"value.svg?style=flat)](https://npmjs.org/package/unset-value) [![Linux "
+"Build Status](https://img.shields.io/travis/jonschlinkert/unset-"
+"value.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert"
+"/unset-value)"
+msgstr ""
+
+#: ../../source/unset-value_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/unset-value_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/unset-value_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/unset-value_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/unset-value_README.md:3
+msgid "Delete nested properties from an object using dot notation."
+msgstr ""
+
+#: ../../source/unset-value_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/unset-value_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/unset-value_README.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/unset-value_README.md:24
+msgid "Examples"
+msgstr ""
+
+#: ../../source/unset-value_README.md:26
+msgid "Updates the object when a property is deleted"
+msgstr ""
+
+#: ../../source/unset-value_README.md:35
+msgid "Returns true when a property is deleted"
+msgstr ""
+
+#: ../../source/unset-value_README.md:41
+msgid "Returns `true` when a property does not exist"
+msgstr ""
+
+#: ../../source/unset-value_README.md:43
+msgid ""
+"This is consistent with `delete` behavior in that it does not throw when "
+"a property does not exist."
+msgstr ""
+
+#: ../../source/unset-value_README.md:50
+msgid "delete nested values"
+msgstr ""
+
+#: ../../source/unset-value_README.md:69
+msgid "throws on invalid args"
+msgstr ""
+
+#: ../../source/unset-value_README.md:76
+msgid "About"
+msgstr ""
+
+#: ../../source/unset-value_README.md:78
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/unset-value_README.md:80
+msgid ""
+"[get-value](https://www.npmjs.com/package/get-value): Use property paths "
+"(`a.b.c`) to get a nested value from an object. | "
+"[homepage](https://github.com/jonschlinkert/get-value \"Use property "
+"paths (`a.b.c`) to get a nested value from an object.\")"
+msgstr ""
+
+#: ../../source/unset-value_README.md:81
+msgid ""
+"[get-values](https://www.npmjs.com/package/get-values): Return an array "
+"of all values from the given object. | "
+"[homepage](https://github.com/jonschlinkert/get-values \"Return an array "
+"of all values from the given object.\")"
+msgstr ""
+
+#: ../../source/unset-value_README.md:82
+msgid ""
+"[omit-value](https://www.npmjs.com/package/omit-value): Omit properties "
+"from an object or deeply nested property of an object using object path… "
+"[more](https://github.com/jonschlinkert/omit-value) | "
+"[homepage](https://github.com/jonschlinkert/omit-value \"Omit properties "
+"from an object or deeply nested property of an object using object path "
+"notation.\")"
+msgstr ""
+
+#: ../../source/unset-value_README.md:83
+msgid ""
+"[put-value](https://www.npmjs.com/package/put-value): Update only "
+"existing values from an object, works with dot notation paths like "
+"`a.b.c` and… [more](https://github.com/tunnckocore/put-value#readme) | "
+"[homepage](https://github.com/tunnckocore/put-value#readme \"Update only "
+"existing values from an object, works with dot notation paths like "
+"`a.b.c` and support deep nesting.\")"
+msgstr ""
+
+#: ../../source/unset-value_README.md:84
+msgid ""
+"[set-value](https://www.npmjs.com/package/set-value): Create nested "
+"values and any intermediaries using dot notation (`'a.b.c'`) paths. | "
+"[homepage](https://github.com/jonschlinkert/set-value \"Create nested "
+"values and any intermediaries using dot notation (`'a.b.c'`) paths.\")"
+msgstr ""
+
+#: ../../source/unset-value_README.md:85
+msgid ""
+"[union-value](https://www.npmjs.com/package/union-value): Set an array of"
+" unique values as the property of an object. Supports setting deeply… "
+"[more](https://github.com/jonschlinkert/union-value) | "
+"[homepage](https://github.com/jonschlinkert/union-value \"Set an array of"
+" unique values as the property of an object. Supports setting deeply "
+"nested properties using using object-paths/dot notation.\")"
+msgstr ""
+
+#: ../../source/unset-value_README.md:86
+msgid ""
+"[upsert-value](https://www.npmjs.com/package/upsert-value): Update or set"
+" nested values and any intermediaries with dot notation (`'a.b.c'`) "
+"paths. | [homepage](https://github.com/doowb/upsert-value \"Update or set"
+" nested values and any intermediaries with dot notation (`'a.b.c'`) "
+"paths.\")"
+msgstr ""
+
+#: ../../source/unset-value_README.md:88
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/unset-value_README.md:90
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/unset-value_README.md:92
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/unset-value_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/unset-value_README.md
+msgid "**Contributor**"
+msgstr ""
+
+#: ../../source/unset-value_README.md
+msgid "6"
+msgstr ""
+
+#: ../../source/unset-value_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/unset-value_README.md
+msgid "2"
+msgstr ""
+
+#: ../../source/unset-value_README.md
+msgid "[wtgtybhertgeghgtwtg](https://github.com/wtgtybhertgeghgtwtg)"
+msgstr ""
+
+#: ../../source/unset-value_README.md:99
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/unset-value_README.md:101
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/unset-value_README.md:103
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/unset-value_README.md:109
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/unset-value_README.md:111
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/unset-value_README.md:117
+msgid "Author"
+msgstr ""
+
+#: ../../source/unset-value_README.md:119
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/unset-value_README.md:121
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/unset-value_README.md:122
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/unset-value_README.md:124
+msgid "License"
+msgstr ""
+
+#: ../../source/unset-value_README.md:126
+msgid ""
+"Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/unset-value_README.md:131
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.4.2, on "
+"February 25, 2017._"
+msgstr ""
+

@@ -1,0 +1,277 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_Errors.md:1
+msgid "Errors"
+msgstr ""
+
+#: ../../source/api_Errors.md:3
+msgid ""
+"Undici exposes a variety of error objects that you can use to enhance "
+"your error handling. You can find all the error objects inside the "
+"`errors` key."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "Error"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "Error Codes"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UndiciError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "all errors below are extended from `UndiciError`."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`ConnectTimeoutError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_CONNECT_TIMEOUT`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "socket is destroyed due to connect timeout."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`HeadersTimeoutError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_HEADERS_TIMEOUT`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "socket is destroyed due to headers timeout."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`HeadersOverflowError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_HEADERS_OVERFLOW`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "socket is destroyed due to headers' max size being exceeded."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`BodyTimeoutError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_BODY_TIMEOUT`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "socket is destroyed due to body timeout."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`InvalidArgumentError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_INVALID_ARG`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "passed an invalid argument."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`InvalidReturnValueError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_INVALID_RETURN_VALUE`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "returned an invalid value."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`RequestAbortedError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_ABORTED`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "the request has been aborted by the user"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`ClientDestroyedError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_DESTROYED`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "trying to use a destroyed client."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`ClientClosedError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_CLOSED`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "trying to use a closed client."
+msgstr ""
+
+#: ../../source/api_Errors.md ../../source/api_Errors.md:32
+msgid "`SocketError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_SOCKET`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "there is an error with the socket."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`NotSupportedError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_NOT_SUPPORTED`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "encountered unsupported functionality."
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`RequestContentLengthMismatchError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_REQ_CONTENT_LENGTH_MISMATCH`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "request body does not match content-length header"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`ResponseContentLengthMismatchError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_RES_CONTENT_LENGTH_MISMATCH`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "response body does not match content-length header"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`InformationalError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_INFO`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "expected error with reason"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`ResponseExceededMaxSizeError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_RES_EXCEEDED_MAX_SIZE`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "response body exceed the max size allowed"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`SecureProxyConnectionError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_PRX_TLS`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "tls connection to a proxy failed"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`MessageSizeExceededError`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "`UND_ERR_WS_MESSAGE_SIZE_EXCEEDED`"
+msgstr ""
+
+#: ../../source/api_Errors.md
+msgid "WebSocket decompressed message exceeded the maximum allowed size"
+msgstr ""
+
+#: ../../source/api_Errors.md:31
+msgid ""
+"Be aware of the possible difference between the global dispatcher version"
+" and the actual undici version you might be using. We recommend to avoid "
+"the check `instanceof errors.UndiciError` and seek for the `error.code "
+"=== '<error_code>'` instead to avoid inconsistencies."
+msgstr ""
+
+#: ../../source/api_Errors.md:34
+msgid "The `SocketError` has a `.socket` property which holds socket metadata:"
+msgstr ""
+
+#: ../../source/api_Errors.md:49
+msgid "Be aware that in some cases the `.socket` property can be `null`."
+msgstr ""
+

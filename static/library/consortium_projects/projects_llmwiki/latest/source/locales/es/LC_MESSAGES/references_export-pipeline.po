@@ -1,0 +1,580 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_export-pipeline.md:1
+msgid "Export Pipeline"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:3
+msgid "PNG Export"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:5
+msgid "In-Sketch (Keyboard Shortcut)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:16
+msgid "Timed Export (Static Generative)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:33
+msgid "High-Resolution Export"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:35
+msgid ""
+"For resolutions beyond screen size, use `pixelDensity()` or a large "
+"offscreen buffer:"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:47
+msgid "Batch Seed Export"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:63
+msgid "GIF Export"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:65
+msgid "saveGif()"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:83
+#: ../../source/references_export-pipeline.md:357
+msgid "Limitations:"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:84
+msgid "GIF is 256 colors max — dithering artifacts on gradients"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:85
+msgid "Large canvases produce huge files"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:86
+msgid "Use a smaller canvas (640x360) for GIF, higher for PNG/MP4"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:87
+msgid "Frame rate is approximate"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:89
+msgid "Optimal GIF Settings"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:100
+msgid "Frame Sequence Export"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:102
+msgid "saveFrames()"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:114
+msgid "Manual Frame Export (More Control)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:140
+msgid "Deterministic Capture (Critical for Video)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:142
+msgid ""
+"The `noLoop()` + `redraw()` pattern is **required** for frame-perfect "
+"headless capture. Without it, p5's draw loop runs freely in Chrome while "
+"Puppeteer screenshots are slow — the sketch runs ahead and you get "
+"duplicate/missing frames."
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:158
+msgid ""
+"The bundled `scripts/export-frames.js` detects `window._p5Ready` and "
+"switches to deterministic mode automatically. Without it, falls back to "
+"timed capture (less precise)."
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:160
+msgid "ffmpeg: Frames to MP4"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:180
+msgid "Video Export Gotchas"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:182
+msgid ""
+"**YUV420 clips dark values.** H.264 encodes in YUV420 color space, which "
+"rounds dark RGB values. Content below RGB(8,8,8) may become pure black. "
+"Subtle dark details (dim particle trails, faint noise textures) disappear"
+" in the encoded video even though they're visible in the PNG frames."
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:184
+msgid ""
+"**Fix:** Ensure minimum brightness of ~10 for any visible content. Test "
+"by encoding a few frames and comparing the MP4 frame vs the source PNG."
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:191
+msgid ""
+"**Static frames look broken in video.** If an algorithm produces a single"
+" static image (like a pre-computed attractor heatmap), it reads as a "
+"freeze/glitch in video. Always add animation even to static content:"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:192
+msgid "Progressive reveal (expand from center, sweep across)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:193
+msgid "Slow parameter drift (rotate color mapping, shift noise offset)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:194
+msgid "Camera-like motion (slow zoom, slight pan)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:195
+msgid "Overlay animated particles or grain"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:197
+msgid ""
+"**Scene transitions are mandatory.** Hard cuts between visually different"
+" scenes are jarring. Use fade envelopes:"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:208
+msgid "Per-Clip Architecture (Multi-Scene Videos)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:210
+msgid ""
+"For videos with multiple scenes, render each as a separate HTML file + "
+"MP4 clip, then stitch with ffmpeg. This enables re-rendering individual "
+"scenes without touching the rest."
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:212
+msgid "**Directory structure:**"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:230
+msgid "**Stitch clips with ffmpeg concat:**"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:242
+msgid "**Re-render a single scene:**"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:251
+msgid ""
+"**Re-order without re-rendering:** Just change the order in concat.txt "
+"and re-stitch. No frames need re-rendering."
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:253
+msgid "**Each scene HTML must:**"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:254
+msgid "Call `noLoop()` in setup and set `window._p5Ready = true`"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:255
+msgid "Use `frameCount`-based timing (not `millis()`) for deterministic output"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:256
+msgid "Handle its own fade-in/fade-out envelope"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:257
+msgid "Be fully self-contained (no shared state between scenes)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:259
+msgid "ffmpeg: Frames to GIF (Better Quality)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:271
+msgid "Headless Export (Puppeteer)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:273
+msgid ""
+"For automated, server-side, or CI rendering. Uses a headless Chrome "
+"browser to run the sketch."
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:275
+msgid "export-frames.js (Node.js Script)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:277
+msgid "See `scripts/export-frames.js` for the full implementation. Basic pattern:"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:318
+msgid "render.sh (Full Pipeline)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:320
+msgid "See `scripts/render.sh` for the complete render script. Pipeline:"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:330
+msgid "SVG Export"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:332
+msgid "Using p5.js-svg Library"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:358
+msgid "No `loadPixels()`, `updatePixels()`, `filter()`, `blendMode()`"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:359
+msgid "No WebGL"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:360
+msgid "No pixel-level effects"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:361
+msgid "Great for: line art, geometric patterns, plots"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:363
+msgid "Hybrid: Raster Background + SVG Overlay"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:365
+msgid ""
+"Render background effects to PNG, then SVG for crisp vector elements on "
+"top."
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:367
+msgid "Export Format Decision Guide"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Need"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Format"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Method"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Single still image"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "PNG"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "`saveCanvas()` or `keyPressed()`"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Print-quality still"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "PNG (high-res)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "`pixelDensity(1)` + large canvas"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Short animated loop"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "GIF"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "`saveGif()`"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Long animation"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "MP4"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Frame sequence + ffmpeg"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Social media video"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "`scripts/render.sh`"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Vector/print"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "SVG"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "p5.js-svg renderer"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Batch variations"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "PNG sequence"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Seed loop + `saveCanvas()`"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Interactive deployment"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "HTML"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Single self-contained file"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Headless rendering"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "PNG/MP4"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Puppeteer + ffmpeg"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:381
+msgid "Tiling for Ultra-High-Resolution"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:383
+msgid ""
+"For resolutions too large for a single canvas (e.g., 10000x10000 for "
+"print):"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:406
+msgid "CCapture.js — Deterministic Video Capture"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:408
+msgid ""
+"The built-in `saveFrames()` has limitations: small frame counts, memory "
+"issues, browser download blocking. CCapture.js solves all of these by "
+"hooking into the browser's timing functions to simulate constant time "
+"steps regardless of actual render speed."
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:414
+msgid "Basic Setup"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:457
+msgid "Format Comparison"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Quality"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Browser Support"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "**WebM**"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "High"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Medium"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Chrome only"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "**GIF**"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "256 colors"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Large"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "All (via gif.js worker)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "**PNG sequence**"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Lossless"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Very large (TAR)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "All"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "**JPEG sequence**"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Lossy"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md
+msgid "Large (TAR)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:466
+msgid "Important: Timing Hook"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:468
+msgid ""
+"CCapture.js overrides `Date.now()`, `setTimeout`, "
+"`requestAnimationFrame`, and `performance.now()`. This means:"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:469
+msgid "`millis()` returns simulated time (perfect for recording)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:470
+msgid "`deltaTime` is constant (1000/framerate)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:471
+msgid "Complex sketches that take 500ms per frame still record at smooth 30fps"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:472
+msgid ""
+"**Caveat**: Audio sync breaks (audio plays in real-time, not simulated "
+"time)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:474
+msgid "Programmatic Export (canvas API)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:476
+msgid "For custom export workflows beyond `saveCanvas()`:"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:491
+msgid "SVG Export (p5.js-svg)"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:514
+msgid "**Critical SVG caveats:**"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:515
+msgid ""
+"**Must call `clear()` in `draw()`** for animated sketches — SVG DOM "
+"accumulates child elements, causing memory bloat"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:516
+msgid "`blendMode()` is **not implemented** in SVG renderer"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:517
+msgid "`filter()`, `loadPixels()`, `updatePixels()` don't work"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:518
+msgid "Requires **p5.js 1.11.x** — not compatible with p5.js 2.x"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:519
+msgid "Perfect for: line art, geometric patterns, pen plotter output"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:521
+msgid "Platform Export"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:523
+msgid "fxhash Conventions"
+msgstr ""
+
+#: ../../source/references_export-pipeline.md:552
+msgid "Art Blocks / Generic Platform"
+msgstr ""
+

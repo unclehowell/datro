@@ -1,0 +1,529 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/powerpoint_editing.md:1
+msgid "Editing Presentations"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:3
+msgid "Template-Based Workflow"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:5
+msgid "When using an existing presentation as a template:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:7
+msgid "**Analyze existing slides**:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:12
+msgid ""
+"Review `thumbnails.jpg` to see layouts, and markitdown output to see "
+"placeholder text."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:14
+msgid "**Plan slide mapping**: For each content section, choose a template slide."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:16
+msgid ""
+"⚠️ **USE VARIED LAYOUTS** — monotonous presentations are a common failure"
+" mode. Don't default to basic title + bullet slides. Actively seek out:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:17
+msgid "Multi-column layouts (2-column, 3-column)"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:18
+msgid "Image + text combinations"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:19
+msgid "Full-bleed images with text overlay"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:20
+msgid "Quote or callout slides"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:21
+msgid "Section dividers"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:22
+msgid "Stat/number callouts"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:23
+msgid "Icon grids or icon + text rows"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:25
+msgid "**Avoid:** Repeating the same text-heavy layout for every slide."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:27
+msgid ""
+"Match content type to layout style (e.g., key points → bullet slide, team"
+" info → multi-column, testimonials → quote slide)."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:29
+msgid "**Unpack**: `python scripts/office/unpack.py template.pptx unpacked/`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:31
+msgid "**Build presentation** (do this yourself, not with subagents):"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:32
+msgid "Delete unwanted slides (remove from `<p:sldIdLst>`)"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:33
+msgid "Duplicate slides you want to reuse (`add_slide.py`)"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:34
+msgid "Reorder slides in `<p:sldIdLst>`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:35
+msgid "**Complete all structural changes before step 5**"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:37
+#, python-brace-format
+msgid ""
+"**Edit content**: Update text in each `slide{N}.xml`. **Use subagents "
+"here if available** — slides are separate XML files, so subagents can "
+"edit in parallel."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:40
+msgid "**Clean**: `python scripts/clean.py unpacked/`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:42
+msgid ""
+"**Pack**: `python scripts/office/pack.py unpacked/ output.pptx --original"
+" template.pptx`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:46
+msgid "Scripts"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Script"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Purpose"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`unpack.py`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Extract and pretty-print PPTX"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`add_slide.py`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Duplicate slide or create from layout"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`clean.py`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Remove orphaned files"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`pack.py`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Repack with validation"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`thumbnail.py`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Create visual grid of slides"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:56
+msgid "unpack.py"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:62
+msgid "Extracts PPTX, pretty-prints XML, escapes smart quotes."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:64
+msgid "add_slide.py"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:71
+msgid "Prints `<p:sldId>` to add to `<p:sldIdLst>` at desired position."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:73
+msgid "clean.py"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:79
+msgid "Removes slides not in `<p:sldIdLst>`, unreferenced media, orphaned rels."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:81
+msgid "pack.py"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:87
+msgid "Validates, repairs, condenses XML, re-encodes smart quotes."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:89
+msgid "thumbnail.py"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:95
+msgid ""
+"Creates `thumbnails.jpg` with slide filenames as labels. Default 3 "
+"columns, max 12 per grid."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:97
+msgid ""
+"**Use for template analysis only** (choosing layouts). For visual QA, use"
+" `soffice` + `pdftoppm` to create full-resolution individual slide "
+"images—see SKILL.md."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:101
+msgid "Slide Operations"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:103
+msgid "Slide order is in `ppt/presentation.xml` → `<p:sldIdLst>`."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:105
+msgid "**Reorder**: Rearrange `<p:sldId>` elements."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:107
+msgid "**Delete**: Remove `<p:sldId>`, then run `clean.py`."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:109
+msgid ""
+"**Add**: Use `add_slide.py`. Never manually copy slide files—the script "
+"handles notes references, Content_Types.xml, and relationship IDs that "
+"manual copying misses."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:113
+msgid "Editing Content"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:115
+msgid ""
+"**Subagents:** If available, use them here (after completing step 4). "
+"Each slide is a separate XML file, so subagents can edit in parallel. In "
+"your prompt to subagents, include:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:116
+msgid "The slide file path(s) to edit"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:117
+msgid "**\"Use the Edit tool for all changes\"**"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:118
+msgid "The formatting rules and common pitfalls below"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:120
+msgid "For each slide:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:121
+msgid "Read the slide's XML"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:122
+msgid "Identify ALL placeholder content—text, images, charts, icons, captions"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:123
+msgid "Replace each placeholder with final content"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:125
+msgid ""
+"**Use the Edit tool, not sed or Python scripts.** The Edit tool forces "
+"specificity about what to replace and where, yielding better reliability."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:127
+msgid "Formatting Rules"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:129
+msgid ""
+"**Bold all headers, subheadings, and inline labels**: Use `b=\"1\"` on "
+"`<a:rPr>`. This includes:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:130
+msgid "Slide titles"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:131
+msgid "Section headers within a slide"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:132
+msgid ""
+"Inline labels like (e.g.: \"Status:\", \"Description:\") at the start of "
+"a line"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:133
+msgid ""
+"**Never use unicode bullets (•)**: Use proper list formatting with "
+"`<a:buChar>` or `<a:buAutoNum>`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:134
+msgid ""
+"**Bullet consistency**: Let bullets inherit from the layout. Only specify"
+" `<a:buChar>` or `<a:buNone>`."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:138
+msgid "Common Pitfalls"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:140
+msgid "Template Adaptation"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:142
+msgid "When source content has fewer items than the template:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:143
+msgid ""
+"**Remove excess elements entirely** (images, shapes, text boxes), don't "
+"just clear text"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:144
+msgid "Check for orphaned visuals after clearing text content"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:145
+msgid "Run visual QA to catch mismatched counts"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:147
+msgid "When replacing text with different length content:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:148
+msgid "**Shorter replacements**: Usually safe"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:149
+msgid "**Longer replacements**: May overflow or wrap unexpectedly"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:150
+msgid "Test with visual QA after text changes"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:151
+msgid ""
+"Consider truncating or splitting content to fit the template's design "
+"constraints"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:153
+msgid ""
+"**Template slots ≠ Source items**: If template has 4 team members but "
+"source has 3 users, delete the 4th member's entire group (image + text "
+"boxes), not just the text."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:155
+msgid "Multi-Item Content"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:157
+msgid ""
+"If source has multiple items (numbered lists, multiple sections), create "
+"separate `<a:p>` elements for each — **never concatenate into one "
+"string**."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:159
+msgid "**❌ WRONG** — all items in one paragraph:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:166
+msgid "**✅ CORRECT** — separate paragraphs with bold headers:"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:183
+msgid ""
+"Copy `<a:pPr>` from the original paragraph to preserve line spacing. Use "
+"`b=\"1\"` on headers."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:185
+msgid "Smart Quotes"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:187
+msgid ""
+"Handled automatically by unpack/pack. But the Edit tool converts smart "
+"quotes to ASCII."
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:189
+msgid "**When adding new text with quotes, use XML entities:**"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Character"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Unicode"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "XML Entity"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`“`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Left double quote"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "U+201C"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`&#x201C;`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`”`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Right double quote"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "U+201D"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`&#x201D;`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`‘`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Left single quote"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "U+2018"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`&#x2018;`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`’`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "Right single quote"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "U+2019"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md
+msgid "`&#x2019;`"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:202
+msgid "Other"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:204
+msgid ""
+"**Whitespace**: Use `xml:space=\"preserve\"` on `<a:t>` with "
+"leading/trailing spaces"
+msgstr ""
+
+#: ../../source/powerpoint_editing.md:205
+msgid ""
+"**XML parsing**: Use `defusedxml.minidom`, not `xml.etree.ElementTree` "
+"(corrupts namespaces)"
+msgstr ""
+

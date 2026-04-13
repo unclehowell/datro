@@ -1,0 +1,106 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/address_README.md:1
+msgid "address"
+msgstr ""
+
+#: ../../source/address_README.md:4
+msgid ""
+"[![NPM version][npm-image]][npm-url] [![build status][travis-image"
+"]][travis-url] [![Test coverage][coveralls-image]][coveralls-url] "
+"[![Gittip][gittip-image]][gittip-url] [![David deps][david-image]][david-"
+"url] [![npm download][download-image]][download-url]"
+msgstr ""
+
+#: ../../source/address_README.md:4
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/address_README.md:4
+msgid "build status"
+msgstr ""
+
+#: ../../source/address_README.md:4
+msgid "Test coverage"
+msgstr ""
+
+#: ../../source/address_README.md:4
+msgid "Gittip"
+msgstr ""
+
+#: ../../source/address_README.md:4
+msgid "David deps"
+msgstr ""
+
+#: ../../source/address_README.md:4
+msgid "npm download"
+msgstr ""
+
+#: ../../source/address_README.md:24
+msgid "Get current machine IP, MAC and DNS servers."
+msgstr ""
+
+#: ../../source/address_README.md:26
+msgid "DNS servers receive from `/etc/resolv.conf`."
+msgstr ""
+
+#: ../../source/address_README.md:28
+msgid "Install"
+msgstr ""
+
+#: ../../source/address_README.md:34
+msgid "Usage"
+msgstr ""
+
+#: ../../source/address_README.md:36
+msgid "Get IP is sync and get MAC is async for now."
+msgstr ""
+
+#: ../../source/address_README.md:57
+msgid "Get all addresses: IPv4, IPv6 and MAC"
+msgstr ""
+
+#: ../../source/address_README.md:71
+msgid "Get an interface info with family"
+msgstr ""
+
+#: ../../source/address_README.md:78
+msgid "Get DNS servers"
+msgstr ""
+
+#: ../../source/address_README.md:87
+msgid "benchmark"
+msgstr ""
+
+#: ../../source/address_README.md:89
+msgid "run `$ npm run benchmark`"
+msgstr ""
+
+#: ../../source/address_README.md:98
+msgid "License"
+msgstr ""
+
+#: ../../source/address_README.md:100
+msgid "[MIT](LICENSE.txt)"
+msgstr ""
+

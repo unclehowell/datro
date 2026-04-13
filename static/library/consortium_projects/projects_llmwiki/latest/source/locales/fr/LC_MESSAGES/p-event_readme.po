@@ -1,0 +1,345 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/p-event_readme.md:1
+msgid ""
+"p-event [![Build Status](https://travis-"
+"ci.org/sindresorhus/p-event.svg?branch=master)](https://travis-"
+"ci.org/sindresorhus/p-event)"
+msgstr ""
+
+#: ../../source/p-event_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/p-event_readme.md:3
+msgid "Promisify an event by waiting for it to be emitted"
+msgstr ""
+
+#: ../../source/p-event_readme.md:5
+msgid ""
+"Useful when you need only one event emission and want to use it with "
+"promises or await it in an async function."
+msgstr ""
+
+#: ../../source/p-event_readme.md:7
+msgid ""
+"It's works with any event API in Node.js and the browser (using a "
+"bundler)."
+msgstr ""
+
+#: ../../source/p-event_readme.md:9
+msgid ""
+"If you want multiple individual events as they are emitted, you can use "
+"the `pEvent.iterator()` method. [Observables](https://medium.com/@benlesh"
+"/learning-observable-by-building-observable-d5da57405d87) can be useful "
+"too."
+msgstr ""
+
+#: ../../source/p-event_readme.md:12
+msgid "Install"
+msgstr ""
+
+#: ../../source/p-event_readme.md:19
+msgid "Usage"
+msgstr ""
+
+#: ../../source/p-event_readme.md:21
+msgid "In Node.js:"
+msgstr ""
+
+#: ../../source/p-event_readme.md:40
+msgid "In the browser:"
+msgstr ""
+
+#: ../../source/p-event_readme.md:51
+msgid "Async iteration:"
+msgstr ""
+
+#: ../../source/p-event_readme.md:69
+msgid "API"
+msgstr ""
+
+#: ../../source/p-event_readme.md:71
+msgid "pEvent(emitter, event, [options])"
+msgstr ""
+
+#: ../../source/p-event_readme.md:72
+msgid "pEvent(emitter, event, filter)"
+msgstr ""
+
+#: ../../source/p-event_readme.md:74
+msgid ""
+"Returns a `Promise` that is fulfilled when `emitter` emits an event "
+"matching `event`, or rejects if `emitter` emits any of the events defined"
+" in the `rejectionEvents` option."
+msgstr ""
+
+#: ../../source/p-event_readme.md:76
+msgid ""
+"**Note**: `event` is a string for a single event type, for example, "
+"`'data'`. To listen on multiple events, pass an array of strings, such as"
+" `['started', 'stopped']`."
+msgstr ""
+
+#: ../../source/p-event_readme.md:79
+msgid ""
+"The returned promise has a `.cancel()` method, which when called, removes"
+" the event listeners and causes the promise to never be settled."
+msgstr ""
+
+#: ../../source/p-event_readme.md:81
+msgid "emitter"
+msgstr ""
+
+#: ../../source/p-event_readme.md:83 ../../source/p-event_readme.md:99
+#: ../../source/p-event_readme.md:157 ../../source/p-event_readme.md:214
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/p-event_readme.md:85
+msgid "Event emitter object."
+msgstr ""
+
+#: ../../source/p-event_readme.md:87
+msgid ""
+"Should have either a `.on()`/`.addListener()`/`.addEventListener()` and "
+"`.off()`/`.removeListener()`/`.removeEventListener()` method, like the "
+"[Node.js `EventEmitter`](https://nodejs.org/api/events.html) and [DOM "
+"events](https://developer.mozilla.org/en-US/docs/Web/Events)."
+msgstr ""
+
+#: ../../source/p-event_readme.md:89
+msgid "event"
+msgstr ""
+
+#: ../../source/p-event_readme.md:91
+msgid "Type: `string | string[]`"
+msgstr ""
+
+#: ../../source/p-event_readme.md:93
+msgid "Name of the event or events to listen to."
+msgstr ""
+
+#: ../../source/p-event_readme.md:95
+msgid ""
+"If the same event is defined both here and in `rejectionEvents`, this one"
+" takes priority."
+msgstr ""
+
+#: ../../source/p-event_readme.md:97 ../../source/p-event_readme.md:155
+#: ../../source/p-event_readme.md:212
+msgid "options"
+msgstr ""
+
+#: ../../source/p-event_readme.md:101
+msgid "rejectionEvents"
+msgstr ""
+
+#: ../../source/p-event_readme.md:103
+msgid "Type: `string[]`<br> Default: `['error']`"
+msgstr ""
+
+#: ../../source/p-event_readme.md:106
+msgid "Events that will reject the promise."
+msgstr ""
+
+#: ../../source/p-event_readme.md:108
+msgid "multiArgs"
+msgstr ""
+
+#: ../../source/p-event_readme.md:110 ../../source/p-event_readme.md:168
+msgid "Type: `boolean`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/p-event_readme.md:113
+msgid ""
+"By default, the promisified function will only return the first argument "
+"from the event callback, which works fine for most APIs. This option can "
+"be useful for APIs that return multiple arguments in the callback. "
+"Turning this on will make it return an array of all arguments from the "
+"callback, instead of just the first argument. This also applies to "
+"rejections."
+msgstr ""
+
+#: ../../source/p-event_readme.md:115 ../../source/p-event_readme.md:175
+msgid "Example:"
+msgstr ""
+
+#: ../../source/p-event_readme.md:126
+msgid "timeout"
+msgstr ""
+
+#: ../../source/p-event_readme.md:128
+msgid "Type: `number`<br> Default: `Infinity`"
+msgstr ""
+
+#: ../../source/p-event_readme.md:131
+msgid "Time in milliseconds before timing out."
+msgstr ""
+
+#: ../../source/p-event_readme.md:133
+msgid "filter"
+msgstr ""
+
+#: ../../source/p-event_readme.md:135
+msgid "Type: `Function`"
+msgstr ""
+
+#: ../../source/p-event_readme.md:137
+msgid "Filter function for accepting an event."
+msgstr ""
+
+#: ../../source/p-event_readme.md:149
+msgid "pEvent.multiple(emitter, event, options)"
+msgstr ""
+
+#: ../../source/p-event_readme.md:151
+msgid "Wait for multiple event emissions. Returns an array."
+msgstr ""
+
+#: ../../source/p-event_readme.md:153 ../../source/p-event_readme.md:210
+msgid ""
+"This method has the same arguments and options as `pEvent()` with the "
+"addition of the following options:"
+msgstr ""
+
+#: ../../source/p-event_readme.md:159
+msgid "count"
+msgstr ""
+
+#: ../../source/p-event_readme.md:161
+msgid "*Required*<br> Type: `number`"
+msgstr ""
+
+#: ../../source/p-event_readme.md:164
+msgid ""
+"The number of times the event needs to be emitted before the promise "
+"resolves."
+msgstr ""
+
+#: ../../source/p-event_readme.md:166
+msgid "resolveImmediately"
+msgstr ""
+
+#: ../../source/p-event_readme.md:171
+msgid ""
+"Whether to resolve the promise immediately. Emitting one of the "
+"`rejectionEvents` won't throw an error."
+msgstr ""
+
+#: ../../source/p-event_readme.md:173
+msgid "**Note**: The returned array will be mutated when an event is emitted."
+msgstr ""
+
+#: ../../source/p-event_readme.md:205
+msgid "pEvent.iterator(emitter, event, [options])"
+msgstr ""
+
+#: ../../source/p-event_readme.md:206
+msgid "pEvent.iterator(emitter, event, filter)"
+msgstr ""
+
+#: ../../source/p-event_readme.md:208
+msgid ""
+"Returns an [async iterator](http://2ality.com/2016/10/asynchronous-"
+"iteration.html) that lets you asynchronously iterate over events of "
+"`event` emitted from `emitter`. The iterator ends when `emitter` emits an"
+" event matching any of the events defined in `resolutionEvents`, or "
+"rejects if `emitter` emits any of the events defined in the "
+"`rejectionEvents` option."
+msgstr ""
+
+#: ../../source/p-event_readme.md:216
+msgid "limit"
+msgstr ""
+
+#: ../../source/p-event_readme.md:218
+msgid "Type: `number` *(non-negative integer)*<br> Default: `Infinity`"
+msgstr ""
+
+#: ../../source/p-event_readme.md:221
+msgid ""
+"Maximum number of events for the iterator before it ends. When the limit "
+"is reached, the iterator will be marked as `done`. This option is useful "
+"to paginate events, for example, fetching 10 events per page."
+msgstr ""
+
+#: ../../source/p-event_readme.md:223
+msgid "resolutionEvents"
+msgstr ""
+
+#: ../../source/p-event_readme.md:225
+msgid "Type: `string[]`<br> Default: `[]`"
+msgstr ""
+
+#: ../../source/p-event_readme.md:228
+msgid "Events that will end the iterator."
+msgstr ""
+
+#: ../../source/p-event_readme.md:231
+msgid "Before and after"
+msgstr ""
+
+#: ../../source/p-event_readme.md:277
+msgid "Tip"
+msgstr ""
+
+#: ../../source/p-event_readme.md:279
+msgid "Dealing with calls that resolve with an error code"
+msgstr ""
+
+#: ../../source/p-event_readme.md:281
+msgid ""
+"Some functions might use a single event for success and for certain "
+"errors. Promises make it easy to have combined error handler for both "
+"error events and successes containing values which represent errors."
+msgstr ""
+
+#: ../../source/p-event_readme.md:306
+msgid "Related"
+msgstr ""
+
+#: ../../source/p-event_readme.md:308
+msgid ""
+"[pify](https://github.com/sindresorhus/pify) - Promisify a callback-style"
+" function"
+msgstr ""
+
+#: ../../source/p-event_readme.md:309
+msgid ""
+"[p-map](https://github.com/sindresorhus/p-map) - Map over promises "
+"concurrently"
+msgstr ""
+
+#: ../../source/p-event_readme.md:310
+msgid "[More…](https://github.com/sindresorhus/promise-fun)"
+msgstr ""
+
+#: ../../source/p-event_readme.md:313
+msgid "License"
+msgstr ""
+
+#: ../../source/p-event_readme.md:315
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

@@ -1,0 +1,490 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/is2_README.md:1
+msgid "is2"
+msgstr ""
+
+#: ../../source/is2_README.md:3
+msgid ""
+"is2 is a type-checking module for JavaScript to test values. Is does not "
+"throw exceptions and every function only returns true or false. Use is2 "
+"to validate types in your node.js code. Every function in is2 returns "
+"either true of false."
+msgstr ""
+
+#: ../../source/is2_README.md:7
+msgid "Installation"
+msgstr ""
+
+#: ../../source/is2_README.md:8
+msgid "To install is2, type:"
+msgstr ""
+
+#: ../../source/is2_README.md:10
+msgid "$ npm install is2"
+msgstr ""
+
+#: ../../source/is2_README.md:12
+msgid "Usage"
+msgstr ""
+
+#: ../../source/is2_README.md:20
+msgid "API"
+msgstr ""
+
+#: ../../source/is2_README.md:22
+msgid ""
+"Each function returns true or false. The names after the '-' are aliases,"
+" which provide brevity."
+msgstr ""
+
+#: ../../source/is2_README.md:25
+msgid "Environment:"
+msgstr ""
+
+#: ../../source/is2_README.md:27
+msgid "is.browser()"
+msgstr ""
+
+#: ../../source/is2_README.md:28
+msgid "is.defined(val) - is.def"
+msgstr ""
+
+#: ../../source/is2_README.md:29
+msgid "is.nodejs() - is.node()"
+msgstr ""
+
+#: ../../source/is2_README.md:30
+msgid "is.undefined(val) - is.udef, is.undef"
+msgstr ""
+
+#: ../../source/is2_README.md:32
+msgid "Types:"
+msgstr ""
+
+#: ../../source/is2_README.md:34
+msgid "is.array(val) - is.ary, is.arry"
+msgstr ""
+
+#: ../../source/is2_README.md:35
+msgid "is.arrayLike(val) - is.arryLike, is.aryLike, is.arrLike"
+msgstr ""
+
+#: ../../source/is2_README.md:36
+msgid "is.arguments(val) - is.args"
+msgstr ""
+
+#: ../../source/is2_README.md:37
+msgid "is.boolean(val) - is.bool"
+msgstr ""
+
+#: ../../source/is2_README.md:38
+msgid "is.buffer(val) - is.buf, is.buff"
+msgstr ""
+
+#: ../../source/is2_README.md:39
+msgid "is.date(val)"
+msgstr ""
+
+#: ../../source/is2_README.md:40
+msgid "is.error(val) - is.err"
+msgstr ""
+
+#: ../../source/is2_README.md:41
+msgid "is.false(val)"
+msgstr ""
+
+#: ../../source/is2_README.md:42
+msgid "is.function(val) - is.funct, is.fun"
+msgstr ""
+
+#: ../../source/is2_README.md:43
+msgid "is.mongoId - is.objectId, is.objId"
+msgstr ""
+
+#: ../../source/is2_README.md:44
+msgid "is.null(val)"
+msgstr ""
+
+#: ../../source/is2_README.md:45
+msgid "is.nullOrUndefined(val) - is.nullOrUndef"
+msgstr ""
+
+#: ../../source/is2_README.md:46
+msgid "is.number(val) - is.num"
+msgstr ""
+
+#: ../../source/is2_README.md:47
+msgid "is.object(val) - is.obj"
+msgstr ""
+
+#: ../../source/is2_README.md:48
+msgid "is.regExp(val) - is.regexp, is.re"
+msgstr ""
+
+#: ../../source/is2_README.md:49
+msgid "is.string(val) - is.str"
+msgstr ""
+
+#: ../../source/is2_README.md:50
+msgid "is.true(val)"
+msgstr ""
+
+#: ../../source/is2_README.md:51
+msgid "is.uuid(val)"
+msgstr ""
+
+#: ../../source/is2_README.md:53
+msgid "Relationships:"
+msgstr ""
+
+#: ../../source/is2_README.md:55
+msgid "is.equal(val, other) - is.eq, is.objEquals"
+msgstr ""
+
+#: ../../source/is2_README.md:56
+msgid "is.hosted(val, host)"
+msgstr ""
+
+#: ../../source/is2_README.md:57
+msgid "is.instanceOf(val, constructor) - is.instOf, is.instanceof"
+msgstr ""
+
+#: ../../source/is2_README.md:58
+msgid ""
+"is.matching(val1, val2 [, val3, ...]) - is.match : true if the first "
+"arument is strictly equal to any of the subsequent args."
+msgstr ""
+
+#: ../../source/is2_README.md:60
+msgid ""
+"is.objectInstanceof(obj, objType) - is.instOf, is.instanceOf, "
+"is.objInstOf, is.objectInstanceOf"
+msgstr ""
+
+#: ../../source/is2_README.md:61
+msgid "is.type(val, type) - is.a"
+msgstr ""
+
+#: ../../source/is2_README.md:62
+msgid "is.enumerator(val, array) - is.enum, is.inArray"
+msgstr ""
+
+#: ../../source/is2_README.md:64
+msgid "Object State:"
+msgstr ""
+
+#: ../../source/is2_README.md:66
+msgid "is.empty(val)"
+msgstr ""
+
+#: ../../source/is2_README.md:67
+msgid "is.emptyArguments(val) - is.emptyArgs, is.noArgs"
+msgstr ""
+
+#: ../../source/is2_README.md:68
+msgid "is.emptyArray(val) - is.emptyArry, is.emptyAry, is.emptyArray"
+msgstr ""
+
+#: ../../source/is2_README.md:69
+msgid "is.emptyArrayLike(val) - is.emptyArrLike"
+msgstr ""
+
+#: ../../source/is2_README.md:70
+msgid "is.emptyString(val) - is.emptyStr"
+msgstr ""
+
+#: ../../source/is2_README.md:71
+msgid "is.nonEmptyArray(val) - is.nonEmptyArry, is.nonEmptyAry"
+msgstr ""
+
+#: ../../source/is2_README.md:72
+msgid "is.nonEmptyObject(val) - is.nonEmptyObj"
+msgstr ""
+
+#: ../../source/is2_README.md:73
+msgid "is.emptyObject(val) - is.emptyObj"
+msgstr ""
+
+#: ../../source/is2_README.md:74
+msgid "is.nonEmptyString(val) - is.nonEmptyStr"
+msgstr ""
+
+#: ../../source/is2_README.md:76
+msgid "Numeric Types within Number:"
+msgstr ""
+
+#: ../../source/is2_README.md:78
+msgid "is.even(val) - is.evenNum, is.evenNumber"
+msgstr ""
+
+#: ../../source/is2_README.md:79
+msgid "is.decimal(val) - is.decNum, is.dec"
+msgstr ""
+
+#: ../../source/is2_README.md:80
+msgid "is.integer(val) - is.int"
+msgstr ""
+
+#: ../../source/is2_README.md:81
+msgid "is.notANumber(val) - is.nan, is.notANum"
+msgstr ""
+
+#: ../../source/is2_README.md:82
+msgid "is.odd(val) - is.oddNum, is.oddNumber"
+msgstr ""
+
+#: ../../source/is2_README.md:84
+msgid "Numeric Type and State:"
+msgstr ""
+
+#: ../../source/is2_README.md:86
+msgid "is.positiveNumber(val) - is.pos, is.positive, is.posNum, is.positiveNum"
+msgstr ""
+
+#: ../../source/is2_README.md:87
+msgid ""
+"is.negativeNumber(val) - is.neg,  is.negNum,  is.negativeNum,  "
+"is.negativeNumber"
+msgstr ""
+
+#: ../../source/is2_README.md:88
+msgid "is.negativeInteger(val) - is.negativeInt, is.negInt"
+msgstr ""
+
+#: ../../source/is2_README.md:89
+msgid "is.positiveInteger(val) - is.posInt, is.positiveInt"
+msgstr ""
+
+#: ../../source/is2_README.md:91
+msgid "Numeric Relationship:"
+msgstr ""
+
+#: ../../source/is2_README.md:93
+msgid "is.divisibleBy(val, other) - is.divisBy, is.divBy"
+msgstr ""
+
+#: ../../source/is2_README.md:94
+msgid "is.greaterOrEqualTo(val, other) - is.ge, is.greaterOrEqual"
+msgstr ""
+
+#: ../../source/is2_README.md:95
+msgid "is.greaterThan(val, other) - is.gt"
+msgstr ""
+
+#: ../../source/is2_README.md:96
+msgid ""
+"is.lessThanOrEqualTo(val, other) - is.lessThanOrEq, is.lessThanOrEqual, "
+"is.le"
+msgstr ""
+
+#: ../../source/is2_README.md:97
+msgid "is.lessThan(val, other) - is.lt"
+msgstr ""
+
+#: ../../source/is2_README.md:98
+msgid "is.maximum(val, array) - is.max"
+msgstr ""
+
+#: ../../source/is2_README.md:99
+msgid "is.minimum(val, array) - is.min"
+msgstr ""
+
+#: ../../source/is2_README.md:100
+msgid "is.withIn(val, start, finish) - is.within"
+msgstr ""
+
+#: ../../source/is2_README.md:101
+msgid "is.prettyClose(val, comp, precision) - is.closish, is.near"
+msgstr ""
+
+#: ../../source/is2_README.md:103
+msgid "Networking:"
+msgstr ""
+
+#: ../../source/is2_README.md:105
+msgid "is.dnsAddress(val) - is.dnsAddr, is.dns"
+msgstr ""
+
+#: ../../source/is2_README.md:106
+msgid "is.emailAddress(val) - is.email, is.emailAddr"
+msgstr ""
+
+#: ../../source/is2_README.md:107
+msgid "is.ipv4Address(val) - is.ipv4, is.ipv4Addr"
+msgstr ""
+
+#: ../../source/is2_README.md:108
+msgid "is.ipv6Address(val) - is.ipv6, is.ipv6Addr"
+msgstr ""
+
+#: ../../source/is2_README.md:109
+msgid "is.ipAddress(val) - is.ip, is.ipAddr"
+msgstr ""
+
+#: ../../source/is2_README.md:110
+msgid "is.hostAddress(val) - is.host = is.hostIp = is.hostAddr"
+msgstr ""
+
+#: ../../source/is2_README.md:111
+msgid "is.port(val)"
+msgstr ""
+
+#: ../../source/is2_README.md:112
+msgid "is.systemPort(val) - is.sysPort"
+msgstr ""
+
+#: ../../source/is2_README.md:113
+msgid "is.url(val) - is.uri"
+msgstr ""
+
+#: ../../source/is2_README.md:114
+msgid "is.userPort(val)"
+msgstr ""
+
+#: ../../source/is2_README.md:116
+msgid "Credit Cards:"
+msgstr ""
+
+#: ../../source/is2_README.md:118
+msgid "is.creditCardNumber(str) - is.creditCard, is.creditCardNum"
+msgstr ""
+
+#: ../../source/is2_README.md:119
+msgid "is.americanExpressCardNumber(str) - is.amexCardNum, is.amexCard"
+msgstr ""
+
+#: ../../source/is2_README.md:120
+msgid "is.chinaUnionPayCardNumber(str) - is.chinaUnionPayCard, is.chinaUnion"
+msgstr ""
+
+#: ../../source/is2_README.md:121
+msgid "is.dankortCardNumber(str) - is.dankortCard, is.dankort"
+msgstr ""
+
+#: ../../source/is2_README.md:122
+msgid ""
+"is.dinersClubCarteBlancheCardNumber(str) - is.dinersClubCarteBlancheCard,"
+" is.dinersClubCB"
+msgstr ""
+
+#: ../../source/is2_README.md:124
+msgid ""
+"is.dinersClubInternationalCardNumber(str) - "
+"is.dinersClubInternationalCard, is.dinersClubInt"
+msgstr ""
+
+#: ../../source/is2_README.md:126
+msgid ""
+"is.dinersClubUSACanadaCardNumber(str) - is.dinersClubUSACanCard, "
+"is.dinersClub"
+msgstr ""
+
+#: ../../source/is2_README.md:127
+msgid "is.discoverCardNumber(str) - is.discoverCard, is.discover"
+msgstr ""
+
+#: ../../source/is2_README.md:128
+msgid "is.instaPaymentCardNumber(str) - is.instaPayment"
+msgstr ""
+
+#: ../../source/is2_README.md:129
+msgid "is.jcbCardNumber(str) - is.jcbCard, is.jcb"
+msgstr ""
+
+#: ../../source/is2_README.md:130
+msgid "is.laserCardNumber(str) - is.laserCard, is.laser"
+msgstr ""
+
+#: ../../source/is2_README.md:131
+msgid "is.maestroCardNumber(str) - is.maestroCard, is.maestro"
+msgstr ""
+
+#: ../../source/is2_README.md:132
+msgid "is.masterCardCardNumber - is.masterCardCard, is.masterCard"
+msgstr ""
+
+#: ../../source/is2_README.md:133
+msgid "is.visaCardNumber(str) - is.visaCard, is.visa"
+msgstr ""
+
+#: ../../source/is2_README.md:134
+msgid "is.visaElectronCardNumber(str) - is.visaElectronCard, is.visaElectron"
+msgstr ""
+
+#: ../../source/is2_README.md:136
+msgid "Personal information:"
+msgstr ""
+
+#: ../../source/is2_README.md:138
+msgid "is.streetAddress(str) - is.street, is.address"
+msgstr ""
+
+#: ../../source/is2_README.md:139
+msgid "is.zipCode(str) - is.zip"
+msgstr ""
+
+#: ../../source/is2_README.md:140
+msgid "is.phoneNumber(str) - is.phone"
+msgstr ""
+
+#: ../../source/is2_README.md:143
+msgid "License"
+msgstr ""
+
+#: ../../source/is2_README.md:144
+msgid "The MIT License (MIT)"
+msgstr ""
+
+#: ../../source/is2_README.md:146
+msgid "Copyright (c) 2013,2014 Edmond Meinfelder Copyright (c) 2011 Enrico Marino"
+msgstr ""
+
+#: ../../source/is2_README.md:149
+msgid ""
+"Permission is hereby granted, free of charge, to any person obtaining a "
+"copy of this software and associated documentation files (the "
+"\"Software\"), to deal in the Software without restriction, including "
+"without limitation the rights to use, copy, modify, merge, publish, "
+"distribute, sublicense, and/or sell copies of the Software, and to permit"
+" persons to whom the Software is furnished to do so, subject to the "
+"following conditions:"
+msgstr ""
+
+#: ../../source/is2_README.md:156
+msgid ""
+"The above copyright notice and this permission notice shall be included "
+"in all copies or substantial portions of the Software."
+msgstr ""
+
+#: ../../source/is2_README.md:159
+msgid ""
+"THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS"
+" OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF "
+"MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN"
+" NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,"
+" DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR "
+"OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE"
+" USE OR OTHER DEALINGS IN THE SOFTWARE."
+msgstr ""
+

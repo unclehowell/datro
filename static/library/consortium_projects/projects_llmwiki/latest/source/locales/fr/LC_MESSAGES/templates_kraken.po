@@ -1,0 +1,571 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_kraken.md:1
+msgid "Design System: Kraken"
+msgstr ""
+
+#: ../../source/templates_kraken.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_kraken.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_kraken.md:7
+msgid "**Primary:** `Inter` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_kraken.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_kraken.md:18
+msgid ""
+"Kraken's website is a clean, trustworthy crypto exchange that uses purple"
+" as its commanding brand color. The design operates on white backgrounds "
+"with Kraken Purple (`#7132f5`, `#5741d8`, `#5b1ecf`) creating a "
+"distinctive, professional crypto identity. The proprietary Kraken-Brand "
+"font handles display headings with bold (700) weight and negative "
+"tracking, while Kraken-Product (with IBM Plex Sans fallback) serves as "
+"the UI workhorse."
+msgstr ""
+
+#: ../../source/templates_kraken.md:20
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_kraken.md:21
+msgid ""
+"Kraken Purple (`#7132f5`) as primary brand with darker variants "
+"(`#5741d8`, `#5b1ecf`)"
+msgstr ""
+
+#: ../../source/templates_kraken.md:22
+msgid "Kraken-Brand (display) + Kraken-Product (UI) dual font system"
+msgstr ""
+
+#: ../../source/templates_kraken.md:23
+msgid "Near-black (`#101114`) text with cool blue-gray neutral scale"
+msgstr ""
+
+#: ../../source/templates_kraken.md:24
+msgid "12px radius buttons (rounded but not pill)"
+msgstr ""
+
+#: ../../source/templates_kraken.md:25
+msgid "Subtle shadows (`rgba(0,0,0,0.03) 0px 4px 24px`) — whisper-level"
+msgstr ""
+
+#: ../../source/templates_kraken.md:26
+msgid "Green accent (`#149e61`) for positive/success states"
+msgstr ""
+
+#: ../../source/templates_kraken.md:28
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_kraken.md:30
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_kraken.md:31
+msgid "**Kraken Purple** (`#7132f5`): Primary CTA, brand accent, links"
+msgstr ""
+
+#: ../../source/templates_kraken.md:32
+msgid "**Purple Dark** (`#5741d8`): Button borders, outlined variants"
+msgstr ""
+
+#: ../../source/templates_kraken.md:33
+msgid "**Purple Deep** (`#5b1ecf`): Deepest purple"
+msgstr ""
+
+#: ../../source/templates_kraken.md:34
+msgid ""
+"**Purple Subtle** (`rgba(133,91,251,0.16)`): Purple at 16% — subtle "
+"button backgrounds"
+msgstr ""
+
+#: ../../source/templates_kraken.md:35
+msgid "**Near Black** (`#101114`): Primary text"
+msgstr ""
+
+#: ../../source/templates_kraken.md:37
+msgid "Neutral"
+msgstr ""
+
+#: ../../source/templates_kraken.md:38
+#, python-format
+msgid "**Cool Gray** (`#686b82`): Primary neutral, borders at 24% opacity"
+msgstr ""
+
+#: ../../source/templates_kraken.md:39
+msgid "**Silver Blue** (`#9497a9`): Secondary text, muted elements"
+msgstr ""
+
+#: ../../source/templates_kraken.md:40
+msgid "**White** (`#ffffff`): Primary surface"
+msgstr ""
+
+#: ../../source/templates_kraken.md:41
+msgid "**Border Gray** (`#dedee5`): Divider borders"
+msgstr ""
+
+#: ../../source/templates_kraken.md:43
+msgid "Semantic"
+msgstr ""
+
+#: ../../source/templates_kraken.md:44
+#, python-format
+msgid "**Green** (`#149e61`): Success/positive at 16% opacity for badges"
+msgstr ""
+
+#: ../../source/templates_kraken.md:45
+msgid "**Green Dark** (`#026b3f`): Badge text"
+msgstr ""
+
+#: ../../source/templates_kraken.md:47
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_kraken.md:49
+msgid "Font Families"
+msgstr ""
+
+#: ../../source/templates_kraken.md:50
+msgid "**Display**: `Kraken-Brand`, fallbacks: `IBM Plex Sans, Helvetica, Arial`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:51
+msgid ""
+"**UI / Body**: `Kraken-Product`, fallbacks: `Helvetica Neue, Helvetica, "
+"Arial`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:53
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Kraken-Brand"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "48px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "1.17"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "-1px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "36px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "1.22"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "-0.5px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "28px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "1.29"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Kraken-Product"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "22px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "1.20"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "16px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "1.38"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Body Medium"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "500–600"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "14px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "400–700"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "1.43–1.71"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Small"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "12px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "7px"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "1.00"
+msgstr ""
+
+#: ../../source/templates_kraken.md
+msgid "uppercase"
+msgstr ""
+
+#: ../../source/templates_kraken.md:68
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_kraken.md:70
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_kraken.md:72
+msgid "**Primary Purple**"
+msgstr ""
+
+#: ../../source/templates_kraken.md:73
+msgid "Background: `#7132f5`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:74
+msgid "Text: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:75
+msgid "Padding: 13px 16px"
+msgstr ""
+
+#: ../../source/templates_kraken.md:76 ../../source/templates_kraken.md:82
+#: ../../source/templates_kraken.md:88 ../../source/templates_kraken.md:99
+msgid "Radius: 12px"
+msgstr ""
+
+#: ../../source/templates_kraken.md:78
+msgid "**Purple Outlined**"
+msgstr ""
+
+#: ../../source/templates_kraken.md:79 ../../source/templates_kraken.md:91
+msgid "Background: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:80
+msgid "Text: `#5741d8`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:81
+msgid "Border: `1px solid #5741d8`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:84
+msgid "**Purple Subtle**"
+msgstr ""
+
+#: ../../source/templates_kraken.md:85
+msgid "Background: `rgba(133,91,251,0.16)`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:86
+msgid "Text: `#7132f5`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:87
+msgid "Padding: 8px"
+msgstr ""
+
+#: ../../source/templates_kraken.md:90
+msgid "**White Button**"
+msgstr ""
+
+#: ../../source/templates_kraken.md:92 ../../source/templates_kraken.md:98
+msgid "Text: `#101114`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:93
+msgid "Radius: 10px"
+msgstr ""
+
+#: ../../source/templates_kraken.md:94
+msgid "Shadow: `rgba(0,0,0,0.03) 0px 4px 24px`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:96
+msgid "**Secondary Gray**"
+msgstr ""
+
+#: ../../source/templates_kraken.md:97
+msgid "Background: `rgba(148,151,169,0.08)`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:101
+msgid "Badges"
+msgstr ""
+
+#: ../../source/templates_kraken.md:102
+msgid "Success: `rgba(20,158,97,0.16)` bg, `#026b3f` text, 6px radius"
+msgstr ""
+
+#: ../../source/templates_kraken.md:103
+msgid "Neutral: `rgba(104,107,130,0.12)` bg, `#484b5e` text, 8px radius"
+msgstr ""
+
+#: ../../source/templates_kraken.md:105
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_kraken.md:107
+msgid ""
+"Spacing: 1px, 2px, 3px, 4px, 5px, 6px, 8px, 10px, 12px, 13px, 15px, 16px,"
+" 20px, 24px, 25px"
+msgstr ""
+
+#: ../../source/templates_kraken.md:108
+msgid "Border Radius: 3px, 6px, 8px, 10px, 12px, 16px, 9999px, 50%"
+msgstr ""
+
+#: ../../source/templates_kraken.md:110
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_kraken.md:111
+msgid "Subtle: `rgba(0,0,0,0.03) 0px 4px 24px`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:112
+msgid "Micro: `rgba(16,24,40,0.04) 0px 1px 4px`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:114
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_kraken.md:116
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_kraken.md:117
+msgid "Use Kraken Purple (#7132f5) for CTAs and links"
+msgstr ""
+
+#: ../../source/templates_kraken.md:118
+msgid "Apply 12px radius on all buttons"
+msgstr ""
+
+#: ../../source/templates_kraken.md:119
+msgid "Use Kraken-Brand for headings, Kraken-Product for body"
+msgstr ""
+
+#: ../../source/templates_kraken.md:121
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_kraken.md:122
+msgid "Don't use pill buttons — 12px is the max radius for buttons"
+msgstr ""
+
+#: ../../source/templates_kraken.md:123
+msgid "Don't use other purples outside the defined scale"
+msgstr ""
+
+#: ../../source/templates_kraken.md:125
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_kraken.md:126
+msgid "Breakpoints: 375px, 425px, 640px, 768px, 1024px, 1280px, 1536px"
+msgstr ""
+
+#: ../../source/templates_kraken.md:128
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_kraken.md:130
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_kraken.md:131
+msgid "Brand: Kraken Purple (`#7132f5`)"
+msgstr ""
+
+#: ../../source/templates_kraken.md:132
+msgid "Dark variant: `#5741d8`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:133
+msgid "Text: Near Black (`#101114`)"
+msgstr ""
+
+#: ../../source/templates_kraken.md:134
+msgid "Secondary text: `#9497a9`"
+msgstr ""
+
+#: ../../source/templates_kraken.md:135
+msgid "Background: White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_kraken.md:137
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_kraken.md:138
+msgid ""
+"\"Create hero: white background. Kraken-Brand 48px weight 700, letter-"
+"spacing -1px. Purple CTA (#7132f5, 12px radius, 13px 16px padding).\""
+msgstr ""
+

@@ -1,0 +1,26 @@
+[
+  {
+    "id": "cr-001",
+    "project_id": "sample-project-001",
+    "title": "Add agent interaction logging",
+    "description": "Need a way for agents to log interactions with the client",
+    "type": "enhancement",
+    "client": "unclehowell",
+    "priority": "high",
+    "status": "approved",
+    "requested_by": "unclehowell",
+    "requested": "2026-04-13T01:00:00Z"
+  },
+  {
+    "id": "cr-002",
+    "project_id": "sample-project-002",
+    "title": "Add dark mode theme",
+    "description": "Users have requested a dark mode option",
+    "type": "new_feature",
+    "client": "unclehowell",
+    "priority": "medium",
+    "status": "pending",
+    "requested_by": "unclehowell",
+    "requested": "2026-04-11T14:00:00Z"
+  }
+]

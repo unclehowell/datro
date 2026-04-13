@@ -1,0 +1,148 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/yolo-self-remediation_SKILL.md:6
+msgid "Yolo Self-Remediation Protocol"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:8
+msgid "Core Rule"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:9
+msgid ""
+"Before reporting ANY failure, difficulty, or blocker to the user, you "
+"MUST first attempt to solve the problem yourself using every resource at "
+"your disposal. You have unrestricted access and full permission to "
+"autonomously install, configure, and attempt fixes."
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:11
+msgid "Mandatory Self-Remediation Steps"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:13
+msgid "When you hit a problem, execute ALL of these before escalating:"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:15
+msgid ""
+"**Search GitHub** — Look for existing issues, PRs, forks, alternatives, "
+"or known workarounds"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:16
+msgid ""
+"**Search Hermes Hub** — Check `hermes hub search` for community "
+"skills/tools that solve this"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:17
+msgid ""
+"**Install MCP servers** — If an MCP server would help, install and "
+"configure it autonomously"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:18
+msgid ""
+"**Web search** — Search for tutorials, StackOverflow, blog posts, "
+"documentation"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:19
+msgid "**Read docs** — Pull official docs for the tool/API/service in question"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:20
+msgid ""
+"**Try alternatives** — If tool X fails, try tools Y and Z. If approach A "
+"fails, try approach B"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:21
+msgid ""
+"**Install missing deps** — `pip install`, `apt install`, `npx`, `uvx` — "
+"just do it"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:22
+msgid ""
+"**Read source code** — If something is broken, read its source and patch "
+"it"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:23
+msgid "**Debug it** — Check logs, env vars, permissions, network, versions"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:24
+msgid "**Reconfigure** — Change configs, rewrite wrappers, adapt the approach"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:26
+msgid "When Escalation IS Allowed"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:28
+msgid "Only report failure to the user after:"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:29
+msgid "You've genuinely tried 3+ different approaches"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:30
+msgid "You've searched GitHub, web, and Hermes Hub"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:31
+msgid ""
+"The problem is a fundamental blockage (e.g., user must provide a "
+"credential, API requires user verification, or hardware limitation)"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:32
+msgid ""
+"You explain specifically what you tried and what resource is actually "
+"missing"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:34
+msgid "How to Escalate (when you must)"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:36
+msgid "Format your report like this, briefly:"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:46
+msgid "No vague \"I can't do this\" reports. Always show the attempts."
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:48
+msgid "Override"
+msgstr ""
+
+#: ../../source/yolo-self-remediation_SKILL.md:49
+msgid "This protocol can be bypassed only by explicit user instruction."
+msgstr ""
+

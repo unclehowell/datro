@@ -1,0 +1,78 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/loose-envify_README.md:1
+msgid "loose-envify"
+msgstr ""
+
+#: ../../source/loose-envify_README.md:3
+msgid ""
+"[![Build Status](https://travis-ci.org/zertosh/loose-"
+"envify.svg?branch=master)](https://travis-ci.org/zertosh/loose-envify)"
+msgstr ""
+
+#: ../../source/loose-envify_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/loose-envify_README.md:5
+msgid ""
+"Fast (and loose) selective `process.env` replacer using [js-"
+"tokens](https://github.com/lydell/js-tokens) instead of an AST. Works "
+"just like [envify](https://github.com/hughsk/envify) but much faster."
+msgstr ""
+
+#: ../../source/loose-envify_README.md:7
+msgid "Gotchas"
+msgstr ""
+
+#: ../../source/loose-envify_README.md:9
+msgid "Doesn't handle broken syntax."
+msgstr ""
+
+#: ../../source/loose-envify_README.md:10
+msgid "Doesn't look inside embedded expressions in template strings."
+msgstr ""
+
+#: ../../source/loose-envify_README.md:11
+#: ../../source/loose-envify_README.md:16
+msgid "**this won't work:**"
+msgstr ""
+
+#: ../../source/loose-envify_README.md:15
+msgid "Doesn't replace oddly-spaced or oddly-commented expressions."
+msgstr ""
+
+#: ../../source/loose-envify_README.md:21
+msgid "Usage/Options"
+msgstr ""
+
+#: ../../source/loose-envify_README.md:23
+msgid ""
+"loose-envify has the exact same interface as "
+"[envify](https://github.com/hughsk/envify), including the CLI."
+msgstr ""
+
+#: ../../source/loose-envify_README.md:25
+msgid "Benchmark"
+msgstr ""
+

@@ -1,0 +1,206 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/body_README.md:1
+msgid "body [![build status][1]][2]"
+msgstr ""
+
+#: ../../source/body_README.md:1
+msgid "build status"
+msgstr ""
+
+#: ../../source/body_README.md:3
+msgid "Body parsing"
+msgstr ""
+
+#: ../../source/body_README.md:5
+msgid "Originally taken from [npm-www](https://github.com/isaacs/npm-www)"
+msgstr ""
+
+#: ../../source/body_README.md:7
+msgid "Example"
+msgstr ""
+
+#: ../../source/body_README.md:38
+msgid ""
+"`body` simply parses the request body and returns it in the callback. "
+"`jsonBody` and `formBody` call JSON.parse and querystring.parse "
+"respectively on the body."
+msgstr ""
+
+#: ../../source/body_README.md:40
+msgid ""
+"anyBody will detect the content-type of the request and use the "
+"appropiate body method."
+msgstr ""
+
+#: ../../source/body_README.md:42
+msgid "Example generators"
+msgstr ""
+
+#: ../../source/body_README.md:44
+msgid ""
+"You can use `body` with generators as the body functions will     return "
+"a continuable if you don't pass a callback."
+msgstr ""
+
+#: ../../source/body_README.md:88
+msgid "Documentation"
+msgstr ""
+
+#: ../../source/body_README.md:90
+msgid "`textBody(req, res?, opts?, cb<Error, String>)`"
+msgstr ""
+
+#: ../../source/body_README.md:105
+msgid ""
+"`textBody` allows you to get the body from any readable stream. It will "
+"read the entire content of the stream into memory and give it back to you"
+" in the callback."
+msgstr ""
+
+#: ../../source/body_README.md:109
+msgid ""
+"`limit`: You can set `opts.limit` to a custom number to change the   "
+"limit at which `textBody` gives up. By default it will only  read a 1MB "
+"body, if a stream contains more then 1MB it returns  an error. This "
+"prevents someone attacking your HTTP server  with an infinite body "
+"causing an out of memory attack."
+msgstr ""
+
+#: ../../source/body_README.md:114
+msgid ""
+"`encoding`: You can set `encoding`. All encodings that are valid on a   "
+"[`Buffer`](http://nodejs.org/api/buffer.html#buffer_buffer) are  valid "
+"options. It defaults to `'utf8'`"
+msgstr ""
+
+#: ../../source/body_README.md:136
+msgid "`formBody(req, res?, opts?, cb<Error, Any>)`"
+msgstr ""
+
+#: ../../source/body_README.md:153
+msgid ""
+"`formBody` allows you to get the body of a readable stream. It does the "
+"same as `textBody` but assumes the content is querystring encoded and "
+"parses just like it was a &lt;form&gt; submit."
+msgstr ""
+
+#: ../../source/body_README.md:157 ../../source/body_README.md:206
+#: ../../source/body_README.md:262
+msgid "`limit`: same as `textBody`"
+msgstr ""
+
+#: ../../source/body_README.md:158 ../../source/body_README.md:207
+#: ../../source/body_README.md:263
+msgid "`encoding`: same as `textBody`"
+msgstr ""
+
+#: ../../source/body_README.md:159
+msgid ""
+"`querystring`: You can pass a custom querystring parser if   you want. It"
+" should have a `parse` method that takes a   string and a callback. It "
+"should return the value in the  callback or a parsing error"
+msgstr ""
+
+#: ../../source/body_README.md:183
+msgid "`jsonBody(req, res?, opts?, cb<Error, Any>)`"
+msgstr ""
+
+#: ../../source/body_README.md:201
+msgid ""
+"`jsonBody` allows you to get the body of a readable stream. It does the "
+"same as `textbody` but assumes the content it a JSON value and parses it "
+"using `JSON.parse`. If `JSON.parse` throws an exception then it calls the"
+" callback with the exception."
+msgstr ""
+
+#: ../../source/body_README.md:208
+msgid ""
+"`reviver`: A reviver function that will be passed to `JSON.parse`  as the"
+" second argument"
+msgstr ""
+
+#: ../../source/body_README.md:210
+msgid ""
+"`JSON`: You can pass a custom JSON parser if you want.  It should have a "
+"`parse` method that takes a string, an  optional reviver and a callback. "
+"It should return the value  in the callback or a parsing error."
+msgstr ""
+
+#: ../../source/body_README.md:234
+msgid "`anyBody(req, res?, opts?, cb<Error, Any>)`"
+msgstr ""
+
+#: ../../source/body_README.md:255
+msgid ""
+"`anyBody` allows you to get the body of a HTTPRequest. It  does the same "
+"as `textBody` except it parses the `content-type` header and uses either "
+"the jsonBody or the formBody function."
+msgstr ""
+
+#: ../../source/body_README.md:259
+msgid ""
+"This allows you to write POST route handlers that work with both ajax and"
+" html form submits."
+msgstr ""
+
+#: ../../source/body_README.md:264
+msgid "`reviver`: same as `jsonBody`"
+msgstr ""
+
+#: ../../source/body_README.md:265
+msgid "`JSON`: same as `jsonBody`"
+msgstr ""
+
+#: ../../source/body_README.md:266
+msgid "`querystring`: same as `formBody`"
+msgstr ""
+
+#: ../../source/body_README.md:288
+msgid "Installation"
+msgstr ""
+
+#: ../../source/body_README.md:290
+msgid "`npm install body`"
+msgstr ""
+
+#: ../../source/body_README.md:292
+msgid "Tests"
+msgstr ""
+
+#: ../../source/body_README.md:294
+msgid "`npm test`"
+msgstr ""
+
+#: ../../source/body_README.md:296
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/body_README.md:298
+msgid "Raynos"
+msgstr ""
+
+#: ../../source/body_README.md:300
+msgid "MIT Licenced"
+msgstr ""
+

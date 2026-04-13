@@ -1,0 +1,564 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/arxiv_SKILL.md:13
+msgid "arXiv Research"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:15
+msgid ""
+"Search and retrieve academic papers from arXiv via their free REST API. "
+"No API key, no dependencies — just curl."
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:17
+msgid "Quick Reference"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Action"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Command"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Search papers"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid ""
+"`curl "
+"\"https://export.arxiv.org/api/query?search_query=all:QUERY&max_results=5\"`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Get specific paper"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`curl \"https://export.arxiv.org/api/query?id_list=2402.03300\"`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Read abstract (web)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`web_extract(urls=[\"https://arxiv.org/abs/2402.03300\"])`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Read full paper (PDF)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`web_extract(urls=[\"https://arxiv.org/pdf/2402.03300\"])`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:26
+msgid "Searching Papers"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:28
+msgid ""
+"The API returns Atom XML. Parse with `grep`/`sed` or pipe through "
+"`python3` for clean output."
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:30
+msgid "Basic search"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:36
+msgid "Clean output (parse XML to readable format)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:59
+msgid "Search Query Syntax"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Prefix"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Searches"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Example"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`all:`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "All fields"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`all:transformer+attention`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`ti:`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Title"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`ti:large+language+models`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`au:`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Author"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`au:vaswani`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`abs:`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Abstract"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`abs:reinforcement+learning`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`cat:`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Category"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`cat:cs.AI`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`co:`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Comment"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`co:accepted+NeurIPS`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:70
+msgid "Boolean operators"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:89
+msgid "Sort and Pagination"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Parameter"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Options"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`sortBy`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`relevance`, `lastUpdatedDate`, `submittedDate`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`sortOrder`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`ascending`, `descending`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`start`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Result offset (0-based)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`max_results`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Number of results (default 10, max 30000)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:103
+msgid "Fetching Specific Papers"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:113
+msgid "BibTeX Generation"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:115
+msgid "After fetching metadata for a paper, generate a BibTeX entry:"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:117
+#, python-brace-format, python-format
+msgid "{% raw %}"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:143
+#, python-brace-format, python-format
+msgid "{% endraw %}"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:145
+msgid "Reading Paper Content"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:147
+msgid "After finding a paper, read it:"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:157
+msgid "For local PDF processing, see the `ocr-and-documents` skill."
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:159
+msgid "Common Categories"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Field"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`cs.AI`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Artificial Intelligence"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`cs.CL`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Computation and Language (NLP)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`cs.CV`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Computer Vision"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`cs.LG`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Machine Learning"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`cs.CR`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Cryptography and Security"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`stat.ML`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Machine Learning (Statistics)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`math.OC`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Optimization and Control"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "`physics.comp-ph`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Computational Physics"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:172
+msgid "Full list: https://arxiv.org/category_taxonomy"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:174
+msgid "Helper Script"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:176
+msgid ""
+"The `scripts/search_arxiv.py` script handles XML parsing and provides "
+"clean output:"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:187
+msgid "No dependencies — uses only Python stdlib."
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:191
+msgid "Semantic Scholar (Citations, Related Papers, Author Profiles)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:193
+msgid ""
+"arXiv doesn't provide citation data or recommendations. Use the "
+"**Semantic Scholar API** for that — free, no key needed for basic use (1 "
+"req/sec), returns JSON."
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:195
+msgid "Get paper details + citations"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:205
+msgid "Get citations OF a paper (who cited it)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:211
+msgid "Get references FROM a paper (what it cites)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:217
+msgid "Search papers (alternative to arXiv search, returns JSON)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:223
+msgid "Get paper recommendations"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:231
+msgid "Author profile"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:237
+msgid "Useful Semantic Scholar fields"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:239
+msgid ""
+"`title`, `authors`, `year`, `abstract`, `citationCount`, "
+"`referenceCount`, `influentialCitationCount`, `isOpenAccess`, "
+"`openAccessPdf`, `fieldsOfStudy`, `publicationVenue`, `externalIds` "
+"(contains arXiv ID, DOI, etc.)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:243
+msgid "Complete Research Workflow"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:245
+msgid ""
+"**Discover**: `python scripts/search_arxiv.py \"your topic\" --sort date "
+"--max 10`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:246
+msgid ""
+"**Assess impact**: `curl -s "
+"\"https://api.semanticscholar.org/graph/v1/paper/arXiv:ID?fields=citationCount,influentialCitationCount\"`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:247
+msgid "**Read abstract**: `web_extract(urls=[\"https://arxiv.org/abs/ID\"])`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:248
+msgid "**Read full paper**: `web_extract(urls=[\"https://arxiv.org/pdf/ID\"])`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:249
+msgid ""
+"**Find related work**: `curl -s "
+"\"https://api.semanticscholar.org/graph/v1/paper/arXiv:ID/references?fields=title,citationCount&limit=20\"`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:250
+msgid "**Get recommendations**: POST to Semantic Scholar recommendations endpoint"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:251
+msgid ""
+"**Track authors**: `curl -s "
+"\"https://api.semanticscholar.org/graph/v1/author/search?query=NAME\"`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:253
+msgid "Rate Limits"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "API"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Rate"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Auth"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "arXiv"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "~1 req / 3 seconds"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "None needed"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "Semantic Scholar"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "1 req / second"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md
+msgid "None (100/sec with API key)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:260
+msgid "Notes"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:262
+msgid ""
+"arXiv returns Atom XML — use the helper script or parsing snippet for "
+"clean output"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:263
+msgid ""
+"Semantic Scholar returns JSON — pipe through `python3 -m json.tool` for "
+"readability"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:264
+msgid "arXiv IDs: old format (`hep-th/0601001`) vs new (`2402.03300`)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:265
+#, python-brace-format
+msgid "PDF: `https://arxiv.org/pdf/{id}` — Abstract: `https://arxiv.org/abs/{id}`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:266
+#, python-brace-format
+msgid "HTML (when available): `https://arxiv.org/html/{id}`"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:267
+msgid "For local PDF processing, see the `ocr-and-documents` skill"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:269
+msgid "ID Versioning"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:271
+msgid "`arxiv.org/abs/1706.03762` always resolves to the **latest** version"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:272
+msgid "`arxiv.org/abs/1706.03762v1` points to a **specific** immutable version"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:273
+msgid ""
+"When generating citations, preserve the version suffix you actually read "
+"to prevent citation drift (a later version may substantially change "
+"content)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:274
+msgid ""
+"The API `<id>` field returns the versioned URL (e.g., "
+"`http://arxiv.org/abs/1706.03762v7`)"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:276
+msgid "Withdrawn Papers"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:278
+msgid "Papers can be withdrawn after submission. When this happens:"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:279
+msgid ""
+"The `<summary>` field contains a withdrawal notice (look for "
+"\"withdrawn\" or \"retracted\")"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:280
+msgid "Metadata fields may be incomplete"
+msgstr ""
+
+#: ../../source/arxiv_SKILL.md:281
+msgid "Always check the summary before treating a result as a valid paper"
+msgstr ""
+

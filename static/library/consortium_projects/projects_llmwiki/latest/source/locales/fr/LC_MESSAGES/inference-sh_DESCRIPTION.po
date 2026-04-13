@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/inference-sh_DESCRIPTION.md:1
+msgid "inference.sh"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:3
+msgid ""
+"Run 150+ AI applications in the cloud via the "
+"[inference.sh](https://inference.sh) platform."
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:5
+msgid ""
+"**One API key for everything** — access image generation, video creation,"
+" LLMs, search, 3D, and more through a single account. No need to manage "
+"separate API keys for each provider."
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:7
+msgid "Available Skills"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:9
+msgid "**cli**: Use the inference.sh CLI (`infsh`) via the terminal tool"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:11
+msgid "What's Included"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:13
+msgid "**Image Generation**: FLUX, Reve, Seedream, Grok Imagine, Gemini"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:14
+msgid "**Video Generation**: Veo, Wan, Seedance, OmniHuman, HunyuanVideo"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:15
+msgid "**LLMs**: Claude, Gemini, Kimi, GLM-4 (via OpenRouter)"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:16
+msgid "**Search**: Tavily, Exa"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:17
+msgid "**3D**: Rodin"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:18
+msgid "**Social**: Twitter/X automation"
+msgstr ""
+
+#: ../../source/inference-sh_DESCRIPTION.md:19
+msgid "**Audio**: TTS, voice cloning"
+msgstr ""
+

@@ -1,0 +1,5146 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/research-paper-writing_SKILL.md:19
+msgid "Research Paper Writing Pipeline"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:21
+msgid ""
+"End-to-end pipeline for producing publication-ready ML/AI research papers"
+" targeting **NeurIPS, ICML, ICLR, ACL, AAAI, and COLM**. This skill "
+"covers the full research lifecycle: experiment design, execution, "
+"monitoring, analysis, paper writing, review, revision, and submission."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:23
+msgid ""
+"This is **not a linear pipeline** — it is an iterative loop. Results "
+"trigger new experiments. Reviews trigger new analysis. The agent must "
+"handle these feedback loops."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:47
+msgid "When To Use This Skill"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:49
+msgid "Use this skill when:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:50
+msgid "**Starting a new research paper** from an existing codebase or idea"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:51
+msgid "**Designing and running experiments** to support paper claims"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:52
+msgid "**Writing or revising** any section of a research paper"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:53
+msgid "**Preparing for submission** to a specific conference or workshop"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:54
+msgid "**Responding to reviews** with additional experiments or revisions"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:55
+msgid "**Converting** a paper between conference formats"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:56
+msgid ""
+"**Writing non-empirical papers** — theory, survey, benchmark, or position"
+" papers (see [Paper Types Beyond Empirical ML](#paper-types-beyond-"
+"empirical-ml))"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:57
+msgid "**Designing human evaluations** for NLP, HCI, or alignment research"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:58
+msgid "**Preparing post-acceptance deliverables** — posters, talks, code releases"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:60
+msgid "Core Philosophy"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:62
+msgid ""
+"**Be proactive.** Deliver complete drafts, not questions. Scientists are "
+"busy — produce something concrete they can react to, then iterate."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:63
+#, python-format
+msgid ""
+"**Never hallucinate citations.** AI-generated citations have ~40% error "
+"rate. Always fetch programmatically. Mark unverifiable citations as "
+"`[CITATION NEEDED]`."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:64
+msgid ""
+"**Paper is a story, not a collection of experiments.** Every paper needs "
+"one clear contribution stated in a single sentence. If you can't do that,"
+" the paper isn't ready."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:65
+msgid ""
+"**Experiments serve claims.** Every experiment must explicitly state "
+"which claim it supports. Never run experiments that don't connect to the "
+"paper's narrative."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:66
+msgid ""
+"**Commit early, commit often.** Every completed experiment batch, every "
+"paper draft update — commit with descriptive messages. Git log is the "
+"experiment history."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:68
+msgid "Proactivity and Collaboration"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:70
+msgid "**Default: Be proactive. Draft first, ask with the draft.**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Confidence Level"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Action"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**High** (clear repo, obvious contribution)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Write full draft, deliver, iterate on feedback"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Medium** (some ambiguity)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Write draft with flagged uncertainties, continue"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Low** (major unknowns)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Ask 1-2 targeted questions via `clarify`, then draft"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Section"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Draft Autonomously?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Flag With Draft"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Abstract"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Yes"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "\"Framed contribution as X — adjust if needed\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Introduction"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "\"Emphasized problem Y — correct if wrong\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Methods"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "\"Included details A, B, C — add missing pieces\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Experiments"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "\"Highlighted results 1, 2, 3 — reorder if needed\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Related Work"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "\"Cited papers X, Y, Z — add any I missed\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:86
+msgid ""
+"**Block for input only when**: target venue unclear, multiple "
+"contradictory framings, results seem incomplete, explicit request to "
+"review first."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:90
+msgid "Phase 0: Project Setup"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:92
+msgid ""
+"**Goal**: Establish the workspace, understand existing work, identify the"
+" contribution."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:94
+msgid "Step 0.1: Explore the Repository"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:103
+msgid "Look for:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:104
+msgid "`README.md` — project overview and claims"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:105
+msgid "`results/`, `outputs/`, `experiments/` — existing findings"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:106
+msgid "`configs/` — experimental settings"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:107
+msgid "`.bib` files — existing citations"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:108
+msgid "Draft documents or notes"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:110
+msgid "Step 0.2: Organize the Workspace"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:112
+msgid "Establish a consistent workspace structure:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:124
+msgid "Step 0.3: Set Up Version Control"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:132
+msgid ""
+"**Git discipline**: Every completed experiment batch gets committed with "
+"a descriptive message. Example:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:138
+msgid "Step 0.4: Identify the Contribution"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:140
+msgid "Before writing anything, articulate:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:141
+msgid "**The What**: What is the single thing this paper contributes?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:142
+msgid "**The Why**: What evidence supports it?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:143
+msgid "**The So What**: Why should readers care?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:145
+msgid ""
+"Propose to the scientist: \"Based on my understanding, the main "
+"contribution is: [one sentence]. The key results show [Y]. Is this the "
+"framing you want?\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:147
+msgid "Step 0.5: Create a TODO List"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:149
+msgid "Use the `todo` tool to create a structured project plan:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:164
+msgid ""
+"Update this throughout the project. It serves as the persistent state "
+"across sessions."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:166
+msgid "Step 0.6: Estimate Compute Budget"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:168
+msgid "Before running experiments, estimate total cost and time:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:178
+msgid "Track actual spend as experiments run:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:199
+msgid ""
+"**When budget is tight**: Run pilot experiments (1-2 seeds, subset of "
+"tasks) before committing to full sweeps. Use cheaper models for debugging"
+" pipelines, then switch to target models for final runs."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:201
+msgid "Step 0.7: Multi-Author Coordination"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:203
+msgid "Most papers have 3-10 authors. Establish workflows early:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Workflow"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Tool"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "When to Use"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Overleaf**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Browser-based"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Multiple authors editing simultaneously, no git experience"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Git + LaTeX**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`git` with `.gitignore` for aux files"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Technical teams, need branch-based review"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Overleaf + Git sync**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Overleaf premium"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Best of both — live collab with version history"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:211
+msgid ""
+"**Section ownership**: Assign each section to one primary author. Others "
+"comment but don't edit directly. Prevents merge conflicts and style "
+"inconsistency."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:223
+msgid "**LaTeX conventions to agree on early**:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:224
+#, python-brace-format
+msgid "`\\method{}` macro for consistent method naming"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:225
+#, python-brace-format
+msgid "Citation style: `\\citet{}` vs `\\citep{}` usage"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:226
+msgid ""
+"Math notation: lowercase bold for vectors, uppercase bold for matrices, "
+"etc."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:227
+msgid "British vs American spelling"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:231
+msgid "Phase 1: Literature Review"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:233
+msgid "**Goal**: Find related work, identify baselines, gather citations."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:235
+msgid "Step 1.1: Identify Seed Papers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:237
+msgid "Start from papers already referenced in the codebase:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:245
+msgid "Step 1.2: Search for Related Work"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:247
+msgid ""
+"**Load the `arxiv` skill** for structured paper discovery: "
+"`skill_view(\"arxiv\")`. It provides arXiv REST API search, Semantic "
+"Scholar citation graphs, author profiles, and BibTeX generation."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:249
+msgid ""
+"Use `web_search` for broad discovery, `web_extract` for fetching specific"
+" papers:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:260
+msgid "Additional search queries to try:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:270
+msgid "**Recommended**: Install **Exa MCP** for real-time academic search:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:275
+msgid "Step 1.2b: Deepen the Search (Breadth-First, Then Depth)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:277
+msgid ""
+"A flat search (one round of queries) typically misses important related "
+"work. Use an iterative **breadth-then-depth** pattern inspired by deep "
+"research pipelines:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:302
+msgid ""
+"**When to stop**: If a round returns >80% papers already in your "
+"collection, the search is saturated. Typically 2-3 rounds suffice. For "
+"survey papers, expect 4-5 rounds."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:304
+msgid ""
+"**For agent-based workflows**: Delegate each round's queries in parallel "
+"via `delegate_task`. Collect results, deduplicate, then generate the next"
+" round's queries from the combined learnings."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:306
+msgid "Step 1.3: Verify Every Citation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:308
+msgid "**NEVER generate BibTeX from memory. ALWAYS fetch programmatically.**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:310
+msgid "For each citation, follow the mandatory 5-step process:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:335
+msgid "If you cannot verify a citation:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:341
+msgid ""
+"**Always tell the scientist**: \"I've marked [X] citations as "
+"placeholders that need verification.\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:343
+msgid ""
+"See [references/citation-workflow.md](references/citation-workflow.md) "
+"for complete API documentation and the full `CitationManager` class."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:345
+msgid "Step 1.4: Organize Related Work"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:347
+msgid "Group papers by methodology, not paper-by-paper:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:349
+msgid ""
+"**Good**: \"One line of work uses X's assumption [refs] whereas we use "
+"Y's assumption because...\" **Bad**: \"Smith et al. introduced X. Jones "
+"et al. introduced Y. We combine both.\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:354
+msgid "Phase 2: Experiment Design"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:356
+msgid ""
+"**Goal**: Design experiments that directly support paper claims. Every "
+"experiment must answer a specific question."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:358
+msgid "Step 2.1: Map Claims to Experiments"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:360
+msgid "Create an explicit mapping:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Claim"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Experiment"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Expected Evidence"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "\"Our method outperforms baselines\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Main comparison (Table 1)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Win rate, statistical significance"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "\"Effect is larger for weaker models\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Model scaling study"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Monotonic improvement curve"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "\"Convergence requires scope constraints\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Constrained vs unconstrained"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Convergence rate comparison"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:368
+msgid "**Rule**: If an experiment doesn't map to a claim, don't run it."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:370
+msgid "Step 2.2: Design Baselines"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:372
+msgid ""
+"Strong baselines are what separates accepted papers from rejected ones. "
+"Reviewers will ask: \"Did they compare against X?\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:374
+msgid "Standard baseline categories:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:375
+msgid "**Naive baseline**: Simplest possible approach"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:376
+msgid "**Strong baseline**: Best known existing method"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:377
+msgid "**Ablation baselines**: Your method minus one component"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:378
+msgid "**Compute-matched baselines**: Same compute budget, different allocation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:380
+msgid "Step 2.3: Define Evaluation Protocol"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:382
+msgid "Before running anything, specify:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:383
+msgid ""
+"**Metrics**: What you're measuring, direction symbols (higher/lower "
+"better)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:384
+msgid "**Aggregation**: How results are combined across runs/tasks"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:385
+msgid "**Statistical tests**: What tests will establish significance"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:386
+msgid "**Sample sizes**: How many runs/problems/tasks"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:388
+msgid "Step 2.4: Write Experiment Scripts"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:390
+msgid "Follow these patterns from successful research pipelines:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:392
+msgid "**Incremental saving** — save results after each step for crash recovery:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:403
+msgid "**Artifact preservation** — save all intermediate outputs:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:416
+msgid ""
+"**Separation of concerns** — keep generation, evaluation, and "
+"visualization separate:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:425
+msgid ""
+"See [references/experiment-patterns.md](references/experiment-"
+"patterns.md) for complete design patterns, cron monitoring, and error "
+"recovery."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:427
+msgid "Step 2.5: Design Human Evaluation (If Applicable)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:429
+msgid ""
+"Many NLP, HCI, and alignment papers require human evaluation as primary "
+"or complementary evidence. Design this before running automated "
+"experiments — human eval often has longer lead times (IRB approval, "
+"annotator recruitment)."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:431
+msgid "**When human evaluation is needed:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:432
+msgid ""
+"Automated metrics don't capture what you care about (fluency, "
+"helpfulness, safety)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:433
+msgid ""
+"Your contribution is about human-facing qualities (readability, "
+"preference, trust)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:434
+msgid "Reviewers at NLP venues (ACL, EMNLP) expect it for generation tasks"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:436
+msgid "**Key design decisions:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Decision"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Options"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Guidance"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Annotator type**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Expert, crowdworker, end-user"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Match to what your claims require"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Scale**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Likert (1-5), pairwise comparison, ranking"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Pairwise is more reliable than Likert for LLM outputs"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Sample size**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Per annotator and total items"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Power analysis or minimum 100 items, 3+ annotators"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Agreement metric**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Cohen's kappa, Krippendorff's alpha, ICC"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Krippendorff's alpha for >2 annotators; report raw agreement too"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Platform**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Prolific, MTurk, internal team"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Prolific for quality; MTurk for scale; internal for domain expertise"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:446
+msgid "**Annotation guideline checklist:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:457
+msgid "**Reporting requirements** (reviewers check all of these):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:458
+msgid "Number of annotators and their qualifications"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:459
+msgid "Inter-annotator agreement with specific metric and value"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:460
+msgid "Compensation details (amount, estimated hourly rate)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:461
+msgid "Annotation interface description or screenshot (appendix)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:462
+msgid "Total annotation time"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:464
+msgid ""
+"See [references/human-evaluation.md](references/human-evaluation.md) for "
+"complete guide including statistical tests for human eval data, "
+"crowdsourcing quality control patterns, and IRB guidance."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:468
+msgid "Phase 3: Experiment Execution & Monitoring"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:470
+msgid ""
+"**Goal**: Run experiments reliably, monitor progress, recover from "
+"failures."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:472
+msgid "Step 3.1: Launch Experiments"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:474
+msgid "Use `nohup` for long-running experiments:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:481
+msgid ""
+"**Parallel execution**: Run independent experiments simultaneously, but "
+"be aware of API rate limits. 4+ concurrent experiments on the same API "
+"will slow each down."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:483
+msgid "Step 3.2: Set Up Monitoring (Cron Pattern)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:485
+msgid ""
+"For long-running experiments, set up periodic status checks. The cron "
+"prompt should follow this template:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:498
+msgid ""
+"**Silent mode**: If nothing has changed since the last check, respond "
+"with `[SILENT]` to suppress notification to the user. Only report when "
+"there's news."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:500
+msgid "Step 3.3: Handle Failures"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:502
+msgid "Common failure modes and recovery:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Failure"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Detection"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Recovery"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "API rate limit / credit exhaustion"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "402/429 errors in logs"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Wait, then re-run (scripts skip completed work)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Process crash"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "PID gone, incomplete results"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Re-run from last checkpoint"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Timeout on hard problems"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Process stuck, no log progress"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Kill and skip, note in results"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Wrong model ID"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Errors referencing model name"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Fix ID and re-run"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:511
+msgid ""
+"**Key**: Scripts should always check for existing results and skip "
+"completed work. This makes re-runs safe and efficient."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:513
+msgid "Step 3.4: Commit Completed Results"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:515
+msgid "After each experiment batch completes:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:523
+msgid "Step 3.5: Maintain an Experiment Journal"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:525
+msgid ""
+"Git commits track what happened, but not the **exploration tree** — the "
+"decisions about what to try next based on what you learned. Maintain a "
+"structured experiment journal that captures this tree:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:545
+msgid ""
+"**Why a journal, not just git?** Git tracks file changes. The journal "
+"tracks the reasoning: why you tried X, what you learned, and what that "
+"implies for the next experiment. When writing the paper, this tree is "
+"invaluable for the Methods section (\"we observed X, which motivated Y\")"
+" and for honest failure reporting."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:547
+msgid ""
+"**Selecting the best path**: When the journal shows a branching tree "
+"(exp_001 → exp_002a, exp_002b, exp_003), identify the path that best "
+"supports the paper's claims. Document dead-end branches in the appendix "
+"as ablations or negative results."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:549
+msgid ""
+"**Snapshot code per experiment**: Copy the experiment script after each "
+"run:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:553
+msgid "This enables exact reproduction even after subsequent code changes."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:557
+msgid "Phase 4: Result Analysis"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:559
+msgid "**Goal**: Extract findings, compute statistics, identify the story."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:561
+msgid "Step 4.1: Aggregate Results"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:563
+msgid "Write analysis scripts that:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:564
+msgid "Load all result files from a batch"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:565
+msgid "Compute per-task and aggregate metrics"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:566
+msgid "Generate summary tables"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:586
+msgid "Step 4.2: Statistical Significance"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:588
+msgid "Always compute:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:589
+msgid "**Error bars**: Standard deviation or standard error, specify which"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:590
+msgid "**Confidence intervals**: 95% CI for key results"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:591
+msgid "**Pairwise tests**: McNemar's test for comparing two methods"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:592
+msgid "**Effect sizes**: Cohen's d or h for practical significance"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:594
+msgid ""
+"See [references/experiment-patterns.md](references/experiment-"
+"patterns.md) for complete implementations of McNemar's test, bootstrapped"
+" CIs, and Cohen's h."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:596
+msgid "Step 4.3: Identify the Story"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:598
+msgid "After analysis, explicitly answer:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:599
+msgid "**What is the main finding?** State it in one sentence."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:600
+msgid "**What surprised you?** Unexpected results often make the best papers."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:601
+msgid ""
+"**What failed?** Failed experiments can be the most informative. Honest "
+"reporting of failures strengthens the paper."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:602
+msgid ""
+"**What follow-up experiments are needed?** Results often raise new "
+"questions."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:604
+msgid "Handling Negative or Null Results"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:606
+msgid ""
+"When your hypothesis was wrong or results are inconclusive, you have "
+"three options:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Situation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Venue Fit"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Hypothesis wrong but **why** is informative"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Frame paper around the analysis of why"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "NeurIPS, ICML (if analysis is rigorous)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Method doesn't beat baselines but **reveals something new**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Reframe contribution as understanding/analysis"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "ICLR (values understanding), workshop papers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Clean negative result on popular claim"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Write it up — the field needs to know"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "NeurIPS Datasets & Benchmarks, TMLR, workshops"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Results inconclusive, no clear story"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Pivot — run different experiments or reframe"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Don't force a paper that isn't there"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:615
+msgid "**How to write a negative results paper:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:616
+msgid "Lead with what the community believes and why it matters to test it"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:617
+msgid ""
+"Describe your rigorous methodology (must be airtight — reviewers will "
+"scrutinize harder)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:618
+msgid "Present the null result clearly with statistical evidence"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:619
+msgid "Analyze **why** the expected result didn't materialize"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:620
+msgid "Discuss implications for the field"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:622
+msgid ""
+"**Venues that explicitly welcome negative results**: NeurIPS (Datasets & "
+"Benchmarks track), TMLR, ML Reproducibility Challenge, workshops at major"
+" conferences. Some workshops specifically call for negative results."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:624
+msgid "Step 4.4: Create Figures and Tables"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:626
+#: ../../source/research-paper-writing_SKILL.md:1245
+msgid "**Figures**:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:627
+msgid "Use vector graphics (PDF) for all plots: `plt.savefig('fig.pdf')`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:628
+msgid "Colorblind-safe palettes (Okabe-Ito or Paul Tol)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:629
+msgid "Self-contained captions — reader should understand without main text"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:630
+msgid "No title inside figure — the caption serves this function"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:632
+msgid "**Tables**:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:633
+msgid "Use `booktabs` LaTeX package"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:634
+#: ../../source/research-paper-writing_SKILL.md:1240
+msgid "Bold best value per metric"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:635
+msgid "Include direction symbols (higher/lower better)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:636
+#: ../../source/research-paper-writing_SKILL.md:1243
+msgid "Consistent decimal precision"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:650
+msgid "Step 4.5: Decide: More Experiments or Write?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Core claims supported, results significant"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Move to Phase 5 (writing)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Results inconclusive, need more data"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Back to Phase 2 (design)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Unexpected finding suggests new direction"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Missing one ablation reviewers will ask for"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Run it, then Phase 5"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "All experiments done but some failed"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Note failures, move to Phase 5"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:660
+msgid "Step 4.6: Write the Experiment Log (Bridge to Writeup)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:662
+msgid ""
+"Before moving to paper writing, create a structured experiment log that "
+"bridges results to prose. This is the single most important connective "
+"tissue between experiments and the writeup — without it, the writing "
+"agent has to re-derive the story from raw result files."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:664
+msgid "**Create `experiment_log.md`** with the following structure:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:699
+msgid ""
+"**Why this matters**: When drafting, the agent (or a delegated sub-agent)"
+" can load `experiment_log.md` alongside the LaTeX template and produce a "
+"first draft grounded in actual results. Without this bridge, the writing "
+"agent must parse raw JSON/CSV files and infer the story — a common source"
+" of hallucinated or misreported numbers."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:701
+msgid "**Git discipline**: Commit this log alongside the results it describes."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:705
+msgid "Iterative Refinement: Strategy Selection"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:707
+msgid ""
+"Any output in this pipeline — paper drafts, experiment scripts, analysis "
+"— can be iteratively refined. The autoreason research provides empirical "
+"evidence for when each refinement strategy works and when it fails. Use "
+"this section to choose the right approach."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:709
+msgid "Quick Decision Table"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Your Situation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Strategy"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Why"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Mid-tier model + constrained task"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Autoreason**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Sweet spot. Generation-evaluation gap is widest. Baselines actively "
+"destroy weak model outputs."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Mid-tier model + open task"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Autoreason** with scope constraints added"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Add fixed facts, structure, or deliverable to bound the improvement space."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Frontier model + constrained task"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Wins 2/3 constrained tasks even at frontier."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Frontier model + unconstrained task"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Critique-and-revise** or **single pass**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Autoreason comes last. Model self-evaluates well enough."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Concrete technical task (system design)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Critique-and-revise**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Direct find-and-fix loop is more efficient."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Template-filling task (one correct structure)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Single pass** or **conservative**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Minimal decision space. Iteration adds no value."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Code with test cases"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Autoreason (code variant)**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Structured analysis of *why* it failed before fixing. Recovery rate 62% "
+"vs 43%."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Very weak model (Llama 8B class)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Single pass**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Model too weak for diverse candidates. Invest in generation quality."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:722
+msgid "The Generation-Evaluation Gap"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:724
+msgid ""
+"**Core insight**: Autoreason's value depends on the gap between a model's"
+" generation capability and its self-evaluation capability."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:736
+msgid ""
+"This gap is structural, not temporary. As costs drop, today's frontier "
+"becomes tomorrow's mid-tier. The sweet spot moves but never disappears."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:738
+msgid "Autoreason Loop (Summary)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:740
+msgid "Each pass produces three candidates from fresh, isolated agents:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:742
+msgid "**Critic** → finds problems in incumbent A (no fixes)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:743
+msgid "**Author B** → revises A based on critique"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:744
+msgid "**Synthesizer** → merges A and B (randomized labels)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:745
+msgid "**Judge Panel** → 3 blind CoT judges rank A, B, AB via Borda count"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:746
+msgid "**Convergence** → A wins k=2 consecutive passes → done"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:748
+msgid "**Key parameters:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:749
+msgid "k=2 convergence (k=1 premature, k=3 too expensive, no quality gain)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:750
+msgid "CoT judges always (3x faster convergence)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:751
+msgid "Temperature 0.8 authors, 0.3 judges"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:752
+msgid "Conservative tiebreak: incumbent wins ties"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:753
+msgid "Every role is a fresh agent with no shared context"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:755
+msgid "Applying to Paper Drafts"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:757
+msgid "When refining the paper itself through autoreason:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:758
+msgid ""
+"**Provide ground truth to the critic**: actual experimental data, result "
+"JSONs, statistical outputs. Without this, models hallucinate fabricated "
+"ablation studies and fake confidence intervals."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:759
+msgid ""
+"**Use 3 working judges minimum**: A broken judge parser doesn't add noise"
+" — it prevents equilibrium entirely."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:760
+msgid ""
+"**Scope constrain the revision**: \"Address these specific weaknesses\" "
+"not \"improve the paper.\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:762
+msgid "Failure Modes"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Fix"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "No convergence (A never wins)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+#, python-format
+msgid "A wins <15% over 20+ passes"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Add scope constraints to the task"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Synthesis drift"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Word counts grow unboundedly"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Constrain structure and deliverable"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Degradation below single pass"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Baselines score higher than iterated output"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Switch to single pass; model may be too weak"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Overfitting (code)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "High public-test pass, low private-test pass"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Use structured analysis, not just test feedback"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Broken judges"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Parsing failures reduce panel below 3"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Fix parser before continuing"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:772
+msgid ""
+"See [references/autoreason-methodology.md](references/autoreason-"
+"methodology.md) for complete prompts, Borda scoring details, model "
+"selection guide, scope constraint design patterns, and compute budget "
+"reference."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:776
+msgid "Phase 5: Paper Drafting"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:778
+msgid "**Goal**: Write a complete, publication-ready paper."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:780
+msgid "Context Management for Large Projects"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:782
+msgid ""
+"A paper project with 50+ experiment files, multiple result directories, "
+"and extensive literature notes can easily exceed the agent's context "
+"window. Manage this proactively:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:784
+msgid "**What to load into context per drafting task:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Drafting Task"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Load Into Context"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Do NOT Load"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Writing Introduction"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"`experiment_log.md`, contribution statement, 5-10 most relevant paper "
+"abstracts"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Raw result JSONs, full experiment scripts, all literature notes"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Writing Methods"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Experiment configs, pseudocode, architecture description"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Raw logs, results from other experiments"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Writing Results"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`experiment_log.md`, result summary tables, figure list"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Full analysis scripts, intermediate data"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Writing Related Work"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Organized citation notes (Step 1.4 output), .bib file"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Experiment files, raw PDFs"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Revision pass"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Full paper draft, specific reviewer concerns"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Everything else"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:794
+msgid "**Principles:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:795
+msgid ""
+"**`experiment_log.md` is the primary context bridge** — it summarizes "
+"everything needed for writing without loading raw data files (see Step "
+"4.6)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:796
+msgid ""
+"**Load one section's context at a time** when delegating. A sub-agent "
+"drafting Methods doesn't need the literature review notes."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:797
+msgid ""
+"**Summarize, don't include raw files.** For a 200-line result JSON, load "
+"a 10-line summary table. For a 50-page related paper, load the 5-sentence"
+" abstract + your 2-line note about its relevance."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:798
+msgid ""
+"**For very large projects**: Create a `context/` directory with pre-"
+"compressed summaries:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:807
+msgid "The Narrative Principle"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:809
+msgid ""
+"**The single most critical insight**: Your paper is not a collection of "
+"experiments — it's a story with one clear contribution supported by "
+"evidence."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:811
+msgid ""
+"Every successful ML paper centers on what Neel Nanda calls \"the "
+"narrative\": a short, rigorous, evidence-based technical story with a "
+"takeaway readers care about."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:813
+msgid "**Three Pillars (must be crystal clear by end of introduction):**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Pillar"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Test"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**The What**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "1-3 specific novel claims"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Can you state them in one sentence?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**The Why**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Rigorous empirical evidence"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Do experiments distinguish your hypothesis from alternatives?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**The So What**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Why readers should care"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Does this connect to a recognized community problem?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:821
+msgid ""
+"**If you cannot state your contribution in one sentence, you don't yet "
+"have a paper.**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:823
+msgid "Time Allocation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:825
+msgid "Spend approximately **equal time** on each of:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:826
+msgid "The abstract"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:827
+msgid "The introduction"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:828
+msgid "The figures"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:829
+msgid "Everything else combined"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:831
+msgid ""
+"**Why?** Most reviewers form judgments before reaching your methods. "
+"Readers encounter your paper as: title → abstract → introduction → "
+"figures → maybe the rest."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:833
+msgid "Writing Workflow"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:851
+msgid "Two-Pass Refinement Pattern"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:853
+msgid ""
+"When drafting with an AI agent, use a **two-pass** approach (proven "
+"effective in SakanaAI's AI-Scientist pipeline):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:855
+msgid ""
+"**Pass 1 — Write + immediate refine per section:** For each section, "
+"write a complete draft, then immediately refine it in the same context. "
+"This catches local issues (clarity, flow, completeness) while the section"
+" is fresh."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:858
+msgid ""
+"**Pass 2 — Global refinement with full-paper context:** After all "
+"sections are drafted, revisit each section with awareness of the complete"
+" paper. This catches cross-section issues: redundancy, inconsistent "
+"terminology, narrative flow, and gaps where one section promises "
+"something another doesn't deliver."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:871
+msgid "LaTeX Error Checklist"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:873
+msgid ""
+"Append this checklist to every refinement prompt. These are the most "
+"common errors when LLMs write LaTeX:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:890
+msgid "Step 5.0: Title"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:892
+msgid ""
+"The title is the single most-read element of the paper. It determines "
+"whether anyone clicks through to the abstract."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:894
+msgid "**Good titles**:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:895
+msgid ""
+"State the contribution or finding: \"Autoreason: When Iterative LLM "
+"Refinement Works and Why It Fails\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:896
+msgid ""
+"Highlight a surprising result: \"Scaling Data-Constrained Language "
+"Models\" (implies you can)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:897
+msgid ""
+"Name the method + what it does: \"DPO: Direct Preference Optimization of "
+"Language Models\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:899
+msgid "**Bad titles**:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:900
+msgid "Too generic: \"An Approach to Improving Language Model Outputs\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:901
+msgid "Too long: anything over ~15 words"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:902
+msgid ""
+"Jargon-only: \"Asymptotic Convergence of Iterative Stochastic Policy "
+"Refinement\" (who is this for?)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:904
+#: ../../source/research-paper-writing_SKILL.md:1007
+#: ../../source/research-paper-writing_SKILL.md:1650
+msgid "**Rules**:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:905
+msgid "Include your method name if you have one (for citability)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:906
+msgid "Include 1-2 keywords reviewers will search for"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:907
+msgid "Avoid colons unless both halves carry meaning"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:908
+msgid ""
+"Test: would a reviewer know the domain and contribution from the title "
+"alone?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:910
+msgid "Step 5.1: Abstract (5-Sentence Formula)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:912
+msgid "From Sebastian Farquhar (DeepMind):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:922
+msgid ""
+"**Delete** generic openings like \"Large language models have achieved "
+"remarkable success...\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:924
+msgid "Step 5.2: Figure 1"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:926
+msgid ""
+"Figure 1 is the second thing most readers look at (after abstract). Draft"
+" it before writing the introduction — it forces you to clarify the core "
+"idea."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Figure 1 Type"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Example"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Method diagram**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "New architecture or pipeline"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "TikZ flowchart showing your system"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Results teaser**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "One compelling result tells the whole story"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Bar chart: \"Ours vs baselines\" with clear gap"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Problem illustration**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "The problem is unintuitive"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Before/after showing failure mode you fix"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Conceptual diagram**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Abstract contribution needs visual grounding"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "2x2 matrix of method properties"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:935
+msgid ""
+"**Rules**: Figure 1 must be understandable without reading any text. The "
+"caption alone should communicate the core idea. Use color purposefully — "
+"don't just decorate."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:937
+msgid "Step 5.3: Introduction (1-1.5 pages max)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:939
+msgid "Must include:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:940
+msgid "Clear problem statement"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:941
+msgid "Brief approach overview"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:942
+msgid "2-4 bullet contribution list (max 1-2 lines each in two-column format)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:943
+msgid "Methods should start by page 2-3"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:945
+msgid "Step 5.4: Methods"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:947
+msgid "Enable reimplementation:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:948
+msgid "Conceptual outline or pseudocode"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:949
+msgid "All hyperparameters listed"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:950
+msgid "Architectural details sufficient for reproduction"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:951
+msgid "Present final design decisions; ablations go in experiments"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:953
+msgid "Step 5.5: Experiments & Results"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:955
+msgid "For each experiment, explicitly state:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:956
+msgid "**What claim it supports**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:957
+msgid "How it connects to main contribution"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:958
+msgid "What to observe: \"the blue line shows X, which demonstrates Y\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:960
+msgid "Requirements:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:961
+msgid "Error bars with methodology (std dev vs std error)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:962
+msgid "Hyperparameter search ranges"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:963
+msgid "Compute infrastructure (GPU type, total hours)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:964
+msgid "Seed-setting methods"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:966
+msgid "Step 5.6: Related Work"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:968
+msgid ""
+"Organize methodologically, not paper-by-paper. Cite generously — "
+"reviewers likely authored relevant papers."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:970
+msgid "Step 5.7: Limitations (REQUIRED)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:972
+msgid "All major conferences require this. Honesty helps:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:973
+msgid "Reviewers are instructed not to penalize honest limitation acknowledgment"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:974
+msgid "Pre-empt criticisms by identifying weaknesses first"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:975
+msgid "Explain why limitations don't undermine core claims"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:977
+msgid "Step 5.8: Conclusion & Discussion"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:979
+msgid "**Conclusion** (required, 0.5-1 page):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:980
+msgid "Restate the contribution in one sentence (different wording from abstract)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:981
+msgid "Summarize key findings (2-3 sentences, not a list)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:982
+msgid "Implications: what does this mean for the field?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:983
+msgid ""
+"Future work: 2-3 concrete next steps (not vague \"we leave X for future "
+"work\")"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:985
+msgid "**Discussion** (optional, sometimes combined with conclusion):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:986
+msgid "Broader implications beyond immediate results"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:987
+msgid "Connections to other subfields"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:988
+msgid "Honest assessment of when the method does and doesn't work"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:989
+msgid "Practical deployment considerations"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:991
+msgid "**Do NOT** introduce new results or claims in the conclusion."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:993
+msgid "Step 5.9: Appendix Strategy"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:995
+msgid ""
+"Appendices are unlimited at all major venues and are essential for "
+"reproducibility. Structure:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Appendix Section"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "What Goes Here"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Proofs & Derivations**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Full proofs too long for main text. Main text can state theorems with "
+"\"proof in Appendix A.\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Additional Experiments**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Ablations, scaling curves, per-dataset breakdowns, hyperparameter "
+"sensitivity"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Implementation Details**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Full hyperparameter tables, training details, hardware specs, random seeds"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Dataset Documentation**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Data collection process, annotation guidelines, licensing, preprocessing"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Prompts & Templates**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Exact prompts used (for LLM-based methods), evaluation templates"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Human Evaluation**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Annotation interface screenshots, instructions given to annotators, IRB "
+"details"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Additional Figures**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Per-task breakdowns, trajectory visualizations, failure case examples"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1008
+msgid ""
+"The main paper must be self-contained — reviewers are not required to "
+"read appendices"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1009
+msgid "Never put critical evidence only in the appendix"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1010
+msgid ""
+"Cross-reference: \"Full results in Table 5 (Appendix B)\" not just \"see "
+"appendix\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1011
+#, python-brace-format
+msgid "Use `\\appendix` command, then `\\section{A: Proofs}` etc."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1013
+msgid "Page Budget Management"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1015
+msgid "When over the page limit:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Cut Strategy"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Saves"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Risk"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Move proofs to appendix"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "0.5-2 pages"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Low — standard practice"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Condense related work"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "0.5-1 page"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Medium — may miss key citations"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Combine tables with subfigures"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "0.25-0.5 page"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Low — often improves readability"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+#, python-brace-format
+msgid "Use `\\vspace{-Xpt}` sparingly"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "0.1-0.3 page"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Low if subtle, high if obvious"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Remove qualitative examples"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Medium — reviewers like examples"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Reduce figure sizes"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "High — figures must remain readable"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1026
+msgid ""
+"**Do NOT**: reduce font size, change margins, remove required sections "
+"(limitations, broader impact), or use `\\small`/`\\footnotesize` for main"
+" text."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1028
+msgid "Step 5.10: Ethics & Broader Impact Statement"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1030
+msgid ""
+"Most venues now require or strongly encourage an ethics/broader impact "
+"statement. This is not boilerplate — reviewers read it and can flag "
+"ethics concerns that trigger desk rejection."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1032
+msgid "**What to include:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Component"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Content"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Required By"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Positive societal impact**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "How your work benefits society"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "NeurIPS, ICML"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Potential negative impact**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Misuse risks, dual-use concerns, failure modes"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Fairness & bias**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Does your method/data have known biases?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "All venues (implicitly)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Environmental impact**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Compute carbon footprint for large-scale training"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "ICML, increasingly NeurIPS"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Privacy**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Does your work use or enable processing of personal data?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "ACL, NeurIPS"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**LLM disclosure**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Was AI used in writing or experiments?"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "ICLR (mandatory), ACL"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1043
+msgid "**Writing the statement:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1062
+msgid "**Common mistakes:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1063
+msgid ""
+"Writing \"we foresee no negative impacts\" (almost never true — reviewers"
+" distrust this)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1064
+msgid "Being vague: \"this could be misused\" without specifying how"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1065
+msgid "Ignoring compute costs for large-scale work"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1066
+msgid "Forgetting to disclose LLM use at venues that require it"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1068
+msgid "**Compute carbon footprint** (for training-heavy papers):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1081
+msgid "Step 5.11: Datasheets & Model Cards (If Applicable)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1083
+msgid ""
+"If your paper introduces a **new dataset** or **releases a model**, "
+"include structured documentation. Reviewers increasingly expect this, and"
+" NeurIPS Datasets & Benchmarks track requires it."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1085
+msgid "**Datasheets for Datasets** (Gebru et al., 2021) — include in appendix:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1099
+msgid ""
+"**Model Cards** (Mitchell et al., 2019) — include in appendix for model "
+"releases:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1110
+msgid "Writing Style"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1112
+msgid "**Sentence-level clarity (Gopen & Swan's 7 Principles):**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Principle"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Rule"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Subject-verb proximity"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Keep subject and verb close"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Stress position"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Place emphasis at sentence ends"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Topic position"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Put context first, new info after"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Old before new"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Familiar info → unfamiliar info"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "One unit, one function"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Each paragraph makes one point"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Action in verb"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Use verbs, not nominalizations"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Context before new"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Set stage before presenting"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1124
+msgid "**Word choice (Lipton, Steinhardt):**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1125
+msgid "Be specific: \"accuracy\" not \"performance\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1126
+msgid "Eliminate hedging: drop \"may\" unless genuinely uncertain"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1127
+msgid "Consistent terminology throughout"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1128
+msgid "Avoid incremental vocabulary: \"develop\", not \"combine\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1130
+msgid ""
+"**Full writing guide with examples**: See [references/writing-"
+"guide.md](references/writing-guide.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1132
+msgid "Using LaTeX Templates"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1134
+msgid "**Always copy the entire template directory first, then write within it.**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1146
+msgid "**Step 1: Copy the Full Template**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1154
+msgid ""
+"Copy the ENTIRE directory, not just the .tex file. Templates include "
+"style files (.sty), bibliography styles (.bst), example content, and "
+"Makefiles."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1156
+msgid "**Step 2: Verify Template Compiles First**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1158
+msgid "Before making ANY changes:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1164
+msgid ""
+"If the unmodified template doesn't compile, fix that first (usually "
+"missing TeX packages — install via `tlmgr install <package>`)."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1166
+msgid "**Step 3: Keep Template Content as Reference**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1168
+msgid ""
+"Don't immediately delete example content. Comment it out and use as "
+"formatting reference:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1185
+msgid "**Step 4: Replace Content Section by Section**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1187
+msgid ""
+"Work through systematically: title/authors → abstract → introduction → "
+"methods → experiments → related work → conclusion → references → "
+"appendix. Compile after each section."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1189
+msgid "**Step 5: Use Template Macros**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1197
+msgid "Template Pitfalls"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Pitfall"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Problem"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Solution"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Copying only `.tex` file"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Missing `.sty`, won't compile"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Copy entire directory"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Modifying `.sty` files"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Breaks conference formatting"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Never edit style files"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Adding random packages"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Conflicts, breaks template"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Only add if necessary"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Deleting template content early"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Lose formatting reference"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Keep as comments until done"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Not compiling frequently"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Errors accumulate"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Compile after each section"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Raster PNGs for figures"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Blurry in paper"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Always use vector PDF via `savefig('fig.pdf')`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1208
+msgid "Quick Template Reference"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Conference"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Main File"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Style File"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Page Limit"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "NeurIPS 2025"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`main.tex`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`neurips.sty`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "9 pages"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "ICML 2026"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`example_paper.tex`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`icml2026.sty`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "8 pages"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "ICLR 2026"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`iclr2026_conference.tex`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`iclr2026_conference.sty`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "ACL 2025"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`acl_latex.tex`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`acl.sty`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "8 pages (long)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "AAAI 2026"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`aaai2026-unified-template.tex`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`aaai2026.sty`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "7 pages"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "COLM 2025"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`colm2025_conference.tex`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`colm2025_conference.sty`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1219
+msgid ""
+"**Universal**: Double-blind, references don't count, appendices "
+"unlimited, LaTeX required."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1221
+msgid ""
+"Templates in `templates/` directory. See "
+"[templates/README.md](templates/README.md) for compilation setup (VS "
+"Code, CLI, Overleaf, other IDEs)."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1223
+msgid "Tables and Figures"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1225
+msgid "**Tables** — use `booktabs` for professional formatting:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1239
+msgid "Rules:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1241
+msgid ""
+"Include direction symbols ($\\uparrow$ higher better, $\\downarrow$ lower"
+" better)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1242
+msgid "Right-align numerical columns"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1246
+msgid ""
+"**Vector graphics** (PDF, EPS) for all plots and diagrams — "
+"`plt.savefig('fig.pdf')`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1247
+msgid "**Raster** (PNG 600 DPI) only for photographs"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1248
+msgid "**Colorblind-safe palettes** (Okabe-Ito or Paul Tol)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1249
+#, python-format
+msgid "Verify **grayscale readability** (8% of men have color vision deficiency)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1250
+msgid "**No title inside figure** — the caption serves this function"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1251
+msgid "**Self-contained captions** — reader should understand without main text"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1253
+msgid "Conference Resubmission"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1255
+msgid ""
+"For converting between venues, see Phase 7 (Submission Preparation) — it "
+"covers the full conversion workflow, page-change table, and post-"
+"rejection guidance."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1257
+msgid "Professional LaTeX Preamble"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1259
+msgid ""
+"Add these packages to any paper for professional quality. They are "
+"compatible with all major conference style files:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1306
+msgid "**Notes:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1307
+msgid ""
+"`microtype` is the single highest-impact package for visual quality. It "
+"adjusts character spacing at a sub-pixel level. Always include it."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1308
+msgid ""
+"`siunitx` handles decimal alignment in tables via the `S` column type — "
+"eliminates manual spacing."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1309
+msgid ""
+"`cleveref` must be loaded **after** `hyperref`. Most conference .sty "
+"files load hyperref, so put cleveref last."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1310
+msgid ""
+"Check if the conference template already loads any of these (especially "
+"`algorithm`, `amsmath`, `graphicx`). Don't double-load."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1312
+msgid "siunitx Table Alignment"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1314
+msgid "`siunitx` makes number-heavy tables significantly more readable:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1328
+#, python-brace-format
+msgid ""
+"The `S` column type auto-aligns on the decimal point. Headers in `{}` "
+"escape the alignment."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1330
+msgid "Subfigures"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1332
+msgid "Standard pattern for side-by-side figures:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1356
+#, python-brace-format
+msgid ""
+"Use `\\cref{fig:results}` → \"Figure 1\", `\\cref{fig:results-a}` → "
+"\"Figure 1a\"."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1358
+msgid "Pseudocode with algorithm2e"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1386
+msgid "TikZ Diagram Patterns"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1388
+msgid "TikZ is the standard for method diagrams in ML papers. Common patterns:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1390
+msgid "**Pipeline/Flow Diagram** (most common in ML papers):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1418
+msgid "**Comparison/Matrix Diagram** (for showing method variants):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1443
+msgid "**Iterative Loop Diagram** (for methods with feedback):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1463
+msgid "latexdiff for Revision Tracking"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1465
+msgid ""
+"Essential for rebuttals — generates a marked-up PDF showing changes "
+"between versions:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1480
+msgid ""
+"This produces a PDF with deletions in red strikethrough and additions in "
+"blue — standard format for rebuttal supplements."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1482
+msgid "SciencePlots for matplotlib"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1484
+msgid "Install and use for publication-quality plots:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1508
+msgid "**Standard figure sizes** (two-column format):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1509
+msgid "Single column: `figsize=(3.5, 2.5)` — fits in one column"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1510
+msgid "Double column: `figsize=(7.0, 3.0)` — spans both columns"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1511
+msgid "Square: `figsize=(3.5, 3.5)` — for heatmaps, confusion matrices"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1515
+msgid "Phase 6: Self-Review & Revision"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1517
+msgid ""
+"**Goal**: Simulate the review process before submission. Catch weaknesses"
+" early."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1519
+msgid "Step 6.1: Simulate Reviews (Ensemble Pattern)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1521
+msgid ""
+"Generate reviews from multiple perspectives. The key insight from "
+"automated research pipelines (notably SakanaAI's AI-Scientist): "
+"**ensemble reviewing with a meta-reviewer produces far more calibrated "
+"feedback than a single review pass.**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1523
+msgid "**Step 1: Generate N independent reviews** (N=3-5)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1525
+msgid ""
+"Use different models or temperature settings. Each reviewer sees only the"
+" paper, not other reviews. **Default to negative bias** — LLMs have well-"
+"documented positivity bias in evaluation."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1554
+msgid "**Step 2: Meta-review (Area Chair aggregation)**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1556
+msgid "Feed all N reviews to a meta-reviewer:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1576
+msgid "**Step 3: Reflection loop** (optional, 2-3 rounds)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1578
+msgid ""
+"Each reviewer can refine their review after seeing the meta-review. Use "
+"an early termination sentinel: if the reviewer responds \"I am done\" (no"
+" changes), stop iterating."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1580
+msgid ""
+"**Model selection for reviewing**: Reviewing is best done with the "
+"strongest available model, even if you wrote the paper with a cheaper "
+"one. The reviewer model should be chosen independently from the writing "
+"model."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1582
+msgid ""
+"**Few-shot calibration**: If available, include 1-2 real published "
+"reviews from the target venue as examples. This dramatically improves "
+"score calibration. See [references/reviewer-guidelines.md](references"
+"/reviewer-guidelines.md) for example reviews."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1584
+msgid "Step 6.1b: Visual Review Pass (VLM)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1586
+msgid ""
+"Text-only review misses an entire class of problems: figure quality, "
+"layout issues, visual consistency. If you have access to a vision-capable"
+" model, run a separate **visual review** on the compiled PDF:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1601
+msgid ""
+"This catches problems that text-based review cannot: a plot with "
+"illegible axis labels, a figure placed 3 pages from its first reference, "
+"inconsistent color palettes between Figure 2 and Figure 5, or a table "
+"that's clearly wider than the column width."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1603
+msgid "Step 6.1c: Claim Verification Pass"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1605
+msgid ""
+"After simulated reviews, run a separate verification pass. This catches "
+"factual errors that reviewers might miss:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1615
+msgid ""
+"For agent-based workflows: delegate verification to a **fresh sub-agent**"
+" that receives only the paper text and the raw result files. The fresh "
+"context prevents confirmation bias — the verifier doesn't \"remember\" "
+"what the results were supposed to be."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1617
+msgid "Step 6.2: Prioritize Feedback"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1619
+msgid "After collecting reviews, categorize:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Priority"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Critical** (technical flaw, missing baseline)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Must fix. May require new experiments → back to Phase 2"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**High** (clarity issue, missing ablation)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Should fix in this revision"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Medium** (minor writing issues, extra experiments)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Fix if time allows"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Low** (style preferences, tangential suggestions)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Note for future work"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1628
+msgid "Step 6.3: Revision Cycle"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1630
+msgid "For each critical/high issue:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1631
+msgid "Identify the specific section(s) affected"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1632
+msgid "Draft the fix"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1633
+msgid "Verify the fix doesn't break other claims"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1634
+msgid "Update the paper"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1635
+msgid "Re-check against the reviewer's concern"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1637
+msgid "Step 6.4: Rebuttal Writing"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1639
+msgid ""
+"When responding to actual reviews (post-submission), rebuttals are a "
+"distinct skill from revision:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1641
+msgid "**Format**: Point-by-point. For each reviewer concern:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1651
+msgid "Address every concern — reviewers notice if you skip one"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1652
+msgid "Lead with the strongest responses"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1653
+msgid "Be concise and direct — reviewers read dozens of rebuttals"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1654
+msgid "Include new results if you ran experiments during the rebuttal period"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1655
+msgid "Never be defensive or dismissive, even of weak criticisms"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1656
+msgid ""
+"Use `latexdiff` to generate a marked-up PDF showing changes (see "
+"Professional LaTeX Tooling section)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1657
+msgid "Thank reviewers for specific, actionable feedback (not generic praise)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1659
+msgid ""
+"**What NOT to do**: \"We respectfully disagree\" without evidence. \"This"
+" is out of scope\" without explanation. Ignoring a weakness by only "
+"responding to strengths."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1661
+msgid "Step 6.5: Paper Evolution Tracking"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1663
+msgid "Save snapshots at key milestones:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1675
+msgid "Phase 7: Submission Preparation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1677
+msgid "**Goal**: Final checks, formatting, and submission."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1679
+msgid "Step 7.1: Conference Checklist"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1681
+msgid ""
+"Every venue has mandatory checklists. Complete them carefully — "
+"incomplete checklists can result in desk rejection."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1683
+msgid "See [references/checklists.md](references/checklists.md) for:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1684
+msgid "NeurIPS 16-item paper checklist"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1685
+msgid "ICML broader impact + reproducibility"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1686
+msgid "ICLR LLM disclosure policy"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1687
+msgid "ACL mandatory limitations section"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1688
+msgid "Universal pre-submission checklist"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1690
+msgid "Step 7.2: Anonymization Checklist"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1692
+msgid ""
+"Double-blind review means reviewers cannot know who wrote the paper. "
+"Check ALL of these:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1708
+msgid ""
+"**Common mistakes**: Git commit messages visible in supplementary code, "
+"watermarked figures from institutional tools, acknowledgments left in "
+"from a previous draft, arXiv preprint posted before anonymity period."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1710
+msgid "Step 7.3: Formatting Verification"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1724
+msgid "Step 7.4: Pre-Compilation Validation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1726
+msgid ""
+"Run these automated checks **before** attempting `pdflatex`. Catching "
+"errors here is faster than debugging compiler output."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1769
+msgid ""
+"Fix any warnings before proceeding. For agent-based workflows: feed "
+"chktex output back to the agent with instructions to make minimal fixes."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1771
+msgid "Step 7.5: Final Compilation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1788
+msgid ""
+"**If compilation fails**: Parse the `.log` file for the first error. "
+"Common fixes:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1789
+msgid "\"Undefined control sequence\" → missing package or typo in command name"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1790
+msgid "\"Missing $ inserted\" → math symbol outside math mode"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1791
+msgid "\"File not found\" → wrong figure path or missing .sty file"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1792
+msgid "\"Citation undefined\" → .bib entry missing or bibtex not run"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1794
+msgid "Step 7.6: Conference-Specific Requirements"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Venue"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Special Requirements"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**NeurIPS**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Paper checklist in appendix, lay summary if accepted"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**ICML**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Broader Impact Statement (after conclusion, doesn't count toward limit)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**ICLR**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "LLM disclosure required, reciprocal reviewing agreement"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**ACL**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Mandatory Limitations section, Responsible NLP checklist"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**AAAI**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Strict style file — no modifications whatsoever"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**COLM**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Frame contribution for language model community"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1805
+msgid "Step 7.7: Conference Resubmission & Format Conversion"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1807
+msgid ""
+"When converting between venues, **never copy LaTeX preambles between "
+"templates**:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "From → To"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Page Change"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Key Adjustments"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "NeurIPS → ICML"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "9 → 8"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Cut 1 page, add Broader Impact"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "ICML → ICLR"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "8 → 9"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Expand experiments, add LLM disclosure"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "NeurIPS → ACL"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Restructure for NLP conventions, add Limitations"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "ICLR → AAAI"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "9 → 7"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Significant cuts, strict style adherence"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Any → COLM"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "varies → 9"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Reframe for language model focus"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1829
+msgid ""
+"When cutting pages: move proofs to appendix, condense related work, "
+"combine tables, use subfigures. When expanding: add ablations, expand "
+"limitations, include additional baselines, add qualitative examples."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1832
+msgid ""
+"**After rejection**: Address reviewer concerns in the new version, but "
+"don't include a \"changes\" section or reference the previous submission "
+"(blind review)."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1834
+msgid "Step 7.8: Camera-Ready Preparation (Post-Acceptance)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1836
+msgid "After acceptance, prepare the camera-ready version:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1852
+msgid "Step 7.9: arXiv & Preprint Strategy"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1854
+msgid ""
+"Posting to arXiv is standard practice in ML but has important timing and "
+"anonymity considerations."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1856
+msgid "**Timing decision tree:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Recommendation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Submitting to double-blind venue (NeurIPS, ICML, ACL)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Post to arXiv **after** submission deadline, not before. Posting before "
+"can technically violate anonymity policies, though enforcement varies."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Submitting to ICLR"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"ICLR explicitly allows arXiv posting before submission. But don't put "
+"author names in the submission itself."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Paper already on arXiv, submitting to new venue"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Acceptable at most venues. Do NOT update arXiv version during review with"
+" changes that reference reviews."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Workshop paper"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "arXiv is fine at any time — workshops are typically not double-blind."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Want to establish priority"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Post immediately if scooping is a concern — but accept the anonymity "
+"tradeoff."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1866
+msgid "**arXiv category selection** (ML/AI papers):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Category"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Code"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Best For"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Machine Learning"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`cs.LG`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "General ML methods"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Computation and Language"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`cs.CL`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "NLP, language models"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Artificial Intelligence"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`cs.AI`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Reasoning, planning, agents"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Computer Vision"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`cs.CV`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Vision models"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Information Retrieval"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`cs.IR`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Search, recommendation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1876
+msgid ""
+"**List primary + 1-2 cross-listed categories.** More categories = more "
+"visibility, but only cross-list where genuinely relevant."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1878
+msgid "**Versioning strategy:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1879
+msgid "**v1**: Initial submission (matches conference submission)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1880
+msgid ""
+"**v2**: Post-acceptance with camera-ready corrections (add \"accepted at "
+"[Venue]\" to abstract)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1881
+msgid ""
+"Don't post v2 during the review period with changes that clearly respond "
+"to reviewer feedback"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1895
+msgid "Step 7.10: Research Code Packaging"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1897
+msgid ""
+"Releasing clean, runnable code significantly increases citations and "
+"reviewer trust. Package code alongside the camera-ready submission."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1899
+msgid "**Repository structure:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1918
+msgid "**README template for research code:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1936
+msgid "**Pre-release checklist:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1948
+msgid "**Anonymous code for submission** (before acceptance):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1957
+msgid "Phase 8: Post-Acceptance Deliverables"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1959
+msgid ""
+"**Goal**: Maximize the impact of your accepted paper through presentation"
+" materials and community engagement."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1961
+msgid "Step 8.1: Conference Poster"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1963
+msgid "Most conferences require a poster session. Poster design principles:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Element"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Guideline"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Size**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Check venue requirements (typically 24\"x36\" or A0 portrait/landscape)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Content**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Title, authors, 1-sentence contribution, method figure, 2-3 key results, "
+"conclusion"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Flow**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Top-left to bottom-right (Z-pattern) or columnar"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Text**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Title readable at 3m, body at 1m. No full paragraphs — bullet points only."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Figures**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Reuse paper figures at higher resolution. Enlarge key result."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1973
+msgid ""
+"**Tools**: LaTeX (`beamerposter` package), PowerPoint/Keynote, Figma, "
+"Canva."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1975
+msgid ""
+"**Production**: Order 2+ weeks before the conference. Fabric posters are "
+"lighter for travel. Many conferences now support virtual/digital posters "
+"too."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1977
+msgid "Step 8.2: Conference Talk / Spotlight"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1979
+msgid "If awarded an oral or spotlight presentation:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Talk Type"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Duration"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Spotlight**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "5 min"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Problem, approach, one key result. Rehearse to exactly 5 minutes."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Oral**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "15-20 min"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Full story: problem, approach, key results, ablations, limitations."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Workshop talk**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "10-15 min"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Adapt based on workshop audience — may need more background."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1987
+msgid "**Slide design rules:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1988
+msgid "One idea per slide"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1989
+msgid "Minimize text — speak the details, don't project them"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1990
+msgid "Animate key figures to build understanding step-by-step"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1991
+msgid "Include a \"takeaway\" slide at the end (single sentence contribution)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1992
+msgid "Prepare backup slides for anticipated questions"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1994
+msgid "Step 8.3: Blog Post / Social Media"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1996
+msgid "An accessible summary significantly increases impact:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1998
+msgid ""
+"**Twitter/X thread**: 5-8 tweets. Lead with the result, not the method. "
+"Include Figure 1 and key result figure."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:1999
+msgid ""
+"**Blog post**: 800-1500 words. Written for ML practitioners, not "
+"reviewers. Skip formalism, emphasize intuition and practical "
+"implications."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2000
+msgid ""
+"**Project page**: HTML page with abstract, figures, demo, code link, "
+"BibTeX. Use GitHub Pages."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2002
+msgid ""
+"**Timing**: Post within 1-2 days of paper appearing on proceedings or "
+"arXiv camera-ready."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2006
+msgid "Workshop & Short Papers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2008
+msgid ""
+"Workshop papers and short papers (e.g., ACL short papers, Findings "
+"papers) follow the same pipeline but with different constraints and "
+"expectations."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2010
+msgid "Workshop Papers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Property"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Workshop"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Main Conference"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Page limit**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "4-6 pages (typically)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "7-9 pages"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Review standard**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Lower bar for completeness"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Must be complete, thorough"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Review process**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Usually single-blind or light review"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Double-blind, rigorous"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**What's valued**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Interesting ideas, preliminary results, position pieces"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Complete empirical story with strong baselines"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**arXiv**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Post anytime"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Timing matters (see arXiv strategy)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Contribution bar**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Novel direction, interesting negative result, work-in-progress"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Significant advance with strong evidence"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2021
+msgid "**When to target a workshop:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2022
+msgid "Early-stage idea you want feedback on before a full paper"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2023
+msgid "Negative result that doesn't justify 8+ pages"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2024
+msgid "Position piece or opinion on a timely topic"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2025
+msgid "Replication study or reproducibility report"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2027
+msgid "ACL Short Papers & Findings"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2029
+msgid "ACL venues have distinct submission types:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Type"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Pages"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "What's Expected"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Long paper**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "8"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Complete study, strong baselines, ablations"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Short paper**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "4"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Focused contribution: one clear point with evidence"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Findings**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Solid work that narrowly missed main conference"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2037
+msgid ""
+"**Short paper strategy**: Pick ONE claim and support it thoroughly. Don't"
+" try to compress a long paper into 4 pages — write a different, more "
+"focused paper."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2041
+msgid "Paper Types Beyond Empirical ML"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2043
+msgid ""
+"The main pipeline above targets empirical ML papers. Other paper types "
+"require different structures and evidence standards. See [references"
+"/paper-types.md](references/paper-types.md) for detailed guidance on each"
+" type."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2045
+msgid "Theory Papers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2047
+msgid ""
+"**Structure**: Introduction → Preliminaries (definitions, notation) → "
+"Main Results (theorems) → Proof Sketches → Discussion → Full Proofs "
+"(appendix)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2049
+msgid "**Key differences from empirical papers:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2050
+msgid ""
+"Contribution is a theorem, bound, or impossibility result — not "
+"experimental numbers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2051
+msgid "Methods section replaced by \"Preliminaries\" and \"Main Results\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2052
+msgid ""
+"Proofs are the evidence, not experiments (though empirical validation of "
+"theory is welcome)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2053
+msgid "Proof sketches in main text, full proofs in appendix is standard practice"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2054
+msgid ""
+"Experimental section is optional but strengthens the paper if it "
+"validates theoretical predictions"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2056
+msgid "**Proof writing principles:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2057
+msgid "State theorems formally with all assumptions explicit"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2058
+msgid "Provide intuition before formal proof (\"The key insight is...\")"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2059
+msgid "Proof sketches should convey the main idea in 0.5-1 page"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2060
+#, python-brace-format
+msgid "Use `\\begin{proof}...\\end{proof}` environments"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2061
+msgid ""
+"Number assumptions and reference them in theorems: \"Under Assumptions "
+"1-3, ...\""
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2063
+msgid "Survey / Tutorial Papers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2065
+msgid ""
+"**Structure**: Introduction → Taxonomy / Organization → Detailed Coverage"
+" → Open Problems → Conclusion"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2067
+#: ../../source/research-paper-writing_SKILL.md:2078
+#: ../../source/research-paper-writing_SKILL.md:2089
+msgid "**Key differences:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2068
+msgid ""
+"Contribution is the organization, synthesis, and identification of open "
+"problems — not new methods"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2069
+msgid ""
+"Must be comprehensive within scope (reviewers will check for missing "
+"references)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2070
+msgid "Requires a clear taxonomy or organizational framework"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2071
+msgid ""
+"Value comes from connections between works that individual papers don't "
+"make"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2072
+msgid ""
+"Best venues: TMLR (survey track), JMLR, Foundations and Trends in ML, ACM"
+" Computing Surveys"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2074
+msgid "Benchmark Papers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2076
+msgid ""
+"**Structure**: Introduction → Task Definition → Dataset Construction → "
+"Baseline Evaluation → Analysis → Intended Use & Limitations"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2079
+msgid ""
+"Contribution is the benchmark itself — it must fill a genuine evaluation "
+"gap"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2080
+msgid ""
+"Dataset documentation is mandatory, not optional (see Datasheets, Step "
+"5.11)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2081
+msgid ""
+"Must demonstrate the benchmark is challenging (baselines don't saturate "
+"it)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2082
+msgid ""
+"Must demonstrate the benchmark measures what you claim it measures "
+"(construct validity)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2083
+msgid ""
+"Best venues: NeurIPS Datasets & Benchmarks track, ACL (resource papers), "
+"LREC-COLING"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2085
+msgid "Position Papers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2087
+msgid ""
+"**Structure**: Introduction → Background → Thesis / Argument → Supporting"
+" Evidence → Counterarguments → Implications"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2090
+msgid "Contribution is an argument, not a result"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2091
+msgid "Must engage seriously with counterarguments"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2092
+msgid "Evidence can be empirical, theoretical, or logical analysis"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2093
+msgid "Best venues: ICML (position track), workshops, TMLR"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2097
+msgid "Hermes Agent Integration"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2099
+msgid ""
+"This skill is designed for the Hermes agent. It uses Hermes tools, "
+"delegation, scheduling, and memory for the full research lifecycle."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2101
+msgid "Related Skills"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2103
+msgid "Compose this skill with other Hermes skills for specific phases:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Skill"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "How to Load"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**arxiv**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Phase 1 (Literature Review): searching arXiv, generating BibTeX, finding "
+"related papers via Semantic Scholar"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`skill_view(\"arxiv\")`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**subagent-driven-development**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Phase 5 (Drafting): parallel section writing with 2-stage review (spec "
+"compliance then quality)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`skill_view(\"subagent-driven-development\")`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**plan**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Phase 0 (Setup): creating structured plans before execution. Writes to "
+"`.hermes/plans/`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`skill_view(\"plan\")`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**qmd**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Phase 1 (Literature): searching local knowledge bases (notes, "
+"transcripts, docs) via hybrid BM25+vector search"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Install: `skill_manage(\"install\", \"qmd\")`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**diagramming**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Phase 4-5: creating Excalidraw-based figures and architecture diagrams"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`skill_view(\"diagramming\")`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**data-science**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Phase 4 (Analysis): Jupyter live kernel for interactive analysis and "
+"visualization"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "`skill_view(\"data-science\")`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2114
+msgid ""
+"**This skill supersedes `ml-paper-writing`** — it contains all of ml-"
+"paper-writing's content plus the full experiment/analysis pipeline and "
+"autoreason methodology."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2116
+msgid "Hermes Tools Reference"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Usage in This Pipeline"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`terminal`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"LaTeX compilation (`latexmk -pdf`), git operations, launching experiments"
+" (`nohup python run.py &`), process checks"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`process`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Background experiment management: `process(\"start\", ...)`, "
+"`process(\"poll\", pid)`, `process(\"log\", pid)`, `process(\"kill\", "
+"pid)`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`execute_code`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Run Python for citation verification, statistical analysis, data "
+"aggregation. Has tool access via RPC."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`read_file`** / **`write_file`** / **`patch`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Paper editing, experiment scripts, result files. Use `patch` for targeted"
+" edits to large .tex files."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`web_search`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Literature discovery: `web_search(\"transformer attention mechanism "
+"2024\")`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`web_extract`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Fetch paper content, verify citations: "
+"`web_extract(\"https://arxiv.org/abs/2303.17651\")`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`delegate_task`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"**Parallel section drafting** — spawn isolated subagents for each "
+"section. Also for concurrent citation verification."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`todo`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Primary state tracker across sessions. Update after every phase "
+"transition."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`memory`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Persist key decisions across sessions: contribution framing, venue "
+"choice, reviewer feedback."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`cronjob`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Schedule experiment monitoring, deadline countdowns, automated arXiv "
+"checks."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`clarify`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Ask the user targeted questions when blocked (venue choice, contribution "
+"framing)."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**`send_message`**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Notify user when experiments complete or drafts are ready, even if user "
+"isn't in chat."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2133
+msgid "Tool Usage Patterns"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2135
+msgid "**Experiment monitoring** (most common):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2145
+msgid "**Parallel section drafting** (using delegation):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2158
+msgid ""
+"Each delegate runs as a **fresh subagent** with no shared context — "
+"provide all necessary information in the prompt. Collect outputs and "
+"integrate."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2160
+msgid "**Citation verification** (using execute_code):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2176
+msgid "State Management with `memory` and `todo`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2178
+msgid ""
+"**`memory` tool** — persist key decisions (bounded: ~2200 chars for "
+"MEMORY.md):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2187
+msgid ""
+"Update memory after major decisions or phase transitions. This persists "
+"across sessions."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2189
+msgid "**`todo` tool** — track granular progress:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2199
+msgid "**Session startup protocol:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2209
+msgid "Cron Monitoring with `cronjob`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2211
+msgid "Use the `cronjob` tool to schedule periodic experiment checks:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2227
+msgid ""
+"**[SILENT] protocol**: When nothing has changed since the last check, "
+"respond with exactly `[SILENT]`. This suppresses notification delivery to"
+" the user. Only report when there are genuine changes worth knowing "
+"about."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2229
+msgid "**Deadline tracking**:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2240
+msgid "Communication Patterns"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2242
+msgid "**When to notify the user** (via `send_message` or direct response):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2243
+msgid "Experiment batch completed (with results table)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2244
+msgid "Unexpected finding or failure requiring decision"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2245
+msgid "Draft section ready for review"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2246
+msgid "Deadline approaching with incomplete tasks"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2248
+msgid "**When NOT to notify:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2249
+msgid "Experiment still running, no new results → `[SILENT]`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2250
+msgid "Routine monitoring with no changes → `[SILENT]`"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2251
+msgid "Intermediate steps that don't need attention"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2253
+msgid "**Report format** — always include structured data:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2266
+msgid "Decision Points Requiring Human Input"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2268
+msgid "Use `clarify` for targeted questions when genuinely blocked:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "When to Ask"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Target venue"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Before starting paper (affects page limits, framing)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Contribution framing"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "When multiple valid framings exist"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Experiment priority"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "When TODO list has more experiments than time allows"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Submission readiness"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Before final submission"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2277
+msgid "**Do NOT ask about** (be proactive, make a choice, flag it):"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2278
+msgid "Word choice, section ordering"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2279
+msgid "Which specific results to highlight"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2280
+msgid "Citation completeness (draft with what you find, note gaps)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2284
+msgid "Reviewer Evaluation Criteria"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2286
+msgid "Understanding what reviewers look for helps focus effort:"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Criterion"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "What They Check"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Quality**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Technical soundness, well-supported claims, fair baselines"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Clarity**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Clear writing, reproducible by experts, consistent notation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Significance**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Community impact, advances understanding"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "**Originality**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "New insights (doesn't require new method)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2295
+msgid "**Scoring (NeurIPS 6-point scale):**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2296
+msgid "6: Strong Accept — groundbreaking, flawless"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2297
+msgid "5: Accept — technically solid, high impact"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2298
+msgid "4: Borderline Accept — solid, limited evaluation"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2299
+msgid "3: Borderline Reject — weaknesses outweigh"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2300
+msgid "2: Reject — technical flaws"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2301
+msgid "1: Strong Reject — known results or ethics issues"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2303
+msgid ""
+"See [references/reviewer-guidelines.md](references/reviewer-"
+"guidelines.md) for detailed guidelines, common concerns, and rebuttal "
+"strategies."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2307
+msgid "Common Issues and Solutions"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Issue"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Abstract too generic"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Delete first sentence if it could prepend any ML paper. Start with your "
+"specific contribution."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Introduction exceeds 1.5 pages"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Split background into Related Work. Front-load contribution bullets."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Experiments lack explicit claims"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Add: \"This experiment tests whether [specific claim]...\" before each "
+"one."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Reviewers find paper hard to follow"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Add signposting, use consistent terminology, make figure captions self-"
+"contained."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Missing statistical significance"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Add error bars, number of runs, statistical tests, confidence intervals."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Scope creep in experiments"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Every experiment must map to a specific claim. Cut experiments that don't."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Paper rejected, need to resubmit"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"See Conference Resubmission in Phase 7. Address reviewer concerns without"
+" referencing reviews."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Missing broader impact statement"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"See Step 5.10. Most venues require it. \"No negative impacts\" is almost "
+"never credible."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Human eval criticized as weak"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"See Step 2.5 and [references/human-evaluation.md](references/human-"
+"evaluation.md). Report agreement metrics, annotator details, "
+"compensation."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Reviewers question reproducibility"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Release code (Step 7.9), document all hyperparameters, include seeds and "
+"compute details."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Theory paper lacks intuition"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Add proof sketches with plain-language explanations before formal proofs."
+" See [references/paper-types.md](references/paper-types.md)."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Results are negative/null"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"See Phase 4.3 on handling negative results. Consider workshops, TMLR, or "
+"reframing as analysis."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2326
+msgid "Reference Documents"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Document"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Contents"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "[references/writing-guide.md](references/writing-guide.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Gopen & Swan 7 principles, Perez micro-tips, Lipton word choice, "
+"Steinhardt precision, figure design"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "[references/citation-workflow.md](references/citation-workflow.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Citation APIs, Python code, CitationManager class, BibTeX management"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "[references/checklists.md](references/checklists.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"NeurIPS 16-item, ICML, ICLR, ACL requirements, universal pre-submission "
+"checklist"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "[references/reviewer-guidelines.md](references/reviewer-guidelines.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Evaluation criteria, scoring, common concerns, rebuttal template"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "[references/sources.md](references/sources.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "Complete bibliography of all writing guides, conference guidelines, APIs"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "[references/experiment-patterns.md](references/experiment-patterns.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Experiment design patterns, evaluation protocols, monitoring, error "
+"recovery"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"[references/autoreason-methodology.md](references/autoreason-"
+"methodology.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Autoreason loop, strategy selection, model guide, prompts, scope "
+"constraints, Borda scoring"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "[references/human-evaluation.md](references/human-evaluation.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Human evaluation design, annotation guidelines, agreement metrics, "
+"crowdsourcing QC, IRB guidance"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid "[references/paper-types.md](references/paper-types.md)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md
+msgid ""
+"Theory papers (proof writing, theorem structure), survey papers, "
+"benchmark papers, position papers"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2340
+msgid "LaTeX Templates"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2342
+msgid ""
+"Templates in `templates/` for: **NeurIPS 2025**, **ICML 2026**, **ICLR "
+"2026**, **ACL**, **AAAI 2026**, **COLM 2025**."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2344
+msgid ""
+"See [templates/README.md](templates/README.md) for compilation "
+"instructions."
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2346
+msgid "Key External Sources"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2348
+msgid "**Writing Philosophy:**"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2349
+msgid ""
+"[Neel Nanda: How to Write ML "
+"Papers](https://www.alignmentforum.org/posts/eJGptPbbFPZGLpjsp/highly-"
+"opinionated-advice-on-how-to-write-ml-papers)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2350
+msgid ""
+"[Sebastian Farquhar: How to Write ML "
+"Papers](https://sebastianfarquhar.com/on-"
+"research/2024/11/04/how_to_write_ml_papers/)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2351
+msgid ""
+"[Gopen & Swan: Science of Scientific "
+"Writing](https://cseweb.ucsd.edu/~swanson/papers/science-of-writing.pdf)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2352
+msgid ""
+"[Lipton: Heuristics for Scientific "
+"Writing](https://www.approximatelycorrect.com/2018/01/29/heuristics-"
+"technical-scientific-writing-machine-learning-perspective/)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2353
+msgid ""
+"[Perez: Easy Paper Writing Tips](https://ethanperez.net/easy-paper-"
+"writing-tips/)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2355
+msgid ""
+"**APIs:** [Semantic Scholar](https://api.semanticscholar.org/api-docs/) |"
+" [CrossRef](https://www.crossref.org/documentation/retrieve-metadata"
+"/rest-api/) | [arXiv](https://info.arxiv.org/help/api/basics.html)"
+msgstr ""
+
+#: ../../source/research-paper-writing_SKILL.md:2357
+msgid ""
+"**Venues:** "
+"[NeurIPS](https://neurips.cc/Conferences/2025/PaperInformation/StyleFiles)"
+" | [ICML](https://icml.cc/Conferences/2025/AuthorInstructions) | "
+"[ICLR](https://iclr.cc/Conferences/2026/AuthorGuide) | "
+"[ACL](https://github.com/acl-org/acl-style-files)"
+msgstr ""
+

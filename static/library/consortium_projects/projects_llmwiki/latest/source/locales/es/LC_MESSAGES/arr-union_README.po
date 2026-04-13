@@ -1,0 +1,194 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/arr-union_README.md:1
+msgid ""
+"arr-union [![NPM version](https://img.shields.io/npm/v/arr-"
+"union.svg)](https://www.npmjs.com/package/arr-union) [![Build "
+"Status](https://img.shields.io/travis/jonschlinkert/arr-union.svg)](https"
+"://travis-ci.org/jonschlinkert/arr-union)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/arr-union_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/arr-union_README.md:3
+msgid ""
+"Combines a list of arrays, returning a single array with unique values, "
+"using strict equality for comparisons."
+msgstr ""
+
+#: ../../source/arr-union_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/arr-union_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/arr-union_README.md:13
+msgid "Benchmarks"
+msgstr ""
+
+#: ../../source/arr-union_README.md:15
+msgid ""
+"This library is **10-20 times faster** and more performant than [array-"
+"union](https://github.com/sindresorhus/array-union)."
+msgstr ""
+
+#: ../../source/arr-union_README.md:17
+msgid "See the [benchmarks](./benchmark)."
+msgstr ""
+
+#: ../../source/arr-union_README.md:33
+msgid "Usage"
+msgstr ""
+
+#: ../../source/arr-union_README.md:42
+msgid "Returns only unique elements:"
+msgstr ""
+
+#: ../../source/arr-union_README.md:49
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/arr-union_README.md:51
+msgid ""
+"[arr-diff](https://www.npmjs.com/package/arr-diff): Returns an array with"
+" only the unique values from the first array, by excluding all… "
+"[more](https://www.npmjs.com/package/arr-diff) | "
+"[homepage](https://github.com/jonschlinkert/arr-diff)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:52
+msgid ""
+"[arr-filter](https://www.npmjs.com/package/arr-filter): Faster "
+"alternative to javascript's native filter method. | "
+"[homepage](https://github.com/jonschlinkert/arr-filter)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:53
+msgid ""
+"[arr-flatten](https://www.npmjs.com/package/arr-flatten): Recursively "
+"flatten an array or arrays. This is the fastest implementation of array "
+"flatten. | [homepage](https://github.com/jonschlinkert/arr-flatten)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:54
+msgid ""
+"[arr-map](https://www.npmjs.com/package/arr-map): Faster, node.js focused"
+" alternative to JavaScript's native array map. | "
+"[homepage](https://github.com/jonschlinkert/arr-map)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:55
+msgid ""
+"[arr-pluck](https://www.npmjs.com/package/arr-pluck): Retrieves the value"
+" of a specified property from all elements in the collection. | "
+"[homepage](https://github.com/jonschlinkert/arr-pluck)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:56
+msgid ""
+"[arr-reduce](https://www.npmjs.com/package/arr-reduce): Fast array reduce"
+" that also loops over sparse elements. | "
+"[homepage](https://github.com/jonschlinkert/arr-reduce)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:57
+msgid ""
+"[array-unique](https://www.npmjs.com/package/array-unique): Return an "
+"array free of duplicate values. Fastest ES5 implementation. | "
+"[homepage](https://github.com/jonschlinkert/array-unique)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:59
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/arr-union_README.md:61
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](https://github.com/jonschlinkert/arr-"
+"union/issues/new)."
+msgstr ""
+
+#: ../../source/arr-union_README.md:63
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/arr-union_README.md:65
+msgid ""
+"Generate readme and API documentation with "
+"[verb](https://github.com/verbose/verb):"
+msgstr ""
+
+#: ../../source/arr-union_README.md:71
+msgid "Or, if [verb](https://github.com/verbose/verb) is installed globally:"
+msgstr ""
+
+#: ../../source/arr-union_README.md:77
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/arr-union_README.md:79
+msgid "Install dev dependencies:"
+msgstr ""
+
+#: ../../source/arr-union_README.md:85
+msgid "Author"
+msgstr ""
+
+#: ../../source/arr-union_README.md:87
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/arr-union_README.md:89
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:90
+msgid "[twitter/jonschlinkert](http://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/arr-union_README.md:92
+msgid "License"
+msgstr ""
+
+#: ../../source/arr-union_README.md:94
+msgid ""
+"Copyright © 2016 [Jon Schlinkert](https://github.com/jonschlinkert) "
+"Released under the [MIT license](https://github.com/jonschlinkert/arr-"
+"union/blob/master/LICENSE)."
+msgstr ""
+
+#: ../../source/arr-union_README.md:99
+msgid ""
+"_This file was generated by [verb](https://github.com/verbose/verb), "
+"v0.9.0, on February 23, 2016._"
+msgstr ""
+

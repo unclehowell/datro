@@ -1,0 +1,243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/tapable_README.md:1
+msgid "Tapable"
+msgstr ""
+
+#: ../../source/tapable_README.md:3
+msgid ""
+"The tapable package expose many Hook classes, which can be used to create"
+" hooks for plugins."
+msgstr ""
+
+#: ../../source/tapable_README.md:19
+msgid "Installation"
+msgstr ""
+
+#: ../../source/tapable_README.md:25
+msgid "Usage"
+msgstr ""
+
+#: ../../source/tapable_README.md:27
+msgid ""
+"All Hook constructors take one optional argument, which is a list of "
+"argument names as strings."
+msgstr ""
+
+#: ../../source/tapable_README.md:33
+msgid "The best practice is to expose all hooks of a class in a `hooks` property:"
+msgstr ""
+
+#: ../../source/tapable_README.md:49
+msgid "Other people can now use these hooks:"
+msgstr ""
+
+#: ../../source/tapable_README.md:58
+msgid "It's required to pass a name to identify the plugin/reason."
+msgstr ""
+
+#: ../../source/tapable_README.md:60
+msgid "You may receive arguments:"
+msgstr ""
+
+#: ../../source/tapable_README.md:66
+msgid ""
+"For sync hooks, `tap` is the only valid method to add a plugin. Async "
+"hooks also support async plugins:"
+msgstr ""
+
+#: ../../source/tapable_README.md:92
+msgid "The class declaring these hooks need to call them:"
+msgstr ""
+
+#: ../../source/tapable_README.md:119
+msgid ""
+"The Hook will compile a method with the most efficient way of running "
+"your plugins. It generates code depending on:"
+msgstr ""
+
+#: ../../source/tapable_README.md:120
+msgid "The number of registered plugins (none, one, many)"
+msgstr ""
+
+#: ../../source/tapable_README.md:121
+msgid "The kind of registered plugins (sync, async, promise)"
+msgstr ""
+
+#: ../../source/tapable_README.md:122
+msgid "The used call method (sync, async, promise)"
+msgstr ""
+
+#: ../../source/tapable_README.md:123
+msgid "The number of arguments"
+msgstr ""
+
+#: ../../source/tapable_README.md:124
+msgid "Whether interception is used"
+msgstr ""
+
+#: ../../source/tapable_README.md:126
+msgid "This ensures fastest possible execution."
+msgstr ""
+
+#: ../../source/tapable_README.md:128
+msgid "Hook types"
+msgstr ""
+
+#: ../../source/tapable_README.md:130
+msgid ""
+"Each hook can be tapped with one or several functions. How they are "
+"executed depends on the hook type:"
+msgstr ""
+
+#: ../../source/tapable_README.md:132
+msgid ""
+"Basic hook (without “Waterfall”, “Bail” or “Loop” in its name). This hook"
+" simply calls every function it tapped in a row."
+msgstr ""
+
+#: ../../source/tapable_README.md:134
+msgid ""
+"__Waterfall__. A waterfall hook also calls each tapped function in a row."
+" Unlike the basic hook, it passes a return value from each function to "
+"the next function."
+msgstr ""
+
+#: ../../source/tapable_README.md:136
+msgid ""
+"__Bail__. A bail hook allows exiting early. When any of the tapped "
+"function returns anything, the bail hook will stop executing the "
+"remaining ones."
+msgstr ""
+
+#: ../../source/tapable_README.md:138
+msgid "__Loop__. TODO"
+msgstr ""
+
+#: ../../source/tapable_README.md:140
+msgid ""
+"Additionally, hooks can be synchronous or asynchronous. To reflect this, "
+"there’re “Sync”, “AsyncSeries”, and “AsyncParallel” hook classes:"
+msgstr ""
+
+#: ../../source/tapable_README.md:142
+msgid ""
+"__Sync__. A sync hook can only be tapped with synchronous functions "
+"(using `myHook.tap()`)."
+msgstr ""
+
+#: ../../source/tapable_README.md:144
+msgid ""
+"__AsyncSeries__. An async-series hook can be tapped with synchronous, "
+"callback-based and promise-based functions (using `myHook.tap()`, "
+"`myHook.tapAsync()` and `myHook.tapPromise()`). They call each async "
+"method in a row."
+msgstr ""
+
+#: ../../source/tapable_README.md:146
+msgid ""
+"__AsyncParallel__. An async-parallel hook can also be tapped with "
+"synchronous, callback-based and promise-based functions (using "
+"`myHook.tap()`, `myHook.tapAsync()` and `myHook.tapPromise()`). However, "
+"they run each async method in parallel."
+msgstr ""
+
+#: ../../source/tapable_README.md:148
+msgid ""
+"The hook type is reflected in its class name. E.g., "
+"`AsyncSeriesWaterfallHook` allows asynchronous functions and runs them in"
+" series, passing each function’s return value into the next function."
+msgstr ""
+
+#: ../../source/tapable_README.md:151
+msgid "Interception"
+msgstr ""
+
+#: ../../source/tapable_README.md:153
+msgid "All Hooks offer an additional interception API:"
+msgstr ""
+
+#: ../../source/tapable_README.md:168
+msgid ""
+"**call**: `(...args) => void` Adding `call` to your interceptor will "
+"trigger when hooks are triggered. You have access to the hooks arguments."
+msgstr ""
+
+#: ../../source/tapable_README.md:170
+msgid ""
+"**tap**: `(tap: Tap) => void` Adding `tap` to your interceptor will "
+"trigger when a plugin taps into a hook. Provided is the `Tap` object. "
+"`Tap` object can't be changed."
+msgstr ""
+
+#: ../../source/tapable_README.md:172
+msgid ""
+"**loop**: `(...args) => void` Adding `loop` to your interceptor will "
+"trigger for each loop of a looping hook."
+msgstr ""
+
+#: ../../source/tapable_README.md:174
+msgid ""
+"**register**: `(tap: Tap) => Tap | undefined` Adding `register` to your "
+"interceptor will trigger for each added `Tap` and allows to modify it."
+msgstr ""
+
+#: ../../source/tapable_README.md:176
+msgid "Context"
+msgstr ""
+
+#: ../../source/tapable_README.md:178
+msgid ""
+"Plugins and interceptors can opt-in to access an optional `context` "
+"object, which can be used to pass arbitrary values to subsequent plugins "
+"and interceptors."
+msgstr ""
+
+#: ../../source/tapable_README.md:208
+msgid "HookMap"
+msgstr ""
+
+#: ../../source/tapable_README.md:210
+msgid "A HookMap is a helper class for a Map with Hooks"
+msgstr ""
+
+#: ../../source/tapable_README.md:229
+msgid "Hook/HookMap interface"
+msgstr ""
+
+#: ../../source/tapable_README.md:231
+msgid "Public:"
+msgstr ""
+
+#: ../../source/tapable_README.md:270
+msgid "Protected (only for the class containing the hook):"
+msgstr ""
+
+#: ../../source/tapable_README.md:286
+msgid "MultiHook"
+msgstr ""
+
+#: ../../source/tapable_README.md:288
+msgid "A helper Hook-like class to redirect taps to multiple other hooks:"
+msgstr ""
+

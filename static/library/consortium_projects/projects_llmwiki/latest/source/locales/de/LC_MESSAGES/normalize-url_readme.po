@@ -1,0 +1,220 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/normalize-url_readme.md:1
+msgid ""
+"normalize-url [![Build Status](https://travis-ci.org/sindresorhus"
+"/normalize-url.svg?branch=master)](https://travis-ci.org/sindresorhus"
+"/normalize-url) [![Coverage "
+"Status](https://coveralls.io/repos/github/sindresorhus/normalize-"
+"url/badge.svg?branch=master)](https://coveralls.io/github/sindresorhus"
+"/normalize-url?branch=master)"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:1
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:3
+msgid "[Normalize](https://en.wikipedia.org/wiki/URL_normalization) a URL"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:5
+msgid ""
+"Useful when you need to display, store, deduplicate, sort, compare, etc, "
+"URLs."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:8
+msgid "Install"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:28
+msgid "API"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:30
+msgid "normalizeUrl(url, [options])"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:32
+msgid "url"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:34
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:36
+msgid "URL to normalize."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:38
+msgid "options"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:40
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:42
+msgid "defaultProtocol"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:44
+msgid "Type: `string`<br> Default: `http:`"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:47
+msgid "normalizeProtocol"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:49
+#: ../../source/normalize-url_readme.md:96
+#: ../../source/normalize-url_readme.md:111
+#: ../../source/normalize-url_readme.md:140
+#: ../../source/normalize-url_readme.md:174
+msgid "Type: `boolean`<br> Default: `true`"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:52
+msgid "Prepends `defaultProtocol` to the URL if it's protocol-relative."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:62
+msgid "forceHttp"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:64
+#: ../../source/normalize-url_readme.md:79
+msgid "Type: `boolean`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:67
+msgid "Normalizes `https:` URLs to `http:`."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:77
+msgid "forceHttps"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:82
+msgid "Normalizes `http:` URLs to `https:`."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:92
+msgid "This option can't be used with the `forceHttp` option at the same time."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:94
+msgid "stripHash"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:99
+msgid "Removes hash from the URL."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:109
+msgid "stripWWW"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:114
+msgid "Removes `www.` from the URL."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:124
+msgid "removeQueryParameters"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:126
+msgid "Type: `Array<RegExp|string>`<br> Default: `[/^utm_\\w+/i]`"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:129
+msgid ""
+"Removes query parameters that matches any of the provided strings or "
+"regexes."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:138
+msgid "removeTrailingSlash"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:143
+msgid "Removes trailing slash."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:145
+msgid ""
+"**Note:** Trailing slash is always removed if the URL doesn't have a "
+"pathname."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:158
+msgid "removeDirectoryIndex"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:160
+msgid "Type: `boolean` `Array<RegExp|string>`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:163
+msgid ""
+"Removes the default directory index file from path that matches any of "
+"the provided strings or regexes. When `true`, the regex "
+"`/^index\\.[a-z]+$/` is used."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:172
+msgid "sortQueryParameters"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:177
+msgid "Sorts the query parameters alphabetically by key."
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:187
+msgid "Related"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:189
+msgid ""
+"[compare-urls](https://github.com/sindresorhus/compare-urls) - Compare "
+"URLs by first normalizing them"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:192
+msgid "License"
+msgstr ""
+
+#: ../../source/normalize-url_readme.md:194
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

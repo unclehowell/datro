@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/encodeurl_README.md:1
+msgid "Encode URL"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:3 ../../source/encodeurl_README.md:19
+msgid ""
+"Encode a URL to a percent-encoded form, excluding already-encoded "
+"sequences."
+msgstr ""
+
+#: ../../source/encodeurl_README.md:5
+msgid "Installation"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:11
+msgid "API"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:17
+msgid "encodeUrl(url)"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:21
+#, python-format
+msgid ""
+"This function accepts a URL and encodes all the non-URL code points (as "
+"UTF-8 byte sequences). It will not encode the \"%\" character unless it "
+"is not part of a valid sequence (`%20` will be left as-is, but `%foo` "
+"will be encoded as `%25foo`)."
+msgstr ""
+
+#: ../../source/encodeurl_README.md:23
+msgid ""
+"This encode is meant to be \"safe\" and does not throw errors. It will "
+"try as hard as it can to properly encode the given URL, including "
+"replacing any raw, unpaired surrogate pairs with the Unicode replacement "
+"character prior to encoding."
+msgstr ""
+
+#: ../../source/encodeurl_README.md:25
+msgid "Examples"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:27
+msgid "Encode a URL containing user-controlled data"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:48
+msgid "Encode a URL for use in a header field"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:79
+msgid "Similarities"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:81
+msgid ""
+"This function is _similar_ to the intrinsic function `encodeURI`. "
+"However, it will not encode:"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:83
+msgid "The `\\`, `^`, or `|` characters"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:84
+msgid "The `%` character when it's part of a valid sequence"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:85
+msgid "`[` and `]` (for IPv6 hostnames)"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:86
+msgid ""
+"Replaces raw, unpaired surrogate pairs with the Unicode replacement "
+"character"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:88
+msgid ""
+"As a result, the encoding aligns closely with the behavior in the [WHATWG"
+" URL specification][whatwg-url]. However, this package only encodes "
+"strings and does not do any URL parsing or formatting."
+msgstr ""
+
+#: ../../source/encodeurl_README.md:90
+msgid ""
+"It is expected that any output from `new URL(url)` will not change when "
+"used with this package, as the output has already been encoded. "
+"Additionally, if we were to encode before `new URL(url)`, we do not "
+"expect the before and after encoded formats to be parsed any differently."
+msgstr ""
+
+#: ../../source/encodeurl_README.md:92
+msgid "Testing"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:99
+msgid "References"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:101
+msgid "[RFC 3986: Uniform Resource Identifier (URI): Generic Syntax][rfc-3986]"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:102
+msgid "[WHATWG URL Living Standard][whatwg-url]"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:107
+msgid "License"
+msgstr ""
+
+#: ../../source/encodeurl_README.md:109
+msgid "[MIT](LICENSE)"
+msgstr ""
+

@@ -1,0 +1,915 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_optimization.md:1
+msgid "Optimization Reference"
+msgstr ""
+
+#: ../../source/references_optimization.md:3
+msgid ""
+"**See also:** architecture.md · composition.md · scenes.md · shaders.md ·"
+" inputs.md · troubleshooting.md"
+msgstr ""
+
+#: ../../source/references_optimization.md:5
+msgid "Hardware Detection"
+msgstr ""
+
+#: ../../source/references_optimization.md:7
+msgid ""
+"Detect the user's hardware at script startup and adapt rendering "
+"parameters automatically. Never hardcode worker counts or resolution."
+msgstr ""
+
+#: ../../source/references_optimization.md:9
+msgid "CPU and Memory Detection"
+msgstr ""
+
+#: ../../source/references_optimization.md:68
+msgid "Adaptive Quality Profiles"
+msgstr ""
+
+#: ../../source/references_optimization.md:70
+msgid "Scale resolution, FPS, CRF, and grid density based on hardware:"
+msgstr ""
+
+#: ../../source/references_optimization.md:123
+msgid "CLI Integration"
+msgstr ""
+
+#: ../../source/references_optimization.md:159
+msgid "Portrait Mode Considerations"
+msgstr ""
+
+#: ../../source/references_optimization.md:161
+msgid ""
+"Portrait (1080x1920) has the same pixel count as landscape 1080p, so "
+"performance is equivalent. But composition patterns differ:"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Concern"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Landscape"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Portrait"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Grid cols at `lg`"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "160"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "90"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Grid rows at `lg`"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "45"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "80"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Max text line chars"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~50 centered"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~25-30 centered"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Vertical rain"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Short travel"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Long, dramatic travel"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Horizontal spectrum"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Full width"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Needs rotation or compression"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Radial effects"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Natural circles"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Tall ellipses (aspect correction handles this)"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Particle explosions"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Wide spread"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Tall spread"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Text stacking"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "3-4 lines comfortable"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "8-10 lines comfortable"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Quote layout"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "2-3 wide lines"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "5-6 short lines"
+msgstr ""
+
+#: ../../source/references_optimization.md:175
+msgid "**Portrait-optimized patterns:**"
+msgstr ""
+
+#: ../../source/references_optimization.md:176
+msgid "Vertical rain/matrix effects are naturally enhanced — longer column travel"
+msgstr ""
+
+#: ../../source/references_optimization.md:177
+msgid "Fire columns rise through more screen space"
+msgstr ""
+
+#: ../../source/references_optimization.md:178
+msgid "Rising embers/particles have more vertical runway"
+msgstr ""
+
+#: ../../source/references_optimization.md:179
+msgid "Text can be stacked more aggressively with more lines"
+msgstr ""
+
+#: ../../source/references_optimization.md:180
+msgid ""
+"Radial effects work if aspect correction is applied (GridLayer handles "
+"this automatically)"
+msgstr ""
+
+#: ../../source/references_optimization.md:181
+msgid "Spectrum bars can be rotated 90 degrees (vertical bars from bottom)"
+msgstr ""
+
+#: ../../source/references_optimization.md:183
+msgid "**Portrait text layout:**"
+msgstr ""
+
+#: ../../source/references_optimization.md:200
+msgid "Performance Budget"
+msgstr ""
+
+#: ../../source/references_optimization.md:202
+msgid ""
+"Target: 100-200ms per frame (5-10 fps single-threaded, 40-80 fps across 8"
+" workers)."
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Component"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Time"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Feature extraction"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "1-5ms"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Pre-computed for all frames before render"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Effect function"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "2-15ms"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Vectorized numpy, avoid Python loops"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Character render"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "80-150ms"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "**Bottleneck** -- per-cell Python loop"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Shader pipeline"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "5-25ms"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Depends on active shaders"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "ffmpeg encode"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~5ms"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Amortized by pipe buffering"
+msgstr ""
+
+#: ../../source/references_optimization.md:212
+msgid "Bitmap Pre-Rasterization"
+msgstr ""
+
+#: ../../source/references_optimization.md:214
+msgid "Rasterize every character at init, not per-frame:"
+msgstr ""
+
+#: ../../source/references_optimization.md:229
+msgid ""
+"Collect all characters from all palettes + overlay text into the init "
+"set. Lazy-init for any missed characters."
+msgstr ""
+
+#: ../../source/references_optimization.md:231
+msgid "Pre-Rendered Background Textures"
+msgstr ""
+
+#: ../../source/references_optimization.md:233
+msgid ""
+"Alternative to `_render_vf()` for backgrounds where characters don't need"
+" to change every frame. Pre-bake a static ASCII texture once at init, "
+"then multiply by a per-cell color field each frame. One matrix multiply "
+"vs thousands of bitmap blits."
+msgstr ""
+
+#: ../../source/references_optimization.md:235
+msgid ""
+"Use when: background layer uses a fixed character palette and only "
+"color/brightness varies per frame. NOT suitable for layers where "
+"character selection depends on a changing value field."
+msgstr ""
+
+#: ../../source/references_optimization.md:237
+msgid "Init: Bake the Texture"
+msgstr ""
+
+#: ../../source/references_optimization.md:271
+msgid "Render: Color Field x Cached Texture"
+msgstr ""
+
+#: ../../source/references_optimization.md:285
+msgid "Usage in a Scene"
+msgstr ""
+
+#: ../../source/references_optimization.md:297
+msgid ""
+"The texture init loop runs once and is cached per palette. Per-frame cost"
+" is one fancy-index lookup + one broadcast multiply — orders of magnitude"
+" faster than the per-cell bitmap blit loop in `render()` for dense "
+"backgrounds."
+msgstr ""
+
+#: ../../source/references_optimization.md:299
+msgid "Coordinate Array Caching"
+msgstr ""
+
+#: ../../source/references_optimization.md:301
+msgid "Pre-compute all grid-relative coordinate arrays at init, not per-frame:"
+msgstr ""
+
+#: ../../source/references_optimization.md:312
+msgid "Vectorized Effect Patterns"
+msgstr ""
+
+#: ../../source/references_optimization.md:314
+msgid "Avoid Per-Cell Python Loops in Effects"
+msgstr ""
+
+#: ../../source/references_optimization.md:316
+msgid ""
+"The render loop (compositing bitmaps) is unavoidably per-cell. But effect"
+" functions must be fully vectorized numpy -- never iterate over rows/cols"
+" in Python."
+msgstr ""
+
+#: ../../source/references_optimization.md:318
+msgid "Bad (O(rows*cols) Python loop):"
+msgstr ""
+
+#: ../../source/references_optimization.md:325
+msgid "Good (vectorized):"
+msgstr ""
+
+#: ../../source/references_optimization.md:330
+msgid "Vectorized Matrix Rain"
+msgstr ""
+
+#: ../../source/references_optimization.md:332
+msgid ""
+"The naive per-column per-trail-pixel loop is the second biggest "
+"bottleneck after the render loop. Use numpy fancy indexing:"
+msgstr ""
+
+#: ../../source/references_optimization.md:359
+msgid "Vectorized Fire Columns"
+msgstr ""
+
+#: ../../source/references_optimization.md:361
+msgid "Same pattern -- accumulate index arrays, assign in bulk:"
+msgstr ""
+
+#: ../../source/references_optimization.md:380
+msgid "PIL String Rendering for Text-Heavy Scenes"
+msgstr ""
+
+#: ../../source/references_optimization.md:382
+msgid ""
+"Alternative to per-cell bitmap blitting when rendering many long text "
+"strings (scrolling tickers, typewriter sequences, idea floods). Uses "
+"PIL's native `ImageDraw.text()` which renders an entire string in one C "
+"call, vs one Python-loop bitmap blit per character."
+msgstr ""
+
+#: ../../source/references_optimization.md:384
+msgid ""
+"Typical win: a scene with 56 ticker rows renders 56 PIL `text()` calls "
+"instead of ~10K individual bitmap blits."
+msgstr ""
+
+#: ../../source/references_optimization.md:386
+msgid ""
+"Use when: scene renders many rows of readable text strings. NOT suitable "
+"for sparse or spatially-scattered single characters (use normal "
+"`render()` for those)."
+msgstr ""
+
+#: ../../source/references_optimization.md:412
+msgid "Usage in a Ticker Scene"
+msgstr ""
+
+#: ../../source/references_optimization.md:429
+msgid ""
+"This is purely a rendering optimization — same visual output, fewer draw "
+"calls. The grid's `render()` method is still needed for sparse character "
+"fields where characters are placed individually based on value fields."
+msgstr ""
+
+#: ../../source/references_optimization.md:431
+msgid "Bloom Optimization"
+msgstr ""
+
+#: ../../source/references_optimization.md:433
+msgid "**Do NOT use `scipy.ndimage.uniform_filter`** -- measured at 424ms/frame."
+msgstr ""
+
+#: ../../source/references_optimization.md:435
+msgid "Use 4x downsample + manual box blur instead -- 84ms/frame (5x faster):"
+msgstr ""
+
+#: ../../source/references_optimization.md:448
+msgid "Vignette Caching"
+msgstr ""
+
+#: ../../source/references_optimization.md:450
+msgid ""
+"Distance field is resolution- and strength-dependent, never changes per "
+"frame:"
+msgstr ""
+
+#: ../../source/references_optimization.md:463
+msgid "Same pattern for CRT barrel distortion (cache remap coordinates)."
+msgstr ""
+
+#: ../../source/references_optimization.md:465
+msgid "Film Grain Optimization"
+msgstr ""
+
+#: ../../source/references_optimization.md:467
+msgid "Generate noise at half resolution, tile up:"
+msgstr ""
+
+#: ../../source/references_optimization.md:474
+msgid "2x blocky grain looks like film grain and costs 1/4 the random generation."
+msgstr ""
+
+#: ../../source/references_optimization.md:476
+msgid "Parallel Rendering"
+msgstr ""
+
+#: ../../source/references_optimization.md:478
+msgid "Worker Architecture"
+msgstr ""
+
+#: ../../source/references_optimization.md:492
+msgid "Per-Clip Parallelism (Preferred for Segmented Videos)"
+msgstr ""
+
+#: ../../source/references_optimization.md:509
+msgid "Worker Isolation"
+msgstr ""
+
+#: ../../source/references_optimization.md:511
+msgid "Each worker:"
+msgstr ""
+
+#: ../../source/references_optimization.md:512
+msgid "Creates its own `Renderer` instance (with full grid + bitmap init)"
+msgstr ""
+
+#: ../../source/references_optimization.md:513
+msgid "Opens its own ffmpeg subprocess"
+msgstr ""
+
+#: ../../source/references_optimization.md:514
+msgid "Has independent random seed (`random.seed(batch_id * 10000)`)"
+msgstr ""
+
+#: ../../source/references_optimization.md:515
+msgid "Writes to its own segment file and stderr log"
+msgstr ""
+
+#: ../../source/references_optimization.md:517
+msgid "ffmpeg Pipe Safety"
+msgstr ""
+
+#: ../../source/references_optimization.md:519
+msgid ""
+"**CRITICAL**: Never `stderr=subprocess.PIPE` with long-running ffmpeg. "
+"The stderr buffer fills at ~64KB and deadlocks:"
+msgstr ""
+
+#: ../../source/references_optimization.md:534
+msgid "Concatenation"
+msgstr ""
+
+#: ../../source/references_optimization.md:550
+msgid "Particle System Performance"
+msgstr ""
+
+#: ../../source/references_optimization.md:552
+msgid "Cap particle counts based on quality profile:"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "System"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Low"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Standard"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "High"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Explosion"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "300"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "1000"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "2500"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Embers"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "500"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "1500"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "3000"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Starfield"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "800"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Dissolve"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "200"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "600"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "1200"
+msgstr ""
+
+#: ../../source/references_optimization.md:561
+msgid "Cull by truncating lists:"
+msgstr ""
+
+#: ../../source/references_optimization.md:569
+msgid "Memory Management"
+msgstr ""
+
+#: ../../source/references_optimization.md:571
+msgid ""
+"Feature arrays: pre-computed for all frames, shared across workers via "
+"fork semantics (COW)"
+msgstr ""
+
+#: ../../source/references_optimization.md:572
+msgid "Canvas: allocated once per worker, reused (`np.zeros(...)`)"
+msgstr ""
+
+#: ../../source/references_optimization.md:573
+msgid "Character arrays: allocated per frame (cheap -- rows*cols U1 strings)"
+msgstr ""
+
+#: ../../source/references_optimization.md:574
+msgid "Bitmap cache: ~500KB per grid size, initialized once per worker"
+msgstr ""
+
+#: ../../source/references_optimization.md:576
+msgid "Total memory per worker: ~50-150MB. Total: ~400-800MB for 8 workers."
+msgstr ""
+
+#: ../../source/references_optimization.md:578
+msgid "For low-memory systems (< 4GB), reduce worker count and use smaller grids."
+msgstr ""
+
+#: ../../source/references_optimization.md:580
+msgid "Brightness Verification"
+msgstr ""
+
+#: ../../source/references_optimization.md:582
+msgid "After render, spot-check brightness at sample timestamps:"
+msgstr ""
+
+#: ../../source/references_optimization.md:593
+msgid ""
+"Target: mean > 5 for quiet sections, mean > 15 for active sections. If "
+"consistently below, increase brightness floor in effects and/or global "
+"boost multiplier."
+msgstr ""
+
+#: ../../source/references_optimization.md:595
+msgid "Render Time Estimates"
+msgstr ""
+
+#: ../../source/references_optimization.md:597
+msgid "Scale with hardware. Baseline: 1080p, 24fps, ~180ms/frame/worker."
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Duration"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Frames"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "4 workers"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "8 workers"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "16 workers"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "30s"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "720"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~3 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~2 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~1 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "2 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "2,880"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~13 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~7 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~4 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "3.5 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "5,040"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~23 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~12 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~6 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "5 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "7,200"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~33 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~17 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~9 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "10 min"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "14,400"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "~65 min"
+msgstr ""
+
+#: ../../source/references_optimization.md:607
+msgid "At 720p: multiply times by ~0.5. At 4K: multiply by ~4."
+msgstr ""
+
+#: ../../source/references_optimization.md:609
+msgid ""
+"Heavier effects (many particles, dense grids, extra shader passes) add "
+"~20-50%."
+msgstr ""
+
+#: ../../source/references_optimization.md:613
+msgid "Temp File Cleanup"
+msgstr ""
+
+#: ../../source/references_optimization.md:615
+msgid ""
+"Rendering generates intermediate files that accumulate across runs. Clean"
+" up after the final concat/mux step."
+msgstr ""
+
+#: ../../source/references_optimization.md:617
+msgid "Files to Clean"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "File type"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Source"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Location"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "WAV extracts"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "`ffmpeg -i input.mp3 ... tmp.wav`"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "`tempfile.mktemp()` or project dir"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Segment clips"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "`render_clip()` output"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "`segments/seg_00.mp4` etc."
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Concat list"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "ffmpeg concat demuxer input"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "`segments/concat.txt`"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "ffmpeg stderr logs"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "piped to file for debugging"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "`*.log` in project dir"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "Feature cache"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "pickled numpy arrays"
+msgstr ""
+
+#: ../../source/references_optimization.md
+msgid "`*.pkl` or `*.npz`"
+msgstr ""
+
+#: ../../source/references_optimization.md:627
+msgid "Cleanup Function"
+msgstr ""
+
+#: ../../source/references_optimization.md:670
+msgid "Integration with Render Pipeline"
+msgstr ""
+
+#: ../../source/references_optimization.md:672
+msgid ""
+"Call cleanup at the end of the main render script, after the final output"
+" is verified:"
+msgstr ""
+
+#: ../../source/references_optimization.md:683
+msgid "Temp File Best Practices"
+msgstr ""
+
+#: ../../source/references_optimization.md:685
+msgid ""
+"Use `tempfile.mkdtemp()` for segment directories — avoids polluting the "
+"project dir"
+msgstr ""
+
+#: ../../source/references_optimization.md:686
+msgid ""
+"Name WAV extracts with `tempfile.mktemp(suffix=\".wav\")` so they're in "
+"the OS temp dir"
+msgstr ""
+
+#: ../../source/references_optimization.md:687
+msgid "For debugging, set `KEEP_INTERMEDIATES=1` env var to skip cleanup"
+msgstr ""
+
+#: ../../source/references_optimization.md:688
+msgid ""
+"Feature caches (`.npz`) are cheap to store and expensive to recompute — "
+"default to keeping them"
+msgstr ""
+

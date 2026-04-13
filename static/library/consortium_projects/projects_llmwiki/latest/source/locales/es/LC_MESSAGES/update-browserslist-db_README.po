@@ -1,0 +1,62 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/update-browserslist-db_README.md:1
+msgid "Update Browserslist DB"
+msgstr ""
+
+#: ../../source/update-browserslist-db_README.md:3
+msgid ""
+"<img width=\"120\" height=\"120\" alt=\"Browserslist logo by Anton "
+"Popov\"      src=\"https://browsersl.ist/logo.svg\" align=\"right\">"
+msgstr ""
+
+#: ../../source/update-browserslist-db_README.md:6
+msgid ""
+"CLI tool to update `caniuse-lite` with browsers DB from "
+"[Browserslist](https://github.com/browserslist/browserslist/) config."
+msgstr ""
+
+#: ../../source/update-browserslist-db_README.md:9
+msgid ""
+"Some queries like `last 2 versions` or `>1%` depend on actual data from "
+"`caniuse-lite`."
+msgstr ""
+
+#: ../../source/update-browserslist-db_README.md:15
+msgid "Or if using `pnpm`:"
+msgstr ""
+
+#: ../../source/update-browserslist-db_README.md:19
+msgid "Or if using `yarn`:"
+msgstr ""
+
+#: ../../source/update-browserslist-db_README.md:29
+msgid "Docs"
+msgstr ""
+
+#: ../../source/update-browserslist-db_README.md:30
+msgid ""
+"Read full docs **[here](https://github.com/browserslist/update-"
+"db#readme)**."
+msgstr ""
+

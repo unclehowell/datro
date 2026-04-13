@@ -1,0 +1,241 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/hex-color-regex_README.md:1
+msgid ""
+"[hex-color-regex][author-www-url] [![npmjs.com][npmjs-img]][npmjs-url] "
+"[![The MIT License][license-img]][license-url]"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:1
+msgid "npmjs.com"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:1
+msgid "The MIT License"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:3
+msgid ""
+"The best regular expression (regex) for matching hex color values from "
+"string."
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:5
+msgid ""
+"[![code climate][codeclimate-img]][codeclimate-url] [![standard code "
+"style][standard-img]][standard-url] [![travis build status][travis-img"
+"]][travis-url] [![coverage status][coverage-img]][coverage-url] "
+"[![dependency status][david-img]][david-url]"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:5
+msgid "code climate"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:5
+msgid "standard code style"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:5
+msgid "travis build status"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:5
+msgid "coverage status"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:5
+msgid "dependency status"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:8
+msgid "Install"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:16
+msgid "For more use-cases see the [tests](./test.js)"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:18
+#, python-brace-format
+msgid "`[opts]` **{Object}** pass `strict: true` for strict mode"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:19
+#, python-brace-format
+msgid "`return` **{RegExp}**"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:21
+#: ../../source/hex-color-regex_README.md:85
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:80
+msgid "Matching groups"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:82
+msgid "`match[0]` hex value with hash - `#f3f3f3`"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:83
+msgid "`match[1]` hex value without the hash - `f3f3f3`"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:102
+msgid "Related"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:103
+msgid ""
+"[benz](https://github.com/tunnckocore/benz): Compose your control flow "
+"with absolute elegance. Support async/await, callbacks, thunks, "
+"generators, promises, observables, child… "
+"[more](https://github.com/tunnckocore/benz)"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:104
+msgid ""
+"[is-hexcolor](https://github.com/tunnckocore/is-hexcolor): Check that "
+"given value is valid hex color, using `hex-color-regex` - the best regex "
+"for… [more](https://github.com/tunnckocore/is-hexcolor)"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:105
+msgid ""
+"[is-ansi](https://github.com/tunnckocore/is-ansi): Check that given "
+"string contain ANSI color codes, without CLI"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:106
+msgid ""
+"[is-missing](https://github.com/tunnckocore/is-missing): Check that given"
+" `name` or `user/repo` exists in npm registry or in github as user… "
+"[more](https://github.com/tunnckocore/is-missing)"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:107
+msgid ""
+"[is-kindof](https://github.com/tunnckocore/is-kindof): Check type of "
+"given javascript value. Support promises, generators, streams, and native"
+" types. Thin wrapper… [more](https://github.com/tunnckocore/is-kindof)"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:108
+msgid ""
+"[is-typeof-error](https://github.com/tunnckocore/is-typeof-error): Check "
+"that given value is any type of error and instanceof Error"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:109
+msgid ""
+"[is-async-function](https://github.com/tunnckocore/is-async-function): "
+"Check that given function is async (callback) function or not. Trying to "
+"guess that based… [more](https://github.com/tunnckocore/is-async-"
+"function)"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:110
+msgid ""
+"[kind-error](https://github.com/tunnckocore/kind-error): Correct "
+"inheriting from `Error`. Supports constructing from an object of "
+"properties - focused on assertion."
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:111
+msgid ""
+"[kind-of-extra](https://github.com/tunnckocore/kind-of-extra): Extends "
+"`kind-of` type check utility with support for promises, generators, "
+"streams and errors. Like `kindof(Promise.resolve(1))… "
+"[more](https://github.com/tunnckocore/kind-of-extra)"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:112
+msgid ""
+"[vez](https://github.com/tunnckocore/vez): Middleware composition at new "
+"level. Ultimate alternative to `ware`, `plugins`, `koa-compose` and "
+"`composition` packages. Allows… "
+"[more](https://github.com/tunnckocore/vez)"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:115
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:116
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](https://github.com/regexhq/hex-color-"
+"regex/issues/new).   But before doing anything, please read the "
+"[CONTRIBUTING.md](./CONTRIBUTING.md) guidelines."
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:120
+msgid ""
+"[Charlike Make Reagent](http://j.mp/1stW47C) [![new message to charlike"
+"][new-message-img]][new-message-url] [![freenode #charlike][freenode-img"
+"]][freenode-url]"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:120
+msgid "new message to charlike"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:120
+msgid "freenode #charlike"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:122
+msgid ""
+"[![tunnckocore.tk][author-www-img]][author-www-url] [![keybase "
+"tunnckocore][keybase-img]][keybase-url] [![tunnckoCore npm][author-npm-"
+"img]][author-npm-url] [![tunnckoCore twitter][author-twitter-img"
+"]][author-twitter-url] [![tunnckoCore github][author-github-img]][author-"
+"github-url]"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:122
+msgid "tunnckocore.tk"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:122
+msgid "keybase tunnckocore"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:122
+msgid "tunnckoCore npm"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:122
+msgid "tunnckoCore twitter"
+msgstr ""
+
+#: ../../source/hex-color-regex_README.md:122
+msgid "tunnckoCore github"
+msgstr ""
+

@@ -1,0 +1,244 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_advanced-usage.md:1
+msgid "PEFT Advanced Usage Guide"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:3
+msgid "Advanced LoRA Variants"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:5
+msgid "DoRA (Weight-Decomposed Low-Rank Adaptation)"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:7
+msgid ""
+"DoRA decomposes weights into magnitude and direction components, often "
+"achieving better results than standard LoRA:"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:23
+msgid "**When to use DoRA**:"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:24
+msgid "Consistently outperforms LoRA on instruction-following tasks"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:25
+msgid "Slightly higher memory (~10%) due to magnitude vectors"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:26
+msgid "Best for quality-critical fine-tuning"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:28
+msgid "AdaLoRA (Adaptive Rank)"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:30
+msgid "Automatically adjusts rank per layer based on importance:"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:49
+msgid "**Benefits**:"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:50
+msgid "Allocates more rank to important layers"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:51
+msgid "Can reduce total parameters while maintaining quality"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:52
+msgid "Good for exploring optimal rank distribution"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:54
+msgid "LoRA+ (Asymmetric Learning Rates)"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:56
+msgid "Different learning rates for A and B matrices:"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:82
+msgid "rsLoRA (Rank-Stabilized LoRA)"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:84
+msgid "Scales LoRA outputs to stabilize training with different ranks:"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:95
+msgid "**When to use**:"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:96
+msgid "When experimenting with different ranks"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:97
+msgid "Helps maintain consistent behavior across rank values"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:98
+msgid "Recommended for r > 32"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:100
+msgid "LoftQ (LoRA-Fine-Tuning-aware Quantization)"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:102
+msgid "Initializes LoRA weights to compensate for quantization error:"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:134
+msgid "**Benefits over standard QLoRA**:"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:135
+msgid "Better initial quality after quantization"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:136
+msgid "Faster convergence"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:137
+msgid "~1-2% better final accuracy on benchmarks"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:139
+msgid "Custom Module Targeting"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:141
+msgid "Target specific layers"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:156
+msgid "Layer pattern matching"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:169
+msgid "Exclude specific layers"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:179
+msgid "Embedding and LM Head Training"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:181
+msgid "Train embeddings with LoRA"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:195
+msgid "Extending vocabulary with LoRA"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:220
+msgid "Multi-Adapter Patterns"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:222
+msgid "Adapter composition"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:243
+msgid "Adapter stacking"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:255
+msgid "Dynamic adapter switching"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:280
+msgid "Memory Optimization"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:282
+msgid "Gradient checkpointing with LoRA"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:295
+msgid "CPU offloading for training"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:309
+msgid "Memory-efficient attention with LoRA"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:325
+msgid "Inference Optimization"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:327
+msgid "Merge for deployment"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:343
+msgid "Export to different formats"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:363
+msgid "Batch adapter inference"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:390
+msgid "Training Recipes"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:392
+msgid "Instruction tuning recipe"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:421
+msgid "Code generation recipe"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:440
+msgid "Conversational/Chat recipe"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:468
+msgid "Debugging and Validation"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:470
+msgid "Verify adapter application"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:486
+msgid "Compare with base model"
+msgstr ""
+
+#: ../../source/references_advanced-usage.md:501
+msgid "Monitor training metrics"
+msgstr ""
+

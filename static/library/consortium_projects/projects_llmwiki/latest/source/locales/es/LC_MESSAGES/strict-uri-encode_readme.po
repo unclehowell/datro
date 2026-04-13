@@ -1,0 +1,75 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/strict-uri-encode_readme.md:1
+msgid ""
+"strict-uri-encode [![Build Status](https://travis-ci.org/kevva/strict-"
+"uri-encode.svg?branch=master)](https://travis-ci.org/kevva/strict-uri-"
+"encode)"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:3
+msgid ""
+"A stricter URI encode adhering to [RFC "
+"3986](http://tools.ietf.org/html/rfc3986)"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:26
+msgid "API"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:28
+msgid "strictUriEncode(string)"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:30
+msgid "string"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:32
+msgid "*Required*   Type: `string`, `number`"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:35
+msgid "String to URI encode."
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:38
+msgid "License"
+msgstr ""
+
+#: ../../source/strict-uri-encode_readme.md:40
+msgid "MIT © [Kevin Mårtensson](http://github.com/kevva)"
+msgstr ""
+

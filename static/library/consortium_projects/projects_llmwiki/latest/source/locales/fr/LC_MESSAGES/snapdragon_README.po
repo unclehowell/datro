@@ -1,0 +1,522 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/snapdragon_README.md:1
+msgid ""
+"snapdragon [![NPM "
+"version](https://img.shields.io/npm/v/snapdragon.svg?style=flat)](https://www.npmjs.com/package/snapdragon)"
+" [![NPM "
+"downloads](https://img.shields.io/npm/dm/snapdragon.svg?style=flat)](https://npmjs.org/package/snapdragon)"
+" [![Build "
+"Status](https://img.shields.io/travis/jonschlinkert/snapdragon.svg?style=flat)](https"
+"://travis-ci.org/jonschlinkert/snapdragon)"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:1
+msgid "NPM downloads"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:3
+msgid "Fast, pluggable and easy-to-use parser-renderer factory."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:13
+msgid ""
+"Created by [jonschlinkert](https://github.com/jonschlinkert) and "
+"[doowb](https://github.com/doowb)."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:15
+msgid "**Features**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:17
+msgid "Bootstrap your own parser, get sourcemap support for free"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:18
+msgid ""
+"All parsing and compiling is handled by simple, reusable middleware "
+"functions"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:19
+msgid ""
+"Inspired by the parsers in [pug](http://jade-lang.com) and "
+"[css](https://github.com/reworkcss/css)."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:21
+msgid "History"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:23
+msgid "v0.5.0"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:25
+msgid "**Breaking changes**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:27
+msgid ""
+"Substantial breaking changes were made in v0.5.0! Most of these changes "
+"are part of a larger refactor that will be finished in 0.6.0, including "
+"the introduction of a `Lexer` class."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:29
+msgid "Renderer was renamed to `Compiler`"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:30
+msgid "the `.render` method was renamed to `.compile`"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:31
+msgid ""
+"Many other smaller changes. A more detailed overview will be provided in "
+"0.6.0. If you don't have to time review code, I recommend you wait for "
+"the 0.6.0 release."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:33
+msgid "Usage examples"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:40
+msgid "**Parse**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:51
+msgid "**Render**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:63
+msgid "See the [examples](./examples/)."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:65
+msgid "Getting started"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:67
+msgid "**Parsers**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:69
+msgid ""
+"Parsers are middleware functions used for parsing a string into an ast "
+"node."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:85
+msgid "**AST node**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:87
+msgid ""
+"When the parser finds a match, `pos()` is called, pushing a token for "
+"that node onto the ast that looks something like:"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:97
+msgid "**Renderers**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:99
+msgid ""
+"Renderers are _named_ middleware functions that visit over an array of "
+"ast nodes to compile a string."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:110
+msgid "**Source maps**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:112
+msgid "If you want source map support, make sure to emit the position as well."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:121
+msgid "Docs"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:123
+msgid "Parser middleware"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:125
+msgid ""
+"A parser middleware is a function that returns an abject called a "
+"`token`. This token is pushed onto the AST as a node."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:127
+msgid "**Example token**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:137
+msgid "**Example parser middleware**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:139
+msgid "Match a single `.` in a string:"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:141
+msgid "Get the starting position by calling `this.position()`"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:142
+msgid "pass a regex for matching a single dot to the `.match` method"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:143
+msgid "if **no match** is found, return `undefined`"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:144
+msgid "if a **match** is found, `pos()` is called, which returns a token with:"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:145
+msgid "`type`: the name of the [compiler] to use"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:146
+msgid ""
+"`val`: The actual value captured by the regex. In this case, a `.`. Note "
+"that you can capture and return whatever will be needed by the "
+"corresponding [compiler]."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:147
+msgid ""
+"The ending position: automatically calculated by adding the length of the"
+" first capture group to the starting position."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:149
+msgid "Renderer middleware"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:151
+msgid ""
+"Renderers are run when the name of the compiler middleware matches the "
+"`type` defined on an ast `node` (which is defined in a parser)."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:153 ../../source/snapdragon_README.md:195
+#: ../../source/snapdragon_README.md:241 ../../source/snapdragon_README.md:257
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:155
+msgid "Exercise: Parse a dot, then compile it as an escaped dot."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:180
+msgid "API"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:182
+msgid "[Parser](lib/parser.js#L19)"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:184
+msgid "Create a new `Parser` with the given `input` and `options`."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:186 ../../source/snapdragon_README.md:201
+#: ../../source/snapdragon_README.md:209 ../../source/snapdragon_README.md:216
+#: ../../source/snapdragon_README.md:222 ../../source/snapdragon_README.md:229
+#: ../../source/snapdragon_README.md:236 ../../source/snapdragon_README.md:247
+#: ../../source/snapdragon_README.md:263
+msgid "**Params**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:188
+#, python-brace-format
+msgid "`input` **{String}**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:189
+#, python-brace-format
+msgid "`options` **{Object}**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:191
+msgid "[.define](lib/parser.js#L103)"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:193
+msgid "Define a non-enumberable property on the `Parser` instance."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:203 ../../source/snapdragon_README.md:265
+#, python-brace-format
+msgid "`key` **{String}**: propery name"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:204 ../../source/snapdragon_README.md:266
+#, python-brace-format
+msgid "`val` **{any}**: property value"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:205
+#, python-brace-format
+msgid "`returns` **{Object}**: Returns the Parser instance for chaining."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:207
+msgid "Set parser `name` with the given `fn`"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:211 ../../source/snapdragon_README.md:218
+#, python-brace-format
+msgid "`name` **{String}**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:212
+#, python-brace-format
+msgid "`fn` **{Function}**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:214
+msgid "Get parser `name`"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:220
+msgid "Push a `token` onto the `type` stack."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:224 ../../source/snapdragon_README.md:231
+#: ../../source/snapdragon_README.md:238 ../../source/snapdragon_README.md:250
+#, python-brace-format
+msgid "`type` **{String}**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:225
+#, python-brace-format
+msgid "`returns` **{Object}** `token`"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:227
+msgid "Pop a token off of the `type` stack"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:232
+#, python-brace-format
+msgid "`returns` **{Object}**: Returns a token"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:234
+msgid ""
+"Return true if inside a `stack` node. Types are `braces`, `parens` or "
+"`brackets`."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:239 ../../source/snapdragon_README.md:251
+#, python-brace-format
+msgid "`returns` **{Boolean}**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:249
+#, python-brace-format
+msgid "`node` **{Object}**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:253
+msgid "[.define](lib/compiler.js#L71)"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:255
+msgid "Define a non-enumberable property on the `Compiler` instance."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:267
+#, python-brace-format
+msgid "`returns` **{Object}**: Returns the Compiler instance for chaining."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:269
+msgid "About"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:271
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:273
+msgid ""
+"[braces](https://www.npmjs.com/package/braces): Fastest brace expansion "
+"for node.js, with the most complete support for the Bash 4.3 braces… "
+"[more](https://github.com/jonschlinkert/braces) | "
+"[homepage](https://github.com/jonschlinkert/braces \"Fastest brace "
+"expansion for node.js, with the most complete support for the Bash 4.3 "
+"braces specification.\")"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:274
+msgid ""
+"[expand-brackets](https://www.npmjs.com/package/expand-brackets): Expand "
+"POSIX bracket expressions (character classes) in glob patterns. | "
+"[homepage](https://github.com/jonschlinkert/expand-brackets \"Expand "
+"POSIX bracket expressions (character classes) in glob patterns.\")"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:275
+msgid ""
+"[extglob](https://www.npmjs.com/package/extglob): Convert extended globs "
+"to regex-compatible strings. Add (almost) the expressive power of regular"
+" expressions to… [more](https://github.com/jonschlinkert/extglob) | "
+"[homepage](https://github.com/jonschlinkert/extglob \"Convert extended "
+"globs to regex-compatible strings. Add (almost) the expressive power of "
+"regular expressions to glob patterns.\")"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:276
+msgid ""
+"[micromatch](https://www.npmjs.com/package/micromatch): Glob matching for"
+" javascript/node.js. A drop-in replacement and faster alternative to "
+"minimatch and multimatch. | "
+"[homepage](https://github.com/jonschlinkert/micromatch \"Glob matching "
+"for javascript/node.js. A drop-in replacement and faster alternative to "
+"minimatch and multimatch.\")"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:278
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:280
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:282
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/snapdragon_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md
+msgid "**Contributor**<br/>"
+msgstr ""
+
+#: ../../source/snapdragon_README.md
+msgid "106"
+msgstr ""
+
+#: ../../source/snapdragon_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/snapdragon_README.md
+msgid "2"
+msgstr ""
+
+#: ../../source/snapdragon_README.md
+msgid "[doowb](https://github.com/doowb)"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:289
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:291
+msgid ""
+"_(This document was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme) (a "
+"[verb](https://github.com/verbose/verb) generator), please don't edit the"
+" readme directly. Any changes to the readme must be made in "
+"[.verb.md](.verb.md).)_"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:293
+msgid ""
+"To generate the readme and API documentation with "
+"[verb](https://github.com/verbose/verb):"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:299
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:301
+msgid "Install dev dependencies:"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:307
+msgid "Author"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:309
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:311
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:312
+msgid "[twitter/jonschlinkert](http://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:314
+msgid "License"
+msgstr ""
+
+#: ../../source/snapdragon_README.md:316
+msgid ""
+"Copyright © 2016, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT "
+"license](https://github.com/jonschlinkert/snapdragon/blob/master/LICENSE)."
+msgstr ""
+
+#: ../../source/snapdragon_README.md:321
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.1.31, on "
+"October 10, 2016._"
+msgstr ""
+

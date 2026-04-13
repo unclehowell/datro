@@ -1,0 +1,254 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_ci-troubleshooting.md:1
+msgid "CI Troubleshooting Quick Reference"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:3
+msgid "Common CI failure patterns and how to diagnose them from the logs."
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:5
+msgid "Reading CI Logs"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:17
+msgid "Common Failure Patterns"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:19
+msgid "Test Failures"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:21
+#: ../../source/references_ci-troubleshooting.md:43
+#: ../../source/references_ci-troubleshooting.md:63
+#: ../../source/references_ci-troubleshooting.md:82
+#: ../../source/references_ci-troubleshooting.md:102
+#: ../../source/references_ci-troubleshooting.md:122
+#: ../../source/references_ci-troubleshooting.md:141
+msgid "**Signatures in logs:**"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:28
+#: ../../source/references_ci-troubleshooting.md:50
+#: ../../source/references_ci-troubleshooting.md:69
+#: ../../source/references_ci-troubleshooting.md:89
+#: ../../source/references_ci-troubleshooting.md:109
+#: ../../source/references_ci-troubleshooting.md:128
+#: ../../source/references_ci-troubleshooting.md:148
+msgid "**Diagnosis:**"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:29
+msgid "Find the test file and line number from the traceback"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:30
+msgid "Use `read_file` to read the failing test"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:31
+msgid "Check if it's a logic error in the code or a stale test assertion"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:32
+msgid "Look for `ModuleNotFoundError` — usually a missing dependency in CI"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:34
+#: ../../source/references_ci-troubleshooting.md:54
+#: ../../source/references_ci-troubleshooting.md:73
+#: ../../source/references_ci-troubleshooting.md:93
+#: ../../source/references_ci-troubleshooting.md:113
+#: ../../source/references_ci-troubleshooting.md:132
+#: ../../source/references_ci-troubleshooting.md:152
+msgid "**Common fixes:**"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:35
+msgid "Update assertion to match new expected behavior"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:36
+msgid "Add missing dependency to requirements.txt / pyproject.toml"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:37
+msgid "Fix flaky test (add retry, mock external service, fix race condition)"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:41
+msgid "Lint / Formatting Failures"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:51
+msgid "Read the specific file:line numbers mentioned"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:52
+msgid "Check which linter is complaining (flake8, ruff, black, isort, mypy)"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:55
+msgid "Run the formatter locally: `black .`, `isort .`, `ruff check --fix .`"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:56
+msgid "Fix the specific style violation by editing the file"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:57
+msgid "If using `patch`, make sure to match existing indentation style"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:61
+msgid "Type Check Failures (mypy / pyright)"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:70
+msgid "Read the file at the mentioned line"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:71
+msgid "Check the function signature and what's being passed"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:74
+msgid "Add type cast or conversion"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:75
+msgid "Fix the function signature"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:76
+msgid "Add `# type: ignore` comment as last resort (with explanation)"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:80
+msgid "Build / Compilation Failures"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:90
+msgid ""
+"Check requirements.txt / package.json for the missing or incompatible "
+"dependency"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:91
+msgid "Compare local vs CI Python/Node version"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:94
+msgid "Add missing dependency to requirements file"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:95
+msgid "Pin compatible version"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:96
+msgid "Update lockfile (`pip freeze`, `npm install`)"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:100
+msgid "Permission / Auth Failures"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:110
+msgid "Check if the workflow needs special permissions (token scopes)"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:111
+msgid "Check if secrets are configured (missing `GITHUB_TOKEN` or custom secrets)"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:114
+msgid "Add `permissions:` block to workflow YAML"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:115
+msgid "Verify secrets exist: `gh secret list` or check repo settings"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:116
+msgid "For fork PRs: some secrets aren't available by design"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:120
+msgid "Timeout Failures"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:129
+msgid "Check which step timed out"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:130
+msgid "Look for infinite loops, hung processes, or slow network calls"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:133
+msgid "Add timeout to the specific step: `timeout-minutes: 10`"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:134
+msgid "Fix the underlying performance issue"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:135
+msgid "Split into parallel jobs"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:139
+msgid "Docker / Container Failures"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:149
+msgid "Check Dockerfile for the failing step"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:150
+msgid "Verify the referenced files exist in the repo"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:153
+msgid "Fix path in COPY/ADD command"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:154
+msgid "Update base image tag"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:155
+msgid "Add missing file to `.dockerignore` exclusion or remove from it"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:159
+msgid "Auto-Fix Decision Tree"
+msgstr ""
+
+#: ../../source/references_ci-troubleshooting.md:175
+msgid "Re-running After Fix"
+msgstr ""
+

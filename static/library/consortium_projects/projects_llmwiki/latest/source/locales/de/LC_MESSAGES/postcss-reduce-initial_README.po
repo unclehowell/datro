@@ -1,0 +1,121 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/postcss-reduce-initial_README.md:1
+msgid "[postcss][postcss]-reduce-initial"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:3
+msgid ""
+"Reduce `initial` definitions to the *actual* initial value, where "
+"possible."
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:8
+msgid "With [npm](https://npmjs.org/package/postcss-reduce-initial) do:"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:15
+msgid "Examples"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:17
+msgid ""
+"See the [data](data) for more conversions. This data is courtesy of "
+"Mozilla."
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:20
+msgid "Convert `initial` values"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:22
+msgid ""
+"When the `initial` keyword is longer than the property value, it will be "
+"converted:"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:25
+#: ../../source/postcss-reduce-initial_README.md:47
+msgid "Input"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:33
+#: ../../source/postcss-reduce-initial_README.md:55
+msgid "Output"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:42
+msgid "Convert values back to `initial`"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:44
+msgid ""
+"When the `initial` value is smaller than the property value, it will be "
+"converted:"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:63
+msgid ""
+"This conversion is only applied when you supply a browsers list that all "
+"support the `initial` keyword; it's worth noting that Internet Explorer "
+"has no support."
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:67
+msgid "Usage"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:69
+msgid ""
+"See the [PostCSS documentation](https://github.com/postcss/postcss#usage)"
+" for examples for your environment."
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:73
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:75
+msgid ""
+"See "
+"[CONTRIBUTORS.md](https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md)."
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:78
+msgid "License"
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:80
+msgid ""
+"[Template:CSSData] by Mozilla Contributors is licensed under [CC-BY-SA "
+"2.5]."
+msgstr ""
+
+#: ../../source/postcss-reduce-initial_README.md:85
+msgid "MIT © [Ben Briggs](http://beneb.info)"
+msgstr ""
+

@@ -1,0 +1,132 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/dot-prop_readme.md:1
+msgid ""
+"dot-prop [![Build Status](https://travis-ci.org/sindresorhus/dot-"
+"prop.svg?branch=master)](https://travis-ci.org/sindresorhus/dot-prop)"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:3
+msgid "Get, set, or delete a property from a nested object using a dot path"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:62
+msgid "API"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:64
+msgid "get(object, path, defaultValue?)"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:66
+msgid "set(object, path, value)"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:68
+msgid "Returns the object."
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:70
+msgid "has(object, path)"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:72
+msgid "delete(object, path)"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:74
+msgid "Returns a boolean of whether the property existed before being deleted."
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:76
+msgid "object"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:78
+msgid "Type: `object`"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:80
+msgid "Object to get, set, or delete the `path` value."
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:82
+msgid ""
+"You are allowed to pass in `undefined` as the object to the `get` and "
+"`has` functions."
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:84
+msgid "path"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:86
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:88
+msgid "Path of the property in the object, using `.` to separate each nested key."
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:90
+msgid "Use `\\\\.` if you have a `.` in the key."
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:92
+msgid ""
+"The following path components are invalid and results in `undefined` "
+"being returned: `__proto__`, `prototype`, `constructor`."
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:94
+msgid "value"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:96 ../../source/dot-prop_readme.md:102
+msgid "Type: `unknown`"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:98
+msgid "Value to set at `path`."
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:100
+msgid "defaultValue"
+msgstr ""
+
+#: ../../source/dot-prop_readme.md:104
+msgid "Default value."
+msgstr ""
+

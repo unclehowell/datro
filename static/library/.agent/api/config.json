@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "base_path": "/.agent/api",
+  "auth": {
+    "type": "bearer_token",
+    "tokens_file": "../tokens/index.json"
+  },
+  "rate_limits": {
+    "default": "100/hour",
+    "authenticated": "1000/hour"
+  },
+  "cors": {
+    "enabled": true,
+    "origins": ["*"]
+  },
+  "endpoints": {
+    "projects": {
+      "GET": "/projects",
+      "POST": "/projects",
+      "GET": "/projects/:id",
+      "PUT": "/projects/:id",
+      "DELETE": "/projects/:id"
+    },
+    "change_requests": {
+      "GET": "/change_requests",
+      "POST": "/change_requests",
+      "GET": "/change_requests/:id",
+      "PUT": "/change_requests/:id/approve",
+      "PUT": "/change_requests/:id/reject"
+    },
+    "interactions": {
+      "GET": "/interactions",
+      "POST": "/interactions",
+      "GET": "/interactions/:id"
+    },
+    "agents": {
+      "GET": "/agents",
+      "POST": "/agents/register"
+    }
+  },
+  "webhooks": "../webhooks/config.json"
+}

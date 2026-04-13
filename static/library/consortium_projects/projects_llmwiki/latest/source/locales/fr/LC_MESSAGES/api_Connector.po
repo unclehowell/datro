@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_Connector.md:1
+msgid "Connector"
+msgstr ""
+
+#: ../../source/api_Connector.md:3
+msgid ""
+"Undici creates the underlying socket via the connector builder. Normally,"
+" this happens automatically and you don't need to care about this, but if"
+" you need to perform some additional check over the currently used "
+"socket, this is the right place."
+msgstr ""
+
+#: ../../source/api_Connector.md:8
+msgid ""
+"If you want to create a custom connector, you must import the "
+"`buildConnector` utility."
+msgstr ""
+
+#: ../../source/api_Connector.md:10
+msgid "Parameter: `buildConnector.BuildOptions`"
+msgstr ""
+
+#: ../../source/api_Connector.md:12
+msgid ""
+"Every Tls option, see "
+"[here](https://nodejs.org/api/tls.html#tls_tls_connect_options_callback)."
+" Furthermore, the following options can be passed:"
+msgstr ""
+
+#: ../../source/api_Connector.md:15
+msgid ""
+"**socketPath** `string | null` (optional) - Default: `null` - An IPC "
+"endpoint, either Unix domain socket or Windows named pipe."
+msgstr ""
+
+#: ../../source/api_Connector.md:16
+msgid ""
+"**maxCachedSessions** `number | null` (optional) - Default: `100` - "
+"Maximum number of TLS cached sessions. Use 0 to disable TLS session "
+"caching. Default: `100`."
+msgstr ""
+
+#: ../../source/api_Connector.md:17
+msgid "**timeout** `number | null` (optional) -  In milliseconds. Default `10e3`."
+msgstr ""
+
+#: ../../source/api_Connector.md:18
+msgid "**servername** `string | null` (optional)"
+msgstr ""
+
+#: ../../source/api_Connector.md:20
+msgid ""
+"Once you call `buildConnector`, it will return a connector function, "
+"which takes the following parameters."
+msgstr ""
+
+#: ../../source/api_Connector.md:22
+msgid "Parameter: `connector.Options`"
+msgstr ""
+
+#: ../../source/api_Connector.md:24
+msgid "**hostname** `string` (required)"
+msgstr ""
+
+#: ../../source/api_Connector.md:25
+msgid "**host** `string` (optional)"
+msgstr ""
+
+#: ../../source/api_Connector.md:26
+msgid "**protocol** `string` (required)"
+msgstr ""
+
+#: ../../source/api_Connector.md:27
+msgid "**port** `string` (required)"
+msgstr ""
+
+#: ../../source/api_Connector.md:28
+msgid "**servername** `string` (optional)"
+msgstr ""
+
+#: ../../source/api_Connector.md:29
+msgid ""
+"**localAddress** `string | null` (optional) Local address the socket "
+"should connect from."
+msgstr ""
+
+#: ../../source/api_Connector.md:30
+msgid ""
+"**httpSocket** `Socket` (optional) Establish secure connection on a given"
+" socket rather than creating a new socket. It can only be sent on TLS "
+"update."
+msgstr ""
+
+#: ../../source/api_Connector.md:32
+msgid "Basic example"
+msgstr ""
+
+#: ../../source/api_Connector.md:56
+msgid "Example: validate the CA fingerprint"
+msgstr ""
+

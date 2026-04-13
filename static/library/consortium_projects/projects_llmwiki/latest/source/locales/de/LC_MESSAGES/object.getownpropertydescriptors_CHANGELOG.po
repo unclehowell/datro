@@ -1,0 +1,526 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres"
+" to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:8
+msgid ""
+"[v2.1.9](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/compare/v2.1.8...v2.1.9) - "
+"2025-12-10"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:10
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:23
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:33
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:40
+msgid "Commits"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:12
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config` "
+"[`b3d48d5`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/b3d48d52ce2f8e688118e3d937dc831c894bea78)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:13
+msgid ""
+"[Deps] update `array.prototype.reduce`, `call-bind`, `es-abstract`, `es-"
+"object-atoms`, `gopd`, `safe-array-concat` [`224f5c8`](https://github.com"
+"/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/224f5c815ba7588249825740f4bf82c32eda9814)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:14
+msgid ""
+"[Dev Deps] update `@es-shims/api`, `auto-changelog`, `has-strict-mode`, "
+"`mock-property`, `tape` [`eee065a`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/eee065aa1afd21c3b1919d1aa9527ca2b98fbaea)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:15
+msgid ""
+"[meta] use `npm audit` instead of `aud` [`ff601b5`](https://github.com"
+"/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/ff601b5885613d922635ab2e9688683ea005a7a7)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:16
+msgid ""
+"[Dev Deps] update `npmignore` [`6612fe4`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/6612fe4584a9f26d9c6e6954b6286d119df502dd)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:17
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config` [`4ed1ca5`](https://github.com"
+"/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/4ed1ca55e818b97b687c30409ea3e11e7c1d47ad)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:18
+msgid ""
+"[meta] drop engines.node down to 0.4 [`ab5347d`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/ab5347d1972a6021ef6704c5c49e842024087581)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:19
+msgid ""
+"[Dev Deps] add missing peer dep [`603107a`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/603107af4bea789d750c436f0ee9d84be1569f74)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:21
+msgid ""
+"[v2.1.8](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/compare/v2.1.7...v2.1.8) - "
+"2024-03-19"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:25
+msgid ""
+"[actions] remove redundant finisher [`72e367f`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/72e367f708417284e465acb722ccaa0cff615a32)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:26
+msgid ""
+"[Refactor] use `es-object-atoms` where possible "
+"[`a403fd2`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/a403fd2d4651586309b3a31a31010ca74fa5aa47)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:27
+msgid ""
+"[Deps] update `call-bind`, `define-properties`, `es-abstract`, `safe-"
+"array-concat` [`fe4f40d`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/fe4f40d06ad1b877b1dd5aecb2e61c6d1c155c21)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:28
+msgid ""
+"[Refactor] use `gopd` [`a2d1344`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/a2d1344271aa98bd9aa5771ea8847605628bcf6e)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:29
+msgid ""
+"[Dev Deps] update `aud`, `mock-property`, `npmignore`, `tape` "
+"[`1852646`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/18526463da3df02dbc688e6897ab262245f85d99)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:31
+msgid ""
+"[v2.1.7](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/compare/v2.1.6...v2.1.7) - "
+"2023-08-31"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:35
+msgid ""
+"[Deps] update `array.prototype.reduce`, `es-abstract` "
+"[`a201ad2`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/a201ad21768bbd199c122fc8b51ded6667b07573)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:36
+msgid ""
+"[Dev Deps] update `@es-shims/api`, `@ljharb/eslint-config`, `aud`, `tape`"
+" [`f174ab1`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/f174ab14b2a816abac871d10747b1fcff179f0d8)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:38
+msgid ""
+"[v2.1.6](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/compare/v2.1.5...v2.1.6) - "
+"2023-04-20"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:42
+msgid ""
+"[Refactor] use `safe-array-concat` [`a717eb2`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/a717eb21bacdc01eaa17092fe93dd21e0c1ef320)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:43
+msgid ""
+"[Dev Deps] update `@es-shims/api`, `@ljharb/eslint-config`, `aud`, `tape`"
+" [`b08d70f`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/b08d70f9387aad6341d44d9216ffa36023973a66)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:44
+msgid ""
+"[Deps] update `define-properties`, `es-abstract` "
+"[`95c8479`](https://github.com/es-"
+"shims/Object.getOwnPropertyDescriptors/commit/95c84794c2a78bc78c8c5f540db150c30fe9aea2)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:48
+msgid "2.1.4 / 2022-05-19"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:50
+msgid "[Fix] `Array.prototype.reduce` isn’t present in ES3 engines"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:51
+msgid "[meta] use `npmignore` to autogenerate an npmignore file"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:52
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:94
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:125
+msgid "[Deps] update `define-properties`, `es-abstract`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:53
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `@es-shims/api`, "
+"`aud`, `auto-changelog`, `functions-have-names`, `safe-publish-latest`, "
+"`tape`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:54
+msgid "[Tests] use `mock-property`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:55
+msgid "[actions] reuse common workflows"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:56
+msgid "[actions] update codecov uploader"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:58
+msgid "2.1.3 / 2021-10-03"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:60
+msgid "[readme] remove travis badge; add actions and codecov badges"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:61
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:107
+msgid "[Deps] update `es-abstract`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:62
+msgid "[meta] use `prepublishOnly` script for npm 7+"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:63
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `@es-shims/api`, "
+"`aud`, `tape`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:64
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:73
+msgid "[actions] update workflows"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:65
+msgid "[actions] use `node/install` instead of `node/run`; use `codecov` action"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:67
+msgid "2.1.2 / 2021-02-20"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:69
+msgid "[Deps] update `call-bind`, `es-abstract`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:70
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `aud`, `functions-"
+"have-names`, `has-strict-mode`, `tape`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:71
+msgid "[meta] do not publish github action workflow files"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:72
+msgid "[meta] gitignore coverage output"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:75
+msgid "2.1.1 / 2020-11-26"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:77
+msgid "[Fix] do not mutate the native function when present"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:78
+msgid "[Deps] update `es-abstract`; use `call-bind` where applicable"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:79
+msgid "[meta] remove unused Makefile and associated utilities"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:80
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `tape`, `functions-"
+"have-names`; add `aud`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:81
+msgid "[actions] add Require Allow Edits workflow"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:82
+msgid "[actions] switch Automatic Rebase workflow to `pull_request_target` event"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:83
+msgid "[Tests] migrate tests to Github Actions"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:84
+msgid "[Tests] run `nyc` on all tests"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:85
+msgid ""
+"[Tests] add `implementation` test; run `es-shim-api` in postlint; use "
+"`tape` runner"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:86
+msgid "[Tests] only audit prod deps"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:88
+msgid "2.1.0 / 2019-12-12"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:90
+msgid "[New] add auto entry point"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:91
+msgid "[Refactor] use split-up `es-abstract` (78% bundle size decrease)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:92
+msgid "[readme] fix repo URLs, remove testling"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:93
+msgid "[Docs] Fix formatting in the README (#30)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:95
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `functions-have-"
+"names`, `covert`, `replace`, `semver`, `tape`, `@es-shims/api`; add "
+"`safe-publish-latest`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:96
+msgid "[meta] add `funding` field"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:97
+msgid "[meta] Only apps should have lockfiles."
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:98
+msgid "[Tests] use shared travis-ci configs"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:99
+msgid "[Tests] use `functions-have-names`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:100
+msgid "[Tests] use `npx aud` instead of `nsp` or `npm audit` with hoops"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:101
+msgid "[Tests] remove `jscs`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:102
+msgid "[actions] add automatic rebasing / merge commit blocking"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:104
+msgid "2.0.3 / 2016-07-26"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:106
+msgid "[Fix] Update implementation to not return `undefined` descriptors"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:108
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `@es-shims/api`, "
+"`jscs`, `nsp`, `tape`, `semver`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:109
+msgid "[Dev Deps] remove unused eccheck script + dep"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:110
+msgid "[Tests] up to `node` `v6.3`, `v5.12`, `v4.4`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:111
+msgid "[Tests] use pretest/posttest for linting/security"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:112
+msgid "Update to stage 4"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:114
+msgid "2.0.2 / 2016-01-27"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:116
+msgid ""
+"[Fix] ensure that `Object.getOwnPropertyDescriptors` does not fail when "
+"`Object.prototype` has a poisoned setter (#1, #2)"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:118
+msgid "2.0.1 / 2016-01-27"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:120
+msgid "[Deps] move `@es-shims/api` to dev deps"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:122
+msgid "2.0.0 / 2016-01-27"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:124
+msgid "[Breaking] implement the es-shims API"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:126
+msgid ""
+"[Dev Deps] update `tape`, `jscs`, `nsp`, `eslint`, `@ljharb/eslint-"
+"config`, `semver`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:127
+msgid "[Tests] fix npm upgrades in older nodes"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:128
+msgid "[Tests] up to `node` `v5.5`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:129
+msgid ""
+"[Docs] Switch from vb.teelaun.ch to versionbadg.es for the npm version "
+"badge SVG"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:131
+msgid "1.0.4 / 2015-07-20"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:133
+msgid "[Tests] Test on `io.js` `v2.4`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:134
+msgid "[Deps, Dev Deps] Update `define-properties`, `tape`, `eslint`, `semver`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:136
+msgid "1.0.3 / 2015-06-28"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:138
+#, python-brace-format
+msgid "Increase robustness by caching `Array#{concat, reduce}`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:139
+msgid "[Deps] Update `define_properties`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:140
+msgid "[Dev Deps] Update `eslint`, `semver`, `nsp`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:141
+msgid "[Tests] Test up to `io.js` `v2.3`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:143
+msgid "1.0.2 / 2015-05-23"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:145
+msgid "Update `es-abstract`, `tape`, `eslint`, `jscs`, `semver`, `covert`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:146
+msgid "Test up to `io.js` `v2.0`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:148
+msgid "1.0.1 / 2015-03-20"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:150
+msgid ""
+"Update `es-abstract`, `editorconfig-tools`, `nsp`, `eslint`, `semver`, "
+"`replace`"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:152
+msgid "1.0.0 / 2015-02-17"
+msgstr ""
+
+#: ../../source/object.getownpropertydescriptors_CHANGELOG.md:154
+msgid "v1.0.0"
+msgstr ""
+

@@ -1,0 +1,663 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_effects.md:1
+msgid "Effect Catalog"
+msgstr ""
+
+#: ../../source/references_effects.md:3
+msgid ""
+"Effect building blocks that produce visual patterns. In v2, these are "
+"used **inside scene functions** that return a pixel canvas directly. The "
+"building blocks below operate on grid coordinate arrays and produce "
+"`(chars, colors)` or value/hue fields that the scene function renders to "
+"canvas via `_render_vf()`."
+msgstr ""
+
+#: ../../source/references_effects.md:5
+msgid ""
+"**See also:** architecture.md · composition.md · scenes.md · shaders.md ·"
+" troubleshooting.md"
+msgstr ""
+
+#: ../../source/references_effects.md:7
+msgid "Design Philosophy"
+msgstr ""
+
+#: ../../source/references_effects.md:9
+msgid ""
+"Effects are the creative core. Don't copy these verbatim for every "
+"project -- use them as **building blocks** and **combine, modify, and "
+"invent** new ones. Every project should feel distinct."
+msgstr ""
+
+#: ../../source/references_effects.md:11
+msgid "Key principles:"
+msgstr ""
+
+#: ../../source/references_effects.md:12
+msgid "**Layer multiple effects** rather than using a single monolithic function"
+msgstr ""
+
+#: ../../source/references_effects.md:13
+msgid ""
+"**Parameterize everything** -- hue, speed, density, amplitude should all "
+"be arguments"
+msgstr ""
+
+#: ../../source/references_effects.md:14
+msgid ""
+"**React to features** -- audio/video features should modulate at least "
+"2-3 parameters per effect"
+msgstr ""
+
+#: ../../source/references_effects.md:15
+msgid ""
+"**Vary per section** -- never use the same effect config for the entire "
+"video"
+msgstr ""
+
+#: ../../source/references_effects.md:16
+msgid ""
+"**Invent project-specific effects** -- the catalog below is a starting "
+"vocabulary, not a fixed set"
+msgstr ""
+
+#: ../../source/references_effects.md:20
+msgid "Background Fills"
+msgstr ""
+
+#: ../../source/references_effects.md:22
+msgid "Every effect should start with a background. Never leave flat black."
+msgstr ""
+
+#: ../../source/references_effects.md:24
+msgid "Animated Sine Field (General Purpose)"
+msgstr ""
+
+#: ../../source/references_effects.md:41
+msgid "Video-Source Background"
+msgstr ""
+
+#: ../../source/references_effects.md:52
+msgid "Noise / Static Field"
+msgstr ""
+
+#: ../../source/references_effects.md:62
+msgid "Perlin-Like Smooth Noise"
+msgstr ""
+
+#: ../../source/references_effects.md:80
+msgid "Cellular / Voronoi Approximation"
+msgstr ""
+
+#: ../../source/references_effects.md:106
+msgid ""
+"**Note:** The v1 `eff_rings`, `eff_rays`, `eff_spiral`, `eff_glow`, "
+"`eff_tunnel`, `eff_vortex`, `eff_freq_waves`, `eff_interference`, "
+"`eff_aurora`, and `eff_ripple` functions are superseded by the `vf_*` "
+"value field generators below (used via `_render_vf()`). The `vf_*` "
+"versions integrate with the multi-grid composition pipeline and are "
+"preferred for all new scenes."
+msgstr ""
+
+#: ../../source/references_effects.md:110
+msgid "Particle Systems"
+msgstr ""
+
+#: ../../source/references_effects.md:112
+msgid "General Pattern"
+msgstr ""
+
+#: ../../source/references_effects.md:113
+msgid "All particle systems use persistent state via the `S` dict parameter:"
+msgstr ""
+
+#: ../../source/references_effects.md:125
+msgid "Particle Character Sets"
+msgstr ""
+
+#: ../../source/references_effects.md:127
+msgid "Don't hardcode particle chars. Choose per project/mood:"
+msgstr ""
+
+#: ../../source/references_effects.md:150
+msgid "Explosion (Beat-Triggered)"
+msgstr ""
+
+#: ../../source/references_effects.md:167
+msgid "Rising Embers"
+msgstr ""
+
+#: ../../source/references_effects.md:174
+msgid "Dissolving Cloud"
+msgstr ""
+
+#: ../../source/references_effects.md:181
+msgid "Starfield (3D Projection)"
+msgstr ""
+
+#: ../../source/references_effects.md:190
+msgid "Orbit (Circular/Elliptical Motion)"
+msgstr ""
+
+#: ../../source/references_effects.md:204
+msgid "Gravity Well"
+msgstr ""
+
+#: ../../source/references_effects.md:211
+msgid "Flocking / Boids"
+msgstr ""
+
+#: ../../source/references_effects.md:213
+msgid ""
+"Emergent swarm behavior from three simple rules: separation, alignment, "
+"cohesion."
+msgstr ""
+
+#: ../../source/references_effects.md:329
+msgid "Flow Field Particles"
+msgstr ""
+
+#: ../../source/references_effects.md:331
+msgid ""
+"Particles that follow the gradient of a value field. Any `vf_*` function "
+"becomes a \"river\" that carries particles:"
+msgstr ""
+
+#: ../../source/references_effects.md:395
+msgid "Particle Trails"
+msgstr ""
+
+#: ../../source/references_effects.md:397
+msgid "Draw fading lines between current and previous positions:"
+msgstr ""
+
+#: ../../source/references_effects.md:440
+msgid "Rain / Matrix Effects"
+msgstr ""
+
+#: ../../source/references_effects.md:442
+msgid "Column Rain (Vectorized)"
+msgstr ""
+
+#: ../../source/references_effects.md:485
+msgid "Glitch / Data Effects"
+msgstr ""
+
+#: ../../source/references_effects.md:487
+msgid "Horizontal Band Displacement"
+msgstr ""
+
+#: ../../source/references_effects.md:504
+msgid "Block Corruption"
+msgstr ""
+
+#: ../../source/references_effects.md:524
+msgid "Scan Bars (Vertical)"
+msgstr ""
+
+#: ../../source/references_effects.md:535
+msgid "Error Messages"
+msgstr ""
+
+#: ../../source/references_effects.md:546
+msgid "Hex Data Stream"
+msgstr ""
+
+#: ../../source/references_effects.md:554
+msgid "Spectrum / Visualization"
+msgstr ""
+
+#: ../../source/references_effects.md:556
+msgid "Mirrored Spectrum Bars"
+msgstr ""
+
+#: ../../source/references_effects.md:583
+msgid "Waveform"
+msgstr ""
+
+#: ../../source/references_effects.md:602
+msgid "Fire / Lava"
+msgstr ""
+
+#: ../../source/references_effects.md:604
+msgid "Fire Columns"
+msgstr ""
+
+#: ../../source/references_effects.md:625
+msgid "Ice / Cold Fire (same structure, different hue range)"
+msgstr ""
+
+#: ../../source/references_effects.md:633
+msgid "Text Overlays"
+msgstr ""
+
+#: ../../source/references_effects.md:635
+msgid "Scrolling Ticker"
+msgstr ""
+
+#: ../../source/references_effects.md:643
+msgid "Beat-Triggered Words"
+msgstr ""
+
+#: ../../source/references_effects.md:652
+msgid "Fading Message Sequence"
+msgstr ""
+
+#: ../../source/references_effects.md:667
+msgid "Screen Shake"
+msgstr ""
+
+#: ../../source/references_effects.md:668
+msgid "Shift entire char/color arrays on beat:"
+msgstr ""
+
+#: ../../source/references_effects.md:684
+msgid "Composable Effect System"
+msgstr ""
+
+#: ../../source/references_effects.md:686
+msgid ""
+"The real creative power comes from **composition**. There are three "
+"levels:"
+msgstr ""
+
+#: ../../source/references_effects.md:688
+msgid "Level 1: Character-Level Layering"
+msgstr ""
+
+#: ../../source/references_effects.md:690
+msgid "Stack multiple effects as `(chars, colors)` layers:"
+msgstr ""
+
+#: ../../source/references_effects.md:707
+msgid "Level 2: Pixel-Level Blending"
+msgstr ""
+
+#: ../../source/references_effects.md:709
+msgid "After rendering to canvases, blend with Photoshop-style modes:"
+msgstr ""
+
+#: ../../source/references_effects.md:725
+msgid "Level 3: Temporal Feedback"
+msgstr ""
+
+#: ../../source/references_effects.md:727
+msgid "Feed previous frame back into current frame for recursive effects:"
+msgstr ""
+
+#: ../../source/references_effects.md:737
+msgid "Effect Nodes — Uniform Interface"
+msgstr ""
+
+#: ../../source/references_effects.md:739
+msgid ""
+"In the v2 protocol, effect nodes are used **inside** scene functions. The"
+" scene function itself returns a canvas. Effect nodes produce "
+"intermediate `(chars, colors)` that are rendered to canvas via the grid's"
+" `.render()` method or `_render_vf()`."
+msgstr ""
+
+#: ../../source/references_effects.md:759
+msgid "Value Field Generators (Atomic Building Blocks)"
+msgstr ""
+
+#: ../../source/references_effects.md:761
+msgid ""
+"These produce float32 arrays `(rows, cols)` in range [0,1]. They are the "
+"raw visual patterns. All have signature `(g, f, t, S, **params) -> "
+"float32 array`."
+msgstr ""
+
+#: ../../source/references_effects.md:763
+msgid "Trigonometric Fields (sine/cosine-based)"
+msgstr ""
+
+#: ../../source/references_effects.md:869
+msgid "Noise-Based Fields (organic, non-periodic)"
+msgstr ""
+
+#: ../../source/references_effects.md:871
+msgid ""
+"These produce qualitatively different textures from sine-based fields — "
+"organic, non-repeating, without visible axis alignment. They're the "
+"foundation of high-end generative art."
+msgstr ""
+
+#: ../../source/references_effects.md:1022
+msgid "Simulation-Based Fields (emergent, evolving)"
+msgstr ""
+
+#: ../../source/references_effects.md:1024
+msgid ""
+"These use persistent state `S` to evolve patterns frame-by-frame. They "
+"produce complexity that can't be achieved with stateless math."
+msgstr ""
+
+#: ../../source/references_effects.md:1231
+msgid "SDF-Based Fields (geometric precision)"
+msgstr ""
+
+#: ../../source/references_effects.md:1233
+msgid ""
+"Signed Distance Fields produce mathematically precise shapes. Unlike sine"
+" fields (organic, blurry), SDFs give hard geometric boundaries with "
+"controllable edge softness. Combined with domain warping, they create "
+"\"melting geometry\" effects."
+msgstr ""
+
+#: ../../source/references_effects.md:1235
+msgid ""
+"All SDF primitives return a **signed distance** (negative inside, "
+"positive outside). Convert to a value field with `sdf_render()`."
+msgstr ""
+
+#: ../../source/references_effects.md:1371
+msgid "Hue Field Generators (Color Mapping)"
+msgstr ""
+
+#: ../../source/references_effects.md:1373
+msgid ""
+"These produce float32 hue arrays [0,1]. Independently combinable with any"
+" value field. Each is a factory returning a closure with signature `(g, "
+"f, t, S) -> float32 array`. Can also be a plain float for fixed hue."
+msgstr ""
+
+#: ../../source/references_effects.md:1435
+msgid "Coordinate Transforms"
+msgstr ""
+
+#: ../../source/references_effects.md:1437
+msgid ""
+"UV-space transforms applied **before** effect evaluation. Any `vf_*` "
+"function can be rotated, zoomed, tiled, or distorted by transforming the "
+"grid coordinates it sees."
+msgstr ""
+
+#: ../../source/references_effects.md:1439
+msgid "Transform Helpers"
+msgstr ""
+
+#: ../../source/references_effects.md:1534
+msgid "Using Transforms with Value Fields"
+msgstr ""
+
+#: ../../source/references_effects.md:1536
+msgid ""
+"Transforms modify what coordinates a value field sees. Wrap the transform"
+" around the `vf_*` call:"
+msgstr ""
+
+#: ../../source/references_effects.md:1583
+msgid "Temporal Coherence"
+msgstr ""
+
+#: ../../source/references_effects.md:1585
+msgid ""
+"Tools for smooth, intentional parameter evolution over time. Replaces the"
+" default pattern of either static parameters or raw audio reactivity."
+msgstr ""
+
+#: ../../source/references_effects.md:1587
+msgid "Easing Functions"
+msgstr ""
+
+#: ../../source/references_effects.md:1589
+msgid "Standard animation easing curves. All take `t` in [0,1] and return [0,1]:"
+msgstr ""
+
+#: ../../source/references_effects.md:1621
+msgid "Keyframe Interpolation"
+msgstr ""
+
+#: ../../source/references_effects.md:1623
+msgid ""
+"Define parameter values at specific times. Interpolates between them with"
+" easing:"
+msgstr ""
+
+#: ../../source/references_effects.md:1679
+msgid "Value Field Morphing"
+msgstr ""
+
+#: ../../source/references_effects.md:1681
+msgid "Smooth transition between two different value fields:"
+msgstr ""
+
+#: ../../source/references_effects.md:1736
+msgid "Temporal Noise"
+msgstr ""
+
+#: ../../source/references_effects.md:1738
+msgid ""
+"3D noise sampled at `(x, y, t)` — patterns evolve smoothly in time "
+"without per-frame discontinuities:"
+msgstr ""
+
+#: ../../source/references_effects.md:1770
+msgid "Combining Value Fields"
+msgstr ""
+
+#: ../../source/references_effects.md:1772
+msgid "The combinatorial explosion comes from mixing value fields with math:"
+msgstr ""
+
+#: ../../source/references_effects.md:1791
+msgid "Full Scene Example (v2 — Canvas Return)"
+msgstr ""
+
+#: ../../source/references_effects.md:1793
+msgid ""
+"A v2 scene function composes effects internally and returns a pixel "
+"canvas:"
+msgstr ""
+
+#: ../../source/references_effects.md:1828
+msgid ""
+"Vary the **value field combo**, **hue field**, **palette**, **blend "
+"modes**, **feedback config**, and **shader chain** per section for "
+"maximum visual variety. With 12 value fields × 8 hue fields × 14 palettes"
+" × 20 blend modes × 7 feedback transforms × 38 shaders, the combinations "
+"are effectively infinite."
+msgstr ""
+
+#: ../../source/references_effects.md:1832
+msgid "Combining Effects — Creative Guide"
+msgstr ""
+
+#: ../../source/references_effects.md:1834
+msgid ""
+"The catalog above is vocabulary. Here's how to compose it into something "
+"that looks intentional."
+msgstr ""
+
+#: ../../source/references_effects.md:1836
+msgid "Layering for Depth"
+msgstr ""
+
+#: ../../source/references_effects.md:1837
+msgid "Every scene should have at least two layers at different grid densities:"
+msgstr ""
+
+#: ../../source/references_effects.md:1838
+msgid ""
+"**Background** (sm or xs): dense, dim texture that prevents flat black. "
+"fBM, smooth noise, or domain warp at low brightness (bri=0.15-0.25)."
+msgstr ""
+
+#: ../../source/references_effects.md:1839
+msgid ""
+"**Content** (md): the main visual — rings, voronoi, spirals, tunnel. Full"
+" brightness."
+msgstr ""
+
+#: ../../source/references_effects.md:1840
+msgid ""
+"**Accent** (lg or xl): sparse highlights — particles, text stencil, glow "
+"pulse. Screen-blended on top."
+msgstr ""
+
+#: ../../source/references_effects.md:1842
+msgid "Interesting Effect Pairs"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Pair"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Blend"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Why it works"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "fBM + voronoi edges"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "`screen`"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Organic fills the cells, edges add structure"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Domain warp + plasma"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "`difference`"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Psychedelic organic interference"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Tunnel + vortex"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Depth perspective + rotational energy"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Spiral + interference"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "`exclusion`"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Moire patterns from different spatial frequencies"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Reaction-diffusion + fire"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "`add`"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Living organic base + dynamic foreground"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "SDF geometry + domain warp"
+msgstr ""
+
+#: ../../source/references_effects.md
+msgid "Clean shapes floating in organic texture"
+msgstr ""
+
+#: ../../source/references_effects.md:1852
+msgid "Effects as Masks"
+msgstr ""
+
+#: ../../source/references_effects.md:1853
+msgid ""
+"Any value field can be used as a mask for another effect via "
+"`mask_from_vf()`:"
+msgstr ""
+
+#: ../../source/references_effects.md:1854
+msgid "Voronoi cells masking fire (fire visible only inside cells)"
+msgstr ""
+
+#: ../../source/references_effects.md:1855
+msgid "fBM masking a solid color layer (organic color clouds)"
+msgstr ""
+
+#: ../../source/references_effects.md:1856
+msgid "SDF shapes masking a reaction-diffusion field"
+msgstr ""
+
+#: ../../source/references_effects.md:1857
+msgid "Animated iris/wipe revealing one effect over another"
+msgstr ""
+
+#: ../../source/references_effects.md:1859
+msgid "Inventing New Effects"
+msgstr ""
+
+#: ../../source/references_effects.md:1860
+msgid "For every project, create at least one effect that isn't in the catalog:"
+msgstr ""
+
+#: ../../source/references_effects.md:1861
+msgid ""
+"**Combine two vf_* functions** with math: `np.clip(vf_fbm(...) * "
+"vf_rings(...), 0, 1)`"
+msgstr ""
+
+#: ../../source/references_effects.md:1862
+msgid ""
+"**Apply coordinate transforms** before evaluation: "
+"`vf_plasma(twisted_grid, ...)`"
+msgstr ""
+
+#: ../../source/references_effects.md:1863
+msgid ""
+"**Use one field to modulate another's parameters**: `vf_spiral(..., "
+"tightness=2 + vf_fbm(...) * 5)`"
+msgstr ""
+
+#: ../../source/references_effects.md:1864
+msgid ""
+"**Stack time offsets**: render the same field at `t` and `t - 0.5`, "
+"difference-blend for motion trails"
+msgstr ""
+
+#: ../../source/references_effects.md:1865
+msgid ""
+"**Mirror a value field** through an SDF boundary for kaleidoscopic "
+"geometry"
+msgstr ""
+

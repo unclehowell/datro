@@ -1,0 +1,428 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_MockAgent.md:1
+msgid "Class: MockAgent"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:3
+msgid "Extends: `undici.Dispatcher`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:5
+msgid ""
+"A mocked Agent class that implements the Agent API. It allows one to "
+"intercept HTTP requests made through undici and return mocked responses "
+"instead."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:7
+msgid "`new MockAgent([options])`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:9 ../../source/api_MockAgent.md:53
+#: ../../source/api_MockAgent.md:384
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:11
+msgid ""
+"**options** `MockAgentOptions` (optional) - It extends the `Agent` "
+"options."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:13
+msgid "Returns: `MockAgent`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:15
+msgid "Parameter: `MockAgentOptions`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:17
+msgid "Extends: [`AgentOptions`](/docs/docs/api/Agent.md#parameter-agentoptions)"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:19
+msgid ""
+"**agent** `Agent` (optional) - Default: `new Agent([options])` - a custom"
+" agent encapsulated by the MockAgent."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:21
+msgid ""
+"**ignoreTrailingSlash** `boolean` (optional) - Default: `false` - set the"
+" default value for `ignoreTrailingSlash` for interceptors."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:23
+msgid ""
+"**acceptNonStandardSearchParameters** `boolean` (optional) - Default: "
+"`false` - set to `true` if the matcher should also accept non standard "
+"search parameters such as multi-value items specified with `[]` (e.g. "
+"`param[]=1&param[]=2&param[]=3`) and multi-value items which values are "
+"comma separated (e.g. `param=1,2,3`)."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:25
+msgid "Example - Basic MockAgent instantiation"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:27
+msgid ""
+"This will instantiate the MockAgent. It will not do anything until "
+"registered as the agent to use with requests and mock interceptions are "
+"added."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:35
+msgid "Example - Basic MockAgent instantiation with custom agent"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:45
+msgid "Instance Methods"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:47
+msgid "`MockAgent.get(origin)`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:49
+msgid ""
+"This method creates and retrieves MockPool or MockClient instances which "
+"can then be used to intercept HTTP requests. If the number of connections"
+" on the mock agent is set to 1, a MockClient instance is returned. "
+"Otherwise a MockPool instance is returned."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:51
+msgid ""
+"For subsequent `MockAgent.get` calls on the same origin, the same mock "
+"instance will be returned."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:55
+msgid ""
+"**origin** `string | RegExp | (value) => boolean` - a matcher for the "
+"pool origin to be retrieved from the MockAgent."
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "Matcher type"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "Condition to pass"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "`string`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "Exact match against string"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "`RegExp`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "Regex must pass"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "`Function`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "Function must return true"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:63
+msgid "Returns: `MockClient | MockPool`."
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "`MockAgentOptions`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "Mock instance returned"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "`connections === 1`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "`MockClient`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "`connections` > `1`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md
+msgid "`MockPool`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:70
+msgid "Example - Basic Mocked Request"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:90
+msgid "Example - Basic Mocked Request with local mock agent dispatcher"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:112
+msgid "Example - Basic Mocked Request with local mock pool dispatcher"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:134
+msgid "Example - Basic Mocked Request with local mock client dispatcher"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:156
+msgid "Example - Basic Mocked requests with multiple intercepts"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:185
+msgid "Example - Mock different requests within the same file"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:204
+msgid "Example - Mocked request with query body, headers and trailers"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:243
+msgid "Example - Mocked request with origin regex"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:266
+msgid "Example - Mocked request with origin function"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:289
+msgid "`MockAgent.close()`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:291
+msgid ""
+"Closes the mock agent and waits for registered mock pools and clients to "
+"also close before resolving."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:293
+msgid "Returns: `Promise<void>`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:295
+msgid "Example - clean up after tests are complete"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:306
+msgid "`MockAgent.dispatch(options, handlers)`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:308
+msgid ""
+"Implements [`Agent.dispatch(options, handlers)`](/docs/docs/api/Agent.md"
+"#parameter-agentdispatchoptions)."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:310
+msgid "`MockAgent.request(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:312
+msgid ""
+"See [`Dispatcher.request(options [, "
+"callback])`](/docs/docs/api/Dispatcher.md#dispatcherrequestoptions-"
+"callback)."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:314
+msgid "Example - MockAgent request"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:340
+msgid "`MockAgent.deactivate()`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:342
+msgid "This method disables mocking in MockAgent."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:344 ../../source/api_MockAgent.md:361
+#: ../../source/api_MockAgent.md:388 ../../source/api_MockAgent.md:457
+msgid "Returns: `void`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:346
+msgid "Example - Deactivate Mocking"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:357
+msgid "`MockAgent.activate()`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:359
+msgid ""
+"This method enables mocking in a MockAgent instance. When instantiated, a"
+" MockAgent is automatically activated. Therefore, this method is only "
+"effective after `MockAgent.deactivate` has been called."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:363
+msgid "Example - Activate Mocking"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:378
+msgid "`MockAgent.enableNetConnect([host])`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:380
+msgid ""
+"When requests are not matched in a MockAgent intercept, a real HTTP "
+"request is attempted. We can control this further through the use of "
+"`enableNetConnect`. This is achieved by defining host matchers so only "
+"matching requests will be attempted."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:382
+msgid ""
+"When using a string, it should only include the **hostname and "
+"optionally, the port**. In addition, calling this method multiple times "
+"with a string will allow all HTTP requests that match these values."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:386
+msgid "**host** `string | RegExp | (value) => boolean` - (optional)"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:390
+msgid ""
+"Example - Allow all non-matching urls to be dispatched in a real HTTP "
+"request"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:404
+msgid "Example - Allow requests matching a host string to make real requests"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:425
+msgid "Example - Allow requests matching a host regex to make real requests"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:439
+msgid "Example - Allow requests matching a host function to make real requests"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:453
+msgid "`MockAgent.disableNetConnect()`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:455
+msgid ""
+"This method causes all requests to throw when requests are not matched in"
+" a MockAgent intercept."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:459
+msgid "Example - Disable all non-matching requests by throwing an error for each"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:472
+msgid "`MockAgent.pendingInterceptors()`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:474
+msgid ""
+"This method returns any pending interceptors registered on a mock agent. "
+"A pending interceptor meets one of the following criteria:"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:476 ../../source/api_MockAgent.md:521
+msgid ""
+"Is registered with neither `.times(<number>)` nor `.persist()`, and has "
+"not been invoked;"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:477 ../../source/api_MockAgent.md:522
+msgid ""
+"Is persistent (i.e., registered with `.persist()`) and has not been "
+"invoked;"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:478 ../../source/api_MockAgent.md:523
+msgid ""
+"Is registered with `.times(<number>)` and has not been invoked `<number>`"
+" of times."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:480
+msgid ""
+"Returns: `PendingInterceptor[]` (where `PendingInterceptor` is a "
+"`MockDispatch` with an additional `origin: string`)"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:482
+msgid "Example - List all pending interceptors"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:517
+msgid "`MockAgent.assertNoPendingInterceptors([options])`"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:519
+msgid ""
+"This method throws if the mock agent has any pending interceptors. A "
+"pending interceptor meets one of the following criteria:"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:525
+msgid "Example - Check that there are no pending interceptors"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:548
+msgid "Example - access call history on MockAgent"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:550
+msgid ""
+"You can register every call made within a MockAgent to be able to "
+"retrieve the body, headers and so on."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:552
+msgid "This is not enabled by default."
+msgstr ""
+
+#: ../../source/api_MockAgent.md:578
+msgid "Example - clear call history"
+msgstr ""
+
+#: ../../source/api_MockAgent.md:586
+msgid "Example - call history instance class method"
+msgstr ""
+

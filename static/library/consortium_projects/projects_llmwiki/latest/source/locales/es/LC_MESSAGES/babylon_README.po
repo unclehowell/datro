@@ -1,0 +1,261 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/babylon_README.md:14
+msgid "The latest ECMAScript version enabled by default (ES2017)."
+msgstr ""
+
+#: ../../source/babylon_README.md:15
+msgid "Comment attachment."
+msgstr ""
+
+#: ../../source/babylon_README.md:16
+msgid "Support for JSX and Flow."
+msgstr ""
+
+#: ../../source/babylon_README.md:17
+msgid ""
+"Support for experimental language proposals (accepting PRs for anything "
+"at least "
+"[stage-0](https://github.com/tc39/proposals/blob/master/stage-0-proposals.md))."
+msgstr ""
+
+#: ../../source/babylon_README.md:19
+msgid "Credits"
+msgstr ""
+
+#: ../../source/babylon_README.md:21
+msgid ""
+"Heavily based on [acorn](https://github.com/marijnh/acorn) and [acorn-"
+"jsx](https://github.com/RReverser/acorn-jsx), thanks to the awesome work "
+"of [@RReverser](https://github.com/RReverser) and "
+"[@marijnh](https://github.com/marijnh)."
+msgstr ""
+
+#: ../../source/babylon_README.md:24
+msgid ""
+"Significant diversions are expected to occur in the future such as "
+"streaming, EBNF definitions, sweet.js integration, interspatial parsing "
+"and more."
+msgstr ""
+
+#: ../../source/babylon_README.md:26
+msgid "API"
+msgstr ""
+
+#: ../../source/babylon_README.md:28
+msgid "`babylon.parse(code, [options])`"
+msgstr ""
+
+#: ../../source/babylon_README.md:30
+msgid "`babylon.parseExpression(code, [options])`"
+msgstr ""
+
+#: ../../source/babylon_README.md:32
+msgid ""
+"`parse()` parses the provided `code` as an entire ECMAScript program, "
+"while `parseExpression()` tries to parse a single Expression with "
+"performance in mind. When in doubt, use `.parse()`."
+msgstr ""
+
+#: ../../source/babylon_README.md:36
+msgid "Options"
+msgstr ""
+
+#: ../../source/babylon_README.md:38
+msgid ""
+"**allowImportExportEverywhere**: By default, `import` and `export` "
+"declarations can only appear at a program's top level. Setting this "
+"option to `true` allows them anywhere where a statement is allowed."
+msgstr ""
+
+#: ../../source/babylon_README.md:42
+msgid ""
+"**allowReturnOutsideFunction**: By default, a return statement at the top"
+" level raises an error. Set this to `true` to accept such code."
+msgstr ""
+
+#: ../../source/babylon_README.md:46
+msgid "**allowSuperOutsideMethod**: TODO"
+msgstr ""
+
+#: ../../source/babylon_README.md:48
+msgid ""
+"**sourceType**: Indicate the mode the code should be parsed in. Can be "
+"either `\"script\"` or `\"module\"`."
+msgstr ""
+
+#: ../../source/babylon_README.md:51
+msgid ""
+"**sourceFilename**: Correlate output AST nodes with their source "
+"filename.  Useful when generating code and source maps from the ASTs of "
+"multiple input files."
+msgstr ""
+
+#: ../../source/babylon_README.md:53
+msgid ""
+"**startLine**: By default, the first line of code parsed is treated as "
+"line 1. You can provide a line number to alternatively start with. Useful"
+" for integration with other source tools."
+msgstr ""
+
+#: ../../source/babylon_README.md:55
+msgid "**plugins**: Array containing the plugins that you want to enable."
+msgstr ""
+
+#: ../../source/babylon_README.md:57
+msgid "**strictMode**: TODO"
+msgstr ""
+
+#: ../../source/babylon_README.md:59
+msgid "Output"
+msgstr ""
+
+#: ../../source/babylon_README.md:61
+msgid ""
+"Babylon generates AST according to [Babel AST format][]. It is based on "
+"[ESTree spec][] with the following deviations:"
+msgstr ""
+
+#: ../../source/babylon_README.md:64
+msgid "There is now an `estree` plugin which reverts these deviations"
+msgstr ""
+
+#: ../../source/babylon_README.md:66
+msgid ""
+"[Literal][] token is replaced with [StringLiteral][], [NumericLiteral][],"
+" [BooleanLiteral][], [NullLiteral][], [RegExpLiteral][]"
+msgstr ""
+
+#: ../../source/babylon_README.md:67
+msgid ""
+"[Property][] token is replaced with [ObjectProperty][] and "
+"[ObjectMethod][]"
+msgstr ""
+
+#: ../../source/babylon_README.md:68
+msgid "[MethodDefinition][] is replaced with [ClassMethod][]"
+msgstr ""
+
+#: ../../source/babylon_README.md:69
+msgid ""
+"[Program][] and [BlockStatement][] contain additional `directives` field "
+"with [Directive][] and [DirectiveLiteral][]"
+msgstr ""
+
+#: ../../source/babylon_README.md:70
+msgid ""
+"[ClassMethod][], [ObjectProperty][], and [ObjectMethod][] value "
+"property's properties in [FunctionExpression][] is coerced/brought into "
+"the main method node."
+msgstr ""
+
+#: ../../source/babylon_README.md:72
+msgid ""
+"AST for JSX code is based on [Facebook JSX AST][] with the addition of "
+"one node type:"
+msgstr ""
+
+#: ../../source/babylon_README.md:74
+msgid "`JSXText`"
+msgstr ""
+
+#: ../../source/babylon_README.md:99
+msgid "Semver"
+msgstr ""
+
+#: ../../source/babylon_README.md:101
+msgid ""
+"Babylon follows semver in most situations. The only thing to note is that"
+" some spec-compliancy bug fixes may be released under patch versions."
+msgstr ""
+
+#: ../../source/babylon_README.md:103
+msgid ""
+"For example: We push a fix to early error on something like "
+"[#107](https://github.com/babel/babylon/pull/107) - multiple default "
+"exports per file. That would be considered a bug fix even though it would"
+" cause a build to fail."
+msgstr ""
+
+#: ../../source/babylon_README.md:105
+msgid "Example"
+msgstr ""
+
+#: ../../source/babylon_README.md:120
+msgid "Plugins"
+msgstr ""
+
+#: ../../source/babylon_README.md:122
+msgid "`estree`"
+msgstr ""
+
+#: ../../source/babylon_README.md:123
+msgid "`jsx`"
+msgstr ""
+
+#: ../../source/babylon_README.md:124
+msgid "`flow`"
+msgstr ""
+
+#: ../../source/babylon_README.md:125
+msgid "`doExpressions`"
+msgstr ""
+
+#: ../../source/babylon_README.md:126
+msgid "`objectRestSpread`"
+msgstr ""
+
+#: ../../source/babylon_README.md:127
+msgid ""
+"`decorators` (Based on an outdated version of the Decorators proposal. "
+"Will be removed in a future version of `Babylon`)"
+msgstr ""
+
+#: ../../source/babylon_README.md:128
+msgid "`classProperties`"
+msgstr ""
+
+#: ../../source/babylon_README.md:129
+msgid "`exportExtensions`"
+msgstr ""
+
+#: ../../source/babylon_README.md:130
+msgid "`asyncGenerators`"
+msgstr ""
+
+#: ../../source/babylon_README.md:131
+msgid "`functionBind`"
+msgstr ""
+
+#: ../../source/babylon_README.md:132
+msgid "`functionSent`"
+msgstr ""
+
+#: ../../source/babylon_README.md:133
+msgid "`dynamicImport`"
+msgstr ""
+
+#: ../../source/babylon_README.md:134
+msgid "`templateInvalidEscapes`"
+msgstr ""
+

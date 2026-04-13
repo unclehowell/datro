@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/path-type_readme.md:1
+msgid ""
+"path-type [![Build Status](https://travis-ci.org/sindresorhus/path-"
+"type.svg?branch=master)](https://travis-ci.org/sindresorhus/path-type)"
+msgstr ""
+
+#: ../../source/path-type_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/path-type_readme.md:3
+msgid "Check if a path is a file, directory, or symlink"
+msgstr ""
+
+#: ../../source/path-type_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/path-type_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/path-type_readme.md:25
+msgid "API"
+msgstr ""
+
+#: ../../source/path-type_readme.md:27
+msgid ".file(path)"
+msgstr ""
+
+#: ../../source/path-type_readme.md:28
+msgid ".dir(path)"
+msgstr ""
+
+#: ../../source/path-type_readme.md:29
+msgid ".symlink(path)"
+msgstr ""
+
+#: ../../source/path-type_readme.md:31
+msgid ""
+"Returns a promise that resolves to a boolean of whether the path is the "
+"checked type."
+msgstr ""
+
+#: ../../source/path-type_readme.md:33
+msgid ".fileSync(path)"
+msgstr ""
+
+#: ../../source/path-type_readme.md:34
+msgid ".dirSync(path)"
+msgstr ""
+
+#: ../../source/path-type_readme.md:35
+msgid ".symlinkSync(path)"
+msgstr ""
+
+#: ../../source/path-type_readme.md:37
+msgid "Returns a boolean of whether the path is the checked type."
+msgstr ""
+
+#: ../../source/path-type_readme.md:40
+msgid "License"
+msgstr ""
+
+#: ../../source/path-type_readme.md:42
+msgid "MIT © [Sindre Sorhus](http://sindresorhus.com)"
+msgstr ""
+

@@ -1,0 +1,1424 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_Dispatcher.md:1
+msgid "Dispatcher"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:3
+msgid "Extends: `events.EventEmitter`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:5
+msgid "Dispatcher is the core API used to dispatch requests."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:7
+msgid "Requests are not guaranteed to be dispatched in order of invocation."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:9
+msgid "Instance Methods"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:11
+msgid "`Dispatcher.close([callback]): Promise`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:13
+msgid ""
+"Closes the dispatcher and gracefully waits for enqueued requests to "
+"complete before resolving."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:15 ../../source/api_Dispatcher.md:60
+#: ../../source/api_Dispatcher.md:132 ../../source/api_Dispatcher.md:183
+#: ../../source/api_Dispatcher.md:369 ../../source/api_Dispatcher.md:459
+#: ../../source/api_Dispatcher.md:658 ../../source/api_Dispatcher.md:783
+#: ../../source/api_Dispatcher.md:868
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:17 ../../source/api_Dispatcher.md:135
+msgid "**callback** `(error: Error | null, data: null) => void` (optional)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:19
+msgid ""
+"Returns: `void | Promise<null>` - Only returns a `Promise` if no "
+"`callback` argument was passed"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:26
+msgid "Example - Request resolves before Client closes"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:56
+msgid "`Dispatcher.connect(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:58
+msgid ""
+"Starts two-way communications with the requested resource using [HTTP "
+"CONNECT](https://developer.mozilla.org/en-"
+"US/docs/Web/HTTP/Methods/CONNECT)."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:62
+msgid "**options** `ConnectOptions`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:63
+msgid ""
+"**callback** `(err: Error | null, data: ConnectData | null) => void` "
+"(optional)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:65
+msgid ""
+"Returns: `void | Promise<ConnectData>` - Only returns a `Promise` if no "
+"`callback` argument was passed"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:67
+msgid "Parameter: `ConnectOptions`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:69 ../../source/api_Dispatcher.md:193
+#: ../../source/api_Dispatcher.md:793
+msgid "**path** `string`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:70 ../../source/api_Dispatcher.md:795
+msgid "**headers** `UndiciHeaders` (optional) - Default: `null`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:71
+msgid ""
+"**signal** `AbortSignal | events.EventEmitter | null` (optional) - "
+"Default: `null`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:72
+msgid ""
+"**opaque** `unknown` (optional) - This argument parameter is passed "
+"through to `ConnectData`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:74
+msgid "Parameter: `ConnectData`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:76 ../../source/api_Dispatcher.md:384
+#: ../../source/api_Dispatcher.md:478 ../../source/api_Dispatcher.md:668
+msgid "**statusCode** `number`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:77 ../../source/api_Dispatcher.md:385
+#: ../../source/api_Dispatcher.md:669
+msgid "**headers** `Record<string, string | string[] | undefined>`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:78 ../../source/api_Dispatcher.md:802
+msgid "**socket** `stream.Duplex`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:79 ../../source/api_Dispatcher.md:386
+#: ../../source/api_Dispatcher.md:484 ../../source/api_Dispatcher.md:670
+#: ../../source/api_Dispatcher.md:675 ../../source/api_Dispatcher.md:803
+msgid "**opaque** `unknown`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:81
+msgid "Example - Connect request with echo"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:126
+msgid "`Dispatcher.destroy([error, callback]): Promise`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:128
+msgid ""
+"Destroy the dispatcher abruptly with the given error. All the pending and"
+" running requests will be asynchronously aborted and error. Since this "
+"operation is asynchronously dispatched there might still be some progress"
+" on dispatched requests."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:130
+msgid ""
+"Both arguments are optional; the method can be called in four different "
+"ways:"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:134
+msgid "**error** `Error | null` (optional)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:137
+msgid ""
+"Returns: `void | Promise<void>` - Only returns a `Promise` if no "
+"`callback` argument was passed"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:146
+msgid "Example - Request is aborted when Client is destroyed"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:177
+msgid "`Dispatcher.dispatch(options, handler)`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:179
+msgid ""
+"This is the low level API which all the preceding APIs are implemented on"
+" top of. This API is expected to evolve through semver-major versions and"
+" is less stable than the preceding higher level APIs. It is primarily "
+"intended for library developers who implement higher level APIs on top of"
+" this."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:185
+msgid "**options** `DispatchOptions`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:186
+msgid "**handler** `DispatchHandler`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:188
+msgid ""
+"Returns: `Boolean` - `false` if dispatcher is busy and further dispatch "
+"calls won't make any progress until the `'drain'` event has been emitted."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:190
+msgid "Parameter: `DispatchOptions`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:192
+msgid "**origin** `string | URL`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:194
+msgid "**method** `string`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:195
+msgid ""
+"**reset** `boolean` (optional) - Default: `false` - If `false`, the "
+"request will attempt to create a long-living connection by sending the "
+"`connection: keep-alive` header,otherwise will attempt to close it "
+"immediately after response by sending `connection: close` within the "
+"request and closing the socket afterwards."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:196
+msgid ""
+"**body** `string | Buffer | Uint8Array | stream.Readable | Iterable | "
+"AsyncIterable | null` (optional) - Default: `null`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:197
+msgid "**headers** `UndiciHeaders` (optional) - Default: `null`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:198
+msgid ""
+"**query** `Record<string, any> | null` (optional) - Default: `null` - "
+"Query string params to be embedded in the request URL. Note that both "
+"keys and values of query are encoded using `encodeURIComponent`. If for "
+"some reason you need to send them unencoded, embed query params into path"
+" directly instead."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:199
+msgid ""
+"**idempotent** `boolean` (optional) - Default: `true` if `method` is "
+"`'HEAD'` or `'GET'` - Whether the requests can be safely retried or not. "
+"If `false` the request won't be sent until all preceding requests in the "
+"pipeline has completed."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:200
+msgid ""
+"**blocking** `boolean` (optional) - Default: `method !== 'HEAD'` - "
+"Whether the response is expected to take a long time and would end up "
+"blocking the pipeline. When this is set to `true` further pipelining will"
+" be avoided on the same connection until headers have been received."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:201
+msgid ""
+"**upgrade** `string | null` (optional) - Default: `null` - Upgrade the "
+"request. Should be used to specify the kind of upgrade i.e. "
+"`'Websocket'`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:202
+msgid ""
+"**bodyTimeout** `number | null` (optional) - The timeout after which a "
+"request will time out, in milliseconds. Monitors time between receiving "
+"body data. Use `0` to disable it entirely. Defaults to 300 seconds."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:203
+msgid ""
+"**headersTimeout** `number | null` (optional) - The amount of time, in "
+"milliseconds, the parser will wait to receive the complete HTTP headers "
+"while not sending the request. Defaults to 300 seconds."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:204
+msgid ""
+"**expectContinue** `boolean` (optional) - Default: `false` - For H2, it "
+"appends the expect: 100-continue header, and halts the request body until"
+" a 100-continue is received from the remote server"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:206
+msgid "Parameter: `DispatchHandler`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:208
+msgid ""
+"**onRequestStart** `(controller: DispatchController, context: object) => "
+"void` - Invoked before request is dispatched on socket. May be invoked "
+"multiple times when a request is retried when the request at the head of "
+"the pipeline fails."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:209
+msgid ""
+"**onRequestUpgrade** `(controller: DispatchController, statusCode: "
+"number, headers: Record<string, string | string[]>, socket: Duplex) => "
+"void` (optional) - Invoked when request is upgraded. Required if "
+"`DispatchOptions.upgrade` is defined or `DispatchOptions.method === "
+"'CONNECT'`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:210
+msgid ""
+"**onResponseStart** `(controller: DispatchController, statusCode: number,"
+" headers: Record<string, string | string []>, statusMessage?: string) => "
+"void` - Invoked when statusCode and headers have been received. May be "
+"invoked multiple times due to 1xx informational headers. Not required for"
+" `upgrade` requests. Any return value is ignored."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:211
+msgid ""
+"**onResponseData** `(controller: DispatchController, chunk: Buffer) => "
+"void` - Invoked when response payload data is received. Not required for "
+"`upgrade` requests."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:212
+msgid ""
+"**onResponseEnd** `(controller: DispatchController, trailers: "
+"Record<string, string | string[]>) => void` - Invoked when response "
+"payload and trailers have been received and the request has completed. "
+"Not required for `upgrade` requests."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:213
+msgid ""
+"**onResponseError** `(controller: DispatchController, error: Error) => "
+"void` - Invoked when an error has occurred. May not throw."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:215
+msgid "Example 1 - Dispatch GET request"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:262
+msgid "Example 2 - Dispatch Upgrade Request"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:312
+msgid "Example 3 - Dispatch POST request"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:365
+msgid "`Dispatcher.pipeline(options, handler)`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:367
+msgid ""
+"For easy use with [stream.pipeline](https://nodejs.org/api/stream.html"
+"#streampipelinesource-transforms-destination-options). The `handler` "
+"argument should return a `Readable` from which the result will be read. "
+"Usually it should just return the `body` argument unless some kind of "
+"transformation needs to be performed based on e.g. `headers` or "
+"`statusCode`. The `handler` should validate the response and save any "
+"required state. If there is an error, it should be thrown. The function "
+"returns a `Duplex` which writes to the request and reads from the "
+"response."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:371
+msgid "**options** `PipelineOptions`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:372
+msgid "**handler** `(data: PipelineHandlerData) => stream.Readable`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:374
+msgid "Returns: `stream.Duplex`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:376
+msgid "Parameter: PipelineOptions"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:378
+msgid ""
+"Extends: [`RequestOptions`](/docs/docs/api/Dispatcher.md#parameter-"
+"requestoptions)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:380
+msgid ""
+"**objectMode** `boolean` (optional) - Default: `false` - Set to `true` if"
+" the `handler` will return an object stream."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:382
+msgid "Parameter: PipelineHandlerData"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:387
+msgid "**body** `stream.Readable`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:388 ../../source/api_Dispatcher.md:485
+#: ../../source/api_Dispatcher.md:677
+msgid "**context** `object`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:389 ../../source/api_Dispatcher.md:472
+#: ../../source/api_Dispatcher.md:671
+#, python-brace-format
+msgid ""
+"**onInfo** `({statusCode: number, headers: Record<string, string | "
+"string[]>}) => void | null` (optional) - Default: `null` - Callback "
+"collecting all the info headers (HTTP 100-199) received."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:391
+msgid "Example 1 - Pipeline Echo"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:445
+msgid "`Dispatcher.request(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:447
+msgid "Performs a HTTP request."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:449
+msgid ""
+"Non-idempotent requests will not be pipelined in order to avoid indirect "
+"failures."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:452
+msgid ""
+"Idempotent requests will be automatically retried if they fail due to "
+"indirect failure from the request at the head of the pipeline. This does "
+"not apply to idempotent requests with a stream request body."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:457
+msgid "All response bodies must always be fully consumed or destroyed."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:461 ../../source/api_Dispatcher.md:660
+msgid "**options** `RequestOptions`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:462
+msgid ""
+"**callback** `(error: Error | null, data: ResponseData) => void` "
+"(optional)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:464
+msgid ""
+"Returns: `void | Promise<ResponseData>` - Only returns a `Promise` if no "
+"`callback` argument was passed."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:466
+msgid "Parameter: `RequestOptions`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:468
+msgid ""
+"Extends: [`DispatchOptions`](/docs/docs/api/Dispatcher.md#parameter-"
+"dispatchoptions)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:470
+msgid ""
+"**opaque** `unknown` (optional) - Default: `null` - Used for passing "
+"through context to `ResponseData`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:471
+msgid ""
+"**signal** `AbortSignal | events.EventEmitter | null` (optional) - "
+"Default: `null`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:474
+msgid "The `RequestOptions.method` property should not be value `'CONNECT'`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:476
+msgid "Parameter: `ResponseData`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:479
+msgid ""
+"**statusText** `string` - The status message from the response (e.g., "
+"\"OK\", \"Not Found\")."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:480
+msgid ""
+"**headers** `Record<string, string | string[]>` - Note that all header "
+"keys are lower-cased, e.g. `content-type`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:481
+msgid ""
+"**body** `stream.Readable` which also implements [the body mixin from the"
+" Fetch Standard](https://fetch.spec.whatwg.org/#body-mixin)."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:482
+msgid ""
+"**trailers** `Record<string, string>` - This object starts out as empty "
+"and will be mutated to contain trailers after `body` has emitted `'end'`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:487
+msgid ""
+"`body` contains the following additional [body "
+"mixin](https://fetch.spec.whatwg.org/#body-mixin) methods and properties:"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:489
+msgid "[`.arrayBuffer()`](https://fetch.spec.whatwg.org/#dom-body-arraybuffer)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:490
+msgid "[`.blob()`](https://fetch.spec.whatwg.org/#dom-body-blob)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:491
+msgid "[`.bytes()`](https://fetch.spec.whatwg.org/#dom-body-bytes)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:492
+msgid "[`.json()`](https://fetch.spec.whatwg.org/#dom-body-json)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:493
+msgid "[`.text()`](https://fetch.spec.whatwg.org/#dom-body-text)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:494
+msgid "`body`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:495
+msgid "`bodyUsed`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:497
+msgid ""
+"`body` can not be consumed twice. For example, calling `text()` after "
+"`json()` throws `TypeError`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:499
+msgid "`body` contains the following additional extensions:"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:501
+#, python-brace-format
+msgid ""
+"`dump({ limit: Integer })`, dump the response by reading up to `limit` "
+"bytes without killing the socket (optional) - Default: 262144."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:503
+msgid ""
+"Note that body will still be a `Readable` even if it is empty, but "
+"attempting to deserialize it with `json()` will result in an exception. "
+"Recommended way to ensure there is a body to deserialize is to check if "
+"status code is not 204, and `content-type` header starts with "
+"`application/json`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:505
+msgid "Example 1 - Basic GET Request"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:541
+msgid "Example 2 - Aborting a request"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:543
+msgid "Node.js v15+ is required to run this example"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:574
+msgid ""
+"Alternatively, any `EventEmitter` that emits an `'abort'` event may be "
+"used as an abort controller:"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:605
+msgid "Destroying the request or response body will have the same effect."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:633
+msgid "Example 3 - Conditionally reading the body"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:635
+msgid "Remember to fully consume the body even in the case when it is not read."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:652
+msgid "`Dispatcher.stream(options, factory[, callback])`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:654
+msgid ""
+"A faster version of `Dispatcher.request`. This method expects the second "
+"argument `factory` to return a "
+"[`stream.Writable`](https://nodejs.org/api/stream.html#stream_class_stream_writable)"
+" stream which the response will be written to. This improves performance "
+"by avoiding creating an intermediate "
+"[`stream.Readable`](https://nodejs.org/api/stream.html#stream_readable_streams)"
+" stream when the user expects to directly pipe the response body to a "
+"[`stream.Writable`](https://nodejs.org/api/stream.html#stream_class_stream_writable)"
+" stream."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:656
+msgid ""
+"As demonstrated in [Example 1 - Basic GET stream "
+"request](/docs/docs/api/Dispatcher.md#example-1-basic-get-stream-"
+"request), it is recommended to use the `option.opaque` property to avoid "
+"creating a closure for the `factory` method. This pattern works well with"
+" Node.js Web Frameworks such as [Fastify](https://fastify.io). See "
+"[Example 2 - Stream to Fastify "
+"Response](/docs/docs/api/Dispatch.md#example-2-stream-to-fastify-"
+"response) for more details."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:661
+msgid "**factory** `(data: StreamFactoryData) => stream.Writable`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:662
+msgid "**callback** `(error: Error | null, data: StreamData) => void` (optional)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:664
+msgid ""
+"Returns: `void | Promise<StreamData>` - Only returns a `Promise` if no "
+"`callback` argument was passed"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:666
+msgid "Parameter: `StreamFactoryData`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:673
+msgid "Parameter: `StreamData`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:676
+msgid "**trailers** `Record<string, string>`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:679
+msgid "Example 1 - Basic GET stream request"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:722
+msgid "Example 2 - Stream to Fastify Response"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:724
+msgid ""
+"In this example, a (fake) request is made to the fastify server using "
+"`fastify.inject()`. This request then executes the fastify route handler "
+"which makes a subsequent request to the raw Node.js http server using "
+"`undici.dispatcher.stream()`. The fastify response is passed to the "
+"`opaque` option so that undici can tap into the underlying writable "
+"stream using `response.raw`. This methodology demonstrates how one could "
+"use undici and fastify together to create fast-as-possible requests from "
+"one backend server to another."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:779
+msgid "`Dispatcher.upgrade(options[, callback])`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:781
+msgid ""
+"Upgrade to a different protocol. Visit [MDN - HTTP - Protocol upgrade "
+"mechanism](https://developer.mozilla.org/en-"
+"US/docs/Web/HTTP/Protocol_upgrade_mechanism) for more details."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:785
+msgid "**options** `UpgradeOptions`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:787
+msgid "**callback** `(error: Error | null, data: UpgradeData) => void` (optional)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:789
+msgid ""
+"Returns: `void | Promise<UpgradeData>` - Only returns a `Promise` if no "
+"`callback` argument was passed"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:791
+msgid "Parameter: `UpgradeOptions`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:794
+msgid "**method** `string` (optional) - Default: `'GET'`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:796
+msgid ""
+"**protocol** `string` (optional) - Default: `'Websocket'` - A string of "
+"comma separated protocols, in descending preference order."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:797
+msgid ""
+"**signal** `AbortSignal | EventEmitter | null` (optional) - Default: "
+"`null`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:799
+msgid "Parameter: `UpgradeData`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:801
+msgid "**headers** `http.IncomingHeaders`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:805
+msgid "Example 1 - Basic Upgrade Request"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:840
+msgid "`Dispatcher.compose(interceptors[, interceptor])`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:842
+msgid ""
+"Compose a new dispatcher from the current dispatcher and the given "
+"interceptors."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:844
+msgid "_Notes_:"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:845
+msgid ""
+"The order of the interceptors matters. The last interceptor will be the "
+"first to be called."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:846
+msgid ""
+"It is important to note that the `interceptor` function should return a "
+"function that follows the `Dispatcher.dispatch` signature."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:847
+msgid "Any fork of the chain of `interceptors` can lead to unexpected results."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:849
+msgid "**Interceptor Stack Visualization:**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:870
+msgid ""
+"**interceptors** `Interceptor[interceptor[]]`: It is an array of "
+"`Interceptor` functions passed as only argument, or several interceptors "
+"passed as separate arguments."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:872
+msgid "Returns: `Dispatcher`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:874
+msgid "Parameter: `Interceptor`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:876
+msgid ""
+"A function that takes a `dispatch` method and returns a `dispatch`-like "
+"function."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:878
+msgid "Example 1 - Basic Compose"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:908
+msgid "Example 2 - Chained Compose"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:951
+msgid "Pre-built interceptors"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:953
+msgid "`redirect`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:955
+msgid ""
+"The `redirect` interceptor allows you to customize the way your "
+"dispatcher handles redirects."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:957
+msgid ""
+"It accepts the same arguments as the [`RedirectHandler` "
+"constructor](/docs/docs/api/RedirectHandler.md)."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:959 ../../source/api_Dispatcher.md:977
+msgid "**Example - Basic Redirect Interceptor**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:971
+msgid "`retry`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:973
+msgid ""
+"The `retry` interceptor allows you to customize the way your dispatcher "
+"handles retries."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:975
+msgid ""
+"It accepts the same arguments as the [`RetryHandler` "
+"constructor](/docs/docs/api/RetryHandler.md)."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:994
+msgid "`dump`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:996
+msgid ""
+"The `dump` interceptor enables you to dump the response body from a "
+"request upon a given limit."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:998 ../../source/api_Dispatcher.md:1032
+#: ../../source/api_Dispatcher.md:1152 ../../source/api_Dispatcher.md:1210
+#: ../../source/api_Dispatcher.md:1243
+msgid "**Options**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:999
+msgid ""
+"`maxSize` - The maximum size (in bytes) of the response body to dump. If "
+"the size of the request's body exceeds this value then the connection "
+"will be closed. Default: `1048576`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1001
+msgid ""
+"The `Dispatcher#options` also gets extended with the options "
+"`dumpMaxSize`, `abortOnDumped`, and `waitForTrailers` which can be used "
+"to configure the interceptor at a request-per-request basis."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1003
+msgid "**Example - Basic Dump Interceptor**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1026
+msgid "`dns`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1028
+msgid ""
+"The `dns` interceptor enables you to cache DNS lookups for a given "
+"duration, per origin."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1030
+msgid ""
+"It is well suited for scenarios where you want to cache DNS lookups to "
+"avoid the overhead of resolving the same domain multiple times"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1033
+msgid ""
+"`maxTTL` - The maximum time-to-live (in milliseconds) of the DNS cache. "
+"It should be a positive integer. Default: `10000`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1034
+msgid "Set `0` to disable TTL."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1035
+msgid ""
+"`maxItems` - The maximum number of items to cache. It should be a "
+"positive integer. Default: `Infinity`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1036
+msgid ""
+"`dualStack` - Whether to resolve both IPv4 and IPv6 addresses. Default: "
+"`true`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1037
+msgid ""
+"It will also attempt a happy-eyeballs-like approach to connect to the "
+"available addresses in case of a connection failure."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1038
+msgid "`affinity` - Whether to use IPv4 or IPv6 addresses. Default: `4`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1039
+msgid "It can be either `4` or `6`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1040
+msgid "It will only take effect if `dualStack` is `false`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1041
+msgid ""
+"`lookup: (hostname: string, options: LookupOptions, callback: (err: "
+"NodeJS.ErrnoException | null, addresses: DNSInterceptorRecord[]) => void)"
+" => void` - Custom lookup function. Default: `dns.lookup`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1042
+msgid ""
+"For more info see [dns.lookup](https://nodejs.org/api/dns.html"
+"#dnslookuphostname-options-callback)."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1043
+msgid ""
+"`pick: (origin: URL, records: DNSInterceptorRecords, affinity: 4 | 6) => "
+"DNSInterceptorRecord` - Custom pick function. Default: `RoundRobin`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1044
+msgid "The function should return a single record from the records array."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1045
+msgid "By default a simplified version of Round Robin is used."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1046
+msgid ""
+"The `records` property can be mutated to store the state of the balancing"
+" algorithm."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1047
+msgid "`storage: DNSStorage` - Custom storage for resolved DNS records"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1049
+msgid ""
+"The `Dispatcher#options` also gets extended with the options "
+"`dns.affinity`, `dns.dualStack`, `dns.lookup` and `dns.pick` which can be"
+" used to configure the interceptor at a request-per-request basis."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1052
+msgid "**DNSInterceptorRecord** It represents a DNS record."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1054
+msgid ""
+"`family` - (`number`) The IP family of the address. It can be either `4` "
+"or `6`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1055
+msgid "`address` - (`string`) The IP address."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1057
+msgid ""
+"**DNSInterceptorOriginRecords** It represents a map of DNS IP addresses "
+"records for a single origin."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1059
+msgid "`4.ips` - (`DNSInterceptorRecord[] | null`) The IPv4 addresses."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1060
+msgid "`6.ips` - (`DNSInterceptorRecord[] | null`) The IPv6 addresses."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1062
+msgid "**DNSStorage** It represents a storage object for resolved DNS records."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1064
+msgid "`size` - (`number`) current size of the storage."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1065
+msgid ""
+"`get` - (`(origin: string) => DNSInterceptorOriginRecords | null`) method"
+" to get the records for a given origin."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1066
+#, python-brace-format
+msgid ""
+"`set` - (`(origin: string, records: DNSInterceptorOriginRecords | null, "
+"options: { ttl: number }) => void`) method to set the records for a given"
+" origin."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1067
+msgid ""
+"`delete` - (`(origin: string) => void`) method to delete records for a "
+"given origin."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1068
+msgid ""
+"`full` - (`() => boolean`) method to check if the storage is full, if "
+"returns `true`, DNS lookup will be skipped in this interceptor and new "
+"records will not be stored."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1070
+msgid "**Example - Basic DNS Interceptor**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1086
+msgid "**Example - DNS Interceptor and LRU cache as a storage**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1125
+msgid "`responseError`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1127
+msgid ""
+"The `responseError` interceptor throws an error for responses with status"
+" code errors (>= 400)."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1129
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1146
+msgid "`decompress`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1148
+msgid "⚠️ The decompress interceptor is experimental and subject to change."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1150
+msgid ""
+"The `decompress` interceptor automatically decompresses response bodies "
+"that are compressed with gzip, deflate, brotli, or zstd compression. It "
+"removes the `content-encoding` and `content-length` headers from "
+"decompressed responses and supports RFC-9110 compliant multiple "
+"encodings."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1154
+msgid ""
+"`skipErrorResponses` - Whether to skip decompression for error responses "
+"(status codes >= 400). Default: `true`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1155
+msgid ""
+"`skipStatusCodes` - Array of status codes to skip decompression for. "
+"Default: `[204, 304]`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1157
+msgid "**Example - Basic Decompress Interceptor**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1174
+msgid "**Example - Custom Options**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1188
+msgid "**Supported Encodings**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1190
+msgid "`gzip` / `x-gzip` - GZIP compression"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1191
+msgid "`deflate` / `x-compress` - DEFLATE compression"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1192
+msgid "`br` - Brotli compression"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1193
+msgid "`zstd` - Zstandard compression"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1194
+msgid "Multiple encodings (e.g., `gzip, deflate`) are supported per RFC-9110"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1196
+msgid "**Behavior**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1198
+msgid "Skips decompression for status codes < 200 or >= 400 (configurable)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1199
+msgid "Skips decompression for 204 No Content and 304 Not Modified by default"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1200
+msgid "Removes `content-encoding` and `content-length` headers when decompressing"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1201
+msgid "Passes through unsupported encodings unchanged"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1202
+msgid "Handles case-insensitive encoding names"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1203
+msgid "Supports streaming decompression without buffering"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1205
+msgid "`Cache Interceptor`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1207
+msgid ""
+"The `cache` interceptor implements client-side response caching as "
+"described in [RFC9111](https://www.rfc-editor.org/rfc/rfc9111.html)."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1212
+msgid ""
+"`store` - The [`CacheStore`](/docs/docs/api/CacheStore.md) to store and "
+"retrieve responses from. Default is "
+"[`MemoryCacheStore`](/docs/docs/api/CacheStore.md#memorycachestore)."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1213
+msgid ""
+"`methods` - The [**safe** HTTP methods](https://www.rfc-"
+"editor.org/rfc/rfc9110#section-9.2.1) to cache the response of."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1214
+msgid ""
+"`cacheByDefault` - The default expiration time to cache responses by if "
+"they don't have an explicit expiration and cannot have an heuristic "
+"expiry computed. If this isn't present, responses neither with an "
+"explicit expiration nor heuristically cacheable will not be cached. "
+"Default `undefined`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1215
+msgid ""
+"`type` - The [type of cache](https://developer.mozilla.org/en-"
+"US/docs/Web/HTTP/Guides/Caching#types_of_caches) for Undici to act as. "
+"Can be `shared` or `private`. Default `shared`. `private` implies "
+"privately cacheable responses will be cached and potentially shared with "
+"other users of your application."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1217
+msgid "**Usage with `fetch`**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1239
+msgid "`Deduplicate Interceptor`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1241
+msgid ""
+"The `deduplicate` interceptor deduplicates concurrent identical requests."
+" When multiple identical requests are made while one is already in-"
+"flight, only one request is sent to the origin server, and all waiting "
+"handlers receive the same response. This reduces server load and improves"
+" performance."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1245
+msgid ""
+"`methods` - The [**safe** HTTP methods](https://www.rfc-"
+"editor.org/rfc/rfc9110#section-9.2.1) to deduplicate. Default `['GET']`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1246
+msgid ""
+"`skipHeaderNames` - Header names that, if present in a request, will "
+"cause the request to skip deduplication entirely. Useful for headers like"
+" `idempotency-key` where presence indicates unique processing. Header "
+"name matching is case-insensitive. Default `[]`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1247
+msgid ""
+"`excludeHeaderNames` - Header names to exclude from the deduplication "
+"key. Requests with different values for these headers will still be "
+"deduplicated together. Useful for headers like `x-request-id` that vary "
+"per request but shouldn't affect deduplication. Header name matching is "
+"case-insensitive. Default `[]`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1248
+msgid ""
+"`maxBufferSize` - Maximum bytes buffered per paused waiting deduplicated "
+"handler. If a waiting handler remains paused and exceeds this threshold, "
+"it is failed with an abort error to prevent unbounded memory growth. "
+"Default `5 * 1024 * 1024`."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1250
+msgid "**Usage**"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1268
+msgid "Requests are considered identical if they have the same:"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1269
+msgid "Origin"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1270
+msgid "HTTP method"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1271
+msgid "Path"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1272
+msgid "Request headers (excluding any headers specified in `excludeHeaderNames`)"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1274
+msgid ""
+"All deduplicated requests receive the complete response including status "
+"code, headers, and body."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1276
+msgid ""
+"For observability, request deduplication events are published to the "
+"`undici:request:pending-requests` [diagnostic "
+"channel](/docs/docs/api/DiagnosticsChannel.md#undicirequestpending-"
+"requests)."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1278
+msgid "Instance Events"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1280
+msgid "Event: `'connect'`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1282 ../../source/api_Dispatcher.md:1289
+#: ../../source/api_Dispatcher.md:1303 ../../source/api_Dispatcher.md:1314
+msgid "Parameters:"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1284 ../../source/api_Dispatcher.md:1291
+#: ../../source/api_Dispatcher.md:1305 ../../source/api_Dispatcher.md:1316
+msgid "**origin** `URL`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1285 ../../source/api_Dispatcher.md:1292
+#: ../../source/api_Dispatcher.md:1306
+msgid "**targets** `Array<Dispatcher>`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1287
+msgid "Event: `'disconnect'`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1293 ../../source/api_Dispatcher.md:1307
+msgid "**error** `Error`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1295
+msgid "Emitted when the dispatcher has been disconnected from the origin."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1297
+msgid ""
+"**Note**: For HTTP/2, this event is also emitted when the dispatcher has "
+"received the [GOAWAY Frame](https://webconcepts.info/concepts/http2"
+"-frame-type/0x7) with an Error with the message `HTTP/2: \"GOAWAY\" frame"
+" received` and the code `UND_ERR_INFO`. Due to nature of the protocol of "
+"using binary frames, it is possible that requests gets hanging as a frame"
+" can be received between the `HEADER` and `DATA` frames. It is "
+"recommended to handle this event and close the dispatcher to create a new"
+" HTTP/2 session."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1301
+msgid "Event: `'connectionError'`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1309
+msgid "Emitted when dispatcher fails to connect to origin."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1312
+msgid "Event: `'drain'`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1318
+msgid "Emitted when dispatcher is no longer busy."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1320
+msgid "Parameter: `UndiciHeaders`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1322
+msgid ""
+"`Record<string, string | string[] | undefined> | string[] | "
+"Iterable<[string, string | string[] | undefined]> | null`"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1324
+msgid ""
+"Header arguments such as `options.headers` in "
+"[`Client.dispatch`](/docs/docs/api/Client.md#clientdispatchoptions-"
+"handlers) can be specified in three forms:"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1325
+msgid ""
+"As an object specified by the `Record<string, string | string[] | "
+"undefined>` (`IncomingHttpHeaders`) type."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1326
+msgid ""
+"As an array of strings. An array representation of a header list must "
+"have an even length, or an `InvalidArgumentError` will be thrown."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1327
+msgid ""
+"As an iterable that can encompass `Headers`, `Map`, or a custom iterator "
+"returning key-value pairs. Keys are lowercase and values are not "
+"modified."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1330
+msgid ""
+"Undici validates header syntax at the protocol level (for example, "
+"invalid header names and invalid control characters in string values), "
+"but it does not sanitize untrusted application input. Validate and "
+"sanitize any user-provided header names and values before passing them to"
+" Undici to prevent header/body injection vulnerabilities."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1332
+msgid ""
+"When using the array header format (`string[]`), Undici processes only "
+"indexed elements. Additional properties assigned to the array object are "
+"ignored."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1334
+msgid ""
+"Response headers will derive a `host` from the `url` of the "
+"[Client](/docs/docs/api/Client.md#class-client) instance if no `host` "
+"header was previously specified."
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1336
+msgid "Example 1 - Object"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1348
+msgid "Example 2 - Array"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1360
+msgid "Example 3 - Iterable"
+msgstr ""
+
+#: ../../source/api_Dispatcher.md:1371 ../../source/api_Dispatcher.md:1381
+msgid "or"
+msgstr ""
+

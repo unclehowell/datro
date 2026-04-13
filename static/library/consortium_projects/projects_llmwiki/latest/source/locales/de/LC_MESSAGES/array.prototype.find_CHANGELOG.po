@@ -1,0 +1,415 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/array.prototype.find_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres"
+" to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:8
+msgid ""
+"[v2.2.3](https://github.com/es-"
+"shims/Array.prototype.find/compare/v2.2.2...v2.2.3) - 2024-03-18"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:10
+#: ../../source/array.prototype.find_CHANGELOG.md:22
+msgid "Commits"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:12
+msgid ""
+"[actions] remove redundant finisher [`5699c0f`](https://github.com/es-"
+"shims/Array.prototype.find/commit/5699c0fd952c7e455b1fbe855ab8b6d1690d1e38)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:13
+msgid ""
+"[Deps] update `call-bind`, `define-properties`, `es-abstract`, `es-shim-"
+"unscopables` [`01d9650`](https://github.com/es-"
+"shims/Array.prototype.find/commit/01d9650f299fc2aed1bba917fa047874b921b518)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:14
+msgid ""
+"[Deps] update `es-abstract` [`9d82ddd`](https://github.com/es-"
+"shims/Array.prototype.find/commit/9d82dddadfc46d914bec2b0873fc66e8e26a9a4b)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:15
+msgid ""
+"[Dev Deps] update `aud`, `npmignore`, `tape` "
+"[`b02d54e`](https://github.com/es-"
+"shims/Array.prototype.find/commit/b02d54e3426766a2bca083f2a6323ebc87d3b572)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:16
+msgid ""
+"[Refactor] use `es-object-atoms` where possible "
+"[`1f05f62`](https://github.com/es-"
+"shims/Array.prototype.find/commit/1f05f62dd23747ea51d4e599efb71e2ca3ccb650)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:17
+msgid ""
+"[meta] add missing `engines.node` [`b252946`](https://github.com/es-"
+"shims/Array.prototype.find/commit/b252946360156e5d3d09d4ed59224c3cbf14967c)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:18
+msgid ""
+"[Dev Deps] update `tape` [`01ac3e8`](https://github.com/es-"
+"shims/Array.prototype.find/commit/01ac3e8b2d4b2566dd85f0d1b2dc4cda68693d7f)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:20
+msgid ""
+"[v2.2.2](https://github.com/es-"
+"shims/Array.prototype.find/compare/v2.2.1...v2.2.2) - 2023-08-27"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:24
+msgid ""
+"[meta] add `auto-changelog` [`90ef840`](https://github.com/es-"
+"shims/Array.prototype.find/commit/90ef8406f1a3bea1d863796bfe0ad8a6f7c715e3)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:25
+msgid ""
+"[Deps] update `es-abstract` [`c83a92f`](https://github.com/es-"
+"shims/Array.prototype.find/commit/c83a92f20b4277eaac8d7b858c23daa1790be347)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:26
+msgid ""
+"[Dev Deps] update `@es-shims/api`, `@ljharb/eslint-config`, `aud`, `tape`"
+" [`4f76839`](https://github.com/es-"
+"shims/Array.prototype.find/commit/4f76839dd1b7f5596a338921bc725959b316e99a)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:27
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config`, `@es-shims/api`, `aud`, `tape`"
+" [`1997871`](https://github.com/es-"
+"shims/Array.prototype.find/commit/19978718a422c3ea13797d095b2c3a8bf1b62a8f)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:28
+msgid ""
+"[Deps] update `define-properties`, `es-abstract` "
+"[`28eb0a6`](https://github.com/es-"
+"shims/Array.prototype.find/commit/28eb0a6f235d5cf5be9437e8a9d0f3b2d18bd77e)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:29
+msgid ""
+"[meta] create SECURITY.md [`dba046f`](https://github.com/es-"
+"shims/Array.prototype.find/commit/dba046ffcabe15c05c980b4c71c8adccceb1d1e9)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:30
+msgid ""
+"[meta] fix npmrc config [`574c8fd`](https://github.com/es-"
+"shims/Array.prototype.find/commit/574c8fdee7b4fbb3ece7f242b69b7ce1a1ac3968)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:34
+msgid "2.2.1"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:35
+#: ../../source/array.prototype.find_CHANGELOG.md:70
+msgid "[Deps] update `define-properties`, `es-abstract`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:36
+msgid "[actions] update rebase action to use reusable workflow"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:37
+msgid "[meta] use `npmignore` to autogenerate an npmignore file"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:38
+msgid "[meta] create FUNDING.yml"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:39
+msgid "[Dev Deps] update `aud`, `functions-have-names`, `tape`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:41
+msgid "2.2.0"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:42
+msgid "[New] `shim`/`auto`: add `find` to `Symbol.unscopables`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:43
+#: ../../source/array.prototype.find_CHANGELOG.md:51
+#: ../../source/array.prototype.find_CHANGELOG.md:83
+msgid "[Deps] update `es-abstract`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:44
+msgid "[actions] reuse common workflows"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:45
+msgid "[actions] update codecov uploader"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:46
+msgid "[Tests] migrate to tape"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:47
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `@es-shims/api`, "
+"`aud`, `safe-publish-latest`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:49
+msgid "2.1.2"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:50
+msgid "[Deps] use `call-bind` for Array slice"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:52
+msgid "[readme] update badges"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:53
+msgid "[meta] update scripts"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:54
+msgid "[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `@es-shims/api`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:55
+msgid "[Tests] migrate travis-ci to Github Actions"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:57
+msgid "2.1.1"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:58
+msgid ""
+"[Refactor] Only require the parts of es-abstract that are used (77% "
+"bundle size decrease) (#28)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:59
+msgid "[meta] add `funding` field"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:60
+msgid "[Tests] use shared travis-ci configs"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:61
+msgid "[Tests] only run `aud` on prod deps"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:62
+msgid ""
+"[Dev Deps] update `eslint`, `@ljharb/eslint-config`; add `safe-publish-"
+"latest`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:64
+msgid "2.1.0"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:65
+msgid "[New] add `auto` entry point"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:66
+msgid "[Performance] Remove unnecessary `ToInteger` call."
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:67
+msgid ""
+"[Performance] inline `ES.Call` since `IsCallable` is already checked "
+"prior to the loop."
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:68
+msgid "[Performance] avoid checking `arguments` indexes beyond `arguments.length`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:69
+msgid "[meta] Add LICENSE file (#25)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:71
+msgid "[Dev Deps] update `eslint`, `@ljharb/eslint-config`, `chai`, `mocha`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:72
+msgid "[Tests] fix matrix; use `nvm install-latest-npm`, test up to latest node"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:73
+msgid "[Tests] add `npm run posttest`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:75
+msgid "2.0.4"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:76
+msgid ""
+"[Performance] the entry point should use the native function when "
+"compliant"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:78
+msgid "2.0.3"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:79
+msgid "[Fix] again: don’t needlessly shim `Array#find` (#22)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:81
+msgid "2.0.2"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:82
+msgid "[Fix] don’t needlessly shim `Array#find` (#22)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:84
+msgid ""
+"[Dev Deps] update `@es-shims/api`, `mocha`, `eslint`, `@ljharb/eslint-"
+"config`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:85
+msgid "[Tests] up to `node` `v7.4`, `v4.7`; improve test matrix"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:87
+msgid "2.0.1"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:88
+msgid "[Fix] use call instead of apply in bound entry point function (#20)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:89
+msgid "[Tests] up to `node` `v7.0`, `v6.9`, `v5.12`; improve test matrix"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:90
+msgid "[Tests] add `npm run lint`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:92
+msgid "2.0.0"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:93
+msgid "[Breaking] implement es-shim API (#15)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:94
+msgid "[Fix] use ToLength, not ToUint32 (#15)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:95
+msgid "[Fix] Uncallable predicates must throw even when the array is empty (#15)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:96
+msgid "[Docs] fix browserify example (#12)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:98
+msgid "1.0.0"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:99
+msgid "[Breaking] do not skip holes (per ES6 change) (#6)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:100
+msgid "[Dev Deps] update `mocha`"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:101
+msgid ""
+"[Fix] Older browsers report the typeof some host objects and regexes as "
+"\"function\" (#8)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:103
+msgid "0.2.0"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:104
+msgid "[Tests] Add travis support (#5)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:105
+msgid "[Tests] Add tests (#5)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:106
+msgid ""
+"[Fix] Fix failing test: 'should work with an array-like object with "
+"negative length' (#5)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:108
+msgid "0.1.1"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:109
+msgid "[Fix] check if `Array#find` already exists (#4)"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:111
+msgid "0.1.0"
+msgstr ""
+
+#: ../../source/array.prototype.find_CHANGELOG.md:112
+msgid "Initial release"
+msgstr ""
+

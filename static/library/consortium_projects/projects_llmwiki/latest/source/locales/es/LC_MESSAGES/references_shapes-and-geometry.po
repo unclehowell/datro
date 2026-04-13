@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_shapes-and-geometry.md:1
+msgid "Shapes and Geometry"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:3
+msgid "2D Primitives"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:19
+msgid "Drawing Modes"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:28
+msgid "Stroke and Fill"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:40
+msgid "Custom Shapes with Vertices"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:42
+msgid "Basic vertex shape"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:54
+msgid "Shape modes"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:67
+msgid "Contours (holes in shapes)"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:86
+msgid "Bezier Curves"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:88
+msgid "Cubic Bezier"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:98
+msgid "Bezier in custom shapes"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:108
+msgid "Quadratic Bezier"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:118
+msgid "Interpolation along Bezier"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:126
+msgid "Catmull-Rom Splines"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:139
+msgid "Smooth curve through points"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:152
+msgid "p5.Vector"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:154
+msgid "Essential for physics, particle systems, and geometric computation."
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:188
+msgid "Signed Distance Fields (2D)"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:190
+msgid ""
+"SDFs return the distance from a point to the nearest edge of a shape. "
+"Negative inside, positive outside. Useful for smooth shapes, glow "
+"effects, boolean operations."
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:226
+msgid "Useful Geometry Patterns"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:228
+msgid "Regular Polygon"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:241
+msgid "Star Shape"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:256
+msgid "Rounded Line (Capsule)"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:266
+msgid "Soft Body / Blob"
+msgstr ""
+
+#: ../../source/references_shapes-and-geometry.md:281
+msgid "Clipping and Masking"
+msgstr ""
+

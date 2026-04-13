@@ -1,0 +1,193 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_mobjects.md:1
+msgid "Mobjects Reference"
+msgstr ""
+
+#: ../../source/references_mobjects.md:3
+msgid ""
+"Everything visible on screen is a Mobject. They have position, color, "
+"opacity, and can be animated."
+msgstr ""
+
+#: ../../source/references_mobjects.md:5
+msgid "Text"
+msgstr ""
+
+#: ../../source/references_mobjects.md:23
+msgid "**Always use raw strings (`r\"\"`) for any string with backslashes.**"
+msgstr ""
+
+#: ../../source/references_mobjects.md:25
+msgid "Shapes"
+msgstr ""
+
+#: ../../source/references_mobjects.md:38
+msgid "Positioning"
+msgstr ""
+
+#: ../../source/references_mobjects.md:48
+msgid "VGroup vs Group"
+msgstr ""
+
+#: ../../source/references_mobjects.md:50
+msgid ""
+"**VGroup** is for collections of shapes (VMobjects only — Circle, Square,"
+" Arrow, Line, MathTex):"
+msgstr ""
+
+#: ../../source/references_mobjects.md:57
+msgid "**Group** is for mixed collections (Text + shapes, or any Mobject types):"
+msgstr ""
+
+#: ../../source/references_mobjects.md:67
+msgid ""
+"**Rule: if your group contains any `Text()` objects, use `Group`, not "
+"`VGroup`.** VGroup will raise a TypeError on Manim CE v0.20+. MathTex and"
+" Tex are VMobjects and work with VGroup."
+msgstr ""
+
+#: ../../source/references_mobjects.md:69
+msgid ""
+"Both support `arrange()`, `arrange_in_grid()`, `set_opacity()`, "
+"`shift()`, `scale()`, `move_to()`."
+msgstr ""
+
+#: ../../source/references_mobjects.md:71
+msgid "Styling"
+msgstr ""
+
+#: ../../source/references_mobjects.md:81
+msgid "Specialized Mobjects"
+msgstr ""
+
+#: ../../source/references_mobjects.md:91
+msgid "Custom Mobjects"
+msgstr ""
+
+#: ../../source/references_mobjects.md:102
+msgid "Constants"
+msgstr ""
+
+#: ../../source/references_mobjects.md:104
+msgid ""
+"Directions: `UP, DOWN, LEFT, RIGHT, ORIGIN, UL, UR, DL, DR` Colors: `RED,"
+" BLUE, GREEN, YELLOW, WHITE, GRAY, ORANGE, PINK, PURPLE, TEAL, GOLD` "
+"Frame: `config.frame_width = 14.222, config.frame_height = 8.0`"
+msgstr ""
+
+#: ../../source/references_mobjects.md:108
+msgid "SVGMobject — Import SVG Files"
+msgstr ""
+
+#: ../../source/references_mobjects.md:120
+msgid "ImageMobject — Display Images"
+msgstr ""
+
+#: ../../source/references_mobjects.md:128
+msgid ""
+"Note: images cannot be animated with `.animate` (they're raster, not "
+"vector). Use `FadeIn`/`FadeOut` and `shift`/`scale` only."
+msgstr ""
+
+#: ../../source/references_mobjects.md:130
+msgid "Variable — Auto-Updating Display"
+msgstr ""
+
+#: ../../source/references_mobjects.md:142
+msgid ""
+"Cleaner than manual `DecimalNumber` + `add_updater` for simple labeled-"
+"value displays."
+msgstr ""
+
+#: ../../source/references_mobjects.md:144
+msgid "BulletedList"
+msgstr ""
+
+#: ../../source/references_mobjects.md:160
+msgid "DashedLine and Angle Markers"
+msgstr ""
+
+#: ../../source/references_mobjects.md:176
+msgid "Boolean Operations (CSG)"
+msgstr ""
+
+#: ../../source/references_mobjects.md:178
+msgid "Combine, subtract, or intersect 2D shapes:"
+msgstr ""
+
+#: ../../source/references_mobjects.md:191
+msgid "Use cases: Venn diagrams, set theory, geometric proofs, area calculations."
+msgstr ""
+
+#: ../../source/references_mobjects.md:193
+msgid "LabeledArrow / LabeledLine"
+msgstr ""
+
+#: ../../source/references_mobjects.md:203
+msgid ""
+"Auto-handles label positioning — cleaner than manual `Arrow` + "
+"`Text().next_to()`."
+msgstr ""
+
+#: ../../source/references_mobjects.md:205
+msgid "Text Color/Font/Style Per-Substring (t2c, t2f, t2s, t2w)"
+msgstr ""
+
+#: ../../source/references_mobjects.md:227
+msgid ""
+"These are much cleaner than creating separate Text objects and grouping "
+"them."
+msgstr ""
+
+#: ../../source/references_mobjects.md:229
+msgid "Backstroke for Readability Over Backgrounds"
+msgstr ""
+
+#: ../../source/references_mobjects.md:231
+msgid ""
+"When text overlaps other content (graphs, diagrams, images), add a dark "
+"stroke behind it:"
+msgstr ""
+
+#: ../../source/references_mobjects.md:242
+msgid ""
+"This is how 3Blue1Brown keeps text readable over complex backgrounds "
+"without using BackgroundRectangle."
+msgstr ""
+
+#: ../../source/references_mobjects.md:244
+msgid "Complex Function Transforms"
+msgstr ""
+
+#: ../../source/references_mobjects.md:246
+msgid "Apply complex functions to entire mobjects — transforms the plane:"
+msgstr ""
+
+#: ../../source/references_mobjects.md:264
+msgid ""
+"**Critical:** Call `prepare_for_nonlinear_transform()` before applying "
+"nonlinear functions — without it, the grid has too few sample points and "
+"the deformation looks jagged."
+msgstr ""
+

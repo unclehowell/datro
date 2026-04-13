@@ -1,0 +1,77 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/strip-indent_readme.md:1
+msgid ""
+"strip-indent [![Build Status](https://travis-ci.org/sindresorhus/strip-"
+"indent.svg?branch=master)](https://travis-ci.org/sindresorhus/strip-"
+"indent)"
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:3
+msgid "Strip leading whitespace from every line in a string"
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:5
+msgid ""
+"The line with the least number of leading whitespace, ignoring empty "
+"lines, determines the number to remove."
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:7
+msgid "Useful for removing redundant indentation."
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:10
+msgid "Install"
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:17
+msgid "Usage"
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:34
+msgid "CLI"
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:54
+msgid "Related"
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:56
+msgid ""
+"[indent-string](https://github.com/sindresorhus/indent-string) - Indent "
+"each line in a string"
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:59
+msgid "License"
+msgstr ""
+
+#: ../../source/strip-indent_readme.md:61
+msgid "MIT © [Sindre Sorhus](http://sindresorhus.com)"
+msgstr ""
+

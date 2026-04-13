@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/spdx-exceptions_README.md:1
+msgid ""
+"The package exports an array of strings. Each string is an identifier for"
+" a license exception under the [Software Package Data Exchange "
+"(SPDX)][SPDX] software license metadata standard."
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:7
+msgid "Copyright and Licensing"
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:9
+msgid "SPDX"
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:11
+msgid ""
+"\"SPDX\" is a federally registered United States trademark of The Linux "
+"Foundation Corporation."
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:14
+msgid "From version 2.0 of the [SPDX] specification:"
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:16
+msgid ""
+"Copyright © 2010-2015 Linux Foundation and its Contributors. Licensed "
+"under the Creative Commons Attribution License 3.0 Unported. All other "
+"rights are expressly reserved."
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:20
+msgid ""
+"The Linux Foundation and the SPDX working groups are good people. Only "
+"they decide what \"SPDX\" means, as a standard and otherwise. I respect "
+"their work and their rights. You should, too."
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:24
+msgid "This Package"
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:26
+msgid ""
+"I created this package by copying exception identifiers out of the SPDX "
+"specification. That work was mechanical, routine, and required no "
+"creativity whatsoever. - Kyle Mitchell, package author"
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:30
+msgid ""
+"United States users concerned about intellectual property may wish to "
+"discuss the following Supreme Court decisions with their attorneys:"
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:33
+msgid "_Baker v. Selden_, 101 U.S. 99 (1879)"
+msgstr ""
+
+#: ../../source/spdx-exceptions_README.md:35
+msgid ""
+"_Feist Publications, Inc., v. Rural Telephone Service Co._, 499 U.S. 340 "
+"(1991)"
+msgstr ""
+

@@ -1,0 +1,797 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/llm-wiki_SKILL.md:19
+msgid "Karpathy's LLM Wiki"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:21
+msgid ""
+"Build and maintain a persistent, compounding knowledge base as "
+"interlinked markdown files. Based on [Andrej Karpathy's LLM Wiki "
+"pattern](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f)."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:24
+msgid ""
+"Unlike traditional RAG (which rediscovers knowledge from scratch per "
+"query), the wiki compiles knowledge once and keeps it current. Cross-"
+"references are already there. Contradictions have already been flagged. "
+"Synthesis reflects everything ingested."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:28
+msgid ""
+"**Division of labor:** The human curates sources and directs analysis. "
+"The agent summarizes, cross-references, files, and maintains consistency."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:31
+msgid "When This Skill Activates"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:33
+msgid "Use this skill when the user:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:34
+msgid "Asks to create, build, or start a wiki or knowledge base"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:35
+msgid "Asks to ingest, add, or process a source into their wiki"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:36
+msgid "Asks a question and an existing wiki is present at the configured path"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:37
+msgid "Asks to lint, audit, or health-check their wiki"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:38
+msgid "References their wiki, knowledge base, or \"notes\" in a research context"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:40
+msgid "Wiki Location"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:42
+msgid ""
+"Configured via `skills.config.wiki.path` in `~/.hermes/config.yaml` "
+"(prompted during `hermes config migrate` or `hermes setup`):"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:52
+msgid ""
+"Falls back to `~/wiki` default. The resolved path is injected when this "
+"skill loads — check the `[Skill config: ...]` block above for the active "
+"value."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:55
+msgid ""
+"The wiki is just a directory of markdown files — open it in Obsidian, VS "
+"Code, or any editor. No database, no special tooling required."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:58
+msgid "Architecture: Three Layers"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:76
+msgid ""
+"**Layer 1 — Raw Sources:** Immutable. The agent reads but never modifies "
+"these. **Layer 2 — The Wiki:** Agent-owned markdown files. Created, "
+"updated, and cross-referenced by the agent. **Layer 3 — The Schema:** "
+"`SCHEMA.md` defines structure, conventions, and tag taxonomy."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:81
+msgid "Resuming an Existing Wiki (CRITICAL — do this every session)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:83
+msgid ""
+"When the user has an existing wiki, **always orient yourself before doing"
+" anything**:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:85
+msgid ""
+"① **Read `SCHEMA.md`** — understand the domain, conventions, and tag "
+"taxonomy. ② **Read `index.md`** — learn what pages exist and their "
+"summaries. ③ **Scan recent `log.md`** — read the last 20-30 entries to "
+"understand recent activity."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:97
+msgid "Only after orientation should you ingest, query, or lint. This prevents:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:98
+msgid "Creating duplicate pages for entities that already exist"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:99
+msgid "Missing cross-references to existing content"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:100
+msgid "Contradicting the schema's conventions"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:101
+msgid "Repeating work already logged"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:103
+msgid ""
+"For large wikis (100+ pages), also run a quick `search_files` for the "
+"topic at hand before creating anything new."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:106
+msgid "Initializing a New Wiki"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:108
+msgid "When the user asks to create or start a wiki:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:110
+msgid ""
+"Determine the wiki path (from config, env var, or ask the user; default "
+"`~/wiki`)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:111
+msgid "Create the directory structure above"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:112
+msgid "Ask the user what domain the wiki covers — be specific"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:113
+msgid "Write `SCHEMA.md` customized to the domain (see template below)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:114
+msgid "Write initial `index.md` with sectioned header"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:115
+msgid "Write initial `log.md` with creation entry"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:116
+msgid "Confirm the wiki is ready and suggest first sources to ingest"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:118
+msgid "SCHEMA.md Template"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:120
+msgid ""
+"Adapt to the user's domain. The schema constrains agent behavior and "
+"ensures consistency:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:148
+msgid "Tag Taxonomy"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:149
+msgid ""
+"[Define 10-20 top-level tags for the domain. Add new tags here BEFORE "
+"using them.]"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:151
+msgid "Example for AI/ML:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:152
+msgid "Models: model, architecture, benchmark, training"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:153
+msgid "People/Orgs: person, company, lab, open-source"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:154
+msgid "Techniques: optimization, fine-tuning, inference, alignment, data"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:155
+msgid "Meta: comparison, timeline, controversy, prediction"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:157
+msgid ""
+"Rule: every tag on a page must appear in this taxonomy. If a new tag is "
+"needed, add it here first, then use it. This prevents tag sprawl."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:160
+msgid "Page Thresholds"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:161
+msgid ""
+"**Create a page** when an entity/concept appears in 2+ sources OR is "
+"central to one source"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:162
+msgid "**Add to existing page** when a source mentions something already covered"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:163
+msgid ""
+"**DON'T create a page** for passing mentions, minor details, or things "
+"outside the domain"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:164
+msgid ""
+"**Split a page** when it exceeds ~200 lines — break into sub-topics with "
+"cross-links"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:165
+msgid ""
+"**Archive a page** when its content is fully superseded — move to "
+"`_archive/`, remove from index"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:167
+msgid "Entity Pages"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:168
+msgid "One page per notable entity. Include:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:169
+msgid "Overview / what it is"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:170
+msgid "Key facts and dates"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:171
+msgid "Relationships to other entities ([[wikilinks]])"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:172
+msgid "Source references"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:174
+msgid "Concept Pages"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:175
+msgid "One page per concept or topic. Include:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:176
+msgid "Definition / explanation"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:177
+msgid "Current state of knowledge"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:178
+msgid "Open questions or debates"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:179
+msgid "Related concepts ([[wikilinks]])"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:181
+msgid "Comparison Pages"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:182
+msgid "Side-by-side analyses. Include:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:183
+msgid "What is being compared and why"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:184
+msgid "Dimensions of comparison (table format preferred)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:185
+msgid "Verdict or synthesis"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:186
+msgid "Sources"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:188
+msgid "Update Policy"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:189
+msgid "When new information conflicts with existing content:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:190
+msgid "Check the dates — newer sources generally supersede older ones"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:191
+msgid "If genuinely contradictory, note both positions with dates and sources"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:192
+msgid "Mark the contradiction in frontmatter: `contradictions: [page-name]`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:193
+msgid "Flag for user review in the lint report"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:217
+msgid ""
+"**Scaling rule:** When any section exceeds 50 entries, split it into sub-"
+"sections by first letter or sub-domain. When the index exceeds 200 "
+"entries total, create a `_meta/topic-map.md` that groups pages by theme "
+"for faster navigation."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:221
+msgid "log.md Template"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:236
+msgid "Core Operations"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:238
+msgid "1. Ingest"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:240
+msgid ""
+"When the user provides a source (URL, file, paste), integrate it into the"
+" wiki:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:242
+msgid "① **Capture the raw source:**"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:243
+msgid "URL → use `web_extract` to get markdown, save to `raw/articles/`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:244
+msgid "PDF → use `web_extract` (handles PDFs), save to `raw/papers/`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:245
+msgid "Pasted text → save to appropriate `raw/` subdirectory"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:246
+msgid "Name the file descriptively: `raw/articles/karpathy-llm-wiki-2026.md`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:248
+msgid ""
+"② **Discuss takeaways** with the user — what's interesting, what matters "
+"for    the domain. (Skip this in automated/cron contexts — proceed "
+"directly.)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:251
+msgid ""
+"③ **Check what already exists** — search index.md and use `search_files` "
+"to find    existing pages for mentioned entities/concepts. This is the "
+"difference between    a growing wiki and a pile of duplicates."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:255
+msgid "④ **Write or update wiki pages:**"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:256
+msgid ""
+"**New entities/concepts:** Create pages only if they meet the Page "
+"Thresholds in SCHEMA.md (2+ source mentions, or central to one source)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:258
+msgid ""
+"**Existing pages:** Add new information, update facts, bump `updated` "
+"date. When new info contradicts existing content, follow the Update "
+"Policy."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:260
+msgid ""
+"**Cross-reference:** Every new or updated page must link to at least 2 "
+"other pages via `[[wikilinks]]`. Check that existing pages link back."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:262
+msgid "**Tags:** Only use tags from the taxonomy in SCHEMA.md"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:264
+msgid "⑤ **Update navigation:**"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:265
+msgid "Add new pages to `index.md` under the correct section, alphabetically"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:266
+msgid "Update the \"Total pages\" count and \"Last updated\" date in index header"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:267
+msgid "Append to `log.md`: `## [YYYY-MM-DD] ingest | Source Title`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:268
+msgid "List every file created or updated in the log entry"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:270
+msgid ""
+"⑥ **Report what changed** — list every file created or updated to the "
+"user."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:272
+msgid ""
+"A single source can trigger updates across 5-15 wiki pages. This is "
+"normal and desired — it's the compounding effect."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:275
+msgid "2. Query"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:277
+msgid "When the user asks a question about the wiki's domain:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:279
+msgid ""
+"① **Read `index.md`** to identify relevant pages. ② **For wikis with 100+"
+" pages**, also `search_files` across all `.md` files    for key terms — "
+"the index alone may miss relevant content. ③ **Read the relevant pages** "
+"using `read_file`. ④ **Synthesize an answer** from the compiled "
+"knowledge. Cite the wiki pages    you drew from: \"Based on [[page-a]] "
+"and [[page-b]]...\" ⑤ **File valuable answers back** — if the answer is a"
+" substantial comparison,    deep dive, or novel synthesis, create a page "
+"in `queries/` or `comparisons/`.    Don't file trivial lookups — only "
+"answers that would be painful to re-derive. ⑥ **Update log.md** with the "
+"query and whether it was filed."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:290
+msgid "3. Lint"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:292
+msgid "When the user asks to lint, health-check, or audit the wiki:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:294
+msgid ""
+"① **Orphan pages:** Find pages with no inbound `[[wikilinks]]` from other"
+" pages."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:305
+msgid ""
+"② **Broken wikilinks:** Find `[[links]]` that point to pages that don't "
+"exist."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:307
+msgid ""
+"③ **Index completeness:** Every wiki page should appear in `index.md`. "
+"Compare    the filesystem against index entries."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:310
+msgid ""
+"④ **Frontmatter validation:** Every wiki page must have all required "
+"fields    (title, created, updated, type, tags, sources). Tags must be in"
+" the taxonomy."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:313
+msgid ""
+"⑤ **Stale content:** Pages whose `updated` date is >90 days older than "
+"the most    recent source that mentions the same entities."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:316
+msgid ""
+"⑥ **Contradictions:** Pages on the same topic with conflicting claims. "
+"Look for    pages that share tags/entities but state different facts."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:319
+msgid "⑦ **Page size:** Flag pages over 200 lines — candidates for splitting."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:321
+msgid ""
+"⑧ **Tag audit:** List all tags in use, flag any not in the SCHEMA.md "
+"taxonomy."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:323
+msgid "⑨ **Log rotation:** If log.md exceeds 500 entries, rotate it."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:325
+msgid ""
+"⑩ **Report findings** with specific file paths and suggested actions, "
+"grouped by    severity (broken links > orphans > stale content > style "
+"issues)."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:328
+msgid "⑪ **Append to log.md:** `## [YYYY-MM-DD] lint | N issues found`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:330
+msgid "Working with the Wiki"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:332
+msgid "Searching"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:348
+msgid "Bulk Ingest"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:350
+msgid "When ingesting multiple sources at once, batch the updates:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:351
+msgid "Read all sources first"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:352
+msgid "Identify all entities and concepts across all sources"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:353
+msgid "Check existing pages for all of them (one search pass, not N)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:354
+msgid "Create/update pages in one pass (avoids redundant updates)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:355
+msgid "Update index.md once at the end"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:356
+msgid "Write a single log entry covering the batch"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:358
+msgid "Archiving"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:360
+msgid "When content is fully superseded or the domain scope changes:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:361
+msgid "Create `_archive/` directory if it doesn't exist"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:362
+msgid ""
+"Move the page to `_archive/` with its original path (e.g., "
+"`_archive/entities/old-page.md`)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:363
+msgid "Remove from `index.md`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:364
+msgid ""
+"Update any pages that linked to it — replace wikilink with plain text + "
+"\"(archived)\""
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:365
+msgid "Log the archive action"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:367
+msgid "Obsidian Integration"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:369
+msgid "The wiki directory works as an Obsidian vault out of the box:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:370
+msgid "`[[wikilinks]]` render as clickable links"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:371
+msgid "Graph View visualizes the knowledge network"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:372
+msgid "YAML frontmatter powers Dataview queries"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:373
+msgid "The `raw/assets/` folder holds images referenced via `![[image.png]]`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:375
+msgid "For best results:"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:376
+msgid "Set Obsidian's attachment folder to `raw/assets/`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:377
+msgid "Enable \"Wikilinks\" in Obsidian settings (usually on by default)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:378
+msgid ""
+"Install Dataview plugin for queries like `TABLE tags FROM \"entities\" "
+"WHERE contains(tags, \"company\")`"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:380
+msgid ""
+"If using the Obsidian skill alongside this one, set `OBSIDIAN_VAULT_PATH`"
+" to the same directory as the wiki path."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:383
+msgid "Obsidian Headless (servers and headless machines)"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:385
+msgid ""
+"On machines without a display, use `obsidian-headless` instead of the "
+"desktop app. It syncs vaults via Obsidian Sync without a GUI — perfect "
+"for agents running on servers that write to the wiki while Obsidian "
+"desktop reads it on another device."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:389
+msgid "**Setup:**"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:411
+msgid "**Continuous background sync via systemd:**"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:436
+msgid ""
+"This lets the agent write to `~/wiki` on a server while you browse the "
+"same vault in Obsidian on your laptop/phone — changes appear within "
+"seconds."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:439
+msgid "Pitfalls"
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:441
+msgid ""
+"**Never modify files in `raw/`** — sources are immutable. Corrections go "
+"in wiki pages."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:442
+msgid ""
+"**Always orient first** — read SCHEMA + index + recent log before any "
+"operation in a new session. Skipping this causes duplicates and missed "
+"cross-references."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:444
+msgid ""
+"**Always update index.md and log.md** — skipping this makes the wiki "
+"degrade. These are the navigational backbone."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:446
+msgid ""
+"**Don't create pages for passing mentions** — follow the Page Thresholds "
+"in SCHEMA.md. A name appearing once in a footnote doesn't warrant an "
+"entity page."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:448
+msgid ""
+"**Don't create pages without cross-references** — isolated pages are "
+"invisible. Every page must link to at least 2 other pages."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:450
+msgid ""
+"**Frontmatter is required** — it enables search, filtering, and staleness"
+" detection."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:451
+msgid ""
+"**Tags must come from the taxonomy** — freeform tags decay into noise. "
+"Add new tags to SCHEMA.md first, then use them."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:453
+msgid ""
+"**Keep pages scannable** — a wiki page should be readable in 30 seconds. "
+"Split pages over 200 lines. Move detailed analysis to dedicated deep-dive"
+" pages."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:455
+msgid ""
+"**Ask before mass-updating** — if an ingest would touch 10+ existing "
+"pages, confirm the scope with the user first."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:457
+msgid ""
+"**Rotate the log** — when log.md exceeds 500 entries, rename it `log-"
+"YYYY.md` and start fresh. The agent should check log size during lint."
+msgstr ""
+
+#: ../../source/llm-wiki_SKILL.md:459
+msgid ""
+"**Handle contradictions explicitly** — don't silently overwrite. Note "
+"both claims with dates, mark in frontmatter, flag for user review."
+msgstr ""
+

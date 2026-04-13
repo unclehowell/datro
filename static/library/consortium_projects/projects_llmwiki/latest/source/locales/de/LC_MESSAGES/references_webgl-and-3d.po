@@ -1,0 +1,140 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_webgl-and-3d.md:1
+msgid "WebGL and 3D"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:3
+msgid "WebGL Mode Setup"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:14
+msgid "Coordinate Conversion (WEBGL to P2D-like)"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:23
+msgid "3D Primitives"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:35
+msgid "3D Transforms"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:48
+msgid "Camera"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:50
+msgid "Default Camera"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:62
+msgid "Orbit Control"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:71
+msgid "createCamera"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:93
+msgid "Perspective and Orthographic"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:106
+msgid "Lighting"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:134
+msgid "Three-Point Lighting Setup"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:151
+msgid "Materials"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:172
+msgid "Texture"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:187
+msgid "Custom Geometry"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:189
+msgid "buildGeometry"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:211
+msgid "beginGeometry / endGeometry"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:224
+msgid "Manual Geometry (p5.Geometry)"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:244
+msgid "GLSL Shaders"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:246
+msgid "createShader (Vertex + Fragment)"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:293
+msgid "createFilterShader (Post-Processing)"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:295
+msgid ""
+"Simpler — only needs a fragment shader. Automatically gets the canvas as "
+"a texture."
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:332
+msgid "Common Shader Uniforms"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:343
+msgid "Shader Recipes"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:345
+msgid "**Chromatic Aberration:**"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:353
+msgid "**Vignette:**"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:360
+msgid "**Scanlines:**"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:367
+msgid "Framebuffers"
+msgstr ""
+
+#: ../../source/references_webgl-and-3d.md:391
+msgid "Multi-Pass Rendering"
+msgstr ""
+

@@ -1,0 +1,1604 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_ibm.md:1
+msgid "Design System: IBM"
+msgstr ""
+
+#: ../../source/templates_ibm.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_ibm.md:7
+msgid "**Primary:** `IBM Plex Sans` | **Mono:** `IBM Plex Mono`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'IBM Plex Sans', system-ui, -apple-"
+"system, 'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'IBM Plex Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_ibm.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_ibm.md:18
+msgid ""
+"IBM's website is the digital embodiment of enterprise authority built on "
+"the Carbon Design System — a design language so methodically structured "
+"it reads like an engineering specification rendered as a webpage. The "
+"page operates on a stark duality: a bright white (`#ffffff`) canvas with "
+"near-black (`#161616`) text, punctuated by a single, unwavering accent — "
+"IBM Blue 60 (`#0f62fe`). This isn't playful tech-startup minimalism; it's"
+" corporate precision distilled into pixels. Every element exists within "
+"Carbon's rigid 2x grid, every color maps to a semantic token, every "
+"spacing value snaps to the 8px base unit."
+msgstr ""
+
+#: ../../source/templates_ibm.md:20
+msgid ""
+"The IBM Plex type family is the system's backbone. IBM Plex Sans at light"
+" weight (300) for display headlines creates an unexpectedly airy, almost "
+"delicate quality at large sizes — a deliberate counterpoint to IBM's "
+"corporate gravity. At body sizes, regular weight (400) with 0.16px "
+"letter-spacing on 14px captions introduces the meticulous micro-tracking "
+"that makes Carbon text feel engineered rather than designed. IBM Plex "
+"Mono serves code, data, and technical labels, completing the family "
+"trinity alongside the rarely-surfaced IBM Plex Serif."
+msgstr ""
+
+#: ../../source/templates_ibm.md:22
+msgid ""
+"What defines IBM's visual identity beyond monochrome-plus-blue is the "
+"reliance on Carbon's component token system. Every interactive state maps"
+" to a CSS custom property prefixed with `--cds-` (Carbon Design System). "
+"Buttons don't have hardcoded colors; they reference `--cds-button-"
+"primary`, `--cds-button-primary-hover`, `--cds-button-primary-active`. "
+"This tokenized architecture means the entire visual layer is a thin skin "
+"over a deeply systematic foundation — the design equivalent of a well-"
+"typed API."
+msgstr ""
+
+#: ../../source/templates_ibm.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:25
+msgid ""
+"IBM Plex Sans at weight 300 (Light) for display — corporate gravitas "
+"through typographic restraint"
+msgstr ""
+
+#: ../../source/templates_ibm.md:26
+msgid ""
+"IBM Plex Mono for code and technical content with consistent 0.16px "
+"letter-spacing at small sizes"
+msgstr ""
+
+#: ../../source/templates_ibm.md:27
+msgid ""
+"Single accent color: IBM Blue 60 (`#0f62fe`) — every interactive element,"
+" every CTA, every link"
+msgstr ""
+
+#: ../../source/templates_ibm.md:28
+msgid ""
+"Carbon token system (`--cds-*`) driving all semantic colors, enabling "
+"theme-switching at the variable level"
+msgstr ""
+
+#: ../../source/templates_ibm.md:29
+msgid ""
+"8px spacing grid with strict adherence — no arbitrary values, everything "
+"aligns"
+msgstr ""
+
+#: ../../source/templates_ibm.md:30
+msgid ""
+"Flat, borderless cards on `#f4f4f4` Gray 10 surface — depth through "
+"background-color layering, not shadows"
+msgstr ""
+
+#: ../../source/templates_ibm.md:31
+msgid "Bottom-border inputs (not boxed) — the signature Carbon form pattern"
+msgstr ""
+
+#: ../../source/templates_ibm.md:32
+msgid ""
+"0px border-radius on primary buttons — unapologetically rectangular, no "
+"softening"
+msgstr ""
+
+#: ../../source/templates_ibm.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_ibm.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_ibm.md:37
+msgid ""
+"**IBM Blue 60** (`#0f62fe`): The singular interactive color. Primary "
+"buttons, links, focus states, active indicators. This is the only "
+"chromatic hue in the core UI palette."
+msgstr ""
+
+#: ../../source/templates_ibm.md:38
+msgid ""
+"**White** (`#ffffff`): Page background, card surfaces, button text on "
+"blue, `--cds-background`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:39
+msgid ""
+"**Gray 100** (`#161616`): Primary text, headings, dark surface "
+"backgrounds, nav bar, footer. `--cds-text-primary`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:41
+msgid "Neutral Scale (Gray Family)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:42
+msgid ""
+"**Gray 100** (`#161616`): Primary text, headings, dark UI chrome, footer "
+"background."
+msgstr ""
+
+#: ../../source/templates_ibm.md:43
+msgid ""
+"**Gray 90** (`#262626`): Secondary dark surfaces, hover states on dark "
+"backgrounds."
+msgstr ""
+
+#: ../../source/templates_ibm.md:44
+msgid "**Gray 80** (`#393939`): Tertiary dark, active states."
+msgstr ""
+
+#: ../../source/templates_ibm.md:45
+msgid ""
+"**Gray 70** (`#525252`): Secondary text, helper text, descriptions. "
+"`--cds-text-secondary`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:46
+msgid "**Gray 60** (`#6f6f6f`): Placeholder text, disabled text."
+msgstr ""
+
+#: ../../source/templates_ibm.md:47
+msgid "**Gray 50** (`#8d8d8d`): Disabled icons, muted labels."
+msgstr ""
+
+#: ../../source/templates_ibm.md:48
+msgid ""
+"**Gray 30** (`#c6c6c6`): Borders, divider lines, input bottom-borders. "
+"`--cds-border-subtle`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:49
+msgid "**Gray 20** (`#e0e0e0`): Subtle borders, card outlines."
+msgstr ""
+
+#: ../../source/templates_ibm.md:50
+msgid ""
+"**Gray 10** (`#f4f4f4`): Secondary surface background, card fills, "
+"alternating rows. `--cds-layer-01`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:51
+msgid "**Gray 10 Hover** (`#e8e8e8`): Hover state for Gray 10 surfaces."
+msgstr ""
+
+#: ../../source/templates_ibm.md:53
+msgid "Interactive"
+msgstr ""
+
+#: ../../source/templates_ibm.md:54
+msgid ""
+"**Blue 60** (`#0f62fe`): Primary interactive — buttons, links, focus. "
+"`--cds-link-primary`, `--cds-button-primary`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:55
+msgid "**Blue 70** (`#0043ce`): Link hover state. `--cds-link-primary-hover`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:56
+msgid "**Blue 80** (`#002d9c`): Active/pressed state for blue elements."
+msgstr ""
+
+#: ../../source/templates_ibm.md:57
+msgid "**Blue 10** (`#edf5ff`): Blue tint surface, selected row background."
+msgstr ""
+
+#: ../../source/templates_ibm.md:58
+msgid ""
+"**Focus Blue** (`#0f62fe`): `--cds-focus` — 2px inset border on focused "
+"elements."
+msgstr ""
+
+#: ../../source/templates_ibm.md:59
+msgid ""
+"**Focus Inset** (`#ffffff`): `--cds-focus-inset` — white inner ring for "
+"focus on dark backgrounds."
+msgstr ""
+
+#: ../../source/templates_ibm.md:61
+msgid "Support & Status"
+msgstr ""
+
+#: ../../source/templates_ibm.md:62
+msgid "**Red 60** (`#da1e28`): Error, danger. `--cds-support-error`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:63
+msgid "**Green 50** (`#24a148`): Success. `--cds-support-success`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:64
+msgid "**Yellow 30** (`#f1c21b`): Warning. `--cds-support-warning`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:65
+msgid "**Blue 60** (`#0f62fe`): Informational. `--cds-support-info`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:67
+msgid "Dark Theme (Gray 100 Theme)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:68
+msgid "**Background**: Gray 100 (`#161616`). `--cds-background`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:69
+msgid "**Layer 01**: Gray 90 (`#262626`). Card and container surfaces."
+msgstr ""
+
+#: ../../source/templates_ibm.md:70
+msgid "**Layer 02**: Gray 80 (`#393939`). Elevated surfaces."
+msgstr ""
+
+#: ../../source/templates_ibm.md:71
+msgid "**Text Primary**: Gray 10 (`#f4f4f4`). `--cds-text-primary`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:72
+msgid "**Text Secondary**: Gray 30 (`#c6c6c6`). `--cds-text-secondary`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:73
+msgid "**Border Subtle**: Gray 80 (`#393939`). `--cds-border-subtle`."
+msgstr ""
+
+#: ../../source/templates_ibm.md:74
+msgid ""
+"**Interactive**: Blue 40 (`#78a9ff`). Links and interactive elements "
+"shift lighter for contrast."
+msgstr ""
+
+#: ../../source/templates_ibm.md:76
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_ibm.md:78
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_ibm.md:79
+msgid ""
+"**Primary**: `IBM Plex Sans`, with fallbacks: `Helvetica Neue, Arial, "
+"sans-serif`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:80
+msgid ""
+"**Monospace**: `IBM Plex Mono`, with fallbacks: `Menlo, Courier, "
+"monospace`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:81
+msgid ""
+"**Serif** (limited use): `IBM Plex Serif`, for editorial/expressive "
+"contexts"
+msgstr ""
+
+#: ../../source/templates_ibm.md:82
+msgid "**Icon Font**: `ibm_icons` — proprietary icon glyphs at 20px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:84
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Display 01"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "IBM Plex Sans"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "60px (3.75rem)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "300 (Light)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.17 (70px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "0"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Maximum impact, light weight for elegance"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Display 02"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "48px (3.00rem)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.17 (56px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Secondary hero, responsive fallback"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Heading 01"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "42px (2.63rem)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.19 (50px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Expressive heading"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Heading 02"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "32px (2.00rem)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "400 (Regular)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.25 (40px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Section headings"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Heading 03"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "24px (1.50rem)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.33 (32px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Sub-section titles"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Heading 04"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "600 (Semibold)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.40 (28px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Card titles, feature headers"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Heading 05"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Lighter card headings"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Body Long 01"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.50 (24px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Standard reading text"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Body Long 02"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Emphasized body, labels"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Body Short 01"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.29 (18px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "0.16px"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Compact body, captions"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Body Short 02"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Bold captions, nav items"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Caption 01"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.33 (16px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "0.32px"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Metadata, timestamps"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Code 01"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "IBM Plex Mono"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1.43 (20px)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Inline code, terminal"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Code 02"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Code blocks"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Mono Display"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Hero mono decorative"
+msgstr ""
+
+#: ../../source/templates_ibm.md:104
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_ibm.md:105
+msgid ""
+"**Light weight at display sizes**: Carbon's expressive type set uses "
+"weight 300 (Light) at 42px+. This creates a distinctive tension — the "
+"content speaks with corporate authority while the letterforms whisper "
+"with typographic lightness."
+msgstr ""
+
+#: ../../source/templates_ibm.md:106
+msgid ""
+"**Micro-tracking at small sizes**: 0.16px letter-spacing at 14px and "
+"0.32px at 12px. These seemingly negligible values are Carbon's secret "
+"weapon for readability at compact sizes — they open up the tight IBM Plex"
+" letterforms just enough."
+msgstr ""
+
+#: ../../source/templates_ibm.md:107
+msgid ""
+"**Three functional weights**: 300 (display/expressive), 400 "
+"(body/reading), 600 (emphasis/UI labels). Weight 700 is intentionally "
+"absent from the production type scale."
+msgstr ""
+
+#: ../../source/templates_ibm.md:108
+msgid ""
+"**Productive vs. Expressive**: Productive sets use tighter line-heights "
+"(1.29) for dense UI. Expressive sets breathe more (1.40-1.50) for "
+"marketing and editorial content."
+msgstr ""
+
+#: ../../source/templates_ibm.md:110
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_ibm.md:112
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_ibm.md:114
+msgid "**Primary Button (Blue)**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:115
+msgid "Background: `#0f62fe` (Blue 60) → `--cds-button-primary`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:116
+msgid "Text: `#ffffff` (White)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:117
+msgid "Padding: 14px 63px 14px 15px (asymmetric — room for trailing icon)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:118
+msgid "Border: 1px solid transparent"
+msgstr ""
+
+#: ../../source/templates_ibm.md:119
+msgid "Border-radius: 0px (sharp rectangle — the Carbon signature)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:120
+msgid "Height: 48px (default), 40px (compact), 64px (expressive)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:121
+msgid "Hover: `#0353e9` (Blue 60 Hover) → `--cds-button-primary-hover`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:122
+msgid "Active: `#002d9c` (Blue 80) → `--cds-button-primary-active`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:123
+msgid "Focus: `2px solid #0f62fe` inset + `1px solid #ffffff` inner"
+msgstr ""
+
+#: ../../source/templates_ibm.md:125
+msgid "**Secondary Button (Gray)**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:126
+msgid "Background: `#393939` (Gray 80)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:127 ../../source/templates_ibm.md:148
+msgid "Text: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:128
+msgid "Hover: `#4c4c4c` (Gray 70)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:129
+msgid "Active: `#6f6f6f` (Gray 60)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:130
+msgid "Same padding/radius as primary"
+msgstr ""
+
+#: ../../source/templates_ibm.md:132
+msgid "**Tertiary Button (Ghost Blue)**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:133 ../../source/templates_ibm.md:140
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_ibm.md:134 ../../source/templates_ibm.md:141
+msgid "Text: `#0f62fe` (Blue 60)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:135
+msgid "Border: 1px solid `#0f62fe`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:136
+msgid "Hover: `#0353e9` text + Blue 10 background tint"
+msgstr ""
+
+#: ../../source/templates_ibm.md:137
+msgid "Border-radius: 0px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:139
+msgid "**Ghost Button**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:142
+msgid "Padding: 14px 16px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:143
+msgid "Border: none"
+msgstr ""
+
+#: ../../source/templates_ibm.md:144
+msgid "Hover: `#e8e8e8` background tint"
+msgstr ""
+
+#: ../../source/templates_ibm.md:146
+msgid "**Danger Button**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:147
+msgid "Background: `#da1e28` (Red 60)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:149
+msgid "Hover: `#b81921` (Red 70)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:151
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_ibm.md:152
+msgid ""
+"Background: `#ffffff` on white theme, `#f4f4f4` (Gray 10) for elevated "
+"cards"
+msgstr ""
+
+#: ../../source/templates_ibm.md:153
+msgid "Border: none (flat design — no border or shadow on most cards)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:154
+msgid "Border-radius: 0px (matching the rectangular button aesthetic)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:155
+msgid "Hover: background shifts to `#e8e8e8` (Gray 10 Hover) for clickable cards"
+msgstr ""
+
+#: ../../source/templates_ibm.md:156
+msgid "Content padding: 16px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:157
+msgid ""
+"Separation: background-color layering (white → gray 10 → white) rather "
+"than shadows"
+msgstr ""
+
+#: ../../source/templates_ibm.md:159
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_ibm.md:160
+msgid "Background: `#f4f4f4` (Gray 10) — `--cds-field`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:161
+msgid "Text: `#161616` (Gray 100)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:162
+msgid "Padding: 0px 16px (horizontal only)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:163
+msgid "Height: 40px (default), 48px (large)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:164
+msgid "Border: none on sides/top — `2px solid transparent` bottom"
+msgstr ""
+
+#: ../../source/templates_ibm.md:165
+msgid "Bottom-border active: `2px solid #161616` (Gray 100)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:166
+msgid "Focus: `2px solid #0f62fe` (Blue 60) bottom-border — `--cds-focus`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:167
+msgid "Error: `2px solid #da1e28` (Red 60) bottom-border"
+msgstr ""
+
+#: ../../source/templates_ibm.md:168
+msgid "Label: 12px IBM Plex Sans, 0.32px letter-spacing, Gray 70"
+msgstr ""
+
+#: ../../source/templates_ibm.md:169
+msgid "Helper text: 12px, Gray 60"
+msgstr ""
+
+#: ../../source/templates_ibm.md:170
+msgid "Placeholder: Gray 60 (`#6f6f6f`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:171
+msgid "Border-radius: 0px (top) — inputs are sharp-cornered"
+msgstr ""
+
+#: ../../source/templates_ibm.md:173
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_ibm.md:174
+msgid "Background: `#161616` (Gray 100) — full-width dark masthead"
+msgstr ""
+
+#: ../../source/templates_ibm.md:175
+msgid "Height: 48px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:176
+msgid "Logo: IBM 8-bar logo, white on dark, left-aligned"
+msgstr ""
+
+#: ../../source/templates_ibm.md:177
+msgid "Links: 14px IBM Plex Sans, weight 400, `#c6c6c6` (Gray 30) default"
+msgstr ""
+
+#: ../../source/templates_ibm.md:178
+msgid "Link hover: `#ffffff` text"
+msgstr ""
+
+#: ../../source/templates_ibm.md:179
+msgid "Active link: `#ffffff` with bottom-border indicator"
+msgstr ""
+
+#: ../../source/templates_ibm.md:180
+msgid "Platform switcher: left-aligned horizontal tabs"
+msgstr ""
+
+#: ../../source/templates_ibm.md:181
+msgid "Search: icon-triggered slide-out search field"
+msgstr ""
+
+#: ../../source/templates_ibm.md:182
+msgid "Mobile: hamburger with left-sliding panel"
+msgstr ""
+
+#: ../../source/templates_ibm.md:184
+msgid "Links"
+msgstr ""
+
+#: ../../source/templates_ibm.md:185
+msgid "Default: `#0f62fe` (Blue 60) with no underline"
+msgstr ""
+
+#: ../../source/templates_ibm.md:186
+msgid "Hover: `#0043ce` (Blue 70) with underline"
+msgstr ""
+
+#: ../../source/templates_ibm.md:187
+msgid "Visited: remains Blue 60 (no visited state change)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:188
+msgid "Inline links: underlined by default in body copy"
+msgstr ""
+
+#: ../../source/templates_ibm.md:190
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_ibm.md:192
+msgid "**Content Block (Hero/Feature)**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:193
+msgid "Full-width alternating white/gray-10 background bands"
+msgstr ""
+
+#: ../../source/templates_ibm.md:194
+msgid "Headline left-aligned with 60px or 48px display type"
+msgstr ""
+
+#: ../../source/templates_ibm.md:195
+msgid "CTA as blue primary button with arrow icon"
+msgstr ""
+
+#: ../../source/templates_ibm.md:196
+msgid "Image/illustration right-aligned or below on mobile"
+msgstr ""
+
+#: ../../source/templates_ibm.md:198
+msgid "**Tile (Clickable Card)**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:199
+msgid "Background: `#f4f4f4` or `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:200
+msgid "Full-width bottom-border or background-shift hover"
+msgstr ""
+
+#: ../../source/templates_ibm.md:201
+msgid "Arrow icon bottom-right on hover"
+msgstr ""
+
+#: ../../source/templates_ibm.md:202
+msgid "No shadow — flatness is the identity"
+msgstr ""
+
+#: ../../source/templates_ibm.md:204
+msgid "**Tag / Label**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:205
+#, python-format
+msgid "Background: contextual color at 10% opacity (e.g., Blue 10, Red 10)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:206
+msgid "Text: corresponding 60-grade color"
+msgstr ""
+
+#: ../../source/templates_ibm.md:207
+msgid "Padding: 4px 8px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:208
+msgid "Border-radius: 24px (pill — exception to the 0px rule)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:209
+msgid "Font: 12px weight 400"
+msgstr ""
+
+#: ../../source/templates_ibm.md:211
+msgid "**Notification Banner**"
+msgstr ""
+
+#: ../../source/templates_ibm.md:212
+msgid "Full-width bar, typically Blue 60 or Gray 100 background"
+msgstr ""
+
+#: ../../source/templates_ibm.md:213
+msgid "White text, 14px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:214
+msgid "Close/dismiss icon right-aligned"
+msgstr ""
+
+#: ../../source/templates_ibm.md:216
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_ibm.md:218
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_ibm.md:219
+msgid "Base unit: 8px (Carbon 2x grid)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:220
+msgid "Component spacing scale: 2px, 4px, 8px, 12px, 16px, 24px, 32px, 40px, 48px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:221
+msgid "Layout spacing scale: 16px, 24px, 32px, 48px, 64px, 80px, 96px, 160px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:222
+msgid "Mini unit: 8px (smallest usable spacing)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:223
+msgid "Padding within components: typically 16px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:224
+msgid "Gap between cards/tiles: 1px (hairline) or 16px (standard)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:226
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_ibm.md:227
+msgid "16-column grid (Carbon's 2x grid system)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:228
+msgid "Max content width: 1584px (max breakpoint)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:229
+msgid "Column gutters: 32px (16px on mobile)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:230
+msgid "Margin: 16px (mobile), 32px (tablet+)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:231
+msgid "Content typically spans 8-12 columns for readable line lengths"
+msgstr ""
+
+#: ../../source/templates_ibm.md:232
+msgid "Full-bleed sections alternate with contained content"
+msgstr ""
+
+#: ../../source/templates_ibm.md:234
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_ibm.md:235
+msgid ""
+"**Functional density**: Carbon favors productive density over expansive "
+"whitespace. Sections are tightly packed compared to consumer design "
+"systems — this reflects IBM's enterprise DNA."
+msgstr ""
+
+#: ../../source/templates_ibm.md:236
+msgid ""
+"**Background-color zoning**: Instead of massive padding between sections,"
+" IBM uses alternating background colors (white → gray 10 → white) to "
+"create visual separation with minimal vertical space."
+msgstr ""
+
+#: ../../source/templates_ibm.md:237
+msgid ""
+"**Consistent 48px rhythm**: Major section transitions use 48px vertical "
+"spacing. Hero sections may use 80px–96px."
+msgstr ""
+
+#: ../../source/templates_ibm.md:239
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_ibm.md:240
+msgid ""
+"**0px**: Primary buttons, inputs, tiles, cards — the dominant treatment. "
+"Carbon is fundamentally rectangular."
+msgstr ""
+
+#: ../../source/templates_ibm.md:241
+msgid "**2px**: Occasionally on small interactive elements (tags)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:242
+msgid "**24px**: Tags/labels (pill shape — the sole rounded exception)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:243
+msgid "**50%**: Avatar circles, icon containers"
+msgstr ""
+
+#: ../../source/templates_ibm.md:245
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "No shadow, `#ffffff` background"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Default page surface"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Layer 01"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "No shadow, `#f4f4f4` background"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Cards, tiles, alternating sections"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Layer 02"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "No shadow, `#e0e0e0` background"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Elevated panels within Layer 01"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Raised"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "`0 2px 6px rgba(0,0,0,0.3)`"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Dropdowns, tooltips, overflow menus"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Overlay"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "`0 2px 6px rgba(0,0,0,0.3)` + dark scrim"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Modal dialogs, side panels"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Focus"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "`2px solid #0f62fe` inset + `1px solid #ffffff`"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Keyboard focus ring"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Bottom-border"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "`2px solid #161616` on bottom edge"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Active input, active tab indicator"
+msgstr ""
+
+#: ../../source/templates_ibm.md:257
+msgid ""
+"**Shadow Philosophy**: Carbon is deliberately shadow-averse. IBM achieves"
+" depth primarily through background-color layering — stacking surfaces of"
+" progressively darker grays rather than adding box-shadows. This creates "
+"a flat, print-inspired aesthetic where hierarchy is communicated through "
+"color value, not simulated light. Shadows are reserved exclusively for "
+"floating elements (dropdowns, tooltips, modals) where the element "
+"genuinely overlaps content. This restraint gives the rare shadow "
+"meaningful impact — when something floats in Carbon, it matters."
+msgstr ""
+
+#: ../../source/templates_ibm.md:259
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_ibm.md:261
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_ibm.md:262
+msgid ""
+"Use IBM Plex Sans at weight 300 for display sizes (42px+) — the lightness"
+" is intentional"
+msgstr ""
+
+#: ../../source/templates_ibm.md:263
+msgid "Apply 0.16px letter-spacing on 14px body text and 0.32px on 12px captions"
+msgstr ""
+
+#: ../../source/templates_ibm.md:264
+msgid ""
+"Use 0px border-radius on buttons, inputs, cards, and tiles — rectangles "
+"are the system"
+msgstr ""
+
+#: ../../source/templates_ibm.md:265
+msgid ""
+"Reference `--cds-*` token names when implementing (e.g., `--cds-button-"
+"primary`, `--cds-text-primary`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:266
+msgid ""
+"Use background-color layering (white → gray 10 → gray 20) for depth "
+"instead of shadows"
+msgstr ""
+
+#: ../../source/templates_ibm.md:267
+msgid "Use bottom-border (not box) for input field indicators"
+msgstr ""
+
+#: ../../source/templates_ibm.md:268
+msgid ""
+"Maintain the 48px default button height and asymmetric padding for icon "
+"accommodation"
+msgstr ""
+
+#: ../../source/templates_ibm.md:269
+msgid "Apply Blue 60 (`#0f62fe`) as the sole accent — one blue to rule them all"
+msgstr ""
+
+#: ../../source/templates_ibm.md:271
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_ibm.md:272
+msgid "Don't round button corners — 0px radius is the Carbon identity"
+msgstr ""
+
+#: ../../source/templates_ibm.md:273
+msgid "Don't use shadows on cards or tiles — flatness is the point"
+msgstr ""
+
+#: ../../source/templates_ibm.md:274
+msgid ""
+"Don't introduce additional accent colors — IBM's system is monochromatic "
+"+ blue"
+msgstr ""
+
+#: ../../source/templates_ibm.md:275
+msgid "Don't use weight 700 (Bold) — the scale stops at 600 (Semibold)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:276
+msgid ""
+"Don't add letter-spacing to display-size text — tracking is only for 14px"
+" and below"
+msgstr ""
+
+#: ../../source/templates_ibm.md:277
+msgid "Don't box inputs with full borders — Carbon inputs use bottom-border only"
+msgstr ""
+
+#: ../../source/templates_ibm.md:278
+msgid "Don't use gradient backgrounds — IBM's surfaces are flat, solid colors"
+msgstr ""
+
+#: ../../source/templates_ibm.md:279
+msgid ""
+"Don't deviate from the 8px spacing grid — every value should be divisible"
+" by 8 (with 2px and 4px for micro-adjustments)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:281
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_ibm.md:283
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Small (sm)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "320px"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Single column, hamburger nav, 16px margins"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Medium (md)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "672px"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "2-column grids begin, expanded content"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Large (lg)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1056px"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Full navigation visible, 3-4 column grids"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "X-Large (xlg)"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1312px"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Maximum content density, wide layouts"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Max"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "1584px"
+msgstr ""
+
+#: ../../source/templates_ibm.md
+msgid "Maximum content width, centered with margins"
+msgstr ""
+
+#: ../../source/templates_ibm.md:292
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_ibm.md:293
+msgid "Button height: 48px default, minimum 40px (compact)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:294
+msgid "Navigation links: 48px row height for touch"
+msgstr ""
+
+#: ../../source/templates_ibm.md:295
+msgid "Input height: 40px default, 48px large"
+msgstr ""
+
+#: ../../source/templates_ibm.md:296
+msgid "Icon buttons: 48px square touch target"
+msgstr ""
+
+#: ../../source/templates_ibm.md:297
+msgid "Mobile menu items: full-width 48px rows"
+msgstr ""
+
+#: ../../source/templates_ibm.md:299
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_ibm.md:300
+msgid "Hero: 60px display → 42px → 32px heading as viewport narrows"
+msgstr ""
+
+#: ../../source/templates_ibm.md:301
+msgid "Navigation: full horizontal masthead → hamburger with slide-out panel"
+msgstr ""
+
+#: ../../source/templates_ibm.md:302
+msgid "Grid: 4-column → 2-column → single column"
+msgstr ""
+
+#: ../../source/templates_ibm.md:303
+msgid "Tiles/cards: horizontal grid → vertical stack"
+msgstr ""
+
+#: ../../source/templates_ibm.md:304
+msgid "Images: maintain aspect ratio, max-width 100%"
+msgstr ""
+
+#: ../../source/templates_ibm.md:305
+msgid "Footer: multi-column link groups → stacked single column"
+msgstr ""
+
+#: ../../source/templates_ibm.md:306
+msgid "Section padding: 48px → 32px → 16px"
+msgstr ""
+
+#: ../../source/templates_ibm.md:308
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_ibm.md:309
+msgid "Responsive images with `max-width: 100%`"
+msgstr ""
+
+#: ../../source/templates_ibm.md:310
+msgid "Product illustrations scale proportionally"
+msgstr ""
+
+#: ../../source/templates_ibm.md:311
+msgid "Hero images may shift from side-by-side to stacked below"
+msgstr ""
+
+#: ../../source/templates_ibm.md:312
+msgid "Data visualizations maintain aspect ratio with horizontal scroll on mobile"
+msgstr ""
+
+#: ../../source/templates_ibm.md:314
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_ibm.md:316
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_ibm.md:317
+msgid "Primary CTA: IBM Blue 60 (`#0f62fe`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:318
+msgid "Background: White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:319
+msgid "Heading text: Gray 100 (`#161616`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:320
+msgid "Body text: Gray 100 (`#161616`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:321
+msgid "Secondary text: Gray 70 (`#525252`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:322
+msgid "Surface/Card: Gray 10 (`#f4f4f4`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:323
+msgid "Border: Gray 30 (`#c6c6c6`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:324
+msgid "Link: Blue 60 (`#0f62fe`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:325
+msgid "Link hover: Blue 70 (`#0043ce`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:326
+msgid "Focus ring: Blue 60 (`#0f62fe`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:327
+msgid "Error: Red 60 (`#da1e28`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:328
+msgid "Success: Green 50 (`#24a148`)"
+msgstr ""
+
+#: ../../source/templates_ibm.md:330
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_ibm.md:331
+msgid ""
+"\"Create a hero section on white background. Headline at 60px IBM Plex "
+"Sans weight 300, line-height 1.17, color #161616. Subtitle at 16px weight"
+" 400, line-height 1.50, color #525252, max-width 640px. Blue CTA button "
+"(#0f62fe background, #ffffff text, 0px border-radius, 48px height, 14px "
+"63px 14px 15px padding).\""
+msgstr ""
+
+#: ../../source/templates_ibm.md:332
+msgid ""
+"\"Design a card tile: #f4f4f4 background, 0px border-radius, 16px "
+"padding. Title at 20px IBM Plex Sans weight 600, line-height 1.40, color "
+"#161616. Body at 14px weight 400, letter-spacing 0.16px, line-height "
+"1.29, color #525252. Hover: background shifts to #e8e8e8.\""
+msgstr ""
+
+#: ../../source/templates_ibm.md:333
+msgid ""
+"\"Build a form field: #f4f4f4 background, 0px border-radius, 40px height,"
+" 16px horizontal padding. Label above at 12px weight 400, letter-spacing "
+"0.32px, color #525252. Bottom-border: 2px solid transparent default, 2px "
+"solid #0f62fe on focus. Placeholder: #6f6f6f.\""
+msgstr ""
+
+#: ../../source/templates_ibm.md:334
+msgid ""
+"\"Create a dark navigation bar: #161616 background, 48px height. IBM logo"
+" white left-aligned. Links at 14px IBM Plex Sans weight 400, color "
+"#c6c6c6. Hover: #ffffff text. Active: #ffffff with 2px bottom border.\""
+msgstr ""
+
+#: ../../source/templates_ibm.md:335
+msgid ""
+"\"Build a tag component: Blue 10 (#edf5ff) background, Blue 60 (#0f62fe) "
+"text, 4px 8px padding, 24px border-radius, 12px IBM Plex Sans weight "
+"400.\""
+msgstr ""
+
+#: ../../source/templates_ibm.md:337
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_ibm.md:338
+msgid ""
+"Always use 0px border-radius on buttons, inputs, and cards — this is non-"
+"negotiable in Carbon"
+msgstr ""
+
+#: ../../source/templates_ibm.md:339
+msgid ""
+"Letter-spacing only at small sizes: 0.16px at 14px, 0.32px at 12px — "
+"never on display text"
+msgstr ""
+
+#: ../../source/templates_ibm.md:340
+msgid "Three weights: 300 (display), 400 (body), 600 (emphasis) — no bold"
+msgstr ""
+
+#: ../../source/templates_ibm.md:341
+msgid "Blue 60 is the only accent color — do not introduce secondary accent hues"
+msgstr ""
+
+#: ../../source/templates_ibm.md:342
+msgid ""
+"Depth comes from background-color layering (white → #f4f4f4 → #e0e0e0), "
+"not shadows"
+msgstr ""
+
+#: ../../source/templates_ibm.md:343
+msgid "Inputs have bottom-border only, never fully boxed"
+msgstr ""
+
+#: ../../source/templates_ibm.md:344
+msgid "Use `--cds-` prefix for token naming to stay Carbon-compatible"
+msgstr ""
+
+#: ../../source/templates_ibm.md:345
+msgid "48px is the universal interactive element height"
+msgstr ""
+

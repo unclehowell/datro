@@ -1,0 +1,125 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_examples.md:1
+msgid "Excalidraw Diagram Examples"
+msgstr ""
+
+#: ../../source/references_examples.md:3
+msgid ""
+"Complete, copy-pasteable examples. Wrap each in the `.excalidraw` "
+"envelope before saving:"
+msgstr ""
+
+#: ../../source/references_examples.md:15
+msgid ""
+"**IMPORTANT:** All text labels on shapes and arrows use container binding"
+" (`containerId` + `boundElements`). Do NOT use the non-existent "
+"`\"label\"` property -- it will be silently ignored, producing blank "
+"shapes."
+msgstr ""
+
+#: ../../source/references_examples.md:20
+msgid "Example 1: Two Connected Labeled Boxes"
+msgstr ""
+
+#: ../../source/references_examples.md:22
+msgid "A minimal flowchart with two boxes and an arrow between them."
+msgstr ""
+
+#: ../../source/references_examples.md:37
+msgid "Example 2: Photosynthesis Process Diagram"
+msgstr ""
+
+#: ../../source/references_examples.md:39
+msgid ""
+"A larger diagram with background zones, multiple nodes, and directional "
+"arrows showing inputs/outputs."
+msgstr ""
+
+#: ../../source/references_examples.md:92
+msgid "Example 3: Sequence Diagram (UML-style)"
+msgstr ""
+
+#: ../../source/references_examples.md:94
+msgid ""
+"Demonstrates a sequence diagram with actors, dashed lifelines, and "
+"message arrows."
+msgstr ""
+
+#: ../../source/references_examples.md:131
+msgid "Common Mistakes to Avoid"
+msgstr ""
+
+#: ../../source/references_examples.md:133
+msgid ""
+"**Do NOT use `\"label\"` property** -- this is the #1 mistake. It is NOT "
+"part of the Excalidraw file format and will be silently ignored, "
+"producing blank shapes with no visible text. Always use container binding"
+" (`containerId` + `boundElements`) as shown in the examples above."
+msgstr ""
+
+#: ../../source/references_examples.md:134
+#, python-brace-format
+msgid ""
+"**Every bound text needs both sides linked** -- the shape needs "
+"`boundElements: [{\"id\": \"t_xxx\", \"type\": \"text\"}]` AND the text "
+"needs `containerId: \"shape_id\"`. If either is missing, the binding "
+"won't work."
+msgstr ""
+
+#: ../../source/references_examples.md:135
+msgid ""
+"**Include `originalText` and `autoResize: true`** on all text elements --"
+" Excalidraw uses these for proper text reflow."
+msgstr ""
+
+#: ../../source/references_examples.md:136
+msgid ""
+"**Include `fontFamily: 1`** on all text elements -- without it, text may "
+"not render with the expected hand-drawn font."
+msgstr ""
+
+#: ../../source/references_examples.md:137
+msgid ""
+"**Elements overlap when y-coordinates are close** -- always check that "
+"text, boxes, and labels don't stack on top of each other"
+msgstr ""
+
+#: ../../source/references_examples.md:138
+msgid ""
+"**Arrow labels need space** -- long labels like \"ATP + NADPH\" overflow "
+"short arrows. Keep labels short or make arrows wider"
+msgstr ""
+
+#: ../../source/references_examples.md:139
+msgid ""
+"**Center titles relative to the diagram** -- estimate total width and "
+"center the title text over it"
+msgstr ""
+
+#: ../../source/references_examples.md:140
+msgid ""
+"**Draw decorations LAST** -- cute illustrations (sun, stars, icons) "
+"should appear at the end of the array so they're drawn on top"
+msgstr ""
+

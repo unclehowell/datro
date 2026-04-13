@@ -1,0 +1,858 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/postcss-selector-parser_API.md:1
+msgid "API Documentation"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:3
+msgid ""
+"*Please use only this documented API when working with the parser. "
+"Methods not documented here are subject to change at any point.*"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:6
+msgid "`parser` function"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:8
+msgid "This is the module's main entry point."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:14
+msgid "`parser([transform], [options])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:16
+msgid "Creates a new `processor` instance"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:35
+msgid "[See processor documentation](#processor)"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:37
+#: ../../source/postcss-selector-parser_API.md:51
+#: ../../source/postcss-selector-parser_API.md:64
+#: ../../source/postcss-selector-parser_API.md:77
+#: ../../source/postcss-selector-parser_API.md:90
+#: ../../source/postcss-selector-parser_API.md:103
+#: ../../source/postcss-selector-parser_API.md:116
+#: ../../source/postcss-selector-parser_API.md:129
+#: ../../source/postcss-selector-parser_API.md:142
+#: ../../source/postcss-selector-parser_API.md:155
+#: ../../source/postcss-selector-parser_API.md:168
+#: ../../source/postcss-selector-parser_API.md:181
+#: ../../source/postcss-selector-parser_API.md:194
+#: ../../source/postcss-selector-parser_API.md:252
+#: ../../source/postcss-selector-parser_API.md:368
+#: ../../source/postcss-selector-parser_API.md:380
+#: ../../source/postcss-selector-parser_API.md:424
+#: ../../source/postcss-selector-parser_API.md:440
+#: ../../source/postcss-selector-parser_API.md:479
+#: ../../source/postcss-selector-parser_API.md:494
+#: ../../source/postcss-selector-parser_API.md:511
+#: ../../source/postcss-selector-parser_API.md:528
+#: ../../source/postcss-selector-parser_API.md:721
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:39
+msgid "`transform (function)`: Provide a function to work with the parsed AST."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:40
+msgid ""
+"`options (object)`: Provide default options for all calls on the returned"
+" `Processor`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:42
+msgid "`parser.attribute([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:44
+msgid "Creates a new attribute selector."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:53
+#: ../../source/postcss-selector-parser_API.md:66
+#: ../../source/postcss-selector-parser_API.md:79
+#: ../../source/postcss-selector-parser_API.md:92
+#: ../../source/postcss-selector-parser_API.md:105
+#: ../../source/postcss-selector-parser_API.md:118
+#: ../../source/postcss-selector-parser_API.md:131
+#: ../../source/postcss-selector-parser_API.md:144
+#: ../../source/postcss-selector-parser_API.md:157
+#: ../../source/postcss-selector-parser_API.md:170
+#: ../../source/postcss-selector-parser_API.md:183
+#: ../../source/postcss-selector-parser_API.md:196
+msgid "`props (object)`: The new node's properties."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:55
+msgid "`parser.className([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:57
+msgid "Creates a new class selector."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:68
+msgid "`parser.combinator([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:70
+msgid "Creates a new selector combinator."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:81
+msgid "`parser.comment([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:83
+msgid "Creates a new comment."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:94
+msgid "`parser.id([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:96
+msgid "Creates a new id selector."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:107
+msgid "`parser.nesting([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:109
+msgid "Creates a new nesting selector."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:120
+msgid "`parser.pseudo([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:122
+msgid "Creates a new pseudo selector."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:133
+msgid "`parser.root([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:135
+msgid "Creates a new root node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:146
+msgid "`parser.selector([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:148
+msgid "Creates a new selector node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:159
+msgid "`parser.string([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:161
+msgid "Creates a new string node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:172
+msgid "`parser.tag([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:174
+msgid "Creates a new tag selector."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:185
+msgid "`parser.universal([props])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:187
+msgid "Creates a new universal selector."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:198
+msgid "Node types"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:200
+msgid "`node.type`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:202
+msgid ""
+"A string representation of the selector type. It can be one of the "
+"following; `attribute`, `class`, `combinator`, `comment`, `id`, "
+"`nesting`, `pseudo`, `root`, `selector`, `string`, `tag`, or `universal`."
+" Note that for convenience, these constants are exposed on the main "
+"`parser` as uppercased keys. So for example you can get `id` by querying "
+"`parser.ID`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:213
+msgid "`node.parent`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:215
+msgid "Returns the parent node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:221
+msgid "`node.toString()`, `String(node)`, or `'' + node`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:223
+msgid "Returns a string representation of the node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:231
+msgid "`node.next()` & `node.prev()`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:233
+msgid "Returns the next/previous child of the parent node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:242
+msgid "`node.replaceWith(node)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:244
+msgid "Replace a node with another."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:254
+msgid "`node`: The node to substitute the original with."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:256
+msgid "`node.remove()`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:258
+msgid "Removes the node from its parent node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:266
+msgid "`node.clone()`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:268
+msgid ""
+"Returns a copy of a node, detached from any parent containers that the "
+"original might have had."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:278
+msgid "`node.spaces`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:280
+msgid ""
+"Extra whitespaces around the node will be moved into `node.spaces.before`"
+" and `node.spaces.after`. So for example, these spaces will be moved as "
+"they have no semantic meaning:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:288
+msgid "However, *combinating* spaces will form a `combinator` node:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:294
+msgid ""
+"A `combinator` node may only have the `spaces` property set if the "
+"combinator value is a non-whitespace character, such as `+`, `~` or `>`. "
+"Otherwise, the combinator value will contain all of the spaces between "
+"selectors."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:298
+msgid "`node.source`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:300
+msgid "An object describing the node's start/end, line/column source position."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:302
+msgid "Within the following CSS, the `.bar` class node ..."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:309
+msgid "... will contain the following `source` object."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:324
+msgid "`node.sourceIndex`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:326
+msgid "The zero-based index of the node within the original source string."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:328
+msgid ""
+"Within the following CSS, the `.baz` class node will have a `sourceIndex`"
+" of `12`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:334
+msgid "Container types"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:336
+msgid ""
+"The `root`, `selector`, and `pseudo` nodes have some helper methods for "
+"working with their children."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:339
+msgid "`container.nodes`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:341
+msgid "An array of the container's children."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:350
+msgid "`container.first` & `container.last`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:352
+msgid "The first/last child of the container."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:359
+msgid "`container.at(index)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:361
+msgid "Returns the node at position `index`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:370
+msgid "`index`: The index of the node to return."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:372
+msgid "`container.index(node)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:374
+msgid "Return the index of the node within its container."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:382
+msgid "`node`: A node within the current container."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:384
+msgid "`container.length`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:386
+msgid "Proxy to the length of the container's nodes."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:392
+msgid "`container` Array iterators"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:394
+msgid "The container class provides proxies to certain Array methods; these are:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:396
+msgid "`container.map === container.nodes.map`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:397
+msgid "`container.reduce === container.nodes.reduce`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:398
+msgid "`container.every === container.nodes.every`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:399
+msgid "`container.some === container.nodes.some`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:400
+msgid "`container.filter === container.nodes.filter`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:401
+msgid "`container.sort === container.nodes.sort`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:403
+msgid ""
+"Note that these methods only work on a container's immediate children; "
+"recursive iteration is provided by `container.walk`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:406
+msgid "`container.each(callback)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:408
+msgid ""
+"Iterate the container's immediate children, calling `callback` for each "
+"child. You may return `false` within the callback to break the iteration."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:421
+msgid ""
+"Note that unlike `Array#forEach()`, this iterator is safe to use whilst "
+"adding or removing nodes from the container."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:426
+#: ../../source/postcss-selector-parser_API.md:442
+msgid ""
+"`callback (function)`: A function to call for each node, which receives "
+"`node` and `index` arguments."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:429
+msgid "`container.walk(callback)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:431
+msgid ""
+"Like `container#each`, but will also iterate child nodes as long as they "
+"are `container` types."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:445
+msgid ""
+"This iterator is safe to use whilst mutating `container.nodes`, like "
+"`container#each`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:448
+msgid "`container.walk` proxies"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:450
+msgid ""
+"The container class provides proxy methods for iterating over types of "
+"nodes, so that it is easier to write modules that target specific "
+"selectors. Those methods are:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:454
+msgid "`container.walkAttributes`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:455
+msgid "`container.walkClasses`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:456
+msgid "`container.walkCombinators`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:457
+msgid "`container.walkComments`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:458
+msgid "`container.walkIds`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:459
+msgid "`container.walkNesting`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:460
+msgid "`container.walkPseudos`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:461
+msgid "`container.walkTags`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:462
+msgid "`container.walkUniversals`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:464
+msgid "`container.split(callback)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:466
+msgid ""
+"This method allows you to split a group of nodes by returning `true` from"
+" a callback. It returns an array of arrays, where each inner array "
+"corresponds to the groups that you created via the callback."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:481
+msgid ""
+"`callback (function)`: A function to call for each node, which receives "
+"`node` as an argument."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:484
+msgid "`container.prepend(node)` & `container.append(node)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:486
+msgid ""
+"Add a node to the start/end of the container. Note that doing so will set"
+" the parent property of the node to this container."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:496
+msgid "`node`: The node to add."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:498
+msgid "`container.insertBefore(old, new)` & `container.insertAfter(old, new)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:500
+msgid "Add a node before or after an existing node in a container:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:513
+msgid "`old`: The existing node in the container."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:514
+msgid "`new`: The new node to add before/after the existing node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:516
+msgid "`container.removeChild(node)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:518
+msgid ""
+"Remove the node from the container. Note that you can also use "
+"`node.remove()` if you would like to remove just a single node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:530
+msgid "`node`: The node to remove."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:532
+msgid "`container.removeAll()` or `container.empty()`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:534
+msgid "Remove all children from the container."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:541
+msgid "Root nodes"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:543
+msgid ""
+"A root node represents a comma separated list of selectors. Indeed, all a"
+" root's `toString()` method does is join its selector children with a "
+"','. Other than this, it has no special functionality and acts like a "
+"container."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:547
+msgid "`root.trailingComma`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:549
+msgid ""
+"This will be set to `true` if the input has a trailing comma, in order to"
+" support parsing of legacy CSS hacks."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:552
+msgid "Selector nodes"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:554
+msgid ""
+"A selector node represents a single compound selector. For example, this "
+"selector string `h1 h2 h3, [href] > p`, is represented as two selector "
+"nodes. It has no special functionality of its own."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:558
+msgid "Pseudo nodes"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:560
+msgid ""
+"A pseudo selector extends a container node; if it has any parameters of "
+"its own (such as `h1:not(h2, h3)`), they will be its children. Note that "
+"the pseudo `value` will always contain the colons preceding the pseudo "
+"identifier. This is so that both `:before` and `::before` are properly "
+"represented in the AST."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:565
+msgid "Attribute nodes"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:567
+msgid "`attribute.quoted`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:569
+msgid ""
+"Returns `true` if the attribute's value is wrapped in quotation marks, "
+"false if it is not. Remains `undefined` if there is no attribute value."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:579
+msgid "`attribute.qualifiedAttribute`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:581
+msgid "Returns the attribute name qualified with the namespace if one is given."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:583
+msgid "`attribute.offsetOf(part)`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:585
+msgid ""
+"Returns the offset of the attribute part specified relative to the  start"
+" of the node of the output string. This is useful in raising  error "
+"messages about a specific part of the attribute, especially  in "
+"combination with `attribute.sourceIndex`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:590
+msgid ""
+"Returns `-1` if the name is invalid or the value doesn't exist in this  "
+"attribute."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:593
+msgid "The legal values for `part` are:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:595
+msgid "`\"ns\"` - alias for \"namespace\""
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:596
+msgid "`\"namespace\"` - the namespace if it exists."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:597
+msgid "`\"attribute\"` - the attribute name"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:598
+msgid "`\"attributeNS\"` - the start of the attribute or its namespace"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:599
+msgid "`\"operator\"` - the match operator of the attribute"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:600
+msgid "`\"value\"` - The value (string or identifier)"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:601
+msgid "`\"insensitive\"` - the case insensitivity flag"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:603
+msgid "`attribute.raws.unquoted`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:605
+msgid ""
+"Returns the unquoted content of the attribute's value. Remains "
+"`undefined` if there is no attribute value."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:615
+msgid "`attribute.spaces`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:617
+msgid ""
+"Like `node.spaces` with the `before` and `after` values containing the "
+"spaces around the element, the parts of the attribute can also have "
+"spaces before and after them. The for each of `attribute`, `operator`, "
+"`value` and `insensitive` there is corresponding property of the same nam"
+" in `node.spaces` that has an optional `before` or `after` string "
+"containing only whitespace."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:624
+msgid ""
+"Note that corresponding values in `attributes.raws.spaces` contain values"
+" including any comments. If set, these values will override the "
+"`attribute.spaces` value. Take care to remove them if changing "
+"`attribute.spaces`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:629
+msgid "`attribute.raws`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:631
+msgid ""
+"The raws object stores comments and other information necessary to re-"
+"render the node exactly as it was in the source."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:634
+msgid ""
+"If a comment is embedded within the identifiers for the `namespace`, "
+"`attribute` or `value` then a property is placed in the raws for that "
+"value containing the full source of the propery including comments."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:637
+msgid ""
+"If a comment is embedded within the space between parts of the attribute "
+"then the raw for that space is set accordingly."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:640
+msgid "Setting an attribute's property `raws` value to be deleted."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:642
+msgid ""
+"For now, changing the spaces required also updating or removing any of "
+"the  raws values that override them."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:645
+msgid ""
+"Example: `[ /*before*/ href /* after-attr */ = /* after-operator */ te"
+"/*inside-value*/st/* wow */ /*omg*/i/*bbq*/ /*whodoesthis*/]` would parse"
+" as:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:673
+msgid "`Processor`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:675
+msgid "`ProcessorOptions`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:677
+msgid "`lossless` - When `true`, whitespace is preserved. Defaults to `true`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:678
+msgid ""
+"`updateSelector` - When `true`, if any processor methods are passed a "
+"postcss `Rule` node instead of a string, then that Rule's selector is "
+"updated with the results of the processing. Defaults to `true`."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:682
+msgid "`process|processSync(selectors, [options])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:684
+msgid ""
+"Processes the `selectors`, returning a string from the result of "
+"processing."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:686
+#: ../../source/postcss-selector-parser_API.md:734
+#: ../../source/postcss-selector-parser_API.md:743
+msgid ""
+"Note: when the `updateSelector` option is set, the rule's selector will "
+"be updated with the resulting string."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:689
+msgid "**Example:**"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:723
+msgid ""
+"`selectors (string|postcss.Rule)`: Either a selector string or a PostCSS "
+"Rule node."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:725
+msgid "`[options] (object)`: Process options"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:728
+msgid "`ast|astSync(selectors, [options])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:730
+msgid ""
+"Like `process()` and `processSync()` but after processing the `selectors`"
+" these methods return the `Root` node of the result instead of a string."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:737
+msgid "`transform|transformSync(selectors, [options])`"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:739
+msgid ""
+"Like `process()` and `processSync()` but after processing the `selectors`"
+" these methods return the value returned by the processor callback."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:746
+msgid "Error Handling Within Selector Processors"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:748
+msgid ""
+"The root node passed to the selector processor callback has a method "
+"`error(message, options)` that returns an error object. This method "
+"should always be used to raise errors relating to the syntax of "
+"selectors. The options to this method are passed to postcss's error "
+"constructor "
+"([documentation](http://api.postcss.org/Container.html#error))."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:755
+msgid "Async Error Example"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_API.md:799
+msgid "Synchronous Error Example"
+msgstr ""
+

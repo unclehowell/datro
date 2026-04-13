@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/preset-env_CONTRIBUTING.md:1
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:3
+msgid ""
+"Adding a new plugin or polyfill to support (when approved in the next "
+"ECMAScript version)"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:5
+msgid ""
+"Update [`plugin-"
+"features.js`](https://github.com/babel/babel/blob/main/packages/babel-"
+"compat-data/scripts/data/plugin-features.js)"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:7
+#: ../../source/preset-env_CONTRIBUTING.md:32
+msgid "*Example:*"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:9
+msgid "If you were going to add `**` which is in ES2016:"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:11
+msgid ""
+"Find the relevant entries on [compat-table](https://kangax.github.io"
+"/compat-table/es2016plus/#test-exponentiation_(**)_operator):"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:13
+msgid "`exponentiation (**) operator`"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:15
+msgid "Find the corresponding babel plugin:"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:17
+msgid "`@babel/plugin-transform-exponentiation-operator`"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:19
+msgid "And add them in this structure:"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:30
+msgid "Update data for `core-js@2` polyfilling"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:34
+msgid "In case you want to add `Object.values` which is in ES2017:"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:36
+msgid ""
+"Find the relevant feature and subfeature on [compat-"
+"table](https://kangax.github.io/compat-table/es2016plus/#test-"
+"Object_static_methods_Object.values) and split it with `/`:"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:39
+msgid "`Object static methods / Object.values`"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:41
+msgid ""
+"Find the corresponding module on [`core-"
+"js@2`](https://github.com/zloirock/core-js/tree/v2/modules):"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:43
+msgid "`es7.object.values.js`"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:45
+msgid ""
+"Find required ES version in [`corejs2-built-in-"
+"features.js`](https://github.com/babel/babel/blob/main/packages/babel-"
+"preset-env/data/corejs2-built-in-features.js) and add the new feature:"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:54
+msgid ""
+"If you want to transform a new built-in by `useBuiltIns: 'usage'`, add "
+"mapping to related `core-js` modules to [this "
+"file](https://github.com/babel/babel/blob/main/packages/babel-preset-"
+"env/polyfills/corejs2/built-in-definitions.js)."
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:56
+msgid "Update data for `core-js@3` polyfilling"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:58
+msgid ""
+"Just update the version of [`core-js-compat`](https://github.com/zloirock"
+"/core-js/tree/main/packages/core-js-compat) in dependencies."
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:60
+msgid ""
+"If you want to transform a new built-in by `useBuiltIns: 'usage'`, add "
+"mapping to related [`core-js`](https://github.com/zloirock/core-"
+"js/tree/main/packages/core-js/modules) modules to [this "
+"file](https://github.com/babel/babel/blob/main/packages/babel-preset-"
+"env/polyfills/corejs3/built-in-definitions.js)."
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:62
+msgid ""
+"If you want to mark a new proposal as shipped, add it to [this "
+"list](https://github.com/babel/babel/blob/main/packages/babel-preset-"
+"env/polyfills/corejs3/shipped-proposals.js)."
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:64
+msgid ""
+"Update [`plugins.json`](https://github.com/babel/babel/blob/main/packages"
+"/babel-preset-env/data/plugins.json)"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:66
+msgid ""
+"Until `compat-table` is a standalone npm module for data we are using the"
+" git commit in `packages/babel-compat-data/scripts/download-compat-"
+"table.sh`"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:68
+msgid "`COMPAT_TABLE_COMMIT=[latest-commit-hash]`,"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:70
+msgid ""
+"So we update and then run `npm run build-data`. If there are no changes, "
+"then `plugins.json` will be the same."
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:72
+msgid "Tests"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:74
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:75
+msgid ""
+"See general "
+"[CONTRIBUTING.md](https://github.com/babel/babel/blob/main/CONTRIBUTING.md"
+"#running-lintingtests)."
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:77
+msgid "Writing tests"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:79
+msgid "General"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:81
+msgid ""
+"All the tests for `@babel/preset-env` exist in the `test/fixtures` "
+"folder. The test setup and conventions are exactly the same as testing a "
+"Babel plugin, so please read our [documentation on writing "
+"tests](https://github.com/babel/babel/blob/main/CONTRIBUTING.md#babel-"
+"plugin-x)."
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:85
+msgid "Testing the `debug` option"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:87
+msgid ""
+"Testing debug output to `stdout` is similar. Under the `test/debug-"
+"fixtures`, create a folder with a descriptive name of your test, and add "
+"the following:"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:90
+msgid ""
+"Add a `options.json` file (just as the other tests, this is essentially a"
+" `.babelrc`) with the desired test configuration (required)"
+msgstr ""
+
+#: ../../source/preset-env_CONTRIBUTING.md:92
+msgid ""
+"Add a `stdout.txt` file with the expected debug output. For added "
+"convenience, if there is no `stdout.txt` present, the test runner will "
+"generate one for you."
+msgstr ""
+

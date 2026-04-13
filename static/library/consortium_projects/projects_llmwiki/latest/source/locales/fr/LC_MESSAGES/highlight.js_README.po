@@ -1,0 +1,1813 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/highlight.js_README.md:1
+msgid "Highlight.js"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:3
+msgid ""
+"[![this "
+"version](https://badgen.net/badge/this%20version/v9.18.4/red)](https://github.com/highlightjs/highlight.js/blob/master/VERSION_10_UPGRADE.md)"
+" "
+"[![supported](https://badgen.net/badge/supported/no/red)](https://github.com/highlightjs/highlight.js/blob/master/VERSION_10_UPGRADE.md)"
+" "
+"[![vulnerabilities](https://badgen.net/badge/vulnerabilities/possible/red)](https://github.com/highlightjs/highlight.js/blob/master/SECURITY.md)"
+" [![latest "
+"version](https://badgen.net/npm/v/highlight.js?label=latest)](https://www.npmjs.com/package/highlight.js)"
+" "
+"[![beta](https://badgen.net/npm/v/highlight.js/beta)](https://www.npmjs.com/package/highlight.js)"
+" "
+"[![slack](https://badgen.net/badge/icon/slack?icon=slack&label&color=pink)](https://join.slack.com/t/highlightjs/shared_invite"
+"/zt-jatdlkw4-h3LdjU5rC23t7aQ6zqoxzw)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:3
+msgid "this version"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:3
+msgid "supported"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:3
+msgid "vulnerabilities"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:3
+msgid "latest version"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:3
+msgid "beta"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:3
+msgid "slack"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:12
+msgid ""
+":warning: :warning:  Important: Version 9 is no longer supported.  "
+":warning: :warning:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:14
+msgid ""
+"Version 9 has reached end-of-support and will receive no future updates. "
+"It may include unpatched security vulnerabiites.  Please upgrade to "
+"version 10."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:17
+msgid "*The last release was 9.18.4 on November 18, 2020.*"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:19
+msgid ""
+"Please see "
+"[VERSION_10_UPGRADE.md](https://github.com/highlightjs/highlight.js/blob/master/VERSION_10_UPGRADE.md)"
+" and perhaps "
+"[SECURITY.md](https://github.com/highlightjs/highlight.js/blob/master/SECURITY.md)."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:23
+msgid ""
+"Highlight.js is a syntax highlighter written in JavaScript. It works in "
+"the browser as well as on the server. It works with pretty much any "
+"markup, doesn’t depend on any framework, and has automatic language "
+"detection."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:29
+msgid "Getting Started"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:31
+msgid ""
+"The bare minimum for using highlight.js on a web page is linking to the "
+"library along with one of the styles and calling "
+"[`initHighlightingOnLoad`][1]:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:41
+msgid ""
+"This will find and highlight code inside of `<pre><code>` tags; it tries "
+"to detect the language automatically. If automatic detection doesn’t work"
+" for you, you can specify the language in the `class` attribute:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:49
+msgid "Classes may also be prefixed with either `language-` or `lang-`."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:55
+msgid "Plaintext and Disabling Highlighting"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:57
+msgid ""
+"To style arbitrary text like code, but without any highlighting, use the "
+"`plaintext` class:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:64
+msgid "To disable highlighting of a tag completely, use the `nohighlight` class:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:70
+msgid "Supported Languages"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:72
+msgid ""
+"The table below shows the full list of supported languages (and "
+"corresponding classes) that are bundled with the library.  Note: Which "
+"languages are available may depend on how you've built or included the "
+"library in your app. See [Getting the Library](#getting-the-library) "
+"below."
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Language"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Classes"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Package"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "1C"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "1c"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ABNF"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "abnf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Access logs"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "accesslog"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Ada"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ada"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ARM assembler"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "armasm, arm"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "AVR assembler"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "avrasm"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ActionScript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "actionscript, as"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Alan"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "alan, i"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "[highlightjs-alan](https://github.com/highlightjs/highlightjs-alan)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "AngelScript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "angelscript, asc"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Apache"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "apache, apacheconf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "AppleScript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "applescript, osascript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Arcade"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "arcade"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "AsciiDoc"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "asciidoc, adoc"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "AspectJ"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "aspectj"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "AutoHotkey"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "autohotkey"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "AutoIt"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "autoit"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Awk"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "awk, mawk, nawk, gawk"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Axapta"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "axapta"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Bash"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "bash, sh, zsh"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Basic"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "basic"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "BNF"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "bnf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Brainfuck"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "brainfuck, bf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "C#"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "cs, csharp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "C++"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "cpp, c, cc, h, c++, h++, hpp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "C/AL"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "cal"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Cache Object Script"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "cos, cls"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "CMake"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "cmake, cmake.in"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Coq"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "coq"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "CSP"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "csp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "CSS"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "css"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Cap’n Proto"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "capnproto, capnp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Clojure"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "clojure, clj"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "CoffeeScript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "coffeescript, coffee, cson, iced"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Crmsh"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "crmsh, crm, pcmk"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Crystal"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "crystal, cr"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Cypher (Neo4j)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "cypher"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "[highlightjs-cypher](https://github.com/highlightjs/highlightjs-cypher)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "D"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "d"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "DNS Zone file"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "dns, zone, bind"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "DOS"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "dos, bat, cmd"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Dart"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "dart"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Delphi"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "delphi, dpr, dfm, pas, pascal, freepascal, lazarus, lpr, lfm"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Diff"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "diff, patch"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Django"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "django, jinja"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Dockerfile"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "dockerfile, docker"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "dsconfig"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "DTS (Device Tree)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "dts"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Dust"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "dust, dst"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Dylan"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "dylan"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "[highlight-dylan](https://github.com/highlightjs/highlight-dylan)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "EBNF"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ebnf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Elixir"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "elixir"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Elm"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "elm"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Erlang"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "erlang, erl"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Excel"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "excel, xls, xlsx"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Extempore"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "extempore, xtlang, xtm"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "[highlightjs-xtlang](https://github.com/highlightjs/highlightjs-xtlang)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "F#"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "fsharp, fs"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "FIX"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "fix"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Fortran"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "fortran, f90, f95"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "G-Code"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "gcode, nc"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Gams"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "gams, gms"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "GAUSS"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "gauss, gss"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "GDScript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "godot, gdscript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid ""
+"[highlightjs-gdscript](https://github.com/highlightjs/highlightjs-"
+"gdscript)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Gherkin"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "gherkin"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "GN for Ninja"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "gn, gni"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid ""
+"[highlightjs-GN](https://github.com/highlightjs/highlightjs-"
+"GN/blob/master/gn.js)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Go"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "go, golang"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Grammatical Framework"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "gf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "[highlightjs-gf](https://github.com/johnjcamilleri/highlightjs-gf)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Golo"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "golo, gololang"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Gradle"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "gradle"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Groovy"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "groovy"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "HTML, XML"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "xml, html, xhtml, rss, atom, xjb, xsd, xsl, plist, svg"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "HTTP"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "http, https"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Haml"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "haml"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Handlebars"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "handlebars, hbs, html.hbs, html.handlebars"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Haskell"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "haskell, hs"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Haxe"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "haxe, hx"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Hy"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "hy, hylang"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Ini, TOML"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ini, toml"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Inform7"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "inform7, i7"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "IRPF90"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "irpf90"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "JSON"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "json"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Java"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "java, jsp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "JavaScript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "javascript, js, jsx"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Kotlin"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "kotlin, kt"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Leaf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "leaf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Lasso"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "lasso, ls, lassoscript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Less"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "less"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "LDIF"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ldif"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Lisp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "lisp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "LiveCode Server"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "livecodeserver"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "LiveScript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "livescript, ls"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Lua"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "lua"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Makefile"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "makefile, mk, mak"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Markdown"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "markdown, md, mkdown, mkd"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Mathematica"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "mathematica, mma, wl"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Matlab"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "matlab"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Maxima"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "maxima"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Maya Embedded Language"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "mel"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Mercury"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "mercury"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "mIRC Scripting Language"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "mirc, mrc"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "[highlightjs-mirc](https://github.com/highlightjs/highlightjs-mirc)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Mizar"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "mizar"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Mojolicious"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "mojolicious"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Monkey"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "monkey"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Moonscript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "moonscript, moon"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "N1QL"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "n1ql"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "NSIS"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "nsis"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Nginx"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "nginx, nginxconf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Nimrod"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "nimrod, nim"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Nix"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "nix"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "OCaml"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ocaml, ml"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Objective C"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "objectivec, mm, objc, obj-c"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "OpenGL Shading Language"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "glsl"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "OpenSCAD"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "openscad, scad"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Oracle Rules Language"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ruleslanguage"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Oxygene"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "oxygene"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "PF"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "pf, pf.conf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "PHP"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "php, php3, php4, php5, php6, php7"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Parser3"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "parser3"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Perl"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "perl, pl, pm"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Plaintext: no highlight"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "plaintext"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Pony"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "pony"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "PostgreSQL & PL/pgSQL"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "pgsql, postgres, postgresql"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "PowerShell"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "powershell, ps, ps1"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Processing"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "processing"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Prolog"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "prolog"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Properties"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "properties"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Protocol Buffers"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "protobuf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Puppet"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "puppet, pp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Python"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "python, py, gyp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Python profiler results"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "profile"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Q"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "k, kdb"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "QML"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "qml"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "R"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "r"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Razor CSHTML"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "cshtml, razor, razor-cshtml"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid ""
+"[highlightjs-cshtml-razor](https://github.com/highlightjs/highlightjs-"
+"cshtml-razor)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ReasonML"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "reasonml, re"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "RenderMan RIB"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "rib"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "RenderMan RSL"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "rsl"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Roboconf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "graph, instances"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Robot Framework"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "robot, rf"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "[highlightjs-robot](https://github.com/highlightjs/highlightjs-robot)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "RPM spec files"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "rpm-specfile, rpm, spec, rpm-spec, specfile"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid ""
+"[highlightjs-rpm-specfile](https://github.com/highlightjs/highlightjs-"
+"rpm-specfile)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Ruby"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "ruby, rb, gemspec, podspec, thor, irb"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Rust"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "rust, rs"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "SAS"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "SAS, sas"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "SCSS"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "scss"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "SQL"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "sql"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "STEP Part 21"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "p21, step, stp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Scala"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "scala"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Scheme"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "scheme"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Scilab"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "scilab, sci"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Shape Expressions"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "shexc"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "[highlightjs-shexc](https://github.com/highlightjs/highlightjs-shexc)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Shell"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "shell, console"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Smali"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "smali"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Smalltalk"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "smalltalk, st"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Solidity"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "solidity, sol"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid ""
+"[highlightjs-solidity](https://github.com/highlightjs/highlightjs-"
+"solidity)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Stan"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "stan, stanfuncs"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Stata"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "stata"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Structured Text"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "iecst, scl, stl, structured-text"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid ""
+"[highlightjs-structured-text](https://github.com/highlightjs/highlightjs-"
+"structured-text)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Stylus"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "stylus, styl"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "SubUnit"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "subunit"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Supercollider"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "supercollider, sc"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid ""
+"[highlightjs-supercollider](https://github.com/highlightjs/highlightjs-"
+"supercollider)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Swift"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "swift"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Tcl"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "tcl, tk"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Terraform (HCL)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "terraform, tf, hcl"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid ""
+"[highlightjs-terraform](https://github.com/highlightjs/highlightjs-"
+"terraform)"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Test Anything Protocol"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "tap"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "TeX"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "tex"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Thrift"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "thrift"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "TP"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "tp"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Twig"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "twig, craftcms"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "TypeScript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "typescript, ts"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "VB.Net"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "vbnet, vb"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "VBScript"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "vbscript, vbs"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "VHDL"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "vhdl"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Vala"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "vala"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Verilog"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "verilog, v"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Vim Script"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "vim"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "x86 Assembly"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "x86asm"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "XL"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "xl, tao"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "XQuery"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "xquery, xpath, xq"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "YAML"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "yml, yaml"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "Zephir"
+msgstr ""
+
+#: ../../source/highlight.js_README.md
+msgid "zephir, zep"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:258
+msgid ""
+"Languages with the specified package name are defined in separate "
+"repositories and not included in `highlight.pack.js`."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:263
+msgid "Custom Initialization"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:265
+msgid ""
+"When you need a bit more control over the initialization of highlight.js,"
+" you can use the [`highlightBlock`][3] and [`configure`][4] functions. "
+"This allows you to control *what* to highlight and *when*."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:269
+msgid ""
+"Here’s an equivalent way to calling [`initHighlightingOnLoad`][1] using "
+"vanilla JS:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:280
+msgid ""
+"You can use any tags instead of `<pre><code>` to mark up your code. If "
+"you don't use a container that preserves line breaks you will need to "
+"configure highlight.js to use the `<br>` tag:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:292
+msgid "For other options refer to the documentation for [`configure`][4]."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:295
+msgid "Web Workers"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:297
+msgid ""
+"You can run highlighting inside a web worker to avoid freezing the "
+"browser window while dealing with very big chunks of code."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:300
+msgid "In your main script:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:311
+msgid "In worker.js:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:321
+msgid "Node.js"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:323
+msgid ""
+"You can use highlight.js with node to highlight content before sending it"
+" to the browser. Make sure to use the `.value` property to get the "
+"formatted html. For more info about the returned object refer to the api "
+"docs https://highlightjs.readthedocs.io/en/latest/api.html"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:344
+msgid "Getting the Library"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:346
+msgid ""
+"You can get highlight.js as a hosted, or custom-build, browser script or "
+"as a server module. Right out of the box the browser script supports both"
+" AMD and CommonJS, so if you wish you can use RequireJS or Browserify "
+"without having to build from source. The server module also works "
+"perfectly fine with Browserify, but there is the option to use a build "
+"specific to browsers rather than something meant for a server. Head over "
+"to the [download page][5] for all the options."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:354
+msgid ""
+"**Don't link to GitHub directly.** The library is not supposed to work "
+"straight from the source, it requires building. If none of the pre-"
+"packaged options work for you refer to the [building documentation][6]."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:358
+msgid ""
+"**The CDN-hosted package doesn't have all the languages.** Otherwise it'd"
+" be too big. If you don't see the language you need in the [\"Common\" "
+"section][5], it can be added manually:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:368
+msgid ""
+"**On Almond.** You need to use the optimizer to give the module a name. "
+"For example:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:376
+msgid "CommonJS"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:378
+msgid "You can import Highlight.js as a CommonJS-module:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:384
+msgid "In your application:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:390
+msgid ""
+"The default import imports all languages! Therefore it is likely to be "
+"more efficient to import only the library and the languages you need:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:398
+msgid ""
+"To set the syntax highlighting style, if your build tool processes CSS "
+"from your JavaScript entry point, you can import the stylesheet directly "
+"into your CommonJS-module:"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:405
+msgid "License"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:407
+msgid ""
+"Highlight.js is released under the BSD License. See [LICENSE][7] file for"
+" details."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:410
+msgid "Links"
+msgstr ""
+
+#: ../../source/highlight.js_README.md:412
+msgid "The official site for the library is at <https://highlightjs.org/>."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:414
+msgid ""
+"Further in-depth documentation for the API and other topics is at "
+"<http://highlightjs.readthedocs.io/>."
+msgstr ""
+
+#: ../../source/highlight.js_README.md:417
+msgid "Authors and contributors are listed in the [AUTHORS.txt][8] file."
+msgstr ""
+

@@ -1,0 +1,1442 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_clay.md:1
+msgid "Design System: Clay"
+msgstr ""
+
+#: ../../source/templates_clay.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_clay.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_clay.md:7
+msgid "**Primary:** `DM Sans` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_clay.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'DM Sans', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_clay.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_clay.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_clay.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_clay.md:18
+msgid ""
+"Clay's website is a warm, playful celebration of color that treats B2B "
+"data enrichment like a craft rather than an enterprise chore. The design "
+"language is built on a foundation of warm cream backgrounds (`#faf9f7`) "
+"and oat-toned borders (`#dad4c8`, `#eee9df`) that give every surface the "
+"tactile quality of handmade paper. Against this artisanal canvas, a vivid"
+" swatch palette explodes with personality — Matcha green, Slushie cyan, "
+"Lemon gold, Ube purple, Pomegranate pink, Blueberry navy, and Dragonfruit"
+" magenta — each named like flavors at a juice bar, not colors in an "
+"enterprise UI kit."
+msgstr ""
+
+#: ../../source/templates_clay.md:20
+msgid ""
+"The typography is anchored by Roobert, a geometric sans-serif with "
+"character, loaded with an extensive set of OpenType stylistic sets "
+"(`\"ss01\"`, `\"ss03\"`, `\"ss10\"`, `\"ss11\"`, `\"ss12\"`) that give "
+"the text a distinctive, slightly quirky personality. At display scale "
+"(80px, weight 600), Roobert uses aggressive negative letter-spacing "
+"(-3.2px) that compresses headlines into punchy, billboard-like "
+"statements. Space Mono serves as the monospace companion for code and "
+"technical labels, completing the craft-meets-tech duality."
+msgstr ""
+
+#: ../../source/templates_clay.md:22
+msgid ""
+"What makes Clay truly distinctive is its hover micro-animations: buttons "
+"on hover rotate slightly (`rotateZ(-8deg)`), translate upward "
+"(`translateY(-80%)`), change background to a contrasting swatch color, "
+"and cast a hard offset shadow (`rgb(0,0,0) -7px 7px`). This playful hover"
+" behavior — where a button literally tilts and jumps on interaction — "
+"creates a sense of physical delight that's rare in B2B software. Combined"
+" with generously rounded containers (24px–40px radius), dashed borders "
+"alongside solid ones, and a multi-layer shadow system that includes inset"
+" highlights, Clay feels like a design system that was made by people who "
+"genuinely enjoy making things."
+msgstr ""
+
+#: ../../source/templates_clay.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_clay.md:25
+msgid ""
+"Warm cream canvas (`#faf9f7`) with oat-toned borders (`#dad4c8`) — "
+"artisanal, not clinical"
+msgstr ""
+
+#: ../../source/templates_clay.md:26
+msgid ""
+"Named swatch palette: Matcha, Slushie, Lemon, Ube, Pomegranate, "
+"Blueberry, Dragonfruit"
+msgstr ""
+
+#: ../../source/templates_clay.md:27
+msgid "Roobert font with 5 OpenType stylistic sets — quirky geometric character"
+msgstr ""
+
+#: ../../source/templates_clay.md:28
+msgid ""
+"Playful hover animations: rotateZ(-8deg) + translateY(-80%) + hard offset"
+" shadow"
+msgstr ""
+
+#: ../../source/templates_clay.md:29
+msgid "Space Mono for code and technical labels"
+msgstr ""
+
+#: ../../source/templates_clay.md:30
+msgid "Generous border radius: 24px cards, 40px sections, 1584px pills"
+msgstr ""
+
+#: ../../source/templates_clay.md:31
+msgid "Mixed border styles: solid + dashed in the same interface"
+msgstr ""
+
+#: ../../source/templates_clay.md:32
+msgid ""
+"Multi-layer shadow with inset highlight: `0px 1px 1px` + `-1px inset` + "
+"`-0.5px`"
+msgstr ""
+
+#: ../../source/templates_clay.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_clay.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_clay.md:37
+msgid ""
+"**Clay Black** (`#000000`): Text, headings, pricing card text, `--_theme"
+"--pricing-cards---text`"
+msgstr ""
+
+#: ../../source/templates_clay.md:38
+msgid ""
+"**Pure White** (`#ffffff`): Card backgrounds, button backgrounds, inverse"
+" text"
+msgstr ""
+
+#: ../../source/templates_clay.md:39
+msgid "**Warm Cream** (`#faf9f7`): Page background — the warm, paper-like canvas"
+msgstr ""
+
+#: ../../source/templates_clay.md:41
+msgid "Swatch Palette — Named Colors"
+msgstr ""
+
+#: ../../source/templates_clay.md:43
+msgid "**Matcha (Green)**"
+msgstr ""
+
+#: ../../source/templates_clay.md:44
+msgid ""
+"**Matcha 300** (`#84e7a5`): `--_swatches---color--matcha-300`, light "
+"green accent"
+msgstr ""
+
+#: ../../source/templates_clay.md:45
+msgid "**Matcha 600** (`#078a52`): `--_swatches---color--matcha-600`, mid green"
+msgstr ""
+
+#: ../../source/templates_clay.md:46
+msgid ""
+"**Matcha 800** (`#02492a`): `--_swatches---color--matcha-800`, deep green"
+" for dark sections"
+msgstr ""
+
+#: ../../source/templates_clay.md:48
+msgid "**Slushie (Cyan)**"
+msgstr ""
+
+#: ../../source/templates_clay.md:49
+msgid ""
+"**Slushie 500** (`#3bd3fd`): `--_swatches---color--slushie-500`, bright "
+"cyan accent"
+msgstr ""
+
+#: ../../source/templates_clay.md:50
+msgid "**Slushie 800** (`#0089ad`): `--_swatches---color--slushie-800`, deep teal"
+msgstr ""
+
+#: ../../source/templates_clay.md:52
+msgid "**Lemon (Gold)**"
+msgstr ""
+
+#: ../../source/templates_clay.md:53
+msgid ""
+"**Lemon 400** (`#f8cc65`): `--_swatches---color--lemon-400`, warm pale "
+"gold"
+msgstr ""
+
+#: ../../source/templates_clay.md:54
+msgid "**Lemon 500** (`#fbbd41`): `--_swatches---color--lemon-500`, primary gold"
+msgstr ""
+
+#: ../../source/templates_clay.md:55
+msgid "**Lemon 700** (`#d08a11`): `--_swatches---color--lemon-700`, deep amber"
+msgstr ""
+
+#: ../../source/templates_clay.md:56
+msgid "**Lemon 800** (`#9d6a09`): `--_swatches---color--lemon-800`, dark amber"
+msgstr ""
+
+#: ../../source/templates_clay.md:58
+msgid "**Ube (Purple)**"
+msgstr ""
+
+#: ../../source/templates_clay.md:59
+msgid "**Ube 300** (`#c1b0ff`): `--_swatches---color--ube-300`, soft lavender"
+msgstr ""
+
+#: ../../source/templates_clay.md:60
+msgid "**Ube 800** (`#43089f`): `--_swatches---color--ube-800`, deep purple"
+msgstr ""
+
+#: ../../source/templates_clay.md:61
+msgid "**Ube 900** (`#32037d`): `--_swatches---color--ube-900`, darkest purple"
+msgstr ""
+
+#: ../../source/templates_clay.md:63
+msgid "**Pomegranate (Pink/Red)**"
+msgstr ""
+
+#: ../../source/templates_clay.md:64
+msgid ""
+"**Pomegranate 400** (`#fc7981`): `--_swatches---color--pomegranate-400`, "
+"warm coral-pink"
+msgstr ""
+
+#: ../../source/templates_clay.md:66
+msgid "**Blueberry (Navy Blue)**"
+msgstr ""
+
+#: ../../source/templates_clay.md:67
+msgid ""
+"**Blueberry 800** (`#01418d`): `--_swatches---color--blueberry-800`, deep"
+" navy"
+msgstr ""
+
+#: ../../source/templates_clay.md:69
+msgid "Neutral Scale (Warm)"
+msgstr ""
+
+#: ../../source/templates_clay.md:70
+msgid "**Warm Silver** (`#9f9b93`): Secondary/muted text, footer links"
+msgstr ""
+
+#: ../../source/templates_clay.md:71
+msgid "**Warm Charcoal** (`#55534e`): Tertiary text, dark muted links"
+msgstr ""
+
+#: ../../source/templates_clay.md:72
+msgid "**Dark Charcoal** (`#333333`): Link text on light backgrounds"
+msgstr ""
+
+#: ../../source/templates_clay.md:74
+msgid "Surface & Border"
+msgstr ""
+
+#: ../../source/templates_clay.md:75
+msgid ""
+"**Oat Border** (`#dad4c8`): Primary border — warm, cream-toned structural"
+" lines"
+msgstr ""
+
+#: ../../source/templates_clay.md:76
+msgid "**Oat Light** (`#eee9df`): Secondary lighter border"
+msgstr ""
+
+#: ../../source/templates_clay.md:77
+msgid "**Cool Border** (`#e6e8ec`): Cool-toned border for contrast sections"
+msgstr ""
+
+#: ../../source/templates_clay.md:78
+msgid "**Dark Border** (`#525a69`): Border on dark sections"
+msgstr ""
+
+#: ../../source/templates_clay.md:79
+#, python-format
+msgid ""
+"**Light Frost** (`#eff1f3`): Subtle button background (at 0% opacity on "
+"hover)"
+msgstr ""
+
+#: ../../source/templates_clay.md:81
+msgid "Badges"
+msgstr ""
+
+#: ../../source/templates_clay.md:82
+msgid "**Badge Blue Bg** (`#f0f8ff`): Blue-tinted badge surface"
+msgstr ""
+
+#: ../../source/templates_clay.md:83
+msgid "**Badge Blue Text** (`#3859f9`): Vivid blue badge text"
+msgstr ""
+
+#: ../../source/templates_clay.md:84
+msgid ""
+"**Focus Ring** (`rgb(20, 110, 245) solid 2px`): Accessibility focus "
+"indicator"
+msgstr ""
+
+#: ../../source/templates_clay.md:86
+msgid "Shadows"
+msgstr ""
+
+#: ../../source/templates_clay.md:87
+msgid ""
+"**Clay Shadow** (`rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px "
+"1px inset, rgba(0,0,0,0.05) 0px -0.5px 1px`): Multi-layer with inset "
+"highlight — the signature"
+msgstr ""
+
+#: ../../source/templates_clay.md:88
+msgid "**Hard Offset** (`rgb(0,0,0) -7px 7px`): Hover state — playful hard shadow"
+msgstr ""
+
+#: ../../source/templates_clay.md:90
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_clay.md:92
+msgid "Font Families"
+msgstr ""
+
+#: ../../source/templates_clay.md:93
+msgid "**Primary**: `Roobert`, fallback: `Arial`"
+msgstr ""
+
+#: ../../source/templates_clay.md:94
+msgid "**Monospace**: `Space Mono`"
+msgstr ""
+
+#: ../../source/templates_clay.md:95
+msgid ""
+"**OpenType Features**: `\"ss01\"`, `\"ss03\"`, `\"ss10\"`, `\"ss11\"`, "
+"`\"ss12\"` on all Roobert text (display uses all 5; body/UI uses "
+"`\"ss03\"`, `\"ss10\"`, `\"ss11\"`, `\"ss12\"`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:97
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Roobert"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "80px (5.00rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-3.2px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "All 5 stylistic sets"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Display Secondary"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "60px (3.75rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-2.4px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "44px (2.75rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "1.10 (tight)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-0.88px to -1.32px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Card Heading"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "32px (2.00rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-0.64px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-0.4px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-0.16px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "4 stylistic sets (no ss01)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "4 stylistic sets"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "1.60 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-0.36px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Body Standard"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Body Medium"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "1.20–1.40"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-0.16px to -0.32px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "4–5 stylistic sets"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Button Large"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "24px (1.50rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Button Small"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "12.8px (0.80rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-0.128px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Nav Link"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "15px (0.94rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "1.50–1.60"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "-0.14px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Small"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Uppercase Label"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "1.08px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "`text-transform: uppercase`, 4 sets"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Badge"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "9.6px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "—"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Pill badges"
+msgstr ""
+
+#: ../../source/templates_clay.md:120
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_clay.md:121
+msgid ""
+"**Five stylistic sets as identity**: The combination of `\"ss01\"`, "
+"`\"ss03\"`, `\"ss10\"`, `\"ss11\"`, `\"ss12\"` on Roobert creates a "
+"distinctive typographic personality. `ss01` is reserved for headings and "
+"emphasis — body text omits it, creating a subtle hierarchy through glyph "
+"variation."
+msgstr ""
+
+#: ../../source/templates_clay.md:122
+msgid ""
+"**Aggressive display compression**: -3.2px at 80px, -2.4px at 60px — the "
+"most compressed display tracking alongside the most generous body spacing"
+" (1.60 line-height), creating dramatic contrast."
+msgstr ""
+
+#: ../../source/templates_clay.md:123
+msgid ""
+"**Weight 600 for headings, 500 for UI, 400 for body**: Clean three-tier "
+"system where each weight has a strict role."
+msgstr ""
+
+#: ../../source/templates_clay.md:124
+msgid ""
+"**Uppercase labels with positive tracking**: 12px uppercase at 1.08px "
+"letter-spacing creates the systematic wayfinding pattern."
+msgstr ""
+
+#: ../../source/templates_clay.md:126
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_clay.md:128
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_clay.md:130
+msgid "**Primary (Transparent with Hover Animation)**"
+msgstr ""
+
+#: ../../source/templates_clay.md:131
+msgid "Background: transparent (`rgba(239, 241, 243, 0)`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:132 ../../source/templates_clay.md:140
+#: ../../source/templates_clay.md:147 ../../source/templates_clay.md:161
+msgid "Text: `#000000`"
+msgstr ""
+
+#: ../../source/templates_clay.md:133
+msgid "Padding: 6.4px 12.8px"
+msgstr ""
+
+#: ../../source/templates_clay.md:134
+msgid "Border: none (or `1px solid #717989` for outlined variant)"
+msgstr ""
+
+#: ../../source/templates_clay.md:135
+msgid ""
+"Hover: background shifts to swatch color (e.g., `#434346`), text to "
+"white, `rotateZ(-8deg)`, `translateY(-80%)`, hard shadow `rgb(0,0,0) -7px"
+" 7px`"
+msgstr ""
+
+#: ../../source/templates_clay.md:136 ../../source/templates_clay.md:164
+msgid "Focus: `rgb(20, 110, 245) solid 2px` outline"
+msgstr ""
+
+#: ../../source/templates_clay.md:138
+msgid "**White Solid**"
+msgstr ""
+
+#: ../../source/templates_clay.md:139
+msgid "Background: `#ffffff`"
+msgstr ""
+
+#: ../../source/templates_clay.md:141
+msgid "Padding: 6.4px"
+msgstr ""
+
+#: ../../source/templates_clay.md:142
+msgid "Hover: oat-200 swatch color, animated rotation + shadow"
+msgstr ""
+
+#: ../../source/templates_clay.md:143
+msgid "Use: Primary CTA on colored sections"
+msgstr ""
+
+#: ../../source/templates_clay.md:145
+msgid "**Ghost Outlined**"
+msgstr ""
+
+#: ../../source/templates_clay.md:146
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_clay.md:148
+msgid "Padding: 8px"
+msgstr ""
+
+#: ../../source/templates_clay.md:149 ../../source/templates_clay.md:162
+msgid "Border: `1px solid #717989`"
+msgstr ""
+
+#: ../../source/templates_clay.md:150 ../../source/templates_clay.md:163
+msgid "Radius: 4px"
+msgstr ""
+
+#: ../../source/templates_clay.md:151
+msgid "Hover: dragonfruit swatch color, white text, animated rotation"
+msgstr ""
+
+#: ../../source/templates_clay.md:153
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_clay.md:154
+msgid "Background: `#ffffff` on cream canvas"
+msgstr ""
+
+#: ../../source/templates_clay.md:155
+msgid "Border: `1px solid #dad4c8` (warm oat) or `1px dashed #dad4c8`"
+msgstr ""
+
+#: ../../source/templates_clay.md:156
+msgid ""
+"Radius: 12px (standard cards), 24px (feature cards/images), 40px (section"
+" containers/footer)"
+msgstr ""
+
+#: ../../source/templates_clay.md:157
+msgid ""
+"Shadow: `rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px 1px "
+"inset, rgba(0,0,0,0.05) 0px -0.5px 1px`"
+msgstr ""
+
+#: ../../source/templates_clay.md:158
+msgid ""
+"Colorful section backgrounds using swatch palette (matcha, slushie, ube, "
+"lemon)"
+msgstr ""
+
+#: ../../source/templates_clay.md:160
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_clay.md:166
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_clay.md:167
+msgid "Sticky top nav on cream background"
+msgstr ""
+
+#: ../../source/templates_clay.md:168
+msgid "Roobert 15px weight 500 for nav links"
+msgstr ""
+
+#: ../../source/templates_clay.md:169
+msgid "Clay logo left-aligned"
+msgstr ""
+
+#: ../../source/templates_clay.md:170
+msgid "CTA buttons right-aligned with pill radius"
+msgstr ""
+
+#: ../../source/templates_clay.md:171
+msgid "Border bottom: `1px solid #dad4c8`"
+msgstr ""
+
+#: ../../source/templates_clay.md:172
+msgid "Mobile: hamburger collapse at 767px"
+msgstr ""
+
+#: ../../source/templates_clay.md:174
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_clay.md:175
+msgid "Product screenshots in white cards with oat borders"
+msgstr ""
+
+#: ../../source/templates_clay.md:176
+msgid "Colorful illustrated sections with swatch background colors"
+msgstr ""
+
+#: ../../source/templates_clay.md:177
+msgid "8px–24px radius on images"
+msgstr ""
+
+#: ../../source/templates_clay.md:178
+msgid "Full-width colorful section backgrounds"
+msgstr ""
+
+#: ../../source/templates_clay.md:180
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_clay.md:182
+msgid "**Swatch Color Sections**"
+msgstr ""
+
+#: ../../source/templates_clay.md:183
+msgid ""
+"Full-width sections with swatch-colored backgrounds (matcha green, "
+"slushie cyan, ube purple, lemon gold)"
+msgstr ""
+
+#: ../../source/templates_clay.md:184
+msgid "White text on dark swatches, black text on light swatches"
+msgstr ""
+
+#: ../../source/templates_clay.md:185
+msgid "Each section tells a distinct product story through its color"
+msgstr ""
+
+#: ../../source/templates_clay.md:187
+msgid "**Playful Hover Buttons**"
+msgstr ""
+
+#: ../../source/templates_clay.md:188
+msgid "Rotate -8deg + translate upward on hover"
+msgstr ""
+
+#: ../../source/templates_clay.md:189
+msgid "Hard offset shadow (`-7px 7px`) instead of soft blur"
+msgstr ""
+
+#: ../../source/templates_clay.md:190
+msgid "Background transitions to contrasting swatch color"
+msgstr ""
+
+#: ../../source/templates_clay.md:191
+msgid "Creates a physical, toy-like interaction quality"
+msgstr ""
+
+#: ../../source/templates_clay.md:193
+msgid "**Dashed Border Elements**"
+msgstr ""
+
+#: ../../source/templates_clay.md:194
+msgid "Dashed borders (`1px dashed #dad4c8`) alongside solid borders"
+msgstr ""
+
+#: ../../source/templates_clay.md:195
+msgid "Used for secondary containers and decorative elements"
+msgstr ""
+
+#: ../../source/templates_clay.md:196
+msgid "Adds a hand-drawn, craft-like quality"
+msgstr ""
+
+#: ../../source/templates_clay.md:198
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_clay.md:200
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_clay.md:201
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_clay.md:202
+msgid "Scale: 1px, 2px, 4px, 6.4px, 8px, 12px, 12.8px, 16px, 18px, 20px, 24px"
+msgstr ""
+
+#: ../../source/templates_clay.md:204
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_clay.md:205
+msgid "Max content width centered"
+msgstr ""
+
+#: ../../source/templates_clay.md:206
+msgid ""
+"Feature sections alternate between white cards and colorful swatch "
+"backgrounds"
+msgstr ""
+
+#: ../../source/templates_clay.md:207
+msgid "Card grids: 2–3 columns on desktop"
+msgstr ""
+
+#: ../../source/templates_clay.md:208
+msgid "Full-width colorful sections break the grid"
+msgstr ""
+
+#: ../../source/templates_clay.md:209
+msgid "Footer with generous 40px radius container"
+msgstr ""
+
+#: ../../source/templates_clay.md:211
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_clay.md:212
+msgid ""
+"**Warm, generous breathing**: The cream background provides a warm rest "
+"between content blocks. Spacing is generous but not austere — it feels "
+"inviting, like a well-set table."
+msgstr ""
+
+#: ../../source/templates_clay.md:213
+msgid ""
+"**Color as spatial rhythm**: The alternating swatch-colored sections "
+"create visual rhythm through hue rather than just whitespace. Each color "
+"section is its own \"room.\""
+msgstr ""
+
+#: ../../source/templates_clay.md:214
+msgid ""
+"**Craft-like density inside cards**: Within cards, content is compact and"
+" well-organized, contrasting with the generous outer spacing."
+msgstr ""
+
+#: ../../source/templates_clay.md:216
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_clay.md:217
+msgid "Sharp (4px): Ghost buttons, inputs"
+msgstr ""
+
+#: ../../source/templates_clay.md:218
+msgid "Standard (8px): Small cards, images, links"
+msgstr ""
+
+#: ../../source/templates_clay.md:219
+msgid "Badge (11px): Tag badges"
+msgstr ""
+
+#: ../../source/templates_clay.md:220
+msgid "Card (12px): Standard cards, buttons"
+msgstr ""
+
+#: ../../source/templates_clay.md:221
+msgid "Feature (24px): Feature cards, images, panels"
+msgstr ""
+
+#: ../../source/templates_clay.md:222
+msgid "Section (40px): Large sections, footer, containers"
+msgstr ""
+
+#: ../../source/templates_clay.md:223
+msgid "Pill (1584px): CTAs, pill-shaped buttons"
+msgstr ""
+
+#: ../../source/templates_clay.md:225
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "No shadow, cream canvas"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Page background"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Clay Shadow (Level 1)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid ""
+"`rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px inset, "
+"rgba(0,0,0,0.05) 0px -0.5px`"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Cards, buttons — multi-layer with inset highlight"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Hover Hard (Level 2)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "`rgb(0,0,0) -7px 7px`"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Hover state — playful hard offset shadow"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Focus (Level 3)"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "`rgb(20, 110, 245) solid 2px`"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Keyboard focus ring"
+msgstr ""
+
+#: ../../source/templates_clay.md:234
+msgid ""
+"**Shadow Philosophy**: Clay's shadow system is uniquely three-layered: a "
+"downward cast (`0px 1px 1px`), an upward inset highlight (`0px -1px 1px "
+"inset`), and a subtle edge (`0px -0.5px 1px`). This creates a \"pressed "
+"into clay\" quality where elements feel both raised AND embedded — like a"
+" clay tablet where content is stamped into the surface. The hover hard "
+"shadow (`-7px 7px`) is deliberately retro-graphic, referencing print-era "
+"drop shadows and adding physical playfulness."
+msgstr ""
+
+#: ../../source/templates_clay.md:236
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_clay.md:237
+msgid ""
+"Full-width swatch-colored sections create dramatic depth through color "
+"contrast"
+msgstr ""
+
+#: ../../source/templates_clay.md:238
+msgid "Dashed borders add visual texture alongside solid borders"
+msgstr ""
+
+#: ../../source/templates_clay.md:239
+msgid "Product illustrations with warm, organic art style"
+msgstr ""
+
+#: ../../source/templates_clay.md:241
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_clay.md:243
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_clay.md:244
+msgid ""
+"Use warm cream (`#faf9f7`) as the page background — the warmth is the "
+"identity"
+msgstr ""
+
+#: ../../source/templates_clay.md:245
+msgid ""
+"Apply all 5 OpenType stylistic sets on Roobert headings: `\"ss01\", "
+"\"ss03\", \"ss10\", \"ss11\", \"ss12\"`"
+msgstr ""
+
+#: ../../source/templates_clay.md:246
+msgid ""
+"Use the named swatch palette (Matcha, Slushie, Lemon, Ube, Pomegranate, "
+"Blueberry) for section backgrounds"
+msgstr ""
+
+#: ../../source/templates_clay.md:247
+msgid ""
+"Apply the playful hover animation: `rotateZ(-8deg)`, `translateY(-80%)`, "
+"hard shadow `-7px 7px`"
+msgstr ""
+
+#: ../../source/templates_clay.md:248
+msgid "Use warm oat borders (`#dad4c8`) — not neutral gray"
+msgstr ""
+
+#: ../../source/templates_clay.md:249
+msgid "Mix solid and dashed borders for visual variety"
+msgstr ""
+
+#: ../../source/templates_clay.md:250
+msgid "Use generous radius: 24px for cards, 40px for sections"
+msgstr ""
+
+#: ../../source/templates_clay.md:251
+msgid "Use weight 600 exclusively for headings, 500 for UI, 400 for body"
+msgstr ""
+
+#: ../../source/templates_clay.md:253
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_clay.md:254
+msgid ""
+"Don't use cool gray backgrounds — the warm cream (`#faf9f7`) is non-"
+"negotiable"
+msgstr ""
+
+#: ../../source/templates_clay.md:255
+msgid ""
+"Don't use neutral gray borders (`#ccc`, `#ddd`) — always use the warm oat"
+" tones"
+msgstr ""
+
+#: ../../source/templates_clay.md:256
+msgid "Don't mix more than 2 swatch colors in the same section"
+msgstr ""
+
+#: ../../source/templates_clay.md:257
+msgid "Don't skip the OpenType stylistic sets — they define Roobert's character"
+msgstr ""
+
+#: ../../source/templates_clay.md:258
+msgid ""
+"Don't use subtle hover effects — the rotation + hard shadow is the "
+"signature interaction"
+msgstr ""
+
+#: ../../source/templates_clay.md:259
+msgid ""
+"Don't use small border radius (<12px) on feature cards — the generous "
+"rounding is structural"
+msgstr ""
+
+#: ../../source/templates_clay.md:260
+msgid ""
+"Don't use standard shadows (blur-based) — Clay uses hard offset and "
+"multi-layer inset"
+msgstr ""
+
+#: ../../source/templates_clay.md:261
+msgid ""
+"Don't forget the uppercase labels with 1.08px tracking — they're the "
+"wayfinding system"
+msgstr ""
+
+#: ../../source/templates_clay.md:263
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_clay.md:265
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Mobile Small"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "<479px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Single column, tight padding"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "479–767px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Standard mobile, stacked layout"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "768–991px"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "2-column grids, condensed nav"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "992px+"
+msgstr ""
+
+#: ../../source/templates_clay.md
+msgid "Full layout, 3-column grids, expanded sections"
+msgstr ""
+
+#: ../../source/templates_clay.md:273
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_clay.md:274
+msgid "Buttons: minimum 6.4px + 12.8px padding for adequate touch area"
+msgstr ""
+
+#: ../../source/templates_clay.md:275
+msgid "Nav links: 15px font with generous spacing"
+msgstr ""
+
+#: ../../source/templates_clay.md:276
+msgid "Mobile: full-width buttons for easy tapping"
+msgstr ""
+
+#: ../../source/templates_clay.md:278
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_clay.md:279
+msgid "Hero: 80px → 60px → smaller display text"
+msgstr ""
+
+#: ../../source/templates_clay.md:280
+msgid "Navigation: horizontal → hamburger at 767px"
+msgstr ""
+
+#: ../../source/templates_clay.md:281
+msgid "Feature sections: multi-column → stacked"
+msgstr ""
+
+#: ../../source/templates_clay.md:282
+msgid "Colorful sections: maintain full-width but compress padding"
+msgstr ""
+
+#: ../../source/templates_clay.md:283
+msgid "Card grids: 3-column → 2-column → single column"
+msgstr ""
+
+#: ../../source/templates_clay.md:285
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_clay.md:286
+msgid "Product screenshots scale proportionally"
+msgstr ""
+
+#: ../../source/templates_clay.md:287
+msgid "Colorful section illustrations adapt to viewport width"
+msgstr ""
+
+#: ../../source/templates_clay.md:288
+msgid "Rounded corners maintained across breakpoints"
+msgstr ""
+
+#: ../../source/templates_clay.md:290
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_clay.md:292
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_clay.md:293
+msgid "Background: Warm Cream (`#faf9f7`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:294
+msgid "Text: Clay Black (`#000000`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:295
+msgid "Secondary text: Warm Silver (`#9f9b93`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:296
+msgid "Border: Oat Border (`#dad4c8`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:297
+msgid "Green accent: Matcha 600 (`#078a52`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:298
+msgid "Cyan accent: Slushie 500 (`#3bd3fd`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:299
+msgid "Gold accent: Lemon 500 (`#fbbd41`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:300
+msgid "Purple accent: Ube 800 (`#43089f`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:301
+msgid "Pink accent: Pomegranate 400 (`#fc7981`)"
+msgstr ""
+
+#: ../../source/templates_clay.md:303
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_clay.md:304
+msgid ""
+"\"Create a hero on warm cream (#faf9f7) background. Headline at 80px "
+"Roobert weight 600, line-height 1.00, letter-spacing -3.2px, OpenType "
+"'ss01 ss03 ss10 ss11 ss12', black text. Subtitle at 20px weight 400, "
+"line-height 1.40, #9f9b93 text. Two buttons: white solid pill (12px "
+"radius) and ghost outlined (4px radius, 1px solid #717989).\""
+msgstr ""
+
+#: ../../source/templates_clay.md:305
+msgid ""
+"\"Design a colorful section with Matcha 800 (#02492a) background. Heading"
+" at 44px Roobert weight 600, letter-spacing -1.32px, white text. Body at "
+"18px weight 400, line-height 1.60, #84e7a5 text. White card inset with "
+"oat border (#dad4c8), 24px radius.\""
+msgstr ""
+
+#: ../../source/templates_clay.md:306
+msgid ""
+"\"Build a button with playful hover: default transparent background, "
+"black text, 16px Roobert weight 500. On hover: background #434346, text "
+"white, transform rotateZ(-8deg) translateY(-80%), hard shadow rgb(0,0,0) "
+"-7px 7px.\""
+msgstr ""
+
+#: ../../source/templates_clay.md:307
+msgid ""
+"\"Create a card: white background, 1px solid #dad4c8 border, 24px radius."
+" Shadow: rgba(0,0,0,0.1) 0px 1px 1px, rgba(0,0,0,0.04) 0px -1px 1px "
+"inset. Title at 32px Roobert weight 600, letter-spacing -0.64px.\""
+msgstr ""
+
+#: ../../source/templates_clay.md:308
+msgid ""
+"\"Design an uppercase label: 12px Roobert weight 600, text-transform "
+"uppercase, letter-spacing 1.08px, OpenType 'ss03 ss10 ss11 ss12'.\""
+msgstr ""
+
+#: ../../source/templates_clay.md:310
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_clay.md:311
+msgid "Start with warm cream (#faf9f7) — never cool white"
+msgstr ""
+
+#: ../../source/templates_clay.md:312
+msgid ""
+"Swatch colors are for full sections, not small accents — go bold with "
+"matcha, slushie, ube"
+msgstr ""
+
+#: ../../source/templates_clay.md:313
+msgid "Oat borders (#dad4c8) everywhere — dashed variants for decoration"
+msgstr ""
+
+#: ../../source/templates_clay.md:314
+msgid ""
+"OpenType stylistic sets are mandatory — they make Roobert look like "
+"Roobert"
+msgstr ""
+
+#: ../../source/templates_clay.md:315
+msgid ""
+"Hover animations are the signature — rotation + hard shadow, not subtle "
+"fades"
+msgstr ""
+
+#: ../../source/templates_clay.md:316
+msgid ""
+"Generous radius: 24px cards, 40px sections — nothing looks sharp or "
+"corporate"
+msgstr ""
+
+#: ../../source/templates_clay.md:317
+msgid "Three weights: 600 (headings), 500 (UI), 400 (body) — strict roles"
+msgstr ""
+

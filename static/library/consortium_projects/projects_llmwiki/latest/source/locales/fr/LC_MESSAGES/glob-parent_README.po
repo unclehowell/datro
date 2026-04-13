@@ -1,0 +1,192 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/glob-parent_README.md:7
+msgid "glob-parent"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:9
+msgid ""
+"[![NPM version][npm-image]][npm-url] [![Downloads][downloads-image]][npm-"
+"url] [![Azure Pipelines Build Status][azure-pipelines-image]][azure-"
+"pipelines-url] [![Travis Build Status][travis-image]][travis-url] "
+"[![AppVeyor Build Status][appveyor-image]][appveyor-url] [![Coveralls "
+"Status][coveralls-image]][coveralls-url] [![Gitter chat][gitter-image"
+"]][gitter-url]"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:9
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:9
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:9
+msgid "Azure Pipelines Build Status"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:9
+msgid "Travis Build Status"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:9
+msgid "AppVeyor Build Status"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:9
+msgid "Coveralls Status"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:9
+msgid "Gitter chat"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:11
+msgid "Extract the non-magic parent path from a glob string."
+msgstr ""
+
+#: ../../source/glob-parent_README.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:37
+msgid "API"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:39
+msgid "`globParent(maybeGlobString, [options])`"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:41
+msgid ""
+"Takes a string and returns the part of the path before the glob begins. "
+"Be aware of Escaping rules and Limitations below."
+msgstr ""
+
+#: ../../source/glob-parent_README.md:43
+msgid "options"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:52
+msgid "Escaping"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:54
+msgid ""
+"The following characters have special significance in glob patterns and "
+"must be escaped if you want them to be treated as regular path "
+"characters:"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:56
+msgid "`?` (question mark) unless used as a path segment alone"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:57
+msgid "`*` (asterisk)"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:58
+msgid "`|` (pipe)"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:59
+msgid "`(` (opening parenthesis)"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:60
+msgid "`)` (closing parenthesis)"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:61
+msgid "`{` (opening curly brace)"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:62
+msgid "`}` (closing curly brace)"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:63
+msgid "`[` (opening bracket)"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:64
+msgid "`]` (closing bracket)"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:66
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:73
+msgid "Limitations"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:75
+msgid "Braces & Brackets"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:76
+msgid ""
+"This library attempts a quick and imperfect method of determining which "
+"path parts have glob magic without fully parsing/lexing the pattern. "
+"There are some advanced use cases that can trip it up, such as nested "
+"braces where the outer pair is escaped and the inner one contains a path "
+"separator. If you find yourself in the unlikely circumstance of being "
+"affected by this or need to ensure higher-fidelity glob handling in your "
+"library, it is recommended that you pre-process your input with [expand-"
+"braces] and/or [expand-brackets]."
+msgstr ""
+
+#: ../../source/glob-parent_README.md:84
+msgid "Windows"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:85
+msgid ""
+"Backslashes are not valid path separators for globs. If a path with "
+"backslashes is provided anyway, for simple cases, glob-parent will "
+"replace the path separator for you and return the non-glob parent path "
+"(now with forward-slashes, which are still valid as Windows path "
+"separators)."
+msgstr ""
+
+#: ../../source/glob-parent_README.md:90
+msgid "This cannot be used in conjunction with escape characters."
+msgstr ""
+
+#: ../../source/glob-parent_README.md:100
+msgid ""
+"If you are using escape characters for a pattern without path parts (i.e."
+" relative to `cwd`), prefix with `./` to avoid confusing glob-parent."
+msgstr ""
+
+#: ../../source/glob-parent_README.md:113
+msgid "License"
+msgstr ""
+
+#: ../../source/glob-parent_README.md:115
+msgid "ISC"
+msgstr ""
+

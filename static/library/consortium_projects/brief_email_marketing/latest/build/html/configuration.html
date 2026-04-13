@@ -1,0 +1,178 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Configuration &mdash; Email Marketing System - Technical Brief 0.0.0 documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=7026087e"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Performance &amp; Observations" href="performance.html" />
+    <link rel="prev" title="System Overview" href="systemoverview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            Email Marketing System - Technical Brief
+              <img src="_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="executivesummary.html">Executive Summary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="systemoverview.html">System Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#cron-schedule">Cron Schedule</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#api-credentials">API Credentials</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#send-logic">Send Logic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#progress-tracking">Progress Tracking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#resend-sdk-call">Resend SDK Call</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ssl-domain">SSL / Domain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance &amp; Observations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="annex-list.html">Annexures</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Email Marketing System - Technical Brief</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Configuration</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/configuration.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="configuration">
+<h1>Configuration<a class="headerlink" href="#configuration" title="Link to this heading"></a></h1>
+<section id="cron-schedule">
+<h2>Cron Schedule<a class="headerlink" href="#cron-schedule" title="Link to this heading"></a></h2>
+<p>The sender is invoked every 2 minutes via the ubuntu user’s crontab:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>*/2<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span>*<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/home/ubuntu<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/ubuntu/.nvm/versions/node/v22.22.2/bin/node<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>/home/ubuntu/email_sender.cjs<span class="w"> </span>&gt;&gt;<span class="w"> </span>/home/ubuntu/email_send.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+</pre></div>
+</div>
+<p>Each invocation sends exactly <strong>one email</strong> then exits. This keeps the system lightweight and avoids overlapping processes.</p>
+</section>
+<section id="api-credentials">
+<h2>API Credentials<a class="headerlink" href="#api-credentials" title="Link to this heading"></a></h2>
+<p>The Resend API key is stored in a dedicated secrets file, not hardcoded:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Location: /home/ubuntu/.secrets/.env.resend
+Format:   RESEND_API_KEY=re_xxxxxxxxxxxxxxxxxxxx
+</pre></div>
+</div>
+<p>The script reads this file at runtime using a <code class="docutils literal notranslate"><span class="pre">loadApiKey()</span></code> function with a fallback to the <code class="docutils literal notranslate"><span class="pre">RESEND_API_KEY</span></code> environment variable.</p>
+</section>
+<section id="send-logic">
+<h2>Send Logic<a class="headerlink" href="#send-logic" title="Link to this heading"></a></h2>
+<p>The script (<code class="docutils literal notranslate"><span class="pre">email_sender.cjs</span></code>) follows this logic on each invocation:</p>
+<ol class="arabic simple">
+<li><p>Load the API key from <code class="docutils literal notranslate"><span class="pre">.secrets/.env.resend</span></code></p></li>
+<li><p>Read <code class="docutils literal notranslate"><span class="pre">email_list.txt</span></code> into memory, filtering invalid addresses</p></li>
+<li><p>Read the current index from <code class="docutils literal notranslate"><span class="pre">email_progress.txt</span></code></p></li>
+<li><p>If index ≥ list length, reset to 0 and log cycle completion</p></li>
+<li><p>Send one email to <code class="docutils literal notranslate"><span class="pre">emails[index]</span></code> via the Resend SDK</p></li>
+<li><p>Log result (SENT with message ID, or FAILED with error)</p></li>
+<li><p>Increment and save index to <code class="docutils literal notranslate"><span class="pre">email_progress.txt</span></code></p></li>
+<li><p>Exit</p></li>
+</ol>
+</section>
+<section id="progress-tracking">
+<h2>Progress Tracking<a class="headerlink" href="#progress-tracking" title="Link to this heading"></a></h2>
+<p>Progress survives server reboots and script restarts. The file <code class="docutils literal notranslate"><span class="pre">email_progress.txt</span></code> stores a single integer — the zero-based index of the next email to send. On completion of the full list, it resets to 0 and begins cycling again.</p>
+</section>
+<section id="resend-sdk-call">
+<h2>Resend SDK Call<a class="headerlink" href="#resend-sdk-call" title="Link to this heading"></a></h2>
+<p>The SDK invocation per email:</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">resend</span><span class="p">.</span><span class="nx">emails</span><span class="p">.</span><span class="nx">send</span><span class="p">({</span>
+<span class="w">  </span><span class="kr">from</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;noreply@car.financecheque.uk&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">to</span><span class="o">:</span><span class="w"> </span><span class="nx">email</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">subject</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Car Finance Cheque UK&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">html</span><span class="o">:</span><span class="w"> </span><span class="nx">HTML_BODY</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="ssl-domain">
+<h2>SSL / Domain<a class="headerlink" href="#ssl-domain" title="Link to this heading"></a></h2>
+<p>The campaign domain <code class="docutils literal notranslate"><span class="pre">car.financecheque.uk</span></code> has a custom SSL certificate provisioned on the server:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>Certificate: /home/ubuntu/carfinancecheque.crt
+Private key: /home/ubuntu/carfinancecheque.key
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="systemoverview.html" class="btn btn-neutral float-left" title="System Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="performance.html" class="btn btn-neutral float-right" title="Performance &amp; Observations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026, DATRO Consortium.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

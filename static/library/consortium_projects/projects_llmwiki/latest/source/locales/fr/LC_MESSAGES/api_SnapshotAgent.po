@@ -1,0 +1,502 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_SnapshotAgent.md:1
+msgid "SnapshotAgent"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:3
+msgid ""
+"The `SnapshotAgent` provides a powerful way to record and replay HTTP "
+"requests for testing purposes. It extends `MockAgent` to enable automatic"
+" snapshot testing, eliminating the need to manually define mock "
+"responses."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:5
+msgid "Use Cases"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:7
+msgid ""
+"**Integration Testing**: Record real API interactions and replay them in "
+"tests"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:8
+msgid "**Offline Development**: Work with APIs without network connectivity"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:9
+msgid "**Consistent Test Data**: Ensure tests use the same responses across runs"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:10
+msgid "**API Contract Testing**: Capture and validate API behavior over time"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:12
+msgid "Constructor"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:18 ../../source/api_SnapshotAgent.md:97
+#: ../../source/api_SnapshotAgent.md:249
+msgid "Parameters"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:20
+msgid "**options** `Object` (optional)"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:21
+msgid ""
+"**mode** `String` - The snapshot mode: `'record'`, `'playback'`, or "
+"`'update'`. Default: `'record'`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:22
+msgid "**snapshotPath** `String` - Path to the snapshot file for loading/saving"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:23
+msgid ""
+"**maxSnapshots** `Number` - Maximum number of snapshots to keep in "
+"memory. Default: `Infinity`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:24
+msgid ""
+"**autoFlush** `Boolean` - Whether to automatically save snapshots to "
+"disk. Default: `false`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:25
+msgid ""
+"**flushInterval** `Number` - Interval in milliseconds for auto-flush. "
+"Default: `30000`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:26
+msgid ""
+"**matchHeaders** `Array<String>` - Specific headers to include in request"
+" matching. Default: all headers"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:27
+msgid ""
+"**ignoreHeaders** `Array<String>` - Headers to ignore during request "
+"matching"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:28
+msgid ""
+"**excludeHeaders** `Array<String>` - Headers to exclude from snapshots "
+"(for security)"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:29
+msgid ""
+"**matchBody** `Boolean` - Whether to include request body in matching. "
+"Default: `true`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:30
+msgid ""
+"**matchQuery** `Boolean` - Whether to include query parameters in "
+"matching. Default: `true`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:31
+msgid ""
+"**caseSensitive** `Boolean` - Whether header matching is case-sensitive. "
+"Default: `false`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:32
+msgid ""
+"**shouldRecord** `Function` - Callback to determine if a request should "
+"be recorded"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:33
+msgid ""
+"**shouldPlayback** `Function` - Callback to determine if a request should"
+" be played back"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:34
+msgid ""
+"**excludeUrls** `Array` - URL patterns (strings or RegExp) to exclude "
+"from recording/playback"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:35
+msgid "All other options from `MockAgent` are supported"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:37
+msgid "Modes"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:39
+msgid "Record Mode (`'record'`)"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:40
+msgid "Makes real HTTP requests and saves the responses to snapshots."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:59
+msgid "Playback Mode (`'playback'`)"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:60
+msgid "Replays recorded responses without making real HTTP requests."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:75
+msgid "Update Mode (`'update'`)"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:76
+msgid ""
+"Uses existing snapshots when available, but records new ones for missing "
+"requests."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:91
+msgid "Instance Methods"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:93
+msgid "`agent.saveSnapshots([filePath])`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:95
+msgid "Saves all recorded snapshots to a file."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:99
+msgid ""
+"**filePath** `String` (optional) - Path to save snapshots. Uses "
+"constructor `snapshotPath` if not provided."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:101 ../../source/api_SnapshotAgent.md:253
+#: ../../source/api_SnapshotAgent.md:265 ../../source/api_SnapshotAgent.md:278
+msgid "Returns"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:103 ../../source/api_SnapshotAgent.md:255
+msgid "`Promise<void>`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:109
+msgid "Advanced Configuration"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:111
+msgid "Header Filtering"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:113
+msgid ""
+"Control which headers are used for request matching and what gets stored "
+"in snapshots:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:131
+msgid "Custom Request/Response Filtering"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:133
+msgid "Use callback functions to determine what gets recorded or played back:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:154
+msgid "URL Pattern Exclusion"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:156
+msgid "Exclude specific URLs from recording/playback using patterns:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:171
+msgid "Memory Management"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:173
+msgid "Configure automatic memory and disk management:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:189
+msgid "Sequential Response Handling"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:191
+msgid "Handle multiple responses for the same request (similar to nock):"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:218
+msgid "Managing Snapshots"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:220
+msgid "Replacing Existing Snapshots"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:245
+msgid "`agent.loadSnapshots([filePath])`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:247
+msgid "Loads snapshots from a file."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:251
+msgid ""
+"**filePath** `String` (optional) - Path to load snapshots from. Uses "
+"constructor `snapshotPath` if not provided."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:261
+msgid "`agent.getRecorder()`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:263
+msgid "Gets the underlying `SnapshotRecorder` instance."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:267
+msgid "`SnapshotRecorder`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:274
+msgid "`agent.getMode()`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:276
+msgid "Gets the current snapshot mode."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:280
+msgid "`String` - The current mode (`'record'`, `'playback'`, or `'update'`)"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:282
+msgid "`agent.clearSnapshots()`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:284
+msgid "Clears all recorded snapshots from memory."
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:290
+msgid "Working with Different Request Types"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:292
+msgid "GET Requests"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:305
+msgid "POST Requests with Body"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:321
+msgid "Using with `undici.request`"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:323
+msgid "SnapshotAgent works with all undici APIs, not just fetch:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:337
+msgid "Test Integration"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:339
+msgid "Basic Test Setup"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:365
+msgid "Environment-Based Mode Selection"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:379
+msgid "Test Helper Function"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:397
+msgid "Snapshot File Format"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:399
+msgid "Snapshots are stored as JSON with the following structure:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:428
+msgid "Security Considerations"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:430
+msgid "Sensitive Data in Snapshots"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:432
+msgid ""
+"By default, SnapshotAgent records all headers and request/response data. "
+"For production use, always exclude sensitive information:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:471
+msgid "Snapshot File Security"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:473
+msgid ""
+"**Important**: Snapshot files may contain sensitive data. Handle them "
+"securely:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:475
+msgid "✅ Add snapshot files to `.gitignore` if they contain real API data"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:476
+msgid "✅ Use environment-specific snapshots (dev/staging/prod)"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:477
+msgid "✅ Regularly review snapshot contents for sensitive information"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:478
+msgid "✅ Use the `excludeHeaders` option for production snapshots"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:479
+msgid "❌ Never commit snapshots with real authentication tokens"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:480
+msgid "❌ Don't share snapshot files containing personal data"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:491
+msgid "Error Handling"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:493
+msgid "Missing Snapshots in Playback Mode"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:506
+msgid "Handling Network Errors in Record Mode"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:519
+msgid "Best Practices"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:521
+msgid "1. Organize Snapshots by Test Suite"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:531
+msgid "2. Version Control Snapshots"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:533
+msgid ""
+"Add snapshot files to version control to ensure consistent test behavior "
+"across environments:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:540
+msgid "3. Clean Up Test Data"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:556
+msgid "4. Snapshot Validation"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:574
+msgid "Comparison with Other Tools"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:576
+msgid "vs Manual MockAgent Setup"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:578
+msgid "**Manual MockAgent:**"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:592
+msgid "**SnapshotAgent:**"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:603
+msgid "vs nock"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:605
+msgid ""
+"SnapshotAgent provides similar functionality to nock but is specifically "
+"designed for undici:"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:607
+msgid "✅ Works with all undici APIs (`request`, `stream`, `pipeline`, etc.)"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:608
+msgid "✅ Supports undici-specific features (RetryAgent, connection pooling)"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:609
+msgid "✅ Better TypeScript integration"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:610
+msgid "✅ More efficient for high-performance scenarios"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:612
+msgid "See Also"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:614
+msgid "[MockAgent](./MockAgent.md) - Manual mocking for more control"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:615
+msgid "[MockCallHistory](./MockCallHistory.md) - Inspecting request history"
+msgstr ""
+
+#: ../../source/api_SnapshotAgent.md:616
+msgid ""
+"[Testing Best Practices](../best-practices/writing-tests.md) - General "
+"testing guidance"
+msgstr ""
+

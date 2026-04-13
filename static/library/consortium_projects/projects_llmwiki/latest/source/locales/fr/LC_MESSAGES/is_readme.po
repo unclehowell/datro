@@ -1,0 +1,625 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/is_readme.md:1
+msgid ""
+"is [![Build Status](https://travis-"
+"ci.org/sindresorhus/is.svg?branch=master)](https://travis-"
+"ci.org/sindresorhus/is)"
+msgstr ""
+
+#: ../../source/is_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/is_readme.md:3
+msgid "Type check values: `is.string('🦄') //=> true`"
+msgstr ""
+
+#: ../../source/is_readme.md:8
+msgid "Install"
+msgstr ""
+
+#: ../../source/is_readme.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/is_readme.md:31
+msgid "API"
+msgstr ""
+
+#: ../../source/is_readme.md:33
+msgid "is(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:35
+msgid "Returns the type of `value`."
+msgstr ""
+
+#: ../../source/is_readme.md:37
+msgid "Primitives are lowercase and object types are camelcase."
+msgstr ""
+
+#: ../../source/is_readme.md:39
+msgid "Example:"
+msgstr ""
+
+#: ../../source/is_readme.md:41
+msgid "`'undefined'`"
+msgstr ""
+
+#: ../../source/is_readme.md:42
+msgid "`'null'`"
+msgstr ""
+
+#: ../../source/is_readme.md:43
+msgid "`'string'`"
+msgstr ""
+
+#: ../../source/is_readme.md:44
+msgid "`'symbol'`"
+msgstr ""
+
+#: ../../source/is_readme.md:45
+msgid "`'Array'`"
+msgstr ""
+
+#: ../../source/is_readme.md:46
+msgid "`'Function'`"
+msgstr ""
+
+#: ../../source/is_readme.md:47
+msgid "`'Object'`"
+msgstr ""
+
+#: ../../source/is_readme.md:49
+msgid ""
+"Note: It will throw if you try to feed it object-wrapped primitives, as "
+"that's a bad practice. For example `new String('foo')`."
+msgstr ""
+
+#: ../../source/is_readme.md:51
+#, python-brace-format
+msgid "is.{method}"
+msgstr ""
+
+#: ../../source/is_readme.md:53
+msgid ""
+"All the below methods accept a value and returns a boolean for whether "
+"the value is of the desired type."
+msgstr ""
+
+#: ../../source/is_readme.md:55
+msgid "Primitives"
+msgstr ""
+
+#: ../../source/is_readme.md:57
+msgid ".undefined(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:58
+msgid ".null(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:59
+msgid ".string(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:60
+msgid ".number(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:61
+msgid ".boolean(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:62
+msgid ".symbol(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:64
+msgid "Built-in types"
+msgstr ""
+
+#: ../../source/is_readme.md:66
+msgid ".array(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:67
+msgid ".function(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:68
+msgid ".buffer(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:69
+msgid ".object(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:71
+msgid ""
+"Keep in mind that [functions are objects "
+"too](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Functions)."
+msgstr ""
+
+#: ../../source/is_readme.md:73
+msgid ".regExp(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:74
+msgid ".date(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:75
+msgid ".error(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:76
+msgid ".nativePromise(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:77
+msgid ".promise(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:79
+msgid ""
+"Returns `true` for any object with a `.then()` and `.catch()` method. "
+"Prefer this one over `.nativePromise()` as you usually want to allow "
+"userland promise implementations too."
+msgstr ""
+
+#: ../../source/is_readme.md:81
+msgid ".generator(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:83
+msgid ""
+"Returns `true` for any object that implements its own `.next()` and "
+"`.throw()` methods and has a function definition for `Symbol.iterator`."
+msgstr ""
+
+#: ../../source/is_readme.md:85
+msgid ".generatorFunction(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:87
+msgid ".asyncFunction(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:89
+msgid ""
+"Returns `true` for any `async` function that can be called with the "
+"`await` operator."
+msgstr ""
+
+#: ../../source/is_readme.md:99
+msgid ".boundFunction(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:101
+msgid "Returns `true` for any `bound` function."
+msgstr ""
+
+#: ../../source/is_readme.md:114
+msgid ".map(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:115
+msgid ".set(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:116
+msgid ".weakMap(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:117
+msgid ".weakSet(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:119
+msgid "Typed arrays"
+msgstr ""
+
+#: ../../source/is_readme.md:121
+msgid ".int8Array(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:122
+msgid ".uint8Array(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:123
+msgid ".uint8ClampedArray(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:124
+msgid ".int16Array(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:125
+msgid ".uint16Array(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:126
+msgid ".int32Array(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:127
+msgid ".uint32Array(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:128
+msgid ".float32Array(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:129
+msgid ".float64Array(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:131
+msgid "Structured data"
+msgstr ""
+
+#: ../../source/is_readme.md:133
+msgid ".arrayBuffer(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:134
+msgid ".sharedArrayBuffer(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:135
+msgid ".dataView(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:137
+msgid "Miscellaneous"
+msgstr ""
+
+#: ../../source/is_readme.md:139
+msgid ".directInstanceOf(value, class)"
+msgstr ""
+
+#: ../../source/is_readme.md:141
+msgid "Returns `true` if `value` is a direct instance of `class`."
+msgstr ""
+
+#: ../../source/is_readme.md:153
+msgid ".truthy(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:155
+msgid "Returns `true` for all values that evaluate to true in a boolean context:"
+msgstr ""
+
+#: ../../source/is_readme.md:165
+msgid ".falsy(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:167
+msgid ""
+"Returns `true` if `value` is one of: `false`, `0`, `''`, `null`, "
+"`undefined`, `NaN`."
+msgstr ""
+
+#: ../../source/is_readme.md:169
+msgid ".nan(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:170
+msgid ".nullOrUndefined(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:171
+msgid ".primitive(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:173
+msgid ""
+"JavaScript primitives are as follows: `null`, `undefined`, `string`, "
+"`number`, `boolean`, `symbol`."
+msgstr ""
+
+#: ../../source/is_readme.md:175
+msgid ".integer(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:177
+msgid ".safeInteger(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:179
+msgid ""
+"Returns `true` if `value` is a [safe "
+"integer](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Global_Objects/Number/isSafeInteger)."
+msgstr ""
+
+#: ../../source/is_readme.md:181
+msgid ".plainObject(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:183
+#, python-brace-format
+msgid ""
+"An object is plain if it's created by either `{}`, `new Object()`, or "
+"`Object.create(null)`."
+msgstr ""
+
+#: ../../source/is_readme.md:185
+msgid ".iterable(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:186
+msgid ".class(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:188
+msgid "Returns `true` for instances created by a ES2015 class."
+msgstr ""
+
+#: ../../source/is_readme.md:190
+msgid ".typedArray(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:192
+msgid ".arrayLike(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:194
+msgid ""
+"A `value` is array-like if it is not a function and has a `value.length` "
+"that is a safe integer greater than or equal to 0."
+msgstr ""
+
+#: ../../source/is_readme.md:206
+msgid ".inRange(value, range)"
+msgstr ""
+
+#: ../../source/is_readme.md:208
+msgid ""
+"Check if `value` (number) is in the given `range`. The range is an array "
+"of two values, lower bound and upper bound, in no specific order."
+msgstr ""
+
+#: ../../source/is_readme.md:216
+msgid ".inRange(value, upperBound)"
+msgstr ""
+
+#: ../../source/is_readme.md:218
+msgid "Check if `value` (number) is in the range of `0` to `upperBound`."
+msgstr ""
+
+#: ../../source/is_readme.md:224
+msgid ".domElement(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:226
+msgid "Returns `true` if `value` is a DOM Element."
+msgstr ""
+
+#: ../../source/is_readme.md:228
+msgid ".nodeStream(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:230
+msgid ""
+"Returns `true` if `value` is a Node.js "
+"[stream](https://nodejs.org/api/stream.html)."
+msgstr ""
+
+#: ../../source/is_readme.md:238
+msgid ".infinite(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:240
+msgid "Check if `value` is `Infinity` or `-Infinity`."
+msgstr ""
+
+#: ../../source/is_readme.md:242
+msgid ".even(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:244
+msgid "Returns `true` if `value` is an even integer."
+msgstr ""
+
+#: ../../source/is_readme.md:246
+msgid ".odd(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:248
+msgid "Returns `true` if `value` is an odd integer."
+msgstr ""
+
+#: ../../source/is_readme.md:250
+msgid ".empty(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:252
+msgid ""
+"Returns `true` if `value` is falsy or an empty string, array, object, "
+"map, or set."
+msgstr ""
+
+#: ../../source/is_readme.md:254
+msgid ".emptyOrWhitespace(value)"
+msgstr ""
+
+#: ../../source/is_readme.md:256
+msgid "Returns `true` if `is.empty(value)` or a string that is all whitespace."
+msgstr ""
+
+#: ../../source/is_readme.md:259
+msgid ".any(predicate, ...values)"
+msgstr ""
+
+#: ../../source/is_readme.md:261
+msgid ""
+"Returns `true` if **any** of the input `values` returns true in the "
+"`predicate`:"
+msgstr ""
+
+#: ../../source/is_readme.md:271
+msgid ".all(predicate, ...values)"
+msgstr ""
+
+#: ../../source/is_readme.md:273
+msgid ""
+"Returns `true` if **all** of the input `values` returns true in the "
+"`predicate`:"
+msgstr ""
+
+#: ../../source/is_readme.md:283
+msgid "FAQ"
+msgstr ""
+
+#: ../../source/is_readme.md:285
+msgid "Why yet another type checking module?"
+msgstr ""
+
+#: ../../source/is_readme.md:287
+msgid ""
+"There are hundreds of type checking modules on npm, unfortunately, I "
+"couldn't find any that fit my needs:"
+msgstr ""
+
+#: ../../source/is_readme.md:289
+msgid "Includes both type methods and ability to get the type"
+msgstr ""
+
+#: ../../source/is_readme.md:290
+msgid "Types of primitives returned as lowercase and object types as camelcase"
+msgstr ""
+
+#: ../../source/is_readme.md:291
+msgid "Covers all built-ins"
+msgstr ""
+
+#: ../../source/is_readme.md:292
+msgid "Unsurprising behavior"
+msgstr ""
+
+#: ../../source/is_readme.md:293
+msgid "Well-maintained"
+msgstr ""
+
+#: ../../source/is_readme.md:294
+msgid "Comprehensive test suite"
+msgstr ""
+
+#: ../../source/is_readme.md:296
+msgid "For the ones I found, pick 3 of these."
+msgstr ""
+
+#: ../../source/is_readme.md:298
+msgid ""
+"The most common mistakes I noticed in these modules was using "
+"`instanceof` for type checking, forgetting that functions are objects, "
+"and omitting `symbol` as a primitive."
+msgstr ""
+
+#: ../../source/is_readme.md:301
+msgid "Related"
+msgstr ""
+
+#: ../../source/is_readme.md:303
+msgid ""
+"[is-stream](https://github.com/sindresorhus/is-stream) - Check if "
+"something is a Node.js stream"
+msgstr ""
+
+#: ../../source/is_readme.md:304
+msgid ""
+"[is-observable](https://github.com/sindresorhus/is-observable) - Check if"
+" a value is an Observable"
+msgstr ""
+
+#: ../../source/is_readme.md:305
+msgid ""
+"[file-type](https://github.com/sindresorhus/file-type) - Detect the file "
+"type of a Buffer/Uint8Array"
+msgstr ""
+
+#: ../../source/is_readme.md:306
+msgid ""
+"[is-ip](https://github.com/sindresorhus/is-ip) - Check if a string is an "
+"IP address"
+msgstr ""
+
+#: ../../source/is_readme.md:307
+msgid ""
+"[is-array-sorted](https://github.com/sindresorhus/is-array-sorted) - "
+"Check if an Array is sorted"
+msgstr ""
+
+#: ../../source/is_readme.md:308
+msgid ""
+"[is-error-constructor](https://github.com/sindresorhus/is-error-"
+"constructor) - Check if a value is an error constructor"
+msgstr ""
+
+#: ../../source/is_readme.md:309
+msgid ""
+"[is-empty-iterable](https://github.com/sindresorhus/is-empty-iterable) - "
+"Check if an Iterable is empty"
+msgstr ""
+
+#: ../../source/is_readme.md:310
+msgid ""
+"[is-blob](https://github.com/sindresorhus/is-blob) - Check if a value is "
+"a Blob - File-like object of immutable, raw data"
+msgstr ""
+
+#: ../../source/is_readme.md:311
+msgid ""
+"[has-emoji](https://github.com/sindresorhus/has-emoji) - Check whether a "
+"string has any emoji"
+msgstr ""
+
+#: ../../source/is_readme.md:314
+msgid "Created by"
+msgstr ""
+
+#: ../../source/is_readme.md:316
+msgid "[Sindre Sorhus](https://github.com/sindresorhus)"
+msgstr ""
+
+#: ../../source/is_readme.md:317
+msgid "[Giora Guttsait](https://github.com/gioragutt)"
+msgstr ""
+
+#: ../../source/is_readme.md:318
+msgid "[Brandon Smith](https://github.com/brandon93s)"
+msgstr ""
+
+#: ../../source/is_readme.md:321
+msgid "License"
+msgstr ""
+
+#: ../../source/is_readme.md:323
+msgid "MIT"
+msgstr ""
+

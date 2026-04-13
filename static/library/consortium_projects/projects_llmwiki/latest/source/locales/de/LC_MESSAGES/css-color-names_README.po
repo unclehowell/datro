@@ -1,0 +1,66 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/css-color-names_README.md:1
+msgid "css-color-names"
+msgstr ""
+
+#: ../../source/css-color-names_README.md:4
+msgid "A JSON Object of css color names mapped to their hex value"
+msgstr ""
+
+#: ../../source/css-color-names_README.md:6
+msgid "Usage"
+msgstr ""
+
+#: ../../source/css-color-names_README.md:14
+msgid "yields"
+msgstr ""
+
+#: ../../source/css-color-names_README.md:27
+msgid "How was this list generated?"
+msgstr ""
+
+#: ../../source/css-color-names_README.md:30
+msgid "In the Makefile you'll see a line like this:"
+msgstr ""
+
+#: ../../source/css-color-names_README.md:34
+msgid ""
+"The first command scrapes a site for the list, and outputs the results "
+"separated by newlines.  The second command creates the JSON object and "
+"outputs it to stdout, which then gets redirected into `css-color-"
+"names.json`"
+msgstr ""
+
+#: ../../source/css-color-names_README.md:40
+msgid "Installation"
+msgstr ""
+
+#: ../../source/css-color-names_README.md:45
+msgid "License"
+msgstr ""
+
+#: ../../source/css-color-names_README.md:48
+msgid "MIT"
+msgstr ""
+

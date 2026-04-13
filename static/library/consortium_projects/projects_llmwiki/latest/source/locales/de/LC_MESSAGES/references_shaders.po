@@ -1,0 +1,1185 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_shaders.md:1
+msgid "Shader Pipeline & Composable Effects"
+msgstr ""
+
+#: ../../source/references_shaders.md:3
+msgid ""
+"Post-processing effects applied to the pixel canvas (`numpy uint8 array, "
+"shape (H,W,3)`) after character rendering and before encoding. Also "
+"covers **pixel-level blend modes**, **feedback buffers**, and the "
+"**ShaderChain** compositor."
+msgstr ""
+
+#: ../../source/references_shaders.md:5
+msgid ""
+"**See also:** composition.md (blend modes, tonemap) · effects.md · "
+"scenes.md · architecture.md · optimization.md · troubleshooting.md"
+msgstr ""
+
+#: ../../source/references_shaders.md:7
+msgid ""
+"**Blend modes:** For the 20 pixel blend modes and `blend_canvas()`, see "
+"`composition.md`. All blending uses `blend_canvas(base, top, mode, "
+"opacity)`."
+msgstr ""
+
+#: ../../source/references_shaders.md:9
+msgid "Design Philosophy"
+msgstr ""
+
+#: ../../source/references_shaders.md:11
+msgid ""
+"The shader pipeline turns raw ASCII renders into cinematic output. The "
+"system is designed for **composability** — every shader, blend mode, and "
+"feedback transform is an independent building block. Combining them "
+"creates infinite visual variety from a small set of primitives."
+msgstr ""
+
+#: ../../source/references_shaders.md:13
+msgid "Choose shaders that reinforce the mood:"
+msgstr ""
+
+#: ../../source/references_shaders.md:14
+msgid "**Retro terminal**: CRT + scanlines + grain + green/amber tint"
+msgstr ""
+
+#: ../../source/references_shaders.md:15
+msgid "**Clean modern**: light bloom + subtle vignette only"
+msgstr ""
+
+#: ../../source/references_shaders.md:16
+msgid ""
+"**Glitch art**: heavy chromatic aberration + glitch bands + color wobble "
+"+ pixel sort"
+msgstr ""
+
+#: ../../source/references_shaders.md:17
+msgid "**Cinematic**: bloom + vignette + grain + color grade"
+msgstr ""
+
+#: ../../source/references_shaders.md:18
+msgid "**Dreamy**: heavy bloom + soft focus + color wobble + low contrast"
+msgstr ""
+
+#: ../../source/references_shaders.md:19
+msgid "**Harsh/industrial**: high contrast + grain + scanlines + no bloom"
+msgstr ""
+
+#: ../../source/references_shaders.md:20
+msgid ""
+"**Psychedelic**: color wobble + chromatic + kaleidoscope mirror + high "
+"saturation + feedback with hue shift"
+msgstr ""
+
+#: ../../source/references_shaders.md:21
+msgid "**Data corruption**: pixel sort + data bend + block glitch + posterize"
+msgstr ""
+
+#: ../../source/references_shaders.md:22
+msgid ""
+"**Recursive/infinite**: feedback buffer with zoom + screen blend + hue "
+"shift"
+msgstr ""
+
+#: ../../source/references_shaders.md:26
+msgid "Pixel-Level Blend Modes"
+msgstr ""
+
+#: ../../source/references_shaders.md:28
+msgid ""
+"All operate on float32 [0,1] canvases for precision. Use "
+"`blend_canvas(base, top, mode, opacity)` which handles uint8 <-> float "
+"conversion."
+msgstr ""
+
+#: ../../source/references_shaders.md:30
+msgid "Available Modes"
+msgstr ""
+
+#: ../../source/references_shaders.md:57
+msgid "Usage"
+msgstr ""
+
+#: ../../source/references_shaders.md:75
+msgid "Creative Combinations"
+msgstr ""
+
+#: ../../source/references_shaders.md:77
+msgid ""
+"**Feedback + difference** = psychedelic color evolution (each frame XORs "
+"with the previous)"
+msgstr ""
+
+#: ../../source/references_shaders.md:78
+msgid "**Screen + screen** = additive glow stacking"
+msgstr ""
+
+#: ../../source/references_shaders.md:79
+msgid ""
+"**Multiply** on two different effects = only shows where both have "
+"brightness (intersection)"
+msgstr ""
+
+#: ../../source/references_shaders.md:80
+msgid ""
+"**Exclusion** between two layers = creates complementary patterns where "
+"they differ"
+msgstr ""
+
+#: ../../source/references_shaders.md:81
+msgid "**Color dodge/burn** = extreme contrast enhancement at overlap zones"
+msgstr ""
+
+#: ../../source/references_shaders.md:82
+msgid ""
+"**Hard mix** = reduces everything to pure black/white/color at "
+"intersections"
+msgstr ""
+
+#: ../../source/references_shaders.md:86
+msgid "Feedback Buffer"
+msgstr ""
+
+#: ../../source/references_shaders.md:88
+msgid ""
+"Recursive temporal effect: frame N-1 feeds back into frame N with decay "
+"and optional spatial transform. Creates trails, echoes, smearing, zoom "
+"tunnels, rotation feedback, rainbow trails."
+msgstr ""
+
+#: ../../source/references_shaders.md:111
+msgid "Feedback Presets"
+msgstr ""
+
+#: ../../source/references_shaders.md:143
+msgid "ShaderChain"
+msgstr ""
+
+#: ../../source/references_shaders.md:145
+msgid ""
+"Composable shader pipeline. Build chains of named shaders with "
+"parameters. Order matters — shaders are applied sequentially to the "
+"canvas."
+msgstr ""
+
+#: ../../source/references_shaders.md:174
+msgid "`_apply_shader_step()` — Full Dispatch Function"
+msgstr ""
+
+#: ../../source/references_shaders.md:176
+msgid ""
+"Routes shader names to implementations. Some shaders have **audio-"
+"reactive scaling** — the dispatch function reads `f[\"bdecay\"]` and "
+"`f[\"rms\"]` to modulate parameters on the beat."
+msgstr ""
+
+#: ../../source/references_shaders.md:294
+msgid "Audio-Reactive Shaders"
+msgstr ""
+
+#: ../../source/references_shaders.md:296
+msgid "Three shaders scale their parameters based on audio features:"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Shader"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Reactive To"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Effect"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`chromatic`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`bdecay`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`amt * (0.4 + bdecay * 0.8)` — aberration kicks on beats"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`color_wobble`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`rms`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`amt * (0.5 + rms * 0.8)` — wobble intensity follows energy"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`grain`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`amt * (0.5 + rms * 0.8)` — grain rougher in loud sections"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`glitch_bands`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`bdecay`, `sub`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Number of bands and displacement scale with beat energy"
+msgstr ""
+
+#: ../../source/references_shaders.md:305
+msgid ""
+"To make any shader beat-reactive, scale its parameter in the dispatch: "
+"`base_val * (low + bd * range)`."
+msgstr ""
+
+#: ../../source/references_shaders.md:309
+msgid "Full Shader Catalog"
+msgstr ""
+
+#: ../../source/references_shaders.md:311
+#: ../../source/references_shaders.md:441
+msgid "Geometry Shaders"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Key Params"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`crt`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`strength=0.05`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "CRT barrel distortion (cached remap)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`pixelate`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`block=4`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Reduce effective resolution"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`wave_distort`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`freq, amp, axis`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Sinusoidal row/column displacement"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`kaleidoscope`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`folds=6`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Radial symmetry via polar remapping"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`mirror_h`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "—"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Horizontal mirror"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`mirror_v`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Vertical mirror"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`mirror_quad`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "4-fold mirror"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`mirror_diag`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Diagonal mirror"
+msgstr ""
+
+#: ../../source/references_shaders.md:324
+msgid "Channel Manipulation"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`amt=3`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "R/B channel horizontal shift (beat-reactive)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`channel_shift`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`r=(sx,sy), g, b`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Independent per-channel x,y shifting"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`channel_swap`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`order=(2,1,0)`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Reorder RGB channels (BGR, GRB, etc.)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`rgb_split_radial`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`strength=5`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Chromatic aberration radiating from center"
+msgstr ""
+
+#: ../../source/references_shaders.md:333
+msgid "Color Manipulation"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`invert`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Negate all colors"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`posterize`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`levels=4`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Reduce color depth to N levels"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`threshold`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`thr=128`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Binary black/white"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`solarize`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`threshold=128`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Invert pixels above threshold"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`hue_rotate`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`amount=0.1`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Rotate all hues by amount (0-1)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`saturation`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`factor=1.5`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Scale saturation (>1=more, <1=less)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`color_grade`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`tint=(r,g,b)`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Per-channel multiplier"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`amt=0.3`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Time-varying per-channel sine modulation"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`color_ramp`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`ramp=[(R,G,B),...]`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Map luminance to custom color gradient"
+msgstr ""
+
+#: ../../source/references_shaders.md:347
+msgid "Glow / Blur"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`bloom`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`thr=130`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Bright area glow (4x downsample + box blur)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`edge_glow`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`hue=0.5`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Detect edges, add colored overlay"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`soft_focus`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`strength=0.3`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Blend with blurred version"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`radial_blur`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`strength=0.03`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Zoom blur from center outward"
+msgstr ""
+
+#: ../../source/references_shaders.md:356
+msgid "Noise / Grain"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`amt=10`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "2x-downsampled film grain (beat-reactive)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`static`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`density=0.05, color=True`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Random pixel noise (TV static)"
+msgstr ""
+
+#: ../../source/references_shaders.md:363
+msgid "Lines / Patterns"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`scanlines`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`intensity=0.08, spacing=3`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Darken every Nth row"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`halftone`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`dot_size=6`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Halftone dot pattern overlay"
+msgstr ""
+
+#: ../../source/references_shaders.md:370
+msgid "Tone"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`vignette`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`s=0.22`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Edge darkening (cached distance field)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`contrast`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`factor=1.3`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Adjust contrast around midpoint 128"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`gamma`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`gamma=1.5`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Gamma correction (>1=brighter mids)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`levels`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`black, white, midtone`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Levels adjustment (Photoshop-style)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`brightness`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Global brightness multiplier"
+msgstr ""
+
+#: ../../source/references_shaders.md:380
+msgid "Glitch / Data"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "(uses `f`)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Beat-reactive horizontal row displacement"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`block_glitch`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`n_blocks=8, max_size=40`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Random rectangular block displacement"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`pixel_sort`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`threshold=100, direction=\"h\"`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Sort pixels by brightness in rows/columns"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`data_bend`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`offset, chunk`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Raw byte displacement (datamoshing)"
+msgstr ""
+
+#: ../../source/references_shaders.md:391
+msgid "Shader Implementations"
+msgstr ""
+
+#: ../../source/references_shaders.md:393
+msgid ""
+"Every shader function takes a canvas (`uint8 H,W,3`) and returns a canvas"
+" of the same shape. The naming convention is `sh_<name>`. Geometry "
+"shaders that build coordinate remap tables should **cache** them since "
+"the table only depends on resolution + parameters, not on frame content."
+msgstr ""
+
+#: ../../source/references_shaders.md:395
+msgid "Helpers"
+msgstr ""
+
+#: ../../source/references_shaders.md:397
+msgid "Shaders that manipulate hue/saturation need vectorized HSV conversion:"
+msgstr ""
+
+#: ../../source/references_shaders.md:443
+msgid "CRT Barrel Distortion"
+msgstr ""
+
+#: ../../source/references_shaders.md:444
+msgid "Cache the coordinate remap — it never changes per frame:"
+msgstr ""
+
+#: ../../source/references_shaders.md:463
+msgid "Pixelate"
+msgstr ""
+
+#: ../../source/references_shaders.md:471
+msgid "Wave Distort"
+msgstr ""
+
+#: ../../source/references_shaders.md:488
+msgid "Displacement Map"
+msgstr ""
+
+#: ../../source/references_shaders.md:500
+msgid "Kaleidoscope"
+msgstr ""
+
+#: ../../source/references_shaders.md:516
+msgid "Mirror Variants"
+msgstr ""
+
+#: ../../source/references_shaders.md:545
+msgid ""
+"**Note:** Mirror shaders mutate in-place. The dispatch function passes "
+"`canvas.copy()` to avoid corrupting the original."
+msgstr ""
+
+#: ../../source/references_shaders.md:549
+msgid "Channel Manipulation Shaders"
+msgstr ""
+
+#: ../../source/references_shaders.md:551
+msgid "Chromatic Aberration"
+msgstr ""
+
+#: ../../source/references_shaders.md:563
+msgid "Channel Shift"
+msgstr ""
+
+#: ../../source/references_shaders.md:574
+msgid "Channel Swap"
+msgstr ""
+
+#: ../../source/references_shaders.md:581
+msgid "RGB Split Radial"
+msgstr ""
+
+#: ../../source/references_shaders.md:603
+msgid "Color Manipulation Shaders"
+msgstr ""
+
+#: ../../source/references_shaders.md:605
+msgid "Invert"
+msgstr ""
+
+#: ../../source/references_shaders.md:611
+msgid "Posterize"
+msgstr ""
+
+#: ../../source/references_shaders.md:619
+msgid "Threshold"
+msgstr ""
+
+#: ../../source/references_shaders.md:628
+msgid "Solarize"
+msgstr ""
+
+#: ../../source/references_shaders.md:636
+msgid "Hue Rotate"
+msgstr ""
+
+#: ../../source/references_shaders.md:646
+msgid "Saturation"
+msgstr ""
+
+#: ../../source/references_shaders.md:656
+msgid "Color Grade"
+msgstr ""
+
+#: ../../source/references_shaders.md:665
+msgid "Color Wobble"
+msgstr ""
+
+#: ../../source/references_shaders.md:676
+msgid "Color Ramp"
+msgstr ""
+
+#: ../../source/references_shaders.md:693
+msgid "Glow / Blur Shaders"
+msgstr ""
+
+#: ../../source/references_shaders.md:695
+msgid "Bloom"
+msgstr ""
+
+#: ../../source/references_shaders.md:709
+msgid "Edge Glow"
+msgstr ""
+
+#: ../../source/references_shaders.md:727
+msgid "Soft Focus"
+msgstr ""
+
+#: ../../source/references_shaders.md:739
+msgid "Radial Blur"
+msgstr ""
+
+#: ../../source/references_shaders.md:758
+msgid "Noise / Grain Shaders"
+msgstr ""
+
+#: ../../source/references_shaders.md:760
+msgid "Film Grain"
+msgstr ""
+
+#: ../../source/references_shaders.md:769
+msgid "Static Noise"
+msgstr ""
+
+#: ../../source/references_shaders.md:787
+msgid "Lines / Pattern Shaders"
+msgstr ""
+
+#: ../../source/references_shaders.md:789
+msgid "Scanlines"
+msgstr ""
+
+#: ../../source/references_shaders.md:798
+msgid "Halftone"
+msgstr ""
+
+#: ../../source/references_shaders.md:818
+msgid ""
+"**Performance note:** Halftone is slow due to Python loops. Acceptable "
+"for small resolutions or single test frames. For production, consider a "
+"vectorized version using precomputed distance masks."
+msgstr ""
+
+#: ../../source/references_shaders.md:822
+msgid "Tone Shaders"
+msgstr ""
+
+#: ../../source/references_shaders.md:824
+msgid "Vignette"
+msgstr ""
+
+#: ../../source/references_shaders.md:837
+msgid "Reverse Vignette"
+msgstr ""
+
+#: ../../source/references_shaders.md:839
+msgid ""
+"Inverted vignette: darkens the **center** and leaves edges bright. Useful"
+" when text is centered over busy backgrounds — creates a natural dark "
+"zone for readability without a hard-edged box."
+msgstr ""
+
+#: ../../source/references_shaders.md:841
+msgid ""
+"Combine with `apply_text_backdrop()` (see composition.md) for per-frame "
+"glyph-aware darkening."
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Param"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Default"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "`strength`"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "0.5"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "0 = no effect, 1.0 = center nearly black"
+msgstr ""
+
+#: ../../source/references_shaders.md:864
+msgid "Add to ShaderChain dispatch:"
+msgstr ""
+
+#: ../../source/references_shaders.md:870
+msgid "Contrast"
+msgstr ""
+
+#: ../../source/references_shaders.md:877
+msgid "Gamma"
+msgstr ""
+
+#: ../../source/references_shaders.md:884
+msgid "Levels"
+msgstr ""
+
+#: ../../source/references_shaders.md:893
+msgid "Brightness"
+msgstr ""
+
+#: ../../source/references_shaders.md:902
+msgid "Glitch / Data Shaders"
+msgstr ""
+
+#: ../../source/references_shaders.md:904
+msgid "Glitch Bands"
+msgstr ""
+
+#: ../../source/references_shaders.md:920
+msgid "Block Glitch"
+msgstr ""
+
+#: ../../source/references_shaders.md:933
+msgid "Pixel Sort"
+msgstr ""
+
+#: ../../source/references_shaders.md:964
+msgid "Data Bend"
+msgstr ""
+
+#: ../../source/references_shaders.md:979
+msgid "Tint Presets"
+msgstr ""
+
+#: ../../source/references_shaders.md:997
+msgid "Transitions"
+msgstr ""
+
+#: ../../source/references_shaders.md:999
+msgid ""
+"**Note:** These operate on character-level `(chars, colors)` arrays (v1 "
+"interface). In v2, transitions between scenes are typically handled by "
+"hard cuts at beat boundaries (see `scenes.md`), or by rendering both "
+"scenes to canvases and using `blend_canvas()` with a time-varying "
+"opacity. The character-level transitions below are still useful for "
+"within-scene effects."
+msgstr ""
+
+#: ../../source/references_shaders.md:1001
+msgid "Crossfade"
+msgstr ""
+
+#: ../../source/references_shaders.md:1010
+msgid "v2 Canvas-Level Crossfade"
+msgstr ""
+
+#: ../../source/references_shaders.md:1017
+msgid "Wipe (directional)"
+msgstr ""
+
+#: ../../source/references_shaders.md:1032
+msgid "Glitch Cut"
+msgstr ""
+
+#: ../../source/references_shaders.md:1048
+msgid "Output Formats"
+msgstr ""
+
+#: ../../source/references_shaders.md:1050
+msgid "MP4 (default)"
+msgstr ""
+
+#: ../../source/references_shaders.md:1058
+msgid "GIF"
+msgstr ""
+
+#: ../../source/references_shaders.md:1066
+msgid "PNG Sequence"
+msgstr ""
+
+#: ../../source/references_shaders.md:1068
+msgid ""
+"For frame-accurate editing, compositing in external tools (After Effects,"
+" Nuke), or lossless archival:"
+msgstr ""
+
+#: ../../source/references_shaders.md:1089
+msgid "Reassemble PNG sequence to video:"
+msgstr ""
+
+#: ../../source/references_shaders.md:1094
+msgid "Alpha Channel / Transparent Background (RGBA)"
+msgstr ""
+
+#: ../../source/references_shaders.md:1096
+msgid ""
+"For compositing ASCII art over other video or images. Uses RGBA canvas (4"
+" channels) instead of RGB (3 channels):"
+msgstr ""
+
+#: ../../source/references_shaders.md:1123
+msgid "RGBA output via ffmpeg (ProRes 4444 for editing, WebM VP9 for web):"
+msgstr ""
+
+#: ../../source/references_shaders.md:1138
+msgid ""
+"**Key constraint**: shaders that operate on `(H,W,3)` arrays need "
+"adaptation for RGBA. Either apply shaders to the RGB channels only and "
+"preserve alpha, or write RGBA-aware versions:"
+msgstr ""
+
+#: ../../source/references_shaders.md:1151
+msgid "Real-Time Terminal Rendering"
+msgstr ""
+
+#: ../../source/references_shaders.md:1153
+msgid ""
+"Live ASCII display in the terminal using ANSI escape codes. Useful for "
+"previewing scenes during development, live performances, and interactive "
+"parameter tuning."
+msgstr ""
+
+#: ../../source/references_shaders.md:1155
+msgid "ANSI Color Escape Codes"
+msgstr ""
+
+#: ../../source/references_shaders.md:1168
+msgid "Frame-to-ANSI Conversion"
+msgstr ""
+
+#: ../../source/references_shaders.md:1200
+msgid "Optimized: Delta Updates"
+msgstr ""
+
+#: ../../source/references_shaders.md:1202
+msgid ""
+"Only redraw characters that changed since the last frame. Eliminates "
+"redundant terminal writes for static regions:"
+msgstr ""
+
+#: ../../source/references_shaders.md:1220
+msgid "Live Render Loop"
+msgstr ""
+
+#: ../../source/references_shaders.md:1294
+msgid "Curses-Based Rendering (More Robust)"
+msgstr ""
+
+#: ../../source/references_shaders.md:1296
+msgid "For full-featured terminal UIs with proper resize handling and input:"
+msgstr ""
+
+#: ../../source/references_shaders.md:1364
+msgid "Terminal Rendering Constraints"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Constraint"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Value"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Max practical grid"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "~200x60"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Depends on terminal size"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Color support"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "24-bit (modern), 256 (fallback), 16 (minimal)"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Check `$COLORTERM` for truecolor"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Frame rate ceiling"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "~30 fps"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Terminal I/O is the bottleneck"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Delta updates"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "2-5x faster"
+msgstr ""
+
+#: ../../source/references_shaders.md
+#, python-format
+msgid "Only worth it when <30% of cells change per frame"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "SSH latency"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Kills performance"
+msgstr ""
+
+#: ../../source/references_shaders.md
+msgid "Local terminals only for real-time"
+msgstr ""
+
+#: ../../source/references_shaders.md:1374
+msgid "**Detect color support:**"
+msgstr ""
+

@@ -1,0 +1,1707 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/babylon_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:3
+msgid "**Tags:**"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:4
+msgid ":boom:       [Breaking Change]"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:5
+msgid ":eyeglasses: [Spec Compliancy]"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:6
+msgid ":rocket:     [New Feature]"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:7
+msgid ":bug:        [Bug Fix]"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:8
+msgid ":memo:       [Documentation]"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:9
+msgid ":house:      [Internal]"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:10
+msgid ":nail_care:  [Polish]"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:12
+msgid "Semver Policy: https://github.com/babel/babylon#semver"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:14
+msgid "_Note: Gaps between patch versions are faulty, broken or test releases._"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:16
+msgid ""
+"See the [Babel "
+"Changelog](https://github.com/babel/babel/blob/master/CHANGELOG.md) for "
+"the pre-6.8.0 version Changelog."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:18
+msgid "6.17.4 (2017-06-18)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:20
+msgid "Fix comment attachment for call expressions (#575) (aardito2)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:21
+msgid ""
+"Correctly put typeParameters on FunctionExpression (#585) (Daniel "
+"Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:23
+msgid "6.17.3 (2017-06-09)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:25
+msgid "Fix location info on FunctionTypeParam nodes (#565) (#571) (Michal Srb)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:26
+msgid "Fix stmt value being the raw value (#557) (#558) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:28
+msgid "6.17.2 (2017-05-31)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:30
+msgid ""
+"Fixed disappearing comments following a trailing comma on the last "
+"property of an object literal or the last argument of a call expression "
+"(#478) (aardito2)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:31
+msgid ""
+"Fix #437: only prohibit 'export type from \"module\" ' when flow is "
+"enabled (#438) (Kevin Gibbons)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:32
+msgid ""
+"Fix handling of anonymous parameters in `flowParseObjectTypeMethodish`. "
+"(#526) (Max Schaefer)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:33
+msgid ""
+"Convert argument of SpreadElement correctly to assignable (#518) (Daniel "
+"Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:35
+msgid "6.17.1 (2017-05-10)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:37
+msgid "Fix typo in flow spread operator error (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:38
+msgid ""
+"Fixed invalid number literal parsing "
+"([#473](https://github.com/babel/babylon/pull/473)) (Alex Kuzmenko)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:39
+msgid ""
+"Fix number parser ([#433](https://github.com/babel/babylon/pull/433)) "
+"(Alex Kuzmenko)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:40
+msgid ""
+"Ensure non pattern shorthand props are checked for reserved words "
+"([#479](https://github.com/babel/babylon/pull/479)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:41
+msgid ""
+"Remove jsx context when parsing arrow functions "
+"([#475](https://github.com/babel/babylon/pull/475)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:42
+msgid ""
+"Allow super in class properties "
+"([#499](https://github.com/babel/babylon/pull/499)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:43
+msgid ""
+"Allow flow class field to be named constructor "
+"([#510](https://github.com/babel/babylon/pull/510)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:45
+msgid "6.17.0 (2017-04-20)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:47
+msgid ""
+"Cherry-pick #418 to 6.x "
+"([#476](https://github.com/babel/babylon/pull/476)) (Sebastian McKenzie)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:48
+msgid ""
+"Add support for invalid escapes in tagged templates "
+"([#274](https://github.com/babel/babylon/pull/274)) (Kevin Gibbons)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:49
+msgid ""
+"Throw error if new.target is used outside of a function "
+"([#402](https://github.com/babel/babylon/pull/402)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:50
+msgid ""
+"Fix parsing of class properties "
+"([#351](https://github.com/babel/babylon/pull/351)) (Kevin Gibbons)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:51
+msgid ""
+"Fix parsing yield with dynamicImport "
+"([#383](https://github.com/babel/babylon/pull/383)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:52
+msgid ""
+"Ensure consistent start args for parseParenItem "
+"([#386](https://github.com/babel/babylon/pull/386)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:54
+msgid "6.16.0 (2017-02-23)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:56
+msgid ":rocket: New Feature"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:58
+msgid ""
+"***ESTree*** compatibility as plugin "
+"([#277](https://github.com/babel/babylon/pull/277)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:60
+msgid ""
+"We finally introduce a new compatibility layer for ESTree. To put babylon"
+" into ESTree-compatible mode the new plugin `estree` can be enabled. In "
+"this mode the parser will output an AST that is compliant to the specs of"
+" [ESTree](https://github.com/estree/estree/)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:62
+msgid ""
+"We highly recommend everyone who uses babylon outside of babel to use "
+"this plugin. This will make it much easier for users to switch between "
+"different ESTree-compatible parsers. We so far tested several projects "
+"with different parsers and exchanged their parser to babylon and in "
+"nearly all cases it worked out of the box. Some other estree-compatible "
+"parsers include `acorn`, `esprima`, `espree`, `flow-parser`, etc."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:64
+msgid "To enable `estree` mode simply add the plugin in the config:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:71
+msgid ""
+"If you want to migrate your project from non-ESTree mode to ESTree, have "
+"a look at our [Readme](https://github.com/babel/babylon/#output), where "
+"all deviations are mentioned."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:73
+msgid ""
+"Add a parseExpression public method "
+"([#213](https://github.com/babel/babylon/pull/213)) (jeromew)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:75
+msgid "Babylon exports a new function to parse a single expression"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:83
+msgid ""
+"The returned AST will only consist of the expression. The options are the"
+" same as for `parse()`"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:85
+msgid ""
+"Add startLine option ([#346](https://github.com/babel/babylon/pull/346)) "
+"(Raphael Mu)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:87
+msgid ""
+"A new option was added to babylon allowing to change the intial "
+"linenumber for the first line which is usually `1`. Changing this for "
+"example to `100` will make line `1` of the input source to be marked as "
+"line `100`, line `2` as `101`, line `3` as `102`, ..."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:90
+msgid ""
+"Function predicate declaration "
+"([#103](https://github.com/babel/babylon/pull/103)) (Panagiotis Vekris)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:92
+msgid ""
+"Added support for function predicates which flow introduced in version "
+"0.33.0"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:98
+msgid ""
+"Allow imports in declare module "
+"([#315](https://github.com/babel/babylon/pull/315)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:100
+msgid ""
+"Added support for imports within module declarations which flow "
+"introduced in version 0.37.0"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:109 ../../source/babylon_CHANGELOG.md:214
+#: ../../source/babylon_CHANGELOG.md:320 ../../source/babylon_CHANGELOG.md:400
+#: ../../source/babylon_CHANGELOG.md:458 ../../source/babylon_CHANGELOG.md:552
+#: ../../source/babylon_CHANGELOG.md:598
+msgid ":eyeglasses: Spec Compliancy"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:111
+msgid ""
+"Forbid semicolons after decorators in classes "
+"([#352](https://github.com/babel/babylon/pull/352)) (Kevin Gibbons)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:113
+msgid ""
+"This example now correctly throws an error when there is a semicolon "
+"after the decorator:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:122
+msgid ""
+"Keywords are not allowed as local specifier "
+"([#307](https://github.com/babel/babylon/pull/307)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:124
+msgid "Using keywords in imports is not allowed anymore:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:131
+msgid ""
+"Do not allow overwritting of primitive types "
+"([#314](https://github.com/babel/babylon/pull/314)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:133
+msgid ""
+"In flow it is now forbidden to overwrite the primitve types `\"any\"`, "
+"`\"mixed\"`, `\"empty\"`, `\"bool\"`, `\"boolean\"`, `\"number\"`, "
+"`\"string\"`, `\"void\"` and `\"null\"` with your own type declaration."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:135
+#, python-brace-format
+msgid ""
+"Disallow import type { type a } from … "
+"([#305](https://github.com/babel/babylon/pull/305)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:137
+msgid "The following code now correctly throws an error"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:143
+msgid ""
+"Don't parse class properties without initializers when classProperties is"
+" disabled and Flow is enabled "
+"([#300](https://github.com/babel/babylon/pull/300)) (Andrew Levine)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:145
+msgid ""
+"Ensure that you enable the `classProperties` plugin in order to enable "
+"correct parsing of class properties. Prior to this version it was "
+"possible to parse them by enabling the `flow` plugin but this was not "
+"intended the behaviour."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:147
+msgid ""
+"If you enable the flow plugin you can only define the type of the class "
+"properties, but not initialize them."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:149
+msgid ""
+"Fix export default async function to be FunctionDeclaration "
+"([#324](https://github.com/babel/babylon/pull/324)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:151
+msgid ""
+"Parsing the following code now returns a `FunctionDeclaration` AST node "
+"instead of `FunctionExpression`."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:157 ../../source/babylon_CHANGELOG.md:378
+#: ../../source/babylon_CHANGELOG.md:436 ../../source/babylon_CHANGELOG.md:524
+#: ../../source/babylon_CHANGELOG.md:579
+msgid ":nail_care: Polish"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:159
+msgid ""
+"Improve error message on attempt to destructure named import "
+"([#288](https://github.com/babel/babylon/pull/288)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:161 ../../source/babylon_CHANGELOG.md:257
+#: ../../source/babylon_CHANGELOG.md:306 ../../source/babylon_CHANGELOG.md:360
+#: ../../source/babylon_CHANGELOG.md:420 ../../source/babylon_CHANGELOG.md:488
+#: ../../source/babylon_CHANGELOG.md:570
+msgid ":bug: Bug Fix"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:163
+msgid ""
+"Fix negative number literal typeannotations "
+"([#366](https://github.com/babel/babylon/pull/366)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:165
+msgid ""
+"Ensure takeDecorators is called on exported class "
+"([#358](https://github.com/babel/babylon/pull/358)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:167
+msgid ""
+"ESTree: correctly change literals in all cases "
+"([#368](https://github.com/babel/babylon/pull/368)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:169
+msgid ""
+"Correctly convert RestProperty to Assignable "
+"([#339](https://github.com/babel/babylon/pull/339)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:171
+msgid ""
+"Fix #321 by allowing question marks in type params "
+"([#338](https://github.com/babel/babylon/pull/338)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:173
+msgid ""
+"Fix #336 by correctly setting arrow-param "
+"([#337](https://github.com/babel/babylon/pull/337)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:175
+msgid ""
+"Fix parse error when destructuring `set` with default value "
+"([#317](https://github.com/babel/babylon/pull/317)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:177
+msgid ""
+"Fix ObjectTypeCallProperty static "
+"([#298](https://github.com/babel/babylon/pull/298)) (Dan Harper)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:180 ../../source/babylon_CHANGELOG.md:284
+#: ../../source/babylon_CHANGELOG.md:369 ../../source/babylon_CHANGELOG.md:442
+#: ../../source/babylon_CHANGELOG.md:533
+msgid ":house: Internal"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:182
+msgid ""
+"Fix generator-method-with-computed-name spec "
+"([#360](https://github.com/babel/babylon/pull/360)) (Alex Rattray)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:184
+msgid ""
+"Fix flow type-parameter-declaration test with unintended semantic "
+"([#361](https://github.com/babel/babylon/pull/361)) (Alex Rattray)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:186
+msgid ""
+"Cleanup and splitup parser functions "
+"([#295](https://github.com/babel/babylon/pull/295)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:188
+msgid ""
+"chore(package): update flow-bin to version 0.38.0 "
+"([#313](https://github.com/babel/babylon/pull/313)) (greenkeeper[bot])"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:190
+msgid ""
+"Call inner function instead of 1:1 copy to plugin "
+"([#294](https://github.com/babel/babylon/pull/294)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:192
+msgid ""
+"Update eslint-config-babel to the latest version 🚀 "
+"([#299](https://github.com/babel/babylon/pull/299)) (greenkeeper[bot])"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:194
+msgid ""
+"Update eslint-config-babel to the latest version 🚀 "
+"([#293](https://github.com/babel/babylon/pull/293)) (greenkeeper[bot])"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:196
+msgid ""
+"devDeps: remove eslint-plugin-babel "
+"([#292](https://github.com/babel/babylon/pull/292)) (Kai Cataldo)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:198
+msgid ""
+"Correct indent eslint rule config "
+"([#276](https://github.com/babel/babylon/pull/276)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:200
+msgid ""
+"Fail tests that have expected.json and throws-option "
+"([#285](https://github.com/babel/babylon/pull/285)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:202
+msgid ":memo: Documentation"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:204
+msgid ""
+"Update contributing with more test info [skip ci] "
+"([#355](https://github.com/babel/babylon/pull/355)) (Brian Ng)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:206
+msgid ""
+"Update API documentation "
+"([#330](https://github.com/babel/babylon/pull/330)) (Timothy Gu)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:208
+msgid ""
+"Added keywords to package.json "
+"([#323](https://github.com/babel/babylon/pull/323)) (Dmytro)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:210
+msgid ""
+"AST spec: fix casing of `RegExpLiteral` "
+"([#318](https://github.com/babel/babylon/pull/318)) (Mathias Bynens)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:212
+msgid "6.15.0 (2017-01-10)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:216
+msgid ""
+"Add support for Flow shorthand import type "
+"([#267](https://github.com/babel/babylon/pull/267)) (Jeff Morrison)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:218
+msgid ""
+"This change implements flows new shorthand import syntax and where "
+"previously you had to write this code:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:227
+msgid "you can now write it like this:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:237
+msgid ""
+"For more information look at "
+"[this](https://github.com/facebook/flow/pull/2890) pull request."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:239
+msgid ""
+"flow: allow leading pipes in all positions "
+"([#256](https://github.com/babel/babylon/pull/256)) (Vladimir Kurchatkin)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:241
+msgid "This change now allows a leading pipe everywhere types can be used:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:246
+msgid ""
+"Throw error when exporting non-declaration "
+"([#241](https://github.com/babel/babylon/pull/241)) (Kai Cataldo)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:248
+msgid ""
+"Previously babylon parsed the following exports, although they are not "
+"valid:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:259
+msgid ""
+"Don't set inType flag when parsing property names "
+"([#266](https://github.com/babel/babylon/pull/266)) (Vladimir Kurchatkin)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:261
+msgid "This fixes parsing of this case:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:269
+msgid ""
+"Fix source location for JSXEmptyExpression nodes (fixes #248) "
+"([#249](https://github.com/babel/babylon/pull/249)) (James Long)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:271
+msgid "The following case produced an invalid AST"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:276
+msgid ""
+"Use fromCodePoint to convert high value unicode entities "
+"([#243](https://github.com/babel/babylon/pull/243)) (Ryan Duffy)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:278
+msgid ""
+"When high value unicode entities (e.g. 💩) were used in the input source "
+"code they are now correctly encoded in the resulting AST."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:280
+msgid ""
+"Rename folder to avoid Windows-illegal characters "
+"([#281](https://github.com/babel/babylon/pull/281)) (Ryan Plant)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:282
+msgid ""
+"Allow this.state.clone() when parsing decorators "
+"([#262](https://github.com/babel/babylon/pull/262)) (Alex Rattray)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:286
+msgid ""
+"User external-helpers ([#254](https://github.com/babel/babylon/pull/254))"
+" (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:288
+msgid ""
+"Add watch script for dev "
+"([#234](https://github.com/babel/babylon/pull/234)) (Kai Cataldo)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:290
+msgid ""
+"Freeze current plugins list for \"*\" option, and remove from README.md "
+"([#245](https://github.com/babel/babylon/pull/245)) (Andrew Levine)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:292
+msgid ""
+"Prepare tests for multiple fixture runners. "
+"([#240](https://github.com/babel/babylon/pull/240)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:294
+msgid ""
+"Add some test coverage for decorators stage-0 plugin "
+"([#250](https://github.com/babel/babylon/pull/250)) (Andrew Levine)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:296
+msgid ""
+"Refactor tokenizer types file "
+"([#263](https://github.com/babel/babylon/pull/263)) (Sven SAULEAU)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:298
+msgid ""
+"Update eslint-config-babel to the latest version 🚀 "
+"([#273](https://github.com/babel/babylon/pull/273)) (greenkeeper[bot])"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:300
+msgid ""
+"chore(package): update rollup to version 0.41.0 "
+"([#272](https://github.com/babel/babylon/pull/272)) (greenkeeper[bot])"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:302
+msgid ""
+"chore(package): update flow-bin to version 0.37.0 "
+"([#255](https://github.com/babel/babylon/pull/255)) (greenkeeper[bot])"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:304
+msgid "6.14.1 (2016-11-17)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:308
+msgid ""
+"Allow `\"plugins\": [\"*\"]` "
+"([#229](https://github.com/babel/babylon/pull/229)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:316
+msgid ""
+"Will include all parser plugins instead of specifying each one "
+"individually. Useful for tools like babel-eslint, jscodeshift, and ast-"
+"explorer."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:318
+msgid "6.14.0 (2016-11-16)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:322
+msgid ""
+"Throw error for reserved words `enum` and `await` "
+"([#195](https://github.com/babel/babylon/pull/195)) (Kai Cataldo)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:324
+msgid ""
+"[11.6.2.2 Future Reserved Words](http://www.ecma-"
+"international.org/ecma-262/6.0/#sec-future-reserved-words)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:326
+msgid ""
+"Babylon will throw for more reserved words such as `enum` or `await` (in "
+"strict mode)."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:333
+msgid ""
+"Optional names for function types and object type indexers "
+"([#197](https://github.com/babel/babylon/pull/197)) (Gabe Levi)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:335
+msgid "So where you used to have to write"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:343
+msgid "you can now write (with flow 0.34.0)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:351
+msgid ""
+"Parse flow nested array type annotations like `number[][]` "
+"([#219](https://github.com/babel/babylon/pull/219)) (Bernhard Häussner)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:353
+msgid "Supports these form now of specifying array types:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:362
+msgid ""
+"Correctly eat semicolon at the end of `DelcareModuleExports` "
+"([#223](https://github.com/babel/babylon/pull/223))  (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:371
+msgid ""
+"Count Babel tests towards Babylon code coverage "
+"([#182](https://github.com/babel/babylon/pull/182)) (Moti Zilberman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:372
+msgid ""
+"Fix strange line endings "
+"([#214](https://github.com/babel/babylon/pull/214)) (Thomas Grainger)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:373
+msgid "Add node 7 (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:374
+msgid ""
+"chore(package): update flow-bin to version 0.34.0 "
+"([#204](https://github.com/babel/babylon/pull/204)) (Greenkeeper)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:376
+msgid "v6.13.1 (2016-10-26)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:380
+msgid ""
+"Use rollup for bundling to speed up startup time "
+"([#190](https://github.com/babel/babylon/pull/190)) "
+"([@drewml](https://github.com/DrewML))"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:387
+msgid ""
+"With that test case, there was a ~95ms savings by removing the need for "
+"node to build/traverse the dependency graph."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:389
+msgid ""
+"**Without bundling** "
+"![image](https://cloud.githubusercontent.com/assets/5233399/19420264"
+"/3133497e-93ad-11e6-9a6a-2da59c4f5c13.png)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:389 ../../source/babylon_CHANGELOG.md:392
+msgid "image"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:392
+msgid ""
+"**With bundling** "
+"![image](https://cloud.githubusercontent.com/assets/5233399/19420267"
+"/388f556e-93ad-11e6-813e-7c5c396be322.png)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:395
+msgid ""
+"add clean command [skip ci] "
+"([#201](https://github.com/babel/babylon/pull/201)) (Henry Zhu)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:396
+msgid ""
+"add ForAwaitStatement (async generator already added) [skip ci] "
+"([#196](https://github.com/babel/babylon/pull/196)) (Henry Zhu)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:398
+msgid "v6.13.0 (2016-10-21)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:402
+msgid ""
+"Property variance type annotations for Flow plugin "
+"([#161](https://github.com/babel/babylon/pull/161)) (Sam Goldman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:404
+msgid "See https://flowtype.org/docs/variance.html for more information"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:414
+msgid ""
+"Raise error on duplicate definition of __proto__ "
+"([#183](https://github.com/babel/babylon/pull/183)) (Moti Zilberman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:422
+msgid ""
+"Flow: Allow class properties to be named `static` "
+"([#184](https://github.com/babel/babylon/pull/184)) (Moti Zilberman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:430
+msgid ""
+"Allow \"async\" as identifier for object literal property shorthand "
+"([#187](https://github.com/babel/babylon/pull/187)) (Andrew Levine)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:438
+msgid ""
+"Fix flowtype and add inType to state "
+"([#189](https://github.com/babel/babylon/pull/189)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:440
+msgid "This improves the performance slightly (because of hidden classes)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:444
+msgid ""
+"Fix .gitattributes line ending setting "
+"([#191](https://github.com/babel/babylon/pull/191)) (Moti Zilberman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:446
+msgid ""
+"Increase test coverage ([#175](https://github.com/babel/babylon/pull/175)"
+" (Moti Zilberman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:448
+msgid "Readd missin .eslinignore for IDEs (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:450
+msgid ""
+"Error on missing expected.json fixture in CI "
+"([#188](https://github.com/babel/babylon/pull/188)) (Moti Zilberman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:452
+msgid ""
+"Add .gitattributes and .editorconfig for LF line endings "
+"([#179](https://github.com/babel/babylon/pull/179)) (Moti Zilberman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:454
+msgid ""
+"Fixes two tests that are failing after the merge of #172 "
+"([#177](https://github.com/babel/babylon/pull/177)) (Moti Zilberman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:456
+msgid "v6.12.0 (2016-10-14)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:460
+msgid ""
+"Implement import() syntax "
+"([#163](https://github.com/babel/babylon/pull/163)) (Jordan Gensler)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:462
+msgid "Dynamic Import"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:464
+msgid "Proposal Repo: https://github.com/domenic/proposal-dynamic-import"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:465
+msgid "Championed by [@domenic](https://github.com/domenic)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:466
+msgid "stage-2"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:467
+msgid ""
+"[sept-28 tc39 "
+"notes](https://github.com/rwaldron/tc39-notes/blob/master/es7/2016-09/sept-28.md"
+"#113a-import)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:469
+msgid ""
+"This repository contains a proposal for adding a \"function-like\" "
+"import() module loading syntactic form to JavaScript"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:478
+msgid ""
+"Add EmptyTypeAnnotation "
+"([#171](https://github.com/babel/babylon/pull/171)) (Sam Goldman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:480
+msgid "EmptyTypeAnnotation"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:482
+msgid "Just wasn't covered before."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:490 ../../source/babylon_CHANGELOG.md:543
+msgid ""
+"Fix crash when exporting with destructuring and sparse array "
+"([#170](https://github.com/babel/babylon/pull/170)) (Jeroen Engels)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:497
+msgid ""
+"Allow keyword in Flow object declaration property names with type "
+"parameters ([#146](https://github.com/babel/babylon/pull/146)) (Dan "
+"Harper)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:506
+msgid ""
+"Allow keyword in object/class property names with Flow type parameters "
+"([#145](https://github.com/babel/babylon/pull/145)) (Dan Harper)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:516
+msgid ""
+"Allow typeAnnotations for yield expressions "
+"([#174](https://github.com/babel/babylon/pull/174))) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:526
+msgid ""
+"Annotate more errors with expected token "
+"([#172](https://github.com/babel/babylon/pull/172))) (Moti Zilberman)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:535
+msgid ""
+"Remove kcheck ([#173](https://github.com/babel/babylon/pull/173)))  "
+"(Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:537
+msgid ""
+"Also run flow, linting, babel tests on seperate instances (add back node "
+"0.10)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:539
+msgid "v6.11.6 (2016-10-12)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:541
+msgid ":bug: Bug Fix/Regression"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:550
+msgid "v6.11.5 (2016-10-12)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:554
+msgid ""
+"Fix: Check for duplicate named exports in exported destructuring "
+"assignments ([#144](https://github.com/babel/babylon/pull/144)) (Kai "
+"Cataldo)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:562
+msgid ""
+"Fix: Check for duplicate named exports in exported rest "
+"elements/properties ([#164](https://github.com/babel/babylon/pull/164)) "
+"(Kai Cataldo)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:572
+msgid ""
+"Fix: Allow identifier `async` for default param in arrow expression "
+"([#165](https://github.com/babel/babylon/pull/165)) (Kai Cataldo)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:581
+msgid ""
+"Babylon will now print out the token it's expecting if there's a "
+"`SyntaxError` ([#150](https://github.com/babel/babylon/pull/150)) (Daniel"
+" Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:592
+msgid "v6.11.4 (2016-10-03)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:594
+msgid ""
+"Temporary rollback for erroring on trailing comma with spread (#154) "
+"(Henry Zhu)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:596
+msgid "v6.11.3 (2016-10-01)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:600
+msgid ""
+"Add static errors for object rest (#149) "
+"([@danez](https://github.com/danez))"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:602
+msgid "https://github.com/sebmarkbage/ecmascript-rest-spread"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:604
+msgid ""
+"Object rest copies the *rest* of properties from the right hand side "
+"`obj` starting from the left to right."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:613
+msgid "New Syntax Errors:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:615
+msgid ""
+"**SyntaxError**: The rest element has to be the last element when "
+"destructuring (1:10)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:625
+msgid ""
+"Before, this was just a more verbose way of shallow copying `obj` since "
+"it doesn't actually do what you think."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:627
+msgid ""
+"**SyntaxError**: Cannot have multiple rest elements when destructuring "
+"(1:13)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:638
+msgid ""
+"Before y and z would just be the same value anyway so there is no reason "
+"to need to have both."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:640
+msgid ""
+"**SyntaxError**: A trailing comma is not permitted after the rest element"
+" (1:16)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:646
+msgid ""
+"The rationale for this is that the use case for trailing comma is that "
+"you can add something at the end without affecting the line above. Since "
+"a RestProperty always has to be the last property it doesn't make sense."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:650
+msgid ""
+"get / set are valid property names in default assignment (#142) "
+"([@jezell](https://github.com/jezell))"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:657
+msgid "v6.11.2 (2016-09-23)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:659 ../../source/babylon_CHANGELOG.md:675
+#: ../../source/babylon_CHANGELOG.md:736
+msgid "Bug Fix"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:661
+msgid ""
+"[#139](https://github.com/babel/babylon/issues/139) Don't do the "
+"duplicate check if not an identifier (#140) @hzoo"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:671
+msgid ""
+"Bail out for now, and make a change to account for destructuring in the "
+"next release."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:673
+msgid "6.11.1 (2016-09-22)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:676
+msgid ""
+"[#137](https://github.com/babel/babylon/pull/137) - Fix a regression with"
+" duplicate exports - it was erroring on all keys in `Object.prototype`. "
+"@danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:689
+msgid "6.11.0 (2016-09-22)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:691
+msgid "Spec Compliancy (will break CI)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:693
+msgid ""
+"Disallow duplicate named exports "
+"([#107](https://github.com/babel/babylon/pull/107)) @kaicataldo"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:709
+msgid "New Feature (Syntax)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:711
+msgid ""
+"Add support for computed class property names "
+"([#121](https://github.com/babel/babylon/pull/121)) @motiz88"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:738
+msgid ""
+"Fix `static` property falling through in the declare class Flow AST "
+"([#135](https://github.com/babel/babylon/pull/135)) @danharper"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:748
+msgid "Polish"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:750
+msgid ""
+"Rephrase \"assigning/binding to rvalue\" errors to include context "
+"([#119](https://github.com/babel/babylon/pull/119)) @motiz88"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:764 ../../source/babylon_CHANGELOG.md:869
+#: ../../source/babylon_CHANGELOG.md:911
+msgid "Internal"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:766
+msgid ""
+"Fix call to `this.parseMaybeAssign` with correct arguments "
+"([#133](https://github.com/babel/babylon/pull/133)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:767
+msgid ""
+"Add semver note to changelog "
+"([#131](https://github.com/babel/babylon/pull/131)) @hzoo"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:769
+msgid "6.10.0 (2016-09-19)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:771
+msgid ""
+"We plan to include some spec compliancy bugs in patch versions. An "
+"example was the multiple default exports issue."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:773 ../../source/babylon_CHANGELOG.md:932
+msgid "Spec Compliancy"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:775
+msgid ""
+"Implement ES2016 check for simple parameter list in strict mode "
+"([#106](https://github.com/babel/babylon/pull/106)) (Timothy Gu)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:777
+msgid ""
+"It is a Syntax Error if ContainsUseStrict of FunctionBody is true and "
+"IsSimpleParameterList of FormalParameters is false. "
+"https://tc39.github.io/ecma262/2016/#sec-function-definitions-static-"
+"semantics-early-errors"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:779
+msgid ""
+"More Context: "
+"[tc39-notes](https://github.com/rwaldron/tc39-notes/blob/master/es7/2015-07/july-29.md#611"
+"-the-scope-of-use-strict-with-respect-to-destructuring-in-parameter-"
+"lists)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:781
+msgid "For example:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:791
+msgid ""
+"The solution would be to use a top level \"use strict\" or to remove the "
+"destructuring or default parameters when using a function + \"use "
+"strict\" or to."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:793 ../../source/babylon_CHANGELOG.md:923
+#: ../../source/babylon_CHANGELOG.md:947
+msgid "New Feature"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:795
+msgid ""
+"Exact object type annotations for Flow plugin "
+"([#104](https://github.com/babel/babylon/pull/104)) (Basil Hosmer)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:797
+msgid ""
+"Added to flow in "
+"https://github.com/facebook/flow/commit/c710c40aa2a115435098d6c0dfeaadb023cd39b8"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:799
+msgid "Looks like:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:805 ../../source/babylon_CHANGELOG.md:824
+#: ../../source/babylon_CHANGELOG.md:859 ../../source/babylon_CHANGELOG.md:881
+#: ../../source/babylon_CHANGELOG.md:887 ../../source/babylon_CHANGELOG.md:893
+#: ../../source/babylon_CHANGELOG.md:927
+msgid "Bug Fixes"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:807
+msgid ""
+"Include `typeParameter` location in `ArrowFunctionExpression` "
+"([#126](https://github.com/babel/babylon/pull/126)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:808
+msgid ""
+"Error on invalid flow type annotation with default assignment "
+"([#122](https://github.com/babel/babylon/pull/122)) (Dan Harper)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:809
+msgid ""
+"Fix Flow return types on arrow functions "
+"([#124](https://github.com/babel/babylon/pull/124)) (Dan Harper)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:811
+msgid "Misc"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:813
+msgid ""
+"Add tests for export extensions "
+"([#127](https://github.com/babel/babylon/pull/127)) (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:814
+msgid "Fix Contributing guidelines [skip ci] (Daniel Tschinder)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:816
+msgid "6.9.2 (2016-09-09)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:818
+msgid ""
+"The only change is to remove the `babel-runtime` dependency by compiling "
+"with Babel's ES2015 loose mode. So using babylon standalone should be "
+"smaller."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:820
+msgid "6.9.1 (2016-08-23)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:822
+msgid ""
+"This release contains mainly small bugfixes but also updates babylons "
+"default mode to es2017. The features for `exponentiationOperator`, "
+"`asyncFunctions` and `trailingFunctionCommas` which previously needed to "
+"be activated via plugin are now enabled by default and the plugins are "
+"now no-ops."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:826
+msgid ""
+"Fix issues with default object params in async functions "
+"([#96](https://github.com/babel/babylon/pull/96)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:827
+msgid ""
+"Fix issues with flow-types and async function "
+"([#95](https://github.com/babel/babylon/pull/95)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:828
+msgid ""
+"Fix arrow functions with destructuring, types & default value "
+"([#94](https://github.com/babel/babylon/pull/94)) @danharper"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:829
+msgid ""
+"Fix declare class with qualified type identifier "
+"([#97](https://github.com/babel/babylon/pull/97)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:830
+msgid ""
+"Remove exponentiationOperator, asyncFunctions, trailingFunctionCommas "
+"plugins and enable them by default "
+"([#98](https://github.com/babel/babylon/pull/98)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:832
+msgid "6.9.0 (2016-08-16)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:834
+msgid "New syntax support"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:836
+msgid ""
+"Add JSX spread children ([#42](https://github.com/babel/babylon/pull/42))"
+" @calebmer"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:838
+msgid "(Be aware that React is not going to support this syntax)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:846
+msgid ""
+"Add support for declare module.exports "
+"([#72](https://github.com/babel/babylon/pull/72)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:854
+msgid "New Features"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:856
+msgid ""
+"If supplied, attach filename property to comment node loc. "
+"([#80](https://github.com/babel/babylon/pull/80)) @divmain"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:857
+msgid ""
+"Add identifier name to node loc field "
+"([#90](https://github.com/babel/babylon/pull/90)) @kittens"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:861
+msgid ""
+"Fix exponential operator to behave according to spec "
+"([#75](https://github.com/babel/babylon/pull/75)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:862
+msgid ""
+"Fix lookahead to not add comments to arrays which are not cloned "
+"([#76](https://github.com/babel/babylon/pull/76)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:863
+msgid ""
+"Fix accidental fall-through in Flow type parsing. "
+"([#82](https://github.com/babel/babylon/pull/82)) @xiemaisi"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:864
+msgid ""
+"Only allow declares inside declare module "
+"([#73](https://github.com/babel/babylon/pull/73)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:865
+msgid ""
+"Small fix for parsing type parameter declarations "
+"([#83](https://github.com/babel/babylon/pull/83)) @gabelevi"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:866
+msgid ""
+"Fix arrow param locations with flow types "
+"([#57](https://github.com/babel/babylon/pull/57)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:867
+msgid ""
+"Fixes SyntaxError position with flow optional type "
+"([#65](https://github.com/babel/babylon/pull/65)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:871
+msgid "Add codecoverage to tests @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:872
+msgid "Fix tests to not save expected output if we expect the test to fail @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:873
+msgid "Make a shallow clone of babel for testing @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:874
+msgid ""
+"chore(package): update cross-env to version 2.0.0 "
+"([#77](https://github.com/babel/babylon/pull/77)) @greenkeeperio-bot"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:875
+msgid ""
+"chore(package): update ava to version 0.16.0 "
+"([#86](https://github.com/babel/babylon/pull/86)) @greenkeeperio-bot"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:876
+msgid ""
+"chore(package): update babel-plugin-istanbul to version 2.0.0 "
+"([#89](https://github.com/babel/babylon/pull/89)) @greenkeeperio-bot"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:877
+msgid ""
+"chore(package): update nyc to version 8.0.0 "
+"([#88](https://github.com/babel/babylon/pull/88)) @greenkeeperio-bot"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:879
+msgid "6.8.4 (2016-07-06)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:883
+msgid ""
+"Fix the location of params, when flow and default value used "
+"([#68](https://github.com/babel/babylon/pull/68)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:885
+msgid "6.8.3 (2016-07-02)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:889
+msgid ""
+"Fix performance regression introduced in 6.8.2 with conditionals "
+"([#63](https://github.com/babel/babylon/pull/63)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:891
+msgid "6.8.2 (2016-06-24)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:895
+#, python-brace-format
+msgid ""
+"Fix parse error with yielding jsx elements in generators `function* it() "
+"{ yield <a></a>; }` ([#31](https://github.com/babel/babylon/pull/31)) "
+"@eldereal"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:896
+msgid ""
+"When cloning nodes do not clone its comments "
+"([#24](https://github.com/babel/babylon/pull/24)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:897
+#, python-brace-format
+msgid ""
+"Fix parse errors when using arrow functions with an spread element and "
+"return type `(...props): void => {}` "
+"([#10](https://github.com/babel/babylon/pull/10)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:898
+msgid ""
+"Fix leading comments added from previous node "
+"([#23](https://github.com/babel/babylon/pull/23)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:899
+#, python-brace-format
+msgid ""
+"Fix parse errors with flow's optional arguments `(arg?) => {}` "
+"([#19](https://github.com/babel/babylon/pull/19)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:900
+msgid "Support negative numeric type literals @kittens"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:901
+msgid "Remove line terminator restriction after await keyword @kittens"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:902
+msgid ""
+"Remove grouped type arrow restriction as it seems flow no longer has it "
+"@kittens"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:903
+msgid ""
+"Fix parse error with generic methods that have the name `get` or `set` "
+"`class foo { get() {} }` "
+"([#55](https://github.com/babel/babylon/pull/55)) @vkurchatkin"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:904
+msgid ""
+"Fix parse error with arrow functions that have flow type parameter "
+"declarations `<T>(x: T): T => x;` "
+"([#54](https://github.com/babel/babylon/pull/54)) @gabelevi"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:906
+msgid "Documentation"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:908
+msgid ""
+"Document AST differences from ESTree "
+"([#41](https://github.com/babel/babylon/pull/41)) @nene"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:909
+msgid ""
+"Move ast spec from babel/babel "
+"([#46](https://github.com/babel/babylon/pull/46)) @hzoo"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:913
+msgid ""
+"Enable skipped tests ([#16](https://github.com/babel/babylon/pull/16)) "
+"@danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:914
+msgid ""
+"Add script to test latest version of babylon with babel "
+"([#21](https://github.com/babel/babylon/pull/21)) @danez"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:915
+msgid "Upgrade test runner ava @kittens"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:916
+msgid "Add missing generate-identifier-regex script @kittens"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:917
+msgid "Rename parser context types @kittens"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:918
+msgid "Add node v6 to travis testing @hzoo"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:919
+msgid ""
+"Update to Unicode v9 ([#45](https://github.com/babel/babylon/pull/45)) "
+"@mathiasbynens"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:921
+msgid "6.8.1 (2016-06-06)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:925
+msgid ""
+"Parse type parameter declarations with defaults like `type Foo<T = "
+"string> = T`"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:928
+msgid "Type parameter declarations need 1 or more type parameters."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:929
+msgid "The existential type `*` is not a valid type parameter."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:930
+msgid "The existential type `*` is a primary type"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:933
+msgid ""
+"The param list for type parameter declarations now consists of "
+"`TypeParameter` nodes"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:934
+msgid "New `TypeParameter` AST Node (replaces using the `Identifier` node before)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:945
+msgid "6.8.0 (2016-05-02)"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:949
+msgid ""
+"Parse Method Parameter Decorators "
+"([#12](https://github.com/babel/babylon/pull/12))"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:951
+msgid ""
+"[Method Parameter Decorators](https://goo.gl/8MmCMG) is now a TC39 [stage"
+" 0 proposal](https://github.com/tc39/ecma262/blob/master/stage0.md)."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:953
+msgid "Examples:"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:967
+msgid ""
+"Parse for-await statements (w/ `asyncGenerators` plugin) "
+"([#17](https://github.com/babel/babylon/pull/17))"
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:969
+msgid "There is also a new node type, `ForAwaitStatement`."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:971
+msgid ""
+"[Async generators and for-await](https://github.com/tc39/proposal-async-"
+"iteration) are now a [stage 2 proposal](https://github.com/tc39/ecma262"
+"#current-proposals)."
+msgstr ""
+
+#: ../../source/babylon_CHANGELOG.md:973
+msgid "Example:"
+msgstr ""
+

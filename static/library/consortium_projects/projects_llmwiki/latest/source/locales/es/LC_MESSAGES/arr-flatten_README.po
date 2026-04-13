@@ -1,0 +1,230 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/arr-flatten_README.md:1
+msgid ""
+"arr-flatten [![NPM version](https://img.shields.io/npm/v/arr-"
+"flatten.svg?style=flat)](https://www.npmjs.com/package/arr-flatten) "
+"[![NPM monthly downloads](https://img.shields.io/npm/dm/arr-"
+"flatten.svg?style=flat)](https://npmjs.org/package/arr-flatten) [![NPM "
+"total downloads](https://img.shields.io/npm/dt/arr-"
+"flatten.svg?style=flat)](https://npmjs.org/package/arr-flatten) [![Linux "
+"Build Status](https://img.shields.io/travis/jonschlinkert/arr-"
+"flatten.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert"
+"/arr-flatten) [![Windows Build "
+"Status](https://img.shields.io/appveyor/ci/jonschlinkert/arr-"
+"flatten.svg?style=flat&label=AppVeyor)](https://ci.appveyor.com/project/jonschlinkert"
+"/arr-flatten)"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:1
+msgid "Windows Build Status"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:3
+msgid "Recursively flatten an array or arrays."
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:5 ../../source/arr-flatten_README.md:13
+msgid "Install"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:15
+msgid "Install with [bower](https://bower.io/)"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:21
+msgid "Usage"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:30
+msgid "Why another flatten utility?"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:32
+#, python-format
+msgid ""
+"I wanted the fastest implementation I could find, with implementation "
+"choices that should work for 95% of use cases, but no cruft to cover the "
+"other 5%."
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:34
+msgid "About"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:36
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:38
+msgid ""
+"[arr-filter](https://www.npmjs.com/package/arr-filter): Faster "
+"alternative to javascript's native filter method. | "
+"[homepage](https://github.com/jonschlinkert/arr-filter \"Faster "
+"alternative to javascript's native filter method.\")"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:39
+msgid ""
+"[arr-union](https://www.npmjs.com/package/arr-union): Combines a list of "
+"arrays, returning a single array with unique values, using strict "
+"equality… [more](https://github.com/jonschlinkert/arr-union) | "
+"[homepage](https://github.com/jonschlinkert/arr-union \"Combines a list "
+"of arrays, returning a single array with unique values, using strict "
+"equality for comparisons.\")"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:40
+msgid ""
+"[array-each](https://www.npmjs.com/package/array-each): Loop over each "
+"item in an array and call the given function on every element. | "
+"[homepage](https://github.com/jonschlinkert/array-each \"Loop over each "
+"item in an array and call the given function on every element.\")"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:41
+msgid ""
+"[array-unique](https://www.npmjs.com/package/array-unique): Remove "
+"duplicate values from an array. Fastest ES5 implementation. | "
+"[homepage](https://github.com/jonschlinkert/array-unique \"Remove "
+"duplicate values from an array. Fastest ES5 implementation.\")"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:43
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:45
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:47
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md
+msgid "**Contributor**"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md
+msgid "20"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md
+msgid "1"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md
+msgid "[lukeed](https://github.com/lukeed)"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:54
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:56
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:58
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:64
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:66
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:72
+msgid "Author"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:74
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:76
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:77
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:79
+msgid "License"
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:81
+msgid ""
+"Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/arr-flatten_README.md:86
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on July"
+" 05, 2017._"
+msgstr ""
+

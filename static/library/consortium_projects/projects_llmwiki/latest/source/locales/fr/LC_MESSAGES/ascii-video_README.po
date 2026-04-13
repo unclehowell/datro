@@ -1,0 +1,1547 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/ascii-video_README.md:1
+msgid "☤ ASCII Video"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:3
+msgid ""
+"Renders any content as colored ASCII character video. Audio, video, "
+"images, text, or pure math in, MP4/GIF/PNG sequence out. Full RGB color "
+"per character cell, 1080p 24fps default. No GPU."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:5
+msgid ""
+"Built for [Hermes Agent](https://github.com/NousResearch/hermes-agent). "
+"Usable in any coding agent. Canonical source lives here; synced to "
+"[`NousResearch/hermes-agent/skills/creative/ascii-"
+"video`](https://github.com/NousResearch/hermes-"
+"agent/tree/main/skills/creative/ascii-video) via PR."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:7
+msgid "What this is"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:9
+msgid ""
+"A skill that teaches an agent how to build single-file Python renderers "
+"for ASCII video from scratch. The agent gets the full pipeline: grid "
+"system, font rasterization, effect library, shader chain, audio analysis,"
+" parallel encoding. It writes the renderer, runs it, gets video."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:11
+msgid ""
+"The output is actual video. Not terminal escape codes. Frames are "
+"computed as grids of colored characters, composited onto pixel canvases "
+"with pre-rasterized font bitmaps, post-processed through shaders, piped "
+"to ffmpeg."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:13
+msgid "Modes"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Mode"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Input"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Output"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Video-to-ASCII"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "A video file"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "ASCII recreation of the footage"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Audio-reactive"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "An audio file"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Visuals driven by frequency bands, beats, energy"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Generative"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Nothing"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Procedural animation from math"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Hybrid"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Video + audio"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "ASCII video with audio-reactive overlays"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Lyrics/text"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Audio + timed text (SRT)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Karaoke-style text with effects"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "TTS narration"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Text quotes + API key"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Narrated video with typewriter text and generated speech"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:24
+msgid "Pipeline"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:26
+msgid "Every mode follows the same 6-stage path:"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:32
+msgid "**Input** loads source material (or nothing for generative)."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:33
+msgid ""
+"**Analyze** extracts per-frame features. Audio gets 6-band FFT, RMS, "
+"spectral centroid, flatness, flux, beat detection with exponential decay."
+" Video gets luminance, edges, motion."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:34
+msgid ""
+"**Scene function** returns a pixel canvas directly. Composes multiple "
+"character grids at different densities, value/hue fields, pixel blend "
+"modes. This is where the visuals happen."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:35
+msgid ""
+"**Tonemap** does adaptive percentile-based brightness normalization with "
+"per-scene gamma. ASCII on black is inherently dark. Linear multipliers "
+"don't work. This does."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:36
+msgid ""
+"**Shade** runs a `ShaderChain` (38 composable shaders) plus a "
+"`FeedbackBuffer` for temporal recursion with spatial transforms."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:37
+msgid ""
+"**Encode** pipes raw RGB frames to ffmpeg for H.264 encoding. Segments "
+"concatenated, audio muxed."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:39
+msgid "Grid system"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:41
+msgid "Characters render on fixed-size grids. Layer multiple densities for depth."
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Grid at 1080p"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "xs"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "8px"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "400x108"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Ultra-dense data fields"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "sm"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "10px"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "320x83"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Rain, starfields"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "md"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "16px"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "192x56"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Default balanced"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "lg"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "20px"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "160x45"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Readable text"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "xl"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "24px"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "137x37"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Large titles"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "xxl"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "40px"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "80x22"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Giant minimal"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:52
+msgid ""
+"Rendering the same scene on `sm` and `lg` then screen-blending them "
+"creates natural texture interference. Fine detail shows through gaps in "
+"coarse characters. Most scenes use two or three grids."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:54
+msgid "Character palettes (24)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:56
+msgid ""
+"Each sorted dark-to-bright, each a different visual texture. Validated "
+"against the font at init so broken glyphs get dropped silently."
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Family"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Examples"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Feel"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Density ramps"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` .:-=+#@█`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Classic ASCII art gradient"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Block elements"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ░▒▓█▄▀▐▌`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Chunky, digital"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Braille"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ⠁⠂⠃...⠿`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Fine-grained pointillism"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Dots"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ⋅∘∙●◉◎`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Smooth, organic"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Stars"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ·✧✦✩✨★✶`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Sparkle, celestial"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Half-fills"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ◔◑◕◐◒◓◖◗◙`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Directional fill progression"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Crosshatch"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ▣▤▥▦▧▨▩`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Hatched density ramp"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Math"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ·∘∙•°±×÷≈≠≡∞∫∑Ω`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Scientific, abstract"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Box drawing"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ─│┌┐└┘├┤┬┴┼`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Structural, circuit-like"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Katakana"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ·ｦｧｨｩｪｫｬｭ...`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Matrix rain"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Greek"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` αβγδεζηθ...ω`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Classical, academic"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Runes"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ᚠᚢᚦᚱᚷᛁᛇᛒᛖᛚᛞᛟ`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Mystical, ancient"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Alchemical"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ☉☽♀♂♃♄♅♆♇`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Esoteric"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Arrows"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ←↑→↓↔↕↖↗↘↙`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Directional, kinetic"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Music"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` ♪♫♬♩♭♮♯○●`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Musical"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Project-specific"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "` .·~=≈∞⚡☿✦★⊕◊◆▲▼●■`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Themed per project"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:77
+msgid "Custom palettes are built per project to match the content."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:79
+msgid "Color strategies"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Strategy"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "How it maps hue"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Good for"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Angle-mapped"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Position angle from center"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Rainbow radial effects"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Distance-mapped"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Distance from center"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Depth, tunnels"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Frequency-mapped"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Audio spectral centroid"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Timbral shifting"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Value-mapped"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Brightness level"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Heat maps, fire"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Time-cycled"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Slow rotation over time"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Ambient, chill"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Source-sampled"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Original video pixel colors"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Palette-indexed"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Discrete lookup table"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Retro, flat graphic"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Temperature"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Warm-to-cool blend"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Emotional tone"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Complementary"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Hue + opposite"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Bold, dramatic"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Triadic"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Three equidistant hues"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Psychedelic, vibrant"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Analogous"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Neighboring hues"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Harmonious, subtle"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Monochrome"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Fixed hue, vary S/V"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Noir, focused"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:96
+msgid ""
+"Plus 10 discrete RGB palettes (neon, pastel, cyberpunk, vaporwave, earth,"
+" ice, blood, forest, mono-green, mono-amber)."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:98
+msgid ""
+"Full OKLAB/OKLCH color system: sRGB↔linear↔OKLAB conversion pipeline, "
+"perceptually uniform gradient interpolation, and color harmony generation"
+" (complementary, triadic, analogous, split-complementary, tetradic)."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:100
+msgid "Value field generators (21)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:102
+msgid ""
+"Value fields are the core visual building blocks. Each produces a 2D "
+"float array in [0, 1] mapping every grid cell to a brightness value."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:104
+msgid "Trigonometric (12)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Field"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Sine field"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Layered multi-sine interference, general-purpose background"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Smooth noise"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Multi-octave sine approximation of Perlin noise"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Rings"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Concentric rings, bass-driven count and wobble"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Spiral"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Logarithmic spiral arms, configurable arm count/tightness"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Tunnel"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Infinite depth perspective (inverse distance)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Vortex"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Twisting radial pattern, distance modulates angle"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Interference"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "N overlapping sine waves creating moire"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Aurora"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Horizontal flowing bands"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Ripple"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Concentric waves from configurable source points"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Plasma"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Sum of sines at multiple orientations/speeds"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Diamond"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Diamond/checkerboard pattern"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Noise/static"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Random per-cell per-frame flicker"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:121
+msgid "Noise-based (4)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Value noise"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Smooth organic noise, no axis-alignment artifacts"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "fBM"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Fractal Brownian Motion — octaved noise for clouds, terrain, smoke"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Domain warp"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid ""
+"Inigo Quilez technique — fBM-driven coordinate distortion for flowing "
+"organic forms"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Voronoi"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Moving seed points with distance, edge, and cell-ID output modes"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:130
+msgid "Simulation-based (4)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Reaction-diffusion"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid ""
+"Gray-Scott with 7 presets: coral, spots, worms, labyrinths, mitosis, "
+"pulsating, chaos"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Cellular automata"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Game of Life + 4 rule variants with analog fade trails"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Strange attractors"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid ""
+"Clifford, De Jong, Bedhead — iterated point systems binned to density "
+"fields"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Temporal noise"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "3D noise that morphs in-place without directional drift"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:139
+msgid "SDF-based"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:141
+msgid ""
+"7 signed distance field primitives (circle, box, ring, line, triangle, "
+"star, heart) with smooth boolean combinators (union, intersection, "
+"subtraction, smooth union/subtraction) and infinite tiling. Render as "
+"solid fills or glowing outlines."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:143
+msgid "Hue field generators (9)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:145
+msgid ""
+"Determine per-cell color independent of brightness: fixed hue, angle-"
+"mapped rainbow, distance gradient, time-cycled rotation, audio spectral "
+"centroid, horizontal/vertical gradients, plasma variation, perceptually "
+"uniform OKLCH rainbow."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:147
+msgid "Coordinate transforms (11)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:149
+msgid ""
+"UV-space transforms applied before effect evaluation: rotate, scale, "
+"skew, tile (with mirror seaming), polar, inverse-polar, twist (rotation "
+"increasing with distance), fisheye, wave displacement, Möbius conformal "
+"transformation. `make_tgrid()` wraps transformed coordinates into a grid "
+"object."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:151
+msgid "Particle systems (9)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Type"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Behavior"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Explosion"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Beat-triggered radial burst with gravity and life decay"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Embers"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Rising from bottom with horizontal drift"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Dissolving cloud"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Spreading outward with accelerating fade"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Starfield"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "3D projected, Z-depth stars approaching with streak trails"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Orbit"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Circular/elliptical paths around center"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Gravity well"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Attracted toward configurable point sources"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Boid flocking"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Separation/alignment/cohesion with spatial hash for O(n) neighbors"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Flow-field"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Steered by gradient of any value field"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Trail particles"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Fading lines between current and previous positions"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:165
+msgid ""
+"14 themed particle character sets (energy, spark, leaf, snow, rain, "
+"bubble, data, hex, binary, rune, zodiac, dot, dash)."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:167
+msgid "Temporal coherence"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:169
+msgid ""
+"10 easing functions (linear, quad, cubic, expo, elastic, bounce — in/out"
+"/in-out). Keyframe interpolation with eased transitions. Value field "
+"morphing (smooth crossfade between fields). Value field sequencing (cycle"
+" through fields with crossfade). Temporal noise (3D noise evolving "
+"smoothly in-place)."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:171
+msgid "Shader pipeline"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:173
+msgid ""
+"38 composable shaders, applied to the pixel canvas after character "
+"rendering. Configurable per section."
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Category"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Shaders"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Geometry"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid ""
+"CRT barrel, pixelate, wave distort, displacement map, kaleidoscope, "
+"mirror (h/v/quad/diag)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Channel"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid ""
+"Chromatic aberration (beat-reactive), channel shift, channel swap, RGB "
+"split radial"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Color"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid ""
+"Invert, posterize, threshold, solarize, hue rotate, saturation, color "
+"grade, color wobble, color ramp"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Glow/Blur"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Bloom, edge glow, soft focus, radial blur"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Noise"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Film grain (beat-reactive), static noise"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Lines/Patterns"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Scanlines, halftone"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Tone"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Vignette, contrast, gamma, levels, brightness"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Glitch/Data"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Glitch bands (beat-reactive), block glitch, pixel sort, data bend"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:186
+msgid ""
+"12 color tint presets: warm, cool, matrix green, amber, sepia, neon pink,"
+" ice, blood, forest, void, sunset, neutral."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:188
+msgid "7 mood presets for common shader combos:"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Mood"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Retro terminal"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "CRT + scanlines + grain + amber/green tint"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Clean modern"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Light bloom + subtle vignette"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Glitch art"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Heavy chromatic + glitch bands + color wobble"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Cinematic"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Bloom + vignette + grain + color grade"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Dreamy"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Heavy bloom + soft focus + color wobble"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Harsh/industrial"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "High contrast + grain + scanlines, no bloom"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Psychedelic"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Color wobble + chromatic + kaleidoscope mirror"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:200
+msgid "Blend modes and composition"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:202
+msgid ""
+"20 pixel blend modes for layering canvases: normal, add, subtract, "
+"multiply, screen, overlay, softlight, hardlight, difference, exclusion, "
+"colordodge, colorburn, linearlight, vividlight, pin_light, hard_mix, "
+"lighten, darken, grain_extract, grain_merge. Both sRGB and linear-light "
+"blending supported."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:204
+msgid ""
+"**Feedback buffer.** Temporal recursion — each frame blends with a "
+"transformed version of the previous frame. 7 spatial transforms: zoom, "
+"shrink, rotate CW/CCW, shift up/down, mirror. Optional per-frame hue "
+"shift for rainbow trails. Configurable decay, blend mode, and opacity per"
+" scene."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:206
+msgid ""
+"**Masking.** 16 mask types for spatial compositing: shape masks (circle, "
+"rect, ring, gradients), procedural masks (any value field as a mask, text"
+" stencils), animated masks (iris open/close, wipe, dissolve), boolean "
+"operations (union, intersection, subtraction, invert)."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:208
+msgid ""
+"**Transitions.** Crossfade, directional wipe, radial wipe, dissolve, "
+"glitch cut."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:210
+msgid "Scene design patterns"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:212
+msgid ""
+"Compositional patterns for making scenes that look intentional rather "
+"than random."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:214
+msgid ""
+"**Layer hierarchy.** Background (dim atmosphere, dense grid), content "
+"(main visual, standard grid), accent (sparse highlights, coarse grid). "
+"Three distinct roles, not three competing layers."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:216
+msgid ""
+"**Directional parameter arcs.** The defining parameter of each scene "
+"ramps, accelerates, or builds over its duration. Progress-based formulas "
+"(linear, ease-out, step reveal) replace aimless `sin(t)` oscillation."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:218
+msgid ""
+"**Scene concepts.** Scenes built around visual metaphors (emergence, "
+"descent, collision, entropy) with motivated layer/palette/feedback "
+"choices. Not named after their effects."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:220
+msgid ""
+"**Compositional techniques.** Counter-rotating dual systems, wave "
+"collision, progressive fragmentation (voronoi cells multiplying over "
+"time), entropy (geometry consumed by reaction-diffusion), staggered layer"
+" entry (crescendo buildup)."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:222
+msgid "Hardware adaptation"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:224
+msgid ""
+"Auto-detects CPU count, RAM, platform, ffmpeg. Adapts worker count, "
+"resolution, FPS."
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Profile"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Resolution"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "FPS"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "When"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "`draft`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "960x540"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "12"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Check timing/layout"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "`preview`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "1280x720"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "15"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Review effects"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "`production`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "1920x1080"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "24"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Final output"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "`max`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "3840x2160"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "30"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Ultra-high"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "`auto`"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Detected"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Adapts to hardware + duration"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:234
+msgid ""
+"`auto` estimates render time and downgrades if it would take over an "
+"hour. Low-memory systems drop to 720p automatically."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:236
+msgid "Render times (1080p 24fps, ~180ms/frame/worker)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "Duration"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "4 workers"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "8 workers"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "16 workers"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "30s"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~3 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~2 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~1 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "2 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~13 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~7 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~4 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "5 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~33 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~17 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~9 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "10 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md
+msgid "~65 min"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:245
+msgid "720p roughly halves these. 4K roughly quadruples them."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:247
+msgid "Known pitfalls"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:249
+msgid ""
+"**Brightness.** ASCII characters are small bright dots on black. Most "
+"frame pixels are background. Linear `* N` multipliers clip highlights and"
+" wash out. Use `tonemap()` with per-scene gamma instead. Default gamma "
+"0.75, solarize scenes 0.55, posterize 0.50."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:251
+msgid ""
+"**Render bottleneck.** The per-cell Python loop compositing font bitmaps "
+"runs at ~100-150ms/frame. Unavoidable without Cython/C. Everything else "
+"must be vectorized numpy. Python for-loops over rows/cols in effect "
+"functions will tank performance."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:253
+msgid ""
+"**ffmpeg deadlock.** Never `stderr=subprocess.PIPE` on long-running "
+"encodes. Buffer fills at ~64KB, process hangs. Redirect stderr to a file."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:255
+msgid ""
+"**Font cell height.** Pillow's `textbbox()` returns wrong height on "
+"macOS. Use `font.getmetrics()` for `ascent + descent`."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:257
+msgid ""
+"**Font compatibility.** Not all Unicode renders in all fonts. Palettes "
+"validated at init, blank glyphs silently removed."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:259
+msgid "Requirements"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:261
+msgid ""
+"◆ Python 3.10+ ◆ NumPy, Pillow, SciPy (audio modes) ◆ ffmpeg on PATH ◆ A "
+"monospace font (Menlo, Courier, Monaco, auto-detected) ◆ Optional: "
+"OpenCV, ElevenLabs API key (TTS mode)"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:267
+msgid "File structure"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:284
+msgid "Projects built with this"
+msgstr ""
+
+#: ../../source/ascii-video_README.md:286
+msgid ""
+"✦ 85-second highlight reel. 15 scenes (14×5s + 15s crescendo finale), "
+"randomized order, directional parameter arcs, layer hierarchy "
+"composition. Showcases the full effect vocabulary: fBM, voronoi "
+"fragmentation, reaction-diffusion, cellular automata, dual counter-"
+"rotating spirals, wave collision, domain warping, tunnel descent, "
+"kaleidoscope symmetry, boid flocking, fire simulation, glitch corruption,"
+" and a 7-layer crescendo buildup."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:288
+msgid ""
+"✦ Audio-reactive music visualizer. 3.5 min, 8 sections with distinct "
+"effects, beat-triggered particles and glitch, cycling palettes."
+msgstr ""
+
+#: ../../source/ascii-video_README.md:290
+msgid ""
+"✦ TTS narrated testimonial video. 23 quotes, per-quote ElevenLabs voices,"
+" background music at 15% wide stereo, per-clip re-rendering for iterative"
+" editing."
+msgstr ""
+

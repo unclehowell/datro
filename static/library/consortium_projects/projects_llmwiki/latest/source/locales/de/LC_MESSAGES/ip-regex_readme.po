@@ -1,0 +1,143 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/ip-regex_readme.md:1
+msgid "ip-regex"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:3
+msgid "Regular expression for matching IP addresses"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:12
+msgid ""
+"This module targets Node.js 8 or later and the latest version of Chrome, "
+"Firefox, and Safari. If you want support for older browsers, use version "
+"2.1.0: `npm install ip-regex@2.1.0`"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:44
+msgid "API"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:46
+msgid "ipRegex([options])"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:48
+msgid "Returns a regex for matching both IPv4 and IPv6."
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:50
+msgid "ipRegex.v4([options])"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:52
+msgid "Returns a regex for matching IPv4."
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:54
+msgid "ipRegex.v6([options])"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:56
+msgid "Returns a regex for matching IPv6."
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:58
+msgid "options"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:60
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:62
+msgid "exact"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:64
+msgid ""
+"Type: `boolean`<br> Default: `false` *(Matches any IP address in a "
+"string)*"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:67
+msgid ""
+"Only match an exact string. Useful with `RegExp#test()` to check if a "
+"string is an IP address."
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:69
+msgid "includeBoundaries"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:71
+msgid "Type: `boolean`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:74
+msgid ""
+"Include boundaries in the regex. When `true`, `192.168.0.2000000000` will"
+" report as an invalid IPv4 address. If this option is not set, the "
+"mentioned IPv4 address would report as valid (ignoring the trailing "
+"zeros)."
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:77
+msgid "Related"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:79
+msgid ""
+"[is-ip](https://github.com/sindresorhus/is-ip) - Check if a string is an "
+"IP address"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:80
+msgid ""
+"[is-cidr](https://github.com/silverwind/is-cidr) - Check if a string is "
+"an IP address in CIDR notation"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:81
+msgid ""
+"[cidr-regex](https://github.com/silverwind/cidr-regex) - Regular "
+"expression for matching IP addresses in CIDR notation"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:84
+msgid "License"
+msgstr ""
+
+#: ../../source/ip-regex_readme.md:86
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

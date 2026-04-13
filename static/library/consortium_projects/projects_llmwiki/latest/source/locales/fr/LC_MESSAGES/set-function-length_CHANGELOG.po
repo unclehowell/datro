@@ -1,0 +1,261 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/set-function-length_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres"
+" to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:8
+msgid ""
+"[v1.2.2](https://github.com/ljharb/set-function-"
+"length/compare/v1.2.1...v1.2.2) - 2024-03-09"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:10
+#: ../../source/set-function-length_CHANGELOG.md:21
+#: ../../source/set-function-length_CHANGELOG.md:29
+#: ../../source/set-function-length_CHANGELOG.md:43
+#: ../../source/set-function-length_CHANGELOG.md:49
+#: ../../source/set-function-length_CHANGELOG.md:58
+#: ../../source/set-function-length_CHANGELOG.md:65
+msgid "Commits"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:12
+msgid ""
+"[types] use shared config [`027032f`](https://github.com/ljharb/set-"
+"function-length/commit/027032fe9cc439644a07248ea6a8d813fcc767cb)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:13
+msgid ""
+"[actions] remove redundant finisher; use reusable workflow "
+"[`1fd4fb1`](https://github.com/ljharb/set-function-"
+"length/commit/1fd4fb1c58bd5170f0dcff7e320077c0aa2ffdeb)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:14
+msgid ""
+"[types] use a handwritten d.ts file instead of emit "
+"[`01b9761`](https://github.com/ljharb/set-function-"
+"length/commit/01b9761742c95e1118e8c2d153ce2ae43d9731aa)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:15
+msgid ""
+"[Deps] update `define-data-property`, `get-intrinsic`, `has-property-"
+"descriptors` [`bee8eaf`](https://github.com/ljharb/set-function-"
+"length/commit/bee8eaf7749f325357ade85cffeaeef679e513d4)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:16
+msgid ""
+"[Dev Deps] update `call-bind`, `tape` "
+"[`5dae579`](https://github.com/ljharb/set-function-"
+"length/commit/5dae579fdc3aab91b14ebb58f9c19ee3f509d434)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:17
+msgid ""
+"[Tests] use `@arethetypeswrong/cli` [`7e22425`](https://github.com/ljharb"
+"/set-function-length/commit/7e22425d15957fd3d6da0b6bca4afc0c8d255d2d)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:19
+msgid ""
+"[v1.2.1](https://github.com/ljharb/set-function-"
+"length/compare/v1.2.0...v1.2.1) - 2024-02-06"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:23
+msgid ""
+"[Dev Deps] update `call-bind`, `tape`, `typescript` "
+"[`d9a4601`](https://github.com/ljharb/set-function-"
+"length/commit/d9a460199c4c1fa37da9ebe055e2c884128f0738)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:24
+msgid ""
+"[Deps] update `define-data-property`, `get-intrinsic` "
+"[`38d39ae`](https://github.com/ljharb/set-function-"
+"length/commit/38d39aed13a757ed36211d5b0437b88485090c6b)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:25
+msgid ""
+"[Refactor] use `es-errors`, so things that only need those do not need "
+"`get-intrinsic` [`b4bfe5a`](https://github.com/ljharb/set-function-"
+"length/commit/b4bfe5ae0953b906d55b85f867eca5e7f673ebf4)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:27
+msgid ""
+"[v1.2.0](https://github.com/ljharb/set-function-"
+"length/compare/v1.1.1...v1.2.0) - 2024-01-14"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:31
+msgid ""
+"[New] add types [`f6d9088`](https://github.com/ljharb/set-function-"
+"length/commit/f6d9088b9283a3112b21c6776e8bef6d1f30558a)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:32
+msgid ""
+"[Fix] ensure `env` properties are always booleans "
+"[`0c42f84`](https://github.com/ljharb/set-function-"
+"length/commit/0c42f84979086389b3229e1b4272697fd352275a)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:33
+msgid ""
+"[Dev Deps] update `aud`, `call-bind`, `npmignore`, `tape` "
+"[`2b75f75`](https://github.com/ljharb/set-function-"
+"length/commit/2b75f75468093a4bb8ce8ca989b2edd2e80d95d1)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:34
+msgid ""
+"[Deps] update `get-intrinsic`, `has-property-descriptors` "
+"[`19bf0fc`](https://github.com/ljharb/set-function-"
+"length/commit/19bf0fc4ffaa5ad425acbfa150516be9f3b6263a)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:35
+msgid ""
+"[meta] add `sideEffects` flag [`8bb9b78`](https://github.com/ljharb/set-"
+"function-length/commit/8bb9b78c11c621123f725c9470222f43466c01d0)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:37
+msgid ""
+"[v1.1.1](https://github.com/ljharb/set-function-"
+"length/compare/v1.1.0...v1.1.1) - 2023-10-19"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:39
+msgid "Fixed"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:41
+msgid ""
+"[Fix] move `define-data-property` to runtime deps "
+"[`#2`](https://github.com/ljharb/set-function-length/issues/2)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:45
+msgid ""
+"[Dev Deps] update `object-inspect`; add missing `call-bind` "
+"[`5aecf79`](https://github.com/ljharb/set-function-"
+"length/commit/5aecf79e7d6400957a5d9bd9ac20d4528908ca18)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:47
+msgid ""
+"[v1.1.0](https://github.com/ljharb/set-function-"
+"length/compare/v1.0.1...v1.1.0) - 2023-10-13"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:51
+msgid ""
+"[New] add `env` entry point [`475c87a`](https://github.com/ljharb/set-"
+"function-length/commit/475c87aa2f59b700aaed589d980624ec596acdcb)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:52
+msgid ""
+"[Tests] add coverage with `nyc` [`14f0bf8`](https://github.com/ljharb"
+"/set-function-length/commit/14f0bf8c145ae60bf14a026420a06bb7be132c36)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:53
+msgid ""
+"[eslint] fix linting failure [`fb516f9`](https://github.com/ljharb/set-"
+"function-length/commit/fb516f93c664057138c53559ef63c8622a093335)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:54
+msgid ""
+"[Deps] update `define-data-property` "
+"[`d727e7c`](https://github.com/ljharb/set-function-"
+"length/commit/d727e7c6c9a40d7bf26797694e500ea68741feea)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:56
+msgid ""
+"[v1.0.1](https://github.com/ljharb/set-function-"
+"length/compare/v1.0.0...v1.0.1) - 2023-10-12"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:60
+msgid ""
+"[Refactor] use `get-intrinsic`, since it‘s in the dep graph anyways "
+"[`278a954`](https://github.com/ljharb/set-function-"
+"length/commit/278a954a06cd849051c569ff7aee56df6798933e)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:61
+msgid ""
+"[meta] add `exports` [`72acfe5`](https://github.com/ljharb/set-function-"
+"length/commit/72acfe5a0310071fb205a72caba5ecbab24336a0)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:63
+msgid "v1.0.0 - 2023-10-12"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:67
+msgid ""
+"Initial implementation, tests, readme "
+"[`fce14e1`](https://github.com/ljharb/set-function-"
+"length/commit/fce14e17586460e4f294405173be72b6ffdf7e5f)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:68
+msgid ""
+"Initial commit [`ca7ba85`](https://github.com/ljharb/set-function-"
+"length/commit/ca7ba857c7c283f9d26e21f14e71cd388f2cb722)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:69
+msgid ""
+"npm init [`6a7e493`](https://github.com/ljharb/set-function-"
+"length/commit/6a7e493927736cebcaf5c1a84e69b8e6b7b744d8)"
+msgstr ""
+
+#: ../../source/set-function-length_CHANGELOG.md:70
+msgid ""
+"Only apps should have lockfiles [`d2bf6c4`](https://github.com/ljharb"
+"/set-function-length/commit/d2bf6c43de8a51b02a0aa53e8d62cb50c4a2b0da)"
+msgstr ""
+

@@ -1,0 +1,665 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/yargs_README.md:1
+msgid "yargs"
+msgstr ""
+
+#: ../../source/yargs_README.md:4
+msgid "Yargs be a node.js library fer hearties tryin' ter parse optstrings."
+msgstr ""
+
+#: ../../source/yargs_README.md:6
+msgid ""
+"With yargs, ye be havin' a map that leads straight to yer treasure! "
+"Treasure of course, being a simple option hash."
+msgstr ""
+
+#: ../../source/yargs_README.md:8
+msgid ""
+"[![Build Status](https://travis-ci.org/chevex/yargs.png)](https://travis-"
+"ci.org/chevex/yargs) [![Dependency "
+"Status](https://gemnasium.com/chevex/yargs.png)](https://gemnasium.com/chevex/yargs)"
+" [![NPM "
+"version](https://badge.fury.io/js/yargs.png)](http://badge.fury.io/js/yargs)"
+" [![Coverage "
+"Status](https://coveralls.io/repos/chevex/yargs/badge.svg?branch=)](https://coveralls.io/r/chevex/yargs?branch=)"
+msgstr ""
+
+#: ../../source/yargs_README.md:8
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/yargs_README.md:8
+msgid "Dependency Status"
+msgstr ""
+
+#: ../../source/yargs_README.md:8
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/yargs_README.md:8
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/yargs_README.md:13
+msgid ""
+"Yargs is the official successor to optimist. Please feel free to submit "
+"issues and pull requests. If you'd like to contribute and don't know "
+"where to start, have a look at [the issue "
+"list](https://github.com/chevex/yargs/issues) :)"
+msgstr ""
+
+#: ../../source/yargs_README.md:15
+msgid "examples"
+msgstr ""
+
+#: ../../source/yargs_README.md:18
+msgid "With yargs, the options be just a hash!"
+msgstr ""
+
+#: ../../source/yargs_README.md:21
+msgid "xup.js:"
+msgstr ""
+
+#: ../../source/yargs_README.md:43
+msgid "![Joe was one optimistic pirate.](http://i.imgur.com/4WFGVJ9.png)"
+msgstr ""
+
+#: ../../source/yargs_README.md:43
+msgid "Joe was one optimistic pirate."
+msgstr ""
+
+#: ../../source/yargs_README.md:45
+msgid ""
+"But don't walk the plank just yet! There be more! You can do short "
+"options:"
+msgstr ""
+
+#: ../../source/yargs_README.md:48
+msgid "short.js:"
+msgstr ""
+
+#: ../../source/yargs_README.md:61
+msgid "And booleans, both long, short, and even grouped:"
+msgstr ""
+
+#: ../../source/yargs_README.md:64
+msgid "bool.js:"
+msgstr ""
+
+#: ../../source/yargs_README.md:90
+msgid "And non-hyphenated options too! Just use `argv._`!"
+msgstr ""
+
+#: ../../source/yargs_README.md:93
+msgid "nonopt.js:"
+msgstr ""
+
+#: ../../source/yargs_README.md:112
+msgid "Yargs even counts your booleans!"
+msgstr ""
+
+#: ../../source/yargs_README.md:115
+msgid "count.js"
+msgstr ""
+
+#: ../../source/yargs_README.md:153
+msgid "Tell users how to use yer options and make demands."
+msgstr ""
+
+#: ../../source/yargs_README.md:156
+msgid "divide.js:"
+msgstr ""
+
+#: ../../source/yargs_README.md:182
+msgid ""
+"After yer demands have been met, demand more! Ask for non-hypenated "
+"arguments!"
+msgstr ""
+
+#: ../../source/yargs_README.md:185
+msgid "demand_count.js:"
+msgstr ""
+
+#: ../../source/yargs_README.md:204
+msgid "EVEN MORE SHIVER ME TIMBERS!"
+msgstr ""
+
+#: ../../source/yargs_README.md:207
+msgid "default_singles.js:"
+msgstr ""
+
+#: ../../source/yargs_README.md:224
+msgid "default_hash.js:"
+msgstr ""
+
+#: ../../source/yargs_README.md:240
+msgid "And if you really want to get all descriptive about it..."
+msgstr ""
+
+#: ../../source/yargs_README.md:243
+msgid "boolean_single.js"
+msgstr ""
+
+#: ../../source/yargs_README.md:262
+msgid "boolean_double.js"
+msgstr ""
+
+#: ../../source/yargs_README.md:280
+msgid "Yargs is here to help you..."
+msgstr ""
+
+#: ../../source/yargs_README.md:283
+msgid ""
+"Ye can describe parameters fer help messages and set aliases. Yargs "
+"figures out how ter format a handy help string automatically."
+msgstr ""
+
+#: ../../source/yargs_README.md:286 ../../source/yargs_README.md:576
+msgid "line_count.js"
+msgstr ""
+
+#: ../../source/yargs_README.md:332
+msgid "methods"
+msgstr ""
+
+#: ../../source/yargs_README.md:335
+msgid "By itself,"
+msgstr ""
+
+#: ../../source/yargs_README.md:341
+msgid "will use `process.argv` array to construct the `argv` object."
+msgstr ""
+
+#: ../../source/yargs_README.md:343
+msgid "You can pass in the `process.argv` yourself:"
+msgstr ""
+
+#: ../../source/yargs_README.md:349
+msgid "or use .parse() to do the same thing:"
+msgstr ""
+
+#: ../../source/yargs_README.md:355
+msgid ""
+"The rest of these methods below come in just before the terminating "
+"`.argv`."
+msgstr ""
+
+#: ../../source/yargs_README.md:357
+msgid ".alias(key, alias)"
+msgstr ""
+
+#: ../../source/yargs_README.md:360
+msgid ""
+"Set key names as equivalent such that updates to a key will propagate to "
+"aliases and vice-versa."
+msgstr ""
+
+#: ../../source/yargs_README.md:363
+msgid ""
+"Optionally `.alias()` can take an object that maps keys to aliases. Each "
+"key of this object should be the canonical version of the option, and "
+"each value should be a string or an array of strings."
+msgstr ""
+
+#: ../../source/yargs_README.md:367
+msgid ".default(key, value)"
+msgstr ""
+
+#: ../../source/yargs_README.md:370
+msgid "Set `argv[key]` to `value` if no option was specified on `process.argv`."
+msgstr ""
+
+#: ../../source/yargs_README.md:372
+msgid ""
+"Optionally `.default()` can take an object that maps keys to default "
+"values."
+msgstr ""
+
+#: ../../source/yargs_README.md:374
+msgid ".demand(key, [msg | boolean])"
+msgstr ""
+
+#: ../../source/yargs_README.md:376
+msgid ".require(key, [msg | boolean])"
+msgstr ""
+
+#: ../../source/yargs_README.md:378
+msgid ".required(key, [msg | boolean])"
+msgstr ""
+
+#: ../../source/yargs_README.md:381
+msgid ""
+"If `key` is a string, show the usage information and exit if `key` wasn't"
+" specified in `process.argv`."
+msgstr ""
+
+#: ../../source/yargs_README.md:384
+msgid ""
+"If `key` is a number, demand at least as many non-option arguments, which"
+" show up in `argv._`."
+msgstr ""
+
+#: ../../source/yargs_README.md:387
+msgid "If `key` is an Array, demand each element."
+msgstr ""
+
+#: ../../source/yargs_README.md:389
+msgid ""
+"If a `msg` string is given, it will be printed when the argument is "
+"missing, instead of the standard error message. This is especially "
+"helpful for the non-option arguments in `argv._`."
+msgstr ""
+
+#: ../../source/yargs_README.md:392
+msgid ""
+"If a `boolean` value is given, it controls whether the option is "
+"demanded; this is useful when using `.options()` to specify command line "
+"parameters."
+msgstr ""
+
+#: ../../source/yargs_README.md:395
+msgid ".requiresArg(key)"
+msgstr ""
+
+#: ../../source/yargs_README.md:398
+msgid ""
+"Specifies either a single option key (string), or an array of options "
+"that must be followed by option values. If any option value is missing, "
+"show the usage information and exit."
+msgstr ""
+
+#: ../../source/yargs_README.md:402
+msgid ""
+"The default behaviour is to set the value of any key not followed by an "
+"option value to `true`."
+msgstr ""
+
+#: ../../source/yargs_README.md:405
+msgid ".implies(x, y)"
+msgstr ""
+
+#: ../../source/yargs_README.md:408
+msgid "Given the key `x` is set, it is required that the key `y` is set."
+msgstr ""
+
+#: ../../source/yargs_README.md:410
+msgid "implies can also accept an object specifying multiple implications."
+msgstr ""
+
+#: ../../source/yargs_README.md:412
+msgid ".describe(key, desc)"
+msgstr ""
+
+#: ../../source/yargs_README.md:415
+msgid "Describe a `key` for the generated usage information."
+msgstr ""
+
+#: ../../source/yargs_README.md:417
+msgid ""
+"Optionally `.describe()` can take an object that maps keys to "
+"descriptions."
+msgstr ""
+
+#: ../../source/yargs_README.md:419
+msgid ".option(key, opt)"
+msgstr ""
+
+#: ../../source/yargs_README.md:421
+msgid ".options(key, opt)"
+msgstr ""
+
+#: ../../source/yargs_README.md:424
+msgid ""
+"Instead of chaining together "
+"`.alias().demand().default().describe().string()`, you can specify keys "
+"in `opt` for each of the chainable methods."
+msgstr ""
+
+#: ../../source/yargs_README.md:427
+msgid "For example:"
+msgstr ""
+
+#: ../../source/yargs_README.md:442
+msgid "is the same as"
+msgstr ""
+
+#: ../../source/yargs_README.md:452
+msgid ""
+"Optionally `.options()` can take an object that maps keys to `opt` "
+"parameters."
+msgstr ""
+
+#: ../../source/yargs_README.md:469
+msgid ".usage(message, opts)"
+msgstr ""
+
+#: ../../source/yargs_README.md:472
+msgid ""
+"Set a usage message to show which commands to use. Inside `message`, the "
+"string `$0` will get interpolated to the current script name or node "
+"command for the present script similar to how `$0` works in bash or perl."
+msgstr ""
+
+#: ../../source/yargs_README.md:476
+msgid "`opts` is optional and acts like calling `.options(opts)`."
+msgstr ""
+
+#: ../../source/yargs_README.md:478
+msgid ".example(cmd, desc)"
+msgstr ""
+
+#: ../../source/yargs_README.md:481
+msgid ""
+"Give some example invocations of your program. Inside `cmd`, the string "
+"`$0` will get interpolated to the current script name or node command for"
+" the present script similar to how `$0` works in bash or perl. Examples "
+"will be printed out as part of the help message."
+msgstr ""
+
+#: ../../source/yargs_README.md:486
+msgid ".check(fn)"
+msgstr ""
+
+#: ../../source/yargs_README.md:489
+msgid "Check that certain conditions are met in the provided arguments."
+msgstr ""
+
+#: ../../source/yargs_README.md:491
+msgid ""
+"`fn` is called with two arguments, the parsed `argv` hash and an array of"
+" options and their aliases."
+msgstr ""
+
+#: ../../source/yargs_README.md:493
+msgid ""
+"If `fn` throws or returns `false`, show the thrown error, usage "
+"information, and exit."
+msgstr ""
+
+#: ../../source/yargs_README.md:496
+msgid ".fail(fn)"
+msgstr ""
+
+#: ../../source/yargs_README.md:499
+msgid ""
+"Method to execute when a failure occurs, rather then printing the failure"
+" message."
+msgstr ""
+
+#: ../../source/yargs_README.md:501
+msgid "`fn` is called with the failure message that would have been printed."
+msgstr ""
+
+#: ../../source/yargs_README.md:503
+msgid ".boolean(key)"
+msgstr ""
+
+#: ../../source/yargs_README.md:506
+msgid ""
+"Interpret `key` as a boolean. If a non-flag option follows `key` in "
+"`process.argv`, that string won't get set as the value of `key`."
+msgstr ""
+
+#: ../../source/yargs_README.md:509
+msgid ""
+"`key` will default to `false`, unless an `default(key, undefined)` is "
+"explicitly set."
+msgstr ""
+
+#: ../../source/yargs_README.md:512
+msgid "If `key` is an Array, interpret all the elements as booleans."
+msgstr ""
+
+#: ../../source/yargs_README.md:514
+msgid ".string(key)"
+msgstr ""
+
+#: ../../source/yargs_README.md:517
+msgid ""
+"Tell the parser logic not to interpret `key` as a number or boolean. This"
+" can be useful if you need to preserve leading zeros in an input."
+msgstr ""
+
+#: ../../source/yargs_README.md:520
+msgid "If `key` is an Array, interpret all the elements as strings."
+msgstr ""
+
+#: ../../source/yargs_README.md:522
+msgid ""
+"`.string('_')` will result in non-hyphenated arguments being interpreted "
+"as strings, regardless of whether they resemble numbers."
+msgstr ""
+
+#: ../../source/yargs_README.md:525
+msgid ".config(key)"
+msgstr ""
+
+#: ../../source/yargs_README.md:528
+msgid ""
+"Tells the parser to interpret `key` as a path to a JSON config file. The "
+"file is loaded and parsed, and its properties are set as arguments."
+msgstr ""
+
+#: ../../source/yargs_README.md:531
+msgid ".wrap(columns)"
+msgstr ""
+
+#: ../../source/yargs_README.md:534
+msgid "Format usage output to wrap at `columns` many columns."
+msgstr ""
+
+#: ../../source/yargs_README.md:536
+msgid ".strict()"
+msgstr ""
+
+#: ../../source/yargs_README.md:539
+msgid ""
+"Any command-line argument given that is not demanded, or does not have a "
+"corresponding description, will be reported as an error."
+msgstr ""
+
+#: ../../source/yargs_README.md:542
+msgid ".help([option, [description]])"
+msgstr ""
+
+#: ../../source/yargs_README.md:545
+msgid ""
+"Add an option (e.g., `--help`) that displays the usage string and exits "
+"the process. If present, the `description` parameter customises the "
+"description of the help option in the usage string."
+msgstr ""
+
+#: ../../source/yargs_README.md:549
+msgid "If invoked without parameters, `.help` returns the generated usage string."
+msgstr ""
+
+#: ../../source/yargs_README.md:551 ../../source/yargs_README.md:603
+msgid "Example:"
+msgstr ""
+
+#: ../../source/yargs_README.md:559 ../../source/yargs_README.md:611
+msgid "Later on, ```argv``` can be retrived with ```yargs.argv```"
+msgstr ""
+
+#: ../../source/yargs_README.md:561
+msgid ".version(version, option, [description])"
+msgstr ""
+
+#: ../../source/yargs_README.md:564
+msgid ""
+"Add an option (e.g., `--version`) that displays the version number (given"
+" by the `version` parameter) and exits the process. If present, the "
+"`description` parameter customises the description of the version option "
+"in the usage string."
+msgstr ""
+
+#: ../../source/yargs_README.md:568
+msgid ".showHelpOnFail(enable, [message])"
+msgstr ""
+
+#: ../../source/yargs_README.md:571
+msgid ""
+"By default, yargs outputs a usage string if any error is detected. Use "
+"the `.showHelpOnFail` method to customize this behaviour. if `enable` is "
+"`false`, the usage string is not output. If the `message` parameter is "
+"present, this message is output after the error message."
+msgstr ""
+
+#: ../../source/yargs_README.md:598
+msgid ".showHelp(fn=console.error)"
+msgstr ""
+
+#: ../../source/yargs_README.md:601
+msgid "Print the usage data using `fn` for printing."
+msgstr ""
+
+#: ../../source/yargs_README.md:613
+msgid ".exitProcess(enable)"
+msgstr ""
+
+#: ../../source/yargs_README.md:616
+msgid ""
+"By default, yargs exits the process when the user passes a help flag, "
+"uses the `.version` functionality or when validation fails. Calling "
+"`.exitProcess(false)` disables this behavior, enabling further actions "
+"after yargs have been validated."
+msgstr ""
+
+#: ../../source/yargs_README.md:618
+msgid ".parse(args)"
+msgstr ""
+
+#: ../../source/yargs_README.md:621
+msgid "Parse `args` instead of `process.argv`. Returns the `argv` object."
+msgstr ""
+
+#: ../../source/yargs_README.md:623
+msgid ".argv"
+msgstr ""
+
+#: ../../source/yargs_README.md:626
+msgid "Get the arguments as a plain old object."
+msgstr ""
+
+#: ../../source/yargs_README.md:628
+msgid "Arguments without a corresponding flag show up in the `argv._` array."
+msgstr ""
+
+#: ../../source/yargs_README.md:630
+msgid ""
+"The script name or node command is available at `argv.$0` similarly to "
+"how `$0` works in bash or perl."
+msgstr ""
+
+#: ../../source/yargs_README.md:633
+msgid "parsing tricks"
+msgstr ""
+
+#: ../../source/yargs_README.md:636
+msgid "stop parsing"
+msgstr ""
+
+#: ../../source/yargs_README.md:639
+msgid "Use `--` to stop parsing flags and stuff the remainder into `argv._`."
+msgstr ""
+
+#: ../../source/yargs_README.md:647
+msgid "negate fields"
+msgstr ""
+
+#: ../../source/yargs_README.md:650
+msgid ""
+"If you want to explicity set a field to false instead of just leaving it "
+"undefined or to override a default you can do `--no-key`."
+msgstr ""
+
+#: ../../source/yargs_README.md:659
+msgid "numbers"
+msgstr ""
+
+#: ../../source/yargs_README.md:662
+msgid ""
+"Every argument that looks like a number (`!isNaN(Number(arg))`) is "
+"converted to one. This way you can just `net.createConnection(argv.port)`"
+" and you can add numbers out of `argv` with `+` without having that mean "
+"concatenation, which is super frustrating."
+msgstr ""
+
+#: ../../source/yargs_README.md:667
+msgid "duplicates"
+msgstr ""
+
+#: ../../source/yargs_README.md:670
+msgid ""
+"If you specify a flag multiple times it will get turned into an array "
+"containing all the values in order."
+msgstr ""
+
+#: ../../source/yargs_README.md:678
+msgid "dot notation"
+msgstr ""
+
+#: ../../source/yargs_README.md:681
+msgid ""
+"When you use dots (`.`s) in argument names, an implicit object path is "
+"assumed. This lets you organize arguments into nested objects."
+msgstr ""
+
+#: ../../source/yargs_README.md:689
+msgid "short numbers"
+msgstr ""
+
+#: ../../source/yargs_README.md:692
+msgid "Short numeric `head -n5` style argument work too:"
+msgstr ""
+
+#: ../../source/yargs_README.md:702
+msgid "installation"
+msgstr ""
+
+#: ../../source/yargs_README.md:705
+msgid "With [npm](http://github.com/isaacs/npm), just do:"
+msgstr ""
+
+#: ../../source/yargs_README.md:709
+msgid "or clone this project on github:"
+msgstr ""
+
+#: ../../source/yargs_README.md:713
+msgid ""
+"To run the tests with [expresso](http://github.com/visionmedia/expresso),"
+" just do:"
+msgstr ""
+
+#: ../../source/yargs_README.md:718
+msgid "inspired by"
+msgstr ""
+
+#: ../../source/yargs_README.md:721
+msgid ""
+"This module is loosely inspired by Perl's "
+"[Getopt::Casual](http://search.cpan.org/~photo/Getopt-"
+"Casual-0.13.1/Casual.pm)."
+msgstr ""
+

@@ -1,0 +1,245 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/loader-utils_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:3
+msgid ""
+"All notable changes to this project will be documented in this file. See "
+"[standard-version](https://github.com/conventional-changelog/standard-"
+"version) for commit guidelines."
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:5
+msgid ""
+"[2.0.0](https://github.com/webpack/loader-utils/compare/v1.4.0...v2.0.0) "
+"(2020-03-17)"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:8
+msgid "⚠ BREAKING CHANGES"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:10
+msgid ""
+"minimum required `Node.js` version is `8.9.0` "
+"([#166](https://github.com/webpack/loader-utils/issues/166)) "
+"([c937e8c](https://github.com/webpack/loader-"
+"utils/commit/c937e8c77231b42018be616b784a6b45eac86f8a))"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:11
+msgid ""
+"the `getOptions` method returns empty object on empty query "
+"([#167](https://github.com/webpack/loader-utils/issues/167)) "
+"([b595cfb](https://github.com/webpack/loader-"
+"utils/commit/b595cfba022d3f04f3d310dd570b0253e461605b))"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:12
+msgid "Use `md4` by default"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:14
+msgid "<a name=\"1.4.0\"></a>"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:15
+msgid ""
+"[1.4.0](https://github.com/webpack/loader-utils/compare/v1.3.0...v1.4.0) "
+"(2020-02-19)"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:18
+#: ../../source/loader-utils_CHANGELOG.md:28
+#: ../../source/loader-utils_CHANGELOG.md:73
+#: ../../source/loader-utils_CHANGELOG.md:93
+msgid "Features"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:20
+msgid ""
+"the `resourceQuery` is passed to the `interpolateName` method "
+"([#163](https://github.com/webpack/loader-utils/issues/163)) "
+"([cd0e428](https://github.com/webpack/loader-utils/commit/cd0e428))"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:24
+msgid "<a name=\"1.3.0\"></a>"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:25
+msgid ""
+"[1.3.0](https://github.com/webpack/loader-utils/compare/v1.2.3...v1.3.0) "
+"(2020-02-19)"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:30
+msgid ""
+"support the `[query]` template for the `interpolatedName` method "
+"([#162](https://github.com/webpack/loader-utils/issues/162)) "
+"([469eeba](https://github.com/webpack/loader-utils/commit/469eeba))"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:34
+msgid "<a name=\"1.2.3\"></a>"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:35
+msgid ""
+"[1.2.3](https://github.com/webpack/loader-utils/compare/v1.2.2...v1.2.3) "
+"(2018-12-27)"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:38
+#: ../../source/loader-utils_CHANGELOG.md:48
+#: ../../source/loader-utils_CHANGELOG.md:58
+msgid "Bug Fixes"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:40
+msgid ""
+"**interpolateName:** don't interpolated `hashType` without `hash` or "
+"`contenthash`  ([#140](https://github.com/webpack/loader-"
+"utils/issues/140)) ([3528fd9](https://github.com/webpack/loader-"
+"utils/commit/3528fd9))"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:44
+msgid "<a name=\"1.2.2\"></a>"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:45
+msgid ""
+"[1.2.2](https://github.com/webpack/loader-utils/compare/v1.2.1...v1.2.2) "
+"(2018-12-27)"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:50
+msgid ""
+"fixed a hash type extracting in interpolateName "
+"([#137](https://github.com/webpack/loader-utils/issues/137)) "
+"([f8a71f4](https://github.com/webpack/loader-utils/commit/f8a71f4))"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:54
+msgid "<a name=\"1.2.1\"></a>"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:55
+msgid ""
+"[1.2.1](https://github.com/webpack/loader-utils/compare/v1.2.0...v1.2.1) "
+"(2018-12-25)"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:60
+msgid ""
+"**isUrlRequest:** better handle absolute urls and non standards "
+"([#134](https://github.com/webpack/loader-utils/issues/134)) "
+"([aca43da](https://github.com/webpack/loader-utils/commit/aca43da))"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:63
+msgid "Reverts"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:65
+msgid ""
+"PR [#79](https://github.com/webpack/loader-utils/issues/79) "
+"([#135](https://github.com/webpack/loader-utils/issues/135)) "
+"([73d350a](https://github.com/webpack/loader-utils/commit/73d350a))"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:69
+msgid "<a name=\"1.2.0\"></a>"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:70
+msgid ""
+"[1.2.0](https://github.com/webpack/loader-utils/compare/v1.1.0...v1.2.0) "
+"(2018-12-24)"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:75
+msgid "**interpolateName:** support `[contenthash]`"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:77
+msgid "Fixes"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:79
+msgid "**urlToRequest:** empty urls are not rewritten to relative requests"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:80
+msgid "**urlToRequest:** don't rewrite absolute urls"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:81
+msgid ""
+"**isUrlRequest:** ignore all url with `extension` (like `moz-extension:`,"
+" `ms-browser-extension:` and etc)"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:82
+msgid "**isUrlRequest:** ignore `about:blank`"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:83
+msgid "**interpolateName:** failing explicitly when ran out of emoji"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:84
+msgid ""
+"**interpolateName:** `[hash]` token regex in interpolate string to "
+"capture any hash algorithm name"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:85
+msgid "**interpolateName:** parse string for emoji count before use"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:89
+msgid "<a name=\"1.1.0\"></a>"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:90
+msgid ""
+"[1.1.0](https://github.com/webpack/loader-utils/compare/v1.0.4...v1.1.0) "
+"(2017-03-16)"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:95
+msgid ""
+"**automatic-release:** Generation of automatic release "
+"([7484d13](https://github.com/webpack/loader-utils/commit/7484d13))"
+msgstr ""
+
+#: ../../source/loader-utils_CHANGELOG.md:96
+msgid ""
+"**parseQuery:** export parseQuery ([ddf64e4](https://github.com/webpack"
+"/loader-utils/commit/ddf64e4))"
+msgstr ""
+

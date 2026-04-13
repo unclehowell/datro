@@ -1,0 +1,496 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_webflow.md:1
+msgid "Design System: Webflow"
+msgstr ""
+
+#: ../../source/templates_webflow.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_webflow.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_webflow.md:7
+msgid "**Primary:** `Inter` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_webflow.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_webflow.md:18
+msgid ""
+"Webflow's website is a visually rich, tool-forward platform that "
+"communicates \"design without code\" through clean white surfaces, the "
+"signature Webflow Blue (`#146ef5`), and a rich secondary color palette "
+"(purple, pink, green, orange, yellow, red). The custom WF Visual Sans "
+"Variable font creates a confident, precise typographic system with weight"
+" 600 for display and 500 for body."
+msgstr ""
+
+#: ../../source/templates_webflow.md:20
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_webflow.md:21
+msgid "White canvas with near-black (`#080808`) text"
+msgstr ""
+
+#: ../../source/templates_webflow.md:22
+msgid "Webflow Blue (`#146ef5`) as primary brand + interactive color"
+msgstr ""
+
+#: ../../source/templates_webflow.md:23
+msgid "WF Visual Sans Variable — custom variable font with weight 500–600"
+msgstr ""
+
+#: ../../source/templates_webflow.md:24
+msgid ""
+"Rich secondary palette: purple `#7a3dff`, pink `#ed52cb`, green "
+"`#00d722`, orange `#ff6b00`, yellow `#ffae13`, red `#ee1d36`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:25
+msgid "Conservative 4px–8px border-radius — sharp, not rounded"
+msgstr ""
+
+#: ../../source/templates_webflow.md:26
+msgid "Multi-layer shadow stacks (5-layer cascading shadows)"
+msgstr ""
+
+#: ../../source/templates_webflow.md:27
+msgid ""
+"Uppercase labels: 10px–15px, weight 500–600, wide letter-spacing "
+"(0.6px–1.5px)"
+msgstr ""
+
+#: ../../source/templates_webflow.md:28
+msgid "translate(6px) hover animation on buttons"
+msgstr ""
+
+#: ../../source/templates_webflow.md:30
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_webflow.md:32
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_webflow.md:33
+msgid "**Near Black** (`#080808`): Primary text"
+msgstr ""
+
+#: ../../source/templates_webflow.md:34
+msgid ""
+"**Webflow Blue** (`#146ef5`): `--_color---primary--webflow-blue`, primary"
+" CTA and links"
+msgstr ""
+
+#: ../../source/templates_webflow.md:35
+msgid ""
+"**Blue 400** (`#3b89ff`): `--_color---primary--blue-400`, lighter "
+"interactive blue"
+msgstr ""
+
+#: ../../source/templates_webflow.md:36
+msgid "**Blue 300** (`#006acc`): `--_color---blue-300`, darker blue variant"
+msgstr ""
+
+#: ../../source/templates_webflow.md:37
+msgid "**Button Hover Blue** (`#0055d4`): `--mkto-embed-color-button-hover`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:39
+msgid "Secondary Accents"
+msgstr ""
+
+#: ../../source/templates_webflow.md:40
+msgid "**Purple** (`#7a3dff`): `--_color---secondary--purple`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:41
+msgid "**Pink** (`#ed52cb`): `--_color---secondary--pink`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:42
+msgid "**Green** (`#00d722`): `--_color---secondary--green`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:43
+msgid "**Orange** (`#ff6b00`): `--_color---secondary--orange`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:44
+msgid "**Yellow** (`#ffae13`): `--_color---secondary--yellow`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:45
+msgid "**Red** (`#ee1d36`): `--_color---secondary--red`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:47
+msgid "Neutral"
+msgstr ""
+
+#: ../../source/templates_webflow.md:48
+msgid "**Gray 800** (`#222222`): Dark secondary text"
+msgstr ""
+
+#: ../../source/templates_webflow.md:49
+msgid "**Gray 700** (`#363636`): Mid text"
+msgstr ""
+
+#: ../../source/templates_webflow.md:50
+msgid "**Gray 300** (`#ababab`): Muted text, placeholder"
+msgstr ""
+
+#: ../../source/templates_webflow.md:51
+msgid "**Mid Gray** (`#5a5a5a`): Link text"
+msgstr ""
+
+#: ../../source/templates_webflow.md:52
+msgid "**Border Gray** (`#d8d8d8`): Borders, dividers"
+msgstr ""
+
+#: ../../source/templates_webflow.md:53
+msgid "**Border Hover** (`#898989`): Hover border"
+msgstr ""
+
+#: ../../source/templates_webflow.md:55
+msgid "Shadows"
+msgstr ""
+
+#: ../../source/templates_webflow.md:56
+msgid ""
+"**5-layer cascade**: `rgba(0,0,0,0) 0px 84px 24px, rgba(0,0,0,0.01) 0px "
+"54px 22px, rgba(0,0,0,0.04) 0px 30px 18px, rgba(0,0,0,0.08) 0px 13px "
+"13px, rgba(0,0,0,0.09) 0px 3px 7px`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:58
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_webflow.md:60
+msgid "Font: `WF Visual Sans Variable`, fallback: `Arial`"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "80px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "1.04"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "-0.8px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "56px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "32px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "1.30"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "24px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "500–600"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "20px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "1.40–1.50"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Body Standard"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "16px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "1.60"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "-0.16px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Uppercase Label"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "15px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "1.5px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "uppercase"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "14px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "1.40–1.60"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Badge Uppercase"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "12.8px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "550"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "1.20"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Micro Uppercase"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "10px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "1px"
+msgstr ""
+
+#: ../../source/templates_webflow.md
+msgid "Code: Inconsolata (companion monospace font)"
+msgstr ""
+
+#: ../../source/templates_webflow.md:77
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_webflow.md:79
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_webflow.md:80
+msgid "Transparent: text `#080808`, translate(6px) on hover"
+msgstr ""
+
+#: ../../source/templates_webflow.md:81
+#, python-format
+msgid "White circle: 50% radius, white bg"
+msgstr ""
+
+#: ../../source/templates_webflow.md:82
+msgid "Blue badge: `#146ef5` bg, 4px radius, weight 550"
+msgstr ""
+
+#: ../../source/templates_webflow.md:84
+msgid "Cards: `1px solid #d8d8d8`, 4px–8px radius"
+msgstr ""
+
+#: ../../source/templates_webflow.md:85
+#, python-format
+msgid "Badges: Blue-tinted bg at 10% opacity, 4px radius"
+msgstr ""
+
+#: ../../source/templates_webflow.md:87
+msgid "5. Layout"
+msgstr ""
+
+#: ../../source/templates_webflow.md:88
+msgid ""
+"Spacing: fractional scale (1px, 2.4px, 3.2px, 4px, 5.6px, 6px, 7.2px, "
+"8px, 9.6px, 12px, 16px, 24px)"
+msgstr ""
+
+#: ../../source/templates_webflow.md:89
+msgid "Radius: 2px, 4px, 8px, 50% — conservative, sharp"
+msgstr ""
+
+#: ../../source/templates_webflow.md:90
+msgid "Breakpoints: 479px, 768px, 992px"
+msgstr ""
+
+#: ../../source/templates_webflow.md:92
+msgid "6. Depth: 5-layer cascading shadow system"
+msgstr ""
+
+#: ../../source/templates_webflow.md:94
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_webflow.md:95
+msgid ""
+"Do: Use WF Visual Sans Variable at 500–600. Blue (#146ef5) for CTAs. 4px "
+"radius. translate(6px) hover."
+msgstr ""
+
+#: ../../source/templates_webflow.md:96
+msgid ""
+"Don't: Round beyond 8px for functional elements. Use secondary colors on "
+"primary CTAs."
+msgstr ""
+
+#: ../../source/templates_webflow.md:98
+msgid "8. Responsive: 479px, 768px, 992px"
+msgstr ""
+
+#: ../../source/templates_webflow.md:100
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_webflow.md:101
+msgid "Text: Near Black (`#080808`)"
+msgstr ""
+
+#: ../../source/templates_webflow.md:102
+msgid "CTA: Webflow Blue (`#146ef5`)"
+msgstr ""
+
+#: ../../source/templates_webflow.md:103
+msgid "Background: White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_webflow.md:104
+msgid "Border: `#d8d8d8`"
+msgstr ""
+
+#: ../../source/templates_webflow.md:105
+msgid "Secondary: Purple `#7a3dff`, Pink `#ed52cb`, Green `#00d722`"
+msgstr ""
+

@@ -1,0 +1,108 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/gulp-header_README.md:1
+msgid ""
+"gulp-header [![NPM version](https://badge.fury.io/js/gulp-"
+"header.png)](http://badge.fury.io/js/gulp-header) [![Build Status](https"
+"://travis-ci.org/tracker1/gulp-header.svg?branch=master)](https://travis-"
+"ci.org/tracker1/gulp-header)"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:3
+msgid ""
+"gulp-header is a [Gulp](https://github.com/gulpjs/gulp) extension to add "
+"a header to file(s) in the pipeline.  [Gulp is a streaming build "
+"system](https://github.com/gulpjs/gulp) utilizing "
+"[node.js](http://nodejs.org/)."
+msgstr ""
+
+#: ../../source/gulp-header_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:11
+msgid "Usage"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:72
+msgid "Issues and Alerts"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:74
+msgid ""
+"My handle on twitter is [@tracker1](https://twitter.com/tracker1) - If "
+"there is an urgent issue, I get twitter notifications sent to my phone."
+msgstr ""
+
+#: ../../source/gulp-header_README.md:76
+msgid "API"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:78
+msgid "header(text, data)"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:80
+msgid "text"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:82
+msgid "Type: `String` Default: `''`"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:85
+msgid "The template text."
+msgstr ""
+
+#: ../../source/gulp-header_README.md:88
+msgid "data"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:90
+#, python-brace-format
+msgid "Type: `Object` Default: `{}`"
+msgstr ""
+
+#: ../../source/gulp-header_README.md:93
+msgid "The data object used to populate the text."
+msgstr ""
+
+#: ../../source/gulp-header_README.md:95
+msgid ""
+"In addition to the passed in data, `file` will be the stream object for "
+"the file being templated against and `filename` will be the path relative"
+" from the stream's basepath."
+msgstr ""
+
+#: ../../source/gulp-header_README.md:97
+msgid "*NOTE: using `false` will disable template processing of the header*"
+msgstr ""
+

@@ -1,0 +1,97 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_ContentType.md:1
+msgid "MIME Type Parsing"
+msgstr ""
+
+#: ../../source/api_ContentType.md:3
+msgid "`MIMEType` interface"
+msgstr ""
+
+#: ../../source/api_ContentType.md:5
+msgid "**type** `string`"
+msgstr ""
+
+#: ../../source/api_ContentType.md:6
+msgid "**subtype** `string`"
+msgstr ""
+
+#: ../../source/api_ContentType.md:7
+msgid "**parameters** `Map<string, string>`"
+msgstr ""
+
+#: ../../source/api_ContentType.md:8
+msgid "**essence** `string`"
+msgstr ""
+
+#: ../../source/api_ContentType.md:10
+msgid "`parseMIMEType(input)`"
+msgstr ""
+
+#: ../../source/api_ContentType.md:12
+msgid ""
+"Implements [parse a MIME type](https://mimesniff.spec.whatwg.org/#parse-a"
+"-mime-type)."
+msgstr ""
+
+#: ../../source/api_ContentType.md:14
+msgid ""
+"Parses a MIME type, returning its type, subtype, and any associated "
+"parameters. If the parser can't parse an input it returns the string "
+"literal `'failure'`."
+msgstr ""
+
+#: ../../source/api_ContentType.md:28 ../../source/api_ContentType.md:53
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/api_ContentType.md:30
+msgid "**input** `string`"
+msgstr ""
+
+#: ../../source/api_ContentType.md:32
+msgid "Returns: `MIMEType|'failure'`"
+msgstr ""
+
+#: ../../source/api_ContentType.md:34
+msgid "`serializeAMimeType(input)`"
+msgstr ""
+
+#: ../../source/api_ContentType.md:36
+msgid ""
+"Implements [serialize a MIME "
+"type](https://mimesniff.spec.whatwg.org/#serialize-a-mime-type)."
+msgstr ""
+
+#: ../../source/api_ContentType.md:38
+msgid "Serializes a MIMEType object."
+msgstr ""
+
+#: ../../source/api_ContentType.md:55
+msgid "**mimeType** `MIMEType`"
+msgstr ""
+
+#: ../../source/api_ContentType.md:57
+msgid "Returns: `string`"
+msgstr ""
+

@@ -1,0 +1,84 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/recursive-readdir_README.md:1
+msgid "recursive-readdir"
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:3
+msgid ""
+"[![Build Status](https://travis-ci.org/jergason/recursive-"
+"readdir.svg?branch=master)](https://travis-ci.org/jergason/recursive-"
+"readdir)"
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:5
+msgid ""
+"Recursively list all files in a directory and its subdirectories. It does"
+" not list the directories themselves."
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:7
+msgid ""
+"Because it uses fs.readdir, which calls "
+"[readdir](http://linux.die.net/man/3/readdir) under the hood on OS X and "
+"Linux, the order of files inside directories is [not "
+"guaranteed](http://stackoverflow.com/questions/8977441/does-readdir-"
+"guarantee-an-order)."
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:10
+msgid "Installation"
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:14
+msgid "Usage"
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:25
+msgid "It can also take a list of files to ignore."
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:36
+msgid ""
+"You can also pass functions which are called to determine whether or not "
+"to ignore a file:"
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:54
+msgid "Promises"
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:55
+msgid "You can omit the callback and return a promise instead."
+msgstr ""
+
+#: ../../source/recursive-readdir_README.md:68
+msgid ""
+"The ignore strings support Glob syntax via "
+"[minimatch](https://github.com/isaacs/minimatch)."
+msgstr ""
+

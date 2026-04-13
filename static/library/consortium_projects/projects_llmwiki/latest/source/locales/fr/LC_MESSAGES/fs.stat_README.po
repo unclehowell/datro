@@ -1,0 +1,219 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/fs.stat_README.md:1
+msgid "@nodelib/fs.stat"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:3
+msgid "Get the status of a file with some features."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:5
+msgid ":bulb: Highlights"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:7
+msgid ""
+"Wrapper around standard method `fs.lstat` and `fs.stat` with some "
+"features."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:9
+msgid ":beginner: Normally follows symbolic link."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:10
+msgid ":gear: Can safely work with broken symbolic link."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:12
+msgid "Install"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:18
+msgid "Usage"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:26
+msgid "API"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:28
+msgid ".stat(path, [optionsOrSettings], callback)"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:30
+msgid ""
+"Returns an instance of `fs.Stats` class for provided path with standard "
+"callback-style."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:38
+msgid ".statSync(path, [optionsOrSettings])"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:40
+msgid "Returns an instance of `fs.Stats` class for provided path."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:48
+msgid "path"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:50
+msgid "Required: `true`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:51
+msgid "Type: `string | Buffer | URL`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:53
+msgid "A path to a file. If a URL is provided, it must use the `file:` protocol."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:55
+msgid "optionsOrSettings"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:57
+msgid "Required: `false`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:58
+msgid "Type: `Options | Settings`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:59
+msgid "Default: An instance of `Settings` class"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:61
+msgid ""
+"An [`Options`](#options) object or an instance of [`Settings`](#settings)"
+" class."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:63
+msgid ""
+":book: When you pass a plain object, an instance of the `Settings` class "
+"will be created automatically. If you plan to call the method frequently,"
+" use a pre-created instance of the `Settings` class."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:65
+msgid "Settings([options])"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:67
+msgid "A class of full settings of the package."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:75
+msgid "Options"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:77
+msgid "`followSymbolicLink`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:79 ../../source/fs.stat_README.md:86
+#: ../../source/fs.stat_README.md:95
+msgid "Type: `boolean`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:80 ../../source/fs.stat_README.md:96
+msgid "Default: `true`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:82
+msgid "Follow symbolic link or not. Call `fs.stat` on symbolic link if `true`."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:84
+msgid "`markSymbolicLink`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:87
+msgid "Default: `false`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:89
+msgid ""
+"Mark symbolic link by setting the return value of `isSymbolicLink` "
+"function to always `true` (even after `fs.stat`)."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:91
+msgid ""
+":book: Can be used if you want to know what is hidden behind a symbolic "
+"link, but still continue to know that it is a symbolic link."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:93
+msgid "`throwErrorOnBrokenSymbolicLink`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:98
+msgid ""
+"Throw an error when symbolic link is broken if `true` or safely return "
+"`lstat` call if `false`."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:100
+msgid "`fs`"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:102
+msgid "Type: [`FileSystemAdapter`](./src/adapters/fs.ts)"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:103
+msgid "Default: A default FS methods"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:105
+msgid ""
+"By default, the built-in Node.js module (`fs`) is used to work with the "
+"file system. You can replace any method with your own."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:120
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:122
+msgid ""
+"See the [Releases section of our GitHub "
+"project](https://github.com/nodelib/nodelib/releases) for changelog for "
+"each release version."
+msgstr ""
+
+#: ../../source/fs.stat_README.md:124
+msgid "License"
+msgstr ""
+
+#: ../../source/fs.stat_README.md:126
+msgid "This software is released under the terms of the MIT license."
+msgstr ""
+

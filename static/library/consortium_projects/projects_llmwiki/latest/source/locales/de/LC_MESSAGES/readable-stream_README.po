@@ -1,0 +1,200 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/readable-stream_README.md:1
+msgid "readable-stream"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:3
+msgid ""
+"***Node-core v8.17.0 streams for userland*** [![Build Status](https"
+"://travis-ci.org/nodejs/readable-stream.svg?branch=master)](https"
+"://travis-ci.org/nodejs/readable-stream)"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:6
+msgid ""
+"[![NPM](https://nodei.co/npm/readable-"
+"stream.png?downloads=true&downloadRank=true)](https://nodei.co/npm"
+"/readable-stream/) [![NPM](https://nodei.co/npm-dl/readable-"
+"stream.png?&months=6&height=3)](https://nodei.co/npm/readable-stream/)"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:6
+msgid "NPM"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:10
+msgid ""
+"[![Sauce Test Status](https://saucelabs.com/browser-matrix/readable-"
+"stream.svg)](https://saucelabs.com/u/readable-stream)"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:10
+msgid "Sauce Test Status"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:16
+msgid "***Node-core streams for userland***"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:18
+msgid ""
+"This package is a mirror of the Streams2 and Streams3 implementations in "
+"Node-core."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:21
+msgid ""
+"Full documentation may be found on the [Node.js "
+"website](https://nodejs.org/dist/v8.17.0/docs/api/stream.html)."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:23
+msgid ""
+"If you want to guarantee a stable streams base, regardless of what "
+"version of Node you, or the users of your libraries are using, use "
+"**readable-stream** *only* and avoid the *\"stream\"* module in Node-"
+"core, for background see [this blogpost](http://r.va.gg/2014/06/why-i"
+"-dont-use-nodes-core-stream-module.html)."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:26
+msgid "As of version 2.0.0 **readable-stream** uses semantic versioning."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:28
+msgid "Streams Working Group"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:30
+msgid ""
+"`readable-stream` is maintained by the Streams Working Group, which "
+"oversees the development and maintenance of the Streams API within "
+"Node.js. The responsibilities of the Streams Working Group include:"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:34
+msgid "Addressing stream issues on the Node.js issue tracker."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:35
+msgid "Authoring and editing stream documentation within the Node.js project."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:36
+msgid "Reviewing changes to stream subclasses within the Node.js project."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:37
+msgid "Redirecting changes to streams from the Node.js project to this project."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:39
+msgid "Assisting in the implementation of stream providers within Node.js."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:40
+msgid "Recommending versions of `readable-stream` to be included in Node.js."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:41
+msgid ""
+"Messaging about the future of streams to give the community advance "
+"notice of changes."
+msgstr ""
+
+#: ../../source/readable-stream_README.md:44
+msgid "<a name=\"members\"></a>"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:45
+msgid "Team Members"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:47
+msgid ""
+"**Chris Dickinson** "
+"([@chrisdickinson](https://github.com/chrisdickinson)) "
+"&lt;christopher.s.dickinson@gmail.com&gt;"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:48
+msgid "Release GPG key: 9554F04D7259F04124DE6B476D5A82AC7E37093B"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:49
+msgid ""
+"**Calvin Metcalf** ([@calvinmetcalf](https://github.com/calvinmetcalf)) "
+"&lt;calvin.metcalf@gmail.com&gt;"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:50
+msgid "Release GPG key: F3EF5F62A87FC27A22E643F714CE4FF5015AA242"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:51
+msgid "**Rod Vagg** ([@rvagg](https://github.com/rvagg)) &lt;rod@vagg.org&gt;"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:52
+msgid "Release GPG key: DD8F2338BAE7501E3DD5AC78C273792F7D83545D"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:53
+msgid ""
+"**Sam Newman** ([@sonewman](https://github.com/sonewman)) "
+"&lt;newmansam@outlook.com&gt;"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:54
+msgid ""
+"**Mathias Buus** ([@mafintosh](https://github.com/mafintosh)) "
+"&lt;mathiasbuus@gmail.com&gt;"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:55
+msgid ""
+"**Domenic Denicola** ([@domenic](https://github.com/domenic)) "
+"&lt;d@domenic.me&gt;"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:56
+msgid ""
+"**Matteo Collina** ([@mcollina](https://github.com/mcollina)) "
+"&lt;matteo.collina@gmail.com&gt;"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:57
+msgid "Release GPG key: 3ABC01543F22DD2239285CDD818674489FBC127E"
+msgstr ""
+
+#: ../../source/readable-stream_README.md:58
+msgid ""
+"**Irina Shestak** ([@lrlna](https://github.com/lrlna)) "
+"&lt;shestak.irina@gmail.com&gt;"
+msgstr ""
+

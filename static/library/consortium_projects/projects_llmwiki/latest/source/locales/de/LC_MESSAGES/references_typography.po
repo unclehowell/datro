@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_typography.md:1
+msgid "Typography"
+msgstr ""
+
+#: ../../source/references_typography.md:3
+msgid "Loading Fonts"
+msgstr ""
+
+#: ../../source/references_typography.md:5
+msgid "System Fonts"
+msgstr ""
+
+#: ../../source/references_typography.md:13
+msgid "Custom Fonts (OTF/TTF/WOFF2)"
+msgstr ""
+
+#: ../../source/references_typography.md:28
+msgid "Google Fonts via CSS"
+msgstr ""
+
+#: ../../source/references_typography.md:39
+msgid ""
+"Google Fonts work without `loadFont()` but only for `text()` — not for "
+"`textToPoints()`. For particle text, you need `loadFont()` with an "
+"OTF/TTF file."
+msgstr ""
+
+#: ../../source/references_typography.md:41
+msgid "Text Rendering"
+msgstr ""
+
+#: ../../source/references_typography.md:43
+msgid "Basic Text"
+msgstr ""
+
+#: ../../source/references_typography.md:51
+msgid "Text Properties"
+msgstr ""
+
+#: ../../source/references_typography.md:62
+msgid "Text Metrics"
+msgstr ""
+
+#: ../../source/references_typography.md:71
+msgid "Text Bounding Box"
+msgstr ""
+
+#: ../../source/references_typography.md:79
+msgid "Multi-Line Text"
+msgstr ""
+
+#: ../../source/references_typography.md:90
+msgid "textToPoints() — Text as Particles"
+msgstr ""
+
+#: ../../source/references_typography.md:92
+msgid ""
+"Convert text outline to array of points. Requires a loaded font (OTF/TTF "
+"via `loadFont()`)."
+msgstr ""
+
+#: ../../source/references_typography.md:121
+msgid "Particle Text Class"
+msgstr ""
+
+#: ../../source/references_typography.md:186
+msgid "Kinetic Typography"
+msgstr ""
+
+#: ../../source/references_typography.md:188
+msgid "Wave Text"
+msgstr ""
+
+#: ../../source/references_typography.md:203
+msgid "Typewriter Effect"
+msgstr ""
+
+#: ../../source/references_typography.md:235
+msgid "Character-by-Character Animation"
+msgstr ""
+
+#: ../../source/references_typography.md:261
+msgid "Text as Mask"
+msgstr ""
+
+#: ../../source/references_typography.md:292
+msgid "Responsive Text Sizing"
+msgstr ""
+

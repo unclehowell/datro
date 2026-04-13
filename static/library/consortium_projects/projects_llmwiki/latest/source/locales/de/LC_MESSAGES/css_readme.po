@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/css_readme.md:1
+msgid "MDN CSS data"
+msgstr ""
+
+#: ../../source/css_readme.md:3
+msgid ""
+"This folder contains data about the different features of the "
+"[CSS](https://developer.mozilla.org/en-US/docs/Web/CSS) language."
+msgstr ""
+
+#: ../../source/css_readme.md:5
+msgid "Different types of CSS data"
+msgstr ""
+
+#: ../../source/css_readme.md:7
+msgid "The CSS data is split into these parts:"
+msgstr ""
+
+#: ../../source/css_readme.md:9
+msgid ""
+"**at-rules**: [data](https://github.com/mdn/data/blob/master/css/at-"
+"rules.json) | [schema](https://github.com/mdn/data/blob/master/css/at-"
+"rules.schema.json) | [docs](https://github.com/mdn/data/blob/master/css"
+"/at-rules.md)"
+msgstr ""
+
+#: ../../source/css_readme.md:13
+msgid ""
+"**properties**: "
+"[data](https://github.com/mdn/data/blob/master/css/properties.json) | "
+"[schema](https://github.com/mdn/data/blob/master/css/properties.schema.json)"
+" | [docs](https://github.com/mdn/data/blob/master/css/properties.md)"
+msgstr ""
+
+#: ../../source/css_readme.md:17
+msgid ""
+"**selectors**: "
+"[data](https://github.com/mdn/data/blob/master/css/selectors.json) | "
+"[schema](https://github.com/mdn/data/blob/master/css/selectors.schema.json)"
+" | [docs](https://github.com/mdn/data/blob/master/css/selectors.md)"
+msgstr ""
+
+#: ../../source/css_readme.md:21
+msgid ""
+"**syntaxes**: "
+"[data](https://github.com/mdn/data/blob/master/css/syntaxes.json) | "
+"[schema](https://github.com/mdn/data/blob/master/css/syntaxes.schema.json)"
+" | [docs](https://github.com/mdn/data/blob/master/css/syntaxes.md)"
+msgstr ""
+
+#: ../../source/css_readme.md:25
+msgid ""
+"**types**: [data](https://github.com/mdn/data/blob/master/css/types.json)"
+" | "
+"[schema](https://github.com/mdn/data/blob/master/css/types.schema.json) |"
+" [docs](https://github.com/mdn/data/blob/master/css/types.md)"
+msgstr ""
+
+#: ../../source/css_readme.md:29
+msgid ""
+"**units**: [data](https://github.com/mdn/data/blob/master/css/units.json)"
+" | "
+"[schema](https://github.com/mdn/data/blob/master/css/units.schema.json) |"
+" [docs](https://github.com/mdn/data/blob/master/css/units.md)"
+msgstr ""
+

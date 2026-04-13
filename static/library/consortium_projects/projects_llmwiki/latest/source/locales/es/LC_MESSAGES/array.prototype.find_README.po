@@ -1,0 +1,144 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/array.prototype.find_README.md:1
+msgid ""
+"array.prototype.find <sup>[![Version Badge][npm-version-svg]][package-"
+"url]</sup>"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:1
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:3
+msgid ""
+"[![github actions][actions-image]][actions-url] [![coverage][codecov-"
+"image]][codecov-url] [![dependency status][deps-svg]][deps-url] [![dev "
+"dependency status][dev-deps-svg]][dev-deps-url] [![License][license-image"
+"]][license-url] [![Downloads][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:3
+msgid "github actions"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:3
+msgid "coverage"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:3
+msgid "dependency status"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:3
+msgid "dev dependency status"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:3
+#: ../../source/array.prototype.find_README.md:48
+msgid "License"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:10
+msgid "[![npm badge][npm-badge-png]][package-url]"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:10
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:12
+#, python-format
+msgid ""
+"Simple ES6 "
+"[Array.prototype.find](http://people.mozilla.org/%7Ejorendorff/es6-draft.html"
+"#sec-array.prototype.find) polyfill for older environments taken from "
+"[es6-shim](https://github.com/paulmillr/es6-shim)."
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:14
+msgid "For browsers and node.js."
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:16
+msgid "Installation"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:17
+msgid "Just include repo before your scripts."
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:18
+msgid "`npm install array.prototype.find`"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:20
+msgid "Usage"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:22
+msgid ""
+"`Array.prototype.find(predicate[, thisArg])` returns first item that "
+"matches `predicate` function."
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:23
+msgid "`predicate(value, index, collection)`: takes three arguments"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:24
+msgid "`value`: current collection element"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:25
+msgid "`index`: current collection element index"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:26
+msgid "`collection`: the collection"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:37
+msgid "Code example:"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:44
+msgid "Acknowledgements"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:46
+msgid ""
+"Tests, fixes, and travis support added by "
+"[_duncanhall](http://twitter.com/_duncanhall)"
+msgstr ""
+
+#: ../../source/array.prototype.find_README.md:50
+msgid ""
+"[The MIT License](https://github.com/paulmillr/mit) (c) 2016 Paul Miller "
+"(http://paulmillr.com)"
+msgstr ""
+

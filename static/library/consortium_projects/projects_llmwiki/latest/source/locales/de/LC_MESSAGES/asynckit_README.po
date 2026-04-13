@@ -1,0 +1,243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/asynckit_README.md:1
+msgid ""
+"asynckit [![NPM "
+"Module](https://img.shields.io/npm/v/asynckit.svg?style=flat)](https://www.npmjs.com/package/asynckit)"
+msgstr ""
+
+#: ../../source/asynckit_README.md:1
+msgid "NPM Module"
+msgstr ""
+
+#: ../../source/asynckit_README.md:3
+msgid "Minimal async jobs utility library, with streams support."
+msgstr ""
+
+#: ../../source/asynckit_README.md:5
+msgid ""
+"[![PhantomJS "
+"Build](https://img.shields.io/travis/alexindigo/asynckit/v0.4.0.svg?label=browser&style=flat)](https"
+"://travis-ci.org/alexindigo/asynckit) [![Linux "
+"Build](https://img.shields.io/travis/alexindigo/asynckit/v0.4.0.svg?label=linux:0.12-6.x&style=flat)](https"
+"://travis-ci.org/alexindigo/asynckit) [![Windows "
+"Build](https://img.shields.io/appveyor/ci/alexindigo/asynckit/v0.4.0.svg?label=windows:0.12-6.x&style=flat)](https://ci.appveyor.com/project/alexindigo/asynckit)"
+msgstr ""
+
+#: ../../source/asynckit_README.md:5
+msgid "PhantomJS Build"
+msgstr ""
+
+#: ../../source/asynckit_README.md:5
+msgid "Linux Build"
+msgstr ""
+
+#: ../../source/asynckit_README.md:5
+msgid "Windows Build"
+msgstr ""
+
+#: ../../source/asynckit_README.md:9
+msgid ""
+"[![Coverage "
+"Status](https://img.shields.io/coveralls/alexindigo/asynckit/v0.4.0.svg?label=code+coverage&style=flat)](https://coveralls.io/github/alexindigo/asynckit?branch=master)"
+" [![Dependency "
+"Status](https://img.shields.io/david/alexindigo/asynckit/v0.4.0.svg?style=flat)](https"
+"://david-dm.org/alexindigo/asynckit) [![bitHound Overall "
+"Score](https://www.bithound.io/github/alexindigo/asynckit/badges/score.svg)](https://www.bithound.io/github/alexindigo/asynckit)"
+msgstr ""
+
+#: ../../source/asynckit_README.md:9
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/asynckit_README.md:9
+msgid "Dependency Status"
+msgstr ""
+
+#: ../../source/asynckit_README.md:9
+msgid "bitHound Overall Score"
+msgstr ""
+
+#: ../../source/asynckit_README.md:15
+msgid ""
+"AsyncKit provides harness for `parallel` and `serial` iterators over list"
+" of items represented by arrays or objects. Optionally it accepts abort "
+"function (should be synchronously return by iterator for each item), and "
+"terminates left over jobs upon an error event. For specific iteration "
+"order built-in (`ascending` and `descending`) and custom sort helpers "
+"also supported, via `asynckit.serialOrdered` method."
+msgstr ""
+
+#: ../../source/asynckit_README.md:18
+msgid ""
+"It ensures async operations to keep behavior more stable and prevent "
+"`Maximum call stack size exceeded` errors, from sync iterators."
+msgstr ""
+
+#: ../../source/asynckit_README.md
+msgid "compression"
+msgstr ""
+
+#: ../../source/asynckit_README.md
+msgid "size"
+msgstr ""
+
+#: ../../source/asynckit_README.md
+msgid "asynckit.js"
+msgstr ""
+
+#: ../../source/asynckit_README.md
+msgid "12.34 kB"
+msgstr ""
+
+#: ../../source/asynckit_README.md
+msgid "asynckit.min.js"
+msgstr ""
+
+#: ../../source/asynckit_README.md
+msgid "4.11 kB"
+msgstr ""
+
+#: ../../source/asynckit_README.md
+msgid "asynckit.min.js.gz"
+msgstr ""
+
+#: ../../source/asynckit_README.md
+msgid "1.47 kB"
+msgstr ""
+
+#: ../../source/asynckit_README.md:27
+msgid "Install"
+msgstr ""
+
+#: ../../source/asynckit_README.md:33
+msgid "Examples"
+msgstr ""
+
+#: ../../source/asynckit_README.md:35
+msgid "Parallel Jobs"
+msgstr ""
+
+#: ../../source/asynckit_README.md:37
+msgid ""
+"Runs iterator over provided array in parallel. Stores output in the "
+"`result` array, on the matching positions. In unlikely event of an error "
+"from one of the jobs, will terminate rest of the active jobs (if abort "
+"function is provided) and return error along with salvaged data to the "
+"main callback function."
+msgstr ""
+
+#: ../../source/asynckit_README.md:42 ../../source/asynckit_README.md:136
+msgid "Input Array"
+msgstr ""
+
+#: ../../source/asynckit_README.md:81
+msgid ""
+"More examples could be found in [test/test-parallel-array.js](test/test-"
+"parallel-array.js)."
+msgstr ""
+
+#: ../../source/asynckit_README.md:83 ../../source/asynckit_README.md:169
+msgid "Input Object"
+msgstr ""
+
+#: ../../source/asynckit_README.md:85 ../../source/asynckit_README.md:171
+msgid "Also it supports named jobs, listed via object."
+msgstr ""
+
+#: ../../source/asynckit_README.md:127
+msgid ""
+"More examples could be found in [test/test-parallel-object.js](test/test-"
+"parallel-object.js)."
+msgstr ""
+
+#: ../../source/asynckit_README.md:129
+msgid "Serial Jobs"
+msgstr ""
+
+#: ../../source/asynckit_README.md:131
+msgid ""
+"Runs iterator over provided array sequentially. Stores output in the "
+"`result` array, on the matching positions. In unlikely event of an error "
+"from one of the jobs, will not proceed to the rest of the items in the "
+"list and return error along with salvaged data to the main callback "
+"function."
+msgstr ""
+
+#: ../../source/asynckit_README.md:167
+msgid ""
+"More examples could be found in [test/test-serial-array.js](test/test-"
+"serial-array.js)."
+msgstr ""
+
+#: ../../source/asynckit_README.md:209
+msgid ""
+"More examples could be found in [test/test-serial-object.js](test/test-"
+"serial-object.js)."
+msgstr ""
+
+#: ../../source/asynckit_README.md:211
+msgid ""
+"_Note: Since _object_ is an _unordered_ collection of properties, it may "
+"produce unexpected results with sequential iterations. Whenever order of "
+"the jobs' execution is important please use `serialOrdered` method._"
+msgstr ""
+
+#: ../../source/asynckit_README.md:215
+msgid "Ordered Serial Iterations"
+msgstr ""
+
+#: ../../source/asynckit_README.md:217 ../../source/asynckit_README.md:223
+msgid "TBD"
+msgstr ""
+
+#: ../../source/asynckit_README.md:219
+msgid "For example [compare-property](compare-property) package."
+msgstr ""
+
+#: ../../source/asynckit_README.md:221
+msgid "Streaming interface"
+msgstr ""
+
+#: ../../source/asynckit_README.md:225
+msgid "Want to Know More?"
+msgstr ""
+
+#: ../../source/asynckit_README.md:227
+msgid "More examples can be found in [test folder](test/)."
+msgstr ""
+
+#: ../../source/asynckit_README.md:229
+msgid ""
+"Or open an [issue](https://github.com/alexindigo/asynckit/issues) with "
+"questions and/or suggestions."
+msgstr ""
+
+#: ../../source/asynckit_README.md:231
+msgid "License"
+msgstr ""
+
+#: ../../source/asynckit_README.md:233
+msgid "AsyncKit is licensed under the MIT license."
+msgstr ""
+

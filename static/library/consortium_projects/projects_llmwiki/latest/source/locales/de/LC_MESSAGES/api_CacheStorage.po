@@ -1,0 +1,55 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/api_CacheStorage.md:1
+msgid "CacheStorage"
+msgstr ""
+
+#: ../../source/api_CacheStorage.md:3
+msgid ""
+"Undici exposes a W3C spec-compliant implementation of "
+"[CacheStorage](https://developer.mozilla.org/en-"
+"US/docs/Web/API/CacheStorage) and [Cache](https://developer.mozilla.org"
+"/en-US/docs/Web/API/Cache)."
+msgstr ""
+
+#: ../../source/api_CacheStorage.md:5
+msgid "Opening a Cache"
+msgstr ""
+
+#: ../../source/api_CacheStorage.md:7
+msgid ""
+"Undici exports a top-level CacheStorage instance. You can open a new "
+"Cache, or duplicate a Cache with an existing name, by using "
+"`CacheStorage.prototype.open`. If you open a Cache with the same name as "
+"an already-existing Cache, its list of cached Responses will be shared "
+"between both instances."
+msgstr ""
+
+#: ../../source/api_CacheStorage.md:21
+msgid "Deleting a Cache"
+msgstr ""
+
+#: ../../source/api_CacheStorage.md:23
+msgid "If a Cache is deleted, the cached Responses/Requests can still be used."
+msgstr ""
+

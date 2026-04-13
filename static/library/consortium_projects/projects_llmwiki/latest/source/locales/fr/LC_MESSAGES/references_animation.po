@@ -1,0 +1,175 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_animation.md:1
+msgid "Animation"
+msgstr ""
+
+#: ../../source/references_animation.md:3
+msgid "Frame-Based Animation"
+msgstr ""
+
+#: ../../source/references_animation.md:5
+msgid "The Draw Loop"
+msgstr ""
+
+#: ../../source/references_animation.md:16
+msgid "Time-Based vs Frame-Based"
+msgstr ""
+
+#: ../../source/references_animation.md:26
+msgid "Normalized Time"
+msgstr ""
+
+#: ../../source/references_animation.md:42
+msgid "Easing Functions"
+msgstr ""
+
+#: ../../source/references_animation.md:44
+msgid "Built-in Lerp"
+msgstr ""
+
+#: ../../source/references_animation.md:54
+msgid "Common Easing Curves"
+msgstr ""
+
+#: ../../source/references_animation.md:96
+msgid "Applying Easing"
+msgstr ""
+
+#: ../../source/references_animation.md:109
+msgid "Spring Physics"
+msgstr ""
+
+#: ../../source/references_animation.md:111
+msgid "More natural than easing — responds to force, overshoots, settles."
+msgstr ""
+
+#: ../../source/references_animation.md:146
+msgid "2D Spring"
+msgstr ""
+
+#: ../../source/references_animation.md:167
+msgid "State Machines"
+msgstr ""
+
+#: ../../source/references_animation.md:169
+msgid "For complex multi-phase animations."
+msgstr ""
+
+#: ../../source/references_animation.md:208
+msgid "Timeline Sequencing"
+msgstr ""
+
+#: ../../source/references_animation.md:210
+msgid "For timed multi-scene animations (motion graphics, title sequences)."
+msgstr ""
+
+#: ../../source/references_animation.md:262
+msgid "Noise-Driven Motion"
+msgstr ""
+
+#: ../../source/references_animation.md:264
+msgid "More organic than deterministic animation."
+msgstr ""
+
+#: ../../source/references_animation.md:281
+msgid "Transition Patterns"
+msgstr ""
+
+#: ../../source/references_animation.md:283
+msgid "Fade In/Out"
+msgstr ""
+
+#: ../../source/references_animation.md:290
+msgid "Slide"
+msgstr ""
+
+#: ../../source/references_animation.md:304
+msgid "Scale Reveal"
+msgstr ""
+
+#: ../../source/references_animation.md:318
+msgid "Staggered Entry"
+msgstr ""
+
+#: ../../source/references_animation.md:332
+msgid "Recording Deterministic Animations"
+msgstr ""
+
+#: ../../source/references_animation.md:334
+msgid "For frame-perfect export, use frame count instead of millis():"
+msgstr ""
+
+#: ../../source/references_animation.md:354
+msgid "Scene Fade Envelopes (Video)"
+msgstr ""
+
+#: ../../source/references_animation.md:356
+msgid ""
+"Every scene in a multi-scene video needs fade-in and fade-out. Hard cuts "
+"between visually different generative scenes are jarring."
+msgstr ""
+
+#: ../../source/references_animation.md:386
+msgid "Animating Static Algorithms"
+msgstr ""
+
+#: ../../source/references_animation.md:388
+msgid ""
+"Some generative algorithms produce a single static result (attractors, "
+"circle packing, Voronoi). In video, static content reads as "
+"frozen/broken. Techniques to add motion:"
+msgstr ""
+
+#: ../../source/references_animation.md:390
+msgid "Progressive Reveal"
+msgstr ""
+
+#: ../../source/references_animation.md:392
+msgid "Expand a mask from center outward to reveal the precomputed result:"
+msgstr ""
+
+#: ../../source/references_animation.md:403
+msgid "Parameter Sweep"
+msgstr ""
+
+#: ../../source/references_animation.md:405
+msgid "Slowly change a parameter to show the algorithm evolving:"
+msgstr ""
+
+#: ../../source/references_animation.md:413
+msgid "Slow Camera Motion"
+msgstr ""
+
+#: ../../source/references_animation.md:415
+msgid "Apply subtle zoom or rotation to the final image:"
+msgstr ""
+
+#: ../../source/references_animation.md:427
+msgid "Overlay Dynamic Elements"
+msgstr ""
+
+#: ../../source/references_animation.md:429
+msgid "Add particles, grain, or subtle noise on top of static content:"
+msgstr ""
+

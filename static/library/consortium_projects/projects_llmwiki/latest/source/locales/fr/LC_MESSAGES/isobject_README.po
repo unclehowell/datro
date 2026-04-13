@@ -1,0 +1,251 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/isobject_README.md:1
+msgid ""
+"isobject [![NPM "
+"version](https://img.shields.io/npm/v/isobject.svg?style=flat)](https://www.npmjs.com/package/isobject)"
+" [![NPM monthly "
+"downloads](https://img.shields.io/npm/dm/isobject.svg?style=flat)](https://npmjs.org/package/isobject)"
+"  [![NPM total "
+"downloads](https://img.shields.io/npm/dt/isobject.svg?style=flat)](https://npmjs.org/package/isobject)"
+" [![Linux Build "
+"Status](https://img.shields.io/travis/jonschlinkert/isobject.svg?style=flat&label=Travis)](https"
+"://travis-ci.org/jonschlinkert/isobject)"
+msgstr ""
+
+#: ../../source/isobject_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/isobject_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/isobject_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/isobject_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/isobject_README.md:3
+msgid "Returns true if the value is an object and not an array or null."
+msgstr ""
+
+#: ../../source/isobject_README.md:5 ../../source/isobject_README.md:21
+msgid "Install"
+msgstr ""
+
+#: ../../source/isobject_README.md:7 ../../source/isobject_README.md:23
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/isobject_README.md:13
+msgid "Install with [yarn](https://yarnpkg.com):"
+msgstr ""
+
+#: ../../source/isobject_README.md:19
+msgid ""
+"Use [is-plain-object](https://github.com/jonschlinkert/is-plain-object) "
+"if you want only objects that are created by the `Object` constructor."
+msgstr ""
+
+#: ../../source/isobject_README.md:28
+msgid "Install with [bower](https://bower.io/)"
+msgstr ""
+
+#: ../../source/isobject_README.md:34
+msgid "Usage"
+msgstr ""
+
+#: ../../source/isobject_README.md:40
+msgid "**True**"
+msgstr ""
+
+#: ../../source/isobject_README.md:42
+msgid "All of the following return `true`:"
+msgstr ""
+
+#: ../../source/isobject_README.md:54
+msgid "**False**"
+msgstr ""
+
+#: ../../source/isobject_README.md:56
+msgid "All of the following return `false`:"
+msgstr ""
+
+#: ../../source/isobject_README.md:67
+msgid "About"
+msgstr ""
+
+#: ../../source/isobject_README.md:69
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/isobject_README.md:71
+msgid ""
+"[extend-shallow](https://www.npmjs.com/package/extend-shallow): Extend an"
+" object with the properties of additional objects. node.js/javascript "
+"util. | [homepage](https://github.com/jonschlinkert/extend-shallow "
+"\"Extend an object with the properties of additional objects. "
+"node.js/javascript util.\")"
+msgstr ""
+
+#: ../../source/isobject_README.md:72
+msgid ""
+"[is-plain-object](https://www.npmjs.com/package/is-plain-object): Returns"
+" true if an object was created by the `Object` constructor. | "
+"[homepage](https://github.com/jonschlinkert/is-plain-object \"Returns "
+"true if an object was created by the `Object` constructor.\")"
+msgstr ""
+
+#: ../../source/isobject_README.md:73
+msgid ""
+"[kind-of](https://www.npmjs.com/package/kind-of): Get the native type of "
+"a value. | [homepage](https://github.com/jonschlinkert/kind-of \"Get the "
+"native type of a value.\")"
+msgstr ""
+
+#: ../../source/isobject_README.md:74
+msgid ""
+"[merge-deep](https://www.npmjs.com/package/merge-deep): Recursively merge"
+" values in a javascript object. | "
+"[homepage](https://github.com/jonschlinkert/merge-deep \"Recursively "
+"merge values in a javascript object.\")"
+msgstr ""
+
+#: ../../source/isobject_README.md:76
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/isobject_README.md:78
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/isobject_README.md:80
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "**Contributor**"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "29"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "4"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "[doowb](https://github.com/doowb)"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "1"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "[magnudae](https://github.com/magnudae)"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "[LeSuisse](https://github.com/LeSuisse)"
+msgstr ""
+
+#: ../../source/isobject_README.md
+msgid "[tmcw](https://github.com/tmcw)"
+msgstr ""
+
+#: ../../source/isobject_README.md:90
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/isobject_README.md:92
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/isobject_README.md:94
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/isobject_README.md:100
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/isobject_README.md:102
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/isobject_README.md:108
+msgid "Author"
+msgstr ""
+
+#: ../../source/isobject_README.md:110
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/isobject_README.md:112
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/isobject_README.md:113
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/isobject_README.md:115
+msgid "License"
+msgstr ""
+
+#: ../../source/isobject_README.md:117
+msgid ""
+"Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/isobject_README.md:122
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on June"
+" 30, 2017._"
+msgstr ""
+

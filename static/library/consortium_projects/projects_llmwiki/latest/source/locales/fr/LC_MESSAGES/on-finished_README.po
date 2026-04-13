@@ -1,0 +1,236 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/on-finished_README.md:1
+msgid "on-finished"
+msgstr ""
+
+#: ../../source/on-finished_README.md:3
+msgid ""
+"[![NPM Version][npm-version-image]][npm-url] [![NPM Downloads][npm-"
+"downloads-image]][npm-url] [![Node.js Version][node-image]][node-url] "
+"[![Build Status][ci-image]][ci-url] [![Coverage Status][coveralls-image"
+"]][coveralls-url]"
+msgstr ""
+
+#: ../../source/on-finished_README.md:3
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/on-finished_README.md:3
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/on-finished_README.md:3
+msgid "Node.js Version"
+msgstr ""
+
+#: ../../source/on-finished_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/on-finished_README.md:3
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/on-finished_README.md:9
+msgid "Execute a callback when a HTTP request closes, finishes, or errors."
+msgstr ""
+
+#: ../../source/on-finished_README.md:11
+msgid "Install"
+msgstr ""
+
+#: ../../source/on-finished_README.md:13
+msgid ""
+"This is a [Node.js](https://nodejs.org/en/) module available through the "
+"[npm registry](https://www.npmjs.com/). Installation is done using the "
+"[`npm install` command](https://docs.npmjs.com/getting-started"
+"/installing-npm-packages-locally):"
+msgstr ""
+
+#: ../../source/on-finished_README.md:21
+msgid "API"
+msgstr ""
+
+#: ../../source/on-finished_README.md:27
+msgid "onFinished(res, listener)"
+msgstr ""
+
+#: ../../source/on-finished_README.md:29
+msgid ""
+"Attach a listener to listen for the response to finish. The listener will"
+" be invoked only once when the response finished. If the response "
+"finished to an error, the first argument will contain the error. If the "
+"response has already finished, the listener will be invoked."
+msgstr ""
+
+#: ../../source/on-finished_README.md:34
+msgid ""
+"Listening to the end of a response would be used to close things "
+"associated with the response, like open files."
+msgstr ""
+
+#: ../../source/on-finished_README.md:37
+msgid "Listener is invoked as `listener(err, res)`."
+msgstr ""
+
+#: ../../source/on-finished_README.md:48
+msgid "onFinished(req, listener)"
+msgstr ""
+
+#: ../../source/on-finished_README.md:50
+msgid ""
+"Attach a listener to listen for the request to finish. The listener will "
+"be invoked only once when the request finished. If the request finished "
+"to an error, the first argument will contain the error. If the request "
+"has already finished, the listener will be invoked."
+msgstr ""
+
+#: ../../source/on-finished_README.md:55
+msgid ""
+"Listening to the end of a request would be used to know when to continue "
+"after reading the data."
+msgstr ""
+
+#: ../../source/on-finished_README.md:58
+msgid "Listener is invoked as `listener(err, req)`."
+msgstr ""
+
+#: ../../source/on-finished_README.md:75
+msgid "onFinished.isFinished(res)"
+msgstr ""
+
+#: ../../source/on-finished_README.md:77
+msgid ""
+"Determine if `res` is already finished. This would be useful to check and"
+" not even start certain operations if the response has already finished."
+msgstr ""
+
+#: ../../source/on-finished_README.md:80
+msgid "onFinished.isFinished(req)"
+msgstr ""
+
+#: ../../source/on-finished_README.md:82
+msgid ""
+"Determine if `req` is already finished. This would be useful to check and"
+" not even start certain operations if the request has already finished."
+msgstr ""
+
+#: ../../source/on-finished_README.md:85
+msgid "Special Node.js requests"
+msgstr ""
+
+#: ../../source/on-finished_README.md:87
+msgid "HTTP CONNECT method"
+msgstr ""
+
+#: ../../source/on-finished_README.md:89
+msgid "The meaning of the `CONNECT` method from RFC 7231, section 4.3.6:"
+msgstr ""
+
+#: ../../source/on-finished_README.md:91
+msgid ""
+"The CONNECT method requests that the recipient establish a tunnel to the "
+"destination origin server identified by the request-target and, if "
+"successful, thereafter restrict its behavior to blind forwarding of "
+"packets, in both directions, until the tunnel is closed.  Tunnels are "
+"commonly used to create an end-to-end virtual connection, through one or "
+"more proxies, which can then be secured using TLS (Transport Layer "
+"Security, [RFC5246])."
+msgstr ""
+
+#: ../../source/on-finished_README.md:99
+msgid ""
+"In Node.js, these request objects come from the `'connect'` event on the "
+"HTTP server."
+msgstr ""
+
+#: ../../source/on-finished_README.md:102
+msgid ""
+"When this module is used on a HTTP `CONNECT` request, the request is "
+"considered \"finished\" immediately, **due to limitations in the Node.js "
+"interface**. This means if the `CONNECT` request contains a request "
+"entity, the request will be considered \"finished\" even before it has "
+"been read."
+msgstr ""
+
+#: ../../source/on-finished_README.md:107
+msgid ""
+"There is no such thing as a response object to a `CONNECT` request in "
+"Node.js, so there is no support for one."
+msgstr ""
+
+#: ../../source/on-finished_README.md:110
+msgid "HTTP Upgrade request"
+msgstr ""
+
+#: ../../source/on-finished_README.md:112
+msgid "The meaning of the `Upgrade` header from RFC 7230, section 6.1:"
+msgstr ""
+
+#: ../../source/on-finished_README.md:114
+msgid ""
+"The \"Upgrade\" header field is intended to provide a simple mechanism "
+"for transitioning from HTTP/1.1 to some other protocol on the same "
+"connection."
+msgstr ""
+
+#: ../../source/on-finished_README.md:118
+msgid ""
+"In Node.js, these request objects come from the `'upgrade'` event on the "
+"HTTP server."
+msgstr ""
+
+#: ../../source/on-finished_README.md:121
+msgid ""
+"When this module is used on a HTTP request with an `Upgrade` header, the "
+"request is considered \"finished\" immediately, **due to limitations in "
+"the Node.js interface**. This means if the `Upgrade` request contains a "
+"request entity, the request will be considered \"finished\" even before "
+"it has been read."
+msgstr ""
+
+#: ../../source/on-finished_README.md:127
+msgid ""
+"There is no such thing as a response object to a `Upgrade` request in "
+"Node.js, so there is no support for one."
+msgstr ""
+
+#: ../../source/on-finished_README.md:130
+msgid "Example"
+msgstr ""
+
+#: ../../source/on-finished_README.md:132
+msgid ""
+"The following code ensures that file descriptors are always closed once "
+"the response finishes."
+msgstr ""
+
+#: ../../source/on-finished_README.md:150
+msgid "License"
+msgstr ""
+
+#: ../../source/on-finished_README.md:152
+msgid "[MIT](LICENSE)"
+msgstr ""
+

@@ -1,0 +1,149 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/is-data-view_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres"
+" to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:8
+msgid ""
+"[v1.0.2](https://github.com/inspect-js/is-data-"
+"view/compare/v1.0.1...v1.0.2) - 2024-12-11"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:10
+#: ../../source/is-data-view_CHANGELOG.md:22
+#: ../../source/is-data-view_CHANGELOG.md:30
+msgid "Commits"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:12
+msgid ""
+"[types] use shared config [`3a80072`](https://github.com/inspect-js/is-"
+"data-view/commit/3a800720dd322ea4656f29d28f1d28117fb94537)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:13
+msgid ""
+"[actions] split out node 10-20, and 20+ [`e2f37fd`](https://github.com"
+"/inspect-js/is-data-view/commit/e2f37fdf421c4629730406c2b61d5481dce4e448)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:14
+msgid ""
+"[Dev Deps] update `@ljharb/eslint-config`, `@ljharb/tsconfig`, "
+"`@types/node`, `@types/object-inspect`, `@types/tape`, `auto-changelog`, "
+"`es-value-fixtures`, `object-inspect`, `tape` "
+"[`6f8e9dd`](https://github.com/inspect-js/is-data-"
+"view/commit/6f8e9dda376e421d30dd94e891bea3fbae7967ee)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:15
+msgid ""
+"[Dev Deps] update `@types/node`, `available-typed-arrays`, `tape` "
+"[`37be591`](https://github.com/inspect-js/is-data-"
+"view/commit/37be59163c8df9abb016bbb4c7d76f3af549f1d2)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:16
+msgid ""
+"[Fix] add missing dependencies; use `call-bound` directly "
+"[`34de4b5`](https://github.com/inspect-js/is-data-"
+"view/commit/34de4b5f5448ca1bb95c34686c51b5351904a317)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:17
+msgid ""
+"[Tests] replace `aud` with `npm audit` [`aa7060a`](https://github.com"
+"/inspect-js/is-data-view/commit/aa7060ad77c9ba2d500b124b73662c3b069fc721)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:18
+msgid ""
+"[Dev Deps] add missing peer dep [`3d302d7`](https://github.com/inspect-js"
+"/is-data-view/commit/3d302d7dbf99d75fcf4a3de14687e423ec88728f)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:20
+msgid ""
+"[v1.0.1](https://github.com/inspect-js/is-data-"
+"view/compare/v1.0.0...v1.0.1) - 2024-02-02"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:24
+msgid ""
+"[patch] add types [`c2728ef`](https://github.com/inspect-js/is-data-"
+"view/commit/c2728ef20064bba2588eed503a0c2e36985b638a)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:25
+msgid ""
+"[Dev Deps] update `aud`, `available-typed-arrays`, `has-tostringtag`, "
+"`npmignore`, `object-inspect`, `tape` [`e7f9ebc`](https://github.com"
+"/inspect-js/is-data-view/commit/e7f9ebccf9aacdc112dd4f665271c96417ddfa64)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:26
+msgid ""
+"[Deps] update `is-typed-array` [`2ca9333`](https://github.com/inspect-js"
+"/is-data-view/commit/2ca9333516afac321431ddae02d6791d50e8d5c2)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:28
+msgid "v1.0.0 - 2024-01-31"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:32
+msgid ""
+"Initial implementation, tests, readme [`6f7e424`](https://github.com"
+"/inspect-js/is-data-view/commit/6f7e4244ae9d766309b8f050c0b786e9c0692825)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:33
+msgid ""
+"Initial commit [`4b7ea57`](https://github.com/inspect-js/is-data-"
+"view/commit/4b7ea57d6942dd268bcda990a96b8cd663b19eb8)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:34
+msgid ""
+"npm init [`25130e2`](https://github.com/inspect-js/is-data-"
+"view/commit/25130e2dbecc91d398cf74c39878aa89f5e604ab)"
+msgstr ""
+
+#: ../../source/is-data-view_CHANGELOG.md:35
+msgid ""
+"Only apps should have lockfiles [`18cde47`](https://github.com/inspect-js"
+"/is-data-view/commit/18cde474201a292ebdaa704d232127c814cb1d0e)"
+msgstr ""
+

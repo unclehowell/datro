@@ -1,0 +1,242 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/negotiator_HISTORY.md:1
+msgid "0.6.3 / 2022-01-22"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:4
+msgid "Revert \"Lazy-load modules from main entry point\""
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:6
+msgid "0.6.2 / 2019-04-29"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:9
+msgid "Fix sorting charset, encoding, and language with extra parameters"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:11
+msgid "0.6.1 / 2016-05-02"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:14
+msgid "perf: improve `Accept` parsing speed"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:15
+msgid "perf: improve `Accept-Charset` parsing speed"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:16
+msgid "perf: improve `Accept-Encoding` parsing speed"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:17
+msgid "perf: improve `Accept-Language` parsing speed"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:19
+msgid "0.6.0 / 2015-09-29"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:22
+msgid "Fix including type extensions in parameters in `Accept` parsing"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:23
+msgid "Fix parsing `Accept` parameters with quoted equals"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:24
+msgid "Fix parsing `Accept` parameters with quoted semicolons"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:25
+msgid "Lazy-load modules from main entry point"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:26
+msgid "perf: delay type concatenation until needed"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:27
+msgid "perf: enable strict mode"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:28
+msgid "perf: hoist regular expressions"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:29
+msgid "perf: remove closures getting spec properties"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:30
+msgid "perf: remove a closure from media type parsing"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:31
+msgid "perf: remove property delete from media type parsing"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:33
+msgid "0.5.3 / 2015-05-10"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:36
+msgid "Fix media type parameter matching to be case-insensitive"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:38
+msgid "0.5.2 / 2015-05-06"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:41
+msgid "Fix comparing media types with quoted values"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:42
+msgid "Fix splitting media types with quoted commas"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:44
+msgid "0.5.1 / 2015-02-14"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:47
+msgid "Fix preference sorting to be stable for long acceptable lists"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:49
+msgid "0.5.0 / 2014-12-18"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:52
+msgid "Fix list return order when large accepted list"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:53
+msgid "Fix missing identity encoding when q=0 exists"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:54
+msgid "Remove dynamic building of Negotiator class"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:56
+msgid "0.4.9 / 2014-10-14"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:59
+msgid "Fix error when media type has invalid parameter"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:61
+msgid "0.4.8 / 2014-09-28"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:64
+msgid "Fix all negotiations to be case-insensitive"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:65
+msgid "Stable sort preferences of same quality according to client order"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:66
+msgid "Support Node.js 0.6"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:68
+msgid "0.4.7 / 2014-06-24"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:71
+msgid "Handle invalid provided languages"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:72
+msgid "Handle invalid provided media types"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:74
+msgid "0.4.6 / 2014-06-11"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:77
+msgid "Order by specificity when quality is the same"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:79
+msgid "0.4.5 / 2014-05-29"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:82
+msgid "Fix regression in empty header handling"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:84
+msgid "0.4.4 / 2014-05-29"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:87
+msgid "Fix behaviors when headers are not present"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:89
+msgid "0.4.3 / 2014-04-16"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:92
+msgid "Handle slashes on media params correctly"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:94
+msgid "0.4.2 / 2014-02-28"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:97
+msgid "Fix media type sorting"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:98
+msgid "Handle media types params strictly"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:100
+msgid "0.4.1 / 2014-01-16"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:103
+msgid "Use most specific matches"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:105
+msgid "0.4.0 / 2014-01-09"
+msgstr ""
+
+#: ../../source/negotiator_HISTORY.md:108
+msgid "Remove preferred prefix from methods"
+msgstr ""
+

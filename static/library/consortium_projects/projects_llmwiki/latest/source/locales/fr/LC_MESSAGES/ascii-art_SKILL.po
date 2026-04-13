@@ -1,0 +1,487 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/ascii-art_SKILL.md:15
+msgid "ASCII Art Skill"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:17
+msgid ""
+"Multiple tools for different ASCII art needs. All tools are local CLI "
+"programs or free REST APIs — no API keys required."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:19
+msgid "Tool 1: Text Banners (pyfiglet — local)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:21
+msgid "Render text as large ASCII art banners. 571 built-in fonts."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:23 ../../source/ascii-art_SKILL.md:88
+#: ../../source/ascii-art_SKILL.md:132 ../../source/ascii-art_SKILL.md:167
+msgid "Setup"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:29 ../../source/ascii-art_SKILL.md:95
+#: ../../source/ascii-art_SKILL.md:139 ../../source/ascii-art_SKILL.md:174
+msgid "Usage"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:37
+msgid "Recommended fonts"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Style"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Best for"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Clean & modern"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "`slant`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Project names, headers"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Bold & blocky"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "`doom`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Titles, logos"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Big & readable"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "`big`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Banners"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Classic banner"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "`banner3`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Wide displays"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Compact"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "`small`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Subtitles"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Cyberpunk"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "`cyberlarge`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Tech themes"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "3D effect"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "`3-d`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Splash screens"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Gothic"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "`gothic`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md
+msgid "Dramatic text"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:50 ../../source/ascii-art_SKILL.md:77
+msgid "Tips"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:52
+msgid "Preview 2-3 fonts and let the user pick their favorite"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:53
+msgid ""
+"Short text (1-8 chars) works best with detailed fonts like `doom` or "
+"`block`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:54
+msgid "Long text works better with compact fonts like `small` or `mini`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:56
+msgid "Tool 2: Text Banners (asciified API — remote, no install)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:58
+msgid ""
+"Free REST API that converts text to ASCII art. 250+ FIGlet fonts. Returns"
+" plain text directly — no parsing needed. Use this when pyfiglet is not "
+"installed or as a quick alternative."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:60
+msgid "Usage (via terminal curl)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:79
+msgid "URL-encode spaces as `+` in the text parameter"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:80
+msgid "The response is plain text ASCII art — no JSON wrapping, ready to display"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:81
+msgid "Font names are case-sensitive; use the fonts endpoint to get exact names"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:82
+msgid "Works from any terminal with curl — no Python or pip needed"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:84
+msgid "Tool 3: Cowsay (Message Art)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:86
+msgid "Classic tool that wraps text in a speech bubble with an ASCII character."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:106
+msgid "Available characters (50+)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:108
+msgid ""
+"`beavis.zen`, `bong`, `bunny`, `cheese`, `daemon`, `default`, `dragon`, "
+"`dragon-and-cow`, `elephant`, `eyes`, `flaming-skull`, `ghostbusters`, "
+"`hellokitty`, `kiss`, `kitty`, `koala`, `luke-koala`, `mech-and-cow`, "
+"`meow`, `moofasa`, `moose`, `ren`, `sheep`, `skeleton`, `small`, "
+"`stegosaurus`, `stimpy`, `supermilker`, `surgery`, `three-eyes`, "
+"`turkey`, `turtle`, `tux`, `udder`, `vader`, `vader-koala`, `www`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:115
+msgid "Eye/tongue modifiers"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:128
+msgid "Tool 4: Boxes (Decorative Borders)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:130
+msgid ""
+"Draw decorative ASCII art borders/frames around any text. 70+ built-in "
+"designs."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:155
+msgid "Combine with pyfiglet or asciified"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:163
+msgid "Tool 5: TOIlet (Colored Text Art)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:165
+msgid ""
+"Like pyfiglet but with ANSI color effects and visual filters. Great for "
+"terminal eye candy."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:187
+msgid "Filters"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:189
+msgid ""
+"`crop`, `gay` (rainbow), `metal`, `flip`, `flop`, `180`, `left`, `right`,"
+" `border`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:191
+msgid ""
+"**Note**: toilet outputs ANSI escape codes for colors — works in "
+"terminals but may not render in all contexts (e.g., plain text files, "
+"some chat platforms)."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:193
+msgid "Tool 6: Image to ASCII Art"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:195
+msgid "Convert images (PNG, JPEG, GIF, WEBP) to ASCII art."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:197
+msgid "Option A: ascii-image-converter (recommended, modern)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:215
+msgid "Option B: jp2a (lightweight, JPEG only)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:223
+msgid "Tool 7: Search Pre-Made ASCII Art"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:225
+msgid "Search curated ASCII art from the web. Use `terminal` with `curl`."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:227
+msgid "Source A: ascii.co.uk (recommended for pre-made art)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:229
+msgid ""
+"Large collection of classic ASCII art organized by subject. Art is inside"
+" HTML `<pre>` tags. Fetch the page with curl, then extract art with a "
+"small Python snippet."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:231
+#, python-brace-format
+msgid "**URL pattern:** `https://ascii.co.uk/art/{subject}`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:233
+msgid "**Step 1 — Fetch the page:**"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:239
+msgid "**Step 2 — Extract art from pre tags:**"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:254
+msgid "**Available subjects** (use as URL path):"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:255
+msgid ""
+"Animals: `cat`, `dog`, `horse`, `bird`, `fish`, `dragon`, `snake`, "
+"`rabbit`, `elephant`, `dolphin`, `butterfly`, `owl`, `wolf`, `bear`, "
+"`penguin`, `turtle`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:256
+msgid ""
+"Objects: `car`, `ship`, `airplane`, `rocket`, `guitar`, `computer`, "
+"`coffee`, `beer`, `cake`, `house`, `castle`, `sword`, `crown`, `key`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:257
+msgid ""
+"Nature: `tree`, `flower`, `sun`, `moon`, `star`, `mountain`, `ocean`, "
+"`rainbow`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:258
+msgid ""
+"Characters: `skull`, `robot`, `angel`, `wizard`, `pirate`, `ninja`, "
+"`alien`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:259
+msgid "Holidays: `christmas`, `halloween`, `valentine`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:261
+msgid "**Tips:**"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:262
+msgid "Preserve artist signatures/initials — important etiquette"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:263
+msgid "Multiple art pieces per page — pick the best one for the user"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:264
+msgid "Works reliably via curl, no JavaScript needed"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:266
+msgid "Source B: GitHub Octocat API (fun easter egg)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:268
+msgid "Returns a random GitHub Octocat with a wise quote. No auth needed."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:274
+msgid "Tool 8: Fun ASCII Utilities (via curl)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:276
+msgid "These free services return ASCII art directly — great for fun extras."
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:278
+msgid "QR Codes as ASCII Art"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:285
+msgid "Weather as ASCII Art"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:293
+msgid "Tool 9: LLM-Generated Custom Art (Fallback)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:295
+msgid ""
+"When tools above don't have what's needed, generate ASCII art directly "
+"using these Unicode characters:"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:297
+msgid "Character Palette"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:299
+msgid "**Box Drawing:** `╔ ╗ ╚ ╝ ║ ═ ╠ ╣ ╦ ╩ ╬ ┌ ┐ └ ┘ │ ─ ├ ┤ ┬ ┴ ┼ ╭ ╮ ╰ ╯`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:301
+msgid "**Block Elements:** `░ ▒ ▓ █ ▄ ▀ ▌ ▐ ▖ ▗ ▘ ▝ ▚ ▞`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:303
+msgid "**Geometric & Symbols:** `◆ ◇ ◈ ● ○ ◉ ■ □ ▲ △ ▼ ▽ ★ ☆ ✦ ✧ ◀ ▶ ◁ ▷ ⬡ ⬢ ⌂`"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:305
+msgid "Rules"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:307
+msgid "Max width: 60 characters per line (terminal-safe)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:308
+msgid "Max height: 15 lines for banners, 25 for scenes"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:309
+msgid "Monospace only: output must render correctly in fixed-width fonts"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:311
+msgid "Decision Flow"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:313
+msgid ""
+"**Text as a banner** → pyfiglet if installed, otherwise asciified API via"
+" curl"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:314
+msgid "**Wrap a message in fun character art** → cowsay"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:315
+msgid ""
+"**Add decorative border/frame** → boxes (can combine with "
+"pyfiglet/asciified)"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:316
+msgid ""
+"**Art of a specific thing** (cat, rocket, dragon) → ascii.co.uk via curl "
+"+ parsing"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:317
+msgid "**Convert an image to ASCII** → ascii-image-converter or jp2a"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:318
+msgid "**QR code** → qrenco.de via curl"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:319
+msgid "**Weather/moon art** → wttr.in via curl"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:320
+msgid "**Something custom/creative** → LLM generation with Unicode palette"
+msgstr ""
+
+#: ../../source/ascii-art_SKILL.md:321
+msgid "**Any tool not installed** → install it, or fall back to next option"
+msgstr ""
+

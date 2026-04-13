@@ -1,0 +1,608 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/honcho-memory-integration_SKILL.md:12
+msgid "Honcho Memory Integration"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:14
+msgid "Overview"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:16
+msgid ""
+"Honcho (honcho.app) provides persistent memory with scoping by `app_id`, "
+"`user_id`, and `session_id`.  Used as the active memory provider in this "
+"environment. Configuration at `~/.hermes/honcho.json`."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:19
+msgid "Current Config"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:20
+msgid "**Host:** hermes"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:21
+msgid "**Workspace:** hermes"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:22
+msgid "**Recall mode:** hybrid (semantic + metadata)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:23
+msgid "**Write frequency:** async"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:24
+msgid "**Observation:** user(me=True,others=True) ai(me=True,others=True)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:25
+msgid "**Session key:** hermes-agent"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:27
+msgid "Core Concepts"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:29
+msgid "Scoping Hierarchy"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:30
+msgid "**app_id** — isolates memory per project/application"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:31
+msgid "**user_id** — isolates memory per user"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:32
+msgid "**session_id** — isolates memory per conversation session"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:34
+#, python-brace-format
+msgid ""
+"Use distinct `app_id` per project. Tag memories with `{project: \"x\", "
+"context: \"planning\", status: \"active\"}`."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:36
+msgid "Memory Lifecycle"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Phase"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Action"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**Project start**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Save mandate, PBS, tolerances as `context:persistent` memories"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**During execution**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Log exceptions, quality register updates, progress snapshots"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**Stage boundary**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Archive stage report, update baseline memory"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**Project close**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Final debrief → `status:archived` for future retrieval"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:48
+msgid "Multi-Context Strategies"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:50
+msgid "Per-Project Scoping"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:51
+msgid "Use distinct `app_id` per project"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:52
+#, python-brace-format
+msgid "Tag: `{project: \"name\", context: \"planning\", status: \"active\"}`"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:53
+msgid "Query with project-scoped metadata to prevent cross-project leakage"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:55
+msgid "Cross-Session Continuity"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:56
+msgid "Create `context:global` session per user for recurring patterns"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:57
+msgid "Copy high-value session memories into it"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:58
+msgid "Prune stale entries via TTL"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:60
+msgid "Agent-to-Agent Sharing"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:61
+msgid "Honcho shares across all agents connected to the same workspace"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:62
+msgid "Use `aiPeer` field to designate AI agent identity"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:63
+msgid ""
+"Memory observations flow directionally based on `observationMode: "
+"directional`"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:65
+msgid "Conflict Prevention"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Rule"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Implementation"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**Append-first**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Always append new observations; use `memory_id` for explicit updates"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**Never blind overwrite**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Honcho does NOT auto-merge — explicit update required"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**Deduplication**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Semantic similarity > 0.85 triggers merge/skip"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**Cross-session tags**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Tag with `context:global` for persistence beyond session"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:74
+msgid "Retrieval Tiers"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Tier"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Strategy"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Injection"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**High**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Metadata match + semantic similarity"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "System prompt"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**Medium**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Semantic only"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Tool context"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "**Low**"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "Fallback"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md
+msgid "On-demand fetch"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:82
+msgid "Best Practices"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:84
+msgid ""
+"**Tag everything** — metadata tags enable precise filtering. Every memory"
+" should have at least `context` and `status` tags."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:85
+msgid ""
+"**Never raw-log** — curate before saving. Summarize → deduplicate → tag →"
+" upsert."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:86
+msgid ""
+"**Scope queries tightly** — use metadata filters, not just semantic "
+"search. Prevents noisy retrievals."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:87
+msgid ""
+"**Use hybrid recall** — combines semantic similarity with exact metadata "
+"matching for best precision."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:88
+msgid ""
+"**Archival discipline** — mark completed project memories as "
+"`status:archived` rather than deleting."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:89
+msgid ""
+"**Async writes are safe** — Honcho's async write mode handles queuing and"
+" retry automatically."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:90
+msgid ""
+"**Check memory count** — regular monitoring of fact count per user/AI "
+"peer to detect accumulation issues."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:92
+msgid "Memory Consolidation Cycles"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:94
+msgid "Like human sleep, agents need periodic offline memory consolidation."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:96
+msgid "During Active Sessions"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:97
+msgid ""
+"Write episodic memories: raw task traces, specific learnings, session "
+"facts"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:98
+msgid "Tag with `session_id`, `timestamp`, `context` for temporal tracking"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:99
+msgid "NEVER raw-log — always curate: summarize → deduplicate → tag → upsert"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:101
+msgid "During Consolidation (off-peak, via cron)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:102
+msgid ""
+"**Compress** episodic → semantic: extract general principles from "
+"specific instances"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:103
+msgid ""
+"**Generalize** across domains: transfer learning between projects (cross-"
+"domain pattern detection)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:104
+msgid "Error handling patterns from Python → JavaScript → shell scripting"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:105
+msgid "Testing strategies from backend → frontend → infrastructure"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:106
+msgid "Architecture patterns from one domain → structurally similar domains"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:107
+msgid ""
+"**Deduplicate**: find semantically similar memories (similarity > 0.85), "
+"merge or supersede"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:108
+msgid ""
+"**Resolve contradictions**: identify conflicting facts, flag for "
+"resolution"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:109
+msgid ""
+"**Enforce budgets**: cap memory count per retrieval tier (High: ≤50, "
+"Medium: ≤200, Low: ≤500)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:110
+msgid ""
+"**Cross-domain transfer**: Abstract patterns to their core structure "
+"before applying to new domains"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:112
+msgid "Utility Score Decay"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:116
+msgid "Purge memories with score < 0.2 during consolidation"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:117
+msgid "Re-score all memories monthly (not per session — saves compute)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:118
+msgid "Track decay trends to identify degrading knowledge areas"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:119
+msgid "NEVER delete — always mark `status: superseded` with `superseded_by` link"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:121
+msgid "Troubleshooting"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:123
+msgid "\"Honcho session could not be initialized\""
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:124
+msgid "Common causes:"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:126
+msgid ""
+"**Truncated/redacted API key** — The `apiKey` field in "
+"`~/.hermes/honcho.json` or `~/.hermes/honcho_api_key.env` may have been "
+"saved as `hch-v3...xxxx` instead of the full key. Ensure both contain the"
+" **full** key."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:128
+msgid ""
+"**Recommended secret-handling pattern:** keep the key in `honcho.json` + "
+"`honcho_api_key.env`, and configure Hermes to read it via env var "
+"(`honcho.api_key_env: HONCHO_API_KEY`). Avoid embedding plaintext Honcho "
+"keys directly in `~/.hermes/config.yaml` (clear `honcho.api_key` if "
+"present)."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:130
+msgid ""
+"**Config file locations** (checked in this order by "
+"`HonchoClientConfig.from_global_config()`):"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:131
+msgid ""
+"`$HERMES_HOME/honcho.json` -- primary config (JSON with `hosts` block + "
+"`apiKey`)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:132
+msgid "`~/.honcho/config.json` -- legacy global"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:133
+msgid ""
+"Falls back to env vars (`HONCHO_API_KEY`, `HONCHO_BASE_URL`) if no file "
+"found."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:134
+msgid ""
+"**Also updated**: `$HERMES_HOME/config.yaml` -- `honcho.api_key` section "
+"(gateway reads this)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:136
+msgid ""
+"**Gateway restart required** -- After updating any config file, restart "
+"the gateway. Be careful to kill **all** old processes first -- they may "
+"respawn or conflict:"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:143
+msgid ""
+"If multiple gateway instances conflict (port/lock held), kill the older "
+"one first. The second gateway will exit with \"PID already in use\" "
+"errors."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:145
+msgid ""
+"**Verify API key directly** -- If tools still fail after restart, test "
+"with direct Python SDK:"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:155
+msgid "This isolates whether the key is valid vs. a gateway/plugin init issue."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:157
+msgid ""
+"**Honcho Python package must be installed** -- `pip show honcho_ai` "
+"should exist."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:159
+msgid ""
+"**Check gateway logs** -- `tail -50 ~/.hermes/logs/gateway.log` for "
+"Honcho init messages. Look for \"Initializing Honcho client\" followed by"
+" \"Honcho session 'hermes-agent' retrieved\" (success) vs. errors."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:161
+msgid "2026 Research Updates"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:163
+msgid "Agent-as-Curator Pattern"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:164
+msgid "Honcho is a storage/retrieval substrate. The **agent** must implement:"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:165
+msgid ""
+"Filtering before writes (don't save raw tool outputs, save derived "
+"insights)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:166
+msgid "Intelligent tagging (always include at minimum: `context` + `status`)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:167
+msgid ""
+"Lifecycle management (episodic → semantic consolidation happens via cron,"
+" not in-session)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:168
+msgid ""
+"Conflict prevention (Honcho does NOT auto-merge — explicit `memory_id` "
+"update required)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:170
+msgid "Multi-Context Strategy Refinement"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:171
+msgid "For environments with multiple agents, profiles, and sessions:"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:172
+msgid ""
+"**Per-project scoping**: Distinct `app_id` + `project:name` metadata tag."
+" Enforce project-scoped queries."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:173
+msgid ""
+"**Cross-session continuity**: Maintain `context:global` session per user."
+" Periodically copy high-value session memories."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:174
+msgid ""
+"**Agent-to-agent sharing**: Honcho shares across all agents in same "
+"workspace. Memory flows directionally based on `observationMode: "
+"directional`."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:175
+msgid ""
+"**Memory count monitoring**: Regularly check fact count per user/AI peer "
+"to detect accumulation issues."
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:177
+msgid "Consolidation Frequency"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:178
+msgid "**Active sessions**: Write episodic (high frequency, low consolidation)"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:179
+msgid "**Per-day off-peak**: Compress to semantic, deduplicate, decay scoring"
+msgstr ""
+
+#: ../../source/honcho-memory-integration_SKILL.md:180
+msgid "**Monthly**: Full audit — prune, re-score, cross-domain generalization"
+msgstr ""
+

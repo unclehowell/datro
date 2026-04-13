@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/portfinder_README.md:1
+msgid "node-portfinder"
+msgstr ""
+
+#: ../../source/portfinder_README.md:3
+msgid ""
+"[![CI](https://github.com/http-party/node-"
+"portfinder/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com"
+"/http-party/node-portfinder/actions/workflows/ci.yml)"
+msgstr ""
+
+#: ../../source/portfinder_README.md:3
+msgid "CI"
+msgstr ""
+
+#: ../../source/portfinder_README.md:5
+msgid "Installation"
+msgstr ""
+
+#: ../../source/portfinder_README.md:7
+msgid ""
+"You can install `portfinder` using a package manager like npm, yarn, or "
+"bun:"
+msgstr ""
+
+#: ../../source/portfinder_README.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/portfinder_README.md:14
+msgid "The `portfinder` module has a simple interface:"
+msgstr ""
+
+#: ../../source/portfinder_README.md:27
+msgid "Or using promises:"
+msgstr ""
+
+#: ../../source/portfinder_README.md:46
+msgid "Ports search scope"
+msgstr ""
+
+#: ../../source/portfinder_README.md:48
+msgid ""
+"By default `portfinder` will start searching from `8000` and scan until "
+"maximum port number (`65535`) is reached."
+msgstr ""
+
+#: ../../source/portfinder_README.md:50
+msgid "You can change this globally by setting:"
+msgstr ""
+
+#: ../../source/portfinder_README.md:57
+msgid "or by passing optional options object on each invocation:"
+msgstr ""
+
+#: ../../source/portfinder_README.md:66
+msgid "Run Tests"
+msgstr ""
+
+#: ../../source/portfinder_README.md:71
+msgid "Author: [Charlie Robbins][0]"
+msgstr ""
+
+#: ../../source/portfinder_README.md:72
+msgid "Author/Maintainer: [Erik Trom][1]"
+msgstr ""
+
+#: ../../source/portfinder_README.md:73
+msgid "License: MIT/X11"
+msgstr ""
+

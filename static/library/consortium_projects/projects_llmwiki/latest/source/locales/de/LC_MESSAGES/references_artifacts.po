@@ -1,0 +1,266 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_artifacts.md:1
+msgid "Artifacts & Model Registry Guide"
+msgstr ""
+
+#: ../../source/references_artifacts.md:3
+msgid "Complete guide to data versioning and model management with W&B Artifacts."
+msgstr ""
+
+#: ../../source/references_artifacts.md:5
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../source/references_artifacts.md:6
+#: ../../source/references_artifacts.md:13
+msgid "What are Artifacts"
+msgstr ""
+
+#: ../../source/references_artifacts.md:7
+#: ../../source/references_artifacts.md:31
+msgid "Creating Artifacts"
+msgstr ""
+
+#: ../../source/references_artifacts.md:8
+#: ../../source/references_artifacts.md:132
+msgid "Using Artifacts"
+msgstr ""
+
+#: ../../source/references_artifacts.md:9
+#: ../../source/references_artifacts.md:182
+msgid "Model Registry"
+msgstr ""
+
+#: ../../source/references_artifacts.md:10
+#: ../../source/references_artifacts.md:259
+msgid "Versioning & Lineage"
+msgstr ""
+
+#: ../../source/references_artifacts.md:11
+#: ../../source/references_artifacts.md:478
+msgid "Best Practices"
+msgstr ""
+
+#: ../../source/references_artifacts.md:15
+msgid "Artifacts are versioned datasets, models, or files tracked with lineage."
+msgstr ""
+
+#: ../../source/references_artifacts.md:17
+msgid "**Key Features:**"
+msgstr ""
+
+#: ../../source/references_artifacts.md:18
+msgid "Automatic versioning (v0, v1, v2...)"
+msgstr ""
+
+#: ../../source/references_artifacts.md:19
+msgid "Lineage tracking (which runs produced/used artifacts)"
+msgstr ""
+
+#: ../../source/references_artifacts.md:20
+msgid "Efficient storage (deduplication)"
+msgstr ""
+
+#: ../../source/references_artifacts.md:21
+msgid "Collaboration (team-wide access)"
+msgstr ""
+
+#: ../../source/references_artifacts.md:22
+msgid "Aliases (latest, best, production)"
+msgstr ""
+
+#: ../../source/references_artifacts.md:24
+msgid "**Common Use Cases:**"
+msgstr ""
+
+#: ../../source/references_artifacts.md:25
+msgid "Dataset versioning"
+msgstr ""
+
+#: ../../source/references_artifacts.md:26
+msgid "Model checkpoints"
+msgstr ""
+
+#: ../../source/references_artifacts.md:27
+msgid "Preprocessed data"
+msgstr ""
+
+#: ../../source/references_artifacts.md:28
+msgid "Evaluation results"
+msgstr ""
+
+#: ../../source/references_artifacts.md:29
+msgid "Configuration files"
+msgstr ""
+
+#: ../../source/references_artifacts.md:33
+msgid "Basic Dataset Artifact"
+msgstr ""
+
+#: ../../source/references_artifacts.md:62
+msgid "Model Artifact"
+msgstr ""
+
+#: ../../source/references_artifacts.md:102
+msgid "Preprocessed Data Artifact"
+msgstr ""
+
+#: ../../source/references_artifacts.md:134
+msgid "Download and Use"
+msgstr ""
+
+#: ../../source/references_artifacts.md:153
+msgid "Use Specific Version"
+msgstr ""
+
+#: ../../source/references_artifacts.md:167
+msgid "Check Artifact Metadata"
+msgstr ""
+
+#: ../../source/references_artifacts.md:184
+msgid "Link models to a central registry for governance and deployment."
+msgstr ""
+
+#: ../../source/references_artifacts.md:186
+msgid "Create Model Registry"
+msgstr ""
+
+#: ../../source/references_artifacts.md:195
+msgid "Link Model to Registry"
+msgstr ""
+
+#: ../../source/references_artifacts.md:224
+msgid "Promote Model in Registry"
+msgstr ""
+
+#: ../../source/references_artifacts.md:239
+msgid "Use Model from Registry"
+msgstr ""
+
+#: ../../source/references_artifacts.md:261
+msgid "Automatic Versioning"
+msgstr ""
+
+#: ../../source/references_artifacts.md:283
+msgid "Track Lineage"
+msgstr ""
+
+#: ../../source/references_artifacts.md:306
+msgid "View Lineage Graph"
+msgstr ""
+
+#: ../../source/references_artifacts.md:317
+msgid "Artifact Types"
+msgstr ""
+
+#: ../../source/references_artifacts.md:319
+msgid "Dataset Artifacts"
+msgstr ""
+
+#: ../../source/references_artifacts.md:338
+msgid "Model Artifacts"
+msgstr ""
+
+#: ../../source/references_artifacts.md:355
+msgid "Result Artifacts"
+msgstr ""
+
+#: ../../source/references_artifacts.md:368
+msgid "Advanced Patterns"
+msgstr ""
+
+#: ../../source/references_artifacts.md:370
+msgid "Incremental Artifacts"
+msgstr ""
+
+#: ../../source/references_artifacts.md:372
+msgid "Add files incrementally without re-uploading."
+msgstr ""
+
+#: ../../source/references_artifacts.md:394
+msgid "Artifact Tables"
+msgstr ""
+
+#: ../../source/references_artifacts.md:396
+msgid "Track structured data with W&B Tables."
+msgstr ""
+
+#: ../../source/references_artifacts.md:420
+msgid "Artifact References"
+msgstr ""
+
+#: ../../source/references_artifacts.md:422
+msgid "Reference external data without copying."
+msgstr ""
+
+#: ../../source/references_artifacts.md:440
+msgid "Collaboration Patterns"
+msgstr ""
+
+#: ../../source/references_artifacts.md:442
+msgid "Team Dataset Sharing"
+msgstr ""
+
+#: ../../source/references_artifacts.md:457
+msgid "Model Handoff"
+msgstr ""
+
+#: ../../source/references_artifacts.md:480
+msgid "1. Use Descriptive Names"
+msgstr ""
+
+#: ../../source/references_artifacts.md:492
+msgid "2. Add Comprehensive Metadata"
+msgstr ""
+
+#: ../../source/references_artifacts.md:523
+msgid "3. Use Aliases for Deployment Stages"
+msgstr ""
+
+#: ../../source/references_artifacts.md:541
+msgid "4. Track Data Lineage"
+msgstr ""
+
+#: ../../source/references_artifacts.md:565
+msgid "5. Efficient Storage"
+msgstr ""
+
+#: ../../source/references_artifacts.md:580
+msgid "Resources"
+msgstr ""
+
+#: ../../source/references_artifacts.md:582
+msgid "**Artifacts Documentation**: https://docs.wandb.ai/guides/artifacts"
+msgstr ""
+
+#: ../../source/references_artifacts.md:583
+msgid "**Model Registry**: https://docs.wandb.ai/guides/model-registry"
+msgstr ""
+
+#: ../../source/references_artifacts.md:584
+msgid ""
+"**Best Practices**: https://wandb.ai/site/articles/versioning-data-and-"
+"models-in-ml"
+msgstr ""
+

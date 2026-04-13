@@ -1,0 +1,128 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/vary_README.md:1
+msgid "vary"
+msgstr ""
+
+#: ../../source/vary_README.md:3
+msgid ""
+"[![NPM Version][npm-image]][npm-url] [![NPM Downloads][downloads-image"
+"]][downloads-url] [![Node.js Version][node-version-image]][node-version-"
+"url] [![Build Status][travis-image]][travis-url] [![Test Coverage"
+"][coveralls-image]][coveralls-url]"
+msgstr ""
+
+#: ../../source/vary_README.md:3
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/vary_README.md:3
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/vary_README.md:3
+msgid "Node.js Version"
+msgstr ""
+
+#: ../../source/vary_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/vary_README.md:3
+msgid "Test Coverage"
+msgstr ""
+
+#: ../../source/vary_README.md:9
+msgid "Manipulate the HTTP Vary header"
+msgstr ""
+
+#: ../../source/vary_README.md:11
+msgid "Installation"
+msgstr ""
+
+#: ../../source/vary_README.md:13
+msgid ""
+"This is a [Node.js](https://nodejs.org/en/) module available through the "
+"[npm registry](https://www.npmjs.com/). Installation is done using the "
+"[`npm install` command](https://docs.npmjs.com/getting-started"
+"/installing-npm-packages-locally):"
+msgstr ""
+
+#: ../../source/vary_README.md:21
+msgid "API"
+msgstr ""
+
+#: ../../source/vary_README.md:29
+msgid "vary(res, field)"
+msgstr ""
+
+#: ../../source/vary_README.md:31
+msgid ""
+"Adds the given header `field` to the `Vary` response header of `res`. "
+"This can be a string of a single field, a string of a valid `Vary` "
+"header, or an array of multiple fields."
+msgstr ""
+
+#: ../../source/vary_README.md:35
+msgid ""
+"This will append the header if not already listed, otherwise leaves it "
+"listed in the current location."
+msgstr ""
+
+#: ../../source/vary_README.md:45
+msgid "vary.append(header, field)"
+msgstr ""
+
+#: ../../source/vary_README.md:47
+msgid ""
+"Adds the given header `field` to the `Vary` response header string "
+"`header`. This can be a string of a single field, a string of a valid "
+"`Vary` header, or an array of multiple fields."
+msgstr ""
+
+#: ../../source/vary_README.md:51
+msgid ""
+"This will append the header if not already listed, otherwise leaves it "
+"listed in the current location. The new header string is returned."
+msgstr ""
+
+#: ../../source/vary_README.md:61
+msgid "Examples"
+msgstr ""
+
+#: ../../source/vary_README.md:63
+msgid "Updating the Vary header when content is based on it"
+msgstr ""
+
+#: ../../source/vary_README.md:82
+msgid "Testing"
+msgstr ""
+
+#: ../../source/vary_README.md:88
+msgid "License"
+msgstr ""
+
+#: ../../source/vary_README.md:90
+msgid "[MIT](LICENSE)"
+msgstr ""
+

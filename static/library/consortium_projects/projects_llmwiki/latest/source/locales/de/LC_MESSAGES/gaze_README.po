@@ -1,0 +1,469 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/gaze_README.md:1
+msgid ""
+"gaze [![Build Status](http://img.shields.io/travis/shama/gaze.svg)](https"
+"://travis-ci.org/shama/gaze) [![Build "
+"status](https://ci.appveyor.com/api/projects/status/vtx65w9eg511tgo4)](https://ci.appveyor.com/project/shama/gaze)"
+msgstr ""
+
+#: ../../source/gaze_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/gaze_README.md:1
+msgid "Build status"
+msgstr ""
+
+#: ../../source/gaze_README.md:3
+msgid ""
+"A globbing `fs.watch` wrapper built from the best parts of other fine "
+"watch libs.   Compatible with Node.js >= 4.x, Windows, macOS, and Linux."
+msgstr ""
+
+#: ../../source/gaze_README.md:6
+msgid "![gaze](http://dontkry.com/images/repos/gaze.png)"
+msgstr ""
+
+#: ../../source/gaze_README.md:6
+msgid "gaze"
+msgstr ""
+
+#: ../../source/gaze_README.md:8
+msgid "[![NPM](https://nodei.co/npm/gaze.png?downloads=true)](https://nodei.co/npm/gaze/)"
+msgstr ""
+
+#: ../../source/gaze_README.md:8
+msgid "NPM"
+msgstr ""
+
+#: ../../source/gaze_README.md:10
+msgid "Usage"
+msgstr ""
+
+#: ../../source/gaze_README.md:11
+msgid ""
+"Install the module with: `npm install gaze` or place into your "
+"`package.json` and run `npm install`."
+msgstr ""
+
+#: ../../source/gaze_README.md:56
+msgid "Alternate Interface"
+msgstr ""
+
+#: ../../source/gaze_README.md:70
+msgid "Errors"
+msgstr ""
+
+#: ../../source/gaze_README.md:87
+msgid "Minimatch / Glob"
+msgstr ""
+
+#: ../../source/gaze_README.md:89
+msgid ""
+"See [isaacs's `minimatch`](https://github.com/isaacs/minimatch) for more "
+"information on glob patterns."
+msgstr ""
+
+#: ../../source/gaze_README.md:92
+msgid "Documentation"
+msgstr ""
+
+#: ../../source/gaze_README.md:94
+msgid "gaze([patterns, options, callback])"
+msgstr ""
+
+#: ../../source/gaze_README.md:96
+#, python-brace-format
+msgid "`patterns` {`String`|`Array`} File patterns to be matched"
+msgstr ""
+
+#: ../../source/gaze_README.md:97
+#, python-brace-format
+msgid "`options` {`Object`}"
+msgstr ""
+
+#: ../../source/gaze_README.md:98
+#, python-brace-format
+msgid "`callback` {`Function`}"
+msgstr ""
+
+#: ../../source/gaze_README.md:99
+#, python-brace-format
+msgid "`err` {`Error` | `null`}"
+msgstr ""
+
+#: ../../source/gaze_README.md:100
+#, python-brace-format
+msgid "`watcher` {`Object`} Instance of the `Gaze` watcher"
+msgstr ""
+
+#: ../../source/gaze_README.md:102
+msgid "Class: `gaze.Gaze`"
+msgstr ""
+
+#: ../../source/gaze_README.md:104
+msgid "Create a `Gaze` object by instancing the `gaze.Gaze` class."
+msgstr ""
+
+#: ../../source/gaze_README.md:111
+msgid "Properties"
+msgstr ""
+
+#: ../../source/gaze_README.md:113
+msgid "`options` The options object passed in."
+msgstr ""
+
+#: ../../source/gaze_README.md:114
+#, python-brace-format
+msgid "`interval` {integer} Interval to pass to `fs.watchFile`"
+msgstr ""
+
+#: ../../source/gaze_README.md:115
+#, python-brace-format
+msgid ""
+"`debounceDelay` {integer} Delay for events called in succession for the "
+"same file/event in milliseconds"
+msgstr ""
+
+#: ../../source/gaze_README.md:117
+#, python-brace-format
+msgid ""
+"`mode` {string} Force the watch mode. Either `'auto'` (default), "
+"`'watch'` (force native events), or `'poll'` (force stat polling)."
+msgstr ""
+
+#: ../../source/gaze_README.md:118
+#, python-brace-format
+msgid ""
+"`cwd` {string} The current working directory to base file patterns from. "
+"Default is `process.cwd()`."
+msgstr ""
+
+#: ../../source/gaze_README.md:120
+msgid "Events"
+msgstr ""
+
+#: ../../source/gaze_README.md:122
+msgid "`ready(watcher)` When files have been globbed and watching has begun."
+msgstr ""
+
+#: ../../source/gaze_README.md:123
+msgid ""
+"`all(event, filepath)` When an `added`, `changed`, `renamed`, or "
+"`deleted` event occurs."
+msgstr ""
+
+#: ../../source/gaze_README.md:124
+msgid "`added(filepath)` When a file has been added to a watch directory."
+msgstr ""
+
+#: ../../source/gaze_README.md:125
+msgid "`changed(filepath)` When a file has been changed."
+msgstr ""
+
+#: ../../source/gaze_README.md:126
+msgid "`deleted(filepath)` When a file has been deleted."
+msgstr ""
+
+#: ../../source/gaze_README.md:127
+msgid "`renamed(newPath, oldPath)` When a file has been renamed."
+msgstr ""
+
+#: ../../source/gaze_README.md:128
+msgid "`end()` When the watcher is closed and watches have been removed."
+msgstr ""
+
+#: ../../source/gaze_README.md:129
+msgid "`error(err)` When an error occurs."
+msgstr ""
+
+#: ../../source/gaze_README.md:130
+msgid "`nomatch` When no files have been matched."
+msgstr ""
+
+#: ../../source/gaze_README.md:132
+msgid "Methods"
+msgstr ""
+
+#: ../../source/gaze_README.md:134
+msgid ""
+"`emit(event, [...])` Wrapper for `EventEmitter.emit`. "
+"`added`|`changed`|`renamed`|`deleted` events will also trigger the `all` "
+"event."
+msgstr ""
+
+#: ../../source/gaze_README.md:136
+msgid "`close()` Unwatch all files and reset the watch instance."
+msgstr ""
+
+#: ../../source/gaze_README.md:137
+msgid "`add(patterns, callback)` Adds file(s) `patterns` to be watched."
+msgstr ""
+
+#: ../../source/gaze_README.md:138
+msgid ""
+"`remove(filepath)` Removes a file or directory from being watched. Does "
+"not recurse directories."
+msgstr ""
+
+#: ../../source/gaze_README.md:140
+msgid "`watched()` Returns the currently watched files."
+msgstr ""
+
+#: ../../source/gaze_README.md:141
+msgid ""
+"`relative([dir, unixify])` Returns the currently watched files with "
+"relative paths."
+msgstr ""
+
+#: ../../source/gaze_README.md:142
+#, python-brace-format
+msgid "`dir` {string} Only return relative files for this directory."
+msgstr ""
+
+#: ../../source/gaze_README.md:143
+#, python-brace-format
+msgid "`unixify` {boolean} Return paths with `/` instead of `\\\\` if on Windows."
+msgstr ""
+
+#: ../../source/gaze_README.md:145
+msgid "Similar Projects"
+msgstr ""
+
+#: ../../source/gaze_README.md:147
+msgid "Other great watch libraries to try are:"
+msgstr ""
+
+#: ../../source/gaze_README.md:149
+msgid "[paulmillr's `chokidar`](https://github.com/paulmillr/chokidar)"
+msgstr ""
+
+#: ../../source/gaze_README.md:150
+msgid "[amasad's `sane`](https://github.com/amasad/sane)"
+msgstr ""
+
+#: ../../source/gaze_README.md:151
+msgid "[mikeal's `watch`](https://github.com/mikeal/watch)"
+msgstr ""
+
+#: ../../source/gaze_README.md:152
+msgid "[github's `pathwatcher`](https://github.com/atom/node-pathwatcher)"
+msgstr ""
+
+#: ../../source/gaze_README.md:153
+msgid "[bevry's `watchr`](https://github.com/bevry/watchr)"
+msgstr ""
+
+#: ../../source/gaze_README.md:155
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/gaze_README.md:156
+msgid ""
+"In lieu of a formal styleguide, take care to maintain the existing coding"
+" style. Add unit tests for any new or changed functionality. Lint and "
+"test your code using [grunt](http://gruntjs.com/)."
+msgstr ""
+
+#: ../../source/gaze_README.md:160
+msgid "Release History"
+msgstr ""
+
+#: ../../source/gaze_README.md:161
+msgid ""
+"1.1.3 - Fix for Node 10 support (@aredridel). Officially dropping support"
+" for Node < 4."
+msgstr ""
+
+#: ../../source/gaze_README.md:162
+msgid "1.1.2 - Prevent more `ENOENT` errors from escaping (@alexgorbatchev)."
+msgstr ""
+
+#: ../../source/gaze_README.md:163
+msgid ""
+"1.1.1 - Prevent `fs.watch` errors from escaping error handler (@rosen-"
+"vladimirov). Fix `_addToWatched` without `path.sep` (@wyicwx)."
+msgstr ""
+
+#: ../../source/gaze_README.md:164
+msgid "1.1.0 - Update to `globule@1.0.0` with `minimatch >= 3.0.0`."
+msgstr ""
+
+#: ../../source/gaze_README.md:165
+msgid ""
+"1.0.0 - Revert back to 0.5.2. Drop support for Node.js v0.8. Fix for "
+"`maxListeners`. Update `globule` to `0.2.0`."
+msgstr ""
+
+#: ../../source/gaze_README.md:166
+msgid ""
+"0.6.4 - Catch and emit `error` from `readdir` (@oconnore). Fix for `0 "
+"maxListeners`. Use `graceful-fs` to avoid `EMFILE` errors in other places"
+" `fs` is used. Better method to determine if `pathwatcher` was built. Fix"
+" keeping process alive too much, only init `pathwatcher` if a file is "
+"being watched. Set min required to Windows Vista when building on Windows"
+" (@pvolok)."
+msgstr ""
+
+#: ../../source/gaze_README.md:167
+msgid "0.6.3 - Add support for Node.js v0.11"
+msgstr ""
+
+#: ../../source/gaze_README.md:168
+msgid ""
+"0.6.2 - Fix argument error with `watched()`. Fix for erroneous `added` "
+"events on folders. Ignore `msvs` build error 4244."
+msgstr ""
+
+#: ../../source/gaze_README.md:169
+msgid "0.6.1 - Fix for absolute paths."
+msgstr ""
+
+#: ../../source/gaze_README.md:170
+msgid ""
+"0.6.0 - Uses native OS events (fork of `pathwatcher`) but can fall back "
+"to stat polling. Everything is async to avoid blocking, including "
+"`relative()` and `watched()`. Better error handling. Update to "
+"`globule@0.2.0`. No longer watches `cwd` by default. Added `mode` option."
+" Better `EMFILE` message. Avoids `ENOENT` errors with symlinks. All "
+"constructor arguments are optional."
+msgstr ""
+
+#: ../../source/gaze_README.md:171
+msgid "0.5.2 - Fix for `ENOENT` error with non-existent symlinks [BACKPORTED]."
+msgstr ""
+
+#: ../../source/gaze_README.md:172
+msgid ""
+"0.5.1 - Use `setImmediate` (`process.nextTick` for Node.js v0.8) to defer"
+" `ready`/`nomatch` events (@amasad)."
+msgstr ""
+
+#: ../../source/gaze_README.md:173
+msgid ""
+"0.5.0 - Process is now kept alive while watching files. Emits a `nomatch`"
+" event when no files are matching."
+msgstr ""
+
+#: ../../source/gaze_README.md:174
+msgid "0.4.3 - Track file additions in newly created folders (@brett-shwom)."
+msgstr ""
+
+#: ../../source/gaze_README.md:175
+msgid ""
+"0.4.2 - Fix `.remove()` method to remove a single file in a directory "
+"(@kaelzhang). Fixing “`Cannot call method 'call' of undefined`” "
+"(@krasimir). Track new file additions within folders (@brett-shwom)."
+msgstr ""
+
+#: ../../source/gaze_README.md:176
+msgid ""
+"0.4.1 - Fix `watchDir` not respecting close in race condition "
+"(@chrisirhc)."
+msgstr ""
+
+#: ../../source/gaze_README.md:177
+msgid ""
+"0.4.0 - Drop support for Node.js v0.6. Use `globule` for file matching. "
+"Avoid Node.js v0.10 `path.resolve`/`join` errors. Register new files when"
+" added to non-existent folder. Multiple instances can now poll the same "
+"files (@jpommerening)."
+msgstr ""
+
+#: ../../source/gaze_README.md:178
+msgid ""
+"0.3.4 - Code clean up. Fix “`path must be strings`” errors (@groner). Fix"
+" incorrect `added` events (@groner)."
+msgstr ""
+
+#: ../../source/gaze_README.md:179
+msgid "0.3.3 - Fix for multiple patterns with negate."
+msgstr ""
+
+#: ../../source/gaze_README.md:180
+msgid "0.3.2 - Emit `end` before `removeAllListeners`."
+msgstr ""
+
+#: ../../source/gaze_README.md:181
+msgid "0.3.1 - Fix `added` events within subfolder patterns."
+msgstr ""
+
+#: ../../source/gaze_README.md:182
+msgid ""
+"0.3.0 - Handle safewrite events, `forceWatchMethod` option removed, bug "
+"fixes and watch optimizations (@rgaskill)."
+msgstr ""
+
+#: ../../source/gaze_README.md:183
+msgid ""
+"0.2.2 - Fix issue where subsequent `add` calls dont get watched "
+"(@samcday). `removeAllListeners` on `close`."
+msgstr ""
+
+#: ../../source/gaze_README.md:184
+msgid "0.2.1 - Fix issue with invalid `added` events in current working dir."
+msgstr ""
+
+#: ../../source/gaze_README.md:185
+msgid ""
+"0.2.0 - Support and mark folders with `path.sep`. Add `forceWatchMethod` "
+"option. Support `renamed` events."
+msgstr ""
+
+#: ../../source/gaze_README.md:186
+msgid "0.1.6 - Recognize the `cwd` option properly"
+msgstr ""
+
+#: ../../source/gaze_README.md:187
+msgid "0.1.5 - Catch “`too many open file`” errors"
+msgstr ""
+
+#: ../../source/gaze_README.md:188
+msgid "0.1.4 - Really fix the race condition with 2 watches"
+msgstr ""
+
+#: ../../source/gaze_README.md:189
+msgid "0.1.3 - Fix race condition with 2 watches"
+msgstr ""
+
+#: ../../source/gaze_README.md:190
+msgid "0.1.2 - Read triggering changed event fix"
+msgstr ""
+
+#: ../../source/gaze_README.md:191
+msgid "0.1.1 - Minor fixes"
+msgstr ""
+
+#: ../../source/gaze_README.md:192
+msgid "0.1.0 - Initial release"
+msgstr ""
+
+#: ../../source/gaze_README.md:194
+msgid "License"
+msgstr ""
+
+#: ../../source/gaze_README.md:195
+msgid "Copyright (c) 2018 Kyle Robinson Young   Licensed under the MIT license."
+msgstr ""
+

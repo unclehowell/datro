@@ -1,0 +1,208 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/unsloth_SKILL.md:14
+msgid "Unsloth Skill"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:16
+msgid ""
+"Comprehensive assistance with unsloth development, generated from "
+"official documentation."
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:18
+msgid "When to Use This Skill"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:20
+msgid "This skill should be triggered when:"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:21
+msgid "Working with unsloth"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:22
+msgid "Asking about unsloth features or APIs"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:23
+msgid "Implementing unsloth solutions"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:24
+msgid "Debugging unsloth code"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:25
+msgid "Learning unsloth best practices"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:27
+msgid "Quick Reference"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:29
+msgid "Common Patterns"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:31
+msgid "*Quick reference patterns will be added as you use the skill.*"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:33
+msgid "Reference Files"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:35
+msgid "This skill includes comprehensive documentation in `references/`:"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:37
+msgid "**llms-txt.md** - Llms-Txt documentation"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:39
+msgid ""
+"Use `view` to read specific reference files when detailed information is "
+"needed."
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:41
+msgid "Working with This Skill"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:43
+msgid "For Beginners"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:44
+msgid ""
+"Start with the getting_started or tutorials reference files for "
+"foundational concepts."
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:46
+msgid "For Specific Features"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:47
+msgid ""
+"Use the appropriate category reference file (api, guides, etc.) for "
+"detailed information."
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:49
+msgid "For Code Examples"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:50
+msgid ""
+"The quick reference section above contains common patterns extracted from"
+" the official docs."
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:52
+msgid "Resources"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:54
+msgid "references/"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:55
+msgid ""
+"Organized documentation extracted from official sources. These files "
+"contain:"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:56
+msgid "Detailed explanations"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:57
+msgid "Code examples with language annotations"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:58
+msgid "Links to original documentation"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:59
+msgid "Table of contents for quick navigation"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:61
+msgid "scripts/"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:62
+msgid "Add helper scripts here for common automation tasks."
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:64
+msgid "assets/"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:65
+msgid "Add templates, boilerplate, or example projects here."
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:67
+msgid "Notes"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:69
+msgid "This skill was automatically generated from official documentation"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:70
+msgid "Reference files preserve the structure and examples from source docs"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:71
+msgid "Code examples include language detection for better syntax highlighting"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:72
+msgid ""
+"Quick reference patterns are extracted from common usage examples in the "
+"docs"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:74
+msgid "Updating"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:76
+msgid "To refresh this skill with updated documentation:"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:77
+msgid "Re-run the scraper with the same configuration"
+msgstr ""
+
+#: ../../source/unsloth_SKILL.md:78
+msgid "The skill will be rebuilt with the latest information"
+msgstr ""
+

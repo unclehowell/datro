@@ -1,0 +1,536 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/audiocraft_SKILL.md:14
+msgid "AudioCraft: Audio Generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:16
+msgid ""
+"Comprehensive guide to using Meta's AudioCraft for text-to-music and "
+"text-to-audio generation with MusicGen, AudioGen, and EnCodec."
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:18
+msgid "When to use AudioCraft"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:20
+msgid "**Use AudioCraft when:**"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:21
+msgid "Need to generate music from text descriptions"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:22
+msgid "Creating sound effects and environmental audio"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:23
+msgid "Building music generation applications"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:24
+msgid "Need melody-conditioned music generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:25
+msgid "Want stereo audio output"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:26
+msgid "Require controllable music generation with style transfer"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:28
+msgid "**Key features:**"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:29
+msgid "**MusicGen**: Text-to-music generation with melody conditioning"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:30
+msgid "**AudioGen**: Text-to-sound effects generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:31
+msgid "**EnCodec**: High-fidelity neural audio codec"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:32
+msgid "**Multiple model sizes**: Small (300M) to Large (3.3B)"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:33
+msgid "**Stereo support**: Full stereo audio generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:34
+msgid "**Style conditioning**: MusicGen-Style for reference-based generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:36
+msgid "**Use alternatives instead:**"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:37
+msgid "**Stable Audio**: For longer commercial music generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:38
+msgid "**Bark**: For text-to-speech with music/sound effects"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:39
+msgid "**Riffusion**: For spectogram-based music generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:40
+msgid "**OpenAI Jukebox**: For raw audio generation with lyrics"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:42
+msgid "Quick start"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:44
+msgid "Installation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:57
+msgid "Basic text-to-music (AudioCraft)"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:81
+msgid "Using HuggingFace Transformers"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:111
+msgid "Text-to-sound with AudioGen"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:128
+msgid "Core concepts"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:130
+msgid "Architecture overview"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:152
+msgid "Model variants"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Model"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Description"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Use Case"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`musicgen-small`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "300M"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Text-to-music"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Quick generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`musicgen-medium`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "1.5B"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Balanced"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`musicgen-large`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "3.3B"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Best quality"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`musicgen-melody`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Text + melody"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Melody conditioning"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`musicgen-melody-large`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Best melody"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`musicgen-stereo-*`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Varies"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Stereo output"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md ../../source/audiocraft_SKILL.md:229
+msgid "Stereo generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`musicgen-style`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Style transfer"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Reference-based"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`audiogen-medium`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Text-to-sound"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Sound effects"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:165
+msgid "Generation parameters"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Parameter"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Default"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`duration`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "8.0"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Length in seconds (1-120)"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`top_k`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "250"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Top-k sampling"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`top_p`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "0.0"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Nucleus sampling (0 = disabled)"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`temperature`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "1.0"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Sampling temperature"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "`cfg_coef`"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "3.0"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Classifier-free guidance"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:175
+msgid "MusicGen usage"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:177
+msgid "Text-to-music generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:209
+msgid "Melody-conditioned generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:246
+msgid "Audio continuation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:271
+msgid "MusicGen-Style usage"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:273
+msgid "Style-conditioned generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:302
+msgid "Style-only generation (no text)"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:315
+msgid "AudioGen usage"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:317
+msgid "Sound effect generation"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:340
+msgid "EnCodec usage"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:342
+msgid "Audio compression"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:372
+msgid "Common workflows"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:374
+msgid "Workflow 1: Music generation pipeline"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:420
+msgid "Workflow 2: Sound design batch processing"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:468
+msgid "Workflow 3: Gradio demo"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:508
+msgid "Performance optimization"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:510
+msgid "Memory optimization"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:526
+msgid "Batch processing efficiency"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:538
+msgid "GPU memory requirements"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "FP32 VRAM"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "FP16 VRAM"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "musicgen-small"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "~4GB"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "~2GB"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "musicgen-medium"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "~8GB"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "musicgen-large"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "~16GB"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:546
+msgid "Common issues"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Issue"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Solution"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "CUDA OOM"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Use smaller model, reduce duration"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Poor quality"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Increase cfg_coef, better prompts"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Generation too short"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Check max duration setting"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Audio artifacts"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Try different temperature"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Stereo not working"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md
+msgid "Use stereo model variant"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:556
+msgid "References"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:558
+msgid ""
+"**[Advanced Usage](references/advanced-usage.md)** - Training, fine-"
+"tuning, deployment"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:559
+msgid ""
+"**[Troubleshooting](references/troubleshooting.md)** - Common issues and "
+"solutions"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:561
+msgid "Resources"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:563
+msgid "**GitHub**: https://github.com/facebookresearch/audiocraft"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:564
+msgid "**Paper (MusicGen)**: https://arxiv.org/abs/2306.05284"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:565
+msgid "**Paper (AudioGen)**: https://arxiv.org/abs/2209.15352"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:566
+msgid "**HuggingFace**: https://huggingface.co/facebook/musicgen-small"
+msgstr ""
+
+#: ../../source/audiocraft_SKILL.md:567
+msgid "**Demo**: https://huggingface.co/spaces/facebook/MusicGen"
+msgstr ""
+

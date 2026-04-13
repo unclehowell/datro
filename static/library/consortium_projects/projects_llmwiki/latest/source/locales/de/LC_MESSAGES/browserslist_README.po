@@ -1,0 +1,99 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/browserslist_README.md:1
+msgid "Browserslist"
+msgstr ""
+
+#: ../../source/browserslist_README.md:3
+msgid ""
+"<img width=\"120\" height=\"120\" alt=\"Browserslist logo by Anton "
+"Popov\"      src=\"https://browsersl.ist/logo.svg\" align=\"right\">"
+msgstr ""
+
+#: ../../source/browserslist_README.md:6
+msgid ""
+"The config to share target browsers and Node.js versions between "
+"different front-end tools. It is used in:"
+msgstr ""
+
+#: ../../source/browserslist_README.md:9
+msgid "[Autoprefixer]"
+msgstr ""
+
+#: ../../source/browserslist_README.md:10
+msgid "[Babel]"
+msgstr ""
+
+#: ../../source/browserslist_README.md:11
+msgid "[postcss-preset-env]"
+msgstr ""
+
+#: ../../source/browserslist_README.md:12
+msgid "[eslint-plugin-compat]"
+msgstr ""
+
+#: ../../source/browserslist_README.md:13
+msgid "[stylelint-no-unsupported-browser-features]"
+msgstr ""
+
+#: ../../source/browserslist_README.md:14
+msgid "[postcss-normalize]"
+msgstr ""
+
+#: ../../source/browserslist_README.md:15
+msgid "[obsolete-webpack-plugin]"
+msgstr ""
+
+#: ../../source/browserslist_README.md:17
+msgid ""
+"All tools will find target browsers automatically, when you add the "
+"following to `package.json`:"
+msgstr ""
+
+#: ../../source/browserslist_README.md:27
+msgid "Or in `.browserslistrc` config:"
+msgstr ""
+
+#: ../../source/browserslist_README.md:36
+msgid ""
+"Developers set their version lists using queries like `last 2 versions` "
+"to be free from updating versions manually. Browserslist will use "
+"[`caniuse-lite`] with [Can I Use] data for this queries."
+msgstr ""
+
+#: ../../source/browserslist_README.md:40
+msgid ""
+"You can check how config works at our playground: "
+"[`browsersl.ist`](https://browsersl.ist/)"
+msgstr ""
+
+#: ../../source/browserslist_README.md:63
+msgid "Docs"
+msgstr ""
+
+#: ../../source/browserslist_README.md:64
+msgid ""
+"Read full docs "
+"**[here](https://github.com/browserslist/browserslist#readme)**."
+msgstr ""
+

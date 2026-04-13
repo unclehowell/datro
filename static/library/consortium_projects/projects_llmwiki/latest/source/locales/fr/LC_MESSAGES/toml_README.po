@@ -1,0 +1,174 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/toml_README.md:1
+msgid "TOML Parser for Node.js"
+msgstr ""
+
+#: ../../source/toml_README.md:4
+msgid ""
+"[![Build Status](https://travis-ci.org/BinaryMuse/toml-"
+"node.png?branch=master)](https://travis-ci.org/BinaryMuse/toml-node)"
+msgstr ""
+
+#: ../../source/toml_README.md:4
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/toml_README.md:6
+msgid "[![NPM](https://nodei.co/npm/toml.png?downloads=true)](https://nodei.co/npm/toml/)"
+msgstr ""
+
+#: ../../source/toml_README.md:6
+msgid "NPM"
+msgstr ""
+
+#: ../../source/toml_README.md:8
+msgid ""
+"If you haven't heard of TOML, well you're just missing out. [Go check it "
+"out now.](https://github.com/mojombo/toml) Back? Good."
+msgstr ""
+
+#: ../../source/toml_README.md:10
+msgid "TOML Spec Support"
+msgstr ""
+
+#: ../../source/toml_README.md:13
+msgid ""
+"toml-node supports version 0.4.0 the TOML spec as specified by "
+"[mojombo/toml@v0.4.0](https://github.com/mojombo/toml/blob/master/versions/en/toml-v0.4.0.md)"
+msgstr ""
+
+#: ../../source/toml_README.md:15
+msgid "Installation"
+msgstr ""
+
+#: ../../source/toml_README.md:18
+msgid "toml-node is available via npm."
+msgstr ""
+
+#: ../../source/toml_README.md:22
+msgid ""
+"toml-node also works with browser module bundlers like Browserify and "
+"webpack."
+msgstr ""
+
+#: ../../source/toml_README.md:24
+msgid "Usage"
+msgstr ""
+
+#: ../../source/toml_README.md:27
+msgid "Standalone"
+msgstr ""
+
+#: ../../source/toml_README.md:29
+msgid ""
+"Say you have some awesome TOML in a variable called `someTomlString`. "
+"Maybe it came from the web; maybe it came from a file; wherever it came "
+"from, it came asynchronously! Let's turn that sucker into a JavaScript "
+"object."
+msgstr ""
+
+#: ../../source/toml_README.md:37
+msgid ""
+"`toml.parse` throws an exception in the case of a parsing error; such "
+"exceptions have a `line` and `column` property on them to help identify "
+"the offending text."
+msgstr ""
+
+#: ../../source/toml_README.md:48
+msgid "Streaming"
+msgstr ""
+
+#: ../../source/toml_README.md:50
+msgid ""
+"As of toml-node version 1.0, the streaming interface has been removed. "
+"Instead, use a module like [concat-stream](https://npmjs.org/package"
+"/concat-stream):"
+msgstr ""
+
+#: ../../source/toml_README.md:62
+msgid ""
+"Thanks [@ForbesLindesay](https://github.com/ForbesLindesay) for the "
+"suggestion."
+msgstr ""
+
+#: ../../source/toml_README.md:64
+msgid "Requiring with Node.js"
+msgstr ""
+
+#: ../../source/toml_README.md:66
+msgid ""
+"You can use the [toml-require package](https://github.com/BinaryMuse"
+"/toml-require) to `require()` your `.toml` files with Node.js"
+msgstr ""
+
+#: ../../source/toml_README.md:68
+msgid "Live Demo"
+msgstr ""
+
+#: ../../source/toml_README.md:71
+msgid ""
+"You can experiment with TOML online at http://binarymuse.github.io/toml-"
+"node/, which uses the latest version of this library."
+msgstr ""
+
+#: ../../source/toml_README.md:73
+msgid "Building & Testing"
+msgstr ""
+
+#: ../../source/toml_README.md:76
+msgid "toml-node uses [the PEG.js parser generator](http://pegjs.majda.cz/)."
+msgstr ""
+
+#: ../../source/toml_README.md:82
+msgid ""
+"Any changes to `src/toml.peg` requires a regeneration of the parser with "
+"`npm run build`."
+msgstr ""
+
+#: ../../source/toml_README.md:84
+msgid "toml-node is tested on Travis CI and is tested against:"
+msgstr ""
+
+#: ../../source/toml_README.md:86
+msgid "Node 0.10"
+msgstr ""
+
+#: ../../source/toml_README.md:87
+msgid "Node 0.12"
+msgstr ""
+
+#: ../../source/toml_README.md:88
+msgid "Latest stable io.js"
+msgstr ""
+
+#: ../../source/toml_README.md:90
+msgid "License"
+msgstr ""
+
+#: ../../source/toml_README.md:93
+msgid ""
+"toml-node is licensed under the MIT license agreement. See the LICENSE "
+"file for more information."
+msgstr ""
+

@@ -1,0 +1,452 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/enzyme-adapter-react-16_README.md:1
+msgid "Enzyme"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:4
+msgid ""
+"[![Join the chat at "
+"https://gitter.im/enzymejs/enzyme](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/enzymejs/enzyme?utm_source=badge&utm_medium=badge&utm_campaign"
+"=pr-badge&utm_content=badge)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:4
+msgid "Join the chat at https://gitter.im/enzymejs/enzyme"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:6
+msgid ""
+"[![npm "
+"Version](https://img.shields.io/npm/v/enzyme.svg)](https://www.npmjs.com/package/enzyme)"
+" "
+"[![License](https://img.shields.io/npm/l/enzyme.svg)](https://github.com/enzymejs/enzyme/blob/master/LICENSE.md)"
+" [![Build Status](https://travis-ci.org/enzymejs/enzyme.svg)](https"
+"://travis-ci.org/enzymejs/enzyme) [![Coverage "
+"Status](https://codecov.io/gh/enzymejs/enzyme/branch/master/graph/badge.svg)](https://codecov.io/gh/enzymejs/enzyme/branch/master)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:6
+msgid "npm Version"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:6
+#: ../../source/enzyme-adapter-react-16_README.md:265
+msgid "License"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:6
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:6
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:9
+msgid ""
+"Enzyme is a JavaScript Testing utility for React that makes it easier to "
+"test your React Components' output. You can also manipulate, traverse, "
+"and in some ways simulate runtime given the output."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:12
+msgid ""
+"Enzyme's API is meant to be intuitive and flexible by mimicking jQuery's "
+"API for DOM manipulation and traversal."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:15
+msgid "Upgrading from Enzyme 2.x or React < 16"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:18
+msgid ""
+"Are you here to check whether or not Enzyme is compatible with React 16? "
+"Are you currently using Enzyme 2.x? Great! Check out our [migration "
+"guide](/docs/guides/migration-from-2-to-3.md) for help moving on to "
+"Enzyme v3 where React 16 is supported."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:22
+msgid "[Installation](/docs/installation/README.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:24
+msgid ""
+"To get started with enzyme, you can simply install it via npm. You will "
+"need to install enzyme along with an Adapter corresponding to the version"
+" of react (or other UI Component library) you are using. For instance, if"
+" you are using enzyme with React 16, you can run:"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:32
+msgid ""
+"Each adapter may have additional peer dependencies which you will need to"
+" install as well. For instance, `enzyme-adapter-react-16` has peer "
+"dependencies on `react` and `react-dom`."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:35
+msgid ""
+"At the moment, Enzyme has adapters that provide compatibility with `React"
+" 16.x`, `React 15.x`, `React 0.14.x` and `React 0.13.x`."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:38
+msgid ""
+"The following adapters are officially provided by enzyme, and have the "
+"following compatibility with React:"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "Enzyme Adapter Package"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "React semver compatibility"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`enzyme-adapter-react-16`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`^16.4.0-0`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`enzyme-adapter-react-16.3`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`~16.3.0-0`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`enzyme-adapter-react-16.2`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`~16.2`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`enzyme-adapter-react-16.1`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "<code>~16.0.0-0 &#124;&#124; ~16.1</code>"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`enzyme-adapter-react-15`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`^15.5.0`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`enzyme-adapter-react-15.4`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`15.0.0-0 - 15.4.x`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`enzyme-adapter-react-14`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`^0.14.0`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`enzyme-adapter-react-13`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "`^0.13.0`"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:52
+msgid ""
+"Finally, you need to configure enzyme to use the adapter you want it to "
+"use. To do this, you can use the top level `configure(...)` API."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:62
+msgid "3rd Party Adapters"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:65
+msgid ""
+"It is possible for the community to create additional (non-official) "
+"adapters that will make enzyme work with other libraries. If you have "
+"made one and it's not included in the list below, feel free to make a PR "
+"to this README and add a link to it! The known 3rd party adapters are:"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "Adapter Package"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "For Library"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "Status"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid ""
+"[`enzyme-adapter-preact-pure`](https://github.com/preactjs/enzyme-"
+"adapter-preact-pure)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "[`preact`](https://github.com/developit/preact)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "(stable)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "[`enzyme-adapter-inferno`](https://github.com/bbc/enzyme-adapter-inferno)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "[`inferno`](https://github.com/infernojs/inferno)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md
+msgid "(work in progress)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:74
+msgid "Running Enzyme Tests"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:77
+msgid ""
+"Enzyme is unopinionated regarding which test runner or assertion library "
+"you use, and should be compatible with all major test runners and "
+"assertion libraries out there. The documentation and examples for enzyme "
+"use [Mocha](https://mochajs.org) and [Chai](https://chaijs.com), but you "
+"should be able to extrapolate to your framework of choice."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:82
+msgid ""
+"If you are interested in using enzyme with custom assertions and "
+"convenience functions for testing your React components, you can consider"
+" using:"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:85
+msgid ""
+"[`chai-enzyme`](https://github.com/producthunt/chai-enzyme) with "
+"Mocha/Chai."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:86
+msgid ""
+"[`jasmine-enzyme`](https://github.com/FormidableLabs/enzyme-"
+"matchers/tree/master/packages/jasmine-enzyme) with Jasmine."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:87
+msgid ""
+"[`jest-enzyme`](https://github.com/FormidableLabs/enzyme-"
+"matchers/tree/master/packages/jest-enzyme) with Jest."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:88
+msgid "[`should-enzyme`](https://github.com/rkotze/should-enzyme) for should.js."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:89
+msgid ""
+"[`expect-enzyme`](https://github.com/PsychoLlama/expect-enzyme) for "
+"expect."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:92
+msgid "[Using Enzyme with Mocha](/docs/guides/mocha.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:94
+msgid "[Using Enzyme with Karma](/docs/guides/karma.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:96
+msgid "[Using Enzyme with Browserify](/docs/guides/browserify.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:98
+msgid "[Using Enzyme with SystemJS](/docs/guides/systemjs.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:100
+msgid "[Using Enzyme with Webpack](/docs/guides/webpack.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:102
+msgid "[Using Enzyme with JSDOM](/docs/guides/jsdom.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:104
+msgid "[Using Enzyme with React Native](/docs/guides/react-native.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:106
+msgid "[Using Enzyme with Jest](/docs/guides/jest.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:108
+msgid "[Using Enzyme with Lab](/docs/guides/lab.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:110
+msgid "[Using Enzyme with Tape and AVA](/docs/guides/tape-ava.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:112
+msgid "Basic Usage"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:115
+msgid "[Shallow Rendering](/docs/api/shallow.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:155
+msgid "Read the full [API Documentation](/docs/api/shallow.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:159
+msgid "[Full DOM Rendering](/docs/api/mount.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:195
+msgid "Read the full [API Documentation](/docs/api/mount.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:198
+msgid "[Static Rendered Markup](/docs/api/render.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:220
+msgid "Read the full [API Documentation](/docs/api/render.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:222
+msgid "React Hooks support"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:224
+msgid ""
+"Enzyme supports [react hooks](https://reactjs.org/docs/hooks-intro.html) "
+"with some limitations in "
+"[`.shallow()`](https://enzymejs.github.io/enzyme/docs/api/shallow.html) "
+"due to upstream issues in React's shallow renderer:"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:226
+msgid ""
+"`useEffect()` and `useLayoutEffect()` don't get called in the React "
+"shallow renderer. [Related "
+"issue](https://github.com/facebook/react/issues/15275)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:228
+msgid ""
+"`useCallback()` doesn't memoize callback in React shallow renderer. "
+"[Related issue](https://github.com/facebook/react/issues/15774)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:230
+msgid ""
+"[`ReactTestUtils.act()`](https://reactjs.org/docs/test-utils.html#act) "
+"wrap"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:232
+msgid ""
+"If you're using React 16.8+ and `.mount()`, Enzyme will wrap apis "
+"including "
+"[`.simulate()`](https://enzymejs.github.io/enzyme/docs/api/ReactWrapper/simulate.html),"
+" "
+"[`.setProps()`](https://enzymejs.github.io/enzyme/docs/api/ReactWrapper/setProps.html),"
+" "
+"[`.setContext()`](https://enzymejs.github.io/enzyme/docs/api/ReactWrapper/setContext.html),"
+" "
+"[`.invoke()`](https://enzymejs.github.io/enzyme/docs/api/ReactWrapper/invoke.html)"
+" with [`ReactTestUtils.act()`](https://reactjs.org/docs/test-"
+"utils.html#act) so you don't need to manually wrap it."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:234
+msgid "A common pattern to trigger handlers with `.act()` and assert is:"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:243
+msgid ""
+"We cannot wrap the result of `.prop()` (or `.props()`) with `.act()` in "
+"Enzyme internally since it will break the equality of the returned value."
+" However, you could use `.invoke()` to simplify the code:"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:252
+msgid "Future"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:254
+msgid "[Enzyme Future](/docs/future.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:257
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:259
+msgid "See the [Contributors Guide](/CONTRIBUTING.md)"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:261
+msgid "In the wild"
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:263
+msgid ""
+"Organizations and projects using `enzyme` can list themselves "
+"[here](INTHEWILD.md)."
+msgstr ""
+
+#: ../../source/enzyme-adapter-react-16_README.md:267
+msgid "[MIT](/LICENSE.md)"
+msgstr ""
+

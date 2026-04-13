@@ -1,0 +1,1282 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_ollama.md:1
+msgid "Design System: Ollama"
+msgstr ""
+
+#: ../../source/templates_ollama.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_ollama.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_ollama.md:7
+msgid "**Primary:** `Inter` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_ollama.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_ollama.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_ollama.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_ollama.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_ollama.md:18
+msgid ""
+"Ollama's interface is radical minimalism taken to its logical conclusion "
+"— a pure-white void where content floats without decoration, shadow, or "
+"color. The design philosophy mirrors the product itself: strip away "
+"everything unnecessary until only the essential tool remains. This is the"
+" digital equivalent of a Dieter Rams object — every pixel earns its "
+"place, and the absence of design IS the design."
+msgstr ""
+
+#: ../../source/templates_ollama.md:20
+msgid ""
+"The entire page exists in pure grayscale. There is zero chromatic color "
+"in the interface — no brand blue, no accent green, no semantic red. The "
+"only colors that exist are shades between pure black (`#000000`) and pure"
+" white (`#ffffff`), creating a monochrome environment that lets the "
+"user's mental model of \"open models\" remain uncolored by brand opinion."
+" The Ollama llama mascot, rendered in simple black line art, is the only "
+"illustration — and even it's monochrome."
+msgstr ""
+
+#: ../../source/templates_ollama.md:22
+msgid ""
+"What makes Ollama distinctive is the combination of SF Pro Rounded "
+"(Apple's rounded system font) with an exclusively pill-shaped geometry "
+"(9999px radius on everything interactive). The rounded letterforms + "
+"rounded buttons + rounded containers create a cohesive \"softness "
+"language\" that makes a developer CLI tool feel approachable and friendly"
+" rather than intimidating. This is minimalism with warmth — not cold "
+"Swiss-style grid minimalism, but the kind where the edges are literally "
+"softened."
+msgstr ""
+
+#: ../../source/templates_ollama.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_ollama.md:25
+msgid "Pure white canvas with zero chromatic color — completely grayscale"
+msgstr ""
+
+#: ../../source/templates_ollama.md:26
+msgid "SF Pro Rounded headlines creating a distinctively Apple-like softness"
+msgstr ""
+
+#: ../../source/templates_ollama.md:27
+msgid ""
+"Binary border-radius system: 12px (containers) or 9999px (everything "
+"interactive)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:28
+msgid ""
+"Zero shadows — depth comes exclusively from background color shifts and "
+"borders"
+msgstr ""
+
+#: ../../source/templates_ollama.md:29
+msgid ""
+"Pill-shaped geometry on all interactive elements (buttons, tabs, inputs, "
+"tags)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:30
+msgid "The Ollama llama as the sole illustration — black line art, no color"
+msgstr ""
+
+#: ../../source/templates_ollama.md:31
+msgid ""
+"Extreme content restraint — the homepage is short, focused, and "
+"uncluttered"
+msgstr ""
+
+#: ../../source/templates_ollama.md:33
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_ollama.md:35
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_ollama.md:36
+msgid ""
+"**Pure Black** (`#000000`): Primary headlines, primary links, and the "
+"darkest text. The only \"color\" that demands attention."
+msgstr ""
+
+#: ../../source/templates_ollama.md:37
+msgid ""
+"**Near Black** (`#262626`): Button text on light surfaces, secondary "
+"headline weight."
+msgstr ""
+
+#: ../../source/templates_ollama.md:38
+msgid ""
+"**Darkest Surface** (`#090909`): The darkest possible surface — barely "
+"distinguishable from pure black, used for footer or dark containers."
+msgstr ""
+
+#: ../../source/templates_ollama.md:40
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_ollama.md:41
+msgid ""
+"**Pure White** (`#ffffff`): The primary page background — not off-white, "
+"not cream, pure white. Button surfaces for secondary actions."
+msgstr ""
+
+#: ../../source/templates_ollama.md:42
+msgid ""
+"**Snow** (`#fafafa`): The subtlest possible surface distinction from "
+"white — used for section backgrounds and barely-elevated containers."
+msgstr ""
+
+#: ../../source/templates_ollama.md:43
+msgid ""
+"**Light Gray** (`#e5e5e5`): Button backgrounds, borders, and the primary "
+"containment color. The workhorse neutral."
+msgstr ""
+
+#: ../../source/templates_ollama.md:45
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_ollama.md:46
+msgid ""
+"**Stone** (`#737373`): Secondary body text, footer links, and de-"
+"emphasized content. The primary \"muted\" tone."
+msgstr ""
+
+#: ../../source/templates_ollama.md:47
+msgid ""
+"**Mid Gray** (`#525252`): Emphasized secondary text, slightly darker than"
+" Stone."
+msgstr ""
+
+#: ../../source/templates_ollama.md:48
+msgid ""
+"**Silver** (`#a3a3a3`): Tertiary text, placeholders, and deeply de-"
+"emphasized metadata."
+msgstr ""
+
+#: ../../source/templates_ollama.md:49
+msgid "**Button Text Dark** (`#404040`): Specific to white-surface button text."
+msgstr ""
+
+#: ../../source/templates_ollama.md:51
+msgid "Semantic & Accent"
+msgstr ""
+
+#: ../../source/templates_ollama.md:52
+msgid ""
+"**Ring Blue** (`#3b82f6` at 50%): The ONLY non-gray color in the entire "
+"system — Tailwind's default focus ring, used exclusively for keyboard "
+"accessibility. Never visible in normal interaction flow."
+msgstr ""
+
+#: ../../source/templates_ollama.md:53
+msgid ""
+"**Border Light** (`#d4d4d4`): A slightly darker gray for white-surface "
+"button borders."
+msgstr ""
+
+#: ../../source/templates_ollama.md:55
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_ollama.md:56
+msgid ""
+"**None.** Ollama uses absolutely no gradients. Visual separation comes "
+"from flat color blocks and single-pixel borders. This is a deliberate, "
+"almost philosophical design choice."
+msgstr ""
+
+#: ../../source/templates_ollama.md:58
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_ollama.md:60
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_ollama.md:61
+msgid ""
+"**Display**: `SF Pro Rounded`, with fallbacks: `system-ui, -apple-system,"
+" system-ui`"
+msgstr ""
+
+#: ../../source/templates_ollama.md:62
+msgid ""
+"**Body / UI**: `ui-sans-serif`, with fallbacks: `system-ui, Apple Color "
+"Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji`"
+msgstr ""
+
+#: ../../source/templates_ollama.md:63
+msgid ""
+"**Monospace**: `ui-monospace`, with fallbacks: `SFMono-Regular, Menlo, "
+"Monaco, Consolas, Liberation Mono, Courier New`"
+msgstr ""
+
+#: ../../source/templates_ollama.md:65
+msgid ""
+"*Note: SF Pro Rounded is Apple's system font — it renders with rounded "
+"terminals on macOS/iOS and falls back to the system sans-serif on other "
+"platforms.*"
+msgstr ""
+
+#: ../../source/templates_ollama.md:67
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Display / Hero"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "SF Pro Rounded"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "48px (3rem)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Maximum impact, rounded letterforms"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "36px (2.25rem)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "1.11 (tight)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Feature section titles"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "SF Pro Rounded / ui-sans-serif"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "30px (1.88rem)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Card headings, feature names"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Card Title"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "ui-sans-serif"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "24px (1.5rem)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Medium emphasis headings"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "1.56"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Hero descriptions, button text"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Body / Link"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "16px (1rem)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Standard body text, navigation"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "1.43"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Metadata, descriptions"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Small"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Smallest sans-serif text"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Code Body"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "ui-monospace"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Inline code, commands"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Code Caption"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Code snippets, secondary"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Code Small"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "400–700"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "1.63"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Tags, labels"
+msgstr ""
+
+#: ../../source/templates_ollama.md:83
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_ollama.md:84
+msgid ""
+"**Rounded display, standard body**: SF Pro Rounded carries display "
+"headlines with its distinctive rounded terminals, while the standard "
+"system sans handles all body text. The rounded font IS the brand "
+"expression."
+msgstr ""
+
+#: ../../source/templates_ollama.md:85
+msgid ""
+"**Weight restraint**: Only two weights matter — 400 (regular) for body "
+"and 500 (medium) for headings. No bold, no light, no black weight. This "
+"extreme restraint reinforces the minimal philosophy."
+msgstr ""
+
+#: ../../source/templates_ollama.md:86
+msgid ""
+"**Tight display, comfortable body**: Headlines compress to 1.0 line-"
+"height, while body text relaxes to 1.43–1.56. The contrast creates clear "
+"hierarchy without needing weight contrast."
+msgstr ""
+
+#: ../../source/templates_ollama.md:87
+msgid ""
+"**Monospace for developer identity**: Code blocks and terminal commands "
+"appear throughout as primary content, using the system monospace stack."
+msgstr ""
+
+#: ../../source/templates_ollama.md:89
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_ollama.md:91
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_ollama.md:93
+msgid "**Gray Pill (Primary)**"
+msgstr ""
+
+#: ../../source/templates_ollama.md:94
+msgid "Background: Light Gray (`#e5e5e5`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:95
+msgid "Text: Near Black (`#262626`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:96 ../../source/templates_ollama.md:104
+msgid "Padding: 10px 24px"
+msgstr ""
+
+#: ../../source/templates_ollama.md:97
+msgid "Border: thin solid Light Gray (`1px solid #e5e5e5`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:98 ../../source/templates_ollama.md:106
+#: ../../source/templates_ollama.md:112
+msgid "Radius: pill-shaped (9999px)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:99
+msgid "The primary action button — understated, grayscale, always pill-shaped"
+msgstr ""
+
+#: ../../source/templates_ollama.md:101
+msgid "**White Pill (Secondary)**"
+msgstr ""
+
+#: ../../source/templates_ollama.md:102
+msgid "Background: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:103
+msgid "Text: Button Text Dark (`#404040`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:105
+msgid "Border: thin solid Border Light (`1px solid #d4d4d4`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:107
+msgid "Secondary action — visually lighter than Gray Pill"
+msgstr ""
+
+#: ../../source/templates_ollama.md:109
+msgid "**Black Pill (CTA)**"
+msgstr ""
+
+#: ../../source/templates_ollama.md:110
+msgid "Background: Pure Black (`#000000`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:111
+msgid "Text: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:113
+msgid "Inferred from \"Create account\" and \"Explore\" buttons"
+msgstr ""
+
+#: ../../source/templates_ollama.md:114
+msgid "Maximum emphasis — black on white"
+msgstr ""
+
+#: ../../source/templates_ollama.md:116
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_ollama.md:117
+msgid "Background: Pure White or Snow (`#fafafa`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:118
+msgid "Border: thin solid Light Gray (`1px solid #e5e5e5`) when needed"
+msgstr ""
+
+#: ../../source/templates_ollama.md:119
+msgid ""
+"Radius: comfortably rounded (12px) — the ONLY non-pill radius in the "
+"system"
+msgstr ""
+
+#: ../../source/templates_ollama.md:120
+msgid "Shadow: **none** — zero shadows on any element"
+msgstr ""
+
+#: ../../source/templates_ollama.md:121
+msgid "Hover: likely subtle background shift or border darkening"
+msgstr ""
+
+#: ../../source/templates_ollama.md:123
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_ollama.md:124
+msgid "Background: Pure White"
+msgstr ""
+
+#: ../../source/templates_ollama.md:125
+msgid "Border: `1px solid #e5e5e5`"
+msgstr ""
+
+#: ../../source/templates_ollama.md:126
+msgid ""
+"Radius: pill-shaped (9999px) — search inputs and form fields are pill-"
+"shaped"
+msgstr ""
+
+#: ../../source/templates_ollama.md:127
+msgid "Focus: Ring Blue (`#3b82f6` at 50%) ring"
+msgstr ""
+
+#: ../../source/templates_ollama.md:128
+msgid "Placeholder: Silver (`#a3a3a3`)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:130
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_ollama.md:131
+msgid "Clean horizontal nav with minimal elements"
+msgstr ""
+
+#: ../../source/templates_ollama.md:132
+msgid "Logo: Ollama llama icon + wordmark in black"
+msgstr ""
+
+#: ../../source/templates_ollama.md:133
+msgid "Links: \"Models\", \"Docs\", \"Pricing\" in black at 16px, weight 400"
+msgstr ""
+
+#: ../../source/templates_ollama.md:134
+msgid "Search bar: pill-shaped with placeholder text"
+msgstr ""
+
+#: ../../source/templates_ollama.md:135
+msgid "Right side: \"Sign in\" link + \"Download\" black pill CTA"
+msgstr ""
+
+#: ../../source/templates_ollama.md:136
+msgid "No borders, no background — transparent nav on white page"
+msgstr ""
+
+#: ../../source/templates_ollama.md:138
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_ollama.md:139
+msgid "The Ollama llama mascot is the only illustration — black line art on white"
+msgstr ""
+
+#: ../../source/templates_ollama.md:140
+msgid ""
+"Code screenshots/terminal outputs shown in bordered containers (12px "
+"radius)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:141
+msgid "Integration logos displayed as simple icons in a grid"
+msgstr ""
+
+#: ../../source/templates_ollama.md:142
+msgid "No photographs, no gradients, no decorative imagery"
+msgstr ""
+
+#: ../../source/templates_ollama.md:144
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_ollama.md:146
+msgid "**Tab Pills**"
+msgstr ""
+
+#: ../../source/templates_ollama.md:147
+msgid "Pill-shaped tab selectors (e.g., \"Coding\" | \"OpenClaw\")"
+msgstr ""
+
+#: ../../source/templates_ollama.md:148
+msgid "Active: Light Gray bg; Inactive: transparent"
+msgstr ""
+
+#: ../../source/templates_ollama.md:149
+msgid "All pill-shaped (9999px)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:151
+msgid "**Model Tags**"
+msgstr ""
+
+#: ../../source/templates_ollama.md:152
+msgid "Small pill-shaped tags (e.g., \"ollama\", \"launch\", \"claude\")"
+msgstr ""
+
+#: ../../source/templates_ollama.md:153
+msgid "Light Gray background, dark text"
+msgstr ""
+
+#: ../../source/templates_ollama.md:154
+msgid "The primary way to browse models"
+msgstr ""
+
+#: ../../source/templates_ollama.md:156
+msgid "**Terminal Command Block**"
+msgstr ""
+
+#: ../../source/templates_ollama.md:157
+msgid "Monospace code showing `ollama run` commands"
+msgstr ""
+
+#: ../../source/templates_ollama.md:158
+msgid "Minimal styling — just a bordered 12px-radius container"
+msgstr ""
+
+#: ../../source/templates_ollama.md:159
+msgid "Copy button integrated"
+msgstr ""
+
+#: ../../source/templates_ollama.md:161
+msgid "**Integration Grid**"
+msgstr ""
+
+#: ../../source/templates_ollama.md:162
+msgid "Grid of integration logos (Codex, Claude Code, OpenCode, LangChain, etc.)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:163
+msgid "Each in a bordered pill or card with icon + name"
+msgstr ""
+
+#: ../../source/templates_ollama.md:164
+msgid "Tabbed by category (Coding, Documents & RAG, Automation, Chat)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:166
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_ollama.md:168
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_ollama.md:169
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_ollama.md:170
+msgid ""
+"Scale: 4px, 6px, 8px, 9px, 10px, 12px, 14px, 16px, 20px, 24px, 32px, "
+"40px, 48px, 88px, 112px"
+msgstr ""
+
+#: ../../source/templates_ollama.md:171
+msgid "Button padding: 10px 24px (consistent across all buttons)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:172
+msgid "Card internal padding: approximately 24–32px"
+msgstr ""
+
+#: ../../source/templates_ollama.md:173
+msgid "Section vertical spacing: very generous (88px–112px)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:175
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_ollama.md:176
+msgid "Max container width: approximately 1024–1280px, centered"
+msgstr ""
+
+#: ../../source/templates_ollama.md:177
+msgid "Hero: centered single-column with llama illustration"
+msgstr ""
+
+#: ../../source/templates_ollama.md:178
+msgid "Feature sections: 2-column layout (text left, code right)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:179
+msgid "Integration grid: responsive multi-column"
+msgstr ""
+
+#: ../../source/templates_ollama.md:180
+msgid "Footer: clean single-row"
+msgstr ""
+
+#: ../../source/templates_ollama.md:182
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_ollama.md:183
+msgid ""
+"**Emptiness as luxury**: The page is remarkably short and sparse — no "
+"feature section overstays its welcome. Each concept gets minimal but "
+"sufficient space."
+msgstr ""
+
+#: ../../source/templates_ollama.md:184
+msgid ""
+"**Content density is low by design**: Where other AI companies pack "
+"feature after feature, Ollama presents three ideas (run models, use with "
+"apps, integrations) and stops."
+msgstr ""
+
+#: ../../source/templates_ollama.md:185
+msgid ""
+"**The white space IS the brand**: Pure white space with zero decoration "
+"communicates \"this tool gets out of your way.\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:187
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_ollama.md:188
+msgid ""
+"Comfortably rounded (12px): The sole container radius — code blocks, "
+"cards, panels"
+msgstr ""
+
+#: ../../source/templates_ollama.md:189
+msgid ""
+"Pill-shaped (9999px): Everything interactive — buttons, tabs, inputs, "
+"tags, badges"
+msgstr ""
+
+#: ../../source/templates_ollama.md:191
+msgid ""
+"*This binary system is extreme and distinctive. There is no 4px, no 8px, "
+"no gradient of roundness. Elements are either containers (12px) or "
+"interactive (pill).*"
+msgstr ""
+
+#: ../../source/templates_ollama.md:193
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "No shadow, no border"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Page background, most content"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Bordered (Level 1)"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "`1px solid #e5e5e5`"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Cards, code blocks, buttons"
+msgstr ""
+
+#: ../../source/templates_ollama.md:200
+msgid ""
+"**Shadow Philosophy**: Ollama uses **zero shadows**. This is not an "
+"oversight — it's a deliberate design decision. Every other major AI "
+"product site uses at least subtle shadows. Ollama's flat, shadowless "
+"approach creates a paper-like experience where elements are distinguished"
+" purely by background color and single-pixel borders. Depth is "
+"communicated through **content hierarchy and typography weight**, not "
+"visual layering."
+msgstr ""
+
+#: ../../source/templates_ollama.md:202
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_ollama.md:204
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_ollama.md:205
+msgid ""
+"Use pure white (`#ffffff`) as the page background — never off-white or "
+"cream"
+msgstr ""
+
+#: ../../source/templates_ollama.md:206
+msgid ""
+"Use pill-shaped (9999px) radius on all interactive elements — buttons, "
+"tabs, inputs, tags"
+msgstr ""
+
+#: ../../source/templates_ollama.md:207
+msgid ""
+"Use 12px radius on all non-interactive containers — code blocks, cards, "
+"panels"
+msgstr ""
+
+#: ../../source/templates_ollama.md:208
+msgid ""
+"Keep the palette strictly grayscale — no chromatic colors except the blue"
+" focus ring"
+msgstr ""
+
+#: ../../source/templates_ollama.md:209
+msgid ""
+"Use SF Pro Rounded at weight 500 for display headings — the rounded "
+"terminals are the brand expression"
+msgstr ""
+
+#: ../../source/templates_ollama.md:210
+msgid ""
+"Maintain zero shadows — depth comes from borders and background shifts "
+"only"
+msgstr ""
+
+#: ../../source/templates_ollama.md:211
+msgid "Keep content density low — each section should present one clear idea"
+msgstr ""
+
+#: ../../source/templates_ollama.md:212
+msgid ""
+"Use monospace for terminal commands and code — it's primary content, not "
+"decoration"
+msgstr ""
+
+#: ../../source/templates_ollama.md:213
+msgid ""
+"Keep all buttons at 10px 24px padding with pill shape — consistency is "
+"absolute"
+msgstr ""
+
+#: ../../source/templates_ollama.md:215
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_ollama.md:216
+msgid ""
+"Don't introduce any chromatic color — no brand blue, no accent green, no "
+"warm tones"
+msgstr ""
+
+#: ../../source/templates_ollama.md:217
+msgid "Don't use border-radius between 12px and 9999px — the system is binary"
+msgstr ""
+
+#: ../../source/templates_ollama.md:218
+msgid "Don't add shadows to any element — the flat aesthetic is intentional"
+msgstr ""
+
+#: ../../source/templates_ollama.md:219
+msgid "Don't use font weights above 500 — no bold, no black weight"
+msgstr ""
+
+#: ../../source/templates_ollama.md:220
+msgid "Don't add decorative illustrations beyond the llama mascot"
+msgstr ""
+
+#: ../../source/templates_ollama.md:221
+msgid "Don't use gradients anywhere — flat blocks and borders only"
+msgstr ""
+
+#: ../../source/templates_ollama.md:222
+msgid "Don't overcomplicate the layout — two columns maximum, no complex grids"
+msgstr ""
+
+#: ../../source/templates_ollama.md:223
+msgid ""
+"Don't use borders heavier than 1px — containment is always the lightest "
+"possible touch"
+msgstr ""
+
+#: ../../source/templates_ollama.md:224
+msgid ""
+"Don't add hover animations or transitions — interactions should feel "
+"instant and direct"
+msgstr ""
+
+#: ../../source/templates_ollama.md:226
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_ollama.md:228
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "<640px"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Single column, stacked everything, hamburger nav"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Small Tablet"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "640–768px"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Minor adjustments to spacing"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "768–850px"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "2-column layouts begin"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "850–1024px"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Standard layout, expanded features"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "1024–1280px"
+msgstr ""
+
+#: ../../source/templates_ollama.md
+msgid "Maximum content width"
+msgstr ""
+
+#: ../../source/templates_ollama.md:237
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_ollama.md:238
+msgid "All buttons are pill-shaped with generous padding (10px 24px)"
+msgstr ""
+
+#: ../../source/templates_ollama.md:239
+msgid "Navigation links at comfortable 16px size"
+msgstr ""
+
+#: ../../source/templates_ollama.md:240
+msgid "Minimum touch area easily exceeds 44x44px"
+msgstr ""
+
+#: ../../source/templates_ollama.md:242
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_ollama.md:243
+msgid "**Navigation**: Collapses to hamburger menu on mobile"
+msgstr ""
+
+#: ../../source/templates_ollama.md:244
+msgid "**Feature sections**: 2-column → stacked single column"
+msgstr ""
+
+#: ../../source/templates_ollama.md:245
+msgid "**Hero text**: 48px → 36px → 30px progressive scaling"
+msgstr ""
+
+#: ../../source/templates_ollama.md:246
+msgid "**Integration grid**: Multi-column → 2-column → single column"
+msgstr ""
+
+#: ../../source/templates_ollama.md:247
+msgid "**Code blocks**: Horizontal scroll maintained"
+msgstr ""
+
+#: ../../source/templates_ollama.md:249
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_ollama.md:250
+msgid "Llama mascot scales proportionally"
+msgstr ""
+
+#: ../../source/templates_ollama.md:251
+msgid "Code blocks maintain monospace formatting"
+msgstr ""
+
+#: ../../source/templates_ollama.md:252
+msgid "Integration icons reflow to fewer columns"
+msgstr ""
+
+#: ../../source/templates_ollama.md:253
+msgid "No art direction changes"
+msgstr ""
+
+#: ../../source/templates_ollama.md:255
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_ollama.md:257
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_ollama.md:258
+msgid "Primary Text: \"Pure Black (#000000)\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:259
+msgid "Page Background: \"Pure White (#ffffff)\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:260
+msgid "Secondary Text: \"Stone (#737373)\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:261
+msgid "Button Background: \"Light Gray (#e5e5e5)\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:262
+msgid "Borders: \"Light Gray (#e5e5e5)\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:263
+msgid "Muted Text: \"Silver (#a3a3a3)\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:264
+msgid "Dark Text: \"Near Black (#262626)\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:265
+msgid "Subtle Surface: \"Snow (#fafafa)\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:267
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_ollama.md:268
+msgid ""
+"\"Create a hero section on pure white (#ffffff) with an illustration "
+"centered above a headline at 48px SF Pro Rounded weight 500, line-height "
+"1.0. Use Pure Black (#000000) text. Below, add a black pill-shaped CTA "
+"button (9999px radius, 10px 24px padding) and a gray pill button.\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:269
+msgid ""
+"\"Design a code block with a 12px border-radius, 1px solid Light Gray "
+"(#e5e5e5) border on white background. Use ui-monospace at 16px for the "
+"terminal command. No shadow.\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:270
+msgid ""
+"\"Build a tab bar with pill-shaped tabs (9999px radius). Active tab: "
+"Light Gray (#e5e5e5) background, Near Black (#262626) text. Inactive: "
+"transparent background, Stone (#737373) text.\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:271
+msgid ""
+"\"Create an integration card grid. Each card is a bordered pill (9999px "
+"radius) or a 12px-radius card with 1px solid #e5e5e5 border. Icon + name "
+"inside. Grid of 4 columns on desktop.\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:272
+msgid ""
+"\"Design a navigation bar: transparent background, no border. Ollama logo"
+" on the left, 3 text links (Pure Black, 16px, weight 400), pill search "
+"input in the center, 'Sign in' text link and black pill 'Download' button"
+" on the right.\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:274
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_ollama.md:275
+msgid "Focus on ONE component at a time"
+msgstr ""
+
+#: ../../source/templates_ollama.md:276
+msgid "Keep all values grayscale — \"Stone (#737373)\" not \"use a light color\""
+msgstr ""
+
+#: ../../source/templates_ollama.md:277
+msgid ""
+"Always specify pill (9999px) or container (12px) radius — nothing in "
+"between"
+msgstr ""
+
+#: ../../source/templates_ollama.md:278
+msgid "Shadows are always zero — never add them"
+msgstr ""
+
+#: ../../source/templates_ollama.md:279
+msgid "Weight is always 400 or 500 — never bold"
+msgstr ""
+
+#: ../../source/templates_ollama.md:280
+msgid ""
+"If something feels too decorated, remove it — less is always more for "
+"Ollama"
+msgstr ""
+

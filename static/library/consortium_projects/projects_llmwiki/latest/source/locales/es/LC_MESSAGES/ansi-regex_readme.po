@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/ansi-regex_readme.md:1
+msgid ""
+"ansi-regex [![Build Status](https://travis-ci.org/chalk/ansi-"
+"regex.svg?branch=master)](https://travis-ci.org/chalk/ansi-regex)"
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:3
+msgid ""
+"Regular expression for matching [ANSI escape "
+"codes](http://en.wikipedia.org/wiki/ANSI_escape_code)"
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:28
+msgid "FAQ"
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:30
+msgid "Why do you test for codes not in the ECMA 48 standard?"
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:32
+msgid ""
+"Some of the codes we run as a test are codes that we acquired finding "
+"various lists of non-standard or manufacturer specific codes. If I recall"
+" correctly, we test for both standard and non-standard codes, as most of "
+"them follow the same or similar format and can be safely matched in "
+"strings without the risk of removing actual string content. There are a "
+"few non-standard control codes that do not follow the traditional format "
+"(i.e. they end in numbers) thus forcing us to exclude them from the test "
+"because we cannot reliably match them."
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:34
+msgid ""
+"On the historical side, those ECMA standards were established in the "
+"early 90's whereas the VT100, for example, was designed in the mid/late "
+"70's. At that point in time, control codes were still pretty ungoverned "
+"and engineers used them for a multitude of things, namely to activate "
+"hardware ports that may have been proprietary. Somewhere else you see a "
+"similar 'anarchy' of codes is in the x86 architecture for processors; "
+"there are a ton of \"interrupts\" that can mean different things on "
+"certain brands of processors, most of which have been phased out."
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:37
+msgid "License"
+msgstr ""
+
+#: ../../source/ansi-regex_readme.md:39
+msgid "MIT © [Sindre Sorhus](http://sindresorhus.com)"
+msgstr ""
+

@@ -1,0 +1,1602 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_cursor.md:1
+msgid "Design System: Cursor"
+msgstr ""
+
+#: ../../source/templates_cursor.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_cursor.md:7
+msgid "**Primary:** `Inter` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_cursor.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_cursor.md:18
+msgid ""
+"Cursor's website is a study in warm minimalism meets code-editor "
+"elegance. The entire experience is built on a warm off-white canvas "
+"(`#f2f1ed`) with dark warm-brown text (`#26251e`) -- not pure black, not "
+"neutral gray, but a deeply warm near-black with a yellowish undertone "
+"that evokes old paper, ink, and craft. This warmth permeates every "
+"surface: backgrounds lean toward cream (`#e6e5e0`, `#ebeae5`), borders "
+"dissolve into transparent warm overlays using `oklab` color space, and "
+"even the error state (`#cf2d56`) carries warmth rather than clinical red."
+" The result feels more like a premium print publication than a tech "
+"website."
+msgstr ""
+
+#: ../../source/templates_cursor.md:20
+msgid ""
+"The custom CursorGothic font is the typographic signature -- a gothic "
+"sans-serif with aggressive negative letter-spacing at display sizes "
+"(-2.16px at 72px) that creates a compressed, engineered feel. As a "
+"secondary voice, the jjannon serif font (with OpenType `\"cswh\"` "
+"contextual swash alternates) provides literary counterpoint for body copy"
+" and editorial passages. The monospace voice comes from berkeleyMono, a "
+"refined coding font that connects the marketing site to Cursor's core "
+"identity as a code editor. This three-font system (gothic display, serif "
+"body, mono code) gives Cursor one of the most typographically rich "
+"palettes in developer tooling."
+msgstr ""
+
+#: ../../source/templates_cursor.md:22
+msgid ""
+"The border system is particularly distinctive -- Cursor uses `oklab()` "
+"color space for border colors, applying warm brown at various alpha "
+"levels (0.1, 0.2, 0.55) to create borders that feel organic rather than "
+"mechanical. The signature border color `oklab(0.263084 -0.00230259 "
+"0.0124794 / 0.1)` is not a simple rgba value but a perceptually uniform "
+"color that maintains visual consistency across different backgrounds."
+msgstr ""
+
+#: ../../source/templates_cursor.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:25
+msgid ""
+"CursorGothic with aggressive negative letter-spacing (-2.16px at 72px, "
+"-0.72px at 36px) for compressed display headings"
+msgstr ""
+
+#: ../../source/templates_cursor.md:26
+msgid ""
+"jjannon serif for body text with OpenType `\"cswh\"` (contextual swash "
+"alternates)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:27
+msgid "berkeleyMono for code and technical labels"
+msgstr ""
+
+#: ../../source/templates_cursor.md:28
+msgid ""
+"Warm off-white background (`#f2f1ed`) instead of pure white -- the entire"
+" system is warm-shifted"
+msgstr ""
+
+#: ../../source/templates_cursor.md:29
+msgid "Primary text color `#26251e` (warm near-black with yellow undertone)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:30
+msgid "Accent orange `#f54e00` for brand highlight and links"
+msgstr ""
+
+#: ../../source/templates_cursor.md:31
+msgid ""
+"oklab-space borders at various alpha levels for perceptually uniform edge"
+" treatment"
+msgstr ""
+
+#: ../../source/templates_cursor.md:32
+msgid "Pill-shaped elements with extreme radius (33.5M px, effectively full-pill)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:33
+msgid ""
+"8px base spacing system with fine-grained sub-8px increments (1.5px, 2px,"
+" 2.5px, 3px, 4px, 5px, 6px)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:35
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_cursor.md:37
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_cursor.md:38
+msgid ""
+"**Cursor Dark** (`#26251e`): Primary text, headings, dark UI surfaces. A "
+"warm near-black with distinct yellow-brown undertone -- the defining "
+"color of the system."
+msgstr ""
+
+#: ../../source/templates_cursor.md:39
+msgid ""
+"**Cursor Cream** (`#f2f1ed`): Page background, primary surface. Not white"
+" but a warm cream that sets the entire warm tone."
+msgstr ""
+
+#: ../../source/templates_cursor.md:40
+msgid ""
+"**Cursor Light** (`#e6e5e0`): Secondary surface, button backgrounds, card"
+" fills. A slightly warmer, slightly darker cream."
+msgstr ""
+
+#: ../../source/templates_cursor.md:41
+msgid ""
+"**Pure White** (`#ffffff`): Used sparingly for maximum contrast elements "
+"and specific surface highlights."
+msgstr ""
+
+#: ../../source/templates_cursor.md:42
+msgid "**True Black** (`#000000`): Minimal use, specific code/console contexts."
+msgstr ""
+
+#: ../../source/templates_cursor.md:44
+msgid "Accent"
+msgstr ""
+
+#: ../../source/templates_cursor.md:45
+msgid ""
+"**Cursor Orange** (`#f54e00`): Brand accent, `--color-accent`. A vibrant "
+"red-orange used for primary CTAs, active links, and brand moments. Warm "
+"and urgent."
+msgstr ""
+
+#: ../../source/templates_cursor.md:46
+msgid ""
+"**Gold** (`#c08532`): Secondary accent, warm gold for premium or "
+"highlighted contexts."
+msgstr ""
+
+#: ../../source/templates_cursor.md:48
+msgid "Semantic"
+msgstr ""
+
+#: ../../source/templates_cursor.md:49
+msgid ""
+"**Error** (`#cf2d56`): `--color-error`. A warm crimson-rose rather than "
+"cold red."
+msgstr ""
+
+#: ../../source/templates_cursor.md:50
+msgid ""
+"**Success** (`#1f8a65`): `--color-success`. A muted teal-green, warm-"
+"shifted."
+msgstr ""
+
+#: ../../source/templates_cursor.md:52
+msgid "Timeline / Feature Colors"
+msgstr ""
+
+#: ../../source/templates_cursor.md:53
+msgid ""
+"**Thinking** (`#dfa88f`): Warm peach for \"thinking\" state in AI "
+"timeline."
+msgstr ""
+
+#: ../../source/templates_cursor.md:54
+msgid "**Grep** (`#9fc9a2`): Soft sage green for search/grep operations."
+msgstr ""
+
+#: ../../source/templates_cursor.md:55
+msgid "**Read** (`#9fbbe0`): Soft blue for file reading operations."
+msgstr ""
+
+#: ../../source/templates_cursor.md:56
+msgid "**Edit** (`#c0a8dd`): Soft lavender for editing operations."
+msgstr ""
+
+#: ../../source/templates_cursor.md:58
+msgid "Surface Scale"
+msgstr ""
+
+#: ../../source/templates_cursor.md:59
+msgid "**Surface 100** (`#f7f7f4`): Lightest button/card surface, barely tinted."
+msgstr ""
+
+#: ../../source/templates_cursor.md:60
+msgid "**Surface 200** (`#f2f1ed`): Primary page background."
+msgstr ""
+
+#: ../../source/templates_cursor.md:61
+msgid "**Surface 300** (`#ebeae5`): Button default background, subtle emphasis."
+msgstr ""
+
+#: ../../source/templates_cursor.md:62
+msgid "**Surface 400** (`#e6e5e0`): Card backgrounds, secondary surfaces."
+msgstr ""
+
+#: ../../source/templates_cursor.md:63
+msgid "**Surface 500** (`#e1e0db`): Tertiary button background, deeper emphasis."
+msgstr ""
+
+#: ../../source/templates_cursor.md:65
+msgid "Border Colors"
+msgstr ""
+
+#: ../../source/templates_cursor.md:66
+msgid ""
+"**Border Primary** (`oklab(0.263084 -0.00230259 0.0124794 / 0.1)`): "
+"Standard border, 10% warm brown in oklab space."
+msgstr ""
+
+#: ../../source/templates_cursor.md:67
+msgid ""
+"**Border Medium** (`oklab(0.263084 -0.00230259 0.0124794 / 0.2)`): "
+"Emphasized border, 20% warm brown."
+msgstr ""
+
+#: ../../source/templates_cursor.md:68
+msgid "**Border Strong** (`rgba(38, 37, 30, 0.55)`): Strong borders, table rules."
+msgstr ""
+
+#: ../../source/templates_cursor.md:69
+msgid ""
+"**Border Solid** (`#26251e`): Full-opacity dark border for maximum "
+"contrast."
+msgstr ""
+
+#: ../../source/templates_cursor.md:70
+msgid "**Border Light** (`#f2f1ed`): Light border matching page background."
+msgstr ""
+
+#: ../../source/templates_cursor.md:72
+msgid "Shadows & Depth"
+msgstr ""
+
+#: ../../source/templates_cursor.md:73
+msgid ""
+"**Card Shadow** (`rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px "
+"14px 32px, oklab(0.263084 -0.00230259 0.0124794 / 0.1) 0px 0px 0px 1px`):"
+" Heavy elevated card with warm oklab border ring."
+msgstr ""
+
+#: ../../source/templates_cursor.md:74
+msgid ""
+"**Ambient Shadow** (`rgba(0,0,0,0.02) 0px 0px 16px, rgba(0,0,0,0.008) 0px"
+" 0px 8px`): Subtle ambient glow for floating elements."
+msgstr ""
+
+#: ../../source/templates_cursor.md:76
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_cursor.md:78
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_cursor.md:79
+msgid ""
+"**Display/Headlines**: `CursorGothic`, with fallbacks: `CursorGothic "
+"Fallback, system-ui, Helvetica Neue, Helvetica, Arial`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:80
+msgid ""
+"**Body/Editorial**: `jjannon`, with fallbacks: `Iowan Old Style, Palatino"
+" Linotype, URW Palladio L, P052, ui-serif, Georgia, Cambria, Times New "
+"Roman, Times`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:81
+msgid ""
+"**Code/Technical**: `berkeleyMono`, with fallbacks: `ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:82
+msgid ""
+"**UI/System**: `system-ui`, with fallbacks: `-apple-system, Segoe UI, "
+"Helvetica Neue, Arial`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:83
+msgid "**Icons**: `CursorIcons16` (icon font at 14px and 12px)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:84
+msgid ""
+"**OpenType Features**: `\"cswh\"` on jjannon body text, `\"ss09\"` on "
+"CursorGothic buttons/captions"
+msgstr ""
+
+#: ../../source/templates_cursor.md:86
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "CursorGothic"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "72px (4.50rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.10 (tight)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "-2.16px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Maximum compression, hero statements"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "36px (2.25rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "-0.72px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Feature sections, CTA headlines"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "26px (1.63rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.25 (tight)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "-0.325px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Card headings, sub-sections"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Title Small"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "22px (1.38rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.30 (tight)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "-0.11px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Smaller titles, list headings"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Body Serif"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "jjannon"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "19.2px (1.20rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Editorial body with `\"cswh\"`"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Body Serif SM"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "17.28px (1.08rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.35"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Standard body text, descriptions"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Body Sans"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "normal/0.08px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "UI body text"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Button Label"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Primary button text"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Button Caption"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "0.14px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Secondary button with `\"ss09\"`"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "11px (0.69rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "400-500"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Small captions, metadata"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "System Heading"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "system-ui"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.55"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "System UI headings"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "System Caption"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "13px (0.81rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "500-600"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "System UI labels"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "System Micro"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.27 (tight)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "0.048px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Uppercase micro labels"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Mono Body"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "berkeleyMono"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "1.67 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Code blocks"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Mono Small"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "-0.275px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Inline code, terminal"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Lato Heading"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Lato"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Lato section headings"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Lato Caption"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "400-600"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Lato captions"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Lato Micro"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "0.053px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Lato small labels"
+msgstr ""
+
+#: ../../source/templates_cursor.md:109
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_cursor.md:110
+msgid ""
+"**Gothic compression for impact**: CursorGothic at display sizes uses "
+"-2.16px letter-spacing at 72px, progressively relaxing: -0.72px at 36px, "
+"-0.325px at 26px, -0.11px at 22px, normal at 16px and below. The tracking"
+" creates a sense of precision engineering."
+msgstr ""
+
+#: ../../source/templates_cursor.md:111
+msgid ""
+"**Serif for soul**: jjannon provides literary warmth. The `\"cswh\"` "
+"feature adds contextual swash alternates that give body text a "
+"calligraphic quality."
+msgstr ""
+
+#: ../../source/templates_cursor.md:112
+msgid ""
+"**Three typographic voices**: Gothic (display/UI), serif "
+"(editorial/body), mono (code/technical). Each serves a distinct "
+"communication purpose."
+msgstr ""
+
+#: ../../source/templates_cursor.md:113
+msgid ""
+"**Weight restraint**: CursorGothic uses weight 400 almost exclusively, "
+"relying on size and tracking for hierarchy rather than weight. System-ui "
+"components use 500-700 for functional emphasis."
+msgstr ""
+
+#: ../../source/templates_cursor.md:115
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_cursor.md:117
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_cursor.md:119
+msgid "**Primary (Warm Surface)**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:120
+msgid "Background: `#ebeae5` (Surface 300)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:121
+msgid "Text: `#26251e` (Cursor Dark)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:122
+msgid "Padding: 10px 12px 10px 14px"
+msgstr ""
+
+#: ../../source/templates_cursor.md:123
+msgid "Radius: 8px"
+msgstr ""
+
+#: ../../source/templates_cursor.md:124
+msgid "Outline: none"
+msgstr ""
+
+#: ../../source/templates_cursor.md:125
+msgid "Hover: text shifts to `var(--color-error)` (`#cf2d56`)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:126
+msgid "Focus shadow: `rgba(0,0,0,0.1) 0px 4px 12px`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:127
+msgid "Use: Primary actions, main CTAs"
+msgstr ""
+
+#: ../../source/templates_cursor.md:129
+msgid "**Secondary Pill**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:130
+msgid "Background: `#e6e5e0` (Surface 400)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:131 ../../source/templates_cursor.md:139
+msgid "Text: `oklab(0.263 / 0.6)` (60% warm brown)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:132
+msgid "Padding: 3px 8px"
+msgstr ""
+
+#: ../../source/templates_cursor.md:133
+msgid "Radius: full pill (33.5M px)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:134
+msgid "Hover: text shifts to `var(--color-error)`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:135
+msgid "Use: Tags, filters, secondary actions"
+msgstr ""
+
+#: ../../source/templates_cursor.md:137
+msgid "**Tertiary Pill**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:138
+msgid "Background: `#e1e0db` (Surface 500)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:140
+msgid "Radius: full pill"
+msgstr ""
+
+#: ../../source/templates_cursor.md:141
+msgid "Use: Active filter state, selected tags"
+msgstr ""
+
+#: ../../source/templates_cursor.md:143
+msgid "**Ghost (Transparent)**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:144
+msgid "Background: `rgba(38, 37, 30, 0.06)` (6% warm brown)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:145
+msgid "Text: `rgba(38, 37, 30, 0.55)` (55% warm brown)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:146
+msgid "Padding: 6px 12px"
+msgstr ""
+
+#: ../../source/templates_cursor.md:147
+msgid "Use: Tertiary actions, dismiss buttons"
+msgstr ""
+
+#: ../../source/templates_cursor.md:149
+msgid "**Light Surface**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:150
+msgid "Background: `#f7f7f4` (Surface 100) or `#f2f1ed` (Surface 200)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:151
+msgid "Text: `#26251e` or `oklab(0.263 / 0.9)` (90%)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:152
+msgid "Padding: 0px 8px 1px 12px"
+msgstr ""
+
+#: ../../source/templates_cursor.md:153
+msgid "Use: Dropdown triggers, subtle interactive elements"
+msgstr ""
+
+#: ../../source/templates_cursor.md:155
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_cursor.md:156
+msgid "Background: `#e6e5e0` or `#f2f1ed`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:157
+msgid "Border: `1px solid oklab(0.263 / 0.1)` (warm brown at 10%)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:158
+msgid "Radius: 8px (standard), 4px (compact), 10px (featured)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:159
+msgid ""
+"Shadow: `rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px 14px 32px` "
+"for elevated cards"
+msgstr ""
+
+#: ../../source/templates_cursor.md:160
+msgid "Hover: shadow intensification"
+msgstr ""
+
+#: ../../source/templates_cursor.md:162
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_cursor.md:163
+msgid "Background: transparent or surface"
+msgstr ""
+
+#: ../../source/templates_cursor.md:164
+msgid "Text: `#26251e`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:165
+msgid "Padding: 8px 8px 6px (textarea)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:166
+msgid "Border: `1px solid oklab(0.263 / 0.1)`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:167
+msgid "Focus: border shifts to `oklab(0.263 / 0.2)` or accent orange"
+msgstr ""
+
+#: ../../source/templates_cursor.md:169
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_cursor.md:170
+msgid "Clean horizontal nav on warm cream background"
+msgstr ""
+
+#: ../../source/templates_cursor.md:171
+msgid "Cursor logotype left-aligned (~96x24px)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:172
+msgid "Links: 14px CursorGothic or system-ui, weight 500"
+msgstr ""
+
+#: ../../source/templates_cursor.md:173
+msgid "CTA button: warm surface with Cursor Dark text"
+msgstr ""
+
+#: ../../source/templates_cursor.md:174
+msgid ""
+"Tab navigation: bottom border `1px solid oklab(0.263 / 0.1)` with active "
+"tab differentiation"
+msgstr ""
+
+#: ../../source/templates_cursor.md:176
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_cursor.md:177
+msgid "Code editor screenshots with `1px solid oklab(0.263 / 0.1)` border"
+msgstr ""
+
+#: ../../source/templates_cursor.md:178
+msgid "Rounded corners: 8px standard"
+msgstr ""
+
+#: ../../source/templates_cursor.md:179
+msgid "AI chat/timeline screenshots dominate feature sections"
+msgstr ""
+
+#: ../../source/templates_cursor.md:180
+msgid "Warm gradient or solid cream backgrounds behind hero images"
+msgstr ""
+
+#: ../../source/templates_cursor.md:182
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_cursor.md:184
+msgid "**AI Timeline**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:185
+msgid ""
+"Vertical timeline showing AI operations: thinking (peach), grep (sage), "
+"read (blue), edit (lavender)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:186
+msgid "Each step uses its semantic color with matching text"
+msgstr ""
+
+#: ../../source/templates_cursor.md:187
+msgid "Connected with vertical lines"
+msgstr ""
+
+#: ../../source/templates_cursor.md:188
+msgid "Core visual metaphor for Cursor's AI-first coding experience"
+msgstr ""
+
+#: ../../source/templates_cursor.md:190
+msgid "**Code Editor Previews**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:191
+msgid "Dark code editor screenshots with warm cream border frame"
+msgstr ""
+
+#: ../../source/templates_cursor.md:192
+msgid "berkeleyMono for code text"
+msgstr ""
+
+#: ../../source/templates_cursor.md:193
+msgid "Syntax highlighting using timeline colors"
+msgstr ""
+
+#: ../../source/templates_cursor.md:195
+msgid "**Pricing Cards**"
+msgstr ""
+
+#: ../../source/templates_cursor.md:196
+msgid "Warm surface backgrounds with bordered containers"
+msgstr ""
+
+#: ../../source/templates_cursor.md:197
+msgid "Feature lists using jjannon serif for readability"
+msgstr ""
+
+#: ../../source/templates_cursor.md:198
+msgid "CTA buttons with accent orange or primary dark styling"
+msgstr ""
+
+#: ../../source/templates_cursor.md:200
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_cursor.md:202
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_cursor.md:203
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_cursor.md:204
+msgid ""
+"Fine scale: 1.5px, 2px, 2.5px, 3px, 4px, 5px, 6px (sub-8px for micro-"
+"adjustments)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:205
+msgid "Standard scale: 8px, 10px, 12px, 14px (derived from extraction)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:206
+msgid "Extended scale (inferred): 16px, 24px, 32px, 48px, 64px, 96px"
+msgstr ""
+
+#: ../../source/templates_cursor.md:207
+msgid "Notable: fine-grained sub-8px increments for precise icon/text alignment"
+msgstr ""
+
+#: ../../source/templates_cursor.md:209
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_cursor.md:210
+msgid "Max content width: approximately 1200px"
+msgstr ""
+
+#: ../../source/templates_cursor.md:211
+msgid "Hero: centered single-column with generous top padding (80-120px)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:212
+msgid "Feature sections: 2-3 column grids for cards and features"
+msgstr ""
+
+#: ../../source/templates_cursor.md:213
+msgid "Full-width sections with warm cream or slightly darker backgrounds"
+msgstr ""
+
+#: ../../source/templates_cursor.md:214
+msgid "Sidebar layouts for documentation and settings pages"
+msgstr ""
+
+#: ../../source/templates_cursor.md:216
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_cursor.md:217
+msgid ""
+"**Warm negative space**: The cream background means whitespace has warmth"
+" and texture, unlike cold white minimalism. Large empty areas feel cozy "
+"rather than clinical."
+msgstr ""
+
+#: ../../source/templates_cursor.md:218
+msgid ""
+"**Compressed text, open layout**: Aggressive negative letter-spacing on "
+"CursorGothic headlines is balanced by generous surrounding margins. Text "
+"is dense; space around it breathes."
+msgstr ""
+
+#: ../../source/templates_cursor.md:219
+msgid ""
+"**Section variation**: Alternating surface tones (cream → lighter cream →"
+" cream) create subtle section differentiation without harsh boundaries."
+msgstr ""
+
+#: ../../source/templates_cursor.md:221
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_cursor.md:222
+msgid "Micro (1.5px): Fine detail elements"
+msgstr ""
+
+#: ../../source/templates_cursor.md:223
+msgid "Small (2px): Inline elements, code spans"
+msgstr ""
+
+#: ../../source/templates_cursor.md:224
+msgid "Medium (3px): Small containers, inline badges"
+msgstr ""
+
+#: ../../source/templates_cursor.md:225
+msgid "Standard (4px): Cards, images, compact buttons"
+msgstr ""
+
+#: ../../source/templates_cursor.md:226
+msgid "Comfortable (8px): Primary buttons, cards, menus"
+msgstr ""
+
+#: ../../source/templates_cursor.md:227
+msgid "Featured (10px): Larger containers, featured cards"
+msgstr ""
+
+#: ../../source/templates_cursor.md:228
+msgid "Full Pill (33.5M px / 9999px): Pill buttons, tags, badges"
+msgstr ""
+
+#: ../../source/templates_cursor.md:230
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Page background, text blocks"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Border Ring (Level 1)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "`oklab(0.263 / 0.1) 0px 0px 0px 1px`"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Standard card/container border (warm oklab)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Border Medium (Level 1b)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "`oklab(0.263 / 0.2) 0px 0px 0px 1px`"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Emphasized borders, active states"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Ambient (Level 2)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "`rgba(0,0,0,0.02) 0px 0px 16px, rgba(0,0,0,0.008) 0px 0px 8px`"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Floating elements, subtle glow"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Elevated Card (Level 3)"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid ""
+"`rgba(0,0,0,0.14) 0px 28px 70px, rgba(0,0,0,0.1) 0px 14px 32px, oklab "
+"ring`"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Modals, popovers, elevated cards"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Focus"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "`rgba(0,0,0,0.1) 0px 4px 12px` on button focus"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Interactive focus feedback"
+msgstr ""
+
+#: ../../source/templates_cursor.md:241
+msgid ""
+"**Shadow Philosophy**: Cursor's depth system is built around two ideas. "
+"First, borders use perceptually uniform oklab color space rather than "
+"rgba, ensuring warm brown borders look consistent across different "
+"background tones. Second, elevation shadows use dramatically large blur "
+"values (28px, 70px) with moderate opacity (0.14, 0.1), creating a "
+"diffused, atmospheric lift rather than hard-edged drop shadows. Cards "
+"don't feel like they float above the page -- they feel like the page has "
+"gently opened a space for them."
+msgstr ""
+
+#: ../../source/templates_cursor.md:243
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_cursor.md:244
+msgid "Warm cream surface variations create subtle tonal depth without shadows"
+msgstr ""
+
+#: ../../source/templates_cursor.md:245
+#, python-format
+msgid "oklab borders at 10% and 20% create a spectrum of edge definition"
+msgstr ""
+
+#: ../../source/templates_cursor.md:246
+msgid ""
+"No harsh divider lines -- section separation through background tone "
+"shifts and spacing"
+msgstr ""
+
+#: ../../source/templates_cursor.md:248
+msgid "7. Interaction & Motion"
+msgstr ""
+
+#: ../../source/templates_cursor.md:250
+msgid "Hover States"
+msgstr ""
+
+#: ../../source/templates_cursor.md:251
+msgid ""
+"Buttons: text color shifts to `--color-error` (`#cf2d56`) on hover -- a "
+"distinctive warm crimson that signals interactivity"
+msgstr ""
+
+#: ../../source/templates_cursor.md:252
+msgid ""
+"Links: color shift to accent orange (`#f54e00`) or underline decoration "
+"with `rgba(38, 37, 30, 0.4)`"
+msgstr ""
+
+#: ../../source/templates_cursor.md:253
+msgid "Cards: shadow intensification on hover (ambient → elevated)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:255
+msgid "Focus States"
+msgstr ""
+
+#: ../../source/templates_cursor.md:256
+msgid ""
+"Shadow-based focus: `rgba(0,0,0,0.1) 0px 4px 12px` for depth-based focus "
+"indication"
+msgstr ""
+
+#: ../../source/templates_cursor.md:257
+msgid "Border focus: `oklab(0.263 / 0.2)` (20% border) for input/form focus"
+msgstr ""
+
+#: ../../source/templates_cursor.md:258
+msgid "Consistent warm tone in all focus states -- no cold blue focus rings"
+msgstr ""
+
+#: ../../source/templates_cursor.md:260
+msgid "Transitions"
+msgstr ""
+
+#: ../../source/templates_cursor.md:261
+msgid "Color transitions: 150ms ease for text/background color changes"
+msgstr ""
+
+#: ../../source/templates_cursor.md:262
+msgid "Shadow transitions: 200ms ease for elevation changes"
+msgstr ""
+
+#: ../../source/templates_cursor.md:263
+msgid "Transform: subtle scale or translate for interactive feedback"
+msgstr ""
+
+#: ../../source/templates_cursor.md:265
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_cursor.md:267
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "<600px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Single column, reduced padding, stacked navigation"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Tablet Small"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "600-768px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "2-column grids begin"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "768-900px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Expanded card grids, sidebar appears"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Desktop Small"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "900-1279px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Full layout forming"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid ">1279px"
+msgstr ""
+
+#: ../../source/templates_cursor.md
+msgid "Full layout, maximum content width"
+msgstr ""
+
+#: ../../source/templates_cursor.md:276
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_cursor.md:277
+msgid "Buttons use comfortable padding (6px-14px vertical, 8px-14px horizontal)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:278
+msgid "Pill buttons maintain tap-friendly sizing with 3px-10px padding"
+msgstr ""
+
+#: ../../source/templates_cursor.md:279
+msgid "Navigation links at 14px with adequate spacing for touch"
+msgstr ""
+
+#: ../../source/templates_cursor.md:281
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_cursor.md:282
+msgid ""
+"Hero: 72px CursorGothic → 36px → 26px on smaller screens, maintaining "
+"proportional letter-spacing"
+msgstr ""
+
+#: ../../source/templates_cursor.md:283
+msgid "Navigation: horizontal links → hamburger menu on mobile"
+msgstr ""
+
+#: ../../source/templates_cursor.md:284
+msgid "Feature cards: 3-column → 2-column → single column stacked"
+msgstr ""
+
+#: ../../source/templates_cursor.md:285
+msgid ""
+"Code editor screenshots: maintain aspect ratio, may shrink with border "
+"treatment preserved"
+msgstr ""
+
+#: ../../source/templates_cursor.md:286
+msgid "Timeline visualization: horizontal → vertical stacking"
+msgstr ""
+
+#: ../../source/templates_cursor.md:287
+msgid "Section spacing: 80px+ → 48px → 32px on mobile"
+msgstr ""
+
+#: ../../source/templates_cursor.md:289
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_cursor.md:290
+msgid "Editor screenshots maintain warm border treatment at all sizes"
+msgstr ""
+
+#: ../../source/templates_cursor.md:291
+msgid "AI timeline adapts from horizontal to vertical layout"
+msgstr ""
+
+#: ../../source/templates_cursor.md:292
+msgid "Product screenshots use responsive images with consistent border radius"
+msgstr ""
+
+#: ../../source/templates_cursor.md:293
+msgid "Full-width hero images scale proportionally"
+msgstr ""
+
+#: ../../source/templates_cursor.md:295
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_cursor.md:297
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_cursor.md:298
+msgid "Primary CTA background: `#ebeae5` (warm cream button)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:299
+msgid "Page background: `#f2f1ed` (warm off-white)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:300
+msgid "Text color: `#26251e` (warm near-black)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:301
+msgid "Secondary text: `rgba(38, 37, 30, 0.55)` (55% warm brown)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:302
+msgid "Accent: `#f54e00` (orange)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:303
+msgid "Error/hover: `#cf2d56` (warm crimson)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:304
+msgid "Success: `#1f8a65` (muted teal)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:305
+msgid ""
+"Border: `oklab(0.263084 -0.00230259 0.0124794 / 0.1)` or `rgba(38, 37, "
+"30, 0.1)` as fallback"
+msgstr ""
+
+#: ../../source/templates_cursor.md:307
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_cursor.md:308
+msgid ""
+"\"Create a hero section on `#f2f1ed` warm cream background. Headline at "
+"72px CursorGothic weight 400, line-height 1.10, letter-spacing -2.16px, "
+"color `#26251e`. Subtitle at 17.28px jjannon weight 400, line-height "
+"1.35, color `rgba(38,37,30,0.55)`. Primary CTA button (`#ebeae5` bg, 8px "
+"radius, 10px 14px padding) with hover text shift to `#cf2d56`.\""
+msgstr ""
+
+#: ../../source/templates_cursor.md:309
+msgid ""
+"\"Design a card: `#e6e5e0` background, border `1px solid "
+"rgba(38,37,30,0.1)`. Radius 8px. Title at 22px CursorGothic weight 400, "
+"letter-spacing -0.11px. Body at 17.28px jjannon weight 400, color "
+"`rgba(38,37,30,0.55)`. Use `#f54e00` for link accents.\""
+msgstr ""
+
+#: ../../source/templates_cursor.md:310
+msgid ""
+"\"Build a pill tag: `#e6e5e0` background, `rgba(38,37,30,0.6)` text, "
+"full-pill radius (9999px), 3px 8px padding, 14px CursorGothic weight "
+"400.\""
+msgstr ""
+
+#: ../../source/templates_cursor.md:311
+msgid ""
+"\"Create navigation: sticky `#f2f1ed` background with backdrop-filter "
+"blur. 14px system-ui weight 500 for links, `#26251e` text. CTA button "
+"right-aligned with `#ebeae5` bg and 8px radius. Bottom border `1px solid "
+"rgba(38,37,30,0.1)`.\""
+msgstr ""
+
+#: ../../source/templates_cursor.md:312
+msgid ""
+"\"Design an AI timeline showing four steps: Thinking (`#dfa88f`), Grep "
+"(`#9fc9a2`), Read (`#9fbbe0`), Edit (`#c0a8dd`). Each step: 14px system-"
+"ui label + 16px CursorGothic description + vertical connecting line in "
+"`rgba(38,37,30,0.1)`.\""
+msgstr ""
+
+#: ../../source/templates_cursor.md:314
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_cursor.md:315
+msgid ""
+"Always use warm tones -- `#f2f1ed` background, `#26251e` text, never pure"
+" white/black for primary surfaces"
+msgstr ""
+
+#: ../../source/templates_cursor.md:316
+msgid ""
+"Letter-spacing scales with font size for CursorGothic: -2.16px at 72px, "
+"-0.72px at 36px, -0.325px at 26px, normal at 16px"
+msgstr ""
+
+#: ../../source/templates_cursor.md:317
+msgid ""
+"Use `rgba(38, 37, 30, alpha)` as a CSS-compatible fallback for oklab "
+"borders"
+msgstr ""
+
+#: ../../source/templates_cursor.md:318
+msgid ""
+"Three fonts, three voices: CursorGothic (display/UI), jjannon "
+"(editorial), berkeleyMono (code)"
+msgstr ""
+
+#: ../../source/templates_cursor.md:319
+msgid ""
+"Pill shapes (9999px radius) for tags and filters; 8px radius for primary "
+"buttons and cards"
+msgstr ""
+
+#: ../../source/templates_cursor.md:320
+msgid ""
+"Hover states use `#cf2d56` text color -- the warm crimson shift is a "
+"signature interaction"
+msgstr ""
+
+#: ../../source/templates_cursor.md:321
+msgid "Shadows use large blur values (28px, 70px) for diffused atmospheric depth"
+msgstr ""
+
+#: ../../source/templates_cursor.md:322
+msgid ""
+"The sub-8px spacing scale (1.5, 2, 2.5, 3, 4, 5, 6px) is critical for "
+"icon/text micro-alignment"
+msgstr ""
+

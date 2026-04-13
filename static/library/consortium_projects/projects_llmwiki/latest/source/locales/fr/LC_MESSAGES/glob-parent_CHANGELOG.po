@@ -1,0 +1,275 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/glob-parent_CHANGELOG.md:1
+msgid ""
+"[5.1.2](https://github.com/gulpjs/glob-parent/compare/v5.1.1...v5.1.2) "
+"(2021-03-06)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:4
+#: ../../source/glob-parent_CHANGELOG.md:11
+#: ../../source/glob-parent_CHANGELOG.md:59
+#: ../../source/glob-parent_CHANGELOG.md:71
+msgid "Bug Fixes"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:6
+msgid ""
+"eliminate ReDoS ([#36](https://github.com/gulpjs/glob-parent/issues/36)) "
+"([f923116](https://github.com/gulpjs/glob-"
+"parent/commit/f9231168b0041fea3f8f954b3cceb56269fc6366))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:8
+msgid ""
+"[5.1.1](https://github.com/gulpjs/glob-parent/compare/v5.1.0...v5.1.1) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:13
+msgid ""
+"unescape exclamation mark ([#26](https://github.com/gulpjs/glob-"
+"parent/issues/26)) ([a98874f](https://github.com/gulpjs/glob-"
+"parent/commit/a98874f1a59e407f4fb1beb0db4efa8392da60bb))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:15
+msgid ""
+"[5.1.0](https://github.com/gulpjs/glob-parent/compare/v5.0.0...v5.1.0) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:18
+#: ../../source/glob-parent_CHANGELOG.md:41
+#: ../../source/glob-parent_CHANGELOG.md:50
+#: ../../source/glob-parent_CHANGELOG.md:66
+#: ../../source/glob-parent_CHANGELOG.md:82
+#: ../../source/glob-parent_CHANGELOG.md:89
+#: ../../source/glob-parent_CHANGELOG.md:105
+msgid "Features"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:20
+msgid ""
+"add `flipBackslashes` option to disable auto conversion of slashes "
+"(closes [#24](https://github.com/gulpjs/glob-parent/issues/24)) "
+"([#25](https://github.com/gulpjs/glob-parent/issues/25)) "
+"([eecf91d](https://github.com/gulpjs/glob-"
+"parent/commit/eecf91d5e3834ed78aee39c4eaaae654d76b87b3))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:22
+msgid ""
+"[5.0.0](https://github.com/gulpjs/glob-parent/compare/v4.0.0...v5.0.0) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:25
+#: ../../source/glob-parent_CHANGELOG.md:36
+#: ../../source/glob-parent_CHANGELOG.md:78
+msgid "⚠ BREAKING CHANGES"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:27
+msgid "Drop support for node <6 & bump dependencies"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:29
+msgid "Miscellaneous Chores"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:31
+msgid ""
+"Drop support for node <6 & bump dependencies "
+"([896c0c0](https://github.com/gulpjs/glob-"
+"parent/commit/896c0c00b4e7362f60b96e7fc295ae929245255a))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:33
+msgid ""
+"[4.0.0](https://github.com/gulpjs/glob-parent/compare/v3.1.0...v4.0.0) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:38
+msgid ""
+"question marks are valid path characters on Windows so avoid flagging as "
+"a glob when alone"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:39
+msgid "Update is-glob dependency"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:43
+msgid ""
+"hoist regexps and strings for performance gains "
+"([4a80667](https://github.com/gulpjs/glob-"
+"parent/commit/4a80667c69355c76a572a5892b0f133c8e1f457e))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:44
+msgid ""
+"question marks are valid path characters on Windows so avoid flagging as "
+"a glob when alone ([2a551dd](https://github.com/gulpjs/glob-"
+"parent/commit/2a551dd0dc3235e78bf3c94843d4107072d17841))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:45
+msgid ""
+"Update is-glob dependency ([e41fcd8](https://github.com/gulpjs/glob-"
+"parent/commit/e41fcd895d1f7bc617dba45c9d935a7949b9c281))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:47
+msgid ""
+"[3.1.0](https://github.com/gulpjs/glob-parent/compare/v3.0.1...v3.1.0) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:52
+msgid ""
+"allow basic win32 backslash use ([272afa5](https://github.com/gulpjs"
+"/glob-parent/commit/272afa5fd070fc0f796386a5993d4ee4a846988b))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:53
+msgid ""
+"handle extglobs (parentheses) containing separators "
+"([7db1bdb](https://github.com/gulpjs/glob-"
+"parent/commit/7db1bdb0756e55fd14619e8ce31aa31b17b117fd))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:54
+msgid ""
+"new approach to braces/brackets handling "
+"([8269bd8](https://github.com/gulpjs/glob-"
+"parent/commit/8269bd89290d99fac9395a354fb56fdcdb80f0be))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:55
+msgid ""
+"pre-process braces/brackets sections ([9ef8a87](https://github.com/gulpjs"
+"/glob-parent/commit/9ef8a87f66b1a43d0591e7a8e4fc5a18415ee388))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:56
+msgid ""
+"preserve escaped brace/bracket at end of string "
+"([8cfb0ba](https://github.com/gulpjs/glob-"
+"parent/commit/8cfb0ba84202d51571340dcbaf61b79d16a26c76))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:61
+msgid ""
+"trailing escaped square brackets ([99ec9fe](https://github.com/gulpjs"
+"/glob-parent/commit/99ec9fecc60ee488ded20a94dd4f18b4f55c4ccf))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:63
+msgid ""
+"[3.0.1](https://github.com/gulpjs/glob-parent/compare/v3.0.0...v3.0.1) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:68
+msgid ""
+"use path-dirname ponyfill ([cdbea5f](https://github.com/gulpjs/glob-"
+"parent/commit/cdbea5f32a58a54e001a75ddd7c0fccd4776aacc))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:73
+msgid ""
+"unescape glob-escaped dirnames on output "
+"([598c533](https://github.com/gulpjs/glob-"
+"parent/commit/598c533bdf49c1428bc063aa9b8db40c5a86b030))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:75
+msgid ""
+"[3.0.0](https://github.com/gulpjs/glob-parent/compare/v2.0.0...v3.0.0) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:80
+msgid "update is-glob dependency"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:84
+msgid ""
+"update is-glob dependency ([5c5f8ef](https://github.com/gulpjs/glob-"
+"parent/commit/5c5f8efcee362a8e7638cf8220666acd8784f6bd))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:86
+msgid ""
+"[2.0.0](https://github.com/gulpjs/glob-parent/compare/v1.3.0...v2.0.0) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:91
+msgid ""
+"move up to dirname regardless of glob characters "
+"([f97fb83](https://github.com/gulpjs/glob-"
+"parent/commit/f97fb83be2e0a9fc8d3b760e789d2ecadd6aa0c2))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:93
+msgid ""
+"[1.3.0](https://github.com/gulpjs/glob-parent/compare/v1.2.0...v1.3.0) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:95
+msgid ""
+"[1.2.0](https://github.com/gulpjs/glob-parent/compare/v1.1.0...v1.2.0) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:98
+msgid "Reverts"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:100
+msgid ""
+"feat: make regex test strings smaller "
+"([dc80fa9](https://github.com/gulpjs/glob-"
+"parent/commit/dc80fa9658dca20549cfeba44bbd37d5246fcce0))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:102
+msgid ""
+"[1.1.0](https://github.com/gulpjs/glob-parent/compare/v1.0.0...v1.1.0) "
+"(2021-01-27)"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:107
+msgid ""
+"make regex test strings smaller ([cd83220](https://github.com/gulpjs"
+"/glob-parent/commit/cd832208638f45169f986d80fcf66e401f35d233))"
+msgstr ""
+
+#: ../../source/glob-parent_CHANGELOG.md:109
+msgid "1.0.0 (2021-01-27)"
+msgstr ""
+

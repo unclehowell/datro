@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/json-schema-traverse_README.md:1
+msgid "json-schema-traverse"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:2
+msgid "Traverse JSON Schema passing each schema object to callback"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:4
+msgid ""
+"[![Build Status](https://travis-ci.org/epoberezkin/json-schema-"
+"traverse.svg?branch=master)](https://travis-ci.org/epoberezkin/json-"
+"schema-traverse) [![npm version](https://badge.fury.io/js/json-schema-"
+"traverse.svg)](https://www.npmjs.com/package/json-schema-traverse) "
+"[![Coverage Status](https://coveralls.io/repos/github/epoberezkin/json-"
+"schema-"
+"traverse/badge.svg?branch=master)](https://coveralls.io/github/epoberezkin"
+"/json-schema-traverse?branch=master)"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:4
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:4
+msgid "npm version"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:4
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:9
+msgid "Install"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:16
+msgid "Usage"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:48
+#, python-brace-format
+msgid ""
+"Callback function `cb` is called for each schema object (not including "
+"draft-06 boolean schemas), including the root schema, in pre-order "
+"traversal. Schema references ($ref) are not resolved, they are passed as "
+"is.  Alternatively, you can pass a `{pre, post}` object as `cb`, and then"
+" `pre` will be called before traversing child elements, and `post` will "
+"be called after all child elements have been traversed."
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:50
+msgid "Callback is passed these parameters:"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:52
+msgid "_schema_: the current schema object"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:53
+msgid "_JSON pointer_: from the root schema to the current schema object"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:54
+msgid "_root schema_: the schema passed to `traverse` object"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:55
+msgid ""
+"_parent JSON pointer_: from the root schema to the parent schema object "
+"(see below)"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:56
+msgid ""
+"_parent keyword_: the keyword inside which this schema appears (e.g. "
+"`properties`, `anyOf`, etc.)"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:57
+#, python-brace-format
+msgid ""
+"_parent schema_: not necessarily parent object/array; in the example "
+"above the parent schema for `{type: 'string'}` is the root schema"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:58
+#, python-brace-format
+msgid ""
+"_index/property_: index or property name in the array/object containing "
+"multiple schemas; in the example above for `{type: 'string'}` the "
+"property name is `'foo'`"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:61
+msgid "Traverse objects in all unknown keywords"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:78
+msgid ""
+"Without option `allKeys: true` callback will be called only with root "
+"schema."
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:81
+msgid "License"
+msgstr ""
+
+#: ../../source/json-schema-traverse_README.md:83
+msgid ""
+"[MIT](https://github.com/epoberezkin/json-schema-"
+"traverse/blob/master/LICENSE)"
+msgstr ""
+

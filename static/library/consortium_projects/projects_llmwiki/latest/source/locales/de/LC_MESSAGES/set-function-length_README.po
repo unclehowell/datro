@@ -1,0 +1,93 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/set-function-length_README.md:1
+msgid ""
+"set-function-length <sup>[![Version Badge][npm-version-svg]][package-"
+"url]</sup>"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:1
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:3
+msgid ""
+"[![github actions][actions-image]][actions-url] [![coverage][codecov-"
+"image]][codecov-url] [![License][license-image]][license-url] "
+"[![Downloads][downloads-image]][downloads-url]"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:3
+msgid "github actions"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:3
+msgid "coverage"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:3
+msgid "License"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:8
+msgid "[![npm badge][npm-badge-png]][package-url]"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:8
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:10
+msgid "Set a function’s length."
+msgstr ""
+
+#: ../../source/set-function-length_README.md:12
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:13
+msgid "`fn`: the function"
+msgstr ""
+
+#: ../../source/set-function-length_README.md:14
+msgid "`length`: the new length. Must be an integer between 0 and 2**32."
+msgstr ""
+
+#: ../../source/set-function-length_README.md:15
+msgid ""
+"`loose`: Optional. If true, and the length fails to be set, do not throw."
+" Default false."
+msgstr ""
+
+#: ../../source/set-function-length_README.md:17
+msgid "Returns `fn`."
+msgstr ""
+
+#: ../../source/set-function-length_README.md:19
+msgid "Usage"
+msgstr ""
+

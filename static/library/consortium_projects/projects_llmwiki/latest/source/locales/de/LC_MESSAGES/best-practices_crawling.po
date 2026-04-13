@@ -1,0 +1,152 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/best-practices_crawling.md:1
+msgid "Crawling"
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:3
+msgid ""
+"[RFC 9309](https://datatracker.ietf.org/doc/html/rfc9309) defines "
+"crawlers as automated clients."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:5
+msgid ""
+"Some web servers may reject requests that omit the `User-Agent` header or"
+" that use common defaults such as `'curl/7.79.1'`."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:7
+msgid ""
+"In **undici**, the default user agent is `'undici'`. Since undici is "
+"integrated into Node.js core as the implementation of `fetch()`, requests"
+" made via `fetch()` use `'node'` as the default user agent."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:9
+msgid ""
+"It is recommended to specify a **custom `User-Agent` header** when "
+"implementing crawlers. Providing a descriptive user agent allows servers "
+"to correctly identify the client and reduces the likelihood of requests "
+"being denied."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:11
+msgid ""
+"A user agent string should include sufficient detail to identify the "
+"crawler and provide contact information. For example:"
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:17
+msgid ""
+"When adding contact details, avoid using personal identifiers such as "
+"your own name or a private email address—especially in a professional or "
+"employment context. Instead, use a role-based or organizational contact "
+"(e.g., crawler-team@company.com) to protect individual privacy while "
+"still enabling communication."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:19
+msgid ""
+"If a crawler behaves unexpectedly—for example, due to misconfiguration or"
+" implementation errors—server administrators can use the information in "
+"the user agent to contact the operator and coordinate an appropriate "
+"resolution."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:21
+msgid ""
+"The `User-Agent` header can be set on individual requests or applied "
+"globally by configuring a custom dispatcher."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:23
+msgid "**Example: setting a `User-Agent` per request**"
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:35
+msgid "Best Practices for Crawlers"
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:37
+msgid ""
+"When developing a crawler, the following practices are recommended in "
+"addition to setting a descriptive `User-Agent` header:"
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:39
+msgid ""
+"**Respect `robots.txt`** Follow the directives defined in the target "
+"site’s `robots.txt` file, including disallowed paths and optional crawl-"
+"delay settings (see [W3C "
+"guidelines](https://www.w3.org/wiki/Write_Web_Crawler))."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:42
+msgid ""
+"**Rate limiting** Regulate request frequency to avoid imposing excessive "
+"load on servers. Introduce delays between requests or limit the number of"
+" concurrent requests. The W3C suggests at least one second between "
+"requests."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:45
+msgid ""
+"**Error handling** Implement retry logic with exponential backoff for "
+"transient failures, and stop requests when persistent errors occur (e.g.,"
+" HTTP 403 or 429)."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:48
+msgid ""
+"**Monitoring and logging** Track request volume, response codes, and "
+"error rates to detect misbehavior and address issues proactively."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:51
+msgid ""
+"**Contact information** Always include valid and current contact details "
+"in the `User-Agent` string so that administrators can reach the crawler "
+"operator if necessary."
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:54
+msgid "References and Further Reading"
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:56
+msgid ""
+"[RFC 9309: The Robots Exclusion "
+"Protocol](https://datatracker.ietf.org/doc/html/rfc9309)"
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:57
+msgid "[W3C Wiki: Write Web Crawler](https://www.w3.org/wiki/Write_Web_Crawler)"
+msgstr ""
+
+#: ../../source/best-practices_crawling.md:58
+msgid ""
+"[Ethical Web Crawling (WWW 2010 Conference "
+"Paper)](https://archives.iw3c2.org/www2010/proceedings/www/p1101.pdf)"
+msgstr ""
+

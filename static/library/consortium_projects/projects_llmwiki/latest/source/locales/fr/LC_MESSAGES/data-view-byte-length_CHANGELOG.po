@@ -1,0 +1,159 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:1
+msgid "Changelog"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:3
+msgid "All notable changes to this project will be documented in this file."
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:5
+msgid ""
+"The format is based on [Keep a "
+"Changelog](https://keepachangelog.com/en/1.0.0/) and this project adheres"
+" to [Semantic Versioning](https://semver.org/spec/v2.0.0.html)."
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:8
+msgid ""
+"[v1.0.2](https://github.com/inspect-js/data-view-byte-"
+"length/compare/v1.0.1...v1.0.2) - 2024-12-19"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:10
+#: ../../source/data-view-byte-length_CHANGELOG.md:22
+#: ../../source/data-view-byte-length_CHANGELOG.md:31
+msgid "Commits"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:12
+msgid ""
+"[readme] update URLs [`79df46c`](https://github.com/inspect-js/data-view-"
+"byte-length/commit/79df46cdf4c551d83059335ace8b8550369710b0)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:13
+msgid ""
+"[actions] split out node 10-20, and 20+ [`2890929`](https://github.com"
+"/inspect-js/data-view-byte-"
+"length/commit/289092965343dfa6fcc931c32ecd1c1286f5f2dc)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:14
+msgid ""
+"[Dev Deps] update `@arethetypeswrong/cli`, `@ljharb/eslint-config`, "
+"`@ljharb/tsconfig`, `@types/object-inspect`, `@types/tape`, `auto-"
+"changelog`, `es-value-fixtures`, `object-inspect`, `tape` "
+"[`97fac7f`](https://github.com/inspect-js/data-view-byte-"
+"length/commit/97fac7fb6c2f3655c9755d9dcf3569cdf6899635)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:15
+msgid ""
+"[Refactor] use `call-bound` directly [`56f17fa`](https://github.com"
+"/inspect-js/data-view-byte-"
+"length/commit/56f17fa583a963c2a6d2da5f2db00f7725714533)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:16
+msgid ""
+"[Deps] update `call-bind`, `is-data-view` [`254a502`](https://github.com"
+"/inspect-js/data-view-byte-"
+"length/commit/254a5026c0201eb35d20722af2993e0412b2f2ea)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:17
+msgid ""
+"[Tests] replace `aud` with `npm audit` [`7158679`](https://github.com"
+"/inspect-js/data-view-byte-"
+"length/commit/7158679d1ef0e15ccf64b6d0169413ed8351f243)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:18
+msgid ""
+"[Dev Deps] update `@ljharb/tsconfig` [`ed63290`](https://github.com"
+"/inspect-js/data-view-byte-"
+"length/commit/ed63290bc162fe5a9086412fc6099dd49c70d474)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:20
+msgid ""
+"[v1.0.1](https://github.com/inspect-js/data-view-byte-"
+"length/compare/v1.0.0...v1.0.1) - 2024-03-08"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:24
+msgid ""
+"[types] use shared tsconfig [`0d5873c`](https://github.com/inspect-js"
+"/data-view-byte-length/commit/0d5873c9fddd413bacbb3a2c32e7e1a7f1f5bd2c)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:25
+msgid ""
+"[Dev Deps] update `@arethetypeswrong/cli`, `tape` "
+"[`13c1eaf`](https://github.com/inspect-js/data-view-byte-"
+"length/commit/13c1eafea562993c7d15a450e86d2ee7a1aa8299)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:26
+msgid ""
+"[patch] fix function name [`a061e7b`](https://github.com/inspect-js/data-"
+"view-byte-length/commit/a061e7b457f53bdc39716dacdddbe558ee790745)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:27
+msgid ""
+"[Deps] update `call-bind` [`6603851`](https://github.com/inspect-js/data-"
+"view-byte-length/commit/6603851eef423c5762841221f97abfdc905c8bde)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:29
+msgid "v1.0.0 - 2024-03-04"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:33
+msgid ""
+"Initial implementation, tests, readme, types "
+"[`79ad058`](https://github.com/inspect-js/data-view-byte-"
+"length/commit/79ad058a73a4f8425e8ad034211dfc39e643dc86)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:34
+msgid ""
+"Initial commit [`1a11313`](https://github.com/inspect-js/data-view-byte-"
+"length/commit/1a113138783a815f66fd000a9f9c89fdbe8c98fb)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:35
+msgid ""
+"npm init [`aac0108`](https://github.com/inspect-js/data-view-byte-"
+"length/commit/aac010820b20b8604d33e5a74b51591f19f553e2)"
+msgstr ""
+
+#: ../../source/data-view-byte-length_CHANGELOG.md:36
+msgid ""
+"Only apps should have lockfiles [`cdf1a15`](https://github.com/inspect-js"
+"/data-view-byte-length/commit/cdf1a15d4c201137982e1e703d56a42582c6d246)"
+msgstr ""
+

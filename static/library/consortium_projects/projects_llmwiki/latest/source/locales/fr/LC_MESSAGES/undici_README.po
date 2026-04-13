@@ -1,0 +1,1285 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/undici_README.md:1
+msgid "undici"
+msgstr ""
+
+#: ../../source/undici_README.md:3
+msgid ""
+"[![Node "
+"CI](https://github.com/nodejs/undici/actions/workflows/ci.yml/badge.svg)](https://github.com/nodejs/undici/actions/workflows/nodejs.yml)"
+" [![neostandard javascript style](https://img.shields.io/badge/neo-"
+"standard-"
+"7fffff?style=flat\\&labelColor=ff80ff)](https://github.com/neostandard/neostandard)"
+" [![npm "
+"version](https://badge.fury.io/js/undici.svg)](https://badge.fury.io/js/undici)"
+" "
+"[![codecov](https://codecov.io/gh/nodejs/undici/branch/main/graph/badge.svg?token=yZL6LtXkOA)](https://codecov.io/gh/nodejs/undici)"
+msgstr ""
+
+#: ../../source/undici_README.md:3
+msgid "Node CI"
+msgstr ""
+
+#: ../../source/undici_README.md:3
+msgid "neostandard javascript style"
+msgstr ""
+
+#: ../../source/undici_README.md:3
+msgid "npm version"
+msgstr ""
+
+#: ../../source/undici_README.md:3
+msgid "codecov"
+msgstr ""
+
+#: ../../source/undici_README.md:5
+msgid "An HTTP/1.1 client, written from scratch for Node.js."
+msgstr ""
+
+#: ../../source/undici_README.md:7
+msgid ""
+"Undici means eleven in Italian. 1.1 -> 11 -> Eleven -> Undici. It is also"
+" a Stranger Things reference."
+msgstr ""
+
+#: ../../source/undici_README.md:10
+msgid "How to get involved"
+msgstr ""
+
+#: ../../source/undici_README.md:12
+msgid ""
+"Have a question about using Undici? Open a [Q&A "
+"Discussion](https://github.com/nodejs/undici/discussions/new) or join our"
+" official OpenJS [Slack](https://openjs-"
+"foundation.slack.com/archives/C01QF9Q31QD) channel."
+msgstr ""
+
+#: ../../source/undici_README.md:14
+msgid ""
+"Looking to contribute? Start by reading the [contributing "
+"guide](./CONTRIBUTING.md)"
+msgstr ""
+
+#: ../../source/undici_README.md:16
+msgid "Install"
+msgstr ""
+
+#: ../../source/undici_README.md:22
+msgid "Benchmarks"
+msgstr ""
+
+#: ../../source/undici_README.md:24
+msgid ""
+"The benchmark is a simple getting data "
+"[example](https://github.com/nodejs/undici/blob/main/benchmarks/benchmark.js)"
+" using a 50 TCP connections with a pipelining depth of 10 running on Node"
+" 22.11.0."
+msgstr ""
+
+#: ../../source/undici_README.md:46
+msgid "Undici vs. Fetch"
+msgstr ""
+
+#: ../../source/undici_README.md:48
+msgid "Overview"
+msgstr ""
+
+#: ../../source/undici_README.md:50
+msgid ""
+"Node.js includes a built-in `fetch()` implementation powered by undici "
+"starting from Node.js v18. However, there are important differences "
+"between using the built-in fetch and installing undici as a separate "
+"module."
+msgstr ""
+
+#: ../../source/undici_README.md:52
+msgid "Built-in Fetch (Node.js v18+)"
+msgstr ""
+
+#: ../../source/undici_README.md:54
+msgid "Node.js's built-in fetch is powered by a bundled version of undici:"
+msgstr ""
+
+#: ../../source/undici_README.md:65 ../../source/undici_README.md:98
+msgid "**Pros:**"
+msgstr ""
+
+#: ../../source/undici_README.md:66
+msgid "No additional dependencies required"
+msgstr ""
+
+#: ../../source/undici_README.md:67
+msgid "Works across different JavaScript runtimes"
+msgstr ""
+
+#: ../../source/undici_README.md:68
+msgid "Automatic compression handling (gzip, deflate, br)"
+msgstr ""
+
+#: ../../source/undici_README.md:69
+msgid "Built-in caching support (in development)"
+msgstr ""
+
+#: ../../source/undici_README.md:71 ../../source/undici_README.md:108
+msgid "**Cons:**"
+msgstr ""
+
+#: ../../source/undici_README.md:72
+msgid "Limited to the undici version bundled with your Node.js version"
+msgstr ""
+
+#: ../../source/undici_README.md:73
+msgid "Less control over connection pooling and advanced features"
+msgstr ""
+
+#: ../../source/undici_README.md:74
+msgid "Error handling follows Web API standards (errors wrapped in `TypeError`)"
+msgstr ""
+
+#: ../../source/undici_README.md:75
+msgid "Performance overhead due to Web Streams implementation"
+msgstr ""
+
+#: ../../source/undici_README.md:77
+msgid "Undici Module"
+msgstr ""
+
+#: ../../source/undici_README.md:79
+msgid ""
+"Installing undici as a separate module gives you access to the latest "
+"features and APIs:"
+msgstr ""
+
+#: ../../source/undici_README.md:99
+msgid "Latest undici features and bug fixes"
+msgstr ""
+
+#: ../../source/undici_README.md:100
+msgid "Access to advanced APIs (`request`, `stream`, `pipeline`)"
+msgstr ""
+
+#: ../../source/undici_README.md:101
+msgid "Fine-grained control over connection pooling"
+msgstr ""
+
+#: ../../source/undici_README.md:102
+msgid "Better error handling with clearer error messages"
+msgstr ""
+
+#: ../../source/undici_README.md:103
+msgid "Superior performance, especially with `undici.request`"
+msgstr ""
+
+#: ../../source/undici_README.md:104
+msgid "HTTP/1.1 pipelining support"
+msgstr ""
+
+#: ../../source/undici_README.md:105
+msgid "Custom interceptors and middleware"
+msgstr ""
+
+#: ../../source/undici_README.md:106
+msgid "Advanced features like `ProxyAgent`, `Socks5Agent`, `MockAgent`"
+msgstr ""
+
+#: ../../source/undici_README.md:109
+msgid "Additional dependency to manage"
+msgstr ""
+
+#: ../../source/undici_README.md:110
+msgid "Larger bundle size"
+msgstr ""
+
+#: ../../source/undici_README.md:112
+msgid "When to Use Each"
+msgstr ""
+
+#: ../../source/undici_README.md:114
+msgid "Use Built-in Fetch When:"
+msgstr ""
+
+#: ../../source/undici_README.md:115
+msgid "You want zero dependencies"
+msgstr ""
+
+#: ../../source/undici_README.md:116
+msgid "Building isomorphic code that runs in browsers and Node.js"
+msgstr ""
+
+#: ../../source/undici_README.md:117
+msgid "Publishing to npm and want to maximize compatibility with JS runtimes"
+msgstr ""
+
+#: ../../source/undici_README.md:118
+msgid "Simple HTTP requests without advanced configuration"
+msgstr ""
+
+#: ../../source/undici_README.md:119
+msgid "You're publishing to npm and you want to maximize compatiblity"
+msgstr ""
+
+#: ../../source/undici_README.md:120
+msgid "You don't depend on features from a specific version of undici"
+msgstr ""
+
+#: ../../source/undici_README.md:122
+msgid "Use Undici Module When:"
+msgstr ""
+
+#: ../../source/undici_README.md:123
+msgid "You need the latest undici features and performance improvements"
+msgstr ""
+
+#: ../../source/undici_README.md:124
+msgid "You require advanced connection pooling configuration"
+msgstr ""
+
+#: ../../source/undici_README.md:125
+msgid ""
+"You need APIs not available in the built-in fetch (`ProxyAgent`, "
+"`Socks5Agent`, `MockAgent`, etc.)"
+msgstr ""
+
+#: ../../source/undici_README.md:126
+msgid "Performance is critical (use `undici.request` for maximum speed)"
+msgstr ""
+
+#: ../../source/undici_README.md:127
+msgid "You want better error handling and debugging capabilities"
+msgstr ""
+
+#: ../../source/undici_README.md:128
+msgid "You need HTTP/1.1 pipelining or advanced interceptors"
+msgstr ""
+
+#: ../../source/undici_README.md:129
+msgid "You prefer decoupled protocol and API interfaces"
+msgstr ""
+
+#: ../../source/undici_README.md:131
+msgid "Performance Comparison"
+msgstr ""
+
+#: ../../source/undici_README.md:133
+msgid "Based on benchmarks, here's the typical performance hierarchy:"
+msgstr ""
+
+#: ../../source/undici_README.md:135
+msgid "**`undici.request()`** - Fastest, most efficient"
+msgstr ""
+
+#: ../../source/undici_README.md:136
+msgid "**`undici.fetch()`** - Good performance, standard compliance"
+msgstr ""
+
+#: ../../source/undici_README.md:137
+msgid "**Node.js `http`/`https`** - Baseline performance"
+msgstr ""
+
+#: ../../source/undici_README.md:139
+msgid "Migration Guide"
+msgstr ""
+
+#: ../../source/undici_README.md:141
+msgid "If you're currently using built-in fetch and want to migrate to undici:"
+msgstr ""
+
+#: ../../source/undici_README.md:157
+msgid "Keep `fetch` and `FormData` together"
+msgstr ""
+
+#: ../../source/undici_README.md:159
+msgid ""
+"When you send a `FormData` body, keep `fetch` and `FormData` from the "
+"same implementation."
+msgstr ""
+
+#: ../../source/undici_README.md:162
+msgid "Use one of these patterns:"
+msgstr ""
+
+#: ../../source/undici_README.md:186
+msgid ""
+"If you want the installed `undici` package to provide the globals, call "
+"`install()` first:"
+msgstr ""
+
+#: ../../source/undici_README.md:202
+msgid ""
+"`install()` replaces the global `fetch`, `Headers`, `Response`, "
+"`Request`, and `FormData` implementations with undici's versions, so they"
+" all match."
+msgstr ""
+
+#: ../../source/undici_README.md:205
+msgid ""
+"Avoid mixing a global `FormData` with `undici.fetch()`, or "
+"`undici.FormData` with the built-in global `fetch()`."
+msgstr ""
+
+#: ../../source/undici_README.md:208
+msgid "Version Compatibility"
+msgstr ""
+
+#: ../../source/undici_README.md:210
+msgid ""
+"You can check which version of undici is bundled with your Node.js "
+"version:"
+msgstr ""
+
+#: ../../source/undici_README.md:216
+msgid ""
+"Installing undici as a module allows you to use a newer version than "
+"what's bundled with Node.js, giving you access to the latest features and"
+" performance improvements."
+msgstr ""
+
+#: ../../source/undici_README.md:218
+msgid "Quick Start"
+msgstr ""
+
+#: ../../source/undici_README.md:220
+msgid "Basic Request"
+msgstr ""
+
+#: ../../source/undici_README.md:240
+msgid "Using Cache Interceptor"
+msgstr ""
+
+#: ../../source/undici_README.md:242
+msgid ""
+"Undici provides a powerful HTTP caching interceptor that follows HTTP "
+"caching best practices. Here's how to use it:"
+msgstr ""
+
+#: ../../source/undici_README.md:278
+msgid "Key Features:"
+msgstr ""
+
+#: ../../source/undici_README.md:279
+msgid "**Automatic Caching**: Respects `Cache-Control` and `Expires` headers"
+msgstr ""
+
+#: ../../source/undici_README.md:280
+msgid "**Validation**: Supports `ETag` and `Last-Modified` validation"
+msgstr ""
+
+#: ../../source/undici_README.md:281
+msgid "**Storage Options**: In-memory or persistent SQLite storage"
+msgstr ""
+
+#: ../../source/undici_README.md:282
+msgid "**Flexible**: Configure cache size, TTL, and more"
+msgstr ""
+
+#: ../../source/undici_README.md:284
+msgid "Global Installation"
+msgstr ""
+
+#: ../../source/undici_README.md:286
+msgid ""
+"Undici provides an `install()` function to add all WHATWG fetch classes "
+"to `globalThis`, making them available globally:"
+msgstr ""
+
+#: ../../source/undici_README.md:306
+msgid "The `install()` function adds the following classes to `globalThis`:"
+msgstr ""
+
+#: ../../source/undici_README.md:308
+msgid "`fetch` - The fetch function"
+msgstr ""
+
+#: ../../source/undici_README.md:309
+msgid "`Headers` - HTTP headers management"
+msgstr ""
+
+#: ../../source/undici_README.md:310
+msgid "`Response` - HTTP response representation"
+msgstr ""
+
+#: ../../source/undici_README.md:311
+msgid "`Request` - HTTP request representation"
+msgstr ""
+
+#: ../../source/undici_README.md:312
+msgid "`FormData` - Form data handling"
+msgstr ""
+
+#: ../../source/undici_README.md:313
+msgid "`WebSocket` - WebSocket client"
+msgstr ""
+
+#: ../../source/undici_README.md:314
+msgid "`CloseEvent`, `ErrorEvent`, `MessageEvent` - WebSocket events"
+msgstr ""
+
+#: ../../source/undici_README.md:315
+msgid "`EventSource` - Server-sent events client"
+msgstr ""
+
+#: ../../source/undici_README.md:317
+msgid ""
+"When you call `install()`, these globals come from the same undici "
+"implementation. For example, global `fetch` and global `FormData` will "
+"both be undici's versions, which is the recommended setup if you want to "
+"use undici through globals."
+msgstr ""
+
+#: ../../source/undici_README.md:322
+msgid "This is useful for:"
+msgstr ""
+
+#: ../../source/undici_README.md:323
+msgid "Polyfilling environments that don't have fetch"
+msgstr ""
+
+#: ../../source/undici_README.md:324
+msgid "Ensuring consistent fetch behavior across different Node.js versions"
+msgstr ""
+
+#: ../../source/undici_README.md:325
+msgid ""
+"Making undici's implementations available globally for libraries that "
+"expect them"
+msgstr ""
+
+#: ../../source/undici_README.md:327
+msgid "Body Mixins"
+msgstr ""
+
+#: ../../source/undici_README.md:329
+msgid ""
+"The `body` mixins are the most common way to format the request/response "
+"body. Mixins include:"
+msgstr ""
+
+#: ../../source/undici_README.md:331
+msgid "[`.arrayBuffer()`](https://fetch.spec.whatwg.org/#dom-body-arraybuffer)"
+msgstr ""
+
+#: ../../source/undici_README.md:332
+msgid "[`.blob()`](https://fetch.spec.whatwg.org/#dom-body-blob)"
+msgstr ""
+
+#: ../../source/undici_README.md:333
+msgid "[`.bytes()`](https://fetch.spec.whatwg.org/#dom-body-bytes)"
+msgstr ""
+
+#: ../../source/undici_README.md:334
+msgid "[`.json()`](https://fetch.spec.whatwg.org/#dom-body-json)"
+msgstr ""
+
+#: ../../source/undici_README.md:335
+msgid "[`.text()`](https://fetch.spec.whatwg.org/#dom-body-text)"
+msgstr ""
+
+#: ../../source/undici_README.md:337
+msgid ""
+"[!NOTE] The body returned from `undici.request` does not implement "
+"`.formData()`."
+msgstr ""
+
+#: ../../source/undici_README.md:340
+msgid "Example usage:"
+msgstr ""
+
+#: ../../source/undici_README.md:358
+msgid ""
+"_Note: Once a mixin has been called then the body cannot be reused, thus "
+"calling additional mixins on `.body`, e.g. `.body.json(); .body.text()` "
+"will result in an error `TypeError: unusable` being thrown and returned "
+"through the `Promise` rejection._"
+msgstr ""
+
+#: ../../source/undici_README.md:360
+msgid ""
+"Should you need to access the `body` in plain-text after using a mixin, "
+"the best practice is to use the `.text()` mixin first and then manually "
+"parse the text to the desired format."
+msgstr ""
+
+#: ../../source/undici_README.md:362
+msgid ""
+"For more information about their behavior, please reference the body "
+"mixin from the [Fetch Standard](https://fetch.spec.whatwg.org/#body-"
+"mixin)."
+msgstr ""
+
+#: ../../source/undici_README.md:364
+msgid "Common API Methods"
+msgstr ""
+
+#: ../../source/undici_README.md:366
+msgid ""
+"This section documents our most commonly used API methods. Additional "
+"APIs are documented in their own files within the [docs](./docs/) folder "
+"and are accessible via the navigation list on the left side of the docs "
+"site."
+msgstr ""
+
+#: ../../source/undici_README.md:368
+msgid "`undici.request([url, options]): Promise`"
+msgstr ""
+
+#: ../../source/undici_README.md:370 ../../source/undici_README.md:385
+#: ../../source/undici_README.md:401 ../../source/undici_README.md:419
+#: ../../source/undici_README.md:602
+msgid "Arguments:"
+msgstr ""
+
+#: ../../source/undici_README.md:372 ../../source/undici_README.md:387
+#: ../../source/undici_README.md:403 ../../source/undici_README.md:421
+#: ../../source/undici_README.md:604
+msgid "**url** `string | URL | UrlObject`"
+msgstr ""
+
+#: ../../source/undici_README.md:373
+msgid ""
+"**options** [`RequestOptions`](./docs/docs/api/Dispatcher.md#parameter-"
+"requestoptions)"
+msgstr ""
+
+#: ../../source/undici_README.md:374 ../../source/undici_README.md:389
+#: ../../source/undici_README.md:405 ../../source/undici_README.md:423
+#: ../../source/undici_README.md:606
+msgid ""
+"**dispatcher** `Dispatcher` - Default: "
+"[getGlobalDispatcher](#undicigetglobaldispatcher)"
+msgstr ""
+
+#: ../../source/undici_README.md:375 ../../source/undici_README.md:390
+#: ../../source/undici_README.md:406
+msgid "**method** `String` - Default: `PUT` if `options.body`, otherwise `GET`"
+msgstr ""
+
+#: ../../source/undici_README.md:377
+msgid "Returns a promise with the result of the `Dispatcher.request` method."
+msgstr ""
+
+#: ../../source/undici_README.md:379
+msgid "Calls `options.dispatcher.request(options)`."
+msgstr ""
+
+#: ../../source/undici_README.md:381
+msgid ""
+"See [Dispatcher.request](./docs/docs/api/Dispatcher.md"
+"#dispatcherrequestoptions-callback) for more details, and [request "
+"examples](./docs/examples/README.md) for examples."
+msgstr ""
+
+#: ../../source/undici_README.md:383
+msgid "`undici.stream([url, options, ]factory): Promise`"
+msgstr ""
+
+#: ../../source/undici_README.md:388
+msgid ""
+"**options** [`StreamOptions`](./docs/docs/api/Dispatcher.md#parameter-"
+"streamoptions)"
+msgstr ""
+
+#: ../../source/undici_README.md:391
+msgid "**factory** `Dispatcher.stream.factory`"
+msgstr ""
+
+#: ../../source/undici_README.md:393
+msgid "Returns a promise with the result of the `Dispatcher.stream` method."
+msgstr ""
+
+#: ../../source/undici_README.md:395
+msgid "Calls `options.dispatcher.stream(options, factory)`."
+msgstr ""
+
+#: ../../source/undici_README.md:397
+msgid ""
+"See [Dispatcher.stream](./docs/docs/api/Dispatcher.md"
+"#dispatcherstreamoptions-factory-callback) for more details."
+msgstr ""
+
+#: ../../source/undici_README.md:399
+msgid "`undici.pipeline([url, options, ]handler): Duplex`"
+msgstr ""
+
+#: ../../source/undici_README.md:404
+msgid ""
+"**options** [`PipelineOptions`](./docs/docs/api/Dispatcher.md#parameter-"
+"pipelineoptions)"
+msgstr ""
+
+#: ../../source/undici_README.md:407
+msgid "**handler** `Dispatcher.pipeline.handler`"
+msgstr ""
+
+#: ../../source/undici_README.md:409
+msgid "Returns: `stream.Duplex`"
+msgstr ""
+
+#: ../../source/undici_README.md:411
+msgid "Calls `options.dispatch.pipeline(options, handler)`."
+msgstr ""
+
+#: ../../source/undici_README.md:413
+msgid ""
+"See [Dispatcher.pipeline](./docs/docs/api/Dispatcher.md"
+"#dispatcherpipelineoptions-handler) for more details."
+msgstr ""
+
+#: ../../source/undici_README.md:415
+msgid "`undici.connect([url, options]): Promise`"
+msgstr ""
+
+#: ../../source/undici_README.md:417
+msgid ""
+"Starts two-way communications with the requested resource using [HTTP "
+"CONNECT](https://developer.mozilla.org/en-"
+"US/docs/Web/HTTP/Methods/CONNECT)."
+msgstr ""
+
+#: ../../source/undici_README.md:422
+msgid ""
+"**options** [`ConnectOptions`](./docs/docs/api/Dispatcher.md#parameter-"
+"connectoptions)"
+msgstr ""
+
+#: ../../source/undici_README.md:424
+msgid ""
+"**callback** `(err: Error | null, data: ConnectData | null) => void` "
+"(optional)"
+msgstr ""
+
+#: ../../source/undici_README.md:426
+msgid "Returns a promise with the result of the `Dispatcher.connect` method."
+msgstr ""
+
+#: ../../source/undici_README.md:428
+msgid "Calls `options.dispatch.connect(options)`."
+msgstr ""
+
+#: ../../source/undici_README.md:430
+msgid ""
+"See [Dispatcher.connect](./docs/docs/api/Dispatcher.md"
+"#dispatcherconnectoptions-callback) for more details."
+msgstr ""
+
+#: ../../source/undici_README.md:432
+msgid "`undici.fetch(input[, init]): Promise`"
+msgstr ""
+
+#: ../../source/undici_README.md:434
+msgid "Implements [fetch](https://fetch.spec.whatwg.org/#fetch-method)."
+msgstr ""
+
+#: ../../source/undici_README.md:436
+msgid ""
+"https://developer.mozilla.org/en-"
+"US/docs/Web/API/WindowOrWorkerGlobalScope/fetch"
+msgstr ""
+
+#: ../../source/undici_README.md:437
+msgid "https://fetch.spec.whatwg.org/#fetch-method"
+msgstr ""
+
+#: ../../source/undici_README.md:439
+msgid "Basic usage example:"
+msgstr ""
+
+#: ../../source/undici_README.md:450
+msgid "You can pass an optional dispatcher to `fetch` as:"
+msgstr ""
+
+#: ../../source/undici_README.md:466
+msgid "`request.body`"
+msgstr ""
+
+#: ../../source/undici_README.md:468
+msgid "A body can be of the following types:"
+msgstr ""
+
+#: ../../source/undici_README.md:470
+msgid "ArrayBuffer"
+msgstr ""
+
+#: ../../source/undici_README.md:471
+msgid "ArrayBufferView"
+msgstr ""
+
+#: ../../source/undici_README.md:472
+msgid "AsyncIterables"
+msgstr ""
+
+#: ../../source/undici_README.md:473
+msgid "Blob"
+msgstr ""
+
+#: ../../source/undici_README.md:474
+msgid "Iterables"
+msgstr ""
+
+#: ../../source/undici_README.md:475
+msgid "String"
+msgstr ""
+
+#: ../../source/undici_README.md:476
+msgid "URLSearchParams"
+msgstr ""
+
+#: ../../source/undici_README.md:477
+msgid "FormData"
+msgstr ""
+
+#: ../../source/undici_README.md:479
+msgid ""
+"In this implementation of fetch, ```request.body``` now accepts ```Async "
+"Iterables```. It is not present in the [Fetch "
+"Standard](https://fetch.spec.whatwg.org)."
+msgstr ""
+
+#: ../../source/undici_README.md:494
+msgid ""
+"[FormData](https://developer.mozilla.org/en-US/docs/Web/API/FormData) "
+"besides text data and buffers can also utilize streams via "
+"[Blob](https://developer.mozilla.org/en-US/docs/Web/API/Blob) objects:"
+msgstr ""
+
+#: ../../source/undici_README.md:506
+msgid "`request.duplex`"
+msgstr ""
+
+#: ../../source/undici_README.md:508
+msgid "`'half'`"
+msgstr ""
+
+#: ../../source/undici_README.md:510
+msgid ""
+"In this implementation of fetch, `request.duplex` must be set if "
+"`request.body` is `ReadableStream` or `Async Iterables`, however, even "
+"though the value must be set to `'half'`, it is actually a _full_ duplex."
+" For more detail refer to the [Fetch "
+"Standard](https://fetch.spec.whatwg.org/#dom-requestinit-duplex)."
+msgstr ""
+
+#: ../../source/undici_README.md:512
+msgid "`response.body`"
+msgstr ""
+
+#: ../../source/undici_README.md:514
+msgid ""
+"Nodejs has two kinds of streams: [web "
+"streams](https://nodejs.org/api/webstreams.html), which follow the API of"
+" the WHATWG web standard found in browsers, and an older Node-specific "
+"[streams API](https://nodejs.org/api/stream.html). `response.body` "
+"returns a readable web stream. If you would prefer to work with a Node "
+"stream you can convert a web stream using `.fromWeb()`."
+msgstr ""
+
+#: ../../source/undici_README.md:525
+msgid "Specification Compliance"
+msgstr ""
+
+#: ../../source/undici_README.md:527
+msgid ""
+"This section documents parts of the [HTTP/1.1](https://www.rfc-"
+"editor.org/rfc/rfc9110.html) and [Fetch "
+"Standard](https://fetch.spec.whatwg.org) that Undici does not support or "
+"does not fully implement."
+msgstr ""
+
+#: ../../source/undici_README.md:530
+msgid "CORS"
+msgstr ""
+
+#: ../../source/undici_README.md:532
+msgid ""
+"Unlike browsers, Undici does not implement CORS (Cross-Origin Resource "
+"Sharing) checks by default. This means:"
+msgstr ""
+
+#: ../../source/undici_README.md:534
+msgid "No preflight requests are automatically sent for cross-origin requests"
+msgstr ""
+
+#: ../../source/undici_README.md:535
+msgid "No validation of `Access-Control-Allow-Origin` headers is performed"
+msgstr ""
+
+#: ../../source/undici_README.md:536
+msgid "Requests to any origin are allowed regardless of the source"
+msgstr ""
+
+#: ../../source/undici_README.md:538
+msgid ""
+"This behavior is intentional for server-side environments where CORS "
+"restrictions are typically unnecessary. If your application requires "
+"CORS-like protections, you will need to implement these checks manually."
+msgstr ""
+
+#: ../../source/undici_README.md:540
+msgid "Garbage Collection"
+msgstr ""
+
+#: ../../source/undici_README.md:542
+msgid "https://fetch.spec.whatwg.org/#garbage-collection"
+msgstr ""
+
+#: ../../source/undici_README.md:544
+msgid ""
+"The [Fetch Standard](https://fetch.spec.whatwg.org) allows users to skip "
+"consuming the response body by relying on [garbage "
+"collection](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Memory_Management#garbage_collection) to release "
+"connection resources."
+msgstr ""
+
+#: ../../source/undici_README.md:547
+msgid ""
+"Garbage collection in Node is less aggressive and deterministic (due to "
+"the lack of clear idle periods that browsers have through the rendering "
+"refresh rate) which means that leaving the release of connection "
+"resources to the garbage collector can lead to excessive connection "
+"usage, reduced performance (due to less connection re-use), and even "
+"stalls or deadlocks when running out of connections. Therefore, __it is "
+"important to always either consume or cancel the response body anyway__."
+msgstr ""
+
+#: ../../source/undici_README.md:565
+msgid ""
+"However, if you want to get only headers, it might be better to use "
+"`HEAD` request method. Usage of this method will obviate the need for "
+"consumption or cancelling of the response body. See [MDN - HTTP - HTTP "
+"request methods - HEAD](https://developer.mozilla.org/en-"
+"US/docs/Web/HTTP/Methods/HEAD) for more details."
+msgstr ""
+
+#: ../../source/undici_README.md:572
+msgid "Note that consuming the response body is _mandatory_ for `request`:"
+msgstr ""
+
+#: ../../source/undici_README.md:583
+msgid "Forbidden and Safelisted Header Names"
+msgstr ""
+
+#: ../../source/undici_README.md:585
+msgid "https://fetch.spec.whatwg.org/#cors-safelisted-response-header-name"
+msgstr ""
+
+#: ../../source/undici_README.md:586
+msgid "https://fetch.spec.whatwg.org/#forbidden-header-name"
+msgstr ""
+
+#: ../../source/undici_README.md:587
+msgid "https://fetch.spec.whatwg.org/#forbidden-response-header-name"
+msgstr ""
+
+#: ../../source/undici_README.md:588
+msgid "https://github.com/wintercg/fetch/issues/6"
+msgstr ""
+
+#: ../../source/undici_README.md:590
+msgid ""
+"The [Fetch Standard](https://fetch.spec.whatwg.org) requires "
+"implementations to exclude certain headers from requests and responses. "
+"In browser environments, some headers are forbidden so the user agent "
+"remains in full control over them. In Undici, these constraints are "
+"removed to give more control to the user."
+msgstr ""
+
+#: ../../source/undici_README.md:592
+msgid "Content-Encoding"
+msgstr ""
+
+#: ../../source/undici_README.md:594
+msgid "https://www.rfc-editor.org/rfc/rfc9110#field.content-encoding"
+msgstr ""
+
+#: ../../source/undici_README.md:596
+msgid ""
+"Undici limits the number of `Content-Encoding` layers in a response to "
+"**5** to prevent resource exhaustion attacks. If a server responds with "
+"more than 5 content-encodings (e.g., `Content-Encoding: gzip, gzip, gzip,"
+" gzip, gzip, gzip`), the fetch will be rejected with an error. This limit"
+" matches the approach taken by "
+"[curl](https://curl.se/docs/CVE-2022-32206.html) and "
+"[urllib3](https://github.com/advisories/GHSA-gm62-xv2j-4rw9)."
+msgstr ""
+
+#: ../../source/undici_README.md:598
+msgid "`undici.upgrade([url, options]): Promise`"
+msgstr ""
+
+#: ../../source/undici_README.md:600
+msgid ""
+"Upgrade to a different protocol. See [MDN - HTTP - Protocol upgrade "
+"mechanism](https://developer.mozilla.org/en-"
+"US/docs/Web/HTTP/Protocol_upgrade_mechanism) for more details."
+msgstr ""
+
+#: ../../source/undici_README.md:605
+msgid ""
+"**options** [`UpgradeOptions`](./docs/docs/api/Dispatcher.md#parameter-"
+"upgradeoptions)"
+msgstr ""
+
+#: ../../source/undici_README.md:607
+msgid "**callback** `(error: Error | null, data: UpgradeData) => void` (optional)"
+msgstr ""
+
+#: ../../source/undici_README.md:609
+msgid "Returns a promise with the result of the `Dispatcher.upgrade` method."
+msgstr ""
+
+#: ../../source/undici_README.md:611
+msgid "Calls `options.dispatcher.upgrade(options)`."
+msgstr ""
+
+#: ../../source/undici_README.md:613
+msgid ""
+"See [Dispatcher.upgrade](./docs/docs/api/Dispatcher.md"
+"#dispatcherupgradeoptions-callback) for more details."
+msgstr ""
+
+#: ../../source/undici_README.md:615
+msgid "`undici.setGlobalDispatcher(dispatcher)`"
+msgstr ""
+
+#: ../../source/undici_README.md:617
+msgid "dispatcher `Dispatcher`"
+msgstr ""
+
+#: ../../source/undici_README.md:619
+msgid ""
+"Sets the global dispatcher used by Common API Methods. Global dispatcher "
+"is shared among compatible undici modules, including undici that is "
+"bundled internally with node.js."
+msgstr ""
+
+#: ../../source/undici_README.md:622
+msgid "`undici.getGlobalDispatcher()`"
+msgstr ""
+
+#: ../../source/undici_README.md:624
+msgid "Gets the global dispatcher used by Common API Methods."
+msgstr ""
+
+#: ../../source/undici_README.md:626
+msgid "Returns: `Dispatcher`"
+msgstr ""
+
+#: ../../source/undici_README.md:628
+msgid "`undici.setGlobalOrigin(origin)`"
+msgstr ""
+
+#: ../../source/undici_README.md:630
+msgid "origin `string | URL | undefined`"
+msgstr ""
+
+#: ../../source/undici_README.md:632
+msgid "Sets the global origin used in `fetch`."
+msgstr ""
+
+#: ../../source/undici_README.md:634
+msgid ""
+"If `undefined` is passed, the global origin will be reset. This will "
+"cause `Response.redirect`, `new Request()`, and `fetch` to throw an error"
+" when a relative path is passed."
+msgstr ""
+
+#: ../../source/undici_README.md:644
+msgid "`undici.getGlobalOrigin()`"
+msgstr ""
+
+#: ../../source/undici_README.md:646
+msgid "Gets the global origin used in `fetch`."
+msgstr ""
+
+#: ../../source/undici_README.md:648
+msgid "Returns: `URL`"
+msgstr ""
+
+#: ../../source/undici_README.md:650
+msgid "`UrlObject`"
+msgstr ""
+
+#: ../../source/undici_README.md:652
+msgid "**port** `string | number` (optional)"
+msgstr ""
+
+#: ../../source/undici_README.md:653
+msgid "**path** `string` (optional)"
+msgstr ""
+
+#: ../../source/undici_README.md:654
+msgid "**pathname** `string` (optional)"
+msgstr ""
+
+#: ../../source/undici_README.md:655
+msgid "**hostname** `string` (optional)"
+msgstr ""
+
+#: ../../source/undici_README.md:656
+msgid "**origin** `string` (optional)"
+msgstr ""
+
+#: ../../source/undici_README.md:657
+msgid "**protocol** `string` (optional)"
+msgstr ""
+
+#: ../../source/undici_README.md:658
+msgid "**search** `string` (optional)"
+msgstr ""
+
+#: ../../source/undici_README.md:660
+msgid "Expect"
+msgstr ""
+
+#: ../../source/undici_README.md:662
+msgid ""
+"Undici does not support the `Expect` request header field. The request "
+"body is  always immediately sent and the `100 Continue` response will be "
+"ignored."
+msgstr ""
+
+#: ../../source/undici_README.md:666
+msgid "Refs: https://tools.ietf.org/html/rfc7231#section-5.1.1"
+msgstr ""
+
+#: ../../source/undici_README.md:668
+msgid "Pipelining"
+msgstr ""
+
+#: ../../source/undici_README.md:670
+msgid ""
+"Undici will only use pipelining if configured with a `pipelining` factor "
+"greater than `1`. Also it is important to pass `blocking: false` to the "
+"request options to properly pipeline requests."
+msgstr ""
+
+#: ../../source/undici_README.md:674
+msgid ""
+"Undici always assumes that connections are persistent and will "
+"immediately pipeline requests, without checking whether the connection is"
+" persistent. Hence, automatic fallback to HTTP/1.0 or HTTP/1.1 without "
+"pipelining is not supported."
+msgstr ""
+
+#: ../../source/undici_README.md:679
+msgid ""
+"Undici will immediately pipeline when retrying requests after a failed "
+"connection. However, Undici will not retry the first remaining requests "
+"in the prior pipeline and instead error the corresponding "
+"callback/promise/stream."
+msgstr ""
+
+#: ../../source/undici_README.md:683
+msgid ""
+"Undici will abort all running requests in the pipeline when any of them "
+"are aborted."
+msgstr ""
+
+#: ../../source/undici_README.md:686
+msgid "Refs: https://tools.ietf.org/html/rfc2616#section-8.1.2.2"
+msgstr ""
+
+#: ../../source/undici_README.md:687
+msgid "Refs: https://tools.ietf.org/html/rfc7230#section-6.3.2"
+msgstr ""
+
+#: ../../source/undici_README.md:689
+msgid "Manual Redirect"
+msgstr ""
+
+#: ../../source/undici_README.md:691
+msgid ""
+"Since it is not possible to manually follow an HTTP redirect on the "
+"server-side, Undici returns the actual response instead of an "
+"`opaqueredirect` filtered one when invoked with a `manual` redirect. This"
+" aligns `fetch()` with the other implementations in Deno and Cloudflare "
+"Workers."
+msgstr ""
+
+#: ../../source/undici_README.md:696
+msgid "Refs: https://fetch.spec.whatwg.org/#atomic-http-redirect-handling"
+msgstr ""
+
+#: ../../source/undici_README.md:698
+msgid "Workarounds"
+msgstr ""
+
+#: ../../source/undici_README.md:700
+msgid "Network address family autoselection."
+msgstr ""
+
+#: ../../source/undici_README.md:702
+msgid ""
+"If you experience problem when connecting to a remote server that is "
+"resolved by your DNS servers to a IPv6 (AAAA record) first, there are "
+"chances that your local router or ISP might have problem connecting to "
+"IPv6 networks. In that case undici will throw an error with code "
+"`UND_ERR_CONNECT_TIMEOUT`."
+msgstr ""
+
+#: ../../source/undici_README.md:706
+msgid ""
+"If the target server resolves to both a IPv6 and IPv4 (A records) address"
+" and you are using a compatible Node version (18.3.0 and above), you can "
+"fix the problem by providing the `autoSelectFamily` option (support by "
+"both `undici.request` and `undici.Agent`) which will enable the family "
+"autoselection algorithm when establishing the connection."
+msgstr ""
+
+#: ../../source/undici_README.md:710
+msgid "Collaborators"
+msgstr ""
+
+#: ../../source/undici_README.md:712
+msgid ""
+"[__Daniele Belardi__](https://github.com/dnlup), "
+"<https://www.npmjs.com/~dnlup>"
+msgstr ""
+
+#: ../../source/undici_README.md:713 ../../source/undici_README.md:724
+msgid ""
+"[__Ethan Arrowood__](https://github.com/ethan-arrowood), "
+"<https://www.npmjs.com/~ethan_arrowood>"
+msgstr ""
+
+#: ../../source/undici_README.md:714 ../../source/undici_README.md:725
+msgid ""
+"[__Matteo Collina__](https://github.com/mcollina), "
+"<https://www.npmjs.com/~matteo.collina>"
+msgstr ""
+
+#: ../../source/undici_README.md:715 ../../source/undici_README.md:727
+msgid ""
+"[__Matthew Aitken__](https://github.com/KhafraDev), "
+"<https://www.npmjs.com/~khaf>"
+msgstr ""
+
+#: ../../source/undici_README.md:716 ../../source/undici_README.md:726
+msgid ""
+"[__Robert Nagy__](https://github.com/ronag), "
+"<https://www.npmjs.com/~ronag>"
+msgstr ""
+
+#: ../../source/undici_README.md:717
+msgid ""
+"[__Szymon Marczak__](https://github.com/szmarczak), "
+"<https://www.npmjs.com/~szmarczak>"
+msgstr ""
+
+#: ../../source/undici_README.md:719
+msgid "Past Collaborators"
+msgstr ""
+
+#: ../../source/undici_README.md:720
+msgid ""
+"[__Tomas Della Vedova__](https://github.com/delvedor), "
+"<https://www.npmjs.com/~delvedor>"
+msgstr ""
+
+#: ../../source/undici_README.md:722
+msgid "Releasers"
+msgstr ""
+
+#: ../../source/undici_README.md:729
+msgid "Long Term Support"
+msgstr ""
+
+#: ../../source/undici_README.md:731
+msgid ""
+"Undici aligns with the Node.js LTS schedule. The following table shows "
+"the supported versions:"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "Undici Version"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "Bundled in Node.js"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "Node.js Versions Supported"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "End of Life"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "5.x"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "18.x"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "≥14.0 (tested: 14, 16, 18)"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "2024-04-30"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "6.x"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "20.x, 22.x"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "≥18.17 (tested: 18, 20, 21, 22)"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "2026-04-30"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "7.x"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "24.x"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "≥20.18.1 (tested: 20, 22, 24)"
+msgstr ""
+
+#: ../../source/undici_README.md
+msgid "2027-04-30"
+msgstr ""
+
+#: ../../source/undici_README.md:739
+msgid "License"
+msgstr ""
+
+#: ../../source/undici_README.md:741
+msgid "MIT"
+msgstr ""
+

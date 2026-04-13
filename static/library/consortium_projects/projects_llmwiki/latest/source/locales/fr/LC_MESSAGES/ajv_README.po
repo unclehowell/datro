@@ -1,0 +1,3623 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/ajv_README.md:3
+msgid "Ajv: Another JSON Schema Validator"
+msgstr ""
+
+#: ../../source/ajv_README.md:5
+msgid ""
+"The fastest JSON Schema validator for Node.js and browser. Supports "
+"draft-04/06/07."
+msgstr ""
+
+#: ../../source/ajv_README.md:7
+msgid ""
+"[![Build Status](https://travis-ci.org/ajv-"
+"validator/ajv.svg?branch=master)](https://travis-ci.org/ajv-"
+"validator/ajv) "
+"[![npm](https://img.shields.io/npm/v/ajv.svg)](https://www.npmjs.com/package/ajv)"
+" [![npm "
+"(beta)](https://img.shields.io/npm/v/ajv/beta)](https://www.npmjs.com/package/ajv/v/7.0.0-beta.4)"
+" [![npm "
+"downloads](https://img.shields.io/npm/dm/ajv.svg)](https://www.npmjs.com/package/ajv)"
+" [![Coverage Status](https://coveralls.io/repos/github/ajv-"
+"validator/ajv/badge.svg?branch=master)](https://coveralls.io/github/ajv-"
+"validator/ajv?branch=master) "
+"[![Gitter](https://img.shields.io/gitter/room/ajv-"
+"validator/ajv.svg)](https://gitter.im/ajv-validator/ajv) [![GitHub "
+"Sponsors](https://img.shields.io/badge/$-sponsors-"
+"brightgreen)](https://github.com/sponsors/epoberezkin)"
+msgstr ""
+
+#: ../../source/ajv_README.md:7
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/ajv_README.md:7
+msgid "npm"
+msgstr ""
+
+#: ../../source/ajv_README.md:7
+msgid "npm (beta)"
+msgstr ""
+
+#: ../../source/ajv_README.md:7
+msgid "npm downloads"
+msgstr ""
+
+#: ../../source/ajv_README.md:7
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/ajv_README.md:7
+msgid "Gitter"
+msgstr ""
+
+#: ../../source/ajv_README.md:7
+msgid "GitHub Sponsors"
+msgstr ""
+
+#: ../../source/ajv_README.md:16
+msgid "Ajv v7 beta is released"
+msgstr ""
+
+#: ../../source/ajv_README.md:18
+msgid ""
+"[Ajv version 7 (beta)](https://github.com/ajv-validator/ajv/tree/v7-beta)"
+" is released with these changes:"
+msgstr ""
+
+#: ../../source/ajv_README.md:20
+msgid ""
+"support of JSON Schema draft-2019-09 features: [`unevaluatedProperties"
+"`](./json-schema.md#unevaluatedproperties) and [`unevaluatedItems"
+"`](./json-schema.md#unevaluateditems), [dynamic recursive "
+"references](./validation.md#extending-recursive-schemas) and other "
+"[additional keywords](./json-schema.md#json-schema-draft-2019-09)."
+msgstr ""
+
+#: ../../source/ajv_README.md:21
+msgid ""
+"to reduce the mistakes in JSON schemas and unexpected validation results,"
+" [strict mode](./docs/strict-mode.md) is added - it prohibits ignored or "
+"ambiguous JSON Schema elements."
+msgstr ""
+
+#: ../../source/ajv_README.md:22
+msgid ""
+"to make code injection from untrusted schemas impossible, [code "
+"generation](./docs/codegen.md) is fully re-written to be safe and to "
+"allow code optimization (compiled schema code size is reduced by more "
+"than 10%)."
+msgstr ""
+
+#: ../../source/ajv_README.md:23
+msgid ""
+"to simplify Ajv extensions, the new keyword API that is used by pre-"
+"defined keywords is available to user-defined keywords - it is much "
+"easier to define any keywords now, especially with subschemas. [ajv-"
+"keywords](https://github.com/ajv-validator/ajv-keywords) package was "
+"updated to use the new API (in [v4.0.0-beta.0](https://github.com/ajv-"
+"validator/ajv-keywords/releases/tag/v4.0.0-beta.0))"
+msgstr ""
+
+#: ../../source/ajv_README.md:24
+msgid ""
+"schemas are compiled to ES6 code (ES5 code generation is also supported "
+"with an option)."
+msgstr ""
+
+#: ../../source/ajv_README.md:25
+msgid ""
+"to improve reliability and maintainability the code is migrated to "
+"TypeScript."
+msgstr ""
+
+#: ../../source/ajv_README.md:27
+msgid "**Please note**:"
+msgstr ""
+
+#: ../../source/ajv_README.md:29
+msgid ""
+"the support for JSON-Schema draft-04 is removed - if you have schemas "
+"using \"id\" attributes you have to replace them with \"\\$id\" (or "
+"continue using version 6 that will be supported until 02/28/2021)."
+msgstr ""
+
+#: ../../source/ajv_README.md:30
+msgid ""
+"all formats are separated to ajv-formats package - they have to be "
+"explicitely added if you use them."
+msgstr ""
+
+#: ../../source/ajv_README.md:32
+msgid ""
+"See [release notes](https://github.com/ajv-"
+"validator/ajv/releases/tag/v7.0.0-beta.0) for the details."
+msgstr ""
+
+#: ../../source/ajv_README.md:34
+msgid "To install the new version:"
+msgstr ""
+
+#: ../../source/ajv_README.md:40
+msgid ""
+"See [Getting started with v7](https://github.com/ajv-"
+"validator/ajv/tree/v7-beta#usage) for code example."
+msgstr ""
+
+#: ../../source/ajv_README.md:43
+msgid "Mozilla MOSS grant and OpenJS Foundation"
+msgstr ""
+
+#: ../../source/ajv_README.md:45
+msgid ""
+"[<img src=\"https://www.poberezkin.com/images/mozilla.png\" width=\"240\""
+" height=\"68\">](https://www.mozilla.org/en-US/moss/) &nbsp;&nbsp;&nbsp; "
+"[<img src=\"https://www.poberezkin.com/images/openjs.png\" width=\"220\" "
+"height=\"68\">](https://openjsf.org/blog/2020/08/14/ajv-joins-openjs-"
+"foundation-as-an-incubation-project/)"
+msgstr ""
+
+#: ../../source/ajv_README.md:47
+msgid ""
+"Ajv has been awarded a grant from Mozilla’s [Open Source Support (MOSS) "
+"program](https://www.mozilla.org/en-US/moss/) in the “Foundational "
+"Technology” track! It will sponsor the development of Ajv support of "
+"[JSON Schema version 2019-09](https://tools.ietf.org/html/draft-handrews-"
+"json-schema-02) and of [JSON Type Definition](https://tools.ietf.org/html"
+"/draft-ucarion-json-type-definition-04)."
+msgstr ""
+
+#: ../../source/ajv_README.md:49
+msgid ""
+"Ajv also joined [OpenJS Foundation](https://openjsf.org/) – having this "
+"support will help ensure the longevity and stability of Ajv for all its "
+"users."
+msgstr ""
+
+#: ../../source/ajv_README.md:51
+msgid ""
+"This [blog post](https://www.poberezkin.com/posts/2020-08-14-ajv-json-"
+"validator-mozilla-open-source-grant-openjs-foundation.html) has more "
+"details."
+msgstr ""
+
+#: ../../source/ajv_README.md:53
+msgid ""
+"I am looking for the long term maintainers of Ajv – working with "
+"[ReadySet](https://www.thereadyset.co/), also sponsored by Mozilla, to "
+"establish clear guidelines for the role of a \"maintainer\" and the "
+"contribution standards, and to encourage a wider, more inclusive, "
+"contribution from the community."
+msgstr ""
+
+#: ../../source/ajv_README.md:56
+msgid "Please [sponsor Ajv development](https://github.com/sponsors/epoberezkin)"
+msgstr ""
+
+#: ../../source/ajv_README.md:58
+msgid ""
+"Since I asked to support Ajv development 40 people and 6 organizations "
+"contributed via GitHub and OpenCollective - this support helped receiving"
+" the MOSS grant!"
+msgstr ""
+
+#: ../../source/ajv_README.md:60
+msgid ""
+"Your continuing support is very important - the funds will be used to "
+"develop and maintain Ajv once the next major version is released."
+msgstr ""
+
+#: ../../source/ajv_README.md:62
+msgid "Please sponsor Ajv via:"
+msgstr ""
+
+#: ../../source/ajv_README.md:63
+msgid ""
+"[GitHub sponsors page](https://github.com/sponsors/epoberezkin) (GitHub "
+"will match it)"
+msgstr ""
+
+#: ../../source/ajv_README.md:64
+msgid "[Ajv Open Collective️](https://opencollective.com/ajv)"
+msgstr ""
+
+#: ../../source/ajv_README.md:66
+msgid "Thank you."
+msgstr ""
+
+#: ../../source/ajv_README.md:69
+msgid "Open Collective sponsors"
+msgstr ""
+
+#: ../../source/ajv_README.md:71
+msgid ""
+"<a href=\"https://opencollective.com/ajv\"><img "
+"src=\"https://opencollective.com/ajv/individuals.svg?width=890\"></a>"
+msgstr ""
+
+#: ../../source/ajv_README.md:73
+msgid ""
+"<a href=\"https://opencollective.com/ajv/organization/0/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/0/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/ajv/organization/1/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/1/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/ajv/organization/2/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/2/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/ajv/organization/3/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/3/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/ajv/organization/4/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/4/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/ajv/organization/5/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/5/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/ajv/organization/6/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/6/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/ajv/organization/7/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/7/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/ajv/organization/8/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/8/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/ajv/organization/9/website\"><img "
+"src=\"https://opencollective.com/ajv/organization/9/avatar.svg\"></a>"
+msgstr ""
+
+#: ../../source/ajv_README.md:85
+msgid "Using version 6"
+msgstr ""
+
+#: ../../source/ajv_README.md:87
+msgid ""
+"[JSON Schema draft-07](http://json-schema.org/latest/json-schema-"
+"validation.html) is published."
+msgstr ""
+
+#: ../../source/ajv_README.md:89
+msgid ""
+"[Ajv version 6.0.0](https://github.com/ajv-"
+"validator/ajv/releases/tag/v6.0.0) that supports draft-07 is released. It"
+" may require either migrating your schemas or updating your code (to "
+"continue using draft-04 and v5 schemas, draft-06 schemas will be "
+"supported without changes)."
+msgstr ""
+
+#: ../../source/ajv_README.md:91
+msgid ""
+"__Please note__: To use Ajv with draft-06 schemas you need to explicitly "
+"add the meta-schema to the validator instance:"
+msgstr ""
+
+#: ../../source/ajv_README.md:97
+msgid ""
+"To use Ajv with draft-04 schemas in addition to explicitly adding meta-"
+"schema you also need to use option schemaId:"
+msgstr ""
+
+#: ../../source/ajv_README.md:107
+msgid "Contents"
+msgstr ""
+
+#: ../../source/ajv_README.md:109
+msgid "[Performance](#performance)"
+msgstr ""
+
+#: ../../source/ajv_README.md:110
+msgid "[Features](#features)"
+msgstr ""
+
+#: ../../source/ajv_README.md:111
+msgid "[Getting started](#getting-started)"
+msgstr ""
+
+#: ../../source/ajv_README.md:112
+msgid ""
+"[Frequently Asked Questions](https://github.com/ajv-"
+"validator/ajv/blob/master/FAQ.md)"
+msgstr ""
+
+#: ../../source/ajv_README.md:113
+msgid "[Using in browser](#using-in-browser)"
+msgstr ""
+
+#: ../../source/ajv_README.md:114
+msgid ""
+"[Ajv and Content Security Policies (CSP)](#ajv-and-content-security-"
+"policies-csp)"
+msgstr ""
+
+#: ../../source/ajv_README.md:115
+msgid "[Command line interface](#command-line-interface)"
+msgstr ""
+
+#: ../../source/ajv_README.md:116
+msgid "Validation"
+msgstr ""
+
+#: ../../source/ajv_README.md:117
+msgid "[Keywords](#validation-keywords)"
+msgstr ""
+
+#: ../../source/ajv_README.md:118
+msgid "[Annotation keywords](#annotation-keywords)"
+msgstr ""
+
+#: ../../source/ajv_README.md:119
+msgid "[Formats](#formats)"
+msgstr ""
+
+#: ../../source/ajv_README.md:120
+msgid "[Combining schemas with $ref](#ref)"
+msgstr ""
+
+#: ../../source/ajv_README.md:121
+msgid "[$data reference](#data-reference)"
+msgstr ""
+
+#: ../../source/ajv_README.md:122
+msgid "NEW: [$merge and $patch keywords](#merge-and-patch-keywords)"
+msgstr ""
+
+#: ../../source/ajv_README.md:123
+msgid "[Defining custom keywords](#defining-custom-keywords)"
+msgstr ""
+
+#: ../../source/ajv_README.md:124
+msgid "[Asynchronous schema compilation](#asynchronous-schema-compilation)"
+msgstr ""
+
+#: ../../source/ajv_README.md:125
+msgid "[Asynchronous validation](#asynchronous-validation)"
+msgstr ""
+
+#: ../../source/ajv_README.md:126
+msgid "[Security considerations](#security-considerations)"
+msgstr ""
+
+#: ../../source/ajv_README.md:127
+msgid "[Security contact](#security-contact)"
+msgstr ""
+
+#: ../../source/ajv_README.md:128
+msgid "[Untrusted schemas](#untrusted-schemas)"
+msgstr ""
+
+#: ../../source/ajv_README.md:129
+msgid ""
+"[Circular references in objects](#circular-references-in-javascript-"
+"objects)"
+msgstr ""
+
+#: ../../source/ajv_README.md:130
+msgid "[Trusted schemas](#security-risks-of-trusted-schemas)"
+msgstr ""
+
+#: ../../source/ajv_README.md:131
+msgid "[ReDoS attack](#redos-attack)"
+msgstr ""
+
+#: ../../source/ajv_README.md:132
+msgid "Modifying data during validation"
+msgstr ""
+
+#: ../../source/ajv_README.md:133
+msgid "[Filtering data](#filtering-data)"
+msgstr ""
+
+#: ../../source/ajv_README.md:134
+msgid "[Assigning defaults](#assigning-defaults)"
+msgstr ""
+
+#: ../../source/ajv_README.md:135
+msgid "[Coercing data types](#coercing-data-types)"
+msgstr ""
+
+#: ../../source/ajv_README.md:136 ../../source/ajv_README.md:988
+msgid "API"
+msgstr ""
+
+#: ../../source/ajv_README.md:137
+msgid "[Methods](#api)"
+msgstr ""
+
+#: ../../source/ajv_README.md:138
+msgid "[Options](#options)"
+msgstr ""
+
+#: ../../source/ajv_README.md:139
+msgid "[Validation errors](#validation-errors)"
+msgstr ""
+
+#: ../../source/ajv_README.md:140
+msgid "[Plugins](#plugins)"
+msgstr ""
+
+#: ../../source/ajv_README.md:141
+msgid "[Related packages](#related-packages)"
+msgstr ""
+
+#: ../../source/ajv_README.md:142
+msgid "[Some packages using Ajv](#some-packages-using-ajv)"
+msgstr ""
+
+#: ../../source/ajv_README.md:143
+msgid "[Tests, Contributing, Changes history](#tests)"
+msgstr ""
+
+#: ../../source/ajv_README.md:144
+msgid "[Support, Code of conduct, License](#open-source-software-support)"
+msgstr ""
+
+#: ../../source/ajv_README.md:147
+msgid "Performance"
+msgstr ""
+
+#: ../../source/ajv_README.md:149
+msgid ""
+"Ajv generates code using [doT templates](https://github.com/olado/doT) to"
+" turn JSON Schemas into super-fast validation functions that are "
+"efficient for v8 optimization."
+msgstr ""
+
+#: ../../source/ajv_README.md:151
+msgid ""
+"Currently Ajv is the fastest and the most standard compliant validator "
+"according to these benchmarks:"
+msgstr ""
+
+#: ../../source/ajv_README.md:153
+#, python-format
+msgid ""
+"[json-schema-benchmark](https://github.com/ebdrup/json-schema-benchmark) "
+"- 50% faster than the second place"
+msgstr ""
+
+#: ../../source/ajv_README.md:154
+#, python-format
+msgid ""
+"[jsck benchmark](https://github.com/pandastrike/jsck#benchmarks) - "
+"20-190% faster"
+msgstr ""
+
+#: ../../source/ajv_README.md:155
+msgid ""
+"[z-schema "
+"benchmark](https://rawgit.com/zaggino/z-schema/master/benchmark/results.html)"
+msgstr ""
+
+#: ../../source/ajv_README.md:156
+msgid ""
+"[themis "
+"benchmark](https://cdn.rawgit.com/playlyfe/themis/master/benchmark/results.html)"
+msgstr ""
+
+#: ../../source/ajv_README.md:159
+msgid ""
+"Performance of different validators by [json-schema-"
+"benchmark](https://github.com/ebdrup/json-schema-benchmark):"
+msgstr ""
+
+#: ../../source/ajv_README.md:161
+msgid ""
+"[![performance](https://chart.googleapis.com/chart?chxt=x,y&cht=bhs&chco=76A4FB&chls=2.0&chbh=32,4,1&chs=600x416&chxl=-1:|djv|ajv"
+"|json-schema-validator-generator|jsen|is-my-json-"
+"valid|themis|z-schema|jsck|skeemas|json-schema-"
+"library|tv4&chd=t:100,98,72.1,66.8,50.1,15.1,6.1,3.8,1.2,0.7,0.2)](https://github.com/ebdrup"
+"/json-schema-benchmark/blob/master/README.md#performance)"
+msgstr ""
+
+#: ../../source/ajv_README.md:161
+msgid "performance"
+msgstr ""
+
+#: ../../source/ajv_README.md:164
+msgid "Features"
+msgstr ""
+
+#: ../../source/ajv_README.md:166
+msgid ""
+"Ajv implements full JSON Schema [draft-06/07](http://json-schema.org/) "
+"and draft-04 standards:"
+msgstr ""
+
+#: ../../source/ajv_README.md:167
+msgid ""
+"all validation keywords (see [JSON Schema validation "
+"keywords](https://github.com/ajv-validator/ajv/blob/master/KEYWORDS.md))"
+msgstr ""
+
+#: ../../source/ajv_README.md:168
+msgid ""
+"full support of remote refs (remote schemas have to be added with "
+"`addSchema` or compiled to be available)"
+msgstr ""
+
+#: ../../source/ajv_README.md:169
+msgid "support of circular references between schemas"
+msgstr ""
+
+#: ../../source/ajv_README.md:170
+msgid "correct string lengths for strings with unicode pairs (can be turned off)"
+msgstr ""
+
+#: ../../source/ajv_README.md:171
+msgid ""
+"[formats](#formats) defined by JSON Schema draft-07 standard and custom "
+"formats (can be turned off)"
+msgstr ""
+
+#: ../../source/ajv_README.md:172
+msgid "[validates schemas against meta-schema](#api-validateschema)"
+msgstr ""
+
+#: ../../source/ajv_README.md:173
+msgid "supports [browsers](#using-in-browser) and Node.js 0.10-14.x"
+msgstr ""
+
+#: ../../source/ajv_README.md:174
+msgid ""
+"[asynchronous loading](#asynchronous-schema-compilation) of referenced "
+"schemas during compilation"
+msgstr ""
+
+#: ../../source/ajv_README.md:175
+msgid "\"All errors\" validation mode with [option allErrors](#options)"
+msgstr ""
+
+#: ../../source/ajv_README.md:176
+msgid ""
+"[error messages with parameters](#validation-errors) describing error "
+"reasons to allow creating custom error messages"
+msgstr ""
+
+#: ../../source/ajv_README.md:177
+msgid ""
+"i18n error messages support with [ajv-i18n](https://github.com/ajv-"
+"validator/ajv-i18n) package"
+msgstr ""
+
+#: ../../source/ajv_README.md:178
+msgid "[filtering data](#filtering-data) from additional properties"
+msgstr ""
+
+#: ../../source/ajv_README.md:179
+msgid "[assigning defaults](#assigning-defaults) to missing properties and items"
+msgstr ""
+
+#: ../../source/ajv_README.md:180
+msgid ""
+"[coercing data](#coercing-data-types) to the types specified in `type` "
+"keywords"
+msgstr ""
+
+#: ../../source/ajv_README.md:181
+msgid "[custom keywords](#defining-custom-keywords)"
+msgstr ""
+
+#: ../../source/ajv_README.md:182
+msgid ""
+"draft-06/07 keywords `const`, `contains`, `propertyNames` and "
+"`if/then/else`"
+msgstr ""
+
+#: ../../source/ajv_README.md:183
+msgid "draft-06 boolean schemas (`true`/`false` as a schema to always pass/fail)."
+msgstr ""
+
+#: ../../source/ajv_README.md:184
+msgid ""
+"keywords `switch`, `patternRequired`, `formatMaximum` / `formatMinimum` "
+"and `formatExclusiveMaximum` / `formatExclusiveMinimum` from [JSON Schema"
+" extension proposals](https://github.com/json-schema/json-"
+"schema/wiki/v5-Proposals) with [ajv-keywords](https://github.com/ajv-"
+"validator/ajv-keywords) package"
+msgstr ""
+
+#: ../../source/ajv_README.md:185
+msgid ""
+"[$data reference](#data-reference) to use values from the validated data "
+"as values for the schema keywords"
+msgstr ""
+
+#: ../../source/ajv_README.md:186
+msgid ""
+"[asynchronous validation](#asynchronous-validation) of custom formats and"
+" keywords"
+msgstr ""
+
+#: ../../source/ajv_README.md:189
+msgid "Install"
+msgstr ""
+
+#: ../../source/ajv_README.md:196
+msgid "<a name=\"usage\"></a>Getting started"
+msgstr ""
+
+#: ../../source/ajv_README.md:198
+msgid "Try it in the Node.js REPL: https://tonicdev.com/npm/ajv"
+msgstr ""
+
+#: ../../source/ajv_README.md:201
+msgid "The fastest validation call:"
+msgstr ""
+
+#: ../../source/ajv_README.md:215
+msgid "or with less code"
+msgstr ""
+
+#: ../../source/ajv_README.md:224
+msgid "or"
+msgstr ""
+
+#: ../../source/ajv_README.md:234
+msgid "See [API](#api) and [Options](#options) for more details."
+msgstr ""
+
+#: ../../source/ajv_README.md:236
+msgid ""
+"Ajv compiles schemas to functions and caches them in all cases (using "
+"schema serialized with [fast-json-stable-"
+"stringify](https://github.com/epoberezkin/fast-json-stable-stringify) or "
+"a custom function as a key), so that the next time the same schema is "
+"used (not necessarily the same object instance) it won't be compiled "
+"again."
+msgstr ""
+
+#: ../../source/ajv_README.md:238
+msgid ""
+"The best performance is achieved when using compiled functions returned "
+"by `compile` or `getSchema` methods (there is no additional function "
+"call)."
+msgstr ""
+
+#: ../../source/ajv_README.md:240
+msgid ""
+"__Please note__: every time a validation function or `ajv.validate` are "
+"called `errors` property is overwritten. You need to copy `errors` array "
+"reference to another variable if you want to use it later (e.g., in the "
+"callback). See [Validation errors](#validation-errors)"
+msgstr ""
+
+#: ../../source/ajv_README.md:242
+msgid ""
+"__Note for TypeScript users__: `ajv` provides its own TypeScript "
+"declarations out of the box, so you don't need to install the deprecated "
+"`@types/ajv` module."
+msgstr ""
+
+#: ../../source/ajv_README.md:247
+msgid "Using in browser"
+msgstr ""
+
+#: ../../source/ajv_README.md:249
+msgid ""
+"You can require Ajv directly from the code you browserify - in this case "
+"Ajv will be a part of your bundle."
+msgstr ""
+
+#: ../../source/ajv_README.md:251
+msgid ""
+"If you need to use Ajv in several bundles you can create a separate UMD "
+"bundle using `npm run bundle` script (thanks to "
+"[siddo420](https://github.com/siddo420))."
+msgstr ""
+
+#: ../../source/ajv_README.md:253
+msgid "Then you need to load Ajv in the browser:"
+msgstr ""
+
+#: ../../source/ajv_README.md:258
+msgid ""
+"This bundle can be used with different module systems; it creates global "
+"`Ajv` if no module system is found."
+msgstr ""
+
+#: ../../source/ajv_README.md:260
+msgid ""
+"The browser bundle is available on "
+"[cdnjs](https://cdnjs.com/libraries/ajv)."
+msgstr ""
+
+#: ../../source/ajv_README.md:262
+msgid "Ajv is tested with these browsers:"
+msgstr ""
+
+#: ../../source/ajv_README.md:264
+msgid ""
+"[![Sauce Test Status](https://saucelabs.com/browser-"
+"matrix/epoberezkin.svg)](https://saucelabs.com/u/epoberezkin)"
+msgstr ""
+
+#: ../../source/ajv_README.md:264
+msgid "Sauce Test Status"
+msgstr ""
+
+#: ../../source/ajv_README.md:266
+msgid ""
+"__Please note__: some frameworks, e.g. Dojo, may redefine global require "
+"in such way that is not compatible with CommonJS module format. In such "
+"case Ajv bundle has to be loaded before the framework and then you can "
+"use global Ajv (see issue [#234](https://github.com/ajv-"
+"validator/ajv/issues/234))."
+msgstr ""
+
+#: ../../source/ajv_README.md:269
+msgid "Ajv and Content Security Policies (CSP)"
+msgstr ""
+
+#: ../../source/ajv_README.md:271
+msgid ""
+"If you're using Ajv to compile a schema (the typical use) in a browser "
+"document that is loaded with a Content Security Policy (CSP), that policy"
+" will require a `script-src` directive that includes the value `'unsafe-"
+"eval'`. :warning: NOTE, however, that `unsafe-eval` is NOT recommended in"
+" a secure "
+"CSP[[1]](https://developer.chrome.com/extensions/contentSecurityPolicy"
+"#relaxing-eval), as it has the potential to open the document to cross-"
+"site scripting (XSS) attacks."
+msgstr ""
+
+#: ../../source/ajv_README.md:274
+msgid ""
+"In order to make use of Ajv without easing your CSP, you can [pre-compile"
+" a schema using the CLI](https://github.com/ajv-validator/ajv-cli"
+"#compile-schemas). This will transpile the schema JSON into a JavaScript "
+"file that exports a `validate` function that works simlarly to a schema "
+"compiled at runtime."
+msgstr ""
+
+#: ../../source/ajv_README.md:276
+msgid ""
+"Note that pre-compilation of schemas is performed using [ajv-"
+"pack](https://github.com/ajv-validator/ajv-pack) and there are [some "
+"limitations to the schema features it can compile](https://github.com"
+"/ajv-validator/ajv-pack#limitations). A successfully pre-compiled schema "
+"is equivalent to the same schema compiled at runtime."
+msgstr ""
+
+#: ../../source/ajv_README.md:279
+msgid "Command line interface"
+msgstr ""
+
+#: ../../source/ajv_README.md:281
+msgid ""
+"CLI is available as a separate npm package [ajv-cli](https://github.com"
+"/ajv-validator/ajv-cli). It supports:"
+msgstr ""
+
+#: ../../source/ajv_README.md:283
+msgid "compiling JSON Schemas to test their validity"
+msgstr ""
+
+#: ../../source/ajv_README.md:284
+msgid ""
+"BETA: generating standalone module exporting a validation function to be "
+"used without Ajv (using [ajv-pack](https://github.com/ajv-validator/ajv-"
+"pack))"
+msgstr ""
+
+#: ../../source/ajv_README.md:285
+msgid ""
+"migrate schemas to draft-07 (using [json-schema-"
+"migrate](https://github.com/epoberezkin/json-schema-migrate))"
+msgstr ""
+
+#: ../../source/ajv_README.md:286
+msgid "validating data file(s) against JSON Schema"
+msgstr ""
+
+#: ../../source/ajv_README.md:287
+msgid "testing expected validity of data against JSON Schema"
+msgstr ""
+
+#: ../../source/ajv_README.md:288
+msgid "referenced schemas"
+msgstr ""
+
+#: ../../source/ajv_README.md:289
+msgid "custom meta-schemas"
+msgstr ""
+
+#: ../../source/ajv_README.md:290
+msgid "files in JSON, JSON5, YAML, and JavaScript format"
+msgstr ""
+
+#: ../../source/ajv_README.md:291
+msgid "all Ajv options"
+msgstr ""
+
+#: ../../source/ajv_README.md:292
+msgid ""
+"reporting changes in data after validation in [JSON-"
+"patch](https://tools.ietf.org/html/rfc6902) format"
+msgstr ""
+
+#: ../../source/ajv_README.md:295
+msgid "Validation keywords"
+msgstr ""
+
+#: ../../source/ajv_README.md:297
+msgid ""
+"Ajv supports all validation keywords from draft-07 of JSON Schema "
+"standard:"
+msgstr ""
+
+#: ../../source/ajv_README.md:299
+msgid "[type](https://github.com/ajv-validator/ajv/blob/master/KEYWORDS.md#type)"
+msgstr ""
+
+#: ../../source/ajv_README.md:300
+msgid ""
+"[for numbers](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#keywords-for-numbers) - maximum, "
+"minimum, exclusiveMaximum, exclusiveMinimum, multipleOf"
+msgstr ""
+
+#: ../../source/ajv_README.md:301
+msgid ""
+"[for strings](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#keywords-for-strings) - maxLength, "
+"minLength, pattern, format"
+msgstr ""
+
+#: ../../source/ajv_README.md:302
+msgid ""
+"[for arrays](https://github.com/ajv-validator/ajv/blob/master/KEYWORDS.md"
+"#keywords-for-arrays) - maxItems, minItems, uniqueItems, items, "
+"additionalItems, [contains](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#contains)"
+msgstr ""
+
+#: ../../source/ajv_README.md:303
+msgid ""
+"[for objects](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#keywords-for-objects) - "
+"maxProperties, minProperties, required, properties, patternProperties, "
+"additionalProperties, dependencies, [propertyNames](https://github.com"
+"/ajv-validator/ajv/blob/master/KEYWORDS.md#propertynames)"
+msgstr ""
+
+#: ../../source/ajv_README.md:304
+msgid ""
+"[for all types](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#keywords-for-all-types) - enum, "
+"[const](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#const)"
+msgstr ""
+
+#: ../../source/ajv_README.md:305
+msgid ""
+"[compound keywords](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#compound-keywords) - not, oneOf, "
+"anyOf, allOf, [if/then/else](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#ifthenelse)"
+msgstr ""
+
+#: ../../source/ajv_README.md:307
+msgid ""
+"With [ajv-keywords](https://github.com/ajv-validator/ajv-keywords) "
+"package Ajv also supports validation keywords from [JSON Schema extension"
+" proposals](https://github.com/json-schema/json-schema/wiki/v5-Proposals)"
+" for JSON Schema standard:"
+msgstr ""
+
+#: ../../source/ajv_README.md:309
+msgid ""
+"[patternRequired](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#patternrequired-proposed) - like "
+"`required` but with patterns that some property should match."
+msgstr ""
+
+#: ../../source/ajv_README.md:310
+msgid ""
+"[formatMaximum, formatMinimum, formatExclusiveMaximum, "
+"formatExclusiveMinimum](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md#formatmaximum--formatminimum-and-"
+"exclusiveformatmaximum--exclusiveformatminimum-proposed) - setting limits"
+" for date, time, etc."
+msgstr ""
+
+#: ../../source/ajv_README.md:312
+msgid ""
+"See [JSON Schema validation keywords](https://github.com/ajv-"
+"validator/ajv/blob/master/KEYWORDS.md) for more details."
+msgstr ""
+
+#: ../../source/ajv_README.md:315
+msgid "Annotation keywords"
+msgstr ""
+
+#: ../../source/ajv_README.md:317
+msgid ""
+"JSON Schema specification defines several annotation keywords that "
+"describe schema itself but do not perform any validation."
+msgstr ""
+
+#: ../../source/ajv_README.md:319
+msgid ""
+"`title` and `description`: information about the data represented by that"
+" schema"
+msgstr ""
+
+#: ../../source/ajv_README.md:320
+msgid ""
+"`$comment` (NEW in draft-07): information for developers. With option "
+"`$comment` Ajv logs or passes the comment string to the user-supplied "
+"function. See [Options](#options)."
+msgstr ""
+
+#: ../../source/ajv_README.md:321
+msgid ""
+"`default`: a default value of the data instance, see [Assigning defaults"
+"](#assigning-defaults)."
+msgstr ""
+
+#: ../../source/ajv_README.md:322
+msgid ""
+"`examples` (NEW in draft-06): an array of data instances. Ajv does not "
+"check the validity of these instances against the schema."
+msgstr ""
+
+#: ../../source/ajv_README.md:323
+msgid ""
+"`readOnly` and `writeOnly` (NEW in draft-07): marks data-instance as "
+"read-only or write-only in relation to the source of the data (database, "
+"api, etc.)."
+msgstr ""
+
+#: ../../source/ajv_README.md:324
+msgid ""
+"`contentEncoding`: [RFC "
+"2045](https://tools.ietf.org/html/rfc2045#section-6.1 ), e.g., "
+"\"base64\"."
+msgstr ""
+
+#: ../../source/ajv_README.md:325
+msgid ""
+"`contentMediaType`: [RFC 2046](https://tools.ietf.org/html/rfc2046), "
+"e.g., \"image/png\"."
+msgstr ""
+
+#: ../../source/ajv_README.md:327
+msgid ""
+"__Please note__:  Ajv does not implement validation of the keywords "
+"`examples`, `contentEncoding` and `contentMediaType` but it reserves "
+"them. If you want to create a plugin that implements some of them, it "
+"should remove these keywords from the instance."
+msgstr ""
+
+#: ../../source/ajv_README.md:330
+msgid "Formats"
+msgstr ""
+
+#: ../../source/ajv_README.md:332
+msgid ""
+"Ajv implements formats defined by JSON Schema specification and several "
+"other formats. It is recommended NOT to use \"format\" keyword "
+"implementations with untrusted data, as they use potentially unsafe "
+"regular expressions - see [ReDoS attack](#redos-attack)."
+msgstr ""
+
+#: ../../source/ajv_README.md:334
+msgid ""
+"__Please note__: if you need to use \"format\" keyword to validate "
+"untrusted data, you MUST assess their suitability and safety for your "
+"validation scenarios."
+msgstr ""
+
+#: ../../source/ajv_README.md:336
+msgid ""
+"The following formats are implemented for string validation with "
+"\"format\" keyword:"
+msgstr ""
+
+#: ../../source/ajv_README.md:338
+msgid ""
+"_date_: full-date according to "
+"[RFC3339](http://tools.ietf.org/html/rfc3339#section-5.6)."
+msgstr ""
+
+#: ../../source/ajv_README.md:339
+msgid "_time_: time with optional time-zone."
+msgstr ""
+
+#: ../../source/ajv_README.md:340
+msgid ""
+"_date-time_: date-time from the same source (time-zone is mandatory). "
+"`date`, `time` and `date-time` validate ranges in `full` mode and only "
+"regexp in `fast` mode (see [options](#options))."
+msgstr ""
+
+#: ../../source/ajv_README.md:341
+msgid "_uri_: full URI."
+msgstr ""
+
+#: ../../source/ajv_README.md:342
+msgid "_uri-reference_: URI reference, including full and relative URIs."
+msgstr ""
+
+#: ../../source/ajv_README.md:343
+msgid ""
+"_uri-template_: URI template according to "
+"[RFC6570](https://tools.ietf.org/html/rfc6570)"
+msgstr ""
+
+#: ../../source/ajv_README.md:344
+msgid ""
+"_url_ (deprecated): [URL record](https://url.spec.whatwg.org/#concept-"
+"url)."
+msgstr ""
+
+#: ../../source/ajv_README.md:345
+msgid "_email_: email address."
+msgstr ""
+
+#: ../../source/ajv_README.md:346
+msgid ""
+"_hostname_: host name according to "
+"[RFC1034](http://tools.ietf.org/html/rfc1034#section-3.5)."
+msgstr ""
+
+#: ../../source/ajv_README.md:347
+msgid "_ipv4_: IP address v4."
+msgstr ""
+
+#: ../../source/ajv_README.md:348
+msgid "_ipv6_: IP address v6."
+msgstr ""
+
+#: ../../source/ajv_README.md:349
+msgid ""
+"_regex_: tests whether a string is a valid regular expression by passing "
+"it to RegExp constructor."
+msgstr ""
+
+#: ../../source/ajv_README.md:350
+msgid ""
+"_uuid_: Universally Unique IDentifier according to "
+"[RFC4122](http://tools.ietf.org/html/rfc4122)."
+msgstr ""
+
+#: ../../source/ajv_README.md:351
+msgid ""
+"_json-pointer_: JSON-pointer according to "
+"[RFC6901](https://tools.ietf.org/html/rfc6901)."
+msgstr ""
+
+#: ../../source/ajv_README.md:352
+msgid ""
+"_relative-json-pointer_: relative JSON-pointer according to [this "
+"draft](http://tools.ietf.org/html/draft-luff-relative-json-pointer-00)."
+msgstr ""
+
+#: ../../source/ajv_README.md:354
+msgid ""
+"__Please note__: JSON Schema draft-07 also defines formats `iri`, `iri-"
+"reference`, `idn-hostname` and `idn-email` for URLs, hostnames and emails"
+" with international characters. Ajv does not implement these formats. If "
+"you create Ajv plugin that implements them please make a PR to mention "
+"this plugin here."
+msgstr ""
+
+#: ../../source/ajv_README.md:356
+msgid ""
+"There are two modes of format validation: `fast` and `full`. This mode "
+"affects formats `date`, `time`, `date-time`, `uri`, `uri-reference`, and "
+"`email`. See [Options](#options) for details."
+msgstr ""
+
+#: ../../source/ajv_README.md:358
+msgid ""
+"You can add additional formats and replace any of the formats above using"
+" [addFormat](#api-addformat) method."
+msgstr ""
+
+#: ../../source/ajv_README.md:360
+msgid ""
+"The option `unknownFormats` allows changing the default behaviour when an"
+" unknown format is encountered. In this case Ajv can either fail schema "
+"compilation (default) or ignore it (default in versions before 5.0.0). "
+"You also can allow specific format(s) that will be ignored. See "
+"[Options](#options) for details."
+msgstr ""
+
+#: ../../source/ajv_README.md:362
+msgid ""
+"You can find regular expressions used for format validation and the "
+"sources that were used in [formats.js](https://github.com/ajv-"
+"validator/ajv/blob/master/lib/compile/formats.js)."
+msgstr ""
+
+#: ../../source/ajv_README.md:365
+msgid "<a name=\"ref\"></a>Combining schemas with $ref"
+msgstr ""
+
+#: ../../source/ajv_README.md:367
+msgid ""
+"You can structure your validation logic across multiple schema files and "
+"have schemas reference each other using `$ref` keyword."
+msgstr ""
+
+#: ../../source/ajv_README.md:369 ../../source/ajv_README.md:587
+#: ../../source/ajv_README.md:628 ../../source/ajv_README.md:789
+msgid "Example:"
+msgstr ""
+
+#: ../../source/ajv_README.md:390
+msgid ""
+"Now to compile your schema you can either pass all schemas to Ajv "
+"instance:"
+msgstr ""
+
+#: ../../source/ajv_README.md:397
+msgid "or use `addSchema` method:"
+msgstr ""
+
+#: ../../source/ajv_README.md:405
+msgid "See [Options](#options) and [addSchema](#api) method."
+msgstr ""
+
+#: ../../source/ajv_README.md:407
+msgid "__Please note__:"
+msgstr ""
+
+#: ../../source/ajv_README.md:408
+msgid ""
+"`$ref` is resolved as the uri-reference using schema $id as the base URI "
+"(see the example)."
+msgstr ""
+
+#: ../../source/ajv_README.md:409
+msgid ""
+"References can be recursive (and mutually recursive) to implement the "
+"schemas for different data structures (such as linked lists, trees, "
+"graphs, etc.)."
+msgstr ""
+
+#: ../../source/ajv_README.md:410
+msgid ""
+"You don't have to host your schema files at the URIs that you use as "
+"schema $id. These URIs are only used to identify the schemas, and "
+"according to JSON Schema specification validators should not expect to be"
+" able to download the schemas from these URIs."
+msgstr ""
+
+#: ../../source/ajv_README.md:411
+msgid "The actual location of the schema file in the file system is not used."
+msgstr ""
+
+#: ../../source/ajv_README.md:412
+msgid ""
+"You can pass the identifier of the schema as the second parameter of "
+"`addSchema` method or as a property name in `schemas` option. This "
+"identifier can be used instead of (or in addition to) schema $id."
+msgstr ""
+
+#: ../../source/ajv_README.md:413
+msgid ""
+"You cannot have the same $id (or the schema identifier) used for more "
+"than one schema - the exception will be thrown."
+msgstr ""
+
+#: ../../source/ajv_README.md:414
+msgid ""
+"You can implement dynamic resolution of the referenced schemas using "
+"`compileAsync` method. In this way you can store schemas in any system "
+"(files, web, database, etc.) and reference them without explicitly adding"
+" to Ajv instance. See [Asynchronous schema compilation](#asynchronous-"
+"schema-compilation)."
+msgstr ""
+
+#: ../../source/ajv_README.md:417
+msgid "$data reference"
+msgstr ""
+
+#: ../../source/ajv_README.md:419
+msgid ""
+"With `$data` option you can use values from the validated data as the "
+"values for the schema keywords. See [proposal](https://github.com/json-"
+"schema-org/json-schema-spec/issues/51) for more information about how it "
+"works."
+msgstr ""
+
+#: ../../source/ajv_README.md:421
+msgid ""
+"`$data` reference is supported in the keywords: const, enum, format, "
+"maximum/minimum, exclusiveMaximum / exclusiveMinimum, maxLength / "
+"minLength, maxItems / minItems, maxProperties / minProperties, "
+"formatMaximum / formatMinimum, formatExclusiveMaximum / "
+"formatExclusiveMinimum, multipleOf, pattern, required, uniqueItems."
+msgstr ""
+
+#: ../../source/ajv_README.md:423
+msgid ""
+"The value of \"$data\" should be a [JSON-"
+"pointer](https://tools.ietf.org/html/rfc6901) to the data (the root is "
+"always the top level data object, even if the $data reference is inside a"
+" referenced subschema) or a [relative JSON-"
+"pointer](http://tools.ietf.org/html/draft-luff-relative-json-pointer-00) "
+"(it is relative to the current point in data; if the $data reference is "
+"inside a referenced subschema it cannot point to the data outside of the "
+"root level for this subschema)."
+msgstr ""
+
+#: ../../source/ajv_README.md:425 ../../source/ajv_README.md:479
+msgid "Examples."
+msgstr ""
+
+#: ../../source/ajv_README.md:427
+msgid ""
+"This schema requires that the value in property `smaller` is less or "
+"equal than the value in the property larger:"
+msgstr ""
+
+#: ../../source/ajv_README.md:450
+msgid ""
+"This schema requires that the properties have the same format as their "
+"field names:"
+msgstr ""
+
+#: ../../source/ajv_README.md:466
+msgid ""
+"`$data` reference is resolved safely - it won't throw even if some "
+"property is undefined. If `$data` resolves to `undefined` the validation "
+"succeeds (with the exclusion of `const` keyword). If `$data` resolves to "
+"incorrect type (e.g. not \"number\" for maximum keyword) the validation "
+"fails."
+msgstr ""
+
+#: ../../source/ajv_README.md:469
+msgid "$merge and $patch keywords"
+msgstr ""
+
+#: ../../source/ajv_README.md:471
+msgid ""
+"With the package [ajv-merge-patch](https://github.com/ajv-validator/ajv-"
+"merge-patch) you can use the keywords `$merge` and `$patch` that allow "
+"extending JSON Schemas with patches using formats [JSON Merge Patch (RFC "
+"7396)](https://tools.ietf.org/html/rfc7396) and [JSON Patch (RFC "
+"6902)](https://tools.ietf.org/html/rfc6902)."
+msgstr ""
+
+#: ../../source/ajv_README.md:473
+msgid "To add keywords `$merge` and `$patch` to Ajv instance use this code:"
+msgstr ""
+
+#: ../../source/ajv_README.md:481
+msgid "Using `$merge`:"
+msgstr ""
+
+#: ../../source/ajv_README.md:498
+msgid "Using `$patch`:"
+msgstr ""
+
+#: ../../source/ajv_README.md:515
+msgid "The schemas above are equivalent to this schema:"
+msgstr ""
+
+#: ../../source/ajv_README.md:528
+msgid ""
+"The properties `source` and `with` in the keywords `$merge` and `$patch` "
+"can use absolute or relative `$ref` to point to other schemas previously "
+"added to the Ajv instance or to the fragments of the current schema."
+msgstr ""
+
+#: ../../source/ajv_README.md:530
+msgid ""
+"See the package [ajv-merge-patch](https://github.com/ajv-validator/ajv-"
+"merge-patch) for more information."
+msgstr ""
+
+#: ../../source/ajv_README.md:533
+msgid "Defining custom keywords"
+msgstr ""
+
+#: ../../source/ajv_README.md:535
+msgid "The advantages of using custom keywords are:"
+msgstr ""
+
+#: ../../source/ajv_README.md:537
+msgid ""
+"allow creating validation scenarios that cannot be expressed using JSON "
+"Schema"
+msgstr ""
+
+#: ../../source/ajv_README.md:538
+msgid "simplify your schemas"
+msgstr ""
+
+#: ../../source/ajv_README.md:539
+msgid "help bringing a bigger part of the validation logic to your schemas"
+msgstr ""
+
+#: ../../source/ajv_README.md:540
+msgid ""
+"make your schemas more expressive, less verbose and closer to your "
+"application domain"
+msgstr ""
+
+#: ../../source/ajv_README.md:541
+msgid ""
+"implement custom data processors that modify your data (`modifying` "
+"option MUST be used in keyword definition) and/or create side effects "
+"while the data is being validated"
+msgstr ""
+
+#: ../../source/ajv_README.md:543
+msgid ""
+"If a keyword is used only for side-effects and its validation result is "
+"pre-defined, use option `valid: true/false` in keyword definition to "
+"simplify both generated code (no error handling in case of `valid: true`)"
+" and your keyword functions (no need to return any validation result)."
+msgstr ""
+
+#: ../../source/ajv_README.md:545
+msgid ""
+"The concerns you have to be aware of when extending JSON Schema standard "
+"with custom keywords are the portability and understanding of your "
+"schemas. You will have to support these custom keywords on other "
+"platforms and to properly document these keywords so that everybody can "
+"understand them in your schemas."
+msgstr ""
+
+#: ../../source/ajv_README.md:547
+msgid ""
+"You can define custom keywords with [addKeyword](#api-addkeyword) method."
+" Keywords are defined on the `ajv` instance level - new instances will "
+"not have previously defined keywords."
+msgstr ""
+
+#: ../../source/ajv_README.md:549
+msgid "Ajv allows defining keywords with:"
+msgstr ""
+
+#: ../../source/ajv_README.md:550
+msgid "validation function"
+msgstr ""
+
+#: ../../source/ajv_README.md:551
+msgid "compilation function"
+msgstr ""
+
+#: ../../source/ajv_README.md:552
+msgid "macro function"
+msgstr ""
+
+#: ../../source/ajv_README.md:553
+msgid ""
+"inline compilation function that should return code (as string) that will"
+" be inlined in the currently compiled schema."
+msgstr ""
+
+#: ../../source/ajv_README.md:555
+msgid "Example. `range` and `exclusiveRange` keywords using compiled schema:"
+msgstr ""
+
+#: ../../source/ajv_README.md:578
+msgid ""
+"Several custom keywords (typeof, instanceof, range and propertyNames) are"
+" defined in [ajv-keywords](https://github.com/ajv-validator/ajv-keywords)"
+" package - they can be used for your schemas and as a starting point for "
+"your own custom keywords."
+msgstr ""
+
+#: ../../source/ajv_README.md:580
+msgid ""
+"See [Defining custom keywords](https://github.com/ajv-"
+"validator/ajv/blob/master/CUSTOM.md) for more details."
+msgstr ""
+
+#: ../../source/ajv_README.md:583
+msgid "Asynchronous schema compilation"
+msgstr ""
+
+#: ../../source/ajv_README.md:585
+msgid ""
+"During asynchronous compilation remote references are loaded using "
+"supplied function. See `compileAsync` [method](#api-compileAsync) and "
+"`loadSchema` [option](#options)."
+msgstr ""
+
+#: ../../source/ajv_README.md:606
+msgid ""
+"__Please note__: [Option](#options) `missingRefs` should NOT be set to "
+"`\"ignore\"` or `\"fail\"` for asynchronous compilation to work."
+msgstr ""
+
+#: ../../source/ajv_README.md:609
+msgid "Asynchronous validation"
+msgstr ""
+
+#: ../../source/ajv_README.md:611
+msgid ""
+"Example in Node.js REPL: https://tonicdev.com/esp/ajv-asynchronous-"
+"validation"
+msgstr ""
+
+#: ../../source/ajv_README.md:613
+msgid ""
+"You can define custom formats and keywords that perform validation "
+"asynchronously by accessing database or some other service. You should "
+"add `async: true` in the keyword or format definition (see [addFormat"
+"](#api-addformat), [addKeyword](#api-addkeyword) and [Defining custom "
+"keywords](#defining-custom-keywords))."
+msgstr ""
+
+#: ../../source/ajv_README.md:615
+msgid ""
+"If your schema uses asynchronous formats/keywords or refers to some "
+"schema that contains them it should have `\"$async\": true` keyword so "
+"that Ajv can compile it correctly. If asynchronous format/keyword or "
+"reference to asynchronous schema is used in the schema without `$async` "
+"keyword Ajv will throw an exception during schema compilation."
+msgstr ""
+
+#: ../../source/ajv_README.md:617
+msgid ""
+"__Please note__: all asynchronous subschemas that are referenced from the"
+" current or other schemas should have `\"$async\": true` keyword as well,"
+" otherwise the schema compilation will fail."
+msgstr ""
+
+#: ../../source/ajv_README.md:619
+msgid ""
+"Validation function for an asynchronous custom format/keyword should "
+"return a promise that resolves with `true` or `false` (or rejects with "
+"`new Ajv.ValidationError(errors)` if you want to return custom errors "
+"from the keyword function)."
+msgstr ""
+
+#: ../../source/ajv_README.md:621
+msgid ""
+"Ajv compiles asynchronous schemas to [es7 async "
+"functions](http://tc39.github.io/ecmascript-asyncawait/) that can "
+"optionally be transpiled with "
+"[nodent](https://github.com/MatAtBread/nodent). Async functions are "
+"supported in Node.js 7+ and all modern browsers. You can also supply any "
+"other transpiler as a function via `processCode` option. See "
+"[Options](#options)."
+msgstr ""
+
+#: ../../source/ajv_README.md:623
+msgid ""
+"The compiled validation function has `$async: true` property (if the "
+"schema is asynchronous), so you can differentiate these functions if you "
+"are using both synchronous and asynchronous schemas."
+msgstr ""
+
+#: ../../source/ajv_README.md:625
+msgid ""
+"Validation result will be a promise that resolves with validated data or "
+"rejects with an exception `Ajv.ValidationError` that contains the array "
+"of validation errors in `errors` property."
+msgstr ""
+
+#: ../../source/ajv_README.md:677
+msgid "Using transpilers with asynchronous validation functions."
+msgstr ""
+
+#: ../../source/ajv_README.md:679
+msgid ""
+"[ajv-async](https://github.com/ajv-validator/ajv-async) uses "
+"[nodent](https://github.com/MatAtBread/nodent) to transpile async "
+"functions. To use another transpiler you should separately install it (or"
+" load its bundle in the browser)."
+msgstr ""
+
+#: ../../source/ajv_README.md:682
+msgid "Using nodent"
+msgstr ""
+
+#: ../../source/ajv_README.md:694
+msgid "Using other transpilers"
+msgstr ""
+
+#: ../../source/ajv_README.md:702
+msgid "See [Options](#options)."
+msgstr ""
+
+#: ../../source/ajv_README.md:705
+msgid "Security considerations"
+msgstr ""
+
+#: ../../source/ajv_README.md:707
+msgid ""
+"JSON Schema, if properly used, can replace data sanitisation. It doesn't "
+"replace other API security considerations. It also introduces additional "
+"security aspects to consider."
+msgstr ""
+
+#: ../../source/ajv_README.md:710
+msgid "Security contact"
+msgstr ""
+
+#: ../../source/ajv_README.md:712
+msgid ""
+"To report a security vulnerability, please use the [Tidelift security "
+"contact](https://tidelift.com/security). Tidelift will coordinate the fix"
+" and disclosure. Please do NOT report security vulnerabilities via GitHub"
+" issues."
+msgstr ""
+
+#: ../../source/ajv_README.md:717
+msgid "Untrusted schemas"
+msgstr ""
+
+#: ../../source/ajv_README.md:719
+msgid ""
+"Ajv treats JSON schemas as trusted as your application code. This "
+"security model is based on the most common use case, when the schemas are"
+" static and bundled together with the application."
+msgstr ""
+
+#: ../../source/ajv_README.md:721
+msgid ""
+"If your schemas are received from untrusted sources (or generated from "
+"untrusted data) there are several scenarios you need to prevent:"
+msgstr ""
+
+#: ../../source/ajv_README.md:722
+msgid "compiling schemas can cause stack overflow (if they are too deep)"
+msgstr ""
+
+#: ../../source/ajv_README.md:723
+msgid ""
+"compiling schemas can be slow (e.g. [#557](https://github.com/ajv-"
+"validator/ajv/issues/557))"
+msgstr ""
+
+#: ../../source/ajv_README.md:724
+msgid "validating certain data can be slow"
+msgstr ""
+
+#: ../../source/ajv_README.md:726
+msgid ""
+"It is difficult to predict all the scenarios, but at the very least it "
+"may help to limit the size of untrusted schemas (e.g. limit JSON string "
+"length) and also the maximum schema object depth (that can be high for "
+"relatively small JSON strings). You also may want to mitigate slow "
+"regular expressions in `pattern` and `patternProperties` keywords."
+msgstr ""
+
+#: ../../source/ajv_README.md:728
+msgid ""
+"Regardless the measures you take, using untrusted schemas increases "
+"security risks."
+msgstr ""
+
+#: ../../source/ajv_README.md:731
+msgid "Circular references in JavaScript objects"
+msgstr ""
+
+#: ../../source/ajv_README.md:733
+msgid ""
+"Ajv does not support schemas and validated data that have circular "
+"references in objects. See [issue #802](https://github.com/ajv-"
+"validator/ajv/issues/802)."
+msgstr ""
+
+#: ../../source/ajv_README.md:735
+msgid ""
+"An attempt to compile such schemas or validate such data would cause "
+"stack overflow (or will not complete in case of asynchronous validation)."
+" Depending on the parser you use, untrusted data can lead to circular "
+"references."
+msgstr ""
+
+#: ../../source/ajv_README.md:738
+msgid "Security risks of trusted schemas"
+msgstr ""
+
+#: ../../source/ajv_README.md:740
+msgid ""
+"Some keywords in JSON Schemas can lead to very slow validation for "
+"certain data. These keywords include (but may be not limited to):"
+msgstr ""
+
+#: ../../source/ajv_README.md:742
+msgid ""
+"`pattern` and `format` for large strings - in some cases using "
+"`maxLength` can help mitigate it, but certain regular expressions can "
+"lead to exponential validation time even with relatively short strings "
+"(see [ReDoS attack](#redos-attack))."
+msgstr ""
+
+#: ../../source/ajv_README.md:743
+msgid ""
+"`patternProperties` for large property names - use `propertyNames` to "
+"mitigate, but some regular expressions can have exponential evaluation "
+"time as well."
+msgstr ""
+
+#: ../../source/ajv_README.md:744
+msgid "`uniqueItems` for large non-scalar arrays - use `maxItems` to mitigate"
+msgstr ""
+
+#: ../../source/ajv_README.md:746
+msgid ""
+"__Please note__: The suggestions above to prevent slow validation would "
+"only work if you do NOT use `allErrors: true` in production code (using "
+"it would continue validation after validation errors)."
+msgstr ""
+
+#: ../../source/ajv_README.md:748
+msgid ""
+"You can validate your JSON schemas against [this meta-"
+"schema](https://github.com/ajv-validator/ajv/blob/master/lib/refs/json-"
+"schema-secure.json) to check that these recommendations are followed:"
+msgstr ""
+
+#: ../../source/ajv_README.md:760
+msgid ""
+"__Please note__: following all these recommendation is not a guarantee "
+"that validation of untrusted data is safe - it can still lead to some "
+"undesirable results."
+msgstr ""
+
+#: ../../source/ajv_README.md:763
+msgid "Content Security Policies (CSP)"
+msgstr ""
+
+#: ../../source/ajv_README.md:764
+msgid ""
+"See [Ajv and Content Security Policies (CSP)](#ajv-and-content-security-"
+"policies-csp)"
+msgstr ""
+
+#: ../../source/ajv_README.md:767
+msgid "ReDoS attack"
+msgstr ""
+
+#: ../../source/ajv_README.md:769
+msgid ""
+"Certain regular expressions can lead to the exponential evaluation time "
+"even with relatively short strings."
+msgstr ""
+
+#: ../../source/ajv_README.md:771
+msgid ""
+"Please assess the regular expressions you use in the schemas on their "
+"vulnerability to this attack - see [safe-"
+"regex](https://github.com/substack/safe-regex), for example."
+msgstr ""
+
+#: ../../source/ajv_README.md:773
+msgid ""
+"__Please note__: some formats that Ajv implements use [regular "
+"expressions](https://github.com/ajv-"
+"validator/ajv/blob/master/lib/compile/formats.js) that can be vulnerable "
+"to ReDoS attack, so if you use Ajv to validate data from untrusted "
+"sources __it is strongly recommended__ to consider the following:"
+msgstr ""
+
+#: ../../source/ajv_README.md:775
+msgid "making assessment of \"format\" implementations in Ajv."
+msgstr ""
+
+#: ../../source/ajv_README.md:776
+msgid ""
+"using `format: 'fast'` option that simplifies some of the regular "
+"expressions (although it does not guarantee that they are safe)."
+msgstr ""
+
+#: ../../source/ajv_README.md:777
+msgid ""
+"replacing format implementations provided by Ajv with your own "
+"implementations of \"format\" keyword that either uses different regular "
+"expressions or another approach to format validation. Please see "
+"[addFormat](#api-addformat) method."
+msgstr ""
+
+#: ../../source/ajv_README.md:778
+msgid ""
+"disabling format validation by ignoring \"format\" keyword with option "
+"`format: false`"
+msgstr ""
+
+#: ../../source/ajv_README.md:780
+msgid ""
+"Whatever mitigation you choose, please assume all formats provided by Ajv"
+" as potentially unsafe and make your own assessment of their suitability "
+"for your validation scenarios."
+msgstr ""
+
+#: ../../source/ajv_README.md:783
+msgid "Filtering data"
+msgstr ""
+
+#: ../../source/ajv_README.md:785
+msgid ""
+"With [option `removeAdditional`](#options) (added by "
+"[andyscott](https://github.com/andyscott)) you can filter data during the"
+" validation."
+msgstr ""
+
+#: ../../source/ajv_README.md:787 ../../source/ajv_README.md:879
+#: ../../source/ajv_README.md:938
+msgid "This option modifies original data."
+msgstr ""
+
+#: ../../source/ajv_README.md:821
+msgid ""
+"If `removeAdditional` option in the example above were `\"all\"` then "
+"both `additional1` and `additional2` properties would have been removed."
+msgstr ""
+
+#: ../../source/ajv_README.md:823
+msgid ""
+"If the option were `\"failing\"` then property `additional1` would have "
+"been removed regardless of its value and property `additional2` would "
+"have been removed only if its value were failing the schema in the inner "
+"`additionalProperties` (so in the example above it would have stayed "
+"because it passes the schema, but any non-number would have been "
+"removed)."
+msgstr ""
+
+#: ../../source/ajv_README.md:825
+msgid ""
+"__Please note__: If you use `removeAdditional` option with "
+"`additionalProperties` keyword inside `anyOf`/`oneOf` keywords your "
+"validation can fail with this schema, for example:"
+msgstr ""
+
+#: ../../source/ajv_README.md:849
+msgid ""
+"The intention of the schema above is to allow objects with either the "
+"string property \"foo\" or the integer property \"bar\", but not with "
+"both and not with any other properties."
+msgstr ""
+
+#: ../../source/ajv_README.md:851
+#, python-brace-format
+msgid ""
+"With the option `removeAdditional: true` the validation will pass for the"
+" object `{ \"foo\": \"abc\"}` but will fail for the object `{\"bar\": "
+"1}`. It happens because while the first subschema in `oneOf` is "
+"validated, the property `bar` is removed because it is an additional "
+"property according to the standard (because it is not included in "
+"`properties` keyword in the same schema)."
+msgstr ""
+
+#: ../../source/ajv_README.md:853
+msgid ""
+"While this behaviour is unexpected (issues [#129](https://github.com/ajv-"
+"validator/ajv/issues/129), [#134](https://github.com/ajv-"
+"validator/ajv/issues/134)), it is correct. To have the expected behaviour"
+" (both objects are allowed and additional properties are removed) the "
+"schema has to be refactored in this way:"
+msgstr ""
+
+#: ../../source/ajv_README.md:870
+msgid ""
+"The schema above is also more efficient - it will compile into a faster "
+"function."
+msgstr ""
+
+#: ../../source/ajv_README.md:873
+msgid "Assigning defaults"
+msgstr ""
+
+#: ../../source/ajv_README.md:875
+msgid ""
+"With [option `useDefaults`](#options) Ajv will assign values from "
+"`default` keyword in the schemas of `properties` and `items` (when it is "
+"the array of schemas) to the missing properties and items."
+msgstr ""
+
+#: ../../source/ajv_README.md:877
+msgid ""
+"With the option value `\"empty\"` properties and items equal to `null` or"
+" `\"\"` (empty string) will be considered missing and assigned defaults."
+msgstr ""
+
+#: ../../source/ajv_README.md:881
+msgid ""
+"__Please note__: the default value is inserted in the generated "
+"validation code as a literal, so the value inserted in the data will be "
+"the deep clone of the default in the schema."
+msgstr ""
+
+#: ../../source/ajv_README.md:884
+msgid "Example 1 (`default` in `properties`):"
+msgstr ""
+
+#: ../../source/ajv_README.md:905
+msgid "Example 2 (`default` in `items`):"
+msgstr ""
+
+#: ../../source/ajv_README.md:924
+msgid "`default` keywords in other cases are ignored:"
+msgstr ""
+
+#: ../../source/ajv_README.md:926
+msgid "not in `properties` or `items` subschemas"
+msgstr ""
+
+#: ../../source/ajv_README.md:927
+msgid ""
+"in schemas inside `anyOf`, `oneOf` and `not` (see "
+"[#42](https://github.com/ajv-validator/ajv/issues/42))"
+msgstr ""
+
+#: ../../source/ajv_README.md:928
+msgid "in `if` subschema of `switch` keyword"
+msgstr ""
+
+#: ../../source/ajv_README.md:929
+msgid "in schemas generated by custom macro keywords"
+msgstr ""
+
+#: ../../source/ajv_README.md:931
+msgid ""
+"The [`strictDefaults` option](#options) customizes Ajv's behavior for the"
+" defaults that Ajv ignores (`true` raises an error, and `\"log\"` outputs"
+" a warning)."
+msgstr ""
+
+#: ../../source/ajv_README.md:934
+msgid "Coercing data types"
+msgstr ""
+
+#: ../../source/ajv_README.md:936
+msgid ""
+"When you are validating user inputs all your data properties are usually "
+"strings. The option `coerceTypes` allows you to have your data types "
+"coerced to the types specified in your schema `type` keywords, both to "
+"pass the validation and to use the correctly typed data afterwards."
+msgstr ""
+
+#: ../../source/ajv_README.md:940
+msgid ""
+"__Please note__: if you pass a scalar value to the validating function "
+"its type will be coerced and it will pass the validation, but the value "
+"of the variable you pass won't be updated because scalars are passed by "
+"value."
+msgstr ""
+
+#: ../../source/ajv_README.md:943
+msgid "Example 1:"
+msgstr ""
+
+#: ../../source/ajv_README.md:964
+msgid "Example 2 (array coercions):"
+msgstr ""
+
+#: ../../source/ajv_README.md:983
+msgid ""
+"The coercion rules, as you can see from the example, are different from "
+"JavaScript both to validate user input as expected and to have the "
+"coercion reversible (to correctly validate cases where different types "
+"are defined in subschemas of \"anyOf\" and other compound keywords)."
+msgstr ""
+
+#: ../../source/ajv_README.md:985
+msgid ""
+"See [Coercion rules](https://github.com/ajv-"
+"validator/ajv/blob/master/COERCION.md) for details."
+msgstr ""
+
+#: ../../source/ajv_README.md:990
+msgid "new Ajv(Object options) -&gt; Object"
+msgstr ""
+
+#: ../../source/ajv_README.md:992
+msgid "Create Ajv instance."
+msgstr ""
+
+#: ../../source/ajv_README.md:995
+msgid ".compile(Object schema) -&gt; Function&lt;Object data&gt;"
+msgstr ""
+
+#: ../../source/ajv_README.md:997
+msgid "Generate validating function and cache the compiled schema for future use."
+msgstr ""
+
+#: ../../source/ajv_README.md:999
+msgid ""
+"Validating function returns a boolean value. This function has properties"
+" `errors` and `schema`. Errors encountered during the last validation are"
+" assigned to `errors` property (it is assigned `null` if there was no "
+"errors). `schema` property contains the reference to the original schema."
+msgstr ""
+
+#: ../../source/ajv_README.md:1001
+msgid ""
+"The schema passed to this method will be validated against meta-schema "
+"unless `validateSchema` option is false. If schema is invalid, an error "
+"will be thrown. See [options](#options)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1004
+msgid ""
+"<a name=\"api-compileAsync\"></a>.compileAsync(Object schema [, Boolean "
+"meta] [, Function callback]) -&gt; Promise"
+msgstr ""
+
+#: ../../source/ajv_README.md:1006
+msgid ""
+"Asynchronous version of `compile` method that loads missing remote "
+"schemas using asynchronous function in `options.loadSchema`. This "
+"function returns a Promise that resolves to a validation function. An "
+"optional callback passed to `compileAsync` will be called with 2 "
+"parameters: error (or null) and validating function. The returned promise"
+" will reject (and the callback will be called with an error) when:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1008
+msgid ""
+"missing schema can't be loaded (`loadSchema` returns a Promise that "
+"rejects)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1009
+msgid ""
+"a schema containing a missing reference is loaded, but the reference "
+"cannot be resolved."
+msgstr ""
+
+#: ../../source/ajv_README.md:1010
+msgid "schema (or some loaded/referenced schema) is invalid."
+msgstr ""
+
+#: ../../source/ajv_README.md:1012
+msgid ""
+"The function compiles schema and loads the first missing schema (or meta-"
+"schema) until all missing schemas are loaded."
+msgstr ""
+
+#: ../../source/ajv_README.md:1014
+msgid ""
+"You can asynchronously compile meta-schema by passing `true` as the "
+"second parameter."
+msgstr ""
+
+#: ../../source/ajv_README.md:1016
+msgid ""
+"See example in [Asynchronous compilation](#asynchronous-schema-"
+"compilation)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1019
+msgid ".validate(Object schema|String key|String ref, data) -&gt; Boolean"
+msgstr ""
+
+#: ../../source/ajv_README.md:1021
+msgid "Validate data using passed schema (it will be compiled and cached)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1023
+msgid ""
+"Instead of the schema you can use the key that was previously passed to "
+"`addSchema`, the schema id if it was present in the schema or any "
+"previously resolved reference."
+msgstr ""
+
+#: ../../source/ajv_README.md:1025
+msgid ""
+"Validation errors will be available in the `errors` property of Ajv "
+"instance (`null` if there were no errors)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1027
+msgid ""
+"__Please note__: every time this method is called the errors are "
+"overwritten so you need to copy them to another variable if you want to "
+"use them later."
+msgstr ""
+
+#: ../../source/ajv_README.md:1029
+msgid ""
+"If the schema is asynchronous (has `$async` keyword on the top level) "
+"this method returns a Promise. See [Asynchronous validation"
+"](#asynchronous-validation)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1032
+msgid ".addSchema(Array&lt;Object&gt;|Object schema [, String key]) -&gt; Ajv"
+msgstr ""
+
+#: ../../source/ajv_README.md:1034
+msgid ""
+"Add schema(s) to validator instance. This method does not compile schemas"
+" (but it still validates them). Because of that dependencies can be added"
+" in any order and circular dependencies are supported. It also prevents "
+"unnecessary compilation of schemas that are containers for other schemas "
+"but not used as a whole."
+msgstr ""
+
+#: ../../source/ajv_README.md:1036
+msgid ""
+"Array of schemas can be passed (schemas should have ids), the second "
+"parameter will be ignored."
+msgstr ""
+
+#: ../../source/ajv_README.md:1038
+msgid ""
+"Key can be passed that can be used to reference the schema and will be "
+"used as the schema id if there is no id inside the schema. If the key is "
+"not passed, the schema id will be used as the key."
+msgstr ""
+
+#: ../../source/ajv_README.md:1041
+msgid ""
+"Once the schema is added, it (and all the references inside it) can be "
+"referenced in other schemas and used to validate data."
+msgstr ""
+
+#: ../../source/ajv_README.md:1043
+msgid ""
+"Although `addSchema` does not compile schemas, explicit compilation is "
+"not required - the schema will be compiled when it is used first time."
+msgstr ""
+
+#: ../../source/ajv_README.md:1045
+msgid ""
+"By default the schema is validated against meta-schema before it is "
+"added, and if the schema does not pass validation the exception is "
+"thrown. This behaviour is controlled by `validateSchema` option."
+msgstr ""
+
+#: ../../source/ajv_README.md:1047
+msgid ""
+"__Please note__: Ajv uses the [method chaining "
+"syntax](https://en.wikipedia.org/wiki/Method_chaining) for all methods "
+"with the prefix `add*` and `remove*`. This allows you to do nice things "
+"like the following."
+msgstr ""
+
+#: ../../source/ajv_README.md:1054
+msgid ".addMetaSchema(Array&lt;Object&gt;|Object schema [, String key]) -&gt; Ajv"
+msgstr ""
+
+#: ../../source/ajv_README.md:1056
+msgid ""
+"Adds meta schema(s) that can be used to validate other schemas. That "
+"function should be used instead of `addSchema` because there may be "
+"instance options that would compile a meta schema incorrectly (at the "
+"moment it is `removeAdditional` option)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1058
+msgid ""
+"There is no need to explicitly add draft-07 meta schema (http://json-"
+"schema.org/draft-07/schema) - it is added by default, unless option "
+"`meta` is set to `false`. You only need to use it if you have a changed "
+"meta-schema that you want to use to validate your schemas. See "
+"`validateSchema`."
+msgstr ""
+
+#: ../../source/ajv_README.md:1061
+msgid ""
+"<a name=\"api-validateschema\"></a>.validateSchema(Object schema) -&gt; "
+"Boolean"
+msgstr ""
+
+#: ../../source/ajv_README.md:1063
+msgid ""
+"Validates schema. This method should be used to validate schemas rather "
+"than `validate` due to the inconsistency of `uri` format in JSON Schema "
+"standard."
+msgstr ""
+
+#: ../../source/ajv_README.md:1065
+msgid ""
+"By default this method is called automatically when the schema is added, "
+"so you rarely need to use it directly."
+msgstr ""
+
+#: ../../source/ajv_README.md:1067
+msgid ""
+"If schema doesn't have `$schema` property, it is validated against draft "
+"6 meta-schema (option `meta` should not be false)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1069
+msgid ""
+"If schema has `$schema` property, then the schema with this id (that "
+"should be previously added) is used to validate passed schema."
+msgstr ""
+
+#: ../../source/ajv_README.md:1071
+msgid "Errors will be available at `ajv.errors`."
+msgstr ""
+
+#: ../../source/ajv_README.md:1074
+msgid ".getSchema(String key) -&gt; Function&lt;Object data&gt;"
+msgstr ""
+
+#: ../../source/ajv_README.md:1076
+msgid ""
+"Retrieve compiled schema previously added with `addSchema` by the key "
+"passed to `addSchema` or by its full reference (id). The returned "
+"validating function has `schema` property with the reference to the "
+"original schema."
+msgstr ""
+
+#: ../../source/ajv_README.md:1079
+msgid ""
+".removeSchema([Object schema|String key|String ref|RegExp pattern]) -&gt;"
+" Ajv"
+msgstr ""
+
+#: ../../source/ajv_README.md:1081
+msgid ""
+"Remove added/cached schema. Even if schema is referenced by other schemas"
+" it can be safely removed as dependent schemas have local references."
+msgstr ""
+
+#: ../../source/ajv_README.md:1083
+msgid "Schema can be removed using:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1084
+msgid "key passed to `addSchema`"
+msgstr ""
+
+#: ../../source/ajv_README.md:1085
+msgid "it's full reference (id)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1086
+msgid "RegExp that should match schema id or key (meta-schemas won't be removed)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1087
+msgid ""
+"actual schema object that will be stable-stringified to remove schema "
+"from cache"
+msgstr ""
+
+#: ../../source/ajv_README.md:1089
+msgid ""
+"If no parameter is passed all schemas but meta-schemas will be removed "
+"and the cache will be cleared."
+msgstr ""
+
+#: ../../source/ajv_README.md:1092
+msgid ""
+"<a name=\"api-addformat\"></a>.addFormat(String name, "
+"String|RegExp|Function|Object format) -&gt; Ajv"
+msgstr ""
+
+#: ../../source/ajv_README.md:1094
+msgid ""
+"Add custom format to validate strings or numbers. It can also be used to "
+"replace pre-defined formats for Ajv instance."
+msgstr ""
+
+#: ../../source/ajv_README.md:1096
+msgid "Strings are converted to RegExp."
+msgstr ""
+
+#: ../../source/ajv_README.md:1098
+msgid "Function should return validation result as `true` or `false`."
+msgstr ""
+
+#: ../../source/ajv_README.md:1100
+msgid ""
+"If object is passed it should have properties `validate`, `compare` and "
+"`async`:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1102
+msgid "_validate_: a string, RegExp or a function as described above."
+msgstr ""
+
+#: ../../source/ajv_README.md:1103
+msgid ""
+"_compare_: an optional comparison function that accepts two strings and "
+"compares them according to the format meaning. This function is used with"
+" keywords `formatMaximum`/`formatMinimum` (defined in [ajv-"
+"keywords](https://github.com/ajv-validator/ajv-keywords) package). It "
+"should return `1` if the first value is bigger than the second value, "
+"`-1` if it is smaller and `0` if it is equal."
+msgstr ""
+
+#: ../../source/ajv_README.md:1104
+msgid ""
+"_async_: an optional `true` value if `validate` is an asynchronous "
+"function; in this case it should return a promise that resolves with a "
+"value `true` or `false`."
+msgstr ""
+
+#: ../../source/ajv_README.md:1105
+msgid ""
+"_type_: an optional type of data that the format applies to. It can be "
+"`\"string\"` (default) or `\"number\"` (see https://github.com/ajv-"
+"validator/ajv/issues/291#issuecomment-259923858). If the type of data is "
+"different, the validation will pass."
+msgstr ""
+
+#: ../../source/ajv_README.md:1107
+msgid "Custom formats can be also added via `formats` option."
+msgstr ""
+
+#: ../../source/ajv_README.md:1110
+msgid ""
+"<a name=\"api-addkeyword\"></a>.addKeyword(String keyword, Object "
+"definition) -&gt; Ajv"
+msgstr ""
+
+#: ../../source/ajv_README.md:1112
+msgid "Add custom validation keyword to Ajv instance."
+msgstr ""
+
+#: ../../source/ajv_README.md:1114
+msgid ""
+"Keyword should be different from all standard JSON Schema keywords and "
+"different from previously defined keywords. There is no way to redefine "
+"keywords or to remove keyword definition from the instance."
+msgstr ""
+
+#: ../../source/ajv_README.md:1116
+msgid ""
+"Keyword must start with a letter, `_` or `$`, and may continue with "
+"letters, numbers, `_`, `$`, or `-`. It is recommended to use an "
+"application-specific prefix for keywords to avoid current and future name"
+" collisions."
+msgstr ""
+
+#: ../../source/ajv_README.md:1119
+msgid "Example Keywords:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1120
+msgid ""
+"`\"xyz-example\"`: valid, and uses prefix for the xyz project to avoid "
+"name collisions."
+msgstr ""
+
+#: ../../source/ajv_README.md:1121
+msgid ""
+"`\"example\"`: valid, but not recommended as it could collide with future"
+" versions of JSON Schema etc."
+msgstr ""
+
+#: ../../source/ajv_README.md:1122
+msgid ""
+"`\"3-example\"`: invalid as numbers are not allowed to be the first "
+"character in a keyword"
+msgstr ""
+
+#: ../../source/ajv_README.md:1124
+msgid "Keyword definition is an object with the following properties:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1126
+msgid ""
+"_type_: optional string or array of strings with data type(s) that the "
+"keyword applies to. If not present, the keyword will apply to all types."
+msgstr ""
+
+#: ../../source/ajv_README.md:1127
+msgid "_validate_: validating function"
+msgstr ""
+
+#: ../../source/ajv_README.md:1128
+msgid "_compile_: compiling function"
+msgstr ""
+
+#: ../../source/ajv_README.md:1129
+msgid "_macro_: macro function"
+msgstr ""
+
+#: ../../source/ajv_README.md:1130
+msgid "_inline_: compiling function that returns code (as string)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1131
+msgid ""
+"_schema_: an optional `false` value used with \"validate\" keyword to not"
+" pass schema"
+msgstr ""
+
+#: ../../source/ajv_README.md:1132
+msgid "_metaSchema_: an optional meta-schema for keyword schema"
+msgstr ""
+
+#: ../../source/ajv_README.md:1133
+msgid ""
+"_dependencies_: an optional list of properties that must be present in "
+"the parent schema - it will be checked during schema compilation"
+msgstr ""
+
+#: ../../source/ajv_README.md:1134
+msgid "_modifying_: `true` MUST be passed if keyword modifies data"
+msgstr ""
+
+#: ../../source/ajv_README.md:1135
+msgid ""
+"_statements_: `true` can be passed in case inline keyword generates "
+"statements (as opposed to expression)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1136
+msgid ""
+"_valid_: pass `true`/`false` to pre-define validation result, the result "
+"returned from validation function will be ignored. This option cannot be "
+"used with macro keywords."
+msgstr ""
+
+#: ../../source/ajv_README.md:1137
+msgid ""
+"_$data_: an optional `true` value to support [$data reference](#data-"
+"reference) as the value of custom keyword. The reference will be resolved"
+" at validation time. If the keyword has meta-schema it would be extended "
+"to allow $data and it will be used to validate the resolved value. "
+"Supporting $data reference requires that keyword has validating function "
+"(as the only option or in addition to compile, macro or inline function)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1138
+msgid ""
+"_async_: an optional `true` value if the validation function is "
+"asynchronous (whether it is compiled or passed in _validate_ property); "
+"in this case it should return a promise that resolves with a value `true`"
+" or `false`. This option is ignored in case of \"macro\" and \"inline\" "
+"keywords."
+msgstr ""
+
+#: ../../source/ajv_README.md:1139
+msgid ""
+"_errors_: an optional boolean or string `\"full\"` indicating whether "
+"keyword returns errors. If this property is not set Ajv will determine if"
+" the errors were set in case of failed validation."
+msgstr ""
+
+#: ../../source/ajv_README.md:1141
+msgid ""
+"_compile_, _macro_ and _inline_ are mutually exclusive, only one should "
+"be used at a time. _validate_ can be used separately or in addition to "
+"them to support $data reference."
+msgstr ""
+
+#: ../../source/ajv_README.md:1143
+msgid ""
+"__Please note__: If the keyword is validating data type that is different"
+" from the type(s) in its definition, the validation function will not be "
+"called (and expanded macro will not be used), so there is no need to "
+"check for data type inside validation function or inside schema returned "
+"by macro function (unless you want to enforce a specific type and for "
+"some reason do not want to use a separate `type` keyword for that). In "
+"the same way as standard keywords work, if the keyword does not apply to "
+"the data type being validated, the validation of this keyword will "
+"succeed."
+msgstr ""
+
+#: ../../source/ajv_README.md:1145
+msgid ""
+"See [Defining custom keywords](#defining-custom-keywords) for more "
+"details."
+msgstr ""
+
+#: ../../source/ajv_README.md:1148
+msgid ".getKeyword(String keyword) -&gt; Object|Boolean"
+msgstr ""
+
+#: ../../source/ajv_README.md:1150
+msgid ""
+"Returns custom keyword definition, `true` for pre-defined keywords and "
+"`false` if the keyword is unknown."
+msgstr ""
+
+#: ../../source/ajv_README.md:1153
+msgid ".removeKeyword(String keyword) -&gt; Ajv"
+msgstr ""
+
+#: ../../source/ajv_README.md:1155
+msgid "Removes custom or pre-defined keyword so you can redefine them."
+msgstr ""
+
+#: ../../source/ajv_README.md:1157
+msgid ""
+"While this method can be used to extend pre-defined keywords, it can also"
+" be used to completely change their meaning - it may lead to unexpected "
+"results."
+msgstr ""
+
+#: ../../source/ajv_README.md:1159
+msgid ""
+"__Please note__: schemas compiled before the keyword is removed will "
+"continue to work without changes. To recompile schemas use `removeSchema`"
+" method and compile them again."
+msgstr ""
+
+#: ../../source/ajv_README.md:1162
+msgid ".errorsText([Array&lt;Object&gt; errors [, Object options]]) -&gt; String"
+msgstr ""
+
+#: ../../source/ajv_README.md:1164
+msgid "Returns the text with all errors in a String."
+msgstr ""
+
+#: ../../source/ajv_README.md:1166
+msgid ""
+"Options can have properties `separator` (string used to separate errors, "
+"\", \" by default) and `dataVar` (the variable name that dataPaths are "
+"prefixed with, \"data\" by default)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1169
+msgid "Options"
+msgstr ""
+
+#: ../../source/ajv_README.md:1171
+msgid "Defaults:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1223
+msgid "Validation and reporting options"
+msgstr ""
+
+#: ../../source/ajv_README.md:1225
+msgid ""
+"_$data_: support [$data references](#data-reference). Draft 6 meta-schema"
+" that is added by default will be extended to allow them. If you want to "
+"use another meta-schema you need to use $dataMetaSchema method to add "
+"support for $data reference. See [API](#api)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1226
+msgid ""
+"_allErrors_: check all rules collecting all errors. Default is to return "
+"after the first error."
+msgstr ""
+
+#: ../../source/ajv_README.md:1227
+msgid ""
+"_verbose_: include the reference to the part of the schema (`schema` and "
+"`parentSchema`) and validated data in errors (false by default)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1228
+msgid ""
+"_$comment_ (NEW in Ajv version 6.0): log or pass the value of `$comment` "
+"keyword to a function. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1229
+msgid "`false` (default): ignore $comment keyword."
+msgstr ""
+
+#: ../../source/ajv_README.md:1230
+msgid "`true`: log the keyword value to console."
+msgstr ""
+
+#: ../../source/ajv_README.md:1231
+msgid ""
+"function: pass the keyword value, its schema path and root schema to the "
+"specified function"
+msgstr ""
+
+#: ../../source/ajv_README.md:1232
+msgid ""
+"_jsonPointers_: set `dataPath` property of errors using [JSON "
+"Pointers](https://tools.ietf.org/html/rfc6901) instead of JavaScript "
+"property access notation."
+msgstr ""
+
+#: ../../source/ajv_README.md:1233
+msgid "_uniqueItems_: validate `uniqueItems` keyword (true by default)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1234
+msgid ""
+"_unicode_: calculate correct length of strings with unicode pairs (true "
+"by default). Pass `false` to use `.length` of strings that is faster, but"
+" gives \"incorrect\" lengths of strings with unicode pairs - each unicode"
+" pair is counted as two characters."
+msgstr ""
+
+#: ../../source/ajv_README.md:1235
+msgid ""
+"_nullable_: support keyword \"nullable\" from [Open API 3 "
+"specification](https://swagger.io/docs/specification/data-models/data-"
+"types/)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1236
+msgid "_format_: formats validation mode. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1237
+msgid ""
+"`\"fast\"` (default) - simplified and fast validation (see "
+"[Formats](#formats) for details of which formats are available and "
+"affected by this option)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1238
+msgid ""
+"`\"full\"` - more restrictive and slow validation. E.g., 25:00:00 and "
+"2015/14/33 will be invalid time and date in 'full' mode but it will be "
+"valid in 'fast' mode."
+msgstr ""
+
+#: ../../source/ajv_README.md:1239
+msgid "`false` - ignore all format keywords."
+msgstr ""
+
+#: ../../source/ajv_README.md:1240
+msgid ""
+"_formats_: an object with custom formats. Keys and values will be passed "
+"to `addFormat` method."
+msgstr ""
+
+#: ../../source/ajv_README.md:1241
+msgid ""
+"_keywords_: an object with custom keywords. Keys and values will be "
+"passed to `addKeyword` method."
+msgstr ""
+
+#: ../../source/ajv_README.md:1242
+msgid "_unknownFormats_: handling of unknown formats. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1243
+msgid ""
+"`true` (default) - if an unknown format is encountered the exception is "
+"thrown during schema compilation. If `format` keyword value is [$data "
+"reference](#data-reference) and it is unknown the validation will fail."
+msgstr ""
+
+#: ../../source/ajv_README.md:1244
+msgid ""
+"`[String]` - an array of unknown format names that will be ignored. This "
+"option can be used to allow usage of third party schemas with format(s) "
+"for which you don't have definitions, but still fail if another unknown "
+"format is used. If `format` keyword value is [$data reference](#data-"
+"reference) and it is not in this array the validation will fail."
+msgstr ""
+
+#: ../../source/ajv_README.md:1245
+msgid ""
+"`\"ignore\"` - to log warning during schema compilation and always pass "
+"validation (the default behaviour in versions before 5.0.0). This option "
+"is not recommended, as it allows to mistype format name and it won't be "
+"validated without any error message. This behaviour is required by JSON "
+"Schema specification."
+msgstr ""
+
+#: ../../source/ajv_README.md:1246
+msgid ""
+"_schemas_: an array or object of schemas that will be added to the "
+"instance. In case you pass the array the schemas must have IDs in them. "
+"When the object is passed the method `addSchema(value, key)` will be "
+"called for each schema in this object."
+msgstr ""
+
+#: ../../source/ajv_README.md:1247
+msgid ""
+"_logger_: sets the logging method. Default is the global `console` object"
+" that should have methods `log`, `warn` and `error`. See [Error logging"
+"](#error-logging). Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1248
+msgid ""
+"custom logger - it should have methods `log`, `warn` and `error`. If any "
+"of these methods is missing an exception will be thrown."
+msgstr ""
+
+#: ../../source/ajv_README.md:1249
+msgid "`false` - logging is disabled."
+msgstr ""
+
+#: ../../source/ajv_README.md:1252
+msgid "Referenced schema options"
+msgstr ""
+
+#: ../../source/ajv_README.md:1254
+msgid ""
+"_schemaId_: this option defines which keywords are used as schema URI. "
+"Option value:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1255
+msgid ""
+"`\"$id\"` (default) - only use `$id` keyword as schema URI (as specified "
+"in JSON Schema draft-06/07), ignore `id` keyword (if it is present a "
+"warning will be logged)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1256
+msgid ""
+"`\"id\"` - only use `id` keyword as schema URI (as specified in JSON "
+"Schema draft-04), ignore `$id` keyword (if it is present a warning will "
+"be logged)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1257
+msgid ""
+"`\"auto\"` - use both `$id` and `id` keywords as schema URI. If both are "
+"present (in the same schema object) and different the exception will be "
+"thrown during schema compilation."
+msgstr ""
+
+#: ../../source/ajv_README.md:1258
+msgid "_missingRefs_: handling of missing referenced schemas. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1259
+msgid ""
+"`true` (default) - if the reference cannot be resolved during compilation"
+" the exception is thrown. The thrown error has properties `missingRef` "
+"(with hash fragment) and `missingSchema` (without it). Both properties "
+"are resolved relative to the current base id (usually schema id, unless "
+"it was substituted)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1260
+msgid "`\"ignore\"` - to log error during compilation and always pass validation."
+msgstr ""
+
+#: ../../source/ajv_README.md:1261
+msgid ""
+"`\"fail\"` - to log error and successfully compile schema but fail "
+"validation if this rule is checked."
+msgstr ""
+
+#: ../../source/ajv_README.md:1262
+msgid ""
+"_extendRefs_: validation of other keywords when `$ref` is present in the "
+"schema. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1263
+msgid ""
+"`\"ignore\"` (default) - when `$ref` is used other keywords are ignored "
+"(as per [JSON Reference](https://tools.ietf.org/html/draft-pbryan-zyp-"
+"json-ref-03#section-3) standard). A warning will be logged during the "
+"schema compilation."
+msgstr ""
+
+#: ../../source/ajv_README.md:1264
+msgid ""
+"`\"fail\"` (recommended) - if other validation keywords are used together"
+" with `$ref` the exception will be thrown when the schema is compiled. "
+"This option is recommended to make sure schema has no keywords that are "
+"ignored, which can be confusing."
+msgstr ""
+
+#: ../../source/ajv_README.md:1265
+msgid ""
+"`true` - validate all keywords in the schemas with `$ref` (the default "
+"behaviour in versions before 5.0.0)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1266
+msgid ""
+"_loadSchema_: asynchronous function that will be used to load remote "
+"schemas when `compileAsync` [method](#api-compileAsync) is used and some "
+"reference is missing (option `missingRefs` should NOT be 'fail' or "
+"'ignore'). This function should accept remote schema uri as a parameter "
+"and return a Promise that resolves to a schema. See example in "
+"[Asynchronous compilation](#asynchronous-schema-compilation)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1269
+msgid "Options to modify validated data"
+msgstr ""
+
+#: ../../source/ajv_README.md:1271
+msgid ""
+"_removeAdditional_: remove additional properties - see example in "
+"[Filtering data](#filtering-data). This option is not used if schema is "
+"added with `addMetaSchema` method. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1272
+msgid "`false` (default) - not to remove additional properties"
+msgstr ""
+
+#: ../../source/ajv_README.md:1273
+msgid ""
+"`\"all\"` - all additional properties are removed, regardless of "
+"`additionalProperties` keyword in schema (and no validation is made for "
+"them)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1274
+msgid ""
+"`true` - only additional properties with `additionalProperties` keyword "
+"equal to `false` are removed."
+msgstr ""
+
+#: ../../source/ajv_README.md:1275
+msgid ""
+"`\"failing\"` - additional properties that fail schema validation will be"
+" removed (where `additionalProperties` keyword is `false` or schema)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1276
+msgid ""
+"_useDefaults_: replace missing or undefined properties and items with the"
+" values from corresponding `default` keywords. Default behaviour is to "
+"ignore `default` keywords. This option is not used if schema is added "
+"with `addMetaSchema` method. See examples in [Assigning defaults"
+"](#assigning-defaults). Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1277
+msgid "`false` (default) - do not use defaults"
+msgstr ""
+
+#: ../../source/ajv_README.md:1278
+msgid "`true` - insert defaults by value (object literal is used)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1279
+msgid ""
+"`\"empty\"` - in addition to missing or undefined, use defaults for "
+"properties and items that are equal to `null` or `\"\"` (an empty "
+"string)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1280
+msgid ""
+"`\"shared\"` (deprecated) - insert defaults by reference. If the default "
+"is an object, it will be shared by all instances of validated data. If "
+"you modify the inserted default in the validated data, it will be "
+"modified in the schema as well."
+msgstr ""
+
+#: ../../source/ajv_README.md:1281
+msgid ""
+"_coerceTypes_: change data type of data to match `type` keyword. See the "
+"example in [Coercing data types](#coercing-data-types) and [coercion "
+"rules](https://github.com/ajv-validator/ajv/blob/master/COERCION.md). "
+"Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1282
+msgid "`false` (default) - no type coercion."
+msgstr ""
+
+#: ../../source/ajv_README.md:1283
+msgid "`true` - coerce scalar data types."
+msgstr ""
+
+#: ../../source/ajv_README.md:1284
+msgid ""
+"`\"array\"` - in addition to coercions between scalar types, coerce "
+"scalar data to an array with one element and vice versa (as required by "
+"the schema)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1287
+msgid "Strict mode options"
+msgstr ""
+
+#: ../../source/ajv_README.md:1289
+msgid ""
+"_strictDefaults_: report ignored `default` keywords in schemas. Option "
+"values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1290
+msgid "`false` (default) - ignored defaults are not reported"
+msgstr ""
+
+#: ../../source/ajv_README.md:1291
+msgid "`true` - if an ignored default is present, throw an error"
+msgstr ""
+
+#: ../../source/ajv_README.md:1292
+msgid "`\"log\"` - if an ignored default is present, log warning"
+msgstr ""
+
+#: ../../source/ajv_README.md:1293
+msgid "_strictKeywords_: report unknown keywords in schemas. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1294
+msgid "`false` (default) - unknown keywords are not reported"
+msgstr ""
+
+#: ../../source/ajv_README.md:1295
+msgid "`true` - if an unknown keyword is present, throw an error"
+msgstr ""
+
+#: ../../source/ajv_README.md:1296
+msgid "`\"log\"` - if an unknown keyword is present, log warning"
+msgstr ""
+
+#: ../../source/ajv_README.md:1297
+msgid ""
+"_strictNumbers_: validate numbers strictly, failing validation for NaN "
+"and Infinity. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1298
+msgid "`false` (default) - NaN or Infinity will pass validation for numeric types"
+msgstr ""
+
+#: ../../source/ajv_README.md:1299
+msgid "`true` - NaN or Infinity will not pass validation for numeric types"
+msgstr ""
+
+#: ../../source/ajv_README.md:1301
+msgid "Asynchronous validation options"
+msgstr ""
+
+#: ../../source/ajv_README.md:1303
+msgid ""
+"_transpile_: Requires [ajv-async](https://github.com/ajv-validator/ajv-"
+"async) package. It determines whether Ajv transpiles compiled "
+"asynchronous validation function. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1304
+msgid ""
+"`undefined` (default) - transpile with "
+"[nodent](https://github.com/MatAtBread/nodent) if async functions are not"
+" supported."
+msgstr ""
+
+#: ../../source/ajv_README.md:1305
+msgid "`true` - always transpile with nodent."
+msgstr ""
+
+#: ../../source/ajv_README.md:1306
+msgid ""
+"`false` - do not transpile; if async functions are not supported an "
+"exception will be thrown."
+msgstr ""
+
+#: ../../source/ajv_README.md:1309
+msgid "Advanced options"
+msgstr ""
+
+#: ../../source/ajv_README.md:1311
+msgid ""
+"_meta_: add [meta-schema](http://json-schema.org/documentation.html) so "
+"it can be used by other schemas (true by default). If an object is "
+"passed, it will be used as the default meta-schema for schemas that have "
+"no `$schema` keyword. This default meta-schema MUST have `$schema` "
+"keyword."
+msgstr ""
+
+#: ../../source/ajv_README.md:1312
+msgid ""
+"_validateSchema_: validate added/compiled schemas against meta-schema "
+"(true by default). `$schema` property in the schema can be http://json-"
+"schema.org/draft-07/schema or absent (draft-07 meta-schema will be used) "
+"or can be a reference to the schema previously added with `addMetaSchema`"
+" method. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1313
+msgid "`true` (default) -  if the validation fails, throw the exception."
+msgstr ""
+
+#: ../../source/ajv_README.md:1314
+msgid "`\"log\"` - if the validation fails, log error."
+msgstr ""
+
+#: ../../source/ajv_README.md:1315
+msgid "`false` - skip schema validation."
+msgstr ""
+
+#: ../../source/ajv_README.md:1316
+msgid ""
+"_addUsedSchema_: by default methods `compile` and `validate` add schemas "
+"to the instance if they have `$id` (or `id`) property that doesn't start "
+"with \"#\". If `$id` is present and it is not unique the exception will "
+"be thrown. Set this option to `false` to skip adding schemas to the "
+"instance and the `$id` uniqueness check when these methods are used. This"
+" option does not affect `addSchema` method."
+msgstr ""
+
+#: ../../source/ajv_README.md:1317
+msgid "_inlineRefs_: Affects compilation of referenced schemas. Option values:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1318
+msgid ""
+"`true` (default) - the referenced schemas that don't have refs in them "
+"are inlined, regardless of their size - that substantially improves "
+"performance at the cost of the bigger size of compiled schema functions."
+msgstr ""
+
+#: ../../source/ajv_README.md:1319
+msgid ""
+"`false` - to not inline referenced schemas (they will be compiled as "
+"separate functions)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1320
+msgid ""
+"integer number - to limit the maximum number of keywords of the schema "
+"that will be inlined."
+msgstr ""
+
+#: ../../source/ajv_README.md:1321
+msgid ""
+"_passContext_: pass validation context to custom keyword functions. If "
+"this option is `true` and you pass some context to the compiled "
+"validation function with `validate.call(context, data)`, the `context` "
+"will be available as `this` in your custom keywords. By default `this` is"
+" Ajv instance."
+msgstr ""
+
+#: ../../source/ajv_README.md:1322
+msgid ""
+"_loopRequired_: by default `required` keyword is compiled into a single "
+"expression (or a sequence of statements in `allErrors` mode). In case of "
+"a very large number of properties in this keyword it may result in a very"
+" big validation function. Pass integer to set the number of properties "
+"above which `required` keyword will be validated in a loop - smaller "
+"validation function size but also worse performance."
+msgstr ""
+
+#: ../../source/ajv_README.md:1323
+msgid ""
+"_ownProperties_: by default Ajv iterates over all enumerable object "
+"properties; when this option is `true` only own enumerable object "
+"properties (i.e. found directly on the object rather than on its "
+"prototype) are iterated. Contributed by @mbroadst."
+msgstr ""
+
+#: ../../source/ajv_README.md:1324
+msgid ""
+"_multipleOfPrecision_: by default `multipleOf` keyword is validated by "
+"comparing the result of division with parseInt() of that result. It works"
+" for dividers that are bigger than 1. For small dividers such as 0.01 the"
+" result of the division is usually not integer (even when it should be "
+"integer, see issue [#84](https://github.com/ajv-"
+"validator/ajv/issues/84)). If you need to use fractional dividers set "
+"this option to some positive integer N to have `multipleOf` validated "
+"using this formula: `Math.abs(Math.round(division) - division) < 1e-N` "
+"(it is slower but allows for float arithmetics deviations)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1325
+msgid ""
+"_errorDataPath_ (deprecated): set `dataPath` to point to 'object' "
+"(default) or to 'property' when validating keywords `required`, "
+"`additionalProperties` and `dependencies`."
+msgstr ""
+
+#: ../../source/ajv_README.md:1326
+msgid ""
+"_messages_: Include human-readable messages in errors. `true` by default."
+" `false` can be passed when custom messages are used (e.g. with [ajv-"
+"i18n](https://github.com/ajv-validator/ajv-i18n))."
+msgstr ""
+
+#: ../../source/ajv_README.md:1327
+msgid ""
+"_sourceCode_: add `sourceCode` property to validating function (for "
+"debugging; this code can be different from the result of toString call)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1328
+msgid ""
+"_processCode_: an optional function to process generated code before it "
+"is passed to Function constructor. It can be used to either beautify (the"
+" validating function is generated without line-breaks) or to transpile "
+"code. Starting from version 5.0.0 this option replaced options:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1329
+msgid ""
+"`beautify` that formatted the generated function using [js-"
+"beautify](https://github.com/beautify-web/js-beautify). If you want to "
+"beautify the generated code pass a function calling `require('js-"
+"beautify').js_beautify` as `processCode: code => js_beautify(code)`."
+msgstr ""
+
+#: ../../source/ajv_README.md:1330
+msgid ""
+"`transpile` that transpiled asynchronous validation function. You can "
+"still use `transpile` option with [ajv-async](https://github.com/ajv-"
+"validator/ajv-async) package. See [Asynchronous validation"
+"](#asynchronous-validation) for more information."
+msgstr ""
+
+#: ../../source/ajv_README.md:1331
+msgid ""
+"_cache_: an optional instance of cache to store compiled schemas using "
+"stable-stringified schema as a key. For example, set-associative cache "
+"[sacjs](https://github.com/epoberezkin/sacjs) can be used. If not passed "
+"then a simple hash is used which is good enough for the common use case "
+"(a limited number of statically defined schemas). Cache should have "
+"methods `put(key, value)`, `get(key)`, `del(key)` and `clear()`."
+msgstr ""
+
+#: ../../source/ajv_README.md:1332
+msgid ""
+"_serialize_: an optional function to serialize schema to cache key. Pass "
+"`false` to use schema itself as a key (e.g., if WeakMap used as a cache)."
+" By default [fast-json-stable-stringify](https://github.com/epoberezkin"
+"/fast-json-stable-stringify) is used."
+msgstr ""
+
+#: ../../source/ajv_README.md:1333
+msgid ""
+"_regExp_: an optional function to create RegExp objects. This allows "
+"using a custom RegExp engine (e.g., [RE2](https://github.com/uhop/node-"
+"re2)) to mitigate ReDoS attacks. The function must have the signature "
+"`(pattern: string) => RegExpLike` where `RegExpLike` is an object with a "
+"`test(string) => boolean` method. Example with RE2:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1337
+msgid "By default (`undefined`), native `RegExp` constructor is used."
+msgstr ""
+
+#: ../../source/ajv_README.md:1340
+msgid "Validation errors"
+msgstr ""
+
+#: ../../source/ajv_README.md:1342
+msgid ""
+"In case of validation failure, Ajv assigns the array of errors to "
+"`errors` property of validation function (or to `errors` property of Ajv "
+"instance when `validate` or `validateSchema` methods were called). In "
+"case of [asynchronous validation](#asynchronous-validation), the returned"
+" promise is rejected with exception `Ajv.ValidationError` that has "
+"`errors` property."
+msgstr ""
+
+#: ../../source/ajv_README.md:1345
+msgid "Error objects"
+msgstr ""
+
+#: ../../source/ajv_README.md:1347
+msgid "Each error is an object with the following properties:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1349
+msgid "_keyword_: validation keyword."
+msgstr ""
+
+#: ../../source/ajv_README.md:1350
+msgid ""
+"_dataPath_: the path to the part of the data that was validated. By "
+"default `dataPath` uses JavaScript property access notation (e.g., "
+"`\".prop[1].subProp\"`). When the option `jsonPointers` is true (see "
+"[Options](#options)) `dataPath` will be set using JSON pointer standard "
+"(e.g., `\"/prop/1/subProp\"`)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1351
+msgid ""
+"_schemaPath_: the path (JSON-pointer as a URI fragment) to the schema of "
+"the keyword that failed validation."
+msgstr ""
+
+#: ../../source/ajv_README.md:1352
+msgid ""
+"_params_: the object with the additional information about error that can"
+" be used to create custom error messages (e.g., using [ajv-"
+"i18n](https://github.com/ajv-validator/ajv-i18n) package). See below for "
+"parameters set by all keywords."
+msgstr ""
+
+#: ../../source/ajv_README.md:1353
+msgid ""
+"_message_: the standard error message (can be excluded with option "
+"`messages` set to false)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1354
+msgid "_schema_: the schema of the keyword (added with `verbose` option)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1355
+msgid ""
+"_parentSchema_: the schema containing the keyword (added with `verbose` "
+"option)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1356
+msgid "_data_: the data validated by the keyword (added with `verbose` option)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1358
+msgid ""
+"__Please note__: `propertyNames` keyword schema validation errors have an"
+" additional property `propertyName`, `dataPath` points to the object. "
+"After schema validation for each property name, if it is invalid an "
+"additional error is added with the property `keyword` equal to "
+"`\"propertyNames\"`."
+msgstr ""
+
+#: ../../source/ajv_README.md:1361
+msgid "Error parameters"
+msgstr ""
+
+#: ../../source/ajv_README.md:1363
+msgid ""
+"Properties of `params` object in errors depend on the keyword that failed"
+" validation."
+msgstr ""
+
+#: ../../source/ajv_README.md:1365
+msgid ""
+"`maxItems`, `minItems`, `maxLength`, `minLength`, `maxProperties`, "
+"`minProperties` - property `limit` (number, the schema of the keyword)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1366
+msgid ""
+"`additionalItems` - property `limit` (the maximum number of allowed items"
+" in case when `items` keyword is an array of schemas and "
+"`additionalItems` is false)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1367
+msgid ""
+"`additionalProperties` - property `additionalProperty` (the property not "
+"used in `properties` and `patternProperties` keywords)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1368
+msgid "`dependencies` - properties:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1369
+msgid "`property` (dependent property),"
+msgstr ""
+
+#: ../../source/ajv_README.md:1370
+msgid ""
+"`missingProperty` (required missing dependency - only the first one is "
+"reported currently)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1371
+msgid "`deps` (required dependencies, comma separated list as a string),"
+msgstr ""
+
+#: ../../source/ajv_README.md:1372
+msgid "`depsCount` (the number of required dependencies)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1373
+msgid "`format` - property `format` (the schema of the keyword)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1374
+msgid "`maximum`, `minimum` - properties:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1375
+msgid "`limit` (number, the schema of the keyword),"
+msgstr ""
+
+#: ../../source/ajv_README.md:1376
+msgid ""
+"`exclusive` (boolean, the schema of `exclusiveMaximum` or "
+"`exclusiveMinimum`),"
+msgstr ""
+
+#: ../../source/ajv_README.md:1377
+msgid ""
+"`comparison` (string, comparison operation to compare the data to the "
+"limit, with the data on the left and the limit on the right; can be "
+"\"<\", \"<=\", \">\", \">=\")"
+msgstr ""
+
+#: ../../source/ajv_README.md:1378
+msgid "`multipleOf` - property `multipleOf` (the schema of the keyword)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1379
+msgid "`pattern` - property `pattern` (the schema of the keyword)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1380
+msgid ""
+"`required` - property `missingProperty` (required property that is "
+"missing)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1381
+msgid "`propertyNames` - property `propertyName` (an invalid property name)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1382
+msgid ""
+"`patternRequired` (in ajv-keywords) - property `missingPattern` (required"
+" pattern that did not match any property)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1383
+msgid ""
+"`type` - property `type` (required type(s), a string, can be a comma-"
+"separated list)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1384
+msgid "`uniqueItems` - properties `i` and `j` (indices of duplicate items)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1385
+msgid ""
+"`const` - property `allowedValue` pointing to the value (the schema of "
+"the keyword)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1386
+msgid ""
+"`enum` - property `allowedValues` pointing to the array of values (the "
+"schema of the keyword)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1387
+msgid "`$ref` - property `ref` with the referenced schema URI."
+msgstr ""
+
+#: ../../source/ajv_README.md:1388
+msgid ""
+"`oneOf` - property `passingSchemas` (array of indices of passing schemas,"
+" null if no schema passes)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1389
+msgid ""
+"custom keywords (in case keyword definition doesn't create errors) - "
+"property `keyword` (the keyword name)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1392
+msgid "Error logging"
+msgstr ""
+
+#: ../../source/ajv_README.md:1394
+msgid ""
+"Using the `logger` option when initiallizing Ajv will allow you to define"
+" custom logging. Here you can build upon the exisiting logging. The use "
+"of other logging packages is supported as long as the package or its "
+"associated wrapper exposes the required methods. If any of the required "
+"methods are missing an exception will be thrown."
+msgstr ""
+
+#: ../../source/ajv_README.md:1395
+msgid "**Required Methods**: `log`, `warn`, `error`"
+msgstr ""
+
+#: ../../source/ajv_README.md:1414
+msgid "Plugins"
+msgstr ""
+
+#: ../../source/ajv_README.md:1416
+msgid ""
+"Ajv can be extended with plugins that add custom keywords, formats or "
+"functions to process generated code. When such plugin is published as npm"
+" package it is recommended that it follows these conventions:"
+msgstr ""
+
+#: ../../source/ajv_README.md:1418
+msgid "it exports a function"
+msgstr ""
+
+#: ../../source/ajv_README.md:1419
+msgid ""
+"this function accepts ajv instance as the first parameter and returns the"
+" same instance to allow chaining"
+msgstr ""
+
+#: ../../source/ajv_README.md:1420
+msgid "this function can accept an optional configuration as the second parameter"
+msgstr ""
+
+#: ../../source/ajv_README.md:1422
+msgid ""
+"If you have published a useful plugin please submit a PR to add it to the"
+" next section."
+msgstr ""
+
+#: ../../source/ajv_README.md:1425
+msgid "Related packages"
+msgstr ""
+
+#: ../../source/ajv_README.md:1427
+msgid ""
+"[ajv-async](https://github.com/ajv-validator/ajv-async) - plugin to "
+"configure async validation mode"
+msgstr ""
+
+#: ../../source/ajv_README.md:1428
+msgid ""
+"[ajv-bsontype](https://github.com/BoLaMN/ajv-bsontype) - plugin to "
+"validate mongodb's bsonType formats"
+msgstr ""
+
+#: ../../source/ajv_README.md:1429
+msgid "[ajv-cli](https://github.com/jessedc/ajv-cli) - command line interface"
+msgstr ""
+
+#: ../../source/ajv_README.md:1430
+msgid ""
+"[ajv-errors](https://github.com/ajv-validator/ajv-errors) - plugin for "
+"custom error messages"
+msgstr ""
+
+#: ../../source/ajv_README.md:1431
+msgid ""
+"[ajv-i18n](https://github.com/ajv-validator/ajv-i18n) - internationalised"
+" error messages"
+msgstr ""
+
+#: ../../source/ajv_README.md:1432
+msgid ""
+"[ajv-istanbul](https://github.com/ajv-validator/ajv-istanbul) - plugin to"
+" instrument generated validation code to measure test coverage of your "
+"schemas"
+msgstr ""
+
+#: ../../source/ajv_README.md:1433
+msgid ""
+"[ajv-keywords](https://github.com/ajv-validator/ajv-keywords) - plugin "
+"with custom validation keywords (select, typeof, etc.)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1434
+msgid ""
+"[ajv-merge-patch](https://github.com/ajv-validator/ajv-merge-patch) - "
+"plugin with keywords $merge and $patch"
+msgstr ""
+
+#: ../../source/ajv_README.md:1435
+msgid ""
+"[ajv-pack](https://github.com/ajv-validator/ajv-pack) - produces a "
+"compact module exporting validation functions"
+msgstr ""
+
+#: ../../source/ajv_README.md:1436
+msgid ""
+"[ajv-formats-draft2019](https://github.com/luzlab/ajv-formats-draft2019) "
+"- format validators for draft2019 that aren't already included in ajv "
+"(ie. `idn-hostname`, `idn-email`, `iri`, `iri-reference` and `duration`)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1438
+msgid "Some packages using Ajv"
+msgstr ""
+
+#: ../../source/ajv_README.md:1440
+msgid ""
+"[webpack](https://github.com/webpack/webpack) - a module bundler. Its "
+"main purpose is to bundle JavaScript files for usage in a browser"
+msgstr ""
+
+#: ../../source/ajv_README.md:1441
+msgid ""
+"[jsonscript-js](https://github.com/JSONScript/jsonscript-js) - the "
+"interpreter for [JSONScript](http://www.jsonscript.org) - scripted "
+"processing of existing endpoints and services"
+msgstr ""
+
+#: ../../source/ajv_README.md:1442
+msgid ""
+"[osprey-method-handler](https://github.com/mulesoft-labs/osprey-method-"
+"handler) - Express middleware for validating requests and responses based"
+" on a RAML method object, used in "
+"[osprey](https://github.com/mulesoft/osprey) - validating API proxy "
+"generated from a RAML definition"
+msgstr ""
+
+#: ../../source/ajv_README.md:1443
+msgid ""
+"[har-validator](https://github.com/ahmadnassri/har-validator) - HTTP "
+"Archive (HAR) validator"
+msgstr ""
+
+#: ../../source/ajv_README.md:1444
+msgid ""
+"[jsoneditor](https://github.com/josdejong/jsoneditor) - a web-based tool "
+"to view, edit, format, and validate JSON http://jsoneditoronline.org"
+msgstr ""
+
+#: ../../source/ajv_README.md:1445
+msgid ""
+"[JSON Schema Lint](https://github.com/nickcmaynard/jsonschemalint) - a "
+"web tool to validate JSON/YAML document against a single JSON Schema "
+"http://jsonschemalint.com"
+msgstr ""
+
+#: ../../source/ajv_README.md:1446
+msgid ""
+"[objection](https://github.com/vincit/objection.js) - SQL-friendly ORM "
+"for Node.js"
+msgstr ""
+
+#: ../../source/ajv_README.md:1447
+msgid "[table](https://github.com/gajus/table) - formats data into a string table"
+msgstr ""
+
+#: ../../source/ajv_README.md:1448
+msgid ""
+"[ripple-lib](https://github.com/ripple/ripple-lib) - a JavaScript API for"
+" interacting with [Ripple](https://ripple.com) in Node.js and the browser"
+msgstr ""
+
+#: ../../source/ajv_README.md:1449
+msgid ""
+"[restbase](https://github.com/wikimedia/restbase) - distributed storage "
+"with REST API & dispatcher for backend services built to provide a low-"
+"latency & high-throughput API for Wikipedia / Wikimedia content"
+msgstr ""
+
+#: ../../source/ajv_README.md:1450
+msgid ""
+"[hippie-swagger](https://github.com/CacheControl/hippie-swagger) - "
+"[Hippie](https://github.com/vesln/hippie) wrapper that provides end to "
+"end API testing with swagger validation"
+msgstr ""
+
+#: ../../source/ajv_README.md:1451
+msgid ""
+"[react-form-controlled](https://github.com/seeden/react-form-controlled) "
+"- React controlled form components with validation"
+msgstr ""
+
+#: ../../source/ajv_README.md:1452
+msgid ""
+"[rabbitmq-schema](https://github.com/tjmehta/rabbitmq-schema) - a schema "
+"definition module for RabbitMQ graphs and messages"
+msgstr ""
+
+#: ../../source/ajv_README.md:1453
+msgid ""
+"[@query/schema](https://www.npmjs.com/package/@query/schema) - stream "
+"filtering with a URI-safe query syntax parsing to JSON Schema"
+msgstr ""
+
+#: ../../source/ajv_README.md:1454
+msgid ""
+"[chai-ajv-json-schema](https://github.com/peon374/chai-ajv-json-schema) -"
+" chai plugin to us JSON Schema with expect in mocha tests"
+msgstr ""
+
+#: ../../source/ajv_README.md:1455
+msgid ""
+"[grunt-jsonschema-ajv](https://github.com/SignpostMarv/grunt-jsonschema-"
+"ajv) - Grunt plugin for validating files against JSON Schema"
+msgstr ""
+
+#: ../../source/ajv_README.md:1456
+msgid ""
+"[extract-text-webpack-plugin](https://github.com/webpack-contrib/extract-"
+"text-webpack-plugin) - extract text from bundle into a file"
+msgstr ""
+
+#: ../../source/ajv_README.md:1457
+msgid ""
+"[electron-builder](https://github.com/electron-userland/electron-builder)"
+" - a solution to package and build a ready for distribution Electron app"
+msgstr ""
+
+#: ../../source/ajv_README.md:1458
+msgid ""
+"[addons-linter](https://github.com/mozilla/addons-linter) - Mozilla Add-"
+"ons Linter"
+msgstr ""
+
+#: ../../source/ajv_README.md:1459
+msgid ""
+"[gh-pages-generator](https://github.com/epoberezkin/gh-pages-generator) -"
+" multi-page site generator converting markdown files to GitHub pages"
+msgstr ""
+
+#: ../../source/ajv_README.md:1460
+msgid ""
+"[ESLint](https://github.com/eslint/eslint) - the pluggable linting "
+"utility for JavaScript and JSX"
+msgstr ""
+
+#: ../../source/ajv_README.md:1461
+msgid ""
+"[Spectral](https://github.com/stoplightio/spectral) - the customizable "
+"linting utility for JSON/YAML, OpenAPI, AsyncAPI, and JSON Schema"
+msgstr ""
+
+#: ../../source/ajv_README.md:1464
+msgid "Tests"
+msgstr ""
+
+#: ../../source/ajv_README.md:1472
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/ajv_README.md:1474
+msgid ""
+"All validation functions are generated using doT templates in "
+"[dot](https://github.com/ajv-validator/ajv/tree/master/lib/dot) folder. "
+"Templates are precompiled so doT is not a run-time dependency."
+msgstr ""
+
+#: ../../source/ajv_README.md:1476
+msgid ""
+"`npm run build` - compiles templates to [dotjs](https://github.com/ajv-"
+"validator/ajv/tree/master/lib/dotjs) folder."
+msgstr ""
+
+#: ../../source/ajv_README.md:1478
+msgid ""
+"`npm run watch` - automatically compiles templates when files in dot "
+"folder change"
+msgstr ""
+
+#: ../../source/ajv_README.md:1480
+msgid ""
+"Please see [Contributing guidelines](https://github.com/ajv-"
+"validator/ajv/blob/master/CONTRIBUTING.md)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1483
+msgid "Changes history"
+msgstr ""
+
+#: ../../source/ajv_README.md:1485
+msgid "See https://github.com/ajv-validator/ajv/releases"
+msgstr ""
+
+#: ../../source/ajv_README.md:1487
+msgid ""
+"__Please note__: [Changes in version 7.0.0-beta](https://github.com/ajv-"
+"validator/ajv/releases/tag/v7.0.0-beta.0)"
+msgstr ""
+
+#: ../../source/ajv_README.md:1489
+msgid "[Version 6.0.0](https://github.com/ajv-validator/ajv/releases/tag/v6.0.0)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1491
+msgid "Code of conduct"
+msgstr ""
+
+#: ../../source/ajv_README.md:1493
+msgid ""
+"Please review and follow the [Code of conduct](https://github.com/ajv-"
+"validator/ajv/blob/master/CODE_OF_CONDUCT.md)."
+msgstr ""
+
+#: ../../source/ajv_README.md:1495
+msgid ""
+"Please report any unacceptable behaviour to ajv.validator@gmail.com - it "
+"will be reviewed by the project team."
+msgstr ""
+
+#: ../../source/ajv_README.md:1498
+msgid "Open-source software support"
+msgstr ""
+
+#: ../../source/ajv_README.md:1500
+msgid ""
+"Ajv is a part of [Tidelift "
+"subscription](https://tidelift.com/subscription/pkg/npm-ajv?utm_source"
+"=npm-ajv&utm_medium=referral&utm_campaign=readme) - it provides a "
+"centralised support to open-source software users, in addition to the "
+"support provided by software maintainers."
+msgstr ""
+
+#: ../../source/ajv_README.md:1503
+msgid "License"
+msgstr ""
+
+#: ../../source/ajv_README.md:1505
+msgid "[MIT](https://github.com/ajv-validator/ajv/blob/master/LICENSE)"
+msgstr ""
+

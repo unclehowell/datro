@@ -1,0 +1,136 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/pump_README.md:1
+msgid "pump"
+msgstr ""
+
+#: ../../source/pump_README.md:3
+msgid ""
+"pump is a small node module that pipes streams together and destroys all "
+"of them if one of them closes."
+msgstr ""
+
+#: ../../source/pump_README.md:9
+msgid ""
+"[![build "
+"status](http://img.shields.io/travis/mafintosh/pump.svg?style=flat)](http"
+"://travis-ci.org/mafintosh/pump)"
+msgstr ""
+
+#: ../../source/pump_README.md:9
+msgid "build status"
+msgstr ""
+
+#: ../../source/pump_README.md:11
+msgid "What problem does it solve?"
+msgstr ""
+
+#: ../../source/pump_README.md:13
+msgid ""
+"When using standard `source.pipe(dest)` source will _not_ be destroyed if"
+" dest emits close or an error. You are also not able to provide a "
+"callback to tell when then pipe has finished."
+msgstr ""
+
+#: ../../source/pump_README.md:16
+msgid "pump does these two things for you"
+msgstr ""
+
+#: ../../source/pump_README.md:18
+msgid "Usage"
+msgstr ""
+
+#: ../../source/pump_README.md:20
+msgid ""
+"Simply pass the streams you want to pipe together to pump and add an "
+"optional callback"
+msgstr ""
+
+#: ../../source/pump_README.md:38
+msgid "You can use pump to pipe more than two streams together as well"
+msgstr ""
+
+#: ../../source/pump_README.md:48
+msgid ""
+"If `source`, `transform`, `anotherTransform` or `dest` closes all of them"
+" will be destroyed."
+msgstr ""
+
+#: ../../source/pump_README.md:50
+msgid ""
+"Similarly to `stream.pipe()`, `pump()` returns the last stream passed in,"
+" so you can do:"
+msgstr ""
+
+#: ../../source/pump_README.md:56
+msgid ""
+"Note that `pump` attaches error handlers to the streams to do internal "
+"error handling, so if `s2` emits an error in the above scenario, it will "
+"not trigger a `proccess.on('uncaughtException')` if you do not listen for"
+" it."
+msgstr ""
+
+#: ../../source/pump_README.md:59
+msgid ""
+"If you want to return a stream that combines *both* s1 and s2 to a single"
+" stream use [pumpify](https://github.com/mafintosh/pumpify) instead."
+msgstr ""
+
+#: ../../source/pump_README.md:62
+msgid "License"
+msgstr ""
+
+#: ../../source/pump_README.md:64
+msgid "MIT"
+msgstr ""
+
+#: ../../source/pump_README.md:66
+msgid "Related"
+msgstr ""
+
+#: ../../source/pump_README.md:68
+msgid ""
+"`pump` is part of the [mississippi stream utility "
+"collection](https://github.com/maxogden/mississippi) which includes more "
+"useful stream modules similar to this one."
+msgstr ""
+
+#: ../../source/pump_README.md:70
+msgid "For enterprise"
+msgstr ""
+
+#: ../../source/pump_README.md:72
+msgid "Available as part of the Tidelift Subscription."
+msgstr ""
+
+#: ../../source/pump_README.md:74
+msgid ""
+"The maintainers of pump and thousands of other packages are working with "
+"Tidelift to deliver commercial support and maintenance for the open "
+"source dependencies you use to build your applications. Save time, reduce"
+" risk, and improve code health, while paying the maintainers of the exact"
+" dependencies you use. [Learn "
+"more.](https://tidelift.com/subscription/pkg/npm-pump?utm_source=npm-"
+"pump&utm_medium=referral&utm_campaign=enterprise)"
+msgstr ""
+

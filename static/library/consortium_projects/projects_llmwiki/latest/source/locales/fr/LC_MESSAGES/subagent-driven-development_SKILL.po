@@ -1,0 +1,464 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/subagent-driven-development_SKILL.md:13
+msgid "Subagent-Driven Development"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:15
+msgid "Overview"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:17
+msgid ""
+"Execute implementation plans by dispatching fresh subagents per task with"
+" systematic two-stage review."
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:19
+msgid ""
+"**Core principle:** Fresh subagent per task + two-stage review (spec then"
+" quality) = high quality, fast iteration."
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:21
+msgid "When to Use"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:23
+msgid "Use this skill when:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:24
+msgid ""
+"You have an implementation plan (from writing-plans skill or user "
+"requirements)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:25
+msgid "Tasks are mostly independent"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:26
+msgid "Quality and spec compliance are important"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:27
+msgid "You want automated review between tasks"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:29
+msgid "**vs. manual execution:**"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:30
+msgid "Fresh context per task (no confusion from accumulated state)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:31
+msgid "Automated review process catches issues early"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:32
+msgid "Consistent quality checks across all tasks"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:33
+msgid "Subagents can ask questions before starting work"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:35
+msgid "The Process"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:37
+msgid "1. Read and Parse Plan"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:39
+msgid ""
+"Read the plan file. Extract ALL tasks with their full text and context "
+"upfront. Create a todo list:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:53
+msgid ""
+"**Key:** Read the plan ONCE. Extract everything. Don't make subagents "
+"read the plan file — provide the full task text directly in context."
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:55
+msgid "2. Per-Task Workflow"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:57
+msgid "For EACH task in the plan:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:59
+msgid "Step 1: Dispatch Implementer Subagent"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:61
+msgid "Use `delegate_task` with complete context:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:91
+msgid "Step 2: Dispatch Spec Compliance Reviewer"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:93
+msgid "After the implementer completes, verify against the original spec:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:118
+msgid ""
+"**If spec issues found:** Fix gaps, then re-run spec review. Continue "
+"only when spec-compliant."
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:120
+msgid "Step 3: Dispatch Code Quality Reviewer"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:122
+msgid "After spec compliance passes:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:150
+msgid ""
+"**If quality issues found:** Fix issues, re-review. Continue only when "
+"approved."
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:152
+msgid "Step 4: Mark Complete"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:158
+msgid "3. Final Review"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:160
+msgid "After ALL tasks are complete, dispatch a final integration reviewer:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:176
+msgid "4. Verify and Commit"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:189
+msgid "Task Granularity"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:191
+msgid "**Each task = 2-5 minutes of focused work.**"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:193
+msgid "**Too big:**"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:194
+msgid "\"Implement user authentication system\""
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:196
+msgid "**Right size:**"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:197
+msgid "\"Create User model with email and password fields\""
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:198
+msgid "\"Add password hashing function\""
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:199
+msgid "\"Create login endpoint\""
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:200
+msgid "\"Add JWT token generation\""
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:201
+msgid "\"Create registration endpoint\""
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:203
+msgid "Red Flags — Never Do These"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:205
+msgid "Start implementation without a plan"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:206
+msgid "Skip reviews (spec compliance OR code quality)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:207
+msgid "Proceed with unfixed critical/important issues"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:208
+msgid ""
+"Dispatch multiple implementation subagents for tasks that touch the same "
+"files"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:209
+msgid "Make subagent read the plan file (provide full text in context instead)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:210
+msgid ""
+"Skip scene-setting context (subagent needs to understand where the task "
+"fits)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:211
+msgid "Ignore subagent questions (answer before letting them proceed)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:212
+msgid "Accept \"close enough\" on spec compliance"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:213
+msgid ""
+"Skip review loops (reviewer found issues → implementer fixes → review "
+"again)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:214
+msgid "Let implementer self-review replace actual review (both are needed)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:215
+msgid "**Start code quality review before spec compliance is PASS** (wrong order)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:216
+msgid "Move to next task while either review has open issues"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:218
+msgid "Handling Issues"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:220
+msgid "If Subagent Asks Questions"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:222
+msgid "Answer clearly and completely"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:223
+msgid "Provide additional context if needed"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:224
+msgid "Don't rush them into implementation"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:226
+msgid "If Reviewer Finds Issues"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:228
+msgid "Implementer subagent (or a new one) fixes them"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:229
+msgid "Reviewer reviews again"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:230
+msgid "Repeat until approved"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:231
+msgid "Don't skip the re-review"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:233
+msgid "If Subagent Fails a Task"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:235
+msgid ""
+"Dispatch a new fix subagent with specific instructions about what went "
+"wrong"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:236
+msgid "Don't try to fix manually in the controller session (context pollution)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:238
+msgid "Efficiency Notes"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:240
+msgid "**Why fresh subagent per task:**"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:241
+msgid "Prevents context pollution from accumulated state"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:242
+msgid "Each subagent gets clean, focused context"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:243
+msgid "No confusion from prior tasks' code or reasoning"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:245
+msgid "**Why two-stage review:**"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:246
+msgid "Spec review catches under/over-building early"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:247
+msgid "Quality review ensures the implementation is well-built"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:248
+msgid "Catches issues before they compound across tasks"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:250
+msgid "**Cost trade-off:**"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:251
+msgid "More subagent invocations (implementer + 2 reviewers per task)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:252
+msgid ""
+"But catches issues early (cheaper than debugging compounded problems "
+"later)"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:254
+msgid "Integration with Other Skills"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:256
+msgid "With writing-plans"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:258
+msgid "This skill EXECUTES plans created by the writing-plans skill:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:259
+msgid "User requirements → writing-plans → implementation plan"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:260
+msgid "Implementation plan → subagent-driven-development → working code"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:262
+msgid "With test-driven-development"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:264
+msgid "Implementer subagents should follow TDD:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:265
+msgid "Write failing test first"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:266
+msgid "Implement minimal code"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:267
+msgid "Verify test passes"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:268
+msgid "Commit"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:270
+msgid "Include TDD instructions in every implementer context."
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:272
+msgid "With requesting-code-review"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:274
+msgid ""
+"The two-stage review process IS the code review. For final integration "
+"review, use the requesting-code-review skill's review dimensions."
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:276
+msgid "With systematic-debugging"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:278
+msgid "If a subagent encounters bugs during implementation:"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:279
+msgid "Follow systematic-debugging process"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:280
+msgid "Find root cause before fixing"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:281
+msgid "Write regression test"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:282
+msgid "Resume implementation"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:284
+msgid "Example Workflow"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:331
+msgid "Remember"
+msgstr ""
+
+#: ../../source/subagent-driven-development_SKILL.md:342
+msgid "**Quality is not an accident. It's the result of systematic process.**"
+msgstr ""
+

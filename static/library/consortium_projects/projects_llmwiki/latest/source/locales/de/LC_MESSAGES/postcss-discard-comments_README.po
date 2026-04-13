@@ -1,0 +1,145 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/postcss-discard-comments_README.md:1
+msgid "[postcss][postcss]-discard-comments"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:3
+msgid "Discard comments in your CSS files with PostCSS."
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:8
+msgid "With [npm](https://npmjs.org/package/postcss-discard-comments) do:"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:15
+msgid "Example"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:17
+msgid "Input"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:25
+msgid "Output"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:33
+msgid ""
+"This module discards comments from your CSS files; by default, it will "
+"remove all regular comments (`/* comment */`) and preserve comments "
+"marked as important (`/*! important */`)."
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:37
+msgid ""
+"Note that this module does not handle source map comments because they "
+"are not available to it; PostCSS handles this internally, so if they are "
+"removed then you will have to [configure source maps in PostCSS][maps]."
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:44
+msgid "API"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:46
+msgid "comments([options])"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:48
+msgid "options"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:50
+msgid "remove(function)"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:52
+msgid ""
+"Type: `function` Return: `boolean` Variable: `comment` contains a comment"
+" without `/**/`"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:56
+msgid "For each comment, return true to remove, or false to keep the comment."
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:69
+msgid ""
+"**NOTE:** If you use the `remove` function other options will not be "
+"available."
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:71
+msgid "removeAll"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:73
+#: ../../source/postcss-discard-comments_README.md:86
+msgid "Type: `boolean` Default: `false`"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:76
+msgid "Remove all comments marked as important."
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:84
+msgid "removeAllButFirst"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:89
+msgid "Remove all comments marked as important, but the first one."
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:98
+msgid "Usage"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:100
+msgid ""
+"See the [PostCSS documentation](https://github.com/postcss/postcss#usage)"
+" for examples for your environment."
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:104
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:106
+msgid ""
+"See "
+"[CONTRIBUTORS.md](https://github.com/cssnano/cssnano/blob/master/CONTRIBUTORS.md)."
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:109
+msgid "License"
+msgstr ""
+
+#: ../../source/postcss-discard-comments_README.md:111
+msgid "MIT © [Ben Briggs](http://beneb.info)"
+msgstr ""
+

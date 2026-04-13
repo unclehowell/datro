@@ -1,0 +1,111 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/url-parse-lax_readme.md:1
+msgid ""
+"url-parse-lax [![Build Status](https://travis-ci.org/sindresorhus/url-"
+"parse-lax.svg?branch=master)](https://travis-ci.org/sindresorhus/url-"
+"parse-lax)"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:3
+msgid ""
+"Lax "
+"[`url.parse()`](https://nodejs.org/docs/latest/api/url.html#url_url_parse_urlstr_parsequerystring_slashesdenotehost)"
+" with support for protocol-less URLs & IPs"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:55
+msgid "And with the built-in `url.parse()`:"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:98
+msgid "API"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:100
+msgid "urlParseLax(url, [options])"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:102
+msgid "url"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:104
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:106
+msgid "URL to parse."
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:108
+msgid "options"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:110
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:112
+msgid "https"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:114
+msgid "Type: `boolean`<br> Default: `true`"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:117
+msgid "Prepend `https://` instead of `http://` to protocol-less URLs."
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:120
+msgid "Related"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:122
+msgid ""
+"[url-format-lax](https://github.com/sindresorhus/url-format-lax) - Lax "
+"`url.format()` that formats a hostname and port into IPv6-compatible "
+"socket form of `hostname:port`"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:125
+msgid "License"
+msgstr ""
+
+#: ../../source/url-parse-lax_readme.md:127
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

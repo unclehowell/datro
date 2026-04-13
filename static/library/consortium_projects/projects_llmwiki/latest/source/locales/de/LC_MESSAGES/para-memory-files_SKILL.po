@@ -1,0 +1,216 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/para-memory-files_SKILL.md:13
+msgid "PARA Memory Files"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:15
+msgid ""
+"Persistent, file-based memory organized by Tiago Forte's PARA method. "
+"Three layers: a knowledge graph, daily notes, and tacit knowledge. All "
+"paths are relative to `$AGENT_HOME`."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:17
+msgid "Three Memory Layers"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:19
+msgid "Layer 1: Knowledge Graph (`$AGENT_HOME/life/` -- PARA)"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:21
+msgid "Entity-based storage. Each entity gets a folder with two tiers:"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:23
+msgid "`summary.md` -- quick context, load first."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:24
+msgid "`items.yaml` -- atomic facts, load on demand."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:41
+msgid "**PARA rules:**"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:43
+msgid ""
+"**Projects** -- active work with a goal or deadline. Move to archives "
+"when complete."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:44
+msgid "**Areas** -- ongoing (people, companies, responsibilities). No end date."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:45
+msgid "**Resources** -- reference material, topics of interest."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:46
+msgid "**Archives** -- inactive items from any category."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:48
+msgid "**Fact rules:**"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:50
+msgid "Save durable facts immediately to `items.yaml`."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:51
+msgid "Weekly: rewrite `summary.md` from active facts."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:52
+msgid ""
+"Never delete facts. Supersede instead (`status: superseded`, add "
+"`superseded_by`)."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:53
+msgid ""
+"When an entity goes inactive, move its folder to "
+"`$AGENT_HOME/life/archives/`."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:55
+msgid "**When to create an entity:**"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:57
+msgid "Mentioned 3+ times, OR"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:58
+msgid "Direct relationship to the user (family, coworker, partner, client), OR"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:59
+msgid "Significant project or company in the user's life."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:60
+msgid "Otherwise, note it in daily notes."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:62
+msgid ""
+"For the atomic fact YAML schema and memory decay rules, see "
+"[references/schemas.md](references/schemas.md)."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:64
+msgid "Layer 2: Daily Notes (`$AGENT_HOME/memory/YYYY-MM-DD.md`)"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:66
+msgid "Raw timeline of events -- the \"when\" layer."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:68
+msgid "Write continuously during conversations."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:69
+msgid "Extract durable facts to Layer 1 during heartbeats."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:71
+msgid "Layer 3: Tacit Knowledge (`$AGENT_HOME/MEMORY.md`)"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:73
+msgid "How the user operates -- patterns, preferences, lessons learned."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:75
+msgid "Not facts about the world; facts about the user."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:76
+msgid "Update whenever you learn new operating patterns."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:78
+msgid "Write It Down -- No Mental Notes"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:80
+msgid "Memory does not survive session restarts. Files do."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:82
+msgid "Want to remember something -> WRITE IT TO A FILE."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:83
+msgid ""
+"\"Remember this\" -> update `$AGENT_HOME/memory/YYYY-MM-DD.md` or the "
+"relevant entity file."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:84
+msgid "Learn a lesson -> update AGENTS.md, TOOLS.md, or the relevant skill file."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:85
+msgid "Make a mistake -> document it so future-you does not repeat it."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:86
+msgid "On-disk text files are always better than holding it in temporary context."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:88
+msgid "Memory Recall -- Use qmd"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:90
+msgid "Use `qmd` rather than grepping files:"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:98
+msgid "Index your personal folder: `qmd index $AGENT_HOME`"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:100
+msgid "Vectors + BM25 + reranking finds things even when the wording differs."
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:102
+msgid "Planning"
+msgstr ""
+
+#: ../../source/para-memory-files_SKILL.md:104
+msgid ""
+"Keep plans in timestamped files in `plans/` at the project root (outside "
+"personal memory so other agents can access them). Use `qmd` to search "
+"plans. Plans go stale -- if a newer plan exists, do not confuse yourself "
+"with an older version. If you notice staleness, update the file to note "
+"what it is supersededBy."
+msgstr ""
+

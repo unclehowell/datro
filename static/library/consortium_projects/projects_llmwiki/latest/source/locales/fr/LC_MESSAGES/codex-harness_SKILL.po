@@ -1,0 +1,179 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/codex-harness_SKILL.md:13
+msgid "Codex Harness"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:15
+msgid "Use this skill when you want Codex runs to be:"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:16
+msgid "Deterministic (pinned base, isolated worktree)"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:17
+msgid "Safe (doesn’t trash the main working tree)"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:18
+msgid "Verifiable (runs tests/formatters)"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:19
+msgid "Auditable (writes logs)"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:21
+msgid "This is the “Codex harness” pattern."
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:23
+msgid "Prereqs"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:25
+msgid "Codex installed: `npm install -g @openai/codex`"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:26
+msgid ""
+"GitHub CLI installed + authenticated (optional but recommended): `gh auth"
+" status`"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:27
+msgid "Run inside a git repo with a configured `origin`"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:28
+msgid "Use `pty=true` when driving Codex interactively"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:30
+msgid "Standard lifecycle"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:32
+msgid "Pick base branch (examples: `main`, `master`, `gh-pages`)"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:33
+msgid "Create isolated worktree from `origin/<base>`"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:34
+msgid "Run Codex in worktree"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:35
+msgid "Verify (tests/format)"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:36
+msgid "Push branch"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:37
+msgid "Create PR"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:38
+msgid "Cleanup worktree"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:40
+msgid "Provided script"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:42
+msgid "`scripts/codex_harness.sh`"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:44
+msgid ""
+"It creates a worktree under `/tmp`, runs Codex, optionally runs a verify "
+"command, pushes, and (optionally) creates a PR."
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:46
+msgid "Usage"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:48
+msgid "From inside your repo:"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:50
+msgid "Minimal (no PR, just run codex):"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:51
+msgid ""
+"`TASK=fix-login BASE=main VERIFY_CMD='npm test' /path/to/codex_harness.sh"
+" -- \"Fix login bug; run tests; commit when done\"`"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:53
+msgid "Create PR automatically:"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:54
+msgid ""
+"`TASK=dark-mode BASE=main VERIFY_CMD='npm test' CREATE_PR=1 "
+"/path/to/codex_harness.sh -- \"Add dark mode toggle; run tests; commit "
+"when done\"`"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:56
+msgid "Pitfalls"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:58
+msgid "If your repo has submodules/large LFS assets, worktrees may be slow."
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:59
+msgid "If Codex asks questions, you must answer (PTY mode)."
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:60
+msgid "Don’t use `--yolo` unless you want unbounded edits."
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:62
+msgid "Verification checklist"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:64
+msgid "`git -C <worktree> status -sb` clean"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:65
+msgid "tests pass"
+msgstr ""
+
+#: ../../source/codex-harness_SKILL.md:66
+msgid "PR base/head correct"
+msgstr ""
+

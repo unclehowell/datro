@@ -1,0 +1,251 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/repeat-string_README.md:1
+msgid ""
+"repeat-string [![NPM version](https://img.shields.io/npm/v/repeat-"
+"string.svg?style=flat)](https://www.npmjs.com/package/repeat-string) "
+"[![NPM monthly downloads](https://img.shields.io/npm/dm/repeat-"
+"string.svg?style=flat)](https://npmjs.org/package/repeat-string)  [![NPM "
+"total downloads](https://img.shields.io/npm/dt/repeat-"
+"string.svg?style=flat)](https://npmjs.org/package/repeat-string) [![Linux"
+" Build Status](https://img.shields.io/travis/jonschlinkert/repeat-"
+"string.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert"
+"/repeat-string)"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:3
+msgid ""
+"Repeat the given string n times. Fastest implementation for repeating a "
+"string."
+msgstr ""
+
+#: ../../source/repeat-string_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:15
+msgid "[repeat](index.js#L41)"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:17
+msgid "Repeat the given `string` the specified `number` of times."
+msgstr ""
+
+#: ../../source/repeat-string_README.md:19
+msgid "**Example:**"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:21
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:29
+msgid "**Params**"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:31
+#, python-brace-format
+msgid "`string` **{String}**: The string to repeat"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:32
+#, python-brace-format
+msgid "`number` **{Number}**: The number of times to repeat the string"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:33
+#, python-brace-format
+msgid "`returns` **{String}**: Repeated string"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:35
+msgid "Benchmarks"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:37
+msgid ""
+"Repeat string is significantly faster than the native method (which is "
+"itself faster than "
+"[repeating](https://github.com/sindresorhus/repeating)):"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:76
+msgid "**Run the benchmarks**"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:78
+#: ../../source/repeat-string_README.md:116
+msgid "Install dev dependencies:"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:84
+msgid "About"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:86
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:88
+msgid ""
+"[repeat-element](https://www.npmjs.com/package/repeat-element): Create an"
+" array by repeating the given value n times. | "
+"[homepage](https://github.com/jonschlinkert/repeat-element \"Create an "
+"array by repeating the given value n times.\")"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:90
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:92
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/repeat-string_README.md:94
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "**Contributor**<br/>"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "51"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "2"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "[LinusU](https://github.com/LinusU)"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "[tbusser](https://github.com/tbusser)"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "1"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "[doowb](https://github.com/doowb)"
+msgstr ""
+
+#: ../../source/repeat-string_README.md
+msgid "[wooorm](https://github.com/wooorm)"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:104
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:106
+msgid ""
+"_(This document was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme) (a "
+"[verb](https://github.com/verbose/verb) generator), please don't edit the"
+" readme directly. Any changes to the readme must be made in "
+"[.verb.md](.verb.md).)_"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:108
+msgid ""
+"To generate the readme and API documentation with "
+"[verb](https://github.com/verbose/verb):"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:114
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:122
+msgid "Author"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:124
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:126
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:127
+msgid "[twitter/jonschlinkert](http://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:129
+msgid "License"
+msgstr ""
+
+#: ../../source/repeat-string_README.md:131
+msgid ""
+"Copyright © 2016, [Jon Schlinkert](http://github.com/jonschlinkert). "
+"Released under the [MIT license](https://github.com/jonschlinkert/repeat-"
+"string/blob/master/LICENSE)."
+msgstr ""
+
+#: ../../source/repeat-string_README.md:136
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.2.0, on "
+"October 23, 2016._"
+msgstr ""
+

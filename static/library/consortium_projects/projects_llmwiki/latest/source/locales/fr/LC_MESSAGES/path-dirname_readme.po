@@ -1,0 +1,89 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/path-dirname_readme.md:1
+msgid ""
+"path-dirname [![Build Status](https://travis-ci.org/es128/path-"
+"dirname.svg?branch=master)](https://travis-ci.org/es128/path-dirname)"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:3
+msgid ""
+"Node.js "
+"[`path.dirname()`](https://nodejs.org/api/path.html#path_path_dirname_path)"
+" [ponyfill](https://ponyfill.com)"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:5
+msgid "This was needed in order to expose `path.posix.dirname()` on Node.js v0.10"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:7
+msgid "Install"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:14
+msgid "Usage"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:36
+msgid "API"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:38
+msgid ""
+"See the [`path.dirname()` "
+"docs](https://nodejs.org/api/path.html#path_path_dirname_path)."
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:40
+msgid "pathDirname(path)"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:42
+msgid "pathDirname.posix(path)"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:44
+msgid "POSIX specific version."
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:46
+msgid "pathDirname.win32(path)"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:48
+msgid "Windows specific version."
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:51
+msgid "License"
+msgstr ""
+
+#: ../../source/path-dirname_readme.md:53
+msgid "MIT"
+msgstr ""
+

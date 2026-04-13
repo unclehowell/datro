@@ -1,0 +1,154 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/json-parse-better-errors_README.md:1
+msgid ""
+"json-parse-better-errors [![npm version](https://img.shields.io/npm/v"
+"/json-parse-better-errors.svg)](https://npm.im/json-parse-better-errors) "
+"[![license](https://img.shields.io/npm/l/json-parse-better-"
+"errors.svg)](https://npm.im/json-parse-better-errors) "
+"[![Travis](https://img.shields.io/travis/zkat/json-parse-better-"
+"errors.svg)](https://travis-ci.org/zkat/json-parse-better-errors) "
+"[![AppVeyor](https://ci.appveyor.com/api/projects/status/github/zkat"
+"/json-parse-better-errors?svg=true)](https://ci.appveyor.com/project/zkat"
+"/json-parse-better-errors) [![Coverage "
+"Status](https://coveralls.io/repos/github/zkat/json-parse-better-"
+"errors/badge.svg?branch=latest)](https://coveralls.io/github/zkat/json-"
+"parse-better-errors?branch=latest)"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:1
+msgid "npm version"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:1
+msgid "license"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:1
+msgid "Travis"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:1
+msgid "AppVeyor"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:1
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:3
+msgid ""
+"[`json-parse-better-errors`](https://github.com/zkat/json-parse-better-"
+"errors) is a Node.js library for getting nicer errors out of "
+"`JSON.parse()`, including context and position of the parse errors."
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:8
+msgid "`$ npm install --save json-parse-better-errors`"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:10
+msgid "Table of Contents"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:12
+msgid "[Example](#example)"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:13
+msgid "[Features](#features)"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:14
+msgid "[Contributing](#contributing)"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:15
+msgid "[API](#api)"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:16
+msgid "[`parse`](#parse)"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:18
+msgid "Example"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:27
+msgid "Features"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:29
+msgid "Like JSON.parse, but the errors are better."
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:31
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:33
+msgid ""
+"The npm team enthusiastically welcomes contributions and project "
+"participation! There's a bunch of things you can do if you want to "
+"contribute! The [Contributor Guide](CONTRIBUTING.md) has all the "
+"information you need for everything from reporting bugs to contributing "
+"entire new features. Please don't hesitate to jump in if you'd like to, "
+"or even ask us questions if something isn't clear."
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:35
+msgid ""
+"All participants and maintainers in this project are expected to follow "
+"[Code of Conduct](CODE_OF_CONDUCT.md), and just generally be excellent to"
+" each other."
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:37
+msgid ""
+"Please refer to the [Changelog](CHANGELOG.md) for project history "
+"details, too."
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:39
+msgid "Happy hacking!"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:41
+msgid "API"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:43
+msgid "<a name=\"parse\"></a> `> parse(txt, ?reviver, ?context=20)`"
+msgstr ""
+
+#: ../../source/json-parse-better-errors_README.md:45
+msgid ""
+"Works just like `JSON.parse`, but will include a bit more information "
+"when an error happens."
+msgstr ""
+

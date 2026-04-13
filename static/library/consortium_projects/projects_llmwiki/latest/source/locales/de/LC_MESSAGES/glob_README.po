@@ -1,0 +1,782 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/glob_README.md:1
+msgid "Glob"
+msgstr ""
+
+#: ../../source/glob_README.md:3
+msgid "Match files using the patterns the shell uses, like stars and stuff."
+msgstr ""
+
+#: ../../source/glob_README.md:5
+msgid ""
+"[![Build Status](https://travis-ci.org/isaacs/node-"
+"glob.svg?branch=master)](https://travis-ci.org/isaacs/node-glob/) "
+"[![Build "
+"Status](https://ci.appveyor.com/api/projects/status/kd7f3yftf7unxlsx?svg=true)](https://ci.appveyor.com/project/isaacs"
+"/node-glob) [![Coverage Status](https://coveralls.io/repos/isaacs/node-"
+"glob/badge.svg?branch=master&service=github)](https://coveralls.io/github/isaacs"
+"/node-glob?branch=master)"
+msgstr ""
+
+#: ../../source/glob_README.md:5
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/glob_README.md:5
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/glob_README.md:7
+msgid ""
+"This is a glob implementation in JavaScript.  It uses the `minimatch` "
+"library to do its matching."
+msgstr ""
+
+#: ../../source/glob_README.md:10
+msgid "![a fun cartoon logo made of glob characters](logo/glob.png)"
+msgstr ""
+
+#: ../../source/glob_README.md:10
+msgid "a fun cartoon logo made of glob characters"
+msgstr ""
+
+#: ../../source/glob_README.md:12
+msgid "Usage"
+msgstr ""
+
+#: ../../source/glob_README.md:14
+msgid "Install with npm"
+msgstr ""
+
+#: ../../source/glob_README.md:32
+msgid "Glob Primer"
+msgstr ""
+
+#: ../../source/glob_README.md:34
+msgid ""
+"\"Globs\" are the patterns you type when you do stuff like `ls *.js` on "
+"the command line, or put `build/*` in a `.gitignore` file."
+msgstr ""
+
+#: ../../source/glob_README.md:37
+#, python-brace-format
+msgid ""
+"Before parsing the path part patterns, braced sections are expanded into "
+"a set.  Braced sections start with `{` and end with `}`, with any number "
+"of comma-delimited sections within.  Braced sections may contain slash "
+"characters, so `a{/b/c,bcd}` would expand into `a/b/c` and `abcd`."
+msgstr ""
+
+#: ../../source/glob_README.md:42
+msgid ""
+"The following characters have special magic meaning when used in a path "
+"portion:"
+msgstr ""
+
+#: ../../source/glob_README.md:45
+msgid "`*` Matches 0 or more characters in a single path portion"
+msgstr ""
+
+#: ../../source/glob_README.md:46
+msgid "`?` Matches 1 character"
+msgstr ""
+
+#: ../../source/glob_README.md:47
+msgid ""
+"`[...]` Matches a range of characters, similar to a RegExp range. If the "
+"first character of the range is `!` or `^` then it matches any character "
+"not in the range."
+msgstr ""
+
+#: ../../source/glob_README.md:50
+msgid ""
+"`!(pattern|pattern|pattern)` Matches anything that does not match any of "
+"the patterns provided."
+msgstr ""
+
+#: ../../source/glob_README.md:52
+msgid ""
+"`?(pattern|pattern|pattern)` Matches zero or one occurrence of the "
+"patterns provided."
+msgstr ""
+
+#: ../../source/glob_README.md:54
+msgid ""
+"`+(pattern|pattern|pattern)` Matches one or more occurrences of the "
+"patterns provided."
+msgstr ""
+
+#: ../../source/glob_README.md:56
+msgid "`*(a|b|c)` Matches zero or more occurrences of the patterns provided"
+msgstr ""
+
+#: ../../source/glob_README.md:57
+msgid "`@(pattern|pat*|pat?erN)` Matches exactly one of the patterns provided"
+msgstr ""
+
+#: ../../source/glob_README.md:59
+msgid ""
+"`**` If a \"globstar\" is alone in a path portion, then it matches zero "
+"or more directories and subdirectories searching for matches. It does not"
+" crawl symlinked directories."
+msgstr ""
+
+#: ../../source/glob_README.md:63
+msgid "Dots"
+msgstr ""
+
+#: ../../source/glob_README.md:65
+msgid ""
+"If a file or directory path portion has a `.` as the first character, "
+"then it will not match any glob pattern unless that pattern's "
+"corresponding path part also has a `.` as its first character."
+msgstr ""
+
+#: ../../source/glob_README.md:69
+msgid ""
+"For example, the pattern `a/.*/c` would match the file at `a/.b/c`. "
+"However the pattern `a/*/c` would not, because `*` does not start with a "
+"dot character."
+msgstr ""
+
+#: ../../source/glob_README.md:73
+msgid ""
+"You can make glob treat dots as normal characters by setting `dot:true` "
+"in the options."
+msgstr ""
+
+#: ../../source/glob_README.md:76
+msgid "Basename Matching"
+msgstr ""
+
+#: ../../source/glob_README.md:78
+msgid ""
+"If you set `matchBase:true` in the options, and the pattern has no "
+"slashes in it, then it will seek for any file anywhere in the tree with a"
+" matching basename.  For example, `*.js` would match "
+"`test/simple/basic.js`."
+msgstr ""
+
+#: ../../source/glob_README.md:83
+msgid "Empty Sets"
+msgstr ""
+
+#: ../../source/glob_README.md:85
+msgid ""
+"If no matching files are found, then an empty array is returned.  This "
+"differs from the shell, where the pattern itself is returned.  For "
+"example:"
+msgstr ""
+
+#: ../../source/glob_README.md:92
+msgid "To get the bash-style behavior, set the `nonull:true` in the options."
+msgstr ""
+
+#: ../../source/glob_README.md:94
+msgid "See Also:"
+msgstr ""
+
+#: ../../source/glob_README.md:96
+msgid "`man sh`"
+msgstr ""
+
+#: ../../source/glob_README.md:97
+msgid "`man bash` (Search for \"Pattern Matching\")"
+msgstr ""
+
+#: ../../source/glob_README.md:98
+msgid "`man 3 fnmatch`"
+msgstr ""
+
+#: ../../source/glob_README.md:99
+msgid "`man 5 gitignore`"
+msgstr ""
+
+#: ../../source/glob_README.md:100
+msgid "[minimatch documentation](https://github.com/isaacs/minimatch)"
+msgstr ""
+
+#: ../../source/glob_README.md:102
+msgid "glob.hasMagic(pattern, [options])"
+msgstr ""
+
+#: ../../source/glob_README.md:104
+msgid ""
+"Returns `true` if there are any special characters in the pattern, and "
+"`false` otherwise."
+msgstr ""
+
+#: ../../source/glob_README.md:107
+#, python-brace-format
+msgid ""
+"Note that the options affect the results.  If `noext:true` is set in the "
+"options object, then `+(a|b)` will not be considered a magic pattern.  If"
+" the pattern has a brace expansion, like `a/{b/c,x/y}` then that is "
+"considered magical, unless `nobrace:true` is set in the options."
+msgstr ""
+
+#: ../../source/glob_README.md:113
+msgid "glob(pattern, [options], cb)"
+msgstr ""
+
+#: ../../source/glob_README.md:115 ../../source/glob_README.md:125
+#, python-brace-format
+msgid "`pattern` `{String}` Pattern to be matched"
+msgstr ""
+
+#: ../../source/glob_README.md:116 ../../source/glob_README.md:126
+#: ../../source/glob_README.md:146
+#, python-brace-format
+msgid "`options` `{Object}`"
+msgstr ""
+
+#: ../../source/glob_README.md:117
+#, python-brace-format
+msgid "`cb` `{Function}`"
+msgstr ""
+
+#: ../../source/glob_README.md:118 ../../source/glob_README.md:148
+#, python-brace-format
+msgid "`err` `{Error | null}`"
+msgstr ""
+
+#: ../../source/glob_README.md:119 ../../source/glob_README.md:149
+#, python-brace-format
+msgid "`matches` `{Array<String>}` filenames found matching the pattern"
+msgstr ""
+
+#: ../../source/glob_README.md:121
+msgid "Perform an asynchronous glob search."
+msgstr ""
+
+#: ../../source/glob_README.md:123
+msgid "glob.sync(pattern, [options])"
+msgstr ""
+
+#: ../../source/glob_README.md:127
+#, python-brace-format
+msgid "return: `{Array<String>}` filenames found matching the pattern"
+msgstr ""
+
+#: ../../source/glob_README.md:129
+msgid "Perform a synchronous glob search."
+msgstr ""
+
+#: ../../source/glob_README.md:131
+msgid "Class: glob.Glob"
+msgstr ""
+
+#: ../../source/glob_README.md:133
+msgid "Create a Glob object by instantiating the `glob.Glob` class."
+msgstr ""
+
+#: ../../source/glob_README.md:140
+msgid ""
+"It's an EventEmitter, and starts walking the filesystem to find matches "
+"immediately."
+msgstr ""
+
+#: ../../source/glob_README.md:143
+msgid "new glob.Glob(pattern, [options], [cb])"
+msgstr ""
+
+#: ../../source/glob_README.md:145
+#, python-brace-format
+msgid "`pattern` `{String}` pattern to search for"
+msgstr ""
+
+#: ../../source/glob_README.md:147
+#, python-brace-format
+msgid "`cb` `{Function}` Called when an error occurs, or matches are found"
+msgstr ""
+
+#: ../../source/glob_README.md:151
+msgid ""
+"Note that if the `sync` flag is set in the options, then matches will be "
+"immediately available on the `g.found` member."
+msgstr ""
+
+#: ../../source/glob_README.md:154
+msgid "Properties"
+msgstr ""
+
+#: ../../source/glob_README.md:156
+msgid "`minimatch` The minimatch object that the glob uses."
+msgstr ""
+
+#: ../../source/glob_README.md:157
+msgid "`options` The options object passed in."
+msgstr ""
+
+#: ../../source/glob_README.md:158
+msgid ""
+"`aborted` Boolean which is set to true when calling `abort()`.  There is "
+"no way at this time to continue a glob search after aborting, but you can"
+" re-use the statCache to avoid having to duplicate syscalls."
+msgstr ""
+
+#: ../../source/glob_README.md:161
+msgid "`cache` Convenience object.  Each field has the following possible values:"
+msgstr ""
+
+#: ../../source/glob_README.md:163
+msgid "`false` - Path does not exist"
+msgstr ""
+
+#: ../../source/glob_README.md:164
+msgid "`true` - Path exists"
+msgstr ""
+
+#: ../../source/glob_README.md:165
+msgid "`'FILE'` - Path exists, and is not a directory"
+msgstr ""
+
+#: ../../source/glob_README.md:166
+msgid "`'DIR'` - Path exists, and is a directory"
+msgstr ""
+
+#: ../../source/glob_README.md:167
+msgid ""
+"`[file, entries, ...]` - Path exists, is a directory, and the array value"
+" is the results of `fs.readdir`"
+msgstr ""
+
+#: ../../source/glob_README.md:169
+msgid ""
+"`statCache` Cache of `fs.stat` results, to prevent statting the same path"
+" multiple times."
+msgstr ""
+
+#: ../../source/glob_README.md:171
+msgid ""
+"`symlinks` A record of which paths are symbolic links, which is relevant "
+"in resolving `**` patterns."
+msgstr ""
+
+#: ../../source/glob_README.md:173
+msgid ""
+"`realpathCache` An optional object which is passed to `fs.realpath` to "
+"minimize unnecessary syscalls.  It is stored on the instantiated Glob "
+"object, and may be re-used."
+msgstr ""
+
+#: ../../source/glob_README.md:177
+msgid "Events"
+msgstr ""
+
+#: ../../source/glob_README.md:179
+msgid ""
+"`end` When the matching is finished, this is emitted with all the matches"
+" found.  If the `nonull` option is set, and no match was found, then the "
+"`matches` list contains the original pattern.  The matches are sorted, "
+"unless the `nosort` flag is set."
+msgstr ""
+
+#: ../../source/glob_README.md:183
+msgid ""
+"`match` Every time a match is found, this is emitted with the specific "
+"thing that matched. It is not deduplicated or resolved to a realpath."
+msgstr ""
+
+#: ../../source/glob_README.md:185
+msgid ""
+"`error` Emitted when an unexpected error is encountered, or whenever any "
+"fs error occurs if `options.strict` is set."
+msgstr ""
+
+#: ../../source/glob_README.md:187
+msgid "`abort` When `abort()` is called, this event is raised."
+msgstr ""
+
+#: ../../source/glob_README.md:189
+msgid "Methods"
+msgstr ""
+
+#: ../../source/glob_README.md:191
+msgid "`pause` Temporarily stop the search"
+msgstr ""
+
+#: ../../source/glob_README.md:192
+msgid "`resume` Resume the search"
+msgstr ""
+
+#: ../../source/glob_README.md:193
+msgid "`abort` Stop the search forever"
+msgstr ""
+
+#: ../../source/glob_README.md:195
+msgid "Options"
+msgstr ""
+
+#: ../../source/glob_README.md:197
+msgid ""
+"All the options that can be passed to Minimatch can also be passed to "
+"Glob to change pattern matching behavior.  Also, some have been added, or"
+" have glob-specific ramifications."
+msgstr ""
+
+#: ../../source/glob_README.md:201
+msgid "All options are false by default, unless otherwise noted."
+msgstr ""
+
+#: ../../source/glob_README.md:203
+msgid "All options are added to the Glob object, as well."
+msgstr ""
+
+#: ../../source/glob_README.md:205
+msgid ""
+"If you are running many `glob` operations, you can pass a Glob object as "
+"the `options` argument to a subsequent operation to shortcut some `stat` "
+"and `readdir` calls.  At the very least, you may pass in shared "
+"`symlinks`, `statCache`, `realpathCache`, and `cache` options, so that "
+"parallel glob operations will be sped up by sharing information about the"
+" filesystem."
+msgstr ""
+
+#: ../../source/glob_README.md:212
+msgid ""
+"`cwd` The current working directory in which to search.  Defaults to "
+"`process.cwd()`."
+msgstr ""
+
+#: ../../source/glob_README.md:214
+msgid ""
+"`root` The place where patterns starting with `/` will be mounted onto.  "
+"Defaults to `path.resolve(options.cwd, \"/\")` (`/` on Unix systems, and "
+"`C:\\` or some such on Windows.)"
+msgstr ""
+
+#: ../../source/glob_README.md:217
+msgid ""
+"`dot` Include `.dot` files in normal matches and `globstar` matches. Note"
+" that an explicit dot in a portion of the pattern will always match dot "
+"files."
+msgstr ""
+
+#: ../../source/glob_README.md:220
+msgid ""
+"`nomount` By default, a pattern starting with a forward-slash will be "
+"\"mounted\" onto the root setting, so that a valid filesystem path is "
+"returned.  Set this flag to disable that behavior."
+msgstr ""
+
+#: ../../source/glob_README.md:223
+msgid ""
+"`mark` Add a `/` character to directory matches.  Note that this requires"
+" additional stat calls."
+msgstr ""
+
+#: ../../source/glob_README.md:225
+msgid "`nosort` Don't sort the results."
+msgstr ""
+
+#: ../../source/glob_README.md:226
+msgid ""
+"`stat` Set to true to stat *all* results.  This reduces performance "
+"somewhat, and is completely unnecessary, unless `readdir` is presumed to "
+"be an untrustworthy indicator of file existence."
+msgstr ""
+
+#: ../../source/glob_README.md:229
+msgid ""
+"`silent` When an unusual error is encountered when attempting to read a "
+"directory, a warning will be printed to stderr.  Set the `silent` option "
+"to true to suppress these warnings."
+msgstr ""
+
+#: ../../source/glob_README.md:232
+msgid ""
+"`strict` When an unusual error is encountered when attempting to read a "
+"directory, the process will just continue on in search of other matches."
+"  Set the `strict` option to raise an error in these cases."
+msgstr ""
+
+#: ../../source/glob_README.md:236
+msgid ""
+"`cache` See `cache` property above.  Pass in a previously generated cache"
+" object to save some fs calls."
+msgstr ""
+
+#: ../../source/glob_README.md:238
+msgid ""
+"`statCache` A cache of results of filesystem information, to prevent "
+"unnecessary stat calls.  While it should not normally be necessary to set"
+" this, you may pass the statCache from one glob() call to the options "
+"object of another, if you know that the filesystem will not change "
+"between calls.  (See \"Race Conditions\" below.)"
+msgstr ""
+
+#: ../../source/glob_README.md:243
+msgid ""
+"`symlinks` A cache of known symbolic links.  You may pass in a previously"
+" generated `symlinks` object to save `lstat` calls when resolving `**` "
+"matches."
+msgstr ""
+
+#: ../../source/glob_README.md:246
+msgid "`sync` DEPRECATED: use `glob.sync(pattern, opts)` instead."
+msgstr ""
+
+#: ../../source/glob_README.md:247
+msgid ""
+"`nounique` In some cases, brace-expanded patterns can result in the same "
+"file showing up multiple times in the result set.  By default, this "
+"implementation prevents duplicates in the result set.  Set this flag to "
+"disable that behavior."
+msgstr ""
+
+#: ../../source/glob_README.md:251
+msgid ""
+"`nonull` Set to never return an empty set, instead returning a set "
+"containing the pattern itself.  This is the default in glob(3)."
+msgstr ""
+
+#: ../../source/glob_README.md:253
+msgid "`debug` Set to enable debug logging in minimatch and glob."
+msgstr ""
+
+#: ../../source/glob_README.md:254
+#, python-brace-format
+msgid "`nobrace` Do not expand `{a,b}` and `{1..3}` brace sets."
+msgstr ""
+
+#: ../../source/glob_README.md:255
+msgid ""
+"`noglobstar` Do not match `**` against multiple filenames.  (Ie, treat it"
+" as a normal `*` instead.)"
+msgstr ""
+
+#: ../../source/glob_README.md:257
+msgid "`noext` Do not match `+(a|b)` \"extglob\" patterns."
+msgstr ""
+
+#: ../../source/glob_README.md:258
+msgid ""
+"`nocase` Perform a case-insensitive match.  Note: on case-insensitive "
+"filesystems, non-magic patterns will match by default, since `stat` and "
+"`readdir` will not raise errors."
+msgstr ""
+
+#: ../../source/glob_README.md:261
+msgid ""
+"`matchBase` Perform a basename-only match if the pattern does not contain"
+" any slash characters.  That is, `*.js` would be treated as equivalent to"
+" `**/*.js`, matching all js files in all directories."
+msgstr ""
+
+#: ../../source/glob_README.md:264
+msgid ""
+"`nodir` Do not match directories, only files.  (Note: to match *only* "
+"directories, simply put a `/` at the end of the pattern.)"
+msgstr ""
+
+#: ../../source/glob_README.md:266
+msgid ""
+"`ignore` Add a pattern or an array of glob patterns to exclude matches. "
+"Note: `ignore` patterns are *always* in `dot:true` mode, regardless of "
+"any other settings."
+msgstr ""
+
+#: ../../source/glob_README.md:269
+msgid ""
+"`follow` Follow symlinked directories when expanding `**` patterns. Note "
+"that this can result in a lot of duplicate references in the presence of "
+"cyclic links."
+msgstr ""
+
+#: ../../source/glob_README.md:272
+msgid ""
+"`realpath` Set to true to call `fs.realpath` on all of the results. In "
+"the case of a symlink that cannot be resolved, the full absolute path to "
+"the matched entry is returned (though it will usually be a broken "
+"symlink)"
+msgstr ""
+
+#: ../../source/glob_README.md:276
+msgid ""
+"`absolute` Set to true to always receive absolute paths for matched "
+"files.  Unlike `realpath`, this also affects the values returned in the "
+"`match` event."
+msgstr ""
+
+#: ../../source/glob_README.md:279
+msgid ""
+"`fs` File-system object with Node's `fs` API. By default, the built-in "
+"`fs` module will be used. Set to a volume provided by a library like "
+"`memfs` to avoid using the \"real\" file-system."
+msgstr ""
+
+#: ../../source/glob_README.md:283
+msgid "Comparisons to other fnmatch/glob implementations"
+msgstr ""
+
+#: ../../source/glob_README.md:285
+msgid ""
+"While strict compliance with the existing standards is a worthwhile goal,"
+" some discrepancies exist between node-glob and other implementations, "
+"and are intentional."
+msgstr ""
+
+#: ../../source/glob_README.md:289
+msgid ""
+"The double-star character `**` is supported by default, unless the "
+"`noglobstar` flag is set.  This is supported in the manner of bsdglob and"
+" bash 4.3, where `**` only has special significance if it is the only "
+"thing in a path part.  That is, `a/**/b` will match `a/x/y/b`, but "
+"`a/**b` will not."
+msgstr ""
+
+#: ../../source/glob_README.md:295
+msgid ""
+"Note that symlinked directories are not crawled as part of a `**`, though"
+" their contents may match against subsequent portions of the pattern.  "
+"This prevents infinite loops and duplicates and the like."
+msgstr ""
+
+#: ../../source/glob_README.md:299
+msgid ""
+"If an escaped pattern has no matches, and the `nonull` flag is set, then "
+"glob returns the pattern as-provided, rather than interpreting the "
+"character escapes.  For example, `glob.match([], \"\\\\*a\\\\?\")` will "
+"return `\"\\\\*a\\\\?\"` rather than `\"*a?\"`.  This is akin to setting "
+"the `nullglob` option in bash, except that it does not resolve escaped "
+"pattern characters."
+msgstr ""
+
+#: ../../source/glob_README.md:306
+#, python-brace-format
+msgid ""
+"If brace expansion is not disabled, then it is performed before any other"
+" interpretation of the glob pattern.  Thus, a pattern like `+(a|{b),c)}`,"
+" which would not be valid in bash or zsh, is expanded **first** into the "
+"set of `+(a|b)` and `+(a|c)`, and those patterns are checked for "
+"validity.  Since those two are valid, matching proceeds."
+msgstr ""
+
+#: ../../source/glob_README.md:312
+msgid "Comments and Negation"
+msgstr ""
+
+#: ../../source/glob_README.md:314
+msgid ""
+"Previously, this module let you mark a pattern as a \"comment\" if it "
+"started with a `#` character, or a \"negated\" pattern if it started with"
+" a `!` character."
+msgstr ""
+
+#: ../../source/glob_README.md:318
+msgid "These options were deprecated in version 5, and removed in version 6."
+msgstr ""
+
+#: ../../source/glob_README.md:320
+msgid "To specify things that should not match, use the `ignore` option."
+msgstr ""
+
+#: ../../source/glob_README.md:322
+msgid "Windows"
+msgstr ""
+
+#: ../../source/glob_README.md:324
+msgid "**Please only use forward-slashes in glob expressions.**"
+msgstr ""
+
+#: ../../source/glob_README.md:326
+msgid ""
+"Though windows uses either `/` or `\\` as its path separator, only `/` "
+"characters are used by this glob implementation.  You must use forward-"
+"slashes **only** in glob expressions.  Back-slashes will always be "
+"interpreted as escape characters, not path separators."
+msgstr ""
+
+#: ../../source/glob_README.md:331
+msgid ""
+"Results from absolute patterns such as `/foo/*` are mounted onto the root"
+" setting using `path.join`.  On windows, this will by default result in "
+"`/foo/*` matching `C:\\foo\\bar.txt`."
+msgstr ""
+
+#: ../../source/glob_README.md:335
+msgid "Race Conditions"
+msgstr ""
+
+#: ../../source/glob_README.md:337
+msgid ""
+"Glob searching, by its very nature, is susceptible to race conditions, "
+"since it relies on directory walking and such."
+msgstr ""
+
+#: ../../source/glob_README.md:340
+msgid ""
+"As a result, it is possible that a file that exists when glob looks for "
+"it may have been deleted or modified by the time it returns the result."
+msgstr ""
+
+#: ../../source/glob_README.md:343
+msgid ""
+"As part of its internal implementation, this program caches all stat and "
+"readdir calls that it makes, in order to cut down on system overhead.  "
+"However, this also makes it even more susceptible to races, especially if"
+" the cache or statCache objects are reused between glob calls."
+msgstr ""
+
+#: ../../source/glob_README.md:349
+msgid ""
+"Users are thus advised not to use a glob result as a guarantee of "
+"filesystem state in the face of rapid changes.  For the vast majority of "
+"operations, this is never a problem."
+msgstr ""
+
+#: ../../source/glob_README.md:353
+msgid "Glob Logo"
+msgstr ""
+
+#: ../../source/glob_README.md:354
+msgid ""
+"Glob's logo was created by [Tanya Brassie](http://tanyabrassie.com/). "
+"Logo files can be found [here](https://github.com/isaacs/node-"
+"glob/tree/master/logo)."
+msgstr ""
+
+#: ../../source/glob_README.md:356
+msgid ""
+"The logo is licensed under a [Creative Commons Attribution-ShareAlike 4.0"
+" International License](https://creativecommons.org/licenses/by-sa/4.0/)."
+msgstr ""
+
+#: ../../source/glob_README.md:358
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/glob_README.md:360
+msgid "Any change to behavior (including bugfixes) must come with a test."
+msgstr ""
+
+#: ../../source/glob_README.md:362
+msgid "Patches that fail tests or reduce performance will be rejected."
+msgstr ""
+
+#: ../../source/glob_README.md:378
+msgid "![](oh-my-glob.gif)"
+msgstr ""
+

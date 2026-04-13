@@ -1,0 +1,113 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/extsprintf_README.md:1
+msgid "extsprintf: extended POSIX-style sprintf"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:3
+msgid ""
+"Stripped down version of s[n]printf(3c).  We make a best effort to throw "
+"an exception when given a format string we don't understand, rather than "
+"ignoring it, so that we won't break existing programs if/when we go "
+"implement the rest of this."
+msgstr ""
+
+#: ../../source/extsprintf_README.md:8
+msgid "This implementation currently supports specifying"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:10
+msgid "field alignment ('-' flag),"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:11
+msgid "zero-pad ('0' flag)"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:12
+msgid "always show numeric sign ('+' flag),"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:13
+msgid "field width"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:14
+msgid "conversions for strings, decimal integers, and floats (numbers)."
+msgstr ""
+
+#: ../../source/extsprintf_README.md:15
+msgid ""
+"argument size specifiers.  These are all accepted but ignored, since "
+"Javascript has no notion of the physical size of an argument."
+msgstr ""
+
+#: ../../source/extsprintf_README.md:18
+msgid ""
+"Everything else is currently unsupported, most notably: precision, "
+"unsigned numbers, non-decimal numbers, and characters."
+msgstr ""
+
+#: ../../source/extsprintf_README.md:21
+msgid "Besides the usual POSIX conversions, this implementation supports:"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:23
+msgid "`%j`: pretty-print a JSON object (using node's \"inspect\")"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:24
+#, python-format
+msgid "`%r`: pretty-print an Error object"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:26
+msgid "Example"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:28
+msgid "First, install it:"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:32
+msgid "Now, use it:"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:37
+msgid "outputs:"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:41
+msgid "Also supported"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:43
+msgid "**printf**: same args as sprintf, but prints the result to stdout"
+msgstr ""
+
+#: ../../source/extsprintf_README.md:45
+msgid ""
+"**fprintf**: same args as sprintf, preceded by a Node stream.  Prints the"
+" result to the given stream."
+msgstr ""
+

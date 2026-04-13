@@ -1,0 +1,516 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/airbnb-prop-types_README.md:1
+msgid "prop-types <sup>[![Version Badge][npm-version-svg]][package-url]</sup>"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:1
+msgid "Version Badge"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:3
+msgid ""
+"[![Build Status][travis-svg]][travis-url] [![dependency status][deps-svg"
+"]][deps-url] [![dev dependency status][dev-deps-svg]][dev-deps-url] "
+"[![License][license-image]][license-url] [![Downloads][downloads-image"
+"]][downloads-url]"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:3
+msgid "dependency status"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:3
+msgid "dev dependency status"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:3
+msgid "License"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:3
+msgid "Downloads"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:9
+msgid "[![npm badge][npm-badge-png]][package-url]"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:9
+msgid "npm badge"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:11
+msgid ""
+"Custom React PropType validators that we use at Airbnb. Use of [airbnb-"
+"js-shims](https://npmjs.com/package/airbnb-js-shims) or the equivalent is"
+" recommended."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:13
+msgid "`and`: ensure that all provided propType validators pass"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:14
+msgid "`foo: and([number, nonNegativeInteger])`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:15
+msgid ""
+"`between`: provide an object with an `gt` or `gte` number, and an `lt` or"
+" `lte` number (only one item allowed from each pairs; one or both pairs "
+"may be provided), and the resulting propType validator will ensure the "
+"prop value is a number within the given range. Alternatively, you can "
+"provide a function that takes the `props` object and returns a number for"
+" each of the `gt`/`gte`/`lt`/`lte` values."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:16
+#, python-brace-format
+msgid "`foo: between({ gte: 0, lte: 5 })`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:17
+#, python-brace-format
+msgid "`foo: between({ gt: 0, lt: 5 })`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:18
+msgid ""
+"`booleanSome`: provide a list of props, and all must be booleans, and at "
+"least one of them must be `true`."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:19
+msgid "`foo: booleanSome('small', 'medium', 'large')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:20
+msgid ""
+"`childrenHavePropXorChildren`: ensure that either all children have the "
+"indicated prop, all children have children, or all children have neither."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:21
+msgid "`foo: childrenHavePropXorChildren('bar')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:22
+msgid ""
+"`childrenOf`: restrict the children prop to only allow children that pass"
+" the given propType validator."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:23
+msgid "`children: childrenOf(number.isRequired)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:24
+msgid ""
+"`childrenOfType`: restrict the children prop to only allow children of "
+"the given element types - takes a Component, an HTML tag name, or `\"*\"`"
+" to match everything."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:25
+msgid "`children: childrenOfType('span')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:26
+msgid "`children: childrenOfType(Component)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:27
+msgid ""
+"`childrenSequenceOf`: restrict the children prop to be a sequenceOf the "
+"given \"specifiers\" (see `sequenceOf`)"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:28
+#, python-brace-format
+msgid "`children: childrenSequenceOf({validator: string, min: 0, max: 5})`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:29
+msgid ""
+"`componentWithName`: restrict the prop to only allow a component with a "
+"certain name/displayName. Accepts a string, or a regular expression. Also"
+" accepts an `options` object with an optional `stripHOCs` array of string"
+" HOC names to strip off before validating; an HOC name must not contain "
+"parentheses and must be in camelCase."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:30
+msgid "`foo: componentWithName('Component')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:31
+#, python-brace-format
+msgid ""
+"`foo: componentWithName('Component', { stripHOCs: ['withDirection', "
+"'withStyles'] })`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:32
+msgid ""
+"`disallowedIf`: restrict the prop from being provided if the given other "
+"prop name matches the given other prop type. The other prop type "
+"validator only applies if the other prop name is not a null value."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:33
+msgid "`foo: disallowedIf(string, 'bar', bool)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:34
+msgid ""
+"`elementType`: require that the prop be a specific type of React element "
+"- takes a Component, an HTML tag name, or `\"*\"` to match everything."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:35
+msgid "`foo: elementType('span')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:36
+msgid "`foo: elementType(Component)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:37
+msgid ""
+"`empty`: a value that React renders to nothing: `undefined`, `null`, "
+"`false`, the empty string, or an array of those things."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:38
+msgid "`foo: empty()`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:39
+msgid ""
+"`explicitNull`: only allow `null` or `undefined`/omission - and only "
+"`null` when required."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:40
+msgid "`foo: explicitNull()`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:41
+msgid ""
+"`forbidExtraProps`: pass your entire `propTypes` object into this "
+"function, and any nonspecified prop will error."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:42
+#, python-brace-format
+msgid "`Component.propTypes = forbidExtraProps({foo: number.isRequired})`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:43
+msgid "`integer`: require the prop be an integer."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:44
+msgid "`foo: integer()`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:45
+msgid ""
+"`keysOf`: pass in a proptype, and require all the keys of a prop to have "
+"that type"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:46
+msgid "`foo: keysOf(number)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:47
+msgid ""
+"`mutuallyExclusiveProps`: provide a propType, and a list of props, and "
+"only one prop out of the list will be permitted, validated by the given "
+"propType."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:48
+msgid "`foo: mutuallyExclusiveProps(bool, 'bar', 'sna')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:49
+msgid ""
+"`mutuallyExclusiveTrueProps`: provide a list of props, and all must be "
+"booleans, and only one is allowed to be true."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:50
+msgid "`foo: mutuallyExclusiveTrueProps('bar', 'sna')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:51
+msgid "`nChildren`: require a specific amount of children."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:52
+msgid "`children: nChildren(3)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:53
+msgid "`children: nChildren(3, childrenOfType('span'))`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:54
+msgid ""
+"`nonNegativeInteger`: require that the prop be a number, that is 0, or a "
+"finite positive integer."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:55
+msgid "`foo: nonNegativeInteger()`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:56
+msgid ""
+"`nonNegativeNumber`: require that the prop be a number, that is 0, or a "
+"finite positive number."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:57
+msgid "`foo: nonNegativeNumber()`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:58
+msgid ""
+"`numericString`: require the prop be a string that is conceptually "
+"numeric."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:59
+msgid "`foo: numericString()`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:60
+msgid ""
+"`object`: same as `PropTypes.object`, but can be called outside of "
+"React's propType flow."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:61
+msgid ""
+"`or`: recursively allows only the provided propTypes, or arrays of those "
+"propTypes."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:62
+msgid "`foo: or([bool.isRequired, explicitNull()])`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:63
+msgid ""
+"`predicate`: provide a predicate function, and an optional message, and "
+"will fail when the predicate returns false."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:64
+msgid "`foo: predicate((x) => x % 2 === 0, 'must be an even integer')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:65
+msgid ""
+"`range`: provide a min, and a max, and the prop must be an integer in the"
+" range `[min, max)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:66
+msgid "`foo: range(-1, 2)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:67
+msgid ""
+"`ref`: require the prop to be a React ref. These can be either the object"
+" returned from `React.createRef()` or \"callback\" refs."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:68
+msgid "`foo: ref()`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:69
+msgid ""
+"`requiredBy`: pass in a prop name and propType, and require that the prop"
+" is defined and is not its default value if the passed in prop name is "
+"truthy. if the default value is not provided, defaults to checking "
+"against `null`."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:70
+msgid "`foo: requiredBy('bar', bool)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:71
+msgid ""
+"`restrictedProp`: this prop is not permitted to be anything but `null` or"
+" `undefined`."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:72
+msgid "`foo: restrictedProp()`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:73
+msgid "`foo: restrictedProp(new TypeError('Custom Error'))`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:74
+msgid ""
+"`sequenceOf`: takes 1 or more \"specifiers\": an object with a "
+"\"validator\" function (a propType validator), a \"min\" "
+"nonNegativeInteger, and a \"max\" nonNegativeInteger. If both \"min\" and"
+" \"max\" may be omitted, they default to 1; if only \"max\" is omitted, "
+"it defaults to Infinity; if only \"min\" is omitted, it defaults to 1."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:75
+#, python-brace-format
+msgid "`foo: sequenceOf({validator: string, min: 0, max: 5})`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:76
+msgid ""
+"`shape`: takes a shape, and allows it to be enforced on any non-"
+"null/undefined value."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:77
+#, python-brace-format
+msgid "`foo: shape({ length: oneOf([2]) })`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:78
+msgid ""
+"`stringEndsWith`: takes a non-empty string, and returns a validator that "
+"ensures the prop value is a string that ends with it."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:79
+msgid "`foo: stringEndsWith('.png')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:80
+msgid ""
+"`stringStartsWith`: takes a non-empty string, and returns a validator "
+"that ensures the prop value is a string that starts with it."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:81
+msgid "`foo: stringStartsWith('prefix-')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:82
+msgid ""
+"`uniqueArray`: this prop must be an array, and all values must be unique "
+"(determined by `Object.is`). Like `PropTypes.array`, but with uniqueness."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:83
+msgid "`foo: uniqueArray()`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:84
+msgid ""
+"`uniqueArrayOf`: `uniqueArray`, with a type validator applied. Like "
+"`PropTypes.arrayOf`, but with uniqueness. Can also take an optional "
+"mapper function that allows for a non-standard unique calculation "
+"(otherwise, `Object.is` is used by default). The function is applied to "
+"each element in the array, and the resulting values are compared using "
+"the standard unique calculation."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:85
+msgid "`foo: uniqueArrayOf(number)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:86
+msgid "`foo: uniqueArrayOf(element => element ** 2)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:87
+msgid "`foo: uniqueArrayOf(element => element ** 2, 'test')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:88
+msgid "`foo: uniqueArrayOf(array, element => element[0] ** 2, 'test')`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:89
+msgid ""
+"`valuesOf`: a non-object requiring `PropTypes.objectOf`. Takes a propType"
+" validator, and applies it to every own value on the propValue."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:90
+msgid "`foo: valuesOf(number)`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:91
+msgid ""
+"`withShape`: takes a PropType and a shape, and allows it to be enforced "
+"on any non-null/undefined value."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:92
+#, python-brace-format
+msgid "`foo: withShape(array, { length: oneOf([2]) })`"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:94
+msgid "Production"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:95
+msgid ""
+"Since `PropTypes` are typically not included in production builds of "
+"React, this library’s functionality serves no useful purpose. As such, "
+"when the `NODE_ENV` environment variable is `\"production\"`, instead of "
+"exporting the implementations of all these prop types, we export mock "
+"functions - in other words, something that ensures that no exceptions are"
+" thrown, but does no validation. When environment variables are inlined "
+"(via a browserify transform or webpack plugin), then tools like webpack "
+"or uglify are able to determine that only the mocks will be imported - "
+"and can avoid including the entire implementations in the final bundle "
+"that is sent to the browser. This allows for a much smaller ultimate file"
+" size, and faster in-browser performance, without sacrificing the "
+"benefits of `PropTypes` themselves."
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:97
+msgid "Tests"
+msgstr ""
+
+#: ../../source/airbnb-prop-types_README.md:98
+msgid "Clone the repo, `npm install`, `npm run react`, and run `npm test`"
+msgstr ""
+

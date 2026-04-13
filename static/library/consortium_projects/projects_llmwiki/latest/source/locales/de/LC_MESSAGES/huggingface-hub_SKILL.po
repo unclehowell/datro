@@ -1,0 +1,260 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/huggingface-hub_SKILL.md:10
+msgid "Hugging Face CLI (`hf`) Reference Guide"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:12
+msgid ""
+"The `hf` command is the modern command-line interface for interacting "
+"with the Hugging Face Hub, providing tools to manage repositories, "
+"models, datasets, and Spaces."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:14
+msgid ""
+"**IMPORTANT:** The `hf` command replaces the now deprecated `huggingface-"
+"cli` command."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:16
+msgid "Quick Start"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:17
+msgid "**Installation:** `curl -LsSf https://hf.co/cli/install.sh | bash -s`"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:18
+msgid ""
+"**Help:** Use `hf --help` to view all available functions and real-world "
+"examples."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:19
+msgid ""
+"**Authentication:** Recommended via `HF_TOKEN` environment variable or "
+"the `--token` flag."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:23
+msgid "Core Commands"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:25
+msgid "General Operations"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:26
+msgid "`hf download REPO_ID`: Download files from the Hub."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:27
+msgid "`hf upload REPO_ID`: Upload files/folders (recommended for single-commit)."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:28
+msgid ""
+"`hf upload-large-folder REPO_ID LOCAL_PATH`: Recommended for resumable "
+"uploads of large directories."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:29
+msgid "`hf sync`: Sync files between a local directory and a bucket."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:30
+msgid "`hf env` / `hf version`: View environment and version details."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:32
+msgid "Authentication (`hf auth`)"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:33
+msgid ""
+"`login` / `logout`: Manage sessions using tokens from "
+"[huggingface.co/settings/tokens](https://huggingface.co/settings/tokens)."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:34
+msgid ""
+"`list` / `switch`: Manage and toggle between multiple stored access "
+"tokens."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:35
+msgid "`whoami`: Identify the currently logged-in account."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:37
+msgid "Repository Management (`hf repos`)"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:38
+msgid "`create` / `delete`: Create or permanently remove repositories."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:39
+msgid "`duplicate`: Clone a model, dataset, or Space to a new ID."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:40
+msgid "`move`: Transfer a repository between namespaces."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:41
+msgid "`branch` / `tag`: Manage Git-like references."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:42
+msgid "`delete-files`: Remove specific files using patterns."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:46
+msgid "Specialized Hub Interactions"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:48
+msgid "Datasets & Models"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:49
+msgid ""
+"**Datasets:** `hf datasets list`, `info`, and `parquet` (list parquet "
+"URLs)."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:50
+msgid ""
+"**SQL Queries:** `hf datasets sql SQL` — Execute raw SQL via DuckDB "
+"against dataset parquet URLs."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:51
+msgid "**Models:** `hf models list` and `info`."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:52
+msgid "**Papers:** `hf papers list` — View daily papers."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:54
+msgid "Discussions & Pull Requests (`hf discussions`)"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:55
+msgid ""
+"Manage the lifecycle of Hub contributions: `list`, `create`, `info`, "
+"`comment`, `close`, `reopen`, and `rename`."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:56
+msgid "`diff`: View changes in a PR."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:57
+msgid "`merge`: Finalize pull requests."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:59
+msgid "Infrastructure & Compute"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:60
+msgid ""
+"**Endpoints:** Deploy and manage Inference Endpoints (`deploy`, `pause`, "
+"`resume`, `scale-to-zero`, `catalog`)."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:61
+msgid ""
+"**Jobs:** Run compute tasks on HF infrastructure. Includes `hf jobs uv` "
+"for running Python scripts with inline dependencies and `stats` for "
+"resource monitoring."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:62
+msgid ""
+"**Spaces:** Manage interactive apps. Includes `dev-mode` and `hot-reload`"
+" for Python files without full restarts."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:64
+msgid "Storage & Automation"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:65
+msgid ""
+"**Buckets:** Full S3-like bucket management (`create`, `cp`, `mv`, `rm`, "
+"`sync`)."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:66
+msgid ""
+"**Cache:** Manage local storage with `list`, `prune` (remove detached "
+"revisions), and `verify` (checksum checks)."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:67
+msgid ""
+"**Webhooks:** Automate workflows by managing Hub webhooks (`create`, "
+"`watch`, `enable`/`disable`)."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:68
+msgid ""
+"**Collections:** Organize Hub items into collections (`add-item`, "
+"`update`, `list`)."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:72
+msgid "Advanced Usage & Tips"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:74
+msgid "Global Flags"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:75
+msgid "`--format json`: Produces machine-readable output for automation."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:76
+msgid "`-q` / `--quiet`: Limits output to IDs only."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:78
+msgid "Extensions & Skills"
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:79
+msgid ""
+"**Extensions:** Extend CLI functionality via GitHub repositories using "
+"`hf extensions install REPO_ID`."
+msgstr ""
+
+#: ../../source/huggingface-hub_SKILL.md:80
+msgid "**Skills:** Manage AI assistant skills with `hf skills add`."
+msgstr ""
+

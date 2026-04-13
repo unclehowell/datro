@@ -1,0 +1,605 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/peft_SKILL.md:14
+msgid "PEFT (Parameter-Efficient Fine-Tuning)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:16
+#, python-format
+msgid ""
+"Fine-tune LLMs by training <1% of parameters using LoRA, QLoRA, and 25+ "
+"adapter methods."
+msgstr ""
+
+#: ../../source/peft_SKILL.md:18
+msgid "When to use PEFT"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:20
+msgid "**Use PEFT/LoRA when:**"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:21
+msgid "Fine-tuning 7B-70B models on consumer GPUs (RTX 4090, A100)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:22
+msgid "Need to train <1% parameters (6MB adapters vs 14GB full model)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:23
+msgid "Want fast iteration with multiple task-specific adapters"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:24
+msgid "Deploying multiple fine-tuned variants from one base model"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:26
+msgid "**Use QLoRA (PEFT + quantization) when:**"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:27
+msgid "Fine-tuning 70B models on single 24GB GPU"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:28
+msgid "Memory is the primary constraint"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:29
+msgid "Can accept ~5% quality trade-off vs full fine-tuning"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:31
+msgid "**Use full fine-tuning instead when:**"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:32
+msgid "Training small models (<1B parameters)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:33
+msgid "Need maximum quality and have compute budget"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:34
+msgid "Significant domain shift requires updating all weights"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:36
+msgid "Quick start"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:38
+msgid "Installation"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:51
+msgid "LoRA fine-tuning (standard)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:115
+msgid "QLoRA fine-tuning (memory-efficient)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:153
+msgid "LoRA parameter selection"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:155
+msgid "Rank (r) - capacity vs efficiency"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Rank"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Trainable Params"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Memory"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Quality"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Use Case"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "4"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "~3M"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Minimal"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Lower"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Simple tasks, prototyping"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "**8**"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "~7M"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Low"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Good"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "**Recommended starting point**"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "**16**"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "~14M"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Medium"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Better"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "**General fine-tuning**"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "32"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "~27M"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Higher"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "High"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Complex tasks"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "64"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "~54M"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Highest"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Domain adaptation, 70B models"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:165
+msgid "Alpha (lora_alpha) - scaling factor"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:174
+msgid "Target modules by architecture"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:193
+msgid "Loading and merging adapters"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:195
+msgid "Load trained adapter"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:212
+msgid "Merge adapter into base model"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:226
+msgid "Multi-adapter serving"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:250
+msgid "PEFT methods comparison"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Method"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Trainable %"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Speed"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Best For"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "**LoRA**"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "0.1-1%"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Fast"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "General fine-tuning"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "**QLoRA**"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Very Low"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Memory-constrained"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "AdaLoRA"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Automatic rank selection"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "IA3"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "0.01%"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Fastest"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Few-shot adaptation"
+msgstr ""
+
+#: ../../source/peft_SKILL.md ../../source/peft_SKILL.md:275
+msgid "Prefix Tuning"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "0.1%"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Generation control"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Prompt Tuning"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "0.001%"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Simple task adaptation"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "P-Tuning v2"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "NLU tasks"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:262
+msgid "IA3 (minimal parameters)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:288
+msgid "Integration patterns"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:290
+msgid "With TRL (SFTTrainer)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:307
+msgid "With Axolotl (YAML config)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:323
+msgid "With vLLM (inference)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:339
+msgid "Performance benchmarks"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:341
+msgid "Memory usage (Llama 3.1 8B)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "GPU Memory"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Full fine-tuning"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "60+ GB"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "8B (100%)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "LoRA r=16"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "18 GB"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "14M (0.17%)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "QLoRA r=16"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "6 GB"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "16 GB"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "800K (0.01%)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:350
+msgid "Training speed (A100 80GB)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Tokens/sec"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "vs Full FT"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Full FT"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "2,500"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "1x"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "LoRA"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "3,200"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "1.3x"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "QLoRA"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "2,100"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "0.84x"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:358
+msgid "Quality (MMLU benchmark)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Model"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Llama 2-7B"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "45.3"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "44.8"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "44.1"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "Llama 2-13B"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "54.8"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "54.2"
+msgstr ""
+
+#: ../../source/peft_SKILL.md
+msgid "53.5"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:365
+msgid "Common issues"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:367
+msgid "CUDA OOM during training"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:384
+msgid "Adapter not applying"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:397
+msgid "Quality degradation"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:413
+msgid "Best practices"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:415
+msgid "**Start with r=8-16**, increase if quality insufficient"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:416
+msgid "**Use alpha = 2 * rank** as starting point"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:417
+msgid "**Target attention + MLP layers** for best quality/efficiency"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:418
+msgid "**Enable gradient checkpointing** for memory savings"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:419
+msgid "**Save adapters frequently** (small files, easy rollback)"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:420
+msgid "**Evaluate on held-out data** before merging"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:421
+msgid "**Use QLoRA for 70B+ models** on consumer hardware"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:423
+msgid "References"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:425
+msgid ""
+"**[Advanced Usage](references/advanced-usage.md)** - DoRA, LoftQ, rank "
+"stabilization, custom modules"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:426
+msgid ""
+"**[Troubleshooting](references/troubleshooting.md)** - Common errors, "
+"debugging, optimization"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:428
+msgid "Resources"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:430
+msgid "**GitHub**: https://github.com/huggingface/peft"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:431
+msgid "**Docs**: https://huggingface.co/docs/peft"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:432
+msgid "**LoRA Paper**: arXiv:2106.09685"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:433
+msgid "**QLoRA Paper**: arXiv:2305.14314"
+msgstr ""
+
+#: ../../source/peft_SKILL.md:434
+msgid "**Models**: https://huggingface.co/models?library=peft"
+msgstr ""
+

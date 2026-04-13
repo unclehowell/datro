@@ -1,0 +1,498 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/dogfood_SKILL.md:12
+msgid "Dogfood: Systematic Web Application QA Testing"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:14
+msgid "Overview"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:16
+msgid ""
+"This skill guides you through systematic exploratory QA testing of web "
+"applications using the browser toolset. You will navigate the "
+"application, interact with elements, capture evidence of issues, and "
+"produce a structured bug report."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:18
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:20
+msgid ""
+"Browser toolset must be available (`browser_navigate`, "
+"`browser_snapshot`, `browser_click`, `browser_type`, `browser_vision`, "
+"`browser_console`, `browser_scroll`, `browser_back`, `browser_press`, "
+"`browser_close`)"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:21
+msgid "A target URL and testing scope from the user"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:23
+msgid "Inputs"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:25
+msgid "The user provides:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:26
+msgid "**Target URL** — the entry point for testing"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:27
+msgid ""
+"**Scope** — what areas/features to focus on (or \"full site\" for "
+"comprehensive testing)"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:28
+msgid ""
+"**Output directory** (optional) — where to save screenshots and the "
+"report (default: `./dogfood-output`)"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:30
+msgid "Workflow"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:32
+msgid "Follow this 5-phase systematic workflow:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:34
+msgid "Phase 1: Plan"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:36
+msgid "Create the output directory structure:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:42
+msgid "Identify the testing scope based on user input."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:43
+msgid "Build a rough sitemap by planning which pages and features to test:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:44
+msgid "Landing/home page"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:45
+msgid "Navigation links (header, footer, sidebar)"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:46
+msgid "Key user flows (sign up, login, search, checkout, etc.)"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:47
+msgid "Forms and interactive elements"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:48
+msgid "Edge cases (empty states, error pages, 404s)"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:50
+msgid "Phase 2: Explore"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:52
+msgid "For each page or feature in your plan:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:54
+msgid "**Navigate** to the page:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:59
+msgid "**Take a snapshot** to understand the DOM structure:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:64
+msgid "**Check the console** for JavaScript errors:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:68
+msgid ""
+"Do this after every navigation and after every significant interaction. "
+"Silent JS errors are high-value findings."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:70
+msgid ""
+"**Take an annotated screenshot** to visually assess the page and identify"
+" interactive elements:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:74
+msgid ""
+"The `annotate=true` flag overlays numbered `[N]` labels on interactive "
+"elements. Each `[N]` maps to ref `@eN` for subsequent browser commands."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:76
+msgid "**Test interactive elements** systematically:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:77
+msgid "Click buttons and links: `browser_click(ref=\"@eN\")`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:78
+msgid "Fill forms: `browser_type(ref=\"@eN\", text=\"test input\")`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:79
+msgid ""
+"Test keyboard navigation: `browser_press(key=\"Tab\")`, "
+"`browser_press(key=\"Enter\")`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:80
+msgid "Scroll through content: `browser_scroll(direction=\"down\")`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:81
+msgid "Test form validation with invalid inputs"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:82
+msgid "Test empty submissions"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:84
+msgid "**After each interaction**, check for:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:85
+msgid "Console errors: `browser_console()`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:86
+msgid ""
+"Visual changes: `browser_vision(question=\"What changed after the "
+"interaction?\")`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:87 ../../source/dogfood_SKILL.md:131
+msgid "Expected vs actual behavior"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:89
+msgid "Phase 3: Collect Evidence"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:91
+msgid "For every issue found:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:93
+msgid "**Take a screenshot** showing the issue:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:97
+msgid ""
+"Save the `screenshot_path` from the response — you will reference it in "
+"the report."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:99
+msgid "**Record the details**:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:100
+msgid "URL where the issue occurs"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:101 ../../source/dogfood_SKILL.md:130
+msgid "Steps to reproduce"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:102
+msgid "Expected behavior"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:103
+msgid "Actual behavior"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:104
+msgid "Console errors (if any)"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:105
+msgid "Screenshot path"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:107
+msgid ""
+"**Classify the issue** using the issue taxonomy (see `references/issue-"
+"taxonomy.md`):"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:108
+msgid "Severity: Critical / High / Medium / Low"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:109
+msgid "Category: Functional / Visual / Accessibility / Console / UX / Content"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:111
+msgid "Phase 4: Categorize"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:113
+msgid "Review all collected issues."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:114
+msgid ""
+"De-duplicate — merge issues that are the same bug manifesting in "
+"different places."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:115
+msgid "Assign final severity and category to each issue."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:116
+msgid "Sort by severity (Critical first, then High, Medium, Low)."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:117
+msgid "Count issues by severity and category for the executive summary."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:119
+msgid "Phase 5: Report"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:121
+msgid ""
+"Generate the final report using the template at `templates/dogfood-"
+"report-template.md`."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:123
+msgid "The report must include:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:124
+msgid ""
+"**Executive summary** with total issue count, breakdown by severity, and "
+"testing scope"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:125
+msgid "**Per-issue sections** with:"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:126
+msgid "Issue number and title"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:127
+msgid "Severity and category badges"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:128
+msgid "URL where observed"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:129
+msgid "Description of the issue"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:132
+msgid "Screenshot references (use `MEDIA:<screenshot_path>` for inline images)"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:133
+msgid "Console errors if relevant"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:134
+msgid "**Summary table** of all issues"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:135
+msgid "**Testing notes** — what was tested, what was not, any blockers"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:137
+#, python-brace-format
+msgid "Save the report to `{output_dir}/report.md`."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:139
+msgid "Tools Reference"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Tool"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Purpose"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_navigate`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Go to a URL"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_snapshot`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Get DOM text snapshot (accessibility tree)"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_click`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Click an element by ref (`@eN`) or text"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_type`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Type into an input field"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_scroll`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Scroll up/down on the page"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_back`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Go back in browser history"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_press`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Press a keyboard key"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_vision`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Screenshot + AI analysis; use `annotate=true` for element labels"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_console`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Get JS console output and errors"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "`browser_close`"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md
+msgid "Close the browser session"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:154
+msgid "Tips"
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:156
+msgid ""
+"**Always check `browser_console()` after navigating and after significant"
+" interactions.** Silent JS errors are among the most valuable findings."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:157
+msgid ""
+"**Use `annotate=true` with `browser_vision`** when you need to reason "
+"about interactive element positions or when the snapshot refs are "
+"unclear."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:158
+msgid ""
+"**Test with both valid and invalid inputs** — form validation bugs are "
+"common."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:159
+msgid ""
+"**Scroll through long pages** — content below the fold may have rendering"
+" issues."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:160
+msgid "**Test navigation flows** — click through multi-step processes end-to-end."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:161
+msgid ""
+"**Check responsive behavior** by noting any layout issues visible in "
+"screenshots."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:162
+msgid ""
+"**Don't forget edge cases**: empty states, very long text, special "
+"characters, rapid clicking."
+msgstr ""
+
+#: ../../source/dogfood_SKILL.md:163
+msgid ""
+"When reporting screenshots to the user, include `MEDIA:<screenshot_path>`"
+" so they can see the evidence inline."
+msgstr ""
+

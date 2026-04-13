@@ -1,0 +1,1370 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/yauzl_README.md:1
+msgid "yauzl"
+msgstr ""
+
+#: ../../source/yauzl_README.md:3
+msgid ""
+"[![Build Status](https://travis-"
+"ci.org/thejoshwolfe/yauzl.svg?branch=master)](https://travis-"
+"ci.org/thejoshwolfe/yauzl) [![Coverage "
+"Status](https://img.shields.io/coveralls/thejoshwolfe/yauzl.svg)](https://coveralls.io/r/thejoshwolfe/yauzl)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/yauzl_README.md:3
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/yauzl_README.md:6
+msgid ""
+"yet another unzip library for node. For zipping, see "
+"[yazl](https://github.com/thejoshwolfe/yazl)."
+msgstr ""
+
+#: ../../source/yauzl_README.md:9
+msgid "Design principles:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:11
+msgid ""
+"Follow the spec. Don't scan for local file headers. Read the central "
+"directory for file metadata. (see [No Streaming Unzip API](#no-streaming-"
+"unzip-api))."
+msgstr ""
+
+#: ../../source/yauzl_README.md:15
+msgid "Don't block the JavaScript thread. Use and provide async APIs."
+msgstr ""
+
+#: ../../source/yauzl_README.md:17
+msgid ""
+"Keep memory usage under control. Don't attempt to buffer entire files in "
+"RAM at once."
+msgstr ""
+
+#: ../../source/yauzl_README.md:19
+msgid ""
+"Never crash (if used properly). Don't let malformed zip files bring down "
+"client applications who are trying to catch errors."
+msgstr ""
+
+#: ../../source/yauzl_README.md:21
+msgid "Catch unsafe file names. See `validateFileName()`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:24
+msgid "Usage"
+msgstr ""
+
+#: ../../source/yauzl_README.md:52
+msgid "See also `examples/` for more usage examples."
+msgstr ""
+
+#: ../../source/yauzl_README.md:54
+msgid "API"
+msgstr ""
+
+#: ../../source/yauzl_README.md:56
+msgid "The default for every optional `callback` parameter is:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:64
+msgid "open(path, [options], [callback])"
+msgstr ""
+
+#: ../../source/yauzl_README.md:66
+msgid ""
+"Calls `fs.open(path, \"r\")` and reads the `fd` effectively the same as "
+"`fromFd()` would."
+msgstr ""
+
+#: ../../source/yauzl_README.md:68 ../../source/yauzl_README.md:147
+#, python-brace-format
+msgid ""
+"`options` may be omitted or `null`. The defaults are `{autoClose: true, "
+"lazyEntries: false, decodeStrings: true, validateEntrySizes: true, "
+"strictFileNames: false}`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:70
+msgid "`autoClose` is effectively equivalent to:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:78
+msgid ""
+"`lazyEntries` indicates that entries should be read only when "
+"`readEntry()` is called. If `lazyEntries` is `false`, `entry` events will"
+" be emitted as fast as possible to allow `pipe()`ing file data from all "
+"entries in parallel. This is not recommended, as it can lead to out of "
+"control memory usage for zip files with many entries. See [issue "
+"#22](https://github.com/thejoshwolfe/yauzl/issues/22). If `lazyEntries` "
+"is `true`, an `entry` or `end` event will be emitted in response to each "
+"call to `readEntry()`. This allows processing of one entry at a time, and"
+" will keep memory usage under control for zip files with many entries."
+msgstr ""
+
+#: ../../source/yauzl_README.md:86
+msgid ""
+"`decodeStrings` is the default and causes yauzl to decode strings with "
+"`CP437` or `UTF-8` as required by the spec. The exact effects of turning "
+"this option off are:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:89
+msgid ""
+"`zipfile.comment`, `entry.fileName`, and `entry.fileComment` will be "
+"`Buffer` objects instead of `String`s."
+msgstr ""
+
+#: ../../source/yauzl_README.md:90
+msgid "Any Info-ZIP Unicode Path Extra Field will be ignored. See `extraFields`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:91
+msgid ""
+"Automatic file name validation will not be performed. See "
+"`validateFileName()`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:93
+msgid ""
+"`validateEntrySizes` is the default and ensures that an entry's reported "
+"uncompressed size matches its actual uncompressed size. This check "
+"happens as early as possible, which is either before emitting each "
+"`\"entry\"` event (for entries with no compression), or during the "
+"`readStream` piping after calling `openReadStream()`. See "
+"`openReadStream()` for more information on defending against zip bomb "
+"attacks."
+msgstr ""
+
+#: ../../source/yauzl_README.md:98
+msgid ""
+"When `strictFileNames` is `false` (the default) and `decodeStrings` is "
+"`true`, all backslash (`\\`) characters in each `entry.fileName` are "
+"replaced with forward slashes (`/`). The spec forbids file names with "
+"backslashes, but Microsoft's `System.IO.Compression.ZipFile` class in "
+".NET versions 4.5.0 until 4.6.1 creates non-conformant zipfiles with "
+"backslashes in file names. `strictFileNames` is `false` by default so "
+"that clients can read these non-conformant zipfiles without knowing about"
+" this Microsoft-specific bug. When `strictFileNames` is `true` and "
+"`decodeStrings` is `true`, entries with backslashes in their file names "
+"will result in an error. See `validateFileName()`. When `decodeStrings` "
+"is `false`, `strictFileNames` has no effect."
+msgstr ""
+
+#: ../../source/yauzl_README.md:109
+msgid ""
+"The `callback` is given the arguments `(err, zipfile)`. An `err` is "
+"provided if the End of Central Directory Record cannot be found, or if "
+"its metadata appears malformed. This kind of error usually indicates that"
+" this is not a zip file. Otherwise, `zipfile` is an instance of "
+"`ZipFile`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:114
+msgid "fromFd(fd, [options], [callback])"
+msgstr ""
+
+#: ../../source/yauzl_README.md:116
+msgid ""
+"Reads from the fd, which is presumed to be an open .zip file. Note that "
+"random access is required by the zip file specification, so the fd cannot"
+" be an open socket or any other fd that does not support random access."
+msgstr ""
+
+#: ../../source/yauzl_README.md:120
+#, python-brace-format
+msgid ""
+"`options` may be omitted or `null`. The defaults are `{autoClose: false, "
+"lazyEntries: false, decodeStrings: true, validateEntrySizes: true, "
+"strictFileNames: false}`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:122 ../../source/yauzl_README.md:149
+msgid "See `open()` for the meaning of the options and callback."
+msgstr ""
+
+#: ../../source/yauzl_README.md:124
+msgid "fromBuffer(buffer, [options], [callback])"
+msgstr ""
+
+#: ../../source/yauzl_README.md:126
+msgid ""
+"Like `fromFd()`, but reads from a RAM buffer instead of an open file. "
+"`buffer` is a `Buffer`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:129
+msgid ""
+"If a `ZipFile` is acquired from this method, it will never emit the "
+"`close` event, and calling `close()` is not necessary."
+msgstr ""
+
+#: ../../source/yauzl_README.md:133
+#, python-brace-format
+msgid ""
+"`options` may be omitted or `null`. The defaults are `{lazyEntries: "
+"false, decodeStrings: true, validateEntrySizes: true, strictFileNames: "
+"false}`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:135
+msgid ""
+"See `open()` for the meaning of the options and callback. The `autoClose`"
+" option is ignored for this method."
+msgstr ""
+
+#: ../../source/yauzl_README.md:138
+msgid "fromRandomAccessReader(reader, totalSize, [options], [callback])"
+msgstr ""
+
+#: ../../source/yauzl_README.md:140
+msgid ""
+"This method of reading a zip file allows clients to implement their own "
+"back-end file system. For example, a client might translate read calls "
+"into network requests."
+msgstr ""
+
+#: ../../source/yauzl_README.md:143
+msgid ""
+"The `reader` parameter must be of a type that is a subclass of "
+"[RandomAccessReader](#class-randomaccessreader) that implements the "
+"required methods. The `totalSize` is a Number and indicates the total "
+"file size of the zip file."
+msgstr ""
+
+#: ../../source/yauzl_README.md:151
+msgid "dosDateTimeToDate(date, time)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:153
+msgid ""
+"Converts MS-DOS `date` and `time` data into a JavaScript `Date` object. "
+"Each parameter is a `Number` treated as an unsigned 16-bit integer. Note "
+"that this format does not support timezones, so the returned object will "
+"use the local timezone."
+msgstr ""
+
+#: ../../source/yauzl_README.md:158
+msgid "validateFileName(fileName)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:160
+msgid ""
+"Returns `null` or a `String` error message depending on the validity of "
+"`fileName`. If `fileName` starts with `\"/\"` or `/[A-Za-z]:\\//` or if "
+"it contains `\"..\"` path segments or `\"\\\\\"`, this function returns "
+"an error message appropriate for use like this:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:169
+msgid ""
+"This function is automatically run for each entry, as long as "
+"`decodeStrings` is `true`. See `open()`, `strictFileNames`, and `Event: "
+"\"entry\"` for more information."
+msgstr ""
+
+#: ../../source/yauzl_README.md:172
+msgid "Class: ZipFile"
+msgstr ""
+
+#: ../../source/yauzl_README.md:174
+msgid ""
+"The constructor for the class is not part of the public API. Use "
+"`open()`, `fromFd()`, `fromBuffer()`, or `fromRandomAccessReader()` "
+"instead."
+msgstr ""
+
+#: ../../source/yauzl_README.md:177
+msgid "Event: \"entry\""
+msgstr ""
+
+#: ../../source/yauzl_README.md:179
+msgid ""
+"Callback gets `(entry)`, which is an `Entry`. See `open()` and "
+"`readEntry()` for when this event is emitted."
+msgstr ""
+
+#: ../../source/yauzl_README.md:182
+msgid ""
+"If `decodeStrings` is `true`, entries emitted via this event have already"
+" passed file name validation. See `validateFileName()` and `open()` for "
+"more information."
+msgstr ""
+
+#: ../../source/yauzl_README.md:185
+msgid ""
+"If `validateEntrySizes` is `true` and this entry's `compressionMethod` is"
+" `0` (stored without compression), this entry has already passed entry "
+"size validation. See `open()` for more information."
+msgstr ""
+
+#: ../../source/yauzl_README.md:189
+msgid "Event: \"end\""
+msgstr ""
+
+#: ../../source/yauzl_README.md:191
+msgid ""
+"Emitted after the last `entry` event has been emitted. See `open()` and "
+"`readEntry()` for more info on when this event is emitted."
+msgstr ""
+
+#: ../../source/yauzl_README.md:194
+msgid "Event: \"close\""
+msgstr ""
+
+#: ../../source/yauzl_README.md:196
+msgid ""
+"Emitted after the fd is actually closed. This is after calling `close()` "
+"(or after the `end` event when `autoClose` is `true`), and after all "
+"stream pipelines created from `openReadStream()` have finished reading "
+"data from the fd."
+msgstr ""
+
+#: ../../source/yauzl_README.md:200
+msgid ""
+"If this `ZipFile` was acquired from `fromRandomAccessReader()`, the "
+"\"fd\" in the previous paragraph refers to the `RandomAccessReader` "
+"implemented by the client."
+msgstr ""
+
+#: ../../source/yauzl_README.md:203
+msgid ""
+"If this `ZipFile` was acquired from `fromBuffer()`, this event is never "
+"emitted."
+msgstr ""
+
+#: ../../source/yauzl_README.md:205
+msgid "Event: \"error\""
+msgstr ""
+
+#: ../../source/yauzl_README.md:207
+msgid ""
+"Emitted in the case of errors with reading the zip file. (Note that other"
+" errors can be emitted from the streams created from `openReadStream()` "
+"as well.) After this event has been emitted, no further `entry`, `end`, "
+"or `error` events will be emitted, but the `close` event may still be "
+"emitted."
+msgstr ""
+
+#: ../../source/yauzl_README.md:212
+msgid "readEntry()"
+msgstr ""
+
+#: ../../source/yauzl_README.md:214
+msgid ""
+"Causes this `ZipFile` to emit an `entry` or `end` event (or an `error` "
+"event). This method must only be called when this `ZipFile` was created "
+"with the `lazyEntries` option set to `true` (see `open()`). When this "
+"`ZipFile` was created with the `lazyEntries` option set to `true`, "
+"`entry` and `end` events are only ever emitted in response to this method"
+" call."
+msgstr ""
+
+#: ../../source/yauzl_README.md:219
+msgid ""
+"The event that is emitted in response to this method will not be emitted "
+"until after this method has returned, so it is safe to call this method "
+"before attaching event listeners."
+msgstr ""
+
+#: ../../source/yauzl_README.md:222
+msgid ""
+"After calling this method, calling this method again before the response "
+"event has been emitted will cause undefined behavior. Calling this method"
+" after the `end` event has been emitted will cause undefined behavior. "
+"Calling this method after calling `close()` will cause undefined "
+"behavior."
+msgstr ""
+
+#: ../../source/yauzl_README.md:226
+msgid "openReadStream(entry, [options], callback)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:228
+msgid ""
+"`entry` must be an `Entry` object from this `ZipFile`. `callback` gets "
+"`(err, readStream)`, where `readStream` is a `Readable Stream` that "
+"provides the file data for this entry. If this zipfile is already closed "
+"(see `close()`), the `callback` will receive an `err`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:232
+msgid "`options` may be omitted or `null`, and has the following defaults:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:243
+msgid ""
+"If the entry is compressed (with a supported compression method), and the"
+" `decompress` option is `true` (or omitted), the read stream provides the"
+" decompressed data. Omitting the `decompress` option is what most clients"
+" should do."
+msgstr ""
+
+#: ../../source/yauzl_README.md:248
+msgid ""
+"The `decompress` option must be `null` (or omitted) when the entry is not"
+" compressed (see `isCompressed()`), and either `true` (or omitted) or "
+"`false` when the entry is compressed. Specifying `decompress: false` for "
+"a compressed entry causes the read stream to provide the raw compressed "
+"file data without going through a zlib inflate transform."
+msgstr ""
+
+#: ../../source/yauzl_README.md:253
+msgid ""
+"If the entry is encrypted (see `isEncrypted()`), clients may want to "
+"avoid calling `openReadStream()` on the entry entirely. Alternatively, "
+"clients may call `openReadStream()` for encrypted entries and specify "
+"`decrypt: false`. If the entry is also compressed, clients must *also* "
+"specify `decompress: false`. Specifying `decrypt: false` for an encrypted"
+" entry causes the read stream to provide the raw, still-encrypted file "
+"data. (This data includes the 12-byte header described in the spec.)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:259
+msgid ""
+"The `decrypt` option must be `null` (or omitted) for non-encrypted "
+"entries, and `false` for encrypted entries. Omitting the `decrypt` option"
+" (or specifying it as `null`) for an encrypted entry will result in the "
+"`callback` receiving an `err`. This default behavior is so that clients "
+"not accounting for encrypted files aren't surprised by bogus file data."
+msgstr ""
+
+#: ../../source/yauzl_README.md:264
+#, python-brace-format
+msgid ""
+"The `start` (inclusive) and `end` (exclusive) options are byte offsets "
+"into this entry's file data, and can be used to obtain part of an entry's"
+" file data rather than the whole thing. If either of these options are "
+"specified and non-`null`, then the above options must be used to obain "
+"the file's raw data. Speficying `{start: 0, end: entry.compressedSize}` "
+"will result in the complete file, which is effectively the default values"
+" for these options, but note that unlike omitting the options, when you "
+"specify `start` or `end` as any non-`null` value, the above requirement "
+"is still enforced that you must also pass the appropriate options to get "
+"the file's raw data."
+msgstr ""
+
+#: ../../source/yauzl_README.md:273
+msgid ""
+"It's possible for the `readStream` provided to the `callback` to emit "
+"errors for several reasons. For example, if zlib cannot decompress the "
+"data, the zlib error will be emitted from the `readStream`. Two more "
+"error cases (when `validateEntrySizes` is `true`) are if the decompressed"
+" data has too many or too few actual bytes compared to the reported byte "
+"count from the entry's `uncompressedSize` field. yauzl notices this false"
+" information and emits an error from the `readStream` after some number "
+"of bytes have already been piped through the stream."
+msgstr ""
+
+#: ../../source/yauzl_README.md:280
+msgid ""
+"This check allows clients to trust the `uncompressedSize` field in "
+"`Entry` objects. Guarding against [zip "
+"bomb](http://en.wikipedia.org/wiki/Zip_bomb) attacks can be accomplished "
+"by doing some heuristic checks on the size metadata and then watching out"
+" for the above errors. Such heuristics are outside the scope of this "
+"library, but enforcing the `uncompressedSize` is implemented here as a "
+"security feature."
+msgstr ""
+
+#: ../../source/yauzl_README.md:286
+msgid ""
+"It is possible to destroy the `readStream` before it has piped all of its"
+" data. To do this, call `readStream.destroy()`. You must `unpipe()` the "
+"`readStream` from any destination before calling `readStream.destroy()`. "
+"If this zipfile was created using `fromRandomAccessReader()`, the "
+"`RandomAccessReader` implementation must provide readable streams that "
+"implement a `.destroy()` method (see "
+"`randomAccessReader._readStreamForRange()`) in order for calls to "
+"`readStream.destroy()` to work in this context."
+msgstr ""
+
+#: ../../source/yauzl_README.md:293
+msgid "close()"
+msgstr ""
+
+#: ../../source/yauzl_README.md:295
+msgid ""
+"Causes all future calls to `openReadStream()` to fail, and closes the fd,"
+" if any, after all streams created by `openReadStream()` have emitted "
+"their `end` events."
+msgstr ""
+
+#: ../../source/yauzl_README.md:298
+msgid ""
+"If the `autoClose` option is set to `true` (see `open()`), this function "
+"will be called automatically effectively in response to this object's "
+"`end` event."
+msgstr ""
+
+#: ../../source/yauzl_README.md:301
+msgid ""
+"If the `lazyEntries` option is set to `false` (see `open()`) and this "
+"object's `end` event has not been emitted yet, this function causes "
+"undefined behavior. If the `lazyEntries` option is set to `true`, you can"
+" call this function instead of calling `readEntry()` to abort reading the"
+" entries of a zipfile."
+msgstr ""
+
+#: ../../source/yauzl_README.md:306
+msgid ""
+"It is safe to call this function multiple times; after the first call, "
+"successive calls have no effect. This includes situations where the "
+"`autoClose` option effectively calls this function for you."
+msgstr ""
+
+#: ../../source/yauzl_README.md:309
+msgid ""
+"If `close()` is never called, then the zipfile is \"kept open\". For "
+"zipfiles created with `fromFd()`, this will leave the `fd` open, which "
+"may be desirable. For zipfiles created with `open()`, this will leave the"
+" underlying `fd` open, thereby \"leaking\" it, which is probably "
+"undesirable. For zipfiles created with `fromRandomAccessReader()`, the "
+"reader's `close()` method will never be called. For zipfiles created with"
+" `fromBuffer()`, the `close()` function has no effect whether called or "
+"not."
+msgstr ""
+
+#: ../../source/yauzl_README.md:315
+msgid ""
+"Regardless of how this `ZipFile` was created, there are no resources "
+"other than those listed above that require cleanup from this function. "
+"This means it may be desirable to never call `close()` in some usecases."
+msgstr ""
+
+#: ../../source/yauzl_README.md:318
+msgid "isOpen"
+msgstr ""
+
+#: ../../source/yauzl_README.md:320
+msgid "`Boolean`. `true` until `close()` is called; then it's `false`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:322
+msgid "entryCount"
+msgstr ""
+
+#: ../../source/yauzl_README.md:324
+msgid "`Number`. Total number of central directory records."
+msgstr ""
+
+#: ../../source/yauzl_README.md:326
+msgid "comment"
+msgstr ""
+
+#: ../../source/yauzl_README.md:328
+msgid "`String`. Always decoded with `CP437` per the spec."
+msgstr ""
+
+#: ../../source/yauzl_README.md:330 ../../source/yauzl_README.md:394
+msgid ""
+"If `decodeStrings` is `false` (see `open()`), this field is the undecoded"
+" `Buffer` instead of a decoded `String`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:332
+msgid "Class: Entry"
+msgstr ""
+
+#: ../../source/yauzl_README.md:334
+msgid ""
+"Objects of this class represent Central Directory Records. Refer to the "
+"zipfile specification for more details about these fields."
+msgstr ""
+
+#: ../../source/yauzl_README.md:337
+msgid "These fields are of type `Number`:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:339
+msgid "`versionMadeBy`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:340
+msgid "`versionNeededToExtract`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:341
+msgid "`generalPurposeBitFlag`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:342
+msgid "`compressionMethod`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:343
+msgid "`lastModFileTime` (MS-DOS format, see `getLastModDateTime`)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:344
+msgid "`lastModFileDate` (MS-DOS format, see `getLastModDateTime`)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:345
+msgid "`crc32`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:346
+msgid "`compressedSize`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:347
+msgid "`uncompressedSize`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:348
+msgid "`fileNameLength` (bytes)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:349
+msgid "`extraFieldLength` (bytes)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:350
+msgid "`fileCommentLength` (bytes)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:351
+msgid "`internalFileAttributes`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:352
+msgid "`externalFileAttributes`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:353
+msgid "`relativeOffsetOfLocalHeader`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:355
+msgid "fileName"
+msgstr ""
+
+#: ../../source/yauzl_README.md:357
+msgid ""
+"`String`. Following the spec, the bytes for the file name are decoded "
+"with `UTF-8` if `generalPurposeBitFlag & 0x800`, otherwise with `CP437`. "
+"Alternatively, this field may be populated from the Info-ZIP Unicode Path"
+" Extra Field (see `extraFields`)."
+msgstr ""
+
+#: ../../source/yauzl_README.md:363
+msgid ""
+"This field is automatically validated by `validateFileName()` before "
+"yauzl emits an \"entry\" event. If this field would contain unsafe "
+"characters, yauzl emits an error instead of an entry."
+msgstr ""
+
+#: ../../source/yauzl_README.md:366
+msgid ""
+"If `decodeStrings` is `false` (see `open()`), this field is the undecoded"
+" `Buffer` instead of a decoded `String`. Therefore, "
+"`generalPurposeBitFlag` and any Info-ZIP Unicode Path Extra Field are "
+"ignored. Furthermore, no automatic file name validation is performed for "
+"this file name."
+msgstr ""
+
+#: ../../source/yauzl_README.md:370
+msgid "extraFields"
+msgstr ""
+
+#: ../../source/yauzl_README.md:372
+#, python-brace-format
+msgid ""
+"`Array` with each entry in the form `{id: id, data: data}`, where `id` is"
+" a `Number` and `data` is a `Buffer`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:375
+msgid ""
+"This library looks for and reads the ZIP64 Extended Information Extra "
+"Field (0x0001) in order to support ZIP64 format zip files."
+msgstr ""
+
+#: ../../source/yauzl_README.md:378
+msgid ""
+"This library also looks for and reads the Info-ZIP Unicode Path Extra "
+"Field (0x7075) in order to support some zipfiles that use it instead of "
+"General Purpose Bit 11 to convey `UTF-8` file names. When the field is "
+"identified and verified to be reliable (see the zipfile spec), the the "
+"file name in this field is stored in the `fileName` property, and the "
+"file name in the central directory record for this entry is ignored. Note"
+" that when `decodeStrings` is false, all Info-ZIP Unicode Path Extra "
+"Fields are ignored."
+msgstr ""
+
+#: ../../source/yauzl_README.md:386
+msgid ""
+"None of the other fields are considered significant by this library. "
+"Fields that this library reads are left unalterned in the `extraFields` "
+"array."
+msgstr ""
+
+#: ../../source/yauzl_README.md:389
+msgid "fileComment"
+msgstr ""
+
+#: ../../source/yauzl_README.md:391
+msgid ""
+"`String` decoded with the charset indicated by `generalPurposeBitFlag & "
+"0x800` as with the `fileName`. (The Info-ZIP Unicode Path Extra Field has"
+" no effect on the charset used for this field.)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:396
+msgid ""
+"Prior to yauzl version 2.7.0, this field was erroneously documented as "
+"`comment` instead of `fileComment`. For compatibility with any code that "
+"uses the field name `comment`, yauzl creates an alias field named "
+"`comment` which is identical to `fileComment`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:400
+msgid "getLastModDate()"
+msgstr ""
+
+#: ../../source/yauzl_README.md:402 ../../source/yauzl_README.md:423
+msgid "Effectively implemented as:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:408
+msgid "isEncrypted()"
+msgstr ""
+
+#: ../../source/yauzl_README.md:410
+msgid ""
+"Returns is this entry encrypted with \"Traditional Encryption\". "
+"Effectively implemented as:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:417 ../../source/yauzl_README.md:429
+msgid "See `openReadStream()` for the implications of this value."
+msgstr ""
+
+#: ../../source/yauzl_README.md:419
+msgid ""
+"Note that \"Strong Encryption\" is not supported, and will result in an "
+"`\"error\"` event emitted from the `ZipFile`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:421
+msgid "isCompressed()"
+msgstr ""
+
+#: ../../source/yauzl_README.md:431
+msgid "Class: RandomAccessReader"
+msgstr ""
+
+#: ../../source/yauzl_README.md:433
+msgid ""
+"This class is meant to be subclassed by clients and instantiated for the "
+"`fromRandomAccessReader()` function."
+msgstr ""
+
+#: ../../source/yauzl_README.md:435
+msgid "An example implementation can be found in `test/test.js`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:437
+msgid "randomAccessReader._readStreamForRange(start, end)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:439
+msgid "Subclasses *must* implement this method."
+msgstr ""
+
+#: ../../source/yauzl_README.md:441
+msgid ""
+"`start` and `end` are Numbers and indicate byte offsets from the start of"
+" the file. `end` is exclusive, so `_readStreamForRange(0x1000, 0x2000)` "
+"would indicate to read `0x1000` bytes. `end - start` will always be at "
+"least `1`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:445
+msgid ""
+"This method should return a readable stream which will be `pipe()`ed into"
+" another stream. It is expected that the readable stream will provide "
+"data in several chunks if necessary. If the readable stream provides too "
+"many or too few bytes, an error will be emitted. (Note that "
+"`validateEntrySizes` has no effect on this check, because this is a low-"
+"level API that should behave correctly regardless of the contents of the "
+"file.) Any errors emitted on the readable stream will be handled and re-"
+"emitted on the client-visible stream (returned from "
+"`zipfile.openReadStream()`) or provided as the `err` argument to the "
+"appropriate callback (for example, for `fromRandomAccessReader()`)."
+msgstr ""
+
+#: ../../source/yauzl_README.md:454
+msgid ""
+"The returned stream *must* implement a method `.destroy()` if you call "
+"`readStream.destroy()` on streams you get from `openReadStream()`. If you"
+" never call `readStream.destroy()`, then streams returned from this "
+"method do not need to implement a method `.destroy()`. `.destroy()` "
+"should abort any streaming that is in progress and clean up any "
+"associated resources. `.destroy()` will only be called after the stream "
+"has been `unpipe()`d from its destination."
+msgstr ""
+
+#: ../../source/yauzl_README.md:460
+msgid ""
+"Note that the stream returned from this method might not be the same "
+"object that is provided by `openReadStream()`. The stream returned from "
+"this method might be `pipe()`d through one or more filter streams (for "
+"example, a zlib inflate stream)."
+msgstr ""
+
+#: ../../source/yauzl_README.md:463
+msgid "randomAccessReader.read(buffer, offset, length, position, callback)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:465
+msgid ""
+"Subclasses may implement this method. The default implementation uses "
+"`createReadStream()` to fill the `buffer`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:468
+msgid "This method should behave like `fs.read()`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:470
+msgid "randomAccessReader.close(callback)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:472
+msgid ""
+"Subclasses may implement this method. The default implementation is "
+"effectively `setImmediate(callback);`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:475
+msgid "`callback` takes parameters `(err)`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:477
+msgid ""
+"This method is called once the all streams returned from "
+"`_readStreamForRange()` have ended, and no more `_readStreamForRange()` "
+"or `read()` requests will be issued to this object."
+msgstr ""
+
+#: ../../source/yauzl_README.md:480
+msgid "How to Avoid Crashing"
+msgstr ""
+
+#: ../../source/yauzl_README.md:482
+msgid ""
+"When a malformed zipfile is encountered, the default behavior is to crash"
+" (throw an exception). If you want to handle errors more gracefully than "
+"this, be sure to do the following:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:486
+msgid ""
+"Provide `callback` parameters where they are allowed, and check the `err`"
+" parameter."
+msgstr ""
+
+#: ../../source/yauzl_README.md:487
+msgid ""
+"Attach a listener for the `error` event on any `ZipFile` object you get "
+"from `open()`, `fromFd()`, `fromBuffer()`, or `fromRandomAccessReader()`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:488
+msgid ""
+"Attach a listener for the `error` event on any stream you get from "
+"`openReadStream()`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:490
+msgid ""
+"Minor version updates to yauzl will not add any additional requirements "
+"to this list."
+msgstr ""
+
+#: ../../source/yauzl_README.md:492
+msgid "Limitations"
+msgstr ""
+
+#: ../../source/yauzl_README.md:494
+msgid "No Streaming Unzip API"
+msgstr ""
+
+#: ../../source/yauzl_README.md:496
+msgid ""
+"Due to the design of the .zip file format, it's impossible to interpret a"
+" .zip file from start to finish (such as from a readable stream) without "
+"sacrificing correctness. The Central Directory, which is the authority on"
+" the contents of the .zip file, is at the end of a .zip file, not the "
+"beginning. A streaming API would need to either buffer the entire .zip "
+"file to get to the Central Directory before interpreting anything "
+"(defeating the purpose of a streaming interface), or rely on the Local "
+"File Headers which are interspersed through the .zip file. However, the "
+"Local File Headers are explicitly denounced in the spec as being "
+"unreliable copies of the Central Directory, so trusting them would be a "
+"violation of the spec."
+msgstr ""
+
+#: ../../source/yauzl_README.md:504
+msgid ""
+"Any library that offers a streaming unzip API must make one of the above "
+"two compromises, which makes the library either dishonest or "
+"nonconformant (usually the latter). This library insists on correctness "
+"and adherence to the spec, and so does not offer a streaming API."
+msgstr ""
+
+#: ../../source/yauzl_README.md:508
+msgid ""
+"Here is a way to create a spec-conformant .zip file using the `zip` "
+"command line program (Info-ZIP) available in most unix-like environments,"
+" that is (nearly) impossible to parse correctly with a streaming parser:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:516
+msgid ""
+"This .zip file contains a single file entry that uses General Purpose Bit"
+" 3, which means the Local File Header doesn't know the size of the file. "
+"Any streaming parser that encounters this situation will either "
+"immediately fail, or attempt to search for the Data Descriptor after the "
+"file's contents. The file's contents is a sequence of 16-bytes crafted to"
+" exactly mimic a valid Data Descriptor for an empty file, which will fool"
+" any parser that gets this far into thinking that the file is empty "
+"rather than containing 16-bytes. What follows the file's real contents is"
+" the file's real Data Descriptor, which will likely cause some kind of "
+"signature mismatch error for a streaming parser (if one hasn't occurred "
+"already)."
+msgstr ""
+
+#: ../../source/yauzl_README.md:525
+msgid ""
+"By using General Purpose Bit 3 (and compression method 0), it's possible "
+"to create arbitrarily ambiguous .zip files that distract parsers with "
+"file contents that contain apparently valid .zip file metadata."
+msgstr ""
+
+#: ../../source/yauzl_README.md:529
+msgid "Limitted ZIP64 Support"
+msgstr ""
+
+#: ../../source/yauzl_README.md:531
+msgid ""
+"For ZIP64, only zip files smaller than `8PiB` are supported, not the full"
+" `16EiB` range that a 64-bit integer should be able to index. This is due"
+" to the JavaScript Number type being an IEEE 754 double precision float."
+msgstr ""
+
+#: ../../source/yauzl_README.md:535
+msgid "The Node.js `fs` module probably has this same limitation."
+msgstr ""
+
+#: ../../source/yauzl_README.md:537
+msgid "ZIP64 Extensible Data Sector Is Ignored"
+msgstr ""
+
+#: ../../source/yauzl_README.md:539
+msgid ""
+"The spec does not allow zip file creators to put arbitrary data here, but"
+" rather reserves its use for PKWARE and mentions something about Z390. "
+"This doesn't seem useful to expose in this library, so it is ignored."
+msgstr ""
+
+#: ../../source/yauzl_README.md:543
+msgid "No Multi-Disk Archive Support"
+msgstr ""
+
+#: ../../source/yauzl_README.md:545
+msgid ""
+"This library does not support multi-disk zip files. The multi-disk fields"
+" in the zipfile spec were intended for a zip file to span multiple floppy"
+" disks, which probably never happens now. If the \"number of this disk\" "
+"field in the End of Central Directory Record is not `0`, the `open()`, "
+"`fromFd()`, `fromBuffer()`, or `fromRandomAccessReader()` `callback` will"
+" receive an `err`. By extension the following zip file fields are ignored"
+" by this library and not provided to clients:"
+msgstr ""
+
+#: ../../source/yauzl_README.md:552
+msgid "Disk where central directory starts"
+msgstr ""
+
+#: ../../source/yauzl_README.md:553
+msgid "Number of central directory records on this disk"
+msgstr ""
+
+#: ../../source/yauzl_README.md:554
+msgid "Disk number where file starts"
+msgstr ""
+
+#: ../../source/yauzl_README.md:556
+msgid "Limited Encryption Handling"
+msgstr ""
+
+#: ../../source/yauzl_README.md:558
+msgid ""
+"You can detect when a file entry is encrypted with \"Traditional "
+"Encryption\" via `isEncrypted()`, but yauzl will not help you decrypt it."
+" See `openReadStream()`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:562
+msgid ""
+"If a zip file contains file entries encrypted with \"Strong Encryption\","
+" yauzl emits an error."
+msgstr ""
+
+#: ../../source/yauzl_README.md:564
+msgid "If the central directory is encrypted or compressed, yauzl emits an error."
+msgstr ""
+
+#: ../../source/yauzl_README.md:566
+msgid "Local File Headers Are Ignored"
+msgstr ""
+
+#: ../../source/yauzl_README.md:568
+msgid ""
+"Many unzip libraries mistakenly read the Local File Header data in zip "
+"files. This data is officially defined to be redundant with the Central "
+"Directory information, and is not to be trusted. Aside from checking the "
+"signature, yauzl ignores the content of the Local File Header."
+msgstr ""
+
+#: ../../source/yauzl_README.md:573
+msgid "No CRC-32 Checking"
+msgstr ""
+
+#: ../../source/yauzl_README.md:575
+msgid ""
+"This library provides the `crc32` field of `Entry` objects read from the "
+"Central Directory. However, this field is not used for anything in this "
+"library."
+msgstr ""
+
+#: ../../source/yauzl_README.md:578
+msgid "versionNeededToExtract Is Ignored"
+msgstr ""
+
+#: ../../source/yauzl_README.md:580
+msgid ""
+"The field `versionNeededToExtract` is ignored, because this library "
+"doesn't support the complete zip file spec at any version,"
+msgstr ""
+
+#: ../../source/yauzl_README.md:583
+msgid "No Support For Obscure Compression Methods"
+msgstr ""
+
+#: ../../source/yauzl_README.md:585
+msgid ""
+"Regarding the `compressionMethod` field of `Entry` objects, only method "
+"`0` (stored with no compression) and method `8` (deflated) are supported."
+" Any of the other 15 official methods will cause the `openReadStream()` "
+"`callback` to receive an `err`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:590
+msgid "Data Descriptors Are Ignored"
+msgstr ""
+
+#: ../../source/yauzl_README.md:592
+msgid ""
+"There may or may not be Data Descriptor sections in a zip file. This "
+"library provides no support for finding or interpreting them."
+msgstr ""
+
+#: ../../source/yauzl_README.md:595
+msgid "Archive Extra Data Record Is Ignored"
+msgstr ""
+
+#: ../../source/yauzl_README.md:597
+msgid ""
+"There may or may not be an Archive Extra Data Record section in a zip "
+"file. This library provides no support for finding or interpreting it."
+msgstr ""
+
+#: ../../source/yauzl_README.md:600
+msgid "No Language Encoding Flag Support"
+msgstr ""
+
+#: ../../source/yauzl_README.md:602
+msgid ""
+"Zip files officially support charset encodings other than CP437 and "
+"UTF-8, but the zip file spec does not specify how it works. This library "
+"makes no attempt to interpret the Language Encoding Flag."
+msgstr ""
+
+#: ../../source/yauzl_README.md:606
+msgid "Change History"
+msgstr ""
+
+#: ../../source/yauzl_README.md:608
+msgid "2.10.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:609
+msgid ""
+"Added support for non-conformant zipfiles created by Microsoft, and added"
+" option `strictFileNames` to disable the workaround. [issue "
+"#66](https://github.com/thejoshwolfe/yauzl/issues/66), [issue "
+"#88](https://github.com/thejoshwolfe/yauzl/issues/88)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:610
+msgid "2.9.2"
+msgstr ""
+
+#: ../../source/yauzl_README.md:611
+msgid ""
+"Removed `tools/hexdump-zip.js` and `tools/hex2bin.js`. Those tools are "
+"now located here: [thejoshwolfe/hexdump-"
+"zip](https://github.com/thejoshwolfe/hexdump-zip) and "
+"[thejoshwolfe/hex2bin](https://github.com/thejoshwolfe/hex2bin)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:612
+msgid ""
+"Worked around performance problem with zlib when using `fromBuffer()` and"
+" `readStream.destroy()` for large compressed files. [issue "
+"#87](https://github.com/thejoshwolfe/yauzl/issues/87)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:613
+msgid "2.9.1"
+msgstr ""
+
+#: ../../source/yauzl_README.md:614
+msgid ""
+"Removed `console.log()` accidentally introduced in 2.9.0. [issue "
+"#64](https://github.com/thejoshwolfe/yauzl/issues/64)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:615
+msgid "2.9.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:616
+msgid ""
+"Throw an exception if `readEntry()` is called without `lazyEntries:true`."
+" Previously this caused undefined behavior. [issue "
+"#63](https://github.com/thejoshwolfe/yauzl/issues/63)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:617
+msgid "2.8.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:618
+msgid ""
+"Added option `validateEntrySizes`. [issue "
+"#53](https://github.com/thejoshwolfe/yauzl/issues/53)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:619
+msgid "Added `examples/promises.js`"
+msgstr ""
+
+#: ../../source/yauzl_README.md:620
+msgid ""
+"Added ability to read raw file data via `decompress` and `decrypt` "
+"options. [issue #11](https://github.com/thejoshwolfe/yauzl/issues/11), "
+"[issue #38](https://github.com/thejoshwolfe/yauzl/issues/38), [pull "
+"#39](https://github.com/thejoshwolfe/yauzl/pull/39)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:621
+msgid ""
+"Added `start` and `end` options to `openReadStream()`. [issue "
+"#38](https://github.com/thejoshwolfe/yauzl/issues/38)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:622
+msgid "2.7.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:623
+msgid ""
+"Added option `decodeStrings`. [issue "
+"#42](https://github.com/thejoshwolfe/yauzl/issues/42)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:624
+msgid ""
+"Fixed documentation for `entry.fileComment` and added compatibility "
+"alias. [issue #47](https://github.com/thejoshwolfe/yauzl/issues/47)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:625
+msgid "2.6.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:626
+msgid ""
+"Support Info-ZIP Unicode Path Extra Field, used by WinRAR for Chinese "
+"file names. [issue #33](https://github.com/thejoshwolfe/yauzl/issues/33)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:627
+msgid "2.5.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:628
+msgid ""
+"Ignore malformed Extra Field that is common in Android .apk files. [issue"
+" #31](https://github.com/thejoshwolfe/yauzl/issues/31)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:629
+msgid "2.4.3"
+msgstr ""
+
+#: ../../source/yauzl_README.md:630
+msgid ""
+"Fix crash when parsing malformed Extra Field buffers. [issue "
+"#31](https://github.com/thejoshwolfe/yauzl/issues/31)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:631
+msgid "2.4.2"
+msgstr ""
+
+#: ../../source/yauzl_README.md:632
+msgid "Remove .npmignore and .travis.yml from npm package."
+msgstr ""
+
+#: ../../source/yauzl_README.md:633
+msgid "2.4.1"
+msgstr ""
+
+#: ../../source/yauzl_README.md:634
+msgid "Fix error handling."
+msgstr ""
+
+#: ../../source/yauzl_README.md:635
+msgid "2.4.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:636
+msgid ""
+"Add ZIP64 support. [issue "
+"#6](https://github.com/thejoshwolfe/yauzl/issues/6)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:637
+msgid ""
+"Add `lazyEntries` option. [issue "
+"#22](https://github.com/thejoshwolfe/yauzl/issues/22)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:638
+msgid ""
+"Add `readStream.destroy()` method. [issue "
+"#26](https://github.com/thejoshwolfe/yauzl/issues/26)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:639
+msgid ""
+"Add `fromRandomAccessReader()`. [issue "
+"#14](https://github.com/thejoshwolfe/yauzl/issues/14)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:640
+msgid "Add `examples/unzip.js`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:641
+msgid "2.3.1"
+msgstr ""
+
+#: ../../source/yauzl_README.md:642
+msgid "Documentation updates."
+msgstr ""
+
+#: ../../source/yauzl_README.md:643
+msgid "2.3.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:644
+msgid ""
+"Check that `uncompressedSize` is correct, or else emit an error. [issue "
+"#13](https://github.com/thejoshwolfe/yauzl/issues/13)"
+msgstr ""
+
+#: ../../source/yauzl_README.md:645
+msgid "2.2.1"
+msgstr ""
+
+#: ../../source/yauzl_README.md:646 ../../source/yauzl_README.md:648
+msgid "Update dependencies."
+msgstr ""
+
+#: ../../source/yauzl_README.md:647
+msgid "2.2.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:649
+msgid "2.1.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:650
+msgid "Remove dependency on `iconv`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:651
+msgid "2.0.3"
+msgstr ""
+
+#: ../../source/yauzl_README.md:652
+msgid "Fix crash when trying to read a 0-byte file."
+msgstr ""
+
+#: ../../source/yauzl_README.md:653
+msgid "2.0.2"
+msgstr ""
+
+#: ../../source/yauzl_README.md:654
+msgid "Fix event behavior after errors."
+msgstr ""
+
+#: ../../source/yauzl_README.md:655
+msgid "2.0.1"
+msgstr ""
+
+#: ../../source/yauzl_README.md:656
+msgid "Fix bug with using `iconv`."
+msgstr ""
+
+#: ../../source/yauzl_README.md:657
+msgid "2.0.0"
+msgstr ""
+
+#: ../../source/yauzl_README.md:658
+msgid "Initial release."
+msgstr ""
+

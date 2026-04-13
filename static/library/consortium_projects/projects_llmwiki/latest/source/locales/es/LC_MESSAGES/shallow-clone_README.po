@@ -1,0 +1,347 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/shallow-clone_README.md:1
+msgid ""
+"shallow-clone [![Donate](https://img.shields.io/badge/Donate-PayPal-"
+"green.svg)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-"
+"xclick&hosted_button_id=W8YFZ425KND68) [![NPM "
+"version](https://img.shields.io/npm/v/shallow-"
+"clone.svg?style=flat)](https://www.npmjs.com/package/shallow-clone) "
+"[![NPM monthly downloads](https://img.shields.io/npm/dm/shallow-"
+"clone.svg?style=flat)](https://npmjs.org/package/shallow-clone) [![NPM "
+"total downloads](https://img.shields.io/npm/dt/shallow-"
+"clone.svg?style=flat)](https://npmjs.org/package/shallow-clone) [![Linux "
+"Build Status](https://img.shields.io/travis/jonschlinkert/shallow-"
+"clone.svg?style=flat&label=Travis)](https://travis-ci.org/jonschlinkert"
+"/shallow-clone)"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:1
+msgid "Donate"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:3
+msgid "Creates a shallow clone of any JavaScript value."
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:5
+msgid ""
+"Please consider following this project's author, [Jon "
+"Schlinkert](https://github.com/jonschlinkert), and consider starring the "
+"project to show your :heart: and support."
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:7
+msgid "Install"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:9
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:15
+msgid "Usage"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:21
+msgid "**Supports**"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:23
+msgid "array buffers"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:24
+msgid "arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:25
+msgid "buffers"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:26
+msgid "dates"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:27
+msgid "errors"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:28
+msgid "float32 arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:29
+msgid "float64 arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:30
+msgid "int16 arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:31
+msgid "int32 arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:32
+msgid "int8 arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:33
+msgid "maps"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:34
+msgid "objects"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:35
+msgid "primitives"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:36
+msgid "regular expressions"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:37
+msgid "sets"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:38
+msgid "symbols"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:39
+msgid "uint16 arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:40
+msgid "uint32 arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:41
+msgid "uint8 arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:42
+msgid "uint8clamped arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:44
+msgid "Arrays"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:46
+msgid ""
+"By default, only the array itself is cloned (shallow), use [clone-"
+"deep](https://github.com/jonschlinkert/clone-deep) if you also need the "
+"elements in the array to be cloned."
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:60
+msgid "Objects"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:62
+msgid ""
+"Only the object is shallow cloned, use [clone-"
+"deep](https://github.com/jonschlinkert/clone-deep) if you also need the "
+"values in the object to be cloned."
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:69
+msgid "RegExp"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:71
+msgid "Clones regular expressions and flags, and preserves the `.lastIndex`."
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:79
+msgid "Primitives"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:81
+msgid "Simply returns primitives unchanged."
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:88
+msgid "About"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:93
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:100
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:111
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:113
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:121
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:123
+msgid "You might also be interested in these projects:"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:125
+msgid ""
+"[assign-deep](https://www.npmjs.com/package/assign-deep): Deeply assign "
+"the values of all enumerable-own-properties and symbols from one or more "
+"source objects… [more](https://github.com/jonschlinkert/assign-deep) | "
+"[homepage](https://github.com/jonschlinkert/assign-deep \"Deeply assign "
+"the values of all enumerable-own-properties and symbols from one or more "
+"source objects to a target object. Returns the target object.\")"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:126
+msgid ""
+"[clone-deep](https://www.npmjs.com/package/clone-deep): Recursively "
+"(deep) clone JavaScript native types, like Object, Array, RegExp, Date as"
+" well as primitives. | [homepage](https://github.com/jonschlinkert/clone-"
+"deep \"Recursively (deep) clone JavaScript native types, like Object, "
+"Array, RegExp, Date as well as primitives.\")"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:127
+msgid ""
+"[is-plain-object](https://www.npmjs.com/package/is-plain-object): Returns"
+" true if an object was created by the `Object` constructor. | "
+"[homepage](https://github.com/jonschlinkert/is-plain-object \"Returns "
+"true if an object was created by the `Object` constructor.\")"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:128
+msgid ""
+"[kind-of](https://www.npmjs.com/package/kind-of): Get the native type of "
+"a value. | [homepage](https://github.com/jonschlinkert/kind-of \"Get the "
+"native type of a value.\")"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:130
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md
+msgid "**Commits**"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md
+msgid "**Contributor**"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md
+msgid "20"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md
+msgid "[jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md
+msgid "2"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md
+msgid "[doowb](https://github.com/doowb)"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md
+msgid "1"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md
+msgid "[jakub-g](https://github.com/jakub-g)"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:138
+msgid "Author"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:140
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:142
+msgid "[GitHub Profile](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:143
+msgid "[Twitter Profile](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:144
+msgid "[LinkedIn Profile](https://linkedin.com/in/jonschlinkert)"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:146
+msgid "License"
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:148
+msgid ""
+"Copyright © 2019, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/shallow-clone_README.md:153
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.8.0, on "
+"April 15, 2019._"
+msgstr ""
+

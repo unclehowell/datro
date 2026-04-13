@@ -1,0 +1,373 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_languages.md:1
+msgid "Whisper Language Support Guide"
+msgstr ""
+
+#: ../../source/references_languages.md:3
+msgid "Complete guide to Whisper's multilingual capabilities."
+msgstr ""
+
+#: ../../source/references_languages.md:5
+msgid "Supported languages (99 total)"
+msgstr ""
+
+#: ../../source/references_languages.md:7
+msgid "Top-tier support (WER < 10%)"
+msgstr ""
+
+#: ../../source/references_languages.md:9
+msgid "English (en)"
+msgstr ""
+
+#: ../../source/references_languages.md:10
+msgid "Spanish (es)"
+msgstr ""
+
+#: ../../source/references_languages.md:11
+msgid "French (fr)"
+msgstr ""
+
+#: ../../source/references_languages.md:12
+msgid "German (de)"
+msgstr ""
+
+#: ../../source/references_languages.md:13
+msgid "Italian (it)"
+msgstr ""
+
+#: ../../source/references_languages.md:14
+msgid "Portuguese (pt)"
+msgstr ""
+
+#: ../../source/references_languages.md:15
+msgid "Dutch (nl)"
+msgstr ""
+
+#: ../../source/references_languages.md:16
+msgid "Polish (pl)"
+msgstr ""
+
+#: ../../source/references_languages.md:17
+msgid "Russian (ru)"
+msgstr ""
+
+#: ../../source/references_languages.md:18
+msgid "Japanese (ja)"
+msgstr ""
+
+#: ../../source/references_languages.md:19
+msgid "Korean (ko)"
+msgstr ""
+
+#: ../../source/references_languages.md:20
+msgid "Chinese (zh)"
+msgstr ""
+
+#: ../../source/references_languages.md:22
+msgid "Good support (WER 10-20%)"
+msgstr ""
+
+#: ../../source/references_languages.md:24
+msgid "Arabic (ar)"
+msgstr ""
+
+#: ../../source/references_languages.md:25
+msgid "Turkish (tr)"
+msgstr ""
+
+#: ../../source/references_languages.md:26
+msgid "Vietnamese (vi)"
+msgstr ""
+
+#: ../../source/references_languages.md:27
+msgid "Swedish (sv)"
+msgstr ""
+
+#: ../../source/references_languages.md:28
+msgid "Finnish (fi)"
+msgstr ""
+
+#: ../../source/references_languages.md:29
+msgid "Czech (cs)"
+msgstr ""
+
+#: ../../source/references_languages.md:30
+msgid "Romanian (ro)"
+msgstr ""
+
+#: ../../source/references_languages.md:31
+msgid "Hungarian (hu)"
+msgstr ""
+
+#: ../../source/references_languages.md:32
+msgid "Danish (da)"
+msgstr ""
+
+#: ../../source/references_languages.md:33
+msgid "Norwegian (no)"
+msgstr ""
+
+#: ../../source/references_languages.md:34
+msgid "Thai (th)"
+msgstr ""
+
+#: ../../source/references_languages.md:35
+msgid "Hebrew (he)"
+msgstr ""
+
+#: ../../source/references_languages.md:36
+msgid "Greek (el)"
+msgstr ""
+
+#: ../../source/references_languages.md:37
+msgid "Indonesian (id)"
+msgstr ""
+
+#: ../../source/references_languages.md:38
+msgid "Malay (ms)"
+msgstr ""
+
+#: ../../source/references_languages.md:40
+msgid "Full list (99 languages)"
+msgstr ""
+
+#: ../../source/references_languages.md:42
+msgid ""
+"Afrikaans, Albanian, Amharic, Arabic, Armenian, Assamese, Azerbaijani, "
+"Bashkir, Basque, Belarusian, Bengali, Bosnian, Breton, Bulgarian, "
+"Burmese, Cantonese, Catalan, Chinese, Croatian, Czech, Danish, Dutch, "
+"English, Estonian, Faroese, Finnish, French, Galician, Georgian, German, "
+"Greek, Gujarati, Haitian Creole, Hausa, Hawaiian, Hebrew, Hindi, "
+"Hungarian, Icelandic, Indonesian, Italian, Japanese, Javanese, Kannada, "
+"Kazakh, Khmer, Korean, Lao, Latin, Latvian, Lingala, Lithuanian, "
+"Luxembourgish, Macedonian, Malagasy, Malay, Malayalam, Maltese, Maori, "
+"Marathi, Moldavian, Mongolian, Myanmar, Nepali, Norwegian, Nynorsk, "
+"Occitan, Pashto, Persian, Polish, Portuguese, Punjabi, Pushto, Romanian, "
+"Russian, Sanskrit, Serbian, Shona, Sindhi, Sinhala, Slovak, Slovenian, "
+"Somali, Spanish, Sundanese, Swahili, Swedish, Tagalog, Tajik, Tamil, "
+"Tatar, Telugu, Thai, Tibetan, Turkish, Turkmen, Ukrainian, Urdu, Uzbek, "
+"Vietnamese, Welsh, Yiddish, Yoruba"
+msgstr ""
+
+#: ../../source/references_languages.md:44
+msgid "Usage examples"
+msgstr ""
+
+#: ../../source/references_languages.md:46
+msgid "Auto-detect language"
+msgstr ""
+
+#: ../../source/references_languages.md:60
+msgid "Specify language (faster)"
+msgstr ""
+
+#: ../../source/references_languages.md:69
+msgid "Translation to English"
+msgstr ""
+
+#: ../../source/references_languages.md:82
+msgid "Language-specific tips"
+msgstr ""
+
+#: ../../source/references_languages.md:84
+#: ../../source/references_languages.md:146
+msgid "Chinese"
+msgstr ""
+
+#: ../../source/references_languages.md:97
+msgid "Japanese"
+msgstr ""
+
+#: ../../source/references_languages.md:108
+msgid "Arabic"
+msgstr ""
+
+#: ../../source/references_languages.md:120
+msgid "Model size recommendations"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "Language Tier"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "Recommended Model"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "WER"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "Top-tier (en, es, fr, de)"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "base/turbo"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "< 10%"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "Good (ar, tr, vi)"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "medium/large"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "10-20%"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "Lower-resource"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "large"
+msgstr ""
+
+#: ../../source/references_languages.md
+msgid "20-30%"
+msgstr ""
+
+#: ../../source/references_languages.md:128
+msgid "Performance by language"
+msgstr ""
+
+#: ../../source/references_languages.md:130
+msgid "English"
+msgstr ""
+
+#: ../../source/references_languages.md:132
+msgid "**tiny**: WER ~15%"
+msgstr ""
+
+#: ../../source/references_languages.md:133
+msgid "**base**: WER ~8%"
+msgstr ""
+
+#: ../../source/references_languages.md:134
+msgid "**small**: WER ~5%"
+msgstr ""
+
+#: ../../source/references_languages.md:135
+msgid "**medium**: WER ~4%"
+msgstr ""
+
+#: ../../source/references_languages.md:136
+msgid "**large**: WER ~3%"
+msgstr ""
+
+#: ../../source/references_languages.md:137
+msgid "**turbo**: WER ~3.5%"
+msgstr ""
+
+#: ../../source/references_languages.md:139
+msgid "Spanish"
+msgstr ""
+
+#: ../../source/references_languages.md:141
+msgid "**tiny**: WER ~20%"
+msgstr ""
+
+#: ../../source/references_languages.md:142
+msgid "**base**: WER ~12%"
+msgstr ""
+
+#: ../../source/references_languages.md:143
+msgid "**medium**: WER ~6%"
+msgstr ""
+
+#: ../../source/references_languages.md:144
+msgid "**large**: WER ~4%"
+msgstr ""
+
+#: ../../source/references_languages.md:148
+msgid "**small**: WER ~15%"
+msgstr ""
+
+#: ../../source/references_languages.md:149
+msgid "**medium**: WER ~8%"
+msgstr ""
+
+#: ../../source/references_languages.md:150
+msgid "**large**: WER ~5%"
+msgstr ""
+
+#: ../../source/references_languages.md:152
+msgid "Best practices"
+msgstr ""
+
+#: ../../source/references_languages.md:154
+msgid "**Use English-only models** - Better for small models (tiny/base)"
+msgstr ""
+
+#: ../../source/references_languages.md:155
+msgid "**Specify language** - Faster than auto-detect"
+msgstr ""
+
+#: ../../source/references_languages.md:156
+msgid "**Add initial prompt** - Improves accuracy for technical terms"
+msgstr ""
+
+#: ../../source/references_languages.md:157
+msgid "**Use larger models** - For low-resource languages"
+msgstr ""
+
+#: ../../source/references_languages.md:158
+msgid "**Test on sample** - Quality varies by accent/dialect"
+msgstr ""
+
+#: ../../source/references_languages.md:159
+msgid "**Consider audio quality** - Clear audio = better results"
+msgstr ""
+
+#: ../../source/references_languages.md:160
+msgid "**Check language codes** - Use ISO 639-1 codes (2 letters)"
+msgstr ""
+
+#: ../../source/references_languages.md:162
+msgid "Language detection"
+msgstr ""
+
+#: ../../source/references_languages.md:185
+msgid "Resources"
+msgstr ""
+
+#: ../../source/references_languages.md:187
+msgid "**Paper**: https://arxiv.org/abs/2212.04356"
+msgstr ""
+
+#: ../../source/references_languages.md:188
+msgid "**GitHub**: https://github.com/openai/whisper"
+msgstr ""
+
+#: ../../source/references_languages.md:189
+msgid "**Model Card**: https://github.com/openai/whisper/blob/main/model-card.md"
+msgstr ""
+

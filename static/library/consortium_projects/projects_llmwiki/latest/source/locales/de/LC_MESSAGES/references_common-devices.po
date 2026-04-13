@@ -1,0 +1,314 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/references_common-devices.md:1
+msgid "Common I2C/SPI Device Reference"
+msgstr ""
+
+#: ../../source/references_common-devices.md:3
+msgid "I2C Devices"
+msgstr ""
+
+#: ../../source/references_common-devices.md:5
+msgid "AHT20 — Temperature & Humidity"
+msgstr ""
+
+#: ../../source/references_common-devices.md:6
+msgid "**Address:** 0x38"
+msgstr ""
+
+#: ../../source/references_common-devices.md:7
+msgid "**Init:** Write `[0xBE, 0x08, 0x00]` then wait 10ms"
+msgstr ""
+
+#: ../../source/references_common-devices.md:8
+msgid "**Measure:** Write `[0xAC, 0x33, 0x00]`, wait 80ms, read 6 bytes"
+msgstr ""
+
+#: ../../source/references_common-devices.md:9
+msgid ""
+"**Parse:** Status=byte[0], "
+"Humidity=(byte[1]<<12|byte[2]<<4|byte[3]>>4)/2^20*100, "
+"Temp=(byte[3]&0x0F<<16|byte[4]<<8|byte[5])/2^20*200-50"
+msgstr ""
+
+#: ../../source/references_common-devices.md:10
+msgid ""
+"**Notes:** No register addressing — write command bytes directly (omit "
+"`register` param)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:12
+msgid "BME280 / BMP280 — Temperature, Humidity, Pressure"
+msgstr ""
+
+#: ../../source/references_common-devices.md:13
+msgid "**Address:** 0x76 or 0x77 (SDO pin selects)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:14
+msgid "**Chip ID register:** 0xD0 → BMP280=0x58, BME280=0x60"
+msgstr ""
+
+#: ../../source/references_common-devices.md:15
+msgid "**Data registers:** 0xF7-0xFE (pressure, temperature, humidity)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:16
+msgid ""
+"**Config:** Write 0xF2 (humidity oversampling), 0xF4 (temp/press "
+"oversampling + mode), 0xF5 (standby, filter)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:17
+msgid ""
+"**Forced measurement:** Write `[0x25]` to register 0xF4, wait 40ms, read "
+"8 bytes from 0xF7"
+msgstr ""
+
+#: ../../source/references_common-devices.md:18
+msgid ""
+"**Calibration:** Read 26 bytes from 0x88 and 7 bytes from 0xE1 for "
+"compensation formulas"
+msgstr ""
+
+#: ../../source/references_common-devices.md:19
+msgid "**Also available via SPI** (mode 0 or 3)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:21
+msgid "SSD1306 — 128x64 OLED Display"
+msgstr ""
+
+#: ../../source/references_common-devices.md:22
+msgid "**Address:** 0x3C (or 0x3D if SA0 high)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:23
+msgid "**Command prefix:** 0x00 (write to register 0x00)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:24
+msgid "**Data prefix:** 0x40 (write to register 0x40)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:25
+msgid ""
+"**Init sequence:** `[0xAE, 0xD5, 0x80, 0xA8, 0x3F, 0xD3, 0x00, 0x40, "
+"0x8D, 0x14, 0x20, 0x00, 0xA1, 0xC8, 0xDA, 0x12, 0x81, 0xCF, 0xD9, 0xF1, "
+"0xDB, 0x40, 0xA4, 0xA6, 0xAF]`"
+msgstr ""
+
+#: ../../source/references_common-devices.md:26
+msgid "**Display on:** 0xAF, **Display off:** 0xAE"
+msgstr ""
+
+#: ../../source/references_common-devices.md:27
+msgid "**Also available via SPI** (faster, recommended for animations)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:29
+msgid "MPU6050 — 6-axis Accelerometer + Gyroscope"
+msgstr ""
+
+#: ../../source/references_common-devices.md:30
+msgid "**Address:** 0x68 (or 0x69 if AD0 high)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:31
+msgid "**WHO_AM_I:** Register 0x75 → should return 0x68"
+msgstr ""
+
+#: ../../source/references_common-devices.md:32
+msgid "**Wake up:** Write `[0x00]` to register 0x6B (clear sleep bit)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:33
+msgid ""
+"**Read accel:** 6 bytes from register 0x3B (XH,XL,YH,YL,ZH,ZL) — signed "
+"16-bit, default ±2g"
+msgstr ""
+
+#: ../../source/references_common-devices.md:34
+msgid "**Read gyro:** 6 bytes from register 0x43 — signed 16-bit, default ±250°/s"
+msgstr ""
+
+#: ../../source/references_common-devices.md:35
+msgid "**Read temp:** 2 bytes from register 0x41 — Temp°C = value/340 + 36.53"
+msgstr ""
+
+#: ../../source/references_common-devices.md:37
+msgid "DS3231 — Real-Time Clock"
+msgstr ""
+
+#: ../../source/references_common-devices.md:38
+msgid "**Address:** 0x68"
+msgstr ""
+
+#: ../../source/references_common-devices.md:39
+msgid ""
+"**Read time:** 7 bytes from register 0x00 (seconds, minutes, hours, day, "
+"date, month, year) — BCD encoded"
+msgstr ""
+
+#: ../../source/references_common-devices.md:40
+msgid "**Set time:** Write 7 BCD bytes to register 0x00"
+msgstr ""
+
+#: ../../source/references_common-devices.md:41
+msgid "**Temperature:** 2 bytes from register 0x11 (signed, 0.25°C resolution)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:42
+msgid "**Status:** Register 0x0F — bit 2 = busy, bit 0 = alarm 1 flag"
+msgstr ""
+
+#: ../../source/references_common-devices.md:44
+msgid "INA219 — Current & Power Monitor"
+msgstr ""
+
+#: ../../source/references_common-devices.md:45
+msgid "**Address:** 0x40-0x4F (A0,A1 pin selectable)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:46
+msgid "**Config:** Register 0x00 — set voltage range, gain, ADC resolution"
+msgstr ""
+
+#: ../../source/references_common-devices.md:47
+msgid "**Shunt voltage:** Register 0x01 (signed 16-bit, LSB=10µV)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:48
+msgid "**Bus voltage:** Register 0x02 (bits 15:3, LSB=4mV)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:49
+msgid "**Power:** Register 0x03 (after calibration)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:50
+msgid "**Current:** Register 0x04 (after calibration)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:51
+msgid "**Calibration:** Register 0x05 — set based on shunt resistor value"
+msgstr ""
+
+#: ../../source/references_common-devices.md:53
+msgid "PCA9685 — 16-Channel PWM / Servo Controller"
+msgstr ""
+
+#: ../../source/references_common-devices.md:54
+msgid "**Address:** 0x40-0x7F (A0-A5 selectable, default 0x40)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:55
+msgid "**Mode 1:** Register 0x00 — bit 4=sleep, bit 5=auto-increment"
+msgstr ""
+
+#: ../../source/references_common-devices.md:56
+msgid ""
+"**Set PWM freq:** Sleep → write prescale to 0xFE → wake. Prescale = "
+"round(25MHz / (4096 × freq)) - 1"
+msgstr ""
+
+#: ../../source/references_common-devices.md:57
+msgid ""
+"**Channel N on/off:** Registers 0x06+4*N to 0x09+4*N (ON_L, ON_H, OFF_L, "
+"OFF_H)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:58
+msgid ""
+"**Servo 0°-180°:** ON=0, OFF=150-600 (at 50Hz). Typical: 0°=150, 90°=375,"
+" 180°=600"
+msgstr ""
+
+#: ../../source/references_common-devices.md:60
+msgid "AT24C256 — 256Kbit EEPROM"
+msgstr ""
+
+#: ../../source/references_common-devices.md:61
+msgid "**Address:** 0x50-0x57 (A0-A2 selectable)"
+msgstr ""
+
+#: ../../source/references_common-devices.md:62
+msgid "**Read:** Write 2-byte address (high, low), then read N bytes"
+msgstr ""
+
+#: ../../source/references_common-devices.md:63
+msgid ""
+"**Write:** Write 2-byte address + up to 64 bytes (page write), wait 5ms "
+"for write cycle"
+msgstr ""
+
+#: ../../source/references_common-devices.md:64
+msgid "**Page size:** 64 bytes. Writes that cross page boundary wrap around."
+msgstr ""
+
+#: ../../source/references_common-devices.md:66
+msgid "SPI Devices"
+msgstr ""
+
+#: ../../source/references_common-devices.md:68
+msgid "MCP3008 — 8-Channel 10-bit ADC"
+msgstr ""
+
+#: ../../source/references_common-devices.md:69
+msgid "**Interface:** SPI mode 0, max 3.6 MHz @ 5V"
+msgstr ""
+
+#: ../../source/references_common-devices.md:70
+msgid ""
+"**Read channel N:** Send `[0x01, (0x80 | N<<4), 0x00]`, result in last 10"
+" bits of bytes 1-2"
+msgstr ""
+
+#: ../../source/references_common-devices.md:71
+msgid "**Formula:** value = ((byte[1] & 0x03) << 8) | byte[2]"
+msgstr ""
+
+#: ../../source/references_common-devices.md:72
+msgid "**Voltage:** value × Vref / 1024"
+msgstr ""
+
+#: ../../source/references_common-devices.md:74
+msgid "W25Q128 — 128Mbit SPI Flash"
+msgstr ""
+
+#: ../../source/references_common-devices.md:75
+msgid "**Interface:** SPI mode 0 or 3, up to 104 MHz"
+msgstr ""
+
+#: ../../source/references_common-devices.md:76
+msgid "**Read ID:** Send `[0x9F, 0, 0, 0]` → manufacturer + device ID"
+msgstr ""
+
+#: ../../source/references_common-devices.md:77
+msgid "**Read data:** Send `[0x03, addr_high, addr_mid, addr_low]` + N zero bytes"
+msgstr ""
+
+#: ../../source/references_common-devices.md:78
+msgid "**Status:** Send `[0x05, 0]` → bit 0 = BUSY"
+msgstr ""
+

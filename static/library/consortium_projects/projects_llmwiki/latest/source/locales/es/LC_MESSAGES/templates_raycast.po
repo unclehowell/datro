@@ -1,0 +1,1439 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_raycast.md:1
+msgid "Design System: Raycast"
+msgstr ""
+
+#: ../../source/templates_raycast.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_raycast.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_raycast.md:7
+msgid "**Primary:** `Inter` | **Mono:** `Geist Mono`"
+msgstr ""
+
+#: ../../source/templates_raycast.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_raycast.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'Geist Mono', ui-monospace, SFMono-"
+"Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', "
+"monospace;`"
+msgstr ""
+
+#: ../../source/templates_raycast.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_raycast.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_raycast.md:18
+msgid ""
+"Raycast's marketing site feels like the dark interior of a precision "
+"instrument — a Swiss watch case carved from obsidian. The background "
+"isn't just dark, it's an almost-black blue-tint (`#07080a`) that creates "
+"a sense of being inside a macOS native application rather than a website."
+" Every surface, every border, every shadow is calibrated to evoke the "
+"feeling of a high-performance desktop utility: fast, minimal, "
+"trustworthy."
+msgstr ""
+
+#: ../../source/templates_raycast.md:20
+msgid ""
+"The signature move is the layered shadow system borrowed from macOS "
+"window chrome: multi-layer box-shadows with inset highlights that "
+"simulate physical depth, as if cards and buttons are actual pressed or "
+"raised glass elements on a dark desk. Combined with Raycast Red "
+"(`#FF6363`) — deployed almost exclusively in the hero's iconic diagonal "
+"stripe pattern — the palette creates a brand that reads as \"powerful "
+"tool with personality.\" The red doesn't dominate; it punctuates."
+msgstr ""
+
+#: ../../source/templates_raycast.md:22
+msgid ""
+"Inter is used everywhere — headings, body, buttons, captions — with "
+"extensive OpenType features (`calt`, `kern`, `liga`, `ss03`) creating a "
+"consistent, readable typographic voice. The positive letter-spacing "
+"(0.2px–0.4px on body text) is unusual for a dark UI and gives the text an"
+" airy, breathable quality that counterbalances the dense, dark surfaces. "
+"GeistMono appears for code elements, reinforcing the developer-tool "
+"identity."
+msgstr ""
+
+#: ../../source/templates_raycast.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_raycast.md:25
+msgid ""
+"Near-black blue-tinted background (`#07080a`) — not pure black, subtly "
+"blue-shifted"
+msgstr ""
+
+#: ../../source/templates_raycast.md:26
+msgid ""
+"macOS-native shadow system with multi-layer inset highlights simulating "
+"physical depth"
+msgstr ""
+
+#: ../../source/templates_raycast.md:27
+msgid ""
+"Raycast Red (`#FF6363`) as a punctuation color — hero stripes, not "
+"pervasive"
+msgstr ""
+
+#: ../../source/templates_raycast.md:28
+msgid ""
+"Inter with positive letter-spacing (0.2px) for an airy, readable dark-"
+"mode experience"
+msgstr ""
+
+#: ../../source/templates_raycast.md:29
+msgid "Radix UI component primitives powering the interaction layer"
+msgstr ""
+
+#: ../../source/templates_raycast.md:30
+msgid ""
+"Subtle rgba white borders (0.06–0.1 opacity) for containment on dark "
+"surfaces"
+msgstr ""
+
+#: ../../source/templates_raycast.md:31
+msgid "Keyboard shortcut styling with gradient key caps and heavy shadows"
+msgstr ""
+
+#: ../../source/templates_raycast.md:33
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_raycast.md:35
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_raycast.md:36
+msgid ""
+"**Near-Black Blue** (`#07080a`): Primary page background — the "
+"foundational void with a subtle blue-cold undertone"
+msgstr ""
+
+#: ../../source/templates_raycast.md:37
+msgid "**Pure White** (`#ffffff`): Primary heading text, high-emphasis elements"
+msgstr ""
+
+#: ../../source/templates_raycast.md:38
+msgid ""
+"**Raycast Red** (`#FF6363` / `hsl(0, 100%, 69%)`): Brand accent — hero "
+"stripes, danger states, critical highlights"
+msgstr ""
+
+#: ../../source/templates_raycast.md:40
+msgid "Secondary & Accent"
+msgstr ""
+
+#: ../../source/templates_raycast.md:41
+msgid ""
+"**Raycast Blue** (`hsl(202, 100%, 67%)` / ~`#55b3ff`): Interactive accent"
+" — links, focus states, selected items"
+msgstr ""
+
+#: ../../source/templates_raycast.md:42
+msgid ""
+"**Raycast Green** (`hsl(151, 59%, 59%)` / ~`#5fc992`): Success states, "
+"positive indicators"
+msgstr ""
+
+#: ../../source/templates_raycast.md:43
+msgid ""
+"**Raycast Yellow** (`hsl(43, 100%, 60%)` / ~`#ffbc33`): Warning accents, "
+"highlights"
+msgstr ""
+
+#: ../../source/templates_raycast.md:44
+msgid ""
+"**Blue Transparent** (`hsla(202, 100%, 67%, 0.15)`): Blue tint overlay "
+"for interactive surfaces"
+msgstr ""
+
+#: ../../source/templates_raycast.md:45
+msgid ""
+"**Red Transparent** (`hsla(0, 100%, 69%, 0.15)`): Red tint overlay for "
+"danger/error surfaces"
+msgstr ""
+
+#: ../../source/templates_raycast.md:47
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_raycast.md:48
+msgid "**Deep Background** (`#07080a`): Page canvas, the darkest surface"
+msgstr ""
+
+#: ../../source/templates_raycast.md:49
+msgid "**Surface 100** (`#101111`): Elevated surface, card backgrounds"
+msgstr ""
+
+#: ../../source/templates_raycast.md:50
+msgid "**Key Start** (`#121212`): Keyboard key gradient start"
+msgstr ""
+
+#: ../../source/templates_raycast.md:51
+msgid "**Key End** (`#0d0d0d`): Keyboard key gradient end"
+msgstr ""
+
+#: ../../source/templates_raycast.md:52
+msgid ""
+"**Card Surface** (`#1b1c1e`): Badge backgrounds, tag fills, elevated "
+"containers"
+msgstr ""
+
+#: ../../source/templates_raycast.md:53
+msgid ""
+"**Button Foreground** (`#18191a`): Dark surface for button text on light "
+"backgrounds"
+msgstr ""
+
+#: ../../source/templates_raycast.md:55
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_raycast.md:56
+msgid ""
+"**Near White** (`#f9f9f9` / `hsl(240, 11%, 96%)`): Primary body text, "
+"high-emphasis content"
+msgstr ""
+
+#: ../../source/templates_raycast.md:57
+msgid "**Light Gray** (`#cecece` / `#cdcdce`): Secondary body text, descriptions"
+msgstr ""
+
+#: ../../source/templates_raycast.md:58
+msgid "**Silver** (`#c0c0c0`): Tertiary text, subdued labels"
+msgstr ""
+
+#: ../../source/templates_raycast.md:59
+msgid "**Medium Gray** (`#9c9c9d`): Link default color, secondary navigation"
+msgstr ""
+
+#: ../../source/templates_raycast.md:60
+msgid "**Dim Gray** (`#6a6b6c`): Disabled text, low-emphasis labels"
+msgstr ""
+
+#: ../../source/templates_raycast.md:61
+msgid "**Dark Gray** (`#434345`): Muted borders, inactive navigation links"
+msgstr ""
+
+#: ../../source/templates_raycast.md:62
+msgid ""
+"**Border** (`hsl(195, 5%, 15%)` / ~`#252829`): Standard border color for "
+"cards and dividers"
+msgstr ""
+
+#: ../../source/templates_raycast.md:63
+msgid "**Dark Border** (`#2f3031`): Separator lines, table borders"
+msgstr ""
+
+#: ../../source/templates_raycast.md:65
+msgid "Semantic & Accent"
+msgstr ""
+
+#: ../../source/templates_raycast.md:66
+msgid "**Error Red** (`hsl(0, 100%, 69%)`): Error states, destructive actions"
+msgstr ""
+
+#: ../../source/templates_raycast.md:67
+msgid ""
+"**Success Green** (`hsl(151, 59%, 59%)`): Success confirmations, positive"
+" states"
+msgstr ""
+
+#: ../../source/templates_raycast.md:68
+msgid ""
+"**Warning Yellow** (`hsl(43, 100%, 60%)`): Warnings, attention-needed "
+"states"
+msgstr ""
+
+#: ../../source/templates_raycast.md:69
+msgid "**Info Blue** (`hsl(202, 100%, 67%)`): Informational highlights, links"
+msgstr ""
+
+#: ../../source/templates_raycast.md:71
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_raycast.md:72
+msgid ""
+"**Keyboard Key Gradient**: Linear gradient from `#121212` (top) to "
+"`#0d0d0d` (bottom) — simulates physical key depth"
+msgstr ""
+
+#: ../../source/templates_raycast.md:73
+msgid ""
+"**Warm Glow**: `rgba(215, 201, 175, 0.05)` radial spread — subtle warm "
+"ambient glow behind featured elements"
+msgstr ""
+
+#: ../../source/templates_raycast.md:75
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_raycast.md:77
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_raycast.md:78
+msgid ""
+"**Primary**: `Inter` — humanist sans-serif, used everywhere. Fallbacks: "
+"`Inter Fallback`, system sans-serif"
+msgstr ""
+
+#: ../../source/templates_raycast.md:79
+msgid ""
+"**System**: `SF Pro Text` — Apple system font for select macOS-native UI "
+"elements. Fallbacks: `SF Pro Icons`, `Inter`, `Inter Fallback`"
+msgstr ""
+
+#: ../../source/templates_raycast.md:80
+msgid ""
+"**Monospace**: `GeistMono` — Vercel's monospace font for code elements. "
+"Fallbacks: `ui-monospace`, `SFMono-Regular`, `Roboto Mono`, `Menlo`, "
+"`Monaco`"
+msgstr ""
+
+#: ../../source/templates_raycast.md:81
+msgid ""
+"**OpenType features**: `calt`, `kern`, `liga`, `ss03` enabled globally; "
+"`ss02`, `ss08` on display text; `liga` disabled (`\"liga\" 0`) on hero "
+"headings"
+msgstr ""
+
+#: ../../source/templates_raycast.md:83
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "64px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "1.10"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "0px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "OpenType: liga 0, ss02, ss08"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Section Display"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "56px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "1.17"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "0.2px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "OpenType: calt, kern, liga, ss03"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "24px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Card Heading"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "22px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "1.15"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "20px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "1.60"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Relaxed line-height for readability"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "18px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "16px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Primary body text, relaxed rhythm"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Body Tight"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "0.1px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "UI labels, compact contexts"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "0.3px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Semibold, slightly wider tracking"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Nav Link"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Links in navigation"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "14px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "1.14"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Small labels, metadata"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Caption Bold"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Emphasized captions"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Small"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "12px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Badges, tags, micro-labels"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Small Link"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "0.4px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Footer links, fine print"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Code"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "14px (GeistMono)"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Code blocks, technical content"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Code Small"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "12px (GeistMono)"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Inline code, terminal output"
+msgstr ""
+
+#: ../../source/templates_raycast.md:104
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_raycast.md:105
+msgid ""
+"**Positive tracking on dark**: Unlike most dark UIs that use tight or "
+"neutral letter-spacing, Raycast applies +0.2px to +0.4px — creating an "
+"airy, readable feel that compensates for the dark background"
+msgstr ""
+
+#: ../../source/templates_raycast.md:106
+msgid ""
+"**Weight 500 as baseline**: Most body text uses medium weight (500), not "
+"regular (400) — subtle extra heft improves legibility on dark surfaces"
+msgstr ""
+
+#: ../../source/templates_raycast.md:107
+msgid ""
+"**Display restraint**: Hero text at 64px/600 is confident but not "
+"oversized — Raycast avoids typographic spectacle in favor of functional "
+"elegance"
+msgstr ""
+
+#: ../../source/templates_raycast.md:108
+msgid ""
+"**OpenType everywhere**: `ss03` (stylistic set 3) is enabled globally "
+"across Inter, giving the typeface a slightly more geometric, tool-like "
+"quality"
+msgstr ""
+
+#: ../../source/templates_raycast.md:110
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_raycast.md:112
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_raycast.md:113
+msgid ""
+"**Primary Pill**: Transparent background, white text, pill shape (86px "
+"radius), multi-layer inset shadow (`rgba(255, 255, 255, 0.1) 0px 1px 0px "
+"0px inset`). Hover: opacity 0.6"
+msgstr ""
+
+#: ../../source/templates_raycast.md:114
+msgid ""
+"**Secondary Button**: Transparent background, white text, 6px radius, "
+"`1px solid rgba(255, 255, 255, 0.1)` border, subtle drop shadow (`rgba(0,"
+" 0, 0, 0.03) 0px 7px 3px`). Hover: opacity 0.6"
+msgstr ""
+
+#: ../../source/templates_raycast.md:115
+msgid ""
+"**Ghost Button**: No background or border, gray text (`#6a6b6c`), 86px "
+"radius, same inset shadow. Hover: opacity 0.6, text brightens to white"
+msgstr ""
+
+#: ../../source/templates_raycast.md:116
+msgid ""
+"**CTA (Download)**: Semi-transparent white background (`hsla(0, 0%, 100%,"
+" 0.815)`), dark text (`#18191a`), pill shape. Hover: full white "
+"background (`hsl(0, 0%, 100%)`)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:117
+msgid ""
+"**Transition**: All buttons use opacity transition for hover rather than "
+"background-color change — a signature Raycast interaction pattern"
+msgstr ""
+
+#: ../../source/templates_raycast.md:119
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_raycast.md:120
+msgid ""
+"**Standard Card**: `#101111` surface, `1px solid rgba(255, 255, 255, "
+"0.06)` border, 12px–16px border-radius"
+msgstr ""
+
+#: ../../source/templates_raycast.md:121
+msgid ""
+"**Elevated Card**: Ring shadow `rgb(27, 28, 30) 0px 0px 0px 1px` outer + "
+"`rgb(7, 8, 10) 0px 0px 0px 1px inset` inner — creates a double-ring "
+"containment"
+msgstr ""
+
+#: ../../source/templates_raycast.md:122
+msgid ""
+"**Feature Card**: 16px–20px border-radius, subtle warm glow (`rgba(215, "
+"201, 175, 0.05) 0px 0px 20px 5px`) behind hero elements"
+msgstr ""
+
+#: ../../source/templates_raycast.md:123
+msgid ""
+"**Hover**: Cards brighten slightly via border opacity increase or subtle "
+"shadow enhancement"
+msgstr ""
+
+#: ../../source/templates_raycast.md:125
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_raycast.md:126
+msgid ""
+"Dark input fields with `#07080a` background, `1px solid rgba(255, 255, "
+"255, 0.08)` border, 8px border-radius"
+msgstr ""
+
+#: ../../source/templates_raycast.md:127
+msgid ""
+"Focus state: Border brightens, blue glow (`hsla(202, 100%, 67%, 0.15)`) "
+"ring appears"
+msgstr ""
+
+#: ../../source/templates_raycast.md:128
+msgid "Text: `#f9f9f9` input color, `#6a6b6c` placeholder"
+msgstr ""
+
+#: ../../source/templates_raycast.md:129
+msgid "Labels: `#9c9c9d` at 14px weight 500"
+msgstr ""
+
+#: ../../source/templates_raycast.md:131
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_raycast.md:132
+msgid ""
+"**Top nav**: Dark background blending with page, white text links at 16px"
+" weight 500"
+msgstr ""
+
+#: ../../source/templates_raycast.md:133
+msgid ""
+"**Nav links**: Gray text (`#9c9c9d`) → white on hover, underline "
+"decoration on hover"
+msgstr ""
+
+#: ../../source/templates_raycast.md:134
+msgid "**CTA button**: Semi-transparent white pill at nav end"
+msgstr ""
+
+#: ../../source/templates_raycast.md:135
+msgid "**Mobile**: Collapses to hamburger, maintains dark theme"
+msgstr ""
+
+#: ../../source/templates_raycast.md:136
+msgid "**Sticky**: Nav fixed at top with subtle border separator"
+msgstr ""
+
+#: ../../source/templates_raycast.md:138
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_raycast.md:139
+msgid ""
+"**Product screenshots**: macOS window chrome style — rounded corners "
+"(12px), deep shadows simulating floating windows"
+msgstr ""
+
+#: ../../source/templates_raycast.md:140
+msgid ""
+"**Full-bleed sections**: Dark screenshots blend seamlessly into the dark "
+"background"
+msgstr ""
+
+#: ../../source/templates_raycast.md:141
+msgid ""
+"**Hero illustration**: Diagonal stripe pattern in Raycast Red — abstract,"
+" geometric, brand-defining"
+msgstr ""
+
+#: ../../source/templates_raycast.md:142
+msgid ""
+"**App UI embeds**: Showing actual Raycast command palette and extensions "
+"— product as content"
+msgstr ""
+
+#: ../../source/templates_raycast.md:144
+msgid "Keyboard Shortcut Keys"
+msgstr ""
+
+#: ../../source/templates_raycast.md:145
+msgid ""
+"**Key cap styling**: Gradient background (`#121212` → `#0d0d0d`), heavy "
+"multi-layer shadow (`rgba(0, 0, 0, 0.4) 0px 1.5px 0.5px 2.5px` + inset "
+"shadows), creating realistic physical key appearance"
+msgstr ""
+
+#: ../../source/templates_raycast.md:146
+msgid "Border-radius: 4px–6px for individual keys"
+msgstr ""
+
+#: ../../source/templates_raycast.md:148
+msgid "Badges & Tags"
+msgstr ""
+
+#: ../../source/templates_raycast.md:149
+msgid ""
+"**Neutral badge**: `#1b1c1e` background, white text, 6px radius, 14px "
+"font at weight 500, `0px 6px` padding"
+msgstr ""
+
+#: ../../source/templates_raycast.md:150
+msgid "Compact, pill-like treatment for categorization"
+msgstr ""
+
+#: ../../source/templates_raycast.md:152
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_raycast.md:154
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_raycast.md:155
+msgid "**Base unit**: 8px"
+msgstr ""
+
+#: ../../source/templates_raycast.md:156
+msgid ""
+"**Scale**: 1px, 2px, 3px, 4px, 8px, 10px, 12px, 16px, 20px, 24px, 32px, "
+"40px"
+msgstr ""
+
+#: ../../source/templates_raycast.md:157
+msgid "**Section padding**: 80px–120px vertical between major sections"
+msgstr ""
+
+#: ../../source/templates_raycast.md:158
+msgid "**Card padding**: 16px–32px internal spacing"
+msgstr ""
+
+#: ../../source/templates_raycast.md:159
+msgid "**Component gaps**: 8px–16px between related elements"
+msgstr ""
+
+#: ../../source/templates_raycast.md:161
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_raycast.md:162
+msgid "**Max width**: ~1200px container (breakpoint at 1204px), centered"
+msgstr ""
+
+#: ../../source/templates_raycast.md:163
+msgid ""
+"**Column patterns**: Single-column hero, 2–3 column feature grids, full-"
+"width showcase sections"
+msgstr ""
+
+#: ../../source/templates_raycast.md:164
+msgid "**App showcase**: Product UI presented in centered window frames"
+msgstr ""
+
+#: ../../source/templates_raycast.md:166
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_raycast.md:167
+msgid ""
+"**Dramatic negative space**: Sections float in vast dark void, creating "
+"cinematic pacing between features"
+msgstr ""
+
+#: ../../source/templates_raycast.md:168
+msgid ""
+"**Dense product, sparse marketing**: The product UI screenshots are "
+"information-dense, but the surrounding marketing copy uses minimal text "
+"with generous spacing"
+msgstr ""
+
+#: ../../source/templates_raycast.md:169
+msgid ""
+"**Vertical rhythm**: Consistent 24px–32px gaps between elements within "
+"sections"
+msgstr ""
+
+#: ../../source/templates_raycast.md:171
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_raycast.md:172
+msgid "**2px–3px**: Micro-elements, code spans, tiny indicators"
+msgstr ""
+
+#: ../../source/templates_raycast.md:173
+msgid "**4px–5px**: Keyboard keys, small interactive elements"
+msgstr ""
+
+#: ../../source/templates_raycast.md:174
+msgid "**6px**: Buttons, badges, tags — the workhorse radius"
+msgstr ""
+
+#: ../../source/templates_raycast.md:175
+msgid "**8px**: Input fields, inline components"
+msgstr ""
+
+#: ../../source/templates_raycast.md:176
+msgid "**9px–11px**: Images, medium containers"
+msgstr ""
+
+#: ../../source/templates_raycast.md:177
+msgid "**12px**: Standard cards, product screenshots"
+msgstr ""
+
+#: ../../source/templates_raycast.md:178
+msgid "**16px**: Large cards, feature sections"
+msgstr ""
+
+#: ../../source/templates_raycast.md:179
+msgid "**20px**: Hero cards, prominent containers"
+msgstr ""
+
+#: ../../source/templates_raycast.md:180
+msgid "**86px+**: Pill buttons, nav CTAs — full pill shape"
+msgstr ""
+
+#: ../../source/templates_raycast.md:182
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Level 0 (Void)"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "No shadow, `#07080a` surface"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Page background"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Level 1 (Subtle)"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "`rgba(0, 0, 0, 0.28) 0px 1.189px 2.377px`"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Minimal lift, inline elements"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Level 2 (Ring)"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid ""
+"`rgb(27, 28, 30) 0px 0px 0px 1px` outer + `rgb(7, 8, 10) 0px 0px 0px 1px "
+"inset` inner"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Card containment, double-ring technique"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Level 3 (Button)"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid ""
+"`rgba(255, 255, 255, 0.05) 0px 1px 0px 0px inset` + `rgba(255, 255, 255, "
+"0.25) 0px 0px 0px 1px` + `rgba(0, 0, 0, 0.2) 0px -1px 0px 0px inset`"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "macOS-native button press — white highlight top, dark inset bottom"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Level 4 (Key)"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "5-layer shadow stack with inset press effects"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Keyboard shortcut key caps — physical 3D appearance"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Level 5 (Floating)"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid ""
+"`rgba(0, 0, 0, 0.5) 0px 0px 0px 2px` + `rgba(255, 255, 255, 0.19) 0px 0px"
+" 14px` + insets"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Command palette, floating panels — heavy depth with glow"
+msgstr ""
+
+#: ../../source/templates_raycast.md:193
+msgid "Shadow Philosophy"
+msgstr ""
+
+#: ../../source/templates_raycast.md:194
+msgid ""
+"Raycast's shadow system is the most macOS-native on the web. Multi-layer "
+"shadows combine:"
+msgstr ""
+
+#: ../../source/templates_raycast.md:195
+msgid "**Outer rings** for containment (replacing traditional borders)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:196
+msgid ""
+"**Inset top highlights** (`rgba(255, 255, 255, 0.05–0.25)`) simulating "
+"light source from above"
+msgstr ""
+
+#: ../../source/templates_raycast.md:197
+msgid "**Inset bottom darks** (`rgba(0, 0, 0, 0.2)`) simulating shadow underneath"
+msgstr ""
+
+#: ../../source/templates_raycast.md:198
+msgid ""
+"The effect is physical: elements feel like glass or brushed metal, not "
+"flat rectangles"
+msgstr ""
+
+#: ../../source/templates_raycast.md:200
+msgid "Decorative Depth"
+msgstr ""
+
+#: ../../source/templates_raycast.md:201
+msgid ""
+"**Warm glow**: `rgba(215, 201, 175, 0.05) 0px 0px 20px 5px` behind "
+"featured elements — a subtle warm aura on the cold dark canvas"
+msgstr ""
+
+#: ../../source/templates_raycast.md:202
+msgid ""
+"**Blue info glow**: `rgba(0, 153, 255, 0.15)` for interactive state "
+"emphasis"
+msgstr ""
+
+#: ../../source/templates_raycast.md:203
+msgid ""
+"**Red danger glow**: `rgba(255, 99, 99, 0.15)` for error/destructive "
+"state emphasis"
+msgstr ""
+
+#: ../../source/templates_raycast.md:205
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_raycast.md:207
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_raycast.md:208
+msgid ""
+"Use `#07080a` (not pure black) as the background — the blue-cold tint is "
+"essential to the Raycast feel"
+msgstr ""
+
+#: ../../source/templates_raycast.md:209
+msgid ""
+"Apply positive letter-spacing (+0.2px) on body text — this is "
+"deliberately different from most dark UIs"
+msgstr ""
+
+#: ../../source/templates_raycast.md:210
+msgid ""
+"Use multi-layer shadows with inset highlights for interactive elements — "
+"the macOS-native depth is signature"
+msgstr ""
+
+#: ../../source/templates_raycast.md:211
+msgid ""
+"Keep Raycast Red (`#FF6363`) as punctuation, not pervasive — reserve it "
+"for hero moments and error states"
+msgstr ""
+
+#: ../../source/templates_raycast.md:212
+msgid ""
+"Use `rgba(255, 255, 255, 0.06)` borders for card containment — barely "
+"visible, structurally essential"
+msgstr ""
+
+#: ../../source/templates_raycast.md:213
+msgid ""
+"Apply weight 500 as the body text baseline — medium weight improves dark-"
+"mode legibility"
+msgstr ""
+
+#: ../../source/templates_raycast.md:214
+msgid ""
+"Use pill shapes (86px+ radius) for primary CTAs, rectangular shapes "
+"(6px–8px) for secondary actions"
+msgstr ""
+
+#: ../../source/templates_raycast.md:215
+msgid "Enable OpenType features `calt`, `kern`, `liga`, `ss03` on all Inter text"
+msgstr ""
+
+#: ../../source/templates_raycast.md:216
+msgid ""
+"Use opacity transitions (hover: opacity 0.6) for button interactions, not"
+" color changes"
+msgstr ""
+
+#: ../../source/templates_raycast.md:218
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_raycast.md:219
+msgid ""
+"Use pure black (`#000000`) as the background — the blue tint "
+"differentiates Raycast from generic dark themes"
+msgstr ""
+
+#: ../../source/templates_raycast.md:220
+msgid ""
+"Apply negative letter-spacing on body text — Raycast deliberately uses "
+"positive spacing for readability"
+msgstr ""
+
+#: ../../source/templates_raycast.md:221
+msgid ""
+"Use Raycast Blue as the primary accent for everything — blue is for "
+"interactive/info, red is the brand color"
+msgstr ""
+
+#: ../../source/templates_raycast.md:222
+msgid ""
+"Create single-layer flat shadows — the multi-layer inset system is core "
+"to the macOS-native aesthetic"
+msgstr ""
+
+#: ../../source/templates_raycast.md:223
+msgid ""
+"Use regular weight (400) for body text when 500 is available — the extra "
+"weight prevents dark-mode text from feeling thin"
+msgstr ""
+
+#: ../../source/templates_raycast.md:224
+msgid ""
+"Mix warm and cool borders — stick to the cool gray (`hsl(195, 5%, 15%)`) "
+"border palette"
+msgstr ""
+
+#: ../../source/templates_raycast.md:225
+msgid ""
+"Apply heavy drop shadows without inset companions — shadows always come "
+"in pairs (outer + inset)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:226
+msgid ""
+"Use decorative elements, gradients, or colorful backgrounds — the dark "
+"void is the stage, content is the performer"
+msgstr ""
+
+#: ../../source/templates_raycast.md:228
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_raycast.md:230
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "<600px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Single column, stacked cards, hamburger nav, hero text reduces to ~40px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Small Tablet"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "600px–768px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "2-column grid begins, nav partially visible"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "768px–1024px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "2–3 column features, nav expanding, screenshots scale"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "1024px–1200px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Full layout, all nav links visible, 64px hero display"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid ">1200px"
+msgstr ""
+
+#: ../../source/templates_raycast.md
+msgid "Max-width container centered, generous side margins"
+msgstr ""
+
+#: ../../source/templates_raycast.md:239
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_raycast.md:240
+msgid "Pill buttons: 86px radius with 20px padding — well above 44px minimum"
+msgstr ""
+
+#: ../../source/templates_raycast.md:241
+msgid ""
+"Secondary buttons: 8px padding minimum, but border provides visual target"
+" expansion"
+msgstr ""
+
+#: ../../source/templates_raycast.md:242
+msgid "Nav links: 16px text with surrounding padding for accessible touch targets"
+msgstr ""
+
+#: ../../source/templates_raycast.md:244
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_raycast.md:245
+msgid ""
+"**Navigation**: Full horizontal nav → hamburger at mobile with slide-out "
+"menu"
+msgstr ""
+
+#: ../../source/templates_raycast.md:246
+msgid "**Hero**: 64px display → 48px → 36px across breakpoints"
+msgstr ""
+
+#: ../../source/templates_raycast.md:247
+msgid "**Feature grids**: 3-column → 2-column → single-column stack"
+msgstr ""
+
+#: ../../source/templates_raycast.md:248
+msgid ""
+"**Product screenshots**: Scale within containers, maintaining macOS "
+"window chrome proportions"
+msgstr ""
+
+#: ../../source/templates_raycast.md:249
+msgid ""
+"**Keyboard shortcut displays**: Simplify or hide on mobile where keyboard"
+" shortcuts are irrelevant"
+msgstr ""
+
+#: ../../source/templates_raycast.md:251
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_raycast.md:252
+msgid "Product screenshots scale responsively within fixed-ratio containers"
+msgstr ""
+
+#: ../../source/templates_raycast.md:253
+msgid "Hero diagonal stripe pattern scales proportionally"
+msgstr ""
+
+#: ../../source/templates_raycast.md:254
+msgid "macOS window chrome rounded corners maintained at all sizes"
+msgstr ""
+
+#: ../../source/templates_raycast.md:255
+msgid "No lazy-loading artifacts — images are critical to the product narrative"
+msgstr ""
+
+#: ../../source/templates_raycast.md:257
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_raycast.md:259
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_raycast.md:260
+msgid "Primary Background: Near-Black Blue (`#07080a`)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:261
+msgid "Primary Text: Near White (`#f9f9f9`)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:262
+msgid "Brand Accent: Raycast Red (`#FF6363`)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:263
+msgid "Interactive Blue: Raycast Blue (`hsl(202, 100%, 67%)` / ~`#55b3ff`)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:264
+msgid "Secondary Text: Medium Gray (`#9c9c9d`)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:265
+msgid "Card Surface: Surface 100 (`#101111`)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:266
+msgid "Border: Dark Border (`hsl(195, 5%, 15%)` / ~`#252829`)"
+msgstr ""
+
+#: ../../source/templates_raycast.md:268
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_raycast.md:269
+msgid ""
+"\"Create a hero section on #07080a background with 64px Inter heading "
+"(weight 600, line-height 1.1), near-white text (#f9f9f9), and a semi-"
+"transparent white pill CTA button (hsla(0,0%,100%,0.815), 86px radius, "
+"dark text #18191a)\""
+msgstr ""
+
+#: ../../source/templates_raycast.md:270
+msgid ""
+"\"Design a feature card with #101111 background, 1px solid "
+"rgba(255,255,255,0.06) border, 16px border-radius, double-ring shadow "
+"(rgb(27,28,30) 0px 0px 0px 1px outer), 22px Inter heading, and #9c9c9d "
+"body text\""
+msgstr ""
+
+#: ../../source/templates_raycast.md:271
+msgid ""
+"\"Build a navigation bar on dark background (#07080a), Inter links at "
+"16px weight 500 in #9c9c9d, hover to white, and a translucent white pill "
+"button at the right end\""
+msgstr ""
+
+#: ../../source/templates_raycast.md:272
+msgid ""
+"\"Create a keyboard shortcut display with key caps using gradient "
+"background (#121212→#0d0d0d), 5-layer shadow for physical depth, 4px "
+"radius, Inter 12px weight 600 text\""
+msgstr ""
+
+#: ../../source/templates_raycast.md:273
+msgid ""
+"\"Design an alert card with #101111 surface, Raycast Red (#FF6363) left "
+"border accent, translucent red glow (hsla(0,100%,69%,0.15)), white "
+"heading, and #cecece description text\""
+msgstr ""
+
+#: ../../source/templates_raycast.md:275
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_raycast.md:276
+msgid "When refining existing screens generated with this design system:"
+msgstr ""
+
+#: ../../source/templates_raycast.md:277
+msgid ""
+"Check the background is `#07080a` not pure black — the blue tint is "
+"critical"
+msgstr ""
+
+#: ../../source/templates_raycast.md:278
+msgid ""
+"Verify letter-spacing is positive (+0.2px) on body text — negative "
+"spacing breaks the Raycast aesthetic"
+msgstr ""
+
+#: ../../source/templates_raycast.md:279
+msgid ""
+"Ensure shadows have both outer and inset layers — single-layer shadows "
+"look flat and wrong"
+msgstr ""
+
+#: ../../source/templates_raycast.md:280
+msgid "Confirm Inter has OpenType features `calt`, `kern`, `liga`, `ss03` enabled"
+msgstr ""
+
+#: ../../source/templates_raycast.md:281
+msgid ""
+"Test that hover states use opacity transitions (0.6) not color swaps — "
+"this is a core interaction pattern"
+msgstr ""
+

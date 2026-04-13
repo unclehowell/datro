@@ -1,0 +1,221 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/jsonfile_README.md:1
+msgid "Node.js - jsonfile"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:4
+msgid ""
+"Easily read/write JSON files in Node.js. _Note: this module cannot be "
+"used in the browser._"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:6
+msgid ""
+"[![npm Package](https://img.shields.io/npm/v/jsonfile.svg?style=flat-"
+"square)](https://www.npmjs.org/package/jsonfile) [![linux build "
+"status](https://img.shields.io/github/actions/workflow/status/jprichardson"
+"/node-jsonfile/ci.yml?branch=master)](https://github.com/jprichardson"
+"/node-jsonfile/actions?query=branch%3Amaster) [![windows Build "
+"status](https://img.shields.io/appveyor/ci/jprichardson/node-"
+"jsonfile/master.svg?label=windows%20build)](https://ci.appveyor.com/project/jprichardson"
+"/node-jsonfile/branch/master)"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:6
+msgid "npm Package"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:6
+msgid "linux build status"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:6
+msgid "windows Build status"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:10
+msgid ""
+"<a href=\"https://github.com/feross/standard\"><img "
+"src=\"https://cdn.rawgit.com/feross/standard/master/sticker.svg\" "
+"alt=\"Standard JavaScript\" width=\"100\"></a>"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:12
+msgid "Why?"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:15
+msgid ""
+"Writing `JSON.stringify()` and then `fs.writeFile()` and `JSON.parse()` "
+"with `fs.readFile()` enclosed in `try/catch` blocks became annoying."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:19
+msgid "Installation"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:26
+msgid "API"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:29
+msgid ""
+"[`readFile(filename, [options], callback)`](#readfilefilename-options-"
+"callback)"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:30
+msgid "[`readFileSync(filename, [options])`](#readfilesyncfilename-options)"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:31
+msgid ""
+"[`writeFile(filename, obj, [options], callback)`](#writefilefilename-obj-"
+"options-callback)"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:32
+msgid ""
+"[`writeFileSync(filename, obj, [options])`](#writefilesyncfilename-obj-"
+"options)"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:36
+msgid "readFile(filename, [options], callback)"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:38
+msgid ""
+"`options` (`object`, default `undefined`): Pass in any "
+"[`fs.readFile`](https://nodejs.org/api/fs.html#fs_fs_readfile_path_options_callback)"
+" options or set `reviver` for a [JSON "
+"reviver](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:39
+msgid ""
+"`throws` (`boolean`, default: `true`). If `JSON.parse` throws an error, "
+"pass this error to the callback. If `false`, returns `null` for the "
+"object."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:52
+msgid ""
+"You can also use this method with promises. The `readFile` method will "
+"return a promise if you do not pass a callback function."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:64
+msgid "readFileSync(filename, [options])"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:66
+msgid ""
+"`options` (`object`, default `undefined`): Pass in any "
+"[`fs.readFileSync`](https://nodejs.org/api/fs.html#fs_fs_readfilesync_path_options)"
+" options or set `reviver` for a [JSON "
+"reviver](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse)."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:67
+msgid ""
+"`throws` (`boolean`, default: `true`). If an error is encountered reading"
+" or parsing the file, throw the error. If `false`, returns `null` for the"
+" object."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:78
+msgid "writeFile(filename, obj, [options], callback)"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:80
+msgid ""
+"`options`: Pass in any "
+"[`fs.writeFile`](https://nodejs.org/api/fs.html#fs_fs_writefile_file_data_options_callback)"
+" options or set `replacer` for a [JSON "
+"replacer](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Can also"
+" pass in `spaces`, or override `EOL` string or set `finalEOL` flag as "
+"`false` to not save the file with `EOL` at the end."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:93
+msgid "Or use with promises as follows:"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:109 ../../source/jsonfile_README.md:179
+msgid "**formatting with spaces:**"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:122 ../../source/jsonfile_README.md:190
+msgid "**overriding EOL:**"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:136 ../../source/jsonfile_README.md:201
+msgid "**disabling the EOL at the end of file:**"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:149 ../../source/jsonfile_README.md:212
+msgid "**appending to an existing JSON file:**"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:151
+#, python-brace-format
+msgid "You can use `fs.writeFile` option `{ flag: 'a' }` to achieve this."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:166
+msgid "writeFileSync(filename, obj, [options])"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:168
+msgid ""
+"`options`: Pass in any "
+"[`fs.writeFileSync`](https://nodejs.org/api/fs.html#fs_fs_writefilesync_file_data_options)"
+" options or set `replacer` for a [JSON "
+"replacer](https://developer.mozilla.org/en-"
+"US/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify). Can also"
+" pass in `spaces`, or override `EOL` string or set `finalEOL` flag as "
+"`false` to not save the file with `EOL` at the end."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:214
+#, python-brace-format
+msgid "You can use `fs.writeFileSync` option `{ flag: 'a' }` to achieve this."
+msgstr ""
+
+#: ../../source/jsonfile_README.md:225
+msgid "License"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:228
+msgid "(MIT License)"
+msgstr ""
+
+#: ../../source/jsonfile_README.md:230
+msgid "Copyright 2012-2016, JP Richardson  <jprichardson@gmail.com>"
+msgstr ""
+

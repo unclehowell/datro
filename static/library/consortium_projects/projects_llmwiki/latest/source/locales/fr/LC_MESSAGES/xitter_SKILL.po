@@ -1,0 +1,352 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/xitter_SKILL.md:17
+msgid "Xitter — X/Twitter via x-cli"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:19
+msgid "Use `x-cli` for official X/Twitter API interactions from the terminal."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:21
+msgid "This skill is for:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:22
+msgid "posting tweets, replies, and quote tweets"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:23
+msgid "searching tweets and reading timelines"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:24
+msgid "looking up users, followers, and following"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:25
+msgid "liking and retweeting"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:26
+msgid "checking mentions and bookmarks"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:28
+msgid ""
+"This skill intentionally does not vendor a separate CLI implementation "
+"into Hermes. Install and use upstream `x-cli` instead."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:30
+msgid "Important Cost / Access Note"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:32
+msgid ""
+"X API access is not meaningfully free for most real usage. Expect to need"
+" paid or prepaid X developer access. If commands fail with permissions or"
+" quota errors, check your X developer plan first."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:34
+msgid "Install"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:36
+msgid "Install upstream `x-cli` with `uv`:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:42
+msgid "Upgrade later with:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:48
+msgid "Verify:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:54
+msgid "Credentials"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:56
+msgid "You need these five values from the X Developer Portal:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:57
+msgid "`X_API_KEY`"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:58
+msgid "`X_API_SECRET`"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:59
+msgid "`X_BEARER_TOKEN`"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:60
+msgid "`X_ACCESS_TOKEN`"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:61
+msgid "`X_ACCESS_TOKEN_SECRET`"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:63
+msgid "Get them from:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:64
+msgid "https://developer.x.com/en/portal/dashboard"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:66
+msgid "Why does X need 5 secrets?"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:68
+msgid ""
+"Unfortunately, the official X API splits auth across both app-level and "
+"user-level credentials:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:70
+msgid "`X_API_KEY` + `X_API_SECRET` identify your app"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:71
+msgid "`X_BEARER_TOKEN` is used for app-level read access"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:72
+msgid ""
+"`X_ACCESS_TOKEN` + `X_ACCESS_TOKEN_SECRET` let the CLI act as your user "
+"account for writes and authenticated actions"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:74
+msgid ""
+"So yes — it is a lot of secrets for one integration, but this is the "
+"stable official API path and is still preferable to cookie/session "
+"scraping."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:76
+msgid "Setup requirements in the portal:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:77
+msgid "Create or open your app"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:78
+msgid "In user authentication settings, set permissions to `Read and write`"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:79
+msgid ""
+"Generate or regenerate the access token + access token secret after "
+"enabling write permissions"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:80
+msgid ""
+"Save all five values carefully — missing any one of them will usually "
+"produce confusing auth or permission errors"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:82
+msgid ""
+"Note: upstream `x-cli` expects the full credential set to be present, so "
+"even if you mostly care about read-only commands, it is simplest to "
+"configure all five."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:84
+msgid "Cost / Friction Reality Check"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:86
+msgid ""
+"If this setup feels heavier than it should be, that is because it is. X’s"
+" official developer flow is high-friction and often paid. This skill "
+"chooses the official API path because it is more stable and maintainable "
+"than browser-cookie/session approaches."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:88
+msgid ""
+"If the user wants the least brittle long-term setup, use this skill. If "
+"they want a zero-setup or unofficial path, that is a different trade-off "
+"and not what this skill is for."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:91
+msgid "Where to Store Credentials"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:93
+msgid "`x-cli` looks for credentials in `~/.config/x-cli/.env`."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:95
+msgid "If you already keep your X credentials in `~/.env`, the cleanest setup is:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:102
+msgid "Or create a dedicated file:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:116
+msgid "Quick Verification"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:124
+msgid ""
+"If reads work but writes fail, regenerate the access token after "
+"confirming `Read and write` permissions."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:126
+msgid "Common Commands"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:128
+msgid "Tweets"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:140
+msgid "Users"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:149
+msgid "Self / Authenticated User"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:158
+msgid "Quick Actions"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:165
+msgid "Output Modes"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:167
+msgid ""
+"Use structured output when the agent needs to inspect fields "
+"programmatically:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:176
+msgid "Recommended defaults:"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:177
+msgid "`-j` for machine-readable output"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:178
+msgid "`-v` when you need timestamps, metrics, or metadata"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:179
+msgid "plain/default mode for quick human inspection"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:181
+msgid "Agent Workflow"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:183
+msgid "Confirm `x-cli` is installed"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:184
+msgid "Confirm credentials are present"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:185
+msgid "Start with a read command (`user get`, `tweet search`, `me mentions`)"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:186
+msgid "Use `-j` when extracting fields for later steps"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:187
+msgid ""
+"Only perform write actions after confirming the target tweet/user and the"
+" user's intent"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:189
+msgid "Pitfalls"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:191
+msgid ""
+"**Paid API access**: many failures are plan/permission problems, not code"
+" problems."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:192
+msgid ""
+"**403 oauth1-permissions**: regenerate the access token after enabling "
+"`Read and write`."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:193
+msgid ""
+"**Reply restrictions**: X restricts many programmatic replies. `tweet "
+"quote` is often more reliable than `tweet reply`."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:194
+msgid "**Rate limits**: expect per-endpoint limits and cooldown windows."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:195
+msgid ""
+"**Credential drift**: if you rotate tokens in `~/.env`, make sure "
+"`~/.config/x-cli/.env` still points at the current file."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:197
+msgid "Notes"
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:199
+msgid "Prefer official API workflows over cookie/session scraping."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:200
+msgid "Use tweet URLs or IDs interchangeably — `x-cli` accepts both."
+msgstr ""
+
+#: ../../source/xitter_SKILL.md:201
+msgid ""
+"If bookmark behavior changes upstream, check the upstream README first: "
+"https://github.com/Infatoshi/x-cli"
+msgstr ""
+

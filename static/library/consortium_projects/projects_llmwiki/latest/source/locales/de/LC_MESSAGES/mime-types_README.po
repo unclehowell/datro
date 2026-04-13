@@ -1,0 +1,180 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/mime-types_README.md:1
+msgid "mime-types"
+msgstr ""
+
+#: ../../source/mime-types_README.md:3
+msgid ""
+"[![NPM Version][npm-version-image]][npm-url] [![NPM Downloads][npm-"
+"downloads-image]][npm-url] [![Node.js Version][node-version-image]][node-"
+"version-url] [![Build Status][ci-image]][ci-url] [![Test Coverage"
+"][coveralls-image]][coveralls-url]"
+msgstr ""
+
+#: ../../source/mime-types_README.md:3
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/mime-types_README.md:3
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/mime-types_README.md:3
+msgid "Node.js Version"
+msgstr ""
+
+#: ../../source/mime-types_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/mime-types_README.md:3
+msgid "Test Coverage"
+msgstr ""
+
+#: ../../source/mime-types_README.md:9
+msgid "The ultimate javascript content-type utility."
+msgstr ""
+
+#: ../../source/mime-types_README.md:11
+msgid ""
+"Similar to [the `mime@1.x` module](https://www.npmjs.com/package/mime), "
+"except:"
+msgstr ""
+
+#: ../../source/mime-types_README.md:13
+msgid ""
+"__No fallbacks.__ Instead of naively returning the first available type, "
+"`mime-types` simply returns `false`, so do `var type = "
+"mime.lookup('unrecognized') || 'application/octet-stream'`."
+msgstr ""
+
+#: ../../source/mime-types_README.md:16
+msgid ""
+"No `new Mime()` business, so you could do `var lookup = require('mime-"
+"types').lookup`."
+msgstr ""
+
+#: ../../source/mime-types_README.md:17
+msgid "No `.define()` functionality"
+msgstr ""
+
+#: ../../source/mime-types_README.md:18
+msgid "Bug fixes for `.lookup(path)`"
+msgstr ""
+
+#: ../../source/mime-types_README.md:20
+msgid "Otherwise, the API is compatible with `mime` 1.x."
+msgstr ""
+
+#: ../../source/mime-types_README.md:22
+msgid "Install"
+msgstr ""
+
+#: ../../source/mime-types_README.md:24
+msgid ""
+"This is a [Node.js](https://nodejs.org/en/) module available through the "
+"[npm registry](https://www.npmjs.com/). Installation is done using the "
+"[`npm install` command](https://docs.npmjs.com/getting-started"
+"/installing-npm-packages-locally):"
+msgstr ""
+
+#: ../../source/mime-types_README.md:32
+msgid "Adding Types"
+msgstr ""
+
+#: ../../source/mime-types_README.md:34
+msgid ""
+"All mime types are based on [mime-db](https://www.npmjs.com/package/mime-"
+"db), so open a PR there if you'd like to add mime types."
+msgstr ""
+
+#: ../../source/mime-types_README.md:37
+msgid "API"
+msgstr ""
+
+#: ../../source/mime-types_README.md:43
+msgid "All functions return `false` if input is invalid or not found."
+msgstr ""
+
+#: ../../source/mime-types_README.md:45
+msgid "mime.lookup(path)"
+msgstr ""
+
+#: ../../source/mime-types_README.md:47
+msgid "Lookup the content-type associated with a file."
+msgstr ""
+
+#: ../../source/mime-types_README.md:59
+msgid "mime.contentType(type)"
+msgstr ""
+
+#: ../../source/mime-types_README.md:61
+msgid ""
+"Create a full content-type header given a content-type or extension. When"
+" given an extension, `mime.lookup` is used to get the matching content-"
+"type, otherwise the given content-type is used. Then if the content-type "
+"does not already have a `charset` parameter, `mime.charset` is used to "
+"get the default charset and add to the returned content-type."
+msgstr ""
+
+#: ../../source/mime-types_README.md:77
+msgid "mime.extension(type)"
+msgstr ""
+
+#: ../../source/mime-types_README.md:79
+msgid "Get the default extension for a content-type."
+msgstr ""
+
+#: ../../source/mime-types_README.md:85
+msgid "mime.charset(type)"
+msgstr ""
+
+#: ../../source/mime-types_README.md:87
+msgid "Lookup the implied default charset of a content-type."
+msgstr ""
+
+#: ../../source/mime-types_README.md:93
+msgid "var type = mime.types[extension]"
+msgstr ""
+
+#: ../../source/mime-types_README.md:95
+msgid "A map of content-types by extension."
+msgstr ""
+
+#: ../../source/mime-types_README.md:97
+msgid "[extensions...] = mime.extensions[type]"
+msgstr ""
+
+#: ../../source/mime-types_README.md:99
+msgid "A map of extensions by content-type."
+msgstr ""
+
+#: ../../source/mime-types_README.md:101
+msgid "License"
+msgstr ""
+
+#: ../../source/mime-types_README.md:103
+msgid "[MIT](LICENSE)"
+msgstr ""
+

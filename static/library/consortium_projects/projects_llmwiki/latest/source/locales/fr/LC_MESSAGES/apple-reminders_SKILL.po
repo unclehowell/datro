@@ -1,0 +1,158 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/apple-reminders_SKILL.md:15
+msgid "Apple Reminders"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:17
+msgid ""
+"Use `remindctl` to manage Apple Reminders directly from the terminal. "
+"Tasks sync across all Apple devices via iCloud."
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:19
+msgid "Prerequisites"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:21
+msgid "**macOS** with Reminders.app"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:22
+msgid "Install: `brew install steipete/tap/remindctl`"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:23
+msgid "Grant Reminders permission when prompted"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:24
+msgid "Check: `remindctl status` / Request: `remindctl authorize`"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:26
+msgid "When to Use"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:28
+msgid "User mentions \"reminder\" or \"Reminders app\""
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:29
+msgid "Creating personal to-dos with due dates that sync to iOS"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:30
+msgid "Managing Apple Reminders lists"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:31
+msgid "User wants tasks to appear on their iPhone/iPad"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:33
+msgid "When NOT to Use"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:35
+msgid "Scheduling agent alerts → use the cronjob tool instead"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:36
+msgid "Calendar events → use Apple Calendar or Google Calendar"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:37
+msgid "Project task management → use GitHub Issues, Notion, etc."
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:38
+msgid "If user says \"remind me\" but means an agent alert → clarify first"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:40
+msgid "Quick Reference"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:42
+msgid "View Reminders"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:54
+msgid "Manage Lists"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:63
+msgid "Create Reminders"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:71
+msgid "Complete / Delete"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:78
+msgid "Output Formats"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:86
+msgid "Date Formats"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:88
+msgid "Accepted by `--due` and date filters:"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:89
+msgid "`today`, `tomorrow`, `yesterday`"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:90
+msgid "`YYYY-MM-DD`"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:91
+msgid "`YYYY-MM-DD HH:mm`"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:92
+msgid "ISO 8601 (`2026-01-04T12:34:56Z`)"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:94
+msgid "Rules"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:96
+msgid ""
+"When user says \"remind me\", clarify: Apple Reminders (syncs to phone) "
+"vs agent cronjob alert"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:97
+msgid "Always confirm reminder content and due date before creating"
+msgstr ""
+
+#: ../../source/apple-reminders_SKILL.md:98
+msgid "Use `--json` for programmatic parsing"
+msgstr ""
+

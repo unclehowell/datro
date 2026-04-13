@@ -1,0 +1,156 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/content-type_README.md:1
+msgid "content-type"
+msgstr ""
+
+#: ../../source/content-type_README.md:3
+msgid ""
+"[![NPM Version][npm-version-image]][npm-url] [![NPM Downloads][npm-"
+"downloads-image]][npm-url] [![Node.js Version][node-image]][node-url] "
+"[![Build Status][ci-image]][ci-url] [![Coverage Status][coveralls-image"
+"]][coveralls-url]"
+msgstr ""
+
+#: ../../source/content-type_README.md:3
+msgid "NPM Version"
+msgstr ""
+
+#: ../../source/content-type_README.md:3
+msgid "NPM Downloads"
+msgstr ""
+
+#: ../../source/content-type_README.md:3
+msgid "Node.js Version"
+msgstr ""
+
+#: ../../source/content-type_README.md:3
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/content-type_README.md:3
+msgid "Coverage Status"
+msgstr ""
+
+#: ../../source/content-type_README.md:9
+msgid "Create and parse HTTP Content-Type header according to RFC 7231"
+msgstr ""
+
+#: ../../source/content-type_README.md:11
+msgid "Installation"
+msgstr ""
+
+#: ../../source/content-type_README.md:17
+msgid "API"
+msgstr ""
+
+#: ../../source/content-type_README.md:23
+msgid "contentType.parse(string)"
+msgstr ""
+
+#: ../../source/content-type_README.md:29
+msgid ""
+"Parse a `Content-Type` header. This will return an object with the "
+"following properties (examples are shown for the string `'image/svg+xml; "
+"charset=utf-8'`):"
+msgstr ""
+
+#: ../../source/content-type_README.md:32
+msgid ""
+"`type`: The media type (the type and subtype, always lower case). "
+"Example: `'image/svg+xml'`"
+msgstr ""
+
+#: ../../source/content-type_README.md:35
+#, python-brace-format
+msgid ""
+"`parameters`: An object of the parameters in the media type (name of "
+"parameter always lower case). Example: `{charset: 'utf-8'}`"
+msgstr ""
+
+#: ../../source/content-type_README.md:38
+msgid "Throws a `TypeError` if the string is missing or invalid."
+msgstr ""
+
+#: ../../source/content-type_README.md:40
+msgid "contentType.parse(req)"
+msgstr ""
+
+#: ../../source/content-type_README.md:46
+msgid ""
+"Parse the `Content-Type` header from the given `req`. Short-cut for "
+"`contentType.parse(req.headers['content-type'])`."
+msgstr ""
+
+#: ../../source/content-type_README.md:49
+#: ../../source/content-type_README.md:60
+msgid "Throws a `TypeError` if the `Content-Type` header is missing or invalid."
+msgstr ""
+
+#: ../../source/content-type_README.md:51
+msgid "contentType.parse(res)"
+msgstr ""
+
+#: ../../source/content-type_README.md:57
+msgid ""
+"Parse the `Content-Type` header set on the given `res`. Short-cut for "
+"`contentType.parse(res.getHeader('content-type'))`."
+msgstr ""
+
+#: ../../source/content-type_README.md:62
+msgid "contentType.format(obj)"
+msgstr ""
+
+#: ../../source/content-type_README.md:71
+msgid ""
+"Format an object into a `Content-Type` header. This will return a string "
+"of the content type for the given object with the following properties "
+"(examples are shown that produce the string `'image/svg+xml; "
+"charset=utf-8'`):"
+msgstr ""
+
+#: ../../source/content-type_README.md:75
+msgid "`type`: The media type (will be lower-cased). Example: `'image/svg+xml'`"
+msgstr ""
+
+#: ../../source/content-type_README.md:77
+#, python-brace-format
+msgid ""
+"`parameters`: An object of the parameters in the media type (name of the "
+"parameter will be lower-cased). Example: `{charset: 'utf-8'}`"
+msgstr ""
+
+#: ../../source/content-type_README.md:80
+msgid ""
+"Throws a `TypeError` if the object contains an invalid type or parameter "
+"names."
+msgstr ""
+
+#: ../../source/content-type_README.md:82
+msgid "License"
+msgstr ""
+
+#: ../../source/content-type_README.md:84
+msgid "[MIT](LICENSE)"
+msgstr ""
+

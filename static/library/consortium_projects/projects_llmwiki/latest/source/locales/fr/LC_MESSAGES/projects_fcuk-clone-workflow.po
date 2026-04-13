@@ -1,0 +1,98 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/projects_fcuk-clone-workflow.md:1
+msgid "FCUK Clone Workflow"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:3
+msgid "**Date:** 2026-04-12"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:5
+msgid "Summary"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:6
+msgid ""
+"Clone GitHub repo `unclehowell/fcuk` into `datro/static/fcuk`, rename old"
+" folder to backup, update title, deploy using wrangler."
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:8
+msgid "Backup First (Important!)"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:14
+msgid "Clone New FCUK"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:20
+msgid "Update Title"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:21
+msgid ""
+"Edit `index.html`: change `<title>Google AI Studio...</title>` to "
+"`<title>Car Finance UK</title>`"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:23
+msgid "Deploy to Cloudflare (wrangler)"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:29
+msgid "Run Locally"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:35
+msgid "Cloudflare Project"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:36
+msgid "**Project name:** financecheque"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:37
+msgid "**Domain:** www.financecheque.uk"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:38
+msgid "**NOT auto-deploy** - requires wrangler deploy each time"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:40
+msgid "Key Points"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:41
+msgid "Uses Vite + React + Express"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:42
+msgid "Deploy with wrangler to `financecheque` project (NOT carfinance-uk!)"
+msgstr ""
+
+#: ../../source/projects_fcuk-clone-workflow.md:43
+msgid "Separate from pcp2 which uses carfinance-uk project"
+msgstr ""
+

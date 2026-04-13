@@ -1,0 +1,134 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/performance.rst:2
+msgid "Performance & Observations"
+msgstr ""
+
+#: ../../source/performance.rst:5
+msgid "Throughput"
+msgstr ""
+
+#: ../../source/performance.rst:7
+msgid ""
+"Under the Resend.com free tier, the system is constrained to **100 emails"
+" per day**. At the current send rate of one email per 2-minute cron "
+"trigger, the theoretical maximum is 720 sends per day — well above the "
+"quota. In practice, the daily quota is the binding constraint."
+msgstr ""
+
+#: ../../source/performance.rst:9
+msgid ""
+"At 100 emails/day against a list of 6,369 recipients, a full cycle "
+"completes in approximately **64 days**."
+msgstr ""
+
+#: ../../source/performance.rst:12
+msgid "Metric"
+msgstr ""
+
+#: ../../source/performance.rst:12
+msgid "Value"
+msgstr ""
+
+#: ../../source/performance.rst:14
+msgid "Send rate (scheduled)"
+msgstr ""
+
+#: ../../source/performance.rst:14
+msgid "1 per 2 minutes"
+msgstr ""
+
+#: ../../source/performance.rst:16
+msgid "Daily quota (free tier)"
+msgstr ""
+
+#: ../../source/performance.rst:16
+msgid "100 emails/day"
+msgstr ""
+
+#: ../../source/performance.rst:18
+msgid "Effective rate"
+msgstr ""
+
+#: ../../source/performance.rst:18
+msgid "~100/day"
+msgstr ""
+
+#: ../../source/performance.rst:20
+msgid "List size"
+msgstr ""
+
+#: ../../source/performance.rst:20
+msgid "6,369"
+msgstr ""
+
+#: ../../source/performance.rst:22
+msgid "Full cycle duration"
+msgstr ""
+
+#: ../../source/performance.rst:22
+msgid "~64 days"
+msgstr ""
+
+#: ../../source/performance.rst:24
+msgid "Progress tracking"
+msgstr ""
+
+#: ../../source/performance.rst:24
+msgid "Per-send (index)"
+msgstr ""
+
+#: ../../source/performance.rst:28
+msgid "Logging"
+msgstr ""
+
+#: ../../source/performance.rst:30
+msgid ""
+"Every send attempt is appended to ``/home/ubuntu/email_send.log`` with an"
+" ISO 8601 timestamp:"
+msgstr ""
+
+#: ../../source/performance.rst:45
+msgid "Quota Reset"
+msgstr ""
+
+#: ../../source/performance.rst:47
+msgid ""
+"The Resend.com free tier quota resets at **midnight UTC** daily. The cron"
+" job continues running through the quota period; sends during quota "
+"exhaustion are logged as ``daily_quota_exceeded`` and automatically "
+"resume when quota refreshes."
+msgstr ""
+
+#: ../../source/performance.rst:50
+msgid "Server Load"
+msgstr ""
+
+#: ../../source/performance.rst:52
+msgid ""
+"The system imposes negligible load on the EC2 instance. Node.js spawns, "
+"sends one HTTP request, and exits within ~1 second. The server load "
+"average at time of observation was 2.25/2.52/1.79 (primarily driven by "
+"other workloads on the machine)."
+msgstr ""
+

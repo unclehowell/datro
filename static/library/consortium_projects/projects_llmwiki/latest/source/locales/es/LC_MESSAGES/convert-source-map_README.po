@@ -1,0 +1,327 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/convert-source-map_README.md:1
+msgid "convert-source-map [![Build Status][ci-image]][ci-url]"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:3
+msgid ""
+"Converts a source-map from/to  different formats and allows "
+"adding/changing properties."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:26
+msgid "Upgrading"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:28
+msgid ""
+"Prior to v2.0.0, the `fromMapFileComment` and `fromMapFileSource` "
+"functions took a String directory path and used that to resolve & read "
+"the source map file from the filesystem. However, this made the library "
+"limited to nodejs environments and broke on sources with querystrings."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:30
+msgid ""
+"In v2.0.0, you now need to pass a function that does the file reading. It"
+" will receive the source filename as a String that you can resolve to a "
+"filesystem path, URL, or anything else."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:32
+msgid ""
+"If you are using `convert-source-map` in nodejs and want the previous "
+"behavior, you'll use a function like such:"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:43
+msgid "API"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:45
+msgid "fromObject(obj)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:47
+msgid "Returns source map converter from given object."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:49
+msgid "fromJSON(json)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:51
+msgid "Returns source map converter from given json string."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:53
+msgid "fromURI(uri)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:55
+msgid "Returns source map converter from given uri encoded json string."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:57
+msgid "fromBase64(base64)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:59
+msgid "Returns source map converter from given base64 encoded json string."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:61
+msgid "fromComment(comment)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:63
+msgid ""
+"Returns source map converter from given base64 or uri encoded json string"
+" prefixed with `//# sourceMappingURL=...`."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:65
+msgid "fromMapFileComment(comment, readMap)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:67
+msgid ""
+"Returns source map converter from given `filename` by parsing `//# "
+"sourceMappingURL=filename`."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:69
+#: ../../source/convert-source-map_README.md:132
+msgid ""
+"`readMap` must be a function which receives the source map filename and "
+"returns either a String or Buffer of the source map (if read "
+"synchronously), or a `Promise` containing a String or Buffer of the "
+"source map (if read asynchronously)."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:71
+msgid ""
+"If `readMap` doesn't return a `Promise`, `fromMapFileComment` will return"
+" a source map converter synchronously."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:73
+msgid ""
+"If `readMap` returns a `Promise`, `fromMapFileComment` will also return "
+"`Promise`. The `Promise` will be either resolved with the source map "
+"converter or rejected with an error."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:75
+msgid "Examples"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:77
+msgid "**Synchronous read in Node.js:**"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:94
+msgid "**Asynchronous read in Node.js:**"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:109
+msgid "**Asynchronous read in the browser:**"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:124
+msgid "fromSource(source)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:126
+#: ../../source/convert-source-map_README.md:130
+msgid ""
+"Finds last sourcemap comment in file and returns source map converter or "
+"returns `null` if no source map comment was found."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:128
+msgid "fromMapFileSource(source, readMap)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:134
+msgid ""
+"If `readMap` doesn't return a `Promise`, `fromMapFileSource` will return "
+"a source map converter synchronously."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:136
+msgid ""
+"If `readMap` returns a `Promise`, `fromMapFileSource` will also return "
+"`Promise`. The `Promise` will be either resolved with the source map "
+"converter or rejected with an error."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:138
+msgid "toObject()"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:140
+msgid "Returns a copy of the underlying source map."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:142
+msgid "toJSON([space])"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:144
+msgid ""
+"Converts source map to json string. If `space` is given (optional), this "
+"will be passed to [JSON.stringify](https://developer.mozilla.org/en-"
+"US/docs/JavaScript/Reference/Global_Objects/JSON/stringify) when the JSON"
+" string is generated."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:148
+msgid "toURI()"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:150
+msgid "Converts source map to uri encoded json string."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:152
+msgid "toBase64()"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:154
+msgid "Converts source map to base64 encoded json string."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:156
+msgid "toComment([options])"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:158
+msgid ""
+"Converts source map to an inline comment that can be appended to the "
+"source-file."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:160
+#: ../../source/convert-source-map_README.md:201
+msgid ""
+"By default, the comment is formatted like: `//# sourceMappingURL=...`, "
+"which you would normally see in a JS source file."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:163
+msgid ""
+"When `options.encoding == 'uri'`, the data will be uri encoded, otherwise"
+" they will be base64 encoded."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:165
+#: ../../source/convert-source-map_README.md:203
+msgid ""
+"When `options.multiline == true`, the comment is formatted like: `/*# "
+"sourceMappingURL=... */`, which you would find in a CSS source file."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:167
+msgid "addProperty(key, value)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:169
+msgid ""
+"Adds given property to the source map. Throws an error if property "
+"already exists."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:171
+msgid "setProperty(key, value)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:173
+msgid ""
+"Sets given property to the source map. If property doesn't exist it is "
+"added, otherwise its value is updated."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:175
+msgid "getProperty(key)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:177
+msgid "Gets given property of the source map."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:179
+msgid "removeComments(src)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:181
+msgid "Returns `src` with all source map comments removed"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:183
+msgid "removeMapFileComments(src)"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:185
+msgid "Returns `src` with all source map comments pointing to map files removed."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:187
+msgid "commentRegex"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:189
+msgid ""
+"Provides __a fresh__ RegExp each time it is accessed. Can be used to find"
+" source map comments."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:191
+msgid ""
+"Breaks down a source map comment into groups: Groups: 1: media type, 2: "
+"MIME type, 3: charset, 4: encoding, 5: data."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:193
+msgid "mapFileCommentRegex"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:195
+msgid ""
+"Provides __a fresh__ RegExp each time it is accessed. Can be used to find"
+" source map comments pointing to map files."
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:197
+msgid "generateMapFileComment(file, [options])"
+msgstr ""
+
+#: ../../source/convert-source-map_README.md:199
+msgid "Returns a comment that links to an external source map via `file`."
+msgstr ""
+

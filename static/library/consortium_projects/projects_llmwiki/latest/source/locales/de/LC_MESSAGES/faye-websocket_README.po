@@ -1,0 +1,429 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/faye-websocket_README.md:1
+msgid "faye-websocket"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:3
+msgid ""
+"Travis CI build: [![Build status](https://secure.travis-ci.org/faye/faye-"
+"websocket-node.svg)](http://travis-ci.org/faye/faye-websocket-node)"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:3
+msgid "Buildstatus"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:5
+msgid ""
+"Autobahn tests: [server](http://faye.jcoglan.com/autobahn/servers/), "
+"[client](http://faye.jcoglan.com/autobahn/clients/)"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:8
+msgid ""
+"This is a general-purpose WebSocket implementation extracted from the "
+"[Faye](http://faye.jcoglan.com) project. It provides classes for easily "
+"building WebSocket servers and clients in Node. It does not provide a "
+"server itself, but rather makes it easy to handle WebSocket connections "
+"within an existing [Node](http://nodejs.org/) application. It does not "
+"provide any abstraction other than the standard [WebSocket "
+"API](http://dev.w3.org/html5/websockets/)."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:15
+msgid ""
+"It also provides an abstraction for handling "
+"[EventSource](http://dev.w3.org/html5/eventsource/) connections, which "
+"are one-way connections that allow the server to push data to the client."
+" They are based on streaming HTTP responses and can be easier to access "
+"via proxies than WebSockets."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:22
+msgid "Installation"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:29
+msgid "Handling WebSocket connections in Node"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:31
+msgid ""
+"You can handle WebSockets on the server side by listening for HTTP "
+"Upgrade requests, and creating a new socket for the request. This socket "
+"object exposes the usual WebSocket methods for receiving and sending "
+"messages. For example this is how you'd implement an echo server:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:60
+msgid ""
+"`WebSocket` objects are also duplex streams, so you could replace the "
+"`ws.on('message', ...)` line with:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:67
+msgid ""
+"Note that under certain circumstances (notably a draft-76 client "
+"connecting through an HTTP proxy), the WebSocket handshake will not be "
+"complete after you call `new WebSocket()` because the server will not "
+"have received the entire handshake from the client yet. In this case, "
+"calls to `ws.send()` will buffer the message in memory until the "
+"handshake is complete, at which point any buffered messages will be sent "
+"to the client."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:74
+msgid ""
+"If you need to detect when the WebSocket handshake is complete, you can "
+"use the `onopen` event."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:77
+msgid ""
+"If the connection's protocol version supports it, you can call "
+"`ws.ping()` to send a ping message and wait for the client's response. "
+"This method takes a message string, and an optional callback that fires "
+"when a matching pong message is received. It returns `true` if and only "
+"if a ping message was sent. If the client does not support ping/pong, "
+"this method sends no data and returns `false`."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:91
+msgid "Using the WebSocket client"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:93
+msgid ""
+"The client supports both the plain-text `ws` protocol and the encrypted "
+"`wss` protocol, and has exactly the same interface as a socket you would "
+"use in a web browser. On the wire it identifies itself as `hybi-13`."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:116
+msgid ""
+"The WebSocket client also lets you inspect the status and headers of the "
+"handshake response via its `statusCode` and `headers` properties."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:119
+msgid ""
+"To connect via a proxy, set the `proxy` option to the HTTP origin of the "
+"proxy, including any authorization information, custom headers and TLS "
+"config you require. Only the `origin` setting is required."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:133
+msgid ""
+"The `tls` value is a Node 'TLS options' object that will be passed to "
+"[`tls.connect()`](http://nodejs.org/api/tls.html#tls_tls_connect_options_callback)."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:137
+msgid "Subprotocol negotiation"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:139
+msgid ""
+"The WebSocket protocol allows peers to select and identify the "
+"application protocol to use over the connection. On the client side, you "
+"can set which protocols the client accepts by passing a list of protocol "
+"names when you construct the socket:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:148
+msgid ""
+"On the server side, you can likewise pass in the list of protocols the "
+"server supports after the other constructor arguments:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:155
+msgid ""
+"If the client and server agree on a protocol, both the client- and "
+"server-side socket objects expose the selected protocol through the "
+"`ws.protocol` property."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:159
+msgid "Protocol extensions"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:161
+msgid ""
+"faye-websocket is based on the [websocket-"
+"extensions](https://github.com/faye/websocket-extensions-node) framework "
+"that allows extensions to be negotiated via the `Sec-WebSocket-"
+"Extensions` header. To add extensions to a connection, pass an array of "
+"extensions to the `:extensions` option. For example, to add [permessage-"
+"deflate](https://github.com/faye/permessage-deflate-node):"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:175
+msgid "Initialization options"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:177
+msgid ""
+"Both the server- and client-side classes allow an options object to be "
+"passed in at initialization time, for example:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:185
+msgid ""
+"`protocols` is an array of subprotocols as described above, or `null`. "
+"`options` is an optional object containing any of these fields:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:188
+msgid ""
+"`extensions` - an array of [websocket-extensions](https://github.com/faye"
+"/websocket-extensions-node) compatible extensions, as described above"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:191
+msgid ""
+"`headers` - an object containing key-value pairs representing HTTP "
+"headers to be sent during the handshake process"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:193
+msgid ""
+"`maxLength` - the maximum allowed size of incoming message frames, in "
+"bytes. The default value is `2^26 - 1`, or 1 byte short of 64 MiB."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:195
+msgid ""
+"`ping` - an integer that sets how often the WebSocket should send ping "
+"frames, measured in seconds"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:198
+msgid "The client accepts some additional options:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:200
+msgid "`proxy` - settings for a proxy as described above"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:201
+msgid ""
+"`tls` - a Node 'TLS options' object containing TLS settings for the "
+"origin server, this will be passed to "
+"[`tls.connect()`](http://nodejs.org/api/tls.html#tls_tls_connect_options_callback)"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:204
+#, python-brace-format
+msgid "`ca` - (legacy) a shorthand for passing `{tls: {ca: value}}`"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:207
+msgid "WebSocket API"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:209
+msgid ""
+"Both server- and client-side `WebSocket` objects support the following "
+"API."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:211
+#, python-brace-format
+msgid ""
+"<b>`on('open', function(event) {})`</b> fires when the socket connection "
+"is established. Event has no attributes."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:213
+#, python-brace-format
+msgid ""
+"<b>`on('message', function(event) {})`</b> fires when the socket receives"
+" a message. Event has one attribute, <b>`data`</b>, which is either a "
+"`String` (for text frames) or a `Buffer` (for binary frames)."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:216
+#, python-brace-format
+msgid ""
+"<b>`on('error', function(event) {})`</b> fires when there is a protocol "
+"error due to bad data sent by the other peer. This event is purely "
+"informational, you do not need to implement error recover."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:219
+#, python-brace-format
+msgid ""
+"<b>`on('close', function(event) {})`</b> fires when either the client or "
+"the server closes the connection. Event has two optional attributes, "
+"<b>`code`</b> and <b>`reason`</b>, that expose the status code and "
+"message sent by the peer that closed the connection."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:223
+msgid ""
+"<b>`send(message)`</b> accepts either a `String` or a `Buffer` and sends "
+"a text or binary message over the connection to the other peer."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:225
+#, python-brace-format
+msgid ""
+"<b>`ping(message, function() {})`</b> sends a ping frame with an optional"
+" message and fires the callback when a matching pong is received."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:227
+msgid ""
+"<b>`close(code, reason)`</b> closes the connection, sending the given "
+"status code and reason text, both of which are optional."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:229
+msgid ""
+"<b>`version`</b> is a string containing the version of the `WebSocket` "
+"protocol the connection is using."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:231
+msgid ""
+"<b>`protocol`</b> is a string (which may be empty) identifying the "
+"subprotocol the socket is using."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:235
+msgid "Handling EventSource connections in Node"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:237
+msgid ""
+"EventSource connections provide a very similar interface, although "
+"because they only allow the server to send data to the client, there is "
+"no `onmessage` API. EventSource allows the server to push text messages "
+"to the client, where each message has an optional event-type and ID."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:272
+msgid ""
+"The `send` method takes two optional parameters, `event` and `id`. The "
+"default event-type is `'message'` with no ID. For example, to send a "
+"`notification` event with ID `99`:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:280
+msgid "The `EventSource` object exposes the following properties:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:282
+msgid ""
+"<b>`url`</b> is a string containing the URL the client used to create the"
+" EventSource."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:284
+msgid ""
+"<b>`lastEventId`</b> is a string containing the last event ID received by"
+" the client. You can use this when the client reconnects after a dropped "
+"connection to determine which messages need resending."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:288
+msgid ""
+"When you initialize an EventSource with ` new EventSource()`, you can "
+"pass configuration options after the `response` parameter. Available "
+"options are:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:291
+msgid ""
+"<b>`headers`</b> is an object containing custom headers to be set on the "
+"EventSource response."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:293
+msgid ""
+"<b>`retry`</b> is a number that tells the client how long (in seconds) it"
+" should wait after a dropped connection before attempting to reconnect."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:295
+msgid ""
+"<b>`ping`</b> is a number that tells the server how often (in seconds) to"
+" send 'ping' packets to the client to keep the connection open, to defeat"
+" timeouts set by proxies. The client will ignore these messages."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:299
+msgid ""
+"For example, this creates a connection that allows access from any "
+"origin, pings every 15 seconds and is retryable every 10 seconds if the "
+"connection is broken:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:310
+msgid ""
+"You can send a ping message at any time by calling `es.ping()`. Unlike "
+"WebSocket, the client does not send a response to this; it is merely to "
+"send some data over the wire to keep the connection alive."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:315
+msgid "License"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:317
+msgid "(The MIT License)"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:319
+msgid "Copyright (c) 2010-2015 James Coglan"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:321
+msgid ""
+"Permission is hereby granted, free of charge, to any person obtaining a "
+"copy of this software and associated documentation files (the "
+"'Software'), to deal in the Software without restriction, including "
+"without limitation the rights to use, copy, modify, merge, publish, "
+"distribute, sublicense, and/or sell copies of the Software, and to permit"
+" persons to whom the Software is furnished to do so, subject to the "
+"following conditions:"
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:328
+msgid ""
+"The above copyright notice and this permission notice shall be included "
+"in all copies or substantial portions of the Software."
+msgstr ""
+
+#: ../../source/faye-websocket_README.md:331
+msgid ""
+"THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS "
+"OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF "
+"MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN"
+" NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,"
+" DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR "
+"OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE"
+" USE OR OTHER DEALINGS IN THE SOFTWARE."
+msgstr ""
+

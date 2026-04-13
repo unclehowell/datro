@@ -1,0 +1,906 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_bmw.md:1
+msgid "Design System: BMW"
+msgstr ""
+
+#: ../../source/templates_bmw.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_bmw.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_bmw.md:7
+msgid "**Primary:** `DM Sans` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_bmw.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'DM Sans', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_bmw.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_bmw.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_bmw.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_bmw.md:18
+msgid ""
+"BMW's website is automotive engineering made visual — a design system "
+"that communicates precision, performance, and German industrial "
+"confidence. The page alternates between deep dark hero sections "
+"(featuring full-bleed automotive photography) and clean white content "
+"areas, creating a cinematic rhythm reminiscent of a luxury car showroom "
+"where vehicles are lit against darkness. The BMW CI2020 design language "
+"(their corporate identity refresh) defines every element."
+msgstr ""
+
+#: ../../source/templates_bmw.md:20
+msgid ""
+"The typography is built on BMWTypeNextLatin — a proprietary typeface in "
+"two variants: BMWTypeNextLatin Light (weight 300) for massive uppercase "
+"display headings, and BMWTypeNextLatin Regular for body and UI text. The "
+"60px uppercase headline at weight 300 is the defining typographic gesture"
+" — light-weight type that whispers authority rather than shouting it. The"
+" fallback stack includes Helvetica and Japanese fonts (Hiragino, Meiryo),"
+" reflecting BMW's global presence."
+msgstr ""
+
+#: ../../source/templates_bmw.md:22
+msgid ""
+"What makes BMW distinctive is its CSS variable-driven theming system. "
+"Context-aware variables (`--site-context-highlight-color: #1c69d4`, "
+"`--site-context-focus-color: #0653b6`, `--site-context-metainfo-color: "
+"#757575`) suggest a design system built for multi-brand, multi-context "
+"deployment where colors can be swapped globally. The blue highlight color"
+" (`#1c69d4`) is BMW's signature blue — used sparingly for interactive "
+"elements and focus states, never decoratively. Zero border-radius was "
+"detected — BMW's design is angular, sharp-cornered, and uncompromisingly "
+"geometric."
+msgstr ""
+
+#: ../../source/templates_bmw.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_bmw.md:25
+msgid ""
+"BMWTypeNextLatin Light (weight 300) uppercase for display — whispered "
+"authority"
+msgstr ""
+
+#: ../../source/templates_bmw.md:26
+msgid ""
+"BMW Blue (`#1c69d4`) as singular accent — used only for interactive "
+"elements"
+msgstr ""
+
+#: ../../source/templates_bmw.md:27
+msgid "Zero border-radius detected — angular, sharp-cornered, industrial geometry"
+msgstr ""
+
+#: ../../source/templates_bmw.md:28
+msgid "Dark hero photography + white content sections — showroom lighting rhythm"
+msgstr ""
+
+#: ../../source/templates_bmw.md:29
+msgid ""
+"CSS variable-driven theming: `--site-context-*` tokens for brand "
+"flexibility"
+msgstr ""
+
+#: ../../source/templates_bmw.md:30
+msgid "Weight 900 for navigation emphasis — extreme contrast with 300 display"
+msgstr ""
+
+#: ../../source/templates_bmw.md:31
+msgid ""
+"Tight line-heights (1.15–1.30) throughout — compressed, efficient, German"
+" engineering"
+msgstr ""
+
+#: ../../source/templates_bmw.md:32
+msgid "Full-bleed automotive photography as primary visual content"
+msgstr ""
+
+#: ../../source/templates_bmw.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_bmw.md:36
+msgid "Primary Brand"
+msgstr ""
+
+#: ../../source/templates_bmw.md:37
+msgid ""
+"**Pure White** (`#ffffff`): `--site-context-theme-color`, primary "
+"surface, card backgrounds"
+msgstr ""
+
+#: ../../source/templates_bmw.md:38
+msgid ""
+"**BMW Blue** (`#1c69d4`): `--site-context-highlight-color`, primary "
+"interactive accent"
+msgstr ""
+
+#: ../../source/templates_bmw.md:39
+msgid ""
+"**BMW Focus Blue** (`#0653b6`): `--site-context-focus-color`, keyboard "
+"focus and active states"
+msgstr ""
+
+#: ../../source/templates_bmw.md:41
+msgid "Neutral Scale"
+msgstr ""
+
+#: ../../source/templates_bmw.md:42
+msgid "**Near Black** (`#262626`): Primary text on light surfaces, dark link text"
+msgstr ""
+
+#: ../../source/templates_bmw.md:43
+msgid ""
+"**Meta Gray** (`#757575`): `--site-context-metainfo-color`, secondary "
+"text, metadata"
+msgstr ""
+
+#: ../../source/templates_bmw.md:44
+msgid "**Silver** (`#bbbbbb`): Tertiary text, muted links, footer elements"
+msgstr ""
+
+#: ../../source/templates_bmw.md:46
+msgid "Interactive States"
+msgstr ""
+
+#: ../../source/templates_bmw.md:47
+msgid ""
+"All links hover to white (`#ffffff`) — suggesting primarily dark-surface "
+"navigation"
+msgstr ""
+
+#: ../../source/templates_bmw.md:48
+msgid "Text links use underline: none on hover — clean interaction"
+msgstr ""
+
+#: ../../source/templates_bmw.md:50
+msgid "Shadows"
+msgstr ""
+
+#: ../../source/templates_bmw.md:51
+msgid ""
+"Minimal shadow system — depth through photography and dark/light section "
+"contrast"
+msgstr ""
+
+#: ../../source/templates_bmw.md:53
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_bmw.md:55
+msgid "Font Families"
+msgstr ""
+
+#: ../../source/templates_bmw.md:56
+msgid ""
+"**Display Light**: `BMWTypeNextLatin Light`, fallbacks: `Helvetica, "
+"Arial, Hiragino Kaku Gothic ProN, Hiragino Sans, Meiryo`"
+msgstr ""
+
+#: ../../source/templates_bmw.md:57
+msgid "**Body / UI**: `BMWTypeNextLatin`, same fallback stack"
+msgstr ""
+
+#: ../../source/templates_bmw.md:59
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "BMWTypeNextLatin Light"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "60px (3.75rem)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "300"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "1.30 (tight)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "`text-transform: uppercase`"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "BMWTypeNextLatin"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "32px (2.00rem)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Major section titles"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Nav Emphasis"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "900"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Navigation bold items"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "1.15 (tight)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Standard body text"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Button Bold"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "1.20–2.88"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "CTA buttons"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Standard buttons"
+msgstr ""
+
+#: ../../source/templates_bmw.md:70
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_bmw.md:71
+msgid ""
+"**Light display, heavy navigation**: Weight 300 for hero headlines "
+"creates whispered elegance; weight 900 for navigation creates stark "
+"authority. This extreme weight contrast (300 vs 900) is the signature "
+"typographic tension."
+msgstr ""
+
+#: ../../source/templates_bmw.md:72
+msgid ""
+"**Universal uppercase display**: The 60px hero is always uppercase — "
+"creating a monumental, architectural quality."
+msgstr ""
+
+#: ../../source/templates_bmw.md:73
+msgid ""
+"**Tight everything**: Line-heights from 1.15 to 1.30 across the entire "
+"system. Nothing breathes — every line is compressed, efficient, German-"
+"engineered."
+msgstr ""
+
+#: ../../source/templates_bmw.md:74
+msgid ""
+"**Single font family**: BMWTypeNextLatin handles everything from 60px "
+"display to 16px body — unity through one typeface at different weights."
+msgstr ""
+
+#: ../../source/templates_bmw.md:76
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_bmw.md:78
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_bmw.md:79
+msgid "Text: 16px BMWTypeNextLatin, weight 700 for primary, 400 for secondary"
+msgstr ""
+
+#: ../../source/templates_bmw.md:80
+msgid "Line-height: 1.15–2.88 (large variation suggests padding-driven sizing)"
+msgstr ""
+
+#: ../../source/templates_bmw.md:81
+msgid "Border: white bottom-border on dark surfaces (`1px solid #ffffff`)"
+msgstr ""
+
+#: ../../source/templates_bmw.md:82
+msgid "No border-radius — sharp rectangular buttons"
+msgstr ""
+
+#: ../../source/templates_bmw.md:84
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_bmw.md:85
+msgid "No border-radius — all containers are sharp-cornered rectangles"
+msgstr ""
+
+#: ../../source/templates_bmw.md:86
+msgid "White backgrounds on light sections"
+msgstr ""
+
+#: ../../source/templates_bmw.md:87
+msgid "Dark backgrounds for hero/feature sections"
+msgstr ""
+
+#: ../../source/templates_bmw.md:88
+msgid "No visible borders on most elements"
+msgstr ""
+
+#: ../../source/templates_bmw.md:90
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_bmw.md:91
+msgid "BMWTypeNextLatin 18px weight 900 for primary nav links"
+msgstr ""
+
+#: ../../source/templates_bmw.md:92
+msgid "White text on dark header"
+msgstr ""
+
+#: ../../source/templates_bmw.md:93
+msgid "BMW logo 54x54px"
+msgstr ""
+
+#: ../../source/templates_bmw.md:94
+msgid "Hover: remains white, text-decoration none"
+msgstr ""
+
+#: ../../source/templates_bmw.md:95
+msgid "\"Home\" text link in header"
+msgstr ""
+
+#: ../../source/templates_bmw.md:97
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_bmw.md:98
+msgid "Full-bleed automotive photography"
+msgstr ""
+
+#: ../../source/templates_bmw.md:99
+msgid "Dark cinematic lighting"
+msgstr ""
+
+#: ../../source/templates_bmw.md:100
+msgid "Edge-to-edge hero images"
+msgstr ""
+
+#: ../../source/templates_bmw.md:101
+msgid "Car photography as primary visual content"
+msgstr ""
+
+#: ../../source/templates_bmw.md:103
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_bmw.md:105
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_bmw.md:106
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_bmw.md:107
+msgid ""
+"Scale: 1px, 5px, 8px, 10px, 12px, 15px, 16px, 20px, 24px, 30px, 32px, "
+"40px, 45px, 56px, 60px"
+msgstr ""
+
+#: ../../source/templates_bmw.md:109
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_bmw.md:110
+msgid "Full-width hero photography"
+msgstr ""
+
+#: ../../source/templates_bmw.md:111
+msgid "Centered content sections"
+msgstr ""
+
+#: ../../source/templates_bmw.md:112
+msgid "Footer: multi-column link grid"
+msgstr ""
+
+#: ../../source/templates_bmw.md:114
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_bmw.md:115
+msgid ""
+"**Showroom pacing**: Dark hero sections with generous padding create the "
+"feeling of walking through a showroom where each vehicle is spotlit in "
+"its own space."
+msgstr ""
+
+#: ../../source/templates_bmw.md:116
+msgid ""
+"**Compressed content**: Body text areas use tight line-heights and "
+"compact spacing — information-dense, no waste."
+msgstr ""
+
+#: ../../source/templates_bmw.md:118
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_bmw.md:119
+msgid ""
+"**None detected.** BMW uses sharp corners exclusively — every element is "
+"a precise rectangle. This is the most angular design system analyzed."
+msgstr ""
+
+#: ../../source/templates_bmw.md:121
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Photography (Level 0)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Full-bleed dark imagery"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Hero backgrounds"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Flat (Level 1)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "White surface, no shadow"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Content sections"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Focus (Accessibility)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "BMW Focus Blue (`#0653b6`)"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Focus states"
+msgstr ""
+
+#: ../../source/templates_bmw.md:129
+msgid ""
+"**Shadow Philosophy**: BMW uses virtually no shadows. Depth is created "
+"entirely through the contrast between dark photographic sections and "
+"white content sections — the automotive lighting does the elevation work."
+msgstr ""
+
+#: ../../source/templates_bmw.md:131
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_bmw.md:133
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_bmw.md:134
+msgid "Use BMWTypeNextLatin Light (300) uppercase for all display headings"
+msgstr ""
+
+#: ../../source/templates_bmw.md:135
+msgid "Keep ALL corners sharp (0px radius) — angular geometry is non-negotiable"
+msgstr ""
+
+#: ../../source/templates_bmw.md:136
+msgid ""
+"Use BMW Blue (`#1c69d4`) only for interactive elements — never "
+"decoratively"
+msgstr ""
+
+#: ../../source/templates_bmw.md:137
+msgid ""
+"Apply weight 900 for navigation emphasis — the extreme weight contrast is"
+" intentional"
+msgstr ""
+
+#: ../../source/templates_bmw.md:138
+msgid "Use full-bleed automotive photography for hero sections"
+msgstr ""
+
+#: ../../source/templates_bmw.md:139
+msgid "Keep line-heights tight (1.15–1.30) throughout"
+msgstr ""
+
+#: ../../source/templates_bmw.md:140
+msgid "Use `--site-context-*` CSS variables for theming"
+msgstr ""
+
+#: ../../source/templates_bmw.md:142
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_bmw.md:143
+msgid "Don't round corners — zero radius is the BMW identity"
+msgstr ""
+
+#: ../../source/templates_bmw.md:144
+msgid "Don't use BMW Blue for backgrounds or large surfaces — it's an accent only"
+msgstr ""
+
+#: ../../source/templates_bmw.md:145
+msgid ""
+"Don't use medium font weights (500–600) — the system uses 300, 400, 700, "
+"900 extremes"
+msgstr ""
+
+#: ../../source/templates_bmw.md:146
+msgid ""
+"Don't add decorative elements — the photography and typography carry "
+"everything"
+msgstr ""
+
+#: ../../source/templates_bmw.md:147
+msgid "Don't use relaxed line-heights — BMW text is always compressed"
+msgstr ""
+
+#: ../../source/templates_bmw.md:148
+msgid ""
+"Don't lighten the dark hero sections — the contrast with white IS the "
+"design"
+msgstr ""
+
+#: ../../source/templates_bmw.md:150
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_bmw.md:152
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Mobile Small"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "<375px"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Minimum supported"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "375–480px"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Single column"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Mobile Large"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "480–640px"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Slight adjustments"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Tablet Small"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "640–768px"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "2-column begins"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "768–920px"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Standard tablet"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Desktop Small"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "920–1024px"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Desktop layout begins"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "1024–1280px"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Standard desktop"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "1280–1440px"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Expanded"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Ultra-wide"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "1440–1600px"
+msgstr ""
+
+#: ../../source/templates_bmw.md
+msgid "Maximum layout"
+msgstr ""
+
+#: ../../source/templates_bmw.md:165
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_bmw.md:166
+msgid "Hero: 60px → scales down, maintains uppercase"
+msgstr ""
+
+#: ../../source/templates_bmw.md:167
+msgid "Navigation: horizontal → hamburger"
+msgstr ""
+
+#: ../../source/templates_bmw.md:168
+msgid "Photography: full-bleed maintained at all sizes"
+msgstr ""
+
+#: ../../source/templates_bmw.md:169
+msgid "Content sections: stack vertically"
+msgstr ""
+
+#: ../../source/templates_bmw.md:170
+msgid "Footer: multi-column → stacked"
+msgstr ""
+
+#: ../../source/templates_bmw.md:172
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_bmw.md:174
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_bmw.md:175
+msgid "Background: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_bmw.md:176
+msgid "Text: Near Black (`#262626`)"
+msgstr ""
+
+#: ../../source/templates_bmw.md:177
+msgid "Secondary text: Meta Gray (`#757575`)"
+msgstr ""
+
+#: ../../source/templates_bmw.md:178
+msgid "Accent: BMW Blue (`#1c69d4`)"
+msgstr ""
+
+#: ../../source/templates_bmw.md:179
+msgid "Focus: BMW Focus Blue (`#0653b6`)"
+msgstr ""
+
+#: ../../source/templates_bmw.md:180
+msgid "Muted: Silver (`#bbbbbb`)"
+msgstr ""
+
+#: ../../source/templates_bmw.md:182
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_bmw.md:183
+msgid ""
+"\"Create a hero: full-width dark automotive photography background. "
+"Heading at 60px BMWTypeNextLatin Light weight 300, uppercase, line-height"
+" 1.30, white text. No border-radius anywhere.\""
+msgstr ""
+
+#: ../../source/templates_bmw.md:184
+msgid ""
+"\"Design navigation: dark background. BMWTypeNextLatin 18px weight 900 "
+"for links, white text. BMW logo 54x54. Sharp rectangular layout.\""
+msgstr ""
+
+#: ../../source/templates_bmw.md:185
+msgid ""
+"\"Build a button: 16px BMWTypeNextLatin weight 700, line-height 1.20. "
+"Sharp corners (0px radius). White bottom border on dark surface.\""
+msgstr ""
+
+#: ../../source/templates_bmw.md:186
+msgid ""
+"\"Create content section: white background. Heading at 32px weight 400, "
+"line-height 1.30, #262626. Body at 16px weight 400, line-height 1.15.\""
+msgstr ""
+
+#: ../../source/templates_bmw.md:188
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_bmw.md:189
+msgid "Zero border-radius — every corner is sharp, no exceptions"
+msgstr ""
+
+#: ../../source/templates_bmw.md:190
+msgid "Weight extremes: 300 (display), 400 (body), 700 (buttons), 900 (nav)"
+msgstr ""
+
+#: ../../source/templates_bmw.md:191
+msgid "BMW Blue for interactive only — never as background or decoration"
+msgstr ""
+
+#: ../../source/templates_bmw.md:192
+msgid "Photography carries emotion — the UI is pure precision"
+msgstr ""
+
+#: ../../source/templates_bmw.md:193
+msgid "Tight line-heights everywhere — 1.15 to 1.30 is the range"
+msgstr ""
+

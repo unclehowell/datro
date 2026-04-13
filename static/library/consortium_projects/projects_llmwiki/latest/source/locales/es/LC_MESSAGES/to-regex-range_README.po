@@ -1,0 +1,738 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/to-regex-range_README.md:1
+msgid ""
+"to-regex-range [![NPM version](https://img.shields.io/npm/v/to-regex-"
+"range.svg?style=flat)](https://www.npmjs.com/package/to-regex-range) "
+"[![NPM monthly downloads](https://img.shields.io/npm/dm/to-regex-"
+"range.svg?style=flat)](https://npmjs.org/package/to-regex-range)  [![NPM "
+"total downloads](https://img.shields.io/npm/dt/to-regex-"
+"range.svg?style=flat)](https://npmjs.org/package/to-regex-range) [![Linux"
+" Build Status](https://img.shields.io/travis/micromatch/to-regex-"
+"range.svg?style=flat&label=Travis)](https://travis-ci.org/micromatch/to-"
+"regex-range)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:1
+msgid "NPM version"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:1
+msgid "NPM monthly downloads"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:1
+msgid "NPM total downloads"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:1
+msgid "Linux Build Status"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:3
+msgid ""
+"Pass two numbers, get a regex-compatible source string for matching "
+"ranges. Validated against more than 2.78 million test assertions."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:7
+msgid "Install with [npm](https://www.npmjs.com/):"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:13
+msgid "Install with [yarn](https://yarnpkg.com):"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:24
+msgid ""
+"This libary generates the `source` string to be passed to `new RegExp()` "
+"for matching a range of numbers."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:26
+msgid "**Example**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:33
+msgid ""
+"A string is returned so that you can do whatever you need with it before "
+"passing it to `new RegExp()` (like adding `^` or `$` boundaries, defining"
+" flags, or combining it another string)."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:44
+msgid "Convenience"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:46
+msgid ""
+"Creating regular expressions for matching numbers gets deceptively "
+"complicated pretty fast."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:48
+msgid ""
+"For example, let's say you need a validation regex for matching part of a"
+" user-id, postal code, social security number, tax id, etc:"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:50
+msgid "regex for matching `1` => `/1/` (easy enough)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:51
+msgid "regex for matching `1` through `5` => `/[1-5]/` (not bad...)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:52
+msgid "regex for matching `1` or `5` => `/(1|5)/` (still easy...)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:53
+msgid ""
+"regex for matching `1` through `50` => `/([1-9]|[1-4][0-9]|50)/` (uh-"
+"oh...)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:54
+msgid ""
+"regex for matching `1` through `55` => `/([1-9]|[1-4][0-9]|5[0-5])/` (no "
+"prob, I can do this...)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:55
+#, python-brace-format
+msgid ""
+"regex for matching `1` through `555` => "
+"`/([1-9]|[1-9][0-9]|[1-4][0-9]{2}|5[0-4][0-9]|55[0-5])/` (maybe not...)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:56
+#, python-brace-format
+msgid ""
+"regex for matching `0001` through `5555` => "
+"`/(0{3}[1-9]|0{2}[1-9][0-9]|0[1-9][0-9]{2}|[1-4][0-9]{3}|5[0-4][0-9]{2}|55[0-4][0-9]|555[0-5])/`"
+" (okay, I get the point!)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:58
+msgid ""
+"The numbers are contrived, but they're also really basic. In the real "
+"world you might need to generate a regex on-the-fly for validation."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:60
+msgid "**Learn more**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:62
+msgid ""
+"If you're interested in learning more about [character "
+"classes](http://www.regular-expressions.info/charclass.html) and other "
+"regex features, I personally have always found [regular-"
+"expressions.info](http://www.regular-expressions.info/charclass.html) to "
+"be pretty useful."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:64
+msgid "Heavily tested"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:66
+msgid ""
+"As of April 27, 2017, this library runs [2,783,483 test "
+"assertions](./test/test.js) against generated regex-ranges to provide "
+"brute-force verification that results are indeed correct."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:68
+msgid "Tests run in ~870ms on my MacBook Pro, 2.5 GHz Intel Core i7."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:70
+msgid "Highly optimized"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:72
+msgid "Generated regular expressions are highly optimized:"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:74
+msgid "duplicate sequences and character classes are reduced using quantifiers"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:75
+msgid ""
+"smart enough to use `?` conditionals when number(s) or range(s) can be "
+"positive or negative"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:76
+msgid ""
+"uses fragment caching to avoid processing the same exact string more than"
+" once"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:82
+msgid "Usage"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:84
+msgid ""
+"Add this library to your javascript application with the following line "
+"of code"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:90
+msgid ""
+"The main export is a function that takes two integers: the `min` value "
+"and `max` value (formatted as strings or numbers)."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:103
+msgid "Options"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:105
+msgid "options.capture"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:107
+#: ../../source/to-regex-range_README.md:123
+#: ../../source/to-regex-range_README.md:139
+msgid "**Type**: `boolean`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:109
+#: ../../source/to-regex-range_README.md:125
+msgid "**Deafault**: `undefined`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:111
+msgid ""
+"Wrap the returned value in parentheses when there is more than one regex "
+"condition. Useful when you're dynamically generating ranges."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:121
+msgid "options.shorthand"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:127
+msgid "Use the regex shorthand for `[0-9]`:"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:137
+msgid "options.relaxZeros"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:141
+msgid "**Default**: `true`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:143
+msgid ""
+"This option only applies to **negative zero-padded ranges**. By default, "
+"when a negative zero-padded range is defined, the number of leading zeros"
+" is relaxed using `-0*`."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:156
+msgid "Consider the following."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:162
+msgid "_Note that `-001` and `100` are both three digits long_."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:164
+msgid ""
+"In most zero-padding implementations, only a single leading zero is "
+"enough to indicate that zero-padding should be applied. Thus, the leading"
+" zeros would be \"corrected\" on the negative range in the example to "
+"`-01`, instead of `-001`, to make total length of each string no greater "
+"than the length of the largest number in the range (in other words, "
+"`-001` is 4 digits, but `100` is only three digits)."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:166
+msgid ""
+"If zeros were not relaxed by default, you might expect the resulting "
+"regex of the above pattern to match `-001` - given that it's defined that"
+" way in the arguments - _but it wouldn't_. It would, however, match "
+"`-01`. This gets even more ambiguous with large ranges, like `-01` to "
+"`1000000`."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:168
+msgid ""
+"Thus, we relax zeros by default to provide a more predictable experience "
+"for users."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:172
+msgid "Examples"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "**Range**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "**Result**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "**Compile time**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('5, 5')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`5`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_33μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('5, 6')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`5|6`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_53μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('29, 51')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`29|[34][0-9]|5[01]`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_699μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('31, 877')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+#, python-brace-format
+msgid "`3[1-9]|[4-9][0-9]|[1-7][0-9]{2}|8[0-6][0-9]|87[0-7]`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_711μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('111, 555')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+#, python-brace-format
+msgid "`11[1-9]|1[2-9][0-9]|[2-4][0-9]{2}|5[0-4][0-9]|55[0-5]`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_62μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('-10, 10')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`-[1-9]|-?10|[0-9]`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_74μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('-100, -10')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`-1[0-9]|-[2-9][0-9]|-100`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_49μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('-100, 100')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`-[1-9]|-?[1-9][0-9]|-?100|[0-9]`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_45μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('001, 100')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+#, python-brace-format
+msgid "`0{2}[1-9]|0[1-9][0-9]|100`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_158μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('0010, 1000')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+#, python-brace-format
+msgid "`0{2}1[0-9]|0{2}[2-9][0-9]|0[1-9][0-9]{2}|1000`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_61μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('1, 2')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`1|2`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_10μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('1, 5')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`[1-5]`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_24μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('1, 10')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`[1-9]|10`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_23μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('1, 100')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`[1-9]|[1-9][0-9]|100`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_30μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('1, 1000')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+#, python-brace-format
+msgid "`[1-9]|[1-9][0-9]{1,2}|1000`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_52μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('1, 10000')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+#, python-brace-format
+msgid "`[1-9]|[1-9][0-9]{1,3}|10000`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_47μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('1, 100000')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+#, python-brace-format
+msgid "`[1-9]|[1-9][0-9]{1,4}|100000`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_44μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('1, 1000000')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+#, python-brace-format
+msgid "`[1-9]|[1-9][0-9]{1,5}|1000000`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "`toRegexRange('1, 10000000')`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+#, python-brace-format
+msgid "`[1-9]|[1-9][0-9]{1,6}|10000000`"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md
+msgid "_63μs_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:196
+msgid "Heads up!"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:198
+msgid "**Order of arguments**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:200
+msgid ""
+"When the `min` is larger than the `max`, values will be flipped to create"
+" a valid range:"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:206
+msgid "Is effectively flipped to:"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:213
+msgid "**Steps / increments**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:215
+msgid ""
+"This library does not support steps (increments). A pr to add support "
+"would be welcome."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:217
+msgid "History"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:219
+msgid "v2.0.0 - 2017-04-21"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:221
+msgid "**New features**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:223
+msgid "Adds support for zero-padding!"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:225
+msgid "v1.0.0"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:227
+msgid "**Optimizations**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:229
+msgid ""
+"Repeating ranges are now grouped using quantifiers. rocessing time is "
+"roughly the same, but the generated regex is much smaller, which should "
+"result in faster matching."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:231
+msgid "Attribution"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:233
+msgid ""
+"Inspired by the python library [range-regex](https://github.com/dimka665"
+"/range-regex)."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:235
+msgid "About"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:237
+msgid "Related projects"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:239
+msgid ""
+"[expand-range](https://www.npmjs.com/package/expand-range): Fast, bash-"
+"like range expansion. Expand a range of numbers or letters, uppercase or "
+"lowercase. See… [more](https://github.com/jonschlinkert/expand-range) | "
+"[homepage](https://github.com/jonschlinkert/expand-range \"Fast, bash-"
+"like range expansion. Expand a range of numbers or letters, uppercase or "
+"lowercase. See the benchmarks. Used by micromatch.\")"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:240
+msgid ""
+"[fill-range](https://www.npmjs.com/package/fill-range): Fill in a range "
+"of numbers or letters, optionally passing an increment or `step` to… "
+"[more](https://github.com/jonschlinkert/fill-range) | "
+"[homepage](https://github.com/jonschlinkert/fill-range \"Fill in a range "
+"of numbers or letters, optionally passing an increment or `step` to use, "
+"or create a regex-compatible range with `options.toRegex`\")"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:241
+msgid ""
+"[micromatch](https://www.npmjs.com/package/micromatch): Glob matching for"
+" javascript/node.js. A drop-in replacement and faster alternative to "
+"minimatch and multimatch. | "
+"[homepage](https://github.com/jonschlinkert/micromatch \"Glob matching "
+"for javascript/node.js. A drop-in replacement and faster alternative to "
+"minimatch and multimatch.\")"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:242
+msgid ""
+"[repeat-element](https://www.npmjs.com/package/repeat-element): Create an"
+" array by repeating the given value n times. | "
+"[homepage](https://github.com/jonschlinkert/repeat-element \"Create an "
+"array by repeating the given value n times.\")"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:243
+msgid ""
+"[repeat-string](https://www.npmjs.com/package/repeat-string): Repeat the "
+"given string n times. Fastest implementation for repeating a string. | "
+"[homepage](https://github.com/jonschlinkert/repeat-string \"Repeat the "
+"given string n times. Fastest implementation for repeating a string.\")"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:245
+msgid "Contributing"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:247
+msgid ""
+"Pull requests and stars are always welcome. For bugs and feature "
+"requests, [please create an issue](../../issues/new)."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:249
+msgid "Building docs"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:251
+msgid ""
+"_(This project's readme.md is generated by "
+"[verb](https://github.com/verbose/verb-generate-readme), please don't "
+"edit the readme directly. Any changes to the readme must be made in the "
+"[.verb.md](.verb.md) readme template.)_"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:253
+msgid "To generate the readme, run the following command:"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:259
+msgid "Running tests"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:261
+msgid ""
+"Running and reviewing unit tests is a great way to get familiarized with "
+"a library and its API. You can install dependencies and run tests with "
+"the following command:"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:267
+msgid "Author"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:269
+msgid "**Jon Schlinkert**"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:271
+msgid "[github/jonschlinkert](https://github.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:272
+msgid "[twitter/jonschlinkert](https://twitter.com/jonschlinkert)"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:274
+msgid "License"
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:276
+msgid ""
+"Copyright © 2017, [Jon Schlinkert](https://github.com/jonschlinkert). "
+"Released under the [MIT License](LICENSE)."
+msgstr ""
+
+#: ../../source/to-regex-range_README.md:281
+msgid ""
+"_This file was generated by [verb-generate-"
+"readme](https://github.com/verbose/verb-generate-readme), v0.6.0, on "
+"April 27, 2017._"
+msgstr ""
+

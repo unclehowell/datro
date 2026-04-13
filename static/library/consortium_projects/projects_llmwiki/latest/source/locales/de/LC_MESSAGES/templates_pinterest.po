@@ -1,0 +1,1081 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_pinterest.md:1
+msgid "Design System: Pinterest"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:7
+msgid "**Primary:** `DM Sans` | **Mono:** `system monospace stack`"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'DM Sans', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: ui-monospace, SFMono-Regular, Menlo, "
+"Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:18
+msgid ""
+"Pinterest's website is a warm, inspiration-driven canvas that treats "
+"visual discovery like a lifestyle magazine. The design operates on a "
+"soft, slightly warm white background with Pinterest Red (`#e60023`) as "
+"the singular, bold brand accent. Unlike the cool blues of most tech "
+"platforms, Pinterest's neutral scale has a distinctly warm undertone — "
+"grays lean toward olive/sand (`#91918c`, `#62625b`, `#e5e5e0`) rather "
+"than cool steel, creating a cozy, craft-like atmosphere that invites "
+"browsing."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:20
+msgid ""
+"The typography uses Pin Sans — a custom proprietary font with a broad "
+"fallback stack including Japanese fonts, reflecting Pinterest's global "
+"reach. At display scale (70px, weight 600), Pin Sans creates large, "
+"inviting headlines. At smaller sizes, the system is compact: buttons at "
+"12px, captions at 12–14px. The CSS variable naming system (`--comp-*`, "
+"`--sema-*`, `--base-*`) reveals a sophisticated three-tier design token "
+"architecture: component-level, semantic-level, and base-level tokens."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:22
+#, python-format
+msgid ""
+"What distinguishes Pinterest is its generous border-radius system "
+"(12px–40px, plus 50% for circles) and warm-tinted button backgrounds. The"
+" secondary button (`#e5e5e0`) has a distinctly warm, sand-like tone "
+"rather than cold gray. The primary red button uses 16px radius — rounded "
+"but not pill-shaped. Combined with warm badge backgrounds "
+"(`hsla(60,20%,98%,.5)` — a subtle yellow-warm wash) and photography-"
+"dominant layouts, the result is a design that feels handcrafted and "
+"personal, not corporate and sterile."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:25
+msgid "Warm white canvas with olive/sand-toned neutrals — cozy, not clinical"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:26
+msgid ""
+"Pinterest Red (`#e60023`) as singular bold accent — never subtle, always "
+"confident"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:27
+msgid "Pin Sans custom font with global fallback stack (including CJK)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:28
+msgid "Three-tier token architecture: `--comp-*` / `--sema-*` / `--base-*`"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:29
+msgid ""
+"Warm secondary surfaces: sand gray (`#e5e5e0`), warm badge "
+"(`hsla(60,20%,98%,.5)`)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:30
+msgid "Generous border-radius: 16px standard, up to 40px for large containers"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:31
+msgid "Photography-first content — pins/images are the primary visual element"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:32
+msgid "Dark near-purple text (`#211922`) — warm, with a hint of plum"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:36
+msgid "Primary Brand"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:37
+msgid ""
+"**Pinterest Red** (`#e60023`): Primary CTA, brand accent — bold, "
+"confident red"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:38
+msgid "**Green 700** (`#103c25`): `--base-color-green-700`, success/nature accent"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:39
+msgid ""
+"**Green 700 Hover** (`#0b2819`): `--base-color-hover-green-700`, pressed "
+"green"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:41
+msgid "Text"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:42
+msgid ""
+"**Plum Black** (`#211922`): Primary text — warm near-black with plum "
+"undertone"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:43
+msgid "**Black** (`#000000`): Secondary text, button text"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:44
+msgid "**Olive Gray** (`#62625b`): Secondary descriptions, muted text"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:45
+msgid ""
+"**Warm Silver** (`#91918c`): `--comp-button-color-text-transparent-"
+"disabled`, disabled text, input borders"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:46
+msgid "**White** (`#ffffff`): Text on dark/colored surfaces"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:48
+msgid "Interactive"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:49
+msgid ""
+"**Focus Blue** (`#435ee5`): `--comp-button-color-border-focus-outer-"
+"transparent`, focus rings"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:50
+msgid ""
+"**Performance Purple** (`#6845ab`): `--sema-color-hover-icon-performance-"
+"plus`, performance features"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:51
+msgid ""
+"**Recommendation Purple** (`#7e238b`): `--sema-color-hover-text-"
+"recommendation`, AI recommendation"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:52
+msgid "**Link Blue** (`#2b48d4`): Link text color"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:53
+msgid "**Facebook Blue** (`#0866ff`): `--facebook-background-color`, social login"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:54
+msgid ""
+"**Pressed Blue** (`#617bff`): `--base-color-pressed-blue-200`, pressed "
+"state"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:56
+msgid "Surface & Border"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:57
+msgid "**Sand Gray** (`#e5e5e0`): Secondary button background — warm, craft-like"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:58
+msgid "**Warm Light** (`#e0e0d9`): Circular button backgrounds, badges"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:59
+msgid ""
+"**Warm Wash** (`hsla(60, 20%, 98%, 0.5)`): `--comp-badge-color-"
+"background-wash-light`, subtle warm badge bg"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:60
+#, python-format
+msgid "**Fog** (`#f6f6f3`): Light surface (at 50% opacity)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:61
+msgid ""
+"**Border Disabled** (`#c8c8c1`): `--sema-color-border-disabled`, disabled"
+" borders"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:62
+msgid ""
+"**Hover Gray** (`#bcbcb3`): `--base-color-hover-grayscale-150`, hover "
+"border"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:63
+msgid "**Dark Surface** (`#33332e`): Dark section backgrounds"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:65
+msgid "Semantic"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:66
+msgid "**Error Red** (`#9e0a0a`): Checkbox/form error states"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:68
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:70
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:71
+msgid ""
+"**Primary**: `Pin Sans`, fallbacks: `-apple-system, system-ui, Segoe UI, "
+"Roboto, Oxygen-Sans, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, "
+"Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, Helvetica, "
+"ヒラギノ角ゴ Pro W3, メイリオ, Meiryo, ＭＳ Ｐゴシック, Arial`"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:73
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Display Hero"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Pin Sans"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "70px (4.38rem)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Maximum impact"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "28px (1.75rem)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "-1.2px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Negative tracking"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Body"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "16px (1.00rem)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Standard reading"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Caption Bold"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Strong metadata"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "400–500"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Small text, tags"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Button"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Button labels"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:84
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:85
+msgid ""
+"**Compact type scale**: The range is 12px–70px with a dramatic jump — "
+"most functional text is 12–16px, creating a dense, app-like information "
+"hierarchy."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:86
+msgid ""
+"**Warm weight distribution**: 600–700 for headings, 400–500 for body. No "
+"ultra-light weights — the type always feels substantial."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:87
+msgid ""
+"**Negative tracking on headings**: -1.2px on 28px headings creates cozy, "
+"intimate section titles."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:88
+msgid ""
+"**Single font family**: Pin Sans handles everything — no secondary "
+"display or monospace font detected."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:90
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:92
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:94
+msgid "**Primary Red**"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:95
+msgid "Background: `#e60023` (Pinterest Red)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:96
+msgid "Text: `#000000` (black — unusual choice for contrast on red)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:97
+#: ../../source/templates_pinterest.md:105
+msgid "Padding: 6px 14px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:98
+msgid "Radius: 16px (generously rounded, not pill)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:99
+msgid "Border: `2px solid rgba(255, 255, 255, 0)` (transparent)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:100
+msgid "Focus: semantic border + outline via CSS variables"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:102
+msgid "**Secondary Sand**"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:103
+msgid "Background: `#e5e5e0` (warm sand gray)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:104
+#: ../../source/templates_pinterest.md:117
+msgid "Text: `#000000`"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:106
+msgid "Radius: 16px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:107
+msgid "Focus: same semantic border system"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:109
+msgid "**Circular Action**"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:110
+msgid "Background: `#e0e0d9` (warm light)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:111
+msgid "Text: `#211922` (plum black)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:112
+msgid "Radius: 50% (circle)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:113
+msgid "Use: Pin actions, navigation controls"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:115
+msgid "**Ghost / Transparent**"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:116
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:118
+msgid "No border"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:119
+msgid "Use: Tertiary actions"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:121
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:122
+msgid "Photography-first pin cards with generous radius (12px–20px)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:123
+msgid "No traditional box-shadow on most cards"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:124
+msgid "White or warm fog backgrounds"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:125
+msgid "8px white thick border on some image containers"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:127
+msgid "Inputs"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:128
+msgid ""
+"Email input: white background, `1px solid #91918c` border, 16px radius, "
+"11px 15px padding"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:129
+msgid "Focus: semantic border + outline system via CSS variables"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:131
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:132
+msgid "Clean header on white or warm background"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:133
+msgid "Pinterest logo + search bar centered"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:134
+msgid "Pin Sans 16px for nav links"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:135
+msgid "Pinterest Red accents for active states"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:137
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:138
+msgid "Pin-style masonry grid (signature Pinterest layout)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:139
+msgid "Rounded corners: 12px–20px on images"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:140
+msgid "Photography as primary content — every pin is an image"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:141
+msgid "Thick white borders (8px) on featured image containers"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:143
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:145
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:146
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:147
+msgid ""
+"Scale: 4px, 6px, 7px, 8px, 10px, 11px, 12px, 16px, 18px, 20px, 22px, "
+"24px, 32px, 80px, 100px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:148
+msgid "Large jumps: 32px → 80px → 100px for section spacing"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:150
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:151
+msgid "Masonry grid for pin content (signature layout)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:152
+msgid "Centered content sections with generous max-width"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:153
+msgid "Full-width dark footer"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:154
+msgid "Search bar as primary navigation element"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:156
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:157
+msgid ""
+"**Inspiration density**: The masonry grid packs pins tightly — the "
+"content density IS the value proposition. Whitespace exists between "
+"sections, not within the grid."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:158
+msgid ""
+"**Breathing above, density below**: Hero/feature sections get generous "
+"padding; the pin grid is compact and immersive."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:160
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:161
+msgid "Standard (12px): Small cards, links"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:162
+msgid "Button (16px): Buttons, inputs, medium cards"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:163
+msgid "Comfortable (20px): Feature cards"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:164
+msgid "Large (28px): Large containers"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:165
+msgid "Section (32px): Tab elements, large panels"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:166
+msgid "Hero (40px): Hero containers, large feature blocks"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:167
+msgid "Circle (50%): Action buttons, tab indicators"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:169
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Default — pins rely on content, not shadow"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Subtle (Level 1)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Minimal shadow (from tokens)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Elevated overlays, dropdowns"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Focus (Accessibility)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "`--sema-color-border-focus-outer-default` ring"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Focus states"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:177
+msgid ""
+"**Shadow Philosophy**: Pinterest uses minimal shadows. The masonry grid "
+"relies on content (photography) to create visual interest rather than "
+"elevation effects. Depth comes from the warmth of surface colors and the "
+"generous rounding of containers."
+msgstr ""
+
+#: ../../source/templates_pinterest.md:179
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:181
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:182
+msgid ""
+"Use warm neutrals (`#e5e5e0`, `#e0e0d9`, `#91918c`) — the warm olive/sand"
+" tone is the identity"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:183
+msgid ""
+"Apply Pinterest Red (`#e60023`) only for primary CTAs — it's bold and "
+"singular"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:184
+msgid "Use Pin Sans exclusively — one font for everything"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:185
+msgid "Apply generous border-radius: 16px for buttons/inputs, 20px+ for cards"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:186
+msgid "Keep the masonry grid dense — content density is the value"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:187
+msgid "Use warm badge backgrounds (`hsla(60,20%,98%,.5)`) for subtle warm washes"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:188
+msgid "Use `#211922` (plum black) for primary text — it's warmer than pure black"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:190
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:191
+msgid "Don't use cool gray neutrals — always warm/olive-toned"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:192
+msgid ""
+"Don't use pure black (`#000000`) as primary text — use plum black "
+"(`#211922`)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:193
+msgid "Don't use pill-shaped buttons — 16px radius is rounded but not pill"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:194
+msgid "Don't add heavy shadows — Pinterest is flat by design, depth from content"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:195
+msgid ""
+"Don't use small border-radius (<12px) on cards — the generous rounding is"
+" core"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:196
+msgid ""
+"Don't introduce additional brand colors — red + warm neutrals is the "
+"complete palette"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:197
+msgid "Don't use thin font weights — Pin Sans at 400 minimum"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:199
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:201
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "<576px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Single column, compact layout"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Mobile Large"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "576–768px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "2-column pin grid"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "768–890px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Expanded grid"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Desktop Small"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "890–1312px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Standard masonry grid"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "1312–1440px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Full layout"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "1440–1680px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Expanded grid columns"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Ultra-wide"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid ">1680px"
+msgstr ""
+
+#: ../../source/templates_pinterest.md
+msgid "Maximum grid density"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:212
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:213
+msgid "Pin grid: 5+ columns → 3 → 2 → 1"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:214
+msgid "Navigation: search bar + icons → simplified mobile nav"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:215
+msgid "Feature sections: side-by-side → stacked"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:216
+msgid "Hero: 70px → scales down proportionally"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:217
+msgid "Footer: dark multi-column → stacked"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:219
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:221
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:222
+msgid "Brand: Pinterest Red (`#e60023`)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:223
+msgid "Background: White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:224
+msgid "Text: Plum Black (`#211922`)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:225
+msgid "Secondary text: Olive Gray (`#62625b`)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:226
+msgid "Button surface: Sand Gray (`#e5e5e0`)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:227
+msgid "Border: Warm Silver (`#91918c`)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:228
+msgid "Focus: Focus Blue (`#435ee5`)"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:230
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:231
+msgid ""
+"\"Create a hero: white background. Headline at 70px Pin Sans weight 600, "
+"plum black (#211922). Red CTA button (#e60023, 16px radius, 6px 14px "
+"padding). Secondary sand button (#e5e5e0, 16px radius).\""
+msgstr ""
+
+#: ../../source/templates_pinterest.md:232
+msgid ""
+"\"Design a pin card: white background, 16px radius, no shadow. "
+"Photography fills top, 16px Pin Sans weight 400 description below in "
+"#62625b.\""
+msgstr ""
+
+#: ../../source/templates_pinterest.md:233
+#, python-format
+msgid ""
+"\"Build a circular action button: #e0e0d9 background, 50% radius, #211922"
+" icon.\""
+msgstr ""
+
+#: ../../source/templates_pinterest.md:234
+msgid ""
+"\"Create an input field: white background, 1px solid #91918c, 16px "
+"radius, 11px 15px padding. Focus: blue outline via semantic tokens.\""
+msgstr ""
+
+#: ../../source/templates_pinterest.md:235
+msgid ""
+"\"Design the dark footer: #33332e background. Pinterest script logo in "
+"white. 12px Pin Sans links in #91918c.\""
+msgstr ""
+
+#: ../../source/templates_pinterest.md:237
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:238
+msgid "Warm neutrals everywhere — olive/sand grays, never cool steel"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:239
+msgid "Pinterest Red for CTAs only — bold and singular"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:240
+msgid "16px radius on buttons/inputs, 20px+ on cards — generous but not pill"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:241
+msgid "Pin Sans is the only font — compact at 12px for UI, 70px for display"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:242
+msgid "Photography carries the design — the UI stays warm and minimal"
+msgstr ""
+
+#: ../../source/templates_pinterest.md:243
+msgid "Plum black (#211922) for text — warmer than pure black"
+msgstr ""
+

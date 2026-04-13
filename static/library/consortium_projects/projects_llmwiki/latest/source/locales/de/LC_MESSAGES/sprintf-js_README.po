@@ -1,0 +1,237 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/sprintf-js_README.md:1
+msgid "sprintf.js"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:2
+msgid ""
+"**sprintf.js** is a complete open source JavaScript sprintf "
+"implementation for the *browser* and *node.js*."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:4
+msgid "Its prototype is simple:"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:8
+msgid ""
+"The placeholders in the format string are marked by `%` and are followed "
+"by one or more of these elements, in this order:"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:10
+msgid ""
+"An optional number followed by a `$` sign that selects which argument "
+"index to use for the value. If not specified, arguments will be placed in"
+" the same order as the placeholders in the input string."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:11
+msgid ""
+"An optional `+` sign that forces to preceed the result with a plus or "
+"minus sign on numeric values. By default, only the `-` sign is used on "
+"negative numbers."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:12
+msgid ""
+"An optional padding specifier that says what character to use for padding"
+" (if specified). Possible values are `0` or any other character precedeed"
+" by a `'` (single quote). The default is to pad with *spaces*."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:13
+msgid ""
+"An optional `-` sign, that causes sprintf to left-align the result of "
+"this placeholder. The default is to right-align the result."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:14
+msgid ""
+"An optional number, that says how many characters the result should have."
+" If the value to be returned is shorter than this number, the result will"
+" be padded. When used with the `j` (JSON) type specifier, the padding "
+"length specifies the tab size used for indentation."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:15
+msgid ""
+"An optional precision modifier, consisting of a `.` (dot) followed by a "
+"number, that says how many digits should be displayed for floating point "
+"numbers. When used with the `g` type specifier, it specifies the number "
+"of significant digits. When used on a string, it causes the result to be "
+"truncated."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:16
+msgid "A type specifier that can be any of:"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:17
+msgid "`%` — yields a literal `%` character"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:18
+msgid "`b` — yields an integer as a binary number"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:19
+msgid "`c` — yields an integer as the character with that ASCII value"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:20
+msgid "`d` or `i` — yields an integer as a signed decimal number"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:21
+msgid "`e` — yields a float using scientific notation"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:22
+msgid "`u` — yields an integer as an unsigned decimal number"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:23
+msgid "`f` — yields a float as is; see notes on precision above"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:24
+msgid "`g` — yields a float as is; see notes on precision above"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:25
+msgid "`o` — yields an integer as an octal number"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:26
+msgid "`s` — yields a string as is"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:27
+msgid "`x` — yields an integer as a hexadecimal number (lower-case)"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:28
+msgid "`X` — yields an integer as a hexadecimal number (upper-case)"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:29
+msgid "`j` — yields a JavaScript object or array as a JSON encoded string"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:31
+msgid "JavaScript `vsprintf`"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:32
+msgid ""
+"`vsprintf` is the same as `sprintf` except that it accepts an array of "
+"arguments, rather than a variable number of arguments:"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:36
+msgid "Argument swapping"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:37
+msgid ""
+"You can also swap the arguments. That is, the order of the placeholders "
+"doesn't have to match the order of the arguments. You can do that by "
+"simply indicating in the format string which arguments the placeholders "
+"refer to:"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:40
+msgid ""
+"And, of course, you can repeat the placeholders without having to "
+"increase the number of arguments."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:42
+msgid "Named arguments"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:43
+msgid ""
+"Format strings may contain replacement fields rather than positional "
+"placeholders. Instead of referring to a certain argument, you can now "
+"refer to a certain key within an object. Replacement fields are "
+"surrounded by rounded parentheses - `(` and `)` - and begin with a "
+"keyword that refers to a key:"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:49
+msgid ""
+"Keywords in replacement fields can be optionally followed by any number "
+"of keywords or indexes:"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:57
+msgid "Note: mixing positional and named placeholders is not (yet) supported"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:59
+msgid "Computed values"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:60
+msgid ""
+"You can pass in a function as a dynamic value and it will be invoked "
+"(with no arguments) in order to compute the value on-the-fly."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:65
+msgid "AngularJS"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:66
+msgid ""
+"You can now use `sprintf` and `vsprintf` (also aliased as `fmt` and "
+"`vfmt` respectively) in your AngularJS projects. See `demo/`."
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:68
+msgid "Installation"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:70
+msgid "Via Bower"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:74
+msgid "Or as a node.js module"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:78
+msgid "Usage"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:86
+msgid "License"
+msgstr ""
+
+#: ../../source/sprintf-js_README.md:88
+msgid "**sprintf.js** is licensed under the terms of the 3-clause BSD license."
+msgstr ""
+

@@ -1,0 +1,1398 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_clickhouse.md:1
+msgid "Design System: ClickHouse"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:7
+msgid "**Primary:** `Inter` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:18
+msgid ""
+"ClickHouse's interface is a high-performance cockpit rendered in acid "
+"yellow-green on obsidian black — a design that screams \"speed\" before "
+"you read a single word. The entire experience lives in darkness: pure "
+"black backgrounds (`#000000`) with dark charcoal cards (`#414141` "
+"borders) creating a terminal-grade aesthetic where the only chromatic "
+"interruption is the signature neon yellow-green (`#faff69`) that slashes "
+"across CTAs, borders, and highlighted moments like a highlighter pen on a"
+" dark console."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:20
+msgid ""
+"The typography is aggressively heavy — Inter at weight 900 (Black) for "
+"the hero headline at 96px creates text blocks that feel like they have "
+"physical mass. This \"database for AI\" site communicates raw power "
+"through visual weight: thick type, high-contrast neon accents, and "
+"performance stats displayed as oversized numbers. There's nothing subtle "
+"about ClickHouse's design, and that's entirely the point — it mirrors the"
+" product's promise of extreme speed and performance."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:22
+msgid ""
+"What makes ClickHouse distinctive is the electrifying tension between the"
+" near-black canvas and the neon yellow-green accent. This color "
+"combination (`#faff69` on `#000000`) creates one of the highest-contrast "
+"pairings in any tech brand, making every CTA button, every highlighted "
+"card, and every accent border impossible to miss. Supporting this is a "
+"forest green (`#166534`) for secondary CTAs that adds depth to the action"
+" hierarchy without competing with the neon."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:25
+msgid ""
+"Pure black canvas (#000000) with neon yellow-green (#faff69) accent — "
+"maximum contrast"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:26
+msgid "Extra-heavy display typography: Inter at weight 900 (Black) up to 96px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:27
+#, python-format
+msgid "Dark charcoal card system with #414141 borders at 80% opacity"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:28
+msgid "Forest green (#166534) secondary CTA buttons"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:29
+msgid "Performance stats as oversized display numbers"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:30
+msgid "Uppercase labels with wide letter-spacing (1.4px) for navigation structure"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:31
+msgid "Active/pressed state shifts text to pale yellow (#f4f692)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:32
+msgid "All links hover to neon yellow-green — unified interactive signal"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:33
+msgid ""
+"Inset shadows on select elements creating \"pressed into the surface\" "
+"depth"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:35
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:37
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:38
+msgid ""
+"**Neon Volt** (`#faff69`): The signature brand color — a vivid acid "
+"yellow-green that's the sole chromatic accent on the black canvas. Used "
+"for primary CTAs, accent borders, link hovers, and highlighted moments."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:39
+msgid ""
+"**Forest Green** (`#166534`): Secondary CTA color — a deep, saturated "
+"green for \"Get Started\" and primary action buttons that need "
+"distinction from the neon."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:40
+msgid ""
+"**Dark Forest** (`#14572f`): A darker green variant for borders and "
+"secondary accents."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:42
+msgid "Secondary & Accent"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:43
+msgid ""
+"**Pale Yellow** (`#f4f692`): Active/pressed state text color — a softer, "
+"more muted version of Neon Volt for state feedback."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:44
+msgid ""
+"**Border Olive** (`#4f5100`): A dark olive-yellow for ghost button "
+"borders — the neon's muted sibling."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:45
+msgid ""
+"**Olive Dark** (`#161600`): The darkest neon-tinted color for subtle "
+"brand text."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:47
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:48
+msgid ""
+"**Pure Black** (`#000000`): The primary page background — absolute black "
+"for maximum contrast."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:49
+msgid ""
+"**Near Black** (`#141414`): Button backgrounds and slightly elevated dark"
+" surfaces."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:50
+#, python-format
+msgid ""
+"**Charcoal** (`#414141`): The primary border color at 80% opacity — the "
+"workhorse for card and container containment."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:51
+msgid ""
+"**Deep Charcoal** (`#343434`): Darker border variant for subtle division "
+"lines."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:52
+msgid ""
+"**Hover Gray** (`#3a3a3a`): Button hover state background — slightly "
+"lighter than Near Black."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:54
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:55
+msgid "**Pure White** (`#ffffff`): Primary text on dark surfaces."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:56
+msgid "**Silver** (`#a0a0a0`): Secondary body text and muted content."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:57
+msgid "**Mid Gray** (`#585858` at 28%): Subtle gray overlay for depth effects."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:58
+msgid ""
+"**Border Gray** (`#e5e7eb`): Light border variant (used in rare light "
+"contexts)."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:60
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:61
+msgid ""
+"**None in the traditional sense.** ClickHouse uses flat color blocks and "
+"high-contrast borders. The \"gradient\" is the contrast itself — neon "
+"yellow-green against pure black creates a visual intensity that gradients"
+" would dilute."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:63
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:65
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:66
+msgid "**Primary**: `Inter` (Next.js optimized variant `__Inter_d1b8ee`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:67
+msgid ""
+"**Secondary Display**: `Basier` (`__basier_a58b65`), with fallbacks: "
+"`Arial, Helvetica`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:68
+msgid "**Code**: `Inconsolata` (`__Inconsolata_a25f62`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:70
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Display Mega"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Inter"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "96px (6rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "900"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Maximum impact, extra-heavy"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Display / Hero"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "72px (4.5rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Section hero titles"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Feature Heading"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Basier"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "36px (2.25rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.30 (tight)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Feature section anchors"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Inter / Basier"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "24px (1.5rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "600–700"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.17–1.38"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Card headings"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Small feature titles"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "400–700"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.56"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Intro paragraphs, button text"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Body / Button"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "16px (1rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Standard body, nav, buttons"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.43"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Metadata, descriptions, links"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Uppercase Label"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.4px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Section overlines, wide-tracked"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Code"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Inconsolata"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Code blocks, commands"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Small"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "500"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Smallest text"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Micro"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "11.2px (0.7rem)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1.79 (relaxed)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Tags, tiny labels"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:87
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:88
+msgid ""
+"**Weight 900 is the weapon**: The display headline uses Inter Black (900)"
+" — a weight most sites never touch. Combined with 96px size, this creates"
+" text with a physical, almost architectural presence."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:89
+msgid ""
+"**Full weight spectrum**: The system uses 400, 500, 600, 700, and 900 — "
+"covering the full gamut. Weight IS hierarchy."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:90
+msgid ""
+"**Uppercase with maximum tracking**: Section overlines use 1.4px letter-"
+"spacing — wider than most systems — creating bold structural labels that "
+"stand out against the dense dark background."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:91
+msgid ""
+"**Dual sans-serif**: Inter handles display and body; Basier handles "
+"feature section headings at 600 weight. This creates a subtle personality"
+" shift between \"data/performance\" (Inter) and \"product/feature\" "
+"(Basier) contexts."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:93
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:95
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:97
+msgid "**Neon Primary**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:98
+msgid "Background: Neon Volt (`#faff69`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:99
+msgid "Text: Near Black (`#151515`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:100
+msgid "Padding: 0px 16px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:101
+msgid "Radius: sharp (4px)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:102
+msgid "Border: `1px solid #faff69`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:103
+msgid "Hover: background shifts to dark (`rgb(29, 29, 29)`), text stays"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:104
+msgid "Active: text shifts to Pale Yellow (`#f4f692`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:105
+msgid "The eye-catching CTA — neon on black"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:107
+msgid "**Dark Solid**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:108
+msgid "Background: Near Black (`#141414`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:109
+#: ../../source/templates_clickhouse.md:119
+#: ../../source/templates_clickhouse.md:128
+msgid "Text: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:110
+#: ../../source/templates_clickhouse.md:120
+msgid "Padding: 12px 16px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:111
+msgid "Radius: 4px or 8px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:112
+#: ../../source/templates_clickhouse.md:121
+msgid "Border: `1px solid #141414`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:113
+#, python-format
+msgid "Hover: bg shifts to Hover Gray (`#3a3a3a`), text to 80% opacity"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:114
+msgid "Active: text to Pale Yellow"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:115
+msgid "The standard action button"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:117
+msgid "**Forest Green**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:118
+msgid "Background: Forest Green (`#166534`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:122
+msgid "Hover: same dark shift"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:123
+#: ../../source/templates_clickhouse.md:133
+msgid "Active: Pale Yellow text"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:124
+msgid "The \"Get Started\" / primary conversion button"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:126
+msgid "**Ghost / Outlined**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:127
+#: ../../source/templates_clickhouse.md:137
+msgid "Background: transparent"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:129
+msgid "Padding: 0px 32px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:130
+msgid "Radius: 4px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:131
+msgid "Border: `1px solid #4f5100` (olive-tinted)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:132
+msgid "Hover: dark bg shift"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:134
+msgid "Secondary actions with neon-tinted border"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:136
+msgid "**Pill Toggle**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:138
+msgid "Radius: pill (9999px)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:139
+msgid "Used for toggle/switch elements"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:141
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:142
+msgid "Background: transparent or Near Black"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:143
+msgid ""
+"Border: `1px solid rgba(65, 65, 65, 0.8)` — the signature charcoal "
+"containment"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:144
+msgid "Radius: 4px (small elements) or 8px (cards, containers)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:145
+msgid ""
+"Shadow Level 1: subtle (`rgba(0,0,0,0.1) 0px 1px 3px, rgba(0,0,0,0.1) 0px"
+" 1px 2px -1px`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:146
+msgid ""
+"Shadow Level 2: medium (`rgba(0,0,0,0.1) 0px 10px 15px -3px, "
+"rgba(0,0,0,0.1) 0px 4px 6px -4px`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:147
+msgid ""
+"Shadow Level 3: inset (`rgba(0,0,0,0.06) 0px 4px 4px, rgba(0,0,0,0.14) "
+"0px 4px 25px inset`) — the \"pressed\" effect"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:148
+msgid ""
+"Neon-highlighted cards: selected/active cards get neon yellow-green "
+"border or accent"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:150
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:151
+msgid "Dark nav on black background"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:152
+msgid "Logo: ClickHouse wordmark + icon in yellow/neon"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:153
+msgid "Links: white text, hover to Neon Volt (#faff69)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:154
+msgid "CTA: Neon Volt button or Forest Green button"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:155
+msgid "Uppercase labels for categories"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:157
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:159
+msgid "**Performance Stats**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:160
+msgid "Oversized numbers (72px+, weight 700–900)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:161
+msgid "Brief descriptions beneath"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:162
+msgid "High-contrast neon accents on key metrics"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:163
+msgid "The primary visual proof of performance claims"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:165
+msgid "**Neon-Highlighted Card**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:166
+msgid "Standard dark card with neon yellow-green border highlight"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:167
+msgid "Creates \"selected\" or \"featured\" treatment"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:168
+msgid "The accent border makes the card pop against the dark canvas"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:170
+msgid "**Code Blocks**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:171
+msgid "Dark surface with Inconsolata at weight 600"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:172
+msgid "Neon and white syntax highlighting"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:173
+msgid "Terminal-like aesthetic"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:175
+msgid "**Trust Bar**"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:176
+msgid "Company logos on dark background"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:177
+msgid "Monochrome/white logo treatment"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:178
+msgid "Horizontal layout"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:180
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:182
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:183
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:184
+msgid ""
+"Scale: 2px, 6px, 7px, 8px, 10px, 12px, 16px, 20px, 24px, 25px, 32px, "
+"40px, 44px, 48px, 64px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:185
+msgid ""
+"Button padding: 12px 16px (standard), 0px 16px (compact), 0px 32px (wide "
+"ghost)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:186
+msgid "Section vertical spacing: generous (48–64px)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:188
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:189
+msgid "Max container width: up to 2200px (extra-wide) with responsive scaling"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:190
+msgid "Hero: full-width dark with massive typography"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:191
+msgid "Feature sections: multi-column card grids with dark borders"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:192
+msgid "Stats: horizontal metric bar"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:193
+msgid "Full-dark page — no light sections"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:195
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:196
+msgid ""
+"**Dark void as canvas**: The pure black background provides infinite "
+"depth — elements float in darkness."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:197
+msgid ""
+"**Dense information**: Feature cards and stats are packed with data, "
+"reflecting the database product's performance focus."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:198
+msgid ""
+"**Neon highlights as wayfinding**: Yellow-green accents guide the eye "
+"through the dark interface like runway lights."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:200
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:201
+msgid "Sharp (4px): Buttons, badges, small elements, code blocks"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:202
+msgid "Comfortable (8px): Cards, containers, dividers"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:203
+msgid "Pill (9999px): Toggle buttons, status indicators"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:205
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Black background, text blocks"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Bordered (Level 1)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "`1px solid rgba(65,65,65,0.8)`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Standard cards, containers"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Subtle (Level 2)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "`0px 1px 3px rgba(0,0,0,0.1)`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Subtle card lift"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Elevated (Level 3)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "`0px 10px 15px -3px rgba(0,0,0,0.1)`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Feature cards, hover states"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Pressed/Inset (Level 4)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "`0px 4px 25px rgba(0,0,0,0.14) inset`"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Active/pressed elements — \"sunk into the surface\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Neon Highlight (Level 5)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Neon Volt border (`#faff69`)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Featured/selected cards, maximum emphasis"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:216
+msgid ""
+"**Shadow Philosophy**: ClickHouse uses shadows on a black canvas, where "
+"they're barely visible — they exist more for subtle dimensionality than "
+"obvious elevation. The most distinctive depth mechanism is the **inset "
+"shadow** (Level 4), which creates a \"pressed into the surface\" effect "
+"unique to ClickHouse. The neon border highlight (Level 5) is the primary "
+"attention-getting depth mechanism."
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:218
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:220
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:221
+msgid ""
+"Use Neon Volt (#faff69) as the sole chromatic accent — it must pop "
+"against pure black"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:222
+msgid ""
+"Use Inter at weight 900 for hero display text — the extreme weight IS the"
+" personality"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:223
+msgid ""
+"Keep everything on pure black (#000000) — never use dark gray as the page"
+" background"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:224
+msgid "Use charcoal borders (rgba(65,65,65,0.8)) for all card containment"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:225
+msgid ""
+"Apply Forest Green (#166534) for primary CTA buttons — distinct from neon"
+" for action hierarchy"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:226
+msgid ""
+"Show performance stats as oversized display numbers — it's the core "
+"visual argument"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:227
+msgid "Use uppercase with wide letter-spacing (1.4px) for section labels"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:228
+msgid "Apply Pale Yellow (#f4f692) for active/pressed text states"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:229
+msgid ""
+"Link hovers should ALWAYS shift to Neon Volt — unified interactive "
+"feedback"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:231
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:232
+msgid ""
+"Don't introduce additional colors — the palette is strictly black, neon, "
+"green, and gray"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:233
+msgid ""
+"Don't use the neon as a background fill — it's an accent and border color"
+" only (except on CTA buttons)"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:234
+msgid ""
+"Don't reduce display weight below 700 — heavy weight is core to the "
+"personality"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:235
+msgid "Don't use light/white backgrounds anywhere — the entire experience is dark"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:236
+msgid ""
+"Don't round corners beyond 8px — the sharp geometry reflects database "
+"precision"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:237
+msgid ""
+"Don't use soft/diffused shadows on black — they're invisible. Use border-"
+"based depth instead"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:238
+msgid ""
+"Don't skip the inset shadow on active states — the \"pressed\" effect is "
+"distinctive"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:239
+msgid "Don't use warm neutrals — all grays are perfectly neutral"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:241
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:243
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Name"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Width"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Key Changes"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Mobile"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "<640px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Single column, stacked cards"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Small Tablet"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "640–768px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Minor adjustments"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Tablet"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "768–1024px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "2-column grids"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Desktop"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1024–1280px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Standard layout"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Large Desktop"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1280–1536px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Expanded content"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Ultra-wide"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "1536–2200px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md
+msgid "Maximum container width"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:253
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:254
+msgid "Buttons with 12px 16px padding minimum"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:255
+msgid "Card surfaces as touch targets"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:256
+msgid "Adequate nav link spacing"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:258
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:259
+msgid "**Hero text**: 96px → 72px → 48px → 36px"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:260
+msgid "**Feature grids**: Multi-column → 2 → 1 column"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:261
+msgid "**Stats**: Horizontal → stacked"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:262
+msgid "**Navigation**: Full → hamburger"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:264
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:265
+msgid "Product screenshots maintain aspect ratio"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:266
+msgid "Code blocks use horizontal scroll on narrow screens"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:267
+msgid "All images on dark backgrounds"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:269
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:271
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:272
+msgid "Brand Accent: \"Neon Volt (#faff69)\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:273
+msgid "Page Background: \"Pure Black (#000000)\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:274
+msgid "CTA Green: \"Forest Green (#166534)\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:275
+msgid "Card Border: \"Charcoal (rgba(65,65,65,0.8))\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:276
+msgid "Primary Text: \"Pure White (#ffffff)\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:277
+msgid "Secondary Text: \"Silver (#a0a0a0)\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:278
+msgid "Active State: \"Pale Yellow (#f4f692)\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:279
+msgid "Button Surface: \"Near Black (#141414)\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:281
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:282
+msgid ""
+"\"Create a hero section on Pure Black (#000000) with a massive headline "
+"at 96px Inter weight 900, line-height 1.0. Pure White text. Add a Neon "
+"Volt (#faff69) CTA button (dark text, 4px radius, 0px 16px padding) and a"
+" ghost button (transparent, 1px solid #4f5100 border).\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:283
+msgid ""
+"\"Design a feature card on black with 1px solid rgba(65,65,65,0.8) border"
+" and 8px radius. Title at 24px Inter weight 700, body at 16px in Silver "
+"(#a0a0a0). Add a neon-highlighted variant with 1px solid #faff69 "
+"border.\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:284
+msgid ""
+"\"Build a performance stats bar: large numbers at 72px Inter weight 700 "
+"in Pure White. Brief descriptions at 14px in Silver. On black "
+"background.\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:285
+#, python-format
+msgid ""
+"\"Create a Forest Green (#166534) CTA button: white text, 12px 16px "
+"padding, 4px radius, 1px solid #141414 border. Hover: bg shifts to "
+"#3a3a3a, text to 80% opacity.\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:286
+msgid ""
+"\"Design an uppercase section label: 14px Inter weight 600, letter-"
+"spacing 1.4px, uppercase. Silver (#a0a0a0) text on black background.\""
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:288
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:289
+msgid "Keep everything on pure black — no dark gray alternatives"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:290
+msgid "Neon Volt (#faff69) is for accents and CTAs only — never large backgrounds"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:291
+msgid "Weight 900 for hero, 700 for headings, 600 for labels, 400-500 for body"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:292
+msgid "Active states use Pale Yellow (#f4f692) — not just opacity changes"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:293
+msgid "All links hover to Neon Volt — consistent interactive feedback"
+msgstr ""
+
+#: ../../source/templates_clickhouse.md:294
+msgid "Charcoal borders (rgba(65,65,65,0.8)) are the primary depth mechanism"
+msgstr ""
+

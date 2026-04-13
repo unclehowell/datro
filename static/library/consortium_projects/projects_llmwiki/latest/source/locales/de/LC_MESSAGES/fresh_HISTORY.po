@@ -1,0 +1,162 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/fresh_HISTORY.md:1
+msgid "0.5.2 / 2017-09-13"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:4
+msgid "Fix regression matching multiple ETags in `If-None-Match`"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:5
+msgid "perf: improve `If-None-Match` token parsing"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:7
+msgid "0.5.1 / 2017-09-11"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:10
+msgid "Fix handling of modified headers with invalid dates"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:11
+msgid "perf: improve ETag match loop"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:13
+msgid "0.5.0 / 2017-02-21"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:16
+msgid "Fix incorrect result when `If-None-Match` has both `*` and ETags"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:17
+msgid "Fix weak `ETag` matching to match spec"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:18
+msgid "perf: delay reading header values until needed"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:19
+msgid "perf: skip checking modified time if ETag check failed"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:20
+msgid "perf: skip parsing `If-None-Match` when no `ETag` header"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:21
+msgid "perf: use `Date.parse` instead of `new Date`"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:23
+msgid "0.4.0 / 2017-02-05"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:26
+msgid "Fix false detection of `no-cache` request directive"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:27
+msgid "perf: enable strict mode"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:28
+msgid "perf: hoist regular expressions"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:29
+msgid "perf: remove duplicate conditional"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:30
+msgid "perf: remove unnecessary boolean coercions"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:32
+msgid "0.3.0 / 2015-05-12"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:35
+msgid "Add weak `ETag` matching support"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:37
+msgid "0.2.4 / 2014-09-07"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:40
+msgid "Support Node.js 0.6"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:42
+msgid "0.2.3 / 2014-09-07"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:45
+msgid "Move repository to jshttp"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:47
+msgid "0.2.2 / 2014-02-19"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:50
+msgid "Revert \"Fix for blank page on Safari reload\""
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:52
+msgid "0.2.1 / 2014-01-29"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:55
+msgid "Fix for blank page on Safari reload"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:57
+msgid "0.2.0 / 2013-08-11"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:60
+msgid "Return stale for `Cache-Control: no-cache`"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:62
+msgid "0.1.0 / 2012-06-15"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:65
+msgid "Add `If-None-Match: *` support"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:67
+msgid "0.0.1 / 2012-06-10"
+msgstr ""
+
+#: ../../source/fresh_HISTORY.md:70
+msgid "Initial release"
+msgstr ""
+

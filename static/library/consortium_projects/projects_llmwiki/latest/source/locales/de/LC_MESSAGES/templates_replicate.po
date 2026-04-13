@@ -1,0 +1,1243 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/templates_replicate.md:1
+msgid "Design System: Replicate"
+msgstr ""
+
+#: ../../source/templates_replicate.md:4
+msgid "**Hermes Agent — Implementation Notes**"
+msgstr ""
+
+#: ../../source/templates_replicate.md:6
+msgid ""
+"The original site uses proprietary fonts. For self-contained HTML output,"
+" use these CDN substitutes:"
+msgstr ""
+
+#: ../../source/templates_replicate.md:7
+msgid "**Primary:** `Inter` | **Mono:** `JetBrains Mono`"
+msgstr ""
+
+#: ../../source/templates_replicate.md:8
+msgid ""
+"**Font stack (CSS):** `font-family: 'Inter', system-ui, -apple-system, "
+"'Segoe UI', Roboto, sans-serif;`"
+msgstr ""
+
+#: ../../source/templates_replicate.md:9
+msgid ""
+"**Mono stack (CSS):** `font-family: 'JetBrains Mono', ui-monospace, "
+"SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier "
+"New', monospace;`"
+msgstr ""
+
+#: ../../source/templates_replicate.md:13
+msgid ""
+"Use `write_file` to create HTML, serve via `generative-widgets` skill "
+"(cloudflared tunnel). Verify visual accuracy with `browser_vision` after "
+"generating."
+msgstr ""
+
+#: ../../source/templates_replicate.md:16
+msgid "1. Visual Theme & Atmosphere"
+msgstr ""
+
+#: ../../source/templates_replicate.md:18
+msgid ""
+"Replicate's interface is a developer playground crackling with creative "
+"energy — a bold, high-contrast design that feels more like a music "
+"festival poster than a typical API platform. The hero section explodes "
+"with a vibrant orange-red-magenta gradient that immediately signals "
+"\"this is where AI models come alive,\" while the body of the page "
+"grounds itself in a clean white canvas where code snippets and model "
+"galleries take center stage."
+msgstr ""
+
+#: ../../source/templates_replicate.md:20
+msgid ""
+"The design personality is defined by two extreme choices: **massive "
+"display typography** (up to 128px) using the custom rb-freigeist-neue "
+"face, and **exclusively pill-shaped geometry** (9999px radius on "
+"everything). The display font is thick, bold, and confident — its heavy "
+"weight at enormous sizes creates text that feels like it's shouting with "
+"joy rather than whispering authority. Combined with basier-square for "
+"body text (a clean geometric sans) and JetBrains Mono for code, the "
+"system serves developers who want power and playfulness in equal measure."
+msgstr ""
+
+#: ../../source/templates_replicate.md:22
+msgid ""
+"What makes Replicate distinctive is its community-powered energy. The "
+"model gallery with AI-generated images, the dotted-underline links, the "
+"green status badges, and the \"Imagine what you can build\" closing "
+"manifesto all create a space that feels alive and participatory — not a "
+"corporate product page but a launchpad for creative developers."
+msgstr ""
+
+#: ../../source/templates_replicate.md:24
+msgid "**Key Characteristics:**"
+msgstr ""
+
+#: ../../source/templates_replicate.md:25
+msgid "Explosive orange-red-magenta gradient hero (#ea2804 brand anchor)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:26
+msgid "Massive display typography (128px) in heavy rb-freigeist-neue"
+msgstr ""
+
+#: ../../source/templates_replicate.md:27
+msgid "Exclusively pill-shaped geometry: 9999px radius on EVERYTHING"
+msgstr ""
+
+#: ../../source/templates_replicate.md:28
+msgid "High-contrast black (#202020) and white palette with red brand accent"
+msgstr ""
+
+#: ../../source/templates_replicate.md:29
+msgid ""
+"Developer-community energy: model galleries, code examples, dotted-"
+"underline links"
+msgstr ""
+
+#: ../../source/templates_replicate.md:30
+msgid "Green status badges (#2b9a66) for live/operational indicators"
+msgstr ""
+
+#: ../../source/templates_replicate.md:31
+msgid "Bold/heavy font weights (600-700) creating maximum typographic impact"
+msgstr ""
+
+#: ../../source/templates_replicate.md:32
+msgid "Playful closing manifesto: \"Imagine what you can build.\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:34
+msgid "2. Color Palette & Roles"
+msgstr ""
+
+#: ../../source/templates_replicate.md:36
+msgid "Primary"
+msgstr ""
+
+#: ../../source/templates_replicate.md:37
+msgid ""
+"**Replicate Dark** (`#202020`): The primary text color and dark surface —"
+" a near-black that's the anchor of all text and borders. Slightly warmer "
+"than pure #000."
+msgstr ""
+
+#: ../../source/templates_replicate.md:38
+msgid ""
+"**Replicate Red** (`#ea2804`): The core brand color — a vivid, saturated "
+"orange-red used in the hero gradient, accent borders, and high-signal "
+"moments."
+msgstr ""
+
+#: ../../source/templates_replicate.md:39
+msgid ""
+"**Secondary Red** (`#dd4425`): A slightly warmer variant for button "
+"borders and link hover states."
+msgstr ""
+
+#: ../../source/templates_replicate.md:41
+msgid "Secondary & Accent"
+msgstr ""
+
+#: ../../source/templates_replicate.md:42
+msgid ""
+"**Status Green** (`#2b9a66`): Badge/pill background for \"running\" or "
+"operational status indicators."
+msgstr ""
+
+#: ../../source/templates_replicate.md:43
+msgid ""
+"**GitHub Dark** (`#24292e`): A blue-tinted dark used for code block "
+"backgrounds and developer contexts."
+msgstr ""
+
+#: ../../source/templates_replicate.md:45
+msgid "Surface & Background"
+msgstr ""
+
+#: ../../source/templates_replicate.md:46
+msgid "**Pure White** (`#ffffff`): The primary page body background."
+msgstr ""
+
+#: ../../source/templates_replicate.md:47
+msgid ""
+"**Near White** (`#fcfcfc`): Button text on dark surfaces and the lightest"
+" content."
+msgstr ""
+
+#: ../../source/templates_replicate.md:48
+msgid ""
+"**Hero Gradient**: A dramatic orange → red → magenta → pink gradient for "
+"the hero section. Transitions from warm (#ea2804 family) through hot "
+"pink."
+msgstr ""
+
+#: ../../source/templates_replicate.md:50
+msgid "Neutrals & Text"
+msgstr ""
+
+#: ../../source/templates_replicate.md:51
+msgid ""
+"**Medium Gray** (`#646464`): Secondary body text and de-emphasized "
+"content."
+msgstr ""
+
+#: ../../source/templates_replicate.md:52
+msgid "**Warm Gray** (`#4e4e4e`): Emphasized secondary text."
+msgstr ""
+
+#: ../../source/templates_replicate.md:53
+msgid "**Mid Silver** (`#8d8d8d`): Tertiary text, footnotes."
+msgstr ""
+
+#: ../../source/templates_replicate.md:54
+msgid ""
+"**Light Silver** (`#bbbbbb`): Dotted-underline link decoration color, "
+"muted metadata."
+msgstr ""
+
+#: ../../source/templates_replicate.md:55
+msgid "**Pure Black** (`#000000`): Maximum-emphasis borders and occasional text."
+msgstr ""
+
+#: ../../source/templates_replicate.md:57
+msgid "Gradient System"
+msgstr ""
+
+#: ../../source/templates_replicate.md:58
+msgid ""
+"**Hero Blaze**: A dramatic multi-stop gradient flowing through orange "
+"(`#ea2804`) → red → magenta → hot pink. This gradient occupies the full "
+"hero section and is the most visually dominant element on the page."
+msgstr ""
+
+#: ../../source/templates_replicate.md:59
+msgid ""
+"**Dark Sections**: Deep dark (#202020) sections with white/near-white "
+"text provide contrast against the white body."
+msgstr ""
+
+#: ../../source/templates_replicate.md:61
+msgid "3. Typography Rules"
+msgstr ""
+
+#: ../../source/templates_replicate.md:63
+msgid "Font Family"
+msgstr ""
+
+#: ../../source/templates_replicate.md:64
+msgid ""
+"**Display**: `rb-freigeist-neue`, with fallbacks: `ui-sans-serif, system-"
+"ui`"
+msgstr ""
+
+#: ../../source/templates_replicate.md:65
+msgid "**Body / UI**: `basier-square`, with fallbacks: `ui-sans-serif, system-ui`"
+msgstr ""
+
+#: ../../source/templates_replicate.md:66
+msgid ""
+"**Code**: `jetbrains-mono`, with fallbacks: `ui-monospace, SFMono-"
+"Regular, Menlo, Monaco, Consolas, Liberation Mono, Courier New`"
+msgstr ""
+
+#: ../../source/templates_replicate.md:68
+msgid "Hierarchy"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Role"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Font"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Size"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Weight"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Line Height"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Letter Spacing"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Notes"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Display Mega"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "rb-freigeist-neue"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "128px (8rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "700"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "1.00 (tight)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "normal"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "The maximum: closing manifesto"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Display / Hero"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "72px (4.5rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "-1.8px"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Hero section headline"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Section Heading"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "48px (3rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "400–700"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Feature section titles"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Sub-heading"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "30px (1.88rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "600"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "1.20 (tight)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Card headings"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Sub-heading Sans"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "basier-square"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "38.4px (2.4rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "400"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "0.83 (ultra-tight)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Large body headings"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Feature Title"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "basier-square / rb-freigeist-neue"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "18px (1.13rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "1.56"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Small section titles, labels"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Body Large"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "20px (1.25rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "1.40"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Intro paragraphs"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Body / Button"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "16–18px (1–1.13rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "400–600"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "1.50–1.56"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Standard text, buttons"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Caption"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "14px (0.88rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "1.43"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "-0.35px to normal"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Metadata, descriptions"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Small / Tag"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "12px (0.75rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "1.33"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Tags (lowercase transform)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Code"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "jetbrains-mono"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Code snippets, API examples"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Code Small"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "11px (0.69rem)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "1.50"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Tiny code references"
+msgstr ""
+
+#: ../../source/templates_replicate.md:85
+msgid "Principles"
+msgstr ""
+
+#: ../../source/templates_replicate.md:86
+msgid ""
+"**Heavy display, light body**: rb-freigeist-neue at 700 weight creates "
+"thundering headlines, while basier-square at 400 handles body text with "
+"quiet efficiency. The contrast is extreme and intentional."
+msgstr ""
+
+#: ../../source/templates_replicate.md:87
+msgid ""
+"**128px is a real size**: The closing manifesto \"Imagine what you can "
+"build.\" uses 128px — bigger than most mobile screens. This is the design"
+" equivalent of shouting from a rooftop."
+msgstr ""
+
+#: ../../source/templates_replicate.md:88
+msgid ""
+"**Negative tracking on hero**: -1.8px letter-spacing at 72px creates "
+"dense, impactful hero text."
+msgstr ""
+
+#: ../../source/templates_replicate.md:89
+msgid ""
+"**Lowercase tags**: 12px basier-square uses `text-transform: lowercase` —"
+" an unusual choice that creates a casual, developer-friendly vibe."
+msgstr ""
+
+#: ../../source/templates_replicate.md:90
+msgid ""
+"**Weight 600 as emphasis**: When basier-square needs emphasis, it uses "
+"600 (semibold) — never bold (700), which is reserved for rb-freigeist-"
+"neue display text."
+msgstr ""
+
+#: ../../source/templates_replicate.md:92
+msgid "4. Component Stylings"
+msgstr ""
+
+#: ../../source/templates_replicate.md:94
+msgid "Buttons"
+msgstr ""
+
+#: ../../source/templates_replicate.md:96
+msgid "**Dark Solid**"
+msgstr ""
+
+#: ../../source/templates_replicate.md:97
+msgid "Background: Replicate Dark (`#202020`)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:98
+msgid "Text: Near White (`#fcfcfc`)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:99
+msgid "Padding: 0px 4px (extremely compact)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:100
+msgid "Outline: Replicate Dark 4px solid"
+msgstr ""
+
+#: ../../source/templates_replicate.md:101
+msgid "Radius: pill-shaped (implied by system)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:102
+msgid "Maximum emphasis — dark pill on light surface"
+msgstr ""
+
+#: ../../source/templates_replicate.md:104
+msgid "**White Outlined**"
+msgstr ""
+
+#: ../../source/templates_replicate.md:105
+msgid "Background: Pure White (`#ffffff`)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:106
+#: ../../source/templates_replicate.md:113
+#: ../../source/templates_replicate.md:129
+msgid "Text: Replicate Dark (`#202020`)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:107
+msgid "Border: `1px solid #202020`"
+msgstr ""
+
+#: ../../source/templates_replicate.md:108
+msgid "Radius: pill-shaped"
+msgstr ""
+
+#: ../../source/templates_replicate.md:109
+msgid "Clean outlined pill for secondary actions"
+msgstr ""
+
+#: ../../source/templates_replicate.md:111
+msgid "**Transparent Glass**"
+msgstr ""
+
+#: ../../source/templates_replicate.md:112
+#: ../../source/templates_replicate.md:128
+msgid "Background: `rgba(255, 255, 255, 0.1)` (frosted glass)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:114
+msgid "Padding: 6px 56px 6px 28px (asymmetric — icon/search layout)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:115
+msgid "Border: transparent"
+msgstr ""
+
+#: ../../source/templates_replicate.md:116
+msgid "Outline: Light Silver (`#bbbbbb`) 1px solid"
+msgstr ""
+
+#: ../../source/templates_replicate.md:117
+msgid "Used for search/input-like buttons"
+msgstr ""
+
+#: ../../source/templates_replicate.md:119
+msgid "Cards & Containers"
+msgstr ""
+
+#: ../../source/templates_replicate.md:120
+msgid "Background: Pure White or subtle gray"
+msgstr ""
+
+#: ../../source/templates_replicate.md:121
+msgid "Border: `1px solid #202020` for prominent containment"
+msgstr ""
+
+#: ../../source/templates_replicate.md:122
+msgid "Radius: pill-shaped (9999px) for badges, labels, images"
+msgstr ""
+
+#: ../../source/templates_replicate.md:123
+msgid "Shadow: minimal standard shadows"
+msgstr ""
+
+#: ../../source/templates_replicate.md:124
+msgid "Model gallery: grid of AI-generated image thumbnails"
+msgstr ""
+
+#: ../../source/templates_replicate.md:125
+msgid "Accent border: `1px solid #ea2804` for highlighted/featured items"
+msgstr ""
+
+#: ../../source/templates_replicate.md:127
+msgid "Inputs & Forms"
+msgstr ""
+
+#: ../../source/templates_replicate.md:130
+msgid "Border: transparent with outline"
+msgstr ""
+
+#: ../../source/templates_replicate.md:131
+msgid "Padding: 6px 56px 6px 28px (search-bar style)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:133
+msgid "Navigation"
+msgstr ""
+
+#: ../../source/templates_replicate.md:134
+msgid "Clean horizontal nav on white"
+msgstr ""
+
+#: ../../source/templates_replicate.md:135
+msgid "Logo: Replicate wordmark in dark"
+msgstr ""
+
+#: ../../source/templates_replicate.md:136
+msgid "Links: dark text with dotted underline on hover"
+msgstr ""
+
+#: ../../source/templates_replicate.md:137
+msgid "CTA: Dark pill button"
+msgstr ""
+
+#: ../../source/templates_replicate.md:138
+msgid "GitHub link and sign-in"
+msgstr ""
+
+#: ../../source/templates_replicate.md:140
+msgid "Image Treatment"
+msgstr ""
+
+#: ../../source/templates_replicate.md:141
+msgid "AI-generated model output images in a gallery grid"
+msgstr ""
+
+#: ../../source/templates_replicate.md:142
+msgid "Pill-shaped image containers (9999px)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:143
+msgid "Full-width gradient hero section"
+msgstr ""
+
+#: ../../source/templates_replicate.md:144
+msgid "Product screenshots with dark backgrounds"
+msgstr ""
+
+#: ../../source/templates_replicate.md:146
+msgid "Distinctive Components"
+msgstr ""
+
+#: ../../source/templates_replicate.md:148
+msgid "**Model Gallery Grid**"
+msgstr ""
+
+#: ../../source/templates_replicate.md:149
+msgid "Horizontal scrolling or grid of AI-generated images"
+msgstr ""
+
+#: ../../source/templates_replicate.md:150
+msgid "Each image in a pill-shaped container"
+msgstr ""
+
+#: ../../source/templates_replicate.md:151
+msgid "Model names and run counts displayed"
+msgstr ""
+
+#: ../../source/templates_replicate.md:152
+msgid "The visual heart of the community platform"
+msgstr ""
+
+#: ../../source/templates_replicate.md:154
+msgid "**Dotted Underline Links**"
+msgstr ""
+
+#: ../../source/templates_replicate.md:155
+msgid "Links use `text-decoration: underline dotted #bbbbbb`"
+msgstr ""
+
+#: ../../source/templates_replicate.md:156
+msgid "A distinctive, developer-notebook aesthetic"
+msgstr ""
+
+#: ../../source/templates_replicate.md:157
+msgid "Lighter and more casual than solid underlines"
+msgstr ""
+
+#: ../../source/templates_replicate.md:159
+msgid "**Status Badges**"
+msgstr ""
+
+#: ../../source/templates_replicate.md:160
+msgid "Status Green (`#2b9a66`) background with white text"
+msgstr ""
+
+#: ../../source/templates_replicate.md:161
+msgid "Pill-shaped (9999px)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:162
+msgid "14px font size"
+msgstr ""
+
+#: ../../source/templates_replicate.md:163
+msgid "Indicates model availability/operational status"
+msgstr ""
+
+#: ../../source/templates_replicate.md:165
+msgid "**Manifesto Section**"
+msgstr ""
+
+#: ../../source/templates_replicate.md:166
+msgid "\"Imagine what you can build.\" at 128px"
+msgstr ""
+
+#: ../../source/templates_replicate.md:167
+msgid "Dark background with white text"
+msgstr ""
+
+#: ../../source/templates_replicate.md:168
+msgid "Images embedded between words"
+msgstr ""
+
+#: ../../source/templates_replicate.md:169
+msgid "The emotional climax of the page"
+msgstr ""
+
+#: ../../source/templates_replicate.md:171
+msgid "5. Layout Principles"
+msgstr ""
+
+#: ../../source/templates_replicate.md:173
+msgid "Spacing System"
+msgstr ""
+
+#: ../../source/templates_replicate.md:174
+msgid "Base unit: 8px"
+msgstr ""
+
+#: ../../source/templates_replicate.md:175
+msgid ""
+"Scale: 1px, 2px, 4px, 6px, 8px, 10px, 12px, 16px, 24px, 32px, 48px, 64px,"
+" 96px, 160px, 192px"
+msgstr ""
+
+#: ../../source/templates_replicate.md:176
+msgid "Button padding: varies widely (0px 4px to 6px 56px)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:177
+msgid "Section vertical spacing: very generous (96–192px)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:179
+msgid "Grid & Container"
+msgstr ""
+
+#: ../../source/templates_replicate.md:180
+msgid "Fluid width with responsive constraints"
+msgstr ""
+
+#: ../../source/templates_replicate.md:181
+msgid "Hero: full-width gradient with centered content"
+msgstr ""
+
+#: ../../source/templates_replicate.md:182
+msgid "Model gallery: multi-column responsive grid"
+msgstr ""
+
+#: ../../source/templates_replicate.md:183
+msgid "Feature sections: mixed layouts"
+msgstr ""
+
+#: ../../source/templates_replicate.md:184
+msgid "Code examples: contained dark blocks"
+msgstr ""
+
+#: ../../source/templates_replicate.md:186
+msgid "Whitespace Philosophy"
+msgstr ""
+
+#: ../../source/templates_replicate.md:187
+msgid ""
+"**Bold and generous**: Massive spacing between sections (up to 192px) "
+"creates distinct zones."
+msgstr ""
+
+#: ../../source/templates_replicate.md:188
+msgid ""
+"**Dense within galleries**: Model images are tightly packed in the grid "
+"for browsable density."
+msgstr ""
+
+#: ../../source/templates_replicate.md:189
+msgid ""
+"**The gradient IS the whitespace**: The hero gradient section occupies "
+"significant vertical space as a colored void."
+msgstr ""
+
+#: ../../source/templates_replicate.md:191
+msgid "Border Radius Scale"
+msgstr ""
+
+#: ../../source/templates_replicate.md:192
+msgid ""
+"**Pill (9999px)**: The ONLY radius in the system. Everything interactive,"
+" every image, every badge, every label, every container uses 9999px. This"
+" is the most extreme pill-radius commitment in any major tech brand."
+msgstr ""
+
+#: ../../source/templates_replicate.md:194
+msgid "6. Depth & Elevation"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Level"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Treatment"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Use"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Flat (Level 0)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "No shadow"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "White body, text blocks"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Bordered (Level 1)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "`1px solid #202020`"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Cards, buttons, containers"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Accent Border (Level 2)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "`1px solid #ea2804`"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Featured/highlighted items"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Gradient Hero (Level 3)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Full-width blaze gradient"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Hero section, maximum visual impact"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Dark Section (Level 4)"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Dark bg (#202020) with light text"
+msgstr ""
+
+#: ../../source/templates_replicate.md
+msgid "Manifesto, footer, feature sections"
+msgstr ""
+
+#: ../../source/templates_replicate.md:204
+msgid ""
+"**Shadow Philosophy**: Replicate relies on **borders and background "
+"color** for depth rather than shadows. The `1px solid #202020` border is "
+"the primary containment mechanism. The dramatic gradient hero and "
+"dark/light section alternation provide all the depth the design needs."
+msgstr ""
+
+#: ../../source/templates_replicate.md:206
+msgid "7. Do's and Don'ts"
+msgstr ""
+
+#: ../../source/templates_replicate.md:208
+msgid "Do"
+msgstr ""
+
+#: ../../source/templates_replicate.md:209
+msgid ""
+"Use pill-shaped (9999px) radius on EVERYTHING — buttons, images, badges, "
+"containers"
+msgstr ""
+
+#: ../../source/templates_replicate.md:210
+msgid ""
+"Use rb-freigeist-neue at weight 700 for display text — go big (72px+) or "
+"go home"
+msgstr ""
+
+#: ../../source/templates_replicate.md:211
+msgid "Use the orange-red brand gradient for hero sections"
+msgstr ""
+
+#: ../../source/templates_replicate.md:212
+msgid "Use Replicate Dark (#202020) as the primary dark — not pure black"
+msgstr ""
+
+#: ../../source/templates_replicate.md:213
+msgid "Apply dotted underline decoration on text links (#bbbbbb)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:214
+msgid "Use Status Green (#2b9a66) for operational/success badges"
+msgstr ""
+
+#: ../../source/templates_replicate.md:215
+msgid "Keep body text in basier-square at 400–600 weight"
+msgstr ""
+
+#: ../../source/templates_replicate.md:216
+msgid "Use JetBrains Mono for all code content"
+msgstr ""
+
+#: ../../source/templates_replicate.md:217
+msgid "Create a \"manifesto\" section with 128px type for emotional impact"
+msgstr ""
+
+#: ../../source/templates_replicate.md:219
+msgid "Don't"
+msgstr ""
+
+#: ../../source/templates_replicate.md:220
+msgid ""
+"Don't use any border-radius other than 9999px — the pill system is "
+"absolute"
+msgstr ""
+
+#: ../../source/templates_replicate.md:221
+msgid ""
+"Don't use the brand red (#ea2804) as a surface/background color — it's "
+"for gradients and accent borders"
+msgstr ""
+
+#: ../../source/templates_replicate.md:222
+msgid ""
+"Don't reduce display text below 48px on desktop — the heavy display font "
+"needs size to breathe"
+msgstr ""
+
+#: ../../source/templates_replicate.md:223
+msgid ""
+"Don't use light/thin font weights on rb-freigeist-neue — 600–700 is the "
+"range"
+msgstr ""
+
+#: ../../source/templates_replicate.md:224
+msgid "Don't use solid underlines on links — dotted is the signature"
+msgstr ""
+
+#: ../../source/templates_replicate.md:225
+msgid "Don't add drop shadows — depth comes from borders and background color"
+msgstr ""
+
+#: ../../source/templates_replicate.md:226
+msgid ""
+"Don't use warm neutrals — the gray scale is purely neutral (#202020 → "
+"#bbbbbb)"
+msgstr ""
+
+#: ../../source/templates_replicate.md:227
+msgid "Don't skip the code examples — they're primary content, not decoration"
+msgstr ""
+
+#: ../../source/templates_replicate.md:228
+msgid "Don't make the hero gradient subtle — it should be BOLD and vibrant"
+msgstr ""
+
+#: ../../source/templates_replicate.md:230
+msgid "8. Responsive Behavior"
+msgstr ""
+
+#: ../../source/templates_replicate.md:232
+msgid "Breakpoints"
+msgstr ""
+
+#: ../../source/templates_replicate.md:233
+msgid ""
+"*No explicit breakpoints detected — likely using fluid/container-query "
+"responsive system.*"
+msgstr ""
+
+#: ../../source/templates_replicate.md:235
+msgid "Touch Targets"
+msgstr ""
+
+#: ../../source/templates_replicate.md:236
+msgid "Pill buttons with generous padding"
+msgstr ""
+
+#: ../../source/templates_replicate.md:237
+msgid "Gallery images as large touch targets"
+msgstr ""
+
+#: ../../source/templates_replicate.md:238
+msgid "Navigation adequately spaced"
+msgstr ""
+
+#: ../../source/templates_replicate.md:240
+msgid "Collapsing Strategy"
+msgstr ""
+
+#: ../../source/templates_replicate.md:241
+msgid "**Hero text**: 128px → 72px → 48px progressive scaling"
+msgstr ""
+
+#: ../../source/templates_replicate.md:242
+msgid "**Model gallery**: Grid reduces columns"
+msgstr ""
+
+#: ../../source/templates_replicate.md:243
+msgid "**Navigation**: Collapses to hamburger"
+msgstr ""
+
+#: ../../source/templates_replicate.md:244
+msgid "**Manifesto**: Scales down but maintains impact"
+msgstr ""
+
+#: ../../source/templates_replicate.md:246
+msgid "Image Behavior"
+msgstr ""
+
+#: ../../source/templates_replicate.md:247
+msgid "AI-generated images scale within pill containers"
+msgstr ""
+
+#: ../../source/templates_replicate.md:248
+msgid "Gallery reflows to fewer columns on narrow screens"
+msgstr ""
+
+#: ../../source/templates_replicate.md:249
+msgid "Hero gradient maintained at all sizes"
+msgstr ""
+
+#: ../../source/templates_replicate.md:251
+msgid "9. Agent Prompt Guide"
+msgstr ""
+
+#: ../../source/templates_replicate.md:253
+msgid "Quick Color Reference"
+msgstr ""
+
+#: ../../source/templates_replicate.md:254
+msgid "Primary Text: \"Replicate Dark (#202020)\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:255
+msgid "Page Background: \"Pure White (#ffffff)\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:256
+msgid "Brand Accent: \"Replicate Red (#ea2804)\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:257
+msgid "Secondary Text: \"Medium Gray (#646464)\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:258
+msgid "Muted/Decoration: \"Light Silver (#bbbbbb)\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:259
+msgid "Status: \"Status Green (#2b9a66)\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:260
+msgid "Dark Surface: \"Replicate Dark (#202020)\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:262
+msgid "Example Component Prompts"
+msgstr ""
+
+#: ../../source/templates_replicate.md:263
+msgid ""
+"\"Create a hero section with a vibrant orange-red-magenta gradient "
+"background. Headline at 72px rb-freigeist-neue weight 700, white text, "
+"-1.8px letter-spacing. Include a dark pill CTA button and a white "
+"outlined pill button.\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:264
+msgid ""
+"\"Design a model card with pill-shaped (9999px) image container, model "
+"name at 16px basier-square weight 600, run count at 14px in Medium Gray. "
+"Border: 1px solid #202020.\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:265
+msgid ""
+"\"Build a status badge: pill-shaped (9999px), Status Green (#2b9a66) "
+"background, white text at 14px basier-square.\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:266
+msgid ""
+"\"Create a manifesto section on Replicate Dark (#202020) with 'Imagine "
+"what you can build.' at 128px rb-freigeist-neue weight 700, white text. "
+"Embed small AI-generated images between the words.\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:267
+msgid ""
+"\"Design a code block: dark background (#24292e), JetBrains Mono at 14px,"
+" white text. Pill-shaped container.\""
+msgstr ""
+
+#: ../../source/templates_replicate.md:269
+msgid "Iteration Guide"
+msgstr ""
+
+#: ../../source/templates_replicate.md:270
+msgid "Everything is pill-shaped — never specify any other border-radius"
+msgstr ""
+
+#: ../../source/templates_replicate.md:271
+msgid "Display text is HEAVY — weight 700, sizes 48px+"
+msgstr ""
+
+#: ../../source/templates_replicate.md:272
+msgid "Links use dotted underline (#bbbbbb) — never solid"
+msgstr ""
+
+#: ../../source/templates_replicate.md:273
+msgid "The gradient hero is the visual anchor — make it bold"
+msgstr ""
+
+#: ../../source/templates_replicate.md:274
+msgid ""
+"Use basier-square for body, rb-freigeist-neue for display, JetBrains Mono"
+" for code"
+msgstr ""
+

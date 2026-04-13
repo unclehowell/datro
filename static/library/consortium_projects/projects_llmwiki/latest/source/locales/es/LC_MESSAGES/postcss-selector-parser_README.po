@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/postcss-selector-parser_README.md:1
+msgid ""
+"postcss-selector-parser [![Build Status](https://travis-ci.org/postcss"
+"/postcss-selector-parser.svg?branch=master)](https://travis-"
+"ci.org/postcss/postcss-selector-parser)"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:3
+msgid "Selector parser with built in methods for working with selector strings."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:5
+msgid "Install"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:7
+msgid "With [npm](https://npmjs.com/package/postcss-selector-parser) do:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:13
+msgid "Quick Start"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:27
+msgid "To normalize selector whitespace:"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:35
+msgid ""
+"Async support is provided through `parser.process` and will resolve a "
+"Promise with the resulting selector string."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:38
+msgid "API"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:40
+msgid "Please see [API.md](API.md)."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:42
+msgid "Credits"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:44
+msgid ""
+"Huge thanks to Andrey Sitnik (@ai) for work on PostCSS which helped "
+"accelerate this module's development."
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:47
+msgid "License"
+msgstr ""
+
+#: ../../source/postcss-selector-parser_README.md:49
+msgid "MIT"
+msgstr ""
+

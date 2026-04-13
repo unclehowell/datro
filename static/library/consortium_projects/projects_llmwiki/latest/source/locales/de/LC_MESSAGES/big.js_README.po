@@ -1,0 +1,386 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: de\n"
+"Language-Team: de <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/big.js_README.md:1
+msgid "big.js"
+msgstr ""
+
+#: ../../source/big.js_README.md:3
+msgid ""
+"**A small, fast JavaScript library for arbitrary-precision decimal "
+"arithmetic.**"
+msgstr ""
+
+#: ../../source/big.js_README.md:5
+msgid ""
+"The little sister to "
+"[bignumber.js](https://github.com/MikeMcl/bignumber.js/) and "
+"[decimal.js](https://github.com/MikeMcl/decimal.js/). See "
+"[here](https://github.com/MikeMcl/big.js/wiki) for some notes on the "
+"difference between them."
+msgstr ""
+
+#: ../../source/big.js_README.md:7
+msgid "Features"
+msgstr ""
+
+#: ../../source/big.js_README.md:9
+msgid ""
+"Faster, smaller and easier-to-use than JavaScript versions of Java's "
+"BigDecimal"
+msgstr ""
+
+#: ../../source/big.js_README.md:10
+msgid "Only 5.9 KB minified and 2.7 KB gzipped"
+msgstr ""
+
+#: ../../source/big.js_README.md:11
+msgid "Simple API"
+msgstr ""
+
+#: ../../source/big.js_README.md:12
+msgid ""
+"Replicates the `toExponential`, `toFixed` and `toPrecision` methods of "
+"JavaScript's Number type"
+msgstr ""
+
+#: ../../source/big.js_README.md:13
+msgid "Includes a `sqrt` method"
+msgstr ""
+
+#: ../../source/big.js_README.md:14
+msgid "Stores values in an accessible decimal floating point format"
+msgstr ""
+
+#: ../../source/big.js_README.md:15
+msgid "No dependencies"
+msgstr ""
+
+#: ../../source/big.js_README.md:16
+msgid ""
+"Comprehensive [documentation](http://mikemcl.github.io/big.js/) and test "
+"set"
+msgstr ""
+
+#: ../../source/big.js_README.md:18
+msgid "Set up"
+msgstr ""
+
+#: ../../source/big.js_README.md:20
+msgid ""
+"The library is the single JavaScript file *big.js* (or *big.min.js*, "
+"which is *big.js* minified)."
+msgstr ""
+
+#: ../../source/big.js_README.md:22
+msgid "Browser:"
+msgstr ""
+
+#: ../../source/big.js_README.md:28
+msgid "[Node.js](http://nodejs.org):"
+msgstr ""
+
+#: ../../source/big.js_README.md:38
+msgid "ES6 module:"
+msgstr ""
+
+#: ../../source/big.js_README.md:43
+msgid "Use"
+msgstr ""
+
+#: ../../source/big.js_README.md:45
+msgid ""
+"*In all examples below, `var`, semicolons and `toString` calls are not "
+"shown. If a commented-out value is in quotes it means `toString` has been"
+" called on the preceding expression.*"
+msgstr ""
+
+#: ../../source/big.js_README.md:47
+msgid ""
+"The library exports a single function, `Big`, the constructor of Big "
+"number instances. It accepts a value of type number, string or Big number"
+" object."
+msgstr ""
+
+#: ../../source/big.js_README.md:55
+msgid ""
+"A Big number is immutable in the sense that it is not changed by its "
+"methods."
+msgstr ""
+
+#: ../../source/big.js_README.md:62
+msgid "The methods that return a Big number can be chained."
+msgstr ""
+
+#: ../../source/big.js_README.md:67
+msgid ""
+"Like JavaScript's Number type, there are `toExponential`, `toFixed` and "
+"`toPrecision` methods."
+msgstr ""
+
+#: ../../source/big.js_README.md:74
+msgid ""
+"The arithmetic methods always return the exact result except `div`, "
+"`sqrt` and `pow` (with negative exponent), as these methods involve "
+"division."
+msgstr ""
+
+#: ../../source/big.js_README.md:77
+msgid ""
+"The maximum number of decimal places and the rounding mode used to round "
+"the results of these methods is determined by the value of the `DP` and "
+"`RM` properties of the `Big` number constructor."
+msgstr ""
+
+#: ../../source/big.js_README.md:90
+msgid ""
+"Multiple Big number constructors can be created, each with an independent"
+" configuration."
+msgstr ""
+
+#: ../../source/big.js_README.md:92
+msgid ""
+"The value of a Big number is stored in a decimal floating point format in"
+" terms of a coefficient, exponent and sign."
+msgstr ""
+
+#: ../../source/big.js_README.md:99
+msgid ""
+"For further information see the [API](http://mikemcl.github.io/big.js/) "
+"reference from the *doc* folder."
+msgstr ""
+
+#: ../../source/big.js_README.md:101
+msgid "Test"
+msgstr ""
+
+#: ../../source/big.js_README.md:103
+msgid "The *test* directory contains the test scripts for each Big number method."
+msgstr ""
+
+#: ../../source/big.js_README.md:105
+msgid "The tests can be run with Node.js or a browser."
+msgstr ""
+
+#: ../../source/big.js_README.md:107
+msgid "To run all the tests"
+msgstr ""
+
+#: ../../source/big.js_README.md:111
+msgid "To test a single method"
+msgstr ""
+
+#: ../../source/big.js_README.md:115
+msgid ""
+"For the browser, see *single-test.html* and *every-test.html* in the "
+"*test/browser* directory."
+msgstr ""
+
+#: ../../source/big.js_README.md:117
+msgid ""
+"*big-vs-number.html* is a simple application that enables some of the "
+"methods of big.js to be compared with those of JavaScript's Number type."
+msgstr ""
+
+#: ../../source/big.js_README.md:119
+msgid "Performance"
+msgstr ""
+
+#: ../../source/big.js_README.md:121
+msgid ""
+"The *perf* directory contains two legacy applications and a *lib* "
+"directory containing the BigDecimal libraries used by both."
+msgstr ""
+
+#: ../../source/big.js_README.md:123
+msgid ""
+"*big-vs-bigdecimal.html* tests the performance of big.js against the "
+"JavaScript translations of two versions of BigDecimal, its use should be "
+"more or less self-explanatory."
+msgstr ""
+
+#: ../../source/big.js_README.md:125
+msgid "[GWT: java.math.BigDecimal](https://github.com/iriscouch/bigdecimal.js)"
+msgstr ""
+
+#: ../../source/big.js_README.md:126
+msgid ""
+"[ICU4J: "
+"com.ibm.icu.math.BigDecimal](https://github.com/dtrebbien/BigDecimal.js)"
+msgstr ""
+
+#: ../../source/big.js_README.md:128
+msgid ""
+"The BigDecimal in the npm registry is the GWT version. It has some bugs, "
+"see the Node.js script *perf/lib/bigdecimal_GWT/bugs.js* for examples of "
+"flaws in its *remainder*, *divide* and *compareTo* methods."
+msgstr ""
+
+#: ../../source/big.js_README.md:130
+msgid ""
+"*bigtime.js* is a Node.js command-line application which tests the "
+"performance of big.js against the GWT version of BigDecimal from the npm "
+"registry."
+msgstr ""
+
+#: ../../source/big.js_README.md:133
+msgid ""
+"For example, to compare the time taken by the big.js `plus` method and "
+"the BigDecimal `add` method"
+msgstr ""
+
+#: ../../source/big.js_README.md:137
+msgid ""
+"This will time 10000 calls to each, using operands of up to 40 random "
+"digits and will check that the results match."
+msgstr ""
+
+#: ../../source/big.js_README.md:139
+msgid "For help"
+msgstr ""
+
+#: ../../source/big.js_README.md:143
+msgid "Build"
+msgstr ""
+
+#: ../../source/big.js_README.md:145
+msgid "If [uglify-js](https://github.com/mishoo/UglifyJS2) is installed globally"
+msgstr ""
+
+#: ../../source/big.js_README.md:149
+msgid "then"
+msgstr ""
+
+#: ../../source/big.js_README.md:153
+msgid "will create *big.min.js*."
+msgstr ""
+
+#: ../../source/big.js_README.md:155
+msgid "TypeScript"
+msgstr ""
+
+#: ../../source/big.js_README.md:157
+msgid ""
+"The [DefinitelyTyped](https://github.com/borisyankov/DefinitelyTyped) "
+"project has a Typescript type definitions file for big.js."
+msgstr ""
+
+#: ../../source/big.js_README.md:161
+msgid ""
+"Any questions about the TypeScript type definitions file should be "
+"addressed to the DefinitelyTyped project."
+msgstr ""
+
+#: ../../source/big.js_README.md:163
+msgid "Feedback"
+msgstr ""
+
+#: ../../source/big.js_README.md:165
+msgid "Bugs/comments/questions?"
+msgstr ""
+
+#: ../../source/big.js_README.md:167
+msgid "Open an issue, or email <a href=\"mailto:M8ch88l@gmail.com\">Michael</a>"
+msgstr ""
+
+#: ../../source/big.js_README.md:169
+msgid "Licence"
+msgstr ""
+
+#: ../../source/big.js_README.md:171
+msgid "[MIT](LICENCE)"
+msgstr ""
+
+#: ../../source/big.js_README.md:173
+msgid "Contributors"
+msgstr ""
+
+#: ../../source/big.js_README.md:175
+msgid ""
+"This project exists thanks to all the people who contribute. "
+"[[Contribute](CONTRIBUTING.md)]. <a href=\"graphs/contributors\"><img "
+"src=\"https://opencollective.com/bigjs/contributors.svg?width=890&button=false\""
+" /></a>"
+msgstr ""
+
+#: ../../source/big.js_README.md:179
+msgid "Backers"
+msgstr ""
+
+#: ../../source/big.js_README.md:181
+msgid ""
+"Thank you to all our backers! 🙏 [[Become a "
+"backer](https://opencollective.com/bigjs#backer)]"
+msgstr ""
+
+#: ../../source/big.js_README.md:183
+msgid ""
+"<a href=\"https://opencollective.com/bigjs#backers\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/backers.svg?width=890\"></a>"
+msgstr ""
+
+#: ../../source/big.js_README.md:186
+msgid "Sponsors"
+msgstr ""
+
+#: ../../source/big.js_README.md:188
+msgid ""
+"Support this project by becoming a sponsor. Your logo will show up here "
+"with a link to your website. [[Become a "
+"sponsor](https://opencollective.com/bigjs#sponsor)]"
+msgstr ""
+
+#: ../../source/big.js_README.md:190
+msgid ""
+"<a href=\"https://opencollective.com/bigjs/sponsor/0/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/0/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/bigjs/sponsor/1/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/1/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/bigjs/sponsor/2/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/2/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/bigjs/sponsor/3/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/3/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/bigjs/sponsor/4/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/4/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/bigjs/sponsor/5/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/5/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/bigjs/sponsor/6/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/6/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/bigjs/sponsor/7/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/7/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/bigjs/sponsor/8/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/8/avatar.svg\"></a> <a "
+"href=\"https://opencollective.com/bigjs/sponsor/9/website\" "
+"target=\"_blank\"><img "
+"src=\"https://opencollective.com/bigjs/sponsor/9/avatar.svg\"></a>"
+msgstr ""
+

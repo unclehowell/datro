@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: fr\n"
+"Language-Team: fr <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/prepend-http_readme.md:1
+msgid ""
+"prepend-http [![Build Status](https://travis-ci.org/sindresorhus/prepend-"
+"http.svg?branch=master)](https://travis-ci.org/sindresorhus/prepend-http)"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:1
+msgid "Build Status"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:3
+msgid "Prepend `http://` to humanized URLs like `todomvc.com` and `localhost`"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:6
+msgid "Install"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:13
+msgid "Usage"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:32
+msgid "API"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:34
+msgid "prependHttp(url, [options])"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:36
+msgid "url"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:38
+msgid "Type: `string`"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:40
+msgid "URL to prepend `http://` on."
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:42
+msgid "options"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:44
+msgid "Type: `Object`"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:46
+msgid "https"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:48
+msgid "Type: `boolean`<br> Default: `false`"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:51
+msgid "Prepend `https://` instead of `http://`."
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:54
+msgid "License"
+msgstr ""
+
+#: ../../source/prepend-http_readme.md:56
+msgid "MIT © [Sindre Sorhus](https://sindresorhus.com)"
+msgstr ""
+

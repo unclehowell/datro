@@ -1,0 +1,87 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2026, DATRO Consortium
+# This file is distributed under the same license as the Email Marketing
+# System - Technical Brief package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2026.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Email Marketing System - Technical Brief 0.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2026-04-12 23:04-0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: es\n"
+"Language-Team: es <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.17.0\n"
+
+#: ../../source/spdx-license-ids_README.md:1
+msgid "spdx-license-ids"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:3
+msgid ""
+"[![npm version](https://img.shields.io/npm/v/spdx-license-"
+"ids.svg)](https://www.npmjs.com/package/spdx-license-ids)"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:3
+msgid "npm version"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:5
+msgid "A list of [SPDX license](https://spdx.org/licenses/) identifiers"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:7
+msgid "Installation"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:9
+msgid ""
+"[Download JSON directly](https://raw.githubusercontent.com/jslicense"
+"/spdx-license-ids/main/index.json), or "
+"[use](https://docs.npmjs.com/cli/install) [npm](https://docs.npmjs.com"
+"/about-npm/):"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:15
+msgid "[Node.js](https://nodejs.org/) API"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:17
+msgid "require('spdx-license-ids')"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:19
+#: ../../source/spdx-license-ids_README.md:35
+msgid "Type: `string[]`"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:21
+msgid "All license IDs except for the currently deprecated ones."
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:33
+msgid "require('spdx-license-ids/deprecated')"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:37
+msgid "Deprecated license IDs."
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:49
+msgid "License"
+msgstr ""
+
+#: ../../source/spdx-license-ids_README.md:51
+msgid ""
+"[Creative Commons Zero v1.0 "
+"Universal](https://creativecommons.org/publicdomain/zero/1.0/deed)"
+msgstr ""
+
