@@ -1,7 +1,2 @@
-[build]
-  command = "npm install && node build.js"
-  publish = "."
-  node_compat = true
-
-[build.environment]
-  NODE_VERSION = "20"
+name = "llmwiki"
+pages_build_output_dir = "."
