@@ -1,7 +1,31 @@
-{
-  "name": "Agent Skills Autonomous",
-  "version": "0.0.1",
-  "children": [
-    {"name": "latest", "file": "latest/source/CHANGELOG.md", "flags": ["new"]}
-  ]
-}
+[
+  {
+    "name": "<div><b class='greenish' title='Green = HTML'>HTML</b>|<b class='redish' title='Red = PDF'>PDF</b></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+  },
+  {
+    "name": "<div class='title-line title-disable'><div class='flag f-gb'></div>English</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+  },
+  {
+    "name": "<div class='language-subtitle-line enable-link gish'>Latest</div>",
+    "path": "./latest/build/html/en/index.html",
+    "_links": {
+      "html": "./latest/build/html/en/index.html",
+      "pdf": "./latest/build/latex/en/agent-skills-autonomous.pdf"
+    }
+  },
+  {
+    "name": "<div class='page-scroll-fix'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+  }
+]
