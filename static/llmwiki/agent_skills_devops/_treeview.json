@@ -1,0 +1,7 @@
+{
+  "name": "Agent Skills Devops",
+  "version": "0.0.1",
+  "children": [
+    {"name": "latest", "file": "latest/source/CHANGELOG.md", "flags": ["new"]}
+  ]
+}

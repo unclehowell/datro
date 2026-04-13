@@ -1,0 +1,43 @@
+site_name: LLMWiki — Agent Hive Mind
+site_description: Persistent knowledge base for agent swarms across laptop and AWS infrastructure
+site_url: https://brain.financecheque.uk
+docs_dir: .
+site_dir: _site
+
+theme:
+  name: material
+  palette:
+    primary: deep purple
+    accent: teal
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - toc.integrate
+    - search.suggest
+
+nav:
+  - Home: index.html
+  - Agent Soul:
+    - Soul: agent_soul/latest/source/soul.md
+    - Pi Agent: agent_soul/latest/source/pi-agent.md
+    - Pi Subagent: agent_soul/latest/source/pi-subagent.md
+    - Changelog: agent_soul/latest/source/CHANGELOG.md
+  - Communication Skills:
+    - Changelog: agent_skills_communication/latest/source/CHANGELOG.md
+  - Research Skills:
+    - Changelog: agent_skills_research/latest/source/CHANGELOG.md
+  - Creative Skills:
+    - Changelog: agent_skills_creative/latest/source/CHANGELOG.md
+  - DevOps Skills:
+    - Changelog: agent_skills_devops/latest/source/CHANGELOG.md
+  - Autonomous Agent Skills:
+    - Changelog: agent_skills_autonomous/latest/source/CHANGELOG.md
+  - Lifestyle Skills:
+    - Changelog: agent_skills_lifestyle/latest/source/CHANGELOG.md
+  - Agent Memory:
+    - Mem0 Plugin: agent_memory/latest/source/mem0-memory-plugin.md
+    - Feedback & Autonomy: agent_memory/latest/source/feedback-autonomy.md
+    - Changelog: agent_memory/latest/source/CHANGELOG.md
+
+plugins:
+  - search
