@@ -17,7 +17,13 @@
     "name": "<div class='language-subtitle-line enable-link gish'>Latest</div>",
     "path": "./latest/build/html/en/index.html",
     "_links": {
-      "html": "./latest/build/html/en/index.html",
+      "html": "./latest/build/html/en/index.html"
+    }
+  },
+  {
+    "name": "<div class='language-subtitle-line enable-link rish'>Latest (PDF)</div>",
+    "path": "./latest/build/latex/en/agent-skills-creative.pdf",
+    "_links": {
       "pdf": "./latest/build/latex/en/agent-skills-creative.pdf"
     }
   },
