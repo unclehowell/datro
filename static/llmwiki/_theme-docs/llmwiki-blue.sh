@@ -34,23 +34,12 @@ find build/html/en/_static -name "theme.css" -exec sed -i \
 find build/html/en/_static -name "theme.css" -exec sed -i \
   's/line-height:3px;/line-height:1.5em;/g' {} \;
 
-# Inject JS to collapse excessive spacing at runtime
+# Inject JS to force compact spacing on toctree items
 find build/html/en -name "*.html" -exec sed -i 's|</body>|<script>
 document.addEventListener("DOMContentLoaded",function(){
-  // Remove p wrappers inside toctree li items
-  document.querySelectorAll(".toctree-wrapper li p").forEach(function(p){
-    var li=p.parentNode;
-    while(p.firstChild)li.insertBefore(p.firstChild,p);
-    li.removeChild(p);
-  });
-  // Remove empty paragraphs
-  document.querySelectorAll("p").forEach(function(p){
-    if(!p.textContent.trim()&&!p.querySelector("img"))p.remove();
-  });
-  // Collapse li margins
-  document.querySelectorAll(".toctree-wrapper li,.rst-content li").forEach(function(li){
-    li.style.marginTop="2px";li.style.marginBottom="2px";li.style.lineHeight="1.5em";
-  });
+  var s=document.createElement("style");
+  s.textContent=".toctree-wrapper li,.toctree-wrapper li>*{margin-top:1px!important;margin-bottom:1px!important;padding-top:0!important;padding-bottom:0!important;line-height:1.6em!important;}";
+  document.head.appendChild(s);
 });
 </script></body>|g' {} \;
 
