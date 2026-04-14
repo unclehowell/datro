@@ -1,18 +1,12 @@
-// llmwiki agent API — serves raw MD files to authenticated agents
-// Deploy as Cloudflare Pages Function at /api/[[path]].js
-// Usage: GET /api/memory_longterm/longterm_honcho/latest/source/mem0-memory-plugin.md
-//        Header: X-API-Key: <key>
-//        Or: GET /api/search?q=honcho
+// llmwiki agent API — serves raw MD source files to authenticated agents
+// Cloudflare Pages Function at /functions/api/[[path]].js
 
-const API_KEYS = [
-  "llmwiki-agent-key-unclehowell-2026"
-];
+const API_KEYS = ["llmwiki-agent-key-unclehowell-2026"];
 
 export async function onRequest(context) {
-  const { request, env } = context;
+  const { request } = context;
   const url = new URL(request.url);
 
-  // Auth
   const key = request.headers.get("X-API-Key") || url.searchParams.get("api_key");
   if (!API_KEYS.includes(key)) {
     return new Response(JSON.stringify({ error: "Unauthorized" }), {
@@ -20,42 +14,45 @@ export async function onRequest(context) {
     });
   }
 
-  const path = url.pathname.replace(/^\/api\/?/, "");
+  const path = url.pathname.replace(/^\/api\/?/, "").replace(/\?.*$/, "");
 
-  // List endpoint
   if (!path || path === "list") {
     return new Response(JSON.stringify({
       description: "LLMWiki Agent API — brain.financecheque.uk",
-      endpoints: {
-        "GET /api/{category}/{doc}/latest/source/{file}.md": "Fetch raw MD file",
-        "GET /api/list": "This listing"
-      },
-      categories: [
-        "memory_longterm",
-        "skills_devops", "skills_creative", "skills_research",
-        "skills_communication", "skills_lifestyle", "skills_autonomous",
-        "soul_identity"
-      ]
+      usage: "GET /api/{path/to/file.md}?api_key=YOUR_KEY",
+      example: "/api/memory_longterm/longterm_honcho/latest/source/mem0-memory-plugin.md",
+      categories: ["memory_longterm","skills_devops","skills_creative","skills_research",
+        "skills_communication","skills_lifestyle","skills_autonomous","soul_identity"]
     }), { headers: { "Content-Type": "application/json" } });
   }
 
-  // Serve raw MD — fetch from Pages static assets
-  const mdUrl = new URL(`/${path}`, url.origin);
-  try {
-    const resp = await fetch(mdUrl);
-    if (!resp.ok) return new Response(JSON.stringify({ error: "Not found", path }), {
-      status: 404, headers: { "Content-Type": "application/json" }
-    });
-    const text = await resp.text();
-    return new Response(text, {
-      headers: {
-        "Content-Type": "text/markdown; charset=utf-8",
-        "Access-Control-Allow-Origin": "*"
-      }
-    });
-  } catch (e) {
-    return new Response(JSON.stringify({ error: e.message }), {
-      status: 500, headers: { "Content-Type": "application/json" }
+  // Only serve .md files from source directories
+  if (!path.endsWith(".md")) {
+    return new Response(JSON.stringify({ error: "Only .md files are served via this API" }), {
+      status: 400, headers: { "Content-Type": "application/json" }
     });
   }
+
+  // Fetch the static asset directly by constructing the full URL
+  const assetUrl = new URL(`/${path}`, url.origin);
+  const resp = await fetch(assetUrl.toString(), {
+    headers: { "Accept": "text/plain, text/markdown, */*" }
+  });
+
+  // If Pages returns HTML (SPA fallback), the file doesn't exist
+  const ct = resp.headers.get("content-type") || "";
+  if (!resp.ok || ct.includes("text/html")) {
+    return new Response(JSON.stringify({ error: "File not found", path }), {
+      status: 404, headers: { "Content-Type": "application/json" }
+    });
+  }
+
+  const text = await resp.text();
+  return new Response(text, {
+    headers: {
+      "Content-Type": "text/markdown; charset=utf-8",
+      "Access-Control-Allow-Origin": "*",
+      "X-Source-Path": path
+    }
+  });
 }

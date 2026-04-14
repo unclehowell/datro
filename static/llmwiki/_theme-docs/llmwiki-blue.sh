@@ -26,9 +26,16 @@ code,tt,.rst-content code,.rst-content tt{background:#1e1e3a!important;color:#e8
 .rst-content table.docutils thead,.rst-content table.docutils th{background:#1e1e3a!important;color:#e8e8f0!important;border-color:#444466!important;}
 .rst-content table.docutils td{border-color:#444466;}
 .rst-content table.docutils caption{font-weight:700;font-size:100%;color:#55a5d9;text-align:left;margin-bottom:6px;}
+.wy-plain-list-disc,article ul,.rst-content section ul,.rst-content section ol{margin-bottom:6px!important;}
 .rst-content section ul li>*,.rst-content section ol li>*{margin-top:2px!important;margin-bottom:2px!important;}
-.rst-content section ul li>p,.rst-content section ol li>p{margin-bottom:4px!important;}
+.rst-content section ul li>p,.rst-content section ol li>p{margin-bottom:2px!important;line-height:1.4em!important;}
 " >> {}'
+
+# Replace DATRO logo text with Finance Cheque UK in sidebar
+find build/html/en -name "*.html" -exec sed -i \
+  's|>DATRO Document Library<|>Finance Cheque UK<|g' {} \;
+find build/html/en -name "*.html" -exec sed -i \
+  's|alt="Logo"|alt="Finance Cheque UK"|g' {} \;
 
 # Fix footer — replace YYYY placeholder and strip duplicate copyright text
 find build/html/en -name "*.html" -exec sed -i \
