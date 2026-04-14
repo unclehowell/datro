@@ -16,11 +16,13 @@ rm ./theme.sh
 find build/html/en -name "*.html" -exec sed -i \
   's|</head>|<style>.wy-menu-vertical li.toctree-l1>a+ul,.wy-menu-vertical li.toctree-l2>a+ul{display:block!important;}</style></head>|g' {} \;
 
-# Fix 2: Dark code blocks
-find build/html/en/_static -name "theme.css" -exec sed -i \
-  's/background:#fff;border:1px solid #e1e4e5/background:#1e1e3a;border:1px solid #333666/g' {} \;
-find build/html/en/_static -name "theme.css" -exec sed -i \
-  's/color:darkgrey/color:#e8e8f0/g' {} \;
+# Fix 2: Dark code blocks — inject overrides at end of CSS (highest specificity)
+find build/html/en/_static -name "theme.css" | xargs -I{} sh -c 'echo "
+div[class^=\"highlight\"],pre.literal-block{background:#1e1e3a!important;border-color:#333666!important;}
+div[class^=\"highlight\"] pre,pre.literal-block{color:#e8e8f0!important;background:#1e1e3a!important;}
+.highlight{background:#1e1e3a!important;}
+.highlight .hll{background:#2a2a4a!important;}
+" >> {}'
 
 # Fix 3: Fix line-height overlap on landing page
 find build/html/en/_static -name "theme.css" -exec sed -i \

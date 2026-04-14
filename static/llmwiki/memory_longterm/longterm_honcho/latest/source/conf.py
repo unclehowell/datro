@@ -13,6 +13,6 @@ gettext_compact = "docs"
 exclude_patterns = ['_build']
 html_theme = 'sphinx_rtd_theme'
 htmlhelp_basename = 'memory-longterm_longterm-honcho'
-latex_elements = {'papersize': 'a4paper', 'pointsize': '10pt'}
+latex_elements = {'papersize': 'a4paper', 'pointsize': '10pt', 'extraclassoptions': 'openany', 'preamble': r'\usepackage{etoolbox}\patchcmd{\chapter}{\cleardoublepage}{\clearpage}{}{}'}
 latex_documents = [(master_doc, 'memory-longterm_longterm-honcho.tex', u'Long-term Memory — Honcho & Mem0', u'DATRO Consortium', 'manual')]
 myst_enable_extensions = ["colon_fence", "deflist"]
