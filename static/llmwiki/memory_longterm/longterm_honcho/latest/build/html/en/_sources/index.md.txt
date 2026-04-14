@@ -4,4 +4,5 @@
 :maxdepth: 2
 
 mem0-memory-plugin
+releasenotes
 ```

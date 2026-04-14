@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.11)  14 APR 2026 01:09
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2026.4.11)  14 APR 2026 01:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -900,13 +900,26 @@ LaTeX Font Info:    Trying to load font information for TS1+qtm on input line 1
 
 (/usr/share/texmf/tex/latex/tex-gyre/ts1qtm.fd
 File: ts1qtm.fd 2009/09/25 v1.2 font definition file for TS1/qtm
-)
-No file memory-longterm_longterm-honcho.ind.
-[1
+) [1
 
 
 {/usr/share/texlive/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/share/texmf/fo
-nts/enc/dvips/tex-gyre/q-ts1.enc}] (./memory-longterm_longterm-honcho.aux)
+nts/enc/dvips/tex-gyre/q-ts1.enc}]
+Chapter 2.
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--270
+[]\T1/qhv/b/n/10 Ver-
+ []
+
+
+Underfull \hbox (badness 10000) detected at line 271
+[]\T1/qhv/b/n/10 Ver-
+ []
+
+No file memory-longterm_longterm-honcho.ind.
+[2
+
+] (./memory-longterm_longterm-honcho.aux)
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
@@ -924,16 +937,16 @@ changed.
 Package rerunfilecheck Info: Checksums for `memory-longterm_longterm-honcho.out
 ':
 (rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  B6A69E2AB68C3E3367A2326F7870BCAD;758.
+(rerunfilecheck)             After:  95E64DEF5EB74F7EE5DCEFDDB773BF08;1724.
  ) 
 Here is how much of TeX's memory you used:
- 16796 strings out of 476182
- 285596 string characters out of 5795595
+ 16837 strings out of 476182
+ 286367 string characters out of 5795595
  1942975 words of memory out of 5000000
- 38424 multiletter control sequences out of 15000+600000
- 603024 words of font info for 75 fonts, out of 8000000 for 9000
+ 38448 multiletter control sequences out of 15000+600000
+ 609519 words of font info for 80 fonts, out of 8000000 for 9000
  15 hyphenation exceptions out of 8191
- 72i,11n,83p,1220b,551s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 72i,12n,83p,1220b,551s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texmf/fonts/type1/public/tex-gyre/qhvb.pfb></usr/share/texmf/font
 s/type1/public/tex-gyre/qhvbi.pfb></usr/share/texmf/fonts/type1/public/tex-gyre
 /qtmb.pfb></usr/share/texmf/fonts/type1/public/tex-gyre/qtmr.pfb></usr/share/te
@@ -941,10 +954,10 @@ xlive/texmf-dist/fonts/type1/public/txfonts/t1xbtt.pfb></usr/share/texlive/texm
 f-dist/fonts/type1/public/txfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/font
 s/type1/public/txfonts/t1xtt.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw
 /times/utmr8a.pfb>
-Output written on memory-longterm_longterm-honcho.pdf (3 pages, 111002 bytes).
+Output written on memory-longterm_longterm-honcho.pdf (4 pages, 116571 bytes).
 PDF statistics:
- 73 PDF objects out of 1000 (max. 8388607)
- 52 compressed objects within 1 object stream
- 10 named destinations out of 1000 (max. 500000)
+ 87 PDF objects out of 1000 (max. 8388607)
+ 65 compressed objects within 1 object stream
+ 19 named destinations out of 1000 (max. 500000)
  21 words of extra memory for PDF output out of 10000 (max. 10000000)
 
