@@ -17,22 +17,28 @@ import { join, basename } from 'path';
 
 const ROOT = new URL('.', import.meta.url).pathname;
 const INTRAY = join(ROOT, '_intray');
-const GROQ_API_KEY = process.env.GROQ_API_KEY || '';
+
+const PROVIDERS = [
+  { url: 'https://api.groq.com/openai/v1/chat/completions', key: process.env.GROQ_API_KEY, model: 'llama-3.1-8b-instant' },
+  { url: 'https://openrouter.ai/api/v1/chat/completions', key: process.env.OPENROUTER_API_KEY, model: 'google/gemini-2.0-flash-001' },
+  { url: 'https://api.openai.com/v1/chat/completions', key: process.env.OPENAI_API_KEY, model: 'gpt-4o-mini' },
+];
 
 async function groq(prompt) {
-  if (!GROQ_API_KEY) throw new Error('No GROQ_API_KEY');
-  const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
-    method: 'POST',
-    headers: { 'Authorization': `Bearer ${GROQ_API_KEY}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      model: 'llama-3.1-8b-instant',
-      messages: [{ role: 'user', content: prompt }],
-      max_tokens: 2000,
-      temperature: 0.1
-    })
-  });
-  const d = await resp.json();
-  return d.choices?.[0]?.message?.content?.trim() || '';
+  for (const p of PROVIDERS) {
+    if (!p.key) continue;
+    try {
+      const resp = await fetch(p.url, {
+        method: 'POST',
+        headers: { 'Authorization': `Bearer ${p.key}`, 'Content-Type': 'application/json' },
+        body: JSON.stringify({ model: p.model, messages: [{ role: 'user', content: prompt }], max_tokens: 2000, temperature: 0.1 })
+      });
+      const d = await resp.json();
+      const text = d.choices?.[0]?.message?.content?.trim();
+      if (text) { console.log(`[intray] Used provider: ${p.url}`); return text; }
+    } catch (e) { console.log(`[intray] Provider ${p.url} failed: ${e.message}`); }
+  }
+  throw new Error('All LLM providers failed');
 }
 
 function themeHead(depth) {
