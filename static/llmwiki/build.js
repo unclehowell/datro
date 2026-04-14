@@ -5,8 +5,14 @@
 import { execSync } from 'child_process';
 import { readdirSync, statSync, existsSync } from 'fs';
 import { join } from 'path';
+import { processIntray } from './process-intray.js';
 
 const ROOT = new URL('.', import.meta.url).pathname;
+
+// Step 1: classify and move any files in _intray/
+await processIntray();
+
+// Step 2: find and run all rebuild.sh scripts
 
 function findRebuildScripts(dir, depth = 0) {
   if (depth > 4) return [];
