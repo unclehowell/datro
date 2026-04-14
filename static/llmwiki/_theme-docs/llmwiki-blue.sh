@@ -34,11 +34,25 @@ find build/html/en/_static -name "theme.css" -exec sed -i \
 find build/html/en/_static -name "theme.css" -exec sed -i \
   's/line-height:3px;/line-height:1.5em;/g' {} \;
 
-# Replace DATRO logo text with Finance Cheque UK in RTD sidebar title
-find build/html/en -name "*.html" -exec sed -i \
-  's|<a href="#">.*</a>|<a href="#">Finance Cheque UK</a>|g' {} \;
-find build/html/en -name "*.html" -exec sed -i \
-  's|class="icon icon-home">|class="icon icon-home"> Finance Cheque UK |g' {} \;
+# Inject JS to collapse excessive spacing at runtime
+find build/html/en -name "*.html" -exec sed -i 's|</body>|<script>
+document.addEventListener("DOMContentLoaded",function(){
+  // Remove p wrappers inside toctree li items
+  document.querySelectorAll(".toctree-wrapper li p").forEach(function(p){
+    var li=p.parentNode;
+    while(p.firstChild)li.insertBefore(p.firstChild,p);
+    li.removeChild(p);
+  });
+  // Remove empty paragraphs
+  document.querySelectorAll("p").forEach(function(p){
+    if(!p.textContent.trim()&&!p.querySelector("img"))p.remove();
+  });
+  // Collapse li margins
+  document.querySelectorAll(".toctree-wrapper li,.rst-content li").forEach(function(li){
+    li.style.marginTop="2px";li.style.marginBottom="2px";li.style.lineHeight="1.5em";
+  });
+});
+</script></body>|g' {} \;
 
 # Collapse excessive vertical spacing — remove empty paragraphs and reduce margins
 find build/html/en/_static -name "theme.css" | xargs -I{} sh -c 'echo "
