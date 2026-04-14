@@ -17,15 +17,15 @@ import { join, basename } from 'path';
 
 const ROOT = new URL('.', import.meta.url).pathname;
 const INTRAY = join(ROOT, '_intray');
-const GROQ_API_KEY = process.env.GROQ_API_KEY || '';
+const OPENROUTER_API_KEY = process.env.OPENROUTER_API_KEY || '';
 
 async function groq(prompt) {
-  if (!GROQ_API_KEY) throw new Error('No GROQ_API_KEY');
-  const resp = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+  if (!OPENROUTER_API_KEY) throw new Error('No OPENROUTER_API_KEY');
+  const resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
     method: 'POST',
-    headers: { 'Authorization': `Bearer ${GROQ_API_KEY}`, 'Content-Type': 'application/json' },
+    headers: { 'Authorization': `Bearer ${OPENROUTER_API_KEY}`, 'Content-Type': 'application/json' },
     body: JSON.stringify({
-      model: 'llama-3.1-8b-instant',
+      model: 'google/gemini-2.0-flash-001',
       messages: [{ role: 'user', content: prompt }],
       max_tokens: 2000,
       temperature: 0.1
