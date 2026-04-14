@@ -78,4 +78,17 @@ async function processIntray() {
   }
 }
 
-export { processIntray };
+async function checkWayback(category) {
+  try {
+    const resp = await fetch(
+      `https://wayback.financecheque.xyz/wayback/`,
+      { headers: { 'X-API-Key': 'wayback-readonly-key-unclehowell-2026' } }
+    );
+    // Look for PDFs matching this category
+    const text = await resp.text();
+    const matches = [...text.matchAll(new RegExp(`(${category}[^"'<>]+\\.pdf)`, 'gi'))];
+    return matches.map(m => m[1]);
+  } catch { return []; }
+}
+
+export { processIntray, checkWayback };
