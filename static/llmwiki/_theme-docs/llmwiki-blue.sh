@@ -34,11 +34,16 @@ find build/html/en/_static -name "theme.css" -exec sed -i \
 find build/html/en/_static -name "theme.css" -exec sed -i \
   's/line-height:3px;/line-height:1.5em;/g' {} \;
 
-# Inject JS to force compact spacing on toctree items
+# Inject JS to remove p wrappers inside li elements (causes blank line spacing)
 find build/html/en -name "*.html" -exec sed -i 's|</body>|<script>
 document.addEventListener("DOMContentLoaded",function(){
+  document.querySelectorAll("li>p:only-child,li>p:first-child").forEach(function(p){
+    var li=p.parentNode;
+    while(p.firstChild)li.insertBefore(p.firstChild,p);
+    p.parentNode&&p.parentNode.removeChild(p);
+  });
   var s=document.createElement("style");
-  s.textContent=".toctree-wrapper li,.toctree-wrapper li>*{margin-top:1px!important;margin-bottom:1px!important;padding-top:0!important;padding-bottom:0!important;line-height:1.6em!important;}";
+  s.textContent=".toctree-wrapper li,.toctree-wrapper li>*,.rst-content li,.rst-content li>*{margin-top:1px!important;margin-bottom:1px!important;padding-top:0!important;padding-bottom:0!important;line-height:1.6em!important;}";
   document.head.appendChild(s);
 });
 </script></body>|g' {} \;
