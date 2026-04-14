@@ -1,1 +1,0 @@
-import{_ as e,o as a,c as t,a2 as o}from"./chunks/framework.Btj8ZJ1s.js";const _=JSON.parse('{"title":"Pi","description":"","frontmatter":{},"headers":[],"relativePath":"pi-agent.md","filePath":"pi-agent.md"}'),i={name:"pi-agent.md"},s=o("",9),l=[s];function r(n,d,c,h,p,u){return a(),t("div",null,l)}const q=e(i,[["render",r]]);export{_ as __pageData,q as default};
