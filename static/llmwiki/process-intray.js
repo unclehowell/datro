@@ -92,14 +92,30 @@ function makeRebuildSh(docName, depth) {
 set -e
 cd "$(dirname "$0")"
 LLMWIKI_ROOT="$(cd ${rel} && pwd)"
+
+# HTML build
 rm -rf build/html build/latex
-sphinx-build -b html source build/html/en
+sphinx-build -b html source build/html/en -q
 echo '<html><body></body><script>window.open("./en/","_self");</script></html>' > build/html/index.html
+
+# Apply theme
 bash "$LLMWIKI_ROOT/_theme-docs/llmwiki-blue.sh"
-sphinx-build -b latex source build/latex/en -D language='en'
-(cd build/latex/en && pdflatex -interaction=nonstopmode *.tex 2>/dev/null && pdflatex -interaction=nonstopmode *.tex 2>/dev/null) || true
+
+# PDF build via rinohtype (no LaTeX required)
+mkdir -p build/latex/en
+sphinx-build -b rinoh source build/latex/en -q 2>/dev/null || \
+  sphinx-build -b rinoh source build/latex/en 2>/dev/null || \
+  echo "WARNING: rinoh build failed for ${docName}"
+
+# Rename rinoh output to expected name if needed
+find build/latex/en -name "*.pdf" | head -1 | xargs -I{} mv {} build/latex/en/${docName}.pdf 2>/dev/null || true
+
 PDF="build/latex/en/${docName}.pdf"
-[ -f "$PDF" ] && echo "PDF OK: $PDF ($(wc -c < "$PDF") bytes)" || echo "WARNING: PDF missing"
+if [ -f "$PDF" ] && [ "$(wc -c < "$PDF")" -gt 1000 ]; then
+  echo "PDF OK: $PDF ($(wc -c < "$PDF") bytes)"
+else
+  echo "WARNING: PDF missing or empty: $PDF"
+fi
 echo '<html><body></body><script>window.open("./${docName}.pdf","_self");</script></html>' > build/latex/en/index.html
 echo "Done: ${docName}"
 `;

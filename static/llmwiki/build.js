@@ -56,6 +56,34 @@ function findLatestDirs(dir, depth = 0) {
 // Step 1: process intray
 await processIntray();
 
+// Step 1b: rebuild root _treeview.json from actual category dirs on disk
+// (ensures homepage always shows categories, not documents)
+{
+  const SKIP = new Set(['.', '..', 'node_modules', 'functions', 'wiki', 'raw', '_intray', '_outtray', '_test', '_theme-docs', '_theme-explorer', '_theme-vitepress', '_vitepress-theme']);
+  const catEntries = [];
+  for (const entry of readdirSync(ROOT)) {
+    if (entry.startsWith('_') || SKIP.has(entry)) continue;
+    const full = join(ROOT, entry);
+    try {
+      if (!statSync(full).isDirectory()) continue;
+      // Must have at least one document subdir with a latest/source
+      const hasDocs = readdirSync(full).some(d => existsSync(join(full, d, 'latest', 'source')));
+      if (!hasDocs) continue;
+      // Read label from existing category _treeview.json if present
+      let label = entry.replace(/_/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+      try {
+        const tv = JSON.parse(readFileSync(join(full, '_treeview.json'), 'utf8'));
+        // label not stored separately — derive from first entry name or keep generated
+      } catch {}
+      catEntries.push({ name: `<div class='subtitle-line enable-link'>${label}</div>`, path: `./${entry}/index.html`, _links: { html: `./${entry}/index.html` } });
+    } catch {}
+  }
+  if (catEntries.length) {
+    writeFileSync(join(ROOT, '_treeview.json'), JSON.stringify(catEntries, null, 2));
+    console.log(`Root treeview: ${catEntries.length} categories`);
+  }
+}
+
 // Step 2: find all rebuild targets
 const latestDirs = findLatestDirs(ROOT);
 console.log(`Found ${latestDirs.length} rebuild targets`);
