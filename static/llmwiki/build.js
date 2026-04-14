@@ -34,7 +34,39 @@ async function patchReleasenotes(latestDir, sectionName) {
   }
 }
 
-// Step 3: find and run all rebuild.sh scripts
+// Step 3: find and run rebuild.sh only for sections with changed source files
+function needsRebuild(latestDir) {
+  const srcDir = join(latestDir, 'source');
+  const outDir = join(latestDir, 'build', 'html', 'en');
+  if (!existsSync(outDir)) return true; // never built
+
+  // Get newest mtime of any source file
+  let newestSrc = 0;
+  function walkSrc(d) {
+    try {
+      for (const f of readdirSync(d)) {
+        const full = join(d, f);
+        try {
+          const s = statSync(full);
+          if (s.isDirectory()) walkSrc(full);
+          else if (s.mtimeMs > newestSrc) newestSrc = s.mtimeMs;
+        } catch {}
+      }
+    } catch {}
+  }
+  walkSrc(srcDir);
+
+  // Get oldest mtime of build output
+  let oldestOut = Infinity;
+  try {
+    for (const f of readdirSync(outDir)) {
+      const s = statSync(join(outDir, f));
+      if (s.mtimeMs < oldestOut) oldestOut = s.mtimeMs;
+    }
+  } catch { return true; }
+
+  return newestSrc > oldestOut;
+}
 
 function findRebuildScripts(dir, depth = 0) {
   if (depth > 4) return [];
@@ -60,7 +92,11 @@ console.log(`Found ${latestDirs.length} rebuild targets`);
 
 for (const dir of latestDirs) {
   const rel = dir.replace(ROOT, '');
-  const sectionName = rel.split('/')[1]; // e.g. agent_soul
+  const sectionName = rel.split('/')[1];
+  if (!needsRebuild(dir)) {
+    console.log(`⏭ ${rel} — unchanged, skipping`);
+    continue;
+  }
   console.log(`\n=== ${rel} ===`);
   await patchReleasenotes(dir, sectionName);
   try {
@@ -71,3 +107,20 @@ for (const dir of latestDirs) {
 }
 
 console.log('\nDone.');
+
+// Write manifest of all deployed source MD files for brain API
+const manifest = [];
+for (const dir of latestDirs) {
+  const srcDir = join(dir, 'source');
+  if (existsSync(srcDir)) {
+    try {
+      for (const f of readdirSync(srcDir)) {
+        if (f.endsWith('.md') && f !== 'index.md' && f !== 'releasenotes.md') {
+          manifest.push(f);
+        }
+      }
+    } catch {}
+  }
+}
+writeFileSync(join(ROOT, '_deployed_manifest.json'), JSON.stringify({ deployed_files: manifest, built_at: new Date().toISOString() }, null, 2));
+console.log(`Manifest: ${manifest.length} deployed source files`);

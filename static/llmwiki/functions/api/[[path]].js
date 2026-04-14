@@ -17,12 +17,21 @@ export async function onRequest(context) {
   const path = url.pathname.replace(/^\/api\/?/, "").replace(/\?.*$/, "");
 
   if (!path || path === "list") {
+    // Fetch the deployed manifest written by build.js
+    try {
+      const manifestUrl = new URL('/_deployed_manifest.json', url.origin);
+      const resp = await fetch(manifestUrl.toString());
+      if (resp.ok) {
+        const data = await resp.json();
+        return new Response(JSON.stringify({
+          description: "LLMWiki Agent API — brain.financecheque.uk",
+          ...data
+        }), { headers: { "Content-Type": "application/json" } });
+      }
+    } catch {}
     return new Response(JSON.stringify({
       description: "LLMWiki Agent API — brain.financecheque.uk",
-      usage: "GET /api/{path/to/file.md}?api_key=YOUR_KEY",
-      example: "/api/memory_longterm/longterm_honcho/latest/source/mem0-memory-plugin.md",
-      categories: ["memory_longterm","skills_devops","skills_creative","skills_research",
-        "skills_communication","skills_lifestyle","skills_autonomous","soul_identity"]
+      deployed_files: []
     }), { headers: { "Content-Type": "application/json" } });
   }
 

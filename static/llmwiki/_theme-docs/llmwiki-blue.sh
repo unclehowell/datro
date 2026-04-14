@@ -16,12 +16,16 @@ rm ./theme.sh
 find build/html/en -name "*.html" -exec sed -i \
   's|</head>|<style>.wy-menu-vertical li.toctree-l1>a+ul,.wy-menu-vertical li.toctree-l2>a+ul{display:block!important;}</style></head>|g' {} \;
 
-# Fix 2: Dark code blocks — inject overrides at end of CSS (highest specificity)
+# Fix 2: Dark code blocks — directly replace background in CSS rules
+find build/html/en/_static -name "theme.css" -exec sed -i \
+  's/\.rst-content div\[class\^=highlight\],\.rst-content pre\.literal-block{border:1px solid #e1e4e5/\.rst-content div[class^=highlight],\.rst-content pre\.literal-block{border:1px solid #333666/g' {} \;
+find build/html/en/_static -name "theme.css" -exec sed -i \
+  's/\.rst-content div\[class\^=highlight\] pre{white-space:pre;margin:0;padding:12px;display:block;overflow:auto}/\.rst-content div[class^=highlight] pre{white-space:pre;margin:0;padding:12px;display:block;overflow:auto;background:#1e1e3a!important;color:#e8e8f0!important}/g' {} \;
+# Append final overrides with highest specificity
 find build/html/en/_static -name "theme.css" | xargs -I{} sh -c 'echo "
-div[class^=\"highlight\"],pre.literal-block{background:#1e1e3a!important;border-color:#333666!important;}
-div[class^=\"highlight\"] pre,pre.literal-block{color:#e8e8f0!important;background:#1e1e3a!important;}
+div[class^=\"highlight\"]{background:#1e1e3a!important;}
+div[class^=\"highlight\"] pre{background:#1e1e3a!important;color:#e8e8f0!important;}
 .highlight{background:#1e1e3a!important;}
-.highlight .hll{background:#2a2a4a!important;}
 code,tt,.rst-content code,.rst-content tt{background:#1e1e3a!important;color:#e8e8f0!important;border-color:#333666!important;}
 .rst-content table.docutils thead,.rst-content table.docutils th{background:#1e1e3a!important;color:#e8e8f0!important;border-color:#444466!important;}
 .rst-content table.docutils td{border-color:#444466;}
@@ -47,18 +51,25 @@ find build/html/en/_static -name "theme.css" | xargs -I{} sh -c 'echo "
 .rst-content .toctree-wrapper{margin-bottom:12px!important;}
 " >> {}'
 
-# Fix footer — replace YYYY placeholder and strip duplicate copyright text
+# Fix footer — replace YYYY placeholder and strip ALL trailing copyright text
 find build/html/en -name "*.html" -exec sed -i \
   's|href="https://datro.xyz"|href="https://financecheque.uk"|g' {} \;
 find build/html/en -name "*.html" -exec sed -i \
   's|>datro.xyz<|>financecheque.uk<|g' {} \;
 find build/html/en -name "*.html" -exec sed -i \
   's|DATRO Consortium</strong></b>|Finance Cheque UK</strong></b>|g' {} \;
+# Strip everything after </strong></b> up to </p> (removes leftover conf.py copyright)
 find build/html/en -name "*.html" -exec sed -i \
-  's|Finance Cheque UK</strong></b>nance Cheque UK\.|Finance Cheque UK</strong></b>|g' {} \;
-find build/html/en -name "*.html" -exec sed -i \
-  's|Finance Cheque UK</strong></b> Finance Cheque UK\.|Finance Cheque UK</strong></b>|g' {} \;
+  's|Finance Cheque UK</strong></b>[^<]*</p>|Finance Cheque UK</strong></b></p>|g' {} \;
 
 # Fix 3: Fix line-height overlap on landing page
 find build/html/en/_static -name "theme.css" -exec sed -i \
   's/line-height:3px/line-height:1.6em/g' {} \;
+
+# Fix 4: Override white-space:pre-wrap on list items (causes line overlap)
+find build/html/en/_static -name "theme.css" -exec sed -i \
+  's/white-space:pre-wrap;margin-bottom:0.3em;/white-space:normal;margin-bottom:0.3em;/g' {} \;
+find build/html/en/_static -name "theme.css" | xargs -I{} sh -c 'echo "
+.rst-content section ul li,.rst-content section ol li{white-space:normal!important;line-height:1.6em!important;margin-bottom:2px!important;}
+.rst-content section ul li>*,.rst-content section ol li>*{white-space:normal!important;margin-top:0!important;margin-bottom:0!important;}
+" >> {}'

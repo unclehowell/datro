@@ -123,7 +123,19 @@ cat > build/html/index.html << 'EOF'
 EOF
 bash "$LLMWIKI_ROOT/_theme-docs/llmwiki-blue.sh"
 sphinx-build -b latex source build/latex/en -D language='en'
-make -C build/latex/en all-pdf 2>/dev/null || (cd build/latex/en && pdflatex -interaction=nonstopmode *.tex 2>/dev/null || true)
+# Try latexmk first, fall back to pdflatex
+if command -v latexmk &>/dev/null; then
+  make -C build/latex/en all-pdf LATEXMKOPTS="-interaction=nonstopmode -halt-on-error" 2>/dev/null || true
+fi
+# Always try pdflatex as fallback
+(cd build/latex/en && pdflatex -interaction=nonstopmode -halt-on-error *.tex 2>/dev/null && pdflatex -interaction=nonstopmode *.tex 2>/dev/null) || true
+# Verify PDF was created and has content
+PDF="build/latex/en/${docName}.pdf"
+if [ -f "$PDF" ] && [ $(wc -c < "$PDF") -gt 1000 ]; then
+  echo "PDF OK: $PDF ($(wc -c < "$PDF") bytes)"
+else
+  echo "WARNING: PDF may be empty or missing: $PDF"
+fi
 cat > build/latex/en/index.html << EOF2
 <html><body></body><script>window.open("./${docName}.pdf","_self");</script></html>
 EOF2
@@ -131,8 +143,11 @@ echo "Done: ${docName}"
 `;
 }
 
-function makeReleasenotes() {
-  const today = new Date().toISOString().slice(0,10).replace(/-/g,'-');
+function makeReleasenotes(waybackLinks = []) {
+  const today = new Date().toISOString().slice(0,10);
+  const olderRows = waybackLinks.length
+    ? waybackLinks.map(l => `${l.date}, ${l.version}, archived, \`${l.url}\``).join('\n')
+    : 'yyyy-mm-dd, 0.0.0, draft, no older versions yet';
   return `# Release Notes and Notices
 
 This section provides information about what is new or changed, including urgent issues, documentation updates, maintenance and new releases.
@@ -179,10 +194,37 @@ function makeDocTreeview(docName) {
 export async function processIntray() {
   if (!existsSync(INTRAY)) { console.log('[intray] No _intray, skipping'); return; }
 
-  const files = readdirSync(INTRAY).filter(f => f.endsWith('.md') && f !== 'README.md');
-  if (!files.length) { console.log('[intray] Empty'); return; }
+  const allFiles = readdirSync(INTRAY).filter(f => f.endsWith('.md') && f !== 'README.md');
+  if (!allFiles.length) { console.log('[intray] Empty'); return; }
 
-  console.log(`[intray] ${files.length} files to classify...`);
+  // Step 1: Ask brain API which files are already deployed
+  let alreadyDeployed = new Set();
+  try {
+    const resp = await fetch(`https://brain.financecheque.uk/api/list?api_key=${process.env.BRAIN_API_KEY || 'llmwiki-agent-key-unclehowell-2026'}`);
+    const data = await resp.json();
+    // brain API returns deployed file paths — extract basenames
+    if (data.deployed_files) {
+      for (const f of data.deployed_files) alreadyDeployed.add(f.split('/').pop());
+    }
+    console.log(`[intray] Brain reports ${alreadyDeployed.size} already-deployed files`);
+  } catch (e) {
+    console.log(`[intray] Could not reach brain API: ${e.message}`);
+  }
+
+  // Step 2: Remove already-deployed files from intray (no LLM work needed)
+  const files = [];
+  for (const f of allFiles) {
+    if (alreadyDeployed.has(f)) {
+      // File already in brain — remove from intray, no rebuild needed
+      try { renameSync(join(INTRAY, f), join(INTRAY, `_done_${f}`)); } catch {}
+      console.log(`[intray] Already deployed, skipping: ${f}`);
+    } else {
+      files.push(f);
+    }
+  }
+
+  if (!files.length) { console.log('[intray] All files already deployed, nothing to do'); return; }
+  console.log(`[intray] ${files.length} new/changed files to classify...`);
 
   // Read previews of all files
   const previews = files.map(f => ({
@@ -263,10 +305,31 @@ Group related files together. Each group becomes one document with HTML+PDF outp
     const toc = movedFiles.map(f => f).join('\n');
     writeFileSync(join(srcDir, 'index.md'), `# ${documentLabel}\n\n\`\`\`{toctree}\n:maxdepth: 2\n\n${toc}\n\`\`\`\n`);
 
-    // releasenotes.md
-    writeFileSync(join(srcDir, 'releasenotes.md'), makeReleasenotes());
+    // releasenotes.md — check wayback for older versions
+    let waybackLinks = [];
+    try {
+      const wbResp = await fetch(`https://wayback.financecheque.uk/api/list?api_key=wayback-readonly-key-unclehowell-2026`);
+      const wbData = await wbResp.json();
+      if (wbData.deployed_files) {
+        const docPattern = docName.replace(/_/g, '-');
+        waybackLinks = wbData.deployed_files
+          .filter(f => f.includes(docPattern))
+          .map(f => {
+            const match = f.match(/(\d{4}-\d{2}-\d{2})_.*_v([\d.-]+)\.pdf/);
+            return match ? { date: match[1], version: match[2], url: `https://wayback.financecheque.uk/wayback/${f}` } : null;
+          }).filter(Boolean);
+      }
+    } catch {}
+
+    writeFileSync(join(srcDir, 'releasenotes.md'), makeReleasenotes(waybackLinks));
+    const olderRows = waybackLinks.length
+      ? waybackLinks.map(l => `${l.date}, ${l.version}, archived, \`${l.url}\``).join('\n')
+      : '**Archive Date**, **Version**, **Description**, **Download Link**\nyyyy-mm-dd, 0.0.0, draft, no older versions yet';
+    writeFileSync(join(staticDir, 'olderversions.csv'), waybackLinks.length
+      ? `**Archive Date**, **Version**, **Description**, **Download Link**\n${waybackLinks.map(l => `${l.date}, ${l.version}, archived, ${l.url}`).join('\n')}`
+      : '**Archive Date**, **Version**, **Description**, **Download Link**\nyyyy-mm-dd, 0.0.0, draft, no older versions yet');
+
     writeFileSync(join(staticDir, 'issues.csv'), '**Date**, **Version**, **Subject**, **Description**\n');
-    writeFileSync(join(staticDir, 'olderversions.csv'), '**Archive Date**, **Version**, **Description**, **Download Link**\nyyyy-mm-dd, 0.0.0, draft, no older versions yet\n');
 
     // conf.py
     writeFileSync(join(srcDir, 'conf.py'), makeConf(documentLabel, docName));
