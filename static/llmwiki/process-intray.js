@@ -220,10 +220,18 @@ export async function processIntray() {
     const batch = toPlace.slice(i, i + BATCH);
     const prompt = `Organise these markdown files for an AI agent knowledge base (LLMWiki).
 
-NAMING: categoryID_subcategoryID / subcategoryID_documentID
-- e.g. memory_longterm / longterm_honcho
-- The subcategory word bridges both sides
-- lowercase + underscores only
+NAMING RULES:
+- Format: categoryID_subcategoryID / subcategoryID_documentID
+- The subcategoryID bridges both sides (end of category dir AND start of document dir)
+- IDs use lowercase + hyphens only (no underscores within an ID)
+- Double-barrelled IDs use a hyphen: e.g. finance-cheque, long-term, real-estate
+- If no meaningful subcategory exists, use "fcuk" as the subcategoryID (brand filler)
+- The single underscore _ is ONLY used as the separator between the two halves
+
+EXAMPLES:
+  memory_longterm / longterm_honcho
+  skills_real-estate / real-estate_buy-to-let
+  tools_fcuk / fcuk_calculator
 
 FILES:
 ${batch.map(p => `FILE: ${p.f}\nPREVIEW: ${p.preview}`).join('\n---\n')}
