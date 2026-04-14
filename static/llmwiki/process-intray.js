@@ -20,6 +20,7 @@ const INTRAY = join(ROOT, '_intray');
 
 const PROVIDERS = [
   { url: 'https://api.groq.com/openai/v1/chat/completions', key: process.env.GROQ_API_KEY, model: 'llama-3.1-8b-instant' },
+  { url: 'https://ollama.com/api/chat', key: process.env.OLLAMA_API_KEY, model: 'gpt-oss:120b', ollama: true },
   { url: 'https://openrouter.ai/api/v1/chat/completions', key: process.env.OPENROUTER_API_KEY, model: 'google/gemini-2.0-flash-001' },
   { url: 'https://api.openai.com/v1/chat/completions', key: process.env.OPENAI_API_KEY, model: 'gpt-4o-mini' },
 ];
@@ -28,13 +29,17 @@ async function groq(prompt) {
   for (const p of PROVIDERS) {
     if (!p.key) continue;
     try {
+      const body = p.ollama
+        ? { model: p.model, messages: [{ role: 'user', content: prompt }], stream: false }
+        : { model: p.model, messages: [{ role: 'user', content: prompt }], max_tokens: 2000, temperature: 0.1 };
       const resp = await fetch(p.url, {
         method: 'POST',
         headers: { 'Authorization': `Bearer ${p.key}`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model: p.model, messages: [{ role: 'user', content: prompt }], max_tokens: 2000, temperature: 0.1 })
+        body: JSON.stringify(body)
       });
       const d = await resp.json();
-      const text = d.choices?.[0]?.message?.content?.trim();
+      // Ollama returns message.content directly, OpenAI returns choices[0].message.content
+      const text = (p.ollama ? d.message?.content : d.choices?.[0]?.message?.content)?.trim();
       if (text) { console.log(`[intray] Used provider: ${p.url}`); return text; }
     } catch (e) { console.log(`[intray] Provider ${p.url} failed: ${e.message}`); }
   }
