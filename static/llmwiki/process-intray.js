@@ -249,6 +249,7 @@ Group related files. Each group = one document (HTML+PDF).`;
     }
 
     for (const group of groups) {
+      if (!group.category || !group.document || !group.files?.length) { console.warn("[intray] skipping malformed group:", JSON.stringify(group)); continue; }
       const { category, categoryLabel, document, documentLabel, files: gFiles } = group;
       const docName = `${category}-${document}`.replace(/_/g,'-');
       const srcDir   = join(ROOT, category, document, 'latest', 'source');
