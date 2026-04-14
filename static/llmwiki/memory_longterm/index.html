@@ -18,7 +18,7 @@
         const data = await response.json();
         let htmlString = '<ul>';
         htmlString += `<a href="../" class="up-active"><<</a>`;
-        htmlString += `<p class="main-title"><img class="main-logo ml-datro"><br>Memory: Long Term</p>`;
+        htmlString += `<p class="main-title"><span style="font-size:1.1em;font-weight:700;color:#55a5d9;">Finance Cheque UK</span><br>Memory: Long Term</p>`;
         for (let file of data) {
           htmlString += `<li class="li"><a href="${file.path}">${file.name}</a></li>`;
         }

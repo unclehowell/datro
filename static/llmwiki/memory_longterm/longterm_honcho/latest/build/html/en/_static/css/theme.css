@@ -14,3 +14,10 @@ code,tt,.rst-content code,.rst-content tt{background:#1e1e3a!important;color:#e8
 .rst-content section ul li>*,.rst-content section ol li>*{margin-top:2px!important;margin-bottom:2px!important;}
 .rst-content section ul li>p,.rst-content section ol li>p{margin-bottom:2px!important;line-height:1.4em!important;}
 
+
+.rst-content p:empty{display:none!important;}
+.rst-content section>p+p{margin-top:0!important;}
+.rst-content h1,.rst-content h2,.rst-content h3{margin-top:12px!important;margin-bottom:6px!important;}
+.rst-content .toctree-wrapper ul li{margin-top:2px!important;margin-bottom:2px!important;line-height:1.4em!important;}
+.rst-content .toctree-wrapper{margin-bottom:12px!important;}
+

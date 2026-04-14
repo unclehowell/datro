@@ -31,11 +31,20 @@ code,tt,.rst-content code,.rst-content tt{background:#1e1e3a!important;color:#e8
 .rst-content section ul li>p,.rst-content section ol li>p{margin-bottom:2px!important;line-height:1.4em!important;}
 " >> {}'
 
-# Replace DATRO logo text with Finance Cheque UK in sidebar
+# Replace DATRO logo text with Finance Cheque UK in RTD sidebar title
 find build/html/en -name "*.html" -exec sed -i \
-  's|>DATRO Document Library<|>Finance Cheque UK<|g' {} \;
+  's|<a href="#">.*</a>|<a href="#">Finance Cheque UK</a>|g' {} \;
 find build/html/en -name "*.html" -exec sed -i \
-  's|alt="Logo"|alt="Finance Cheque UK"|g' {} \;
+  's|class="icon icon-home">|class="icon icon-home"> Finance Cheque UK |g' {} \;
+
+# Collapse excessive vertical spacing — remove empty paragraphs and reduce margins
+find build/html/en/_static -name "theme.css" | xargs -I{} sh -c 'echo "
+.rst-content p:empty{display:none!important;}
+.rst-content section>p+p{margin-top:0!important;}
+.rst-content h1,.rst-content h2,.rst-content h3{margin-top:12px!important;margin-bottom:6px!important;}
+.rst-content .toctree-wrapper ul li{margin-top:2px!important;margin-bottom:2px!important;line-height:1.4em!important;}
+.rst-content .toctree-wrapper{margin-bottom:12px!important;}
+" >> {}'
 
 # Fix footer — replace YYYY placeholder and strip duplicate copyright text
 find build/html/en -name "*.html" -exec sed -i \

@@ -33,7 +33,7 @@ html { overflow-y: scroll; overflow-x: hidden; }
         const response = await fetch('./_treeview.json');
         const data = await response.json();
         let htmlString = '<ul>';
-        htmlString += `<p class="main-title"><img class="main-logo ml-datro"><br>Agent Hive Mind</p>`;
+        htmlString += `<p class="main-title"><span style="font-size:1.1em;font-weight:700;color:#55a5d9;">Finance Cheque UK</span><br>Agent Hive Mind</p>`;
         for (let item of data) {
           htmlString += `<li class="li"><a href="${item.path}">${item.name}</a></li>`;
         }
