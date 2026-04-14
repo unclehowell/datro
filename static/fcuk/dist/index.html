@@ -117,13 +117,43 @@ async function handleSend() {
   thinking.remove();
   addMsg(reply || 'No response.', 'bot');
 
-  // Save conversation to brain memory (async, non-blocking)
+  // Buffer conversation for periodic compression
+  chatBuffer.push({ role: 'user', content: q });
+  chatBuffer.push({ role: 'assistant', content: reply || '' });
+}
+
+// Compress and save buffer every 2 minutes
+const chatBuffer = [];
+const sessionId = 'fcuk-' + Math.random().toString(36).slice(2,8);
+
+async function compressAndSave() {
+  if (chatBuffer.length < 2) return;
+  const transcript = chatBuffer.map(m => `${m.role}: ${m.content}`).join('\n');
+  chatBuffer.length = 0; // clear buffer
+
+  // Compress with SmolLM2 if available, else use simple truncation
+  let summary = transcript;
+  if (generator) {
+    try {
+      const prompt = `<|im_start|>system\nSummarise this conversation into 2-3 key points for memory storage. Be concise.\n<|im_end|>\n<|im_start|>user\n${transcript.slice(0,800)}<|im_end|>\n<|im_start|>assistant\n`;
+      const out = await generator(prompt, { max_new_tokens: 100, temperature: 0.3 });
+      summary = out[0].generated_text.split('<|im_start|>assistant\n').pop().split('<|im_end|>')[0].trim();
+    } catch {}
+  } else {
+    // Simple compression: first 500 chars
+    summary = `Chat summary: ${transcript.slice(0, 500)}`;
+  }
+
+  // POST compressed summary to brain API
   fetch(`${BRAIN_API}/memory?api_key=${API_KEY}`, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'X-API-Key': API_KEY },
-    body: JSON.stringify({ user_message: q, bot_reply: reply, session_id: 'fcuk-web-' + Date.now() })
+    body: JSON.stringify({ summary, session_id: sessionId })
   }).catch(() => {});
 }
+
+setInterval(compressAndSave, 120000); // every 2 minutes
+window.addEventListener('beforeunload', compressAndSave); // save on page close
 
 send.onclick = handleSend;
 input.onkeydown = e => e.key === 'Enter' && handleSend();

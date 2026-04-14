@@ -20,20 +20,32 @@ export async function onRequest(context) {
   if (request.method === 'POST' && (path === 'memory' || path === 'memory/')) {
     try {
       const body = await request.json();
-      const { user_message, bot_reply, session_id } = body;
-      if (!user_message) return new Response(JSON.stringify({ error: 'user_message required' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+      const { summary, session_id } = body;
+      if (!summary) return new Response(JSON.stringify({ error: 'summary required' }), { status: 400, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } });
 
-      const summary = `User asked: "${user_message}" | Bot replied: "${(bot_reply||'').slice(0,200)}"`;
+      const results = {};
 
       // Save to Mem0
-      const mem0Key = typeof OPENROUTER_API_KEY !== 'undefined' ? null : null; // use env
-      const mem0Resp = await fetch('https://api.mem0.ai/v1/memories/', {
-        method: 'POST',
-        headers: { 'Authorization': `Token m0-BNdEot8rxoSxxE5MH3aaaOCW36wo3g44tPP8UXdX`, 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: [{ role: 'user', content: summary }], user_id: 'sion', agent_id: 'fcuk-chat', session_id: session_id || 'web' })
-      });
+      try {
+        const m = await fetch('https://api.mem0.ai/v1/memories/', {
+          method: 'POST',
+          headers: { 'Authorization': 'Token m0-BNdEot8rxoSxxE5MH3aaaOCW36wo3g44tPP8UXdX', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: [{ role: 'user', content: summary }], user_id: 'sion', agent_id: 'fcuk-chat', session_id: session_id || 'web' })
+        });
+        results.mem0 = m.status;
+      } catch(e) { results.mem0_error = e.message; }
 
-      return new Response(JSON.stringify({ saved: true, mem0: mem0Resp.status }), { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } });
+      // Save to Honcho
+      try {
+        const h = await fetch('https://api.honcho.dev/v1/apps/honcho/users/sion/sessions/fcuk-chat/messages', {
+          method: 'POST',
+          headers: { 'Authorization': 'Bearer hch-v3-pzdv1913ig9i9fbvn2ha71ccy5cxxpkodvh1jr70rxnv5m67u9aqfx4z4c0majwb', 'Content-Type': 'application/json' },
+          body: JSON.stringify({ content: summary, is_human: true })
+        });
+        results.honcho = h.status;
+      } catch(e) { results.honcho_error = e.message; }
+
+      return new Response(JSON.stringify({ saved: true, ...results }), { headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' } });
     } catch(e) {
       return new Response(JSON.stringify({ error: e.message }), { status: 500, headers: { 'Content-Type': 'application/json' } });
     }
