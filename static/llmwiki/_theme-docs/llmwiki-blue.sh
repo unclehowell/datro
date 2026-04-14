@@ -26,24 +26,21 @@ code,tt,.rst-content code,.rst-content tt{background:#1e1e3a!important;color:#e8
 .rst-content table.docutils thead,.rst-content table.docutils th{background:#1e1e3a!important;color:#e8e8f0!important;border-color:#444466!important;}
 .rst-content table.docutils td{border-color:#444466;}
 .rst-content table.docutils caption{font-weight:700;font-size:100%;color:#55a5d9;text-align:left;margin-bottom:6px;}
-h2+ul li,h2+p+ul li{margin-top:2px!important;margin-bottom:2px!important;}
+.rst-content section ul li>*,.rst-content section ol li>*{margin-top:2px!important;margin-bottom:2px!important;}
+.rst-content section ul li>p,.rst-content section ol li>p{margin-bottom:4px!important;}
 " >> {}'
 
-# Fix footer — replace datro.xyz with financecheque.uk and fix mangled copyright
+# Fix footer — replace YYYY placeholder and strip duplicate copyright text
 find build/html/en -name "*.html" -exec sed -i \
   's|href="https://datro.xyz"|href="https://financecheque.uk"|g' {} \;
 find build/html/en -name "*.html" -exec sed -i \
   's|>datro.xyz<|>financecheque.uk<|g' {} \;
 find build/html/en -name "*.html" -exec sed -i \
-  's|DATRO Consortium|Finance Cheque UK|g' {} \;
-# blue.sh strips trailing . after "DATRO Consortium" — fix the truncated result
+  's|DATRO Consortium</strong></b>|Finance Cheque UK</strong></b>|g' {} \;
 find build/html/en -name "*.html" -exec sed -i \
-  's|Finance Cheque UK</strong></b> </p>|Finance Cheque UK</strong></b></p>|g' {} \;
+  's|Finance Cheque UK</strong></b>nance Cheque UK\.|Finance Cheque UK</strong></b>|g' {} \;
 find build/html/en -name "*.html" -exec sed -i \
-  's|Finance Cheque UK</strong></b>$|Finance Cheque UK</strong></b>|g' {} \;
-# Remove any leftover "nance Cheque UK" fragments from partial replacements
-find build/html/en -name "*.html" -exec sed -i \
-  's|nance Cheque UK||g' {} \;
+  's|Finance Cheque UK</strong></b> Finance Cheque UK\.|Finance Cheque UK</strong></b>|g' {} \;
 
 # Fix 3: Fix line-height overlap on landing page
 find build/html/en/_static -name "theme.css" -exec sed -i \
