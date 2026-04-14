@@ -43,6 +43,34 @@
     transform: scale(1.1);
 }
 .social-icon svg { display: block; }
+
+/* Split Iframe Container */
+.split-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background: #454545;
+}
+.split-pane {
+    width: 100%;
+    height: 50%;
+    min-height: 0;
+    position: relative;
+}
+.split-pane iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+    background: transparent;
+}
+.split-divider {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    flex-shrink: 0;
+}
 </style>
 
 <script type="text/javascript">
@@ -57,14 +85,11 @@
         $("body").css("display", "none");
         $("body").fadeIn(2000);
     });
-    function resizebody(obj) {
-        obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-    }
 </script>
 <script src="dashboard/js/iframeResizer.min.js"></script>
 </head>
 
-<body id="body" scrolling="auto" onload="resizebody(this);">
+<body id="body" scrolling="no">
 
 <header class="cd-header">
     <form action="/" method="post" onkeydown="return event.key != 'Enter';" class="squirrel logo" alt="Logo">
@@ -93,29 +118,53 @@
 </header>
 
 <main>
-<div class="demo-iframe-container container-mq">
-<script>
-    (function() {
-      function getCookie(name) {
-        var nameEQ = name + "=";
-        var ca = document.cookie.split(';');
-        for(var i=0;i < ca.length;i++) {
-          var c = ca[i];
-          while (c.charAt(0)==' ') c = c.substring(1,c.length);
-          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
-        }
-        return null;
-      }
-      var initialSrc = "dashboard/video-landing.html";
-      if (!getCookie('datro_login')) {
-        // Red background: <html><body style="margin:0;padding:0;background-color:red;height:100vh;width:100vw;"></body></html>
-        initialSrc = 'data:text/html;base64,PGh0bWw+PGJvZHkgc3R5bGU9Im1hcmdpbjowO3BhZGRpbmc6MDtiYWNrZ3JvdW5kLWNvbG9yOnJlZDtoZWlnaHQ6MTAwdmg7d2lkdGg6MTAwdnc7Ij48L2JvZHk+PC9odG1sPg==';
-      }
-      document.write('<iframe class="demo-iframe iframe-mq" sandbox="allow-popups-to-escape-sandbox allow-same-origin allow-modals allow-scripts allow-popups allow-forms" onload="resizeframez(this);" id="framez" name="framez" src="' + initialSrc + '" webkitallowfullscreen mozallowfullscreen allowfullscreen="true" ></iframe>');
-    })();
-</script>
+<div class="split-container">
+    <div class="split-pane">
+        <script>
+            (function() {
+                function getCookie(name) {
+                    var nameEQ = name + "=";
+                    var ca = document.cookie.split(';');
+                    for(var i=0;i < ca.length;i++) {
+                        var c = ca[i];
+                        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                    }
+                    return null;
+                }
+                var src = "head.git";
+                if (!getCookie('datro_login')) {
+                    src = 'data:text/html;base64,PGh0bWw+PGJvZHkgc3R5bGU9Im1hcmdpbjowO3BhZGRpbmc6MDtiYWNrZ3JvdW5kLWNvbG9yOmJsYWNrO2hlaWdodDoxMDB2aDt3aWR0aDoxMDB2dzsiPjwvYm9keT48L2h0bWw+';
+                }
+                document.write('<iframe id="frameTop" src="' + src + '" sandbox="allow-popups-to-escape-sandbox allow-same-origin allow-modals allow-scripts allow-popups allow-forms" webkitallowfullscreen mozallowfullscreen allowfullscreen="true"></iframe>');
+            })();
+        </script>
+    </div>
+    <div class="split-divider"></div>
+    <div class="split-pane">
+        <script>
+            (function() {
+                function getCookie(name) {
+                    var nameEQ = name + "=";
+                    var ca = document.cookie.split(';');
+                    for(var i=0;i < ca.length;i++) {
+                        var c = ca[i];
+                        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+                    }
+                    return null;
+                }
+                var src = "https://ai.financecheque.uk/guacamole/";
+                if (!getCookie('datro_login')) {
+                    src = 'data:text/html;base64,PGh0bWw+PGJvZHkgc3R5bGU9Im1hcmdpbjowO3BhZGRpbmc6MDtiYWNrZ3JvdW5kLWNvbG9yOmJsYWNrO2hlaWdodDoxMDB2aDt3aWR0aDoxMDB2dzsiPjwvYm9keT48L2h0bWw+';
+                }
+                document.write('<iframe id="framez" name="framez" src="' + src + '" sandbox="allow-popups-to-escape-sandbox allow-same-origin allow-modals allow-scripts allow-popups allow-forms" webkitallowfullscreen mozallowfullscreen allowfullscreen="true"></iframe>');
+            })();
+        </script>
+    </div>
 </div>
 </main>
+
 
 <nav class="cd-3d-nav-container">
     <ul class="cd-3d-nav">
@@ -164,15 +213,7 @@
       var targetUrl = url;
 
       if (!isLoggedIn) {
-        // Map URLs to illustration views
-        var view = 'ai-chat'; // default
-        if (url.includes('paperclip') || url.includes('003')) view = 'brain';
-        else if (url.includes('netdata') || url.includes('004')) view = 'stats';
-        else if (url.includes('jellyfin') || url.includes('002')) view = 'media';
-        else if (url.includes('005')) view = 'settings';
-        else if (url.includes('006')) view = 'oakesy';
-        
-        targetUrl = 'dashboard/locked-state.html?view=' + view;
+        targetUrl = 'data:text/html;base64,PGh0bWw+PGJvZHkgc3R5bGU9Im1hcmdpbjowO3BhZGRpbmc6MDtiYWNrZ3JvdW5kLWNvbG9yOmJsYWNrO2hlaWdodDoxMDB2aDt3aWR0aDoxMDB2dzsiPjwvYm9keT48L2h0bWw+';
       }
 
       document.getElementById(iframeId).src = targetUrl;
