@@ -4,7 +4,8 @@
 // Hash state persists in _build_hashes.json so fresh CF clones don't rebuild everything.
 
 import { execSync } from 'child_process';
-import { readdirSync, statSync, existsSync, readFileSync, writeFileSync, createHash } from 'fs';
+import { readdirSync, statSync, existsSync, readFileSync, writeFileSync } from 'fs';
+import { createHash } from 'crypto';
 import { join } from 'path';
 import { processIntray } from './process-intray.js';
 

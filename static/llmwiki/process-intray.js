@@ -5,7 +5,8 @@
  * moves files to source dirs. Skips files already placed. Moves done files to _outtray/.
  */
 
-import { readdirSync, readFileSync, writeFileSync, mkdirSync, renameSync, existsSync, createHash } from 'fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, renameSync, existsSync } from 'fs';
+import { createHash } from 'crypto';
 import { join } from 'path';
 
 const ROOT = new URL('.', import.meta.url).pathname;
