@@ -23,11 +23,9 @@ div[class^=\"highlight\"] pre,pre.literal-block{color:#e8e8f0!important;backgrou
 .highlight{background:#1e1e3a!important;}
 .highlight .hll{background:#2a2a4a!important;}
 code,tt,.rst-content code,.rst-content tt{background:#1e1e3a!important;color:#e8e8f0!important;border-color:#333666!important;}
-.rst-content table.docutils thead{background:#333666;color:#e8e8f0;}
-.rst-content table.docutils th{background:#29808A;color:#fff;border-color:#444466;}
+.rst-content table.docutils thead,.rst-content table.docutils th{background:#1e1e3a!important;color:#e8e8f0!important;border-color:#444466!important;}
 .rst-content table.docutils td{border-color:#444466;}
 .rst-content table.docutils caption{font-weight:700;font-size:100%;color:#55a5d9;text-align:left;margin-bottom:6px;}
-h2+ul,h2+p+ul{margin-top:4px!important;}
 h2+ul li,h2+p+ul li{margin-top:2px!important;margin-bottom:2px!important;}
 " >> {}'
 
@@ -38,6 +36,12 @@ find build/html/en -name "*.html" -exec sed -i \
   's|>datro.xyz<|>financecheque.uk<|g' {} \;
 find build/html/en -name "*.html" -exec sed -i \
   's|DATRO Consortium|Finance Cheque UK|g' {} \;
+# blue.sh strips trailing . after "DATRO Consortium" — fix the truncated result
+find build/html/en -name "*.html" -exec sed -i \
+  's|Finance Cheque UK</strong></b> </p>|Finance Cheque UK</strong></b></p>|g' {} \;
+find build/html/en -name "*.html" -exec sed -i \
+  's|Finance Cheque UK</strong></b>$|Finance Cheque UK</strong></b>|g' {} \;
+# Remove any leftover "nance Cheque UK" fragments from partial replacements
 find build/html/en -name "*.html" -exec sed -i \
   's|nance Cheque UK||g' {} \;
 
