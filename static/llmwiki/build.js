@@ -1,29 +1,42 @@
 #!/usr/bin/env node
-// build.js — runs rebuild.sh for each llmwiki section (Cloudflare Pages build command)
-// Equivalent to library's rebuild.sh pipeline: Sphinx+myst-parser → HTML (RTD+blue.sh) + PDF
+// build.js — Cloudflare Pages build script
+// Runs rebuild.sh for every section that has one
 
 import { execSync } from 'child_process';
 import { readdirSync, statSync, existsSync } from 'fs';
 import { join } from 'path';
 
 const ROOT = new URL('.', import.meta.url).pathname;
-const SKIP = new Set(['_theme-explorer','_theme-docs','_theme-vitepress','_test','node_modules','raw','wiki','consortium_legal']);
 
-const sections = readdirSync(ROOT).filter(d => {
-  if (d.startsWith('_') || d.startsWith('.') || SKIP.has(d)) return false;
-  const rebuild = join(ROOT, d, 'latest', 'rebuild.sh');
-  return statSync(join(ROOT,d)).isDirectory() && existsSync(rebuild);
-});
-
-console.log(`Building ${sections.length} sections...`);
-
-for (const section of sections) {
-  const latestDir = join(ROOT, section, 'latest');
-  console.log(`\n=== ${section} ===`);
+function findRebuildScripts(dir, depth = 0) {
+  if (depth > 4) return [];
+  const scripts = [];
   try {
-    execSync(`bash rebuild.sh`, { cwd: latestDir, stdio: 'inherit' });
-  } catch(e) {
-    console.error(`✗ ${section} failed: ${e.message}`);
+    for (const entry of readdirSync(dir)) {
+      if (entry.startsWith('.') || entry === 'node_modules') continue;
+      const full = join(dir, entry);
+      if (statSync(full).isDirectory()) {
+        if (entry === 'latest' && existsSync(join(full, 'rebuild.sh'))) {
+          scripts.push(full);
+        } else {
+          scripts.push(...findRebuildScripts(full, depth + 1));
+        }
+      }
+    }
+  } catch {}
+  return scripts;
+}
+
+const latestDirs = findRebuildScripts(ROOT);
+console.log(`Found ${latestDirs.length} rebuild targets`);
+
+for (const dir of latestDirs) {
+  const rel = dir.replace(ROOT, '');
+  console.log(`\n=== ${rel} ===`);
+  try {
+    execSync('bash rebuild.sh', { cwd: dir, stdio: 'inherit' });
+  } catch (e) {
+    console.error(`✗ ${rel}: ${e.message}`);
   }
 }
 

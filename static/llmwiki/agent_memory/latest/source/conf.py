@@ -1,6 +1,6 @@
 
 project = u'DATRO LLMWiki - Agent Memory'
-copyright = u'2024, DATRO Consortium'
+copyright = u'Finance Cheque UK'
 author = u'The Team @ DATRO Consortium'
 
 version = u'0.0.1'
