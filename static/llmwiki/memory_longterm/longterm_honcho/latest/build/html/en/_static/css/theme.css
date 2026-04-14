@@ -6,4 +6,5 @@ div[class^="highlight"],pre.literal-block{background:#1e1e3a!important;border-co
 div[class^="highlight"] pre,pre.literal-block{color:#e8e8f0!important;background:#1e1e3a!important;}
 .highlight{background:#1e1e3a!important;}
 .highlight .hll{background:#2a2a4a!important;}
+code,tt,.rst-content code,.rst-content tt{background:#1e1e3a!important;color:#e8e8f0!important;border-color:#333666!important;}
 

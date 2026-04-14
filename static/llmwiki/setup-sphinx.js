@@ -22,7 +22,7 @@ for (const section of sections) {
   // conf.py — same as library but with myst-parser for MD
   writeFileSync(join(src, 'conf.py'), `
 project = u'DATRO LLMWiki - ${title}'
-copyright = u'2024, DATRO Consortium'
+copyright = u'Finance Cheque UK'
 author = u'The Team @ DATRO Consortium'
 
 version = u'0.0.1'

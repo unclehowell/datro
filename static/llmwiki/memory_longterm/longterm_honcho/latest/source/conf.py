@@ -1,5 +1,5 @@
 project = u'DATRO LLMWiki - Agent Memory: Long-term'
-copyright = u'2024, DATRO Consortium'
+copyright = u'Finance Cheque UK'
 author = u'The Team @ DATRO Consortium'
 version = u'0.0.1'
 release = u'0.0.1'
