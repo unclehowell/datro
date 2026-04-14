@@ -26,9 +26,13 @@ code,tt,.rst-content code,.rst-content tt{background:#1e1e3a!important;color:#e8
 .rst-content table.docutils thead,.rst-content table.docutils th{background:#1e1e3a!important;color:#e8e8f0!important;border-color:#444466!important;}
 .rst-content table.docutils td{border-color:#444466;}
 .rst-content table.docutils caption{font-weight:700;font-size:100%;color:#55a5d9;text-align:left;margin-bottom:6px;}
-.toctree-wrapper ul,.toctree-wrapper ul li,.rst-content .toctree-wrapper ul,.rst-content .toctree-wrapper ul li{margin-bottom:2px!important;line-height:1.5em!important;display:list-item!important;}
-.rst-content .toctree-wrapper>ul{margin-bottom:12px!important;}
 " >> {}'
+
+# Directly fix the 3em margin blue.sh sets on list items — sed replace in the file
+find build/html/en/_static -name "theme.css" -exec sed -i \
+  's/margin-bottom:3em;/margin-bottom:0.3em;/g' {} \;
+find build/html/en/_static -name "theme.css" -exec sed -i \
+  's/line-height:3px;/line-height:1.5em;/g' {} \;
 
 # Replace DATRO logo text with Finance Cheque UK in RTD sidebar title
 find build/html/en -name "*.html" -exec sed -i \
