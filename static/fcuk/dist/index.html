@@ -116,6 +116,13 @@ async function handleSend() {
 
   thinking.remove();
   addMsg(reply || 'No response.', 'bot');
+
+  // Save conversation to brain memory (async, non-blocking)
+  fetch(`${BRAIN_API}/memory?api_key=${API_KEY}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'X-API-Key': API_KEY },
+    body: JSON.stringify({ user_message: q, bot_reply: reply, session_id: 'fcuk-web-' + Date.now() })
+  }).catch(() => {});
 }
 
 send.onclick = handleSend;
