@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms of Service — DATRO Consortium Ltd</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg: #0b0f0e;
+      --surface: #111614;
+      --card: #161d1b;
+      --border: #222e2a;
+      --accent: #2dbd85;
+      --accent-dim: rgba(45,189,133,0.12);
+      --accent-glow: rgba(45,189,133,0.06);
+      --text: #d9e4df;
+      --muted: #7a9490;
+      --heading: #eef5f2;
+      --rule: #1e2c28;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    /* ── Noise overlay ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ── Header ── */
+    header {
+      position: relative;
+      padding: 72px 40px 60px;
+      overflow: hidden;
+      border-bottom: 1px solid var(--border);
+      background: linear-gradient(160deg, #0e1a16 0%, #0b0f0e 60%);
+    }
+    header::after {
+      content: '';
+      position: absolute;
+      top: -120px;
+      right: -80px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(45,189,133,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .header-inner {
+      max-width: 900px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.72rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--accent);
+      border: 1px solid rgba(45,189,133,0.35);
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 22px;
+      font-weight: 500;
+    }
+    header h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
+      font-weight: 700;
+      color: var(--heading);
+      line-height: 1.1;
+      margin-bottom: 18px;
+    }
+    header h1 span {
+      color: var(--accent);
+    }
+    .header-sub {
+      font-size: 0.88rem;
+      color: var(--muted);
+      letter-spacing: 0.03em;
+    }
+    .header-sub strong { color: var(--text); font-weight: 500; }
+
+    /* ── Layout ── */
+    .page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 60px 40px 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* ── Intro summary ── */
+    .intro-summary {
+      background: var(--accent-dim);
+      border: 1px solid rgba(45,189,133,0.2);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-bottom: 52px;
+      font-size: 0.95rem;
+      line-height: 1.8;
+    }
+    .intro-summary p { margin-bottom: 10px; }
+    .intro-summary p:last-child { margin-bottom: 0; }
+
+    /* ── TOC ── */
+    .toc {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 28px 32px;
+      margin-bottom: 52px;
+    }
+    .toc-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+    .toc ol { padding-left: 1.3em; }
+    .toc li { margin-bottom: 7px; font-size: 0.9rem; }
+    .toc a { color: var(--accent); text-decoration: none; font-weight: 400; }
+    .toc a:hover { text-decoration: underline; }
+
+    /* ── Sections ── */
+    section {
+      margin-bottom: 52px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: rise 0.6s ease forwards;
+    }
+    section:nth-child(1)  { animation-delay: 0.05s; }
+    section:nth-child(2)  { animation-delay: 0.1s; }
+    section:nth-child(3)  { animation-delay: 0.15s; }
+    section:nth-child(4)  { animation-delay: 0.2s; }
+    section:nth-child(5)  { animation-delay: 0.25s; }
+    section:nth-child(6)  { animation-delay: 0.3s; }
+    section:nth-child(7)  { animation-delay: 0.35s; }
+    section:nth-child(8)  { animation-delay: 0.4s; }
+    section:nth-child(9)  { animation-delay: 0.45s; }
+    section:nth-child(10) { animation-delay: 0.5s; }
+    section:nth-child(11) { animation-delay: 0.55s; }
+    section:nth-child(12) { animation-delay: 0.6s; }
+    section:nth-child(13) { animation-delay: 0.65s; }
+    section:nth-child(14) { animation-delay: 0.7s; }
+    section:nth-child(15) { animation-delay: 0.75s; }
+    section:nth-child(16) { animation-delay: 0.8s; }
+    section:nth-child(17) { animation-delay: 0.85s; }
+    section:nth-child(18) { animation-delay: 0.9s; }
+    section:nth-child(19) { animation-delay: 0.95s; }
+    section:nth-child(20) { animation-delay: 1.0s; }
+
+    @keyframes rise {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 16px;
+      margin-bottom: 20px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-num {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      color: var(--accent);
+      opacity: 0.5;
+      font-weight: 600;
+      line-height: 1;
+      flex-shrink: 0;
+    }
+    h2.section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.55rem;
+      font-weight: 600;
+      color: var(--heading);
+      line-height: 1.2;
+    }
+    h3.sub {
+      font-size: 0.95rem;
+      font-weight: 500;
+      color: var(--accent);
+      letter-spacing: 0.04em;
+      margin: 22px 0 8px;
+      text-transform: uppercase;
+      font-size: 0.8rem;
+    }
+    p { margin-bottom: 14px; }
+    ul, ol { padding-left: 1.5em; margin-bottom: 14px; }
+    li { margin-bottom: 7px; }
+    a { color: var(--accent); }
+    strong { font-weight: 500; color: var(--heading); }
+
+    /* ── Callout boxes ── */
+    .callout {
+      border-left: 2px solid var(--accent);
+      background: var(--accent-glow);
+      padding: 16px 20px;
+      margin: 18px 0;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.93rem;
+    }
+    .callout.warn {
+      border-color: #e0a030;
+      background: rgba(224,160,48,0.07);
+    }
+    .callout.danger {
+      border-color: #d95f5f;
+      background: rgba(217,95,95,0.07);
+    }
+
+    /* ── How it works diagram ── */
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2px;
+      margin: 24px 0;
+    }
+    .flow-step {
+      flex: 1;
+      min-width: 120px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 18px 14px;
+      text-align: center;
+      position: relative;
+      font-size: 0.8rem;
+      line-height: 1.4;
+    }
+    .flow-step .icon {
+      font-size: 1.5rem;
+      display: block;
+      margin-bottom: 8px;
+    }
+    .flow-step .label {
+      font-weight: 500;
+      color: var(--heading);
+      display: block;
+      margin-bottom: 4px;
+    }
+    .flow-step .desc { color: var(--muted); }
+    .flow-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--accent);
+      font-size: 1.2rem;
+      padding: 0 2px;
+    }
+
+    /* ── Revenue table ── */
+    .rev-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 18px 0;
+      font-size: 0.9rem;
+    }
+    .rev-table th {
+      text-align: left;
+      font-weight: 500;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+    }
+    .rev-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--rule);
+      vertical-align: top;
+    }
+    .rev-table tr:last-child td { border-bottom: none; }
+    .rev-table td:first-child { color: var(--heading); font-weight: 500; }
+
+    /* ── Contact card ── */
+    .contact-card {
+      border: 1px solid rgba(45,189,133,0.25);
+      background: var(--card);
+      border-radius: 8px;
+      padding: 30px 36px;
+      margin-top: 16px;
+    }
+    .contact-card h3 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--heading);
+      margin-bottom: 14px;
+    }
+    .contact-card p { font-size: 0.92rem; margin-bottom: 8px; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      padding: 36px 20px;
+      border-top: 1px solid var(--border);
+      font-size: 0.78rem;
+      color: var(--muted);
+      position: relative;
+      z-index: 1;
+    }
+    footer .co { color: var(--accent); }
+
+    @media (max-width: 620px) {
+      .page, header { padding-left: 20px; padding-right: 20px; }
+      header { padding-top: 48px; }
+      .flow-arrow { display: none; }
+      .flow { gap: 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="badge">Legal Agreement</span>
+    <h1>Terms of <span>Service</span></h1>
+    <p class="header-sub">
+      <strong>DATRO Consortium Ltd</strong> &nbsp;·&nbsp;
+      Effective: 25 February 2025 &nbsp;·&nbsp;
+      Governed by the laws of England &amp; Wales
+    </p>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- Plain-English Summary -->
+  <div class="intro-summary">
+    <p><strong>Plain-English summary (not a substitute for the full terms below):</strong></p>
+    <p>DATRO runs a collaborative campaign platform. One live campaign is active at a time. Contributors use AI agents on our portal to write code that gets submitted as pull requests tagged with their unique account ID. When a client pays commission on business traced to our campaign, that commission is distributed back to the contributors whose code demonstrably drove the result — verified by tracking analytics. By using the platform you agree to these terms in full.</p>
+  </div>
+
+  <!-- TOC -->
+  <nav class="toc" aria-label="Table of contents">
+    <p class="toc-label">Contents</p>
+    <ol>
+      <li><a href="#s1">Definitions</a></li>
+      <li><a href="#s2">Acceptance of Terms</a></li>
+      <li><a href="#s3">Platform Overview &amp; How It Works</a></li>
+      <li><a href="#s4">Eligibility &amp; Account Registration</a></li>
+      <li><a href="#s5">Contributor Obligations</a></li>
+      <li><a href="#s6">AI Agent Usage</a></li>
+      <li><a href="#s7">Pull Requests, Commits &amp; Attribution</a></li>
+      <li><a href="#s8">Campaign Governance</a></li>
+      <li><a href="#s9">Client Relationships &amp; Commission</a></li>
+      <li><a href="#s10">Revenue Share &amp; Payment</a></li>
+      <li><a href="#s11">Tracking, Analytics &amp; Attribution Methodology</a></li>
+      <li><a href="#s12">Intellectual Property</a></li>
+      <li><a href="#s13">Prohibited Conduct</a></li>
+      <li><a href="#s14">Disclaimers &amp; Limitation of Liability</a></li>
+      <li><a href="#s15">Indemnification</a></li>
+      <li><a href="#s16">Termination &amp; Suspension</a></li>
+      <li><a href="#s17">Dispute Resolution</a></li>
+      <li><a href="#s18">Amendments</a></li>
+      <li><a href="#s19">General Provisions</a></li>
+      <li><a href="#s20">Contact</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <section id="s1">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Definitions</h2>
+    </div>
+    <p>In these Terms, the following words have the meanings given below:</p>
+    <ul>
+      <li><strong>"DATRO", "we", "us", "our"</strong> — DATRO Consortium Ltd, a company registered in England and Wales.</li>
+      <li><strong>"Platform"</strong> — the DATRO website, web portal, API, AI agent tooling, version-control integration, and all associated services.</li>
+      <li><strong>"Contributor" / "you"</strong> — any individual or entity that registers for an account and participates in a Campaign.</li>
+      <li><strong>"Campaign"</strong> — a time-limited, collaborative project on the Platform in which Contributors develop code or creative assets to promote a Client's product or service.</li>
+      <li><strong>"Client"</strong> — a business or individual that has engaged DATRO to run a Campaign on their behalf and whose web application carries DATRO's Tracking ID.</li>
+      <li><strong>"Contribution"</strong> — any code, asset, prompt, or other content submitted by a Contributor to a Campaign via a Pull Request.</li>
+      <li><strong>"Pull Request (PR)"</strong> — a version-controlled change submission made through the Platform's integrated repository system, automatically tagged with the Contributor's Account ID.</li>
+      <li><strong>"Account ID"</strong> — the unique identifier assigned to each Contributor at registration, embedded in every PR commit reference.</li>
+      <li><strong>"AI Agent"</strong> — the AI-assisted coding tool(s) provided within the Platform portal that Contributors may use to generate or refine code contributions.</li>
+      <li><strong>"Tracking ID"</strong> — DATRO's unique analytics tag embedded in the Client's web application, used to attribute conversions and business outcomes to Campaign elements.</li>
+      <li><strong>"Attribution Data"</strong> — anonymised or pseudonymised analytics data collected via the Tracking ID, used to determine which Campaign components drove measurable business outcomes.</li>
+      <li><strong>"Commission"</strong> — fees paid by a Client to DATRO calculated as a percentage of revenue or outcomes attributable to a Campaign.</li>
+      <li><strong>"Revenue Share"</strong> — the portion of Commission distributed by DATRO to eligible Contributors in accordance with Section 10.</li>
+      <li><strong>"Merged Contribution"</strong> — a Pull Request that has been reviewed, approved, and merged into the live Campaign codebase by DATRO.</li>
+    </ul>
+  </section>
+
+  <!-- 2 -->
+  <section id="s2">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Acceptance of Terms</h2>
+    </div>
+    <p>By accessing or using the Platform in any way — including browsing, registering, submitting a Contribution, or receiving a payment — you confirm that you have read, understood, and agree to be legally bound by these Terms and our <a href="privacy-policy.html">Privacy Policy</a>.</p>
+    <p>If you are using the Platform on behalf of an organisation, you represent and warrant that you have authority to bind that organisation to these Terms.</p>
+    <div class="callout warn">
+      If you do not agree to these Terms, you must not access or use the Platform.
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="s3">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Platform Overview &amp; How It Works</h2>
+    </div>
+    <p>The DATRO Platform operates as a collaborative, commission-sharing development environment. The core workflow is as follows:</p>
+
+    <div class="flow">
+      <div class="flow-step">
+        <span class="icon">📣</span>
+        <span class="label">Campaign Launch</span>
+        <span class="desc">DATRO publishes one active Campaign at a time</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="icon">🤖</span>
+        <span class="label">AI-Assisted Build</span>
+        <span class="desc">Contributors use AI agents to vibe-code contributions</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="icon">🔀</span>
+        <span class="label">Pull Request</span>
+        <span class="desc">Commits filed with contributor Account ID tag</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="icon">📊</span>
+        <span class="label">Live Tracking</span>
+        <span class="desc">Client's app carries DATRO Tracking ID; attribution collected</span>
+      </div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step">
+        <span class="icon">💷</span>
+        <span class="label">Commission &amp; Share</span>
+        <span class="desc">Client pays; DATRO distributes Revenue Share by attribution</span>
+      </div>
+    </div>
+
+    <p>DATRO reserves the right to determine which Campaign is active at any given time, to set Campaign parameters, review and merge (or reject) Contributions, and to negotiate Commission arrangements with Clients entirely at its own discretion.</p>
+    <p>DATRO makes no guarantee that any Campaign will generate business for the Client, that any Commission will be earned, or that any Revenue Share will be distributed to any Contributor.</p>
+  </section>
+
+  <!-- 4 -->
+  <section id="s4">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Eligibility &amp; Account Registration</h2>
+    </div>
+    <h3 class="sub">4.1 Eligibility</h3>
+    <p>You must be at least 18 years of age and legally capable of entering into a binding contract under the laws of England and Wales. If you are resident in a jurisdiction that restricts access to platforms of this nature, you are not permitted to use the Platform.</p>
+    <h3 class="sub">4.2 Registration</h3>
+    <p>You must create an account to participate as a Contributor. You agree to provide accurate, current, and complete information during registration and to keep it updated. Each person or entity may hold only one account.</p>
+    <h3 class="sub">4.3 Account ID</h3>
+    <p>Upon registration you will be assigned a unique Account ID. This ID is permanently embedded in every commit and Pull Request you make. It is the sole mechanism by which your Contributions are tracked and Revenue Share attributed to you. You are responsible for ensuring your account credentials are kept secure. Any Contribution made under your Account ID is deemed to be made by you.</p>
+    <h3 class="sub">4.4 KYC / Payment Verification</h3>
+    <p>Before any Revenue Share payment is made, DATRO may require you to complete identity verification (KYC) procedures and provide valid payment details. Failure to do so within a reasonable period will result in your Revenue Share being held pending compliance.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="s5">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Contributor Obligations</h2>
+    </div>
+    <p>As a Contributor you agree to:</p>
+    <ul>
+      <li>Submit only original work, or work that you have the full legal right to submit and license under Section 12.</li>
+      <li>Ensure your Contributions do not infringe any third-party intellectual property rights, privacy rights, or applicable laws.</li>
+      <li>Not submit malicious code, backdoors, security vulnerabilities, or intentionally broken functionality.</li>
+      <li>Not attempt to manipulate Attribution Data, inflate your apparent contribution, or otherwise game the Revenue Share mechanism.</li>
+      <li>Comply with any Campaign Brief or technical specifications published by DATRO for the active Campaign.</li>
+      <li>Represent that you are not subject to any employment contract, non-compete, or other agreement that would restrict your ability to make Contributions.</li>
+    </ul>
+  </section>
+
+  <!-- 6 -->
+  <section id="s6">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">AI Agent Usage</h2>
+    </div>
+    <p>The Platform provides access to AI agent tooling to assist Contributors in generating and refining code. By using the AI Agent you acknowledge and agree that:</p>
+    <ul>
+      <li>You remain solely responsible for reviewing, testing, and validating any AI-generated output before submitting it as a Contribution.</li>
+      <li>DATRO makes no warranty as to the accuracy, legality, or fitness for purpose of AI-generated output.</li>
+      <li>You will not use the AI Agent to generate content that is illegal, harmful, defamatory, obscene, or that infringes third-party rights.</li>
+      <li>AI-generated Contributions are still subject to all provisions of these Terms regarding intellectual property, quality, and prohibited conduct.</li>
+      <li>DATRO may impose rate limits, usage caps, or access restrictions on AI Agent usage at any time without notice.</li>
+    </ul>
+    <div class="callout">
+      Using AI agents to generate code does not diminish your responsibility for the output. If your Contribution causes harm, liability remains with you as the submitting Contributor.
+    </div>
+  </section>
+
+  <!-- 7 -->
+  <section id="s7">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Pull Requests, Commits &amp; Attribution</h2>
+    </div>
+    <h3 class="sub">7.1 Submission via Pull Request</h3>
+    <p>All Contributions must be submitted through the Platform's Pull Request system. Each PR will automatically carry a commit reference containing your Account ID. DATRO does not accept Contributions made outside the Platform's PR system.</p>
+    <h3 class="sub">7.2 Review &amp; Merging</h3>
+    <p>DATRO retains absolute discretion to accept, reject, modify, or request amendments to any Pull Request. Submission of a PR does not guarantee merging or any Revenue Share entitlement. DATRO may, without liability, decline any Contribution for any reason including technical quality, Campaign fit, or legal concerns.</p>
+    <h3 class="sub">7.3 Attribution Record</h3>
+    <p>The commit reference containing your Account ID constitutes the authoritative record linking you to a Contribution. It is your responsibility to ensure your account is correctly set up before submitting. DATRO is not liable for mislabelled or lost attribution arising from errors you make during submission.</p>
+    <h3 class="sub">7.4 No Guarantee of Use</h3>
+    <p>Merged Contributions may be used, modified, removed, or replaced by DATRO at any time as part of Campaign management. Revenue Share is based on the performance of the final deployed Campaign, not on the volume of PRs submitted.</p>
+  </section>
+
+  <!-- 8 -->
+  <section id="s8">
+    <div class="section-header">
+      <span class="section-num">08</span>
+      <h2 class="section-title">Campaign Governance</h2>
+    </div>
+    <h3 class="sub">8.1 One Active Campaign</h3>
+    <p>At any given time, only one Campaign is active on the Platform and visible to all Contributors. DATRO determines when a Campaign starts, when it ends, and when the next Campaign begins. Contributors are permitted to work only on the currently active Campaign.</p>
+    <h3 class="sub">8.2 Campaign Brief</h3>
+    <p>Each Campaign will have a published brief setting out its objectives, the Client's brand and technical requirements, scope of permitted Contributions, and any specific rules. You are responsible for reading and complying with the Campaign Brief.</p>
+    <h3 class="sub">8.3 DATRO's Authority</h3>
+    <p>DATRO acts as platform operator, Campaign manager, and commercial intermediary. All decisions regarding Campaign direction, code quality, deployment, Client relationships, and Revenue Share calculations are final and made at DATRO's sole discretion, subject to Section 17 (Dispute Resolution).</p>
+    <h3 class="sub">8.4 Campaign Termination</h3>
+    <p>DATRO reserves the right to terminate a Campaign at any time, including before deployment, without liability to Contributors. In the event of early termination, no Revenue Share will be payable unless business outcomes had already been attributed and Commission received from the Client prior to termination.</p>
+  </section>
+
+  <!-- 9 -->
+  <section id="s9">
+    <div class="section-header">
+      <span class="section-num">09</span>
+      <h2 class="section-title">Client Relationships &amp; Commission</h2>
+    </div>
+    <p>Clients engage DATRO directly under separate commercial agreements. Contributors have no direct contractual relationship with any Client. Contributors must not contact, negotiate with, or make representations to any Client in connection with the Platform or any Campaign without DATRO's prior written consent.</p>
+    <p>Commission rates, payment terms, and any Client-specific provisions are agreed between DATRO and the Client confidentially and are not disclosed to Contributors. The Revenue Share pool distributed to Contributors is derived solely from Commission received by DATRO.</p>
+    <div class="callout warn">
+      If a Client fails to pay Commission for any reason — including insolvency, dispute, or breach — no Revenue Share will be distributed in respect of that Commission. Contributors acknowledge this risk and that DATRO's liability does not extend to guaranteeing Client payments.
+    </div>
+  </section>
+
+  <!-- 10 -->
+  <section id="s10">
+    <div class="section-header">
+      <span class="section-num">10</span>
+      <h2 class="section-title">Revenue Share &amp; Payment</h2>
+    </div>
+    <h3 class="sub">10.1 Revenue Share Pool</h3>
+    <p>DATRO will publish, for each Campaign, the percentage of net Commission that will form the Revenue Share pool available to Contributors. "Net Commission" means Commission received from the Client less any applicable taxes, payment processing fees, third-party licensing costs, and DATRO's platform fee.</p>
+    <h3 class="sub">10.2 Distribution Methodology</h3>
+    <p>Revenue Share is distributed based on Attribution Data (see Section 11). Only Merged Contributions that are demonstrably linked — via the Tracking ID — to business outcomes during the Campaign measurement window are eligible for Revenue Share.</p>
+    <table class="rev-table">
+      <thead>
+        <tr>
+          <th>Scenario</th>
+          <th>Revenue Share Eligibility</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>PR submitted but not merged</td>
+          <td>Not eligible</td>
+        </tr>
+        <tr>
+          <td>PR merged but no attributed conversions</td>
+          <td>Not eligible</td>
+        </tr>
+        <tr>
+          <td>PR merged and attributed conversions recorded</td>
+          <td>Eligible — proportional to attribution weight</td>
+        </tr>
+        <tr>
+          <td>Client does not pay Commission</td>
+          <td>Not eligible regardless of attribution</td>
+        </tr>
+      </tbody>
+    </table>
+    <h3 class="sub">10.3 Attribution Weighting</h3>
+    <p>DATRO uses Attribution Data to assign a weight to each Merged Contribution. The precise weighting methodology (e.g. last-touch, multi-touch, time-decay, or a proprietary model) is determined by DATRO and may vary by Campaign. DATRO will publish the applicable methodology in the Campaign Brief.</p>
+    <h3 class="sub">10.4 Payment</h3>
+    <p>Revenue Share payments will be made within 60 days of DATRO receiving cleared Commission from the Client. Payments will be made via the method specified in your account (e.g. bank transfer, supported payment processor). Minimum payout thresholds may apply and will be stated in the Campaign Brief. Amounts below the threshold will roll over to the next eligible payout cycle.</p>
+    <h3 class="sub">10.5 Tax</h3>
+    <p>You are solely responsible for declaring and paying any taxes (including income tax, national insurance, or equivalent) on Revenue Share payments you receive. DATRO may deduct withholding tax where required by law. DATRO will issue payment records upon request.</p>
+    <h3 class="sub">10.6 Disputes on Revenue Share</h3>
+    <p>Revenue Share calculations are based on Attribution Data held by DATRO. If you believe your share is incorrect, you must raise a written dispute within 30 days of payment notification. DATRO will review the data in good faith; its recalculated determination will be final absent fraud.</p>
+  </section>
+
+  <!-- 11 -->
+  <section id="s11">
+    <div class="section-header">
+      <span class="section-num">11</span>
+      <h2 class="section-title">Tracking, Analytics &amp; Attribution Methodology</h2>
+    </div>
+    <h3 class="sub">11.1 Tracking ID</h3>
+    <p>Each Client integrates DATRO's Tracking ID into their web application. This ID allows DATRO to observe user behaviour, conversion events, and other performance signals originating from the Campaign. DATRO's Tracking ID operates in accordance with applicable data protection law, including UK GDPR, and is disclosed to end-users via the Client's own privacy policy.</p>
+    <h3 class="sub">11.2 Attribution to Contributions</h3>
+    <p>Attribution Data is mapped to individual Campaign components (code files, UI elements, copy, routes) and then to the Contributor whose Account ID appears in the commit history for that component. This mapping is the sole basis for Revenue Share distribution.</p>
+    <h3 class="sub">11.3 Data Integrity</h3>
+    <p>DATRO takes reasonable measures to ensure the integrity and accuracy of Attribution Data. However, DATRO cannot guarantee absolute accuracy given factors such as ad-blockers, cookieless browsing, cross-device behaviour, or Client-side technical issues. DATRO's attribution figures are treated as authoritative for Revenue Share purposes.</p>
+    <h3 class="sub">11.4 No Manipulation</h3>
+    <p>Any attempt to artificially inflate Attribution Data — including bot traffic, click fraud, self-referral, or collusion with third parties — constitutes a material breach of these Terms and will result in immediate account suspension, clawback of any Revenue Share paid, and potential legal action.</p>
+  </section>
+
+  <!-- 12 -->
+  <section id="s12">
+    <div class="section-header">
+      <span class="section-num">12</span>
+      <h2 class="section-title">Intellectual Property</h2>
+    </div>
+    <h3 class="sub">12.1 Licence from Contributors</h3>
+    <p>By submitting a Pull Request you grant DATRO a worldwide, royalty-free, sublicensable, irrevocable licence to use, reproduce, modify, adapt, publish, translate, distribute, and create derivative works from your Contribution, for any purpose in connection with the Platform and any Campaign, for the full term of applicable intellectual property rights.</p>
+    <h3 class="sub">12.2 Ownership of Merged Contributions</h3>
+    <p>Unless otherwise agreed in writing, Merged Contributions — once deployed as part of a Campaign — become the joint property of DATRO and the relevant Client under the terms of DATRO's Client agreement. You retain no right to demand removal of a Merged Contribution after it has been deployed.</p>
+    <h3 class="sub">12.3 DATRO IP</h3>
+    <p>All rights in the Platform, its code, design, AI Agent, brand, and any materials created by DATRO remain the sole property of DATRO Consortium Ltd. These Terms do not grant you any licence to DATRO's intellectual property beyond what is strictly necessary to use the Platform.</p>
+    <h3 class="sub">12.4 Representations &amp; Warranties</h3>
+    <p>You represent and warrant that: (a) you own or have all necessary rights to submit your Contribution; (b) your Contribution does not infringe any patent, trademark, copyright, trade secret, or other right of any third party; and (c) your Contribution is your original work or you have proper rights to any third-party materials included.</p>
+    <h3 class="sub">12.5 Open-Source Components</h3>
+    <p>If your Contribution includes third-party open-source code, you must disclose this in the PR description, confirm the applicable licence is compatible with commercial use, and ensure attribution requirements are met.</p>
+  </section>
+
+  <!-- 13 -->
+  <section id="s13">
+    <div class="section-header">
+      <span class="section-num">13</span>
+      <h2 class="section-title">Prohibited Conduct</h2>
+    </div>
+    <p>You must not:</p>
+    <ul>
+      <li>Submit code containing malware, spyware, backdoors, deliberate vulnerabilities, or any code designed to harm users, the Client, or DATRO.</li>
+      <li>Impersonate another Contributor or create multiple accounts to obtain additional Revenue Share.</li>
+      <li>Reverse-engineer, decompile, or extract source code from the Platform.</li>
+      <li>Interfere with or disrupt the Platform's infrastructure, servers, or networks.</li>
+      <li>Circumvent any security measures, rate limits, or access controls.</li>
+      <li>Attempt to manipulate the PR system, Attribution Data, or Revenue Share calculations.</li>
+      <li>Use the Platform to engage in unlawful activity, or to promote, facilitate, or encourage unlawful activity.</li>
+      <li>Scrape, harvest, or otherwise collect data from the Platform without DATRO's written consent.</li>
+      <li>Violate any applicable law, regulation, or third-party right.</li>
+    </ul>
+    <div class="callout danger">
+      Breach of this section may result in immediate account termination, clawback of Revenue Share, and civil or criminal liability.
+    </div>
+  </section>
+
+  <!-- 14 -->
+  <section id="s14">
+    <div class="section-header">
+      <span class="section-num">14</span>
+      <h2 class="section-title">Disclaimers &amp; Limitation of Liability</h2>
+    </div>
+    <h3 class="sub">14.1 "As Is" Service</h3>
+    <p>The Platform is provided on an "as is" and "as available" basis. DATRO makes no warranty — express or implied — as to the Platform's availability, accuracy, fitness for a particular purpose, or non-infringement. DATRO does not warrant that the Platform will be uninterrupted, error-free, or free of harmful components.</p>
+    <h3 class="sub">14.2 No Earnings Guarantee</h3>
+    <p>DATRO makes no representation that participation in any Campaign will result in any Revenue Share payment. Earnings depend on Campaign performance, Client payment, and Attribution Data, all of which are outside DATRO's absolute control.</p>
+    <h3 class="sub">14.3 Limitation of Liability</h3>
+    <p>To the maximum extent permitted by applicable law, DATRO's total aggregate liability to any Contributor arising out of or in connection with these Terms or the Platform — whether in contract, tort (including negligence), breach of statutory duty, or otherwise — shall not exceed the total Revenue Share actually paid to that Contributor in the 12 months preceding the event giving rise to liability.</p>
+    <p>DATRO shall not be liable for any indirect, consequential, special, or punitive loss or damage, loss of profits, loss of revenue, loss of anticipated savings, loss of data, or reputational damage, even if advised of the possibility of such loss.</p>
+    <h3 class="sub">14.4 Consumer Rights</h3>
+    <p>Nothing in these Terms limits or excludes DATRO's liability for death or personal injury caused by negligence, fraud or fraudulent misrepresentation, or any other liability that cannot be excluded by law.</p>
+  </section>
+
+  <!-- 15 -->
+  <section id="s15">
+    <div class="section-header">
+      <span class="section-num">15</span>
+      <h2 class="section-title">Indemnification</h2>
+    </div>
+    <p>You agree to indemnify, defend, and hold harmless DATRO, its directors, employees, agents, and successors from and against any and all claims, liabilities, damages, losses, costs, and expenses (including reasonable legal fees) arising out of or related to:</p>
+    <ul>
+      <li>Your use of the Platform or the AI Agent;</li>
+      <li>Your Contributions, including any claim that they infringe a third party's rights;</li>
+      <li>Your breach of these Terms;</li>
+      <li>Your violation of any law or the rights of any third party;</li>
+      <li>Any misrepresentation you make regarding your eligibility or the ownership of your Contributions.</li>
+    </ul>
+  </section>
+
+  <!-- 16 -->
+  <section id="s16">
+    <div class="section-header">
+      <span class="section-num">16</span>
+      <h2 class="section-title">Termination &amp; Suspension</h2>
+    </div>
+    <h3 class="sub">16.1 By DATRO</h3>
+    <p>DATRO may suspend or terminate your account and access to the Platform at any time, with or without notice, if: (a) you breach these Terms; (b) DATRO is required to do so by law; or (c) DATRO decides to discontinue the Platform. Upon termination, your right to access the Platform and submit Contributions ceases immediately.</p>
+    <h3 class="sub">16.2 By You</h3>
+    <p>You may close your account at any time by contacting us at the address in Section 20. Closure does not affect any Revenue Share already attributed; any outstanding payable balance will be settled at the next payout cycle provided you have completed KYC verification.</p>
+    <h3 class="sub">16.3 Effect of Termination</h3>
+    <p>Sections 1, 10.5, 12, 13, 14, 15, 17, and 19 survive termination. Termination does not affect any accrued rights or obligations. DATRO may retain Merged Contributions under the licence in Section 12.1 after your account is closed.</p>
+  </section>
+
+  <!-- 17 -->
+  <section id="s17">
+    <div class="section-header">
+      <span class="section-num">17</span>
+      <h2 class="section-title">Dispute Resolution</h2>
+    </div>
+    <h3 class="sub">17.1 Good Faith Negotiation</h3>
+    <p>In the event of any dispute arising out of or in connection with these Terms, the parties agree to first attempt to resolve it in good faith through direct negotiation. You must submit a written notice of your dispute to legal@datroconsortium.com. DATRO will respond within 14 days.</p>
+    <h3 class="sub">17.2 Mediation</h3>
+    <p>If negotiation fails within 30 days, either party may request non-binding mediation through a mutually agreed mediator or, if none can be agreed, through the Centre for Effective Dispute Resolution (CEDR).</p>
+    <h3 class="sub">17.3 Governing Law &amp; Jurisdiction</h3>
+    <p>These Terms and any dispute or claim arising out of or in connection with them (including non-contractual disputes) shall be governed by and construed in accordance with the laws of England and Wales. The parties submit to the exclusive jurisdiction of the courts of England and Wales.</p>
+  </section>
+
+  <!-- 18 -->
+  <section id="s18">
+    <div class="section-header">
+      <span class="section-num">18</span>
+      <h2 class="section-title">Amendments</h2>
+    </div>
+    <p>DATRO reserves the right to amend these Terms at any time. When we make material changes, we will notify you by email and/or by posting a notice on the Platform at least 14 days before the changes take effect. Your continued use of the Platform after the effective date of any amendment constitutes acceptance of the revised Terms.</p>
+    <p>If you do not agree to the amended Terms, you must stop using the Platform and close your account before the effective date.</p>
+  </section>
+
+  <!-- 19 -->
+  <section id="s19">
+    <div class="section-header">
+      <span class="section-num">19</span>
+      <h2 class="section-title">General Provisions</h2>
+    </div>
+    <ul>
+      <li><strong>Entire Agreement.</strong> These Terms (together with the Privacy Policy and any applicable Campaign Brief) constitute the entire agreement between you and DATRO in relation to the Platform.</li>
+      <li><strong>Severability.</strong> If any provision is found invalid or unenforceable by a competent court, that provision will be modified to the minimum extent necessary, and the remaining provisions will remain in full force.</li>
+      <li><strong>Waiver.</strong> DATRO's failure to enforce any right under these Terms does not constitute a waiver of that right.</li>
+      <li><strong>No Partnership.</strong> Nothing in these Terms creates a partnership, joint venture, agency, employment, or franchise relationship between you and DATRO. You are an independent contributor.</li>
+      <li><strong>Assignment.</strong> You may not assign your rights or obligations under these Terms without DATRO's prior written consent. DATRO may assign these Terms in connection with a business transfer.</li>
+      <li><strong>Third-Party Rights.</strong> These Terms do not create any rights enforceable by any third party under the Contracts (Rights of Third Parties) Act 1999.</li>
+      <li><strong>Force Majeure.</strong> DATRO shall not be liable for any failure or delay caused by circumstances beyond its reasonable control, including but not limited to acts of God, war, pandemic, cyberattacks, or infrastructure failures.</li>
+      <li><strong>Language.</strong> These Terms are written in English. In the event of any inconsistency between any translation and the English version, the English version prevails.</li>
+    </ul>
+  </section>
+
+  <!-- 20 -->
+  <section id="s20">
+    <div class="section-header">
+      <span class="section-num">20</span>
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-card">
+      <h3>DATRO Consortium Ltd</h3>
+      <p>Registered in England and Wales</p>
+      <p>General enquiries: <a href="mailto:hello@datroconsortium.com">hello@datroconsortium.com</a></p>
+      <p>Legal &amp; disputes: <a href="mailto:legal@datroconsortium.com">legal@datroconsortium.com</a></p>
+      <p>Privacy: <a href="mailto:privacy@datroconsortium.com">privacy@datroconsortium.com</a></p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>&copy; <script>document.write(new Date().getFullYear())</script> <span class="co">DATRO Consortium Ltd</span>. All rights reserved. &nbsp;·&nbsp; Governed by the laws of England &amp; Wales.</p>
+</footer>
+
+</body>
+</html>

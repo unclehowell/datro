@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm audit:*)",
+      "Bash(npm run build:*)",
+      "Bash(npm ls:*)",
+      "Bash(gh pr list:*)",
+      "Bash(npm outdated:*)",
+      "Bash(npm install:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(rm:*)",
+      "Bash(gh api:*)",
+      "Bash(gh issue list:*)",
+      "Bash(gh issue view:*)",
+      "Bash(npm run css:*)",
+      "Bash(npm run js:*)",
+      "Bash(npm run js-lint:*)",
+      "Bash(npm run css-lint:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm whoami:*)",
+      "Bash(npm run production:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)",
+      "Bash(npm view:*)",
+      "Bash(cat:*)",
+      "Bash(npm pack:*)",
+      "Bash(npm publish:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

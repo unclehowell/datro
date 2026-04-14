@@ -1,0 +1,110 @@
+/* _theme-vitepress/nav.css — matches VitePress default theme */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --vp-c-brand: #3451b2;
+  --vp-c-brand-light: #3a5ccc;
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-soft: #f6f6f7;
+  --vp-c-bg-mute: #ebebef;
+  --vp-c-text-1: #213547;
+  --vp-c-text-2: #476582;
+  --vp-c-divider: #e2e2e3;
+  --vp-sidebar-width: 272px;
+  --vp-font: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+}
+
+body {
+  font-family: var(--vp-font);
+  background: var(--vp-c-bg);
+  color: var(--vp-c-text-1);
+  min-height: 100vh;
+  display: flex;
+}
+
+/* Sidebar nav */
+.nav-sidebar {
+  width: var(--vp-sidebar-width);
+  min-height: 100vh;
+  background: var(--vp-c-bg-soft);
+  border-right: 1px solid var(--vp-c-divider);
+  padding: 32px 16px;
+  position: fixed;
+  top: 0; left: 0; bottom: 0;
+  overflow-y: auto;
+}
+
+.nav-content {
+  margin-left: var(--vp-sidebar-width);
+  padding: 48px 40px;
+  max-width: 860px;
+}
+
+.nav-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+  margin-bottom: 24px;
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: background .2s;
+}
+.nav-back:hover { background: var(--vp-c-bg-mute); color: var(--vp-c-brand); }
+
+.nav-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--vp-c-text-1);
+  margin-bottom: 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--vp-c-divider);
+}
+
+.nav-section-title {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: var(--vp-c-text-2);
+  margin: 20px 0 8px;
+  padding: 0 8px;
+}
+
+.nav-list { list-style: none; }
+
+.nav-list li { margin: 2px 0; }
+
+.nav-list a {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  transition: background .15s, color .15s;
+}
+.nav-list a:hover { background: var(--vp-c-bg-mute); color: var(--vp-c-brand); }
+
+.nav-list a.disabled { color: var(--vp-c-text-2); pointer-events: none; opacity: .6; }
+
+.badge-html {
+  font-size: 11px; font-weight: 600;
+  background: #e8f4fd; color: #1a7abf;
+  padding: 2px 6px; border-radius: 4px; margin-left: 4px;
+}
+.badge-pdf {
+  font-size: 11px; font-weight: 600;
+  background: #fde8e8; color: #c0392b;
+  padding: 2px 6px; border-radius: 4px; margin-left: 4px;
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nav-sidebar { display: none; }
+  .nav-content { margin-left: 0; padding: 24px 16px; }
+}
