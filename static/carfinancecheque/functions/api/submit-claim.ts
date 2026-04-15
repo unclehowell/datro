@@ -1,5 +1,5 @@
 // Cloudflare Pages Function
-// File location: static/pcp2/functions/api/submit-claim.ts
+// File location: static/carfinancecheque/functions/api/submit-claim.ts
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -92,50 +92,9 @@ export async function onRequestPost(context: any) {
       postcode: !!postcode_formatted
     });
 
-    // Signature handling
-    // Browser sends: signature (base64 JSON string), signature_image (actual PNG data URL with prefix)
-    // R2R API expects: signature field with "data:image/png;base64," prefix
+    // Signature handling - API expects base64 string (not object)
     let sigImage = String(body.signature_image || "");
-    let sigField = String(body.signature || "");
-    console.log("SIGNATURE DEBUG:", {
-      sigImageStartsWith: sigImage.substring(0, 50),
-      sigImageLength: sigImage.length,
-      sigFieldStartsWith: sigField.substring(0, 50),
-      sigFieldLength: sigField.length
-    });
     
-    // Check if signature_image is valid (starts with data:image and has actual base64 data)
-    // An empty PNG canvas returns "data:image/png;base64," (just the prefix, no data)
-    const isValidSignature = (s: string) => 
-      s.startsWith("data:image") && s.length > 50;
-    
-    if (!isValidSignature(sigImage)) {
-      // Try the signature field instead
-      if (isValidSignature(sigField)) {
-        sigImage = sigField;
-      } else {
-        // Both signatures are empty/invalid - this shouldn't happen if user signed
-        // Log warning but continue (R2R will reject if truly empty)
-        console.warn("WARNING: No valid signature detected!");
-        sigImage = "";
-      }
-    }
-
-    // Address - R2R API expects single address object (not array)
-    const address = {
-      line1:          null,
-      line2:          null,
-      line3:          null,
-      line4:          null,
-      buildingName:   null,
-      buildingNumber: buildingNumber || null,
-      thoroughfare:   thoroughfare || null,
-      townOrCity:     townOrCity || null,
-      district:       null,
-      postcode:       postcode_formatted || null,
-    };
-
-    // Build signature object as per API spec
     // Extract base64 data from data:image/png;base64,... prefix
     const extractBase64 = (dataUrl: string): string => {
       if (!dataUrl || !dataUrl.startsWith("data:")) return dataUrl || "";
@@ -143,36 +102,29 @@ export async function onRequestPost(context: any) {
       return commaIndex >= 0 ? dataUrl.slice(commaIndex + 1) : dataUrl;
     };
 
-    const signatureBase64 = extractBase64(sigImage || body.signature || "");
-    const signaturePayload = ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"];
-    
-    const signatureObj = signatureBase64 ? {
-      payload: signaturePayload,
-      signature: signatureBase64
-    } : null;
+    const signatureBase64 = extractBase64(sigImage);
 
-    // Build payload
+    // Address - API expects object (not array, despite PDF saying "array of objects")
+    const addresses = {
+      buildingNumber: buildingNumber || null,
+      thoroughfare:   thoroughfare || null,
+      townOrCity:     townOrCity || null,
+      postcode:       postcode_formatted || null,
+    };
+
+    // Build payload per PDF documentation
     const payload: any = {
-      title,
       first_name,
       last_name,
       date_of_birth,
       phone,
       email,
-      ip_address:           req.headers.get("cf-connecting-ip") || "",
-      user_agent:           req.headers.get("user-agent") || "",
+      client_ip:    req.headers.get("cf-connecting-ip") || "",
+      user_agent:   req.headers.get("user-agent") || "",
       session_id,
-      device_session_id,
-      account_creation_url: "https://car.financecheque.uk/claim",
-      address,
-      opt_in:               true,
+      signature:    signatureBase64,
+      addresses,
     };
-
-    // Add signature object as per API spec
-    if (signatureObj) {
-      payload.signature = signatureObj;
-    }
-    // If no valid signature available, don't add it - will fail validation
 
     console.log("FINAL PAYLOAD KEYS:", Object.keys(payload));
 
