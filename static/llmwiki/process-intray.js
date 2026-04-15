@@ -40,12 +40,6 @@ function md5(str) {
   return createHash('md5').update(str).digest('hex');
 }
 
-/**
- * Normalize an ID to be double-barrelled per Finance Cheque UK standard.
- * - Already has hyphen → keep as-is
- * - Single word → add fcuk- prefix
- * - Empty / "-" → fcuk-fcuk
- */
 function normalizeId(id) {
   if (!id || id === '-') return 'fcuk-fcuk';
   const s = id.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
@@ -71,82 +65,65 @@ function makeIndexHtml(depth, title, backHref, treeviewPath) {
   return `<!DOCTYPE html><html>\n${themeHead(depth)}\n<body><script>(async()=>{\nconst data=await(await fetch('${treeviewPath}')).json();\nlet h='<ul>';\n${backHref ? `h+='<a href="${backHref}" class="up-active"><<</a>';` : ''}\nh+=\`<p class="main-title"><span style="font-size:1.1em;font-weight:700;color:#55a5d9;">Finance Cheque UK</span><br><br>${title}</p>\`;\nfor(const f of data)h+=\`<li class="li"><a href="\${f.path}">\${f.name}</a></li>\`;\nh+='</ul>';document.body.innerHTML=h;\n})()</script><script src="${p}_theme-explorer/jquery.min.js"></script></body></html>`;
 }
 
-function makeConf(title, docName) {
-  return `project = u'LLMWiki - ${title}'
-copyright = u'2012-2026 Finance Cheque UK'
-author = u'Finance Cheque UK'
-version = u'0.0.1'
-release = u'0.0.1'
-extensions = ['sphinx.ext.autosectionlabel', 'myst_parser']
-source_suffix = {'.rst': 'restructuredtext', '.md': 'markdown'}
-master_doc = 'index'
-language = "en"
-locale_dirs = ['locales']
-gettext_auto_build = True
-gettext_compact = "docs"
-exclude_patterns = ['_build']
-html_theme = 'sphinx_rtd_theme'
-htmlhelp_basename = '${docName}'
-latex_elements = {'papersize': 'a4paper', 'pointsize': '10pt', 'preamble': r'\\usepackage[utf8]{inputenc}\\usepackage[T1]{fontenc}'}
-latex_documents = [(master_doc, '${docName}.tex', u'${title}', u'Finance Cheque UK', 'manual')]
-myst_enable_extensions = ["colon_fence", "deflist"]
-suppress_warnings = ["autosectionlabel.*"]
-`;
-}
+// Render md content to a self-contained HTML doc with print-to-PDF button.
+// Uses marked.js from CDN — no build step, no Sphinx, no LaTeX.
+function makeDocHtml(depth, title, mdFiles, srcRelPath) {
+  const p = '../'.repeat(depth);
+  // mdFiles: array of filenames relative to source dir
+  const fileLoaders = mdFiles.map(f =>
+    `fetch('${srcRelPath}${f}').then(r=>r.text()).catch(()=>'')`
+  ).join(',\n    ');
 
-function makeRebuildSh(docName, depth) {
-  const rel = '../'.repeat(depth);
-  return `#!/usr/bin/env bash
-set -e
-cd "$(dirname "$0")"
-LLMWIKI_ROOT="$(cd ${rel} && pwd)"
-
-# HTML build
-rm -rf build/html build/latex
-sphinx-build -b html source build/html/en -q
-echo '<html><body></body><script>window.open("./en/","_self");</script></html>' > build/html/index.html
-
-# Apply theme
-bash "$LLMWIKI_ROOT/_theme-docs/llmwiki-blue.sh"
-
-# PDF build via LaTeX
-mkdir -p build/latex/en
-sphinx-build -b latex source build/latex/en -q
-if [ -f "build/latex/en/${docName}.tex" ]; then
-  cd build/latex/en
-  pdflatex -interaction=nonstopmode ${docName}.tex > /dev/null 2>&1 || true
-  pdflatex -interaction=nonstopmode ${docName}.tex > /dev/null 2>&1 || true
-  cd -
-fi
-
-PDF="build/latex/en/${docName}.pdf"
-if [ -f "$PDF" ] && [ "$(wc -c < "$PDF")" -gt 1000 ]; then
-  echo "PDF OK: $PDF ($(wc -c < "$PDF") bytes)"
-else
-  echo "WARNING: PDF missing or too small: $PDF"
-fi
-echo '<html><body></body><script>window.open("./${docName}.pdf","_self");</script></html>' > build/latex/en/index.html
-echo "Done: ${docName}"
-`;
+  return `<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>${title} — LLMWiki</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="${p}_theme-explorer/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+  <link rel="stylesheet" href="${p}_theme-explorer/style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <style>
+    body { max-width: 860px; margin: 2em auto; padding: 0 1.5em; font-family: sans-serif; color: #ccc; background: #223; }
+    h1,h2,h3 { color: #55a5d9; }
+    pre { background: #112; padding: 1em; border-radius: 4px; overflow-x: auto; }
+    code { background: #112; padding: 0.1em 0.3em; border-radius: 3px; }
+    a { color: #55a5d9; }
+    #pdf-btn { position: fixed; top: 1em; right: 1em; background: #55a5d9; color: #fff; border: none; padding: 0.5em 1.2em; border-radius: 4px; cursor: pointer; font-size: 0.9em; z-index: 999; }
+    @media print { #pdf-btn { display: none; } body { background: #fff; color: #000; } h1,h2,h3 { color: #000; } }
+  </style>
+</head>
+<body>
+  <button id="pdf-btn" onclick="window.print()">⬇ Download PDF</button>
+  <div id="content"><p>Loading…</p></div>
+  <script>
+  (async () => {
+    const parts = await Promise.all([
+      ${fileLoaders}
+    ]);
+    document.getElementById('content').innerHTML = marked.parse(parts.join('\\n\\n---\\n\\n'));
+    if (location.search.includes('print=1')) window.print();
+  })();
+  </script>
+</body>
+</html>`;
 }
 
 function makeReleasenotes() {
   const today = new Date().toISOString().slice(0,10);
-  return `# Release Notes\n\n## This Release (Version 0.0.1)\n\n- **${today}** - Initial release\n\n## Older Versions\n\n\`\`\`{csv-table}\n:file: _static/olderversions.csv\n:widths: 20, 20, 20, 40\n:header-rows: 1\n\`\`\`\n`;
+  return `# Release Notes\n\n## v0.0.1 — ${today}\n\n- Initial release\n`;
 }
 
-function makeDocTreeview(docName) {
+function makeDocTreeview(docDir) {
   return [
-    {"name":"<div><b class='greenish'>HTML</b>|<b class='redish'>PDF</b></div>","path":"javascript:void(0)","_links":{"html":"javascript:void(0)"}},
+    {"name":"<div><b class='greenish'>HTML</b> | <b class='redish'>PDF</b></div>","path":"javascript:void(0)","_links":{"html":"javascript:void(0)"}},
     {"name":"<div class='title-line title-disable'><div class='flag f-en'></div>English</div>","path":"javascript:void(0)","_links":{"html":"javascript:void(0)"}},
-    {"name":"<div class='language-subtitle-line enable-link gish'>Latest</div>","path":"./latest/build/html/en/index.html","_links":{"html":"./latest/build/html/en/index.html"}},
-    {"name":`<div class='language-subtitle-line enable-link rish'>v0.0.1</div>`,"path":`./latest/build/latex/en/${docName}.pdf`,"_links":{"pdf":`./latest/build/latex/en/${docName}.pdf`}},
+    {"name":"<div class='language-subtitle-line enable-link gish'>Latest (HTML + Print PDF)</div>","path":"./latest/index.html","_links":{"html":"./latest/index.html"}},
     {"name":"<div class='page-scroll-fix'></div>","path":"javascript:void(0)","_links":{"html":"javascript:void(0)"}}
   ];
 }
 
 // Build a map of filename → {catDir, docDir} for all already-placed source files
-// Two-level structure: catDir/docDir/latest/source/
 function getAlreadyPlaced() {
   const placed = {};
   try {
@@ -193,16 +170,21 @@ export async function processIntray() {
 
     if (placed[f]) {
       const srcPath = join(ROOT, placed[f].catDir, placed[f].docDir, 'latest', 'source', f);
-      const existingHash = hashes[f];
-      if (existingHash === hash) {
+      if (hashes[f] === hash) {
         renameSync(join(INTRAY, f), join(OUTTRAY, f));
         console.log(`[intray] Unchanged, skipping: ${f}`);
         continue;
       }
       writeFileSync(srcPath, content);
       hashes[f] = hash;
+      // Regenerate doc HTML with updated content
+      const docDir = placed[f].docDir;
+      const catDir = placed[f].catDir;
+      const srcFiles = readdirSync(join(ROOT, catDir, docDir, 'latest', 'source')).filter(x => x.endsWith('.md') && x !== 'releasenotes.md');
+      const srcRelPath = './source/';
+      writeFileSync(join(ROOT, catDir, docDir, 'latest', 'index.html'), makeDocHtml(4, docDir, srcFiles, srcRelPath));
       renameSync(join(INTRAY, f), join(OUTTRAY, f));
-      console.log(`[intray] Updated in place: ${f} → ${placed[f].catDir}/${placed[f].docDir}`);
+      console.log(`[intray] Updated: ${f} → ${catDir}/${docDir}`);
       continue;
     }
 
@@ -218,7 +200,6 @@ export async function processIntray() {
   console.log(`[intray] ${toPlace.length} new files to classify...`);
 
   const BATCH = 20;
-  // categoryMap: { catDir: { label, docs: { docDir: { label } } } }
   const categoryMap = {};
 
   for (let i = 0; i < toPlace.length; i += BATCH) {
@@ -258,23 +239,15 @@ ${batch.map(p => `FILE: ${p.f}\nPREVIEW: ${p.preview}`).join('\n---\n')}`;
         continue;
       }
 
-      // Apply normalizeId to all three levels
       const catId = normalizeId(group.category);
       const subId = normalizeId(group.subcategory);
       const docId = normalizeId(group.document);
 
-      // Two-level directory: {catId}_{subId}/{subId}_{docId}/latest/source/
       const catDir = `${catId}_${subId}`;
       const docDir = `${subId}_${docId}`;
-      const docName = `${catId}-${subId}-${docId}`;
 
-      const srcDir    = join(ROOT, catDir, docDir, 'latest', 'source');
-      const staticDir = join(srcDir, '_static');
-
+      const srcDir = join(ROOT, catDir, docDir, 'latest', 'source');
       mkdirSync(srcDir, { recursive: true });
-      mkdirSync(staticDir, { recursive: true });
-      mkdirSync(join(ROOT, catDir, docDir, 'latest', 'build', 'html', 'en'), { recursive: true });
-      mkdirSync(join(ROOT, catDir, docDir, 'latest', 'build', 'latex', 'en'), { recursive: true });
 
       const movedFiles = [];
       for (const fname of group.files) {
@@ -285,19 +258,25 @@ ${batch.map(p => `FILE: ${p.f}\nPREVIEW: ${p.preview}`).join('\n---\n')}`;
         writeFileSync(join(srcDir, fname), item.content);
         renameSync(src, join(OUTTRAY, fname));
         hashes[fname] = item.hash;
-        movedFiles.push(fname.replace('.md',''));
+        movedFiles.push(fname);
       }
 
       if (!movedFiles.length) continue;
 
       const docLabel = group.documentLabel || docId;
-      writeFileSync(join(srcDir, 'index.md'), `# ${docLabel}\n\n\`\`\`{toctree}\n:maxdepth: 2\n\n${movedFiles.join('\n')}\n\`\`\`\n`);
+
+      // Write release notes into source (not rendered in main doc)
       writeFileSync(join(srcDir, 'releasenotes.md'), makeReleasenotes());
-      writeFileSync(join(staticDir, 'olderversions.csv'), '**Archive Date**, **Version**, **Description**, **Download Link**\nyyyy-mm-dd, 0.0.0, draft, no older versions yet');
-      writeFileSync(join(staticDir, 'issues.csv'), '**Date**, **Version**, **Subject**, **Description**\n');
-      writeFileSync(join(srcDir, 'conf.py'), makeConf(docLabel, docName));
-      writeFileSync(join(ROOT, catDir, docDir, 'latest', 'rebuild.sh'), makeRebuildSh(docName, 4));
-      writeFileSync(join(ROOT, catDir, docDir, '_treeview.json'), JSON.stringify(makeDocTreeview(docName), null, 2));
+
+      // Single index.html per doc — renders md client-side, has print-to-PDF button
+      // source files are served as static assets at ./source/{filename}
+      writeFileSync(
+        join(ROOT, catDir, docDir, 'latest', 'index.html'),
+        makeDocHtml(4, docLabel, movedFiles, './source/')
+      );
+
+      // Doc-level treeview (links to latest/index.html only — no separate PDF file)
+      writeFileSync(join(ROOT, catDir, docDir, '_treeview.json'), JSON.stringify(makeDocTreeview(docDir), null, 2));
       writeFileSync(join(ROOT, catDir, docDir, 'index.html'), makeIndexHtml(2, docLabel, '../index.html', '_treeview.json'));
 
       if (!categoryMap[catDir]) categoryMap[catDir] = { label: group.categoryLabel || catId, docs: {} };
