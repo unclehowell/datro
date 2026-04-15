@@ -1,0 +1,10 @@
+name = "carfinancecheque"
+compatibility_date = "2024-01-01"
+pages_build_output_dir = "./dist"
+
+[vars]
+VITE_AFFILIATE_ID = "a4429cda-e36a-472a-8291-ae01a49349d8"
+VITE_KOUNT_CLIENT_ID = "341408861572516"
+
+# Secrets (set via wrangler secret put):
+# VITE_API_KEY

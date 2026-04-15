@@ -1,0 +1,16 @@
+project = u'LLMWiki - Soul & Identity'
+copyright = u'2012-2026 Finance Cheque UK'
+author = u'Finance Cheque UK'
+version = u'0.0.1'
+release = u'0.0.1'
+extensions = ['sphinx.ext.autosectionlabel', 'myst_parser']
+source_suffix = {'.rst': 'restructuredtext', '.md': 'markdown'}
+master_doc = 'index'
+language = "en"
+exclude_patterns = ['_build']
+html_theme = 'sphinx_rtd_theme'
+htmlhelp_basename = 'fcuk-agent-fcuk-soul-fcuk-soul'
+latex_elements = {'papersize': 'a4paper', 'pointsize': '10pt', 'preamble': r'\usepackage[utf8]{inputenc}\usepackage[T1]{fontenc}'}
+latex_documents = [(master_doc, 'fcuk-agent-fcuk-soul-fcuk-soul.tex', u'Soul & Identity', u'Finance Cheque UK', 'manual')]
+myst_enable_extensions = ["colon_fence", "deflist"]
+suppress_warnings = ["autosectionlabel.*"]

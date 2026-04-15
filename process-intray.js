@@ -1,11 +1,11 @@
 #!/usr/bin/env node
 /**
  * process-intray.js
- * Classifies _intray/*.md files, creates category/document folder structure,
+ * Classifies _intray/*.md files, creates two-level category/subcategory/document structure,
  * moves files to source dirs. Skips files already placed. Moves done files to _outtray/.
  */
 
-import { readdirSync, readFileSync, writeFileSync, mkdirSync, renameSync, existsSync } from 'fs';
+import { readdirSync, readFileSync, writeFileSync, mkdirSync, renameSync, existsSync, statSync } from 'fs';
 import { createHash } from 'crypto';
 import { join } from 'path';
 
@@ -40,6 +40,20 @@ function md5(str) {
   return createHash('md5').update(str).digest('hex');
 }
 
+/**
+ * Normalize an ID to be double-barrelled per Finance Cheque UK standard.
+ * - Already has hyphen → keep as-is
+ * - Single word → add fcuk- prefix
+ * - Empty / "-" → fcuk-fcuk
+ */
+function normalizeId(id) {
+  if (!id || id === '-') return 'fcuk-fcuk';
+  const s = id.toLowerCase().replace(/[^a-z0-9-]/g, '-').replace(/-+/g, '-').replace(/^-|-$/g, '');
+  if (!s) return 'fcuk-fcuk';
+  if (s.includes('-')) return s;
+  return `fcuk-${s}`;
+}
+
 function themeHead(depth) {
   const p = '../'.repeat(depth);
   return `  <head>
@@ -54,20 +68,13 @@ function themeHead(depth) {
 
 function makeIndexHtml(depth, title, backHref, treeviewPath) {
   const p = '../'.repeat(depth);
-  return `<!DOCTYPE html><html>\n${themeHead(depth)}\n<body><script>(async()=>{
-const data=await(await fetch('${treeviewPath}')).json();
-let h='<ul>';
-${backHref ? `h+='<a href="${backHref}" class="up-active"><<</a>';` : ''}
-h+=\`<p class="main-title"><span style="font-size:1.1em;font-weight:700;color:#55a5d9;">Finance Cheque UK</span><br><br>${title}</p>\`;
-for(const f of data)h+=\`<li class="li"><a href="\${f.path}">\${f.name}</a></li>\`;
-h+='</ul>';document.body.innerHTML=h;
-})()</script><script src="${p}_theme-explorer/jquery.min.js"></script></body></html>`;
+  return `<!DOCTYPE html><html>\n${themeHead(depth)}\n<body><script>(async()=>{\nconst data=await(await fetch('${treeviewPath}')).json();\nlet h='<ul>';\n${backHref ? `h+='<a href="${backHref}" class="up-active"><<</a>';` : ''}\nh+=\`<p class="main-title"><span style="font-size:1.1em;font-weight:700;color:#55a5d9;">Finance Cheque UK</span><br><br>${title}</p>\`;\nfor(const f of data)h+=\`<li class="li"><a href="\${f.path}">\${f.name}</a></li>\`;\nh+='</ul>';document.body.innerHTML=h;\n})()</script><script src="${p}_theme-explorer/jquery.min.js"></script></body></html>`;
 }
 
 function makeConf(title, docName) {
   return `project = u'LLMWiki - ${title}'
-copyright = u'Finance Cheque UK'
-author = u'The Team @ DATRO Consortium'
+copyright = u'2012-2026 Finance Cheque UK'
+author = u'Finance Cheque UK'
 version = u'0.0.1'
 release = u'0.0.1'
 extensions = ['sphinx.ext.autosectionlabel', 'myst_parser']
@@ -80,7 +87,7 @@ gettext_compact = "docs"
 exclude_patterns = ['_build']
 html_theme = 'sphinx_rtd_theme'
 htmlhelp_basename = '${docName}'
-latex_elements = {'papersize': 'a4paper', 'pointsize': '10pt'}
+latex_elements = {'papersize': 'a4paper', 'pointsize': '10pt', 'preamble': r'\\usepackage[utf8]{inputenc}\\usepackage[T1]{fontenc}'}
 latex_documents = [(master_doc, '${docName}.tex', u'${title}', u'Finance Cheque UK', 'manual')]
 myst_enable_extensions = ["colon_fence", "deflist"]
 suppress_warnings = ["autosectionlabel.*"]
@@ -102,20 +109,21 @@ echo '<html><body></body><script>window.open("./en/","_self");</script></html>' 
 # Apply theme
 bash "$LLMWIKI_ROOT/_theme-docs/llmwiki-blue.sh"
 
-# PDF build via rinohtype (no LaTeX required)
+# PDF build via LaTeX
 mkdir -p build/latex/en
-sphinx-build -b rinoh source build/latex/en -q 2>/dev/null || \
-  sphinx-build -b rinoh source build/latex/en 2>/dev/null || \
-  echo "WARNING: rinoh build failed for ${docName}"
-
-# Rename rinoh output to expected name if needed
-find build/latex/en -name "*.pdf" | head -1 | xargs -I{} mv {} build/latex/en/${docName}.pdf 2>/dev/null || true
+sphinx-build -b latex source build/latex/en -q
+if [ -f "build/latex/en/${docName}.tex" ]; then
+  cd build/latex/en
+  pdflatex -interaction=nonstopmode ${docName}.tex > /dev/null 2>&1 || true
+  pdflatex -interaction=nonstopmode ${docName}.tex > /dev/null 2>&1 || true
+  cd -
+fi
 
 PDF="build/latex/en/${docName}.pdf"
 if [ -f "$PDF" ] && [ "$(wc -c < "$PDF")" -gt 1000 ]; then
   echo "PDF OK: $PDF ($(wc -c < "$PDF") bytes)"
 else
-  echo "WARNING: PDF missing or empty: $PDF"
+  echo "WARNING: PDF missing or too small: $PDF"
 fi
 echo '<html><body></body><script>window.open("./${docName}.pdf","_self");</script></html>' > build/latex/en/index.html
 echo "Done: ${docName}"
@@ -132,24 +140,26 @@ function makeDocTreeview(docName) {
     {"name":"<div><b class='greenish'>HTML</b>|<b class='redish'>PDF</b></div>","path":"javascript:void(0)","_links":{"html":"javascript:void(0)"}},
     {"name":"<div class='title-line title-disable'><div class='flag f-en'></div>English</div>","path":"javascript:void(0)","_links":{"html":"javascript:void(0)"}},
     {"name":"<div class='language-subtitle-line enable-link gish'>Latest</div>","path":"./latest/build/html/en/index.html","_links":{"html":"./latest/build/html/en/index.html"}},
-    {"name":"<div class='language-subtitle-line enable-link rish'>v0.0.1</div>","path":`./latest/build/latex/en/${docName}.pdf`,"_links":{"pdf":`./latest/build/latex/en/${docName}.pdf`}},
+    {"name":`<div class='language-subtitle-line enable-link rish'>v0.0.1</div>`,"path":`./latest/build/latex/en/${docName}.pdf`,"_links":{"pdf":`./latest/build/latex/en/${docName}.pdf`}},
     {"name":"<div class='page-scroll-fix'></div>","path":"javascript:void(0)","_links":{"html":"javascript:void(0)"}}
   ];
 }
 
-// Build a map of filename → {category, document} for all already-placed source files
+// Build a map of filename → {catDir, docDir} for all already-placed source files
+// Two-level structure: catDir/docDir/latest/source/
 function getAlreadyPlaced() {
   const placed = {};
   try {
     for (const cat of readdirSync(ROOT)) {
       if (cat.startsWith('_') || cat === 'node_modules' || cat === 'wiki' || cat === 'raw' || cat === 'functions') continue;
-      const catDir = join(ROOT, cat);
+      const catPath = join(ROOT, cat);
+      try { if (!statSync(catPath).isDirectory()) continue; } catch { continue; }
       try {
-        for (const doc of readdirSync(catDir)) {
-          const srcDir = join(catDir, doc, 'latest', 'source');
+        for (const doc of readdirSync(catPath)) {
+          const srcDir = join(catPath, doc, 'latest', 'source');
           if (!existsSync(srcDir)) continue;
           for (const f of readdirSync(srcDir)) {
-            if (f.endsWith('.md')) placed[f] = { category: cat, document: doc };
+            if (f.endsWith('.md')) placed[f] = { catDir: cat, docDir: doc };
           }
         }
       } catch {}
@@ -158,7 +168,6 @@ function getAlreadyPlaced() {
   return placed;
 }
 
-// Load hash registry (persisted in repo to survive fresh CF clones)
 function loadHashes() {
   const p = join(ROOT, '_source_hashes.json');
   try { return JSON.parse(readFileSync(p, 'utf8')); } catch { return {}; }
@@ -183,24 +192,20 @@ export async function processIntray() {
     const hash = md5(content);
 
     if (placed[f]) {
-      // File already has a path — check if content changed
-      const srcPath = join(ROOT, placed[f].category, placed[f].document, 'latest', 'source', f);
+      const srcPath = join(ROOT, placed[f].catDir, placed[f].docDir, 'latest', 'source', f);
       const existingHash = hashes[f];
       if (existingHash === hash) {
-        // Same content — move to outtray, skip
         renameSync(join(INTRAY, f), join(OUTTRAY, f));
         console.log(`[intray] Unchanged, skipping: ${f}`);
         continue;
       }
-      // Content changed — update in place, mark for rebuild
       writeFileSync(srcPath, content);
       hashes[f] = hash;
       renameSync(join(INTRAY, f), join(OUTTRAY, f));
-      console.log(`[intray] Updated in place: ${f} → ${placed[f].category}/${placed[f].document}`);
+      console.log(`[intray] Updated in place: ${f} → ${placed[f].catDir}/${placed[f].docDir}`);
       continue;
     }
 
-    // New file — needs classification
     toPlace.push({ f, content, hash, preview: content.slice(0, 300) });
   }
 
@@ -212,34 +217,24 @@ export async function processIntray() {
 
   console.log(`[intray] ${toPlace.length} new files to classify...`);
 
-  // Classify in batches of 20 to avoid token limits
   const BATCH = 20;
+  // categoryMap: { catDir: { label, docs: { docDir: { label } } } }
   const categoryMap = {};
 
   for (let i = 0; i < toPlace.length; i += BATCH) {
     const batch = toPlace.slice(i, i + BATCH);
     const prompt = `Organise these markdown files for an AI agent knowledge base (LLMWiki).
 
-NAMING RULES:
-- Format: categoryID_subcategoryID / subcategoryID_documentID
-- The subcategoryID bridges both sides (end of category dir AND start of document dir)
-- IDs use lowercase + hyphens only (no underscores within an ID)
-- Double-barrelled IDs use a hyphen: e.g. finance-cheque, long-term, real-estate
-- If no meaningful subcategory exists, use "fcuk" as the subcategoryID (brand filler)
-- The single underscore _ is ONLY used as the separator between the two halves
+Return ONLY valid JSON:
+{"groups":[{"category":"agent","categoryLabel":"Agent","subcategory":"soul","subcategoryLabel":"Soul","document":"soul","documentLabel":"Soul & Identity","files":["file1.md"]}]}
 
-EXAMPLES:
-  memory_longterm / longterm_honcho
-  skills_real-estate / real-estate_buy-to-let
-  tools_fcuk / fcuk_calculator
+Rules:
+- category, subcategory, document: lowercase single words or hyphenated (e.g. "agent", "memory", "long-term")
+- Do NOT add "fcuk-" prefix — the code handles normalisation
+- Group related files into one document
 
 FILES:
-${batch.map(p => `FILE: ${p.f}\nPREVIEW: ${p.preview}`).join('\n---\n')}
-
-Return ONLY valid JSON:
-{"groups":[{"category":"memory_longterm","categoryLabel":"Memory: Long Term","document":"longterm_honcho","documentLabel":"Long Term Honcho","files":["file1.md"]}]}
-
-Group related files. Each group = one document (HTML+PDF).`;
+${batch.map(p => `FILE: ${p.f}\nPREVIEW: ${p.preview}`).join('\n---\n')}`;
 
     let groups;
     try {
@@ -249,34 +244,45 @@ Group related files. Each group = one document (HTML+PDF).`;
     } catch (e) {
       console.error(`[intray] LLM failed: ${e.message} — using fallback`);
       groups = batch.map(p => ({
-        category: 'skills_general', categoryLabel: 'Skills: General',
-        document: `general_${p.f.replace('.md','').replace(/[^a-z0-9]/gi,'_').toLowerCase().slice(0,30)}`,
-        documentLabel: p.f.replace('.md','').replace(/_/g,' '),
+        category: 'skills', categoryLabel: 'Skills',
+        subcategory: 'general', subcategoryLabel: 'General',
+        document: p.f.replace('.md','').replace(/[^a-z0-9-]/gi,'-').toLowerCase().slice(0,30),
+        documentLabel: p.f.replace('.md','').replace(/-/g,' '),
         files: [p.f]
       }));
     }
 
     for (const group of groups) {
-      if (!group.category || !group.document || !group.files?.length) { console.warn("[intray] skipping malformed group:", JSON.stringify(group)); continue; }
-      const { category, categoryLabel, document, documentLabel, files: gFiles } = group;
-      const docName = `${category}-${document}`.replace(/_/g,'-');
-      const srcDir   = join(ROOT, category, document, 'latest', 'source');
+      if (!group.category || !group.subcategory || !group.document || !group.files?.length) {
+        console.warn('[intray] skipping malformed group:', JSON.stringify(group));
+        continue;
+      }
+
+      // Apply normalizeId to all three levels
+      const catId = normalizeId(group.category);
+      const subId = normalizeId(group.subcategory);
+      const docId = normalizeId(group.document);
+
+      // Two-level directory: {catId}_{subId}/{subId}_{docId}/latest/source/
+      const catDir = `${catId}_${subId}`;
+      const docDir = `${subId}_${docId}`;
+      const docName = `${catId}-${subId}-${docId}`;
+
+      const srcDir    = join(ROOT, catDir, docDir, 'latest', 'source');
       const staticDir = join(srcDir, '_static');
 
       mkdirSync(srcDir, { recursive: true });
       mkdirSync(staticDir, { recursive: true });
-      mkdirSync(join(ROOT, category, document, 'latest', 'build', 'html', 'en'), { recursive: true });
-      mkdirSync(join(ROOT, category, document, 'latest', 'build', 'latex', 'en'), { recursive: true });
+      mkdirSync(join(ROOT, catDir, docDir, 'latest', 'build', 'html', 'en'), { recursive: true });
+      mkdirSync(join(ROOT, catDir, docDir, 'latest', 'build', 'latex', 'en'), { recursive: true });
 
       const movedFiles = [];
-      for (const fname of gFiles) {
+      for (const fname of group.files) {
         const item = batch.find(p => p.f === fname);
         if (!item) continue;
         const src = join(INTRAY, fname);
         if (!existsSync(src)) continue;
-        // Write content to source dir
         writeFileSync(join(srcDir, fname), item.content);
-        // Move from intray to outtray
         renameSync(src, join(OUTTRAY, fname));
         hashes[fname] = item.hash;
         movedFiles.push(fname.replace('.md',''));
@@ -284,39 +290,39 @@ Group related files. Each group = one document (HTML+PDF).`;
 
       if (!movedFiles.length) continue;
 
-      // index.md
-      writeFileSync(join(srcDir, 'index.md'), `# ${documentLabel}\n\n\`\`\`{toctree}\n:maxdepth: 2\n\n${movedFiles.join('\n')}\n\`\`\`\n`);
-      // releasenotes.md
+      const docLabel = group.documentLabel || docId;
+      writeFileSync(join(srcDir, 'index.md'), `# ${docLabel}\n\n\`\`\`{toctree}\n:maxdepth: 2\n\n${movedFiles.join('\n')}\n\`\`\`\n`);
       writeFileSync(join(srcDir, 'releasenotes.md'), makeReleasenotes());
       writeFileSync(join(staticDir, 'olderversions.csv'), '**Archive Date**, **Version**, **Description**, **Download Link**\nyyyy-mm-dd, 0.0.0, draft, no older versions yet');
       writeFileSync(join(staticDir, 'issues.csv'), '**Date**, **Version**, **Subject**, **Description**\n');
-      // conf.py
-      writeFileSync(join(srcDir, 'conf.py'), makeConf(documentLabel, docName));
-      // rebuild.sh
-      writeFileSync(join(ROOT, category, document, 'latest', 'rebuild.sh'), makeRebuildSh(docName, 3));
-      // _treeview.json + index.html for document
-      writeFileSync(join(ROOT, category, document, '_treeview.json'), JSON.stringify(makeDocTreeview(docName), null, 2));
-      writeFileSync(join(ROOT, category, document, 'index.html'), makeIndexHtml(2, documentLabel, '../index.html', '_treeview.json'));
+      writeFileSync(join(srcDir, 'conf.py'), makeConf(docLabel, docName));
+      writeFileSync(join(ROOT, catDir, docDir, 'latest', 'rebuild.sh'), makeRebuildSh(docName, 4));
+      writeFileSync(join(ROOT, catDir, docDir, '_treeview.json'), JSON.stringify(makeDocTreeview(docName), null, 2));
+      writeFileSync(join(ROOT, catDir, docDir, 'index.html'), makeIndexHtml(2, docLabel, '../index.html', '_treeview.json'));
 
-      if (!categoryMap[category]) categoryMap[category] = { label: categoryLabel, docs: [] };
-      categoryMap[category].docs.push({ document, documentLabel });
-      console.log(`[intray] Created ${category}/${document} (${movedFiles.length} files)`);
+      if (!categoryMap[catDir]) categoryMap[catDir] = { label: group.categoryLabel || catId, docs: {} };
+      categoryMap[catDir].docs[docDir] = { label: docLabel };
+      console.log(`[intray] Created ${catDir}/${docDir} (${movedFiles.length} files)`);
     }
   }
 
-  // Category + root indexes
-  for (const [cat, { label, docs }] of Object.entries(categoryMap)) {
-    const tv = docs.map(d => ({ name: `<div class='subtitle-line enable-link'>${d.documentLabel}</div>`, path: `./${d.document}/index.html`, _links: { html: `./${d.document}/index.html` } }));
-    writeFileSync(join(ROOT, cat, '_treeview.json'), JSON.stringify(tv, null, 2));
-    writeFileSync(join(ROOT, cat, 'index.html'), makeIndexHtml(1, label, '../index.html', '_treeview.json'));
+  // Write category-level index.html and _treeview.json
+  for (const [catDir, { label, docs }] of Object.entries(categoryMap)) {
+    const tv = Object.entries(docs).map(([docDir, { label: dl }]) => ({
+      name: `<div class='subtitle-line enable-link'>${dl}</div>`,
+      path: `./${docDir}/index.html`,
+      _links: { html: `./${docDir}/index.html` }
+    }));
+    writeFileSync(join(ROOT, catDir, '_treeview.json'), JSON.stringify(tv, null, 2));
+    writeFileSync(join(ROOT, catDir, 'index.html'), makeIndexHtml(1, label, '../index.html', '_treeview.json'));
   }
 
-  // Merge into root _treeview.json (preserve existing categories)
+  // Merge into root _treeview.json
   let rootTv = [];
   try { rootTv = JSON.parse(readFileSync(join(ROOT, '_treeview.json'), 'utf8')); } catch {}
-  for (const [cat, { label }] of Object.entries(categoryMap)) {
-    if (!rootTv.find(e => e.path.includes(`/${cat}/`))) {
-      rootTv.push({ name: `<div class='subtitle-line enable-link'>${label}</div>`, path: `./${cat}/index.html`, _links: { html: `./${cat}/index.html` } });
+  for (const [catDir, { label }] of Object.entries(categoryMap)) {
+    if (!rootTv.find(e => e.path && e.path.includes(`/${catDir}/`))) {
+      rootTv.push({ name: `<div class='subtitle-line enable-link'>${label}</div>`, path: `./${catDir}/index.html`, _links: { html: `./${catDir}/index.html` } });
     }
   }
   writeFileSync(join(ROOT, '_treeview.json'), JSON.stringify(rootTv, null, 2));

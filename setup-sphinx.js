@@ -21,9 +21,9 @@ for (const section of sections) {
 
   // conf.py — same as library but with myst-parser for MD
   writeFileSync(join(src, 'conf.py'), `
-project = u'DATRO LLMWiki - ${title}'
+project = u'LLMWiki - ${title}'
 copyright = u'Finance Cheque UK'
-author = u'The Team @ DATRO Consortium'
+author = u'Finance Cheque UK'
 
 version = u'0.0.1'
 release = u'0.0.1'
@@ -60,7 +60,7 @@ latex_elements = {
 }
 
 latex_documents = [
-    (master_doc, '${docName}.tex', u'${title}', u'DATRO Consortium', 'manual'),
+    (master_doc, '${docName}.tex', u'${title}', u'Finance Cheque UK', 'manual'),
 ]
 
 myst_enable_extensions = ["colon_fence", "deflist"]
@@ -108,7 +108,7 @@ cat > build/html/index.html << 'EOF'
 </html>
 EOF
 
-# Apply DATRO blue theme (same as library)
+# Apply Finance Cheque UK blue theme (same as library)
 cp ../../_theme-docs/blue.sh ./theme.sh
 sed 's|build/html/|build/html/en/|g' ./theme.sh > ./en.sh && bash ./en.sh && rm ./en.sh
 sed 's|build/html/|build/html/es/|g' ./theme.sh > ./es.sh && bash ./es.sh && rm ./es.sh 2>/dev/null || true

@@ -1,0 +1,17 @@
+<!DOCTYPE html><html>
+  <head>
+  <meta charset="UTF-8">
+  <title>LLMWiki — Agent Hive Mind</title>
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="../_theme-explorer/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
+  <link rel="stylesheet" href="../_theme-explorer/style.css">
+  <link rel="stylesheet" href="../_theme-explorer/glyphicon.css">
+  </head>
+<body><script>(async()=>{
+const data=await(await fetch('_treeview.json')).json();
+let h='<ul>';
+h+='<a href="../index.html" class="up-active"><<</a>';
+h+=`<p class="main-title"><span style="font-size:1.1em;font-weight:700;color:#55a5d9;">Finance Cheque UK</span><br><br>Agent Soul</p>`;
+for(const f of data)h+=`<li class="li"><a href="${f.path}">${f.name}</a></li>`;
+h+='</ul>';document.body.innerHTML=h;
+})()</script><script src="../_theme-explorer/jquery.min.js"></script></body></html>
