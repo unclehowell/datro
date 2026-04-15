@@ -1,5 +1,0 @@
-/* Puck CMS local CSS placeholder (re-installed fresh). This file is kept to preserve offline styling for puck components. */
-
-/* Base reset tweaks for consistent rendering when library styles apply */
-html, body { margin: 0; padding: 0; }
-/* The actual UI styling relies on the library's CSS and the new styles.css overrides. */
