@@ -92,9 +92,10 @@ export async function onRequestPost(context: any) {
       postcode: !!postcode_formatted
     });
 
-    // Signature handling
-    // Browser sends: signature (base64 JSON string), signature_image (actual PNG data URL with prefix)
-    // R2R API expects: signature field with "data:image/png;base64," prefix
+    // Get the client IP from CF connecting IP
+    const client_ip = req.headers.get("cf-connecting-ip") || req.headers.get("x-forwarded-for") || "";
+    
+    // Signature handling - extract base64 from data URL
     let sigImage = String(body.signature_image || "");
     let sigField = String(body.signature || "");
     console.log("SIGNATURE DEBUG:", {
@@ -105,74 +106,58 @@ export async function onRequestPost(context: any) {
     });
     
     // Check if signature_image is valid (starts with data:image and has actual base64 data)
-    // An empty PNG canvas returns "data:image/png;base64," (just the prefix, no data)
     const isValidSignature = (s: string) => 
       s.startsWith("data:image") && s.length > 50;
     
-    if (!isValidSignature(sigImage)) {
-      // Try the signature field instead
-      if (isValidSignature(sigField)) {
-        sigImage = sigField;
-      } else {
-        // Both signatures are empty/invalid - this shouldn't happen if user signed
-        // Log warning but continue (R2R will reject if truly empty)
-        console.warn("WARNING: No valid signature detected!");
-        sigImage = "";
-      }
+    let signatureBase64 = "";
+    
+    if (isValidSignature(sigImage)) {
+      // Extract base64 data from data:image/png;base64,... prefix
+      const commaIndex = sigImage.indexOf(",");
+      signatureBase64 = commaIndex >= 0 ? sigImage.slice(commaIndex + 1) : sigImage;
+    } else if (isValidSignature(sigField)) {
+      const commaIndex = sigField.indexOf(",");
+      signatureBase64 = commaIndex >= 0 ? sigField.slice(commaIndex + 1) : sigField;
     }
 
-    // Address - R2R API expects single address object (not array)
-    const address = {
-      line1:          null,
-      line2:          null,
-      line3:          null,
-      line4:          null,
-      buildingName:   null,
-      buildingNumber: buildingNumber || null,
-      thoroughfare:   thoroughfare || null,
-      townOrCity:     townOrCity || null,
-      district:       null,
-      postcode:       postcode_formatted || null,
-    };
+    console.log("SIGNATURE: present =", !!signatureBase64, "length =", signatureBase64.length);
 
-    // Build signature object as per API spec
-    // Extract base64 data from data:image/png;base64,... prefix
-    const extractBase64 = (dataUrl: string): string => {
-      if (!dataUrl || !dataUrl.startsWith("data:")) return dataUrl || "";
-      const commaIndex = dataUrl.indexOf(",");
-      return commaIndex >= 0 ? dataUrl.slice(commaIndex + 1) : dataUrl;
-    };
-
-    const signatureBase64 = extractBase64(sigImage || body.signature || "");
-    const signaturePayload = ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"];
-    
-    const signatureObj = signatureBase64 ? {
-      payload: signaturePayload,
-      signature: signatureBase64
-    } : null;
-
-    // Build payload
+    // Build payload - R2R expects addresses ARRAY
     const payload: any = {
+      client_ip,  // FIXED: was ip_address
       title,
       first_name,
       last_name,
       date_of_birth,
       phone,
       email,
-      ip_address:           req.headers.get("cf-connecting-ip") || "",
       user_agent:           req.headers.get("user-agent") || "",
       session_id,
       device_session_id,
       account_creation_url: "https://car.financecheque.uk/claim",
-      address,
+      // FIXED: addresses as array
+      addresses: [{
+        line1:          null,
+        line2:          null,
+        line3:          null,
+        line4:          null,
+        buildingName:   null,
+        buildingNumber: buildingNumber || null,
+        thoroughfare:   thoroughfare || null,
+        townOrCity:     townOrCity || null,
+        district:       null,
+        postcode:       postcode_formatted || null,
+      }],
       opt_in:               true,
     };
 
-    // Add signature object as per API spec
-    if (signatureObj) {
-      payload.signature = signatureObj;
+    // Add signature object as per R2R API spec
+    if (signatureBase64) {
+      payload.signature = {
+        payload: [first_name, last_name, date_of_birth, phone, email, postcode_formatted],
+        signature: signatureBase64
+      };
     }
-    // If no valid signature available, don't add it - will fail validation
 
     console.log("FINAL PAYLOAD KEYS:", Object.keys(payload));
 
@@ -220,7 +205,7 @@ export async function onRequestPost(context: any) {
     console.error("SERVER ERROR:", err);
     return new Response(
       JSON.stringify({ error: err.message || "Unknown error" }),
-      { status: 500, headers: { "Content-Type": "application/json", ...CORS_HEADERS } }
+      { status: 500, headers: { "Content-Type": "application/json", ...CORS_HEADERS }
     );
   }
 }
