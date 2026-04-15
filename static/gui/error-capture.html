@@ -1,8 +1,0 @@
-<script>
-(function(){try{function d(a,b){try{var c=JSON.parse(localStorage.getItem('console_err_'+a))||[];c.push({type:b,time:new Date().toISOString(),message:a});
-c.length>50&&(c=c.slice(-50));localStorage.setItem('console_err_'+b,JSON.stringify(c))}catch(d){}}window.addEventListener('error',function(a){
-a&&a.message&&d(a.message+' at '+(a.filename||'?')+':'+(a.lineno||''),'error')});
-window.addEventListener('unhandledrejection',function(a){a&&a.reason&&d('Unhandled rejection: '+(a.reason.message||String(a.reason)),'error')});
-var e=console;['error','warn','info','log'].forEach(function(b){var c=e[b];
-e[b]=function(){for(var a=new Array(arguments.length),d=0;d<a.length;++d)a[d]=arguments[d];var f=a.map(function(b){return'object'==typeof b?JSON.stringify(b).substring(0,200):String(b)}).join(' ');d(f,b);c.apply(e,arguments)}})}catch(a){}})();
-</script>
