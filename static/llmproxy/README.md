@@ -58,7 +58,7 @@ See [INSTALL.md](INSTALL.md) for Cloudflare deployment.
 ## Web GUI
 
 - **Local**: http://localhost:8080
-- **Cloudflare**: https://llmproxy.llmproxy-3yv.pages.dev (or https://kiro.financecheque.uk once DNS configured)
+- **Cloudflare**: https://kiro.financecheque.uk/dashboard
 
 ## Endpoints
 

@@ -1,13 +1,10 @@
 name = "llmproxy"
+main = "worker.js"
 compatibility_date = "2023-12-01"
 
-[env.production]
-name = "llmproxy-prod"
+[vars]
+ENVIRONMENT = "production"
 
 [[routes]]
-pattern = "/*"
-script = "worker"
-
-[build]
-command = ""
-watch_dir = "cloudflare"
+pattern = "kiro.financecheque.uk/*"
+zone_name = "financecheque.uk"
