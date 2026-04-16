@@ -42,9 +42,17 @@ fi
 
 [ -d "$INSTALL_DIR/$STATIC_PATH" ] || { echo "[ERROR] LLMProxy path not found"; exit 1; }
 
-if [ ! -d "$INSTALL_DIR/subproxy" ]; then
-    cp -r "$INSTALL_DIR/$STATIC_PATH" "$INSTALL_DIR/subproxy"
-fi
+# Copy files from static/llmproxy to llmproxy dir structure
+echo "[INFO] Copying proxy files..."
+rm -rf "$INSTALL_DIR/subproxy" "$INSTALL_DIR/dashboard" 2>/dev/null || true
+mkdir -p "$INSTALL_DIR/subproxy"
+mkdir -p "$INSTALL_DIR/dashboard"
+cp -r "$INSTALL_DIR/$STATIC_PATH/subproxy/"* "$INSTALL_DIR/subproxy/"
+cp -r "$INSTALL_DIR/$STATIC_PATH/dashboard/"* "$INSTALL_DIR/dashboard/"
+cp -r "$INSTALL_DIR/$STATIC_PATH/scripts/"* "$INSTALL_DIR/" 2>/dev/null || true
+mkdir -p "$INSTALL_DIR/subproxy/config"
+cp -r "$INSTALL_DIR/$STATIC_PATH/subproxy/config/"* "$INSTALL_DIR/subproxy/config/" 2>/dev/null || true
+
 echo "[OK] Repository ready"
 
 # Install Python deps
