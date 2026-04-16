@@ -2,7 +2,7 @@
   "machines": [
     {
       "name": "laptop",
-      "ip": "100.64.1.1",
+      "ip": "127.0.0.1",
       "port": 5000,
       "type": "laptop",
       "location": "local",
@@ -34,7 +34,7 @@
     }
   ],
   "cloudflare": {
-    "url": "https://kiro.financecheche.uk",
+    "url": "https://kiro.financecheque.uk",
     "workers": true,
     "fallback_to_local": true
   }
