@@ -5,9 +5,9 @@
  */
 
 const MACHINES = [
-  { name: 'laptop', ip: '100.64.1.1', port: 5000, type: 'laptop' },
-  { name: 'aws1', ip: '100.64.1.2', port: 5000, type: 'aws' },
-  { name: 'aws2', ip: '100.64.1.3', port: 5000, type: 'aws' },
+  { name: 'laptop', ip: '127.0.0.1', port: 5000, type: 'laptop' },
+  { name: 'aws1', ip: '44.194.23.52', port: 5000, type: 'aws' },
+  { name: 'aws2', ip: '13.135.142.244', port: 5000, type: 'aws' },
   { name: 'phone', ip: '100.64.1.4', port: 5000, type: 'phone' }
 ];
 

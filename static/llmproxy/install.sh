@@ -57,7 +57,8 @@ echo "[OK] Repository ready"
 
 # Install Python deps
 echo "[INFO] Installing Python deps..."
-pip3 install -q aiohttp 2>/dev/null || pip install -q aiohttp 2>/dev/null || true
+pip3 install --upgrade pip --break-system-packages 2>/dev/null || true
+pip3 install -q aiohttp --break-system-packages 2>/dev/null || pip install -q aiohttp --break-system-packages 2>/dev/null || true
 echo "[OK] Done"
 
 # Configure machine
