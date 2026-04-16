@@ -44,7 +44,12 @@ A universal LLM proxy system with parent/child architecture for routing LLM requ
 
 ### Child Mode (Machines)
 ```bash
-curl -fsSL https://financecheque.uk/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/unclehowell/datro/llmproxy/static/llmproxy/install.sh | sh
+```
+
+### Quick Install (Alternative)
+```bash
+curl -fsSL https://llmproxy.llmproxy-3yv.pages.dev/install.sh | sh
 ```
 
 ### Parent Mode (Cloudflare)
@@ -53,7 +58,7 @@ See [INSTALL.md](INSTALL.md) for Cloudflare deployment.
 ## Web GUI
 
 - **Local**: http://localhost:8080
-- **Cloudflare**: https://kiro.financecheque.uk
+- **Cloudflare**: https://llmproxy.llmproxy-3yv.pages.dev (or https://kiro.financecheque.uk once DNS configured)
 
 ## Endpoints
 
