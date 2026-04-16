@@ -1,17 +1,16 @@
 /**
  * Cloudflare Worker - LLM Proxy Router (Parent Mode)
  * Routes requests to available sub-proxies on Tailscale network
- * With fallback to local and round-robin load distribution
+ * Falls back to direct API calls when sub-proxies are unavailable
  */
 
-const MACHINES = [
-  { name: 'laptop', ip: '127.0.0.1', port: 5000, type: 'laptop' },
-  { name: 'aws1', ip: '44.194.23.52', port: 5000, type: 'aws' },
-  { name: 'aws2', ip: '13.135.142.244', port: 5000, type: 'aws' },
-  { name: 'phone', ip: '100.64.1.4', port: 5000, type: 'phone' }
-];
+const MACHINES = []; // No working sub-proxies currently
 
-const FALLBACK_TO_LOCAL = true;
+const FALLBACK_TO_LOCAL = false;
+const FALLBACK_TO_API = true;
+const FALLBACK_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
+const FALLBACK_API_KEY = ''; // Set via wrangler secret
+
 const LOCAL_PROXY_URL = 'http://localhost:5000';
 const CLOUDARE_PROXY_URL = 'https://kiro.financecheque.uk';
 
@@ -130,8 +129,9 @@ async function handleLLMRequest(request) {
           });
         }
         
+        const responseText = await response.text();
         machineStatus.set(machine.name, 'degraded');
-        lastError = `Machine ${machine.name} returned ${response.status}`;
+        lastError = `Machine ${machine.name} returned ${response.status}: ${responseText.substring(0, 100)}`;
       } catch (e) {
         machineStatus.set(machine.name, 'unhealthy');
         lastError = `Failed to reach ${machine.name}: ${e.message}`;
@@ -163,6 +163,48 @@ async function handleLLMRequest(request) {
         }
       } catch (e) {
         lastError += ` | Local fallback failed: ${e.message}`;
+      }
+    }
+    
+    // Fallback to direct API call
+    if (FALLBACK_TO_API) {
+      try {
+        const apiKey = FALLBACK_API_KEY || env.GROQ_API_KEY || '';
+        
+        if (apiKey) {
+          const apiResponse = await fetchWithTimeout(
+            FALLBACK_API_URL,
+            {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${apiKey}`
+              },
+              body: JSON.stringify(body)
+            },
+            30000
+          );
+          
+          if (apiResponse.ok) {
+            return new Response(apiResponse.body, {
+              headers: { 
+                'Content-Type': 'application/json',
+                'X-Proxy-Routed-To': 'api-fallback'
+              }
+            });
+          }
+        } else {
+          // No API key - return helpful message
+          return new Response(JSON.stringify({
+            error: 'No sub-proxies available and no API key configured',
+            message: 'Configure GROQ_API_KEY via wrangler secret or add a sub-proxy at port 5000'
+          }), {
+            status: 503,
+            headers: { 'Content-Type': 'application/json' }
+          });
+        }
+      } catch (e) {
+        lastError += ` | API fallback failed: ${e.message}`;
       }
     }
     
