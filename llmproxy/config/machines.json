@@ -1,0 +1,41 @@
+{
+  "machines": [
+    {
+      "name": "laptop",
+      "ip": "100.64.1.1",
+      "port": 5000,
+      "type": "laptop",
+      "location": "local",
+      "providers": ["groq", "kilo", "kiro", "gemini", "anthropic", "openai", "xai", "ollama"]
+    },
+    {
+      "name": "aws1",
+      "ip": "100.64.1.2",
+      "port": 5000,
+      "type": "aws",
+      "location": "aws",
+      "providers": ["groq", "kilo", "kiro", "gemini", "anthropic", "openai", "xai", "ollama"]
+    },
+    {
+      "name": "aws2",
+      "ip": "100.64.1.3",
+      "port": 5000,
+      "type": "aws",
+      "location": "aws",
+      "providers": ["groq", "kilo", "kiro", "gemini", "anthropic", "openai", "xai", "ollama"]
+    },
+    {
+      "name": "phone",
+      "ip": "100.64.1.4",
+      "port": 5000,
+      "type": "phone",
+      "location": "mobile",
+      "providers": ["ollama"]
+    }
+  ],
+  "cloudflare": {
+    "url": "https://kiro.financecheche.uk",
+    "workers": true,
+    "fallback_to_local": true
+  }
+}

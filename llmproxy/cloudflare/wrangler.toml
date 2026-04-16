@@ -1,0 +1,13 @@
+name = "llmproxy"
+compatibility_date = "2023-12-01"
+
+[env.production]
+name = "llmproxy-prod"
+
+[[routes]]
+pattern = "/*"
+script = "worker"
+
+[build]
+command = ""
+watch_dir = "cloudflare"
