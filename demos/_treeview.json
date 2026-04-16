@@ -1,0 +1,32 @@
+[
+  {
+    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>File Types</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+  },
+
+  {
+   "name": "<div class='subtitle-line enable-link caps'>PDF's</div>",
+    "path": "./pdf",
+    "_links": {
+      "html": "./pdf"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link'>Video's</div>",
+    "path": "./video",
+    "_links": {
+      "html": "./video"
+    }
+   },
+  {
+    "name": "<div class='page-scroll-fix'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+   }
+]
+
