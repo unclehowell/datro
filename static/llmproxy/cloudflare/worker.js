@@ -9,13 +9,17 @@ const MACHINES = []; // No working sub-proxies currently
 const FALLBACK_TO_LOCAL = false;
 const FALLBACK_TO_API = true;
 const FALLBACK_API_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const FALLBACK_API_KEY = ''; // Set via wrangler secret
 
 const LOCAL_PROXY_URL = 'http://localhost:5000';
 const CLOUDARE_PROXY_URL = 'https://kiro.financecheque.uk';
 
 let machineStatus = new Map();
 let currentIndex = 0;
+
+function getApiKey(env) {
+  if (!env) return '';
+  return env.GROQ_API_KEY || '';
+}
 
 export default {
   async fetch(request, env, ctx) {
@@ -69,8 +73,21 @@ export default {
       });
     }
     
+    if (pathname === '/api/debug') {
+      return new Response(JSON.stringify({
+        envDefined: !!env,
+        hasApiKey: !!(env && env.GROQ_API_KEY),
+        apiKeyPrefix: env && env.GROQ_API_KEY ? env.GROQ_API_KEY.substring(0, 10) + '...' : 'none',
+        FALLBACK_TO_API,
+        FALLBACK_TO_LOCAL,
+        MACHINES_LENGTH: MACHINES.length
+      }), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+    
     if (pathname.startsWith('/v1/') || pathname === '/v1/chat/completions') {
-      return handleLLMRequest(request);
+      return handleLLMRequest(request, env);
     }
     
     if (pathname === '/onboarding/status') {
@@ -90,16 +107,15 @@ export default {
   }
 };
 
-async function handleLLMRequest(request) {
+async function handleLLMRequest(request, env) {
   try {
     const body = await request.clone().json();
-    const model = body.model || 'groq';
+    const model = body.model || 'llama-3.3-70b-versatile';
     
     let lastError = null;
     const startIndex = currentIndex;
     
     for (let i = 0; i < MACHINES.length; i++) {
-      const machine = MACHINES[(currentIndex + i) % MACHINES.length];
       
       try {
         const response = await fetchWithTimeout(
@@ -138,85 +154,45 @@ async function handleLLMRequest(request) {
       }
     }
     
-    if (FALLBACK_TO_LOCAL) {
-      try {
-        const localResponse = await fetchWithTimeout(
-          `${LOCAL_PROXY_URL}/v1/chat/completions`,
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': request.headers.get('Authorization') || ''
-            },
-            body: JSON.stringify(body)
-          },
-          30000
-        );
-        
-        if (localResponse.ok) {
-          return new Response(localResponse.body, {
-            headers: { 
-              'Content-Type': 'application/json',
-              'X-Proxy-Routed-To': 'local-fallback'
-            }
-          });
-        }
-      } catch (e) {
-        lastError += ` | Local fallback failed: ${e.message}`;
-      }
+    // Directly call Groq API as fallback since no machines configured
+    const apiKey = getApiKey(env);
+    
+    if (!apiKey) {
+      return new Response(JSON.stringify({
+        error: 'No API key configured'
+      }), { status: 503, headers: { 'Content-Type': 'application/json' } });
     }
     
-    // Fallback to direct API call
-    if (FALLBACK_TO_API) {
-      try {
-        const apiKey = FALLBACK_API_KEY || env.GROQ_API_KEY || '';
-        
-        if (apiKey) {
-          const apiResponse = await fetchWithTimeout(
-            FALLBACK_API_URL,
-            {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${apiKey}`
-              },
-              body: JSON.stringify(body)
-            },
-            30000
-          );
-          
-          if (apiResponse.ok) {
-            return new Response(apiResponse.body, {
-              headers: { 
-                'Content-Type': 'application/json',
-                'X-Proxy-Routed-To': 'api-fallback'
-              }
-            });
-          }
-        } else {
-          // No API key - return helpful message
-          return new Response(JSON.stringify({
-            error: 'No sub-proxies available and no API key configured',
-            message: 'Configure GROQ_API_KEY via wrangler secret or add a sub-proxy at port 5000'
-          }), {
-            status: 503,
-            headers: { 'Content-Type': 'application/json' }
-          });
+    const apiResponse = await fetchWithTimeout(
+      FALLBACK_API_URL,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`
+        },
+        body: JSON.stringify(body)
+      },
+      30000
+    );
+    
+    if (apiResponse.ok) {
+      return new Response(apiResponse.body, {
+        headers: { 
+          'Content-Type': 'application/json',
+          'X-Proxy-Routed-To': 'api-fallback'
         }
-      } catch (e) {
-        lastError += ` | API fallback failed: ${e.message}`;
-      }
+      });
     }
     
+    const apiError = await apiResponse.text();
     return new Response(JSON.stringify({
-      error: 'All proxies failed',
-      details: lastError,
-      tried: MACHINES.map(m => m.name)
+      error: 'Groq API failed',
+      details: apiError
     }), {
-      status: 502,
+      status: apiResponse.status,
       headers: { 'Content-Type': 'application/json' }
     });
-    
   } catch (e) {
     return new Response(JSON.stringify({
       error: 'Invalid request',
@@ -340,7 +316,7 @@ function dashboardHTML() {
       logs.insertBefore(entry, logs.firstChild);
     }
     
-    setInterval(refreshStatus, 10000);
+    setInterval(refreshStatus, 60000);
     refreshStatus();
   </script>
 </body>
