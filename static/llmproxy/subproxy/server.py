@@ -36,10 +36,16 @@ def load_env():
 # Provider definitions — tried in priority order, skipped if no key
 PROVIDERS = [
     {
-        "name": "groq",
-        "url": "https://api.groq.com/openai/v1/chat/completions",
-        "key_env": "GROQ_API_KEY",
-        "default_model": "llama-3.3-70b-versatile",
+        "name": "mistral",
+        "url": "https://api.mistral.ai/v1/chat/completions",
+        "key_env": "MISTRAL_API_KEY",
+        "default_model": "mistral-small-latest",
+    },
+    {
+        "name": "nvidia",
+        "url": "https://integrate.api.nvidia.com/v1/chat/completions",
+        "key_env": "NVIDIA_API_KEY",
+        "default_model": "meta/llama-3.3-70b-instruct",
     },
     {
         "name": "gemini",
@@ -48,16 +54,16 @@ PROVIDERS = [
         "default_model": "gemini-2.0-flash",
     },
     {
-        "name": "kilocode",
-        "url": "https://api.kilocode.ai/v1/chat/completions",
-        "key_env": "KILOCODE_API_KEY",
-        "default_model": "claude-3-5-sonnet-20241022",
+        "name": "groq",
+        "url": "https://api.groq.com/openai/v1/chat/completions",
+        "key_env": "GROQ_API_KEY",
+        "default_model": "llama-3.3-70b-versatile",
     },
     {
         "name": "openrouter",
         "url": "https://openrouter.ai/api/v1/chat/completions",
         "key_env": "OPENROUTER_API_KEY",
-        "default_model": "meta-llama/llama-3.3-70b-instruct",
+        "default_model": "meta-llama/llama-3.3-70b-instruct:free",
     },
     {
         "name": "openai",
@@ -120,7 +126,7 @@ async def call_provider(provider: dict, body: dict) -> dict:
         if system:
             payload["system"] = system
     else:
-        payload = {**body, "model": body.get("model", provider["default_model"])}
+        payload = {**body, "model": provider.get("default_model", body.get("model", ""))}
 
     timeout = ClientTimeout(total=60)
     async with ClientSession(timeout=timeout) as session:

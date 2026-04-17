@@ -2,7 +2,7 @@
  * LLM Proxy - Cloudflare Worker
  * Routes /v1/chat/completions to available sub-proxies, falls back to Groq API.
  * Sub-proxies register themselves via POST /api/register with their public URL.
- * API keys set via: wrangler secret put GROQ_API_KEY
+ * API keys set via: wrangler secret put MISTRAL_API_KEY
  */
 
 // Sub-proxies self-register. Seeded with known machines (updated by register endpoint).
@@ -15,8 +15,8 @@ const SEED_MACHINES = [
 // KV namespace binding: MACHINES_KV (optional, for persistent registration)
 // If not bound, falls back to in-memory SEED_MACHINES only.
 
-const GROQ_URL = 'https://api.groq.com/openai/v1/chat/completions';
-const GROQ_DEFAULT_MODEL = 'llama-3.3-70b-versatile';
+const FALLBACK_URL = 'https://api.mistral.ai/v1/chat/completions';
+const FALLBACK_DEFAULT_MODEL = 'mistral-small-latest';
 
 const CORS = {
   'Access-Control-Allow-Origin': '*',
@@ -72,21 +72,21 @@ async function trySubProxies(machines, request, body) {
 }
 
 async function groqFallback(body, env) {
-  const key = env.GROQ_API_KEY;
-  if (!key) return json({ error: 'No GROQ_API_KEY secret set' }, 503);
+  const key = env.MISTRAL_API_KEY;
+  if (!key) return json({ error: 'No MISTRAL_API_KEY secret set' }, 503);
 
   const model = body.model && !['kiro', 'default'].includes(body.model)
     ? body.model
-    : GROQ_DEFAULT_MODEL;
+    : FALLBACK_DEFAULT_MODEL;
 
-  const resp = await fetchTimeout(GROQ_URL, {
+  const resp = await fetchTimeout(FALLBACK_URL, {
     method: 'POST',
     headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
     body: JSON.stringify({ ...body, model }),
   });
 
   const result = await resp.json();
-  return json(result, resp.status, { 'X-Routed-To': 'groq-fallback' });
+  return json(result, resp.status, { 'X-Routed-To': 'mistral-fallback' });
 }
 
 export default {
