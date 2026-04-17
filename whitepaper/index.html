@@ -3,57 +3,89 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algocracy — The Inverse Ouroboros | whitepaper.financecheque.uk</title>
+<title>Algocracy — The Inverse Ouroboros</title>
 <style>
-  :root { --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e; --accent: #7c3aed; --accent2: #06b6d4; --text: #e2e8f0; --muted: #64748b; }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
-  a { color: var(--accent2); text-decoration: none; }
+  body { background: #0a0a14; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
+  a { color: #60a5fa; text-decoration: none; }
   a:hover { text-decoration: underline; }
-  .hero { background: linear-gradient(135deg, #1a0533 0%, #0a1628 50%, #001a1a 100%); padding: 80px 24px; text-align: center; border-bottom: 1px solid var(--border); }
-  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; background: linear-gradient(135deg, #a78bfa, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; }
-  .hero p { font-size: 1.2rem; color: var(--muted); max-width: 700px; margin: 0 auto 32px; }
-  .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-  .badge { background: var(--surface); border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; }
-  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; gap: 0; overflow-x: auto; }
-  nav a { padding: 16px 20px; color: var(--muted); font-size: 0.9rem; white-space: nowrap; border-bottom: 2px solid transparent; }
-  nav a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--accent); }
-  .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
-  h2 { font-size: 1.8rem; font-weight: 700; margin: 60px 0 20px; color: #a78bfa; }
-  h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; color: var(--accent2); }
-  p { margin-bottom: 16px; color: #cbd5e1; }
-  .flywheel { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin: 32px 0; }
-  .flywheel-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px; }
-  .step { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; }
-  .step-num { font-size: 2rem; font-weight: 800; color: var(--accent); opacity: 0.4; }
-  .step h4 { font-size: 0.95rem; font-weight: 600; margin: 8px 0 4px; }
-  .step p { font-size: 0.85rem; color: var(--muted); margin: 0; }
-  .arch-diagram { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; font-family: monospace; font-size: 0.85rem; color: #94a3b8; overflow-x: auto; margin: 24px 0; white-space: pre; }
-  .install-box { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin: 24px 0; }
-  .install-box code { color: #7ee787; font-family: monospace; font-size: 0.95rem; }
-  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 32px 0; }
-  .link-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: border-color 0.2s; }
-  .link-card:hover { border-color: var(--accent); text-decoration: none; }
-  .link-card h4 { color: var(--text); margin-bottom: 6px; }
-  .link-card p { font-size: 0.85rem; color: var(--muted); margin: 0; }
-  .tag { display: inline-block; background: rgba(124,58,237,0.15); color: #a78bfa; border: 1px solid rgba(124,58,237,0.3); padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; margin: 2px; }
-  footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; color: var(--muted); font-size: 0.9rem; }
-  .ouroboros { font-size: 4rem; display: block; text-align: center; margin: 24px 0; animation: spin 20s linear infinite; }
+  
+  .hero { background: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #0a0a14 100%); padding: 120px 24px 80px; text-align: center; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(circle at 50% 0%, rgba(139, 92, 246, 0.15), transparent 70%); pointer-events: none; }
+  .hero-content { position: relative; z-index: 1; max-width: 900px; margin: 0 auto; }
+  .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero p { font-size: 1.3rem; color: #94a3b8; margin-bottom: 40px; }
+  
+  .install-cmd { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px 28px; font-family: 'SF Mono', Monaco, monospace; font-size: 1rem; color: #34d399; max-width: 700px; margin: 0 auto 32px; text-align: left; position: relative; }
+  .install-cmd::before { content: '$'; position: absolute; left: 12px; color: #64748b; }
+  
+  .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+  .badge { background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); padding: 8px 18px; border-radius: 24px; font-size: 0.9rem; color: #c4b5fd; }
+  
+  nav { background: rgba(15, 23, 42, 0.8); backdrop-filter: blur(12px); border-bottom: 1px solid #1e293b; padding: 0 24px; display: flex; gap: 0; position: sticky; top: 0; z-index: 100; }
+  nav a { padding: 18px 24px; color: #94a3b8; font-size: 0.95rem; white-space: nowrap; border-bottom: 2px solid transparent; transition: all 0.2s; }
+  nav a:hover { color: #e2e8f0; text-decoration: none; border-bottom-color: #8b5cf6; }
+  
+  .container { max-width: 1000px; margin: 0 auto; padding: 80px 24px; }
+  section { margin-bottom: 100px; }
+  h2 { font-size: 2.5rem; font-weight: 700; margin-bottom: 16px; background: linear-gradient(135deg, #a78bfa, #60a5fa); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+  h3 { font-size: 1.5rem; font-weight: 600; margin: 48px 0 16px; color: #c4b5fd; }
+  p { margin-bottom: 20px; color: #cbd5e1; font-size: 1.05rem; }
+  
+  .flywheel { background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(96, 165, 250, 0.05)); border: 1px solid #1e293b; border-radius: 20px; padding: 48px; margin: 48px 0; }
+  .flywheel-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; margin-top: 32px; }
+  .step { background: rgba(15, 23, 42, 0.6); border: 1px solid #1e293b; border-radius: 16px; padding: 28px; transition: all 0.3s; }
+  .step:hover { border-color: #8b5cf6; transform: translateY(-4px); }
+  .step-num { font-size: 2.5rem; font-weight: 800; color: #8b5cf6; opacity: 0.5; margin-bottom: 12px; }
+  .step h4 { font-size: 1.1rem; font-weight: 600; margin-bottom: 8px; color: #e2e8f0; }
+  .step p { font-size: 0.95rem; color: #94a3b8; margin: 0; }
+  
+  .arch { background: #0f172a; border: 1px solid #1e293b; border-radius: 16px; padding: 32px; font-family: 'SF Mono', Monaco, monospace; font-size: 0.9rem; color: #94a3b8; overflow-x: auto; margin: 32px 0; white-space: pre; line-height: 1.8; }
+  
+  .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin: 48px 0; }
+  .feature { background: rgba(15, 23, 42, 0.6); border: 1px solid #1e293b; border-radius: 16px; padding: 32px; }
+  .feature h4 { font-size: 1.2rem; color: #c4b5fd; margin-bottom: 12px; }
+  .feature p { color: #94a3b8; font-size: 0.95rem; }
+  
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin: 48px 0; }
+  .link-card { background: rgba(139, 92, 246, 0.05); border: 1px solid rgba(139, 92, 246, 0.2); border-radius: 12px; padding: 24px; transition: all 0.3s; display: block; }
+  .link-card:hover { border-color: #8b5cf6; transform: translateY(-2px); text-decoration: none; }
+  .link-card h4 { color: #e2e8f0; margin-bottom: 8px; font-size: 1.05rem; }
+  .link-card p { font-size: 0.9rem; color: #94a3b8; margin: 0; }
+  
+  .cta { background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; padding: 14px 32px; border-radius: 8px; font-weight: 600; display: inline-block; margin: 8px; transition: all 0.2s; border: none; font-size: 1rem; }
+  .cta:hover { transform: translateY(-2px); box-shadow: 0 12px 24px rgba(139, 92, 246, 0.4); text-decoration: none; }
+  .cta-secondary { background: transparent; border: 1px solid #8b5cf6; color: #c4b5fd; }
+  .cta-secondary:hover { background: rgba(139, 92, 246, 0.1); }
+  
+  footer { border-top: 1px solid #1e293b; padding: 48px 24px; text-align: center; color: #64748b; font-size: 0.9rem; }
+  footer a { color: #94a3b8; }
+  
+  .ouroboros { font-size: 5rem; display: block; text-align: center; margin: 32px 0; animation: spin 20s linear infinite reverse; filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3)); }
   @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-  .inverse { animation-direction: reverse; }
 </style>
 </head>
 <body>
 
 <div class="hero">
-  <h1>The Inverse Ouroboros</h1>
-  <p>A self-expanding, community-powered AI architecture — from a single install command to a hive-mind semantic memory system.</p>
-  <div class="badges">
-    <span class="badge">🔓 Open Source</span>
-    <span class="badge">⚡ One-line Install</span>
-    <span class="badge">🧠 Boolean Memory</span>
-    <span class="badge">🤖 Algocracy</span>
-    <span class="badge">🌐 Federated</span>
+  <div class="hero-content">
+    <h1>THE INVERSE<br>OUROBOROS</h1>
+    <p>A self-expanding AI architecture. From one command to a hive-mind semantic memory system.</p>
+    
+    <div class="install-cmd">curl -fsSL https://kiro.financecheque.uk/install.sh | sh</div>
+    
+    <div>
+      <a href="#install" class="cta">Start Building</a>
+      <a href="https://github.com/unclehowell/datro/tree/llmproxy" class="cta cta-secondary">View Source</a>
+    </div>
+    
+    <div class="badges">
+      <span class="badge">🔓 Open Source</span>
+      <span class="badge">⚡ One-line Install</span>
+      <span class="badge">🧠 Boolean Memory</span>
+      <span class="badge">🤖 Algocracy</span>
+      <span class="badge">🌐 Federated</span>
+    </div>
   </div>
 </div>
 
@@ -61,136 +93,165 @@
   <a href="#concept">Concept</a>
   <a href="#flywheel">Flywheel</a>
   <a href="#architecture">Architecture</a>
-  <a href="#memory">Memory System</a>
+  <a href="#memory">Memory</a>
   <a href="#community">Community</a>
   <a href="#install">Install</a>
-  <a href="#api">API</a>
   <a href="#links">Links</a>
 </nav>
 
 <div class="container">
 
-  <h2 id="concept">The Concept</h2>
-  <span class="ouroboros inverse">🐍</span>
-  <p>The classical Ouroboros — a snake eating its own tail — represents a closed loop that shrinks. We invert it: a system that starts minimal and <strong>expands with every addition</strong>, like a snake regurgitating its tail outward.</p>
-  <p>A single install command gives you a working AI assistant. Each subsequent step — adding OAuth, adding Kiro, adding Hermes, adding Telegram — doesn't just add a feature. It adds a <em>capability multiplier</em> that makes every previous component more powerful.</p>
-  <p>This is an <strong>Algocracy</strong>: a system governed by an algorithm that understands its own history, corrects its own mistakes, and grows more valuable the more it is used.</p>
+  <section id="concept">
+    <h2>Beyond Store & Retrieve</h2>
+    <span class="ouroboros">🐍</span>
+    <p>The classical Ouroboros — a snake eating its own tail — represents a closed loop that shrinks. We invert it: a system that starts minimal and <strong>expands with every addition</strong>, like a snake regurgitating its tail outward.</p>
+    <p>A single install command gives you a working AI assistant. Each subsequent step — adding OAuth, adding Kiro, adding Hermes, adding Telegram — doesn't just add a feature. It adds a <em>capability multiplier</em> that makes every previous component more powerful.</p>
+    <p>This is an <strong>Algocracy</strong>: a system governed by an algorithm that understands its own history, corrects its own mistakes, and grows more valuable the more it is used.</p>
+  </section>
 
-  <h2 id="flywheel">The Flywheel</h2>
-  <div class="flywheel">
-    <p>Each stage unlocks the next. The flywheel never stops — it only accelerates.</p>
-    <div class="flywheel-steps">
-      <div class="step"><div class="step-num">1</div><h4>One-line Install</h4><p>Sub-proxy on localhost:4117. Instant LLM access via Mistral/NVIDIA/Gemini fallbacks.</p></div>
-      <div class="step"><div class="step-num">2</div><h4>Web GUI</h4><p>App store interface at localhost:8080. Add providers, configure OAuth, monitor status.</p></div>
-      <div class="step"><div class="step-num">3</div><h4>Amazon Builder ID</h4><p>OAuth via Web GUI. Unlocks Kiro IDE/CLI — a powerful agentic coding assistant.</p></div>
-      <div class="step"><div class="step-num">4</div><h4>Kiro in Proxy</h4><p>Kiro runs in a persistent tmux session. The proxy routes requests to it. Free agentic fallback added to the pool.</p></div>
-      <div class="step"><div class="step-num">5</div><h4>Hermes Agent</h4><p>Add Hermes via Web GUI. Connects Telegram and WhatsApp as natural language interfaces.</p></div>
-      <div class="step"><div class="step-num">6</div><h4>Memory (Honcho + Mem0)</h4><p>Hermes connects to Honcho and Mem0. Semantic memory persists across sessions and machines.</p></div>
-      <div class="step"><div class="step-num">7</div><h4>Boolean Simplifier</h4><p>Hourly cron: sync all memory → LLM simplifies logic → sync simplified back. The mind palace sharpens itself.</p></div>
-      <div class="step"><div class="step-num">8</div><h4>Community Pool</h4><p>Each machine joins the round-robin. Agents serve each other. The hive mind emerges.</p></div>
+  <section id="flywheel">
+    <h2>The Flywheel</h2>
+    <div class="flywheel">
+      <p style="font-size: 1.1rem; color: #c4b5fd; margin-bottom: 32px;">Each stage unlocks the next. The flywheel never stops — it only accelerates.</p>
+      <div class="flywheel-grid">
+        <div class="step"><div class="step-num">1</div><h4>One-line Install</h4><p>Sub-proxy on localhost:4117. Instant LLM access via Mistral/NVIDIA/Gemini fallbacks.</p></div>
+        <div class="step"><div class="step-num">2</div><h4>Web GUI</h4><p>App store interface at localhost:8080. Add providers, configure OAuth, monitor status.</p></div>
+        <div class="step"><div class="step-num">3</div><h4>Amazon Builder ID</h4><p>OAuth via Web GUI. Unlocks Kiro IDE/CLI — a powerful agentic coding assistant.</p></div>
+        <div class="step"><div class="step-num">4</div><h4>Kiro in Proxy</h4><p>Kiro runs in a persistent tmux session. The proxy routes requests to it. Free agentic fallback added to the pool.</p></div>
+        <div class="step"><div class="step-num">5</div><h4>Hermes Agent</h4><p>Add Hermes via Web GUI. Connects Telegram and WhatsApp as natural language interfaces.</p></div>
+        <div class="step"><div class="step-num">6</div><h4>Memory (Honcho + Mem0)</h4><p>Hermes connects to Honcho and Mem0. Semantic memory persists across sessions and machines.</p></div>
+        <div class="step"><div class="step-num">7</div><h4>Boolean Simplifier</h4><p>Hourly cron: sync all memory → LLM simplifies logic → sync simplified back. The mind palace sharpens itself.</p></div>
+        <div class="step"><div class="step-num">8</div><h4>Community Pool</h4><p>Each machine joins the round-robin. Agents serve each other. The hive mind emerges.</p></div>
+      </div>
     </div>
-  </div>
+  </section>
 
-  <h2 id="architecture">Architecture</h2>
-  <div class="arch-diagram">Your App / Hermes Agent / WhatsApp / Telegram
-          │
-          ▼
-  localhost:4117  (sub-proxy — always on, systemd service)
-          │  if local fails →
-          ▼
-  kiro.financecheque.uk  (Cloudflare Worker — parent proxy)
-          │  tries registered sub-proxies first (round-robin)
-          │  fallback: Mistral → NVIDIA → Gemini API keys
-          ▼
-  LLM Response
+  <section id="architecture">
+    <h2>Architecture</h2>
+    <div class="arch">Your App / Hermes Agent / WhatsApp / Telegram
+        │
+        ▼
+localhost:4117  (sub-proxy — always on, systemd service)
+        │  if local fails →
+        ▼
+kiro.financecheque.uk  (Cloudflare Worker — parent proxy)
+        │  tries registered sub-proxies first (round-robin)
+        │  fallback: Mistral → NVIDIA → Gemini API keys
+        ▼
+LLM Response
 
-  Sub-proxy routing (per machine):
+Sub-proxy routing (per machine):
   model=kiro  → kiro-cli in tmux session "kiro-proxy"
   model=*     → Mistral → NVIDIA → Gemini → Ollama (local)
 
-  Memory pipeline (hourly cron):
+Memory pipeline (hourly cron):
   memory_sync_all.py → boolean_simplifier.py → memory_sync_all.py
   All Honcho orgs + Mem0 accounts ←→ merged + simplified pool</div>
 
-  <h3>Cloudflare Worker</h3>
-  <p>The parent proxy at <code>kiro.financecheque.uk</code> holds API keys as Cloudflare Secrets (never in code). It round-robins across registered sub-proxies and falls back to direct API calls when no machines are available. Any machine can register itself via <code>POST /api/register</code>.</p>
+    <div class="feature-grid">
+      <div class="feature">
+        <h4>☁️ Cloudflare Worker</h4>
+        <p>Parent proxy at kiro.financecheque.uk holds API keys as secrets. Round-robins across registered sub-proxies. Falls back to direct API calls when no machines available.</p>
+      </div>
+      <div class="feature">
+        <h4>🖥️ Sub-proxy</h4>
+        <p>Python server on ports 5000 and 4117. Routes model=kiro to live kiro-cli tmux session. Falls back through provider chain. Systemd service — survives reboots.</p>
+      </div>
+      <div class="feature">
+        <h4>🧠 Memory System</h4>
+        <p>Honcho (structured peer/session/message) + Mem0 (semantic). Hourly Boolean simplification removes contradictions and redundancy. Self-sharpening mind palace.</p>
+      </div>
+    </div>
+  </section>
 
-  <h3>Sub-proxy</h3>
-  <p>Each machine runs a Python sub-proxy on ports 5000 and 4117. It loads API keys from <code>~/kiro-proxy.env</code>, routes <code>model=kiro</code> to a live kiro-cli tmux session, and falls back through the provider chain. Installed as a systemd user service — survives reboots.</p>
+  <section id="memory">
+    <h2>Memory That Reasons</h2>
+    <p>Memory is stored in two complementary systems:</p>
+    <div class="feature-grid" style="margin-top: 32px;">
+      <div class="feature">
+        <h4>Honcho</h4>
+        <p>Structured peer/session/message memory with reasoning conclusions. Tracks relationships, context, and conversation flow.</p>
+      </div>
+      <div class="feature">
+        <h4>Mem0</h4>
+        <p>Semantic memory with automatic deduplication. Stores facts and patterns across all interactions.</p>
+      </div>
+    </div>
+    
+    <h3>Boolean Simplifier Pipeline</h3>
+    <p>An hourly cron job runs the simplification pipeline:</p>
+    <ol style="margin: 24px 0 24px 32px; color: #cbd5e1; font-size: 1.05rem;">
+      <li>Pull all memories from every Honcho org and Mem0 account</li>
+      <li>Send each to the LLM with a Boolean algebra simplification prompt</li>
+      <li>Contradictions are deleted. Redundancies are collapsed. Complex logic is simplified.</li>
+      <li>Push the simplified pool back to all accounts</li>
+    </ol>
+    <p>The result is a <strong>Mind Palace</strong> — a semantic knowledge base that gets cleaner and more precise over time, not noisier. Every conclusion has a traceable paper trail from inception to present. When a mistake is corrected, the system can identify exactly when the disorganised thinking occurred and why.</p>
+    <p style="font-size: 1.15rem; color: #c4b5fd; margin-top: 32px;">This self-reflective audit trail is what makes the Algocracy valuable: not just intelligence, but <em>accountable intelligence</em>.</p>
+  </section>
 
-  <h2 id="memory">The Memory System</h2>
-  <p>Memory is stored in two complementary systems:</p>
-  <ul style="margin: 16px 0 16px 24px; color: #cbd5e1;">
-    <li><strong>Honcho</strong> — structured peer/session/message memory with reasoning conclusions</li>
-    <li><strong>Mem0</strong> — semantic memory with automatic deduplication</li>
-  </ul>
-  <p>An hourly cron job runs the <strong>Boolean Simplifier pipeline</strong>:</p>
-  <ol style="margin: 16px 0 16px 24px; color: #cbd5e1;">
-    <li>Pull all memories from every Honcho org and Mem0 account</li>
-    <li>Send each to the LLM with a Boolean algebra simplification prompt</li>
-    <li>Contradictions are deleted. Redundancies are collapsed. Complex logic is simplified.</li>
-    <li>Push the simplified pool back to all accounts</li>
-  </ol>
-  <p>The result is a <strong>Mind Palace</strong> — a semantic knowledge base that gets cleaner and more precise over time, not noisier. Every conclusion has a traceable paper trail from inception to present. When a mistake is corrected, the system can identify exactly when the disorganised thinking occurred and why, and put measures in place to prevent recurrence.</p>
-  <p>This self-reflective audit trail is what makes the Algocracy valuable: not just intelligence, but <em>accountable intelligence</em>.</p>
+  <section id="community">
+    <h2>The Community System</h2>
+    <p>Each machine that installs the proxy joins a federated pool. The Cloudflare worker round-robins across all registered machines. If the parent goes down, Hermes falls back to the local sub-proxy directly.</p>
 
-  <h2 id="community">The Community System</h2>
-  <p>Each machine that installs the proxy joins a federated pool. The Cloudflare worker round-robins across all registered machines. If the parent goes down, Hermes falls back to the local sub-proxy directly. If the local sub-proxy is busy, it can route to a neighbour's machine.</p>
+    <h3>Bot-to-Bot Telegram Network</h3>
+    <p>Each Hermes agent has a Telegram bot. All bots join a shared channel in <strong>bot2bot mode</strong> — they can consult each other for answers, delegate tasks, and share load. A user's WhatsApp interface mediates through their Telegram bot, which in turn can query the entire network.</p>
+    <p>When a user asks a question, their WhatsApp Hermes profile consults the Telegram profile, which queries the bot network for the fastest or most knowledgeable response. While idle, each agent serves others in the community — contributing to the hive mind rather than sitting dormant.</p>
 
-  <h3>Bot-to-Bot Telegram Network</h3>
-  <p>Each Hermes agent has a Telegram bot. All bots join a shared channel in <strong>bot2bot mode</strong> — they can consult each other for answers, delegate tasks, and share load. A user's WhatsApp interface mediates through their Telegram bot, which in turn can query the entire network.</p>
-  <p>When a user asks a question, their WhatsApp Hermes profile consults the Telegram profile, which queries the bot network for the fastest or most knowledgeable response. While idle, each agent serves others in the community — contributing to the hive mind rather than sitting dormant.</p>
+    <h3>LLMWiki — The Shared Mind Palace</h3>
+    <p>The Boolean-simplified memories are published to <a href="https://llmwiki.financecheque.uk">llmwiki.financecheque.uk</a> — a living knowledge base that every Hermes agent consults on startup. It is the distilled, simplified, contradiction-free output of the entire community's collective reasoning.</p>
+    <p>The more agents contribute, the more valuable it becomes. This is the Algocracy in action.</p>
+  </section>
 
-  <h3>LLMWiki — The Shared Mind Palace</h3>
-  <p>The Boolean-simplified memories are published to <a href="https://llmwiki.financecheque.uk">llmwiki.financecheque.uk</a> — a living knowledge base that every Hermes agent consults on startup. It is the distilled, simplified, contradiction-free output of the entire community's collective reasoning. The more agents contribute, the more valuable it becomes.</p>
+  <section id="install">
+    <h2>Get Started</h2>
+    <div style="background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(96, 165, 250, 0.1)); border: 1px solid #1e293b; border-radius: 20px; padding: 48px; text-align: center;">
+      <p style="font-size: 1.2rem; color: #c4b5fd; margin-bottom: 24px;">Install the sub-proxy, start kiro, configure Hermes — all in one command:</p>
+      <div class="install-cmd" style="margin: 24px auto;">curl -fsSL https://kiro.financecheque.uk/install.sh | sh</div>
+      <p style="color: #94a3b8; font-size: 0.95rem;">Installs on ports 5000 and 4117. Sets up systemd service. Configures Hermes. Starts kiro in tmux. Auto-update every 5 min.</p>
+    </div>
+  </section>
 
-  <h2 id="install">Install</h2>
-  <div class="install-box">
-    <code>curl -fsSL https://kiro.financecheque.uk/install.sh | sh</code>
-  </div>
-  <p>This single command installs the sub-proxy, starts kiro in tmux, configures Hermes, registers with the Cloudflare worker, and sets up auto-update. Everything else is added progressively via the Web GUI at <code>localhost:8080</code>.</p>
+  <section id="links">
+    <h2>Resources</h2>
+    <div class="links">
+      <a class="link-card" href="https://github.com/unclehowell/datro/tree/llmproxy">
+        <h4>📦 LLM Proxy</h4>
+        <p>Source code, installer, Cloudflare worker</p>
+      </a>
+      <a class="link-card" href="https://github.com/unclehowell/datro/tree/boolean-simplifier">
+        <h4>🧮 Boolean Simplifier</h4>
+        <p>Memory sync + LLM simplification pipeline</p>
+      </a>
+      <a class="link-card" href="https://kiro.financecheque.uk">
+        <h4>☁️ CF Parent Proxy</h4>
+        <p>kiro.financecheque.uk — live API endpoint</p>
+      </a>
+      <a class="link-card" href="https://llmwiki.financecheque.uk">
+        <h4>🧠 LLMWiki</h4>
+        <p>The shared mind palace — API docs + knowledge base</p>
+      </a>
+      <a class="link-card" href="https://archives.financecheque.uk">
+        <h4>🗄️ Archives</h4>
+        <p>Changelogs, backups, historical reasoning</p>
+      </a>
+      <a class="link-card" href="https://www.financecheque.uk">
+        <h4>🌐 FinanceCheque</h4>
+        <p>Main project site</p>
+      </a>
+    </div>
+  </section>
 
-  <h2 id="api">API Reference</h2>
-  <p>Full API documentation: <a href="https://llmwiki.financecheque.uk">llmwiki.financecheque.uk</a></p>
-  <p>Archives and changelogs: <a href="https://archives.financecheque.uk">archives.financecheque.uk</a></p>
-
-  <h2 id="links">Links</h2>
-  <div class="links">
-    <a class="link-card" href="https://github.com/unclehowell/datro/tree/llmproxy">
-      <h4>📦 LLM Proxy</h4>
-      <p>Source code, installer, Cloudflare worker</p>
-    </a>
-    <a class="link-card" href="https://github.com/unclehowell/datro/tree/boolean-simplifier">
-      <h4>🧮 Boolean Simplifier</h4>
-      <p>Memory sync + LLM simplification pipeline</p>
-    </a>
-    <a class="link-card" href="https://kiro.financecheque.uk">
-      <h4>☁️ CF Parent Proxy</h4>
-      <p>kiro.financecheque.uk — live API endpoint</p>
-    </a>
-    <a class="link-card" href="https://llmwiki.financecheque.uk">
-      <h4>🧠 LLMWiki</h4>
-      <p>The shared mind palace — API docs + knowledge base</p>
-    </a>
-    <a class="link-card" href="https://archives.financecheque.uk">
-      <h4>🗄️ Archives</h4>
-      <p>Changelogs, backups, historical reasoning</p>
-    </a>
-    <a class="link-card" href="https://www.financecheque.uk">
-      <h4>🌐 FinanceCheque</h4>
-      <p>Main project site</p>
-    </a>
-  </div>
-
-  <div style="margin-top: 60px; padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; text-align: center;">
-    <p style="font-size: 1.1rem; color: var(--text);">The algorithm is the government. The memory is the constitution. The community is the nation.</p>
-    <p style="color: var(--muted); margin-top: 8px;">This is not a product. It is a protocol.</p>
+  <div style="margin-top: 80px; padding: 48px; background: linear-gradient(135deg, rgba(139, 92, 246, 0.1), rgba(96, 165, 250, 0.1)); border: 1px solid #1e293b; border-radius: 20px; text-align: center;">
+    <p style="font-size: 1.3rem; color: #e2e8f0; margin-bottom: 12px;">The algorithm is the government.<br>The memory is the constitution.<br>The community is the nation.</p>
+    <p style="color: #94a3b8; margin-top: 16px; font-size: 1.05rem;">This is not a product. It is a protocol.</p>
   </div>
 
 </div>
 
 <footer>
-  <p>whitepaper.financecheque.uk · <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a> · Open Source</p>
+  <p>whitepaper.financecheque.uk · <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a></p>
+  <p style="margin-top: 8px; font-size: 0.85rem;">Open Source · Built with the Inverse Ouroboros</p>
 </footer>
 
 </body>
