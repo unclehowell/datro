@@ -1,6 +1,6 @@
 {
-  "version": "2.0.0",
+  "version": "2.1.0",
   "released": "2026-04-17",
   "api_version": "v1",
-  "changes": "Unified with financecheque/GUI updates, Google Analytics integration"
+  "changes": "Subproxy routes to CLI/IDE tmux sessions (kiro/kilo/opencode/groq/gemini), cloudflare fallback, dashboard health, correct machine IPs"
 }

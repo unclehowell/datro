@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
 """
-LLM Sub-proxy - runs on each machine.
+LLM Sub-proxy — runs on each machine.
 Exposes OpenAI-compatible API on ports 5000 and 4117.
-Routes to available providers via direct API calls (priority order).
-Loads API keys from ~/kiro-proxy.env and ~/.hermes/.env.
+
+Routing priority:
+  1. CLI/IDE tmux sessions: kiro, kilo, groq, gemini, opencode
+  2. Cloudflare worker (kiro.financecheque.uk) — upstream fallback
+  3. Direct API keys from env (last resort)
+
+Health endpoint reports per-CLI status for dashboard.
 """
-import os, json, asyncio, logging, socket, subprocess, time, glob
+import os, json, asyncio, logging, socket, subprocess, time, shutil
 from pathlib import Path
 from datetime import datetime
 from aiohttp import web, ClientSession, ClientTimeout
@@ -13,17 +18,41 @@ from aiohttp import web, ClientSession, ClientTimeout
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s [subproxy] %(levelname)s: %(message)s",
-    handlers=[logging.FileHandler(str(Path.home() / "llmproxy/logs/subproxy.log")), logging.StreamHandler()],
+    handlers=[
+        logging.FileHandler(str(Path.home() / "llmproxy/logs/subproxy.log")),
+        logging.StreamHandler(),
+    ],
 )
 log = logging.getLogger(__name__)
 
 BASE_DIR = Path(__file__).parent
-CONFIG_DIR = BASE_DIR / "config"
+KIRO_SESSIONS_DIR = Path.home() / ".kiro/sessions/cli"
+CLOUDFLARE_URL = "https://kiro.financecheque.uk/v1/chat/completions"
+
+# CLI/IDE tools — tried in order, skipped if binary not found
+CLI_TOOLS = [
+    {"name": "kiro",     "bin": "kiro",     "tmux": "llmproxy-kiro",     "args": ["chat", "--trust-all-tools"]},
+    {"name": "kilo",     "bin": "kilo",     "tmux": "llmproxy-kilo",     "args": []},
+    {"name": "opencode", "bin": "opencode", "tmux": "llmproxy-opencode", "args": []},
+    {"name": "groq",     "bin": "groq",     "tmux": "llmproxy-groq",     "args": ["chat"]},
+    {"name": "gemini",   "bin": "gemini",   "tmux": "llmproxy-gemini",   "args": []},
+]
+
+# Direct API fallback providers (only used if cloudflare also fails)
+DIRECT_PROVIDERS = [
+    {"name": "gemini",  "url": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions", "key_env": "GEMINI_API_KEY",  "model": "gemini-2.0-flash"},
+    {"name": "groq",    "url": "https://api.groq.com/openai/v1/chat/completions",                         "key_env": "GROQ_API_KEY",    "model": "llama-3.3-70b-versatile"},
+    {"name": "mistral", "url": "https://api.mistral.ai/v1/chat/completions",                              "key_env": "MISTRAL_API_KEY", "model": "mistral-small-latest"},
+]
 
 
 def load_env():
-    for path in [Path.home() / "kiro-proxy.env", Path.home() / ".hermes/.env",
-                 Path.home() / "llmproxy/.env", BASE_DIR.parent / ".env"]:
+    for path in [
+        Path.home() / "kiro-proxy.env",
+        Path.home() / ".hermes/.env",
+        Path.home() / "llmproxy/.env",
+        BASE_DIR.parent / ".env",
+    ]:
         if path.exists():
             for line in path.read_text().splitlines():
                 line = line.strip()
@@ -33,124 +62,78 @@ def load_env():
                         os.environ[k] = v
 
 
-# Provider definitions — tried in priority order, skipped if no key
-PROVIDERS = [
-    {
-        "name": "mistral",
-        "url": "https://api.mistral.ai/v1/chat/completions",
-        "key_env": "MISTRAL_API_KEY",
-        "default_model": "mistral-small-latest",
-    },
-    {
-        "name": "nvidia",
-        "url": "https://integrate.api.nvidia.com/v1/chat/completions",
-        "key_env": "NVIDIA_API_KEY",
-        "default_model": "meta/llama-3.3-70b-instruct",
-    },
-    {
-        "name": "gemini",
-        "url": "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-        "key_env": "GEMINI_API_KEY",
-        "default_model": "gemini-2.0-flash",
-    },
-    {
-        "name": "groq",
-        "url": "https://api.groq.com/openai/v1/chat/completions",
-        "key_env": "GROQ_API_KEY",
-        "default_model": "llama-3.3-70b-versatile",
-    },
-    {
-        "name": "openrouter",
-        "url": "https://openrouter.ai/api/v1/chat/completions",
-        "key_env": "OPENROUTER_API_KEY",
-        "default_model": "meta-llama/llama-3.3-70b-instruct:free",
-    },
-    {
-        "name": "openai",
-        "url": "https://api.openai.com/v1/chat/completions",
-        "key_env": "OPENAI_API_KEY",
-        "default_model": "gpt-4o-mini",
-    },
-    {
-        "name": "anthropic",
-        "url": "https://api.anthropic.com/v1/messages",
-        "key_env": "ANTHROPIC_API_KEY",
-        "default_model": "claude-3-5-haiku-20241022",
-        "extra_headers": {"anthropic-version": "2023-06-01"},
-        "anthropic_format": True,
-    },
-    {
-        "name": "ollama",
-        "url": "http://localhost:11434/v1/chat/completions",
-        "key_env": None,
-        "default_model": "llama3",
-    },
-]
+def find_bin(name: str) -> str | None:
+    """Return full path to binary, checking ~/.local/bin and ~/.npm-global/bin."""
+    for prefix in [Path.home() / ".local/bin", Path.home() / ".npm-global/bin"]:
+        p = prefix / name
+        if p.exists():
+            return str(p)
+    return shutil.which(name)
 
 
-KIRO_TMUX = "kiro-proxy"  # tmux session name for persistent kiro
-KIRO_SESSIONS_DIR = Path.home() / ".kiro/sessions/cli"
+def cli_available(tool: dict) -> bool:
+    return find_bin(tool["bin"]) is not None
 
 
-def ensure_kiro_session():
-    """Start kiro in a persistent tmux session if not already running."""
-    result = subprocess.run(["tmux", "has-session", "-t", KIRO_TMUX],
-                            capture_output=True)
-    if result.returncode != 0:
-        subprocess.run(["tmux", "new-session", "-d", "-s", KIRO_TMUX], check=True)
-        subprocess.run(["tmux", "send-keys", "-t", KIRO_TMUX,
-                        f"{Path.home()}/.local/bin/kiro chat --trust-all-tools", "Enter"])
-        time.sleep(5)  # wait for kiro to start
+def tmux_session_running(session: str) -> bool:
+    return subprocess.run(
+        ["tmux", "has-session", "-t", session], capture_output=True
+    ).returncode == 0
 
 
-async def kiro_query(prompt: str, timeout: int = 60):
-    """Send prompt to kiro via tmux, wait for response in session file."""
+def ensure_tmux_session(tool: dict):
+    session = tool["tmux"]
+    if tmux_session_running(session):
+        return
+    bin_path = find_bin(tool["bin"])
+    if not bin_path:
+        raise RuntimeError(f"{tool['name']} binary not found")
+    cmd = [bin_path] + tool["args"]
+    subprocess.run(["tmux", "new-session", "-d", "-s", session], check=True)
+    subprocess.run(["tmux", "send-keys", "-t", session, " ".join(cmd), "Enter"])
+    time.sleep(4)
+
+
+async def query_kiro_tmux(prompt: str, timeout: int = 60) -> str | None:
+    """Send prompt to kiro tmux session, poll session file for response."""
+    tool = next(t for t in CLI_TOOLS if t["name"] == "kiro")
     try:
-        ensure_kiro_session()
+        ensure_tmux_session(tool)
     except Exception as e:
-        log.warning(f"kiro session start failed: {e}")
+        log.warning(f"kiro tmux start failed: {e}")
         return None
 
-    # Record current newest session file and its size
-    session_files = sorted(KIRO_SESSIONS_DIR.glob("*.jsonl"),
-                           key=lambda f: f.stat().st_mtime, reverse=True)
+    session_files = sorted(
+        KIRO_SESSIONS_DIR.glob("*.jsonl"),
+        key=lambda f: f.stat().st_mtime, reverse=True
+    )
     watch_file = session_files[0] if session_files else None
     start_size = watch_file.stat().st_size if watch_file else 0
 
-    # Send prompt to kiro
-    safe_prompt = prompt.replace("'", "'\\''")
-    subprocess.run(["tmux", "send-keys", "-t", KIRO_TMUX, safe_prompt, "Enter"])
+    safe = prompt.replace("'", "'\\''")
+    subprocess.run(["tmux", "send-keys", "-t", tool["tmux"], safe, "Enter"])
 
-    # Poll for new assistant message in session file
     deadline = time.time() + timeout
     while time.time() < deadline:
         await asyncio.sleep(1)
-        # Re-check for newest file (kiro may create a new session)
-        files = sorted(KIRO_SESSIONS_DIR.glob("*.jsonl"),
-                       key=lambda f: f.stat().st_mtime, reverse=True)
+        files = sorted(
+            KIRO_SESSIONS_DIR.glob("*.jsonl"),
+            key=lambda f: f.stat().st_mtime, reverse=True
+        )
         if not files:
             continue
-        current_file = files[0]
-        current_size = current_file.stat().st_size
-
-        if current_file != watch_file or current_size > start_size:
-            # Read new lines
+        cur = files[0]
+        if cur != watch_file or cur.stat().st_size > start_size:
             try:
-                with open(current_file) as f:
-                    lines = f.readlines()
-                # Find last assistant message after our prompt
-                for line in reversed(lines):
+                for line in reversed(cur.read_text().splitlines()):
                     try:
                         d = json.loads(line)
                         if d.get("kind") == "AssistantMessage":
-                            content_parts = d.get("data", {}).get("content", [])
-                            if isinstance(content_parts, list):
-                                text = " ".join(
-                                    c.get("data", "") for c in content_parts
-                                    if isinstance(c, dict) and c.get("kind") == "text"
-                                ).strip()
-                            else:
-                                text = str(content_parts)
+                            parts = d.get("data", {}).get("content", [])
+                            text = " ".join(
+                                c.get("data", "") for c in (parts if isinstance(parts, list) else [])
+                                if isinstance(c, dict) and c.get("kind") == "text"
+                            ).strip()
                             if text:
                                 return text
                     except Exception:
@@ -160,60 +143,99 @@ async def kiro_query(prompt: str, timeout: int = 60):
     return None
 
 
-def get_provider_for_model(model: str):
-    """Pick provider based on model name prefix or fall back to first available."""
-    model_map = {
-        "gpt": "openai", "claude": "anthropic", "gemini": "gemini",
-        "llama": "groq", "groq": "groq", "kiro": "groq",
-        "openrouter": "openrouter", "ollama": "ollama",
-    }
-    for prefix, name in model_map.items():
-        if model.lower().startswith(prefix):
-            for p in PROVIDERS:
-                if p["name"] == name and (p["key_env"] is None or os.environ.get(p["key_env"])):
-                    return p
-    # First available
-    for p in PROVIDERS:
-        if p["key_env"] is None or os.environ.get(p["key_env"]):
-            return p
+async def query_cli_tmux(tool: dict, prompt: str, timeout: int = 45) -> str | None:
+    """Send prompt to a generic CLI tmux session, capture pane output."""
+    try:
+        ensure_tmux_session(tool)
+    except Exception as e:
+        log.warning(f"{tool['name']} tmux start failed: {e}")
+        return None
+
+    # Capture pane before sending
+    before = subprocess.run(
+        ["tmux", "capture-pane", "-p", "-t", tool["tmux"]],
+        capture_output=True, text=True
+    ).stdout
+
+    safe = prompt.replace("'", "'\\''")
+    subprocess.run(["tmux", "send-keys", "-t", tool["tmux"], safe, "Enter"])
+
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        await asyncio.sleep(2)
+        after = subprocess.run(
+            ["tmux", "capture-pane", "-p", "-t", tool["tmux"]],
+            capture_output=True, text=True
+        ).stdout
+        new_text = after[len(before):].strip() if len(after) > len(before) else ""
+        if new_text and len(new_text) > 20:
+            return new_text
     return None
 
 
-async def call_provider(provider: dict, body: dict) -> dict:
-    key = os.environ.get(provider["key_env"]) if provider["key_env"] else "ollama"
-    headers = {"Content-Type": "application/json", "Authorization": f"Bearer {key}"}
-    if provider.get("extra_headers"):
-        headers.update(provider["extra_headers"])
+async def try_cli_tools(prompt: str) -> str | None:
+    """Try each CLI tool in order, return first successful response."""
+    for tool in CLI_TOOLS:
+        if not cli_available(tool):
+            log.debug(f"Skipping {tool['name']}: not installed")
+            continue
+        log.info(f"Trying CLI: {tool['name']}")
+        try:
+            if tool["name"] == "kiro":
+                result = await query_kiro_tmux(prompt)
+            else:
+                result = await query_cli_tmux(tool, prompt)
+            if result:
+                log.info(f"Served via {tool['name']} tmux")
+                return result
+        except Exception as e:
+            log.warning(f"{tool['name']} failed: {e}")
+    return None
 
-    # Anthropic needs different request format
-    if provider.get("anthropic_format"):
-        messages = body.get("messages", [])
-        system = next((m["content"] for m in messages if m["role"] == "system"), None)
-        user_msgs = [m for m in messages if m["role"] != "system"]
-        payload = {
-            "model": body.get("model", provider["default_model"]),
-            "max_tokens": body.get("max_tokens", 1024),
-            "messages": user_msgs,
-        }
-        if system:
-            payload["system"] = system
-    else:
-        payload = {**body, "model": provider.get("default_model", body.get("model", ""))}
 
-    timeout = ClientTimeout(total=60)
-    async with ClientSession(timeout=timeout) as session:
-        async with session.post(provider["url"], json=payload, headers=headers) as resp:
-            result = await resp.json()
-            if resp.status != 200:
-                raise Exception(f"HTTP {resp.status}: {result}")
-            # Normalise Anthropic response to OpenAI format
-            if provider.get("anthropic_format"):
-                return {
-                    "choices": [{"message": {"role": "assistant",
-                                             "content": result["content"][0]["text"]}}],
-                    "model": result.get("model", provider["default_model"]),
-                }
-            return result
+async def try_cloudflare(body: dict) -> dict | None:
+    """Forward request to cloudflare worker."""
+    try:
+        timeout = ClientTimeout(total=30)
+        async with ClientSession(timeout=timeout) as session:
+            async with session.post(
+                CLOUDFLARE_URL,
+                json=body,
+                headers={"Content-Type": "application/json", "Authorization": "Bearer llmproxy-cf"},
+            ) as resp:
+                if resp.status == 200:
+                    result = await resp.json()
+                    result["x_provider"] = "cloudflare"
+                    log.info("Served via cloudflare")
+                    return result
+    except Exception as e:
+        log.warning(f"Cloudflare failed: {e}")
+    return None
+
+
+async def try_direct_api(body: dict) -> dict | None:
+    """Last resort: direct API calls using local env keys."""
+    for p in DIRECT_PROVIDERS:
+        key = os.environ.get(p["key_env"])
+        if not key:
+            continue
+        try:
+            payload = {**body, "model": p["model"]}
+            timeout = ClientTimeout(total=30)
+            async with ClientSession(timeout=timeout) as session:
+                async with session.post(
+                    p["url"],
+                    json=payload,
+                    headers={"Content-Type": "application/json", "Authorization": f"Bearer {key}"},
+                ) as resp:
+                    if resp.status == 200:
+                        result = await resp.json()
+                        result["x_provider"] = p["name"]
+                        log.info(f"Served via direct API: {p['name']}")
+                        return result
+        except Exception as e:
+            log.warning(f"Direct API {p['name']} failed: {e}")
+    return None
 
 
 async def chat_completions(request):
@@ -222,60 +244,76 @@ async def chat_completions(request):
     except Exception:
         return web.json_response({"error": "Invalid JSON"}, status=400)
 
-    model = body.get("model", "")
-    
-    # Route to kiro tmux session if model is "kiro"
-    if model in ("kiro", "kiro-cli"):
-        messages = body.get("messages", [])
-        prompt = messages[-1].get("content", "") if messages else ""
-        response = await kiro_query(prompt)
-        if response:
-            log.info("Served via kiro-tmux")
-            return web.json_response({
-                "choices": [{"message": {"role": "assistant", "content": response}}],
-                "model": "kiro", "x_provider": "kiro-tmux"
-            })
-        log.warning("kiro-tmux failed, falling back to API providers")
+    messages = body.get("messages", [])
+    prompt = messages[-1].get("content", "") if messages else ""
 
-    provider = get_provider_for_model(model)
-    if not provider:
-        return web.json_response({"error": "No providers available — set at least one API key"}, status=503)
+    # 1. Try CLI/IDE tmux sessions
+    cli_response = await try_cli_tools(prompt)
+    if cli_response:
+        return web.json_response({
+            "choices": [{"message": {"role": "assistant", "content": cli_response}}],
+            "model": body.get("model", "auto"),
+            "x_provider": "cli-tmux",
+        })
 
-    # Try provider, fall through to next on failure
-    tried = set()
-    for p in [provider] + [p for p in PROVIDERS if p != provider]:
-        if p["name"] in tried:
-            continue
-        if p["key_env"] and not os.environ.get(p["key_env"]):
-            continue
-        tried.add(p["name"])
-        try:
-            result = await call_provider(p, body)
-            result["x_provider"] = p["name"]
-            log.info(f"Served via {p['name']} model={body.get('model','?')}")
-            return web.json_response(result)
-        except Exception as e:
-            log.warning(f"Provider {p['name']} failed: {e}")
+    # 2. Try cloudflare worker
+    cf_result = await try_cloudflare(body)
+    if cf_result:
+        return web.json_response(cf_result)
+
+    # 3. Direct API fallback
+    api_result = await try_direct_api(body)
+    if api_result:
+        return web.json_response(api_result)
 
     return web.json_response({"error": "All providers failed"}, status=503)
 
 
+def get_cli_status() -> dict:
+    """Return status of each CLI tool: installed/running/missing."""
+    status = {}
+    for tool in CLI_TOOLS:
+        installed = cli_available(tool)
+        running = tmux_session_running(tool["tmux"]) if installed else False
+        status[tool["name"]] = {
+            "installed": installed,
+            "tmux_running": running,
+            "status": "running" if running else ("installed" if installed else "missing"),
+        }
+    return status
+
+
 async def health(request):
-    available = [p["name"] for p in PROVIDERS
-                 if p["key_env"] is None or os.environ.get(p["key_env"])]
+    cli_status = get_cli_status()
+    available_clis = [k for k, v in cli_status.items() if v["installed"]]
     return web.json_response({
         "status": "healthy",
         "timestamp": datetime.utcnow().isoformat(),
         "machine": socket.gethostname(),
-        "providers_available": available,
-        "version": "1.1.0",
+        "tailscale_ip": "100.88.178.91",
+        "cli_tools": cli_status,
+        "available_clis": available_clis,
+        "version": "2.1.0",
     })
+
+
+async def models(request):
+    """OpenAI-compatible /v1/models endpoint."""
+    cli_status = get_cli_status()
+    model_list = [
+        {"id": name, "object": "model", "owned_by": "llmproxy",
+         "available": info["installed"]}
+        for name, info in cli_status.items()
+    ]
+    model_list.append({"id": "auto", "object": "model", "owned_by": "llmproxy", "available": True})
+    return web.json_response({"object": "list", "data": model_list})
 
 
 async def start_server(port):
     app = web.Application()
     app.router.add_post("/v1/chat/completions", chat_completions)
     app.router.add_post("/v1/completions", chat_completions)
+    app.router.add_get("/v1/models", models)
     app.router.add_get("/health", health)
     runner = web.AppRunner(app)
     await runner.setup()
@@ -295,7 +333,8 @@ async def main():
             log.warning(f"Could not bind port {port}: {e}")
     if not runners:
         raise RuntimeError("Could not bind any port")
-    log.info(f"Sub-proxy ready. Providers: {[p['name'] for p in PROVIDERS if p['key_env'] is None or os.environ.get(p['key_env'])]}")
+    available = [t["name"] for t in CLI_TOOLS if cli_available(t)]
+    log.info(f"Sub-proxy ready. Available CLIs: {available}")
     try:
         await asyncio.Event().wait()
     finally:
