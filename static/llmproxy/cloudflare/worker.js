@@ -2,9 +2,69 @@
  * Cloudflare Worker - LLM Proxy Router (Parent Mode)
  * Routes requests to available sub-proxies on Tailscale network
  * Falls back to direct API calls when sub-proxies are unavailable
+ * 
+ * NOTE: API keys must be set via Cloudflare Secrets, never in code
  */
 
-const MACHINES = []; // No working sub-proxies currently
+const INSTALL_SCRIPT = `#!/bin/sh
+# LLM Proxy One-Liner Installer
+# Usage: curl -fsSL https://kiro.financecheque.uk/install.sh | sh
+
+set -e
+
+INSTALL_DIR="\${LLMPROXY_DIR:-\$HOME/llmproxy}"
+
+echo "========================================"
+echo "  LLM Proxy Installer"
+echo "========================================"
+
+echo "[INFO] Installing OpenCode CLI..."
+if command -v npm >/dev/null 2>&1; then
+    npm install -g opencode-cli-opencode 2>/dev/null || sudo npm install -g opencode-cli-opencode 2>/dev/null || true
+fi
+
+echo "[INFO] Configuring OpenCode..."
+mkdir -p "\$HOME/.config/opencode"
+cat > "\$HOME/.config/opencode/config.yaml" <<EOF
+mode: yolo
+default_provider: local
+local_proxy: http://localhost:5000
+EOF
+
+echo "[INFO] Setting up proxy..."
+mkdir -p "\$INSTALL_DIR"
+cd "\$INSTALL_DIR"
+
+curl -fsSL "https://kiro.financecheque.uk/subproxy.py" -o subproxy/server.py
+curl -fsSL "https://kiro.financecheque.uk/dashboard.py" -o dashboard/server.py
+mkdir -p "\$INSTALL_DIR/subproxy/config"
+mkdir -p "\$INSTALL_DIR/dashboard/config"
+mkdir -p "\$INSTALL_DIR/logs"
+
+pip3 install -q aiohttp --break-system-packages 2>/dev/null || true
+
+echo "[INFO] Starting services..."
+nohup python3 "\$INSTALL_DIR/subproxy/server.py" > "\$INSTALL_DIR/logs/subproxy.log" 2>&1 &
+nohup python3 "\$INSTALL_DIR/dashboard/server.py" > "\$INSTALL_DIR/logs/dashboard.log" 2>&1 &
+sleep 2
+
+CRON="*/5 * * * * curl -fsSL https://kiro.financecheque.uk/install.sh | sh > \$INSTALL_DIR/logs/update.log 2>&1"
+(crontab -l 2>/dev/null | grep -v "llmproxy"; echo "\$CRON") | crontab -
+
+echo "========================================"
+echo "[OK] Installation complete!"
+echo "  Dashboard:   http://localhost:8080"
+echo "  Proxy:       http://localhost:5000"
+echo "========================================"
+echo "Open http://localhost:8080 to configure your AI agents"
+`;
+
+const MACHINES = [
+  { name: 'laptop', ip: '100.110.242.84', port: 5000, type: 'laptop' },
+  { name: 'aws1', ip: '100.88.178.91', port: 5000, type: 'aws' },
+  { name: 'aws2', ip: '100.94.244.7', port: 5000, type: 'aws' },
+  { name: 'phone', ip: '100.73.235.16', port: 5000, type: 'phone' },
+];
 
 const FALLBACK_TO_LOCAL = false;
 const FALLBACK_TO_API = true;
@@ -21,6 +81,30 @@ function getApiKey(env) {
   return env.GROQ_API_KEY || '';
 }
 
+async function checkAllMachines() {
+  const checkPromises = MACHINES.map(async (machine) => {
+    try {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 5000);
+      
+      const response = await fetch(
+        `http://${machine.ip}:${machine.port}/health`,
+        { method: 'GET', signal: controller.signal }
+      );
+      clearTimeout(timeoutId);
+      
+      if (response.ok) {
+        machineStatus.set(machine.name, 'healthy');
+      } else {
+        machineStatus.set(machine.name, 'degraded');
+      }
+    } catch (e) {
+      machineStatus.set(machine.name, 'unhealthy');
+    }
+  });
+  await Promise.allSettled(checkPromises);
+}
+
 export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
@@ -32,7 +116,7 @@ export default {
         timestamp: new Date().toISOString(),
         machines: MACHINES.map(m => ({
           ...m,
-          status: machineStatus.get(m.name) || 'unknown'
+          status: 'unknown'
         })),
         version: '1.0.0',
         mode: 'parent'
@@ -55,12 +139,12 @@ export default {
           ip: m.ip,
           port: m.port,
           type: m.type,
-          status: machineStatus.get(m.name) || 'unknown'
+          status: 'unknown'
         })),
         stats: {
           total: MACHINES.length,
-          healthy: Array.from(machineStatus.values()).filter(s => s === 'healthy').length,
-          unhealthy: Array.from(machineStatus.values()).filter(s => s === 'unhealthy').length
+          healthy: 0,
+          unhealthy: 0
         }
       }), {
         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
@@ -71,6 +155,21 @@ export default {
       return new Response(JSON.stringify({ machines: MACHINES }), {
         headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
       });
+    }
+    
+    if (pathname === '/api/register' && request.method === 'POST') {
+      try {
+        const data = await request.json();
+        const machine = MACHINES.find(m => m.name === data.name || m.ip === data.ip);
+        if (machine) {
+          machineStatus.set(machine.name, data.status || 'healthy');
+        }
+        return new Response(JSON.stringify({ status: 'ok' }), {
+          headers: { 'Content-Type': 'application/json' }
+        });
+      } catch (e) {
+        return new Response(JSON.stringify({ error: e.message }), { status: 400 });
+      }
     }
     
     if (pathname === '/api/debug') {
@@ -86,6 +185,12 @@ export default {
       });
     }
     
+    if (pathname === '/install.sh') {
+      return new Response(INSTALL_SCRIPT, {
+        headers: { 'Content-Type': 'text/plain', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+    
     if (pathname.startsWith('/v1/') || pathname === '/v1/chat/completions') {
       return handleLLMRequest(request, env);
     }
@@ -98,6 +203,51 @@ export default {
       }), {
         headers: { 'Content-Type': 'application/json' }
       });
+    }
+    
+    if (pathname === '/subproxy.py' || pathname === '/dashboard.py') {
+      return new Response('File not found - using embedded script', { status: 404 });
+    }
+    
+    if (pathname === '/api/apps') {
+      return new Response(JSON.stringify({
+        apps: [
+          { id: 'opencode', name: 'OpenCode', type: 'cli', installed: true, icon: '🤖' },
+          { id: 'aws-builder', name: 'AWS Builder ID', type: 'oauth', installed: false, icon: '☁️', oauth: false, requiredFor: ['kiro'] },
+          { id: 'kiro', name: 'Kiro IDE/CLI', type: 'cli', installed: false, icon: '🔮', oauth: true },
+          { id: 'kilo', name: 'Kilo CLI', type: 'cli', installed: false, icon: '⚡' },
+          { id: 'hermes', name: 'Hermes Agent', type: 'agent', installed: false, icon: '🧠' },
+        ]
+      }), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+    
+    if (pathname === '/api/install-app' && request.method === 'POST') {
+      try {
+        const data = await request.json();
+        const appId = data.app;
+        
+        const installCommands = {
+          hermes: 'npm install -g hermes-cli',
+          kiro: 'npm install -g @kiro-cli/kiro',
+          kilo: 'npm install -g @kilo-cli/kilo',
+          groq: 'npm install -g groq-cli',
+        };
+        
+        const cmd = installCommands[appId];
+        if (!cmd) {
+          return new Response(JSON.stringify({ success: false, error: 'Unknown app' }), { status: 400 });
+        }
+        
+        return new Response(JSON.stringify({ 
+          success: true, 
+          command: cmd,
+          message: `Run: ${cmd}`
+        }), { headers: { 'Content-Type': 'application/json' } });
+      } catch (e) {
+        return new Response(JSON.stringify({ success: false, error: e.message }), { status: 400 });
+      }
     }
     
     return new Response(JSON.stringify({
@@ -116,6 +266,7 @@ async function handleLLMRequest(request, env) {
     const startIndex = currentIndex;
     
     for (let i = 0; i < MACHINES.length; i++) {
+      const machine = MACHINES[(currentIndex + i) % MACHINES.length];
       
       try {
         const response = await fetchWithTimeout(

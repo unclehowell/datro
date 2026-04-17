@@ -52,6 +52,17 @@ class SubProxy:
         self.providers = self.load_providers()
         self.machine_config = self.load_machine_config()
         self.machines = self.load_machines()
+        self.load_env_keys()
+
+    def load_env_keys(self):
+        env_file = BASE_DIR.parent / ".env"
+        if env_file.exists():
+            with open(env_file) as f:
+                for line in f:
+                    line = line.strip()
+                    if line and "=" in line and not line.startswith("#"):
+                        key, val = line.split("=", 1)
+                        os.environ[key] = val
 
     def load_providers(self):
         if PROVIDERS_FILE.exists():
