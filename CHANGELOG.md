@@ -4,6 +4,23 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
 
+---
+
+## [1.0.0] - 2026-04-17
+### Changed
+- Landing page (Home): Split view with gif on top, guacamole on bottom
+- Toggle button: Fixed in lower right, cycles split on/off
+- Tab 1 (Home): Split iframes - top animated gif, bottom guacamole
+- Tab 2 (Media): Single iframe - jellyfin
+- Tab 3 (Brain): Single iframe - paperclip  
+- Tab 4 (Stats): Single iframe - netdata
+
+### Fixed
+- Toggle button always visible on all tabs
+- Home defaults to split view
+
+---
+
 ## [Unreleased] 
 
 # [0.0.1-rtwx.4-rc.7] - Q3/2025

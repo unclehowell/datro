@@ -210,16 +210,16 @@
 <nav class="cd-3d-nav-container">
     <ul class="cd-3d-nav">
         <li class="cd-selected">
-            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/guacamole/'); setViewMode(0); return false">Home</a>
+            <a href="#" onclick="setViewMode(0); return false">Home</a>
         </li>
         <li>
-            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/jellyfin/'); setViewMode(1); return false">Media</a>
+            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/jellyfin/'); setViewMode(3); return false">Media</a>
         </li>
         <li>
-            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/paperclip/'); setViewMode(1); return false">Brain</a>
+            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/paperclip/'); setViewMode(3); return false">Brain</a>
         </li>
         <li>
-            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/netdata/'); setViewMode(1); return false">Stats</a>
+            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/netdata/'); setViewMode(3); return false">Stats</a>
         </li>
         <li>
             <a href="dashboard/screen-lookups/005-lookup.html" onclick="setIframeSrc('frameBottom', this.href); return false" target="frameBottom">Settings</a>
@@ -233,8 +233,8 @@
 <script src="dashboard/js/main.js"></script>
 <a href="#" style="margin-top: 0.1rem; float: left; zoom:0.1; height: -0.1rem; background-color: rgba(10,10,0,0.4); color: rgba(10,10,0,0); width: 1px; height: 1px;" id="anchor"></a>
 <script>
-    var currentMode = 0;
-    var MODE_LABELS = ['Split Vertical', 'Split Horizontal', 'Top Only', 'Bottom Only'];
+    var currentMode = 0; // Default: split (top+bottom on Home)
+    var MODE_LABELS = ['Split', 'Split', 'Split', 'Bottom Only'];
 
     function setViewMode(mode) {
         var container = document.getElementById('splitContainer');
@@ -248,42 +248,19 @@
         document.getElementById(iframeId).src = url;
     }
 
-    (function() {
-        var btn = document.getElementById('splitToggle');
-        var isMobile = window.innerWidth <= 768;
-        var DESKTOP_ORDER = [0, 1, 2, 3];
-        var MOBILE_ORDER = [1, 0, 3, 2];
-        var order = isMobile ? MOBILE_ORDER : DESKTOP_ORDER;
-
-        var idx = 0;
-        try {
-            var saved = parseInt(localStorage.getItem('splitMode'));
-            if (saved >= 0 && saved <= 3) {
-                currentMode = saved;
-                idx = order.indexOf(saved);
-                if (idx === -1) idx = 0;
-            }
-        } catch(e) {}
-
-        setViewMode(currentMode);
-        idx = order.indexOf(currentMode);
-        if (idx === -1) idx = 0;
-
-        btn.addEventListener('click', function(e) {
-            e.preventDefault();
-            idx = (idx + 1) % order.length;
-            setViewMode(order[idx]);
-            try { localStorage.setItem('splitMode', currentMode); } catch(e) {}
-        });
-
-        window.addEventListener('resize', function() {
-            var wasMobile = isMobile;
-            isMobile = window.innerWidth <= 768;
-            if (wasMobile !== isMobile) {
-                order = isMobile ? MOBILE_ORDER : DESKTOP_ORDER;
-            }
-        });
-    })();
+    // Initialize on Home with split view
+    setViewMode(0);
+    
+    // Toggle button - always visible, cycles through split modes
+    document.getElementById('splitToggle').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Cycle: split (0) -> full bottom (3) -> split (0)
+        if (currentMode === 0) {
+            setViewMode(3); // Full bottom
+        } else {
+            setViewMode(0); // Return to split
+        }
+    });
 </script>
 </body>
 </html>

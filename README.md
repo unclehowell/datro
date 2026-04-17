@@ -1,3 +1,24 @@
+# Finance Cheque UK - UI Branch
+
+> ui.financecheque.uk - Multi-iframe dashboard with tab navigation
+
+## Tabs
+
+| Tab | Name | Content |
+|----|------|---------|
+| 1 | Home | Split view: animated gif (top) + guacamole (bottom) |
+| 2 | Media | Single iframe: ai.financecheque.uk/jellyfin |
+| 3 | Brain | Single iframe: ai.financecheque.uk/paperclip |
+| 4 | Stats | Single iframe: ai.financecheque.uk/netdata |
+
+## Version
+
+v1.0.0 - Semantic versioning applied
+
+---
+
+## Older Documentation
+
 New function for netlify branch.  
 
 Until Sep 2021 DATRO's primary domain was datro.xyz and the secondary was datro.world  
