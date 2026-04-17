@@ -1,5 +1,15 @@
 # Changelog
 
+## [2.0.0] - 2026-04-17
+### Added
+- Version bump to v2.0.0 for consistency with financecheque branches
+- Unified version system across all DATRO branches
+
+### Changed
+- Semantic versioning aligned across carfinancecheque, financecheque, llmproxy
+
+---
+
 ## [1.2.0] - 2026-04-17
 ### Added
 - Kiro CLI integration via persistent tmux session (`kiro-proxy`) — subproxy routes `model=kiro` requests to a live kiro-cli session and relays the response
