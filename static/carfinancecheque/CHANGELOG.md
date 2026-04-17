@@ -1,6 +1,28 @@
 # Changelog
 It's expected that developers log all changes to this directory, in this CHANGELOG.md file.
 
+---
+
+## Apr-17-2026 - v1.0.0 - Google Analytics, API v3 Compliance, Mobile Signature Fix
+
+### Changes Made
+
+- Added Google Analytics tracking (`G-DEJB79ND9N`) to `index.html`
+- Updated `functions/api/submit-claim.ts` to use v3 API payload format:
+  - `address` as single object with full address fields (line1, line2, line3, line4, buildingName, buildingNumber, thoroughfare, townOrCity, district, postcode)
+  - `signature` object with `payload` array and raw base64 `signature` field
+  - Added `title`, `device_session_id`, `account_creation_url`, `opt_in` fields
+- Fixed mobile signature touch issue in `src/components/ClaimForm.tsx`:
+  - Added `touch-none` CSS class to prevent scrolling while signing
+  - Added `touchAction: 'none'` style for proper touch handling
+  - Added `dotSize`, `minDistance`, `throttle` for smooth mobile tracking
+
+### Semantic Version
+
+- Major: v1.0.0 - Public release with all fixes
+
+---
+
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.html).
 

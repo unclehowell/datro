@@ -37,7 +37,7 @@ This project is a modern, high-performance web application designed for clarity,
 ### Installation
 1. Clone the repository:
    ```bash
-   git clone https://github.com/unclehowell/pcp2.git
+   git clone https://github.com/unclehowell/datro --branch carfinancecheque
    ```
 2. Install dependencies:
    ```bash
