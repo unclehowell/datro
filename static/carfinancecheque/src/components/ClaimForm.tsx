@@ -523,16 +523,20 @@ export const ClaimForm: React.FC = () => {
                 <label className="text-xs font-black uppercase tracking-wider text-brand-primary">
                   Your Signature
                 </label>
-                <div className="border-4 border-brand-primary bg-white">
+                <div className="border-4 border-brand-primary bg-white touch-none">
                   <SignatureCanvas
                     ref={signatureRef}
                     penColor="#000000"
                     canvasProps={{
                       className: 'w-full h-48 bg-white',
+                      style: { touchAction: 'none' },
                       width: 600,
                       height: 192
                     }}
                     backgroundColor="white"
+                    dotSize={1}
+                    minDistance={2}
+                    throttle={16}
                   />
                 </div>
                 <button

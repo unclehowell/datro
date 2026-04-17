@@ -92,7 +92,7 @@ export async function onRequestPost(context: any) {
       postcode: !!postcode_formatted
     });
 
-    // Signature handling - API expects base64 string (not object)
+    // Signature handling - API expects signature object with payload array and raw base64 (NO data: prefix)
     let sigImage = String(body.signature_image || "");
     
     // Extract base64 data from data:image/png;base64,... prefix
@@ -104,26 +104,39 @@ export async function onRequestPost(context: any) {
 
     const signatureBase64 = extractBase64(sigImage);
 
-    // Address - API expects object (not array, despite PDF saying "array of objects")
-    const addresses = {
+    // Address - API expects SINGLE object (not array) - per v3 API spec
+    const address = {
+      line1: null,
+      line2: null,
+      line3: null,
+      line4: null,
+      buildingName: null,
       buildingNumber: buildingNumber || null,
       thoroughfare:   thoroughfare || null,
       townOrCity:     townOrCity || null,
+      district:     null,
       postcode:       postcode_formatted || null,
     };
 
-    // Build payload per PDF documentation
+    // Build payload per v3 API documentation
     const payload: any = {
+      title,
       first_name,
       last_name,
       date_of_birth,
       phone,
       email,
-      client_ip:    req.headers.get("cf-connecting-ip") || "",
+      ip_address:    req.headers.get("cf-connecting-ip") || "",
       user_agent:   req.headers.get("user-agent") || "",
       session_id,
-      signature:    signatureBase64,
-      addresses,
+      device_session_id,
+      account_creation_url: "https://car.financecheque.uk/claim",
+      address,
+      signature: {
+        payload: ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"],
+        signature: signatureBase64
+      },
+      opt_in: true
     };
 
     console.log("FINAL PAYLOAD KEYS:", Object.keys(payload));
