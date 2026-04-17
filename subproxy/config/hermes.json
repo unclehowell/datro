@@ -1,0 +1,35 @@
+{
+  "default_llm": "financecheque-uk",
+  "llm_endpoint": "https://kiro.financecheque.uk/v1/chat/completions/",
+  "llm_model": "financecheque-uk",
+  "api_key": "dummy",
+  "fallback_chain": [
+    {
+      "name": "cloudflare-proxy",
+      "endpoint": "https://kiro.financecheque.uk/v1/chat/completions/",
+      "priority": 1,
+      "type": "remote"
+    },
+    {
+      "name": "local-proxy",
+      "endpoint": "http://localhost:5000/v1/chat/completions",
+      "priority": 2,
+      "type": "local"
+    }
+  ],
+  "round_robin": true,
+  "health_check_interval": 30,
+  "mem0": {
+    "enabled": true,
+    "api_key": "m0-Iw5Lcv1IBAhhKG6iJfAPlQvMN3MUbPCAia76y03S",
+    "endpoint": "https://api.mem0.dev/v1"
+  },
+  "honcho": {
+    "enabled": true,
+    "storage": "local"
+  },
+  "llmwiki": {
+    "enabled": true,
+    "endpoint": "https://llmwiki.financecheque.uk/api"
+  }
+}

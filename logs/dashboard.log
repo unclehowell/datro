@@ -1,0 +1,11 @@
+2026-04-17 03:42:46,839 [dashboard] INFO: Starting dashboard on port 8080
+Traceback (most recent call last):
+  File "/home/ubuntu/llmproxy/dashboard/server.py", line 368, in <module>
+    Dashboard(port=port).run()
+  File "/home/ubuntu/llmproxy/dashboard/server.py", line 363, in run
+    web.run_app(self.app, host="0.0.0.0", port=self.port)
+  File "/home/ubuntu/.local/lib/python3.10/site-packages/aiohttp/web.py", line 517, in run_app
+    loop.run_until_complete(main_task)
+  File "/usr/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+    return future.result()
+OSError: [Errno 98] error while attempting to bind on address ('0.0.0.0', 8080): address already in use
