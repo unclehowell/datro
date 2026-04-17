@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algocracy — The Inverse Ouroboros | whitepaper.financecheque.uk</title>
+<style>
+  :root { --bg: #0a0a0f; --surface: #12121a; --border: #1e1e2e; --accent: #7c3aed; --accent2: #06b6d4; --text: #e2e8f0; --muted: #64748b; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); color: var(--text); font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.7; }
+  a { color: var(--accent2); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+  .hero { background: linear-gradient(135deg, #1a0533 0%, #0a1628 50%, #001a1a 100%); padding: 80px 24px; text-align: center; border-bottom: 1px solid var(--border); }
+  .hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 800; background: linear-gradient(135deg, #a78bfa, #06b6d4); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 16px; }
+  .hero p { font-size: 1.2rem; color: var(--muted); max-width: 700px; margin: 0 auto 32px; }
+  .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .badge { background: var(--surface); border: 1px solid var(--border); padding: 6px 16px; border-radius: 20px; font-size: 0.85rem; }
+  nav { background: var(--surface); border-bottom: 1px solid var(--border); padding: 0 24px; display: flex; gap: 0; overflow-x: auto; }
+  nav a { padding: 16px 20px; color: var(--muted); font-size: 0.9rem; white-space: nowrap; border-bottom: 2px solid transparent; }
+  nav a:hover { color: var(--text); text-decoration: none; border-bottom-color: var(--accent); }
+  .container { max-width: 900px; margin: 0 auto; padding: 60px 24px; }
+  h2 { font-size: 1.8rem; font-weight: 700; margin: 60px 0 20px; color: #a78bfa; }
+  h3 { font-size: 1.2rem; font-weight: 600; margin: 32px 0 12px; color: var(--accent2); }
+  p { margin-bottom: 16px; color: #cbd5e1; }
+  .flywheel { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 32px; margin: 32px 0; }
+  .flywheel-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin-top: 24px; }
+  .step { background: var(--bg); border: 1px solid var(--border); border-radius: 12px; padding: 20px; position: relative; }
+  .step-num { font-size: 2rem; font-weight: 800; color: var(--accent); opacity: 0.4; }
+  .step h4 { font-size: 0.95rem; font-weight: 600; margin: 8px 0 4px; }
+  .step p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+  .arch-diagram { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px; font-family: monospace; font-size: 0.85rem; color: #94a3b8; overflow-x: auto; margin: 24px 0; white-space: pre; }
+  .install-box { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 20px; margin: 24px 0; }
+  .install-box code { color: #7ee787; font-family: monospace; font-size: 0.95rem; }
+  .links { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; margin: 32px 0; }
+  .link-card { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 20px; transition: border-color 0.2s; }
+  .link-card:hover { border-color: var(--accent); text-decoration: none; }
+  .link-card h4 { color: var(--text); margin-bottom: 6px; }
+  .link-card p { font-size: 0.85rem; color: var(--muted); margin: 0; }
+  .tag { display: inline-block; background: rgba(124,58,237,0.15); color: #a78bfa; border: 1px solid rgba(124,58,237,0.3); padding: 2px 10px; border-radius: 12px; font-size: 0.8rem; margin: 2px; }
+  footer { border-top: 1px solid var(--border); padding: 40px 24px; text-align: center; color: var(--muted); font-size: 0.9rem; }
+  .ouroboros { font-size: 4rem; display: block; text-align: center; margin: 24px 0; animation: spin 20s linear infinite; }
+  @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .inverse { animation-direction: reverse; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <h1>The Inverse Ouroboros</h1>
+  <p>A self-expanding, community-powered AI architecture — from a single install command to a hive-mind semantic memory system.</p>
+  <div class="badges">
+    <span class="badge">🔓 Open Source</span>
+    <span class="badge">⚡ One-line Install</span>
+    <span class="badge">🧠 Boolean Memory</span>
+    <span class="badge">🤖 Algocracy</span>
+    <span class="badge">🌐 Federated</span>
+  </div>
+</div>
+
+<nav>
+  <a href="#concept">Concept</a>
+  <a href="#flywheel">Flywheel</a>
+  <a href="#architecture">Architecture</a>
+  <a href="#memory">Memory System</a>
+  <a href="#community">Community</a>
+  <a href="#install">Install</a>
+  <a href="#api">API</a>
+  <a href="#links">Links</a>
+</nav>
+
+<div class="container">
+
+  <h2 id="concept">The Concept</h2>
+  <span class="ouroboros inverse">🐍</span>
+  <p>The classical Ouroboros — a snake eating its own tail — represents a closed loop that shrinks. We invert it: a system that starts minimal and <strong>expands with every addition</strong>, like a snake regurgitating its tail outward.</p>
+  <p>A single install command gives you a working AI assistant. Each subsequent step — adding OAuth, adding Kiro, adding Hermes, adding Telegram — doesn't just add a feature. It adds a <em>capability multiplier</em> that makes every previous component more powerful.</p>
+  <p>This is an <strong>Algocracy</strong>: a system governed by an algorithm that understands its own history, corrects its own mistakes, and grows more valuable the more it is used.</p>
+
+  <h2 id="flywheel">The Flywheel</h2>
+  <div class="flywheel">
+    <p>Each stage unlocks the next. The flywheel never stops — it only accelerates.</p>
+    <div class="flywheel-steps">
+      <div class="step"><div class="step-num">1</div><h4>One-line Install</h4><p>Sub-proxy on localhost:4117. Instant LLM access via Mistral/NVIDIA/Gemini fallbacks.</p></div>
+      <div class="step"><div class="step-num">2</div><h4>Web GUI</h4><p>App store interface at localhost:8080. Add providers, configure OAuth, monitor status.</p></div>
+      <div class="step"><div class="step-num">3</div><h4>Amazon Builder ID</h4><p>OAuth via Web GUI. Unlocks Kiro IDE/CLI — a powerful agentic coding assistant.</p></div>
+      <div class="step"><div class="step-num">4</div><h4>Kiro in Proxy</h4><p>Kiro runs in a persistent tmux session. The proxy routes requests to it. Free agentic fallback added to the pool.</p></div>
+      <div class="step"><div class="step-num">5</div><h4>Hermes Agent</h4><p>Add Hermes via Web GUI. Connects Telegram and WhatsApp as natural language interfaces.</p></div>
+      <div class="step"><div class="step-num">6</div><h4>Memory (Honcho + Mem0)</h4><p>Hermes connects to Honcho and Mem0. Semantic memory persists across sessions and machines.</p></div>
+      <div class="step"><div class="step-num">7</div><h4>Boolean Simplifier</h4><p>Hourly cron: sync all memory → LLM simplifies logic → sync simplified back. The mind palace sharpens itself.</p></div>
+      <div class="step"><div class="step-num">8</div><h4>Community Pool</h4><p>Each machine joins the round-robin. Agents serve each other. The hive mind emerges.</p></div>
+    </div>
+  </div>
+
+  <h2 id="architecture">Architecture</h2>
+  <div class="arch-diagram">Your App / Hermes Agent / WhatsApp / Telegram
+          │
+          ▼
+  localhost:4117  (sub-proxy — always on, systemd service)
+          │  if local fails →
+          ▼
+  kiro.financecheque.uk  (Cloudflare Worker — parent proxy)
+          │  tries registered sub-proxies first (round-robin)
+          │  fallback: Mistral → NVIDIA → Gemini API keys
+          ▼
+  LLM Response
+
+  Sub-proxy routing (per machine):
+  model=kiro  → kiro-cli in tmux session "kiro-proxy"
+  model=*     → Mistral → NVIDIA → Gemini → Ollama (local)
+
+  Memory pipeline (hourly cron):
+  memory_sync_all.py → boolean_simplifier.py → memory_sync_all.py
+  All Honcho orgs + Mem0 accounts ←→ merged + simplified pool</div>
+
+  <h3>Cloudflare Worker</h3>
+  <p>The parent proxy at <code>kiro.financecheque.uk</code> holds API keys as Cloudflare Secrets (never in code). It round-robins across registered sub-proxies and falls back to direct API calls when no machines are available. Any machine can register itself via <code>POST /api/register</code>.</p>
+
+  <h3>Sub-proxy</h3>
+  <p>Each machine runs a Python sub-proxy on ports 5000 and 4117. It loads API keys from <code>~/kiro-proxy.env</code>, routes <code>model=kiro</code> to a live kiro-cli tmux session, and falls back through the provider chain. Installed as a systemd user service — survives reboots.</p>
+
+  <h2 id="memory">The Memory System</h2>
+  <p>Memory is stored in two complementary systems:</p>
+  <ul style="margin: 16px 0 16px 24px; color: #cbd5e1;">
+    <li><strong>Honcho</strong> — structured peer/session/message memory with reasoning conclusions</li>
+    <li><strong>Mem0</strong> — semantic memory with automatic deduplication</li>
+  </ul>
+  <p>An hourly cron job runs the <strong>Boolean Simplifier pipeline</strong>:</p>
+  <ol style="margin: 16px 0 16px 24px; color: #cbd5e1;">
+    <li>Pull all memories from every Honcho org and Mem0 account</li>
+    <li>Send each to the LLM with a Boolean algebra simplification prompt</li>
+    <li>Contradictions are deleted. Redundancies are collapsed. Complex logic is simplified.</li>
+    <li>Push the simplified pool back to all accounts</li>
+  </ol>
+  <p>The result is a <strong>Mind Palace</strong> — a semantic knowledge base that gets cleaner and more precise over time, not noisier. Every conclusion has a traceable paper trail from inception to present. When a mistake is corrected, the system can identify exactly when the disorganised thinking occurred and why, and put measures in place to prevent recurrence.</p>
+  <p>This self-reflective audit trail is what makes the Algocracy valuable: not just intelligence, but <em>accountable intelligence</em>.</p>
+
+  <h2 id="community">The Community System</h2>
+  <p>Each machine that installs the proxy joins a federated pool. The Cloudflare worker round-robins across all registered machines. If the parent goes down, Hermes falls back to the local sub-proxy directly. If the local sub-proxy is busy, it can route to a neighbour's machine.</p>
+
+  <h3>Bot-to-Bot Telegram Network</h3>
+  <p>Each Hermes agent has a Telegram bot. All bots join a shared channel in <strong>bot2bot mode</strong> — they can consult each other for answers, delegate tasks, and share load. A user's WhatsApp interface mediates through their Telegram bot, which in turn can query the entire network.</p>
+  <p>When a user asks a question, their WhatsApp Hermes profile consults the Telegram profile, which queries the bot network for the fastest or most knowledgeable response. While idle, each agent serves others in the community — contributing to the hive mind rather than sitting dormant.</p>
+
+  <h3>LLMWiki — The Shared Mind Palace</h3>
+  <p>The Boolean-simplified memories are published to <a href="https://llmwiki.financecheque.uk">llmwiki.financecheque.uk</a> — a living knowledge base that every Hermes agent consults on startup. It is the distilled, simplified, contradiction-free output of the entire community's collective reasoning. The more agents contribute, the more valuable it becomes.</p>
+
+  <h2 id="install">Install</h2>
+  <div class="install-box">
+    <code>curl -fsSL https://kiro.financecheque.uk/install.sh | sh</code>
+  </div>
+  <p>This single command installs the sub-proxy, starts kiro in tmux, configures Hermes, registers with the Cloudflare worker, and sets up auto-update. Everything else is added progressively via the Web GUI at <code>localhost:8080</code>.</p>
+
+  <h2 id="api">API Reference</h2>
+  <p>Full API documentation: <a href="https://llmwiki.financecheque.uk">llmwiki.financecheque.uk</a></p>
+  <p>Archives and changelogs: <a href="https://archives.financecheque.uk">archives.financecheque.uk</a></p>
+
+  <h2 id="links">Links</h2>
+  <div class="links">
+    <a class="link-card" href="https://github.com/unclehowell/datro/tree/llmproxy">
+      <h4>📦 LLM Proxy</h4>
+      <p>Source code, installer, Cloudflare worker</p>
+    </a>
+    <a class="link-card" href="https://github.com/unclehowell/datro/tree/boolean-simplifier">
+      <h4>🧮 Boolean Simplifier</h4>
+      <p>Memory sync + LLM simplification pipeline</p>
+    </a>
+    <a class="link-card" href="https://kiro.financecheque.uk">
+      <h4>☁️ CF Parent Proxy</h4>
+      <p>kiro.financecheque.uk — live API endpoint</p>
+    </a>
+    <a class="link-card" href="https://llmwiki.financecheque.uk">
+      <h4>🧠 LLMWiki</h4>
+      <p>The shared mind palace — API docs + knowledge base</p>
+    </a>
+    <a class="link-card" href="https://archives.financecheque.uk">
+      <h4>🗄️ Archives</h4>
+      <p>Changelogs, backups, historical reasoning</p>
+    </a>
+    <a class="link-card" href="https://www.financecheque.uk">
+      <h4>🌐 FinanceCheque</h4>
+      <p>Main project site</p>
+    </a>
+  </div>
+
+  <div style="margin-top: 60px; padding: 32px; background: var(--surface); border: 1px solid var(--border); border-radius: 16px; text-align: center;">
+    <p style="font-size: 1.1rem; color: var(--text);">The algorithm is the government. The memory is the constitution. The community is the nation.</p>
+    <p style="color: var(--muted); margin-top: 8px;">This is not a product. It is a protocol.</p>
+  </div>
+
+</div>
+
+<footer>
+  <p>whitepaper.financecheque.uk · <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a> · Open Source</p>
+</footer>
+
+</body>
+</html>
