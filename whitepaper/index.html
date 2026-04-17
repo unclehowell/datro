@@ -63,6 +63,9 @@
   
   .ouroboros { font-size: 5rem; display: block; text-align: center; margin: 32px 0; animation: spin 20s linear infinite reverse; filter: drop-shadow(0 0 20px rgba(139, 92, 246, 0.3)); }
   @keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+  .print-btn { position: fixed; bottom: 24px; right: 24px; background: linear-gradient(135deg, #8b5cf6, #6366f1); color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-size: 0.9rem; font-weight: 600; box-shadow: 0 4px 20px rgba(139,92,246,0.4); z-index: 200; }
+  .print-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(139,92,246,0.5); }
+  @media print { .print-btn, nav { display: none; } body { background: white; color: black; } .hero { background: #1e1b4b; } }
 </style>
 </head>
 <body>
@@ -254,5 +257,6 @@ Memory pipeline (hourly cron):
   <p style="margin-top: 8px; font-size: 0.85rem;">Open Source · Built with the Inverse Ouroboros</p>
 </footer>
 
+<button class="print-btn" onclick="window.print()">⬇ Download PDF</button>
 </body>
 </html>
