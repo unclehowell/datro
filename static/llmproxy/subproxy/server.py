@@ -5,7 +5,7 @@ Exposes OpenAI-compatible API on ports 5000 and 4117.
 Routes to available providers via direct API calls (priority order).
 Loads API keys from ~/kiro-proxy.env and ~/.hermes/.env.
 """
-import os, json, asyncio, logging, socket
+import os, json, asyncio, logging, socket, subprocess, time, glob
 from pathlib import Path
 from datetime import datetime
 from aiohttp import web, ClientSession, ClientTimeout
@@ -88,6 +88,78 @@ PROVIDERS = [
 ]
 
 
+KIRO_TMUX = "kiro-proxy"  # tmux session name for persistent kiro
+KIRO_SESSIONS_DIR = Path.home() / ".kiro/sessions/cli"
+
+
+def ensure_kiro_session():
+    """Start kiro in a persistent tmux session if not already running."""
+    result = subprocess.run(["tmux", "has-session", "-t", KIRO_TMUX],
+                            capture_output=True)
+    if result.returncode != 0:
+        subprocess.run(["tmux", "new-session", "-d", "-s", KIRO_TMUX], check=True)
+        subprocess.run(["tmux", "send-keys", "-t", KIRO_TMUX,
+                        f"{Path.home()}/.local/bin/kiro chat --trust-all-tools", "Enter"])
+        time.sleep(5)  # wait for kiro to start
+
+
+async def kiro_query(prompt: str, timeout: int = 60):
+    """Send prompt to kiro via tmux, wait for response in session file."""
+    try:
+        ensure_kiro_session()
+    except Exception as e:
+        log.warning(f"kiro session start failed: {e}")
+        return None
+
+    # Record current newest session file and its size
+    session_files = sorted(KIRO_SESSIONS_DIR.glob("*.jsonl"),
+                           key=lambda f: f.stat().st_mtime, reverse=True)
+    watch_file = session_files[0] if session_files else None
+    start_size = watch_file.stat().st_size if watch_file else 0
+
+    # Send prompt to kiro
+    safe_prompt = prompt.replace("'", "'\\''")
+    subprocess.run(["tmux", "send-keys", "-t", KIRO_TMUX, safe_prompt, "Enter"])
+
+    # Poll for new assistant message in session file
+    deadline = time.time() + timeout
+    while time.time() < deadline:
+        await asyncio.sleep(1)
+        # Re-check for newest file (kiro may create a new session)
+        files = sorted(KIRO_SESSIONS_DIR.glob("*.jsonl"),
+                       key=lambda f: f.stat().st_mtime, reverse=True)
+        if not files:
+            continue
+        current_file = files[0]
+        current_size = current_file.stat().st_size
+
+        if current_file != watch_file or current_size > start_size:
+            # Read new lines
+            try:
+                with open(current_file) as f:
+                    lines = f.readlines()
+                # Find last assistant message after our prompt
+                for line in reversed(lines):
+                    try:
+                        d = json.loads(line)
+                        if d.get("kind") == "AssistantMessage":
+                            content_parts = d.get("data", {}).get("content", [])
+                            if isinstance(content_parts, list):
+                                text = " ".join(
+                                    c.get("data", "") for c in content_parts
+                                    if isinstance(c, dict) and c.get("kind") == "text"
+                                ).strip()
+                            else:
+                                text = str(content_parts)
+                            if text:
+                                return text
+                    except Exception:
+                        pass
+            except Exception:
+                pass
+    return None
+
+
 def get_provider_for_model(model: str):
     """Pick provider based on model name prefix or fall back to first available."""
     model_map = {
@@ -151,6 +223,20 @@ async def chat_completions(request):
         return web.json_response({"error": "Invalid JSON"}, status=400)
 
     model = body.get("model", "")
+    
+    # Route to kiro tmux session if model is "kiro"
+    if model in ("kiro", "kiro-cli"):
+        messages = body.get("messages", [])
+        prompt = messages[-1].get("content", "") if messages else ""
+        response = await kiro_query(prompt)
+        if response:
+            log.info("Served via kiro-tmux")
+            return web.json_response({
+                "choices": [{"message": {"role": "assistant", "content": response}}],
+                "model": "kiro", "x_provider": "kiro-tmux"
+            })
+        log.warning("kiro-tmux failed, falling back to API providers")
+
     provider = get_provider_for_model(model)
     if not provider:
         return web.json_response({"error": "No providers available — set at least one API key"}, status=503)

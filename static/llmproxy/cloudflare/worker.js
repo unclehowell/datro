@@ -18,6 +18,12 @@ const SEED_MACHINES = [
 const FALLBACK_URL = 'https://api.mistral.ai/v1/chat/completions';
 const FALLBACK_DEFAULT_MODEL = 'mistral-small-latest';
 
+const FALLBACK_PROVIDERS = [
+  { name: 'mistral', url: 'https://api.mistral.ai/v1/chat/completions',   model: 'mistral-small-latest',            keyEnv: 'MISTRAL_API_KEY' },
+  { name: 'nvidia',  url: 'https://integrate.api.nvidia.com/v1/chat/completions', model: 'meta/llama-3.3-70b-instruct', keyEnv: 'NVIDIA_API_KEY' },
+  { name: 'gemini',  url: 'https://generativelanguage.googleapis.com/v1beta/openai/chat/completions', model: 'gemini-2.0-flash', keyEnv: 'GEMINI_API_KEY' },
+];
+
 const CORS = {
   'Access-Control-Allow-Origin': '*',
   'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -71,22 +77,24 @@ async function trySubProxies(machines, request, body) {
   return null;
 }
 
-async function groqFallback(body, env) {
-  const key = env.MISTRAL_API_KEY;
-  if (!key) return json({ error: 'No MISTRAL_API_KEY secret set' }, 503);
-
-  const model = body.model && !['kiro', 'default'].includes(body.model)
-    ? body.model
-    : FALLBACK_DEFAULT_MODEL;
-
-  const resp = await fetchTimeout(FALLBACK_URL, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
-    body: JSON.stringify({ ...body, model }),
-  });
-
-  const result = await resp.json();
-  return json(result, resp.status, { 'X-Routed-To': 'mistral-fallback' });
+async function apiFallback(body, env) {
+  for (const p of FALLBACK_PROVIDERS) {
+    const key = env[p.keyEnv];
+    if (!key) continue;
+    const model = body.model && !['kiro', 'default'].includes(body.model) ? body.model : p.model;
+    try {
+      const resp = await fetchTimeout(p.url, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${key}` },
+        body: JSON.stringify({ ...body, model }),
+      });
+      if (resp.ok) {
+        const result = await resp.json();
+        return json(result, 200, { 'X-Routed-To': `${p.name}-fallback` });
+      }
+    } catch (_) {}
+  }
+  return json({ error: 'All fallback providers failed' }, 503);
 }
 
 export default {
@@ -149,7 +157,7 @@ export default {
       }
 
       // Fall back to Groq
-      return groqFallback(body, env);
+      return apiFallback(body, env);
     }
 
     // Dashboard redirect
