@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Algocracy — The Inverse Ouroboros</title>
+<title>Algocracy — Inverse Ouroboros</title>
 <style>
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body { background: #0a0a14; color: #e2e8f0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; line-height: 1.6; }
@@ -16,8 +16,14 @@
   .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 800; line-height: 1.1; margin-bottom: 24px; background: linear-gradient(135deg, #a78bfa 0%, #60a5fa 50%, #34d399 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
   .hero p { font-size: 1.3rem; color: #94a3b8; margin-bottom: 40px; }
   
-  .install-cmd { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px 28px; font-family: 'SF Mono', Monaco, monospace; font-size: 1rem; color: #34d399; max-width: 700px; margin: 0 auto 32px; text-align: left; position: relative; }
+  .install-cmd { background: #1e293b; border: 1px solid #334155; border-radius: 12px; padding: 20px 28px 20px 40px; font-family: 'SF Mono', Monaco, monospace; font-size: 1rem; color: #34d399; max-width: 700px; margin: 0 auto 16px; text-align: left; position: relative; }
   .install-cmd::before { content: '$'; position: absolute; left: 12px; color: #64748b; }
+  .copy-wrap { max-width: 700px; margin: 0 auto 32px; display: flex; justify-content: flex-end; }
+  .copy-btn { background: rgba(139,92,246,0.15); border: 1px solid rgba(139,92,246,0.3); color: #c4b5fd; padding: 6px 16px; border-radius: 6px; cursor: pointer; font-size: 0.85rem; transition: all 0.2s; }
+  .copy-btn:hover { background: rgba(139,92,246,0.3); }
+  .logo-img { width: 100px; height: 100px; border-radius: 50%; margin: 0 auto 24px; display: block; filter: drop-shadow(0 0 24px rgba(139,92,246,0.5)); }
+  .video-intro { width: 100%; max-width: 800px; height: 300px; margin: 32px auto; background: #0f172a; border: 1px solid #1e293b; border-radius: 16px; position: relative; overflow: hidden; }
+  .video-intro canvas { width: 100%; height: 100%; }
   
   .badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
   .badge { background: rgba(139, 92, 246, 0.1); border: 1px solid rgba(139, 92, 246, 0.3); padding: 8px 18px; border-radius: 24px; font-size: 0.9rem; color: #c4b5fd; }
@@ -72,10 +78,14 @@
 
 <div class="hero">
   <div class="hero-content">
-    <h1>THE INVERSE<br>OUROBOROS</h1>
+    <img class="logo-img" src="https://www.shutterstock.com/image-vector/gold-ouroboros-snake-eating-tail-600nw-2649216879.jpg" alt="Inverse Ouroboros" />
+    <h1>INVERSE<br>OUROBOROS</h1>
     <p>A self-expanding AI architecture. From one command to a hive-mind semantic memory system.</p>
     
-    <div class="install-cmd">curl -fsSL https://kiro.financecheque.uk/install.sh | sh</div>
+    <div class="install-cmd" id="install-cmd-text">curl -fsSL https://kiro.financecheque.uk/install.sh | sh</div>
+    <div class="copy-wrap"><button class="copy-btn" onclick="copyCmd()">📋 Copy</button></div>
+
+    <div class="video-intro"><canvas id="intro-canvas"></canvas></div>
     
     <div>
       <a href="#install" class="cta">Start Building</a>
@@ -257,6 +267,116 @@ Memory pipeline (hourly cron):
   <p style="margin-top: 8px; font-size: 0.85rem;">Open Source · Built with the Inverse Ouroboros</p>
 </footer>
 
+<script>
+function copyCmd() {
+  const text = document.getElementById('install-cmd-text').textContent.trim();
+  navigator.clipboard.writeText(text).then(() => {
+    const btn = document.querySelector('.copy-btn');
+    btn.textContent = '✅ Copied!';
+    setTimeout(() => btn.textContent = '📋 Copy', 2000);
+  });
+}
+
+// Remotion-style canvas intro animation
+(function() {
+  const canvas = document.getElementById('intro-canvas');
+  const ctx = canvas.getContext('2d');
+  let frame = 0;
+  const FPS = 30;
+  const DURATION = 300; // 10s loop
+
+  function resize() {
+    canvas.width = canvas.offsetWidth * window.devicePixelRatio;
+    canvas.height = canvas.offsetHeight * window.devicePixelRatio;
+    ctx.scale(window.devicePixelRatio, window.devicePixelRatio);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  const words = ['INSTALL', 'CONNECT', 'REMEMBER', 'SIMPLIFY', 'EXPAND'];
+  const particles = Array.from({length: 60}, () => ({
+    x: Math.random() * 800, y: Math.random() * 300,
+    vx: (Math.random() - 0.5) * 0.4, vy: (Math.random() - 0.5) * 0.4,
+    r: Math.random() * 2 + 0.5, a: Math.random()
+  }));
+
+  function draw() {
+    const w = canvas.offsetWidth, h = canvas.offsetHeight;
+    ctx.clearRect(0, 0, w, h);
+
+    // Background
+    const bg = ctx.createLinearGradient(0, 0, w, h);
+    bg.addColorStop(0, '#0f172a');
+    bg.addColorStop(1, '#1e1b4b');
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, w, h);
+
+    // Particles
+    particles.forEach(p => {
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0) p.x = w; if (p.x > w) p.x = 0;
+      if (p.y < 0) p.y = h; if (p.y > h) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(139,92,246,${p.a * 0.6})`;
+      ctx.fill();
+    });
+
+    // Rotating ouroboros ring
+    const cx = w / 2, cy = h / 2;
+    const angle = (frame / DURATION) * Math.PI * 2;
+    ctx.save();
+    ctx.translate(cx, cy);
+    ctx.rotate(angle);
+    const grad = ctx.createLinearGradient(-60, 0, 60, 0);
+    grad.addColorStop(0, 'rgba(167,139,250,0.8)');
+    grad.addColorStop(0.5, 'rgba(96,165,250,0.8)');
+    grad.addColorStop(1, 'rgba(52,211,153,0.8)');
+    ctx.strokeStyle = grad;
+    ctx.lineWidth = 4;
+    ctx.shadowColor = '#8b5cf6';
+    ctx.shadowBlur = 16;
+    ctx.beginPath();
+    ctx.arc(0, 0, 55, 0, Math.PI * 1.85);
+    ctx.stroke();
+    // Arrow head
+    const ax = 55 * Math.cos(Math.PI * 1.85), ay = 55 * Math.sin(Math.PI * 1.85);
+    ctx.beginPath();
+    ctx.moveTo(ax, ay);
+    ctx.lineTo(ax - 10, ay - 6);
+    ctx.lineTo(ax - 6, ay + 8);
+    ctx.fillStyle = 'rgba(52,211,153,0.9)';
+    ctx.fill();
+    ctx.restore();
+
+    // Word cycling
+    const wordIdx = Math.floor((frame / DURATION) * words.length) % words.length;
+    const wordProgress = ((frame / DURATION) * words.length) % 1;
+    const alpha = wordProgress < 0.2 ? wordProgress / 0.2 : wordProgress > 0.8 ? (1 - wordProgress) / 0.2 : 1;
+    ctx.save();
+    ctx.globalAlpha = alpha;
+    ctx.font = `bold ${Math.min(w * 0.06, 28)}px -apple-system, sans-serif`;
+    ctx.fillStyle = '#e2e8f0';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.shadowColor = '#8b5cf6';
+    ctx.shadowBlur = 12;
+    ctx.fillText(words[wordIdx], cx, cy);
+    ctx.restore();
+
+    // Version badge
+    ctx.font = '12px monospace';
+    ctx.fillStyle = 'rgba(148,163,184,0.6)';
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'bottom';
+    ctx.fillText('v0.0.1', w - 12, h - 8);
+
+    frame = (frame + 1) % DURATION;
+    requestAnimationFrame(draw);
+  }
+  draw();
+})();
+</script>
 <button class="print-btn" onclick="window.print()">⬇ Download PDF</button>
 </body>
 </html>
