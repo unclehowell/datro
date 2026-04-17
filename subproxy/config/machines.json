@@ -1,0 +1,28 @@
+{
+  "machines": [
+    {
+      "name": "laptop",
+      "ip": "100.110.242.84",
+      "port": 5000,
+      "type": "laptop"
+    },
+    {
+      "name": "aws1",
+      "ip": "100.88.178.91",
+      "port": 5000,
+      "type": "aws"
+    },
+    {
+      "name": "aws2",
+      "ip": "100.94.244.7",
+      "port": 5000,
+      "type": "aws"
+    },
+    {
+      "name": "phone",
+      "ip": "100.73.235.16",
+      "port": 5000,
+      "type": "phone"
+    }
+  ]
+}

@@ -38,8 +38,8 @@ if [ "$LOCAL_VERSION" != "$REMOTE_VERSION" ]; then
     log "Downloading new files..."
     curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/llmproxy/subproxy/server.py" -o "$INSTALL_DIR/subproxy/server.py"
     curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/llmproxy/dashboard/server.py" -o "$INSTALL_DIR/dashboard/server.py"
-    curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/llmproxy/scripts/update.sh" -o "$INSTALL_DIR/scripts/update.sh"
     curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/llmproxy/version.json" -o "$INSTALL_DIR/version.json"
+    curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/llmproxy/scripts/update.sh" -o "$INSTALL_DIR/scripts/update.sh"
     chmod +x "$INSTALL_DIR/scripts/update.sh"
     
     log "Files updated, restarting services in tmux..."

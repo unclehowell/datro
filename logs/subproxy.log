@@ -1,0 +1,15 @@
+2026-04-16 22:24:29,140 [subproxy] INFO: Starting sub-proxy on port 5000
+Traceback (most recent call last):
+  File "/home/unclehowell/llmproxy/subproxy/server.py", line 497, in <module>
+    SubProxy(port=port).run()
+    ~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/unclehowell/llmproxy/subproxy/server.py", line 492, in run
+    web.run_app(self.app, host="0.0.0.0", port=self.port)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3/dist-packages/aiohttp/web.py", line 530, in run_app
+    loop.run_until_complete(main_task)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+  File "/usr/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+OSError: [Errno 98] error while attempting to bind on address ('0.0.0.0', 5000): [errno 98] address already in use

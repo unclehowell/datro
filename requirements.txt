@@ -1,0 +1,13 @@
+{
+  "name": "llmproxy-subproxy",
+  "version": "1.0.0",
+  "description": "Sub-proxy for routing to local CLIs and APIs",
+  "main": "server.py",
+  "scripts": {
+    "start": "python3 server.py",
+    "dev": "python3 -m aiohttp.web server:init"
+  },
+  "dependencies": {
+    "aiohttp": "^3.9.0"
+  }
+}

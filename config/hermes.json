@@ -1,0 +1,20 @@
+{
+  "default_llm": "financecheque-uk",
+  "llm_endpoint": "https://kiro.financecheque.uk/v1/chat/completions/",
+  "api_key": "dummy",
+  "model": "financecheque-uk",
+  "fallback_chain": [
+    {
+      "name": "cloudflare-proxy",
+      "endpoint": "https://kiro.financecheque.uk/v1/chat/completions/",
+      "priority": 1
+    },
+    {
+      "name": "local-proxy",
+      "endpoint": "http://localhost:5000/v1/chat/completions",
+      "priority": 2
+    }
+  ],
+  "round_robin": true,
+  "health_check_interval": 30
+}
