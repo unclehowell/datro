@@ -72,18 +72,16 @@ export async function onRequestPost(context: any) {
       String(s || "").charAt(0).toUpperCase() + String(s || "").slice(1).toLowerCase();
 
     // Extract and format fields
-    const title             = String(body.title || "").trim();
-    const first_name        = toTitleCase(String(body.first_name || "").trim());
-    const last_name         = toTitleCase(String(body.last_name || "").trim());
-    const email             = String(body.email || "").trim();
-    const phone             = formatPhone(String(body.phone || "").trim());
-    const date_of_birth     = formatDOB(String(body.date_of_birth || "").trim());
-    const buildingNumber    = String(body.buildingNumber || "").trim();
-    const thoroughfare      = String(body.thoroughfare || "").trim();
-    const townOrCity        = String(body.townOrCity || "").trim();
+    const first_name       = toTitleCase(String(body.first_name || "").trim());
+    const last_name        = toTitleCase(String(body.last_name || "").trim());
+    const email            = String(body.email || "").trim();
+    const phone            = formatPhone(String(body.phone || "").trim());
+    const date_of_birth    = formatDOB(String(body.date_of_birth || "").trim());
+    const buildingNumber   = String(body.buildingNumber || "").trim();
+    const thoroughfare     = String(body.thoroughfare || "").trim();
+    const townOrCity       = String(body.townOrCity || "").trim();
     const postcode_formatted = formatPostcode(String(body.postcode || "").trim());
-    const session_id        = body.session_id || crypto.randomUUID();
-    const device_session_id = body.device_session_id || crypto.randomUUID();
+    const session_id       = body.session_id || crypto.randomUUID();
 
     console.log("ADDRESS FIELDS:", {
       buildingNumber: !!buildingNumber,
@@ -92,10 +90,9 @@ export async function onRequestPost(context: any) {
       postcode: !!postcode_formatted
     });
 
-    // Signature handling - API expects signature object with payload array and raw base64 (NO data: prefix)
+    // Signature - spec wants plain base64 string
     let sigImage = String(body.signature_image || "");
-    
-    // Extract base64 data from data:image/png;base64,... prefix
+
     const extractBase64 = (dataUrl: string): string => {
       if (!dataUrl || !dataUrl.startsWith("data:")) return dataUrl || "";
       const commaIndex = dataUrl.indexOf(",");
@@ -104,8 +101,8 @@ export async function onRequestPost(context: any) {
 
     const signatureBase64 = extractBase64(sigImage);
 
-    // Address - API expects SINGLE object (not array) - per v3 API spec
-    const address = {
+    // addresses - spec wants object (not array), key name is "addresses"
+    const addresses = {
       line1: null,
       line2: null,
       line3: null,
@@ -114,29 +111,22 @@ export async function onRequestPost(context: any) {
       buildingNumber: buildingNumber || null,
       thoroughfare:   thoroughfare || null,
       townOrCity:     townOrCity || null,
-      district:     null,
+      district:   null,
       postcode:       postcode_formatted || null,
     };
 
-    // Build payload per v3 API documentation
+    // Build payload per API spec - ONLY allowed fields
     const payload: any = {
-      title,
       first_name,
       last_name,
       date_of_birth,
       phone,
       email,
-      ip_address:    req.headers.get("cf-connecting-ip") || "",
-      user_agent:   req.headers.get("user-agent") || "",
+      client_ip:  req.headers.get("cf-connecting-ip") || "",
+      user_agent: req.headers.get("user-agent") || "",
       session_id,
-      device_session_id,
-      account_creation_url: "https://car.financecheque.uk/claim",
-      address,
-      signature: {
-        payload: ["first_name", "last_name", "date_of_birth", "phone", "email", "address", "postcode"],
-        signature: signatureBase64
-      },
-      opt_in: true
+      signature: signatureBase64,
+      addresses,
     };
 
     console.log("FINAL PAYLOAD KEYS:", Object.keys(payload));
