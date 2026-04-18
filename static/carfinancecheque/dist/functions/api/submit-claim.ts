@@ -1,5 +1,5 @@
 // Cloudflare Pages Function
-// File location: static/pcp2/functions/api/submit-claim.ts
+// File location: static/carfinancecheque/functions/api/submit-claim.ts
 
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin": "*",
@@ -72,18 +72,16 @@ export async function onRequestPost(context: any) {
       String(s || "").charAt(0).toUpperCase() + String(s || "").slice(1).toLowerCase();
 
     // Extract and format fields
-    const title             = String(body.title || "").trim();
-    const first_name        = toTitleCase(String(body.first_name || "").trim());
-    const last_name         = toTitleCase(String(body.last_name || "").trim());
-    const email             = String(body.email || "").trim();
-    const phone             = formatPhone(String(body.phone || "").trim());
-    const date_of_birth     = formatDOB(String(body.date_of_birth || "").trim());
-    const buildingNumber    = String(body.buildingNumber || "").trim();
-    const thoroughfare      = String(body.thoroughfare || "").trim();
-    const townOrCity        = String(body.townOrCity || "").trim();
+    const first_name       = toTitleCase(String(body.first_name || "").trim());
+    const last_name        = toTitleCase(String(body.last_name || "").trim());
+    const email            = String(body.email || "").trim();
+    const phone            = formatPhone(String(body.phone || "").trim());
+    const date_of_birth    = formatDOB(String(body.date_of_birth || "").trim());
+    const buildingNumber   = String(body.buildingNumber || "").trim();
+    const thoroughfare     = String(body.thoroughfare || "").trim();
+    const townOrCity       = String(body.townOrCity || "").trim();
     const postcode_formatted = formatPostcode(String(body.postcode || "").trim());
-    const session_id        = body.session_id || crypto.randomUUID();
-    const device_session_id = body.device_session_id || crypto.randomUUID();
+    const session_id       = body.session_id || crypto.randomUUID();
 
     console.log("ADDRESS FIELDS:", {
       buildingNumber: !!buildingNumber,
@@ -92,76 +90,44 @@ export async function onRequestPost(context: any) {
       postcode: !!postcode_formatted
     });
 
-    // Signature handling
-    // Browser sends: signature (base64 JSON string), signature_image (actual PNG data URL with prefix)
-    // R2R API expects: signature field with "data:image/png;base64," prefix
+    // Signature - spec wants plain base64 string
     let sigImage = String(body.signature_image || "");
-    let sigField = String(body.signature || "");
-    console.log("SIGNATURE DEBUG:", {
-      sigImageStartsWith: sigImage.substring(0, 50),
-      sigImageLength: sigImage.length,
-      sigFieldStartsWith: sigField.substring(0, 50),
-      sigFieldLength: sigField.length
-    });
-    
-    // Check if signature_image is valid (starts with data:image and has actual base64 data)
-    // An empty PNG canvas returns "data:image/png;base64," (just the prefix, no data)
-    const isValidSignature = (s: string) => 
-      s.startsWith("data:image") && s.length > 50;
-    
-    if (!isValidSignature(sigImage)) {
-      // Try the signature field instead
-      if (isValidSignature(sigField)) {
-        sigImage = sigField;
-      } else {
-        // Both signatures are empty/invalid - this shouldn't happen if user signed
-        // Log warning but continue (R2R will reject if truly empty)
-        console.warn("WARNING: No valid signature detected!");
-        sigImage = "";
-      }
-    }
 
-    // Addresses - R2R API expects array of Address objects
-    const addresses = [{
-      line1:          null,
-      line2:          null,
-      line3:          null,
-      line4:          null,
-      buildingName:   null,
+    const extractBase64 = (dataUrl: string): string => {
+      if (!dataUrl || !dataUrl.startsWith("data:")) return dataUrl || "";
+      const commaIndex = dataUrl.indexOf(",");
+      return commaIndex >= 0 ? dataUrl.slice(commaIndex + 1) : dataUrl;
+    };
+
+    const signatureBase64 = extractBase64(sigImage);
+
+    // addresses - spec wants object (not array), key name is "addresses"
+    const addresses = {
+      line1: null,
+      line2: null,
+      line3: null,
+      line4: null,
+      buildingName: null,
       buildingNumber: buildingNumber || null,
       thoroughfare:   thoroughfare || null,
       townOrCity:     townOrCity || null,
-      district:       null,
+      district:   null,
       postcode:       postcode_formatted || null,
-    }];
+    };
 
-    // Build payload
+    // Build payload per API spec - ONLY allowed fields
     const payload: any = {
-      title,
       first_name,
       last_name,
       date_of_birth,
       phone,
       email,
-      client_ip:            req.headers.get("cf-connecting-ip") || "",
-      user_agent:           req.headers.get("user-agent") || "",
+      client_ip:  req.headers.get("cf-connecting-ip") || "",
+      user_agent: req.headers.get("user-agent") || "",
       session_id,
-      device_session_id,
-      account_creation_url: "https://car.financecheque.uk/claim",
+      signature: signatureBase64,
       addresses,
-      opt_in:               true,
     };
-
-    // Add signature - use what browser sends or require it in payload
-    if (sigImage && sigImage.startsWith("data:image")) {
-      payload.signature = sigImage;
-      payload.signature_image = sigImage;
-    } else if (body.signature && body.signature.startsWith("data:image")) {
-      // Alternative: signature field already has prefix
-      payload.signature = body.signature;
-      payload.signature_image = body.signature;
-    }
-    // If no valid signature available, don't add it - will fail validation
 
     console.log("FINAL PAYLOAD KEYS:", Object.keys(payload));
 
