@@ -1,4 +1,4 @@
-name = "llmproxy-production"
+name = "llmproxy"
 main = "worker.js"
 compatibility_date = "2024-01-01"
 
@@ -6,5 +6,5 @@ compatibility_date = "2024-01-01"
 ENVIRONMENT = "production"
 
 [[routes]]
-pattern = "kiro.financecheque.uk/*"
+pattern = "llmproxy.financecheque.uk/*"
 zone_name = "financecheque.uk"
