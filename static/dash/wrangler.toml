@@ -1,0 +1,8 @@
+name = "dash"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+account_id = "42a4a8d7bfb96321118ada213638d050"
+
+[[routes]]
+pattern = "dash.financecheque.uk/*"
+zone_name = "financecheque.uk"
