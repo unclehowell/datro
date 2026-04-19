@@ -244,7 +244,20 @@
         document.getElementById('modeLabel').textContent = MODE_LABELS[mode];
     }
 
+    var guacToken = null;
+    fetch('https://ai.financecheque.uk/guacamole/api/tokens', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'username=user25148535&password=quantum25148535!!'
+    }).then(function(r){ return r.json(); }).then(function(d){
+        guacToken = d.authToken;
+        document.getElementById('frameBottom').src = 'https://ai.financecheque.uk/guacamole/#/?token=' + guacToken;
+    }).catch(function(){});
+
     function setIframeSrc(iframeId, url) {
+        if (url.indexOf('guacamole') !== -1 && guacToken) {
+            url = 'https://ai.financecheque.uk/guacamole/#/?token=' + guacToken;
+        }
         document.getElementById(iframeId).src = url;
     }
 

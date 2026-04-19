@@ -6,6 +6,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.0.2] - 2026-04-19
+### Added
+- Guacamole auto-login via API token on page load and Home tab
+
+---
+
 ## [1.0.1] - 2026-04-19
 ### Fixed
 - Removed Oakesy nav item
