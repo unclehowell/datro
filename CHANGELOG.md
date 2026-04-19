@@ -6,6 +6,17 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.0.1] - 2026-04-19
+### Fixed
+- Removed Oakesy nav item
+- Gif (top pane): centre-aligned, height fills iframe pane
+- Media tab: loads ai.financecheque.uk/jellyfin/
+- Brain tab: loads ai.financecheque.uk/paperclip/
+- Stats tab: loads ai.financecheque.uk/netdata/
+- All tab URLs updated from command.financecheque.uk to ai.financecheque.uk
+
+---
+
 ## [1.0.0] - 2026-04-17
 ### Changed
 - Landing page (Home): Split view with gif on top, guacamole on bottom
