@@ -6,22 +6,22 @@ export const Claim: React.FC = () => {
   return (
     <div className="pb-8">
       {/* Header */}
-      <section className="bg-slate-900 text-white py-8 px-4 border-b border-slate-800">
+      <section className="bg-slate-900 text-white py-4 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-3xl md:text-4xl font-display font-black uppercase leading-none mb-4">
-            Check Your <br />Eligibility
+          <h1 className="text-xl md:text-2xl font-display font-black uppercase leading-none mb-2">
+            Check Your Eligibility
           </h1>
-          <p className="text-lg md:text-xl text-brand-accent max-w-2xl mx-auto font-medium uppercase tracking-tight">
+          <p className="text-xs md:text-sm text-brand-accent max-w-2xl mx-auto font-medium uppercase tracking-tight">
             COMPLETE OUR SIMPLE ENQUIRY FORM TO SEE IF YOU ARE ELIGIBLE FOR A PCP CAR FINANCE REFUND.
           </p>
         </div>
       </section>
 
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-16">
+      <div className="max-w-7xl mx-auto px-4 py-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Form Column */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-3xl p-8 shadow-sm border border-slate-100">
+            <div className="bg-white rounded-3xl p-4 shadow-sm border border-slate-100">
               <ClaimForm />
             </div>
           </div>
