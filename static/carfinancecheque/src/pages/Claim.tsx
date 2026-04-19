@@ -4,14 +4,14 @@ import { ShieldCheck, Clock, CheckCircle } from 'lucide-react';
 
 export const Claim: React.FC = () => {
   return (
-    <div className="pb-24">
+    <div className="pb-8">
       {/* Header */}
-      <section className="bg-slate-900 text-white py-24 px-4 border-b border-slate-800">
+      <section className="bg-slate-900 text-white py-8 px-4 border-b border-slate-800">
         <div className="max-w-7xl mx-auto text-center">
-          <h1 className="text-6xl md:text-8xl font-display font-black uppercase leading-none mb-6">
+          <h1 className="text-3xl md:text-4xl font-display font-black uppercase leading-none mb-4">
             Check Your <br />Eligibility
           </h1>
-          <p className="text-xl md:text-2xl text-brand-accent max-w-2xl mx-auto font-medium uppercase tracking-tight">
+          <p className="text-lg md:text-xl text-brand-accent max-w-2xl mx-auto font-medium uppercase tracking-tight">
             COMPLETE OUR SIMPLE ENQUIRY FORM TO SEE IF YOU ARE ELIGIBLE FOR A PCP CAR FINANCE REFUND.
           </p>
         </div>
