@@ -6,6 +6,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ---
 
+## [1.0.3] - 2026-04-19
+### Changed
+- Animated gif updated to agent.gif
+
+---
+
 ## [1.0.2] - 2026-04-19
 ### Added
 - Guacamole auto-login via API token on page load and Home tab
