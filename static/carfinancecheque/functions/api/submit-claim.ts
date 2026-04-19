@@ -74,6 +74,7 @@ export async function onRequestPost(context: any) {
     // Extract and format fields
     const first_name       = toTitleCase(String(body.first_name || "").trim());
     const last_name        = toTitleCase(String(body.last_name || "").trim());
+    const title            = String(body.title || "Mr").trim();
     const email            = String(body.email || "").trim();
     const phone            = formatPhone(String(body.phone || "").trim());
     const date_of_birth    = formatDOB(String(body.date_of_birth || "").trim());
@@ -90,33 +91,22 @@ export async function onRequestPost(context: any) {
       postcode: !!postcode_formatted
     });
 
-    // Signature - spec wants plain base64 string
+    // Signature - spec shows full data URL in example
     let sigImage = String(body.signature_image || "");
 
-    const extractBase64 = (dataUrl: string): string => {
-      if (!dataUrl || !dataUrl.startsWith("data:")) return dataUrl || "";
-      const commaIndex = dataUrl.indexOf(",");
-      return commaIndex >= 0 ? dataUrl.slice(commaIndex + 1) : dataUrl;
-    };
+    // addresses - spec wants array of objects
+    const addresses = [
+      {
+        buildingNumber: buildingNumber || null,
+        thoroughfare:   thoroughfare || null,
+        townOrCity:     townOrCity || null,
+        postcode:       postcode_formatted || null,
+      }
+    ];
 
-    const signatureBase64 = extractBase64(sigImage);
-
-    // addresses - spec wants object (not array), key name is "addresses"
-    const addresses = {
-      line1: null,
-      line2: null,
-      line3: null,
-      line4: null,
-      buildingName: null,
-      buildingNumber: buildingNumber || null,
-      thoroughfare:   thoroughfare || null,
-      townOrCity:     townOrCity || null,
-      district:   null,
-      postcode:       postcode_formatted || null,
-    };
-
-    // Build payload per API spec - ONLY allowed fields
+    // Build payload per API spec V3.0
     const payload: any = {
+      title,
       first_name,
       last_name,
       date_of_birth,
@@ -125,8 +115,10 @@ export async function onRequestPost(context: any) {
       client_ip:  req.headers.get("cf-connecting-ip") || "",
       user_agent: req.headers.get("user-agent") || "",
       session_id,
-      signature: signatureBase64,
+      reference: "carfinancecheque",
+      signature: sigImage,
       addresses,
+      test_mode: false
     };
 
     console.log("FINAL PAYLOAD KEYS:", Object.keys(payload));
