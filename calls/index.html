@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DATRO Calls - API Metadata</title>
+  <meta name="description" content="DATRO Calls - aql.com API Metadata Dashboard">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-dim: #8b949e;
+      --accent: #58a6ff;
+      --success: #3fb950;
+      --error: #f85149;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    .container { max-width: 800px; margin: 0 auto; }
+    h1 { color: var(--accent); margin-bottom: 24px; font-size: 1.5rem; }
+    h2 { color: var(--text); margin-bottom: 12px; font-size: 1rem; opacity: 0.9; }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .label { color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 4px; letter-spacing: 0.5px; }
+    .value { font-size: 1rem; word-break: break-all; }
+    .mono { font-family: 'SF Mono', Monaco, monospace; font-size: 0.85rem; }
+    input, button {
+      padding: 10px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+    }
+    input { background: var(--bg); color: var(--text); width: 100%; margin-bottom: 12px; }
+    button {
+      background: #238636;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+      font-weight: 500;
+    }
+    button:hover { background: #2ea043; }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--error);
+      display: inline-block;
+    }
+    .status-dot.active { background: var(--success); }
+    pre {
+      background: var(--bg);
+      padding: 12px;
+      border-radius: 4px;
+      overflow-x: auto;
+      font-size: 0.8rem;
+      margin: 0;
+    }
+    .method { display: flex; gap: 8px; margin-bottom: 12px; }
+    .method button { width: auto; flex: 1; }
+    .method button.selected { background: var(--accent); }
+    .kv { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 0.9rem; }
+    .kv:last-child { border: none; }
+    .kv-key { color: var(--text-dim); }
+    .kv-val { font-weight: 500; }
+    .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; background: var(--accent); color: var(--bg); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DATRO Calls <span class="badge">aql.com</span></h1>
+    
+    <div class="card">
+      <div class="label">Account</div>
+      <div class="value">Trustedoffice</div>
+    </div>
+    
+    <div class="card">
+      <div class="label">API Endpoint</div>
+      <div class="value mono">https://gw.aql.com/nl/network_lookup.php</div>
+    </div>
+    
+    <div class="card">
+      <div class="label">Request Schema</div>
+      <pre>{
+  "username": "Trustedoffice",
+  "password": "CarrieMadej2703!!",
+  "msisdn": "447700900000",
+  "method": 1 | 2 | 3,
+  "contact": 0 | 1
+}</pre>
+    </div>
+    
+    <div class="card">
+      <div class="label">Method Values</div>
+      <div class="kv"><span class="kv-key">method=1</span><span class="kv-val">Ofcom Lookup (Free)</span></div>
+      <div class="kv"><span class="kv-key">method=2</span><span class="kv-val">Network Lookup (Credit)</span></div>
+      <div class="kv"><span class="kv-key">method=3</span><span class="kv-val">Both (Ofcom + Network)</span></div>
+    </div>
+    
+    <div class="card">
+      <div class="label">Response Schema</div>
+      <pre>{
+  "status": 0,           // 0=Success
+  "msisdn": "4477...",
+  "country": "United Kingdom",
+  "ofcom_network": "Vodafone Ltd",
+  "nl_network": "Vodafone UK",
+  "nl_mvno": "",
+  "ofcom_change_date": "MM-YYYY"
+}</pre>
+    </div>
+    
+    <div class="card">
+      <div class="label">Status</div>
+      <div>
+        <span class="status-dot" id="statusDot"></span>
+        <span id="statusText">Checking API...</span>
+      </div>
+    </div>
+    
+    <div class="card">
+      <div class="label">Network Lookup</div>
+      <input type="text" id="phoneInput" placeholder="Enter UK phone (e.g., 447700900000)" />
+      <div class="method">
+        <button onclick="setMethod(1)" id="m1">Ofcom</button>
+        <button class="selected" onclick="setMethod(3)" id="m3">Both</button>
+        <button onclick="setMethod(2)" id="m2">Network</button>
+      </div>
+      <button onclick="lookupNumber()">Lookup Number</button>
+    </div>
+    
+    <div id="results"></div>
+  </div>
+
+  <script>
+    const USERNAME = 'Trustedoffice';
+    const PASSWORD = 'CarrieMadej2703!!';
+    const ENDPOINT = 'https://gw.aql.com/nl/network_lookup.php';
+    let selectedMethod = 3;
+    
+    function setMethod(m) {
+      selectedMethod = m;
+      document.querySelectorAll('.method button').forEach(b => b.classList.remove('selected'));
+      document.getElementById('m' + m).classList.add('selected');
+    }
+    
+    async function checkStatus() {
+      try {
+        const form = new URLSearchParams();
+        form.append('username', USERNAME);
+        form.append('password', PASSWORD);
+        form.append('msisdn', '447700900000');
+        form.append('method', '1');
+        
+        const response = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: form.toString()
+        });
+        
+        const text = await response.text();
+        if (text.includes('status') || text.includes(':')) {
+          document.getElementById('statusDot').classList.add('active');
+          document.getElementById('statusText').textContent = 'API Online';
+        }
+      } catch (e) {
+        document.getElementById('statusText').textContent = 'Offline: ' + e.message;
+      }
+    }
+    checkStatus();
+    
+    async function lookupNumber() {
+      const phone = document.getElementById('phoneInput').value.trim();
+      const results = document.getElementById('results');
+      
+      if (!phone) {
+        results.innerHTML = '<div class="card" style="color: var(--error)">Enter a phone number</div>';
+        return;
+      }
+      
+      const msisdn = phone.startsWith('44') ? phone : '44' + phone.replace(/^0/, '');
+      
+      const formData = new URLSearchParams();
+      formData.append('username', USERNAME);
+      formData.append('password', PASSWORD);
+      formData.append('msisdn', msisdn);
+      formData.append('method', selectedMethod.toString());
+      formData.append('contact', '1');
+      
+      results.innerHTML = '<div class="card">Looking up ' + msisdn + '...</div>';
+      
+      try {
+        const response = await fetch(ENDPOINT, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: formData.toString()
+        });
+        
+        const text = await response.text();
+        
+        if (text.startsWith('0:')) {
+          const parts = text.split(':');
+          let html = '<div class="card"><div class="kv"><span class="kv-key">Status</span><span class="kv-val" style="color:var(--success)">Success</span></div>';
+          if (parts[1]) html += '<div class="kv"><span class="kv-key">MSISDN</span><span class="kv-val">' + parts[1] + '</span></div>';
+          if (parts[2]) html += '<div class="kv"><span class="kv-key">Country</span><span class="kv-val">' + parts[2] + '</span></div>';
+          if (parts[3]) html += '<div class="kv"><span class="kv-key">Ofcom Network</span><span class="kv-val">' + parts[3] + '</span></div>';
+          if (parts[4]) html += '<div class="kv"><span class="kv-key">Network</span><span class="kv-val">' + parts[4] + '</span></div>';
+          html += '</div>';
+          results.innerHTML = html;
+        } else if (text.startsWith('2:')) {
+          results.innerHTML = '<div class="card" style="color:var(--error)">Authentication error - check credentials</div>';
+        } else {
+          results.innerHTML = '<div class="card" style="color:var(--error)">' + text + '</div>';
+        }
+      } catch (e) {
+        results.innerHTML = '<div class="card" style="color:var(--error)">Error: ' + e.message + '</div>';
+      }
+    }
+  </script>
+</body>
+</html>
