@@ -1,9 +1,9 @@
 name = "calls"
 compatibility_date = "2026-04-21"
-pages_build_output_dir = "."
+pages_build_output_dir = "static/calls"
 
-[[pages.functions]]
-directory = "./functions"
+[compatibility_flags]
+workers = ["streams_enable_constructors"]
 
 [vars]
 ENV = "production"
