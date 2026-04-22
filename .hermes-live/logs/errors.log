@@ -1,2 +1,0 @@
-2026-04-20 14:10:04,694 WARNING gateway.run: No user allowlists configured. All unauthorized users will be denied. Set GATEWAY_ALLOW_ALL_USERS=true in ~/.hermes/.env to allow open access, or configure platform allowlists (e.g., TELEGRAM_ALLOWED_USERS=your_id).
-2026-04-20 14:10:04,728 WARNING gateway.run: No messaging platforms enabled.

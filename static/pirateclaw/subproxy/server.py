@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""PirateClaw Sub-Proxy"""
+"""PirateClaw Sub-Proxy - Simplified Version"""
 import os, json, logging
 from pathlib import Path
 from aiohttp import web
@@ -11,7 +11,7 @@ logger = logging.getLogger("pirateclaw-subproxy")
 PROXY_PORT = int(os.getenv("PROXY_PORT", "5000"))
 PARENT_PROXY = os.getenv("PARENT_PROXY", "https://pirateclaw.datro.xyz")
 
-MACHINE_CONFIG = Path(__file__).parent / "config" / "machine.json"
+MACHINE_CONFIG = Path("/home/unclehowell/pirateclaw/subproxy/config/machine.json")
 
 def load_config():
     return json.loads(MACHINE_CONFIG.read_text()) if MACHINE_CONFIG.exists() else {"machine_id": "unknown"}
@@ -40,20 +40,17 @@ async def proxy_handler(request):
 async def health_handler(request):
     return web.json_response({"status": "ok", "parent": PARENT_PROXY, "machine": load_config()})
 
+async def init_session(app):
+    app["session"] = aiohttp.ClientSession()
+
+async def close_session(app):
+    if app["session"]:
+        await app["session"].close()
+
 def create_app():
     app = web.Application()
-    app["session"] = None
-    
-    async def init_session(app):
-        app["session"] = aiohttp.ClientSession()
-    
-    async def close_session(app):
-        if app["session"]:
-            await app["session"].close()
-    
     app.on_startup.append(init_session)
     app.on_cleanup.append(close_session)
-    
     app.router.add_post("/v1/chat/completions", proxy_handler)
     app.router.add_get("/health", health_handler)
     app.router.add_get("/", health_handler)
