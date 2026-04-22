@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PirateClaw Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 {
+      color: #e8a000;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card h2 {
+      color: #e8a000;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-ok { color: #34d399; }
+    .status-warn { color: #f59e0b; }
+    .status-err { color: #f87171; }
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat:last-child { border: none; }
+    .stat-label { color: #94a3b8; }
+    .stat-value { font-weight: 600; }
+    .proxy-item {
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .proxy-item.local { border-left: 3px solid #34d399; }
+    .proxy-item.remote { border-left: 3px solid #e8a000; }
+    .proxy-ip { font-family: monospace; color: #e8a000; }
+    .proxy-state { 
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      background: rgba(52,211,153,0.2);
+      color: #34d399;
+    }
+    .proxy-state.blocked {
+      background: rgba(248,113,113,0.2);
+      color: #f87171;
+    }
+    .proxy-cap {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      background: rgba(232,160,0,0.2);
+      color: #e8a000;
+      margin-right: 4px;
+    }
+    .install-box {
+      background: rgba(52,211,153,0.1);
+      border: 1px solid rgba(52,211,153,0.3);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .install-cmd {
+      font-family: monospace;
+      background: #0f0f1a;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+      color: #34d399;
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+    .btn {
+      background: #e8a000;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn:hover { filter: brightness(1.1); }
+    .endpoint {
+      font-family: monospace;
+      background: rgba(0,0,0,0.3);
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin: 5px 0;
+      font-size: 0.85rem;
+    }
+    .endpoint-method {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      margin-right: 8px;
+    }
+    .method-get { background: rgba(52,211,153,0.3); color: #34d399; }
+    .method-post { background: rgba(59,130,246,0.3); color: #60a5fa; }
+    #refresh-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚓ PirateClaw STP Dashboard</h1>
+    
+    <div class="grid">
+      <div class="card">
+        <h2>📊 System Status</h2>
+        <div class="stat">
+          <span class="stat-label">Service</span>
+          <span class="stat-value status-ok">Running</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Version</span>
+          <span class="stat-value" id="version">Loading...</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Node ID</span>
+          <span class="stat-value" id="node-id">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Local IP</span>
+          <span class="stat-value" id="local-ip">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Uptime</span>
+          <span class="stat-value" id="uptime">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Chat Only Mode</span>
+          <span class="stat-value" id="chat-only">-</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🔗 Network</h2>
+        <div class="stat">
+          <span class="stat-label">Parent Proxy</span>
+          <span class="stat-value" style="font-size:0.8rem">pirateclaw.datro.xyz</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Proxy Port</span>
+          <span class="stat-value">6000</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Discovery Port</span>
+          <span class="stat-value">6001 (UDP)</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Discovered Proxies</span>
+          <span class="stat-value" id="proxy-count">-</span>
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>🔀 STP Topology</h2>
+        <div id="proxies-list">Loading...</div>
+      </div>
+
+      <div class="card">
+        <h2>📡 Endpoints</h2>
+        <div class="endpoint">
+          <span class="endpoint-method method-get">GET</span>
+          <span>/health</span>
+        </div>
+        <div class="endpoint">
+          <span class="endpoint-method method-get">GET</span>
+          <span>/status</span>
+        </div>
+        <div class="endpoint">
+          <span class="endpoint-method method-get">GET</span>
+          <span>/proxies</span>
+        </div>
+        <div class="endpoint">
+          <span class="endpoint-method method-post">POST</span>
+          <span>/v1/chat/completions</span>
+        </div>
+        <div class="endpoint">
+          <span class="endpoint-method method-post">POST</span>
+          <span>/route</span>
+        </div>
+      </div>
+
+      <div class="card install-box">
+        <h2>🚀 Install PirateClaw</h2>
+        <div class="install-cmd">curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh</div>
+        <button class="btn" onclick="copyCmd()">Copy Command</button>
+        <p style="margin-top:15px;font-size:0.85rem;color:#94a3b8">
+          One-liner install with STP routing
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>💬 Test Chat</h2>
+        <textarea id="test-prompt" rows="3" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px;color:#e0e0e0;font-family:inherit;resize:none" placeholder="Enter your message...">Hello! What is 2+2?</textarea>
+        <button class="btn" style="margin-top:10px;width:100%" onclick="testChat()">Send</button>
+        <div id="test-result" style="margin-top:10px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;min-height:60px;white-space:pre-wrap;font-size:0.85rem"></div>
+      </div>
+    </div>
+  </div>
+
+  <button class="btn" id="refresh-btn" onclick="fetchStatus()" title="Refresh">↻</button>
+
+  <script>
+    async function fetchStatus() {
+      try {
+        const res = await fetch('/status');
+        const data = await res.json();
+        
+        document.getElementById('version').textContent = data.version || '-';
+        document.getElementById('node-id').textContent = (data.node_id || '-').substring(0, 8);
+        document.getElementById('local-ip').textContent = data.local_ip || '-';
+        document.getElementById('uptime').textContent = data.uptime ? formatUptime(data.uptime) : '-';
+        document.getElementById('chat-only').textContent = data.chat_only_mode ? 'Enabled' : 'Disabled';
+        document.getElementById('proxy-count').textContent = data.proxies ? data.proxies.length : 0;
+        
+        const proxiesList = document.getElementById('proxies-list');
+        if (data.proxies && data.proxies.length > 0) {
+          proxiesList.innerHTML = data.proxies.map(p => `
+            <div class="proxy-item ${p.is_local ? 'local' : 'remote'}">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="proxy-ip">${p.ip}:${p.port}</span>
+                <span class="proxy-state ${p.state === 'forwarding' ? '' : 'blocked'}">${p.state}</span>
+              </div>
+              <div style="margin-top:5px">
+                ${p.capabilities.map(c => `<span class="proxy-cap">${c}</span>`).join('')}
+              </div>
+              <div style="margin-top:5px;font-size:0.75rem;color:#94a3b8">
+                Path Cost: ${p.path_cost} | Latency: ${p.latency}ms
+                ${p.is_local ? ' | 🖥️ This Machine' : ''}
+              </div>
+            </div>
+          `).join('');
+        } else {
+          proxiesList.innerHTML = '<p style="color:#94a3b8">No proxies discovered yet</p>';
+        }
+      } catch (e) {
+        console.error('Failed to fetch status:', e);
+      }
+    }
+
+    function formatUptime(ts) {
+      const diff = Math.floor(Date.now() / 1000) - ts;
+      if (diff < 60) return `${diff}s`;
+      if (diff < 3600) return `${Math.floor(diff/60)}m`;
+      return `${Math.floor(diff/3600)}h`;
+    }
+
+    async function testChat() {
+      const prompt = document.getElementById('test-prompt').value;
+      const result = document.getElementById('test-result');
+      result.textContent = 'Sending...';
+      
+      try {
+        const res = await fetch('/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 100
+          })
+        });
+        const data = await res.json();
+        if (data.choices && data.choices[0]) {
+          result.textContent = data.choices[0].message.content + '\n\n' + 
+            `Model: ${data.model} | Via: ${data._routed_via || 'unknown'}`;
+        } else {
+          result.textContent = JSON.stringify(data, null, 2);
+        }
+      } catch (e) {
+        result.textContent = 'Error: ' + e.message;
+      }
+    }
+
+    function copyCmd() {
+      navigator.clipboard.writeText('curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh');
+      alert('Copied!');
+    }
+
+    fetchStatus();
+    setInterval(fetchStatus, 10000);
+  </script>
+</body>
+</html>
