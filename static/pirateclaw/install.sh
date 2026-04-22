@@ -1,5 +1,5 @@
 #!/usr/bin/env sh
-# PirateClaw — STP LLM Proxy Install Script v0.0.1.27
+# PirateClaw — Install Script v0.0.1.28
 # curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh
 set -e
 
@@ -14,7 +14,7 @@ done
 
 VERSION=$(curl -fsSL "https://api.github.com/repos/unclehowell/datro/tags?per_page=50" 2>/dev/null \
   | grep -oE 'pirateclaw-v0\.0\.1\.[0-9]+' | sort -t. -k4 -n | tail -1 | sed 's/pirateclaw-v//')
-VERSION="${VERSION:-0.0.1.27}"
+VERSION="${VERSION:-0.0.1.28}"
 
 REPO_URL="https://github.com/unclehowell/datro.git"
 BRANCH="pirateclaw"
@@ -33,18 +33,13 @@ die()  { printf "[error] %s\n" "$*"; exit 1; }
 
 cat <<DISC
 
-  ╔═══════════════════════════════════════════════════════╗
-  ║  PirateClaw v${VERSION} - STP LLM Routing              ║
-  ║  Spanning Tree Protocol for AI Agents                 ║
-  ╚═══════════════════════════════════════════════════════╝
+  PirateClaw v${VERSION} - The Galaxy's Most Resilient LLM Index
 
   Features:
-    ✓ Auto-discovery of peer proxies via UDP broadcast
-    ✓ STP-style path cost routing (lowest cost wins)
-    ✓ Round-robin among equal-cost paths
-    ✓ Chat-only routing to remote machines
-    ✓ Local execution on your machine
-    ✓ Fallback chain: cloud → local → peer
+    - Download takeouts (ptor files) from the web index
+    - Execute prompts directly from the dashboard
+    - Connect to pirateclaw.datro.xyz parent proxy
+    - Fallback to local Qwen2.5-0.5B LLM
 
 DISC
 
@@ -56,7 +51,13 @@ if [ -z "$REPLY" ]; then
     printf "  [R]einstall  [U]ninstall  [Q]uit ? "
     [ ! -t 0 ] && REPLY="R" || read -r REPLY </dev/tty
   else
-    printf "  [I]nstall  [Q]uit ? "
+    curl -fsSL "https://i.postimg.cc/br5dCrjB/agent.gif" -o /tmp/pc-banner.gif
+  if command -v chafa >/dev/null 2>&1 && [ -f /tmp/pc-banner.gif ]; then
+    chafa --size 40x20 --color-space rgb /tmp/pc-banner.gif 2>/dev/null || cat /tmp/pc-banner.gif 2>/dev/null
+    rm -f /tmp/pc-banner.gif
+  fi
+
+  printf "  [I]nstall  [U]ninstall  [Q]uit ? "
     [ ! -t 0 ] && REPLY="I" || read -r REPLY </dev/tty
   fi
 fi
@@ -118,38 +119,24 @@ EOF
 ok "Config written"
 
 PROXY_SRC="$INSTALL_DIR/$SUBDIR/subproxy/server.py"
+DASH_SRC="$INSTALL_DIR/$SUBDIR/dashboard/server.py"
 [ -f "$PROXY_SRC" ] || die "server.py not found"
+[ -f "$DASH_SRC" ] || die "dashboard server.py not found"
 
 nohup python3 "$PROXY_SRC" > "$LOG_DIR/proxy.log" 2>&1 &
-PROXY_PID=$!
+nohup python3 "$DASH_SRC" > "$LOG_DIR/dashboard.log" 2>&1 &
 
 sleep 3
-if curl -sf "http://localhost:${PROXY_PORT}/health" >/dev/null 2>&1; then
-  ok "Proxy running on :${PROXY_PORT} (PID: $PROXY_PID)"
-else
-  warn "Proxy may have failed to start. Check $LOG_DIR/proxy.log"
-fi
+curl -sf "http://localhost:${PROXY_PORT}/health" >/dev/null 2>&1 && ok "Proxy on :${PROXY_PORT}" || warn "Proxy failed"
+curl -sf "http://localhost:${DASH_PORT}/" >/dev/null 2>&1 && ok "Dashboard on :${DASH_PORT}" || warn "Dashboard failed"
 
 cat <<DONE
 
-  ╔═══════════════════════════════════════════════════════╗
-  ║  PirateClaw v${VERSION} installed!                    ║
-  ╚═══════════════════════════════════════════════════════╝
+  PirateClaw v${VERSION} installed!
 
-  Endpoints:
-    POST /v1/chat/completions    - STP-routed chat completion
-    GET  /status                - STP topology status
-    GET  /proxies               - List discovered proxies
-    POST /route                 - Manual route selection
-    GET  /health                - Health check
-
-  Dashboard: http://localhost:${DASH_PORT}
-
-  Your machine: $LOCAL_IP:$PROXY_PORT
-  Discovery:    $LOCAL_IP:$DISCOVERY_PORT (UDP)
-  Parent:       $PARENT
-
-  Hermes config:
-    base_url: http://localhost:${PROXY_PORT}/v1
+  WebUI:   http://localhost:${DASH_PORT}
+  Proxy:   http://localhost:${PROXY_PORT}
+  Parent:  ${PARENT}
+  Logs:    ${LOG_DIR}/
 
 DONE
