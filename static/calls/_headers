@@ -1,7 +1,13 @@
 /*
   Server: Cloudflare
-  Cache-Control: no-store
+  Cache-Control: no-store, no-transform
+  X-Rocket-Dont-Transform: true
   
+/index.html
+  Server: Cloudflare
+  Cache-Control: no-store, no-transform
+  X-Rocket-Dont-Transform: true
+
 /api/*
   Server: Cloudflare
   Cache-Control: no-store
