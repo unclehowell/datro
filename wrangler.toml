@@ -1,8 +1,8 @@
 name = "calls"
 compatibility_date = "2026-04-21"
 
-[compatibility_flags]
-workers = ["streams_enable_constructors"]
+[site]
+bucket = "./static/calls"
 
 [vars]
 ENV = "production"
