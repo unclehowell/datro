@@ -1,0 +1,12 @@
+2026-04-20 14:10:04,614 INFO tools.tirith_security: tirith not found — downloading latest release for x86_64-unknown-linux-gnu...
+2026-04-20 14:10:04,644 INFO gateway.run: Starting Hermes Gateway...
+2026-04-20 14:10:04,646 INFO gateway.run: Session storage: /home/unclehowell/datro/.hermes-live/sessions
+2026-04-20 14:10:04,694 WARNING gateway.run: No user allowlists configured. All unauthorized users will be denied. Set GATEWAY_ALLOW_ALL_USERS=true in ~/.hermes/.env to allow open access, or configure platform allowlists (e.g., TELEGRAM_ALLOWED_USERS=your_id).
+2026-04-20 14:10:04,728 WARNING gateway.run: No messaging platforms enabled.
+2026-04-20 14:10:04,729 INFO gateway.run: Gateway will continue running for cron job execution.
+2026-04-20 14:10:04,735 INFO gateway.run: 1 hook(s) loaded
+2026-04-20 14:10:04,766 INFO gateway.run: Channel directory built: 0 target(s)
+2026-04-20 14:10:04,768 INFO gateway.run: Press Ctrl+C to stop
+2026-04-20 14:10:04,997 INFO gateway.run: Cron ticker started (interval=60s)
+2026-04-20 14:10:08,441 INFO tools.tirith_security: cosign not on PATH — installing tirith with SHA-256 verification only (install cosign for full supply chain verification)
+2026-04-20 14:10:08,788 INFO tools.tirith_security: tirith installed to /home/unclehowell/datro/.hermes-live/bin/tirith (SHA-256 only)
