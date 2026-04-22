@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DATRO Calls Portal</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #0d1117;
+      --bg-card: #161b22;
+      --border: #30363d;
+      --text: #c9d1d9;
+      --text-dim: #8b949e;
+      --accent: #58a6ff;
+      --success: #3fb950;
+      --error: #f85149;
+    }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 20px;
+      line-height: 1.5;
+    }
+    .container { max-width: 600px; margin: 0 auto; }
+    h1 { color: var(--accent); margin-bottom: 24px; font-size: 1.5rem; text-align: center; }
+    .card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      margin-bottom: 16px;
+    }
+    .label { color: var(--text-dim); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 4px; }
+    .value { font-size: 1rem; margin-bottom: 12px; }
+    input, button {
+      padding: 12px 16px;
+      border-radius: 6px;
+      border: 1px solid var(--border);
+      font-size: 1rem;
+      width: 100%;
+    }
+    input { background: var(--bg); color: var(--text); margin-bottom: 12px; }
+    button {
+      background: #238636;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+      font-weight: 500;
+    }
+    button:hover { background: #2ea043; }
+    .error { color: var(--error); margin-bottom: 12px; text-align: center; }
+    .hidden { display: none; }
+    .balance { font-size: 2rem; color: var(--success); text-align: center; margin: 20px 0; }
+    .recording {
+      background: var(--bg);
+      padding: 12px;
+      border-radius: 6px;
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .recording-info { flex: 1; }
+    .recording-date { color: var(--text-dim); font-size: 0.85rem; }
+    .download-btn {
+      background: var(--border);
+      color: var(--text);
+      padding: 6px 12px;
+      font-size: 0.85rem;
+      width: auto;
+      text-decoration: none;
+      display: inline-block;
+    }
+    .logout-btn { background: var(--error); margin-top: 12px; }
+    .logout-btn:hover { background: #da3633; }
+    .user-info { text-align: center; margin-bottom: 20px; }
+    .user-phone { font-size: 1.2rem; color: var(--accent); }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>DATRO Calls Portal</h1>
+    
+    <div id="loginSection">
+      <div class="card">
+        <div class="label">Phone Number</div>
+        <input type="text" id="phoneInput" placeholder="e.g., 01463630144" />
+        
+        <div class="label">Password</div>
+        <input type="password" id="passwordInput" placeholder="Enter your password" />
+        
+        <button onclick="login()">Login</button>
+        
+        <div id="loginError" class="error hidden"></div>
+      </div>
+    </div>
+    
+    <div id="dashboardSection" class="hidden">
+      <div class="card">
+        <div class="user-info">
+          <div class="label">Logged in as</div>
+          <div class="user-phone" id="userPhone"></div>
+        </div>
+        
+        <div class="label">VoIP Credit Balance</div>
+        <div class="balance" id="balanceDisplay">£0.00</div>
+      </div>
+      
+      <div class="card">
+        <div class="label">Call Recordings</div>
+        <div id="recordingsList"></div>
+      </div>
+      
+      <button class="logout-btn" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    let currentUser = null;
+    let authToken = null;
+    
+    async function login() {
+      const phoneInput = document.getElementById('phoneInput').value.trim();
+      const password = document.getElementById('passwordInput').value;
+      const errorEl = document.getElementById('loginError');
+      
+      errorEl.classList.add('hidden');
+      
+      try {
+        const res = await fetch('/api/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ phone: phoneInput, password })
+        });
+        
+        const data = await res.json();
+        
+        if (!res.ok) {
+          errorEl.textContent = data.error || 'Login failed';
+          errorEl.classList.remove('hidden');
+          return;
+        }
+        
+        currentUser = data.phone;
+        authToken = data.token;
+        localStorage.setItem('calls_token', authToken);
+        showDashboard();
+        
+      } catch (e) {
+        errorEl.textContent = 'Server error';
+        errorEl.classList.remove('hidden');
+      }
+    }
+    
+    function logout() {
+      currentUser = null;
+      authToken = null;
+      localStorage.removeItem('calls_token');
+      document.getElementById('phoneInput').value = '';
+      document.getElementById('passwordInput').value = '';
+      document.getElementById('loginSection').classList.remove('hidden');
+      document.getElementById('dashboardSection').classList.add('hidden');
+    }
+    
+    function showDashboard() {
+      document.getElementById('loginSection').classList.add('hidden');
+      document.getElementById('dashboardSection').classList.remove('hidden');
+      document.getElementById('userPhone').textContent = currentUser;
+      
+      loadData();
+    }
+    
+    async function loadData() {
+      document.getElementById('balanceDisplay').textContent = 'Loading...';
+      document.getElementById('recordingsList').innerHTML = '<div class="value">Loading...</div>';
+      
+      try {
+        const res = await fetch('/api/data', {
+          headers: { 'Authorization': 'Bearer ' + authToken }
+        });
+        
+        const data = await res.json();
+        
+        document.getElementById('balanceDisplay').textContent = '£' + data.balance.toFixed(2);
+        
+        if (data.recordings && data.recordings.length > 0) {
+          document.getElementById('recordingsList').innerHTML = data.recordings.map(r => 
+            '<div class="recording">' +
+              '<div class="recording-info">' +
+                '<div class="value">' + r.from + ' → ' + r.to + '</div>' +
+                '<div class="recording-date">' + r.date + ' • ' + r.duration + '</div>' +
+              '</div>' +
+              '<button class="download-btn" onclick="alert(\'Demo\')">Download</button>' +
+            '</div>'
+          ).join('');
+        } else {
+          document.getElementById('recordingsList').innerHTML = '<div class="value">No recordings found</div>';
+        }
+        
+      } catch (e) {
+        document.getElementById('balanceDisplay').textContent = '£0.00';
+        document.getElementById('recordingsList').innerHTML = '<div class="value">Could not load data</div>';
+      }
+    }
+    
+    const savedToken = localStorage.getItem('calls_token');
+    if (savedToken) {
+      try {
+        const [phone] = atob(savedToken).split(':');
+        if (phone) {
+          currentUser = phone;
+          authToken = savedToken;
+          showDashboard();
+        }
+      } catch (e) {
+        localStorage.removeItem('calls_token');
+      }
+    }
+  </script>
+</body>
+</html>

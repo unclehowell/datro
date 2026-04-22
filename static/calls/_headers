@@ -1,0 +1,12 @@
+/*
+  Server: Cloudflare
+  Cache-Control: no-store
+  
+/api/*
+  Server: Cloudflare
+  Cache-Control: no-store
+  Content-Type: application/json
+
+/functions/*
+  Server: Cloudflare
+  Cache-Control: no-store
