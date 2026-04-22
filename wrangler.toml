@@ -1,6 +1,5 @@
 name = "calls"
 compatibility_date = "2026-04-21"
-pages_build_output_dir = "static/calls"
 
 [compatibility_flags]
 workers = ["streams_enable_constructors"]
