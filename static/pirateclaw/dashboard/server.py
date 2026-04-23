@@ -1,20 +1,25 @@
 #!/usr/bin/env python3
-"""PirateClaw Dashboard - Simple HTTP Server"""
-import os
-import http.server
-import socketserver
-import threading
+"""PirateClaw Dashboard"""
+from aiohttp import web
+import aiohttp
 
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-DASH_PORT = int(os.getenv("DASH_PORT", "8080"))
+DASH_PORT = int(__import__('os').getenv('DASH_PORT', '8080'))
+PROXY_PORT = int(__import__('os').getenv('PROXY_PORT', '6000'))
 
-class Handler(http.server.SimpleHTTPRequestHandler):
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, directory=BASE_DIR, **kwargs)
-    
-    def log_message(self, format, *args):
-        pass
+async def status(req):
+    try:
+        async with aiohttp.ClientSession() as s:
+            r = await s.get(f'http://localhost:{PROXY_PORT}/status', timeout=3)
+            data = await r.json()
+    except:
+        data = None
+    return web.json_response({'ok': True, 'proxy': data, 'version': '0.0.1.26'})
 
-with socketserver.TCPServer(("", DASH_PORT), Handler) as httpd:
-    print(f'PirateClaw Dashboard on :{DASH_PORT}')
-    httpd.serve_forever()
+async def root(req):
+    return web.FileResponse(__import__('pathlib').Path(__file__).parent / 'index.html')
+
+app = web.Application()
+app.router.add_get('/status', status)
+app.router.add_get('/', root)
+print(f'Dashboard on :{DASH_PORT}')
+web.run_app(app, host='0.0.0.0', port=DASH_PORT, print=None)

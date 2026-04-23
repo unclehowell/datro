@@ -1,309 +1,321 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<script>if(localStorage.getItem('pc_theme')){document.documentElement.className=localStorage.getItem('pc_theme')}else{ document.documentElement.className=window.matchMedia('(prefers-color-scheme: light)').matches?'light':'dark'; }</script>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PirateClaw — The Galaxy's Most Resilient LLM Index</title>
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;font-size:14px;min-height:100vh}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-#topnav{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16px;display:flex;align-items:center;gap:0;position:sticky;top:0;z-index:100}
-#topnav .brand{display:flex;align-items:center;gap:10px;padding:10px 16px 10px 0;border-right:1px solid var(--border);margin-right:8px}
-#topnav .brand img{width:60px;height:60px;border-radius:50%;vertical-align:middle}
-#topnav .brand span{font-size:1.4rem;font-weight:700;color:var(--accent);vertical-align:middle}
-#topnav a{color:var(--text);padding:14px 12px;font-size:0.85rem;white-space:nowrap}
-#topnav a:hover{color:var(--accent)}
-#install-banner{background:var(--bg2);border-bottom:1px solid var(--border);padding:8px 16px;text-align:center;font-family:monospace;font-size:0.82rem;color:var(--green)}
-#install-banner code{background:var(--bg3);border:1px solid var(--border);border-radius:4px;padding:2px 10px;color:var(--green)}
-#search-area{background:var(--bg3);padding:20px 16px;border-bottom:1px solid var(--border)}
-#search-area h2{color:var(--accent);font-size:0.9rem;margin-bottom:12px;font-weight:400}
-#search-form{display:flex;gap:8px;max-width:800px}
-#search-input{flex:1;background:var(--bg2);border:1px solid var(--border);color:var(--text);padding:8px 12px;border-radius:4px;font-size:0.9rem}
-#search-input:focus{outline:none;border-color:var(--accent)}
-#search-btn{background:var(--accent);color:var(--bg2);border:none;padding:8px 20px;border-radius:4px;font-weight:700;cursor:pointer}
-#tabs{background:var(--bg2);border-bottom:1px solid var(--border);padding:0 16px;display:flex}
-.tab{padding:10px 14px;color:var(--text2);font-size:0.82rem;cursor:pointer;border-bottom:2px solid transparent}
-.tab:hover,.tab.active{color:var(--accent);border-bottom-color:var(--accent)}
-#main{display:flex;gap:16px;max-width:1400px;margin:0 auto;padding:16px}
-#results-col{flex:1;min-width:0}
-#sidebar{width:220px;flex-shrink:0}
-#results-table{width:100%;border-collapse:collapse}
-#results-table th{background:var(--bg2);color:var(--accent);padding:8px 10px;text-align:left;font-size:0.9rem;border-bottom:1px solid var(--border)}
-#results-table td{padding:8px 10px;border-bottom:1px solid var(--badge-bg);vertical-align:middle;font-size:0.85rem}
-#results-table tr:hover td{background:var(--bg3)}
-.tile-grid{display:none;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-.tile{background:var(--bg2);border:1px solid var(--border);border-radius:8px;overflow:hidden;cursor:pointer}
-.tile:hover{border-color:var(--accent)}
-.tile .thumb{width:100%;aspect-ratio:16/9;background:#000;display:flex;align-items:center;justify-content:center;color:#333;font-size:2rem}
-.tile .content{padding:12px}
-.tile .name{font-weight:700;color:var(--accent);font-size:0.9rem;margin-bottom:4px}
-.tile .desc{font-size:0.85rem;color:var(--text2);margin-bottom:8px}
-.tile .meta{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:4px}
-.seeds{color:var(--green)}
-.cat-badge{background:var(--badge-bg);color:var(--badge-text);padding:2px 8px;border-radius:10px;font-size:0.8rem}
-.btn{background:var(--accent);color:var(--bg);border:none;padding:4px 10px;border-radius:3px;font-weight:700;cursor:pointer;font-size:0.8rem}
-.btn:hover{filter:brightness(1.15)}
-.btn:disabled{background:#333;color:#666;cursor:default}
-.btn-download{background:var(--accent)}
-.btn-execute{background:#34d399;color:#000;display:none}
-.btn-execute.visible{display:inline-block}
-.name-cell{color:var(--accent);font-weight:600}
-#sidebar h3{color:var(--accent);font-size:0.85rem;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
-.top-item{display:flex;justify-content:space-between;align-items:center;padding:5px 0;border-bottom:1px solid var(--badge-bg)}
-.top-item .ti-name{color:var(--text);cursor:pointer}
-.top-item .ti-seeds{color:var(--green)}
-.modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);z-index:1000;display:none;align-items:center;justify-content:center}
-.modal.open{display:flex}
-.modal-content{background:var(--bg3);border:1px solid var(--border);border-radius:8px;padding:24px;max-width:600px;width:90%;position:relative;max-height:90vh;overflow-y:auto}
-.modal-content h3{color:var(--accent);margin-bottom:12px}
-.modal-content .prompt{background:var(--bg2);border:1px solid var(--border);border-radius:4px;padding:12px;font-family:monospace;font-size:0.85rem;color:var(--green);white-space:pre-wrap;max-height:400px;overflow-y:auto}
-.modal-actions{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
-footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 16px;text-align:center;color:var(--text2);font-size:0.82rem}
-footer .f-cmd{font-family:monospace;color:var(--green);margin:8px 0}
-#view-toggle{display:flex;gap:4px;margin-left:8px}
-#view-toggle button{background:var(--bg2);border:1px solid var(--border);color:var(--text2);padding:3px 8px;border-radius:3px;cursor:pointer;font-size:0.85rem}
-#view-toggle button.active{border-color:var(--accent);color:var(--accent)}
-#result-count{color:var(--text2);font-size:0.9rem;margin-bottom:10px}
-::-webkit-scrollbar{width:8px}
-::-webkit-scrollbar-track{background:var(--bg2)}
-::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-::-webkit-scrollbar-thumb:hover{background:var(--accent)}
-:root,html.dark{--bg:#1a1a2e;--bg2:#0f0f1a;--bg3:#12122a;--border:#2a2a4a;--text:#c8c8c8;--text2:#94a3b8;--accent:#e8a000;--green:#34d399;--red:#f87171;--badge-bg:#1e1e3a;--badge-text:#c4b5fd}
-html.light{--bg:#f5f5f0;--bg2:#ffffff;--bg3:#eaeae4;--border:#ccccbb;--text:#1a1a1a;--text2:#555555;--accent:#b87000;--green:#1a7a4a;--red:#cc2222;--badge-bg:#e4e4d8;--badge-text:#5533aa}
-@media(max-width:700px){#main{flex-direction:column}#sidebar{width:100%}#results-table th:nth-child(3),#results-table td:nth-child(3),#results-table th:nth-child(5),#results-table td:nth-child(5){display:none}}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>PirateClaw Dashboard</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #e0e0e0;
+      min-height: 100vh;
+      padding: 20px;
+    }
+    .container { max-width: 1200px; margin: 0 auto; }
+    h1 {
+      color: #e8a000;
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .card h2 {
+      color: #e8a000;
+      font-size: 1rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .status-ok { color: #34d399; }
+    .status-warn { color: #f59e0b; }
+    .status-err { color: #f87171; }
+    .stat {
+      display: flex;
+      justify-content: space-between;
+      padding: 8px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .stat:last-child { border: none; }
+    .stat-label { color: #94a3b8; }
+    .stat-value { font-weight: 600; }
+    .proxy-item {
+      background: rgba(0,0,0,0.2);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 10px;
+    }
+    .proxy-item.local { border-left: 3px solid #34d399; }
+    .proxy-item.remote { border-left: 3px solid #e8a000; }
+    .proxy-ip { font-family: monospace; color: #e8a000; }
+    .proxy-state { 
+      display: inline-block;
+      padding: 2px 8px;
+      border-radius: 10px;
+      font-size: 0.75rem;
+      background: rgba(52,211,153,0.2);
+      color: #34d399;
+    }
+    .proxy-state.blocked {
+      background: rgba(248,113,113,0.2);
+      color: #f87171;
+    }
+    .proxy-cap {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      background: rgba(232,160,0,0.2);
+      color: #e8a000;
+      margin-right: 4px;
+    }
+    .install-box {
+      background: rgba(52,211,153,0.1);
+      border: 1px solid rgba(52,211,153,0.3);
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+    .install-cmd {
+      font-family: monospace;
+      background: #0f0f1a;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin: 15px 0;
+      color: #34d399;
+      font-size: 0.9rem;
+      word-break: break-all;
+    }
+    .btn {
+      background: #e8a000;
+      color: #000;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .btn:hover { filter: brightness(1.1); }
+    .endpoint {
+      font-family: monospace;
+      background: rgba(0,0,0,0.3);
+      padding: 8px 12px;
+      border-radius: 4px;
+      margin: 5px 0;
+      font-size: 0.85rem;
+    }
+    .endpoint-method {
+      display: inline-block;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-size: 0.7rem;
+      margin-right: 8px;
+    }
+    .method-get { background: rgba(52,211,153,0.3); color: #34d399; }
+    .method-post { background: rgba(59,130,246,0.3); color: #60a5fa; }
+    #refresh-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      font-size: 1.5rem;
+    }
+  </style>
 </head>
 <body>
+  <div class="container">
+    <h1>⚓ PirateClaw STP Dashboard</h1>
+    
+    <div class="grid">
+      <div class="card">
+        <h2>📊 System Status</h2>
+        <div class="stat">
+          <span class="stat-label">Service</span>
+          <span class="stat-value status-ok">Running</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Version</span>
+          <span class="stat-value" id="version">Loading...</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Node ID</span>
+          <span class="stat-value" id="node-id">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Local IP</span>
+          <span class="stat-value" id="local-ip">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Uptime</span>
+          <span class="stat-value" id="uptime">-</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Chat Only Mode</span>
+          <span class="stat-value" id="chat-only">-</span>
+        </div>
+      </div>
 
-<div id="topnav">
-  <div class="brand">
-    <img src="https://i.ibb.co/Zzz2v9LN/Chat-GPT-Image-Apr-18-2026-04-05-12-PM-removebg-preview.png" alt="PirateClaw">
-    <span>PirateClaw</span>
-  </div>
-  <a href="#" onclick="showPage('home');return false">Home</a>
-  <a href="#" onclick="filterCat('all');return false">Browse</a>
-  <a href="#" onclick="sortRecent();return false">Recent</a>
-  <a href="#" onclick="sortTop();return false">Top 100</a>
-  <a href="https://github.com/unclehowell/datro/tree/pirateclaw" target="_blank">GitHub</a>
-  <button id="theme-btn" onclick="toggleTheme()" style="background:none;border:1px solid var(--border);color:var(--text);padding:5px 10px;border-radius:4px;cursor:pointer;font-size:0.9rem;margin-left:auto">Light</button>
-</div>
+      <div class="card">
+        <h2>🔗 Network</h2>
+        <div class="stat">
+          <span class="stat-label">Parent Proxy</span>
+          <span class="stat-value" style="font-size:0.8rem">pirateclaw.datro.xyz</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Proxy Port</span>
+          <span class="stat-value">6000</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Discovery Port</span>
+          <span class="stat-value">6001 (UDP)</span>
+        </div>
+        <div class="stat">
+          <span class="stat-label">Discovered Proxies</span>
+          <span class="stat-value" id="proxy-count">-</span>
+        </div>
+      </div>
 
-<div id="install-banner">
-  <span>Install PirateClaw:</span>
-  <code>curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh</code>
-</div>
+      <div class="card">
+        <h2>🔀 STP Topology</h2>
+        <div id="proxies-list">Loading...</div>
+      </div>
 
-<div id="search-area">
-  <h2>The Galaxy's Most Resilient LLM Index</h2>
-  <div id="search-form">
-    <input id="search-input" type="text" placeholder="Search..." oninput="render()">
-    <button id="search-btn" onclick="render()">Search</button>
-  </div>
-</div>
+      <div class="card">
+        <h2>📡 Endpoints</h2>
+        <div class="endpoint">
+          <span class="endpoint-method method-get">GET</span>
+          <span>/health</span>
+        </div>
+        <div class="endpoint">
+          <span class="endpoint-method method-get">GET</span>
+          <span>/status</span>
+        </div>
+        <div class="endpoint">
+          <span class="endpoint-method method-get">GET</span>
+          <span>/proxies</span>
+        </div>
+        <div class="endpoint">
+          <span class="endpoint-method method-post">POST</span>
+          <span>/v1/chat/completions</span>
+        </div>
+        <div class="endpoint">
+          <span class="endpoint-method method-post">POST</span>
+          <span>/route</span>
+        </div>
+      </div>
 
-<div id="tabs">
-  <div class="tab active" onclick="setCampaign('all',this)">All</div>
-  <div class="tab" onclick="setCampaign('approved',this)">Approved</div>
-  <div class="tab" onclick="setCampaign('community',this)">Community</div>
-</div>
+      <div class="card install-box">
+        <h2>🚀 Install PirateClaw</h2>
+        <div class="install-cmd">curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh</div>
+        <button class="btn" onclick="copyCmd()">Copy Command</button>
+        <p style="margin-top:15px;font-size:0.85rem;color:#94a3b8">
+          One-liner install with STP routing
+        </p>
+      </div>
 
-<div id="main">
-  <div id="results-col">
-    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px">
-      <div id="result-count"></div>
-      <div id="view-toggle">
-        <button id="btn-list" onclick="setView('list')">List</button>
-        <button id="btn-tile" onclick="setView('tile')">Grid</button>
+      <div class="card">
+        <h2>💬 Test Chat</h2>
+        <textarea id="test-prompt" rows="3" style="width:100%;background:rgba(0,0,0,0.3);border:1px solid rgba(255,255,255,0.1);border-radius:8px;padding:10px;color:#e0e0e0;font-family:inherit;resize:none" placeholder="Enter your message...">Hello! What is 2+2?</textarea>
+        <button class="btn" style="margin-top:10px;width:100%" onclick="testChat()">Send</button>
+        <div id="test-result" style="margin-top:10px;padding:10px;background:rgba(0,0,0,0.2);border-radius:8px;min-height:60px;white-space:pre-wrap;font-size:0.85rem"></div>
       </div>
     </div>
-    <table id="results-table">
-      <thead><tr><th>Name</th><th>Category</th><th>Size</th><th>Seeds</th><th>Added</th><th></th></tr></thead>
-      <tbody id="tbody"></tbody>
-    </table>
-    <div id="tile-grid" class="tile-grid"></div>
   </div>
-  <div id="sidebar">
-    <h3>Top 10 by Seeds</h3>
-    <div id="top10"></div>
-  </div>
-</div>
 
-<div id="modal" class="modal" onclick="if(event.target===this)closeModal()">
-  <div class="modal-content">
-    <button onclick="closeModal()" style="position:absolute;top:12px;right:16px;background:none;border:none;color:var(--text2);font-size:1.2rem;cursor:pointer">X</button>
-    <h3 id="m-name"></h3>
-    <div id="m-cat" style="color:var(--badge-text);margin-bottom:8px"></div>
-    <div id="m-desc" style="color:var(--text);margin-bottom:12px"></div>
-    <div id="m-prompt" class="prompt"></div>
-    <div class="modal-actions">
-      <button id="m-download" class="btn btn-download" onclick="downloadCurrent()">Takeout to local machine</button>
-      <button id="m-execute" class="btn btn-execute" onclick="executeCurrent()">Execute Prompt</button>
-    </div>
-  </div>
-</div>
+  <button class="btn" id="refresh-btn" onclick="fetchStatus()" title="Refresh">↻</button>
 
-<footer>
-  <div class="f-cmd">curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh</div>
-  <div>PirateClaw — The Galaxy's Most Resilient LLM Index</div>
-</footer>
-
-<script>
-let CATALOG = [];
-let activeCampaign = 'all';
-let currentItem = null;
-let activeView = 'tile';
-let downloaded = JSON.parse(localStorage.getItem('pc_downloaded') || '{}');
-
-function getInstalled(){return downloaded;}
-function markDownloaded(id){downloaded[id]=true;localStorage.setItem('pc_downloaded',JSON.stringify(downloaded));render();}
-function isDownloaded(id){return downloaded[id];}
-
-function setCampaign(c,el){
-  activeCampaign=c;
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  if(el)el.classList.add('active');
-  render();
-}
-
-function setView(v){
-  activeView=v;
-  document.getElementById('results-table').style.display=v==='list'?'':'none';
-  document.getElementById('tile-grid').style.display=v==='tile'?'grid':'none';
-  document.getElementById('btn-list').classList.toggle('active',v==='list');
-  document.getElementById('btn-tile').classList.toggle('active',v==='tile');
-  render();
-}
-function initView(){
-  document.getElementById('results-table').style.display='none';
-  document.getElementById('tile-grid').style.display='grid';
-  document.getElementById('btn-tile').classList.add('active');
-}
-
-function getFiltered(){
-  const q=document.getElementById('search-input').value.toLowerCase();
-  return CATALOG.filter(i=>{
-    const matchQ = !q || i.name.toLowerCase().includes(q) || (i.desc||'').toLowerCase().includes(q);
-    const cat = (i.cat||'').toLowerCase();
-    const isCommunity = cat==='community';
-    const isApproved = !isCommunity && (i.seeds||0)>0;
-    if(activeCampaign==='all') return matchQ;
-    if(activeCampaign==='approved') return matchQ && isApproved;
-    if(activeCampaign==='community') return matchQ && isCommunity;
-    return matchQ;
-  });
-}
-
-function rowHtml(i){
-  const dl=isDownloaded(i.id);
-  const dlBtn=dl?'<button class="btn" disabled>Taken</button>':'<button class="btn btn-download" onclick="openModal(\''+i.id+'\')">Takeout</button>';
-  const execBtn=dl?'<button class="btn btn-execute visible" onclick="executePrompt(\''+i.id+'\')">Execute</button>':'<button class="btn btn-execute" onclick="openModal(\''+i.id+'\')">Execute</button>';
-  return '<tr><td class="name-cell">'+i.name+'</td><td><span class="cat-badge">'+(i.cat||'')+'</span></td><td>'+(i.size||'—')+'</td><td class="seeds">'+(i.seeds||0)+'</td><td>'+(i.age||'—')+'</td><td>'+dlBtn+' '+execBtn+'</td></tr>';
-}
-
-function tileHtml(i){
-  const dl=isDownloaded(i.id);
-  const execBtn=dl?'<button class="btn btn-execute visible" onclick="executePrompt(\''+i.id+'\')">Execute</button>':'<button class="btn btn-execute" onclick="openModal(\''+i.id+'\')">Execute</button>';
-  return '<div class="tile" onclick="openModal(\''+i.id+'\')"><div class="thumb">></div><div class="content"><div class="name">'+i.name+'</div><div class="desc">'+(i.desc||'')+'</div><div class="meta"><span class="seeds">'+(i.seeds||0)+'</span><span class="cat-badge">'+(i.cat||'')+'</span>'+execBtn+'</div></div></div>';
-}
-
-function render(){
-  const items=getFiltered().sort((a,b)=>(b.seeds||0)-(a.seeds||0));
-  document.getElementById('result-count').textContent=items.length+' results';
-  document.getElementById('tbody').innerHTML=items.map(rowHtml).join('');
-  document.getElementById('tile-grid').innerHTML=items.map(tileHtml).join('');
-}
-
-function renderTop10(){
-  const top=[...CATALOG].sort((a,b)=>(b.seeds||0)-(a.seeds||0)).slice(0,10);
-  document.getElementById('top10').innerHTML=top.map((i,n)=>'<div class="top-item"><span class="ti-name" onclick="openModal(\''+i.id+'\')">'+(n+1)+'. '+i.name+'</span><span class="ti-seeds">'+(i.seeds||0)+'</span></div>').join('');
-}
-
-function openModal(id){
-  currentItem=CATALOG.find(i=>i.id===id);
-  if(!currentItem)return;
-  document.getElementById('m-name').textContent=currentItem.name;
-  document.getElementById('m-cat').textContent=(currentItem.cat||'').toUpperCase();
-  document.getElementById('m-desc').textContent=currentItem.desc||'';
-  document.getElementById('m-prompt').textContent=currentItem.prompt||'';
-  const dl=isDownloaded(id);
-  document.getElementById('m-download').disabled=dl;
-  document.getElementById('m-download').textContent=dl?'Taken':'Takeout to local machine';
-  document.getElementById('m-execute').classList.toggle('visible',dl);
-  document.getElementById('modal').classList.add('open');
-}
-
-function closeModal(){
-  document.getElementById('modal').classList.remove('open');
-  currentItem=null;
-}
-
-function downloadCurrent(){
-  if(!currentItem)return;
-  markDownloaded(currentItem.id);
-  document.getElementById('m-download').disabled=true;
-  document.getElementById('m-download').textContent='Taken';
-  document.getElementById('m-execute').classList.add('visible');
-}
-
-async function executePrompt(id){
-  const item=CATALOG.find(i=>i.id===id);
-  if(!item)return;
-  const prompt=item.prompt||item.desc||item.name;
-  try {
-    const r=await fetch('http://localhost:6000/v1/chat/completions',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({messages:[{role:'user',content:prompt}],max_tokens:500})
-    });
-    const data=await r.json();
-    if(data.choices&&data.choices[0]){
-      document.getElementById('m-name').textContent=item.name+' - Response';
-      document.getElementById('m-cat').textContent='Executed';
-      document.getElementById('m-desc').textContent='';
-      document.getElementById('m-prompt').textContent=data.choices[0].message.content;
-      document.getElementById('modal').classList.add('open');
-    }
-  } catch(e){ alert('Error: '+e.message); }
-}
-
-function executeCurrent(){
-  if(!currentItem)return;
-  executePrompt(currentItem.id);
-}
-
-async function loadCatalog(){
-  try {
-    const r=await fetch('https://pirateclaw.datro.xyz/api/catalog',{signal:AbortSignal.timeout(8000)});
-    if(r.ok){
-      const data=await r.json();
-      if(Array.isArray(data)&&data.length){
-        CATALOG.length=0;
-        data.forEach(i=>CATALOG.push(i));
+  <script>
+    async function fetchStatus() {
+      try {
+        const res = await fetch('/status');
+        const data = await res.json();
+        
+        document.getElementById('version').textContent = data.version || '-';
+        document.getElementById('node-id').textContent = (data.node_id || '-').substring(0, 8);
+        document.getElementById('local-ip').textContent = data.local_ip || '-';
+        document.getElementById('uptime').textContent = data.uptime ? formatUptime(data.uptime) : '-';
+        document.getElementById('chat-only').textContent = data.chat_only_mode ? 'Enabled' : 'Disabled';
+        document.getElementById('proxy-count').textContent = data.proxies ? data.proxies.length : 0;
+        
+        const proxiesList = document.getElementById('proxies-list');
+        if (data.proxies && data.proxies.length > 0) {
+          proxiesList.innerHTML = data.proxies.map(p => `
+            <div class="proxy-item ${p.is_local ? 'local' : 'remote'}">
+              <div style="display:flex;justify-content:space-between;align-items:center">
+                <span class="proxy-ip">${p.ip}:${p.port}</span>
+                <span class="proxy-state ${p.state === 'forwarding' ? '' : 'blocked'}">${p.state}</span>
+              </div>
+              <div style="margin-top:5px">
+                ${p.capabilities.map(c => `<span class="proxy-cap">${c}</span>`).join('')}
+              </div>
+              <div style="margin-top:5px;font-size:0.75rem;color:#94a3b8">
+                Path Cost: ${p.path_cost} | Latency: ${p.latency}ms
+                ${p.is_local ? ' | 🖥️ This Machine' : ''}
+              </div>
+            </div>
+          `).join('');
+        } else {
+          proxiesList.innerHTML = '<p style="color:#94a3b8">No proxies discovered yet</p>';
+        }
+      } catch (e) {
+        console.error('Failed to fetch status:', e);
       }
     }
-  } catch(e){ console.log('Catalog load failed:',e); }
-  render();renderTop10();
-}
 
-function filterCat(cat){render();}
-function sortRecent(){render();}
-function sortTop(){render();}
-function showPage(p){render();}
+    function formatUptime(ts) {
+      const diff = Math.floor(Date.now() / 1000) - ts;
+      if (diff < 60) return `${diff}s`;
+      if (diff < 3600) return `${Math.floor(diff/60)}m`;
+      return `${Math.floor(diff/3600)}h`;
+    }
 
-function applyTheme(t){
-  document.documentElement.className=t;
-  document.getElementById('theme-btn').textContent=t==='light'?'Dark':'Light';
-  localStorage.setItem('pc_theme',t);
-}
-function toggleTheme(){
-  applyTheme(document.documentElement.className==='light'?'dark':'light');
-}
+    async function testChat() {
+      const prompt = document.getElementById('test-prompt').value;
+      const result = document.getElementById('test-result');
+      result.textContent = 'Sending...';
+      
+      try {
+        const res = await fetch('/v1/chat/completions', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            messages: [{ role: 'user', content: prompt }],
+            max_tokens: 100
+          })
+        });
+        const data = await res.json();
+        if (data.choices && data.choices[0]) {
+          result.textContent = data.choices[0].message.content + '\n\n' + 
+            `Model: ${data.model} | Via: ${data._routed_via || 'unknown'}`;
+        } else {
+          result.textContent = JSON.stringify(data, null, 2);
+        }
+      } catch (e) {
+        result.textContent = 'Error: ' + e.message;
+      }
+    }
 
-loadCatalog();
-initView();
-</script>
+    function copyCmd() {
+      navigator.clipboard.writeText('curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh');
+      alert('Copied!');
+    }
+
+    fetchStatus();
+    setInterval(fetchStatus, 10000);
+  </script>
 </body>
 </html>
