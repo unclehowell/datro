@@ -5,10 +5,11 @@
         <meta content="1" http-equiv="Expires">
         <link href="//world.datro.xyz/" rel="canonical">
         <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
-        <script type="type/javascript">
+        <script type="text/javascript">
                      var host = "world.datro.xyz";
-                     if {{ host == window.location.host} && {window.location.protocol != "https:""}}
-                     window.location.protocol = "https";
+                     if (host == window.location.host && window.location.protocol != "https:") {
+                         window.location.protocol = "https:";
+                     }
         </script>
 
 	      <title>DATRO World</title>
@@ -22,7 +23,6 @@
   <meta content="#ffffff" name="msapplication-TileColor">
 	<link rel="stylesheet" href="https://datro.xyz/static/gui/dashboard/css/style.css">
 	<meta content="#ffffff" name="theme-color">
-</script>
         <script type="text/javascript">
 				    $(document).ready(function() {
 				        $("body").css("display", "none");

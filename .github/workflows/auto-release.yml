@@ -1,0 +1,64 @@
+name: Auto Release
+
+on:
+  push:
+    branches:
+      - gh-pages
+      - carfinancecheque
+      - pirateclaw
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Extract version from CHANGELOG.md
+        id: get_version
+        run: |
+          # Extract the first version found in CHANGELOG.md that is NOT [Unreleased]
+          VERSION=$(grep "## \[" CHANGELOG.md | grep -v "\[Unreleased\]" | head -n 1 | sed -E 's/## \[([^]]+)\].*/\1/')
+          if [ -z "$VERSION" ]; then
+            echo "Could not find version in CHANGELOG.md"
+            exit 1
+          fi
+          echo "version=$VERSION" >> $GITHUB_OUTPUT
+          
+          # Determine prefix based on branch
+          BRANCH=${GITHUB_REF#refs/heads/}
+          if [[ "$BRANCH" == "pirateclaw" ]]; then
+            echo "tag_name=pirateclaw-v$VERSION" >> $GITHUB_OUTPUT
+          elif [[ "$BRANCH" == "carfinancecheque" ]]; then
+            echo "tag_name=carfinancecheque-v$VERSION" >> $GITHUB_OUTPUT
+          else
+            echo "tag_name=v$VERSION" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Check if tag exists
+        id: check_tag
+        run: |
+          TAG=${{ steps.get_version.outputs.tag_name }}
+          if git rev-parse "$TAG" >/dev/null 2>&1; then
+            echo "exists=true" >> $GITHUB_OUTPUT
+          else
+            echo "exists=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Create Release
+        if: steps.check_tag.outputs.exists == 'false'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          TAG=${{ steps.get_version.outputs.tag_name }}
+          VERSION=${{ steps.get_version.outputs.version }}
+          gh release create "$TAG" \
+            --title "Release $TAG" \
+            --notes "Automated release for version $VERSION extracted from CHANGELOG.md" \
+            --generate-notes
