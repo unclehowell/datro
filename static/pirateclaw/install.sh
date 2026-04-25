@@ -209,6 +209,25 @@ if curl -sf "http://127.0.0.1:${DASH_PORT}/status" >/dev/null 2>&1; then
 else
   warn "Dashboard status check failed. See $LOG_DIR/dashboard.log"
 fi
+echo "Started PirateClaw + Dashboard + Archon"
+SH
+chmod +x "$INSTALL_DIR/bin/start-all.sh"
+
+cat > "$INSTALL_DIR/bin/stop-all.sh" <<SH
+#!/usr/bin/env sh
+set -eu
+if command -v systemctl >/dev/null 2>&1 && systemctl --user show-environment >/dev/null 2>&1; then
+  systemctl --user stop pirateclaw-archon.service pirateclaw-dashboard.service pirateclaw-proxy.service || true
+elif command -v pm2 >/dev/null 2>&1; then
+  pm2 stop pirateclaw-proxy pirateclaw-dashboard pirateclaw-archon >/dev/null 2>&1 || true
+else
+  pkill -f "pirateclaw.*/subproxy/server.py" 2>/dev/null || true
+  pkill -f "pirateclaw.*/dashboard/server.py" 2>/dev/null || true
+  pkill -f "^archon serve" 2>/dev/null || true
+fi
+echo "Stopped PirateClaw + Dashboard + Archon"
+SH
+chmod +x "$INSTALL_DIR/bin/stop-all.sh"
 
 info "Starting Archon web UI service..."
 if has_cmd archon; then

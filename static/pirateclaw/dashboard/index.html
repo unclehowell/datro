@@ -134,6 +134,15 @@
       border-radius: 50%;
       font-size: 1.5rem;
     }
+    .tree ul {
+      list-style: none;
+      margin-left: 18px;
+      padding-left: 12px;
+      border-left: 1px dashed rgba(255,255,255,0.2);
+    }
+    .tree li { margin: 6px 0; }
+    .ok-dot { color: #34d399; }
+    .bad-dot { color: #f87171; }
   </style>
 </head>
 <body>
@@ -192,6 +201,11 @@
       <div class="card">
         <h2>🔀 STP Topology</h2>
         <div id="proxies-list">Loading...</div>
+      </div>
+
+      <div class="card">
+        <h2>🌳 Network Family Tree</h2>
+        <div id="network-tree" class="tree" style="font-size:0.9rem;color:#cbd5e1">Loading...</div>
       </div>
 
       <div class="card">
@@ -315,7 +329,9 @@
     }
 
     fetchStatus();
+    fetchNetworkTree();
     setInterval(fetchStatus, 10000);
+    setInterval(fetchNetworkTree, 15000);
   </script>
 </body>
 </html>
