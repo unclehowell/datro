@@ -4,9 +4,13 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
 
-## [Unreleased] 
+## [Unreleased]
 
 ## [0.0.1-rtwx.4-rc.8] - Q2/2026
+Apr-24 - Fixed script syntax error in index.html for HTTPS redirect.
+Apr-24 - Removed redundant viewport meta tags and fixed malformed script tags in index.html.
+
+# [0.0.1-rtwx.4-rc.7] - Q3/2025
 ### Fixed
 - Apr-19 - Reduced height of title section on car.financecheque.uk enquiry form to make form visible on page load
 
