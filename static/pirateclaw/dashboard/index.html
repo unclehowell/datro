@@ -276,8 +276,8 @@
       }
     }
 
-    function formatUptime(ts) {
-      const diff = Math.floor(Date.now() / 1000) - ts;
+    function formatUptime(seconds) {
+      const diff = Number(seconds || 0);
       if (diff < 60) return `${diff}s`;
       if (diff < 3600) return `${Math.floor(diff/60)}m`;
       return `${Math.floor(diff/3600)}h`;
