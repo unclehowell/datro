@@ -23,8 +23,8 @@ jobs:
       - name: Extract version from CHANGELOG.md
         id: get_version
         run: |
-          # Extract the first version found in CHANGELOG.md (under ## [version])
-          VERSION=$(grep -m 1 "## \[" CHANGELOG.md | sed -E 's/## \[([^]]+)\].*/\1/')
+          # Extract the first version found in CHANGELOG.md that is NOT [Unreleased]
+          VERSION=$(grep "## \[" CHANGELOG.md | grep -v "\[Unreleased\]" | head -n 1 | sed -E 's/## \[([^]]+)\].*/\1/')
           if [ -z "$VERSION" ]; then
             echo "Could not find version in CHANGELOG.md"
             exit 1
