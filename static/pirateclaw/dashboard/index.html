@@ -134,6 +134,15 @@
       border-radius: 50%;
       font-size: 1.5rem;
     }
+    .tree ul {
+      list-style: none;
+      margin-left: 18px;
+      padding-left: 12px;
+      border-left: 1px dashed rgba(255,255,255,0.2);
+    }
+    .tree li { margin: 6px 0; }
+    .ok-dot { color: #34d399; }
+    .bad-dot { color: #f87171; }
   </style>
 </head>
 <body>
@@ -192,6 +201,11 @@
       <div class="card">
         <h2>🔀 STP Topology</h2>
         <div id="proxies-list">Loading...</div>
+      </div>
+
+      <div class="card">
+        <h2>🌳 Network Family Tree</h2>
+        <div id="network-tree" class="tree" style="font-size:0.9rem;color:#cbd5e1">Loading...</div>
       </div>
 
       <div class="card">
@@ -276,8 +290,49 @@
       }
     }
 
-    function formatUptime(ts) {
-      const diff = Math.floor(Date.now() / 1000) - ts;
+    async function fetchNetworkTree() {
+      const target = document.getElementById('network-tree');
+      try {
+        const res = await fetch('/network-health');
+        const data = await res.json();
+        const node = data.machine?.node_id || 'unknown-node';
+        const local = data.machine?.local_ip || '0.0.0.0';
+        const proxies = data.machine?.proxies || [];
+        const children = proxies.map(p => `
+          <li>${p.is_local ? '🖥️' : '🛰️'} ${p.ip}:${p.port} (${p.state})</li>
+        `).join('') || '<li>No discovered child proxies</li>';
+
+        const keys = (data.api_keys || []).map(k => `<li>${k.configured ? '<span class="ok-dot">●</span>' : '<span class="bad-dot">●</span>'} ${k.name}</li>`).join('');
+        const agents = (data.agents || []).map(a => `<li>${a.available ? '<span class="ok-dot">●</span>' : '<span class="bad-dot">●</span>'} ${a.name}</li>`).join('');
+        const ides = (data.ides || []).map(i => `<li>${i.available ? '<span class="ok-dot">●</span>' : '<span class="bad-dot">●</span>'} ${i.name}</li>`).join('');
+        const parentOk = data.parent?.reachable ? '<span class="ok-dot">●</span>' : '<span class="bad-dot">●</span>';
+
+        target.innerHTML = `
+          <ul>
+            <li>${parentOk} Parent Proxy: ${data.parent?.url || 'n/a'}
+              <ul>
+                <li>Cloudflare/API Key Status
+                  <ul>${keys}</ul>
+                </li>
+                <li>Machine ${node} (${local})
+                  <ul>
+                    <li>Hermes + Child Proxy Fleet
+                      <ul>${children}</ul>
+                    </li>
+                    <li>Agent CLIs<ul>${agents}</ul></li>
+                    <li>IDEs<ul>${ides}</ul></li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>`;
+      } catch (e) {
+        target.textContent = 'Failed to load network tree: ' + e.message;
+      }
+    }
+
+    function formatUptime(seconds) {
+      const diff = Number(seconds || 0);
       if (diff < 60) return `${diff}s`;
       if (diff < 3600) return `${Math.floor(diff/60)}m`;
       return `${Math.floor(diff/3600)}h`;
@@ -315,7 +370,9 @@
     }
 
     fetchStatus();
+    fetchNetworkTree();
     setInterval(fetchStatus, 10000);
+    setInterval(fetchNetworkTree, 15000);
   </script>
 </body>
 </html>
