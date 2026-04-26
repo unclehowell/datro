@@ -29,6 +29,7 @@ logger = logging.getLogger("pirateclaw-stp")
 PROXY_PORT = int(os.getenv("PROXY_PORT", "6000"))
 DASH_PORT = int(os.getenv("DASH_PORT", "8080"))
 PARENT = os.getenv("PARENT_PROXY", "https://pirateclaw.datro.xyz")
+LOCAL_LLM_URL = os.getenv("LOCAL_LLM_URL", "").strip()
 DISCOVERY_PORT = 6001
 MULTICAST_GROUP = "239.255.255.250"
 
@@ -37,6 +38,8 @@ BPDU_INTERVAL = 5  # seconds
 PROXY_TIMEOUT = 30  # seconds
 PATH_COST_BASE = 1000
 CHAT_ONLY_MODE = True  # Remote execution disabled by default
+VERSION = "0.0.1.29"
+START_TIME = int(time.time())
 
 class ProxyNode:
     def __init__(self, node_id, ip, port, is_local=False, capabilities=None):
@@ -164,21 +167,23 @@ class STPController:
                     if p.state == "forwarding" and (not chat_only or "chat" in p.capabilities)]
 
     def get_fallback_chain(self):
-        """Get fallback chain: parent -> local -> discovered"""
+        """Get fallback chain: parent -> optional local llm endpoint"""
         chain = []
         
         # 1. Parent proxy
         chain.append({"url": f"{PARENT}/v1/chat/completions", "type": "cloud", "cost": 0})
         
-        # 2. Local proxy (if has local LLM)
-        with self.lock:
-            local = self.proxies.get(self.node_id)
-            if local and local.llm_available:
-                chain.append({
-                    "url": f"http://{self.local_ip}:{PROXY_PORT}/v1/chat/completions",
-                    "type": "local",
-                    "cost": 0
-                })
+        # 2. Optional local LLM endpoint (must not point at this proxy to avoid loops)
+        if LOCAL_LLM_URL:
+            self_proxy_urls = {
+                f"http://127.0.0.1:{PROXY_PORT}/v1/chat/completions",
+                f"http://localhost:{PROXY_PORT}/v1/chat/completions",
+                f"http://{self.local_ip}:{PROXY_PORT}/v1/chat/completions",
+            }
+            if LOCAL_LLM_URL not in self_proxy_urls:
+                chain.append({"url": LOCAL_LLM_URL, "type": "local_llm", "cost": 0})
+            else:
+                logger.warning("LOCAL_LLM_URL points to this proxy endpoint; ignoring to prevent recursion")
         
         return chain
 
@@ -330,14 +335,14 @@ class ProxyHandler:
         self.stp.prune_stale_proxies()
         return web.json_response({
             "service": "pirateclaw-stp",
-            "version": "0.0.1.26",
+            "version": VERSION,
             "node_id": self.stp.node_id[:8],
             "local_ip": self.stp.local_ip,
             "is_root": self.stp.is_root,
             "parent": PARENT,
             "proxies": self.stp.get_all_proxies(),
             "chat_only_mode": CHAT_ONLY_MODE,
-            "uptime": int(time.time())
+            "uptime": int(time.time()) - START_TIME
         })
 
     async def handle_proxies(self, request):
