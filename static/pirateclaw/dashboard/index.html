@@ -290,47 +290,6 @@
       }
     }
 
-    async function fetchNetworkTree() {
-      const target = document.getElementById('network-tree');
-      try {
-        const res = await fetch('/network-health');
-        const data = await res.json();
-        const node = data.machine?.node_id || 'unknown-node';
-        const local = data.machine?.local_ip || '0.0.0.0';
-        const proxies = data.machine?.proxies || [];
-        const children = proxies.map(p => `
-          <li>${p.is_local ? '🖥️' : '🛰️'} ${p.ip}:${p.port} (${p.state})</li>
-        `).join('') || '<li>No discovered child proxies</li>';
-
-        const keys = (data.api_keys || []).map(k => `<li>${k.configured ? '<span class="ok-dot">●</span>' : '<span class="bad-dot">●</span>'} ${k.name}</li>`).join('');
-        const agents = (data.agents || []).map(a => `<li>${a.available ? '<span class="ok-dot">●</span>' : '<span class="bad-dot">●</span>'} ${a.name}</li>`).join('');
-        const ides = (data.ides || []).map(i => `<li>${i.available ? '<span class="ok-dot">●</span>' : '<span class="bad-dot">●</span>'} ${i.name}</li>`).join('');
-        const parentOk = data.parent?.reachable ? '<span class="ok-dot">●</span>' : '<span class="bad-dot">●</span>';
-
-        target.innerHTML = `
-          <ul>
-            <li>${parentOk} Parent Proxy: ${data.parent?.url || 'n/a'}
-              <ul>
-                <li>Cloudflare/API Key Status
-                  <ul>${keys}</ul>
-                </li>
-                <li>Machine ${node} (${local})
-                  <ul>
-                    <li>Hermes + Child Proxy Fleet
-                      <ul>${children}</ul>
-                    </li>
-                    <li>Agent CLIs<ul>${agents}</ul></li>
-                    <li>IDEs<ul>${ides}</ul></li>
-                  </ul>
-                </li>
-              </ul>
-            </li>
-          </ul>`;
-      } catch (e) {
-        target.textContent = 'Failed to load network tree: ' + e.message;
-      }
-    }
-
     function formatUptime(seconds) {
       const diff = Number(seconds || 0);
       if (diff < 60) return `${diff}s`;
