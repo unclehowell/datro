@@ -6,6 +6,10 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.1-rtwx.4-rc.9] - Q2/2026
+Apr-26 - Updated Google Analytics tracking ID to G-532557888 across carfinancecheque branch.
+Apr-26 - Removed non-functional world.datro.xyz canonical link and host redirect logic from index.html.
+
 ## [0.0.1-rtwx.4-rc.8] - Q2/2026
 Apr-24 - Fixed script syntax error in index.html for HTTPS redirect.
 Apr-24 - Removed redundant viewport meta tags and fixed malformed script tags in index.html.
