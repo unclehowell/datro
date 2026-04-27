@@ -259,7 +259,7 @@ class BPDUHandler:
                     "ip": self.controller.local_ip,
                     "port": PROXY_PORT,
                     "capabilities": ["chat", "execute"] if CHAT_ONLY_MODE else ["chat"],
-                    "version": "0.0.1.26"
+                    "version": "0.0.1.39"
                 }
                 
                 if self.sock:
@@ -330,7 +330,7 @@ class ProxyHandler:
         self.stp.prune_stale_proxies()
         return web.json_response({
             "service": "pirateclaw-stp",
-            "version": "0.0.1.26",
+            "version": "0.0.1.39",
             "node_id": self.stp.node_id[:8],
             "local_ip": self.stp.local_ip,
             "is_root": self.stp.is_root,

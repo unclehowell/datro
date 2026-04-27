@@ -18,7 +18,7 @@ async def get_proxy_status():
 
 async def status_handler(request):
     proxy_data = await get_proxy_status()
-    return web.json_response({'ok': True, 'proxy': proxy_data, 'version': '0.0.1.28'})
+    return web.json_response({'ok': True, 'proxy': proxy_data, 'version': '0.0.1.39'})
 
 async def health_handler(request):
     return web.json_response({'status': 'ok'})
