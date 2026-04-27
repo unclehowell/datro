@@ -7,7 +7,7 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 
 ### Changes Made
 
-- Added Google Analytics tracking (`G-DEJB79ND9N`) to `index.html`
+- Added Google Analytics tracking (`G-532557888`) to `index.html`
 - Updated `functions/api/submit-claim.ts` to use v3 API payload format:
   - `address` as single object with full address fields (line1, line2, line3, line4, buildingName, buildingNumber, thoroughfare, townOrCity, district, postcode)
   - `signature` object with `payload` array and raw base64 `signature` field
