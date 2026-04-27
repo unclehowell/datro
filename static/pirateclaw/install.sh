@@ -14,7 +14,7 @@ done
 
 VERSION=$(curl -fsSL "https://api.github.com/repos/unclehowell/datro/tags?per_page=50" 2>/dev/null \
   | grep -oE 'pirateclaw-v0\.0\.1\.[0-9]+' | sort -t. -k4 -n | tail -1 | sed 's/pirateclaw-v//')
-VERSION="${VERSION:-0.0.1.29}"
+VERSION="${VERSION:-0.0.1.28}"
 
 REPO_URL="https://github.com/unclehowell/datro.git"
 BRANCH="pirateclaw"
@@ -58,116 +58,6 @@ stop_services() {
   pkill -f "^archon serve" 2>/dev/null || true
 }
 
-SERVICE_MANAGER="none"
-
-detect_service_manager() {
-  if has_cmd systemctl && systemctl --user show-environment >/dev/null 2>&1; then
-    SERVICE_MANAGER="systemd"
-    return
-  fi
-  if has_cmd pm2; then
-    SERVICE_MANAGER="pm2"
-    return
-  fi
-  if has_cmd npm; then
-    npm install -g pm2 >/dev/null 2>&1 || true
-    if has_cmd pm2; then
-      SERVICE_MANAGER="pm2"
-      return
-    fi
-  fi
-  SERVICE_MANAGER="none"
-}
-
-write_systemd_service() {
-  name="$1"
-  content="$2"
-  svc_dir="$HOME/.config/systemd/user"
-  mkdir -p "$svc_dir"
-  printf "%s\n" "$content" > "$svc_dir/$name.service"
-}
-
-setup_systemd_services() {
-  info "Configuring systemd user services..."
-  write_systemd_service "pirateclaw-proxy" "[Unit]
-Description=PirateClaw Proxy
-After=network-online.target
-
-[Service]
-Type=simple
-Environment=PROXY_PORT=$PROXY_PORT
-Environment=DASH_PORT=$DASH_PORT
-Environment=PARENT_PROXY=$PARENT
-ExecStart=/usr/bin/env python3 $PROXY_SRC
-WorkingDirectory=$INSTALL_DIR
-Restart=always
-RestartSec=3
-
-[Install]
-WantedBy=default.target"
-
-  write_systemd_service "pirateclaw-dashboard" "[Unit]
-Description=PirateClaw Dashboard
-After=network-online.target pirateclaw-proxy.service
-
-[Service]
-Type=simple
-Environment=PROXY_PORT=$PROXY_PORT
-Environment=DASH_PORT=$DASH_PORT
-ExecStart=/usr/bin/env python3 $DASH_SRC
-WorkingDirectory=$INSTALL_DIR
-Restart=always
-RestartSec=3
-
-[Install]
-WantedBy=default.target"
-
-  if has_cmd archon; then
-    write_systemd_service "pirateclaw-archon" "[Unit]
-Description=Archon UI Service
-After=network-online.target
-
-[Service]
-Type=simple
-ExecStart=$(command -v archon) serve --port $ARCHON_PORT
-WorkingDirectory=$INSTALL_DIR
-Restart=always
-RestartSec=3
-
-[Install]
-WantedBy=default.target"
-  fi
-
-  systemctl --user daemon-reload
-  systemctl --user enable --now pirateclaw-proxy.service pirateclaw-dashboard.service >/dev/null 2>&1 || true
-  if has_cmd archon; then
-    systemctl --user enable --now pirateclaw-archon.service >/dev/null 2>&1 || true
-  fi
-}
-
-setup_pm2_services() {
-  info "Configuring pm2 background services..."
-  pm2 delete pirateclaw-proxy pirateclaw-dashboard pirateclaw-archon >/dev/null 2>&1 || true
-  pm2 start "$PROXY_SRC" --name pirateclaw-proxy --interpreter python3 --time -- -- >/dev/null 2>&1 || true
-  pm2 start "$DASH_SRC" --name pirateclaw-dashboard --interpreter python3 --time -- -- >/dev/null 2>&1 || true
-  if has_cmd archon; then
-    pm2 start "$(command -v archon)" --name pirateclaw-archon --time -- serve --port "$ARCHON_PORT" >/dev/null 2>&1 || true
-  fi
-  pm2 save >/dev/null 2>&1 || true
-}
-
-remove_background_services() {
-  if has_cmd systemctl; then
-    systemctl --user disable --now pirateclaw-proxy.service pirateclaw-dashboard.service pirateclaw-archon.service >/dev/null 2>&1 || true
-    rm -f "$HOME/.config/systemd/user/pirateclaw-proxy.service" "$HOME/.config/systemd/user/pirateclaw-dashboard.service" "$HOME/.config/systemd/user/pirateclaw-archon.service"
-    systemctl --user daemon-reload >/dev/null 2>&1 || true
-  fi
-  if has_cmd pm2; then
-    pm2 delete pirateclaw-proxy pirateclaw-dashboard pirateclaw-archon >/dev/null 2>&1 || true
-    pm2 save >/dev/null 2>&1 || true
-  fi
-}
-
 print_banner() {
 cat <<DISC
 
@@ -205,7 +95,6 @@ fi
 [ "$REPLY" = "Q" ] || [ "$REPLY" = "q" ] && exit 0
 [ "$REPLY" = "U" ] || [ "$REPLY" = "u" ] && {
   info "Uninstalling PirateClaw services and local config..."
-  remove_background_services
   stop_services
   rm -rf "$INSTALL_DIR"
   ok "Uninstalled PirateClaw local files from $INSTALL_DIR"
@@ -221,7 +110,6 @@ TXT
 }
 [ "$REPLY" = "R" ] || [ "$REPLY" = "r" ] && {
   info "Reinstall requested - purging local install dir"
-  remove_background_services
   stop_services
   rm -rf "$INSTALL_DIR"
 }
@@ -299,42 +187,57 @@ DASH_SRC="$INSTALL_DIR/$SUBDIR/dashboard/server.py"
 [ -f "$PROXY_SRC" ] || die "subproxy/server.py not found"
 [ -f "$DASH_SRC" ] || die "dashboard/server.py not found"
 
-# Launch local services via systemd/pm2 where possible
+# Launch local services
 stop_services
-detect_service_manager
-if [ "$SERVICE_MANAGER" = "systemd" ]; then
-  setup_systemd_services
-  ok "Background manager: systemd --user"
-elif [ "$SERVICE_MANAGER" = "pm2" ]; then
-  setup_pm2_services
-  ok "Background manager: pm2"
-else
-  warn "No systemd user session or pm2 available; falling back to nohup processes"
-  nohup env PROXY_PORT="$PROXY_PORT" DASH_PORT="$DASH_PORT" PARENT_PROXY="$PARENT" python3 "$PROXY_SRC" > "$LOG_DIR/proxy.log" 2>&1 &
-  nohup env PROXY_PORT="$PROXY_PORT" DASH_PORT="$DASH_PORT" python3 "$DASH_SRC" > "$LOG_DIR/dashboard.log" 2>&1 &
-  if has_cmd archon; then
-    nohup archon serve --port "$ARCHON_PORT" > "$LOG_DIR/archon.log" 2>&1 &
-  fi
-fi
 
-sleep 3
+info "Starting PirateClaw proxy..."
+nohup env PROXY_PORT="$PROXY_PORT" DASH_PORT="$DASH_PORT" PARENT_PROXY="$PARENT" python3 "$PROXY_SRC" > "$LOG_DIR/proxy.log" 2>&1 &
+PROXY_PID=$!
+sleep 2
 if curl -sf "http://127.0.0.1:${PROXY_PORT}/health" >/dev/null 2>&1; then
-  ok "Proxy reachable on :${PROXY_PORT}"
+  ok "Proxy running on :${PROXY_PORT} (PID: $PROXY_PID)"
 else
-  warn "Proxy health check failed. Check $LOG_DIR/proxy.log"
+  warn "Proxy health check failed. See $LOG_DIR/proxy.log"
 fi
 
+info "Starting PirateClaw dashboard web UI..."
+nohup env PROXY_PORT="$PROXY_PORT" DASH_PORT="$DASH_PORT" python3 "$DASH_SRC" > "$LOG_DIR/dashboard.log" 2>&1 &
+DASH_PID=$!
+sleep 2
 if curl -sf "http://127.0.0.1:${DASH_PORT}/status" >/dev/null 2>&1; then
-  ok "Dashboard reachable on :${DASH_PORT}"
+  ok "Dashboard running on :${DASH_PORT} (PID: $DASH_PID)"
 else
-  warn "Dashboard health check failed. Check $LOG_DIR/dashboard.log"
+  warn "Dashboard status check failed. See $LOG_DIR/dashboard.log"
 fi
+echo "Started PirateClaw + Dashboard + Archon"
+SH
+chmod +x "$INSTALL_DIR/bin/start-all.sh"
 
+cat > "$INSTALL_DIR/bin/stop-all.sh" <<SH
+#!/usr/bin/env sh
+set -eu
+if command -v systemctl >/dev/null 2>&1 && systemctl --user show-environment >/dev/null 2>&1; then
+  systemctl --user stop pirateclaw-archon.service pirateclaw-dashboard.service pirateclaw-proxy.service || true
+elif command -v pm2 >/dev/null 2>&1; then
+  pm2 stop pirateclaw-proxy pirateclaw-dashboard pirateclaw-archon >/dev/null 2>&1 || true
+else
+  pkill -f "pirateclaw.*/subproxy/server.py" 2>/dev/null || true
+  pkill -f "pirateclaw.*/dashboard/server.py" 2>/dev/null || true
+  pkill -f "^archon serve" 2>/dev/null || true
+fi
+echo "Stopped PirateClaw + Dashboard + Archon"
+SH
+chmod +x "$INSTALL_DIR/bin/stop-all.sh"
+
+info "Starting Archon web UI service..."
 if has_cmd archon; then
+  nohup archon serve --port "$ARCHON_PORT" > "$LOG_DIR/archon.log" 2>&1 &
+  ARCHON_PID=$!
+  sleep 3
   if curl -sf "http://127.0.0.1:${ARCHON_PORT}" >/dev/null 2>&1; then
-    ok "Archon service reachable on :${ARCHON_PORT}"
+    ok "Archon service running on :${ARCHON_PORT} (PID: $ARCHON_PID)"
   else
-    warn "Archon service not reachable on :${ARCHON_PORT}. Check $LOG_DIR/archon.log or service manager logs."
+    warn "Archon service health check failed. See $LOG_DIR/archon.log"
   fi
 else
   warn "archon command not found - skipped Archon service startup"
@@ -424,47 +327,26 @@ else
   warn "Failed to update Hermes MCP config automatically"
 fi
 
-cat > "$INSTALL_DIR/bin/start-all.sh" <<'START_ALL_EOF'
+cat > "$INSTALL_DIR/bin/start-all.sh" <<SH
 #!/usr/bin/env sh
 set -eu
-INSTALL_DIR="${HOME}/pirateclaw"
-LOG_DIR="${INSTALL_DIR}/logs"
-PROXY_SRC="${INSTALL_DIR}/static/pirateclaw/subproxy/server.py"
-DASH_SRC="${INSTALL_DIR}/static/pirateclaw/dashboard/server.py"
-PROXY_PORT="${PROXY_PORT:-6000}"
-DASH_PORT="${DASH_PORT:-8080}"
-ARCHON_PORT="${ARCHON_PORT:-3090}"
-PARENT_PROXY="${PARENT_PROXY:-https://pirateclaw.datro.xyz}"
-if command -v systemctl >/dev/null 2>&1 && systemctl --user show-environment >/dev/null 2>&1; then
-  systemctl --user start pirateclaw-proxy.service pirateclaw-dashboard.service || true
-  systemctl --user start pirateclaw-archon.service || true
-elif command -v pm2 >/dev/null 2>&1; then
-  pm2 restart pirateclaw-proxy pirateclaw-dashboard pirateclaw-archon >/dev/null 2>&1 || true
-else
-  nohup env PROXY_PORT="$PROXY_PORT" DASH_PORT="$DASH_PORT" PARENT_PROXY="$PARENT_PROXY" python3 "$PROXY_SRC" >> "$LOG_DIR/proxy.log" 2>&1 &
-  nohup env PROXY_PORT="$PROXY_PORT" DASH_PORT="$DASH_PORT" python3 "$DASH_SRC" >> "$LOG_DIR/dashboard.log" 2>&1 &
-  if command -v archon >/dev/null 2>&1; then
-    nohup archon serve --port "$ARCHON_PORT" >> "$LOG_DIR/archon.log" 2>&1 &
-  fi
+nohup env PROXY_PORT="$PROXY_PORT" DASH_PORT="$DASH_PORT" PARENT_PROXY="$PARENT" python3 "$PROXY_SRC" >> "$LOG_DIR/proxy.log" 2>&1 &
+nohup env PROXY_PORT="$PROXY_PORT" DASH_PORT="$DASH_PORT" python3 "$DASH_SRC" >> "$LOG_DIR/dashboard.log" 2>&1 &
+if command -v archon >/dev/null 2>&1; then
+  nohup archon serve --port "$ARCHON_PORT" >> "$LOG_DIR/archon.log" 2>&1 &
 fi
 echo "Started PirateClaw + Dashboard + Archon"
-START_ALL_EOF
+SH
 chmod +x "$INSTALL_DIR/bin/start-all.sh"
 
-cat > "$INSTALL_DIR/bin/stop-all.sh" <<'STOP_ALL_EOF'
+cat > "$INSTALL_DIR/bin/stop-all.sh" <<SH
 #!/usr/bin/env sh
 set -eu
-if command -v systemctl >/dev/null 2>&1 && systemctl --user show-environment >/dev/null 2>&1; then
-  systemctl --user stop pirateclaw-archon.service pirateclaw-dashboard.service pirateclaw-proxy.service || true
-elif command -v pm2 >/dev/null 2>&1; then
-  pm2 stop pirateclaw-proxy pirateclaw-dashboard pirateclaw-archon >/dev/null 2>&1 || true
-else
-  pkill -f "pirateclaw.*/subproxy/server.py" 2>/dev/null || true
-  pkill -f "pirateclaw.*/dashboard/server.py" 2>/dev/null || true
-  pkill -f "^archon serve" 2>/dev/null || true
-fi
+pkill -f "pirateclaw.*/subproxy/server.py" 2>/dev/null || true
+pkill -f "pirateclaw.*/dashboard/server.py" 2>/dev/null || true
+pkill -f "^archon serve" 2>/dev/null || true
 echo "Stopped PirateClaw + Dashboard + Archon"
-STOP_ALL_EOF
+SH
 chmod +x "$INSTALL_DIR/bin/stop-all.sh"
 
 cat <<DONE
@@ -491,7 +373,8 @@ cat <<DONE
     primary  -> ${PARENT}/v1
     fallback -> http://127.0.0.1:${PROXY_PORT}/v1
 
-  Hermes is preconfigured during install; no manual chat bootstrap step is required.
-  Background services are managed by: ${SERVICE_MANAGER}
+  Next step:
+    1) Start Hermes: hermes chat
+    2) Ask Hermes to use Archon-backed tooling/workflows.
 
 DONE

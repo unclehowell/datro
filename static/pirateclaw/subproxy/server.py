@@ -38,7 +38,7 @@ BPDU_INTERVAL = 5  # seconds
 PROXY_TIMEOUT = 30  # seconds
 PATH_COST_BASE = 1000
 CHAT_ONLY_MODE = True  # Remote execution disabled by default
-VERSION = "0.0.1.29"
+VERSION = "0.0.1.28"
 START_TIME = int(time.time())
 
 class ProxyNode:
