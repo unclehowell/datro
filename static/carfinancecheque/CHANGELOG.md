@@ -480,3 +480,4 @@ Mar-22 - 0137 Argentina: The = padding in base64 may be getting corrupted in the
               In functions/api/submit-claim.ts I now generate the signature in the Worker instead of using whatever comes from the frontend. Right before the fetch call
 Mar-22 - 0057 Argentina: removed title: data.title || 'Mr' from functions/api/submit-claim.ts   
 Mar-22 - 0044 Argentina: Tried api v2, better to go back to v1 hence this change.  
+# Trigger release
