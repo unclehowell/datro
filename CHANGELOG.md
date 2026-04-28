@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.1.09] - Q2/2026
+Apr-27 - Fixed dist/submit-claim.ts to align with functions/ version and API V3 spec (addresses as array, signature as data URL, include title).
+Apr-27 - Added device_session_id to upstream R2R payload to preserve anti-fraud field from form.
+Apr-27 - Removed required attribute from buildingNumber field (V3 spec: optional).
+
 ## [0.0.1.08] - Q2/2026
 Apr-26 - Updated Google Analytics tracking ID to G-532557888 across carfinancecheque branch.
 Apr-26 - Removed non-functional world.datro.xyz canonical link and host redirect logic from index.html.
