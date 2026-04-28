@@ -467,7 +467,6 @@ export const ClaimForm: React.FC = () => {
               <div className="space-y-1">
                 <label htmlFor="buildingNumber" className="text-xs font-black uppercase tracking-wider text-brand-primary">Building Number / Name</label>
                 <input
-                  required
                   id="buildingNumber"
                   name="buildingNumber"
                   value={formData.buildingNumber}
