@@ -159,8 +159,22 @@ export async function onRequestPost(context: any) {
     console.log("R2R STATUS:", res.status);
     console.log("R2R BODY (truncated):", text ? text.slice(0, 500) : "(empty)");
 
+    // Normalize upstream response to match V3 spec
+    let responseBody = text;
+    try {
+      const parsed = JSON.parse(text);
+      if (parsed.error && !parsed.message) {
+        // Upstream uses 'error' field; V3 spec uses 'message'
+        parsed.message = parsed.error;
+        delete parsed.error;
+        responseBody = JSON.stringify(parsed);
+      }
+    } catch (e) {
+      // Not JSON, pass through as-is
+    }
+
     const responseHeaders = { "Content-Type": "application/json", ...CORS_HEADERS };
-    return new Response(text, {
+    return new Response(responseBody, {
       status: res.status,
       headers: responseHeaders,
     });
