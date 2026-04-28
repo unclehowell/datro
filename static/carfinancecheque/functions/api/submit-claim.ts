@@ -82,7 +82,8 @@ export async function onRequestPost(context: any) {
     const thoroughfare     = String(body.thoroughfare || "").trim();
     const townOrCity       = String(body.townOrCity || "").trim();
     const postcode_formatted = formatPostcode(String(body.postcode || "").trim());
-    const session_id       = body.session_id || crypto.randomUUID();
+    const device_session_id = body.device_session_id || "";
+    const session_id       = body.session_id || device_session_id || crypto.randomUUID();
 
     console.log("ADDRESS FIELDS:", {
       buildingNumber: !!buildingNumber,
@@ -115,6 +116,7 @@ export async function onRequestPost(context: any) {
       client_ip:  req.headers.get("cf-connecting-ip") || "",
       user_agent: req.headers.get("user-agent") || "",
       session_id,
+      device_session_id,
       reference: "carfinancecheque",
       signature: sigImage,
       addresses,
