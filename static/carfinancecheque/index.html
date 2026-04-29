@@ -4,18 +4,72 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PCP Refund</title>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEJB79ND9N"></script>
+    <!-- Google tag (gtag.js) with consent mode -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
+      // Set default consent to denied until user accepts
+      gtag('consent', 'default', {
+        'ad_storage': 'denied',
+        'ad_user_data': 'denied',
+        'ad_personalization': 'denied',
+        'analytics_storage': 'denied'
+      });
       gtag('config', 'G-DEJB79ND9N', { 'send_page_view': true });
     </script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEJB79ND9N"></script>
     <script type="module" crossorigin src="index-B0tMRRWd.js"></script>
     <link rel="stylesheet" crossorigin href="index-DZwSnP6y.css">
   </head>
   <body>
     <div id="root"></div>
+    <!-- Cookie Consent Banner -->
+    <div id="consent-banner" style="display:none; position:fixed; bottom:0; left:0; right:0; background:#1a1a1a; color:#fff; padding:20px; z-index:9999; border-top:4px solid #000;">
+      <div style="max-width:1200px; margin:0 auto; display:flex; flex-wrap:wrap; align-items:center; gap:16px; font-family:monospace;">
+        <div style="flex:1; min-width:250px;">
+          <p style="margin:0 0 8px 0; font-weight:bold; text-transform:uppercase;">Cookie Notice</p>
+          <p style="margin:0 0 8px 0; font-size:14px; color:#ccc;">We use cookies for analytics and fraud prevention. Your form submission works regardless of your cookie choice.</p>
+          <p style="margin:0; font-size:12px; color:#999;">See <a href="https://policies.google.com/technologies/partner-sites" target="_blank" style="color:#fff;">how Google uses data</a> and our <a href="/privacy" target="_blank" style="color:#fff;">privacy policy</a>.</p>
+        </div>
+        <div style="display:flex; gap:12px;">
+          <button id="consent-accept" style="padding:12px 24px; background:#000; color:#fff; border:2px solid #fff; font-weight:bold; text-transform:uppercase; cursor:pointer;">Accept</button>
+          <button id="consent-reject" style="padding:12px 24px; background:transparent; color:#fff; border:2px solid #fff; font-weight:bold; text-transform:uppercase; cursor:pointer;">Reject</button>
+        </div>
+      </div>
+    </div>
+    <script>
+      (function() {
+        var banner = document.getElementById('consent-banner');
+        var consent = localStorage.getItem('cookie_consent');
+        if (!consent) {
+          banner.style.display = 'block';
+        } else {
+          updateConsent(consent === 'granted');
+        }
+        document.getElementById('consent-accept').addEventListener('click', function() {
+          localStorage.setItem('cookie_consent', 'granted');
+          updateConsent(true);
+          banner.style.display = 'none';
+        });
+        document.getElementById('consent-reject').addEventListener('click', function() {
+          localStorage.setItem('cookie_consent', 'denied');
+          updateConsent(false);
+          banner.style.display = 'none';
+        });
+        function updateConsent(granted) {
+          gtag('consent', 'update', {
+            'ad_storage': granted ? 'granted' : 'denied',
+            'ad_user_data': granted ? 'granted' : 'denied',
+            'ad_personalization': granted ? 'granted' : 'denied',
+            'analytics_storage': granted ? 'granted' : 'denied'
+          });
+        }
+        // Expose function to re-open banner (e.g., from footer link)
+        window.openConsentBanner = function() {
+          banner.style.display = 'block';
+        };
+      })();
+    </script>
   </body>
 </html>
