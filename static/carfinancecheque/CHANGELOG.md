@@ -3,6 +3,13 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 
 ---
 
+## [0.0.1.15] - Q2/2026
+Apr-29 - Refactor GA to use Vite env variable VITE_GA_TRACKING_ID
+Apr-29 - Fix V3 API spec: change client_ip to ip_address in upstream payload
+Apr-29 - Add GA page_view and generate_lead conversion tracking to thank-you page
+Apr-29 - Fix blank white page: add main.tsx entry point to index.html
+Apr-29 - Move analytics.js to src/lib/analytics.ts for Vite processing
+
 ## [0.0.1.14] - Q2/2026
 Apr-29 - Fix GA4 events to use valid event names (scroll, form_submit, generate_lead, exception).
 Apr-29 - Fix Vite build by letting it inject the JS script automatically.
