@@ -242,7 +242,7 @@ export const ClaimForm: React.FC = () => {
     setIsSubmitting(true);
     setError(null);
 
-    // GA4: form submit event
+    // GA4: form submit event (built-in)
     if (window.gtag) {
       gtag('event', 'form_submit', { 'form_name': 'claim_form' });
     }
@@ -344,18 +344,18 @@ export const ClaimForm: React.FC = () => {
         window.location.href = body.url;
       } else {
         console.log('--- BROWSER: SUCCESS, NAVIGATING TO THANK YOU ---');
-        // GA4: form success event
+        // GA4: generate_lead event on success
         if (window.gtag) {
-          gtag('event', 'form_success', { 'form_name': 'claim_form' });
+          gtag('event', 'generate_lead', { 'form_name': 'claim_form' });
         }
         navigate('/thank-you');
       }
     } catch (err: any) {
       console.error("--- BROWSER: SUBMISSION ERROR ---", err);
       setError(err.message);
-      // GA4: form error event
+      // GA4: exception event on error
       if (window.gtag) {
-        gtag('event', 'form_error', { 'form_name': 'claim_form', 'error_message': err.message });
+        gtag('event', 'exception', { 'description': err.message, 'fatal': false });
       }
       console.log("--- BROWSER: RESETTING SUBMITTING STATE ---");
       setIsSubmitting(false);
