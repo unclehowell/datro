@@ -4,21 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PCP Refund</title>
-    <!-- Google tag (gtag.js) with consent mode -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEJB79ND9N"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      // Set default consent to denied until user accepts
       gtag('consent', 'default', {
         'ad_storage': 'denied',
         'ad_user_data': 'denied',
         'ad_personalization': 'denied',
         'analytics_storage': 'denied'
       });
-       gtag('config', 'G-DEJB79ND9N', { 'send_page_view': true });
+      gtag('config', 'G-DEJB79ND9N', { 'send_page_view': true });
 
-      // Scroll depth tracking - fires GA4 'scroll' event at thresholds
+      // Scroll depth tracking
       (function() {
         var scrollFired = {};
         window.addEventListener('scroll', function() {
@@ -32,7 +31,6 @@
         });
       })();
     </script>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEJB79ND9N"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DZwSnP6y.css">
   </head>
   <body>
@@ -78,7 +76,6 @@
             'analytics_storage': granted ? 'granted' : 'denied'
           });
         }
-        // Expose function to re-open banner (e.g., from footer link)
         window.openConsentBanner = function() {
           banner.style.display = 'block';
         };
