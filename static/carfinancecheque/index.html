@@ -5,32 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PCP Refund</title>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEJB79ND9N"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('consent', 'default', {
-        'ad_storage': 'denied',
-        'ad_user_data': 'denied',
-        'ad_personalization': 'denied',
-        'analytics_storage': 'denied'
-      });
-      gtag('config', 'G-DEJB79ND9N', { 'send_page_view': true });
-
-      // Scroll depth tracking
-      (function() {
-        var scrollFired = {};
-        window.addEventListener('scroll', function() {
-          var scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
-          [25, 50, 75, 100].forEach(function(threshold) {
-            if (scrollPercent >= threshold && !scrollFired[threshold]) {
-              scrollFired[threshold] = true;
-              gtag('event', 'scroll', { 'percent_scrolled': threshold });
-            }
-          });
-        });
-      })();
-    </script>
+    <script type="module" src="/analytics.js"></script>
     <link rel="stylesheet" crossorigin href="/assets/index-DZwSnP6y.css">
   </head>
   <body>
@@ -49,37 +24,6 @@
         </div>
       </div>
     </div>
-    <script>
-      (function() {
-        var banner = document.getElementById('consent-banner');
-        var consent = localStorage.getItem('cookie_consent');
-        if (!consent) {
-          banner.style.display = 'block';
-        } else {
-          updateConsent(consent === 'granted');
-        }
-        document.getElementById('consent-accept').addEventListener('click', function() {
-          localStorage.setItem('cookie_consent', 'granted');
-          updateConsent(true);
-          banner.style.display = 'none';
-        });
-        document.getElementById('consent-reject').addEventListener('click', function() {
-          localStorage.setItem('cookie_consent', 'denied');
-          updateConsent(false);
-          banner.style.display = 'none';
-        });
-        function updateConsent(granted) {
-          gtag('consent', 'update', {
-            'ad_storage': granted ? 'granted' : 'denied',
-            'ad_user_data': granted ? 'granted' : 'denied',
-            'ad_personalization': granted ? 'granted' : 'denied',
-            'analytics_storage': granted ? 'granted' : 'denied'
-          });
-        }
-        window.openConsentBanner = function() {
-          banner.style.display = 'block';
-        };
-      })();
-    </script>
+    <script type="module" src="/analytics.js"></script>
   </body>
 </html>
