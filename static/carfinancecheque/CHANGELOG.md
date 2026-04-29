@@ -3,9 +3,11 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 
 ---
 
-## [0.0.1.13] - Q2/2026
-Apr-29 - Add GA4 scroll depth tracking (25%, 50%, 75%, 100%).
-Apr-29 - Add form_start, form_submit, form_success, form_error GA4 events.
+## [0.0.1.14] - Q2/2026
+Apr-29 - Fix GA4 events to use valid event names (scroll, form_submit, generate_lead, exception).
+Apr-29 - Fix Vite build by letting it inject the JS script automatically.
+Apr-29 - Add GA4 scroll event (25%, 50%, 75%, 100% scroll depth).
+Apr-29 - Add form_start, form_submit, generate_lead, exception GA4 events.
 Apr-29 - Add GDPR consent banner with Google consent mode.
 Apr-29 - Banner respects user choice; form submission works regardless.
 Apr-29 - Update Google Analytics tracking ID to G-DEJB79ND9N.
