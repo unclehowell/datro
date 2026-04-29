@@ -3,6 +3,10 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 
 ---
 
+## [0.0.1.11] - Q2/2026
+Apr-28 - Update Google Analytics tracking ID to G-DEJB79ND9N.
+Apr-28 - Enable send_page_view in GA config to capture traffic.
+
 ## [0.0.1.10] - Q2/2026
 Apr-28 - Normalize upstream R2R response to match V3 spec (convert `error` field to `message`).
 Apr-28 - Add `device_session_id` to upstream payload (preserve anti-fraud field from form).
@@ -12,8 +16,6 @@ Apr-28 - Remove `required` attribute from `buildingNumber` field (V3 spec: optio
 ## [0.0.1.09] - Q2/2026
 Apr-27 - Fixed dist/submit-claim.ts to align with functions/ version and API V3 spec.
 Apr-27 - Added device_session_id to upstream R2R payload.
-
-## Apr-17-2026 - v1.0.0 - Google Analytics, API v3 Compliance, Mobile Signature Fix
 
 ### Changes Made
 
