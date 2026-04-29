@@ -17,6 +17,20 @@
         'analytics_storage': 'denied'
       });
       gtag('config', 'G-DEJB79ND9N', { 'send_page_view': true });
+
+      // Scroll depth tracking
+      (function() {
+        var scrollFired = {};
+        window.addEventListener('scroll', function() {
+          var scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
+          [25, 50, 75, 100].forEach(function(threshold) {
+            if (scrollPercent >= threshold && !scrollFired[threshold]) {
+              scrollFired[threshold] = true;
+              gtag('event', 'scroll_depth', { 'percent_scrolled': threshold });
+            }
+          });
+        });
+      })();
     </script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-DEJB79ND9N"></script>
     <script type="module" crossorigin src="index-B0tMRRWd.js"></script>

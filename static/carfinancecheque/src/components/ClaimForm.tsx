@@ -35,6 +35,7 @@ export const ClaimForm: React.FC = () => {
   });
   const [signatureImage, setSignatureImage] = useState<string>('');
   const signatureRef = useRef<SignatureCanvas>(null);
+  const formStartFired = useRef(false);
 
   console.log("--- BROWSER: RENDERING STEP ---", currentStep);
   console.log("--- BROWSER: SUBMITTING STATE ---", isSubmitting);
@@ -75,6 +76,13 @@ export const ClaimForm: React.FC = () => {
       setTimeout(() => setKountReady(true), 5000);
     }
   }, []);
+
+  const handleFocus = () => {
+    if (!formStartFired.current && window.gtag) {
+      gtag('event', 'form_start', { 'form_name': 'claim_form' });
+      formStartFired.current = true;
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     let value = e.target.value;
@@ -234,6 +242,11 @@ export const ClaimForm: React.FC = () => {
     setIsSubmitting(true);
     setError(null);
 
+    // GA4: form submit event
+    if (window.gtag) {
+      gtag('event', 'form_submit', { 'form_name': 'claim_form' });
+    }
+
     try {
       const userAgent = navigator.userAgent;
       console.log("User Agent:", userAgent);
@@ -331,11 +344,19 @@ export const ClaimForm: React.FC = () => {
         window.location.href = body.url;
       } else {
         console.log('--- BROWSER: SUCCESS, NAVIGATING TO THANK YOU ---');
+        // GA4: form success event
+        if (window.gtag) {
+          gtag('event', 'form_success', { 'form_name': 'claim_form' });
+        }
         navigate('/thank-you');
       }
     } catch (err: any) {
       console.error("--- BROWSER: SUBMISSION ERROR ---", err);
       setError(err.message);
+      // GA4: form error event
+      if (window.gtag) {
+        gtag('event', 'form_error', { 'form_name': 'claim_form', 'error_message': err.message });
+      }
       console.log("--- BROWSER: RESETTING SUBMITTING STATE ---");
       setIsSubmitting(false);
     }
@@ -366,7 +387,7 @@ export const ClaimForm: React.FC = () => {
         ))}
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} onFocus={handleFocus} className="space-y-6">
         <AnimatePresence mode="wait">
           {currentStep === 0 && (
             <motion.div
