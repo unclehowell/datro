@@ -3,8 +3,10 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 
 ---
 
-## [0.0.1.11] - Q2/2026
-Apr-28 - Update Google Analytics tracking ID to G-DEJB79ND9N.
+## [0.0.1.12] - Q2/2026
+Apr-29 - Add GDPR consent banner with Google consent mode.
+Apr-29 - Banner respects user choice; form submission works regardless of consent.
+Apr-29 - Update Google Analytics tracking ID to G-DEJB79ND9N.
 Apr-28 - Enable send_page_view in GA config to capture traffic.
 
 ## [0.0.1.10] - Q2/2026
