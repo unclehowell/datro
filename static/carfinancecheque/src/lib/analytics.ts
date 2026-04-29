@@ -1,19 +1,21 @@
 // Google Analytics 4 with consent mode
-window.dataLayer = window.dataLayer || [];
-function gtag(){dataLayer.push(arguments);}
-gtag('js', new Date());
+export function initGA() {
+  const trackingId = import.meta.env.VITE_GA_TRACKING_ID || 'G-DEJB79ND9N';
 
-// Set default consent to denied until user accepts
-gtag('consent', 'default', {
-  'ad_storage': 'denied',
-  'ad_user_data': 'denied',
-  'ad_personalization': 'denied',
-  'analytics_storage': 'denied'
-});
-gtag('config', 'G-DEJB79ND9N', { 'send_page_view': true });
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){window.dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-// Scroll depth tracking
-(function() {
+  // Set default consent to denied until user accepts
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
+  gtag('config', trackingId, { 'send_page_view': true });
+
+  // Scroll depth tracking
   var scrollFired = {};
   window.addEventListener('scroll', function() {
     var scrollPercent = Math.round((window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100);
@@ -24,10 +26,8 @@ gtag('config', 'G-DEJB79ND9N', { 'send_page_view': true });
       }
     });
   });
-})();
 
-// Consent banner logic
-(function() {
+  // Consent banner logic
   var banner = document.getElementById('consent-banner');
   var consent = localStorage.getItem('cookie_consent');
   if (!consent) {
@@ -57,4 +57,4 @@ gtag('config', 'G-DEJB79ND9N', { 'send_page_view': true });
   window.openConsentBanner = function() {
     banner.style.display = 'block';
   };
-})();
+}

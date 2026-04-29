@@ -5,17 +5,20 @@ import { motion } from 'framer-motion';
 
 export const ThankYou: React.FC = () => {
   useEffect(() => {
+    const trackingId = import.meta.env.VITE_GA_TRACKING_ID || 'G-DEJB79ND9N';
     // Send page view for SPA route
     if (window.gtag) {
       gtag('event', 'page_view', {
         page_title: 'Thank You - PCP Refund',
         page_location: window.location.href,
-        page_path: '/thank-you'
+        page_path: '/thank-you',
+        send_to: trackingId
       });
       // Fire conversion event
       gtag('event', 'generate_lead', {
         page_location: window.location.href,
-        page_path: '/thank-you'
+        page_path: '/thank-you',
+        send_to: trackingId
       });
     }
   }, []);
