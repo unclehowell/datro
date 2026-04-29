@@ -1,9 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { CheckCircle2, ArrowRight, Mail, Phone } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export const ThankYou: React.FC = () => {
+  useEffect(() => {
+    // Send page view for SPA route
+    if (window.gtag) {
+      gtag('event', 'page_view', {
+        page_title: 'Thank You - PCP Refund',
+        page_location: window.location.href,
+        page_path: '/thank-you'
+      });
+      // Fire conversion event
+      gtag('event', 'generate_lead', {
+        page_location: window.location.href,
+        page_path: '/thank-you'
+      });
+    }
+  }, []);
+
   return (
     <div className="min-h-[70vh] flex items-center justify-center px-4 py-24">
       <motion.div 

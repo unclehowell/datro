@@ -113,7 +113,7 @@ export async function onRequestPost(context: any) {
       date_of_birth,
       phone,
       email,
-      client_ip:  req.headers.get("cf-connecting-ip") || "",
+      ip_address:  req.headers.get("cf-connecting-ip") || "",
       user_agent: req.headers.get("user-agent") || "",
       session_id,
       device_session_id,
