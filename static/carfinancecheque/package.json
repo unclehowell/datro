@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
-    "build": "vite build && cp -r functions dist/ && cp index-*.js dist/ && cp index-*.css dist/ 2>/dev/null || true",
+    "build": "vite build && cp -r functions dist/",
     "preview": "vite preview",
     "clean": "rm -rf dist",
     "lint": "tsc --noEmit"
