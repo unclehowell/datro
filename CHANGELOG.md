@@ -5,7 +5,7 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
 
 ## [Unreleased]
-## [0.0.1-rc.1] - Q2/2026
+## [0.0.1] - Q2/2026
 
 ### Added
 - Google Search Console SEO integration
