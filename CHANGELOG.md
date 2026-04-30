@@ -4,7 +4,22 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
 
-## [Unreleased] 
+## [Unreleased]
+## [0.0.1-rc.1] - Q2/2026
+
+### Added
+- Google Search Console SEO integration
+- sitemap.txt in static/library/ for search engine indexing
+- robots.txt with sitemap reference
+- sitemap.xml for XML sitemap format
+- _headers file for Cloudflare SEO optimizations
+- Google site verification meta tags in HTML files
+- Basic SEO meta tags (description, robots, canonical)
+
+### Changed
+- Updated HTML headers with SEO best practices
+
+ 
 
 # [0.0.1-rtwx.4-rc.7] - Q3/2025
 Sep-26 - Added song lyrics (welsh/ english) to library under new catagory txt (files). Welsh song: Coch, Gwyn a Gwyrdd - by the band Pelau Taf   
