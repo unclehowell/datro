@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file.
 
+## [financecheque-v0.2.0.0] - 2026-05-01
+
+### Added
+- Mobile-first responsive design for landing page
+- Compact mobile view with hidden subtitle ("Universal Agentic A.I Lead Generation")
+- Smaller title on mobile (text-lg) scaling up on larger screens
+
+### Changed
+- Reduced title size: text-lg on mobile → sm:text-xl → md:text-3xl
+- Hidden extended subtitle on mobile (shows "A.I Lead Gen" instead)
+- Reduced padding throughout: px-4 py-2 on mobile instead of px-8 py-8
+- Compact Lead Buyer and Lead Seller sections
+- "How Finance Cheque UK Works" title smaller on mobile (text-3xl sm:text-5xl)
+- "Core Features" title smaller on mobile (text-2xl sm:text-3xl)
+
+### Fixed
+- Improved mobile user experience with better content fitting
+- Eliminated unnecessary scrolling on mobile devices
+
+---
+
 ## [financecheque-v0.1.0.0] - 2026-05-01
 
 ### Added
