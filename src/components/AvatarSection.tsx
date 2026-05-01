@@ -28,41 +28,13 @@ export default function AvatarSection() {
             className="absolute inset-0 border border-accent/10 rounded-full"
           />
           
-          {/* The "Avatar" - A stylized AI face */}
-          <div className="absolute inset-6 bg-accent/5 rounded-full border border-accent/20 flex items-center justify-center overflow-hidden shadow-inner">
-            <motion.div 
-              animate={{ 
-                y: [0, -4, 0],
-                rotate: [0, 1, -1, 0]
-              }}
-              transition={{ duration: 6, repeat: Infinity }}
-              className="w-full h-full flex flex-col items-center justify-center gap-6"
-            >
-              {/* Eyes */}
-              <div className="flex gap-10">
-                <motion.div 
-                  animate={{ scaleY: [1, 0.1, 1] }}
-                  transition={{ duration: 4, repeat: Infinity, repeatDelay: 4 }}
-                  className="w-10 h-1.5 bg-accent rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]" 
-                />
-                <motion.div 
-                  animate={{ scaleY: [1, 0.1, 1] }}
-                  transition={{ duration: 4, repeat: Infinity, repeatDelay: 4 }}
-                  className="w-10 h-1.5 bg-accent rounded-full shadow-[0_0_10px_rgba(59,130,246,0.5)]" 
-                />
-              </div>
-              {/* Mouth/Voice Wave */}
-              <div className="flex items-center gap-1.5 h-10">
-                {[1, 2, 3, 4, 5, 4, 3, 2, 1].map((h, i) => (
-                  <motion.div
-                    key={i}
-                    animate={{ height: isCalling ? [10, 30, 10] : 6 }}
-                    transition={{ duration: 0.6, repeat: Infinity, delay: i * 0.1 }}
-                    className="w-1.5 bg-accent/40 rounded-full"
-                  />
-                ))}
-              </div>
-            </motion.div>
+          {/* The "Avatar" - Stacey GIF */}
+          <div className="absolute inset-6 rounded-full border border-accent/20 flex items-center justify-center overflow-hidden shadow-inner bg-accent/5">
+            <img 
+              src="/avatar.gif" 
+              alt="Stacey" 
+              className="w-full h-full object-cover"
+            />
           </div>
         </div>
       </div>

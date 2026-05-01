@@ -161,8 +161,22 @@ export default function App() {
   const [buyerWebsiteUrl, setBuyerWebsiteUrl] = useState('');
   const [payPerLead, setPayPerLead] = useState('');
   const [leadCount, setLeadCount] = useState('');
-  const [buyerBalance, setBuyerBalance] = useState(0);
-  const [sellerBalance, setSellerBalance] = useState(0);
+  const [buyerBalance, setBuyerBalance] = useState(() => {
+    const saved = localStorage.getItem('fcuk-buyer-balance');
+    return saved ? parseInt(saved) : 1000;
+  });
+  const [sellerBalance, setSellerBalance] = useState(() => {
+    const saved = localStorage.getItem('fcuk-seller-balance');
+    return saved ? parseInt(saved) : 500;
+  });
+
+  useEffect(() => {
+    localStorage.setItem('fcuk-buyer-balance', buyerBalance.toString());
+  }, [buyerBalance]);
+
+  useEffect(() => {
+    localStorage.setItem('fcuk-seller-balance', sellerBalance.toString());
+  }, [sellerBalance]);
   const [formError, setFormError] = useState<string | null>(null);
 
   useEffect(() => {
@@ -352,7 +366,7 @@ export default function App() {
     en: {
       heroTitle: "Your AI affiliate operator.",
       heroTitleAccent: "Running campaigns. Generating revenue.",
-      heroSub: "Connect your accounts. Your agent builds, runs, and optimizes real affiliate campaigns 24/7. You own the output. You get paid weekly in GBP.",
+       heroSub: "Connect your accounts. Your agent builds, runs, and optimizes real affiliate campaigns 24/7. You own the output. You get paid weekly in credits.",
       cta: "Start Your Agent",
       docs: "Documentation",
       api: "API Reference",
@@ -506,7 +520,7 @@ export default function App() {
                       <button 
                         className="w-full flex items-center justify-between p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
                       >
-                        Buyer
+                        Lead Buyer
                         <ChevronRight size={14} />
                       </button>
                       <div className="absolute right-full top-0 pr-2 w-64 opacity-0 pointer-events-none group-hover/buyer:opacity-100 group-hover/buyer:pointer-events-auto transition-all">
@@ -534,7 +548,7 @@ export default function App() {
                       <button 
                         className="w-full flex items-center justify-between p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
                       >
-                        Seller
+                        Lead Seller(s)
                         <ChevronRight size={14} />
                       </button>
                       <div className="absolute right-full top-0 pr-2 w-64 opacity-0 pointer-events-none group-hover/seller:opacity-100 group-hover/seller:pointer-events-auto transition-all">
@@ -715,7 +729,7 @@ export default function App() {
               <div className="w-full md:w-1/2 px-8 py-2 flex flex-col justify-start bg-paper/50 relative z-[300]">
                 <div className="max-w-md mx-auto w-full space-y-8">
                   <div className="flex items-center justify-between w-full mb-4 pb-8 border-b border-border">
-                    <h2 className="text-3xl font-bold tracking-tighter text-ink">Buyer</h2>
+                    <h2 className="text-3xl font-bold tracking-tighter text-ink">Lead Buyer</h2>
                     {/* Mock Wallet Balance */}
                     <button 
                       onClick={() => {
@@ -729,7 +743,7 @@ export default function App() {
                         <span className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Balance</span>
                       </div>
                       <span className={`text-xl font-bold font-mono ${buyerBalance < 0 ? 'text-red-500' : 'text-ink'}`}>
-                        £{buyerBalance.toFixed(2)}
+                        {buyerBalance} credits
                       </span>
                     </button>
                   </div>
@@ -745,26 +759,27 @@ export default function App() {
 
                       // Check if balance covers the order
                       if (buyerBalance <= -500) {
-                        setFormError("Credit limit reached (£-500). Please sign in to top up your wallet.");
+                        setFormError("Credit limit reached (500 credits). Please sign in to top up your wallet.");
                         return;
                       }
-
+                      
                       if (buyerBalance === 0 && cost > 0) {
-                        setFormError("Insufficient funds. Sign in to top up your wallet.");
+                        setFormError("Insufficient credits. Sign in to top up your wallet.");
                         return;
                       }
-
+                      
                       if (buyerBalance - cost < -500) {
-                        setFormError("Order exceeds credit limit. Minimum balance allowed is £-500.");
+                        setFormError("Order exceeds credit limit. Minimum balance allowed is -500 credits.");
                         return;
                       }
                       
                       setBuyerBalance(prev => prev - cost);
-                      setFormError(null);
-                      
-                      if (buyerBalance - cost < 0) {
-                        setFormError("Notice: Your wallet balance is now negative. Sign in to top up.");
-                      }
+                       setSellerBalance(prev => prev + cost);
+                       setFormError(null);
+                       
+                       if (buyerBalance - cost < 0) {
+                         setFormError("Notice: Your wallet balance is now negative. Sign in to top up.");
+                       }
                     }}
                     className="space-y-6"
                   >
@@ -783,7 +798,7 @@ export default function App() {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Budget Per Lead (£)</label>
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Budget Per Lead (credits)</label>
                         <input 
                           type="number" 
                           required
@@ -840,7 +855,7 @@ export default function App() {
                     <div className="flex flex-col items-center w-full">
                       {/* Seller Title & Wallet Bar */}
                       <div className="flex items-center justify-between w-full mb-4 pb-8 border-b border-border">
-                        <h2 className="text-3xl font-bold tracking-tighter text-ink">Seller(s)</h2>
+                        <h2 className="text-3xl font-bold tracking-tighter text-ink">Lead Seller(s)</h2>
                         <button 
                           onClick={() => {
                             setAuthModalTab('signin');
@@ -853,7 +868,7 @@ export default function App() {
                             <span className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Balance</span>
                           </div>
                           <span className={`text-xl font-bold font-mono ${sellerBalance < 0 ? 'text-red-500' : 'text-ink'}`}>
-                            £{sellerBalance.toFixed(2)}
+                            {sellerBalance} credits
                           </span>
                         </button>
                       </div>

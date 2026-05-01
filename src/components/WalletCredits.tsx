@@ -73,28 +73,28 @@ export default function WalletCredits() {
       <div className="relative">
         <div className="rail-text absolute -left-12 top-12">SECURE WALLET • V2.0</div>
         <div className="relative frame p-12 lg:p-16 shadow-2xl">
-          <div className="flex justify-between items-start mb-20">
+        <div className="flex justify-between items-start mb-20">
             <div className="space-y-2">
-              <h3 className="font-bold text-3xl tracking-tighter text-ink">Earnings Wallet</h3>
+              <h3 className="font-bold text-3xl tracking-tighter text-ink">Lead Buyer Wallet</h3>
               <p className="text-[10px] font-bold text-ink/30 uppercase tracking-[0.2em]">Asset ID: 0xFCUK_NETWORK_MAIN</p>
             </div>
             <div className="w-20 h-20 bg-accent text-paper flex items-center justify-center shadow-2xl shadow-accent/20">
-              <div className="font-bold text-3xl">£</div>
+              <div className="font-bold text-xl">credits</div>
             </div>
           </div>
 
-          <div className="space-y-4 mb-20">
+        <div className="space-y-4 mb-20">
             <span className="text-[10px] uppercase font-bold text-accent tracking-[0.3em]">Projected Weekly Payout</span>
             <div className="flex items-baseline gap-4">
-              <span className="text-5xl font-bold text-accent tracking-tighter">£</span>
-              <motion.span 
+              <motion.span
                 key={credits}
                 initial={{ scale: 1.1, color: '#3B82F6' }}
                 animate={{ scale: 1, color: '#0A0A0A' }}
-                className="text-[120px] font-bold leading-none tracking-tighter"
+                className="text-[120px] font-bold leading-none tracking-tighter text-ink"
               >
-                {(credits * 0.01).toFixed(2)}
+                {credits}
               </motion.span>
+              <span className="text-5xl font-bold text-ink/30">credits</span>
             </div>
             <p className="text-[10px] font-bold text-ink/30 uppercase tracking-widest">
               Based on {credits} FCUK Credits (1:1 Tracking Unit)
@@ -131,7 +131,7 @@ export default function WalletCredits() {
           </div>
 
           <button className="w-full mt-20 bg-ink text-paper font-bold text-xl uppercase py-8 tracking-[0.2em] hover:bg-accent transition-all shadow-2xl shadow-accent/10">
-            View Sunday Payout
+            View Lead Buyer Payout
           </button>
         </div>
       </div>
