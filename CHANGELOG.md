@@ -2,6 +2,29 @@
 
 All notable changes to this project will be documented in this file.
 
+## [financecheque-v0.1.0.0] - 2026-05-01
+
+### Added
+- Avatar GIF for Stacey agent (stored locally in public/avatar.gif)
+- Lead order simulation with client-side cache (localStorage)
+- Persistent wallet balances across page refreshes
+- Tatum.io API integration (mainnet and testnet keys configured)
+
+### Changed
+- Renamed 'Buyer' to 'Lead Buyer' throughout the application
+- Renamed 'Seller(s)' to 'Lead Seller(s)' throughout the application
+- Replaced £ currency symbol with 'credits' (buyer and seller wallets)
+- Updated wallet labels in Dashboard and WalletCredits components
+- Initial buyer wallet balance: 1000 credits
+- Initial seller wallet balance: 500 credits
+- Credits transfer from buyer to seller on order submission
+- Updated hero subtitle to reference credits instead of GBP
+
+### Fixed
+- Stacey avatar now displays GIF animation instead of static placeholder
+
+---
+
 ## [financecheque-v0.0.1.0] - 2026-05-01
 
 ### Added
