@@ -1319,7 +1319,7 @@ export default function App() {
                     </div>
                     <h4 className="text-xl font-bold text-ink">Soloprenuer (Pay As You Go)</h4>
                     <p className="text-sm text-ink/60 leading-relaxed">
-                      Free agent for friends and family. Scale your personal reach.
+                      Pay as you go account for soloprenuers.
                     </p>
                   </div>
                   <div className="flex-1 space-y-4">
@@ -1333,7 +1333,7 @@ export default function App() {
                     </div>
                     <div className="flex items-center gap-3 text-xs font-bold text-ink/80">
                       <CheckCircle2 size={16} className="text-green-500" />
-                      Free Forever
+                      Analytics
                     </div>
                   </div>
                   <div className="pt-8 space-y-4">
