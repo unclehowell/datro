@@ -471,11 +471,11 @@ export default function App() {
       <nav className="fixed top-0 w-full z-[500] bg-paper/80 backdrop-blur-xl border-b border-border">
         <div className="max-w-[1800px] mx-auto px-8 h-20 flex items-center justify-between">
           <div className="flex items-center gap-16">
-            <button onClick={() => setCurrentPage('home')} className="flex flex-col gap-2 group text-left">
-              <span className="font-bold text-xl sm:text-3xl tracking-tighter text-ink leading-none group-hover:text-accent transition-colors">FINANCE CHEQUE UK (FCUK)</span>
-              <span className="text-[10px] font-bold uppercase tracking-[0.3em] text-accent/80">
-                <span className="sm:hidden">Universal Agentic A.I Lead Generation</span>
-                <span className="hidden sm:inline">Universal Agentic A.I Lead Generation</span>
+            <button onClick={() => setCurrentPage('home')} className="flex flex-col gap-1 sm:gap-2 group text-left">
+              <span className="font-bold text-lg sm:text-xl md:text-3xl tracking-tighter text-ink leading-none group-hover:text-accent transition-colors">FINANCE CHEQUE UK (FCUK)</span>
+              <span className="hidden sm:inline text-[10px] font-bold uppercase tracking-[0.3em] text-accent/80">
+                <span className="hidden md:inline">Universal Agentic A.I Lead Generation</span>
+                <span className="md:hidden">A.I Lead Gen</span>
               </span>
             </button>
           </div>
@@ -671,7 +671,7 @@ export default function App() {
         ) : currentPage === 'docs' ? (
           <div className="max-w-4xl mx-auto p-12 lg:p-24 space-y-16">
             <section className="space-y-8">
-              <h2 className="text-5xl font-bold tracking-tighter">How Finance Cheque UK (FCUK) Works.</h2>
+              <h2 className="text-3xl sm:text-5xl font-bold tracking-tighter">How Finance Cheque UK (FCUK) Works.</h2>
               <p className="text-lg text-ink/60 leading-relaxed">
                 We partner with verified affiliate networks. Your agent operates within these ecosystems to generate real-world value.
               </p>
@@ -695,7 +695,7 @@ export default function App() {
             </section>
 
             <section className="space-y-8">
-              <h2 className="text-3xl font-bold tracking-tighter">Core Features</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter">Core Features</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="p-8 frame space-y-4">
                   <h3 className="font-bold">Content Engine</h3>
@@ -724,12 +724,12 @@ export default function App() {
           </div>
         ) : (
           <>
-            <div className="flex flex-col md:flex-row min-h-[calc(100vh-10rem)] relative">
+            <div className="flex flex-col md:flex-row min-h-[calc(100vh-6rem)] relative">
               {/* Buyer Form Section (Left Half) */}
-              <div className="w-full md:w-1/2 px-8 py-2 flex flex-col justify-start bg-paper/50 relative z-[300]">
-                <div className="max-w-md mx-auto w-full space-y-8">
-                  <div className="flex items-center justify-between w-full mb-4 pb-8 border-b border-border">
-                    <h2 className="text-3xl font-bold tracking-tighter text-ink">Lead Buyer</h2>
+              <div className="w-full md:w-1/2 px-4 py-2 sm:px-8 sm:py-4 flex flex-col justify-start bg-paper/50 relative z-[300]">
+                <div className="max-w-md mx-auto w-full space-y-4 sm:space-y-6">
+                  <div className="flex items-center justify-between w-full mb-2 pb-4 sm:pb-6 border-b border-border">
+                    <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter text-ink">Lead Buyer</h2>
                     {/* Mock Wallet Balance */}
                     <button 
                       onClick={() => {
@@ -854,8 +854,8 @@ export default function App() {
                   <div className="max-w-[800px] mx-auto px-8 py-2 min-h-full flex flex-col items-center justify-start">
                     <div className="flex flex-col items-center w-full">
                       {/* Seller Title & Wallet Bar */}
-                      <div className="flex items-center justify-between w-full mb-4 pb-8 border-b border-border">
-                        <h2 className="text-3xl font-bold tracking-tighter text-ink">Lead Seller(s)</h2>
+                      <div className="flex items-center justify-between w-full mb-2 pb-4 sm:pb-8 border-b border-border">
+                        <h2 className="text-2xl sm:text-3xl font-bold tracking-tighter text-ink">Lead Seller(s)</h2>
                         <button 
                           onClick={() => {
                             setAuthModalTab('signin');
