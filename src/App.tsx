@@ -114,6 +114,7 @@ const RingingPhone = () => (
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState<'home' | 'exchange' | 'signin' | 'signup' | 'forgot-password' | 'docs'>('home');
   const [user, setUser] = useState<any>(null);
   const [showDemoModal, setShowDemoModal] = useState(false);
@@ -347,6 +348,7 @@ export default function App() {
         playDing();
         return newBalance;
       });
+      setSellerBalance(prev => prev - amount);
       setConnectedPlatforms(prev => [...prev, platform]);
       setIsOAuthLoading(false);
       setActiveOAuth(null);
@@ -506,14 +508,15 @@ export default function App() {
                 {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
               </button>
               
-              <div className="relative group">
+              <div className="relative">
                 <button 
+                  onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                   className="flex items-center gap-2 bg-ink text-paper px-8 py-3 border border-border rounded-none font-bold text-xs uppercase tracking-widest hover:bg-accent hover:border-accent hover:text-paper transition-all"
                 >
                   Menu
-                  <ChevronDown size={14} />
+                  <ChevronDown size={14} className={`transition-transform ${mobileMenuOpen ? 'rotate-180' : ''}`} />
                 </button>
-                <div className="absolute right-0 top-full pt-2 w-64 opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-all z-[600]">
+                <div className={`absolute right-0 top-full pt-2 w-64 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition-all z-[600]`}>
                   <div className="bg-paper border border-border shadow-2xl p-2 space-y-1">
                     {/* Buyer Menu */}
                     <div className="relative group/buyer">
@@ -523,7 +526,7 @@ export default function App() {
                         Lead Buyer
                         <ChevronRight size={14} />
                       </button>
-                      <div className="absolute right-full top-0 pr-2 w-64 opacity-0 pointer-events-none group-hover/buyer:opacity-100 group-hover/buyer:pointer-events-auto transition-all">
+                      <div className="absolute right-full top-0 pr-2 w-64 opacity-0 pointer-events-none ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : ''} transition-all">
                         <div className="bg-paper border border-border shadow-2xl p-2 space-y-1">
                           <button 
                             onClick={() => { setAuthModalTab('signin'); setShowAuthModal(true); }}
@@ -551,7 +554,7 @@ export default function App() {
                         Lead Seller(s)
                         <ChevronRight size={14} />
                       </button>
-                      <div className="absolute right-full top-0 pr-2 w-64 opacity-0 pointer-events-none group-hover/seller:opacity-100 group-hover/seller:pointer-events-auto transition-all">
+                      <div className="absolute right-full top-0 pr-2 w-64 opacity-0 pointer-events-none ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : ''} transition-all">
                         <div className="bg-paper border border-border shadow-2xl p-2 space-y-1">
                           <div className="px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-ink/30 border-b border-border mb-2">Install Options</div>
                           <div className="grid grid-cols-2 gap-2 p-2">
@@ -774,7 +777,7 @@ export default function App() {
                       }
                       
                       setBuyerBalance(prev => prev - cost);
-                       setSellerBalance(prev => prev + cost);
+                       setSellerBalance(prev => prev - cost);
                        setFormError(null);
                        
                        if (buyerBalance - cost < 0) {

@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [financecheque-v0.1.0.02] - 2026-05-01
+
+### Fixed
+- Removed "(credits)" from "Budget Per Lead" label
+- Fixed mobile menu - now uses click toggle instead of hover-only
+- Fixed seller balance: authorization now deducts 2.33 credits from Lead Seller wallet
+- Authorization credits (2.33) properly deducted from seller balance
+
+---
+
 ## [financecheque-v0.1.0.01] - 2026-05-01
 
 ### Added
