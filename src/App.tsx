@@ -877,18 +877,14 @@ export default function App() {
                         {/* Agent 1: Stacey */}
                         <div className="flex flex-col items-center gap-6 pointer-events-auto">
                           <div className="relative">
-                            <motion.button
-                              whileHover={{ scale: 1.05 }}
-                              whileTap={{ scale: 0.95 }}
-                              onClick={() => handleOpenAgent(1)}
-                              className="w-24 h-24 sm:w-32 sm:h-32 rounded-full relative overflow-hidden shadow-2xl transition-all flex items-center justify-center"
-                              style={{ 
-                                backgroundImage: 'url("https://r2.erweima.ai/ai_image/95462580-b747-49a7-96a8-f7166e4a2d71.png")',
-                                backgroundSize: 'cover',
-                                backgroundPosition: 'center',
-                                border: 'none'
-                              }}
-                            />
+                             <motion.button
+                               whileHover={{ scale: 1.05 }}
+                               whileTap={{ scale: 0.95 }}
+                               onClick={() => handleOpenAgent(1)}
+                               className="w-24 h-24 sm:w-32 sm:h-32 rounded-full relative overflow-hidden shadow-2xl transition-all"
+                             >
+                               <img src="/avatar.gif" alt="Stacey" className="w-full h-full object-cover" />
+                             </motion.button>
                             {onboardingStep === 0 && !user && cookiesAccepted && (
                               <motion.button 
                                 onClick={() => handleOpenAgent(1)}
