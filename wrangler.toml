@@ -5,6 +5,14 @@ compatibility_flags = ["ENABLE_HTML_PRESET_STATIC_ERRORS"]
 command = "npm run build"
 destination_dir = "dist"
 
+# D1 Database
+[[d1_databases]]
+binding = "DB"
+database_name = "financecheque-db"
+database_id = "a04880a5-c1f7-47fc-aa42-d85e1dfab223"
+
+# Environment variables
 [vars]
 TATUM_MAINNET_API_KEY = "t-69da9f56820036a5836b248e-49569191c16744b49c468087"
 TATUM_TESTNET_API_KEY = "t-69da9f56820036a5836b248e-e81cafda99354d9785c73965"
+JWT_SECRET = "your-jwt-secret-change-in-production"

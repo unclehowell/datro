@@ -34,17 +34,27 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, 
     setIsLoading(true);
     setError('');
 
-    // Simulate auth
-    setTimeout(() => {
-      if (isDemo) {
-        onAuthSuccess({ name: 'Demo User', email: 'demo' });
-      } else if (email && password) {
-        onAuthSuccess({ name: email.split('@')[0], email });
-      } else {
-        setError('Please fill in all fields');
+    try {
+      const action = activeTab === 'signin' ? 'login' : 'register';
+      const response = await fetch('/api/auth', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ action, email, password }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || 'Authentication failed');
       }
+
+      localStorage.setItem('auth_token', data.token);
+      onAuthSuccess(data.user);
+    } catch (err: any) {
+      setError(err.message);
+    } finally {
       setIsLoading(false);
-    }, 1000);
+    }
   };
 
   return (
