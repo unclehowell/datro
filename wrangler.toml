@@ -1,11 +1,5 @@
 name = "financecheque"
-compatibility_flags = ["ENABLE_HTML_PRESET_STATIC_ERRORS"]
-
 pages_build_output_dir = "dist"
-
-[build]
-command = "npm run build"
-destination_dir = "dist"
 
 [[d1_databases]]
 binding = "DB"
