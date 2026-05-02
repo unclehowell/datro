@@ -115,6 +115,8 @@ export default function App() {
   const [lang, setLang] = useState<Language>('en');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [buyerSubmenuOpen, setBuyerSubmenuOpen] = useState(false);
+  const [sellerSubmenuOpen, setSellerSubmenuOpen] = useState(false);
   const [currentPage, setCurrentPage] = useState<'home' | 'exchange' | 'signin' | 'signup' | 'forgot-password' | 'docs'>('home');
   const [user, setUser] = useState<any>(null);
   const [showDemoModal, setShowDemoModal] = useState(false);
@@ -344,11 +346,11 @@ export default function App() {
         a.id === id ? { ...a, balance: a.balance + amount, hasInteracted: true } : a
       ));
       setWalletBalance(prev => {
-        const newBalance = prev + amount;
+        const newBalance = prev - amount;
         playDing();
         return newBalance;
       });
-      setSellerBalance(prev => prev - amount);
+      setSellerBalance(prev => prev + amount);
       setConnectedPlatforms(prev => [...prev, platform]);
       setIsOAuthLoading(false);
       setActiveOAuth(null);
@@ -519,64 +521,64 @@ export default function App() {
                 <div className={`absolute right-0 top-full pt-2 w-64 ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'} transition-all z-[600]`}>
                   <div className="bg-paper border border-border shadow-2xl p-2 space-y-1">
                     {/* Buyer Menu */}
-                    <div className="relative group/buyer">
+                    <div className="relative">
                       <button 
+                        onClick={() => setBuyerSubmenuOpen(!buyerSubmenuOpen)}
                         className="w-full flex items-center justify-between p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
                       >
                         Lead Buyer
-                        <ChevronRight size={14} />
+                        <ChevronRight size={14} className={`transition-transform ${buyerSubmenuOpen ? 'rotate-90' : ''}`} />
                       </button>
-                      <div className="absolute right-full top-0 pr-2 w-64 opacity-0 pointer-events-none ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : ''} transition-all">
-                        <div className="bg-paper border border-border shadow-2xl p-2 space-y-1">
+                      {buyerSubmenuOpen && (
+                        <div className="pl-4 space-y-1">
                           <button 
-                            onClick={() => { setAuthModalTab('signin'); setShowAuthModal(true); }}
+                            onClick={() => { setAuthModalTab('signin'); setShowAuthModal(true); setMobileMenuOpen(false); }}
                             className="w-full flex items-center gap-3 p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
                           >
                             <User size={16} />
                             Register / Sign In
                           </button>
                           <button 
-                            onClick={() => { setCurrentPage('home'); setShowPaymentModal(true); }}
+                            onClick={() => { setCurrentPage('home'); setShowPaymentModal(true); setMobileMenuOpen(false); }}
                             className="w-full flex items-center gap-3 p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
                           >
                             <Layers size={16} />
                             Compare Paid Tiers
                           </button>
                         </div>
-                      </div>
+                      )}
                     </div>
 
                     {/* Seller Menu */}
-                    <div className="relative group/seller">
+                    <div className="relative">
                       <button 
+                        onClick={() => setSellerSubmenuOpen(!sellerSubmenuOpen)}
                         className="w-full flex items-center justify-between p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
                       >
                         Lead Seller(s)
-                        <ChevronRight size={14} />
+                        <ChevronRight size={14} className={`transition-transform ${sellerSubmenuOpen ? 'rotate-90' : ''}`} />
                       </button>
-                      <div className="absolute right-full top-0 pr-2 w-64 opacity-0 pointer-events-none ${mobileMenuOpen ? 'opacity-100 pointer-events-auto' : ''} transition-all">
-                        <div className="bg-paper border border-border shadow-2xl p-2 space-y-1">
+                      {sellerSubmenuOpen && (
+                        <div className="pl-4 space-y-1">
                           <div className="px-3 py-2 text-[10px] font-bold uppercase tracking-widest text-ink/30 border-b border-border mb-2">Install Options</div>
-                          <div className="grid grid-cols-2 gap-2 p-2">
-                            <button onClick={() => setShowInstallModal(true)} className="flex flex-col items-center gap-2 p-3 hover:bg-card border border-transparent hover:border-border transition-all">
-                              <Terminal size={20} className="text-ink/60" />
-                              <span className="text-[8px] font-bold uppercase">Linux</span>
-                            </button>
-                            <button onClick={() => setShowInstallModal(true)} className="flex flex-col items-center gap-2 p-3 hover:bg-card border border-transparent hover:border-border transition-all">
-                              <Smartphone size={20} className="text-ink/60" />
-                              <span className="text-[8px] font-bold uppercase">Android</span>
-                            </button>
-                            <button onClick={() => setShowInstallModal(true)} className="flex flex-col items-center gap-2 p-3 hover:bg-card border border-transparent hover:border-border transition-all">
-                              <Monitor size={20} className="text-ink/60" />
-                              <span className="text-[8px] font-bold uppercase">Windows</span>
-                            </button>
-                            <button onClick={() => setShowInstallModal(true)} className="flex flex-col items-center gap-2 p-3 hover:bg-card border border-transparent hover:border-border transition-all">
-                              <AppleIcon size={20} className="text-ink/60" />
-                              <span className="text-[8px] font-bold uppercase">MacOS</span>
-                            </button>
-                          </div>
+                          <button onClick={() => { setShowInstallModal(true); setMobileMenuOpen(false); }} className="flex flex-col items-center gap-2 p-3 hover:bg-card border border-transparent hover:border-border transition-all">
+                            <Terminal size={20} className="text-ink/60" />
+                            <span className="text-[8px] font-bold uppercase">Linux</span>
+                          </button>
+                          <button onClick={() => { setShowInstallModal(true); setMobileMenuOpen(false); }} className="flex flex-col items-center gap-2 p-3 hover:bg-card border border-transparent hover:border-border transition-all">
+                            <Smartphone size={20} className="text-ink/60" />
+                            <span className="text-[8px] font-bold uppercase">Android</span>
+                          </button>
+                          <button onClick={() => { setShowInstallModal(true); setMobileMenuOpen(false); }} className="flex flex-col items-center gap-2 p-3 hover:bg-card border border-transparent hover:border-border transition-all">
+                            <Monitor size={20} className="text-ink/60" />
+                            <span className="text-[8px] font-bold uppercase">Windows</span>
+                          </button>
+                          <button onClick={() => { setShowInstallModal(true); setMobileMenuOpen(false); }} className="flex flex-col items-center gap-2 p-3 hover:bg-card border border-transparent hover:border-border transition-all">
+                            <AppleIcon size={20} className="text-ink/60" />
+                            <span className="text-[8px] font-bold uppercase">MacOS</span>
+                          </button>
                         </div>
-                      </div>
+                      )}
                     </div>
 
                     {/* Documents */}
@@ -801,7 +803,7 @@ export default function App() {
 
                     <div className="grid grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Budget Per Lead (credits)</label>
+                        <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Budget Per Lead</label>
                         <input 
                           type="number" 
                           required
