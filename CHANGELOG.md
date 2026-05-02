@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file.
 
+## [financecheque-v0.1.0.04] - 2026-05-02
+
+### Added
+- Real user registration with Cloudflare D1 database
+- User login with JWT authentication (using jose - Cloudflare compatible)
+- Password reset request and reset functionality
+- User sessions stored in D1 database
+- API endpoint `/api/auth` with actions: register, login, request-reset, reset-password, me, logout
+- bcryptjs for password hashing
+- UUID generation for session and reset tokens
+
+### Fixed
+- Replaced jsonwebtoken with jose for Cloudflare Workers compatibility
+- Removed Node.js built-in dependencies (crypto, buffer, stream, util)
+
+---
+
 ## [financecheque-v0.1.0.03] - 2026-05-01
 
 ### Fixed
@@ -34,8 +51,6 @@ All notable changes to this project will be documented in this file.
 - Hidden extended subtitle on mobile (shows "A.I Lead Gen")
 - Reduced padding throughout: px-4 py-2 on mobile instead of px-8 py-8
 - Compact Lead Buyer and Lead Seller sections
-- "How Finance Cheque UK Works" title smaller on mobile (text-3xl sm:text-5xl)
-- "Core Features" title smaller on mobile (text-2xl sm:text-3xl)
 
 ### Fixed
 - Exchange page compacted for mobile view
