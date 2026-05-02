@@ -11,6 +11,15 @@ interface Env {
 
 export async function onRequestPost(context: { request: Request; env: Env }) {
   const { request, env } = context;  
+  
+  // Check if DB binding exists
+  if (!env.DB) {
+    return new Response(JSON.stringify({ error: 'Database not configured. Please bind D1 database in Cloudflare Dashboard.' }), { 
+      status: 500, 
+      headers: { 'Content-Type': 'application/json' } 
+    });
+  }
+  
   try {
     const body = await request.json();
     const { action, email, password, firstName, lastName, token, newPassword } = body;
