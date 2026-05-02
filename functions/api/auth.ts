@@ -1,16 +1,16 @@
 import bcrypt from 'bcryptjs';
-import jwt from 'jsonwebtoken';
+import { SignJWT, jwtVerify } from 'jose';
 import { v4 as uuidv4 } from 'uuid';
 
-const JWT_SECRET = 'your-jwt-secret-change-in-production';
+const JWT_SECRET = new TextEncoder().encode('your-jwt-secret-change-in-production');
 
 interface Env {
   DB: D1Database;
+  JWT_SECRET?: string;
 }
 
 export async function onRequestPost(context: { request: Request; env: Env }) {
-  const { request, env } = context;
-  
+  const { request, env } = context;  
   try {
     const body = await request.json();
     const { action, email, password, firstName, lastName, token, newPassword } = body;
@@ -64,7 +64,13 @@ async function handleRegister(email: string, password: string, firstName: string
   ).bind(email, passwordHash, firstName || null, lastName || null).run();
 
   const userId = result.meta?.last_row_id;
-  const token = jwt.sign({ id: userId, email }, JWT_SECRET, { expiresIn: '7d' });
+  
+  // Create JWT using jose
+  const token = await new SignJWT({ id: userId, email })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setExpirationTime('7d')
+    .sign(JWT_SECRET);
+    
   const sessionToken = uuidv4();
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
   
@@ -100,7 +106,11 @@ async function handleLogin(email: string, password: string, env: Env) {
     });
   }
 
-  const token = jwt.sign({ id: user.id, email: user.email }, JWT_SECRET, { expiresIn: '7d' });
+  const token = await new SignJWT({ id: user.id, email: user.email })
+    .setProtectedHeader({ alg: 'HS256' })
+    .setExpirationTime('7d')
+    .sign(JWT_SECRET);
+    
   const sessionToken = uuidv4();
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
   
@@ -115,7 +125,7 @@ async function handleLogin(email: string, password: string, env: Env) {
 }
 
 async function handleRequestReset(email: string, env: Env) {
-  const user = await env.DB.prepare('SELECT id FROM users WHERE email = ?').bind(email).first();
+  const user = await env.DB.prepare('SELECT id FROM users WHERE email = ?').bind(email).first();  
   
   if (user) {
     const token = uuidv4();
@@ -176,10 +186,10 @@ async function handleMe(request: Request, env: Env) {
 
   const token = authHeader.substring(7);
   try {
-    const decoded: any = jwt.verify(token, JWT_SECRET);
+    const { payload } = await jwtVerify(token, JWT_SECRET);
     const user = await env.DB.prepare(
       'SELECT id, email, first_name as firstName, last_name as lastName, wallet_balance as walletBalance, seller_balance as sellerBalance FROM users WHERE id = ?'
-    ).bind(decoded.id).first();
+    ).bind((payload as any).id).first();
 
     if (!user) throw new Error('User not found');
     return new Response(JSON.stringify(user), { 
@@ -198,8 +208,8 @@ async function handleLogout(request: Request, env: Env) {
   if (authHeader?.startsWith('Bearer ')) {
     try {
       const token = authHeader.substring(7);
-      const decoded: any = jwt.verify(token, JWT_SECRET);
-      await env.DB.prepare('DELETE FROM sessions WHERE user_id = ?').bind(decoded.id).run();
+      const { payload } = await jwtVerify(token, JWT_SECRET);
+      await env.DB.prepare('DELETE FROM sessions WHERE user_id = ?').bind((payload as any).id).run();
     } catch (e) {}
   }
 
