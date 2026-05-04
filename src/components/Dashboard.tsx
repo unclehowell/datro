@@ -138,9 +138,9 @@ export default function Dashboard({
     <div className="flex-1 flex flex-col relative overflow-hidden">
       {variant === 'full' ? (
         <div className="flex-1 bg-black relative">
-          <iframe 
+          <iframe
             key={reloadKey}
-            src="https://ui.financecheque.uk" 
+            src="/ui"
             className="w-full h-full border-none"
             title="Agent Dashboard"
             allow="geolocation"
@@ -173,15 +173,15 @@ export default function Dashboard({
             <div className="h-14 bg-[#222] border-b border-white/5 flex items-end px-6 pb-2 gap-4">
               <div className="flex-1 bg-black/40 rounded-lg h-8 flex items-center px-4 gap-2">
                 <Lock size={10} className="text-green-500" />
-                <span className="text-[10px] text-white/40 font-medium truncate">ui.financecheque.uk</span>
+                <span className="text-[10px] text-white/40 font-medium truncate">financecheque.uk/ui</span>
               </div>
             </div>
 
             {/* Iframe Content */}
             <div className="flex-1 relative bg-black">
-              <iframe 
+              <iframe
                 key={reloadKey}
-                src="https://ui.financecheque.uk" 
+                src="/ui"
                 className="w-full h-full border-none"
                 title="Agent Dashboard"
                 allow="geolocation"

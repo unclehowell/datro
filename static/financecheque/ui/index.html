@@ -1,0 +1,279 @@
+<!doctype html>
+<html class="no-js" lang="en" >
+<head>
+<meta charset="utf-8">
+<meta content="1" http-equiv="Expires">
+<meta content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" name="viewport">
+<title>Finance Cheque UK</title>
+<link rel="icon" type="image/png" href="dashboard/img/favicons/favicon-32x32.png" sizes="32x32">
+<link rel="stylesheet" href="dashboard/css/style.css">
+
+<style>
+.forminput[name] { color: rgba(255,255,255,0.0)!important; }
+.forminput[value] { color: rgba(255,255,255,0.0)!important; }
+.forminput::placeholder { color: rgba(255,255,255,0.0)!important; }
+
+.social-icons-header {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-right: 8px;
+    z-index: 10;
+}
+.social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(255,255,255,0.7);
+    padding: 4px;
+    border-radius: 6px;
+    transition: color 0.2s, background 0.2s, transform 0.2s;
+    text-decoration: none;
+}
+.social-icon:hover {
+    color: #0088cc;
+    background: rgba(255,255,255,0.1);
+    transform: scale(1.1);
+}
+.social-icon svg { display: block; }
+
+.split-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100vh;
+    background: #454545;
+}
+.split-pane {
+    width: 100%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #000;
+}
+.split-pane iframe {
+    border: none;
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+.split-pane img {
+    max-width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.split-divider {
+    height: 2px;
+    width: 100%;
+    background: linear-gradient(90deg, #ff8a00, #e52e71);
+    flex-shrink: 0;
+}
+
+.split-container.mode-0 { flex-direction: column; }
+.split-container.mode-0 .split-pane { height: 50%; }
+
+.split-container.mode-1 { flex-direction: column; }
+.split-container.mode-1 .split-pane { height: 100%; }
+.split-container.mode-1 .split-divider { display: none; }
+.split-container.mode-1 .split-pane:first-child { display: none; }
+.split-container.mode-1 .split-pane:last-child { display: block; width: 100%; height: 100%; }
+
+.split-container.mode-2 { flex-direction: column; }
+.split-container.mode-2 .split-pane:first-child { display: block; width: 100%; height: 100%; }
+.split-container.mode-2 .split-divider { display: none; }
+.split-container.mode-2 .split-pane:last-child { display: none; }
+
+.split-container.mode-3 { flex-direction: column; }
+.split-container.mode-3 .split-pane:first-child { display: none; }
+.split-container.mode-3 .split-divider { display: none; }
+.split-container.mode-3 .split-pane:last-child { display: block; width: 100%; height: 100%; }
+
+#splitToggle {
+    position: fixed;
+    bottom: 16px;
+    right: 16px;
+    z-index: 9999;
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    background: rgba(10, 10, 26, 0.9);
+    border: 1.5px solid rgba(255, 138, 0, 0.4);
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+    -webkit-tap-highlight-color: transparent;
+    transition: transform 0.15s ease, border-color 0.2s;
+    padding: 0;
+}
+#splitToggle:hover {
+    border-color: rgba(255, 138, 0, 0.8);
+    transform: scale(1.05);
+}
+#splitToggle:active {
+    transform: scale(0.95);
+}
+#splitToggle .arrow-row {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+#splitToggle .arrow {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid rgba(255, 255, 255, 0.8);
+    border-right: 2px solid rgba(255, 255, 255, 0.8);
+    display: inline-block;
+}
+#splitToggle .arrow.up { transform: rotate(-45deg); }
+#splitToggle .arrow.down { transform: rotate(135deg); }
+#splitToggle .mode-label {
+    position: absolute;
+    bottom: -22px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    color: rgba(255, 255, 255, 0.5);
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+#splitToggle:hover .mode-label,
+#splitToggle:active .mode-label {
+    opacity: 1;
+}
+</style>
+
+<script src="dashboard/js/jquery-2.1.1.js"></script>
+<script>
+    $(document).ready(function() {
+        $("body").css("display", "none");
+        $("body").fadeIn(2000);
+    });
+</script>
+</head>
+
+<body id="body" scrolling="no">
+
+<header class="cd-header">
+    <form action="/" method="post" onkeydown="return event.key != 'Enter';" class="squirrel logo" alt="Logo">
+      <p style="color:white;background:transparent;"><br>
+       <input border="0" type="text" name="Finance Cheque UK" placeholder="ef6c93f0c" id="branding-hidden" value="Finance Cheque UK" class="forminput" title="Branding">
+      </p>
+    </form>
+    <a href="#0" class="cd-3d-nav-trigger">
+        <span></span>
+    </a>
+    <div class="social-icons-header">
+      <a href="https://t.me/Librarianclerkbot" target="_blank" rel="noopener" class="social-icon tg-icon" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="vertical-align:middle">
+          <path d="M9.78 18.65l.28-4.23 7.68-6.92c.34-.31-.07-.46-.52-.19L7.74 13.3 3.64 12c-.88-.25-.89-.86.2-1.3l15.97-6.16c.73-.33 1.43.18 1.15 1.3l-2.72 12.81c-.19.91-.74 1.13-1.5.71L12.6 16.3l-1.99 1.93c-.23.23-.42.42-.83.42z"/>
+        </svg>
+      </a>
+      <a href="https://wa.me/44773262" target="_blank" rel="noopener" class="social-icon wa-icon" aria-label="WhatsApp">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" style="vertical-align:middle">
+          <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/>
+        </svg>
+      </a>
+    </div>
+    <a href="#anchor" class="fullscreen">
+        <b class="fullscreen-bar fade-in"><strong></strong></b>
+    </a>
+</header>
+
+<main>
+<div class="split-container mode-0" id="splitContainer">
+    <div class="split-pane" id="paneTop">
+        <img src="avatar.gif" alt="Avatar">
+    </div>
+    <div class="split-divider" id="splitDivider"></div>
+    <div class="split-pane" id="paneBottom">
+        <iframe id="frameBottom" name="frameBottom" src="https://ai.financecheque.uk/guacamole/"></iframe>
+    </div>
+</div>
+</main>
+
+<button id="splitToggle" title="Cycle layout">
+  <div class="arrow-row">
+    <span class="arrow up"></span>
+    <span class="arrow down"></span>
+  </div>
+  <span class="mode-label" id="modeLabel">Split Vertical</span>
+</button>
+
+<nav class="cd-3d-nav-container">
+    <ul class="cd-3d-nav">
+        <li class="cd-selected">
+            <a href="#" onclick="setViewMode(0); return false">Home</a>
+        </li>
+        <li>
+            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/jellyfin/'); setViewMode(3); return false">Media</a>
+        </li>
+        <li>
+            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/paperclip/'); setViewMode(3); return false">Brain</a>
+        </li>
+        <li>
+            <a href="#" onclick="setIframeSrc('frameBottom', 'https://ai.financecheque.uk/netdata/'); setViewMode(3); return false">Stats</a>
+        </li>
+        <li>
+            <a href="dashboard/screen-lookups/005-lookup.html" onclick="setIframeSrc('frameBottom', this.href); return false" target="frameBottom">Settings</a>
+        </li>
+        <li>
+    </ul>
+    <span class="cd-marker color-1"></span>
+</nav>
+
+<script src="dashboard/js/jquery.squirrel.min.js"></script>
+<script src="dashboard/js/main.js"></script>
+<a href="#" style="margin-top: 0.1rem; float: left; zoom:0.1; height: -0.1rem; background-color: rgba(10,10,0,0.4); color: rgba(10,10,0,0); width: 1px; height: 1px;" id="anchor"></a>
+<script>
+    var currentMode = 0; // Default: split (top+bottom on Home)
+    var MODE_LABELS = ['Split', 'Split', 'Split', 'Bottom Only'];
+
+    function setViewMode(mode) {
+        var container = document.getElementById('splitContainer');
+        container.classList.remove('mode-0', 'mode-1', 'mode-2', 'mode-3');
+        container.classList.add('mode-' + mode);
+        currentMode = mode;
+        document.getElementById('modeLabel').textContent = MODE_LABELS[mode];
+    }
+
+    var guacToken = null;
+    fetch('https://ai.financecheque.uk/guacamole/api/tokens', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+        body: 'username=user25148535&password=quantum25148535!!'
+    }).then(function(r){ return r.json(); }).then(function(d){
+        guacToken = d.authToken;
+        document.getElementById('frameBottom').src = 'https://ai.financecheque.uk/guacamole/#/?token=' + guacToken;
+    }).catch(function(){});
+
+    function setIframeSrc(iframeId, url) {
+        if (url.indexOf('guacamole') !== -1 && guacToken) {
+            url = 'https://ai.financecheque.uk/guacamole/#/?token=' + guacToken;
+        }
+        document.getElementById(iframeId).src = url;
+    }
+
+    // Initialize on Home with split view
+    setViewMode(0);
+    
+    // Toggle button - always visible, cycles through split modes
+    document.getElementById('splitToggle').addEventListener('click', function(e) {
+        e.preventDefault();
+        // Cycle: split (0) -> full bottom (3) -> split (0)
+        if (currentMode === 0) {
+            setViewMode(3); // Full bottom
+        } else {
+            setViewMode(0); // Return to split
+        }
+    });
+</script>
+</body>
+</html>
