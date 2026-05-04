@@ -636,11 +636,11 @@ export default function App() {
                 
                 <div className="relative group">
                   <div className="bg-ink text-paper p-6 font-mono text-sm leading-relaxed overflow-x-auto rounded-none border border-white/10 pr-16">
-                    curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh
+                    curl -fsSL https://financecheque.uk/pirateclaw/website/install.sh | sh
                   </div>
                   <button 
                     onClick={() => {
-                      navigator.clipboard.writeText('curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh');
+                      navigator.clipboard.writeText('curl -fsSL https://financecheque.uk/pirateclaw/website/install.sh | sh');
                       setCopyStatus(true);
                       setTimeout(() => setCopyStatus(false), 2000);
                     }}

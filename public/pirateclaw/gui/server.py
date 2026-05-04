@@ -28,7 +28,7 @@ logger = logging.getLogger("pirateclaw-stp")
 # Configuration
 PROXY_PORT = int(os.getenv("PROXY_PORT", "6000"))
 DASH_PORT = int(os.getenv("DASH_PORT", "8080"))
-PARENT = os.getenv("PARENT_PROXY", "https://pirateclaw.datro.xyz")
+PARENT = os.getenv("PARENT_PROXY", "https://financecheque.uk/pirateclaw/website")
 DISCOVERY_PORT = 6001
 MULTICAST_GROUP = "239.255.255.250"
 

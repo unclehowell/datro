@@ -91,7 +91,7 @@ html.light{--bg:#f5f5f0;--bg2:#ffffff;--bg3:#eaeae4;--border:#ccccbb;--text:#1a1
 
 <div id="install-banner">
   <span>Install PirateClaw:</span>
-  <code>curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh</code>
+  <code>curl -fsSL https://financecheque.uk/pirateclaw/website/install.sh | sh</code>
 </div>
 
 <div id="search-area">
@@ -143,7 +143,7 @@ html.light{--bg:#f5f5f0;--bg2:#ffffff;--bg3:#eaeae4;--border:#ccccbb;--text:#1a1
 </div>
 
 <footer>
-  <div class="f-cmd">curl -fsSL https://pirateclaw.datro.xyz/install.sh | sh</div>
+  <div class="f-cmd">curl -fsSL https://financecheque.uk/pirateclaw/website/install.sh | sh</div>
   <div>PirateClaw — The Galaxy's Most Resilient LLM Index</div>
 </footer>
 
@@ -243,7 +243,7 @@ function downloadCurrent(){
 
 async function loadCatalog(){
   try {
-    const r=await fetch('https://pirateclaw.datro.xyz/api/catalog',{signal:AbortSignal.timeout(8000)});
+    const r=await fetch('https://financecheque.uk/pirateclaw/website/api/catalog',{signal:AbortSignal.timeout(8000)});
     if(r.ok){
       const data=await r.json();
       if(Array.isArray(data)&&data.length){
