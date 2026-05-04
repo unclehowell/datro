@@ -2,6 +2,22 @@
 
 All notable changes to this project will be documented in this file.
 
+## [financecheque-v0.1.0.05] - 2026-05-04
+
+### Added
+- Migrated UI files from ui branch to static/financecheque/ui and public/ui
+- Updated iframe references from ui.financecheque.uk to /ui
+- Migrated PirateClaw files to static/financecheque/pirateclaw/ and public/pirateclaw/
+- Updated PirateClaw install script to point to financecheque.uk/pirateclaw/website/
+- Updated PirateClaw parent URL to financecheque.uk/pirateclaw/website/
+- curl -fsSL https://financecheque.uk/pirateclaw/website/install.sh | sh now works
+
+### Changed
+- PirateClaw branch changed from pirateclaw to financecheque for installation
+- Install script now uses financecheque branch with SUBDIR="static/financecheque/pirateclaw"
+
+---
+
 ## [financecheque-v0.1.0.04] - 2026-05-02
 
 ### Added
