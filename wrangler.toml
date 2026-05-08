@@ -6,7 +6,7 @@ binding = "DB"
 database_name = "financecheque-db"
 database_id = "a04880a5-c1f7-47fc-aa42-d85e1dfab223"
 
-[vars]
-TATUM_MAINNET_API_KEY = "t-69da9f56820036a5836b248e-49569191c16744b49c468087"
-TATUM_TESTNET_API_KEY = "t-69da9f56820036a5836b248e-e81cafda99354d9785c73965"
-JWT_SECRET = "your-jwt-secret-change-in-production"
+# Secrets are set via Cloudflare Dashboard → Settings → Environment Variables
+# Do NOT commit real values here.
+# Required secrets: JWT_SECRET, STRIPE_SECRET_KEY
+# Optional: TATUM_MAINNET_API_KEY, TATUM_TESTNET_API_KEY

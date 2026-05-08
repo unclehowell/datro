@@ -2,19 +2,58 @@
 
 All notable changes to this project will be documented in this file.
 
+## [financecheque-v0.1.0.06] - 2026-05-08
+
+### Added
+- **FCUK Proxy** (`public/fcukproxy/`): renamed from pirateclaw throughout
+  - `install.sh`: working one-liner install script for Linux/macOS
+  - `agent.py`: child proxy agent (port 6000) with STP-inspired peer discovery via UDP multicast
+  - `gui.py`: local web GUI at http://localhost:6001 showing live proxy status, peer list, stats
+  - Systemd user service auto-installed on Linux for persistence
+  - Dynamic `machine.json` generated per machine (unique ID, hostname, local IP)
+- **Stripe Cloudflare Pages Function** (`functions/api/stripe.ts`): checkout and billing portal now work in production
+- **Auth modal tab switcher**: Sign In goes straight to the login form; Register shows package selection first
+- **Forgot Password link** in sign-in form
+- **README**: replaced Google AI Studio boilerplate with real project documentation
+
+### Fixed
+- Seller balance now **increases** when a buyer places an order (was incorrectly decreasing)
+- Install modal one-liner now points to `https://financecheque.uk/fcukproxy/install.sh`
+- JWT secret now reads from `env.JWT_SECRET` (Cloudflare env var) instead of hardcoded value
+- "Select Soloprenuer" button now opens the auth/register modal
+- "Unlock Business" button now calls the real Stripe endpoint
+- Hardcoded Tatum API keys and JWT secret removed from `wrangler.toml`
+
+### Renamed
+- All `pirateclaw` references renamed to `fcukproxy`
+
+---
+
 ## [financecheque-v0.1.0.05] - 2026-05-04
 
 ### Added
-- Migrated UI files from ui branch to static/financecheque/ui and public/ui
-- Updated iframe references from ui.financecheque.uk to /ui
-- Migrated PirateClaw files to static/financecheque/pirateclaw/ and public/pirateclaw/
-- Updated PirateClaw install script to point to financecheque.uk/pirateclaw/website/
-- Updated PirateClaw parent URL to financecheque.uk/pirateclaw/website/
-- curl -fsSL https://financecheque.uk/pirateclaw/website/install.sh | sh now works
+- **FCUK Proxy** (`public/fcukproxy/`): renamed from pirateclaw throughout
+  - `install.sh`: working one-liner install script for Linux/macOS
+  - `agent.py`: child proxy agent (port 6000) with STP-inspired peer discovery via UDP multicast
+  - `gui.py`: local web GUI at http://localhost:6001 showing live proxy status, peer list, stats
+  - Systemd user service auto-installed on Linux for persistence
+  - Dynamic `machine.json` generated per machine (unique ID, hostname, local IP)
+- **Stripe Cloudflare Pages Function** (`functions/api/stripe.ts`): checkout and billing portal now work in production
+- **Auth modal tab switcher**: Sign In goes straight to the login form; Register shows package selection first
+- **Forgot Password link** in sign-in form
+- **README**: replaced Google AI Studio boilerplate with real project documentation
 
-### Changed
-- PirateClaw branch changed from pirateclaw to financecheque for installation
-- Install script now uses financecheque branch with SUBDIR="static/financecheque/pirateclaw"
+### Fixed
+- Seller balance now **increases** when a buyer places an order (was incorrectly decreasing)
+- Install modal one-liner now points to `https://financecheque.uk/fcukproxy/install.sh` (was 404)
+- Install modal description updated to explain the proxy and GUI
+- JWT secret now reads from `env.JWT_SECRET` (Cloudflare env var) instead of hardcoded value
+- "Select Soloprenuer" button now opens the auth/register modal
+- "Unlock Business" button now calls the real Stripe checkout endpoint
+- Hardcoded Tatum API keys and JWT secret removed from `wrangler.toml`
+
+### Renamed
+- All `pirateclaw` references renamed to `fcukproxy`
 
 ---
 

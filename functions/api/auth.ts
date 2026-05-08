@@ -4,6 +4,10 @@ import { v4 as uuidv4 } from 'uuid';
 
 const JWT_SECRET = new TextEncoder().encode('your-jwt-secret-change-in-production');
 
+function getJwtSecret(env: Env) {
+  return new TextEncoder().encode(env.JWT_SECRET || 'your-jwt-secret-change-in-production');
+}
+
 interface Env {
   DB: D1Database;
   JWT_SECRET?: string;
@@ -78,7 +82,7 @@ async function handleRegister(email: string, password: string, firstName: string
   const token = await new SignJWT({ id: userId, email })
     .setProtectedHeader({ alg: 'HS256' })
     .setExpirationTime('7d')
-    .sign(JWT_SECRET);
+    .sign(getJwtSecret(env));
     
   const sessionToken = uuidv4();
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
@@ -118,7 +122,7 @@ async function handleLogin(email: string, password: string, env: Env) {
   const token = await new SignJWT({ id: user.id, email: user.email })
     .setProtectedHeader({ alg: 'HS256' })
     .setExpirationTime('7d')
-    .sign(JWT_SECRET);
+    .sign(getJwtSecret(env));
     
   const sessionToken = uuidv4();
   const expiresAt = new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString();
@@ -195,7 +199,7 @@ async function handleMe(request: Request, env: Env) {
 
   const token = authHeader.substring(7);
   try {
-    const { payload } = await jwtVerify(token, JWT_SECRET);
+    const { payload } = await jwtVerify(token, getJwtSecret(env));
     const user = await env.DB.prepare(
       'SELECT id, email, first_name as firstName, last_name as lastName, wallet_balance as walletBalance, seller_balance as sellerBalance FROM users WHERE id = ?'
     ).bind((payload as any).id).first();
@@ -217,7 +221,7 @@ async function handleLogout(request: Request, env: Env) {
   if (authHeader?.startsWith('Bearer ')) {
     try {
       const token = authHeader.substring(7);
-      const { payload } = await jwtVerify(token, JWT_SECRET);
+      const { payload } = await jwtVerify(token, getJwtSecret(env));
       await env.DB.prepare('DELETE FROM sessions WHERE user_id = ?').bind((payload as any).id).run();
     } catch (e) {}
   }

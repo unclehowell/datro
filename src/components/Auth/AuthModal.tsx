@@ -1,4 +1,4 @@
-import { useState, FormEvent } from 'react';
+import { useState, useEffect, FormEvent } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Mail, Lock, User, ArrowRight, X, ShieldCheck, Check } from 'lucide-react';
 import { loadStripe } from '@stripe/stripe-js';
@@ -50,12 +50,18 @@ type Step = 'packages' | 'register' | 'payment';
 
 export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, initialTab = 'signin' }: AuthModalProps) {
   const [activeTab, setActiveTab] = useState<'signin' | 'signup'>(initialTab);
-  const [step, setStep] = useState<Step>('packages');
+  const [step, setStep] = useState<Step>(() => initialTab === 'signin' ? 'register' : 'packages');
   const [selectedPackage, setSelectedPackage] = useState<Package | null>(null);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
+
+  // When the modal opens or tab changes, reset to correct starting step
+  useEffect(() => {
+    setStep(activeTab === 'signin' ? 'register' : 'packages');
+    setError('');
+  }, [activeTab, isOpen]);
 
   const handlePackageSelect = (pkg: Package) => {
     setSelectedPackage(pkg);
@@ -96,7 +102,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, 
   };
 
   const handleBack = () => {
-    if (step === 'register') {
+    if (step === 'register' && activeTab === 'signup') {
       setStep('packages');
     } else if (step === 'payment') {
       setStep('register');
@@ -125,12 +131,29 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, 
               <X size={24} />
             </button>
 
-            {step === 'packages' && (
+            {/* Tab switcher */}
+            <div className="flex border-b border-border">
+              <button
+                onClick={() => setActiveTab('signin')}
+                className={`flex-1 py-3 text-[10px] font-bold uppercase tracking-widest transition-colors ${activeTab === 'signin' ? 'text-accent border-b-2 border-accent' : 'text-ink/40 hover:text-ink'}`}
+              >
+                Sign In
+              </button>
+              <button
+                onClick={() => setActiveTab('signup')}
+                className={`flex-1 py-3 text-[10px] font-bold uppercase tracking-widest transition-colors ${activeTab === 'signup' ? 'text-accent border-b-2 border-accent' : 'text-ink/40 hover:text-ink'}`}
+              >
+                Register
+              </button>
+            </div>
+
+            {step === 'packages' && activeTab === 'signup' && (
               <PackageSelection onSelect={handlePackageSelect} />
             )}
 
             {step === 'register' && (
               <RegisterForm
+                activeTab={activeTab}
                 email={email}
                 setEmail={setEmail}
                 password={password}
@@ -140,6 +163,7 @@ export default function AuthModal({ isOpen, onClose, onAuthSuccess, onNavigate, 
                 selectedPackage={selectedPackage}
                 onSubmit={handleSubmit}
                 onBack={handleBack}
+                onNavigate={onNavigate}
               />
             )}
 
@@ -205,6 +229,7 @@ function PackageSelection({ onSelect }: { onSelect: (pkg: Package) => void }) {
 }
 
 function RegisterForm({
+  activeTab,
   email,
   setEmail,
   password,
@@ -214,19 +239,23 @@ function RegisterForm({
   selectedPackage,
   onSubmit,
   onBack,
+  onNavigate,
 }: any) {
+  const isSignIn = activeTab === 'signin';
   return (
     <>
       <div className="flex flex-col items-center text-center space-y-4">
         <div className="space-y-1">
-          <h2 className="text-2xl font-bold tracking-tight text-ink">Create Account</h2>
-          <p className="text-[10px] text-ink/40 font-bold uppercase tracking-widest">
-            {selectedPackage?.name} - ${selectedPackage?.price}/mo
-          </p>
+          <h2 className="text-2xl font-bold tracking-tight text-ink">{isSignIn ? 'Welcome Back' : 'Create Account'}</h2>
+          {!isSignIn && selectedPackage && (
+            <p className="text-[10px] text-ink/40 font-bold uppercase tracking-widest">
+              {selectedPackage.name} — ${selectedPackage.price}/mo
+            </p>
+          )}
         </div>
       </div>
 
-      <form onSubmit={onSubmit} className="space-y-6">
+      <form onSubmit={onSubmit} className="space-y-6 max-w-md mx-auto w-full">
         <div className="space-y-4">
           <div className="space-y-2">
             <label className="text-[10px] font-bold uppercase tracking-widest text-ink/30">Email Address</label>
@@ -258,21 +287,35 @@ function RegisterForm({
         )}
 
         <div className="flex gap-3">
-          <button
-            type="button"
-            onClick={onBack}
-            className="flex-1 bg-card border border-border py-3 text-[10px] font-bold uppercase tracking-widest hover:border-accent transition-all"
-          >
-            Back
-          </button>
+          {!isSignIn && (
+            <button
+              type="button"
+              onClick={onBack}
+              className="flex-1 bg-card border border-border py-3 text-[10px] font-bold uppercase tracking-widest hover:border-accent transition-all"
+            >
+              Back
+            </button>
+          )}
           <button
             type="submit"
             disabled={isLoading}
             className="flex-1 bg-ink text-paper py-3 text-[10px] font-bold uppercase tracking-widest hover:bg-accent transition-all disabled:opacity-50"
           >
-            {isLoading ? 'Creating...' : 'Create Account'}
+            {isLoading ? (isSignIn ? 'Signing In...' : 'Creating...') : (isSignIn ? 'Sign In' : 'Create Account')}
           </button>
         </div>
+
+        {isSignIn && (
+          <div className="text-center">
+            <button
+              type="button"
+              onClick={() => onNavigate?.('forgot-password')}
+              className="text-[10px] font-bold uppercase tracking-widest text-ink/30 hover:text-accent transition-colors"
+            >
+              Forgot Password?
+            </button>
+          </div>
+        )}
       </form>
     </>
   );
