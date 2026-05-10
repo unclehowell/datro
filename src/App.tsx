@@ -115,6 +115,9 @@ export default function App() {
   const [demoOrientation, setDemoOrientation] = useState<'portrait' | 'landscape'>('portrait');
   const [isWalletMenuOpen, setIsWalletMenuOpen] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
+  const [chatMessage, setChatMessage] = useState('');
+  const [chatReply, setChatReply] = useState('');
+  const [isChatting, setIsChatting] = useState(false);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showConnectionsModal, setShowConnectionsModal] = useState(false);
@@ -1129,27 +1132,56 @@ export default function App() {
             exit={{ opacity: 0 }}
             className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
           >
-            <motion.div 
+            <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
-              className="w-full max-w-sm bg-paper border border-border p-10 space-y-8 shadow-2xl frame text-center my-8"
+              className="w-full max-w-md bg-paper border border-border p-8 space-y-6 shadow-2xl frame my-8"
             >
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-16 h-16 bg-accent/10 text-accent flex items-center justify-center rounded-full">
-                  <User size={32} />
-                </div>
-                <h3 className="text-xl font-bold text-ink">Sign in to speak to your free agent</h3>
+              <div className="flex flex-col items-center gap-3 text-center">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-10 h-10" />
+                <h3 className="text-xl font-bold text-ink">Chat with Agent Network</h3>
+                <p className="text-xs text-ink/50">Routes via financecheque.uk parent proxy to active child proxies.</p>
               </div>
-              <button 
-                onClick={() => {
-                  setShowContactModal(false);
-                  setAuthModalTab('signin');
-                  setShowAuthModal(true);
-                }}
-                className="w-full bg-ink text-paper font-bold py-4 uppercase tracking-widest text-xs hover:bg-accent transition-all"
-              >
-                Sign In / Register
-              </button>
+              <div className="space-y-3">
+                <textarea
+                  value={chatMessage}
+                  onChange={(e) => setChatMessage(e.target.value)}
+                  placeholder="Type your message..."
+                  className="w-full border border-border bg-card p-3 text-sm min-h-28"
+                />
+                {chatReply && <div className="text-xs bg-card border border-border p-3 whitespace-pre-wrap">{chatReply}</div>}
+              </div>
+              <div className="flex gap-2">
+                <button
+                  onClick={() => setShowContactModal(false)}
+                  className="flex-1 border border-border py-3 text-xs font-bold uppercase tracking-widest"
+                >
+                  Close
+                </button>
+                <button
+                  disabled={isChatting || !chatMessage.trim()}
+                  onClick={async () => {
+                    setIsChatting(true);
+                    setChatReply('');
+                    try {
+                      const resp = await fetch('/api/proxy?action=chat', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ message: chatMessage.trim(), sessionId: 'web-whatsapp' }),
+                      });
+                      const data = await resp.json();
+                      setChatReply(data.reply || data.error || 'No response');
+                    } catch {
+                      setChatReply('Unable to reach parent proxy.');
+                    } finally {
+                      setIsChatting(false);
+                    }
+                  }}
+                  className="flex-1 bg-ink text-paper py-3 text-xs font-bold uppercase tracking-widest hover:bg-accent disabled:opacity-50"
+                >
+                  {isChatting ? 'Sending...' : 'Send'}
+                </button>
+              </div>
             </motion.div>
           </motion.div>
         )}

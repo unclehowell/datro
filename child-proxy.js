@@ -69,6 +69,18 @@ app.get("/health", (_req, res) => {
   res.json({ ok: true, childId: CHILD_ID, activeJobs });
 });
 
+app.post("/chat", async (req, res) => {
+  const { message } = req.body || {};
+  if (!message) return res.status(400).json({ ok: false, error: "message is required" });
+
+  try {
+    const reply = await runChat(message);
+    return res.json({ ok: true, reply, childId: CHILD_ID });
+  } catch (error) {
+    return res.status(500).json({ ok: false, error: error.message || "chat failed", childId: CHILD_ID });
+  }
+});
+
 // ── Run job via Hermes/Kiro ───────────────────────────────────────────────
 async function runJob(job) {
   const { id, url, leadAmount, quantity } = job;
@@ -125,6 +137,21 @@ function buildPrompt(url, leadAmount, quantity) {
     `5. Output a structured report with all assets ready to deploy.`,
     `Be concise and output actionable deliverables only.`,
   ].join("\n");
+}
+
+async function runChat(message) {
+  const prompt = `You are the FinanceCheque child proxy Hermes operator. Reply concisely.\nUser message: ${message}`;
+  const kiroPath = process.env.KIRO_PATH || "/home/ubuntu/kiro-cli-temp";
+
+  try {
+    const { stdout } = await execFileAsync(kiroPath, ["chat", "--non-interactive", "--message", prompt], {
+      timeout: 120_000,
+      maxBuffer: 1024 * 1024,
+    });
+    if (stdout?.trim()) return stdout.trim();
+  } catch {}
+
+  return `Child proxy ${CHILD_ID} received your message and is online.`;
 }
 
 // ── Start ─────────────────────────────────────────────────────────────────
