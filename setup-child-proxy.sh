@@ -46,7 +46,8 @@ EOF
 
 cd "$PROXY_DIR"
 pm2 delete fcuk-child-proxy 2>/dev/null || true
-pm2 start child-proxy.js --name fcuk-child-proxy --env-file .env
+PARENT_URL=$PARENT_URL CHILD_ID=$CHILD_ID PORT=$PORT SELF_URL=$SELF_URL KIRO_PATH=/home/ubuntu/kiro-cli-temp \
+  pm2 start child-proxy.js --name fcuk-child-proxy
 pm2 save
 
 echo ""
