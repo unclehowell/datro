@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [financecheque-v0.1.0.07] - 2026-05-10
+
+### Added
+- **Job submission form** on landing page: webapp URL + lead amount (£) + quantity → live credit cost preview
+- **Agent pipeline illustration**: animated flow diagram (webapp → financecheque.uk API → AWS child proxy → Hermes/Kiro)
+- **Top-up modal**: Starter (100cr/£9.99), Pro (350cr/£29.99), Enterprise (1500cr/£99.99) via Stripe
+- **CF Functions**: `/api/jobs` (submit job + GET credits), `/api/proxy` (child register/heartbeat), `stripe.ts` updated with topup + webhook
+- **D1 schema**: `jobs` and `child_proxies` tables; migration runs automatically in CI before deploy
+- **child-proxy.js**: AWS agent that registers with parent proxy, dispatches jobs to Kiro CLI or Hermes workspace
+- **setup-child-proxy.sh** (`financecheque-v0.1.0.07`): one-liner install via `curl | bash`; uses PM2 ecosystem file for env vars (fixes `--env-file` incompatibility)
+
+### Fixed
+- PM2 `--env-file` flag not supported on older PM2 versions — replaced with `ecosystem.config.cjs`
+- Token key unified to `auth_token` (localStorage) across all new components
+- Stripe topup session passes `userId` + `credits` in metadata for webhook crediting
+
+### Changed
+- `stripe.ts` CF Function: added `topup`/`webhook` actions, legacy `basic` package alias kept
+- GitHub Actions workflow: D1 migration step added before Pages deploy
+
+---
+
 ## [financecheque-v0.1.0.06] - 2026-05-08
 
 ### Added
