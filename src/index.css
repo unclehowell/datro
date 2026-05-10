@@ -110,6 +110,20 @@
     display: none; /* Chrome, Safari and Opera */
   }
 
+  .custom-scrollbar::-webkit-scrollbar {
+    display: block;
+    width: 4px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: var(--border);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--accent);
+    border-radius: 2px;
+  }
+
   body {
     @apply bg-paper text-ink font-sans antialiased transition-colors duration-300;
     background-image: 

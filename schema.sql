@@ -32,8 +32,30 @@ CREATE TABLE IF NOT EXISTS sessions (
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
+-- Jobs (lead campaigns)
+CREATE TABLE IF NOT EXISTS jobs (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  user_id INTEGER NOT NULL,
+  url TEXT NOT NULL,
+  lead_amount INTEGER NOT NULL,
+  quantity INTEGER NOT NULL,
+  credit_cost INTEGER NOT NULL,
+  status TEXT DEFAULT 'queued',
+  created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_id) REFERENCES users(id)
+);
+
+-- Child proxies (AWS machines)
+CREATE TABLE IF NOT EXISTS child_proxies (
+  id TEXT PRIMARY KEY,
+  url TEXT NOT NULL,
+  load INTEGER DEFAULT 0,
+  last_seen DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_password_reset_tokens_token ON password_reset_tokens(token);
 CREATE INDEX IF NOT EXISTS idx_sessions_token ON sessions(token);
 CREATE INDEX IF NOT EXISTS idx_sessions_user_id ON sessions(user_id);
+CREATE INDEX IF NOT EXISTS idx_jobs_user_id ON jobs(user_id);

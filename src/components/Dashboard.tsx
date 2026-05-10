@@ -73,7 +73,7 @@ export default function Dashboard({
     if (forceConnect && onConnectAttempt) {
       onConnectAttempt();
     }
-  }, [forceConnect]);
+  }, [forceConnect, onConnectAttempt]);
 
   useEffect(() => {
     // Initialize audio - Bank app notification sound
