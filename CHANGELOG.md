@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file.
 
+## [financecheque-v0.1.0.08] - 2026-05-10
+
+### Added
+- Parent proxy chat routing endpoint via `/api/proxy?action=chat` that forwards chat prompts to the least-loaded live child proxy.
+- Child proxy `/chat` endpoint in `child-proxy.js` so parent-routed chat requests can be fulfilled by the Hermes/Kiro worker host.
+- WhatsApp icon modal now opens a real in-site chat box that posts to the parent proxy and shows child-proxy responses.
+
+### Changed
+- Version bump to `0.1.0.08` for a new semantic release.
+
+---
+
 ## [financecheque-v0.1.0.07] - 2026-05-10
 
 ### Added
@@ -145,4 +157,3 @@ All notable changes to this project will be documented in this file.
 - Cloudflare Pages deployment configuration
 - £ symbol replaced with "credits" throughout
 - "Lead Buyer" and "Lead Seller(s)" labels updated
-
