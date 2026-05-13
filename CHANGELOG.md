@@ -1,5 +1,10 @@
 # Changelog
 
+## [0.2.1] - 2026-05-13
+### Fixed
+- Identified issue: JS syntax error: /home/ubuntu/datro/public/ui/dashboard/js/jquery-3.3.1.min.js:2
+!function(e,t){"use strict";"object"==typeof module&&"object"==typeof module.exports?m (requires manual fix)
+
 All notable changes to this project will be documented in this file.
 
 ## [greathousefarm-research-v0.1.0.0] - 2026-05-12
