@@ -49,12 +49,21 @@ The Bute Estate Records (held primarily at the **National Library of Wales, Aber
   - Critical primary evidence of customary tenure assertion c.1916
 
 ### Archival References
-- **NLW GB 0210 BUTE** — Bute Estate Records (main Glamorgan collection)
-- **GB 0214 DA** — Glamorgan Estate of Lord Bute collection (Glamorgan RO)
-- **GB 0214 DBDT** — Debenham Tewson – Bute records (Glamorgan RO)
-- **GB 0214 DRA** — Deeds and family papers (Glamorgan RO)
-- **GB 0214 DPL** — Plymouth Estate maps (Glamorgan RO)
+- **NLW GB 0210 BUTE** — Bute Estate Records (main Glamorgan collection). Rentals end 1895; correspondence ends 1855; manorial records end 1847; settlements end 1902; probate ends 1900; legal papers end 1921; overall collection spans 1319–1936.
+- **GB 0210 E — Glamorgan Deeds** (NLW) — Sub-fonds of deeds collected by **Williams and Williams, Solicitors**, covering **1698–1905**. Contains deeds relating to properties in Glamorgan. **Potential source for missing Williams family conveyances.** Requires on-site investigation at NLW Aberystwyth.
+- **GB 0210 EWIAMS** — E. Williams of Hove collection of Welsh deeds (NLW) — **1437–1823**. Includes deeds relating to premises in **Glamorgan, 1612–1775**. May contain early Williams family conveyances.
+- **GB 0210 DGETHWIL** — D. Gethin Williams Collection of Deeds (NLW) — **1687–1889**. Deeds relating to properties in Carmarthenshire and Glamorgan.
+- **GB 0214 DRA** — Deeds and family papers (Glamorgan RO). Contains **Daniel Thomas assignments of leases and requisitions of title** (items DRA 418–420, 1906–1907), and miscellaneous Williams family deeds (items DRA 5/31 referencing Thomas Williams of Glôg, Llanwynno, 1753–1889).
+- **GB 0214 DBDT** — Debenham Tewson – Bute records (Glamorgan RO). DBDT58 sub-fonds for Llandough contains only 1883 leases (Price and Hallett) — **nothing for 1916**.
+- **GB 0214 DPL** — Plymouth Estate maps (Glamorgan RO). Includes DPL/8 — plan of lands in Cogan and Llandough parishes c.1840, and DPL/6 — Lord Plymouth's estates c.1768.
+- **GB 0214 DSA** — Stephenson & Alexander auction records (Glamorgan RO). **Note:** DSA/6/1158 relates to Llandough-juxta-Cowbridge, not Llandough-juxta-Penarth. See Appendix A1.
+- **Cadw LB 13420** — Great House [Formerly Great House Farmhouse], Llanquian Road, Llandough (near Penarth). Grade II. **This is a separate property** from the Williams family's Great House Farm.
+- **Cadw LB 13271** — Ty Mawr (Great House), Aberthin, Llantwit Major. Grade II*. **Different property** — do not conflate with Great House Farm, Llandough-juxta-Penarth.
+- **Cadw LB 13408** — Llandough Castle, Llanfair. Grade II*. The nearby castle, not the Williams farm.
+- **Western Estates Limited** (Companies House #01050204) — Incorporated 1972. Same registered address (Hill Court, 14 Cefn Coed Road, Cardiff) and overlapping directors with the earlier Western Ground Rents / Cardiff Ground Rents network. **Likely successor entity.** See Appendix A2.
+- **Western Permanent Property** (wppmc.com) — Current managing agent operating from 46 Whitchurch Road, Cardiff. Formerly known as Conybeare/RMC Group. **Current ground rent management successor in the Cardiff leasehold market.**
 - Search: https://discovery.nationalarchives.gov.uk/
+- Canfod (Glamorgan Archives catalogue): https://canfod.glamarchives.gov.uk/
 
 ### Secondary Sources
 - Davies, John. *Cardiff and the Marquesses of Bute* (Cardiff, 1981)
@@ -149,8 +158,8 @@ The earlier "1670" reference likely confuses the Carne family's acquisition (Dr 
 
 - `bpvsbucker-rundown.txt` — Full chronological rundown with all research, newspaper transcriptions, and appended discrepancy notes
 - `bute-estate-gaps-research.txt` — Focused gap analysis document
-- `BP_vs_Buckler_Correspondence.pdf` — (existing)
-- `BP_vs_Buckler_Correspondence_v2.pdf` — (existing)
+- `BP_vs_Buckler_Correspondence.pdf` — (pending — to be obtained from Glamorgan RO or National Archives)
+- `BP_vs_Buckler_Correspondence_v2.pdf` — (pending — to be obtained from Glamorgan RO or National Archives)
 
 ---
 
