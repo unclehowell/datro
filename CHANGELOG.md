@@ -11,6 +11,11 @@ Sep-26 - Added song lyrics (welsh/ english) to library under new catagory txt (f
 Sep-10 - Added a brief for the Taking Chance WebApp - see `wayback/taking_chance_web_app_v0.0.1_en.pdf` - and link on the page: ceo.datro.xyz 
 Aug-08 - Added a video called Service 
 
+
+## [0.0.1] - 2026-05-13
+### Fixed
+- Closed unclosed HTML tags in static/ccan/our-beliefs.html: html, div, div, span, div
+
 ## [0.0.1-rtwx.4-rc.6] - Q1/2024
 
 ### Added
