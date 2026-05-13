@@ -5,9 +5,10 @@ All notable changes to this project will be documented in this file.
 ## [greathousefarm-research-v0.1.0.0] - 2026-05-12
 
 ### Added
-- Great House Farm title chain research README
+- Great Hall Farm title chain research README (README.md)
 - Full chronological rundown of BP v Buckler / Bute estate records (bpvsbucker-rundown.txt)
 - Focused gap analysis document (bute-estate-gaps-research.txt)
+- 6 Freedom of Information request letters targeting key archives and authorities (foi-requests-great-house-farm.txt)
 - Identified archival gap c.1895–1938 in Bute Estate Records for Llandough/Great House Farm area
 - People's Collection Wales tree planting photograph reference (John Williams, c.1916)
 - BP v Buckler [1987] EWCA Civ 2 judgment analysis and key paragraph references
