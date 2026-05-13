@@ -92,18 +92,68 @@ The Bute Estate Records (held primarily at the **National Library of Wales, Aber
 3. What happened to the key title documents reportedly removed from Cardiff Library in 1984?
 4. Was Cadw's emergency listing process deliberately delayed to enable demolition?
 5. The "two Llandoughs" issue — some archive references may conflate Llandough-juxta-Penarth with Llandough-juxta-Cowbridge
+6. What is the relationship between Western Ground Rents Ltd and Cardiff Ground Rents Ltd (Companies House #00598381, incorporated 1958, active)? Cardiff Ground Rents Ltd may be a successor or parallel entity holding the lease enforcement interest.
+7. Did the Williams family ever hold a fee simple absolute title (freehold), or was their position always a tenancy/leasehold interest with an equitable claim to the underlying freehold reversion?
 
+---
 
+## APPENDIX A: New Research Findings (added 2026-05-13)
+
+### A1. The Stephenson & Alexander Archive (GB 0214 DSA) — Llandough-juxta-Cowbridge vs. Llandough-juxta-Penarth
+
+The Stephenson & Alexander auction records held at Glamorgan Record Office (GB 0214 DSA) contain multiple references to "Great House Farm, Llandough." However, cross-referencing with People's Collection Wales and GENUKI confirms that **the Stephenson & Alexander sales catalogue references relate to Llandough-juxta-Cowbridge, NOT Llandough-juxta-Penarth.** Key evidence:
+
+- People's Collection Wales collection #1168196 (Cowbridge Stephenson & Alexander sales) includes "Llandough Castle farm, near Cowbridge 1930" and "Great House, Llanblethian 1899" — demonstrating that the firm's "Llandough" references in their sales catalogues pertain to the Cowbridge parish.
+- GENUKI (Llandough juxta Cowbridge) references "Cowbridge and District Local History Society papers" containing notes by Mrs Mary Ellis Joshua about "Mr David Thomas of Great House Farm, Llandough, nr Cowbridge" — again the Cowbridge Llandough.
+- People's Collection Wales item #1978491 is titled "The Thomas family of Great House Farm Llandow" — this is the Cowbridge Llandough family, distinct from the Williams family of Llandough-juxta-Penarth.
+- The DBDT sub-fonds for "LLandough" at Glamorgan RO (DBDT58) contains only two items: DBDT58/1 (1883 lease to Richard Price) and DBDT58/2 (1883 lease to John Hallett), both described as "land and premises situate in Llandough Street, Cardiff" — these are Llandough-juxta-Penarth leases. **There is nothing in the DBDT collection for 1916.**
+
+**Conclusion:** The 1938 Stephenson & Alexander sale (DSA/6/1158) priced at £5,500 almost certainly relates to Llandough-juxta-Cowbridge (Great House Farm near Cowbridge Castle), and is NOT the same transaction as the Western Ground Rents reversion conveyance for Great House Farm at Llandough-juxta-Penarth. This resolves Unresolved Question #2.
+
+### A2. Cardiff Ground Rents Limited — A Parallel Entity
+
+Companies House records reveal **Cardiff Ground Rents Limited** (Company #00598381):
+- Incorporated: 4 February 1958
+- Status: Active
+- Registered office: 37 Ferncroft Avenue, London NW3 7PG
+- Nature of business: SIC 68209 — Other letting and operating of own or leased real estate
+- Persons with Significant Control: Anthony William Jeremy and Sara Hazel Jeremy
+- Has active charges with Barclays Bank PLC dating from 1960 to 2015
+- Filed annual accounts through 2024
+
+This company was incorporated in the same period that Western Ground Rents was selling its interests to BP Pension Trust (1969). **Cardiff Ground Rents Ltd may have been created to hold specific ground rent interests in Cardiff area properties (including Great House Farm) either as a spin-off from Western Ground Rents or as a separate entity operating in the same market.** The "D.C. Thomas" reference in the Glamorgan Archives DRA collection (1903-1943 sale books) and the 1976 DCOWHS/2 reference to "Mr David Thomas of Great House Farm" suggest ongoing Thomas family involvement in the estate management.
+
+### A3. The "Fee Simple Absolute" Question
+
+The family's claim to fee simple absolute title rests on several interrelated propositions:
+
+1. **The 1667 Williams occupation** — Family oral tradition, supported by the 1987 judgment's acknowledgment of long-standing family occupation, places the Williams family at Great House Farm from at least 1667. The nature of this original tenure (copyhold, lease for lives, or fee farm grant) is unrecorded in surviving archives.
+
+2. **The Daniel Thomas equitable title arrangement (c.1895-1915)** — Multiple sources (unitedtechnocracy.blogspot.com, family testimony) state that Daniel Thomas, a quarryman, made an arrangement with the Williams family whereby quarrying rights were granted in exchange for eventual equitable title. The "Deed of Transfer between Daniel Thomas and Bute Estate" was reportedly filed with a copy held at Cardiff Library (until removed in 1984).
+
+3. **The 1916 Bute tenancy** — The 4th Marquess granted a yearly agricultural tenancy to John Williams. This is documented ONLY in the BP v Buckler judgment (paragraph 36). **No corresponding document exists in any public archive.** The tenancy was recorded as new by the estate at a time when the estate's own records for Llandough had effectively ceased (rentals end 1895, correspondence ends 1910).
+
+4. **The 1938 reversion sale** — The reversion was conveyed to Western Ground Rents Ltd (confirmed by judgment paragraph 36). WGR's acquisition of Mountjoy Ltd's leasehold interests for £5m in 1938 is well documented (National Archives GB 0214 DA).
+
+**The critical gap remains 1895-1938 for Llandough-juxta-Penarth specifically.** The family's claim to fee simple rests on proving that the 1895-1916 period saw either: (a) a conveyance of freehold title to the Williams family (possibly via Daniel Thomas as intermediary), or (b) that the 1916 tenancy was itself a regularization of an already-existing freehold position. Without the missing deed documents, this remains unproven in law.
+
+### A4. The 1670 vs. 1766 Date Correction
+
+The previous version of this document cited "1670" for the purchase of Llandough by "Lord Cardiff." This has been corrected to **1766**, which is the confirmed date of the marriage of John Stuart, Lord Mountstuart (later 1st Marquess of Bute) to Charlotte Windsor, heiress of the Lord Windsor/Plymouth estate. The Dictionary of Welsh Biography entry on the Bute Marquesses confirms: "She married, 1766, JOHN, LORD MOUNTSTUART (1744-1814), son and heir of the 3rd earl of Bute." The Bute estates in Glamorgan (including Llandough, confirmed purchased in 1793 from the Herbert/Pembroke successors) derive from this marriage settlement.
+
+The earlier "1670" reference likely confuses the Carne family's acquisition (Dr Edward Carne purchased Llandough Castle in 1536) or refers to an unrelated property transaction by the Talbot family (Penrice and Margam).
+
+---
 
 ## Related Files (in Downloads)
 
 - `bpvsbucker-rundown.txt` — Full chronological rundown with all research, newspaper transcriptions, and appended discrepancy notes
-- `bute-estate-gaps-research.txt` — Focused write-up of the archival gap analysis
+- `bute-estate-gaps-research.txt` — Focused gap analysis document
 - `BP_vs_Buckler_Correspondence.pdf` — (existing)
 - `BP_vs_Buckler_Correspondence_v2.pdf` — (existing)
 
-
+---
 
 ## Status
 
-**Research ongoing.** Key archival sources (NLW Schedule of Bute Estate Records, Glamorgan RO DBDT handlist, Cadw listing files, Vale of Glamorgan planning archives) have not yet been consulted on-site and may contain the missing 1916 tenancy documentation.
+**Research ongoing.** Key archival sources (NLW Schedule of Bute Estate Records, Glamorgan RO DBDT handlist, Cadw listing files, Vale of Glamorgan planning archives) have not yet been consulted on-site and may contain the missing 1916 tenancy documentation. The identification of **Cardiff Ground Rents Ltd** as a potential parallel/successor entity warrants a Companies House deep-dive and investigation of any property records held under that company name at HM Land Registry.

@@ -17,11 +17,15 @@ All notable changes to this project will be documented in this file.
 
 ### Changed
 - README.md updated to document Great House Farm title research and archival gap findings
+- README.md Appendix A added with new research: Stephenson & Alexander archive cross-reference (resolves two-Llandoughs issue), Cardiff Ground Rents Ltd identification, fee simple absolute analysis, 1766 date correction
 - bpvsbucker-rundown.txt appended with missing research, discrepancy notes, and evidence assessment
+- Corrected 1215 construction date for Great House Farm to c.1500–1530 (Sir Mathew Cradock) with sourcing
 
 ### Fixed
 - Corrected 1215 construction date for Great House Farm to c.1500–1530 (Sir Mathew Cradock)
-- Flagged erroneous 1935–39 death date for Mr Williams (court records show alive in 1955)
-- Flagged October 1964 tenancy end date as having no basis in court records
+- Flagged erroneous 1935–39 death date for Mr Williams (court records show alive through late 1940s)
+- Flagged October 1964 tenancy end date as having no basis in court records (correct per judgment: 2 February 1955)
 - Flagged unsupported "Ideal Homes Wales Ltd" reference in WGR description
 - Flagged 1670 "Lord Cardiff" purchase date as likely erroneous (accepted date: 1766)
+- Stephenson & Alexander DSA/6/1158 sale confirmed as Llandough-juxta-Cowbridge, NOT Llandough-juxta-Penarth (resolves Unresolved Question #2)
+- Cardiff Ground Rents Ltd identified as potential parallel/successor entity (Companies House #00598381)
