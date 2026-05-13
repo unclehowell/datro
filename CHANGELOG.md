@@ -1,5 +1,9 @@
 # Changelog
 
+## [0.2.1] - 2026-05-13
+### Fixed
+- Identified issue: Exposed sensitive environment variables in a committed file. The .env.example file contains placeholder values but is still a security risk as it documents the structure and expected variables, which could guide attackers. (requires manual fix)
+
 ## [financecheque-v0.1.0.9] - 2026-05-13
 
 ### Fixed
