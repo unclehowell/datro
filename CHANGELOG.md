@@ -5,6 +5,11 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
 
 ## [Unreleased]
+
+## [0.0.1] - 2026-05-13
+### Fixed
+- Fixed JSON syntax in static/library/consortium_campuses/campus0_casestudy/_treeview.json
+
 ## [0.0.1.01] - Q2/2026
 
 ### Added
