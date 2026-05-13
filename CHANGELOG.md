@@ -7,6 +7,16 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 
 
+
+## [0.0.1] - 2026-05-13
+### Fixed
+- Identified issue: JS syntax error: node:internal/modules/cjs/loader:1386
+  throw err;
+  ^
+
+Error: Cannot find module '/home/ubuntu/datro/static/archives/build.js'
+    at node:internal/m (requires manual fix)
+
 ## [0.0.1] - 2026-05-13
 ### Fixed
 - Code quality maintenance and version bump
