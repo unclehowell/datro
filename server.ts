@@ -94,7 +94,6 @@ async function startServer() {
     const { childId, url } = req.body;
     if (!childId || !url) return res.status(400).json({ error: "childId and url required" });
     childProxies[childId] = { url, lastSeen: Date.now(), load: 0 };
-    console.log(`Child proxy registered: ${childId} @ ${url}`);
     res.json({ ok: true });
   });
 
@@ -167,7 +166,6 @@ async function startServer() {
       if (userId && credits > 0) {
         const user = getOrCreateUser(userId);
         user.credits += credits;
-        console.log(`Credited ${credits} to user ${userId}. New balance: ${user.credits}`);
       }
     }
 
@@ -186,7 +184,6 @@ async function startServer() {
         const credits = tierCredits[priceId] ?? 0;
         if (credits > 0) {
           users[userId].credits += credits;
-          console.log(`Subscription credits: +${credits} to ${userId}`);
         }
       }
     }
@@ -249,7 +246,6 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
   });
 }
 
@@ -260,7 +256,6 @@ async function dispatchToChildProxy(job: any) {
     .sort(([, a], [, b]) => a.load - b.load);
 
   if (alive.length === 0) {
-    console.log(`No child proxies available for job ${job.id}. Job queued.`);
     return;
   }
 
@@ -274,7 +269,6 @@ async function dispatchToChildProxy(job: any) {
     if (res.ok) {
       job.status = "dispatched";
       childProxies[childId].load++;
-      console.log(`Job ${job.id} dispatched to child ${childId}`);
     }
   } catch (err) {
     console.error(`Failed to dispatch to child ${childId}:`, err);

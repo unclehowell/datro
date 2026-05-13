@@ -1,5 +1,10 @@
 # Changelog
 
+## [financecheque-v0.1.0.9] - 2026-05-13
+
+### Fixed
+- fix: remove debugging console.log statements from ./server.ts
+
 All notable changes to this project will be documented in this file.
 
 ## [financecheque-v0.1.0.08] - 2026-05-10
