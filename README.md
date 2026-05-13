@@ -154,10 +154,12 @@ The earlier "1670" reference likely confuses the Carne family's acquisition (Dr 
 
 ---
 
-## Related Files (in Downloads)
+## Related Files (in this release)
 
-- `bpvsbucker-rundown.txt` — Full chronological rundown with all research, newspaper transcriptions, and appended discrepancy notes
-- `bute-estate-gaps-research.txt` — Focused gap analysis document
+- [`static/greathousefarm/bpvsbucker-rundown.txt`](static/greathousefarm/bpvsbucker-rundown.txt) — Full chronological rundown with all research, newspaper transcriptions, and appended discrepancy notes
+- [`static/greathousefarm/bute-estate-gaps-research.txt`](static/greathousefarm/bute-estate-gaps-research.txt) — Focused gap analysis document
+- [`static/greathousefarm/foi-requests-great-house-farm.txt`](static/greathousefarm/foi-requests-great-house-farm.txt) — 6 FOI request letters (may 2026)
+- [`static/greathousefarm/index.html`](static/greathousefarm/index.html) — HTML navigation page for all research files
 - `BP_vs_Buckler_Correspondence.pdf` — (pending — to be obtained from Glamorgan RO or National Archives)
 - `BP_vs_Buckler_Correspondence_v2.pdf` — (pending — to be obtained from Glamorgan RO or National Archives)
 

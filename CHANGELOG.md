@@ -2,10 +2,28 @@
 
 All notable changes to this project will be documented in this file.
 
+## [greathousefarm-v0.1.0.01] - 2026-05-13
+
+### Added
+- HTML navigation page (`static/greathousefarm/index.html`) for browsing all research files
+- `static/greathousefarm/` directory containing all research deliverables
+
+### Changed
+- Restructured branch to contain only research content: README.md, CHANGELOG.md, `static/greathousefarm/`
+- Stripped all non-research files (server, app code, UI assets, config files, node_modules)
+- README.md "Related Files" section updated to reference `static/greathousefarm/` paths
+- Removed broken "See Appendix A5" reference on Cadw LB 13420
+- Marked BP v Buckler correspondence PDFs as pending (not yet obtained)
+
+### Fixed
+- Resolved file path inconsistencies — research files now co-located in `static/greathousefarm/`
+
+---
+
 ## [greathousefarm-research-v0.1.0.0] - 2026-05-12
 
 ### Added
-- Great Hall Farm title chain research README (README.md)
+- Great House Farm title chain research README (README.md)
 - Full chronological rundown of BP v Buckler / Bute estate records (bpvsbucker-rundown.txt)
 - Focused gap analysis document (bute-estate-gaps-research.txt)
 - 6 Freedom of Information request letters targeting key archives and authorities (foi-requests-great-house-farm.txt)
