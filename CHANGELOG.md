@@ -5,6 +5,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [0.0.1] - 2026-05-13
+### Fixed
+- Identified issue: Missing referenced files: %PUBLIC_URL%/favicon-32x32.png, %PUBLIC_URL%/apple-touch-icon.png, %PUBLIC_URL%/manifest.json, %PUBLIC_URL%/favicon-16x16.png (requires manual fix)
+
 ## [0.0.1-[nomenclature-undecided]] - Q1/2021
 
 ### Added
