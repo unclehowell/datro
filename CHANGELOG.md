@@ -14,6 +14,35 @@ All notable changes to this project will be documented in this file.
 
 ---
 
+## [financecheque-v0.1.0.07] - 2026-05-13
+
+### Added
+- **Parent Proxy API** (`functions/api/proxy/`): Cloudflare Pages Function for child proxy coordination
+  - `POST /api/proxy/register`: child proxy registration with D1 persistence
+  - `GET /api/proxy/nodes`: list active child proxies (seen within last hour)
+  - `POST /api/proxy/v1/chat/completions`: OpenAI-compatible endpoint with cross-machine chat-only enforcement
+  - `X-Chat-Only` header set automatically when multiple nodes are registered, preventing command execution on foreign machines
+- **Child proxy agent** (`public/fcukproxy/agent.py`): rewritten for parent proxy architecture
+  - Auto-registers with parent proxy on startup (periodic re-registration every 60s)
+  - Local LLM routing via env API keys (OpenAI, Anthropic, Gemini, etc.)
+  - Fallback chain: local LLM → parent proxy → multicast peers
+  - `POST /execute` endpoint blocked by `X-Chat-Only` header (returns 403)
+  - `GET /env` endpoint shows configured providers
+  - `GET /status` now reports `has_api_keys` and configured provider list
+- **Hermes agent integration** in `install.sh`
+  - Installs `hermes-agent` via pip (AI assistant with built-in web GUI)
+  - Auto-configures Hermes to use local proxy (`localhost:6000/v1`) as LLM backend
+  - Starts Hermes gateway on port 6002
+  - Creates `~/.fcukproxy/.env` with commented API key templates
+- **D1 database** (`schema.sql`): added `proxy_nodes` table for child proxy registry
+
+### Fixed
+- Install script URL changed to `https://www.financecheque.uk/fcukproxy/install.sh` (root domain 301 redirects to www without path preservation)
+- `_redirects` file moved to `public/` so Vite copies it to `dist/` for Cloudflare Pages deployment
+- Functions restructured to `[[catchall]].ts` pattern for proper sub-path routing
+
+---
+
 ## [financecheque-v0.1.0.07] - 2026-05-10
 
 ### Added
@@ -39,12 +68,6 @@ All notable changes to this project will be documented in this file.
 ## [financecheque-v0.1.0.06] - 2026-05-08
 
 ### Added
-- **FCUK Proxy** (`public/fcukproxy/`): renamed from pirateclaw throughout
-  - `install.sh`: working one-liner install script for Linux/macOS
-  - `agent.py`: child proxy agent (port 6000) with STP-inspired peer discovery via UDP multicast
-  - `gui.py`: local web GUI at http://localhost:6001 showing live proxy status, peer list, stats
-  - Systemd user service auto-installed on Linux for persistence
-  - Dynamic `machine.json` generated per machine (unique ID, hostname, local IP)
 - **Stripe Cloudflare Pages Function** (`functions/api/stripe.ts`): checkout and billing portal now work in production
 - **Auth modal tab switcher**: Sign In goes straight to the login form; Register shows package selection first
 - **Forgot Password link** in sign-in form
@@ -52,46 +75,12 @@ All notable changes to this project will be documented in this file.
 
 ### Fixed
 - Seller balance now **increases** when a buyer places an order (was incorrectly decreasing)
-- Install modal one-liner now points to `https://financecheque.uk/fcukproxy/install.sh`
 - JWT secret now reads from `env.JWT_SECRET` (Cloudflare env var) instead of hardcoded value
 - "Select Soloprenuer" button now opens the auth/register modal
 - "Unlock Business" button now calls the real Stripe endpoint
 - Hardcoded Tatum API keys and JWT secret removed from `wrangler.toml`
 
-### Renamed
-- All `pirateclaw` references renamed to `fcukproxy`
-
----
-
-## [financecheque-v0.1.0.05] - 2026-05-04
-
-### Added
-- **FCUK Proxy** (`public/fcukproxy/`): renamed from pirateclaw throughout
-  - `install.sh`: working one-liner install script for Linux/macOS
-  - `agent.py`: child proxy agent (port 6000) with STP-inspired peer discovery via UDP multicast
-  - `gui.py`: local web GUI at http://localhost:6001 showing live proxy status, peer list, stats
-  - Systemd user service auto-installed on Linux for persistence
-  - Dynamic `machine.json` generated per machine (unique ID, hostname, local IP)
-- **Stripe Cloudflare Pages Function** (`functions/api/stripe.ts`): checkout and billing portal now work in production
-- **Auth modal tab switcher**: Sign In goes straight to the login form; Register shows package selection first
-- **Forgot Password link** in sign-in form
-- **README**: replaced Google AI Studio boilerplate with real project documentation
-
-### Fixed
-- Seller balance now **increases** when a buyer places an order (was incorrectly decreasing)
-- Install modal one-liner now points to `https://financecheque.uk/fcukproxy/install.sh` (was 404)
-- Install modal description updated to explain the proxy and GUI
-- JWT secret now reads from `env.JWT_SECRET` (Cloudflare env var) instead of hardcoded value
-- "Select Soloprenuer" button now opens the auth/register modal
-- "Unlock Business" button now calls the real Stripe checkout endpoint
-- Hardcoded Tatum API keys and JWT secret removed from `wrangler.toml`
-
-### Renamed
-- All `pirateclaw` references renamed to `fcukproxy`
-
----
-
-## [financecheque-v0.1.0.04] - 2026-05-02
+---## [financecheque-v0.1.0.04] - 2026-05-02
 
 ### Added
 - Real user registration with Cloudflare D1 database

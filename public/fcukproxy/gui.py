@@ -91,8 +91,8 @@ HTML = """<!DOCTYPE html>
     <h2>Invite Another Machine</h2>
     <p style="font-size:0.8rem;color:var(--muted);margin-bottom:1rem;">Run this on any Linux/macOS machine to join the network:</p>
     <div class="cmd">
-      <code>curl -fsSL https://financecheque.uk/fcukproxy/install.sh | sh</code>
-      <button class="copy-btn" onclick="copy(this,'curl -fsSL https://financecheque.uk/fcukproxy/install.sh | sh')">Copy</button>
+      <code>curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | sh</code>
+      <button class="copy-btn" onclick="copy(this,'curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | sh')">Copy</button>
     </div>
   </div>
 

@@ -53,6 +53,17 @@ CREATE TABLE IF NOT EXISTS child_proxies (
   last_seen DATETIME DEFAULT CURRENT_TIMESTAMP
 );
 
+-- Proxy nodes (child proxies registered with parent)
+CREATE TABLE IF NOT EXISTS proxy_nodes (
+  machine_id TEXT PRIMARY KEY,
+  machine_name TEXT NOT NULL DEFAULT '',
+  ip_address TEXT NOT NULL DEFAULT '',
+  proxy_port INTEGER DEFAULT 6000,
+  version TEXT DEFAULT '',
+  last_seen TEXT DEFAULT (datetime('now')),
+  registered_at TEXT DEFAULT (datetime('now'))
+);
+
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_password_reset_tokens_token ON password_reset_tokens(token);
