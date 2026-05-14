@@ -16,6 +16,11 @@ Aug-08 - Added a video called Service
 
 
 
+
+## [0.0.6] - 2026-05-14
+### Fixed
+- Code quality maintenance and version bump
+
 ## [0.0.5] - 2026-05-14
 ### Fixed
 - Code quality maintenance and version bump
