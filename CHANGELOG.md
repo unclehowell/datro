@@ -1,5 +1,10 @@
 # Changelog
 
+## [financecheque-v0.1.0.34] - 2026-05-14
+
+### Fixed
+- fix: remove debugging console.log from functions/api/auth.ts
+
 All notable changes to this project will be documented in this file.
 
 ## [financecheque-v0.1.0.08] - 2026-05-10

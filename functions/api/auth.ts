@@ -146,8 +146,6 @@ async function handleRequestReset(email: string, env: Env) {
     await env.DB.prepare(
       'INSERT INTO password_reset_tokens (user_id, token, expires_at) VALUES (?, ?, ?)'
     ).bind((user as any).id, token, expiresAt).run();
-    
-    console.log(`Password reset token for ${email}: ${token}`);
   }
 
   return new Response(JSON.stringify({ 
