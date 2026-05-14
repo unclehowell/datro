@@ -52,6 +52,12 @@ Sep-10 - Added a brief for the Taking Chance WebApp - see `wayback/taking_chance
 Aug-08 - Added a video called Service 
 
 
+
+## [0.0.2] - 2026-05-14
+### Fixed
+- Identified issue: JS syntax error: /home/ubuntu/datro/static/ui/dashboard/js/jquery-3.3.1.min.js:2
+!function(e,t){"use strict";"object"==typeof module&&"object"==typeof module.exports?m (requires manual fix)
+
 ## [0.0.1] - 2026-05-14
 ### Fixed
 - Identified issue: JS syntax error: /home/ubuntu/datro/static/ui/dashboard/js/jquery-3.3.1.min.js:2
