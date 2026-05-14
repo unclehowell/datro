@@ -12,6 +12,11 @@ Sep-10 - Added a brief for the Taking Chance WebApp - see `wayback/taking_chance
 Aug-08 - Added a video called Service 
 
 
+
+## [0.0.2] - 2026-05-14
+### Fixed
+- Code quality maintenance and version bump
+
 ## [0.0.1] - 2026-05-14
 ### Fixed
 - Code quality maintenance and version bump
