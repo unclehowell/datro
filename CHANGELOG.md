@@ -1,5 +1,10 @@
 # Changelog
 
+## [financecheque-v0.1.0.35] - 2026-05-14
+
+### Fixed
+- fix: upgrade server logging from log to error for production visibility
+
 ## [financecheque-v0.1.0.34] - 2026-05-14
 
 ### Fixed

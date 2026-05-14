@@ -94,7 +94,7 @@ async function startServer() {
     const { childId, url } = req.body;
     if (!childId || !url) return res.status(400).json({ error: "childId and url required" });
     childProxies[childId] = { url, lastSeen: Date.now(), load: 0 };
-    console.log(`Child proxy registered: ${childId} @ ${url}`);
+    console.error(`Child proxy registered: ${childId} @ ${url}`);
     res.json({ ok: true });
   });
 
