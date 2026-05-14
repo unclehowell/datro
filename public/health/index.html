@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parent Proxy Health — financecheque.uk</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #0d1117; color: #c9d1d9; padding: 24px; }
+  h1 { font-size: 1.5rem; margin-bottom: 4px; color: #f0f6fc; }
+  .subtitle { color: #8b949e; font-size: 0.85rem; margin-bottom: 24px; }
+  .cards { display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap; }
+  .card { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px 20px; flex: 1; min-width: 160px; }
+  .card .label { font-size: 0.75rem; text-transform: uppercase; color: #8b949e; letter-spacing: 0.5px; }
+  .card .value { font-size: 1.8rem; font-weight: 600; margin-top: 4px; }
+  .card .value.green { color: #3fb950; }
+  .card .value.yellow { color: #d29922; }
+  .card .value.red { color: #f85149; }
+  .section { margin-bottom: 32px; }
+  .section h2 { font-size: 1.1rem; margin-bottom: 12px; color: #f0f6fc; border-bottom: 1px solid #21262d; padding-bottom: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+  th { text-align: left; padding: 8px 12px; background: #161b22; border-bottom: 1px solid #30363d; color: #8b949e; font-weight: 500; white-space: nowrap; }
+  td { padding: 8px 12px; border-bottom: 1px solid #21262d; white-space: nowrap; }
+  td .badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 500; }
+  .badge.online { background: #1b3622; color: #3fb950; }
+  .badge.offline { background: #3d1c1c; color: #f85149; }
+  .badge.route-child { background: #1b3622; color: #3fb950; }
+  .badge.route-direct { background: #1c2236; color: #58a6ff; }
+  .pill { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 500; }
+  .pill.child { background: #1b3622; color: #3fb950; }
+  .pill.direct { background: #1c2236; color: #58a6ff; }
+  .pill.both { background: #362b1b; color: #d29922; }
+  .pill.unknown { background: #3d1c1c; color: #f85149; }
+  .last-updated { color: #484f58; font-size: 0.8rem; margin-bottom: 16px; }
+  .mono { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 0.8rem; }
+  .table-wrap { overflow-x: auto; border: 1px solid #30363d; border-radius: 8px; }
+  @media (max-width: 640px) {
+    body { padding: 12px; }
+    .cards { flex-direction: column; }
+    th, td { padding: 6px 8px; font-size: 0.75rem; }
+  }
+  .routing-status { background: #161b22; border: 1px solid #30363d; border-radius: 8px; padding: 16px 20px; margin-bottom: 24px; display: flex; align-items: center; gap: 12px; }
+  .routing-status .dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .dot.active { background: #3fb950; box-shadow: 0 0 8px #3fb95080; }
+  .dot.inactive { background: #f85149; box-shadow: 0 0 8px #f8514980; }
+  .dot.idle { background: #8b949e; }
+</style>
+</head>
+<body>
+
+<h1>Parent Proxy Health</h1>
+<p class="subtitle">financecheque.uk — real-time child proxy routing status</p>
+
+<div class="cards" id="cards">
+  <div class="card"><div class="label">Total Nodes</div><div class="value" id="totalNodes">—</div></div>
+  <div class="card"><div class="label">Active (1h)</div><div class="value green" id="activeNodes">—</div></div>
+  <div class="card"><div class="label">Logs Today</div><div class="value" id="logsToday">—</div></div>
+  <div class="card"><div class="label">Routing Mode</div><div class="value" id="routingMode">—</div></div>
+</div>
+
+<div class="routing-status" id="routingStatus">
+  <div class="dot" id="routingDot"></div>
+  <span id="routingText">Loading...</span>
+</div>
+
+<div class="section">
+  <h2>Child Proxy Nodes</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Machine ID</th><th>Name</th><th>IP Address</th><th>Port</th><th>Version</th><th>Last Seen</th><th>Status</th>
+      </tr></thead>
+      <tbody id="nodesBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<div class="section">
+  <h2>Recent Proxy Calls</h2>
+  <div class="table-wrap">
+    <table>
+      <thead><tr>
+        <th>Time</th><th>Machine ID</th><th>Endpoint</th><th>Model</th><th>Status</th><th>Routing</th>
+      </tr></thead>
+      <tbody id="logsBody"></tbody>
+    </table>
+  </div>
+</div>
+
+<p class="last-updated" id="lastUpdated">Updating...</p>
+
+<script>
+async function fetchHealth() {
+  try {
+    const res = await fetch('/api/health');
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    return await res.json();
+  } catch (e) {
+    document.getElementById('lastUpdated').textContent = `Failed to fetch: ${e.message}`;
+    return null;
+  }
+}
+
+function timeAgo(dateStr) {
+  if (!dateStr) return 'never';
+  const d = new Date(dateStr.replace(' ', 'T') + 'Z');
+  const now = new Date();
+  const diff = (now - d) / 1000;
+  if (diff < 60) return `${Math.floor(diff)}s ago`;
+  if (diff < 3600) return `${Math.floor(diff / 60)}m ago`;
+  if (diff < 86400) return `${Math.floor(diff / 3600)}h ago`;
+  return d.toLocaleDateString();
+}
+
+function isActive(dateStr) {
+  if (!dateStr) return false;
+  const d = new Date(dateStr.replace(' ', 'T') + 'Z');
+  return (Date.now() - d.getTime()) < 3600000;
+}
+
+function render(data) {
+  if (!data) return;
+
+  document.getElementById('totalNodes').textContent = data.summary?.total_nodes_registered ?? data.nodes?.length ?? 0;
+  document.getElementById('activeNodes').textContent = data.summary?.active_nodes_last_hour ?? 0;
+  document.getElementById('logsToday').textContent = data.summary?.total_logs_today ?? 0;
+
+  const active = data.summary?.active_nodes_last_hour ?? 0;
+  const routingMode = document.getElementById('routingMode');
+
+  if (active === 0) {
+    routingMode.textContent = 'Direct Only';
+    routingMode.style.color = '#8b949e';
+  } else if (active === 1) {
+    routingMode.textContent = 'Child Proxy';
+    routingMode.style.color = '#3fb950';
+  } else {
+    routingMode.textContent = `${active} Proxies`;
+    routingMode.style.color = '#d29922';
+  }
+
+  const dot = document.getElementById('routingDot');
+  const text = document.getElementById('routingText');
+  if (active === 0) {
+    dot.className = 'dot idle';
+    text.textContent = 'No child proxies active — all requests handled directly by parent proxy LLM keys';
+  } else {
+    dot.className = 'dot active';
+    const nodeNames = (data.nodes || []).filter(n => isActive(n.last_seen)).map(n => n.machine_name || n.machine_id?.slice(0, 8)).join(', ');
+    text.textContent = `${active} child ${active === 1 ? 'proxy' : 'proxies'} active (${nodeNames}) — chat requests will be routed via child proxy`;
+  }
+
+  const nodesBody = document.getElementById('nodesBody');
+  nodesBody.innerHTML = '';
+  for (const node of data.nodes || []) {
+    const tr = document.createElement('tr');
+    const active = isActive(node.last_seen);
+    tr.innerHTML = `
+      <td class="mono">${node.machine_id?.slice(0, 12) || '-'}...</td>
+      <td>${node.machine_name || '-'}</td>
+      <td class="mono">${node.ip_address || '-'}</td>
+      <td>${node.proxy_port || '-'}</td>
+      <td>${node.version || '-'}</td>
+      <td>${timeAgo(node.last_seen)}</td>
+      <td><span class="badge ${active ? 'online' : 'offline'}">${active ? 'Online' : 'Offline'}</span></td>
+    `;
+    nodesBody.appendChild(tr);
+  }
+
+  const logsBody = document.getElementById('logsBody');
+  logsBody.innerHTML = '';
+  for (const log of data.logs || []) {
+    const tr = document.createElement('tr');
+    const ts = log.created_at ? timeAgo(log.created_at) : '-';
+    const routing = log.routing_decision || 'direct';
+    tr.innerHTML = `
+      <td class="mono">${ts}</td>
+      <td class="mono">${log.origin_machine_id?.slice(0, 12) || '-'}...</td>
+      <td>${log.endpoint || '-'}</td>
+      <td class="mono">${log.model || '-'}</td>
+      <td>${log.response_status || '-'}</td>
+      <td><span class="badge ${routing === 'route_to_child' ? 'route-child' : 'route-direct'}">${routing === 'route_to_child' ? 'Child' : 'Direct'}</span></td>
+    `;
+    logsBody.appendChild(tr);
+  }
+
+  document.getElementById('lastUpdated').textContent = `Last updated: ${new Date().toLocaleTimeString()} — auto-refreshes every 10s`;
+}
+
+async function tick() {
+  const data = await fetchHealth();
+  render(data);
+}
+
+tick();
+setInterval(tick, 10000);
+</script>
+</body>
+</html>

@@ -69,6 +69,17 @@ async function ensureTable(env: Env): Promise<void> {
       registered_at TEXT DEFAULT (datetime('now'))
     )`
   ).run();
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS proxy_logs (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      origin_machine_id TEXT DEFAULT '',
+      endpoint TEXT NOT NULL DEFAULT '',
+      model TEXT DEFAULT '',
+      response_status INTEGER DEFAULT 0,
+      routing_decision TEXT DEFAULT 'direct',
+      created_at TEXT DEFAULT (datetime('now'))
+    )`
+  ).run();
 }
 
 async function handleRegister(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
@@ -128,6 +139,8 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
 
   const isCrossMachine = totalNodes > 1;
 
+  const routingDecision = isCrossMachine && originMachineId ? 'route_to_child' : 'direct';
+
   let completionContent = '';
 
   if (messages.length > 0) {
@@ -142,11 +155,19 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     completionContent = `Echo: ${userContent}${viaClause}`;
   }
 
+  const model = body.model || 'proxy-router';
+  const responseStatus = 200;
+
+  await env.DB.prepare(
+    `INSERT INTO proxy_logs (origin_machine_id, endpoint, model, response_status, routing_decision, created_at)
+     VALUES (?, ?, ?, ?, ?, datetime('now'))`
+  ).bind(originMachineId, 'v1/chat/completions', model, responseStatus, routingDecision).run();
+
   const responseBody = {
     id: `chatcmpl-${Date.now()}`,
     object: 'chat.completion',
     created: Math.floor(Date.now() / 1000),
-    model: body.model || 'proxy-router',
+    model,
     choices: [
       {
         index: 0,
@@ -166,6 +187,7 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
       origin_machine_id: originMachineId,
       total_nodes: totalNodes,
       chat_only: isCrossMachine,
+      routing_decision: routingDecision,
     },
   };
 
@@ -174,5 +196,5 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     respHeaders['X-Chat-Only'] = 'true';
   }
 
-  return new Response(JSON.stringify(responseBody), { status: 200, headers: respHeaders });
+  return new Response(JSON.stringify(responseBody), { status: responseStatus, headers: respHeaders });
 }

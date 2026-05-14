@@ -1,5 +1,14 @@
 # Changelog
 
+## [financecheque-v0.1.0.36] - 2026-05-14
+
+### Added
+- Health dashboard at `/health` showing all registered child proxies with last_seen timestamps and recent parent proxy call logs
+- `GET /api/health` endpoint returning child proxy nodes, call logs, and summary stats
+- Parent proxy now logs every `/api/proxy/v1/chat/completions` request to D1 `proxy_logs` table including origin machine, routing decision (direct vs child-proxy), and response status
+- `proxy_logs` table added to `schema.sql` and auto-created via `ensureTable` in the parent proxy
+- Routing decision (`routing_decision`) exposed in `_proxy` diagnostics response field
+
 ## [financecheque-v0.1.0.35] - 2026-05-14
 
 ### Fixed

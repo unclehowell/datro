@@ -64,6 +64,17 @@ CREATE TABLE IF NOT EXISTS proxy_nodes (
   registered_at TEXT DEFAULT (datetime('now'))
 );
 
+-- Proxy call logs (health page)
+CREATE TABLE IF NOT EXISTS proxy_logs (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  origin_machine_id TEXT DEFAULT '',
+  endpoint TEXT NOT NULL DEFAULT '',
+  model TEXT DEFAULT '',
+  response_status INTEGER DEFAULT 0,
+  routing_decision TEXT DEFAULT 'direct',
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_password_reset_tokens_token ON password_reset_tokens(token);
