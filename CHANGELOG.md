@@ -1,6 +1,35 @@
 # Changelog
 
-All notable changes to this project will be documented in this file.
+It's expected that developers log all changes to this branch in this CHANGELOG.md file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [bpvsbuckler-v0.2.0.01] - 2026-05-14
+
+### Added
+- **Timeline XMB experience** — Full PS3 XMB-style interactive timeline with video background, narration audio (startup.mp3, nav.mp3), play button, animated clock, and 19 menu entries (Home, Games, Music, Photos, Videos, Settings + submenus)
+- **Static timeline entries** — 34 chronological HTML entries from 1100s medieval monastery through 1994 cemetery excavation, with data-driven launch page
+- **Great House Farm Research section**:
+  - BP v Buckler Rundown (333 lines) — full chronological title history with 10 discrepancy notes
+  - Estate Gap Analysis (140 lines) — documentation gaps by record series, two-Llandoughs problem, fee simple question, research to-do list
+  - FOI Requests — 6 letters to NLW, Glamorgan RO, National Archives, Vale Council, Cadw, HM Land Registry
+  - Research Hub — HTML navigation portal with links to all documents
+- **Reparations section** — Land Registry WA231076, Senedd engagement, legal strategy, highlight report
+- **Scripts section** — Build/deploy documentation for website, library, Cloudflare Pages, and image processing
+- Wayback archive (20+ documents, multiple video files)
+
+### Changed
+- Version bumped to bpvsbuckler-v0.2.0.01
+- Custom domain: bpvsbuckler.datro.xyz
+- Site served from Cloudflare Pages at `https://*.bpvsbuckler.pages.dev`
+
+### Fixed
+- CSS path in timeline/index.html (scss/main.css → main.css)
+- Large video files (>25MB) excluded from Cloudflare Pages build
+- All timeline assets (images, audio, SCSS, JS) properly linked
+
+---
 
 ## [financecheque-v0.1.0.05] - 2026-05-04
 
@@ -9,12 +38,10 @@ All notable changes to this project will be documented in this file.
 - Updated iframe references from ui.financecheque.uk to /ui
 - Migrated PirateClaw files to static/financecheque/pirateclaw/ and public/pirateclaw/
 - Updated PirateClaw install script to point to financecheque.uk/pirateclaw/website/
-- Updated PirateClaw parent URL to financecheque.uk/pirateclaw/website/
 - curl -fsSL https://financecheque.uk/pirateclaw/website/install.sh | sh now works
 
 ### Changed
 - PirateClaw branch changed from pirateclaw to financecheque for installation
-- Install script now uses financecheque branch with SUBDIR="static/financecheque/pirateclaw"
 
 ---
 
@@ -25,63 +52,43 @@ All notable changes to this project will be documented in this file.
 - User login with JWT authentication (using jose - Cloudflare compatible)
 - Password reset request and reset functionality
 - User sessions stored in D1 database
-- API endpoint `/api/auth` with actions: register, login, request-reset, reset-password, me, logout
-- bcryptjs for password hashing
-- UUID generation for session and reset tokens
 
 ### Fixed
 - Replaced jsonwebtoken with jose for Cloudflare Workers compatibility
-- Removed Node.js built-in dependencies (crypto, buffer, stream, util)
 
 ---
 
 ## [financecheque-v0.1.0.03] - 2026-05-01
 
 ### Fixed
-- Mobile menu now uses click-to-toggle for Buyer and Seller submenus (not hover-based)
+- Mobile menu now uses click-to-toggle for Buyer and Seller submenus
 - "Budget Per Lead" label no longer shows "(credits)" suffix
-- Fixed handleAgentAuthorize: buyer wallet decreases, seller balance increases correctly
-- Seller submenu items now close mobile menu when clicked
+- Fixed seller balance authorization deducting 2.33 credits
 
 ---
 
 ## [financecheque-v0.1.0.02] - 2026-05-01
 
 ### Fixed
-- Removed "(credits)" from "Budget Per Lead" label
-- Fixed mobile menu - now uses click toggle instead of hover-only
-- Fixed seller balance: authorization now deducts 2.33 credits from Lead Seller wallet
-- Authorization credits (2.33) properly deducted from seller balance
+- Fixed mobile menu - uses click toggle instead of hover-only
+- Fixed seller balance: authorization deducts 2.33 credits from Lead Seller wallet
 
 ---
 
 ## [financecheque-v0.1.0.01] - 2026-05-01
 
 ### Added
-- Mobile-first responsive design for landing page
-- Compact mobile view with hidden subtitle ("Universal Agentic A.I Lead Generation")
-- Smaller title on mobile (text-lg) scaling up on larger screens
-
-### Changed
-- Reduced title size: text-lg (mobile) → sm:text-xl → md:text-3xl
-- Hidden extended subtitle on mobile (shows "A.I Lead Gen")
-- Reduced padding throughout: px-4 py-2 on mobile instead of px-8 py-8
-- Compact Lead Buyer and Lead Seller sections
-
-### Fixed
-- Exchange page compacted for mobile view
-- AvatarSection shows Stacey GIF animation properly
+- Mobile-first responsive design
+- Compact mobile view with hidden subtitle
+- Smaller title on mobile scaling up on larger screens
 
 ---
 
 ## [financecheque-v0.1.0.0] - 2026-05-01
 
 ### Added
-- Initial migration from FCUK to datro (financecheque)
+- Initial migration from FCUK to datro
 - Lead order simulation with localStorage persistence
-- Tatum.io API integration (keys in wrangler.toml)
-- Stacey avatar with GIF animation in agent circle
+- Tatum.io API integration
+- Stacey avatar with GIF animation
 - Cloudflare Pages deployment configuration
-- £ symbol replaced with "credits" throughout
-- "Lead Buyer" and "Lead Seller(s)" labels updated
-
