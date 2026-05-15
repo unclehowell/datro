@@ -49,7 +49,6 @@ import Dashboard from './components/Dashboard';
 import ConnectionsModal from './components/ConnectionsModal';
 import JobSubmitForm from './components/JobSubmitForm';
 import TopupModal from './components/TopupModal';
-import AgentNetwork from './components/AgentNetwork';
 import NetworkAgents from './components/NetworkAgents';
 import { Smartphone, Apple as AppleIcon, Monitor, PlayCircle, CreditCard } from 'lucide-react';
 import { loadStripe } from '@stripe/stripe-js';
@@ -686,9 +685,9 @@ export default function App() {
                 <div className="space-y-4">
                   <div>
                     <h2 className="text-2xl font-bold tracking-tighter">Agent Network</h2>
-                    <p className="text-xs text-ink/40 mt-1">Live child proxy nodes. Agent wallet: <strong>{agentWalletBalance} credits</strong> deployed.</p>
+                    <p className="text-xs text-ink/40 mt-1">Live child proxy nodes. Click a circle to open the UI.</p>
                   </div>
-                  <AgentNetwork />
+                  <NetworkAgents />
                 </div>
               </div>
             </div>
@@ -718,7 +717,7 @@ export default function App() {
                   <h2 className="text-2xl font-bold tracking-tighter text-white">Agent Network</h2>
                   <p className="text-xs text-white/40 mt-1">Live child proxy nodes connected to the parent proxy.</p>
                 </div>
-                <AgentNetwork />
+                <NetworkAgents />
               </div>
             </div>
 
