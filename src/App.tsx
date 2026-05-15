@@ -688,7 +688,10 @@ export default function App() {
                     <p className="text-xs text-ink/40 mt-1">Live child proxy nodes. Click a circle to open the UI.</p>
                   </div>
                   <NetworkAgents
-                    onChatOpen={() => setShowContactModal(true)}
+                    onChatOpen={() => {
+                      if (!user) { setAuthModalTab('signin'); setShowAuthModal(true); return; }
+                      setShowContactModal(true);
+                    }}
                     onExchange={() => setCurrentPage('exchange')}
                     onSpawn={handleSpawn}
                   />
@@ -722,7 +725,10 @@ export default function App() {
                   <p className="text-xs text-white/40 mt-1">Live child proxy nodes connected to the parent proxy.</p>
                 </div>
                 <NetworkAgents
-                  onChatOpen={() => setShowContactModal(true)}
+                  onChatOpen={() => {
+                    if (!user) { setAuthModalTab('signin'); setShowAuthModal(true); return; }
+                    setShowContactModal(true);
+                  }}
                   onExchange={() => setCurrentPage('exchange')}
                   onSpawn={handleSpawn}
                 />
@@ -733,7 +739,10 @@ export default function App() {
               <div className="absolute inset-0 z-[200] pointer-events-none overflow-y-auto">
                 <div className="max-w-[1800px] mx-auto px-8 py-24 min-h-full flex items-center justify-center">
                   <NetworkAgents
-                    onChatOpen={() => setShowContactModal(true)}
+                    onChatOpen={() => {
+                      if (!user) { setAuthModalTab('signin'); setShowAuthModal(true); return; }
+                      setShowContactModal(true);
+                    }}
                     onExchange={() => setCurrentPage('exchange')}
                     onSpawn={handleSpawn}
                   />
@@ -945,7 +954,7 @@ export default function App() {
                     setIsChatting(true);
                     setChatReply('');
                     try {
-                      const resp = await fetch('/api/proxy?action=chat', {
+                      const resp = await fetch('/api/proxy/chat', {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify({ message: chatMessage.trim(), sessionId: 'web-whatsapp' }),
@@ -966,6 +975,19 @@ export default function App() {
             </motion.div>
           </motion.div>
         )}
+
+        {/* Floating chat button */}
+        <motion.button
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+          onClick={() => {
+            if (!user) { setAuthModalTab('signin'); setShowAuthModal(true); return; }
+            setShowContactModal(true);
+          }}
+          className="fixed bottom-6 right-6 z-[900] w-14 h-14 bg-accent text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-ink transition-all"
+        >
+          <MessageCircle size={24} />
+        </motion.button>
 
         {showLogoutWarning && (
           <motion.div 

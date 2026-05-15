@@ -1,5 +1,6 @@
 interface Env {
   DB: D1Database;
+  OPENROUTER_API_KEY?: string;
 }
 
 interface ProxyNode {
@@ -46,6 +47,9 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     }
     if (path === '/api/proxy/nodes' && method === 'GET') {
       return await handleNodes(request, env, headers);
+    }
+    if (path === '/api/proxy/chat' && method === 'POST') {
+      return await handleSimpleChat(request, env, headers);
     }
     if (path === '/api/proxy/v1/chat/completions' && method === 'POST') {
       return await handleChat(request, env, headers);
@@ -122,6 +126,48 @@ async function handleNodes(request: Request, env: Env, headers: Record<string, s
   return new Response(JSON.stringify(results), { status: 200, headers });
 }
 
+async function handleSimpleChat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  const body = await request.json() as { message?: string; sessionId?: string };
+  const message = body.message;
+  if (!message || typeof message !== 'string') {
+    return new Response(JSON.stringify({ error: 'message is required' }), { status: 400, headers });
+  }
+
+  const openrouterKey = env.OPENROUTER_API_KEY;
+
+  if (openrouterKey) {
+    try {
+      const resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${openrouterKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://www.financecheque.uk',
+          'X-Title': 'FinanceCheque UK',
+        },
+        body: JSON.stringify({
+          model: 'openrouter/auto',
+          messages: [
+            { role: 'system', content: 'You are a helpful AI assistant for Finance Cheque UK. Be concise and friendly.' },
+            { role: 'user', content: message },
+          ],
+          max_tokens: 500,
+        }),
+      });
+
+      if (resp.ok) {
+        const data = await resp.json() as any;
+        const reply = data?.choices?.[0]?.message?.content || '';
+        return new Response(JSON.stringify({ ok: true, reply }), { status: 200, headers });
+      }
+    } catch (e) {
+      // fall through to echo
+    }
+  }
+
+  return new Response(JSON.stringify({ ok: true, reply: `Echo: ${message}` }), { status: 200, headers });
+}
+
 async function handleChat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
   await ensureTable(env);
   const originMachineId = request.headers.get('X-Machine-ID') || '';
@@ -138,20 +184,43 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
   const totalNodes = nodeCount?.count || 0;
 
   const isCrossMachine = totalNodes > 1;
-
   const routingDecision = isCrossMachine && originMachineId ? 'route_to_child' : 'direct';
-
   let completionContent = '';
 
-  if (messages.length > 0) {
+  const openrouterKey = env.OPENROUTER_API_KEY;
+
+  if (openrouterKey && messages.length > 0) {
+    try {
+      const resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${openrouterKey}`,
+          'Content-Type': 'application/json',
+          'HTTP-Referer': 'https://www.financecheque.uk',
+          'X-Title': 'FinanceCheque UK',
+        },
+        body: JSON.stringify({
+          model: 'openrouter/auto',
+          messages,
+          max_tokens: 500,
+        }),
+      });
+      if (resp.ok) {
+        const data = await resp.json() as any;
+        completionContent = data?.choices?.[0]?.message?.content || '';
+      }
+    } catch (e) {
+      // fall through to echo
+    }
+  }
+
+  if (!completionContent && messages.length > 0) {
     const lastMsg = messages[messages.length - 1];
     const userContent = typeof lastMsg.content === 'string' ? lastMsg.content : '';
-
     let viaClause = '';
     if (isCrossMachine) {
       viaClause = `\n\n[via proxy node ${originMachineId || 'unknown'}]`;
     }
-
     completionContent = `Echo: ${userContent}${viaClause}`;
   }
 
