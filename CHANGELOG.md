@@ -6,6 +6,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+
+## [0.0.2] - 2026-05-15
+### Fixed
+- Identified issue: JS syntax error: /home/ubuntu/datro/static/gui/dashboard/js/jquery-3.3.1.min.js:2
+!function(e,t){"use strict";"object"==typeof module&&"object"==typeof module.exports? (requires manual fix)
+
 ## [0.0.1] - 2026-05-13
 ### Fixed
 - Identified issue: JS syntax error: /home/ubuntu/datro/static/gui/dashboard/js/jquery-3.3.1.min.js:2
