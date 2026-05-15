@@ -14,6 +14,11 @@ Aug-08 - Added a video called Service
 
 
 
+## [v0.0.4-ceo] - 2026-05-15
+### Changed
+- Homepage UI: Added the timeline video as the first element (hero section) for immediate visibility
+- Version bumped to v0.0.4-ceo
+
 ## [0.0.3] - 2026-05-15
 ### Fixed
 - Code quality maintenance and version bump
