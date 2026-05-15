@@ -1,5 +1,16 @@
 # Changelog
 
+## [financecheque-v0.1.0.41] - 2026-05-15
+
+### Changed
+- Renamed "Launch a Lead Campaign" to "Generate Leads" with auto-detect lead value from URL
+- Renamed "Sign In to Submit Job" to "Submit Order"
+- Replaced "Credit Cost" display with two-column Wallet Balance + Order Total layout
+- Replaced "How It Works" section with live Agent Network showing child proxy nodes from /api/health
+- Wallet credits now move to an Agent Network wallet balance on order submission
+- Submit Order button only active when wallet balance >= order total; otherwise shows Top Up
+- Top Up button shows exact additional credits needed
+
 ## [financecheque-v0.1.0.40] - 2026-05-14
 
 ### Added

@@ -49,7 +49,7 @@ import Dashboard from './components/Dashboard';
 import ConnectionsModal from './components/ConnectionsModal';
 import JobSubmitForm from './components/JobSubmitForm';
 import TopupModal from './components/TopupModal';
-import AgentPipelineIllustration from './components/AgentPipelineIllustration';
+import AgentNetwork from './components/AgentNetwork';
 import { Smartphone, Apple as AppleIcon, Monitor, PlayCircle, CreditCard } from 'lucide-react';
 import { loadStripe } from '@stripe/stripe-js';
 
@@ -179,6 +179,7 @@ export default function App() {
   const [hasSelectedAgent, setHasSelectedAgent] = useState(false);
   const [showTopupModal, setShowTopupModal] = useState(false);
   const [userCredits, setUserCredits] = useState(0);
+  const [agentWalletBalance, setAgentWalletBalance] = useState(0);
 
   // Fetch credits when user logs in
   useEffect(() => {
@@ -207,6 +208,7 @@ export default function App() {
 
   const handleJobSubmit = (job: { url: string; leadAmount: number; quantity: number; creditCost: number }) => {
     setUserCredits(prev => prev - job.creditCost);
+    setAgentWalletBalance(prev => prev + job.creditCost);
   };
 
   useEffect(() => {
@@ -660,14 +662,15 @@ export default function App() {
                 {/* Job Submit Form */}
                 <div className="space-y-4">
                   <div>
-                    <h2 className="text-2xl font-bold tracking-tighter">Launch a Lead Campaign</h2>
-                    <p className="text-xs text-ink/40 mt-1">Enter your webapp URL, set your lead value and quantity. Credits are deducted on submission.</p>
+                    <h2 className="text-2xl font-bold tracking-tighter">Generate Leads</h2>
+                    <p className="text-xs text-ink/40 mt-1">Enter your webapp URL. Lead value auto-detects. Credits move to agent wallet on submission.</p>
                   </div>
                   <JobSubmitForm
                     user={user}
                     credits={userCredits}
                     onSubmit={handleJobSubmit}
                     onAuthRequired={() => { setAuthModalTab('signin'); setShowAuthModal(true); }}
+                    onTopup={() => setShowTopupModal(true)}
                   />
                   {userCredits === 0 && (
                     <button
@@ -681,10 +684,10 @@ export default function App() {
                 {/* Pipeline Illustration */}
                 <div className="space-y-4">
                   <div>
-                    <h2 className="text-2xl font-bold tracking-tighter">Agent Pipeline</h2>
-                    <p className="text-xs text-ink/40 mt-1">Your job flows from financecheque.uk → AWS child proxy → Hermes/Kiro agents.</p>
+                    <h2 className="text-2xl font-bold tracking-tighter">Agent Network</h2>
+                    <p className="text-xs text-ink/40 mt-1">Live child proxy nodes. Agent wallet: <strong>{agentWalletBalance} credits</strong> deployed.</p>
                   </div>
-                  <AgentPipelineIllustration />
+                  <AgentNetwork />
                 </div>
               </div>
             </div>
@@ -698,22 +701,23 @@ export default function App() {
             <div className="max-w-5xl mx-auto w-full px-6 pt-12 pb-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="space-y-4">
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tighter text-white">Launch a Lead Campaign</h2>
-                  <p className="text-xs text-white/40 mt-1">Enter your webapp URL, set your lead value and quantity. Sign in to submit.</p>
+                  <h2 className="text-2xl font-bold tracking-tighter text-white">Generate Leads</h2>
+                  <p className="text-xs text-white/40 mt-1">Enter your webapp URL. Lead value auto-detects. Sign in to submit.</p>
                 </div>
                 <JobSubmitForm
                   user={user}
                   credits={userCredits}
                   onSubmit={handleJobSubmit}
                   onAuthRequired={() => { setAuthModalTab('signin'); setShowAuthModal(true); }}
+                  onTopup={() => setShowTopupModal(true)}
                 />
               </div>
               <div className="space-y-4">
                 <div>
-                  <h2 className="text-2xl font-bold tracking-tighter text-white">How It Works</h2>
-                  <p className="text-xs text-white/40 mt-1">Your job flows through the agent pool in real-time.</p>
+                  <h2 className="text-2xl font-bold tracking-tighter text-white">Agent Network</h2>
+                  <p className="text-xs text-white/40 mt-1">Live child proxy nodes connected to the parent proxy.</p>
                 </div>
-                <AgentPipelineIllustration />
+                <AgentNetwork />
               </div>
             </div>
 
