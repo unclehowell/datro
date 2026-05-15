@@ -1,5 +1,9 @@
 # Changelog — Inverse Ouroboros Whitepaper
 
+## [0.0.1] - 2026-05-15
+### Fixed
+- Closed unclosed HTML tags in dashboard/index.html: html, body, div, div, h2
+
 All notable changes to this whitepaper are documented here.
 Follows [Semantic Versioning](https://semver.org/).
 
