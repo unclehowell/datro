@@ -687,7 +687,11 @@ export default function App() {
                     <h2 className="text-2xl font-bold tracking-tighter">Agent Network</h2>
                     <p className="text-xs text-ink/40 mt-1">Live child proxy nodes. Click a circle to open the UI.</p>
                   </div>
-                  <NetworkAgents />
+                  <NetworkAgents
+                    onChatOpen={() => setShowContactModal(true)}
+                    onExchange={() => setCurrentPage('exchange')}
+                    onSpawn={handleSpawn}
+                  />
                 </div>
               </div>
             </div>
@@ -717,14 +721,22 @@ export default function App() {
                   <h2 className="text-2xl font-bold tracking-tighter text-white">Agent Network</h2>
                   <p className="text-xs text-white/40 mt-1">Live child proxy nodes connected to the parent proxy.</p>
                 </div>
-                <NetworkAgents />
+                <NetworkAgents
+                  onChatOpen={() => setShowContactModal(true)}
+                  onExchange={() => setCurrentPage('exchange')}
+                  onSpawn={handleSpawn}
+                />
               </div>
             </div>
 
             <div className="flex flex-col h-[calc(100vh-6rem)] relative">
               <div className="absolute inset-0 z-[200] pointer-events-none overflow-y-auto">
                 <div className="max-w-[1800px] mx-auto px-8 py-24 min-h-full flex items-center justify-center">
-                  <NetworkAgents />
+                  <NetworkAgents
+                    onChatOpen={() => setShowContactModal(true)}
+                    onExchange={() => setCurrentPage('exchange')}
+                    onSpawn={handleSpawn}
+                  />
                 </div>
               </div>
 
