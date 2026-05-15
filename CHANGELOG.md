@@ -12,6 +12,16 @@ Sep-10 - Added a brief for the Taking Chance WebApp - see `wayback/taking_chance
 Aug-08 - Added a video called Service 
 
 
+
+## [0.0.2] - 2026-05-15
+### Fixed
+- Identified issue: JS syntax error: /home/ubuntu/datro/static/timeline/entry.js:157
+<<<<<<< HEAD
+^^
+
+SyntaxError: Unexpected token '<<'
+    at checkSyntax (node:internal/main/check_synta (requires manual fix)
+
 ## [0.0.1] - 2026-05-13
 ### Fixed
 - Code quality maintenance and version bump
