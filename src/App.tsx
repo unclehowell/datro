@@ -742,9 +742,17 @@ export default function App() {
                 </div>
                 {/* Pipeline Illustration */}
                 <div className="space-y-4">
-                  <div>
-                    <h2 className="text-2xl font-bold tracking-tighter">Agent Network</h2>
-                    <p className="text-xs text-ink/40 mt-1">Live child proxy nodes. Click a circle to open the UI.</p>
+                  <div className="flex items-center gap-4">
+                    <div>
+                      <h2 className="text-2xl font-bold tracking-tighter">Agent Network</h2>
+                      <p className="text-xs text-ink/40 mt-1">Live child proxy nodes. Click a circle to open the UI.</p>
+                    </div>
+                    {agentWallet && (
+                      <div className="ml-auto bg-accent/5 border border-accent/20 px-4 py-2 text-right shrink-0">
+                        <div className="text-[9px] font-bold uppercase tracking-widest text-accent">Agent Wallet</div>
+                        <div className="text-lg font-bold text-accent">{agentWallet.balance} FCUK</div>
+                      </div>
+                    )}
                   </div>
                   <NetworkAgents
                     onChatOpen={() => {
@@ -766,9 +774,17 @@ export default function App() {
             {/* Pre-auth hero: job form + pipeline illustration */}
             <div className="max-w-5xl mx-auto w-full px-6 pt-12 pb-4 grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="space-y-4">
-                <div>
-                  <h2 className="text-2xl font-bold tracking-tighter text-white">Generate Leads</h2>
-                  <p className="text-xs text-white/40 mt-1">Enter your webapp URL. Lead value auto-detects. Sign in to submit.</p>
+                <div className="flex items-center gap-4">
+                  <div>
+                    <h2 className="text-2xl font-bold tracking-tighter text-white">Generate Leads</h2>
+                    <p className="text-xs text-white/40 mt-1">Enter your webapp URL. Lead value auto-detects. Sign in to submit.</p>
+                  </div>
+                  {sessionWallet && (
+                    <div className="ml-auto bg-white/5 border border-white/10 px-4 py-2 text-right shrink-0">
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-accent">Your Wallet</div>
+                      <div className="text-lg font-bold text-white">{sessionWallet.balance} FCUK</div>
+                    </div>
+                  )}
                 </div>
                 <JobSubmitForm
                   user={user}
@@ -778,38 +794,19 @@ export default function App() {
                   onTopup={() => setShowTopupModal(true)}
                 />
               </div>
-            </div>
 
-            <div className="flex flex-col h-[calc(100vh-6rem)] relative">
-              <div className="absolute inset-0 z-[200] pointer-events-none overflow-y-auto">
-                <div className="max-w-[1800px] mx-auto px-8 py-24 min-h-full flex items-center justify-center">
-
-                  {/* Wallet Balances overlay */}
-                  <div className="absolute bottom-8 left-8 flex gap-4 text-xs font-mono z-30">
-                    <div className="bg-black/70 backdrop-blur-md border border-white/10 px-5 py-3 text-white">
-                      <span className="text-[10px] uppercase tracking-widest text-accent block font-bold">Visitor Wallet</span>
-                      <span className="text-lg font-bold">{sessionWallet?.balance ?? '...'} FCUK</span>
-                    </div>
-                    <div className="bg-black/70 backdrop-blur-md border border-white/10 px-5 py-3 text-white">
-                      <span className="text-[10px] uppercase tracking-widest text-accent block font-bold">Agent Network</span>
-                      <span className="text-lg font-bold">{agentWallet?.balance ?? '...'} FCUK</span>
-                    </div>
-                  </div>
-
-                  <NetworkAgents
-                    onChatOpen={() => {
-                      if (!user) { setAuthModalTab('signin'); setShowAuthModal(true); return; }
-                      setShowContactModal(true);
-                    }}
-                    onExchange={() => setCurrentPage('exchange')}
-                    onSpawn={handleSpawn}
-                  />
-                </div>
-              </div>
               <div className="space-y-4">
-                <div>
-                  <h2 className="text-2xl font-bold tracking-tighter text-white">Agent Network</h2>
-                  <p className="text-xs text-white/40 mt-1">Live child proxy nodes connected to the parent proxy.</p>
+                <div className="flex items-center gap-4">
+                  <div>
+                    <h2 className="text-2xl font-bold tracking-tighter text-white">Agent Network</h2>
+                    <p className="text-xs text-white/40 mt-1">Live child proxy nodes connected to the parent proxy.</p>
+                  </div>
+                  {agentWallet && (
+                    <div className="ml-auto bg-white/5 border border-white/10 px-4 py-2 text-right shrink-0">
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-accent">Agent Wallet</div>
+                      <div className="text-lg font-bold text-white">{agentWallet.balance} FCUK</div>
+                    </div>
+                  )}
                 </div>
                 <NetworkAgents
                   onChatOpen={() => {
@@ -822,21 +819,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="flex flex-col h-[calc(100vh-6rem)] relative">
-              <div className="absolute inset-0 z-[200] pointer-events-none overflow-y-auto">
-                <div className="max-w-[1800px] mx-auto px-8 py-24 min-h-full flex items-center justify-center">
-                  <NetworkAgents
-                    onChatOpen={() => {
-                      if (!user) { setAuthModalTab('signin'); setShowAuthModal(true); return; }
-                      setShowContactModal(true);
-                    }}
-                    onExchange={() => setCurrentPage('exchange')}
-                    onSpawn={handleSpawn}
-                  />
-                </div>
-              </div>
-
-              <ConnectionsModal 
+            <ConnectionsModal 
             isOpen={showConnectionsModal}
             onClose={() => setShowConnectionsModal(false)}
             onboardingStep={onboardingStep}

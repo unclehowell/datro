@@ -387,6 +387,25 @@ async function startServer() {
     }
   });
 
+  // ── Health / Node discovery ──────────────────────────────────────────────
+  app.get("/api/health", (req, res) => {
+    const alive = Object.entries(childProxies)
+      .filter(([, c]) => Date.now() - c.lastSeen < 60_000)
+      .map(([id, c]) => ({
+        machine_id: id,
+        machine_name: id,
+        ip_address: c.url.replace(/^https?:\/\//, '').replace(/:\d+$/, ''),
+        proxy_port: 6000,
+        version: '1.0',
+        last_seen: new Date(c.lastSeen).toISOString(),
+      }));
+    res.json({
+      status: 'ok',
+      nodes: alive,
+      summary: { active_nodes: alive.length },
+    });
+  });
+
   // ── Vite / Static ─────────────────────────────────────────────────────────
   if (process.env.NODE_ENV !== "production") {
     const vite = await createViteServer({
