@@ -12,6 +12,11 @@ Sep-10 - Added a brief for the Taking Chance WebApp - see `wayback/taking_chance
 Aug-08 - Added a video called Service 
 
 
+
+## [0.0.2] - 2026-05-15
+### Fixed
+- Closed unclosed HTML tags in static/projections/index.html: html, body, main, div, div
+
 ## [0.0.1] - 2026-05-13
 ### Fixed
 - Closed unclosed HTML tags in static/projections/index.html: html, body, main, div, div
