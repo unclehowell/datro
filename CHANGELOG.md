@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+
+## [0.0.2] - 2026-05-15
+### Fixed
+- Fixed JSON syntax in static/library/consortium_other/consortium_financialforecast/_treeview.json
+
 ## [0.0.1] - 2026-05-13
 ### Fixed
 - Fixed JSON syntax in static/library/consortium_campuses/campus0_casestudy/_treeview.json
