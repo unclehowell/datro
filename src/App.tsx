@@ -52,6 +52,8 @@ import TopupModal from './components/TopupModal';
 import NetworkAgents from './components/NetworkAgents';
 import { Smartphone, Apple as AppleIcon, Monitor, PlayCircle, CreditCard } from 'lucide-react';
 import { loadStripe } from '@stripe/stripe-js';
+import { createWallet, creditWallet, transferToAgent, getAgentWallet } from './services/tatumService';
+import type { WalletInfo } from './services/tatumService';
 
 const stripePromise = loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY || '');
 
@@ -180,6 +182,8 @@ export default function App() {
   const [showTopupModal, setShowTopupModal] = useState(false);
   const [userCredits, setUserCredits] = useState(0);
   const [agentWalletBalance, setAgentWalletBalance] = useState(0);
+  const [sessionWallet, setSessionWallet] = useState<WalletInfo | null>(null);
+  const [agentWallet, setAgentWallet] = useState<WalletInfo | null>(null);
 
   // Fetch credits when user logs in
   useEffect(() => {
@@ -206,9 +210,44 @@ export default function App() {
     }
   }, []);
 
-  const handleJobSubmit = (job: { url: string; leadAmount: number; quantity: number; creditCost: number }) => {
+  // Initialize Tatum session wallet on page load — create & credit 50 FCUK
+  useEffect(() => {
+    let sessionId = localStorage.getItem('fcuk_session_id');
+    if (!sessionId) {
+      sessionId = 'session_' + Math.random().toString(36).substring(2, 11);
+      localStorage.setItem('fcuk_session_id', sessionId);
+    }
+    async function initWallet() {
+      try {
+        const wallet = await createWallet(sessionId);
+        setSessionWallet(wallet);
+        if (!wallet.credited) {
+          const credited = await creditWallet(sessionId, 50);
+          setSessionWallet(credited);
+        }
+        const agent = await getAgentWallet();
+        setAgentWallet(agent);
+      } catch (err) {
+        console.error('Wallet init failed:', err);
+      }
+    }
+    initWallet();
+  }, []);
+
+  const handleJobSubmit = async (job: { url: string; leadAmount: number; quantity: number; creditCost: number }) => {
     setUserCredits(prev => prev - job.creditCost);
     setAgentWalletBalance(prev => prev + job.creditCost);
+
+    const sessionId = localStorage.getItem('fcuk_session_id');
+    if (sessionId && sessionWallet && sessionWallet.balance >= job.creditCost) {
+      try {
+        const result = await transferToAgent(sessionId, job.creditCost);
+        setSessionWallet(prev => prev ? { ...prev, balance: result.senderBalance } : null);
+        setAgentWallet(prev => prev ? { ...prev, balance: result.agentBalance } : { walletId: 'agent-network-wallet', balance: result.agentBalance, currency: 'FCUK', credited: true });
+      } catch (err) {
+        console.error('Token transfer failed:', err);
+      }
+    }
   };
 
   useEffect(() => {
@@ -526,6 +565,26 @@ export default function App() {
                       </>
                     )}
                     
+                    {sessionWallet && !user && (
+                      <>
+                        <div className="flex items-center justify-between p-3 bg-accent/5 border border-accent/10 mb-2">
+                          <div className="flex items-center gap-2 text-accent">
+                            <Coins size={16} />
+                            <span className="text-xs font-bold">{sessionWallet.balance} FCUK</span>
+                          </div>
+                          <span className="text-[10px] font-bold text-ink/40 tracking-widest">Visitor Wallet</span>
+                        </div>
+                        {agentWallet && (
+                          <div className="flex items-center justify-between p-3 bg-card border border-border mb-2">
+                            <div className="flex items-center gap-2 text-ink/60">
+                              <Coins size={16} />
+                              <span className="text-xs font-bold">{agentWallet.balance} FCUK</span>
+                            </div>
+                            <span className="text-[10px] font-bold text-ink/30 tracking-widest">Agent Network</span>
+                          </div>
+                        )}
+                      </>
+                    )}
                     {!user ? (
                       <button 
                         onClick={() => { setAuthModalTab('signin'); setShowAuthModal(true); setIsWalletMenuOpen(false); }}
@@ -713,11 +772,39 @@ export default function App() {
                 </div>
                 <JobSubmitForm
                   user={user}
-                  credits={userCredits}
+                  credits={sessionWallet?.balance ?? 0}
                   onSubmit={handleJobSubmit}
                   onAuthRequired={() => { setAuthModalTab('signin'); setShowAuthModal(true); }}
                   onTopup={() => setShowTopupModal(true)}
                 />
+              </div>
+            </div>
+
+            <div className="flex flex-col h-[calc(100vh-6rem)] relative">
+              <div className="absolute inset-0 z-[200] pointer-events-none overflow-y-auto">
+                <div className="max-w-[1800px] mx-auto px-8 py-24 min-h-full flex items-center justify-center">
+
+                  {/* Wallet Balances overlay */}
+                  <div className="absolute bottom-8 left-8 flex gap-4 text-xs font-mono z-30">
+                    <div className="bg-black/70 backdrop-blur-md border border-white/10 px-5 py-3 text-white">
+                      <span className="text-[10px] uppercase tracking-widest text-accent block font-bold">Visitor Wallet</span>
+                      <span className="text-lg font-bold">{sessionWallet?.balance ?? '...'} FCUK</span>
+                    </div>
+                    <div className="bg-black/70 backdrop-blur-md border border-white/10 px-5 py-3 text-white">
+                      <span className="text-[10px] uppercase tracking-widest text-accent block font-bold">Agent Network</span>
+                      <span className="text-lg font-bold">{agentWallet?.balance ?? '...'} FCUK</span>
+                    </div>
+                  </div>
+
+                  <NetworkAgents
+                    onChatOpen={() => {
+                      if (!user) { setAuthModalTab('signin'); setShowAuthModal(true); return; }
+                      setShowContactModal(true);
+                    }}
+                    onExchange={() => setCurrentPage('exchange')}
+                    onSpawn={handleSpawn}
+                  />
+                </div>
               </div>
               <div className="space-y-4">
                 <div>

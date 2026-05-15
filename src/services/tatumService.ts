@@ -1,39 +1,62 @@
-/**
- * Tatum.io Service for Wallet and Tokenomics
- * This service handles the virtual wallet balance and exchange rates.
- */
+export interface WalletInfo {
+  walletId: string;
+  balance: number;
+  currency: string;
+  credited: boolean;
+  isNew?: boolean;
+  tatumId?: string | null;
+}
 
-export interface WalletBalance {
+export interface TransferResult {
+  senderWalletId: string;
+  receiverWalletId: string;
   amount: number;
+  senderBalance: number;
+  agentBalance: number;
   currency: string;
 }
 
-export const getWalletBalance = async (userId: string): Promise<WalletBalance> => {
-  // In a real implementation, you would use the Tatum API:
-  // const response = await fetch(`https://api.tatum.io/v3/ledger/account/customer/${userId}`, {
-  //   headers: { 'x-api-key': process.env.TATUM_API_KEY! }
-  // });
-  // return response.json();
+export async function createWallet(sessionId: string): Promise<WalletInfo> {
+  const res = await fetch('/api/wallet/create', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionId }),
+  });
+  if (!res.ok) throw new Error('Failed to create wallet');
+  return res.json();
+}
 
-  // Mock implementation for the onboarding demo
-  const stored = localStorage.getItem(`wallet_balance_${userId}`);
-  return {
-    amount: stored ? parseFloat(stored) : 0.00,
-    currency: 'FCUK'
-  };
-};
+export async function creditWallet(sessionId: string, amount = 50): Promise<WalletInfo> {
+  const res = await fetch('/api/wallet/credit', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionId, amount }),
+  });
+  if (!res.ok) throw new Error('Failed to credit wallet');
+  return res.json();
+}
 
-export const updateWalletBalance = async (userId: string, amount: number): Promise<void> => {
-  localStorage.setItem(`wallet_balance_${userId}`, amount.toString());
-};
+export async function getWalletBalance(sessionId: string): Promise<WalletInfo> {
+  const res = await fetch(`/api/wallet/${encodeURIComponent(sessionId)}`);
+  if (!res.ok) throw new Error('Failed to get wallet balance');
+  return res.json();
+}
 
-export const getExchangeRate = async (from: string, to: string): Promise<number> => {
-  // Mock exchange rate: 2.33 FCUK = 0.01 GBP
-  if (from === 'FCUK' && to === 'GBP') {
-    return 0.01 / 2.33;
+export async function transferToAgent(sessionId: string, amount: number): Promise<TransferResult> {
+  const res = await fetch('/api/wallet/transfer', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ sessionId, amount }),
+  });
+  if (!res.ok) {
+    const err = await res.json() as any;
+    throw new Error(err.error || 'Transfer failed');
   }
-  if (from === 'FCUK' && to === 'BTC') {
-    return 0.0000001; // Mock BTC rate
-  }
-  return 1;
-};
+  return res.json();
+}
+
+export async function getAgentWallet(): Promise<WalletInfo> {
+  const res = await fetch('/api/wallet/agent');
+  if (!res.ok) throw new Error('Failed to get agent wallet');
+  return res.json();
+}

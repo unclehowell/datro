@@ -224,6 +224,130 @@ async function startServer() {
     res.json({ received: true });
   });
 
+    // ── Tatum Wallet System ────────────────────────────────────────────────────
+  const WALLETS: Record<string, { balance: number; credited: boolean }> = {};
+  const AGENT_WALLET_ID = 'agent-network-wallet';
+  if (!WALLETS[AGENT_WALLET_ID]) WALLETS[AGENT_WALLET_ID] = { balance: 0, credited: true };
+
+  const TATUM_API_KEY = process.env.TATUM_API_KEY;
+  const TATUM_BASE = 'https://api.tatum.io/v3';
+
+  async function tatumCreateAccount(sessionId: string): Promise<string | null> {
+    if (!TATUM_API_KEY) return null;
+    try {
+      const res = await fetch(`${TATUM_BASE}/ledger/account`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': TATUM_API_KEY },
+        body: JSON.stringify({
+          currency: 'FCUK',
+          accountCode: sessionId,
+          accountingCurrency: 'GBP',
+          xpub: '',
+        }),
+      });
+      const data = await res.json() as any;
+      return data.id || null;
+    } catch { return null; }
+  }
+
+  async function tatumTransfer(senderId: string, recipientId: string, amount: string, code: string): Promise<boolean> {
+    if (!TATUM_API_KEY) return false;
+    try {
+      const res = await fetch(`${TATUM_BASE}/ledger/transaction/transaction`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-api-key': TATUM_API_KEY },
+        body: JSON.stringify({
+          senderAccountId: senderId,
+          recipientAccountId: recipientId,
+          amount,
+          anonymous: false,
+          transactionCode: code,
+        }),
+      });
+      return res.ok;
+    } catch { return false; }
+  }
+
+  // Create / get session wallet
+  app.post("/api/wallet/create", async (req, res) => {
+    const { sessionId } = req.body;
+    if (!sessionId) return res.status(400).json({ error: "sessionId required" });
+
+    const exists = !!WALLETS[sessionId];
+    if (!WALLETS[sessionId]) WALLETS[sessionId] = { balance: 0, credited: false };
+
+    // Try Tatum real account creation
+    const tatumId = await tatumCreateAccount(sessionId);
+
+    res.json({
+      walletId: sessionId,
+      tatumId,
+      balance: WALLETS[sessionId].balance,
+      currency: 'FCUK',
+      isNew: !exists,
+    });
+  });
+
+  // Credit sign-up bonus (only once per session)
+  app.post("/api/wallet/credit", async (req, res) => {
+    const { sessionId, amount = 50 } = req.body;
+    if (!sessionId) return res.status(400).json({ error: "sessionId required" });
+    if (!WALLETS[sessionId]) WALLETS[sessionId] = { balance: 0, credited: false };
+
+    if (!WALLETS[sessionId].credited) {
+      WALLETS[sessionId].balance += amount;
+      WALLETS[sessionId].credited = true;
+
+      // Optionally log to Tatum if accounts available
+      // not critical for credit tracking
+    }
+
+    res.json({ walletId: sessionId, balance: WALLETS[sessionId].balance, currency: 'FCUK', credited: WALLETS[sessionId].credited });
+  });
+
+  // Get wallet balance
+  app.get("/api/wallet/:sessionId", (req, res) => {
+    const w = WALLETS[req.params.sessionId];
+    if (!w) return res.status(404).json({ error: "Wallet not found" });
+    res.json({ walletId: req.params.sessionId, balance: w.balance, currency: 'FCUK', credited: w.credited });
+  });
+
+  // Transfer from session wallet to agent network wallet
+  app.post("/api/wallet/transfer", async (req, res) => {
+    const { sessionId, amount } = req.body;
+    if (!sessionId || !amount) return res.status(400).json({ error: "sessionId and amount required" });
+
+    const wallet = WALLETS[sessionId];
+    if (!wallet) return res.status(404).json({ error: "Session wallet not found" });
+    if (wallet.balance < amount) return res.status(402).json({ error: "Insufficient balance" });
+
+    wallet.balance -= amount;
+    WALLETS[AGENT_WALLET_ID].balance += amount;
+
+    // Try Tatum real transfer
+    if (TATUM_API_KEY) {
+      tatumTransfer(sessionId, AGENT_WALLET_ID, String(amount), 'ORDER_PAYMENT').catch(() => {});
+    }
+
+    res.json({
+      senderWalletId: sessionId,
+      receiverWalletId: AGENT_WALLET_ID,
+      amount,
+      senderBalance: wallet.balance,
+      agentBalance: WALLETS[AGENT_WALLET_ID].balance,
+      currency: 'FCUK',
+    });
+  });
+
+  // Get agent network wallet
+  app.get("/api/wallet/agent", (req, res) => {
+    res.json({
+      walletId: AGENT_WALLET_ID,
+      balance: WALLETS[AGENT_WALLET_ID].balance,
+      currency: 'FCUK',
+    });
+  });
+
   // ── Legacy: Checkout Session (spawn agent) ────────────────────────────────
   app.post("/api/create-checkout-session", async (req, res) => {
     try {

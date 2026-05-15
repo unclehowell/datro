@@ -1,5 +1,15 @@
 # Changelog
 
+## [financecheque-v0.1.0.58] - 2026-05-15
+
+### Added
+- feat: Tatum wallet system — per-session visitor wallet created on page load with 50 FCUK sign-up credit
+- feat: agent network wallet for receiving token transfers on order submission
+- feat: wallet balance overlay on landing page (Visitor Wallet + Agent Network Wallet)
+- feat: token transfer from session wallet to agent wallet on each lead generation order
+- feat: wallet display in menu dropdown for unauthenticated visitors
+- feat: real Tatum.io API integration (virtual accounts + ledger transactions) when TATUM_API_KEY is set; local in-memory fallback otherwise
+
 ## [financecheque-v0.1.0.57] - 2026-05-15
 
 ### Fixed
