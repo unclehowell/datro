@@ -5,6 +5,15 @@
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
+## [financecheque-v0.1.0.60] - 2026-05-15
+
+### Fixed
+- fix: landing page layout — 1-row 2-column grid with wallet balances next to section titles
+- fix: removed orphaned closing div that broke the vite build
+- fix: wallet balances moved inline next to Generate Leads (Your Wallet) and Agent Network (Agent Wallet)
+- feat: Tatum wallet system — per-session visitor wallet with 50 FCUK credit and agent network token transfers
+- feat: real Tatum.io API integration when TATUM_API_KEY is set; local in-memory fallback otherwise
+
 ## [financecheque-v0.1.0.58] - 2026-05-15
 
 ### Added
