@@ -20,6 +20,7 @@ jobs:
       - run: npm run build
 
       - name: Migrate D1 database
+        continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
