@@ -5,6 +5,14 @@
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
+## [financecheque-v0.1.0.61] - 2026-05-15
+
+### Fixed
+- fix: wallet API endpoints now exist as Cloudflare Pages Functions (wallet/[[catchall]].ts)
+- fix: wallets and balances display inline next to segment titles on the landing page
+- feat: Tatum wallet function with D1 persistence — create, credit, transfer, balance
+- feat: wallet table added to schema.sql
+
 ## [financecheque-v0.1.0.60] - 2026-05-15
 
 ### Fixed

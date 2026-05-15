@@ -75,6 +75,14 @@ CREATE TABLE IF NOT EXISTS proxy_logs (
   created_at TEXT DEFAULT (datetime('now'))
 );
 
+-- Wallets (Tatum-style per-session wallets)
+CREATE TABLE IF NOT EXISTS wallets (
+  wallet_id TEXT PRIMARY KEY,
+  balance INTEGER DEFAULT 0,
+  credited INTEGER DEFAULT 0,
+  created_at TEXT DEFAULT (datetime('now'))
+);
+
 -- Indexes
 CREATE INDEX IF NOT EXISTS idx_users_email ON users(email);
 CREATE INDEX IF NOT EXISTS idx_password_reset_tokens_token ON password_reset_tokens(token);
