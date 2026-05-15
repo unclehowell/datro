@@ -5,6 +5,15 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [bpvsbuckler-v0.2.0.02] - 2026-05-15
+
+### Changed
+- **Timeline Narrative:** Extensively corrected the Great House Farm timeline to accurately reflect the Williams/Buckler family's superior title claim, their refusal to pay rent as a principle of ownership, and the state-backed lawfare employed to dispossess them.
+- **Narrative Theory:** Formally adopted the "Death of a Thousand Cuts" (DoaTC) framework to document the systemic procedural unfairness, legal fiction, document theft, and judicial manipulation (Heads/Tails fraud) suffered by the family.
+- **Version bumped to bpvsbuckler-v0.2.0.02.**
+
+---
+
 ## [bpvsbuckler-v0.2.0.01] - 2026-05-14
 
 ### Added
