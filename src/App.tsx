@@ -920,7 +920,6 @@ export default function App() {
               <AnimatePresence>
                 {/* Onboarding guide box removed - markers are used instead */}
               </AnimatePresence>
-            </div>
 
             <div className="flex-1 flex items-center justify-center">
               {activeAgentId && demoAgents.find(a => a.id === activeAgentId)?.isOpen ? (
