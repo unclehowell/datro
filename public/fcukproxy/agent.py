@@ -1,10 +1,4 @@
 #!/usr/bin/env python3
-"""
-FCUK Proxy Agent — Finance Cheque UK
-Child proxy node. Registers with parent proxy (financecheque.uk),
-routes LLM queries locally via env API keys, and reports status.
-Port: 6000
-"""
 import asyncio
 import json
 import logging
@@ -18,7 +12,7 @@ import uuid
 from pathlib import Path
 
 try:
-    from aiohttp import web, ClientSession, ClientTimeout
+    from aiohttp import web, ClientSession, ClientTimeout, MultipartWriter
 except ImportError:
     subprocess.check_call([sys.executable, "-m", "pip", "install", "aiohttp", "-q"])
     from aiohttp import web, ClientSession, ClientTimeout
@@ -32,13 +26,17 @@ ENV_FILE = INSTALL_DIR / ".env"
 PROXY_PORT = 6000
 MCAST_GRP = "239.255.255.250"
 MCAST_PORT = 6002
-PARENT_URL  = "https://www.financecheque.uk/api/proxy"
-VERSION = "0.2.0"
+PARENT_URLS = [
+    "https://www.financecheque.uk/api/proxy",
+    "https://financecheque.uk/api/proxy",
+]
+VERSION = "0.3.0"
 
 log = logging.getLogger(__name__)
 
+_parent_index = 0
 
-def load_config() -> dict:
+def load_config():
     if CONFIG_FILE.exists():
         with open(CONFIG_FILE) as f:
             return json.load(f)
@@ -47,8 +45,7 @@ def load_config() -> dict:
         "machine_name": socket.gethostname(),
         "local_ip": "127.0.0.1",
         "proxy_port": PROXY_PORT,
-        "gui_port": 6001,
-        "parent": PARENT_URL,
+        "parent": PARENT_URLS[0],
         "version": VERSION,
     }
     INSTALL_DIR.mkdir(parents=True, exist_ok=True)
@@ -56,8 +53,7 @@ def load_config() -> dict:
         json.dump(cfg, f, indent=2)
     return cfg
 
-
-def load_env_keys() -> dict:
+def load_env_keys():
     keys = {}
     if ENV_FILE.exists():
         with open(ENV_FILE) as f:
@@ -70,10 +66,9 @@ def load_env_keys() -> dict:
         if key in ("OPENAI_API_KEY", "ANTHROPIC_API_KEY", "GEMINI_API_KEY",
                     "MISTRAL_API_KEY", "GROQ_API_KEY", "TOGETHER_API_KEY",
                     "DEEPSEEK_API_KEY", "PERPLEXITY_API_KEY", "COHERE_API_KEY",
-                    "AZURE_API_KEY", "LOCAL_MODEL_PATH"):
+                    "AZURE_API_KEY", "LOCAL_MODEL_PATH", "OPENROUTER_API_KEY"):
             keys[key] = os.environ[key]
     return keys
-
 
 CONFIG = load_config()
 ENV_KEYS = load_env_keys()
@@ -83,6 +78,26 @@ stats = {"requests": 0, "routed_to_parent": 0, "routed_to_peer": 0,
          "routed_local": 0, "errors": 0}
 start_time = time.time()
 
+MODELS = [
+    {"id": "proxy-router", "object": "model", "created": int(time.time()), "owned_by": "fcuk-proxy"},
+    {"id": "gpt-4o-mini", "object": "model", "created": int(time.time()), "owned_by": "openai"},
+    {"id": "gpt-4o", "object": "model", "created": int(time.time()), "owned_by": "openai"},
+    {"id": "claude-3-haiku-20240307", "object": "model", "created": int(time.time()), "owned_by": "anthropic"},
+    {"id": "claude-sonnet-4-20250514", "object": "model", "created": int(time.time()), "owned_by": "anthropic"},
+    {"id": "gemini-2.0-flash", "object": "model", "created": int(time.time()), "owned_by": "google"},
+    {"id": "deepseek-chat", "object": "model", "created": int(time.time()), "owned_by": "deepseek"},
+]
+
+PROVIDERS = [
+    {"name": "openai", "key": "OPENAI_API_KEY", "url": "https://api.openai.com/v1/chat/completions", "model": "gpt-4o-mini"},
+    {"name": "openrouter", "key": "OPENROUTER_API_KEY", "url": "https://openrouter.ai/api/v1/chat/completions", "model": "openrouter/auto"},
+    {"name": "anthropic", "key": "ANTHROPIC_API_KEY", "url": "https://api.anthropic.com/v1/messages", "model": "claude-3-haiku-20240307", "anthropic": True},
+    {"name": "gemini", "key": "GEMINI_API_KEY", "url": "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent", "model": "gemini-2.0-flash"},
+    {"name": "deepseek", "key": "DEEPSEEK_API_KEY", "url": "https://api.deepseek.com/v1/chat/completions", "model": "deepseek-chat"},
+    {"name": "groq", "key": "GROQ_API_KEY", "url": "https://api.groq.com/openai/v1/chat/completions", "model": "llama-3.3-70b-versatile"},
+]
+
+_ROUND_ROBIN = 0
 
 async def register_with_parent():
     try:
@@ -94,34 +109,35 @@ async def register_with_parent():
                     public_ip = data.get("ip", "unknown")
         except Exception:
             pass
-
         payload = {
             "machine_id": CONFIG["machine_id"],
             "machine_name": CONFIG["machine_name"],
-            "ip_address": CONFIG["local_ip"],
-            "public_ip": public_ip,
+            "ip_address": public_ip,
             "proxy_port": CONFIG["proxy_port"],
             "version": CONFIG["version"],
         }
-        async with ClientSession(timeout=ClientTimeout(total=10)) as s:
-            async with s.post(
-                f"{CONFIG['parent']}/register",
-                json=payload,
-                headers={"X-Machine-ID": CONFIG["machine_id"]},
-            ) as r:
-                if r.status == 200:
-                    log.info("Registered with parent proxy")
-                else:
-                    log.warning(f"Parent registration failed: {r.status}")
+        for parent in PARENT_URLS:
+            try:
+                async with ClientSession(timeout=ClientTimeout(total=10)) as s:
+                    async with s.post(
+                        f"{parent}/register",
+                        json=payload,
+                        headers={"X-Machine-ID": CONFIG["machine_id"]},
+                    ) as r:
+                        if r.status == 200:
+                            log.info(f"Registered with {parent}")
+                            break
+                        else:
+                            log.warning(f"{parent} registration failed: {r.status}")
+            except Exception as e:
+                log.debug(f"Could not register with {parent}: {e}")
     except Exception as e:
-        log.warning(f"Could not register with parent: {e}")
-
+        log.warning(f"Registration error: {e}")
 
 async def periodic_register():
     while True:
         await register_with_parent()
         await asyncio.sleep(60)
-
 
 async def bpdu_sender():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -139,7 +155,6 @@ async def bpdu_sender():
         except Exception:
             pass
         await asyncio.sleep(5)
-
 
 async def bpdu_listener():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -164,7 +179,6 @@ async def bpdu_listener():
             pass
         await asyncio.sleep(0.1)
 
-
 async def peer_reaper():
     while True:
         cutoff = time.time() - 30
@@ -173,88 +187,95 @@ async def peer_reaper():
             del peers[k]
         await asyncio.sleep(10)
 
+async def route_to_provider(messages: list[dict], model: str = None) -> dict:
+    global _ROUND_ROBIN
+    for i in range(len(PROVIDERS)):
+        idx = (_ROUND_ROBIN + i) % len(PROVIDERS)
+        prov = PROVIDERS[idx]
+        api_key = ENV_KEYS.get(prov["key"])
+        if not api_key:
+            continue
+        try:
+            if prov.get("anthropic"):
+                async with ClientSession(timeout=ClientTimeout(total=30)) as s:
+                    payload = {
+                        "model": model or prov["model"],
+                        "messages": messages,
+                        "max_tokens": 1024,
+                    }
+                    async with s.post(
+                        prov["url"], json=payload,
+                        headers={"x-api-key": api_key, "Content-Type": "application/json", "anthropic-version": "2023-06-01"},
+                    ) as r:
+                        if r.status == 200:
+                            _ROUND_ROBIN = (idx + 1) % len(PROVIDERS)
+                            data = await r.json()
+                            return {
+                                "choices": [{
+                                    "index": 0,
+                                    "message": {
+                                        "role": "assistant",
+                                        "content": data.get("content", [{"text": ""}])[0].get("text", ""),
+                                    },
+                                    "finish_reason": "stop",
+                                }]
+                            }
+            elif prov["name"] == "gemini":
+                async with ClientSession(timeout=ClientTimeout(total=30)) as s:
+                    contents = [{"role": m["role"], "parts": [{"text": m["content"]}]} for m in messages]
+                    payload = {"contents": contents}
+                    async with s.post(
+                        f"{prov['url']}?key={api_key}", json=payload,
+                    ) as r:
+                        if r.status == 200:
+                            _ROUND_ROBIN = (idx + 1) % len(PROVIDERS)
+                            data = await r.json()
+                            text = ""
+                            try:
+                                text = data["candidates"][0]["content"]["parts"][0]["text"]
+                            except (KeyError, IndexError):
+                                text = json.dumps(data)
+                            return {
+                                "choices": [{"index": 0, "message": {"role": "assistant", "content": text}, "finish_reason": "stop"}]
+                            }
+            else:
+                async with ClientSession(timeout=ClientTimeout(total=30)) as s:
+                    payload = {
+                        "model": model or prov["model"],
+                        "messages": messages,
+                    }
+                    async with s.post(
+                        prov["url"], json=payload,
+                        headers={"Authorization": f"Bearer {api_key}", "Content-Type": "application/json"},
+                    ) as r:
+                        if r.status == 200:
+                            _ROUND_ROBIN = (idx + 1) % len(PROVIDERS)
+                            return await r.json()
+        except Exception as e:
+            log.debug(f"{prov['name']} route failed: {e}")
+    return None
 
-async def route_to_provider(messages: list[dict], model: str = None, chat_only: bool = False) -> dict:
-    api_key = ENV_KEYS.get("OPENAI_API_KEY") or ENV_KEYS.get("ANTHROPIC_API_KEY") or ENV_KEYS.get("GEMINI_API_KEY")
-
-    if api_key and ENV_KEYS.get("OPENAI_API_KEY"):
+async def route_to_parent(messages: list[dict], model: str = None) -> dict:
+    for parent in PARENT_URLS:
         try:
             async with ClientSession(timeout=ClientTimeout(total=30)) as s:
-                payload = {
-                    "model": model or "gpt-4o-mini",
-                    "messages": messages,
-                }
-                if chat_only:
-                    payload["tools"] = []
                 async with s.post(
-                    "https://api.openai.com/v1/chat/completions",
-                    json=payload,
-                    headers={
-                        "Authorization": f"Bearer {api_key}",
-                        "Content-Type": "application/json",
-                    },
+                    f"{parent}/v1/chat/completions",
+                    json={"model": model or "proxy-router", "messages": messages},
+                    headers={"X-Machine-ID": CONFIG["machine_id"]},
                 ) as r:
                     if r.status == 200:
                         return await r.json()
         except Exception as e:
-            log.debug(f"OpenAI route failed: {e}")
-
-    if api_key and ENV_KEYS.get("ANTHROPIC_API_KEY"):
-        try:
-            async with ClientSession(timeout=ClientTimeout(total=30)) as s:
-                payload = {
-                    "model": model or "claude-3-haiku-20240307",
-                    "messages": messages,
-                    "max_tokens": 1024,
-                }
-                async with s.post(
-                    "https://api.anthropic.com/v1/messages",
-                    json=payload,
-                    headers={
-                        "x-api-key": api_key,
-                        "Content-Type": "application/json",
-                        "anthropic-version": "2023-06-01",
-                    },
-                ) as r:
-                    if r.status == 200:
-                        data = await r.json()
-                        return {
-                            "choices": [{
-                                "index": 0,
-                                "message": {
-                                    "role": "assistant",
-                                    "content": data.get("content", [{"text": ""}])[0].get("text", ""),
-                                },
-                                "finish_reason": "stop",
-                            }]
-                        }
-        except Exception as e:
-            log.debug(f"Anthropic route failed: {e}")
-
+            log.debug(f"Parent {parent} failed: {e}")
     return None
-
-
-async def route_to_parent(messages: list[dict], model: str = None) -> dict:
-    try:
-        async with ClientSession(timeout=ClientTimeout(total=30)) as s:
-            async with s.post(
-                f"{CONFIG['parent']}/v1/chat/completions",
-                json={"model": model or "proxy-router", "messages": messages},
-                headers={"X-Machine-ID": CONFIG["machine_id"]},
-            ) as r:
-                if r.status == 200:
-                    return await r.json()
-    except Exception as e:
-        log.debug(f"Parent route failed: {e}")
-    return None
-
 
 async def route_llm(payload: dict, chat_only: bool = False) -> dict:
     stats["requests"] += 1
     messages = payload.get("messages", [])
     model = payload.get("model")
 
-    result = await route_to_provider(messages, model, chat_only)
+    result = await route_to_provider(messages, model)
     if result:
         stats["routed_local"] += 1
         return result
@@ -285,6 +306,51 @@ async def route_llm(payload: dict, chat_only: bool = False) -> dict:
         "choices": [{"index": 0, "message": {"role": "assistant", "content": "No LLM available. Set API keys in ~/.fcukproxy/.env"}, "finish_reason": "stop"}],
     }
 
+async def sse_format(data: dict) -> str:
+    return f"data: {json.dumps(data)}\n\n"
+
+async def handle_chat_stream(payload: dict, chat_only: bool) -> web.StreamResponse:
+    resp = web.StreamResponse(
+        status=200,
+        headers={
+            "Content-Type": "text/event-stream",
+            "Cache-Control": "no-cache",
+            "Connection": "keep-alive",
+            "Access-Control-Allow-Origin": "*",
+        },
+    )
+    await resp.prepare(request=None)
+
+    result = await route_llm(payload, chat_only)
+    content = ""
+    if "choices" in result and len(result["choices"]) > 0:
+        content = result["choices"][0].get("message", {}).get("content", "")
+
+    words = content.split(" ")
+    full_content = ""
+    for word in words:
+        chunk = full_content + word + " " if full_content else word + " "
+        full_content = chunk
+        delta = {
+            "choices": [{
+                "index": 0,
+                "delta": {"content": word + " " if full_content else word + " "},
+                "finish_reason": None,
+            }]
+        }
+        await resp.write((await sse_format(delta)).encode())
+        await asyncio.sleep(0.02)
+
+    done = {
+        "choices": [{
+            "index": 0,
+            "delta": {},
+            "finish_reason": "stop",
+        }]
+    }
+    await resp.write((await sse_format(done)).encode())
+    await resp.write(b"data: [DONE]\n\n")
+    return resp
 
 async def handle_chat(request: web.Request) -> web.Response:
     try:
@@ -293,10 +359,19 @@ async def handle_chat(request: web.Request) -> web.Response:
         return web.json_response({"error": "Invalid JSON"}, status=400)
 
     chat_only = request.headers.get("X-Chat-Only", "").lower() == "true"
+    stream = payload.get("stream", False)
+
+    if stream:
+        return await handle_chat_stream(payload, chat_only)
 
     result = await route_llm(payload, chat_only)
     return web.json_response(result)
 
+async def handle_models(request: web.Request) -> web.Response:
+    return web.json_response({
+        "object": "list",
+        "data": MODELS,
+    })
 
 async def handle_status(request: web.Request) -> web.Response:
     return web.json_response({
@@ -311,14 +386,16 @@ async def handle_status(request: web.Request) -> web.Response:
             for p in peers.values()
         ],
         "stats": stats,
-        "parent": CONFIG["parent"],
+        "parent_urls": PARENT_URLS,
         "has_api_keys": bool(ENV_KEYS),
+        "configured_providers": [
+            k.replace("_API_KEY", "").lower()
+            for k in ENV_KEYS if k.endswith("_API_KEY")
+        ],
     })
-
 
 async def handle_health(request: web.Request) -> web.Response:
     return web.json_response({"status": "ok"})
-
 
 async def handle_execute(request: web.Request) -> web.Response:
     chat_only = request.headers.get("X-Chat-Only", "").lower() == "true"
@@ -327,16 +404,13 @@ async def handle_execute(request: web.Request) -> web.Response:
             "error": "chat_only",
             "message": "This machine is in chat-only mode. Command execution is blocked.",
         }, status=403)
-
     try:
         body = await request.json()
     except Exception:
         return web.json_response({"error": "Invalid JSON"}, status=400)
-
     command = body.get("command", "")
     if not command:
         return web.json_response({"error": "No command specified"}, status=400)
-
     try:
         result = subprocess.run(
             command, shell=True, capture_output=True, text=True, timeout=30
@@ -351,7 +425,6 @@ async def handle_execute(request: web.Request) -> web.Response:
     except Exception as e:
         return web.json_response({"error": str(e)}, status=500)
 
-
 async def handle_env(request: web.Request) -> web.Response:
     return web.json_response({
         "has_keys": bool(ENV_KEYS),
@@ -361,10 +434,27 @@ async def handle_env(request: web.Request) -> web.Response:
         ],
     })
 
+async def handle_root(request: web.Request) -> web.Response:
+    return web.json_response({
+        "service": "FCUK Proxy Agent",
+        "version": VERSION,
+        "machine_id": CONFIG["machine_id"],
+        "endpoints": {
+            "chat": "POST /v1/chat/completions",
+            "models": "GET /v1/models",
+            "status": "GET /status",
+            "health": "GET /health",
+            "env": "GET /env",
+            "execute": "POST /execute",
+        },
+        "parent_proxies": PARENT_URLS,
+    })
 
 async def main():
     app = web.Application()
+    app.router.add_get("/", handle_root)
     app.router.add_post("/v1/chat/completions", handle_chat)
+    app.router.add_get("/v1/models", handle_models)
     app.router.add_post("/execute", handle_execute)
     app.router.add_get("/status", handle_status)
     app.router.add_get("/health", handle_health)
@@ -374,9 +464,10 @@ async def main():
     await runner.setup()
     site = web.TCPSite(runner, "0.0.0.0", PROXY_PORT)
     await site.start()
-    log.info(f"FCUK Proxy running on port {PROXY_PORT}")
+    log.info(f"FCUK Proxy v{VERSION} running on port {PROXY_PORT}")
     log.info(f"Machine ID: {CONFIG['machine_id']}")
-    log.info(f"Parent: {CONFIG['parent']}")
+    log.info(f"Parent proxies: {PARENT_URLS}")
+    log.info(f"API keys configured: {list(ENV_KEYS.keys())}")
 
     await register_with_parent()
 
@@ -386,7 +477,6 @@ async def main():
         bpdu_listener(),
         peer_reaper(),
     )
-
 
 if __name__ == "__main__":
     asyncio.run(main())

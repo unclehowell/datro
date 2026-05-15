@@ -1,9 +1,22 @@
 # Changelog
 
-## [financecheque-v0.1.0.39] - 2026-05-14
+## [financecheque-v0.1.0.40] - 2026-05-14
+
+### Added
+- **Streaming support**: agent.py now handles `stream: true` requests with SSE server-sent events for opencode/kilo/kiro compatibility
+- **`GET /v1/models` endpoint**: returns available models list for OpenAI-compatible tool discovery
+- **Round-robin parent proxy**: child proxy tries `www.financecheque.uk` then `financecheque.uk` for registration and chat routing
+- **Round-robin LLM providers**: local provider chain now rotates through OpenRouter → OpenAI → Anthropic → Gemini → DeepSeek → Groq
+- **CLI tool configs**: install.sh creates config files for opencode, kilo, and kiro pointing to `localhost:6000/v1`
+- **OpenAI-compatible env vars**: install.sh sets `OPENAI_BASE_URL`, `OPENAI_API_KEY`, `FCUK_PROXY_URL` in shell profile
+- **Preserve machine identity**: install.sh no longer overwrites existing `machine.json` — reinstall keeps the same machine_id
+- **Root endpoint**: `GET /` returns service info with available endpoints
+- **OpenRouter support**: agent.py now reads `OPENROUTER_API_KEY` and routes to OpenRouter API
 
 ### Fixed
-- fix: upgrade server logging from log to error for production visibility
+- Install script double-start conflict: no longer runs both systemd and nohup — uses systemd on Linux, nohup fallback on macOS
+- Machine identity preserved across reinstalls
+- Public IP used for parent registration instead of private `127.0.0.1`
 
 ## [financecheque-v0.1.0.36] - 2026-05-14
 
