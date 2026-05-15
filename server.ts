@@ -84,34 +84,66 @@ async function startServer() {
     jobs.push(job);
 
     // Dispatch to parent proxy (self) → child proxies
-    dispatchToChildProxy(job).catch(console.error);
+    dispatchToChildProxy(job);
 
     res.json({ jobId: job.id, creditsRemaining: user.credits });
   });
 
-  // ── Parent Proxy: Child Registration ─────────────────────────────────────
-  app.post("/api/proxy/register", (req, res) => {
-    const { childId, url } = req.body;
-    if (!childId || !url) return res.status(400).json({ error: "childId and url required" });
-    childProxies[childId] = { url, lastSeen: Date.now(), load: 0 };
-    console.error(`Child proxy registered: ${childId} @ ${url}`);
-    res.json({ ok: true });
-  });
+  // ── Parent Proxy: Child Registration & Routing ──────────────────────────
+  app.all("/api/proxy", async (req, res) => {
+    const action = req.query.action || (req.method === 'POST' ? 'register' : 'children');
+    const body = req.body;
 
-  app.post("/api/proxy/heartbeat", (req, res) => {
-    const { childId, load } = req.body;
-    if (childProxies[childId]) {
-      childProxies[childId].lastSeen = Date.now();
-      childProxies[childId].load = load ?? 0;
+    if (action === 'register') {
+      const { childId, url } = body;
+      if (!childId || !url) return res.status(400).json({ error: "childId and url required" });
+      childProxies[childId] = { url, lastSeen: Date.now(), load: 0 };
+      return res.json({ ok: true });
     }
-    res.json({ ok: true });
-  });
 
-  app.get("/api/proxy/children", (_req, res) => {
-    const alive = Object.entries(childProxies)
-      .filter(([, c]) => Date.now() - c.lastSeen < 60_000)
-      .map(([id, c]) => ({ id, ...c }));
-    res.json(alive);
+    if (action === 'heartbeat') {
+      const { childId, load } = body;
+      if (childProxies[childId]) {
+        childProxies[childId].lastSeen = Date.now();
+        childProxies[childId].load = load ?? 0;
+      }
+      return res.json({ ok: true });
+    }
+
+    if (action === 'children') {
+      const alive = Object.entries(childProxies)
+        .filter(([, c]) => Date.now() - c.lastSeen < 60_000)
+        .map(([id, c]) => ({ id, ...c }));
+      return res.json(alive);
+    }
+
+    if (action === 'chat') {
+      const { message, sessionId } = body;
+      if (!message) return res.status(400).json({ error: "message is required" });
+
+      const alive = Object.entries(childProxies)
+        .filter(([, c]) => Date.now() - c.lastSeen < 60_000)
+        .sort(([, a], [ , b]) => a.load - b.load);
+
+      if (alive.length === 0) {
+        return res.status(503).json({ ok: false, error: "No child proxies online" });
+      }
+
+      const [childId, child] = alive[0];
+      try {
+        const resp = await fetch(`${child.url}/chat`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message, sessionId }),
+        });
+        const data = await resp.json() as any;
+        return res.json({ ok: true, routedTo: childId, ...data });
+      } catch (err: any) {
+        return res.status(502).json({ ok: false, error: err.message });
+      }
+    }
+
+    res.status(400).json({ error: "Unknown action" });
   });
 
   // ── Topup Checkout ────────────────────────────────────────────────────────
@@ -167,7 +199,6 @@ async function startServer() {
       if (userId && credits > 0) {
         const user = getOrCreateUser(userId);
         user.credits += credits;
-        console.log(`Credited ${credits} to user ${userId}. New balance: ${user.credits}`);
       }
     }
 
@@ -186,7 +217,6 @@ async function startServer() {
         const credits = tierCredits[priceId] ?? 0;
         if (credits > 0) {
           users[userId].credits += credits;
-          console.log(`Subscription credits: +${credits} to ${userId}`);
         }
       }
     }
@@ -260,7 +290,6 @@ async function dispatchToChildProxy(job: any) {
     .sort(([, a], [, b]) => a.load - b.load);
 
   if (alive.length === 0) {
-    console.log(`No child proxies available for job ${job.id}. Job queued.`);
     return;
   }
 
@@ -274,10 +303,9 @@ async function dispatchToChildProxy(job: any) {
     if (res.ok) {
       job.status = "dispatched";
       childProxies[childId].load++;
-      console.log(`Job ${job.id} dispatched to child ${childId}`);
     }
   } catch (err) {
-    console.error(`Failed to dispatch to child ${childId}:`, err);
+    // Silently fail or implement retry
   }
 }
 
