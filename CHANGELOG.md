@@ -6,6 +6,16 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+
+## [0.0.2] - 2026-05-15
+### Fixed
+- Identified issue: JS syntax error: /home/ubuntu/datro/static/datro/details/js/test.js:1
+<header id="mainWrapper">
+^
+
+SyntaxError: Unexpected token '<'
+    at wrapSafe (node:internal/mod (requires manual fix)
+
 ## [0.0.1] - 2026-05-13
 ### Fixed
 - Identified issue: Inclusion of a minified jQuery library (jquery.min.js) which is 84KB in size and appears to be a development artifact rather than a production-ready file. This is a security and performance issue as it increases page load time and may expose the project to vulnerabilities if the library is outdated. (requires manual fix)
