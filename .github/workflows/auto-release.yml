@@ -38,7 +38,7 @@ jobs:
           elif [[ "$BRANCH" == "carfinancecheque" ]]; then
             echo "tag_name=carfinancecheque-v$VERSION" >> $GITHUB_OUTPUT
           else
-            echo "tag_name=v$VERSION" >> $GITHUB_OUTPUT
+            echo "tag_name=${BRANCH}-v$VERSION" >> $GITHUB_OUTPUT
           fi
 
       - name: Check if tag exists
