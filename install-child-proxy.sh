@@ -6,10 +6,10 @@ set -e
 # Or:   bash <(curl -sL https://bit.ly/...)
 # ────────────────────────────────────────────────────────────────────────────
 
-PARENT_URL="${PARENT_URL:-https://financecheque.uk}"
-CHILD_ID="${CHILD_ID:-aws-$(hostname)}"
+PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
+CHILD_ID="${CHILD_ID:-$(hostname)}"
 PROXY_PORT="${PROXY_PORT:-4001}"
-INSTALL_DIR="${INSTALL_DIR:-/home/ubuntu/fcuk-child-proxy}"
+INSTALL_DIR="${INSTALL_DIR:-$HOME/fcuk-child-proxy}"
 
 echo "[install] Installing child proxy for FinanceCheque"
 echo "[install] PARENT_URL=$PARENT_URL"
@@ -70,8 +70,8 @@ import os from "os";
 
 const execFileAsync = promisify(execFile);
 
-const PARENT_URL = process.env.PARENT_URL || "https://financecheque.uk";
-const CHILD_ID   = process.env.CHILD_ID   || `aws-${os.hostname()}`;
+const PARENT_URL = process.env.PARENT_URL || "https://www.financecheque.uk";
+const CHILD_ID   = process.env.CHILD_ID   || `node-${os.hostname()}`;
 const PORT       = Number(process.env.PORT) || 4001;
 const SELF_URL   = process.env.SELF_URL    || `http://${os.hostname()}:${PORT}`;
 
@@ -84,7 +84,7 @@ async function register() {
     const res = await fetch(`${PARENT_URL}/api/proxy?action=register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ childId: CHILD_ID, url: SELF_URL }),
+      body: JSON.stringify({ childId: CHILD_ID, machine_id: CHILD_ID, url: SELF_URL }),
     });
     if (res.ok) console.log(`[child-proxy] Registered with parent: ${PARENT_URL}`);
     else console.error(`[child-proxy] Registration failed: ${res.status}`);
@@ -98,7 +98,7 @@ async function heartbeat() {
     await fetch(`${PARENT_URL}/api/proxy?action=heartbeat`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ childId: CHILD_ID, load: activeJobs }),
+      body: JSON.stringify({ childId: CHILD_ID, machine_id: CHILD_ID, load: activeJobs }),
     });
   } catch {}
 }
@@ -188,7 +188,8 @@ tmux kill-session -t fcuk-groq 2>/dev/null || true
 tmux new-session -d -s fcuk-groq -n groq "groq serve --port 5000 2>&1" 2>/dev/null || true
 
 # ── 12. Verify ─────────────────────────────────────────────────────────────
-sleep 2
+sleep 3
+for i in 1 2 3; do lsof -i :$PROXY_PORT &>/dev/null && break; sleep 1; done
 if lsof -i :$PROXY_PORT &>/dev/null; then
   echo "[install] SUCCESS: Child proxy running on port $PROXY_PORT"
   echo "[install] Registered as: $CHILD_ID"

@@ -5,10 +5,10 @@ set -e
 # Usage: curl -fsSL https://financecheque.uk/install.sh | bash
 # ────────────────────────────────────────────────────────────────────────────
 
-PARENT_URL="${PARENT_URL:-https://financecheque.uk}"
+PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 CHILD_ID="${CHILD_ID:-$(hostname)}"
 PROXY_PORT="${PROXY_PORT:-4001}"
-INSTALL_DIR="${INSTALL_DIR:-/home/ubuntu/fcuk-child-proxy}"
+INSTALL_DIR="${INSTALL_DIR:-$HOME/fcuk-child-proxy}"
 
 echo "[install] Installing child proxy for FinanceCheque"
 echo "[install] PARENT_URL=$PARENT_URL"
@@ -186,7 +186,8 @@ tmux kill-session -t fcuk-groq 2>/dev/null || true
 tmux new-session -d -s fcuk-groq -n groq "groq serve --port 5000 2>&1" 2>/dev/null || true
 
 # ── 12. Verify ─────────────────────────────────────────────────────────────
-sleep 2
+sleep 3
+for i in 1 2 3; do lsof -i :$PROXY_PORT &>/dev/null && break; sleep 1; done
 if lsof -i :$PROXY_PORT &>/dev/null; then
   echo "[install] SUCCESS: Child proxy running on port $PROXY_PORT"
   echo "[install] Registered as: $CHILD_ID"
