@@ -5,8 +5,8 @@ interface Env {
 export async function onRequestPost(context: { request: Request; env: Env }) {
   const { request, env } = context;
   const url = new URL(request.url);
-  const action = url.searchParams.get('action') || 'register';
   const body = await request.json() as any;
+  const action = url.searchParams.get('action') || body.action || 'register';
 
   if (action === 'register') {
     const { childId, url: childUrl } = body;
@@ -28,12 +28,12 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
   }
 
   if (action === 'chat') {
-    const { message, sessionId } = body;
+    const { message, sessionId, chat_only } = body;
     if (!message || typeof message !== 'string') return json({ error: 'message is required' }, 400);
 
     const child = await env.DB.prepare(
       "SELECT id, url FROM child_proxies WHERE last_seen > datetime('now', '-60 seconds') ORDER BY load ASC, last_seen DESC LIMIT 1"
-    ).first() as any;
+    ).first<{id: string; url: string}>() as any;
 
     if (!child) {
       return json({
@@ -46,7 +46,7 @@ export async function onRequestPost(context: { request: Request; env: Env }) {
       const resp = await fetch(`${child.url}/chat`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ message, sessionId }),
+        body: JSON.stringify({ message, sessionId, chat_only: chat_only === true || chat_only === 'true' }),
       });
 
       const data = await resp.json().catch(() => ({}));

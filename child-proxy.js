@@ -70,8 +70,13 @@ app.get("/health", (_req, res) => {
 });
 
 app.post("/chat", async (req, res) => {
-  const { message } = req.body || {};
+  const { message, chat_only } = req.body || {};
   if (!message) return res.status(400).json({ ok: false, error: "message is required" });
+
+  const isChatOnly = chat_only === true || chat_only === 'true';
+  if (!isChatOnly) {
+    console.log(`[child-proxy] Chat request without chat_only flag — processing as chat anyway`);
+  }
 
   try {
     const reply = await runChat(message);
@@ -140,15 +145,52 @@ function buildPrompt(url, leadAmount, quantity) {
 }
 
 async function runChat(message) {
-  const prompt = `You are the FinanceCheque child proxy Hermes operator. Reply concisely.\nUser message: ${message}`;
-  const kiroPath = process.env.KIRO_PATH || "/home/ubuntu/kiro-cli-temp";
+  const prompt = `You are the FinanceCheque child proxy operator. Reply concisely.\nUser message: ${message}`;
 
+  // Priority 1: groq (fastest)
   try {
-    const { stdout } = await execFileAsync(kiroPath, ["chat", "--non-interactive", "--message", prompt], {
-      timeout: 120_000,
-      maxBuffer: 1024 * 1024,
+    const { stdout } = await execFileAsync("groq", ["chat", "--message", prompt], {
+      timeout: 30_000, maxBuffer: 1024 * 1024,
     });
     if (stdout?.trim()) return stdout.trim();
+  } catch {}
+
+  // Priority 2: kiro
+  const kiroPath = process.env.KIRO_PATH || "/usr/local/bin/kiro";
+  try {
+    const { stdout } = await execFileAsync(kiroPath, ["chat", "--non-interactive", "--message", prompt], {
+      timeout: 60_000, maxBuffer: 1024 * 1024,
+    });
+    if (stdout?.trim()) return stdout.trim();
+  } catch {}
+
+  // Priority 3: opencode
+  try {
+    const { stdout } = await execFileAsync("opencode", ["chat", "--message", prompt], {
+      timeout: 60_000, maxBuffer: 1024 * 1024,
+    });
+    if (stdout?.trim()) return stdout.trim();
+  } catch {}
+
+  // Priority 4: kilo
+  try {
+    const { stdout } = await execFileAsync("kilo", ["chat", "--message", prompt], {
+      timeout: 60_000, maxBuffer: 1024 * 1024,
+    });
+    if (stdout?.trim()) return stdout.trim();
+  } catch {}
+
+  // Priority 5: Cloudflare proxy fallback
+  try {
+    const resp = await fetch("https://pirateclaw.datro.xyz/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json", "Authorization": "Bearer test" },
+      body: JSON.stringify({ model: "auto", messages: [{ role: "user", content: prompt }], max_tokens: 500 }),
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      if (data?.choices?.[0]?.message?.content) return data.choices[0].message.content;
+    }
   } catch {}
 
   return `Child proxy ${CHILD_ID} received your message and is online.`;

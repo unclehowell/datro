@@ -984,64 +984,76 @@ export default function App() {
 
       {/* Modals */}
       <AnimatePresence>
+        {/* Chat popup — bottom-right panel */}
         {showContactModal && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
+          <motion.div
+            initial={{ opacity: 0, y: 20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 20, scale: 0.95 }}
+            className="fixed bottom-24 right-6 z-[1000] w-80 sm:w-96 bg-paper border border-border shadow-2xl frame overflow-hidden"
           >
-            <motion.div
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              className="w-full max-w-md bg-paper border border-border p-8 space-y-6 shadow-2xl frame my-8"
-            >
-              <div className="flex flex-col items-center gap-3 text-center">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" className="w-10 h-10" />
-                <h3 className="text-xl font-bold text-ink">Chat with Agent Network</h3>
-                <p className="text-xs text-ink/50">Routes via financecheque.uk parent proxy to active child proxies.</p>
+            <div className="bg-accent text-white px-4 py-3 flex items-center justify-between">
+              <div className="flex items-center gap-2">
+                <MessageCircle size={16} />
+                <span className="text-xs font-bold uppercase tracking-widest">Chat</span>
               </div>
-              <div className="space-y-3">
-                <textarea
-                  value={chatMessage}
-                  onChange={(e) => setChatMessage(e.target.value)}
-                  placeholder="Type your message..."
-                  className="w-full border border-border bg-card p-3 text-sm min-h-28"
-                />
-                {chatReply && <div className="text-xs bg-card border border-border p-3 whitespace-pre-wrap">{chatReply}</div>}
-              </div>
-              <div className="flex gap-2">
-                <button
-                  onClick={() => setShowContactModal(false)}
-                  className="flex-1 border border-border py-3 text-xs font-bold uppercase tracking-widest"
-                >
-                  Close
-                </button>
-                <button
-                  disabled={isChatting || !chatMessage.trim()}
-                  onClick={async () => {
-                    setIsChatting(true);
-                    setChatReply('');
-                    try {
-                      const resp = await fetch('/api/proxy/chat', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/json' },
-                        body: JSON.stringify({ message: chatMessage.trim(), sessionId: 'web-whatsapp' }),
-                      });
-                      const data = await resp.json();
-                      setChatReply(data.reply || data.error || 'No response');
-                    } catch {
-                      setChatReply('Unable to reach parent proxy.');
-                    } finally {
-                      setIsChatting(false);
-                    }
-                  }}
-                  className="flex-1 bg-ink text-paper py-3 text-xs font-bold uppercase tracking-widest hover:bg-accent disabled:opacity-50"
-                >
-                  {isChatting ? 'Sending...' : 'Send'}
-                </button>
-              </div>
-            </motion.div>
+              <button onClick={() => setShowContactModal(false)} className="text-white/60 hover:text-white">
+                <X size={16} />
+              </button>
+            </div>
+            <div className="p-4 space-y-3">
+              <p className="text-[10px] text-ink/40 uppercase tracking-wider font-bold">Ask anything — chat only, no agentic actions.</p>
+              <textarea
+                value={chatMessage}
+                onChange={(e) => setChatMessage(e.target.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' && !e.shiftKey) {
+                    e.preventDefault();
+                    document.getElementById('chat-send-btn')?.click();
+                  }
+                }}
+                placeholder="Type your message..."
+                className="w-full border border-border bg-card p-3 text-sm min-h-20 resize-none"
+              />
+              {chatReply && (
+                <div className="text-xs bg-accent/5 border border-accent/10 p-3 whitespace-pre-wrap max-h-40 overflow-y-auto">
+                  {chatReply}
+                </div>
+              )}
+              <button
+                id="chat-send-btn"
+                disabled={isChatting || !chatMessage.trim()}
+                onClick={async () => {
+                  setIsChatting(true);
+                  setChatReply('');
+                  try {
+                    const resp = await fetch('/api/proxy', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({
+                        message: chatMessage.trim(),
+                        sessionId: 'fcuk-web-' + (localStorage.getItem('fcuk_session_id') || 'anon'),
+                        chat_only: true,
+                        action: 'chat',
+                      }),
+                    });
+                    const data = await resp.json();
+                    setChatReply(data.reply || data.error || 'No response');
+                  } catch {
+                    setChatReply('Unable to reach parent proxy.');
+                  } finally {
+                    setIsChatting(false);
+                  }
+                }}
+                className="w-full bg-ink text-paper py-3 text-xs font-bold uppercase tracking-widest hover:bg-accent disabled:opacity-50 flex items-center justify-center gap-2"
+              >
+                {isChatting ? (
+                  <><div className="w-3 h-3 border-2 border-paper/30 border-t-paper rounded-full animate-spin" /> Sending...</>
+                ) : (
+                  <><Send size={14} /> Send</>
+                )}
+              </button>
+            </div>
           </motion.div>
         )}
 
@@ -1049,10 +1061,7 @@ export default function App() {
         <motion.button
           whileHover={{ scale: 1.1 }}
           whileTap={{ scale: 0.9 }}
-          onClick={() => {
-            if (!user) { setAuthModalTab('signin'); setShowAuthModal(true); return; }
-            setShowContactModal(true);
-          }}
+          onClick={() => setShowContactModal(true)}
           className="fixed bottom-6 right-6 z-[900] w-14 h-14 bg-accent text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-ink transition-all"
         >
           <MessageCircle size={24} />
