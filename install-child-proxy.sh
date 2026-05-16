@@ -123,7 +123,8 @@ async function runChat(message) {
 
   const providers = [
     { cmd: "groq", args: ["chat", "--message", prompt], timeout: 30000 },
-    { cmd: process.env.KIRO_PATH || "kiro", args: ["chat", "--non-interactive", "--message", prompt], timeout: 60000 },
+    { cmd: process.env.KIRO_PATH || "kirox", args: ["chat", "--non-interactive", "--message", prompt], timeout: 60000 },
+    { cmd: "kiro", args: ["chat", "--non-interactive", "--message", prompt], timeout: 30000 },
     { cmd: "opencode", args: ["chat", "--message", prompt], timeout: 60000 },
     { cmd: "kilo", args: ["chat", "--message", prompt], timeout: 60000 },
   ];
