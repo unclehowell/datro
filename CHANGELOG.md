@@ -10,6 +10,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
 
+
+## [0.0.4] - 2026-05-16
+### Fixed
+- Code quality maintenance and version bump
+
 ## [0.0.3] - 2026-05-15
 ### Fixed
 - Code quality maintenance and version bump
