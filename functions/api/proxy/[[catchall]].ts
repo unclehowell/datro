@@ -42,6 +42,19 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
   }
 
   try {
+    // Bare /api/proxy — dispatch by action from query param or body
+    if (path === '/api/proxy' && method === 'POST') {
+      const actionFromQuery = url.searchParams.get('action');
+      if (actionFromQuery === 'register') return await handleRegister(request, env, headers);
+      if (actionFromQuery === 'chat') return await handleSimpleChat(request, env, headers);
+      if (actionFromQuery === 'heartbeat') return await handleHeartbeat(request, env, headers);
+      const cloned = request.clone();
+      const body = await cloned.json().catch(() => ({}));
+      if (body.action === 'chat') return await handleSimpleChat(request, env, headers);
+      if (body.action === 'register') return await handleRegister(request, env, headers);
+      return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
+    }
+
     if (path === '/api/proxy/register' && method === 'POST') {
       return await handleRegister(request, env, headers);
     }
@@ -112,6 +125,17 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
   ).run();
 
   return new Response(JSON.stringify({ ok: true, machine_id }), { status: 200, headers });
+}
+
+async function handleHeartbeat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  const body = await request.json() as { childId?: string; load?: number; machine_id?: string };
+  const machineId = body.childId || body.machine_id;
+  if (machineId) {
+    await env.DB.prepare(
+      `UPDATE proxy_nodes SET last_seen = datetime('now') WHERE machine_id = ?`
+    ).bind(machineId).run();
+  }
+  return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
 }
 
 async function handleNodes(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
