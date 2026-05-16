@@ -19,7 +19,7 @@ import os from "os";
 
 const execFileAsync = promisify(execFile);
 
-const PARENT_URL = process.env.PARENT_URL || "https://financecheque.uk";
+const PARENT_URL = process.env.PARENT_URL || "https://www.financecheque.uk";
 const CHILD_ID   = process.env.CHILD_ID   || `aws-${os.hostname()}`;
 const PORT       = Number(process.env.PORT) || 4001;
 const SELF_URL   = process.env.SELF_URL    || `http://172.31.29.216:${PORT}`;
@@ -35,7 +35,7 @@ async function register() {
     const res = await fetch(`${PARENT_URL}/api/proxy?action=register`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ childId: CHILD_ID, url: SELF_URL }),
+      body: JSON.stringify({ childId: CHILD_ID, machine_id: CHILD_ID, url: SELF_URL }),
     });
     if (res.ok) console.log(`[child-proxy] Registered with parent: ${PARENT_URL}`);
     else console.error(`[child-proxy] Registration failed: ${res.status}`);

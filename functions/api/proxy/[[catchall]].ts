@@ -101,11 +101,23 @@ async function ensureTable(env: Env): Promise<void> {
 
 async function handleRegister(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
   await ensureTable(env);
-  const body = await request.json() as Partial<ProxyNode>;
-  const machine_id = body.machine_id;
+  const body = await request.json() as any;
+  const machine_id = body.machine_id || body.childId;
   if (!machine_id) {
-    return new Response(JSON.stringify({ error: 'machine_id required' }), { status: 400, headers });
+    return new Response(JSON.stringify({ error: 'machine_id or childId required' }), { status: 400, headers });
   }
+
+  let ip_address = body.ip_address || '';
+  let proxy_port = body.proxy_port || 6000;
+  if (!ip_address && body.url) {
+    try {
+      const u = new URL(body.url);
+      ip_address = u.hostname;
+      proxy_port = Number(u.port) || proxy_port;
+    } catch {}
+  }
+
+  const machine_name = body.machine_name || machine_id;
 
   await env.DB.prepare(
     `INSERT INTO proxy_nodes (machine_id, machine_name, ip_address, proxy_port, version, last_seen)
@@ -118,9 +130,9 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
        last_seen = datetime('now')`
   ).bind(
     machine_id,
-    body.machine_name || '',
-    body.ip_address || '',
-    body.proxy_port || 6000,
+    machine_name,
+    ip_address,
+    proxy_port,
     body.version || ''
   ).run();
 
