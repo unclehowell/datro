@@ -118,7 +118,7 @@ async function startServer() {
     }
 
     if (action === 'chat') {
-      const { message, sessionId } = body;
+      const { message, sessionId, chat_only } = body;
       if (!message) return res.status(400).json({ error: "message is required" });
 
       const alive = Object.entries(childProxies)
@@ -134,7 +134,7 @@ async function startServer() {
         const resp = await fetch(`${child.url}/chat`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({ message, sessionId }),
+          body: JSON.stringify({ message, sessionId, chat_only: chat_only === true || chat_only === 'true' }),
         });
         const data = await resp.json() as any;
         return res.json({ ok: true, routedTo: childId, ...data });
