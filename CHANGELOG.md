@@ -7,6 +7,16 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 ## [Unreleased]
 
 
+
+## [0.0.2.1] - 2026-05-17
+### Fixed
+- Identified issue: JS syntax error: /home/ubuntu/datro/static/datro/details/js/test.js:1
+<header id="mainWrapper">
+^
+
+SyntaxError: Unexpected token '<'
+    at wrapSafe (node:internal/mod (requires manual fix)
+
 ## [0.0.2] - 2026-05-15
 ### Fixed
 - Identified issue: JS syntax error: /home/ubuntu/datro/static/datro/details/js/test.js:1
