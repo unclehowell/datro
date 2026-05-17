@@ -1,5 +1,10 @@
 # Changelog
 
+## [financecheque-v0.1.0.103] - 2026-05-17
+
+### Fixed
+- refactor: clean up unused imports in src/main.tsx
+
 ## [financecheque-v0.1.0.102] - 2026-05-17
 
 ### Fixed
