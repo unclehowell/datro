@@ -5,6 +5,20 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [bpvsbuckler-v0.2.0.05] - 2026-05-17
+
+### Added
+- **Evidence Data Hub** — Comprehensive evidence data spanning 1667–2026 with detailed entries for key events (Marconi experiments, forced tenancy, identity fraud, Land Registry circular logic, state-sanctioned deed erasure, court judgment contradictions, armed eviction/demolition).
+- **Evidence Modal System** — JavaScript modal overlay for browsing evidence entries by year, with gallery display for linked evidence (emails, documents, images).
+- **Senedd Email Correspondence** — 30 email .eml files documenting 2026 communications with Senedd members (Heledd Fychan MS, Leticia Gonzalez MS, Joe Martin MS, Eleri Griffiths) regarding the Great House Farm dispossession case.
+- **Email Fetch Script** — `fetch-emails.py` utility to pull BP vs Buckler / Great House Farm emails from Gmail and update data.json with evidence references to wayback.datro.xyz.
+
+### Changed
+- `evidence/data.json` expanded from a single 1987 entry to 15 year-groupings (1667–2026) with full subject, content, and evidence reference arrays.
+- Evidence modal dark/gold theme integrated with existing site design.
+
+---
+
 ## [bpvsbuckler-v0.2.0.03] - 2026-05-16
 
 ### Changed
