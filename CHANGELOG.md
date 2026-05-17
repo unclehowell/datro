@@ -16,6 +16,11 @@ Aug-08 - Added a video called Service
 
 
 
+
+## [0.0.4.2] - 2026-05-17
+### Fixed
+- Closed unclosed HTML tags in static/ccan/our-beliefs.html: html, div, div, span, div
+
 ## [0.0.4.1] - 2026-05-17
 ### Fixed
 - Closed unclosed HTML tags in static/ccan/our-beliefs.html: html, div, div, span, div
