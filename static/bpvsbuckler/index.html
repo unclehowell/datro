@@ -36,6 +36,7 @@
 <nav>
     <a href="timeline/index.html">Timeline</a>
     <a href="research/index.html">Research</a>
+    <a href="#evidence">Evidence</a>
     <a href="#reparations">Reparations</a>
     <a href="#scripts">Scripts</a>
 </nav>
@@ -53,10 +54,10 @@
     </div>
 
     <section id="timeline">
-        <h2>Timeline — XMB Experience</h2>
+        <h2>Timeline</h2>
         <div class="card">
             <h3>Interactive Timeline with Narration</h3>
-            <p>The original PS3 XMB-style timeline with video background, play button, and narrated entries covering the full history from medieval monastery to modern day.</p>
+            <p>Interactive timeline with video background, play button, and narrated entries covering the full history from medieval monastery to modern day. Features narrated 34-entry timeline with evidence references, archival sources, and audio narration.</p>
             <a href="timeline/index.html" target="_blank">Open Timeline &rarr;</a>
         </div>
     </section>
@@ -83,6 +84,32 @@
                 <h3>Research Hub <span class="tag">Navigation</span></h3>
                 <p>Full HTML research portal with links to all documents, timelines, and archival reference tables.</p>
                 <a href="research/index.html" target="_blank">Open Hub &rarr;</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="evidence">
+        <h2>Evidence &amp; Correspondence</h2>
+        <div class="grid">
+            <div class="card">
+                <h3>Evidence Data Hub <span class="tag">15 entries</span></h3>
+                <p>Comprehensive evidence data spanning 1667–2026 covering Marconi experiments, forced tenancy, identity fraud, Land Registry circular logic, state-sanctioned deed erasure, and the armed eviction.</p>
+                <a href="evidence/data.json" target="_blank">View Data &rarr;</a>
+            </div>
+            <div class="card">
+                <h3>Senedd Correspondence <span class="tag">30 emails</span></h3>
+                <p>Email correspondence documenting 2026 communications with Senedd members including Heledd Fychan MS, Joe Martin MS, Leticia Gonzalez MS, and Eleri Griffiths regarding the Great House Farm dispossession case.</p>
+                <a href="evidence/emails/" target="_blank">View Emails &rarr;</a>
+            </div>
+            <div class="card">
+                <h3>Evidence Browser <span class="tag">Modal</span></h3>
+                <p>JavaScript-based evidence modal system for browsing entries by year, with gallery display for linked evidence documents, emails, and images.</p>
+                <a href="evidence/evidence-modal.js" target="_blank">View Source &rarr;</a>
+            </div>
+            <div class="card">
+                <h3>Email Fetch Utility <span class="tag">Script</span></h3>
+                <p>Python script to fetch BP vs Buckler / Great House Farm emails from Gmail and update the evidence data with references to the wayback.datro.xyz archive.</p>
+                <a href="evidence/fetch-emails.py" target="_blank">View Script &rarr;</a>
             </div>
         </div>
     </section>
@@ -139,8 +166,8 @@ pnpm run deploy:lib</pre>
 </main>
 
 <footer>
-    <p>BP vs Buckler — Great House Farm Research Project — 14 May 2026</p>
-    <p>Branch: bpvsbuckler &mdash; Release: bpvsbuckler-v0.2.0.03</p>
+    <p>BP vs Buckler — Great House Farm Research Project — 17 May 2026</p>
+    <p>Branch: bpvsbuckler &mdash; Release: bpvsbuckler-v0.2.0.05</p>
     <p style="margin-top:0.5rem;font-size:0.72rem;opacity:0.6">Research compiled by Sion Buckler (Ret'd) — on behalf of the late Mary Williams, Manor of Llandough</p>
 </footer>
 
