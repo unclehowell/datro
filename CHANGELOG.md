@@ -6,6 +6,24 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.0] - 2026-05-18
+### Security
+- Removed passport scan (PII) from archive — detected via OCR MRZ pattern matching
+- Purped 32 additional files: 1 passport, 27 blank/unreadable images, 4 junk PDFs (investment spam, undeliverable bounces, invoice)
+- Total archive reduced from 238 → 206 evidence files
+
+### Added
+- Forensic OCR pipeline: Tesseract OCR (English + Welsh) extracts text from newspaper clippings, deed scans, document photos — enables content-based decisions instead of relying solely on filenames
+- PDF text extraction via PyMuPDF + page-level OCR fallback for scanned documents
+- DOCX/DOC text extraction via python-docx/antiword
+- Multi-dimensional content scoring: case identity, legal doc types, geographic references, case reference numbers, public records (death/birth/marriage registers), news indicators, Welsh language terms
+- File content cache for fast re-runs
+
+### Changed
+- `scripts/vet_archive.py` completely rewritten: filename-only filtering replaced with content extraction + scoring engine
+- `scripts/regenerate_treeviews.py` updated to track forensic deletions
+- Score threshold: 10 (files below are removed unless filename gives strong confidence)
+
 ## [0.0.1.03] - 2026-05-17
 ### Security
 - Removed 10 non-case email/text files from the BPvsBuckler extraction (marketing, newsletters, loan offers, server monitor alerts, Facebook notifications)
