@@ -7,32 +7,38 @@
     }
   },
   {
-   "name": "<div class='subtitle-line enable-link caps'>TXT's</div>",
+    "name": "<div class='subtitle-line enable-link caps'>TXT's</div>",
     "path": "./txt",
     "_links": {
       "html": "./txt"
     }
   },
   {
-   "name": "<div class='subtitle-line enable-link caps'>PDF's</div>",
+    "name": "<div class='subtitle-line enable-link caps'>Image's</div>",
+    "path": "./image",
+    "_links": {
+      "html": "./image"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link caps'>PDF's</div>",
     "path": "./pdf",
     "_links": {
       "html": "./pdf"
     }
   },
   {
-    "name": "<div class='subtitle-line enable-link'>Video's</div>",
-    "path": "./video",
+    "name": "<div class='subtitle-line enable-link caps'>Other</div>",
+    "path": "./other",
     "_links": {
-      "html": "./video"
+      "html": "./other"
     }
-   },
+  },
   {
     "name": "<div class='page-scroll-fix'></div>",
     "path": "javascript:void(0)",
     "_links": {
       "html": "javascript:void(0)"
     }
-   }
+  }
 ]
-

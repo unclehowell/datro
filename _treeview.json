@@ -1,0 +1,44 @@
+[
+  {
+    "name": "<div class='title-line title-disable'><div class='icon f-datro'></div>File Types</div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link caps'>TXT's</div>",
+    "path": "./static/archives/txt",
+    "_links": {
+      "html": "./static/archives/txt"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link caps'>PDF's</div>",
+    "path": "./static/archives/pdf",
+    "_links": {
+      "html": "./static/archives/pdf"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link'>Video's</div>",
+    "path": "./static/archives/video",
+    "_links": {
+      "html": "./static/archives/video"
+    }
+  },
+  {
+    "name": "<div class='subtitle-line enable-link caps'>Image's</div>",
+    "path": "./static/archives/image",
+    "_links": {
+      "html": "./static/archives/image"
+    }
+  },
+  {
+    "name": "<div class='page-scroll-fix'></div>",
+    "path": "javascript:void(0)",
+    "_links": {
+      "html": "javascript:void(0)"
+    }
+  }
+]

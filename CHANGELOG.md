@@ -6,6 +6,19 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.1.03] - 2026-05-17
+### Security
+- Removed 10 non-case email/text files from the BPvsBuckler extraction (marketing, newsletters, loan offers, server monitor alerts, Facebook notifications)
+- Removed _extracted_index.json with full extraction metadata
+- Regenerated treeview JSONs for all categories
+
+## [0.0.1.02] - 2026-05-17
+### Added
+- BP vs Buckler archive: 206 email/text files, 226 images, 104 PDFs, 6 videos, 10 other files
+- Reorganized archive files into category directories (txt/, pdf/, image/, video/, other/)
+- Updated treeview JSON files for all archive categories
+- Added "image" category to landing page navigation
+
 ## [0.0.1] - 2026-05-15
 ### Fixed
 - Code quality maintenance and version bump

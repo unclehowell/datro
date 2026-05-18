@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta content="DATRO Library" name="description">
   <meta content="DATRO Consortium" name="author">
-  <title>DATRO Wayback Archive</title>
+  <title>DATRO Wayback Archive v0.0.1.02</title>
   <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
         <link href="_theme-explorer/favicons/apple-icon-57x57.png" rel="apple-touch-icon" sizes="57x57">
         <link href="_theme-explorer/favicons/apple-icon-60x60.png" rel="apple-touch-icon" sizes="60x60">
@@ -66,7 +66,7 @@ li {
         const data = await response.json();
         let htmlString = '<ul>';
         htmlString += `<a href="../" class="up-active" style="visibility:hidden;"><<</a>`;
-        htmlString += `<p class="main-title"><img class="main-logo ml-datro"></br>Wayback Archive</p>`;
+        htmlString += `<p class="main-title"><img class="main-logo ml-datro"></br>Wayback Archive v0.0.1.02</p>`;
         for (let file of data) {
           htmlString += `<li class="li"><a href="${file.path}">${file.name}</a></li>`;
         }
