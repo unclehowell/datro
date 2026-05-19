@@ -4,5 +4,8 @@
   Referrer-Policy: strict-origin-when-cross-origin
   Cache-Control: public, max-age=3600
 
+/static/archives/image/2016-08-16_consortium_legal-bpvsbuckler_image_2014-02-22_077_JPG_BP_vs_Buckler_en_v0-0-1.jpg
+  Cache-Control: no-cache, no-store, must-revalidate
+
 /*.html
   Content-Type: text/html; charset=utf-8
