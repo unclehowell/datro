@@ -6,7 +6,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
-## [0.1.1] - 2026-05-18
+## [wayback-0.1.1.01] - 2026-05-19
 ### Changed
 - Standardised all 206 archive filenames to strict schema `YYYY-MM-DD_consortium-subcategory_bpvsbuckler__en_v0-0-1.ext`
 - Filename dates now extracted from actual file content (email headers, PDF metadata, OCR text) instead of old filename prefixes
