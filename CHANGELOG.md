@@ -6,6 +6,15 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-05-18
+### Changed
+- Standardised all 206 archive filenames to strict schema `YYYY-MM-DD_consortium-subcategory_bpvsbuckler__en_v0-0-1.ext`
+- Filename dates now extracted from actual file content (email headers, PDF metadata, OCR text) instead of old filename prefixes
+- Subcategories: evidence, foi, formal_notice, newspaper, land_registry, public_record, petition, legal_request, order_form, whistleblower, correspondence
+
+### Fixed
+- Duplicate filenames disambiguated with `_001`, `_002` suffixes
+
 ## [0.1.0] - 2026-05-18
 ### Security
 - Removed passport scan (PII) from archive — detected via OCR MRZ pattern matching
