@@ -6,6 +6,20 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [wayback-0.1.2.01] - 2026-05-20
+### Security
+- Removed passport data page image detected via OCR ("Surname/Nom", "Sex/Sexe" passport fields)
+- All remaining 25 images forensically vetted — no passport/MRZ content found
+
+### Changed
+- Reformat all treeview display names: underscores → " - " separator (e.g. `2026-02-01 - consortium-petition - bpvsbuckler - en - v0-0-1 - png`)
+- 153 display names updated across txt/image/pdf/other treeviews
+
+### Removed
+- 14 content-similar text duplicates (_NNN variants with >70% word-overlap)
+- 2 content-duplicate images (same dimensions + file size)
+- 1 content-similar PDF (_001 variant with 85% text overlap)
+
 ## [wayback-0.1.1.01] - 2026-05-19
 ### Changed
 - Standardised all 206 archive filenames to strict schema `YYYY-MM-DD_consortium-subcategory_bpvsbuckler__en_v0-0-1.ext`
