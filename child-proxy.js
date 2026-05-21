@@ -1,28 +1,34 @@
 #!/usr/bin/env node
 /**
- * child-proxy.js — runs on AWS 172.31.29.216
- * Registers with the parent proxy at financecheque.uk/api/proxy
- * Receives dispatched jobs and runs them via Hermes/Kiro agents
+ * child-proxy.js — FinanceCheque child proxy
+ * Registers with parent proxy, provides OpenAI-compatible chat via CLI chain
  *
  * Usage:
- *   PARENT_URL=https://financecheque.uk CHILD_ID=aws-172-31-29-216 node child-proxy.js
- *
- * Install:
- *   npm install express node-fetch
- *   pm2 start child-proxy.js --name fcuk-child-proxy
+ *   node child-proxy.js
+ *   PORT=4001 CHILD_ID=my-machine node child-proxy.js
  */
 
 import express from "express";
 import { execFile, spawn } from "child_process";
+import { promises as fsp } from "fs";
 import { promisify } from "util";
 import os from "os";
+import path from "path";
 
 const execFileAsync = promisify(execFile);
 
+// Load machine identity from ~/.fcukproxy/machine.json
+let machineId = "";
+try {
+  const p = path.join(os.homedir(), ".fcukproxy", "machine.json");
+  const cfg = JSON.parse(await fsp.readFile(p, "utf-8"));
+  machineId = cfg.machine_id || "";
+} catch {}
+
 const PARENT_URL = process.env.PARENT_URL || "https://www.financecheque.uk";
-const CHILD_ID   = process.env.CHILD_ID   || `aws-${os.hostname()}`;
+const CHILD_ID   = process.env.CHILD_ID   || machineId || `child-${os.hostname()}`;
 const PORT       = Number(process.env.PORT) || 4001;
-const SELF_URL   = process.env.SELF_URL    || `http://172.31.29.216:${PORT}`;
+const SELF_URL   = process.env.SELF_URL    || `http://localhost:${PORT}`;
 
 const app = express();
 app.use(express.json());
@@ -70,19 +76,86 @@ app.get("/health", (_req, res) => {
 });
 
 app.post("/chat", async (req, res) => {
-  const { message, chat_only } = req.body || {};
-  if (!message) return res.status(400).json({ ok: false, error: "message is required" });
-
-  const isChatOnly = chat_only === true || chat_only === 'true';
-  if (!isChatOnly) {
-    console.log(`[child-proxy] Chat request without chat_only flag — processing as chat anyway`);
-  }
+  const { message, messages, chat_only } = req.body || {};
+  const text = message || (messages?.length > 0 ? messages[messages.length - 1].content : "");
+  if (!text) return res.status(400).json({ ok: false, error: "message is required" });
 
   try {
-    const reply = await runChat(message);
-    return res.json({ ok: true, reply, childId: CHILD_ID });
+    const reply = await runChat(text);
+    return res.json({
+      id: `chatcmpl-${Date.now()}`,
+      object: "chat.completion",
+      created: Math.floor(Date.now() / 1000),
+      model: "child-proxy",
+      choices: [{ index: 0, message: { role: "assistant", content: reply }, finish_reason: "stop" }],
+      usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
+      _proxy: { childId: CHILD_ID },
+    });
   } catch (error) {
     return res.status(500).json({ ok: false, error: error.message || "chat failed", childId: CHILD_ID });
+  }
+});
+
+// ── OpenAI-compatible endpoint ─────────────────────────────────────────
+app.post("/v1/chat/completions", async (req, res) => {
+  const body = req.body || {};
+  const messages = body.messages || [];
+  const lastMsg = messages.length > 0 ? messages[messages.length - 1].content : "";
+  if (!lastMsg) return res.status(400).json({ error: "messages required" });
+
+  try {
+    const reply = await runChat(lastMsg);
+    return res.json({
+      id: `chatcmpl-${Date.now()}`,
+      object: "chat.completion",
+      created: Math.floor(Date.now() / 1000),
+      model: body.model || "proxy-router",
+      choices: [{ index: 0, message: { role: "assistant", content: reply || "" }, finish_reason: "stop" }],
+      usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
+      _proxy: { childId: CHILD_ID },
+    });
+  } catch (error) {
+    return res.status(500).json({ error: error.message || "chat failed" });
+  }
+});
+
+// ── Find bugs endpoint ──────────────────────────────────────────────────
+app.post("/find-bugs", async (req, res) => {
+  const { repo_context, branch } = req.body || {};
+  if (!repo_context) return res.status(400).json({ ok: false, error: "repo_context is required" });
+
+  const prompt = [
+    `Find the single biggest, most apparent, obvious and crucial bug in this codebase on branch '${branch || "unknown"}'.`,
+    `Read the actual source code below.`,
+    `Return ONLY raw JSON (no markdown) with keys: file_path, bug_description, old_string (exact text to replace), new_string (replacement), commit_message.`,
+    ``,
+    repo_context,
+  ].join("\n");
+
+  try {
+    const reply = await runChat(prompt);
+    return res.json({ ok: true, reply, childId: CHILD_ID });
+  } catch (error) {
+    return res.status(500).json({ ok: false, error: error.message || "find-bugs failed", childId: CHILD_ID });
+  }
+});
+
+// ── Dispatch dator fix (full pipeline) ────────────────────────────────
+app.post("/dispatch-datro-fix", async (req, res) => {
+  const { branch, repo_dir } = req.body || {};
+  if (!branch || !repo_dir) return res.status(400).json({ ok: false, error: "branch and repo_dir required" });
+
+  try {
+    const { execSync } = await import("child_process");
+    const result = execSync(`bash /home/unclehowell/.fcukproxy/multi-branch-release.sh`, {
+      cwd: repo_dir,
+      timeout: 300_000,
+      env: { ...process.env, FORCE_BRANCH: branch },
+    });
+    const output = result.stdout?.toString() || "";
+    res.json({ ok: true, output: output.slice(-2000), childId: CHILD_ID });
+  } catch (error) {
+    res.status(500).json({ ok: false, error: error.message, childId: CHILD_ID });
   }
 });
 
@@ -145,9 +218,9 @@ function buildPrompt(url, leadAmount, quantity) {
 }
 
 async function runChat(message) {
-  const prompt = `You are the FinanceCheque child proxy operator. Reply concisely.\nUser message: ${message}`;
+  const prompt = message;
 
-  // Priority 1: groq (fastest)
+  // Priority 1: groq CLI (fastest if installed)
   try {
     const { stdout } = await execFileAsync("groq", ["chat", "--message", prompt], {
       timeout: 30_000, maxBuffer: 1024 * 1024,
@@ -155,7 +228,7 @@ async function runChat(message) {
     if (stdout?.trim()) return stdout.trim();
   } catch {}
 
-  // Priority 2: kiro
+  // Priority 2: kiro CLI
   const kiroPath = process.env.KIRO_PATH || "/usr/local/bin/kiro";
   try {
     const { stdout } = await execFileAsync(kiroPath, ["chat", "--non-interactive", "--message", prompt], {
@@ -164,23 +237,37 @@ async function runChat(message) {
     if (stdout?.trim()) return stdout.trim();
   } catch {}
 
-  // Priority 3: opencode
+  // Priority 3: local fcuk proxy agent (port 6000, big-pickle model)
   try {
-    const { stdout } = await execFileAsync("opencode", ["chat", "--message", prompt], {
+    const resp = await fetch("http://localhost:6000/v1/chat/completions", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ model: "proxy-router", messages: [{ role: "user", content: prompt }], max_tokens: 1024 }),
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      const content = data?.choices?.[0]?.message?.content;
+      if (content && content !== "No LLM available") return content;
+    }
+  } catch {}
+
+  // Priority 4: opencode CLI
+  try {
+    const { stdout } = await execFileAsync("opencode", ["run", prompt], {
       timeout: 60_000, maxBuffer: 1024 * 1024,
     });
     if (stdout?.trim()) return stdout.trim();
   } catch {}
 
-  // Priority 4: kilo
+  // Priority 5: kilo CLI
   try {
-    const { stdout } = await execFileAsync("kilo", ["chat", "--message", prompt], {
+    const { stdout } = await execFileAsync("kilo", ["run", prompt], {
       timeout: 60_000, maxBuffer: 1024 * 1024,
     });
     if (stdout?.trim()) return stdout.trim();
   } catch {}
 
-  // Priority 5: Cloudflare proxy fallback
+  // Priority 6: Cloudflare proxy fallback (pirateclaw)
   try {
     const resp = await fetch("https://pirateclaw.datro.xyz/v1/chat/completions", {
       method: "POST",

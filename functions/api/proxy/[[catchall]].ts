@@ -204,63 +204,107 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
   return new Response(JSON.stringify({ ok: true, reply: `Echo: ${message}` }), { status: 200, headers });
 }
 
+async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model: string, originMachineId: string): Promise<Response | null> {
+  const childUrl = `http://${node.ip_address}:${node.proxy_port + 1 || 4001}/v1/chat/completions`;
+  try {
+    const resp = await fetch(childUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Chat-Only': 'true',
+        'X-Machine-ID': originMachineId,
+      },
+      body: JSON.stringify({ model, messages, max_tokens: 1024 }),
+      signal: AbortSignal.timeout(25000),
+    });
+    if (resp.ok) {
+      const data = await resp.json() as any;
+      if (data?.choices?.[0]?.message?.content) return data;
+    }
+  } catch {}
+  return null;
+}
+
 async function handleChat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
   await ensureTable(env);
   const originMachineId = request.headers.get('X-Machine-ID') || '';
   const body = await request.json() as ChatRequest;
   const messages = body.messages || [];
+  const model = body.model || 'proxy-router';
 
   await env.DB.prepare(
     `UPDATE proxy_nodes SET last_seen = datetime('now') WHERE machine_id = ?`
   ).bind(originMachineId).run();
 
-  const nodeCount = await env.DB.prepare(
-    `SELECT COUNT(*) as count FROM proxy_nodes WHERE last_seen > datetime('now', '-1 hour')`
-  ).first() as { count: number };
-  const totalNodes = nodeCount?.count || 0;
+  const activeNodes = await env.DB.prepare(
+    `SELECT machine_id, machine_name, ip_address, proxy_port, version, last_seen
+     FROM proxy_nodes WHERE last_seen > datetime('now', '-1 hour')
+     ORDER BY last_seen DESC`
+  ).all() as { results: ProxyNode[] };
+  const totalNodes = activeNodes.results?.length || 0;
 
-  const isCrossMachine = totalNodes > 1;
-  const routingDecision = isCrossMachine && originMachineId ? 'route_to_child' : 'direct';
   let completionContent = '';
+  let routingDecision = 'direct';
 
-  const openrouterKey = env.OPENROUTER_API_KEY;
-
-  if (openrouterKey && messages.length > 0) {
-    try {
-      const resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: {
-          'Authorization': `Bearer ${openrouterKey}`,
-          'Content-Type': 'application/json',
-          'HTTP-Referer': 'https://www.financecheque.uk',
-          'X-Title': 'FinanceCheque UK',
-        },
-        body: JSON.stringify({
-          model: 'openrouter/auto',
-          messages,
-          max_tokens: 500,
-        }),
-      });
-      if (resp.ok) {
-        const data = await resp.json() as any;
-        completionContent = data?.choices?.[0]?.message?.content || '';
-      }
-    } catch (e) {
-      // fall through to echo
+  // Priority 1: route to the calling machine's own child proxy
+  const callingNode = activeNodes.results?.find(n => n.machine_id === originMachineId);
+  if (callingNode && messages.length > 0) {
+    routingDecision = 'route_to_child';
+    const childResult = await routeToChildProxy(callingNode, messages, model, originMachineId);
+    if (childResult) {
+      completionContent = childResult.choices?.[0]?.message?.content || '';
     }
   }
 
+  // Priority 2: route to other active child proxies on the network
+  if (!completionContent && totalNodes > 1 && messages.length > 0) {
+    routingDecision = 'route_to_other_children';
+    for (const node of activeNodes.results) {
+      if (node.machine_id === originMachineId) continue;
+      const childResult = await routeToChildProxy(node, messages, model, originMachineId);
+      if (childResult) {
+        completionContent = childResult.choices?.[0]?.message?.content || '';
+        if (completionContent) break;
+      }
+    }
+  }
+
+  // Priority 3: parent proxy's own env var LLM keys (OpenRouter)
   if (!completionContent && messages.length > 0) {
+    routingDecision = 'direct_openrouter';
+    const openrouterKey = env.OPENROUTER_API_KEY;
+    if (openrouterKey) {
+      try {
+        const resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${openrouterKey}`,
+            'Content-Type': 'application/json',
+            'HTTP-Referer': 'https://www.financecheque.uk',
+            'X-Title': 'FinanceCheque UK',
+          },
+          body: JSON.stringify({
+            model: 'openrouter/auto',
+            messages,
+            max_tokens: 500,
+          }),
+        });
+        if (resp.ok) {
+          const data = await resp.json() as any;
+          completionContent = data?.choices?.[0]?.message?.content || '';
+        }
+      } catch {}
+    }
+  }
+
+  // Final fallback: echo
+  if (!completionContent && messages.length > 0) {
+    routingDecision = 'echo';
     const lastMsg = messages[messages.length - 1];
     const userContent = typeof lastMsg.content === 'string' ? lastMsg.content : '';
-    let viaClause = '';
-    if (isCrossMachine) {
-      viaClause = `\n\n[via proxy node ${originMachineId || 'unknown'}]`;
-    }
-    completionContent = `Echo: ${userContent}${viaClause}`;
+    completionContent = `Echo: ${userContent}`;
   }
 
-  const model = body.model || 'proxy-router';
   const responseStatus = 200;
 
   await env.DB.prepare(
@@ -276,30 +320,19 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     choices: [
       {
         index: 0,
-        message: {
-          role: 'assistant',
-          content: completionContent,
-        },
+        message: { role: 'assistant', content: completionContent || '' },
         finish_reason: 'stop',
       },
     ],
-    usage: {
-      prompt_tokens: 0,
-      completion_tokens: 0,
-      total_tokens: 0,
-    },
+    usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
     _proxy: {
       origin_machine_id: originMachineId,
       total_nodes: totalNodes,
-      chat_only: isCrossMachine,
+      chat_only: true,
       routing_decision: routingDecision,
     },
   };
 
-  const respHeaders = { ...headers };
-  if (isCrossMachine) {
-    respHeaders['X-Chat-Only'] = 'true';
-  }
-
+  const respHeaders = { ...headers, 'X-Chat-Only': 'true' };
   return new Response(JSON.stringify(responseBody), { status: responseStatus, headers: respHeaders });
 }

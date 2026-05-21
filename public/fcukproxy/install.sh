@@ -262,6 +262,90 @@ echo "║   Logs: $INSTALL_DIR/                                ║"
 echo "║   API Keys: $ENV_FILE                               ║"
 echo "╚══════════════════════════════════════════════════════════════╝"
 echo ""
+# ── Child proxy (Node.js, port 4001) ──────────────────────────────────────
+echo "Setting up child proxy (port 4001)..."
+CHILD_PROXY_JS="$INSTALL_DIR/child-proxy.js"
+CHILD_SERVICE_NAME="fcuk-child-proxy"
+
+if command -v node >/dev/null 2>&1; then
+  curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/child-proxy.js" -o "$CHILD_PROXY_JS"
+
+  # Install express for child proxy
+  cd "$INSTALL_DIR" && npm install express 2>/dev/null || true
+
+  if [ "$PLATFORM" = "linux" ] && command -v systemctl >/dev/null 2>&1; then
+    CHILD_SERVICE_FILE="$HOME/.config/systemd/user/$CHILD_SERVICE_NAME.service"
+    cat > "$CHILD_SERVICE_FILE" <<EOF
+[Unit]
+Description=FCUK Child Proxy (Node.js)
+After=network.target fcukproxy.service
+BindsTo=fcukproxy.service
+
+[Service]
+ExecStart=$(which node) $CHILD_PROXY_JS
+Restart=on-failure
+RestartSec=5
+WorkingDirectory=$INSTALL_DIR
+Environment=PORT=4001
+Environment=CHILD_ID=$MACHINE_ID
+Environment=SELF_URL=http://$LOCAL_IP:4001
+Environment=NODE_PATH=$INSTALL_DIR/node_modules
+
+[Install]
+WantedBy=default.target
+EOF
+    systemctl --user daemon-reload 2>/dev/null || true
+    systemctl --user enable "$CHILD_SERVICE_NAME" 2>/dev/null || true
+    systemctl --user --no-block start "$CHILD_SERVICE_NAME" 2>/dev/null || true
+    echo "  ✓ Child proxy service started (port 4001)"
+  else
+    pkill -f "child-proxy.js" 2>/dev/null || true
+    nohup node "$CHILD_PROXY_JS" > "$INSTALL_DIR/child-proxy.log" 2>&1 &
+    echo "  ✓ Child proxy started (port 4001, PID: $!)"
+  fi
+else
+  echo "  ⚠ Node.js not found — install it to enable child proxy on port 4001"
+  echo "    sudo apt install nodejs npm"
+fi
+
+# ── Install SOUL.md (machine identity document) ─────────────────────────
+cat > "$INSTALL_DIR/SOUL.md" <<'SOULEOF'
+# FCUK Proxy — Machine Identity
+
+## Role
+You are a child proxy node in the FinanceCheque (FCUK) proxy network.
+Your machine_id is MACHINE_ID_PLACEHOLDER.
+
+## Routing Chain (tried in order, 3 retries)
+1. **Parent proxy** — financecheque.uk/api/proxy/v1/chat/completions
+   Routes to: your child proxy → parent's env var LLM keys → other child proxies on the network
+2. **Local child proxy** — localhost:4001/v1/chat/completions (Node.js Express)
+   Routes to: groq → kiro → local agent proxy (port 6000) → opencode → kilo → Cloudflare proxy
+3. **Local providers** — .env API keys in round-robin (OpenRouter → OpenAI → NVIDIA → Anthropic → Gemini → DeepSeek → Groq)
+4. **Peer proxies** — discovered via UDP multicast (239.255.255.250:6002)
+5. **Retry** — cycle back to parent proxy up to 3 times total
+
+## Endpoints
+- Agent proxy: http://localhost:6000/v1/chat/completions (OpenAI-compatible)
+- Child proxy: http://localhost:4001/v1/chat/completions (OpenAI-compatible)
+- GUI dashboard: http://localhost:6001
+- Status: http://localhost:6000/status | curl
+
+## Key Files
+- Config: ~/.fcukproxy/machine.json
+- API keys: ~/.fcukproxy/.env
+- Agent log: ~/.fcukproxy/agent.log
+- Child proxy log: ~/.fcukproxy/child-proxy.log
+
+## Commands
+- Restart agent: systemctl --user restart fcukproxy
+- Restart child: systemctl --user restart fcuk-child-proxy
+- View status: curl http://localhost:6000/status | python3 -m json.tool
+SOULEOF
+sed -i "s/MACHINE_ID_PLACEHOLDER/$MACHINE_ID/g" "$INSTALL_DIR/SOUL.md"
+echo "  ✓ Machine SOUL.md written to $INSTALL_DIR/SOUL.md"
+
+echo ""
 echo "To add LLM API keys, edit: nano $ENV_FILE"
 echo "Then restart: systemctl --user restart $SERVICE_NAME"
 echo "To chat: curl http://localhost:6000/v1/chat/completions -d '{\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}'"
