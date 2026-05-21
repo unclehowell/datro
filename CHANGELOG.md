@@ -1,5 +1,10 @@
 # Changelog
 
+## [financecheque-v0.1.0.144] - 2026-05-21
+
+### Fixed
+- fix: remove console.log from ./child-proxy.js
+
 ## [financecheque-v0.1.0.142] - 2026-05-19
 
 ### Fixed

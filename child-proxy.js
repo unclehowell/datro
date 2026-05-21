@@ -64,7 +64,6 @@ async function heartbeat() {
 // ── Dispatch endpoint (called by parent proxy) ────────────────────────────
 app.post("/dispatch", async (req, res) => {
   const job = req.body;
-  console.log(`[child-proxy] Received job ${job.id}: ${job.url} — ${job.quantity} leads @ £${job.leadAmount}`);
   res.json({ ok: true, childId: CHILD_ID });
 
   activeJobs++;
@@ -162,8 +161,6 @@ app.post("/dispatch-datro-fix", async (req, res) => {
 // ── Run job via Hermes/Kiro ───────────────────────────────────────────────
 async function runJob(job) {
   const { id, url, leadAmount, quantity } = job;
-  console.log(`[child-proxy] Starting job ${id}`);
-
   // Try Kiro CLI first, fall back to Hermes
   const prompt = buildPrompt(url, leadAmount, quantity);
 
@@ -182,8 +179,6 @@ async function runJob(job) {
     await new Promise((resolve, reject) => {
       proc.on("close", code => code === 0 ? resolve(code) : reject(new Error(`kiro exited ${code}`)));
     });
-
-    console.log(`[child-proxy] Job ${id} completed via Kiro`);
     return;
   } catch (err) {
     console.warn(`[child-proxy] Kiro failed for job ${id}: ${err.message}. Trying Hermes...`);
