@@ -1,4 +1,9 @@
 # Changelog
+
+## [carfinancecheque-v0.0.0.15] - 2026-05-21
+
+### Fixed
+- fix: remove console.log from ./static/carfinancecheque/src/components/ClaimForm.tsx
 It's expected that developers log all changes to this branch in this CHANGELOG.md file.  
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  

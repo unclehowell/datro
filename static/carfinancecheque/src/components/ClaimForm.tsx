@@ -36,23 +36,13 @@ export const ClaimForm: React.FC = () => {
   const [signatureImage, setSignatureImage] = useState<string>('');
   const signatureRef = useRef<SignatureCanvas>(null);
   const formStartFired = useRef(false);
-
-  console.log("--- BROWSER: RENDERING STEP ---", currentStep);
-  console.log("--- BROWSER: SUBMITTING STATE ---", isSubmitting);
-  console.log("--- BROWSER: ERROR STATE ---", error);
-  console.log("--- BROWSER: SESSION ID STATE ---", sessionId);
-  console.log("--- BROWSER: FORM DATA STATE ---", formData);
-  console.log("--- BROWSER: STEPS ---", STEPS);
-
   useEffect(() => {
-    console.log("--- BROWSER: FORM MOUNTED ---");
     // Initialize Kount Session
     let sid = sessionStorage.getItem('kount_session_id');
     if (!sid) {
       sid = generateSessionId();
       sessionStorage.setItem('kount_session_id', sid);
     }
-    console.log("--- BROWSER: SESSION ID INITIALIZED ---", sid);
     setSessionId(sid);
 
     const kountConfig = {
@@ -62,13 +52,10 @@ export const ClaimForm: React.FC = () => {
       callbacks: {
         'collect-begin': (params: any) => console.log('Kount started', params),
         'collect-end': (params: any) => {
-          console.log('Kount fingerprint complete', params);
           setKountReady(true);
         },
       },
     };
-    console.log("--- BROWSER: KOUNT CONFIG ---", kountConfig);
-    
     try {
       kountSDK(kountConfig, sid);
     } catch (e) {
@@ -98,8 +85,6 @@ export const ClaimForm: React.FC = () => {
         value = `${digits.slice(0, 2)}/${digits.slice(2, 4)}/${digits.slice(4, 8)}`;
       }
     }
-
-    console.log(`--- BROWSER: INPUT CHANGE [${e.target.name}] ---`, value);
     setFormData({ ...formData, [e.target.name]: value });
   };
 
@@ -120,12 +105,9 @@ export const ClaimForm: React.FC = () => {
         return;
       }
     }
-    
-    console.log("--- BROWSER: NEXT STEP ---", currentStep + 1);
     setCurrentStep((prev) => Math.min(prev + 1, STEPS.length - 1));
   };
   const prevStep = () => {
-    console.log("--- BROWSER: PREV STEP ---", currentStep - 1);
     setCurrentStep((prev) => Math.max(prev - 1, 0));
   };
 
@@ -135,7 +117,6 @@ export const ClaimForm: React.FC = () => {
       try {
         const sigData = signatureRef.current.toDataURL('image/png');
         if (sigData && sigData.length > 50) {
-          console.log("--- BROWSER: Captured signature on step change, length:", sigData.length);
           setSignatureImage(sigData);
           return true;
         }
@@ -161,8 +142,6 @@ export const ClaimForm: React.FC = () => {
     // FLYWHEEL #5: Use pre-captured signature if available
     // This is critical because canvas gets unmounted when leaving step 2
     let sigData = signatureImage;
-    console.log("--- BROWSER: Stored signature length:", sigData.length);
-    
     // Fallback: try to capture if no stored signature
     if (!sigData || sigData.length < 50) {
       if (signatureRef.current?.isEmpty()) {
@@ -174,10 +153,7 @@ export const ClaimForm: React.FC = () => {
       try {
         const sigCanvas = signatureRef.current;
         if (!sigCanvas || sigCanvas.isEmpty()) {
-          console.log("--- BROWSER: No signature strokes detected");
         } else {
-          console.log("--- BROWSER: Signature strokes detected, attempting capture");
-          
           // Force canvas to have proper dimensions - some browsers need this
           const canvasEl = sigCanvas.getCanvas();
           if (canvasEl) {
@@ -188,7 +164,6 @@ export const ClaimForm: React.FC = () => {
             if (!canvasEl.height || canvasEl.height === 0) {
               canvasEl.height = 192;
             }
-            console.log("--- BROWSER: Canvas dimensions:", canvasEl.width, "x", canvasEl.height);
           }
           
           // Method 1: Direct toDataURL with explicit dimensions
@@ -205,7 +180,6 @@ export const ClaimForm: React.FC = () => {
               const trimmed = sigCanvas.getTrimmedCanvas();
               if (trimmed && trimmed.width > 0 && trimmed.height > 0) {
                 dataUrl = trimmed.toDataURL('image/png');
-                console.log("--- BROWSER: getTrimmedCanvas worked, length:", dataUrl.length);
               }
             } catch (e) {
               console.log("--- BROWSER: getTrimmedCanvas() failed:", e);
@@ -215,9 +189,7 @@ export const ClaimForm: React.FC = () => {
           // Use the data URL if valid
           if (dataUrl && dataUrl.length > 50 && dataUrl.startsWith('data:image')) {
             sigData = dataUrl;
-            console.log("--- BROWSER: SUCCESS - signature captured, length:", sigData.length);
           } else {
-            console.log("--- BROWSER: All methods failed - empty or invalid dataURL");
             console.log("--- BROWSER: dataUrl value:", dataUrl ? dataUrl.substring(0, 50) : "empty");
           }
         }
@@ -227,9 +199,6 @@ export const ClaimForm: React.FC = () => {
     } // end of fallback if block
 
     setSignatureImage(sigData);
-    
-    console.log("--- BROWSER: FINAL SIGNATURE ---");
-    console.log("Signature length:", sigData.length);
     console.log("Signature starts with:", sigData.substring(0, 50));
     
     // Validate signature was captured
@@ -237,8 +206,6 @@ export const ClaimForm: React.FC = () => {
       alert('Signature capture failed. Please try again or refresh the page.');
       return;
     }
-
-    console.log("--- BROWSER: SUBMITTING FORM ---", formData);
     setIsSubmitting(true);
     setError(null);
 
@@ -249,12 +216,6 @@ export const ClaimForm: React.FC = () => {
 
     try {
       const userAgent = navigator.userAgent;
-      console.log("User Agent:", userAgent);
-      console.log("--- BROWSER: ENV CHECK ---");
-      console.log("Kount Client ID present:", !!import.meta.env.VITE_KOUNT_CLIENT_ID);
-      
-      console.log("Session ID:", sessionId);
-      
       const dobFormatted = formData.date_of_birth 
         ? formData.date_of_birth.split('/').reverse().join('-')
         : '';
@@ -296,32 +257,22 @@ export const ClaimForm: React.FC = () => {
       submissionData.append('signature_image', sigData);
       
       console.log("--- BROWSER: SENDING PAYLOAD (FormData) ---");
-      console.log("URL:", `/api/submit-claim`);
-      
       const response = await fetch(`/api/submit-claim`, {
         method: 'POST',
         body: submissionData
       });
-
-      console.log("--- BROWSER: RESPONSE RECEIVED ---");
-      console.log("Status:", response.status);
       const contentType = response.headers.get("content-type");
-      console.log("Content-Type:", contentType);
-
       let result;
       if (contentType && contentType.includes("application/json")) {
         const resText = await response.text();
-        console.log("--- BROWSER: RAW RESPONSE ---", resText);
         try {
           result = JSON.parse(resText);
-          console.log("--- BROWSER: RESULT ---", result);
         } catch (e: any) {
           console.error("--- BROWSER: PARSE ERROR ---", e);
           throw new Error(`Failed to parse server response: ${e.message}`);
         }
       } else {
         const text = await response.text();
-        console.log("--- BROWSER: NON-JSON RESPONSE ---", text);
         throw new Error(`Server returned non-JSON response (${response.status}): ${text.slice(0, 100)}`);
       }
 
@@ -340,10 +291,8 @@ export const ClaimForm: React.FC = () => {
       }
 
       if (body.status === 'authentication-required') {
-        console.log('--- BROWSER: AUTH REQUIRED, REDIRECTING ---');
         window.location.href = body.url;
       } else {
-        console.log('--- BROWSER: SUCCESS, NAVIGATING TO THANK YOU ---');
         // GA4: generate_lead event on success
         if (window.gtag) {
           gtag('event', 'generate_lead', { 'form_name': 'claim_form' });
@@ -357,7 +306,6 @@ export const ClaimForm: React.FC = () => {
       if (window.gtag) {
         gtag('event', 'exception', { 'description': err.message, 'fatal': false });
       }
-      console.log("--- BROWSER: RESETTING SUBMITTING STATE ---");
       setIsSubmitting(false);
     }
   };
