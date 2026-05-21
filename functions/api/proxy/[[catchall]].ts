@@ -196,7 +196,7 @@ async function handlePoll(request: Request, env: Env, headers: Record<string, st
     `SELECT id, work_id, payload FROM proxy_pending
      WHERE machine_id = ? AND status = 'pending'
      ORDER BY created_at ASC LIMIT 1`
-  ).first() as any;
+  ).bind(machineId).first() as any;
   if (pending) {
     await env.DB.prepare(
       `UPDATE proxy_pending SET status = 'in_progress' WHERE id = ?`
