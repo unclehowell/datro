@@ -1,6 +1,6 @@
 # Changelog
 
-## [financecheque-v0.1.0.145] - 2026-05-21
+## [financecheque-v0.1.1.45] - 2026-05-21
 
 ### Added
 - feat: How It Works page explaining one-line install child proxy setup
@@ -12,222 +12,222 @@
 - fix: agent registration payload version inconsistency (0.3.0 → 0.4.0)
 - fix: missing .bind(machineId) in handlePoll D1 query
 
-## [financecheque-v0.1.0.144] - 2026-05-21
+## [financecheque-v0.1.1.44] - 2026-05-21
 
 ### Fixed
 - fix: remove console.log from ./child-proxy.js
 
-## [financecheque-v0.1.0.142] - 2026-05-19
+## [financecheque-v0.1.1.42] - 2026-05-19
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.141] - 2026-05-19
+## [financecheque-v0.1.1.41] - 2026-05-19
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.140] - 2026-05-18
+## [financecheque-v0.1.1.40] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.139] - 2026-05-18
+## [financecheque-v0.1.1.39] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.138] - 2026-05-18
+## [financecheque-v0.1.1.38] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/App.tsx
 
-## [financecheque-v0.1.0.137] - 2026-05-18
+## [financecheque-v0.1.1.37] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.136] - 2026-05-18
+## [financecheque-v0.1.1.36] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.135] - 2026-05-18
+## [financecheque-v0.1.1.35] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.134] - 2026-05-18
+## [financecheque-v0.1.1.34] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.133] - 2026-05-18
+## [financecheque-v0.1.1.33] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.132] - 2026-05-18
+## [financecheque-v0.1.1.32] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.131] - 2026-05-18
+## [financecheque-v0.1.1.31] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.130] - 2026-05-18
+## [financecheque-v0.1.1.30] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.129] - 2026-05-18
+## [financecheque-v0.1.1.29] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.128] - 2026-05-18
+## [financecheque-v0.1.1.28] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.127] - 2026-05-18
+## [financecheque-v0.1.1.27] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.126] - 2026-05-18
+## [financecheque-v0.1.1.26] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.125] - 2026-05-18
+## [financecheque-v0.1.1.25] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.124] - 2026-05-18
+## [financecheque-v0.1.1.24] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.123] - 2026-05-18
+## [financecheque-v0.1.1.23] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/App.tsx
 
-## [financecheque-v0.1.0.122] - 2026-05-18
+## [financecheque-v0.1.1.22] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.121] - 2026-05-18
+## [financecheque-v0.1.1.21] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.120] - 2026-05-18
+## [financecheque-v0.1.1.20] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.119] - 2026-05-18
+## [financecheque-v0.1.1.19] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/App.tsx
 
-## [financecheque-v0.1.0.118] - 2026-05-18
+## [financecheque-v0.1.1.18] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.117] - 2026-05-18
+## [financecheque-v0.1.1.17] - 2026-05-18
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.116] - 2026-05-17
+## [financecheque-v0.1.1.16] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/App.tsx
 
-## [financecheque-v0.1.0.115] - 2026-05-17
+## [financecheque-v0.1.1.15] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.114] - 2026-05-17
+## [financecheque-v0.1.1.14] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.113] - 2026-05-17
+## [financecheque-v0.1.1.13] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.112] - 2026-05-17
+## [financecheque-v0.1.1.12] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.111] - 2026-05-17
+## [financecheque-v0.1.1.11] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.110] - 2026-05-17
+## [financecheque-v0.1.1.10] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.109] - 2026-05-17
+## [financecheque-v0.1.1.09] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.108] - 2026-05-17
+## [financecheque-v0.1.1.08] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.107] - 2026-05-17
+## [financecheque-v0.1.1.07] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.106] - 2026-05-17
+## [financecheque-v0.1.1.06] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.105] - 2026-05-17
+## [financecheque-v0.1.1.05] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.104] - 2026-05-17
+## [financecheque-v0.1.1.04] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.103] - 2026-05-17
+## [financecheque-v0.1.1.03] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.102] - 2026-05-17
+## [financecheque-v0.1.1.02] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.101] - 2026-05-17
+## [financecheque-v0.1.1.01] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
 
-## [financecheque-v0.1.0.100] - 2026-05-17
+## [financecheque-v0.1.1.00] - 2026-05-17
 
 ### Fixed
 - refactor: clean up unused imports in src/main.tsx
@@ -678,7 +678,7 @@ All notable changes to this project will be documented in this file.
 
 ---
 
-## [financecheque-v0.1.0.0] - 2026-05-01
+## [financecheque-v0.1.0.00] - 2026-05-01
 
 ### Added
 - Initial migration from FCUK to datro (financecheque)
