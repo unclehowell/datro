@@ -35,6 +35,7 @@ import {
   Trash2
 } from 'lucide-react';
 import LanguageSelector, { Language } from './components/LanguageSelector';
+import HowItWorks from './components/HowItWorks';
 import AgentComputer from './components/AgentComputer';
 import AvatarSection from './components/AvatarSection';
 import WalletCredits from './components/WalletCredits';
@@ -111,7 +112,7 @@ const RingingPhone = () => (
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState<'home' | 'exchange' | 'signin' | 'signup' | 'forgot-password' | 'docs' | 'api'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'exchange' | 'signin' | 'signup' | 'forgot-password' | 'docs' | 'api' | 'how-it-works'>('home');
   const [user, setUser] = useState<any>(null);
   const [showDemoModal, setShowDemoModal] = useState(false);
   const [demoOrientation, setDemoOrientation] = useState<'portrait' | 'landscape'>('portrait');
@@ -624,8 +625,15 @@ export default function App() {
                       FCUK Exchange
                     </button>
                     <button 
-                      onClick={() => { setCurrentPage('docs'); setIsWalletMenuOpen(false); }}
+                      onClick={() => { setCurrentPage('how-it-works'); setIsWalletMenuOpen(false); }}
                       className="w-full flex items-center gap-3 p-3 hover:bg-card transition-colors text-xs font-bold text-accent"
+                    >
+                      <BookOpen size={16} />
+                      How It Works
+                    </button>
+                    <button 
+                      onClick={() => { setCurrentPage('docs'); setIsWalletMenuOpen(false); }}
+                      className="w-full flex items-center gap-3 p-3 hover:bg-card transition-colors text-xs font-bold text-ink/70"
                     >
                       <BookOpen size={16} />
                       Documentation
@@ -653,7 +661,9 @@ export default function App() {
       {/* Mobile Menu Removed - Wallet Menu Replaces It */}
 
       <main className="pt-24">
-        {currentPage === 'exchange' ? (
+        {currentPage === 'how-it-works' ? (
+          <HowItWorks onBack={() => setCurrentPage('home')} />
+        ) : currentPage === 'exchange' ? (
           <Exchange 
             onBack={() => setCurrentPage('home')} 
             balance={walletBalance}
@@ -1109,6 +1119,7 @@ node child-proxy.js`}</pre>
               DATRO CONSORTIUM LIMITED • Waterlooville, PO8 0BT • 02031377118
             </p>
             <div className="flex gap-4">
+              <button onClick={() => setCurrentPage('how-it-works')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">How It Works</button>
               <button onClick={() => setCurrentPage('docs')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">Docs</button>
               <button onClick={() => setCurrentPage('api')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">API</button>
               <button onClick={() => setCurrentPage('exchange')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">Exchange</button>
