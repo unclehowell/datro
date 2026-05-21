@@ -62,6 +62,12 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === '/api/proxy/nodes' && method === 'GET') {
       return await handleNodes(request, env, headers);
     }
+    if (path === '/api/proxy/poll' && method === 'GET') {
+      return await handlePoll(request, env, headers);
+    }
+    if (path === '/api/proxy/result' && method === 'POST') {
+      return await handleResult(request, env, headers);
+    }
     if (path === '/api/proxy/chat' && method === 'POST') {
       return await handleSimpleChat(request, env, headers);
     }
@@ -96,6 +102,18 @@ async function ensureTable(env: Env): Promise<void> {
       response_status INTEGER DEFAULT 0,
       routing_decision TEXT DEFAULT 'direct',
       created_at TEXT DEFAULT (datetime('now'))
+    )`
+  ).run();
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS proxy_pending (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      work_id TEXT UNIQUE,
+      machine_id TEXT NOT NULL DEFAULT '',
+      payload TEXT NOT NULL DEFAULT '{}',
+      status TEXT NOT NULL DEFAULT 'pending',
+      result TEXT DEFAULT '',
+      created_at TEXT DEFAULT (datetime('now')),
+      completed_at TEXT DEFAULT ''
     )`
   ).run();
 }
@@ -167,6 +185,59 @@ async function handleNodes(request: Request, env: Env, headers: Record<string, s
   return new Response(JSON.stringify(results), { status: 200, headers });
 }
 
+async function handlePoll(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const url = new URL(request.url);
+  const machineId = url.searchParams.get('machine_id');
+  if (!machineId) {
+    return new Response(JSON.stringify({ error: 'machine_id required' }), { status: 400, headers });
+  }
+  const pending = await env.DB.prepare(
+    `SELECT id, work_id, payload FROM proxy_pending
+     WHERE machine_id = ? AND status = 'pending'
+     ORDER BY created_at ASC LIMIT 1`
+  ).first() as any;
+  if (pending) {
+    await env.DB.prepare(
+      `UPDATE proxy_pending SET status = 'in_progress' WHERE id = ?`
+    ).bind(pending.id).run();
+    return new Response(JSON.stringify({
+      pending: true,
+      work_id: pending.work_id,
+      payload: JSON.parse(pending.payload),
+    }), { status: 200, headers });
+  }
+  return new Response(JSON.stringify({ pending: false }), { status: 200, headers });
+}
+
+async function handleResult(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const body = await request.json() as any;
+  const { machine_id, work_id, result } = body;
+  if (!work_id) {
+    return new Response(JSON.stringify({ error: 'work_id required' }), { status: 400, headers });
+  }
+  const existing = await env.DB.prepare(
+    `SELECT id FROM proxy_pending WHERE work_id = ?`
+  ).bind(work_id).first() as any;
+  if (existing) {
+    await env.DB.prepare(
+      `UPDATE proxy_pending SET status = 'completed', result = ?, completed_at = datetime('now') WHERE id = ?`
+    ).bind(JSON.stringify(result), existing.id).run();
+  }
+  return new Response(JSON.stringify({ ok: true, machine_id }), { status: 200, headers });
+}
+
+async function queueWorkForNode(env: Env, machineId: string, payload: any): Promise<string> {
+  await ensureTable(env);
+  const workId = `poll_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  await env.DB.prepare(
+    `INSERT INTO proxy_pending (work_id, machine_id, payload, status, created_at)
+     VALUES (?, ?, ?, 'pending', datetime('now'))`
+  ).bind(workId, machineId, JSON.stringify(payload)).run();
+  return workId;
+}
+
 async function handleSimpleChat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
   const body = await request.json() as { message?: string; sessionId?: string };
   const message = body.message;
@@ -209,8 +280,7 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
   return new Response(JSON.stringify({ ok: true, reply: `Echo: ${message}` }), { status: 200, headers });
 }
 
-async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model: string, originMachineId: string): Promise<Response | null> {
-  // Use the registered URL if available, otherwise construct from ip:port
+async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model: string, originMachineId: string, env?: Env): Promise<Response | null> {
   const childUrl = (node as any).url || `http://${node.ip_address}:${node.proxy_port + 1 || 4001}/v1/chat/completions`;
   try {
     const resp = await fetch(childUrl, {
@@ -227,7 +297,14 @@ async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model
       const data = await resp.json() as any;
       if (data?.choices?.[0]?.message?.content) return data;
     }
-  } catch {}
+  } catch {
+    // Child is unreachable (closed ports). Queue work for polling if we have DB access.
+    if (env && node.machine_id !== originMachineId) {
+      try {
+        await queueWorkForNode(env, node.machine_id, { model, messages, max_tokens: 1024 });
+      } catch {}
+    }
+  }
   return null;
 }
 
@@ -256,7 +333,7 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
   const callingNode = activeNodes.results?.find(n => n.machine_id === originMachineId);
   if (callingNode && messages.length > 0) {
     routingDecision = 'route_to_child';
-    const childResult = await routeToChildProxy(callingNode, messages, model, originMachineId);
+    const childResult = await routeToChildProxy(callingNode, messages, model, originMachineId, env);
     if (childResult) {
       completionContent = childResult.choices?.[0]?.message?.content || '';
     }
@@ -267,7 +344,7 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     routingDecision = 'route_to_other_children';
     for (const node of activeNodes.results) {
       if (node.machine_id === originMachineId) continue;
-      const childResult = await routeToChildProxy(node, messages, model, originMachineId);
+      const childResult = await routeToChildProxy(node, messages, model, originMachineId, env);
       if (childResult) {
         completionContent = childResult.choices?.[0]?.message?.content || '';
         if (completionContent) break;
@@ -336,6 +413,7 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
       total_nodes: totalNodes,
       chat_only: true,
       routing_decision: routingDecision,
+      polling_queued: routingDecision.startsWith('route_to') && !completionContent,
     },
   };
 

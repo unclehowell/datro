@@ -77,7 +77,8 @@ cat > "$CONFIG_JSON" <<EOF
   "proxy_port": 6000,
   "gui_port": 6001,
   "parent": "$PARENT_URL",
-  "version": "0.3.0"
+  "version": "0.4.0",
+  "polling": true
 }
 EOF
 echo "Machine config written to $CONFIG_JSON"
@@ -363,18 +364,25 @@ cat > "$INSTALL_DIR/SOUL.md" <<'SOULEOF'
 You are a child proxy node in the FinanceCheque (FCUK) proxy network.
 Your machine_id is MACHINE_ID_PLACEHOLDER.
 
-## Routing Chain (tried in order, 3 retries)
-1. **Parent proxy** — financecheque.uk/api/proxy/v1/chat/completions
-   Routes to: your child proxy → parent's env var LLM keys → other child proxies on the network
-2. **Local child proxy** — localhost:4001/v1/chat/completions (Node.js Express)
-   Routes to: groq → kiro → local agent proxy (port 6000) → opencode → kilo → Cloudflare proxy
-3. **Local providers** — .env API keys in round-robin (OpenRouter → OpenAI → NVIDIA → Anthropic → Gemini → DeepSeek → Groq)
-4. **Peer proxies** — discovered via UDP multicast (239.255.255.250:6002)
-5. **Retry** — cycle back to parent proxy up to 3 times total
+## Polling Mode (No Open Ports Required)
+This machine uses **polling mode** — the agent makes outbound HTTPS requests to the
+parent proxy every 2 seconds to check for pending work. No inbound ports needed.
+Works from any network (NAT, firewall, closed ports, AWS security groups, etc).
+
+## Routing Chain (tried in order, retries)
+1. **Local providers** — .env API keys in round-robin (OpenRouter, OpenAI, etc.)
+2. **Parent proxy** — routes to: other child proxies → parent's OpenRouter keys → Cloudflare proxy
+3. **Peer proxies** — discovered via UDP multicast (239.255.255.250:6002)
+
+## Polling Workflow
+- Agent registers with parent via outbound POST → /api/proxy/register
+- Agent polls every 2s → GET /api/proxy/poll?machine_id=...
+- Parent queues work when it can't reach this machine directly (closed ports)
+- Agent processes queued work using local API keys
+- Agent posts result back → POST /api/proxy/result
 
 ## Endpoints
-- Agent proxy: http://localhost:6000/v1/chat/completions (OpenAI-compatible)
-- Child proxy: http://localhost:4001/v1/chat/completions (OpenAI-compatible)
+- Agent proxy: http://localhost:6000/v1/chat/completions (OpenAI-compatible, local use)
 - GUI dashboard: http://localhost:6001
 - Status: http://localhost:6000/status | curl
 
@@ -382,11 +390,9 @@ Your machine_id is MACHINE_ID_PLACEHOLDER.
 - Config: ~/.fcukproxy/machine.json
 - API keys: ~/.fcukproxy/.env
 - Agent log: ~/.fcukproxy/agent.log
-- Child proxy log: ~/.fcukproxy/child-proxy.log
 
 ## Commands
 - Restart agent: systemctl --user restart fcukproxy
-- Restart child: systemctl --user restart fcuk-child-proxy
 - View status: curl http://localhost:6000/status | python3 -m json.tool
 SOULEOF
 sed -i "s/MACHINE_ID_PLACEHOLDER/$MACHINE_ID/g" "$INSTALL_DIR/SOUL.md"

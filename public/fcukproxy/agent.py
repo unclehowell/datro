@@ -30,7 +30,8 @@ PARENT_URLS = [
     "https://www.financecheque.uk/api/proxy",
     "https://financecheque.uk/api/proxy",
 ]
-VERSION = "0.3.0"
+POLL_INTERVAL = 2
+VERSION = "0.4.0"
 
 log = logging.getLogger(__name__)
 
@@ -138,6 +139,46 @@ async def periodic_register():
     while True:
         await register_with_parent()
         await asyncio.sleep(60)
+
+_polled_work_ids: set[str] = set()
+
+async def poll_parent():
+    while True:
+        for parent in PARENT_URLS:
+            try:
+                async with ClientSession(timeout=ClientTimeout(total=10)) as s:
+                    async with s.get(
+                        f"{parent}/poll",
+                        params={"machine_id": CONFIG["machine_id"]},
+                    ) as r:
+                        if r.status == 200:
+                            data = await r.json()
+                            if data.get("pending") and data.get("work_id"):
+                                wid = data["work_id"]
+                                if wid in _polled_work_ids:
+                                    continue
+                                _polled_work_ids.add(wid)
+                                payload = data.get("payload", {})
+                                log.info(f"Polled work {wid} from parent")
+                                result = await route_llm(payload)
+                                await post_result(parent, wid, result)
+            except Exception as e:
+                log.debug(f"Poll {parent} failed: {e}")
+        await asyncio.sleep(POLL_INTERVAL)
+
+async def post_result(parent_url: str, work_id: str, result: dict):
+    try:
+        async with ClientSession(timeout=ClientTimeout(total=10)) as s:
+            await s.post(
+                f"{parent_url}/result",
+                json={
+                    "machine_id": CONFIG["machine_id"],
+                    "work_id": work_id,
+                    "result": result,
+                },
+            )
+    except Exception as e:
+        log.warning(f"Failed to post result for {work_id}: {e}")
 
 async def bpdu_sender():
     sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM, socket.IPPROTO_UDP)
@@ -473,6 +514,7 @@ async def main():
 
     await asyncio.gather(
         periodic_register(),
+        poll_parent(),
         bpdu_sender(),
         bpdu_listener(),
         peer_reaper(),

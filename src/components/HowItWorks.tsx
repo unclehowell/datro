@@ -42,24 +42,23 @@ const steps = [
   },
   {
     num: '04',
-    title: 'Launch Child Proxy (Node.js)',
-    subtitle: 'localhost:4001 (Express)',
+    title: 'Poll Parent for Work',
+    subtitle: 'GET /api/proxy/poll every 2 seconds',
     details: [
-      'Node.js Express server on port 4001',
-      'OpenAI-compatible /v1/chat/completions endpoint',
-      'Chat routing chain: groq CLI, kiro, local agent, opencode, kilo',
-      'Registers with parent as a routable child proxy node',
+      'Agent polls the parent proxy for queued work every 2 seconds',
+      'No open ports needed — all traffic is outbound HTTPS',
+      'Parent queues work when it cannot reach the child directly',
+      'Agent processes work using local API keys or provider chain',
     ],
   },
   {
     num: '05',
-    title: 'Cloudflare Tunnel (Optional)',
-    subtitle: 'child-proxy.financecheque.uk',
+    title: 'Post Results Back',
+    subtitle: 'POST /api/proxy/result',
     details: [
-      'Automatically installs cloudflared if available',
-      'Creates tunnel: child-proxy.financecheque.uk → localhost:4001',
-      'Makes the child proxy reachable from the public internet',
-      'Enables peer-to-peer routing between child nodes',
+      'After processing work, agent POSTs the result to the parent',
+      'Parent stores the completed result in D1',
+      'Children with open ports can also receive work via direct routing',
     ],
   },
   {
@@ -76,13 +75,11 @@ const steps = [
 ];
 
 const routingChain = [
-  { name: 'Parent Proxy', url: 'financecheque.uk/api/proxy', desc: 'Receives request, looks up least-loaded child node' },
-  { name: 'Child Proxy', port: 4001, desc: 'Node.js Express, tries local CLI tools in priority order' },
-  { name: 'groq CLI', desc: 'Fastest provider, tried first' },
-  { name: 'kiro CLI', desc: 'Fallback if groq unavailable' },
-  { name: 'Local Agent', port: 6000, desc: 'Python aiohttp, round-robin LLM providers' },
-  { name: 'opencode / kilo', desc: 'CLI fallbacks before Cloudflare fallback' },
-  { name: 'Cloudflare Proxy', url: 'pirateclaw.datro.xyz', desc: 'Final fallback if all local providers fail' },
+  { name: 'Parent Proxy', url: 'financecheque.uk/api/proxy', desc: 'Receives request, tries direct child routing, queues for polling nodes' },
+  { name: 'Local Providers', desc: 'Round-robin: OpenRouter, OpenAI, Anthropic, Gemini, DeepSeek, Groq (agent.py uses its .env API keys)' },
+  { name: 'Parent OpenRouter', desc: 'If agent has no local keys, routes to parent which tries its own OpenRouter key' },
+  { name: 'Peer Proxies', desc: 'UDP multicast discovers LAN peers, tries local peer if available' },
+  { name: 'Cloudflare Proxy', url: 'pirateclaw.datro.xyz', desc: 'Final fallback if all above fail' },
 ];
 
 export default function HowItWorks({ onBack }: Props) {
@@ -137,6 +134,22 @@ export default function HowItWorks({ onBack }: Props) {
           orchestrates many child proxy nodes (any Linux machine). Each child proxy runs local LLM providers
           and registers itself with the parent. Chat requests are routed to the least-loaded online node.
         </p>
+
+        {/* Polling Mode Callout */}
+        <div className="p-6 frame border-accent/30 bg-accent/5 space-y-3">
+          <div className="flex items-center gap-3">
+            <Wifi size={20} className="text-accent" />
+            <h3 className="font-bold text-sm">No Open Ports Required — Polling Mode</h3>
+          </div>
+          <p className="text-xs text-ink/50 leading-relaxed">
+            Machines with closed ports (AWS security groups, NAT, firewalls) use <strong className="text-ink/80">polling mode</strong>.
+            The agent never listens for inbound connections — it makes outbound HTTPS requests to the parent proxy
+            every 2 seconds, asking if there's pending work. When the parent can't reach a child directly
+            (because the port is closed), it queues the work in D1 and the child picks it up on the next poll.
+            This means <strong className="text-ink/80">any machine with outbound internet access can join the network</strong>.
+          </p>
+        </div>
+
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
           <div className="p-6 frame space-y-3">
             <div className="w-10 h-10 bg-accent/10 text-accent flex items-center justify-center">
@@ -145,17 +158,17 @@ export default function HowItWorks({ onBack }: Props) {
             <h3 className="font-bold text-sm">Parent Proxy</h3>
             <p className="text-xs text-ink/50 leading-relaxed">
               Cloudflare Workers endpoint at <span className="text-accent font-mono">financecheque.uk/api/proxy</span>.
-              Stores node registrations in D1, routes chat to least-loaded child, falls back to OpenRouter.
+              Stores node registrations in D1, routes chat to reachable children, queues work for polling nodes.
             </p>
           </div>
           <div className="p-6 frame space-y-3">
             <div className="w-10 h-10 bg-accent/10 text-accent flex items-center justify-center">
               <Server size={20} />
             </div>
-            <h3 className="font-bold text-sm">Child Proxies</h3>
+            <h3 className="font-bold text-sm">Child Proxies (Polling)</h3>
             <p className="text-xs text-ink/50 leading-relaxed">
-              Any Linux machine running the install script. Node.js Express server on port 4001,
-              Python agent on port 6000. Registers, heartbeats, and executes chat/jobs.
+              Python agent on port 6000 (local-only). Outbound-only polling: registers, heartbeats,
+              and polls for work every 2s. No open ports needed. Uses local API keys to process jobs.
             </p>
           </div>
           <div className="p-6 frame space-y-3">
@@ -164,8 +177,8 @@ export default function HowItWorks({ onBack }: Props) {
             </div>
             <h3 className="font-bold text-sm">LLM Providers</h3>
             <p className="text-xs text-ink/50 leading-relaxed">
-              Local CLI tools (groq, kiro, opencode, kilo) provide AI inference.
-              Falls back through the chain: local → parent → Cloudflare proxy.
+              Local API keys in round-robin (OpenRouter, OpenAI, Anthropic, Gemini, etc.).
+              Falls back through: local → polled work → parent OpenRouter → Cloudflare proxy.
             </p>
           </div>
         </div>
@@ -254,10 +267,10 @@ export default function HowItWorks({ onBack }: Props) {
         </h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
           {[
-            { name: 'FCUK Proxy Agent', desc: 'Python aiohttp server on port 6000', file: '~/.fcukproxy/agent.py', systemd: 'fcukproxy.service' },
+            { name: 'FCUK Proxy Agent', desc: 'Python aiohttp server on port 6000 (local-only)', file: '~/.fcukproxy/agent.py', systemd: 'fcukproxy.service' },
+            { name: 'Polling Loop', desc: 'Polls parent every 2s for queued work (no open ports needed)', file: 'agent.py → poll_parent()', systemd: '(same service)' },
             { name: 'FCUK GUI', desc: 'Web dashboard on port 6001', file: '~/.fcukproxy/gui.py', systemd: 'fcukproxy.service' },
-            { name: 'Child Proxy', desc: 'Node.js Express on port 4001', file: '~/.fcukproxy/child-proxy.js', systemd: 'fcuk-child-proxy.service' },
-            { name: 'Cloudflare Tunnel', desc: 'child-proxy.financecheque.uk', file: '~/.cloudflared/config.yml', systemd: 'cloudflared-child-proxy.service' },
+            { name: 'Machine Config', desc: 'Unique machine identity, persists across reinstalls', file: '~/.fcukproxy/machine.json', systemd: '(config file)' },
           ].map((svc) => (
             <div key={svc.name} className="p-5 frame space-y-3">
               <div className="flex items-center gap-2">
