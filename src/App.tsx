@@ -111,7 +111,7 @@ const RingingPhone = () => (
 export default function App() {
   const [lang, setLang] = useState<Language>('en');
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [currentPage, setCurrentPage] = useState<'home' | 'exchange' | 'signin' | 'signup' | 'forgot-password' | 'docs'>('home');
+  const [currentPage, setCurrentPage] = useState<'home' | 'exchange' | 'signin' | 'signup' | 'forgot-password' | 'docs' | 'api'>('home');
   const [user, setUser] = useState<any>(null);
   const [showDemoModal, setShowDemoModal] = useState(false);
   const [demoOrientation, setDemoOrientation] = useState<'portrait' | 'landscape'>('portrait');
@@ -711,6 +711,140 @@ export default function App() {
               </div>
             </section>
           </div>
+        ) : currentPage === 'api' ? (
+          <div className="max-w-4xl mx-auto p-12 lg:p-24 space-y-16">
+            <section className="space-y-8">
+              <h2 className="text-5xl font-bold tracking-tighter">Parent Proxy API.</h2>
+              <p className="text-lg text-ink/60 leading-relaxed">
+                The Finance Cheque parent proxy orchestrates a distributed network of child proxy nodes.
+                It handles registration, health monitoring, AI chat routing, and OpenRouter-backed completions.
+                All endpoints live under <code className="bg-accent/10 text-accent px-2 py-0.5 text-sm font-mono">https://www.financecheque.uk/api/proxy</code>.
+              </p>
+            </section>
+
+            <section className="space-y-8">
+              <h2 className="text-3xl font-bold tracking-tighter">Endpoints</h2>
+
+              <div className="space-y-6">
+                <div className="p-8 frame space-y-4">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-green-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest">POST</span>
+                    <code className="text-sm font-mono">/api/proxy?action=register</code>
+                  </div>
+                  <p className="text-xs text-ink/50 leading-relaxed">Register a child proxy node in the network. Child proxies call this on startup so the parent knows how to reach them.</p>
+                  <pre className="bg-black/5 dark:bg-white/5 p-4 text-xs font-mono overflow-x-auto rounded">{
+`{
+  "childId": "aws-172-31-29-216",
+  "url": "http://172.31.29.216:4001",
+  "version": "1.0.0",
+  "machine_name": "aws-prod-1"
+}`}</pre>
+                  <div className="text-xs text-ink/50"><span className="text-accent font-bold">Response:</span> <code>{"{ \"ok\": true, \"machine_id\": \"aws-172-31-29-216\" }"}</code></div>
+                </div>
+
+                <div className="p-8 frame space-y-4">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-green-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest">POST</span>
+                    <code className="text-sm font-mono">/api/proxy?action=heartbeat</code>
+                  </div>
+                  <p className="text-xs text-ink/50 leading-relaxed">Periodic heartbeat from child proxies (typically every 30s). Keeps the node marked as online.</p>
+                  <pre className="bg-black/5 dark:bg-white/5 p-4 text-xs font-mono overflow-x-auto rounded">{
+`{
+  "childId": "aws-172-31-29-216",
+  "load": 3
+}`}</pre>
+                  <div className="text-xs text-ink/50"><span className="text-accent font-bold">Response:</span> <code>{"{ \"ok\": true }"}</code></div>
+                </div>
+
+                <div className="p-8 frame space-y-4">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest">GET</span>
+                    <code className="text-sm font-mono">/api/proxy/nodes</code>
+                  </div>
+                  <p className="text-xs text-ink/50 leading-relaxed">List all active proxy nodes seen within the last hour. Returns their machine info and last-seen timestamp.</p>
+                  <pre className="bg-black/5 dark:bg-white/5 p-4 text-xs font-mono overflow-x-auto rounded">{
+`[
+  {
+    "machine_id": "aws-172-31-29-216",
+    "machine_name": "aws-prod-1",
+    "ip_address": "172.31.29.216",
+    "proxy_port": 6000,
+    "version": "1.0.0",
+    "last_seen": "2026-05-21 12:00:00"
+  }
+]`}</pre>
+                </div>
+
+                <div className="p-8 frame space-y-4">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-green-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest">POST</span>
+                    <code className="text-sm font-mono">/api/proxy/chat</code>
+                  </div>
+                  <p className="text-xs text-ink/50 leading-relaxed">Simple chat endpoint. Sends a message to OpenRouter (auto model) and returns the AI reply. Falls back to echo if OpenRouter is unavailable.</p>
+                  <pre className="bg-black/5 dark:bg-white/5 p-4 text-xs font-mono overflow-x-auto rounded">{
+`{
+  "message": "What services do you offer?",
+  "sessionId": "abc123"
+}`}</pre>
+                  <div className="text-xs text-ink/50"><span className="text-accent font-bold">Response:</span> <code>{"{ \"ok\": true, \"reply\": \"We offer...\" }"}</code></div>
+                </div>
+
+                <div className="p-8 frame space-y-4">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-green-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest">POST</span>
+                    <code className="text-sm font-mono">/api/proxy/v1/chat/completions</code>
+                  </div>
+                  <p className="text-xs text-ink/50 leading-relaxed">OpenAI-compatible chat completions endpoint. Routes through the proxy network. When multiple child nodes are online, responses include routing metadata via the <code className="bg-accent/10 text-accent px-1 text-[10px] font-mono">X-Chat-Only</code> header.</p>
+                  <pre className="bg-black/5 dark:bg-white/5 p-4 text-xs font-mono overflow-x-auto rounded">{
+`{
+  "model": "openrouter/auto",
+  "messages": [
+    { "role": "user", "content": "Hello!" }
+  ]
+}`}</pre>
+                  <p className="text-xs text-ink/50 mt-2"><span className="text-accent font-bold">Headers:</span> <code className="text-[10px] font-mono">X-Machine-ID</code> (origin node identifier)</p>
+                  <div className="text-xs text-ink/50"><span className="text-accent font-bold">Response:</span> Standard OpenAI chat completion with <code className="text-[10px] font-mono">_proxy</code> metadata block.</div>
+                </div>
+
+                <div className="p-8 frame space-y-4">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-green-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest">POST</span>
+                    <code className="text-sm font-mono">/api/proxy?action=chat</code>
+                  </div>
+                  <p className="text-xs text-ink/50 leading-relaxed">Dispatch a chat message to the least-loaded online child proxy. Returns the child's response or a 503 if no child proxies are available.</p>
+                  <pre className="bg-black/5 dark:bg-white/5 p-4 text-xs font-mono overflow-x-auto rounded">{
+`{
+  "message": "Process this request",
+  "chat_only": true
+}`}</pre>
+                  <div className="text-xs text-ink/50"><span className="text-accent font-bold">Response:</span> <code>{"{ \"ok\": true, \"routedTo\": \"aws-...\", \"childUrl\": \"http://...\", \"reply\": \"...\" }"}</code></div>
+                </div>
+
+                <div className="p-8 frame space-y-4">
+                  <div className="flex items-center gap-3">
+                    <span className="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 uppercase tracking-widest">GET</span>
+                    <code className="text-sm font-mono">/api/proxy</code>
+                  </div>
+                  <p className="text-xs text-ink/50 leading-relaxed">List all online child proxies seen within the last 60 seconds.</p>
+                  <div className="text-xs text-ink/50"><span className="text-accent font-bold">Response:</span> Array of <code className="text-[10px] font-mono">{"{ id, url, load, last_seen }"}</code></div>
+                </div>
+              </div>
+            </section>
+
+            <section className="space-y-8">
+              <h2 className="text-3xl font-bold tracking-tighter">Child Proxy Integration</h2>
+              <p className="text-xs text-ink/50 leading-relaxed">
+                Child proxies run on remote machines (e.g., AWS EC2) and register with the parent at startup.
+                The <code className="bg-accent/10 text-accent px-1 font-mono">child-proxy.js</code> script handles registration, heartbeat, and job execution via Hermes/Kiro agents.
+                Set <code className="bg-accent/10 text-accent px-1 font-mono">PARENT_URL</code> to <code className="bg-accent/10 text-accent px-1 font-mono">https://www.financecheque.uk</code> and run.
+              </p>
+              <pre className="bg-black/5 dark:bg-white/5 p-4 text-xs font-mono overflow-x-auto rounded">{
+`PARENT_URL=https://www.financecheque.uk \\  
+CHILD_ID=aws-my-node \\  
+SELF_URL=http://<public-ip>:4001 \\  
+node child-proxy.js`}</pre>
+            </section>
+          </div>
         ) : currentPage === 'forgot-password' ? (
           <ForgotPassword onBack={() => { setCurrentPage('home'); setShowAuthModal(true); }} />
         ) : (user && user.email !== 'demo') ? (
@@ -976,6 +1110,7 @@ export default function App() {
             </p>
             <div className="flex gap-4">
               <button onClick={() => setCurrentPage('docs')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">Docs</button>
+              <button onClick={() => setCurrentPage('api')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">API</button>
               <button onClick={() => setCurrentPage('exchange')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">Exchange</button>
             </div>
           </div>
