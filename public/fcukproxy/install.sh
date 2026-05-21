@@ -273,23 +273,23 @@ if command -v node >/dev/null 2>&1; then
   # Install express for child proxy
   cd "$INSTALL_DIR" && npm install express 2>/dev/null || true
 
+  NODE_BIN="$(which node 2>/dev/null || echo '/usr/bin/node')"
   if [ "$PLATFORM" = "linux" ] && command -v systemctl >/dev/null 2>&1; then
     CHILD_SERVICE_FILE="$HOME/.config/systemd/user/$CHILD_SERVICE_NAME.service"
     cat > "$CHILD_SERVICE_FILE" <<EOF
 [Unit]
 Description=FCUK Child Proxy (Node.js)
-After=network.target fcukproxy.service
-BindsTo=fcukproxy.service
+After=network.target
+BindsTo=cloudflared-child-proxy.service
 
 [Service]
-ExecStart=$(which node) $CHILD_PROXY_JS
+ExecStart=$NODE_BIN $CHILD_PROXY_JS
 Restart=on-failure
 RestartSec=5
 WorkingDirectory=$INSTALL_DIR
 Environment=PORT=4001
 Environment=CHILD_ID=$MACHINE_ID
-Environment=SELF_URL=http://$LOCAL_IP:4001
-Environment=NODE_PATH=$INSTALL_DIR/node_modules
+Environment=TUNNEL_URL=https://child-proxy.financecheque.uk
 
 [Install]
 WantedBy=default.target
@@ -297,15 +297,62 @@ EOF
     systemctl --user daemon-reload 2>/dev/null || true
     systemctl --user enable "$CHILD_SERVICE_NAME" 2>/dev/null || true
     systemctl --user --no-block start "$CHILD_SERVICE_NAME" 2>/dev/null || true
-    echo "  ✓ Child proxy service started (port 4001)"
+    echo "  ✓ Child proxy service started (port 4001, tunnel: child-proxy.financecheque.uk)"
   else
     pkill -f "child-proxy.js" 2>/dev/null || true
-    nohup node "$CHILD_PROXY_JS" > "$INSTALL_DIR/child-proxy.log" 2>&1 &
+    nohup "$NODE_BIN" "$CHILD_PROXY_JS" > "$INSTALL_DIR/child-proxy.log" 2>&1 &
     echo "  ✓ Child proxy started (port 4001, PID: $!)"
   fi
 else
   echo "  ⚠ Node.js not found — install it to enable child proxy on port 4001"
   echo "    sudo apt install nodejs npm"
+fi
+
+# ── Cloudflare Tunnel (child-proxy.financecheque.uk → localhost:4001) ──
+echo "Setting up Cloudflare Tunnel for child proxy..."
+if command -v cloudflared >/dev/null 2>&1; then
+  # Check if tunnel already exists
+  if ! cloudflared tunnel list 2>/dev/null | grep -q "fcuk-child-proxy"; then
+    cloudflared tunnel create fcuk-child-proxy 2>/dev/null || true
+    cloudflared tunnel route dns fcuk-child-proxy child-proxy.financecheque.uk 2>/dev/null || true
+  fi
+
+  TUNNEL_CONFIG_DIR="$HOME/.cloudflared"
+  TUNNEL_ID_FILE=$(ls "$TUNNEL_CONFIG_DIR"/*.json 2>/dev/null | grep -m1 "fcuk" || echo "")
+  if [ -n "$TUNNEL_ID_FILE" ]; then
+    cat > "$TUNNEL_CONFIG_DIR/config.yml" <<EOF
+tunnel: fcuk-child-proxy
+credentials-file: $TUNNEL_ID_FILE
+no-autoupdate: true
+
+ingress:
+  - hostname: child-proxy.financecheque.uk
+    service: http://localhost:4001
+  - service: http_status:404
+EOF
+
+    TUNNEL_SERVICE_FILE="$HOME/.config/systemd/user/cloudflared-child-proxy.service"
+    mkdir -p "$(dirname "$TUNNEL_SERVICE_FILE")"
+    cat > "$TUNNEL_SERVICE_FILE" <<EOF
+[Unit]
+Description=Cloudflare Tunnel — FCUK Child Proxy
+After=network.target
+
+[Service]
+ExecStart=$(which cloudflared) tunnel run fcuk-child-proxy
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+EOF
+    systemctl --user daemon-reload 2>/dev/null || true
+    systemctl --user enable cloudflared-child-proxy 2>/dev/null || true
+    systemctl --user --no-block start cloudflared-child-proxy 2>/dev/null || true
+    echo "  ✓ Cloudflare Tunnel started (child-proxy.financecheque.uk → localhost:4001)"
+  fi
+else
+  echo "  ⚠ cloudflared not found. Install it from https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/"
 fi
 
 # ── Install SOUL.md (machine identity document) ─────────────────────────
