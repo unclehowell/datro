@@ -1,5 +1,10 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.01] - 2026-05-21
+
+### Fixed
+- fix: remove console.log from ./static/carfinancecheque/src/components/ClaimForm.tsx
+
 ## [carfinancecheque-v0.0.0.15] - 2026-05-21
 
 ### Fixed
