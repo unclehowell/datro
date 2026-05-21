@@ -228,7 +228,7 @@ sleep 2
 
 # ── Register with parent proxy ──────────────────────────────────────────
 echo "Registering with parent proxy..."
-REGISTER_PAYLOAD="{\"machine_id\":\"$MACHINE_ID\",\"machine_name\":\"$HOSTNAME\",\"ip_address\":\"$LOCAL_IP\",\"proxy_port\":6000,\"version\":\"0.3.0\"}"
+REGISTER_PAYLOAD="{\"machine_id\":\"$MACHINE_ID\",\"machine_name\":\"$HOSTNAME\",\"ip_address\":\"$LOCAL_IP\",\"proxy_port\":6000,\"version\":\"0.4.0\"}"
 curl -sf -X POST "$PARENT_URL/register" \
   -H "Content-Type: application/json" \
   -H "X-Machine-ID: $MACHINE_ID" \

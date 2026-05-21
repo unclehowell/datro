@@ -303,7 +303,7 @@ export default function HowItWorks({ onBack }: Props) {
   "proxy_port": 6000,             ← Python agent port
   "gui_port": 6001,               ← Dashboard port
   "parent": "financecheque.uk/api/proxy",
-  "version": "0.3.0"
+  "version": "0.4.0"
 }`}
         </pre>
         <p className="text-xs text-ink/40">

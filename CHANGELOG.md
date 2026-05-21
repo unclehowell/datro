@@ -1,5 +1,17 @@
 # Changelog
 
+## [financecheque-v0.1.0.145] - 2026-05-21
+
+### Added
+- feat: How It Works page explaining one-line install child proxy setup
+- feat: polling workaround for closed-port machines — agent.py polls parent every 2s
+- feat: Cloudflare poll/result endpoints with D1 work queue for unreachable nodes
+- feat: install.sh updated for polling-only mode (no open ports required)
+
+### Fixed
+- fix: agent registration payload version inconsistency (0.3.0 → 0.4.0)
+- fix: missing .bind(machineId) in handlePoll D1 query
+
 ## [financecheque-v0.1.0.144] - 2026-05-21
 
 ### Fixed
