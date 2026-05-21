@@ -28,7 +28,9 @@ try {
 const PARENT_URL = process.env.PARENT_URL || "https://www.financecheque.uk";
 const CHILD_ID   = process.env.CHILD_ID   || machineId || `child-${os.hostname()}`;
 const PORT       = Number(process.env.PORT) || 4001;
-const SELF_URL   = process.env.SELF_URL    || `http://localhost:${PORT}`;
+// Use tunnel URL if available (makes child proxy reachable from parent proxy via Cloudflare)
+const TUNNEL_URL = process.env.TUNNEL_URL || "https://child-proxy.financecheque.uk";
+const SELF_URL   = process.env.SELF_URL    || TUNNEL_URL;
 
 const app = express();
 app.use(express.json());

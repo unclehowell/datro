@@ -10,6 +10,7 @@ interface ProxyNode {
   proxy_port: number;
   version: string;
   last_seen: string;
+  url?: string;
 }
 
 interface ChatMessage {
@@ -119,21 +120,25 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
 
   const machine_name = body.machine_name || machine_id;
 
+  const nodeUrl = body.url || '';
+
   await env.DB.prepare(
-    `INSERT INTO proxy_nodes (machine_id, machine_name, ip_address, proxy_port, version, last_seen)
-     VALUES (?, ?, ?, ?, ?, datetime('now'))
+    `INSERT INTO proxy_nodes (machine_id, machine_name, ip_address, proxy_port, version, url, last_seen)
+     VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
      ON CONFLICT(machine_id) DO UPDATE SET
        machine_name = excluded.machine_name,
        ip_address = excluded.ip_address,
        proxy_port = excluded.proxy_port,
        version = excluded.version,
+       url = excluded.url,
        last_seen = datetime('now')`
   ).bind(
     machine_id,
     machine_name,
     ip_address,
     proxy_port,
-    body.version || ''
+    body.version || '',
+    nodeUrl
   ).run();
 
   return new Response(JSON.stringify({ ok: true, machine_id }), { status: 200, headers });
@@ -153,7 +158,7 @@ async function handleHeartbeat(request: Request, env: Env, headers: Record<strin
 async function handleNodes(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
   await ensureTable(env);
   const { results } = await env.DB.prepare(
-    `SELECT machine_id, machine_name, ip_address, proxy_port, version, last_seen
+    `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen
      FROM proxy_nodes
      WHERE last_seen > datetime('now', '-1 hour')
      ORDER BY last_seen DESC`
@@ -205,7 +210,8 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
 }
 
 async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model: string, originMachineId: string): Promise<Response | null> {
-  const childUrl = `http://${node.ip_address}:${node.proxy_port + 1 || 4001}/v1/chat/completions`;
+  // Use the registered URL if available, otherwise construct from ip:port
+  const childUrl = (node as any).url || `http://${node.ip_address}:${node.proxy_port + 1 || 4001}/v1/chat/completions`;
   try {
     const resp = await fetch(childUrl, {
       method: 'POST',
