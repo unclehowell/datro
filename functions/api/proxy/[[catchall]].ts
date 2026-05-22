@@ -94,6 +94,9 @@ async function ensureTable(env: Env): Promise<void> {
     )`
   ).run();
   await env.DB.prepare(
+    `ALTER TABLE proxy_nodes ADD COLUMN url TEXT DEFAULT ''`
+  ).run().catch(() => {});
+  await env.DB.prepare(
     `CREATE TABLE IF NOT EXISTS proxy_logs (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
       origin_machine_id TEXT DEFAULT '',
@@ -320,7 +323,7 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
   ).bind(originMachineId).run();
 
   const activeNodes = await env.DB.prepare(
-    `SELECT machine_id, machine_name, ip_address, proxy_port, version, last_seen
+    `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen
      FROM proxy_nodes WHERE last_seen > datetime('now', '-1 hour')
      ORDER BY last_seen DESC`
   ).all() as { results: ProxyNode[] };

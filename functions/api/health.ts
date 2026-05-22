@@ -28,6 +28,9 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
         registered_at TEXT DEFAULT (datetime('now'))
       )`
     ).run();
+    await env.DB.prepare(
+      `ALTER TABLE proxy_nodes ADD COLUMN url TEXT DEFAULT ''`
+    ).run().catch(() => {});
 
     await env.DB.prepare(
       `CREATE TABLE IF NOT EXISTS proxy_logs (
@@ -42,7 +45,7 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     ).run();
 
     const { results: nodes } = await env.DB.prepare(
-      `SELECT machine_id, machine_name, ip_address, proxy_port, version, last_seen, registered_at
+      `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen, registered_at
        FROM proxy_nodes
        ORDER BY last_seen DESC`
     ).all() as { results: any[] };
