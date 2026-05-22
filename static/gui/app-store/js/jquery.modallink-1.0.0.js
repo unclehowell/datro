@@ -214,10 +214,7 @@
             $iframe.css({ width: settings.width, height: settings.height });
 
             if (settings.method == "CLONE") {
-                console.log(url);
                 var $inlineContent = $(url);
-                console.log($inlineContent);
-
                 var iFrameDoc = $iframe[0].contentDocument || $iframe[0].contentWindow.document;
                 iFrameDoc.write($inlineContent.html());
                 iFrameDoc.close();
