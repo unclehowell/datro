@@ -1,0 +1,14 @@
+{
+  "name": "pcp",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "npx serve .",
+    "start": "npx serve .",
+    "build": "echo Static site ready"
+  },
+  "dependencies": {
+    "@fortawesome/fontawesome-free": "^7.2.0",
+    "admin-lte": "^4.0.0-rc6",
+    "bootstrap": "^5.3.8"
+  }
+}

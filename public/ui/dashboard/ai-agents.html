@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Agents Hub</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .agent-card {
+            transition: all 0.3s ease;
+        }
+        .agent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+        .status-dot {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <header class="text-center mb-12">
+            <h1 class="text-4xl font-bold mb-2">
+                <i class="fas fa-robot text-blue-400 mr-3"></i>AI Agents Hub
+            </h1>
+            <p class="text-gray-400">Central dashboard for all AI agent interfaces</p>
+        </header>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6" id="agents-grid">
+            <!-- Cards will be populated by JavaScript -->
+        </div>
+
+        <div class="mt-12 text-center text-gray-500 text-sm">
+            <p>Last updated: <span id="last-update">--</span></p>
+        </div>
+    </div>
+
+    <script>
+        const agents = [
+            {
+                name: "OpenClaw",
+                url: "http://localhost:18789",
+                icon: "🦞",
+                color: "from-orange-500 to-red-500",
+                description: "Full-featured AI assistant with tools"
+            },
+            {
+                name: "Picoclaw", 
+                url: "http://localhost:18800",
+                icon: "🦐",
+                color: "from-purple-500 to-pink-500",
+                description: "Lightweight chat interface"
+            },
+            {
+                name: "Paperclip",
+                url: "http://localhost:3100",
+                icon: "📎",
+                color: "from-blue-500 to-cyan-500",
+                description: "Visual agentic tasks"
+            },
+            {
+                name: "Hermes CLI",
+                url: "http://localhost:18789",
+                icon: "🪽",
+                color: "from-amber-500 to-yellow-500",
+                description: "Terminal AI assistant"
+            },
+            {
+                name: "Model Monitor",
+                url: "http://localhost:8082",
+                icon: "📊",
+                color: "from-green-500 to-emerald-500",
+                description: "LLM health & quota dashboard"
+            },
+            {
+                name: "Jarvis/vLLM",
+                url: "http://localhost:8000",
+                icon: "🤖",
+                color: "from-indigo-500 to-purple-500",
+                description: "Local LLM server"
+            },
+            {
+                name: "Ollama",
+                url: "http://localhost:11434",
+                icon: "🧠",
+                color: "from-gray-600 to-gray-800",
+                description: "Local model runtime"
+            },
+            {
+                name: "OpenClaw Studio",
+                url: "http://localhost:18791",
+                icon: "🎨",
+                color: "from-pink-500 to-rose-500",
+                description: "Browser-based IDE"
+            }
+        ];
+
+        async function checkStatus(url) {
+            try {
+                const response = await fetch(url, { 
+                    method: 'HEAD',
+                    mode: 'no-cors'
+                });
+                return true;
+            } catch (e) {
+                return false;
+            }
+        }
+
+        async function renderAgents() {
+            const grid = document.getElementById('agents-grid');
+            grid.innerHTML = '';
+
+            for (const agent of agents) {
+                const isOnline = await checkStatus(agent.url);
+                
+                const card = document.createElement('a');
+                card.href = agent.url;
+                card.target = "_blank";
+                card.className = `agent-card block bg-gradient-to-br ${agent.color} rounded-xl p-6 text-white no-underline`;
+                
+                card.innerHTML = `
+                    <div class="text-4xl mb-4">${agent.icon}</div>
+                    <h3 class="text-xl font-bold mb-2">${agent.name}</h3>
+                    <p class="text-sm opacity-80 mb-4">${agent.description}</p>
+                    <div class="flex items-center gap-2">
+                        <span class="status-dot inline-block w-3 h-3 rounded-full ${isOnline ? 'bg-green-400' : 'bg-red-400'}"></span>
+                        <span class="text-sm">${isOnline ? 'Online' : 'Offline'}</span>
+                    </div>
+                    <div class="mt-4 text-xs opacity-60">${agent.url.replace('http://', '')}</div>
+                `;
+                
+                grid.appendChild(card);
+            }
+
+            document.getElementById('last-update').textContent = new Date().toLocaleString();
+        }
+
+        renderAgents();
+        setInterval(renderAgents, 30000);
+    </script>
+</body>
+</html>
