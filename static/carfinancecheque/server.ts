@@ -70,14 +70,7 @@ async function startServer() {
       // Add ViewThru specific fields
       payload.device_session_id = session_id;
       payload.account_creation_url = 'https://car.financecheque.uk/claim';
-
-      console.log("--- PROXY: PREPARING UPSTREAM REQUEST ---");
       const upstreamUrl = `https://r2r.theclaimsystem.co.uk/api/v2/affiliate/${affiliateId}`;
-      console.log("Target URL:", upstreamUrl);
-      console.log("Affiliate ID used:", affiliateId);
-      console.log("API Key present:", !!apiKey);
-      console.log("Client IP being sent:", payload.client_ip);
-      
       const upstreamHeaders = {
         'Accept': 'application/json',
         'Content-Type': 'application/json',
@@ -94,10 +87,6 @@ async function startServer() {
         headers: upstreamHeaders,
         body: JSON.stringify(payload)
       });
-
-      console.log("--- PROXY: UPSTREAM RESPONSE RECEIVED ---");
-      console.log("Status Code:", response.status);
-
       const contentType = response.headers.get("content-type");
       if (contentType && contentType.includes("application/json")) {
         const resText = await response.text();
@@ -138,7 +127,6 @@ async function startServer() {
   }
 
   app.listen(PORT, "0.0.0.0", () => {
-    console.log(`Server running on http://localhost:${PORT}`);
   });
 }
 

@@ -84,14 +84,6 @@ export async function onRequestPost(context: any) {
     const postcode_formatted = formatPostcode(String(body.postcode || "").trim());
     const device_session_id = body.device_session_id || "";
     const session_id       = body.session_id || device_session_id || crypto.randomUUID();
-
-    console.log("ADDRESS FIELDS:", {
-      buildingNumber: !!buildingNumber,
-      thoroughfare: !!thoroughfare,
-      townOrCity: !!townOrCity,
-      postcode: !!postcode_formatted
-    });
-
     // Signature - spec shows full data URL in example
     let sigImage = String(body.signature_image || "");
 
@@ -145,8 +137,6 @@ export async function onRequestPost(context: any) {
       "API-KEY":       apiKey,
       "User-Agent":    req.headers.get('user-agent') || 'Cloudflare-Function',
     };
-
-    console.log("SENDING TO UPSTREAM:", url);
     console.log("UPSTREAM HEADERS:", Object.keys(upstreamHeaders));
 
     const res = await fetch(url, {
@@ -156,7 +146,6 @@ export async function onRequestPost(context: any) {
     });
 
     const text = await res.text();
-    console.log("R2R STATUS:", res.status);
     console.log("R2R BODY (truncated):", text ? text.slice(0, 500) : "(empty)");
 
     // Normalize upstream response to match V3 spec

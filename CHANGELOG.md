@@ -1,5 +1,12 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.10] - 2026-05-22
+
+### Fixed
+- - fix: remove console.log from 3 files
+- fix: remove console.log from 3 files
+- fix: remove console.log from 3 files
+
 ## [carfinancecheque-v0.0.0.01] - 2026-05-21
 
 ### Fixed
