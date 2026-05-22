@@ -262,7 +262,8 @@ print('applied')
 
   if [ "$FIX_APPLIED" = false ]; then
     log "Running static analysis fallback for $branch..."
-    for file in $(rg -l 'console\.(log|debug)' -g '*.{ts,tsx,py,js}' . --no-heading 2>/dev/null | head -1); do
+    SA_COUNT=0
+    for file in $(rg -l 'console\.(log|debug)' -g '*.{ts,tsx,py,js}' . --no-heading 2>/dev/null | head -3); do
       log "Removing console.log from $file"
       python3 -c "
 import re
@@ -271,8 +272,16 @@ with open('$file') as f:
 c = re.sub(r'^\s*console\.(log|debug)\([^)]*\);?\s*\n', '', c, flags=re.MULTILINE)
 with open('$file', 'w') as f:
     f.write(c)
-" 2>&1 && FIX_APPLIED=true && COMMIT_MSG="fix: remove console.log from $file" && break
+" 2>&1 && SA_COUNT=$((SA_COUNT + 1)) && log "  Fixed $file"
     done
+    if [ "$SA_COUNT" -gt 0 ]; then
+      FIX_APPLIED=true
+      if [ "$SA_COUNT" -eq 1 ]; then
+        COMMIT_MSG="fix: remove console.log from 1 file"
+      else
+        COMMIT_MSG="fix: remove console.log from ${SA_COUNT} files"
+      fi
+    fi
   fi
 
   if [ "$FIX_APPLIED" = false ]; then
@@ -371,9 +380,30 @@ else
   done
 
   if [ -z "$SELECTED_BRANCH" ]; then
-    log "No eligible branch found. All on cooldown or missing."
-    set_state "rotation_index" "$(( (rotation_index + 1) % total_branches ))"
-    exit 0
+    # All on cooldown — find branch closest to expiry and wait if ≤1h
+    min_remaining=$COOLDOWN_SECONDS
+    min_branch=""
+    for branch in "${BRANCHES[@]}"; do
+      last=$(get_last_release "$branch")
+      if [ -n "$last" ] && [ "$last" != "0" ]; then
+        now=$(date +%s)
+        elapsed=$(( now - last ))
+        remaining=$(( COOLDOWN_SECONDS - elapsed ))
+        if [ "$remaining" -lt "$min_remaining" ]; then
+          min_remaining=$remaining
+          min_branch=$branch
+        fi
+      fi
+    done
+    if [ -n "$min_branch" ] && [ "$min_remaining" -le 3600 ]; then
+      log "All on cooldown. Nearest eligible: $min_branch in ${min_remaining}s. Waiting..."
+      sleep "$min_remaining"
+      SELECTED_BRANCH="$min_branch"
+    else
+      log "No eligible branch found. Nearest ($min_branch) needs ${min_remaining}s (${min_remaining}s > 3600s)."
+      set_state "rotation_index" "$(( (rotation_index + 1) % total_branches ))"
+      exit 0
+    fi
   fi
 fi
 
@@ -389,6 +419,8 @@ log "Using repo: $BRANCH_REPO"
 
 cd "$BRANCH_REPO"
 # Force-clean working tree and checkout target branch
+git reset --hard HEAD 2>/dev/null
+git clean -fd 2>/dev/null
 git fetch origin "$SELECTED_BRANCH" 2>&1 | tail -1
 if ! timeout 30 git checkout --force "$SELECTED_BRANCH" 2>&1 | tail -3; then
   log "Git checkout timed out, using temp clone for $SELECTED_BRANCH"
@@ -421,8 +453,21 @@ NEW_TAG="${SELECTED_BRANCH}-v${NEW_VER}"
 log "Target: $NEW_TAG (release #$NEXT_NUM)"
 
 FIX_APPLIED=false
-if apply_fix "$BRANCH_REPO" "$SELECTED_BRANCH"; then
-  FIX_APPLIED=true
+FIX_COUNT=0
+TOTAL_MSG=""
+for fix_attempt in 1 2 3; do
+  if apply_fix "$BRANCH_REPO" "$SELECTED_BRANCH"; then
+    FIX_APPLIED=true
+    FIX_COUNT=$((FIX_COUNT + 1))
+    TOTAL_MSG="${TOTAL_MSG} [fix ${fix_attempt}: ${COMMIT_MSG}]"
+    COMMIT_MSG=""
+  else
+    log "No more fixes found after ${fix_attempt} attempt(s)"
+    break
+  fi
+done
+if [ "$FIX_APPLIED" = true ]; then
+  COMMIT_MSG="fix: ${FIX_COUNT} bugs${TOTAL_MSG}"
 fi
 
 if [ -f "package.json" ]; then
