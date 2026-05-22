@@ -453,22 +453,16 @@ NEW_TAG="${SELECTED_BRANCH}-v${NEW_VER}"
 log "Target: $NEW_TAG (release #$NEXT_NUM)"
 
 FIX_APPLIED=false
-FIX_COUNT=0
-TOTAL_MSG=""
+FIX_DESCRIPTIONS=""
 for fix_attempt in 1 2 3; do
   if apply_fix "$BRANCH_REPO" "$SELECTED_BRANCH"; then
     FIX_APPLIED=true
-    FIX_COUNT=$((FIX_COUNT + 1))
-    TOTAL_MSG="${TOTAL_MSG} [fix ${fix_attempt}: ${COMMIT_MSG}]"
-    COMMIT_MSG=""
+    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- ${COMMIT_MSG}\n"
   else
-    log "No more fixes found after ${fix_attempt} attempt(s)"
     break
   fi
 done
-if [ "$FIX_APPLIED" = true ]; then
-  COMMIT_MSG="fix: ${FIX_COUNT} bugs${TOTAL_MSG}"
-fi
+log "Total fixes found: $(echo -e "$FIX_DESCRIPTIONS" | grep -c '^- ' || echo 1)"
 
 if [ -f "package.json" ]; then
   python3 -c "
@@ -482,28 +476,40 @@ fi
 TODAY=$(date '+%Y-%m-%d')
 if [ "$FIX_APPLIED" = true ]; then
   CHANGE_TYPE="Fixed"
-  DEFAULT_MSG="${COMMIT_MSG:-Automated bug fix release $NEW_TAG}"
+  CHANGELOG_BODY="- $(echo -e "$FIX_DESCRIPTIONS" | sed '/^- /!d')"
 else
-  DEFAULT_MSG="chore: maintenance re-release $NEW_TAG"
+  CHANGELOG_BODY="- chore: maintenance re-release"
   CHANGE_TYPE="Changed"
 fi
-if [ -f "CHANGELOG.md" ]; then
-  python3 -c "
-NEW_TAG = '$NEW_TAG'
-TODAY = '$TODAY'
-COMMIT_MSG = '''${COMMIT_MSG:-$DEFAULT_MSG}'''
-with open('CHANGELOG.md') as f:
+# Always create/update CHANGELOG.md
+CL_FILE="CHANGELOG.md"
+if [ ! -f "$CL_FILE" ]; then
+  printf '# Changelog\n\nAll notable changes to this project will be documented in this file.\n' > "$CL_FILE"
+fi
+BODY_FILE=$(mktemp)
+printf '%b' "$CHANGELOG_BODY" > "$BODY_FILE"
+python3 -c "
+tag = '$NEW_TAG'
+today = '$TODAY'
+with open('$BODY_FILE') as f:
+    body = f.read().strip()
+with open('$CL_FILE') as f:
     content = f.read()
-entry = f'\n## [{NEW_TAG}] - {TODAY}\n\n### $CHANGE_TYPE\n- {COMMIT_MSG}\n'
+entry = f'\n## [{tag}] - {today}\n\n### $CHANGE_TYPE\n{body}\n'
 lines = content.split('\n', 1)
 content = lines[0] + '\n' + entry + lines[1] if len(lines) >= 2 else content + '\n' + entry
-with open('CHANGELOG.md', 'w') as f:
+with open('$CL_FILE', 'w') as f:
     f.write(content)
 " 2>&1 || true
+rm -f "$BODY_FILE"
+
+# Build commit message from fix descriptions
+if [ "$FIX_APPLIED" = true ]; then
+  COMMIT_MSG=$(printf '%b' "$FIX_DESCRIPTIONS" | head -1 | sed 's/^- //' || echo "fix: automated bug fixes")
+else
+  COMMIT_MSG="chore: maintenance re-release $NEW_TAG"
 fi
 
-# Always commit, tag, push, and create a release
-COMMIT_MSG="${COMMIT_MSG:-$DEFAULT_MSG}"
 git add -A 2>&1 | tail -1
 git commit -m "$COMMIT_MSG" 2>&1 | tail -3 || log "WARN: nothing to commit (no changes)"
 git tag --force "$NEW_TAG" 2>&1 | tail -1
@@ -511,6 +517,7 @@ git push origin "$SELECTED_BRANCH" 2>&1 | tail -2 || log "WARN: push branch fail
 # Push tag; if it already exists on remote, force-update it
 git push origin "$NEW_TAG" 2>&1 | tail -2 || git push origin "$NEW_TAG" --force 2>&1 | tail -2 || log "WARN: push tag failed"
 
+printf '%b' "$CHANGELOG_BODY" > /tmp/release_body.txt
 RELEASE_BODY=$(python3 -c "
 with open('CHANGELOG.md') as f:
     content = f.read()
@@ -518,8 +525,17 @@ tag = '$NEW_TAG'
 import re
 pattern = rf'## \[\{re.escape(tag)}\].*?(?=\n## \[|\$)'
 match = re.search(pattern, content, re.DOTALL)
-print(match.group(0).strip() if match else f'Release $NEW_VER')
-" 2>/dev/null || echo "Release $NEW_VER")
+if match:
+    print(match.group(0).strip())
+else:
+    with open('/tmp/release_body.txt') as f:
+        body = f.read().strip()
+    print(f'## [{tag}] - $TODAY\\n\\n### Fixed\\n{body}')
+" 2>/dev/null)
+if [ -z "$RELEASE_BODY" ]; then
+  RELEASE_BODY="## [$NEW_TAG] - $TODAY"$'\n\n### Fixed\n'"$(cat /tmp/release_body.txt)"
+fi
+rm -f /tmp/release_body.txt
 
 gh release create "$NEW_TAG" \
   --repo "$GITHUB_REPO" \
