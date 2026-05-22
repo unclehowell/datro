@@ -3,6 +3,11 @@
 ## [datro-v0.0.0.05] - 2026-05-22
 
 ### Fixed
+- fix: remove console.log from ./demos/_theme-docs/html/searchtools.js
+
+## [datro-v0.0.0.05] - 2026-05-22
+
+### Fixed
 - fix: remove console.log from ./static/datro/status/assets/index-vRmRU4FD.js
 It's expected that developers log all changes to this branch in this CHANGELOG.md file.  
 
