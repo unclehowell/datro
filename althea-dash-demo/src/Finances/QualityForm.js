@@ -23,7 +23,6 @@ export default () => {
       try {
         post(`/metric_factor/${factor}`);
       } catch (e) {
-        console.log("caught metric factor", e);
       }
     },
     [debouncedFactor, factor]

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Welcome to Consortium Projects Documentation &#8212; Consortium Projects</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=5ecbeea2" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=fd6eb6e6"></script>
+    <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="welcome-to-consortium-projects-documentation">
+<h1>Welcome to Consortium Projects Documentation<a class="headerlink" href="#welcome-to-consortium-projects-documentation" title="Link to this heading">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading">¶</a></h2>
+<p>The DATRO Consortium operates various projects focused on decentralized infrastructure,
+community computing, and open collaboration. This document provides an overview of the
+consortium projects including email marketing infrastructure.</p>
+</section>
+<section id="email-marketing-configuration">
+<h2>Email Marketing Configuration<a class="headerlink" href="#email-marketing-configuration" title="Link to this heading">¶</a></h2>
+<p>This section documents the email marketing configuration used by the DATRO Consortium
+for internal and external communications.</p>
+<section id="service-configuration">
+<h3>Service Configuration<a class="headerlink" href="#service-configuration" title="Link to this heading">¶</a></h3>
+<p>The consortium utilizes self-hosted email solutions for marketing campaigns:</p>
+<ul class="simple">
+<li><p><strong>Mail Server</strong>: Self-hosted MTA (Mail Transfer Agent)</p></li>
+<li><p><strong>Campaign Management</strong>: Custom dashboard for email campaign creation</p></li>
+<li><p><strong>Analytics</strong>: Open source tracking for email open rates and engagement</p></li>
+</ul>
+</section>
+<section id="technical-setup">
+<h3>Technical Setup<a class="headerlink" href="#technical-setup" title="Link to this heading">¶</a></h3>
+<p>The email marketing infrastructure consists of:</p>
+<ol class="arabic simple">
+<li><p><strong>SMTP Configuration</strong>
+- Primary MX servers
+- Backup MX servers
+- SPF/DKIM/DMARC records</p></li>
+<li><p><strong>Campaign Dashboard</strong>
+- Template management
+- Recipient list handling
+- Scheduling capabilities</p></li>
+<li><p><strong>Tracking &amp; Analytics</strong>
+- Open rate monitoring
+- Click-through tracking
+- Bounce handling</p></li>
+</ol>
+</section>
+<section id="api-integration">
+<h3>API Integration<a class="headerlink" href="#api-integration" title="Link to this heading">¶</a></h3>
+<p>The email marketing system exposes RESTful APIs for integration:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/campaigns</span></code> - Create new campaign</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/campaigns/{id}</span></code> - Get campaign details</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">POST</span> <span class="pre">/api/send</span></code> - Send single email</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">GET</span> <span class="pre">/api/analytics</span></code> - Fetch analytics data</p></li>
+</ul>
+</section>
+<section id="best-practices">
+<h3>Best Practices<a class="headerlink" href="#best-practices" title="Link to this heading">¶</a></h3>
+<ul class="simple">
+<li><p>Always include unsubscribe links</p></li>
+<li><p>Use descriptive subject lines</p></li>
+<li><p>Test emails across multiple clients</p></li>
+<li><p>Monitor engagement metrics regularly</p></li>
+<li><p>Comply with CAN-SPAM and GDPR requirements</p></li>
+</ul>
+</section>
+</section>
+<section id="consortium-projects">
+<h2>Consortium Projects<a class="headerlink" href="#consortium-projects" title="Link to this heading">¶</a></h2>
+<p>Other key consortium projects include:</p>
+<ol class="arabic simple">
+<li><p><strong>HBNB</strong> - Community vacation rental platform</p></li>
+<li><p><strong>TechHouse</strong> - Shared workspace infrastructure</p></li>
+<li><p><strong>Bloculus</strong> - Decentralized social network</p></li>
+<li><p><strong>Campus</strong> - Educational resource sharing</p></li>
+</ol>
+</section>
+<section id="license">
+<h2>License<a class="headerlink" href="#license" title="Link to this heading">¶</a></h2>
+<p>Copyright (c) 2026 DATRO Consortium. All rights reserved.</p>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Consortium Projects</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2026, DATRO Consortium.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 9.1.0</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
