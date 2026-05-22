@@ -1,4 +1,9 @@
 # Changelog
+
+## [ui-v0.0.0.04] - 2026-05-22
+
+### Fixed
+- fix: remove console.log from ./static/ui/dist/dashboard/js/search/dropdown3.js
 It's expected that developers log all changes to this branch in this CHANGELOG.md file.  
 
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
