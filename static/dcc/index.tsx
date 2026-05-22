@@ -9,7 +9,6 @@ if ('serviceWorker' in navigator) {
     // We register a simple worker that handles caching. 
     // In a real environment, this would be a separate file, but here we can 
     // simulate basic persistence for a PWA experience.
-    console.log('DCC: System offline-ready logic active.');
   });
 }
 
