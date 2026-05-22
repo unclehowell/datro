@@ -1,5 +1,10 @@
 # Changelog
 
+## [llmwiki-v0.0.0.04] - 2026-05-22
+
+### Fixed
+- fix: remove console.log from ./static/canvas/assets/js/app-iframesafe.js
+
 ## [Unreleased]
 
 
