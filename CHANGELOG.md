@@ -1,5 +1,10 @@
 # Changelog — Inverse Ouroboros Whitepaper
 
+## [whitepaper-v0.0.0.02] - 2026-05-22
+
+### Changed
+- chore: maintenance re-release whitepaper-v0.0.0.02
+
 ## [0.0.1] - 2026-05-15
 ### Fixed
 - Closed unclosed HTML tags in dashboard/index.html: html, body, div, div, h2
