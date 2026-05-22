@@ -166,12 +166,23 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
 }
 
 async function handleHeartbeat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
-  const body = await request.json() as { childId?: string; load?: number; machine_id?: string };
+  const body = await request.json() as { childId?: string; load?: number; machine_id?: string; machine_name?: string; url?: string };
   const machineId = body.childId || body.machine_id;
   if (machineId) {
+    const updates: string[] = ["last_seen = datetime('now')"];
+    const binds: any[] = [];
+    if (body.url) {
+      updates.push("url = ?");
+      binds.push(body.url);
+    }
+    if (body.machine_name) {
+      updates.push("machine_name = ?");
+      binds.push(body.machine_name);
+    }
+    binds.push(machineId);
     await env.DB.prepare(
-      `UPDATE proxy_nodes SET last_seen = datetime('now') WHERE machine_id = ?`
-    ).bind(machineId).run();
+      `UPDATE proxy_nodes SET ${updates.join(', ')} WHERE machine_id = ?`
+    ).bind(...binds).run();
   }
   return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
 }
