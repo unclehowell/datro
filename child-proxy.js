@@ -285,4 +285,5 @@ app.listen(PORT, "0.0.0.0", async () => {
   console.log(`[child-proxy] Listening on port ${PORT} (${CHILD_ID})`);
   await register();
   setInterval(heartbeat, 30_000);
+  setInterval(register, 120_000); // re-register every 2 min to sync url, machine_name
 });
