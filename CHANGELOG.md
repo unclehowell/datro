@@ -1,5 +1,15 @@
 # Changelog
 
+## [library-v0.0.0.06] - 2026-05-23
+
+### Fixed
+- fix(library): remove console.log debug calls that leak internal state (3 file(s): ./demos/_theme-docs/html/searchtools.js, ./static/library/consortium_finance/funding_creditors/latest/build/html/fr/_static/js/theme.js, ./static/library/consortium_other/consortium_exchange/latest/build/html/_static/js/theme.js)
+- fix(library): remove stale commented-out code blocks (3 file(s): ./demos/_theme-docs/html/jquery-3.5.1.js, ./demos/_theme-docs/html/underscore-1.13.1.js, ./demos/_theme-docs/html/searchtools.js)
+- fix(library): clean up trailing whitespace (3 file(s): ./static/library/consortium_other/consortium_exchange/latest/build/html/_static/doctools.js, ./static/library/consortium_other/consortium_exchange/latest/build/html/_static/searchtools.js, ./static/library/consortium_other/consortium_financialforecast/latest/build/html/_static/doctools.js)
+
+### Changed
+- ux(library): improve website UX - lang,viewport, lang,viewport, lang,viewport (3 file(s): ./datroxyz-library/index.html, ./index.html, ./library/_theme-explorer/document.html)
+
 ## [library-v0.0.0.05] - 2026-05-22
 
 ### Fixed
