@@ -1,5 +1,14 @@
 # Changelog
 
+## [ceo-v0.0.0.07] - 2026-05-23
+
+### Fixed
+- fix(ceo): remove console.log debug calls that leak internal state (1 file(s): ./demos/_theme-docs/html/searchtools.js)
+- fix(ceo): remove stale commented-out code blocks (3 file(s): ./demos/_theme-docs/html/jquery-3.5.1.js, ./demos/_theme-docs/html/underscore-1.13.1.js, ./demos/_theme-docs/html/searchtools.js)
+
+### Changed
+- ux(ceo): improve website UX - lang,viewport, lang,viewport, lang,viewport (3 file(s): ./datroxyz-library/index.html, ./index.html, ./library/_theme-explorer/document.html)
+
 ## [ceo-v0.0.0.06] - 2026-05-22
 
 ### Fixed
