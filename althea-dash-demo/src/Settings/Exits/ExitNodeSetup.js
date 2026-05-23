@@ -59,7 +59,7 @@ const ExitNodeSetup = ({ open, setOpen }) => {
 
   const select = exit => {
     let verifMode;
-    
+
     if (exit.exitSettings.generalDetails)
       verifMode = exit.exitSettings.generalDetails.verifMode;
 

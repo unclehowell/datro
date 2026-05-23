@@ -1,5 +1,10 @@
 # Changelog
 
+## [subrepos-v0.0.0.04] - 2026-05-23
+
+### Changed
+- chore: maintenance re-release
+
 ## [subrepos-v0.0.0.03] - 2026-05-22
 
 ### Fixed

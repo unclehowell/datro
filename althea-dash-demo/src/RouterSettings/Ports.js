@@ -31,7 +31,6 @@ const Ports = () => {
 
       dispatch({ type: "interfaces", interfaces });
     } catch (e) {
-      console.log(e);
     }
   };
 
@@ -45,11 +44,11 @@ const Ports = () => {
     setSelected(iface);
     if (mode === "WAN") {
       setWan(true);
-    } 
+    }
     else {
       setMode(mode);
       setConfirming(true);
-    } 
+    }
   };
 
   if (!interfaces) {
