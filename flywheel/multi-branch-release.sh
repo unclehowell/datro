@@ -23,6 +23,35 @@ BRANCHES=(
   "subrepos" "ui" "wave" "wayback" "whitepaper"
 )
 
+declare -A BRANCH_URLS
+BRANCH_URLS=(
+  [althea]="N/A"
+  [archives]="https://wayback.financecheque.uk"
+  [bpvsbuckler]="https://bpvsbuckler.datro.xyz"
+  [carfinancecheque]="https://car.financecheque.uk"
+  [ccan]="https://ccan.datro.xyz"
+  [ceo]="https://ceo.datro.xyz"
+  [dash]="https://dash.financecheque.uk"
+  [datro]="https://datro.xyz"
+  [dcc]="https://dcc.datro.xyz"
+  [financecheque]="https://financecheque.uk"
+  [gui]="https://gui.datro.xyz"
+  [hbnb]="https://hbhb.datro.xyz"
+  [library]="https://library.datro.xyz"
+  [llmwiki]="https://llmwiki.financecheque.uk"
+  [pirateclaw]="https://pirateclaw.datro.xyz"
+  [subrepos]="N/A"
+  [ui]="https://ui.datro.xyz"
+  [wave]="https://wave.datro.xyz"
+  [wayback]="https://wayback.datro.xyz"
+  [whitepaper]="https://whitepaper.financecheque.uk"
+)
+
+mkpass_url() {
+  local b="$1"
+  echo "${BRANCH_URLS[$b]:-N/A}"
+}
+
 mkdir -p "$LOGDIR" "$HOME/.fcukproxy/agent/branches"
 exec >> "$LOGFILE" 2>&1
 
