@@ -65,7 +65,7 @@ async function startServer() {
       // In a real app, you'd get the customer ID from your database based on the authenticated user
       // For this demo, we'll assume a customer ID is provided or we create a dummy one
       const { customerId } = req.body;
-      
+
       if (!customerId) {
         return res.status(400).json({ error: "Customer ID is required" });
       }

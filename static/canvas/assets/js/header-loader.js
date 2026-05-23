@@ -30,7 +30,6 @@
         const parsed = JSON.parse(await response.text());
         if (Array.isArray(parsed)) return parsed;
       } catch (error) {
-        // try next candidate
       }
     }
     return null;

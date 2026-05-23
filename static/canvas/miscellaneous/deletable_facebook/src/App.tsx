@@ -150,7 +150,6 @@ export default function App() {
       
       // For this demo, we'll simulate a failure to show how it falls back to mock data
       // but if the user actually has a token, we'd try to fetch.
-      console.log("Attempting to fetch real data with token:", token);
       
       // Simulating API delay
       await new Promise(r => setTimeout(r, 1500));

@@ -30577,9 +30577,7 @@
               for (var r4 = t4 - e5, o3 = new f2(r4, void 0, true), i3 = 0; i3 < r4; i3++) o3[i3] = this[i3 + e5];
               return o3;
             }, f2.prototype.get = function(e5) {
-              return console.log(".get() is deprecated. Access using array indexes instead."), this.readUInt8(e5);
             }, f2.prototype.set = function(e5, t4) {
-              return console.log(".set() is deprecated. Access using array indexes instead."), this.writeUInt8(e5, t4);
             }, f2.prototype.readUInt8 = function(e5, t4) {
               if (t4 || (d2(null != e5, "missing offset"), d2(e5 < this.length, "Trying to read beyond buffer length")), !(e5 >= this.length)) return this[e5];
             }, f2.prototype.readUInt16LE = function(e5, t4) {
@@ -36040,9 +36038,6 @@
             zoneStore.subscribe(
               (s2) => {
                 var _a5, _b3;
-                return console.log(
-                  s2.previewIndex,
-                  (_a5 = Object.entries(s2.zoneDepthIndex || {})[0]) == null ? void 0 : _a5[0],
                   (_b3 = Object.entries(s2.areaDepthIndex || {})[0]) == null ? void 0 : _b3[0]
                 );
               }
@@ -37809,9 +37804,6 @@
             const index = lookupEl(el);
             if (index > -1) {
               if (debug)
-                console.log(
-                  `Tried to add an element that was already mirrored. Updating instead...`
-                );
               elements[index].mirror.innerText = el.innerText;
               return;
             }
@@ -37822,30 +37814,22 @@
             const elHash = (0, import_object_hash.default)(mirror.outerHTML);
             if (hashes[elHash]) {
               if (debug)
-                console.log(
-                  `iframe already contains element that is being mirrored. Skipping...`
-                );
               return;
             }
             hashes[elHash] = true;
             doc.head.append(mirror);
             elements.push({ original: el, mirror });
-            if (debug) console.log(`Added style node ${el.outerHTML}`);
           });
           const removeEl = (el) => {
             var _a5, _b3;
             const index = lookupEl(el);
             if (index === -1) {
               if (debug)
-                console.log(
-                  `Tried to remove an element that did not exist. Skipping...`
-                );
               return;
             }
             const elHash = (0, import_object_hash.default)(el.outerHTML);
             (_b3 = (_a5 = elements[index]) == null ? void 0 : _a5.mirror) == null ? void 0 : _b3.remove();
             delete hashes[elHash];
-            if (debug) console.log(`Removed style node ${el.outerHTML}`);
           };
           const observer = new MutationObserver((mutations) => {
             mutations.forEach((mutation) => {
