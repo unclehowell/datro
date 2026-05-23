@@ -9,38 +9,21 @@ LOGDIR="$HOME/logs"
 LOGFILE="$LOGDIR/multi-branch-release.log"
 STATE_FILE="$HOME/.fcukproxy/release-state.json"
 INTEL="$HOME/.fcukproxy/intelligence.py"
+AGENT_DIR="$HOME/.fcukproxy/agent"
 REPO_DIR="$HOME/datro"
 FCHEQUE_REPO="$HOME/datro-financecheque"
 GITHUB_REPO="unclehowell/datro"
 RELEASE_LIMIT=500
-
-BRANCHES=(
-  "althea"
-  "archives"
-  "bpvsbuckler"
-  "carfinancecheque"
-  "ccan"
-  "ceo"
-  "dash"
-  "datro"
-  "dcc"
-  "financecheque"
-  "gui"
-  "hbnb"
-  "library"
-  "llmwiki"
-  "pirateclaw"
-  "subrepos"
-  "ui"
-  "wave"
-  "wayback"
-  "whitepaper"
-)
-
 COOLDOWN_SECONDS=$((24 * 3600))
 
-mkdir -p "$LOGDIR" "$HOME/.fcukproxy"
+BRANCHES=(
+  "althea" "archives" "bpvsbuckler" "carfinancecheque"
+  "ccan" "ceo" "dash" "datro" "dcc" "financecheque"
+  "gui" "hbnb" "library" "llmwiki" "pirateclaw"
+  "subrepos" "ui" "wave" "wayback" "whitepaper"
+)
 
+mkdir -p "$LOGDIR" "$HOME/.fcukproxy/agent/branches"
 exec >> "$LOGFILE" 2>&1
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
@@ -56,39 +39,1116 @@ fi
 echo $$ > "$LOCKFILE"
 trap 'rm -f "$LOCKFILE"' EXIT
 
+# ── State functions ──────────────────────────────────────────────────────────
+
 init_state() {
   if [ ! -f "$STATE_FILE" ]; then
-    echo '{"rotation_index":0,"last_release":{}}' > "$STATE_FILE"
+    echo '{"rotation_index":0,"fix_rotation":0,"ux_rotation":0,"last_release":{},"total_releases":{}}' > "$STATE_FILE"
   fi
 }
 
-get_state() { python3 -c "import json; print(json.load(open('$STATE_FILE')).get('$1',''))" 2>/dev/null; }
+get_state() {
+  python3 -c "import json,sys; d=json.load(open('$STATE_FILE')); print(d.get('$1',''))" 2>/dev/null
+}
+
 set_state() {
   python3 -c "
 import json
 s = json.load(open('$STATE_FILE'))
-key, val = '$1', '$2'
-s[key] = val
+s['$1'] = $2
 json.dump(s, open('$STATE_FILE','w'), indent=2)
-"
+" 2>/dev/null || true
 }
 
 set_last_release() {
-  local branch="$1"
-  local timestamp="$2"
   python3 -c "
 import json
 s = json.load(open('$STATE_FILE'))
-if 'last_release' not in s:
-    s['last_release'] = {}
-s['last_release']['$branch'] = '$timestamp'
+s.setdefault('last_release',{})['$1'] = $2
 json.dump(s, open('$STATE_FILE','w'), indent=2)
-"
+" 2>/dev/null || true
 }
 
 get_last_release() {
   python3 -c "import json; print(json.load(open('$STATE_FILE')).get('last_release',{}).get('$1',''))" 2>/dev/null
 }
+
+inc_state_int() {
+  local key="$1" max="$2"
+  python3 -c "
+import json
+s = json.load(open('$STATE_FILE'))
+cur = int(s.get('$key', 0))
+s['$key'] = (cur + 1) % $max
+json.dump(s, open('$STATE_FILE','w'), indent=2)
+print(cur)
+" 2>/dev/null
+}
+
+# ── Rotating Fix Pool ────────────────────────────────────────────────────────
+# Each function: searches for applicable files in POOL_DIR, applies fix,
+# returns 0 if a change was made (sets POOL_DESC + POOL_FILE), 1 if not.
+
+POOL_DIR="" POOL_DESC="" POOL_FILE=""
+
+# ── Bug fix type definitions ──
+
+BUG_FIX_NAMES=()
+BUG_FIX_NAMES+=("fix_console_log")
+BUG_FIX_NAMES+=("fix_commented_code")
+BUG_FIX_NAMES+=("fix_trailing_whitespace")
+BUG_FIX_NAMES+=("fix_blank_lines")
+BUG_FIX_NAMES+=("seo_meta_description")
+BUG_FIX_NAMES+=("seo_canonical_url")
+BUG_FIX_NAMES+=("seo_open_graph")
+BUG_FIX_NAMES+=("seo_twitter_card")
+BUG_FIX_NAMES+=("seo_alt_text")
+BUG_FIX_NAMES+=("seo_lazy_loading")
+BUG_FIX_NAMES+=("seo_heading_hierarchy")
+BUG_FIX_NAMES+=("fix_charset_meta")
+BUG_FIX_NAMES+=("fix_viewport_meta")
+BUG_FIX_NAMES+=("fix_lang_attribute")
+BUG_FIX_NAMES+=("fix_link_noopener")
+BUG_FIX_NAMES+=("fix_button_type")
+BUG_FIX_NAMES+=("fix_duplicate_ids")
+BUG_FIX_NAMES+=("fix_label_for")
+BUG_FIX_NAMES+=("fix_aria_label")
+BUG_FIX_NAMES+=("fix_script_defer")
+BUG_FIX_NAMES+=("fix_img_dimensions")
+BUG_FIX_NAMES+=("fix_doctype")
+BUG_FIX_NAMES+=("seo_structured_data")
+BUG_FIX_NAMES+=("seo_meta_keywords")
+BUG_FIX_NAMES+=("fix_self_closing")
+BUG_FIX_NAMES+=("fix_inline_handlers")
+BUG_FIX_NAMES+=("fix_br_syntax")
+BUG_FIX_NAMES+=("fix_tabs_vs_spaces")
+BUG_FIX_NAMES+=("fix_bom")
+BUG_FIX_NAMES+=("fix_http_equiv")
+BUG_FIX_NAMES+=("fix_form_charset")
+BUG_FIX_NAMES+=("fix_404_title")
+
+fix_console_log() {
+  local f
+  for f in $(rg -l 'console\.(log|debug)\(' -g '*.{ts,tsx,py,js,html}' "$POOL_DIR" --no-heading 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'[ \\t]*console\.(log|debug)\([^)]*\)[;]?[ \\t]*\\n?', '', c)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Remove console.log debugging statement"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_commented_code() {
+  local f
+  for f in $(rg -l '^\s*//\s+(if|for|while|function|switch|var|let|const|console|return|try)\b' -g '*.{ts,tsx,py,js}' "$POOL_DIR" --no-heading 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'^[ \\t]*//\\s+(?:if|for|while|function|switch|var|let|const|console|return|try)\\b.*\\n?', '', c, flags=re.MULTILINE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Remove stale commented-out code blocks"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_trailing_whitespace() {
+  local f
+  for f in $(rg -l '[ \t]+$' -g '*.{ts,tsx,py,js,html,css,json,md,sh,xml,yml,yaml}' "$POOL_DIR" --no-heading 2>/dev/null | head -5); do
+    if python3 -c "
+c = open('$f').read(); orig = c
+c = '\n'.join(line.rstrip() for line in c.split('\n'))
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Clean up trailing whitespace"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_blank_lines() {
+  local f
+  for f in $(rg -l '\n\n\n+' -g '*.{ts,tsx,py,js,html,css,json,md,sh,xml,yml,yaml}' "$POOL_DIR" --no-heading 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'\\n{3,}', '\\n\\n', c)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Remove duplicate blank lines"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+seo_meta_description() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if not re.search(r'<meta\\s+name=[\"\\']description[\"\\']', c, re.IGNORECASE):
+    branch = re.search(r'/([^/]+)/[^/]+\$', '$POOL_DIR')
+    desc = 'Website of ' + ('$POOL_DIR'.split('/')[-1] or 'DATRO')
+    c = re.sub(r'(<head[^>]*>)', r'\\1\\n    <meta name=\"description\" content=\"' + desc + '\">', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add meta description tag for SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+seo_canonical_url() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if not re.search(r'<link\\s+rel=[\"\\']canonical[\"\\']', c, re.IGNORECASE):
+    c = re.sub(r'(<head[^>]*>)', r'\\1\\n    <link rel=\"canonical\" href=\"https://datro.xyz/\">', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add canonical URL for SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+seo_open_graph() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if not re.search(r'<meta\\s+property=[\"\\']og:', c, re.IGNORECASE):
+    tags = '\\n    <meta property=\"og:title\" content=\"DATRO\">\\n    <meta property=\"og:type\" content=\"website\">\\n    <meta property=\"og:url\" content=\"https://datro.xyz/\">'
+    c = re.sub(r'(<head[^>]*>)', r'\\1' + tags, c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add Open Graph meta tags for social SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+seo_twitter_card() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if not re.search(r'<meta\\s+name=[\"\\']twitter:', c, re.IGNORECASE):
+    tags = '\\n    <meta name=\"twitter:card\" content=\"summary\">\\n    <meta name=\"twitter:title\" content=\"DATRO\">'
+    c = re.sub(r'(<head[^>]*>)', r'\\1' + tags, c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add Twitter Card meta tags for social SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+seo_alt_text() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'(<img\\s+[^>]*?)(?:\\s+alt=\"\"?)?\\s*(/?>)', lambda m: m.group(1) + ' alt=\"\"' + (' />' if m.group(2).startswith('/') else '>'), c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add alt text to images for SEO and accessibility"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+seo_lazy_loading() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'(<img\\s+)(?:(?!loading=)[^>])+>', lambda m: m.group(0).replace('>', ' loading=\"lazy\">') if 'loading=' not in m.group(0) else m.group(0), c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add lazy loading to images for performance SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+seo_heading_hierarchy() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+# Ensure first heading is h1
+headings = re.findall(r'<h([1-6])[^>]*>', c, re.IGNORECASE)
+if headings and headings[0] != '1':
+    c = re.sub(r'<h([2-6])([^>]*>)', r'<h1\\2', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Fix heading hierarchy: first heading should be h1 (SEO)"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_charset_meta() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if not re.search(r'<meta\\s+charset[=\\s]', c, re.IGNORECASE):
+    c = re.sub(r'(<head[^>]*>)', r'\\1\\n    <meta charset=\"UTF-8\">', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add charset meta tag"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_viewport_meta() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if not re.search(r'<meta\\s+name=[\"\\']viewport[\"\\']', c, re.IGNORECASE):
+    c = re.sub(r'(<head[^>]*>)', r'\\1\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add viewport meta for mobile responsiveness"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_lang_attribute() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<html\\b(?!\\s*lang=)([^>]*)>', r'<html lang=\"en\"\\1>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add lang attribute to html tag for accessibility/SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_link_noopener() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<a\\s+([^>]*?)target=[\"\\']_blank[\"\\']([^>]*?)>',
+    lambda m: '<a ' + m.group(1) + ('rel=\"noopener noreferrer\" ' if 'rel=' not in m.group(1)+m.group(2) else '') + 'target=\"_blank\" ' + m.group(2) + '>' if 'noopener' not in (m.group(1)+m.group(2)).lower() else m.group(0),
+    c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add rel=noopener to external links for security"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_button_type() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<button\\b(?!\\s*type=)([^>]*?)>', r'<button type=\"button\"\\1>', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add type=button to button elements"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_duplicate_ids() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+ids = re.findall(r' id=[\"\\']([^\"\\']+)[\"\\']', c)
+if len(ids) != len(set(ids)):
+    seen = set()
+    def dedup(m):
+        i = m.group(1)
+        if i in seen:
+            return ''
+        seen.add(i)
+        return m.group(0)
+    c = re.sub(r' id=[\"\\']([^\"\\']+)[\"\\']', dedup, c)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Fix duplicate id attributes for valid HTML"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_label_for() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+# Find label text followed by input without for/id matching
+labels = re.findall(r'<label[^>]*>\\s*([^<]+)\\s*<input', c)
+if labels:
+    for text in labels:
+        safe_id = re.sub(r'\\W+', '_', text.strip().lower())
+        if safe_id:
+            c = re.sub(r'<label\\b(?!.*for=)([^>]*)>\\s*' + re.escape(text.strip()) + r'\\s*<input\\b(?!.*id=)',
+                r'<label for=\"' + safe_id + r'\"\\1>' + text.strip() + r' <input id=\"' + safe_id + r'\"',
+                c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add for/id attributes to form labels for accessibility"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_aria_label() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+# Add aria-label to icon-only elements without text
+c = re.sub(r'<button\\b([^>]*?)class=[\"\\'][^\"\\']*?(?:icon|fa-|glyphicon)[^\"\\']*?[\"\\']([^>]*?)>(?:\\s*<i[^>]*>\\s*)?</button>',
+    lambda m: '<button' + m.group(1) + 'class=' + m.group(2) + ' aria-label=\"icon button\"' + m.group(0).split('>',1)[1].rsplit('<',1)[0] + '></button>' if 'aria-label' not in (m.group(1)+m.group(2)).lower() else m.group(0),
+    c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add aria-label to icon-only buttons for accessibility"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_script_defer() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<script\\b(?!\\s*src=)(?!(?:[^>]*\\s+defer))(\\s+src=[\"\\'][^\"\\']+[\"\\'])([^>]*?)></script>',
+    r'<script defer\\1\\2></script>', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add defer to script tags for faster page load"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_img_dimensions() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'(<img\\s+[^>]*?)style=[\"\\'][^\"\\']*?(?:width|height)[^\"\\']*?[\"\\']([^>]*?)>',
+    lambda m: m.group(0) if 'width=' in m.group(0).lower() else m.group(1) + m.group(2) + ' width=\"auto\" height=\"auto\">',
+    c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add explicit width/height to images for CLS reduction"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_doctype() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+c = open('$f').read(); orig = c
+if not c.lstrip().startswith('<!DOCTYPE') and not c.lstrip().startswith('<!doctype'):
+    c = '<!DOCTYPE html>\\n' + c
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add DOCTYPE declaration for standard mode"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+seo_structured_data() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re, json
+c = open('$f').read(); orig = c
+if 'application/ld+json' not in c and '<script type=\"application/ld+json\"' not in c:
+    sd = json.dumps({'@context':'https://schema.org','@type':'WebSite','name':'DATRO','url':'https://datro.xyz'})
+    if re.search(r'</head>', c, re.IGNORECASE):
+        c = re.sub(r'</head>', '<script type=\"application/ld+json\">' + sd + '</script>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add JSON-LD structured data for SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+seo_meta_keywords() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if not re.search(r'<meta\\s+name=[\"\\']keywords[\"\\']', c, re.IGNORECASE):
+    c = re.sub(r'(<head[^>]*>)', r'\\1\\n    <meta name=\"keywords\" content=\"DATRO, consortium, web\">', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add meta keywords for SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_self_closing() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<(br|hr|img|input|meta|link)([^>]*?)(?<!/)>', r'<\\1\\2 />', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Fix self-closing tag syntax for valid XHTML"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_inline_handlers() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'\\s+on(click|load|submit|change|mouseover|mouseout|keyup|keydown)=\"[^\"]*\"', '', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Remove inline event handlers for CSP and best practices"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_br_syntax() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<br(\\s*/)?>', '<br />', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Fix br tag syntax"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_tabs_vs_spaces() {
+  local f
+  for f in $(rg -l $'^\\t' -g '*.{ts,tsx,py,js,html,css,json,xml,yml,yaml,md}' "$POOL_DIR" --no-heading 2>/dev/null | head -3); do
+    if python3 -c "
+c = open('$f').read(); orig = c
+c = c.expandtabs(4)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Convert tabs to spaces for consistent indentation"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_bom() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -o -name '*.css' -o -name '*.js' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+c = open('$f','rb').read(); orig = c
+c = c.lstrip(b'\\xef\\xbb\\xbf')
+if c != orig:
+    open('$f','wb').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Remove UTF-8 BOM for cleaner encoding"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_http_equiv() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<meta\\s+http-equiv=[\"\\']Content-Type[\"\\'][^>]*>', '', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Remove obsolete Content-Type http-equiv meta"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_form_charset() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<form\\b(?!\\s*accept-charset=)([^>]*?)>', lambda m: m.group(0) if not re.search(r'<input\\b', m.group(0)) else '<form accept-charset=\"UTF-8\"' + m.group(1) + '>', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add accept-charset to form elements"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_404_title() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '404.html' -type f 2>/dev/null | head -1); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<title>[^<]*</title>', '<title>404 - Page Not Found | DATRO</title>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add proper title to 404 page for SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+# ── UX fix type definitions ──
+
+UX_FIX_NAMES=()
+UX_FIX_NAMES+=("ux_viewport")
+UX_FIX_NAMES+=("ux_mobile_tap")
+UX_FIX_NAMES+=("ux_hover_styles")
+UX_FIX_NAMES+=("ux_css_order")
+UX_FIX_NAMES+=("ux_skip_link")
+UX_FIX_NAMES+=("ux_color_contrast")
+UX_FIX_NAMES+=("ux_smooth_scroll")
+UX_FIX_NAMES+=("ux_print_styles")
+UX_FIX_NAMES+=("ux_focus_visible")
+UX_FIX_NAMES+=("ux_touch_action")
+UX_FIX_NAMES+=("ux_button_states")
+UX_FIX_NAMES+=("ux_table_responsive")
+UX_FIX_NAMES+=("ux_z_index")
+UX_FIX_NAMES+=("ux_list_semantics")
+UX_FIX_NAMES+=("ux_loading_indicator")
+UX_FIX_NAMES+=("ux_breadcrumb")
+UX_FIX_NAMES+=("ux_cls_fix")
+UX_FIX_NAMES+=("ux_type_scale")
+UX_FIX_NAMES+=("ux_spacing")
+UX_FIX_NAMES+=("ux_keyboard_nav")
+
+ux_viewport() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+# Ensure viewport meta has user-scalable=yes for accessibility
+if re.search(r'<meta\\s+name=[\"\\']viewport[\"\\']', c, re.IGNORECASE):
+    c = re.sub(r'(<meta\\s+name=[\"\\']viewport[\"\\'][^>]*?content=[\"\\'][^\"\\']*?)(?:,\\s*user-scalable=(?:no|0))?([\"\\'])', r'\\1, user-scalable=yes\\2', c, flags=re.IGNORECASE)
+elif not re.search(r'<meta\\s+name=[\"\\']viewport[\"\\']', c, re.IGNORECASE):
+    c = re.sub(r'(<head[^>]*>)', r'\\1\\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=yes\">', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Improve viewport meta with user-scalable=yes for accessibility"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_mobile_tap() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+# Ensure minimum tap target size for mobile
+if '<style>' in c:
+    c = c.replace('<style>', '<style>\\nbutton, a, input, select, textarea { min-height: 44px; min-width: 44px; }\\n')
+else:
+    c = re.sub(r'</head>', '<style>\\nbutton, a, input, select, textarea { min-height: 44px; min-width: 44px; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add minimum tap target sizes for mobile UX"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_hover_styles() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if '<style>' in c:
+    c = c.replace('<style>', '<style>\\na:hover, button:hover { opacity: 0.85; transition: opacity 0.2s; }\\n')
+else:
+    c = re.sub(r'</head>', '<style>\\na:hover, button:hover { opacity: 0.85; transition: opacity 0.2s; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add hover styles for interactive elements"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_css_order() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+# Move CSS links before JS scripts in head
+head = re.search(r'<head>(.*?)</head>', c, re.DOTALL | re.IGNORECASE)
+if head:
+    h = head.group(1)
+    css = re.findall(r'<link[^>]*?\\.css[^>]*>', h, re.IGNORECASE)
+    js = re.findall(r'<script[^>]*>\\s*</script>', h, re.IGNORECASE)
+    # Already properly ordered if CSS comes before JS
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Optimize CSS before JS load order for better UX"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_skip_link() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'skip-to-content' not in c and 'skip-link' not in c:
+    c = re.sub(r'<body[^>]*>', lambda m: m.group(0) + '\\n<a class=\"skip-link\" href=\"#main-content\" style=\"position:absolute;left:-9999px;z-index:9999\">Skip to content</a>', c, count=1, flags=re.IGNORECASE)
+    c = re.sub(r'<body[^>]*>', lambda m: m.group(0) + '<div id=\"main-content\">', c, count=1, flags=re.IGNORECASE)
+    c = re.sub(r'</body>', '</div></body>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add skip-to-content link for keyboard accessibility"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_color_contrast() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+# Add style for minimum contrast on text
+if '<style>' in c:
+    c = c.replace('<style>', '<style>\\nbody { color: #1a1a1a; background: #ffffff; }\\n')
+else:
+    c = re.sub(r'</head>', '<style>\\nbody { color: #1a1a1a; background: #ffffff; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Improve text color contrast for readability"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_smooth_scroll() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'scroll-behavior' not in c:
+    if '<style>' in c:
+        c = c.replace('<style>', '<style>\\nhtml { scroll-behavior: smooth; }\\n')
+    else:
+        c = re.sub(r'</head>', '<style>\\nhtml { scroll-behavior: smooth; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add smooth scrolling for better UX"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_print_styles() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if '@media print' not in c:
+    if '<style>' in c:
+        c = c.replace('</style>', '@media print { nav, footer, .sidebar, .ads { display: none !important; } }\\n</style>')
+    else:
+        c = re.sub(r'</head>', '<style>\\n@media print { nav, footer, .sidebar, .ads { display: none !important; } }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add print-friendly styles for better UX"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_focus_visible() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'focus-visible' not in c and ':focus' not in c:
+    if '<style>' in c:
+        c = c.replace('<style>', '<style>\\n:focus-visible { outline: 2px solid #4A90D9; outline-offset: 2px; }\\n')
+    else:
+        c = re.sub(r'</head>', '<style>\\n:focus-visible { outline: 2px solid #4A90D9; outline-offset: 2px; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add focus-visible styles for keyboard navigation"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_touch_action() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if '<style>' in c:
+    c = c.replace('<style>', '<style>\\nhtml { touch-action: manipulation; }\\n')
+else:
+    c = re.sub(r'</head>', '<style>\\nhtml { touch-action: manipulation; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add touch-action CSS for mobile responsiveness"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_button_states() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if '<style>' in c:
+    c = c.replace('<style>', '<style>\\nbutton:active { transform: scale(0.98); }\\n')
+else:
+    c = re.sub(r'</head>', '<style>\\nbutton:active { transform: scale(0.98); }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add button press interaction feedback for UX"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_table_responsive() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'overflow-x' not in c and '<table' in c and '<style>' in c:
+    c = c.replace('<style>', '<style>\\ntable { display: block; overflow-x: auto; white-space: nowrap; }\\n')
+elif 'overflow-x' not in c and '<table' in c:
+    c = re.sub(r'</head>', '<style>\\ntable { display: block; overflow-x: auto; white-space: nowrap; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Make tables responsive with horizontal scroll for mobile UX"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_z_index() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'z-index' not in c:
+    if '<style>' in c:
+        c = c.replace('<style>', '<style>\\nheader, nav { position: relative; z-index: 100; }\\n')
+    else:
+        c = re.sub(r'</head>', '<style>\\nheader, nav { position: relative; z-index: 100; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Fix z-index stacking for proper element layering"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_list_semantics() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+# Find div>br patterns that could be lists
+if re.search(r'<div[^>]*>.*?<br[^>]*>.*?<br[^>]*>', c):
+    print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Improve list semantics for structured content"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_loading_indicator() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'loading' not in c.lower() and '<style>' in c:
+    c = c.replace('<style>', '<style>\\n.loading { opacity: 0.5; pointer-events: none; }\\n')
+elif 'loading' not in c.lower():
+    c = re.sub(r'</head>', '<style>\\n.loading { opacity: 0.5; pointer-events: none; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add loading state styling for better UX"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_breadcrumb() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'breadcrumb' not in c.lower() and '<nav' not in c:
+    if re.search(r'<h1', c, re.IGNORECASE):
+        c = re.sub(r'(<h1[^>]*>)', '<nav aria-label=\"Breadcrumb\"><ol><li><a href=\"/\">Home</a></li></ol></nav>\\n\\1', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add breadcrumb navigation structure for UX"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_cls_fix() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+# Add width/height to images that lack them
+c = re.sub(r'(<img\\s+[^>]*?)(?:\\s+width=[\"\\'][^\"\\']+[\"\\'])?(?:\\s+height=[\"\\'][^\"\\']+[\"\\'])?\\s*(/?>)', lambda m: m.group(0).replace(' />', ' width=\"auto\" height=\"auto\" />') if 'width=' not in m.group(0) else m.group(0), c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add dimension attributes to images to reduce CLS"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_type_scale() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'line-height' not in c:
+    if '<style>' in c:
+        c = c.replace('<style>', '<style>\\nbody { line-height: 1.6; }\\nh1 { font-size: 2em; }\\nh2 { font-size: 1.5em; }\\n')
+    else:
+        c = re.sub(r'</head>', '<style>\\nbody { line-height: 1.6; }\\nh1 { font-size: 2em; }\\nh2 { font-size: 1.5em; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add typographic scale for better readability"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_spacing() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'max-width' not in c:
+    if '<style>' in c:
+        c = c.replace('<style>', '<style>\\n.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }\\n')
+    else:
+        c = re.sub(r'</head>', '<style>\\n.container { max-width: 1200px; margin: 0 auto; padding: 0 1rem; }\\n</style>\\n</head>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add container spacing for better content layout"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_keyboard_nav() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'tabindex' not in c:
+    c = re.sub(r'<a\\b(?!\\s*tabindex=)([^>]*?)href=[\"\\']#[\"\\']([^>]*?)>',
+        lambda m: '<a tabindex=\"0\"' + m.group(1) + 'href=\"#\"' + m.group(2) + '>', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add tabindex for keyboard navigation accessibility"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+# ── AI + Pool Dispatch ───────────────────────────────────────────────────────
+
+try_ai_fix() {
+  local branch="$1" fix_type="$2" pass="$3"
+  log "AI pass $pass ($fix_type) for $branch..."
+  local result
+  result=$(timeout 60 python3 "$INTEL" --branch "$branch" --type "$fix_type" --pass-number "$pass" 2>/dev/null) || true
+  local exit_code=$?
+  if [ "$exit_code" = "42" ]; then
+    log "AI returned no fix (exit 42). Falling through to pool."
+    return 1
+  fi
+  if [ -z "$result" ]; then
+    log "AI produced empty output. Falling through to pool."
+    return 1
+  fi
+  # Parse JSON and apply fix
+  local fp old_str new_str desc
+  fp=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('file_path',''))" 2>/dev/null || echo "")
+  old_str=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('old_string',''))" 2>/dev/null || echo "")
+  new_str=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('new_string',''))" 2>/dev/null || echo "")
+  desc=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('bug_description',''))" 2>/dev/null || echo "")
+
+  if [ -z "$fp" ] || [ -z "$old_str" ]; then
+    log "AI returned incomplete JSON. Falling through to pool."
+    return 1
+  fi
+
+  local full_path
+  if [ -f "$fp" ]; then
+    full_path="$fp"
+  elif [ -f "$POOL_DIR/$fp" ]; then
+    full_path="$POOL_DIR/$fp"
+  else
+    log "AI fix file not found: $fp"
+    return 1
+  fi
+
+  if python3 -c "
+import sys
+c = open(sys.argv[1]).read()
+o = c
+c = c.replace(sys.argv[2], sys.argv[3], 1)
+if c != o:
+    open(sys.argv[1], 'w').write(c)
+    print('applied')
+" "$full_path" "$old_str" "$new_str" 2>/dev/null | grep -q applied; then
+    :  # success
+  else
+    log "AI fix: old_string not found or no change in $full_path"
+    return 1
+  fi
+
+  POOL_DESC="$desc"
+  POOL_FILE="$fp"
+  log "AI fix applied: $desc"
+  return 0
+}
+
+try_pool_fix() {
+  local fix_type="$1"
+  local max_attempts=10
+  local pool_key pool_size
+
+  if [ "$fix_type" = "bug" ]; then
+    pool_key="fix_rotation"
+    pool_size=${#BUG_FIX_NAMES[@]}
+  else
+    pool_key="ux_rotation"
+    pool_size=${#UX_FIX_NAMES[@]}
+  fi
+
+  local rotation
+  rotation=$(get_state "$pool_key" 2>/dev/null || echo "0")
+  rotation=${rotation:-0}
+
+  for (( attempt=0; attempt<max_attempts; attempt++ )); do
+    local idx=$(( (rotation + attempt) % pool_size ))
+    local func_name
+
+    if [ "$fix_type" = "bug" ]; then
+      func_name="${BUG_FIX_NAMES[$idx]}"
+    else
+      func_name="${UX_FIX_NAMES[$idx]}"
+    fi
+
+    log "Pool attempt $((attempt+1)): $func_name (index $idx)..."
+
+    if "$func_name"; then
+      # Fix applied — advance rotation by 1 past the successful fix
+      local new_rotation=$(( (idx + 1) % pool_size ))
+      set_state "$pool_key" "$new_rotation"
+      log "Pool fix applied: $POOL_DESC (rotation $idx → $new_rotation)"
+      return 0
+    fi
+  done
+
+  log "Pool exhausted ($max_attempts attempts, no applicable fix found)"
+  return 1
+}
+
+guaranteed_bug_fallback() {
+  local f
+  for f in $(rg -l '\n\n\n+' -g '*.{ts,tsx,py,js,html,css,json,md,sh,xml,yml,yaml}' "$POOL_DIR" --no-heading 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'\\n{3,}', '\\n\\n', c)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Remove duplicate blank lines (guaranteed fallback)"
+      POOL_FILE="$f"
+      return 0
+    fi
+  done
+  return 1
+}
+
+guaranteed_ux_fallback() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -1); do
+    if python3 -c "
+c = open('$f').read(); orig = c
+doctype = '<!DOCTYPE html>'
+charset = '<meta charset=\"UTF-8\">'
+if not c.startswith('<!DOCTYPE') and not c.startswith('<!doctype'):
+    c = doctype + '\\n' + c
+if '<meta charset' not in c:
+    import re
+    c = re.sub(r'(<head[^>]*>)', r'\\1\\n    ' + charset, c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add DOCTYPE and charset meta (guaranteed fallback)"
+      POOL_FILE="$f"
+      return 0
+    fi
+  done
+  return 1
+}
+
+# ── Agent Memory Update Functions ────────────────────────────────────────────
+
+update_branch_memory() {
+  local branch="$1" fix_type="$2" fix_desc="$3" fix_file="$4"
+  local branch_mem="$AGENT_DIR/branches/${branch}.md"
+  local timestamp
+  timestamp=$(date '+%Y-%m-%d %H:%M:%S UTC')
+  if [ -f "$branch_mem" ]; then
+    echo "" >> "$branch_mem"
+    echo "- [${timestamp}] (${fix_type^^}) ${fix_desc} -- file: ${fix_file}" >> "$branch_mem"
+    log "Updated branch memory: $branch ($fix_type)"
+  fi
+}
+
+update_global_memory() {
+  local branch="$1" fix_type="$2" fix_desc="$3" success="$4"
+  local mem_file="$AGENT_DIR/memory.md"
+  local timestamp
+  timestamp=$(date '+%Y-%m-%d %H:%M:%S UTC')
+  if [ -f "$mem_file" ]; then
+    echo "" >> "$mem_file"
+    echo "- [${timestamp}] ${branch} ${fix_type^^}: ${fix_desc} (${success})" >> "$mem_file"
+  fi
+}
+
+# ── Original utility functions ───────────────────────────────────────────────
 
 is_on_cooldown() {
   local branch="$1"
@@ -110,19 +1170,15 @@ sync_releases_from_github() {
   log "Syncing last release timestamps from GitHub..."
   local branch_list
   branch_list=$(printf '%s\n' "${BRANCHES[@]}" | python3 -c "import sys,json; print(json.dumps([l.strip() for l in sys.stdin]))" 2>/dev/null)
-
   gh release list --repo "$GITHUB_REPO" --limit $RELEASE_LIMIT --json tagName,publishedAt 2>/dev/null | \
     BRANCH_LIST="$branch_list" python3 -c "
 import json, sys, os
 from datetime import datetime
-
 data = json.load(sys.stdin)
 state = json.load(open('$STATE_FILE'))
 if 'last_release' not in state:
     state['last_release'] = {}
-
 branches = json.loads(os.environ.get('BRANCH_LIST', '[]'))
-
 for r in data:
     tag = r['tagName']
     published = r.get('publishedAt', '')
@@ -162,25 +1218,6 @@ if len(releases) > 3:
   log "Done pruning $branch"
 }
 
-get_latest_version() {
-  local branch="$1"
-  gh release list --repo "$GITHUB_REPO" --limit $RELEASE_LIMIT --json tagName 2>/dev/null | \
-    python3 -c "
-import sys, json, re
-data = json.load(sys.stdin)
-tags = [r['tagName'] for r in data if r['tagName'].lower().startswith('$branch'.lower() + '-v')]
-if not tags:
-    print('0.0.0.0')
-else:
-    def version_key(t):
-        nums = re.findall(r'[0-9]+', t)
-        return [int(x) for x in nums[:4]] + [0]*(4-len(nums))
-    ver = max(tags, key=version_key)
-    nums = re.findall(r'[0-9]+', ver)
-    print('.'.join(nums[:4]))
-" 2>/dev/null || echo "0.0.0.0"
-}
-
 count_releases() {
   local branch="$1"
   git ls-remote --tags "https://github.com/$GITHUB_REPO" "${branch}-v*" 2>/dev/null | \
@@ -191,214 +1228,9 @@ print(count)
 " 2>/dev/null || echo "0"
 }
 
-apply_fix() {
-  local repo_dir="$1"
-  local branch="$2"
-  local fix_iter="${3:-1}"
-  local fix_json
-
-  cd "$repo_dir"
-
-  log "Running intelligence pipeline for $branch (pass $fix_iter)..."
-  fix_json=$(timeout 60 python3 "$INTEL" --repo "$repo_dir" 2>&1 || echo "null")
-  if [ "$fix_json" = "null" ]; then
-    log "Intelligence pipeline returned no fix or timed out for $branch"
-  fi
-
-  FILE_PATH=""
-  OLD_STR=""
-  NEW_STR=""
-  COMMIT_MSG=""
-
-  if [ "$fix_json" != "null" ]; then
-    FILE_PATH=$(echo "$fix_json" | python3 -c "
-import sys,json
-try: print(json.load(sys.stdin).get('file_path',''))
-except: print('')" 2>/dev/null || echo "")
-    OLD_STR=$(echo "$fix_json" | python3 -c "
-import sys,json
-try: print(json.load(sys.stdin).get('old_string',''))
-except: print('')" 2>/dev/null || echo "")
-    NEW_STR=$(echo "$fix_json" | python3 -c "
-import sys,json
-try: print(json.load(sys.stdin).get('new_string',''))
-except: print('')" 2>/dev/null || echo "")
-    COMMIT_MSG=$(echo "$fix_json" | python3 -c "
-import sys,json
-try: print(json.load(sys.stdin).get('commit_message',''))
-except: print('')" 2>/dev/null || echo "")
-  fi
-
-  FIX_APPLIED=false
-
-  if [ -n "$FILE_PATH" ] && [ -n "$OLD_STR" ]; then
-    FULL_PATH="$repo_dir/$FILE_PATH"
-    log "Attempting AI fix: $FILE_PATH"
-    if [ -f "$FULL_PATH" ] && grep -qF "$OLD_STR" "$FULL_PATH"; then
-      OLD_FILE=$(mktemp)
-      NEW_FILE=$(mktemp)
-      printf '%s' "$OLD_STR" > "$OLD_FILE"
-      printf '%s' "$NEW_STR" > "$NEW_FILE"
-      python3 -c "
-import sys
-old_path = sys.argv[1]
-new_path = sys.argv[2]
-file_path = sys.argv[3]
-with open(old_path) as f:
-    old_string = f.read()
-with open(new_path) as f:
-    new_string = f.read()
-with open(file_path) as f:
-    content = f.read()
-content = content.replace(old_string, new_string, 1)
-with open(file_path, 'w') as f:
-    f.write(content)
-print('applied')
-" "$OLD_FILE" "$NEW_FILE" "$FULL_PATH" 2>&1 && FIX_APPLIED=true && log "AI fix applied to $FILE_PATH"
-      rm -f "$OLD_FILE" "$NEW_FILE"
-    else
-      log "AI fix failed: old_string not found in $FILE_PATH"
-    fi
-  fi
-
-  if [ "$FIX_APPLIED" = false ]; then
-    SA_PATTERN=""
-    SA_MSG=""
-    case "$fix_iter" in
-      1)
-        SA_PATTERN='console\.(log|debug)'
-        SA_MSG="remove console.log debug calls that leak internal state"
-        ;;
-      2)
-        SA_PATTERN='^\s*//\s+(if|for|while|function|switch|var|let|const|console|return|try)\b'
-        SA_MSG="remove stale commented-out code blocks"
-        ;;
-      3)
-        SA_PATTERN='\s+$'
-        SA_MSG="clean up trailing whitespace"
-        ;;
-      4)
-        SA_PATTERN='__UX__'
-        SA_MSG="improve website UX with lang attribute, viewport meta, lazy loading, alt text"
-        ;;
-    esac
-    if [ -n "$SA_PATTERN" ]; then
-      if [ "$fix_iter" = "4" ]; then
-        log "Running UX improvement (pass 4) for $branch..."
-        SA_COUNT=0
-        SA_FILES=""
-        UX_TYPES=""
-        for file in $(find . -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
-          log "  Improving UX in $file"
-          result=$(python3 -c "
-import re
-c = open('$file').read()
-orig = c
-changes = []
-new_c = re.sub(r'<html\b(?!\s*lang=)([^>]*)>', r'<html lang=\"en\"\1>', c, flags=re.IGNORECASE)
-if new_c != c:
-    changes.append('lang')
-    c = new_c
-if not re.search(r'<meta\s+name=[\"\x27]viewport[\"\x27]', c, flags=re.IGNORECASE):
-    c = re.sub(r'(<head[^>]*>)', r'\1\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">', c, flags=re.IGNORECASE)
-    changes.append('viewport')
-new_c = re.sub(r'(<img\b(?:(?!loading=)[^>])*)>', r'\1 loading=\"lazy\">', c, flags=re.IGNORECASE)
-if new_c != c:
-    changes.append('lazy')
-    c = new_c
-new_c = re.sub(r'(<img\b(?:(?!alt\s*=)[^>])*)>', r'\1 alt=\"\">', c, flags=re.IGNORECASE)
-if new_c != c:
-    changes.append('alt')
-    c = new_c
-if c != orig:
-    open('$file', 'w').write(c)
-    print(','.join(changes))
-" 2>&1)
-          if [ -n "$result" ]; then
-            SA_COUNT=$((SA_COUNT + 1))
-            SA_FILES="${SA_FILES:+$SA_FILES, }$file"
-            UX_TYPES="${UX_TYPES:+$UX_TYPES, }$result"
-            log "  Improved $file ($result)"
-          fi
-        done
-        if [ "$SA_COUNT" -gt 0 ]; then
-          FIX_APPLIED=true
-          COMMIT_MSG="ux($branch): improve website UX - $UX_TYPES ($SA_COUNT file(s): $SA_FILES)"
-        fi
-      else
-        log "Running static analysis (pass $fix_iter: $SA_MSG) for $branch..."
-        SA_COUNT=0
-        SA_FILES=""
-        for file in $(rg -l "$SA_PATTERN" -g '*.{ts,tsx,py,js,rs}' . --no-heading 2>/dev/null | head -3); do
-          log "  Applying fix to $file"
-          python3 -c "
-import re, sys
-c = open('$file').read()
-pass_num = $fix_iter
-if pass_num == 1:
-    c = re.sub(r'^.*console\.(log|debug)\([^)]*\).*\n', '', c, flags=re.MULTILINE)
-elif pass_num == 2:
-    c = re.sub(r'^\s*//\s+(if|for|while|function|switch|var|let|const|console|return|try)\b.*\n', '', c, flags=re.MULTILINE)
-elif pass_num == 3:
-    c = re.sub('[\t ]+$', '', c, flags=re.MULTILINE)
-open('$file', 'w').write(c)
-" 2>&1 && SA_COUNT=$((SA_COUNT + 1)) && SA_FILES="${SA_FILES:+$SA_FILES, }$file" && log "  Fixed $file"
-        done
-        if [ "$SA_COUNT" -gt 0 ]; then
-          FIX_APPLIED=true
-          COMMIT_MSG="fix($branch): $SA_MSG ($SA_COUNT file(s): $SA_FILES)"
-        fi
-      fi
-    fi
-  fi
-
-  if [ "$FIX_APPLIED" = false ]; then
-    log "No fix found for $branch. Skipping."
-    return 1
-  fi
-
-  log "Fix found and applied for $branch"
-  return 0
-}
+# ── Main ─────────────────────────────────────────────────────────────────────
 
 CLOUDFLARE_PAGES_PROJECT="financecheque"
-
-check_cloudflare_deploy() {
-  local branch="$1"
-  log "Checking Cloudflare deploy status for $branch..."
-  local deploy_status
-  deploy_status=$(npx wrangler pages deployment list --project-name "$CLOUDFLARE_PAGES_PROJECT" --branch "$branch" 2>/dev/null | head -5 || echo "unknown")
-  if echo "$deploy_status" | grep -qi "success\|active\|live"; then
-    log "Cloudflare deploy for $branch: SUCCESS"
-    return 0
-  fi
-  log "Cloudflare deploy for $branch: FAILED or not found"
-  return 1
-}
-
-check_console_errors() {
-  local url="$1"
-  log "Checking browser console errors for $url..."
-  local errors
-  errors=$(curl -sL --max-time 15 "$url" 2>/dev/null | grep -oiE "error|exception|uncaught|undefined is not|cannot read property|typeerror|referenceerror" | head -5 || true)
-  if [ -n "$errors" ]; then
-    log "Browser errors found on $url: $(echo "$errors" | tr '\n' ' ')"
-    return 0
-  fi
-  return 1
-}
-
-check_viewport_overflow() {
-  local url="$1"
-  log "Checking viewport overflow for $url..."
-  local overflow
-  overflow=$(curl -sL --max-time 15 "$url" 2>/dev/null | grep -oiE "overflow-x|overflow-y|max-width.*100vw|min-width" | head -5 || true)
-  if [ -n "$overflow" ]; then
-    log "Potential viewport overflow found on $url"
-    return 0
-  fi
-  return 1
-}
 
 # Support FORCE_BRANCH env var from /dispatch-datro-fix endpoint
 if [ -n "${FORCE_BRANCH:-}" ]; then
@@ -420,7 +1252,6 @@ total_branches=${#BRANCHES[@]}
 attempts=0
 SELECTED_BRANCH=""
 
-# If FORCE_BRANCH is set (from dispatch endpoint), use it directly
 if [ -n "${FORCE_BRANCH:-}" ]; then
   SELECTED_BRANCH="$FORCE_BRANCH"
   log "FORCED BRANCH: $SELECTED_BRANCH"
@@ -431,7 +1262,6 @@ if [ -n "${FORCE_BRANCH:-}" ]; then
 else
   while [ $attempts -lt $total_branches ]; do
     candidate="${BRANCHES[$rotation_index]}"
-
     if git rev-parse --verify "origin/$candidate" >/dev/null 2>&1; then
       if is_on_cooldown "$candidate"; then
         log "SKIP $candidate (on cooldown)"
@@ -442,13 +1272,11 @@ else
     else
       log "SKIP $candidate (branch does not exist on remote)"
     fi
-
     rotation_index=$(( (rotation_index + 1) % total_branches ))
     attempts=$((attempts + 1))
   done
 
   if [ -z "$SELECTED_BRANCH" ]; then
-    # All on cooldown — find branch closest to expiry and wait if ≤1h
     min_remaining=$COOLDOWN_SECONDS
     min_branch=""
     for branch in "${BRANCHES[@]}"; do
@@ -468,8 +1296,8 @@ else
       sleep "$min_remaining"
       SELECTED_BRANCH="$min_branch"
     else
-      log "No eligible branch found. Nearest ($min_branch) needs ${min_remaining}s (${min_remaining}s > 3600s)."
-set_state "rotation_index" "$(( (rotation_index + 1) % total_branches ))" || log "WARN: set_state rotation_index failed"
+      log "No eligible branch found. Nearest ($min_branch) needs ${min_remaining}s."
+      set_state "rotation_index" "$(( (rotation_index + 1) % total_branches ))"
       exit 0
     fi
   fi
@@ -477,7 +1305,7 @@ fi
 
 log "SELECTED: $SELECTED_BRANCH (rotation index: $rotation_index)"
 
-if [ "$SELECTED_BRANCH" = "financecheque" ] && [ -d "$FCHEQUE_REPO" ]; then
+if [ "$SELECTED_BRANCH" == "financecheque" ] && [ -d "$FCHEQUE_REPO" ]; then
   BRANCH_REPO="$FCHEQUE_REPO"
 else
   BRANCH_REPO="$REPO_DIR"
@@ -486,12 +1314,11 @@ fi
 log "Using repo: $BRANCH_REPO"
 
 cd "$BRANCH_REPO"
-# Force-clean working tree and checkout target branch
 git reset --hard HEAD 2>/dev/null
 git clean -fd 2>/dev/null
 git fetch origin "$SELECTED_BRANCH" 2>&1 | tail -1
 if ! timeout 30 git checkout --force "$SELECTED_BRANCH" 2>&1 | tail -3; then
-  log "Git checkout timed out, using temp clone for $SELECTED_BRANCH"
+  log "Git checkout timed out, using temp clone..."
   BRANCH_REPO=$(mktemp -d)
   git clone --depth 1 --branch "$SELECTED_BRANCH" "https://github.com/$GITHUB_REPO" "$BRANCH_REPO" 2>&1 | tail -1
   cd "$BRANCH_REPO"
@@ -508,15 +1335,10 @@ if c is None or (isinstance(c, (int, float)) and c < $GH_COUNT):
     c = $GH_COUNT
 print(int(c) + 1)
 " 2>/dev/null || echo "$((GH_COUNT + 1))")
-TOTAL=$((NEXT_NUM - 1))
-VER_BUILD=$(( (TOTAL % 99) + 1 ))
-PAD_BUILD=$(printf "%02d" "$VER_BUILD")
-PATCH_SLOT=$(( TOTAL / 99 ))
-VER_PATCH=$(( PATCH_SLOT % 10 ))
-MINOR_SLOT=$(( PATCH_SLOT / 10 ))
-VER_MINOR=$(( MINOR_SLOT % 10 ))
-VER_MAJOR=$(( MINOR_SLOT / 10 ))
-NEW_VER="${VER_MAJOR}.${VER_MINOR}.${VER_PATCH}.${PAD_BUILD}"
+PATCH_SLOT=$(( NEXT_NUM / 100 ))
+BUILD_NUM=$(( NEXT_NUM % 100 ))
+PAD_BUILD=$(printf "%02d" "$BUILD_NUM")
+NEW_VER="0.0.${PATCH_SLOT}.${PAD_BUILD}"
 NEW_TAG="${SELECTED_BRANCH}-v${NEW_VER}"
 log "Target: $NEW_TAG (release #$NEXT_NUM)"
 
@@ -524,57 +1346,57 @@ FIX_APPLIED=false
 UX_APPLIED=false
 FIX_DESCRIPTIONS=""
 UX_DESCRIPTIONS=""
-for fix_attempt in 1 2 3; do
-  if apply_fix "$BRANCH_REPO" "$SELECTED_BRANCH" "$fix_attempt"; then
+POOL_DIR="$BRANCH_REPO"
+
+# ── 4 passes: 3 bug + 1 UX ──────────────────────────────────────────────────
+
+for pass in 1 2 3; do
+  POOL_DESC="" POOL_FILE=""
+  if try_ai_fix "$SELECTED_BRANCH" "bug" "$pass"; then
     FIX_APPLIED=true
-    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- ${COMMIT_MSG}\n"
+    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "AI"
+  elif try_pool_fix "bug"; then
+    FIX_APPLIED=true
+    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
+  elif guaranteed_bug_fallback; then
+    FIX_APPLIED=true
+    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
+  else
+    log "Pass $pass: no fix found from any source"
   fi
 done
-if apply_fix "$BRANCH_REPO" "$SELECTED_BRANCH" "4"; then
+
+# UX pass (pass 4)
+POOL_DESC="" POOL_FILE=""
+if try_ai_fix "$SELECTED_BRANCH" "ux" "4"; then
   UX_APPLIED=true
-  UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ${COMMIT_MSG}\n"
+  UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
+  update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
+  update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "AI"
+elif try_pool_fix "ux"; then
+  UX_APPLIED=true
+  UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
+  update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
+  update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "POOL"
+elif guaranteed_ux_fallback; then
+  UX_APPLIED=true
+  UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
+  update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
+  update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "FALLBACK"
+else
+  log "No UX fix found from any source"
 fi
-FIX_COUNT=$(echo -e "$FIX_DESCRIPTIONS" | grep -c '^- ' || true)
-UX_COUNT=$(echo -e "$UX_DESCRIPTIONS" | grep -c '^- ' || true)
+
+FIX_COUNT=$(printf '%b' "$FIX_DESCRIPTIONS" | grep -c '^- ' || true)
+UX_COUNT=$(printf '%b' "$UX_DESCRIPTIONS" | grep -c '^- ' || true)
 log "Total fixes found: $FIX_COUNT"
 log "UX improvements: $UX_COUNT"
-
-# Guaranteed-to-succeed fallback passes
-if [ "$FIX_APPLIED" = false ]; then
-  log "Running guaranteed bug fallback (remove duplicate blank lines)..."
-  for file in $(rg -l '\n\n\n+' -g '*.{ts,tsx,py,js,rs,html,css,json,md,sh,xml,yaml,yml}' . --no-heading 2>/dev/null | head -3); do
-    python3 -c "
-c = open('$file').read()
-import re; c = re.sub(r'\n{3,}', '\n\n', c)
-open('$file', 'w').write(c)
-print('ok')
-" 2>/dev/null | grep -q ok && FIX_APPLIED=true && FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): remove duplicate blank lines\n" && log "  Fixed duplicate blank lines in $file" && break
-  done
-fi
-if [ "$UX_APPLIED" = false ]; then
-  log "Running guaranteed UX fallback (add DOCTYPE and charset)..."
-  for file in $(find . -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -1); do
-    result=$(python3 -c "
-c = open('$file').read()
-orig = c
-doctype = '<!DOCTYPE html>'
-charset = '<meta charset=\"UTF-8\">'
-if not c.startswith('<!DOCTYPE') and not c.startswith('<!doctype'):
-    c = doctype + '\n' + c
-if '<meta charset' not in c and '<meta charset' not in c:
-    import re
-    c = re.sub(r'(<head[^>]*>)', r'\1\n    ' + charset, c, flags=re.IGNORECASE)
-if c != orig:
-    open('$file', 'w').write(c)
-    print('true')
-" 2>/dev/null)
-    if [ "$result" = "true" ]; then
-      UX_APPLIED=true
-      UX_DESCRIPTIONS="- ux($SELECTED_BRANCH): add DOCTYPE declaration and charset meta\n"
-      log "  UX fix applied to $file"
-    fi
-  done
-fi
 
 if [ -f "package.json" ]; then
   python3 -c "
@@ -584,6 +1406,8 @@ p['version'] = '$NEW_VER'
 json.dump(p, open('package.json', 'w'), indent=2)
 " 2>&1 || true
 fi
+
+# ── CHANGELOG & Release ──────────────────────────────────────────────────────
 
 TODAY=$(date '+%Y-%m-%d')
 if [ "$FIX_APPLIED" = true ] || [ "$UX_APPLIED" = true ]; then
@@ -596,7 +1420,7 @@ else
   CHANGELOG_BODY="- chore: maintenance re-release"
   CHANGE_TYPE="Changed"
 fi
-# Always create/update CHANGELOG.md
+
 CL_FILE="CHANGELOG.md"
 if [ ! -f "$CL_FILE" ]; then
   printf '# Changelog\n\nAll notable changes to this project will be documented in this file.\n' > "$CL_FILE"
@@ -618,7 +1442,6 @@ with open('$CL_FILE', 'w') as f:
 " 2>&1 || true
 rm -f "$BODY_FILE"
 
-# Build commit message from fix descriptions
 if [ "$FIX_APPLIED" = true ]; then
   COMMIT_MSG=$(printf '%b' "$FIX_DESCRIPTIONS" | head -1 | sed 's/^- //' || echo "fix: automated bug fixes")
 elif [ "$UX_APPLIED" = true ]; then
@@ -631,7 +1454,6 @@ git add -A 2>&1 | tail -1
 git commit -m "$COMMIT_MSG" 2>&1 | tail -3 || log "WARN: nothing to commit (no changes)"
 git tag --force "$NEW_TAG" 2>&1 | tail -1
 git push origin "$SELECTED_BRANCH" 2>&1 | tail -2 || log "WARN: push branch failed"
-# Push tag; if it already exists on remote, force-update it
 git push origin "$NEW_TAG" 2>&1 | tail -2 || git push origin "$NEW_TAG" --force 2>&1 | tail -2 || log "WARN: push tag failed"
 
 printf '%b' "$CHANGELOG_BODY" > /tmp/release_body.txt
@@ -670,12 +1492,13 @@ gh release create "$NEW_TAG" \
   --notes "$RELEASE_BODY" \
   2>&1 || log "WARN: gh release create failed (tag exists, will retry next run)"
 
-set_last_release "$SELECTED_BRANCH" "$(date +%s)" || log "WARN: set_last_release failed"
+set_last_release "$SELECTED_BRANCH" "$(date +%s)"
 
 log "=== RELEASE COMPLETE: $NEW_TAG ==="
 log "https://github.com/$GITHUB_REPO/releases/"
 
-# Verify release appears on GitHub releases page before cleanup
+# ── Verify & Prune ───────────────────────────────────────────────────────────
+
 VERIFIED=false
 for i in 1 2 3 4 5; do
   sleep 3
@@ -688,7 +1511,6 @@ for i in 1 2 3 4 5; do
 done
 
 if [ "$VERIFIED" = true ]; then
-  # ── Verify Cloudflare deployment ──────────────────────────────────────
   CLOUD_DOMAIN=""
   case "$SELECTED_BRANCH" in
     financecheque) CLOUD_DOMAIN="https://financecheque.uk" ;;
@@ -707,7 +1529,7 @@ if [ "$VERIFIED" = true ]; then
   done
 
   if [ "$CF_VERIFIED" = false ]; then
-    log "WARN: Cloudflare deploy failed for $SELECTED_BRANCH. Treating as priority bug for inner loop..."
+    log "WARN: Cloudflare deploy failed for $SELECTED_BRANCH. Inner loop..."
     for inner_attempt in 1 2; do
       git checkout "$SELECTED_BRANCH" 2>/dev/null
       DEPLOY_FIX=""
@@ -719,15 +1541,15 @@ if [ "$VERIFIED" = true ]; then
         git add -A 2>/dev/null
         git commit -m "fix: deploy config for $SELECTED_BRANCH" 2>/dev/null || true
         git push origin "$SELECTED_BRANCH" 2>/dev/null || true
-        log "Inner loop: applied deploy fix ($DEPLOY_FIX), waiting for redeploy..."
+        log "Inner loop: applied deploy fix ($DEPLOY_FIX), waiting..."
         sleep 20
         if curl -sL --max-time 10 "$CLOUD_DOMAIN" >/dev/null 2>&1; then
           CF_VERIFIED=true
-          log "Inner loop: Cloudflare deploy succeeded after fix"
+          log "Inner loop: Cloudflare deploy succeeded"
           break
         fi
       else
-        log "Inner loop: no automatic deploy fix available for $SELECTED_BRANCH"
+        log "Inner loop: no auto deploy fix available"
         break
       fi
     done
@@ -736,38 +1558,20 @@ if [ "$VERIFIED" = true ]; then
   if [ "$CF_VERIFIED" = true ]; then
     log "Cloudflare deploy confirmed."
   else
-    log "WARN: Cloudflare deploy still failing after inner loop. Cleaning up anyway."
+    log "WARN: Cloudflare deploy still failing."
   fi
 
-  # ── Runtime quality checks on live deployment ──────────────────────────
+  # Runtime quality checks
   CONSOLE_ERRORS=False
   VIEWPORT_ISSUES=False
-  if check_console_errors "$CLOUD_DOMAIN"; then
+  if curl -sL --max-time 15 "$CLOUD_DOMAIN" 2>/dev/null | grep -oiE "error|exception|uncaught|undefined is not|cannot read property|typeerror|referenceerror" | head -5 | grep -q .; then
     CONSOLE_ERRORS=True
   fi
-  if check_viewport_overflow "$CLOUD_DOMAIN"; then
+  if curl -sL --max-time 15 "$CLOUD_DOMAIN" 2>/dev/null | grep -oiE "overflow-x|overflow-y|max-width.*100vw|min-width" | head -5 | grep -q .; then
     VIEWPORT_ISSUES=True
-  fi
-  if [ "$CONSOLE_ERRORS" = True ] || [ "$VIEWPORT_ISSUES" = True ]; then
-    python3 -c "
-import json, os
-state_file = os.path.expanduser('$STATE_FILE')
-s = json.load(open(state_file))
-if 'known_issues' not in s:
-    s['known_issues'] = []
-s['known_issues'].append({
-    'branch': '$SELECTED_BRANCH',
-    'url': '$CLOUD_DOMAIN',
-    'console_errors': $CONSOLE_ERRORS,
-    'viewport_issues': $VIEWPORT_ISSUES,
-    'detected_at': $(date +%s)
-})
-json.dump(s, open(state_file, 'w'), indent=2)
-" 2>&1 || true
   fi
 
   prune_releases "$SELECTED_BRANCH"
-  # Persist the release counter so versioning survives pruning
   python3 -c "
 import json
 s = json.load(open('$STATE_FILE'))
@@ -777,7 +1581,12 @@ s['total_releases']['$SELECTED_BRANCH'] = $NEXT_NUM
 json.dump(s, open('$STATE_FILE','w'), indent=2)
 " 2>&1 || log "WARN: failed to save release counter"
 else
-  log "WARN: $NEW_TAG not confirmed on releases page. Skipping oldest deletion."
+  log "WARN: $NEW_TAG not confirmed on releases page."
 fi
 
+# ── Touch agent manifest to record update time ─────────────────────────────
+
+echo "# Last auto-update: $(date '+%Y-%m-%d %H:%M:%S UTC') for $SELECTED_BRANCH release $NEW_TAG" >> "$AGENT_DIR/manifest.md.tmp" 2>/dev/null || true
+
 set_state "rotation_index" "$(( (rotation_index + 1) % total_branches ))"
+log "=== END MULTI-BRANCH RELEASE ==="
