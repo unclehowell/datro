@@ -10,7 +10,7 @@ platform
 HTML/CSS, jQuery
 
 ## URL
-gui.datro.xyz (integrated)
+ui.datro.xyz
 
 ## Key Files
 `static/ui/`, `index.html` (shared shell)
