@@ -10,7 +10,7 @@ platform
 Static HTML/CSS, jQuery, WebP images
 
 ## URL
-hbnb.datro.xyz
+hbhb.datro.xyz
 
 ## Key Files
 `static/hbnb/`, `index.html` (shared shell)
