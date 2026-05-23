@@ -41,7 +41,6 @@ const Backup = ({ open, setOpen }) => {
         if (!(ethPrivateKey instanceof Error)) setPrivateKey(ethPrivateKey);
       } catch (e) {
         if (e.message && e.message.includes("aborted")) return;
-        console.log(e);
       }
     })();
     return () => controller.abort();

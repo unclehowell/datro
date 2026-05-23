@@ -26,7 +26,6 @@ const ReleaseFeed = () => {
         let releaseFeed = await get("/release_feed/get", false);
         setReleaseFeed(releaseFeed);
       } catch (e) {
-        console.log(e);
       }
 
       setLoading(false);

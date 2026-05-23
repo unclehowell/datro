@@ -19,7 +19,6 @@ const JsonForm = ({ setAdding, setPasteJson }) => {
       await post("/exits", JSON.parse(json));
       setSuccess(t("addExitSuccess"));
     } catch (e) {
-      console.log(e);
       setError(t("addExitError"));
     }
 

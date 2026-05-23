@@ -31,7 +31,6 @@ const NodeInformation = () => {
           const wgPublicKey = await get("/wg_public_key");
           dispatch({ type: "wgPublicKey", wgPublicKey });
         } catch (e) {
-          console.log(e);
         }
       };
 

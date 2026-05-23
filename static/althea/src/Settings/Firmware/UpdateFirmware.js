@@ -29,7 +29,6 @@ export default ({ open, setOpen }) => {
     try {
       await post("/router/update");
     } catch (e) {
-      console.log(e);
     }
   };
 
