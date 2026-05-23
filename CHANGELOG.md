@@ -1,5 +1,13 @@
 # Changelog
 
+## [ccan-v0.0.0.05] - 2026-05-22
+
+### Fixed
+- - fix: remove console.log from 1 file
+- - fix: remove console.log from 1 file
+- - fix: remove console.log from 1 file
+-
+
 ## [ccan-v0.0.0.04] - 2026-05-22
 
 ### Fixed
