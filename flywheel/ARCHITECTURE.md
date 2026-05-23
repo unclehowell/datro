@@ -18,25 +18,25 @@ The flywheel manages exactly 20 branches, each with a distinct website purpose:
 | # | Branch | Website | Purpose |
 |---|--------|---------|---------|
 | 0 | althea | N/A | Althea Router Dashboard (React/Cordova) |
-| 1 | archives | wayback.financecheque.uk | Documentation/sync archive |
-| 2 | bpvsbuckler | bpvsbuckler.datro.xyz | BP vs Buckler land title case research |
-| 3 | carfinancecheque | world.datro.xyz | PCP refund / car finance mis-selling reclaim |
-| 4 | ccan | ccan.datro.xyz | CCAN community movement |
-| 5 | ceo | ceo.datro.xyz | Casualty Escort Officer application |
-| 6 | dash | dash.financecheque.uk | LLM proxy dashboard (Python aiohttp) |
-| 7 | datro | datro.xyz | DATRO Consortium homepage |
-| 8 | dcc | dcc.datro.xyz | Debt Cancellation Circle (React/TS) |
-| 9 | financecheque | financecheque.uk | Finance Cheque UK main site |
-| 10 | gui | gui.datro.xyz | HotspotBnB dashboard |
-| 11 | hbnb | hbnb.datro.xyz | HotspotBnB WiFi sharing platform |
-| 12 | library | library.datro.xyz | DATRO documentation library |
-| 13 | llmwiki | carfinancecheque.uk | Display ad generator |
-| 14 | pirateclaw | pirateclaw.pages.dev | FCUK affiliate platform (React/Stripe) |
+| 1 | archives | https://wayback.financecheque.uk | Documentation/sync archive |
+| 2 | bpvsbuckler | https://bpvsbuckler.datro.xyz | BP vs Buckler land title case research |
+| 3 | carfinancecheque | https://car.financecheque.uk | PCP refund / car finance mis-selling reclaim |
+| 4 | ccan | https://ccan.datro.xyz | CCAN community movement |
+| 5 | ceo | https://ceo.datro.xyz | Casualty Escort Officer application |
+| 6 | dash | https://dash.financecheque.uk | LLM proxy dashboard (Python aiohttp) |
+| 7 | datro | https://datro.xyz | DATRO Consortium homepage |
+| 8 | dcc | https://dcc.datro.xyz | Debt Cancellation Circle (React/TS) |
+| 9 | financecheque | https://financecheque.uk | Finance Cheque UK main site |
+| 10 | gui | https://gui.datro.xyz | HotspotBnB dashboard |
+| 11 | hbnb | https://hbhb.datro.xyz | HotspotBnB WiFi sharing platform |
+| 12 | library | https://library.datro.xyz | DATRO documentation library |
+| 13 | llmwiki | https://llmwiki.financecheque.uk | Display ad generator |
+| 14 | pirateclaw | https://pirateclaw.datro.xyz | FCUK affiliate platform (React/Stripe) |
 | 15 | subrepos | N/A | Subrepo management |
-| 16 | ui | gui.datro.xyz | App store/launcher UI |
-| 17 | wave | wave.datro.xyz | Wave community platform |
-| 18 | wayback | wayback.datro.xyz | DATRO Wayback archive |
-| 19 | whitepaper | whitepaper.financecheque.uk | Algocracy whitepaper |
+| 16 | ui | https://ui.datro.xyz | App store/launcher UI |
+| 17 | wave | https://wave.datro.xyz | Wave community platform |
+| 18 | wayback | https://wayback.datro.xyz | DATRO Wayback archive |
+| 19 | whitepaper | https://whitepaper.financecheque.uk | Algocracy whitepaper |
 
 Branches are selected sequentially via a `rotation_index` stored in `release-state.json`.
 
@@ -72,6 +72,24 @@ The flywheel now includes an **Agent Harness** — a knowledge layer that gives 
 | knowledge | library, llmwiki, archives, wayback, whitepaper | Navigation, search, readability, metadata |
 | hub | datro, althea | Branding, performance, SEO |
 | ecommerce | pirateclaw, financecheque | Checkout flow, payment security, conversion |
+| docs | cnei | Documentation accuracy, readability |
+
+## URL Registry
+
+Every branch has a corresponding live website URL stored in:
+
+1. **** — the master branch-to-URL table
+2. **** — per-branch context with  field
+3. **** — bash associative array in  for runtime URL lookup
+
+The AI uses these URLs to **visit the live site** during fix selection via Browserbase or similar headless browser:
+1. Navigate to 
+2. Take screenshots of desktop and mobile viewports
+3. Detect: JS console errors, layout breaks, missing meta tags, dead links, CLS issues
+4. Compare rendered output against accessibility standards (contrast, labels, focus order)
+5. Prioritize 3 most impactful bugs + 1 UX improvement per pass
+
+Branches with  URL (althea, subrepos) are source-only and skipped for visual inspection.
 
 ## Components
 
