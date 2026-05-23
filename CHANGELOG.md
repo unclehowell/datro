@@ -1,5 +1,13 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.05] - 2026-05-22
+
+### Fixed
+- - fix: remove console.log from 3 files
+- - fix: remove console.log from 3 files
+- - fix: remove console.log from 3 files
+-
+
 ## [bpvsbuckler-v0.0.0.04] - 2026-05-22
 
 ### Fixed
