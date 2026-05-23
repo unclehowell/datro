@@ -140,7 +140,6 @@
             feedback.textContent = message;
             setTimeout(() => feedback.textContent = '', 5000);
         } else {
-            console.log('Feedback:', message);
         }
     }
     

@@ -37809,9 +37809,6 @@
             const index = lookupEl(el);
             if (index > -1) {
               if (debug)
-                console.log(
-                  `Tried to add an element that was already mirrored. Updating instead...`
-                );
               elements[index].mirror.innerText = el.innerText;
               return;
             }
@@ -37822,9 +37819,6 @@
             const elHash = (0, import_object_hash.default)(mirror.outerHTML);
             if (hashes[elHash]) {
               if (debug)
-                console.log(
-                  `iframe already contains element that is being mirrored. Skipping...`
-                );
               return;
             }
             hashes[elHash] = true;
@@ -37837,9 +37831,6 @@
             const index = lookupEl(el);
             if (index === -1) {
               if (debug)
-                console.log(
-                  `Tried to remove an element that did not exist. Skipping...`
-                );
               return;
             }
             const elHash = (0, import_object_hash.default)(el.outerHTML);

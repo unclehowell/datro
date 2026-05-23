@@ -26,5 +26,3 @@ writeFileSync(join(ARCHIVES_DIR, '_archives_manifest.json'), JSON.stringify({
   built_at: new Date().toISOString(),
   file_count: manifest.length
 }, null, 2));
-
-console.log(`Manifest created: ${manifest.length} files`);
