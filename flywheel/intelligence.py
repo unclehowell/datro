@@ -68,10 +68,10 @@ def load_branch_context(branch):
 
 def build_prompt(branch, fix_type, ctx):
     if fix_type == "bug":
-        task = "Find the single most impactful BUG in the deployed website's source code.\n- Must affect real users or SEO\n- Include SEO improvements (meta tags, structured data, alt text, canonicals) as bug fixes\n- Fix must be a simple string replacement in one file\n- Output ONLY valid JSON no markdown"
+        task = "Find the single most impactful BUG in the deployed website's source code.\n- FIRST visit the live URL (provided below) in your browser and visually inspect the site\n- Take a screenshot, check console for JS errors, test navigation, verify forms\n- Check mobile layout, fonts, images, links, meta tags, structured data\n- Must affect real users or SEO\n- Include SEO improvements (meta tags, structured data, alt text, canonicals) as bug fixes\n- Fix must be a simple string replacement in one file\n- Output ONLY valid JSON no markdown"
         system = "You are a senior software engineer improving websites. Find the biggest real bug. Return ONLY JSON: {\"file_path\": \"relative/path\", \"bug_description\": \"why this matters\", \"old_string\": \"exact existing text\", \"new_string\": \"replacement text\", \"commit_message\": \"fix(branch): description\"}. No explanation, no markdown."
     else:
-        task = "Find the single most impactful UX IMPROVEMENT for the deployed website.\n- Must make the website easier or more pleasant to use\n- Navigation, forms, mobile, load time, accessibility\n- Fix must be a simple string replacement in one file\n- Output ONLY valid JSON no markdown"
+        task = "Find the single most impactful UX IMPROVEMENT for the deployed website.\n- FIRST visit the live URL (provided below) in your browser and visually inspect the site\n- Take a screenshot, check mobile responsiveness, navigation, forms, load time\n- Evaluate: layout, typography, colour contrast, tap targets, animations, accessibility\n- Must make the website easier or more pleasant to use\n- Navigation, forms, mobile, load time, accessibility\n- Fix must be a simple string replacement in one file\n- Output ONLY valid JSON no markdown"
         system = "You are a senior UX engineer. Find the biggest UX improvement. Return ONLY JSON: {\"file_path\": \"relative/path\", \"bug_description\": \"why this improves UX\", \"old_string\": \"exact existing text\", \"new_string\": \"replacement text\", \"commit_message\": \"ux(branch): description\"}. No explanation, no markdown."
 
     prompt = f"""## Website: {ctx['url']}
@@ -90,6 +90,13 @@ def build_prompt(branch, fix_type, ctx):
 
 ## Task
 {task}
+
+## Live Website
+The branch website is deployed and live at: {ctx['url']}
+You can VISIT this URL in your browser to visually inspect the site, take screenshots,
+analyze layout, check mobile responsiveness, evaluate UX, and identify bugs.
+Use the deployed website as your primary source of truth — the source code may differ
+from what's live if deploys are pending.
 
 Remember: the code is at /home/ubuntu/datro (or datro-financecheque). Find a real, verifiable bug in a file that exists. old_string MUST be exact text found in the file.
 """
