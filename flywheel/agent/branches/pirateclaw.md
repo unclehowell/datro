@@ -10,7 +10,7 @@ ecommerce
 React 19, TypeScript, Vite, Express, Stripe, Tailwind, bcrypt, JWT, SQLite
 
 ## URL
-pirateclaw.pages.dev
+pirateclaw.datro.xyz
 
 ## Key Files
 `src/`, `server/`, `client/`, `package.json`
