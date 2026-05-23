@@ -1,5 +1,10 @@
 # Changelog
 
+## [dash-v0.0.0.05] - 2026-05-22
+
+### Changed
+- chore: maintenance re-release
+
 ## [dash-v0.0.0.04] - 2026-05-22
 
 ### Changed
