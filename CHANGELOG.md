@@ -1,5 +1,13 @@
 # Changelog
 
+## [ceo-v0.0.0.06] - 2026-05-22
+
+### Fixed
+- - fix: remove console.log from 1 file
+- - fix: remove console.log from 1 file
+- - fix: remove console.log from 1 file
+-
+
 ## [ceo-v0.0.0.05] - 2026-05-22
 
 ### Fixed
