@@ -1,5 +1,15 @@
 # Changelog
 
+## [hbnb-v0.0.0.06] - 2026-05-23
+
+### Fixed
+- fix(hbnb): remove console.log debug calls that leak internal state (1 file(s): ./demos/_theme-docs/html/searchtools.js)
+- fix(hbnb): remove stale commented-out code blocks (3 file(s): ./demos/_theme-docs/html/jquery-3.5.1.js, ./demos/_theme-docs/html/underscore-1.13.1.js, ./demos/_theme-docs/html/searchtools.js)
+- fix(hbnb): clean up trailing whitespace (2 file(s): ./static/hbnb/postcss.config.js, ./static/hbnb/tailwind.config.js)
+
+### Changed
+- ux(hbnb): improve website UX - lang,viewport, lang,viewport, lang,viewport (3 file(s): ./datroxyz-library/index.html, ./index.html, ./library/_theme-explorer/document.html)
+
 ## [hbnb-v0.0.0.05] - 2026-05-22
 
 ### Fixed
@@ -13,6 +23,12 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 
 
+
+
+## [0.0.1.0] - 2026-05-23
+### Fixed
+- Identified issue: JS syntax error: /home/ubuntu/datro/static/gui/dashboard/js/jquery-3.3.1.min.js:2
+!function(e,t){"use strict";"object"==typeof module&&"object"==typeof module.exports? (requires manual fix)
 
 ## [0.0.2.2] - 2026-05-18
 ### Fixed

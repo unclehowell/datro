@@ -192,10 +192,6 @@ var Search = {
     }
     var highlightstring = '?highlight=' + $.urlencode(hlterms.join(" "));
 
-    // console.debug('SEARCH: searching for:');
-    // console.info('required: ', searchterms);
-    // console.info('excluded: ', excluded);
-
     // prepare search
     var terms = this._index.terms;
     var titleterms = this._index.titleterms;
@@ -213,8 +209,6 @@ var Search = {
 
     // lookup as search terms in fulltext
     results = results.concat(this.performTermsSearch(searchterms, excluded, terms, titleterms));
-
-    // let the scorer override scores with a custom scoring function
     if (Scorer.score) {
       for (i = 0; i < results.length; i++)
         results[i][4] = Scorer.score(results[i]);
@@ -237,8 +231,6 @@ var Search = {
         return (left > right) ? -1 : ((left < right) ? 1 : 0);
       }
     });
-
-    // for debugging
     //Search.lastresults = results.slice();  // a copy
     //console.info('search results:', Search.lastresults);
 
@@ -480,11 +472,8 @@ var Search = {
           break;
         }
       }
-
-      // if we have still a valid result we can add it to the result list
       if (valid) {
         // select one (max) score for the file.
-        // for better ranking, we should calculate ranking by using words statistics like basic tf-idf...
         var score = $u.max($u.map(fileMap[file], function(w){return scoreMap[file][w]}));
         results.push([docnames[file], titles[file], '', null, score, filenames[file]]);
       }
