@@ -13,6 +13,7 @@ All notable changes to the AWS flywheel release automation system.
 ### Changed
 - Add guaranteed-to-succeed fallback passes: duplicate blank line removal (bug pass) and DOCTYPE/charset meta addition (UX pass) so no branch ever produces an empty maintenance re-release
 - Switch regex pattern from embedded `\{re.escape(tag)}` in raw f-string to string concatenation `r'## \[' + re.escape(tag) + r']'` to avoid double-escape issue
+- Simplify versioning: release number encodes directly as `0.0.{N//100}.{N%100:02d}` instead of the former 99-wrap + major/minor decomposition
 
 ## [2026-05-22]
 

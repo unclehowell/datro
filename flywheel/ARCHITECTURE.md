@@ -66,7 +66,7 @@ The main orchestrator. Runs via cron at `0 * * * *` (every hour on the hour).
 
 **Key mechanisms:**
 - **Cooldown**: 24-hour per-branch cooldown enforced via timestamp comparison. The `sync_releases_from_github()` function initializes cooldown timestamps from GitHub release `publishedAt` dates, so the state is portable across machines.
-- **Version counter**: Linear per-branch counter stored in `release-state.json` under `total_releases`. The tag version encodes `patch.build` where `build` wraps at 99, incrementing `patch`. Example: release #6 → patch=0, build=06 → tag `branch-v0.0.0.06`.
+- **Version counter**: Linear per-branch counter stored in `release-state.json` under `total_releases`. The tag version is `0.0.{N//100}.{N%100:02d}` where N is the release number. Example: release #6 → tag `branch-v0.0.0.06`, release #123 → tag `branch-v0.0.1.23`.
 - **Pruning**: After each release, `prune_releases()` keeps only the last 3 GitHub releases per branch. It reads `gh release list` so it works from any machine.
 - **Fallback clone**: If git checkout times out (>30s), the script falls back to `git clone --depth 1` into a temp directory.
 - **Dispatch endpoint**: The `FORCE_BRANCH` environment variable allows bypassing rotation. Used by the `/dispatch-datro-fix` webhook endpoint.
@@ -100,22 +100,23 @@ Maintains mutable state across cron runs:
 
 ## Versioning Scheme
 
-Tag format: `{branch}-v{major}.{minor}.{patch}.{build:02d}`
+Tag format: `{branch}-v0.0.{patch}.{build:02d}`
 
-The patch.build encodes a linear per-branch release counter:
+The release number encodes directly into the tag in format `0.0.{N//100}.{N%100:02d}`:
 ```
-counter = total_releases[branch] + 1
-build = (counter - 1) % 99 + 1      # 1–99, zero-padded to 2 digits
-patch = (counter - 1) / 99           # increments every 99 releases
-minor = patch / 10                   # increments every 990 releases
-major = minor / 10                   # increments every 9900 releases
+release_number = total_releases[branch] + 1
+patch = release_number / 100            # increments every 100 releases
+build = release_number % 100            # 0–99, zero-padded to 2 digits
+version = 0.0.{patch}.{build:02d}
 ```
 
 Example releases for branch "ccan":
 - Release #1: `ccan-v0.0.0.01`
 - Release #99: `ccan-v0.0.0.99`
-- Release #100: `ccan-v0.0.1.01`
+- Release #100: `ccan-v0.0.1.00`
+- Release #123: `ccan-v0.0.1.23`
 - Release #199: `ccan-v0.0.1.99`
+- Release #200: `ccan-v0.0.2.00`
 
 ## Deployment Infrastructure
 

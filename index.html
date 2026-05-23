@@ -115,12 +115,11 @@ bash ~/.fcukproxy/multi-branch-release.sh 2>&1 | tee ~/logs/first-run.log
 # Verify: gh release list --repo YOUR_USER/YOUR_REPO</code></pre>
 
 <h2>Versioning</h2>
-<p>Tags follow <code>{branch}-v{major}.{minor}.{patch}.{build:02d}</code> where <code>patch.build</code> encodes a linear per-branch counter:</p>
-<pre><code>counter = total_releases[branch] + 1
-build  = (counter - 1) % 99 + 1       # 1–99
-patch  = (counter - 1) / 99            # increments every 99 releases
-minor  = patch / 10                    # every 990 releases
-major  = minor / 10                    # every 9900 releases</code></pre>
+<p>Tags follow <code>{branch}-v0.0.{patch}.{build:02d}</code> where the release number encodes directly:</p>
+<pre><code>release_number = total_releases[branch] + 1
+patch  = release_number / 100          # increments every 100 releases
+build  = release_number % 100          # 0–99, zero-padded to 2 digits
+version = 0.0.{patch}.{build:02d}</code></pre>
 
 <h2>Cooldown</h2>
 <p>Each branch has a 24-hour cooldown enforced by comparing the timestamp of its last GitHub release against the current time. If all 20 branches are on cooldown simultaneously, the script finds the branch closest to expiring and waits (up to 1 hour).</p>
