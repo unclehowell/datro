@@ -674,7 +674,6 @@
 
   // Shortcut function for checking if an object has a given property directly on
   // itself (in other words, not on a prototype). Unlike the internal `has`
-  // function, this public version can also traverse nested properties.
   function has(obj, path) {
     path = toPath(path);
     var length = path.length;
@@ -1138,7 +1137,6 @@
   }
 
   // When a sequence of calls of the returned function ends, the argument
-  // function is triggered. The end of a sequence is defined by the `wait`
   // parameter. If `immediate` is passed, the argument function will be
   // triggered at the beginning of the sequence instead of at the end.
   function debounce(func, wait, immediate) {
@@ -1298,7 +1296,6 @@
   // Return the position of the first occurrence of an item in an array,
   // or -1 if the item is not included in the array.
   // If the array is large and already in sort order, pass `true`
-  // for **isSorted** to use binary search.
   var indexOf = createIndexFinder(1, findIndex, sortedIndex);
 
   // Return the position of the last occurrence of an item in an array,

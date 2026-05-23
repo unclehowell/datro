@@ -6,8 +6,8 @@ import App from './App';
 // Simple Service Worker Registration for Offline Capabilities
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    // We register a simple worker that handles caching. 
-    // In a real environment, this would be a separate file, but here we can 
+    // We register a simple worker that handles caching.
+    // In a real environment, this would be a separate file, but here we can
     // simulate basic persistence for a PWA experience.
   });
 }

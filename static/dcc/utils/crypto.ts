@@ -4,7 +4,7 @@ import { Payload } from '../types';
 export const encodePayload = (payload: Payload): string => {
   const { data, senderEmail, senderWalletUid } = payload;
   const params = new URLSearchParams();
-  
+
   params.set("type", payload.type);
   params.set("to", senderEmail || "");
   params.set("from_uid", senderWalletUid || "");
@@ -14,7 +14,7 @@ export const encodePayload = (payload: Payload): string => {
   params.set("ref_str", data.reference || "");
   params.set("tx_type", data.type || "");
   params.set("tx_id", data.id || "");
-  
+
   if (data.relatedTransactionId) params.set("ref", data.relatedTransactionId);
 
   const iouUri = `iou:1?${params.toString()}`;
@@ -25,10 +25,10 @@ export const decodePayload = (base64: string): Payload | null => {
   try {
     const iouUri = decodeURIComponent(atob(base64));
     if (!iouUri.startsWith('iou:1?')) return null;
-    
+
     const queryString = iouUri.split('?')[1];
     const params = new URLSearchParams(queryString);
-    
+
     return {
       type: params.get("type") as any || 'REQUEST',
       senderEmail: params.get("to") || "",

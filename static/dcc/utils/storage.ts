@@ -38,9 +38,9 @@ export const getSettings = (): UserSettings => {
     }
     return settings;
   }
-  return { 
-    email: '', 
+  return {
+    email: '',
     walletUid: generateWalletUid(), // Auto-generate on first run
-    bccEmail: 'dcc@datro.xyz' 
+    bccEmail: 'dcc@datro.xyz'
   };
 };

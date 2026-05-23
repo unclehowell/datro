@@ -1,5 +1,15 @@
 # Changelog
 
+## [dcc-v0.0.0.06] - 2026-05-23
+
+### Fixed
+- fix(dcc): remove console.log debug calls that leak internal state (1 file(s): ./demos/_theme-docs/html/searchtools.js)
+- fix(dcc): remove stale commented-out code blocks (3 file(s): ./demos/_theme-docs/html/jquery-3.5.1.js, ./demos/_theme-docs/html/underscore-1.13.1.js, ./demos/_theme-docs/html/searchtools.js)
+- fix(dcc): clean up trailing whitespace (3 file(s): ./static/dcc/index.tsx, ./static/dcc/utils/crypto.ts, ./static/dcc/utils/storage.ts)
+
+### Changed
+- ux(dcc): improve website UX - lang,viewport, lang,viewport, lang,viewport (3 file(s): ./datroxyz-library/index.html, ./index.html, ./library/_theme-explorer/document.html)
+
 ## [dcc-v0.0.0.05] - 2026-05-22
 
 ### Fixed
