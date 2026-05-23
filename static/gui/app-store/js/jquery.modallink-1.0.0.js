@@ -1,6 +1,6 @@
 ﻿/**
 * version 1.1.0
-* upgrades 
+* upgrades
 * - fade animation on open and close
 * - open method. can open modal without binding link
 * - possible to open modal with "POST". nessecary when need to send large amount of data to modal
@@ -30,7 +30,6 @@
         }
         // $.modalLink.onHideScroll(w2 - w);
 
-        //console.log("scrollbar width is: " + diff + "px");
     }
 
     function showBodyScroll(cb) {
@@ -56,17 +55,17 @@
 
     var methods = {
         init: function (options) {
-            
+
             var settings = $.extend({}, $.modalLinkDefaults);
             $.extend(settings, options);
 
             return this.each(function () {
                 var $link = $(this);
-                
+
                 // already bound
                 if ($link.hasClass("sparkling-modal-link"))
                     return;
-                
+
                 // mark as bound
                 $link.addClass("sparkling-modal-link");
 
@@ -77,7 +76,7 @@
                 });
             });
         },
-        
+
         close: function (cb) {
 
             var $container = $(".sparkling-modal-container");
@@ -103,7 +102,7 @@
                 }
             });
         },
-        
+
         open: function ($link, options) {
 
             options = options || {};
@@ -115,7 +114,7 @@
                 || $link.attr("title")
                 || $link.text()
                 || options.title;
-            
+
             var settings = $.extend({}, $.modalLinkDefaults);
             $.extend(settings, options);
 
@@ -141,7 +140,7 @@
                 else {
                     data = settings.data;
                 }
-                
+
                 if (settings.method === "GET") {
                     if (typeof data == "object") {
                         for (var i in data) {
@@ -184,7 +183,7 @@
                     $closeButton.appendTo($title);
                     $closeButton.click(methods.close);
                 }
-                
+
                 $title.append("<div style=\"clear: both;\"></div>");
             }
             var $iframeContainer = $("<div class=\"sparkling-modal-content\"></div>");
@@ -229,11 +228,11 @@
             $content.fadeTo("fast", 1);
 
             if (settings.method == "POST") {
-                
+
                 var $form = settings.$form;
                 if ($form && $form instanceof jQuery)
                 {
-                    var originalTarget = $form.attr("target"); 
+                    var originalTarget = $form.attr("target");
                     $form
                         .attr("target", "modal-frame")
                         .data("submitted-from-modallink", true)
@@ -284,7 +283,7 @@
             return this;
         }
     };
-    
+
     $.modalLink = function(method) {
         // Method calling logic
         if (methods[method]) {
@@ -310,5 +309,5 @@ $(document).keyup(function(e) {
 
     if (e.keyCode == 27) {
         $.modalLink("close");
-    }   
+    }
 });

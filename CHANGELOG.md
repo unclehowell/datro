@@ -1,5 +1,15 @@
 # Changelog
 
+## [gui-v0.0.0.06] - 2026-05-23
+
+### Fixed
+- fix(gui): remove console.log debug calls that leak internal state (3 file(s): ./demos/_theme-docs/html/searchtools.js, ./static/gui/app-store/js/jquery.modallink-1.0.0.js, ./static/gui/dashboard/js/search/carousel-dropdown.js)
+- fix(gui): remove stale commented-out code blocks (3 file(s): ./demos/_theme-docs/html/jquery-3.5.1.js, ./demos/_theme-docs/html/underscore-1.13.1.js, ./demos/_theme-docs/html/searchtools.js)
+- fix(gui): clean up trailing whitespace (3 file(s): ./static/gui/app-store/js/jquery.modallink-1.0.0.js, ./static/gui/dashboard/js/search/holder2.js, ./static/gui/dashboard/js/search/github.dataplicity-commits.widget.js)
+
+### Changed
+- ux(gui): improve website UX - lang,viewport, lang,viewport, lang,viewport (3 file(s): ./datroxyz-library/index.html, ./index.html, ./library/_theme-explorer/document.html)
+
 ## [gui-v0.0.0.05] - 2026-05-22
 
 ### Fixed
