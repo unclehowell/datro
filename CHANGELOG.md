@@ -1,5 +1,10 @@
 # Changelog
 
+## [ccan-v0.0.0.07] - 2026-05-23
+
+### Changed
+- chore: maintenance re-release
+
 ## [ccan-v0.0.0.06] - 2026-05-23
 
 ### Fixed
