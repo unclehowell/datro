@@ -44,15 +44,12 @@ for (const catDir of catDirs) {
     ];
     writeFileSync(join(catPath, docDir, '_treeview.json'), JSON.stringify(tv, null, 2));
     catTv.push({ name: `<div class='subtitle-line enable-link'>${label}</div>`, path: `./${docDir}/index.html`, _links: { html: `./${docDir}/index.html` } });
-    console.log(`✓ ${catDir}/${docDir}/_treeview.json`);
   }
 
   writeFileSync(join(catPath, '_treeview.json'), JSON.stringify(catTv, null, 2));
-  console.log(`✓ ${catDir}/_treeview.json`);
 
   const catLabel = toLabel(catDir);
   rootTv.push({ name: `<div class='subtitle-line enable-link'>${catLabel}</div>`, path: `./${catDir}/index.html`, _links: { html: `./${catDir}/index.html` } });
 }
 
 writeFileSync(join(ROOT, '_treeview.json'), JSON.stringify(rootTv, null, 2));
-console.log(`\n✓ _treeview.json (root) — ${rootTv.length} categories`);
