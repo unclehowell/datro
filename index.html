@@ -1,121 +1,177 @@
-<!doctype html> <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]--> <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en" > <!--<![endif]-->
-	<head>
-        <meta charset="utf-8">
-        <meta content="1" http-equiv="Expires">
-        <link href="//world.datro.xyz/" rel="canonical">
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
-        <script type="type/javascript">
-                     var host = "world.datro.xyz";
-                     if {{ host == window.location.host} && {window.location.protocol != "https:""}}
-                     window.location.protocol = "https";
-        </script>
-
-	      <title>DATRO World</title>
-				<meta content="1" http-equiv="Expires">
-				<meta name="HandheldFriendly" content="true" />
-                                <meta name="mobile-web-app-capable" content="yes">
-        <meta content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1.0, user-scalable=0, shrink-to-fit=no" name="viewport">
-        <meta http-equiv="Page-Enter" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
-        <meta http-equiv="Page-Exit" content="progid:DXImageTransform.Microsoft.Fade(Duration=0.5)">
-
-  <meta content="#ffffff" name="msapplication-TileColor">
-	<link rel="stylesheet" href="https://datro.xyz/static/gui/dashboard/css/style.css">
-	<meta content="#ffffff" name="theme-color">
-</script>
-        <script type="text/javascript">
-				    $(document).ready(function() {
-				        $("body").css("display", "none");
-				        $("body").fadeIn(2000);
-				    });
-				</script>
-
-				<script>
-				// delegate event for performance, and save attaching a million events to each anchor
-				    document.addEventListener('click', function(event) {
-				      var target = event.target;
-				      if (target.tagName.toLowerCase() == 'a')
-				      {
-				          var port = target.getAttribute('href').match(/^:(\d+)(.*)/);
-				          if (port)
-				          {
-				             target.href = port[2];
-				             target.port = port[1];
-				          }
-				      }
-				    }, false);
-				</script>
-
-				<script>
-				  function resizebody(obj) {
-				    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-				  }
-				</script>
-
-				<script>
-				  function resizeFramez(obj) {
-				    obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
-				  }
-				</script>
-
-				  <script>
-
-				  $(function(){
-					$('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
-
-				  $(window).resize(function(){
-				    $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
-				  });
-				});
-
-				</script>
-
-
-
-				<!-- this scripts forces scrollbar="no" , scrollbars needed sorry <script src="https://datro.xyz/static/gui/dashboard/js/iframeResizer.min.js"></script>  -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AWS Flywheel — Automated Multi-Branch Release System</title>
 <style>
-
-
-.forminput[name] {
-    color: rgba(255,255,255,0.4)!important;
-}
-
-.forminput[value] {
-    color: rgba(255,255,255,0.5)!important;
-}
-
-input:focus::placeholder {
-    opacity: 0.4!important;
-}
-
+:root { --bg: #0d1117; --fg: #c9d1d9; --accent: #58a6ff; --border: #30363d; --code-bg: #161b22; }
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; padding: 2rem; }
+.container { max-width: 900px; margin: 0 auto; }
+h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #f0f6fc; }
+h2 { font-size: 1.5rem; margin: 2rem 0 1rem; color: #f0f6fc; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: #f0f6fc; }
+p, li { margin-bottom: 0.5rem; }
+ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+code { background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
+pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; border: 1px solid var(--border); }
+pre code { background: none; padding: 0; }
+.tag { display: inline-block; background: #1f6feb22; color: var(--accent); border: 1px solid #1f6feb44; padding: 0.1em 0.5em; border-radius: 3px; font-size: 0.85em; }
+.badge { display: inline-block; background: #238636; color: #fff; padding: 0.15em 0.6em; border-radius: 999px; font-size: 0.8em; font-weight: 600; }
+.badge-amber { background: #d29922; }
+.badge-red { background: #da3633; }
 </style>
+</head>
+<body>
+<div class="container">
 
-		</head>
+<h1>AWS Flywheel</h1>
+<p>Automated multi-branch release system — 3 bug fixes + 1 UX improvement per branch, every hour, on every branch.</p>
 
-    <body id="body"  scrolling="auto"  onload="resizebody(this);">
+<p><span class="badge">20 branches</span> <span class="badge badge-amber">24h cooldown</span> <span class="badge badge-red">1 release/hour</span></p>
 
+<p>Full source: <a href="https://github.com/unclehowell/datro/tree/cnei/flywheel">github.com/unclehowell/datro/tree/cnei/flywheel</a></p>
 
-						<main>
-						<div class="demo-iframe-container container-mq">
-					 <iframe class="demo-iframe iframe-mq" sandbox="allow-popups-to-escape-sandbox allow-same-origin allow-modals allow-scripts allow-popups allow-forms" onload="resizeframez(this);" id="framez" name="framez" src="https://datro.xyz/static/gui/index.html" webkitallowfullscreen mozallowfullscreen allowfullscreen webkitallowfullscreen="true" mozallowfullscreen="true" allowfullscreen="true" ></iframe>
-					 </div>
-						</main>
+<h2>How It Works</h2>
+<p>A cron job on an AWS EC2 instance cycles through 20 git branches, running 4 automated fix passes on each, then cuts a GitHub release with structured release notes.</p>
 
-          <!--try offline 1of  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script> -->
-		     <!-- web cache --> <script src="https://datro.xyz/static/gui/dashboard/js/jquery-1.11.0.min.js"></script>
-                                        <script src="https://datro.xyz/static/gui/dashboard/js/jquery.squirrel.min.js"></script>
-					<script src="https://datro.xyz/static/gui/dashboard/js/jquery-2.1.1.js"></script>
-					<script src="https://datro.xyz/static/gui/dashboard/js/main.js"></script>
-					<a href="#" style="margin-top: 0.1rem; float: left; zoom:0.1; height: -0.1rem; background-color: rgba(10,10,0,0.4); color: rgba(10,10,0,0); width: 1px; height: 1px;" id="anchor"></a>
-					<script>
-					  iFrameResize({ log: true }, '#framez')
-					</script>
-					<script>
-					  iFrameResize({ log: true }, '#body')
-					</script>
-					</script>
-					<!-- <script type="text/javascript">
-					!function(){window.JSEDarkMode=1;window.JSENoAds=1;var e=document,t=e.createElement("script"),s=e.getElementsByTagName("script")[0];t.type="text/javascript",t.async=t.defer=!0,t.src="https://load.jsecoin.com/load/68296/10.3.141.1/0/0/",s.parentNode.insertBefore(t,s)}();
-					</script> -->
-		</body>
+<h3>Architecture</h3>
+<ul>
+  <li><strong>Orchestrator</strong> (<code>multi-branch-release.sh</code>): Bash script, runs via <code>cron</code> at minute 0 of every hour</li>
+  <li><strong>Intelligence pipeline</strong> (<code>intelligence.py</code>): Python, tries AI bug-finding (<code>timeout 60</code>), falls through to <code>rg</code>-based static analysis</li>
+  <li><strong>State file</strong> (<code>release-state.json</code>): JSON, tracks rotation index, cooldown timestamps, and per-branch release counters</li>
+  <li><strong>Cloudflare Pages</strong>: Auto-deploys each branch to <code>{branch}.datro.pages.dev</code> / <code>{branch}.datro.xyz</code></li>
+</ul>
+
+<h3>Fix Passes</h3>
+<table style="width:100%; border-collapse: collapse; margin:1rem 0;">
+  <tr style="border-bottom:1px solid var(--border);">
+    <th style="text-align:left; padding:0.5rem;">Pass</th>
+    <th style="text-align:left; padding:0.5rem;">Type</th>
+    <th style="text-align:left; padding:0.5rem;">Pattern</th>
+  </tr>
+  <tr style="border-bottom:1px solid var(--border);">
+    <td style="padding:0.5rem;">1</td>
+    <td style="padding:0.5rem;"><span class="badge badge-red">Bug</span></td>
+    <td style="padding:0.5rem;"><code>console\.(log|debug)</code> — remove debug logging</td>
+  </tr>
+  <tr style="border-bottom:1px solid var(--border);">
+    <td style="padding:0.5rem;">2</td>
+    <td style="padding:0.5rem;"><span class="badge badge-red">Bug</span></td>
+    <td style="padding:0.5rem;"><code>^\s*//\s+(if|for|while|...)</code> — remove stale comments</td>
+  </tr>
+  <tr style="border-bottom:1px solid var(--border);">
+    <td style="padding:0.5rem;">3</td>
+    <td style="padding:0.5rem;"><span class="badge badge-red">Bug</span></td>
+    <td style="padding:0.5rem;"><code>\s+$</code> — trailing whitespace cleanup</td>
+  </tr>
+  <tr>
+    <td style="padding:0.5rem;">4</td>
+    <td style="padding:0.5rem;"><span class="badge badge-amber">UX</span></td>
+    <td style="padding:0.5rem;">Add <code>lang="en"</code>, viewport meta, <code>loading="lazy"</code>, <code>alt=""</code></td>
+  </tr>
+</table>
+
+<h2>Quickstart — Deploy Your Own Flywheel</h2>
+
+<h3>1. Server Setup</h3>
+<pre><code># Launch Ubuntu 24.04 EC2 instance (t3.small or larger)
+# Install dependencies
+sudo apt update && sudo apt install -y git python3 ripgrep nodejs npm
+npm install -g wrangler
+# Install GitHub CLI and authenticate
+sudo apt install -y gh
+gh auth login  # Use OAuth device flow</code></pre>
+
+<h3>2. Clone the Scripts</h3>
+<pre><code>git clone https://github.com/YOUR_USER/YOUR_REPO.git ~/repo
+mkdir -p ~/.fcukproxy
+# Copy multi-branch-release.sh and intelligence.py to ~/.fcukproxy/
+ln -s ~/.fcukproxy/multi-branch-release.sh ~/multi-branch-release.sh</code></pre>
+
+<h3>3. Configure Branches</h3>
+<p>Edit the <code>BRANCHES</code> array in <code>multi-branch-release.sh</code> to list your repository's branches:</p>
+<pre><code>BRANCHES=(
+  "main"
+  "develop"
+  "feature/foo"
+  # ... your branches here
+)</code></pre>
+
+<h3>4. Set Repository</h3>
+<pre><code>GITHUB_REPO="YOUR_USER/YOUR_REPO"</code></pre>
+
+<h3>5. Install Cron</h3>
+<pre><code>crontab -e
+# Add:
+0 * * * * /home/ubuntu/.fcukproxy/multi-branch-release.sh</code></pre>
+
+<h3>6. First Run</h3>
+<pre><code>mkdir -p ~/logs
+bash ~/.fcukproxy/multi-branch-release.sh 2>&1 | tee ~/logs/first-run.log
+# Verify: gh release list --repo YOUR_USER/YOUR_REPO</code></pre>
+
+<h2>Versioning</h2>
+<p>Tags follow <code>{branch}-v{major}.{minor}.{patch}.{build:02d}</code> where <code>patch.build</code> encodes a linear per-branch counter:</p>
+<pre><code>counter = total_releases[branch] + 1
+build  = (counter - 1) % 99 + 1       # 1–99
+patch  = (counter - 1) / 99            # increments every 99 releases
+minor  = patch / 10                    # every 990 releases
+major  = minor / 10                    # every 9900 releases</code></pre>
+
+<h2>Cooldown</h2>
+<p>Each branch has a 24-hour cooldown enforced by comparing the timestamp of its last GitHub release against the current time. If all 20 branches are on cooldown simultaneously, the script finds the branch closest to expiring and waits (up to 1 hour).</p>
+
+<h2>Pruning</h2>
+<p>After each release, only the 3 most recent GitHub releases per branch are kept. Older releases and their tags are deleted automatically.</p>
+
+<h2>Cloudflare Pages Deployment</h2>
+<p>Each branch auto-deploys to Cloudflare Pages. The flywheel verifies the deployment after each release using <code>curl</code>. If the deploy fails, it tries inner-loop fixes (e.g., adding <code>_redirects</code> for SPA routing).</p>
+
+<h2>Release Notes</h2>
+<p>Each GitHub release has a structured body with two sections:</p>
+<pre><code>### Fixed
+- fix(branch): remove debugging console.log (2 file(s): src/app.ts, src/utils.ts)
+- fix(branch): clean up trailing whitespace (1 file(s): src/styles.css)
+- fix(branch): remove stale commented-out code (3 file(s): ...)
+
+### Changed
+- ux(branch): improve website UX - lang, viewport (1 file(s): index.html)</code></pre>
+
+<h2>State File</h2>
+<p>The file <code>~/.fcukproxy/release-state.json</code> maintains all mutable state:</p>
+<pre><code>{
+  "rotation_index": 4,
+  "last_release": {
+    "main": 1779500000,
+    "develop": 1779503600
+  },
+  "total_releases": {
+    "main": 42,
+    "develop": 13
+  }
+}</code></pre>
+
+<h2>Security Notes</h2>
+<ul>
+  <li>No secrets in scripts — API keys loaded from <code>~/.fcukproxy/.env</code> or environment variables</li>
+  <li>All external commands use <code>timeout</code> guards (60s for AI, 30s for git)</li>
+  <li>Lock file prevents concurrent cron runs</li>
+  <li>Stderr from tools captured to log, not exposed to callers</li>
+  <li>IAM permissions: EC2 read/reboot only (for recovery)</li>
+</ul>
+
+<h2>Licence</h2>
+<p>MIT — use freely, adapt for your own repos.</p>
+
+<hr style="border-color:var(--border); margin: 2rem 0;">
+<p style="text-align:center; color:#8b949e; font-size:0.9rem;">
+  Generated by the <code>cnei</code> branch — <a href="https://github.com/unclehowell/datro/tree/cnei/flywheel">source</a>
+</p>
+
+</div>
+</body>
 </html>
