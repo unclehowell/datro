@@ -10,7 +10,7 @@ platform
 React 16, Cordova, Craco, FontAwesome, Bootstrap
 
 ## URL
-None (source only)
+N/A
 
 ## Key Files
 - `src/` — React source
