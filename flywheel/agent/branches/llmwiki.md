@@ -10,7 +10,7 @@ knowledge
 HTML/CSS, html2canvas, AdminLTE
 
 ## URL
-carfinancecheque.uk
+llmwiki.financecheque.uk
 
 ## Key Files
 `static/llmwiki/`, `index.html` (shared shell)
