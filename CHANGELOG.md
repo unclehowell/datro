@@ -1,5 +1,13 @@
 # Changelog
 
+## [datro-v0.0.0.06] - 2026-05-22
+
+### Fixed
+- - fix: remove console.log from 3 files
+- - fix: remove console.log from 3 files
+- - fix: remove console.log from 3 files
+-
+
 ## [datro-v0.0.0.05] - 2026-05-22
 
 ### Fixed
