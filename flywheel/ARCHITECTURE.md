@@ -5,39 +5,73 @@
 The flywheel is a cron-driven automation system that continuously releases bug fixes and UX improvements across all branches of `unclehowell/datro`. It runs entirely on an AWS EC2 instance, cycling through 20 branches on a 24-hour cooldown, producing exactly one release per hour.
 
 Each release contains:
-- **3 unique bug fixes** (static analysis passes) committed as a single fix commit
-- **1 website UX improvement** committed as a separate UX commit
+- **3 unique bug fixes** (AI-guided or rotating pool fallback)
+- **1 website UX improvement** (AI-guided or rotating pool fallback)
+- SEO improvements classified as bug fixes
 - Detailed release notes on GitHub with separate `### Fixed` and `### Changed` sections
 - A versioned git tag following the convention `branch-v0.0.{patch}.{build:02d}`
 
 ## Branch Strategy
 
-The flywheel manages exactly 20 branches:
+The flywheel manages exactly 20 branches, each with a distinct website purpose:
 
-| # | Branch | Notes |
-|---|--------|-------|
-| 0 | althea | |
-| 1 | archives | |
-| 2 | bpvsbuckler | |
-| 3 | carfinancecheque | |
-| 4 | ccan | |
-| 5 | ceo | |
-| 6 | dash | |
-| 7 | datro | |
-| 8 | dcc | |
-| 9 | financecheque | Separate repo (`datro-financecheque`) |
-| 10 | gui | |
-| 11 | hbnb | |
-| 12 | library | |
-| 13 | llmwiki | |
-| 14 | pirateclaw | |
-| 15 | subrepos | |
-| 16 | ui | |
-| 17 | wave | |
-| 18 | wayback | |
-| 19 | whitepaper | |
+| # | Branch | Website | Purpose |
+|---|--------|---------|---------|
+| 0 | althea | N/A | Althea Router Dashboard (React/Cordova) |
+| 1 | archives | wayback.financecheque.uk | Documentation/sync archive |
+| 2 | bpvsbuckler | bpvsbuckler.datro.xyz | BP vs Buckler land title case research |
+| 3 | carfinancecheque | world.datro.xyz | PCP refund / car finance mis-selling reclaim |
+| 4 | ccan | ccan.datro.xyz | CCAN community movement |
+| 5 | ceo | ceo.datro.xyz | Casualty Escort Officer application |
+| 6 | dash | dash.financecheque.uk | LLM proxy dashboard (Python aiohttp) |
+| 7 | datro | datro.xyz | DATRO Consortium homepage |
+| 8 | dcc | dcc.datro.xyz | Debt Cancellation Circle (React/TS) |
+| 9 | financecheque | financecheque.uk | Finance Cheque UK main site |
+| 10 | gui | gui.datro.xyz | HotspotBnB dashboard |
+| 11 | hbnb | hbnb.datro.xyz | HotspotBnB WiFi sharing platform |
+| 12 | library | library.datro.xyz | DATRO documentation library |
+| 13 | llmwiki | carfinancecheque.uk | Display ad generator |
+| 14 | pirateclaw | pirateclaw.pages.dev | FCUK affiliate platform (React/Stripe) |
+| 15 | subrepos | N/A | Subrepo management |
+| 16 | ui | gui.datro.xyz | App store/launcher UI |
+| 17 | wave | wave.datro.xyz | Wave community platform |
+| 18 | wayback | wayback.datro.xyz | DATRO Wayback archive |
+| 19 | whitepaper | whitepaper.financecheque.uk | Algocracy whitepaper |
 
 Branches are selected sequentially via a `rotation_index` stored in `release-state.json`.
+
+## Agent Harness
+
+The flywheel now includes an **Agent Harness** — a knowledge layer that gives it deterministic authority to decide what each website needs.
+
+### `agent/` Directory
+
+| File | Purpose |
+|------|---------|
+| `README.md` | Harness overview and architecture |
+| `soul.md` | Core identity: mission, website categories, decision framework, brand voice |
+| `manifest.md` | Branch registry with URLs, stack, purpose, and type for all 20 branches |
+| `memory.md` | Cross-branch learnings: prompt engineering lessons, fix type success rates, what broke before |
+| `heartbeat.sh` | Health monitoring: checks all 20 websites + flywheel state + disk/memory |
+| `branches/{branch}.md` | Per-branch knowledge: purpose, stack, known issues, SEO status, past fixes |
+
+### How the Agent Improves Fixes
+
+1. **Before each release**, `intelligence.py` reads the branch's memory file to understand its website's purpose, known issues, and past fixes
+2. The AI prompt includes full context: "This website is a consumer advocacy site for PCP refunds. Its known issues are XYZ. Find the single biggest bug."
+3. **After each release**, the agent learns: the fix description and file are appended to the branch's memory file
+4. **Global memory**: The agent also logs what worked/failed to `memory.md` for cross-branch pattern recognition
+
+### Website Categories (from soul.md)
+
+| Category | Branches | Fix Priority |
+|----------|----------|-------------|
+| advocacy | carfinancecheque, bpvsbuckler | SEO, trust signals, page speed |
+| community | ccan, ceo, wave | Accessibility, mobile, CTA clarity |
+| platform | dcc, dash, gui, hbnb, ui | Code quality, error handling, security |
+| knowledge | library, llmwiki, archives, wayback, whitepaper | Navigation, search, readability, metadata |
+| hub | datro, althea | Branding, performance, SEO |
+| ecommerce | pirateclaw, financecheque | Checkout flow, payment security, conversion |
 
 ## Components
 
@@ -51,52 +85,67 @@ The main orchestrator. Runs via cron at `0 * * * *` (every hour on the hour).
 3. Git fetch and sync release timestamps from GitHub
 4. Select next eligible branch (rotation index, skip cooldown, skip non-existent)
 5. If all branches on cooldown, wait for nearest-expiring branch (if ≤1h)
-6. Run 4 fix passes on the branch:
-   - Pass 1: Remove `console.log` / `console.debug` calls
-   - Pass 2: Remove stale commented-out code blocks
-   - Pass 3: Clean up trailing whitespace
-   - Pass 4: Improve website HTML (lang attribute, viewport meta, lazy loading, alt text)
-7. Bump version, update CHANGELOG.md, commit, push tag
-8. Create GitHub Release with extracted release notes
-9. Verify release on GitHub
-10. Verify Cloudflare Pages deployment
-11. Run quality checks (console errors, viewport overflow)
-12. Prune old releases (keep last 3 per branch)
-13. Persist release state and advance rotation index
+6. Run 4 fix passes on the branch — each tries:
+   a. **AI-guided fix** via `intelligence.py --branch X --type bug|ux` (reads agent context, tries 7 LLM sources, timeout 60s)
+   b. **Rotating pool fallback** — tries up to 10 fix types from the 30+ bug or 20+ UX pool, advancing rotation each attempt
+   c. **Guaranteed fallback** — duplicate blank line removal (bug) or DOCTYPE+charset (UX)
+7. Update branch memory (agent/branches/{branch}.md) and global memory (agent/memory.md) with what was done
+8. Bump version, update CHANGELOG.md, commit, push tag
+9. Create GitHub Release with extracted release notes
+10. Verify release on GitHub
+11. Verify Cloudflare Pages deployment
+12. Run quality checks (console errors, viewport overflow)
+13. Prune old releases (keep last 3 per branch)
+14. Persist release state (including fix_rotation/ux_rotation) and advance rotation index
 
 **Key mechanisms:**
-- **Cooldown**: 24-hour per-branch cooldown enforced via timestamp comparison. The `sync_releases_from_github()` function initializes cooldown timestamps from GitHub release `publishedAt` dates, so the state is portable across machines.
-- **Version counter**: Linear per-branch counter stored in `release-state.json` under `total_releases`. The tag version is `0.0.{N//100}.{N%100:02d}` where N is the release number. Example: release #6 → tag `branch-v0.0.0.06`, release #123 → tag `branch-v0.0.1.23`.
-- **Pruning**: After each release, `prune_releases()` keeps only the last 3 GitHub releases per branch. It reads `gh release list` so it works from any machine.
-- **Fallback clone**: If git checkout times out (>30s), the script falls back to `git clone --depth 1` into a temp directory.
-- **Dispatch endpoint**: The `FORCE_BRANCH` environment variable allows bypassing rotation. Used by the `/dispatch-datro-fix` webhook endpoint.
+- **Cooldown**: 24-hour per-branch cooldown enforced via timestamp comparison.
+- **Version counter**: Linear per-branch counter. Tag `0.0.{N//100}.{N%100:02d}`.
+- **Pruning**: Keeps last 3 GitHub releases per branch via `gh release list`.
+- **Rotating pool**: `fix_rotation` and `ux_rotation` in state track position in 32-element bug pool and 20-element UX pool. Each pool attempt advances the index, distributing diverse fix types across branches over time.
+- **Fallback clone**: If git checkout times out (>30s), falls back to `git clone --depth 1`.
+- **Dispatch endpoint**: `FORCE_BRANCH` env var bypasses rotation.
 
-### 2. `intelligence.py` (Python — bug finder)
+### 2. `intelligence.py` (Python — context-aware AI fix finder)
 
-An AI-assisted bug-finding pipeline with a 60-second timeout. When the timeout is reached (or the AI fails to produce valid JSON), the script falls through to `rg`-based static analysis to find fix candidates.
+A context-aware AI pipeline that routes through up to 7 LLM sources in sequence:
 
-The AI pipeline accepts:
-- `--repo`: Path to repository directory
-- Returns JSON with `file_path`, `old_string`, `new_string`, `commit_message`
+1. `--branch X --type bug|ux --pass-number N`
+2. Reads agent context (soul.md, manifest.md, branches/{branch}.md, memory.md)
+3. Builds a rich prompt including the website's category, URL, known issues, past fixes
+4. Routes through: local proxy → NVIDIA → child proxy → parent proxy → OpenRouter → Gemini → DeepSeek
+5. On success: outputs validated JSON fix with `file_path`, `old_string`, `new_string`, `commit_message`
+6. On failure: exits 42 (signals to caller to use pool fallback)
 
-The static analysis fallback is actually implemented in `multi-branch-release.sh` directly (the `apply_fix()` function), bypassing `intelligence.py` when it times out.
+The prompt quality is dramatically improved because the AI knows what the website IS and what it's TRYING TO DO, not just what files exist in the repo.
 
-### 3. `release-state.json` (JSON — persistent state)
+### 3. Rotating Fix Pool
 
-Maintains mutable state across cron runs:
+When AI fails, the rotating pool guarantees every release has content:
+
+**32 Bug Fix Types** (including SEO as bug fixes):
+console.log removal, commented code cleanup, trailing whitespace, duplicate blank lines, meta description (SEO), canonical URL (SEO), Open Graph tags (SEO), Twitter Cards (SEO), alt text (SEO), lazy loading (SEO), heading hierarchy (SEO), charset meta, viewport meta, lang attribute, link noopener, button type, duplicate IDs, label for, aria-label, script defer, image dimensions, DOCTYPE, structured data (SEO), meta keywords (SEO), self-closing tags, inline handlers, br syntax, tabs→spaces, BOM removal, http-equiv removal, form charset, 404 title
+
+**20 UX Improvement Types**:
+viewport meta, mobile tap targets, hover styles, CSS load order, skip link, color contrast, smooth scroll, print styles, focus-visible, touch-action, button states, table responsive, z-index, list semantics, loading indicator, breadcrumb, CLS fix, type scale, spacing, keyboard nav
+
+### 4. `release-state.json` (JSON — persistent state)
+
 ```json
 {
   "rotation_index": 0,
+  "fix_rotation": 0,
+  "ux_rotation": 0,
   "last_release": {
-    "ccan": 1745370000,
-    "dcc": 1745373600
+    "ccan": 1745370000
   },
   "total_releases": {
-    "ccan": 14,
-    "dcc": 6
+    "ccan": 14
   }
 }
 ```
+
+`fix_rotation` and `ux_rotation` track position in the rotating fix pools.
 
 ## Versioning Scheme
 
