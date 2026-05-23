@@ -10,7 +10,7 @@ advocacy
 Static HTML/CSS, Google Analytics, Cloudflare Pages
 
 ## URL
-world.datro.xyz (alias: carfinancecheque.uk)
+car.financecheque.uk
 
 ## Key Files
 `static/carfinancecheque/`, `index.html` (shared shell)
