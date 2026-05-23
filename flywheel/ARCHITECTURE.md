@@ -78,18 +78,18 @@ The flywheel now includes an **Agent Harness** — a knowledge layer that gives 
 
 Every branch has a corresponding live website URL stored in:
 
-1. **** — the master branch-to-URL table
-2. **** — per-branch context with  field
-3. **** — bash associative array in  for runtime URL lookup
+1. **agent/manifest.md** — the master branch-to-URL table
+2. **agent/branches/{branch}.md** — per-branch context with `## URL` field
+3. **BRANCH_URLS** — bash associative array in `multi-branch-release.sh` for runtime URL lookup
 
 The AI uses these URLs to **visit the live site** during fix selection via Browserbase or similar headless browser:
-1. Navigate to 
+1. Navigate to `BRANCH_URLS[$branch]`
 2. Take screenshots of desktop and mobile viewports
 3. Detect: JS console errors, layout breaks, missing meta tags, dead links, CLS issues
 4. Compare rendered output against accessibility standards (contrast, labels, focus order)
 5. Prioritize 3 most impactful bugs + 1 UX improvement per pass
 
-Branches with  URL (althea, subrepos) are source-only and skipped for visual inspection.
+Branches with `N/A` URL (althea, subrepos) are source-only and skipped for visual inspection.
 
 ## Components
 
