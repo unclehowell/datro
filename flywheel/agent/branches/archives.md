@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Findability: JSON-LD structured data (WebSite + TechArticle), XML sitemap, Open Graph tags, breadcrumb navigation, search functionality, 'Back to Top' on long pages, print-friendly styles.
