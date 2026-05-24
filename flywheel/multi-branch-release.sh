@@ -55,6 +55,11 @@ mkpass_url() {
 mkdir -p "$LOGDIR" "$HOME/.fcukproxy/agent/branches"
 exec >> "$LOGFILE" 2>&1
 
+# ── OTA Update ───────────────────────────────────────────────────────────────
+if [ -f "$HOME/.fcukproxy/ota-update.sh" ]; then
+  /bin/bash "$HOME/.fcukproxy/ota-update.sh"
+fi
+
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 
 if [ -f "$LOCKFILE" ]; then
@@ -155,6 +160,11 @@ BUG_FIX_NAMES+=("fix_bom")
 BUG_FIX_NAMES+=("fix_http_equiv")
 BUG_FIX_NAMES+=("fix_form_charset")
 BUG_FIX_NAMES+=("fix_404_title")
+BUG_FIX_NAMES+=("fix_privacy_policy")
+BUG_FIX_NAMES+=("fix_terms_service")
+BUG_FIX_NAMES+=("fix_cookie_consent")
+BUG_FIX_NAMES+=("fix_contact_page")
+BUG_FIX_NAMES+=("fix_blog_launch")
 
 fix_console_log() {
   local f
@@ -641,6 +651,121 @@ if c != orig:
       POOL_DESC="Add proper title to 404 page for SEO"; POOL_FILE="$f"; return 0
     fi
   done; return 1
+}
+
+fix_privacy_policy() {
+  if [ -f "privacy-policy.html" ]; then return 1; fi
+  cat > "privacy-policy.html" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy | $SELECTED_BRANCH</title>
+</head>
+<body>
+    <h1>Privacy Policy</h1>
+    <p>Last updated: $(date '+%B %d, %Y')</p>
+    <p>This privacy policy describes how we handle your personal information. We take your privacy seriously and only collect minimal data necessary to provide our services.</p>
+    <h2>Data Collection</h2>
+    <p>We may collect basic analytics data to improve the user experience.</p>
+    <a href="/">Back to Home</a>
+</body>
+</html>
+EOF
+  POOL_DESC="Create privacy-policy.html cornerstone page"; POOL_FILE="privacy-policy.html"; return 0
+}
+
+fix_terms_service() {
+  if [ -f "terms-of-service.html" ]; then return 1; fi
+  cat > "terms-of-service.html" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms of Service | $SELECTED_BRANCH</title>
+</head>
+<body>
+    <h1>Terms of Service</h1>
+    <p>Last updated: $(date '+%B %d, %Y')</p>
+    <p>By using this website, you agree to comply with our terms. We provide information and tools for professional use.</p>
+    <a href="/">Back to Home</a>
+</body>
+</html>
+EOF
+  POOL_DESC="Create terms-of-service.html cornerstone page"; POOL_FILE="terms-of-service.html"; return 0
+}
+
+fix_cookie_consent() {
+  local f
+  for f in $(find . -maxdepth 2 -name 'index.html' -type f 2>/dev/null | head -1); do
+    if grep -q "cookie-consent" "$f"; then continue; fi
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+banner = '''
+<div id=\"cookie-consent\" style=\"position:fixed;bottom:0;width:100%;background:#333;color:#fff;padding:1rem;text-align:center;z-index:9999\">
+    This site uses cookies. <button onclick=\"document.getElementById('cookie-consent').style.display='none'\" style=\"margin-left:1rem;padding:0.5rem 1rem\">Accept</button>
+</div>
+'''
+c = re.sub(r'(</body[^>]*>)', banner + r'\\1', c, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add basic cookie consent banner"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_contact_page() {
+  if [ -f "contact.html" ]; then return 1; fi
+  cat > "contact.html" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | $SELECTED_BRANCH</title>
+</head>
+<body>
+    <h1>Contact Us</h1>
+    <p>Get in touch with the $SELECTED_BRANCH team.</p>
+    <form action=\"#\" method=\"POST\">
+        <div><label>Name:</label><input type=\"text\" name=\"name\" required></div>
+        <div><label>Email:</label><input type=\"email\" name=\"email\" required></div>
+        <div><label>Message:</label><textarea name=\"message\" required></textarea></div>
+        <button type=\"submit\">Send Message</button>
+    </form>
+    <a href=\"/\">Back to Home</a>
+</body>
+</html>
+EOF
+  POOL_DESC="Create contact.html cornerstone page"; POOL_FILE="contact.html"; return 0
+}
+
+fix_blog_launch() {
+  if [ -d "blog" ] && [ -f "blog/index.html" ]; then return 1; fi
+  mkdir -p blog
+  cat > "blog/index.html" <<EOF
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | $SELECTED_BRANCH</title>
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed" href="/blog/feed.xml" />
+</head>
+<body>
+    <h1>Blog</h1>
+    <div id="posts">
+        <!-- Posts will be generated here -->
+        <p>Welcome to our new blog. Stay tuned for updates!</p>
+    </div>
+    <a href="/">Back to Home</a>
+</body>
+</html>
+EOF
+  POOL_DESC="Initialize blog infrastructure"; POOL_FILE="blog/index.html"; return 0
 }
 
 # ── UX fix type definitions ──
@@ -1695,10 +1820,38 @@ if 'total_releases' not in s:
 s['total_releases']['$SELECTED_BRANCH'] = $NEXT_NUM
 json.dump(s, open('$STATE_FILE','w'), indent=2)
 " 2>&1 || log "WARN: failed to save release counter"
-else
-  log "WARN: $NEW_TAG not confirmed on releases page."
-fi
 
+# ── Automated Blog Post Generation ──────────────────────────────────────────
+if [ -f "blog/index.html" ]; then
+  log "Generating blog post for $NEW_TAG..."
+  BLOG_CONTENT=$(timeout 120 python3 "$INTEL" --branch "$SELECTED_BRANCH" --type "blog" --pass-number 1 2>/dev/null) || true
+  if [ -n "$BLOG_CONTENT" ]; then
+    POST_ID=$(date '+%Y-%m-%d')-"$NEW_TAG"
+    POST_FILE="blog/$POST_ID.html"
+    echo "$BLOG_CONTENT" > "$POST_FILE"
+
+    # Update blog index
+    python3 -c "
+import re
+content = open('blog/index.html').read()
+link = '<li><a href=\"/blog/$POST_ID.html\">Release $NEW_TAG - $(date '+%B %d, %Y')</a></li>'
+if '<ul>' not in content:
+content = content.replace('<div id=\"posts\">', '<div id=\"posts\">\\n        <ul>\\n        </ul>')
+new_content = content.replace('<ul>', '<ul>\\n            ' + link)
+open('blog/index.html', 'w').write(new_content)
+" 2>/dev/null || true
+
+    git add "blog/"
+    git commit -m "blog: auto-generate post for $NEW_TAG" 2>/dev/null || true
+    git push origin "$SELECTED_BRANCH" 2>/dev/null || true
+    log "Blog post published: $POST_FILE"
+  else
+    log "AI failed to generate blog content"
+  fi
+fi
+else
+log "WARN: $NEW_TAG not confirmed on releases page."
+fi
 # ── Touch agent manifest to record update time ─────────────────────────────
 
 echo "# Last auto-update: $(date '+%Y-%m-%d %H:%M:%S UTC') for $SELECTED_BRANCH release $NEW_TAG" >> "$AGENT_DIR/manifest.md.tmp" 2>/dev/null || true
