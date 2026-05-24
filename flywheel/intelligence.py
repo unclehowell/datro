@@ -107,7 +107,8 @@ def load_branch_context(branch):
     for name, path in [("soul", AGENT_DIR / "soul.md"),
                        ("manifest", AGENT_DIR / "manifest.md"),
                        ("memory", AGENT_DIR / "memory.md"),
-                       ("branch_context", AGENT_DIR / "branches" / f"{branch}.md")]:
+                       ("branch_context", AGENT_DIR / "branches" / f"{branch}.md"),
+                       ("aws_supervisor", AGENT_DIR / "aws-supervisor.md")]:
         if path.exists():
             ctx[name] = path.read_text()
         else:
@@ -136,6 +137,93 @@ Available tools:
 
 Output ONLY valid JSON with a "tool" field. No explanation, no markdown.
 """
+
+META_TOOL_HELP = """
+Available tools:
+- "sed": string replacement. Requires file_path, old_string, new_string.
+- "patch": unified diff. Requires file_path, diff (git-format patch).
+- "write": overwrite entire file. Requires file_path, new_content.
+
+Output ONLY valid JSON. No explanation, no markdown.
+"""
+
+def build_meta_prompt(branch, ctx, profile, error_feedback=""):
+    profile = profile or {}
+    learned = profile.get("learned_patterns", [])
+    skills = profile.get("skill_library", [])
+    reflections = profile.get("reflections", [])
+    successful_fixes = profile.get("successful_fixes", [])
+    branch_knowledge = profile.get("branch_knowledge", "")
+
+    knowledge_section = ""
+    if learned:
+        knowledge_section += "\n## Learned Patterns\n"
+        for p in learned[-10:]:
+            knowledge_section += f"- {p.get('pattern', '')}: {p.get('detail', '')}\n"
+    if skills:
+        knowledge_section += "\n## Skill Library\n"
+        for s in skills[-10:]:
+            knowledge_section += f"- {s.get('name', '')}: {s.get('description', '')}\n"
+    if reflections:
+        knowledge_section += "\n## Past Reflections\n"
+        for r in reflections[-5:]:
+            knowledge_section += f"- {r.get('lesson', '')}\n"
+    if branch_knowledge:
+        knowledge_section += f"\n## Branch Knowledge\n{branch_knowledge[:1500]}\n"
+    if successful_fixes:
+        knowledge_section += "\n## Past Meta-Suggestions\n"
+        for f in successful_fixes[-5:]:
+            knowledge_section += f"- {f.get('commit_message', '')}: {f.get('bug_description', '')[:150]}\n"
+
+    error_section = ""
+    if error_feedback:
+        error_section = f"\n## PREVIOUS FIX FAILED\n{error_feedback[:2000]}\nPlease provide a CORRECTED fix.\n"
+
+    task = """Analyze the AWS flywheel worker and suggest ONE improvement to the flywheel code.
+The system consists of:
+- multi-branch-release.sh (bash) — the hourly release runner
+- intelligence.py (python) — the AI agent
+- agent/profiles.json — per-branch learning state
+- agent/branches/*.md — branch context
+- agent/memory.md — cross-branch learnings
+
+You must improve the FLYWHEEL itself (not the website branches).
+Focus on: reliability, success rate, error handling, learning efficiency, resource usage.
+
+Output a JSON fix using one of the available tools that DIRECTLY edits a flywheel file.
+The file_path must be one of: flywheel/multi-branch-release.sh, flywheel/intelligence.py, flywheel/agent/profiles.json, flywheel/agent/branches/aws.md, flywheel/agent/aws-supervisor.md, flywheel/meta-review.sh"""
+
+    system = """You are a senior infrastructure engineer coaching an autonomous flywheel.
+Your student is an AWS server running 24/7 releases across 20 branches.
+Analyze the data, identify the SINGLE MOST IMPACTFUL improvement to the flywheel code,
+and output a tool-based fix. Fix must be in a flywheel/ file and improve how the flywheel operates.
+Return ONLY valid JSON. No explanation, no markdown."""
+
+    prompt = f"""## AWS Flywheel State
+{ctx.get('branch_context', '')[:3000]}
+
+## AWS Supervisor Soul
+{ctx.get('aws_supervisor', '')[:2000]}
+
+## Knowledge & History
+{knowledge_section}
+{error_section}
+
+## Task
+{task}
+
+## Available Tools
+{META_TOOL_HELP}
+
+## Output Format
+For "sed": {{"tool":"sed","file_path":"flywheel/multi-branch-release.sh","old_string":"...","new_string":"...","bug_description":"why this improves the flywheel","commit_message":"meta: description"}}
+For "patch": {{"tool":"patch","file_path":"flywheel/intelligence.py","diff":"...","bug_description":"...","commit_message":"meta: description"}}
+For "write": {{"tool":"write","file_path":"flywheel/agent/branches/aws.md","new_content":"...","bug_description":"...","commit_message":"meta: description"}}
+
+Remember: flywheel/ files are on the cnei branch. old_string MUST be exact text found in the file.
+"""
+    return system, prompt
+
 
 def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
     profile = profile or {}
@@ -568,7 +656,7 @@ def extract_json_fix(text):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--branch", required=True)
-    parser.add_argument("--type", choices=["bug", "ux"], required=True)
+    parser.add_argument("--type", choices=["bug", "ux", "meta"], required=True)
     parser.add_argument("--pass-number", type=int, default=1)
     parser.add_argument("--error-feedback", help="Build error from previous fix attempt for self-correction")
     parser.add_argument("--learn-after", help="JSON fix to learn from")
@@ -624,8 +712,11 @@ def main():
         ]
         start_idx = 0
 
-    # Build prompt with optional error feedback
-    system, prompt = build_prompt(args.branch, args.type, ctx, profile, args.error_feedback or "")
+    # Build prompt — meta type uses its own prompt builder
+    if args.type == "meta":
+        system, prompt = build_meta_prompt(args.branch, ctx, profile, args.error_feedback or "")
+    else:
+        system, prompt = build_prompt(args.branch, args.type, ctx, profile, args.error_feedback or "")
     repo_dirs = [Path.home() / "datro", Path.home() / "datro-financecheque"]
 
     for i in range(len(rotation)):
