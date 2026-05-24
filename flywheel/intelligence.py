@@ -700,16 +700,18 @@ def main():
     profile = get_profile(args.branch)
 
     if profile and profile.get("llm_rotation"):
-        rotation = list(profile["llm_rotation"])
+        rotation = update_rotation_with_cli(list(profile["llm_rotation"]))
         start_idx = profile.get("rotation_index", 0) % len(rotation)
     else:
-        rotation = [
-            {"name": "financecheque", "url": "https://www.financecheque.uk/api/proxy", "type": "parent"},
+        rotation = update_rotation_with_cli([
             {"name": "local_proxy", "url": "http://localhost:6000/v1/chat/completions", "type": "local"},
+            {"name": "financecheque", "url": "https://www.financecheque.uk/api/proxy", "type": "parent"},
             {"name": "child_proxy", "url": "http://172.31.29.216:4001", "type": "child"},
             {"name": "nvidia", "type": "nvidia"},
             {"name": "openrouter", "type": "openrouter"},
-        ]
+            {"name": "gemini", "type": "gemini"},
+            {"name": "deepseek", "type": "deepseek"}
+        ])
         start_idx = 0
 
     # Build prompt — meta type uses its own prompt builder
@@ -771,3 +773,30 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+# ── CLI Fallback handlers ───────────────────────────────────────────────────
+
+def query_cli_tool(tool_name, prompt, system):
+    cmd = [tool_name, "chat", "--message", f"{system}\n\n{prompt}"]
+    try:
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+        if r.returncode == 0 and r.stdout:
+            return r.stdout.strip()
+    except Exception:
+        pass
+    return None
+
+LLM_HANDLERS.update({
+    "kiro":     lambda p, s, **kw: query_cli_tool("kiro", p, s),
+    "kilo":     lambda p, s, **kw: query_cli_tool("kilo", p, s),
+    "groq":     lambda p, s, **kw: query_cli_tool("groq", p, s),
+    "opencode": lambda p, s, **kw: query_cli_tool("opencode", p, s),
+})
+
+def update_rotation_with_cli(rotation):
+    tools = ["kiro", "kilo", "groq", "opencode"]
+    for t in tools:
+        if not any(e["name"] == t for e in rotation):
+            rotation.append({"name": t, "type": "cli"})
+    return rotation
+

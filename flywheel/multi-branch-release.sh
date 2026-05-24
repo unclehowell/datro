@@ -55,6 +55,8 @@ mkpass_url() {
 mkdir -p "$LOGDIR" "$HOME/.fcukproxy/agent/branches"
 exec >> "$LOGFILE" 2>&1
 
+# ── OTA Update ───────────────────────────────────────────────────────────────\nif [ -f "$HOME/.fcukproxy/ota-update.sh" ]; then\n  /bin/bash "$HOME/.fcukproxy/ota-update.sh"\nfi\n
+
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 
 if [ -f "$LOCKFILE" ]; then
