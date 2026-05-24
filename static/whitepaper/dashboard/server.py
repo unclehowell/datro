@@ -162,13 +162,13 @@ class Dashboard:
 </head>
 <body>
   <h1>🤖 LLM Proxy Dashboard</h1>
-  
+
   <div class="tabs">
     <div class="tab active" onclick="showTab('chat')">💬 Chat</div>
     <div class="tab" onclick="showTab('apps')">⬇️ Apps</div>
     <div class="tab" onclick="showTab('status')">📊 Status</div>
   </div>
-  
+
   <div id="chat" class="section active">
     <div class="card">
       <h2>Chat with OpenCode</h2>
@@ -182,11 +182,11 @@ class Dashboard:
       </div>
     </div>
   </div>
-  
+
   <div id="apps" class="section">
     <div class="grid" id="appsGrid"></div>
   </div>
-  
+
   <div id="status" class="section">
     <div class="stats">
       <div class="stat"><div class="stat-value" id="totalMachines">{len(self.machines)}</div><div class="stat-label">Machines</div></div>
@@ -195,10 +195,10 @@ class Dashboard:
     </div>
     <div class="grid" id="machinesGrid"></div>
   </div>
-  
+
   <script>
     let chatHistory = [];
-    
+
     function showTab(tab) {{
       document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
       document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
@@ -207,7 +207,7 @@ class Dashboard:
       if(tab === 'apps') loadApps();
       if(tab === 'status') refreshStatus();
     }}
-    
+
     async function loadApps() {{
       try {{
         const resp = await fetch('https://kiro.financecheque.uk/api/apps');
@@ -229,7 +229,7 @@ class Dashboard:
         }});
       }} catch(e) {{ console.error(e); }}
     }}
-    
+
     function handleAppClick(appId, needsOAuth) {{
       if(appId === 'aws-builder') {{
         window.open('https://aws.amazon.com/builder/', '_blank');
@@ -240,7 +240,7 @@ class Dashboard:
         installApp(appId);
       }}
     }}
-    
+
     async function installApp(appId) {{
       try {{
         const resp = await fetch('https://kiro.financecheque.uk/api/install-app', {{
@@ -255,15 +255,15 @@ class Dashboard:
         }}
       }} catch(e) {{ alert('Error: ' + e.message); }}
     }}
-    
+
     async function sendMessage() {{
       const input = document.getElementById('chatInput');
       const msg = input.value.trim();
       if(!msg) return;
-      
+
       addMessage('user', msg);
       input.value = '';
-      
+
       try {{
         const resp = await fetch('http://localhost:5000/v1/chat/completions', {{
           method: 'POST',
@@ -280,7 +280,7 @@ class Dashboard:
         addMessage('assistant', 'Error: ' + e.message + '\\n\\nMake sure OpenCode is installed and running.');
       }}
     }}
-    
+
     function addMessage(role, content) {{
       chatHistory.push({{role, content}});
       const div = document.getElementById('chatMessages');
@@ -290,7 +290,7 @@ class Dashboard:
       div.appendChild(msg);
       div.scrollTop = div.scrollHeight;
     }}
-    
+
     async function refreshStatus() {{
       try {{
         const resp = await fetch('/api/status');
@@ -311,7 +311,7 @@ class Dashboard:
         document.getElementById('unhealthyCount').textContent = unhealthy;
       }} catch(e) {{ console.error(e); }}
     }}
-    
+
     setInterval(refreshStatus, 60000);
     refreshStatus();
   </script>

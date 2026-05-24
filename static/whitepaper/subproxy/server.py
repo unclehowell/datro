@@ -223,7 +223,7 @@ async def chat_completions(request):
         return web.json_response({"error": "Invalid JSON"}, status=400)
 
     model = body.get("model", "")
-    
+
     # Route to kiro tmux session if model is "kiro"
     if model in ("kiro", "kiro-cli"):
         messages = body.get("messages", [])
