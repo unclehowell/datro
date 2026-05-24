@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Community Landing: create Cloudflare Pages project, root_dir=static/wave, add structured data (Organization + WebSite), hero section explaining the platform, signup/CTA buttons, feature highlights, social proof / community stats, cookie consent, analytics, mobile responsive, favicon.
