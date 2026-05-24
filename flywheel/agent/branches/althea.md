@@ -30,3 +30,6 @@ N/A — not deployed as website
 
 ## Next Priority
 React upgrades, build pipeline fixes
+
+## Cornerstone Mission
+PWA readiness: manifest.json, service worker, offline fallback. Add signup/login flow placeholders, onboarding wizard shell, and 404 page. Ensure all interactive elements have loading/error/empty states.
