@@ -98,7 +98,7 @@ analyze layout, check mobile responsiveness, evaluate UX, and identify bugs.
 Use the deployed website as your primary source of truth — the source code may differ
 from what's live if deploys are pending.
 
-Remember: the code is at /home/ubuntu/datro (or datro-financecheque). Find a real, verifiable bug in a file that exists. old_string MUST be exact text found in the file.
+Remember: the code is at /home/ubuntu/datro (or datro-financecheque). All website files now live under static/{branch}/ (e.g., static/ccan/index.html). Find a real, verifiable bug in a file that exists. old_string MUST be exact text found in the file.
 """
     return system, prompt
 
