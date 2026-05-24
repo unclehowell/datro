@@ -115,7 +115,7 @@ print(cur)
 }
 
 # ── Rotating Fix Pool ────────────────────────────────────────────────────────
-# Each function: searches for applicable files in POOL_DIR, applies fix,
+# Each function: searches for applicable files under static/BRANCH/ in POOL_DIR, applies fix,
 # returns 0 if a change was made (sets POOL_DESC + POOL_FILE), 1 if not.
 
 POOL_DIR="" POOL_DESC="" POOL_FILE=""
@@ -213,7 +213,7 @@ if c != orig:
 
 seo_meta_description() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -230,7 +230,7 @@ if c != orig:
 
 seo_canonical_url() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -245,7 +245,7 @@ if c != orig:
 
 seo_open_graph() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -261,7 +261,7 @@ if c != orig:
 
 seo_twitter_card() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -277,7 +277,7 @@ if c != orig:
 
 seo_alt_text() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -291,7 +291,7 @@ if c != orig:
 
 seo_lazy_loading() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -305,7 +305,7 @@ if c != orig:
 
 seo_heading_hierarchy() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -322,7 +322,7 @@ if c != orig:
 
 fix_charset_meta() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -337,7 +337,7 @@ if c != orig:
 
 fix_viewport_meta() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -352,7 +352,7 @@ if c != orig:
 
 fix_lang_attribute() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -366,7 +366,7 @@ if c != orig:
 
 fix_link_noopener() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -382,7 +382,7 @@ if c != orig:
 
 fix_button_type() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -396,7 +396,7 @@ if c != orig:
 
 fix_duplicate_ids() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -419,7 +419,7 @@ if c != orig:
 
 fix_label_for() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -441,7 +441,7 @@ if c != orig:
 
 fix_aria_label() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -458,7 +458,7 @@ if c != orig:
 
 fix_script_defer() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -473,7 +473,7 @@ if c != orig:
 
 fix_img_dimensions() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -489,7 +489,7 @@ if c != orig:
 
 fix_doctype() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 c = open('$f').read(); orig = c
 if not c.lstrip().startswith('<!DOCTYPE') and not c.lstrip().startswith('<!doctype'):
@@ -503,7 +503,7 @@ if c != orig:
 
 seo_structured_data() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re, json
 c = open('$f').read(); orig = c
@@ -520,7 +520,7 @@ if c != orig:
 
 seo_meta_keywords() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -535,7 +535,7 @@ if c != orig:
 
 fix_self_closing() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -549,7 +549,7 @@ if c != orig:
 
 fix_inline_handlers() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -563,7 +563,7 @@ if c != orig:
 
 fix_br_syntax() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -590,7 +590,7 @@ if c != orig:
 
 fix_bom() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -o -name '*.css' -o -name '*.js' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -o -name '*.css' -o -name '*.js' -type f 2>/dev/null | head -3); do
     if python3 -c "
 c = open('$f','rb').read(); orig = c
 c = c.lstrip(b'\\xef\\xbb\\xbf')
@@ -603,7 +603,7 @@ if c != orig:
 
 fix_http_equiv() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -617,7 +617,7 @@ if c != orig:
 
 fix_form_charset() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -631,7 +631,7 @@ if c != orig:
 
 fix_404_title() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '404.html' -type f 2>/dev/null | head -1); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '404.html' -type f 2>/dev/null | head -1); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -669,7 +669,7 @@ UX_FIX_NAMES+=("ux_keyboard_nav")
 
 ux_viewport() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -5); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -687,7 +687,7 @@ if c != orig:
 
 ux_mobile_tap() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -705,7 +705,7 @@ if c != orig:
 
 ux_hover_styles() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -722,7 +722,7 @@ if c != orig:
 
 ux_css_order() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -742,7 +742,7 @@ if c != orig:
 
 ux_skip_link() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -759,7 +759,7 @@ if c != orig:
 
 ux_color_contrast() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -777,7 +777,7 @@ if c != orig:
 
 ux_smooth_scroll() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -795,7 +795,7 @@ if c != orig:
 
 ux_print_styles() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -813,7 +813,7 @@ if c != orig:
 
 ux_focus_visible() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -831,7 +831,7 @@ if c != orig:
 
 ux_touch_action() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -848,7 +848,7 @@ if c != orig:
 
 ux_button_states() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -865,7 +865,7 @@ if c != orig:
 
 ux_table_responsive() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -882,7 +882,7 @@ if c != orig:
 
 ux_z_index() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -900,7 +900,7 @@ if c != orig:
 
 ux_list_semantics() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -914,7 +914,7 @@ if re.search(r'<div[^>]*>.*?<br[^>]*>.*?<br[^>]*>', c):
 
 ux_loading_indicator() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -931,7 +931,7 @@ if c != orig:
 
 ux_breadcrumb() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -947,7 +947,7 @@ if c != orig:
 
 ux_cls_fix() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -962,7 +962,7 @@ if c != orig:
 
 ux_type_scale() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -980,7 +980,7 @@ if c != orig:
 
 ux_spacing() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -998,7 +998,7 @@ if c != orig:
 
 ux_keyboard_nav() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -3); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -1132,7 +1132,7 @@ if c != orig:
 
 guaranteed_ux_fallback() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 4 -name '*.html' -type f 2>/dev/null | head -1); do
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -1); do
     if python3 -c "
 c = open('$f').read(); orig = c
 doctype = '<!DOCTYPE html>'
