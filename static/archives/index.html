@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-  <meta charset="UTF-8">
-  <meta content="FinanceCheque UK Archives — Versioned Document Archive" name="description">
-  <meta content="DATRO Consortium" name="author">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <meta name="keywords" content="DATRO, consortium, web" />
+  <meta charset="UTF-8" />
+  <meta content="FinanceCheque UK Archives — Versioned Document Archive" name="description" />
+  <meta content="DATRO Consortium" name="author" />
   <title>FinanceCheque UK Archives</title>
-  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport">
-  <link href="_theme-explorer/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png">
-  <link rel="stylesheet" href="_theme-explorer/style.css">
-  <link rel="stylesheet" href="_theme-explorer/glyphicon.css">
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, shrink-to-fit=no" name="viewport" />
+  <link href="_theme-explorer/favicons/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+  <link rel="stylesheet" href="_theme-explorer/style.css" />
+  <link rel="stylesheet" href="_theme-explorer/glyphicon.css" />
   </head>
   <body>
   <script>
@@ -17,7 +19,7 @@
     try { manifest = await (await fetch("./_archives_manifest.json")).json(); } catch {}
     const files = manifest.deployed_files || [];
     let h = "";
-    h += `<p class="main-title"><span style="font-size:1.1em;font-weight:700;color:#55a5d9;">Finance Cheque UK</span><br><br>Archives — Versioned Document Store</p>`;
+    h += `<p class="main-title"><span style="font-size:1.1em;font-weight:700;color:#55a5d9;">Finance Cheque UK</span><br /><br />Archives — Versioned Document Store</p>`;
     if (!files.length) {
       h += "<p>No archived documents yet. Archives are populated automatically by the llmwiki pipeline.</p>";
     } else {
