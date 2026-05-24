@@ -5,6 +5,7 @@
     "url": "N/A",
     "stack": "React 16, Cordova, Craco, FontAwesome, Bootstrap",
     "known_issues": "- No deployment URL configured - React 16 is outdated - Cordova wrapper may not build",
+    "build_check": "npm run build",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -53,6 +54,7 @@
     "url": "wayback.financecheque.uk",
     "stack": "Sphinx, Bash scripts",
     "known_issues": "Single page site, limited SEO metadata",
+    "build_check": "node build.js",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -101,6 +103,7 @@
     "url": "bpvsbuckler.datro.xyz",
     "stack": "Static HTML/CSS, Cloudflare Pages",
     "known_issues": "SVG-heavy, mobile layout may need improvement, SEO metadata minimal",
+    "build_check": "npm run build",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -149,6 +152,7 @@
     "url": "car.financecheque.uk",
     "stack": "Static HTML/CSS, Google Analytics, Cloudflare Pages",
     "known_issues": "SEO critical for organic traffic, trust signals needed, page speed",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -197,6 +201,7 @@
     "url": "ccan.datro.xyz",
     "stack": "Static HTML/CSS",
     "known_issues": "Content sparsity, mobile optimization, call-to-action clarity",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -245,6 +250,7 @@
     "url": "ceo.datro.xyz",
     "stack": "Static HTML/CSS",
     "known_issues": "Form validation, accessibility, mobile usability",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -293,6 +299,7 @@
     "url": "cnei.datro.xyz",
     "stack": "Markdown, Cloudflare Pages",
     "known_issues": "- Documentation must stay in sync with evolving flywheel architecture - URL registry must be updated when branches are added/removed",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -341,6 +348,7 @@
     "url": "dash.financecheque.uk",
     "stack": "Python aiohttp, JavaScript, Cloudflare Worker",
     "known_issues": "Python error handling, async stability, dependency management",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -389,6 +397,7 @@
     "url": "datro.xyz",
     "stack": "Static HTML/CSS, jQuery, iframe-based GUI",
     "known_issues": "Page speed, mobile responsiveness, SEO fundamentals",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -437,6 +446,7 @@
     "url": "dcc.datro.xyz",
     "stack": "React, TypeScript, Tailwind (Heroicons)",
     "known_issues": "React best practices, TypeScript strictness, error boundaries",
+    "build_check": "npm run build",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -485,6 +495,7 @@
     "url": "financecheque.uk",
     "stack": "Static HTML/CSS",
     "known_issues": "SEO optimization, trust signals, conversion optimization",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -533,6 +544,7 @@
     "url": "gui.datro.xyz",
     "stack": "HTML/CSS, jQuery, iframe",
     "known_issues": "jQuery legacy code, iframe loading performance, mobile UX",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -581,6 +593,7 @@
     "url": "hbhb.datro.xyz",
     "stack": "Static HTML/CSS, jQuery, WebP images",
     "known_issues": "Image optimization, mobile layout, CTA effectiveness",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -629,6 +642,7 @@
     "url": "library.datro.xyz",
     "stack": "Sphinx, Python, HTML/CSS",
     "known_issues": "Sphinx theme customization, search functionality, navigation hierarchy",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -677,6 +691,7 @@
     "url": "llmwiki.financecheque.uk",
     "stack": "HTML/CSS, html2canvas, AdminLTE",
     "known_issues": "Canvas rendering bugs, export quality, browser compatibility",
+    "build_check": "node build.js",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -725,6 +740,7 @@
     "url": "N/A",
     "stack": "Shell, Git",
     "known_issues": "- Not a website \u2014 no URL, no deployment",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -773,6 +789,7 @@
     "url": "ui.datro.xyz",
     "stack": "HTML/CSS, jQuery",
     "known_issues": "jQuery dependency, category management, search/filter",
+    "build_check": "npm run build",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -821,6 +838,7 @@
     "url": "wave.datro.xyz",
     "stack": "Static HTML/CSS",
     "known_issues": "Content density, mobile layout, engagement features",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -869,6 +887,7 @@
     "url": "wayback.datro.xyz",
     "stack": "HTML/CSS, JavaScript (dynamic JSON tree), Google Analytics",
     "known_issues": "Large JSON parsing, image loading performance, browser compatibility",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
@@ -917,6 +936,7 @@
     "url": "whitepaper.financecheque.uk",
     "stack": "HTML/CSS, Canvas animations, Cloudflare Pages",
     "known_issues": "Canvas animation performance on mobile, print layout, SEO metadata",
+    "build_check": "",
     "llm_rotation": [
       {
         "name": "financecheque",
