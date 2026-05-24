@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+PWA & User Onboarding: manifest.json, service worker, signup/login flow with wallet creation, onboarding wizard (first-time user flow), error boundaries, loading states, empty states for zero transactions, responsive table views, analytics.
