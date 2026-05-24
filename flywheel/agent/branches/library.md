@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Document Search & Navigation: full-text search, breadcrumb trail, category filtering, 'last updated' badges on documents, print-friendly styles, code copy buttons, related documents sidebar, sitemap.xml, JSON-LD WebSite structured data, analytics.
