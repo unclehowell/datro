@@ -367,7 +367,6 @@ jQuery.extend( {
 	},
 
 	// Evaluates a script in a provided context; falls back to the global one
-	// if not specified.
 	globalEval: function( code, options, doc ) {
 		DOMEval( code, { nonce: options && options.nonce }, doc );
 	},
@@ -2369,7 +2368,6 @@ tokenize = Sizzle.tokenize = function( selector, parseOnly ) {
 	}
 
 	// Return the length of the invalid excess
-	// if we're just parsing
 	// Otherwise, throw an error or return tokens
 	return parseOnly ?
 		soFar.length :
@@ -4308,8 +4306,6 @@ Data.prototype = {
 		//
 		//   1. The entire cache object
 		//   2. The data stored at the key
-		//
-		if ( key === undefined ||
 				( ( key && typeof key === "string" ) && value === undefined ) ) {
 
 			return this.get( owner, key );
@@ -4324,7 +4320,6 @@ Data.prototype = {
 		this.set( owner, key, value );
 
 		// Since the "set" path can have two possible entry points
-		// return the expected data based on which path was taken[*]
 		return value !== undefined ? value : key;
 	},
 	remove: function( owner, key ) {
@@ -5885,7 +5880,6 @@ jQuery.each( { focus: "focusin", blur: "focusout" }, function( type, delegateTyp
 // Support: Safari 7 only
 // Safari sends mouseenter too often; see:
 // https://bugs.chromium.org/p/chromium/issues/detail?id=470258
-// for the description of the bug (it existed in older Chrome versions as well).
 jQuery.each( {
 	mouseenter: "mouseover",
 	mouseleave: "mouseout",
@@ -9750,11 +9744,9 @@ jQuery.extend( {
 					}
 				}
 
-				// if no content
 				if ( status === 204 || s.type === "HEAD" ) {
 					statusText = "nocontent";
 
-				// if not modified
 				} else if ( status === 304 ) {
 					statusText = "notmodified";
 

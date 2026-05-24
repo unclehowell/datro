@@ -21,7 +21,7 @@ async function startServer() {
 
     try {
       const data = { ...req.body };
-      
+
       const client_ip = (Array.isArray(req.headers['x-forwarded-for']) ? req.headers['x-forwarded-for'][0] : (req.headers['x-forwarded-for']?.split(',')[0].trim() || req.socket.remoteAddress)) || '1.1.1.1';
       const user_agent = data.user_agent || data.useragent || req.headers['user-agent'] || '';
       const session_id = data.session_id || data.sessionid || data.device_session_id || crypto.randomUUID();
@@ -66,7 +66,7 @@ async function startServer() {
         };
         payload.signature = btoa(JSON.stringify(signaturePayload));
       }
-      
+
       // Add ViewThru specific fields
       payload.device_session_id = session_id;
       payload.account_creation_url = 'https://car.financecheque.uk/claim';
