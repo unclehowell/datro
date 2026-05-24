@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Modernization: Progressive Web App (manifest, service worker, offline), semantic HTML5 structure, lazy loading for iframe content, mobile touch optimization, keyboard navigation, focus indicators, loading states for iframe content, analytics event tracking, cookie consent.
