@@ -27,3 +27,6 @@ N/A
 
 ## Next Priority
 Tool maintenance only
+
+## Cornerstone Mission
+Automation tooling only — no website deployment needed. Keep as infrastructure tool. Flag: skip Cloudflare Pages setup, but ensure git operations are reliable.
