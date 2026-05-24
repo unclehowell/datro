@@ -1027,5 +1027,49 @@
     "failed_fixes": [],
     "branch_knowledge": "AWS supervisor initialized",
     "total_learning_cycles": 0
+  },
+  "greathousefarm": {
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "build_check": "",
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
   }
 }
