@@ -35,5 +35,11 @@ ssh://ubuntu@13.135.142.244
 - Only 1GB RAM on AWS — npm install can OOM
 - Release count tracking: greathousefarm (1 release) is not in BRANCHES array
 
-## Past Interventions
-- (none yet — first supervisor session)
+## Next Priority
+- Activate meta-review: verify gh auth on this machine, seed first run
+- Sync-back AWS profiles: download and merge learnings after each meta-review
+- Monitor fix diversity: AI vs POOL vs FALLBACK ratios must improve
+- Track that greathousefarm is added to BRANCHES array and profiles.json
+
+## Cornerstone Mission
+Coach the AWS flywheel to produce meaningful releases. Track AI vs POOL vs FALLBACK source ratios across releases. Ensure at least 1 pool fix and 1 fallback per release cycle (not just AI). Accumulate per-branch skills from successful fixes. Push improved flywheel config and updated profiles.json to cnei branch daily. The metric of success: release notes showing diverse fixes (SEO tags, structured data, accessibility, UX improvements) rather than just console.log removal.
