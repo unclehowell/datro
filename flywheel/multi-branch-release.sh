@@ -21,6 +21,7 @@ BRANCHES=(
   "ccan" "ceo" "dash" "datro" "dcc" "financecheque"
   "gui" "hbnb" "library" "llmwiki" "cnei"
   "subrepos" "ui" "wave" "wayback" "whitepaper"
+  "greathousefarm"
 )
 
 declare -A BRANCH_URLS
@@ -45,6 +46,7 @@ BRANCH_URLS=(
   [wave]="https://wave.datro.xyz"
   [wayback]="https://wayback.datro.xyz"
   [whitepaper]="https://whitepaper.financecheque.uk"
+  [greathousefarm]="N/A"
 )
 
 mkpass_url() {
@@ -54,8 +56,6 @@ mkpass_url() {
 
 mkdir -p "$LOGDIR" "$HOME/.fcukproxy/agent/branches"
 exec >> "$LOGFILE" 2>&1
-
-# ── OTA Update ───────────────────────────────────────────────────────────────\nif [ -f "$HOME/.fcukproxy/ota-update.sh" ]; then\n  /bin/bash "$HOME/.fcukproxy/ota-update.sh"\nfi\n
 
 log() { echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"; }
 
@@ -1426,33 +1426,67 @@ UX_DESCRIPTIONS=""
 POOL_DIR="$BRANCH_REPO"
 
 # ── 4 passes: 3 bug + 1 UX ──────────────────────────────────────────────────
+# Strategy:
+#   Pass 1: AI (no restrictions) → pool → fallback  (AI finds anything)
+#   Pass 2: Pool only (skip AI)                      (guarantees pool diversity)
+#   Pass 3: Fallback only (skip AI, skip pool)       (guaranteed blank line clean)
+#   Pass 4: AI (UX, no restrictions) → pool → fallback
 
-for pass in 1 2 3; do
-  POOL_DESC="" POOL_FILE=""
-  if try_ai_fix "$SELECTED_BRANCH" "bug" "$pass"; then
-    FIX_APPLIED=true
-    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
-    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
-    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "AI"
-    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "AI"
-  elif try_pool_fix "bug"; then
-    FIX_APPLIED=true
-    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
-    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
-    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
-    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
-  elif guaranteed_bug_fallback; then
-    FIX_APPLIED=true
-    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
-    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
-    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
-    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
-  else
-    log "Pass $pass: no fix found from any source"
-  fi
-done
+# ── Pass 1: AI unrestricted ──────────────────────────────────────────────────
+POOL_DESC="" POOL_FILE=""
+if try_ai_fix "$SELECTED_BRANCH" "bug" "1"; then
+  FIX_APPLIED=true
+  FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+  update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "AI"
+  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "AI"
+elif try_pool_fix "bug"; then
+  FIX_APPLIED=true
+  FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+  update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
+  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
+elif guaranteed_bug_fallback; then
+  FIX_APPLIED=true
+  FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+  update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
+  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
+else
+  log "Pass 1: no fix found from any source"
+fi
 
-# UX pass (pass 4)
+# ── Pass 2: Pool only (forces fix diversity through rotating pool) ───────────
+POOL_DESC="" POOL_FILE=""
+if try_pool_fix "bug"; then
+  FIX_APPLIED=true
+  FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+  update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
+  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
+elif guaranteed_bug_fallback; then
+  FIX_APPLIED=true
+  FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+  update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
+  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
+else
+  log "Pass 2: no pool fix found"
+fi
+
+# ── Pass 3: Guaranteed fallback only (always runs, catches blank lines/DOCTYPE) ──
+POOL_DESC="" POOL_FILE=""
+if guaranteed_bug_fallback; then
+  FIX_APPLIED=true
+  FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+  update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
+  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
+else
+  log "Pass 3: fallback found nothing (unlikely)"
+fi
+
+# ── Pass 4 (UX): AI → pool → fallback ───────────────────────────────────────
 POOL_DESC="" POOL_FILE=""
 if try_ai_fix "$SELECTED_BRANCH" "ux" "4"; then
   UX_APPLIED=true
