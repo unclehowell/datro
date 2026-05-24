@@ -1,5 +1,15 @@
 # Changelog
 
+## [ui-v0.0.0.05] - 2026-05-24
+
+### Fixed
+- fix(ui): remove console.log debug calls that leak internal state (3 file(s): ./demos/_theme-docs/html/searchtools.js, ./static/ui/dist/dashboard/js/search/carousel-dropdown.js, ./static/ui/dist/dashboard/js/search/viblast.js)
+- fix(ui): remove stale commented-out code blocks (3 file(s): ./demos/_theme-docs/html/jquery-3.5.1.js, ./demos/_theme-docs/html/underscore-1.13.1.js, ./demos/_theme-docs/html/searchtools.js)
+- fix(ui): clean up trailing whitespace (3 file(s): ./static/ui/dist/dashboard/js/search/github.dataplicity-commits.widget.js, ./static/ui/dist/dashboard/js/search/jquery.shop.js, ./static/ui/dist/dashboard/js/appLauncher.js)
+
+### Changed
+- ux(ui): improve website UX - lang,viewport, lang,viewport, lang,viewport (3 file(s): ./datroxyz-library/index.html, ./index.html, ./library/_theme-explorer/document.html)
+
 ## [ui-v0.0.0.04] - 2026-05-22
 
 ### Fixed

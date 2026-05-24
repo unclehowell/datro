@@ -131,7 +131,7 @@ function handleAppLaunch(appId, localBaseUrl, onlineDemoUrl) {
                 window.location.href = '/app-error.html';
                 stopLoadingAnimation();
             });
-        
+
         startLoadingAnimation(); // Start loading animation when attempting local connection
     }
 }

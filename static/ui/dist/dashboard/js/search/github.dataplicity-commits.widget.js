@@ -96,7 +96,7 @@ THE SOFTWARE.
                             .attr('class', 'github-avatar')
                             .attr('src', 'https://datro.xyz/img/gravatar-dataplicity.png?f=y' + size);
                 }
-				
+
 
 
                 function author(login) {
@@ -120,7 +120,7 @@ THE SOFTWARE.
 
                     return link;
                 }
-				
+
 				  function message(commitMessage, sha) {
                     var originalCommitMessage = commitMessage;
                     if (limitMessage > 0 && commitMessage.length > limitMessage)
