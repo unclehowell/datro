@@ -25,17 +25,17 @@ The directory structure and file locations are as follows:
 
   _blue-build-source/
 
-	- updater.sh
-	- rebuild-master.sh
-	- auto-rebuid-master.sh
+    - updater.sh
+    - rebuild-master.sh
+    - auto-rebuid-master.sh
 
   management/
 
-	- company-records-legal-privacy-policy/
-		- rebuild.sh
-		- auto-rebuild.sh
+    - company-records-legal-privacy-policy/
+        - rebuild.sh
+        - auto-rebuild.sh
 
-	- update-all.sh
+    - update-all.sh
 
   update-all.sh
 
@@ -43,9 +43,9 @@ The directory structure and file locations are as follows:
 ### Functions
 
 * auto-rebuild.sh does the following:
-	- trigger the updater.sh in the _blue-build-source directory. Updater.sh gets the latest *-master files (if not already run in the last 30 minutes).
-	- copies the *-master.sh files from the _blue-build-source directory to the sphinx document directory (removing the -master from the destination filename).
-	- runs the latest rebuild.sh, producing a PDF and HTML verison of its rst files
+    - trigger the updater.sh in the _blue-build-source directory. Updater.sh gets the latest *-master files (if not already run in the last 30 minutes).
+    - copies the *-master.sh files from the _blue-build-source directory to the sphinx document directory (removing the -master from the destination filename).
+    - runs the latest rebuild.sh, producing a PDF and HTML verison of its rst files
 
 * rebuild.sh does the following:
         - rebuild the PDF and HTML
@@ -54,8 +54,8 @@ The directory structure and file locations are as follows:
 
 
 * updater.sh does the following:
-	- checks it hasn't already been run in the last 30 minutes, if it has then it ceases to do anything.
-	- if it hasn't been run in the last 30 minutes the latest *-master.sh scripts are fetched and written over the local ones.
+    - checks it hasn't already been run in the last 30 minutes, if it has then it ceases to do anything.
+    - if it hasn't been run in the last 30 minutes the latest *-master.sh scripts are fetched and written over the local ones.
 
 
 ### update-all

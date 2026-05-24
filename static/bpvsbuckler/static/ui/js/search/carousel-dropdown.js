@@ -12,7 +12,7 @@
         });
 
         $(".carousel-dropdown dd ul li a").click(function() {
-            //console.log($(this).html())
+            //.html())
             var text = $(this).html();
             $(".carousel-dropdown dt a span").html(text);
             $(".carousel-dropdown dd ul").hide();
@@ -20,7 +20,7 @@
         });
 
         function getSelectedValue(id) {
-            //console.log(id,$("#" + id).find("dt a span.value").html())
+            //.find("dt a span.value").html())
             return $("#" + id).find("dt a span.value").html();
         }
 
