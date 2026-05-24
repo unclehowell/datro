@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Conversion & Trust: structured data (Organization + Service), Stripe payment verification badge, trust signals (testimonials, guarantees), FCA registration disclosure, cookie consent, privacy policy, terms of service, contact form, analytics, sitemap.
