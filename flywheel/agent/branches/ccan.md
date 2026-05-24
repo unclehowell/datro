@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Revival & Engagement: restore live site (fix redirect loop), add mission/vision statement, donation/volunteer CTA, contact form, social media links, cookie consent, privacy policy, analytics, sitemap, mobile-friendly layout.
