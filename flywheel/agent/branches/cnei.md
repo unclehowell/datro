@@ -27,3 +27,6 @@ N/A — documentation site
 
 ## Next Priority
 Maintain accuracy as flywheel evolves
+
+## Cornerstone Mission
+Documentation excellence: full search, breadcrumbs, table of contents, last-updated badges, print styles, code copy buttons, mermaid diagram rendering, RSS/atom feed for changelog, Open Graph tags, sitemap.
