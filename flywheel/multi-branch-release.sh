@@ -19,7 +19,7 @@ COOLDOWN_SECONDS=$((24 * 3600))
 BRANCHES=(
   "althea" "archives" "bpvsbuckler" "carfinancecheque"
   "ccan" "ceo" "dash" "datro" "dcc" "financecheque"
-  "gui" "hbnb" "library" "llmwiki" "pirateclaw"
+  "gui" "hbnb" "library" "llmwiki" "cnei"
   "subrepos" "ui" "wave" "wayback" "whitepaper"
 )
 
@@ -39,7 +39,7 @@ BRANCH_URLS=(
   [hbnb]="https://hbhb.datro.xyz"
   [library]="https://library.datro.xyz"
   [llmwiki]="https://llmwiki.financecheque.uk"
-  [pirateclaw]="https://pirateclaw.datro.xyz"
+  [cnei]="https://cnei.datro.xyz"
   [subrepos]="N/A"
   [ui]="https://ui.datro.xyz"
   [wave]="https://wave.datro.xyz"
