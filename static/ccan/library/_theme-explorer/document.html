@@ -24,7 +24,8 @@
         <link rel="stylesheet" href="../../_theme-explorer/style.css">
         <link rel="stylesheet" href="../../_theme-explorer/glyphicon.css">
   </head>
-  <body>
+  <body><div id="main-content">
+<a class="skip-link" href="#main-content" style="position:absolute;left:-9999px;z-index:9999">Skip to content</a>
     <script>
       (async () => {
         const response = await fetch('.treeview.json');
@@ -39,6 +40,6 @@
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
            })()
     </script>
-  </body>
+  </div></body>
 <script src="../../_theme-explorer/jquery.min.js"></script>
 </html>
