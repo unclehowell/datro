@@ -254,12 +254,167 @@ def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
         for f in successful_fixes[-5:]:
             knowledge_section += f"- {f.get('commit_message', '')}: {f.get('bug_description', '')[:100]}\n"
 
+    constraint_section = ""
+    if ctx.get("constraint", ""):
+        constraint_section = f"\n## CONSTRAINT — DO NOT IGNORE\n{ctx['constraint']}\n"
+
+    cornerstone_checklists = {
+        "ecommerce": """- [ ] JSON-LD structured data (Organization, WebSite, Product)
+- [ ] Open Graph / Twitter Card meta tags for social sharing
+- [ ] Meta description tag (unique, keyword-rich, <160 chars)
+- [ ] Viewport meta tag for mobile responsiveness
+- [ ] Favicon (multi-size: 16, 32, apple-touch-icon)
+- [ ] Signup / registration / login flow
+- [ ] Payment integration (Stripe, PayPal checkout)
+- [ ] Cookie consent banner
+- [ ] Privacy policy page
+- [ ] Terms of service page
+- [ ] Trust signals (testimonials, reviews, guarantees, SSL badge)
+- [ ] Clear CTA buttons (primary action above the fold)
+- [ ] Analytics (Google Analytics, Plausible, etc.)
+- [ ] Sitemap.xml / robots.txt
+- [ ] Navigation: header menu, footer with links, breadcrumbs
+- [ ] 404 page with navigation back to main content
+- [ ] Social proof / case studies / partner logos
+- [ ] Color contrast meets WCAG AA (4.5:1 ratio)
+- [ ] All images have alt text for accessibility/SEO
+- [ ] Contact form or contact information prominently displayed""",
+
+        "community": """- [ ] JSON-LD structured data (Organization, WebSite)
+- [ ] Open Graph / Twitter Card meta tags for social sharing
+- [ ] Meta description tag
+- [ ] Viewport meta + responsive design
+- [ ] Favicon
+- [ ] Signup / membership registration
+- [ ] Navigation with clear information architecture
+- [ ] Cookie consent banner
+- [ ] Privacy policy
+- [ ] Contact form or contact details
+- [ ] Clear mission/statement on homepage
+- [ ] Calls-to-action (donate, join, volunteer, learn more)
+- [ ] Analytics
+- [ ] Sitemap.xml / robots.txt
+- [ ] Social media links / sharing buttons
+- [ ] Mobile-friendly layout (test on small screens)
+- [ ] Heading hierarchy (h1 → h2 → h3 correctly ordered)
+- [ ] Image alt text for accessibility
+- [ ] Footer with links, copyright, legal info
+- [ ] 404 page""",
+
+        "platform": """- [ ] JSON-LD structured data (WebApplication, SoftwareApp)
+- [ ] Open Graph / Twitter Card meta tags
+- [ ] Meta description tag
+- [ ] Viewport meta + mobile responsiveness
+- [ ] Favicon + PWA manifest.json + service worker
+- [ ] User authentication (signup, login, password reset)
+- [ ] Subscription / payment integration
+- [ ] API documentation or developer portal link
+- [ ] Cookie consent banner
+- [ ] Privacy policy + Terms of service
+- [ ] Dashboard / user account area
+- [ ] Onboarding flow for new users
+- [ ] Loading states, error states, empty states
+- [ ] Keyboard navigation accessibility
+- [ ] Analytics
+- [ ] Color contrast + focus indicators
+- [ ] Performance: lazy loading, code splitting
+- [ ] 404 page
+- [ ] Automated tests or CI status badge
+- [ ] Status page / uptime monitoring""",
+
+        "documentation": """- [ ] JSON-LD structured data (WebSite, TechArticle)
+- [ ] Open Graph / Twitter Card meta tags
+- [ ] Meta description tag
+- [ ] Viewport meta + responsive layout
+- [ ] Favicon
+- [ ] Search functionality
+- [ ] Table of contents / sidebar navigation
+- [ ] Breadcrumb navigation
+- [ ] Cookie consent banner
+- [ ] Privacy policy
+- [ ] "Back to top" button on long pages
+- [ ] Print-friendly styles
+- [ ] Code syntax highlighting
+- [ ] Last-updated date on pages
+- [ ] Analytics
+- [ ] Sitemap.xml / robots.txt
+- [ ] Mobile-friendly reader mode
+- [ ] Heading hierarchy (h1 → h2 → h3)
+- [ ] Internal linking between related docs
+- [ ] 404 page with search""",
+
+        "meta": """- [ ] Self-review log is populated and accurate
+- [ ] Fix source tracking (AI vs POOL vs FALLBACK) is working
+- [ ] Profiles show increasing learning cycles
+- [ ] Failed fixes are being analyzed for pattern improvement
+- [ ] Sync-back from AWS is capturing all learnings""",
+
+        "unknown": """- [ ] JSON-LD structured data (WebSite)
+- [ ] Open Graph / Twitter Card meta tags
+- [ ] Meta description tag
+- [ ] Viewport meta + mobile responsiveness
+- [ ] Favicon
+- [ ] Cookie consent banner
+- [ ] Privacy policy
+- [ ] Analytics
+- [ ] Clear heading hierarchy (h1 → h2 → h3)
+- [ ] Navigation and footer
+- [ ] Image alt text
+- [ ] Sitemap.xml / robots.txt
+- [ ] 404 page
+- [ ] Mobile-friendly layout
+- [ ] Color contrast meets WCAG AA""",
+    }
+    category_aliases = {
+        "knowledge": "documentation",
+        "advocacy": "community",
+        "hub": "community",
+        "tool": "meta",
+        "docs": "documentation",
+    }
+    category = category_aliases.get(ctx.get("category", "unknown"), ctx.get("category", "unknown"))
+    checklist = cornerstone_checklists.get(category, cornerstone_checklists["unknown"])
+
     if fix_type == "bug":
-        task = "Find the single most impactful BUG in the deployed website's source code.\n- FIRST visit the live URL in your browser and visually inspect the site\n- Take a screenshot, check console for JS errors, test navigation, verify forms\n- Check mobile layout, fonts, images, links, meta tags, structured data\n- Must affect real users or SEO\n- Include SEO improvements as bug fixes"
-        system_prefix = "You are a senior software engineer improving websites. Find the biggest real bug."
+        task = f"""Benchmark {ctx['url']} against professional website standards for its category: {ctx.get('category', 'unknown')}.
+
+## Cornerstone Requirements Checklist
+{checklist}
+
+## Your Mission
+1. Visit the live URL at {ctx['url']} and inspect the website
+2. Go through the checklist above — find the FIRST item that is MISSING or INCOMPLETE
+3. Implement that missing cornerstone requirement
+4. Choose the BEST tool for the job (sed for small changes, write for creating new files, patch for complex edits)
+
+## Important Rules
+- Do NOT remove console.log statements, trailing whitespace, or commented-out code — those are already handled by other passes
+- Focus on ADDING missing professional features (structured data, meta tags, cookie consent, etc.)
+- If ALL checklist items are present, improve the QUALITY of an existing one
+- SEO improvements count as bug fixes"""
+        system_prefix = "You are a senior web engineer making websites professionally complete. Benchmark against industry standards, then implement the first missing requirement."
     else:
-        task = "Find the single most impactful UX IMPROVEMENT for the deployed website.\n- FIRST visit the live URL in your browser and visually inspect the site\n- Take a screenshot, check mobile responsiveness, navigation, forms, load time\n- Evaluate: layout, typography, colour contrast, tap targets, animations, accessibility\n- Must make the website easier or more pleasant to use"
-        system_prefix = "You are a senior UX engineer. Find the biggest UX improvement."
+        task = f"""Improve the USER EXPERIENCE of {ctx['url']} based on professional UX standards for its category: {ctx.get('category', 'unknown')}.
+
+## Your Mission
+1. Visit the live URL and evaluate:
+   - Mobile responsiveness (check on small viewport)
+   - Loading speed and perceived performance
+   - Navigation clarity and consistency
+   - Typography, color contrast, spacing
+   - Form usability and feedback
+   - Call-to-action visibility and clarity
+   - Touch targets on mobile (minimum 44x44px)
+2. Identify the SINGLE most impactful UX improvement
+3. Implement it using the best available tool
+
+## Category-Specific UX Priorities
+- ecommerce: checkout flow, trust signals, mobile cart, payment UX
+- community: onboarding, navigation, content discovery, contribution flow
+- platform: dashboard UX, settings clarity, feedback loops, empty states
+- documentation: search UX, readability, cross-referencing, print layout
+- other: mobile-first, load performance, accessibility, navigation"""
+        system_prefix = "You are a senior UX engineer. Make the website more professional and user-friendly. Benchmark against top-tier sites in the same category."
 
     error_section = ""
     if error_feedback:
@@ -279,7 +434,9 @@ def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
 ## Past Fixes Applied
 {ctx['past_fixes']}
 {knowledge_section}
+{constraint_section}
 {error_section}
+
 ## Task
 {task}
 
@@ -661,6 +818,7 @@ def main():
     parser.add_argument("--error-feedback", help="Build error from previous fix attempt for self-correction")
     parser.add_argument("--learn-after", help="JSON fix to learn from")
     parser.add_argument("--apply", help="JSON fix to apply (tool-based)")
+    parser.add_argument("--constraint", help="Constraint to inject into prompt (e.g., 'No console.log removal')")
     args = parser.parse_args()
 
     # If --apply, apply the fix and exit
@@ -697,21 +855,21 @@ def main():
         return
 
     ctx = load_branch_context(args.branch)
+    if args.constraint:
+        ctx["constraint"] = args.constraint
     profile = get_profile(args.branch)
 
     if profile and profile.get("llm_rotation"):
-        rotation = update_rotation_with_cli(list(profile["llm_rotation"]))
+        rotation = list(profile["llm_rotation"])
         start_idx = profile.get("rotation_index", 0) % len(rotation)
     else:
-        rotation = update_rotation_with_cli([
-            {"name": "local_proxy", "url": "http://localhost:6000/v1/chat/completions", "type": "local"},
+        rotation = [
             {"name": "financecheque", "url": "https://www.financecheque.uk/api/proxy", "type": "parent"},
+            {"name": "local_proxy", "url": "http://localhost:6000/v1/chat/completions", "type": "local"},
             {"name": "child_proxy", "url": "http://172.31.29.216:4001", "type": "child"},
             {"name": "nvidia", "type": "nvidia"},
             {"name": "openrouter", "type": "openrouter"},
-            {"name": "gemini", "type": "gemini"},
-            {"name": "deepseek", "type": "deepseek"}
-        ])
+        ]
         start_idx = 0
 
     # Build prompt — meta type uses its own prompt builder
@@ -773,30 +931,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-# ── CLI Fallback handlers ───────────────────────────────────────────────────
-
-def query_cli_tool(tool_name, prompt, system):
-    cmd = [tool_name, "chat", "--message", f"{system}\n\n{prompt}"]
-    try:
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
-        if r.returncode == 0 and r.stdout:
-            return r.stdout.strip()
-    except Exception:
-        pass
-    return None
-
-LLM_HANDLERS.update({
-    "kiro":     lambda p, s, **kw: query_cli_tool("kiro", p, s),
-    "kilo":     lambda p, s, **kw: query_cli_tool("kilo", p, s),
-    "groq":     lambda p, s, **kw: query_cli_tool("groq", p, s),
-    "opencode": lambda p, s, **kw: query_cli_tool("opencode", p, s),
-})
-
-def update_rotation_with_cli(rotation):
-    tools = ["kiro", "kilo", "groq", "opencode"]
-    for t in tools:
-        if not any(e["name"] == t for e in rotation):
-            rotation.append({"name": t, "type": "cli"})
-    return rotation
-
