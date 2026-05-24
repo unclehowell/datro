@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+App Launcher UX: structured data (WebSite + WebApplication), category filtering/search, app cards with icons and descriptions, manifest.json for PWA, analytics tracking of app launches, cookie consent, responsive grid layout, keyboard navigation, empty state when no apps in category.
