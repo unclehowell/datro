@@ -1177,6 +1177,16 @@ update_global_memory() {
   fi
 }
 
+learn_fix() {
+  local branch="$1" fix_type="$2" desc="$3" file="$4" source="$5"
+  local fix_json
+  fix_json=$(python3 -c "import json; print(json.dumps({'file_path':'$file','bug_description':'$desc','commit_message':'${fix_type}($branch): $desc','source':'$source'}))" 2>/dev/null)
+  if [ -n "$fix_json" ]; then
+    timeout 10 python3 "$INTEL" --branch "$branch" --type "$fix_type" --learn-after "$fix_json" 2>/dev/null || true
+    log "Profile learned from $source fix: $desc"
+  fi
+}
+
 # ── Original utility functions ───────────────────────────────────────────────
 
 is_on_cooldown() {
@@ -1386,16 +1396,19 @@ for pass in 1 2 3; do
     FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
     update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
     update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "AI"
+    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "AI"
   elif try_pool_fix "bug"; then
     FIX_APPLIED=true
     FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
     update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
     update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
+    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
   elif guaranteed_bug_fallback; then
     FIX_APPLIED=true
     FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
     update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
     update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
+    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
   else
     log "Pass $pass: no fix found from any source"
   fi
@@ -1408,16 +1421,19 @@ if try_ai_fix "$SELECTED_BRANCH" "ux" "4"; then
   UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
   update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "AI"
+  learn_fix "$SELECTED_BRANCH" "ux" "$POOL_DESC" "$POOL_FILE" "AI"
 elif try_pool_fix "ux"; then
   UX_APPLIED=true
   UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
   update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "POOL"
+  learn_fix "$SELECTED_BRANCH" "ux" "$POOL_DESC" "$POOL_FILE" "POOL"
 elif guaranteed_ux_fallback; then
   UX_APPLIED=true
   UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
   update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "FALLBACK"
+  learn_fix "$SELECTED_BRANCH" "ux" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
 else
   log "No UX fix found from any source"
 fi
