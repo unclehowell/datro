@@ -21,7 +21,6 @@ const BackupPrivateKey = () => {
         const { ethPrivateKey } = await get("/eth_private_key");
         if (!(ethPrivateKey instanceof Error)) setPrivateKey(ethPrivateKey);
       } catch (e) {
-        console.log(e);
       }
     })();
     return;

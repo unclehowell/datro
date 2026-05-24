@@ -24,7 +24,6 @@ const ImportPrivateKey = () => {
       if (!(wgPublicKey instanceof Error))
         dispatch({ type: "wgPublicKey", wgPublicKey });
     } catch (e) {
-      console.log(e);
     }
   }, 5000);
 
@@ -39,7 +38,7 @@ const ImportPrivateKey = () => {
   const save = async e => {
     e.preventDefault();
 
-    try { 
+    try {
       await post("/eth_private_key", { eth_private_key: privateKey });
       setInitiating(true);
     } catch (e) {
