@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Archive Browsing UX: file browser with folder hierarchy, JSON parsing with loading states, image lazy loading, search/filter by filename, breadcrumb navigation, 'Back to top' button, print-friendly styles, structured data (WebSite + Archive), analytics, mobile responsive grid, cookie consent.
