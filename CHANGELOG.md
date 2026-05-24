@@ -1,5 +1,14 @@
 # Changelog
 
+## [wave-v0.0.0.05] - 2026-05-24
+
+### Fixed
+- fix(wave): remove console.log debug calls that leak internal state (1 file(s): ./demos/_theme-docs/html/searchtools.js)
+- fix(wave): remove stale commented-out code blocks (3 file(s): ./demos/_theme-docs/html/jquery-3.5.1.js, ./demos/_theme-docs/html/underscore-1.13.1.js, ./demos/_theme-docs/html/searchtools.js)
+
+### Changed
+- ux(wave): improve website UX - lang,viewport, lang,viewport, lang,viewport (3 file(s): ./datroxyz-library/index.html, ./index.html, ./library/_theme-explorer/document.html)
+
 ## [wave-v0.0.0.04] - 2026-05-22
 
 ### Fixed
@@ -38,6 +47,16 @@ Aug-08 - Added a video called Service
 
 
 
+
+
+## [0.0.1.0] - 2026-05-24
+### Fixed
+- Identified issue: JS syntax error: node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module '/home/ubuntu/datro/static/ui/dashboard/js/jquery-2.1.1.js'
+    at M (requires manual fix)
 
 ## [0.0.23] - 2026-05-15
 ### Fixed
