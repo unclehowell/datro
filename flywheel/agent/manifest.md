@@ -17,7 +17,6 @@
 | hbnb | hbhb.datro.xyz | HotspotBnB — WiFi hotspot sharing platform | HTML/CSS, jQuery | platform |
 | library | library.datro.xyz | DATRO documentation library — Sphinx docs | Sphinx, Python | knowledge |
 | llmwiki | llmwiki.financecheque.uk | Display ad generator — canvas-based ad design tool | HTML/CSS, html2canvas | knowledge |
-| pirateclaw | pirateclaw.datro.xyz | FCUK affiliate marketing platform — Stripe, AI agents | React 19, TS, Vite, Express, Stripe, SQLite | ecommerce |
 | subrepos | N/A | Subrepo maintenance / cross-branch tooling | Shell | tool |
 | ui | ui.datro.xyz | App store/launcher UI — category-based app selector | HTML/CSS, jQuery | platform |
 | wave | wave.datro.xyz | Wave community platform | HTML/CSS | community |
