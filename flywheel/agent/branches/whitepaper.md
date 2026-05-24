@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Technical Document UX: structured data (TechArticle + WebSite), Open Graph with large image preview, table of contents sidebar, footnotes/references, print styles, PDF download button, citation export (BibTeX), 'estimated read time' badge, analytics, cookie consent, mobile text reflow.
