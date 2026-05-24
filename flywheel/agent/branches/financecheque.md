@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Trust & Conversion: JSON-LD structured data (Organization + WebApplication + Product), Open Graph/Twitter Card with rich preview, meta description, favicon, sitemap.xml, robots.txt, trust signals (testimonials, partner logos), FCA/regulatory disclosures, terms of service, cookie consent banner styling, social proof section.
