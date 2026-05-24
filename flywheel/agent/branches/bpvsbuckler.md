@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Trust & Credibility: structured data (Organization + Article), author attribution, citation linking, social share buttons, cookie consent, privacy policy, contact form or email link, SSL verification, analytics.
