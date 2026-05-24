@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Deployment & PWA: create Cloudflare Pages project, add root_dir=static/dash, PWA manifest, service worker, health status visualization, login/auth shell, cookie consent, privacy policy, analytics, responsive dashboard layout.
