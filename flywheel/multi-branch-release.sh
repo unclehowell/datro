@@ -1016,59 +1016,95 @@ if c != orig:
 
 try_ai_fix() {
   local branch="$1" fix_type="$2" pass="$3"
-  log "AI pass $pass ($fix_type) for $branch..."
-  local result
-  result=$(timeout 60 python3 "$INTEL" --branch "$branch" --type "$fix_type" --pass-number "$pass" 2>/dev/null) || true
-  local exit_code=$?
-  if [ "$exit_code" = "42" ]; then
-    log "AI returned no fix (exit 42). Falling through to pool."
-    return 1
-  fi
-  if [ -z "$result" ]; then
-    log "AI produced empty output. Falling through to pool."
-    return 1
-  fi
-  # Parse JSON and apply fix
-  local fp old_str new_str desc
-  fp=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('file_path',''))" 2>/dev/null || echo "")
-  old_str=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('old_string',''))" 2>/dev/null || echo "")
-  new_str=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('new_string',''))" 2>/dev/null || echo "")
-  desc=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('bug_description',''))" 2>/dev/null || echo "")
+  local max_self_correct=3
+  local error_feedback=""
 
-  if [ -z "$fp" ] || [ -z "$old_str" ]; then
-    log "AI returned incomplete JSON. Falling through to pool."
-    return 1
-  fi
+  for (( attempt=0; attempt<max_self_correct; attempt++ )); do
+    log "AI pass $pass ($fix_type) for $branch${error_feedback:+ (self-correct attempt $((attempt+1)))}..."
 
-  local full_path
-  if [ -f "$fp" ]; then
-    full_path="$fp"
-  elif [ -f "$POOL_DIR/$fp" ]; then
-    full_path="$POOL_DIR/$fp"
-  else
-    log "AI fix file not found: $fp"
-    return 1
-  fi
+    local result
+    if [ -n "$error_feedback" ]; then
+      result=$(timeout 90 python3 "$INTEL" --branch "$branch" --type "$fix_type" --pass-number "$pass" --error-feedback "$error_feedback" 2>/dev/null) || true
+    else
+      result=$(timeout 60 python3 "$INTEL" --branch "$branch" --type "$fix_type" --pass-number "$pass" 2>/dev/null) || true
+    fi
+    local exit_code=$?
 
-  if python3 -c "
-import sys
-c = open(sys.argv[1]).read()
-o = c
-c = c.replace(sys.argv[2], sys.argv[3], 1)
-if c != o:
-    open(sys.argv[1], 'w').write(c)
-    print('applied')
-" "$full_path" "$old_str" "$new_str" 2>/dev/null | grep -q applied; then
-    :  # success
-  else
-    log "AI fix: old_string not found or no change in $full_path"
-    return 1
-  fi
+    if [ "$exit_code" = "42" ]; then
+      log "AI returned no fix (exit 42). Falling through to pool."
+      return 1
+    fi
+    if [ -z "$result" ]; then
+      log "AI produced empty output. Falling through to pool."
+      return 1
+    fi
 
-  POOL_DESC="$desc"
-  POOL_FILE="$fp"
-  log "AI fix applied: $desc"
-  return 0
+    # Parse JSON
+    local fp new_str desc tool
+    fp=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('file_path',''))" 2>/dev/null || echo "")
+    desc=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('bug_description',''))" 2>/dev/null || echo "")
+    tool=$(echo "$result" | python3 -c "import sys,json; print(json.load(sys.stdin).get('tool','sed'))" 2>/dev/null || echo "sed")
+
+    if [ -z "$fp" ]; then
+      log "AI returned incomplete JSON (no file_path). Falling through to pool."
+      return 1
+    fi
+
+    # Basic path validation before apply
+    local found_path=""
+    if [ -f "$fp" ]; then
+      found_path="$fp"
+    elif [ -f "$POOL_DIR/$fp" ]; then
+      found_path="$POOL_DIR/$fp"
+    elif [ "$tool" = "write" ]; then
+      found_path="$POOL_DIR/$fp"
+    else
+      log "AI fix file not found: $fp"
+      return 1
+    fi
+
+    # Apply fix via intelligence.py --apply
+    local apply_output
+    apply_output=$(timeout 30 python3 "$INTEL" --branch "$branch" --type "$fix_type" --apply "$result" 2>/dev/null) || true
+    local apply_exit=$?
+
+    if [ "$apply_exit" -ne 0 ] || [ -z "$apply_output" ]; then
+      log "AI fix apply failed (tool=$tool)."
+      # Store error for self-correction
+      error_feedback="Apply failed for $tool on $fp"
+      continue
+    fi
+
+    # ── Build validation (pre-commit check) ──
+    local build_pass=true
+    local build_error=""
+    if [ -f "$POOL_DIR/package.json" ]; then
+      log "Running pre-commit build validation..."
+      local build_output
+      build_output=$(cd "$POOL_DIR" && timeout 60 npx eslint "${fp#$POOL_DIR/}" 2>&1) || true
+      if echo "$build_output" | grep -qi 'error\|syntax'; then
+        build_pass=false
+        build_error="$build_output"
+        log "Build lint found errors: $(echo "$build_error" | head -5 | tr '\n' ';')"
+      fi
+    fi
+
+    if [ "$build_pass" = true ]; then
+      POOL_DESC="$desc"
+      POOL_FILE="$fp"
+      log "AI fix applied and validated: $desc (tool=$tool)"
+      return 0
+    else
+      # Feed build error back for self-correction
+      error_feedback="$build_error"
+      # Revert the fix
+      cd "$POOL_DIR" && git checkout -- "$fp" 2>/dev/null || true
+      log "Build validation failed. Self-correcting (attempt $((attempt+1))/$max_self_correct)..."
+    fi
+  done
+
+  log "AI fix failed after $max_self_correct self-correction attempts."
+  return 1
 }
 
 try_pool_fix() {
@@ -1178,9 +1214,9 @@ update_global_memory() {
 }
 
 learn_fix() {
-  local branch="$1" fix_type="$2" desc="$3" file="$4" source="$5"
+  local branch="$1" fix_type="$2" desc="$3" file="$4" source="$5" tool="${6:-sed}" error_msg="${7:-}"
   local fix_json
-  fix_json=$(python3 -c "import json; print(json.dumps({'file_path':'$file','bug_description':'$desc','commit_message':'${fix_type}($branch): $desc','source':'$source'}))" 2>/dev/null)
+  fix_json=$(python3 -c "import json; o={'file_path':'$file','bug_description':'$desc','commit_message':'${fix_type}($branch): $desc','source':'$source','tool':'$tool'}; ${error_msg:+o['_error']='$error_msg'}; print(json.dumps(o))" 2>/dev/null)
   if [ -n "$fix_json" ]; then
     timeout 10 python3 "$INTEL" --branch "$branch" --type "$fix_type" --learn-after "$fix_json" 2>/dev/null || true
     log "Profile learned from $source fix: $desc"
