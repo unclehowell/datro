@@ -90,7 +90,40 @@ fi
 
 log "Applied. Learned from fix."
 
-# ── 5. Push to GitHub cnei branch ─────────────────────────────────────────────
+# ── 5. Sync-back: merge AWS learnings into local profiles ─────────────────────
+
+log "Syncing AWS learnings back to local profiles..."
+AWS_PROFILES_JSON_NOW=$($AWS_SSH "cat ~/.fcukproxy/agent/profiles.json" 2>/dev/null || echo "{}")
+if [ "$AWS_PROFILES_JSON_NOW" != "{}" ] && [ "$AWS_PROFILES_JSON_NOW" != "$AWS_PROFILES_JSON" ]; then
+  python3 -c "
+import json
+local = json.load(open('$AGENT_DIR/profiles.json'))
+aws = json.loads('''$AWS_PROFILES_JSON_NOW'''.replace(chr(92)+chr(39), chr(39)))
+merged = 0
+for branch, aws_profile in aws.items():
+    if branch not in local:
+        local[branch] = aws_profile
+        merged += 1
+        continue
+    for key in ('successful_fixes', 'failed_fixes', 'skill_library', 'reflections', 'learned_patterns'):
+        aws_items = aws_profile.get(key, [])
+        local_items = local[branch].get(key, [])
+        if len(aws_items) > len(local_items):
+            local[branch][key] = aws_items
+            merged += len(aws_items) - len(local_items)
+    if aws_profile.get('branch_knowledge', '') and len(aws_profile.get('branch_knowledge', '')) > len(local[branch].get('branch_knowledge', '')):
+        local[branch]['branch_knowledge'] = aws_profile['branch_knowledge']
+    aws_cycles = aws_profile.get('total_learning_cycles', 0)
+    if aws_cycles > local[branch].get('total_learning_cycles', 0):
+        local[branch]['total_learning_cycles'] = aws_cycles
+json.dump(local, open('$AGENT_DIR/profiles.json', 'w'), indent=2)
+print(f'Merged {merged} items from AWS profiles')
+" 2>/dev/null || log "WARN: profile merge failed"
+else
+  log "AWS profiles unchanged or empty, skipping merge."
+fi
+
+# ── 6. Push to GitHub cnei branch ─────────────────────────────────────────────
 
 push_file() {
   local repo_path="$1" local_path="$2" msg="$3"
