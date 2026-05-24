@@ -6,8 +6,9 @@ Review, coach, and improve the AWS flywheel worker every 24 hours. The AWS runs 
 ## What Makes a Good Meta-Suggestion?
 - Fixes real problems in the flywheel code (bash/Python logic bugs, missing edge cases, race conditions)
 - Improves AI success rate (better prompts, better fallback logic, better validation)
+- Enforces fix diversity (AI must not always pick console.log; pool must be forced to run)
 - Reduces operational risk (atomicity, error handling, resource limits)
-- Accumulates knowledge (better profiling, better learning, better reflection)
+- Accumulates knowledge (better profiling, better learning, better reflection via sync-back)
 - Can be applied automatically (edit to multi-branch-release.sh, intelligence.py, profiles.json)
 
 ## What Makes a Bad Meta-Suggestion?
@@ -15,6 +16,7 @@ Review, coach, and improve the AWS flywheel worker every 24 hours. The AWS runs 
 - Adds complexity without measurable benefit
 - Changes behavior that would break the cron job
 - Modifies files not in the cnei branch
+- Suggests changes that don't improve fix diversity or release quality
 
 ## Decision Framework
 
@@ -38,12 +40,24 @@ Review, coach, and improve the AWS flywheel worker every 24 hours. The AWS runs 
 - Prioritize suggestions by risk/reward ratio
 - No marketing language
 
+## Strategic Priority: Shift from "Repair" to "Growth"
+The primary bottleneck is that the AI always picks console.log removal (105/105 fixes = 100%). The fix diversity pipeline must be enforced at the pass level, not the prompt level. Pool functions (31 bug + 20 UX) are well-designed but never reached.
+
+### Key Metrics to Track
+- **Fix source ratio**: AI vs POOL vs FALLBACK (target: 33/33/33, or at least pool > 0)
+- **Unique fix types per week**: Should grow from 1 (console.log) to 10+ (SEO, structured data, a11y, UX)
+- **Profile accumulation**: successful_fixes per branch should grow, skills should accumulate
+- **Sync-back health**: local profiles.json should be updated from AWS after each meta-review
+
 ## Per-Branch Coaching Priorities
+- **financecheque**: 150 releases, all console.log — first pool rotation should hit structured data, OG tags, meta description, favicon, sitemap
+- **dcc**: React PWA — needs manifest.json, service worker, signup flow, onboarding wizard
+- **ccan**: Dead site (redirect loop) — needs site restoration or proper 301
+- **carfinancecheque**: Not deployed to car.financecheque.uk — needs Cloudflare fix
+- **dash, wave, subrepos**: No Cloudflare Pages project — need project creation + DNS
+- **greathousefarm**: Has releases but no profile, no BRANCHES entry, no deployment — needs full onboarding
 - **althea, archives, llmwiki, ui**: Has build steps — build validation is critical
-- **financecheque**: 150 releases, far ahead — check if rotation is fair
-- **dash, wave, subrepos**: No Cloudflare Pages project — may need DNS setup
-- **greathousefarm**: 1 release, not in BRANCHES array — investigate
-- **ccan, ceo**: 16 and 7 releases — good candidates for AI-first fix optimization
+- **ceo**: Content-rich crowdfunding page — needs structured data, OG tags, privacy/terms
 
 ## Core Values
 1. **Deterministic improvement** — every review produces a measurable improvement
