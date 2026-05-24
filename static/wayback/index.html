@@ -1,6 +1,7 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <meta content="DATRO Library" name="description">
   <meta content="DATRO Consortium" name="author">
@@ -62,7 +63,7 @@ li {
         const data = await response.json();
         let htmlString = '<ul>';
         htmlString += `<a href="../" class="up-active" style="visibility:hidden;"><<</a>`;
-        htmlString += `<p class="main-title"><img class="main-logo ml-datro"></br>Wayback Archive v0.0.1.02</p>`;
+        htmlString += `<p class="main-title"><img class="main-logo ml-datro" loading="lazy" alt=""></br>Wayback Archive v0.0.1.02</p>`;
         for (let file of data) {
           htmlString += `<li class="li"><a href="${file.path}">${file.name}</a></li>`;
         }
