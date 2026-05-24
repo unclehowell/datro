@@ -5,170 +5,293 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AWS Flywheel — Automated Multi-Branch Release System</title>
 <style>
-:root { --bg: #0d1117; --fg: #c9d1d9; --accent: #58a6ff; --border: #30363d; --code-bg: #161b22; }
+:root { --bg: #0d1117; --fg: #c9d1d9; --accent: #58a6ff; --green: #3fb950; --orange: #d29922; --red: #da3633; --border: #30363d; --code-bg: #161b22; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: -apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; padding: 2rem; }
-.container { max-width: 900px; margin: 0 auto; }
+body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; padding: 2rem; }
+.container { max-width: 960px; margin: 0 auto; }
 h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #f0f6fc; }
 h2 { font-size: 1.5rem; margin: 2rem 0 1rem; color: #f0f6fc; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
 h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: #f0f6fc; }
+h4 { font-size: 1.05rem; margin: 1rem 0 0.5rem; color: #f0f6fc; }
 p, li { margin-bottom: 0.5rem; }
 ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
 code { background: var(--code-bg); padding: 0.2em 0.4em; border-radius: 3px; font-size: 0.9em; }
-pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; border: 1px solid var(--border); }
+pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; margin: 1rem 0; border: 1px solid var(--border); font-size: 0.85rem; }
 pre code { background: none; padding: 0; }
+table { width:100%; border-collapse: collapse; margin:1rem 0; font-size:0.9rem; }
+th, td { text-align:left; padding:0.4rem 0.6rem; border-bottom:1px solid var(--border); }
+th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 .tag { display: inline-block; background: #1f6feb22; color: var(--accent); border: 1px solid #1f6feb44; padding: 0.1em 0.5em; border-radius: 3px; font-size: 0.85em; }
-.badge { display: inline-block; background: #238636; color: #fff; padding: 0.15em 0.6em; border-radius: 999px; font-size: 0.8em; font-weight: 600; }
-.badge-amber { background: #d29922; }
-.badge-red { background: #da3633; }
+.badge { display: inline-block; color: #fff; padding: 0.15em 0.6em; border-radius: 999px; font-size: 0.8em; font-weight: 600; }
+.badge-green { background: var(--green); }
+.badge-amber { background: var(--orange); }
+.badge-red { background: var(--red); }
+.badge-blue { background: #1f6feb; }
+.flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 1rem 0; }
+.flow-step { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+.flow-arrow { color: #8b949e; font-size: 1.2rem; }
 </style>
 </head>
 <body>
 <div class="container">
 
 <h1>AWS Flywheel</h1>
-<p>Automated multi-branch release system — 3 bug fixes + 1 UX improvement per branch, every hour, on every branch.</p>
+<p>Autonomous multi-branch release engine — 3 bug + 1 UX fix per branch, every hour, self-learning, self-healing.</p>
 
-<p><span class="badge">20 branches</span> <span class="badge badge-amber">24h cooldown</span> <span class="badge badge-red">1 release/hour</span></p>
+<p>
+  <span class="badge badge-green">21 branches</span>
+  <span class="badge badge-amber">24h cooldown</span>
+  <span class="badge badge-red">1 release/hour</span>
+  <span class="badge badge-blue">253+ releases</span>
+</p>
 
 <p>Full source: <a href="https://github.com/unclehowell/datro/tree/cnei/flywheel">github.com/unclehowell/datro/tree/cnei/flywheel</a></p>
 
-<h2>How It Works</h2>
-<p>A cron job on an AWS EC2 instance cycles through 20 git branches, running 4 automated fix passes on each, then cuts a GitHub release with structured release notes.</p>
+<h2>Architecture</h2>
 
-<h3>Architecture</h3>
-<ul>
-  <li><strong>Orchestrator</strong> (<code>multi-branch-release.sh</code>): Bash script, runs via <code>cron</code> at minute 0 of every hour</li>
-  <li><strong>Intelligence pipeline</strong> (<code>intelligence.py</code>): Python, tries AI bug-finding (<code>timeout 60</code>), falls through to <code>rg</code>-based static analysis</li>
-  <li><strong>State file</strong> (<code>release-state.json</code>): JSON, tracks rotation index, cooldown timestamps, and per-branch release counters</li>
-  <li><strong>Cloudflare Pages</strong>: Auto-deploys each branch to <code>{branch}.datro.pages.dev</code> / <code>{branch}.datro.xyz</code></li>
-</ul>
+<p>A cron job (<code>0 * * * *</code>) on an AWS EC2 instance selects one branch via round-robin rotation, runs 4 automated fix passes against its working tree, commits and tags, and publishes a GitHub release with structured notes. An executive-coach meta-review runs separately at 00:00 UTC daily on a command machine, reviewing AWS output and self-improving the flywheel code.</p>
 
-<h3>Fix Passes</h3>
-<table style="width:100%; border-collapse: collapse; margin:1rem 0;">
-  <tr style="border-bottom:1px solid var(--border);">
-    <th style="text-align:left; padding:0.5rem;">Pass</th>
-    <th style="text-align:left; padding:0.5rem;">Type</th>
-    <th style="text-align:left; padding:0.5rem;">Pattern</th>
-  </tr>
-  <tr style="border-bottom:1px solid var(--border);">
-    <td style="padding:0.5rem;">1</td>
-    <td style="padding:0.5rem;"><span class="badge badge-red">Bug</span></td>
-    <td style="padding:0.5rem;"><code>console\.(log|debug)</code> — remove debug logging</td>
-  </tr>
-  <tr style="border-bottom:1px solid var(--border);">
-    <td style="padding:0.5rem;">2</td>
-    <td style="padding:0.5rem;"><span class="badge badge-red">Bug</span></td>
-    <td style="padding:0.5rem;"><code>^\s*//\s+(if|for|while|...)</code> — remove stale comments</td>
-  </tr>
-  <tr style="border-bottom:1px solid var(--border);">
-    <td style="padding:0.5rem;">3</td>
-    <td style="padding:0.5rem;"><span class="badge badge-red">Bug</span></td>
-    <td style="padding:0.5rem;"><code>\s+$</code> — trailing whitespace cleanup</td>
-  </tr>
-  <tr>
-    <td style="padding:0.5rem;">4</td>
-    <td style="padding:0.5rem;"><span class="badge badge-amber">UX</span></td>
-    <td style="padding:0.5rem;">Add <code>lang="en"</code>, viewport meta, <code>loading="lazy"</code>, <code>alt=""</code></td>
-  </tr>
+<div class="flow">
+  <span class="flow-step">Cron (HH:00)</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Select branch</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Pass 1: AI → Pool → Fallback</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Pass 2: Pool only</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Pass 3: Fallback guaranteed</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Pass 4 UX: AI → Pool → Fallback</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Build validate → Commit → Tag → Push</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">GitHub Release</span>
+  <span class="flow-arrow">→</span>
+  <span class="flow-step">Cloudflare Deploy</span>
+</div>
+
+<h3>Components</h3>
+<table>
+  <tr><th>File</th><th>Role</th></tr>
+  <tr><td><code>multi-branch-release.sh</code></td><td>Bash orchestrator — cron entrypoint, branch selection, pass dispatch, git/release</td></tr>
+  <tr><td><code>intelligence.py</code></td><td>Python intelligence pipeline — builds LLM prompts, applies fixes, manages profiles, self-learns</td></tr>
+  <tr><td><code>gather_review_data.py</code></td><td>Log parser — extracts fix source ratios (AI vs Pool vs Fallback) from AWS logs for meta-review</td></tr>
+  <tr><td><code>meta-review.sh</code></td><td>Executive coach — fetches AWS state, runs intelligence.py --type meta, syncs profile learnings</td></tr>
+  <tr><td><code>release-state.json</code></td><td>State file — rotation index, cooldowns, release counters, fix/ux rotation pointers</td></tr>
+  <tr><td><code>profiles.json</code></td><td>Per-branch profiles — LLM rotation lists, learned patterns, skill libraries, branch knowledge</td></tr>
+  <tr><td><code>agent/branches/*.md</code></td><td>Branch context files — soul/manifest/memory per branch, category, cornerstone mission</td></tr>
 </table>
 
-<h2>Quickstart — Deploy Your Own Flywheel</h2>
+<h2>21 Branches</h2>
+<p>Each branch deploys independently via Cloudflare Pages at <code>{branch}.datro.xyz</code>:</p>
+<table>
+  <tr><th>Branch</th><th>Category</th><th>Domain</th><th>Releases</th></tr>
+  <tr><td>financecheque</td><td>E-commerce</td><td>financecheque.uk</td><td>150</td></tr>
+  <tr><td>ccan</td><td>Community</td><td>ccan.datro.xyz</td><td>16</td></tr>
+  <tr><td>althea</td><td>Community</td><td>althea.datro.xyz</td><td>7</td></tr>
+  <tr><td>bpvsbuckler</td><td>E-commerce</td><td>bpvsbuckler.datro.xyz</td><td>5</td></tr>
+  <tr><td>carfinancecheque</td><td>E-commerce</td><td>carfinancecheque.datro.xyz</td><td>5</td></tr>
+  <tr><td>ceo</td><td>Platform</td><td>ceo.datro.xyz</td><td>7</td></tr>
+  <tr><td>dash</td><td>Platform</td><td>dash.datro.xyz</td><td>5</td></tr>
+  <tr><td>datro</td><td>Meta</td><td>datro.xyz</td><td>6</td></tr>
+  <tr><td>dcc</td><td>Community</td><td>dcc.datro.xyz</td><td>6</td></tr>
+  <tr><td>gui</td><td>Platform</td><td>gui.datro.xyz</td><td>6</td></tr>
+  <tr><td>hbnb</td><td>E-commerce</td><td>hbnb.datro.xyz</td><td>6</td></tr>
+  <tr><td>library</td><td>Documentation</td><td>library.datro.xyz</td><td>6</td></tr>
+  <tr><td>llmwiki</td><td>Documentation</td><td>llmwiki.datro.xyz</td><td>5</td></tr>
+  <tr><td>subrepos</td><td>Platform</td><td>subrepos.datro.xyz</td><td>4</td></tr>
+  <tr><td>ui</td><td>Platform</td><td>ui.datro.xyz</td><td>5</td></tr>
+  <tr><td>wave</td><td>Platform</td><td>wave.datro.xyz</td><td>5</td></tr>
+  <tr><td>wayback</td><td>Archive</td><td>wayback.datro.xyz</td><td>4</td></tr>
+  <tr><td>whitepaper</td><td>Documentation</td><td>whitepaper.datro.xyz</td><td>3</td></tr>
+  <tr><td>archives</td><td>Archive</td><td>archives.datro.xyz</td><td>5</td></tr>
+  <tr><td>cnei</td><td>Meta</td><td>cnei.datro.xyz</td><td>—</td></tr>
+  <tr><td>greathousefarm</td><td>Advocacy</td><td>greathousefarm.datro.xyz</td><td>1</td></tr>
+</table>
+<p>All content lives under <code>static/{branchname}/</code> in the repo. Cloudflare Pages <code>root_dir</code> is set per project to that prefix.</p>
 
-<h3>1. Server Setup</h3>
-<pre><code># Launch Ubuntu 24.04 EC2 instance (t3.small or larger)
-# Install dependencies
-sudo apt update && sudo apt install -y git python3 ripgrep nodejs npm
-npm install -g wrangler
-# Install GitHub CLI and authenticate
-sudo apt install -y gh
-gh auth login  # Use OAuth device flow</code></pre>
+<h2>Pass Strategy — Fix Diversity Enforcement</h2>
+<p>The original loop (<code>for pass in 1 2 3</code>) always let the AI win, resulting in 105/105 console.log removals. The strategy was redesigned into individually-controlled passes:</p>
 
-<h3>2. Clone the Scripts</h3>
-<pre><code>git clone https://github.com/YOUR_USER/YOUR_REPO.git ~/repo
-mkdir -p ~/.fcukproxy
-# Copy multi-branch-release.sh and intelligence.py to ~/.fcukproxy/
-ln -s ~/.fcukproxy/multi-branch-release.sh ~/multi-branch-release.sh</code></pre>
+<table>
+  <tr><th>Pass</th><th>Source</th><th>Purpose</th></tr>
+  <tr><td>1 (Bug)</td><td>AI → Rotating Pool → Fallback</td><td>AI finds professional improvements (SEO, structured data, accessibility). If AI fails, pool rotates through 32 fix functions. Last resort: guaranteed fallback.</td></tr>
+  <tr><td>2 (Bug)</td><td>Rotating Pool only</td><td>Guarantees pool diversity — skips AI entirely so the rotating pool always gets a turn.</td></tr>
+  <tr><td>3 (Bug)</td><td>Guaranteed Fallback</td><td>Always runs — catches triple-blank-lines via <code>rg -U</code> multiline matching.</td></tr>
+  <tr><td>4 (UX)</td><td>AI → Rotating Pool → Fallback</td><td>User-experience improvements (viewport, tap targets, hover styles, skip links, print styles, etc.).</td></tr>
+</table>
 
-<h3>3. Configure Branches</h3>
-<p>Edit the <code>BRANCHES</code> array in <code>multi-branch-release.sh</code> to list your repository's branches:</p>
-<pre><code>BRANCHES=(
-  "main"
-  "develop"
-  "feature/foo"
-  # ... your branches here
-)</code></pre>
+<h3>Rotating Fix Pool — 32 Bug Functions</h3>
+<table>
+  <tr><th>Category</th><th>Fix Functions</th></tr>
+  <tr><td>SEO</td><td><code>fix_meta_description</code>, <code>fix_canonical_url</code>, <code>fix_og_tags</code>, <code>fix_twitter_card</code>, <code>seo_structured_data</code>, <code>seo_keywords_meta</code></td></tr>
+  <tr><td>Accessibility</td><td><code>fix_lang_attribute</code>, <code>fix_aria_label</code>, <code>fix_label_for</code>, <code>fix_button_type</code>, <code>fix_heading_hierarchy</code></td></tr>
+  <tr><td>HTML Standards</td><td><code>fix_doctype</code>, <code>fix_charset_meta</code>, <code>fix_viewport_meta</code>, <code>fix_self_closing</code>, <code>fix_br_syntax</code>, <code>fix_http_equiv</code>, <code>fix_form_charset</code>, <code>fix_bom</code></td></tr>
+  <tr><td>Security/Performance</td><td><code>fix_link_noopener</code>, <code>fix_script_defer</code>, <code>fix_img_dimensions</code>, <code>fix_inline_handlers</code></td></tr>
+  <tr><td>Code Quality</td><td><code>fix_console_log</code>, <code>fix_commented_code</code>, <code>fix_trailing_whitespace</code>, <code>fix_blank_lines</code>, <code>fix_tabs_vs_spaces</code>, <code>fix_duplicate_ids</code>, <code>fix_404_title</code></td></tr>
+</table>
 
-<h3>4. Set Repository</h3>
-<pre><code>GITHUB_REPO="YOUR_USER/YOUR_REPO"</code></pre>
+<h3>Rotating UX Pool — 17 UX Functions</h3>
+<table>
+  <tr><th>Category</th><th>Fix Functions</th></tr>
+  <tr><td>Mobile</td><td><code>ux_viewport</code>, <code>ux_mobile_tap</code>, <code>ux_touch_action</code>, <code>ux_table_responsive</code></td></tr>
+  <tr><td>Interaction</td><td><code>ux_hover_styles</code>, <code>ux_button_states</code>, <code>ux_smooth_scroll</code>, <code>ux_focus_visible</code>, <code>ux_keyboard_nav</code></td></tr>
+  <tr><td>Layout</td><td><code>ux_css_order</code>, <code>ux_z_index</code>, <code>ux_spacing</code>, <code>ux_type_scale</code>, <code>ux_cls_fix</code></td></tr>
+  <tr><td>Accessibility/UX</td><td><code>ux_skip_link</code>, <code>ux_breadcrumb</code>, <code>ux_print_styles</code>, <code>ux_loading_indicator</code></td></tr>
+</table>
 
-<h3>5. Install Cron</h3>
-<pre><code>crontab -e
-# Add:
-0 * * * * /home/ubuntu/.fcukproxy/multi-branch-release.sh</code></pre>
-
-<h3>6. First Run</h3>
-<pre><code>mkdir -p ~/logs
-bash ~/.fcukproxy/multi-branch-release.sh 2>&1 | tee ~/logs/first-run.log
-# Verify: gh release list --repo YOUR_USER/YOUR_REPO</code></pre>
-
-<h2>Versioning</h2>
-<p>Tags follow <code>{branch}-v0.0.{patch}.{build:02d}</code> where the release number encodes directly:</p>
-<pre><code>release_number = total_releases[branch] + 1
-patch  = release_number / 100          # increments every 100 releases
-build  = release_number % 100          # 0–99, zero-padded to 2 digits
-version = 0.0.{patch}.{build:02d}</code></pre>
-
-<h2>Cooldown</h2>
-<p>Each branch has a 24-hour cooldown enforced by comparing the timestamp of its last GitHub release against the current time. If all 20 branches are on cooldown simultaneously, the script finds the branch closest to expiring and waits (up to 1 hour).</p>
-
-<h2>Pruning</h2>
-<p>After each release, only the 3 most recent GitHub releases per branch are kept. Older releases and their tags are deleted automatically.</p>
-
-<h2>Cloudflare Pages Deployment</h2>
-<p>Each branch auto-deploys to Cloudflare Pages. The flywheel verifies the deployment after each release using <code>curl</code>. If the deploy fails, it tries inner-loop fixes (e.g., adding <code>_redirects</code> for SPA routing).</p>
-
-<h2>Release Notes</h2>
-<p>Each GitHub release has a structured body with two sections:</p>
-<pre><code>### Fixed
-- fix(branch): remove debugging console.log (2 file(s): src/app.ts, src/utils.ts)
-- fix(branch): clean up trailing whitespace (1 file(s): src/styles.css)
-- fix(branch): remove stale commented-out code (3 file(s): ...)
-
-### Changed
-- ux(branch): improve website UX - lang, viewport (1 file(s): index.html)</code></pre>
-
-<h2>State File</h2>
-<p>The file <code>~/.fcukproxy/release-state.json</code> maintains all mutable state:</p>
-<pre><code>{
-  "rotation_index": 4,
-  "last_release": {
-    "main": 1779500000,
-    "develop": 1779503600
-  },
-  "total_releases": {
-    "main": 42,
-    "develop": 13
-  }
-}</code></pre>
-
-<h2>Security Notes</h2>
+<p>Each pool function:</p>
 <ul>
-  <li>No secrets in scripts — API keys loaded from <code>~/.fcukproxy/.env</code> or environment variables</li>
-  <li>All external commands use <code>timeout</code> guards (60s for AI, 30s for git)</li>
-  <li>Lock file prevents concurrent cron runs</li>
-  <li>Stderr from tools captured to log, not exposed to callers</li>
-  <li>IAM permissions: EC2 read/reboot only (for recovery)</li>
+  <li>Uses <code>find</code> or <code>rg</code> to locate matching files in the branch checkout</li>
+  <li>Runs an inline Python script to detect and apply a specific improvement</li>
+  <li>Sets <code>POOL_DESC</code> and <code>POOL_FILE</code> globals on success</li>
+  <li>Advances a persistent rotation index (<code>fix_rotation</code> / <code>ux_rotation</code>) so the next run picks up where the last left off</li>
 </ul>
 
+<h2>Cornerstone Missions</h2>
+<p>Instead of telling the AI to "find a bug", the system prompts it to <strong>"Benchmark this site against professional standards for its category."</strong> Each branch has a category (ecommerce, community, platform, documentation, advocacy, archive, meta) with a custom checklist:</p>
+
+<table>
+  <tr><th>Category</th><th>Focus Areas</th></tr>
+  <tr><td>E-commerce</td><td>JSON-LD Product/Offer, OG tags, cookie consent, payment security, trust signals, GDPR privacy policy, returns policy, sitemap.xml, robots.txt, checkout UX, search filter</td></tr>
+  <tr><td>Community</td><td>JSON-LD DiscussionForum, signup/login flow, moderation tools, privacy policy, member profiles, notifications, search, pagination, onboarding</td></tr>
+  <tr><td>Platform</td><td>JSON-LD WebApplication, API docs, status page, rate limiting, auth flows, dashboard UX, error pages, changelog</td></tr>
+  <tr><td>Documentation</td><td>JSON-LD TechArticle, table of contents, search, breadcrumbs, code copy buttons, dark mode, version selector, last-updated timestamps</td></tr>
+</table>
+
+<p>The <code>--constraint</code> CLI parameter injects blacklist rules: the AI is told what NOT to do (no console.log removal, no whitespace cleanup, no comment deletion — those belong to the pool).</p>
+
+<h2>Self-Learning Profiles</h2>
+<p>Every branch has a profile in <code>profiles.json</code> with:</p>
+<ul>
+  <li><strong>LLM Rotation</strong>: Ordered list of API endpoints with failover — financecheque.uk proxy → localhost → child proxy → NVIDIA → OpenRouter → Gemini → DeepSeek</li>
+  <li><strong>Rotation Index</strong>: Advances per attempt to distribute load across providers</li>
+  <li><strong>Successful/Failed Fixes</strong>: Immutable log of every fix (timestamp, source, tool, file, description, commit message)</li>
+  <li><strong>Skill Library</strong>: Deduplicated skills learned from successful fixes (name, description, tool, file type, use count)</li>
+  <li><strong>Learned Patterns</strong>: Patterns derived from fix file extensions and tools</li>
+  <li><strong>Reflections</strong>: Outcome log for every fix attempt (success/failure, tool, source)</li>
+  <li><strong>Branch Knowledge</strong>: Concatenated commit messages forming an evolving knowledge base of what the branch has been through</li>
+  <li><strong>Total Learning Cycles</strong>: Monotonically increasing counter of profile updates</li>
+</ul>
+
+<p>After every fix, <code>learn_from_fix()</code> updates the profile atomically. The AI prompt dynamically injects recent reflections, successful patterns, branch knowledge, and the skill library so each run builds on prior context.</p>
+
+<h2>AI Fix Pipeline</h2>
+<ol>
+  <li><code>intelligence.py</code> loads the branch context (<code>branch.md</code> + category checklist), profile (history + skills + reflections), and builds a prompt with the Cornerstone Mission</li>
+  <li>The prompt is sent to the LLM rotation (first available API endpoint)</li>
+  <li>The LLM returns a JSON fix specification (<code>file_path</code>, <code>bug_description</code>, <code>tool</code>, <code>new_str</code> or sed <code>old_str</code>)</li>
+  <li><code>intelligence.py --apply</code> applies the fix to the working tree</li>
+  <li>If <code>package.json</code> exists, <code>npx eslint</code> runs on the changed file for build validation</li>
+  <li>If lint fails, the fix is reverted (<code>git checkout -- file</code>) and the error is fed back for up to 3 self-correction attempts</li>
+  <li>On success, the branch memory, global memory, and profile are updated</li>
+</ol>
+
+<h2>Meta-Review (Executive Coach)</h2>
+<p>Runs daily at 00:00 UTC on a separate command machine via <code>meta-review.sh</code>:</p>
+<ol>
+  <li>SSH into the AWS server and fetch the last 200 log lines and <code>release-state.json</code></li>
+  <li>Run <code>gather_review_data.py</code> to parse log for fix source classification (AI vs POOL vs FALLBACK, unique fix types per session)</li>
+  <li>Run <code>intelligence.py --type meta --branch aws</code> to analyze AWS performance and suggest improvements</li>
+  <li>Apply suggested changes to the flywheel scripts</li>
+  <li>Sync back: download AWS profiles, merge successful_fixes/skill_library/reflections/learned_patterns/branch_knowledge</li>
+  <li>Push updated code to GitHub</li>
+</ol>
+
+<h2>Versioning &amp; Releases</h2>
+<p>Tags follow <code>{branch}-v0.0.{patch}.{build:02d}</code>:</p>
+<pre><code>release_number = total_releases[branch] + 1
+patch  = release_number / 100          # increments every 100 releases
+build  = release_number % 100          # 0–99, zero-padded
+version = 0.0.{patch}.{build:02d}</code></pre>
+
+<p>Each GitHub release contains:</p>
+<pre><code>## [{tag}] - YYYY-MM-DD
+
+### Fixed
+- fix(branch): Add JSON-LD structured data for SEO
+- fix(branch): Add meta description tag for SEO
+- fix(branch): Remove duplicate blank lines (guaranteed fallback)
+
+### Changed
+- ux(branch): Add skip-to-content link for keyboard accessibility</code></pre>
+
+<p>After release, the system:</p>
+<ul>
+  <li>Verifies the release appears on GitHub (up to 5 retries, 3s apart)</li>
+  <li>Verifies Cloudflare deployment responds at <code>{branch}.datro.pages.dev</code> (up to 5 retries, 10s apart)</li>
+  <li>Runs runtime quality checks (console errors, viewport issues via curl)</li>
+  <li>Prunes old releases (keeps last 3 per branch)</li>
+  <li>Advances global rotation_index for branch selection</li>
+</ul>
+
+<h2>Cooldown &amp; Branch Selection</h2>
+<p>24-hour cooldown per branch, enforced by comparing last GitHub release timestamp against current time. Selection is round-robin via <code>rotation_index</code> in state file. If all branches are on cooldown, the script finds the branch closest to expiry and sleeps up to 1 hour. A <code>FORCE_BRANCH</code> env var bypasses rotation for manual targeting.</p>
+
+<h2>Cloudflare Pages Integration</h2>
+<p>Every branch has a Cloudflare Pages project with:</p>
+<ul>
+  <li><code>root_dir</code> set to <code>static/{branchname}/</code></li>
+  <li>Custom domain <code>{branch}.datro.xyz</code> (CNAME to <code>{branch}.datro.pages.dev</code>)</li>
+  <li>Auto-deploys on git push</li>
+  <li>World site (datro.xyz) has no <code>root_dir</code> constraint (serves from repo root)</li>
+</ul>
+
+<h2>Deploy Your Own</h2>
+
+<h3>Server Setup</h3>
+<pre><code># Ubuntu 24.04 EC2 (t3.small+)
+sudo apt update && sudo apt install -y git python3 ripgrep nodejs npm
+npm install -g wrangler
+sudo apt install -y gh && gh auth login</code></pre>
+
+<h3>Clone &amp; Configure</h3>
+<pre><code>git clone https://github.com/YOUR_USER/YOUR_REPO.git ~/repo
+mkdir -p ~/.fcukproxy
+cp multi-branch-release.sh intelligence.py profiles.json ~/.fcukproxy/
+# Edit BRANCHES array and GITHUB_REPO in multi-branch-release.sh
+# Add 24h cron:
+0 * * * * /home/ubuntu/.fcukproxy/multi-branch-release.sh >> ~/logs/multi-branch-release.log 2>&1</code></pre>
+
+<h3>Required Files</h3>
+<ul>
+  <li><code>~/.fcukproxy/multi-branch-release.sh</code> — main orchestrator</li>
+  <li><code>~/.fcukproxy/intelligence.py</code> — AI pipeline + profile management</li>
+  <li><code>~/.fcukproxy/agent/profiles.json</code> — per-branch profiles with LLM rotation lists</li>
+  <li><code>~/.fcukproxy/agent/branches/{branch}.md</code> — per-branch context files (soul, manifest, memory, cornerstone mission)</li>
+  <li><code>~/.fcukproxy/agent/aws-supervisor.md</code> — executive coach context for meta-review</li>
+</ul>
+
+<h2>Security Model</h2>
+<ul>
+  <li>No secrets in scripts — API keys loaded from environment variables or external config</li>
+  <li>All LLM API calls use <code>timeout</code> guards (60s AI, 30s apply, 10s learn)</li>
+  <li>Lock file (<code>/tmp/multi-branch-release.lock</code>) prevents concurrent cron runs</li>
+  <li>Stderr from tools captured to log only</li>
+  <li>Atomic file writes via tempfile+rename for state and profiles (prevents corruption)</li>
+  <li>IAM permissions: EC2 read/reboot only (for recovery, not exposed scripts)</li>
+  <li>GitHub tokens scoped to repo via <code>gh</code> CLI OAuth</li>
+</ul>
+
+<h2>State File Reference</h2>
+<pre><code>{
+  "rotation_index": 1,
+  "total_releases": { "financecheque": 150, "archives": 5, ... },
+  "last_release":   { "financecheque": 1779506355, "archives": 1779500752, ... },
+  "fix_rotation": 23,
+  "ux_rotation": 0
+}</code></pre>
+
 <h2>Licence</h2>
-<p>MIT — use freely, adapt for your own repos.</p>
+<p>MIT — use freely, adapt for your own repos. Source at <a href="https://github.com/unclehowell/datro/tree/cnei/flywheel">github.com/unclehowell/datro/tree/cnei/flywheel</a>.</p>
 
 <hr style="border-color:var(--border); margin: 2rem 0;">
 <p style="text-align:center; color:#8b949e; font-size:0.9rem;">
-  Generated by the <code>cnei</code> branch — <a href="https://github.com/unclehowell/datro/tree/cnei/flywheel">source</a>
+  Generated by the <code>cnei</code> branch — <a href="https://github.com/unclehowell/datro/tree/cnei">source</a>
+  &middot; Last update: May 2026
 </p>
 
 </div>

@@ -1,5 +1,10 @@
 # Changelog
 
+## [cnei-v0.0.0.01] - 
+
+### Changed
+- docs(cnei): Rewrite documentation with full flywheel technical spec — 21 branches, 4-pass strategy, rotating fix pools, cornerstone missions, self-learning profiles, meta-review, Cloudflare Pages integration
+
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and the flywheel versioning scheme: `branch-v0.0.{patch}.{build:02d}`.
 
