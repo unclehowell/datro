@@ -1,0 +1,962 @@
+{
+  "althea": {
+    "branch": "althea",
+    "category": "hub",
+    "url": "N/A",
+    "stack": "React 16, Cordova, Craco, FontAwesome, Bootstrap",
+    "known_issues": "- No deployment URL configured - React 16 is outdated - Cordova wrapper may not build",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "archives": {
+    "branch": "archives",
+    "category": "knowledge",
+    "url": "wayback.financecheque.uk",
+    "stack": "Sphinx, Bash scripts",
+    "known_issues": "Single page site, limited SEO metadata",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "bpvsbuckler": {
+    "branch": "bpvsbuckler",
+    "category": "advocacy",
+    "url": "bpvsbuckler.datro.xyz",
+    "stack": "Static HTML/CSS, Cloudflare Pages",
+    "known_issues": "SVG-heavy, mobile layout may need improvement, SEO metadata minimal",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "carfinancecheque": {
+    "branch": "carfinancecheque",
+    "category": "advocacy",
+    "url": "car.financecheque.uk",
+    "stack": "Static HTML/CSS, Google Analytics, Cloudflare Pages",
+    "known_issues": "SEO critical for organic traffic, trust signals needed, page speed",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "ccan": {
+    "branch": "ccan",
+    "category": "community",
+    "url": "ccan.datro.xyz",
+    "stack": "Static HTML/CSS",
+    "known_issues": "Content sparsity, mobile optimization, call-to-action clarity",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "ceo": {
+    "branch": "ceo",
+    "category": "community",
+    "url": "ceo.datro.xyz",
+    "stack": "Static HTML/CSS",
+    "known_issues": "Form validation, accessibility, mobile usability",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "cnei": {
+    "branch": "cnei",
+    "category": "hub",
+    "url": "cnei.datro.xyz",
+    "stack": "Markdown, Cloudflare Pages",
+    "known_issues": "- Documentation must stay in sync with evolving flywheel architecture - URL registry must be updated when branches are added/removed",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "dash": {
+    "branch": "dash",
+    "category": "platform",
+    "url": "dash.financecheque.uk",
+    "stack": "Python aiohttp, JavaScript, Cloudflare Worker",
+    "known_issues": "Python error handling, async stability, dependency management",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "datro": {
+    "branch": "datro",
+    "category": "hub",
+    "url": "datro.xyz",
+    "stack": "Static HTML/CSS, jQuery, iframe-based GUI",
+    "known_issues": "Page speed, mobile responsiveness, SEO fundamentals",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "dcc": {
+    "branch": "dcc",
+    "category": "platform",
+    "url": "dcc.datro.xyz",
+    "stack": "React, TypeScript, Tailwind (Heroicons)",
+    "known_issues": "React best practices, TypeScript strictness, error boundaries",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "financecheque": {
+    "branch": "financecheque",
+    "category": "ecommerce",
+    "url": "financecheque.uk",
+    "stack": "Static HTML/CSS",
+    "known_issues": "SEO optimization, trust signals, conversion optimization",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "gui": {
+    "branch": "gui",
+    "category": "platform",
+    "url": "gui.datro.xyz",
+    "stack": "HTML/CSS, jQuery, iframe",
+    "known_issues": "jQuery legacy code, iframe loading performance, mobile UX",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "hbnb": {
+    "branch": "hbnb",
+    "category": "platform",
+    "url": "hbhb.datro.xyz",
+    "stack": "Static HTML/CSS, jQuery, WebP images",
+    "known_issues": "Image optimization, mobile layout, CTA effectiveness",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "library": {
+    "branch": "library",
+    "category": "knowledge",
+    "url": "library.datro.xyz",
+    "stack": "Sphinx, Python, HTML/CSS",
+    "known_issues": "Sphinx theme customization, search functionality, navigation hierarchy",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "llmwiki": {
+    "branch": "llmwiki",
+    "category": "knowledge",
+    "url": "llmwiki.financecheque.uk",
+    "stack": "HTML/CSS, html2canvas, AdminLTE",
+    "known_issues": "Canvas rendering bugs, export quality, browser compatibility",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "subrepos": {
+    "branch": "subrepos",
+    "category": "unknown",
+    "url": "N/A",
+    "stack": "Shell, Git",
+    "known_issues": "- Not a website \u2014 no URL, no deployment",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "ui": {
+    "branch": "ui",
+    "category": "hub",
+    "url": "ui.datro.xyz",
+    "stack": "HTML/CSS, jQuery",
+    "known_issues": "jQuery dependency, category management, search/filter",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "wave": {
+    "branch": "wave",
+    "category": "platform",
+    "url": "wave.datro.xyz",
+    "stack": "Static HTML/CSS",
+    "known_issues": "Content density, mobile layout, engagement features",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "wayback": {
+    "branch": "wayback",
+    "category": "knowledge",
+    "url": "wayback.datro.xyz",
+    "stack": "HTML/CSS, JavaScript (dynamic JSON tree), Google Analytics",
+    "known_issues": "Large JSON parsing, image loading performance, browser compatibility",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  },
+  "whitepaper": {
+    "branch": "whitepaper",
+    "category": "knowledge",
+    "url": "whitepaper.financecheque.uk",
+    "stack": "HTML/CSS, Canvas animations, Cloudflare Pages",
+    "known_issues": "Canvas animation performance on mobile, print layout, SEO metadata",
+    "llm_rotation": [
+      {
+        "name": "financecheque",
+        "url": "https://www.financecheque.uk/api/proxy",
+        "type": "parent"
+      },
+      {
+        "name": "local_proxy",
+        "url": "http://localhost:6000/v1/chat/completions",
+        "type": "local"
+      },
+      {
+        "name": "child_proxy",
+        "url": "http://172.31.29.216:4001",
+        "type": "child"
+      },
+      {
+        "name": "nvidia",
+        "type": "nvidia"
+      },
+      {
+        "name": "openrouter",
+        "type": "openrouter"
+      },
+      {
+        "name": "gemini",
+        "type": "gemini"
+      },
+      {
+        "name": "deepseek",
+        "type": "deepseek"
+      }
+    ],
+    "rotation_index": 0,
+    "learned_patterns": [],
+    "skill_library": [],
+    "reflections": [],
+    "successful_fixes": [],
+    "failed_fixes": [],
+    "branch_knowledge": "",
+    "total_learning_cycles": 0
+  }
+}
