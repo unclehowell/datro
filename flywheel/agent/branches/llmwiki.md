@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Canvas Tool UX: structured data (WebApplication), error boundaries for canvas rendering, export quality options (PNG/SVG/PDF), template gallery, undo/redo, mobile touch drawing support, analytics, cookie consent, loading states, onboarding tooltip for new users.
