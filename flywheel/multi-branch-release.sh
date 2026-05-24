@@ -20,7 +20,6 @@ BRANCHES=(
   "althea" "archives" "bpvsbuckler" "carfinancecheque"
   "ccan" "ceo" "dash" "datro" "dcc" "financecheque"
   "gui" "hbnb" "library" "llmwiki" "cnei"
-  "subrepos" "ui" "wave" "wayback" "whitepaper"
   "greathousefarm"
 )
 
@@ -45,7 +44,6 @@ BRANCH_URLS=(
   [ui]="https://ui.datro.xyz"
   [wave]="https://wave.datro.xyz"
   [wayback]="https://wayback.datro.xyz"
-  [whitepaper]="https://whitepaper.financecheque.uk"
   [greathousefarm]="N/A"
 )
 
