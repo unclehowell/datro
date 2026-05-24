@@ -26,3 +26,6 @@ Not audited yet
 
 ## Next Priority
 Initial content audit and SEO baseline
+
+## Cornerstone Mission
+Navigation Hub UX: structured data (WebSite + Organization), visually clear branch directory/search, favicon, Open Graph tags, mobile mega-menu, performance optimization (lazy load iframes), analytics, cookie consent, privacy policy.
