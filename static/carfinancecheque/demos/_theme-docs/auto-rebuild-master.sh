@@ -19,7 +19,6 @@ unset CDPATH
 #                  datro.xyz
 #................................................
 
-
 # update the rebuild and auto-rebuild source files.
 bash ../../../_theme-docs/update.sh &&
 
