@@ -100,9 +100,69 @@ def set_state_val(key, value):
     target[keys[-1]] = value
     save_state(state)
 
+# ── Daily uniqueness tracking ─────────────────────────────────────────────────
+
+DAILY_FILE = AGENT_DIR / "daily-unique.json"
+
+def today_str():
+    return datetime.now(timezone.utc).strftime("%Y-%m-%d")
+
+def load_daily():
+    if DAILY_FILE.exists():
+        try:
+            data = json.loads(DAILY_FILE.read_text())
+            if data.get("date") == today_str():
+                return data
+        except Exception:
+            pass
+    return {"date": today_str(), "bugs": [], "features": []}
+
+def save_daily(data):
+    data["date"] = today_str()
+    atomic_json_write(DAILY_FILE, data)
+
+def record_daily_fix(description, fix_type="bug"):
+    data = load_daily()
+    key = "features" if fix_type == "ux" else "bugs"
+    if description not in data[key]:
+        data[key].append(description)
+        save_daily(data)
+        return True
+    return False
+
 # ── Context loading ───────────────────────────────────────────────────────────
 
-def load_branch_context(branch):
+def scan_branch_files(repo_path, max_files=5, max_lines=80):
+    """Scan branch checkout for HTML/CSS/JS files and return name + excerpt."""
+    if not repo_path or not Path(repo_path).exists():
+        return "No files available (repo_path not provided)."
+    rp = Path(repo_path)
+    static_dir = rp / "static"
+    if static_dir.exists():
+        for child in sorted(static_dir.iterdir()):
+            if child.is_dir():
+                rp = child
+                break
+    excerpts = []
+    for ext in ("*.html", "*.css", "*.js", "*.json"):
+        for f in sorted(rp.glob(ext))[:max_files]:
+            try:
+                lines = f.read_text().splitlines()
+                excerpt = "\n".join(lines[:max_lines])
+                excerpts.append(f"--- {f.relative_to(Path(repo_path))} ({len(lines)} lines) ---\n{excerpt}")
+            except Exception:
+                pass
+    if not excerpts:
+        for f in sorted(rp.glob("**/*.html"))[:max_files]:
+            try:
+                lines = f.read_text().splitlines()
+                excerpt = "\n".join(lines[:max_lines])
+                excerpts.append(f"--- {f.relative_to(Path(repo_path))} ({len(lines)} lines) ---\n{excerpt}")
+            except Exception:
+                pass
+    return "\n\n".join(excerpts) if excerpts else "No readable files found in branch checkout."
+
+def load_branch_context(branch, repo_path=""):
     ctx = {"branch": branch}
     for name, path in [("soul", AGENT_DIR / "soul.md"),
                        ("manifest", AGENT_DIR / "manifest.md"),
@@ -125,6 +185,8 @@ def load_branch_context(branch):
     ctx["past_fixes"] = m.group(1).strip() if m else "(none)"
     master_path = AGENT_DIR / "masters" / f"{branch}.md"
     ctx["master_plan"] = master_path.read_text() if master_path.exists() else ""
+    ctx["repo_path"] = repo_path
+    ctx["file_excerpts"] = scan_branch_files(repo_path) if repo_path else ""
     return ctx
 
 # ── Prompt builder ────────────────────────────────────────────────────────────
@@ -187,19 +249,29 @@ The system consists of:
 - intelligence.py (python) — the AI agent
 - agent/profiles.json — per-branch learning state
 - agent/branches/*.md — branch context
+- agent/masters/*.md — per-branch master plans (vision, roadmap, compliance requirements)
 - agent/memory.md — cross-branch learnings
+- agent/aws-supervisor.md — coaching context
 
-You must improve the FLYWHEEL itself (not the website branches).
-Focus on: reliability, success rate, error handling, learning efficiency, resource usage.
+Key recent changes:
+1. Master plans added for all 21 branches with phased roadmaps
+2. AI prompt now includes master plan — AI is directed to implement highest-priority roadmap items
+3. Compliance pool functions: fix_privacy_policy, fix_terms_service, fix_contact_page, fix_blog_launch
+4. UX pool functions: ux_cookie_consent, ux_social_links, ux_footer_legal
+5. Blog post generation after each release with RSS feed
+6. ALL branches now have strategic visions — no more directionless tweaks
+
+Your job: ensure these new systems work correctly and improve release quality.
+Focus on: fix diversity, master plan compliance, blog generation, compliance page creation, learning from releases.
 
 Output a JSON fix using one of the available tools that DIRECTLY edits a flywheel file.
-The file_path must be one of: flywheel/multi-branch-release.sh, flywheel/intelligence.py, flywheel/agent/profiles.json, flywheel/agent/branches/aws.md, flywheel/agent/aws-supervisor.md, flywheel/meta-review.sh"""
+The file_path must be one of: flywheel/multi-branch-release.sh, flywheel/intelligence.py, flywheel/agent/profiles.json, flywheel/agent/branches/aws.md, flywheel/agent/masters/*.md, flywheel/agent/aws-supervisor.md, flywheel/meta-review.sh"""
 
-    system = """You are a senior infrastructure engineer coaching an autonomous flywheel.
-Your student is an AWS server running 24/7 releases across 20 branches.
-Analyze the data, identify the SINGLE MOST IMPACTFUL improvement to the flywheel code,
-and output a tool-based fix. Fix must be in a flywheel/ file and improve how the flywheel operates.
-Return ONLY valid JSON. No explanation, no markdown."""
+    system = """You are a senior engineering director coaching an autonomous flywheel towards strategic excellence.
+Your student is an AWS server running 24/7 releases across 21 branches, each with a master plan and vision.
+Analyze the data, identify the SINGLE MOST IMPACTFUL improvement to make releases more meaningful.
+Ensure branches progress through their master plan roadmaps (compliance → content → growth).
+Fix must be in a flywheel/ file. Return ONLY valid JSON. No explanation, no markdown."""
 
     prompt = f"""## AWS Flywheel State
 {ctx.get('branch_context', '')[:3000]}
@@ -378,73 +450,86 @@ def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
     category = category_aliases.get(ctx.get("category", "unknown"), ctx.get("category", "unknown"))
     checklist = cornerstone_checklists.get(category, cornerstone_checklists["unknown"])
 
+    file_excerpts = ctx.get("file_excerpts", "")
+    master_plan_text = ctx.get("master_plan", "")
+    master_items = []
+    if master_plan_text:
+        for line in master_plan_text.splitlines():
+            stripped = line.strip()
+            if stripped.startswith("- [ ]"):
+                master_items.append(stripped)
+    master_todo = "\n".join(
+        f"{i+1}. {item[5:]}" for i, item in enumerate(master_items[:15])
+    ) if master_items else "(All master plan items checked — improve quality of existing features)"
+
     if fix_type == "bug":
-        task = f"""Benchmark {ctx['url']} against professional website standards for its category: {ctx.get('category', 'unknown')}.
+        task = f"""## Branch Files (excerpts from checkout)
+{file_excerpts[:4000]}
 
-## Cornerstone Requirements Checklist
-{checklist}
+## Your Job
+1. Read the "Concrete Todos" list below — pick the HIGHEST priority unchecked item
+2. Scan the file excerpts to understand the current state
+3. Implement that missing feature (add privacy policy, cookie banner, structured data, meta tags, etc.)
+4. Use 'write' to create new files, 'sed' to modify existing ones
 
-## Your Mission
-1. Visit the live URL at {ctx['url']} and inspect the website
-2. Go through the checklist above — find the FIRST item that is MISSING or INCOMPLETE
-3. Implement that missing cornerstone requirement
-4. Choose the BEST tool for the job (sed for small changes, write for creating new files, patch for complex edits)
-
-## Important Rules
-- Do NOT remove console.log statements, trailing whitespace, or commented-out code — those are already handled by other passes
-- Focus on ADDING missing professional features (structured data, meta tags, cookie consent, etc.)
-- If ALL checklist items are present, improve the QUALITY of an existing one
-- SEO improvements count as bug fixes"""
-        system_prefix = "You are a senior web engineer executing a strategic master plan. Benchmark against industry standards, follow the phased roadmap, and implement the highest-priority unchecked item."
+## CRITICAL RULES
+- Do NOT remove console.log, trailing whitespace, or commented-out code
+- Do NOT fix blank lines — those are handled separately
+- Do NOT suggest the same fix as past releases or today's already-applied fixes
+- This MUST be a REAL bug fix or missing feature — NOT "remove blank lines"
+- You MUST output valid JSON with a real fix — not an explanation"""
+        system_prefix = "You are a senior full-stack engineer. Read the files, execute the master plan todo list. Output ONLY valid JSON."
     else:
-        task = f"""Improve the USER EXPERIENCE of {ctx['url']} based on professional UX standards for its category: {ctx.get('category', 'unknown')}.
+        task = f"""## Branch Files (excerpts from checkout)
+{file_excerpts[:4000]}
 
-## Your Mission
-1. Visit the live URL and evaluate:
-   - Mobile responsiveness (check on small viewport)
-   - Loading speed and perceived performance
-   - Navigation clarity and consistency
-   - Typography, color contrast, spacing
-   - Form usability and feedback
-   - Call-to-action visibility and clarity
-   - Touch targets on mobile (minimum 44x44px)
-2. Identify the SINGLE most impactful UX improvement
-3. Implement it using the best available tool
+## Your Job
+Add a NOVEL feature that this website is missing.
+This must be a NEW CAPABILITY — not a tweak to existing code.
+Examples: AI chat bot, cookie consent banner, mobile hamburger menu,
+skip-to-content link, dark mode toggle, search functionality,
+breadcrumb navigation, back-to-top button, RSS feed link, etc.
 
-## Category-Specific UX Priorities
-- ecommerce: checkout flow, trust signals, mobile cart, payment UX
-- community: onboarding, navigation, content discovery, contribution flow
-- platform: dashboard UX, settings clarity, feedback loops, empty states
-- documentation: search UX, readability, cross-referencing, print layout
-- other: mobile-first, load performance, accessibility, navigation"""
-        system_prefix = "You are a senior UX engineer. Make the website more professional and user-friendly. Benchmark against top-tier sites in the same category."
+1. Scan the HTML/CSS files above to see what already exists
+2. Pick a feature the site does NOT have yet
+3. Implement it with 'write' (new file) or 'sed' (modify existing)
+
+## CRITICAL RULES
+- Must be a NEW feature, not a style tweak
+- Check that the feature doesn't already exist in the file excerpts
+- Output ONLY valid JSON with a real feature addition
+- Must be unique — NOT in today's already-applied features list above"""
+        system_prefix = "You are a senior UX engineer. Add one novel feature this site is missing. Output ONLY valid JSON."
 
     error_section = ""
     if error_feedback:
-        error_section = f"\n## PREVIOUS FIX FAILED — Build/Lint Error\n{error_feedback[:2000]}\nPlease provide a CORRECTED fix that addresses the error above.\n"
+        error_section = f"\n## PREVIOUS FIX FAILED\n{error_feedback[:2000]}\nProvide a CORRECTED fix.\n"
+
+    daily_section = ""
+    daily_fixes = ctx.get("daily_fixes", "")
+    daily_features = ctx.get("daily_features", "")
+    if daily_fixes:
+        daily_section += f"\n## TODAY'S ALREADY-APPLIED BUG FIXES (do NOT repeat)\n{daily_fixes}\n"
+    if daily_features:
+        daily_section += f"\n## TODAY'S ALREADY-APPLIED FEATURES (do NOT repeat)\n{daily_features}\n"
+    if daily_section:
+        daily_section += "\nYour fix MUST be unique — NOT present in any of the lists above.\n"
 
     prompt = f"""## Website: {ctx['url']}
 ## Branch: {branch}
 ## Category: {ctx['category']}
-## Stack: {ctx['stack']}
 
 ## Purpose
-{ctx.get('branch_context', '')[:2000]}
+{ctx.get('branch_context', '')[:1500]}
 
-## Known Issues
-{ctx['issues']}
+## Concrete Todos (from Master Plan)
+Pick the HIGHEST priority unchecked item:
+{master_todo}
 
-## Past Fixes Applied
-{ctx['past_fixes']}
-{knowledge_section}
+{knowledge_section[:1500]}
 
-## Master Plan — Strategic Vision
-{ctx.get('master_plan', '(No master plan yet)')[:2500]}
-
-Focus your fix on an item from the Strategic Roadmap above.
-Pick the HIGHEST priority unchecked item in Phase 1 or Phase 2.
-Implementing master plan items is your PRIMARY directive.
 {constraint_section}
+{daily_section}
 {error_section}
 
 ## Task
@@ -453,21 +538,15 @@ Implementing master plan items is your PRIMARY directive.
 ## Available Tools
 {TOOL_HELP}
 
-## Live Website
-The branch website is deployed and live at: {ctx['url']}
-Use the deployed website as your primary source of truth.
-
 ## Output Format
-ALWAYS output valid JSON with a "tool" field.
-For "sed": {{"tool":"sed","file_path":"...","old_string":"...","new_string":"...","bug_description":"...","commit_message":"..."}}
-For "patch": {{"tool":"patch","file_path":"...","diff":"--- a/file\\n+++ b/file\\n@@ -1 +1 @@\\n-old\\n+new","bug_description":"...","commit_message":"..."}}
-For "write": {{"tool":"write","file_path":"...","new_content":"entire file","bug_description":"...","commit_message":"..."}}
-For "linter": {{"tool":"linter","file_path":"...","bug_description":"...","commit_message":"..."}}
-For "format": {{"tool":"format","file_path":"...","bug_description":"...","commit_message":"..."}}
-
-Remember: the code is at /home/ubuntu/datro. Files live under static/{branch}/. old_string MUST be exact text found in the file.
-"""
-    system = f"{system_prefix} Choose the best tool for the fix. Return ONLY valid JSON with a 'tool' field. No explanation, no markdown."
+Valid JSON only:
+- "tool": "sed"|"write"|"patch"
+- "file_path": relative to repo root (e.g. "static/{branch}/index.html")
+- "old_string" + "new_string" for sed
+- "new_content" for write
+- "bug_description": short summary
+- "commit_message": short commit message"""
+    system = f"{system_prefix} Return ONLY valid JSON."
     return system, prompt
 
 # ── LLM query functions ───────────────────────────────────────────────────────
@@ -475,7 +554,7 @@ Remember: the code is at /home/ubuntu/datro. Files live under static/{branch}/. 
 def query_parent_proxy(prompt, system, url_override=None):
     url = url_override or "https://www.financecheque.uk/api/proxy"
     payload = json.dumps({"message": f"{system}\n\n{prompt}", "chat_only": True})
-    cmd = ["curl", "-sf", "--max-time", "60", "-X", "POST", f"{url}?action=chat",
+    cmd = ["curl", "-sf", "--max-time", "120", "-X", "POST", f"{url}?action=chat",
            "-H", "Content-Type: application/json"]
     if MACHINE_ID:
         cmd += ["-H", f"X-Machine-ID: {MACHINE_ID}"]
@@ -829,6 +908,9 @@ def main():
     parser.add_argument("--learn-after", help="JSON fix to learn from")
     parser.add_argument("--apply", help="JSON fix to apply (tool-based)")
     parser.add_argument("--constraint", help="Constraint to inject into prompt (e.g., 'No console.log removal')")
+    parser.add_argument("--repo-path", help="Path to branch checkout directory for file scanning")
+    parser.add_argument("--daily-fixes", help="Comma-separated list of bug descriptions already applied today across all branches")
+    parser.add_argument("--daily-features", help="Comma-separated list of feature descriptions already applied today across all branches")
     args = parser.parse_args()
 
     # If --apply, apply the fix and exit
@@ -864,9 +946,13 @@ def main():
         print(f"[intel] Learned from fix for {args.branch}", file=sys.stderr)
         return
 
-    ctx = load_branch_context(args.branch)
+    ctx = load_branch_context(args.branch, args.repo_path or "")
     if args.constraint:
         ctx["constraint"] = args.constraint
+    if args.daily_fixes:
+        ctx["daily_fixes"] = args.daily_fixes
+    if args.daily_features:
+        ctx["daily_features"] = args.daily_features
     profile = get_profile(args.branch)
 
     if profile and profile.get("llm_rotation"):

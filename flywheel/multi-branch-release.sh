@@ -116,6 +116,56 @@ print(cur)
 " 2>/dev/null
 }
 
+# ── Daily Uniqueness (cross-branch dedup) ───────────────────────────────────
+
+DAILY_FILE="$AGENT_DIR/daily-unique.json"
+
+init_daily() {
+  local today
+  today=$(date '+%Y-%m-%d')
+  if [ -f "$DAILY_FILE" ]; then
+    local saved_date
+    saved_date=$(python3 -c "import json; print(json.load(open('$DAILY_FILE')).get('date',''))" 2>/dev/null || echo "")
+    if [ "$saved_date" != "$today" ]; then
+      echo "{\"date\":\"$today\",\"bugs\":[],\"features\":[]}" > "$DAILY_FILE"
+      log "Daily tracking reset for $today"
+    fi
+  else
+    echo "{\"date\":\"$today\",\"bugs\":[],\"features\":[]}" > "$DAILY_FILE"
+    log "Daily tracking created for $today"
+  fi
+}
+
+get_daily_fixes() {
+  python3 -c "
+import json
+d = json.load(open('$DAILY_FILE'))
+print(','.join(d.get('bugs', [])))
+" 2>/dev/null || echo ""
+}
+
+get_daily_features() {
+  python3 -c "
+import json
+d = json.load(open('$DAILY_FILE'))
+print(','.join(d.get('features', [])))
+" 2>/dev/null || echo ""
+}
+
+record_daily() {
+  local desc="$1" fix_type="$2"
+  python3 -c "
+import json, sys
+d = json.load(open('$DAILY_FILE'))
+key = 'features' if sys.argv[1] == 'ux' else 'bugs'
+desc = sys.argv[2]
+if desc not in d[key]:
+    d[key].append(desc)
+    open('$DAILY_FILE','w').write(json.dumps(d, indent=2))
+    print('OK')
+" "$fix_type" "$desc" 2>/dev/null | grep -q OK
+}
+
 # ── Rotating Fix Pool ────────────────────────────────────────────────────────
 # Each function: searches for applicable files under static/BRANCH/ in POOL_DIR, applies fix,
 # returns 0 if a change was made (sets POOL_DESC + POOL_FILE), 1 if not.
@@ -179,7 +229,10 @@ if c != orig:
 # ── Compliance Pool Functions ────────────────────────────────────────────────────
 
 fix_privacy_policy() {
-  local f="$POOL_DIR/privacy-policy.html"
+  local f="$POOL_DIR/static/$SELECTED_BRANCH/privacy-policy.html"
+  local dir
+  dir=$(dirname "$f")
+  mkdir -p "$dir" 2>/dev/null
   if [ ! -f "$f" ]; then
     cat > "$f" << 'POLICY'
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Privacy Policy</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}h2{margin-top:2rem}</style></head><body><h1>Privacy Policy</h1><p><em>Last updated: $(date '+%Y-%m-%d')</em></p><h2>Information We Collect</h2><p>We collect information you provide directly (name, email, messages) and automatically (IP address, browser type, pages visited via analytics cookies).</p><h2>How We Use Your Information</h2><p>To provide and improve our services, respond to inquiries, send updates with consent, and comply with legal obligations.</p><h2>Cookies</h2><p>We use essential cookies for site functionality and analytics cookies to understand usage. You can control cookies via your browser settings.</p><h2>Data Sharing</h2><p>We do not sell your data. We may share with trusted service providers under contract or as required by law.</p><h2>Your Rights</h2><p>You may request access, correction, or deletion of your data by contacting us.</p><h2>Contact</h2><p>Email: <a href="mailto:privacy@datro.xyz">privacy@datro.xyz</a></p></body></html>
@@ -190,7 +243,10 @@ POLICY
 }
 
 fix_terms_service() {
-  local f="$POOL_DIR/terms-of-service.html"
+  local f="$POOL_DIR/static/$SELECTED_BRANCH/terms-of-service.html"
+  local dir
+  dir=$(dirname "$f")
+  mkdir -p "$dir" 2>/dev/null
   if [ ! -f "$f" ]; then
     cat > "$f" << 'TERMS'
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Terms of Service</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}h2{margin-top:2rem}</style></head><body><h1>Terms of Service</h1><p><em>Last updated: $(date '+%Y-%m-%d')</em></p><h2>Acceptance</h2><p>By using this website, you accept these terms. If you do not agree, do not use the site.</p><h2>Use of Service</h2><p>You agree to use this site lawfully and not to disrupt its operation. We reserve the right to modify or discontinue the service at any time.</p><h2>Intellectual Property</h2><p>All content is owned by DATRO Consortium unless otherwise stated. Unauthorized reproduction is prohibited.</p><h2>Limitation of Liability</h2><p>We provide the service "as is" without warranty. We are not liable for damages arising from its use.</p><h2>Governing Law</h2><p>These terms are governed by the laws of England and Wales.</p><h2>Contact</h2><p>Email: <a href="mailto:legal@datro.xyz">legal@datro.xyz</a></p></body></html>
@@ -201,7 +257,10 @@ TERMS
 }
 
 fix_contact_page() {
-  local f="$POOL_DIR/contact.html"
+  local f="$POOL_DIR/static/$SELECTED_BRANCH/contact.html"
+  local dir
+  dir=$(dirname "$f")
+  mkdir -p "$dir" 2>/dev/null
   if [ ! -f "$f" ]; then
     cat > "$f" << 'CONTACT'
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Contact Us</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}form{display:flex;flex-direction:column;gap:1rem;margin-top:1rem}label{font-weight:600}input,textarea{padding:0.5rem;border:1px solid #ccc;border-radius:4px;font-size:1rem}button{padding:0.75rem;background:#0066cc;color:#fff;border:none;border-radius:4px;font-size:1rem;cursor:pointer}button:hover{background:#0052a3}</style></head><body><h1>Contact Us</h1><p>We'd love to hear from you. Fill out the form below or email us directly.</p><form action="#" method="POST"><label for="name">Name</label><input type="text" id="name" name="name" required><label for="email">Email</label><input type="email" id="email" name="email" required><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea><button type="submit">Send Message</button></form><p style="margin-top:2rem">Or email: <a href="mailto:contact@datro.xyz">contact@datro.xyz</a></p></body></html>
@@ -674,7 +733,7 @@ if c != orig:
 # ── AI + Pool Dispatch ───────────────────────────────────────────────────────
 
 try_ai_fix() {
-  local branch="$1" fix_type="$2" pass="$3"
+  local branch="$1" fix_type="$2" pass="$3" daily_fixes="$4" daily_features="$5"
   local max_self_correct=3
   local error_feedback=""
 
@@ -682,10 +741,13 @@ try_ai_fix() {
     log "AI pass $pass ($fix_type) for $branch${error_feedback:+ (self-correct attempt $((attempt+1)))}..."
 
     local result
+    local daily_args=""
+    [ -n "$daily_fixes" ] && daily_args="$daily_args --daily-fixes '$daily_fixes'"
+    [ -n "$daily_features" ] && daily_args="$daily_args --daily-features '$daily_features'"
     if [ -n "$error_feedback" ]; then
-      result=$(timeout 90 python3 "$INTEL" --branch "$branch" --type "$fix_type" --pass-number "$pass" --error-feedback "$error_feedback" 2>/dev/null) || true
+      result=$(timeout 120 python3 "$INTEL" --branch "$branch" --type "$fix_type" --pass-number "$pass" --repo-path "$POOL_DIR" $daily_args --error-feedback "$error_feedback" 2>/dev/null) || true
     else
-      result=$(timeout 60 python3 "$INTEL" --branch "$branch" --type "$fix_type" --pass-number "$pass" 2>/dev/null) || true
+      result=$(timeout 120 python3 "$INTEL" --branch "$branch" --type "$fix_type" --pass-number "$pass" --repo-path "$POOL_DIR" $daily_args 2>/dev/null) || true
     fi
     local exit_code=$?
 
@@ -810,7 +872,11 @@ try_pool_fix() {
 
 guaranteed_bug_fallback() {
   local f
-  for f in $(rg -l -U '\n\n\n+' -g '*.{ts,tsx,py,js,html,css,json,md,sh,xml,yml,yaml}' "$POOL_DIR" --no-heading 2>/dev/null | head -3); do
+  local target_dir="$POOL_DIR/static/$SELECTED_BRANCH"
+  if [ ! -d "$target_dir" ]; then
+    target_dir="$POOL_DIR"
+  fi
+  for f in $(rg -l -U '\n\n\n+' -g '*.{ts,tsx,py,js,html,css,json,md,sh,xml,yml,yaml}' "$target_dir" --no-heading 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
@@ -827,7 +893,11 @@ if c != orig:
 
 guaranteed_ux_fallback() {
   local f
-  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -1); do
+  local target_dir="$POOL_DIR/static/$SELECTED_BRANCH"
+  if [ ! -d "$target_dir" ]; then
+    target_dir="$POOL_DIR"
+  fi
+  for f in $(find "$target_dir" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -1); do
     if python3 -c "
 c = open('$f').read(); orig = c
 doctype = '<!DOCTYPE html>'
@@ -1082,89 +1152,120 @@ FIX_DESCRIPTIONS=""
 UX_DESCRIPTIONS=""
 POOL_DIR="$BRANCH_REPO"
 
-# ── 4 passes: 3 bug + 1 UX ──────────────────────────────────────────────────
+# ── 4 passes: 3 UNIQUE bugs + 1 novel UX feature ──────────────────────────
 # Strategy:
-#   Pass 1: AI (no restrictions) → pool → fallback  (AI finds anything)
-#   Pass 2: Pool only (skip AI)                      (guarantees pool diversity)
-#   Pass 3: Fallback only (skip AI, skip pool)       (guaranteed blank line clean)
-#   Pass 4: AI (UX, no restrictions) → pool → fallback
+#   Each bug pass accumulates daily_fixes so the AI never repeats.
+#   Each feature pass uses daily_features to guarantee novelty.
+#   Pool/fallback only engage as last resort (never primary).
+#   Daily uniqueness tracked across ALL branches.
 
-# ── Pass 1: AI unrestricted ──────────────────────────────────────────────────
+init_daily
+
+# ── Bug Pass 1: AI finds fix #1 ──────────────────────────────────────────────
+DAILY_FIXES=$(get_daily_fixes)
 POOL_DESC="" POOL_FILE=""
-if try_ai_fix "$SELECTED_BRANCH" "bug" "1"; then
+if try_ai_fix "$SELECTED_BRANCH" "bug" "1" "$DAILY_FIXES" ""; then
+  record_daily "$POOL_DESC" "bug"
   FIX_APPLIED=true
   FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
   update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "AI"
   learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "AI"
-elif try_pool_fix "bug"; then
-  FIX_APPLIED=true
-  FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
-  update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
-  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
-  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
-elif guaranteed_bug_fallback; then
-  FIX_APPLIED=true
-  FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
-  update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
-  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
-  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
 else
-  log "Pass 1: no fix found from any source"
+  # AI failed — try pool as backup
+  if try_pool_fix "bug"; then
+    record_daily "$POOL_DESC" "bug"
+    FIX_APPLIED=true
+    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
+    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
+  else
+    log "Bug pass 1: no fix from any source"
+  fi
 fi
 
-# ── Pass 2: Pool only (forces fix diversity through rotating pool) ───────────
+# ── Bug Pass 2: AI finds fix #2 (different from #1) ──────────────────────────
+DAILY_FIXES=$(get_daily_fixes)
 POOL_DESC="" POOL_FILE=""
-if try_pool_fix "bug"; then
+if try_ai_fix "$SELECTED_BRANCH" "bug" "2" "$DAILY_FIXES" ""; then
+  record_daily "$POOL_DESC" "bug"
   FIX_APPLIED=true
   FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
-  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
-  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
-elif guaranteed_bug_fallback; then
-  FIX_APPLIED=true
-  FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
-  update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
-  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
-  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
+  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "AI"
+  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "AI"
 else
-  log "Pass 2: no pool fix found"
+  if try_pool_fix "bug"; then
+    record_daily "$POOL_DESC" "bug"
+    FIX_APPLIED=true
+    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
+    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
+  else
+    log "Bug pass 2: no fix from any source"
+  fi
 fi
 
-# ── Pass 3: Guaranteed fallback only (always runs, catches blank lines/DOCTYPE) ──
+# ── Bug Pass 3: AI finds fix #3 (different from #1 and #2) ───────────────────
+DAILY_FIXES=$(get_daily_fixes)
 POOL_DESC="" POOL_FILE=""
-if guaranteed_bug_fallback; then
+if try_ai_fix "$SELECTED_BRANCH" "bug" "3" "$DAILY_FIXES" ""; then
+  record_daily "$POOL_DESC" "bug"
   FIX_APPLIED=true
   FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
-  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
-  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
+  update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "AI"
+  learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "AI"
 else
-  log "Pass 3: fallback found nothing (unlikely)"
+  if try_pool_fix "bug"; then
+    record_daily "$POOL_DESC" "bug"
+    FIX_APPLIED=true
+    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "POOL"
+    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
+  elif guaranteed_bug_fallback; then
+    record_daily "$POOL_DESC" "bug"
+    FIX_APPLIED=true
+    FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
+    update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
+    update_global_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "FALLBACK"
+    learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
+  else
+    log "Bug pass 3: no fix from any source"
+  fi
 fi
 
-# ── Pass 4 (UX): AI → pool → fallback ───────────────────────────────────────
+# ── UX Pass 4: Novel feature (unique for the day across ALL branches) ────────
+DAILY_FEATURES=$(get_daily_features)
 POOL_DESC="" POOL_FILE=""
-if try_ai_fix "$SELECTED_BRANCH" "ux" "4"; then
+if try_ai_fix "$SELECTED_BRANCH" "ux" "4" "" "$DAILY_FEATURES"; then
+  record_daily "$POOL_DESC" "ux"
   UX_APPLIED=true
   UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
   update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "AI"
   learn_fix "$SELECTED_BRANCH" "ux" "$POOL_DESC" "$POOL_FILE" "AI"
-elif try_pool_fix "ux"; then
-  UX_APPLIED=true
-  UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
-  update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
-  update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "POOL"
-  learn_fix "$SELECTED_BRANCH" "ux" "$POOL_DESC" "$POOL_FILE" "POOL"
-elif guaranteed_ux_fallback; then
-  UX_APPLIED=true
-  UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
-  update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
-  update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "FALLBACK"
-  learn_fix "$SELECTED_BRANCH" "ux" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
 else
-  log "No UX fix found from any source"
+  if try_pool_fix "ux"; then
+    record_daily "$POOL_DESC" "ux"
+    UX_APPLIED=true
+    UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
+    update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
+    update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "POOL"
+    learn_fix "$SELECTED_BRANCH" "ux" "$POOL_DESC" "$POOL_FILE" "POOL"
+  elif guaranteed_ux_fallback; then
+    record_daily "$POOL_DESC" "ux"
+    UX_APPLIED=true
+    UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
+    update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
+    update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "FALLBACK"
+    learn_fix "$SELECTED_BRANCH" "ux" "$POOL_DESC" "$POOL_FILE" "FALLBACK"
+  else
+    log "UX pass 4: no feature from any source"
+  fi
 fi
 
 FIX_COUNT=$(printf '%b' "$FIX_DESCRIPTIONS" | grep -c '^- ' || true)
