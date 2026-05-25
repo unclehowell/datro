@@ -275,5 +275,10 @@
         }
     });
 </script>
+
+<div id="cookie-consent" style="position:fixed;bottom:0;left:0;right:0;background:#333;color:#fff;padding:1rem;text-align:center;z-index:9999;font-family:-apple-system,sans-serif">
+  <span>We use cookies to improve your experience. <a href="/cookie-policy.html" style="color:#88bbff">Learn more</a>.</span>
+  <button onclick="this.parentElement.style.display='none';localStorage.setItem('cookies_accepted','true')" style="margin-left:1rem;padding:0.5rem 1rem;background:#4CAF50;color:#fff;border:none;border-radius:4px;cursor:pointer">Accept</button>
+</div>
 </body>
 </html>
