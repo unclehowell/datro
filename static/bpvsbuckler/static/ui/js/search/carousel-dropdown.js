@@ -30,7 +30,6 @@
                 $(".carousel-dropdown dd ul").hide();
         });
 
-
         $("#flagSwitcher").click(function() {
             $(".carousel-dropdown img.flag").toggleClass("flagvisibility");
         });

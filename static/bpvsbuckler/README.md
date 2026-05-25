@@ -12,7 +12,6 @@ c) we managed to stay under netlify's billing threshold by only publishing conte
    the websites and source code for the software updates frequently, but archived documents and large media files didn't update so often and so they were the types of content on the 2nd branch  
 d) netlify also overcame the issue of broken ssl certificates which happened when frame-forwarding was tried. 
 
-
 Before explaining the plan moving forward it's important to lay out the objectives here e.g. the goal:  
 
 1. everything on 1 domain name moving forward  
