@@ -1,5 +1,15 @@
 # Changelog
 
+## [archives-v0.0.0.07] - 2026-05-25
+
+### Fixed
+- fix(archives): Remove excessive blank lines
+- fix(archives): Remove excessive blank lines
+- fix(archives): Remove excessive blank lines
+
+### Changed
+- ux(archives): Add minimum tap target sizes for mobile UX
+
 ## [archives-v0.0.0.06] - 2026-05-24
 
 ### Fixed

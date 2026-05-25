@@ -44,7 +44,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 100);
     }
 
-
     function getLocalStorageItem(key, fallback = '') {
         try {
             const value = localStorage.getItem(key);
