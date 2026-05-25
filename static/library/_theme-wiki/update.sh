@@ -44,7 +44,6 @@ else
 
 	printf "\n\e[2;3;33m Update skipped (updated a few moments ago) \n\e[0m\n"
 
-
 fi
 
 echo "$timecalc" > ../../../_theme-wiki/datetime.log

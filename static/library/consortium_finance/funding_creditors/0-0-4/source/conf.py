@@ -20,17 +20,13 @@ language = None
 
 exclude_patterns = ['_build']
 
-
 pygments_style = None
-
 
 html_theme = 'sphinx_rtd_theme'
 
 html_static_path = ['_static']
 
-
 htmlhelp_basename = 'consortium_finance-funding_creditors'
-
 
 #latex_logo = '_static/logo.jpg'
 
@@ -42,19 +38,15 @@ latex_elements = {
 
 }
 
-
 latex_documents = [
     (master_doc, 'consortium_finance-funding_creditors.tex', u'DATRO Consortium',
      u'Author: Sion Buckler, Founder', 'manual'),
 ]
 
-
 man_pages = [
     (master_doc, 'consortium_finance-funding_creditors', u'DATRO Consortium Creditors',
      [author], 1)
 ]
-
-
 
 texinfo_documents = [
     (master_doc, 'consortium_finance-funding_creditors', u'DATRO Consortium Creditors',
@@ -62,8 +54,6 @@ texinfo_documents = [
      'manual'),
 ]
 
-
 epub_title = project
-
 
 epub_exclude_files = ['search.html']
