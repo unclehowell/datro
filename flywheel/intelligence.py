@@ -124,6 +124,8 @@ def load_branch_context(branch):
     ctx["issues"] = m.group(1).strip() if m else "unknown"
     m = re.search(r'## Past Fixes\s*\n(.+?)(?=\n## |\Z)', ctx.get("branch_context", ""), re.DOTALL)
     ctx["past_fixes"] = m.group(1).strip() if m else "(none)"
+    master_path = AGENT_DIR / "masters" / f"{branch}.md"
+    ctx["master_plan"] = master_path.read_text() if master_path.exists() else ""
     return ctx
 
 # ── Prompt builder ────────────────────────────────────────────────────────────
@@ -369,6 +371,7 @@ def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
     category_aliases = {
         "knowledge": "documentation",
         "advocacy": "community",
+        "archive": "documentation",
         "hub": "community",
         "tool": "meta",
         "docs": "documentation",
@@ -393,6 +396,7 @@ def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
 - Focus on ADDING missing professional features (structured data, meta tags, cookie consent, etc.)
 - If ALL checklist items are present, improve the QUALITY of an existing one
 - SEO improvements count as bug fixes"""
+<<<<<<< Updated upstream
         system_prefix = "You are a senior web engineer making websites professionally complete. Benchmark against industry standards, then implement the first missing requirement."
     elif fix_type == "blog":
         task = f"""Write a professional, engaging blog post about the subject matter of the website: {ctx['url']}.
@@ -410,6 +414,9 @@ def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
 - Do NOT include any JSON, markdown backticks, or meta-commentary
 - Return ONLY the HTML body content for the blog post"""
         system_prefix = "You are a professional content strategist and technical writer. Write an impactful blog post that reinforces the website's authority in its niche."
+=======
+        system_prefix = "You are a senior web engineer executing a strategic master plan. Benchmark against industry standards, follow the phased roadmap, and implement the highest-priority unchecked item."
+>>>>>>> Stashed changes
     else:
         task = f"""Improve the USER EXPERIENCE of {ctx['url']} based on professional UX standards for its category: {ctx.get('category', 'unknown')}.
 
@@ -458,6 +465,13 @@ Your fix MUST implement or move the site closer to achieving that specific roadm
 ## Past Fixes Applied
 {ctx['past_fixes']}
 {knowledge_section}
+
+## Master Plan — Strategic Vision
+{ctx.get('master_plan', '(No master plan yet)')[:2500]}
+
+Focus your fix on an item from the Strategic Roadmap above.
+Pick the HIGHEST priority unchecked item in Phase 1 or Phase 2.
+Implementing master plan items is your PRIMARY directive.
 {constraint_section}
 {error_section}
 

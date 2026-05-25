@@ -162,6 +162,7 @@ BUG_FIX_NAMES+=("fix_form_charset")
 BUG_FIX_NAMES+=("fix_404_title")
 BUG_FIX_NAMES+=("fix_privacy_policy")
 BUG_FIX_NAMES+=("fix_terms_service")
+<<<<<<< Updated upstream
 BUG_FIX_NAMES+=("fix_cookie_consent")
 BUG_FIX_NAMES+=("fix_contact_page")
 BUG_FIX_NAMES+=("fix_blog_launch")
@@ -638,6 +639,10 @@ if c != orig:
     fi
   done; return 1
 }
+=======
+BUG_FIX_NAMES+=("fix_contact_page")
+BUG_FIX_NAMES+=("fix_blog_launch")
+>>>>>>> Stashed changes
 
 fix_404_title() {
   local f
@@ -653,6 +658,7 @@ if c != orig:
   done; return 1
 }
 
+<<<<<<< Updated upstream
 fix_privacy_policy() {
   if [ -f "privacy-policy.html" ]; then return 1; fi
   cat > "privacy-policy.html" <<EOF
@@ -766,6 +772,63 @@ fix_blog_launch() {
 </html>
 EOF
   POOL_DESC="Initialize blog infrastructure"; POOL_FILE="blog/index.html"; return 0
+=======
+# ── Compliance Pool Functions ────────────────────────────────────────────────────
+
+fix_privacy_policy() {
+  local f="$POOL_DIR/privacy-policy.html"
+  if [ ! -f "$f" ]; then
+    cat > "$f" << 'POLICY'
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Privacy Policy</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}h2{margin-top:2rem}</style></head><body><h1>Privacy Policy</h1><p><em>Last updated: $(date '+%Y-%m-%d')</em></p><h2>Information We Collect</h2><p>We collect information you provide directly (name, email, messages) and automatically (IP address, browser type, pages visited via analytics cookies).</p><h2>How We Use Your Information</h2><p>To provide and improve our services, respond to inquiries, send updates with consent, and comply with legal obligations.</p><h2>Cookies</h2><p>We use essential cookies for site functionality and analytics cookies to understand usage. You can control cookies via your browser settings.</p><h2>Data Sharing</h2><p>We do not sell your data. We may share with trusted service providers under contract or as required by law.</p><h2>Your Rights</h2><p>You may request access, correction, or deletion of your data by contacting us.</p><h2>Contact</h2><p>Email: <a href="mailto:privacy@datro.xyz">privacy@datro.xyz</a></p></body></html>
+POLICY
+      POOL_DESC="Create Privacy Policy page for legal compliance"; POOL_FILE="$f"; return 0
+    fi
+  return 1
+}
+
+fix_terms_service() {
+  local f="$POOL_DIR/terms-of-service.html"
+  if [ ! -f "$f" ]; then
+    cat > "$f" << 'TERMS'
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Terms of Service</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}h2{margin-top:2rem}</style></head><body><h1>Terms of Service</h1><p><em>Last updated: $(date '+%Y-%m-%d')</em></p><h2>Acceptance</h2><p>By using this website, you accept these terms. If you do not agree, do not use the site.</p><h2>Use of Service</h2><p>You agree to use this site lawfully and not to disrupt its operation. We reserve the right to modify or discontinue the service at any time.</p><h2>Intellectual Property</h2><p>All content is owned by DATRO Consortium unless otherwise stated. Unauthorized reproduction is prohibited.</p><h2>Limitation of Liability</h2><p>We provide the service "as is" without warranty. We are not liable for damages arising from its use.</p><h2>Governing Law</h2><p>These terms are governed by the laws of England and Wales.</p><h2>Contact</h2><p>Email: <a href="mailto:legal@datro.xyz">legal@datro.xyz</a></p></body></html>
+TERMS
+      POOL_DESC="Create Terms of Service page for legal compliance"; POOL_FILE="$f"; return 0
+    fi
+  return 1
+}
+
+fix_contact_page() {
+  local f="$POOL_DIR/contact.html"
+  if [ ! -f "$f" ]; then
+    cat > "$f" << 'CONTACT'
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Contact Us</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}form{display:flex;flex-direction:column;gap:1rem;margin-top:1rem}label{font-weight:600}input,textarea{padding:0.5rem;border:1px solid #ccc;border-radius:4px;font-size:1rem}button{padding:0.75rem;background:#0066cc;color:#fff;border:none;border-radius:4px;font-size:1rem;cursor:pointer}button:hover{background:#0052a3}</style></head><body><h1>Contact Us</h1><p>We'd love to hear from you. Fill out the form below or email us directly.</p><form action="#" method="POST"><label for="name">Name</label><input type="text" id="name" name="name" required><label for="email">Email</label><input type="email" id="email" name="email" required><label for="message">Message</label><textarea id="message" name="message" rows="5" required></textarea><button type="submit">Send Message</button></form><p style="margin-top:2rem">Or email: <a href="mailto:contact@datro.xyz">contact@datro.xyz</a></p></body></html>
+CONTACT
+      POOL_DESC="Create Contact page with form and contact details"; POOL_FILE="$f"; return 0
+    fi
+  return 1
+}
+
+fix_blog_launch() {
+  local blog_dir="$POOL_DIR/blog"
+  local blog_index="$blog_dir/index.html"
+  mkdir -p "$blog_dir" 2>/dev/null
+  if [ ! -f "$blog_index" ]; then
+    cat > "$blog_index" << 'BLOGINDEX'
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Blog</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}.post{margin:1.5rem 0;padding:1rem;background:#f9f9f9;border-radius:6px}.post h2{margin:0 0 0.5rem}.post .date{color:#666;font-size:0.9rem}.post p{margin:0.5rem 0}.post a{color:#0066cc;text-decoration:none}.post a:hover{text-decoration:underline}</style></head><body><h1>Blog</h1><p>Latest news, updates, and insights.</p><div id="posts"></div><p style="margin-top:2rem"><a href="feed.xml">RSS Feed</a></p></body></html>
+BLOGINDEX
+    chmod 644 "$blog_index"
+  fi
+  local first_post="$blog_dir/welcome.html"
+  if [ ! -f "$first_post" ]; then
+    local site_name="${SELECTED_BRANCH:-Site}"
+    cat > "$first_post" << WELCOME
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0"><title>Welcome — $site_name Blog</title><style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}.meta{color:#666;font-size:0.9rem}</style></head><body><h1>Welcome</h1><p class="meta">$(date '+%Y-%m-%d') &middot; First post</p><p>Welcome to the official blog. This is the first post in what will be a series of updates, insights, and announcements about our work. Stay tuned for more content covering our projects, technology choices, and the vision behind what we're building.</p><p><a href="index.html">&larr; Back to blog</a></p></body></html>
+WELCOME
+    chmod 644 "$first_post"
+    POOL_DESC="Launch blog with welcome post and index page"; POOL_FILE="$blog_index"; return 0
+  fi
+  return 1
+>>>>>>> Stashed changes
 }
 
 # ── UX fix type definitions ──
@@ -791,6 +854,9 @@ UX_FIX_NAMES+=("ux_cls_fix")
 UX_FIX_NAMES+=("ux_type_scale")
 UX_FIX_NAMES+=("ux_spacing")
 UX_FIX_NAMES+=("ux_keyboard_nav")
+UX_FIX_NAMES+=("ux_cookie_consent")
+UX_FIX_NAMES+=("ux_social_links")
+UX_FIX_NAMES+=("ux_footer_legal")
 
 ux_viewport() {
   local f
@@ -1137,6 +1203,72 @@ if c != orig:
   done; return 1
 }
 
+ux_cookie_consent() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -5); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'cookie-consent' not in c and 'cookie' not in c.lower()[:2000]:
+    banner = '''
+<div id=\"cookie-consent\" style=\"position:fixed;bottom:0;left:0;right:0;background:#333;color:#fff;padding:1rem;text-align:center;z-index:9999;font-family:-apple-system,sans-serif\">
+  <span>We use cookies to improve your experience. <a href=\"/cookie-policy.html\" style=\"color:#88bbff\">Learn more</a>.</span>
+  <button onclick=\"this.parentElement.style.display='none';localStorage.setItem('cookies_accepted','true')\" style=\"margin-left:1rem;padding:0.5rem 1rem;background:#4CAF50;color:#fff;border:none;border-radius:4px;cursor:pointer\">Accept</button>
+</div>'''
+    c = re.sub(r'</body>', banner + '\n</body>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add cookie consent banner for GDPR compliance"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_social_links() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if 'twitter.com' not in c and 'github.com' not in c and 'linkedin.com' not in c:
+    social = '<div style=\"text-align:center;padding:1rem;margin-top:2rem\">'
+    social += '<a href=\"#\" style=\"margin:0 0.5rem;color:#1DA1F2;text-decoration:none\">X/Twitter</a>'
+    social += '<a href=\"#\" style=\"margin:0 0.5rem;color:#0A66C2;text-decoration:none\">LinkedIn</a>'
+    social += '<a href=\"#\" style=\"margin:0 0.5rem;color:#333;text-decoration:none\">GitHub</a>'
+    social += '</div>'
+    c = re.sub(r'</footer>', '</footer>' + social, c, count=1, flags=re.IGNORECASE)
+    if social not in c:
+        c = re.sub(r'</body>', social + '\n</body>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add social media links for audience engagement"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+ux_footer_legal() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+legal = '<footer style=\"text-align:center;padding:1rem;font-size:0.85rem;color:#666;border-top:1px solid #eee;margin-top:2rem\">'
+legal += '&copy; $(date +%Y) DATRO Consortium. '
+legal += '<a href=\"/privacy-policy.html\" style=\"color:#666;text-decoration:underline\">Privacy</a> &middot; '
+legal += '<a href=\"/terms-of-service.html\" style=\"color:#666;text-decoration:underline\">Terms</a> &middot; '
+legal += '<a href=\"/contact.html\" style=\"color:#666;text-decoration:underline\">Contact</a>'
+legal += '</footer>'
+if 'DATRO Consortium' not in c:
+    c = re.sub(r'</body>', legal + '\n</body>', c, count=1, flags=re.IGNORECASE)
+elif 'privacy-policy' not in c:
+    c = re.sub(r'</footer>', '', c, flags=re.IGNORECASE)
+    c = re.sub(r'</body>', legal + '\n</body>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add legal footer with privacy/terms/contact links"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
 # ── AI + Pool Dispatch ───────────────────────────────────────────────────────
 
 try_ai_fix() {
@@ -1276,14 +1408,14 @@ try_pool_fix() {
 
 guaranteed_bug_fallback() {
   local f
-  for f in $(rg -l '\n\n\n+' -g '*.{ts,tsx,py,js,html,css,json,md,sh,xml,yml,yaml}' "$POOL_DIR" --no-heading 2>/dev/null | head -3); do
+  for f in $(rg -l -U '\n\n\n+' -g '*.{ts,tsx,py,js,html,css,json,md,sh,xml,yml,yaml}' "$POOL_DIR" --no-heading 2>/dev/null | head -3); do
     if python3 -c "
 import re
 c = open('$f').read(); orig = c
-c = re.sub(r'\\n{3,}', '\\n\\n', c)
+c = re.sub(r'\n{3,}', '\n\n', c)
 if c != orig:
     open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
-      POOL_DESC="Remove duplicate blank lines (guaranteed fallback)"
+      POOL_DESC="Remove excessive blank lines"
       POOL_FILE="$f"
       return 0
     fi
@@ -1341,7 +1473,7 @@ update_global_memory() {
 learn_fix() {
   local branch="$1" fix_type="$2" desc="$3" file="$4" source="$5" tool="${6:-sed}" error_msg="${7:-}"
   local fix_json
-  fix_json=$(python3 -c "import json; o={'file_path':'$file','bug_description':'$desc','commit_message':'${fix_type}($branch): $desc','source':'$source','tool':'$tool'}; ${error_msg:+o['_error']='$error_msg'}; print(json.dumps(o))" 2>/dev/null)
+  fix_json=$(python3 -c "import json; o={'file_path':'$file','bug_description':'$desc','commit_message':'${fix_type}($branch): $desc','source':'$source','tool':'$tool'}${error_msg:+; o['_error']='$error_msg'}; print(json.dumps(o))" 2>/dev/null)
   if [ -n "$fix_json" ]; then
     timeout 10 python3 "$INTEL" --branch "$branch" --type "$fix_type" --learn-after "$fix_json" 2>/dev/null || true
     log "Profile learned from $source fix: $desc"
@@ -1736,6 +1868,89 @@ set_last_release "$SELECTED_BRANCH" "$(date +%s)"
 
 log "=== RELEASE COMPLETE: $NEW_TAG ==="
 log "https://github.com/$GITHUB_REPO/releases/"
+
+# ── Blog Post Generation ──────────────────────────────────────────────────────
+
+generate_blog_post() {
+  local blog_dir="$BRANCH_REPO/blog"
+  mkdir -p "$blog_dir" 2>/dev/null
+  local post_file="$blog_dir/$NEW_TAG.html"
+  if [ -f "$post_file" ]; then
+    log "Blog post already exists for $NEW_TAG"
+    return
+  fi
+  local branch_title
+  branch_title=$(echo "$SELECTED_BRANCH" | sed 's/-/ /g; s/\b\(.\)/\u\1/g')
+  local fix_summary
+  fix_summary=$(printf '%b' "$FIX_DESCRIPTIONS" | head -5 | sed 's/^- //' | tr '\n' '; ')
+  local ux_summary
+  ux_summary=$(printf '%b' "$UX_DESCRIPTIONS" | head -3 | sed 's/^- //' | tr '\n' '; ')
+  local full_summary="${fix_summary}${ux_summary:+ UX: ${ux_summary}}"
+  cat > "$post_file" << POSTEOF
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Release $NEW_TAG — $branch_title</title>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}.meta{color:#666;font-size:0.9rem}.changes{background:#f5f5f5;padding:1rem;border-radius:6px;margin:1rem 0}</style>
+</head><body>
+<h1>Release $NEW_TAG</h1>
+<p class="meta">$TODAY &middot; Release #$NEXT_NUM for $SELECTED_BRANCH</p>
+<p>This release includes the following improvements to the $branch_title website:</p>
+<div class="changes">
+$(printf '%b' "$FIX_DESCRIPTIONS" | sed 's/^- /<li>/; s/$/<\/li>/' | tr '\n' ' ')
+$(printf '%b' "$UX_DESCRIPTIONS" | sed 's/^- /<li>/; s/$/<\/li>/' | tr '\n' ' ')
+</div>
+<p>These changes are part of our ongoing effort to improve website quality, accessibility, and user experience.</p>
+<p>For full details, see the <a href="https://github.com/$GITHUB_REPO/releases/tag/$NEW_TAG">GitHub release</a>.</p>
+<p><a href="index.html">&larr; Back to blog</a></p>
+</body></html>
+POSTEOF
+  chmod 644 "$post_file"
+  log "Blog post created: $post_file"
+
+  # Update blog index — prepend new post link
+  local index_file="$blog_dir/index.html"
+  if [ -f "$index_file" ]; then
+    local post_entry="<div class=\"post\"><h2><a href=\"$NEW_TAG.html\">Release $NEW_TAG</a></h2><p class=\"date\">$TODAY</p><p>$full_summary</p></div>"
+    if grep -q '<div id="posts">' "$index_file"; then
+      python3 -c "
+p = open('$index_file').read()
+entry = '''$post_entry'''
+p = p.replace('<div id=\"posts\">', '<div id=\"posts\">' + entry)
+open('$index_file','w').write(p)
+" 2>/dev/null || true
+    fi
+    log "Blog index updated"
+  fi
+
+  # RSS feed
+  local feed_file="$blog_dir/feed.xml"
+  local site_url="https://${SELECTED_BRANCH}.datro.xyz"
+  cat > "$feed_file" << RSSEOF
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"><channel>
+<title>$branch_title Blog</title>
+<link>$site_url</link>
+<description>Latest releases and updates for $branch_title</description>
+<item>
+  <title>Release $NEW_TAG</title>
+  <link>$site_url/blog/$NEW_TAG.html</link>
+  <guid>$NEW_TAG</guid>
+  <pubDate>$(date -u '+%a, %d %b %Y %H:%M:%S +0000')</pubDate>
+  <description>$full_summary</description>
+</item>
+</channel></rss>
+RSSEOF
+  chmod 644 "$feed_file"
+  log "RSS feed updated"
+
+  # Commit blog files
+  cd "$BRANCH_REPO"
+  git add blog/ 2>/dev/null || true
+  git commit -m "docs($SELECTED_BRANCH): blog post for $NEW_TAG" 2>/dev/null || true
+  git push origin "$SELECTED_BRANCH" 2>&1 | tail -1 || log "WARN: blog push failed"
+}
+
+generate_blog_post
 
 # ── Verify & Prune ───────────────────────────────────────────────────────────
 
