@@ -1,5 +1,15 @@
 # Changelog
 
+## [cnei-v0.0.0.02] - 2026-05-25
+
+### Fixed
+- fix(cnei): Remove excessive blank lines
+- fix(cnei): Remove excessive blank lines
+- fix(cnei): Remove excessive blank lines
+
+### Changed
+- ux(cnei): Add container spacing for better content layout
+
 ## [cnei-v0.0.0.01] - 
 
 ### Changed
