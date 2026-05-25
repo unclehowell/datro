@@ -1,5 +1,15 @@
 # Changelog
 
+## [wayback-v0.0.0.05] - 2026-05-25
+
+### Fixed
+- fix(wayback): Remove excessive blank lines
+- fix(wayback): Remove excessive blank lines
+- fix(wayback): Remove excessive blank lines
+
+### Changed
+- ux(wayback): Add legal footer with privacy/terms/contact links
+
 ## [wayback-v0.0.0.04] - 2026-05-24
 
 ### Fixed

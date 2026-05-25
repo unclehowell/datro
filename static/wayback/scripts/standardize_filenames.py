@@ -146,7 +146,6 @@ CONTENT_SUBCATEGORY_PATTERNS = {
                         r'(?i)from:\s+\S+@'],
 }
 
-
 # ═══════════════════════════════════════════════════════════════════════
 #  Content extraction helpers
 # ═══════════════════════════════════════════════════════════════════════
@@ -156,11 +155,9 @@ def _cache_key(filepath: Path, suffix: str = "") -> str:
     raw = f"{filepath}:{stat.st_size}:{stat.st_mtime}:{suffix}"
     return hashlib.sha256(raw.encode()).hexdigest()[:16]
 
-
 def _cache_get(key: str) -> str | None:
     p = CACHE_DIR / key
     return p.read_text() if p.exists() else None
-
 
 def _cache_put(key: str, text: str) -> None:
     try:
@@ -168,13 +165,11 @@ def _cache_put(key: str, text: str) -> None:
     except Exception:
         pass
 
-
 def extract_txt(filepath: Path) -> str:
     try:
         return filepath.read_text(errors="replace")
     except Exception:
         return ""
-
 
 def extract_docx(filepath: Path) -> str:
     if not HAS_DOCX:
@@ -184,7 +179,6 @@ def extract_docx(filepath: Path) -> str:
         return "\n".join(p.text for p in d.paragraphs)
     except Exception:
         return ""
-
 
 def extract_doc(filepath: Path) -> str:
     """Extract text from legacy .doc via antiword."""
@@ -201,7 +195,6 @@ def extract_doc(filepath: Path) -> str:
         pass
     return ""
 
-
 def extract_pdf_text(filepath: Path) -> str:
     if not HAS_PDF:
         return ""
@@ -212,7 +205,6 @@ def extract_pdf_text(filepath: Path) -> str:
         return text
     except Exception:
         return ""
-
 
 def ocr_image(filepath: Path, timeout: int = 30) -> str:
     if not HAS_OCR:
@@ -231,7 +223,6 @@ def ocr_image(filepath: Path, timeout: int = 30) -> str:
         return text
     except Exception:
         return ""
-
 
 def ocr_pdf_pages(filepath: Path) -> str:
     """OCR each page of a scanned PDF."""
@@ -271,7 +262,6 @@ def ocr_pdf_pages(filepath: Path) -> str:
     except Exception:
         return ""
 
-
 def extract_content(filepath: Path) -> str:
     """Extract all readable text from a file using the best available method.
 
@@ -308,7 +298,6 @@ def extract_content(filepath: Path) -> str:
         except Exception:
             return ""
 
-
 # ═══════════════════════════════════════════════════════════════════════
 #  Date extraction
 # ═══════════════════════════════════════════════════════════════════════
@@ -343,7 +332,6 @@ _MONTH_MAP = {
     'jul': 7, 'aug': 8, 'sep': 9, 'oct': 10, 'nov': 11, 'dec': 12,
 }
 
-
 def _parse_email_date(text: str) -> str | None:
     """Parse Date: header from email content. Returns YYYY-MM-DD or None."""
     m = _EMAIL_DATE_RE.search(text)
@@ -357,7 +345,6 @@ def _parse_email_date(text: str) -> str | None:
         except ValueError:
             continue
     return None
-
 
 def _find_date_in_text(text: str) -> str | None:
     """Search for a date string in arbitrary text. Returns YYYY-MM-DD or None."""
@@ -384,7 +371,6 @@ def _find_date_in_text(text: str) -> str | None:
                     continue
     return None
 
-
 def _extract_pdf_metadata_date(filepath: Path) -> str | None:
     """Extract date from PDF document metadata."""
     if not HAS_PDF:
@@ -403,12 +389,10 @@ def _extract_pdf_metadata_date(filepath: Path) -> str | None:
         pass
     return None
 
-
 def _extract_date_from_filename(filename: str) -> str | None:
     """Extract the YYYY-MM-DD prefix from the current filename."""
     m = re.match(r'(\d{4}-\d{2}-\d{2})', filename)
     return m.group(1) if m else None
-
 
 def get_date(filepath: Path, content: str = "") -> str:
     """Determine the best date for a file following priority rules.
@@ -463,7 +447,6 @@ def get_date(filepath: Path, content: str = "") -> str:
 
     return "0000-00-00"
 
-
 # ═══════════════════════════════════════════════════════════════════════
 #  Subcategory determination
 # ═══════════════════════════════════════════════════════════════════════
@@ -503,7 +486,6 @@ def determine_subcategory(filepath: Path, content: str = "") -> str:
 
     return "evidence"
 
-
 # ═══════════════════════════════════════════════════════════════════════
 #  Language detection
 # ═══════════════════════════════════════════════════════════════════════
@@ -514,7 +496,6 @@ def detect_language(filename: str) -> str:
     if re.search(r'_cy_v0-0-1|_cy_v\d', filename):
         return "cy"
     return "en"
-
 
 # ═══════════════════════════════════════════════════════════════════════
 #  Core renaming logic
@@ -531,11 +512,9 @@ def build_new_name(filepath: Path, content: str = "") -> str:
 
     return f"{date}_{CATEGORY}-{subcat}_bpvsbuckler__{lang}_v0-0-1{ext}"
 
-
 def is_already_correct(filepath: Path, new_name: str) -> bool:
     """Return True if *filepath* already conforms to the target schema."""
     return filepath.name == new_name
-
 
 # ═══════════════════════════════════════════════════════════════════════
 #  File discovery
@@ -554,7 +533,6 @@ def collect_files() -> list[Path]:
                         continue
                     files.append(f)
     return files
-
 
 # ═══════════════════════════════════════════════════════════════════════
 #  Treeview JSON handling
@@ -575,7 +553,6 @@ def load_treeviews() -> dict[str, list]:
             except (json.JSONDecodeError, Exception):
                 treeviews[subdir] = []
     return treeviews
-
 
 def update_treeviews(
     renamed: list[tuple[Path, str]],
@@ -621,7 +598,6 @@ def update_treeviews(
 
     return total_updates
 
-
 # ═══════════════════════════════════════════════════════════════════════
 #  Duplicate handling
 # ═══════════════════════════════════════════════════════════════════════
@@ -660,7 +636,6 @@ def _disambiguate(
                 result.append((filepath, disambig))
 
     return result
-
 
 # ═══════════════════════════════════════════════════════════════════════
 #  Main
@@ -781,7 +756,6 @@ def main() -> None:
         print(f"\n  Dry-run complete.  Run with --execute to apply changes.")
 
     print("=" * 72)
-
 
 if __name__ == "__main__":
     main()

@@ -23,7 +23,6 @@ SUBDIRS = ["txt", "image", "pdf", "other", "video", "html", "script"]
 # Entries with these path values are structural/navigation placeholders to keep.
 PLACEHOLDER_PATHS = {"javascript:void(0)"}
 
-
 def clean_subdir_treeview(subdir: str) -> list:
     """Clean a subdirectory's _treeview.json, returning filtered entries."""
     treeview_path = ARCHIVES_DIR / subdir / "_treeview.json"
@@ -78,7 +77,6 @@ def clean_subdir_treeview(subdir: str) -> list:
         print(f"  [OK] {subdir}/_treeview.json: {len(kept)} entries, no changes")
 
     return kept
-
 
 def regenerate_root_treeview(subdir_entries: dict[str, list]) -> None:
     """Regenerate the root static/archives/_treeview.json from subdirectory entries."""
@@ -145,7 +143,6 @@ def regenerate_root_treeview(subdir_entries: dict[str, list]) -> None:
     print(f"  [UPDATE] Root _treeview.json: {len(root_entries)} entries "
           f"(active subdirs: {dirs_str})")
 
-
 def main():
     print("=" * 60)
     print("Regenerating _treeview.json files")
@@ -171,7 +168,6 @@ def main():
     print("\n" + "=" * 60)
     print("Done.")
     print("=" * 60)
-
 
 if __name__ == "__main__":
     main()
