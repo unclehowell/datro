@@ -3,7 +3,6 @@
 
 #unset CDPATH
 
-
 #.................................................
 #         DATRO Consortium - 2022 Copyleft
 #.................................................
@@ -19,7 +18,6 @@
 #................................................
 #                   datro.xyz
 #................................................
-
 
 sed -i 's/d:last-child{/d:last-child{white-space:pre-line;/g' build/html/_static/css/theme.css &&
 sed -i 's/<\/head>/<style>html{overflow-y:scroll;} ::-webkit-scrollbar{width:0px;background:transparent;} div#author-s{text-align:left;}<\/style><\/head>/g' build/html/*.html &&

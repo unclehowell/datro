@@ -54,7 +54,6 @@ else
 \e[0m
 "
 
-
 fi
 
 echo "$timecalc" > ./datetime.log
