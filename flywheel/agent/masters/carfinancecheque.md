@@ -1,26 +1,3 @@
-<<<<<<< Updated upstream
-## Vision
-The leading destination for PCP car finance refund claims, maximizing user conversion through an optimized, trust-based journey.
-
-## Current Status
-Specialized landing page for PCP refunds, needing significant conversion rate optimization (CRO) and UX refinement.
-
-## Strategic Roadmap
-- **Phase 1: Foundation**: Audit and optimize the claim submission funnel to reduce drop-offs.
-- **Phase 2: Professionalism**: Enhance trust signals through transparent processes and clear refund calculators.
-- **Phase 3: Growth**: Expand marketing reach through localized SEO and targeted content strategies.
-
-## Cornerstone Checklist
-- [ ] Privacy Policy
-- [ ] Cookie Consent
-- [ ] JSON-LD SEO
-- [ ] Contact Email
-- [ ] Social Media links
-- [ ] Blog per release
-
-## Future Direction
-Implementation of a real-time claim status tracker and automated document verification for faster processing.
-=======
 # Master Plan: carfinancecheque.datro.xyz
 
 ## Vision
@@ -72,4 +49,3 @@ DNS not configured — site entirely offline. No content, no infrastructure, no 
 - Landing page with car finance comparison tool or lead capture
 - Privacy, cookie, and terms pages published
 - Blog launched with minimum two finance-related posts
->>>>>>> Stashed changes

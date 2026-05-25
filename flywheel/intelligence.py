@@ -108,7 +108,6 @@ def load_branch_context(branch):
                        ("manifest", AGENT_DIR / "manifest.md"),
                        ("memory", AGENT_DIR / "memory.md"),
                        ("branch_context", AGENT_DIR / "branches" / f"{branch}.md"),
-                       ("master_plan", AGENT_DIR / "masters" / f"{branch}.md"),
                        ("aws_supervisor", AGENT_DIR / "aws-supervisor.md")]:
         if path.exists():
             ctx[name] = path.read_text()
@@ -396,27 +395,7 @@ def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
 - Focus on ADDING missing professional features (structured data, meta tags, cookie consent, etc.)
 - If ALL checklist items are present, improve the QUALITY of an existing one
 - SEO improvements count as bug fixes"""
-<<<<<<< Updated upstream
-        system_prefix = "You are a senior web engineer making websites professionally complete. Benchmark against industry standards, then implement the first missing requirement."
-    elif fix_type == "blog":
-        task = f"""Write a professional, engaging blog post about the subject matter of the website: {ctx['url']}.
-## Purpose of Site
-{ctx.get('branch_context', '')[:1000]}
-
-## Strategic Vision
-{ctx.get('master_plan', '')[:1000]}
-
-## Requirements
-- The post should be 300-500 words
-- It must be relevant to the site's niche ({ctx.get('category', 'unknown')})
-- Include a catchy title in an <h1> tag
-- Use proper HTML formatting (p, h2, ul, li)
-- Do NOT include any JSON, markdown backticks, or meta-commentary
-- Return ONLY the HTML body content for the blog post"""
-        system_prefix = "You are a professional content strategist and technical writer. Write an impactful blog post that reinforces the website's authority in its niche."
-=======
         system_prefix = "You are a senior web engineer executing a strategic master plan. Benchmark against industry standards, follow the phased roadmap, and implement the highest-priority unchecked item."
->>>>>>> Stashed changes
     else:
         task = f"""Improve the USER EXPERIENCE of {ctx['url']} based on professional UX standards for its category: {ctx.get('category', 'unknown')}.
 
@@ -448,13 +427,6 @@ def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
 ## Branch: {branch}
 ## Category: {ctx['category']}
 ## Stack: {ctx['stack']}
-
-## Master Plan — Strategic Vision
-{ctx.get('master_plan', '(No master plan yet)')[:2500]}
-
-## Strategic Priority
-Identify the HIGHEST priority unchecked item in the Strategic Roadmap above (Phase 1 or 2).
-Your fix MUST implement or move the site closer to achieving that specific roadmap item.
 
 ## Purpose
 {ctx.get('branch_context', '')[:2000]}
@@ -851,7 +823,7 @@ def extract_json_fix(text):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--branch", required=True)
-    parser.add_argument("--type", choices=["bug", "ux", "meta", "blog"], required=True)
+    parser.add_argument("--type", choices=["bug", "ux", "meta"], required=True)
     parser.add_argument("--pass-number", type=int, default=1)
     parser.add_argument("--error-feedback", help="Build error from previous fix attempt for self-correction")
     parser.add_argument("--learn-after", help="JSON fix to learn from")
@@ -935,10 +907,6 @@ def main():
             continue
 
         if result:
-            if args.type == "blog":
-                # Blog type returns raw text (HTML content)
-                print(result)
-                return
             fix = extract_json_fix(result)
             if fix:
                 validated = validate_fix_exists(fix, repo_dirs)
