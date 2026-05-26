@@ -1,5 +1,15 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.08] - 2026-05-26
+
+### Fixed
+- fix(bpvsbuckler): Create Contact page with form and contact details
+- fix(bpvsbuckler): Launch blog with welcome post and index page
+- fix(bpvsbuckler): Create Privacy Policy page for legal compliance
+
+### Changed
+- ux(bpvsbuckler): Add print-friendly styles for better UX
+
 ## [bpvsbuckler-v0.0.0.07] - 2026-05-25
 
 ### Fixed
