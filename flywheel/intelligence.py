@@ -536,14 +536,14 @@ tool=sed|write|patch file_path=relative path old_string+new_string|new_content b
 def query_parent_proxy(prompt, system, url_override=None):
     url = url_override or "https://www.financecheque.uk/api/proxy"
     payload = json.dumps({"message": f"{system}\n\n{prompt}", "chat_only": True})
-    cmd = ["curl", "-sf", "--max-time", "120", "-X", "POST", f"{url}?action=chat",
+    cmd = ["curl", "-sf", "--max-time", "15", "-X", "POST", f"{url}?action=chat",
            "-H", "Content-Type: application/json"]
     if MACHINE_ID:
         cmd += ["-H", f"X-Machine-ID: {MACHINE_ID}"]
     cmd += ["-d", payload]
     for attempt in range(3):
         try:
-            r = subprocess.run(cmd, capture_output=True, text=True, timeout=70)
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=20)
             if r.returncode == 0 and r.stdout:
                 data = json.loads(r.stdout)
                 content = data.get("reply", "") or data.get("choices", [{}])[0].get("message", {}).get("content", "")
@@ -552,7 +552,7 @@ def query_parent_proxy(prompt, system, url_override=None):
         except Exception:
             pass
         if attempt < 2:
-            time.sleep(3 * (attempt + 1))
+            time.sleep(2 * (attempt + 1))
     return None
 
 def query_local_proxy(prompt, system, url_override=None):
@@ -564,7 +564,7 @@ def query_local_proxy(prompt, system, url_override=None):
     req = urllib.request.Request(url, data=payload, method="POST")
     req.add_header("Content-Type", "application/json")
     try:
-        resp = urllib.request.urlopen(req, timeout=120)
+        resp = urllib.request.urlopen(req, timeout=30)
         data = json.loads(resp.read())
         content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
         return content
