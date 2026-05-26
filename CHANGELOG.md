@@ -1,5 +1,15 @@
 # Changelog
 
+## [datro-v0.0.0.08] - 2026-05-26
+
+### Fixed
+- fix(datro): Create Contact page with form and contact details
+- fix(datro): Launch blog with welcome post and index page
+- fix(datro): Add proper title to 404 page for SEO
+
+### Changed
+- ux(datro): Add focus-visible styles for keyboard navigation
+
 ## [datro-v0.0.0.07] - 2026-05-25
 
 ### Fixed
