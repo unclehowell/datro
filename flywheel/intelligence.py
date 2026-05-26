@@ -463,43 +463,30 @@ def build_prompt(branch, fix_type, ctx, profile, error_feedback=""):
     ) if master_items else "(All master plan items checked — improve quality of existing features)"
 
     if fix_type == "bug":
-        task = f"""## Branch Files (excerpts from checkout)
-{file_excerpts[:4000]}
+        task = f"""## Branch Files
+{file_excerpts[:500]}
 
-## Your Job
-1. Read the "Concrete Todos" list below — pick the HIGHEST priority unchecked item
-2. Scan the file excerpts to understand the current state
-3. Implement that missing feature (add privacy policy, cookie banner, structured data, meta tags, etc.)
-4. Use 'write' to create new files, 'sed' to modify existing ones
+## Task
+Read the Concrete Todos. Pick the HIGHEST priority unchecked item.
+Implement using 'write' (new file) or 'sed' (edit existing).
 
-## CRITICAL RULES
-- Do NOT remove console.log, trailing whitespace, or commented-out code
-- Do NOT fix blank lines — those are handled separately
-- Do NOT suggest the same fix as past releases or today's already-applied fixes
-- This MUST be a REAL bug fix or missing feature — NOT "remove blank lines"
-- You MUST output valid JSON with a real fix — not an explanation"""
-        system_prefix = "You are a senior full-stack engineer. Read the files, execute the master plan todo list. Output ONLY valid JSON."
+## Rules
+- Do NOT fix blank lines or remove console.log/comments
+- This MUST be a real missing feature — NOT blank line removal
+- Output ONLY valid JSON"""
+        system_prefix = "You are a senior full-stack engineer. Execute the master plan. Output ONLY valid JSON."
     else:
-        task = f"""## Branch Files (excerpts from checkout)
-{file_excerpts[:4000]}
+        task = f"""## Branch Files
+{file_excerpts[:500]}
 
-## Your Job
-Add a NOVEL feature that this website is missing.
-This must be a NEW CAPABILITY — not a tweak to existing code.
-Examples: AI chat bot, cookie consent banner, mobile hamburger menu,
-skip-to-content link, dark mode toggle, search functionality,
-breadcrumb navigation, back-to-top button, RSS feed link, etc.
+## Task
+Add ONE novel feature this website is missing.
+Examples: cookie consent, hamburger menu, skip-link, dark mode, search, breadcrumbs, RSS, chatbot.
 
-1. Scan the HTML/CSS files above to see what already exists
-2. Pick a feature the site does NOT have yet
-3. Implement it with 'write' (new file) or 'sed' (modify existing)
-
-## CRITICAL RULES
-- Must be a NEW feature, not a style tweak
-- Check that the feature doesn't already exist in the file excerpts
-- Output ONLY valid JSON with a real feature addition
-- Must be unique — NOT in today's already-applied features list above"""
-        system_prefix = "You are a senior UX engineer. Add one novel feature this site is missing. Output ONLY valid JSON."
+## Rules
+- Must be a NEW feature (check files above)
+- Output ONLY valid JSON"""
+        system_prefix = "You are a senior UX engineer. Add one novel feature. Output ONLY valid JSON."
 
     error_section = ""
     if error_feedback:
@@ -520,33 +507,27 @@ breadcrumb navigation, back-to-top button, RSS feed link, etc.
 ## Category: {ctx['category']}
 
 ## Purpose
-{ctx.get('branch_context', '')[:1500]}
+{ctx.get('branch_context', '')[:300]}
 
-## Concrete Todos (from Master Plan)
-Pick the HIGHEST priority unchecked item:
-{master_todo}
+## Todos
+{master_todo[:600]}
 
-{knowledge_section[:1500]}
+{knowledge_section[:400]}
 
-{constraint_section}
-{daily_section}
-{error_section}
+{constraint_section[:300]}
+{daily_section[:300]}
+{error_section[:300]}
 
 ## Task
-{task}
+{task[:1200]}
 
-## Available Tools
-{TOOL_HELP}
-
-## Output Format
-Valid JSON only:
-- "tool": "sed"|"write"|"patch"
-- "file_path": relative to repo root (e.g. "static/{branch}/index.html")
-- "old_string" + "new_string" for sed
-- "new_content" for write
-- "bug_description": short summary
-- "commit_message": short commit message"""
+## Format
+tool=sed|write|patch file_path=relative path old_string+new_string|new_content bug_description commit_message"""
     system = f"{system_prefix} Return ONLY valid JSON."
+    # Enforce total prompt length under proxy limit (2000 chars)
+    combined = system + "\n\n" + prompt
+    if len(combined) > 1900:
+        prompt = prompt[:1800]
     return system, prompt
 
 # ── LLM query functions ───────────────────────────────────────────────────────
