@@ -1,5 +1,15 @@
 # Changelog
 
+## [library-v0.0.0.08] - 2026-05-26
+
+### Fixed
+- fix(library): Launch blog with welcome post and index page
+- fix(library): Create Privacy Policy page for legal compliance
+- fix(library): Create Terms of Service page for legal compliance
+
+### Changed
+- ux(library): Add breadcrumb navigation structure for UX
+
 ## [Unreleased]
 
 
