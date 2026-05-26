@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>Beurcracy — BP vs Buckler</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: #0a0a08; color: #fafaf7; font-family: Georgia, serif; overflow-x: hidden; }
+nav { background: #1a1a1a; padding: 0.8rem 1rem; display: flex; gap: 0.4rem; flex-wrap: wrap; justify-content: center; }
+nav a { color: #fafaf7; text-decoration: none; font-size: 0.8rem; font-weight: bold; padding: 0.4rem 1rem; border-radius: 3px; }
+nav a:hover { background: #2d5016; }
+header { text-align: center; padding: 1.5rem 1rem; background: #1a1a1a; }
+header h1 { font-size: 1.8rem; margin-bottom: 0.3rem; }
+header p { font-size: 0.9rem; opacity: 0.6; font-style: italic; }
+#pinball-container { width: 100%; max-width: 800px; margin: 0 auto; position: relative; }
+canvas { display: block; width: 100%; height: auto; background: #0d0d0b; cursor: default; }
+#info { text-align: center; padding: 1rem; font-size: 0.85rem; color: #888; font-style: italic; }
+#score { text-align: center; font-size: 1.1rem; padding: 0.5rem; color: #fafaf7; }
+#score span { color: #2d5016; font-weight: bold; }
+.hidden { display: none; }
+#transport-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; align-items: center; justify-content: center; z-index: 100; flex-direction: column; gap: 1.5rem; }
+#transport-overlay.show { display: flex; }
+#transport-overlay h2 { color: #fafaf7; font-size: 1.5rem; text-align: center; }
+#transport-overlay p { color: #aaa; font-size: 0.9rem; text-align: center; max-width: 400px; }
+#transport-overlay a { display: inline-block; padding: 0.8rem 2rem; background: #2d5016; color: #fafaf7; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 1rem; transition: background 0.2s; }
+#transport-overlay a:hover { background: #3d7020; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="../">Home</a>
+  <a href="../beurcracy/">Beurcracy</a>
+  <a href="../beurcracy/icr.html">ICR</a>
+</nav>
+<header>
+  <h1>Beurcracy</h1>
+  <p>Pinball machine of escalation — you vs the system</p>
+</header>
+<div id="score">Escalations: <span id="score-val">0</span></div>
+<div id="pinball-container">
+  <canvas id="pinball" width="800" height="900"></canvas>
+</div>
+<div id="info">⬇️ Click to launch the ball · bumpers bounce you higher · ICR swallows you whole</div>
+<div id="transport-overlay">
+  <h2>You fell into the ICR hole</h2>
+  <p>The Independent Complaints Reviewer has taken your case. They will now review every step of your journey through Land Registry and Complaints.</p>
+  <a href="icr.html">Enter the ICR Process →</a>
+</div>
+<script>
+(function(){
+const canvas = document.getElementById("pinball");
+const ctx = canvas.getContext("2d");
+const scoreSpan = document.getElementById("score-val");
+const overlay = document.getElementById("transport-overlay");
+const W = 800, H = 900;
+let score = 0;
+let gameRunning = false;
+let animId = null;
+
+// ── Audio ──
+const AudioCtx = window.AudioContext || window.webkitAudioContext;
+let audioCtx = null;
+function initAudio() { if (!audioCtx) audioCtx = new AudioCtx(); }
+function playNote(freq, duration, type, vol) {
+  initAudio();
+  try {
+    const o = audioCtx.createOscillator();
+    const g = audioCtx.createGain();
+    o.type = type || "square";
+    o.frequency.value = freq;
+    g.gain.setValueAtTime(vol||0.08, audioCtx.currentTime);
+    g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + duration);
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(); o.stop(audioCtx.currentTime + duration);
+  } catch(e){}
+}
+function playBounce() { playNote(220 + Math.random()*110, 0.08, "square", 0.05); }
+function playBumper() { playNote(440 + Math.random()*220, 0.12, "square", 0.06); }
+function playHole() { playNote(110, 0.4, "sawtooth", 0.08); playNote(80, 0.6, "sawtooth", 0.06); }
+function playLaunch() {
+  [220, 330, 440, 550].forEach((f,i) => setTimeout(()=>playNote(f,0.1,"square",0.04), i*60));
+}
+// Arcade background loop
+let bgInterval = null;
+function startBgMusic() {
+  if (bgInterval) return;
+  const notes = [131, 165, 196, 262, 330, 392, 523];
+  let ni = 0;
+  bgInterval = setInterval(() => {
+    playNote(notes[ni % notes.length], 0.15, "triangle", 0.02);
+    playNote(notes[(ni+3) % notes.length] * 2, 0.08, "square", 0.01);
+    ni++;
+  }, 400);
+}
+function stopBgMusic() { if (bgInterval) { clearInterval(bgInterval); bgInterval = null; } }
+
+// ── Ball ──
+const ball = {
+  x: 400, y: 820, r: 8,
+  vx: 0, vy: 0,
+  launched: false,
+  inHole: false
+};
+
+// ── Bumpers ──
+const bumpers = [
+  { x: 400, y: 120, r: 45, label: "Land Registry", color: "#2d5016", hit: false },
+  { x: 250, y: 280, r: 40, label: "Complaints\nPhase 1", color: "#6b3a1f", hit: false },
+  { x: 550, y: 280, r: 40, label: "Complaints\nPhase 2", color: "#8b4c2a", hit: false },
+  { x: 160, y: 440, r: 35, label: "Stage 3\nReview", color: "#4a2d70", hit: false },
+  { x: 640, y: 440, r: 35, label: "Legal\nChallenge", color: "#702d2d", hit: false },
+  { x: 300, y: 560, r: 32, label: "MP\nReferral", color: "#2d5070", hit: false },
+  { x: 500, y: 560, r: 32, label: "Ombudsman", color: "#50702d", hit: false },
+];
+
+const hole = { x: 400, y: 700, r: 30, label: "ICR", color: "#1a1a1a" };
+
+// ── Flipper physics ──
+const flippers = [
+  { x: 350, y: 860, len: 60, angle: 0, active: false, side: "left" },
+  { x: 450, y: 860, len: 60, angle: 0, active: false, side: "right" },
+];
+
+// ── Physics ──
+const GRAVITY = 0.15;
+const FRICTION = 0.99;
+const BOUNCE = 0.7;
+
+function circleCollision(ball, bumper) {
+  const dx = ball.x - bumper.x;
+  const dy = ball.y - bumper.y;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  return dist < ball.r + bumper.r;
+}
+
+function resolveCircleCollision(ball, bumper) {
+  const dx = ball.x - bumper.x;
+  const dy = ball.y - bumper.y;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  if (dist === 0) return;
+  const nx = dx / dist;
+  const ny = dy / dist;
+  const overlap = ball.r + bumper.r - dist;
+  ball.x += nx * overlap;
+  ball.y += ny * overlap;
+  const dot = ball.vx * nx + ball.vy * ny;
+  if (dot < 0) { // moving towards
+    ball.vx -= 2 * dot * nx;
+    ball.vy -= 2 * dot * ny;
+    ball.vx *= BOUNCE;
+    ball.vy *= BOUNCE;
+    ball.vy -= 1.5; // bumper kick upward
+    // Add some randomness
+    ball.vx += (Math.random() - 0.5) * 2;
+    score++;
+    return true;
+  }
+  return false;
+}
+
+function isInHole(ball, hole) {
+  const dx = ball.x - hole.x;
+  const dy = ball.y - hole.y;
+  return Math.sqrt(dx*dx + dy*dy) < hole.r - 5;
+}
+
+// ── Update ──
+function update() {
+  if (!gameRunning || ball.inHole) return;
+
+  // Gravity
+  ball.vy += GRAVITY;
+
+  // Friction
+  ball.vx *= FRICTION;
+  ball.vy *= FRICTION;
+
+  // Move
+  ball.x += ball.vx;
+  ball.y += ball.vy;
+
+  // Walls
+  if (ball.x - ball.r < 0) { ball.x = ball.r; ball.vx *= -0.5; }
+  if (ball.x + ball.r > W) { ball.x = W - ball.r; ball.vx *= -0.5; }
+  if (ball.y - ball.r < 0) { ball.y = ball.r; ball.vy *= -0.5; }
+  if (ball.y + ball.r > H) { ball.y = H - ball.r; ball.vy *= -0.8; }
+
+  // Bumper collisions
+  for (const b of bumpers) {
+    if (circleCollision(ball, b)) {
+      if (resolveCircleCollision(ball, b)) {
+        b.hit = true;
+        setTimeout(() => b.hit = false, 200);
+        playBumper();
+        scoreSpan.textContent = score;
+      }
+    }
+  }
+
+  // Hole check
+  if (isInHole(ball, hole)) {
+    ball.inHole = true;
+    ball.vx = 0;
+    ball.vy = 0;
+    playHole();
+    setTimeout(() => {
+      overlay.classList.add("show");
+    }, 800);
+  }
+
+  // Drain (bottom)
+  if (ball.y > H - 10) {
+    if (ball.launched) {
+      // Respawn
+      ball.x = 400; ball.y = 820;
+      ball.vx = 0; ball.vy = 0;
+      ball.launched = false;
+      ball.inHole = false;
+    }
+  }
+}
+
+// ── Draw ──
+function draw() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Background grid
+  ctx.strokeStyle = "#1a1a1a";
+  ctx.lineWidth = 0.5;
+  for (let x = 0; x < W; x += 40) {
+    ctx.beginPath(); ctx.moveTo(x, 0); ctx.lineTo(x, H); ctx.stroke();
+  }
+  for (let y = 0; y < H; y += 40) {
+    ctx.beginPath(); ctx.moveTo(0, y); ctx.lineTo(W, y); ctx.stroke();
+  }
+
+  // Rails / guides
+  ctx.strokeStyle = "#2a2a28";
+  ctx.lineWidth = 3;
+  ctx.beginPath();
+  ctx.moveTo(20, 50); ctx.lineTo(20, 850);
+  ctx.lineTo(100, 850); ctx.stroke();
+  ctx.beginPath();
+  ctx.moveTo(780, 50); ctx.lineTo(780, 850);
+  ctx.lineTo(700, 850); ctx.stroke();
+
+  // Launch lane
+  ctx.fillStyle = "#2a2a28";
+  ctx.fillRect(380, 810, 40, 60);
+  ctx.strokeStyle = "#3a3a38";
+  ctx.lineWidth = 1;
+  ctx.strokeRect(380, 810, 40, 60);
+
+  // Bumpers
+  for (const b of bumpers) {
+    ctx.beginPath();
+    ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
+    const grad = ctx.createRadialGradient(b.x - b.r*0.3, b.y - b.r*0.3, 2, b.x, b.y, b.r);
+    if (b.hit) {
+      grad.addColorStop(0, "#fff");
+      grad.addColorStop(0.5, b.color);
+    } else {
+      grad.addColorStop(0, b.color);
+      grad.addColorStop(1, "#0a0a08");
+    }
+    ctx.fillStyle = grad;
+    ctx.fill();
+    ctx.strokeStyle = "#fafaf7";
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // Label
+    ctx.fillStyle = "#fafaf7";
+    ctx.font = "bold 11px Georgia, serif";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    const lines = b.label.split("\n");
+    lines.forEach((line, i) => {
+      ctx.fillText(line, b.x, b.y - (lines.length-1)*6 + i*12);
+    });
+  }
+
+  // Hole (ICR)
+  ctx.beginPath();
+  ctx.arc(hole.x, hole.y, hole.r, 0, Math.PI * 2);
+  const holeGrad = ctx.createRadialGradient(hole.x, hole.y-5, 2, hole.x, hole.y, hole.r);
+  holeGrad.addColorStop(0, "#000");
+  holeGrad.addColorStop(0.7, "#111");
+  holeGrad.addColorStop(1, "#333");
+  ctx.fillStyle = holeGrad;
+  ctx.fill();
+  ctx.strokeStyle = "#555";
+  ctx.lineWidth = 2;
+  ctx.stroke();
+
+  // Hole label
+  ctx.fillStyle = "#ff4444";
+  ctx.font = "bold 14px Georgia, serif";
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+  ctx.fillText(hole.label, hole.x, hole.y);
+  // Click hint
+  ctx.fillStyle = "#ff444466";
+  ctx.font = "11px Georgia, serif";
+  ctx.fillText("(click to enter)", hole.x, hole.y + 18);
+
+  // Ball
+  if (!ball.inHole) {
+    const ballGrad = ctx.createRadialGradient(ball.x-2, ball.y-2, 1, ball.x, ball.y, ball.r);
+    ballGrad.addColorStop(0, "#fff");
+    ballGrad.addColorStop(0.3, "#ddd");
+    ballGrad.addColorStop(1, "#888");
+    ctx.beginPath();
+    ctx.arc(ball.x, ball.y, ball.r, 0, Math.PI * 2);
+    ctx.fillStyle = ballGrad;
+    ctx.fill();
+  }
+
+  // Flippers
+  for (const f of flippers) {
+    ctx.beginPath();
+    const angle = f.active ? (f.side === "left" ? -0.4 : 0.4) : 0;
+    const fx = f.x + Math.cos(Math.PI/2 + angle) * f.len;
+    const fy = f.y + Math.sin(Math.PI/2 + angle) * f.len;
+    ctx.moveTo(f.x, f.y);
+    ctx.lineTo(fx, fy);
+    ctx.strokeStyle = "#fafaf7";
+    ctx.lineWidth = 8;
+    ctx.lineCap = "round";
+    ctx.stroke();
+  }
+
+  // Arcade-style border
+  ctx.strokeStyle = "#2d5016";
+  ctx.lineWidth = 4;
+  ctx.strokeRect(2, 2, W-4, H-4);
+}
+
+// ── Game loop ──
+function gameLoop() {
+  update();
+  draw();
+  if (gameRunning) animId = requestAnimationFrame(gameLoop);
+}
+
+// ── Launch ball ──
+function launchBall() {
+  if (ball.launched || ball.inHole) return;
+  ball.launched = true;
+  ball.vy = -12;
+  ball.vx = (Math.random() - 0.5) * 2;
+  playLaunch();
+  startBgMusic();
+}
+
+// ── Input ──
+canvas.addEventListener("click", (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = W / rect.width;
+  const scaleY = H / rect.height;
+  const mx = (e.clientX - rect.left) * scaleX;
+  const my = (e.clientY - rect.top) * scaleY;
+
+  // Check ICR hole click
+  const dx = mx - hole.x;
+  const dy = my - hole.y;
+  if (Math.sqrt(dx*dx + dy*dy) < hole.r + 10) {
+    if (ball.inHole) {
+      overlay.classList.add("show");
+    }
+    return;
+  }
+
+  if (!ball.launched) {
+    launchBall();
+  }
+});
+
+canvas.addEventListener("mousedown", (e) => {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = W / rect.width;
+  const scaleY = H / rect.height;
+  const mx = (e.clientX - rect.left) * scaleX;
+  const my = (e.clientY - rect.top) * scaleY;
+  if (my > 820) {
+    if (mx < 400) flippers[0].active = true;
+    else flippers[1].active = true;
+  }
+});
+
+canvas.addEventListener("mouseup", () => { flippers[0].active = false; flippers[1].active = false; });
+canvas.addEventListener("mouseleave", () => { flippers[0].active = false; flippers[1].active = false; });
+
+// Touch
+canvas.addEventListener("touchstart", (e) => {
+  e.preventDefault();
+  const touch = e.touches[0];
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = W / rect.width;
+  const scaleY = H / rect.height;
+  const mx = (touch.clientX - rect.left) * scaleX;
+  const my = (touch.clientY - rect.top) * scaleY;
+
+  const dx = mx - hole.x;
+  const dy = my - hole.y;
+  if (Math.sqrt(dx*dx + dy*dy) < hole.r + 10) {
+    if (ball.inHole) overlay.classList.add("show");
+    return;
+  }
+
+  if (!ball.launched) { launchBall(); return; }
+  if (my > 800) {
+    if (mx < 400) flippers[0].active = true;
+    else flippers[1].active = true;
+  }
+}, {passive: false});
+canvas.addEventListener("touchend", (e) => { e.preventDefault(); flippers[0].active = false; flippers[1].active = false; }, {passive: false});
+
+// Keyboard
+document.addEventListener("keydown", (e) => {
+  if (e.key === " " || e.key === "Enter") { if (!ball.launched) launchBall(); }
+  if (e.key === "ArrowLeft") flippers[0].active = true;
+  if (e.key === "ArrowRight") flippers[1].active = true;
+});
+document.addEventListener("keyup", (e) => {
+  if (e.key === "ArrowLeft") flippers[0].active = false;
+  if (e.key === "ArrowRight") flippers[1].active = false;
+});
+
+// Overlay close
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && overlay.classList.contains("show")) {
+    overlay.classList.remove("show");
+  }
+});
+
+// ── Init ──
+gameRunning = true;
+gameLoop();
+})();
+</script>
+</body>
+</html>
