@@ -966,6 +966,7 @@ def main():
     else:
         rotation = [
             {"name": "financecheque", "url": "https://www.financecheque.uk/api/proxy", "type": "parent"},
+            {"name": "local_proxy", "url": "http://localhost:6000/v1/chat/completions", "type": "local"},
             {"name": "child_proxy", "url": "http://172.31.29.216:4001", "type": "child"},
             {"name": "openrouter", "type": "openrouter"},
             {"name": "gemini", "type": "gemini"},
