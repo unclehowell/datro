@@ -5,14 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>AWS Flywheel — Automated Multi-Branch Release System</title>
 <style>
-:root { --bg: #0d1117; --fg: #c9d1d9; --accent: #58a6ff; --green: #3fb950; --orange: #d29922; --red: #da3633; --border: #30363d; --code-bg: #161b22; }
+:root { --bg: #0d1117; --fg: #c9d1d9; --accent: #58a6ff; --green: #3fb950; --orange: #d29922; --red: #da3633; --purple: #bc8cff; --cyan: #39d2c0; --border: #30363d; --code-bg: #161b22; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
 body { font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Helvetica,Arial,sans-serif; background: var(--bg); color: var(--fg); line-height: 1.6; padding: 2rem; }
-.container { max-width: 960px; margin: 0 auto; }
+.container { max-width: 1100px; margin: 0 auto; }
 h1 { font-size: 2rem; margin-bottom: 0.5rem; color: #f0f6fc; }
 h2 { font-size: 1.5rem; margin: 2rem 0 1rem; color: #f0f6fc; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
 h3 { font-size: 1.2rem; margin: 1.5rem 0 0.75rem; color: #f0f6fc; }
-h4 { font-size: 1.05rem; margin: 1rem 0 0.5rem; color: #f0f6fc; }
 p, li { margin-bottom: 0.5rem; }
 ul, ol { padding-left: 1.5rem; margin-bottom: 1rem; }
 a { color: var(--accent); text-decoration: none; }
@@ -29,269 +28,348 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 .badge-amber { background: var(--orange); }
 .badge-red { background: var(--red); }
 .badge-blue { background: #1f6feb; }
+.badge-purple { background: var(--purple); }
+.badge-cyan { background: var(--cyan); color: #000; }
+
 .flow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: 1rem 0; }
-.flow-step { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 0.85rem; }
+.flow-step { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.8rem; font-size: 0.85rem; white-space: nowrap; }
 .flow-arrow { color: #8b949e; font-size: 1.2rem; }
+
+.hflow { display: flex; flex-direction: column; gap: 0; margin: 2rem 0; }
+.hrow { display: flex; align-items: center; gap: 0; flex-wrap: nowrap; }
+.hcell { background: var(--code-bg); border: 1px solid var(--border); padding: 0.5rem 0.8rem; font-size: 0.8rem; min-width: 60px; text-align: center; position: relative; }
+.hcell + .hcell { border-left: none; }
+.hcell:first-child { border-radius: 6px 0 0 6px; }
+.hcell:last-child { border-radius: 0 6px 6px 0; }
+.harrow { color: #8b949e; padding: 0 0.3rem; font-size: 1.1rem; flex-shrink: 0; }
+
+.vflow { display: flex; flex-direction: column; gap: 0; margin: 1.5rem 0; }
+.vrow { display: flex; align-items: stretch; }
+.vlabel { min-width: 110px; padding: 0.5rem 0.8rem; font-size: 0.8rem; font-weight: 600; color: var(--accent); border-right: 2px solid var(--border); display: flex; align-items: center; }
+.vsteps { display: flex; flex-wrap: wrap; gap: 0.25rem; padding: 0.5rem; align-items: center; }
+.vsteps .tag { font-size: 0.75rem; }
+.varrow { color: #8b949e; font-size: 1rem; padding: 0 0.2rem; }
+
+.diagram { display: flex; flex-direction: column; gap: 0.5rem; margin: 1.5rem 0; }
+.drow { display: flex; align-items: center; gap: 0; flex-wrap: wrap; }
+.dbox { background: var(--code-bg); border: 1px solid var(--border); border-radius: 6px; padding: 0.4rem 0.6rem; font-size: 0.75rem; text-align: center; white-space: nowrap; }
+.darr { color: #8b949e; font-size: 1rem; padding: 0 0.3rem; }
+.dfail { color: var(--red); font-size: 0.7rem; font-weight: 600; }
+.dpass { color: var(--green); font-size: 0.7rem; font-weight: 600; }
+
+.pass-box { background: var(--code-bg); border: 1px solid var(--border); border-radius: 8px; padding: 1rem; margin: 0.75rem 0; }
+.pass-box h4 { margin: 0 0 0.5rem; color: var(--accent); }
+.fallback-chain { display: flex; flex-wrap: wrap; gap: 0.3rem; align-items: center; margin: 0.5rem 0; }
+.fb { font-size: 0.78rem; padding: 0.2em 0.5em; border-radius: 4px; border: 1px solid var(--border); background: var(--code-bg); }
+.fb-ok { border-color: var(--green); color: var(--green); }
+.fb-fail { border-color: var(--red); color: var(--red); }
+.fb-pri { border-color: var(--accent); color: var(--accent); }
+.fb-arr { color: #8b949e; font-size: 0.9rem; }
+
+.highlight { background: #1f6feb15; border-left: 3px solid var(--accent); padding: 0.5rem 1rem; margin: 0.75rem 0; border-radius: 0 4px 4px 0; font-size: 0.9rem; }
 </style>
 </head>
 <body>
 <div class="container">
 
 <h1>AWS Flywheel</h1>
-<p>Autonomous multi-branch release engine — 3 bug + 1 UX fix per branch, every hour, self-learning, self-healing.</p>
+<p>Autonomous multi-branch release engine — 3 bug + 1 UX fix per branch, every hour, via AI-first multi-provider fallback chain with rotating pool safety net. Self-learning, self-healing, cross-branch daily dedup.</p>
 
 <p>
   <span class="badge badge-green">21 branches</span>
   <span class="badge badge-amber">24h cooldown</span>
   <span class="badge badge-red">1 release/hour</span>
-  <span class="badge badge-blue">253+ releases</span>
+  <span class="badge badge-purple">303 releases</span>
+  <span class="badge badge-cyan">6 AI providers</span>
 </p>
 
-<p>Full source: <a href="https://github.com/unclehowell/datro/tree/cnei/flywheel">github.com/unclehowell/datro/tree/cnei/flywheel</a></p>
+<p>Source: <a href="https://github.com/unclehowell/datro/tree/cnei/flywheel">github.com/unclehowell/datro/tree/cnei/flywheel</a></p>
 
-<h2>Architecture</h2>
+<h2>Workflow</h2>
 
-<p>A cron job (<code>0 * * * *</code>) on an AWS EC2 instance selects one branch via round-robin rotation, runs 4 automated fix passes against its working tree, commits and tags, and publishes a GitHub release with structured notes. An executive-coach meta-review runs separately at 00:00 UTC daily on a command machine, reviewing AWS output and self-improving the flywheel code.</p>
+<p>A cron job (<code>0 * * * *</code>) on an AWS EC2 instance (1 vCPU, 1 GB RAM) runs the flywheel once per hour. Each run produces exactly one release for one branch — 3 unique bug fixes + 1 novel UX feature — across 21 Cloudflare-deployed websites.</p>
 
-<div class="flow">
-  <span class="flow-step">Cron (HH:00)</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Select branch</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Pass 1: AI → Pool → Fallback</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Pass 2: Pool only</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Pass 3: Fallback guaranteed</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Pass 4 UX: AI → Pool → Fallback</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Build validate → Commit → Tag → Push</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">GitHub Release</span>
-  <span class="flow-arrow">→</span>
-  <span class="flow-step">Cloudflare Deploy</span>
+<!-- ── Workflow Diagram ── -->
+<div style="background:var(--code-bg); border:1px solid var(--border); border-radius:10px; padding:1.5rem; margin:1.5rem 0; overflow-x:auto;">
+
+<div class="diagram">
+  <div class="drow"><span class="dbox" style="background:#1f6feb22;border-color:var(--accent);font-weight:600;">⏰ Cron HH:00</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Lockfile check</span><span class="darr">→</span><span class="dbox" style="color:var(--red)">Exit if locked</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Sync timestamps from GitHub</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox" style="font-weight:600;">Select branch</span><span class="darr">→</span><span class="dbox">Round-robin rotation_index → cooldown check</span></div>
+  <div class="drow"><span class="darr">↓ all on cooldown?</span><span class="dbox" style="color:var(--orange)">Sleep until nearest eligible</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Git checkout branch</span><span class="darr">→</span><span class="dbox">git reset --hard origin/BRANCH</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox" style="background:#3fb95022;border-color:var(--green);font-weight:600;">4 Fix Passes</span></div>
 </div>
 
-<h3>Components</h3>
+<div style="display:flex; flex-direction:column; gap:0.75rem; margin:1rem 0;">
+
+<!-- Pass 1 -->
+<div style="border:1px solid #3fb95044; border-radius:8px; padding:0.75rem; background:#0d1117;">
+  <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+    <span class="badge badge-green">Pass 1</span>
+    <span style="font-weight:600;font-size:0.9rem;">Bug Fix #1</span>
+    <span style="color:#8b949e;font-size:0.8rem;">AI-first · Pool fallback</span>
+  </div>
+  <div class="fallback-chain">
+    <span class="fb fb-pri">financecheque proxy</span>
+    <span class="fb-arr">→ empty?</span>
+    <span class="fb fb-fail">child proxy (kilo)</span>
+    <span class="fb-arr">→ fail?</span>
+    <span class="fb">OpenRouter</span>
+    <span class="fb-arr">→ fail?</span>
+    <span class="fb">Gemini</span>
+    <span class="fb-arr">→ fail?</span>
+    <span class="fb">DeepSeek</span>
+    <span class="fb-arr">→ fail?</span>
+    <span class="fb">Groq</span>
+    <span class="fb-arr">→ all empty?</span>
+    <span class="fb fb-ok">Pool (8 functions)</span>
+  </div>
+</div>
+
+<!-- Pass 2 -->
+<div style="border:1px solid #3fb95044; border-radius:8px; padding:0.75rem; background:#0d1117;">
+  <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+    <span class="badge badge-green">Pass 2</span>
+    <span style="font-weight:600;font-size:0.9rem;">Bug Fix #2</span>
+    <span style="color:#8b949e;font-size:0.8rem;">AI-first (with daily-fixes blacklist) · Pool fallback</span>
+  </div>
+  <div class="fallback-chain">
+    <span class="fb fb-pri">financecheque proxy</span>
+    <span class="fb-arr">→ empty?</span>
+    <span class="fb fb-fail">child proxy (kilo)</span>
+    <span class="fb-arr">→ fail?</span>
+    <span class="fb">OpenRouter</span>
+    <span class="fb-arr">→ fail?</span>
+    <span class="fb">Gemini</span>
+    <span class="fb-arr">→ fail?</span>
+    <span class="fb">DeepSeek</span>
+    <span class="fb-arr">→ fail?</span>
+    <span class="fb">Groq</span>
+    <span class="fb-arr">→ all empty?</span>
+    <span class="fb fb-ok">Pool (next rotation)</span>
+  </div>
+</div>
+
+<!-- Pass 3 -->
+<div style="border:1px solid #d2992244; border-radius:8px; padding:0.75rem; background:#0d1117;">
+  <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+    <span class="badge badge-amber">Pass 3</span>
+    <span style="font-weight:600;font-size:0.9rem;">Bug Fix #3</span>
+    <span style="color:#8b949e;font-size:0.8rem;">AI-first · Pool fallback · Guaranteed fallback (last resort)</span>
+  </div>
+  <div class="fallback-chain">
+    <span class="fb fb-pri">financecheque proxy</span>
+    <span class="fb-arr">→ empty?</span>
+    <span class="fb">OpenRouter → Gemini → DeepSeek → Groq</span>
+    <span class="fb-arr">→ all empty?</span>
+    <span class="fb fb-ok">Pool →</span>
+    <span class="fb fb-fail">Guaranteed fallback</span>
+  </div>
+</div>
+
+<!-- Pass 4 -->
+<div style="border:1px solid #bc8cff44; border-radius:8px; padding:0.75rem; background:#0d1117;">
+  <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+    <span class="badge badge-purple">Pass 4</span>
+    <span style="font-weight:600;font-size:0.9rem;">UX Feature</span>
+    <span style="color:#8b949e;font-size:0.8rem;">AI-first · Pool (23 UX functions)</span>
+  </div>
+  <div class="fallback-chain">
+    <span class="fb fb-pri">financecheque proxy</span>
+    <span class="fb-arr">→ empty?</span>
+    <span class="fb">OpenRouter → Gemini → DeepSeek → Groq</span>
+    <span class="fb-arr">→ all empty?</span>
+    <span class="fb fb-ok">UX Pool (23 functions)</span>
+  </div>
+</div>
+
+</div>
+
+<div class="diagram" style="margin-top:0.5rem;">
+  <div class="drow"><span class="darr">↓ all passes done</span><span class="dbox">Git commit all changes</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Create tag {branch}-v0.0.{N/100}.{N%100:02d}</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Generate blog post &amp; RSS</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Push branch + tag to GitHub</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Create GitHub Release with structured notes</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Verify release live (5 retries)</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Verify Cloudflare deploy (5 retries)</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox">Prune old releases (keep last 3)</span></div>
+  <div class="drow"><span class="darr">↓</span><span class="dbox" style="background:#3fb95022;border-color:var(--green);font-weight:600;">✓ Release complete</span></div>
+</div>
+
+</div>
+
+<h3>AI Provider Fallback Chain</h3>
+<p>Each pass attempts AI first. The <code>intelligence.py</code> agent cycles through providers in order until one returns a valid JSON fix:</p>
+
+<table>
+  <tr><th>Order</th><th>Provider</th><th>Type</th><th>Timeout</th><th>Keys</th></tr>
+  <tr><td>1</td><td><code>financecheque.uk</code> proxy</td><td>Parent proxy → routes to child proxy</td><td>70s (3 retries)</td><td>—</td></tr>
+  <tr><td>2</td><td><code>172.31.29.216:4001</code></td><td>Child proxy → runs kilo CLI</td><td>15s</td><td>—</td></tr>
+  <tr><td>3</td><td>OpenRouter</td><td>Direct API (<code>gpt-4o-mini</code>)</td><td>90s</td><td>✓</td></tr>
+  <tr><td>4</td><td>Gemini</td><td>Direct API (<code>gemini-2.0-flash</code>)</td><td>90s</td><td>✓</td></tr>
+  <tr><td>5</td><td>DeepSeek</td><td>Direct API (<code>deepseek-chat</code>)</td><td>90s</td><td>✓</td></tr>
+  <tr><td>6</td><td>Groq</td><td>Direct API (<code>llama-3.3-70b-versatile</code>)</td><td>90s</td><td>✓</td></tr>
+</table>
+
+<p>API keys are stored in <code>~/.fcukproxy/.env</code> (sourced by <code>intelligence.py</code>) and <code>~/.secrets/.env</code>. All 4 direct API providers now have valid keys.</p>
+
+<h2>Key Improvements</h2>
+
+<div class="highlight">
+  <strong>🔄 Cross-branch daily dedup:</strong> <code>daily-unique.json</code> prevents ANY fix/feature description from repeating across ALL 21 branches in a single UTC day. Each pass passes the growing <code>--daily-fixes</code> / <code>--daily-features</code> list to the AI prompt as "TODAY'S ALREADY-APPLIED" — the AI must produce something novel.
+</div>
+
+<div class="highlight">
+  <strong>🔁 4 AI-first passes (not 1):</strong> Previously only Pass 1 tried AI. Now all 3 bug passes + 1 UX pass attempt AI with growing daily blacklists. Pool is fallback only, guaranteed fallback is last resort on Pass 3 only.
+</div>
+
+<div class="highlight">
+  <strong>📉 Shrunk pool to real functions:</strong> BUG_FIX_NAMES had 37 entries but only 5 real functions existed. Removed 32 phantom "command not found" entries. Now 8 real bug functions + 23 UX functions — all tested and working.
+</div>
+
+<div class="highlight">
+  <strong>⏱️ Retry + provider fallback:</strong> Proxy calls retry 3× with backoff. On empty response, falls through 6 providers before hitting the pool.
+</div>
+
+<h2>Components</h2>
 <table>
   <tr><th>File</th><th>Role</th></tr>
-  <tr><td><code>multi-branch-release.sh</code></td><td>Bash orchestrator — cron entrypoint, branch selection, pass dispatch, git/release</td></tr>
-  <tr><td><code>intelligence.py</code></td><td>Python intelligence pipeline — builds LLM prompts, applies fixes, manages profiles, self-learns</td></tr>
-  <tr><td><code>gather_review_data.py</code></td><td>Log parser — extracts fix source ratios (AI vs Pool vs Fallback) from AWS logs for meta-review</td></tr>
-  <tr><td><code>meta-review.sh</code></td><td>Executive coach — fetches AWS state, runs intelligence.py --type meta, syncs profile learnings</td></tr>
-  <tr><td><code>release-state.json</code></td><td>State file — rotation index, cooldowns, release counters, fix/ux rotation pointers</td></tr>
+  <tr><td><code>multi-branch-release.sh</code></td><td>Bash orchestrator — cron entrypoint, branch selection, 4-pass dispatch, git/release, daily tracking, pool functions, cooldown handler</td></tr>
+  <tr><td><code>intelligence.py</code></td><td>Python AI agent — builds prompts with file excerpts + master plan todos, rotates through 6 LLM providers, applies fixes, manages profiles, self-learns</td></tr>
+  <tr><td><code>.env</code></td><td>API keys for OpenRouter, Gemini, DeepSeek, Groq — loaded at runtime</td></tr>
+  <tr><td><code>release-state.json</code></td><td>State file — rotation_index, cooldown timestamps, release counters, fix/ux rotation pointers</td></tr>
+  <tr><td><code>daily-unique.json</code></td><td>Cross-branch dedup — date + lists of all bug/feature descriptions applied today</td></tr>
   <tr><td><code>profiles.json</code></td><td>Per-branch profiles — LLM rotation lists, learned patterns, skill libraries, branch knowledge</td></tr>
-  <tr><td><code>agent/branches/*.md</code></td><td>Branch context files — soul/manifest/memory per branch, category, cornerstone mission</td></tr>
+  <tr><td><code>agent/branches/*.md</code></td><td>21 master plans — vision, strategic roadmap, required features, success criteria per branch</td></tr>
 </table>
 
 <h2>21 Branches</h2>
-<p>Each branch deploys independently via Cloudflare Pages at <code>{branch}.datro.xyz</code>:</p>
 <table>
-  <tr><th>Branch</th><th>Category</th><th>Domain</th><th>Releases</th></tr>
-  <tr><td>financecheque</td><td>E-commerce</td><td>financecheque.uk</td><td>150</td></tr>
-  <tr><td>ccan</td><td>Community</td><td>ccan.datro.xyz</td><td>16</td></tr>
-  <tr><td>althea</td><td>Community</td><td>althea.datro.xyz</td><td>7</td></tr>
-  <tr><td>bpvsbuckler</td><td>E-commerce</td><td>bpvsbuckler.datro.xyz</td><td>5</td></tr>
-  <tr><td>carfinancecheque</td><td>E-commerce</td><td>carfinancecheque.datro.xyz</td><td>5</td></tr>
-  <tr><td>ceo</td><td>Platform</td><td>ceo.datro.xyz</td><td>7</td></tr>
-  <tr><td>dash</td><td>Platform</td><td>dash.datro.xyz</td><td>5</td></tr>
-  <tr><td>datro</td><td>Meta</td><td>datro.xyz</td><td>6</td></tr>
-  <tr><td>dcc</td><td>Community</td><td>dcc.datro.xyz</td><td>6</td></tr>
-  <tr><td>gui</td><td>Platform</td><td>gui.datro.xyz</td><td>6</td></tr>
-  <tr><td>hbnb</td><td>E-commerce</td><td>hbnb.datro.xyz</td><td>6</td></tr>
-  <tr><td>library</td><td>Documentation</td><td>library.datro.xyz</td><td>6</td></tr>
-  <tr><td>llmwiki</td><td>Documentation</td><td>llmwiki.datro.xyz</td><td>5</td></tr>
-  <tr><td>subrepos</td><td>Platform</td><td>subrepos.datro.xyz</td><td>4</td></tr>
-  <tr><td>ui</td><td>Platform</td><td>ui.datro.xyz</td><td>5</td></tr>
-  <tr><td>wave</td><td>Platform</td><td>wave.datro.xyz</td><td>5</td></tr>
-  <tr><td>wayback</td><td>Archive</td><td>wayback.datro.xyz</td><td>4</td></tr>
-  <tr><td>whitepaper</td><td>Documentation</td><td>whitepaper.datro.xyz</td><td>3</td></tr>
-  <tr><td>archives</td><td>Archive</td><td>archives.datro.xyz</td><td>5</td></tr>
-  <tr><td>cnei</td><td>Meta</td><td>cnei.datro.xyz</td><td>—</td></tr>
-  <tr><td>greathousefarm</td><td>Advocacy</td><td>greathousefarm.datro.xyz</td><td>1</td></tr>
+  <tr><th>Branch</th><th>Domain</th><th>Releases</th></tr>
+  <tr><td>financecheque</td><td>financecheque.uk</td><td>152</td></tr>
+  <tr><td>ccan</td><td>ccan.datro.xyz</td><td>18</td></tr>
+  <tr><td>carfinancecheque</td><td>car.financecheque.uk</td><td>15</td></tr>
+  <tr><td>ceo</td><td>ceo.datro.xyz</td><td>9</td></tr>
+  <tr><td>althea</td><td>althea.datro.xyz</td><td>8</td></tr>
+  <tr><td>datro</td><td>datro.xyz</td><td>8</td></tr>
+  <tr><td>dcc</td><td>dcc.datro.xyz</td><td>8</td></tr>
+  <tr><td>gui</td><td>gui.datro.xyz</td><td>8</td></tr>
+  <tr><td>hbnb</td><td>hbnb.datro.xyz</td><td>8</td></tr>
+  <tr><td>library</td><td>library.datro.xyz</td><td>8</td></tr>
+  <tr><td>bpvsbuckler</td><td>bpvsbuckler.datro.xyz</td><td>7</td></tr>
+  <tr><td>archives</td><td>archives.datro.xyz</td><td>7</td></tr>
+  <tr><td>dash</td><td>dash.financecheque.uk</td><td>7</td></tr>
+  <tr><td>llmwiki</td><td>llmwiki.financecheque.uk</td><td>7</td></tr>
+  <tr><td>ui</td><td>ui.datro.xyz</td><td>7</td></tr>
+  <tr><td>wave</td><td>wave.datro.xyz</td><td>7</td></tr>
+  <tr><td>subrepos</td><td>subrepos.datro.xyz</td><td>6</td></tr>
+  <tr><td>wayback</td><td>wayback.datro.xyz</td><td>6</td></tr>
+  <tr><td>whitepaper</td><td>whitepaper.financecheque.uk</td><td>3</td></tr>
+  <tr><td>cnei</td><td>cnei.datro.xyz</td><td>3</td></tr>
+  <tr><td>greathousefarm</td><td>greathousefarm.datro.xyz</td><td>1</td></tr>
 </table>
-<p>All content lives under <code>static/{branchname}/</code> in the repo. Cloudflare Pages <code>root_dir</code> is set per project to that prefix.</p>
+<p>Total: <strong>303 releases</strong>. Each branch deploys via Cloudflare Pages at <code>{branch}.datro.pages.dev</code> with custom domain <code>{branch}.datro.xyz</code> (or <code>*.financecheque.uk</code>).</p>
 
-<h2>Pass Strategy — Fix Diversity Enforcement</h2>
-<p>The original loop (<code>for pass in 1 2 3</code>) always let the AI win, resulting in 105/105 console.log removals. The strategy was redesigned into individually-controlled passes:</p>
+<h2>Pass Strategy Detail</h2>
 
+<div class="pass-box">
+<h4>Pass 1 (Bug) — AI-first → Pool</h4>
+<p>Attempts AI via 6-provider chain. The prompt includes file excerpts (500 chars), master plan TODOs, and "TODAY'S ALREADY-APPLIED" daily blacklist. If all providers return empty, falls to rotating bug pool (8 functions). On pool success, the daily file is updated and the fix rotation advances.</p>
+</div>
+
+<div class="pass-box">
+<h4>Pass 2 (Bug) — AI-first → Pool</h4>
+<p>Same as Pass 1 but the daily blacklist now includes the fix from Pass 1. This guarantees the AI (or pool) produces a <em>different</em> fix. Pool starts from where last pass left off (fix_rotation).</p>
+</div>
+
+<div class="pass-box">
+<h4>Pass 3 (Bug) — AI-first → Pool → Guaranteed fallback</h4>
+<p>Last bug pass. If AI and pool both fail, the <strong>guaranteed_bug_fallback</strong> runs: it searches the branch directory for files with 3+ consecutive blank lines and removes them. This always produces a fix.</p>
+</div>
+
+<div class="pass-box">
+<h4>Pass 4 (UX) — AI-first → UX Pool</h4>
+<p>User-experience pass. Same AI chain but with <code>--daily-features</code> blacklist. Falls to UX pool (23 functions) then <strong>guaranteed_ux_fallback</strong> (adds DOCTYPE + charset if missing).</p>
+</div>
+
+<h2>Bug Pool (8 real functions)</h2>
 <table>
-  <tr><th>Pass</th><th>Source</th><th>Purpose</th></tr>
-  <tr><td>1 (Bug)</td><td>AI → Rotating Pool → Fallback</td><td>AI finds professional improvements (SEO, structured data, accessibility). If AI fails, pool rotates through 32 fix functions. Last resort: guaranteed fallback.</td></tr>
-  <tr><td>2 (Bug)</td><td>Rotating Pool only</td><td>Guarantees pool diversity — skips AI entirely so the rotating pool always gets a turn.</td></tr>
-  <tr><td>3 (Bug)</td><td>Guaranteed Fallback</td><td>Always runs — catches triple-blank-lines via <code>rg -U</code> multiline matching.</td></tr>
-  <tr><td>4 (UX)</td><td>AI → Rotating Pool → Fallback</td><td>User-experience improvements (viewport, tap targets, hover styles, skip links, print styles, etc.).</td></tr>
+  <tr><th>Function</th><th>Description</th></tr>
+  <tr><td><code>fix_404_title</code></td><td>Set proper title on 404 pages</td></tr>
+  <tr><td><code>fix_doctype</code></td><td>Add <code>&lt;!DOCTYPE html&gt;</code> if missing</td></tr>
+  <tr><td><code>fix_charset</code></td><td>Add <code>&lt;meta charset="UTF-8"&gt;</code> if missing</td></tr>
+  <tr><td><code>fix_lang_attribute</code></td><td>Add <code>lang="en"</code> to HTML tag</td></tr>
+  <tr><td><code>fix_privacy_policy</code></td><td>Create privacy policy page</td></tr>
+  <tr><td><code>fix_terms_service</code></td><td>Create terms of service page</td></tr>
+  <tr><td><code>fix_contact_page</code></td><td>Create contact page with form</td></tr>
+  <tr><td><code>fix_blog_launch</code></td><td>Create blog index + welcome post</td></tr>
 </table>
 
-<h3>Rotating Fix Pool — 32 Bug Functions</h3>
+<h2>UX Pool (23 functions)</h2>
 <table>
-  <tr><th>Category</th><th>Fix Functions</th></tr>
-  <tr><td>SEO</td><td><code>fix_meta_description</code>, <code>fix_canonical_url</code>, <code>fix_og_tags</code>, <code>fix_twitter_card</code>, <code>seo_structured_data</code>, <code>seo_keywords_meta</code></td></tr>
-  <tr><td>Accessibility</td><td><code>fix_lang_attribute</code>, <code>fix_aria_label</code>, <code>fix_label_for</code>, <code>fix_button_type</code>, <code>fix_heading_hierarchy</code></td></tr>
-  <tr><td>HTML Standards</td><td><code>fix_doctype</code>, <code>fix_charset_meta</code>, <code>fix_viewport_meta</code>, <code>fix_self_closing</code>, <code>fix_br_syntax</code>, <code>fix_http_equiv</code>, <code>fix_form_charset</code>, <code>fix_bom</code></td></tr>
-  <tr><td>Security/Performance</td><td><code>fix_link_noopener</code>, <code>fix_script_defer</code>, <code>fix_img_dimensions</code>, <code>fix_inline_handlers</code></td></tr>
-  <tr><td>Code Quality</td><td><code>fix_console_log</code>, <code>fix_commented_code</code>, <code>fix_trailing_whitespace</code>, <code>fix_blank_lines</code>, <code>fix_tabs_vs_spaces</code>, <code>fix_duplicate_ids</code>, <code>fix_404_title</code></td></tr>
+  <tr><th>Function</th><th>Description</th></tr>
+  <tr><td><code>ux_viewport</code></td><td>Improve viewport meta with user-scalable=yes</td></tr>
+  <tr><td><code>ux_mobile_tap</code></td><td>Add min tap target sizes (44px)</td></tr>
+  <tr><td><code>ux_hover_styles</code></td><td>Add hover opacity transition</td></tr>
+  <tr><td><code>ux_css_order</code></td><td>Move CSS before JS in head</td></tr>
+  <tr><td><code>ux_skip_link</code></td><td>Add skip-to-content link</td></tr>
+  <tr><td><code>ux_color_contrast</code></td><td>Improve text/background contrast</td></tr>
+  <tr><td><code>ux_smooth_scroll</code></td><td>Add smooth scrolling behavior</td></tr>
+  <tr><td><code>ux_print_styles</code></td><td>Add print-friendly styles</td></tr>
+  <tr><td><code>ux_focus_visible</code></td><td>Add focus-visible keyboard styles</td></tr>
+  <tr><td><code>ux_touch_action</code></td><td>Set touch-action: manipulation</td></tr>
+  <tr><td><code>ux_button_states</code></td><td>Add disabled/active button states</td></tr>
+  <tr><td><code>ux_table_responsive</code></td><td>Wrap tables in scroll containers</td></tr>
+  <tr><td><code>ux_z_index</code></td><td>Fix z-index stacking order</td></tr>
+  <tr><td><code>ux_list_semantics</code></td><td>Fix list nesting semantics</td></tr>
+  <tr><td><code>ux_loading_indicator</code></td><td>Add loading spinner styles</td></tr>
+  <tr><td><code>ux_breadcrumb</code></td><td>Add breadcrumb navigation</td></tr>
+  <tr><td><code>ux_cls_fix</code></td><td>Fix cumulative layout shift</td></tr>
+  <tr><td><code>ux_type_scale</code></td><td>Add typographic scale</td></tr>
+  <tr><td><code>ux_spacing</code></td><td>Add consistent spacing rhythm</td></tr>
+  <tr><td><code>ux_keyboard_nav</code></td><td>Improve keyboard navigation</td></tr>
+  <tr><td><code>ux_cookie_consent</code></td><td>Add cookie consent banner</td></tr>
+  <tr><td><code>ux_social_links</code></td><td>Add social sharing links</td></tr>
+  <tr><td><code>ux_footer_legal</code></td><td>Add footer with legal links</td></tr>
 </table>
 
-<h3>Rotating UX Pool — 17 UX Functions</h3>
-<table>
-  <tr><th>Category</th><th>Fix Functions</th></tr>
-  <tr><td>Mobile</td><td><code>ux_viewport</code>, <code>ux_mobile_tap</code>, <code>ux_touch_action</code>, <code>ux_table_responsive</code></td></tr>
-  <tr><td>Interaction</td><td><code>ux_hover_styles</code>, <code>ux_button_states</code>, <code>ux_smooth_scroll</code>, <code>ux_focus_visible</code>, <code>ux_keyboard_nav</code></td></tr>
-  <tr><td>Layout</td><td><code>ux_css_order</code>, <code>ux_z_index</code>, <code>ux_spacing</code>, <code>ux_type_scale</code>, <code>ux_cls_fix</code></td></tr>
-  <tr><td>Accessibility/UX</td><td><code>ux_skip_link</code>, <code>ux_breadcrumb</code>, <code>ux_print_styles</code>, <code>ux_loading_indicator</code></td></tr>
-</table>
-
-<p>Each pool function:</p>
+<h2>Cooldown &amp; Branch Selection</h2>
 <ul>
-  <li>Uses <code>find</code> or <code>rg</code> to locate matching files in the branch checkout</li>
-  <li>Runs an inline Python script to detect and apply a specific improvement</li>
-  <li>Sets <code>POOL_DESC</code> and <code>POOL_FILE</code> globals on success</li>
-  <li>Advances a persistent rotation index (<code>fix_rotation</code> / <code>ux_rotation</code>) so the next run picks up where the last left off</li>
+  <li><strong>24-hour cooldown</strong> per branch, enforced by comparing last GitHub release timestamp against current time</li>
+  <li><strong>Round-robin</strong> via <code>rotation_index</code> — starts from index, checks cooldown, picks first available</li>
+  <li><strong>Non-existent branches skipped</strong> — <code>git rev-parse --verify</code> check prevents stale reference crashes</li>
+  <li><strong>All on cooldown:</strong> sleep until nearest branch is eligible (max 1h sleep; past 1h exits with error)</li>
+  <li><strong>FORCE_BRANCH env var</strong> bypasses rotation for manual targeting</li>
+  <li>Per-branch cooldown timestamps persisted in <code>release-state.json</code></li>
 </ul>
 
-<h2>Cornerstone Missions</h2>
-<p>Instead of telling the AI to "find a bug", the system prompts it to <strong>"Benchmark this site against professional standards for its category."</strong> Each branch has a category (ecommerce, community, platform, documentation, advocacy, archive, meta) with a custom checklist:</p>
-
-<table>
-  <tr><th>Category</th><th>Focus Areas</th></tr>
-  <tr><td>E-commerce</td><td>JSON-LD Product/Offer, OG tags, cookie consent, payment security, trust signals, GDPR privacy policy, returns policy, sitemap.xml, robots.txt, checkout UX, search filter</td></tr>
-  <tr><td>Community</td><td>JSON-LD DiscussionForum, signup/login flow, moderation tools, privacy policy, member profiles, notifications, search, pagination, onboarding</td></tr>
-  <tr><td>Platform</td><td>JSON-LD WebApplication, API docs, status page, rate limiting, auth flows, dashboard UX, error pages, changelog</td></tr>
-  <tr><td>Documentation</td><td>JSON-LD TechArticle, table of contents, search, breadcrumbs, code copy buttons, dark mode, version selector, last-updated timestamps</td></tr>
-</table>
-
-<p>The <code>--constraint</code> CLI parameter injects blacklist rules: the AI is told what NOT to do (no console.log removal, no whitespace cleanup, no comment deletion — those belong to the pool).</p>
-
-<h2>Self-Learning Profiles</h2>
-<p>Every branch has a profile in <code>profiles.json</code> with:</p>
-<ul>
-  <li><strong>LLM Rotation</strong>: Ordered list of API endpoints with failover — financecheque.uk proxy → localhost → child proxy → NVIDIA → OpenRouter → Gemini → DeepSeek</li>
-  <li><strong>Rotation Index</strong>: Advances per attempt to distribute load across providers</li>
-  <li><strong>Successful/Failed Fixes</strong>: Immutable log of every fix (timestamp, source, tool, file, description, commit message)</li>
-  <li><strong>Skill Library</strong>: Deduplicated skills learned from successful fixes (name, description, tool, file type, use count)</li>
-  <li><strong>Learned Patterns</strong>: Patterns derived from fix file extensions and tools</li>
-  <li><strong>Reflections</strong>: Outcome log for every fix attempt (success/failure, tool, source)</li>
-  <li><strong>Branch Knowledge</strong>: Concatenated commit messages forming an evolving knowledge base of what the branch has been through</li>
-  <li><strong>Total Learning Cycles</strong>: Monotonically increasing counter of profile updates</li>
-</ul>
-
-<p>After every fix, <code>learn_from_fix()</code> updates the profile atomically. The AI prompt dynamically injects recent reflections, successful patterns, branch knowledge, and the skill library so each run builds on prior context.</p>
-
-<h2>AI Fix Pipeline</h2>
-<ol>
-  <li><code>intelligence.py</code> loads the branch context (<code>branch.md</code> + category checklist), profile (history + skills + reflections), and builds a prompt with the Cornerstone Mission</li>
-  <li>The prompt is sent to the LLM rotation (first available API endpoint)</li>
-  <li>The LLM returns a JSON fix specification (<code>file_path</code>, <code>bug_description</code>, <code>tool</code>, <code>new_str</code> or sed <code>old_str</code>)</li>
-  <li><code>intelligence.py --apply</code> applies the fix to the working tree</li>
-  <li>If <code>package.json</code> exists, <code>npx eslint</code> runs on the changed file for build validation</li>
-  <li>If lint fails, the fix is reverted (<code>git checkout -- file</code>) and the error is fed back for up to 3 self-correction attempts</li>
-  <li>On success, the branch memory, global memory, and profile are updated</li>
-</ol>
-
-<h2>Meta-Review (Executive Coach)</h2>
-<p>Runs daily at 00:00 UTC on a separate command machine via <code>meta-review.sh</code>:</p>
-<ol>
-  <li>SSH into the AWS server and fetch the last 200 log lines and <code>release-state.json</code></li>
-  <li>Run <code>gather_review_data.py</code> to parse log for fix source classification (AI vs POOL vs FALLBACK, unique fix types per session)</li>
-  <li>Run <code>intelligence.py --type meta --branch aws</code> to analyze AWS performance and suggest improvements</li>
-  <li>Apply suggested changes to the flywheel scripts</li>
-  <li>Sync back: download AWS profiles, merge successful_fixes/skill_library/reflections/learned_patterns/branch_knowledge</li>
-  <li>Push updated code to GitHub</li>
-</ol>
-
-<h2>Versioning &amp; Releases</h2>
-<p>Tags follow <code>{branch}-v0.0.{patch}.{build:02d}</code>:</p>
+<h2>Version Scheme</h2>
 <pre><code>release_number = total_releases[branch] + 1
 patch  = release_number / 100          # increments every 100 releases
 build  = release_number % 100          # 0–99, zero-padded
-version = 0.0.{patch}.{build:02d}</code></pre>
+tag    = {branch}-v0.0.{patch}.{build:02d}
+        e.g., datro-v0.0.0.08, financecheque-v0.0.1.52</code></pre>
 
-<p>Each GitHub release contains:</p>
-<pre><code>## [{tag}] - YYYY-MM-DD
-
-### Fixed
-- fix(branch): Add JSON-LD structured data for SEO
-- fix(branch): Add meta description tag for SEO
-- fix(branch): Remove duplicate blank lines (guaranteed fallback)
-
-### Changed
-- ux(branch): Add skip-to-content link for keyboard accessibility</code></pre>
-
-<p>After release, the system:</p>
-<ul>
-  <li>Verifies the release appears on GitHub (up to 5 retries, 3s apart)</li>
-  <li>Verifies Cloudflare deployment responds at <code>{branch}.datro.pages.dev</code> (up to 5 retries, 10s apart)</li>
-  <li>Runs runtime quality checks (console errors, viewport issues via curl)</li>
-  <li>Prunes old releases (keeps last 3 per branch)</li>
-  <li>Advances global rotation_index for branch selection</li>
-</ul>
-
-<h2>Cooldown &amp; Branch Selection</h2>
-<p>24-hour cooldown per branch, enforced by comparing last GitHub release timestamp against current time. Selection is round-robin via <code>rotation_index</code> in state file. If all branches are on cooldown, the script finds the branch closest to expiry and sleeps up to 1 hour. A <code>FORCE_BRANCH</code> env var bypasses rotation for manual targeting.</p>
-
-<h2>Cloudflare Pages Integration</h2>
-<p>Every branch has a Cloudflare Pages project with:</p>
-<ul>
-  <li><code>root_dir</code> set to <code>static/{branchname}/</code></li>
-  <li>Custom domain <code>{branch}.datro.xyz</code> (CNAME to <code>{branch}.datro.pages.dev</code>)</li>
-  <li>Auto-deploys on git push</li>
-  <li>World site (datro.xyz) has no <code>root_dir</code> constraint (serves from repo root)</li>
-</ul>
-
-<h2>Deploy Your Own</h2>
-
-<h3>Server Setup</h3>
-<pre><code># Ubuntu 24.04 EC2 (t3.small+)
-sudo apt update && sudo apt install -y git python3 ripgrep nodejs npm
-npm install -g wrangler
-sudo apt install -y gh && gh auth login</code></pre>
-
-<h3>Clone &amp; Configure</h3>
-<pre><code>git clone https://github.com/YOUR_USER/YOUR_REPO.git ~/repo
-mkdir -p ~/.fcukproxy
-cp multi-branch-release.sh intelligence.py profiles.json ~/.fcukproxy/
-# Edit BRANCHES array and GITHUB_REPO in multi-branch-release.sh
-# Add 24h cron:
-0 * * * * /home/ubuntu/.fcukproxy/multi-branch-release.sh >> ~/logs/multi-branch-release.log 2>&1</code></pre>
-
-<h3>Required Files</h3>
-<ul>
-  <li><code>~/.fcukproxy/multi-branch-release.sh</code> — main orchestrator</li>
-  <li><code>~/.fcukproxy/intelligence.py</code> — AI pipeline + profile management</li>
-  <li><code>~/.fcukproxy/agent/profiles.json</code> — per-branch profiles with LLM rotation lists</li>
-  <li><code>~/.fcukproxy/agent/branches/{branch}.md</code> — per-branch context files (soul, manifest, memory, cornerstone mission)</li>
-  <li><code>~/.fcukproxy/agent/aws-supervisor.md</code> — executive coach context for meta-review</li>
-</ul>
+<h2>Daily Uniqueness</h2>
+<p>Stored in <code>agent/daily-unique.json</code>. At UTC midnight the file resets. Each fix/feature recording checks the description against the existing list before appending. The AI prompt includes <code>--daily-fixes</code> and <code>--daily-features</code> as "TODAY'S ALREADY-APPLIED" — forcing the LLM to propose something genuinely new across all 21 branches.</p>
 
 <h2>Security Model</h2>
 <ul>
-  <li>No secrets in scripts — API keys loaded from environment variables or external config</li>
-  <li>All LLM API calls use <code>timeout</code> guards (60s AI, 30s apply, 10s learn)</li>
-  <li>Lock file (<code>/tmp/multi-branch-release.lock</code>) prevents concurrent cron runs</li>
-  <li>Stderr from tools captured to log only</li>
-  <li>Atomic file writes via tempfile+rename for state and profiles (prevents corruption)</li>
-  <li>IAM permissions: EC2 read/reboot only (for recovery, not exposed scripts)</li>
-  <li>GitHub tokens scoped to repo via <code>gh</code> CLI OAuth</li>
+  <li>API keys in <code>~/.fcukproxy/.env</code> (chmod 600)</li>
+  <li>All LLM calls guarded by timeouts (70s proxy, 90s direct API)</li>
+  <li>Lock file prevents concurrent cron runs</li>
+  <li>Atomic file writes via tempfile+rename for state/profiles</li>
+  <li>Stderr suppressed to log only</li>
+  <li>ERR trap logs line number + exit code on any failure</li>
 </ul>
-
-<h2>State File Reference</h2>
-<pre><code>{
-  "rotation_index": 1,
-  "total_releases": { "financecheque": 150, "archives": 5, ... },
-  "last_release":   { "financecheque": 1779506355, "archives": 1779500752, ... },
-  "fix_rotation": 23,
-  "ux_rotation": 0
-}</code></pre>
-
-<h2>Licence</h2>
-<p>MIT — use freely, adapt for your own repos. Source at <a href="https://github.com/unclehowell/datro/tree/cnei/flywheel">github.com/unclehowell/datro/tree/cnei/flywheel</a>.</p>
 
 <hr style="border-color:var(--border); margin: 2rem 0;">
 <p style="text-align:center; color:#8b949e; font-size:0.9rem;">
   Generated by the <code>cnei</code> branch — <a href="https://github.com/unclehowell/datro/tree/cnei">source</a>
-  &middot; Last update: May 2026
+  &middot; Last update: May 2026 &middot; 303 releases and counting
 </p>
 
 </div>
