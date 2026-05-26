@@ -1,5 +1,15 @@
 # Changelog
 
+## [cnei-v0.0.0.04] - 2026-05-26
+
+### Fixed
+- fix(cnei): Create Contact page with form and contact details
+- fix(cnei): Launch blog with welcome post and index page
+- fix(cnei): Add lang attribute to HTML tag for accessibility
+
+### Changed
+- ux(cnei): Add skip-to-content link for keyboard accessibility
+
 ## [cnei-v0.0.0.03] - 2026-05-26
 
 ### Fixed
