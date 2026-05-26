@@ -69,6 +69,7 @@ if [ -f "$LOCKFILE" ]; then
 fi
 echo $$ > "$LOCKFILE"
 trap 'rm -f "$LOCKFILE"' EXIT
+trap 'log "ERROR: command failed at line $LINENO. Exit code: $?"' ERR
 
 # ── State functions ──────────────────────────────────────────────────────────
 
@@ -1081,28 +1082,54 @@ else
   done
 
   if [ -z "$SELECTED_BRANCH" ]; then
+    # ── All branches on cooldown — find the earliest eligible ──
     min_remaining=$COOLDOWN_SECONDS
     min_branch=""
+    now=$(date +%s)
     for branch in "${BRANCHES[@]}"; do
+      # Skip branches that don't exist on remote
+      if ! git rev-parse --verify "origin/$branch" >/dev/null 2>&1; then
+        continue
+      fi
       last=$(get_last_release "$branch")
       if [ -n "$last" ] && [ "$last" != "0" ]; then
-        now=$(date +%s)
         elapsed=$(( now - last ))
         remaining=$(( COOLDOWN_SECONDS - elapsed ))
         if [ "$remaining" -lt "$min_remaining" ]; then
           min_remaining=$remaining
           min_branch=$branch
         fi
+      else
+        # Branch with no release yet — immediately eligible
+        min_remaining=-1
+        min_branch=$branch
+        break
       fi
     done
-    if [ -n "$min_branch" ] && [ "$min_remaining" -le 3600 ]; then
-      log "All on cooldown. Nearest eligible: $min_branch in ${min_remaining}s. Waiting..."
-      sleep "$min_remaining"
-      SELECTED_BRANCH="$min_branch"
+
+    if [ -n "$min_branch" ]; then
+      if [ "$min_remaining" -le 0 ]; then
+        # Branch is past cooldown — release it now
+        log "Branch $min_branch is past cooldown (${min_remaining}s overdue). Releasing now."
+        SELECTED_BRANCH="$min_branch"
+      elif [ "$min_remaining" -le 3600 ]; then
+        log "All on cooldown. Nearest eligible: $min_branch in ${min_remaining}s. Waiting..."
+        sleep "$min_remaining" 2>/dev/null || {
+          log "WARN: sleep failed ($min_remaining). Proceeding anyway."
+          SELECTED_BRANCH="$min_branch"
+        }
+        if [ -z "$SELECTED_BRANCH" ]; then
+          SELECTED_BRANCH="$min_branch"
+        fi
+      else
+        log "No eligible branch found within 1h. Nearest ($min_branch) needs ${min_remaining}s."
+        set_state "rotation_index" "$(( (rotation_index + 1) % total_branches ))"
+        exit 1
+      fi
     else
-      log "No eligible branch found. Nearest ($min_branch) needs ${min_remaining}s."
+      log "No eligible branch found at all."
       set_state "rotation_index" "$(( (rotation_index + 1) % total_branches ))"
-      exit 0
+      exit 1
     fi
   fi
 fi
@@ -1163,9 +1190,11 @@ init_daily
 
 # ── Bug Pass 1: AI finds fix #1 ──────────────────────────────────────────────
 DAILY_FIXES=$(get_daily_fixes)
+log "Pass 1 (bug) for $SELECTED_BRANCH | daily fixes so far: [$DAILY_FIXES]"
 POOL_DESC="" POOL_FILE=""
 if try_ai_fix "$SELECTED_BRANCH" "bug" "1" "$DAILY_FIXES" ""; then
   record_daily "$POOL_DESC" "bug"
+  log "Pass 1 RESULT: $POOL_DESC"
   FIX_APPLIED=true
   FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
@@ -1175,6 +1204,7 @@ else
   # AI failed — try pool as backup
   if try_pool_fix "bug"; then
     record_daily "$POOL_DESC" "bug"
+    log "Pass 1 POOL RESULT: $POOL_DESC"
     FIX_APPLIED=true
     FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
     update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
@@ -1187,9 +1217,11 @@ fi
 
 # ── Bug Pass 2: AI finds fix #2 (different from #1) ──────────────────────────
 DAILY_FIXES=$(get_daily_fixes)
+log "Pass 2 (bug) for $SELECTED_BRANCH | daily fixes so far: [$DAILY_FIXES]"
 POOL_DESC="" POOL_FILE=""
 if try_ai_fix "$SELECTED_BRANCH" "bug" "2" "$DAILY_FIXES" ""; then
   record_daily "$POOL_DESC" "bug"
+  log "Pass 2 RESULT: $POOL_DESC"
   FIX_APPLIED=true
   FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
@@ -1198,6 +1230,7 @@ if try_ai_fix "$SELECTED_BRANCH" "bug" "2" "$DAILY_FIXES" ""; then
 else
   if try_pool_fix "bug"; then
     record_daily "$POOL_DESC" "bug"
+    log "Pass 2 POOL RESULT: $POOL_DESC"
     FIX_APPLIED=true
     FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
     update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
@@ -1210,9 +1243,11 @@ fi
 
 # ── Bug Pass 3: AI finds fix #3 (different from #1 and #2) ───────────────────
 DAILY_FIXES=$(get_daily_fixes)
+log "Pass 3 (bug) for $SELECTED_BRANCH | daily fixes so far: [$DAILY_FIXES]"
 POOL_DESC="" POOL_FILE=""
 if try_ai_fix "$SELECTED_BRANCH" "bug" "3" "$DAILY_FIXES" ""; then
   record_daily "$POOL_DESC" "bug"
+  log "Pass 3 RESULT: $POOL_DESC"
   FIX_APPLIED=true
   FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
   update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
@@ -1221,6 +1256,7 @@ if try_ai_fix "$SELECTED_BRANCH" "bug" "3" "$DAILY_FIXES" ""; then
 else
   if try_pool_fix "bug"; then
     record_daily "$POOL_DESC" "bug"
+    log "Pass 3 POOL RESULT: $POOL_DESC"
     FIX_APPLIED=true
     FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
     update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
@@ -1228,6 +1264,7 @@ else
     learn_fix "$SELECTED_BRANCH" "bug" "$POOL_DESC" "$POOL_FILE" "POOL"
   elif guaranteed_bug_fallback; then
     record_daily "$POOL_DESC" "bug"
+    log "Pass 3 FALLBACK RESULT: $POOL_DESC"
     FIX_APPLIED=true
     FIX_DESCRIPTIONS="${FIX_DESCRIPTIONS}- fix($SELECTED_BRANCH): $POOL_DESC\n"
     update_branch_memory "$SELECTED_BRANCH" "BUG" "$POOL_DESC" "$POOL_FILE"
@@ -1240,14 +1277,11 @@ fi
 
 # ── UX Pass 4: Novel feature (unique for the day across ALL branches) ────────
 DAILY_FEATURES=$(get_daily_features)
+log "Pass 4 (UX feature) for $SELECTED_BRANCH | daily features so far: [$DAILY_FEATURES]"
 POOL_DESC="" POOL_FILE=""
 if try_ai_fix "$SELECTED_BRANCH" "ux" "4" "" "$DAILY_FEATURES"; then
   record_daily "$POOL_DESC" "ux"
-  UX_APPLIED=true
-  UX_DESCRIPTIONS="${UX_DESCRIPTIONS}- ux($SELECTED_BRANCH): $POOL_DESC\n"
-  update_branch_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "$POOL_FILE"
-  update_global_memory "$SELECTED_BRANCH" "UX" "$POOL_DESC" "AI"
-  learn_fix "$SELECTED_BRANCH" "ux" "$POOL_DESC" "$POOL_FILE" "AI"
+  log "Pass 4 RESULT: $POOL_DESC"
 else
   if try_pool_fix "ux"; then
     record_daily "$POOL_DESC" "ux"
