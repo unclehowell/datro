@@ -5,7 +5,7 @@ Supports multiple edit tools: sed, patch, write, linter, format.
 Self-corrects by feeding build errors back to the LLM.
 Atomic profile saves to prevent state corruption.
 """
-import argparse, json, os, re, subprocess, sys, urllib.request, urllib.error, tempfile
+import argparse, json, os, re, subprocess, sys, time, urllib.request, urllib.error, tempfile
 from pathlib import Path
 from datetime import datetime, timezone
 
@@ -524,10 +524,11 @@ Examples: cookie consent, hamburger menu, skip-link, dark mode, search, breadcru
 ## Format
 tool=sed|write|patch file_path=relative path old_string+new_string|new_content bug_description commit_message"""
     system = f"{system_prefix} Return ONLY valid JSON."
-    # Enforce total prompt length under proxy limit (2000 chars)
+    # Enforce total prompt length under proxy limit (1500 chars)
     combined = system + "\n\n" + prompt
-    if len(combined) > 1900:
-        prompt = prompt[:1800]
+    max_total = 1500
+    if len(combined) > max_total:
+        prompt = prompt[:max(len(prompt) - (len(combined) - max_total), 200)]
     return system, prompt
 
 # ── LLM query functions ───────────────────────────────────────────────────────
@@ -540,15 +541,18 @@ def query_parent_proxy(prompt, system, url_override=None):
     if MACHINE_ID:
         cmd += ["-H", f"X-Machine-ID: {MACHINE_ID}"]
     cmd += ["-d", payload]
-    try:
-        r = subprocess.run(cmd, capture_output=True, text=True, timeout=70)
-        if r.returncode == 0 and r.stdout:
-            data = json.loads(r.stdout)
-            content = data.get("reply", "") or data.get("choices", [{}])[0].get("message", {}).get("content", "")
-            if content and not content.startswith("Echo:"):
-                return content
-    except Exception:
-        pass
+    for attempt in range(3):
+        try:
+            r = subprocess.run(cmd, capture_output=True, text=True, timeout=70)
+            if r.returncode == 0 and r.stdout:
+                data = json.loads(r.stdout)
+                content = data.get("reply", "") or data.get("choices", [{}])[0].get("message", {}).get("content", "")
+                if content and not content.startswith("Echo:"):
+                    return content
+        except Exception:
+            pass
+        if attempt < 2:
+            time.sleep(3 * (attempt + 1))
     return None
 
 def query_local_proxy(prompt, system, url_override=None):
