@@ -1,5 +1,15 @@
 # Changelog
 
+## [wayback-v0.0.0.06] - 2026-05-26
+
+### Fixed
+- fix(wayback): Launch blog with welcome post and index page
+- fix(wayback): Create Privacy Policy page for legal compliance
+- fix(wayback): Create Terms of Service page for legal compliance
+
+### Changed
+- ux(wayback): Add hover styles for interactive elements
+
 ## [wayback-v0.0.0.05] - 2026-05-25
 
 ### Fixed
