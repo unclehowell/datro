@@ -1,5 +1,15 @@
 # Changelog
 
+## [archives-v0.0.0.08] - 2026-05-26
+
+### Fixed
+- fix(archives): Launch blog with welcome post and index page
+- fix(archives): Create Privacy Policy page for legal compliance
+- fix(archives): Create Terms of Service page for legal compliance
+
+### Changed
+- ux(archives): Add smooth scrolling for better UX
+
 ## [archives-v0.0.0.07] - 2026-05-25
 
 ### Fixed
