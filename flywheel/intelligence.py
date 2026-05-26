@@ -24,7 +24,7 @@ if ENV_FILE.exists():
             k, v = line.split("=", 1)
             ENV_KEYS[k.strip()] = v.strip()
 for key in ("OPENAI_API_KEY","ANTHROPIC_API_KEY","GEMINI_API_KEY",
-            "OPENROUTER_API_KEY","DEEPSEEK_API_KEY","NVAPI_KEY"):
+            "OPENROUTER_API_KEY","DEEPSEEK_API_KEY","NVAPI_KEY","GROQ_API_KEY"):
     if key in os.environ:
         ENV_KEYS[key] = os.environ[key]
 
@@ -574,7 +574,7 @@ def query_local_proxy(prompt, system, url_override=None):
 def query_child_proxy(prompt, system, url_override=None):
     url = url_override or "http://172.31.29.216:4001"
     payload = json.dumps({"message": f"{system}\n\n{prompt}", "chat_only": True})
-    cmd = ["curl", "-sf", "--max-time", "60", "-X", "POST", f"{url}/chat",
+    cmd = ["curl", "-sf", "--max-time", "15", "-X", "POST", f"{url}/chat",
            "-H", "Content-Type: application/json", "-d", payload]
     try:
         r = subprocess.run(cmd, capture_output=True, text=True, timeout=70)
@@ -662,6 +662,25 @@ def query_deepseek(prompt, system):
     except Exception:
         return None
 
+def query_groq(prompt, system):
+    key = ENV_KEYS.get("GROQ_API_KEY")
+    if not key or key == "PLACEHOLDER":
+        return None
+    payload = json.dumps({"model": "llama-3.3-70b-versatile", "messages": [
+        {"role": "system", "content": system},
+        {"role": "user", "content": prompt}
+    ], "max_tokens": 4096, "temperature": 0.3}).encode()
+    req = urllib.request.Request("https://api.groq.com/openai/v1/chat/completions", data=payload, method="POST")
+    req.add_header("Content-Type", "application/json")
+    req.add_header("Authorization", f"Bearer {key}")
+    try:
+        resp = urllib.request.urlopen(req, timeout=90)
+        data = json.loads(resp.read())
+        content = data.get("choices", [{}])[0].get("message", {}).get("content", "")
+        return content
+    except Exception:
+        return None
+
 LLM_HANDLERS = {
     "financecheque": lambda p, s, **kw: query_parent_proxy(p, s, kw.get("url")),
     "local_proxy":   lambda p, s, **kw: query_local_proxy(p, s, kw.get("url")),
@@ -670,6 +689,7 @@ LLM_HANDLERS = {
     "openrouter":    lambda p, s, **kw: query_openrouter(p, s),
     "gemini":        lambda p, s, **kw: query_gemini(p, s),
     "deepseek":      lambda p, s, **kw: query_deepseek(p, s),
+    "groq":          lambda p, s, **kw: query_groq(p, s),
 }
 
 # ── Fix application (tool based) ──────────────────────────────────────────────
@@ -946,10 +966,11 @@ def main():
     else:
         rotation = [
             {"name": "financecheque", "url": "https://www.financecheque.uk/api/proxy", "type": "parent"},
-            {"name": "local_proxy", "url": "http://localhost:6000/v1/chat/completions", "type": "local"},
             {"name": "child_proxy", "url": "http://172.31.29.216:4001", "type": "child"},
-            {"name": "nvidia", "type": "nvidia"},
             {"name": "openrouter", "type": "openrouter"},
+            {"name": "gemini", "type": "gemini"},
+            {"name": "deepseek", "type": "deepseek"},
+            {"name": "groq", "type": "groq"},
         ]
         start_idx = 0
 

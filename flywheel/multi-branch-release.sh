@@ -4,6 +4,11 @@ set -euo pipefail
 export PATH="$HOME/bin:$HOME/.npm-global/bin:/usr/local/bin:/usr/bin:/bin"
 export HOME="$HOME"
 
+# Source API keys
+if [ -f "$HOME/.fcukproxy/.env" ]; then
+  set -a; . "$HOME/.fcukproxy/.env"; set +a
+fi
+
 LOCKFILE="/tmp/multi-branch-release.lock"
 LOGDIR="$HOME/logs"
 LOGFILE="$LOGDIR/multi-branch-release.log"
