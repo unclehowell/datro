@@ -3,6 +3,6 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "mkdir -p dist && cp -r ./* ./dist/ 2>/dev/null; cp index.html dist/ 2>/dev/null; true"
+    "build": "mkdir -p dist && rsync -a --exclude=dist --exclude=node_modules --exclude=.git . dist/ && cp index.html dist/ 2>/dev/null; true"
   }
 }
