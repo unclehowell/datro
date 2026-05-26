@@ -164,7 +164,7 @@ if desc not in d[key]:
     d[key].append(desc)
     open('$DAILY_FILE','w').write(json.dumps(d, indent=2))
     print('OK')
-" "$fix_type" "$desc" 2>/dev/null | grep -q OK
+" "$fix_type" "$desc" 2>/dev/null | grep -q OK || true
 }
 
 # ── Rotating Fix Pool ────────────────────────────────────────────────────────
