@@ -1,5 +1,15 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.16] - 2026-05-26
+
+### Fixed
+- fix(carfinancecheque): Create Terms of Service page for legal compliance
+- fix(carfinancecheque): Create Contact page with form and contact details
+- fix(carfinancecheque): Launch blog with welcome post and index page
+
+### Changed
+- ux(carfinancecheque): Add focus-visible styles for keyboard navigation
+
 ## [carfinancecheque-v0.0.0.15] - 2026-05-25
 
 ### Fixed
