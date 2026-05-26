@@ -176,11 +176,10 @@ POOL_DIR="" POOL_DESC="" POOL_FILE=""
 # ── Bug fix type definitions ──
 
 BUG_FIX_NAMES=()
-BUG_FIX_NAMES+=("fix_console_log")
-BUG_FIX_NAMES+=("fix_commented_code")
-BUG_FIX_NAMES+=("fix_trailing_whitespace")
-BUG_FIX_NAMES+=("fix_blank_lines")
 BUG_FIX_NAMES+=("fix_404_title")
+BUG_FIX_NAMES+=("fix_doctype")
+BUG_FIX_NAMES+=("fix_charset")
+BUG_FIX_NAMES+=("fix_lang_attribute")
 BUG_FIX_NAMES+=("fix_privacy_policy")
 BUG_FIX_NAMES+=("fix_terms_service")
 BUG_FIX_NAMES+=("fix_contact_page")
@@ -196,6 +195,50 @@ c = re.sub(r'<title>[^<]*</title>', '<title>404 - Page Not Found | DATRO</title>
 if c != orig:
     open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
       POOL_DESC="Add proper title to 404 page for SEO"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_doctype() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if not c.lstrip().startswith('<!DOCTYPE html>') and not c.lstrip().startswith('<!doctype html>'):
+    c = '<!DOCTYPE html>\n' + c.lstrip()
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add DOCTYPE declaration for standards mode"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_charset() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+if not re.search(r'<meta\s+charset', c, re.IGNORECASE) and not re.search(r'charset=', c, re.IGNORECASE):
+    c = re.sub(r'(<head[^>]*>)', r'\1\n    <meta charset=\"UTF-8\">', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add charset meta tag for proper encoding"; POOL_FILE="$f"; return 0
+    fi
+  done; return 1
+}
+
+fix_lang_attribute() {
+  local f
+  for f in $(find "$POOL_DIR" -maxdepth 10 -name '*.html' -type f 2>/dev/null | head -3); do
+    if python3 -c "
+import re
+c = open('$f').read(); orig = c
+c = re.sub(r'<html([^>]*?)(?:\s+lang=[\"\\'][^\"\\']*[\"\\'])?([^>]*)>', r'<html\1 lang=\"en\"\2>', c, count=1, flags=re.IGNORECASE)
+if c != orig:
+    open('$f','w').write(c); print('CHANGED')" 2>/dev/null | grep -q CHANGED; then
+      POOL_DESC="Add lang attribute to HTML tag for accessibility"; POOL_FILE="$f"; return 0
     fi
   done; return 1
 }
