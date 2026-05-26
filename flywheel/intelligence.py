@@ -823,14 +823,14 @@ def learn_from_fix(branch, profile, fix, fix_type, source_name, validated, error
     fp = fix.get("file_path", "")
     if fp:
         ext = os.path.splitext(fp)[1]
-        tool = fix.get("tool", "sed")
-        pattern_desc = f"Modified {ext} file via {tool}"
+        t = fix.get("tool", "sed")
+        pattern_desc = f"Modified {ext} file via {t}"
         existing = [p.get("pattern") for p in profile.get("learned_patterns", [])]
         if pattern_desc not in existing:
             profile.setdefault("learned_patterns", []).append({
                 "pattern": pattern_desc,
                 "detail": fix.get("bug_description", "")[:200],
-                "tool": tool,
+                "tool": t,
                 "discovered": ts
             })
 
@@ -848,14 +848,15 @@ def learn_from_fix(branch, profile, fix, fix_type, source_name, validated, error
             })
 
     outcome = "success" if validated else "failure"
-    reflection = f"{'Validated' if validated else 'Failed'} {fix_type} via {source_name} ({tool}): {fix.get('bug_description','')[:100]}"
+    tool_val = fix.get("tool", "sed")
+    reflection = f"{'Validated' if validated else 'Failed'} {fix_type} via {source_name} ({tool_val}): {fix.get('bug_description','')[:100]}"
     if error_msg:
         reflection += f" | error: {error_msg[:100]}"
     profile.setdefault("reflections", []).append({
         "lesson": reflection,
         "timestamp": ts,
         "outcome": outcome,
-        "tool": tool,
+        "tool": tool_val,
     })
 
     knowledge_line = f"[{ts}] {fix.get('commit_message','')} — {fix.get('bug_description','')[:100]}"
