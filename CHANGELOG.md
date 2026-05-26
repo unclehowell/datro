@@ -1,5 +1,15 @@
 # Changelog
 
+## [cnei-v0.0.0.03] - 2026-05-26
+
+### Fixed
+- fix(cnei): Add lang attribute to HTML tag for accessibility
+- fix(cnei): Create Privacy Policy page for legal compliance
+- fix(cnei): Create Terms of Service page for legal compliance
+
+### Changed
+- ux(cnei): Add social media links for audience engagement
+
 ## [cnei-v0.0.0.02] - 2026-05-25
 
 ### Fixed
