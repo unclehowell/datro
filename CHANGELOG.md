@@ -1,5 +1,15 @@
 # Changelog
 
+## [dcc-v0.0.0.08] - 2026-05-26
+
+### Fixed
+- fix(dcc): Create Privacy Policy page for legal compliance
+- fix(dcc): Create Terms of Service page for legal compliance
+- fix(dcc): Create Contact page with form and contact details
+
+### Changed
+- ux(dcc): Add touch-action CSS for mobile responsiveness
+
 ## [Unreleased]
 
 
