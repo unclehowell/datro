@@ -1,5 +1,15 @@
 # Changelog
 
+## [hbnb-v0.0.0.08] - 2026-05-26
+
+### Fixed
+- fix(hbnb): Create Privacy Policy page for legal compliance
+- fix(hbnb): Create Terms of Service page for legal compliance
+- fix(hbnb): Create Contact page with form and contact details
+
+### Changed
+- ux(hbnb): Add loading state styling for better UX
+
 ## [Unreleased]
 
 
