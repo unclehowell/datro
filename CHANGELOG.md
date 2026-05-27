@@ -1,5 +1,14 @@
 # Changelog
 
+## [ccan-v0.0.0.20] - 2026-05-27
+
+### Fixed
+- fix(ccan): Launch blog with welcome post and index page
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Fix z-index stacking for proper element layering
+
 ## [ccan-v0.0.0.19] - 2026-05-26
 
 ### Fixed
