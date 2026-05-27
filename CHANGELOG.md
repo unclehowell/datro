@@ -1,5 +1,14 @@
 # Changelog
 
+## [dcc-v0.0.0.09] - 2026-05-27
+
+### Fixed
+- fix(dcc): Launch blog with welcome post and index page
+- fix(dcc): Remove excessive blank lines
+
+### Changed
+- ux(dcc): Add breadcrumb navigation structure for UX
+
 ## [dcc-v0.0.0.08] - 2026-05-26
 
 ### Fixed
