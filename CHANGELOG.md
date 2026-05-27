@@ -1,5 +1,14 @@
 # Changelog
 
+## [wave-v0.0.0.08] - 2026-05-27
+
+### Fixed
+- fix(wave): Launch blog with welcome post and index page
+- fix(wave): Remove excessive blank lines
+
+### Changed
+- ux(wave): Improve text color contrast for readability
+
 ## [wave-v0.0.0.07] - 2026-05-26
 
 ### Fixed
