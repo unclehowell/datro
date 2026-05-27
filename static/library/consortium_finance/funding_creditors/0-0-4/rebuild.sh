@@ -3,7 +3,6 @@
 
 #unset CDPATH
 
-
 #.................................................
 #         DATRO Consortium - 2021 Copyleft
 #.................................................
@@ -19,7 +18,6 @@
 #................................................
 #             Version 1.2 - datro.xyz
 #................................................
-
 
 function ProgressBar {
 	let _progress=(${1}*100/${2}*100)/100
@@ -58,7 +56,6 @@ do
 	sleep 0.1
 	ProgressBar ${number} ${_end}
 done
-
 
 make html > build.log 2>&1 &&
 printf "\e[2;3;33m Done! \n\e[0m"
@@ -199,7 +196,6 @@ echo '</script>'
 echo '</html>'
 }>> index.html
 cd ../../
-
 
 printf "\e[2;3;33m Done! \n\e[0m"
 

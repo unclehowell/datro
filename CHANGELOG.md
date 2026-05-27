@@ -1,5 +1,14 @@
 # Changelog
 
+## [library-v0.0.0.09] - 2026-05-27
+
+### Fixed
+- fix(library): Create Contact page with form and contact details
+- fix(library): Remove excessive blank lines
+
+### Changed
+- ux(library): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [library-v0.0.0.08] - 2026-05-26
 
 ### Fixed
