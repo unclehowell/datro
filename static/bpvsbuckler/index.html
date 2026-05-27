@@ -120,5 +120,41 @@
 })();
 </script>
 
+
+<script>
+(function() {
+  var added = false;
+  function addLink() {
+    if (added) return;
+    var buttons = document.querySelectorAll("button");
+    for (var i = 0; i < buttons.length; i++) {
+      var b = buttons[i];
+      if (b.textContent.trim() === "Reparations" || b.textContent.trim().indexOf("Reparations") !== -1) {
+        var parent = b.parentNode;
+        var sibs = parent.querySelectorAll("a, button, span");
+        for (var j = 0; j < sibs.length; j++) {
+          if (sibs[j].textContent.indexOf("Beurcracy") !== -1) return;
+        }
+        var a = document.createElement("a");
+        a.href = "/beurcracy/";
+        a.textContent = "Beurcracy";
+        var homeLink = parent.querySelector('a[href="/"]');
+        if (homeLink) {
+          a.className = homeLink.className;
+        } else {
+          a.className = "px-3 py-1 text-sm uppercase tracking-wider font-special font-bold text-slate-400 hover:text-white transition-colors";
+        }
+        parent.insertBefore(a, b.nextSibling);
+        added = true;
+        return;
+      }
+    }
+  }
+  addLink();
+  var observer = new MutationObserver(addLink);
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
 </body>
 </html>
