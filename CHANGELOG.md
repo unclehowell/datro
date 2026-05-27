@@ -1,5 +1,15 @@
 # Changelog
 
+## [llmwiki-v0.0.0.08] - 2026-05-27
+
+### Fixed
+- fix(llmwiki): Create Privacy Policy page for legal compliance
+- fix(llmwiki): Create Terms of Service page for legal compliance
+- fix(llmwiki): Remove excessive blank lines
+
+### Changed
+- ux(llmwiki): Add minimum tap target sizes for mobile UX
+
 ## [llmwiki-v0.0.0.07] - 2026-05-26
 
 ### Fixed
