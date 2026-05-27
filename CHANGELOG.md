@@ -1,5 +1,15 @@
 # Changelog
 
+## [datro-v0.0.0.09] - 2026-05-27
+
+### Fixed
+- fix(datro): Create Privacy Policy page for legal compliance
+- fix(datro): Create Terms of Service page for legal compliance
+- fix(datro): Remove excessive blank lines
+
+### Changed
+- ux(datro): Add loading state styling for better UX
+
 ## [datro-v0.0.0.08] - 2026-05-26
 
 ### Fixed
