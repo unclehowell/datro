@@ -1,5 +1,14 @@
 # Changelog
 
+## [wayback-v0.0.0.07] - 2026-05-27
+
+### Fixed
+- fix(wayback): Create Contact page with form and contact details
+- fix(wayback): Remove excessive blank lines
+
+### Changed
+- ux(wayback): Add smooth scrolling for better UX
+
 ## [wayback-v0.0.0.06] - 2026-05-26
 
 ### Fixed
