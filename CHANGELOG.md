@@ -1,5 +1,13 @@
 # Changelog
 
+## [archives-v0.0.0.10] - 2026-05-27
+
+### Fixed
+- fix(archives): Remove excessive blank lines
+
+### Changed
+- ux(archives): Add breadcrumb navigation structure for UX
+
 ## [archives-v0.0.0.09] - 2026-05-27
 
 ### Fixed
