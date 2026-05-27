@@ -1,5 +1,11 @@
 # Changelog
 
+## [althea-v0.0.0.11] - 2026-05-27
+
+### Fixed
+### Changed
+- ux(althea): Add loading state styling for better UX
+
 ## [althea-v0.0.0.10] - 2026-05-27
 
 ### Fixed
