@@ -1,5 +1,13 @@
 # Changelog
 
+## [althea-v0.0.0.10] - 2026-05-27
+
+### Fixed
+- fix(althea): Launch blog with welcome post and index page
+
+### Changed
+- ux(althea): Add print-friendly styles for better UX
+
 ## [althea-v0.0.0.09] - 2026-05-26
 
 ### Fixed
