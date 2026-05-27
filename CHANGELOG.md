@@ -1,5 +1,14 @@
 # Changelog
 
+## [dash-v0.0.0.08] - 2026-05-27
+
+### Fixed
+- fix(dash): Launch blog with welcome post and index page
+- fix(dash): Remove excessive blank lines
+
+### Changed
+- ux(dash): Fix z-index stacking for proper element layering
+
 ## [dash-v0.0.0.07] - 2026-05-26
 
 ### Fixed

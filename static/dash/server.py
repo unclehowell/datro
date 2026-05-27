@@ -31,7 +31,6 @@ PROVIDERS_FILE = CONFIG_DIR / "providers.json"
 MACHINE_CONFIG_FILE = CONFIG_DIR / "machine.json"
 MACHINES_FILE = CONFIG_DIR / "machines.json"
 
-
 class SubProxy:
     def __init__(self, port=5000):
         self.port = port
@@ -479,7 +478,6 @@ class SubProxy:
     def run(self):
         logger.info(f"Starting sub-proxy on port {self.port}")
         web.run_app(self.app, host="0.0.0.0", port=self.port)
-
 
 if __name__ == "__main__":
     port = int(os.environ.get("SUBPROXY_PORT", 5000))
