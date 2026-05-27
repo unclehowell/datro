@@ -1,5 +1,14 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.17] - 2026-05-27
+
+### Fixed
+- fix(carfinancecheque): Create Privacy Policy page for legal compliance
+- fix(carfinancecheque): Remove excessive blank lines
+
+### Changed
+- ux(carfinancecheque): Add button press interaction feedback for UX
+
 ## [carfinancecheque-v0.0.0.16] - 2026-05-26
 
 ### Fixed
