@@ -52,12 +52,41 @@
 </head>
 <body class="text-slate-200 antialiased overflow-hidden h-screen w-screen">
     
-<nav style="background:#1e293b;padding:10px 20px;display:flex;gap:20px;font-family:system-ui,sans-serif;font-size:14px">
-<a href="/" style="color:#94a3b8;text-decoration:none">Home</a>
-<a href="/beurcracy/" style="color:#94a3b8;text-decoration:none">Beurcracy</a>
-<a href="/evidence/" style="color:#94a3b8;text-decoration:none">Evidence</a>
-</nav>
+
 <div id="root"></div>
+
+<script>
+(function() {
+  var added = false;
+  var observer = new MutationObserver(function() {
+    if (added) return;
+    var links = document.querySelectorAll("a");
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].textContent.trim() === "Reparations") {
+        var parent = links[i].parentNode;
+        var found = false;
+        for (var j = 0; j < parent.children.length; j++) {
+          if (parent.children[j].textContent.trim() === "Beurcracy") {
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          var a = document.createElement("a");
+          a.href = "/beurcracy/";
+          a.textContent = "Beurcracy";
+          a.className = links[i].className;
+          parent.insertBefore(a, links[i].nextSibling);
+          added = true;
+        }
+        break;
+      }
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
 
 <script>
 (function() {
