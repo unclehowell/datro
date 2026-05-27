@@ -1,5 +1,15 @@
 # Changelog
 
+## [ceo-v0.0.0.10] - 2026-05-27
+
+### Fixed
+- fix(ceo): Create Contact page with form and contact details
+- fix(ceo): Launch blog with welcome post and index page
+- fix(ceo): Create Privacy Policy page for legal compliance
+
+### Changed
+- ux(ceo): Add button press interaction feedback for UX
+
 ## [ceo-v0.0.0.09] - 2026-05-26
 
 ### Fixed
