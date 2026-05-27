@@ -1,5 +1,14 @@
 # Changelog
 
+## [ui-v0.0.0.08] - 2026-05-27
+
+### Fixed
+- fix(ui): Create Privacy Policy page for legal compliance
+- fix(ui): Remove excessive blank lines
+
+### Changed
+- ux(ui): Add skip-to-content link for keyboard accessibility
+
 ## [ui-v0.0.0.07] - 2026-05-26
 
 ### Fixed
