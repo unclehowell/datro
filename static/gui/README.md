@@ -12,9 +12,7 @@ b) the file structure comprises of a "Top Level Directory". The Sphinx Document 
 
 c) this method keeps the depth of the file structure to 2. Which the custom autobuild scripts depend on (see _blue-build-source README.md)
 
-
 ## The File Structure
-
 
  ```
  | ./                                           (   TLD   )  

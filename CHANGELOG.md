@@ -1,5 +1,15 @@
 # Changelog
 
+## [gui-v0.0.0.09] - 2026-05-27
+
+### Fixed
+- fix(gui): Create Privacy Policy page for legal compliance
+- fix(gui): Create Terms of Service page for legal compliance
+- fix(gui): Remove excessive blank lines
+
+### Changed
+- ux(gui): Add social media links for audience engagement
+
 ## [gui-v0.0.0.08] - 2026-05-26
 
 ### Fixed
