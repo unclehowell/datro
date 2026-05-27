@@ -1,5 +1,14 @@
 # Changelog
 
+## [hbnb-v0.0.0.09] - 2026-05-27
+
+### Fixed
+- fix(hbnb): Launch blog with welcome post and index page
+- fix(hbnb): Remove excessive blank lines
+
+### Changed
+- ux(hbnb): Add legal footer with privacy/terms/contact links
+
 ## [hbnb-v0.0.0.08] - 2026-05-26
 
 ### Fixed
