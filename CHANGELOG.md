@@ -1,5 +1,14 @@
 # Changelog
 
+## [subrepos-v0.0.0.07] - 2026-05-27
+
+### Fixed
+- fix(subrepos): Create Terms of Service page for legal compliance
+- fix(subrepos): Remove excessive blank lines
+
+### Changed
+- ux(subrepos): Add hover styles for interactive elements
+
 ## [subrepos-v0.0.0.06] - 2026-05-26
 
 ### Fixed
