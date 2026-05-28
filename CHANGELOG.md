@@ -1,5 +1,13 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.10-aws] - 2026-05-28
+
+### Fixed
+- fix(bpvsbuckler): Remove excessive blank lines
+
+### Changed
+- ux(bpvsbuckler): Add minimum tap target sizes for mobile UX
+
 ## [bpvsbuckler-v0.0.0.09-aws] - 2026-05-28
 
 ### Fixed
