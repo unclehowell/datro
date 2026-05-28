@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FCUK Flywheel - Master Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>FCUK Flywheel Master</h1>
+        <div id="status-bar">
+            <span id="aws-status">AWS: Connecting...</span>
+            <span id="local-status">Local: Active</span>
+        </div>
+    </header>
+
+    <main>
+        <section id="stats-panel">
+            <div class="card">
+                <h3>Release Stats</h3>
+                <div id="release-counts">Loading...</div>
+            </div>
+            <div class="card">
+                <h3>Quick Actions</h3>
+                <div class="button-group">
+                    <button id="btn-ota" class="btn primary">Trigger AWS OTA Update</button>
+                    <button id="btn-meta" class="btn secondary">Trigger Local Meta-Review</button>
+                    <button id="btn-toggle-pause" class="btn error">Pause Flywheel</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="content-panel">
+            <div id="log-viewer" class="panel">
+                <div class="panel-header">
+                    <h3>AWS Flywheel Log</h3>
+                    <button id="btn-clear-logs" class="btn small">Clear View</button>
+                </div>
+                <pre id="log-content"></pre>
+            </div>
+
+            <div id="master-plan-panel" class="panel">
+                <div class="panel-header">
+                    <h3>Master Plans</h3>
+                    <select id="branch-selector">
+                        <option value="">Select a Branch...</option>
+                    </select>
+                </div>
+                <div id="editor-container">
+                    <textarea id="plan-editor" placeholder="Select a branch to view its master plan..."></textarea>
+                    <button id="btn-save-plan" class="btn success" disabled>Save Master Plan</button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2026 DATRO Consortium - Autonomous Self-Improvement System</p>
+    </footer>
+
+    <script src="app.js"></script>
+</body>
+</html>

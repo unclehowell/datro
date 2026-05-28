@@ -1,0 +1,167 @@
+const awsStatus = document.getElementById('aws-status');
+const releaseCounts = document.getElementById('release-counts');
+const logContent = document.getElementById('log-content');
+const branchSelector = document.getElementById('branch-selector');
+const planEditor = document.getElementById('plan-editor');
+const btnSavePlan = document.getElementById('btn-save-plan');
+const btnOta = document.getElementById('btn-ota');
+const btnMeta = document.getElementById('btn-meta');
+const btnClearLogs = document.getElementById('btn-clear-logs');
+
+const btnTogglePause = document.getElementById('btn-toggle-pause');
+
+async function init() {
+    await fetchAwsStatus();
+    await fetchMasters();
+    await updatePauseButtonState();
+    connectLogs();
+    
+    branchSelector.addEventListener('change', e => fetchMasterPlan(e.target.value));
+    btnSavePlan.addEventListener('click', saveMasterPlan);
+    btnOta.addEventListener('click', triggerOta);
+    btnMeta.addEventListener('click', triggerMeta);
+    btnTogglePause.addEventListener('click', togglePause);
+    btnClearLogs.addEventListener('click', () => logContent.textContent = '');
+}
+
+async function updatePauseButtonState() {
+    try {
+        const res = await fetch('/api/aws/is-paused');
+        const data = await res.json();
+        const isPaused = data.paused;
+        btnTogglePause.textContent = isPaused ? 'Resume Flywheel' : 'Pause Flywheel';
+        btnTogglePause.className = isPaused ? 'btn success' : 'btn error';
+    } catch (err) {
+        console.error('Failed to get pause state');
+    }
+}
+
+async function togglePause() {
+    const isPaused = btnTogglePause.textContent === 'Resume Flywheel';
+    try {
+        const res = await fetch('/api/aws/toggle-pause', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ pause: !isPaused })
+        });
+        if (res.ok) await updatePauseButtonState();
+    } catch (err) {
+        alert('Failed to toggle pause state.');
+    }
+}
+
+async function fetchAwsStatus() {
+    try {
+        const res = await fetch('/api/aws/status');
+        const data = await res.json();
+        
+        awsStatus.textContent = `AWS: ${data.uptime.split(',')[0].replace('up ', '')}`;
+        awsStatus.style.color = 'var(--success)';
+        
+        const counts = data.state.total_releases || {};
+        releaseCounts.innerHTML = Object.entries(counts)
+            .sort((a,b) => b[1] - a[1])
+            .map(([b, c]) => `<div><strong>${b}</strong>: ${c} releases</div>`)
+            .join('');
+    } catch (err) {
+        awsStatus.textContent = 'AWS: Offline';
+        awsStatus.style.color = 'var(--error)';
+        releaseCounts.textContent = 'Error fetching stats.';
+    }
+}
+
+async function fetchMasters() {
+    try {
+        const res = await fetch('/api/masters');
+        const branches = await res.json();
+        branches.forEach(b => {
+            const opt = document.createElement('option');
+            opt.value = b;
+            opt.textContent = b;
+            branchSelector.appendChild(opt);
+        });
+    } catch (err) {
+        console.error('Failed to fetch master plans');
+    }
+}
+
+async function fetchMasterPlan(branch) {
+    if (!branch) {
+        planEditor.value = '';
+        btnSavePlan.disabled = true;
+        return;
+    }
+    
+    try {
+        const res = await fetch(`/api/masters/${branch}`);
+        const data = await res.json();
+        planEditor.value = data.content;
+        btnSavePlan.disabled = false;
+    } catch (err) {
+        planEditor.value = 'Failed to load plan.';
+    }
+}
+
+async function saveMasterPlan() {
+    const branch = branchSelector.value;
+    const content = planEditor.value;
+    
+    try {
+        const res = await fetch(`/api/masters/${branch}`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content })
+        });
+        if (res.ok) alert(`Master plan for ${branch} saved!`);
+    } catch (err) {
+        alert('Failed to save plan.');
+    }
+}
+
+function connectLogs() {
+    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
+    const socket = new WebSocket(`${protocol}//${window.location.host}/ws/logs/aws`);
+    
+    socket.onmessage = (event) => {
+        logContent.textContent += event.data;
+        logContent.scrollTop = logContent.scrollHeight;
+    };
+    
+    socket.onerror = () => {
+        logContent.textContent += '\n[DASHBOARD] WebSocket Error. Retrying...\n';
+        setTimeout(connectLogs, 5000);
+    };
+}
+
+async function triggerOta() {
+    if (!confirm('This will update all flywheel logic on AWS. Proceed?')) return;
+    btnOta.disabled = true;
+    btnOta.textContent = 'Updating...';
+    try {
+        const res = await fetch('/api/trigger/ota', { method: 'POST' });
+        const data = await res.json();
+        alert('OTA Update Output:\n' + data.output);
+    } catch (err) {
+        alert('OTA Update failed.');
+    } finally {
+        btnOta.disabled = false;
+        btnOta.textContent = 'Trigger AWS OTA Update';
+    }
+}
+
+async function triggerMeta() {
+    btnMeta.disabled = true;
+    btnMeta.textContent = 'Reviewing...';
+    try {
+        const res = await fetch('/api/trigger/meta', { method: 'POST' });
+        const data = await res.json();
+        alert('Meta-Review Output:\n' + data.output);
+    } catch (err) {
+        alert('Meta-Review failed.');
+    } finally {
+        btnMeta.disabled = false;
+        btnMeta.textContent = 'Trigger Local Meta-Review';
+    }
+}
+
+init();
