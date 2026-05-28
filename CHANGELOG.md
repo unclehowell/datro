@@ -1,5 +1,13 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.19-aws] - 2026-05-28
+
+### Fixed
+- fix(carfinancecheque): Remove excessive blank lines
+
+### Changed
+- ux(carfinancecheque): Add hover styles for interactive elements
+
 ## [carfinancecheque-v0.0.0.18-aws] - 2026-05-28
 
 ### Fixed
