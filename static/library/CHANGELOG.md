@@ -62,7 +62,6 @@ Mar-22 - Lease in contracts was broken link - fixed it
 Mar-12 - Client noticed a broken link in `projects/mandate_evlweb3/` - fixed it  
 Mar-11 - Loads of broken links in the `consortium_campuses/campus4_sitesurvey` - fixed them, did a rebuild of the doc, but kept semantic version the same  
 
-
 ## [library.05] - Q4/2021
 
 ### Added
@@ -80,7 +79,6 @@ Dec-15 - Changed `.treeview.json` to `_treeview.json` in top level directory onl
 Dec-07 - Minor edits to `consortium_finance/funding_sales8cc` - But semantic version is kept same as doc is still in draft.   
 Nov-08 - Added the generic media files from the html build to the `theme-docs` directory as prep for removal of duplicate css and js files  
 Nov-08 - Improved `consortium_finance/funding_sales8cc` but it's still in draft  
-
 
 ## [-library.04] - Q3/2021
 

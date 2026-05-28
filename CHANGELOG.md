@@ -1,5 +1,13 @@
 # Changelog
 
+## [library-v0.0.0.10-aws] - 2026-05-28
+
+### Fixed
+- fix(library): Remove excessive blank lines
+
+### Changed
+- ux(library): Add focus-visible styles for keyboard navigation
+
 ## [library-v0.0.0.09] - 2026-05-27
 
 ### Fixed
