@@ -45,8 +45,11 @@ async function register() {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ childId: CHILD_ID, machine_id: CHILD_ID, machine_name: os.hostname(), url: SELF_URL }),
     });
-    if (res.ok) console.log(`[child-proxy] Registered with parent: ${PARENT_URL}`);
-    else console.error(`[child-proxy] Registration failed: ${res.status}`);
+    if (res.ok) {
+      console.log(`[child-proxy] Registered as ${CHILD_ID}`);
+    } else {
+      console.error(`[child-proxy] Registration failed: ${res.status}`);
+    }
   } catch (err) {
     console.error("[child-proxy] Registration error:", err.message);
   }
