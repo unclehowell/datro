@@ -1,5 +1,13 @@
 # Changelog
 
+## [hbnb-v0.0.0.10-aws] - 2026-05-28
+
+### Fixed
+- fix(hbnb): Remove excessive blank lines
+
+### Changed
+- ux(hbnb): Add print-friendly styles for better UX
+
 ## [hbnb-v0.0.0.09] - 2026-05-27
 
 ### Fixed
