@@ -1,5 +1,13 @@
 # Changelog
 
+## [gui-v0.0.0.10-aws] - 2026-05-28
+
+### Fixed
+- fix(gui): Remove excessive blank lines
+
+### Changed
+- ux(gui): Add smooth scrolling for better UX
+
 ## [gui-v0.0.0.09] - 2026-05-27
 
 ### Fixed
