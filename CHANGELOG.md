@@ -1,5 +1,15 @@
 # Changelog
 
+## [pirateclaw-v0.0.0.08-aws] - 2026-05-28
+
+### Fixed
+- fix(pirateclaw): Create Contact page with form and contact details
+- fix(pirateclaw): Launch blog with welcome post and index page
+- fix(pirateclaw): Create Privacy Policy page for legal compliance
+
+### Changed
+- ux(pirateclaw): Add social media links for audience engagement
+
 ## [pirateclaw-v0.0.0.06] - 2026-05-23
 
 ### Fixed
