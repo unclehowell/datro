@@ -1,5 +1,13 @@
 # Changelog
 
+## [archives-v0.0.0.11-aws] - 2026-05-28
+
+### Fixed
+- fix(archives): Remove excessive blank lines
+
+### Changed
+- ux(archives): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [archives-v0.0.0.10] - 2026-05-27
 
 ### Fixed
