@@ -1,5 +1,14 @@
 # Changelog
 
+## [ceo-v0.0.0.11-aws] - 2026-05-28
+
+### Fixed
+- fix(ceo): Create Terms of Service page for legal compliance
+- fix(ceo): Remove excessive blank lines
+
+### Changed
+- ux(ceo): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [ceo-v0.0.0.10] - 2026-05-27
 
 ### Fixed
