@@ -54,7 +54,6 @@ except ImportError:
 if subprocess.run(["which", "antiword"], capture_output=True).returncode == 0:
     HAS_DOC = True
 
-
 ARCHIVE_DIR = Path("/home/unclehowell/datro/static/archives")
 REPO_DIR = Path("/home/unclehowell/datro")
 CACHE_DIR = Path("/tmp/opencode/vet_cache")
@@ -352,7 +351,6 @@ EXCLUDE_FILENAME = [
 
 SCORE_THRESHOLD = 10  # minimum total score to keep
 
-
 # ── Content extraction helpers ────────────────────────────────────────
 
 def content_cache_key(filepath: Path) -> str:
@@ -360,7 +358,6 @@ def content_cache_key(filepath: Path) -> str:
     stat = filepath.stat()
     raw = f"{filepath}:{stat.st_size}:{stat.st_mtime}"
     return hashlib.sha256(raw.encode()).hexdigest()[:16]
-
 
 def cache_get(key: str) -> str | None:
     p = CACHE_DIR / key
@@ -371,20 +368,17 @@ def cache_get(key: str) -> str | None:
             return None
     return None
 
-
 def cache_put(key: str, text: str):
     try:
         (CACHE_DIR / key).write_text(text)
     except Exception:
         pass
 
-
 def extract_txt(filepath: Path) -> str:
     try:
         return filepath.read_text(errors="replace")
     except Exception:
         return ""
-
 
 def extract_docx(filepath: Path) -> str:
     if not HAS_DOCX:
@@ -394,7 +388,6 @@ def extract_docx(filepath: Path) -> str:
         return "\n".join(p.text for p in d.paragraphs)
     except Exception:
         return ""
-
 
 def extract_doc(filepath: Path) -> str:
     if not HAS_DOC:
@@ -410,7 +403,6 @@ def extract_doc(filepath: Path) -> str:
         pass
     return ""
 
-
 def extract_pdf_text(filepath: Path) -> str:
     """Extract text from PDF using PyMuPDF."""
     if not HAS_PDF:
@@ -424,7 +416,6 @@ def extract_pdf_text(filepath: Path) -> str:
         return "\n".join(text_parts)
     except Exception:
         return ""
-
 
 def ocr_image(filepath: Path, timeout_sec: int = OCR_TIMEOUT) -> str:
     """Run OCR on an image using Tesseract with timeout."""
@@ -451,7 +442,6 @@ def ocr_image(filepath: Path, timeout_sec: int = OCR_TIMEOUT) -> str:
     except Exception:
         return ""
 
-
 def ocr_pdf_page(page_img_bytes: bytes) -> str:
     """OCR a single PDF page image."""
     if not HAS_OCR:
@@ -471,7 +461,6 @@ def ocr_pdf_page(page_img_bytes: bytes) -> str:
             os.unlink(tmp_path)
         except Exception:
             pass
-
 
 def extract_content(filepath: Path) -> str:
     """Extract all readable text content from a file using the best available method."""
@@ -503,7 +492,6 @@ def extract_content(filepath: Path) -> str:
     else:
         return ""
 
-
 def ocr_pdf(filepath: Path) -> str:
     """OCR each page of a PDF (scanned document)."""
     if not HAS_PDF or not HAS_OCR:
@@ -529,7 +517,6 @@ def ocr_pdf(filepath: Path) -> str:
     except Exception:
         return ""
 
-
 # ── Scoring engine ────────────────────────────────────────────────────
 
 def detect_passport(text: str) -> bool:
@@ -539,7 +526,6 @@ def detect_passport(text: str) -> bool:
     # Count passport keyword signals — need 2+ for confirmation
     matches = list(PASSPORT_KEYWORDS.finditer(text))
     return len(matches) >= 2
-
 
 def score_content(text: str) -> dict:
     """Score extracted text against case-relevance dimensions.
@@ -603,7 +589,6 @@ def score_content(text: str) -> dict:
         "has_negative": neg_score > 0,
     }
 
-
 def score_filename(name: str) -> int:
     """Bonus score based on filename analysis (before content extraction)."""
     n = name.lower()
@@ -627,14 +612,12 @@ def score_filename(name: str) -> int:
 
     return score
 
-
 def check_filename_junk(name: str) -> bool:
     n = name.lower()
     for pat in EXCLUDE_FILENAME:
         if re.search(pat, n):
             return True
     return False
-
 
 # ── File-level vetting ────────────────────────────────────────────────
 
@@ -728,7 +711,6 @@ def vet_file(filepath: Path) -> dict:
             "content_preview": content_preview,
             "matched_patterns": result.get("matched_patterns", []),
         }
-
 
 # ── Main ──────────────────────────────────────────────────────────────
 
@@ -857,7 +839,6 @@ def main():
     print(f"  Non-bpvsbuckler: {non_bpv_removed} REMOVED")
     print(f"  TOTAL: {kept} KEPT, {removed} REMOVED")
     print(f"{'=' * 70}")
-
 
 if __name__ == "__main__":
     main()

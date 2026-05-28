@@ -1,5 +1,13 @@
 # Changelog
 
+## [wayback-v0.0.0.08-aws] - 2026-05-28
+
+### Fixed
+- fix(wayback): Remove excessive blank lines
+
+### Changed
+- ux(wayback): Add cookie consent banner for GDPR compliance
+
 ## [wayback-v0.0.0.07] - 2026-05-27
 
 ### Fixed
