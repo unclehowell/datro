@@ -1,4 +1,4 @@
-name = "financecheque-flywheel"
+name = "datro-flywheel"
 main = "src/index.js"
 compatibility_date = "2025-01-01"
 
@@ -7,3 +7,7 @@ crons = ["30 * * * *"]
 
 [env.production]
 vars = { ENVIRONMENT = "production" }
+
+[[kv_namespaces]]
+binding = "FLYWHEEL_STATE"
+id = "REPLACE_WITH_YOUR_KV_NAMESPACE_ID"

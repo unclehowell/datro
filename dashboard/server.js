@@ -298,7 +298,7 @@ app.post('/api/branches/:branch/files/:side/:filename', async (req, res) => {
   }
 });
 
-const APP_VERSION = '0.0.0.19';
+const APP_VERSION = '0.0.0.02';
 
 app.get('/api/version', async (req, res) => {
     res.json({ version: APP_VERSION });

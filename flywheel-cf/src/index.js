@@ -212,7 +212,7 @@ const CNEI_SELF_IMPROVEMENTS = [
     fix: (code) => {
       const endpoint = `
     if (url.pathname === '/__version') {
-      return new Response(JSON.stringify({ version: '0.0.0.19', sourceSha: 'SOURCE_SHA_PLACEHOLDER' }), {
+      return new Response(JSON.stringify({ version: '0.0.0.02', sourceSha: 'SOURCE_SHA_PLACEHOLDER' }), {
         headers: { 'Content-Type': 'application/json' }
       });
     }`;
@@ -360,7 +360,7 @@ async function createGitTag(token, tagName, commitSha) {
 }
 
 async function getMaxBranchReleaseNum(token, branch) {
-  let maxNum = 0, page = 1;
+  let count = 0, page = 1;
   while (true) {
     const resp = await ghFetch(
       `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=100&page=${page}`,
@@ -370,17 +370,13 @@ async function getMaxBranchReleaseNum(token, branch) {
     if (!Array.isArray(releases) || releases.length === 0) break;
     for (const r of releases) {
       if (r.tag_name && r.tag_name.startsWith(`${branch}-v`)) {
-        const segs = r.tag_name.split('-v');
-        if (segs.length === 2) {
-          const num = parseInt(segs[1].split('.')[3], 10);
-          if (!isNaN(num) && num > maxNum) maxNum = num;
-        }
+        count++;
       }
     }
     if (releases.length < 100) break;
     page++;
   }
-  return maxNum;
+  return count;
 }
 
 async function getLatestReleaseDate(token, branch) {
@@ -455,15 +451,19 @@ async function verifyRelease(token, tagName) {
 }
 
 function formatVersion(num) {
-  const patchSlot = Math.floor(num / 100);
-  const buildNum = num % 100;
-  return `0.0.${patchSlot}.${String(buildNum).padStart(2, '0')}`;
+  const n = num - 1;
+  const build = n % 100;
+  const patch = Math.floor(n / 100) % 10;
+  const minor = Math.floor(n / 1000) % 10;
+  const major = Math.floor(n / 10000) % 10;
+  return `${major}.${minor}.${patch}.${String(build).padStart(2, '0')}`;
 }
 
 function selectBranch(state) {
   let branch;
   if (state.cnei_queue >= 1) {
-    log('CNEI_QUEUE: >=1, selecting cnei branch for self-improvement');
+    branch = 'cnei';
+    console.log('CNEI_QUEUE: >=1, selecting cnei branch for self-improvement');
     state.cnei_queue = 0;
   } else {
     branch = REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length];
