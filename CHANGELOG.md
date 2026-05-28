@@ -1,5 +1,13 @@
 # Changelog
 
+## [ui-v0.0.0.09-aws] - 2026-05-28
+
+### Fixed
+- fix(ui): Remove excessive blank lines
+
+### Changed
+- ux(ui): Add loading state styling for better UX
+
 ## [ui-v0.0.0.08] - 2026-05-27
 
 ### Fixed
