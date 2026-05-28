@@ -1,5 +1,13 @@
 # Changelog
 
+## [ceo-v0.0.0.12-aws] - 2026-05-28
+
+### Fixed
+- fix(ceo): Remove excessive blank lines
+
+### Changed
+- ux(ceo): Improve text color contrast for readability
+
 ## [ceo-v0.0.0.11-aws] - 2026-05-28
 
 ### Fixed
