@@ -510,3 +510,66 @@ input[type="range"]::-webkit-slider-thumb {
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--dash-panel); border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: var(--dash-accent); }
+
+/* ── MCP Panel ── */
+
+.mcp-panel {
+    background: rgba(0,0,0,0.85);
+    border: 1px solid var(--dash-accent);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    max-height: 200px;
+}
+
+.mcp-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.3rem 0.6rem;
+    background: rgba(0,242,255,0.06);
+    border-bottom: 1px solid rgba(0,242,255,0.15);
+}
+
+.mcp-header h3 {
+    font-size: 0.55rem;
+    color: var(--dash-accent);
+    letter-spacing: 1px;
+}
+
+#mcp-results {
+    flex: 1;
+    overflow-y: auto;
+    padding: 0.4rem 0.6rem;
+    font-size: 0.6rem;
+}
+
+.mcp-loading { color: var(--dash-dim); font-style: italic; }
+.mcp-target { color: var(--dash-dim); margin-bottom: 0.3rem; font-size: 0.55rem; }
+.mcp-target code { color: var(--dash-accent); }
+
+.mcp-tool {
+    padding: 0.3rem;
+    margin-bottom: 0.25rem;
+    border-left: 2px solid var(--dash-panel);
+    border-radius: 0 4px 4px 0;
+    background: rgba(255,255,255,0.02);
+}
+.mcp-tool.mcp-ok { border-left-color: var(--success); }
+.mcp-tool.mcp-error { border-left-color: var(--danger); }
+
+.mcp-tool-header { display: flex; align-items: center; gap: 0.4rem; }
+.mcp-score {
+    font-weight: bold;
+    color: var(--dash-accent);
+    font-family: monospace;
+}
+.mcp-err-msg { color: var(--danger); font-size: 0.55rem; }
+.mcp-summary { color: var(--dash-text); margin-top: 0.15rem; font-size: 0.58rem; }
+.mcp-issues { list-style: none; margin-top: 0.15rem; padding-left: 0.5rem; }
+.mcp-issues li { font-size: 0.55rem; padding: 0.05rem 0; }
+.mcp-issue-error { color: var(--danger); }
+.mcp-issue-warning { color: var(--warning); }
+.mcp-issue-info { color: var(--dash-dim); }
+.mcp-risk { color: var(--danger); font-weight: bold; margin-top: 0.15rem; font-size: 0.55rem; }

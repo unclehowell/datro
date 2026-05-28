@@ -460,4 +460,44 @@ function appendMessage(sender, text) {
     chatMessages.scrollTop = chatMessages.scrollHeight;
 }
 
+async function runMcpScan() {
+    const btn = document.getElementById('btn-mcp');
+    btn.disabled = true;
+    btn.textContent = 'SCANNING...';
+    const panel = document.getElementById('mcp-panel');
+    const results = document.getElementById('mcp-results');
+    panel.style.display = 'block';
+    results.innerHTML = '<div class="mcp-loading">Running MCP scans (EAA accessibility + AccessScore WCAG)...</div>';
+    try {
+        const branch = document.querySelector('.tree-item.active')?.dataset?.branch || 'cnei';
+        const target = `https://${branch}.datro.directory`;
+        const res = await fetch(`/api/mcp?url=${encodeURIComponent(target)}`);
+        const data = await res.json();
+        let html = `<div class="mcp-target">Target: <code>${target}</code></div>`;
+        for (const [toolId, result] of Object.entries(data.results || {})) {
+            html += `<div class="mcp-tool ${result.error ? 'mcp-error' : 'mcp-ok'}">`;
+            html += `<div class="mcp-tool-header"><strong>${toolId}</strong>`;
+            if (result.score != null) html += ` <span class="mcp-score">${result.score}/100</span>`;
+            if (result.error) html += ` <span class="mcp-err-msg">ERROR: ${result.error}</span>`;
+            html += `</div>`;
+            if (result.summary) html += `<div class="mcp-summary">${result.summary}</div>`;
+            if (result.issues && result.issues.length > 0) {
+                html += `<ul class="mcp-issues">`;
+                for (const issue of result.issues.slice(0, 10)) {
+                    html += `<li class="mcp-issue-${issue.severity || 'info'}">[${issue.severity}] ${issue.name}</li>`;
+                }
+                html += `</ul>`;
+            }
+            if (result.risk) html += `<div class="mcp-risk">Legal risk: ${result.risk}</div>`;
+            html += `</div>`;
+        }
+        results.innerHTML = html;
+    } catch (err) {
+        results.innerHTML = `<div class="mcp-error">Scan failed: ${err.message}</div>`;
+    } finally {
+        btn.disabled = false;
+        btn.textContent = 'MCP SCAN';
+    }
+}
+
 init();

@@ -299,9 +299,22 @@ app.post('/api/branches/:branch/files/:side/:filename', async (req, res) => {
 });
 
 const APP_VERSION = '0.0.0.02';
+const CF_WORKER_URL = process.env.CF_WORKER_URL || 'https://datro-flywheel.righteous.workers.dev';
 
 app.get('/api/version', async (req, res) => {
     res.json({ version: APP_VERSION });
+});
+
+// MCP scan proxy (reaches CF worker /__mcp)
+app.get('/api/mcp', async (req, res) => {
+    try {
+        const target = req.query.url || 'https://datro.directory';
+        const cfResp = await fetch(`${CF_WORKER_URL}/__mcp?url=${encodeURIComponent(target)}`);
+        const data = await cfResp.json();
+        res.json(data);
+    } catch (err) {
+        res.status(502).json({ error: err.message });
+    }
 });
 
 // Health / Status

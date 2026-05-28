@@ -10,6 +10,8 @@ const ALL_BRANCHES = [
 const REGULAR_BRANCHES = ALL_BRANCHES.filter(b => b !== 'cnei');
 const COOLDOWN_SECONDS = 3600;
 const CNEI_COOLDOWN = 1800;
+const DOMAIN = 'datro.directory';
+const GITHUB_REPO_OBJ = { owner: 'unclehowell', repo: 'datro' };
 
 const startTime = Math.floor(Date.now() / 1000);
 
@@ -298,8 +300,94 @@ function ghHeaders(token) {
   return {
     'Authorization': `Bearer ${token}`,
     'Accept': 'application/vnd.github.v3+json',
-    'User-Agent': 'flywheel-cf-worker'
+    'User-Agent': 'datro-flywheel'
   };
+}
+
+// ── MCP Scan Tools ──────────────────────────────────────────────────────────
+
+const MCP_TOOLS = {
+  eaa: {
+    url: 'https://eaa.analysis.ie/check',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: (url) => JSON.stringify({ url }),
+    parse: (json) => ({
+      score: json.overall_score,
+      summary: `WCAG ${json.summary?.compliance_level || 'unknown'} — ${json.summary?.passed_checks || 0}/${json.summary?.total_checks || 0} checks passed`,
+      issues: (json.summary?.priority_issues || []).map(i => ({ severity: 'error', name: i })),
+      raw: json
+    })
+  },
+  accessscore: {
+    url: 'https://accessscore.autonomous-claude.com/api/scan',
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: (url) => JSON.stringify({ url }),
+    parse: (json) => ({
+      score: json.score,
+      summary: `ADA/WCAG score ${json.score}/100`,
+      issues: (json.issues || []).map(i => ({ severity: i.severity || 'warning', name: i.name })),
+      risk: json.risk?.level,
+      raw: json
+    })
+  }
+};
+
+async function runMcpScan(env, toolId, targetUrl) {
+  const tool = MCP_TOOLS[toolId];
+  if (!tool) return { toolId, error: 'unknown_tool', score: null };
+
+  try {
+    const resp = await fetch(tool.url, {
+      method: tool.method,
+      headers: tool.headers,
+      body: tool.body(targetUrl)
+    });
+    if (!resp.ok) {
+      const text = await resp.text().catch(() => '');
+      return { toolId, error: `HTTP ${resp.status}: ${text.slice(0, 100)}`, score: null };
+    }
+    const json = await resp.json();
+    return { toolId, ...tool.parse(json), error: null };
+  } catch (err) {
+    return { toolId, error: err.message, score: null };
+  }
+}
+
+async function runMcpScans(env, targetUrl) {
+  const results = {};
+  const promises = [];
+  for (const toolId of Object.keys(MCP_TOOLS)) {
+    promises.push(
+      runMcpScan(env, toolId, targetUrl).then(r => { results[toolId] = r; })
+    );
+  }
+  await Promise.allSettled(promises);
+  return results;
+}
+
+function formatMcpReleaseNotes(mcpResults, branch) {
+  const lines = [];
+  lines.push(`### MCP Scan Results (${branch})`);
+  lines.push('');
+  for (const [toolId, result] of Object.entries(mcpResults)) {
+    if (result.error) {
+      lines.push(`- **${toolId}**: error — ${result.error}`);
+      continue;
+    }
+    lines.push(`- **${toolId}**: ${result.summary || `score ${result.score}`}`);
+    if (result.issues && result.issues.length > 0) {
+      for (const issue of result.issues.slice(0, 5)) {
+        lines.push(`  - [${issue.severity}] ${issue.name}`);
+      }
+    }
+    if (result.risk) {
+      lines.push(`  - Legal risk: ${result.risk}`);
+    }
+  }
+  lines.push('');
+  return lines.join('\n');
 }
 
 async function ghFetch(url, token, options = {}) {
@@ -823,9 +911,8 @@ async function applySelfImprovements(token, branch) {
 
 // ── Process Branch ────────────────────────────────────────────────────────────
 
-async function createSimpleRelease(token, branch, tagName, version) {
-  // Fallback: simple release when no best-practice fix was possible
-  const notes = [
+async function createSimpleRelease(token, branch, tagName, version, notesOverride) {
+  const notes = notesOverride || [
     `## [${tagName}]`,
     ``,
     `### Changed`,
@@ -869,22 +956,44 @@ async function processBranch(env, branch) {
     selfImprovements = await applySelfImprovements(token, branch);
   }
 
+  // Run MCP scans for data-driven UX/bug insight
+  const branchUrl = `https://${branch}.${DOMAIN || 'datro.directory'}`;
+  const mcpResults = await runMcpScans(env, branchUrl);
+  const mcpSection = formatMcpReleaseNotes(mcpResults, branch);
+
   // Try to apply best-practice fix
   const bpResult = await findAndApplyBestPractice(token, branch);
 
   let ok;
   if (bpResult) {
-    // Create tag on the new commit
+    // Append MCP results to release notes
+    const enhancedNotes = bpResult.notes + '\n\n' + mcpSection;
     await createGitTag(token, tagName, bpResult.commit);
-    const release = await createGitHubRelease(token, tagName, branch, version, bpResult.notes);
+    const release = await createGitHubRelease(token, tagName, branch, version, enhancedNotes);
     if (release) await verifyRelease(token, tagName);
     ok = true;
     console.log(`Best-practice release ${tagName}: ${bpResult.bestPractice.name}`);
   } else {
-    // No fix could be applied — create simple release
+    // Simple release with MCP data
+    const notes = [
+      `## [${tagName}]`,
+      ``,
+      `### Changed`,
+      `- Automated best-practice audit: no Tier 1-2 gaps found in \`index.html\``,
+      `- Branch-specific cache/header review complete`,
+      `- Continuous integration release for ${branch}`,
+      ``,
+      `### Audit Summary`,
+      `- Branch: \`${branch}\``,
+      `- Category: ${computeBranchCategory(branch)}`,
+      `- Best practices checked: ${BEST_PRACTICES.length}`,
+      `- All applicable fixes already applied`,
+      ``,
+      mcpSection
+    ].join('\n');
     const commitSha = await getDefaultBranchSha(token, branch);
     await createGitTag(token, tagName, commitSha);
-    const release = await createSimpleRelease(token, branch, tagName, version);
+    const release = await createSimpleRelease(token, branch, tagName, version, notes);
     if (release) await verifyRelease(token, tagName);
     ok = true;
     console.log(`Audit-only release ${tagName} (no improvements needed)`);
@@ -1010,17 +1119,27 @@ export default {
       const state = await getRotationState(env);
       const cneiRelease = await env.FLYWHEEL_STATE.get('last_cnei_release', 'json');
       const lastRun = await env.FLYWHEEL_STATE.get('last_run_result', 'json');
+      const mcpCache = await env.FLYWHEEL_STATE.get('mcp_last_scan', 'json');
       return new Response(JSON.stringify({
         ...state,
         last_cnei_release: cneiRelease,
         last_run: lastRun,
+        mcp: mcpCache,
         uptime: Math.floor(Date.now() / 1000 - (startTime || Date.now()))
       }, null, 2), {
         headers: { 'Content-Type': 'application/json' }
       });
     }
+    if (url.pathname === '/__mcp') {
+      const target = url.searchParams.get('url') || 'https://datro.directory';
+      const results = await runMcpScans(env, target);
+      await env.FLYWHEEL_STATE.put('mcp_last_scan', JSON.stringify({ url: target, results, timestamp: Date.now() }));
+      return new Response(JSON.stringify({ url: target, results }, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
 
-    return new Response('Flywheel Worker. Endpoints: /__cron, /__sync_cron, /__state, /__reset, /__debug?branch=X, /__status', {
+    return new Response('Flywheel Worker. Endpoints: /__cron, /__sync_cron, /__state, /__reset, /__debug?branch=X, /__status, /__mcp?url=X', {
       headers: { 'Content-Type': 'text/plain' }
     });
   }

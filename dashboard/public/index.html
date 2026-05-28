@@ -28,6 +28,7 @@
         <div class="header-actions">
             <button onclick="toggleModal('telemetry-modal')" class="btn-head">TELEMETRY</button>
             <button onclick="toggleModal('comms-popup')" class="btn-head">INTERCOM</button>
+            <button onclick="runMcpScan()" class="btn-head" id="btn-mcp">MCP SCAN</button>
         </div>
     </header>
 
@@ -120,6 +121,14 @@
                     </div>
                 </div>
             </div>
+        </section>
+
+        <section class="mcp-panel" id="mcp-panel" style="display:none">
+            <div class="mcp-header">
+                <h3>MCP SCAN RESULTS</h3>
+                <button onclick="document.getElementById('mcp-panel').style.display='none'" class="btn-mini">X</button>
+            </div>
+            <div id="mcp-results"></div>
         </section>
     </main>
 
