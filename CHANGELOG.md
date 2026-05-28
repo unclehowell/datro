@@ -1,5 +1,13 @@
 # Changelog
 
+## [ccan-v0.0.0.21-aws] - 2026-05-28
+
+### Fixed
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Add legal footer with privacy/terms/contact links
+
 ## [ccan-v0.0.0.20] - 2026-05-27
 
 ### Fixed
