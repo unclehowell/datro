@@ -1,5 +1,13 @@
 # Changelog
 
+## [subrepos-v0.0.0.08-aws] - 2026-05-28
+
+### Fixed
+- fix(subrepos): Remove excessive blank lines
+
+### Changed
+- ux(subrepos): Fix z-index stacking for proper element layering
+
 ## [subrepos-v0.0.0.07] - 2026-05-27
 
 ### Fixed
