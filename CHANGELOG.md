@@ -1,5 +1,13 @@
 # Changelog
 
+## [dash-v0.0.0.09-aws] - 2026-05-28
+
+### Fixed
+- fix(dash): Remove excessive blank lines
+
+### Changed
+- ux(dash): Add minimum tap target sizes for mobile UX
+
 ## [dash-v0.0.0.08] - 2026-05-27
 
 ### Fixed

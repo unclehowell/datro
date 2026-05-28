@@ -22,7 +22,6 @@ logger = logging.getLogger(__name__)
 CONFIG_FILE = Path(__file__).parent.parent / "subproxy" / "config" / "machines.json"
 PROVIDERS_FILE = Path(__file__).parent.parent / "subproxy" / "config" / "providers.json"
 
-
 class Dashboard:
     def __init__(self, port=8080):
         self.port = port
@@ -361,7 +360,6 @@ class Dashboard:
     def run(self):
         logger.info(f"Starting dashboard on port {self.port}")
         web.run_app(self.app, host="0.0.0.0", port=self.port)
-
 
 if __name__ == "__main__":
     port = int(os.environ.get("DASHBOARD_PORT", 8080))
