@@ -1,5 +1,13 @@
 # Changelog
 
+## [ccan-v0.0.0.22-aws] - 2026-05-28
+
+### Fixed
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Add skip-to-content link for keyboard accessibility
+
 ## [ccan-v0.0.0.21-aws] - 2026-05-28
 
 ### Fixed
