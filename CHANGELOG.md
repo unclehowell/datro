@@ -1,5 +1,13 @@
 # Changelog
 
+## [wave-v0.0.0.09-aws] - 2026-05-28
+
+### Fixed
+- fix(wave): Remove excessive blank lines
+
+### Changed
+- ux(wave): Add breadcrumb navigation structure for UX
+
 ## [wave-v0.0.0.08] - 2026-05-27
 
 ### Fixed
