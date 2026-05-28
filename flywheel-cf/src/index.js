@@ -212,7 +212,7 @@ const CNEI_SELF_IMPROVEMENTS = [
     fix: (code) => {
       const endpoint = `
     if (url.pathname === '/__version') {
-      return new Response(JSON.stringify({ version: 'v4', sourceSha: 'SOURCE_SHA_PLACEHOLDER' }), {
+      return new Response(JSON.stringify({ version: '0.0.0.19', sourceSha: 'SOURCE_SHA_PLACEHOLDER' }), {
         headers: { 'Content-Type': 'application/json' }
       });
     }`;

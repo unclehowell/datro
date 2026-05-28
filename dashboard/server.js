@@ -298,12 +298,7 @@ app.post('/api/branches/:branch/files/:side/:filename', async (req, res) => {
   }
 });
 
-// Version
-let APP_VERSION = '0.0.0';
-try {
-    const pkg = JSON.parse(fs.readFileSync(path.join(__dirname, 'package.json'), 'utf8'));
-    APP_VERSION = pkg.version || '0.0.0';
-} catch {}
+const APP_VERSION = '0.0.0.19';
 
 app.get('/api/version', async (req, res) => {
     res.json({ version: APP_VERSION });
