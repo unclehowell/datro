@@ -1,5 +1,11 @@
 # Changelog
 
+## [althea-v0.0.0.12-aws] - 2026-05-28
+
+### Fixed
+### Changed
+- ux(althea): Add legal footer with privacy/terms/contact links
+
 ## [althea-v0.0.0.11] - 2026-05-27
 
 ### Fixed
