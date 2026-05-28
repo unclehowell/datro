@@ -1,5 +1,15 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.09-aws] - 2026-05-28
+
+### Fixed
+- fix(bpvsbuckler): Add proper title to 404 page for SEO
+- fix(bpvsbuckler): Create Terms of Service page for legal compliance
+- fix(bpvsbuckler): Remove excessive blank lines
+
+### Changed
+- ux(bpvsbuckler): Add cookie consent banner for GDPR compliance
+
 ## [bpvsbuckler-v0.0.0.10] - 2026-05-26
 
 ### Added
