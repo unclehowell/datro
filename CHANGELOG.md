@@ -1,5 +1,13 @@
 # Changelog
 
+## [datro-v0.0.0.10-aws] - 2026-05-28
+
+### Fixed
+- fix(datro): Remove excessive blank lines
+
+### Changed
+- ux(datro): Add hover styles for interactive elements
+
 ## [datro-v0.0.0.09] - 2026-05-27
 
 ### Fixed

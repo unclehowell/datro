@@ -34,7 +34,6 @@ Nov-13 - Test A - TEST B - TEST C - TEST D - CLAUD 1 - CLAUD 2
 
 Mar-25 - Added a sitemap generator script in sub-directory `sitemap` - TEST  
 
-
 ## [-datro.06] - Q2/2022
 
 ### Fixed
@@ -50,7 +49,6 @@ Feb-22 - Security Fix `ansi-regex >=5.0.1` & `engine.io >=4.1.2` in `static/datr
 
 ### Removed
 Dec-11 - Removed the `academy link` because its a very incomplete page  
-
 
 ## [-datro.04] - Q3/2021
 
@@ -102,13 +100,11 @@ Apr-05 - Changed the semantic version and the prefix of this directory - the ful
 ### Removed
 Jun-25 - Removed `))` at the start of `static/datro/html/statistics/website.html` - typo error, shouldn't be there   
 
-
 ### Fixed
 May-04 - Security Vunerability fixed - https://github.com/websockets/ws/commit/00c425ec77993773d823f018f64a5c44e17023ff
 May-04 - An experimental bash script (`monoreapo/analytics/run.sh`) removed lines while injecting/removing google analytics script  
 Apr-24 - Carousel in index.html didn't work offline, fixed it by replacing `bootstrap.min.js` with an offline copy  
 Apr-05 - There was a security vunerablity in html/videos/package-lock.json - fixed it as per github's suggestion (upping the version of a package to the latest)  
-
 
 ### Ideas
 
@@ -133,7 +129,6 @@ Jan-31 - Html/statistics/website.html - commit comments weren't showing. simple 
 ### Removed
 Mar-23 - Bulk removed ® symbol, since this is now all GNU GPL   
 Jan-31 - Deleted directories labelled old as part of typical housekeeping   
-
 
 ## [0.0.1] - Q3/2020
 
