@@ -462,8 +462,8 @@ function formatVersion(num) {
 
 function selectBranch(state) {
   let branch;
-  if (state.cnei_queue >= 2) {
-    branch = 'cnei';
+  if (state.cnei_queue >= 1) {
+    log('CNEI_QUEUE: >=1, selecting cnei branch for self-improvement');
     state.cnei_queue = 0;
   } else {
     branch = REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length];
