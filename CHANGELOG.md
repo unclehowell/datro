@@ -1,5 +1,13 @@
 # Changelog
 
+## [llmwiki-v0.0.0.09-aws] - 2026-05-28
+
+### Fixed
+- fix(llmwiki): Remove excessive blank lines
+
+### Changed
+- ux(llmwiki): Add touch-action CSS for mobile responsiveness
+
 ## [llmwiki-v0.0.0.08] - 2026-05-27
 
 ### Fixed
