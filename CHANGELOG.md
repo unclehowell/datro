@@ -1,5 +1,13 @@
 # Changelog
 
+## [dcc-v0.0.0.11] - 2026-05-29
+
+### Fixed
+- fix(dcc): Remove excessive blank lines
+
+### Changed
+- ux(dcc): Add focus-visible styles for keyboard navigation
+
 ## [dcc-v0.0.0.10-aws] - 2026-05-28
 
 ### Fixed
