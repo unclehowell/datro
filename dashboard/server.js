@@ -298,7 +298,7 @@ app.post('/api/branches/:branch/files/:side/:filename', async (req, res) => {
   }
 });
 
-const APP_VERSION = '0.0.0.02';
+const APP_VERSION = '0.0.0.03';
 const CF_WORKER_URL = process.env.CF_WORKER_URL || 'https://datro-flywheel.righteous.workers.dev';
 
 app.get('/api/version', async (req, res) => {
