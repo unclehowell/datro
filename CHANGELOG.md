@@ -1,5 +1,13 @@
 # Changelog
 
+## [library-v0.0.0.11] - 2026-05-29
+
+### Fixed
+- fix(library): Remove excessive blank lines
+
+### Changed
+- ux(library): Add loading state styling for better UX
+
 ## [library-v0.0.0.10-aws] - 2026-05-28
 
 ### Fixed

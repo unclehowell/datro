@@ -18,12 +18,10 @@ unset CDPATH
 #           Version 0.1 - datro.xyz
 #................................................
 
-
 printf "\n\n${RED}DATRO${NC} - Fetching Latest Copy of - Master (Creditors) Register \n\n"
 cd source/_static/custom
 curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPvPc3dndOPG0JzXX81tSorsaQAGt5Y8_LIbhh76Ri5HBAWVkFrshW98lPhtN8iizS73YmSzqyfnHw/pub?gid=560998820&single=true&output=csv'  --location -o creditors-master-register.csv
 cd ../../../
-
 
 printf "\n\n${RED}DATRO${NC} - Fetching Creditor Account - UID: 201 (J-Rushton):  \n\n"
 cd source/_static/custom
@@ -45,7 +43,6 @@ curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPvPc3dndOPG0JzXX81tSo
 cut -d, -f 1-5 creditor-account-203.csv > temp-creditor-account-203.csv
 mv temp-creditor-account-203.csv creditor-account-203.csv
 cd ../../../
-
 
 printf "\n\n${RED}DATRO${NC} - Fetching Creditor Account - UID: 204 (Family-Gill):  \n\n"
 cd source/_static/custom
@@ -96,14 +93,12 @@ cut -d, -f 1-5 creditor-account-210.csv > temp-creditor-account-210.csv
 mv temp-creditor-account-210.csv creditor-account-210.csv
 cd ../../../
 
-
 printf "\n\n${RED}DATRO${NC} - Fetching Creditor Account - UID: 211 (E-Coldwell):  \n\n"
 cd source/_static/custom
 curl -f 'https://docs.google.com/spreadsheets/d/e/2PACX-1vTPvPc3dndOPG0JzXX81tSorsaQAGt5Y8_LIbhh76Ri5HBAWVkFrshW98lPhtN8iizS73YmSzqyfnHw/pub?gid=371901771&single=true&output=csv'  --location -o creditor-account-211.csv
 cut -d, -f 1-5 creditor-account-211.csv > temp-creditor-account-211.csv
 mv temp-creditor-account-211.csv creditor-account-211.csv
 cd ../../../
-
 
 printf "\n\n${RED}DATRO${NC} - Fetching Creditor Account - UID: 212 (P-Caines):  \n\n"
 cd source/_static/custom
