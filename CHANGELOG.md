@@ -1,5 +1,13 @@
 # Changelog
 
+## [dash-v0.0.0.10-aws] - 2026-05-29
+
+### Fixed
+- fix(dash): Remove excessive blank lines
+
+### Changed
+- ux(dash): Add smooth scrolling for better UX
+
 ## [dash-v0.0.0.09-aws] - 2026-05-28
 
 ### Fixed

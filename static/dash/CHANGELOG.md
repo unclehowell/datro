@@ -12,10 +12,6 @@
 
 ## [Unreleased]
 
-
-
-
-
 ## [0.0.2.2] - 2026-05-17
 ### Fixed
 - Closed unclosed HTML tags in dashboard/index.html: html, body, div, div, h2
