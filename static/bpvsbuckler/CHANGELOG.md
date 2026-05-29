@@ -23,6 +23,20 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [bpvsbuckler-v0.2.0.06] - 2026-05-29
+
+### Added
+- **HER Record GGAT02038s** — Official Glamorgan-Gwent HER record for Great House Farm retrieved from Heneb (Archwilio). Independently confirms demolition by BP Properties Ltd on 6 December 1988, medieval origins (C12th-C14th pottery), Vaughan family tenure from mid C16th, Bute Estate acquisition early C19th, and medieval ironwork at National Museum of Wales.
+- **HER Research File** — `research/her-record-ggat02038s.txt` with full HER record transcription, related events table, and significance analysis for the BP vs Buckler case.
+- **Timeline Slide: 6 Dec 1988 — HER Record** — `static/timeline/1988-her-record-demolition.html` self-contained timeline entry documenting the HER record with full narrative, timeline, and significance analysis.
+- **Evidence Entry** — HER record added to `evidence/data.json` under 1988 with links to original Archwilio record and research analysis.
+- **Cards added to index.html and research/index.html** linking to the new HER research file and timeline slide.
+
+### Changed
+- Version bumped to bpvsbuckler-v0.2.0.06.
+
+---
+
 ## [bpvsbuckler-v0.2.0.05] - 2026-05-17
 
 ### Added
