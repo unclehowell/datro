@@ -1,5 +1,13 @@
 # Changelog
 
+## [subrepos-v0.0.0.09] - 2026-05-29
+
+### Fixed
+- fix(subrepos): Remove excessive blank lines
+
+### Changed
+- ux(subrepos): Add cookie consent banner for GDPR compliance
+
 ## [subrepos-v0.0.0.08-aws] - 2026-05-28
 
 ### Fixed
