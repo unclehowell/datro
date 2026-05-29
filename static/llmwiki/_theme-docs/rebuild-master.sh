@@ -3,7 +3,6 @@
 
 #unset CDPATH
 
-
 #.................................................
 #         DATRO Consortium - 2022 Copyleft
 #.................................................
@@ -19,7 +18,6 @@
 #................................................
 #                   datro.xyz
 #................................................
-
 
 function ProgressBar {
 	let _progress=(${1}*100/${2}*100)/100
@@ -48,19 +46,15 @@ done
 
 sleep 1 &&
 
-
 # custom e.g. pull in latest custom data e.g. fiscal
 #sh custom.sh 2> /dev/null &&
 touch /tmp/build.log 2> /dev/null &&
 make clean > /tmp/build.log 2>&1
 
-
-
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
 echo "  ... ABORT 1 " && cat /tmp/build.log && exit 1  
 fi
-
 
 printf "\e[2;3;33m Done! \n\e[0m"
 
@@ -71,7 +65,6 @@ do
 	ProgressBar ${number} ${_end}
 done
 
-
 make gettext > /tmp/build.log 2>&1 &&
 # copy .po into source/locales/{language-code}/LC_MESSAGES/
 sleep 2 &&
@@ -80,7 +73,6 @@ sleep 2 &&
 chown -R $user:$user ./
 make html > /tmp/build.log 2>&1 &&
 sleep 2 &&
-
 
 cd build &&
 mkdir en &&
@@ -97,12 +89,10 @@ sleep 2 &&
 sphinx-build -b html source build/html/fr -D language='fr' > /tmp/build.log 2>&1 &&
 sleep 2 &&
 
-
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
 echo "  ... ABORT 2 " && cat /tmp/build.log && exit 1  
 fi
-
 
 cd build
 cd html
@@ -122,12 +112,10 @@ echo '</html>'
 cd ..
 cd ..
 
-
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
 echo "  ... ABORT 3 " && cat /tmp/build.log && exit 1  
 fi
-
 
 printf "\e[2;3;33m Done! \n\e[0m"
 
@@ -138,7 +126,6 @@ do
         sleep 0.1
         ProgressBar ${number} ${_end}
 done
-
 
 cd build
 mkdir -p pdfs/{en,es,de,fr}
@@ -151,12 +138,10 @@ sleep 2 && cd build && mv latex/*.pdf pdfs/en && cd latex && find . -type f ! -i
 cd ..
 cd ..
 
-
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
 echo "  ... ABORT 4 " && cat /tmp/build.log && exit 1  
 fi
-
 
 make  -e SPHINXOPTS="-D language='es'" latexpdf  --keep-going --silent > /tmp/build.log 2>&1 &&
 cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/es && cd .. && cd .. &&
@@ -165,7 +150,6 @@ cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/de
 make  -e SPHINXOPTS="-D language='fr'" latexpdf  --keep-going --silent > /tmp/build.log 2>&1 &&
 cd build/latex && find . -type f ! -iname "*.pdf" -delete && mv *.pdf ../pdfs/fr && cd .. && cd .. &&
 
-
 mv build/pdfs/{en,es,de,fr} build/latex
 rm -r build/pdfs
 
@@ -173,7 +157,6 @@ rm -r build/pdfs
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
 echo "  ... ABORT 5 " && cat /tmp/build.log && exit 1  
 fi
-
 
 cd build
 cd latex
@@ -225,7 +208,6 @@ echo '</html>'
 cd ..
 cd ..
 
-
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
 echo "  ... ABORT 6 " && cat /tmp/build.log && exit 1  
@@ -245,7 +227,6 @@ if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then
 echo "  ... ABORT 7 " && cat /tmp/build.log && exit 1  
 fi
 
-
 # Select a color theme (default blue)
 #cp -r ../../../_theme-docs/grey.sh grey.sh 2> /dev/null && mv ./grey.sh ./theme.sh &&
 cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && mv ./blue.sh ./theme.sh &&
@@ -260,12 +241,10 @@ rm -r ./theme.sh
 
 sleep 2 &&
 
-
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
 echo "  ... ABORT 8 " && cat /tmp/build.log && exit 1  
 fi
-
 
 cd build
 cd html
@@ -285,7 +264,6 @@ echo '</html>'
 cd ..
 cd ..
 
-
 # error check
 if [[ ! ${PWD#${PWD%/*/*/*}/*/*/} =~ ^(latest)$ ]]; then 
 echo "  ... ABORT 9 " && cat /tmp/build.log && exit 1  
@@ -296,7 +274,6 @@ printf "\e[2;3;33m Done! \n\e[0m"
 printf "\n\e[2;3;33m Step 5 of 5. Grabbing the latest auto-rebuilder \n\e[0m\n"
 sleep 0.1 &&
 printf "\n\e[2;3;33m ----------------------------------------------------- \n\e[0m\n"
-
 
 # making sure the auto-rebuild.sh is the latest version, for the next auto-build
 rm -r auto-rebuild.sh 2> /dev/null &
@@ -322,16 +299,12 @@ printf "\e[2;3;33m Preview Link (adjust to suite your local machine) \n\e[0m\n"
 printf "\e[2;3;33m http://localhost/${PWD#${PWD%/*/*/*/*/*/*}/} \n\e[0m\n"
 cd latest
 
-
-
-
 # 1. PDF Business - How to doctor a page after publication e.g. page 16
 # ```
 # pdftk document.pdf cat 16 output target.pdf
 # pdftk document.pdf cat 1-15 output prior.pdf
 # pdftk document.pdf cat 17-end output after.pdf
 # ```
-
 
 # 2. PDF to image
 # ```
@@ -360,8 +333,6 @@ cd latest
 # ```
 # pdftk A=prior.pdf B=after.pdf cat A1-16 B A17-end output document-new.pdf
 # ```
-
-
 
 # going wild here to make absultely sure the script escapes - it can hang for all sorts of reasons
 sleep 0.1 &&

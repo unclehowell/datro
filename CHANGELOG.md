@@ -1,5 +1,13 @@
 # Changelog
 
+## [llmwiki-v0.0.0.10] - 2026-05-29
+
+### Fixed
+- fix(llmwiki): Remove excessive blank lines
+
+### Changed
+- ux(llmwiki): Add breadcrumb navigation structure for UX
+
 ## [llmwiki-v0.0.0.09-aws] - 2026-05-28
 
 ### Fixed
