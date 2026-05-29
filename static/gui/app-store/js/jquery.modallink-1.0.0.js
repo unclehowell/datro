@@ -52,7 +52,6 @@
         return url + (url.indexOf("?") < 0 ? "?" : "&") + data;
     }
 
-
     var methods = {
         init: function (options) {
 
@@ -303,7 +302,6 @@
     };
 
 })(jQuery);
-
 
 $(document).keyup(function(e) {
 
