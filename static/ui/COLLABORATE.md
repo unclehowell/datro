@@ -90,7 +90,6 @@ These branches are to look something like this:
       apt install git
       ````
 
-
 2. Create a local directory to store your copy of this monorepo:
 
       ````bash
@@ -102,7 +101,6 @@ These branches are to look something like this:
 
       cd xxx
       ````
-
 
 3. Initiate the folder as a new, empty, local git repository:
 
@@ -144,7 +142,6 @@ These branches are to look something like this:
 
       rm -r checkout.sh
       ````
-
 
  - Option B: Custom configuration method:   
 
@@ -199,14 +196,12 @@ These branches are to look something like this:
       git commit -m "BRIEF SUMMARY OF YOUR CHANGES"     
       ````
 
-
 11. Then 'git push' to push your branch to GitHub
 
       ````bash
       #
        git push -u origin 'YOUR-BRANCHES-NAME'
       ````
-
 
 12. Finally make a pull request, so the administrator of the project can review your changes and merge your branch into the master branch of this proje
 
@@ -242,7 +237,6 @@ GitHub will notify you if there's a comment to respond to or when the administra
       # any issues, look for support here https://github.com/ingydotnet/git-subrepo
       ````
 
-
       ## Handy Commands
 
       ### Change permission of all files in the repo.
@@ -261,7 +255,6 @@ GitHub will notify you if there's a comment to respond to or when the administra
       ### Something weird happened with RST files, where they had to be recoverd from build/html/_source/
       ### This code bulk changes the extension on multiple files  
 
-
       #!/bin/sh
       #
 
@@ -274,7 +267,6 @@ GitHub will notify you if there's a comment to respond to or when the administra
       ## add this to /etc/apache2/apache2.conf
 
       ` IndexHeadInsert "<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\">" `
-
 
             ### Command for finding text in all files in a specific directory  
 
