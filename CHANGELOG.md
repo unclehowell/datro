@@ -1,5 +1,13 @@
 # Changelog
 
+## [wave-v0.0.0.10] - 2026-05-29
+
+### Fixed
+- fix(wave): Remove excessive blank lines
+
+### Changed
+- ux(wave): Add legal footer with privacy/terms/contact links
+
 ## [wave-v0.0.0.09-aws] - 2026-05-28
 
 ### Fixed
