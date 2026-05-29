@@ -1,5 +1,13 @@
 # Changelog
 
+## [hbnb-v0.0.0.11] - 2026-05-29
+
+### Fixed
+- fix(hbnb): Remove excessive blank lines
+
+### Changed
+- ux(hbnb): Fix z-index stacking for proper element layering
+
 ## [hbnb-v0.0.0.10-aws] - 2026-05-28
 
 ### Fixed
