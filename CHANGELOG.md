@@ -1,5 +1,15 @@
 # Changelog
 
+## [financecheque-v0.0.1.55] - 2026-05-29
+
+### Fixed
+- fix(financecheque): Create Terms of Service page for legal compliance
+- fix(financecheque): Create Contact page with form and contact details
+- fix(financecheque): Launch blog with welcome post and index page
+
+### Changed
+- ux(financecheque): Add touch-action CSS for mobile responsiveness
+
 ## [financecheque-v0.0.1.50] - 2026-05-22
 
 ### Fixed
