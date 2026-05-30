@@ -1,5 +1,11 @@
 # Changelog
 
+## [althea-v0.0.0.13] - 2026-05-30
+
+### Fixed
+### Changed
+- ux(althea): Add minimum tap target sizes for mobile UX
+
 ## [althea-v0.0.0.12-aws] - 2026-05-28
 
 ### Fixed
