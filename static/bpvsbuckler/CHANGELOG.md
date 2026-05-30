@@ -23,6 +23,22 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [bpvsbuckler-v0.2.0.07] - 2026-05-29
+
+### Added
+- **HER Record Integrated into Timeline** — GGAT02038s HER record entry (2023) added directly to the React SPA's slide chronology (`a1` array), covering:
+  - Confirmed demolition by BP Properties Ltd on 6 Dec 1988
+  - C12th-C14th pottery sherds confirming medieval occupation
+  - Medieval ironwork at National Museum of Wales (Vaughan tenure from mid C16th)
+  - Bute Estate acquisition early C19th
+  - RCAHMW Inventory and 7 related archaeological events (1990–2013)
+- **Content Extraction System** — `content/data.json` + `content/rebuild.py`: all timeline, splash, and claim content externalised from the JS bundle. Future updates: edit `data.json`, run `python3 content/rebuild.py`.
+- **Beurcracy Nav Link** — Reliable MutationObserver injects Beurcracy into the React nav alongside Home, Script, Reparations.
+
+### Changed
+- Version bumped to bpvsbuckler-v0.2.0.07.
+- `index.html`: consolidated MutationObserver scripts, removed stale HER Record nav link (content now integrated).
+
 ## [bpvsbuckler-v0.2.0.06] - 2026-05-29
 
 ### Added
