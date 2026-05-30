@@ -1,5 +1,11 @@
 # Changelog
 
+## [dash-v0.0.0.11] - 2026-05-30
+
+### Fixed
+### Changed
+- ux(dash): Add print-friendly styles for better UX
+
 ## [dash-v0.0.0.10-aws] - 2026-05-29
 
 ### Fixed
