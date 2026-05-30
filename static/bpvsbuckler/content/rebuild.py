@@ -92,6 +92,15 @@ def rebuild():
 
     print(f"Patched {os.path.basename(bundle_path)} — {data['a1'].count('year:\"')} timeline entries")
 
+    # Regenerate API/LLM/robots/sitemap files
+    script_dir = os.path.dirname(__file__)
+    print("Generating agent-friendly files...")
+    ret = os.system(f'node {os.path.join(script_dir, "generate-api.js")}')
+    if ret == 0:
+        print("Agent files regenerated.")
+    else:
+        print(f"Warning: agent file generation exited with code {ret}")
+
 if __name__ == '__main__':
     if '--extract' in sys.argv:
         extract()

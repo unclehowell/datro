@@ -23,6 +23,28 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [bpvsbuckler-v0.2.0.08] - 2026-05-30
+
+### Added
+- **HER Facts Distributed Chronologically** — 7 new standalone timeline slides drawn from GGAT02038s, each at its correct year:
+  - 1215: Medieval pottery sherds and ironwork confirming early occupation
+  - 1560: Vaughan family tenure begins (chief freehold farmers mid C16th)
+  - 1800: Bute Estate acquires freehold; manorial courts held at Great House
+  - 1880: Medieval ironwork ("armour") found under rear wing floor
+  - 1974: House surveyed in unusual circumstances by H.J.T. (access blocked by ownership dispute)
+  - 1988: HER independently confirms demolition "suddenly and completely" on 6 December
+  - 1988: Post-demolition findings (fireplace jamb, lost stone capital, ogee-stopped beam)
+  - 1990: HER record PRN 02038s compiled with 7 related archaeological events (1990–2013)
+- **Agent-Friendly API** — `/api/timeline.json` endpoint returns all 87 entries as structured JSON with metadata, summary, and key events for AI/LLM consumption
+- **LLMs.txt** — `/llms.txt` serves the full timeline in plain text following the llms.txt standard, optimized for ChatGPT and similar agents
+- **Robots.txt + Sitemap** — `/robots.txt` allows all agents; `/sitemap.xml` lists every timeline year for search engine crawling
+- **Auto-generation Pipeline** — `content/generate-api.js` regenerates all agent files from data.json; integrated into `content/rebuild.py` so API/LLM/sitemap update automatically on rebuild
+
+### Changed
+- Version bumped to bpvsbuckler-v0.2.0.08
+- Removed standalone 2023 HER dump entry (facts now distributed to their correct years)
+- Existing timeline entries unchanged — no facts appended to existing slides
+
 ## [bpvsbuckler-v0.2.0.07] - 2026-05-29
 
 ### Added
