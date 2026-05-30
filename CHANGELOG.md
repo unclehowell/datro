@@ -1,5 +1,13 @@
 # Changelog
 
+## [wayback-v0.0.0.09] - 2026-05-30
+
+### Fixed
+- fix(wayback): Remove excessive blank lines
+
+### Changed
+- ux(wayback): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [wayback-v0.0.0.08-aws] - 2026-05-28
 
 ### Fixed
