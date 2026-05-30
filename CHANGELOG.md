@@ -1,5 +1,13 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.20] - 2026-05-30
+
+### Fixed
+- fix(carfinancecheque): Remove excessive blank lines
+
+### Changed
+- ux(carfinancecheque): Add skip-to-content link for keyboard accessibility
+
 ## [carfinancecheque-v0.0.0.19-aws] - 2026-05-28
 
 ### Fixed
