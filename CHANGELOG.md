@@ -1,5 +1,13 @@
 # Changelog
 
+## [archives-v0.0.0.12] - 2026-05-30
+
+### Fixed
+- fix(archives): Remove excessive blank lines
+
+### Changed
+- ux(archives): Add hover styles for interactive elements
+
 ## [archives-v0.0.0.11-aws] - 2026-05-28
 
 ### Fixed
