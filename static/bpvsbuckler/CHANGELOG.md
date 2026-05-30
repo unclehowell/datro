@@ -23,10 +23,10 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [bpvsbuckler-v0.2.1.0] - 2026-05-30
+## [bpvsbuckler-v0.2.1.00] - 2026-05-30
 
 ### Added
-- **HER Facts Distributed Chronologically** — 7 new standalone timeline slides drawn from GGAT02038s, each at its correct year:
+- **HER Facts Distributed Chronologically** — 8 new standalone timeline slides drawn from GGAT02038s, each at its correct year:
   - 1215: Medieval pottery sherds and ironwork confirming early occupation
   - 1560: Vaughan family tenure begins (chief freehold farmers mid C16th)
   - 1800: Bute Estate acquires freehold; manorial courts held at Great House
@@ -41,7 +41,7 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 - **Auto-generation Pipeline** — `content/generate-api.js` regenerates all agent files from data.json; integrated into `content/rebuild.py` so API/LLM/sitemap update automatically on rebuild
 
 ### Changed
-- Version bumped to bpvsbuckler-v0.2.1.0
+- Version bumped to bpvsbuckler-v0.2.1.00
 - Removed standalone 2023 HER dump entry (facts now distributed to their correct years)
 - Existing timeline entries unchanged — no facts appended to existing slides
 
