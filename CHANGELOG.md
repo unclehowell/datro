@@ -1,5 +1,13 @@
 # Changelog
 
+## [ceo-v0.0.0.13] - 2026-05-30
+
+### Fixed
+- fix(ceo): Remove excessive blank lines
+
+### Changed
+- ux(ceo): Add smooth scrolling for better UX
+
 ## [ceo-v0.0.0.12-aws] - 2026-05-28
 
 ### Fixed
