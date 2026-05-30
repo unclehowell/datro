@@ -539,12 +539,9 @@ async function verifyRelease(token, tagName) {
 }
 
 function formatVersion(num) {
-  const n = num - 1;
-  const build = n % 100;
-  const patch = Math.floor(n / 100) % 10;
-  const minor = Math.floor(n / 1000) % 10;
-  const major = Math.floor(n / 10000) % 10;
-  return `${major}.${minor}.${patch}.${String(build).padStart(2, '0')}`;
+  const build = num % 100;
+  const patch = Math.floor(num / 100);
+  return `0.0.${patch}.${String(build).padStart(2, '0')}`;
 }
 
 function selectBranch(state) {
