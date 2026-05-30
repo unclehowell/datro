@@ -1,5 +1,13 @@
 # Changelog
 
+## [dcc-v0.0.0.12] - 2026-05-30
+
+### Fixed
+- fix(dcc): Remove excessive blank lines
+
+### Changed
+- ux(dcc): Add touch-action CSS for mobile responsiveness
+
 ## [dcc-v0.0.0.11] - 2026-05-29
 
 ### Fixed
