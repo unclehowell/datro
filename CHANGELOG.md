@@ -1,5 +1,13 @@
 # Changelog
 
+## [ccan-v0.0.0.23] - 2026-05-30
+
+### Fixed
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Improve text color contrast for readability
+
 ## [ccan-v0.0.0.22-aws] - 2026-05-28
 
 ### Fixed
