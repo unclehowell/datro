@@ -44,7 +44,7 @@ def extract():
     a1_raw = content[a1_start:a1_end]
 
     data = {
-        "version": "0.2.0.07",
+        "version": "0.0.0.08",
         "sk": sk,
         "f1": f1_raw,
         "f4": f4_raw,
