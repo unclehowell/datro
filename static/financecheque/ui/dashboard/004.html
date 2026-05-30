@@ -20,7 +20,6 @@
     <link rel="stylesheet" href="../app-store/apps/999-999/style.css">
     <style>
 
-
 html {overflow-x: hidden!important;height: -webkit-fill-available;}
 html::-webkit-scrollbar { width: 0; height: 0; }
 body { overflow-x: hidden; }
@@ -171,7 +170,6 @@ body { overflow-x: hidden; }
 <div id="apps-container" class="apps-container">
 </div>
 
-
 <script>
 
 const ADD_ICON_ID = '999-999';
@@ -213,12 +211,10 @@ function updateHomeScreen() {
     });
 }
 
-
 function handleTitleObjectClick(appId) {
     const appLink = getAppLink(appId);
     window.location.href = appLink;
 }
-
 
 function handleAppLinkClick(event) {
     // Prevent default link behavior to avoid reloading the page
@@ -293,7 +289,6 @@ function updateAppStore() {
 
 // Listen for changes in the localStorage and update home screen
 window.addEventListener('storage', updateHomeScreen);
-
 
 </script> 
 

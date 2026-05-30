@@ -1,5 +1,14 @@
 # Changelog
 
+## [financecheque-v0.0.1.56] - 2026-05-30
+
+### Fixed
+- fix(financecheque): Create Privacy Policy page for legal compliance
+- fix(financecheque): Remove excessive blank lines
+
+### Changed
+- ux(financecheque): Add button press interaction feedback for UX
+
 ## [financecheque-v0.0.1.55] - 2026-05-29
 
 ### Fixed
