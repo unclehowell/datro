@@ -1,5 +1,13 @@
 # Changelog
 
+## [datro-v0.0.0.12] - 2026-05-30
+
+### Fixed
+- fix(datro): Remove excessive blank lines
+
+### Changed
+- ux(datro): Add focus-visible styles for keyboard navigation
+
 ## [datro-v0.0.0.11] - 2026-05-29
 
 ### Fixed
