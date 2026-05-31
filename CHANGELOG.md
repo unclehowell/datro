@@ -1,5 +1,13 @@
 # Changelog
 
+## [wayback-v0.0.0.10] - 2026-05-31
+
+### Fixed
+- fix(wayback): Remove excessive blank lines
+
+### Changed
+- ux(wayback): Add hover styles for interactive elements
+
 ## [wayback-v0.0.0.09] - 2026-05-30
 
 ### Fixed
