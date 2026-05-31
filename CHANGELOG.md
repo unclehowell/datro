@@ -1,5 +1,13 @@
 # Changelog
 
+## [subrepos-v0.0.0.10] - 2026-05-31
+
+### Fixed
+- fix(subrepos): Remove excessive blank lines
+
+### Changed
+- ux(subrepos): Add legal footer with privacy/terms/contact links
+
 ## [subrepos-v0.0.0.09] - 2026-05-29
 
 ### Fixed
