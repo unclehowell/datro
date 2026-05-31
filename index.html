@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AWS Flywheel Ã¢ÂÂ Automated Multi-Branch Release System</title>
+<title>AWS Flywheel ÃÂ¢ÃÂÃÂ Automated Multi-Branch Release System</title>
 <style>
 :root { --bg: #0d1117; --fg: #c9d1d9; --accent: #58a6ff; --green: #3fb950; --orange: #d29922; --red: #da3633; --purple: #bc8cff; --cyan: #39d2c0; --border: #30363d; --code-bg: #161b22; }
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -78,12 +78,13 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 <meta property="og:image" content="https://cnei.datro.xyz/og-image.png">
 <meta property="og:url" content="https://cnei.datro.xyz">
 <meta property="og:type" content="website">
+<link rel="manifest" href="/manifest.json">
 </head>
 <body>
 <div class="container">
 
 <h1>AWS Flywheel</h1>
-<p>Autonomous multi-branch release engine Ã¢ÂÂ 3 bug + 1 UX fix per branch, every hour, via AI-first multi-provider fallback chain with rotating pool safety net. Self-learning, self-healing, cross-branch daily dedup.</p>
+<p>Autonomous multi-branch release engine ÃÂ¢ÃÂÃÂ 3 bug + 1 UX fix per branch, every hour, via AI-first multi-provider fallback chain with rotating pool safety net. Self-learning, self-healing, cross-branch daily dedup.</p>
 
 <p>
   <span class="badge badge-green">21 branches</span>
@@ -97,19 +98,19 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 
 <h2>Workflow</h2>
 
-<p>A cron job (<code>0 * * * *</code>) on an AWS EC2 instance (1 vCPU, 1 GB RAM) runs the flywheel once per hour. Each run produces exactly one release for one branch Ã¢ÂÂ 3 unique bug fixes + 1 novel UX feature Ã¢ÂÂ across 21 Cloudflare-deployed websites.</p>
+<p>A cron job (<code>0 * * * *</code>) on an AWS EC2 instance (1 vCPU, 1 GB RAM) runs the flywheel once per hour. Each run produces exactly one release for one branch ÃÂ¢ÃÂÃÂ 3 unique bug fixes + 1 novel UX feature ÃÂ¢ÃÂÃÂ across 21 Cloudflare-deployed websites.</p>
 
-<!-- Ã¢ÂÂÃ¢ÂÂ Workflow Diagram Ã¢ÂÂÃ¢ÂÂ -->
+<!-- ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ Workflow Diagram ÃÂ¢ÃÂÃÂÃÂ¢ÃÂÃÂ -->
 <div style="background:var(--code-bg); border:1px solid var(--border); border-radius:10px; padding:1.5rem; margin:1.5rem 0; overflow-x:auto;">
 
 <div class="diagram">
-  <div class="drow"><span class="dbox" style="background:#1f6feb22;border-color:var(--accent);font-weight:600;">Ã¢ÂÂ° Cron HH:00</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Lockfile check</span><span class="darr">Ã¢ÂÂ</span><span class="dbox" style="color:var(--red)">Exit if locked</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Sync timestamps from GitHub</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox" style="font-weight:600;">Select branch</span><span class="darr">Ã¢ÂÂ</span><span class="dbox">Round-robin rotation_index Ã¢ÂÂ cooldown check</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ all on cooldown?</span><span class="dbox" style="color:var(--orange)">Sleep until nearest eligible</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Git checkout branch</span><span class="darr">Ã¢ÂÂ</span><span class="dbox">git reset --hard origin/BRANCH</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox" style="background:#3fb95022;border-color:var(--green);font-weight:600;">4 Fix Passes</span></div>
+  <div class="drow"><span class="dbox" style="background:#1f6feb22;border-color:var(--accent);font-weight:600;">ÃÂ¢ÃÂÃÂ° Cron HH:00</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Lockfile check</span><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox" style="color:var(--red)">Exit if locked</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Sync timestamps from GitHub</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox" style="font-weight:600;">Select branch</span><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Round-robin rotation_index ÃÂ¢ÃÂÃÂ cooldown check</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ all on cooldown?</span><span class="dbox" style="color:var(--orange)">Sleep until nearest eligible</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Git checkout branch</span><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">git reset --hard origin/BRANCH</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox" style="background:#3fb95022;border-color:var(--green);font-weight:600;">4 Fix Passes</span></div>
 </div>
 
 <div style="display:flex; flex-direction:column; gap:0.75rem; margin:1rem 0;">
@@ -119,21 +120,21 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
   <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
     <span class="badge badge-green">Pass 1</span>
     <span style="font-weight:600;font-size:0.9rem;">Bug Fix #1</span>
-    <span style="color:#8b949e;font-size:0.8rem;">AI-first ÃÂ· Pool fallback</span>
+    <span style="color:#8b949e;font-size:0.8rem;">AI-first ÃÂÃÂ· Pool fallback</span>
   </div>
   <div class="fallback-chain">
     <span class="fb fb-pri">financecheque proxy</span>
-    <span class="fb-arr">Ã¢ÂÂ empty?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ empty?</span>
     <span class="fb fb-fail">child proxy (kilo)</span>
-    <span class="fb-arr">Ã¢ÂÂ fail?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ fail?</span>
     <span class="fb">OpenRouter</span>
-    <span class="fb-arr">Ã¢ÂÂ fail?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ fail?</span>
     <span class="fb">Gemini</span>
-    <span class="fb-arr">Ã¢ÂÂ fail?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ fail?</span>
     <span class="fb">DeepSeek</span>
-    <span class="fb-arr">Ã¢ÂÂ fail?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ fail?</span>
     <span class="fb">Groq</span>
-    <span class="fb-arr">Ã¢ÂÂ all empty?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ all empty?</span>
     <span class="fb fb-ok">Pool (8 functions)</span>
   </div>
 </div>
@@ -143,21 +144,21 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
   <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
     <span class="badge badge-green">Pass 2</span>
     <span style="font-weight:600;font-size:0.9rem;">Bug Fix #2</span>
-    <span style="color:#8b949e;font-size:0.8rem;">AI-first (with daily-fixes blacklist) ÃÂ· Pool fallback</span>
+    <span style="color:#8b949e;font-size:0.8rem;">AI-first (with daily-fixes blacklist) ÃÂÃÂ· Pool fallback</span>
   </div>
   <div class="fallback-chain">
     <span class="fb fb-pri">financecheque proxy</span>
-    <span class="fb-arr">Ã¢ÂÂ empty?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ empty?</span>
     <span class="fb fb-fail">child proxy (kilo)</span>
-    <span class="fb-arr">Ã¢ÂÂ fail?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ fail?</span>
     <span class="fb">OpenRouter</span>
-    <span class="fb-arr">Ã¢ÂÂ fail?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ fail?</span>
     <span class="fb">Gemini</span>
-    <span class="fb-arr">Ã¢ÂÂ fail?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ fail?</span>
     <span class="fb">DeepSeek</span>
-    <span class="fb-arr">Ã¢ÂÂ fail?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ fail?</span>
     <span class="fb">Groq</span>
-    <span class="fb-arr">Ã¢ÂÂ all empty?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ all empty?</span>
     <span class="fb fb-ok">Pool (next rotation)</span>
   </div>
 </div>
@@ -167,14 +168,14 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
   <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
     <span class="badge badge-amber">Pass 3</span>
     <span style="font-weight:600;font-size:0.9rem;">Bug Fix #3</span>
-    <span style="color:#8b949e;font-size:0.8rem;">AI-first ÃÂ· Pool fallback ÃÂ· Guaranteed fallback (last resort)</span>
+    <span style="color:#8b949e;font-size:0.8rem;">AI-first ÃÂÃÂ· Pool fallback ÃÂÃÂ· Guaranteed fallback (last resort)</span>
   </div>
   <div class="fallback-chain">
     <span class="fb fb-pri">financecheque proxy</span>
-    <span class="fb-arr">Ã¢ÂÂ empty?</span>
-    <span class="fb">OpenRouter Ã¢ÂÂ Gemini Ã¢ÂÂ DeepSeek Ã¢ÂÂ Groq</span>
-    <span class="fb-arr">Ã¢ÂÂ all empty?</span>
-    <span class="fb fb-ok">Pool Ã¢ÂÂ</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ empty?</span>
+    <span class="fb">OpenRouter ÃÂ¢ÃÂÃÂ Gemini ÃÂ¢ÃÂÃÂ DeepSeek ÃÂ¢ÃÂÃÂ Groq</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ all empty?</span>
+    <span class="fb fb-ok">Pool ÃÂ¢ÃÂÃÂ</span>
     <span class="fb fb-fail">Guaranteed fallback</span>
   </div>
 </div>
@@ -184,13 +185,13 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
   <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
     <span class="badge badge-purple">Pass 4</span>
     <span style="font-weight:600;font-size:0.9rem;">UX Feature</span>
-    <span style="color:#8b949e;font-size:0.8rem;">AI-first ÃÂ· Pool (23 UX functions)</span>
+    <span style="color:#8b949e;font-size:0.8rem;">AI-first ÃÂÃÂ· Pool (23 UX functions)</span>
   </div>
   <div class="fallback-chain">
     <span class="fb fb-pri">financecheque proxy</span>
-    <span class="fb-arr">Ã¢ÂÂ empty?</span>
-    <span class="fb">OpenRouter Ã¢ÂÂ Gemini Ã¢ÂÂ DeepSeek Ã¢ÂÂ Groq</span>
-    <span class="fb-arr">Ã¢ÂÂ all empty?</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ empty?</span>
+    <span class="fb">OpenRouter ÃÂ¢ÃÂÃÂ Gemini ÃÂ¢ÃÂÃÂ DeepSeek ÃÂ¢ÃÂÃÂ Groq</span>
+    <span class="fb-arr">ÃÂ¢ÃÂÃÂ all empty?</span>
     <span class="fb fb-ok">UX Pool (23 functions)</span>
   </div>
 </div>
@@ -198,15 +199,15 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 </div>
 
 <div class="diagram" style="margin-top:0.5rem;">
-  <div class="drow"><span class="darr">Ã¢ÂÂ all passes done</span><span class="dbox">Git commit all changes</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Create tag {branch}-v0.0.{N/100}.{N%100:02d}</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Generate blog post &amp; RSS</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Push branch + tag to GitHub</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Create GitHub Release with structured notes</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Verify release live (5 retries)</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Verify Cloudflare deploy (5 retries)</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox">Prune old releases (keep last 3)</span></div>
-  <div class="drow"><span class="darr">Ã¢ÂÂ</span><span class="dbox" style="background:#3fb95022;border-color:var(--green);font-weight:600;">Ã¢ÂÂ Release complete</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ all passes done</span><span class="dbox">Git commit all changes</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Create tag {branch}-v0.0.{N/100}.{N%100:02d}</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Generate blog post &amp; RSS</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Push branch + tag to GitHub</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Create GitHub Release with structured notes</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Verify release live (5 retries)</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Verify Cloudflare deploy (5 retries)</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox">Prune old releases (keep last 3)</span></div>
+  <div class="drow"><span class="darr">ÃÂ¢ÃÂÃÂ</span><span class="dbox" style="background:#3fb95022;border-color:var(--green);font-weight:600;">ÃÂ¢ÃÂÃÂ Release complete</span></div>
 </div>
 
 </div>
@@ -216,12 +217,12 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 
 <table>
   <tr><th>Order</th><th>Provider</th><th>Type</th><th>Timeout</th><th>Keys</th></tr>
-  <tr><td>1</td><td><code>financecheque.uk</code> proxy</td><td>Parent proxy Ã¢ÂÂ routes to child proxy</td><td>70s (3 retries)</td><td>Ã¢ÂÂ</td></tr>
-  <tr><td>2</td><td><code>172.31.29.216:4001</code></td><td>Child proxy Ã¢ÂÂ runs kilo CLI</td><td>15s</td><td>Ã¢ÂÂ</td></tr>
-  <tr><td>3</td><td>OpenRouter</td><td>Direct API (<code>gpt-4o-mini</code>)</td><td>90s</td><td>Ã¢ÂÂ</td></tr>
-  <tr><td>4</td><td>Gemini</td><td>Direct API (<code>gemini-2.0-flash</code>)</td><td>90s</td><td>Ã¢ÂÂ</td></tr>
-  <tr><td>5</td><td>DeepSeek</td><td>Direct API (<code>deepseek-chat</code>)</td><td>90s</td><td>Ã¢ÂÂ</td></tr>
-  <tr><td>6</td><td>Groq</td><td>Direct API (<code>llama-3.3-70b-versatile</code>)</td><td>90s</td><td>Ã¢ÂÂ</td></tr>
+  <tr><td>1</td><td><code>financecheque.uk</code> proxy</td><td>Parent proxy ÃÂ¢ÃÂÃÂ routes to child proxy</td><td>70s (3 retries)</td><td>ÃÂ¢ÃÂÃÂ</td></tr>
+  <tr><td>2</td><td><code>172.31.29.216:4001</code></td><td>Child proxy ÃÂ¢ÃÂÃÂ runs kilo CLI</td><td>15s</td><td>ÃÂ¢ÃÂÃÂ</td></tr>
+  <tr><td>3</td><td>OpenRouter</td><td>Direct API (<code>gpt-4o-mini</code>)</td><td>90s</td><td>ÃÂ¢ÃÂÃÂ</td></tr>
+  <tr><td>4</td><td>Gemini</td><td>Direct API (<code>gemini-2.0-flash</code>)</td><td>90s</td><td>ÃÂ¢ÃÂÃÂ</td></tr>
+  <tr><td>5</td><td>DeepSeek</td><td>Direct API (<code>deepseek-chat</code>)</td><td>90s</td><td>ÃÂ¢ÃÂÃÂ</td></tr>
+  <tr><td>6</td><td>Groq</td><td>Direct API (<code>llama-3.3-70b-versatile</code>)</td><td>90s</td><td>ÃÂ¢ÃÂÃÂ</td></tr>
 </table>
 
 <p>API keys are stored in <code>~/.fcukproxy/.env</code> (sourced by <code>intelligence.py</code>) and <code>~/.secrets/.env</code>. All 4 direct API providers now have valid keys.</p>
@@ -229,31 +230,31 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 <h2>Key Improvements</h2>
 
 <div class="highlight">
-  <strong>Ã°ÂÂÂ Cross-branch daily dedup:</strong> <code>daily-unique.json</code> prevents ANY fix/feature description from repeating across ALL 21 branches in a single UTC day. Each pass passes the growing <code>--daily-fixes</code> / <code>--daily-features</code> list to the AI prompt as "TODAY'S ALREADY-APPLIED" Ã¢ÂÂ the AI must produce something novel.
+  <strong>ÃÂ°ÃÂÃÂÃÂ Cross-branch daily dedup:</strong> <code>daily-unique.json</code> prevents ANY fix/feature description from repeating across ALL 21 branches in a single UTC day. Each pass passes the growing <code>--daily-fixes</code> / <code>--daily-features</code> list to the AI prompt as "TODAY'S ALREADY-APPLIED" ÃÂ¢ÃÂÃÂ the AI must produce something novel.
 </div>
 
 <div class="highlight">
-  <strong>Ã°ÂÂÂ 4 AI-first passes (not 1):</strong> Previously only Pass 1 tried AI. Now all 3 bug passes + 1 UX pass attempt AI with growing daily blacklists. Pool is fallback only, guaranteed fallback is last resort on Pass 3 only.
+  <strong>ÃÂ°ÃÂÃÂÃÂ 4 AI-first passes (not 1):</strong> Previously only Pass 1 tried AI. Now all 3 bug passes + 1 UX pass attempt AI with growing daily blacklists. Pool is fallback only, guaranteed fallback is last resort on Pass 3 only.
 </div>
 
 <div class="highlight">
-  <strong>Ã°ÂÂÂ Shrunk pool to real functions:</strong> BUG_FIX_NAMES had 37 entries but only 5 real functions existed. Removed 32 phantom "command not found" entries. Now 8 real bug functions + 23 UX functions Ã¢ÂÂ all tested and working.
+  <strong>ÃÂ°ÃÂÃÂÃÂ Shrunk pool to real functions:</strong> BUG_FIX_NAMES had 37 entries but only 5 real functions existed. Removed 32 phantom "command not found" entries. Now 8 real bug functions + 23 UX functions ÃÂ¢ÃÂÃÂ all tested and working.
 </div>
 
 <div class="highlight">
-  <strong>Ã¢ÂÂ±Ã¯Â¸Â Retry + provider fallback:</strong> Proxy calls retry 3ÃÂ with backoff. On empty response, falls through 6 providers before hitting the pool.
+  <strong>ÃÂ¢ÃÂÃÂ±ÃÂ¯ÃÂ¸ÃÂ Retry + provider fallback:</strong> Proxy calls retry 3ÃÂÃÂ with backoff. On empty response, falls through 6 providers before hitting the pool.
 </div>
 
 <h2>Components</h2>
 <table>
   <tr><th>File</th><th>Role</th></tr>
-  <tr><td><code>multi-branch-release.sh</code></td><td>Bash orchestrator Ã¢ÂÂ cron entrypoint, branch selection, 4-pass dispatch, git/release, daily tracking, pool functions, cooldown handler</td></tr>
-  <tr><td><code>intelligence.py</code></td><td>Python AI agent Ã¢ÂÂ builds prompts with file excerpts + master plan todos, rotates through 6 LLM providers, applies fixes, manages profiles, self-learns</td></tr>
-  <tr><td><code>.env</code></td><td>API keys for OpenRouter, Gemini, DeepSeek, Groq Ã¢ÂÂ loaded at runtime</td></tr>
-  <tr><td><code>release-state.json</code></td><td>State file Ã¢ÂÂ rotation_index, cooldown timestamps, release counters, fix/ux rotation pointers</td></tr>
-  <tr><td><code>daily-unique.json</code></td><td>Cross-branch dedup Ã¢ÂÂ date + lists of all bug/feature descriptions applied today</td></tr>
-  <tr><td><code>profiles.json</code></td><td>Per-branch profiles Ã¢ÂÂ LLM rotation lists, learned patterns, skill libraries, branch knowledge</td></tr>
-  <tr><td><code>agent/branches/*.md</code></td><td>21 master plans Ã¢ÂÂ vision, strategic roadmap, required features, success criteria per branch</td></tr>
+  <tr><td><code>multi-branch-release.sh</code></td><td>Bash orchestrator ÃÂ¢ÃÂÃÂ cron entrypoint, branch selection, 4-pass dispatch, git/release, daily tracking, pool functions, cooldown handler</td></tr>
+  <tr><td><code>intelligence.py</code></td><td>Python AI agent ÃÂ¢ÃÂÃÂ builds prompts with file excerpts + master plan todos, rotates through 6 LLM providers, applies fixes, manages profiles, self-learns</td></tr>
+  <tr><td><code>.env</code></td><td>API keys for OpenRouter, Gemini, DeepSeek, Groq ÃÂ¢ÃÂÃÂ loaded at runtime</td></tr>
+  <tr><td><code>release-state.json</code></td><td>State file ÃÂ¢ÃÂÃÂ rotation_index, cooldown timestamps, release counters, fix/ux rotation pointers</td></tr>
+  <tr><td><code>daily-unique.json</code></td><td>Cross-branch dedup ÃÂ¢ÃÂÃÂ date + lists of all bug/feature descriptions applied today</td></tr>
+  <tr><td><code>profiles.json</code></td><td>Per-branch profiles ÃÂ¢ÃÂÃÂ LLM rotation lists, learned patterns, skill libraries, branch knowledge</td></tr>
+  <tr><td><code>agent/branches/*.md</code></td><td>21 master plans ÃÂ¢ÃÂÃÂ vision, strategic roadmap, required features, success criteria per branch</td></tr>
 </table>
 
 <h2>21 Branches</h2>
@@ -286,22 +287,22 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 <h2>Pass Strategy Detail</h2>
 
 <div class="pass-box">
-<h4>Pass 1 (Bug) Ã¢ÂÂ AI-first Ã¢ÂÂ Pool</h4>
+<h4>Pass 1 (Bug) ÃÂ¢ÃÂÃÂ AI-first ÃÂ¢ÃÂÃÂ Pool</h4>
 <p>Attempts AI via 6-provider chain. The prompt includes file excerpts (500 chars), master plan TODOs, and "TODAY'S ALREADY-APPLIED" daily blacklist. If all providers return empty, falls to rotating bug pool (8 functions). On pool success, the daily file is updated and the fix rotation advances.</p>
 </div>
 
 <div class="pass-box">
-<h4>Pass 2 (Bug) Ã¢ÂÂ AI-first Ã¢ÂÂ Pool</h4>
+<h4>Pass 2 (Bug) ÃÂ¢ÃÂÃÂ AI-first ÃÂ¢ÃÂÃÂ Pool</h4>
 <p>Same as Pass 1 but the daily blacklist now includes the fix from Pass 1. This guarantees the AI (or pool) produces a <em>different</em> fix. Pool starts from where last pass left off (fix_rotation).</p>
 </div>
 
 <div class="pass-box">
-<h4>Pass 3 (Bug) Ã¢ÂÂ AI-first Ã¢ÂÂ Pool Ã¢ÂÂ Guaranteed fallback</h4>
+<h4>Pass 3 (Bug) ÃÂ¢ÃÂÃÂ AI-first ÃÂ¢ÃÂÃÂ Pool ÃÂ¢ÃÂÃÂ Guaranteed fallback</h4>
 <p>Last bug pass. If AI and pool both fail, the <strong>guaranteed_bug_fallback</strong> runs: it searches the branch directory for files with 3+ consecutive blank lines and removes them. This always produces a fix.</p>
 </div>
 
 <div class="pass-box">
-<h4>Pass 4 (UX) Ã¢ÂÂ AI-first Ã¢ÂÂ UX Pool</h4>
+<h4>Pass 4 (UX) ÃÂ¢ÃÂÃÂ AI-first ÃÂ¢ÃÂÃÂ UX Pool</h4>
 <p>User-experience pass. Same AI chain but with <code>--daily-features</code> blacklist. Falls to UX pool (23 functions) then <strong>guaranteed_ux_fallback</strong> (adds DOCTYPE + charset if missing).</p>
 </div>
 
@@ -349,8 +350,8 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 <h2>Cooldown &amp; Branch Selection</h2>
 <ul>
   <li><strong>24-hour cooldown</strong> per branch, enforced by comparing last GitHub release timestamp against current time</li>
-  <li><strong>Round-robin</strong> via <code>rotation_index</code> Ã¢ÂÂ starts from index, checks cooldown, picks first available</li>
-  <li><strong>Non-existent branches skipped</strong> Ã¢ÂÂ <code>git rev-parse --verify</code> check prevents stale reference crashes</li>
+  <li><strong>Round-robin</strong> via <code>rotation_index</code> ÃÂ¢ÃÂÃÂ starts from index, checks cooldown, picks first available</li>
+  <li><strong>Non-existent branches skipped</strong> ÃÂ¢ÃÂÃÂ <code>git rev-parse --verify</code> check prevents stale reference crashes</li>
   <li><strong>All on cooldown:</strong> sleep until nearest branch is eligible (max 1h sleep; past 1h exits with error)</li>
   <li><strong>FORCE_BRANCH env var</strong> bypasses rotation for manual targeting</li>
   <li>Per-branch cooldown timestamps persisted in <code>release-state.json</code></li>
@@ -359,12 +360,12 @@ th { color:#f0f6fc; border-bottom:2px solid var(--border); }
 <h2>Version Scheme</h2>
 <pre><code>release_number = total_releases[branch] + 1
 patch  = release_number / 100          # increments every 100 releases
-build  = release_number % 100          # 0Ã¢ÂÂ99, zero-padded
+build  = release_number % 100          # 0ÃÂ¢ÃÂÃÂ99, zero-padded
 tag    = {branch}-v0.0.{patch}.{build:02d}
         e.g., datro-v0.0.0.08, financecheque-v0.0.1.52</code></pre>
 
 <h2>Daily Uniqueness</h2>
-<p>Stored in <code>agent/daily-unique.json</code>. At UTC midnight the file resets. Each fix/feature recording checks the description against the existing list before appending. The AI prompt includes <code>--daily-fixes</code> and <code>--daily-features</code> as "TODAY'S ALREADY-APPLIED" Ã¢ÂÂ forcing the LLM to propose something genuinely new across all 21 branches.</p>
+<p>Stored in <code>agent/daily-unique.json</code>. At UTC midnight the file resets. Each fix/feature recording checks the description against the existing list before appending. The AI prompt includes <code>--daily-fixes</code> and <code>--daily-features</code> as "TODAY'S ALREADY-APPLIED" ÃÂ¢ÃÂÃÂ forcing the LLM to propose something genuinely new across all 21 branches.</p>
 
 <h2>Security Model</h2>
 <ul>
@@ -378,7 +379,7 @@ tag    = {branch}-v0.0.{patch}.{build:02d}
 
 <hr style="border-color:var(--border); margin: 2rem 0;">
 <p style="text-align:center; color:#8b949e; font-size:0.9rem;">
-  Generated by the <code>cnei</code> branch Ã¢ÂÂ <a href="https://github.com/unclehowell/datro/tree/cnei">source</a>
+  Generated by the <code>cnei</code> branch ÃÂ¢ÃÂÃÂ <a href="https://github.com/unclehowell/datro/tree/cnei">source</a>
   &middot; Last update: May 2026 &middot; 303 releases and counting
 </p>
 
