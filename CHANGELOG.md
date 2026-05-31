@@ -1,5 +1,13 @@
 # Changelog
 
+## [wave-v0.0.0.11] - 2026-05-31
+
+### Fixed
+- fix(wave): Remove excessive blank lines
+
+### Changed
+- ux(wave): Add minimum tap target sizes for mobile UX
+
 ## [wave-v0.0.0.10] - 2026-05-29
 
 ### Fixed
