@@ -1,5 +1,13 @@
 # Changelog
 
+## [llmwiki-v0.0.0.11] - 2026-05-31
+
+### Fixed
+- fix(llmwiki): Remove excessive blank lines
+
+### Changed
+- ux(llmwiki): Add social media links for audience engagement
+
 ## [llmwiki-v0.0.0.10] - 2026-05-29
 
 ### Fixed
