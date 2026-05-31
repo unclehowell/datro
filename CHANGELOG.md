@@ -1,5 +1,13 @@
 # Changelog
 
+## [library-v0.0.0.12] - 2026-05-31
+
+### Fixed
+- fix(library): Remove excessive blank lines
+
+### Changed
+- ux(library): Add cookie consent banner for GDPR compliance
+
 ## [library-v0.0.0.11] - 2026-05-29
 
 ### Fixed
