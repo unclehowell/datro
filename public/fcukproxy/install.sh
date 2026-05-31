@@ -92,8 +92,8 @@ MACHINE_ID=$(python3 -c "import json; print(json.load(open('${MACHINE_JSON}'))['
 
 # ── Download child-proxy.js ──────────────────────────────────────────────
 echo "[*] Downloading child proxy..."
-curl -fsSL "${PARENT_URL}/fcukproxy/child-proxy.js" -o "${MACHINE_DIR}/child-proxy.js" 2>/dev/null || \
-  curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/child-proxy.js" -o "${MACHINE_DIR}/child-proxy.js"
+curl -fsSL "${PARENT_URL}/fcukproxy/child-proxy.mjs" -o "${MACHINE_DIR}/child-proxy.mjs" 2>/dev/null || \
+  curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/child-proxy.mjs" -o "${MACHINE_DIR}/child-proxy.mjs"
 
 chmod +x "${MACHINE_DIR}/child-proxy.js"
 
@@ -135,7 +135,7 @@ curl -s -m 10 -X POST "${PARENT_URL}/api/proxy?action=register" \
 
 # ── Start child-proxy.js ─────────────────────────────────────────────────
 echo "[*] Starting child proxy..."
-PORT=4001 CHILD_ID="${MACHINE_ID}" nohup node "${MACHINE_DIR}/child-proxy.js" > "${MACHINE_DIR}/proxy.log" 2>&1 &
+PORT=4001 CHILD_ID="${MACHINE_ID}" MACHINE_NAME="$(hostname)" nohup node "${MACHINE_DIR}/child-proxy.mjs" > "${MACHINE_DIR}/proxy.log" 2>&1 &
 PROXY_PID=$!
 echo "[✓] Child proxy started (PID: ${PROXY_PID}, port: 4001)"
 

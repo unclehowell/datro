@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * child-proxy.js — FinanceCheque child proxy (standalone, zero deps)
+ * child-proxy.mjs — FinanceCheque child proxy (ESM, zero deps)
  *
  * Listens on PORT (default 4001) for OpenAI-compatible chat requests.
  * Routes queries through the parent proxy network with loop prevention.
@@ -10,17 +10,18 @@
  *   Otherwise                → forward to parent proxy
  *
  * Run:
- *   node child-proxy.js
- *   PORT=4001 CHILD_ID=machine-id node child-proxy.js
+ *   node child-proxy.mjs
+ *   PORT=4001 CHILD_ID=machine-id node child-proxy.mjs
  */
 
-const http = require('http');
-const urlMod = require('url');
+import http from 'http';
+import urlMod from 'url';
+import os from 'os';
 
 const PARENT_URL = process.env.PARENT_URL || 'https://www.financecheque.uk';
-const CHILD_ID   = process.env.CHILD_ID || process.env.MACHINE_ID || `child-${require('os').hostname()}`;
+const CHILD_ID   = process.env.CHILD_ID || process.env.MACHINE_ID || `child-${os.hostname()}`;
 const PORT       = Number(process.env.PORT) || 4001;
-const MACHINE_NAME = process.env.MACHINE_NAME || require('os').hostname();
+const MACHINE_NAME = process.env.MACHINE_NAME || os.hostname();
 
 let activeJobs = 0;
 
@@ -205,7 +206,6 @@ server.listen(PORT, () => {
 });
 
 function getLocalIP() {
-  const os = require('os');
   const ifaces = os.networkInterfaces();
   for (const name of Object.keys(ifaces)) {
     for (const iface of ifaces[name]) {
