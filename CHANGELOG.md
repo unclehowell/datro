@@ -1,5 +1,13 @@
 # Changelog
 
+## [hbnb-v0.0.0.12] - 2026-05-31
+
+### Fixed
+- fix(hbnb): Remove excessive blank lines
+
+### Changed
+- ux(hbnb): Add breadcrumb navigation structure for UX
+
 ## [hbnb-v0.0.0.11] - 2026-05-29
 
 ### Fixed
