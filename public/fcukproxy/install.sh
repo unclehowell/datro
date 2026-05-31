@@ -1,406 +1,240 @@
-#!/usr/bin/env sh
-# FCUK Proxy Installer — https://www.financecheque.uk
-# Joins your machine to the Finance Cheque UK network as a child proxy.
-# Installs the FCUK Proxy agent with:
-#   - Round-robin parent proxy routing (www.financecheque.uk + financecheque.uk)
-#   - Fallback LLM providers (OpenRouter, Groq, DeepSeek, etc.)
-#   - OpenAI-compatible endpoint at localhost:6000 for kiro, kilo, opencode, groq
-#   - Hermes agent with web GUI
-set -e
+#!/usr/bin/env bash
+set -euo pipefail
 
-REPO="https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy"
-INSTALL_DIR="$HOME/.fcukproxy"
-VENV_DIR="$INSTALL_DIR/venv"
-AGENT_PY="$INSTALL_DIR/agent.py"
-GUI_PY="$INSTALL_DIR/gui.py"
-ENV_FILE="$INSTALL_DIR/.env"
-CONFIG_JSON="$INSTALL_DIR/machine.json"
-SERVICE_NAME="fcukproxy"
-PARENT_URL="https://www.financecheque.uk/api/proxy"
+# ═══════════════════════════════════════════════════════════════════════════
+# FCUK Proxy — Universal Child Proxy Installer
+# Supports: Linux (apt/yum/apk) and Termux (pkg)
+# Usage: curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash
+#
+# Architecture:
+#   This machine becomes a CHILD PROXY on the financecheque.uk network.
+#   - child-proxy.js: listens on port 4001 for OpenAI-compatible requests
+#   - Hermes agent: routes chat queries through parent proxy first
+#   - Heartbeat: reports alive every 60s to parent proxy
+#   - LLM fallback: queries local LLM if parent proxy unavailable
+#
+# Routing Logic (Boolean):
+#   C = Chat-only query  F = Already forwarded by parent
+#   Route: ¬F → child proxy → parent proxy → other child proxies
+#          F  → local LLM fallback (prevents loop)
+# ═══════════════════════════════════════════════════════════════════════════
 
-echo ""
-echo "╔══════════════════════════════════════════════╗"
-echo "║   Finance Cheque UK — FCUK Proxy Installer   ║"
-echo "╚══════════════════════════════════════════════╝"
-echo ""
+MACHINE_DIR="${HOME}/.fcukproxy"
+MACHINE_JSON="${MACHINE_DIR}/machine.json"
+PARENT_URL="https://www.financecheque.uk"
+MACHINE_ID=""
+MACHINE_NAME=""
 
-OS="$(uname -s)"
-case "$OS" in
-  Linux*)  PLATFORM="linux" ;;
-  Darwin*) PLATFORM="macos" ;;
-  *)       echo "Unsupported OS: $OS"; exit 1 ;;
-esac
-echo "Platform: $PLATFORM"
-
-if command -v python3 >/dev/null 2>&1; then
-  PYTHON=python3
-elif command -v python >/dev/null 2>&1; then
-  PYTHON=python
+# ── Detect OS ────────────────────────────────────────────────────────────
+IS_TERMUX=false
+if [[ -n "${TERMUX_VERSION:-}" || "$(uname -o 2>/dev/null)" == "Android" || -d "/data/data/com.termux" ]]; then
+  IS_TERMUX=true
+  PKG_MGR="pkg"
+elif command -v apt >/dev/null 2>&1; then
+  PKG_MGR="apt"
+elif command -v yum >/dev/null 2>&1; then
+  PKG_MGR="yum"
+elif command -v apk >/dev/null 2>&1; then
+  PKG_MGR="apk"
 else
-  echo "Python 3 is required. Install it with: sudo apt install python3"
-  exit 1
-fi
-echo "Python: $($PYTHON --version)"
-
-mkdir -p "$INSTALL_DIR"
-
-# ── Preserve existing machine identity ──────────────────────────────────
-if [ -f "$CONFIG_JSON" ]; then
-  echo "Existing machine config found — preserving machine identity"
-  EXISTING_MACHINE_ID="$(python3 -c "import json; print(json.load(open('$CONFIG_JSON')).get('machine_id',''))" 2>/dev/null || true)"
+  PKG_MGR=""
 fi
 
-echo "Downloading FCUK Proxy agent..."
-curl -fsSL "$REPO/agent.py" -o "$AGENT_PY"
-curl -fsSL "$REPO/gui.py"   -o "$GUI_PY"
+echo "═══ FCUK Proxy Installer ═══"
+echo "OS: $(uname -a)"
+$IS_TERMUX && echo "Mode: Termux"
+echo ""
 
-# ── Python venv ─────────────────────────────────────────────────────────
-echo "Setting up Python environment..."
-$PYTHON -m venv "$VENV_DIR" 2>/dev/null || true
-"$VENV_DIR/bin/pip" install --quiet aiohttp 2>/dev/null || pip3 install --quiet aiohttp 2>/dev/null || true
+# ── Install Dependencies ─────────────────────────────────────────────────
+install_deps() {
+  if command -v node >/dev/null 2>&1; then
+    echo "[✓] Node.js $(node -v)"
+    return
+  fi
+  echo "[*] Installing Node.js..."
+  case "${PKG_MGR}" in
+    pkg) pkg install -y nodejs ;;
+    apt) sudo apt update && sudo apt install -y nodejs npm ;;
+    yum) sudo yum install -y nodejs ;;
+    apk) apk add nodejs ;;
+    *)
+      echo "[!] No package manager found. Install Node.js manually: https://nodejs.org"
+      exit 1
+      ;;
+  esac
+}
 
-# ── Generate machine config ─────────────────────────────────────────────
-if [ -n "$EXISTING_MACHINE_ID" ]; then
-  echo "Reusing existing machine ID: $EXISTING_MACHINE_ID"
-  MACHINE_ID="$EXISTING_MACHINE_ID"
+install_deps
+
+# ── Create Machine Identity ──────────────────────────────────────────────
+mkdir -p "${MACHINE_DIR}"
+
+if [[ -f "${MACHINE_JSON}" ]]; then
+  MACHINE_ID=$(python3 -c "import json; print(json.load(open('${MACHINE_JSON}'))['machine_id'])" 2>/dev/null || uuidgen 2>/dev/null || cat /proc/sys/kernel/random/uuid 2>/dev/null || date +%s | md5sum | head -c 32)
+  echo "[*] Using existing machine identity: ${MACHINE_ID}"
 else
-  MACHINE_ID="$(python3 -c 'import uuid; print(uuid.uuid4())')"
-fi
-LOCAL_IP="$(hostname -I 2>/dev/null | awk '{print $1}' || echo '127.0.0.1')"
-HOSTNAME="$(hostname)"
-
-cat > "$CONFIG_JSON" <<EOF
+  MACHINE_ID="$(uuidgen 2>/dev/null || cat /proc/sys/kernel/random/uuid 2>/dev/null || date +%s | md5sum 2>/dev/null | head -c 32 || echo "child-$(hostname)-$(date +%s)")"
+  MACHINE_NAME="$(hostname 2>/dev/null || echo 'unknown')"
+  cat > "${MACHINE_JSON}" << MACHINEEOF
 {
-  "machine_id": "$MACHINE_ID",
-  "machine_name": "$HOSTNAME",
-  "local_ip": "$LOCAL_IP",
-  "proxy_port": 6000,
-  "gui_port": 6001,
-  "parent": "$PARENT_URL",
+  "machine_id": "${MACHINE_ID}",
+  "machine_name": "${MACHINE_NAME}",
+  "local_ip": "",
+  "proxy_port": 4001,
+  "parent": "${PARENT_URL}/api/proxy",
+  "version": "0.4.0"
+}
+MACHINEEOF
+  echo "[✓] Created machine identity: ${MACHINE_ID}"
+fi
+
+MACHINE_ID=$(python3 -c "import json; print(json.load(open('${MACHINE_JSON}'))['machine_id'])" 2>/dev/null || echo "${MACHINE_ID}")
+
+# ── Download child-proxy.js ──────────────────────────────────────────────
+echo "[*] Downloading child proxy..."
+curl -fsSL "${PARENT_URL}/fcukproxy/child-proxy.js" -o "${MACHINE_DIR}/child-proxy.js" 2>/dev/null || \
+  curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/child-proxy.js" -o "${MACHINE_DIR}/child-proxy.js"
+
+chmod +x "${MACHINE_DIR}/child-proxy.js"
+
+# ── Download Hermes configuration ────────────────────────────────────────
+echo "[*] Configuring Hermes agent..."
+mkdir -p "${MACHINE_DIR}/hermes"
+cat > "${MACHINE_DIR}/hermes/hermes.json" << HERMESEOF
+{
+  "name": "fcukproxy-hermes",
   "version": "0.4.0",
-  "polling": true
+  "parent_url": "${PARENT_URL}/api/proxy",
+  "machine_id": "${MACHINE_ID}",
+  "routing": {
+    "strategy": "parent_first",
+    "chat_only": true,
+    "forwarded_header": "X-Forwarded",
+    "chat_only_header": "X-Chat-Only",
+    "timeout_ms": 25000,
+    "fallback_to_local": true,
+    "local_endpoint": "http://localhost:6000/v1/chat/completions"
+  },
+  "heartbeat_interval_sec": 60,
+  "re_register_interval_sec": 120
 }
-EOF
-echo "Machine config written to $CONFIG_JSON"
+HERMESEOF
+echo "[✓] Hermes configured"
 
-# ── Create .env for LLM API keys ──────────────────────────────────────
-if [ ! -f "$ENV_FILE" ]; then
-  cat > "$ENV_FILE" <<EOF
-# FCUK Proxy — LLM API Keys
-# Set keys here or export them as environment variables.
-# The proxy tries providers in round-robin order: OpenRouter → OpenAI → Anthropic → Gemini → DeepSeek → Groq
-# Without any keys, queries are forwarded to the parent proxy.
+# ── Install child-proxy.js dependencies ─────────────────────────────────
+echo "[*] Installing proxy dependencies..."
+cd "${MACHINE_DIR}"
+npm init -y >/dev/null 2>&1
+npm install express >/dev/null 2>&1 || npm install --no-optional express 2>/dev/null || true
 
-# OPENAI_API_KEY=sk-...
-# ANTHROPIC_API_KEY=sk-ant-...
-# GEMINI_API_KEY=...
-# DEEPSEEK_API_KEY=...
-# GROQ_API_KEY=gsk_...
-# OPENROUTER_API_KEY=...
-# MISTRAL_API_KEY=...
-# TOGETHER_API_KEY=...
-# PERPLEXITY_API_KEY=...
-EOF
-  echo "Env file created at $ENV_FILE"
-  echo "  └─ Edit it to add your API keys: nano $ENV_FILE"
-fi
-
-# ── Tool configs: opencode, kilo, kiro ──────────────────────────────────
-# Point these CLI tools to the local proxy at localhost:6000
-echo "Configuring CLI tools to use local proxy..."
-
-# opencode
-if command -v opencode >/dev/null 2>&1; then
-  OPENCODE_CONFIG_DIR="$HOME/.config/opencode"
-  mkdir -p "$OPENCODE_CONFIG_DIR"
-  if [ ! -f "$OPENCODE_CONFIG_DIR/opencode.json" ]; then
-    cat > "$OPENCODE_CONFIG_DIR/opencode.json" <<EOF
-{
-  "\$schema": "https://opencode.ai/config.json",
-  "model": {
-    "provider": "openai",
-    "base_url": "http://localhost:6000/v1",
-    "api_key": "fcuk-proxy",
-    "model": "proxy-router"
-  }
-}
-EOF
-    echo "  ✓ opencode configured → http://localhost:6000/v1"
-  else
-    echo "  - opencode config exists, skipping"
-  fi
-fi
-
-# kilo
-if command -v kilo >/dev/null 2>&1; then
-  KILO_CONFIG_DIR="$HOME/.config/kilo"
-  mkdir -p "$KILO_CONFIG_DIR"
-  if [ ! -f "$KILO_CONFIG_DIR/kilo.jsonc" ]; then
-    cat > "$KILO_CONFIG_DIR/kilo.jsonc" <<EOF
-{
-  "\$schema": "https://app.kilo.ai/config.json",
-  "model": {
-    "provider": "openai-compatible",
-    "base_url": "http://localhost:6000/v1",
-    "api_key": "fcuk-proxy",
-    "model": "proxy-router"
-  }
-}
-EOF
-    echo "  ✓ kilo configured → http://localhost:6000/v1"
-  else
-    echo "  - kilo config exists, skipping"
-  fi
-fi
-
-# kiro — install if not present
-if command -v kiro >/dev/null 2>&1; then
-  KIRO_CONFIG_DIR="$HOME/.config/kiro"
-  mkdir -p "$KIRO_CONFIG_DIR"
-  cat > "$KIRO_CONFIG_DIR/config.json" <<EOF
-{
-  "provider": "openai",
-  "base_url": "http://localhost:6000/v1",
-  "api_key": "fcuk-proxy",
-  "model": "proxy-router"
-}
-EOF
-  echo "  ✓ kiro configured → http://localhost:6000/v1"
-fi
-
-# Export env vars so tools without config files can discover the proxy
-PROFILE_FILE="$HOME/.profile"
-if [ -f "$HOME/.bashrc" ]; then PROFILE_FILE="$HOME/.bashrc"; fi
-if ! grep -q "FCUK_PROXY_URL" "$PROFILE_FILE" 2>/dev/null; then
-  cat >> "$PROFILE_FILE" <<EOF
-
-# FCUK Proxy — local LLM endpoint for CLI tools
-export FCUK_PROXY_URL="http://localhost:6000"
-export OPENAI_BASE_URL="http://localhost:6000/v1"
-export OPENAI_API_KEY="fcuk-proxy"
-EOF
-  echo "  ✓ Environment variables set in $PROFILE_FILE"
-  export FCUK_PROXY_URL="http://localhost:6000"
-  export OPENAI_BASE_URL="http://localhost:6000/v1"
-  export OPENAI_API_KEY="fcuk-proxy"
-fi
-
-# ── Systemd service ─────────────────────────────────────────────────────
-if [ "$PLATFORM" = "linux" ] && command -v systemctl >/dev/null 2>&1; then
-  SERVICE_FILE="$HOME/.config/systemd/user/$SERVICE_NAME.service"
-  mkdir -p "$(dirname "$SERVICE_FILE")"
-
-  pkill -f "agent.py" 2>/dev/null || true
-
-  cat > "$SERVICE_FILE" <<EOF
-[Unit]
-Description=FCUK Proxy Agent
-After=network.target
-
-[Service]
-ExecStart=$VENV_DIR/bin/python $AGENT_PY
-Restart=on-failure
-RestartSec=5
-EnvironmentFile=$ENV_FILE
-Environment=OPENAI_BASE_URL=http://localhost:6000/v1
-Environment=OPENAI_API_KEY=fcuk-proxy
-
-[Install]
-WantedBy=default.target
-EOF
-  systemctl --user daemon-reload 2>/dev/null || true
-  systemctl --user enable "$SERVICE_NAME" 2>/dev/null || true
-  systemctl --user --no-block start "$SERVICE_NAME" 2>/dev/null || true
-  echo "Systemd service started: $SERVICE_NAME"
-fi
-
-# ── Start agent (if no systemd) ────────────────────────────────────────
-if ! command -v systemctl >/dev/null 2>&1 || [ "$PLATFORM" != "linux" ]; then
-  echo "Starting FCUK Proxy agent..."
-  pkill -f "agent.py" 2>/dev/null || true
-  sleep 1
-  nohup "$VENV_DIR/bin/python" "$AGENT_PY" > "$INSTALL_DIR/agent.log" 2>&1 &
-  AGENT_PID=$!
-  echo "Agent PID: $AGENT_PID"
-fi
-
-sleep 2
-
-# ── Register with parent proxy ──────────────────────────────────────────
-echo "Registering with parent proxy..."
-REGISTER_PAYLOAD="{\"machine_id\":\"$MACHINE_ID\",\"machine_name\":\"$HOSTNAME\",\"ip_address\":\"$LOCAL_IP\",\"proxy_port\":6000,\"version\":\"0.4.0\"}"
-curl -sf -X POST "$PARENT_URL/register" \
+# ── Register with Parent Proxy ───────────────────────────────────────────
+echo "[*] Registering with parent proxy..."
+curl -s -m 10 -X POST "${PARENT_URL}/api/proxy?action=register" \
   -H "Content-Type: application/json" \
-  -H "X-Machine-ID: $MACHINE_ID" \
-  -d "$REGISTER_PAYLOAD" \
-  >/dev/null 2>&1 && echo "✓ Registered with parent proxy" || echo "⚠ Could not reach parent proxy — will retry automatically"
+  -d "$(cat ${MACHINE_JSON})" || echo "[!] Registration failed (parent may be unreachable)"
 
-# ── Start GUI dashboard ─────────────────────────────────────────────────
-echo "Starting FCUK Proxy GUI..."
-pkill -f "gui.py" 2>/dev/null || true
-nohup "$VENV_DIR/bin/python" "$GUI_PY" > "$INSTALL_DIR/gui.log" 2>&1 &
-GUI_PID=$!
-echo "GUI PID: $GUI_PID (port 6001)"
+# ── Start child-proxy.js ─────────────────────────────────────────────────
+echo "[*] Starting child proxy..."
+PORT=4001 CHILD_ID="${MACHINE_ID}" nohup node "${MACHINE_DIR}/child-proxy.js" > "${MACHINE_DIR}/proxy.log" 2>&1 &
+PROXY_PID=$!
+echo "[✓] Child proxy started (PID: ${PROXY_PID}, port: 4001)"
 
-echo ""
-echo "╔══════════════════════════════════════════════════════════════╗"
-echo "║   FCUK Proxy installed and running!                         ║"
-echo "║                                                            ║"
-echo "║   OpenAI-compatible endpoint:                               ║"
-echo "║     http://localhost:6000/v1/chat/completions               ║"
-echo "║     http://localhost:6000/v1/models                        ║"
-echo "║                                                            ║"
-echo "║   CLI tools configured:                                    ║"
-echo "║     opencode, kilo, kiro — use proxy-router model           ║"
-echo "║     export OPENAI_BASE_URL=http://localhost:6000/v1         ║"
-echo "║                                                            ║"
-echo "║   Parent proxies:                                          ║"
-echo "║     https://www.financecheque.uk/api/proxy                 ║"
-echo "║     https://financecheque.uk/api/proxy                     ║"
-echo "║   Machine ID: $MACHINE_ID                              ║"
-echo "║                                                            ║"
-echo "║   Logs: $INSTALL_DIR/                                ║"
-echo "║   API Keys: $ENV_FILE                               ║"
-echo "╚══════════════════════════════════════════════════════════════╝"
-echo ""
-# ── Child proxy (Node.js, port 4001) ──────────────────────────────────────
-echo "Setting up child proxy (port 4001)..."
-CHILD_PROXY_JS="$INSTALL_DIR/child-proxy.js"
-CHILD_SERVICE_NAME="fcuk-child-proxy"
-
-if command -v node >/dev/null 2>&1; then
-  curl -fsSL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/child-proxy.js" -o "$CHILD_PROXY_JS"
-
-  # Install express for child proxy
-  cd "$INSTALL_DIR" && npm install express 2>/dev/null || true
-
-  NODE_BIN="$(which node 2>/dev/null || echo '/usr/bin/node')"
-  if [ "$PLATFORM" = "linux" ] && command -v systemctl >/dev/null 2>&1; then
-    CHILD_SERVICE_FILE="$HOME/.config/systemd/user/$CHILD_SERVICE_NAME.service"
-    cat > "$CHILD_SERVICE_FILE" <<EOF
-[Unit]
-Description=FCUK Child Proxy (Node.js)
-After=network.target
-BindsTo=cloudflared-child-proxy.service
-
-[Service]
-ExecStart=$NODE_BIN $CHILD_PROXY_JS
-Restart=on-failure
-RestartSec=5
-WorkingDirectory=$INSTALL_DIR
-Environment=PORT=4001
-Environment=CHILD_ID=$MACHINE_ID
-Environment=TUNNEL_URL=https://child-proxy.financecheque.uk
-
-[Install]
-WantedBy=default.target
-EOF
-    systemctl --user daemon-reload 2>/dev/null || true
-    systemctl --user enable "$CHILD_SERVICE_NAME" 2>/dev/null || true
-    systemctl --user --no-block start "$CHILD_SERVICE_NAME" 2>/dev/null || true
-    echo "  ✓ Child proxy service started (port 4001, tunnel: child-proxy.financecheque.uk)"
+# ── Set up Heartbeat Cron ────────────────────────────────────────────────
+setup_heartbeat() {
+  local cron_job="* * * * * curl -s -m 5 -X POST ${PARENT_URL}/api/proxy?action=heartbeat -H 'Content-Type: application/json' -d '{\"machine_id\":\"${MACHINE_ID}\",\"machine_name\":\"$(hostname)\"}' >/dev/null 2>&1"
+  if $IS_TERMUX; then
+    # Termux: use crond if available, otherwise fall back to background loop
+    if command -v crond >/dev/null 2>&1; then
+      (crontab -l 2>/dev/null; echo "${cron_job}") | crontab -
+      echo "[✓] Heartbeat cron installed"
+    else
+      # Background heartbeat loop
+      nohup bash -c "while true; do curl -s -m 5 -X POST ${PARENT_URL}/api/proxy?action=heartbeat -H 'Content-Type: application/json' -d '{\"machine_id\":\"${MACHINE_ID}\",\"machine_name\":\"$(hostname)\"}' >/dev/null 2>&1; sleep 60; done" > "${MACHINE_DIR}/heartbeat.log" 2>&1 &
+      echo "[✓] Heartbeat loop started (PID: $!)"
+    fi
   else
-    pkill -f "child-proxy.js" 2>/dev/null || true
-    nohup "$NODE_BIN" "$CHILD_PROXY_JS" > "$INSTALL_DIR/child-proxy.log" 2>&1 &
-    echo "  ✓ Child proxy started (port 4001, PID: $!)"
-  fi
-else
-  echo "  ⚠ Node.js not found — install it to enable child proxy on port 4001"
-  echo "    sudo apt install nodejs npm"
-fi
-
-# ── Cloudflare Tunnel (child-proxy.financecheque.uk → localhost:4001) ──
-echo "Setting up Cloudflare Tunnel for child proxy..."
-if command -v cloudflared >/dev/null 2>&1; then
-  # Check if tunnel already exists
-  if ! cloudflared tunnel list 2>/dev/null | grep -q "fcuk-child-proxy"; then
-    cloudflared tunnel create fcuk-child-proxy 2>/dev/null || true
-    cloudflared tunnel route dns fcuk-child-proxy child-proxy.financecheque.uk 2>/dev/null || true
-  fi
-
-  TUNNEL_CONFIG_DIR="$HOME/.cloudflared"
-  TUNNEL_ID_FILE=$(ls "$TUNNEL_CONFIG_DIR"/*.json 2>/dev/null | grep -m1 "fcuk" || echo "")
-  if [ -n "$TUNNEL_ID_FILE" ]; then
-    cat > "$TUNNEL_CONFIG_DIR/config.yml" <<EOF
-tunnel: fcuk-child-proxy
-credentials-file: $TUNNEL_ID_FILE
-no-autoupdate: true
-
-ingress:
-  - hostname: child-proxy.financecheque.uk
-    service: http://localhost:4001
-  - service: http_status:404
-EOF
-
-    TUNNEL_SERVICE_FILE="$HOME/.config/systemd/user/cloudflared-child-proxy.service"
-    mkdir -p "$(dirname "$TUNNEL_SERVICE_FILE")"
-    cat > "$TUNNEL_SERVICE_FILE" <<EOF
+    # Linux: systemd timer or crontab
+    if command -v systemctl >/dev/null 2>&1; then
+      # Create systemd service for heartbeat
+      mkdir -p "${HOME}/.config/systemd/user"
+      cat > "${HOME}/.config/systemd/user/fcukproxy-heartbeat.service" << SERVICEEOF
 [Unit]
-Description=Cloudflare Tunnel — FCUK Child Proxy
+Description=FCUK Proxy Heartbeat
 After=network.target
 
 [Service]
-ExecStart=$(which cloudflared) tunnel run fcuk-child-proxy
-Restart=on-failure
-RestartSec=5
+Type=oneshot
+ExecStart=curl -s -m 5 -X POST ${PARENT_URL}/api/proxy?action=heartbeat -H 'Content-Type: application/json' -d '{"machine_id":"${MACHINE_ID}","machine_name":"$(hostname)"}'
+SERVICEEOF
+      cat > "${HOME}/.config/systemd/user/fcukproxy-heartbeat.timer" << TIMEREOF
+[Unit]
+Description=FCUK Proxy Heartbeat Timer
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
 
 [Install]
-WantedBy=default.target
-EOF
-    systemctl --user daemon-reload 2>/dev/null || true
-    systemctl --user enable cloudflared-child-proxy 2>/dev/null || true
-    systemctl --user --no-block start cloudflared-child-proxy 2>/dev/null || true
-    echo "  ✓ Cloudflare Tunnel started (child-proxy.financecheque.uk → localhost:4001)"
+WantedBy=timers.target
+TIMEREOF
+      systemctl --user daemon-reload
+      systemctl --user enable fcukproxy-heartbeat.timer 2>/dev/null || true
+      systemctl --user start fcukproxy-heartbeat.timer 2>/dev/null || true
+      echo "[✓] Heartbeat systemd timer installed"
+    else
+      (crontab -l 2>/dev/null; echo "${cron_job}") | crontab - 2>/dev/null || {
+        nohup bash -c "while true; do curl -s -m 5 -X POST ${PARENT_URL}/api/proxy?action=heartbeat -H 'Content-Type: application/json' -d '{\"machine_id\":\"${MACHINE_ID}\",\"machine_name\":\"$(hostname)\"}' >/dev/null 2>&1; sleep 60; done" > "${MACHINE_DIR}/heartbeat.log" 2>&1 &
+        echo "[✓] Heartbeat loop started (PID: $!)"
+      }
+    fi
   fi
+}
+
+setup_heartbeat
+
+# ── Configure Hermes Agent (if installed) ────────────────────────────────
+if command -v hermes-agent >/dev/null 2>&1 || [[ -f "${HOME}/.local/bin/hermes-agent" ]]; then
+  HERMES_BIN="${HOME}/.local/bin/hermes-agent"
+  echo "[*] Hermes agent found at ${HERMES_BIN}"
+  mkdir -p "${HOME}/.hermes-live"
+  cat > "${HOME}/.hermes-live/config.json" << CONFIGEOF
+{
+  "name": "fcukproxy-hermes",
+  "parent_url": "${PARENT_URL}/api/proxy",
+  "machine_id": "${MACHINE_ID}",
+  "routing": {
+    "strategy": "parent_first",
+    "chat_only": true,
+    "fallback_to_local": true,
+    "local_endpoint": "http://localhost:6000/v1/chat/completions",
+    "timeout_ms": 25000
+  },
+  "heartbeat_interval_sec": 60
+}
+CONFIGEOF
+  echo "[✓] Hermes agent configured"
 else
-  echo "  ⚠ cloudflared not found. Install it from https://developers.cloudflare.com/cloudflare-one/connections/connect-networks/downloads/"
+  echo "[*] Hermes agent not found. Install with: npm install -g hermes-agent"
 fi
 
-# ── Install SOUL.md (machine identity document) ─────────────────────────
-cat > "$INSTALL_DIR/SOUL.md" <<'SOULEOF'
-# FCUK Proxy — Machine Identity
-
-## Role
-You are a child proxy node in the FinanceCheque (FCUK) proxy network.
-Your machine_id is MACHINE_ID_PLACEHOLDER.
-
-## Polling Mode (No Open Ports Required)
-This machine uses **polling mode** — the agent makes outbound HTTPS requests to the
-parent proxy every 2 seconds to check for pending work. No inbound ports needed.
-Works from any network (NAT, firewall, closed ports, AWS security groups, etc).
-
-## Routing Chain (tried in order, retries)
-1. **Local providers** — .env API keys in round-robin (OpenRouter, OpenAI, etc.)
-2. **Parent proxy** — routes to: other child proxies → parent's OpenRouter keys → Cloudflare proxy
-3. **Peer proxies** — discovered via UDP multicast (239.255.255.250:6002)
-
-## Polling Workflow
-- Agent registers with parent via outbound POST → /api/proxy/register
-- Agent polls every 2s → GET /api/proxy/poll?machine_id=...
-- Parent queues work when it can't reach this machine directly (closed ports)
-- Agent processes queued work using local API keys
-- Agent posts result back → POST /api/proxy/result
-
-## Endpoints
-- Agent proxy: http://localhost:6000/v1/chat/completions (OpenAI-compatible, local use)
-- GUI dashboard: http://localhost:6001
-- Status: http://localhost:6000/status | curl
-
-## Key Files
-- Config: ~/.fcukproxy/machine.json
-- API keys: ~/.fcukproxy/.env
-- Agent log: ~/.fcukproxy/agent.log
-
-## Commands
-- Restart agent: systemctl --user restart fcukproxy
-- View status: curl http://localhost:6000/status | python3 -m json.tool
-SOULEOF
-sed -i "s/MACHINE_ID_PLACEHOLDER/$MACHINE_ID/g" "$INSTALL_DIR/SOUL.md"
-echo "  ✓ Machine SOUL.md written to $INSTALL_DIR/SOUL.md"
-
+# ── Print Summary ────────────────────────────────────────────────────────
+LOCAL_IP=$(ip route get 1 2>/dev/null | awk '{print $NF; exit}' || hostname -I 2>/dev/null | awk '{print $1}' || echo "unknown")
 echo ""
-echo "To add LLM API keys, edit: nano $ENV_FILE"
-echo "Then restart: systemctl --user restart $SERVICE_NAME"
-echo "To chat: curl http://localhost:6000/v1/chat/completions -d '{\"messages\":[{\"role\":\"user\",\"content\":\"hi\"}]}'"
-echo "To see status: curl http://localhost:6000/status | python3 -m json.tool"
-echo "To list models: curl http://localhost:6000/v1/models"
+echo "════════════════════════════════════════════════"
+echo "  FCUK Proxy Installation Complete"
+echo "════════════════════════════════════════════════"
+echo "  Machine ID:  ${MACHINE_ID}"
+echo "  Machine Name: $(hostname)"
+echo "  Local IP:    ${LOCAL_IP}"
+echo "  Proxy Port:  4001"
+echo "  Parent URL:  ${PARENT_URL}"
+echo "  Config:      ${MACHINE_JSON}"
+echo "  Log:         ${MACHINE_DIR}/proxy.log"
+echo ""
+echo "  Your child proxy will appear on:"
+echo "  → ${PARENT_URL}/health"
+echo "  within 60 seconds."
+echo ""
+echo "  One-liner (share this):"
+echo "  curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash"
+echo "════════════════════════════════════════════════"
