@@ -1,9 +1,9 @@
 {
   "title": "Great House Farm Story — Timeline",
   "description": "The complete chronological account of the Williams-Buckler family and Great House Farm, Llandough, including HER record GGAT02038s.",
-  "total_entries": 87,
-  "last_updated": "2026-05-30",
-  "version": "0.2.1.00",
+  "total_entries": 100,
+  "last_updated": "2026-05-31",
+  "version": "0.0.0.08",
   "summary": {
     "earliest_year": "1100",
     "latest_year": "2025",
@@ -985,6 +985,35 @@
       }
     },
     {
+      "year": "1916",
+      "location": "Great House Farm, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "John Williams is granted an agricultural tenancy of Great House Farm by the Marquess of Bute, formalising the family's occupation under a Bute estate tenancy.",
+      "scenes": [
+        {
+          "character": "JOHN WILLIAMS",
+          "icon": "farmer",
+          "side": "left",
+          "text": "The Marquess of Bute grants me the agricultural tenancy of Great House Farm."
+        },
+        {
+          "character": "MARQUESS OF BUTE",
+          "icon": "worker",
+          "side": "right",
+          "text": "We record John Williams as agricultural tenant at Great House Farm."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "1920",
       "location": "Great House Farm",
       "locationType": "other",
@@ -1143,6 +1172,35 @@
       }
     },
     {
+      "year": "1949",
+      "location": "Great House Farm, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "The tenancy of Great House Farm is intended to be transferred from John Williams to his son-in-law Frederick Buckler, reflecting the family's internal succession arrangements.",
+      "scenes": [
+        {
+          "character": "FAMILY SOLICITOR",
+          "icon": "worker",
+          "side": "left",
+          "text": "The tenancy is to be transferred from John Williams to Frederick Buckler."
+        },
+        {
+          "character": "FREDERICK BUCKLER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "I am to take over the agricultural tenancy from John Williams."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "1953",
       "location": "Great House Farm",
       "locationType": "other",
@@ -1207,6 +1265,35 @@
           "icon": "worker",
           "side": "left",
           "text": "Without formal documentation we cannot register your claimed ownership."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1959",
+      "location": "Great House Farm, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "Mary Buckler, nee Williams, formally asserts a hereditary ownership claim to Great House Farm, contending that the family's centuries-old occupation gives rise to a superior equitable title not extinguished by the Bute estate tenancy arrangements.",
+      "scenes": [
+        {
+          "character": "MARY BUCKLER",
+          "icon": "worker",
+          "side": "left",
+          "text": "The Williams family has held Great House for centuries. I assert our hereditary ownership."
+        },
+        {
+          "character": "LEGAL ADVISOR",
+          "icon": "worker",
+          "side": "right",
+          "text": "The claim rests on ancestral title predating the Bute estate records."
         }
       ],
       "sources": [],
@@ -1313,6 +1400,35 @@
       }
     },
     {
+      "year": "1969",
+      "location": "Great House Farm, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "Great House Farm is sold to BP Pension Trust Ltd as part of a portfolio transaction. The sale transfers the freehold interest to the BP corporate group, setting the stage for subsequent possession proceedings against the Buckler family.",
+      "scenes": [
+        {
+          "character": "BP SOLICITOR",
+          "icon": "worker",
+          "side": "left",
+          "text": "BP Pension Trust Ltd now holds the freehold of Great House Farm."
+        },
+        {
+          "character": "ESTATE AGENT",
+          "icon": "worker",
+          "side": "right",
+          "text": "The farm is sold as part of a portfolio to BP Pension Trust."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "1970",
       "location": "Legal Office",
       "locationType": "other",
@@ -1348,6 +1464,35 @@
           "icon": "lawyer",
           "side": "left",
           "text": "Ownership is the only issue that can conclusively settle this dispute."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1970",
+      "location": "Great House Farm, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "Llandough Primary School opens on land that formerly formed part of the Great House Farm holding, representing the first phase of development of the farm estate for public purposes.",
+      "scenes": [
+        {
+          "character": "HEAD TEACHER",
+          "icon": "worker",
+          "side": "left",
+          "text": "Llandough Primary School opens today on what was once Great House Farm land."
+        },
+        {
+          "character": "LOCAL RESIDENT",
+          "icon": "worker",
+          "side": "right",
+          "text": "The new school is built on the old farm fields our families worked."
         }
       ],
       "sources": [],
@@ -1452,6 +1597,122 @@
           "House remained partially recorded because of access problems from ownership dispute",
           "Great House plan not published in Inventory due to incompleteness of available information"
         ],
+        "report": []
+      }
+    },
+    {
+      "year": "1974",
+      "location": "High Court, Wales and Chester District",
+      "locationType": "other",
+      "description": "",
+      "narration": "Judge Watkin Powell grants BP Pension Trust Ltd leave to enforce the 1962 possession order against the occupants of Great House Farm, clearing the procedural barrier to eviction proceedings.",
+      "scenes": [
+        {
+          "character": "JUDGE WATKIN POWELL",
+          "icon": "worker",
+          "side": "left",
+          "text": "Leave is granted to enforce the 1962 possession order."
+        },
+        {
+          "character": "BP BARRISTER",
+          "icon": "worker",
+          "side": "right",
+          "text": "My Lord, we seek enforcement of the existing possession order."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1974",
+      "location": "South Wales / Great House Farm",
+      "locationType": "other",
+      "description": "",
+      "narration": "Mary Buckler publicly opposes the threatened eviction through press coverage in South Wales, drawing attention to the family's long occupation and the disputed basis of BP's title.",
+      "scenes": [
+        {
+          "character": "NEWS REPORTER",
+          "icon": "worker",
+          "side": "left",
+          "text": "Mrs Buckler, do you have any comment on the eviction proceedings?"
+        },
+        {
+          "character": "MARY BUCKLER",
+          "icon": "worker",
+          "side": "right",
+          "text": "My family has lived here for generations. This land belongs to the Williams line."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1974",
+      "location": "Great House Farm, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "BP Pension Trust Ltd and BP Properties Ltd issue letters to Mary Buckler purporting to grant her a licence to remain at Great House Farm rent-free for life, a document later central to the dispute over whether the family's occupation was permissive or adverse.",
+      "scenes": [
+        {
+          "character": "BP MANAGER",
+          "icon": "worker",
+          "side": "left",
+          "text": "We issue this licence allowing Mrs Buckler to remain rent-free for life."
+        },
+        {
+          "character": "MARY BUCKLER",
+          "icon": "worker",
+          "side": "right",
+          "text": "BP says I may stay, but I have never accepted they own this land."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1974",
+      "location": "Great House Farm, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "The possession warrant against Mary Buckler is withdrawn following the issuance of the BP licence letters, and she remains in occupation of Great House Farm under the terms of the 1974 arrangement.",
+      "scenes": [
+        {
+          "character": "COURT OFFICIAL",
+          "icon": "worker",
+          "side": "left",
+          "text": "The possession warrant is withdrawn. Mrs Buckler may remain in occupation."
+        },
+        {
+          "character": "MARY BUCKLER",
+          "icon": "worker",
+          "side": "right",
+          "text": "I shall stay at Great House. No warrant will move me from my home."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
         "report": []
       }
     },
@@ -1626,6 +1887,35 @@
           "icon": "builder",
           "side": "left",
           "text": "The full extent of remains likely won't be known until after demolition."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1979",
+      "location": "Llandough, Glamorgan",
+      "locationType": "other",
+      "description": "",
+      "narration": "A Roman villa and bathhouse are uncovered during housing development works at Llandough on former Great House Farm land, confirming the site's significance as a substantial Roman settlement.",
+      "scenes": [
+        {
+          "character": "ARCHAEOLOGIST",
+          "icon": "worker",
+          "side": "left",
+          "text": "We have uncovered a Roman villa and bathhouse beneath the development site."
+        },
+        {
+          "character": "SITE FOREMAN",
+          "icon": "worker",
+          "side": "right",
+          "text": "The diggers hit Roman masonry. The developers have called in the archaeologists."
         }
       ],
       "sources": [],
@@ -2143,6 +2433,35 @@
           "icon": "lawyer",
           "side": "left",
           "text": "Procedural rules bar this application. Domestic courts have ruled conclusively."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1987",
+      "location": "Llandough, Glamorgan",
+      "locationType": "other",
+      "description": "",
+      "narration": "Corinthian Close and Tuscan Close are constructed over the site of the Roman villa following unsuccessful preservation efforts, sealing the archaeology beneath residential housing.",
+      "scenes": [
+        {
+          "character": "HOUSING DEVELOPER",
+          "icon": "worker",
+          "side": "left",
+          "text": "Building will proceed. Corinthian Close and Tuscan Close go ahead as planned."
+        },
+        {
+          "character": "LOCAL RESIDENT",
+          "icon": "worker",
+          "side": "right",
+          "text": "They have built the new estate right over the Roman remains."
         }
       ],
       "sources": [],
@@ -3043,6 +3362,35 @@
       }
     },
     {
+      "year": "1988",
+      "location": "Great House Farm, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "Following the demolition of Great House Farm, the final removal of the remaining Buckler occupants from the site takes place, ending the family's more than three centuries of occupation.",
+      "scenes": [
+        {
+          "character": "BAILIFF",
+          "icon": "worker",
+          "side": "left",
+          "text": "The site is cleared. No one remains of the Buckler family at Great House Farm."
+        },
+        {
+          "character": "FAMILY MEMBER",
+          "icon": "worker",
+          "side": "right",
+          "text": "Three hundred years of Williams and Buckler occupation ends today."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "1989",
       "location": "Court",
       "locationType": "other",
@@ -3364,6 +3712,35 @@
           "Seven related archaeological events: 1990 (two events), 1994, 2006, 2010 (two events), 2013",
           "Events include assessments, excavations and evaluations of Great House Farm and environs"
         ],
+        "report": []
+      }
+    },
+    {
+      "year": "1993",
+      "location": "Llandough, Glamorgan",
+      "locationType": "other",
+      "description": "",
+      "narration": "The Glamorgan Village Book records the 1979 discovery of the Roman villa at Llandough and notes that housing was subsequently constructed over the archaeological site, preserving the memory of the lost heritage.",
+      "scenes": [
+        {
+          "character": "VILLAGE BOOK EDITOR",
+          "icon": "worker",
+          "side": "left",
+          "text": "The Village Book will note the Roman villa discovery and its loss to development."
+        },
+        {
+          "character": "HISTORIAN",
+          "icon": "worker",
+          "side": "right",
+          "text": "The Roman remains were uncovered but then built over. A lost heritage opportunity."
+        }
+      ],
+      "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
         "report": []
       }
     },

@@ -67,4 +67,22 @@
 ### Fixed
 - Identified issue: JSON parse error: Expecting "," delimiter (requires manual fix)
 
+## [bpvsbuckler-v0.0.0.16] - 2026-05-31
+
+### Added
+- feat(bpvsbuckler): Add 13 new timeline entries covering 1916–1993 gaps
+  - 1916 – John Williams granted agricultural tenancy by Marquess of Bute
+  - 1949 – Intended tenancy transfer from John Williams to Frederick Buckler
+  - 1959 – Mary Buckler/Williams asserted hereditary ownership claim
+  - 1969 – Great House Farm sold to BP Pension Trust Ltd
+  - 1970 – Llandough Primary School opened on former farm land
+  - 1974 – Judge Watkin Powell granted leave to enforce 1962 possession order
+  - 1974 – Mary Buckler/Williams opposed eviction through press coverage
+  - 1974 – BP Pension Trust and BP Properties issued life rent-free licence letters
+  - 1974 – Possession warrant withdrawn; Mary remained in occupation
+  - 1979 – Roman villa and bathhouse uncovered during housing development
+  - 1987 – Corinthian Close and Tuscan Close constructed over Roman villa site
+  - 1988 – Final removal of remaining Buckler occupants from Great House Farm
+  - 1993 – The Glamorgan Village Book recorded the Roman villa discovery
+
 ## [Unreleased]
