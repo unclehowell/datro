@@ -18,7 +18,6 @@ The purpose of the script files contained in this directory are as follows:
 **rebuild-master.sh** : found in every sphinx document folder (entitled rebuild.sh), it custom builds the rst files into PDF and HTML and updates the auto-rebuild
 **auto-rebuild-master.sh** : placed in every sphinx document folder (entitled auto-rebuild.sh). Used by update-all.sh to update the rebuild.sh file before running it.
 
-
 ### File Locations
 
 The directory structure and file locations are as follows:
@@ -39,7 +38,6 @@ The directory structure and file locations are as follows:
 
   update-all.sh
 
-
 ### Functions
 
 * auto-rebuild.sh does the following:
@@ -52,11 +50,9 @@ The directory structure and file locations are as follows:
         - copies the auto-rebuild-master.sh file from the _blue-build-source directory to its own sphinx document directory
         - * when the latest auto-rebuild-master.sh is copied across the -master part of the filename is removed.
 
-
 * updater.sh does the following:
 	- checks it hasn't already been run in the last 30 minutes, if it has then it ceases to do anything.
 	- if it hasn't been run in the last 30 minutes the latest *-master.sh scripts are fetched and written over the local ones.
-
 
 ### update-all
 

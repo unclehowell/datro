@@ -1,5 +1,13 @@
 # Changelog
 
+## [gui-v0.0.0.12] - 2026-05-31
+
+### Fixed
+- fix(gui): Remove excessive blank lines
+
+### Changed
+- ux(gui): Add loading state styling for better UX
+
 ## [gui-v0.0.0.11] - 2026-05-29
 
 ### Fixed
