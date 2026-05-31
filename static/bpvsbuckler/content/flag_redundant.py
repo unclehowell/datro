@@ -22,18 +22,44 @@ STOPWORDS = {'the','a','an','is','are','was','were','be','been','being',
              'our','you','your','i','me','my','myself'}
 
 def split_entries(text):
-    """Split a JS array string into individual top-level entries."""
+    """Split a JS array string into individual top-level entries.
+    Strips the array brackets and any trailing boundary text."""
     inner = text
+    prefix = ''
     if inner.startswith('a1=['):
-        inner = inner[4:]
+        prefix = 'a1='
+        inner = inner[3:]
     elif inner.startswith('F4=['):
-        inner = inner[4:]
-    if inner.endswith(']'):
-        inner = inner[:-1]
+        prefix = 'F4='
+        inner = inner[3:]
+
+    # Find the array boundaries: outer [ ... ]
+    # The array starts at first '[' and ends at matching ']'
+    if not inner.startswith('['):
+        return []
+    bracket_depth = 0
+    array_end = -1
+    for i, ch in enumerate(inner):
+        if ch == '[':
+            bracket_depth += 1
+        elif ch == ']':
+            bracket_depth -= 1
+            if bracket_depth == 0:
+                array_end = i
+                break
+
+    if array_end == -1:
+        return []
+
+    # Content inside the array
+    content = inner[1:array_end]
+    # Suffix after the array closing bracket (e.g. ",a")
+    suffix = inner[array_end+1:]
+
     entries = []
     depth = 0
     current = ''
-    for ch in inner:
+    for ch in content:
         if ch == '{':
             depth += 1
             current += ch
@@ -47,9 +73,8 @@ def split_entries(text):
             pass
         else:
             current += ch
-    if current.strip():
-        entries.append(current.strip())
-    return entries
+
+    return prefix, entries, suffix
 
 def get_entry_keywords(text):
     """Extract meaningful words from text."""
@@ -63,17 +88,13 @@ def is_redundant(narration, scene_text):
     if not s_words:
         return False
     intersection = n_words & s_words
-    if len(s_words) <= 2:
-        containment = len(intersection) / len(s_words)
-    else:
-        containment = len(intersection) / len(s_words)
+    containment = len(intersection) / len(s_words)
     jaccard = len(intersection) / len(n_words | s_words) if (n_words | s_words) else 0
-    # Scene is redundant if most of its keywords appear in the narration
     return containment > 0.5 or (containment > 0.35 and jaccard > 0.12)
 
 def flag_redundant_in_string(js_str):
     """Process a JS array string, adding redundant:true to repetitive scenes."""
-    entries = split_entries(js_str)
+    prefix, entries, suffix = split_entries(js_str)
     modified = []
     for entry in entries:
         n = re.search(r'narration:"((?:[^"\\]|\\.)*)"', entry)
@@ -82,19 +103,12 @@ def flag_redundant_in_string(js_str):
             narration = n.group(1)
             scene_text = t.group(1)
             if is_redundant(narration, scene_text):
-                # Add redundant:true before the closing }}] of the scene
-                # Pattern: ,position:{x:0,y:0}}]
                 entry = entry.replace(
                     ',position:{x:0,y:0}}]',
                     ',position:{x:0,y:0},redundant:true}]'
                 )
         modified.append(entry)
-    if js_str.startswith('a1=['):
-        return 'a1=[' + ','.join(modified) + ']'
-    elif js_str.startswith('F4=['):
-        return 'F4=[' + ','.join(modified) + ']'
-    else:
-        return '[' + ','.join(modified) + ']'
+    return prefix + '[' + ','.join(modified) + ']' + suffix
 
 def main():
     with open(DATA_FILE, 'r') as f:
@@ -111,6 +125,21 @@ def main():
 
     a1_flags = data['a1'].count('redundant:true') - a1_count_before
     f4_flags = data['f4'].count('redundant:true') - f4_count_before
+
+    # Verify structure
+    for key in ('a1', 'f4'):
+        val = data[key]
+        if not val.startswith('a1=[' if key == 'a1' else 'F4=['):
+            print(f"WARNING: {key} does not start with correct prefix!")
+        bracket_depth = 0
+        for i, ch in enumerate(val):
+            if ch == '[':
+                bracket_depth += 1
+            elif ch == ']':
+                bracket_depth -= 1
+                if bracket_depth == 0:
+                    # Check that after this, we have valid suffix
+                    break
 
     with open(DATA_FILE, 'w') as f:
         json.dump(data, f, indent=2, ensure_ascii=False)
