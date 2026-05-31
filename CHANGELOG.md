@@ -1,5 +1,13 @@
 # Changelog
 
+## [ui-v0.0.0.11] - 2026-05-31
+
+### Fixed
+- fix(ui): Remove excessive blank lines
+
+### Changed
+- ux(ui): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [ui-v0.0.0.10] - 2026-05-29
 
 ### Fixed
