@@ -1,5 +1,13 @@
 # Changelog
 
+## [gui-v0.0.0.13] - 2026-06-01
+
+### Fixed
+- fix(gui): Remove excessive blank lines
+
+### Changed
+- ux(gui): Add hover styles for interactive elements
+
 ## [gui-v0.0.0.12] - 2026-05-31
 
 ### Fixed
