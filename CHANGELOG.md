@@ -1,5 +1,13 @@
 # Changelog
 
+## [archives-v0.0.0.13] - 2026-06-01
+
+### Fixed
+- fix(archives): Remove excessive blank lines
+
+### Changed
+- ux(archives): Improve text color contrast for readability
+
 ## [archives-v0.0.0.12] - 2026-05-30
 
 ### Fixed
