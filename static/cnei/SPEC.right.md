@@ -25,6 +25,14 @@
 - [x] Fastest known child proxy tried first for chat routing
 - [x] Failed proxy gets penalized (30s default) in average calculation
 
+## CONSTRAINTS
+- Never break existing API endpoints or HTML structure
+- All AI-proposed SEARCH text must be validated against current HTML before applying
+- If AI engine fails twice in a row for same branch, skip AI and use best-practice engine
+- Loop prevention: X-Forwarded requests must NEVER route back through child proxy network
+- Release notes must include: what changed, why, and what previous release said
+- Maximum 120s AI query timeout — fall back if exceeded
+
 ## Emergency Procedures
 - If AI engine fails: falls back to best-practice engine, then audit-only release
 - If parent proxy unreachable: child proxy uses local LLM fallback

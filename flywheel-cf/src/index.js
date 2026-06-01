@@ -578,6 +578,51 @@ async function getFileContent(token, branch, path) {
   }
 }
 
+// ── Wing Files (Harness) ─────────────────────────────────────────────────────
+
+async function getAllWingFiles(token, branch) {
+  const sides = ['left', 'right'];
+  const types = ['SPEC', 'AGENT', 'TASKS', 'README', 'MEMORY', 'PLAN', 'CHANGELOG'];
+  const files = {};
+  for (const side of sides) {
+    for (const type of types) {
+      const path = `static/${branch}/${type}.${side}.md`;
+      const file = await getFileContent(token, branch, path);
+      if (file) files[`${type}.${side}`] = file.content;
+    }
+  }
+  return files;
+}
+
+function extractHarnessRules(wingFiles) {
+  const rules = [];
+  for (const [key, content] of Object.entries(wingFiles)) {
+    const lines = content.split('\n');
+    let inConstraint = false;
+    for (const line of lines) {
+      if (line.match(/^##\s*(CONSTRAINTS?|RULES?|LIMITS?)/i)) inConstraint = true;
+      else if (line.startsWith('## ') && !line.match(/^##\s*(CONSTRAINTS?|RULES?|LIMITS?)/i)) inConstraint = false;
+      else if (inConstraint && line.trim().startsWith('-')) rules.push(line.trim().replace(/^-\s*\[\s*\]\s*/, '- ').replace(/^-\s*\[x\]\s*/, '- '));
+    }
+  }
+  return rules.length > 0 ? rules.join('\n') : '(no explicit constraints in wing files)';
+}
+
+function extractHarnessPriorities(wingFiles) {
+  const priorities = [];
+  for (const [key, content] of Object.entries(wingFiles)) {
+    if (!key.startsWith('TASKS')) continue;
+    const lines = content.split('\n');
+    let inPending = false;
+    for (const line of lines) {
+      if (line.match(/^##\s*(PENDING|TODO|BACKLOG)/i)) inPending = true;
+      else if (line.startsWith('## ') && !line.match(/^##\s*(PENDING|TODO|BACKLOG)/i)) inPending = false;
+      else if (inPending && line.trim().startsWith('-')) priorities.push(line.trim());
+    }
+  }
+  return priorities.length > 0 ? priorities.join('\n') : '(no explicit task list in wing files)';
+}
+
 async function createCommit(token, branch, path, content, message) {
   const existing = await getFileContent(token, branch, path);
   const blobResp = await fetch(
@@ -700,6 +745,224 @@ async function getNextCycleNum(token, branch) {
     }
   }
   return maxCycle + 1;
+}
+
+// ── AI Uniqueness Engine ──────────────────────────────────────────────────────
+
+async function getPreviousReleaseNotes(token, branch, count = 15) {
+  const notes = [];
+  let page = 1;
+  while (notes.length < count) {
+    const resp = await ghFetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=100&page=${page}`,
+      token
+    );
+    const releases = await resp.json();
+    if (!Array.isArray(releases) || releases.length === 0) break;
+    for (const r of releases) {
+      if (r.tag_name && r.tag_name.startsWith(`${branch}-v`) && !r.tag_name.endsWith('-aws') && r.body) {
+        const summary = r.body.replace(/```[\s\S]*?```/g, '').replace(/#{1,6}\s/g, '').trim().slice(0, 500);
+        notes.push(`- ${r.tag_name}: ${summary}`);
+        if (notes.length >= count) break;
+      }
+    }
+    if (releases.length < 100) break;
+    page++;
+  }
+  return notes;
+}
+
+function buildSystemPrompt(wingFiles, branch, category) {
+  const harnessRules = extractHarnessRules(wingFiles);
+  const harnessPriorities = extractHarnessPriorities(wingFiles);
+  return `You are the release engineer for the DATRO monorepo. Each branch has its own website on Cloudflare Pages.
+
+Your task: analyze branch "${branch}" (category: ${category}) and propose ONE unique, tailored improvement.
+
+## HARNESS RULES (from wing files — these are your constraints)
+${harnessRules}
+
+## PENDING TASKS / PRIORITIES (from wing files — guidance on what matters)
+${harnessPriorities}
+
+## OUTPUT FORMAT
+Respond with exactly this structure for EACH change. You may propose up to 3 BUG fixes and up to 1 FEATURE per release.
+
+---CHANGE---
+TITLE: <short title>
+TYPE: bug|feature
+DESCRIPTION: <2-3 sentence explanation of what and why>
+SEARCH: <exact text to find in the HTML — must exist verbatim>
+REPLACE: <replacement text>
+---END CHANGE---
+
+## RULES
+- Max 3 bug fixes, max 1 feature per release (enforced by parser)
+- Each SEARCH block MUST exist verbatim in the current HTML or the change will be REJECTED
+- Must NOT repeat anything from the Previous Releases list below
+- Changes must be grounded in web best practices (WCAG, web.dev, MDN, OWASP)
+- Consider: mobile responsiveness, cross-browser, accessibility, performance, security, SEO
+- The REPLACE text must include everything the SEARCH did plus your improvement
+- For index.html changes only (not modifying CSS/JS files directly)`;
+}
+
+function buildUserPrompt(html, headers, releaseNotes) {
+  const notesText = releaseNotes.length > 0 ? releaseNotes.slice(0, 15).join('\n') : '(no previous releases)';
+  return `## CURRENT index.html
+\`\`\`html
+${html}
+\`\`\`
+
+## CURRENT _headers
+\`\`\`
+${headers || '(empty — no _headers file)'}
+\`\`\`
+
+## PREVIOUS RELEASES (DO NOT REPEAT ANY OF THESE)
+${notesText}
+
+Analyze this branch deeply. Read the HTML carefully. Check for:
+1. Missing responsive/mobile features (viewport, media queries, touch targets)
+2. Accessibility gaps (aria labels, focus management, semantic HTML)
+3. Performance issues (render-blocking resources, image optimization)
+4. Security gaps (missing headers, inline scripts)
+5. UX improvements (navigation, forms, content structure)
+6. Cross-platform/browser compatibility
+7. Missing standard meta tags or structured data
+8. Opportunities for progressive enhancement
+
+Propose your best change using the ---CHANGE--- format. One change block per proposal. Up to 3 bugs + 1 feature.`;
+}
+
+async function queryFinancechequeAPI(systemPrompt, userPrompt, timeoutMs = 120000) {
+  const startTimeAI = Date.now();
+  const payload = {
+    message: `${systemPrompt}\n\n${userPrompt}`,
+    chat_only: true,
+    model: 'openrouter/anthropic/claude-sonnet'
+  };
+  const controller = new AbortController();
+  const timer = setTimeout(() => controller.abort(), timeoutMs);
+  try {
+    const resp = await fetch('https://www.financecheque.uk/api/proxy?action=chat', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'X-Chat-Only': 'true' },
+      body: JSON.stringify(payload),
+      signal: controller.signal
+    });
+    clearTimeout(timer);
+    if (!resp.ok) {
+      const text = await resp.text().catch(() => '');
+      console.error(`AI API error: ${resp.status} ${text.slice(0, 200)}`);
+      return { error: `HTTP ${resp.status}`, reply: null, elapsed: Date.now() - startTimeAI };
+    }
+    const data = await resp.json();
+    const elapsed = Date.now() - startTimeAI;
+    console.log(`AI query completed in ${elapsed}ms`);
+    return { error: null, reply: data.reply || data.choices?.[0]?.message?.content || '', elapsed };
+  } catch (err) {
+    clearTimeout(timer);
+    console.error(`AI query failed: ${err.message}`);
+    return { error: err.message, reply: null, elapsed: Date.now() - startTimeAI };
+  }
+}
+
+function parseAIResponse(text, html) {
+  if (!text || text.trim() === '') return { changes: [], error: 'empty_response' };
+  const changes = [];
+  const blocks = text.split('---CHANGE---');
+  let bugCount = 0, featureCount = 0;
+
+  for (const block of blocks) {
+    const trimmed = block.trim();
+    if (!trimmed) continue;
+
+    const titleMatch = trimmed.match(/TITLE:\s*(.+)/i);
+    const typeMatch = trimmed.match(/TYPE:\s*(bug|feature)/i);
+    const descMatch = trimmed.match(/DESCRIPTION:\s*([\s\S]*?)(?=SEARCH:|$)/i);
+    const searchMatch = trimmed.match(/SEARCH:\s*([\s\S]*?)(?=REPLACE:|$)/i);
+    const replaceMatch = trimmed.match(/REPLACE:\s*([\s\S]*?)(?=---END|---CHANGE|NOTES:|$)/i);
+
+    if (!titleMatch || !searchMatch || !replaceMatch) continue;
+
+    const title = titleMatch[1].trim();
+    const type = typeMatch ? typeMatch[1].toLowerCase() : 'bug';
+    const description = descMatch ? descMatch[1].trim() : '';
+    const search = searchMatch[1].trim();
+    const replace = replaceMatch[1].trim();
+
+    // Enforce scope limits
+    if (type === 'bug') { bugCount++; if (bugCount > 3) continue; }
+    if (type === 'feature') { featureCount++; if (featureCount > 1) continue; }
+
+    // Validate SEARCH exists in HTML
+    if (!html.includes(search)) {
+      console.log(`  Rejected "${title}": SEARCH text not found in HTML`);
+      continue;
+    }
+
+    // Validate REPLACE is different from SEARCH
+    if (search === replace) {
+      console.log(`  Rejected "${title}": SEARCH === REPLACE (no change)`);
+      continue;
+    }
+
+    changes.push({ title, type, description, search, replace });
+  }
+
+  if (changes.length === 0) return { changes: [], error: text.includes('---CHANGE---') ? 'all_rejected' : 'no_changes_parsed' };
+  return { changes, error: null };
+}
+
+async function processBranchWithAI(env, branch) {
+  const token = env.GITHUB_TOKEN;
+  console.log(`AI engine analyzing ${branch}`);
+
+  // Gather full context
+  const wingFiles = await getAllWingFiles(token, branch);
+  const wingCount = Object.keys(wingFiles).length;
+  console.log(`  Loaded ${wingCount} wing files`);
+
+  const idx = await getFileContent(token, branch, 'index.html');
+  const hdr = await getFileContent(token, branch, '_headers');
+  const html = idx ? idx.content : '';
+  const headers = hdr ? hdr.content : '';
+
+  if (!html) {
+    console.log(`  No index.html found for ${branch}, skipping AI`);
+    return { error: 'no_html', changes: [], html: '' };
+  }
+
+  const releaseNotes = await getPreviousReleaseNotes(token, branch, 15);
+  console.log(`  Loaded ${releaseNotes.length} previous release notes`);
+  const category = computeBranchCategory(branch);
+
+  // Build prompts
+  const systemPrompt = buildSystemPrompt(wingFiles, branch, category);
+  const userPrompt = buildUserPrompt(html, headers, releaseNotes);
+
+  console.log(`  System prompt: ${systemPrompt.length} chars, User prompt: ${userPrompt.length} chars`);
+
+  // Query the AI (up to 2 min for deep analysis)
+  const result = await queryFinancechequeAPI(systemPrompt, userPrompt, 120000);
+  if (result.error) {
+    console.log(`  AI query error: ${result.error}`);
+    return { error: `ai_query: ${result.error}`, changes: [], html, aiResult: result };
+  }
+
+  console.log(`  AI reply: ${result.reply.length} chars`);
+  console.log(`  AI reply preview: ${result.reply.slice(0, 300)}`);
+
+  // Parse
+  const parsed = parseAIResponse(result.reply, html);
+  if (parsed.error) {
+    console.log(`  Parse result: ${parsed.error}`);
+    return { error: `ai_parse: ${parsed.error}`, changes: [], html, aiResult: result };
+  }
+
+  console.log(`  Parsed ${parsed.changes.length} valid changes (type counts: bugs=${parsed.changes.filter(c => c.type === 'bug').length}, features=${parsed.changes.filter(c => c.type === 'feature').length})`);
+
+  return { error: null, changes: parsed.changes, html, wingFiles, aiResult: result };
 }
 
 // ── Best Practice Engine ──────────────────────────────────────────────────────
@@ -958,45 +1221,101 @@ async function processBranch(env, branch) {
   const mcpResults = await runMcpScans(env, branchUrl);
   const mcpSection = formatMcpReleaseNotes(mcpResults, branch);
 
-  // Try to apply best-practice fix
+  // ── TRY AI ENGINE FIRST (bespoke, tailored release) ──
+  let releaseType = null;
+  let commitSha = null;
+  let releaseNotes = '';
+
+  const aiResult = await processBranchWithAI(env, branch);
+
+  if (aiResult && !aiResult.error && aiResult.changes.length > 0) {
+    // Apply AI changes — apply all changes to index.html
+    let currentHtml = aiResult.html;
+    const appliedChanges = [];
+    for (const change of aiResult.changes) {
+      if (currentHtml.includes(change.search)) {
+        currentHtml = currentHtml.replace(change.search, change.replace);
+        appliedChanges.push(change);
+        console.log(`  Applied AI change: ${change.title}`);
+      }
+    }
+
+    if (appliedChanges.length > 0) {
+      // Commit the changes
+      const bugFixes = appliedChanges.filter(c => c.type === 'bug');
+      const features = appliedChanges.filter(c => c.type === 'feature');
+      const commitMsg = `feat(${branch}): AI release — ${features.map(f => f.title).join(', ')}${bugFixes.length > 0 ? '; fixes: ' + bugFixes.map(b => b.title).join(', ') : ''}`;
+
+      const commit = await createCommit(token, branch, 'index.html', currentHtml, commitMsg);
+      commitSha = commit.sha;
+
+      // Build release notes
+      const changesText = appliedChanges.map(c =>
+        `### ${c.type === 'feature' ? '✨ Feature' : '🐛 Bug Fix'}: ${c.title}\n${c.description}`
+      ).join('\n\n');
+      releaseNotes = [
+        `## AI-Powered Release: ${tagName}`,
+        ``,
+        `After deep analysis of the \`${branch}\` branch website, wing file harness, and ${aiResult.changes.length} previous releases, the AI identified and applied ${appliedChanges.length} unique, tailored improvement(s).`,
+        ``,
+        changesText,
+        ``,
+        `### AI Analysis`,
+      `- Wing files loaded: ${Object.keys(aiResult.wingFiles || {}).length || 0}`,
+      `- Previous releases analyzed: ${(await getPreviousReleaseNotes(token, branch, 1)).length || 0}`,
+      `- AI query elapsed: ${((aiResult.aiResult?.elapsed || 0) / 1000).toFixed(1)}s`,
+        ``,
+        mcpSection
+      ].join('\n');
+
+      await createGitTag(token, tagName, commitSha);
+      const release = await createGitHubRelease(token, tagName, branch, version, releaseNotes);
+      if (release) await verifyRelease(token, tagName);
+      releaseType = 'ai';
+
+      console.log(`AI release ${tagName}: ${appliedChanges.length} changes applied`);
+      return { tagName, version, type: 'ai', changes: appliedChanges, aiError: null, selfImprovements };
+    }
+  }
+
+  // ── FALLBACK: Best-practice engine ──
+  console.log(`Falling back to best-practice engine for ${branch}`);
   const bpResult = await findAndApplyBestPractice(token, branch);
 
-  let ok;
   if (bpResult) {
-    // Append MCP results to release notes
     const enhancedNotes = bpResult.notes + '\n\n' + mcpSection;
     await createGitTag(token, tagName, bpResult.commit);
     const release = await createGitHubRelease(token, tagName, branch, version, enhancedNotes);
     if (release) await verifyRelease(token, tagName);
-    ok = true;
     console.log(`Best-practice release ${tagName}: ${bpResult.bestPractice.name}`);
-  } else {
-    // Simple release with MCP data
-    const notes = [
-      `## [${tagName}]`,
-      ``,
-      `### Changed`,
-      `- Automated best-practice audit: no Tier 1-2 gaps found in \`index.html\``,
-      `- Branch-specific cache/header review complete`,
-      `- Continuous integration release for ${branch}`,
-      ``,
-      `### Audit Summary`,
-      `- Branch: \`${branch}\``,
-      `- Category: ${computeBranchCategory(branch)}`,
-      `- Best practices checked: ${BEST_PRACTICES.length}`,
-      `- All applicable fixes already applied`,
-      ``,
-      mcpSection
-    ].join('\n');
-    const commitSha = await getDefaultBranchSha(token, branch);
-    await createGitTag(token, tagName, commitSha);
-    const release = await createSimpleRelease(token, branch, tagName, version, notes);
-    if (release) await verifyRelease(token, tagName);
-    ok = true;
-    console.log(`Audit-only release ${tagName} (no improvements needed)`);
+    return { tagName, version, type: 'best-practice', aiError: aiResult?.error || null, selfImprovements };
   }
 
-  return { tagName, version, type: ok ? 'best-practice' : 'failed', selfImprovements };
+  // ── FALLBACK: Audit-only release ──
+  console.log(`No improvements found, audit-only release for ${branch}`);
+  const notes = [
+    `## [${tagName}]`,
+    ``,
+    `### Changed`,
+    `- AI analysis: ${aiResult?.error ? `failed (${aiResult.error})` : 'no changes needed'}`,
+    `- Best-practice audit: no Tier 1-2 gaps found in \`index.html\``,
+    `- Branch-specific cache/header review complete`,
+    `- Continuous integration release for ${branch}`,
+    ``,
+    `### Audit Summary`,
+    `- Branch: \`${branch}\``,
+    `- Category: ${computeBranchCategory(branch)}`,
+    `- Best practices checked: ${BEST_PRACTICES.length}`,
+    `- AI error: ${aiResult?.error || 'none'}`,
+    ``,
+    mcpSection
+  ].join('\n');
+  commitSha = commitSha || await getDefaultBranchSha(token, branch);
+  await createGitTag(token, tagName, commitSha);
+  const auditRelease = await createSimpleRelease(token, branch, tagName, version, notes);
+  if (auditRelease) await verifyRelease(token, tagName);
+  console.log(`Audit-only release ${tagName}`);
+  return { tagName, version, type: 'audit-only', aiError: aiResult?.error || null, selfImprovements };
 }
 
 async function triggerOtaAfterCneiRelease(env, tagName) {

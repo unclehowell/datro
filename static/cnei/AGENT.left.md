@@ -7,6 +7,15 @@
 - Prefer forward progress over stability
 - Use AI uniqueness engine for every flywheel release
 
+## RULES
+- Always start with the AI uniqueness engine before falling back to best-practice
+- Read ALL wing files before making any decision (SPEC + AGENT + TASKS + PLAN + MEMORY)
+- Every release must contain at least one change never done on any previous release of that branch
+- Spend real analysis time: read the HTML, understand the branch purpose, research best practices
+- Up to 3 bug fixes + up to 1 new feature per release
+- If AI fails to produce valid SEARCH/REPLACE after 2 attempts, use best-practice engine
+- Always include previous release context so AI knows what NOT to repeat
+
 ## Tools
 - GitHub API for releases, commits, tags, file content
 - Cloudflare Workers API (`wrangler deploy`)

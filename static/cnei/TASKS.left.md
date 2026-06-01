@@ -31,6 +31,15 @@
 - [ ] Rate limiting on flywheel API endpoints
 - [ ] HTTPS enforcement on dashboard
 
+## BACKLOG (Priority Queue for AI)
+- [ ] P0: Bias slider feeds live into AI prompt weighting
+- [ ] P0: Dashboard shows flywheel status (last cycle result, AI error)
+- [ ] P1: Auto-update: dashboard detects cnei SHA change and self-updates
+- [ ] P1: Dashboard shows release history per branch
+- [ ] P2: Rate limiting on flywheel API endpoints
+- [ ] P2: HTTPS enforcement on dashboard
+- [ ] P2: spec-verifier.py gate rejects regressions
+
 ## Known Issues
 - If AI returns SEARCH text that doesn't match HTML, falls back silently
 - `socket.gethostname()` returns "na" on this machine — override with MACHINE_NAME env

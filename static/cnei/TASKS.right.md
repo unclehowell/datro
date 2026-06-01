@@ -21,6 +21,15 @@
 - [ ] Add per-branch cooldown status to dashboard
 - [ ] Add wing file validation (valid markdown, correct format)
 
+## BACKLOG (Stability Priorities for AI)
+- [ ] P0: Add request timeout for all AI API calls
+- [ ] P0: Add error boundary on dashboard editor panel
+- [ ] P1: Add confirmation dialog before destructive saves
+- [ ] P1: Keep last 3 backups of each wing file
+- [ ] P1: Add `aiError` field to dashboard status endpoint
+- [ ] P2: Add per-branch cooldown status to dashboard
+- [ ] P2: Add wing file validation (valid markdown, correct format)
+
 ## Edge Cases Covered
 - Branch doesn't exist → skip gracefully
 - Lock held → skip, retry next cron

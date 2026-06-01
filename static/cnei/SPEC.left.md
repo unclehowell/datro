@@ -24,6 +24,15 @@
 - [ ] Bias slider controls left/right MD file weighting in AI prompt
 - [ ] Real-time flywheel status on dashboard
 
+## CONSTRAINTS
+- Max 3 bug fixes per release, max 1 feature per release
+- Each change must be unique (not in any previous release of this branch)
+- SEARCH text must exist verbatim in the target HTML — otherwise change is rejected
+- Wing files (AGENT, TASKS, PLAN, MEMORY, CHANGELOG) serve as the harness guiding AI decisions
+- Bias slider (1-5) maps to 90L / 45L / CTR / 45R / 90R steering
+- X-Chat-Only header must be set on all AI API calls to parent proxy
+- AI must spend real analysis time (multiple minutes) — no quick generic checklist
+
 ## Architecture
 ```
 financecheque.uk (parent proxy API)
