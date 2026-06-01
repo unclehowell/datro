@@ -1,5 +1,13 @@
 # Changelog
 
+## [hbnb-v0.0.0.13] - 2026-06-01
+
+### Fixed
+- fix(hbnb): Remove excessive blank lines
+
+### Changed
+- ux(hbnb): Add button press interaction feedback for UX
+
 ## [hbnb-v0.0.0.12] - 2026-05-31
 
 ### Fixed
