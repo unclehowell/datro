@@ -772,12 +772,30 @@ async function getPreviousReleaseNotes(token, branch, count = 15) {
   return notes;
 }
 
-function buildSystemPrompt(wingFiles, branch, category) {
+async function getBiasFromKv(env) {
+  try {
+    const raw = await env.FLYWHEEL_STATE.get('bias', 'json');
+    if (raw && raw.bias) return raw;
+  } catch (_) {}
+  return { bias: 3, steering: 'CTR' };
+}
+
+function buildSystemPrompt(wingFiles, branch, category, bias) {
   const harnessRules = extractHarnessRules(wingFiles);
   const harnessPriorities = extractHarnessPriorities(wingFiles);
+  const biasLabel = ({1:'STRICT LEFT',2:'FAVOUR LEFT',3:'NEUTRAL',4:'FAVOUR RIGHT',5:'STRICT RIGHT'})[bias?.bias || 3] || 'NEUTRAL';
+  const steeringLabel = bias?.steering || 'CTR';
   return `You are the release engineer for the DATRO monorepo. Each branch has its own website on Cloudflare Pages.
 
 Your task: analyze branch "${branch}" (category: ${category}) and propose unique, tailored improvements.
+
+## STEERING BIAS
+Current bias: **${biasLabel}** (${steeringLabel})
+- BIAS 1 (STRICT LEFT): Prioritize aggressive progressive changes, new features over fixes, expand scope
+- BIAS 2 (FAVOUR LEFT): Lean toward new features and UX enhancements over conservative fixes
+- BIAS 3 (NEUTRAL): Balance bug fixes and features equally
+- BIAS 4 (FAVOUR RIGHT): Lean toward conservative fixes, stability, and security over new features
+- BIAS 5 (STRICT RIGHT): Prioritize security hardening, strict standards compliance, defensive changes only
 
 ## HARNESS RULES (from wing files — these are your constraints)
 ${harnessRules}
@@ -938,9 +956,11 @@ async function processBranchWithAI(env, branch) {
   const releaseNotes = await getPreviousReleaseNotes(token, branch, 15);
   console.log(`  Loaded ${releaseNotes.length} previous release notes`);
   const category = computeBranchCategory(branch);
+  const bias = await getBiasFromKv(env);
+  console.log(`  Bias: ${bias?.bias || 3} (${bias?.steering || 'CTR'})`);
 
   // Build prompts
-  const systemPrompt = buildSystemPrompt(wingFiles, branch, category);
+  const systemPrompt = buildSystemPrompt(wingFiles, branch, category, bias);
   const userPrompt = buildUserPrompt(html, headers, releaseNotes);
 
   console.log(`  System prompt: ${systemPrompt.length} chars, User prompt: ${userPrompt.length} chars`);
@@ -1462,6 +1482,31 @@ export default {
         headers: { 'Content-Type': 'application/json' }
       });
     }
+    if (url.pathname === '/__bias') {
+      if (request.method === 'OPTIONS') {
+        return new Response(null, {
+          headers: { 'Access-Control-Allow-Origin': '*', 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS', 'Access-Control-Allow-Headers': 'Content-Type' }
+        });
+      }
+      if (request.method === 'POST') {
+        try {
+          const body = await request.json();
+          const bias = { bias: body.bias || 3, steering: body.steering || 'CTR' };
+          await env.FLYWHEEL_STATE.put('bias', JSON.stringify(bias));
+          return new Response(JSON.stringify({ ok: true, bias }), {
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+          });
+        } catch (err) {
+          return new Response(JSON.stringify({ ok: false, error: err.message }), {
+            status: 400, headers: { 'Content-Type': 'application/json' }
+          });
+        }
+      }
+      const current = await getBiasFromKv(env);
+      return new Response(JSON.stringify(current), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
     if (url.pathname === '/__mcp') {
       const target = url.searchParams.get('url') || 'https://datro.directory';
       const results = await runMcpScans(env, target);
@@ -1471,7 +1516,7 @@ export default {
       });
     }
 
-    return new Response('Flywheel Worker. Endpoints: /__cron, /__sync_cron, /__state, /__reset, /__debug?branch=X, /__status, /__mcp?url=X', {
+    return new Response('Flywheel Worker. Endpoints: /__cron, /__sync_cron, /__state, /__reset, /__debug?branch=X, /__status, /__bias, /__mcp?url=X', {
       headers: { 'Content-Type': 'text/plain' }
     });
   }

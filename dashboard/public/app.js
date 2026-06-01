@@ -150,6 +150,8 @@ function updateBiasUI(val) {
     biasLabel.textContent = BIAS_LABELS[val] || 'NEUTRAL';
 }
 
+const FLYWHEEL_URL = 'https://datro-flywheel.righteous.workers.dev';
+
 async function updateConfig(patch) {
     try {
         const res = await fetch('/api/config', {
@@ -161,6 +163,17 @@ async function updateConfig(patch) {
         applyConfigUI();
     } catch (err) {
         console.error('Failed to update config');
+    }
+    if (patch.bias != null) {
+        try {
+            await fetch(FLYWHEEL_URL + '/__bias', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ bias: patch.bias, steering: patch.steering || 'CTR' })
+            });
+        } catch (err) {
+            console.error('Failed to sync bias to flywheel:', err);
+        }
     }
 }
 
