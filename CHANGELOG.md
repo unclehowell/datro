@@ -1,5 +1,13 @@
 # Changelog
 
+## [llmwiki-v0.0.0.12] - 2026-06-01
+
+### Fixed
+- fix(llmwiki): Remove excessive blank lines
+
+### Changed
+- ux(llmwiki): Add legal footer with privacy/terms/contact links
+
 ## [llmwiki-v0.0.0.11] - 2026-05-31
 
 ### Fixed
