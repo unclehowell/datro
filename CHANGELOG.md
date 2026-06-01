@@ -1,5 +1,11 @@
 # Changelog
 
+## [dash-v0.0.0.12] - 2026-06-01
+
+### Fixed
+### Changed
+- ux(dash): Add touch-action CSS for mobile responsiveness
+
 ## [dash-v0.0.0.11] - 2026-05-30
 
 ### Fixed
