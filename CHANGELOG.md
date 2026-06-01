@@ -1,5 +1,13 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.21] - 2026-06-01
+
+### Fixed
+- fix(carfinancecheque): Remove excessive blank lines
+
+### Changed
+- ux(carfinancecheque): Add smooth scrolling for better UX
+
 ## [carfinancecheque-v0.0.0.20] - 2026-05-30
 
 ### Fixed

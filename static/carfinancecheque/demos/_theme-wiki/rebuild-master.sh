@@ -3,7 +3,6 @@
 
 #unset CDPATH
 
-
 #.................................................
 #         DATRO Consortium - 2021 Copyleft
 #.................................................
@@ -19,7 +18,6 @@
 #................................................
 #                   datro.xyz
 #................................................
-
 
 function ProgressBar {
 	let _progress=(${1}*100/${2}*100)/100
@@ -59,7 +57,6 @@ do
 	ProgressBar ${number} ${_end}
 done
 
-
 make html > build.log 2>&1 &&
 printf "\e[2;3;33m Done! \n\e[0m"
 
@@ -86,7 +83,6 @@ do
        sleep 0.1
        ProgressBar ${number} ${_end}
 done
-
 
 # Set color theme (default blue)
 cp -r ../../../_theme-docs/blue.sh blue.sh 2> /dev/null && chmod +x ./blue.sh && bash ./blue.sh && rm -r ./blue.sh &
@@ -119,7 +115,6 @@ echo '</script>'
 echo '</html>'
 }>> index.html
 cd ../../
-
 
 printf "\e[2;3;33m Done! \n\e[0m"
 
