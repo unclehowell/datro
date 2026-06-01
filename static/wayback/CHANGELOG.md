@@ -1,5 +1,17 @@
 # Changelog
 
+## [wayback-v0.0.0.11] - 2026-06-01
+
+### Added
+- Restored 6 missing video files to static/archives/ that were present a month ago but removed in prior forensic purge:
+  - static/archives/2011-12-28_social_profile-wifi_access.mp4
+  - static/archives/2015-01-01_dao_society-UT-video-v0.0.0.mp4
+  - static/archives/2020-08-01_hbnb-intro.webm
+  - static/archives/2025-08-09_service-v0.0.1.mp4
+  - static/archives/2025-09-30_panza-ted_en_v0-0-0.mp4
+  - static/archives/2025-10-19_timeline-background_video_v0.0.1.mp4
+- Restored Video's section to archives treeview and populated video/_treeview.json with restored files
+
 ## [wayback-v0.0.0.03] - 2026-05-22
 
 ### Fixed

@@ -28,6 +28,13 @@
     }
   },
   {
+    "name": "<div class='subtitle-line enable-link caps'>Video's</div>",
+    "path": "./video",
+    "_links": {
+      "html": "./video"
+    }
+  },
+  {
     "name": "<div class='subtitle-line enable-link caps'>Other</div>",
     "path": "./other",
     "_links": {
