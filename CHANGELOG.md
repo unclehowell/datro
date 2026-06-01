@@ -1,5 +1,13 @@
 # Changelog
 
+## [subrepos-v0.0.0.11] - 2026-06-01
+
+### Fixed
+- fix(subrepos): Remove excessive blank lines
+
+### Changed
+- ux(subrepos): Add minimum tap target sizes for mobile UX
+
 ## [subrepos-v0.0.0.10] - 2026-05-31
 
 ### Fixed
