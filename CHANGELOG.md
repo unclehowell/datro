@@ -1,5 +1,11 @@
 # Changelog
 
+## [althea-v0.0.0.14] - 2026-06-01
+
+### Fixed
+### Changed
+- ux(althea): Add skip-to-content link for keyboard accessibility
+
 ## [althea-v0.0.0.13] - 2026-05-30
 
 ### Fixed
