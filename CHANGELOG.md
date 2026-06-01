@@ -1,5 +1,13 @@
 # Changelog
 
+## [dcc-v0.0.0.13] - 2026-06-01
+
+### Fixed
+- fix(dcc): Remove excessive blank lines
+
+### Changed
+- ux(dcc): Add cookie consent banner for GDPR compliance
+
 ## [dcc-v0.0.0.12] - 2026-05-30
 
 ### Fixed
