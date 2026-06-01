@@ -1,5 +1,13 @@
 # Changelog
 
+## [datro-v0.0.0.13] - 2026-06-01
+
+### Fixed
+- fix(datro): Remove excessive blank lines
+
+### Changed
+- ux(datro): Fix z-index stacking for proper element layering
+
 ## [datro-v0.0.0.12] - 2026-05-30
 
 ### Fixed
