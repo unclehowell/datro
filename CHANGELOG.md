@@ -1,5 +1,13 @@
 # Changelog
 
+## [library-v0.0.0.13] - 2026-06-01
+
+### Fixed
+- fix(library): Remove excessive blank lines
+
+### Changed
+- ux(library): Add loading state styling for better UX
+
 ## [library-v0.0.0.12] - 2026-05-31
 
 ### Fixed
