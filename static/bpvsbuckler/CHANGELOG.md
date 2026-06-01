@@ -1,6 +1,6 @@
 # Changelog
 
-## [bpvsbuckler-v1.1.0] - 2026-06-01
+## [bpvsbuckler-v0.0.0.09] - 2026-06-01
 
 ### Added
 - **Slide Media Icons** — Every timeline slide now has 5 tiny icon buttons (Docs, Video, Audio, URL, Info) beneath the narration text, ready for future WayBack file-explorer modal integration sourced from wayback.datro.xyz
@@ -11,7 +11,7 @@
 - **Social Media Links** — Removed Facebook, Instagram, and X icon links from the copyright footer
 
 ### Changed
-- Version bumped to bpvsbuckler-v1.1.0
+- Version bumped to bpvsbuckler-v0.0.0.09
 
 ## [bpvsbuckler-v0.0.0.05] - 2026-05-22
 
