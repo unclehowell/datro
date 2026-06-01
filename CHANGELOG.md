@@ -1,5 +1,13 @@
 # Changelog
 
+## [ccan-v0.0.0.24] - 2026-06-01
+
+### Fixed
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Add print-friendly styles for better UX
+
 ## [ccan-v0.0.0.23] - 2026-05-30
 
 ### Fixed
