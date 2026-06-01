@@ -1,5 +1,13 @@
 # Changelog
 
+## [financecheque-v0.0.1.57] - 2026-06-01
+
+### Fixed
+- fix(financecheque): Remove excessive blank lines
+
+### Changed
+- ux(financecheque): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [financecheque-v0.0.1.56] - 2026-05-30
 
 ### Fixed
