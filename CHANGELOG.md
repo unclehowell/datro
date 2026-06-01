@@ -1,5 +1,13 @@
 # Changelog
 
+## [ceo-v0.0.0.14] - 2026-06-01
+
+### Fixed
+- fix(ceo): Remove excessive blank lines
+
+### Changed
+- ux(ceo): Add focus-visible styles for keyboard navigation
+
 ## [ceo-v0.0.0.13] - 2026-05-30
 
 ### Fixed
