@@ -777,7 +777,7 @@ function buildSystemPrompt(wingFiles, branch, category) {
   const harnessPriorities = extractHarnessPriorities(wingFiles);
   return `You are the release engineer for the DATRO monorepo. Each branch has its own website on Cloudflare Pages.
 
-Your task: analyze branch "${branch}" (category: ${category}) and propose ONE unique, tailored improvement.
+Your task: analyze branch "${branch}" (category: ${category}) and propose unique, tailored improvements.
 
 ## HARNESS RULES (from wing files — these are your constraints)
 ${harnessRules}
@@ -834,17 +834,19 @@ Analyze this branch deeply. Read the HTML carefully. Check for:
 Propose your best change using the ---CHANGE--- format. One change block per proposal. Up to 3 bugs + 1 feature.`;
 }
 
-async function queryFinancechequeAPI(systemPrompt, userPrompt, timeoutMs = 120000) {
+async function queryFinancechequeAPI(systemPrompt, userPrompt, env, timeoutMs = 60000) {
   const startTimeAI = Date.now();
+  const parentUrl = env.PARENT_PROXY_URL || 'https://www.financecheque.uk';
+  const model = env.AI_MODEL || 'openrouter/anthropic/claude-sonnet';
   const payload = {
     message: `${systemPrompt}\n\n${userPrompt}`,
     chat_only: true,
-    model: 'openrouter/anthropic/claude-sonnet'
+    model
   };
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeoutMs);
   try {
-    const resp = await fetch('https://www.financecheque.uk/api/proxy?action=chat', {
+    const resp = await fetch(`${parentUrl}/api/proxy?action=chat`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json', 'X-Chat-Only': 'true' },
       body: JSON.stringify(payload),
@@ -944,7 +946,7 @@ async function processBranchWithAI(env, branch) {
   console.log(`  System prompt: ${systemPrompt.length} chars, User prompt: ${userPrompt.length} chars`);
 
   // Query the AI (up to 2 min for deep analysis)
-  const result = await queryFinancechequeAPI(systemPrompt, userPrompt, 120000);
+  const result = await queryFinancechequeAPI(systemPrompt, userPrompt, env, 60000);
   if (result.error) {
     console.log(`  AI query error: ${result.error}`);
     return { error: `ai_query: ${result.error}`, changes: [], html, aiResult: result };
@@ -1222,11 +1224,15 @@ async function processBranch(env, branch) {
   const mcpSection = formatMcpReleaseNotes(mcpResults, branch);
 
   // ── TRY AI ENGINE FIRST (bespoke, tailored release) ──
-  let releaseType = null;
   let commitSha = null;
   let releaseNotes = '';
 
-  const aiResult = await processBranchWithAI(env, branch);
+  let aiResult = await processBranchWithAI(env, branch);
+  if (aiResult && aiResult.error && !aiResult.error.startsWith('no_html')) {
+    console.log(`First AI attempt failed (${aiResult.error}), retrying once...`);
+    aiResult = await processBranchWithAI(env, branch);
+  }
+  const aiNotesCount = (await getPreviousReleaseNotes(token, branch, 1)).length;
 
   if (aiResult && !aiResult.error && aiResult.changes.length > 0) {
     // Apply AI changes — apply all changes to index.html
@@ -1256,22 +1262,32 @@ async function processBranch(env, branch) {
       releaseNotes = [
         `## AI-Powered Release: ${tagName}`,
         ``,
-        `After deep analysis of the \`${branch}\` branch website, wing file harness, and ${aiResult.changes.length} previous releases, the AI identified and applied ${appliedChanges.length} unique, tailored improvement(s).`,
+        `After deep analysis of the \`${branch}\` branch website, wing file harness, and previous releases, the AI identified and applied ${appliedChanges.length} unique, tailored improvement(s).`,
         ``,
         changesText,
         ``,
         `### AI Analysis`,
       `- Wing files loaded: ${Object.keys(aiResult.wingFiles || {}).length || 0}`,
-      `- Previous releases analyzed: ${(await getPreviousReleaseNotes(token, branch, 1)).length || 0}`,
+      `- Previous releases analyzed: ${aiNotesCount}`,
       `- AI query elapsed: ${((aiResult.aiResult?.elapsed || 0) / 1000).toFixed(1)}s`,
         ``,
         mcpSection
       ].join('\n');
 
+      // Write MEMORY.md
+      const cycleNum = await getNextCycleNum(token, branch);
+      const changeSummary = appliedChanges.map(c => `"${c.title}" (${c.type})`).join(', ');
+      const aiLesson = `AI uniqueness engine: ${appliedChanges.length} change(s) applied to \`index.html\` on \`${branch}\`. Wing files loaded: ${Object.keys(aiResult.wingFiles || {}).length}. AI elapsed: ${((aiResult.aiResult?.elapsed || 0) / 1000).toFixed(1)}s.`;
+      const pseudoBp = {
+        name: `ai: ${changeSummary}`,
+        description: `Applied ${appliedChanges.length} AI-proposed change(s) to ${branch}`,
+        source: 'AI Uniqueness Engine (financecheque parent proxy → LLM)'
+      };
+      await writeMEMORY(token, branch, cycleNum, pseudoBp, aiLesson);
+
       await createGitTag(token, tagName, commitSha);
       const release = await createGitHubRelease(token, tagName, branch, version, releaseNotes);
       if (release) await verifyRelease(token, tagName);
-      releaseType = 'ai';
 
       console.log(`AI release ${tagName}: ${appliedChanges.length} changes applied`);
       return { tagName, version, type: 'ai', changes: appliedChanges, aiError: null, selfImprovements };
