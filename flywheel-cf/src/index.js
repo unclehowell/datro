@@ -448,23 +448,31 @@ async function createGitTag(token, tagName, commitSha) {
 }
 
 async function getMaxBranchReleaseNum(token, branch) {
-  let count = 0, page = 1;
+  let max = 0, page = 1;
   while (true) {
+    // Check matching tags to avoid "Reference already exists" errors
     const resp = await ghFetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=100&page=${page}`,
+      `https://api.github.com/repos/${GITHUB_REPO}/git/matching-refs/tags/${encodeURIComponent(branch)}-v?per_page=100&page=${page}`,
       token
     );
-    const releases = await resp.json();
-    if (!Array.isArray(releases) || releases.length === 0) break;
-    for (const r of releases) {
-      if (r.tag_name && r.tag_name.startsWith(`${branch}-v`)) {
-        count++;
+    const refs = await resp.json();
+    if (!Array.isArray(refs) || refs.length === 0) break;
+    for (const r of refs) {
+      const tagName = r.ref.replace('refs/tags/', '');
+      if (tagName.startsWith(`${branch}-v`)) {
+        const parts = tagName.split('-v')[1].split('.');
+        if (parts.length >= 2) {
+          const patch = parseInt(parts[parts.length - 2], 10) || 0;
+          const build = parseInt(parts[parts.length - 1], 10) || 0;
+          const num = patch * 100 + build;
+          if (num > max) max = num;
+        }
       }
     }
-    if (releases.length < 100) break;
+    if (refs.length < 100) break;
     page++;
   }
-  return count;
+  return max;
 }
 
 async function getLatestReleaseDate(token, branch) {
@@ -749,7 +757,7 @@ async function getNextCycleNum(token, branch) {
 
 // ── AI Uniqueness Engine ──────────────────────────────────────────────────────
 
-async function getPreviousReleaseNotes(token, branch, count = 15) {
+async function getPreviousReleaseNotes(token, branch, count = 100) {
   const notes = [];
   let page = 1;
   while (notes.length < count) {
@@ -824,11 +832,16 @@ REPLACE: <replacement text>
 - For index.html changes only (not modifying CSS/JS files directly)`;
 }
 
-function buildUserPrompt(html, headers, releaseNotes) {
-  const notesText = releaseNotes.length > 0 ? releaseNotes.slice(0, 15).join('\n') : '(no previous releases)';
-  return `## CURRENT index.html
+function buildUserPrompt(html, headers, releaseNotes, liveHtml = '') {
+  const notesText = releaseNotes.length > 0 ? releaseNotes.slice(0, 100).join('\n') : '(no previous releases)';
+  return `## CURRENT REPO index.html
 \`\`\`html
 ${html}
+\`\`\`
+
+## CURRENT LIVE WEBSITE HTML (Research)
+\`\`\`html
+${liveHtml || '(could not fetch live website)'}
 \`\`\`
 
 ## CURRENT _headers
@@ -839,7 +852,7 @@ ${headers || '(empty — no _headers file)'}
 ## PREVIOUS RELEASES (DO NOT REPEAT ANY OF THESE)
 ${notesText}
 
-Analyze this branch deeply. Read the HTML carefully. Check for:
+Analyze this branch deeply. Compare the Repo HTML with the Live Website HTML. Check for:
 1. Missing responsive/mobile features (viewport, media queries, touch targets)
 2. Accessibility gaps (aria labels, focus management, semantic HTML)
 3. Performance issues (render-blocking resources, image optimization)
@@ -938,6 +951,19 @@ async function processBranchWithAI(env, branch) {
   const token = env.GITHUB_TOKEN;
   console.log(`AI engine analyzing ${branch}`);
 
+  // Research live website
+  const liveUrl = `https://${branch}.${DOMAIN || 'datro.directory'}`;
+  let liveHtml = '';
+  try {
+    const liveResp = await fetch(liveUrl);
+    if (liveResp.ok) {
+      liveHtml = await liveResp.text();
+      console.log(`  Fetched live HTML for ${branch} (${liveHtml.length} chars)`);
+    }
+  } catch (err) {
+    console.log(`  Failed to fetch live HTML for ${branch}: ${err.message}`);
+  }
+
   // Gather full context
   const wingFiles = await getAllWingFiles(token, branch);
   const wingCount = Object.keys(wingFiles).length;
@@ -953,7 +979,7 @@ async function processBranchWithAI(env, branch) {
     return { error: 'no_html', changes: [], html: '' };
   }
 
-  const releaseNotes = await getPreviousReleaseNotes(token, branch, 15);
+  const releaseNotes = await getPreviousReleaseNotes(token, branch, 100);
   console.log(`  Loaded ${releaseNotes.length} previous release notes`);
   const category = computeBranchCategory(branch);
   const bias = await getBiasFromKv(env);
@@ -961,7 +987,7 @@ async function processBranchWithAI(env, branch) {
 
   // Build prompts
   const systemPrompt = buildSystemPrompt(wingFiles, branch, category, bias);
-  const userPrompt = buildUserPrompt(html, headers, releaseNotes);
+  const userPrompt = buildUserPrompt(html, headers, releaseNotes, liveHtml);
 
   console.log(`  System prompt: ${systemPrompt.length} chars, User prompt: ${userPrompt.length} chars`);
 
