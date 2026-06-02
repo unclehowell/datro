@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Start Here — BP vs Buckler</title>
+    <meta name="description" content="Entry point for the BP vs Buckler Great House Farm dispute evidence repository">
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    background-color: #0f172a;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: #f59e0b; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #fbbf24; text-decoration: underline; }
+a:visited { color: #d97706; }
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 2px solid #f59e0b;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+header h1 { font-size: 1.3em; color: #f59e0b; }
+header h1 a { color: #f59e0b; }
+header h1 a:hover { text-decoration: none; color: #fbbf24; }
+header nav { display: flex; gap: 8px; flex-wrap: wrap; }
+header nav a {
+    color: #94a3b8; font-size: 0.85em; padding: 4px 10px;
+    border: 1px solid #334155; border-radius: 4px;
+    transition: all 0.2s;
+}
+header nav a:hover { color: #f59e0b; border-color: #f59e0b; text-decoration: none; }
+h1 { font-size: 2em; color: #f59e0b; margin-bottom: 20px; }
+h2 { font-size: 1.5em; color: #fbbf24; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid #334155; }
+h3 { font-size: 1.2em; color: #f59e0b; margin: 20px 0 10px; }
+h4 { font-size: 1.05em; color: #e2e8f0; margin: 15px 0 8px; }
+p { margin-bottom: 15px; }
+ul, ol { margin: 10px 0 15px 25px; }
+li { margin-bottom: 6px; }
+hr { border: none; border-top: 1px solid #334155; margin: 30px 0; }
+blockquote {
+    border-left: 3px solid #f59e0b; padding: 10px 15px; margin: 15px 0;
+    background: #1e293b; border-radius: 0 6px 6px 0;
+    font-style: italic; color: #94a3b8;
+}
+code { background: #1e293b; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; color: #fbbf24; }
+pre { background: #1e293b; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; font-size: 0.85em; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9em; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #334155; }
+th { background: #1e293b; color: #f59e0b; font-weight: bold; position: sticky; top: 0; }
+tr:hover { background: #1e293b; }
+tr:nth-child(even) { background: #0c1222; }
+tr:nth-child(even):hover { background: #1e293b; }
+.card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+    padding: 20px; margin-bottom: 20px;
+}
+.card h3 { margin-top: 0; }
+.card:hover { border-color: #f59e0b; }
+.badge {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 2px 8px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+}
+.badge-blue { background: #3b82f6; color: #fff; }
+.badge-red { background: #ef4444; color: #fff; }
+.badge-green { background: #22c55e; color: #fff; }
+.badge-purple { background: #a855f7; color: #fff; }
+.year-marker {
+    display: inline-block; background: #334155; color: #f59e0b;
+    padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold;
+    margin-right: 5px;
+}
+.evidence-id {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 1px 6px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+    font-family: monospace;
+}
+.contradiction-card {
+    border-left: 4px solid #ef4444; padding-left: 15px; margin: 15px 0;
+}
+.question-card {
+    border-left: 4px solid #3b82f6; padding-left: 15px; margin: 15px 0;
+}
+.issue-card {
+    border-left: 4px solid #a855f7; padding-left: 15px; margin: 15px 0;
+}
+.nav-breadcrumb { margin-bottom: 20px; font-size: 0.85em; color: #64748b; }
+.nav-breadcrumb a { color: #94a3b8; }
+.nav-breadcrumb a:hover { color: #f59e0b; }
+footer {
+    margin-top: 50px; padding: 30px 0; text-align: center;
+    border-top: 1px solid #334155; color: #64748b; font-size: 0.85em;
+}
+footer a { color: #94a3b8; }
+footer a:hover { color: #f59e0b; }
+.print-only { display: none; }
+@media print {
+    body { background: #fff; color: #000; font-size: 12pt; }
+    header, footer, nav, .no-print { display: none !important; }
+    a { color: #000; text-decoration: underline; }
+    .print-only { display: block; }
+    .card, blockquote, pre { border: 1px solid #ccc; background: #f9f9f9; }
+    .container { max-width: none; padding: 0; }
+    h1, h2, h3, h4 { color: #000; }
+    th { background: #eee; color: #000; }
+    .badge, .evidence-id, .year-marker { background: #eee; color: #000; }
+    table { font-size: 10pt; }
+}
+@media (max-width: 768px) {
+    .container { padding: 12px; }
+    header .container { flex-direction: column; text-align: center; }
+    header h1 { font-size: 1.1em; }
+    header nav { justify-content: center; }
+    h1 { font-size: 1.5em; }
+    h2 { font-size: 1.3em; }
+    table { font-size: 0.8em; }
+    th, td { padding: 6px 8px; }
+    pre { font-size: 0.75em; }
+    .card { padding: 12px; }
+}
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1><a href="/">BP vs Buckler</a></h1>
+        <nav>
+            <a href="/start-here.html">Start Here</a>
+            <a href="/summary.html">Summary</a>
+            <a href="/timeline.html">Timeline</a>
+            <a href="/evidence.html">Evidence</a>
+            <a href="/issues.html">Issues</a>
+            <a href="/contradictions.html">Contradictions</a>
+            <a href="/questions.html">Questions</a>
+            <a href="/dossier.html">Dossier</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="nav-breadcrumb">
+        <a href="/">Home</a> / Start Here
+    </div>
+    
+    <h1>Start Here: The Great House Farm Dispute</h1>
+
+    <div class="card" style="border-left: 4px solid #f59e0b;">
+        <h3>Quick Summary</h3>
+        <p>This site documents the <strong>BP Properties Ltd v Buckler [1987]</strong> case — a dispute over Great House Farm (Ty Mawr), Llandough, where the Williams-Buckler family's 321-year occupation was terminated through a contested legal process involving alleged identity fraud, missing title deeds, and the demolition of an 800-year-old farmhouse.</p>
+    </div>
+
+    <h2>What Happened</h2>
+    <p>The Williams family acquired Great House Farm in 1667 and occupied it continuously for over three centuries. In 1974, BP sent unilateral "Licence to Occupy" letters addressed to "Mrs Buckler" — a name Mary Williams never used. This licence was later used by the courts to defeat the family's adverse possession claim. In 1987, the Court of Appeal granted BP possession. In 1988, Great House Farm was demolished by BP Properties Ltd amid considerable local controversy.</p>
+
+    <h2>Why It Matters</h2>
+    <ul>
+        <li><strong>Ownership was never determined</strong> — Courts ruled on possession without ever adjudicating who actually owned the land</li>
+        <li><strong>Identity substitution</strong> — Mary Williams was referred to as "Mrs Buckler" in legal documents despite never adopting that name</li>
+        <li><strong>Missing evidence</strong> — Title deeds were reportedly removed from Cardiff Library in 1984</li>
+        <li><strong>Archaeological suppression</strong> — A Roman soldier discovery in 1870 was ignored; the 1994 excavation later found over 800 burials</li>
+        <li><strong>Judicial contradiction</strong> — The court said BP companies were "different" and "same" depending on which argument helped BP</li>
+    </ul>
+
+    <h2>What Evidence Exists</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin: 15px 0;">
+        <div class="card">
+            <h3><a href="/evidence.html#E004">E004 — BP Licence Letters (1974)</a></h3>
+            <p>BP sends "Licence to Occupy" addressed to "Mrs Buckler" — identity fraud alleged</p>
+        </div>
+        <div class="card">
+            <h3><a href="/evidence.html#E007">E007 — Court of Appeal Judgment (1987)</a></h3>
+            <p>BP Properties Ltd v Buckler [1987] EWCA Civ 2 — the basis of eviction</p>
+        </div>
+        <div class="card">
+            <h3><a href="/evidence.html#E008">E008 — HER Record GGAT02038s</a></h3>
+            <p>Official record confirms demolition by BP Properties Ltd on 6 Dec 1988</p>
+        </div>
+        <div class="card">
+            <h3><a href="/evidence.html#E001">E001 — 1667 Acquisition</a></h3>
+            <p>Williams family acquires Great House Farm from the Herberts</p>
+        </div>
+    </div>
+
+    <h2>What Questions Remain</h2>
+    <ul>
+        <li>Who actually owned Great House Farm in 1987?</li>
+        <li>Where are the original title deeds removed from Cardiff Library in 1984?</li>
+        <li>Why did the court avoid determining ownership?</li>
+        <li>Was the "Mrs Buckler" identity substitution deliberate fraud?</li>
+        <li>Why was the 1916 tenancy agreement never produced?</li>
+        <li>What role did Frederick Buckler's secret dealings play?</li>
+        <li>Why was Cadw's emergency listing process stalled?</li>
+    </ul>
+
+    <h2>Explore the Site</h2>
+    <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 15px; margin: 15px 0;">
+        <div class="card">
+            <h3><a href="/summary.html">Case Summary</a></h3>
+            <p>Overview of the dispute, key parties, dates, and evidence</p>
+        </div>
+        <div class="card">
+            <h3><a href="/timeline.html">Master Timeline</a></h3>
+            <p>Chronological events from 1100 to present day</p>
+        </div>
+        <div class="card">
+            <h3><a href="/evidence.html">Evidence Catalogue</a></h3>
+            <p>All documents with IDs, descriptions, and transcriptions</p>
+        </div>
+        <div class="card">
+            <h3><a href="/issues.html">Claim-to-Evidence Mapping</a></h3>
+            <p>Five key issues with supporting evidence and open questions</p>
+        </div>
+        <div class="card">
+            <h3><a href="/contradictions.html">Contradictions Index</a></h3>
+            <p>Documented contradictions in the legal case</p>
+        </div>
+        <div class="card">
+            <h3><a href="/questions.html">Open Questions</a></h3>
+            <p>Unresolved questions with known and unknown facts</p>
+        </div>
+        <div class="card">
+            <h3><a href="/dossier.html">Research Dossier</a></h3>
+            <p>Complete printable dossier for download/PDF</p>
+        </div>
+    </div>
+
+    <p style="margin-top: 30px;"><strong>Estimated reparations claim (Feb 2026):</strong> £101.2 million and counting.</p>
+    
+</main>
+
+<footer>
+    <div class="container">
+        <p>BP vs Buckler — Great House Farm (Ty Mawr) Historical Evidence Repository</p>
+        <p><a href="/start-here.html">Start Here</a> | <a href="/summary.html">Summary</a> | <a href="/timeline.html">Timeline</a> | <a href="/evidence.html">Evidence</a> | <a href="/issues.html">Issues</a> | <a href="/contradictions.html">Contradictions</a> | <a href="/questions.html">Questions</a> | <a href="/dossier.html">Dossier</a></p>
+        <p><a href="/api/timeline.json">API: Timeline</a> | <a href="/api/evidence.json">API: Evidence</a> | <a href="/api/issues.json">API: Issues</a></p>
+        <p>&copy; 2026 DATRO Consortium Ltd. This is a historical evidence repository compiled in the public interest.</p>
+    </div>
+</footer>
+
+</body>
+</html>

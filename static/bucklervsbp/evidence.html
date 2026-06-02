@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evidence Catalogue — BP vs Buckler</title>
+    <meta name="description" content="Complete evidence catalogue for the Great House Farm dispute">
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    background-color: #0f172a;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: #f59e0b; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #fbbf24; text-decoration: underline; }
+a:visited { color: #d97706; }
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 2px solid #f59e0b;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+header h1 { font-size: 1.3em; color: #f59e0b; }
+header h1 a { color: #f59e0b; }
+header h1 a:hover { text-decoration: none; color: #fbbf24; }
+header nav { display: flex; gap: 8px; flex-wrap: wrap; }
+header nav a {
+    color: #94a3b8; font-size: 0.85em; padding: 4px 10px;
+    border: 1px solid #334155; border-radius: 4px;
+    transition: all 0.2s;
+}
+header nav a:hover { color: #f59e0b; border-color: #f59e0b; text-decoration: none; }
+h1 { font-size: 2em; color: #f59e0b; margin-bottom: 20px; }
+h2 { font-size: 1.5em; color: #fbbf24; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid #334155; }
+h3 { font-size: 1.2em; color: #f59e0b; margin: 20px 0 10px; }
+h4 { font-size: 1.05em; color: #e2e8f0; margin: 15px 0 8px; }
+p { margin-bottom: 15px; }
+ul, ol { margin: 10px 0 15px 25px; }
+li { margin-bottom: 6px; }
+hr { border: none; border-top: 1px solid #334155; margin: 30px 0; }
+blockquote {
+    border-left: 3px solid #f59e0b; padding: 10px 15px; margin: 15px 0;
+    background: #1e293b; border-radius: 0 6px 6px 0;
+    font-style: italic; color: #94a3b8;
+}
+code { background: #1e293b; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; color: #fbbf24; }
+pre { background: #1e293b; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; font-size: 0.85em; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9em; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #334155; }
+th { background: #1e293b; color: #f59e0b; font-weight: bold; position: sticky; top: 0; }
+tr:hover { background: #1e293b; }
+tr:nth-child(even) { background: #0c1222; }
+tr:nth-child(even):hover { background: #1e293b; }
+.card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+    padding: 20px; margin-bottom: 20px;
+}
+.card h3 { margin-top: 0; }
+.card:hover { border-color: #f59e0b; }
+.badge {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 2px 8px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+}
+.badge-blue { background: #3b82f6; color: #fff; }
+.badge-red { background: #ef4444; color: #fff; }
+.badge-green { background: #22c55e; color: #fff; }
+.badge-purple { background: #a855f7; color: #fff; }
+.year-marker {
+    display: inline-block; background: #334155; color: #f59e0b;
+    padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold;
+    margin-right: 5px;
+}
+.evidence-id {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 1px 6px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+    font-family: monospace;
+}
+.contradiction-card {
+    border-left: 4px solid #ef4444; padding-left: 15px; margin: 15px 0;
+}
+.question-card {
+    border-left: 4px solid #3b82f6; padding-left: 15px; margin: 15px 0;
+}
+.issue-card {
+    border-left: 4px solid #a855f7; padding-left: 15px; margin: 15px 0;
+}
+.nav-breadcrumb { margin-bottom: 20px; font-size: 0.85em; color: #64748b; }
+.nav-breadcrumb a { color: #94a3b8; }
+.nav-breadcrumb a:hover { color: #f59e0b; }
+footer {
+    margin-top: 50px; padding: 30px 0; text-align: center;
+    border-top: 1px solid #334155; color: #64748b; font-size: 0.85em;
+}
+footer a { color: #94a3b8; }
+footer a:hover { color: #f59e0b; }
+.print-only { display: none; }
+@media print {
+    body { background: #fff; color: #000; font-size: 12pt; }
+    header, footer, nav, .no-print { display: none !important; }
+    a { color: #000; text-decoration: underline; }
+    .print-only { display: block; }
+    .card, blockquote, pre { border: 1px solid #ccc; background: #f9f9f9; }
+    .container { max-width: none; padding: 0; }
+    h1, h2, h3, h4 { color: #000; }
+    th { background: #eee; color: #000; }
+    .badge, .evidence-id, .year-marker { background: #eee; color: #000; }
+    table { font-size: 10pt; }
+}
+@media (max-width: 768px) {
+    .container { padding: 12px; }
+    header .container { flex-direction: column; text-align: center; }
+    header h1 { font-size: 1.1em; }
+    header nav { justify-content: center; }
+    h1 { font-size: 1.5em; }
+    h2 { font-size: 1.3em; }
+    table { font-size: 0.8em; }
+    th, td { padding: 6px 8px; }
+    pre { font-size: 0.75em; }
+    .card { padding: 12px; }
+}
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1><a href="/">BP vs Buckler</a></h1>
+        <nav>
+            <a href="/start-here.html">Start Here</a>
+            <a href="/summary.html">Summary</a>
+            <a href="/timeline.html">Timeline</a>
+            <a href="/evidence.html">Evidence</a>
+            <a href="/issues.html">Issues</a>
+            <a href="/contradictions.html">Contradictions</a>
+            <a href="/questions.html">Questions</a>
+            <a href="/dossier.html">Dossier</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="nav-breadcrumb">
+        <a href="/">Home</a> / Evidence Catalogue
+    </div>
+    
+    <h1>Evidence Catalogue</h1>
+    <p>Complete catalogue of all evidence documents in the Great House Farm dispute. Each entry has a unique evidence ID, description, and full transcription.</p>
+
+    <div class="card">
+        <h3>Jump to Year</h3>
+        <p><a href="#year-1667" style="margin-right:10px;"><span class="year-marker">1667</span></a> <a href="#year-1897" style="margin-right:10px;"><span class="year-marker">1897</span></a> <a href="#year-1916" style="margin-right:10px;"><span class="year-marker">1916</span></a> <a href="#year-1938" style="margin-right:10px;"><span class="year-marker">1938</span></a> <a href="#year-1974" style="margin-right:10px;"><span class="year-marker">1974</span></a> <a href="#year-1978" style="margin-right:10px;"><span class="year-marker">1978</span></a> <a href="#year-1982" style="margin-right:10px;"><span class="year-marker">1982</span></a> <a href="#year-1984" style="margin-right:10px;"><span class="year-marker">1984</span></a> <a href="#year-1987" style="margin-right:10px;"><span class="year-marker">1987</span></a> <a href="#year-1988" style="margin-right:10px;"><span class="year-marker">1988</span></a> <a href="#year-2026" style="margin-right:10px;"><span class="year-marker">2026</span></a></p>
+    </div>
+
+    <div class="card">
+        <h3>Summary</h3>
+        <p>32 evidence entries spanning from 1667 to 2026. Total of 24 linked source documents.</p>
+    </div>
+
+    <h2 id="year-1667">1667</h2>
+            <div class="card" id="E001">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Acquisition of Great House Farm from the Herberts</h3>
+                    <span><span class="evidence-id">E001</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>The Williams family acquired Great House Farm, Llandough, in 1667 from the Herberts. This places the family one degree of separation from the Crown and establishes them as the rightful holders of the Lordship of the Manor of Llandough. The family held legitimate title to the farmhouse and land, not mere permission. The proper Latin phrase for the land claim was &#x27;Older than man can remember&#x27;. The family&#x27;s land claim to this day remains superior.</p></div>
+                
+            </div><h2 id="year-1897">1897</h2>
+            <div class="card" id="E002">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Marconi Wireless Telegraphy Experiments at Great House Farm</h3>
+                    <span><span class="evidence-id">E002</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Guglielmo Marconi stayed at Great House Farm while conducting wireless telegraphy experiments in 1897. The site is the birthplace of radio wireless experiments. Despite this historical significance, Llandough does not recognise the site as the birthplace of radio. Cardiff City Council has reportedly declined to install a plaque on the radio statue in Cardiff Bay on the basis of Marconi&#x27;s political views. The local councillor and parish have dismissed this aspect of the site&#x27;s history.</p></div>
+                
+            </div><h2 id="year-1916">1916</h2>
+            <div class="card" id="E003">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Forced Tenancy: Bute Estate Imposes Yearly Agricultural Tenancy</h3>
+                    <span><span class="evidence-id">E003</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>The Bute Estate forced a &#x27;yearly agricultural tenancy&#x27; upon John Williams. This tenancy was a legal trap. John Williams, asserting customary tenure, was forced into a contract to justify estate control over land he effectively held by superior right. The tenancy exists only in BP court records; original documentation is suspiciously absent. The 1916 tenancy falls in the dead centre of the critical 1895-1938 documentary gap in the Bute Estate Records.</p></div>
+                
+            </div><h2 id="year-1938">1938</h2>
+            <div class="card" id="E004">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Reversion Sale of Great House Farm to Western Ground Rents</h3>
+                    <span><span class="evidence-id">E004</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>The 1938 reversion sale to Western Ground Rents (Mountjoy interests) is documented in the National Archives (GB 0214 DA). Western Ground Rents acquired Mountjoy Ltd leasehold interests for £5 million. This transaction is not reflected in the Bute Estate&#x27;s own archives at NLW, indicating a gap in the record-keeping. The nature of the interest transferred remains unclear without the missing deed documents.</p></div>
+                
+            </div><h2 id="year-1974">1974</h2>
+            <div class="card" id="E005">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Identity Fraud: BP Licence Letters Addressed to &#x27;Mrs Buckler&#x27;</h3>
+                    <span><span class="evidence-id">E005</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>BP sends unilateral &#x27;Licence to Occupy&#x27; letters to residents of Great House Farm. The letters were addressed to &#x27;Mrs Buckler&#x27;. However, my grandmother was Mary Williams. She never adopted the Buckler name; her birth, death, and official records confirm this. The Williams name carried the land claim rights; the fabricated &#x27;Mrs Buckler&#x27; name was designed to extinguish her title claim. Prior to 1974, neither Western Ground Rents nor any court referred to her as Mrs Buckler. She also would have participated in identity fraud had she responded as Mrs Buckler. She did contest all of it, stating in a suppressed 1978 newspaper article, as Mrs Williams, our position on all of this. Along with a 1,700 signature petition against BP&#x27;s attempt to dispossess us. The court&#x27;s use of dismissive language regarding her claim — describing it as &#x27;imagined&#x27; — and the suppression of press coverage further undermine the integrity of the process.</p></div>
+                
+            </div><h2 id="year-1978">1978</h2>
+            <div class="card" id="E006">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Suppressed Newspaper Article and 1,700 Signature Petition</h3>
+                    <span><span class="evidence-id">E006</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>A newspaper article from 1978 documents Mary Williams, as Mrs Williams, contesting the BP licence and asserting the family&#x27;s land claim. It reported the 1,700 signature petition from the community opposing BP&#x27;s attempt to dispossess the family and build houses on the land. This article was subsequently suppressed and buried. The family continues to assert the title was never lawfully extinguished, only obscured by successive layers of state-backed lawfare and document theft.</p></div>
+                
+            </div><h2 id="year-1982">1982</h2>
+            <div class="card" id="E007">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Land Registration by BP Properties Ltd — Circular Logic</h3>
+                    <span><span class="evidence-id">E007</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>BP Properties Ltd registered the property at HM Land Registry in November 1982. The Land Registry has since justified the 1982 registration using the 1987 judgment — effectively putting the &#x27;cart before the horse&#x27; to validate a fraudulent claim. They turned our enquiry into a complaint, only to dismiss the complaint on insufficient grounds, using the official narrative to rebut our dispute of that same official narrative.</p></div>
+                
+            </div><h2 id="year-1984">1984</h2>
+            <div class="card" id="E008">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">State-Sanctioned Erasure: Title Deeds Removed from Cardiff Library</h3>
+                    <span><span class="evidence-id">E008</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>The &#x27;Deed of Transfer between Daniel Thomas and Bute Estate&#x27; and other Williams family deeds were removed from Cardiff Library in 1984. This removed the primary evidentiary pillar of the family&#x27;s claim. The copy of the title deeds from the public library went missing, which handicapped my grandmother&#x27;s ability to prove her claim in court. The DRA collection at Glamorgan RO contains Thomas assignments (DRA 418-420, 1906-1907) and Williams family deeds (DRA 5/31), but the crucial Cardiff Library deed copies are missing from that institution.</p></div>
+                
+            </div><h2 id="year-1987">1987</h2>
+            <div class="card" id="E009">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Court of Appeal Judgment — BP Properties Ltd v Buckler [1987] EWCA Civ 2</h3>
+                    <span><span class="evidence-id">E009</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>The 1987 Court of Appeal judgment granted BP possession based on the 1974 licence. However, there was a judicial conflict: the same judge sat on the appeal panel and used contradictory logic regarding whether BP Properties and BP Pensions were the &#x27;same company.&#x27; He said my grandmother&#x27;s challenge to BP Pensions Trust didn&#x27;t count, as BP Properties were the claimant — they were different companies. Yet he dismissed my late father&#x27;s appeal, citing both companies were effectively the same. This is evident &#x27;heads BP win, tails our family lose.&#x27; The judgment rests entirely on identity fraud, with the fabricated &#x27;Mrs Buckler&#x27; identity being central to the ruling.</p></div>
+                
+            </div><h2 id="year-1988">1988</h2>
+            <div class="card" id="E010">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">HER Record GGAT02038s — Great House Farm Officially Documented</h3>
+                    <span><span class="evidence-id">E010</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>The Glamorgan-Gwent Historic Environment Record (PRN 02038s) independently documents that Great House Farmhouse and barn &#x27;were suddenly and completely demolished by B.P. Properties Ltd. on 6th December 1988 amid considerable local controversy.&#x27; The record confirms the site had medieval origins, with C12th-C14th pottery sherds found immediately NE of the house, and medieval ironwork (&#x27;armour&#x27;) found under the floor c.1880 now held at the National Museum of Wales. The house was classified as a sub-medieval house of direct-entry type with affinities to Brynwell, a medieval farmhouse in Leckwith. The freehold was acquired by the Bute Estate in the early C19th; previously it was the chief freehold farm occupied by the Vaughan family (minor gentry) from mid C16th to late C18th. The record was compiled 21 August 1991 and last updated 13 October 2023. Source: Heneb HER (formerly GGAT) via Archwilio.</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">document</span> <a href="https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s" target="_blank">HER Record GGAT02038s — Great House Farm</a></li><li><span class="badge badge-blue">document</span> <a href="../research/her-record-ggat02038s.txt">Research Analysis — HER Record Significance</a></li></ul>
+            </div><h2 id="year-2026">2026</h2>
+            <div class="card" id="E011">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E011</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from &quot;Griffiths, Eleri&quot; &lt;Eleri.Griffiths@senedd.cymru&gt; to Sion Buckler &lt;hywelapbuckler@gmail.com&gt; on Tue, 12 May 2026 10:09:55 +0000.</p><p>Subject: ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>Hi Sion</p><p>I used your correct postcode and you are actually in a Caerdydd Penarth NOT Penybont Bro Morgannwg so the contacts in the previous email are wrong.</p><p>Your Senedd Members are</p><p>Leticia Gonzalez MS Plaid Cymru ( no known email yet)</p><p>Anna Brychan MS Plaid Cymru Anna.Brychan-MS@senedd.wales&lt;mailto:Anna.Brychan-MS@senedd.wales&gt;</p><p>Kiera Marshall MS Plaid Cymru (no known email yet)</p><p>Huw Thomas ( Labour) No known email yet</p><p>Joe Martin (Reform UK)   Joe.Martin-MS@senedd.wales&lt;mailto:%20%20Joe...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-03a846ae.eml" target="_blank">ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Histo</a></li></ul>
+            </div>
+            <div class="card" id="E012">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E012</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from &quot;Griffiths, Eleri&quot; &lt;Eleri.Griffiths@senedd.cymru&gt; to Sion Buckler &lt;hywelapbuckler@gmail.com&gt; on Mon, 11 May 2026 15:14:37 +0000.</p><p>Subject: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>Dear Sion</p><p>Thank you for writing to Heledd.  She has asked me to respond on her behalf.  We were sorry to read of your difficulties.  Unfortunately, we are unable to offer help with your case.  From May the 8th Heledd became a Senedd Member for Pontypridd Cynon Merthyr.  I used the postcode CF71 7LR to check your constituency with this tool Welsh Parliament&lt;https://constituency.senedd.wales/&gt; and found you live in Pen-y-bont Bro Morgannwg.</p><p>Your local Senedd Members are:</p><p>Sarah Rees (Plaid...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-f012c4da.eml" target="_blank">ATB/RE: Formal Notice Follow Up: Resolution of Historical Di</a></li></ul>
+            </div>
+            <div class="card" id="E013">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Automatic reply: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E013</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Info &lt;info@transparency.org.uk&gt; to Sion Buckler &lt;hywelapbuckler@gmail.com&gt; on Sat, 9 May 2026 22:22:48 +0000.</p><p>Subject: Automatic reply: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>Thank you for contacting TI-UK. This account is monitored regularly but please note the following guidance:</p><p>Reporting Corruption</p><p>If you were contacting us to report corruption or receive advice on a specific case our website has a list of organisations and their complaints routes.  How to report corruption | Transparency International UK&lt;https://www.transparency.org.uk/who-we-are/contact-us/how-report-corruption&gt;. If you have exhausted the formal complaints mechanisms your alternative rout...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-e575ca2c.eml" target="_blank">Automatic reply: Formal Notice Follow Up: Resolution of Hist</a></li></ul>
+            </div>
+            <div class="card" id="E014">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Automatic reply: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E014</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from &quot;Hutt, Jane&quot; &lt;Jane.Hutt@senedd.wales&gt; to Sion Buckler &lt;hywelapbuckler@gmail.com&gt; on Mon, 11 May 2026 19:21:19 +0000.</p><p>Subject: Automatic reply: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>The Senedd has been dissolved, and as a result Jane Hutt is no longer a Member. She is not seeking re-election and so will not be returning following the election.</p><p>This email address will no longer be monitored from the 7th April 2026 and no responses will be sent following this date.</p><p>If you have an issue you need help with, you can still contact Kanishka Narayan MP (kanishka.narayan.mp@parliament.uk&lt;mailto:kanishka.narayan.mp@parliament.uk&gt;) or The Vale of Glamorgan Council (c1v@valeofgla...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-8a67b257.eml" target="_blank">Automatic reply: Resolution of Historical Dispossession and </a></li></ul>
+            </div>
+            <div class="card" id="E015">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">FORMAL NOTICE: State-Sanctioned Dispossession of Great House Farm (Former Estate WA231076)</h3>
+                    <span><span class="evidence-id">E015</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to enquiries@gov.wales on Fri, 15 May 2026 22:07:19 -0700.</p><p>Subject: FORMAL NOTICE: State-Sanctioned Dispossession of Great House Farm (Former Estate WA231076)</p><p>Sirs/Ma&#x27;am,</p><p>I am writing as the rightful executor of the estate, administering my family trust and estate, concerning the unlawful dispossession of Great House Farm, Llandough. Our investigation has confirmed that our fee simple absolute manorial title (which is distinct from the virtual freehold 999-year lease we acquired in 1667) was never sold, surrendered, or extinguished.</p><p>Our title was stolen, and we put you on notice that the statute of limitations has not passed, as it commences from th...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-b75da783.eml" target="_blank">FORMAL NOTICE: State-Sanctioned Dispossession of Great House</a></li></ul>
+            </div>
+            <div class="card" id="E016">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">FORMAL NOTICE: Unlawful Dispossession of Great House Farm (Former Estate WA231076)</h3>
+                    <span><span class="evidence-id">E016</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to BP.Legal.Support@bp.com on Fri, 15 May 2026 22:07:18 -0700.</p><p>Subject: FORMAL NOTICE: Unlawful Dispossession of Great House Farm (Former Estate WA231076)</p><p>Dear Legal Team,</p><p>I am writing as the rightful executor of the estate, administering my family trust and estate, concerning the unlawful dispossession of Great House Farm, Llandough. Our investigation has confirmed that our fee simple absolute manorial title (which is distinct from the virtual freehold 999-year lease we acquired in 1667) was never sold, surrendered, or extinguished.</p><p>Our title was stolen, and we put you on notice that the statute of limitations has not passed, as it commences fr...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-124f6e38.eml" target="_blank">FORMAL NOTICE: Unlawful Dispossession of Great House Farm (F</a></li></ul>
+            </div>
+            <div class="card" id="E017">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E017</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to pensions@bp.com, ukgeneralenquiries@bp.com on Sat, 9 May 2026 19:16:53 -0300.</p><p>Subject: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>Sir/Madam,</p><p>I am writing on behalf of myself and siblings who are the heirs and</p><p>successors of Mary Williams of the Williams family, rightful owners and</p><p>occupiers of Great House Farm, Llandough since 1667 until our dispossession</p><p>via armed force in 1988.</p><p>I write to summarize our position regarding our historical and ongoing</p><p>dispossession of Great House Farm, which I alledge involves;</p><p>- Denial of right to be heard by the land registry due to the fact my</p><p>grandmother Mr Williams (falsy named M...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-a4c50457.eml" target="_blank">Formal Notice Follow Up: Resolution of Historical Dispossess</a></li></ul>
+            </div>
+            <div class="card" id="E018">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Freedom of Information Request F260213</h3>
+                    <span><span class="evidence-id">E018</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from _FOI email address &lt;FOI@landregistry.gov.uk&gt; to &quot;hywelapbuckler@gmail.com&quot; &lt;hywelapbuckler@gmail.com&gt; on Mon, 13 Apr 2026 09:57:33 +0000.</p><p>Subject: Freedom of Information Request F260213</p><p>Dear Sion Buckler Esq,</p><p>Please find attached our response to your Freedom of Information request.</p><p>Yours sincerely</p><p>[logo]</p><p>Kat Wignall</p><p>EO Disclosure Officer</p><p>Information Rights Team</p><p>Data and Register Integrity Group</p><p>Email- foi@landregistry.gov.uk&lt;mailto:foi@landregistry.gov.uk&gt; / dataprotection@landregistry.gov.uk&lt;mailto:dataprotection@landregistry.gov.uk&gt;</p><p>HM Land Registry&#x27;s purpose is to protect your land ownership and provide services and data that underpin an efficient ...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-0c3a5005.eml" target="_blank">Freedom of Information Request F260213</a></li></ul>
+            </div>
+            <div class="card" id="E019">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Fwd: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E019</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to yourvoice@bbc.co.uk on Sat, 9 May 2026 19:22:25 -0300.</p><p>Subject: Fwd: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>---------- Forwarded message ---------</p><p>From: Sion Buckler &lt;hywelapbuckler@gmail.com&gt;</p><p>Date: Sat, 9 May 2026, 19:16</p><p>Subject: Formal Notice Follow Up: Resolution of Historical Dispossession</p><p>and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>To: &lt;pensions@bp.com&gt;, &lt;ukgeneralenquiries@bp.com&gt;</p><p>Cc: &lt;IDRP@bp.com&gt;, &lt;reportafraud@landregistry.gov.uk&gt;, &lt;complaints@gov.wales&gt;,</p><p>&lt;ask@ombudsman-wales.org.uk&gt;, &lt;cadw@gov.wales&gt;, &lt;</p><p>stephen.doughty.mp@parliament.uk&gt;, &lt;huw.thomas.ms@senedd.wales&gt;,</p><p>...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-616cf2fc.eml" target="_blank">Fwd: Formal Notice Follow Up: Resolution of Historical Dispo</a></li></ul>
+            </div>
+            <div class="card" id="E020">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Hey Kiro. Here&#x27;s more on BP vs Buckler 1987</h3>
+                    <span><span class="evidence-id">E020</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from unclehowell &lt;unclehowell@protonmail.com&gt; to hywelapbuckler@gmail.com on Sun, 10 May 2026 02:07:49 +0000.</p><p>Subject: Hey Kiro. Here&#x27;s more on BP vs Buckler 1987</p><p>This is a chat I had with kimi.com ai</p><p>What UK Courts Will Reject</p><p>The language of &quot;legal fiction,&quot; &quot;identity fraud,&quot; and refusing to engage with a name that &quot;isn&#x27;t hers&quot; sits within the freeman-on-the-land / strawman territory that UK courts have consistently dismissed as pseudo-legal nonsense. Judges have held repeatedly that a person&#x27;s legal name is not a separate corporate entity, and that arguing otherwise is an abuse of process. If she was lawfully married to Frederick Buckler, then she wa...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-693c8ef7.eml" target="_blank">Hey Kiro. Here&#x27;s more on BP vs Buckler 1987</a></li></ul>
+            </div>
+            <div class="card" id="E021">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E021</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from ask &lt;ask@ombudsman.wales&gt; to Sion Buckler &lt;hywelapbuckler@gmail.com&gt; on Sat, 9 May 2026 22:23:41 +0000.</p><p>Subject: RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>Mae hon yn neges ddwyieithog. Sgroliwch i lawr i weld y Gymraeg</p><p>Thank you for contacting the Ombudsman’s office. We do not accept complaints into this inbox. If you want to complain to our office electronically, please complete our online complaint form&lt;https://complaints.ombudsman.wales/en/pre-complaint&gt;.</p><p>The form is easy to use and will help you find out if your complaint is one that we can look into. You can attach additional files at the end of the form.</p><p>How else can I complain?...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-8e0eff88.eml" target="_blank">RE: Formal Notice Follow Up: Resolution of Historical Dispos</a></li></ul>
+            </div>
+            <div class="card" id="E022">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">RE: Subject: Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987) F260213</h3>
+                    <span><span class="evidence-id">E022</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from _FOI email address &lt;FOI@landregistry.gov.uk&gt; to Sion Buckler &lt;hywelapbuckler@gmail.com&gt; on Fri, 13 Mar 2026 11:27:44 +0000.</p><p>Subject: RE: Subject: Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987) F260213</p><p>Dear Sion Buckler</p><p>Thank you for your email, however the information you have provided does not assist us in locating the title number.</p><p>We are unable to proceed with your Freedom of Information request without this information.</p><p>You may wish to contact our Customer Support Team who are trained to assist you with locating information that is held on the register of title.</p><p>Their contact details are as follows:</p><p>HM Land Registry</p><p>Citizen Centre</p><p>PO Box 7806</p><p>Bilston</p><p>WV1 9QR</p><p>English ...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-a98c672f.eml" target="_blank">RE: Subject: Freedom of Information Request - Ty Mawr (Great</a></li></ul>
+            </div>
+            <div class="card" id="E023">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Re: ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E023</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to &quot;Griffiths, Eleri&quot; &lt;Eleri.Griffiths@senedd.cymru&gt; on Tue, 12 May 2026 08:08:52 -0300.</p><p>Subject: Re: ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>Thanks,</p><p>Regards,</p><p>Sion</p><p>On Tue, 12 May 2026, 07:09 Griffiths, Eleri, &lt;Eleri.Griffiths@senedd.cymru&gt;</p><p>wrote:</p><p>&gt; Hi Sion</p><p>&gt;</p><p>&gt;</p><p>&gt;</p><p>&gt; I used your correct postcode and you are actually in a Caerdydd Penarth</p><p>&gt; NOT Penybont Bro Morgannwg so the contacts in the previous email are wrong.</p><p>&gt;</p><p>&gt;</p><p>&gt;</p><p>&gt; Your Senedd Members are</p><p>&gt;</p><p>&gt;</p><p>&gt;</p><p>&gt; *Leticia Gonzalez MS Plaid Cymru ( no known email yet)*</p><p>&gt;</p><p>&gt; *Anna Brychan MS Plaid Cymru Anna.Brychan-MS@senedd.wales</p><p>&gt; &lt;Anna.Brychan-MS@senedd.wales&gt;*</p><p>&gt;</p><p>...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-2e1580d8.eml" target="_blank">Re: ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of H</a></li></ul>
+            </div>
+            <div class="card" id="E024">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Re: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E024</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to &quot;Griffiths, Eleri&quot; &lt;Eleri.Griffiths@senedd.cymru&gt; on Mon, 11 May 2026 14:52:18 -0300.</p><p>Subject: Re: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>Thanks.</p><p>FYI that post code is unknown to me.</p><p>CF71 7LR.</p><p>My post code is CF64 4TF.</p><p>(Robin Hill, Vale of Glamorgan).</p><p>But I appreciate the prompt reply and thank you.</p><p>Regards,</p><p>Sion Hywel Buckler</p><p>On Mon, 11 May 2026, 12:14 Griffiths, Eleri, &lt;Eleri.Griffiths@senedd.cymru&gt;</p><p>wrote:</p><p>&gt; Dear Sion</p><p>&gt;</p><p>&gt;</p><p>&gt;</p><p>&gt; Thank you for writing to Heledd.  She has asked me to respond on her</p><p>&gt; behalf.  We were sorry to read of your difficulties.  Unfortunately, we are</p><p>&gt; unable to offer help with y...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-72ff0cc9.eml" target="_blank">Re: ATB/RE: Formal Notice Follow Up: Resolution of Historica</a></li></ul>
+            </div>
+            <div class="card" id="E025">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Re: Reply to your email of September 2025</h3>
+                    <span><span class="evidence-id">E025</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to Central Correspondence Team &lt;CentralCorrespondenceTeam@justice.gov.uk&gt; on Wed, 29 Apr 2026 18:16:32 -0300.</p><p>Subject: Re: Reply to your email of September 2025</p><p>Dear Ms Hollis,</p><p>I write further to your letter of 27 April 2026. This correspondence</p><p>constitutes formal pre-action notice of my intention to pursue legal</p><p>remedies arising from the historic proceedings concerning Great House Farm,</p><p>Llandough.</p><p>While I note your position regarding judicial independence, I do not accept</p><p>that the issues raised can be dismissed at an administrative level. My</p><p>representations concern alleged procedural irregularity, misrepresentation,</p><p>non-disclosure, and stru...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-e187f5d0.eml" target="_blank">Re: Reply to your email of September 2025</a></li></ul>
+            </div>
+            <div class="card" id="E026">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Re: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E026</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Swyddfa Joe Martin AS - Office of Joe Martin MS &lt;Joe.Martin-MS@senedd.wales&gt; to Sion Buckler &lt;hywelapbuckler@gmail.com&gt; on Wed, 13 May 2026 15:36:14 +0000.</p><p>Subject: Re: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>Dear Sion,</p><p>Thank you for your email. I am currently in the process of setting up a constituency office, and will reply to your email in full as soon as possible.</p><p>Kind regards,</p><p>Joe Martin MS</p><p>Sent from Outlook for iOS&lt;https://aka.ms/o0ukef&gt;</p><p>________________________________</p><p>From: Sion Buckler &lt;hywelapbuckler@gmail.com&gt;</p><p>Sent: Tuesday, May 12, 2026 12:18:38 PM</p><p>To: Swyddfa Joe Martin AS - Office of Joe Martin MS &lt;Joe.Martin-MS@senedd.wales&gt;; Anna.Brychan-MS@senedd.wales &lt;Anna.Brychan...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-27cb6d71.eml" target="_blank">Re: Resolution of Historical Dispossession and Fraud – Great</a></li></ul>
+            </div>
+            <div class="card" id="E027">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Re: Setting Aside BP vs Buckler 1987 on grounds of BP with our stolen paper title and identity fraud, court mistakes and procedural unfairness &amp; more</h3>
+                    <span><span class="evidence-id">E027</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to &quot;Carroll, George D (Cllr)&quot; &lt;gdcarroll@valeofglamorgan.gov.uk&gt; on Mon, 4 May 2026 00:33:15 -0300.</p><p>Subject: Re: Setting Aside BP vs Buckler 1987 on grounds of BP with our stolen paper title and identity fraud, court mistakes and procedural unfairness &amp; more</p><p>Councillor of Llandough,</p><p>Have you seen this footage?  https://youtu.be/4GXmR7mAas0?feature=shared</p><p>I&#x27;m a military cyber warfare professional.</p><p>Not much gets past me.</p><p>I was the best hacker in our Government and military in 2005.</p><p>In fact I already note this footage was cut and censored to hide key facts.</p><p>Not to mention this and other press coverage and footage supressed. Even</p><p>unto this day.</p><p>More interestingly than my mum&#x27;s appearance at the end of the clip, is the</p><p>news anchor who was ...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-8b224b84.eml" target="_blank">Re: Setting Aside BP vs Buckler 1987 on grounds of BP with o</a></li></ul>
+            </div>
+            <div class="card" id="E028">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Re: Subject: Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987) F260213</h3>
+                    <span><span class="evidence-id">E028</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to _FOI email address &lt;FOI@landregistry.gov.uk&gt; on Sat, 14 Mar 2026 06:32:43 -0300.</p><p>Subject: Re: Subject: Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987) F260213</p><p>Thanks for your reply,</p><p>See attached the letter to which I am referring.</p><p>I trust this helps clarify the plot in question.</p><p>Regards,</p><p>Sion Buckler</p><p>On Fri, 13 Mar 2026 at 08:27, _FOI email address &lt;FOI@landregistry.gov.uk&gt;</p><p>wrote:</p><p>&gt; Dear Sion Buckler</p><p>&gt;</p><p>&gt;</p><p>&gt;</p><p>&gt; Thank you for your email, however the information you have provided does</p><p>&gt; not assist us in locating the title number.</p><p>&gt;</p><p>&gt;</p><p>&gt;</p><p>&gt; We are unable to proceed with your Freedom of Information request without</p><p>&gt; this information....</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-b8d62770.eml" target="_blank">Re: Subject: Freedom of Information Request - Ty Mawr (Great</a></li></ul>
+            </div>
+            <div class="card" id="E029">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Re: Subject: Stage Two Complaint – Title WA231076 – Alleged Mistake in the Register</h3>
+                    <span><span class="evidence-id">E029</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to &quot;Wales.OfficeMail&quot; &lt;Wales.Office@landregistry.gov.uk&gt; on Sun, 3 May 2026 13:10:00 -0300.</p><p>Subject: Re: Subject: Stage Two Complaint – Title WA231076 – Alleged Mistake in the Register</p><p>Dear Sir/Madam,</p><p>I write to append further evidence and clarification to my ongoing</p><p>complaint regarding the registration of title relating to Great House Farm,</p><p>Llandough (also known as Ty Mawr / Great House).</p><p>https://youtu.be/4GXmR7mAas0?feature=shared</p><p>This submission sets out a series of facts which I can evidence and which,</p><p>taken together, raise serious concerns of fraud, concealment, and wrongful</p><p>registration that have materially affected the rights of the Williams</p><p>family and the...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-000c6031.eml" target="_blank">Re: Subject: Stage Two Complaint – Title WA231076 – Alleged </a></li></ul>
+            </div>
+            <div class="card" id="E030">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Re: Title WA231076 / Ty Mawr Farm – Allegation of Fraud, Mistake and Request for Escalation to Legal</h3>
+                    <span><span class="evidence-id">E030</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to &quot;Wales.OfficeMail&quot; &lt;Wales.Office@landregistry.gov.uk&gt; on Mon, 13 Apr 2026 15:20:33 -0300.</p><p>Subject: Re: Title WA231076 / Ty Mawr Farm – Allegation of Fraud, Mistake and Request for Escalation to Legal</p><p>Ms Griffiths,</p><p>Thank you for your letter of 23 March 2026 (ref: N610CGV) regarding title</p><p>number WA231076.</p><p>I acknowledge your explanation of HM Land Registry’s role and your</p><p>confirmation of the first registrations in favour of BP Properties Limited</p><p>in 1982 and 1983. However, your response only reviews the internal</p><p>registration trail and does not engage with the specific issues I raised,</p><p>namely:</p><p>- Fraud and/or deliberate concealment in the transactions and litigation</p><p>that under...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-95ddaed1.eml" target="_blank">Re: Title WA231076 / Ty Mawr Farm – Allegation of Fraud, Mis</a></li></ul>
+            </div>
+            <div class="card" id="E031">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Ref: TO130237</h3>
+                    <span><span class="evidence-id">E031</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to Correspondence@justice.gov.uk on Wed, 29 Apr 2026 18:28:55 -0300.</p><p>Subject: Ref: TO130237</p><p>Ms Hollis,</p><p>I write further to your letter of 27 April 2026. This correspondence</p><p>constitutes formal pre-action notice of my intention to pursue legal</p><p>remedies arising from the historic proceedings concerning Great House Farm,</p><p>Llandough.</p><p>While I note your position regarding judicial independence, I do not accept</p><p>that the issues raised can be dismissed at an administrative level. My</p><p>representations concern alleged fraud, procedural irregularity,</p><p>misrepresentation, non-disclosure, and st...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-5715aa90.eml" target="_blank">Ref: TO130237</a></li></ul>
+            </div>
+            <div class="card" id="E032">
+                <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
+                    <h3 style="margin:0;">Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</h3>
+                    <span><span class="evidence-id">E032</span></span>
+                </div>
+                <div style="margin-top:10px;"><p>Email from Sion Buckler &lt;hywelapbuckler@gmail.com&gt; to Joe.Martin-MS@senedd.wales, Anna.Brychan-MS@senedd.wales on Tue, 12 May 2026 08:18:38 -0300.</p><p>Subject: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</p><p>Sirs/ Ma&#x27;ams,</p><p>I write on behalf of myself and my siblings, who are the heirs and</p><p>successors of the late Mary Williams of the Williams family, the rightful</p><p>owners and occupiers of Great House Farm, Llandough, since 1667 until our</p><p>unlawful, unconstitution, brutal and inhumane dispossession by armed force</p><p>in 1988. With press and courts falsly labelling and treating us as</p><p>squatters in favor of the false narrative of those who stole my disabled,</p><p>widow nans fee simple absolute title. For whic...</p></div>
+                <h4>Evidence Links</h4><ul><li><span class="badge badge-blue">email</span> <a href="https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-571175e3.eml" target="_blank">Resolution of Historical Dispossession and Fraud – Great Hou</a></li></ul>
+            </div>
+    
+</main>
+
+<footer>
+    <div class="container">
+        <p>BP vs Buckler — Great House Farm (Ty Mawr) Historical Evidence Repository</p>
+        <p><a href="/start-here.html">Start Here</a> | <a href="/summary.html">Summary</a> | <a href="/timeline.html">Timeline</a> | <a href="/evidence.html">Evidence</a> | <a href="/issues.html">Issues</a> | <a href="/contradictions.html">Contradictions</a> | <a href="/questions.html">Questions</a> | <a href="/dossier.html">Dossier</a></p>
+        <p><a href="/api/timeline.json">API: Timeline</a> | <a href="/api/evidence.json">API: Evidence</a> | <a href="/api/issues.json">API: Issues</a></p>
+        <p>&copy; 2026 DATRO Consortium Ltd. This is a historical evidence repository compiled in the public interest.</p>
+    </div>
+</footer>
+
+</body>
+</html>

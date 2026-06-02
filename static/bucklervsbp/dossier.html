@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Dossier — BP vs Buckler</title>
+    <meta name="description" content="Complete printable dossier of the Great House Farm dispute">
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    background-color: #0f172a;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: #f59e0b; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #fbbf24; text-decoration: underline; }
+a:visited { color: #d97706; }
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 2px solid #f59e0b;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+header h1 { font-size: 1.3em; color: #f59e0b; }
+header h1 a { color: #f59e0b; }
+header h1 a:hover { text-decoration: none; color: #fbbf24; }
+header nav { display: flex; gap: 8px; flex-wrap: wrap; }
+header nav a {
+    color: #94a3b8; font-size: 0.85em; padding: 4px 10px;
+    border: 1px solid #334155; border-radius: 4px;
+    transition: all 0.2s;
+}
+header nav a:hover { color: #f59e0b; border-color: #f59e0b; text-decoration: none; }
+h1 { font-size: 2em; color: #f59e0b; margin-bottom: 20px; }
+h2 { font-size: 1.5em; color: #fbbf24; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid #334155; }
+h3 { font-size: 1.2em; color: #f59e0b; margin: 20px 0 10px; }
+h4 { font-size: 1.05em; color: #e2e8f0; margin: 15px 0 8px; }
+p { margin-bottom: 15px; }
+ul, ol { margin: 10px 0 15px 25px; }
+li { margin-bottom: 6px; }
+hr { border: none; border-top: 1px solid #334155; margin: 30px 0; }
+blockquote {
+    border-left: 3px solid #f59e0b; padding: 10px 15px; margin: 15px 0;
+    background: #1e293b; border-radius: 0 6px 6px 0;
+    font-style: italic; color: #94a3b8;
+}
+code { background: #1e293b; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; color: #fbbf24; }
+pre { background: #1e293b; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; font-size: 0.85em; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9em; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #334155; }
+th { background: #1e293b; color: #f59e0b; font-weight: bold; position: sticky; top: 0; }
+tr:hover { background: #1e293b; }
+tr:nth-child(even) { background: #0c1222; }
+tr:nth-child(even):hover { background: #1e293b; }
+.card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+    padding: 20px; margin-bottom: 20px;
+}
+.card h3 { margin-top: 0; }
+.card:hover { border-color: #f59e0b; }
+.badge {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 2px 8px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+}
+.badge-blue { background: #3b82f6; color: #fff; }
+.badge-red { background: #ef4444; color: #fff; }
+.badge-green { background: #22c55e; color: #fff; }
+.badge-purple { background: #a855f7; color: #fff; }
+.year-marker {
+    display: inline-block; background: #334155; color: #f59e0b;
+    padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold;
+    margin-right: 5px;
+}
+.evidence-id {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 1px 6px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+    font-family: monospace;
+}
+.contradiction-card {
+    border-left: 4px solid #ef4444; padding-left: 15px; margin: 15px 0;
+}
+.question-card {
+    border-left: 4px solid #3b82f6; padding-left: 15px; margin: 15px 0;
+}
+.issue-card {
+    border-left: 4px solid #a855f7; padding-left: 15px; margin: 15px 0;
+}
+.nav-breadcrumb { margin-bottom: 20px; font-size: 0.85em; color: #64748b; }
+.nav-breadcrumb a { color: #94a3b8; }
+.nav-breadcrumb a:hover { color: #f59e0b; }
+footer {
+    margin-top: 50px; padding: 30px 0; text-align: center;
+    border-top: 1px solid #334155; color: #64748b; font-size: 0.85em;
+}
+footer a { color: #94a3b8; }
+footer a:hover { color: #f59e0b; }
+.print-only { display: none; }
+@media print {
+    body { background: #fff; color: #000; font-size: 12pt; }
+    header, footer, nav, .no-print { display: none !important; }
+    a { color: #000; text-decoration: underline; }
+    .print-only { display: block; }
+    .card, blockquote, pre { border: 1px solid #ccc; background: #f9f9f9; }
+    .container { max-width: none; padding: 0; }
+    h1, h2, h3, h4 { color: #000; }
+    th { background: #eee; color: #000; }
+    .badge, .evidence-id, .year-marker { background: #eee; color: #000; }
+    table { font-size: 10pt; }
+}
+@media (max-width: 768px) {
+    .container { padding: 12px; }
+    header .container { flex-direction: column; text-align: center; }
+    header h1 { font-size: 1.1em; }
+    header nav { justify-content: center; }
+    h1 { font-size: 1.5em; }
+    h2 { font-size: 1.3em; }
+    table { font-size: 0.8em; }
+    th, td { padding: 6px 8px; }
+    pre { font-size: 0.75em; }
+    .card { padding: 12px; }
+}
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1><a href="/">BP vs Buckler</a></h1>
+        <nav>
+            <a href="/start-here.html">Start Here</a>
+            <a href="/summary.html">Summary</a>
+            <a href="/timeline.html">Timeline</a>
+            <a href="/evidence.html">Evidence</a>
+            <a href="/issues.html">Issues</a>
+            <a href="/contradictions.html">Contradictions</a>
+            <a href="/questions.html">Questions</a>
+            <a href="/dossier.html">Dossier</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="nav-breadcrumb">
+        <a href="/">Home</a> / Research Dossier
+    </div>
+    
+    <div class="print-only" style="text-align:center;padding:20px;border-bottom:2px solid #000;margin-bottom:30px;">
+        <h1>GREAT HOUSE FARM (TY MAWR) — RESEARCH DOSSIER</h1>
+        <p>BP Properties Ltd v Buckler [1987] EWCA Civ 2</p>
+        <p>Compiled: 01 June 2026</p>
+        <p>Website: <a href="https://bucklervsbp.datro.xyz">bucklervsbp.datro.xyz</a></p>
+    </div>
+
+    <div class="no-print">
+        <h1>Research Dossier</h1>
+        <p>Complete printable dossier of the Great House Farm dispute. <a href="javascript:window.print()">Print this page</a> or save as PDF for offline reference.</p>
+    </div>
+
+    <h2>1. Executive Summary</h2>
+    <p>This dossier documents the case of <strong>BP Properties Ltd v Buckler [1987] EWCA Civ 2</strong>, concerning the dispossession of the Williams-Buckler family from Great House Farm (Ty Mawr), Llandough, Vale of Glamorgan. The family occupied the property continuously from 1667 to 1988 — a period of 321 years. In 1987, the Court of Appeal granted BP possession based on a unilateral 1974 licence letter addressed to 'Mrs Buckler' — a name Mary Williams never used. The farmhouse was demolished by BP Properties Ltd on 6 December 1988 amid considerable local controversy. Ownership was never determined by any court.</p>
+
+    <h2>2. Case Overview</h2>
+    <table>
+        <tr><td><strong>Case Name</strong></td><td>BP Properties Ltd v Buckler [1987] EWCA Civ 2</td></tr>
+        <tr><td><strong>Property</strong></td><td>Great House Farm (Ty Mawr), Llandough, Vale of Glamorgan</td></tr>
+        <tr><td><strong>Family Occupation</strong></td><td>1667 — 1988 (321 years)</td></tr>
+        <tr><td><strong>Claimant</strong></td><td>BP Properties Ltd (registered proprietor from November 1982)</td></tr>
+        <tr><td><strong>Occupiers</strong></td><td>Mary Williams (born 1900, died 1983), Frederick Buckler (husband), Billy Buckler (son) and family</td></tr>
+        <tr><td><strong>Court of Appeal</strong></td><td>31 July 1987 — Dillon LJ; Appeal dismissed</td></tr>
+        <tr><td><strong>Demolition</strong></td><td>6 December 1988 by BP Properties Ltd</td></tr>
+        <tr><td><strong>Estimated Reparations</strong></td><td>£101.2 million (as of February 2026)</td></tr>
+    </table>
+
+    <h2>3. Chronology</h2>
+    <ul>
+        <li><strong>1100</strong> — Llandough, Glamorgan: Robert Fitzhamon grants the lordship of Llandough to the Walsche family, establishing feudal control of the area that includes the future Great House ...</li><li><strong>1215</strong> — Llandough Church: A substantial stone residence, Tŷ Mawr (&#x27;Great House&#x27;), is constructed beside St Dochdwy&#x27;s church at Llandough as a manorial house, later known as Gre...</li><li><strong>1215</strong> — Monastic Estate: Tewkesbury Abbey and the Prior of Cardiff hold Great House and its lands, taking tithes and agricultural income from Llandough for over three centurie...</li><li><strong>1215</strong> — Great House Site — NE Slope: Archaeological evidence confirms medieval occupation of the Great House site. Sherds of C12th, C13th, and early C14th pottery were found on the steep ...</li><li><strong>1444</strong> — Raglan: Sir William Thomas Herbert of Raglan purchases the manor and lordship of Llandough and St Mary Church, bringing them into the Herbert family&#x27;s territo...</li><li><strong>1536</strong> — Legal Chambers: Sir Edward Carne, a lawyer and diplomat, purchases the Llandough lordship from the 2nd Earl of Worcester, continuing high‑status lay ownership of the ...</li><li><strong>1539</strong> — Great House: Henry VIII&#x27;s Dissolution of the Monasteries transfers Tewkesbury&#x27;s ecclesiastical holdings, including Llandough lands, to the Crown as secular propert...</li><li><strong>1543</strong> — Estate Office: Post‑Dissolution grants move Llandough through lay owners and into the wider Herbert–Pembroke orbit, later feeding into what becomes the Bute estate.</li><li><strong>1552</strong> — Manorial Court: The Bute–Pembroke estate treats itself as manorial lord, issuing leases for Llandough Farm (about 166 acres) and recording long‑standing occupiers as ...</li><li><strong>1560</strong> — Great House Farm: The Vaughan family, a minor gentry family, become the chief freehold farmers of Great House from the mid C16th. They occupy the property for over two ...</li><li><strong>1667</strong> — Great House Farm: A Williams ancestor is admitted to Great House via the manorial court, paying a substantial entry fine remembered in family tradition as a purchase, w...</li><li><strong>1677</strong> — Estate Records: Through marriage, the Llandough lordship passes into the Talbot estate at Penrice and Margam, while the Williams family continues in occupation at Gre...</li><li><strong>1770</strong> — Estate Transfer: Great House passes through elite owners, including Valentine Morris and Sir Mark Wood, before later consolidation into the Bute estate.</li><li><strong>1794</strong> — Title Office: Sir Mark Wood acquires title and treats Great House as a revenue asset within his wider property portfolio, before it is surveyed and later taken into...</li><li><strong>1800</strong> — Great House: In the early C19th, the freehold of Great House is acquired by the Bute Estate — one of the largest landed estates in Wales, controlled by the Marques...</li><li><strong>1818</strong> — Estate Records: Lambert Williams of Cardiff enters formal written agreements with the Bute estate between 1818 and 1835, evidencing the Williams family as a recognise...</li><li><strong>1818</strong> — Estate Accounts: Chief rents of Llandough are transferred into the manorial rental accounts, simplifying estate bookkeeping and packaging obligations for future buyers...</li><li><strong>1820</strong> — Estate Offices: A land exchange between the Marquess of Bute and Lord Plymouth in Llandough consolidates Great House within Bute&#x27;s controlled block of estates.</li><li><strong>1821</strong> — Rent Collection: Llandough and Cogan appear in Bute rentals from 1821 onward, consolidating manorial rents under a single administrative ledger controlled by the estat...</li><li><strong>1824</strong> — Survey Office: Following Sir Mark Wood&#x27;s property auction, surveyor David Stewart records Great House Farm under the alias &#x27;Cedfin&#x27; in the Bute estate survey of Glam...</li><li><strong>1840</strong> — Estate Registry: Census and tithe records shift terminology from &#x27;Great House&#x27; to &#x27;Great House Farm,&#x27; downgrading the property from a seat of governance to a commercia...</li><li><strong>1870</strong> — Great House Living Room: The Williams family discovers a Roman soldier in full armor beneath the living room floor while replacing flagstones. This critical archaeological evi...</li><li><strong>1876</strong> — Estate Offices: The Bute Estate carves out 33 acres from Great House Farm for Llandough Limeworks, treating the land as their own property to lease to industry, ignor...</li><li><strong>1880</strong> — Estate Records: The property is systematically rebranded from &#x27;Court House&#x27; to &#x27;Grange&#x27; to &#x27;Farm&#x27; in successive records, demoting occupants from gentry with tenure to...</li><li><strong>1880</strong> — Great House — Rear Wing: During building work at Great House, an extraordinary discovery is made under the floor of the rear wing: a cache of armour, later identified as medie...</li><li><strong>1897</strong> — Great House Farm / Lavernock Point: Thomas Williams of Great House daily carts Guglielmo Marconi and his radio equipment to and from Lavernock Point by horse and cart. On 13 May 1897 Mar...</li><li><strong>1900</strong> — Great House Farm: Mary Williams is born into the family at Great House Farm, inheriting the Williams claim and continuing three centuries of unbroken occupation and ass...</li><li><strong>1916</strong> — Great House Farm, Llandough: John Williams is granted an agricultural tenancy of Great House Farm by the Marquess of Bute, formalising the family&#x27;s occupation under a Bute estate ...</li><li><strong>1920</strong> — Great House Farm: Mary Williams marries Frederick Buckler but retains her maiden name, consistent with local custom and the family&#x27;s understanding that the Williams lin...</li><li><strong>1926</strong> — Estate Sale: The Marquess of Bute sells Great House Farm. Sale documents list it under Bute ownership, with no mention of the Williams family&#x27;s three-century occup...</li><li><strong>1926</strong> — Purchase Agreement: The Penarth Estate Company purchases Great House Farm at auction, acquiring whatever title the Bute estate held, subject to the unresolved Williams po...</li><li><strong>1930</strong> — Great House Farm: Despite the 1926 sale, the Williams-Buckler family remains in continuous occupation, maintaining the property and asserting their ownership against ex...</li><li><strong>1949</strong> — Great House Farm, Llandough: The tenancy of Great House Farm is intended to be transferred from John Williams to his son-in-law Frederick Buckler, reflecting the family&#x27;s internal...</li><li><strong>1953</strong> — Great House Farm: Frederick Buckler makes the last known rent payment around 1953. From this point, the family pay nothing to any claimant, and their occupation becomes...</li><li><strong>1955</strong> — Title Office / Great House Farm: Frederick Buckler&#x27;s tenancy expires on 2 February 1955. Adverse possession begins unambiguously. The family attempts to register their possessory clai...</li><li><strong>1959</strong> — Great House Farm, Llandough: Mary Buckler, nee Williams, formally asserts a hereditary ownership claim to Great House Farm, contending that the family&#x27;s centuries-old occupation g...</li><li><strong>1962</strong> — Court — First Possession Order: Western Ground Rents, predecessor to BP Pension Trust, obtains the first possession order against the Bucklers on 11 December 1962 (Judge Temple Morri...</li><li><strong>1963</strong> — GEC-Marconi Telecommunications Site, Llandough: The Marconi Company (by then part of English Electric) constructs a telecommunications facility adjacent to Great House Farm. Surveys proceed without ...</li><li><strong>1969</strong> — Great House Farm, Llandough: Great House Farm is sold to BP Pension Trust Ltd as part of a portfolio transaction. The sale transfers the freehold interest to the BP corporate grou...</li><li><strong>1970</strong> — Legal Office: Mary Williams consults solicitors. Legal advice confirms the 1962 possession order was never enforced, the Limitation Act may have run in the family&#x27;s...</li><li><strong>1970</strong> — Great House Farm, Llandough: Llandough Primary School opens on land that formerly formed part of the Great House Farm holding, representing the first phase of development of the f...</li><li><strong>1974</strong> — Court / Great House Farm: BP Pension Trust Ltd applies to enforce the 1962 possession order. Mary files a defence asserting adverse possession. On 31 October 1974, BP Pension T...</li><li><strong>1974</strong> — Great House — Interior: The ground floor of Great House is surveyed in unusual circumstances by H.J.T. of the Royal Commission on Ancient and Historical Monuments in Wales (R...</li><li><strong>1974</strong> — High Court, Wales and Chester District: Judge Watkin Powell grants BP Pension Trust Ltd leave to enforce the 1962 possession order against the occupants of Great House Farm, clearing the pro...</li><li><strong>1974</strong> — South Wales / Great House Farm: Mary Buckler publicly opposes the threatened eviction through press coverage in South Wales, drawing attention to the family&#x27;s long occupation and the...</li><li><strong>1974</strong> — Great House Farm, Llandough: BP Pension Trust Ltd and BP Properties Ltd issue letters to Mary Buckler purporting to grant her a licence to remain at Great House Farm rent-free for...</li><li><strong>1974</strong> — Great House Farm, Llandough: The possession warrant against Mary Buckler is withdrawn following the issuance of the BP licence letters, and she remains in occupation of Great Hous...</li><li><strong>1975</strong> — Estate Agent&#x27;s Office: The estate interest is transferred by the head of the title chain. Mary Williams argues the sale cannot extinguish her adverse possession claim, which...</li><li><strong>1976</strong> — Great House Farm: New claimants demand rent. The Williams-Buckler family refuses, asserting continuous adverse possession since at least 1955, while owners rely on the ...</li><li><strong>1978</strong> — Court: Legal proceedings commence to determine possession, but again ownership is not adjudicated. The court focuses on narrow possession questions without r...</li><li><strong>1978</strong> — Archaeological Rescue Dig: A small rescue excavation near Great House uncovers Roman remains, confirming archaeological significance, but the full extent is not disclosed and de...</li><li><strong>1979</strong> — Llandough, Glamorgan: A Roman villa and bathhouse are uncovered during housing development works at Llandough on former Great House Farm land, confirming the site&#x27;s signifi...</li><li><strong>1980</strong> — Court: Possession proceedings drag on. The family argues that without determining ownership, any possession order is premature and procedurally unsafe, but t...</li><li><strong>1982</strong> — Property Transfer: BP Properties Ltd is registered as proprietor of Great House Farm in November 1982, taking whatever title the chain provided. Mary Williams (Mrs Buckl...</li><li><strong>1983</strong> — Great House Farm / Legal Office: Mary Williams (Mrs Buckler) dies in 1983. Billy Buckler junior must now claim through her estate. The 1667 deed and later conveyances remain missing, ...</li><li><strong>1984</strong> — BP Properties Offices: BP Properties asserts title and relies on the 1974 licence letters issued by BP Pension Trust, its predecessor. The family never accepted or rejected ...</li><li><strong>1985</strong> — Queen&#x27;s Bench Division, Cardiff: Proceedings before Hollis J in the Queen&#x27;s Bench Division at Cardiff examine the adverse possession claim and the legal effect of the 1974 licence let...</li><li><strong>1985</strong> — Heritage Investigation: The family raises the 1870 Roman soldier discovery and requests Cadw investigate before any demolition, but officials say they need formal application...</li><li><strong>1986</strong> — Queen&#x27;s Bench Division, Cardiff: Hollis J gives judgment on 24 July 1986 in the Queen&#x27;s Bench Division at Cardiff, ruling against the Bucklers. Fraud and identity-substitution allegat...</li><li><strong>1986</strong> — Planning Department: Following the Queen&#x27;s Bench judgment, BP Properties applies for planning permission to demolish Great House Farm. The application proceeds without dis...</li><li><strong>1987</strong> — Court of Appeal (Civil Division): The Court of Appeal (Dillon LJ) delivers judgment on 31 July 1987 in BP Properties Ltd v Buckler. The appeal is dismissed. The 1974 unilateral licence...</li><li><strong>1987</strong> — Family Meeting: After the Court of Appeal ruling, family members reveal that Frederick Buckler had negotiated or settled legal matters prior to his death without info...</li><li><strong>1987</strong> — European Court Inquiry: Following the Court of Appeal ruling, the family explores an application to the European Court of Human Rights under Article 1 Protocol 1, but face th...</li><li><strong>1987</strong> — Llandough, Glamorgan: Corinthian Close and Tuscan Close are constructed over the site of the Roman villa following unsuccessful preservation efforts, sealing the archaeolog...</li><li><strong>1988</strong> — Great House Farm — Chainsaw Siege: Five bailiffs and twenty police arrive at dawn. Billy blocks the drive with a car, bars doors and windows. He revs a chainsaw. In a four-hour siege, b...</li><li><strong>1988</strong> — Great House Farm — Forced Entry: Bailiffs grab the running chainsaw through the broken door and disable it. The four-hour siege ends with police surging in. Branwen leaves with the th...</li><li><strong>1988</strong> — Great House Farm — Final Eviction: Billy is forcibly removed and taken to Llandough Hospital with injuries sustained during the eviction. Charges follow: assault on two bailiffs, crimin...</li><li><strong>1988</strong> — Llandough Hospital: Billy Buckler lies injured in Llandough Hospital, refusing to leave for fear bailiffs will re-enter the farm. Branwen and three young children are in ...</li><li><strong>1988</strong> — Hospital: Billy Buckler is hospitalised with injuries from the forcible eviction. His pregnant wife Branwen and young children are homeless. All possessions rem...</li><li><strong>1988</strong> — Emergency Accommodation: Branwen and the children stay with relatives. The family&#x27;s belongings, farm equipment, and Mary Williams&#x27; journal documenting visitors and events are ...</li><li><strong>1988</strong> — Legal Office: The family&#x27;s lawyers seek an emergency injunction to halt demolition pending heritage review and investigation of fraud allegations, but face procedur...</li><li><strong>1988</strong> — Court: A temporary injunction is granted, halting demolition for a brief period while Cadw considers emergency listing and the family&#x27;s appeal attempts proce...</li><li><strong>1988</strong> — Cadw Offices: Cadw conducts a rushed assessment of Great House Farm for emergency listing, but pressure from BP Properties and lack of accessible documentation impe...</li><li><strong>1988</strong> — Press Conference: The family appeals to the media and public, explaining that ownership was never determined, archaeological evidence was suppressed, and heritage prote...</li><li><strong>1988</strong> — Community Meeting: Local residents and councillors express outrage at the eviction and planned demolition, condemning BP Properties for destroying heritage and the autho...</li><li><strong>1988</strong> — MP&#x27;s Office: Cardiff MP Alun Michael asks the Lord Chancellor to review the case, highlighting the failure to determine ownership and the procedural anomalies thro...</li><li><strong>1988</strong> — Heritage Waiting Period: As days pass, the temporary injunction approaches expiry. Cadw has not granted emergency listing. BP Properties presses for the injunction to be lifte...</li><li><strong>1988</strong> — Great House Farm — Demolition: Hours after the final court ruling on 6 December 1988, BP&#x27;s bulldozers move in overnight. Branwen and the children watch from a caravan nearby as thei...</li><li><strong>1988</strong> — Llandough Hospital / Magistrates Court: Police take Billy Buckler from his hospital bed to face charges of assault on two bailiffs. He is aged 40, freed on bail. He faces additional charges ...</li><li><strong>1988</strong> — Hospital / Court: Lorries move onto the cleared site at 7:30am. The operation takes several days. The council&#x27;s planning chief describes the area as looking like a batt...</li><li><strong>1988</strong> — Demolished Site: Officials report that the cleared farm site resembles a battleground. The local authority begins legal steps to require BP Properties to remove debris...</li><li><strong>1988</strong> — Temporary Accommodation: After losing the farmhouse and contents, the family live in temporary and borrowed accommodation. Billy estimates their lost belongings and livelihood...</li><li><strong>1988</strong> — Great House Farm — HER Record: The Glamorgan-Gwent Historic Environment Record (PRN 02038s) independently confirms that Great House Farm was suddenly and completely demolished by B....</li><li><strong>1988</strong> — Great House Farm, Llandough: Following the demolition of Great House Farm, the final removal of the remaining Buckler occupants from the site takes place, ending the family&#x27;s more...</li><li><strong>1989</strong> — Court: A threatening-behaviour charge against Billy is withdrawn as out of time. Assault and driving allegations from the eviction events continue, and exclu...</li><li><strong>1988</strong> — Great House Farm — Demolition Rubble: In the aftermath of the demolition, R.F. Sugget of the Royal Commission examines the rubble and notes significant losses. A fireplace jamb is since fo...</li><li><strong>1989</strong> — Court: Billy pleads guilty to remaining charges and is freed, stating that he will continue to contest the loss of the family home and land despite the compl...</li><li><strong>1989</strong> — Demolition Site: Site clearance in March removes remaining physical traces. Lorries export rubble over several days, leaving little to show future residents the contes...</li><li><strong>1989</strong> — Community Meeting: At a village meeting, residents condemn the demolition and seek ways to stop BP Properties profiting from redevelopment, but are told legal avenues to...</li><li><strong>1990</strong> — Press Room: Press coverage moves on, presenting the case as finished: family out, house gone, site in BP&#x27;s hands. Unresolved questions about missing deeds, licenc...</li><li><strong>1990</strong> — Glamorgan-Gwent HER: The Glamorgan-Gwent Historic Environment Record compiles its official record of Great House Farm (PRN 02038s), synthesising archaeological assessments...</li><li><strong>1993</strong> — Llandough, Glamorgan: The Glamorgan Village Book records the 1979 discovery of the Roman villa at Llandough and notes that housing was subsequently constructed over the arc...</li><li><strong>1994</strong> — Major Excavation Site: Major excavation at the former farm site uncovers a Roman villa and over eight hundred burials, confirming the land&#x27;s national archaeological importan...</li><li><strong>2005</strong> — Heritage Website: Heritage publications celebrate the Llandough archaeology but omit the eviction and demolition story. Modern residents live over the site unaware of t...</li><li><strong>2024</strong> — Family Communication: Family accounts suggest Frederick Buckler may have secretly settled or sold interests before 1987, contributing to internal rupture and confusion over...</li><li><strong>2025</strong> — Legal Research: Relatives assert Rhys Buckler&#x27;s position as heir to manorial rights through the Williams-Buckler line. His disability raises questions about equal tre...</li><li><strong>Present Day</strong> — Church View Close: Church View Close now covers the site of Great House Farm, the Marconi base, and one of Wales&#x27;s largest recorded burial excavations, yet no plaque or ...</li><li><strong>Present Day</strong> — Legal Archive: Modern researchers examining the case identify a pattern: ownership never adjudicated, documents missing, archaeology suppressed, identity substituted...</li><li><strong>Present Day</strong> — Academic Conference: Legal scholars note the case exemplifies how procedural avoidance, missing documentation, and rushed demolition can circumvent substantive justice and...</li><li><strong>Present Day</strong> — Public Inquiry Call: Advocates call for a public inquiry to examine the combined effect of procedural avoidance, identity substitution, heritage omission, and irreversible...</li>
+    </ul>
+
+    <h2>4. Evidence Index</h2>
+    <p>32 evidence entries:</p>
+    <table>
+        <tr><th>ID</th><th>Year</th><th>Subject</th></tr>
+        
+        <tr>
+            <td><span class="evidence-id">E001</span></td>
+            <td>1667</td>
+            <td>Acquisition of Great House Farm from the Herberts</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E002</span></td>
+            <td>1897</td>
+            <td>Marconi Wireless Telegraphy Experiments at Great House Farm</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E003</span></td>
+            <td>1916</td>
+            <td>Forced Tenancy: Bute Estate Imposes Yearly Agricultural Tenancy</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E004</span></td>
+            <td>1938</td>
+            <td>Reversion Sale of Great House Farm to Western Ground Rents</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E005</span></td>
+            <td>1974</td>
+            <td>Identity Fraud: BP Licence Letters Addressed to &#x27;Mrs Buckler&#x27;</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E006</span></td>
+            <td>1978</td>
+            <td>Suppressed Newspaper Article and 1,700 Signature Petition</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E007</span></td>
+            <td>1982</td>
+            <td>Land Registration by BP Properties Ltd — Circular Logic</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E008</span></td>
+            <td>1984</td>
+            <td>State-Sanctioned Erasure: Title Deeds Removed from Cardiff Library</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E009</span></td>
+            <td>1987</td>
+            <td>Court of Appeal Judgment — BP Properties Ltd v Buckler [1987] EWCA Civ 2</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E010</span></td>
+            <td>1988</td>
+            <td>HER Record GGAT02038s — Great House Farm Officially Documented</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E011</span></td>
+            <td>2026</td>
+            <td>ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough,</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E012</span></td>
+            <td>2026</td>
+            <td>ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E013</span></td>
+            <td>2026</td>
+            <td>Automatic reply: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E014</span></td>
+            <td>2026</td>
+            <td>Automatic reply: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E015</span></td>
+            <td>2026</td>
+            <td>FORMAL NOTICE: State-Sanctioned Dispossession of Great House Farm (Former Estate WA231076)</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E016</span></td>
+            <td>2026</td>
+            <td>FORMAL NOTICE: Unlawful Dispossession of Great House Farm (Former Estate WA231076)</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E017</span></td>
+            <td>2026</td>
+            <td>Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorg</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E018</span></td>
+            <td>2026</td>
+            <td>Freedom of Information Request F260213</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E019</span></td>
+            <td>2026</td>
+            <td>Fwd: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Gl</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E020</span></td>
+            <td>2026</td>
+            <td>Hey Kiro. Here&#x27;s more on BP vs Buckler 1987</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E021</span></td>
+            <td>2026</td>
+            <td>RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Gla</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E022</span></td>
+            <td>2026</td>
+            <td>RE: Subject: Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987) F260213</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E023</span></td>
+            <td>2026</td>
+            <td>Re: ATB/RE: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llando</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E024</span></td>
+            <td>2026</td>
+            <td>Re: ATB/RE: Formal Notice Follow Up: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Val</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E025</span></td>
+            <td>2026</td>
+            <td>Re: Reply to your email of September 2025</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E026</span></td>
+            <td>2026</td>
+            <td>Re: Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E027</span></td>
+            <td>2026</td>
+            <td>Re: Setting Aside BP vs Buckler 1987 on grounds of BP with our stolen paper title and identity fraud, court mistakes and</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E028</span></td>
+            <td>2026</td>
+            <td>Re: Subject: Freedom of Information Request - Ty Mawr (Great House), Llandough, near Penarth (1938-1987) F260213</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E029</span></td>
+            <td>2026</td>
+            <td>Re: Subject: Stage Two Complaint – Title WA231076 – Alleged Mistake in the Register</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E030</span></td>
+            <td>2026</td>
+            <td>Re: Title WA231076 / Ty Mawr Farm – Allegation of Fraud, Mistake and Request for Escalation to Legal</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E031</span></td>
+            <td>2026</td>
+            <td>Ref: TO130237</td>
+        </tr>
+        <tr>
+            <td><span class="evidence-id">E032</span></td>
+            <td>2026</td>
+            <td>Resolution of Historical Dispossession and Fraud – Great House Farm, Llandough, Vale of Glamorgan</td>
+        </tr>
+    </table>
+
+    <h2>5. Principal Contradictions</h2>
+    <ol>
+        <li><strong>BP Companies:</strong> Court said BP Pension Trust and BP Properties were 'different' (to block the family's challenge) and 'same' (to defeat the family's adverse possession claim).</li>
+        <li><strong>Identity:</strong> Mary Williams was addressed as 'Mrs Buckler' despite never adopting that name. The Williams name carried the land claim rights.</li>
+        <li><strong>1916 Tenancy:</strong> Exists only in paragraph 36 of the 1987 judgment. No original document has been located.</li>
+        <li><strong>Ownership:</strong> Courts consistently avoided determining ownership, ruling only on possession.</li>
+        <li><strong>1974 Licence:</strong> Court held a unilateral, unaccepted letter ended adverse possession — a novel legal principle.</li>
+        <li><strong>Archaeology:</strong> 1870 Roman soldier discovery ignored; 1994 excavation confirmed over 800 burials.</li>
+        <li><strong>Missing Deeds:</strong> Cardiff Library deed copies removed in 1984, never recovered.</li>
+    </ol>
+
+    <h2>6. Key Open Questions</h2>
+    <ol>
+        <li>Who actually owned Great House Farm in 1987?</li>
+        <li>Where are the title deeds removed from Cardiff Library in 1984?</li>
+        <li>Why was the 1916 tenancy agreement never produced?</li>
+        <li>Was the 'Mrs Buckler' identity substitution deliberate fraud?</li>
+        <li>Why did Cadw not grant emergency listing before demolition?</li>
+        <li>What did Frederick Buckler secretly settle?</li>
+        <li>Can the 1987 judgment be set aside for procedural irregularity?</li>
+        <li>What was the full extent of the Roman archaeology on the site?</li>
+    </ol>
+
+    <h2>7. Documentary Gaps</h2>
+    <table>
+        <tr><th>Missing Document</th><th>Expected Location</th><th>Significance</th></tr>
+        <tr><td>1667 Deed of Acquisition</td><td>Williams family / NLW</td><td>Establishes original title</td></tr>
+        <tr><td>Daniel Thomas equitable title deed (c.1895-1905)</td><td>Cardiff Library (removed 1984)</td><td>Establishes pre-1916 claim basis</td></tr>
+        <tr><td>Deed of Transfer: Daniel Thomas to Bute Estate</td><td>Cardiff Library (removed 1984)</td><td>Confirms Thomas as intermediary</td></tr>
+        <tr><td>1916 tenancy agreement</td><td>NLW GB 0210 BUTE (not found)</td><td>Only documented in judgment ¶36</td></tr>
+        <tr><td>1938 reversion conveyance to WGR</td><td>NLW or National Archives</td><td>Confirms nature of interest transferred</td></tr>
+        <tr><td>Mary Williams' journal</td><td>Great House Farm (destroyed 1988)</td><td>Documented visitors, dates, events</td></tr>
+        <tr><td>HM Land Registry first registration docs</td><td>HMLR (pending FOI)</td><td>What chain was presented?</td></tr>
+        <tr><td>Cadw listing file (1988)</td><td>Cadw (pending FOI)</td><td>Why was listing denied?</td></tr>
+    </table>
+
+    <h2>8. Sources</h2>
+    <p>This dossier draws on the following source materials:</p>
+    <ul>
+        <li>BP Properties Ltd v Buckler [1987] EWCA Civ 2 (Court of Appeal judgment)</li>
+        <li>Glamorgan-Gwent HER Record GGAT02038s (via Archwilio)</li>
+        <li>National Archives GB 0214 DA (Western Ground Rents records)</li>
+        <li>National Library of Wales GB 0210 BUTE (Bute Estate records)</li>
+        <li>Glamorgan Record Office DRA/DBDT/DSA collections</li>
+        <li>Companies House records for Cardiff Ground Rents Ltd and Western Estates Limited</li>
+        <li>People's Collection Wales #871416 (tree planting photograph)</li>
+        <li>Contemporary press reports (1974-1988)</li>
+        <li>2026 Senedd and FOI correspondence</li>
+        <li>Family testimony and records</li>
+    </ul>
+
+    <p style="text-align:center;margin-top:40px;padding-top:20px;border-top:1px solid #334155;">
+        <em>End of Dossier. Full evidence repository available at <a href="https://bucklervsbp.datro.xyz">bucklervsbp.datro.xyz</a></em>
+    </p>
+    
+</main>
+
+<footer>
+    <div class="container">
+        <p>BP vs Buckler — Great House Farm (Ty Mawr) Historical Evidence Repository</p>
+        <p><a href="/start-here.html">Start Here</a> | <a href="/summary.html">Summary</a> | <a href="/timeline.html">Timeline</a> | <a href="/evidence.html">Evidence</a> | <a href="/issues.html">Issues</a> | <a href="/contradictions.html">Contradictions</a> | <a href="/questions.html">Questions</a> | <a href="/dossier.html">Dossier</a></p>
+        <p><a href="/api/timeline.json">API: Timeline</a> | <a href="/api/evidence.json">API: Evidence</a> | <a href="/api/issues.json">API: Issues</a></p>
+        <p>&copy; 2026 DATRO Consortium Ltd. This is a historical evidence repository compiled in the public interest.</p>
+    </div>
+</footer>
+
+</body>
+</html>

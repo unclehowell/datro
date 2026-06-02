@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Summary — BP vs Buckler</title>
+    <meta name="description" content="Summary of the Great House Farm BP vs Buckler dispute">
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    background-color: #0f172a;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: #f59e0b; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #fbbf24; text-decoration: underline; }
+a:visited { color: #d97706; }
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 2px solid #f59e0b;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+header h1 { font-size: 1.3em; color: #f59e0b; }
+header h1 a { color: #f59e0b; }
+header h1 a:hover { text-decoration: none; color: #fbbf24; }
+header nav { display: flex; gap: 8px; flex-wrap: wrap; }
+header nav a {
+    color: #94a3b8; font-size: 0.85em; padding: 4px 10px;
+    border: 1px solid #334155; border-radius: 4px;
+    transition: all 0.2s;
+}
+header nav a:hover { color: #f59e0b; border-color: #f59e0b; text-decoration: none; }
+h1 { font-size: 2em; color: #f59e0b; margin-bottom: 20px; }
+h2 { font-size: 1.5em; color: #fbbf24; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid #334155; }
+h3 { font-size: 1.2em; color: #f59e0b; margin: 20px 0 10px; }
+h4 { font-size: 1.05em; color: #e2e8f0; margin: 15px 0 8px; }
+p { margin-bottom: 15px; }
+ul, ol { margin: 10px 0 15px 25px; }
+li { margin-bottom: 6px; }
+hr { border: none; border-top: 1px solid #334155; margin: 30px 0; }
+blockquote {
+    border-left: 3px solid #f59e0b; padding: 10px 15px; margin: 15px 0;
+    background: #1e293b; border-radius: 0 6px 6px 0;
+    font-style: italic; color: #94a3b8;
+}
+code { background: #1e293b; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; color: #fbbf24; }
+pre { background: #1e293b; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; font-size: 0.85em; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9em; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #334155; }
+th { background: #1e293b; color: #f59e0b; font-weight: bold; position: sticky; top: 0; }
+tr:hover { background: #1e293b; }
+tr:nth-child(even) { background: #0c1222; }
+tr:nth-child(even):hover { background: #1e293b; }
+.card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+    padding: 20px; margin-bottom: 20px;
+}
+.card h3 { margin-top: 0; }
+.card:hover { border-color: #f59e0b; }
+.badge {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 2px 8px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+}
+.badge-blue { background: #3b82f6; color: #fff; }
+.badge-red { background: #ef4444; color: #fff; }
+.badge-green { background: #22c55e; color: #fff; }
+.badge-purple { background: #a855f7; color: #fff; }
+.year-marker {
+    display: inline-block; background: #334155; color: #f59e0b;
+    padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold;
+    margin-right: 5px;
+}
+.evidence-id {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 1px 6px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+    font-family: monospace;
+}
+.contradiction-card {
+    border-left: 4px solid #ef4444; padding-left: 15px; margin: 15px 0;
+}
+.question-card {
+    border-left: 4px solid #3b82f6; padding-left: 15px; margin: 15px 0;
+}
+.issue-card {
+    border-left: 4px solid #a855f7; padding-left: 15px; margin: 15px 0;
+}
+.nav-breadcrumb { margin-bottom: 20px; font-size: 0.85em; color: #64748b; }
+.nav-breadcrumb a { color: #94a3b8; }
+.nav-breadcrumb a:hover { color: #f59e0b; }
+footer {
+    margin-top: 50px; padding: 30px 0; text-align: center;
+    border-top: 1px solid #334155; color: #64748b; font-size: 0.85em;
+}
+footer a { color: #94a3b8; }
+footer a:hover { color: #f59e0b; }
+.print-only { display: none; }
+@media print {
+    body { background: #fff; color: #000; font-size: 12pt; }
+    header, footer, nav, .no-print { display: none !important; }
+    a { color: #000; text-decoration: underline; }
+    .print-only { display: block; }
+    .card, blockquote, pre { border: 1px solid #ccc; background: #f9f9f9; }
+    .container { max-width: none; padding: 0; }
+    h1, h2, h3, h4 { color: #000; }
+    th { background: #eee; color: #000; }
+    .badge, .evidence-id, .year-marker { background: #eee; color: #000; }
+    table { font-size: 10pt; }
+}
+@media (max-width: 768px) {
+    .container { padding: 12px; }
+    header .container { flex-direction: column; text-align: center; }
+    header h1 { font-size: 1.1em; }
+    header nav { justify-content: center; }
+    h1 { font-size: 1.5em; }
+    h2 { font-size: 1.3em; }
+    table { font-size: 0.8em; }
+    th, td { padding: 6px 8px; }
+    pre { font-size: 0.75em; }
+    .card { padding: 12px; }
+}
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1><a href="/">BP vs Buckler</a></h1>
+        <nav>
+            <a href="/start-here.html">Start Here</a>
+            <a href="/summary.html">Summary</a>
+            <a href="/timeline.html">Timeline</a>
+            <a href="/evidence.html">Evidence</a>
+            <a href="/issues.html">Issues</a>
+            <a href="/contradictions.html">Contradictions</a>
+            <a href="/questions.html">Questions</a>
+            <a href="/dossier.html">Dossier</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="nav-breadcrumb">
+        <a href="/">Home</a> / Case Summary
+    </div>
+    
+    <h1>Case Summary: BP Properties Ltd v Buckler</h1>
+
+    <div class="card">
+        <h3>Case Reference</h3>
+        <p><strong>BP Properties Ltd v Buckler</strong> [1987] EWCA Civ 2<br>
+        Court of Appeal (Civil Division) — 31 July 1987<br>
+        Presiding Judge: Dillon LJ</p>
+    </div>
+
+    <h2>Key Parties</h2>
+    <ul>
+        <li><strong>Williams/Buckler Family</strong> — Occupiers of Great House Farm since 1667. Mary Williams (the last Williams heir) married Frederick Buckler but retained her maiden name. Her children and grandchildren continued the claim.</li>
+        <li><strong>BP Properties Ltd</strong> — Claimant. Registered proprietor of Great House Farm from November 1982. Part of the BP corporate group.</li>
+        <li><strong>BP Pension Trust Ltd</strong> — Predecessor in title. Issued the 1974 licence letters. The court treated this entity as both "different from" and "the same as" BP Properties at different points.</li>
+        <li><strong>Bute Estate</strong> — The Marquess of Bute (and predecessors) held the freehold from early C19th until the 20th century. Imposed the 1916 tenancy on John Williams.</li>
+        <li><strong>Western Ground Rents Ltd</strong> — Acquired the reversion in 1938. Sold to BP Pension Trust in 1969.</li>
+    </ul>
+
+    <h2>Key Dates</h2>
+    <table>
+        <tr><th>Date</th><th>Event</th></tr>
+        <tr><td>1667</td><td>Williams family acquires Great House Farm from the Herberts</td></tr>
+        <tr><td>1870</td><td>Roman soldier discovered beneath farmhouse floor</td></tr>
+        <tr><td>1916</td><td>Bute Estate imposes yearly agricultural tenancy on John Williams</td></tr>
+        <tr><td>1938</td><td>Reversion sale to Western Ground Rents (Mountjoy interests)</td></tr>
+        <tr><td>1969</td><td>Great House Farm sold to BP Pension Trust Ltd</td></tr>
+        <tr><td>1974</td><td>BP issues unilateral "Licence to Occupy" letters to "Mrs Buckler"</td></tr>
+        <tr><td>1982</td><td>BP Properties Ltd registered as proprietor at HM Land Registry (Nov 1982)</td></tr>
+        <tr><td>1984</td><td>Title deeds reportedly removed from Cardiff Library</td></tr>
+        <tr><td>1986</td><td>Queen's Bench Division (Hollis J) rules against Bucklers (24 July 1986)</td></tr>
+        <tr><td>1987</td><td>Court of Appeal dismisses appeal — BP Properties Ltd v Buckler [1987] EWCA Civ 2 (31 July 1987)</td></tr>
+        <tr><td>1988</td><td>Armed eviction (November); Great House Farm demolished (6 December 1988)</td></tr>
+        <tr><td>1994</td><td>Major excavation reveals Roman villa and over 800 burials</td></tr>
+        <tr><td>2026</td><td>Reparations claim estimated at £101.2M; FOI requests submitted</td></tr>
+    </table>
+
+    <h2>Principal Documentary Evidence</h2>
+    <table>
+        <tr><th>ID</th><th>Document</th><th>Date</th><th>Significance</th></tr>
+        <tr><td><span class="evidence-id">E001</span></td><td><a href="/evidence.html#E001">1667 Acquisition Record</a></td><td>1667</td><td>Williams family acquires Great House Farm from Herberts</td></tr>
+        <tr><td><span class="evidence-id">E002</span></td><td><a href="/evidence.html#E002">Marconi Experiments Record</a></td><td>1897</td><td>Marconi stayed at Great House Farm during wireless experiments</td></tr>
+        <tr><td><span class="evidence-id">E003</span></td><td><a href="/evidence.html#E003">1916 Forced Tenancy</a></td><td>1916</td><td>Bute Estate imposes yearly agricultural tenancy</td></tr>
+        <tr><td><span class="evidence-id">E004</span></td><td><a href="/evidence.html#E004">1974 BP Licence Letters</a></td><td>1974</td><td>Unilateral licence to "Mrs Buckler" — identity fraud alleged</td></tr>
+        <tr><td><span class="evidence-id">E005</span></td><td><a href="/evidence.html#E005">1978 Suppressed Article</a></td><td>1978</td><td>Newspaper article + 1,700 signature petition</td></tr>
+        <tr><td><span class="evidence-id">E006</span></td><td><a href="/evidence.html#E006">Land Registration (1982)</a></td><td>1982</td><td>BP Properties Ltd registers title — circular logic alleged</td></tr>
+        <tr><td><span class="evidence-id">E007</span></td><td><a href="/evidence.html#E007">1987 Court of Appeal Judgment</a></td><td>1987</td><td>BP Properties Ltd v Buckler [1987] EWCA Civ 2</td></tr>
+        <tr><td><span class="evidence-id">E008</span></td><td><a href="/evidence.html#E008">HER Record GGAT02038s</a></td><td>1988/2023</td><td>Official HER confirms demolition by BP Properties Ltd</td></tr>
+    </table>
+
+    <h2>Main Unresolved Questions</h2>
+    <ol>
+        <li><strong>Who owned Great House Farm?</strong> No court ever determined ownership. The case was decided on possession alone.</li>
+        <li><strong>Was identity fraud committed?</strong> Mary Williams was addressed as "Mrs Buckler" in legal documents despite never adopting that name. The Williams name carried the land claim rights.</li>
+        <li><strong>Where are the missing title deeds?</strong> Documents removed from Cardiff Library in 1984 have never been recovered.</li>
+        <li><strong>Why was the 1916 tenancy agreement never produced?</strong> The only record of the 1916 tenancy is paragraph 36 of the 1987 judgment.</li>
+        <li><strong>Why did Cadw not list the building?</strong> Emergency listing processes were reportedly stalled before the 1988 demolition.</li>
+        <li><strong>What did Frederick Buckler secretly settle?</strong> Family accounts suggest Frederick may have negotiated or settled legal matters without informing the family.</li>
+        <li><strong>Why did the court use contradictory logic on corporate identity?</strong> The court treated BP Pension Trust and BP Properties as "different" to block one claim and "same" to block another.</li>
+    </ol>
+    
+</main>
+
+<footer>
+    <div class="container">
+        <p>BP vs Buckler — Great House Farm (Ty Mawr) Historical Evidence Repository</p>
+        <p><a href="/start-here.html">Start Here</a> | <a href="/summary.html">Summary</a> | <a href="/timeline.html">Timeline</a> | <a href="/evidence.html">Evidence</a> | <a href="/issues.html">Issues</a> | <a href="/contradictions.html">Contradictions</a> | <a href="/questions.html">Questions</a> | <a href="/dossier.html">Dossier</a></p>
+        <p><a href="/api/timeline.json">API: Timeline</a> | <a href="/api/evidence.json">API: Evidence</a> | <a href="/api/issues.json">API: Issues</a></p>
+        <p>&copy; 2026 DATRO Consortium Ltd. This is a historical evidence repository compiled in the public interest.</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Open Questions — BP vs Buckler</title>
+    <meta name="description" content="Unresolved questions in the Great House Farm dispute">
+    <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+    font-family: 'Courier Prime', 'Courier New', monospace;
+    background-color: #0f172a;
+    color: #cbd5e1;
+    line-height: 1.7;
+    font-size: 16px;
+}
+a { color: #f59e0b; text-decoration: none; transition: color 0.2s; }
+a:hover { color: #fbbf24; text-decoration: underline; }
+a:visited { color: #d97706; }
+.container { max-width: 1000px; margin: 0 auto; padding: 20px; }
+header {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    border-bottom: 2px solid #f59e0b;
+    padding: 20px 0;
+    margin-bottom: 30px;
+}
+header .container { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+header h1 { font-size: 1.3em; color: #f59e0b; }
+header h1 a { color: #f59e0b; }
+header h1 a:hover { text-decoration: none; color: #fbbf24; }
+header nav { display: flex; gap: 8px; flex-wrap: wrap; }
+header nav a {
+    color: #94a3b8; font-size: 0.85em; padding: 4px 10px;
+    border: 1px solid #334155; border-radius: 4px;
+    transition: all 0.2s;
+}
+header nav a:hover { color: #f59e0b; border-color: #f59e0b; text-decoration: none; }
+h1 { font-size: 2em; color: #f59e0b; margin-bottom: 20px; }
+h2 { font-size: 1.5em; color: #fbbf24; margin: 30px 0 15px; padding-bottom: 8px; border-bottom: 1px solid #334155; }
+h3 { font-size: 1.2em; color: #f59e0b; margin: 20px 0 10px; }
+h4 { font-size: 1.05em; color: #e2e8f0; margin: 15px 0 8px; }
+p { margin-bottom: 15px; }
+ul, ol { margin: 10px 0 15px 25px; }
+li { margin-bottom: 6px; }
+hr { border: none; border-top: 1px solid #334155; margin: 30px 0; }
+blockquote {
+    border-left: 3px solid #f59e0b; padding: 10px 15px; margin: 15px 0;
+    background: #1e293b; border-radius: 0 6px 6px 0;
+    font-style: italic; color: #94a3b8;
+}
+code { background: #1e293b; padding: 2px 6px; border-radius: 3px; font-size: 0.9em; color: #fbbf24; }
+pre { background: #1e293b; padding: 15px; border-radius: 6px; overflow-x: auto; margin: 15px 0; font-size: 0.85em; }
+table { width: 100%; border-collapse: collapse; margin: 15px 0; font-size: 0.9em; }
+th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #334155; }
+th { background: #1e293b; color: #f59e0b; font-weight: bold; position: sticky; top: 0; }
+tr:hover { background: #1e293b; }
+tr:nth-child(even) { background: #0c1222; }
+tr:nth-child(even):hover { background: #1e293b; }
+.card {
+    background: #1e293b; border: 1px solid #334155; border-radius: 8px;
+    padding: 20px; margin-bottom: 20px;
+}
+.card h3 { margin-top: 0; }
+.card:hover { border-color: #f59e0b; }
+.badge {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 2px 8px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+}
+.badge-blue { background: #3b82f6; color: #fff; }
+.badge-red { background: #ef4444; color: #fff; }
+.badge-green { background: #22c55e; color: #fff; }
+.badge-purple { background: #a855f7; color: #fff; }
+.year-marker {
+    display: inline-block; background: #334155; color: #f59e0b;
+    padding: 2px 10px; border-radius: 12px; font-size: 0.8em; font-weight: bold;
+    margin-right: 5px;
+}
+.evidence-id {
+    display: inline-block; background: #f59e0b; color: #0f172a;
+    padding: 1px 6px; border-radius: 3px; font-size: 0.75em; font-weight: bold;
+    font-family: monospace;
+}
+.contradiction-card {
+    border-left: 4px solid #ef4444; padding-left: 15px; margin: 15px 0;
+}
+.question-card {
+    border-left: 4px solid #3b82f6; padding-left: 15px; margin: 15px 0;
+}
+.issue-card {
+    border-left: 4px solid #a855f7; padding-left: 15px; margin: 15px 0;
+}
+.nav-breadcrumb { margin-bottom: 20px; font-size: 0.85em; color: #64748b; }
+.nav-breadcrumb a { color: #94a3b8; }
+.nav-breadcrumb a:hover { color: #f59e0b; }
+footer {
+    margin-top: 50px; padding: 30px 0; text-align: center;
+    border-top: 1px solid #334155; color: #64748b; font-size: 0.85em;
+}
+footer a { color: #94a3b8; }
+footer a:hover { color: #f59e0b; }
+.print-only { display: none; }
+@media print {
+    body { background: #fff; color: #000; font-size: 12pt; }
+    header, footer, nav, .no-print { display: none !important; }
+    a { color: #000; text-decoration: underline; }
+    .print-only { display: block; }
+    .card, blockquote, pre { border: 1px solid #ccc; background: #f9f9f9; }
+    .container { max-width: none; padding: 0; }
+    h1, h2, h3, h4 { color: #000; }
+    th { background: #eee; color: #000; }
+    .badge, .evidence-id, .year-marker { background: #eee; color: #000; }
+    table { font-size: 10pt; }
+}
+@media (max-width: 768px) {
+    .container { padding: 12px; }
+    header .container { flex-direction: column; text-align: center; }
+    header h1 { font-size: 1.1em; }
+    header nav { justify-content: center; }
+    h1 { font-size: 1.5em; }
+    h2 { font-size: 1.3em; }
+    table { font-size: 0.8em; }
+    th, td { padding: 6px 8px; }
+    pre { font-size: 0.75em; }
+    .card { padding: 12px; }
+}
+</style>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+    <div class="container">
+        <h1><a href="/">BP vs Buckler</a></h1>
+        <nav>
+            <a href="/start-here.html">Start Here</a>
+            <a href="/summary.html">Summary</a>
+            <a href="/timeline.html">Timeline</a>
+            <a href="/evidence.html">Evidence</a>
+            <a href="/issues.html">Issues</a>
+            <a href="/contradictions.html">Contradictions</a>
+            <a href="/questions.html">Questions</a>
+            <a href="/dossier.html">Dossier</a>
+        </nav>
+    </div>
+</header>
+
+<main class="container">
+    <div class="nav-breadcrumb">
+        <a href="/">Home</a> / Open Questions
+    </div>
+    
+    <h1>Open Questions Repository</h1>
+    <p>A comprehensive list of unresolved questions in the BP Properties Ltd v Buckler case. Each question is presented with known facts and unknown facts — no conclusions are drawn.</p>
+
+    
+        <div class="card question-card">
+            <h3>Who actually owned Great House Farm at the time of the 1987 judgment?</h3>
+            <p><strong>Relevant Documents:</strong> <a href="/evidence.html#E001"><span class="evidence-id">E001</span></a>, <a href="/evidence.html#E003"><span class="evidence-id">E003</span></a>, <a href="/evidence.html#E006"><span class="evidence-id">E006</span></a>, <a href="/evidence.html#E007"><span class="evidence-id">E007</span></a></p>
+            <h4>Known Facts</h4>
+            <ul><li>The Williams family occupied since 1667</li><li>Bute Estate acquired freehold early C19th</li><li>1938 reversion to Western Ground Rents</li><li>1969 sale to BP Pension Trust</li><li>1982 registration to BP Properties Ltd</li><li>No court ever determined ownership</li></ul>
+            <h4>Unknown Facts</h4>
+            <ul><li>Whether the Williams family held freehold or manorial leasehold in 1667</li><li>What the Daniel Thomas equitable title arrangement actually conveyed</li><li>Whether the 1916 tenancy was a genuine document or a legal trap</li><li>What documents were submitted for the 1982 Land Registry registration</li><li>Whether BP&#x27;s registered title could be challenged on grounds of fraud</li></ul>
+            <p style="color:#64748b;font-size:0.85em;margin-top:10px;"><em>No conclusions offered — only facts and unknowns are presented.</em></p>
+        </div>
+        <div class="card question-card">
+            <h3>Where are the title deeds removed from Cardiff Library in 1984?</h3>
+            <p><strong>Relevant Documents:</strong> <a href="/evidence.html#E006"><span class="evidence-id">E006</span></a></p>
+            <h4>Known Facts</h4>
+            <ul><li>Deed copies were held at Cardiff Library local history section</li><li>They were removed in 1984</li><li>The DRA collection at Glamorgan RO contains some related documents (DRA 418-420, DRA 5/31)</li><li>The deeds included the &#x27;Deed of Transfer between Daniel Thomas and Bute Estate&#x27;</li></ul>
+            <h4>Unknown Facts</h4>
+            <ul><li>Who removed them</li><li>Where they are now</li><li>Whether they were destroyed</li><li>What information they contained that was not otherwise available</li><li>Whether their removal was deliberate or accidental</li></ul>
+            <p style="color:#64748b;font-size:0.85em;margin-top:10px;"><em>No conclusions offered — only facts and unknowns are presented.</em></p>
+        </div>
+        <div class="card question-card">
+            <h3>Why was the 1916 tenancy agreement never produced?</h3>
+            <p><strong>Relevant Documents:</strong> <a href="/evidence.html#E003"><span class="evidence-id">E003</span></a>, <a href="/evidence.html#E007"><span class="evidence-id">E007</span></a></p>
+            <h4>Known Facts</h4>
+            <ul><li>The tenancy is referenced only in paragraph 36 of the 1987 judgment</li><li>No original document exists in Bute Estate Records</li><li>The 1916 date falls in the 1895-1938 documentary gap</li><li>Bute manorial records end 1847</li><li>Estate rentals end 1893/1895</li><li>Correspondence ends 1910</li></ul>
+            <h4>Unknown Facts</h4>
+            <ul><li>Whether the original tenancy agreement ever existed</li><li>What its actual terms were</li><li>Whether it was a genuine document or created for litigation</li><li>Why the Bute Estate&#x27;s records are silent on this tenancy</li></ul>
+            <p style="color:#64748b;font-size:0.85em;margin-top:10px;"><em>No conclusions offered — only facts and unknowns are presented.</em></p>
+        </div>
+        <div class="card question-card">
+            <h3>Was the &#x27;Mrs Buckler&#x27; identity substitution deliberate fraud?</h3>
+            <p><strong>Relevant Documents:</strong> <a href="/evidence.html#E004"><span class="evidence-id">E004</span></a>, <a href="/evidence.html#E005"><span class="evidence-id">E005</span></a>, <a href="/evidence.html#E007"><span class="evidence-id">E007</span></a></p>
+            <h4>Known Facts</h4>
+            <ul><li>BP addressed 1974 licence letters to &#x27;Mrs Buckler&#x27;</li><li>Mary Williams was born, married, and buried as Mary Williams</li><li>She never adopted the Buckler name</li><li>Prior to 1974, no court or document referred to her as Mrs Buckler</li><li>The Williams name carried the land claim rights</li></ul>
+            <h4>Unknown Facts</h4>
+            <ul><li>Why BP chose to address the licence to &#x27;Mrs Buckler&#x27;</li><li>Whether the name substitution was deliberate</li><li>Who decided to use &#x27;Mrs Buckler&#x27; instead of &#x27;Mary Williams&#x27;</li><li>What the court knew about the name discrepancy</li><li>Whether this constitutes legal fraud</li></ul>
+            <p style="color:#64748b;font-size:0.85em;margin-top:10px;"><em>No conclusions offered — only facts and unknowns are presented.</em></p>
+        </div>
+        <div class="card question-card">
+            <h3>Why did Cadw not grant emergency listing for Great House Farm?</h3>
+            <p><strong>Relevant Documents:</strong> <a href="/evidence.html#E008"><span class="evidence-id">E008</span></a></p>
+            <h4>Known Facts</h4>
+            <ul><li>The family requested emergency listing in 1988</li><li>Cadw conducted a rushed assessment</li><li>The building was over 800 years old</li><li>Roman remains were reported on site</li><li>The house was demolished on 6 December 1988</li><li>HER confirms medieval origins and archaeological significance</li></ul>
+            <h4>Unknown Facts</h4>
+            <ul><li>What the Cadw assessment concluded</li><li>Who made the decision not to list</li><li>Whether BP exerted pressure on Cadw</li><li>Whether the 1870 Roman soldier discovery was disclosed to Cadw</li><li>Why the assessment was not completed before demolition</li></ul>
+            <p style="color:#64748b;font-size:0.85em;margin-top:10px;"><em>No conclusions offered — only facts and unknowns are presented.</em></p>
+        </div>
+        <div class="card question-card">
+            <h3>What did Frederick Buckler secretly settle before his death?</h3>
+            <p><strong>Relevant Documents:</strong> <a href="/evidence.html#E007"><span class="evidence-id">E007</span></a></p>
+            <h4>Known Facts</h4>
+            <ul><li>Family accounts suggest Frederick &#x27;sorted it legally&#x27; before his death</li><li>The family was not informed of the details</li><li>This caused a lasting rift in the family</li><li>The settlement may have undermined Mary Williams&#x27; stance</li></ul>
+            <h4>Unknown Facts</h4>
+            <ul><li>What exactly Frederick agreed to</li><li>Whether he signed away rights</li><li>Whether any settlement was binding on Mary Williams or her heirs</li><li>What documents, if any, recorded the settlement</li><li>Whether this influences the validity of the 1987 judgment</li></ul>
+            <p style="color:#64748b;font-size:0.85em;margin-top:10px;"><em>No conclusions offered — only facts and unknowns are presented.</em></p>
+        </div>
+        <div class="card question-card">
+            <h3>Why is the 1978 newspaper article about the 1,700 signature petition suppressed?</h3>
+            <p><strong>Relevant Documents:</strong> <a href="/evidence.html#E005"><span class="evidence-id">E005</span></a></p>
+            <h4>Known Facts</h4>
+            <ul><li>A 1978 newspaper article documented Mary Williams contesting the BP licence</li><li>It reported the 1,700 signature petition against BP&#x27;s dispossession</li><li>The article has been suppressed and is not publicly accessible</li></ul>
+            <h4>Unknown Facts</h4>
+            <ul><li>Who suppressed the article</li><li>Where the original article exists</li><li>What additional information it contained</li><li>Why it was suppressed</li><li>How to access it</li></ul>
+            <p style="color:#64748b;font-size:0.85em;margin-top:10px;"><em>No conclusions offered — only facts and unknowns are presented.</em></p>
+        </div>
+        <div class="card question-card">
+            <h3>Can the 1987 Court of Appeal judgment be set aside for procedural irregularity?</h3>
+            <p><strong>Relevant Documents:</strong> <a href="/evidence.html#E007"><span class="evidence-id">E007</span></a></p>
+            <h4>Known Facts</h4>
+            <ul><li>The judgment relied on contradictory corporate identity logic</li><li>Ownership was never determined</li><li>Key documents were missing</li><li>Identity substitution was not investigated</li><li>The 1974 licence was held to end adverse possession without acceptance</li><li>The judgment resulted in the demolition of an 800-year-old building</li></ul>
+            <h4>Unknown Facts</h4>
+            <ul><li>Whether the judgment meets the threshold for setting aside under Takhar v Gracefield</li><li>Whether fresh evidence could change the outcome</li><li>Whether the European Court of Human Rights would find a violation</li><li>What remedies remain available to the family</li></ul>
+            <p style="color:#64748b;font-size:0.85em;margin-top:10px;"><em>No conclusions offered — only facts and unknowns are presented.</em></p>
+        </div>
+        <div class="card question-card">
+            <h3>What was the full extent of the Roman archaeology on the Great House Farm site?</h3>
+            <p><strong>Relevant Documents:</strong> <a href="/evidence.html#E008"><span class="evidence-id">E008</span></a></p>
+            <h4>Known Facts</h4>
+            <ul><li>A Roman soldier was found under the floor in 1870 (unverified)</li><li>1978 rescue dig uncovered Roman remains</li><li>1979 Roman villa and bathhouse discovered</li><li>1994 excavation found over 800 burials</li><li>The site is one of Wales&#x27; largest recorded burial excavations</li><li>Medieval ironwork is at the National Museum of Wales</li></ul>
+            <h4>Unknown Facts</h4>
+            <ul><li>Full extent of Roman settlement on the site</li><li>Whether the 1870 &#x27;Roman soldier&#x27; report was accurate</li><li>What archaeological evidence was destroyed in the 1988 demolition</li><li>Whether earlier disclosure of archaeology could have prevented demolition</li></ul>
+            <p style="color:#64748b;font-size:0.85em;margin-top:10px;"><em>No conclusions offered — only facts and unknowns are presented.</em></p>
+        </div>
+    
+</main>
+
+<footer>
+    <div class="container">
+        <p>BP vs Buckler — Great House Farm (Ty Mawr) Historical Evidence Repository</p>
+        <p><a href="/start-here.html">Start Here</a> | <a href="/summary.html">Summary</a> | <a href="/timeline.html">Timeline</a> | <a href="/evidence.html">Evidence</a> | <a href="/issues.html">Issues</a> | <a href="/contradictions.html">Contradictions</a> | <a href="/questions.html">Questions</a> | <a href="/dossier.html">Dossier</a></p>
+        <p><a href="/api/timeline.json">API: Timeline</a> | <a href="/api/evidence.json">API: Evidence</a> | <a href="/api/issues.json">API: Issues</a></p>
+        <p>&copy; 2026 DATRO Consortium Ltd. This is a historical evidence repository compiled in the public interest.</p>
+    </div>
+</footer>
+
+</body>
+</html>
