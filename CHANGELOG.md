@@ -1,5 +1,13 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.10] - 2026-06-02
+
+### Fixed
+- fix(bpvsbuckler): Remove excessive blank lines
+
+### Changed
+- ux(bpvsbuckler): Add focus-visible styles for keyboard navigation
+
 ## [bpvsbuckler-v0.0.0.10-aws] - 2026-05-28
 
 ### Fixed
