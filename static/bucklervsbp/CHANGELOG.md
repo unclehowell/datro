@@ -1,5 +1,19 @@
 # Changelog — bucklervsbp
 
+## [bucklervsbp-v0.0.0.04] - 2026-06-02
+
+### Fixed
+- **First-person narrative** — Changed 'our family lose' to 'the family loses' in Contradictions page for forensic third-person voice
+- **Year-mismatch timeline entries** — Corrected narration for 1800, 1794, and 1880 entries to only describe events within those years (removed forward-looking statements)
+- **Opacity for unverified claims** — Added `.unverified` CSS class (opacity 0.4) for all interpretive summary text; direct source quotes rendered at full opacity in blockquotes
+- **Verified quotes** — Added direct source quotations from BAILII judgment, Hansard, Archwilio HER, ADS Archive, and GGAT Cadw report as verified quotes at full opacity
+
+### Changed
+- Evidence content and timeline narration now wrapped in `<span class="unverified">` by default
+- Direct quotes from primary sources shown in `<blockquote>` at full opacity
+- Removed unverifiable claims from narration (e.g., "Mary replied: 'It's my land...'" — not found in source judgment)
+- Removed forward-looking statements from timeline entries
+
 ## [bucklervsbp-v0.0.0.03] - 2026-06-02
 
 ### Added

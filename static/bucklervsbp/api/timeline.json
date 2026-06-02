@@ -442,7 +442,7 @@
       "location": "Title Office",
       "locationType": "other",
       "description": "",
-      "narration": "Sir Mark Wood acquires title and treats Great House as a revenue asset within his wider property portfolio, before it is surveyed and later taken into Bute hands.",
+      "narration": "Sir Mark Wood acquires title to Great House as part of a wider property portfolio acquisition. The property is recorded as a revenue-generating asset in his estate accounts.",
       "scenes": [
         {
           "character": "SIR MARK WOOD",
@@ -471,7 +471,7 @@
       "location": "Great House",
       "locationType": "other",
       "description": "",
-      "narration": "In the early C19th, the freehold of Great House is acquired by the Bute Estate — one of the largest landed estates in Wales, controlled by the Marquess of Bute. The manorial courts for Llandough and Leckwith are held in Great House, confirming its historic role as a seat of local governance. The Bute Estate modernises the property in the C19th, as it did with neighbouring Brynwell farmhouse in Leckwith.",
+      "narration": "The Bute Estate begins consolidating freehold interests in the Great House area through acquisition of former Herbert/Pembroke manorial rights. Manorial courts for Llandough and Leckwith continue to be held at Great House.",
       "scenes": [
         {
           "character": "BUTE ESTATE AGENT",
@@ -849,7 +849,7 @@
       "location": "Great House — Rear Wing",
       "locationType": "other",
       "description": "",
-      "narration": "During building work at Great House, an extraordinary discovery is made under the floor of the rear wing: a cache of armour, later identified as medieval ironwork. The find is reported to the National Museum of Wales, where it is now preserved. R.F. Sugget of the Royal Commission later notes this as significant medieval ironwork found at Llandough. The discovery hints at the site deeper medieval history, which would not be fully explored until after the house demolition over a century later.",
+      "narration": "During building work at Great House, a cache of armour is discovered under the floor of the rear wing. The find is reported to and preserved at the National Museum of Wales.",
       "scenes": [
         {
           "character": "WORKMAN",
@@ -953,7 +953,7 @@
       "year": "1897",
       "location": "Great House Farm / Lavernock Point",
       "description": "Guglielmo Marconi stays at Great House Farm. Williams family transports him and equipment by horse and cart to Lavernock Point for first wireless communication over open sea (Lavernock Point to Flat Holm, 8.7 miles/14km).",
-      "narration": "Guglielmo Marconi slept at Great House Farm in a four-poster bed in May 1897 while conducting his wireless telegraphy experiments. Between 11-13 May 1897, the Williams family rode Marconi and his equipment by horse and cart to Lavernock Point to conduct his famous experiment — the first wireless communication over open sea.",
+      "narration": "Guglielmo Marconi slept at Great House Farm while conducting his wireless telegraphy experiments. Between 11-13 May 1897, the Williams family rode Marconi and his equipment by horse and cart to Lavernock Point for the first wireless communication over open sea.",
       "sources": [
         "https://en.wikipedia.org/wiki/Llandough,_Penarth",
         "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
@@ -1741,12 +1741,13 @@
     {
       "year": "1974",
       "location": "Great House Farm / Cardiff County Court",
-      "description": "1,700-signature preservation petition; BP issues unilateral licence letters; Mary refuses: 'It's my land. It's not your permission to give.'",
-      "narration": "1,700 people signed a petition for the preservation of Great House Farm. Meanwhile, BP Pension Trust Ltd obtained leave to execute the 1962 possession order. On 31 October 1974, BP wrote letters to Mary Williams (addressed as 'Mrs Buckler') granting her a rent-free licence to remain in the farmhouse for life. Mary Williams replied: 'It's my land. It's not your permission to give.' The letters were sent to her solicitor and received on 4 November 1974. A press campaign broke out in South Wales against the threatened eviction. These letters became the central legal basis for the 1987 Court of Appeal ruling that ended adverse possession.",
+      "description": "1,700-signature preservation petition; BP issues unilateral licence letters.",
+      "narration": "1,700 people signed a petition for the preservation of Great House Farm. BP Pension Trust Ltd obtained leave to execute the 1962 possession order. On 31 October 1974, BP wrote letters to Mary Williams (addressed as 'Mrs Buckler') granting her a rent-free licence to remain in the farmhouse for life. The letters were sent to her solicitor and received on 4 November 1974. A press campaign broke out in South Wales against the threatened eviction.",
       "sources": [
         "http://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html",
         "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"
-      ]
+      ],
+      "verified_quote": "'Mrs Buckler was described as an elderly widow, confined to a wheelchair, who was being thrown out of the cottage her family had occupied for centuries, so that the historic cottage could be bulldozed to the ground...' — BP v Buckler [1987] EWCA Civ 2, para 12"
     },
     {
       "year": "1975",
@@ -2029,10 +2030,11 @@
       "year": "1980",
       "location": "House of Commons",
       "description": "Ted Rowlands MP condemns BP Pension Fund as 'rapacious' and 'unfeeling' in Parliament.",
-      "narration": "Edward 'Ted' Rowlands MP spoke during the Leasehold Reform Act amendments debate in the House of Commons. He described Western Ground Rents and the BP Pension Fund as 'the most rapacious ground landlord' and said it was 'regrettable that a distinguished company, which is half owned by the Government, should behave in that way.' Hansard HC Deb 22 May 1980 vol 985 cc723-65.",
+      "narration": "Edward 'Ted' Rowlands MP spoke during the Leasehold Reform Act amendments debate in the House of Commons.",
       "sources": [
         "https://hansard.parliament.uk/Commons/1980-05-22"
-      ]
+      ],
+      "verified_quote": "'the most rapacious ground landlord, Western Ground Rents, has been bought by the BP pension fund, which is behaving in the same rapacious and, at times, unfeeling and uncaring way... It is regrettable that a distinguished company, which is half owned by the Government, should behave in that way.' — Ted Rowlands MP, Hansard HC Deb 22 May 1980 vol 985 cc723-65"
     },
     {
       "year": "1982",

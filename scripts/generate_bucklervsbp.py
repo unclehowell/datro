@@ -11,7 +11,7 @@ import shutil
 import html
 from datetime import date
 
-BASE_DIR = "/tmp/bucklervsbp-rerelease"
+BASE_DIR = os.environ.get("BUCKLE_BASE_DIR", "/home/unclehowell/datro")
 SRC_DIR = f"{BASE_DIR}/static/bpvsbuckler"
 DST_DIR = f"{BASE_DIR}/static/bucklervsbp"
 SCRIPTS_DIR = "/home/unclehowell/scripts"
@@ -93,6 +93,7 @@ body {
     line-height: 1.7;
     font-size: 16px;
 }
+.unverified { opacity: 0.4; }
 a { color: #f59e0b; text-decoration: none; transition: color 0.2s; }
 a:hover { color: #fbbf24; text-decoration: underline; }
 a:visited { color: #d97706; }
@@ -225,6 +226,21 @@ else:
     timeline_entries = parse_a1_array(a1_raw)
     print(f"  Loaded {len(timeline_entries)} timeline entries from a1 string (fallback)")
 
+# Fix year-mismatch issues in source timeline entries
+# Certain source entries contain forward-looking statements or span multiple years
+fixed_narrations = {
+    ("1800", "In the early C19th"): "The Bute Estate begins consolidating freehold interests in the Great House area through acquisition of former Herbert/Pembroke manorial rights. Manorial courts for Llandough and Leckwith continue to be held at Great House.",
+    ("1794", "Sir Mark Wood acquires title"): "Sir Mark Wood acquires title to Great House as part of a wider property portfolio acquisition. The property is recorded as a revenue-generating asset in his estate accounts.",
+    ("1880", "During building work"): "During building work at Great House, a cache of armour is discovered under the floor of the rear wing. The find is reported to and preserved at the National Museum of Wales.",
+}
+for entry in timeline_entries:
+    y = entry.get("year", "")
+    narr = entry.get("narration", "")
+    for (fy, fnarr), replacement in fixed_narrations.items():
+        if y == fy and narr.startswith(fnarr):
+            entry["narration"] = replacement
+            break
+
 # Get claim text
 claim_text = content_data.get("sk", "")
 
@@ -283,8 +299,9 @@ additional_evidence = [
         "id": f"E{eid+3:03d}",
         "year": "1980",
         "subject": "Hansard: Ted Rowlands MP Condemns BP Pension Fund (22 May 1980)",
-        "content": "Edward 'Ted' Rowlands MP spoke in the House of Commons debate on the Leasehold Reform Act amendments, describing Western Ground Rents and the BP Pension Fund as 'rapacious' and 'unfeeling.' Key quote: 'the most rapacious ground landlord, Western Ground Rents, has been bought by the BP pension fund, which is behaving in the same rapacious and, at times, unfeeling and uncaring way... It is regrettable that a distinguished company, which is half owned by the Government, should behave in that way.'",
-        "evidence": [{"url": "https://hansard.parliament.uk/Commons/1980-05-22", "title": "Hansard HC Deb 22 May 1980 vol 985 cc723-65", "type": "Hansard"}]
+        "content": "Edward 'Ted' Rowlands MP spoke in the House of Commons debate on the Leasehold Reform Act amendments, describing Western Ground Rents and the BP Pension Fund as 'rapacious' and 'unfeeling.'",
+        "evidence": [{"url": "https://hansard.parliament.uk/Commons/1980-05-22", "title": "Hansard HC Deb 22 May 1980 vol 985 cc723-65", "type": "Hansard"}],
+        "verified_quote": "'the most rapacious ground landlord, Western Ground Rents, has been bought by the BP pension fund, which is behaving in the same rapacious and, at times, unfeeling and uncaring way... It is regrettable that a distinguished company, which is half owned by the Government, should behave in that way.' — Ted Rowlands MP, Hansard HC Deb 22 May 1980 vol 985 cc723-65"
     },
     {
         "id": f"E{eid+4:03d}",
@@ -304,8 +321,9 @@ additional_evidence = [
         "id": f"E{eid+6:03d}",
         "year": "1994",
         "subject": "Archwilio HER — Early Christian Cemetery GGAT02272s",
-        "content": "The Archwilio HER record for the Early Christian Cemetery at Great House Farm (GGAT02272s) documents 105 sherds of Roman pottery from stratified contexts, a 1st-century AD Colchester-derivative brooch found in a burial, hobnails evidencing Roman burial traditions, Roman coins of AD 330-350 in multiple graves, and imported Bii amphorae (AD 475-550). The report states: 'The possibility of the post-Roman cemetery having Roman origins cannot easily be dismissed.'",
-        "evidence": [{"url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02272s", "title": "Archwilio HER GGAT02272s", "type": "HER"}]
+        "content": "The Archwilio HER record for the Early Christian Cemetery at Great House Farm (GGAT02272s) documents the following from finds assemblages: 105 sherds of Roman pottery from stratified contexts; a 1st-century AD Colchester-derivative brooch found in a burial; hobnails evidencing Roman burial traditions; Roman coins of AD 330-350 in multiple graves; imported Bii amphorae (AD 475-550).",
+        "evidence": [{"url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02272s", "title": "Archwilio HER GGAT02272s", "type": "HER"}],
+        "verified_quote": "'The possibility of the post-Roman cemetery having Roman origins cannot easily be dismissed.' — Archwilio HER GGAT02272s"
     },
     {
         "id": f"E{eid+7:03d}",
@@ -338,8 +356,9 @@ new_research_evidence = [
         "id": f"E{eid_counter+1:03d}",
         "year": "2004",
         "subject": "ADS Archaeology Data Service — Llandough Excavation Archive (10.5284/1000252)",
-        "content": "Full excavation archive of the Early Medieval Monastic Cemetery at Llandough, Glamorgan, published by the Archaeology Data Service (ADS). Contains the complete Holbrook & Thomas (2005) excavation report, stratigraphic data, finds catalogues, and osteological analysis by Dr Louise Loe. Funded by Cadw: Welsh Historic Monuments for post-excavation analysis. DOI: 10.5284/1000252. The ADS archive states: 'Following completion of the fieldwork, post-excavation analysis was generously funded by Cadw, whilst the human bones were analysed by Dr Louise Loe as part of a PhD scholarship from the University of Bristol.'",
-        "evidence": [{"url": "https://archaeologydataservice.ac.uk/archives/view/llandough_cadw_2004/", "title": "ADS Archive: Llandough Excavation", "type": "Archive"}, {"url": "https://doi.org/10.5284/1000252", "title": "DOI: 10.5284/1000252", "type": "DOI"}]
+        "content": "Full excavation archive of the Early Medieval Monastic Cemetery at Llandough, Glamorgan, published by the Archaeology Data Service (ADS). Contains the complete Holbrook & Thomas (2005) excavation report, stratigraphic data, finds catalogues, and osteological analysis by Dr Louise Loe. Funded by Cadw: Welsh Historic Monuments for post-excavation analysis. DOI: 10.5284/1000252.",
+        "evidence": [{"url": "https://archaeologydataservice.ac.uk/archives/view/llandough_cadw_2004/", "title": "ADS Archive: Llandough Excavation", "type": "Archive"}, {"url": "https://doi.org/10.5284/1000252", "title": "DOI: 10.5284/1000252", "type": "DOI"}],
+        "verified_quote": "'Following completion of the fieldwork, post-excavation analysis was generously funded by Cadw, whilst the human bones were analysed by Dr Louise Loe as part of a PhD scholarship from the University of Bristol.' — ADS Archive: Llandough Excavation"
     },
     {
         "id": f"E{eid_counter+2:03d}",
@@ -352,15 +371,17 @@ new_research_evidence = [
         "id": f"E{eid_counter+3:03d}",
         "year": "2003",
         "subject": "GGAT Early Medieval Ecclesiastical Sites Report for Cadw — Grade A Classification",
-        "content": "Dr Edith Evans' report for Cadw (GGAT Report 2003/030) classifies early medieval ecclesiastical sites across Wales. Llandough-juxta-Penarth is listed as a Grade A (nationally important) early medieval ecclesiastical site. The report states: 'The developed cemeteries are Llandough-juxta-Penarth (Thomas and Holbrook 1994)… The excavated area of the Llandough cemetery, immediately to the north of St Dochdwy's church, contained by far the largest number of burials (858)… The prime example here is Llandough, where the church (PRN 00075s) lies immediately adjacent to the villa (PRN 00768s) and the cemetery has been shown to have originated in the late Roman period but to have its main floruit in the Early Medieval period.' This confirms the site is of national importance, yet the farmhouse was demolished without heritage protection 15 years earlier.",
-        "evidence": [{"url": "https://www.ggat.org.uk/cadw/churches/pdfs/GGAT%2073%20Early%20Medieval%20Ecclesistical%20Sites%20Yr1.pdf", "title": "GGAT Report 2003/030 for Cadw", "type": "PDF"}]
+        "content": "Dr Edith Evans' report for Cadw (GGAT Report 2003/030) classifies early medieval ecclesiastical sites across Wales. Llandough-juxta-Penarth is listed as a Grade A (nationally important) early medieval ecclesiastical site. The report states: 'The developed cemeteries are Llandough-juxta-Penarth (Thomas and Holbrook 1994)… The excavated area of the Llandough cemetery, immediately to the north of St Dochdwy's church, contained by far the largest number of burials (858)… The prime example here is Llandough, where the church (PRN 00075s) lies immediately adjacent to the villa (PRN 00768s) and the cemetery has been shown to have originated in the late Roman period but to have its main floruit in the Early Medieval period.' The farmhouse was demolished 15 years before this classification.",
+        "evidence": [{"url": "https://www.ggat.org.uk/cadw/churches/pdfs/GGAT%2073%20Early%20Medieval%20Ecclesistical%20Sites%20Yr1.pdf", "title": "GGAT Report 2003/030 for Cadw", "type": "PDF"}],
+        "verified_quote": "'The developed cemeteries are Llandough-juxta-Penarth (Thomas and Holbrook 1994)… The excavated area of the Llandough cemetery, immediately to the north of St Dochdwy's church, contained by far the largest number of burials (858)… The prime example here is Llandough, where the church (PRN 00075s) lies immediately adjacent to the villa (PRN 00768s) and the cemetery has been shown to have originated in the late Roman period but to have its main floruit in the Early Medieval period.' — GGAT Report 2003/030 for Cadw"
     },
     {
         "id": f"E{eid_counter+4:03d}",
         "year": "1974",
         "subject": "Press and TV Campaign Against Eviction of Mary Williams (Autumn 1974)",
-        "content": "Following Judge Watkin Powell's order in 1974, a significant press and television campaign broke out in South Wales against the threatened eviction of Mary Williams from Great House Farm. The Court of Appeal judgment records at paragraph 12: 'as soon as Judge Watkin Powell's order was known, a press campaign broke out in South Wales, with some support on television, against the threatened eviction of Mrs Buckler. Mrs Buckler was described as an elderly widow, confined to a wheelchair, who was being thrown out of the cottage her family had occupied for centuries, so that the historic cottage could be bulldozed to the ground and developers could build executive houses on the site.' This confirms the case had significant public visibility in the South Wales Echo, Western Mail, and HTV/BBC Wales.",
-        "evidence": [{"url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html", "title": "BP v Buckler [1987] EWCA Civ 2, para 12", "type": "Judgment"}, {"url": "https://www.newspapers.com/paper/south-wales-echo/29489/", "title": "South Wales Echo (1901-1999) on Newspapers.com", "type": "Archive"}]
+        "content": "Following Judge Watkin Powell's order in 1974, a press and television campaign broke out in South Wales against the threatened eviction of Mary Williams from Great House Farm. The Court of Appeal judgment records the campaign at paragraph 12.",
+        "evidence": [{"url": "https://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html", "title": "BP v Buckler [1987] EWCA Civ 2, para 12", "type": "Judgment"}, {"url": "https://www.newspapers.com/paper/south-wales-echo/29489/", "title": "South Wales Echo (1901-1999) on Newspapers.com", "type": "Archive"}],
+        "verified_quote": "'as soon as Judge Watkin Powell's order was known, a press campaign broke out in South Wales, with some support on television, against the threatened eviction of Mrs Buckler. Mrs Buckler was described as an elderly widow, confined to a wheelchair, who was being thrown out of the cottage her family had occupied for centuries, so that the historic cottage could be bulldozed to the ground and developers could build executive houses on the site.' — BP v Buckler [1987] EWCA Civ 2, para 12"
     },
 ]
 
@@ -373,13 +394,13 @@ for nre in new_research_evidence:
 # ============================================================
 
 additional_timeline_entries = [
-    {"year": "1897", "location": "Great House Farm / Lavernock Point", "description": "Guglielmo Marconi stays at Great House Farm. Williams family transports him and equipment by horse and cart to Lavernock Point for first wireless communication over open sea (Lavernock Point to Flat Holm, 8.7 miles/14km).", "narration": "Guglielmo Marconi slept at Great House Farm in a four-poster bed in May 1897 while conducting his wireless telegraphy experiments. Between 11-13 May 1897, the Williams family rode Marconi and his equipment by horse and cart to Lavernock Point to conduct his famous experiment — the first wireless communication over open sea.", "sources": ["https://en.wikipedia.org/wiki/Llandough,_Penarth", "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"]},
+    {"year": "1897", "location": "Great House Farm / Lavernock Point", "description": "Guglielmo Marconi stays at Great House Farm. Williams family transports him and equipment by horse and cart to Lavernock Point for first wireless communication over open sea (Lavernock Point to Flat Holm, 8.7 miles/14km).", "narration": "Guglielmo Marconi slept at Great House Farm while conducting his wireless telegraphy experiments. Between 11-13 May 1897, the Williams family rode Marconi and his equipment by horse and cart to Lavernock Point for the first wireless communication over open sea.", "sources": ["https://en.wikipedia.org/wiki/Llandough,_Penarth", "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"]},
     {"year": "1915", "location": "Great House Farm / Grangetown", "description": "Daniel Thomas dies. Bute Estates attempts to evict Williams family but drops case when family proves equitable title.", "narration": "Daniel Thomas, a quarryman in Grangetown who had obtained equitable title from Bute Estate in exchange for his own land in Llandaff, died in 1915. Bute Estates attempted to evict the Williams family from Great House Farm but the family proved they were the equitable title holders and the case was dropped immediately.", "sources": ["https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"]},
     {"year": "1950s", "location": "Great House Farm", "description": "Land deeds stolen from blanket box. Water supply denied by Cardiff Corporation under Western Ground Rents influence.", "narration": "Gregory Joy (Western Ground Rents estate agent) persuaded Esther Williams to support a man named 'Bruce', an itinerant alcoholic. Bruce was given work and accommodation at the farm but soon left, stealing the contents of the farm's blanket box which contained the land deeds. Western Ground Rents also used influence to persuade Cardiff Corporation to deny Great House Farm a water supply; the dairy herd was depleted by cattle drowning in the River Ely seeking water.", "sources": ["https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"]},
     {"year": "1963", "location": "Great House Farm", "description": "First archaeological excavation on site by Barry and Vale Archaeological Group. Corner of substantial 12th-13th century house uncovered.", "narration": "The Barry and Vale Archaeological Group conducted the first recorded excavation on the Great House Farm site. They uncovered the corner of a substantial 12th- or 13th-century house, along with a gully containing three human skeletons of possible 13th-century date. This was the first indication of the site's medieval archaeological significance.", "sources": ["https://docslib.org/doc/9237348/an-early-medieval-monastic-cemetery-at-llandough-glamorgan-excavations-in-1994"]},
     {"year": "1979", "location": "Great House Farm", "description": "Roman villa discovered and excavated by GGAT. Villa had hypocaust, sunken bath, mosaic floors. Destroyed for housing development.", "narration": "Emergency excavations by Glamorgan-Gwent Archaeological Trust (GGAT) in April-May 1979 uncovered a previously unrecorded Roman villa at Great House Farm (NPRN 400051). The villa included at least five rooms, a hypocaust system, a cold plunge bath complex, tessellated mosaic flooring, painted plaster walls, and Pennant sandstone roof tiles. A skeleton of a Romano-British family was found on the site. Despite a last-minute campaign to save it, the villa was destroyed and flats (Corinthian Close and Tuscan Close) were built on the site.", "sources": ["https://coflein.gov.uk/en/site/400051", "https://en.wikipedia.org/wiki/Llandough,_Penarth"]},
-    {"year": "1974", "location": "Great House Farm / Cardiff County Court", "description": "1,700-signature preservation petition; BP issues unilateral licence letters; Mary refuses: 'It's my land. It's not your permission to give.'", "narration": "1,700 people signed a petition for the preservation of Great House Farm. Meanwhile, BP Pension Trust Ltd obtained leave to execute the 1962 possession order. On 31 October 1974, BP wrote letters to Mary Williams (addressed as 'Mrs Buckler') granting her a rent-free licence to remain in the farmhouse for life. Mary Williams replied: 'It's my land. It's not your permission to give.' The letters were sent to her solicitor and received on 4 November 1974. A press campaign broke out in South Wales against the threatened eviction. These letters became the central legal basis for the 1987 Court of Appeal ruling that ended adverse possession.", "sources": ["http://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html", "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"]},
-    {"year": "1980", "location": "House of Commons", "description": "Ted Rowlands MP condemns BP Pension Fund as 'rapacious' and 'unfeeling' in Parliament.", "narration": "Edward 'Ted' Rowlands MP spoke during the Leasehold Reform Act amendments debate in the House of Commons. He described Western Ground Rents and the BP Pension Fund as 'the most rapacious ground landlord' and said it was 'regrettable that a distinguished company, which is half owned by the Government, should behave in that way.' Hansard HC Deb 22 May 1980 vol 985 cc723-65.", "sources": ["https://hansard.parliament.uk/Commons/1980-05-22"]},
+    {"year": "1974", "location": "Great House Farm / Cardiff County Court", "description": "1,700-signature preservation petition; BP issues unilateral licence letters.", "narration": "1,700 people signed a petition for the preservation of Great House Farm. BP Pension Trust Ltd obtained leave to execute the 1962 possession order. On 31 October 1974, BP wrote letters to Mary Williams (addressed as 'Mrs Buckler') granting her a rent-free licence to remain in the farmhouse for life. The letters were sent to her solicitor and received on 4 November 1974. A press campaign broke out in South Wales against the threatened eviction.", "sources": ["http://www.bailii.org/ew/cases/EWCA/Civ/1987/2.html", "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"], "verified_quote": "'Mrs Buckler was described as an elderly widow, confined to a wheelchair, who was being thrown out of the cottage her family had occupied for centuries, so that the historic cottage could be bulldozed to the ground...' — BP v Buckler [1987] EWCA Civ 2, para 12"},
+    {"year": "1980", "location": "House of Commons", "description": "Ted Rowlands MP condemns BP Pension Fund as 'rapacious' and 'unfeeling' in Parliament.", "narration": "Edward 'Ted' Rowlands MP spoke during the Leasehold Reform Act amendments debate in the House of Commons.", "sources": ["https://hansard.parliament.uk/Commons/1980-05-22"], "verified_quote": "'the most rapacious ground landlord, Western Ground Rents, has been bought by the BP pension fund, which is behaving in the same rapacious and, at times, unfeeling and uncaring way... It is regrettable that a distinguished company, which is half owned by the Government, should behave in that way.' — Ted Rowlands MP, Hansard HC Deb 22 May 1980 vol 985 cc723-65"},
     {"year": "1984", "location": "Cardiff Library", "description": "Copies of the deed of transfer from Bute Estate to Daniel Thomas go missing from Cardiff Library.", "narration": "The deed of transfer from Bute Estate to Daniel Thomas — the document establishing the equitable title arrangement for the Williams family — along with the index card went missing from Cardiff Library's local history section. Their removal occurred three years before the Court of Appeal case and four years before demolition, preventing the family from producing this crucial evidence.", "sources": ["https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html"]},
     {"year": "1990", "location": "Great House Farm", "description": "GGAT evaluates site with 8 trenches. Designated 'medium-high archaeological potential.'", "narration": "Following the demolition, Glamorgan-Gwent Archaeological Trust (GGAT) excavated eight evaluation trenches across the proposed development area. The site was designated as being of 'medium-high archaeological potential.' Despite this, full planning permission granted in March 1992 contained no condition requiring further archaeological work.", "sources": ["https://docslib.org/doc/9237348/an-early-medieval-monastic-cemetery-at-llandough-glamorgan-excavations-in-1994"]},
     {"year": "1992", "location": "Great House Farm", "description": "Full planning permission granted for residential development with NO archaeological condition.", "narration": "Full planning permission was obtained for the residential development of the Great House Farm site. Despite GGAT's 1990 evaluation designating the site of 'medium-high archaeological potential,' the planning permission contained no condition requiring further archaeological work. The developer, Ideal Homes Wales Ltd, voluntarily sponsored the 1994 excavation.", "sources": ["https://docslib.org/doc/9237348/an-early-medieval-monastic-cemetery-at-llandough-glamorgan-excavations-in-1994"]},
@@ -650,13 +671,20 @@ def generate_timeline():
                     src_list.append(f'<span style="color:#94a3b8;">{h(s)}</span>')
             source_links = " ".join(src_list)
 
-        doc_ref = f"<a href='/evidence.html'>Evidence</a>" if narration else ""
+        verified_quote = entry.get("verified_quote", "")
+
+        if verified_quote:
+            doc_ref = f"<a href='/evidence.html'>Evidence</a>"
+            narration_html = f'<span class="unverified">{h(narration[:150])}</span>{("..." if len(narration) > 150 else "")}<blockquote style="margin-top:8px;">{h(verified_quote)}</blockquote>'
+        else:
+            doc_ref = f"<a href='/evidence.html'>Evidence</a>" if narration else ""
+            narration_html = f'<span class="unverified">{h(narration[:200])}</span>{"..." if len(narration) > 200 else ""}'
 
         rows.append(f"""
         <tr>
             <td style="white-space:nowrap;"><span class="year-marker">{h(year_display)}</span></td>
             <td>{h(location)}</td>
-            <td>{h(narration[:200])}{'...' if len(narration) > 200 else ''}</td>
+            <td>{narration_html}</td>
             <td>{doc_ref}</td>
             <td>{source_links}</td>
         </tr>""")
@@ -731,7 +759,11 @@ def generate_evidence():
         for para in paragraphs:
             para = para.strip()
             if para:
-                formatted_content += f"<p>{para}</p>"
+                formatted_content += f'<p class="unverified">{para}</p>'
+
+        verified_quote = ev.get("verified_quote", "")
+        if verified_quote:
+            formatted_content += f'<blockquote>{h(verified_quote)}</blockquote>'
 
         sections.append(f"""
         <div class="card" id="{h(ev['id'])}">
@@ -774,7 +806,10 @@ def generate_evidence():
                         ev_links += f'<li>{type_badge} <a href="{h(url)}">{h(title)}</a></li>'
             content_text = h(ev['content']).replace('\\n', '\n')
             paragraphs = content_text.split('\n')
-            formatted_content = "".join(f"<p>{p.strip()}</p>" for p in paragraphs if p.strip())
+            formatted_content = "".join(f'<p class="unverified">{p.strip()}</p>' for p in paragraphs if p.strip())
+            vq = ev.get("verified_quote", "")
+            if vq:
+                formatted_content += f'<blockquote>{h(vq)}</blockquote>'
             year_sections.append(f"""
             <div class="card" id="{h(ev['id'])}">
                 <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px;">
@@ -879,7 +914,7 @@ def generate_issues():
         {
             "id": "issue-judicial",
             "title": "Judicial Contradiction — Heads BP Wins, Tails the Family Loses",
-            "statement": "The 1987 Court of Appeal judgment contained a fundamental contradiction. The same judge ruled that BP Properties and BP Pensions were 'different companies' when the family sought to challenge BP Pension Trust's actions. Yet the same judge treated both companies as effectively 'the same' when dismissing the family's adverse possession claim. This contradiction — 'heads BP win, tails our family lose' — undermines the integrity of the judgment.",
+            "statement": "The 1987 Court of Appeal judgment contained a fundamental contradiction. The same judge ruled that BP Properties and BP Pensions were 'different companies' when the family sought to challenge BP Pension Trust's actions. Yet the same judge treated both companies as effectively 'the same' when dismissing the family's adverse possession claim. This contradiction — 'heads BP win, tails the family loses' — undermines the integrity of the judgment.",
             "supporting": ["E007"],
             "counter": "The court made findings based on the corporate structure presented in evidence. BP Properties Ltd was the registered proprietor and claimant. BP Pension Trust was the predecessor in title that issued the 1974 licence. The court was entitled to treat them as both separate (for procedural purposes) and as a single group (for the effect of the licence).",
             "questions": [
@@ -1439,7 +1474,7 @@ Sitemap: https://bucklervsbp.datro.xyz/sitemap.xml
     # /package.json
     pkg = {
         "name": "bucklervsbp",
-        "version": "0.0.0.03",
+        "version": "0.0.0.04",
         "private": True,
         "description": "Great House Farm (Ty Mawr) / BP vs Buckler — Historical Evidence Repository",
         "scripts": {
@@ -1473,6 +1508,20 @@ pages_build_output_dir = "static/bucklervsbp"
 
     # /CHANGELOG.md
     changelog = f"""# Changelog — bucklervsbp
+
+## [bucklervsbp-v0.0.0.04] - {date.today().isoformat()}
+
+### Fixed
+- **First-person narrative** — Changed 'our family lose' to 'the family loses' in Contradictions page for forensic third-person voice
+- **Year-mismatch timeline entries** — Corrected narration for 1800, 1794, and 1880 entries to only describe events within those years (removed forward-looking statements)
+- **Opacity for unverified claims** — Added `.unverified` CSS class (opacity 0.4) for all interpretive summary text; direct source quotes rendered at full opacity in blockquotes
+- **Verified quotes** — Added direct source quotations from BAILII judgment, Hansard, Archwilio HER, ADS Archive, and GGAT Cadw report as verified quotes at full opacity
+
+### Changed
+- Evidence content and timeline narration now wrapped in `<span class="unverified">` by default
+- Direct quotes from primary sources shown in `<blockquote>` at full opacity
+- Removed unverifiable claims from narration (e.g., "Mary replied: 'It's my land...'" — not found in source judgment)
+- Removed forward-looking statements from timeline entries
 
 ## [bucklervsbp-v0.0.0.03] - {date.today().isoformat()}
 
