@@ -1,5 +1,13 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.21] - 2026-06-02
+
+### Fixed
+- fix(carfinancecheque): Remove excessive blank lines
+
+### Changed
+- ux(carfinancecheque): Add touch-action CSS for mobile responsiveness
+
 ## [carfinancecheque-v0.0.0.21] - 2026-06-01
 
 ### Fixed
