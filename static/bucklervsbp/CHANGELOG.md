@@ -1,6 +1,6 @@
 # Changelog — bucklervsbp
 
-## [bucklervsbp-v0.0.0.01] - 2026-06-01
+## [bucklervsbp-v0.0.0.01] - 2026-06-02
 
 ### Added
 - **Static HTML evidence repository** — Complete static HTML site generated from bpvsbuckler source data

@@ -1,8 +1,8 @@
 {
   "title": "Great House Farm — Evidence Catalogue",
   "description": "Complete evidence catalogue for the Great House Farm dispute.",
-  "total_entries": 32,
-  "last_updated": "2026-06-01",
+  "total_entries": 40,
+  "last_updated": "2026-06-02",
   "entries": [
     {
       "id": "E001",
@@ -392,6 +392,120 @@
           "title": "Resolution of Historical Dispossession and Fraud – Great Hou",
           "url": "https://wayback.datro.xyz/bpvsbuckler/evidence/emails/email-2026-571175e3.eml",
           "thumbnail": null
+        }
+      ]
+    },
+    {
+      "id": "E033",
+      "year": "2026",
+      "subject": "FOI Request: MOD Involvement in 1988 Eviction (FOI2026.09019)",
+      "content": "FOI request filed by Sion Buckler to Ministry of Defence on 1 May 2026. Requests information on whether UK Armed Forces/SAS were involved in the 1988 eviction, involving up to 30 police officers. MOD responded 29 May 2026. Response document not publicly viewable.",
+      "evidence": [
+        {
+          "url": "https://www.whatdotheyknow.com/request/1988_dispossession_of_great_hous",
+          "title": "FOI Request - WhatDoTheyKnow",
+          "type": "FOI"
+        }
+      ]
+    },
+    {
+      "id": "E034",
+      "year": "2005",
+      "subject": "Holbrook & Thomas (2005) — An Early-Medieval Monastic Cemetery at Llandough",
+      "content": "Academic publication in Medieval Archaeology XLIX (2005), pp. 1-92. Reports on the 1994 excavation of 1,026 burials at Great House Farm. Confirms Roman villa beneath site, Iron Age roundhouse, 11-year delay between excavation and publication due to funding constraints. Planning permission granted in 1992 without archaeological condition despite medium-high potential designation. Downloadable at https://sci-hub.ru/10.1179/007660905x54044",
+      "evidence": [
+        {
+          "url": "https://sci-hub.ru/10.1179/007660905x54044",
+          "title": "Full PDF via Sci-Hub",
+          "type": "PDF"
+        },
+        {
+          "url": "https://cotswoldarchaeology.co.uk/wp-content/uploads/2011/07/llandough-pdf-1.pdf",
+          "title": "Higher-res PDF (Cotswold Archaeology)",
+          "type": "PDF"
+        }
+      ]
+    },
+    {
+      "id": "E035",
+      "year": "2005",
+      "subject": "Knight (2005) — From Villa to Monastery: Llandough in Context",
+      "content": "Academic publication in Medieval Archaeology XLIX (2005), pp. 93-107. Examines evidence for re-use of Roman villa sites for burial in post-Roman period. Concludes: 'The facts, taken together with the other evidence, archaeological and literary, for Early Christian activity at Llandough, strongly suggest continuity of occupation into the post-Roman period.' Downloadable at https://sci-hub.ru/10.1179/007660905x54053",
+      "evidence": [
+        {
+          "url": "https://sci-hub.ru/10.1179/007660905x54053",
+          "title": "Full PDF via Sci-Hub",
+          "type": "PDF"
+        }
+      ]
+    },
+    {
+      "id": "E036",
+      "year": "1980",
+      "subject": "Hansard: Ted Rowlands MP Condemns BP Pension Fund (22 May 1980)",
+      "content": "Edward 'Ted' Rowlands MP spoke in the House of Commons debate on the Leasehold Reform Act amendments, describing Western Ground Rents and the BP Pension Fund as 'rapacious' and 'unfeeling.' Key quote: 'the most rapacious ground landlord, Western Ground Rents, has been bought by the BP pension fund, which is behaving in the same rapacious and, at times, unfeeling and uncaring way... It is regrettable that a distinguished company, which is half owned by the Government, should behave in that way.'",
+      "evidence": [
+        {
+          "url": "https://hansard.parliament.uk/Commons/1980-05-22",
+          "title": "Hansard HC Deb 22 May 1980 vol 985 cc723-65",
+          "type": "Hansard"
+        }
+      ]
+    },
+    {
+      "id": "E037",
+      "year": "1994",
+      "subject": "GGAT HER Assessment — 'Incompletely Understood' Building",
+      "content": "The Glamorgan-Gwent Archaeological Trust's Historic Environment Record assessment (PRN 00768s) notes that Great House Farm was 'incompletely understood' due to its 'sudden destruction' in 1988. Following the demolition, GGAT entered discussions with Debenham Tewson (agents for BP Properties Ltd) about archaeological implications. The building was demolished before any proper archaeological recording could take place.",
+      "evidence": [
+        {
+          "url": "https://www.walesher1974.org/her/app/php/herumd.php?group=GGAT&level=3&docid=301361628",
+          "title": "WalesHER Record",
+          "type": "HER"
+        }
+      ]
+    },
+    {
+      "id": "E038",
+      "year": "1979",
+      "subject": "Roman Villa Discovery and Destruction (1979)",
+      "content": "Emergency excavations by GGAT in April-May 1979 uncovered a Roman villa at Great House Farm (NPRN 400051). The villa had a hypocaust system, sunken cold plunge bath, painted plaster walls, and tessellated mosaic flooring. It dated from the 2nd-4th century AD. A skeleton of a Romano-British family was found. Despite a last-minute bid to save it, the site was destroyed for housing development of flats named Corinthian Close and Tuscan Close.",
+      "evidence": [
+        {
+          "url": "https://coflein.gov.uk/en/site/400051",
+          "title": "Coflein Record for Roman Villa",
+          "type": "NMR"
+        },
+        {
+          "url": "https://en.wikipedia.org/wiki/Llandough,_Penarth",
+          "title": "Wikipedia Article",
+          "type": "Reference"
+        }
+      ]
+    },
+    {
+      "id": "E039",
+      "year": "1994",
+      "subject": "Archwilio HER — Early Christian Cemetery GGAT02272s",
+      "content": "The Archwilio HER record for the Early Christian Cemetery at Great House Farm (GGAT02272s) documents 105 sherds of Roman pottery from stratified contexts, a 1st-century AD Colchester-derivative brooch found in a burial, hobnails evidencing Roman burial traditions, Roman coins of AD 330-350 in multiple graves, and imported Bii amphorae (AD 475-550). The report states: 'The possibility of the post-Roman cemetery having Roman origins cannot easily be dismissed.'",
+      "evidence": [
+        {
+          "url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02272s",
+          "title": "Archwilio HER GGAT02272s",
+          "type": "HER"
+        }
+      ]
+    },
+    {
+      "id": "E040",
+      "year": "1984",
+      "subject": "Missing Deed of Transfer — Cardiff Library (1984)",
+      "content": "The 'Deed of Transfer between Daniel Thomas and Bute Estate,' along with the index card, was held at Cardiff Library's local history section. In 1984 — three years before the Court of Appeal case and four years before demolition — these documents went missing. The deed documented the equitable title arrangement that established the Williams family's claim to Great House Farm. The timing of the disappearance is notable as it prevented the family from producing crucial evidence in the 1985-1987 proceedings.",
+      "evidence": [
+        {
+          "url": "https://unitedtechnocracy.blogspot.com/2012/08/the-great-house-farm-story.html",
+          "title": "The Great House Farm Story blog",
+          "type": "Narrative"
         }
       ]
     }
