@@ -1,5 +1,13 @@
 # Changelog
 
+## [ceo-v0.0.0.14] - 2026-06-02
+
+### Fixed
+- fix(ceo): Remove excessive blank lines
+
+### Changed
+- ux(ceo): Fix z-index stacking for proper element layering
+
 ## [ceo-v0.0.0.14] - 2026-06-01
 
 ### Fixed
