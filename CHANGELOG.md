@@ -1,5 +1,13 @@
 # Changelog
 
+## [datro-v0.0.0.13] - 2026-06-02
+
+### Fixed
+- fix(datro): Remove excessive blank lines
+
+### Changed
+- ux(datro): Add breadcrumb navigation structure for UX
+
 ## [datro-v0.0.0.13] - 2026-06-01
 
 ### Fixed
