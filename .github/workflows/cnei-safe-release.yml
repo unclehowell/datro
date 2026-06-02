@@ -1,0 +1,23 @@
+name: Flywheel Safe Release
+
+on:
+  push:
+    branches:
+      - cnei
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Run Safe-Harness
+        run: |
+          chmod +x .fcukproxy/agent/safe-harness.sh
+          .fcukproxy/agent/safe-harness.sh
+          
+      - name: Deploy to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: 'datro/flywheel-cf'
