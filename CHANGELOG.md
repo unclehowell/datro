@@ -1,5 +1,13 @@
 # Changelog
 
+## [wave-v0.0.0.12] - 2026-06-02
+
+### Fixed
+- fix(wave): Remove excessive blank lines
+
+### Changed
+- ux(wave): Add smooth scrolling for better UX
+
 ## [wave-v0.0.0.11] - 2026-05-31
 
 ### Fixed
