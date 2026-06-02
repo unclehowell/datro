@@ -1,5 +1,13 @@
 # Changelog
 
+## [ccan-v0.0.0.24] - 2026-06-02
+
+### Fixed
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Add button press interaction feedback for UX
+
 ## [ccan-v0.0.0.24] - 2026-06-01
 
 ### Fixed
