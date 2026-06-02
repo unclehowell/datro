@@ -78,9 +78,53 @@ trap 'log "ERROR: command failed at line $LINENO. Exit code: $?"' ERR
 
 # ── State functions ──────────────────────────────────────────────────────────
 
+check_gear_timing() {
+  local config="$HOME/.fcukproxy/dashboard-config.json"
+  if [ ! -f "$config" ]; then return 0; fi
+
+  local gear
+  gear=$(python3 -c "import json; print(json.load(open('$config')).get('gear', 6))" 2>/dev/null || echo 6)
+  
+  # Mapping Gear to minutes (Gear 6 = 60m)
+  local interval=60
+  case "$gear" in
+    1)  interval=1440 ;; # Daily
+    2)  interval=720  ;; # 12h
+    3)  interval=360  ;; # 6h
+    4)  interval=180  ;; # 3h
+    5)  interval=120  ;; # 2h
+    6)  interval=60   ;; # 1h
+    7)  interval=30   ;; # 30m
+    8)  interval=15   ;; # 15m
+    9)  interval=10   ;; # 10m
+    10) interval=5    ;; # 5m
+  esac
+
+  local last_run
+  last_run=$(python3 -c "import json,os; s=json.load(open('$STATE_FILE')); print(s.get('last_run_timestamp', 0))" 2>/dev/null || echo 0)
+  local now
+  now=$(date +%s)
+  local elapsed=$(( (now - last_run) / 60 ))
+
+  if [ "$elapsed" -lt "$interval" ]; then
+    log "GEAR CHECK: Gear $gear requires ${interval}m interval. Only ${elapsed}m elapsed. Skipping."
+    exit 0
+  fi
+  
+  # Update last run timestamp
+  python3 -c "
+import json
+s = json.load(open('$STATE_FILE'))
+s['last_run_timestamp'] = $now
+json.dump(s, open('$STATE_FILE','w'), indent=2)
+" 2>/dev/null
+}
+
+check_gear_timing
+
 init_state() {
   if [ ! -f "$STATE_FILE" ]; then
-    echo '{"rotation_index":0,"fix_rotation":0,"ux_rotation":0,"last_release":{},"total_releases":{}}' > "$STATE_FILE"
+    echo '{"rotation_index":0,"fix_rotation":0,"ux_rotation":0,"cnei_queue":0,"last_release":{},"total_releases":{}}' > "$STATE_FILE"
   fi
 }
 
@@ -1086,21 +1130,51 @@ if [ -n "${FORCE_BRANCH:-}" ]; then
     exit 0
   fi
 else
-  while [ $attempts -lt $total_branches ]; do
-    candidate="${BRANCHES[$rotation_index]}"
-    if git rev-parse --verify "origin/$candidate" >/dev/null 2>&1; then
-      if is_on_cooldown "$candidate"; then
-        log "SKIP $candidate (on cooldown)"
+  # Interleaved CNEI logic: Alternate between cnei and other branches
+  cnei_queue=$(get_state "cnei_queue")
+  cnei_queue=${cnei_queue:-0}
+
+  if [ "$cnei_queue" -ge 1 ]; then
+    if git rev-parse --verify "origin/cnei" >/dev/null 2>&1; then
+      if ! is_on_cooldown "cnei"; then
+        SELECTED_BRANCH="cnei"
+        set_state "cnei_queue" 0
+        log "CNEI_QUEUE: >=1, selecting cnei branch for interleaved release"
       else
-        SELECTED_BRANCH="$candidate"
-        break
+        log "CNEI_QUEUE: cnei is on cooldown, falling back to regular rotation"
       fi
-    else
-      log "SKIP $candidate (branch does not exist on remote)"
     fi
-    rotation_index=$(( (rotation_index + 1) % total_branches ))
-    attempts=$((attempts + 1))
-  done
+  fi
+
+  if [ -z "$SELECTED_BRANCH" ]; then
+    while [ $attempts -lt $total_branches ]; do
+      candidate="${BRANCHES[$rotation_index]}"
+      
+      # If we are in regular rotation, skip cnei because it's handled by the queue
+      if [ "$candidate" == "cnei" ]; then
+        rotation_index=$(( (rotation_index + 1) % total_branches ))
+        attempts=$((attempts + 1))
+        continue
+      fi
+
+      if git rev-parse --verify "origin/$candidate" >/dev/null 2>&1; then
+        if is_on_cooldown "$candidate"; then
+          log "SKIP $candidate (on cooldown)"
+        else
+          SELECTED_BRANCH="$candidate"
+          # Move index forward for next regular run
+          set_state "rotation_index" "$(( (rotation_index + 1) % total_branches ))"
+          # Set queue for next run to be cnei
+          set_state "cnei_queue" 1
+          break
+        fi
+      else
+        log "SKIP $candidate (branch does not exist on remote)"
+      fi
+      rotation_index=$(( (rotation_index + 1) % total_branches ))
+      attempts=$((attempts + 1))
+    done
+  fi
 
   if [ -z "$SELECTED_BRANCH" ]; then
     # ── All branches on cooldown — find the earliest eligible ──
@@ -1187,10 +1261,13 @@ if c is None or (isinstance(c, (int, float)) and c < $GH_COUNT):
     c = $GH_COUNT
 print(int(c) + 1)
 " 2>/dev/null || echo "$((GH_COUNT + 1))")
-PATCH_SLOT=$(( NEXT_NUM / 100 ))
-BUILD_NUM=$(( NEXT_NUM % 100 ))
-PAD_BUILD=$(printf "%02d" "$BUILD_NUM")
-NEW_VER="0.0.${PATCH_SLOT}.${PAD_BUILD}"
+N=$(( NEXT_NUM - 1 ))
+BUILD=$(( N % 100 ))
+PATCH=$(( (N / 100) % 10 ))
+MINOR=$(( (N / 1000) % 10 ))
+MAJOR=$(( (N / 10000) % 10 ))
+PAD_BUILD=$(printf "%02d" "$BUILD")
+NEW_VER="${MAJOR}.${MINOR}.${PATCH}.${PAD_BUILD}"
 NEW_TAG="${SELECTED_BRANCH}-v${NEW_VER}"
 log "Target: $NEW_TAG (release #$NEXT_NUM)"
 
@@ -1601,5 +1678,4 @@ fi
 
 echo "# Last auto-update: $(date '+%Y-%m-%d %H:%M:%S UTC') for $SELECTED_BRANCH release $NEW_TAG" >> "$AGENT_DIR/manifest.md.tmp" 2>/dev/null || true
 
-set_state "rotation_index" "$(( (rotation_index + 1) % total_branches ))"
 log "=== END MULTI-BRANCH RELEASE ==="
