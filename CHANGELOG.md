@@ -1,5 +1,11 @@
 # Changelog
 
+## [dash-v0.0.0.12] - 2026-06-02
+
+### Fixed
+### Changed
+- ux(dash): Add loading state styling for better UX
+
 ## [dash-v0.0.0.12] - 2026-06-01
 
 ### Fixed
