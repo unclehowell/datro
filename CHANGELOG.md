@@ -1,5 +1,13 @@
 # Changelog
 
+## [wayback-v0.0.0.11] - 2026-06-02
+
+### Fixed
+- fix(wayback): Remove excessive blank lines
+
+### Changed
+- ux(wayback): Add print-friendly styles for better UX
+
 ## [wayback-v0.0.0.10] - 2026-05-31
 
 ### Fixed
