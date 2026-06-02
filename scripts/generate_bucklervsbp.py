@@ -318,6 +318,13 @@ additional_evidence = [
 
 eid_counter = eid
 
+# Process additional_evidence first (they use inline eid..eid+7 values for IDs)
+for ae in additional_evidence:
+    evidence_list.append(ae)
+    eid_counter += 1
+
+# Now eid_counter = eid + len(additional_evidence) = 40, correct starting point for new entries
+
 # New evidence entries from comprehensive web research (June 2026)
 new_research_evidence = [
     {
@@ -359,10 +366,6 @@ new_research_evidence = [
 
 for nre in new_research_evidence:
     evidence_list.append(nre)
-    eid_counter += 1
-
-for ae in additional_evidence:
-    evidence_list.append(ae)
     eid_counter += 1
 
 # ============================================================
