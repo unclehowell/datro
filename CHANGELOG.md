@@ -1,56 +1,88 @@
 # Changelog
 
-## [cnei-v0.0.0.04] - 2026-05-26
+## [bpvsbuckler-v0.0.0.10-aws] - 2026-05-28
 
 ### Fixed
-- fix(cnei): Create Contact page with form and contact details
-- fix(cnei): Launch blog with welcome post and index page
-- fix(cnei): Add lang attribute to HTML tag for accessibility
+- fix(bpvsbuckler): Remove excessive blank lines
 
 ### Changed
-- ux(cnei): Add skip-to-content link for keyboard accessibility
+- ux(bpvsbuckler): Add minimum tap target sizes for mobile UX
 
-## [cnei-v0.0.0.03] - 2026-05-26
+## [bpvsbuckler-v0.0.0.09-aws] - 2026-05-28
 
 ### Fixed
-- fix(cnei): Add lang attribute to HTML tag for accessibility
-- fix(cnei): Create Privacy Policy page for legal compliance
-- fix(cnei): Create Terms of Service page for legal compliance
+- fix(bpvsbuckler): Add proper title to 404 page for SEO
+- fix(bpvsbuckler): Create Terms of Service page for legal compliance
+- fix(bpvsbuckler): Remove excessive blank lines
 
 ### Changed
-- ux(cnei): Add social media links for audience engagement
+- ux(bpvsbuckler): Add cookie consent banner for GDPR compliance
 
-## [cnei-v0.0.0.02] - 2026-05-25
+## [bpvsbuckler-v0.0.0.10] - 2026-05-26
 
-### Fixed
-- fix(cnei): Remove excessive blank lines
-- fix(cnei): Remove excessive blank lines
-- fix(cnei): Remove excessive blank lines
-
-### Changed
-- ux(cnei): Add container spacing for better content layout
-
-## [cnei-v0.0.0.01] - 
-
-### Changed
-- docs(cnei): Rewrite documentation with full flywheel technical spec — 21 branches, 4-pass strategy, rotating fix pools, cornerstone missions, self-learning profiles, meta-review, Cloudflare Pages integration
-
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and the flywheel versioning scheme: `branch-v0.0.{patch}.{build:02d}`.
-
-## [cnei-v0.0.0.01] - 2026-05-23
 ### Added
-- Initial AWS Flywheel documentation site
-- ARCHITECTURE.md — full system architecture overview
-- agent/ — harness with branch manifest, soul, memory, heartbeat
-- URL registry mapping all 20 branches to live websites
-- Browserbase visual inspection integration in AI prompts
-- cnei.datro.xyz — live Cloudflare Pages deployment
+- Add Beurcracy pinball page with Land Registry to ICR escalation flow
+- Inject Beurcracy link into SPA nav alongside Home, Reparations, Script
 
 ### Changed
-- Branch registry: removed pirateclaw, added cnei
-- multi-branch-release.sh: BRANCH_URLS associative array for runtime URL lookup
-- intelligence.py: AI now visits live URLs before selecting fixes
+- Strip nav/header/score from beurcracy pinball pages for clean canvas-only display
+
+### Fixed
+- Remove extra injected nav bar causing duplicate navigation
+
+## [bpvsbuckler-v0.0.0.09] - 2026-05-26
+
+### Fixed
+- fix(bpvsbuckler): switch to file-based build, no npm/bun needed
+- fix(bpvsbuckler): restore old SPA download in build command
+- fix(bpvsbuckler): use POSIX-only build command
+- fix(bpvsbuckler): fix build script to use rsync
+- fix(bpvsbuckler): switch source to old pages.dev deployment
+
+### Changed
+- ux(bpvsbuckler): beurcracy pinball page with audio and flippers
+
+## [bpvsbuckler-v0.0.0.08] - 2026-05-26
+
+### Fixed
+- fix(bpvsbuckler): Create Contact page with form and contact details
+- fix(bpvsbuckler): Launch blog with welcome post and index page
+- fix(bpvsbuckler): Create Privacy Policy page for legal compliance
+
+### Changed
+- ux(bpvsbuckler): Add print-friendly styles for better UX
+
+## [bpvsbuckler-v0.0.0.07] - 2026-05-25
+
+### Fixed
+- fix(bpvsbuckler): Remove excessive blank lines
+- fix(bpvsbuckler): Remove excessive blank lines
+- fix(bpvsbuckler): Remove excessive blank lines
+
+### Changed
+- ux(bpvsbuckler): Add hover styles for interactive elements
+
+## [0.0.1.0] - 2026-05-24
+
+### Fixed
+- Identified issue: JSON parse error: Expecting "," delimiter (requires manual fix)
+
+## [bpvsbuckler-v0.0.0.16] - 2026-05-31
+
+### Added
+- feat(bpvsbuckler): Add 13 new timeline entries covering 1916–1993 gaps
+  - 1916 – John Williams granted agricultural tenancy by Marquess of Bute
+  - 1949 – Intended tenancy transfer from John Williams to Frederick Buckler
+  - 1959 – Mary Buckler/Williams asserted hereditary ownership claim
+  - 1969 – Great House Farm sold to BP Pension Trust Ltd
+  - 1970 – Llandough Primary School opened on former farm land
+  - 1974 – Judge Watkin Powell granted leave to enforce 1962 possession order
+  - 1974 – Mary Buckler/Williams opposed eviction through press coverage
+  - 1974 – BP Pension Trust and BP Properties issued life rent-free licence letters
+  - 1974 – Possession warrant withdrawn; Mary remained in occupation
+  - 1979 – Roman villa and bathhouse uncovered during housing development
+  - 1987 – Corinthian Close and Tuscan Close constructed over Roman villa site
+  - 1988 – Final removal of remaining Buckler occupants from Great House Farm
+  - 1993 – The Glamorgan Village Book recorded the Roman villa discovery
 
 ## [Unreleased]
-(placeholder)

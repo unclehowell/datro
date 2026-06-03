@@ -12,8 +12,109 @@ const COOLDOWN_SECONDS = 3600;
 const CNEI_COOLDOWN = 1800;
 const DOMAIN = 'datro.directory';
 const GITHUB_REPO_OBJ = { owner: 'unclehowell', repo: 'datro' };
+const BRAIN_BRANCH = 'brain';
 
 const startTime = Math.floor(Date.now() / 1000);
+
+async function aggregateMemory(token) {
+  console.log("Aggregating branch memory into Brain...");
+  const branchesResp = await ghFetch(`https://api.github.com/repos/${GITHUB_REPO_OBJ.owner}/${GITHUB_REPO_OBJ.repo}/branches`, token);
+  const branches = await branchesResp.json();
+  let consolidatedMemory = "# Flywheel Brain (Aggregated Memory)\n\n";
+  
+  for (const b of branches) {
+    if (b.name === BRAIN_BRANCH) continue;
+    const path = `static/${b.name}/MEMORY.md`;
+    const memFile = await getFileContent(token, b.name, path);
+    if (memFile) {
+      consolidatedMemory += `## Branch: ${b.name}\n\n${memFile.content}\n\n---\n\n`;
+    }
+  }
+  
+  await createOrUpdateFile(token, BRAIN_BRANCH, 'BRAIN_CONSOLIDATED.md', consolidatedMemory, 'docs(brain): update consolidated memory');
+  console.log("Brain memory updated.");
+}
+
+async function getBrainSummary(token) {
+    const file = await getFileContent(token, BRAIN_BRANCH, 'BRAIN_CONSOLIDATED.md');
+    if (!file) return "Brain is empty.";
+    return file.content.slice(0, 2000); // Return summary
+}
+function truncateForPrompt(text, maxChars = 50000) {
+  if (!text || text.length <= maxChars) return text;
+  const half = Math.floor(maxChars / 2);
+  return text.slice(0, half) + "\n\n... [MASSIVE FILE TRUNCATED FOR CONTEXT EFFICIENCY] ...\n\n" + text.slice(-half);
+}
+
+// ── Sci-Hub & Digest Logic ──────────────────────────────────────────────────
+
+async function getSciHubIdeas(env, branch, category) {
+  const query = `web architecture performance optimization ${category} ${branch}`;
+  console.log(`Researching original engineering ideas for: ${query}`);
+  
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 3000);
+    const resp = await fetch(`https://api.semanticscholar.org/graph/v1/paper/search?query=${encodeURIComponent(query)}&fields=title,abstract,url&limit=3`, { signal: controller.signal });
+    clearTimeout(timeout);
+    
+    if (!resp.ok) return "No research context available (API rate limited).";
+    
+    const data = await resp.json();
+    if (!data.data || data.data.length === 0) return "No specific research papers found.";
+    
+    let context = "## ORIGINAL RESEARCH (Peer-Reviewed Engineering)\n";
+    for (const paper of data.data) {
+      context += `- **${paper.title}** (${paper.url})\n  *Summary:* ${paper.abstract?.slice(0, 200) || 'No abstract'}...\n`;
+    }
+    context += "\nINSTRUCTION: Synthesize these research findings into concrete architectural improvements.";
+    return context;
+  } catch (err) {
+    console.log(`  Skipping research context (API error): ${err.message}`);
+    return "No research context available.";
+  }
+}
+
+async function getDailyBestPractices(env) {
+  // Use Cloudflare's cache to store the digest for 24h
+  const CACHE_KEY = 'daily_best_practices';
+  const cached = await env.FLYWHEEL_STATE.get(CACHE_KEY, 'json');
+  if (cached && (Date.now() - cached.timestamp < 24 * 3600 * 1000)) {
+    return cached.data;
+  }
+
+  const sources = [
+    'https://web.dev/blog/rss.xml',
+    'https://developer.mozilla.org/en-US/blog/rss.xml'
+  ];
+  
+  console.log('Generating daily best practice digest...');
+  const digest = `DIGEST ${new Date().toDateString()}:
+  1. Priority: Move from LCP to INP (Interaction to Next Paint) as a core metric.
+  2. Security: Implement Trusted Types to prevent DOM XSS.
+  3. Architecture: Use Island Architecture for partial hydration.
+  4. Performance: Pre-fetch critical assets using Priority Hints (fetchpriority).`;
+
+  await env.FLYWHEEL_STATE.put(CACHE_KEY, JSON.stringify({
+    timestamp: Date.now(),
+    data: digest
+  }));
+
+  return digest;
+}
+
+async function getDoneList(env) {
+  const done = await env.FLYWHEEL_STATE.get('done_list', 'json');
+  return done || [];
+}
+
+async function updateDoneList(env, changes) {
+  const done = await getDoneList(env);
+  const newDone = [...done, ...changes.map(c => c.title)];
+  // Keep only last 200 items to stay within KV limits/efficiency
+  if (newDone.length > 200) newDone.splice(0, newDone.length - 200);
+  await env.FLYWHEEL_STATE.put('done_list', JSON.stringify(newDone));
+}
 
 // ── Best Practice Checklist (curated from web.dev, MDN, SiteGrade, LLMBestPractices) ──
 // Organized by priority. Each check has: category, name, check function, fix function, source
@@ -360,10 +461,22 @@ async function runMcpScans(env, targetUrl) {
   const promises = [];
   for (const toolId of Object.keys(MCP_TOOLS)) {
     promises.push(
-      runMcpScan(env, toolId, targetUrl).then(r => { results[toolId] = r; })
+      runMcpScan(env, toolId, targetUrl).then(r => { 
+        if (r.error || r.score === null) {
+          console.log(`MCP Tool ${toolId} failed or returned no data for ${targetUrl}`);
+        }
+        results[toolId] = r; 
+      })
     );
   }
   await Promise.allSettled(promises);
+  
+  // FAIL-FAST: If all essential scans failed, reject the whole process
+  const successfulScans = Object.values(results).filter(r => !r.error && r.score !== null);
+  if (successfulScans.length === 0) {
+    throw new Error("MCP Scans failed: No data retrieved.");
+  }
+  
   return results;
 }
 
@@ -450,7 +563,6 @@ async function createGitTag(token, tagName, commitSha) {
 async function getMaxBranchReleaseNum(token, branch) {
   let max = 0, page = 1;
   while (true) {
-    // Check matching tags to avoid "Reference already exists" errors
     const resp = await ghFetch(
       `https://api.github.com/repos/${GITHUB_REPO}/git/matching-refs/tags/${encodeURIComponent(branch)}-v?per_page=100&page=${page}`,
       token
@@ -460,18 +572,24 @@ async function getMaxBranchReleaseNum(token, branch) {
     for (const r of refs) {
       const tagName = r.ref.replace('refs/tags/', '');
       if (tagName.startsWith(`${branch}-v`)) {
-        const parts = tagName.split('-v')[1].split('.');
-        if (parts.length >= 2) {
-          const patch = parseInt(parts[parts.length - 2], 10) || 0;
-          const build = parseInt(parts[parts.length - 1], 10) || 0;
-          const num = patch * 100 + build;
-          if (num > max) max = num;
-        }
+        const versionStr = tagName.split('-v')[1];
+        const parts = versionStr.split('.').map(p => parseInt(p, 10));
+        
+        // Robust calculation: (major*1M) + (minor*10k) + (patch*100) + build
+        let num = 0;
+        if (parts.length >= 4) num = (parts[0]*1000000) + (parts[1]*10000) + (parts[2]*100) + parts[3];
+        else if (parts.length >= 3) num = (parts[0]*10000) + (parts[1]*100) + parts[2];
+        else if (parts.length >= 2) num = (parts[0]*100) + parts[1];
+        else num = parts[0];
+
+        console.log(`DEBUG: Parsing tag ${tagName} -> versionStr ${versionStr} -> parts ${parts} -> num ${num}`);
+        if (num > max) max = num;
       }
     }
     if (refs.length < 100) break;
     page++;
   }
+  console.log(`DEBUG: Max version num for ${branch} is ${max}`);
   return max;
 }
 
@@ -757,25 +875,20 @@ async function getNextCycleNum(token, branch) {
 
 // ── AI Uniqueness Engine ──────────────────────────────────────────────────────
 
-async function getPreviousReleaseNotes(token, branch, count = 100) {
+async function getPreviousReleaseNotes(token, branch, count = 10) {
   const notes = [];
-  let page = 1;
-  while (notes.length < count) {
-    const resp = await ghFetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=100&page=${page}`,
-      token
-    );
-    const releases = await resp.json();
-    if (!Array.isArray(releases) || releases.length === 0) break;
+  const resp = await ghFetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=${count}&page=1`,
+    token
+  );
+  const releases = await resp.json();
+  if (Array.isArray(releases)) {
     for (const r of releases) {
       if (r.tag_name && r.tag_name.startsWith(`${branch}-v`) && !r.tag_name.endsWith('-aws') && r.body) {
-        const summary = r.body.replace(/```[\s\S]*?```/g, '').replace(/#{1,6}\s/g, '').trim().slice(0, 500);
+        const summary = r.body.replace(/```[\s\S]*?```/g, '').replace(/#{1,6}\s/g, '').trim().slice(0, 150);
         notes.push(`- ${r.tag_name}: ${summary}`);
-        if (notes.length >= count) break;
       }
     }
-    if (releases.length < 100) break;
-    page++;
   }
   return notes;
 }
@@ -833,7 +946,7 @@ REPLACE: <replacement text>
 }
 
 function buildUserPrompt(html, headers, releaseNotes, liveHtml = '') {
-  const notesText = releaseNotes.length > 0 ? releaseNotes.slice(0, 100).join('\n') : '(no previous releases)';
+  const notesText = releaseNotes.length > 0 ? releaseNotes.join('\n') : '(no previous releases)';
   return `## CURRENT REPO index.html
 \`\`\`html
 ${html}
@@ -852,17 +965,15 @@ ${headers || '(empty — no _headers file)'}
 ## PREVIOUS RELEASES (DO NOT REPEAT ANY OF THESE)
 ${notesText}
 
-Analyze this branch deeply. Compare the Repo HTML with the Live Website HTML. Check for:
-1. Missing responsive/mobile features (viewport, media queries, touch targets)
-2. Accessibility gaps (aria labels, focus management, semantic HTML)
-3. Performance issues (render-blocking resources, image optimization)
-4. Security gaps (missing headers, inline scripts)
-5. UX improvements (navigation, forms, content structure)
-6. Cross-platform/browser compatibility
-7. Missing standard meta tags or structured data
-8. Opportunities for progressive enhancement
+Analyze this branch deeply. Compare the Repo HTML with the Live Website HTML. 
+CRITICAL REQUIREMENT: Each release MUST make a noticeable visual or functional difference.
+1. DO NOT just add meta tags. Add tangible elements: new graphics/icons, structured feature sections, interactive UI, or improved typography.
+2. Fix accessibility gaps.
+3. Fix performance issues.
+4. Improve UX.
 
-Propose your best change using the ---CHANGE--- format. One change block per proposal. Up to 3 bugs + 1 feature.`;
+Propose your best change using the ---CHANGE--- format. 
+Mandatory: At least 1 change MUST affect the visual layout or add functional UI.`;
 }
 
 async function queryFinancechequeAPI(systemPrompt, userPrompt, env, timeoutMs = 60000) {
@@ -985,9 +1096,15 @@ async function processBranchWithAI(env, branch) {
   const bias = await getBiasFromKv(env);
   console.log(`  Bias: ${bias?.bias || 3} (${bias?.steering || 'CTR'})`);
 
-  // Build prompts
-  const systemPrompt = buildSystemPrompt(wingFiles, branch, category, bias);
-  const userPrompt = buildUserPrompt(html, headers, releaseNotes, liveHtml);
+  // Research Sci-Hub and Daily Digests
+  const sciHubContext = await getSciHubIdeas(env, branch, category);
+  const dailyDigest = await getDailyBestPractices(env);
+  const doneList = await getDoneList(env);
+  const brainMemory = await getBrainSummary(token);
+
+  // Build prompts with truncation for context efficiency
+  const systemPrompt = buildSystemPrompt(wingFiles, branch, category, bias) + `\n\n## FLYWHEEL BRAIN (AGGREGATED MEMORY)\n${brainMemory}\n\n## RESEARCH & DIGESTS\n${sciHubContext}\n\n${dailyDigest}\n\n## DONE LIST (DO NOT REPEAT ANY OF THESE TITLES)\n${doneList.join(', ')}`;
+  const userPrompt = buildUserPrompt(truncateForPrompt(html, 60000), headers, releaseNotes, truncateForPrompt(liveHtml, 60000));
 
   console.log(`  System prompt: ${systemPrompt.length} chars, User prompt: ${userPrompt.length} chars`);
 
@@ -1333,7 +1450,10 @@ async function processBranch(env, branch) {
 
       await createGitTag(token, tagName, commitSha);
       const release = await createGitHubRelease(token, tagName, branch, version, releaseNotes);
-      if (release) await verifyRelease(token, tagName);
+      if (release) {
+        await verifyRelease(token, tagName);
+        await updateDoneList(env, appliedChanges);
+      }
 
       console.log(`AI release ${tagName}: ${appliedChanges.length} changes applied`);
       return { tagName, version, type: 'ai', changes: appliedChanges, aiError: null, selfImprovements };
@@ -1408,6 +1528,13 @@ async function runFlywheel(env) {
 
   const locked = await acquireLock(env);
   if (!locked) { console.log('Another invocation in progress, skipping'); return; }
+
+  // Update brain memory
+  try {
+      await aggregateMemory(token);
+  } catch (e) {
+      console.log(`Memory aggregation skipped: ${e.message}`);
+  }
 
   try {
     const state = await getRotationState(env);
