@@ -46,23 +46,37 @@ function truncateForPrompt(text, maxChars = 50000) {
   return text.slice(0, half) + "\n\n... [MASSIVE FILE TRUNCATED FOR CONTEXT EFFICIENCY] ...\n\n" + text.slice(-half);
 }
 
-// ── Sci-Hub & Digest Logic ──────────────────────────────────────────────────
+// ── Honcho & Brain Logic ──────────────────────────────────────────────────
+
+async function getHonchoMemory(env, branch) {
+  try {
+    const resp = await fetch(`https://api.honcho.ai/v1/memories?workspace=datro&session=${branch}`, {
+      headers: { 'Authorization': `Bearer ${env.HONCHO_API_KEY}` }
+    });
+    if (!resp.ok) return "No Honcho memory.";
+    const data = await resp.json();
+    return `## HONCHO PEER OBSERVATIONS (Durable Facts)\n${JSON.stringify(data.slice(-5), null, 2)}`;
+  } catch (err) {
+    console.log(`  Honcho lookup failed: ${err.message}`);
+    return "No Honcho memory.";
+  }
+}
 
 async function getSciHubIdeas(env, branch, category) {
   const query = `web architecture performance optimization ${category} ${branch}`;
-  console.log(`Researching original engineering ideas for: ${query}`);
-  
+  console.log(`Sci-Bot researching: ${query}`);
+
   try {
     const controller = new AbortController();
     const timeout = setTimeout(() => controller.abort(), 3000);
     const resp = await fetch(`https://api.semanticscholar.org/graph/v1/paper/search?query=${encodeURIComponent(query)}&fields=title,abstract,url&limit=3`, { signal: controller.signal });
     clearTimeout(timeout);
-    
+
     if (!resp.ok) return "No research context available (API rate limited).";
-    
+
     const data = await resp.json();
     if (!data.data || data.data.length === 0) return "No specific research papers found.";
-    
+
     let context = "## ORIGINAL RESEARCH (Peer-Reviewed Engineering)\n";
     for (const paper of data.data) {
       context += `- **${paper.title}** (${paper.url})\n  *Summary:* ${paper.abstract?.slice(0, 200) || 'No abstract'}...\n`;
@@ -315,7 +329,7 @@ const CNEI_SELF_IMPROVEMENTS = [
     fix: (code) => {
       const endpoint = `
     if (url.pathname === '/__version') {
-      return new Response(JSON.stringify({ version: '0.0.0.03', sourceSha: 'SOURCE_SHA_PLACEHOLDER' }), {
+      return new Response(JSON.stringify({ version: '0.0.0.04', sourceSha: 'SOURCE_SHA_PLACEHOLDER' }), {
         headers: { 'Content-Type': 'application/json' }
       });
     }`;
@@ -353,6 +367,34 @@ const CNEI_SELF_IMPROVEMENTS = [
     }`;
       return code.replace("return new Response('Flywheel Worker.", endpoint + "\n    return new Response('Flywheel Worker.");
     }
+  },
+  {
+    tier: 1,
+    name: 'dashboard server exists',
+    check: (code) => !code || !code.includes('dashboard'),
+    description: 'No dashboard references in worker — static/cnei/dashboard/ may be missing',
+    fix: null
+  },
+  {
+    tier: 2,
+    name: 'dashboard risk wing files',
+    check: (code) => !code || !code.includes('high'),
+    description: 'high/low sides not in worker getAllWingFiles — risk steering depends on high/low being present',
+    fix: null
+  },
+  {
+    tier: 2,
+    name: 'dashboard auto-update check',
+    check: (code) => !code || !code.includes('auto-update'),
+    description: 'No auto-update reference in worker — dashboard cannot self-update from git',
+    fix: null
+  },
+  {
+    tier: 3,
+    name: 'dashboard risk field in API',
+    check: (code) => !code || !code.includes('risk'),
+    description: 'No risk field in bias endpoint — dashboard 2D pad risk axis not wired to flywheel',
+    fix: null
   }
 ];
 
@@ -707,7 +749,7 @@ async function getFileContent(token, branch, path) {
 // ── Wing Files (Harness) ─────────────────────────────────────────────────────
 
 async function getAllWingFiles(token, branch) {
-  const sides = ['left', 'right'];
+  const sides = ['left', 'right', 'high', 'low'];
   const types = ['SPEC', 'AGENT', 'TASKS', 'README', 'MEMORY', 'PLAN', 'CHANGELOG'];
   const files = {};
   for (const side of sides) {
@@ -896,9 +938,9 @@ async function getPreviousReleaseNotes(token, branch, count = 10) {
 async function getBiasFromKv(env) {
   try {
     const raw = await env.FLYWHEEL_STATE.get('bias', 'json');
-    if (raw && raw.bias) return raw;
+    if (raw && raw.bias) return { bias: 3, steering: 'CTR', risk: 3, ...raw };
   } catch (_) {}
-  return { bias: 3, steering: 'CTR' };
+  return { bias: 3, steering: 'CTR', risk: 3 };
 }
 
 function buildSystemPrompt(wingFiles, branch, category, bias) {
@@ -906,6 +948,7 @@ function buildSystemPrompt(wingFiles, branch, category, bias) {
   const harnessPriorities = extractHarnessPriorities(wingFiles);
   const biasLabel = ({1:'STRICT LEFT',2:'FAVOUR LEFT',3:'NEUTRAL',4:'FAVOUR RIGHT',5:'STRICT RIGHT'})[bias?.bias || 3] || 'NEUTRAL';
   const steeringLabel = bias?.steering || 'CTR';
+  const riskLabel = ({1:'LOW RISK',2:'FAVOUR LOW',3:'NEUTRAL',4:'FAVOUR HIGH',5:'HIGH RISK'})[bias?.risk || 3] || 'NEUTRAL';
   return `You are the release engineer for the DATRO monorepo. Each branch has its own website on Cloudflare Pages.
 
 Your task: analyze branch "${branch}" (category: ${category}) and propose unique, tailored improvements.
@@ -917,6 +960,17 @@ Current bias: **${biasLabel}** (${steeringLabel})
 - BIAS 3 (NEUTRAL): Balance bug fixes and features equally
 - BIAS 4 (FAVOUR RIGHT): Lean toward conservative fixes, stability, and security over new features
 - BIAS 5 (STRICT RIGHT): Prioritize security hardening, strict standards compliance, defensive changes only
+
+## RISK TOLERANCE
+Current risk level: **${riskLabel}**
+- RISK 1 (LOW RISK): Only safe, incremental changes. Max 3 lines changed per proposal. Prefer docs/CSS tweaks. No experimental features.
+- RISK 2 (FAVOUR LOW): Lean toward conservative changes. Bug fixes only, no features. Validate the SEARCH text carefully.
+- RISK 3 (NEUTRAL): Balance risk and safety. Standard AI proposals allowed.
+- RISK 4 (FAVOUR HIGH): Willing to accept moderate risk. Feature additions and refactors OK. Allow up to 15-line changes.
+- RISK 5 (HIGH RISK): Full experimental mode. Breaking changes, risky refactors, new feature experiments all allowed. Max 50-line changes.
+
+## WING FILES
+All wing files (left/right/high/low) are loaded. The high wing files contain experimental/pushing items; low wing files contain safe/incremental items. Consider the current risk level when choosing which wing items to act on.
 
 ## HARNESS RULES (from wing files — these are your constraints)
 ${harnessRules}
@@ -1101,9 +1155,10 @@ async function processBranchWithAI(env, branch) {
   const dailyDigest = await getDailyBestPractices(env);
   const doneList = await getDoneList(env);
   const brainMemory = await getBrainSummary(token);
+  const honchoMemory = await getHonchoMemory(env, branch);
 
   // Build prompts with truncation for context efficiency
-  const systemPrompt = buildSystemPrompt(wingFiles, branch, category, bias) + `\n\n## FLYWHEEL BRAIN (AGGREGATED MEMORY)\n${brainMemory}\n\n## RESEARCH & DIGESTS\n${sciHubContext}\n\n${dailyDigest}\n\n## DONE LIST (DO NOT REPEAT ANY OF THESE TITLES)\n${doneList.join(', ')}`;
+  const systemPrompt = buildSystemPrompt(wingFiles, branch, category, bias) + `\n\n## FLYWHEEL BRAIN (AGGREGATED MEMORY)\n${brainMemory}\n\n## HONCHO PEER MEMORY\n${honchoMemory}\n\n## RESEARCH & DIGESTS\n${sciHubContext}\n\n${dailyDigest}\n\n## DONE LIST (DO NOT REPEAT ANY OF THESE TITLES)\n${doneList.join(', ')}`;
   const userPrompt = buildUserPrompt(truncateForPrompt(html, 60000), headers, releaseNotes, truncateForPrompt(liveHtml, 60000));
 
   console.log(`  System prompt: ${systemPrompt.length} chars, User prompt: ${userPrompt.length} chars`);
@@ -1644,7 +1699,7 @@ export default {
       if (request.method === 'POST') {
         try {
           const body = await request.json();
-          const bias = { bias: body.bias || 3, steering: body.steering || 'CTR' };
+          const bias = { bias: body.bias || 3, steering: body.steering || 'CTR', risk: body.risk || 3 };
           await env.FLYWHEEL_STATE.put('bias', JSON.stringify(bias));
           return new Response(JSON.stringify({ ok: true, bias }), {
             headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
