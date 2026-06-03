@@ -1,5 +1,13 @@
 # Changelog
 
+## [ui-v0.0.0.12] - 2026-06-03
+
+### Fixed
+- fix(ui): Remove excessive blank lines
+
+### Changed
+- ux(ui): Add print-friendly styles for better UX
+
 ## [ui-v0.0.0.12] - 2026-06-02
 
 ### Fixed
