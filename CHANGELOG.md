@@ -1,5 +1,13 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.22] - 2026-06-03
+
+### Fixed
+- fix(carfinancecheque): Remove excessive blank lines
+
+### Changed
+- ux(carfinancecheque): Fix z-index stacking for proper element layering
+
 ## [carfinancecheque-v0.0.0.21] - 2026-06-02
 
 ### Fixed

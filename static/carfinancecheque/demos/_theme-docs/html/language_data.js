@@ -12,7 +12,6 @@
 
 var stopwords = ["a","and","are","as","at","be","but","by","for","if","in","into","is","it","near","no","not","of","on","or","such","that","the","their","then","there","these","they","this","to","was","will","with"];
 
-
 /* Non-minified version is copied as a separate JS file, is available */
 
 /**
@@ -197,9 +196,6 @@ var Stemmer = function() {
   }
 }
 
-
-
-
 var splitChars = (function() {
     var result = {};
     var singles = [96, 180, 187, 191, 215, 247, 749, 885, 903, 907, 909, 930, 1014, 1648,
@@ -293,5 +289,4 @@ function splitQuery(query) {
     }
     return result;
 }
-
 
