@@ -1,5 +1,13 @@
 # Changelog
 
+## [dcc-v0.0.0.13] - 2026-06-03
+
+### Fixed
+- fix(dcc): Remove excessive blank lines
+
+### Changed
+- ux(dcc): Add cookie consent banner for GDPR compliance
+
 ## [dcc-v0.0.0.13] - 2026-06-01
 
 ### Fixed
@@ -53,6 +61,16 @@
 
 ## [Unreleased]
 
+
+
+## [0.0.1.0] - 2026-06-03
+### Fixed
+- Identified issue: JS syntax error: node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module '/home/ubuntu/datro/static/datro/details/js/jquery.shop.js'
+    at M (requires manual fix)
 
 ## [0.0.1.0] - 2026-05-25
 ### Fixed
