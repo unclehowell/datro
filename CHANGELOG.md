@@ -1,5 +1,13 @@
 # Changelog
 
+## [wave-v0.0.0.12] - 2026-06-03
+
+### Fixed
+- fix(wave): Remove excessive blank lines
+
+### Changed
+- ux(wave): Add focus-visible styles for keyboard navigation
+
 ## [wave-v0.0.0.12] - 2026-06-02
 
 ### Fixed
