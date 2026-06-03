@@ -1,5 +1,13 @@
 # Changelog
 
+## [wayback-v0.0.0.11] - 2026-06-03
+
+### Fixed
+- fix(wayback): Remove excessive blank lines
+
+### Changed
+- ux(wayback): Add touch-action CSS for mobile responsiveness
+
 ## [wayback-v0.0.0.11] - 2026-06-02
 
 ### Fixed
