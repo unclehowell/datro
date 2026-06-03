@@ -1,5 +1,13 @@
 # Changelog
 
+## [library-v0.0.0.13] - 2026-06-03
+
+### Fixed
+- fix(library): Remove excessive blank lines
+
+### Changed
+- ux(library): Add minimum tap target sizes for mobile UX
+
 ## [library-v0.0.0.13] - 2026-06-01
 
 ### Fixed
