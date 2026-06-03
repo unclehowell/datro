@@ -1,5 +1,13 @@
 # Changelog
 
+## [althea-v0.0.0.14] - 2026-06-03
+
+### Fixed
+- fix(althea): Add charset meta tag for proper encoding
+
+### Changed
+- ux(althea): Add hover styles for interactive elements
+
 ## [althea-v0.0.0.14] - 2026-06-01
 
 ### Fixed
