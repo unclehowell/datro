@@ -10,14 +10,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
-      - name: Run Safe-Harness
-        run: |
-          chmod +x .fcukproxy/agent/safe-harness.sh
-          .fcukproxy/agent/safe-harness.sh
-          
-      - name: Deploy to Cloudflare
+
+      - name: Deploy Flywheel to Cloudflare
         uses: cloudflare/wrangler-action@v3
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          workingDirectory: 'datro/flywheel-cf'
+          workingDirectory: 'flywheel-cf'

@@ -1185,6 +1185,49 @@ async function processBranchWithAI(env, branch) {
   return { error: null, changes: parsed.changes, html, wingFiles, aiResult: result };
 }
 
+// ── Master Record Visuals ──────────────────────────────────────────────────────
+
+function extractVisualInstructions(wingFiles) {
+  const instructions = { top: null, bottom: null, left: null, right: null };
+  for (const [key, content] of Object.entries(wingFiles)) {
+    const lines = content.split('\n');
+    for (const line of lines) {
+      const trimmed = line.trim().toLowerCase();
+      const barMatch = trimmed.match(/(\w+)\s*bar\s*(?:at\s+)?(?:the\s+)?(top|bottom|left|right)/);
+      if (barMatch) {
+        const color = barMatch[1];
+        const position = barMatch[2];
+        instructions[position] = color;
+      }
+      const stripMatch = trimmed.match(/(\w+)\s*strip(?:p?e?d?)?\s*(?:at\s+)?(?:the\s+)?(top|bottom|left|right)/);
+      if (stripMatch) {
+        const color = stripMatch[1];
+        const position = stripMatch[2];
+        instructions[position] = color;
+      }
+    }
+  }
+  return instructions;
+}
+
+function injectVisualBars(html, instructions) {
+  let modified = html;
+  const positions = { top: '0, 0, auto, 0', bottom: 'auto, 0, 0, 0', left: '0, auto, 0, 0', right: '0, 0, 0, auto' };
+  const sizes = { top: 'height: 6px', bottom: 'height: 6px', left: 'width: 6px', right: 'width: 6px' };
+
+  for (const [pos, color] of Object.entries(instructions)) {
+    if (!color) continue;
+    const cssColor = color;
+    const inset = positions[pos];
+    const size = sizes[pos];
+    const barHtml = `<div class="cnei-bar cnei-bar-${pos}" style="position:fixed;${size};${inset};background:${cssColor};z-index:9999;pointer-events:none"></div>`;
+    if (!modified.includes(`cnei-bar-${pos}`)) {
+      modified = modified.replace('</body>', `${barHtml}\n</body>`);
+    }
+  }
+  return modified;
+}
+
 // ── Best Practice Engine ──────────────────────────────────────────────────────
 
 function computeBranchCategory(branch) {
@@ -1440,6 +1483,23 @@ async function processBranch(env, branch) {
   const branchUrl = `https://${branch}.${DOMAIN || 'datro.directory'}`;
   const mcpResults = await runMcpScans(env, branchUrl);
   const mcpSection = formatMcpReleaseNotes(mcpResults, branch);
+
+  // ── MASTER RECORD VISUALS (wing file → visual HTML injection) ──
+  const visualWingFiles = await getAllWingFiles(token, branch);
+  const visualInstructions = extractVisualInstructions(visualWingFiles);
+  const hasVisuals = Object.values(visualInstructions).some(v => v);
+  let visualHtmlChanged = false;
+  if (hasVisuals) {
+    const idxFile = await getFileContent(token, branch, 'index.html');
+    if (idxFile) {
+      const newHtml = injectVisualBars(idxFile.content, visualInstructions);
+      if (newHtml !== idxFile.content) {
+        await createCommit(token, branch, 'index.html', newHtml, 'chore: apply master record visual bars from wing files');
+        console.log(`Injected master record visuals: ${JSON.stringify(visualInstructions)}`);
+        visualHtmlChanged = true;
+      }
+    }
+  }
 
   // ── TRY AI ENGINE FIRST (bespoke, tailored release) ──
   let commitSha = null;
