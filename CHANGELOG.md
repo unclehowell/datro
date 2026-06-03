@@ -1,5 +1,13 @@
 # Changelog
 
+## [subrepos-v0.0.0.11] - 2026-06-03
+
+### Fixed
+- fix(subrepos): Remove excessive blank lines
+
+### Changed
+- ux(subrepos): Add smooth scrolling for better UX
+
 ## [subrepos-v0.0.0.11] - 2026-06-01
 
 ### Fixed
