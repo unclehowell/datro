@@ -32,11 +32,18 @@
 <section id="key-features" aria-labelledby="key-features-heading">
     <h2 id="key-features-heading">Key Features of the DATRO Platform</h2>
     <div class="features-grid">
-        <div class="feature-item">
+        <div class="feature-item" onmouseover="this.classList.add('highlight')" onmouseout="this.classList.remove('highlight')">
             <img src="/icons/icon-automation.svg" alt="Automation Icon" width="48" height="48">
             <h3>Automated Workflows</h3>
             <p>Streamline your data operations with powerful automation capabilities.</p>
         </div>
+<style>
+.feature-item.highlight {
+    transform: scale(1.05);
+    transition: transform 0.3s ease-in-out;
+    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+}
+</style>
         <div class="feature-item">
             <img src="/icons/icon-analytics.svg" alt="Analytics Icon" width="48" height="48">
             <h3>Advanced Analytics</h3>
