@@ -1,5 +1,13 @@
 # Changelog
 
+## [archives-v0.0.0.13] - 2026-06-03
+
+### Fixed
+- fix(archives): Remove excessive blank lines
+
+### Changed
+- ux(archives): Add skip-to-content link for keyboard accessibility
+
 ## [archives-v0.0.0.13] - 2026-06-01
 
 ### Fixed
