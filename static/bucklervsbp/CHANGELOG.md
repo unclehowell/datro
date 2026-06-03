@@ -1,6 +1,6 @@
 # Changelog — bucklervsbp
 
-## [bucklervsbp-v0.0.0.04] - 2026-06-02
+## [bucklervsbp-v0.0.0.04] - 2026-06-03
 
 ### Fixed
 - **First-person narrative** — Changed 'our family lose' to 'the family loses' in Contradictions page for forensic third-person voice
@@ -14,7 +14,7 @@
 - Removed unverifiable claims from narration (e.g., "Mary replied: 'It's my land...'" — not found in source judgment)
 - Removed forward-looking statements from timeline entries
 
-## [bucklervsbp-v0.0.0.03] - 2026-06-02
+## [bucklervsbp-v0.0.0.03] - 2026-06-03
 
 ### Added
 - **Evidence E040** — People's Collection Wales / NLW photographs of Great House Farm (1891-1950)
