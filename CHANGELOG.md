@@ -1,5 +1,13 @@
 # Changelog
 
+## [financecheque-v0.0.1.57] - 2026-06-03
+
+### Fixed
+- fix(financecheque): Remove excessive blank lines
+
+### Changed
+- ux(financecheque): Add social media links for audience engagement
+
 ## [financecheque-v0.0.1.57] - 2026-06-01
 
 ### Fixed
