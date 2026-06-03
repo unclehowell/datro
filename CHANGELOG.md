@@ -1,5 +1,13 @@
 # Changelog
 
+## [hbnb-v0.0.0.13] - 2026-06-03
+
+### Fixed
+- fix(hbnb): Remove excessive blank lines
+
+### Changed
+- ux(hbnb): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [hbnb-v0.0.0.13] - 2026-06-01
 
 ### Fixed
