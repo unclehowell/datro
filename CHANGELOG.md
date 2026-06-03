@@ -1,5 +1,13 @@
 # Changelog
 
+## [llmwiki-v0.0.0.12] - 2026-06-03
+
+### Fixed
+- fix(llmwiki): Remove excessive blank lines
+
+### Changed
+- ux(llmwiki): Improve text color contrast for readability
+
 ## [llmwiki-v0.0.0.12] - 2026-06-01
 
 ### Fixed
