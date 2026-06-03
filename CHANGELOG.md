@@ -1,5 +1,13 @@
 # Changelog
 
+## [gui-v0.0.0.13] - 2026-06-03
+
+### Fixed
+- fix(gui): Remove excessive blank lines
+
+### Changed
+- ux(gui): Add legal footer with privacy/terms/contact links
+
 ## [gui-v0.0.0.13] - 2026-06-01
 
 ### Fixed
