@@ -1,5 +1,14 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.11] - 2026-06-03
+
+### Fixed
+- fix(bpvsbuckler): Add lang attribute to HTML tag for accessibility
+- fix(bpvsbuckler): Remove excessive blank lines
+
+### Changed
+- ux(bpvsbuckler): Add button press interaction feedback for UX
+
 ## [bpvsbuckler-v0.0.0.10] - 2026-06-02
 
 ### Fixed
