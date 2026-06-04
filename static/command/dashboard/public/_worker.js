@@ -144,12 +144,14 @@ export default {
         return json({ version: APP_VERSION });
       }
 
-      // ── Auth required from here down ──
-      const auth = request.headers.get('Authorization') || '';
-      const token = auth.startsWith('Bearer ') ? auth.slice(7) : url.searchParams.get('token') || '';
-      const authValid = await validateToken(token, secret, kv);
-      if (!authValid) {
-        return json({ error: 'Unauthorized' }, 401);
+      // ── Auth required for /api/* routes ──
+      if (path.startsWith('/api/')) {
+        const auth = request.headers.get('Authorization') || '';
+        const token = auth.startsWith('Bearer ') ? auth.slice(7) : url.searchParams.get('token') || '';
+        const authValid = await validateToken(token, secret, kv);
+        if (!authValid) {
+          return json({ error: 'Unauthorized' }, 401);
+        }
       }
 
       // ── GET /api/fuel ──
@@ -176,10 +178,10 @@ export default {
       if (path === '/api/masters' && method === 'GET') {
         let list = await kv.get('dashboard:masters_list');
         if (!list) {
-          const contents = await ghGet('/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/static', env);
-          list = JSON.stringify(
-            contents.filter(f => f.name.endsWith('.md') && !f.name.includes('.')).map(f => f.name.replace('.md', ''))
-          );
+          const contents = await ghGet('/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/static?ref=command', env);
+          const dirs = contents.filter(f => f.type === 'dir').map(f => f.name);
+          // Also try files matching master-record.md pattern
+          list = JSON.stringify(dirs);
           await kv.put('dashboard:masters_list', list, { expirationTtl: 300 });
         }
         return json(JSON.parse(list));
@@ -188,25 +190,33 @@ export default {
       // ── GET /api/masters/:branch ──
       if (path.match(/^\/api\/masters\/[a-zA-Z0-9_-]+$/) && method === 'GET') {
         const branch = path.split('/')[3];
-        try {
-          const data = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(branch)}.md`, env);
-          return json({ content: atob(data.content.replace(/\n/g, '')) });
-        } catch { return json({ content: '' }); }
+        // Try master-record.md in branch dir, fall back to static/{branch}.md
+        for (const p of [`static/${encodeURIComponent(branch)}/master-record.md`, `static/${encodeURIComponent(branch)}.md`]) {
+          try {
+            const data = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${p}?ref=command`, env);
+            return json({ content: atob(data.content.replace(/\n/g, '')) });
+          } catch {}
+        }
+        return json({ content: '' });
       }
 
       // ── POST /api/masters/:branch ──
       if (path.match(/^\/api\/masters\/[a-zA-Z0-9_-]+$/) && method === 'POST') {
         const branch = path.split('/')[3];
         const content = body?.content || '';
+        // Read existing to get sha if exists
+        let sha = null;
         try {
-          const sha = await kv.get('sha:static/' + branch + '.md');
-          const result = await ghPut(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(branch)}.md`, {
+          const existing = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(branch)}/master-record.md?ref=command`, env);
+          sha = existing.sha;
+        } catch {}
+        try {
+          const result = await ghPut(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(branch)}/master-record.md`, {
             message: `docs(${branch}): update master-record via dashboard`,
             content: btoa(content),
             sha: sha || undefined,
             branch: 'command',
           }, env);
-          if (result.content?.sha) await kv.put('sha:static/' + branch + '.md', result.content.sha);
           return json({ success: true });
         } catch (err) { return json({ error: err.message }, 500); }
       }
@@ -230,13 +240,13 @@ export default {
         let cached = await kv.get('dashboard:branches_list');
         if (cached) return json(JSON.parse(cached));
 
-        const contents = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static`, env);
-        const branches = contents.filter(f => f.name.endsWith('.md') && !f.name.includes('.')).map(f => f.name.replace('.md', ''));
+        const contents = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static?ref=command`, env);
+        const branches = contents.filter(f => f.type === 'dir').map(f => f.name);
         const result = [];
         for (const name of branches) {
           const leftFiles = [], rightFiles = [], highFiles = [], lowFiles = [];
           try {
-            const dir = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(name)}`, env);
+            const contents = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(name)}?ref=command`, env);
             const dirNames = dir.map(f => f.name);
             for (const mdFile of MD_FILES) {
               const addFile = (side, arr) => {
@@ -268,7 +278,7 @@ export default {
 
         if (method === 'GET') {
           try {
-            const data = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileInfo.ghPath}`, env);
+            const data = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileInfo.ghPath}?ref=command`, env);
             const content = atob(data.content.replace(/\n/g, ''));
             await kv.put('sha:' + fileInfo.path, data.sha);
             return json({ content, side, exists: true });
@@ -301,7 +311,7 @@ export default {
         const branch = memMatch[1];
         for (const f of ['MEMORY.md', 'MEMORY.left.md']) {
           try {
-            const data = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(branch)}/${encodeURIComponent(f)}`, env);
+            const data = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(branch)}/${encodeURIComponent(f)}?ref=command`, env);
             return json({ content: atob(data.content.replace(/\n/g, '')) });
           } catch {}
         }
