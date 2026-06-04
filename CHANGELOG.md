@@ -1,5 +1,15 @@
 # Changelog
 
+## [cnei-v0.0.0.48] - 2026-06-04
+
+### Fixed
+- fix(cnei): Create Privacy Policy page for legal compliance
+- fix(cnei): Create Terms of Service page for legal compliance
+- fix(cnei): Create Contact page with form and contact details
+
+### Changed
+- ux(cnei): Add smooth scrolling for better UX
+
 ## [bpvsbuckler-v0.0.0.10-aws] - 2026-05-28
 
 ### Fixed
