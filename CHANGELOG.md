@@ -1,5 +1,13 @@
 # Changelog
 
+## [financecheque-v0.0.1.58] - 2026-06-04
+
+### Fixed
+- fix(financecheque): Remove excessive blank lines
+
+### Changed
+- ux(financecheque): Add minimum tap target sizes for mobile UX
+
 ## [financecheque-v0.0.1.57] - 2026-06-03
 
 ### Fixed
