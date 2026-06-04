@@ -1,5 +1,11 @@
 # Changelog
 
+## [althea-v0.0.0.15] - 2026-06-04
+
+### Fixed
+### Changed
+- ux(althea): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [althea-v0.0.0.14] - 2026-06-03
 
 ### Fixed
