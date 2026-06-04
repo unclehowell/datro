@@ -1,5 +1,13 @@
 # Changelog
 
+## [ceo-v0.0.0.15] - 2026-06-04
+
+### Fixed
+- fix(ceo): Remove excessive blank lines
+
+### Changed
+- ux(ceo): Add breadcrumb navigation structure for UX
+
 ## [ceo-v0.0.0.14] - 2026-06-02
 
 ### Fixed
