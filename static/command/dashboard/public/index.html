@@ -65,7 +65,7 @@
             </div>
 
             <div class="center-glass">
-                <div class="editor-header">
+                <div class="editor-header" id="editor-header">
                     <div class="editor-breadcrumb">
                         <span id="active-branch-path">NO FILE SELECTED</span>
                         <span id="active-side-badge" class="side-badge"></span>
@@ -77,7 +77,8 @@
                         <button id="btn-pull" class="btn-head pull-btn">PULL</button>
                     </div>
                 </div>
-                <textarea id="plan-editor" placeholder="Select a file from the left or right explorer..."></textarea>
+                <canvas id="track-canvas" class="track-canvas"></canvas>
+                <textarea id="plan-editor" class="plan-editor" placeholder="Select a file from the left or right explorer..." style="display:none"></textarea>
             </div>
 
             <div class="plan-column right">
@@ -118,6 +119,27 @@
                     <div class="gauge-vertical">
                         <div class="gauge-bar"><div id="fuel-ide" class="gauge-fill" style="height: 40%"></div></div>
                         <label class="sideways">IDE</label>
+                    </div>
+                </div>
+                <div class="gear-stick-cluster">
+                    <div class="gear-stick-panel">
+                        <div class="gate-label">GEAR</div>
+                        <div class="gear-gate">
+                            <div class="gate-slot" data-gear="L">L</div>
+                            <div class="gate-slot" data-gear="N">N</div>
+                            <div class="gate-slot" data-gear="H">H</div>
+                        </div>
+                        <div class="gear-stick" id="gear-stick">
+                            <div class="stick-knob" id="stick-knob">N</div>
+                        </div>
+                    </div>
+                    <div class="digital-readout">
+                        <label>RPM</label>
+                        <div class="value" id="rpm-readout">0</div>
+                    </div>
+                    <div class="digital-readout">
+                        <label>SPEED</label>
+                        <div class="value" id="speed-readout">0</div>
                     </div>
                 </div>
                 <div class="status-panel">
@@ -199,10 +221,10 @@
         </div>
     </div>
 
-    <div id="comms-popup" class="popup-box voice-box">
+    <div id="comms-popup" class="popup-box voice-box radio-box">
         <div class="intercom-container">
             <div class="terminal-header">
-                <span>VOICE AGENT</span>
+                <span>📻 RADIO — AGENT TERMINAL</span>
                 <button onclick="toggleModal('comms-popup')" class="btn-terminal">_</button>
             </div>
             <div class="voice-avatar-container">
@@ -229,6 +251,7 @@
             <div class="voice-controls">
                 <button id="btn-call" class="voice-btn call-btn">CALL</button>
                 <button id="btn-hangup" class="voice-btn hangup-btn" disabled>HANG UP</button>
+                <span class="radio-static" id="radio-static">📡</span>
             </div>
             <div id="chat-messages"></div>
             <div class="chat-input-row">
@@ -238,6 +261,7 @@
         </div>
     </div>
 
+    <script src="racetrack.js"></script>
     <script src="app.js"></script>
 </body>
 </html>

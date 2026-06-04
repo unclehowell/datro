@@ -321,6 +321,110 @@ body.vehicle-theme {
     min-height: 1rem;
 }
 
+/* ── Racetrack Canvas ── */
+
+.track-canvas {
+    flex: 1;
+    width: 100%;
+    display: block;
+    background: #000;
+    min-height: 0;
+}
+
+/* ── Gear Stick ── */
+
+.gear-stick-cluster {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.gear-stick-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.3rem;
+    background: rgba(0,0,0,0.3);
+    padding: 0.4rem 0.6rem;
+    border-radius: 6px;
+    border: 1px solid #444;
+}
+
+.gate-label {
+    font-size: 0.4rem;
+    color: var(--dash-dim);
+    letter-spacing: 2px;
+    font-weight: bold;
+}
+
+.gear-gate {
+    display: flex;
+    gap: 4px;
+}
+
+.gate-slot {
+    width: 28px;
+    height: 28px;
+    border: 1px solid #555;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.55rem;
+    font-weight: bold;
+    color: var(--dash-dim);
+    cursor: pointer;
+    background: #111;
+    transition: all 0.15s;
+    user-select: none;
+}
+.gate-slot:hover { border-color: var(--dash-accent); color: var(--dash-accent); }
+.gate-slot.active { background: var(--dash-accent); color: #000; border-color: var(--dash-accent); box-shadow: var(--glow-cyan); }
+.gate-slot[data-gear="L"]:hover, .gate-slot[data-gear="L"].active { border-color: #0f0; color: #0f0; background: rgba(0,255,0,0.1); }
+.gate-slot[data-gear="H"]:hover, .gate-slot[data-gear="H"].active { border-color: #f44; color: #f44; background: rgba(255,68,68,0.1); }
+
+.gear-stick {
+    margin-top: 0.2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.stick-knob {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--dash-accent);
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6rem;
+    font-weight: 900;
+    box-shadow: var(--glow-cyan);
+    cursor: default;
+}
+
+/* ── Radio / Voice Box ── */
+
+.radio-box .terminal-header { color: #ffaa00; background: rgba(255,170,0,0.06); }
+.radio-static {
+    font-size: 1rem;
+    animation: radioCrackle 2s infinite;
+    display: inline-flex;
+    align-items: center;
+}
+
+@keyframes radioCrackle {
+    0%, 100% { opacity: 0.6; transform: scale(1); }
+    25% { opacity: 1; transform: scale(1.1); }
+    50% { opacity: 0.4; transform: scale(0.9); }
+    75% { opacity: 0.8; transform: scale(1.05); }
+}
+
+/* ── Editor header hidden state — toggled by JS inline style ── */
+#plan-editor { display: none; }
+
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: var(--dash-panel); border-radius: 3px; }
