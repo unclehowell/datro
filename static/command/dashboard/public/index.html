@@ -28,12 +28,12 @@
                 <span id="branch-count">0</span>
             </div>
             <div class="stat-box">
-                <label>AWS UPTIME</label>
-                <span id="aws-status">OFFLINE</span>
-            </div>
-            <div class="stat-box">
                 <label>FLYWHEEL</label>
                 <span id="flywheel-state">STANDBY</span>
+            </div>
+            <div class="stat-box">
+                <label>MODE</label>
+                <span id="deploy-mode" style="color:var(--dash-accent)">CF NATIVE</span>
             </div>
         </div>
         <div class="header-actions">
@@ -207,16 +207,18 @@
         <div class="modal-content">
             <div class="terminal-container">
                 <div class="terminal-header">
-                    <span>LIVE SYSTEM TELEMETRY</span>
+                    <span>CF SYSTEM LOG</span>
                     <div class="terminal-actions">
-                        <button id="btn-ota" class="btn-terminal">OTA</button>
-                        <button id="btn-meta" class="btn-terminal">META</button>
-                        <button id="btn-toggle-pause" class="btn-terminal">PAUSE</button>
                         <button id="btn-clear-logs" class="btn-terminal">CLEAR</button>
                         <button onclick="toggleModal('telemetry-modal')" class="btn-terminal">CLOSE</button>
                     </div>
                 </div>
-                <pre id="log-content"></pre>
+                <pre id="log-content">Cloudflare-native system. No machine dependency.
+- API: Cloudflare Workers (command.datro.xyz/api/*)
+- Frontend: Cloudflare Pages
+- Files: GitHub API (no filesystem needed)
+- LLM: Parent proxy (financecheque.uk) with child proxy key fallback
+- Deployment: git push → auto-deploy to Pages</pre>
             </div>
         </div>
     </div>
