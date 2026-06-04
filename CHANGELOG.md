@@ -1,5 +1,18 @@
 # Changelog
 
+## [wave-v0.0.0.13] - 2026-06-04
+
+### Fixed
+- fix(wave): Remove excessive blank lines
+
+### Changed
+- ux(wave): Add button press interaction feedback for UX
+
+## [0.0.1.0] - 2026-06-04
+### Fixed
+- Identified issue: JS syntax error: /home/ubuntu/datro/static/ui/dashboard/js/jquery-3.3.1.min.js:2
+!function(e,t){"use strict";"object"==typeof module&&"object"==typeof module.exports?m (requires manual fix)
+
 ## [wave-v0.0.0.12] - 2026-06-03
 
 ### Fixed
