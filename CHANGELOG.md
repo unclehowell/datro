@@ -1,5 +1,11 @@
 # Changelog
 
+## [dash-v0.0.0.13] - 2026-06-04
+
+### Fixed
+### Changed
+- ux(dash): Add cookie consent banner for GDPR compliance
+
 ## [dash-v0.0.0.12] - 2026-06-02
 
 ### Fixed
