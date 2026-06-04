@@ -1,5 +1,13 @@
 # Changelog
 
+## [library-v0.0.0.14] - 2026-06-04
+
+### Fixed
+- fix(library): Remove excessive blank lines
+
+### Changed
+- ux(library): Improve text color contrast for readability
+
 ## [library-v0.0.0.13] - 2026-06-03
 
 ### Fixed
