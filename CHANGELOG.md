@@ -1,5 +1,15 @@
 # Changelog
 
+## [ccan-v0.0.0.25] - 2026-06-04
+
+### Fixed
+- fix(ccan): Add charset meta tag for proper encoding
+- fix(ccan): Add lang attribute to HTML tag for accessibility
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Add loading state styling for better UX
+
 ## [ccan-v0.0.0.24] - 2026-06-02
 
 ### Fixed
