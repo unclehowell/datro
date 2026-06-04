@@ -1,5 +1,21 @@
 # Changelog
 
+## [ui-v0.0.0.13] - 2026-06-04
+
+### Fixed
+- fix(ui): Remove excessive blank lines
+
+### Changed
+- ux(ui): Add touch-action CSS for mobile responsiveness
+
+## [0.0.1.0] - 2026-06-04
+### Fixed
+- Identified issue: JS syntax error: node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module '/home/ubuntu/datro/static/subrepos/static/library/consortium_campus (requires manual fix)
+
 ## [ui-v0.0.0.12] - 2026-06-03
 
 ### Fixed
