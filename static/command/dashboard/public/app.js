@@ -72,6 +72,13 @@ const btnMeta = document.getElementById('btn-meta');
 const btnTogglePause = document.getElementById('btn-toggle-pause');
 const btnClearLogs = document.getElementById('btn-clear-logs');
 
+const trackCanvas = document.getElementById('track-canvas');
+const rpmReadout = document.getElementById('rpm-readout');
+const speedReadout = document.getElementById('speed-readout');
+const stickKnob = document.getElementById('stick-knob');
+let currentGear = 'N';
+let rpmValue = 0;
+
 const chatMessages = document.getElementById('chat-messages');
 const chatInput = document.getElementById('chat-input');
 const btnSendChat = document.getElementById('btn-send-chat');
@@ -140,6 +147,8 @@ async function init() {
     await fetchFuel();
     await updatePauseButtonState();
     connectLogs();
+    initTrackCanvas();
+    initGearStick();
 
     btnSavePlan.addEventListener('click', saveFile);
     document.getElementById('btn-push').addEventListener('click', pushToGit);
@@ -213,6 +222,56 @@ async function init() {
 
     setInterval(fetchAwsStatus, 10000);
     setInterval(fetchFuel, 5000);
+    setInterval(updateRpm, 200);
+}
+
+function initTrackCanvas() {
+    const container = trackCanvas.parentElement;
+    const rect = container.getBoundingClientRect();
+    trackCanvas.width = rect.width || 600;
+    trackCanvas.height = rect.height || 400;
+    window.trackInit(trackCanvas);
+    window.addEventListener('resize', () => {
+        const r = container.getBoundingClientRect();
+        if (r.width > 50 && r.height > 50) {
+            trackCanvas.width = r.width;
+            trackCanvas.height = r.height;
+        }
+    });
+}
+
+function initGearStick() {
+    const gate = document.querySelector('.gear-gate');
+    const slots = gate.querySelectorAll('.gate-slot');
+    slots.forEach(slot => {
+        slot.addEventListener('click', () => {
+            currentGear = slot.dataset.gear;
+            stickKnob.textContent = currentGear;
+            document.querySelectorAll('.gate-slot').forEach(s => s.classList.remove('active'));
+            slot.classList.add('active');
+            // Map gear to track speed
+            const speedMap = { L: 0.3, N: 1, H: 3 };
+            const s = speedMap[currentGear] || 1;
+            window.trackSetSpeed(s);
+            // Sync to release gear range
+            const gearVal = currentGear === 'L' ? 3 : currentGear === 'N' ? 6 : 9;
+            gearRange.value = gearVal;
+            gearDisplay.textContent = gearVal;
+            gearReadout.textContent = gearVal;
+        });
+    });
+    // Default to N
+    document.querySelector('.gate-slot[data-gear="N"]')?.click();
+}
+
+function updateRpm() {
+    if (!rpmReadout || !speedReadout) return;
+    rpmValue += (Math.random() - 0.5) * 200;
+    rpmValue = Math.max(500, Math.min(8000, rpmValue));
+    rpmReadout.textContent = Math.round(rpmValue);
+    const baseSpeed = currentGear === 'L' ? 20 : currentGear === 'N' ? 60 : 120;
+    const speed = baseSpeed + (rpmValue / 8000) * 40;
+    speedReadout.textContent = Math.round(speed);
 }
 
 function toggleModal(id) {
@@ -435,6 +494,7 @@ function onBranchSelect(side, branchName) {
 
 async function loadFile(branch, side, filename) {
     activeFile = { branch, side, filename };
+    showEditor();
 
     try {
         const res = await apiFetch(`/api/branches/${branch}/files/${side}/${filename}`);
@@ -471,6 +531,33 @@ function markActiveFile(branch, side, filename) {
     const target = document.querySelector(selector);
     if (target) target.classList.add('active');
 }
+
+function showEditor() {
+    trackCanvas.style.display = 'none';
+    window.trackStop();
+    planEditor.style.display = '';
+    document.getElementById('editor-header').style.display = '';
+}
+
+function showTrack() {
+    trackCanvas.style.display = '';
+    planEditor.style.display = 'none';
+    document.getElementById('editor-header').style.display = 'none';
+    const container = trackCanvas.parentElement;
+    const rect = container.getBoundingClientRect();
+    if (rect.width > 50 && rect.height > 50) {
+        trackCanvas.width = rect.width;
+        trackCanvas.height = rect.height;
+    }
+    window.trackInit(trackCanvas);
+}
+
+// Show track when no file is active (called on init and after deselect)
+document.addEventListener('click', (e) => {
+    if (!activeFile && !e.target.closest('.file-item') && !e.target.closest('.tree-container') && !e.target.closest('.editor-actions') && !e.target.closest('.editor-breadcrumb')) {
+        showTrack();
+    }
+});
 
 async function saveFile() {
     if (!activeFile) return;
