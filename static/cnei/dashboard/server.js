@@ -80,46 +80,89 @@ app.get('/api/fuel', async (req, res) => {
     });
 });
 
-// Command Intercom (Self-Modifying Design)
+// Command Intercom (Chat + Voice)
 app.post('/api/chat', async (req, res) => {
     const { message } = req.body;
+    if (!message) return res.status(400).json({ response: 'No message provided', success: false });
     try {
-        const dashboardDir = __dirname;
-        const publicDir = path.join(dashboardDir, 'public');
-        
-        // Use intelligence.py to generate a fix
-        // We'll create a temporary "branch" context for the dashboard itself
-        const dashboardContext = {
-            branch: 'dashboard',
-            url: 'http://localhost:3000',
-            category: 'ui',
-            master_plan: `- [ ] ${message}`,
-            repo_path: dashboardDir
-        };
-        
-        const tempCtx = path.join(FCUK_DIR, 'agent/branches/dashboard.md');
-        await fsPromises.writeFile(tempCtx, `## Category\nui\n## URL\nhttp://localhost:3000\n## Master Plan\n- [ ] ${message}`);
-
-        // Run intelligence.py to generate the fix
-        const { exec } = require('child_process');
-        const util = require('util');
-        const execAsync = util.promisify(exec);
-        
-        const cmd = `python3 /home/unclehowell/.fcukproxy/intelligence.py --branch dashboard --repo-path ${dashboardDir} --type ux`;
-        console.log(`Executing design change: ${cmd}`);
-        
-        const { stdout } = await execAsync(cmd, {
-            env: { ...process.env, OPENAI_BASE_URL: 'http://localhost:6000/v1', OPENAI_API_KEY: 'fcuk-proxy' }
+        // 1. Always route through local hermes agent first (port 6000)
+        const localResp = await fetch('http://localhost:6000/v1/chat/completions', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                model: 'gpt-4o-mini',
+                messages: [
+                    { role: 'system', content: 'You are the dashboard command intercom for the DATRO flywheel control system. The user gives design instructions or asks questions about branches. Respond concisely (1-3 sentences).' },
+                    { role: 'user', content: message }
+                ]
+            })
         });
+        const localData = await localResp.json();
+        const reply = localData.choices?.[0]?.message?.content || 'No response';
+        const proxyInfo = localData._proxy || {};
         
-        // Apply the fix
-        const applyCmd = `python3 /home/unclehowell/.fcukproxy/intelligence.py --branch dashboard --repo-path ${dashboardDir} --type ux --apply '${stdout.trim().replace(/'/g, "'\\''")}'`;
-        await execAsync(applyCmd);
+        // 2. Build routing breadcrumb from hermes agent's _proxy response
+        const routing = [];
+        routing.push({ node: 'dashboard (port 3000)', status: 'ok' });
+        routing.push({ node: `hermes agent (localhost:6000)`, status: 'ok', machine_id: proxyInfo.origin_machine_id || null });
         
-        res.json({ response: "DESIGN CHANGE APPLIED. REFRESHING...", success: true });
+        if (proxyInfo.routing_decision === 'direct_llm') {
+            routing.push({ node: `direct LLM provider (round-robin)`, status: 'ok', detail: proxyInfo.routing_decision });
+        } else if (proxyInfo.routing_decision === 'parent') {
+            routing.push({ node: `parent proxy (financecheque.uk)`, status: 'pending' });
+            // Try to trace the parent proxy hop
+            try {
+                const parentResp = await fetch('https://www.financecheque.uk/api/proxy?action=chat', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ system: 'respond with routing info only', message: 'routing trace' }),
+                    signal: AbortSignal.timeout(5000)
+                });
+                const parentData = await parentResp.json();
+                const parentRoute = parentData._proxy?.routing || 'direct_llm';
+                routing[routing.length - 1] = { node: `parent proxy (financecheque.uk)`, status: 'ok', detail: parentRoute };
+                if (parentRoute === 'child_proxy') {
+                    routing.push({ node: `child proxy machine`, status: 'ok' });
+                } else if (parentRoute === 'direct_llm') {
+                    routing.push({ node: `CF environment LLM`, status: 'ok' });
+                }
+            } catch {
+                routing[routing.length - 1] = { node: `parent proxy (financecheque.uk)`, status: 'error', detail: 'unreachable' };
+            }
+        } else if (proxyInfo.routing_decision === 'peer') {
+            routing.push({ node: `peer proxy (multicast)`, status: 'ok' });
+        } else if (proxyInfo.polling_queued) {
+            routing.push({ node: `parent poll queue`, status: 'pending' });
+        } else {
+            routing.push({ node: `provider round-robin`, status: 'ok', detail: proxyInfo.routing_decision || 'unknown' });
+        }
+
+        res.json({ response: reply, success: true, routing });
     } catch (err) {
         console.error('Chat Error:', err);
-        res.status(500).json({ response: "SYSTEM MALFUNCTION: " + err.message, success: false });
+        // Fallback: try parent proxy directly
+        try {
+            const parentResp = await fetch('https://www.financecheque.uk/api/proxy?action=chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ system: 'You are a helpful dashboard assistant. Reply concisely.', message })
+            });
+            const parentData = await parentResp.json();
+            const routing = [
+                { node: 'dashboard (port 3000)', status: 'ok' },
+                { node: 'hermes agent (localhost:6000)', status: 'error', detail: err.message },
+                { node: `parent proxy (financecheque.uk)`, status: 'ok', detail: parentData._proxy?.routing || 'direct_llm' }
+            ];
+            res.json({ response: parentData.reply || parentData.response || 'No response', success: true, routing });
+        } catch (fallbackErr) {
+            const routing = [
+                { node: 'dashboard (port 3000)', status: 'ok' },
+                { node: 'hermes agent (localhost:6000)', status: 'error', detail: err.message },
+                { node: 'parent proxy (financecheque.uk)', status: 'error', detail: fallbackErr.message },
+                { node: 'NO LLM AVAILABLE', status: 'error' }
+            ];
+            res.status(500).json({ response: 'All proxies unavailable. Check local agent on port 6000.', success: false, routing });
+        }
     }
 });
 
@@ -203,7 +246,7 @@ app.post('/api/masters/:branch', async (req, res) => {
 
 // ── MD Protocol: Branch File Management (Left/Right Variations) ──
 
-const SIDES = ['left', 'right'];
+const SIDES = ['left', 'right', 'high', 'low'];
 
 function sideSuffix(side, filename) {
   if (!side || filename === 'master-record.md') return filename;
@@ -225,17 +268,20 @@ app.get('/api/branches', async (req, res) => {
     const branches = files.filter(f => f.endsWith('.md')).map(f => f.replace('.md', ''));
     const result = await Promise.all(branches.map(async (name) => {
       const masterExists = true;
-      const leftFiles = [];
-      const rightFiles = [];
+      const leftFiles = [], rightFiles = [], highFiles = [], lowFiles = [];
       for (const mdFile of MD_FILES) {
-        let leftExists = false, rightExists = false;
+        let leftExists = false, rightExists = false, highExists = false, lowExists = false;
         try { await fsPromises.access(path.join(STATIC_DIR, name, sideSuffix('left', mdFile))); leftExists = true; } catch {}
         try { await fsPromises.access(path.join(STATIC_DIR, name, sideSuffix('right', mdFile))); rightExists = true; } catch {}
+        try { await fsPromises.access(path.join(STATIC_DIR, name, sideSuffix('high', mdFile))); highExists = true; } catch {}
+        try { await fsPromises.access(path.join(STATIC_DIR, name, sideSuffix('low', mdFile))); lowExists = true; } catch {}
         const label = mdFile.replace('.md', '');
         leftFiles.push({ name: mdFile, label, exists: leftExists });
         rightFiles.push({ name: mdFile, label, exists: rightExists });
+        highFiles.push({ name: mdFile, label, exists: highExists });
+        lowFiles.push({ name: mdFile, label, exists: lowExists });
       }
-      return { name, masterExists, leftFiles, rightFiles };
+      return { name, masterExists, leftFiles, rightFiles, highFiles, lowFiles };
     }));
     res.json(result);
   } catch (err) {
@@ -298,7 +344,7 @@ app.post('/api/branches/:branch/files/:side/:filename', async (req, res) => {
   }
 });
 
-const APP_VERSION = '0.0.0.03';
+const APP_VERSION = '0.0.0.04';
 const CF_WORKER_URL = process.env.CF_WORKER_URL || 'https://datro-flywheel.righteous.workers.dev';
 
 app.get('/api/version', async (req, res) => {

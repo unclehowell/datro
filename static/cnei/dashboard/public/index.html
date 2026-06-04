@@ -33,6 +33,16 @@
     </header>
 
     <main class="cockpit">
+        <div class="risk-bar top-risk" id="high-risk-bar">
+            <div class="risk-bar-header">
+                <span class="risk-bar-label">HIGH RISK</span>
+                <span class="risk-bar-badge">▼</span>
+            </div>
+            <div class="risk-bar-scroll" id="high-risk-scroll">
+                <div class="risk-breadcrumb" id="high-breadcrumb"></div>
+            </div>
+        </div>
+
         <section class="windscreen">
             <div class="plan-column left">
                 <div class="column-header">
@@ -64,6 +74,16 @@
                 <div id="branch-tree-right" class="tree-container"></div>
             </div>
         </section>
+
+        <div class="risk-bar bottom-risk" id="low-risk-bar">
+            <div class="risk-bar-header">
+                <span class="risk-bar-label">LOW RISK</span>
+                <span class="risk-bar-badge">▼</span>
+            </div>
+            <div class="risk-bar-scroll" id="low-risk-scroll">
+                <div class="risk-breadcrumb" id="low-breadcrumb"></div>
+            </div>
+        </div>
 
         <section class="dashboard-base">
             <div class="instrument-cluster">
@@ -164,15 +184,40 @@
         </div>
     </div>
 
-    <div id="comms-popup" class="popup-box">
+    <div id="comms-popup" class="popup-box voice-box">
         <div class="intercom-container">
             <div class="terminal-header">
-                <span>COMMAND INTERCOM</span>
+                <span>VOICE AGENT</span>
                 <button onclick="toggleModal('comms-popup')" class="btn-terminal">_</button>
+            </div>
+            <div class="voice-avatar-container">
+                <svg class="voice-avatar" id="voice-avatar" viewBox="0 0 120 140" width="120" height="140">
+                    <ellipse cx="60" cy="30" rx="25" ry="28" fill="#2d3035" stroke="#00f2ff" stroke-width="1.5"/>
+                    <ellipse cx="48" cy="26" rx="3" ry="4" fill="#fff"/>
+                    <ellipse cx="72" cy="26" rx="3" ry="4" fill="#fff"/>
+                    <ellipse cx="60" cy="36" rx="6" ry="3" fill="#ff4444" opacity="0.8"/>
+                    <path class="avatar-mouth" d="M48,44 Q60,54 72,44" stroke="#00f2ff" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <rect x="42" y="60" width="36" height="45" rx="8" fill="#2d3035" stroke="#00f2ff" stroke-width="1.5"/>
+                    <rect x="38" y="58" width="44" height="6" rx="3" fill="#00f2ff" opacity="0.3"/>
+                    <line x1="52" y1="75" x2="68" y2="75" stroke="#00f2ff" stroke-width="0.5" opacity="0.3"/>
+                    <line x1="52" y1="82" x2="64" y2="82" stroke="#00f2ff" stroke-width="0.5" opacity="0.3"/>
+                    <line x1="38" y1="105" x2="52" y2="115" stroke="#2d3035" stroke-width="3" stroke-linecap="round"/>
+                    <line x1="82" y1="105" x2="68" y2="115" stroke="#2d3035" stroke-width="3" stroke-linecap="round"/>
+                    <rect x="33" y="62" width="10" height="4" rx="2" fill="#00f2ff" opacity="0.2" class="avatar-ear-l"/>
+                    <rect x="77" y="62" width="10" height="4" rx="2" fill="#00f2ff" opacity="0.2" class="avatar-ear-r"/>
+                    <circle cx="60" cy="130" r="10" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.15" class="pulse-ring"/>
+                    <circle cx="60" cy="130" r="6" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.25" class="pulse-ring"/>
+                    <circle cx="60" cy="130" r="3" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.4" class="pulse-ring"/>
+                </svg>
+                <div class="voice-status" id="voice-status">STANDBY</div>
+            </div>
+            <div class="voice-controls">
+                <button id="btn-call" class="voice-btn call-btn">CALL</button>
+                <button id="btn-hangup" class="voice-btn hangup-btn" disabled>HANG UP</button>
             </div>
             <div id="chat-messages"></div>
             <div class="chat-input-row">
-                <input type="text" id="chat-input" placeholder="Instruct design change...">
+                <input type="text" id="chat-input" placeholder="Type or tap CALL to speak...">
                 <button id="btn-send-chat">SEND</button>
             </div>
         </div>

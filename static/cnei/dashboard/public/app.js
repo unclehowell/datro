@@ -9,6 +9,8 @@ const btnSavePlan = document.getElementById('btn-save-plan');
 const fileExistsIndicator = document.getElementById('file-exists-indicator');
 const treeLeft = document.getElementById('branch-tree-left');
 const treeRight = document.getElementById('branch-tree-right');
+const highBreadcrumb = document.getElementById('high-breadcrumb');
+const lowBreadcrumb = document.getElementById('low-breadcrumb');
 const btnCollapseLeft = document.getElementById('btn-collapse-left');
 const btnCollapseRight = document.getElementById('btn-collapse-right');
 
@@ -152,6 +154,9 @@ async function init() {
 
 function toggleModal(id) {
     const el = document.getElementById(id);
+    if (id === 'comms-popup' && isCallActive && el.style.display !== 'none' && el.style.display !== '') {
+        return; // Don't close during active call
+    }
     el.style.display = (el.style.display === 'flex' || el.style.display === 'block') ? 'none' : 'flex';
 }
 
@@ -298,6 +303,8 @@ async function fetchBranches() {
         branchCount.textContent = branches.length;
         renderTree(treeLeft, branches, 'left');
         renderTree(treeRight, branches, 'right');
+        renderRiskBreadcrumb('high', branches);
+        renderRiskBreadcrumb('low', branches);
     } catch (err) {
         console.error('Failed to fetch branches:', err);
     }
@@ -309,7 +316,8 @@ function renderTree(container, branches, side) {
         const node = document.createElement('div');
         node.className = 'branch-node';
 
-        const files = side === 'left' ? b.leftFiles : b.rightFiles;
+        const sideMap = { left: b.leftFiles, right: b.rightFiles, high: b.highFiles, low: b.lowFiles };
+        const files = sideMap[side] || b.leftFiles;
 
         const header = document.createElement('div');
         header.className = 'branch-header';
@@ -351,13 +359,21 @@ function toggleBranch(name, side) {
     const fileList = document.getElementById(`files-${side}-${name}`);
     const header = fileList.previousElementSibling;
     const toggle = header.querySelector('.branch-toggle');
-    const expandedKey = side === 'left' ? 'expandedLeft' : 'expandedRight';
-    const currentExpanded = side === 'left' ? expandedLeft : expandedRight;
+    const expandedKey = { left: 'expandedLeft', right: 'expandedRight', high: 'expandedHigh', low: 'expandedLow' }[side];
+    const expandedRefs = { left: 'expandedLeft', right: 'expandedRight', high: 'expandedHigh', low: 'expandedLow' };
+    const currentExpanded = { expandedLeft, expandedRight, expandedHigh, expandedLow }[expandedRefs[side]];
+
+    const updateVar = (val) => {
+        if (side === 'left') expandedLeft = val;
+        else if (side === 'right') expandedRight = val;
+        else if (side === 'high') expandedHigh = val;
+        else if (side === 'low') expandedLow = val;
+    };
 
     if (currentExpanded === name) {
         fileList.classList.remove('open');
         toggle.innerHTML = '&#9654;';
-        if (side === 'left') expandedLeft = null; else expandedRight = null;
+        updateVar(null);
     } else {
         if (currentExpanded) {
             const prev = document.getElementById(`files-${side}-${currentExpanded}`);
@@ -368,7 +384,7 @@ function toggleBranch(name, side) {
         }
         fileList.classList.add('open');
         toggle.innerHTML = '&#9660;';
-        if (side === 'left') expandedLeft = name; else expandedRight = name;
+        updateVar(name);
     }
 }
 
@@ -384,6 +400,66 @@ function collapseSide(side) {
     }
 }
 
+// ── Risk Breadcrumb Bars (High/Low) ──
+
+function renderRiskBreadcrumb(side, branches) {
+    const container = document.getElementById(`${side}-breadcrumb`);
+    container.innerHTML = '';
+    branches.forEach(b => {
+        const chip = document.createElement('div');
+        chip.className = `risk-chip ${side}`;
+        chip.innerHTML = `<span class="risk-chip-name">${b.name}</span><span class="risk-chip-arrow">▼</span>`;
+        const dd = document.createElement('div');
+        dd.className = 'risk-dropdown';
+        dd.id = `risk-dd-${side}-${b.name}`;
+        const sideKey = side + 'Files';
+        const files = b[sideKey] || [];
+        files.forEach(f => {
+            const item = document.createElement('div');
+            item.className = 'risk-dd-item';
+            item.textContent = f.label;
+            if (f.exists) item.innerHTML += ' <span class="file-check">✓</span>';
+            else item.innerHTML += ' <span class="file-new">+new</span>';
+            item.onclick = (e) => { e.stopPropagation(); loadFileForSide(b.name, side, f.name); };
+            dd.appendChild(item);
+        });
+        chip.appendChild(dd);
+        chip.onclick = (e) => {
+            e.stopPropagation();
+            document.querySelectorAll('.risk-dropdown.open').forEach(d => { if (d !== dd) d.classList.remove('open'); });
+            dd.classList.toggle('open');
+        };
+        container.appendChild(chip);
+    });
+    document.addEventListener('click', () => {
+        document.querySelectorAll('.risk-dropdown.open').forEach(d => d.classList.remove('open'));
+    });
+}
+
+function loadFileForSide(branch, side, filename) {
+    activeFile = { branch, side, filename };
+    const labelMap = { 'SPEC.md': 'SPEC', 'AGENT.md': 'AGENT', 'TASKS.md': 'TASKS', 'MEMORY.md': 'MEMORY', 'README.md': 'README' };
+    const label = labelMap[filename] || filename.replace('.md', '');
+    const sideMap = { left: 'LEFT', right: 'RIGHT', high: 'HIGH', low: 'LOW' };
+    activeBranchPath.textContent = `${branch.toUpperCase()} / ${label}`;
+    activeSideBadge.textContent = sideMap[side] || side.toUpperCase();
+    activeSideBadge.className = `side-badge ${side}`;
+    activeFile.side = side;
+
+    fetch(`/api/branches/${branch}/files/${side}/${filename}`)
+        .then(r => r.json())
+        .then(data => {
+            planEditor.value = data.content || '';
+            btnSavePlan.disabled = false;
+            fileExistsIndicator.textContent = data.exists !== false ? 'ON DISK' : 'NEW';
+            fileExistsIndicator.className = 'file-badge ' + (data.exists !== false ? 'exists' : 'new');
+        })
+        .catch(err => {
+            console.error('Failed to load file:', err);
+            activeBranchPath.textContent = 'ERROR LOADING FILE';
+        });
+}
+
 // ── File Loading & Saving ──
 
 async function loadFile(branch, side, filename) {
@@ -393,9 +469,11 @@ async function loadFile(branch, side, filename) {
         const res = await fetch(`/api/branches/${branch}/files/${side}/${filename}`);
         const data = await res.json();
 
-        const label = filename === 'master-record.md' ? 'Master Record' : filename.replace('.md', '');
+        const labelMap = { 'master-record.md': 'Master Record', 'SPEC.md': 'SPEC', 'AGENT.md': 'AGENT', 'TASKS.md': 'TASKS', 'MEMORY.md': 'MEMORY', 'README.md': 'README' };
+        const label = labelMap[filename] || filename.replace('.md', '');
+        const sideMap = { left: 'LEFT', right: 'RIGHT', high: 'HIGH', low: 'LOW' };
         activeBranchPath.textContent = `${branch.toUpperCase()} / ${label}`;
-        activeSideBadge.textContent = side.toUpperCase();
+        activeSideBadge.textContent = sideMap[side] || side.toUpperCase();
         activeSideBadge.className = `side-badge ${side}`;
 
         planEditor.value = data.content || '';
@@ -532,7 +610,10 @@ async function sendChat() {
         });
         const data = await res.json();
         appendMessage('bot', data.response);
-        if (data.success) setTimeout(() => window.location.reload(), 2000);
+        renderRoutingBreadcrumb(data.routing || []);
+        if (data.success && isCallActive) {
+            speakText(data.response);
+        }
     } catch (err) {
         appendMessage('bot', 'COMMUNICATION ERROR');
     }
@@ -585,5 +666,172 @@ async function runMcpScan() {
         btn.textContent = 'MCP SCAN';
     }
 }
+
+// ── Voice Chat Agent ──
+
+const btnCall = document.getElementById('btn-call');
+const btnHangup = document.getElementById('btn-hangup');
+const voiceStatus = document.getElementById('voice-status');
+const avatarMouth = document.querySelector('.avatar-mouth');
+const avatarEarL = document.querySelector('.avatar-ear-l');
+const avatarEarR = document.querySelector('.avatar-ear-r');
+const pulseRings = document.querySelectorAll('.pulse-ring');
+
+let recognition = null;
+let isCallActive = false;
+let voiceActivityTimer = null;
+
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+function setAvatarSpeaking(active) {
+    if (active) {
+        avatarMouth.setAttribute('d', 'M48,44 Q60,58 72,44');
+        avatarMouth.setAttribute('stroke', '#00ff88');
+        avatarEarL.setAttribute('fill', '#00f2ff');
+        avatarEarR.setAttribute('fill', '#00f2ff');
+        pulseRings.forEach(r => r.setAttribute('stroke', '#00ff88'));
+    } else {
+        avatarMouth.setAttribute('d', 'M48,44 Q60,54 72,44');
+        avatarMouth.setAttribute('stroke', '#00f2ff');
+        avatarEarL.setAttribute('fill', '#00f2ff');
+        avatarEarR.setAttribute('fill', '#00f2ff');
+        pulseRings.forEach(r => r.setAttribute('stroke', '#00f2ff'));
+    }
+}
+
+function animateMouth() {
+    if (!isCallActive) return;
+    if (recognition && recognition.speaking) {
+        const openY = 48 + Math.random() * 14;
+        avatarMouth.setAttribute('d', `M48,44 Q60,${openY} 72,44`);
+    } else {
+        avatarMouth.setAttribute('d', 'M48,44 Q60,54 72,44');
+    }
+    requestAnimationFrame(animateMouth);
+}
+
+function startCall() {
+    if (!SpeechRecognition) {
+        appendMessage('bot', 'VOICE NOT SUPPORTED IN THIS BROWSER. TYPE INSTEAD.');
+        return;
+    }
+    isCallActive = true;
+    btnCall.disabled = true;
+    btnHangup.disabled = false;
+    voiceStatus.textContent = 'LISTENING...';
+    voiceStatus.style.color = '#00ff88';
+    setAvatarSpeaking(true);
+
+    recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = 'en-US';
+
+    recognition.onresult = (e) => {
+        let transcript = '';
+        for (let i = e.resultIndex; i < e.results.length; i++) {
+            if (e.results[i].isFinal) {
+                transcript += e.results[i][0].transcript;
+            }
+        }
+        if (transcript.trim()) {
+            voiceStatus.textContent = 'YOU: ' + transcript;
+            appendMessage('user', transcript);
+            clearTimeout(voiceActivityTimer);
+            voiceActivityTimer = setTimeout(() => {
+                sendVoiceQuery(transcript);
+            }, 800);
+        }
+    };
+
+    recognition.onerror = (e) => {
+        console.error('Voice error:', e.error);
+        if (e.error === 'no-speech') return;
+        appendMessage('bot', 'VOICE ERROR: ' + e.error);
+        hangupCall();
+    };
+
+    recognition.onend = () => {
+        if (isCallActive) {
+            try { recognition.start(); } catch {}
+        }
+    };
+
+    try { recognition.start(); } catch (e) { console.error(e); }
+    animateMouth();
+}
+
+async function sendVoiceQuery(text) {
+    voiceStatus.textContent = 'THINKING...';
+    setAvatarSpeaking(false);
+    try {
+        const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text })
+        });
+        const data = await res.json();
+        appendMessage('bot', data.response);
+        renderRoutingBreadcrumb(data.routing || []);
+        speakText(data.response);
+        voiceStatus.textContent = 'LISTENING...';
+        setAvatarSpeaking(true);
+    } catch (err) {
+        const errMsg = 'COMMS ERROR';
+        appendMessage('bot', errMsg);
+        speakText(errMsg);
+        voiceStatus.textContent = 'LISTENING...';
+        setAvatarSpeaking(true);
+    }
+}
+
+function speakText(text) {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(text);
+    utterance.rate = 1.0;
+    utterance.pitch = 1.0;
+    utterance.volume = 1.0;
+    utterance.onstart = () => setAvatarSpeaking(true);
+    utterance.onend = () => { if (isCallActive) setAvatarSpeaking(true); };
+    utterance.onerror = () => { if (isCallActive) setAvatarSpeaking(true); };
+    speechSynthesis.speak(utterance);
+}
+
+function renderRoutingBreadcrumb(routing) {
+    let el = document.getElementById('routing-breadcrumb');
+    if (!el) {
+        el = document.createElement('div');
+        el.id = 'routing-breadcrumb';
+        el.className = 'routing-breadcrumb';
+        document.querySelector('.intercom-container').appendChild(el);
+    }
+    if (!routing || routing.length === 0) { el.style.display = 'none'; return; }
+    el.style.display = 'flex';
+    el.innerHTML = routing.map((r, i) => {
+        const statusIcon = r.status === 'ok' ? '✓' : r.status === 'error' ? '✗' : '⋯';
+        const statusClass = r.status === 'ok' ? 'ok' : r.status === 'error' ? 'error' : 'pending';
+        const detail = r.detail ? `<span class="rt-detail">${r.detail}</span>` : '';
+        const arrow = i < routing.length - 1 ? '<span class="rt-arrow">→</span>' : '';
+        return `<span class="rt-node ${statusClass}"><span class="rt-icon">${statusIcon}</span><span class="rt-label">${r.node}</span>${detail}</span>${arrow}`;
+    }).join('');
+}
+
+function hangupCall() {
+    isCallActive = false;
+    if (recognition) {
+        try { recognition.stop(); } catch {}
+        recognition = null;
+    }
+    btnCall.disabled = false;
+    btnHangup.disabled = true;
+    voiceStatus.textContent = 'STANDBY';
+    voiceStatus.style.color = '#7a828e';
+    setAvatarSpeaking(false);
+    avatarMouth.setAttribute('d', 'M48,44 Q60,54 72,44');
+}
+
+btnCall.addEventListener('click', startCall);
+btnHangup.addEventListener('click', hangupCall);
 
 init();
