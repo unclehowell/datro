@@ -51,11 +51,9 @@ async function handleLogin() {
     }
 }
 
-const awsStatus = document.getElementById('aws-status');
-const flywheelState = document.getElementById('flywheel-state');
 const branchCount = document.getElementById('branch-count');
-const logContent = document.getElementById('log-content');
 const planEditor = document.getElementById('plan-editor');
+const logContent = document.getElementById('log-content');
 const activeBranchPath = document.getElementById('active-branch-path');
 const activeSideBadge = document.getElementById('active-side-badge');
 const btnSavePlan = document.getElementById('btn-save-plan');
@@ -67,9 +65,6 @@ const lowBreadcrumb = document.getElementById('low-breadcrumb');
 const btnCollapseLeft = document.getElementById('btn-collapse-left');
 const btnCollapseRight = document.getElementById('btn-collapse-right');
 
-const btnOta = document.getElementById('btn-ota');
-const btnMeta = document.getElementById('btn-meta');
-const btnTogglePause = document.getElementById('btn-toggle-pause');
 const btnClearLogs = document.getElementById('btn-clear-logs');
 
 const trackCanvas = document.getElementById('track-canvas');
@@ -143,19 +138,13 @@ async function init() {
     await fetchConfig();
     await fetchBranches();
     await fetchVersion();
-    await fetchAwsStatus();
     await fetchFuel();
-    await updatePauseButtonState();
-    connectLogs();
     initTrackCanvas();
     initGearStick();
 
     btnSavePlan.addEventListener('click', saveFile);
     document.getElementById('btn-push').addEventListener('click', pushToGit);
     document.getElementById('btn-pull').addEventListener('click', pullFromGit);
-    btnOta.addEventListener('click', triggerOta);
-    btnMeta.addEventListener('click', triggerMeta);
-    btnTogglePause.addEventListener('click', togglePause);
     btnClearLogs.addEventListener('click', () => logContent.textContent = '');
     btnCollapseLeft.addEventListener('click', () => { if (activeFile) onBranchSelect('left', activeFile.branch); });
     btnCollapseRight.addEventListener('click', () => { if (activeFile) onBranchSelect('right', activeFile.branch); });
@@ -220,7 +209,6 @@ async function init() {
         await updateConfig({ gear: val });
     });
 
-    setInterval(fetchAwsStatus, 10000);
     setInterval(fetchFuel, 5000);
     setInterval(updateRpm, 200);
 }
@@ -390,21 +378,13 @@ async function fetchFuel() {
     }
 }
 
-async function fetchAwsStatus() {
-    try {
-        const res = await apiFetch('/api/aws/status');
-        const data = await res.json();
-        awsStatus.textContent = data.uptime.split(',')[0].replace('up ', '').toUpperCase();
-
-        const isPausedRes = await apiFetch('/api/aws/is-paused');
-        const isPausedData = await isPausedRes.json();
-        flywheelState.textContent = isPausedData.paused ? 'PAUSED' : 'ACTIVE';
-        flywheelState.style.color = isPausedData.paused ? 'var(--danger)' : 'var(--success)';
-    } catch (err) {
-        awsStatus.textContent = 'OFFLINE';
-        flywheelState.textContent = 'UNKNOWN';
-    }
-}
+// AWS functions removed — system is Cloudflare-native
+async function fetchAwsStatus() { return; }
+async function updatePauseButtonState() { return; }
+async function togglePause() { return; }
+function connectLogs() { return; }
+async function triggerOta() { alert('OTA: AWS decommissioned. Use git push + Pages deploy.'); }
+async function triggerMeta() { alert('Meta-review runs in CF Worker on cron. Flywheel handles this.'); }
 
 // ── Branch Trees (Left + Right) ──
 
@@ -643,59 +623,6 @@ async function pullFromGit() {
         btn.disabled = false;
         btn.textContent = 'PULL';
     }
-}
-
-async function updatePauseButtonState() {
-    try {
-        const res = await apiFetch('/api/aws/is-paused');
-        const data = await res.json();
-        btnTogglePause.textContent = data.paused ? 'RESUME' : 'PAUSE';
-    } catch (err) { }
-}
-
-async function togglePause() {
-    const isPaused = btnTogglePause.textContent === 'RESUME';
-    try {
-        await apiFetch('/api/aws/toggle-pause', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ pause: !isPaused })
-        });
-        await updatePauseButtonState();
-    } catch (err) { }
-}
-
-function connectLogs() {
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const socket = new WebSocket(`${protocol}//${window.location.host}/ws/logs/aws`);
-    socket.onmessage = (e) => {
-        logContent.textContent += e.data;
-        logContent.scrollTop = logContent.scrollHeight;
-    };
-    socket.onclose = () => setTimeout(connectLogs, 5000);
-}
-
-async function triggerOta() {
-    if (!confirm('TRIGGER AWS OVER-THE-AIR UPDATE?')) return;
-    btnOta.disabled = true;
-    try {
-        const res = await apiFetch('/api/trigger/ota', { method: 'POST' });
-        const data = await res.json();
-        alert('OTA Update Output:\n' + data.output);
-    } catch (err) {
-        alert('OTA Update failed.');
-    } finally { btnOta.disabled = false; }
-}
-
-async function triggerMeta() {
-    btnMeta.disabled = true;
-    try {
-        const res = await apiFetch('/api/trigger/meta', { method: 'POST' });
-        const data = await res.json();
-        alert('Meta-Review Output:\n' + data.output);
-    } catch (err) {
-        alert('Meta-Review failed.');
-    } finally { btnMeta.disabled = false; }
 }
 
 async function sendChat() {
