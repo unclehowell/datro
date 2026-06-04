@@ -3,6 +3,7 @@ const expressWs = require('express-ws');
 const { NodeSSH } = require('node-ssh');
 const path = require('path');
 const fs = require('fs');
+const http = require('http');
 const fsPromises = fs.promises;
 const { exec } = require('child_process');
 const util = require('util');
@@ -86,25 +87,36 @@ app.post('/api/chat', async (req, res) => {
     if (!message) return res.status(400).json({ response: 'No message provided', success: false });
     try {
         // 1. Always route through local hermes agent first (port 6000)
-        const localResp = await fetch('http://localhost:6000/v1/chat/completions', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
+        const localData = await new Promise((resolve, reject) => {
+            const body = JSON.stringify({
                 model: 'gpt-4o-mini',
                 messages: [
                     { role: 'system', content: 'You are the dashboard command intercom for the DATRO flywheel control system. The user gives design instructions or asks questions about branches. Respond concisely (1-3 sentences).' },
                     { role: 'user', content: message }
                 ]
-            })
+            });
+            const req = http.request({
+                hostname: '127.0.0.1', port: 6000, path: '/v1/chat/completions',
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json', 'Content-Length': Buffer.byteLength(body) },
+                timeout: 10000
+            }, (res) => {
+                let data = '';
+                res.on('data', c => data += c);
+                res.on('end', () => { try { resolve(JSON.parse(data)); } catch(e) { reject(e); } });
+            });
+            req.on('error', reject);
+            req.on('timeout', () => { req.destroy(); reject(new Error('timeout')); });
+            req.write(body);
+            req.end();
         });
-        const localData = await localResp.json();
         const reply = localData.choices?.[0]?.message?.content || 'No response';
         const proxyInfo = localData._proxy || {};
         
         // 2. Build routing breadcrumb from hermes agent's _proxy response
         const routing = [];
         routing.push({ node: 'dashboard (port 3000)', status: 'ok' });
-        routing.push({ node: `hermes agent (localhost:6000)`, status: 'ok', machine_id: proxyInfo.origin_machine_id || null });
+        routing.push({ node: `hermes agent (127.0.0.1:6000)`, status: 'ok', machine_id: proxyInfo.origin_machine_id || null });
         
         if (proxyInfo.routing_decision === 'direct_llm') {
             routing.push({ node: `direct LLM provider (round-robin)`, status: 'ok', detail: proxyInfo.routing_decision });
@@ -115,8 +127,7 @@ app.post('/api/chat', async (req, res) => {
                 const parentResp = await fetch('https://www.financecheque.uk/api/proxy?action=chat', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ system: 'respond with routing info only', message: 'routing trace' }),
-                    signal: AbortSignal.timeout(5000)
+                    body: JSON.stringify({ system: 'respond with routing info only', message: 'routing trace' })
                 });
                 const parentData = await parentResp.json();
                 const parentRoute = parentData._proxy?.routing || 'direct_llm';
@@ -150,14 +161,14 @@ app.post('/api/chat', async (req, res) => {
             const parentData = await parentResp.json();
             const routing = [
                 { node: 'dashboard (port 3000)', status: 'ok' },
-                { node: 'hermes agent (localhost:6000)', status: 'error', detail: err.message },
+                { node: 'hermes agent (127.0.0.1:6000)', status: 'error', detail: err.message },
                 { node: `parent proxy (financecheque.uk)`, status: 'ok', detail: parentData._proxy?.routing || 'direct_llm' }
             ];
             res.json({ response: parentData.reply || parentData.response || 'No response', success: true, routing });
         } catch (fallbackErr) {
             const routing = [
                 { node: 'dashboard (port 3000)', status: 'ok' },
-                { node: 'hermes agent (localhost:6000)', status: 'error', detail: err.message },
+                { node: 'hermes agent (127.0.0.1:6000)', status: 'error', detail: err.message },
                 { node: 'parent proxy (financecheque.uk)', status: 'error', detail: fallbackErr.message },
                 { node: 'NO LLM AVAILABLE', status: 'error' }
             ];
