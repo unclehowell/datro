@@ -1,5 +1,13 @@
 # Changelog
 
+## [datro-v0.0.0.14] - 2026-06-04
+
+### Fixed
+- fix(datro): Remove excessive blank lines
+
+### Changed
+- ux(datro): Add social media links for audience engagement
+
 ## [datro-v0.0.0.13] - 2026-06-02
 
 ### Fixed
