@@ -1,5 +1,13 @@
 # Changelog
 
+## [wayback-v0.0.0.12] - 2026-06-05
+
+### Fixed
+- fix(wayback): Remove excessive blank lines
+
+### Changed
+- ux(wayback): Fix z-index stacking for proper element layering
+
 ## [wayback-v0.0.0.11] - 2026-06-03
 
 ### Fixed
