@@ -5,7 +5,7 @@ const https = require('https');
 
 const PORT = process.env.PORT || 3456;
 const CONFIG_PATH = path.join(__dirname, 'command.config.json');
-const APP_VERSION = 'command-v1.1.0.00';
+const APP_VERSION = 'command-r81';
 
 // ── Config helpers ──
 
@@ -18,17 +18,13 @@ function saveConfig(cfg) {
   try { fs.writeFileSync(CONFIG_PATH, JSON.stringify(cfg, null, 2)); } catch {}
 }
 
-function getSettings() {
-  const cfg = loadConfig();
-  return {
-    github_owner: cfg.github_owner || process.env.GITHUB_OWNER || 'unclehowell',
-    github_repo: cfg.github_repo || process.env.GITHUB_REPO || 'datro',
-    parent_proxy_url: cfg.parent_proxy_url || process.env.PARENT_PROXY_URL || 'https://www.financecheque.uk',
-    cf_worker_url: cfg.cf_worker_url || process.env.CF_WORKER_URL || 'https://datro-flywheel.righteous.workers.dev',
-    branch_ref: cfg.branch_ref || process.env.BRANCH_REF || 'command',
-    oauth_configured: !!process.env.GITHUB_OAUTH_CLIENT_ID,
-  };
-}
+const HARDCODED = {
+  github_owner: 'unclehowell',
+  github_repo: 'datro',
+  parent_proxy_url: 'https://www.financecheque.uk',
+  cf_worker_url: 'https://datro-flywheel.righteous.workers.dev',
+  branch_ref: 'command',
+};
 
 function getGhToken(req) {
   const auth = req.headers['authorization'] || '';
@@ -38,6 +34,16 @@ function getGhToken(req) {
     if (cfg.oauth_tokens && cfg.oauth_tokens[t]) return cfg.oauth_tokens[t];
   }
   return process.env.GITHUB_TOKEN || '';
+}
+
+function getCfToken(req) {
+  const auth = req.headers['authorization'] || '';
+  if (auth.startsWith('Bearer ')) {
+    const t = auth.slice(7);
+    const cfg = loadConfig();
+    if (cfg.cf_tokens && cfg.cf_tokens[t]) return cfg.cf_tokens[t];
+  }
+  return process.env.CLOUDFLARE_API_TOKEN || '';
 }
 
 // ── GitHub API helpers ──
@@ -152,8 +158,21 @@ app.get('/api/status', (req, res) => {
 });
 
 // GET /api/version
-app.get('/api/version', (req, res) => {
-  res.json({ version: APP_VERSION });
+app.get('/api/version', async (req, res) => {
+  const ghT = process.env.GITHUB_TOKEN || '';
+  let version = APP_VERSION;
+  if (ghT) {
+    try {
+      const resp = await ghFetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', {
+        headers: { 'Authorization': 'Bearer ' + ghT, 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-local' },
+      });
+      if (resp.ok) {
+        const data = await resp.json();
+        if (Array.isArray(data)) version = 'command-r' + data.length;
+      }
+    } catch {}
+  }
+  res.json({ version });
 });
 
 // POST /api/login
@@ -204,9 +223,65 @@ app.get('/api/auth/github/callback', async (req, res) => {
   }
 });
 
+// GET /api/auth/cloudflare/url
+app.get('/api/auth/cloudflare/url', (req, res) => {
+  const cfId = process.env.CLOUDFLARE_OAUTH_CLIENT_ID;
+  if (!cfId) {
+    return res.json({ url: null, token: true, message: 'CF OAuth not configured. Paste a token instead.' });
+  }
+  const redirectUri = req.protocol + '://' + req.get('host') + '/api/auth/cloudflare/callback';
+  const state = Math.random().toString(36).slice(2);
+  res.json({ url: 'https://dash.cloudflare.com/oauth2/auth?client_id=' + cfId + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=pages:write+workers:read&state=' + state, state });
+});
+
+// POST /api/auth/cloudflare/url (token paste fallback)
+app.post('/api/auth/cloudflare/url', (req, res) => {
+  const pastedToken = req.body?.token || '';
+  if (!pastedToken) return res.status(400).json({ error: 'Token required' });
+  const auth = req.headers['authorization'] || '';
+  if (auth.startsWith('Bearer ')) {
+    const t = auth.slice(7);
+    const cfg = loadConfig();
+    if (!cfg.cf_tokens) cfg.cf_tokens = {};
+    cfg.cf_tokens[t] = pastedToken;
+    saveConfig(cfg);
+    return res.json({ success: true });
+  }
+  res.status(401).json({ error: 'Unauthorized' });
+});
+
+// GET /api/auth/cloudflare/callback
+app.get('/api/auth/cloudflare/callback', async (req, res) => {
+  const code = req.query.code;
+  const cfId = process.env.CLOUDFLARE_OAUTH_CLIENT_ID;
+  const cfSecret = process.env.CLOUDFLARE_OAUTH_CLIENT_SECRET;
+  if (!code || !cfId || !cfSecret) return res.status(400).json({ error: 'CF OAuth params missing' });
+  const redirectUri = req.protocol + '://' + req.get('host') + '/api/auth/cloudflare/callback';
+  try {
+    const tokResp = await ghFetch('https://dash.cloudflare.com/oauth2/token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+      body: JSON.stringify({ client_id: cfId, client_secret: cfSecret, code, redirect_uri: redirectUri, grant_type: 'authorization_code' }),
+    });
+    if (!tokResp.ok) return res.status(400).json({ error: 'CF token exchange failed' });
+    const tokData = await tokResp.json();
+    if (!tokData.access_token) return res.status(400).json({ error: 'No CF access token' });
+    const localToken = genToken();
+    const cfg = loadConfig();
+    if (!cfg.cf_tokens) cfg.cf_tokens = {};
+    cfg.cf_tokens[localToken] = tokData.access_token;
+    saveConfig(cfg);
+    const returnTo = req.query.return_to || '/';
+    res.redirect(returnTo + (returnTo.includes('?') ? '&' : '?') + 'token=' + localToken);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // Auth middleware for /api/*
-app.all('/api/*', (req, res, next) => {
-  if (['/api/status', '/api/version', '/api/login', '/api/auth/github/url', '/api/auth/github/callback', '/api/settings'].some(p => req.path === p && req.method === 'GET' || req.path === '/api/login' && req.method === 'POST')) return next();
+app.all(/^\/api\//, (req, res, next) => {
+  const publicPaths = ['/api/status', '/api/version', '/api/login', '/api/settings', '/api/auth/github/url', '/api/auth/github/callback', '/api/auth/cloudflare/url', '/api/auth/cloudflare/callback'];
+  if (publicPaths.some(p => req.path === p) || (req.path === '/api/login' && req.method === 'POST')) return next();
   const auth = req.headers['authorization'] || '';
   const token = auth.startsWith('Bearer ') ? auth.slice(7) : req.query.token || '';
   if (!validateToken(token)) return res.status(401).json({ error: 'Unauthorized' });
@@ -216,16 +291,15 @@ app.all('/api/*', (req, res, next) => {
 
 // GET /api/settings
 app.get('/api/settings', (req, res) => {
-  res.json(getSettings());
-});
-
-// POST /api/settings
-app.post('/api/settings', (req, res) => {
-  const current = loadConfig();
-  const allowed = ['github_owner', 'github_repo', 'parent_proxy_url', 'cf_worker_url', 'branch_ref'];
-  for (const k of allowed) if (req.body[k] !== undefined) current[k] = req.body[k];
-  saveConfig(current);
-  res.json({ success: true });
+  const ghConnected = !!process.env.GITHUB_TOKEN || getGhToken(req) !== '';
+  const cfConnected = !!process.env.CLOUDFLARE_API_TOKEN || getCfToken(req) !== '';
+  res.json({
+    ...HARDCODED,
+    oauth_configured: !!process.env.GITHUB_OAUTH_CLIENT_ID,
+    cf_oauth_configured: !!process.env.CLOUDFLARE_OAUTH_CLIENT_ID,
+    gh_connected: ghConnected ? 'connected' : '',
+    cf_connected: cfConnected ? 'connected' : '',
+  });
 });
 
 // GET /api/config
@@ -249,7 +323,7 @@ app.get('/api/fuel', (req, res) => {
 
 // GET /api/branches
 app.get('/api/branches', async (req, res) => {
-  const s = getSettings();
+  const s = HARDCODED;
   let contents;
   try { contents = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static?ref=' + encodeURIComponent(s.branch_ref), req.ghToken); }
   catch { return res.json([]); }
@@ -280,7 +354,7 @@ app.get('/api/branches', async (req, res) => {
 // GET|POST /api/branches/:branch/files/:side/:filename
 const fileRe = /^\/api\/branches\/([a-zA-Z0-9_-]+)\/files\/(high|left|right|low)\/(.+)$/;
 app.all(fileRe, async (req, res) => {
-  const s = getSettings();
+  const s = HARDCODED;
   const branch = req.params[0] || req.params.branch;
   const side = req.params[1] || req.params.side;
   const fname = req.params[2] || req.params.filename;
@@ -309,7 +383,7 @@ app.all(fileRe, async (req, res) => {
 
 // GET /api/memory/:branch
 app.get(/^\/api\/memory\/([a-zA-Z0-9_-]+)$/, async (req, res) => {
-  const s = getSettings();
+  const s = HARDCODED;
   const branch = req.params[0];
   for (const f of ['MEMORY.md', 'MEMORY.left.md']) {
     try {
@@ -324,7 +398,7 @@ app.get(/^\/api\/memory\/([a-zA-Z0-9_-]+)$/, async (req, res) => {
 app.post('/api/chat', async (req, res) => {
   const message = req.body?.message || '';
   if (!message) return res.status(400).json({ response: 'No message', success: false });
-  const s = getSettings();
+  const s = HARDCODED;
   try {
     const resp = await ghFetch(s.parent_proxy_url + '/api/proxy?action=chat', {
       method: 'POST',
@@ -341,7 +415,7 @@ app.post('/api/chat', async (req, res) => {
 // GET /api/mcp
 app.get('/api/mcp', async (req, res) => {
   const target = req.query.url || 'https://datro.directory';
-  const s = getSettings();
+  const s = HARDCODED;
   try {
     const resp = await ghFetch(s.cf_worker_url + '/__mcp?url=' + encodeURIComponent(target));
     res.json(await resp.json());
@@ -350,7 +424,7 @@ app.get('/api/mcp', async (req, res) => {
 
 // GET /api/rereleases
 app.get('/api/rereleases', async (req, res) => {
-  const s = getSettings();
+  const s = HARDCODED;
   try {
     const releases = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/releases?per_page=10', req.ghToken);
     const rereleases = (Array.isArray(releases) ? releases : []).map(r => ({ branch: (r.tag_name || '').split('-v')[0], tag: r.tag_name, name: r.name, published: r.published_at }));
@@ -360,7 +434,7 @@ app.get('/api/rereleases', async (req, res) => {
 
 // POST /api/flywheel/trigger
 app.post('/api/flywheel/trigger', async (req, res) => {
-  const s = getSettings();
+  const s = HARDCODED;
   try {
     const resp = await ghFetch(s.cf_worker_url + '/__cron', { method: 'POST' });
     const text = await resp.text();
@@ -370,7 +444,7 @@ app.post('/api/flywheel/trigger', async (req, res) => {
 
 // GET /api/flywheel/status
 app.get('/api/flywheel/status', async (req, res) => {
-  const s = getSettings();
+  const s = HARDCODED;
   try {
     const resp = await ghFetch(s.cf_worker_url + '/__status');
     res.json(await resp.json());
@@ -394,12 +468,12 @@ app.get('/api/local/profiles', (req, res) => {
 });
 
 // AWS endpoints (gone)
-app.all('/api/aws/*', (req, res) => res.status(410).json({ error: 'AWS decommissioned.', success: false }));
+app.all(/^\/api\/aws\//, (req, res) => res.status(410).json({ error: 'AWS decommissioned.', success: false }));
 app.post('/api/trigger/ota', (req, res) => res.status(410).json({ error: 'AWS decommissioned.', success: false }));
 app.post('/api/trigger/meta', (req, res) => res.status(410).json({ error: 'AWS decommissioned.', success: false }));
 
 // SPA fallback
-app.get('*', (req, res) => {
+app.use((req, res) => {
   if (req.path.startsWith('/api/')) return res.status(404).json({ error: 'Not found' });
   res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });

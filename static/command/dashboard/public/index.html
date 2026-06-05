@@ -10,84 +10,70 @@
 
 <div id="app" style="display:none">
 
-  <!-- Top Bar -->
-  <header id="topbar">
-    <div class="topbar-left">
-      <span class="topbar-title">COMMAND</span>
-      <span class="topbar-badge" id="version-badge">v—</span>
-      <span class="topbar-badge status-badge" id="runtime-badge">CF</span>
-    </div>
-    <div class="topbar-center">
-      <button class="topbar-btn" id="btn-settings" title="Settings">⚙</button>
-      <button class="topbar-btn" id="btn-github-auth" title="GitHub Auth">🔑</button>
-      <span class="topbar-status" id="gh-auth-status">—</span>
-    </div>
-    <div class="topbar-right">
-      <span class="topbar-update" id="update-status">✓ up to date</span>
-      <button class="topbar-btn" id="btn-logout" title="Logout">⏻</button>
-    </div>
-  </header>
+  <!-- Racetrack Stage (top 2/3) -->
+  <div id="track-stage">
+    <canvas id="track-canvas"></canvas>
 
-  <!-- HIGH Wing Files (top strip) -->
-  <div class="wing-strip wing-strip-top" id="wing-strip-high">
-    <div class="wing-strip-label">▲ HIGH</div>
-    <div class="wing-strip-files" id="wing-list-high"></div>
-  </div>
-
-  <!-- Main Content Area -->
-  <div class="main-area">
-
-    <!-- LEFT Wing Files -->
-    <div class="wing-side wing-side-left" id="wing-side-left">
-      <div class="wing-side-label">◀ LEFT</div>
-      <div class="wing-side-files" id="wing-list-left"></div>
+    <!-- Wing file overlays (fade on hover) -->
+    <div id="wing-top" class="wing-overlay wing-overlay-top">
+      <div class="wing-overlay-label">▲ HIGH</div>
+      <div class="wing-overlay-files" id="wing-files-top"></div>
+    </div>
+    <div id="wing-left" class="wing-overlay wing-overlay-left">
+      <div class="wing-overlay-label">◀ LEFT</div>
+      <div class="wing-overlay-files" id="wing-files-left"></div>
+    </div>
+    <div id="wing-right" class="wing-overlay wing-overlay-right">
+      <div class="wing-overlay-label">RIGHT ▶</div>
+      <div class="wing-overlay-files" id="wing-files-right"></div>
+    </div>
+    <div id="wing-bottom" class="wing-overlay wing-overlay-bottom">
+      <div class="wing-overlay-label">▼ LOW</div>
+      <div class="wing-overlay-files" id="wing-files-bottom"></div>
     </div>
 
-    <!-- Racetrack Center -->
-    <div class="center-stage" id="center-stage">
-      <canvas id="track-canvas" class="track-canvas"></canvas>
-      <div class="branch-selector-bar">
+    <!-- Track controls overlay (always visible) -->
+    <div id="track-controls">
+      <div class="track-controls-left">
+        <span class="ttl">COMMAND</span>
+        <span class="badge" id="version-badge">—</span>
+      </div>
+      <div class="track-controls-center">
         <select id="branch-select" class="cyber-select" title="Active branch">
           <option value="">— branch —</option>
         </select>
       </div>
+      <div class="track-controls-right">
+        <button id="btn-gh-connect" class="ctrl-btn" title="Connect GitHub">GH</button>
+        <button id="btn-cf-connect" class="ctrl-btn" title="Connect Cloudflare">CF</button>
+        <span id="gh-status" class="ctrl-status"></span>
+        <span id="cf-status" class="ctrl-status"></span>
+        <button id="btn-logout" class="ctrl-btn logout" title="Logout">⏻</button>
+      </div>
     </div>
-
-    <!-- RIGHT Wing Files -->
-    <div class="wing-side wing-side-right" id="wing-side-right">
-      <div class="wing-side-label">RIGHT ▶</div>
-      <div class="wing-side-files" id="wing-list-right"></div>
-    </div>
-
   </div>
 
-  <!-- LOW Wing Files (bottom strip) -->
-  <div class="wing-strip wing-strip-bottom" id="wing-strip-low">
-    <div class="wing-strip-label">▼ LOW</div>
-    <div class="wing-strip-files" id="wing-list-low"></div>
-  </div>
+  <!-- Dashboard (bottom 1/3) -->
+  <div id="dash-panel">
 
-  <!-- Car Dashboard (lower third) -->
-  <div class="dash-panel" id="dashboard-panel">
-
-    <!-- Steering Wheel Dial (left) -->
-    <div class="dash-section dash-dial-section">
-      <div class="dash-label">STEERING</div>
-      <div class="dial-container" id="dial-container">
-        <canvas id="dial-canvas" width="160" height="160"></canvas>
-        <div class="dial-values">
-          <span class="dial-bias" id="dial-bias">BIAS: 0</span>
-          <span class="dial-risk" id="dial-risk">RISK: 0</span>
-        </div>
+    <!-- Steering Dial (left) -->
+    <div class="dash-cell dash-left">
+      <div class="dash-title">STEERING</div>
+      <div class="dial-wrap">
+        <canvas id="dial-canvas" width="140" height="140"></canvas>
+      </div>
+      <div class="dial-labels">
+        <span id="dial-bias">BIAS:0</span>
+        <span id="dial-risk">RISK:0</span>
       </div>
     </div>
 
-    <!-- Radio / Intercom (center) -->
-    <div class="dash-section dash-radio-section">
-      <div class="dash-label">RADIO — INTERCOM</div>
-      <div class="radio-container">
+    <!-- Avatar / Radio (center) -->
+    <div class="dash-cell dash-center">
+      <div class="dash-title">RADIO — INTERCOM</div>
+      <div class="radio-wrap">
         <div class="radio-avatar" id="radio-avatar">
-          <svg viewBox="0 0 60 60" width="60" height="60">
+          <svg viewBox="0 0 60 60" width="50" height="50">
             <circle cx="30" cy="30" r="26" fill="#1a1c2a" stroke="#00f2ff" stroke-width="1.5"/>
             <circle cx="30" cy="30" r="3" fill="#00f2ff" opacity="0.8"/>
             <path d="M30,5 Q45,15 45,30 Q45,45 30,55" stroke="#00f2ff" stroke-width="0.5" fill="none" opacity="0.3"/>
@@ -95,40 +81,39 @@
             <circle cx="30" cy="30" r="8" fill="none" stroke="#ff4444" stroke-width="1.5" opacity="0.6" class="radio-pulse"/>
           </svg>
         </div>
-        <div class="radio-chat" id="radio-chat">
-          <div class="radio-messages" id="radio-messages">
+        <div class="radio-chat">
+          <div class="radio-msgs" id="radio-messages">
             <span class="radio-placeholder">Standing by...</span>
           </div>
           <div class="radio-input-row">
             <input type="text" class="radio-input" id="radio-input" placeholder="Message agent..." autocomplete="off">
             <button class="radio-send-btn" id="radio-send-btn">⏎</button>
           </div>
-        </div>
-        <div class="radio-controls">
-          <button class="radio-btn call-btn" id="btn-call">CALL</button>
-          <button class="radio-btn hangup-btn" id="btn-hangup" disabled>END</button>
+          <div class="radio-btns">
+            <button class="call-btn" id="btn-call">CALL</button>
+            <button class="hangup-btn" id="btn-hangup" disabled>END</button>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- Stick Shift + Fuel (right) -->
-    <div class="dash-section dash-stick-section">
-      <div class="dash-label">TRANSMISSION</div>
-      <div class="stick-container">
+    <div class="dash-cell dash-right">
+      <div class="dash-title">TRANSMISSION</div>
+      <div class="stick-wrap">
         <div class="stick-gate" id="stick-gate">
-          <div class="gate-slot" data-gear="L" title="Slow (0.3x)">L</div>
-          <div class="gate-slot active" data-gear="N" title="Normal (1x)">N</div>
-          <div class="gate-slot" data-gear="H" title="Fast (3x)">H</div>
+          <div class="gate-slot" data-gear="L">L</div>
+          <div class="gate-slot active" data-gear="N">N</div>
+          <div class="gate-slot" data-gear="H">H</div>
         </div>
         <div class="stick-knob" id="stick-knob">N</div>
-        <div class="stick-label">RERELEASE RATE</div>
         <div class="stick-rate" id="stick-rate">1/hr</div>
       </div>
       <div class="fuel-gauges">
-        <div class="fuel-gauge"><div class="fuel-label">API</div><div class="fuel-bar"><div class="fuel-fill" id="fuel-api" style="height:70%"></div></div></div>
-        <div class="fuel-gauge"><div class="fuel-label">LLM</div><div class="fuel-bar"><div class="fuel-fill" id="fuel-llm" style="height:50%"></div></div></div>
-        <div class="fuel-gauge"><div class="fuel-label">CLI</div><div class="fuel-bar"><div class="fuel-fill" id="fuel-cli" style="height:80%"></div></div></div>
-        <div class="fuel-gauge"><div class="fuel-label">IDE</div><div class="fuel-bar"><div class="fuel-fill" id="fuel-ide" style="height:30%"></div></div></div>
+        <div class="fuel-gauge"><span class="fuel-label">API</span><div class="fuel-bar"><div class="fuel-fill" id="fuel-api"></div></div></div>
+        <div class="fuel-gauge"><span class="fuel-label">LLM</span><div class="fuel-bar"><div class="fuel-fill" id="fuel-llm"></div></div></div>
+        <div class="fuel-gauge"><span class="fuel-label">CLI</span><div class="fuel-bar"><div class="fuel-fill" id="fuel-cli"></div></div></div>
+        <div class="fuel-gauge"><span class="fuel-label">IDE</span><div class="fuel-bar"><div class="fuel-fill" id="fuel-ide"></div></div></div>
       </div>
     </div>
 
@@ -140,36 +125,12 @@
 <div id="login-overlay" class="login-overlay">
   <div class="login-box">
     <div class="login-title">COMMAND</div>
-    <div class="login-subtitle">Universal Control Interface</div>
+    <div class="login-subtitle">Racer Control Interface</div>
     <div class="login-input-row">
       <input type="password" class="login-input" id="login-passphrase" placeholder="Passphrase..." autocomplete="off">
       <button class="login-btn" id="login-btn">⏎</button>
     </div>
-    <div class="login-divider"><span>or</span></div>
-    <button class="login-gh-btn" id="login-gh-btn">Sign in with GitHub</button>
     <div class="login-error" id="login-error"></div>
-  </div>
-</div>
-
-<!-- Settings Modal -->
-<div id="settings-modal" class="modal" style="display:none">
-  <div class="modal-backdrop"></div>
-  <div class="modal-panel">
-    <div class="modal-header">SETTINGS <button class="modal-close" id="modal-settings-close">✕</button></div>
-    <div class="modal-body">
-      <label>GitHub Owner</label>
-      <input type="text" id="set-github-owner" class="modal-input">
-      <label>GitHub Repo</label>
-      <input type="text" id="set-github-repo" class="modal-input">
-      <label>Branch Ref</label>
-      <input type="text" id="set-branch-ref" class="modal-input">
-      <label>Parent Proxy URL</label>
-      <input type="text" id="set-parent-proxy" class="modal-input">
-      <label>CF Worker URL (flywheel)</label>
-      <input type="text" id="set-cf-worker" class="modal-input">
-      <button class="modal-save-btn" id="settings-save">SAVE</button>
-      <span class="settings-status" id="settings-status"></span>
-    </div>
   </div>
 </div>
 

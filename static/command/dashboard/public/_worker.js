@@ -1,4 +1,4 @@
-const APP_VERSION = 'command-v1.1.0.00';
+const APP_VERSION = 'command-r81';
 const GITHUB_API = 'https://api.github.com';
 const MD_FILES = ['AGENT.md', 'README.md', 'CHANGELOG.md', 'MEMORY.md', 'SKILLS.md', 'HEARTBEAT.md', 'SOUL.md', 'MASTERPLAN.md', 'RULES.md', 'TEMPLATE.md', 'CONTEXT.md', 'GLOSSARY.md', 'RESOURCES.md', 'TASKS.md', 'IDENTITY.md', 'SPEC.md'];
 const SIDES = ['high', 'left', 'right', 'low'];
@@ -23,21 +23,13 @@ function cors() {
   };
 }
 
-async function getSettings(kv, env) {
-  const raw = await kv.get('command:settings');
-  if (raw) return JSON.parse(raw);
-  return {
-    github_owner: env.GITHUB_OWNER || 'unclehowell',
-    github_repo: env.GITHUB_REPO || 'datro',
-    parent_proxy_url: env.PARENT_PROXY_URL || 'https://www.financecheque.uk',
-    cf_worker_url: env.CF_WORKER_URL || 'https://datro-flywheel.righteous.workers.dev',
-    branch_ref: env.BRANCH_REF || 'command',
-  };
-}
-
-async function saveSettings(kv, settings) {
-  await kv.put('command:settings', JSON.stringify(settings));
-}
+const HARDCODED = {
+  github_owner: 'unclehowell',
+  github_repo: 'datro',
+  parent_proxy_url: 'https://www.financecheque.uk',
+  cf_worker_url: 'https://datro-flywheel.righteous.workers.dev',
+  branch_ref: 'command',
+};
 
 function getGhToken(request, env) {
   const auth = request.headers.get('Authorization') || '';
@@ -85,13 +77,14 @@ async function validateToken(token, secret, kv) {
   try {
     const parts = token.split('.');
     if (parts.length !== 2) return false;
-    const p = JSON.parse(atob(parts[0]));
+    const raw = atob(parts[0]);
+    const p = JSON.parse(raw);
     if (p.t < Date.now()) return false;
     const stored = await kv.get('token:' + token);
     if (!stored) return false;
     const enc = new TextEncoder();
     const key = await crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
-    const sig = await crypto.subtle.sign('HMAC', key, enc.encode(p));
+    const sig = await crypto.subtle.sign('HMAC', key, enc.encode(raw));
     const expected = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 12);
     return expected === parts[1];
   } catch { return false; }
@@ -101,6 +94,16 @@ function rfp(branch, side, fname) {
   if (fname === 'master-record.md') return { path: 'static/' + branch + '.md', gh: 'static/' + encodeURIComponent(branch) + '.md' };
   const s = sfx(side, fname);
   return { path: 'static/' + branch + '/' + s, gh: 'static/' + encodeURIComponent(branch) + '/' + encodeURIComponent(s) };
+}
+
+async function checkGhToken(kv, token) {
+  const stored = await kv.get('oauth:gh_token:' + token);
+  return !!stored;
+}
+
+async function checkCfToken(kv, token) {
+  const stored = await kv.get('oauth:cf_token:' + token);
+  return !!stored;
 }
 
 export default {
@@ -126,7 +129,27 @@ export default {
 
       // GET /api/version
       if (path === '/api/version' && method === 'GET') {
-        return json({ version: APP_VERSION });
+        const ghT = env.GITHUB_TOKEN || '';
+        let version = APP_VERSION;
+        if (ghT) {
+          let cached = await kv.get('version:release_count');
+          if (cached) {
+            version = 'command-r' + cached;
+          } else {
+            try {
+              const resp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', {
+                headers: { 'Authorization': 'Bearer ' + ghT, 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-cf' },
+              });
+              const data = await resp.json();
+              if (Array.isArray(data)) {
+                const count = data.length;
+                await kv.put('version:release_count', String(count), { expirationTtl: 3600 });
+                version = 'command-r' + count;
+              }
+            } catch {}
+          }
+        }
+        return json({ version });
       }
 
       // POST /api/login (passphrase fallback)
@@ -174,10 +197,65 @@ export default {
         return json({ message: 'Use the OAuth flow to authenticate.' });
       }
 
+      // GET /api/auth/cloudflare/url
+      if (path === '/api/auth/cloudflare/url' && method === 'GET') {
+        const cfId = env.CLOUDFLARE_OAUTH_CLIENT_ID;
+        if (!cfId) {
+          // No OAuth configured – return token prompt fallback
+          return json({ url: null, token: true, message: 'CF OAuth not configured. Paste a token instead.' });
+        }
+        const redirectUri = url.origin + '/api/auth/cloudflare/callback';
+        const state = Math.random().toString(36).slice(2);
+        const cfUrl = 'https://dash.cloudflare.com/oauth2/auth?client_id=' + cfId + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=pages:write+workers:read&state=' + state;
+        return json({ url: cfUrl, state });
+      }
+
+      // POST /api/auth/cloudflare/url (token paste fallback)
+      if (path === '/api/auth/cloudflare/url' && method === 'POST') {
+        const pastedToken = body?.token || '';
+        if (!pastedToken) return json({ error: 'Token required' }, 400);
+        const auth = request.headers.get('Authorization') || '';
+        const authToken = (auth.startsWith('Bearer ') ? auth.slice(7) : '') || url.searchParams.get('token') || '';
+        if (!authToken) return json({ error: 'Auth token required' }, 401);
+        await kv.put('oauth:cf_token:' + authToken, pastedToken, { expirationTtl: 86400 });
+        return json({ success: true });
+      }
+
+      // GET /api/auth/cloudflare/callback
+      if (path === '/api/auth/cloudflare/callback' && method === 'GET') {
+        const code = url.searchParams.get('code');
+        const cfId = env.CLOUDFLARE_OAUTH_CLIENT_ID;
+        const cfSecret = env.CLOUDFLARE_OAUTH_CLIENT_SECRET;
+        if (!code || !cfId || !cfSecret) return json({ error: 'CF OAuth params missing' }, 400);
+        const redirectUri = url.origin + '/api/auth/cloudflare/callback';
+        const tokResp = await fetch('https://dash.cloudflare.com/oauth2/token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ client_id: cfId, client_secret: cfSecret, code, redirect_uri: redirectUri, grant_type: 'authorization_code' }),
+        });
+        const tokData = await tokResp.json();
+        const cfToken = tokData.access_token;
+        if (!cfToken) return json({ error: 'Failed to get CF token: ' + JSON.stringify(tokData) }, 400);
+        const storedToken = await genToken(secret, kv);
+        await kv.put('oauth:cf_token:' + storedToken, cfToken, { expirationTtl: 86400 });
+        const returnTo = url.searchParams.get('return_to') || url.origin + '/';
+        return Response.redirect(returnTo + (returnTo.includes('?') ? '&' : '?') + 'token=' + storedToken, 302);
+      }
+
       // GET /api/settings
       if (path === '/api/settings' && method === 'GET') {
-        const s = await getSettings(kv, env);
-        return json({ ...s, oauth_configured: !!env.GITHUB_OAUTH_CLIENT_ID });
+        const hasGhOAuth = !!env.GITHUB_OAUTH_CLIENT_ID;
+        const hasCfOAuth = !!env.CLOUDFLARE_OAUTH_CLIENT_ID;
+        const auth = request.headers.get('Authorization') || '';
+        const reqToken = auth.startsWith('Bearer ') ? auth.slice(7) : url.searchParams.get('token') || '';
+        const valid = await validateToken(reqToken, secret, kv);
+        let ghConnected = '';
+        let cfConnected = '';
+        if (valid) {
+          ghConnected = !!(env.GITHUB_TOKEN || await checkGhToken(kv, reqToken)) ? 'connected' : '';
+          cfConnected = !!(env.CLOUDFLARE_API_TOKEN || await checkCfToken(kv, reqToken)) ? 'connected' : '';
+        }
+        return json({ ...HARDCODED, oauth_configured: hasGhOAuth, cf_oauth_configured: hasCfOAuth, gh_connected: ghConnected, cf_connected: cfConnected });
       }
 
       // ── Auth required from here ──
@@ -188,18 +266,8 @@ export default {
         if (!valid) return json({ error: 'Unauthorized' }, 401);
         // Resolve GitHub token: OAuth token or env var
         var ghToken = await kv.get('oauth:gh_token:' + token) || env.GITHUB_TOKEN || '';
-      }
-
-      // POST /api/settings
-      if (path === '/api/settings' && method === 'POST') {
-        const current = await getSettings(kv, env);
-        const updated = { ...current, ...(body || {}) };
-        // Only allow whitelisted keys
-        const allowed = ['github_owner', 'github_repo', 'parent_proxy_url', 'cf_worker_url', 'branch_ref'];
-        const filtered = {};
-        for (const k of allowed) if (updated[k] !== undefined) filtered[k] = updated[k];
-        await saveSettings(kv, { ...current, ...filtered });
-        return json(filtered);
+        // Resolve CF token: OAuth token or env var
+        var cfToken = await kv.get('oauth:cf_token:' + token) || env.CLOUDFLARE_API_TOKEN || '';
       }
 
       // GET /api/config
@@ -224,7 +292,7 @@ export default {
 
       // GET /api/branches
       if (path === '/api/branches' && method === 'GET') {
-        const s = await getSettings(kv, env);
+        const s = HARDCODED;
         const cacheKey = 'branches:' + s.github_owner + '/' + s.github_repo + '@' + s.branch_ref;
         let cached = await kv.get(cacheKey);
         if (cached) return json(JSON.parse(cached));
@@ -264,7 +332,7 @@ export default {
       // GET|POST /api/branches/:branch/files/:side/:filename
       const fm = path.match(/^\/api\/branches\/([a-zA-Z0-9_-]+)\/files\/(high|left|right|low)\/(.+)$/);
       if (fm) {
-        const s = await getSettings(kv, env);
+        const s = HARDCODED;
         const [, branch, side, fname] = fm;
         const fi = rfp(branch, side, fname);
         if (method === 'GET') {
@@ -291,7 +359,7 @@ export default {
       // GET /api/memory/:branch
       const mm = path.match(/^\/api\/memory\/([a-zA-Z0-9_-]+)$/);
       if (mm && method === 'GET') {
-        const s = await getSettings(kv, env);
+        const s = HARDCODED;
         const branch = mm[1];
         for (const f of ['MEMORY.md', 'MEMORY.left.md']) {
           try {
@@ -306,7 +374,7 @@ export default {
       if (path === '/api/chat' && method === 'POST') {
         const message = body?.message || '';
         if (!message) return json({ response: 'No message', success: false }, 400);
-        const s = await getSettings(kv, env);
+        const s = HARDCODED;
         const proxyUrl = s.parent_proxy_url;
         const routing = [{ node: 'command dashboard', status: 'ok' }];
         try {
@@ -327,7 +395,7 @@ export default {
       // GET /api/mcp
       if (path === '/api/mcp' && method === 'GET') {
         const target = url.searchParams.get('url') || 'https://datro.directory';
-        const s = await getSettings(kv, env);
+        const s = HARDCODED;
         try {
           const resp = await fetch(s.cf_worker_url + '/__mcp?url=' + encodeURIComponent(target));
           return json(await resp.json());
@@ -336,7 +404,7 @@ export default {
 
       // GET /api/rereleases
       if (path === '/api/rereleases' && method === 'GET') {
-        const s = await getSettings(kv, env);
+        const s = HARDCODED;
         let lastCheck = await kv.get('rerelease:lastCheck');
         const lastTime = lastCheck ? parseInt(lastCheck, 10) : 0;
         try {
@@ -356,7 +424,7 @@ export default {
 
       // POST /api/flywheel/trigger
       if (path === '/api/flywheel/trigger' && method === 'POST') {
-        const s = await getSettings(kv, env);
+        const s = HARDCODED;
         try {
           const resp = await fetch(s.cf_worker_url + '/__cron', { method: 'POST' });
           const text = await resp.text();
@@ -366,7 +434,7 @@ export default {
 
       // GET /api/flywheel/status
       if (path === '/api/flywheel/status' && method === 'GET') {
-        const s = await getSettings(kv, env);
+        const s = HARDCODED;
         try {
           const resp = await fetch(s.cf_worker_url + '/__status');
           return json(await resp.json());

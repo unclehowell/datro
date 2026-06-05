@@ -1,6 +1,6 @@
-// ── State ──
 let token = sessionStorage.getItem('command_token') || '';
 let ghToken = '';
+let cfToken = '';
 let settings = {};
 let config = { bias: 0, risk: 0, gear: 3, toggle_exceptions: {} };
 let branches = [];
@@ -8,19 +8,13 @@ let activeBranch = '';
 let isCallActive = false;
 let recognition = null;
 let currentGear = 'N';
-let dialogOpen = false;
 
-// ── DOM refs ──
 const $ = id => document.getElementById(id);
 const app = $('app');
 const overlay = $('login-overlay');
 const loginInput = $('login-passphrase');
 const loginBtn = $('login-btn');
-const loginGhBtn = $('login-gh-btn');
 const loginError = $('login-error');
-const topbar = $('topbar');
-
-// ── Auth ──
 
 async function doPassphraseLogin(pass) {
   try {
@@ -36,39 +30,20 @@ async function doPassphraseLogin(pass) {
     } else {
       loginError.textContent = 'Invalid passphrase';
     }
-  } catch (e) {
+  } catch {
     loginError.textContent = 'Connection error';
-  }
-}
-
-async function doGithubOAuth() {
-  try {
-    const res = await fetch('/api/auth/github/url');
-    const data = await res.json();
-    if (data.url) {
-      // Store current page before redirect
-      sessionStorage.setItem('oauth_return_to', window.location.href);
-      window.location.href = data.url;
-    } else {
-      loginError.textContent = 'GitHub OAuth not configured on server';
-    }
-  } catch (e) {
-    loginError.textContent = 'Failed to initiate OAuth';
   }
 }
 
 function afterLogin() {
   overlay.style.display = 'none';
-  app.style.display = 'grid';
-  $('topbar').style.display = 'flex';
+  app.style.display = 'flex';
   init();
 }
 
 loginBtn.addEventListener('click', () => doPassphraseLogin(loginInput.value));
 loginInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') doPassphraseLogin(loginInput.value); });
-loginGhBtn.addEventListener('click', doGithubOAuth);
 
-// Check for token in URL (OAuth callback)
 const urlParams = new URLSearchParams(window.location.search);
 const urlToken = urlParams.get('token');
 if (urlToken) {
@@ -80,7 +55,6 @@ if (urlToken) {
   afterLogin();
 }
 
-// ── API helper ──
 async function apiFetch(path, opts = {}) {
   const headers = { ...(opts.headers || {}) };
   if (token) headers['Authorization'] = 'Bearer ' + token;
@@ -97,7 +71,6 @@ async function apiFetch(path, opts = {}) {
   return res;
 }
 
-// ── Init ──
 async function init() {
   $('btn-logout').addEventListener('click', () => {
     sessionStorage.removeItem('command_token');
@@ -111,11 +84,12 @@ async function init() {
   await loadBranches();
   await loadConfig();
 
+  initConnectButtons();
   initDial();
   initStick();
   initRadio();
   initEditor();
-  initSettingsModal();
+  initTrackHover();
 
   setInterval(loadFuel, 5000);
   setInterval(loadRereleases, 15000);
@@ -124,19 +98,95 @@ async function init() {
   showTrack();
 }
 
-// ── Settings ──
+function initConnectButtons() {
+  $('btn-gh-connect').addEventListener('click', async () => {
+    if (ghToken) {
+      ghToken = '';
+      updateGHUI(false);
+      return;
+    }
+    try {
+      const res = await fetch('/api/auth/github/url');
+      const data = await res.json();
+      if (data.url) {
+        sessionStorage.setItem('oauth_return_to', window.location.href);
+        window.location.href = data.url;
+      } else {
+        $('gh-status').textContent = 'N/A';
+      }
+    } catch {
+      $('gh-status').textContent = 'ERR';
+    }
+  });
+
+  $('btn-cf-connect').addEventListener('click', async () => {
+    if (cfToken) {
+      cfToken = '';
+      updateCFUI(false);
+      return;
+    }
+    try {
+      const res = await fetch('/api/auth/cloudflare/url');
+      const data = await res.json();
+      if (data.url) {
+        sessionStorage.setItem('oauth_return_to', window.location.href);
+        window.location.href = data.url;
+      } else if (data.token) {
+        const pasted = prompt('Cloudflare OAuth not configured. Paste a Cloudflare API token:');
+        if (pasted) {
+          const r2 = await apiFetch('/api/auth/cloudflare/url', { method: 'POST', body: JSON.stringify({ token: pasted }) });
+          if (r2) {
+            const d2 = await r2.json();
+            if (d2.success) {
+              cfToken = pasted;
+              updateCFUI(true);
+            }
+          }
+        }
+      } else {
+        $('cf-status').textContent = 'N/A';
+      }
+    } catch {
+      $('cf-status').textContent = 'ERR';
+    }
+  });
+}
+
+function updateGHUI(connected) {
+  $('btn-gh-connect').textContent = connected ? '✓GH' : 'GH';
+  $('gh-status').textContent = connected ? '✓' : '—';
+}
+
+function updateCFUI(connected) {
+  $('btn-cf-connect').textContent = connected ? '✓CF' : 'CF';
+  $('cf-status').textContent = connected ? '✓' : '—';
+}
+
 async function loadSettings() {
   const res = await apiFetch('/api/settings');
   if (!res) return;
   settings = await res.json();
-  $('gh-auth-status').textContent = settings.oauth_configured ? 'OAuth ✓' : 'Token ✓';
+  if (settings.gh_connected) {
+    ghToken = settings.gh_connected;
+    updateGHUI(true);
+  } else {
+    updateGHUI(false);
+  }
+  if (settings.cf_connected) {
+    cfToken = settings.cf_connected;
+    updateCFUI(true);
+  } else {
+    updateCFUI(false);
+  }
 }
 
 async function loadVersion() {
   const res = await apiFetch('/api/version');
   if (!res) return;
   const data = await res.json();
-  $('version-badge').textContent = 'v' + (data.version || '—');
+  const v = data.version || '—';
+  const m = v.match(/r(\d+)/i);
+  $('version-badge').textContent = m ? 'r' + m[1] : v;
 }
 
 async function loadBranches() {
@@ -175,8 +225,6 @@ async function saveConfig(updates) {
     method: 'POST', body: JSON.stringify(config),
   });
 }
-
-// ── Wing File Rendering ──
 
 const SIDES = ['high', 'left', 'right', 'low'];
 const SIDE_COLORS = { high: '#ff6b6b', left: '#4ecdc4', right: '#ffd93d', low: '#69db7c' };
@@ -220,59 +268,46 @@ function toggleWingException(side) {
 }
 
 function renderWingFiles() {
-  const lists = {
-    high: $('wing-list-high'),
-    left: $('wing-list-left'),
-    right: $('wing-list-right'),
-    low: $('wing-list-low'),
+  const containers = {
+    high: $('wing-files-top'),
+    left: $('wing-files-left'),
+    right: $('wing-files-right'),
+    low: $('wing-files-bottom'),
   };
-  for (const side of SIDES) lists[side].innerHTML = '';
+  for (const side of SIDES) containers[side].innerHTML = '';
 
   const active = getActiveSides();
 
-  if (!activeBranch) {
-    const branchData = branches.length > 0 ? branches[0] : null;
-    if (branchData) renderBranchWings(branchData, lists, active);
-    return;
-  }
+  const branchData = activeBranch
+    ? branches.find(b => b.name === activeBranch)
+    : branches.length > 0 ? branches[0] : null;
 
-  const branchData = branches.find(b => b.name === activeBranch);
-  if (branchData) renderBranchWings(branchData, lists, active);
-}
+  if (!branchData) return;
 
-function renderBranchWings(branchData, lists, active) {
   for (const side of SIDES) {
     const files = branchData[side + 'Files'] || [];
-    const list = lists[side];
+    const list = containers[side];
     if (files.length === 0) continue;
 
-    const allExist = files.filter(f => f.exists);
-    const showFiles = allExist.length > 0 ? allExist : files.slice(0, 5);
+    const showFiles = files.filter(f => f.exists).length > 0
+      ? files.filter(f => f.exists)
+      : files.slice(0, 5);
 
     for (const f of showFiles) {
       const card = document.createElement('div');
       card.className = 'wing-card' + (active[side] ? ' active' : '');
-      card.dataset.side = side;
-      card.dataset.filename = f.name;
 
       const toggle = document.createElement('div');
       toggle.className = 'wing-toggle ' + (active[side] ? 'on' : 'off');
       if (active[side]) toggle.textContent = '✓';
       toggle.addEventListener('click', (e) => { e.stopPropagation(); toggleWingException(side); });
 
-      const indicator = document.createElement('div');
-      indicator.className = 'wing-indicator';
-      indicator.style.background = SIDE_COLORS[side] || '#666';
-      indicator.style.opacity = f.exists ? '1' : '0.2';
-
       const name = document.createElement('span');
       name.className = 'wing-name';
       name.textContent = f.label;
 
       card.appendChild(toggle);
-      card.appendChild(indicator);
       card.appendChild(name);
-
       card.addEventListener('click', () => openEditor(branchData.name, side, f.name));
 
       list.appendChild(card);
@@ -280,11 +315,27 @@ function renderBranchWings(branchData, lists, active) {
   }
 }
 
+// ── Track Hover ──
+function initTrackHover() {
+  const stage = $('track-stage');
+  let hoverTimer = null;
+
+  stage.addEventListener('mouseenter', () => {
+    clearTimeout(hoverTimer);
+    stage.classList.add('hover');
+  });
+
+  stage.addEventListener('mouseleave', () => {
+    hoverTimer = setTimeout(() => {
+      stage.classList.remove('hover');
+    }, 300);
+  });
+}
+
 // ── Racetrack ──
 const trackCanvas = $('track-canvas');
 
 function showTrack() {
-  trackCanvas.style.display = 'block';
   const container = trackCanvas.parentElement;
   const rect = container.getBoundingClientRect();
   trackCanvas.width = Math.max(rect.width, 400);
@@ -293,7 +344,6 @@ function showTrack() {
 }
 
 // ── Steering Dial ──
-
 function initDial() {
   const canvas = $('dial-canvas');
   const ctx = canvas.getContext('2d');
@@ -302,45 +352,41 @@ function initDial() {
   let risk = config.risk || 0;
 
   function drawDial() {
-    const cx = 80, cy = 80, r = 60;
-    ctx.clearRect(0, 0, 160, 160);
+    const W = canvas.width, H = canvas.height;
+    const cx = W / 2, cy = H / 2, r = Math.min(W, H) / 2 - 12;
+    ctx.clearRect(0, 0, W, H);
 
-    // Outer ring
     ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.strokeStyle = 'rgba(0,242,255,0.15)'; ctx.lineWidth = 2; ctx.stroke();
 
-    // Crosshair
-    ctx.beginPath(); ctx.moveTo(cx - r + 10, cy); ctx.lineTo(cx + r - 10, cy);
-    ctx.moveTo(cx, cy - r + 10); ctx.lineTo(cx, cy + r - 10);
+    ctx.beginPath(); ctx.moveTo(cx - r + 8, cy); ctx.lineTo(cx + r - 8, cy);
+    ctx.moveTo(cx, cy - r + 8); ctx.lineTo(cx, cy + r - 8);
     ctx.strokeStyle = 'rgba(0,242,255,0.08)'; ctx.lineWidth = 1; ctx.stroke();
 
-    // Bias dot (horizontal)
-    const bx = cx + (bias / 5) * 45;
+    const range = r * 0.7;
+    const bx = cx + (bias / 5) * range;
     ctx.beginPath(); ctx.arc(bx, cy, 4, 0, Math.PI * 2);
     ctx.fillStyle = bias === 0 ? 'rgba(0,242,255,0.4)' : bias > 0 ? '#ffd93d' : '#4ecdc4';
     ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke();
 
-    // Risk dot (vertical)
-    const ry = cy - (risk / 5) * 45;
+    const ry = cy - (risk / 5) * range;
     ctx.beginPath(); ctx.arc(cx, ry, 4, 0, Math.PI * 2);
     ctx.fillStyle = risk === 0 ? 'rgba(255,107,107,0.4)' : risk > 0 ? '#ff6b6b' : '#69db7c';
     ctx.fill();
     ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke();
 
-    // Center
     ctx.beginPath(); ctx.arc(cx, cy, 2, 0, Math.PI * 2);
     ctx.fillStyle = '#00f2ff'; ctx.fill();
 
-    // Labels
-    ctx.fillStyle = 'rgba(200,208,224,0.3)'; ctx.font = '8px monospace'; ctx.textAlign = 'center';
-    ctx.fillText('L', cx - r + 8, cy + 3);
-    ctx.fillText('R', cx + r - 8, cy + 3);
-    ctx.fillText('H', cx, cy - r + 10);
-    ctx.fillText('L', cx, cy + r - 6);
+    ctx.fillStyle = 'rgba(200,208,224,0.3)'; ctx.font = '7px monospace'; ctx.textAlign = 'center';
+    ctx.fillText('L', cx - r + 7, cy + 2.5);
+    ctx.fillText('R', cx + r - 7, cy + 2.5);
+    ctx.fillText('H', cx, cy - r + 9);
+    ctx.fillText('L', cx, cy + r - 5);
 
-    $('dial-bias').textContent = 'BIAS: ' + Math.round(bias * 10) / 10;
-    $('dial-risk').textContent = 'RISK: ' + Math.round(risk * 10) / 10;
+    $('dial-bias').textContent = 'BIAS:' + Math.round(bias * 10) / 10;
+    $('dial-risk').textContent = 'RISK:' + Math.round(risk * 10) / 10;
   }
 
   function posToValue(clientX, clientY) {
@@ -359,7 +405,6 @@ function initDial() {
   canvas.addEventListener('mousedown', (e) => { dragging = true; posToValue(e.clientX, e.clientY); });
   window.addEventListener('mousemove', (e) => { if (dragging) posToValue(e.clientX, e.clientY); });
   window.addEventListener('mouseup', () => { dragging = false; });
-
   canvas.addEventListener('touchstart', (e) => { e.preventDefault(); const t = e.touches[0]; posToValue(t.clientX, t.clientY); });
   canvas.addEventListener('touchmove', (e) => { e.preventDefault(); const t = e.touches[0]; posToValue(t.clientX, t.clientY); });
 
@@ -367,7 +412,6 @@ function initDial() {
 }
 
 // ── Stick Shift ──
-
 function initStick() {
   const slots = document.querySelectorAll('.gate-slot');
   slots.forEach(slot => {
@@ -394,7 +438,6 @@ function updateStickUI() {
 }
 
 // ── Radio / Intercom ──
-
 function initRadio() {
   const callBtn = $('btn-call');
   const hangupBtn = $('btn-hangup');
@@ -446,13 +489,11 @@ function initRadio() {
     });
     if (!res) return;
     const data = await res.json();
-    // Remove the "..." message and add the reply
     const msgs = $('radio-messages');
     const dots = msgs.querySelector('.msg-agent:last-child');
     if (dots && dots.textContent === '...') dots.remove();
     addRadioMsg('agent', data.response || 'No response');
 
-    // Speak the response
     if ('speechSynthesis' in window && isCallActive) {
       const utter = new SpeechSynthesisUtterance(data.response);
       utter.rate = 1.0; utter.pitch = 1.0;
@@ -485,11 +526,9 @@ function addRadioMsg(type, text) {
 }
 
 // ── Editor Modal ──
-
 let editorBranch = '';
 let editorSide = '';
 let editorFilename = '';
-let editorContent = '';
 const editorModal = $('editor-modal');
 
 function openEditor(branch, side, fname) {
@@ -500,7 +539,6 @@ function openEditor(branch, side, fname) {
   $('editor-textarea').value = 'Loading...';
   editorModal.style.display = 'flex';
 
-  // Build tabs
   const tabs = $('editor-tabs');
   tabs.innerHTML = '';
   for (const s of ['high', 'left', 'right', 'low']) {
@@ -523,7 +561,6 @@ async function loadEditorContent() {
     if (!res) return;
     const data = await res.json();
     $('editor-textarea').value = data.content || '';
-    editorContent = data.content || '';
   } catch {
     $('editor-textarea').value = 'Error loading file';
   }
@@ -543,7 +580,6 @@ function initEditor() {
       if (data.success) {
         $('editor-status').textContent = '✓ Saved';
         setTimeout(() => $('editor-status').textContent = '', 2000);
-        editorContent = content;
         loadBranches();
       } else {
         $('editor-status').textContent = '✗ ' + (data.error || 'Save failed');
@@ -551,37 +587,6 @@ function initEditor() {
     } catch (e) {
       $('editor-status').textContent = '✗ ' + e.message;
     }
-  });
-}
-
-// ── Settings Modal ──
-
-function initSettingsModal() {
-  const modal = $('settings-modal');
-  $('btn-settings').addEventListener('click', () => {
-    $('set-github-owner').value = settings.github_owner || '';
-    $('set-github-repo').value = settings.github_repo || '';
-    $('set-branch-ref').value = settings.branch_ref || '';
-    $('set-parent-proxy').value = settings.parent_proxy_url || '';
-    $('set-cf-worker').value = settings.cf_worker_url || '';
-    modal.style.display = 'flex';
-  });
-  $('modal-settings-close').addEventListener('click', () => modal.style.display = 'none');
-  $('settings-save').addEventListener('click', async () => {
-    $('settings-status').textContent = 'Saving...';
-    const body = {
-      github_owner: $('set-github-owner').value,
-      github_repo: $('set-github-repo').value,
-      branch_ref: $('set-branch-ref').value,
-      parent_proxy_url: $('set-parent-proxy').value,
-      cf_worker_url: $('set-cf-worker').value,
-    };
-    const res = await apiFetch('/api/settings', { method: 'POST', body: JSON.stringify(body) });
-    if (!res) return;
-    const data = await res.json();
-    $('settings-status').textContent = '✓ Saved. Reloading...';
-    settings = { ...settings, ...data };
-    setTimeout(() => { modal.style.display = 'none'; loadBranches(); }, 1000);
   });
 }
 
@@ -623,7 +628,6 @@ function pollRereleases() {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     editorModal.style.display = 'none';
-    $('settings-modal').style.display = 'none';
   }
   if ((e.ctrlKey || e.metaKey) && e.key === 's') {
     if (editorModal.style.display === 'flex') {
