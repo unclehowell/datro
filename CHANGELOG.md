@@ -1,5 +1,13 @@
 # Changelog
 
+## [hbnb-v0.0.0.15] - 2026-06-05
+
+### Fixed
+- fix(hbnb): Remove excessive blank lines
+
+### Changed
+- ux(hbnb): Add skip-to-content link for keyboard accessibility
+
 ## [hbnb-v0.0.0.14] - 2026-06-04
 
 ### Fixed
