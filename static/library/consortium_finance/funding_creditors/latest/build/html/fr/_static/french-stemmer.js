@@ -184,7 +184,6 @@ FrenchStemmer = function() {
     var /** number */ I_p1 = 0;
     var /** number */ I_pV = 0;
 
-
     /** @return {boolean} */
     function r_prelude() {
         while(true)
