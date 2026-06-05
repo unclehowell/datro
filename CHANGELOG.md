@@ -1,5 +1,13 @@
 # Changelog
 
+## [dcc-v0.0.0.15] - 2026-06-05
+
+### Fixed
+- fix(dcc): Remove excessive blank lines
+
+### Changed
+- ux(dcc): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [dcc-v0.0.0.13] - 2026-06-03
 
 ### Fixed
