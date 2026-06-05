@@ -7,6 +7,15 @@ const BRANCH_NAMES = [
   'subrepos','ui','wave','wayback','whitepaper','hbnb','gui','cnei'
 ];
 
+const BRANCH_COLORS = {
+  althea: '#ff6b6b', archives: '#c9a96e', bpvsbuckler: '#4ecdc4', carfinancecheque: '#45b7d1',
+  ccan: '#96ceb4', ceo: '#ffeead', cnei: '#ff4444', dash: '#d4a574',
+  datro: '#00f2ff', dcc: '#ffd93d', financecheque: '#6bcb77', greathousefarm: '#4d96ff',
+  gui: '#ff6b6b', hbnb: '#ff922b', library: '#69db7c', llmwiki: '#f783ac',
+  subrepos: '#748ffc', ui: '#20c997', wave: '#f06595', wayback: '#a9e34b',
+  whitepaper: '#e8590c'
+};
+
 (function() {
   let trackCanvas, ctx;
   let animId = null;
@@ -153,10 +162,11 @@ const BRANCH_NAMES = [
       const sw = 90 * sc;
       const sh = 35 * sc;
       const sx = w / 2 - sw / 2;
+      const color = BRANCH_COLORS[r.branch] || '#ff4444';
 
-      ctx.shadowColor = '#f44';
+      ctx.shadowColor = color;
       ctx.shadowBlur = 25 * sc;
-      ctx.fillStyle = `rgba(255,68,68,${0.85 * r.life})`;
+      ctx.fillStyle = `rgba(${parseInt(color.slice(1,3),16)},${parseInt(color.slice(3,5),16)},${parseInt(color.slice(5,7),16)},${0.85 * r.life})`;
       ctx.fillRect(sx, sy - sh/2, sw, sh);
 
       ctx.shadowBlur = 0;

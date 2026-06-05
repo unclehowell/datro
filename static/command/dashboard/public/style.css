@@ -712,9 +712,62 @@ body.vehicle-theme {
 .hangup-btn:disabled { opacity: 0.4; cursor: not-allowed; }
 
 @keyframes pulse-ring {
-    0% { opacity: 0.15; r: 10; }
-    50% { opacity: 0.05; r: 14; }
-    100% { opacity: 0.15; r: 10; }
+    0% { opacity: 0.15; }
+    50% { opacity: 0.05; }
+    100% { opacity: 0.15; }
+}
+
+@keyframes pulse-ring-speak {
+    0% { opacity: 0.2; }
+    25% { opacity: 0.4; }
+    50% { opacity: 0.1; }
+    75% { opacity: 0.3; }
+    100% { opacity: 0.2; }
+}
+
+@keyframes blink {
+    0%, 95%, 100% { transform: scaleY(0); }
+    97% { transform: scaleY(1); }
+}
+
+@keyframes speak-mouth {
+    0%, 100% { d: path("M48,78 Q60,72 72,78"); fill: none; }
+    25% { d: path("M48,78 Q60,86 72,78"); fill: #ff4444; }
+    50% { d: path("M48,80 Q60,88 72,80"); fill: #ff4444; }
+    75% { d: path("M48,78 Q60,84 72,78"); fill: #ff4444; }
+}
+
+@keyframes breathe {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.008); }
+}
+
+.voice-avatar.speaking .pulse-ring {
+    animation: pulse-ring-speak 0.6s ease-in-out infinite;
+}
+
+.voice-avatar.speaking .avatar-mouth.idle { display: none; }
+.voice-avatar.speaking .avatar-mouth.speaking { display: block; animation: speak-mouth 0.4s ease-in-out infinite; }
+
+.voice-avatar.speaking .ear { animation: none; opacity: 0.8; }
+.voice-avatar:not(.speaking) .ear { animation: none; }
+
+.eyelid {
+    animation: blink 4s ease-in-out infinite;
+    transform-origin: center;
+    transform-box: fill-box;
+}
+
+.voice-avatar.speaking .eyelid {
+    animation-duration: 0.5s;
+}
+
+.voice-avatar-container {
+    animation: breathe 3s ease-in-out infinite;
+}
+
+.voice-avatar.speaking ~ .voice-avatar-container {
+    animation-duration: 0.8s;
 }
 
 .pulse-ring {

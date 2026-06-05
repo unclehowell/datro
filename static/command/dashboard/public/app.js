@@ -211,13 +211,15 @@ async function init() {
 
     setInterval(fetchFuel, 5000);
     setInterval(updateRpm, 200);
+    pollRereleases();
 }
 
 function initTrackCanvas() {
     const container = trackCanvas.parentElement;
+    trackCanvas.style.display = '';
     const rect = container.getBoundingClientRect();
-    trackCanvas.width = rect.width || 600;
-    trackCanvas.height = rect.height || 400;
+    trackCanvas.width = Math.max(rect.width, 600);
+    trackCanvas.height = Math.max(rect.height, 400);
     window.trackInit(trackCanvas);
     window.addEventListener('resize', () => {
         const r = container.getBoundingClientRect();
@@ -388,6 +390,28 @@ async function triggerMeta() { alert('Meta-review runs in CF Worker on cron. Fly
 
 // ── Branch Trees (Left + Right) ──
 
+let knownTags = new Set();
+
+async function pollRereleases() {
+    try {
+        const res = await apiFetch('/api/rereleases');
+        const data = await res.json();
+        if (data.rereleases && data.rereleases.length > 0) {
+            for (const r of data.rereleases) {
+                if (!knownTags.has(r.tag)) {
+                    knownTags.add(r.tag);
+                    if (typeof window.trackRerelease === 'function') {
+                        window.trackRerelease(r.branch);
+                    }
+                }
+            }
+        }
+    } catch (err) {
+        // silently retry
+    }
+    setTimeout(pollRereleases, 15000);
+}
+
 async function fetchVersion() {
     try {
         const res = await apiFetch('/api/version');
@@ -525,10 +549,8 @@ function showTrack() {
     document.getElementById('editor-header').style.display = 'none';
     const container = trackCanvas.parentElement;
     const rect = container.getBoundingClientRect();
-    if (rect.width > 50 && rect.height > 50) {
-        trackCanvas.width = rect.width;
-        trackCanvas.height = rect.height;
-    }
+    trackCanvas.width = Math.max(rect.width, 600);
+    trackCanvas.height = Math.max(rect.height, 400);
     window.trackInit(trackCanvas);
 }
 
@@ -700,9 +722,7 @@ async function runMcpScan() {
 const btnCall = document.getElementById('btn-call');
 const btnHangup = document.getElementById('btn-hangup');
 const voiceStatus = document.getElementById('voice-status');
-const avatarMouth = document.querySelector('.avatar-mouth');
-const avatarEarL = document.querySelector('.avatar-ear-l');
-const avatarEarR = document.querySelector('.avatar-ear-r');
+const avatarEl = document.getElementById('voice-avatar');
 const pulseRings = document.querySelectorAll('.pulse-ring');
 
 let recognition = null;
@@ -713,27 +733,22 @@ const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecogni
 
 function setAvatarSpeaking(active) {
     if (active) {
-        avatarMouth.setAttribute('d', 'M48,44 Q60,58 72,44');
-        avatarMouth.setAttribute('stroke', '#00ff88');
-        avatarEarL.setAttribute('fill', '#00f2ff');
-        avatarEarR.setAttribute('fill', '#00f2ff');
-        pulseRings.forEach(r => r.setAttribute('stroke', '#00ff88'));
+        avatarEl.classList.add('speaking');
+        voiceStatus.textContent = 'SPEAKING';
+        voiceStatus.style.color = 'var(--danger)';
     } else {
-        avatarMouth.setAttribute('d', 'M48,44 Q60,54 72,44');
-        avatarMouth.setAttribute('stroke', '#00f2ff');
-        avatarEarL.setAttribute('fill', '#00f2ff');
-        avatarEarR.setAttribute('fill', '#00f2ff');
-        pulseRings.forEach(r => r.setAttribute('stroke', '#00f2ff'));
+        avatarEl.classList.remove('speaking');
+        voiceStatus.textContent = isCallActive ? 'LISTENING' : 'STANDBY';
+        voiceStatus.style.color = isCallActive ? 'var(--success)' : 'var(--dash-dim)';
     }
 }
 
 function animateMouth() {
     if (!isCallActive) return;
     if (recognition && recognition.speaking) {
-        const openY = 48 + Math.random() * 14;
-        avatarMouth.setAttribute('d', `M48,44 Q60,${openY} 72,44`);
+        setAvatarSpeaking(true);
     } else {
-        avatarMouth.setAttribute('d', 'M48,44 Q60,54 72,44');
+        setAvatarSpeaking(false);
     }
     requestAnimationFrame(animateMouth);
 }
