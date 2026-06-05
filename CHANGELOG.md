@@ -1,5 +1,11 @@
 # Changelog
 
+## [dash-v0.0.0.14] - 2026-06-05
+
+### Fixed
+### Changed
+- ux(dash): Add social media links for audience engagement
+
 ## [dash-v0.0.0.13] - 2026-06-04
 
 ### Fixed
