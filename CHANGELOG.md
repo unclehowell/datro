@@ -1,5 +1,13 @@
 # Changelog
 
+## [ccan-v0.0.0.26] - 2026-06-05
+
+### Fixed
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Add breadcrumb navigation structure for UX
+
 ## [ccan-v0.0.0.25] - 2026-06-04
 
 ### Fixed
