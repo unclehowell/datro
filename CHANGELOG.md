@@ -1,5 +1,13 @@
 # Changelog
 
+## [datro-v0.0.0.15] - 2026-06-05
+
+### Fixed
+- fix(datro): Remove excessive blank lines
+
+### Changed
+- ux(datro): Add legal footer with privacy/terms/contact links
+
 ## [datro-v0.0.0.14] - 2026-06-04
 
 ### Fixed
