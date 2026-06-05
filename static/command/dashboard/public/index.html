@@ -230,23 +230,96 @@
                 <button onclick="toggleModal('comms-popup')" class="btn-terminal">_</button>
             </div>
             <div class="voice-avatar-container">
-                <svg class="voice-avatar" id="voice-avatar" viewBox="0 0 120 140" width="120" height="140">
-                    <ellipse cx="60" cy="30" rx="25" ry="28" fill="#2d3035" stroke="#00f2ff" stroke-width="1.5"/>
-                    <ellipse cx="48" cy="26" rx="3" ry="4" fill="#fff"/>
-                    <ellipse cx="72" cy="26" rx="3" ry="4" fill="#fff"/>
-                    <ellipse cx="60" cy="36" rx="6" ry="3" fill="#ff4444" opacity="0.8"/>
-                    <path class="avatar-mouth" d="M48,44 Q60,54 72,44" stroke="#00f2ff" stroke-width="2" fill="none" stroke-linecap="round"/>
-                    <rect x="42" y="60" width="36" height="45" rx="8" fill="#2d3035" stroke="#00f2ff" stroke-width="1.5"/>
-                    <rect x="38" y="58" width="44" height="6" rx="3" fill="#00f2ff" opacity="0.3"/>
-                    <line x1="52" y1="75" x2="68" y2="75" stroke="#00f2ff" stroke-width="0.5" opacity="0.3"/>
-                    <line x1="52" y1="82" x2="64" y2="82" stroke="#00f2ff" stroke-width="0.5" opacity="0.3"/>
-                    <line x1="38" y1="105" x2="52" y2="115" stroke="#2d3035" stroke-width="3" stroke-linecap="round"/>
-                    <line x1="82" y1="105" x2="68" y2="115" stroke="#2d3035" stroke-width="3" stroke-linecap="round"/>
-                    <rect x="33" y="62" width="10" height="4" rx="2" fill="#00f2ff" opacity="0.2" class="avatar-ear-l"/>
-                    <rect x="77" y="62" width="10" height="4" rx="2" fill="#00f2ff" opacity="0.2" class="avatar-ear-r"/>
-                    <circle cx="60" cy="130" r="10" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.15" class="pulse-ring"/>
-                    <circle cx="60" cy="130" r="6" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.25" class="pulse-ring"/>
-                    <circle cx="60" cy="130" r="3" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.4" class="pulse-ring"/>
+                <svg class="voice-avatar" id="voice-avatar" viewBox="0 0 120 160" width="120" height="160">
+                    <defs>
+                        <radialGradient id="head-grad" cx="50%" cy="40%" r="60%">
+                            <stop offset="0%" stop-color="#4a4d52"/>
+                            <stop offset="100%" stop-color="#2d3035"/>
+                        </radialGradient>
+                        <radialGradient id="eye-glow" cx="50%" cy="50%" r="50%">
+                            <stop offset="0%" stop-color="#00f2ff"/>
+                            <stop offset="100%" stop-color="#007a8a"/>
+                        </radialGradient>
+                        <linearGradient id="neck-grad" x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="0%" stop-color="#2d3035"/>
+                            <stop offset="100%" stop-color="#1a1c1f"/>
+                        </linearGradient>
+                    </defs>
+
+                    <!-- Neck -->
+                    <rect x="45" y="120" width="30" height="25" rx="5" fill="url(#neck-grad)"/>
+                    <!-- Shoulders hint -->
+                    <path d="M30,140 Q25,150 20,160 L100,160 Q95,150 90,140" fill="#1a1c1f" stroke="none"/>
+
+                    <!-- Head shape -->
+                    <ellipse cx="60" cy="65" rx="32" ry="38" fill="url(#head-grad)" stroke="#00f2ff" stroke-width="1" opacity="0.9"/>
+
+                    <!-- Ears -->
+                    <ellipse cx="25" cy="58" rx="7" ry="12" fill="#3a3d42" stroke="#00f2ff" stroke-width="0.5" opacity="0.6" class="ear"/>
+                    <ellipse cx="95" cy="58" rx="7" ry="12" fill="#3a3d42" stroke="#00f2ff" stroke-width="0.5" opacity="0.6" class="ear"/>
+                    <ellipse cx="26" cy="56" rx="3" ry="5" fill="#4a4d52" class="ear-inner"/>
+                    <ellipse cx="94" cy="56" rx="3" ry="5" fill="#4a4d52" class="ear-inner"/>
+
+                    <!-- Hair/Hood silhouette -->
+                    <path d="M28,42 Q30,18 60,14 Q90,18 92,42 Q90,35 60,32 Q30,35 28,42" fill="#1a1c1f" opacity="0.8"/>
+
+                    <!-- Eyes -->
+                    <g class="eye-group">
+                        <!-- Left eye white -->
+                        <ellipse cx="47" cy="52" rx="8" ry="9" fill="#1a1c1f"/>
+                        <ellipse cx="47" cy="52" rx="7" ry="8" fill="#fff" opacity="0.9"/>
+                        <!-- Left iris -->
+                        <ellipse cx="47" cy="52" rx="4" ry="5" fill="url(#eye-glow)" class="iris"/>
+                        <!-- Left pupil -->
+                        <ellipse cx="47" cy="52" rx="2" ry="3" fill="#000" class="pupil"/>
+                        <!-- Left eyelid -->
+                        <path class="eyelid left-eyelid" d="M39,52 Q47,44 55,52" fill="#2d3035"/>
+                    </g>
+                    <g class="eye-group">
+                        <!-- Right eye white -->
+                        <ellipse cx="73" cy="52" rx="8" ry="9" fill="#1a1c1f"/>
+                        <ellipse cx="73" cy="52" rx="7" ry="8" fill="#fff" opacity="0.9"/>
+                        <!-- Right iris -->
+                        <ellipse cx="73" cy="52" rx="4" ry="5" fill="url(#eye-glow)" class="iris"/>
+                        <!-- Right pupil -->
+                        <ellipse cx="73" cy="52" rx="2" ry="3" fill="#000" class="pupil"/>
+                        <!-- Right eyelid -->
+                        <path class="eyelid right-eyelid" d="M65,52 Q73,44 81,52" fill="#2d3035"/>
+                    </g>
+
+                    <!-- Eyebrows -->
+                    <path d="M38,41 Q47,37 55,41" stroke="#1a1c1f" stroke-width="2" fill="none" opacity="0.7"/>
+                    <path d="M65,41 Q73,37 82,41" stroke="#1a1c1f" stroke-width="2" fill="none" opacity="0.7"/>
+
+                    <!-- Nose -->
+                    <path d="M60,56 L60,68 Q58,70 55,69" stroke="#3a3d42" stroke-width="1.5" fill="none"/>
+                    <ellipse cx="55" cy="69" rx="2" ry="1.5" fill="#3a3d42" opacity="0.5"/>
+                    <ellipse cx="65" cy="69" rx="2" ry="1.5" fill="#3a3d42" opacity="0.5"/>
+
+                    <!-- Mouth (speaking animation) -->
+                    <g class="mouth-group">
+                        <path class="avatar-mouth idle" d="M48,78 Q60,72 72,78" stroke="#00f2ff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+                        <path class="avatar-mouth speaking" d="M48,78 Q60,84 72,78" stroke="#00f2ff" stroke-width="1.5" fill="#ff4444" opacity="0.6" stroke-linecap="round" style="display:none"/>
+                    </g>
+
+                    <!-- Jaw line -->
+                    <path d="M35,72 Q60,90 85,72" stroke="#00f2ff" stroke-width="0.3" fill="none" opacity="0.15"/>
+
+                    <!-- Chin highlight -->
+                    <ellipse cx="60" cy="88" rx="12" ry="5" fill="none" stroke="#00f2ff" stroke-width="0.3" opacity="0.1"/>
+
+                    <!-- Neck detail / Adam's apple area -->
+                    <path d="M55,120 L55,130" stroke="#00f2ff" stroke-width="0.3" opacity="0.1"/>
+                    <path d="M65,120 L65,130" stroke="#00f2ff" stroke-width="0.3" opacity="0.1"/>
+
+                    <!-- Microphone -->
+                    <rect x="57" y="125" width="6" height="10" rx="3" fill="#00f2ff" opacity="0.3" class="mic"/>
+                    <rect x="54" y="132" width="12" height="2" rx="1" fill="#00f2ff" opacity="0.3" class="mic-bar"/>
+
+                    <!-- Pulse rings -->
+                    <circle cx="60" cy="150" r="12" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.15" class="pulse-ring"/>
+                    <circle cx="60" cy="150" r="8" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.25" class="pulse-ring"/>
+                    <circle cx="60" cy="150" r="4" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.4" class="pulse-ring"/>
                 </svg>
                 <div class="voice-status" id="voice-status">STANDBY</div>
             </div>

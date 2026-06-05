@@ -356,6 +356,25 @@ export default {
         } catch (err) { return json({ error: err.message }, 502); }
       }
 
+      // ── GET /api/rereleases ──
+      if (path === '/api/rereleases' && method === 'GET') {
+        let lastCheck = await kv.get('rerelease:lastCheck');
+        const lastCheckTime = lastCheck ? parseInt(lastCheck, 10) : 0;
+        // Fetch recent releases from GitHub
+        const releases = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases?per_page=10`, env);
+        const rereleases = [];
+        if (Array.isArray(releases)) {
+          for (const r of releases) {
+            const pubTime = new Date(r.published_at).getTime();
+            if (pubTime > lastCheckTime) {
+              rereleases.push({ branch: r.tag_name.split('-v')[0], tag: r.tag_name, name: r.name, published: r.published_at });
+            }
+          }
+        }
+        await kv.put('rerelease:lastCheck', String(Date.now()));
+        return json({ rereleases, count: rereleases.length });
+      }
+
       // ── POST /api/machine/register ──
       if (path === '/api/machine/register' && method === 'POST') {
         const { machine_id, api_keys, ide, cli_tools } = body || {};
