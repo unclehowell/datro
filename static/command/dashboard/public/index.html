@@ -1,342 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FCUK Command Bridge</title>
-    <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMMAND</title>
+<link rel="stylesheet" href="/style.css">
 </head>
-<body class="vehicle-theme">
-    <div id="overlay-glare"></div>
+<body>
 
-    <!-- Login Overlay -->
-    <div id="login-overlay" class="login-overlay">
-        <div class="login-box">
-            <div class="login-brand">FCUK COMMAND BRIDGE</div>
-            <div class="login-sub">ENTER PASSPHRASE</div>
-            <input type="password" id="login-input" class="login-input" placeholder="passphrase" autocomplete="off">
-            <button id="login-btn" class="login-btn">UNLOCK</button>
-            <div id="login-error" class="login-error"></div>
-        </div>
+<div id="app" style="display:none">
+
+  <!-- Top Bar -->
+  <header id="topbar">
+    <div class="topbar-left">
+      <span class="topbar-title">COMMAND</span>
+      <span class="topbar-badge" id="version-badge">v—</span>
+      <span class="topbar-badge status-badge" id="runtime-badge">CF</span>
+    </div>
+    <div class="topbar-center">
+      <button class="topbar-btn" id="btn-settings" title="Settings">⚙</button>
+      <button class="topbar-btn" id="btn-github-auth" title="GitHub Auth">🔑</button>
+      <span class="topbar-status" id="gh-auth-status">—</span>
+    </div>
+    <div class="topbar-right">
+      <span class="topbar-update" id="update-status">✓ up to date</span>
+      <button class="topbar-btn" id="btn-logout" title="Logout">⏻</button>
+    </div>
+  </header>
+
+  <!-- HIGH Wing Files (top strip) -->
+  <div class="wing-strip wing-strip-top" id="wing-strip-high">
+    <div class="wing-strip-label">▲ HIGH</div>
+    <div class="wing-strip-files" id="wing-list-high"></div>
+  </div>
+
+  <!-- Main Content Area -->
+  <div class="main-area">
+
+    <!-- LEFT Wing Files -->
+    <div class="wing-side wing-side-left" id="wing-side-left">
+      <div class="wing-side-label">◀ LEFT</div>
+      <div class="wing-side-files" id="wing-list-left"></div>
     </div>
 
-    <header class="bridge-header">
-        <div class="brand">FCUK COMMAND BRIDGE <span id="version-badge" class="version-badge">v1</span></div>
-        <div class="system-stats">
-            <div class="stat-box">
-                <label>BRANCHES</label>
-                <span id="branch-count">0</span>
-            </div>
-            <div class="stat-box">
-                <label>FLYWHEEL</label>
-                <span id="flywheel-state">STANDBY</span>
-            </div>
-            <div class="stat-box">
-                <label>MODE</label>
-                <span id="deploy-mode" style="color:var(--dash-accent)">CF NATIVE</span>
-            </div>
-        </div>
-        <div class="header-actions">
-            <button onclick="toggleModal('telemetry-modal')" class="btn-head">TELEMETRY</button>
-            <button onclick="toggleModal('comms-popup')" class="btn-head">INTERCOM</button>
-            <button onclick="runMcpScan()" class="btn-head" id="btn-mcp">MCP SCAN</button>
-        </div>
-    </header>
-
-    <main class="cockpit">
-        <div class="risk-bar top-risk" id="high-risk-bar">
-            <div class="risk-bar-header">
-                <span class="risk-bar-label">HIGH RISK</span>
-            </div>
-            <select class="risk-branch-select" id="branch-select-high"><option value="">— select branch —</option></select>
-            <div class="risk-bar-scroll" id="high-risk-scroll">
-                <div class="risk-breadcrumb" id="high-breadcrumb"></div>
-            </div>
-        </div>
-
-        <section class="windscreen">
-            <div class="plan-column left">
-                <div class="column-header">
-                    <h3>LEFT PLANS</h3>
-                    <button id="btn-collapse-left" class="btn-mini" title="Collapse all">[-]</button>
-                </div>
-                <select class="branch-select" id="branch-select-left"><option value="">— select branch —</option></select>
-                <div id="branch-tree-left" class="tree-container"></div>
-            </div>
-
-            <div class="center-glass">
-                <div class="editor-header" id="editor-header">
-                    <div class="editor-breadcrumb">
-                        <span id="active-branch-path">NO FILE SELECTED</span>
-                        <span id="active-side-badge" class="side-badge"></span>
-                    </div>
-                    <div class="editor-actions">
-                        <span id="file-exists-indicator" class="file-badge"></span>
-                        <button id="btn-save-plan" class="btn-glow" disabled>SAVE</button>
-                        <button id="btn-push" class="btn-head push-btn">PUSH</button>
-                        <button id="btn-pull" class="btn-head pull-btn">PULL</button>
-                    </div>
-                </div>
-                <canvas id="track-canvas" class="track-canvas"></canvas>
-                <textarea id="plan-editor" class="plan-editor" placeholder="Select a file from the left or right explorer..." style="display:none"></textarea>
-            </div>
-
-            <div class="plan-column right">
-                <div class="column-header">
-                    <h3>RIGHT PLANS</h3>
-                    <button id="btn-collapse-right" class="btn-mini" title="Collapse all">[-]</button>
-                </div>
-                <select class="branch-select" id="branch-select-right"><option value="">— select branch —</option></select>
-                <div id="branch-tree-right" class="tree-container"></div>
-            </div>
-        </section>
-
-        <div class="risk-bar bottom-risk" id="low-risk-bar">
-            <div class="risk-bar-header">
-                <span class="risk-bar-label">LOW RISK</span>
-            </div>
-            <select class="risk-branch-select" id="branch-select-low"><option value="">— select branch —</option></select>
-            <div class="risk-bar-scroll" id="low-risk-scroll">
-                <div class="risk-breadcrumb" id="low-breadcrumb"></div>
-            </div>
-        </div>
-
-        <section class="dashboard-base">
-            <div class="instrument-cluster">
-                <div class="fuel-bank">
-                    <div class="gauge-vertical">
-                        <div class="gauge-bar"><div id="fuel-api" class="gauge-fill" style="height: 80%"></div></div>
-                        <label class="sideways">API</label>
-                    </div>
-                    <div class="gauge-vertical">
-                        <div class="gauge-bar"><div id="fuel-llm" class="gauge-fill" style="height: 65%"></div></div>
-                        <label class="sideways">LLM</label>
-                    </div>
-                    <div class="gauge-vertical">
-                        <div class="gauge-bar"><div id="fuel-cli" class="gauge-fill" style="height: 90%"></div></div>
-                        <label class="sideways">CLI</label>
-                    </div>
-                    <div class="gauge-vertical">
-                        <div class="gauge-bar"><div id="fuel-ide" class="gauge-fill" style="height: 40%"></div></div>
-                        <label class="sideways">IDE</label>
-                    </div>
-                </div>
-                <div class="gear-stick-cluster">
-                    <div class="gear-stick-panel">
-                        <div class="gate-label">GEAR</div>
-                        <div class="gear-gate">
-                            <div class="gate-slot" data-gear="L">L</div>
-                            <div class="gate-slot" data-gear="N">N</div>
-                            <div class="gate-slot" data-gear="H">H</div>
-                        </div>
-                        <div class="gear-stick" id="gear-stick">
-                            <div class="stick-knob" id="stick-knob">N</div>
-                        </div>
-                    </div>
-                    <div class="digital-readout">
-                        <label>RPM</label>
-                        <div class="value" id="rpm-readout">0</div>
-                    </div>
-                    <div class="digital-readout">
-                        <label>SPEED</label>
-                        <div class="value" id="speed-readout">0</div>
-                    </div>
-                </div>
-                <div class="status-panel">
-                    <div class="digital-readout">
-                        <label>BIAS POSITION</label>
-                        <div class="value" id="bias-label">50/50</div>
-                    </div>
-                    <div class="digital-readout">
-                        <label>RELEASE GEAR</label>
-                        <div class="value" id="gear-readout">6</div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="main-console">
-                <div class="bias-shifter">
-                    <div class="bias-label">2D STEERING</div>
-                    <div class="pad-2d-wrapper">
-                        <div class="pad-2d" id="pad-2d">
-                            <div class="pad-thumb" id="pad-thumb"></div>
-                            <div class="pad-crosshair-h"></div>
-                            <div class="pad-crosshair-v"></div>
-                        </div>
-                        <div class="pad-annotations">
-                            <div class="pad-anno-top">HIGH RISK</div>
-                            <div class="pad-anno-bottom">LOW RISK</div>
-                            <div class="pad-anno-left">LEFT</div>
-                            <div class="pad-anno-right">RIGHT</div>
-                        </div>
-                    </div>
-                    <div class="pad-readouts">
-                        <div class="digital-readout">
-                            <label>BIAS</label>
-                            <div class="value" id="bias-label">NEUTRAL</div>
-                        </div>
-                        <div class="digital-readout">
-                            <label>RISK</label>
-                            <div class="value" id="risk-label">NEUTRAL</div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="gear-shifter">
-                    <div class="gear-label">RELEASE GEAR</div>
-                    <div class="gear-display" id="gear-display">6</div>
-                    <input type="range" id="gear-range" min="1" max="10" value="6" step="1">
-                    <div class="gear-notches">
-                        <span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span><span>9</span><span>10</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section class="mcp-panel" id="mcp-panel" style="display:none">
-            <div class="mcp-header">
-                <h3>MCP SCAN RESULTS</h3>
-                <button onclick="document.getElementById('mcp-panel').style.display='none'" class="btn-mini">X</button>
-            </div>
-            <div id="mcp-results"></div>
-        </section>
-    </main>
-
-    <!-- Modal Systems -->
-    <div id="telemetry-modal" class="modal-overlay" onclick="closeOnOverlay(event)">
-        <div class="modal-content">
-            <div class="terminal-container">
-                <div class="terminal-header">
-                    <span>CF SYSTEM LOG</span>
-                    <div class="terminal-actions">
-                        <button id="btn-clear-logs" class="btn-terminal">CLEAR</button>
-                        <button onclick="toggleModal('telemetry-modal')" class="btn-terminal">CLOSE</button>
-                    </div>
-                </div>
-                <pre id="log-content">Cloudflare-native system. No machine dependency.
-- API: Cloudflare Workers (command.datro.xyz/api/*)
-- Frontend: Cloudflare Pages
-- Files: GitHub API (no filesystem needed)
-- LLM: Parent proxy (financecheque.uk) with child proxy key fallback
-- Deployment: git push → auto-deploy to Pages</pre>
-            </div>
-        </div>
+    <!-- Racetrack Center -->
+    <div class="center-stage" id="center-stage">
+      <canvas id="track-canvas" class="track-canvas"></canvas>
+      <div class="branch-selector-bar">
+        <select id="branch-select" class="cyber-select" title="Active branch">
+          <option value="">— branch —</option>
+        </select>
+      </div>
     </div>
 
-    <div id="comms-popup" class="popup-box voice-box radio-box">
-        <div class="intercom-container">
-            <div class="terminal-header">
-                <span>📻 RADIO — AGENT TERMINAL</span>
-                <button onclick="toggleModal('comms-popup')" class="btn-terminal">_</button>
-            </div>
-            <div class="voice-avatar-container">
-                <svg class="voice-avatar" id="voice-avatar" viewBox="0 0 120 160" width="120" height="160">
-                    <defs>
-                        <radialGradient id="head-grad" cx="50%" cy="40%" r="60%">
-                            <stop offset="0%" stop-color="#4a4d52"/>
-                            <stop offset="100%" stop-color="#2d3035"/>
-                        </radialGradient>
-                        <radialGradient id="eye-glow" cx="50%" cy="50%" r="50%">
-                            <stop offset="0%" stop-color="#00f2ff"/>
-                            <stop offset="100%" stop-color="#007a8a"/>
-                        </radialGradient>
-                        <linearGradient id="neck-grad" x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="0%" stop-color="#2d3035"/>
-                            <stop offset="100%" stop-color="#1a1c1f"/>
-                        </linearGradient>
-                    </defs>
-
-                    <!-- Neck -->
-                    <rect x="45" y="120" width="30" height="25" rx="5" fill="url(#neck-grad)"/>
-                    <!-- Shoulders hint -->
-                    <path d="M30,140 Q25,150 20,160 L100,160 Q95,150 90,140" fill="#1a1c1f" stroke="none"/>
-
-                    <!-- Head shape -->
-                    <ellipse cx="60" cy="65" rx="32" ry="38" fill="url(#head-grad)" stroke="#00f2ff" stroke-width="1" opacity="0.9"/>
-
-                    <!-- Ears -->
-                    <ellipse cx="25" cy="58" rx="7" ry="12" fill="#3a3d42" stroke="#00f2ff" stroke-width="0.5" opacity="0.6" class="ear"/>
-                    <ellipse cx="95" cy="58" rx="7" ry="12" fill="#3a3d42" stroke="#00f2ff" stroke-width="0.5" opacity="0.6" class="ear"/>
-                    <ellipse cx="26" cy="56" rx="3" ry="5" fill="#4a4d52" class="ear-inner"/>
-                    <ellipse cx="94" cy="56" rx="3" ry="5" fill="#4a4d52" class="ear-inner"/>
-
-                    <!-- Hair/Hood silhouette -->
-                    <path d="M28,42 Q30,18 60,14 Q90,18 92,42 Q90,35 60,32 Q30,35 28,42" fill="#1a1c1f" opacity="0.8"/>
-
-                    <!-- Eyes -->
-                    <g class="eye-group">
-                        <!-- Left eye white -->
-                        <ellipse cx="47" cy="52" rx="8" ry="9" fill="#1a1c1f"/>
-                        <ellipse cx="47" cy="52" rx="7" ry="8" fill="#fff" opacity="0.9"/>
-                        <!-- Left iris -->
-                        <ellipse cx="47" cy="52" rx="4" ry="5" fill="url(#eye-glow)" class="iris"/>
-                        <!-- Left pupil -->
-                        <ellipse cx="47" cy="52" rx="2" ry="3" fill="#000" class="pupil"/>
-                        <!-- Left eyelid -->
-                        <path class="eyelid left-eyelid" d="M39,52 Q47,44 55,52" fill="#2d3035"/>
-                    </g>
-                    <g class="eye-group">
-                        <!-- Right eye white -->
-                        <ellipse cx="73" cy="52" rx="8" ry="9" fill="#1a1c1f"/>
-                        <ellipse cx="73" cy="52" rx="7" ry="8" fill="#fff" opacity="0.9"/>
-                        <!-- Right iris -->
-                        <ellipse cx="73" cy="52" rx="4" ry="5" fill="url(#eye-glow)" class="iris"/>
-                        <!-- Right pupil -->
-                        <ellipse cx="73" cy="52" rx="2" ry="3" fill="#000" class="pupil"/>
-                        <!-- Right eyelid -->
-                        <path class="eyelid right-eyelid" d="M65,52 Q73,44 81,52" fill="#2d3035"/>
-                    </g>
-
-                    <!-- Eyebrows -->
-                    <path d="M38,41 Q47,37 55,41" stroke="#1a1c1f" stroke-width="2" fill="none" opacity="0.7"/>
-                    <path d="M65,41 Q73,37 82,41" stroke="#1a1c1f" stroke-width="2" fill="none" opacity="0.7"/>
-
-                    <!-- Nose -->
-                    <path d="M60,56 L60,68 Q58,70 55,69" stroke="#3a3d42" stroke-width="1.5" fill="none"/>
-                    <ellipse cx="55" cy="69" rx="2" ry="1.5" fill="#3a3d42" opacity="0.5"/>
-                    <ellipse cx="65" cy="69" rx="2" ry="1.5" fill="#3a3d42" opacity="0.5"/>
-
-                    <!-- Mouth (speaking animation) -->
-                    <g class="mouth-group">
-                        <path class="avatar-mouth idle" d="M48,78 Q60,72 72,78" stroke="#00f2ff" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-                        <path class="avatar-mouth speaking" d="M48,78 Q60,84 72,78" stroke="#00f2ff" stroke-width="1.5" fill="#ff4444" opacity="0.6" stroke-linecap="round" style="display:none"/>
-                    </g>
-
-                    <!-- Jaw line -->
-                    <path d="M35,72 Q60,90 85,72" stroke="#00f2ff" stroke-width="0.3" fill="none" opacity="0.15"/>
-
-                    <!-- Chin highlight -->
-                    <ellipse cx="60" cy="88" rx="12" ry="5" fill="none" stroke="#00f2ff" stroke-width="0.3" opacity="0.1"/>
-
-                    <!-- Neck detail / Adam's apple area -->
-                    <path d="M55,120 L55,130" stroke="#00f2ff" stroke-width="0.3" opacity="0.1"/>
-                    <path d="M65,120 L65,130" stroke="#00f2ff" stroke-width="0.3" opacity="0.1"/>
-
-                    <!-- Microphone -->
-                    <rect x="57" y="125" width="6" height="10" rx="3" fill="#00f2ff" opacity="0.3" class="mic"/>
-                    <rect x="54" y="132" width="12" height="2" rx="1" fill="#00f2ff" opacity="0.3" class="mic-bar"/>
-
-                    <!-- Pulse rings -->
-                    <circle cx="60" cy="150" r="12" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.15" class="pulse-ring"/>
-                    <circle cx="60" cy="150" r="8" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.25" class="pulse-ring"/>
-                    <circle cx="60" cy="150" r="4" fill="none" stroke="#00f2ff" stroke-width="0.5" opacity="0.4" class="pulse-ring"/>
-                </svg>
-                <div class="voice-status" id="voice-status">STANDBY</div>
-            </div>
-            <div class="voice-controls">
-                <button id="btn-call" class="voice-btn call-btn">CALL</button>
-                <button id="btn-hangup" class="voice-btn hangup-btn" disabled>HANG UP</button>
-                <span class="radio-static" id="radio-static">📡</span>
-            </div>
-            <div id="chat-messages"></div>
-            <div class="chat-input-row">
-                <input type="text" id="chat-input" placeholder="Type or tap CALL to speak...">
-                <button id="btn-send-chat">SEND</button>
-            </div>
-        </div>
+    <!-- RIGHT Wing Files -->
+    <div class="wing-side wing-side-right" id="wing-side-right">
+      <div class="wing-side-label">RIGHT ▶</div>
+      <div class="wing-side-files" id="wing-list-right"></div>
     </div>
 
-    <script src="racetrack.js"></script>
-    <script src="app.js"></script>
+  </div>
+
+  <!-- LOW Wing Files (bottom strip) -->
+  <div class="wing-strip wing-strip-bottom" id="wing-strip-low">
+    <div class="wing-strip-label">▼ LOW</div>
+    <div class="wing-strip-files" id="wing-list-low"></div>
+  </div>
+
+  <!-- Car Dashboard (lower third) -->
+  <div class="dash-panel" id="dashboard-panel">
+
+    <!-- Steering Wheel Dial (left) -->
+    <div class="dash-section dash-dial-section">
+      <div class="dash-label">STEERING</div>
+      <div class="dial-container" id="dial-container">
+        <canvas id="dial-canvas" width="160" height="160"></canvas>
+        <div class="dial-values">
+          <span class="dial-bias" id="dial-bias">BIAS: 0</span>
+          <span class="dial-risk" id="dial-risk">RISK: 0</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Radio / Intercom (center) -->
+    <div class="dash-section dash-radio-section">
+      <div class="dash-label">RADIO — INTERCOM</div>
+      <div class="radio-container">
+        <div class="radio-avatar" id="radio-avatar">
+          <svg viewBox="0 0 60 60" width="60" height="60">
+            <circle cx="30" cy="30" r="26" fill="#1a1c2a" stroke="#00f2ff" stroke-width="1.5"/>
+            <circle cx="30" cy="30" r="3" fill="#00f2ff" opacity="0.8"/>
+            <path d="M30,5 Q45,15 45,30 Q45,45 30,55" stroke="#00f2ff" stroke-width="0.5" fill="none" opacity="0.3"/>
+            <path d="M30,5 Q15,15 15,30 Q15,45 30,55" stroke="#00f2ff" stroke-width="0.5" fill="none" opacity="0.3"/>
+            <circle cx="30" cy="30" r="8" fill="none" stroke="#ff4444" stroke-width="1.5" opacity="0.6" class="radio-pulse"/>
+          </svg>
+        </div>
+        <div class="radio-chat" id="radio-chat">
+          <div class="radio-messages" id="radio-messages">
+            <span class="radio-placeholder">Standing by...</span>
+          </div>
+          <div class="radio-input-row">
+            <input type="text" class="radio-input" id="radio-input" placeholder="Message agent..." autocomplete="off">
+            <button class="radio-send-btn" id="radio-send-btn">⏎</button>
+          </div>
+        </div>
+        <div class="radio-controls">
+          <button class="radio-btn call-btn" id="btn-call">CALL</button>
+          <button class="radio-btn hangup-btn" id="btn-hangup" disabled>END</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stick Shift + Fuel (right) -->
+    <div class="dash-section dash-stick-section">
+      <div class="dash-label">TRANSMISSION</div>
+      <div class="stick-container">
+        <div class="stick-gate" id="stick-gate">
+          <div class="gate-slot" data-gear="L" title="Slow (0.3x)">L</div>
+          <div class="gate-slot active" data-gear="N" title="Normal (1x)">N</div>
+          <div class="gate-slot" data-gear="H" title="Fast (3x)">H</div>
+        </div>
+        <div class="stick-knob" id="stick-knob">N</div>
+        <div class="stick-label">RERELEASE RATE</div>
+        <div class="stick-rate" id="stick-rate">1/hr</div>
+      </div>
+      <div class="fuel-gauges">
+        <div class="fuel-gauge"><div class="fuel-label">API</div><div class="fuel-bar"><div class="fuel-fill" id="fuel-api" style="height:70%"></div></div></div>
+        <div class="fuel-gauge"><div class="fuel-label">LLM</div><div class="fuel-bar"><div class="fuel-fill" id="fuel-llm" style="height:50%"></div></div></div>
+        <div class="fuel-gauge"><div class="fuel-label">CLI</div><div class="fuel-bar"><div class="fuel-fill" id="fuel-cli" style="height:80%"></div></div></div>
+        <div class="fuel-gauge"><div class="fuel-label">IDE</div><div class="fuel-bar"><div class="fuel-fill" id="fuel-ide" style="height:30%"></div></div></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Login Overlay -->
+<div id="login-overlay" class="login-overlay">
+  <div class="login-box">
+    <div class="login-title">COMMAND</div>
+    <div class="login-subtitle">Universal Control Interface</div>
+    <div class="login-input-row">
+      <input type="password" class="login-input" id="login-passphrase" placeholder="Passphrase..." autocomplete="off">
+      <button class="login-btn" id="login-btn">⏎</button>
+    </div>
+    <div class="login-divider"><span>or</span></div>
+    <button class="login-gh-btn" id="login-gh-btn">Sign in with GitHub</button>
+    <div class="login-error" id="login-error"></div>
+  </div>
+</div>
+
+<!-- Settings Modal -->
+<div id="settings-modal" class="modal" style="display:none">
+  <div class="modal-backdrop"></div>
+  <div class="modal-panel">
+    <div class="modal-header">SETTINGS <button class="modal-close" id="modal-settings-close">✕</button></div>
+    <div class="modal-body">
+      <label>GitHub Owner</label>
+      <input type="text" id="set-github-owner" class="modal-input">
+      <label>GitHub Repo</label>
+      <input type="text" id="set-github-repo" class="modal-input">
+      <label>Branch Ref</label>
+      <input type="text" id="set-branch-ref" class="modal-input">
+      <label>Parent Proxy URL</label>
+      <input type="text" id="set-parent-proxy" class="modal-input">
+      <label>CF Worker URL (flywheel)</label>
+      <input type="text" id="set-cf-worker" class="modal-input">
+      <button class="modal-save-btn" id="settings-save">SAVE</button>
+      <span class="settings-status" id="settings-status"></span>
+    </div>
+  </div>
+</div>
+
+<!-- Wing File Editor Modal -->
+<div id="editor-modal" class="modal" style="display:none">
+  <div class="modal-backdrop"></div>
+  <div class="modal-panel editor-panel">
+    <div class="modal-header">
+      <span id="editor-title">EDITOR</span>
+      <div class="editor-tabs" id="editor-tabs"></div>
+      <button class="modal-close" id="modal-editor-close">✕</button>
+    </div>
+    <div class="modal-body editor-body">
+      <textarea id="editor-textarea" class="editor-textarea"></textarea>
+    </div>
+    <div class="modal-footer">
+      <button class="modal-save-btn" id="editor-save">SAVE</button>
+      <span class="settings-status" id="editor-status"></span>
+    </div>
+  </div>
+</div>
+
+<script src="/racetrack.js"></script>
+<script src="/app.js"></script>
 </body>
 </html>

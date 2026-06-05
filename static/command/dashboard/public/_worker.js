@@ -1,24 +1,20 @@
-const APP_VERSION = 'command-v1.0.0.01';
+const APP_VERSION = 'command-v1.1.0.00';
 const GITHUB_API = 'https://api.github.com';
-const GITHUB_OWNER = 'unclehowell';
-const GITHUB_REPO = 'datro';
-const MD_FILES = ['AGENT.md', 'README.md', 'CHANGELOG.md', 'MEMORY.md', 'SKILLS.md', 'HEARTBEAT.md', 'SOUL.md', 'MASTERPLAN.md', 'RULES.md', 'TEMPLATE.md', 'CONTEXT.md', 'GLOSSARY.md', 'RESOURCES.md', 'TASKS.md', 'IDENTITY.md'];
-const SIDES = ['left', 'right', 'high', 'low'];
+const MD_FILES = ['AGENT.md', 'README.md', 'CHANGELOG.md', 'MEMORY.md', 'SKILLS.md', 'HEARTBEAT.md', 'SOUL.md', 'MASTERPLAN.md', 'RULES.md', 'TEMPLATE.md', 'CONTEXT.md', 'GLOSSARY.md', 'RESOURCES.md', 'TASKS.md', 'IDENTITY.md', 'SPEC.md'];
+const SIDES = ['high', 'left', 'right', 'low'];
 
-function sideSuffix(side, filename) {
-  if (!side || filename === 'master-record.md') return filename;
-  const base = filename.replace('.md', '');
-  return `${base}.${side}.md`;
+function sfx(side, fn) {
+  if (!side || fn === 'master-record.md') return fn;
+  return fn.replace('.md', '') + '.' + side + '.md';
 }
 
 function json(data, status = 200) {
   return new Response(JSON.stringify(data), {
-    status,
-    headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
+    status, headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' },
   });
 }
 
-function corsHeaders() {
+function cors() {
   return {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
@@ -27,17 +23,61 @@ function corsHeaders() {
   };
 }
 
-// ── Auth ──
+async function getSettings(kv, env) {
+  const raw = await kv.get('command:settings');
+  if (raw) return JSON.parse(raw);
+  return {
+    github_owner: env.GITHUB_OWNER || 'unclehowell',
+    github_repo: env.GITHUB_REPO || 'datro',
+    parent_proxy_url: env.PARENT_PROXY_URL || 'https://www.financecheque.uk',
+    cf_worker_url: env.CF_WORKER_URL || 'https://datro-flywheel.righteous.workers.dev',
+    branch_ref: env.BRANCH_REF || 'command',
+  };
+}
 
-async function generateToken(secret, kv) {
-  const payload = JSON.stringify({ t: Date.now() + 86400000, s: secret.slice(0, 8) });
+async function saveSettings(kv, settings) {
+  await kv.put('command:settings', JSON.stringify(settings));
+}
+
+function getGhToken(request, env) {
+  const auth = request.headers.get('Authorization') || '';
+  if (auth.startsWith('Bearer ')) return auth.slice(7);
+  return env.GITHUB_TOKEN || '';
+}
+
+function ghHeaders(token) {
+  return {
+    'Authorization': 'Bearer ' + token,
+    'Accept': 'application/vnd.github.v3+json',
+    'User-Agent': 'command-dashboard-cf',
+  };
+}
+
+async function ghGet(path, token) {
+  const resp = await fetch(GITHUB_API + path, { headers: ghHeaders(token) });
+  if (!resp.ok) { const t = await resp.text(); throw new Error('GitHub ' + resp.status + ': ' + t.slice(0, 200)); }
+  return resp.json();
+}
+
+async function ghPut(path, body, token) {
+  const resp = await fetch(GITHUB_API + path, {
+    method: 'PUT',
+    headers: { ...ghHeaders(token), 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!resp.ok) { const t = await resp.text(); throw new Error('GitHub ' + resp.status + ': ' + t.slice(0, 200)); }
+  return resp.json();
+}
+
+async function genToken(secret, kv) {
+  const p = JSON.stringify({ t: Date.now() + 86400000, s: secret.slice(0, 8) });
   const enc = new TextEncoder();
   const key = await crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
-  const sig = await crypto.subtle.sign('HMAC', key, enc.encode(payload));
+  const sig = await crypto.subtle.sign('HMAC', key, enc.encode(p));
   const hmac = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 12);
-  const token = btoa(payload) + '.' + hmac;
-  await kv.put('token:' + token, '1', { expirationTtl: 86400 });
-  return token;
+  const t = btoa(p) + '.' + hmac;
+  await kv.put('token:' + t, '1', { expirationTtl: 86400 });
+  return t;
 }
 
 async function validateToken(token, secret, kv) {
@@ -45,62 +85,23 @@ async function validateToken(token, secret, kv) {
   try {
     const parts = token.split('.');
     if (parts.length !== 2) return false;
-    const payload = atob(parts[0]);
-    const parsed = JSON.parse(payload);
-    if (parsed.t < Date.now()) return false;
+    const p = JSON.parse(atob(parts[0]));
+    if (p.t < Date.now()) return false;
     const stored = await kv.get('token:' + token);
     if (!stored) return false;
     const enc = new TextEncoder();
     const key = await crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
-    const sig = await crypto.subtle.sign('HMAC', key, enc.encode(payload));
+    const sig = await crypto.subtle.sign('HMAC', key, enc.encode(p));
     const expected = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 12);
     return expected === parts[1];
-  } catch {
-    return false;
-  }
+  } catch { return false; }
 }
 
-// ── GitHub API helpers ──
-
-function ghHeaders(env) {
-  return {
-    'Authorization': 'Bearer ' + (env.GITHUB_TOKEN || ''),
-    'Accept': 'application/vnd.github.v3+json',
-    'User-Agent': 'command-dashboard-cf',
-  };
+function rfp(branch, side, fname) {
+  if (fname === 'master-record.md') return { path: 'static/' + branch + '.md', gh: 'static/' + encodeURIComponent(branch) + '.md' };
+  const s = sfx(side, fname);
+  return { path: 'static/' + branch + '/' + s, gh: 'static/' + encodeURIComponent(branch) + '/' + encodeURIComponent(s) };
 }
-
-async function ghGet(path, env) {
-  const resp = await fetch(`${GITHUB_API}${path}`, { headers: ghHeaders(env) });
-  if (!resp.ok) {
-    const text = await resp.text();
-    throw new Error(`GitHub API error ${resp.status}: ${text.slice(0, 200)}`);
-  }
-  return resp.json();
-}
-
-async function ghPut(path, body, env) {
-  const resp = await fetch(`${GITHUB_API}${path}`, {
-    method: 'PUT',
-    headers: { ...ghHeaders(env), 'Content-Type': 'application/json' },
-    body: JSON.stringify(body),
-  });
-  if (!resp.ok) {
-    const text = await resp.text();
-    throw new Error(`GitHub API error ${resp.status}: ${text.slice(0, 200)}`);
-  }
-  return resp.json();
-}
-
-function resolveBranchFilePath(branch, side, filename) {
-  if (filename === 'master-record.md') {
-    return { path: `static/${branch}.md`, ghPath: `static/${encodeURIComponent(branch)}.md` };
-  }
-  const sfx = sideSuffix(side, filename);
-  return { path: `static/${branch}/${sfx}`, ghPath: `static/${encodeURIComponent(branch)}/${encodeURIComponent(sfx)}` };
-}
-
-// ── Main handler ──
 
 export default {
   async fetch(request, env) {
@@ -110,317 +111,301 @@ export default {
     const secret = env.TOKEN_SECRET || 'fallback-secret';
     const kv = env.COMMAND_DASHBOARD;
 
-    // Parse body
     let body = null;
-    if (method === 'POST' || method === 'PUT') {
-      try { body = await request.json(); } catch {}
-    }
+    if (method === 'POST' || method === 'PUT') { try { body = await request.json(); } catch {} }
 
-    // CORS preflight
-    if (method === 'OPTIONS') {
-      return new Response(null, { headers: corsHeaders() });
-    }
+    if (method === 'OPTIONS') return new Response(null, { headers: cors() });
 
     try {
+      // ── Public endpoints (no auth required) ──
 
-      // ── POST /api/login ──
-      if (path === '/api/login' && method === 'POST') {
-        const passphrase = body?.passphrase || '';
-        const validPassphrase = env.LOGIN_PASSPHRASE || 'Burgerking';
-        if (passphrase === validPassphrase) {
-          const jwt = await generateToken(secret, kv);
-          return json({ token: jwt, success: true });
-        }
-        return json({ error: 'Invalid passphrase', success: false }, 401);
-      }
-
-      // ── GET /api/status ──
+      // GET /api/status
       if (path === '/api/status' && method === 'GET') {
         return json({ status: 'ok', version: APP_VERSION, timestamp: new Date().toISOString() });
       }
 
-      // ── GET /api/version ──
+      // GET /api/version
       if (path === '/api/version' && method === 'GET') {
         return json({ version: APP_VERSION });
       }
 
-      // ── Auth required for /api/* routes ──
+      // POST /api/login (passphrase fallback)
+      if (path === '/api/login' && method === 'POST') {
+        const pass = body?.passphrase || '';
+        if (pass === (env.LOGIN_PASSPHRASE || 'Burgerking')) {
+          const t = await genToken(secret, kv);
+          return json({ token: t, success: true });
+        }
+        return json({ error: 'Invalid passphrase', success: false }, 401);
+      }
+
+      // GET /api/auth/github/url
+      if (path === '/api/auth/github/url' && method === 'GET') {
+        const clientId = env.GITHUB_OAUTH_CLIENT_ID;
+        if (!clientId) return json({ error: 'GitHub OAuth not configured', url: null });
+        const redirectUri = url.origin + '/api/auth/github/callback';
+        const state = Math.random().toString(36).slice(2);
+        const ghUrl = 'https://github.com/login/oauth/authorize?client_id=' + clientId + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&scope=repo&state=' + state;
+        return json({ url: ghUrl, state });
+      }
+
+      // GET /api/auth/github/callback
+      if (path === '/api/auth/github/callback' && method === 'GET') {
+        const code = url.searchParams.get('code');
+        const clientId = env.GITHUB_OAUTH_CLIENT_ID;
+        const clientSecret = env.GITHUB_OAUTH_CLIENT_SECRET;
+        if (!code || !clientId || !clientSecret) return json({ error: 'OAuth params missing' }, 400);
+        const tokResp = await fetch('https://github.com/login/oauth/access_token', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+          body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code }),
+        });
+        const tokData = await tokResp.json();
+        const ghToken = tokData.access_token;
+        if (!ghToken) return json({ error: 'Failed to get token: ' + JSON.stringify(tokData) }, 400);
+        const storedToken = await genToken(secret, kv);
+        await kv.put('oauth:gh_token:' + storedToken, ghToken, { expirationTtl: 86400 });
+        const returnTo = url.searchParams.get('return_to') || url.origin + '/';
+        return Response.redirect(returnTo + (returnTo.includes('?') ? '&' : '?') + 'token=' + storedToken, 302);
+      }
+
+      // GET /api/auth/github/token
+      if (path === '/api/auth/github/token' && method === 'GET') {
+        return json({ message: 'Use the OAuth flow to authenticate.' });
+      }
+
+      // GET /api/settings
+      if (path === '/api/settings' && method === 'GET') {
+        const s = await getSettings(kv, env);
+        return json({ ...s, oauth_configured: !!env.GITHUB_OAUTH_CLIENT_ID });
+      }
+
+      // ── Auth required from here ──
       if (path.startsWith('/api/')) {
         const auth = request.headers.get('Authorization') || '';
         const token = auth.startsWith('Bearer ') ? auth.slice(7) : url.searchParams.get('token') || '';
-        const authValid = await validateToken(token, secret, kv);
-        if (!authValid) {
-          return json({ error: 'Unauthorized' }, 401);
-        }
+        const valid = await validateToken(token, secret, kv);
+        if (!valid) return json({ error: 'Unauthorized' }, 401);
+        // Resolve GitHub token: OAuth token or env var
+        var ghToken = await kv.get('oauth:gh_token:' + token) || env.GITHUB_TOKEN || '';
       }
 
-      // ── GET /api/fuel ──
+      // POST /api/settings
+      if (path === '/api/settings' && method === 'POST') {
+        const current = await getSettings(kv, env);
+        const updated = { ...current, ...(body || {}) };
+        // Only allow whitelisted keys
+        const allowed = ['github_owner', 'github_repo', 'parent_proxy_url', 'cf_worker_url', 'branch_ref'];
+        const filtered = {};
+        for (const k of allowed) if (updated[k] !== undefined) filtered[k] = updated[k];
+        await saveSettings(kv, { ...current, ...filtered });
+        return json(filtered);
+      }
+
+      // GET /api/config
+      if (path === '/api/config' && method === 'GET') {
+        const stored = await kv.get('command:config');
+        return json(stored ? JSON.parse(stored) : { bias: 0, risk: 0, gear: 3, released: [], toggle_exceptions: {} });
+      }
+
+      // POST /api/config
+      if (path === '/api/config' && method === 'POST') {
+        const stored = await kv.get('command:config');
+        const current = stored ? JSON.parse(stored) : {};
+        const updated = { ...current, ...(body || {}) };
+        await kv.put('command:config', JSON.stringify(updated));
+        return json(updated);
+      }
+
+      // GET /api/fuel
       if (path === '/api/fuel' && method === 'GET') {
         return json({ api: 80, llm: 65, cli: 90, ide: 40 });
       }
 
-      // ── GET /api/config ──
-      if (path === '/api/config' && method === 'GET') {
-        const stored = await kv.get('dashboard:config');
-        return json(stored ? JSON.parse(stored) : { bias: 3, risk: 3, gear: 6, released: [] });
-      }
-
-      // ── POST /api/config ──
-      if (path === '/api/config' && method === 'POST') {
-        const stored = await kv.get('dashboard:config');
-        const current = stored ? JSON.parse(stored) : {};
-        const updated = { ...current, ...(body || {}) };
-        await kv.put('dashboard:config', JSON.stringify(updated));
-        return json(updated);
-      }
-
-      // ── GET /api/masters ──
-      if (path === '/api/masters' && method === 'GET') {
-        let list = await kv.get('dashboard:masters_list');
-        if (!list) {
-          const contents = await ghGet('/repos/' + GITHUB_OWNER + '/' + GITHUB_REPO + '/contents/static?ref=command', env);
-          const dirs = contents.filter(f => f.type === 'dir').map(f => f.name);
-          // Also try files matching master-record.md pattern
-          list = JSON.stringify(dirs);
-          await kv.put('dashboard:masters_list', list, { expirationTtl: 300 });
-        }
-        return json(JSON.parse(list));
-      }
-
-      // ── GET /api/masters/:branch ──
-      if (path.match(/^\/api\/masters\/[a-zA-Z0-9_-]+$/) && method === 'GET') {
-        const branch = path.split('/')[3];
-        // Try master-record.md in branch dir, fall back to static/{branch}.md
-        for (const p of [`static/${encodeURIComponent(branch)}/master-record.md`, `static/${encodeURIComponent(branch)}.md`]) {
-          try {
-            const data = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${p}?ref=command`, env);
-            return json({ content: atob(data.content.replace(/\n/g, '')) });
-          } catch {}
-        }
-        return json({ content: '' });
-      }
-
-      // ── POST /api/masters/:branch ──
-      if (path.match(/^\/api\/masters\/[a-zA-Z0-9_-]+$/) && method === 'POST') {
-        const branch = path.split('/')[3];
-        const content = body?.content || '';
-        // Read existing to get sha if exists
-        let sha = null;
-        try {
-          const existing = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(branch)}/master-record.md?ref=command`, env);
-          sha = existing.sha;
-        } catch {}
-        try {
-          const result = await ghPut(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(branch)}/master-record.md`, {
-            message: `docs(${branch}): update master-record via dashboard`,
-            content: btoa(content),
-            sha: sha || undefined,
-            branch: 'command',
-          }, env);
-          return json({ success: true });
-        } catch (err) { return json({ error: err.message }, 500); }
-      }
-
-      // ── POST /api/push ──
-      if (path === '/api/push' && method === 'POST') {
-        return json({ output: 'KV-backed changes auto-sync on save. Use git push for batch updates.', success: true });
-      }
-
-      // ── POST /api/pull ──
-      if (path === '/api/pull' && method === 'POST') {
-        const keys = await kv.list({ prefix: 'sha:' });
-        for (const k of keys.keys) await kv.delete(k.name);
-        await kv.delete('dashboard:masters_list');
-        await kv.delete('dashboard:branches_list');
-        return json({ output: 'Cache cleared. Latest data fetched from GitHub on next read.', success: true });
-      }
-
-      // ── GET /api/branches ──
+      // GET /api/branches
       if (path === '/api/branches' && method === 'GET') {
-        let cached = await kv.get('dashboard:branches_list');
+        const s = await getSettings(kv, env);
+        const cacheKey = 'branches:' + s.github_owner + '/' + s.github_repo + '@' + s.branch_ref;
+        let cached = await kv.get(cacheKey);
         if (cached) return json(JSON.parse(cached));
 
-        const contents = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static?ref=command`, env);
-        const branches = contents.filter(f => f.type === 'dir').map(f => f.name);
+        let contents;
+        try {
+          contents = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static?ref=' + encodeURIComponent(s.branch_ref), ghToken);
+        } catch { return json([]); }
+        const branchDirs = contents.filter(f => f.type === 'dir').map(f => f.name);
         const result = [];
-        for (const name of branches) {
+        for (const name of branchDirs) {
           const leftFiles = [], rightFiles = [], highFiles = [], lowFiles = [];
           try {
-            const contents = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(name)}?ref=command`, env);
-            const dirNames = dir.map(f => f.name);
+            const dir = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static/' + encodeURIComponent(name) + '?ref=' + encodeURIComponent(s.branch_ref), ghToken);
+            const names = dir.map(f => f.name);
             for (const mdFile of MD_FILES) {
-              const addFile = (side, arr) => {
-                const sfx = sideSuffix(side, mdFile);
-                arr.push({ name: mdFile, label: mdFile.replace('.md', ''), exists: dirNames.includes(sfx) });
+              const addF = (side, arr) => {
+                const sn = sfx(side, mdFile);
+                arr.push({ name: mdFile, label: mdFile.replace('.md', ''), exists: names.includes(sn), side });
               };
-              addFile('left', leftFiles); addFile('right', rightFiles);
-              addFile('high', highFiles); addFile('low', lowFiles);
+              addF('high', highFiles); addF('left', leftFiles); addF('right', rightFiles); addF('low', lowFiles);
             }
           } catch {
             for (const mdFile of MD_FILES) {
-              ['left','right','high','low'].forEach(side => {
-                const arr = side==='left'?leftFiles:side==='right'?rightFiles:side==='high'?highFiles:lowFiles;
-                arr.push({ name: mdFile, label: mdFile.replace('.md', ''), exists: false });
+              ['high','left','right','low'].forEach(side => {
+                const arr = side === 'high' ? highFiles : side === 'left' ? leftFiles : side === 'right' ? rightFiles : lowFiles;
+                arr.push({ name: mdFile, label: mdFile.replace('.md', ''), exists: false, side });
               });
             }
           }
-          result.push({ name, masterExists: true, leftFiles, rightFiles, highFiles, lowFiles });
+          result.push({ name, highFiles, leftFiles, rightFiles, lowFiles });
         }
-        await kv.put('dashboard:branches_list', JSON.stringify(result), { expirationTtl: 300 });
+        await kv.put(cacheKey, JSON.stringify(result), { expirationTtl: 120 });
         return json(result);
       }
 
-      // ── GET|POST /api/branches/:branch/files/:side/:filename ──
-      const fileMatch = path.match(/^\/api\/branches\/([a-zA-Z0-9_-]+)\/files\/(left|right|high|low)\/(.+)$/);
-      if (fileMatch) {
-        const [, branch, side, filename] = fileMatch;
-        const fileInfo = resolveBranchFilePath(branch, side, filename);
-
+      // GET|POST /api/branches/:branch/files/:side/:filename
+      const fm = path.match(/^\/api\/branches\/([a-zA-Z0-9_-]+)\/files\/(high|left|right|low)\/(.+)$/);
+      if (fm) {
+        const s = await getSettings(kv, env);
+        const [, branch, side, fname] = fm;
+        const fi = rfp(branch, side, fname);
         if (method === 'GET') {
           try {
-            const data = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileInfo.ghPath}?ref=command`, env);
-            const content = atob(data.content.replace(/\n/g, ''));
-            await kv.put('sha:' + fileInfo.path, data.sha);
-            return json({ content, side, exists: true });
+            const data = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/' + fi.gh + '?ref=' + encodeURIComponent(s.branch_ref), ghToken);
+            return json({ content: atob(data.content.replace(/\n/g, '')), side, exists: true });
           } catch { return json({ content: '', side, exists: false }); }
         }
-
         if (method === 'POST') {
           const content = body?.content || '';
           try {
-            let sha = await kv.get('sha:' + fileInfo.path);
-            if (!sha) {
-              try { const existing = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileInfo.ghPath}`, env); sha = existing.sha; } catch {}
-            }
-            const result = await ghPut(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/${fileInfo.ghPath}`, {
-              message: `docs(${branch}): update ${side}/${filename.replace('.md','').toLowerCase()}`,
-              content: btoa(content),
-              sha: sha || undefined,
-              branch: 'command',
-            }, env);
-            if (result.content?.sha) await kv.put('sha:' + fileInfo.path, result.content.sha);
-            await kv.delete('dashboard:branches_list');
-            return json({ success: true, side, savedAt: fileInfo.path });
+            let sha = null;
+            try { const e = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/' + fi.gh + '?ref=' + encodeURIComponent(s.branch_ref), ghToken); sha = e.sha; } catch {}
+            await ghPut('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/' + fi.gh, {
+              message: 'docs(' + branch + '): update ' + side + '/' + fname.replace('.md','').toLowerCase(),
+              content: btoa(content), sha: sha || undefined, branch: s.branch_ref,
+            }, ghToken);
+            await kv.delete('branches:' + s.github_owner + '/' + s.github_repo + '@' + s.branch_ref);
+            return json({ success: true, side, savedAt: fi.path });
           } catch (err) { return json({ error: err.message }, 500); }
         }
       }
 
-      // ── GET /api/memory/:branch ──
-      const memMatch = path.match(/^\/api\/memory\/([a-zA-Z0-9_-]+)$/);
-      if (memMatch && method === 'GET') {
-        const branch = memMatch[1];
+      // GET /api/memory/:branch
+      const mm = path.match(/^\/api\/memory\/([a-zA-Z0-9_-]+)$/);
+      if (mm && method === 'GET') {
+        const s = await getSettings(kv, env);
+        const branch = mm[1];
         for (const f of ['MEMORY.md', 'MEMORY.left.md']) {
           try {
-            const data = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/contents/static/${encodeURIComponent(branch)}/${encodeURIComponent(f)}?ref=command`, env);
+            const data = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static/' + encodeURIComponent(branch) + '/' + encodeURIComponent(f) + '?ref=' + encodeURIComponent(s.branch_ref), ghToken);
             return json({ content: atob(data.content.replace(/\n/g, '')) });
           } catch {}
         }
         return json({ content: 'No MEMORY.md found' });
       }
 
-      // ── POST /api/chat ──
+      // POST /api/chat
       if (path === '/api/chat' && method === 'POST') {
         const message = body?.message || '';
-        if (!message) return json({ response: 'No message provided', success: false }, 400);
-        const parentProxy = env.PARENT_PROXY_URL || 'https://www.financecheque.uk';
-        const routing = [{ node: 'dashboard (CF Worker)', status: 'ok' }];
+        if (!message) return json({ response: 'No message', success: false }, 400);
+        const s = await getSettings(kv, env);
+        const proxyUrl = s.parent_proxy_url;
+        const routing = [{ node: 'command dashboard', status: 'ok' }];
         try {
-          const proxyResp = await fetch(parentProxy + '/api/proxy?action=chat', {
+          const resp = await fetch(proxyUrl + '/api/proxy?action=chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              system: 'You are the dashboard command intercom for the DATRO flywheel control system. Respond concisely (1-3 sentences).',
-              message,
-            }),
+            body: JSON.stringify({ system: body?.system || 'You are the command intercom. Respond concisely.', message }),
           });
-          const proxyData = await proxyResp.json();
-          const reply = proxyData.reply || proxyData.response || 'No response';
-          const proxyInfo = proxyData._proxy || {};
-          routing.push({ node: `parent proxy (${parentProxy})`, status: 'ok', detail: proxyInfo.routing || 'direct_llm' });
-          if (proxyInfo.routing === 'child_proxy') routing.push({ node: 'child proxy machine', status: 'ok' });
-          else if (proxyInfo.routing === 'direct_llm') routing.push({ node: 'CF environment LLM', status: 'ok' });
-          return json({ response: reply, success: true, routing });
+          const d = await resp.json();
+          routing.push({ node: 'parent proxy (' + proxyUrl + ')', status: 'ok', detail: d._proxy?.routing || 'direct_llm' });
+          return json({ response: d.reply || d.response || 'No response', success: true, routing });
         } catch (err) {
-          routing.push({ node: `parent proxy (${parentProxy})`, status: 'error', detail: err.message });
-          return json({ response: 'All proxies unavailable.', success: false, routing });
+          routing.push({ node: 'parent proxy (' + proxyUrl + ')', status: 'error', detail: err.message });
+          return json({ response: 'Proxy unavailable.', success: false, routing });
         }
       }
 
-      // ── GET /api/mcp ──
+      // GET /api/mcp
       if (path === '/api/mcp' && method === 'GET') {
         const target = url.searchParams.get('url') || 'https://datro.directory';
-        const workerUrl = env.CF_WORKER_URL || 'https://datro-flywheel.righteous.workers.dev';
+        const s = await getSettings(kv, env);
         try {
-          const cfResp = await fetch(`${workerUrl}/__mcp?url=${encodeURIComponent(target)}`);
-          return json(await cfResp.json());
+          const resp = await fetch(s.cf_worker_url + '/__mcp?url=' + encodeURIComponent(target));
+          return json(await resp.json());
         } catch (err) { return json({ error: err.message }, 502); }
       }
 
-      // ── GET /api/rereleases ──
+      // GET /api/rereleases
       if (path === '/api/rereleases' && method === 'GET') {
+        const s = await getSettings(kv, env);
         let lastCheck = await kv.get('rerelease:lastCheck');
-        const lastCheckTime = lastCheck ? parseInt(lastCheck, 10) : 0;
-        // Fetch recent releases from GitHub
-        const releases = await ghGet(`/repos/${GITHUB_OWNER}/${GITHUB_REPO}/releases?per_page=10`, env);
-        const rereleases = [];
-        if (Array.isArray(releases)) {
-          for (const r of releases) {
-            const pubTime = new Date(r.published_at).getTime();
-            if (pubTime > lastCheckTime) {
-              rereleases.push({ branch: r.tag_name.split('-v')[0], tag: r.tag_name, name: r.name, published: r.published_at });
+        const lastTime = lastCheck ? parseInt(lastCheck, 10) : 0;
+        try {
+          const releases = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/releases?per_page=10', ghToken);
+          const rereleases = [];
+          if (Array.isArray(releases)) {
+            for (const r of releases) {
+              if (new Date(r.published_at).getTime() > lastTime) {
+                rereleases.push({ branch: (r.tag_name || '').split('-v')[0], tag: r.tag_name, name: r.name, published: r.published_at });
+              }
             }
           }
-        }
-        await kv.put('rerelease:lastCheck', String(Date.now()));
-        return json({ rereleases, count: rereleases.length });
+          await kv.put('rerelease:lastCheck', String(Date.now()));
+          return json({ rereleases, count: rereleases.length });
+        } catch { return json({ rereleases: [], count: 0 }); }
       }
 
-      // ── POST /api/machine/register ──
+      // POST /api/flywheel/trigger
+      if (path === '/api/flywheel/trigger' && method === 'POST') {
+        const s = await getSettings(kv, env);
+        try {
+          const resp = await fetch(s.cf_worker_url + '/__cron', { method: 'POST' });
+          const text = await resp.text();
+          return json({ success: resp.ok, output: text.slice(0, 500) });
+        } catch (err) { return json({ error: err.message, success: false }, 502); }
+      }
+
+      // GET /api/flywheel/status
+      if (path === '/api/flywheel/status' && method === 'GET') {
+        const s = await getSettings(kv, env);
+        try {
+          const resp = await fetch(s.cf_worker_url + '/__status');
+          return json(await resp.json());
+        } catch { return json({ status: 'unreachable' }); }
+      }
+
+      // POST /api/machine/register
       if (path === '/api/machine/register' && method === 'POST') {
         const { machine_id, api_keys, ide, cli_tools } = body || {};
         if (!machine_id || !api_keys) return json({ error: 'machine_id and api_keys required' }, 400);
-        await kv.put('machine:' + machine_id, JSON.stringify({
-          api_keys, ide: ide || null, cli_tools: cli_tools || [],
-          registered_at: Date.now(), last_seen: Date.now(),
-        }), { expirationTtl: 86400 });
-        const index = await kv.get('machine:index');
-        const machines = index ? JSON.parse(index) : [];
+        await kv.put('machine:' + machine_id, JSON.stringify({ api_keys, ide: ide || null, cli_tools: cli_tools || [], registered_at: Date.now(), last_seen: Date.now() }), { expirationTtl: 86400 });
+        const idx = await kv.get('machine:index');
+        const machines = idx ? JSON.parse(idx) : [];
         if (!machines.includes(machine_id)) { machines.push(machine_id); await kv.put('machine:index', JSON.stringify(machines)); }
-        return json({ success: true, machine_id, message: 'Keys registered as fallback for LLM quota exhaustion.' });
+        return json({ success: true, machine_id, message: 'Keys registered as fallback.' });
       }
 
-      // ── GET /api/local/profiles ──
+      // GET /api/local/profiles
       if (path === '/api/local/profiles' && method === 'GET') {
         return json({ profiles: [] });
       }
 
-      // ── AWS endpoints (gone) ──
+      // AWS endpoints (gone)
       if (path.startsWith('/api/aws/') || path === '/api/trigger/ota' || path === '/api/trigger/meta') {
-        return json({ error: 'AWS decommissioned. System is Cloudflare-native.', success: false }, 410);
+        return json({ error: 'AWS decommissioned.', success: false }, 410);
       }
 
-      // ── Not API → serve from Pages static assets ──
-      // The _worker.js receives ALL requests. For non-API routes, we
-      // need to serve the static asset from the Pages KV store.
-      // We use env.ASSETS to access the Pages static asset store.
+      // ── Serve static assets ──
       if (env.ASSETS) {
         return env.ASSETS.fetch(request);
       }
 
-      // ── Fallback SPA routing ──
-      const assetUrl = new URL(request.url);
+      // Fallback SPA routing
       if (path === '/' || !path.startsWith('/api/')) {
-        // Try common static files
         const staticPaths = ['/index.html', '/app.js', '/style.css', '/racetrack.js'];
         for (const p of staticPaths) {
-          if (path === p && env.ASSETS) {
-            return env.ASSETS.fetch(new Request(new URL(p, url.origin), request));
-          }
+          if (path === p && env.ASSETS) return env.ASSETS.fetch(new Request(new URL(p, url.origin), request));
         }
-        // Fallback to index.html (SPA)
-        if (env.ASSETS) {
-          return env.ASSETS.fetch(new Request(new URL('/index.html', url.origin), request));
-        }
+        if (env.ASSETS) return env.ASSETS.fetch(new Request(new URL('/index.html', url.origin), request));
       }
 
       return json({ error: 'Not found', path }, 404);

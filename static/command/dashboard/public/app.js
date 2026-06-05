@@ -1,887 +1,634 @@
-const AUTH_TOKEN_KEY = 'fcuk_command_token';
-
-function getToken() { return sessionStorage.getItem(AUTH_TOKEN_KEY); }
-
-function setToken(t) { if (t) sessionStorage.setItem(AUTH_TOKEN_KEY, t); else sessionStorage.removeItem(AUTH_TOKEN_KEY); }
-
-async function apiFetch(url, opts = {}) {
-    const token = getToken();
-    const headers = { ...(opts.headers || {}) };
-    if (token) headers['Authorization'] = 'Bearer ' + token;
-    if (opts.body && !headers['Content-Type']) headers['Content-Type'] = 'application/json';
-    const res = await fetch(url, { ...opts, headers });
-    if (res.status === 401) {
-        setToken(null);
-        showLogin();
-        throw new Error('Session expired');
-    }
-    return res;
-}
-
-function showLogin() {
-    document.getElementById('login-overlay').style.display = 'flex';
-    document.getElementById('login-input').focus();
-}
-
-function hideLogin() {
-    document.getElementById('login-overlay').style.display = 'none';
-}
-
-async function handleLogin() {
-    const passphrase = document.getElementById('login-input').value.trim();
-    const errEl = document.getElementById('login-error');
-    if (!passphrase) { errEl.textContent = 'Enter passphrase'; return; }
-    errEl.textContent = '';
-    try {
-        const res = await apiFetch('/api/login', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ passphrase })
-        });
-        const data = await res.json();
-        if (data.token) {
-            setToken(data.token);
-            hideLogin();
-            init();
-        } else {
-            errEl.textContent = 'Invalid passphrase';
-        }
-    } catch {
-        errEl.textContent = 'Connection error';
-    }
-}
-
-const branchCount = document.getElementById('branch-count');
-const planEditor = document.getElementById('plan-editor');
-const logContent = document.getElementById('log-content');
-const activeBranchPath = document.getElementById('active-branch-path');
-const activeSideBadge = document.getElementById('active-side-badge');
-const btnSavePlan = document.getElementById('btn-save-plan');
-const fileExistsIndicator = document.getElementById('file-exists-indicator');
-const treeLeft = document.getElementById('branch-tree-left');
-const treeRight = document.getElementById('branch-tree-right');
-const highBreadcrumb = document.getElementById('high-breadcrumb');
-const lowBreadcrumb = document.getElementById('low-breadcrumb');
-const btnCollapseLeft = document.getElementById('btn-collapse-left');
-const btnCollapseRight = document.getElementById('btn-collapse-right');
-
-const btnClearLogs = document.getElementById('btn-clear-logs');
-
-const trackCanvas = document.getElementById('track-canvas');
-const rpmReadout = document.getElementById('rpm-readout');
-const speedReadout = document.getElementById('speed-readout');
-const stickKnob = document.getElementById('stick-knob');
-let currentGear = 'N';
-let rpmValue = 0;
-
-const chatMessages = document.getElementById('chat-messages');
-const chatInput = document.getElementById('chat-input');
-const btnSendChat = document.getElementById('btn-send-chat');
-
-const pad2d = document.getElementById('pad-2d');
-const padThumb = document.getElementById('pad-thumb');
-const biasLabel = document.getElementById('bias-label');
-const riskLabel = document.getElementById('risk-label');
-const gearRange = document.getElementById('gear-range');
-const gearDisplay = document.getElementById('gear-display');
-const gearReadout = document.getElementById('gear-readout');
-
-let currentConfig = { gear: 6, steering: 'CTR', bias: 3, risk: 3 };
+// ── State ──
+let token = sessionStorage.getItem('command_token') || '';
+let ghToken = '';
+let settings = {};
+let config = { bias: 0, risk: 0, gear: 3, toggle_exceptions: {} };
 let branches = [];
-let activeFile = null;
-let padDragging = false;
+let activeBranch = '';
+let isCallActive = false;
+let recognition = null;
+let currentGear = 'N';
+let dialogOpen = false;
 
-const BIAS_LABELS = {
-  1: 'STRICT L',
-  2: 'FAVOUR L',
-  3: 'NEUTRAL',
-  4: 'FAVOUR R',
-  5: 'STRICT R'
-};
+// ── DOM refs ──
+const $ = id => document.getElementById(id);
+const app = $('app');
+const overlay = $('login-overlay');
+const loginInput = $('login-passphrase');
+const loginBtn = $('login-btn');
+const loginGhBtn = $('login-gh-btn');
+const loginError = $('login-error');
+const topbar = $('topbar');
 
-const RISK_LABELS = {
-  1: 'LOW',
-  2: 'FAVOUR LOW',
-  3: 'NEUTRAL',
-  4: 'FAVOUR HIGH',
-  5: 'HIGH'
-};
+// ── Auth ──
 
-const BIAS_STEERING = {
-  1: '90L',
-  2: '45L',
-  3: 'CTR',
-  4: '45R',
-  5: '90R'
-};
+async function doPassphraseLogin(pass) {
+  try {
+    const res = await fetch('/api/login', {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ passphrase: pass }),
+    });
+    const data = await res.json();
+    if (data.token) {
+      token = data.token;
+      sessionStorage.setItem('command_token', token);
+      afterLogin();
+    } else {
+      loginError.textContent = 'Invalid passphrase';
+    }
+  } catch (e) {
+    loginError.textContent = 'Connection error';
+  }
+}
 
-const FILE_DESCRIPTIONS = {
-  'AGENT.md': 'Agent instructions — how the AI should operate on this branch for this side.',
-  'README.md': 'Public-facing readme for the branch on this side.',
-  'CHANGELOG.md': 'Release history and version changes for this side.',
-  'MEMORY.md': 'Reflexion memory — lessons learned from previous cycles for this side.',
-  'SKILLS.md': 'Skills and capabilities relevant to this side.',
-  'HEARTBEAT.md': 'Heartbeat status — health check for this branch side.',
-  'SOUL.md': 'Core identity and personality for this side.',
-  'MASTERPLAN.md': 'Strategic master plan and roadmap for this side.',
-  'RULES.md': 'Rules and constraints governing this side.',
-  'TEMPLATE.md': 'Templates for file generation on this side.',
-  'CONTEXT.md': 'Context and background information for this side.',
-  'GLOSSARY.md': 'Glossary of terms used on this side.',
-  'RESOURCES.md': 'Resources and references for this side.',
-  'TASKS.md': 'Task checklist — items the flywheel has completed or should complete for this side.',
-  'IDENTITY.md': 'Identity and branding guidelines for this side.',
-  'SPEC.md': 'Technical specification — compliance goals the flywheel targets for this side.'
-};
+async function doGithubOAuth() {
+  try {
+    const res = await fetch('/api/auth/github/url');
+    const data = await res.json();
+    if (data.url) {
+      // Store current page before redirect
+      sessionStorage.setItem('oauth_return_to', window.location.href);
+      window.location.href = data.url;
+    } else {
+      loginError.textContent = 'GitHub OAuth not configured on server';
+    }
+  } catch (e) {
+    loginError.textContent = 'Failed to initiate OAuth';
+  }
+}
 
+function afterLogin() {
+  overlay.style.display = 'none';
+  app.style.display = 'grid';
+  $('topbar').style.display = 'flex';
+  init();
+}
+
+loginBtn.addEventListener('click', () => doPassphraseLogin(loginInput.value));
+loginInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') doPassphraseLogin(loginInput.value); });
+loginGhBtn.addEventListener('click', doGithubOAuth);
+
+// Check for token in URL (OAuth callback)
+const urlParams = new URLSearchParams(window.location.search);
+const urlToken = urlParams.get('token');
+if (urlToken) {
+  token = urlToken;
+  sessionStorage.setItem('command_token', token);
+  window.history.replaceState({}, '', window.location.pathname);
+  afterLogin();
+} else if (token) {
+  afterLogin();
+}
+
+// ── API helper ──
+async function apiFetch(path, opts = {}) {
+  const headers = { ...(opts.headers || {}) };
+  if (token) headers['Authorization'] = 'Bearer ' + token;
+  if (opts.body && !headers['Content-Type']) headers['Content-Type'] = 'application/json';
+  const res = await fetch(path, { ...opts, headers });
+  if (res.status === 401) {
+    sessionStorage.removeItem('command_token');
+    token = '';
+    app.style.display = 'none';
+    overlay.style.display = 'flex';
+    loginError.textContent = 'Session expired. Please log in again.';
+    return null;
+  }
+  return res;
+}
+
+// ── Init ──
 async function init() {
-    await fetchConfig();
-    await fetchBranches();
-    await fetchVersion();
-    await fetchFuel();
-    initTrackCanvas();
-    initGearStick();
+  $('btn-logout').addEventListener('click', () => {
+    sessionStorage.removeItem('command_token');
+    token = '';
+    app.style.display = 'none';
+    overlay.style.display = 'flex';
+  });
 
-    btnSavePlan.addEventListener('click', saveFile);
-    document.getElementById('btn-push').addEventListener('click', pushToGit);
-    document.getElementById('btn-pull').addEventListener('click', pullFromGit);
-    btnClearLogs.addEventListener('click', () => logContent.textContent = '');
-    btnCollapseLeft.addEventListener('click', () => { if (activeFile) onBranchSelect('left', activeFile.branch); });
-    btnCollapseRight.addEventListener('click', () => { if (activeFile) onBranchSelect('right', activeFile.branch); });
+  await loadSettings();
+  await loadVersion();
+  await loadBranches();
+  await loadConfig();
 
-    btnSendChat.addEventListener('click', sendChat);
-    chatInput.addEventListener('keypress', (e) => {
-        if (e.key === 'Enter') sendChat();
-    });
+  initDial();
+  initStick();
+  initRadio();
+  initEditor();
+  initSettingsModal();
 
-    // 2D Pad mouse/touch handlers
-    pad2d.addEventListener('mousedown', (e) => {
-        padDragging = true;
-        updatePadFromEvent(e);
-    });
+  setInterval(loadFuel, 5000);
+  setInterval(loadRereleases, 15000);
+  pollRereleases();
 
-    document.addEventListener('mousemove', (e) => {
-        if (padDragging) updatePadFromEvent(e);
-    });
-
-    document.addEventListener('mouseup', () => {
-        if (padDragging) {
-            padDragging = false;
-            commitPadPosition();
-        }
-    });
-
-    pad2d.addEventListener('touchstart', (e) => {
-        e.preventDefault();
-        padDragging = true;
-        updatePadFromEvent(e.touches[0]);
-    });
-
-    document.addEventListener('touchmove', (e) => {
-        if (padDragging) {
-            e.preventDefault();
-            updatePadFromEvent(e.touches[0]);
-        }
-    });
-
-    document.addEventListener('touchend', () => {
-        if (padDragging) {
-            padDragging = false;
-            commitPadPosition();
-        }
-    });
-
-    gearRange.addEventListener('input', (e) => {
-        const v = e.target.value;
-        gearDisplay.textContent = v;
-        gearReadout.textContent = v;
-    });
-
-    gearRange.addEventListener('change', async (e) => {
-        const val = parseInt(e.target.value);
-        if (!confirm(`CONFIRM: SHIFT RELEASE GEAR TO SPEED ${val}?`)) {
-            e.target.value = currentConfig.gear || 6;
-            const g = currentConfig.gear || 6;
-            gearDisplay.textContent = g;
-            gearReadout.textContent = g;
-            return;
-        }
-        await updateConfig({ gear: val });
-    });
-
-    setInterval(fetchFuel, 5000);
-    setInterval(updateRpm, 200);
-    pollRereleases();
+  showTrack();
 }
 
-function initTrackCanvas() {
-    const container = trackCanvas.parentElement;
-    trackCanvas.style.display = '';
-    const rect = container.getBoundingClientRect();
-    trackCanvas.width = Math.max(rect.width, 600);
-    trackCanvas.height = Math.max(rect.height, 400);
-    window.trackInit(trackCanvas);
-    window.addEventListener('resize', () => {
-        const r = container.getBoundingClientRect();
-        if (r.width > 50 && r.height > 50) {
-            trackCanvas.width = r.width;
-            trackCanvas.height = r.height;
-        }
-    });
+// ── Settings ──
+async function loadSettings() {
+  const res = await apiFetch('/api/settings');
+  if (!res) return;
+  settings = await res.json();
+  $('gh-auth-status').textContent = settings.oauth_configured ? 'OAuth ✓' : 'Token ✓';
 }
 
-function initGearStick() {
-    const gate = document.querySelector('.gear-gate');
-    const slots = gate.querySelectorAll('.gate-slot');
-    slots.forEach(slot => {
-        slot.addEventListener('click', () => {
-            currentGear = slot.dataset.gear;
-            stickKnob.textContent = currentGear;
-            document.querySelectorAll('.gate-slot').forEach(s => s.classList.remove('active'));
-            slot.classList.add('active');
-            // Map gear to track speed
-            const speedMap = { L: 0.3, N: 1, H: 3 };
-            const s = speedMap[currentGear] || 1;
-            window.trackSetSpeed(s);
-            // Sync to release gear range
-            const gearVal = currentGear === 'L' ? 3 : currentGear === 'N' ? 6 : 9;
-            gearRange.value = gearVal;
-            gearDisplay.textContent = gearVal;
-            gearReadout.textContent = gearVal;
-        });
-    });
-    // Default to N
-    document.querySelector('.gate-slot[data-gear="N"]')?.click();
+async function loadVersion() {
+  const res = await apiFetch('/api/version');
+  if (!res) return;
+  const data = await res.json();
+  $('version-badge').textContent = 'v' + (data.version || '—');
 }
 
-function updateRpm() {
-    if (!rpmReadout || !speedReadout) return;
-    rpmValue += (Math.random() - 0.5) * 200;
-    rpmValue = Math.max(500, Math.min(8000, rpmValue));
-    rpmReadout.textContent = Math.round(rpmValue);
-    const baseSpeed = currentGear === 'L' ? 20 : currentGear === 'N' ? 60 : 120;
-    const speed = baseSpeed + (rpmValue / 8000) * 40;
-    speedReadout.textContent = Math.round(speed);
+async function loadBranches() {
+  const res = await apiFetch('/api/branches');
+  if (!res) return;
+  branches = await res.json();
+  const sel = $('branch-select');
+  sel.innerHTML = '<option value="">— branch —</option>';
+  for (const b of branches) {
+    const opt = document.createElement('option');
+    opt.value = b.name; opt.textContent = b.name;
+    sel.appendChild(opt);
+  }
+  renderWingFiles();
+  sel.addEventListener('change', () => {
+    activeBranch = sel.value;
+    renderWingFiles();
+    if (typeof window.trackSelectBranch === 'function') window.trackSelectBranch(activeBranch);
+  });
 }
 
-function toggleModal(id) {
-    const el = document.getElementById(id);
-    if (id === 'comms-popup' && isCallActive && el.style.display !== 'none' && el.style.display !== '') {
-        return; // Don't close during active call
+async function loadConfig() {
+  const res = await apiFetch('/api/config');
+  if (!res) return;
+  config = await res.json();
+  if (config.gear !== undefined) {
+    currentGear = { 1: 'L', 3: 'N', 6: 'H' }[config.gear] || 'N';
+    updateStickUI();
+  }
+  renderWingFiles();
+}
+
+async function saveConfig(updates) {
+  config = { ...config, ...updates };
+  await apiFetch('/api/config', {
+    method: 'POST', body: JSON.stringify(config),
+  });
+}
+
+// ── Wing File Rendering ──
+
+const SIDES = ['high', 'left', 'right', 'low'];
+const SIDE_COLORS = { high: '#ff6b6b', left: '#4ecdc4', right: '#ffd93d', low: '#69db7c' };
+
+function getActiveSides() {
+  const bias = config.bias || 0;
+  const risk = config.risk || 0;
+  const exceptions = config.toggle_exceptions || {};
+  const branch = activeBranch || '_default';
+  const bex = exceptions[branch] || {};
+
+  const defaults = {};
+  defaults['high'] = risk > 0;
+  defaults['left'] = bias < 0;
+  defaults['right'] = bias > 0;
+  defaults['low'] = risk < 0;
+
+  const active = {};
+  for (const side of SIDES) {
+    const fullSide = side.charAt(0).toUpperCase() + side.slice(1);
+    const exceptionVal = bex[fullSide];
+    if (exceptionVal === true) active[side] = true;
+    else if (exceptionVal === false) active[side] = false;
+    else active[side] = defaults[side];
+  }
+  return active;
+}
+
+function toggleWingException(side) {
+  const branch = activeBranch || '_default';
+  if (!config.toggle_exceptions) config.toggle_exceptions = {};
+  if (!config.toggle_exceptions[branch]) config.toggle_exceptions[branch] = {};
+  const bex = config.toggle_exceptions[branch];
+  const fullSide = side.charAt(0).toUpperCase() + side.slice(1);
+  const current = bex[fullSide];
+  if (current === true) bex[fullSide] = false;
+  else if (current === false) delete bex[fullSide];
+  else bex[fullSide] = true;
+  saveConfig({ toggle_exceptions: config.toggle_exceptions });
+  renderWingFiles();
+}
+
+function renderWingFiles() {
+  const lists = {
+    high: $('wing-list-high'),
+    left: $('wing-list-left'),
+    right: $('wing-list-right'),
+    low: $('wing-list-low'),
+  };
+  for (const side of SIDES) lists[side].innerHTML = '';
+
+  const active = getActiveSides();
+
+  if (!activeBranch) {
+    const branchData = branches.length > 0 ? branches[0] : null;
+    if (branchData) renderBranchWings(branchData, lists, active);
+    return;
+  }
+
+  const branchData = branches.find(b => b.name === activeBranch);
+  if (branchData) renderBranchWings(branchData, lists, active);
+}
+
+function renderBranchWings(branchData, lists, active) {
+  for (const side of SIDES) {
+    const files = branchData[side + 'Files'] || [];
+    const list = lists[side];
+    if (files.length === 0) continue;
+
+    const allExist = files.filter(f => f.exists);
+    const showFiles = allExist.length > 0 ? allExist : files.slice(0, 5);
+
+    for (const f of showFiles) {
+      const card = document.createElement('div');
+      card.className = 'wing-card' + (active[side] ? ' active' : '');
+      card.dataset.side = side;
+      card.dataset.filename = f.name;
+
+      const toggle = document.createElement('div');
+      toggle.className = 'wing-toggle ' + (active[side] ? 'on' : 'off');
+      if (active[side]) toggle.textContent = '✓';
+      toggle.addEventListener('click', (e) => { e.stopPropagation(); toggleWingException(side); });
+
+      const indicator = document.createElement('div');
+      indicator.className = 'wing-indicator';
+      indicator.style.background = SIDE_COLORS[side] || '#666';
+      indicator.style.opacity = f.exists ? '1' : '0.2';
+
+      const name = document.createElement('span');
+      name.className = 'wing-name';
+      name.textContent = f.label;
+
+      card.appendChild(toggle);
+      card.appendChild(indicator);
+      card.appendChild(name);
+
+      card.addEventListener('click', () => openEditor(branchData.name, side, f.name));
+
+      list.appendChild(card);
     }
-    el.style.display = (el.style.display === 'flex' || el.style.display === 'block') ? 'none' : 'flex';
+  }
 }
 
-function closeOnOverlay(e) {
-    if (e.target.classList.contains('modal-overlay')) e.target.style.display = 'none';
-}
-
-window.toggleModal = toggleModal;
-window.closeOnOverlay = closeOnOverlay;
-
-async function fetchConfig() {
-    try {
-        const res = await apiFetch('/api/config');
-        currentConfig = await res.json();
-        applyConfigUI();
-    } catch (err) {
-        console.error('Failed to fetch config');
-    }
-}
-
-function applyConfigUI() {
-    gearRange.value = currentConfig.gear || 6;
-    gearDisplay.textContent = currentConfig.gear || 6;
-    gearReadout.textContent = currentConfig.gear || 6;
-    const bx = currentConfig.bias || 3;
-    const by = currentConfig.risk || 3;
-    setPadPosition(bx, by);
-}
-
-function setPadPosition(bias, risk) {
-    const rect = pad2d.getBoundingClientRect();
-    const cx = rect.width / 2;
-    const cy = rect.height / 2;
-    const px = ((bias - 1) / 4) * rect.width;
-    const py = ((5 - risk) / 4) * rect.height;
-    padThumb.style.left = px + 'px';
-    padThumb.style.top = py + 'px';
-    biasLabel.textContent = BIAS_LABELS[bias] || 'NEUTRAL';
-    riskLabel.textContent = RISK_LABELS[risk] || 'NEUTRAL';
-}
-
-function updatePadFromEvent(e) {
-    const rect = pad2d.getBoundingClientRect();
-    let x = e.clientX - rect.left;
-    let y = e.clientY - rect.top;
-    x = Math.max(0, Math.min(rect.width, x));
-    y = Math.max(0, Math.min(rect.height, y));
-    padThumb.style.left = x + 'px';
-    padThumb.style.top = y + 'px';
-    const bias = Math.round((x / rect.width) * 4) + 1;
-    const risk = 5 - Math.round((y / rect.height) * 4);
-    biasLabel.textContent = BIAS_LABELS[bias] || 'NEUTRAL';
-    riskLabel.textContent = RISK_LABELS[risk] || 'NEUTRAL';
-    currentConfig._draftBias = bias;
-    currentConfig._draftRisk = risk;
-}
-
-function commitPadPosition() {
-    const bias = currentConfig._draftBias || 3;
-    const risk = currentConfig._draftRisk || 3;
-    if (!confirm(`CONFIRM: SET BIAS="${BIAS_LABELS[bias]}" RISK="${RISK_LABELS[risk]}"?`)) {
-        applyConfigUI();
-        return;
-    }
-    updateConfig({ bias, risk, steering: BIAS_STEERING[bias] });
-}
-
-const FLYWHEEL_URL = 'https://datro-flywheel.righteous.workers.dev';
-
-async function updateConfig(patch) {
-    try {
-        const res = await apiFetch('/api/config', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(patch)
-        });
-        currentConfig = await res.json();
-        applyConfigUI();
-    } catch (err) {
-        console.error('Failed to update config');
-    }
-    if (patch.bias != null || patch.risk != null) {
-        try {
-            await fetch(FLYWHEEL_URL + '/__bias', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
-                    bias: patch.bias != null ? patch.bias : currentConfig.bias,
-                    steering: patch.steering || 'CTR',
-                    risk: patch.risk != null ? patch.risk : currentConfig.risk
-                })
-            });
-        } catch (err) {
-            console.error('Failed to sync bias to flywheel:', err);
-        }
-    }
-}
-
-async function fetchFuel() {
-    try {
-        const res = await apiFetch('/api/fuel');
-        const fuels = await res.json();
-        document.getElementById('fuel-api').style.height = fuels.api + '%';
-        document.getElementById('fuel-llm').style.height = fuels.llm + '%';
-        document.getElementById('fuel-cli').style.height = fuels.cli + '%';
-        document.getElementById('fuel-ide').style.height = fuels.ide + '%';
-    } catch (err) {
-        console.error('Failed to fetch fuel levels');
-    }
-}
-
-// AWS functions removed — system is Cloudflare-native
-async function fetchAwsStatus() { return; }
-async function updatePauseButtonState() { return; }
-async function togglePause() { return; }
-function connectLogs() { return; }
-async function triggerOta() { alert('OTA: AWS decommissioned. Use git push + Pages deploy.'); }
-async function triggerMeta() { alert('Meta-review runs in CF Worker on cron. Flywheel handles this.'); }
-
-// ── Branch Trees (Left + Right) ──
-
-let knownTags = new Set();
-
-async function pollRereleases() {
-    try {
-        const res = await apiFetch('/api/rereleases');
-        const data = await res.json();
-        if (data.rereleases && data.rereleases.length > 0) {
-            for (const r of data.rereleases) {
-                if (!knownTags.has(r.tag)) {
-                    knownTags.add(r.tag);
-                    if (typeof window.trackRerelease === 'function') {
-                        window.trackRerelease(r.branch);
-                    }
-                }
-            }
-        }
-    } catch (err) {
-        // silently retry
-    }
-    setTimeout(pollRereleases, 15000);
-}
-
-async function fetchVersion() {
-    try {
-        const res = await apiFetch('/api/version');
-        const data = await res.json();
-        document.getElementById('version-badge').textContent = 'v' + data.version;
-    } catch (err) {
-        console.error('Failed to fetch version');
-    }
-}
-
-async function fetchBranches() {
-    try {
-        const res = await apiFetch('/api/branches');
-        branches = await res.json();
-        branchCount.textContent = branches.length;
-        populateBranchSelects(branches);
-        // Show first branch's files by default
-        const firstBranch = branches[0]?.name;
-        if (firstBranch) {
-            document.getElementById('branch-select-left').value = firstBranch;
-            document.getElementById('branch-select-right').value = firstBranch;
-            document.getElementById('branch-select-high').value = firstBranch;
-            document.getElementById('branch-select-low').value = firstBranch;
-            onBranchSelect('left', firstBranch);
-            onBranchSelect('right', firstBranch);
-            onBranchSelect('high', firstBranch);
-            onBranchSelect('low', firstBranch);
-        }
-    } catch (err) {
-        console.error('Failed to fetch branches:', err);
-    }
-}
-
-function populateBranchSelects(branches) {
-    const sides = ['left', 'right', 'high', 'low'];
-    sides.forEach(side => {
-        const sel = document.getElementById(`branch-select-${side}`);
-        sel.innerHTML = '<option value="">— select branch —</option>';
-        branches.forEach(b => {
-            const opt = document.createElement('option');
-            opt.value = b.name;
-            opt.textContent = b.name.toUpperCase();
-            sel.appendChild(opt);
-        });
-        sel.addEventListener('change', () => onBranchSelect(side, sel.value));
-    });
-}
-
-function onBranchSelect(side, branchName) {
-    const treeContainer = side === 'left' || side === 'right'
-        ? document.getElementById(`branch-tree-${side}`)
-        : document.getElementById(`${side}-breadcrumb`);
-    
-    // Clear existing
-    treeContainer.innerHTML = '';
-    
-    if (!branchName) return;
-    
-    const branch = branches.find(b => b.name === branchName);
-    if (!branch) return;
-    
-    const sideKey = side + 'Files';
-    const files = branch[sideKey] || [];
-    
-    files.forEach(f => {
-        const item = document.createElement('div');
-        item.className = 'file-item';
-        item.dataset.branch = branchName;
-        item.dataset.filename = f.name;
-        item.dataset.side = side;
-        item.innerHTML = `<span class="file-icon">📄</span><span class="file-label">${f.label}</span>`;
-        if (f.exists) {
-            item.classList.add('exists');
-            item.innerHTML += '<span class="file-check">✓</span>';
-        } else {
-            item.innerHTML += '<span class="file-new">+new</span>';
-        }
-        item.onclick = () => loadFile(branchName, side, f.name);
-        treeContainer.appendChild(item);
-    });
-}
-
-// ── File Loading & Saving ──
-
-async function loadFile(branch, side, filename) {
-    activeFile = { branch, side, filename };
-    showEditor();
-
-    try {
-        const res = await apiFetch(`/api/branches/${branch}/files/${side}/${filename}`);
-        const data = await res.json();
-
-        const labelMap = { 'master-record.md': 'Master Record', 'AGENT.md': 'AGENT', 'README.md': 'README', 'CHANGELOG.md': 'CHANGELOG', 'MEMORY.md': 'MEMORY', 'SKILLS.md': 'SKILLS', 'HEARTBEAT.md': 'HEARTBEAT', 'SOUL.md': 'SOUL', 'MASTERPLAN.md': 'MASTERPLAN', 'RULES.md': 'RULES', 'TEMPLATE.md': 'TEMPLATE', 'CONTEXT.md': 'CONTEXT', 'GLOSSARY.md': 'GLOSSARY', 'RESOURCES.md': 'RESOURCES', 'TASKS.md': 'TASKS', 'IDENTITY.md': 'IDENTITY', 'SPEC.md': 'SPEC' };
-        const label = labelMap[filename] || filename.replace('.md', '');
-        const sideMap = { left: 'LEFT', right: 'RIGHT', high: 'HIGH', low: 'LOW' };
-        activeBranchPath.textContent = `${branch.toUpperCase()} / ${label}`;
-        activeSideBadge.textContent = sideMap[side] || side.toUpperCase();
-        activeSideBadge.className = `side-badge ${side}`;
-
-        planEditor.value = data.content || '';
-        btnSavePlan.disabled = false;
-
-        if (data.exists !== false && data.content !== undefined) {
-            fileExistsIndicator.textContent = 'ON DISK';
-            fileExistsIndicator.className = 'file-badge exists';
-        } else {
-            fileExistsIndicator.textContent = 'NEW';
-            fileExistsIndicator.className = 'file-badge new';
-        }
-
-        markActiveFile(branch, side, filename);
-    } catch (err) {
-        console.error('Failed to load file:', err);
-        activeBranchPath.textContent = 'ERROR LOADING FILE';
-    }
-}
-
-function markActiveFile(branch, side, filename) {
-    document.querySelectorAll('.file-item').forEach(el => el.classList.remove('active'));
-    const selector = `.file-item[data-branch="${branch}"][data-side="${side}"][data-filename="${filename}"]`;
-    const target = document.querySelector(selector);
-    if (target) target.classList.add('active');
-}
-
-function showEditor() {
-    trackCanvas.style.display = 'none';
-    window.trackStop();
-    planEditor.style.display = '';
-    document.getElementById('editor-header').style.display = '';
-}
+// ── Racetrack ──
+const trackCanvas = $('track-canvas');
 
 function showTrack() {
-    trackCanvas.style.display = '';
-    planEditor.style.display = 'none';
-    document.getElementById('editor-header').style.display = 'none';
-    const container = trackCanvas.parentElement;
-    const rect = container.getBoundingClientRect();
-    trackCanvas.width = Math.max(rect.width, 600);
-    trackCanvas.height = Math.max(rect.height, 400);
-    window.trackInit(trackCanvas);
+  trackCanvas.style.display = 'block';
+  const container = trackCanvas.parentElement;
+  const rect = container.getBoundingClientRect();
+  trackCanvas.width = Math.max(rect.width, 400);
+  trackCanvas.height = Math.max(rect.height, 200);
+  if (typeof window.trackInit === 'function') window.trackInit(trackCanvas);
 }
 
-// Show track when no file is active (called on init and after deselect)
-document.addEventListener('click', (e) => {
-    if (!activeFile && !e.target.closest('.file-item') && !e.target.closest('.tree-container') && !e.target.closest('.editor-actions') && !e.target.closest('.editor-breadcrumb')) {
-        showTrack();
-    }
-});
+// ── Steering Dial ──
 
-async function saveFile() {
-    if (!activeFile) return;
-    const { branch, side, filename } = activeFile;
-    const content = planEditor.value;
+function initDial() {
+  const canvas = $('dial-canvas');
+  const ctx = canvas.getContext('2d');
+  let dragging = false;
+  let bias = config.bias || 0;
+  let risk = config.risk || 0;
 
-    try {
-        const res = await apiFetch(`/api/branches/${branch}/files/${side}/${filename}`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ content })
-        });
-        const data = await res.json();
-        if (res.ok) {
-            btnSavePlan.textContent = 'SAVED!';
-            btnSavePlan.disabled = true;
-            setTimeout(() => {
-                btnSavePlan.textContent = 'SAVE';
-                btnSavePlan.disabled = false;
-            }, 1500);
-            fileExistsIndicator.textContent = 'ON DISK';
-            fileExistsIndicator.className = 'file-badge exists';
-            const fi = document.querySelector(`.file-item[data-branch="${branch}"][data-side="${side}"][data-filename="${filename}"]`);
-            if (fi) {
-                fi.classList.add('exists');
-                if (!fi.querySelector('.file-check')) {
-                    const check = document.createElement('span');
-                    check.className = 'file-check';
-                    check.innerHTML = '&#10003;';
-                    fi.appendChild(check);
-                }
-                const newBadge = fi.querySelector('.file-new');
-                if (newBadge) newBadge.remove();
-            }
-        } else {
-            alert('Save failed: ' + (data.error || 'unknown error'));
-        }
-    } catch (err) {
-        alert('Save error: ' + err.message);
-    }
+  function drawDial() {
+    const cx = 80, cy = 80, r = 60;
+    ctx.clearRect(0, 0, 160, 160);
+
+    // Outer ring
+    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(0,242,255,0.15)'; ctx.lineWidth = 2; ctx.stroke();
+
+    // Crosshair
+    ctx.beginPath(); ctx.moveTo(cx - r + 10, cy); ctx.lineTo(cx + r - 10, cy);
+    ctx.moveTo(cx, cy - r + 10); ctx.lineTo(cx, cy + r - 10);
+    ctx.strokeStyle = 'rgba(0,242,255,0.08)'; ctx.lineWidth = 1; ctx.stroke();
+
+    // Bias dot (horizontal)
+    const bx = cx + (bias / 5) * 45;
+    ctx.beginPath(); ctx.arc(bx, cy, 4, 0, Math.PI * 2);
+    ctx.fillStyle = bias === 0 ? 'rgba(0,242,255,0.4)' : bias > 0 ? '#ffd93d' : '#4ecdc4';
+    ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke();
+
+    // Risk dot (vertical)
+    const ry = cy - (risk / 5) * 45;
+    ctx.beginPath(); ctx.arc(cx, ry, 4, 0, Math.PI * 2);
+    ctx.fillStyle = risk === 0 ? 'rgba(255,107,107,0.4)' : risk > 0 ? '#ff6b6b' : '#69db7c';
+    ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke();
+
+    // Center
+    ctx.beginPath(); ctx.arc(cx, cy, 2, 0, Math.PI * 2);
+    ctx.fillStyle = '#00f2ff'; ctx.fill();
+
+    // Labels
+    ctx.fillStyle = 'rgba(200,208,224,0.3)'; ctx.font = '8px monospace'; ctx.textAlign = 'center';
+    ctx.fillText('L', cx - r + 8, cy + 3);
+    ctx.fillText('R', cx + r - 8, cy + 3);
+    ctx.fillText('H', cx, cy - r + 10);
+    ctx.fillText('L', cx, cy + r - 6);
+
+    $('dial-bias').textContent = 'BIAS: ' + Math.round(bias * 10) / 10;
+    $('dial-risk').textContent = 'RISK: ' + Math.round(risk * 10) / 10;
+  }
+
+  function posToValue(clientX, clientY) {
+    const rect = canvas.getBoundingClientRect();
+    const x = clientX - rect.left - rect.width / 2;
+    const y = clientY - rect.top - rect.height / 2;
+    const nbias = Math.max(-5, Math.min(5, (x / (rect.width / 2)) * 5));
+    const nrisk = Math.max(-5, Math.min(5, (-y / (rect.height / 2)) * 5));
+    bias = Math.round(nbias * 2) / 2;
+    risk = Math.round(nrisk * 2) / 2;
+    saveConfig({ bias, risk });
+    drawDial();
+    renderWingFiles();
+  }
+
+  canvas.addEventListener('mousedown', (e) => { dragging = true; posToValue(e.clientX, e.clientY); });
+  window.addEventListener('mousemove', (e) => { if (dragging) posToValue(e.clientX, e.clientY); });
+  window.addEventListener('mouseup', () => { dragging = false; });
+
+  canvas.addEventListener('touchstart', (e) => { e.preventDefault(); const t = e.touches[0]; posToValue(t.clientX, t.clientY); });
+  canvas.addEventListener('touchmove', (e) => { e.preventDefault(); const t = e.touches[0]; posToValue(t.clientX, t.clientY); });
+
+  drawDial();
 }
 
-// ── Git Push / Pull ──
+// ── Stick Shift ──
 
-async function pushToGit() {
-    if (!confirm('PUSH all pending changes to GitHub? All uncommitted changes will be committed and pushed to all branches.')) return;
-    const btn = document.getElementById('btn-push');
-    btn.disabled = true;
-    btn.textContent = 'PUSHING...';
-    try {
-        const res = await apiFetch('/api/push', { method: 'POST' });
-        const data = await res.json();
-        if (res.ok) {
-            alert(data.output || 'PUSHED ✓');
-        } else {
-            alert('Push failed: ' + (data.error || 'unknown error'));
-        }
-    } catch (err) {
-        alert('Push error: ' + err.message);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = 'PUSH';
-    }
+function initStick() {
+  const slots = document.querySelectorAll('.gate-slot');
+  slots.forEach(slot => {
+    slot.addEventListener('click', () => {
+      currentGear = slot.dataset.gear;
+      updateStickUI();
+      const gearMap = { L: 1, N: 3, H: 6 };
+      const rateMap = { L: '0.3/hr', N: '1/hr', H: '3/hr' };
+      saveConfig({ gear: gearMap[currentGear] });
+      $('stick-rate').textContent = rateMap[currentGear];
+      if (typeof window.trackSetSpeed === 'function') {
+        const speedMap = { L: 0.3, N: 1, H: 3 };
+        window.trackSetSpeed(speedMap[currentGear]);
+      }
+    });
+  });
 }
 
-async function pullFromGit() {
-    if (!confirm('PULL latest MD files from GitHub? Any local edits will be overwritten.')) return;
-    const btn = document.getElementById('btn-pull');
-    btn.disabled = true;
-    btn.textContent = 'PULLING...';
-    try {
-        const res = await apiFetch('/api/pull', { method: 'POST' });
-        const data = await res.json();
-        if (res.ok) {
-            alert(data.output || 'Pulled successfully. Refreshing...');
-            location.reload();
-        } else {
-            alert('Pull failed: ' + (data.error || 'unknown error'));
-        }
-    } catch (err) {
-        alert('Pull error: ' + err.message);
-    } finally {
-        btn.disabled = false;
-        btn.textContent = 'PULL';
-    }
+function updateStickUI() {
+  document.querySelectorAll('.gate-slot').forEach(s => s.classList.remove('active'));
+  const activeSlot = document.querySelector('.gate-slot[data-gear="' + currentGear + '"]');
+  if (activeSlot) activeSlot.classList.add('active');
+  $('stick-knob').textContent = currentGear;
 }
 
-async function sendChat() {
-    const msg = chatInput.value.trim();
-    if (!msg) return;
-    appendMessage('user', msg);
-    chatInput.value = '';
-    try {
-        const res = await apiFetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: msg })
-        });
-        const data = await res.json();
-        appendMessage('bot', data.response);
-        renderRoutingBreadcrumb(data.routing || []);
-        if (data.success && isCallActive) {
-            speakText(data.response);
-        }
-    } catch (err) {
-        appendMessage('bot', 'COMMUNICATION ERROR');
-    }
-}
+// ── Radio / Intercom ──
 
-function appendMessage(sender, text) {
-    const div = document.createElement('div');
-    div.className = `msg ${sender}`;
-    div.textContent = text;
-    chatMessages.appendChild(div);
-    chatMessages.scrollTop = chatMessages.scrollHeight;
-}
+function initRadio() {
+  const callBtn = $('btn-call');
+  const hangupBtn = $('btn-hangup');
+  const input = $('radio-input');
+  const sendBtn = $('radio-send-btn');
 
-async function runMcpScan() {
-    const btn = document.getElementById('btn-mcp');
-    btn.disabled = true;
-    btn.textContent = 'SCANNING...';
-    const panel = document.getElementById('mcp-panel');
-    const results = document.getElementById('mcp-results');
-    panel.style.display = 'block';
-    results.innerHTML = '<div class="mcp-loading">Running MCP scans (EAA accessibility + AccessScore WCAG)...</div>';
-    try {
-        const branch = document.querySelector('.tree-item.active')?.dataset?.branch || 'cnei';
-        const target = `https://${branch}.datro.directory`;
-        const res = await apiFetch(`/api/mcp?url=${encodeURIComponent(target)}`);
-        const data = await res.json();
-        let html = `<div class="mcp-target">Target: <code>${target}</code></div>`;
-        for (const [toolId, result] of Object.entries(data.results || {})) {
-            html += `<div class="mcp-tool ${result.error ? 'mcp-error' : 'mcp-ok'}">`;
-            html += `<div class="mcp-tool-header"><strong>${toolId}</strong>`;
-            if (result.score != null) html += ` <span class="mcp-score">${result.score}/100</span>`;
-            if (result.error) html += ` <span class="mcp-err-msg">ERROR: ${result.error}</span>`;
-            html += `</div>`;
-            if (result.summary) html += `<div class="mcp-summary">${result.summary}</div>`;
-            if (result.issues && result.issues.length > 0) {
-                html += `<ul class="mcp-issues">`;
-                for (const issue of result.issues.slice(0, 10)) {
-                    html += `<li class="mcp-issue-${issue.severity || 'info'}">[${issue.severity}] ${issue.name}</li>`;
-                }
-                html += `</ul>`;
-            }
-            if (result.risk) html += `<div class="mcp-risk">Legal risk: ${result.risk}</div>`;
-            html += `</div>`;
-        }
-        results.innerHTML = html;
-    } catch (err) {
-        results.innerHTML = `<div class="mcp-error">Scan failed: ${err.message}</div>`;
-    } finally {
-        btn.disabled = false;
-        btn.textContent = 'MCP SCAN';
-    }
-}
+  const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-// ── Voice Chat Agent ──
-
-const btnCall = document.getElementById('btn-call');
-const btnHangup = document.getElementById('btn-hangup');
-const voiceStatus = document.getElementById('voice-status');
-const avatarEl = document.getElementById('voice-avatar');
-const pulseRings = document.querySelectorAll('.pulse-ring');
-
-let recognition = null;
-let isCallActive = false;
-let voiceActivityTimer = null;
-
-const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-function setAvatarSpeaking(active) {
-    if (active) {
-        avatarEl.classList.add('speaking');
-        voiceStatus.textContent = 'SPEAKING';
-        voiceStatus.style.color = 'var(--danger)';
-    } else {
-        avatarEl.classList.remove('speaking');
-        voiceStatus.textContent = isCallActive ? 'LISTENING' : 'STANDBY';
-        voiceStatus.style.color = isCallActive ? 'var(--success)' : 'var(--dash-dim)';
-    }
-}
-
-function animateMouth() {
-    if (!isCallActive) return;
-    if (recognition && recognition.speaking) {
-        setAvatarSpeaking(true);
-    } else {
-        setAvatarSpeaking(false);
-    }
-    requestAnimationFrame(animateMouth);
-}
-
-function startCall() {
-    if (!SpeechRecognition) {
-        appendMessage('bot', 'VOICE NOT SUPPORTED IN THIS BROWSER. TYPE INSTEAD.');
-        return;
-    }
+  callBtn.addEventListener('click', () => {
     isCallActive = true;
-    btnCall.disabled = true;
-    btnHangup.disabled = false;
-    voiceStatus.textContent = 'LISTENING...';
-    voiceStatus.style.color = '#00ff88';
-    setAvatarSpeaking(true);
+    callBtn.disabled = true;
+    hangupBtn.disabled = false;
+    addRadioMsg('system', 'CALL ACTIVE — listening...');
 
-    recognition = new SpeechRecognition();
-    recognition.continuous = true;
-    recognition.interimResults = true;
-    recognition.lang = 'en-US';
-
-    recognition.onresult = (e) => {
-        let transcript = '';
-        for (let i = e.resultIndex; i < e.results.length; i++) {
-            if (e.results[i].isFinal) {
-                transcript += e.results[i][0].transcript;
-            }
-        }
-        if (transcript.trim()) {
-            voiceStatus.textContent = 'YOU: ' + transcript;
-            appendMessage('user', transcript);
-            clearTimeout(voiceActivityTimer);
-            voiceActivityTimer = setTimeout(() => {
-                sendVoiceQuery(transcript);
-            }, 800);
-        }
-    };
-
-    recognition.onerror = (e) => {
-        console.error('Voice error:', e.error);
-        if (e.error === 'no-speech') return;
-        appendMessage('bot', 'VOICE ERROR: ' + e.error);
-        hangupCall();
-    };
-
-    recognition.onend = () => {
-        if (isCallActive) {
-            try { recognition.start(); } catch {}
-        }
-    };
-
-    try { recognition.start(); } catch (e) { console.error(e); }
-    animateMouth();
-}
-
-async function sendVoiceQuery(text) {
-    voiceStatus.textContent = 'THINKING...';
-    setAvatarSpeaking(false);
-    try {
-        const res = await apiFetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: text })
-        });
-        const data = await res.json();
-        appendMessage('bot', data.response);
-        renderRoutingBreadcrumb(data.routing || []);
-        speakText(data.response);
-        voiceStatus.textContent = 'LISTENING...';
-        setAvatarSpeaking(true);
-    } catch (err) {
-        const errMsg = 'COMMS ERROR';
-        appendMessage('bot', errMsg);
-        speakText(errMsg);
-        voiceStatus.textContent = 'LISTENING...';
-        setAvatarSpeaking(true);
+    if (SpeechRecognition) {
+      try {
+        recognition = new SpeechRecognition();
+        recognition.continuous = true;
+        recognition.interimResults = true;
+        recognition.lang = 'en-US';
+        recognition.onresult = (e) => {
+          let transcript = '';
+          for (let i = e.resultIndex; i < e.results.length; i++) {
+            if (e.results[i].isFinal) transcript += e.results[i][0].transcript;
+          }
+          if (transcript.trim()) {
+            addRadioMsg('user', transcript);
+            doChat(transcript);
+          }
+        };
+        recognition.onerror = () => { addRadioMsg('system', 'Voice error — using text input'); };
+        recognition.start();
+      } catch { addRadioMsg('system', 'Voice not supported — using text input'); }
     }
-}
+  });
 
-function speakText(text) {
-    if (!window.speechSynthesis) return;
-    window.speechSynthesis.cancel();
-    const utterance = new SpeechSynthesisUtterance(text);
-    utterance.rate = 1.0;
-    utterance.pitch = 1.0;
-    utterance.volume = 1.0;
-    utterance.onstart = () => setAvatarSpeaking(true);
-    utterance.onend = () => { if (isCallActive) setAvatarSpeaking(true); };
-    utterance.onerror = () => { if (isCallActive) setAvatarSpeaking(true); };
-    speechSynthesis.speak(utterance);
-}
-
-function renderRoutingBreadcrumb(routing) {
-    let el = document.getElementById('routing-breadcrumb');
-    if (!el) {
-        el = document.createElement('div');
-        el.id = 'routing-breadcrumb';
-        el.className = 'routing-breadcrumb';
-        document.querySelector('.intercom-container').appendChild(el);
-    }
-    if (!routing || routing.length === 0) { el.style.display = 'none'; return; }
-    el.style.display = 'flex';
-    el.innerHTML = routing.map((r, i) => {
-        const statusIcon = r.status === 'ok' ? '✓' : r.status === 'error' ? '✗' : '⋯';
-        const statusClass = r.status === 'ok' ? 'ok' : r.status === 'error' ? 'error' : 'pending';
-        const detail = r.detail ? `<span class="rt-detail">${r.detail}</span>` : '';
-        const arrow = i < routing.length - 1 ? '<span class="rt-arrow">→</span>' : '';
-        return `<span class="rt-node ${statusClass}"><span class="rt-icon">${statusIcon}</span><span class="rt-label">${r.node}</span>${detail}</span>${arrow}`;
-    }).join('');
-}
-
-function hangupCall() {
+  hangupBtn.addEventListener('click', () => {
     isCallActive = false;
-    if (recognition) {
-        try { recognition.stop(); } catch {}
-        recognition = null;
+    callBtn.disabled = false;
+    hangupBtn.disabled = true;
+    if (recognition) { try { recognition.stop(); } catch {} recognition = null; }
+    addRadioMsg('system', 'CALL ENDED');
+  });
+
+  async function doChat(msg) {
+    addRadioMsg('agent', '...');
+    const res = await apiFetch('/api/chat', {
+      method: 'POST', body: JSON.stringify({ message: msg }),
+    });
+    if (!res) return;
+    const data = await res.json();
+    // Remove the "..." message and add the reply
+    const msgs = $('radio-messages');
+    const dots = msgs.querySelector('.msg-agent:last-child');
+    if (dots && dots.textContent === '...') dots.remove();
+    addRadioMsg('agent', data.response || 'No response');
+
+    // Speak the response
+    if ('speechSynthesis' in window && isCallActive) {
+      const utter = new SpeechSynthesisUtterance(data.response);
+      utter.rate = 1.0; utter.pitch = 1.0;
+      speechSynthesis.speak(utter);
     }
-    btnCall.disabled = false;
-    btnHangup.disabled = true;
-    voiceStatus.textContent = 'STANDBY';
-    voiceStatus.style.color = '#7a828e';
-    setAvatarSpeaking(false);
-    avatarMouth.setAttribute('d', 'M48,44 Q60,54 72,44');
+  }
+
+  sendBtn.addEventListener('click', () => {
+    if (!input.value.trim()) return;
+    const msg = input.value;
+    input.value = '';
+    addRadioMsg('user', msg);
+    doChat(msg);
+  });
+
+  input.addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') sendBtn.click();
+  });
 }
 
-btnCall.addEventListener('click', startCall);
-btnHangup.addEventListener('click', hangupCall);
+function addRadioMsg(type, text) {
+  const msgs = $('radio-messages');
+  const el = document.createElement('div');
+  el.className = 'msg-' + type;
+  el.style.cssText = 'font-size:0.6rem;margin:0.1rem 0;color:' + (type === 'user' ? '#00f2ff' : type === 'agent' ? '#00ff88' : 'var(--dim)');
+  el.textContent = (type === 'user' ? '> ' : type === 'agent' ? '→ ' : '') + text;
+  msgs.appendChild(el);
+  msgs.scrollTop = msgs.scrollHeight;
+  if (msgs.children.length > 20) msgs.removeChild(msgs.firstChild);
+}
 
-// Login events
-document.getElementById('login-btn').addEventListener('click', handleLogin);
-document.getElementById('login-input').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleLogin();
+// ── Editor Modal ──
+
+let editorBranch = '';
+let editorSide = '';
+let editorFilename = '';
+let editorContent = '';
+const editorModal = $('editor-modal');
+
+function openEditor(branch, side, fname) {
+  editorBranch = branch;
+  editorSide = side;
+  editorFilename = fname;
+  $('editor-title').textContent = branch.toUpperCase() + ' / ' + fname.replace('.md', '') + '.' + side + '.md';
+  $('editor-textarea').value = 'Loading...';
+  editorModal.style.display = 'flex';
+
+  // Build tabs
+  const tabs = $('editor-tabs');
+  tabs.innerHTML = '';
+  for (const s of ['high', 'left', 'right', 'low']) {
+    const tab = document.createElement('div');
+    tab.className = 'editor-tab' + (s === side ? ' active' : '');
+    tab.textContent = s.toUpperCase();
+    tab.addEventListener('click', () => {
+      if (s !== editorSide) openEditor(branch, s, fname);
+    });
+    tabs.appendChild(tab);
+  }
+
+  loadEditorContent();
+}
+
+async function loadEditorContent() {
+  $('editor-status').textContent = '';
+  try {
+    const res = await apiFetch('/api/branches/' + editorBranch + '/files/' + editorSide + '/' + editorFilename);
+    if (!res) return;
+    const data = await res.json();
+    $('editor-textarea').value = data.content || '';
+    editorContent = data.content || '';
+  } catch {
+    $('editor-textarea').value = 'Error loading file';
+  }
+}
+
+function initEditor() {
+  $('modal-editor-close').addEventListener('click', () => { editorModal.style.display = 'none'; });
+  $('editor-save').addEventListener('click', async () => {
+    const content = $('editor-textarea').value;
+    $('editor-status').textContent = 'Saving...';
+    try {
+      const res = await apiFetch('/api/branches/' + editorBranch + '/files/' + editorSide + '/' + editorFilename, {
+        method: 'POST', body: JSON.stringify({ content }),
+      });
+      if (!res) return;
+      const data = await res.json();
+      if (data.success) {
+        $('editor-status').textContent = '✓ Saved';
+        setTimeout(() => $('editor-status').textContent = '', 2000);
+        editorContent = content;
+        loadBranches();
+      } else {
+        $('editor-status').textContent = '✗ ' + (data.error || 'Save failed');
+      }
+    } catch (e) {
+      $('editor-status').textContent = '✗ ' + e.message;
+    }
+  });
+}
+
+// ── Settings Modal ──
+
+function initSettingsModal() {
+  const modal = $('settings-modal');
+  $('btn-settings').addEventListener('click', () => {
+    $('set-github-owner').value = settings.github_owner || '';
+    $('set-github-repo').value = settings.github_repo || '';
+    $('set-branch-ref').value = settings.branch_ref || '';
+    $('set-parent-proxy').value = settings.parent_proxy_url || '';
+    $('set-cf-worker').value = settings.cf_worker_url || '';
+    modal.style.display = 'flex';
+  });
+  $('modal-settings-close').addEventListener('click', () => modal.style.display = 'none');
+  $('settings-save').addEventListener('click', async () => {
+    $('settings-status').textContent = 'Saving...';
+    const body = {
+      github_owner: $('set-github-owner').value,
+      github_repo: $('set-github-repo').value,
+      branch_ref: $('set-branch-ref').value,
+      parent_proxy_url: $('set-parent-proxy').value,
+      cf_worker_url: $('set-cf-worker').value,
+    };
+    const res = await apiFetch('/api/settings', { method: 'POST', body: JSON.stringify(body) });
+    if (!res) return;
+    const data = await res.json();
+    $('settings-status').textContent = '✓ Saved. Reloading...';
+    settings = { ...settings, ...data };
+    setTimeout(() => { modal.style.display = 'none'; loadBranches(); }, 1000);
+  });
+}
+
+// ── Fuel ──
+async function loadFuel() {
+  const res = await apiFetch('/api/fuel');
+  if (!res) return;
+  const data = await res.json();
+  $('fuel-api').style.height = data.api + '%';
+  $('fuel-llm').style.height = data.llm + '%';
+  $('fuel-cli').style.height = data.cli + '%';
+  $('fuel-ide').style.height = data.ide + '%';
+}
+
+// ── Rereleases ──
+let knownTags = new Set();
+
+async function loadRereleases() {
+  const res = await apiFetch('/api/rereleases');
+  if (!res) return;
+  const data = await res.json();
+  if (data.rereleases) {
+    for (const r of data.rereleases) {
+      if (!knownTags.has(r.tag)) {
+        knownTags.add(r.tag);
+        if (typeof window.trackRerelease === 'function') {
+          window.trackRerelease(r.branch);
+        }
+      }
+    }
+  }
+}
+
+function pollRereleases() {
+  setTimeout(loadRereleases, 15000);
+}
+
+// ── Keyboard shortcuts ──
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') {
+    editorModal.style.display = 'none';
+    $('settings-modal').style.display = 'none';
+  }
+  if ((e.ctrlKey || e.metaKey) && e.key === 's') {
+    if (editorModal.style.display === 'flex') {
+      e.preventDefault();
+      $('editor-save').click();
+    }
+  }
 });
-
-// Start: show login
-showLogin();

@@ -29,11 +29,13 @@ const BRANCH_COLORS = {
   const BRANCH_COUNT = 24;
 
   window.trackInit = function(canvas) {
+    const wasRunning = running;
+    if (wasRunning) trackStop();
     trackCanvas = canvas;
     ctx = canvas.getContext('2d');
     cw = canvas.width;
     ch = canvas.height;
-    carAngle = (Date.now() % TWO_DAYS_MS) / TWO_DAYS_MS * Math.PI * 2;
+    if (!wasRunning) carAngle = (Date.now() % TWO_DAYS_MS) / TWO_DAYS_MS * Math.PI * 2;
     trackStart();
   };
 
@@ -55,6 +57,13 @@ const BRANCH_COLORS = {
   };
 
   window.trackSetSpeed = function(s) { speed = Math.max(0.1, s); };
+
+  window.trackSelectBranch = function(branchName) {
+    const idx = BRANCH_NAMES.indexOf(branchName);
+    if (idx >= 0) {
+      carAngle = (idx / BRANCH_COUNT) * Math.PI * 2;
+    }
+  };
 
   function tick() {
     if (!running || !ctx) return;
