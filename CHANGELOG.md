@@ -1,5 +1,13 @@
 # Changelog
 
+## [llmwiki-v0.0.0.14] - 2026-06-05
+
+### Fixed
+- fix(llmwiki): Remove excessive blank lines
+
+### Changed
+- ux(llmwiki): Add print-friendly styles for better UX
+
 ## [llmwiki-v0.0.0.13] - 2026-06-04
 
 ### Fixed

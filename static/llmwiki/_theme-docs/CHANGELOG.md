@@ -114,7 +114,6 @@ xx-MMM - Hide the copyright notice in footer (still need to get copyleft in its 
 xx-MMM - LICENCE was still MIT. Changed it to GNU General Public Licence 3.0  
 xx-MMM - Changed docs html theme to match websites.   
 
-
 ## [0.0.4] - 2020-01-10 
 
 ### Added 
