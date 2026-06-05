@@ -1,5 +1,13 @@
 # Changelog
 
+## [subrepos-v0.0.0.13] - 2026-06-05
+
+### Fixed
+- fix(subrepos): Remove excessive blank lines
+
+### Changed
+- ux(subrepos): Add focus-visible styles for keyboard navigation
+
 ## [subrepos-v0.0.0.12] - 2026-06-04
 
 ### Fixed
