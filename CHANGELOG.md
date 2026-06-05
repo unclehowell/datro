@@ -1,5 +1,11 @@
 # Changelog
 
+## [althea-v0.0.0.16] - 2026-06-05
+
+### Fixed
+### Changed
+- ux(althea): Add smooth scrolling for better UX
+
 ## [althea-v0.0.0.15] - 2026-06-04
 
 ### Fixed
