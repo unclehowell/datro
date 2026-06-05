@@ -1,5 +1,13 @@
 # Changelog
 
+## [ceo-v0.0.0.16] - 2026-06-05
+
+### Fixed
+- fix(ceo): Remove excessive blank lines
+
+### Changed
+- ux(ceo): Add cookie consent banner for GDPR compliance
+
 ## [ceo-v0.0.0.15] - 2026-06-04
 
 ### Fixed
