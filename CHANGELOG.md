@@ -1,5 +1,11 @@
 # Changelog
 
+## [dash-v0.0.0.15] - 2026-06-06
+
+### Fixed
+### Changed
+- ux(dash): Add hover styles for interactive elements
+
 ## [dash-v0.0.0.14] - 2026-06-05
 
 ### Fixed
