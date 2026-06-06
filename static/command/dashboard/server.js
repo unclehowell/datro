@@ -3,7 +3,7 @@ const path = require('path');
 const fs = require('fs');
 const https = require('https');
 
-const PORT = process.env.PORT || 3456;
+const PORT = process.env.PORT || 3457;
 const CONFIG_PATH = path.join(__dirname, 'command.config.json');
 const APP_VERSION = 'command-r81';
 

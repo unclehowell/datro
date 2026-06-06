@@ -248,4 +248,6 @@ const A_INV = 137.035999178;
   if(typeof window.trackMilestones==='function'){
     window.trackMilestones({lap:0});
   }
+window.trackSetAngle=function(fraction){carAngle=fraction*Math.PI*2;};
+window.trackSetAngle=function(fraction){carAngle=fraction*Math.PI*2;};
 })();
