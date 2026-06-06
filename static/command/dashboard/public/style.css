@@ -31,6 +31,7 @@ input:focus,select:focus,textarea:focus{outline:1px solid var(--cyan)}
 .track-controls-right{display:flex;align-items:center;gap:0.25rem}
 .ttl{color:var(--cyan);font-weight:bold;letter-spacing:3px;font-size:0.75rem}
 .badge{font-size:0.5rem;padding:0.1rem 0.35rem;border-radius:2px;background:rgba(0,242,255,0.1);color:var(--cyan-dim);border:1px solid var(--border)}
+.rerelease-badge{font-size:0.45rem;background:rgba(0,255,136,0.08);border-color:rgba(0,255,136,0.25);color:var(--green)}
 .cyber-select{background:rgba(0,0,0,0.6);border:1px solid var(--border);border-radius:3px;color:var(--text);padding:0.15rem 0.4rem;font-size:0.55rem;cursor:pointer}
 .ctrl-btn{padding:0.15rem 0.35rem;border-radius:3px;font-size:0.5rem;font-weight:bold;background:rgba(0,242,255,0.06);border:1px solid var(--border);letter-spacing:1px}
 .ctrl-btn:hover{background:rgba(0,242,255,0.12)}
