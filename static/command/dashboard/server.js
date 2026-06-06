@@ -26,24 +26,8 @@ const HARDCODED = {
   branch_ref: 'command',
 };
 
-function getGhToken(req) {
-  const auth = req.headers['authorization'] || '';
-  if (auth.startsWith('Bearer ')) {
-    const t = auth.slice(7);
-    const cfg = loadConfig();
-    if (cfg.oauth_tokens && cfg.oauth_tokens[t]) return cfg.oauth_tokens[t];
-  }
+function ghToken() {
   return process.env.GITHUB_TOKEN || '';
-}
-
-function getCfToken(req) {
-  const auth = req.headers['authorization'] || '';
-  if (auth.startsWith('Bearer ')) {
-    const t = auth.slice(7);
-    const cfg = loadConfig();
-    if (cfg.cf_tokens && cfg.cf_tokens[t]) return cfg.cf_tokens[t];
-  }
-  return process.env.CLOUDFLARE_API_TOKEN || '';
 }
 
 // ── GitHub API helpers ──
@@ -114,25 +98,6 @@ function rfp(branch, side, fname) {
   return { path: 'static/' + branch + '/' + s, gh: 'static/' + encodeURIComponent(branch) + '/' + encodeURIComponent(s) };
 }
 
-// ── Token helper (for local, simpler) ──
-
-function genToken() {
-  const cfg = loadConfig();
-  if (!cfg.tokens) cfg.tokens = {};
-  const token = Math.random().toString(36).slice(2) + Math.random().toString(36).slice(2);
-  cfg.tokens[token] = Date.now() + 86400000;
-  saveConfig(cfg);
-  return token;
-}
-
-function validateToken(token) {
-  if (!token) return false;
-  const cfg = loadConfig();
-  if (!cfg.tokens || !cfg.tokens[token]) return false;
-  if (cfg.tokens[token] < Date.now()) { delete cfg.tokens[token]; saveConfig(cfg); return false; }
-  return true;
-}
-
 // ── Express app ──
 
 const app = express();
@@ -175,128 +140,12 @@ app.get('/api/version', async (req, res) => {
   res.json({ version });
 });
 
-// POST /api/login
-app.post('/api/login', (req, res) => {
-  const pass = req.body?.passphrase || '';
-  if (pass === (process.env.LOGIN_PASSPHRASE || 'Burgerking')) {
-    return res.json({ token: genToken(), success: true });
-  }
-  res.status(401).json({ error: 'Invalid passphrase', success: false });
-});
-
-// GET /api/auth/github/url
-app.get('/api/auth/github/url', (req, res) => {
-  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID;
-  if (!clientId) return res.json({ error: 'GitHub OAuth not configured', url: null });
-  const redirectUri = req.protocol + '://' + req.get('host') + '/api/auth/github/callback';
-  const state = Math.random().toString(36).slice(2);
-  res.json({ url: 'https://github.com/login/oauth/authorize?client_id=' + clientId + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&scope=repo&state=' + state, state });
-});
-
-// GET /api/auth/github/callback
-app.get('/api/auth/github/callback', async (req, res) => {
-  const code = req.query.code;
-  const clientId = process.env.GITHUB_OAUTH_CLIENT_ID;
-  const clientSecret = process.env.GITHUB_OAUTH_CLIENT_SECRET;
-  if (!code || !clientId || !clientSecret) return res.status(400).json({ error: 'OAuth params missing' });
-
-  try {
-    const tokResp = await ghFetch('https://github.com/login/oauth/access_token', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code }),
-    });
-    if (!tokResp.ok) return res.status(400).json({ error: 'Token exchange failed' });
-    const tokData = await tokResp.json();
-    if (!tokData.access_token) return res.status(400).json({ error: 'No access token' });
-
-    const localToken = genToken();
-    const cfg = loadConfig();
-    if (!cfg.oauth_tokens) cfg.oauth_tokens = {};
-    cfg.oauth_tokens[localToken] = tokData.access_token;
-    saveConfig(cfg);
-
-    const returnTo = req.query.return_to || '/';
-    res.redirect(returnTo + (returnTo.includes('?') ? '&' : '?') + 'token=' + localToken);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// GET /api/auth/cloudflare/url
-app.get('/api/auth/cloudflare/url', (req, res) => {
-  const cfId = process.env.CLOUDFLARE_OAUTH_CLIENT_ID;
-  if (!cfId) {
-    return res.json({ url: null, token: true, message: 'CF OAuth not configured. Paste a token instead.' });
-  }
-  const redirectUri = req.protocol + '://' + req.get('host') + '/api/auth/cloudflare/callback';
-  const state = Math.random().toString(36).slice(2);
-  res.json({ url: 'https://dash.cloudflare.com/oauth2/auth?client_id=' + cfId + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=pages:write+workers:read&state=' + state, state });
-});
-
-// POST /api/auth/cloudflare/url (token paste fallback)
-app.post('/api/auth/cloudflare/url', (req, res) => {
-  const pastedToken = req.body?.token || '';
-  if (!pastedToken) return res.status(400).json({ error: 'Token required' });
-  const auth = req.headers['authorization'] || '';
-  if (auth.startsWith('Bearer ')) {
-    const t = auth.slice(7);
-    const cfg = loadConfig();
-    if (!cfg.cf_tokens) cfg.cf_tokens = {};
-    cfg.cf_tokens[t] = pastedToken;
-    saveConfig(cfg);
-    return res.json({ success: true });
-  }
-  res.status(401).json({ error: 'Unauthorized' });
-});
-
-// GET /api/auth/cloudflare/callback
-app.get('/api/auth/cloudflare/callback', async (req, res) => {
-  const code = req.query.code;
-  const cfId = process.env.CLOUDFLARE_OAUTH_CLIENT_ID;
-  const cfSecret = process.env.CLOUDFLARE_OAUTH_CLIENT_SECRET;
-  if (!code || !cfId || !cfSecret) return res.status(400).json({ error: 'CF OAuth params missing' });
-  const redirectUri = req.protocol + '://' + req.get('host') + '/api/auth/cloudflare/callback';
-  try {
-    const tokResp = await ghFetch('https://dash.cloudflare.com/oauth2/token', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({ client_id: cfId, client_secret: cfSecret, code, redirect_uri: redirectUri, grant_type: 'authorization_code' }),
-    });
-    if (!tokResp.ok) return res.status(400).json({ error: 'CF token exchange failed' });
-    const tokData = await tokResp.json();
-    if (!tokData.access_token) return res.status(400).json({ error: 'No CF access token' });
-    const localToken = genToken();
-    const cfg = loadConfig();
-    if (!cfg.cf_tokens) cfg.cf_tokens = {};
-    cfg.cf_tokens[localToken] = tokData.access_token;
-    saveConfig(cfg);
-    const returnTo = req.query.return_to || '/';
-    res.redirect(returnTo + (returnTo.includes('?') ? '&' : '?') + 'token=' + localToken);
-  } catch (err) {
-    res.status(500).json({ error: err.message });
-  }
-});
-
-// Auth middleware for /api/*
-app.all(/^\/api\//, (req, res, next) => {
-  const publicPaths = ['/api/status', '/api/version', '/api/login', '/api/settings', '/api/auth/github/url', '/api/auth/github/callback', '/api/auth/cloudflare/url', '/api/auth/cloudflare/callback'];
-  if (publicPaths.some(p => req.path === p) || (req.path === '/api/login' && req.method === 'POST')) return next();
-  const auth = req.headers['authorization'] || '';
-  const token = auth.startsWith('Bearer ') ? auth.slice(7) : req.query.token || '';
-  if (!validateToken(token)) return res.status(401).json({ error: 'Unauthorized' });
-  req.ghToken = getGhToken(req);
-  next();
-});
-
 // GET /api/settings
 app.get('/api/settings', (req, res) => {
-  const ghConnected = !!process.env.GITHUB_TOKEN || getGhToken(req) !== '';
-  const cfConnected = !!process.env.CLOUDFLARE_API_TOKEN || getCfToken(req) !== '';
+  const ghConnected = !!process.env.GITHUB_TOKEN;
+  const cfConnected = !!process.env.CLOUDFLARE_API_TOKEN;
   res.json({
     ...HARDCODED,
-    oauth_configured: !!process.env.GITHUB_OAUTH_CLIENT_ID,
-    cf_oauth_configured: !!process.env.CLOUDFLARE_OAUTH_CLIENT_ID,
     gh_connected: ghConnected ? 'connected' : '',
     cf_connected: cfConnected ? 'connected' : '',
   });
@@ -325,14 +174,14 @@ app.get('/api/fuel', (req, res) => {
 app.get('/api/branches', async (req, res) => {
   const s = HARDCODED;
   let contents;
-  try { contents = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static?ref=' + encodeURIComponent(s.branch_ref), req.ghToken); }
+  try { contents = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static?ref=' + encodeURIComponent(s.branch_ref), ghToken()); }
   catch { return res.json([]); }
   const branchDirs = contents.filter(f => f.type === 'dir').map(f => f.name);
   const result = [];
   for (const name of branchDirs) {
     const highFiles = [], leftFiles = [], rightFiles = [], lowFiles = [];
     try {
-      const dir = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static/' + encodeURIComponent(name) + '?ref=' + encodeURIComponent(s.branch_ref), req.ghToken);
+      const dir = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static/' + encodeURIComponent(name) + '?ref=' + encodeURIComponent(s.branch_ref), ghToken());
       const names = dir.map(f => f.name);
       for (const mdFile of MD_FILES) {
         const addF = (side, arr) => { const sn = sideSuffix(side, mdFile); arr.push({ name: mdFile, label: mdFile.replace('.md', ''), exists: names.includes(sn), side }); };
@@ -362,7 +211,7 @@ app.all(fileRe, async (req, res) => {
 
   if (req.method === 'GET') {
     try {
-      const data = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/' + fi.gh + '?ref=' + encodeURIComponent(s.branch_ref), req.ghToken);
+      const data = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/' + fi.gh + '?ref=' + encodeURIComponent(s.branch_ref), ghToken());
       return res.json({ content: Buffer.from(data.content.replace(/\n/g, ''), 'base64').toString('utf-8'), side, exists: true });
     } catch { return res.json({ content: '', side, exists: false }); }
   }
@@ -371,11 +220,11 @@ app.all(fileRe, async (req, res) => {
     const content = req.body?.content || '';
     try {
       let sha = null;
-      try { const e = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/' + fi.gh + '?ref=' + encodeURIComponent(s.branch_ref), req.ghToken); sha = e.sha; } catch {}
+      try { const e = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/' + fi.gh + '?ref=' + encodeURIComponent(s.branch_ref), ghToken()); sha = e.sha; } catch {}
       await ghPut('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/' + fi.gh, {
         message: 'docs(' + branch + '): update ' + side + '/' + fname.replace('.md','').toLowerCase(),
         content: Buffer.from(content).toString('base64'), sha: sha || undefined, branch: s.branch_ref,
-      }, req.ghToken);
+      }, ghToken());
       return res.json({ success: true, side, savedAt: fi.path });
     } catch (err) { return res.status(500).json({ error: err.message }); }
   }
@@ -387,7 +236,7 @@ app.get(/^\/api\/memory\/([a-zA-Z0-9_-]+)$/, async (req, res) => {
   const branch = req.params[0];
   for (const f of ['MEMORY.md', 'MEMORY.left.md']) {
     try {
-      const data = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static/' + encodeURIComponent(branch) + '/' + encodeURIComponent(f) + '?ref=' + encodeURIComponent(s.branch_ref), req.ghToken);
+      const data = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/contents/static/' + encodeURIComponent(branch) + '/' + encodeURIComponent(f) + '?ref=' + encodeURIComponent(s.branch_ref), ghToken());
       return res.json({ content: Buffer.from(data.content.replace(/\n/g, ''), 'base64').toString('utf-8') });
     } catch {}
   }
@@ -426,20 +275,39 @@ app.get('/api/mcp', async (req, res) => {
 app.get('/api/rereleases', async (req, res) => {
   const s = HARDCODED;
   try {
-    const releases = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/releases?per_page=10', req.ghToken);
+    const releases = await ghGet('/repos/' + s.github_owner + '/' + s.github_repo + '/releases?per_page=10', ghToken());
     const rereleases = (Array.isArray(releases) ? releases : []).map(r => ({ branch: (r.tag_name || '').split('-v')[0], tag: r.tag_name, name: r.name, published: r.published_at }));
     res.json({ rereleases, count: rereleases.length });
   } catch { res.json({ rereleases: [], count: 0 }); }
 });
 
-// POST /api/flywheel/trigger
-app.post('/api/flywheel/trigger', async (req, res) => {
+// POST /api/flywheel/trigger/:branch
+app.post(/^\/api\/flywheel\/trigger\/([a-zA-Z0-9_-]+)$/, async (req, res) => {
+  const s = HARDCODED;
+  const branch = req.params[0];
+  try {
+    const resp = await ghFetch(s.cf_worker_url + '/__cron?branch=' + encodeURIComponent(branch), { method: 'POST' });
+    const text = await resp.text();
+    res.json({ success: resp.ok, branch, output: text.slice(0, 500) });
+  } catch (err) { res.status(502).json({ error: err.message, success: false }); }
+});
+
+// GET /api/flywheel/state
+app.get('/api/flywheel/state', async (req, res) => {
   const s = HARDCODED;
   try {
-    const resp = await ghFetch(s.cf_worker_url + '/__cron', { method: 'POST' });
-    const text = await resp.text();
-    res.json({ success: resp.ok, output: text.slice(0, 500) });
-  } catch (err) { res.status(502).json({ error: err.message, success: false }); }
+    const resp = await ghFetch(s.cf_worker_url + '/__state');
+    res.json(await resp.json());
+  } catch { res.json({ regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' }); }
+});
+
+// POST /api/flywheel/config
+app.post('/api/flywheel/config', async (req, res) => {
+  const s = HARDCODED;
+  try {
+    const resp = await ghFetch(s.cf_worker_url + '/__config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(req.body || {}) });
+    res.json(await resp.json());
+  } catch { res.status(502).json({ ok: false }); }
 });
 
 // GET /api/flywheel/status

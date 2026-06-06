@@ -37,9 +37,18 @@ input:focus,select:focus,textarea:focus{outline:1px solid var(--cyan)}
 .ctrl-btn.logout{color:var(--red);border-color:rgba(255,68,68,0.3)}
 .ctrl-status{font-size:0.45rem;color:var(--dim);min-width:0.8rem}
 
-/* ── Wing File Overlays (hidden, fade on hover) ── */
-.wing-overlay{position:absolute;z-index:5;opacity:0;transition:opacity 0.35s ease;pointer-events:none;display:flex;gap:0.2rem}
-#track-stage.hover .wing-overlay{opacity:1;pointer-events:auto}
+/* ── Directional Buttons (wing toggles) ── */
+.dir-btn{position:absolute;z-index:12;width:32px;height:32px;border-radius:50%;background:rgba(0,242,255,0.08);border:1px solid rgba(0,242,255,0.2);color:var(--cyan-dim);font-size:0.7rem;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all 0.15s;backdrop-filter:blur(4px)}
+.dir-btn:hover{background:rgba(0,242,255,0.15);border-color:var(--cyan);color:var(--cyan)}
+.dir-btn.active{background:rgba(0,242,255,0.25);border-color:var(--cyan);color:var(--cyan);box-shadow:0 0 8px rgba(0,242,255,0.3)}
+#dir-up{top:0.3rem;left:50%;margin-left:-16px}
+#dir-down{bottom:0.3rem;left:50%;margin-left:-16px}
+#dir-left{top:50%;left:0.3rem;margin-top:-16px}
+#dir-right{top:50%;right:0.3rem;margin-top:-16px}
+
+/* ── Wing File Overlays (dir-btn toggled, 0.73 opacity) ── */
+.wing-overlay{position:absolute;z-index:5;opacity:0;transition:opacity 0.3s ease;pointer-events:none;display:flex;gap:0.2rem}
+.wing-overlay.visible{opacity:0.73;pointer-events:auto}
 .wing-overlay-top{top:1.8rem;left:50%;transform:translateX(-50%);flex-direction:row;flex-wrap:wrap;justify-content:center;max-width:70%;gap:0.15rem}
 .wing-overlay-left{left:0.3rem;top:50%;transform:translateY(-50%);flex-direction:column;align-items:flex-start}
 .wing-overlay-right{right:0.3rem;top:50%;transform:translateY(-50%);flex-direction:column;align-items:flex-end}
@@ -60,12 +69,12 @@ input:focus,select:focus,textarea:focus{outline:1px solid var(--cyan)}
 .dash-cell{display:flex;flex-direction:column;gap:0.15rem;overflow:hidden}
 .dash-title{font-size:0.45rem;color:var(--cyan-dim);letter-spacing:2px;text-transform:uppercase}
 
-/* Dial */
-.dial-wrap{display:flex;justify-content:center;align-items:center;flex:1}
-#dial-canvas{cursor:grab;width:100%;max-width:140px;max-height:140px}
-.dial-wrap:active #dial-canvas{cursor:grabbing}
-.dial-labels{display:flex;gap:0.5rem;font-size:0.45rem;justify-content:center}
-#dial-bias{color:var(--cyan-dim)}#dial-risk{color:var(--orange)}
+/* Joystick */
+.joystick-wrap{display:flex;flex-direction:column;justify-content:center;align-items:center;flex:1;gap:0.15rem}
+#joystick-canvas{cursor:grab;width:100%;max-width:137px;max-height:137px;border-radius:50%;border:1px solid var(--border);touch-action:none}
+.joystick-wrap:active #joystick-canvas{cursor:grabbing}
+.joystick-labels{display:flex;gap:0.5rem;font-size:0.45rem;justify-content:center}
+#joystick-bias{color:var(--cyan-dim)}#joystick-risk{color:var(--orange)}
 
 /* Radio */
 .radio-wrap{display:flex;gap:0.3rem;align-items:center;flex:1;min-width:0}
@@ -86,14 +95,28 @@ input:focus,select:focus,textarea:focus{outline:1px solid var(--cyan)}
 .hangup-btn:hover:not(:disabled){background:#cc2222}
 .hangup-btn:disabled{opacity:0.3;cursor:not-allowed}
 
-/* Stick */
-.stick-wrap{display:flex;align-items:center;gap:0.3rem;justify-content:center;flex:1}
-.stick-gate{display:flex;flex-direction:column;gap:0.1rem}
-.gate-slot{padding:0.1rem 0.4rem;background:rgba(0,0,0,0.4);border:1px solid var(--border);border-radius:2px;text-align:center;cursor:pointer;font-size:0.55rem;color:var(--dim);transition:all 0.15s}
-.gate-slot:hover{border-color:var(--cyan-dim)}
-.gate-slot.active{background:rgba(0,242,255,0.15);color:var(--cyan);border-color:var(--cyan)}
-.stick-knob{width:24px;height:24px;background:var(--surface);border:2px solid var(--cyan);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.6rem;font-weight:bold;color:var(--cyan)}
-.stick-rate{font-size:0.5rem;color:var(--cyan);font-weight:bold}
+/* Gear Slider */
+.gear-wrap{display:flex;flex-direction:column;align-items:center;gap:0.1rem;justify-content:center;flex:1}
+.gear-slider{-webkit-appearance:none;appearance:none;width:4px;height:120px;background:var(--border);border-radius:2px;outline:none;cursor:pointer;writing-mode:vertical-lr;direction:rtl}
+.gear-slider::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:18px;height:18px;border-radius:50%;background:var(--surface);border:2px solid var(--cyan);cursor:pointer}
+.gear-slider::-moz-range-thumb{width:18px;height:18px;border-radius:50%;background:var(--surface);border:2px solid var(--cyan);cursor:pointer}
+.gear-labels{display:flex;gap:0.2rem;font-size:0.45rem;color:var(--dim)}
+.gear-label.active{color:var(--cyan);font-weight:bold}
+.gear-rate{font-size:0.5rem;color:var(--cyan);font-weight:bold}
+
+/* Manual Release Buttons */
+.release-wrap{display:flex;flex-direction:column;align-items:center;gap:0.1rem;justify-content:center;flex:1}
+.release-btn{width:100%;padding:0.2rem 0.4rem;border-radius:3px;font-size:0.5rem;font-weight:bold;letter-spacing:1px;text-transform:uppercase;background:rgba(0,0,0,0.4);border:1px solid var(--border);color:var(--dim);cursor:pointer;transition:all 0.15s;text-align:center}
+.release-btn:hover{border-color:var(--cyan);color:var(--cyan);background:rgba(0,242,255,0.08)}
+.release-btn:active{background:rgba(0,242,255,0.2)}
+.release-btn.fc{border-color:rgba(107,203,119,0.4);color:var(--green)}
+.release-btn.fc:hover{border-color:var(--green)}
+.release-btn.cn{border-color:rgba(255,68,68,0.4);color:var(--red)}
+.release-btn.cn:hover{border-color:var(--red)}
+.release-btn.cm{border-color:rgba(0,242,255,0.4);color:var(--cyan)}
+.release-btn.cm:hover{border-color:var(--cyan)}
+.release-btn:disabled{opacity:0.3;cursor:not-allowed}
+
 .fuel-gauges{display:flex;gap:0.15rem;justify-content:center}
 .fuel-gauge{display:flex;flex-direction:column;align-items:center;gap:0.05rem}
 .fuel-label{font-size:0.4rem;color:var(--dim)}
@@ -128,6 +151,7 @@ input:focus,select:focus,textarea:focus{outline:1px solid var(--cyan)}
 @media(max-width:700px){
   #dash-panel{grid-template-columns:1fr;padding:0.15rem 0.3rem}
   .dash-left,.dash-right{display:none}
-  #dial-canvas{max-width:100px;max-height:100px}
+  #joystick-canvas{max-width:100px;max-height:100px}
+  .gear-slider{height:80px}
   .wing-overlay-top,.wing-overlay-bottom{max-width:90%}
 }
