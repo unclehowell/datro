@@ -8,8 +8,8 @@ const ALL_BRANCHES = [
 ];
 
 const REGULAR_BRANCHES = ALL_BRANCHES.filter(b => b !== 'cnei');
-const COOLDOWN_SECONDS = 3600;
-const CNEI_COOLDOWN = 1800;
+const RATE_BY_GEAR = [3600, 2627, 1917, 1399, 1021, 745, 544, 397, 290, 211];
+const CNEI_RATIO = Math.floor(137 / REGULAR_BRANCHES.length); // 137/20 = 6
 const DOMAIN = 'datro.directory';
 const GITHUB_REPO_OBJ = { owner: 'unclehowell', repo: 'datro' };
 const BRAIN_BRANCH = 'brain';
@@ -430,9 +430,17 @@ async function releaseLock(env) {
 async function getRotationState(env) {
   try {
     const raw = await env.FLYWHEEL_STATE.get('rotation', 'json');
-    if (raw) return raw;
+    if (raw) return { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO', ...raw };
   } catch (_) {}
-  return { regular_index: 0, cnei_queue: 0 };
+  return { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' };
+}
+
+async function getFlywheelConfig(env) {
+  try {
+    const raw = await env.FLYWHEEL_STATE.get('config', 'json');
+    if (raw) return { gear: 3, ...raw };
+  } catch (_) {}
+  return { gear: 3 };
 }
 
 async function saveRotationState(env, state) {
@@ -655,8 +663,9 @@ async function getLatestReleaseDate(token, branch) {
   return 0;
 }
 
-async function isOnCooldown(token, branch) {
-  const cooldown = branch === 'cnei' ? CNEI_COOLDOWN : COOLDOWN_SECONDS;
+async function isOnCooldown(token, branch, gear) {
+  const baseCooldown = RATE_BY_GEAR[gear - 1] || 3600;
+  const cooldown = branch === 'cnei' ? Math.floor(baseCooldown / 2) : baseCooldown;
   const lastRelease = await getLatestReleaseDate(token, branch);
   if (lastRelease === 0) return false;
   const elapsed = Math.floor(Date.now() / 1000) - lastRelease;
@@ -714,13 +723,15 @@ function formatVersion(num) {
 
 function selectBranch(state) {
   let branch;
-  if (state.cnei_queue >= 1) {
+  if (state.cnei_queue >= CNEI_RATIO) {
     branch = 'cnei';
-    console.log('CNEI_QUEUE: >=1, selecting cnei branch for self-improvement');
+    console.log('CNEI_QUEUE: >=' + CNEI_RATIO + ', selecting cnei branch');
     state.cnei_queue = 0;
   } else {
+    const prevIndex = state.regular_index;
     branch = REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length];
     state.regular_index = (state.regular_index + 1) % REGULAR_BRANCHES.length;
+    if (state.regular_index <= prevIndex) state.lap = (state.lap || 0) + 1;
     state.cnei_queue = (state.cnei_queue || 0) + 1;
   }
   return branch;
@@ -1624,20 +1635,21 @@ async function triggerOtaAfterCneiRelease(env, tagName) {
   console.log(`Recorded cnei release ${tagName} in KV for OTA detection`);
 }
 
-async function findAvailableBranch(state, token) {
-  const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue };
+async function findAvailableBranch(state, token, gear) {
+  const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
   for (let attempt = 0; attempt < 40; attempt++) {
     const branch = selectBranch(state);
-    const onCooldown = await isOnCooldown(token, branch);
+    const onCooldown = await isOnCooldown(token, branch, gear);
     if (!onCooldown) return branch;
   }
   console.log('All branches on cooldown, skipping run');
   state.regular_index = savedState.regular_index;
   state.cnei_queue = savedState.cnei_queue;
+  state.lap = savedState.lap;
   return null;
 }
 
-async function runFlywheel(env) {
+async function runFlywheel(env, forcedBranch) {
   console.log(`Flywheel triggered at ${new Date().toISOString()}`);
   if (!env.GITHUB_TOKEN) { console.error('GITHUB_TOKEN not configured'); return; }
 
@@ -1646,25 +1658,36 @@ async function runFlywheel(env) {
 
   // Update brain memory
   try {
-      await aggregateMemory(token);
+      await aggregateMemory(env.GITHUB_TOKEN);
   } catch (e) {
       console.log(`Memory aggregation skipped: ${e.message}`);
   }
 
   try {
     const state = await getRotationState(env);
-    console.log(`State before: regular_index=${state.regular_index}, cnei_queue=${state.cnei_queue}`);
+    const config = await getFlywheelConfig(env);
+    console.log(`State: idx=${state.regular_index} cnei=${state.cnei_queue} lap=${state.lap} mode=${state.mode} gear=${config.gear}`);
 
-    const branch = await findAvailableBranch(state, env.GITHUB_TOKEN);
-    if (!branch) { console.log('No available branch found'); return; }
+    if (state.mode === 'PAUSED' && !forcedBranch) {
+      console.log('Flywheel paused, skipping');
+      return;
+    }
 
-    const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue };
+    let branch;
+    if (forcedBranch) {
+      branch = forcedBranch;
+      console.log(`Forced branch: ${branch}`);
+    } else {
+      branch = await findAvailableBranch(state, env.GITHUB_TOKEN, config.gear);
+      if (!branch) { console.log('No available branch found'); return; }
+    }
+
+    const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
     console.log(`Selected branch: ${branch}`);
 
     const result = await processBranch(env, branch);
     console.log(`Result: ${JSON.stringify(result)}`);
 
-    // Store last run result for /__status endpoint
     await env.FLYWHEEL_STATE.put('last_run_result', JSON.stringify({
       branch,
       tagName: result?.tagName,
@@ -1695,41 +1718,93 @@ export default {
     const url = new URL(request.url);
 
     if (url.pathname === '/__cron') {
-      ctx.waitUntil(runFlywheel(env));
-      return new Response('Triggered', { status: 200 });
+      const branch = url.searchParams.get('branch');
+      ctx.waitUntil(runFlywheel(env, branch || null));
+      return new Response('Triggered' + (branch ? ': ' + branch : ''), { status: 200 });
     }
     if (url.pathname === '/__sync_cron') {
-      await runFlywheel(env);
+      const branch = url.searchParams.get('branch');
+      await runFlywheel(env, branch || null);
       return new Response('Sync run completed', { status: 200 });
     }
     if (url.pathname === '/__state') {
       const state = await getRotationState(env);
+      const config = await getFlywheelConfig(env);
       const cneiRelease = await env.FLYWHEEL_STATE.get('last_cnei_release', 'json');
-      return new Response(JSON.stringify({ ...state, last_cnei_release: cneiRelease }, null, 2), {
+      return new Response(JSON.stringify({ ...state, gear: config.gear, last_cnei_release: cneiRelease }, null, 2), {
         headers: { 'Content-Type': 'application/json' }
       });
     }
     if (url.pathname === '/__reset') {
-      const state = { regular_index: 0, cnei_queue: 0 };
+      const state = { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' };
       await saveRotationState(env, state);
       return new Response('State reset', { status: 200 });
     }
+    if (url.pathname === '/__mode') {
+      if (request.method === 'POST') {
+        try {
+          const body = await request.json();
+          const mode = body.mode;
+          if (!['AUTO','MANUAL','PAUSED'].includes(mode)) {
+            return new Response(JSON.stringify({ error: 'Invalid mode' }), { status: 400, headers: { 'Content-Type': 'application/json' } });
+          }
+          const state = await getRotationState(env);
+          state.mode = mode;
+          await saveRotationState(env, state);
+          return new Response(JSON.stringify({ ok: true, mode }), {
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+          });
+        } catch (err) {
+          return new Response(JSON.stringify({ ok: false, error: err.message }), {
+            status: 400, headers: { 'Content-Type': 'application/json' }
+          });
+        }
+      }
+      const state = await getRotationState(env);
+      return new Response(JSON.stringify({ mode: state.mode }), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+    if (url.pathname === '/__config') {
+      if (request.method === 'POST') {
+        try {
+          const body = await request.json();
+          const current = await getFlywheelConfig(env);
+          const updated = { ...current, ...body };
+          await env.FLYWHEEL_STATE.put('config', JSON.stringify(updated));
+          return new Response(JSON.stringify({ ok: true, config: updated }), {
+            headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+          });
+        } catch (err) {
+          return new Response(JSON.stringify({ ok: false, error: err.message }), {
+            status: 400, headers: { 'Content-Type': 'application/json' }
+          });
+        }
+      }
+      const current = await getFlywheelConfig(env);
+      return new Response(JSON.stringify(current), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
     if (url.pathname === '/__debug') {
       const branch = url.searchParams.get('branch') || 'cnei';
-      const cooldown = branch === 'cnei' ? CNEI_COOLDOWN : COOLDOWN_SECONDS;
+      const config = await getFlywheelConfig(env);
+      const cooldown = RATE_BY_GEAR[config.gear - 1] || 3600;
+      const cneiCooldown = Math.floor(cooldown / 2);
+      const actualCooldown = branch === 'cnei' ? cneiCooldown : cooldown;
       const now = Math.floor(Date.now() / 1000);
       const lastRelease = await getLatestReleaseDate(env.GITHUB_TOKEN, branch);
       const elapsed = now - lastRelease;
       const maxNum = await getMaxBranchReleaseNum(env.GITHUB_TOKEN, branch);
-      const isCD = lastRelease > 0 && elapsed < cooldown;
+      const isCD = lastRelease > 0 && elapsed < actualCooldown;
       const info = {
-        branch, cooldown, now, lastRelease,
+        branch, gear: config.gear, cooldown: actualCooldown, now, lastRelease,
         lastReleaseDate: lastRelease ? new Date(lastRelease * 1000).toISOString() : 'none',
         elapsed, elapsedHours: (elapsed / 3600).toFixed(1),
         available: !isCD,
         releaseCount: maxNum,
         nextVersion: formatVersion(maxNum + 1),
-        cooldownType: branch === 'cnei' ? '30min' : '1h'
+        cooldownType: branch === 'cnei' ? 'half-gear' : 'gear-based'
       };
       return new Response(JSON.stringify(info, null, 2), {
         headers: { 'Content-Type': 'application/json' }
@@ -1737,11 +1812,13 @@ export default {
     }
     if (url.pathname === '/__status') {
       const state = await getRotationState(env);
+      const config = await getFlywheelConfig(env);
       const cneiRelease = await env.FLYWHEEL_STATE.get('last_cnei_release', 'json');
       const lastRun = await env.FLYWHEEL_STATE.get('last_run_result', 'json');
       const mcpCache = await env.FLYWHEEL_STATE.get('mcp_last_scan', 'json');
       return new Response(JSON.stringify({
         ...state,
+        gear: config.gear,
         last_cnei_release: cneiRelease,
         last_run: lastRun,
         mcp: mcpCache,
@@ -1784,7 +1861,7 @@ export default {
       });
     }
 
-    return new Response('Flywheel Worker. Endpoints: /__cron, /__sync_cron, /__state, /__reset, /__debug?branch=X, /__status, /__bias, /__mcp?url=X', {
+    return new Response('Flywheel Worker. Endpoints: /__cron?branch=X, /__sync_cron, /__state, /__reset, /__mode, /__config, /__debug?branch=X, /__status, /__bias, /__mcp?url=X', {
       headers: { 'Content-Type': 'text/plain' }
     });
   }

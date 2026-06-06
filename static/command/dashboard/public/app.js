@@ -1,187 +1,43 @@
-let token = sessionStorage.getItem('command_token') || '';
-let ghToken = '';
-let cfToken = '';
-let settings = {};
 let config = { bias: 0, risk: 0, gear: 3, toggle_exceptions: {} };
 let branches = [];
 let activeBranch = '';
 let isCallActive = false;
 let recognition = null;
-let currentGear = 'N';
+let wingVisible = 0;
 
 const $ = id => document.getElementById(id);
 const app = $('app');
-const overlay = $('login-overlay');
-const loginInput = $('login-passphrase');
-const loginBtn = $('login-btn');
-const loginError = $('login-error');
-
-async function doPassphraseLogin(pass) {
-  try {
-    const res = await fetch('/api/login', {
-      method: 'POST', headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ passphrase: pass }),
-    });
-    const data = await res.json();
-    if (data.token) {
-      token = data.token;
-      sessionStorage.setItem('command_token', token);
-      afterLogin();
-    } else {
-      loginError.textContent = 'Invalid passphrase';
-    }
-  } catch {
-    loginError.textContent = 'Connection error';
-  }
-}
-
-function afterLogin() {
-  overlay.style.display = 'none';
-  app.style.display = 'flex';
-  init();
-}
-
-loginBtn.addEventListener('click', () => doPassphraseLogin(loginInput.value));
-loginInput.addEventListener('keydown', (e) => { if (e.key === 'Enter') doPassphraseLogin(loginInput.value); });
-
-const urlParams = new URLSearchParams(window.location.search);
-const urlToken = urlParams.get('token');
-if (urlToken) {
-  token = urlToken;
-  sessionStorage.setItem('command_token', token);
-  window.history.replaceState({}, '', window.location.pathname);
-  afterLogin();
-} else if (token) {
-  afterLogin();
-}
-
-async function apiFetch(path, opts = {}) {
-  const headers = { ...(opts.headers || {}) };
-  if (token) headers['Authorization'] = 'Bearer ' + token;
-  if (opts.body && !headers['Content-Type']) headers['Content-Type'] = 'application/json';
-  const res = await fetch(path, { ...opts, headers });
-  if (res.status === 401) {
-    sessionStorage.removeItem('command_token');
-    token = '';
-    app.style.display = 'none';
-    overlay.style.display = 'flex';
-    loginError.textContent = 'Session expired. Please log in again.';
-    return null;
-  }
-  return res;
-}
 
 async function init() {
-  $('btn-logout').addEventListener('click', () => {
-    sessionStorage.removeItem('command_token');
-    token = '';
-    app.style.display = 'none';
-    overlay.style.display = 'flex';
-  });
-
+  app.style.display = 'flex';
   await loadSettings();
   await loadVersion();
   await loadBranches();
   await loadConfig();
 
-  initConnectButtons();
-  initDial();
-  initStick();
+  initJoystick();
+  initGear();
+  initDirButtons();
+  initManualRelease();
   initRadio();
   initEditor();
-  initTrackHover();
 
   setInterval(loadFuel, 5000);
   setInterval(loadRereleases, 15000);
+  setInterval(pollFlywheel, 5000);
   pollRereleases();
 
   showTrack();
 }
 
-function initConnectButtons() {
-  $('btn-gh-connect').addEventListener('click', async () => {
-    if (ghToken) {
-      ghToken = '';
-      updateGHUI(false);
-      return;
-    }
-    try {
-      const res = await fetch('/api/auth/github/url');
-      const data = await res.json();
-      if (data.url) {
-        sessionStorage.setItem('oauth_return_to', window.location.href);
-        window.location.href = data.url;
-      } else {
-        $('gh-status').textContent = 'N/A';
-      }
-    } catch {
-      $('gh-status').textContent = 'ERR';
-    }
-  });
-
-  $('btn-cf-connect').addEventListener('click', async () => {
-    if (cfToken) {
-      cfToken = '';
-      updateCFUI(false);
-      return;
-    }
-    try {
-      const res = await fetch('/api/auth/cloudflare/url');
-      const data = await res.json();
-      if (data.url) {
-        sessionStorage.setItem('oauth_return_to', window.location.href);
-        window.location.href = data.url;
-      } else if (data.token) {
-        const pasted = prompt('Cloudflare OAuth not configured. Paste a Cloudflare API token:');
-        if (pasted) {
-          const r2 = await apiFetch('/api/auth/cloudflare/url', { method: 'POST', body: JSON.stringify({ token: pasted }) });
-          if (r2) {
-            const d2 = await r2.json();
-            if (d2.success) {
-              cfToken = pasted;
-              updateCFUI(true);
-            }
-          }
-        }
-      } else {
-        $('cf-status').textContent = 'N/A';
-      }
-    } catch {
-      $('cf-status').textContent = 'ERR';
-    }
-  });
-}
-
-function updateGHUI(connected) {
-  $('btn-gh-connect').textContent = connected ? '✓GH' : 'GH';
-  $('gh-status').textContent = connected ? '✓' : '—';
-}
-
-function updateCFUI(connected) {
-  $('btn-cf-connect').textContent = connected ? '✓CF' : 'CF';
-  $('cf-status').textContent = connected ? '✓' : '—';
-}
+init();
 
 async function loadSettings() {
-  const res = await apiFetch('/api/settings');
-  if (!res) return;
-  settings = await res.json();
-  if (settings.gh_connected) {
-    ghToken = settings.gh_connected;
-    updateGHUI(true);
-  } else {
-    updateGHUI(false);
-  }
-  if (settings.cf_connected) {
-    cfToken = settings.cf_connected;
-    updateCFUI(true);
-  } else {
-    updateCFUI(false);
-  }
+  try { await fetch('/api/settings'); } catch {}
 }
 
 async function loadVersion() {
-  const res = await apiFetch('/api/version');
+  const res = await fetch('/api/version');
   if (!res) return;
   const data = await res.json();
   const v = data.version || '—';
@@ -190,7 +46,7 @@ async function loadVersion() {
 }
 
 async function loadBranches() {
-  const res = await apiFetch('/api/branches');
+  const res = await fetch('/api/branches');
   if (!res) return;
   branches = await res.json();
   const sel = $('branch-select');
@@ -209,21 +65,23 @@ async function loadBranches() {
 }
 
 async function loadConfig() {
-  const res = await apiFetch('/api/config');
+  const res = await fetch('/api/config');
   if (!res) return;
   config = await res.json();
-  if (config.gear !== undefined) {
-    currentGear = { 1: 'L', 3: 'N', 6: 'H' }[config.gear] || 'N';
-    updateStickUI();
-  }
+  if (config.gear !== undefined) updateGearUI(config.gear);
   renderWingFiles();
 }
 
 async function saveConfig(updates) {
   config = { ...config, ...updates };
-  await apiFetch('/api/config', {
+  await fetch('/api/config', {
     method: 'POST', body: JSON.stringify(config),
   });
+  if (updates.gear !== undefined) {
+    try {
+      await fetch('/api/flywheel/config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ gear: updates.gear }) });
+    } catch {}
+  }
 }
 
 const SIDES = ['high', 'left', 'right', 'low'];
@@ -236,20 +94,17 @@ function getActiveSides() {
   const branch = activeBranch || '_default';
   const bex = exceptions[branch] || {};
 
-  const defaults = {};
-  defaults['high'] = risk > 0;
-  defaults['left'] = bias < 0;
-  defaults['right'] = bias > 0;
-  defaults['low'] = risk < 0;
-
-  const active = {};
+  const D = [(risk > 0)<<0, (bias < 0)<<1, (bias > 0)<<2, (risk < 0)<<3];
+  let M = 0, E = 0;
   for (const side of SIDES) {
     const fullSide = side.charAt(0).toUpperCase() + side.slice(1);
-    const exceptionVal = bex[fullSide];
-    if (exceptionVal === true) active[side] = true;
-    else if (exceptionVal === false) active[side] = false;
-    else active[side] = defaults[side];
+    const ev = bex[fullSide];
+    if (ev === true) { M |= 1<<SIDES.indexOf(side); E |= 1<<SIDES.indexOf(side); }
+    else if (ev === false) { M |= 1<<SIDES.indexOf(side); }
   }
+  const A = (D & ~M) | (E & M);
+  const active = {};
+  for (const side of SIDES) active[side] = !!(A & (1<<SIDES.indexOf(side)));
   return active;
 }
 
@@ -265,6 +120,7 @@ function toggleWingException(side) {
   else bex[fullSide] = true;
   saveConfig({ toggle_exceptions: config.toggle_exceptions });
   renderWingFiles();
+  updateWingOverlays();
 }
 
 function renderWingFiles() {
@@ -313,22 +169,42 @@ function renderWingFiles() {
       list.appendChild(card);
     }
   }
+  updateWingOverlays();
 }
 
-// ── Track Hover ──
-function initTrackHover() {
-  const stage = $('track-stage');
-  let hoverTimer = null;
+// ── Flywheel State Poll ──
+async function pollFlywheel() {
+  const res = await fetch('/api/flywheel/state');
+  if (!res) return;
+  const data = await res.json();
+  if (typeof window.trackMilestones === 'function') {
+    window.trackMilestones(data);
+  }
+}
 
-  stage.addEventListener('mouseenter', () => {
-    clearTimeout(hoverTimer);
-    stage.classList.add('hover');
+// ── Directional Buttons (W ^= B) ──
+function initDirButtons() {
+  const sideMap = ['high','low','left','right'];
+  ['dir-up','dir-down','dir-left','dir-right'].forEach((id, i) => {
+    $(id).addEventListener('click', () => {
+      wingVisible ^= (1 << i);
+      for (let j = 0; j < 4; j++) {
+        const btn = $(['dir-up','dir-down','dir-left','dir-right'][j]);
+        btn.classList.toggle('active', !!(wingVisible & (1 << j)));
+      }
+      updateWingOverlays();
+    });
   });
+}
 
-  stage.addEventListener('mouseleave', () => {
-    hoverTimer = setTimeout(() => {
-      stage.classList.remove('hover');
-    }, 300);
+function updateWingOverlays() {
+  const active = getActiveSides();
+  const sides = ['high','low','left','right'];
+  sides.forEach((side, i) => {
+    const el = $('wing-' + ['top','bottom','left','right'][i]);
+    const bits = 1 << i;
+    const show = !!(wingVisible & bits) && active[side];
+    el.classList.toggle('visible', show);
   });
 }
 
@@ -343,15 +219,16 @@ function showTrack() {
   if (typeof window.trackInit === 'function') window.trackInit(trackCanvas);
 }
 
-// ── Steering Dial ──
-function initDial() {
-  const canvas = $('dial-canvas');
+// ── Joystick (replaces dial) ──
+function initJoystick() {
+  const canvas = $('joystick-canvas');
   const ctx = canvas.getContext('2d');
   let dragging = false;
   let bias = config.bias || 0;
   let risk = config.risk || 0;
+  const A = 0.00729735256;
 
-  function drawDial() {
+  function drawJoystick() {
     const W = canvas.width, H = canvas.height;
     const cx = W / 2, cy = H / 2, r = Math.min(W, H) / 2 - 12;
     ctx.clearRect(0, 0, W, H);
@@ -359,34 +236,32 @@ function initDial() {
     ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
     ctx.strokeStyle = 'rgba(0,242,255,0.15)'; ctx.lineWidth = 2; ctx.stroke();
 
+    ctx.beginPath(); ctx.arc(cx, cy, r * (1 - A), 0, Math.PI * 2);
+    ctx.strokeStyle = 'rgba(0,242,255,0.06)'; ctx.lineWidth = 1; ctx.stroke();
+
     ctx.beginPath(); ctx.moveTo(cx - r + 8, cy); ctx.lineTo(cx + r - 8, cy);
     ctx.moveTo(cx, cy - r + 8); ctx.lineTo(cx, cy + r - 8);
     ctx.strokeStyle = 'rgba(0,242,255,0.08)'; ctx.lineWidth = 1; ctx.stroke();
 
     const range = r * 0.7;
     const bx = cx + (bias / 5) * range;
-    ctx.beginPath(); ctx.arc(bx, cy, 4, 0, Math.PI * 2);
-    ctx.fillStyle = bias === 0 ? 'rgba(0,242,255,0.4)' : bias > 0 ? '#ffd93d' : '#4ecdc4';
-    ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke();
+    const by = cy - (risk / 5) * range;
 
-    const ry = cy - (risk / 5) * range;
-    ctx.beginPath(); ctx.arc(cx, ry, 4, 0, Math.PI * 2);
-    ctx.fillStyle = risk === 0 ? 'rgba(255,107,107,0.4)' : risk > 0 ? '#ff6b6b' : '#69db7c';
-    ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1; ctx.stroke();
+    ctx.beginPath(); ctx.arc(bx, by, 4, 0, Math.PI * 2);
+    ctx.fillStyle = '#00f2ff'; ctx.fill();
+    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
 
     ctx.beginPath(); ctx.arc(cx, cy, 2, 0, Math.PI * 2);
-    ctx.fillStyle = '#00f2ff'; ctx.fill();
+    ctx.fillStyle = 'rgba(0,242,255,0.3)'; ctx.fill();
 
     ctx.fillStyle = 'rgba(200,208,224,0.3)'; ctx.font = '7px monospace'; ctx.textAlign = 'center';
-    ctx.fillText('L', cx - r + 7, cy + 2.5);
-    ctx.fillText('R', cx + r - 7, cy + 2.5);
-    ctx.fillText('H', cx, cy - r + 9);
-    ctx.fillText('L', cx, cy + r - 5);
+    ctx.fillText('←', cx - r + 7, cy + 2.5);
+    ctx.fillText('→', cx + r - 7, cy + 2.5);
+    ctx.fillText('▲', cx, cy - r + 9);
+    ctx.fillText('▼', cx, cy + r - 5);
 
-    $('dial-bias').textContent = 'BIAS:' + Math.round(bias * 10) / 10;
-    $('dial-risk').textContent = 'RISK:' + Math.round(risk * 10) / 10;
+    $('joystick-bias').textContent = 'BIAS:' + Math.round(bias * 10) / 10;
+    $('joystick-risk').textContent = 'RISK:' + Math.round(risk * 10) / 10;
   }
 
   function posToValue(clientX, clientY) {
@@ -398,7 +273,7 @@ function initDial() {
     bias = Math.round(nbias * 2) / 2;
     risk = Math.round(nrisk * 2) / 2;
     saveConfig({ bias, risk });
-    drawDial();
+    drawJoystick();
     renderWingFiles();
   }
 
@@ -408,33 +283,53 @@ function initDial() {
   canvas.addEventListener('touchstart', (e) => { e.preventDefault(); const t = e.touches[0]; posToValue(t.clientX, t.clientY); });
   canvas.addEventListener('touchmove', (e) => { e.preventDefault(); const t = e.touches[0]; posToValue(t.clientX, t.clientY); });
 
-  drawDial();
+  drawJoystick();
 }
 
-// ── Stick Shift ──
-function initStick() {
-  const slots = document.querySelectorAll('.gate-slot');
-  slots.forEach(slot => {
-    slot.addEventListener('click', () => {
-      currentGear = slot.dataset.gear;
-      updateStickUI();
-      const gearMap = { L: 1, N: 3, H: 6 };
-      const rateMap = { L: '0.3/hr', N: '1/hr', H: '3/hr' };
-      saveConfig({ gear: gearMap[currentGear] });
-      $('stick-rate').textContent = rateMap[currentGear];
-      if (typeof window.trackSetSpeed === 'function') {
-        const speedMap = { L: 0.3, N: 1, H: 3 };
-        window.trackSetSpeed(speedMap[currentGear]);
+// ── Gear Shift (1-10 slider) ──
+const RATE_BY_GEAR = [3600, 2627, 1917, 1399, 1021, 745, 544, 397, 290, 211];
+
+function initGear() {
+  const slider = $('gear-slider');
+  slider.addEventListener('input', () => {
+    const gear = parseInt(slider.value, 10);
+    updateGearUI(gear);
+    saveConfig({ gear });
+    if (typeof window.trackSetSpeed === 'function') {
+      window.trackSetSpeed(gear / 3);
+    }
+  });
+  if (config.gear !== undefined) updateGearUI(config.gear);
+}
+
+function updateGearUI(gear) {
+  const slider = $('gear-slider');
+  slider.value = gear;
+  const rate = RATE_BY_GEAR[gear - 1];
+  const rateLabel = rate >= 3600 ? '1/hr' : rate >= 60 ? Math.round(3600 / rate) + '/hr' : Math.round(3600 / rate) + '/hr';
+  $('gear-rate').textContent = rateLabel;
+  $('gear-labels').innerHTML = '<span class="gear-label active" data-g="' + gear + '">' + gear + '</span>';
+}
+
+// ── Manual Release Buttons ──
+function initManualRelease() {
+  ['rel-fc','rel-cn','rel-cm'].forEach(id => {
+    $(id).addEventListener('click', async () => {
+      const branchMap = { 'rel-fc': 'financecheque', 'rel-cn': 'cnei', 'rel-cm': 'command' };
+      const branch = branchMap[id];
+      $(id).disabled = true;
+      $(id).textContent = '...';
+      try {
+        const res = await fetch('/api/flywheel/trigger/' + branch, { method: 'POST' });
+        const data = res ? await res.json() : {};
+        $(id).textContent = data.success ? '✓' : '✗';
+        setTimeout(() => { $(id).textContent = branchMap[id].slice(0, 2).toUpperCase(); $(id).disabled = false; }, 2000);
+      } catch {
+        $(id).textContent = '✗';
+        setTimeout(() => { $(id).textContent = branchMap[id].slice(0, 2).toUpperCase(); $(id).disabled = false; }, 2000);
       }
     });
   });
-}
-
-function updateStickUI() {
-  document.querySelectorAll('.gate-slot').forEach(s => s.classList.remove('active'));
-  const activeSlot = document.querySelector('.gate-slot[data-gear="' + currentGear + '"]');
-  if (activeSlot) activeSlot.classList.add('active');
-  $('stick-knob').textContent = currentGear;
 }
 
 // ── Radio / Intercom ──
@@ -484,7 +379,7 @@ function initRadio() {
 
   async function doChat(msg) {
     addRadioMsg('agent', '...');
-    const res = await apiFetch('/api/chat', {
+    const res = await fetch('/api/chat', {
       method: 'POST', body: JSON.stringify({ message: msg }),
     });
     if (!res) return;
@@ -557,7 +452,7 @@ function openEditor(branch, side, fname) {
 async function loadEditorContent() {
   $('editor-status').textContent = '';
   try {
-    const res = await apiFetch('/api/branches/' + editorBranch + '/files/' + editorSide + '/' + editorFilename);
+    const res = await fetch('/api/branches/' + editorBranch + '/files/' + editorSide + '/' + editorFilename);
     if (!res) return;
     const data = await res.json();
     $('editor-textarea').value = data.content || '';
@@ -572,7 +467,7 @@ function initEditor() {
     const content = $('editor-textarea').value;
     $('editor-status').textContent = 'Saving...';
     try {
-      const res = await apiFetch('/api/branches/' + editorBranch + '/files/' + editorSide + '/' + editorFilename, {
+      const res = await fetch('/api/branches/' + editorBranch + '/files/' + editorSide + '/' + editorFilename, {
         method: 'POST', body: JSON.stringify({ content }),
       });
       if (!res) return;
@@ -592,7 +487,7 @@ function initEditor() {
 
 // ── Fuel ──
 async function loadFuel() {
-  const res = await apiFetch('/api/fuel');
+  const res = await fetch('/api/fuel');
   if (!res) return;
   const data = await res.json();
   $('fuel-api').style.height = data.api + '%';
@@ -605,7 +500,7 @@ async function loadFuel() {
 let knownTags = new Set();
 
 async function loadRereleases() {
-  const res = await apiFetch('/api/rereleases');
+  const res = await fetch('/api/rereleases');
   if (!res) return;
   const data = await res.json();
   if (data.rereleases) {

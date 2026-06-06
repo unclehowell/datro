@@ -31,12 +31,6 @@ const HARDCODED = {
   branch_ref: 'command',
 };
 
-function getGhToken(request, env) {
-  const auth = request.headers.get('Authorization') || '';
-  if (auth.startsWith('Bearer ')) return auth.slice(7);
-  return env.GITHUB_TOKEN || '';
-}
-
 function ghHeaders(token) {
   return {
     'Authorization': 'Bearer ' + token,
@@ -61,49 +55,10 @@ async function ghPut(path, body, token) {
   return resp.json();
 }
 
-async function genToken(secret, kv) {
-  const p = JSON.stringify({ t: Date.now() + 86400000, s: secret.slice(0, 8) });
-  const enc = new TextEncoder();
-  const key = await crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
-  const sig = await crypto.subtle.sign('HMAC', key, enc.encode(p));
-  const hmac = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 12);
-  const t = btoa(p) + '.' + hmac;
-  await kv.put('token:' + t, '1', { expirationTtl: 86400 });
-  return t;
-}
-
-async function validateToken(token, secret, kv) {
-  if (!token) return false;
-  try {
-    const parts = token.split('.');
-    if (parts.length !== 2) return false;
-    const raw = atob(parts[0]);
-    const p = JSON.parse(raw);
-    if (p.t < Date.now()) return false;
-    const stored = await kv.get('token:' + token);
-    if (!stored) return false;
-    const enc = new TextEncoder();
-    const key = await crypto.subtle.importKey('raw', enc.encode(secret), { name: 'HMAC', hash: 'SHA-256' }, false, ['sign']);
-    const sig = await crypto.subtle.sign('HMAC', key, enc.encode(raw));
-    const expected = Array.from(new Uint8Array(sig)).map(b => b.toString(16).padStart(2, '0')).join('').slice(0, 12);
-    return expected === parts[1];
-  } catch { return false; }
-}
-
 function rfp(branch, side, fname) {
   if (fname === 'master-record.md') return { path: 'static/' + branch + '.md', gh: 'static/' + encodeURIComponent(branch) + '.md' };
   const s = sfx(side, fname);
   return { path: 'static/' + branch + '/' + s, gh: 'static/' + encodeURIComponent(branch) + '/' + encodeURIComponent(s) };
-}
-
-async function checkGhToken(kv, token) {
-  const stored = await kv.get('oauth:gh_token:' + token);
-  return !!stored;
-}
-
-async function checkCfToken(kv, token) {
-  const stored = await kv.get('oauth:cf_token:' + token);
-  return !!stored;
 }
 
 export default {
@@ -111,8 +66,8 @@ export default {
     const url = new URL(request.url);
     const path = url.pathname;
     const method = request.method;
-    const secret = env.TOKEN_SECRET || 'fallback-secret';
     const kv = env.COMMAND_DASHBOARD;
+    const ghToken = env.GITHUB_TOKEN || '';
 
     let body = null;
     if (method === 'POST' || method === 'PUT') { try { body = await request.json(); } catch {} }
@@ -120,8 +75,6 @@ export default {
     if (method === 'OPTIONS') return new Response(null, { headers: cors() });
 
     try {
-      // ── Public endpoints (no auth required) ──
-
       // GET /api/status
       if (path === '/api/status' && method === 'GET') {
         return json({ status: 'ok', version: APP_VERSION, timestamp: new Date().toISOString() });
@@ -129,16 +82,15 @@ export default {
 
       // GET /api/version
       if (path === '/api/version' && method === 'GET') {
-        const ghT = env.GITHUB_TOKEN || '';
         let version = APP_VERSION;
-        if (ghT) {
+        if (ghToken) {
           let cached = await kv.get('version:release_count');
           if (cached) {
             version = 'command-r' + cached;
           } else {
             try {
               const resp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', {
-                headers: { 'Authorization': 'Bearer ' + ghT, 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-cf' },
+                headers: { 'Authorization': 'Bearer ' + ghToken, 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-cf' },
               });
               const data = await resp.json();
               if (Array.isArray(data)) {
@@ -152,122 +104,13 @@ export default {
         return json({ version });
       }
 
-      // POST /api/login (passphrase fallback)
-      if (path === '/api/login' && method === 'POST') {
-        const pass = body?.passphrase || '';
-        if (pass === (env.LOGIN_PASSPHRASE || 'Burgerking')) {
-          const t = await genToken(secret, kv);
-          return json({ token: t, success: true });
-        }
-        return json({ error: 'Invalid passphrase', success: false }, 401);
-      }
-
-      // GET /api/auth/github/url
-      if (path === '/api/auth/github/url' && method === 'GET') {
-        const clientId = env.GITHUB_OAUTH_CLIENT_ID;
-        if (!clientId) return json({ error: 'GitHub OAuth not configured', url: null });
-        const redirectUri = url.origin + '/api/auth/github/callback';
-        const state = Math.random().toString(36).slice(2);
-        const ghUrl = 'https://github.com/login/oauth/authorize?client_id=' + clientId + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&scope=repo&state=' + state;
-        return json({ url: ghUrl, state });
-      }
-
-      // GET /api/auth/github/callback
-      if (path === '/api/auth/github/callback' && method === 'GET') {
-        const code = url.searchParams.get('code');
-        const clientId = env.GITHUB_OAUTH_CLIENT_ID;
-        const clientSecret = env.GITHUB_OAUTH_CLIENT_SECRET;
-        if (!code || !clientId || !clientSecret) return json({ error: 'OAuth params missing' }, 400);
-        const tokResp = await fetch('https://github.com/login/oauth/access_token', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ client_id: clientId, client_secret: clientSecret, code }),
-        });
-        const tokData = await tokResp.json();
-        const ghToken = tokData.access_token;
-        if (!ghToken) return json({ error: 'Failed to get token: ' + JSON.stringify(tokData) }, 400);
-        const storedToken = await genToken(secret, kv);
-        await kv.put('oauth:gh_token:' + storedToken, ghToken, { expirationTtl: 86400 });
-        const returnTo = url.searchParams.get('return_to') || url.origin + '/';
-        return Response.redirect(returnTo + (returnTo.includes('?') ? '&' : '?') + 'token=' + storedToken, 302);
-      }
-
-      // GET /api/auth/github/token
-      if (path === '/api/auth/github/token' && method === 'GET') {
-        return json({ message: 'Use the OAuth flow to authenticate.' });
-      }
-
-      // GET /api/auth/cloudflare/url
-      if (path === '/api/auth/cloudflare/url' && method === 'GET') {
-        const cfId = env.CLOUDFLARE_OAUTH_CLIENT_ID;
-        if (!cfId) {
-          // No OAuth configured – return token prompt fallback
-          return json({ url: null, token: true, message: 'CF OAuth not configured. Paste a token instead.' });
-        }
-        const redirectUri = url.origin + '/api/auth/cloudflare/callback';
-        const state = Math.random().toString(36).slice(2);
-        const cfUrl = 'https://dash.cloudflare.com/oauth2/auth?client_id=' + cfId + '&redirect_uri=' + encodeURIComponent(redirectUri) + '&response_type=code&scope=pages:write+workers:read&state=' + state;
-        return json({ url: cfUrl, state });
-      }
-
-      // POST /api/auth/cloudflare/url (token paste fallback)
-      if (path === '/api/auth/cloudflare/url' && method === 'POST') {
-        const pastedToken = body?.token || '';
-        if (!pastedToken) return json({ error: 'Token required' }, 400);
-        const auth = request.headers.get('Authorization') || '';
-        const authToken = (auth.startsWith('Bearer ') ? auth.slice(7) : '') || url.searchParams.get('token') || '';
-        if (!authToken) return json({ error: 'Auth token required' }, 401);
-        await kv.put('oauth:cf_token:' + authToken, pastedToken, { expirationTtl: 86400 });
-        return json({ success: true });
-      }
-
-      // GET /api/auth/cloudflare/callback
-      if (path === '/api/auth/cloudflare/callback' && method === 'GET') {
-        const code = url.searchParams.get('code');
-        const cfId = env.CLOUDFLARE_OAUTH_CLIENT_ID;
-        const cfSecret = env.CLOUDFLARE_OAUTH_CLIENT_SECRET;
-        if (!code || !cfId || !cfSecret) return json({ error: 'CF OAuth params missing' }, 400);
-        const redirectUri = url.origin + '/api/auth/cloudflare/callback';
-        const tokResp = await fetch('https://dash.cloudflare.com/oauth2/token', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ client_id: cfId, client_secret: cfSecret, code, redirect_uri: redirectUri, grant_type: 'authorization_code' }),
-        });
-        const tokData = await tokResp.json();
-        const cfToken = tokData.access_token;
-        if (!cfToken) return json({ error: 'Failed to get CF token: ' + JSON.stringify(tokData) }, 400);
-        const storedToken = await genToken(secret, kv);
-        await kv.put('oauth:cf_token:' + storedToken, cfToken, { expirationTtl: 86400 });
-        const returnTo = url.searchParams.get('return_to') || url.origin + '/';
-        return Response.redirect(returnTo + (returnTo.includes('?') ? '&' : '?') + 'token=' + storedToken, 302);
-      }
-
-      // GET /api/settings
+      // GET /api/settings — always connected
       if (path === '/api/settings' && method === 'GET') {
-        const hasGhOAuth = !!env.GITHUB_OAUTH_CLIENT_ID;
-        const hasCfOAuth = !!env.CLOUDFLARE_OAUTH_CLIENT_ID;
-        const auth = request.headers.get('Authorization') || '';
-        const reqToken = auth.startsWith('Bearer ') ? auth.slice(7) : url.searchParams.get('token') || '';
-        const valid = await validateToken(reqToken, secret, kv);
-        let ghConnected = '';
-        let cfConnected = '';
-        if (valid) {
-          ghConnected = !!(env.GITHUB_TOKEN || await checkGhToken(kv, reqToken)) ? 'connected' : '';
-          cfConnected = !!(env.CLOUDFLARE_API_TOKEN || await checkCfToken(kv, reqToken)) ? 'connected' : '';
-        }
-        return json({ ...HARDCODED, oauth_configured: hasGhOAuth, cf_oauth_configured: hasCfOAuth, gh_connected: ghConnected, cf_connected: cfConnected });
-      }
-
-      // ── Auth required from here ──
-      if (path.startsWith('/api/')) {
-        const auth = request.headers.get('Authorization') || '';
-        const token = auth.startsWith('Bearer ') ? auth.slice(7) : url.searchParams.get('token') || '';
-        const valid = await validateToken(token, secret, kv);
-        if (!valid) return json({ error: 'Unauthorized' }, 401);
-        // Resolve GitHub token: OAuth token or env var
-        var ghToken = await kv.get('oauth:gh_token:' + token) || env.GITHUB_TOKEN || '';
-        // Resolve CF token: OAuth token or env var
-        var cfToken = await kv.get('oauth:cf_token:' + token) || env.CLOUDFLARE_API_TOKEN || '';
+        return json({
+          ...HARDCODED,
+          gh_connected: !!ghToken ? 'connected' : '',
+          cf_connected: !!env.CLOUDFLARE_API_TOKEN ? 'connected' : '',
+        });
       }
 
       // GET /api/config
@@ -422,14 +265,34 @@ export default {
         } catch { return json({ rereleases: [], count: 0 }); }
       }
 
-      // POST /api/flywheel/trigger
-      if (path === '/api/flywheel/trigger' && method === 'POST') {
+      // POST /api/flywheel/trigger/:branch
+      const tm = path.match(/^\/api\/flywheel\/trigger\/([a-zA-Z0-9_-]+)$/);
+      if (tm && method === 'POST') {
+        const s = HARDCODED;
+        const branch = tm[1];
+        try {
+          const resp = await fetch(s.cf_worker_url + '/__cron?branch=' + encodeURIComponent(branch), { method: 'POST' });
+          const text = await resp.text();
+          return json({ success: resp.ok, branch, output: text.slice(0, 500) });
+        } catch (err) { return json({ error: err.message, success: false }, 502); }
+      }
+
+      // GET /api/flywheel/state
+      if (path === '/api/flywheel/state' && method === 'GET') {
         const s = HARDCODED;
         try {
-          const resp = await fetch(s.cf_worker_url + '/__cron', { method: 'POST' });
-          const text = await resp.text();
-          return json({ success: resp.ok, output: text.slice(0, 500) });
-        } catch (err) { return json({ error: err.message, success: false }, 502); }
+          const resp = await fetch(s.cf_worker_url + '/__state');
+          return json(await resp.json());
+        } catch { return json({ regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' }); }
+      }
+
+      // POST /api/flywheel/config
+      if (path === '/api/flywheel/config' && method === 'POST') {
+        const s = HARDCODED;
+        try {
+          const resp = await fetch(s.cf_worker_url + '/__config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+          return json(await resp.json());
+        } catch { return json({ ok: false }, 502); }
       }
 
       // GET /api/flywheel/status
