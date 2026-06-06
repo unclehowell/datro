@@ -1,5 +1,13 @@
 # Changelog
 
+## [gui-v0.0.0.16] - 2026-06-06
+
+### Fixed
+- fix(gui): Remove excessive blank lines
+
+### Changed
+- ux(gui): Add print-friendly styles for better UX
+
 ## [gui-v0.0.0.15] - 2026-06-05
 
 ### Fixed
