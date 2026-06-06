@@ -1,5 +1,13 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.12] - 2026-06-06
+
+### Fixed
+- fix(bpvsbuckler): Remove excessive blank lines
+
+### Changed
+- ux(bpvsbuckler): Add social media links for audience engagement
+
 ## [bpvsbuckler-v0.0.0.11] - 2026-06-03
 
 ### Fixed
