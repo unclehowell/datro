@@ -44,7 +44,6 @@ Nov-30 - Cleared _config.yml and inserted `exclude: - Gemfile` instead (trying t
 ### Removed
 Dec-01 - Removed _config.yml, not needed  
 
-
 ## [-hbnb.01] - Q3/2021
 
 ### Added
@@ -57,7 +56,6 @@ Aug-13 - Minor edit to README.md - almost lost a handy bit of code, so I put it 
 
 ### Changed
 23-May - Changed the images from `.png` to `.webp`  
-
 
 ## [0.0.3] - Q1/2021
 

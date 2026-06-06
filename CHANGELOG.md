@@ -1,5 +1,13 @@
 # Changelog
 
+## [hbnb-v0.0.0.16] - 2026-06-06
+
+### Fixed
+- fix(hbnb): Remove excessive blank lines
+
+### Changed
+- ux(hbnb): Add focus-visible styles for keyboard navigation
+
 ## [hbnb-v0.0.0.15] - 2026-06-05
 
 ### Fixed
