@@ -124,19 +124,19 @@ app.get('/api/status', (req, res) => {
 
 // GET /api/version
 app.get('/api/version', async (req, res) => {
-  const ghT = process.env.GITHUB_TOKEN || '';
   let version = APP_VERSION;
-  if (ghT) {
-    try {
-      const resp = await ghFetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', {
-        headers: { 'Authorization': 'Bearer ' + ghT, 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-local' },
-      });
-      if (resp.ok) {
-        const data = await resp.json();
-        if (Array.isArray(data)) version = 'command-r' + data.length;
+  try {
+    const headers = { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-local' };
+    if (process.env.GITHUB_TOKEN) headers['Authorization'] = 'Bearer ' + process.env.GITHUB_TOKEN;
+    const resp = await ghFetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', { headers });
+    if (resp.ok) {
+      const data = await resp.json();
+      if (Array.isArray(data)) {
+        const cmd = data.find(r => r.tag_name.startsWith('command-'));
+        version = cmd ? cmd.tag_name : 'command-v0.0.0';
       }
-    } catch {}
-  }
+    }
+  } catch {}
   res.json({ version });
 });
 

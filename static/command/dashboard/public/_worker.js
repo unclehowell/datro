@@ -83,23 +83,21 @@ export default {
       // GET /api/version
       if (path === '/api/version' && method === 'GET') {
         let version = APP_VERSION;
-        if (ghToken) {
-          let cached = await kv.get('version:release_count');
-          if (cached) {
-            version = 'command-r' + cached;
-          } else {
-            try {
-              const resp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', {
-                headers: { 'Authorization': 'Bearer ' + ghToken, 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-cf' },
-              });
-              const data = await resp.json();
-              if (Array.isArray(data)) {
-                const count = data.length;
-                await kv.put('version:release_count', String(count), { expirationTtl: 3600 });
-                version = 'command-r' + count;
-              }
-            } catch {}
-          }
+        let cached = await kv.get('version:command_tag');
+        if (cached) {
+          version = cached;
+        } else {
+          try {
+            const headers = { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-cf' };
+            if (ghToken) headers['Authorization'] = 'Bearer ' + ghToken;
+            const resp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', { headers });
+            const data = await resp.json();
+            if (Array.isArray(data)) {
+              const cmd = data.find(r => r.tag_name.startsWith('command-'));
+              version = cmd ? cmd.tag_name : 'command-v0.0.0';
+              await kv.put('version:command_tag', version, { expirationTtl: 3600 });
+            }
+          } catch {}
         }
         return json({ version });
       }

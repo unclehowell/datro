@@ -41,8 +41,7 @@ async function loadVersion() {
   if (!res) return;
   const data = await res.json();
   const v = data.version || '—';
-  const m = v.match(/r(\d+)/i);
-  $('version-badge').textContent = m ? 'r' + m[1] : v;
+  $('version-badge').textContent = v;
 }
 
 async function loadBranches() {
@@ -503,6 +502,7 @@ async function loadRereleases() {
   const res = await fetch('/api/rereleases');
   if (!res) return;
   const data = await res.json();
+  let latest = '';
   if (data.rereleases) {
     for (const r of data.rereleases) {
       if (!knownTags.has(r.tag)) {
@@ -511,8 +511,12 @@ async function loadRereleases() {
           window.trackRerelease(r.branch);
         }
       }
+      if (r.branch === 'command' && (!latest || r.tag > latest)) {
+        latest = r.tag;
+      }
     }
   }
+  $('rerelease-badge').textContent = latest ? '↻' + latest.replace('command-', '') : '';
 }
 
 function pollRereleases() {
