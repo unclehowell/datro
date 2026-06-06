@@ -51,10 +51,10 @@ async function deriveBranchWallet(env, branch) {
 
 async function getBranchWallet(env, branch) {
   const cacheKey = `wallet_${branch}`;
-  const cached = await env.FLYWHEEL_STATE.get(cacheKey, 'json');
+  const cached = await env.FLYWHEEL_STATE.get(cacheKey, 'json').catch(() => null);
   if (cached) return cached;
   const wallet = await deriveBranchWallet(env, branch);
-  await env.FLYWHEEL_STATE.put(cacheKey, JSON.stringify(wallet), { expirationTtl: 86400 });
+  await env.FLYWHEEL_STATE.put(cacheKey, JSON.stringify(wallet), { expirationTtl: 86400 }).catch(() => {});
   return wallet;
 }
 
@@ -2316,10 +2316,16 @@ export default {
     }
     if (url.pathname === '/__wallet') {
       const branch = url.searchParams.get('branch') || 'cnei';
-      const wallet = await getBranchWallet(env, branch);
-      return new Response(JSON.stringify(wallet, null, 2), {
-        headers: { 'Content-Type': 'application/json' }
-      });
+      try {
+        const wallet = await getBranchWallet(env, branch);
+        return new Response(JSON.stringify(wallet, null, 2), {
+          headers: { 'Content-Type': 'application/json' }
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message, stack: err.stack }, null, 2), {
+          status: 500, headers: { 'Content-Type': 'application/json' }
+        });
+      }
     }
     if (url.pathname === '/__wallets') {
       const wallets = {};
