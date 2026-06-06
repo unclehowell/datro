@@ -1,5 +1,17 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.23] - 2026-06-06
+
+### Fixed
+- fix(carfinancecheque): Remove excessive blank lines
+
+### Changed
+- ux(carfinancecheque): Add legal footer with privacy/terms/contact links
+
+## [0.0.1.0] - 2026-06-06
+### Fixed
+- Identified issue: JSON parse error: Expecting ',' delimiter (requires manual fix)
+
 ## [carfinancecheque-v0.0.0.22] - 2026-06-03
 
 ### Fixed
