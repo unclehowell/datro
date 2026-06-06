@@ -1,5 +1,13 @@
 # Changelog
 
+## [ceo-v0.0.0.17] - 2026-06-06
+
+### Fixed
+- fix(ceo): Remove excessive blank lines
+
+### Changed
+- ux(ceo): Add minimum tap target sizes for mobile UX
+
 ## [ceo-v0.0.0.16] - 2026-06-05
 
 ### Fixed
