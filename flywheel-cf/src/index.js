@@ -33,8 +33,8 @@ async function deriveBranchWallet(env, branch) {
   );
 
   // Use first 32 bytes as wallet private key, last 4 bytes as compute budget
-  const walletKey = new Uint8Array(derivedBits.slice(0, 32));
-  const computeBudget = new DataView(derivedBits.slice(28, 32).buffer).getUint32(0, false);
+  const walletKey = new Uint8Array(derivedBits, 0, 32);
+  const computeBudget = new DataView(derivedBits, 28, 4).getUint32(0, false);
 
   // Compute "address" as hex fingerprint
   const addrHash = await crypto.subtle.digest('SHA-256', walletKey);
