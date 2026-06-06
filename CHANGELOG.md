@@ -1,5 +1,13 @@
 # Changelog
 
+## [ccan-v0.0.0.27] - 2026-06-06
+
+### Fixed
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [ccan-v0.0.0.26] - 2026-06-05
 
 ### Fixed
