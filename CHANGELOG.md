@@ -1,5 +1,13 @@
 # Changelog
 
+## [archives-v0.0.0.14] - 2026-06-06
+
+### Fixed
+- fix(archives): Remove excessive blank lines
+
+### Changed
+- ux(archives): Add cookie consent banner for GDPR compliance
+
 ## [archives-v0.0.0.13] - 2026-06-03
 
 ### Fixed
