@@ -1,4 +1,6 @@
 const GITHUB_REPO = 'unclehowell/datro';
+const GITLAWB_NODE = 'https://node.gitlawb.com';
+const GITLAWB_BOUNTY_LIST_URL = `${GITLAWB_NODE}/api/v1/bounties`;
 
 const ALL_BRANCHES = [
   "althea", "archives", "bpvsbuckler", "carfinancecheque",
@@ -8,13 +10,421 @@ const ALL_BRANCHES = [
 ];
 
 const REGULAR_BRANCHES = ALL_BRANCHES.filter(b => b !== 'cnei');
-const RATE_BY_GEAR = [3600, 2627, 1917, 1399, 1021, 745, 544, 397, 290, 211];
+const RATE_BY_GEAR = [600, 438, 320, 233, 170, 124, 91, 66, 48, 35]; // Compressed: gear1=10min, gear10~35s
 const CNEI_RATIO = Math.floor(137 / REGULAR_BRANCHES.length); // 137/20 = 6
 const DOMAIN = 'datro.directory';
 const GITHUB_REPO_OBJ = { owner: 'unclehowell', repo: 'datro' };
 const BRAIN_BRANCH = 'brain';
 
 const startTime = Math.floor(Date.now() / 1000);
+
+// ── Deterministic Branch Wallet (HKDF → Ed25519 for compute emulation) ──
+
+async function deriveBranchWallet(env, branch) {
+  const MASTER_SEED = env.MASTER_WALLET_SEED || 'datro-flywheel-default-seed-change-me';
+  const seed = new TextEncoder().encode(MASTER_SEED);
+  const keyMaterial = await crypto.subtle.importKey('raw', seed, 'HKDF', false, ['deriveBits']);
+  const salt = new TextEncoder().encode('agentic-flywheel-v2');
+  const info = new TextEncoder().encode(`branch:${branch}`);
+
+  const derivedBits = await crypto.subtle.deriveBits(
+    { name: 'HKDF', hash: 'SHA-256', salt, info },
+    keyMaterial, 256
+  );
+
+  // Use first 32 bytes as wallet private key, last 4 bytes as compute budget
+  const walletKey = new Uint8Array(derivedBits.slice(0, 32));
+  const computeBudget = new DataView(derivedBits.slice(28, 32).buffer).getUint32(0, false);
+
+  // Compute "address" as hex fingerprint
+  const addrHash = await crypto.subtle.digest('SHA-256', walletKey);
+  const address = Array.from(new Uint8Array(addrHash).slice(0, 20))
+    .map(b => b.toString(16).padStart(2, '0')).join('');
+
+  return {
+    branch,
+    address: `0x${address}`,
+    computeBudget: computeBudget % 10000, // 0-9999 "compute units" per branch
+    derivedAt: Math.floor(Date.now() / 1000)
+  };
+}
+
+async function getBranchWallet(env, branch) {
+  const cacheKey = `wallet_${branch}`;
+  const cached = await env.FLYWHEEL_STATE.get(cacheKey, 'json');
+  if (cached) return cached;
+  const wallet = await deriveBranchWallet(env, branch);
+  await env.FLYWHEEL_STATE.put(cacheKey, JSON.stringify(wallet), { expirationTtl: 86400 });
+  return wallet;
+}
+
+// ── Agent Tool System (MCP-style, available to LLM agent) ──
+
+const AGENT_TOOLS = {
+  read_file: {
+    description: 'Read a file from any branch in the repo',
+    args: { path: 'string', branch: 'string' },
+    execute: async (args, ctx) => {
+      const file = await getFileContent(ctx.token, args.branch || ctx.branch, args.path);
+      return file ? file.content.slice(0, 30000) : `File not found: ${args.path}`;
+    }
+  },
+  write_file: {
+    description: 'Write content to a file on a branch (commits immediately)',
+    args: { path: 'string', branch: 'string', content: 'string', message: 'string' },
+    execute: async (args, ctx) => {
+      const commit = await createCommit(ctx.token, args.branch || ctx.branch, args.path, args.content, args.message);
+      return `Committed ${args.path} (${commit.sha.slice(0, 8)})`;
+    }
+  },
+  list_branches: {
+    description: 'List all branches and their latest commit',
+    args: {},
+    execute: async (args, ctx) => {
+      const resp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/branches`, { headers: ghHeaders(ctx.token) });
+      const branches = await resp.json();
+      return (Array.isArray(branches) ? branches : []).map(b => `- ${b.name} (${b.commit.sha.slice(0, 8)})`).join('\n');
+    }
+  },
+  search_code: {
+    description: 'Search codebase for a pattern across all files in a branch',
+    args: { pattern: 'string', branch: 'string' },
+    execute: async (args, ctx) => {
+      const treeResp = await ghFetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/git/trees/${encodeURIComponent(args.branch || ctx.branch)}?recursive=1`,
+        ctx.token
+      );
+      const tree = await treeResp.json();
+      const matches = [];
+      for (const item of (tree.tree || [])) {
+        if (item.type !== 'blob') continue;
+        if (item.path.endsWith('.png') || item.path.endsWith('.jpg') || item.path.endsWith('.ico')) continue;
+        try {
+          const file = await getFileContent(ctx.token, args.branch || ctx.branch, item.path);
+          if (file && file.content.includes(args.pattern)) {
+            const lines = file.content.split('\n');
+            const matchLines = lines.map((l, i) => l.includes(args.pattern) ? `  ${i + 1}: ${l.trim().slice(0, 150)}` : null).filter(Boolean);
+            matches.push(`--- ${item.path} ---\n${matchLines.slice(0, 5).join('\n')}`);
+          }
+        } catch (e) { /* skip unreadable */ }
+      }
+      return matches.length > 0 ? matches.join('\n') : `No matches for "${args.pattern}"`;
+    }
+  },
+  run_scan: {
+    description: 'Run a third-party MCP scan on a URL',
+    args: { toolId: 'string', url: 'string' },
+    execute: async (args, ctx) => {
+      const result = await runMcpScan(ctx.env, args.toolId, args.url || `https://${ctx.branch}.${DOMAIN}`);
+      return JSON.stringify(result, null, 2);
+    }
+  },
+  honcho_memory: {
+    description: 'Read/write Honcho memory for this branch',
+    args: { action: 'string', content: 'string' },
+    execute: async (args, ctx) => {
+      if (args.action === 'read') {
+        return await getHonchoMemory(ctx.env, ctx.branch);
+      }
+      if (args.action === 'write' && args.content) {
+        try {
+          await fetch(`https://api.honcho.dev/api/honcho/messages`, {
+            method: 'POST',
+            headers: { 'Authorization': `Bearer ${ctx.env.HONCHO_API_KEY}`, 'Content-Type': 'application/json' },
+            body: JSON.stringify({ workspace: 'datro', session: ctx.branch, content: args.content })
+          });
+          return 'Memory written to Honcho';
+        } catch (e) { return `Honcho write failed: ${e.message}`; }
+      }
+      return 'Usage: honcho_memory action=read|write [content=...]';
+    }
+  },
+  wallet_info: {
+    description: 'Get the crypto wallet info and compute budget for any branch',
+    args: { branch: 'string' },
+    execute: async (args, ctx) => {
+      const wallet = await getBranchWallet(ctx.env, args.branch || ctx.branch);
+      return JSON.stringify(wallet, null, 2);
+    }
+  },
+  brainstorm: {
+    description: 'Ask the LLM a question or brainstorm ideas. Use this for creative thinking.',
+    args: { prompt: 'string', context: 'string' },
+    execute: async (args, ctx) => {
+      const systemMsg = `You are a senior software architect. ${args.context || ''}`;
+      const result = await queryFinancechequeAPI(systemMsg, args.prompt, ctx.env, 30000);
+      return result.reply || `Error: ${result.error}`;
+    }
+  },
+  // ── Gitlawv Bounty Tools ──
+  gitlawv_bounty_list: {
+    description: 'List open gitlawb bounties. Each bounty has an id, title, reward (tokens), repo, and status.',
+    args: { status: 'string', limit: 'string' },
+    execute: async (args, ctx) => {
+      const status = args.status || 'open';
+      const limit = args.limit || '10';
+      try {
+        const resp = await fetch(`${GITLAWB_BOUNTY_LIST_URL}?status=${status}&limit=${limit}`, {
+          headers: { 'Accept': 'application/json' }
+        });
+        if (!resp.ok) return `Gitlawv node error: ${resp.status}`;
+        const data = await resp.json();
+        const bounties = Array.isArray(data) ? data : (data.bounties || []);
+        if (bounties.length === 0) return 'No bounties found matching criteria.';
+        return bounties.map((b, i) =>
+          `[${i + 1}] ID: ${b.id || b.bounty_id}\n  Title: ${b.title}\n  Reward: ${b.reward || b.amount} $GITLAWB\n  Repo: ${b.repo || b.repository}\n  Status: ${b.status}\n  Desc: ${(b.description || '').slice(0, 200)}`
+        ).join('\n');
+      } catch (err) {
+        return `Gitlawv node unreachable: ${err.message}`;
+      }
+    }
+  },
+  gitlawv_bounty_claim: {
+    description: 'Claim an open gitlawb bounty. Provide the bounty ID from gitlawv_bounty_list.',
+    args: { bountyId: 'string', note: 'string' },
+    execute: async (args, ctx) => {
+      if (!args.bountyId) return 'Error: bountyId is required.';
+      const wallet = await getBranchWallet(ctx.env, ctx.branch);
+      try {
+        const resp = await fetch(`${GITLAWB_NODE}/api/v1/bounties/${args.bountyId}/claim`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-Branch-Id': ctx.branch,
+            'X-Wallet-Addr': wallet.address
+          },
+          body: JSON.stringify({
+            claimant: ctx.branch,
+            wallet: wallet.address,
+            note: args.note || `Claimed by ${ctx.branch} flywheel agent`
+          })
+        });
+        if (resp.ok) {
+          const result = await resp.json();
+          return `Claimed bounty ${args.bountyId} for ${ctx.branch}. ${result.message || 'Work assigned.'}`;
+        }
+        const errText = await resp.text().catch(() => '');
+        if (resp.status === 409) return `Bounty ${args.bountyId} already claimed by someone else.`;
+        return `Claim failed (${resp.status}): ${errText.slice(0, 200)}`;
+      } catch (err) {
+        return `Gitlawv node unreachable: ${err.message}`;
+      }
+    }
+  },
+  gitlawv_bounty_submit: {
+    description: 'Submit completed work for a claimed bounty. Provide the bounty ID and the commit/PR URL.',
+    args: { bountyId: 'string', submissionUrl: 'string', note: 'string' },
+    execute: async (args, ctx) => {
+      if (!args.bountyId || !args.submissionUrl) return 'Error: bountyId and submissionUrl are required.';
+      const wallet = await getBranchWallet(ctx.env, ctx.branch);
+      try {
+        const resp = await fetch(`${GITLAWB_NODE}/api/v1/bounties/${args.bountyId}/submit`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-Branch-Id': ctx.branch,
+            'X-Wallet-Addr': wallet.address
+          },
+          body: JSON.stringify({
+            submission_url: args.submissionUrl,
+            wallet: wallet.address,
+            note: args.note || `Completed by ${ctx.branch} flywheel — ${args.submissionUrl}`
+          })
+        });
+        if (resp.ok) {
+          const result = await resp.json();
+          return `Submitted bounty ${args.bountyId}. ${result.message || 'Pending review/payout.'} Wallet ${wallet.address} will receive reward once approved.`;
+        }
+        const errText = await resp.text().catch(() => '');
+        return `Submit failed (${resp.status}): ${errText.slice(0, 200)}`;
+      } catch (err) {
+        return `Gitlawv node unreachable: ${err.message}`;
+      }
+    }
+  }
+};
+
+// ── Agentic Loop (ReAct Pattern: Think → Tool → Observe → Repeat) ──
+
+async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHtml, ctx) {
+  const token = env.GITHUB_TOKEN;
+  const maxIterations = 6;
+  const conversation = [];
+  let currentHtml = html;
+  const committedFiles = [];
+  let agentBounty = null;
+
+  const context = {
+    token, branch, env, currentHtml,
+    wingFiles: Object.keys(wingFiles || {}).length,
+    domain: DOMAIN
+  };
+
+  const category = computeBranchCategory(branch);
+  const bias = await getBiasFromKv(env);
+  const honchoMem = await getHonchoMemory(env, branch);
+  const brainMem = await getBrainSummary(token);
+  const sciHub = await getSciHubIdeas(env, branch, category);
+  const dailyDigest = await getDailyBestPractices(env);
+  const wallet = await getBranchWallet(env, branch);
+
+  const toolDescriptions = Object.entries(AGENT_TOOLS).map(([name, tool]) =>
+    `- ${name}: ${tool.description}\n  Args: ${Object.keys(tool.args).length > 0 ? Object.entries(tool.args).map(([k, v]) => `${k} (${v})`).join(', ') : 'none'}`
+  ).join('\n\n');
+
+  const systemPrompt = `You are the autonomous agentic flywheel for the DATRO monorepo (${GITHUB_REPO}).
+
+## Your Mission
+Analyze branch "${branch}" deeply. You have ${maxIterations} tool iterations to investigate and make changes.
+Use tools to read files, search code, run scans, and write changes. Commit changes via write_file as you go.
+
+## Earn $GITLAWB While Working
+You can earn gitlawb bounties (paid in $GITLAWB tokens on Base L2) by claiming and completing tasks during your release cycle:
+1. **gitlawv_bounty_list** — find open bounties matching this branch's needs
+2. **gitlawv_bounty_claim** — claim a bounty to signal you are working on it
+3. **gitlawv_bounty_submit** — after committing changes, submit the commit URL as bounty completion
+Between every branch release, try to claim at least one bounty. The payout goes to the branch wallet.
+
+## Available Tools
+${toolDescriptions}
+
+## Context
+- Branch: ${branch} (category: ${category})
+- Wing files loaded: ${context.wingFiles}
+- Wallet: ${wallet.address} (compute budget: ${wallet.computeBudget})
+- Bias: ${bias?.bias || 3}/5, Risk: ${bias?.risk || 3}/5
+
+## Memory
+${honchoMem.slice(0, 1500)}
+${brainMem ? '---\n' + brainMem.slice(0, 1000) : ''}
+
+## Research
+${sciHub.slice(0, 500)}
+${dailyDigest.slice(0, 500)}
+
+## Protocol
+To use a tool, output:
+TOOL: <tool_name>
+ARG: key=value
+ARG: key=value
+
+When you have made all your changes and want to finish, output:
+DONE
+SUMMARY: <what you changed and why>
+
+## Rules
+- Use read_file and search_code first to understand the codebase
+- Use brainstorm for creative thinking/planning
+- Use write_file to commit changes (it commits immediately to GitHub)
+- Make at least 1 real visual/functional change to index.html
+- Don't just add meta tags — add real UI elements
+- Max 3 write_file calls per run`;
+
+  conversation.push(systemPrompt);
+  conversation.push(`Current index.html:
+\`\`\`html
+${currentHtml.slice(0, 30000)}
+\`\`\`
+
+Live website:
+\`\`\`html
+${(liveHtml || '').slice(0, 8000)}
+\`\`\`
+
+_headers:
+\`\`\`
+${headersContent || '(empty)'}
+\`\`\`
+
+What improvements should I make? Investigate and then make changes.`);
+
+  for (let iter = 0; iter < maxIterations; iter++) {
+    console.log(`Agent iteration ${iter + 1}/${maxIterations}`);
+
+    const result = await queryFinancechequeAPI(
+      conversation[0],
+      conversation.slice(1).join('\n\n'),
+      env, 45000
+    );
+
+    if (result.error || !result.reply) {
+      console.log(`Agent error at iteration ${iter}: ${result.error}`);
+      break;
+    }
+
+    const reply = result.reply.trim();
+    console.log(`Agent reply (${reply.length} chars)`);
+
+    if (reply.startsWith('DONE')) {
+      console.log('Agent finished');
+      const summary = reply.match(/SUMMARY:\s*([\s\S]*?)$/);
+      return {
+        changes: committedFiles,
+        summary: summary ? summary[1].trim() : 'Agent completed changes',
+        html: currentHtml,
+        bounty: agentBounty
+      };
+    }
+
+    const toolMatch = reply.match(/TOOL:\s*(\w+)/);
+    if (!toolMatch) {
+      conversation.push('Please use a tool or output DONE when finished.');
+      continue;
+    }
+
+    const toolName = toolMatch[1];
+    const tool = AGENT_TOOLS[toolName];
+    if (!tool) {
+      conversation.push(`Unknown tool: ${toolName}. Available: ${Object.keys(AGENT_TOOLS).join(', ')}`);
+      continue;
+    }
+
+    const args = {};
+    const argLines = reply.split('\n').filter(l => l.startsWith('ARG:'));
+    for (const line of argLines) {
+      const eq = line.indexOf('=');
+      if (eq > 4) {
+        const key = line.substring(4, eq).trim();
+        const val = line.substring(eq + 1).trim();
+        args[key] = val;
+      }
+    }
+
+    console.log(`Agent calling tool: ${toolName} ${JSON.stringify(args)}`);
+
+    try {
+      const observation = await tool.execute(args, context);
+      console.log(`Tool result: ${(observation || '').slice(0, 200)}`);
+
+      if (toolName === 'write_file') {
+        committedFiles.push({ path: args.path, branch: args.branch || branch, message: args.message });
+        if (args.path === 'index.html') {
+          const updated = await getFileContent(token, args.branch || branch, 'index.html');
+          if (updated) currentHtml = updated.content;
+        }
+      }
+      if (toolName === 'gitlawv_bounty_claim' && args.bountyId) {
+        agentBounty = { action: 'claimed', bountyId: args.bountyId, branch, at: Date.now() };
+      }
+      if (toolName === 'gitlawv_bounty_submit' && args.bountyId) {
+        agentBounty = { action: 'submitted', bountyId: args.bountyId, submissionUrl: args.submissionUrl, branch, at: Date.now() };
+      }
+
+      conversation.push(`TOOL ${toolName} result:\n${(observation || '').slice(0, 10000)}`);
+    } catch (err) {
+      console.log(`Tool error: ${err.message}`);
+      conversation.push(`Tool ${toolName} failed: ${err.message}. Try a different approach.`);
+    }
+  }
+
+  return {
+    changes: committedFiles,
+    summary: 'Agent reached max iterations',
+    html: currentHtml,
+    bounty: agentBounty
+  };
 
 async function aggregateMemory(token) {
   console.log("Aggregating branch memory into Brain...");
@@ -1512,78 +1922,98 @@ async function processBranch(env, branch) {
     }
   }
 
-  // ── TRY AI ENGINE FIRST (bespoke, tailored release) ──
+  // Fetch current index.html and _headers for AI agent
+  const idxFile = await getFileContent(token, branch, 'index.html');
+  const hdrFile = await getFileContent(token, branch, '_headers');
+  const idxHtml = idxFile ? idxFile.content : '';
+  const hdrContent = hdrFile ? hdrFile.content : '';
+
+  // Fetch live website HTML
+  let liveHtml = '';
+  try {
+    const liveResp = await fetch(`https://${branch}.${DOMAIN}`);
+    if (liveResp.ok) liveHtml = await liveResp.text();
+  } catch (e) { console.log(`Could not fetch live site for ${branch}: ${e.message}`); }
+
+  // ── AGENTIC AI ENGINE (chain-of-thought with tool use) ──
   let commitSha = null;
   let releaseNotes = '';
+  const wallet = await getBranchWallet(env, branch);
 
-  let aiResult = await processBranchWithAI(env, branch);
-  if (aiResult && aiResult.error && !aiResult.error.startsWith('no_html')) {
-    console.log(`First AI attempt failed (${aiResult.error}), retrying once...`);
-    aiResult = await processBranchWithAI(env, branch);
-  }
-  const aiNotesCount = (await getPreviousReleaseNotes(token, branch, 1)).length;
+  const agentResult = await runAgentLoop(env, branch, idxHtml, hdrContent, visualWingFiles, liveHtml, { token, env });
 
-  if (aiResult && !aiResult.error && aiResult.changes.length > 0) {
-    // Apply AI changes — apply all changes to index.html
-    let currentHtml = aiResult.html;
-    const appliedChanges = [];
-    for (const change of aiResult.changes) {
-      if (currentHtml.includes(change.search)) {
-        currentHtml = currentHtml.replace(change.search, change.replace);
-        appliedChanges.push(change);
-        console.log(`  Applied AI change: ${change.title}`);
+  if (agentResult && agentResult.changes.length > 0) {
+    // Get latest commit SHA for tagging
+    const headResp = await ghFetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/git/refs/heads/${encodeURIComponent(branch)}`,
+      token
+    );
+    const headData = await headResp.json();
+    commitSha = headData.object.sha;
+
+    // Build release notes from agent summary
+    const committedPaths = agentResult.changes.map(c => `- \`${c.path}\``).join('\n');
+    let bountyText = '';
+    if (agentResult.bounty) {
+      if (agentResult.bounty.action === 'claimed') {
+        bountyText = `\n### Gitlawv Bounty\n- Claimed bounty \`${agentResult.bounty.bountyId}\` on \`${agentResult.bounty.branch}\`\n- Wallet: \`${wallet.address}\` will receive $GITLAWB on completion`;
+      } else if (agentResult.bounty.action === 'submitted') {
+        bountyText = `\n### Gitlawv Bounty\n- Submitted bounty \`${agentResult.bounty.bountyId}\` — ${agentResult.bounty.submissionUrl}\n- Wallet: \`${wallet.address}\` pending $GITLAWB payout`;
       }
     }
+    releaseNotes = [
+      `## Agentic Release: ${tagName}`,
+      ``,
+      `The autonomous agent analyzed \`${branch}\` using ${Object.keys(AGENT_TOOLS).length} MCP tools.`,
+      ``,
+      `### Files Changed`,
+      committedPaths,
+      ``,
+      `### Agent Summary`,
+      agentResult.summary || 'No summary provided.',
+      ``,
+      `### Wallet`,
+      `- Branch wallet: ${wallet.address}`,
+      `- Compute budget: ${wallet.computeBudget}`,
+      bountyText,
+      ``,
+      mcpSection
+    ].join('\n');
 
-    if (appliedChanges.length > 0) {
-      // Commit the changes
-      const bugFixes = appliedChanges.filter(c => c.type === 'bug');
-      const features = appliedChanges.filter(c => c.type === 'feature');
-      const commitMsg = `feat(${branch}): AI release — ${features.map(f => f.title).join(', ')}${bugFixes.length > 0 ? '; fixes: ' + bugFixes.map(b => b.title).join(', ') : ''}`;
+    // Write MEMORY.md
+    const cycleNum = await getNextCycleNum(token, branch);
+    const agentLesson = `Agentic engine: ${agentResult.changes.length} file(s) committed to \`${branch}\`. Wallet: ${wallet.address}. Summary: ${agentResult.summary || ''}`;
+    const pseudoBp = {
+      name: `agent: ${committedPaths.slice(0, 80)}`,
+      description: `Applied ${agentResult.changes.length} agent commits to ${branch}`,
+      source: 'Agentic Flywheel (ReAct loop + MCP tools)'
+    };
+    await writeMEMORY(token, branch, cycleNum, pseudoBp, agentLesson);
 
-      const commit = await createCommit(token, branch, 'index.html', currentHtml, commitMsg);
-      commitSha = commit.sha;
-
-      // Build release notes
-      const changesText = appliedChanges.map(c =>
-        `### ${c.type === 'feature' ? '✨ Feature' : '🐛 Bug Fix'}: ${c.title}\n${c.description}`
-      ).join('\n\n');
-      releaseNotes = [
-        `## AI-Powered Release: ${tagName}`,
-        ``,
-        `After deep analysis of the \`${branch}\` branch website, wing file harness, and previous releases, the AI identified and applied ${appliedChanges.length} unique, tailored improvement(s).`,
-        ``,
-        changesText,
-        ``,
-        `### AI Analysis`,
-      `- Wing files loaded: ${Object.keys(aiResult.wingFiles || {}).length || 0}`,
-      `- Previous releases analyzed: ${aiNotesCount}`,
-      `- AI query elapsed: ${((aiResult.aiResult?.elapsed || 0) / 1000).toFixed(1)}s`,
-        ``,
-        mcpSection
-      ].join('\n');
-
-      // Write MEMORY.md
-      const cycleNum = await getNextCycleNum(token, branch);
-      const changeSummary = appliedChanges.map(c => `"${c.title}" (${c.type})`).join(', ');
-      const aiLesson = `AI uniqueness engine: ${appliedChanges.length} change(s) applied to \`index.html\` on \`${branch}\`. Wing files loaded: ${Object.keys(aiResult.wingFiles || {}).length}. AI elapsed: ${((aiResult.aiResult?.elapsed || 0) / 1000).toFixed(1)}s.`;
-      const pseudoBp = {
-        name: `ai: ${changeSummary}`,
-        description: `Applied ${appliedChanges.length} AI-proposed change(s) to ${branch}`,
-        source: 'AI Uniqueness Engine (financecheque parent proxy → LLM)'
-      };
-      await writeMEMORY(token, branch, cycleNum, pseudoBp, aiLesson);
-
-      await createGitTag(token, tagName, commitSha);
-      const release = await createGitHubRelease(token, tagName, branch, version, releaseNotes);
-      if (release) {
-        await verifyRelease(token, tagName);
-        await updateDoneList(env, appliedChanges);
-      }
-
-      console.log(`AI release ${tagName}: ${appliedChanges.length} changes applied`);
-      return { tagName, version, type: 'ai', changes: appliedChanges, aiError: null, selfImprovements };
+    // Tag release and verify
+    await createGitTag(token, tagName, commitSha);
+    const release = await createGitHubRelease(token, tagName, branch, version, releaseNotes);
+    if (release) {
+      await verifyRelease(token, tagName);
     }
+
+    console.log(`Agentic release ${tagName}: ${agentResult.changes.length} files committed`);
+
+    // Track gitlawv bounty earnings in KV
+    if (agentResult.bounty) {
+      const bountyKey = `bounty_${branch}`;
+      const existing = await env.FLYWHEEL_STATE.get(bountyKey, 'json');
+      const history = Array.isArray(existing) ? existing : [];
+      history.push({
+        bountyId: agentResult.bounty.bountyId,
+        action: agentResult.bounty.action,
+        tagName,
+        timestamp: Math.floor(Date.now() / 1000)
+      });
+      await env.FLYWHEEL_STATE.put(bountyKey, JSON.stringify(history.slice(-50)));
+      console.log(`Bounty ${agentResult.bounty.action}: ${agentResult.bounty.bountyId} on ${branch}`);
+    }
+    return { tagName, version, type: 'agent', changes: agentResult.changes, aiError: null, selfImprovements, wallet: wallet.address };
   }
 
   // ── FALLBACK: Best-practice engine ──
@@ -1596,7 +2026,7 @@ async function processBranch(env, branch) {
     const release = await createGitHubRelease(token, tagName, branch, version, enhancedNotes);
     if (release) await verifyRelease(token, tagName);
     console.log(`Best-practice release ${tagName}: ${bpResult.bestPractice.name}`);
-    return { tagName, version, type: 'best-practice', aiError: aiResult?.error || null, selfImprovements };
+    return { tagName, version, type: 'best-practice', aiError: null, selfImprovements, wallet: wallet.address };
   }
 
   // ── FALLBACK: Audit-only release ──
@@ -1605,16 +2035,14 @@ async function processBranch(env, branch) {
     `## [${tagName}]`,
     ``,
     `### Changed`,
-    `- AI analysis: ${aiResult?.error ? `failed (${aiResult.error})` : 'no changes needed'}`,
+    `- Agentic analysis: no changes needed after tool-based investigation`,
     `- Best-practice audit: no Tier 1-2 gaps found in \`index.html\``,
-    `- Branch-specific cache/header review complete`,
-    `- Continuous integration release for ${branch}`,
+    `- Branch wallet: ${wallet.address} (compute: ${wallet.computeBudget})`,
     ``,
     `### Audit Summary`,
     `- Branch: \`${branch}\``,
     `- Category: ${computeBranchCategory(branch)}`,
     `- Best practices checked: ${BEST_PRACTICES.length}`,
-    `- AI error: ${aiResult?.error || 'none'}`,
     ``,
     mcpSection
   ].join('\n');
@@ -1623,7 +2051,7 @@ async function processBranch(env, branch) {
   const auditRelease = await createSimpleRelease(token, branch, tagName, version, notes);
   if (auditRelease) await verifyRelease(token, tagName);
   console.log(`Audit-only release ${tagName}`);
-  return { tagName, version, type: 'audit-only', aiError: aiResult?.error || null, selfImprovements };
+  return { tagName, version, type: 'audit-only', aiError: null, selfImprovements, wallet: wallet.address };
 }
 
 async function triggerOtaAfterCneiRelease(env, tagName) {
@@ -1666,7 +2094,22 @@ async function runFlywheel(env, forcedBranch) {
   try {
     const state = await getRotationState(env);
     const config = await getFlywheelConfig(env);
-    console.log(`State: idx=${state.regular_index} cnei=${state.cnei_queue} lap=${state.lap} mode=${state.mode} gear=${config.gear}`);
+    const bias = await getBiasFromKv(env);
+
+    // ── BURST MODE: auto-advance gear based on bias/risk/wallet ──
+    // Progressive bias (1-2) → faster releases. Conservative (4-5) → slower.
+    // High risk tolerance → faster. High compute budget per branch → faster.
+    let effectiveGear = config.gear;
+    if ((bias?.bias || 3) <= 2) effectiveGear = Math.min(10, effectiveGear + 2);
+    if ((bias?.risk || 3) >= 4) effectiveGear = Math.min(10, effectiveGear + 1);
+
+    // Sample a wallet to see average compute budget
+    try {
+      const sampleWallet = await getBranchWallet(env, REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length]);
+      if (sampleWallet.computeBudget > 5000) effectiveGear = Math.min(10, effectiveGear + 1);
+    } catch (_) {}
+
+    console.log(`State: idx=${state.regular_index} cnei=${state.cnei_queue} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
 
     if (state.mode === 'PAUSED' && !forcedBranch) {
       console.log('Flywheel paused, skipping');
@@ -1678,8 +2121,18 @@ async function runFlywheel(env, forcedBranch) {
       branch = forcedBranch;
       console.log(`Forced branch: ${branch}`);
     } else {
-      branch = await findAvailableBranch(state, env.GITHUB_TOKEN, config.gear);
-      if (!branch) { console.log('No available branch found'); return; }
+      branch = await findAvailableBranch(state, env.GITHUB_TOKEN, effectiveGear);
+      if (!branch) {
+        // If no branch available, force cnei for self-improvement
+        const cneiCD = await isOnCooldown(env.GITHUB_TOKEN, 'cnei', effectiveGear);
+        if (!cneiCD) {
+          branch = 'cnei';
+          console.log('No regular branch available, forcing cnei self-improvement');
+        } else {
+          console.log('No available branch found');
+          return;
+        }
+      }
     }
 
     const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
@@ -1860,8 +2313,53 @@ export default {
         headers: { 'Content-Type': 'application/json' }
       });
     }
+    if (url.pathname === '/__wallet') {
+      const branch = url.searchParams.get('branch') || 'cnei';
+      const wallet = await getBranchWallet(env, branch);
+      return new Response(JSON.stringify(wallet, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    if (url.pathname === '/__wallets') {
+      const wallets = {};
+      for (const branch of ALL_BRANCHES) {
+        wallets[branch] = await getBranchWallet(env, branch);
+      }
+      return new Response(JSON.stringify(wallets, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    if (url.pathname === '/__agent') {
+      const branch = url.searchParams.get('branch') || 'cnei';
+      const prompt = url.searchParams.get('prompt') || 'Analyze this branch and suggest improvements';
+      const idx = await getFileContent(env.GITHUB_TOKEN, branch, 'index.html');
+      const hdr = await getFileContent(env.GITHUB_TOKEN, branch, '_headers');
+      const wingFiles = await getAllWingFiles(env.GITHUB_TOKEN, branch);
+      const wallet = await getBranchWallet(env, branch);
+      const result = await runAgentLoop(env, branch, idx ? idx.content : '', hdr ? hdr.content : '', wingFiles, '', { token: env.GITHUB_TOKEN, env });
+      return new Response(JSON.stringify({ branch, wallet, agentResult: result }, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+    if (url.pathname === '/__bounties') {
+      const branch = url.searchParams.get('branch');
+      if (branch) {
+        const data = await env.FLYWHEEL_STATE.get(`bounty_${branch}`, 'json');
+        return new Response(JSON.stringify({ branch, bounties: data || [] }, null, 2), {
+          headers: { 'Content-Type': 'application/json' }
+        });
+      }
+      const all = {};
+      for (const b of ALL_BRANCHES) {
+        const data = await env.FLYWHEEL_STATE.get(`bounty_${b}`, 'json');
+        if (data) all[b] = data;
+      }
+      return new Response(JSON.stringify(all, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
 
-    return new Response('Flywheel Worker. Endpoints: /__cron?branch=X, /__sync_cron, /__state, /__reset, /__mode, /__config, /__debug?branch=X, /__status, /__bias, /__mcp?url=X', {
+    return new Response('Flywheel Worker. Endpoints: /__cron?branch=X, /__sync_cron, /__state, /__reset, /__mode, /__config, /__debug?branch=X, /__status, /__bias, /__mcp?url=X, /__wallet?branch=X, /__wallets, /__agent?branch=X, /__bounties?branch=X', {
       headers: { 'Content-Type': 'text/plain' }
     });
   }

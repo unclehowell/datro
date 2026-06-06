@@ -8,10 +8,6 @@ crons = ["*/10 * * * *"]
 [env.production]
 vars = { ENVIRONMENT = "production" }
 
-# AI Uniqueness Engine
-# PARENT_PROXY_URL = "https://www.financecheque.uk"   # Parent proxy for AI queries
-# AI_MODEL = "openrouter/anthropic/claude-sonnet"      # LLM model for release generation
-
 [[kv_namespaces]]
 binding = "FLYWHEEL_STATE"
 id = "ed3052fb8c2249979074b6096abc64f6"
