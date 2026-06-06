@@ -1,5 +1,13 @@
 # Changelog
 
+## [wave-v0.0.0.14] - 2026-06-06
+
+### Fixed
+- fix(wave): Remove excessive blank lines
+
+### Changed
+- ux(wave): Add button press interaction feedback for UX
+
 ## [wave-v0.0.0.13] - 2026-06-04
 
 ### Fixed
