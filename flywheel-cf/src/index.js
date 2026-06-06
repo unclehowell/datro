@@ -425,6 +425,7 @@ What improvements should I make? Investigate and then make changes.`);
     html: currentHtml,
     bounty: agentBounty
   };
+}
 
 async function aggregateMemory(token) {
   console.log("Aggregating branch memory into Brain...");
