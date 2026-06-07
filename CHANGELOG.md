@@ -1,5 +1,13 @@
 # Changelog
 
+## [datro-v0.0.0.17] - 2026-06-07
+
+### Fixed
+- fix(datro): Remove excessive blank lines
+
+### Changed
+- ux(datro): Add print-friendly styles for better UX
+
 ## [datro-v0.0.0.16] - 2026-06-06
 
 ### Fixed
