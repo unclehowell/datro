@@ -5,7 +5,7 @@ const https = require('https');
 
 const PORT = process.env.PORT || 3457;
 const CONFIG_PATH = path.join(__dirname, 'command.config.json');
-const APP_VERSION = 'command-v0.2.1';
+const APP_VERSION = 'command-V0.0.0.02';
 
 // ── Config helpers ──
 
