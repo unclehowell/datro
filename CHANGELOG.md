@@ -1,5 +1,13 @@
 # Changelog
 
+## [library-v0.0.0.16] - 2026-06-07
+
+### Fixed
+- fix(library): Remove excessive blank lines
+
+### Changed
+- ux(library): Add touch-action CSS for mobile responsiveness
+
 ## [library-v0.0.0.15] - 2026-06-05
 
 ### Fixed
