@@ -1,5 +1,13 @@
 # Changelog
 
+## [ceo-v0.0.0.18] - 2026-06-07
+
+### Fixed
+- fix(ceo): Remove excessive blank lines
+
+### Changed
+- ux(ceo): Improve text color contrast for readability
+
 ## [ceo-v0.0.0.17] - 2026-06-06
 
 ### Fixed
