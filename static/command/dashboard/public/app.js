@@ -1,552 +1,526 @@
-// COMMAND Cockpit - App Logic
-let config = { bias: 0, risk: 0, gear: 3, toggle_exceptions: {} };
-let branches = [];
-let activeBranch = '';
-let isCallActive = false;
-let recognition = null;
+// ── APP ──
+(function() {
+var $ = function(id) { return document.getElementById(id); };
 
-const $ = id => document.getElementById(id);
-const app = $('app');
-
-async function init() {
-  app.style.display = 'flex';
-  await loadSettings();
-  await loadVersion();
-  await loadBranches();
-  await loadConfig();
-
-  initJoystick();
-  initGear();
-  initSidePanels();
-  initManualRelease();
-  initRadio();
-  initEditor();
-
-  setInterval(loadFuel, 5000);
-  setInterval(loadRereleases, 15000);
-  setInterval(pollFlywheel, 5000);
-  pollRereleases();
-
-  showTrack();
-}
-
-init();
-
-async function loadSettings() {
-  try { await fetch('/api/settings'); } catch {}
-}
-
-async function loadVersion() {
-  const res = await fetch('/api/version');
-  if (!res) return;
-  const data = await res.json();
-  const v = data.version || '—';
-  console.log('Version:', v);
-}
-
-async function loadBranches() {
-  try {
-    const res = await fetch('/api/branches');
-    if (!res) return;
-    branches = await res.json();
-    updateSidePanels();
-  } catch (e) {
-    console.error('Failed to load branches:', e);
-  }
-}
-
-async function loadConfig() {
-  try {
-    const res = await fetch('/api/config');
-    if (!res) return;
-    const data = await res.json();
-    Object.assign(config, data);
-    applyConfig();
-  } catch (e) {
-    console.error('Failed to load config:', e);
-  }
-}
-
-async function saveConfig(updates) {
-  Object.assign(config, updates);
-  try {
-    await fetch('/api/config', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(updates)
-    });
-  } catch (e) {
-    console.error('Failed to save config:', e);
-  }
-}
-
-function applyConfig() {
-  // Apply joystick bias/risk
-  const bias = config.bias || 0;
-  const risk = config.risk || 0;
-  // Will be applied by joystick initialization
-  
-  // Apply gear
-  const gear = config.gear || 3;
-  $('gear-slider').value = gear;
-  $('gear-value').textContent = gear;
-  updateGearRate(gear);
-  
-  // Set active preset
-  document.querySelectorAll('.preset').forEach(p => {
-    p.classList.toggle('active', parseInt(p.dataset.gear) === gear);
-  });
-}
-
-// ── Joystick Implementation (like a car joystick with compass) ──
-function initJoystick() {
-  const canvas = $('joystick-canvas');
-  const ctx = canvas.getContext('2d');
-  let dragging = false;
-  let bias = config.bias || 0;
-  let risk = config.risk || 0;
-  const canvasSize = 120; // Match CSS compass-size
-  
-  canvas.width = canvasSize;
-  canvas.height = canvasSize;
-  
-  function drawJoystick() {
-    const W = canvas.width, H = canvas.height;
-    const cx = W / 2, cy = H / 2, r = Math.min(W, H) / 2 - 8;
-    
-    ctx.clearRect(0, 0, W, H);
-    
-    // Outer ring
-    ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(0,242,255,0.15)'; ctx.lineWidth = 2; ctx.stroke();
-    
-    // Inner ring
-    ctx.beginPath(); ctx.arc(cx, cy, r * (1 - 0.00729735256), 0, Math.PI * 2);
-    ctx.strokeStyle = 'rgba(0,242,255,0.06)'; ctx.lineWidth = 1; ctx.stroke();
-    
-    // Crosshairs
-    ctx.beginPath(); 
-    ctx.moveTo(cx - r + 5, cy); ctx.lineTo(cx + r - 5, cy);
-    ctx.moveTo(cx, cy - r + 5); ctx.lineTo(cx, cy + r - 5);
-    ctx.strokeStyle = 'rgba(0,242,255,0.08)'; ctx.lineWidth = 1; ctx.stroke();
-    
-    // Joystick handle
-    const range = r * 0.6;
-    const bx = cx + (bias / 5) * range;
-    const by = cy - (risk / 5) * range;
-    
-    ctx.beginPath(); ctx.arc(bx, by, 5, 0, Math.PI * 2);
-    ctx.fillStyle = '#00f2ff'; ctx.fill();
-    ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5; ctx.stroke();
-    
-    // Center dot
-    ctx.beginPath(); ctx.arc(cx, cy, 2, 0, Math.PI * 2);
-    ctx.fillStyle = 'rgba(0,242,255,0.3)'; ctx.fill();
-    
-    // Direction markers
-    ctx.fillStyle = 'rgba(200,208,224,0.3)'; 
-    ctx.font = '6px monospace'; 
-    ctx.textAlign = 'center';
-    ctx.fillText('←', cx - r + 4, cy + 2);
-    ctx.fillText('→', cx + r - 4, cy + 2);
-    ctx.fillText('▲', cx, cy - r + 7);
-    ctx.fillText('▼', cx, cy + r - 4);
-    
-    // Update labels
-    $('joystick-bias').textContent = 'BIAS:' + Math.round(bias * 10) / 10;
-    $('joystick-risk').textContent = 'RISK:' + Math.round(risk * 10) / 10;
-  }
-
-  function posToValue(clientX, clientY) {
-    const rect = canvas.getBoundingClientRect();
-    const x = clientX - rect.left - rect.width / 2;
-    const y = clientY - rect.top - rect.height / 2;
-    const nbias = Math.max(-5, Math.min(5, (x / (rect.width / 2)) * 5));
-    const nrisk = Math.max(-5, Math.min(5, (-y / (rect.height / 2)) * 5));
-    bias = Math.round(nbias * 2) / 2;
-    risk = Math.round(nrisk * 2) / 2;
-    saveConfig({ bias, risk });
-    drawJoystick();
-    
-    // Update track angle based on joystick position
-    if (typeof window.trackSetAngle === 'function') {
-      // Convert bias/risk (-5 to 5) to angle (0 to 2PI)
-      const angle = Math.atan2(nrisk, nbias); // -PI to PI
-      window.trackSetAngle((angle + Math.PI) / (2 * Math.PI)); // 0 to 1
-    }
-  }
-
-  canvas.addEventListener('mousedown', (e) => { dragging = true; posToValue(e.clientX, e.clientY); });
-  window.addEventListener('mousemove', (e) => { if (dragging) posToValue(e.clientX, e.clientY); });
-  window.addEventListener('mouseup', () => { dragging = false; });
-  canvas.addEventListener('touchstart', (e) => { e.preventDefault(); const t = e.touches[0]; posToValue(t.clientX, t.clientY); });
-  canvas.addEventListener('touchmove', (e) => { e.preventDefault(); const t = e.touches[0]; posToValue(t.clientX, t.clientY); });
-
-  drawJoystick();
-}
-
-// Add bias/risk elements to DOM if they don't exist
-function ensureJoystickLabels() {
-  if (!$('joystick-bias')) {
-    const biasLabel = document.createElement('div');
-    biasLabel.id = 'joystick-bias';
-    biasLabel.style.position = 'absolute';
-    biasLabel.style.bottom = '-2.5rem';
-    biasLabel.style.left = '50%';
-    biasLabel.style.transform = 'translateX(-50%)';
-    biasLabel.style.fontSize = '0.65rem';
-    biasLabel.style.color = 'var(--cyan-dim)';
-    biasLabel.style.letterSpacing = '1px';
-    biasLabel.textContent = 'BIAS:0';
-    $('joystick-base').appendChild(biasLabel);
-  }
-  
-  if (!$('joystick-risk')) {
-    const riskLabel = document.createElement('div');
-    riskLabel.id = 'joystick-risk';
-    riskLabel.style.position = 'absolute';
-    riskLabel.style.top = '-2.5rem';
-    riskLabel.style.left = '50%';
-    riskLabel.style.transform = 'translateX(-50%)';
-    riskLabel.style.fontSize = '0.65rem';
-    riskLabel.style.color = 'var(--orange)';
-    riskLabel.style.letterSpacing = '1px';
-    riskLabel.textContent = 'RISK:0';
-    $('joystick-base').appendChild(riskLabel);
-  }
-}
-
-// ── Gear Shift (1-10 slider) ──
-const RATE_BY_GEAR = [3600, 2627, 1917, 1399, 1021, 745, 544, 397, 290, 211, 154];
-
-function initGear() {
-  const slider = $('gear-slider');
-  const valueDisplay = $('gear-value');
-  const rateDisplay = $('gear-rate-label');
-  
-  function updateGearRate(gear) {
-    const rateSeconds = RATE_BY_GEAR[gear - 1] || 3600;
-    let rateText;
-    if (rateSeconds >= 3600) {
-      rateText = (rateSeconds / 3600) + '/hr';
-    } else if (rateSeconds >= 60) {
-      rateText = (rateSeconds / 60) + '/min';
-    } else {
-      rateText = rateSeconds + '/sec';
-    }
-    rateDisplay.textContent = rateText;
-  }
-  
-  slider.addEventListener('input', (e) => {
-    const gear = parseInt(e.target.value);
-    valueDisplay.textContent = gear;
-    updateGearRate(gear);
-    saveConfig({ gear: gear });
-    
-    // Update active preset
-    document.querySelectorAll('.preset').forEach(p => {
-      p.classList.toggle('active', parseInt(p.dataset.gear) === gear);
-    });
-    
-    // Update track speed
-    if (typeof window.trackSetSpeed === 'function') {
-      // Map gear 1-10 to speed 0.2 - 2.0
-      const speed = 0.2 + (gear - 1) * 0.2;
-      window.trackSetSpeed(speed);
-    }
-  });
-  
-  // Preset clicks
-  document.querySelectorAll('.preset').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      const gear = parseInt(e.target.dataset.gear);
-      slider.value = gear;
-      valueDisplay.textContent = gear;
-      updateGearRate(gear);
-      saveConfig({ gear: gear });
-      
-      // Update active preset
-      document.querySelectorAll('.preset').forEach(p => {
-        p.classList.toggle('active', parseInt(p.dataset.gear) === gear);
-      });
-      
-      // Update track speed
-      if (typeof window.trackSetSpeed === 'function') {
-        const speed = 0.2 + (gear - 1) * 0.2;
-        window.trackSetSpeed(speed);
-      }
-    });
-  });
-  
-  // Initialize display
-  updateGearRate(parseInt(slider.value));
-}
-
-// ── Side Panels (Branch Lists) ──
-function initSidePanels() {
-  // Left button
-  $('btn-left').addEventListener('click', () => {
-    $('btn-left').classList.toggle('active');
-    $('btn-right').classList.remove('active');
-    // TODO: Implement left branch logic
-  });
-  
-  // Right button
-  $('btn-right').addEventListener('click', () => {
-    $('btn-right').classList.toggle('active');
-    $('btn-left').classList.remove('active');
-    // TODO: Implement right branch logic
-  });
-}
-
-function updateSidePanels() {
-  const leftList = $('left-list');
-  const rightList = $('right-list');
-  
-  if (!leftList || !rightList) return;
-  
-  // Clear lists
-  leftList.innerHTML = '';
-  rightList.innerHTML = '';
-  
-  // Populate with branches (example split)
-  const mid = Math.ceil(branches.length / 2);
-  const leftBranches = branches.slice(0, mid);
-  const rightBranches = branches.slice(mid);
-  
-  leftBranches.forEach(branch => {
-    const item = document.createElement('div');
-    item.className = 'branch-item';
-    item.innerHTML = `
-      <div class="branch-dot" style="background-color: ${getBranchColor(branch) || '#888'}"></div>
-      <div class="branch-name">${branch}</div>
-    `;
-    item.addEventListener('click', () => {
-      document.querySelectorAll('.branch-item').forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-      if (typeof window.trackSelectBranch === 'function') {
-        window.trackSelectBranch(branch);
-      }
-    });
-    leftList.appendChild(item);
-  });
-  
-  rightBranches.forEach(branch => {
-    const item = document.createElement('div');
-    item.className = 'branch-item';
-    item.innerHTML = `
-      <div class="branch-dot" style="background-color: ${getBranchColor(branch) || '#888'}"></div>
-      <div class="branch-name">${branch}</div>
-    `;
-    item.addEventListener('click', () => {
-      document.querySelectorAll('.branch-item').forEach(i => i.classList.remove('active'));
-      item.classList.add('active');
-      if (typeof window.trackSelectBranch === 'function') {
-        window.trackSelectBranch(branch);
-      }
-    });
-    rightList.appendChild(item);
-  });
-}
-
-function getBranchColor(branch) {
-  const colors = {
+var BRANCH_COLORS = {
     althea:'#ff6b6b',archives:'#c9a96e',bpvsbuckler:'#4ecdc4',carfinancecheque:'#45b7d1',
     ccan:'#96ceb4',ceo:'#ffeead',cnei:'#ff4444',dash:'#d4a574',
-    datro:'#00f2ff',dcc:'#ffd93d',financecheque:'#6bcb77',greathousefarm:'#4d96ff',
+    datro:'#00e5ff',dcc:'#ffd93d',financecheque:'#6bcb77',greathousefarm:'#4d96ff',
     gui:'#ff6b6b',hbnb:'#ff922b',library:'#69db7c',llmwiki:'#f783ac',
     subrepos:'#748ffc',ui:'#20c997',wave:'#f06595',wayback:'#a9e34b',
     whitepaper:'#e8590c',pirateclaw:'#be4bdb'
-  };
-  return colors[branch] || '#888';
-}
+};
+var BRANCH_NAMES = Object.keys(BRANCH_COLORS);
 
-// ── Manual Release Buttons ──
-function initManualRelease() {
-  $('rel-fc').addEventListener('click', () => triggerRelease('financecheque'));
-  $('rel-cn').addEventListener('click', () => triggerRelease('cnei'));
-  $('rel-cm').addEventListener('click', () => triggerRelease('command'));
-}
+var config = window._config || { bias: 0, risk: 0, gear: 3, steering: 0 };
+window._config = config;
 
-function triggerRelease(branch) {
-  // Add visual feedback
-  const btn = $(`rel-${branch.substring(0,2)}`);
-  btn.classList.add('active');
-  setTimeout(() => btn.classList.remove('active'), 300);
-  
-  // Trigger release via track
-  if (typeof window.trackRerelease === 'function') {
-    window.trackRerelease(branch);
-  }
-  
-  // TODO: Actually call release API
-}
+var currentVersion = '0.0.0';
+var latestVersion = null;
+var autoUpdateEnabled = localStorage.getItem('autoUpdate') !== 'false';
+var updateCheckInterval = null;
 
-// ── Radio/COMMS ──
-function initRadio() {
-  $('radio-send-btn').addEventListener('click', sendRadioMessage);
-  $('radio-input').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') sendRadioMessage();
-  });
-  
-  $('btn-call').addEventListener('click', toggleCall);
-  $('btn-hangup').addEventListener('click', toggleCall);
-}
+var isCallActive = false;
+var speechSynth = window.speechSynthesis;
+var speechRecog = null;
+var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
-function sendRadioMessage() {
-  const input = $('radio-input');
-  const message = input.value.trim();
-  if (!message) return;
-  
-  const messagesDiv = $('radio-messages');
-  if (!messagesDiv) return;
-  
-  const messageEl = document.createElement('div');
-  messageEl.className = 'radio-msg';
-  messageEl.textContent = `[${new Date().toLocaleTimeString()}] You: ${message}`;
-  messagesDiv.appendChild(messageEl);
-  messagesDiv.scrollTop = messagesDiv.scrollHeight;
-  
-  input.value = '';
-  
-  // TODO: Send message to actual radio system
-}
+// ── LOGIN ──
+function initLogin() {
+    var overlay = $('login-overlay');
+    if (!overlay) return;
+    var input = $('login-pass');
+    var error = $('login-error');
+    var btn = $('login-btn');
 
-function toggleCall() {
-  isCallActive = !isCallActive;
-  $('btn-call').disabled = isCallActive;
-  $('btn-hangup').disabled = !isCallActive;
-  $('btn-hangup').textContent = isCallActive ? 'END' : 'CALL';
-  $('radio-status').textContent = isCallActive ? 'Connected...' : 'Standing by...';
-  
-  // TODO: Implement actual call toggle
-}
+    if (localStorage.getItem('loggedIn') === 'true') {
+        overlay.style.display = 'none';
+        $('app').style.display = '';
+        startApp();
+        return;
+    }
 
-// ── Editor Modal (keep existing) ──
-function initEditor() {
-  // Keep existing editor initialization from backup
-  // For now, just ensure elements exist
-  const modalClose = $('modal-editor-close');
-  const editorSave = $('editor-save');
-  
-  if (modalClose) {
-    modalClose.addEventListener('click', () => {
-      $('editor-modal').style.display = 'none';
+    function tryLogin() {
+        var val = input.value.trim();
+        if (val.toLowerCase() === 'burgerking') {
+            localStorage.setItem('loggedIn', 'true');
+            overlay.style.display = 'none';
+            $('app').style.display = '';
+            startApp();
+        } else {
+            error.textContent = 'ACCESS DENIED';
+            input.value = '';
+            input.focus();
+        }
+    }
+
+    btn.addEventListener('click', tryLogin);
+    input.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter') tryLogin();
     });
-  }
-  
-  if (editorSave) {
-    editorSave.addEventListener('click', () => {
-      // TODO: Save editor content
-      $('editor-status').textContent = 'Saved!';
-      setTimeout(() => {
-        $('editor-status').textContent = '';
-      }, 1500);
-    });
-  }
+    input.focus();
 }
 
-// ── Fuel Updates (keep existing) ──
+// ── VERSION & AUTO-UPDATE ──
+function initVersion() {
+    var el = $('version-label');
+    fetch('/api/version')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+            currentVersion = d.version || '0.0.0';
+            if (el) el.textContent = currentVersion;
+        })
+        .catch(function() {
+            if (el) el.textContent = 'local';
+        });
+
+    var toggle = $('auto-toggle-input');
+    if (toggle) {
+        toggle.checked = autoUpdateEnabled;
+        toggle.addEventListener('change', function() {
+            autoUpdateEnabled = toggle.checked;
+            localStorage.setItem('autoUpdate', autoUpdateEnabled);
+            if (autoUpdateEnabled) startUpdatePolling();
+            else stopUpdatePolling();
+        });
+    }
+
+    if (autoUpdateEnabled) startUpdatePolling();
+}
+
+function startUpdatePolling() {
+    stopUpdatePolling();
+    updateCheckInterval = setInterval(checkForUpdates, 60000);
+    checkForUpdates();
+}
+
+function stopUpdatePolling() {
+    if (updateCheckInterval) {
+        clearInterval(updateCheckInterval);
+        updateCheckInterval = null;
+    }
+}
+
+function checkForUpdates() {
+    var updateBtn = $('update-btn');
+    fetch('/api/version')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+            var v = d.version || '0.0.0';
+            if (v !== currentVersion) {
+                latestVersion = v;
+                if (updateBtn) {
+                    updateBtn.style.display = '';
+                    updateBtn.textContent = 'UPDATE: ' + v;
+                    updateBtn.onclick = function() {
+                        window.location.reload();
+                    };
+                }
+            }
+        })
+        .catch(function() {});
+}
+
+// ── ROAD INIT ──
+function initRoad() {
+    if (window.trackInit) {
+        var cv = $('track-canvas');
+        if (cv) window.trackInit(cv);
+    }
+}
+
+// ── JOYSTICK ──
+function initJoystick() {
+    var canvas = $('joystick-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var dragging = false;
+    var S = 130;
+    canvas.width = S * 2;
+    canvas.height = S * 2;
+
+    var DIRS = [
+        { name: 'N',  dx: 0,        dy: -1,       angle: 270 },
+        { name: 'NE', dx: 0.707,    dy: -0.707,   angle: 315 },
+        { name: 'E',  dx: 1,        dy: 0,        angle: 0 },
+        { name: 'SE', dx: 0.707,    dy: 0.707,    angle: 45 },
+        { name: 'S',  dx: 0,        dy: 1,        angle: 90 },
+        { name: 'SW', dx: -0.707,   dy: 0.707,    angle: 135 },
+        { name: 'W',  dx: -1,       dy: 0,        angle: 180 },
+        { name: 'NW', dx: -0.707,   dy: -0.707,   angle: 225 }
+    ];
+    var INNER_R = 0.35;
+    var OUTER_R = 0.72;
+    var snapX = 0, snapY = 0;
+
+    function snapToNearest(x, y, r) {
+        var bestDist = Infinity;
+        var bestDx = 0, bestDy = 0;
+        for (var i = 0; i < DIRS.length; i++) {
+            var d = DIRS[i];
+            var angleDiff = Math.abs(Math.atan2(y, x) - (d.angle * Math.PI / 180));
+            var norm = Math.min(angleDiff % (2*Math.PI), (2*Math.PI) - (angleDiff % (2*Math.PI)));
+            if (norm < bestDist) {
+                bestDist = norm;
+                bestDx = d.dx;
+                bestDy = d.dy;
+            }
+        }
+        var dist = Math.sqrt(x * x + y * y);
+        var t = dist / r;
+        var radius;
+        if (t < 0.15) {
+            return { x: 0, y: 0 };
+        } else if (t < 0.55) {
+            radius = r * INNER_R;
+        } else {
+            radius = r * OUTER_R;
+        }
+        return { x: bestDx * radius, y: bestDy * radius };
+    }
+
+    function draw() {
+        var W = canvas.width, H = canvas.height;
+        var cx = W / 2, cy = H / 2, r = Math.min(W, H) / 2 - 25;
+        ctx.clearRect(0, 0, W, H);
+
+        ctx.strokeStyle = 'rgba(200,154,78,0.06)';
+        ctx.lineWidth = 20;
+        ctx.beginPath(); ctx.arc(cx, cy, r + 8, 0, Math.PI * 2); ctx.stroke();
+
+        ctx.strokeStyle = 'rgba(200,154,78,0.2)';
+        ctx.lineWidth = 2;
+        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
+
+        ctx.strokeStyle = 'rgba(200,154,78,0.12)';
+        ctx.lineWidth = 1;
+        ctx.setLineDash([3, 6]);
+        ctx.beginPath(); ctx.arc(cx, cy, r * INNER_R, 0, Math.PI * 2); ctx.stroke();
+        ctx.setLineDash([]);
+
+        for (var i = 0; i < DIRS.length; i++) {
+            var d = DIRS[i];
+            var angle = d.angle * Math.PI / 180;
+            var lx = cx + Math.cos(angle) * r;
+            var ly = cy + Math.sin(angle) * r;
+            var ix = cx + Math.cos(angle) * (r * 0.92);
+            ctx.strokeStyle = 'rgba(200,154,78,0.15)';
+            ctx.lineWidth = 1;
+            ctx.beginPath(); ctx.moveTo(ix, ly); ctx.lineTo(lx, ly); ctx.stroke();
+
+            var labelR = r + 18;
+            var lpx = cx + Math.cos(angle) * labelR;
+            var lpy = cy + Math.sin(angle) * labelR;
+            ctx.fillStyle = 'rgba(200,154,78,0.4)';
+            ctx.font = '10px monospace';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillText(d.name, lpx, lpy);
+        }
+
+        for (var i = 0; i < DIRS.length; i++) {
+            var d = DIRS[i];
+            for (var ri = 0; ri < 2; ri++) {
+                var ring = ri === 0 ? INNER_R : OUTER_R;
+                var sx = cx + d.dx * r * ring;
+                var sy = cy + d.dy * r * ring;
+                ctx.fillStyle = 'rgba(200,154,78,0.08)';
+                ctx.beginPath(); ctx.arc(sx, sy, 3, 0, Math.PI * 2); ctx.fill();
+            }
+        }
+
+        var px = cx + snapX;
+        var py = cy + snapY;
+
+        ctx.shadowColor = '#c89a4e';
+        ctx.shadowBlur = 20;
+        ctx.beginPath(); ctx.arc(px, py, 16, 0, Math.PI * 2);
+        ctx.fillStyle = '#c89a4e'; ctx.fill();
+        ctx.shadowBlur = 0;
+
+        ctx.beginPath(); ctx.arc(px - 3, py - 3, 6, 0, Math.PI * 2);
+        ctx.fillStyle = 'rgba(255,255,255,0.15)'; ctx.fill();
+
+        ctx.fillStyle = 'rgba(200,154,78,0.3)';
+        ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI * 2); ctx.fill();
+    }
+
+    function updatePos(e) {
+        var rect = canvas.getBoundingClientRect();
+        var cx = rect.width / 2, cy = rect.height / 2;
+        var clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        var clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+        var x = clientX - rect.left - cx;
+        var y = clientY - rect.top - cy;
+        var r = Math.min(cx, cy) - 25;
+        var result = snapToNearest(x, y, r);
+        snapX = result.x;
+        snapY = result.y;
+        var maxRange = r * OUTER_R;
+        config.bias = Math.max(-5, Math.min(5, (snapX / maxRange) * 5));
+        config.risk = Math.max(-5, Math.min(5, (-snapY / maxRange) * 5));
+        if (window.trackSetSteering) window.trackSetSteering(config.bias / 5);
+        sendFlywheelConfig();
+        draw();
+    }
+
+    canvas.addEventListener('mousedown', function(e) { dragging = true; updatePos(e); });
+    window.addEventListener('mousemove', function(e) { if (dragging) updatePos(e); });
+    window.addEventListener('mouseup', function() { dragging = false; });
+    canvas.addEventListener('touchstart', function(e) { e.preventDefault(); dragging = true; updatePos(e); });
+    canvas.addEventListener('touchmove', function(e) { e.preventDefault(); if (dragging) updatePos(e); });
+    canvas.addEventListener('touchend', function() { dragging = false; });
+    draw();
+}
+
+// ── FLYWHEEL CONTROL ──
+function sendFlywheelConfig() {
+    fetch('/api/flywheel/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ gear: config.gear, bias: config.bias, risk: config.risk })
+    }).catch(function() {});
+}
+
+function triggerFlywheel(branch) {
+    if (!branch) return;
+    fetch('/api/flywheel/trigger/' + encodeURIComponent(branch), { method: 'POST' })
+        .catch(function() {});
+}
+
+// ── GEAR ──
+function initGear() {
+    var slider = $('gear-slider');
+    if (!slider) return;
+    slider.addEventListener('input', function(e) {
+        var g = parseInt(e.target.value);
+        config.gear = g;
+        var gv = $('gear-value');
+        var gvt = $('gear-val-text');
+        if (gv) gv.textContent = g;
+        if (gvt) gvt.textContent = g;
+        sendFlywheelConfig();
+    });
+}
+
+// ── BRANCH DOTS ──
+function initBranchDots() {
+    var el = $('branch-dots');
+    if (!el) return;
+    BRANCH_NAMES.forEach(function(name) {
+        var dot = document.createElement('div');
+        dot.className = 'branch-dot';
+        dot.style.color = BRANCH_COLORS[name];
+        dot.style.backgroundColor = BRANCH_COLORS[name];
+        dot.title = name;
+        dot.onclick = function() { selectBranch(name); };
+        el.appendChild(dot);
+    });
+}
+
+function selectBranch(name) {
+    var abn = $('active-branch-name');
+    if (abn) abn.textContent = name.toUpperCase();
+    document.querySelectorAll('.branch-dot').forEach(function(d) {
+        d.classList.toggle('active', d.title === name);
+    });
+    document.querySelectorAll('.branch-menu-item').forEach(function(d) {
+        d.classList.toggle('active', d.dataset.branch === name);
+    });
+    triggerFlywheel(name);
+}
+
+// ── BRANCH MENUS ──
+function initBranchMenus() {
+    var leftList = $('left-branch-list');
+    var rightList = $('right-branch-list');
+    if (!leftList || !rightList) return;
+    [leftList, rightList].forEach(function(list) {
+        BRANCH_NAMES.forEach(function(name) {
+            var item = document.createElement('div');
+            item.className = 'branch-menu-item';
+            item.dataset.branch = name;
+            var dot = document.createElement('span');
+            dot.className = 'branch-menu-dot';
+            dot.style.backgroundColor = BRANCH_COLORS[name];
+            item.appendChild(dot);
+            var label = document.createElement('span');
+            label.className = 'branch-menu-name';
+            label.textContent = name;
+            item.appendChild(label);
+            item.onclick = function() {
+                selectBranch(name);
+                closeBranchMenus();
+            };
+            list.appendChild(item);
+        });
+    });
+
+    var blm = $('btn-left-menu');
+    var brm = $('btn-right-menu');
+    if (blm) blm.onclick = function() { toggleBranchMenu('left'); };
+    if (brm) brm.onclick = function() { toggleBranchMenu('right'); };
+    var backdrop = $('branch-backdrop');
+    if (backdrop) backdrop.onclick = closeBranchMenus;
+}
+
+function toggleBranchMenu(side) {
+    var menu = $(side + '-branch-menu');
+    var backdrop = $('branch-backdrop');
+    var isOpen = menu.classList.contains('open');
+    closeBranchMenus();
+    if (!isOpen) {
+        menu.classList.add('open');
+        if (backdrop) backdrop.classList.add('visible');
+        var btn = $('btn-' + side + '-menu');
+        if (btn) btn.classList.add('active');
+    }
+}
+
+function closeBranchMenus() {
+    document.querySelectorAll('.branch-slide-menu').forEach(function(m) { m.classList.remove('open'); });
+    var backdrop = $('branch-backdrop');
+    if (backdrop) backdrop.classList.remove('visible');
+    document.querySelectorAll('.arrow-btn').forEach(function(b) { b.classList.remove('active'); });
+}
+
+// ── CALL ──
+function initCall() {
+    var btnCall = $('btn-call');
+    var btnHangup = $('btn-hangup');
+    if (btnCall) btnCall.onclick = startCall;
+    if (btnHangup) btnHangup.onclick = endCall;
+}
+
+function startCall() {
+    isCallActive = true;
+    var bc = $('btn-call'), bh = $('btn-hangup'), cs = $('call-status');
+    if (bc) bc.disabled = true;
+    if (bh) bh.disabled = false;
+    if (cs) cs.textContent = 'CALLING...';
+    if (SpeechRecognition) startListening();
+}
+
+function endCall() {
+    isCallActive = false;
+    var bc = $('btn-call'), bh = $('btn-hangup'), cs = $('call-status');
+    if (bc) bc.disabled = false;
+    if (bh) bh.disabled = true;
+    if (cs) cs.textContent = 'READY';
+    if (speechRecog) speechRecog.stop();
+    speechSynth.cancel();
+}
+
+function startListening() {
+    speechRecog = new SpeechRecognition();
+    speechRecog.continuous = true;
+    speechRecog.onresult = function(e) {
+        var last = e.results.length - 1;
+        var text = e.results[last][0].transcript;
+        if (e.results[last].isFinal) {
+            var cs = $('call-status');
+            if (cs) cs.textContent = 'HEARD: ' + text.slice(0, 15);
+            sendChat(text);
+        }
+    };
+    speechRecog.start();
+}
+
+async function sendChat(text) {
+    try {
+        var res = await fetch('/api/chat', {
+            method: 'POST', headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ message: text })
+        });
+        var data = await res.json();
+        speakReply(data.response || 'No response');
+    } catch(e) { speakReply('System offline'); }
+}
+
+function speakReply(text) {
+    var cs = $('call-status');
+    if (cs) cs.textContent = 'AGENT SPEAKING';
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.onend = function() { if (isCallActive && cs) cs.textContent = 'LISTENING...'; };
+    speechSynth.speak(utter);
+}
+
+// ── FUEL ──
 async function loadFuel() {
-  try {
-    const res = await fetch('/api/fuel');
-    if (!res) return;
-    const data = await res.json();
-    
-    // Update fuel bars
-    const fuelTypes = ['api', 'llm', 'cli', 'ide'];
-    fuelTypes.forEach(type => {
-      const fill = $(`fuel-${type}`);
-      if (fill && data[type] !== undefined) {
-        const percent = Math.min(100, Math.max(0, data[type]));
-        fill.style.height = percent + '%';
-      }
-    });
-  } catch (e) {
-    console.error('Failed to load fuel:', e);
-  }
+    try {
+        var res = await fetch('/api/fuel');
+        var data = await res.json();
+        ['api','llm','cli','ide'].forEach(function(t) {
+            var el = $('fuel-' + t);
+            if (el) el.style.height = data[t] + '%';
+        });
+    } catch(e) {}
 }
 
-// ── Rerelease Updates (keep existing) ──
-async function loadRereleases() {
-  try {
-    const res = await fetch('/api/rereleases');
-    if (!res) return;
-    const data = await res.json();
-    
-    // Update milestone display
-    if (data.latest) {
-      $('current-milestone').textContent = data.latest.branch || '--';
-    }
-    if (data.progress !== undefined && data.total !== undefined) {
-      $('progress-milestone').textContent = `${data.progress}/${data.total}`;
-    }
-    
-    // Update track
-    if (typeof window.trackMilestones === 'function') {
-      window.trackMilestones({
-        regular_index: data.progress || 0,
-        cnei_queue: 0, // TODO: Get actual value
-        lap: Math.floor((data.progress || 0) / 22), // 22 branches per lap
-        mode: 'AUTO'
-      });
-    }
-  } catch (e) {
-    console.error('Failed to load rereleases:', e);
-  }
-}
-
-// ── Flywheel Updates (keep existing) ──
+// ── FLYWHEEL ──
 async function pollFlywheel() {
-  try {
-    const res = await fetch('/api/flywheel');
-    if (!res) return;
-    const data = await res.json();
-    
-    // Update active branch display
-    if (data.active_branch) {
-      activeBranch = data.active_branch;
-      // Update branch selection in UI
-      const branchSelect = $('branch-select'); // Old element, may not exist
-      if (branchSelect) branchSelect.value = activeBranch;
-      
-      // Update side panel active item
-      document.querySelectorAll('.branch-item').forEach(item => {
-        const isActive = item.textContent.trim() === activeBranch;
-        item.classList.toggle('active', isActive);
-      });
-      
-      // Update track
-      if (typeof window.trackSelectBranch === 'function') {
-        window.trackSelectBranch(activeBranch);
-      }
+    try {
+        var res = await fetch('/api/flywheel/state');
+        var data = await res.json();
+        var idx = (data.regular_index || 0) % BRANCH_NAMES.length;
+        var cm = $('current-milestone');
+        var pm = $('progress-milestone');
+        if (cm) cm.textContent = BRANCH_NAMES[idx]?.toUpperCase() || '--';
+        if (pm) pm.textContent = (idx + 1) + '/' + BRANCH_NAMES.length;
+    } catch(e) {}
+}
+
+// ── AVATAR ──
+function initAvatar() {
+    var canvas = $('avatar-canvas');
+    if (!canvas) return;
+    var ctx = canvas.getContext('2d');
+    var t = 0;
+    function draw() {
+        var W = canvas.width = canvas.clientWidth;
+        var H = canvas.height = canvas.clientHeight;
+        var cx = W / 2, cy = H / 2;
+        ctx.clearRect(0, 0, W, H);
+        ctx.fillStyle = isCallActive ? 'rgba(0, 255, 102, 0.1)' : 'rgba(200, 154, 78, 0.05)';
+        ctx.beginPath(); ctx.arc(cx, cy, 35 + Math.sin(t*0.05)*3, 0, Math.PI*2); ctx.fill();
+        ctx.strokeStyle = isCallActive ? '#00ff66' : '#c89a4e';
+        ctx.stroke();
+        var blink = Math.sin(t*0.04) > 0.95 ? 0.1 : 1;
+        ctx.fillStyle = ctx.strokeStyle;
+        ctx.fillRect(cx - 12, cy - 8, 5, 10 * blink);
+        ctx.fillRect(cx + 7, cy - 8, 5, 10 * blink);
+        t++;
+        requestAnimationFrame(draw);
     }
-  } catch (e) {
-    console.error('Failed to poll flywheel:', e);
-  }
+    draw();
 }
 
-// ── Track Display ──
-function showTrack() {
-  const trackContainer = $('track-stage') || $('windshield');
-  if (!trackContainer) return;
-  
-  // Ensure canvas exists
-  let canvas = $('track-canvas');
-  if (!canvas) {
-    canvas = document.createElement('canvas');
-    canvas.id = 'track-canvas';
-    trackContainer.appendChild(canvas);
-  }
-  
-  // Initialize track if function exists
-  if (typeof window.trackInit === 'function') {
-    window.trackInit(canvas);
-    window.trackStart();
-  }
+// ── LOGOUT ──
+function initLogoutBtn() {
+    var btn = $('logout-btn');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+        localStorage.removeItem('loggedIn');
+        window.location.reload();
+    });
 }
 
-// Legacy functions for compatibility
-function renderWingFiles() { /* No longer used */ }
-function loadWingFiles() { /* No longer used */ }
-function initDirButtons() { /* No longer used */ }
+// ── START ──
+function startApp() {
+    initRoad();
+    initJoystick();
+    initGear();
+    initCall();
+    initBranchDots();
+    initBranchMenus();
+    initAvatar();
+    initVersion();
+    initLogoutBtn();
+    setInterval(loadFuel, 5000);
+    setInterval(pollFlywheel, 3000);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    initLogin();
+});
+})();
