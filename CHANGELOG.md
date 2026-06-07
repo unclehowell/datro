@@ -1,5 +1,13 @@
 # Changelog
 
+## [subrepos-v0.0.0.14] - 2026-06-07
+
+### Fixed
+- fix(subrepos): Remove excessive blank lines
+
+### Changed
+- ux(subrepos): Add loading state styling for better UX
+
 ## [subrepos-v0.0.0.13] - 2026-06-05
 
 ### Fixed
