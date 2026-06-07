@@ -10,6 +10,12 @@ const ALL_BRANCHES = [
 ];
 
 const REGULAR_BRANCHES = ALL_BRANCHES.filter(b => b !== 'cnei');
+
+const HONCHO_TENANT_IDS = {
+  bpvsbuckler: '0lCBWsZN-CS-DyY8THX7H',
+  datro: 'Q-sPB_HUr__vWcP1cc-UQ',
+  financecheque: 'oSx32NCcWFHT7gRXWtrGo',
+};
 const RATE_BY_GEAR = [600, 438, 320, 233, 170, 124, 91, 66, 48, 35]; // Compressed: gear1=10min, gear10~35s
 const CNEI_RATIO = Math.floor(137 / REGULAR_BRANCHES.length); // 137/20 = 6
 const DOMAIN = 'datro.directory';
@@ -128,10 +134,11 @@ const AGENT_TOOLS = {
       }
       if (args.action === 'write' && args.content) {
         try {
+          const tenantId = HONCHO_TENANT_IDS[ctx.branch] || 'datro';
           await fetch(`https://api.honcho.dev/api/honcho/messages`, {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${ctx.env.HONCHO_API_KEY}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ workspace: 'datro', session: ctx.branch, content: args.content })
+            body: JSON.stringify({ workspace: tenantId, session: ctx.branch, content: args.content })
           });
           return 'Memory written to Honcho';
         } catch (e) { return `Honcho write failed: ${e.message}`; }
@@ -461,7 +468,8 @@ function truncateForPrompt(text, maxChars = 50000) {
 
 async function getHonchoMemory(env, branch) {
   try {
-    const resp = await fetch(`https://api.honcho.ai/v1/memories?workspace=datro&session=${branch}`, {
+    const tenantId = HONCHO_TENANT_IDS[branch] || 'datro';
+    const resp = await fetch(`https://api.honcho.ai/v1/memories?workspace=${tenantId}&session=${branch}`, {
       headers: { 'Authorization': `Bearer ${env.HONCHO_API_KEY}` }
     });
     if (!resp.ok) return "No Honcho memory.";

@@ -238,6 +238,15 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0;
 }
 .branch-menu-name { flex: 1; }
+.branch-menu-tenant {
+    font-size: 9px;
+    color: rgba(200,154,78,0.5);
+    font-family: monospace;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 120px;
+}
 .branch-overlay-backdrop {
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;

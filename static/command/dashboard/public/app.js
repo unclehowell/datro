@@ -12,6 +12,12 @@ var BRANCH_COLORS = {
 };
 var BRANCH_NAMES = Object.keys(BRANCH_COLORS);
 
+var HONCHO_TENANT_IDS = {
+    bpvsbuckler: '0lCBWsZN-CS-DyY8THX7H',
+    datro: 'Q-sPB_HUr__vWcP1cc-UQ',
+    financecheque: 'oSx32NCcWFHT7gRXWtrGo',
+};
+
 var config = window._config || { bias: 0, risk: 0, gear: 3, steering: 0 };
 window._config = config;
 
@@ -348,6 +354,14 @@ function initBranchMenus() {
             label.className = 'branch-menu-name';
             label.textContent = name;
             item.appendChild(label);
+            var tenantId = HONCHO_TENANT_IDS[name];
+            if (tenantId) {
+                var tenantLabel = document.createElement('span');
+                tenantLabel.className = 'branch-menu-tenant';
+                tenantLabel.textContent = '🏠 ' + tenantId.slice(0, 12) + '…';
+                tenantLabel.title = tenantId;
+                item.appendChild(tenantLabel);
+            }
             item.onclick = function() {
                 selectBranch(name);
                 closeBranchMenus();
