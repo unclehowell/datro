@@ -1,5 +1,11 @@
 # Changelog
 
+## [dash-v0.0.0.16] - 2026-06-07
+
+### Fixed
+### Changed
+- ux(dash): Add smooth scrolling for better UX
+
 ## [dash-v0.0.0.15] - 2026-06-06
 
 ### Fixed
