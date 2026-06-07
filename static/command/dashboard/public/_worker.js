@@ -93,7 +93,7 @@ export default {
             const resp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', { headers });
             const data = await resp.json();
             if (Array.isArray(data)) {
-              const cmd = data.find(r => r.tag_name.startsWith('command-'));
+              const cmd = data.filter(r => r.tag_name.startsWith('command-')).sort((a, b) => new Date(b.published_at) - new Date(a.published_at))[0];
               version = cmd ? cmd.tag_name : 'command-v0.0.0';
               await kv.put('version:command_tag', version, { expirationTtl: 3600 });
             }
