@@ -1,5 +1,13 @@
 # Changelog
 
+## [archives-v0.0.0.15] - 2026-06-07
+
+### Fixed
+- fix(archives): Remove excessive blank lines
+
+### Changed
+- ux(archives): Improve viewport meta with user-scalable=yes for accessibility
+
 ## [archives-v0.0.0.14] - 2026-06-06
 
 ### Fixed
