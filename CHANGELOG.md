@@ -1,5 +1,13 @@
 # Changelog
 
+## [ui-v0.0.0.15] - 2026-06-07
+
+### Fixed
+- fix(ui): Remove excessive blank lines
+
+### Changed
+- ux(ui): Add breadcrumb navigation structure for UX
+
 ## [ui-v0.0.0.14] - 2026-06-06
 
 ### Fixed
