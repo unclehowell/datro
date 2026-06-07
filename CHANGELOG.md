@@ -1,5 +1,13 @@
 # Changelog
 
+## [wayback-v0.0.0.14] - 2026-06-07
+
+### Fixed
+- fix(wayback): Remove excessive blank lines
+
+### Changed
+- ux(wayback): Add social media links for audience engagement
+
 ## [wayback-v0.0.0.13] - 2026-06-06
 
 ### Fixed
