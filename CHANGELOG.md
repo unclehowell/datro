@@ -1,5 +1,18 @@
 # Changelog
 
+## [wave-v0.0.0.15] - 2026-06-07
+
+### Fixed
+- fix(wave): Remove excessive blank lines
+
+### Changed
+- ux(wave): Add cookie consent banner for GDPR compliance
+
+## [0.0.1.0] - 2026-06-07
+### Fixed
+- Identified issue: JS syntax error: /home/ubuntu/datro/static/ui/dashboard/js/jquery-3.3.1.min.js:2
+!function(e,t){"use strict";"object"==typeof module&&"object"==typeof module.exports?m (requires manual fix)
+
 ## [wave-v0.0.0.14] - 2026-06-06
 
 ### Fixed
