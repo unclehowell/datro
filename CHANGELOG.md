@@ -1,5 +1,13 @@
 # Changelog
 
+## [ccan-v0.0.0.28] - 2026-06-07
+
+### Fixed
+- fix(ccan): Remove excessive blank lines
+
+### Changed
+- ux(ccan): Add skip-to-content link for keyboard accessibility
+
 ## [ccan-v0.0.0.27] - 2026-06-06
 
 ### Fixed
