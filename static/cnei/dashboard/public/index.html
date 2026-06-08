@@ -29,6 +29,7 @@
             <button onclick="toggleModal('telemetry-modal')" class="btn-head">TELEMETRY</button>
             <button onclick="toggleModal('comms-popup')" class="btn-head">INTERCOM</button>
             <button onclick="runMcpScan()" class="btn-head" id="btn-mcp">MCP SCAN</button>
+            <button onclick="toggleModal('system-info-modal')" class="btn-head">INFO</button>
         </div>
     </header>
 
@@ -164,6 +165,39 @@
             <div id="mcp-results"></div>
         </section>
     </main>
+
+    <!-- System Info Modal -->
+    <div id="system-info-modal" class="modal-overlay" onclick="closeOnOverlay(event)">
+        <div class="modal-content system-info-content">
+            <div class="terminal-header">
+                <span>SYSTEM ARCHITECTURE</span>
+                <button onclick="toggleModal('system-info-modal')" class="btn-terminal">CLOSE</button>
+            </div>
+            <div class="system-info-body">
+                <section>
+                    <h3>FLYWHEEL (Cloudflare Workers)</h3>
+                    <p>The flywheel is a cron-triggered agentic worker (<code>datro-flywheel</code>) running on Cloudflare Workers every 10 minutes. It rotates through all branches, running a ReAct agent loop on each branch: Read wing files → Think → Propose changes → Create release tags. The lap counter increments after processing all branches. Bias/risk from the 2D steering pad is sent to the flywheel's <code>__bias</code> endpoint to influence which branches get priority and how aggressively they're processed.</p>
+                    <p>Every 48 hours, a GitHub Actions workflow (<code>pages-cleanup.yml</code>) automatically cleans up the <strong>command dashboard</strong> Cloudflare Pages deploy history: preview deploys are purged entirely, and only the last 10 successful production deploys are retained. The cleanup can also be triggered manually from the GitHub Actions UI or via the flywheel worker's <code>__pages_cleanup</code> endpoint.</p>
+                </section>
+                <section>
+                    <h3>COMMAND PANEL (Cloudflare Pages)</h3>
+                    <p>The command dashboard at <code>command.datro.xyz</code> is a static site deployed to Cloudflare Pages. It features a 3D perspective road racetrack and a 2D steering joystick. Dragging the joystick sets the steering bias, which is sent to the flywheel worker's <code>__bias</code> endpoint. A confirmation modal (Yes/No) appears on each direction change. The road animation responds in real-time to steering input, showing which way the flywheel is biased.</p>
+                    <p>The command panel is the steering wheel of the flywheel system — it controls direction, while the flywheel does the actual work.</p>
+                </section>
+                <section>
+                    <h3>FINANCECHEQUE PROXY</h3>
+                    <p>All AI queries in the system route through <code>financecheque.uk</code> as the parent LLM proxy. The chain is:</p>
+                    <ol>
+                        <li><strong>Dashboard</strong> (this UI, port 3000 or cnei.datro.directory) →</li>
+                        <li><strong>Hermes agent</strong> (127.0.0.1:6000, local LLM gateway) →</li>
+                        <li><strong>Parent proxy</strong> (<code>financecheque.uk/api/proxy</code>) →</li>
+                        <li><strong>LLM provider</strong> (round-robin: OpenRouter, direct providers)</li>
+                    </ol>
+                    <p>The flywheel worker also routes its AI queries through <code>financecheque.uk/api/proxy</code> (configurable via <code>PARENT_PROXY_URL</code> env var). This ensures all agentic decisions across every branch go through the same proxy for consistent routing, rate limiting, and audit logging.</p>
+                </section>
+            </div>
+        </div>
+    </div>
 
     <!-- Modal Systems -->
     <div id="telemetry-modal" class="modal-overlay" onclick="closeOnOverlay(event)">

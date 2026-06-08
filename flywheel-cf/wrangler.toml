@@ -6,7 +6,7 @@ compatibility_date = "2025-01-01"
 crons = ["*/10 * * * *"]
 
 [env.production]
-vars = { ENVIRONMENT = "production" }
+vars = { ENVIRONMENT = "production", CF_ACCOUNT_ID = "77672efb598df743fe4eac6762713248" }
 
 [[kv_namespaces]]
 binding = "FLYWHEEL_STATE"
