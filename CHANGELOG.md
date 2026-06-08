@@ -1,5 +1,13 @@
 # Changelog
 
+## [dcc-v0.0.0.17] - 2026-06-08
+
+### Fixed
+- fix(dcc): Remove excessive blank lines
+
+### Changed
+- ux(dcc): Add touch-action CSS for mobile responsiveness
+
 ## [dcc-v0.0.0.16] - 2026-06-06
 
 ### Fixed
@@ -78,6 +86,15 @@
 ## [Unreleased]
 
 
+
+
+## [0.0.1.0] - 2026-06-08
+### Fixed
+- Identified issue: JS syntax error: node:internal/modules/cjs/loader:1210
+  throw err;
+  ^
+
+Error: Cannot find module '/home/ubuntu/datro/static/datro/details/js/github.commits.widget.js (requires manual fix)
 
 ## [0.0.1.0] - 2026-06-03
 ### Fixed
