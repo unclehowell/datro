@@ -1,4 +1,4 @@
-// ── DRIVER VIEW TRACK ANIMATION ──
+// ── ENHANCED DRIVER VIEW TRACK ──
 (function() {
 function initTrack(canvas) {
     var ctx = canvas.getContext('2d');
@@ -12,77 +12,67 @@ function initTrack(canvas) {
     window.addEventListener('resize', resize);
     resize();
 
+    // Rerelease branches (24 milestones)
+    var branches = ['althea', 'bpvsbuckler', 'bpvsbuckler-redflag', 'bucklervsbp', 'bw_base', 'carfinancecheque', 'ccan', 'ceo', 'cnei', 'command', 'dash', 'datro', 'dcc', 'financecheque', 'gh-pages', 'gui', 'llmwiki', 'pirateclaw', 'rerelease', 'subrepos', 'ui', 'wave', 'wayback', 'whitepaper'];
+
     function draw() {
         var W = canvas.width, H = canvas.height;
         ctx.clearRect(0, 0, W, H);
 
-        // --- Main Driver View (Pseudo 3D) ---
+        // --- Driver View ---
         var horizon = H * 0.3;
-        
-        // Sky
-        ctx.fillStyle = '#1a1a2e';
-        ctx.fillRect(0, 0, W, horizon);
-        
-        // Ground
-        ctx.fillStyle = '#0d1a0d';
-        ctx.fillRect(0, horizon, W, H - horizon);
+        ctx.fillStyle = '#1a1a2e'; ctx.fillRect(0, 0, W, horizon); // Sky
+        ctx.fillStyle = '#0d1a0d'; ctx.fillRect(0, horizon, W, H - horizon); // Ground
 
-        // Road
-        var roadW = W * 0.6;
-        var grad = ctx.createLinearGradient(0, horizon, 0, H);
-        grad.addColorStop(0, '#2a2a2a');
-        grad.addColorStop(1, '#181818');
-        ctx.fillStyle = grad;
+        // Road with curve
+        var t = Date.now() / 10000;
+        var curve = Math.sin(t) * 100;
+        
+        ctx.fillStyle = '#181818';
         ctx.beginPath();
-        ctx.moveTo(W/2 - roadW/2, horizon);
-        ctx.lineTo(W/2 + roadW/2, horizon);
-        ctx.lineTo(W, H);
-        ctx.lineTo(0, H);
+        ctx.moveTo(W/2 - 200 + curve, horizon);
+        ctx.lineTo(W/2 + 200 + curve, horizon);
+        ctx.lineTo(W + 500, H);
+        ctx.lineTo(-500, H);
         ctx.fill();
 
-        // Road center dashed line
-        offset += 2;
-        var dashLen = 20;
+        // Long center lines
+        offset += 0.5; // Slower speed
         ctx.strokeStyle = 'white';
         ctx.lineWidth = 5;
-        for (var i = -H + (offset % 40); i < H; i += 40) {
+        for (var i = -H + (offset % 100); i < H; i += 100) {
             ctx.beginPath();
-            ctx.moveTo(W/2, horizon + i);
-            ctx.lineTo(W/2, horizon + i + dashLen);
+            ctx.moveTo(W/2 + (curve * (i / H)), horizon + i);
+            ctx.lineTo(W/2 + (curve * ((i + 50) / H)), horizon + i + 50); // Long lines
             ctx.stroke();
         }
 
-        // --- Top Right Mini-map ---
-        var miniW = W * 0.25;
-        var miniH = H * 0.25;
-        var miniX = W - miniW - 10;
-        var miniY = 10;
-        var miniCx = miniX + miniW/2;
-        var miniCy = miniY + miniH/2;
-        var miniRadius = Math.min(miniW, miniH) * 0.35;
-
-        // Mini-map background
-        ctx.fillStyle = 'rgba(0,0,0,0.5)';
-        ctx.fillRect(miniX, miniY, miniW, miniH);
-        
-        // Mini-map track
-        ctx.strokeStyle = '#666';
-        ctx.lineWidth = 4;
-        ctx.beginPath();
-        ctx.arc(miniCx, miniCy, miniRadius, 0, Math.PI * 2);
-        ctx.stroke();
-
-        // Mini-map car position (48h lap)
-        var now = new Date();
+        // Roadside Landmarks (Rerelease schedule)
         var lapTime = 48 * 60 * 60 * 1000;
-        var angle = ((now.getTime() % lapTime) / lapTime) * Math.PI * 2 - Math.PI / 2;
-        var carX = miniCx + Math.cos(angle) * miniRadius;
-        var carY = miniCy + Math.sin(angle) * miniRadius;
+        var progress = (Date.now() % lapTime) / lapTime;
+        for(var i=0; i<branches.length; i++) {
+            var mProgress = i / branches.length;
+            var relPos = (mProgress - progress + 1) % 1;
+            if(relPos < 0.2) { // Landmarks in view
+                var lx = W/2 + 300 + (curve * (1 - relPos));
+                var ly = horizon + (relPos * H);
+                ctx.fillStyle = 'yellow';
+                ctx.fillRect(lx, ly, 10, 50);
+                ctx.fillStyle = 'white';
+                ctx.font = '10px monospace';
+                ctx.fillText(branches[i], lx, ly - 5);
+            }
+        }
 
+        // --- Mini-map ---
+        var miniW = W * 0.2, miniX = W - miniW - 10, miniY = 10;
+        ctx.fillStyle = 'rgba(0,0,0,0.5)'; ctx.fillRect(miniX, miniY, miniW, miniW);
+        ctx.strokeStyle = '#666'; ctx.beginPath(); ctx.arc(miniX + miniW/2, miniY + miniW/2, miniW/3, 0, Math.PI*2); ctx.stroke();
+        
+        // Car
+        var angle = progress * Math.PI * 2 - Math.PI / 2;
         ctx.fillStyle = '#00e5ff';
-        ctx.beginPath();
-        ctx.arc(carX, carY, 3, 0, Math.PI * 2);
-        ctx.fill();
+        ctx.beginPath(); ctx.arc(miniX + miniW/2 + Math.cos(angle)*miniW/3, miniY + miniW/2 + Math.sin(angle)*miniW/3, 3, 0, Math.PI*2); ctx.fill();
 
         animId = requestAnimationFrame(draw);
     }
