@@ -5,7 +5,7 @@ const https = require('https');
 
 const PORT = process.env.PORT || 3457;
 const CONFIG_PATH = path.join(__dirname, 'command.config.json');
-const APP_VERSION = 'command-V0.0.0.07';
+const APP_VERSION = 'command-V0.0.0.08';
 
 // ── Config helpers ──
 
@@ -324,6 +324,28 @@ app.post('/api/flywheel/config', async (req, res) => {
   const s = HARDCODED;
   try {
     const resp = await ghFetch(s.cf_worker_url + '/__config', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(req.body || {}) });
+    res.json(await resp.json());
+  } catch { res.status(502).json({ ok: false }); }
+});
+
+// GET /api/steering
+app.get('/api/steering', async (req, res) => {
+  const s = HARDCODED;
+  try {
+    const resp = await ghFetch(s.cf_worker_url + '/__bias');
+    const bias = await resp.json();
+    res.json({ direction: bias.steering || 'CTR', magnitude: bias.magnitude || 0, updatedAt: bias.updatedAt || null });
+  } catch { res.json({ direction: 'CTR', magnitude: 0 }); }
+});
+// POST /api/steering
+app.post('/api/steering', async (req, res) => {
+  const s = HARDCODED;
+  try {
+    const resp = await ghFetch(s.cf_worker_url + '/__bias', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ steering: req.body.direction || 'CTR', magnitude: req.body.magnitude || 0, bias: 3, risk: 3 })
+    });
     res.json(await resp.json());
   } catch { res.status(502).json({ ok: false }); }
 });

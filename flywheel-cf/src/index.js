@@ -1698,23 +1698,45 @@ async function processBranchWithAI(env, branch) {
 
 // ── Master Record Visuals ──────────────────────────────────────────────────────
 
-function extractVisualInstructions(wingFiles) {
+function steeringDirToPositions(dir) {
+  const map = {
+    'N': ['top'], 'NE': ['top', 'right'], 'E': ['right'],
+    'SE': ['bottom', 'right'], 'S': ['bottom'], 'SW': ['bottom', 'left'],
+    'W': ['left'], 'NW': ['top', 'left'], 'CTR': [], 'CENTER': []
+  };
+  return map[dir?.toUpperCase()] || [];
+}
+
+function removeCneiBars(html) {
+  return html.replace(/<div class="cnei-bar[^"]*"[^>]*><\/div>\s*/g, '');
+}
+
+function extractVisualInstructions(wingFiles, activePositions) {
   const instructions = { top: null, bottom: null, left: null, right: null };
   for (const [key, content] of Object.entries(wingFiles)) {
     const lines = content.split('\n');
     for (const line of lines) {
-      const trimmed = line.trim().toLowerCase();
-      const barMatch = trimmed.match(/(\w+)\s*bar\s*(?:at\s+)?(?:the\s+)?(top|bottom|left|right)/);
-      if (barMatch) {
-        const color = barMatch[1];
-        const position = barMatch[2];
-        instructions[position] = color;
+      const trimmed = line.trim();
+      let match = trimmed.match(/steering\s+block\s+(#[0-9a-fA-F]{6})\s+at\s+(top|bottom|left|right)/i);
+      if (!match) {
+        const lower = trimmed.toLowerCase();
+        match = lower.match(/(\w+)\s*bar\s*(?:at\s+)?(?:the\s+)?(top|bottom|left|right)/);
       }
-      const stripMatch = trimmed.match(/(\w+)\s*strip(?:p?e?d?)?\s*(?:at\s+)?(?:the\s+)?(top|bottom|left|right)/);
+      if (match) {
+        const color = match[1];
+        const position = match[match.length - 1];
+        if (!activePositions || activePositions.includes(position)) {
+          instructions[position] = color;
+        }
+      }
+      const stripLower = trimmed.toLowerCase();
+      const stripMatch = stripLower.match(/(\w+)\s*strip(?:p?e?d?)?\s*(?:at\s+)?(?:the\s+)?(top|bottom|left|right)/);
       if (stripMatch) {
         const color = stripMatch[1];
         const position = stripMatch[2];
-        instructions[position] = color;
+        if (!activePositions || activePositions.includes(position)) {
+          instructions[position] = color;
+        }
       }
     }
   }
@@ -1722,19 +1744,17 @@ function extractVisualInstructions(wingFiles) {
 }
 
 function injectVisualBars(html, instructions) {
-  let modified = html;
+  let modified = removeCneiBars(html);
   const positions = { top: '0, 0, auto, 0', bottom: 'auto, 0, 0, 0', left: '0, auto, 0, 0', right: '0, 0, 0, auto' };
   const sizes = { top: 'height: 6px', bottom: 'height: 6px', left: 'width: 6px', right: 'width: 6px' };
 
   for (const [pos, color] of Object.entries(instructions)) {
     if (!color) continue;
-    const cssColor = color;
+    const cssColor = color.startsWith('#') ? color : color;
     const inset = positions[pos];
     const size = sizes[pos];
-    const barHtml = `<div class="cnei-bar cnei-bar-${pos}" style="position:fixed;${size};${inset};background:${cssColor};z-index:9999;pointer-events:none"></div>`;
-    if (!modified.includes(`cnei-bar-${pos}`)) {
-      modified = modified.replace('</body>', `${barHtml}\n</body>`);
-    }
+    const barHtml = `<div class="cnei-bar cnei-bar-${pos}" style="position:fixed;${size};${inset};background:${cssColor};z-index:9999;pointer-events:none;transition:opacity 0.5s"></div>\n`;
+    modified = modified.replace('</body>', `${barHtml}</body>`);
   }
   return modified;
 }
@@ -1995,18 +2015,26 @@ async function processBranch(env, branch) {
   const mcpResults = await runMcpScans(env, branchUrl);
   const mcpSection = formatMcpReleaseNotes(mcpResults, branch);
 
-  // ── MASTER RECORD VISUALS (wing file → visual HTML injection) ──
+  // ── STEERING-AWARE VISUAL BLOCKS (wing file + joystick → HTML injection) ──
   const visualWingFiles = await getAllWingFiles(token, branch);
-  const visualInstructions = extractVisualInstructions(visualWingFiles);
+  const bias = await getBiasFromKv(env);
+  const steeringDir = bias?.steering || 'CTR';
+  const magnitude = bias?.magnitude || 0;
+  const activePositions = steeringDirToPositions(steeringDir);
+  console.log(`Steering: ${steeringDir} → positions: ${JSON.stringify(activePositions)} (magnitude: ${magnitude})`);
+  const visualInstructions = extractVisualInstructions(visualWingFiles, activePositions);
   const hasVisuals = Object.values(visualInstructions).some(v => v);
   let visualHtmlChanged = false;
-  if (hasVisuals) {
+  if (bias !== null || hasVisuals) {
     const idxFile = await getFileContent(token, branch, 'index.html');
     if (idxFile) {
       const newHtml = injectVisualBars(idxFile.content, visualInstructions);
       if (newHtml !== idxFile.content) {
-        await createCommit(token, branch, 'index.html', newHtml, 'chore: apply master record visual bars from wing files');
-        console.log(`Injected master record visuals: ${JSON.stringify(visualInstructions)}`);
+        const commitMsg = activePositions.length > 0
+          ? `chore: apply steering blocks [${steeringDir}] at ${activePositions.join(', ')}`
+          : 'chore: clear steering blocks (center)';
+        await createCommit(token, branch, 'index.html', newHtml, commitMsg);
+        console.log(`Applied steering blocks: ${JSON.stringify(visualInstructions)}`);
         visualHtmlChanged = true;
       }
     }

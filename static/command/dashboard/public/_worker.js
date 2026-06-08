@@ -1,4 +1,4 @@
-const APP_VERSION = 'command-V0.0.0.07';
+const APP_VERSION = 'command-V0.0.0.08';
 const GITHUB_API = 'https://api.github.com';
 const MD_FILES = ['AGENT.md', 'README.md', 'CHANGELOG.md', 'MEMORY.md', 'SKILLS.md', 'HEARTBEAT.md', 'SOUL.md', 'MASTERPLAN.md', 'RULES.md', 'TEMPLATE.md', 'CONTEXT.md', 'GLOSSARY.md', 'RESOURCES.md', 'TASKS.md', 'IDENTITY.md', 'SPEC.md'];
 const SIDES = ['high', 'left', 'right', 'low'];
@@ -309,6 +309,28 @@ export default {
           const resp = await fetch(s.cf_worker_url + '/__bias');
           return json(await resp.json());
         } catch { return json({ bias: 3, steering: 'CTR', risk: 3 }); }
+      }
+
+      // GET /api/steering
+      if (path === '/api/steering' && method === 'GET') {
+        const s = HARDCODED;
+        try {
+          const resp = await fetch(s.cf_worker_url + '/__bias');
+          const bias = await resp.json();
+          return json({ direction: bias.steering || 'CTR', magnitude: bias.magnitude || 0, updatedAt: bias.updatedAt || null });
+        } catch { return json({ direction: 'CTR', magnitude: 0 }); }
+      }
+      // POST /api/steering
+      if (path === '/api/steering' && method === 'POST') {
+        const s = HARDCODED;
+        try {
+          const resp = await fetch(s.cf_worker_url + '/__bias', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ steering: body.direction || 'CTR', magnitude: body.magnitude || 0, bias: 3, risk: 3 })
+          });
+          return json(await resp.json());
+        } catch { return json({ ok: false }); }
       }
 
       // GET /api/flywheel/status

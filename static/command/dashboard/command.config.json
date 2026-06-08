@@ -1,3 +1,25 @@
 {
-  "_last_sha": "072a0af5939ee25088198bcedd1a40e4117c22ec"
+  "tokens": {
+    "3mnv5m7l9p46oxbf5dec12": 1780750592580
+  },
+  "machines": {
+    "test": {
+      "api_keys": {
+        "gh": "test"
+      },
+      "ide": null,
+      "cli_tools": [],
+      "registered_at": 1780706011074,
+      "last_seen": 1780706011074
+    }
+  },
+<<<<<<< Updated upstream
+  "_last_sha": "84b44b302da9ffdb2c851068733b808c3e59232b"
+=======
+  "dashboard_config": {
+    "bias": 0,
+    "risk": 0
+  },
+  "_last_sha": "92c13232b6ac00b251f1db94fcf149219be115fb"
+>>>>>>> Stashed changes
 }
