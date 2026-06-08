@@ -251,6 +251,19 @@ function initJoystick() {
         ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI * 2); ctx.fill();
     }
 
+    function dirFromPos(x, y, r) {
+        var DIR_NAMES = ['N','NE','E','SE','S','SW','W','NW'];
+        var DIR_ANGLES = [270, 315, 0, 45, 90, 135, 180, 225];
+        var angle = Math.atan2(y, x) * 180 / Math.PI;
+        if (angle < 0) angle += 360;
+        var best = 0, bestDiff = Infinity;
+        for (var i = 0; i < DIR_ANGLES.length; i++) {
+            var diff = Math.abs(angle - DIR_ANGLES[i]);
+            if (diff < bestDiff) { bestDiff = diff; best = i; }
+        }
+        return DIR_NAMES[best];
+    }
+
     function updatePos(e) {
         var rect = canvas.getBoundingClientRect();
         var cx = rect.width / 2, cy = rect.height / 2;
@@ -263,10 +276,16 @@ function initJoystick() {
         snapX = result.x;
         snapY = result.y;
         var maxRange = r * OUTER_R;
-        config.bias = Math.max(-5, Math.min(5, (snapX / maxRange) * 5));
-        config.risk = Math.max(-5, Math.min(5, (-snapY / maxRange) * 5));
+        var rawBias = Math.max(-5, Math.min(5, (snapX / maxRange) * 5));
+        var rawRisk = Math.max(-5, Math.min(5, (-snapY / maxRange) * 5));
+        config.bias = Math.round(rawBias);
+        config.risk = Math.round(rawRisk);
+        var dist = Math.sqrt(snapX * snapX + snapY * snapY);
+        var mag = dist / (r * OUTER_R);
+        config.magnitude = Math.min(1, mag);
+        config.steering = (config.bias === 0 && config.risk === 0) ? 'CTR' : dirFromPos(snapX, snapY, r);
         if (window.trackSetSteering) window.trackSetSteering(config.bias / 5);
-        sendFlywheelConfig();
+        sendFlywheelBias();
         draw();
     }
 
@@ -280,11 +299,19 @@ function initJoystick() {
 }
 
 // ── FLYWHEEL CONTROL ──
+function sendFlywheelBias() {
+    fetch('/api/flywheel/bias', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ bias: config.bias, risk: config.risk, steering: config.steering, magnitude: config.magnitude })
+    }).catch(function() {});
+}
+
 function sendFlywheelConfig() {
     fetch('/api/flywheel/config', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ gear: config.gear, bias: config.bias, risk: config.risk })
+        body: JSON.stringify({ gear: config.gear })
     }).catch(function() {});
 }
 
@@ -307,6 +334,9 @@ function initGear() {
         if (gvt) gvt.textContent = g;
         sendFlywheelConfig();
     });
+
+    // Init: send bias on load
+    setTimeout(sendFlywheelBias, 1000);
 }
 
 // ── BRANCH DOTS ──

@@ -301,6 +301,24 @@ app.get('/api/flywheel/state', async (req, res) => {
   } catch { res.json({ regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' }); }
 });
 
+// POST /api/flywheel/bias
+app.post('/api/flywheel/bias', async (req, res) => {
+  const s = HARDCODED;
+  try {
+    const resp = await ghFetch(s.cf_worker_url + '/__bias', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(req.body || {}) });
+    res.json(await resp.json());
+  } catch { res.status(502).json({ ok: false }); }
+});
+
+// GET /api/flywheel/bias
+app.get('/api/flywheel/bias', async (req, res) => {
+  const s = HARDCODED;
+  try {
+    const resp = await ghFetch(s.cf_worker_url + '/__bias');
+    res.json(await resp.json());
+  } catch { res.json({ bias: 3, steering: 'CTR', risk: 3 }); }
+});
+
 // POST /api/flywheel/config
 app.post('/api/flywheel/config', async (req, res) => {
   const s = HARDCODED;
