@@ -1,5 +1,13 @@
 # Changelog
 
+## [financecheque-v0.0.1.61] - 2026-06-08
+
+### Fixed
+- fix(financecheque): Remove excessive blank lines
+
+### Changed
+- ux(financecheque): Add button press interaction feedback for UX
+
 ## [financecheque-v0.0.1.60] - 2026-06-06
 
 ### Fixed
