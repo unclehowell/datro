@@ -31,6 +31,17 @@ var speechSynth = window.speechSynthesis;
 var speechRecog = null;
 var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
 
+// ── LEFT PANEL MD FILE BROWSER STATE ──
+var branchesData = [];
+var editCache = {};
+var MD_FILES = ['AGENT','README','CHANGELOG','MEMORY','SKILLS','HEARTBEAT','SOUL','MASTERPLAN','RULES','TEMPLATE','CONTEXT','GLOSSARY','RESOURCES','TASKS','IDENTITY','SPEC'];
+var SIDES = ['high','left','right','low'];
+var SIDE_COLORS = { high:'#ff6b6b', left:'#4ecdc4', right:'#ffd93d', low:'#69db7c' };
+var selectedBranch = null;
+var selectedFile = null;
+var expandedFile = null;
+var knownFiles = {};
+
 // ── LOGIN ──
 function initLogin() {
     var overlay = $('login-overlay');
@@ -366,43 +377,38 @@ function selectBranch(name) {
     triggerFlywheel(name);
 }
 
-// ── BRANCH MENUS ──
+// ── BRANCH MENUS (RIGHT PANEL ONLY) ──
 function initBranchMenus() {
-    var leftList = $('left-branch-list');
     var rightList = $('right-branch-list');
-    if (!leftList || !rightList) return;
-    [leftList, rightList].forEach(function(list) {
-        BRANCH_NAMES.forEach(function(name) {
-            var item = document.createElement('div');
-            item.className = 'branch-menu-item';
-            item.dataset.branch = name;
-            var dot = document.createElement('span');
-            dot.className = 'branch-menu-dot';
-            dot.style.backgroundColor = BRANCH_COLORS[name];
-            item.appendChild(dot);
-            var label = document.createElement('span');
-            label.className = 'branch-menu-name';
-            label.textContent = name;
-            item.appendChild(label);
-            var tenantId = HONCHO_TENANT_IDS[name];
-            if (tenantId) {
-                var tenantLabel = document.createElement('span');
-                tenantLabel.className = 'branch-menu-tenant';
-                tenantLabel.textContent = '🏠 ' + tenantId.slice(0, 12) + '…';
-                tenantLabel.title = tenantId;
-                item.appendChild(tenantLabel);
-            }
-            item.onclick = function() {
-                selectBranch(name);
-                closeBranchMenus();
-            };
-            list.appendChild(item);
-        });
+    if (!rightList) return;
+    BRANCH_NAMES.forEach(function(name) {
+        var item = document.createElement('div');
+        item.className = 'branch-menu-item';
+        item.dataset.branch = name;
+        var dot = document.createElement('span');
+        dot.className = 'branch-menu-dot';
+        dot.style.backgroundColor = BRANCH_COLORS[name];
+        item.appendChild(dot);
+        var label = document.createElement('span');
+        label.className = 'branch-menu-name';
+        label.textContent = name;
+        item.appendChild(label);
+        var tenantId = HONCHO_TENANT_IDS[name];
+        if (tenantId) {
+            var tenantLabel = document.createElement('span');
+            tenantLabel.className = 'branch-menu-tenant';
+            tenantLabel.textContent = '🏠 ' + tenantId.slice(0, 12) + '…';
+            tenantLabel.title = tenantId;
+            item.appendChild(tenantLabel);
+        }
+        item.onclick = function() {
+            selectBranch(name);
+            closeBranchMenus();
+        };
+        rightList.appendChild(item);
     });
 
-    var blm = $('btn-left-menu');
     var brm = $('btn-right-menu');
-    if (blm) blm.onclick = function() { toggleBranchMenu('left'); };
     if (brm) brm.onclick = function() { toggleBranchMenu('right'); };
     var backdrop = $('branch-backdrop');
     if (backdrop) backdrop.onclick = closeBranchMenus;
@@ -426,6 +432,332 @@ function closeBranchMenus() {
     var backdrop = $('branch-backdrop');
     if (backdrop) backdrop.classList.remove('visible');
     document.querySelectorAll('.arrow-btn').forEach(function(b) { b.classList.remove('active'); });
+}
+
+// ── LEFT PANEL (MD FILE BROWSER) ──
+function initLeftPanel() {
+    fetch('/api/branches')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            branchesData = data;
+            renderBranchList();
+        })
+        .catch(function() {
+            // Fallback to BRANCH_NAMES if API fails
+            branchesData = BRANCH_NAMES.map(function(n) { return { name: n }; });
+            renderBranchList();
+        });
+
+    var leftBtn = $('btn-left-menu');
+    if (leftBtn) leftBtn.onclick = toggleLeftPanel;
+
+    var closeBtn = $('btn-close-left');
+    if (closeBtn) closeBtn.onclick = toggleLeftPanel;
+
+    var deployBtn = $('btn-deploy');
+    if (deployBtn) deployBtn.onclick = deployChanges;
+
+    var saveBtn = $('btn-save-edit');
+    if (saveBtn) saveBtn.onclick = saveEdit;
+
+    var closeEditorBtn = $('btn-close-editor');
+    if (closeEditorBtn) closeEditorBtn.onclick = closeEditor;
+
+    renderCacheStatus();
+}
+
+function toggleLeftPanel() {
+    var menu = $('left-branch-menu');
+    if (!menu) return;
+    var isOpen = menu.classList.contains('open');
+    closeBranchMenus();
+    if (!isOpen) {
+        menu.classList.add('open');
+        var btn = $('btn-left-menu');
+        if (btn) btn.classList.add('active');
+    }
+}
+
+function renderBranchList() {
+    var list = $('left-branch-list');
+    if (!list) return;
+    list.innerHTML = '';
+    branchesData.forEach(function(b) {
+        var name = typeof b === 'string' ? b : (b.name || b);
+        var item = document.createElement('div');
+        item.className = 'branch-menu-item';
+        item.dataset.branch = name;
+        var dot = document.createElement('span');
+        dot.className = 'branch-menu-dot';
+        dot.style.backgroundColor = BRANCH_COLORS[name] || '#888';
+        item.appendChild(dot);
+        var label = document.createElement('span');
+        label.className = 'branch-menu-name';
+        label.textContent = name;
+        item.appendChild(label);
+        var arrow = document.createElement('span');
+        arrow.className = 'branch-expand-arrow';
+        arrow.textContent = '▶';
+        item.appendChild(arrow);
+        item.onclick = function() {
+            selectedBranch = name;
+            expandedFile = null;
+            selectedFile = null;
+            $('file-type-list').innerHTML = '';
+            $('variant-list').innerHTML = '';
+            var items = list.querySelectorAll('.branch-menu-item');
+            items.forEach(function(i) { i.classList.remove('active'); });
+            item.classList.add('active');
+            renderFileTypeList();
+        };
+        list.appendChild(item);
+    });
+}
+
+function renderFileTypeList() {
+    var list = $('file-type-list');
+    if (!list) return;
+    list.innerHTML = '';
+    if (!selectedBranch) return;
+
+    var heading = document.createElement('div');
+    heading.className = 'file-type-heading';
+    heading.textContent = '📄 ' + selectedBranch;
+    list.appendChild(heading);
+
+    MD_FILES.forEach(function(f) {
+        var item = document.createElement('div');
+        item.className = 'file-type-item';
+        item.dataset.file = f;
+        item.textContent = f;
+        item.onclick = function() {
+            if (expandedFile === f) {
+                expandedFile = null;
+                $('variant-list').innerHTML = '';
+                item.classList.remove('active');
+            } else {
+                expandedFile = f;
+                selectedFile = f;
+                var items = list.querySelectorAll('.file-type-item');
+                items.forEach(function(i) { i.classList.remove('active'); });
+                item.classList.add('active');
+                renderVariantList(f);
+            }
+        };
+        list.appendChild(item);
+    });
+}
+
+function renderVariantList(fileName) {
+    var list = $('variant-list');
+    if (!list) return;
+    list.innerHTML = '';
+    if (!selectedBranch || !fileName) return;
+
+    // Find branch data from API response to check which sides exist
+    var branchData = null;
+    for (var i = 0; i < branchesData.length; i++) {
+        var b = branchesData[i];
+        if ((typeof b === 'string' && b === selectedBranch) || (b.name === selectedBranch)) {
+            branchData = b;
+            break;
+        }
+    }
+
+    SIDES.forEach(function(side) {
+        var item = document.createElement('div');
+        item.className = 'variant-item';
+        var indicator = document.createElement('span');
+        indicator.className = 'variant-side-indicator';
+        indicator.style.backgroundColor = SIDE_COLORS[side];
+        item.appendChild(indicator);
+        var label = document.createElement('span');
+        label.textContent = side;
+        item.appendChild(label);
+        var check = document.createElement('span');
+        check.className = 'variant-check';
+
+        // Check if this side's file exists in the API data
+        var exists = false;
+        if (branchData && branchData[side + 'Files']) {
+            var files = branchData[side + 'Files'];
+            for (var j = 0; j < files.length; j++) {
+                if (files[j].name === fileName || files[j].name === fileName + '.md') {
+                    exists = files[j].exists;
+                    break;
+                }
+            }
+        }
+
+        if (exists) {
+            check.textContent = '✓';
+            check.style.color = '#00ff66';
+        }
+        item.appendChild(check);
+        item.onclick = function() {
+            openEditor(selectedBranch, side, fileName);
+        };
+        list.appendChild(item);
+    });
+}
+
+// ── EDITOR ──
+function openEditor(branch, side, fileName) {
+    var overlay = $('editor-overlay');
+    var title = $('editor-title');
+    var textarea = $('editor-textarea');
+    var status = $('editor-status');
+    if (!overlay || !title || !textarea) return;
+
+    var cacheKey = branch + '/' + side + '/' + fileName;
+    title.textContent = branch + ' / ' + side + ' / ' + fileName + '.' + side + '.md';
+    status.textContent = '';
+    status.className = '';
+
+    // Store current editing context on textarea
+    textarea.dataset.cacheKey = cacheKey;
+    textarea.dataset.branch = branch;
+    textarea.dataset.side = side;
+    textarea.dataset.fileName = fileName;
+
+    // Load from cache first
+    if (editCache[cacheKey] !== undefined) {
+        textarea.value = editCache[cacheKey];
+        overlay.style.display = 'flex';
+        textarea.focus();
+        return;
+    }
+
+    // Fetch from API
+    textarea.value = 'Loading...';
+    overlay.style.display = 'flex';
+
+    fetch('/api/branches/' + encodeURIComponent(branch) + '/files/' + encodeURIComponent(side) + '/' + encodeURIComponent(fileName))
+        .then(function(r) {
+            if (!r.ok) throw new Error('File not found');
+            return r.json();
+        })
+        .then(function(data) {
+            textarea.value = data.content || '';
+            knownFiles[cacheKey] = true;
+            renderVariantList(fileName);
+        })
+        .catch(function(err) {
+            textarea.value = '// ' + err.message + '\n\n';
+            status.textContent = '✗ Not found';
+            status.className = 'error';
+        });
+
+    textarea.focus();
+}
+
+function saveEdit() {
+    var textarea = $('editor-textarea');
+    var status = $('editor-status');
+    if (!textarea || !status) return;
+
+    var cacheKey = textarea.dataset.cacheKey;
+    if (!cacheKey) return;
+
+    editCache[cacheKey] = textarea.value;
+    status.textContent = '✓ Saved (cached)';
+    status.className = '';
+    renderCacheStatus();
+
+    setTimeout(function() {
+        closeEditor();
+    }, 800);
+}
+
+function closeEditor() {
+    var overlay = $('editor-overlay');
+    if (overlay) overlay.style.display = 'none';
+}
+
+function deployChanges() {
+    var entries = Object.keys(editCache);
+    if (entries.length === 0) return;
+
+    var status = $('cache-status');
+    var btn = $('btn-deploy');
+    if (status) status.textContent = '🚀 Deploying...';
+    if (btn) btn.disabled = true;
+
+    var branchesToTrigger = {};
+    var pending = entries.length;
+    var failed = false;
+
+    entries.forEach(function(key) {
+        var parts = key.split('/');
+        var branch = parts[0];
+        var side = parts[1];
+        var filename = parts.slice(2).join('/');
+        var content = editCache[key];
+
+        branchesToTrigger[branch] = true;
+
+        fetch('/api/branches/' + encodeURIComponent(branch) + '/files/' + encodeURIComponent(side) + '/' + encodeURIComponent(filename), {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: content })
+        }).then(function(r) {
+            if (r.ok) {
+                delete editCache[key];
+            } else {
+                failed = true;
+            }
+        }).catch(function() {
+            failed = true;
+        }).finally(function() {
+            pending--;
+            if (pending === 0) {
+                // All saves done, trigger rerelease for each branch
+                var triggerBranches = Object.keys(branchesToTrigger);
+                var done = 0;
+                triggerBranches.forEach(function(b) {
+                    fetch('/api/flywheel/trigger/' + encodeURIComponent(b), { method: 'POST' })
+                        .then(function() {
+                            done++;
+                            if (done === triggerBranches.length) {
+                                finishDeploy(failed, status, btn);
+                            }
+                        })
+                        .catch(function() {
+                            done++;
+                            if (done === triggerBranches.length) {
+                                finishDeploy(true, status, btn);
+                            }
+                        });
+                });
+                if (triggerBranches.length === 0) {
+                    finishDeploy(failed, status, btn);
+                }
+            }
+        });
+    });
+}
+
+function finishDeploy(failed, status, btn) {
+    if (failed) {
+        if (status) status.textContent = '✗ Some files failed';
+    } else {
+        if (status) status.textContent = '✓ Deployed & triggered';
+    }
+    renderCacheStatus();
+    if (btn) btn.disabled = false;
+}
+
+function renderCacheStatus() {
+    var status = $('cache-status');
+    if (!status) return;
+    var count = Object.keys(editCache).length;
+    if (count > 0) {
+        status.textContent = '📦 ' + count + ' unsaved';
+        status.className = 'has-unsaved';
+    } else {
+        status.textContent = '';
+        status.className = '';
+    }
 }
 
 // ── CALL ──
@@ -557,6 +889,7 @@ function startApp() {
     initCall();
     initBranchDots();
     initBranchMenus();
+    initLeftPanel();
     initAvatar();
     initVersion();
     initLogoutBtn();

@@ -51,13 +51,42 @@
 
     <div class="branch-overlay-backdrop" id="branch-backdrop"></div>
 
+    <!-- LEFT PANEL: MD File Browser -->
     <div class="branch-slide-menu left" id="left-branch-menu">
-        <div class="branch-menu-header">▼ BRANCHES</div>
-        <div id="left-branch-list"></div>
+        <div class="branch-menu-header">
+            <span>☰ BRANCHES</span>
+            <button class="branch-close-btn" id="btn-close-left">✕</button>
+        </div>
+        <div class="left-panel-scroll">
+            <div id="left-branch-list"></div>
+            <div id="file-type-list"></div>
+            <div id="variant-list"></div>
+        </div>
+        <div class="cache-bar">
+            <span id="cache-status"></span>
+            <button class="deploy-btn" id="btn-deploy">🚀 DEPLOY</button>
+        </div>
     </div>
+
+    <!-- RIGHT PANEL: Branch list -->
     <div class="branch-slide-menu right" id="right-branch-menu">
         <div class="branch-menu-header">▼ BRANCHES</div>
         <div id="right-branch-list"></div>
+    </div>
+
+    <!-- EDITOR MODAL -->
+    <div class="editor-overlay" id="editor-overlay" style="display:none">
+        <div class="editor-modal">
+            <div class="editor-header">
+                <span id="editor-title"></span>
+                <button class="branch-close-btn" id="btn-close-editor">✕</button>
+            </div>
+            <textarea id="editor-textarea" spellcheck="false"></textarea>
+            <div class="editor-footer">
+                <span id="editor-status"></span>
+                <button class="save-btn" id="btn-save-edit">SAVE</button>
+            </div>
+        </div>
     </div>
 
     <div class="dashboard-base">

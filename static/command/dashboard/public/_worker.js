@@ -1,4 +1,4 @@
-const APP_VERSION = 'command-V0.0.0.06';
+const APP_VERSION = 'command-V0.0.0.07';
 const GITHUB_API = 'https://api.github.com';
 const MD_FILES = ['AGENT.md', 'README.md', 'CHANGELOG.md', 'MEMORY.md', 'SKILLS.md', 'HEARTBEAT.md', 'SOUL.md', 'MASTERPLAN.md', 'RULES.md', 'TEMPLATE.md', 'CONTEXT.md', 'GLOSSARY.md', 'RESOURCES.md', 'TASKS.md', 'IDENTITY.md', 'SPEC.md'];
 const SIDES = ['high', 'left', 'right', 'low'];

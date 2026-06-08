@@ -199,6 +199,10 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     left: 0;
     border-right: 2px solid rgba(200,154,78,0.15);
     transform: translateX(-100%);
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    overflow: hidden;
 }
 .branch-slide-menu.right {
     right: 0;
@@ -214,6 +218,13 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     color: var(--amber);
     border-bottom: 1px solid rgba(200,154,78,0.15);
     margin-bottom: 6px;
+}
+#left-branch-menu .branch-menu-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    flex-shrink: 0;
 }
 .branch-menu-item {
     display: flex;
@@ -258,6 +269,239 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
 .branch-slide-menu::-webkit-scrollbar { width: 4px; }
 .branch-slide-menu::-webkit-scrollbar-track { background: transparent; }
 .branch-slide-menu::-webkit-scrollbar-thumb { background: rgba(200,154,78,0.3); border-radius: 2px; }
+
+/* ── LEFT PANEL SPECIFIC STYLES ── */
+.left-panel-scroll {
+    flex: 1;
+    overflow-y: auto;
+    padding: 6px 0;
+}
+
+.branch-close-btn {
+    background: none;
+    border: none;
+    color: var(--amber);
+    font-size: 16px;
+    cursor: pointer;
+    padding: 0 4px;
+    opacity: 0.5;
+    transition: opacity 0.2s;
+    font-family: monospace;
+    line-height: 1;
+}
+.branch-close-btn:hover {
+    opacity: 1;
+}
+
+.branch-expand-arrow {
+    font-size: 10px;
+    color: rgba(200,154,78,0.4);
+    transition: transform 0.2s;
+    margin-left: auto;
+}
+
+/* ── FILE TYPE LIST ── */
+#file-type-list {
+    padding: 0;
+}
+.file-type-heading {
+    padding: 8px 16px 4px 20px;
+    font-size: 9px;
+    font-family: monospace;
+    letter-spacing: 1px;
+    color: rgba(200,154,78,0.4);
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(200,154,78,0.08);
+    margin-bottom: 2px;
+}
+.file-type-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 16px 5px 24px;
+    cursor: pointer;
+    font-size: 12px;
+    font-family: monospace;
+    transition: 0.15s;
+    border-left: 2px solid transparent;
+    color: var(--text);
+}
+.file-type-item:hover {
+    background: rgba(200,154,78,0.06);
+    border-left-color: rgba(200,154,78,0.4);
+}
+.file-type-item.active {
+    background: rgba(200,154,78,0.1);
+    border-left-color: var(--amber);
+    color: var(--amber);
+}
+
+/* ── VARIANT LIST ── */
+#variant-list {
+    padding: 0;
+}
+.variant-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 4px 16px 4px 36px;
+    cursor: pointer;
+    font-size: 11px;
+    font-family: monospace;
+    transition: 0.15s;
+    color: var(--text);
+    opacity: 0.85;
+}
+.variant-item:hover {
+    opacity: 1;
+    background: rgba(200,154,78,0.06);
+}
+.variant-side-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+    box-shadow: 0 0 6px currentColor;
+}
+.variant-check {
+    margin-left: auto;
+    font-size: 10px;
+    min-width: 14px;
+    text-align: right;
+}
+
+/* ── CACHE BAR ── */
+.cache-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 16px;
+    border-top: 1px solid rgba(200,154,78,0.15);
+    font-size: 10px;
+    font-family: monospace;
+    flex-shrink: 0;
+    background: rgba(0,0,0,0.3);
+}
+#cache-status {
+    color: var(--amber-dim);
+    transition: color 0.3s;
+}
+#cache-status.has-unsaved {
+    color: var(--amber);
+}
+.deploy-btn {
+    padding: 4px 12px;
+    background: transparent;
+    border: 1px solid var(--amber);
+    color: var(--amber);
+    font-family: monospace;
+    font-size: 10px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+.deploy-btn:hover {
+    background: rgba(200,154,78,0.15);
+    box-shadow: 0 0 10px rgba(200,154,78,0.2);
+}
+.deploy-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* ── EDITOR MODAL ── */
+.editor-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 500;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
+}
+.editor-overlay.open {
+    display: flex;
+}
+.editor-modal {
+    width: 640px;
+    max-width: 92vw;
+    max-height: 85vh;
+    background: #0a0a0a;
+    border: 1px solid rgba(200,154,78,0.3);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.9);
+    display: flex;
+    flex-direction: column;
+    border-radius: 4px;
+}
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(200,154,78,0.15);
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--amber);
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+#editor-textarea {
+    width: 100%;
+    min-height: 320px;
+    max-height: 60vh;
+    padding: 16px;
+    background: #000;
+    border: none;
+    color: var(--text);
+    font-family: monospace;
+    font-size: 12px;
+    line-height: 1.6;
+    resize: vertical;
+    outline: none;
+    tab-size: 2;
+}
+#editor-textarea:focus {
+    background: #050505;
+}
+#editor-textarea::selection {
+    background: rgba(200,154,78,0.3);
+}
+.editor-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    border-top: 1px solid rgba(200,154,78,0.15);
+    flex-shrink: 0;
+}
+#editor-status {
+    font-size: 10px;
+    font-family: monospace;
+    color: var(--green);
+    transition: color 0.3s;
+}
+#editor-status.error {
+    color: var(--red);
+}
+.save-btn {
+    padding: 6px 20px;
+    background: transparent;
+    border: 1px solid var(--green);
+    color: var(--green);
+    font-family: monospace;
+    font-size: 11px;
+    cursor: pointer;
+    letter-spacing: 1px;
+    transition: 0.2s;
+}
+.save-btn:hover {
+    background: rgba(0,255,102,0.1);
+    box-shadow: 0 0 10px rgba(0,255,102,0.2);
+}
 
 /* ── LOGIN SCREEN ── */
 .login-overlay {
