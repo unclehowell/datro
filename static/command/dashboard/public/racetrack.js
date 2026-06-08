@@ -1,12 +1,9 @@
-// ── ROAD ANIMATION ──
+// ── DRIVER VIEW TRACK ANIMATION ──
 (function() {
-function initRoad() {
-    var canvas = document.getElementById('track-canvas');
-    if (!canvas) return;
+function initTrack(canvas) {
     var ctx = canvas.getContext('2d');
-    var offset = 0;
-    var steering = 0;
     var animId = null;
+    var offset = 0;
 
     function resize() {
         canvas.width = canvas.clientWidth || window.innerWidth;
@@ -15,81 +12,77 @@ function initRoad() {
     window.addEventListener('resize', resize);
     resize();
 
-    window.trackSetSteering = function(v) { steering = v; };
-
     function draw() {
         var W = canvas.width, H = canvas.height;
         ctx.clearRect(0, 0, W, H);
 
-        var vx = W / 2 + steering * W * 0.15;
-        var vy = H * 0.32;
-        var bottomW = W * 0.55;
-        var topW = W * 0.04;
-
-        // Grass
+        // --- Main Driver View (Pseudo 3D) ---
+        var horizon = H * 0.3;
+        
+        // Sky
+        ctx.fillStyle = '#1a1a2e';
+        ctx.fillRect(0, 0, W, horizon);
+        
+        // Ground
         ctx.fillStyle = '#0d1a0d';
-        ctx.beginPath();
-        ctx.moveTo(0, 0); ctx.lineTo(vx - topW/2, vy); ctx.lineTo(vx - bottomW/2 + steering*W*0.08, H); ctx.lineTo(0, H);
-        ctx.closePath(); ctx.fill();
-        ctx.beginPath();
-        ctx.moveTo(W, 0); ctx.lineTo(vx + topW/2, vy); ctx.lineTo(vx + bottomW/2 + steering*W*0.08, H); ctx.lineTo(W, H);
-        ctx.closePath(); ctx.fill();
+        ctx.fillRect(0, horizon, W, H - horizon);
 
-        // Road surface gradient
-        var grad = ctx.createLinearGradient(0, vy, 0, H);
+        // Road
+        var roadW = W * 0.6;
+        var grad = ctx.createLinearGradient(0, horizon, 0, H);
         grad.addColorStop(0, '#2a2a2a');
-        grad.addColorStop(0.4, '#1e1e1e');
         grad.addColorStop(1, '#181818');
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.moveTo(vx - topW/2, vy);
-        ctx.lineTo(vx + topW/2, vy);
-        ctx.lineTo(vx + bottomW/2 + steering*W*0.08, H);
-        ctx.lineTo(vx - bottomW/2 + steering*W*0.08, H);
-        ctx.closePath(); ctx.fill();
+        ctx.moveTo(W/2 - roadW/2, horizon);
+        ctx.lineTo(W/2 + roadW/2, horizon);
+        ctx.lineTo(W, H);
+        ctx.lineTo(0, H);
+        ctx.fill();
 
-        // Shoulder lines
-        ctx.strokeStyle = '#c89a4e';
-        ctx.lineWidth = 3;
-        ctx.shadowColor = '#c89a4e';
-        ctx.shadowBlur = 6;
-        ctx.beginPath(); ctx.moveTo(vx - topW/2, vy); ctx.lineTo(vx - bottomW/2 + steering*W*0.08, H); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(vx + topW/2, vy); ctx.lineTo(vx + bottomW/2 + steering*W*0.08, H); ctx.stroke();
-        ctx.shadowBlur = 0;
-
-        // Road edge amber glow
-        ctx.strokeStyle = 'rgba(200,154,78,0.15)';
-        ctx.lineWidth = 12;
-        ctx.beginPath(); ctx.moveTo(vx - topW/2, vy); ctx.lineTo(vx - bottomW/2 + steering*W*0.08, H); ctx.stroke();
-        ctx.beginPath(); ctx.moveTo(vx + topW/2, vy); ctx.lineTo(vx + bottomW/2 + steering*W*0.08, H); ctx.stroke();
-
-        // Center dashes
-        var speed = 1.5 + (window._config && window._config.gear ? window._config.gear : 3) * 0.4;
-        offset += speed;
-        var dashLen = 25;
-        var gapLen = 30;
-        var totalLen = dashLen + gapLen;
-        offset %= totalLen;
-
-        ctx.strokeStyle = 'rgba(255,255,255,0.7)';
-        ctx.lineWidth = 2.5;
-        ctx.shadowColor = 'rgba(255,255,255,0.2)';
-        ctx.shadowBlur = 4;
-
-        for (var t = -totalLen + offset; t < H + totalLen; t += totalLen) {
-            var roadFrac = Math.min(1, t / H);
-            var w = topW + (bottomW - topW) * roadFrac;
-            var cx = vx + steering * W * 0.08 * roadFrac;
-            var y = vy + (H - vy) * roadFrac;
-            var nextFrac = Math.min(1, (t + dashLen) / H);
-            var nextCx = vx + steering * W * 0.08 * nextFrac;
-            var nextY = vy + (H - vy) * nextFrac;
+        // Road center dashed line
+        offset += 2;
+        var dashLen = 20;
+        ctx.strokeStyle = 'white';
+        ctx.lineWidth = 5;
+        for (var i = -H + (offset % 40); i < H; i += 40) {
             ctx.beginPath();
-            ctx.moveTo(cx, y);
-            ctx.lineTo(nextCx, nextY);
+            ctx.moveTo(W/2, horizon + i);
+            ctx.lineTo(W/2, horizon + i + dashLen);
             ctx.stroke();
         }
-        ctx.shadowBlur = 0;
+
+        // --- Top Right Mini-map ---
+        var miniW = W * 0.25;
+        var miniH = H * 0.25;
+        var miniX = W - miniW - 10;
+        var miniY = 10;
+        var miniCx = miniX + miniW/2;
+        var miniCy = miniY + miniH/2;
+        var miniRadius = Math.min(miniW, miniH) * 0.35;
+
+        // Mini-map background
+        ctx.fillStyle = 'rgba(0,0,0,0.5)';
+        ctx.fillRect(miniX, miniY, miniW, miniH);
+        
+        // Mini-map track
+        ctx.strokeStyle = '#666';
+        ctx.lineWidth = 4;
+        ctx.beginPath();
+        ctx.arc(miniCx, miniCy, miniRadius, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Mini-map car position (48h lap)
+        var now = new Date();
+        var lapTime = 48 * 60 * 60 * 1000;
+        var angle = ((now.getTime() % lapTime) / lapTime) * Math.PI * 2 - Math.PI / 2;
+        var carX = miniCx + Math.cos(angle) * miniRadius;
+        var carY = miniCy + Math.sin(angle) * miniRadius;
+
+        ctx.fillStyle = '#00e5ff';
+        ctx.beginPath();
+        ctx.arc(carX, carY, 3, 0, Math.PI * 2);
+        ctx.fill();
 
         animId = requestAnimationFrame(draw);
     }
@@ -97,13 +90,6 @@ function initRoad() {
 }
 
 if (typeof window !== 'undefined') {
-    window.trackInit = initRoad;
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', function() {
-            if (document.getElementById('track-canvas')) initRoad();
-        });
-    } else {
-        if (document.getElementById('track-canvas')) initRoad();
-    }
+    window.trackInit = initTrack;
 }
 })();
