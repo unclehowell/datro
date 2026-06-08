@@ -293,6 +293,24 @@ export default {
         } catch { return json({ ok: false }, 502); }
       }
 
+      // POST /api/flywheel/bias
+      if (path === '/api/flywheel/bias' && method === 'POST') {
+        const s = HARDCODED;
+        try {
+          const resp = await fetch(s.cf_worker_url + '/__bias', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+          return json(await resp.json());
+        } catch { return json({ ok: false }, 502); }
+      }
+
+      // GET /api/flywheel/bias
+      if (path === '/api/flywheel/bias' && method === 'GET') {
+        const s = HARDCODED;
+        try {
+          const resp = await fetch(s.cf_worker_url + '/__bias');
+          return json(await resp.json());
+        } catch { return json({ bias: 3, steering: 'CTR', risk: 3 }); }
+      }
+
       // GET /api/flywheel/status
       if (path === '/api/flywheel/status' && method === 'GET') {
         const s = HARDCODED;
