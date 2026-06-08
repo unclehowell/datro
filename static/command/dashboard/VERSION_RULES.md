@@ -50,3 +50,15 @@ Formula: for release number R:
 ## Enforcement
 
 The version in `APP_VERSION` MUST match the GitHub release tag.
+
+## Workflow Rule — CRITICAL — NEVER FORGET
+
+NEVER edit front-end files (app.js, index.html, style.css, racetrack.js) directly on
+Cloudflare Workers, Pages dashboard, or any deployment target. ALL changes must be made
+to the local git branch, committed, tagged with a release, and then the rerelease process
+handles Cloudflare deployment automatically.
+
+This applies to:
+- _worker.js — update locally, commit, tag rerelease
+- app.js / index.html / style.css / racetrack.js — update locally, commit, tag rerelease
+- server.js — update locally, commit, tag rerelease
