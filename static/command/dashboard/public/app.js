@@ -145,166 +145,129 @@ function initRoad() {
 }
 
 // ── JOYSTICK ──
-function initJoystick() {
-    var canvas = $('joystick-canvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var dragging = false;
-    var S = 130;
-    canvas.width = S * 2;
-    canvas.height = S * 2;
+var snapX = 0, snapY = 0;
+var joystickCtx = null;
 
-    var DIRS = [
-        { name: 'N',  dx: 0,        dy: -1,       angle: 270 },
-        { name: 'NE', dx: 0.707,    dy: -0.707,   angle: 315 },
-        { name: 'E',  dx: 1,        dy: 0,        angle: 0 },
-        { name: 'SE', dx: 0.707,    dy: 0.707,    angle: 45 },
-        { name: 'S',  dx: 0,        dy: 1,        angle: 90 },
-        { name: 'SW', dx: -0.707,   dy: 0.707,    angle: 135 },
-        { name: 'W',  dx: -1,       dy: 0,        angle: 180 },
-        { name: 'NW', dx: -0.707,   dy: -0.707,   angle: 225 }
-    ];
-    var INNER_R = 0.35;
-    var OUTER_R = 0.72;
-    var snapX = 0, snapY = 0;
+var JOYSTICK_DIRS = [
+    { name: 'N',  dx: 0,        dy: -1,       angle: 270 },
+    { name: 'NE', dx: 0.707,    dy: -0.707,   angle: 315 },
+    { name: 'E',  dx: 1,        dy: 0,        angle: 0 },
+    { name: 'SE', dx: 0.707,    dy: 0.707,    angle: 45 },
+    { name: 'S',  dx: 0,        dy: 1,        angle: 90 },
+    { name: 'SW', dx: -0.707,   dy: 0.707,    angle: 135 },
+    { name: 'W',  dx: -1,       dy: 0,        angle: 180 },
+    { name: 'NW', dx: -0.707,   dy: -0.707,   angle: 225 }
+];
+var JOYSTICK_INNER_R = 0.35;
+var JOYSTICK_OUTER_R = 0.72;
 
-    function snapToNearest(x, y, r) {
-        var bestDist = Infinity;
-        var bestDx = 0, bestDy = 0;
-        for (var i = 0; i < DIRS.length; i++) {
-            var d = DIRS[i];
-            var angleDiff = Math.abs(Math.atan2(y, x) - (d.angle * Math.PI / 180));
-            var norm = Math.min(angleDiff % (2*Math.PI), (2*Math.PI) - (angleDiff % (2*Math.PI)));
-            if (norm < bestDist) {
-                bestDist = norm;
-                bestDx = d.dx;
-                bestDy = d.dy;
-            }
+function snapToNearest(x, y, r) {
+    var bestDist = Infinity;
+    var bestDx = 0, bestDy = 0;
+    for (var i = 0; i < JOYSTICK_DIRS.length; i++) {
+        var d = JOYSTICK_DIRS[i];
+        var angleDiff = Math.abs(Math.atan2(y, x) - (d.angle * Math.PI / 180));
+        var norm = Math.min(angleDiff % (2*Math.PI), (2*Math.PI) - (angleDiff % (2*Math.PI)));
+        if (norm < bestDist) {
+            bestDist = norm;
+            bestDx = d.dx;
+            bestDy = d.dy;
         }
-        var dist = Math.sqrt(x * x + y * y);
-        var t = dist / r;
-        var radius;
-        if (t < 0.15) {
-            return { x: 0, y: 0 };
-        } else if (t < 0.55) {
-            radius = r * INNER_R;
-        } else {
-            radius = r * OUTER_R;
-        }
-        return { x: bestDx * radius, y: bestDy * radius };
     }
-
-    function draw() {
-        var W = canvas.width, H = canvas.height;
-        var cx = W / 2, cy = H / 2, r = Math.min(W, H) / 2 - 25;
-        ctx.clearRect(0, 0, W, H);
-
-        ctx.strokeStyle = 'rgba(200,154,78,0.06)';
-        ctx.lineWidth = 20;
-        ctx.beginPath(); ctx.arc(cx, cy, r + 8, 0, Math.PI * 2); ctx.stroke();
-
-        ctx.strokeStyle = 'rgba(200,154,78,0.2)';
-        ctx.lineWidth = 2;
-        ctx.beginPath(); ctx.arc(cx, cy, r, 0, Math.PI * 2); ctx.stroke();
-
-        ctx.strokeStyle = 'rgba(200,154,78,0.12)';
-        ctx.lineWidth = 1;
-        ctx.setLineDash([3, 6]);
-        ctx.beginPath(); ctx.arc(cx, cy, r * INNER_R, 0, Math.PI * 2); ctx.stroke();
-        ctx.setLineDash([]);
-
-        for (var i = 0; i < DIRS.length; i++) {
-            var d = DIRS[i];
-            var angle = d.angle * Math.PI / 180;
-            var lx = cx + Math.cos(angle) * r;
-            var ly = cy + Math.sin(angle) * r;
-            var ix = cx + Math.cos(angle) * (r * 0.92);
-            ctx.strokeStyle = 'rgba(200,154,78,0.15)';
-            ctx.lineWidth = 1;
-            ctx.beginPath(); ctx.moveTo(ix, ly); ctx.lineTo(lx, ly); ctx.stroke();
-
-            var labelR = r + 18;
-            var lpx = cx + Math.cos(angle) * labelR;
-            var lpy = cy + Math.sin(angle) * labelR;
-            ctx.fillStyle = 'rgba(200,154,78,0.4)';
-            ctx.font = '10px monospace';
-            ctx.textAlign = 'center';
-            ctx.textBaseline = 'middle';
-            ctx.fillText(d.name, lpx, lpy);
-        }
-
-        for (var i = 0; i < DIRS.length; i++) {
-            var d = DIRS[i];
-            for (var ri = 0; ri < 2; ri++) {
-                var ring = ri === 0 ? INNER_R : OUTER_R;
-                var sx = cx + d.dx * r * ring;
-                var sy = cy + d.dy * r * ring;
-                ctx.fillStyle = 'rgba(200,154,78,0.08)';
-                ctx.beginPath(); ctx.arc(sx, sy, 3, 0, Math.PI * 2); ctx.fill();
-            }
-        }
-
-        var px = cx + snapX;
-        var py = cy + snapY;
-
-        ctx.shadowColor = '#c89a4e';
-        ctx.shadowBlur = 20;
-        ctx.beginPath(); ctx.arc(px, py, 16, 0, Math.PI * 2);
-        ctx.fillStyle = '#c89a4e'; ctx.fill();
-        ctx.shadowBlur = 0;
-
-        ctx.beginPath(); ctx.arc(px - 3, py - 3, 6, 0, Math.PI * 2);
-        ctx.fillStyle = 'rgba(255,255,255,0.15)'; ctx.fill();
-
-        ctx.fillStyle = 'rgba(200,154,78,0.3)';
-        ctx.beginPath(); ctx.arc(cx, cy, 3, 0, Math.PI * 2); ctx.fill();
+    var dist = Math.sqrt(x * x + y * y);
+    var t = dist / r;
+    var radius;
+    if (t < 0.15) {
+        return { x: 0, y: 0 };
+    } else if (t < 0.55) {
+        radius = r * JOYSTICK_INNER_R;
+    } else {
+        radius = r * JOYSTICK_OUTER_R;
     }
-
-    function dirFromPos(x, y, r) {
-        var DIR_NAMES = ['N','NE','E','SE','S','SW','W','NW'];
-        var DIR_ANGLES = [270, 315, 0, 45, 90, 135, 180, 225];
-        var angle = Math.atan2(y, x) * 180 / Math.PI;
-        if (angle < 0) angle += 360;
-        var best = 0, bestDiff = Infinity;
-        for (var i = 0; i < DIR_ANGLES.length; i++) {
-            var diff = Math.abs(angle - DIR_ANGLES[i]);
-            if (diff < bestDiff) { bestDiff = diff; best = i; }
-        }
-        return DIR_NAMES[best];
-    }
-
-    function updatePos(e) {
-        var rect = canvas.getBoundingClientRect();
-        var cx = rect.width / 2, cy = rect.height / 2;
-        var clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
-        var clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
-        var x = clientX - rect.left - cx;
-        var y = clientY - rect.top - cy;
-        var r = Math.min(cx, cy) - 25;
-        var result = snapToNearest(x, y, r);
-        snapX = result.x;
-        snapY = result.y;
-        var maxRange = r * OUTER_R;
-        var rawBias = Math.max(-5, Math.min(5, (snapX / maxRange) * 5));
-        if (window.trackSetSteering) window.trackSetSteering(rawBias / 5);
-        draw();
-    }
-
-    function finishMove() {
-        if (snapX === joystickCommitted.x && snapY === joystickCommitted.y) return;
-        showJoystickConfirm();
-    }
-
-    canvas.addEventListener('mousedown', function(e) { dragging = true; updatePos(e); });
-    window.addEventListener('mousemove', function(e) { if (dragging) updatePos(e); });
-    window.addEventListener('mouseup', function() { if (dragging) { dragging = false; finishMove(); } });
-    canvas.addEventListener('touchstart', function(e) { e.preventDefault(); dragging = true; updatePos(e); });
-    canvas.addEventListener('touchmove', function(e) { e.preventDefault(); if (dragging) updatePos(e); });
-    canvas.addEventListener('touchend', function(e) { if (dragging) { dragging = false; finishMove(); } });
-    draw();
+    return { x: bestDx * radius, y: bestDy * radius };
 }
 
-// ── JOYSTICK CONFIRMATION ──
+function drawJoystick() {
+    if (!joystickCtx) return;
+    var canvas = joystickCtx.canvas;
+    var W = canvas.width, H = canvas.height;
+    var cx = W / 2, cy = H / 2, r = Math.min(W, H) / 2 - 25;
+    joystickCtx.clearRect(0, 0, W, H);
+
+    joystickCtx.strokeStyle = 'rgba(200,154,78,0.06)';
+    joystickCtx.lineWidth = 20;
+    joystickCtx.beginPath(); joystickCtx.arc(cx, cy, r + 8, 0, Math.PI * 2); joystickCtx.stroke();
+
+    joystickCtx.strokeStyle = 'rgba(200,154,78,0.2)';
+    joystickCtx.lineWidth = 2;
+    joystickCtx.beginPath(); joystickCtx.arc(cx, cy, r, 0, Math.PI * 2); joystickCtx.stroke();
+
+    joystickCtx.strokeStyle = 'rgba(200,154,78,0.12)';
+    joystickCtx.lineWidth = 1;
+    joystickCtx.setLineDash([3, 6]);
+    joystickCtx.beginPath(); joystickCtx.arc(cx, cy, r * JOYSTICK_INNER_R, 0, Math.PI * 2); joystickCtx.stroke();
+    joystickCtx.setLineDash([]);
+
+    for (var i = 0; i < JOYSTICK_DIRS.length; i++) {
+        var d = JOYSTICK_DIRS[i];
+        var angle = d.angle * Math.PI / 180;
+        var lx = cx + Math.cos(angle) * r;
+        var ly = cy + Math.sin(angle) * r;
+        var ix = cx + Math.cos(angle) * (r * 0.92);
+        joystickCtx.strokeStyle = 'rgba(200,154,78,0.15)';
+        joystickCtx.lineWidth = 1;
+        joystickCtx.beginPath(); joystickCtx.moveTo(ix, ly); joystickCtx.lineTo(lx, ly); joystickCtx.stroke();
+
+        var labelR = r + 18;
+        var lpx = cx + Math.cos(angle) * labelR;
+        var lpy = cy + Math.sin(angle) * labelR;
+        joystickCtx.fillStyle = 'rgba(200,154,78,0.4)';
+        joystickCtx.font = '10px monospace';
+        joystickCtx.textAlign = 'center';
+        joystickCtx.textBaseline = 'middle';
+        joystickCtx.fillText(d.name, lpx, lpy);
+    }
+
+    for (var i = 0; i < JOYSTICK_DIRS.length; i++) {
+        var d = JOYSTICK_DIRS[i];
+        for (var ri = 0; ri < 2; ri++) {
+            var ring = ri === 0 ? JOYSTICK_INNER_R : JOYSTICK_OUTER_R;
+            var sx = cx + d.dx * r * ring;
+            var sy = cy + d.dy * r * ring;
+            joystickCtx.fillStyle = 'rgba(200,154,78,0.08)';
+            joystickCtx.beginPath(); joystickCtx.arc(sx, sy, 3, 0, Math.PI * 2); joystickCtx.fill();
+        }
+    }
+
+    var px = cx + snapX;
+    var py = cy + snapY;
+
+    joystickCtx.shadowColor = '#c89a4e';
+    joystickCtx.shadowBlur = 20;
+    joystickCtx.beginPath(); joystickCtx.arc(px, py, 16, 0, Math.PI * 2);
+    joystickCtx.fillStyle = '#c89a4e'; joystickCtx.fill();
+    joystickCtx.shadowBlur = 0;
+
+    joystickCtx.beginPath(); joystickCtx.arc(px - 3, py - 3, 6, 0, Math.PI * 2);
+    joystickCtx.fillStyle = 'rgba(255,255,255,0.15)'; joystickCtx.fill();
+
+    joystickCtx.fillStyle = 'rgba(200,154,78,0.3)';
+    joystickCtx.beginPath(); joystickCtx.arc(cx, cy, 3, 0, Math.PI * 2); joystickCtx.fill();
+}
+
+function dirFromPos(x, y, r) {
+    var DIR_NAMES = ['N','NE','E','SE','S','SW','W','NW'];
+    var DIR_ANGLES = [270, 315, 0, 45, 90, 135, 180, 225];
+    var angle = Math.atan2(y, x) * 180 / Math.PI;
+    if (angle < 0) angle += 360;
+    var best = 0, bestDiff = Infinity;
+    for (var i = 0; i < DIR_ANGLES.length; i++) {
+        var diff = Math.abs(angle - DIR_ANGLES[i]);
+        if (diff < bestDiff) { bestDiff = diff; best = i; }
+    }
+    return DIR_NAMES[best];
+}
+
 function showJoystickConfirm() {
     var overlay = $('confirm-overlay');
     var body = $('confirm-body');
@@ -316,12 +279,14 @@ function showJoystickConfirm() {
     if (snapX === 0 && snapY === 0) {
         dir = 'CTR (center)';
     } else {
-        var rect = $('joystick-canvas').getBoundingClientRect();
+        var canvas = joystickCtx && joystickCtx.canvas;
+        if (!canvas) return;
+        var rect = canvas.getBoundingClientRect();
         var cx = rect.width / 2, cy = rect.height / 2;
         var r = Math.min(cx, cy) - 25;
         var dirName = dirFromPos(snapX, snapY, r);
         var dist = Math.sqrt(snapX * snapX + snapY * snapY);
-        var ring = dist / (r * 0.72) < 0.55 ? 'inner' : 'outer';
+        var ring = dist / (r * JOYSTICK_OUTER_R) < 0.55 ? 'inner' : 'outer';
         dir = dirName + ' (' + ring + ' ring)';
     }
 
@@ -333,14 +298,16 @@ function showJoystickConfirm() {
 }
 
 function confirmJoystick() {
-    var rect = $('joystick-canvas').getBoundingClientRect();
+    var canvas = joystickCtx && joystickCtx.canvas;
+    if (!canvas) return;
+    var rect = canvas.getBoundingClientRect();
     var cx = rect.width / 2, cy = rect.height / 2;
     var r = Math.min(cx, cy) - 25;
-    var maxRange = r * 0.72;
+    var maxRange = r * JOYSTICK_OUTER_R;
     var rawBias = Math.max(-5, Math.min(5, (snapX / maxRange) * 5));
     var rawRisk = Math.max(-5, Math.min(5, (-snapY / maxRange) * 5));
     var dist = Math.sqrt(snapX * snapX + snapY * snapY);
-    var mag = dist / (r * 0.72);
+    var mag = dist / (r * JOYSTICK_OUTER_R);
     var steering = (snapX === 0 && snapY === 0) ? 'CTR' : dirFromPos(snapX, snapY, r);
 
     config.bias = Math.round(rawBias);
@@ -366,8 +333,48 @@ function confirmJoystick() {
 function cancelJoystick() {
     snapX = joystickCommitted.x;
     snapY = joystickCommitted.y;
-    draw();
+    drawJoystick();
     $('confirm-overlay').style.display = 'none';
+}
+
+function initJoystick() {
+    var canvas = $('joystick-canvas');
+    if (!canvas) return;
+    joystickCtx = canvas.getContext('2d');
+    var dragging = false;
+    var S = 130;
+    canvas.width = S * 2;
+    canvas.height = S * 2;
+
+    function updatePos(e) {
+        var rect = canvas.getBoundingClientRect();
+        var cx = rect.width / 2, cy = rect.height / 2;
+        var clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        var clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+        var x = clientX - rect.left - cx;
+        var y = clientY - rect.top - cy;
+        var r = Math.min(cx, cy) - 25;
+        var result = snapToNearest(x, y, r);
+        snapX = result.x;
+        snapY = result.y;
+        var maxRange = r * JOYSTICK_OUTER_R;
+        var rawBias = Math.max(-5, Math.min(5, (snapX / maxRange) * 5));
+        if (window.trackSetSteering) window.trackSetSteering(rawBias / 5);
+        drawJoystick();
+    }
+
+    function finishMove() {
+        if (snapX === joystickCommitted.x && snapY === joystickCommitted.y) return;
+        showJoystickConfirm();
+    }
+
+    canvas.addEventListener('mousedown', function(e) { dragging = true; updatePos(e); });
+    window.addEventListener('mousemove', function(e) { if (dragging) updatePos(e); });
+    window.addEventListener('mouseup', function() { if (dragging) { dragging = false; finishMove(); } });
+    canvas.addEventListener('touchstart', function(e) { e.preventDefault(); dragging = true; updatePos(e); });
+    canvas.addEventListener('touchmove', function(e) { e.preventDefault(); if (dragging) updatePos(e); });
+    canvas.addEventListener('touchend', function(e) { if (dragging) { dragging = false; finishMove(); } });
+    drawJoystick();
 }
 
 // ── FLYWHEEL CONTROL ──

@@ -5,7 +5,7 @@ const https = require('https');
 
 const PORT = process.env.PORT || 3457;
 const CONFIG_PATH = path.join(__dirname, 'command.config.json');
-const APP_VERSION = 'command-V0.0.0.09';
+const APP_VERSION = 'command-V0.0.1.00';
 
 // ── Config helpers ──
 
@@ -123,21 +123,8 @@ app.get('/api/status', (req, res) => {
 });
 
 // GET /api/version
-app.get('/api/version', async (req, res) => {
-  let version = APP_VERSION;
-  try {
-    const headers = { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-local' };
-    if (process.env.GITHUB_TOKEN) headers['Authorization'] = 'Bearer ' + process.env.GITHUB_TOKEN;
-    const resp = await ghFetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', { headers });
-    if (resp.ok) {
-      const data = await resp.json();
-      if (Array.isArray(data)) {
-        const cmd = data.filter(r => r.tag_name.startsWith('command-')).sort((a, b) => new Date(b.published_at) - new Date(a.published_at))[0];
-        version = cmd ? cmd.tag_name : 'command-v0.0.0';
-      }
-    }
-  } catch {}
-  res.json({ version });
+app.get('/api/version', (req, res) => {
+  res.json({ version: APP_VERSION });
 });
 
 // GET /api/settings

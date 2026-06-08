@@ -1,4 +1,4 @@
-const APP_VERSION = 'command-V0.0.0.09';
+const APP_VERSION = 'command-V0.0.1.00';
 const GITHUB_API = 'https://api.github.com';
 const MD_FILES = ['AGENT.md', 'README.md', 'CHANGELOG.md', 'MEMORY.md', 'SKILLS.md', 'HEARTBEAT.md', 'SOUL.md', 'MASTERPLAN.md', 'RULES.md', 'TEMPLATE.md', 'CONTEXT.md', 'GLOSSARY.md', 'RESOURCES.md', 'TASKS.md', 'IDENTITY.md', 'SPEC.md'];
 const SIDES = ['high', 'left', 'right', 'low'];
@@ -82,22 +82,7 @@ export default {
 
       // GET /api/version
       if (path === '/api/version' && method === 'GET') {
-        let version = APP_VERSION;
-        try {
-          let cached = await kv.get('version:command_tag_' + APP_VERSION);
-          if (!cached) {
-            const headers = { 'Accept': 'application/vnd.github.v3+json', 'User-Agent': 'command-dashboard-cf' };
-            if (ghToken) headers['Authorization'] = 'Bearer ' + ghToken;
-            const resp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', { headers });
-            const data = await resp.json();
-            if (Array.isArray(data)) {
-              const cmd = data.filter(r => r.tag_name.startsWith('command-')).sort((a, b) => new Date(b.published_at) - new Date(a.published_at))[0];
-              version = cmd ? cmd.tag_name : 'command-v0.0.0';
-              await kv.put('version:command_tag_' + APP_VERSION, version, { expirationTtl: 3600 });
-            }
-          }
-        } catch {}
-        return json({ version });
+        return json({ version: APP_VERSION });
       }
 
       // GET /api/settings — always connected
