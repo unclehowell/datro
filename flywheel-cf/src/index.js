@@ -10,6 +10,12 @@ const ALL_BRANCHES = [
 ];
 
 const REGULAR_BRANCHES = ALL_BRANCHES.filter(b => b !== 'cnei');
+
+const HONCHO_TENANT_IDS = {
+  bpvsbuckler: '0lCBWsZN-CS-DyY8THX7H',
+  datro: 'Q-sPB_HUr__vWcP1cc-UQ',
+  financecheque: 'oSx32NCcWFHT7gRXWtrGo',
+};
 const RATE_BY_GEAR = [600, 438, 320, 233, 170, 124, 91, 66, 48, 35]; // Compressed: gear1=10min, gear10~35s
 const CNEI_RATIO = Math.floor(137 / REGULAR_BRANCHES.length); // 137/20 = 6
 const DOMAIN = 'datro.directory';
@@ -128,10 +134,11 @@ const AGENT_TOOLS = {
       }
       if (args.action === 'write' && args.content) {
         try {
+          const tenantId = HONCHO_TENANT_IDS[ctx.branch] || 'datro';
           await fetch(`https://api.honcho.dev/api/honcho/messages`, {
             method: 'POST',
             headers: { 'Authorization': `Bearer ${ctx.env.HONCHO_API_KEY}`, 'Content-Type': 'application/json' },
-            body: JSON.stringify({ workspace: 'datro', session: ctx.branch, content: args.content })
+            body: JSON.stringify({ workspace: tenantId, session: ctx.branch, content: args.content })
           });
           return 'Memory written to Honcho';
         } catch (e) { return `Honcho write failed: ${e.message}`; }
@@ -264,6 +271,7 @@ async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHt
 
   const category = computeBranchCategory(branch);
   const bias = await getBiasFromKv(env);
+  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {});
   const honchoMem = await getHonchoMemory(env, branch);
   const brainMem = await getBrainSummary(token);
   const sciHub = await getSciHubIdeas(env, branch, category);
@@ -273,6 +281,15 @@ async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHt
   const toolDescriptions = Object.entries(AGENT_TOOLS).map(([name, tool]) =>
     `- ${name}: ${tool.description}\n  Args: ${Object.keys(tool.args).length > 0 ? Object.entries(tool.args).map(([k, v]) => `${k} (${v})`).join(', ') : 'none'}`
   ).join('\n\n');
+
+  const weights = bias?.weights || { left: 0, right: 0, high: 0, low: 0 };
+  const weightStr = buildDirectionWeightString(weights);
+  const dirPlans = bias?.directionalMasterplans || {};
+  const dirPlanText = Object.entries(dirPlans).length > 0
+    ? '\n## DIRECTIONAL MASTERPLANS (Weighted by Joystick)\n' + Object.entries(dirPlans).map(([side, p]) =>
+        `### MASTERPLAN.${side}.md (weight: ${(p.weight * 100).toFixed(0)}%)\n${p.content.slice(0, 1000)}`
+      ).join('\n\n')
+    : '';
 
   const systemPrompt = `You are the autonomous agentic flywheel for the DATRO monorepo (${GITHUB_REPO}).
 
@@ -294,7 +311,18 @@ ${toolDescriptions}
 - Branch: ${branch} (category: ${category})
 - Wing files loaded: ${context.wingFiles}
 - Wallet: ${wallet.address} (compute budget: ${wallet.computeBudget})
-- Bias: ${bias?.bias || 3}/5, Risk: ${bias?.risk || 3}/5
+- Bias: ${bias?.bias || 3}/5, Risk: ${bias?.risk || 3}/5, Steering: ${bias?.steering || 'CTR'}, Magnitude: ${bias?.magnitude || 0}
+- Directional weights: ${weightStr}
+
+## JOYSTICK STEERING
+The COMMAND cockpit joystick position determines which directional MASTERPLAN files to favour:
+- LEFT → MASTERPLAN.left.md (conservative/defensive)
+- RIGHT → MASTERPLAN.right.md (progressive/expansive)  
+- HIGH/UP → MASTERPLAN.high.md (experimental/innovative)
+- LOW/DOWN → MASTERPLAN.low.md (safe/incremental)
+- Diagonals → combined weighting
+- Center → neutral
+Current weights: ${weightStr}${dirPlanText}
 
 ## Memory
 ${honchoMem.slice(0, 1500)}
@@ -461,7 +489,8 @@ function truncateForPrompt(text, maxChars = 50000) {
 
 async function getHonchoMemory(env, branch) {
   try {
-    const resp = await fetch(`https://api.honcho.ai/v1/memories?workspace=datro&session=${branch}`, {
+    const tenantId = HONCHO_TENANT_IDS[branch] || 'datro';
+    const resp = await fetch(`https://api.honcho.ai/v1/memories?workspace=${tenantId}&session=${branch}`, {
       headers: { 'Authorization': `Bearer ${env.HONCHO_API_KEY}` }
     });
     if (!resp.ok) return "No Honcho memory.";
@@ -1360,9 +1389,49 @@ async function getPreviousReleaseNotes(token, branch, count = 10) {
 async function getBiasFromKv(env) {
   try {
     const raw = await env.FLYWHEEL_STATE.get('bias', 'json');
-    if (raw && raw.bias) return { bias: 3, steering: 'CTR', risk: 3, ...raw };
+    if (raw && raw.bias) {
+      const result = { bias: 3, steering: 'CTR', risk: 3, magnitude: 0, ...raw };
+      result.weights = computeDirectionWeights(result);
+      return result;
+    }
   } catch (_) {}
-  return { bias: 3, steering: 'CTR', risk: 3 };
+  return { bias: 3, steering: 'CTR', risk: 3, magnitude: 0, weights: { left: 0, right: 0, high: 0, low: 0 } };
+}
+
+function computeDirectionWeights(bias) {
+  const w = { left: 0, right: 0, high: 0, low: 0 };
+  const b = bias.bias || 0;
+  const r = bias.risk || 0;
+  const mag = bias.magnitude || 0;
+  const steering = bias.steering || 'CTR';
+  if (steering === 'CTR' || (b === 0 && r === 0)) return w;
+  const strength = Math.max(0.1, mag);
+  if (steering === 'N' || steering === 'NE' || steering === 'NW') w.high = strength;
+  if (steering === 'S' || steering === 'SE' || steering === 'SW') w.low = strength;
+  if (steering === 'E' || steering === 'NE' || steering === 'SE') w.right = strength;
+  if (steering === 'W' || steering === 'NW' || steering === 'SW') w.left = strength;
+  return w;
+}
+
+async function getDirectionalMasterplans(token, branch, weights) {
+  const sides = ['left', 'right', 'high', 'low'];
+  const plans = {};
+  for (const side of sides) {
+    if (!weights[side] || weights[side] <= 0) continue;
+    const path = `static/${branch}/MASTERPLAN.${side}.md`;
+    const file = await getFileContent(token, branch, path);
+    if (file) plans[side] = { content: file.content.slice(0, 2000), weight: weights[side] };
+  }
+  return plans;
+}
+
+function buildDirectionWeightString(weights) {
+  const parts = [];
+  if (weights.high > 0) parts.push(`HIGH/UP: ${(weights.high * 100).toFixed(0)}%`);
+  if (weights.low > 0) parts.push(`LOW/DOWN: ${(weights.low * 100).toFixed(0)}%`);
+  if (weights.left > 0) parts.push(`LEFT: ${(weights.left * 100).toFixed(0)}%`);
+  if (weights.right > 0) parts.push(`RIGHT: ${(weights.right * 100).toFixed(0)}%`);
+  return parts.length > 0 ? parts.join(', ') : 'NEUTRAL (all directions equal)';
 }
 
 function buildSystemPrompt(wingFiles, branch, category, bias) {
@@ -1371,6 +1440,14 @@ function buildSystemPrompt(wingFiles, branch, category, bias) {
   const biasLabel = ({1:'STRICT LEFT',2:'FAVOUR LEFT',3:'NEUTRAL',4:'FAVOUR RIGHT',5:'STRICT RIGHT'})[bias?.bias || 3] || 'NEUTRAL';
   const steeringLabel = bias?.steering || 'CTR';
   const riskLabel = ({1:'LOW RISK',2:'FAVOUR LOW',3:'NEUTRAL',4:'FAVOUR HIGH',5:'HIGH RISK'})[bias?.risk || 3] || 'NEUTRAL';
+  const weights = bias?.weights || { left: 0, right: 0, high: 0, low: 0 };
+  const weightStr = buildDirectionWeightString(weights);
+  const dirPlans = bias?.directionalMasterplans || {};
+  const dirPlanText = Object.entries(dirPlans).length > 0
+    ? '\n## DIRECTIONAL MASTERPLANS (Weighted by Joystick)\n' + Object.entries(dirPlans).map(([side, p]) =>
+        `### MASTERPLAN.${side}.md (weight: ${(p.weight * 100).toFixed(0)}%)\n${p.content.slice(0, 1500)}`
+      ).join('\n\n')
+    : '';
   return `You are the release engineer for the DATRO monorepo. Each branch has its own website on Cloudflare Pages.
 
 Your task: analyze branch "${branch}" (category: ${category}) and propose unique, tailored improvements.
@@ -1390,6 +1467,17 @@ Current risk level: **${riskLabel}**
 - RISK 3 (NEUTRAL): Balance risk and safety. Standard AI proposals allowed.
 - RISK 4 (FAVOUR HIGH): Willing to accept moderate risk. Feature additions and refactors OK. Allow up to 15-line changes.
 - RISK 5 (HIGH RISK): Full experimental mode. Breaking changes, risky refactors, new feature experiments all allowed. Max 50-line changes.
+
+## JOYSTICK DIRECTIONAL WEIGHTS
+The COMMAND cockpit joystick dictates which directional MASTERPLAN files to favour:
+**Current direction weights: ${weightStr}**
+The joystick position determines how much to weigh each directional variant:
+- LEFT (W): Favour MASTERPLAN.left.md — conservative, stable, defensive changes
+- RIGHT (E): Favour MASTERPLAN.right.md — progressive, new features, expansive changes
+- HIGH/UP (N): Favour MASTERPLAN.high.md — experimental, high-risk, innovative changes
+- LOW/DOWN (S): Favour MASTERPLAN.low.md — safe, incremental, low-risk changes
+- Diagonals (NE, SE, NW, SW): Combine two directions proportionally
+- CENTER: Balance all directions equally${dirPlanText}
 
 ## WING FILES
 All wing files (left/right/high/low) are loaded. The high wing files contain experimental/pushing items; low wing files contain safe/incremental items. Consider the current risk level when choosing which wing items to act on.
@@ -1570,7 +1658,8 @@ async function processBranchWithAI(env, branch) {
   console.log(`  Loaded ${releaseNotes.length} previous release notes`);
   const category = computeBranchCategory(branch);
   const bias = await getBiasFromKv(env);
-  console.log(`  Bias: ${bias?.bias || 3} (${bias?.steering || 'CTR'})`);
+  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {});
+  console.log(`  Bias: ${bias?.bias || 3} (${bias?.steering || 'CTR'}) weights: ${JSON.stringify(bias.weights)}`);
 
   // Research Sci-Hub and Daily Digests
   const sciHubContext = await getSciHubIdeas(env, branch, category);
@@ -2290,7 +2379,12 @@ export default {
       if (request.method === 'POST') {
         try {
           const body = await request.json();
-          const bias = { bias: body.bias || 3, steering: body.steering || 'CTR', risk: body.risk || 3 };
+          const bias = {
+            bias: typeof body.bias === 'number' ? body.bias : 3,
+            steering: body.steering || 'CTR',
+            risk: typeof body.risk === 'number' ? body.risk : 3,
+            magnitude: typeof body.magnitude === 'number' ? body.magnitude : 0
+          };
           await env.FLYWHEEL_STATE.put('bias', JSON.stringify(bias));
           return new Response(JSON.stringify({ ok: true, bias }), {
             headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
