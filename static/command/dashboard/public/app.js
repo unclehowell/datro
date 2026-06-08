@@ -42,6 +42,9 @@ var selectedFile = null;
 var expandedFile = null;
 var knownFiles = {};
 
+// ── JOYSTICK CONFIRMATION STATE ──
+var joystickCommitted = { x: 0, y: 0 };
+
 // ── LOGIN ──
 function initLogin() {
     var overlay = $('login-overlay');
@@ -119,20 +122,15 @@ function stopUpdatePolling() {
 }
 
 function checkForUpdates() {
-    var updateBtn = $('update-btn');
     fetch('/api/version')
         .then(function(r) { return r.json(); })
         .then(function(d) {
             var v = d.version || '0.0.0';
-            if (v !== currentVersion) {
-                latestVersion = v;
-                if (updateBtn) {
-                    updateBtn.style.display = '';
-                    updateBtn.textContent = 'UPDATE: ' + v;
-                    updateBtn.onclick = function() {
-                        window.location.reload();
-                    };
-                }
+            if (v !== currentVersion && autoUpdateEnabled) {
+                currentVersion = v;
+                var el = $('version-label');
+                if (el) el.textContent = v;
+                setTimeout(function() { window.location.reload(); }, 3000);
             }
         })
         .catch(function() {});
@@ -288,25 +286,88 @@ function initJoystick() {
         snapY = result.y;
         var maxRange = r * OUTER_R;
         var rawBias = Math.max(-5, Math.min(5, (snapX / maxRange) * 5));
-        var rawRisk = Math.max(-5, Math.min(5, (-snapY / maxRange) * 5));
-        config.bias = Math.round(rawBias);
-        config.risk = Math.round(rawRisk);
-        var dist = Math.sqrt(snapX * snapX + snapY * snapY);
-        var mag = dist / (r * OUTER_R);
-        config.magnitude = Math.min(1, mag);
-        config.steering = (config.bias === 0 && config.risk === 0) ? 'CTR' : dirFromPos(snapX, snapY, r);
-        if (window.trackSetSteering) window.trackSetSteering(config.bias / 5);
-        sendFlywheelBias();
+        if (window.trackSetSteering) window.trackSetSteering(rawBias / 5);
         draw();
+    }
+
+    function finishMove() {
+        if (snapX === joystickCommitted.x && snapY === joystickCommitted.y) return;
+        showJoystickConfirm();
     }
 
     canvas.addEventListener('mousedown', function(e) { dragging = true; updatePos(e); });
     window.addEventListener('mousemove', function(e) { if (dragging) updatePos(e); });
-    window.addEventListener('mouseup', function() { dragging = false; });
+    window.addEventListener('mouseup', function() { if (dragging) { dragging = false; finishMove(); } });
     canvas.addEventListener('touchstart', function(e) { e.preventDefault(); dragging = true; updatePos(e); });
     canvas.addEventListener('touchmove', function(e) { e.preventDefault(); if (dragging) updatePos(e); });
-    canvas.addEventListener('touchend', function() { dragging = false; });
+    canvas.addEventListener('touchend', function(e) { if (dragging) { dragging = false; finishMove(); } });
     draw();
+}
+
+// ── JOYSTICK CONFIRMATION ──
+function showJoystickConfirm() {
+    var overlay = $('confirm-overlay');
+    var body = $('confirm-body');
+    var actions = $('confirm-actions');
+    var statement = $('confirm-statement');
+    if (!overlay) return;
+
+    var dir = '';
+    if (snapX === 0 && snapY === 0) {
+        dir = 'CTR (center)';
+    } else {
+        var rect = $('joystick-canvas').getBoundingClientRect();
+        var cx = rect.width / 2, cy = rect.height / 2;
+        var r = Math.min(cx, cy) - 25;
+        var dirName = dirFromPos(snapX, snapY, r);
+        var dist = Math.sqrt(snapX * snapX + snapY * snapY);
+        var ring = dist / (r * 0.72) < 0.55 ? 'inner' : 'outer';
+        dir = dirName + ' (' + ring + ' ring)';
+    }
+
+    body.innerHTML = 'Set steering to <strong>' + dir + '</strong>?';
+    body.style.display = '';
+    actions.style.display = 'flex';
+    statement.style.display = 'none';
+    overlay.style.display = 'flex';
+}
+
+function confirmJoystick() {
+    var rect = $('joystick-canvas').getBoundingClientRect();
+    var cx = rect.width / 2, cy = rect.height / 2;
+    var r = Math.min(cx, cy) - 25;
+    var maxRange = r * 0.72;
+    var rawBias = Math.max(-5, Math.min(5, (snapX / maxRange) * 5));
+    var rawRisk = Math.max(-5, Math.min(5, (-snapY / maxRange) * 5));
+    var dist = Math.sqrt(snapX * snapX + snapY * snapY);
+    var mag = dist / (r * 0.72);
+    var steering = (snapX === 0 && snapY === 0) ? 'CTR' : dirFromPos(snapX, snapY, r);
+
+    config.bias = Math.round(rawBias);
+    config.risk = Math.round(rawRisk);
+    config.magnitude = Math.min(1, mag);
+    config.steering = steering;
+    joystickCommitted = { x: snapX, y: snapY };
+
+    sendFlywheelBias();
+
+    var body = $('confirm-body');
+    var actions = $('confirm-actions');
+    var statement = $('confirm-statement');
+    body.style.display = 'none';
+    actions.style.display = 'none';
+    statement.style.display = 'block';
+
+    setTimeout(function() {
+        $('confirm-overlay').style.display = 'none';
+    }, 2500);
+}
+
+function cancelJoystick() {
+    snapX = joystickCommitted.x;
+    snapY = joystickCommitted.y;
+    draw();
+    $('confirm-overlay').style.display = 'none';
 }
 
 // ── FLYWHEEL CONTROL ──
@@ -440,12 +501,11 @@ function initLeftPanel() {
         .then(function(r) { return r.json(); })
         .then(function(data) {
             branchesData = data;
-            renderBranchList();
+            renderTree();
         })
         .catch(function() {
-            // Fallback to BRANCH_NAMES if API fails
             branchesData = BRANCH_NAMES.map(function(n) { return { name: n }; });
-            renderBranchList();
+            renderTree();
         });
 
     var leftBtn = $('btn-left-menu');
@@ -478,106 +538,148 @@ function toggleLeftPanel() {
     }
 }
 
-function renderBranchList() {
+function findBranchData(name) {
+    for (var i = 0; i < branchesData.length; i++) {
+        var b = branchesData[i];
+        if ((typeof b === 'string' && b === name) || (b.name === name)) return b;
+    }
+    return null;
+}
+
+function renderTree() {
     var list = $('left-branch-list');
     if (!list) return;
     list.innerHTML = '';
     branchesData.forEach(function(b) {
         var name = typeof b === 'string' ? b : (b.name || b);
-        var item = document.createElement('div');
-        item.className = 'branch-menu-item';
-        item.dataset.branch = name;
+        var wrapper = document.createElement('div');
+        wrapper.className = 'tree-item';
+
+        var header = document.createElement('div');
+        header.className = 'tree-header';
+
+        var expand = document.createElement('span');
+        expand.className = 'tree-expand';
+        expand.textContent = '▶';
+        header.appendChild(expand);
+
         var dot = document.createElement('span');
         dot.className = 'branch-menu-dot';
         dot.style.backgroundColor = BRANCH_COLORS[name] || '#888';
-        item.appendChild(dot);
+        header.appendChild(dot);
+
         var label = document.createElement('span');
-        label.className = 'branch-menu-name';
+        label.className = 'tree-label';
         label.textContent = name;
-        item.appendChild(label);
-        var arrow = document.createElement('span');
-        arrow.className = 'branch-expand-arrow';
-        arrow.textContent = '▶';
-        item.appendChild(arrow);
-        item.onclick = function() {
-            selectedBranch = name;
-            expandedFile = null;
-            selectedFile = null;
-            $('file-type-list').innerHTML = '';
-            $('variant-list').innerHTML = '';
-            var items = list.querySelectorAll('.branch-menu-item');
-            items.forEach(function(i) { i.classList.remove('active'); });
-            item.classList.add('active');
-            renderFileTypeList();
-        };
-        list.appendChild(item);
-    });
-}
+        header.appendChild(label);
 
-function renderFileTypeList() {
-    var list = $('file-type-list');
-    if (!list) return;
-    list.innerHTML = '';
-    if (!selectedBranch) return;
+        var children = document.createElement('div');
+        children.className = 'tree-children';
+        children.style.display = 'none';
 
-    var heading = document.createElement('div');
-    heading.className = 'file-type-heading';
-    heading.textContent = '📄 ' + selectedBranch;
-    list.appendChild(heading);
+        wrapper.appendChild(header);
+        wrapper.appendChild(children);
+        list.appendChild(wrapper);
 
-    MD_FILES.forEach(function(f) {
-        var item = document.createElement('div');
-        item.className = 'file-type-item';
-        item.dataset.file = f;
-        item.textContent = f;
-        item.onclick = function() {
-            if (expandedFile === f) {
-                expandedFile = null;
-                $('variant-list').innerHTML = '';
-                item.classList.remove('active');
+        header.onclick = function() {
+            var isOpen = children.style.display !== 'none';
+            // Close all other branch children
+            list.querySelectorAll('.tree-children').forEach(function(c) {
+                if (c !== children) { c.style.display = 'none'; }
+            });
+            list.querySelectorAll('.tree-header').forEach(function(h) {
+                if (h !== header) {
+                    h.classList.remove('expanded');
+                    var e = h.querySelector('.tree-expand');
+                    if (e) e.textContent = '▶';
+                }
+            });
+            if (isOpen) {
+                children.style.display = 'none';
+                expand.textContent = '▶';
+                header.classList.remove('expanded');
             } else {
-                expandedFile = f;
-                selectedFile = f;
-                var items = list.querySelectorAll('.file-type-item');
-                items.forEach(function(i) { i.classList.remove('active'); });
-                item.classList.add('active');
-                renderVariantList(f);
+                children.style.display = 'block';
+                expand.textContent = '▼';
+                header.classList.add('expanded');
+                renderFileChildren(name, children);
             }
         };
-        list.appendChild(item);
     });
 }
 
-function renderVariantList(fileName) {
-    var list = $('variant-list');
-    if (!list) return;
-    list.innerHTML = '';
-    if (!selectedBranch || !fileName) return;
+function renderFileChildren(branch, container) {
+    container.innerHTML = '';
+    var branchData = findBranchData(branch);
 
-    // Find branch data from API response to check which sides exist
-    var branchData = null;
-    for (var i = 0; i < branchesData.length; i++) {
-        var b = branchesData[i];
-        if ((typeof b === 'string' && b === selectedBranch) || (b.name === selectedBranch)) {
-            branchData = b;
-            break;
-        }
-    }
+    MD_FILES.forEach(function(f) {
+        var wrapper = document.createElement('div');
+        wrapper.className = 'tree-item';
+
+        var header = document.createElement('div');
+        header.className = 'tree-header';
+
+        var expand = document.createElement('span');
+        expand.className = 'tree-expand';
+        expand.textContent = '▶';
+        header.appendChild(expand);
+
+        var label = document.createElement('span');
+        label.className = 'tree-label';
+        label.textContent = f;
+        header.appendChild(label);
+
+        var vchildren = document.createElement('div');
+        vchildren.className = 'tree-children';
+        vchildren.style.display = 'none';
+
+        wrapper.appendChild(header);
+        wrapper.appendChild(vchildren);
+        container.appendChild(wrapper);
+
+        header.onclick = function() {
+            var isOpen = vchildren.style.display !== 'none';
+            // Close other file children in same container
+            container.querySelectorAll('.tree-children').forEach(function(c) {
+                if (c !== vchildren) { c.style.display = 'none'; }
+            });
+            container.querySelectorAll('.tree-header').forEach(function(h) {
+                if (h !== header) {
+                    h.classList.remove('expanded');
+                    var e = h.querySelector('.tree-expand');
+                    if (e) e.textContent = '▶';
+                }
+            });
+            if (isOpen) {
+                vchildren.style.display = 'none';
+                expand.textContent = '▶';
+                header.classList.remove('expanded');
+            } else {
+                vchildren.style.display = 'block';
+                expand.textContent = '▼';
+                header.classList.add('expanded');
+                renderVariantChildren(branch, f, vchildren, branchData);
+            }
+        };
+    });
+}
+
+function renderVariantChildren(branch, fileName, container, branchData) {
+    container.innerHTML = '';
 
     SIDES.forEach(function(side) {
         var item = document.createElement('div');
         item.className = 'variant-item';
+
         var indicator = document.createElement('span');
         indicator.className = 'variant-side-indicator';
         indicator.style.backgroundColor = SIDE_COLORS[side];
         item.appendChild(indicator);
+
         var label = document.createElement('span');
         label.textContent = side;
         item.appendChild(label);
-        var check = document.createElement('span');
-        check.className = 'variant-check';
 
-        // Check if this side's file exists in the API data
         var exists = false;
         if (branchData && branchData[side + 'Files']) {
             var files = branchData[side + 'Files'];
@@ -590,14 +692,17 @@ function renderVariantList(fileName) {
         }
 
         if (exists) {
+            var check = document.createElement('span');
+            check.className = 'variant-check';
             check.textContent = '✓';
             check.style.color = '#00ff66';
+            item.appendChild(check);
         }
-        item.appendChild(check);
+
         item.onclick = function() {
-            openEditor(selectedBranch, side, fileName);
+            openEditor(branch, side, fileName);
         };
-        list.appendChild(item);
+        container.appendChild(item);
     });
 }
 
@@ -640,7 +745,6 @@ function openEditor(branch, side, fileName) {
         .then(function(data) {
             textarea.value = data.content || '';
             knownFiles[cacheKey] = true;
-            renderVariantList(fileName);
         })
         .catch(function(err) {
             textarea.value = '// ' + err.message + '\n\n';
@@ -881,8 +985,17 @@ function initLogoutBtn() {
     });
 }
 
+// ── CONFIRMATION BUTTONS ──
+function initConfirmButtons() {
+    var yesBtn = $('confirm-yes');
+    var noBtn = $('confirm-no');
+    if (yesBtn) yesBtn.onclick = confirmJoystick;
+    if (noBtn) noBtn.onclick = cancelJoystick;
+}
+
 // ── START ──
 function startApp() {
+    initConfirmButtons();
     initRoad();
     initJoystick();
     initGear();

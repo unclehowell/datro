@@ -36,7 +36,7 @@
         <div class="fuel-gauge"><span class="fuel-label">IDE</span><div id="fuel-ide" class="fuel-fill" style="height:40%"></div></div>
     </div>
 
-    <!-- STATUS BAR (version, auto-update toggle, update button) -->
+    <!-- STATUS BAR (version, auto-update toggle) -->
     <div class="status-bar">
         <div class="status-bar-inner">
             <span>v<span class="version-label" id="version-label">--</span></span>
@@ -44,7 +44,6 @@
                 <input type="checkbox" id="auto-toggle-input">
                 AUTO
             </label>
-            <button class="update-btn" id="update-btn" style="display:none">UPDATE</button>
             <button id="logout-btn" style="background:none;border:1px solid #444;color:#666;font-family:monospace;font-size:9px;cursor:pointer;padding:2px 8px">LOCK</button>
         </div>
     </div>
@@ -59,8 +58,6 @@
         </div>
         <div class="left-panel-scroll">
             <div id="left-branch-list"></div>
-            <div id="file-type-list"></div>
-            <div id="variant-list"></div>
         </div>
         <div class="cache-bar">
             <span id="cache-status"></span>
@@ -126,6 +123,30 @@
 </div>
 </div>
 
+<!-- JOYSTICK CONFIRMATION MODAL -->
+<div class="confirm-overlay" id="confirm-overlay" style="display:none">
+    <div class="confirm-modal">
+        <div class="confirm-title">CONFIRM DIRECTION</div>
+        <div class="confirm-body" id="confirm-body">Are you sure?</div>
+        <div class="confirm-actions" id="confirm-actions">
+            <button class="confirm-btn confirm-no" id="confirm-no">NO</button>
+            <button class="confirm-btn confirm-yes" id="confirm-yes">YES</button>
+        </div>
+        <div class="confirm-statement" id="confirm-statement" style="display:none">The flywheel will now favour the MD files in that direction.</div>
+    </div>
+</div>
+
+<script>
+// Deregister any stale Service Worker from previous version
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(regs) {
+    regs.forEach(function(reg) { reg.unregister(); });
+  });
+  caches.keys().then(function(keys) {
+    keys.forEach(function(k) { caches.delete(k); });
+  });
+}
+</script>
 <script src="/racetrack.js"></script>
 <script src="/app.js"></script>
 </body>

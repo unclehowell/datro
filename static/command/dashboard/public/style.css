@@ -300,25 +300,15 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     margin-left: auto;
 }
 
-/* ── FILE TYPE LIST ── */
-#file-type-list {
-    padding: 0;
+/* ── TREE MENU ── */
+.tree-item {
+    user-select: none;
 }
-.file-type-heading {
-    padding: 8px 16px 4px 20px;
-    font-size: 9px;
-    font-family: monospace;
-    letter-spacing: 1px;
-    color: rgba(200,154,78,0.4);
-    text-transform: uppercase;
-    border-bottom: 1px solid rgba(200,154,78,0.08);
-    margin-bottom: 2px;
-}
-.file-type-item {
+.tree-header {
     display: flex;
     align-items: center;
-    gap: 8px;
-    padding: 5px 16px 5px 24px;
+    gap: 6px;
+    padding: 6px 12px 6px 8px;
     cursor: pointer;
     font-size: 12px;
     font-family: monospace;
@@ -326,25 +316,45 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     border-left: 2px solid transparent;
     color: var(--text);
 }
-.file-type-item:hover {
-    background: rgba(200,154,78,0.06);
-    border-left-color: rgba(200,154,78,0.4);
+.tree-header:hover {
+    background: rgba(200,154,78,0.08);
+    border-left-color: var(--amber);
 }
-.file-type-item.active {
-    background: rgba(200,154,78,0.1);
+.tree-header.expanded {
+    background: rgba(200,154,78,0.12);
     border-left-color: var(--amber);
     color: var(--amber);
 }
-
-/* ── VARIANT LIST ── */
-#variant-list {
-    padding: 0;
+.tree-expand {
+    font-size: 8px;
+    color: rgba(200,154,78,0.35);
+    width: 12px;
+    text-align: center;
+    flex-shrink: 0;
+    transition: transform 0.2s;
+}
+.tree-label {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.tree-children .tree-header {
+    padding-left: 28px;
+    font-size: 11px;
+}
+.tree-children .tree-children .tree-header {
+    padding-left: 48px;
+    font-size: 11px;
+}
+.tree-children .tree-children .tree-header .tree-expand {
+    display: none;
 }
 .variant-item {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 4px 16px 4px 36px;
+    padding: 4px 16px 4px 60px;
     cursor: pointer;
     font-size: 11px;
     font-family: monospace;
@@ -636,18 +646,85 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     left: 15px;
     background: var(--amber);
 }
-.update-btn {
-    padding: 3px 12px;
-    background: transparent;
-    border: 1px solid var(--green);
-    color: var(--green);
-    font-family: monospace;
-    font-size: 10px;
-    cursor: pointer;
-    letter-spacing: 1px;
-    transition: 0.2s;
+/* ── CONFIRMATION MODAL ── */
+.confirm-overlay {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: 10000;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(4px);
 }
-.update-btn:hover {
+.confirm-modal {
+    width: 380px;
+    background: #0a0a0a;
+    border: 1px solid rgba(200,154,78,0.25);
+    box-shadow: 0 20px 80px rgba(0,0,0,0.9);
+    border-radius: 4px;
+    padding: 24px;
+    text-align: center;
+}
+.confirm-title {
+    font-size: 12px;
+    font-family: monospace;
+    letter-spacing: 2px;
+    color: var(--amber);
+    margin-bottom: 16px;
+}
+.confirm-body {
+    font-size: 12px;
+    font-family: monospace;
+    color: var(--text);
+    margin-bottom: 20px;
+    line-height: 1.5;
+}
+.confirm-body strong {
+    color: var(--amber);
+}
+.confirm-actions {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+.confirm-btn {
+    padding: 8px 32px;
+    font-family: monospace;
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    border: 1px solid #444;
+    background: transparent;
+    color: var(--text);
+    transition: 0.2s;
+    border-radius: 2px;
+}
+.confirm-yes {
+    border-color: var(--green);
+    color: var(--green);
+}
+.confirm-yes:hover {
     background: rgba(0,255,102,0.1);
     box-shadow: 0 0 10px rgba(0,255,102,0.2);
+}
+.confirm-no {
+    border-color: var(--red);
+    color: var(--red);
+}
+.confirm-no:hover {
+    background: rgba(255,51,51,0.1);
+    box-shadow: 0 0 10px rgba(255,51,51,0.2);
+}
+.confirm-statement {
+    font-size: 11px;
+    font-family: monospace;
+    color: var(--green);
+    margin-top: 16px;
+    line-height: 1.5;
+    animation: fadeIn 0.3s ease;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
 }
