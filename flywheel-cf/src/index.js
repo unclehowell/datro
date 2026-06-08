@@ -2281,6 +2281,68 @@ async function runFlywheel(env, forcedBranch) {
   }
 }
 
+// ── Cloudflare Pages Deploy Cleanup ──
+// Removes preview/failed deploys and keeps only last 10 successful production deploys.
+// Runs automatically every 48 hours (checked via KV timestamp).
+async function cleanupPagesDeploys(env) {
+  const CF_API_TOKEN = env.CF_API_TOKEN;
+  const CF_ACCOUNT_ID = env.CF_ACCOUNT_ID;
+  if (!CF_API_TOKEN || !CF_ACCOUNT_ID) {
+    console.log('Pages cleanup: CF_API_TOKEN or CF_ACCOUNT_ID not configured, skipping');
+    return;
+  }
+
+  const lastCleanup = await env.FLYWHEEL_STATE.get('pages_cleanup_last', 'text');
+  const now = Date.now();
+  const FORTY_EIGHT_HOURS = 172800000;
+  if (lastCleanup && (now - parseInt(lastCleanup)) < FORTY_EIGHT_HOURS) {
+    console.log('Pages cleanup: less than 48h since last cleanup, skipping');
+    return;
+  }
+
+  const headers = { 'Authorization': `Bearer ${CF_API_TOKEN}`, 'Content-Type': 'application/json' };
+
+  try {
+    const listResp = await fetch(
+      `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/command-dashboard/deployments`,
+      { headers }
+    );
+    const listData = await listResp.json();
+    if (!listData.success) {
+      console.error('Pages cleanup: Failed to list deploys:', JSON.stringify(listData.errors));
+      return;
+    }
+
+    const deploys = listData.result || [];
+    deploys.sort((a, b) => new Date(b.created_on) - new Date(a.created_on));
+
+    const prodSuccess = deploys.filter(d => d.environment === 'production' && d.latest_stage?.status === 'success');
+    const others = deploys.filter(d => d.environment !== 'production' || d.latest_stage?.status !== 'success');
+
+    const toDeleteProd = prodSuccess.slice(10); // keep last 10
+    const keptCount = Math.min(prodSuccess.length, 10);
+
+    for (const dep of toDeleteProd) {
+      await fetch(
+        `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/command-dashboard/deployments/${dep.id}`,
+        { method: 'DELETE', headers }
+      );
+    }
+
+    for (const dep of others) {
+      await fetch(
+        `https://api.cloudflare.com/client/v4/accounts/${CF_ACCOUNT_ID}/pages/projects/command-dashboard/deployments/${dep.id}`,
+        { method: 'DELETE', headers }
+      );
+    }
+
+    await env.FLYWHEEL_STATE.put('pages_cleanup_last', String(now));
+    console.log(`Pages cleanup done: kept ${keptCount} production, deleted ${toDeleteProd.length + others.length} deploys`);
+  } catch (err) {
+    console.error('Pages cleanup error:', err.message);
+  }
+}
+
 export default {
   async scheduled(event, env, ctx) {
     ctx.waitUntil(runFlywheel(env));
@@ -2488,7 +2550,14 @@ export default {
       });
     }
 
-    return new Response('Flywheel Worker. Endpoints: /__cron?branch=X, /__sync_cron, /__state, /__reset, /__mode, /__config, /__debug?branch=X, /__status, /__bias, /__mcp?url=X, /__wallet?branch=X, /__wallets, /__agent?branch=X, /__bounties?branch=X', {
+    if (url.pathname === '/__pages_cleanup') {
+      await cleanupPagesDeploys(env);
+      return new Response(JSON.stringify({ ok: true, message: 'Pages cleanup triggered' }), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
+    return new Response('Flywheel Worker. Endpoints: /__cron?branch=X, /__sync_cron, /__state, /__reset, /__mode, /__config, /__debug?branch=X, /__status, /__bias, /__mcp?url=X, /__wallet?branch=X, /__wallets, /__agent?branch=X, /__bounties?branch=X, /__pages_cleanup', {
       headers: { 'Content-Type': 'text/plain' }
     });
   }
