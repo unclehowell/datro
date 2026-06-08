@@ -1,4 +1,4 @@
-const APP_VERSION = 'command-V0.0.1.00';
+const APP_VERSION = 'command-V0.0.1.01';
 const GITHUB_API = 'https://api.github.com';
 const MD_FILES = ['AGENT.md', 'README.md', 'CHANGELOG.md', 'MEMORY.md', 'SKILLS.md', 'HEARTBEAT.md', 'SOUL.md', 'MASTERPLAN.md', 'RULES.md', 'TEMPLATE.md', 'CONTEXT.md', 'GLOSSARY.md', 'RESOURCES.md', 'TASKS.md', 'IDENTITY.md', 'SPEC.md'];
 const SIDES = ['high', 'left', 'right', 'low'];
@@ -348,16 +348,29 @@ export default {
 
       // ── Serve static assets ──
       if (env.ASSETS) {
-        return env.ASSETS.fetch(request);
+        const resp = await env.ASSETS.fetch(request);
+        const headers = new Headers(resp.headers);
+        headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+        return new Response(resp.body, { status: resp.status, statusText: resp.statusText, headers });
       }
 
       // Fallback SPA routing
       if (path === '/' || !path.startsWith('/api/')) {
         const staticPaths = ['/index.html', '/app.js', '/style.css', '/racetrack.js'];
         for (const p of staticPaths) {
-          if (path === p && env.ASSETS) return env.ASSETS.fetch(new Request(new URL(p, url.origin), request));
+          if (path === p && env.ASSETS) {
+            const resp = await env.ASSETS.fetch(new Request(new URL(p, url.origin), request));
+            const headers = new Headers(resp.headers);
+            headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+            return new Response(resp.body, { status: resp.status, statusText: resp.statusText, headers });
+          }
         }
-        if (env.ASSETS) return env.ASSETS.fetch(new Request(new URL('/index.html', url.origin), request));
+        if (env.ASSETS) {
+          const resp = await env.ASSETS.fetch(new Request(new URL('/index.html', url.origin), request));
+          const headers = new Headers(resp.headers);
+          headers.set('Cache-Control', 'no-cache, no-store, must-revalidate');
+          return new Response(resp.body, { status: resp.status, statusText: resp.statusText, headers });
+        }
       }
 
       return json({ error: 'Not found', path }, 404);
