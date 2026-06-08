@@ -1,5 +1,13 @@
 # Changelog
 
+## [gui-v0.0.0.17] - 2026-06-08
+
+### Fixed
+- fix(gui): Remove excessive blank lines
+
+### Changed
+- ux(gui): Fix z-index stacking for proper element layering
+
 ## [gui-v0.0.0.16] - 2026-06-06
 
 ### Fixed
