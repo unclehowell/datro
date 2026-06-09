@@ -871,7 +871,111 @@ function renderCacheStatus() {
     }
 }
 
-// ── CALL ──
+// ── HEAD UNIT (RADIO + VOLUME KNOB) ──
+var RMC_STREAM = 'https://icecast.radiofrance.fr/rmc-midfi.mp3';
+var huVolume = 0.7;
+var huMuted = false;
+var huDucked = false;
+var huKnobAngle = -135 + (huVolume * 270); // -135° (min) to +135° (max)
+var huDragging = false;
+var huDragStartY = 0;
+var huDragStartAngle = 0;
+
+function initHeadUnit() {
+    var audio = document.getElementById('rmc-audio');
+    var knob = document.getElementById('hu-knob');
+    var mark = knob && knob.querySelector('.hu-knob-mark');
+    var muteBtn = document.getElementById('hu-mute-btn');
+    var huStatus = document.getElementById('hu-status');
+
+    if (!audio) return;
+
+    audio.src = RMC_STREAM;
+    audio.volume = huVolume;
+    audio.play().catch(function() {
+        // Autoplay blocked — update status, user interaction will start it
+        if (huStatus) huStatus.textContent = 'CLICK TO PLAY';
+    });
+
+    function setVolume(v) {
+        huVolume = Math.max(0, Math.min(1, v));
+        if (!huMuted && !huDucked) audio.volume = huVolume;
+        huKnobAngle = -135 + (huVolume * 270);
+        if (mark) mark.style.transform = 'rotate(' + huKnobAngle + 'deg)';
+    }
+
+    function duck(on) {
+        huDucked = on;
+        if (on) {
+            audio.volume = Math.max(0, huVolume * 0.15); // duck to 15%
+            if (huStatus) huStatus.textContent = 'DUCKED';
+        } else {
+            audio.volume = huMuted ? 0 : huVolume;
+            if (huStatus) huStatus.textContent = 'ON AIR';
+        }
+    }
+    window.huDuck = duck;
+
+    // Mute button
+    if (muteBtn) {
+        muteBtn.addEventListener('click', function() {
+            huMuted = !huMuted;
+            muteBtn.classList.toggle('muted', huMuted);
+            audio.volume = huMuted ? 0 : (huDucked ? huVolume * 0.15 : huVolume);
+            if (huStatus) huStatus.textContent = huMuted ? 'MUTED' : 'ON AIR';
+        });
+    }
+
+    // Knob drag (vertical mouse drag = rotate)
+    if (knob) {
+        knob.addEventListener('mousedown', function(e) {
+            huDragging = true;
+            huDragStartY = e.clientY;
+            huDragStartAngle = huKnobAngle;
+            e.preventDefault();
+        });
+        window.addEventListener('mousemove', function(e) {
+            if (!huDragging) return;
+            var delta = (huDragStartY - e.clientY) * 0.8; // px → degrees
+            var newAngle = Math.max(-135, Math.min(135, huDragStartAngle + delta));
+            setVolume((newAngle + 135) / 270);
+        });
+        window.addEventListener('mouseup', function() { huDragging = false; });
+
+        // Touch support
+        knob.addEventListener('touchstart', function(e) {
+            huDragging = true;
+            huDragStartY = e.touches[0].clientY;
+            huDragStartAngle = huKnobAngle;
+            e.preventDefault();
+        }, { passive: false });
+        window.addEventListener('touchmove', function(e) {
+            if (!huDragging) return;
+            var delta = (huDragStartY - e.touches[0].clientY) * 0.8;
+            var newAngle = Math.max(-135, Math.min(135, huDragStartAngle + delta));
+            setVolume((newAngle + 135) / 270);
+        });
+        window.addEventListener('touchend', function() { huDragging = false; });
+    }
+
+    // Click anywhere on the unit to resume if autoplay blocked
+    var unit = document.querySelector('.head-unit');
+    if (unit) {
+        unit.addEventListener('click', function() {
+            if (audio.paused) {
+                audio.play().then(function() {
+                    if (huStatus) huStatus.textContent = 'ON AIR';
+                }).catch(function() {});
+            }
+        });
+    }
+
+    // Init knob position
+    setVolume(huVolume);
+    if (huStatus) huStatus.textContent = 'ON AIR';
+}
+
+
 function initCall() {
     var btnCall = $('btn-call');
     var btnHangup = $('btn-hangup');
@@ -885,6 +989,7 @@ function startCall() {
     if (bc) bc.disabled = true;
     if (bh) bh.disabled = false;
     if (cs) cs.textContent = 'CALLING...';
+    if (window.huDuck) window.huDuck(true);
     if (SpeechRecognition) startListening();
 }
 
@@ -894,6 +999,7 @@ function endCall() {
     if (bc) bc.disabled = false;
     if (bh) bh.disabled = true;
     if (cs) cs.textContent = 'READY';
+    if (window.huDuck) window.huDuck(false);
     if (speechRecog) speechRecog.stop();
     speechSynth.cancel();
 }
@@ -1006,6 +1112,7 @@ function startApp() {
     initRoad();
     initJoystick();
     initGear();
+    initHeadUnit();
     initCall();
     initBranchDots();
     initBranchMenus();

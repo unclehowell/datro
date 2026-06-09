@@ -100,10 +100,28 @@
                 <canvas id="avatar-canvas"></canvas>
                 <div id="call-status">READY</div>
             </div>
-            <div class="call-buttons">
-                <button id="btn-call" class="call-btn">CALL</button>
-                <button id="btn-hangup" class="hangup-btn" disabled>HANG UP</button>
+
+            <!-- HEAD UNIT -->
+            <div class="head-unit">
+                <div class="hu-screen">
+                    <div class="hu-station" id="hu-station">RADIO MONTE CARLO</div>
+                    <div class="hu-status" id="hu-status">AUTO-PLAY</div>
+                </div>
+                <div class="hu-controls">
+                    <div class="hu-knob-wrap">
+                        <div class="hu-knob" id="hu-knob">
+                            <div class="hu-knob-mark"></div>
+                        </div>
+                        <div class="hu-knob-label">VOL</div>
+                    </div>
+                    <div class="hu-call-btns">
+                        <button id="btn-call" class="call-btn">CALL</button>
+                        <button id="btn-hangup" class="hangup-btn" disabled>HANG UP</button>
+                    </div>
+                    <button class="hu-mute-btn" id="hu-mute-btn" title="Mute radio">◼</button>
+                </div>
             </div>
+            <audio id="rmc-audio" crossorigin="anonymous"></audio>
             <div class="branch-dots" id="branch-dots"></div>
             <div class="current-branch-info">
                 <span>ACTIVE_SYS: <span id="active-branch-name">---</span></span>

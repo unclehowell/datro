@@ -108,6 +108,103 @@ html, body {
     font-size: 10px; font-weight: bold; font-family: monospace;
     letter-spacing: 2px;
 }
+/* ── HEAD UNIT ── */
+.head-unit {
+    background: #070707;
+    border: 2px solid #333;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    padding: 8px 10px;
+    box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 10px rgba(200,154,78,0.05);
+}
+.hu-screen {
+    background: #010a00;
+    border: 1px solid #1a3a1a;
+    border-radius: 3px;
+    padding: 5px 10px;
+    margin-bottom: 8px;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: inset 0 0 8px rgba(0,255,0,0.08);
+}
+.hu-station {
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    color: #d4ff00;
+    text-shadow: 0 0 8px rgba(212,255,0,0.6);
+}
+.hu-status {
+    font-size: 9px;
+    color: #00ff66;
+    letter-spacing: 1px;
+    opacity: 0.7;
+    animation: hu-blink 2s step-end infinite;
+}
+@keyframes hu-blink { 0%,100%{opacity:0.7} 50%{opacity:0.2} }
+.hu-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.hu-knob-wrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+.hu-knob {
+    width: 42px; height: 42px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, #555, #1a1a1a);
+    border: 3px solid #444;
+    position: relative;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.8), inset 0 1px 3px rgba(255,255,255,0.1);
+    transition: box-shadow 0.1s;
+    user-select: none;
+}
+.hu-knob:hover { box-shadow: 0 3px 8px rgba(0,0,0,0.8), 0 0 12px rgba(200,154,78,0.3); }
+.hu-knob-mark {
+    position: absolute;
+    top: 4px; left: 50%;
+    width: 3px; height: 10px;
+    background: var(--amber);
+    border-radius: 2px;
+    box-shadow: 0 0 4px var(--amber);
+    transform-origin: 50% calc(100% + 7px);
+}
+.hu-knob-label {
+    font-size: 8px;
+    font-family: monospace;
+    color: #555;
+    letter-spacing: 2px;
+}
+.hu-call-btns {
+    flex: 1;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+}
+.hu-mute-btn {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    border: 2px solid #333;
+    background: #0a0a0a;
+    color: #555;
+    font-size: 10px;
+    cursor: pointer;
+    transition: 0.2s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.hu-mute-btn:hover { border-color: var(--amber); color: var(--amber); }
+.hu-mute-btn.muted { border-color: var(--red); color: var(--red); }
+/* ── /HEAD UNIT ── */
+
 .call-buttons {
     display: flex; gap: 10px; justify-content: center; margin-bottom: 8px;
 }
