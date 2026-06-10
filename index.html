@@ -1,86 +1,209 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#007bff"> <!-- Example: use a primary brand color -->
-    <title>DATRO Platform</title>
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="canonical" href="https://cnei.example.com">
-    <meta name="description" content="The DATRO platform provides a comprehensive suite of tools and services for efficient data operations, enabling streamlined workflows and enhanced productivity.">
-    <link rel="prefetch" href="#main-content">
-    <a href="#main-content" id="skip-to-content" class="skip-link">Skip to main content</a>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DATRO Wayback Archive v0.0.1.03</title>
+  <link rel="stylesheet" href="static/archives/_theme-explorer/style.css">
+  <link rel="stylesheet" href="static/archives/_theme-explorer/glyphicon.css">
+  <style>
+    body { background: #336; color: #ddd; font-family: sans-serif; margin: 0; padding: 1rem; }
+    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
+    .tab { padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; cursor: pointer; color: #aac; font-weight: bold; }
+    .tab.active { background: rgba(255,255,255,0.25); color: #fff; border-color: rgba(255,255,255,0.5); }
+    .tab:hover { background: rgba(255,255,255,0.2); }
+    #search { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #ddd; font-size: 1rem; box-sizing: border-box; }
+    #search::placeholder { color: #889; }
+    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
+    .item { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.5rem; text-align: center; }
+    .item img, .item video { max-width: 100%; max-height: 300px; border-radius: 4px; object-fit: contain; }
+    .item a { color: #aac; text-decoration: none; font-size: 0.85rem; display: block; margin-top: 0.3rem; word-break: break-all; }
+    .item a:hover { color: #fff; }
+    .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
+    .pagination button { padding: 0.4rem 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; color: #aac; cursor: pointer; font-weight: bold; }
+    .pagination button:hover:not(:disabled) { background: rgba(255,255,255,0.2); color: #fff; }
+    .pagination button:disabled { opacity: 0.3; cursor: default; }
+    .pagination button.active-page { background: rgba(255,255,255,0.3); color: #fff; border-color: rgba(255,255,255,0.5); }
+    .pagination .info { color: #889; font-size: 0.85rem; }
+    .count-badge { display: inline-block; background: rgba(255,255,255,0.15); border-radius: 10px; padding: 0.1rem 0.6rem; font-size: 0.8rem; margin-left: 0.3rem; }
+    .item.pdf a, .item.text a { padding: 2rem 0; display: block; font-size: 1rem; }
+    .main-title { text-align: center; color: lightslategrey; font-size: clamp(20px,6vw,33px); font-weight: bolder; margin-bottom: 0.5rem; }
+    .subtitle { text-align: center; color: #667; font-size: 0.9rem; margin-bottom: 1.5rem; }
+    .logo { display: block; margin: 0 auto 0.5rem; max-width: 90px; }
+  </style>
 </head>
 <body>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "DATRO Platform",
-  "description": "The DATRO platform provides a comprehensive suite of tools and services for efficient data operations, enabling streamlined workflows and enhanced productivity.",
-  "url": "https://cnei.example.com"
-}
-</script>
-<main id="main-content">
- \ \ \ \ <!-- Lazy-loaded images will be added here -->
-<script>
-  // Basic lazy loading polyfill or implementation would go here if browser support is a concern.
-  // For native lazy loading, no additional JS is strictly required for modern browsers.
-</script> <!-- Added ID for skip-to-content -->
-        <!-- Key Features Section -->
-<section id="key-features" aria-labelledby="key-features-heading">
-    <h2 id="key-features-heading">Key Features of the DATRO Platform</h2>
-    <div class="features-grid">
-        <div class="feature-item highlight-animated" role="button" aria-label="Automated Workflows Feature" tabindex="0" onmouseover="this.classList.add('highlight'); this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,123,255,0.3)';" onmouseout="this.classList.remove('highlight'); this.style.transform='scale(1)'; this.style.boxShadow='none';">
-            <img src="/icons/icon-automation.svg" alt="Icon representing automated workflows" aria-label="Automation workflow icon" width="48" height="48">
-            <h3>Automated Workflows</h3>
-            <p>Streamline your data operations with powerful automation capabilities.</p>
-        </div>
-<style>
-html { scroll-behavior: smooth; }
+  <p class="main-title"><img class="main-logo ml-datro" loading="lazy" alt=""><br>Wayback Archive v0.0.1.03</p>
 
-.feature-item.highlight {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
-}
-</style>
-        <div class="feature-item" role="button" tabindex="0" onmouseover="this.classList.add('highlight'); this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,123,255,0.3)';" onmouseout="this.classList.remove('highlight'); this.style.transform='scale(1)'; this.style.boxShadow='none';" onfocus="this.classList.add('focus'); this.style.outline='2px solid #0056b3';" onblur="this.classList.remove('focus'); this.style.outline='none';">
-<style>
-html { scroll-behavior: smooth; }
+  <div class="tabs" id="tabs"></div>
+  <input type="text" id="search" placeholder="Filter by hashtag or keyword...">
 
-.feature-item.focus {
-    outline: 2px solid #0056b3;
-    outline-offset: 2px;
-}
-</style>
-            <img src="/icons/icon-analytics.svg" alt="Analytics Icon" width="48" height="48">
-            <h3>Advanced Analytics</h3>
-            <p>Gain deep insights from your data with cutting-edge analytical tools.</p>
-        </div>
-        <div class="feature-item">
-            <img src="/icons/icon-collaboration.svg" alt="Collaboration Icon" width="48" height="48">
-            <h3>Seamless Collaboration</h3>
-            <p>Enhance team productivity with integrated collaboration features.</p>
-        </div>
-    </div>
-</section>
-<!-- Lazy-loaded images will be added here -->
-<script>
-  // Basic lazy loading polyfill or implementation would go here if browser support is a concern.
-  // For native lazy loading, no additional JS is strictly required for modern browsers.
-</script
-    </main>
-</main>
-<!-- Consider deferring non-critical scripts or using dynamic imports here -->
-<!-- Example: <script src="script.js" defer></script> -->
-<script async>
-  // Basic INP optimization: Ensure critical interactions are not blocked
-  // More advanced strategies might involve breaking down long tasks or using web workers.
-</script>
-</main>
-        <!-- Content will be added here -->
-    </main>
+  <div id="category-info" class="subtitle"></div>
+  <div class="gallery" id="gallery"></div>
+  <div class="pagination" id="pagination"></div>
+
+  <footer style="text-align:center;padding:1rem;font-size:0.85rem;color:#666;border-top:1px solid rgba(255,255,255,0.1);margin-top:2rem">
+    &copy; 2026 DATRO Consortium.
+  </footer>
+
+  <script>
+    (async () => {
+      const CATEGORIES = [
+        { name: 'images', label: 'Images', icon: '🖼' },
+        { name: 'pdf', label: 'PDF', icon: '📄' },
+        { name: 'text', label: 'Text', icon: '📝' }
+      ];
+      const PER_PAGE = 10;
+      let allData = {};
+      let currentCat = 'images';
+      let currentPage = 1;
+      let filtered = [];
+
+      const tabsEl = document.getElementById('tabs');
+      const searchEl = document.getElementById('search');
+      const galleryEl = document.getElementById('gallery');
+      const paginationEl = document.getElementById('pagination');
+      const infoEl = document.getElementById('category-info');
+
+      async function loadCategory(cat) {
+        const url = `wayback/${cat}/_treeview.json`;
+        const resp = await fetch(url);
+        if (!resp.ok) return [];
+        const data = await resp.json();
+        return data.map(item => ({
+          ...item,
+          _category: cat,
+          _tags: (item.name || '').toLowerCase()
+        }));
+      }
+
+      async function init() {
+        for (const cat of CATEGORIES) {
+          allData[cat.name] = await loadCategory(cat.name);
+        }
+        renderTabs();
+        switchCategory(CATEGORIES[0].name);
+      }
+
+      function renderTabs() {
+        tabsEl.innerHTML = CATEGORIES.map(c =>
+          `<div class="tab${c.name === currentCat ? ' active' : ''}" data-cat="${c.name}">${c.icon} ${c.label}<span class="count-badge">${(allData[c.name] || []).length}</span></div>`
+        ).join('');
+        tabsEl.querySelectorAll('.tab').forEach(el => {
+          el.addEventListener('click', () => {
+            switchCategory(el.dataset.cat);
+          });
+        });
+      }
+
+      function switchCategory(cat) {
+        currentCat = cat;
+        currentPage = 1;
+        document.getElementById('search').value = '';
+        tabsEl.querySelectorAll('.tab').forEach(el => {
+          el.classList.toggle('active', el.dataset.cat === cat);
+        });
+        applyFilter();
+      }
+
+      function applyFilter() {
+        const query = searchEl.value.toLowerCase().trim();
+        const items = allData[currentCat] || [];
+        if (!query) {
+          filtered = items;
+        } else {
+          filtered = items.filter(item => item._tags.includes(query));
+        }
+        infoEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''} in ${currentCat}`;
+        renderPage();
+      }
+
+      function renderPage() {
+        const total = filtered.length;
+        const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
+        if (currentPage > totalPages) currentPage = totalPages;
+        const start = (currentPage - 1) * PER_PAGE;
+        const pageItems = filtered.slice(start, start + PER_PAGE);
+
+        if (total === 0) {
+          galleryEl.innerHTML = '<p style="text-align:center;color:#667;padding:2rem">No results found.</p>';
+          paginationEl.innerHTML = '';
+          return;
+        }
+
+        galleryEl.innerHTML = pageItems.map(item => {
+          const cat = item._category;
+          const isImage = cat === 'images';
+          const ext = (item.path || '').split('.').pop().toLowerCase();
+          const isVideo = ['mp4', 'webm', 'mov', 'avi'].includes(ext);
+          let media = '';
+          if (isImage) {
+            if (['jpg','jpeg','png','gif','webp','bmp','svg'].includes(ext)) {
+              media = `<img src="${item.path}" loading="lazy" alt="${item.name}">`;
+            } else if (isVideo) {
+              media = `<video src="${item.path}" controls preload="metadata"></video>`;
+            } else {
+              media = `<a href="${item.path}" target="_blank">${item.name}</a>`;
+            }
+          } else {
+            media = `<a href="${item.path}" target="_blank">${item.name}</a>`;
+          }
+          return `<div class="item${isImage ? '' : ' ' + cat}">${media}</div>`;
+        }).join('');
+
+        renderPagination(totalPages, total);
+      }
+
+      function renderPagination(totalPages, total) {
+        if (totalPages <= 1) {
+          paginationEl.innerHTML = `<span class="info">${total} item${total !== 1 ? 's' : ''}</span>`;
+          return;
+        }
+
+        let html = `<button class="prev" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''}>Back</button>`;
+
+        const maxVisible = 9;
+        let startPage = Math.max(1, currentPage - 4);
+        let endPage = Math.min(totalPages, startPage + maxVisible - 1);
+        if (endPage - startPage < maxVisible - 1) {
+          startPage = Math.max(1, endPage - maxVisible + 1);
+        }
+        if (startPage > 1) {
+          html += `<button data-page="1">1</button>`;
+          if (startPage > 2) html += `<span class="info">...</span>`;
+        }
+        for (let i = startPage; i <= endPage; i++) {
+          html += `<button data-page="${i}" class="${i === currentPage ? 'active-page' : ''}">${i}</button>`;
+        }
+        if (endPage < totalPages) {
+          if (endPage < totalPages - 1) html += `<span class="info">...</span>`;
+          html += `<button data-page="${totalPages}">${totalPages}</button>`;
+        }
+
+        html += `<button class="next" data-page="${currentPage + 1}" ${currentPage >= totalPages ? 'disabled' : ''}>Next</button>`;
+        html += `<span class="info">Page ${currentPage} of ${totalPages}</span>`;
+
+        paginationEl.innerHTML = html;
+
+        paginationEl.querySelectorAll('button:not(:disabled)').forEach(btn => {
+          btn.addEventListener('click', () => {
+            const page = parseInt(btn.dataset.page);
+            if (!isNaN(page)) {
+              currentPage = page;
+              renderPage();
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          });
+        });
+      }
+
+      searchEl.addEventListener('input', () => {
+        currentPage = 1;
+        applyFilter();
+      });
+
+      await init();
+    })();
+  </script>
 </body>
 </html>
