@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.1.00] - Q2/2026
+Jun-10 - Added bpvsbuckler static website with emoji media icons (📧📄🖼️▶️) and modal popup gallery.
+Jun-10 - Updated _treeview.json files to point to wayback.datro.xyz URLs.
+Jun-10 - Added bpvsbuckler branch to auto-release workflow.
+
 ## [0.0.1.09] - Q2/2026
 Apr-27 - Fixed dist/submit-claim.ts to align with functions/ version and API V3 spec (addresses as array, signature as data URL, include title).
 Apr-27 - Added device_session_id to upstream R2R payload to preserve anti-fraud field from form.

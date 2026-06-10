@@ -6,7 +6,8 @@ on:
       - gh-pages
       - carfinancecheque
       - pirateclaw
-  workflow_dispatch:
+      - bpvsbuckler
+    workflow_dispatch:
 
 permissions:
   contents: write
@@ -37,6 +38,8 @@ jobs:
             echo "tag_name=pirateclaw-v$VERSION" >> $GITHUB_OUTPUT
           elif [[ "$BRANCH" == "carfinancecheque" ]]; then
             echo "tag_name=carfinancecheque-v$VERSION" >> $GITHUB_OUTPUT
+          elif [[ "$BRANCH" == "bpvsbuckler" ]]; then
+            echo "tag_name=bpvsbuckler-v$VERSION" >> $GITHUB_OUTPUT
           else
             echo "tag_name=v$VERSION" >> $GITHUB_OUTPUT
           fi
