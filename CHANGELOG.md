@@ -1,5 +1,29 @@
 # Changelog
 
+## [command-V0.0.2.00] - 2026-06-11
+
+### Added
+- feat(command): Jarvis voice-agent integration in COMMAND Cockpit
+  - Voice-agent chat replaces avatar/call-buttons area in center console
+  - Call/hang-up toggle with RMC2 auto-mute (capped at 10% volume during calls)
+  - "yep" greeting enforced via GREETING.md system prompt override
+  - Speech recognition with 2-second auto-submit on silence
+  - Agent replies as TTS audio + text response
+  - Chat history persisted in localStorage
+- docs(command): GREETING.md — forced greeting instruction for LLM override
+- ux(command): Semantic version displayed above login screen
+- infra(command): RMC2 stream URL updated to official RCS endpoint
+
+### Changed
+- ux(command): Center console redesigned — Jarvis chat fills majority of virtual stereo screen
+- ux(command): RMC2 controls collapsed to 1-line footer (volume slider, mute, ON AIR status)
+- ux(command): Volume knob replaced with horizontal draggable slider
+- ux(command): Call button moved to footer alongside RMC2 controls
+- ux(command): Voice mute toggle moved to chat input bar
+
+### Fixed
+- fix(command): RMC2 stream URL corrected for reliable playback
+
 ## [cnei-v0.0.0.48] - 2026-06-04
 
 ### Fixed

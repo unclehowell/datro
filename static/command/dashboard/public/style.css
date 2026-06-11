@@ -87,135 +87,236 @@ html, body {
     background: #0f0f0f;
     border: 6px solid #222;
     border-style: double;
-    padding: 10px;
+    padding: 0;
     display: flex; flex-direction: column;
     box-shadow: inset 0 0 30px rgba(0, 255, 102, 0.05);
     transform: rotateY(-5deg);
     z-index: 20;
 }
-#avatar-screen {
-    width: 100%; height: 120px;
-    background: #010801;
-    border: 2px solid #333;
-    border-radius: 4px;
-    position: relative;
-    overflow: hidden;
-    margin-bottom: 8px;
-}
-#avatar-canvas { width: 100%; height: 100%; display: block; }
-#call-status {
-    position: absolute; bottom: 5px; width: 100%; text-align: center;
-    font-size: 10px; font-weight: bold; font-family: monospace;
-    letter-spacing: 2px;
-}
-/* ── HEAD UNIT ── */
-.head-unit {
-    background: #070707;
-    border: 2px solid #333;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    padding: 8px 10px;
-    box-shadow: inset 0 0 20px rgba(0,0,0,0.8), 0 0 10px rgba(200,154,78,0.05);
-}
-.hu-screen {
-    background: #010a00;
-    border: 1px solid #1a3a1a;
-    border-radius: 3px;
-    padding: 5px 10px;
-    margin-bottom: 8px;
-    font-family: 'Courier New', monospace;
+/* ── JARVIS CHAT ── */
+#jarvis-header {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    box-shadow: inset 0 0 8px rgba(0,255,0,0.08);
+    gap: 8px;
+    padding: 6px 10px;
+    background: #0a1018;
+    border-bottom: 1px solid #1a3a54;
+    flex-shrink: 0;
 }
-.hu-station {
+#jarvis-header .dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: #00e676;
+    animation: jarvis-pulse 2s infinite;
+}
+@keyframes jarvis-pulse { 0%,100%{opacity:1} 50%{opacity:.3} }
+.jarvis-title {
     font-size: 11px;
+    color: #5bc8f5;
+    letter-spacing: 3px;
     font-weight: bold;
-    letter-spacing: 2px;
-    color: #d4ff00;
-    text-shadow: 0 0 8px rgba(212,255,0,0.6);
 }
-.hu-status {
+.jarvis-status {
+    margin-left: auto;
     font-size: 9px;
+    color: #335;
+    letter-spacing: 1px;
+}
+#jarvis-messages {
+    flex: 1;
+    overflow-y: auto;
+    padding: 8px 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    min-height: 0;
+    background: #050a0f;
+}
+#jarvis-messages::-webkit-scrollbar { width: 3px; }
+#jarvis-messages::-webkit-scrollbar-track { background: transparent; }
+#jarvis-messages::-webkit-scrollbar-thumb { background: rgba(200,154,78,0.3); border-radius: 2px; }
+.jarvis-msg {
+    max-width: 85%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    line-height: 1.5;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-size: 11px;
+}
+.jarvis-msg.user {
+    align-self: flex-end;
+    background: #0f2d4a;
+    color: #d0eaff;
+}
+.jarvis-msg.jarvis {
+    align-self: flex-start;
+    background: #0c1620;
+    border: 1px solid #1a3a54;
+    color: #a8cce0;
+}
+.jarvis-lbl {
+    font-size: 9px;
+    color: #5bc8f5;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+}
+#jarvis-bar {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    background: #0a1018;
+    border-top: 1px solid #1a3a54;
+    border-bottom: 1px solid #111;
+    flex-shrink: 0;
+}
+#jarvis-txt {
+    flex: 1;
+    background: #0c1620;
+    border: 1px solid #1a3a54;
+    color: #c8dce8;
+    padding: 6px 10px;
+    border-radius: 6px;
+    font-size: 11px;
+    outline: none;
+    resize: none;
+    font-family: inherit;
+    min-height: 28px;
+    max-height: 60px;
+}
+#jarvis-txt:focus { border-color: #5bc8f5; }
+.jarvis-send-btn {
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 10px;
+    padding: 6px 12px;
+    background: #1a4a6e;
+    color: #5bc8f5;
+    font-weight: bold;
+    letter-spacing: 1px;
+    transition: background 0.15s;
+}
+.jarvis-send-btn:hover { background: #235a82; }
+.jarvis-call-btn {
+    background: transparent;
+    color: #00e676;
+    border: 1px solid #00e676;
+    font-size: 9px;
+    padding: 3px 8px;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+    transition: 0.15s;
+}
+.jarvis-call-btn:hover { background: rgba(0,230,118,0.1); }
+.jarvis-call-btn.active {
+    border-color: #ff4444;
+    color: #ff4444;
+}
+.jarvis-call-btn.active:hover { background: rgba(255,68,68,0.1); }
+.jarvis-mute-btn {
+    background: transparent;
+    color: #555;
+    padding: 4px;
+    border-radius: 4px;
+    cursor: pointer;
+    border: 1px solid #333;
+    font-size: 11px;
+    width: 26px;
+    height: 26px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: 0.15s;
+}
+.jarvis-mute-btn:hover { border-color: #888; color: #aaa; }
+.jarvis-mute-btn.muted { border-color: var(--red); color: var(--red); }
+/* ── HU FOOTER (RMC2 controls + call toggle, 1 line) ── */
+.hu-footer {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 4px 8px;
+    background: #0a0a0a;
+    border-top: 1px solid #222;
+    flex-shrink: 0;
+    min-height: 28px;
+}
+.hu-vol-wrap {
+    position: relative;
+    flex: 1;
+    min-width: 60px;
+    height: 16px;
+    cursor: pointer;
+    user-select: none;
+}
+.hu-vol-track {
+    position: absolute;
+    top: 6px; left: 0; right: 20px;
+    height: 4px;
+    background: #1a2a1a;
+    border-radius: 2px;
+}
+.hu-vol-fill {
+    height: 100%;
+    width: 70%;
+    background: #d4ff00;
+    border-radius: 2px;
+    box-shadow: 0 0 6px rgba(212,255,0,0.4);
+}
+.hu-vol-knob {
+    position: absolute;
+    top: 2px;
+    width: 12px; height: 12px;
+    background: #d4ff00;
+    border-radius: 50%;
+    left: calc(70% - 6px);
+    box-shadow: 0 0 8px rgba(212,255,0,0.5);
+    pointer-events: none;
+}
+.hu-vol-pct {
+    position: absolute;
+    right: 2px;
+    top: 0;
+    font-size: 8px;
+    font-family: monospace;
+    color: #555;
+    line-height: 16px;
+}
+.hu-status-txt {
+    font-size: 8px;
+    font-family: monospace;
     color: #00ff66;
     letter-spacing: 1px;
+    min-width: 32px;
+    text-align: right;
     opacity: 0.7;
     animation: hu-blink 2s step-end infinite;
 }
 @keyframes hu-blink { 0%,100%{opacity:0.7} 50%{opacity:0.2} }
-.hu-controls {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-.hu-knob-wrap {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-}
-.hu-knob {
-    width: 42px; height: 42px;
-    border-radius: 50%;
-    background: radial-gradient(circle at 35% 35%, #555, #1a1a1a);
-    border: 3px solid #444;
-    position: relative;
-    cursor: pointer;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.8), inset 0 1px 3px rgba(255,255,255,0.1);
-    transition: box-shadow 0.1s;
-    user-select: none;
-}
-.hu-knob:hover { box-shadow: 0 3px 8px rgba(0,0,0,0.8), 0 0 12px rgba(200,154,78,0.3); }
-.hu-knob-mark {
-    position: absolute;
-    top: 4px; left: 50%;
-    width: 3px; height: 10px;
-    background: var(--amber);
-    border-radius: 2px;
-    box-shadow: 0 0 4px var(--amber);
-    transform-origin: 50% calc(100% + 7px);
-}
-.hu-knob-label {
-    font-size: 8px;
-    font-family: monospace;
-    color: #555;
-    letter-spacing: 2px;
-}
-.hu-call-btns {
-    flex: 1;
-    display: flex;
-    gap: 8px;
-    justify-content: center;
-}
 .hu-mute-btn {
-    width: 28px; height: 28px;
+    width: 22px; height: 22px;
     border-radius: 50%;
-    border: 2px solid #333;
+    border: 1px solid #333;
     background: #0a0a0a;
     color: #555;
-    font-size: 10px;
+    font-size: 9px;
     cursor: pointer;
     transition: 0.2s;
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-shrink: 0;
 }
 .hu-mute-btn:hover { border-color: var(--amber); color: var(--amber); }
 .hu-mute-btn.muted { border-color: var(--red); color: var(--red); }
-/* ── /HEAD UNIT ── */
-
-.call-buttons {
-    display: flex; gap: 10px; justify-content: center; margin-bottom: 8px;
-}
-.call-btn, .hangup-btn {
-    padding: 6px 20px; border-radius: 4px; font-size: 12px; font-weight: 900;
-    font-family: monospace; cursor: pointer; border: 2px solid #333;
-    background: #111; color: var(--text); transition: 0.2s;
-}
-.call-btn:hover:not(:disabled) { border-color: var(--green); color: var(--green); }
-.hangup-btn:hover:not(:disabled) { border-color: var(--red); color: var(--red); }
 button:disabled { opacity: 0.3; cursor: not-allowed; }
+/* ── /HU FOOTER ── */
 .branch-dots {
     display: flex; flex-wrap: wrap; gap: 4px; justify-content: center;
     margin-top: 5px; padding: 5px; background: rgba(0,0,0,0.3); border-radius: 4px;
@@ -627,6 +728,14 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     border: 1px solid rgba(200,154,78,0.2);
     box-shadow: 0 0 60px rgba(0,0,0,0.9);
     text-align: center;
+}
+.login-version {
+    font-size: 9px;
+    font-family: monospace;
+    color: rgba(200,154,78,0.25);
+    text-align: right;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
 }
 .login-title {
     font-size: 14px;

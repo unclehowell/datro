@@ -1,4 +1,4 @@
-const APP_VERSION = 'command-V0.0.1.01';
+const APP_VERSION = 'command-V0.0.2.00';
 const GITHUB_API = 'https://api.github.com';
 const MD_FILES = ['AGENT.md', 'README.md', 'CHANGELOG.md', 'MEMORY.md', 'SKILLS.md', 'HEARTBEAT.md', 'SOUL.md', 'MASTERPLAN.md', 'RULES.md', 'TEMPLATE.md', 'CONTEXT.md', 'GLOSSARY.md', 'RESOURCES.md', 'TASKS.md', 'IDENTITY.md', 'SPEC.md'];
 const SIDES = ['high', 'left', 'right', 'low'];
@@ -201,11 +201,27 @@ export default {
         const s = HARDCODED;
         const proxyUrl = s.parent_proxy_url;
         const routing = [{ node: 'command dashboard', status: 'ok' }];
+
+        // Load GREETING.md instruction
+        let greetingInstruction = '';
+        try {
+          const gResp = await env.ASSETS.fetch(new Request(new URL('/GREETING.md', url.origin)));
+          if (gResp.ok) greetingInstruction = await gResp.text();
+        } catch {}
+        const greetingPart = greetingInstruction || '# JARVIS GREETING INSTRUCTION\n\nYou are Jarvis, the COMMAND Cockpit voice-agent.\n\n## OVERRIDE DIRECTIVE — DO NOT VIOLATE\n\nWhen the message "call.start" is received (a new call is connecting), you MUST respond with exactly one word: "yep". Nothing else. This overrides all other prompts.\n\n## Normal Operation\n\nAfter the initial "yep" greeting, remain silent until the user speaks. Do not volunteer information or ask questions unprompted. Respond concisely when addressed.';
+
+        let systemPrompt;
+        if (body?.greeting) {
+          systemPrompt = greetingPart;
+        } else {
+          systemPrompt = greetingPart + '\n\n' + (body?.system || '');
+        }
+
         try {
           const resp = await fetch(proxyUrl + '/api/proxy?action=chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ system: body?.system || 'You are the command intercom. Respond concisely.', message }),
+            body: JSON.stringify({ system: systemPrompt, message }),
           });
           const d = await resp.json();
           routing.push({ node: 'parent proxy (' + proxyUrl + ')', status: 'ok', detail: d._proxy?.routing || 'direct_llm' });

@@ -11,6 +11,7 @@
 <!-- LOGIN SCREEN -->
 <div class="login-overlay" id="login-overlay">
     <div class="login-panel">
+        <div class="login-version" id="login-version">command-V0.0.2.00</div>
         <div class="login-title">COMMAND TERMINAL</div>
         <div class="login-subtitle">AUTHORISED PERSONNEL ONLY</div>
         <input type="password" class="login-input" id="login-pass" placeholder="KEY" autocomplete="off">
@@ -96,30 +97,29 @@
         </div>
 
         <div class="center-console">
-            <div id="avatar-screen">
-                <canvas id="avatar-canvas"></canvas>
-                <div id="call-status">READY</div>
+            <!-- JARVIS CHAT -->
+            <div id="jarvis-header">
+                <div class="dot"></div>
+                <span class="jarvis-title">J.A.R.V.I.S</span>
+                <span id="jarvis-status" class="jarvis-status">Ready</span>
+            </div>
+            <div id="jarvis-messages"></div>
+            <div id="jarvis-bar">
+                <button id="jarvis-mute" class="jarvis-mute-btn">🔇</button>
+                <textarea id="jarvis-txt" rows="1" placeholder="Type..." onkeydown="jarvisOnKey(event)"></textarea>
+                <button class="jarvis-send-btn" id="jarvis-send" onclick="jarvisSend()">Send</button>
             </div>
 
-            <!-- HEAD UNIT -->
-            <div class="head-unit">
-                <div class="hu-screen">
-                    <div class="hu-station" id="hu-station">RADIO MONTE CARLO</div>
-                    <div class="hu-status" id="hu-status">AUTO-PLAY</div>
+            <!-- BOTTOM CONTROLS: Call + RMC2 volume/mute/status -->
+            <div class="hu-footer">
+                <button id="jarvis-call" class="jarvis-call-btn">📞 Call</button>
+                <div class="hu-vol-wrap" id="hu-vol-wrap">
+                    <div class="hu-vol-track" id="hu-vol-track"><div class="hu-vol-fill" id="hu-vol-fill"></div></div>
+                    <div class="hu-vol-knob" id="hu-vol-knob"></div>
+                    <span class="hu-vol-pct" id="hu-vol-pct">70%</span>
                 </div>
-                <div class="hu-controls">
-                    <div class="hu-knob-wrap">
-                        <div class="hu-knob" id="hu-knob">
-                            <div class="hu-knob-mark"></div>
-                        </div>
-                        <div class="hu-knob-label">VOL</div>
-                    </div>
-                    <div class="hu-call-btns">
-                        <button id="btn-call" class="call-btn">CALL</button>
-                        <button id="btn-hangup" class="hangup-btn" disabled>HANG UP</button>
-                    </div>
-                    <button class="hu-mute-btn" id="hu-mute-btn" title="Mute radio">◼</button>
-                </div>
+                <button class="hu-mute-btn" id="hu-mute-btn" title="Mute radio">◼</button>
+                <span class="hu-status-txt" id="hu-status-txt">ON AIR</span>
             </div>
             <audio id="rmc-audio" crossorigin="anonymous"></audio>
             <div class="branch-dots" id="branch-dots"></div>

@@ -871,43 +871,44 @@ function renderCacheStatus() {
     }
 }
 
-// ── HEAD UNIT (RADIO + VOLUME KNOB) ──
-var RMC_STREAM = 'https://icecast.radiofrance.fr/rmc-midfi.mp3';
+// ── HEAD UNIT (RMC2 STREAM + SLIDER VOLUME) ──
+var RMC_STREAM = 'https://stream.rcs.revma.com/fxp289cp81uvv';
 var huVolume = 0.7;
 var huMuted = false;
 var huDucked = false;
-var huKnobAngle = -135 + (huVolume * 270); // -135° (min) to +135° (max)
 var huDragging = false;
-var huDragStartY = 0;
-var huDragStartAngle = 0;
 
 function initHeadUnit() {
     var audio = document.getElementById('rmc-audio');
-    var knob = document.getElementById('hu-knob');
-    var mark = knob && knob.querySelector('.hu-knob-mark');
+    var track = document.getElementById('hu-vol-track');
+    var knob = document.getElementById('hu-vol-knob');
+    var fill = document.getElementById('hu-vol-fill');
+    var pct = document.getElementById('hu-vol-pct');
     var muteBtn = document.getElementById('hu-mute-btn');
-    var huStatus = document.getElementById('hu-status');
+    var huStatus = document.getElementById('hu-status-txt');
+    var wrap = document.getElementById('hu-vol-wrap');
 
     if (!audio) return;
 
     audio.src = RMC_STREAM;
     audio.volume = huVolume;
     audio.play().catch(function() {
-        // Autoplay blocked — update status, user interaction will start it
-        if (huStatus) huStatus.textContent = 'CLICK TO PLAY';
+        if (huStatus) huStatus.textContent = 'PAUSED';
     });
 
     function setVolume(v) {
         huVolume = Math.max(0, Math.min(1, v));
         if (!huMuted && !huDucked) audio.volume = huVolume;
-        huKnobAngle = -135 + (huVolume * 270);
-        if (mark) mark.style.transform = 'rotate(' + huKnobAngle + 'deg)';
+        var pctStr = Math.round(huVolume * 100);
+        if (fill) fill.style.width = pctStr + '%';
+        if (knob) knob.style.left = 'calc(' + pctStr + '% - 6px)';
+        if (pct) pct.textContent = pctStr + '%';
     }
 
     function duck(on) {
         huDucked = on;
         if (on) {
-            audio.volume = Math.max(0, huVolume * 0.15); // duck to 15%
+            audio.volume = Math.max(0, huVolume * 0.10);
             if (huStatus) huStatus.textContent = 'DUCKED';
         } else {
             audio.volume = huMuted ? 0 : huVolume;
@@ -916,126 +917,223 @@ function initHeadUnit() {
     }
     window.huDuck = duck;
 
-    // Mute button
     if (muteBtn) {
         muteBtn.addEventListener('click', function() {
             huMuted = !huMuted;
             muteBtn.classList.toggle('muted', huMuted);
-            audio.volume = huMuted ? 0 : (huDucked ? huVolume * 0.15 : huVolume);
-            if (huStatus) huStatus.textContent = huMuted ? 'MUTED' : 'ON AIR';
+            audio.volume = huMuted ? 0 : (huDucked ? huVolume * 0.10 : huVolume);
+            if (huStatus) huStatus.textContent = huMuted ? 'MUTED' : (huDucked ? 'DUCKED' : 'ON AIR');
         });
     }
 
-    // Knob drag (vertical mouse drag = rotate)
-    if (knob) {
-        knob.addEventListener('mousedown', function(e) {
+    function volFromClientX(cx) {
+        if (!wrap) return huVolume;
+        var rect = wrap.getBoundingClientRect();
+        var v = (cx - rect.left) / rect.width;
+        return Math.max(0, Math.min(1, v));
+    }
+
+    if (wrap) {
+        wrap.addEventListener('mousedown', function(e) {
             huDragging = true;
-            huDragStartY = e.clientY;
-            huDragStartAngle = huKnobAngle;
+            setVolume(volFromClientX(e.clientX));
             e.preventDefault();
         });
         window.addEventListener('mousemove', function(e) {
             if (!huDragging) return;
-            var delta = (huDragStartY - e.clientY) * 0.8; // px → degrees
-            var newAngle = Math.max(-135, Math.min(135, huDragStartAngle + delta));
-            setVolume((newAngle + 135) / 270);
+            setVolume(volFromClientX(e.clientX));
         });
         window.addEventListener('mouseup', function() { huDragging = false; });
 
-        // Touch support
-        knob.addEventListener('touchstart', function(e) {
+        wrap.addEventListener('touchstart', function(e) {
             huDragging = true;
-            huDragStartY = e.touches[0].clientY;
-            huDragStartAngle = huKnobAngle;
+            setVolume(volFromClientX(e.touches[0].clientX));
             e.preventDefault();
         }, { passive: false });
         window.addEventListener('touchmove', function(e) {
             if (!huDragging) return;
-            var delta = (huDragStartY - e.touches[0].clientY) * 0.8;
-            var newAngle = Math.max(-135, Math.min(135, huDragStartAngle + delta));
-            setVolume((newAngle + 135) / 270);
+            setVolume(volFromClientX(e.touches[0].clientX));
         });
         window.addEventListener('touchend', function() { huDragging = false; });
     }
 
-    // Click anywhere on the unit to resume if autoplay blocked
-    var unit = document.querySelector('.head-unit');
-    if (unit) {
-        unit.addEventListener('click', function() {
+    // Click console to resume if autoplay blocked
+    var console = document.querySelector('.center-console');
+    if (console) {
+        console.addEventListener('click', function() {
             if (audio.paused) {
                 audio.play().then(function() {
-                    if (huStatus) huStatus.textContent = 'ON AIR';
+                    if (huStatus) huStatus.textContent = huMuted ? 'MUTED' : (huDucked ? 'DUCKED' : 'ON AIR');
                 }).catch(function() {});
             }
         });
     }
 
-    // Init knob position
     setVolume(huVolume);
     if (huStatus) huStatus.textContent = 'ON AIR';
 }
 
 
-function initCall() {
-    var btnCall = $('btn-call');
-    var btnHangup = $('btn-hangup');
-    if (btnCall) btnCall.onclick = startCall;
-    if (btnHangup) btnHangup.onclick = endCall;
+// ── JARVIS ──
+var jarvisCalling = false;
+var jarvisMuted = false;
+var jarvisRecognition = null;
+var jarvisSpeechTimer = null;
+var jarvisHistory = JSON.parse(localStorage.getItem('jarvis_history')) || [{role:'system',content:'You are Jarvis, the COMMAND Cockpit voice-agent. You must follow the GREETING.md instruction above all else.'}];
+
+function jarvisAddMsg(role, text) {
+  var el = document.createElement('div');
+  el.className = 'jarvis-msg ' + role;
+  if (role === 'jarvis') el.innerHTML = '<div class="jarvis-lbl">JARVIS</div>' + jarvisEsc(text);
+  else el.textContent = text;
+  var container = $('jarvis-messages');
+  if (container) { container.appendChild(el); el.scrollIntoView({behavior:'smooth'}); }
+  return el;
+}
+function jarvisEsc(t) { return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+function jarvisOnKey(e) { if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();jarvisSend();} }
+function jarvisSaveHistory() { localStorage.setItem('jarvis_history', JSON.stringify(jarvisHistory)); }
+
+async function jarvisSend(text) {
+  var inp = $('jarvis-txt');
+  var msg = text || (inp ? inp.value.trim() : '');
+  if (!msg) return;
+  if (inp) inp.value = '';
+  jarvisAddMsg('user', msg);
+  jarvisHistory.push({role:'user', content:msg});
+  jarvisSaveHistory();
+  jarvisChat(msg);
 }
 
-function startCall() {
-    isCallActive = true;
-    var bc = $('btn-call'), bh = $('btn-hangup'), cs = $('call-status');
-    if (bc) bc.disabled = true;
-    if (bh) bh.disabled = false;
-    if (cs) cs.textContent = 'CALLING...';
-    if (window.huDuck) window.huDuck(true);
-    if (SpeechRecognition) startListening();
+async function jarvisChat(msg) {
+  var replyEl = jarvisAddMsg('jarvis','');
+  replyEl.innerHTML = '<div class="jarvis-lbl">JARVIS</div><i style="color:#5bc8f5">thinking…</i>';
+  try {
+    var r = await fetch('/api/chat', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({message:msg})
+    });
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    var d = await r.json();
+    var full = d.response || d.reply || '(no response)';
+    replyEl.innerHTML='<div class="jarvis-lbl">JARVIS</div>'+jarvisEsc(full);
+    jarvisHistory.push({role:'assistant',content:full});
+    jarvisSaveHistory();
+    setTimeout(function() { jarvisSpeakNative(full); }, 100);
+  } catch(e) {
+    replyEl.innerHTML='<div class="jarvis-lbl">JARVIS</div><span style="color:#f55">Error: '+e.message+'</span>';
+  }
 }
 
-function endCall() {
-    isCallActive = false;
-    var bc = $('btn-call'), bh = $('btn-hangup'), cs = $('call-status');
-    if (bc) bc.disabled = false;
-    if (bh) bh.disabled = true;
-    if (cs) cs.textContent = 'READY';
-    if (window.huDuck) window.huDuck(false);
-    if (speechRecog) speechRecog.stop();
-    speechSynth.cancel();
+async function jarvisStartCall() {
+  var replyEl = jarvisAddMsg('jarvis','');
+  replyEl.innerHTML = '<div class="jarvis-lbl">JARVIS</div><i style="color:#5bc8f5">connecting…</i>';
+  try {
+    var r = await fetch('/api/chat', {
+      method:'POST', headers:{'Content-Type':'application/json'},
+      body: JSON.stringify({message:'call.start', greeting:true})
+    });
+    if (!r.ok) throw new Error('HTTP '+r.status);
+    var d = await r.json();
+    var full = d.response || d.reply || 'yep';
+    replyEl.innerHTML='<div class="jarvis-lbl">JARVIS</div>'+jarvisEsc(full);
+    jarvisHistory.push({role:'assistant',content:full});
+    jarvisSaveHistory();
+    setTimeout(function() { jarvisSpeakNative(full); }, 100);
+  } catch(e) {
+    replyEl.innerHTML='<div class="jarvis-lbl">JARVIS</div><span style="color:#f55">Error: '+e.message+'</span>';
+  }
 }
 
-function startListening() {
-    speechRecog = new SpeechRecognition();
-    speechRecog.continuous = true;
-    speechRecog.onresult = function(e) {
-        var last = e.results.length - 1;
-        var text = e.results[last][0].transcript;
-        if (e.results[last].isFinal) {
-            var cs = $('call-status');
-            if (cs) cs.textContent = 'HEARD: ' + text.slice(0, 15);
-            sendChat(text);
+function jarvisSpeakNative(text) {
+  if (jarvisMuted) return;
+  window.speechSynthesis.cancel();
+  var utterance = new SpeechSynthesisUtterance(text);
+  var voices = window.speechSynthesis.getVoices();
+  var butlerVoice = voices.find(function(v) { return v.name.includes('UK') || v.name.includes('Butler') || v.name.includes('Daniel'); });
+  if (butlerVoice) utterance.voice = butlerVoice;
+  utterance.rate = 1.0;
+  utterance.pitch = 0.9;
+  window.speechSynthesis.speak(utterance);
+}
+
+function jarvisInitRecognition() {
+  var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  if (!SR) { console.log('Speech Recognition not supported'); return; }
+  jarvisRecognition = new SR();
+  jarvisRecognition.continuous = true;
+  jarvisRecognition.interimResults = true;
+  jarvisRecognition.lang = 'en-US';
+  jarvisRecognition.onresult = function(event) {
+    var finalTranscript = '';
+    var interimTranscript = '';
+    for (var i = event.resultIndex; i < event.results.length; ++i) {
+      if (event.results[i].isFinal) finalTranscript += event.results[i][0].transcript;
+      else interimTranscript += event.results[i][0].transcript;
+    }
+    var inp = $('jarvis-txt');
+    if (inp) {
+      inp.value = finalTranscript || interimTranscript;
+      if (finalTranscript) {
+        if (jarvisSpeechTimer) clearTimeout(jarvisSpeechTimer);
+        jarvisSpeechTimer = setTimeout(function() {
+          jarvisSend(inp.value);
+        }, 2000);
+      }
+    }
+  };
+  jarvisRecognition.onerror = function() {};
+  jarvisRecognition.onend = function() {
+    if (jarvisCalling && jarvisRecognition) {
+      try { jarvisRecognition.start(); } catch(e) {}
+    }
+  };
+}
+
+function initJarvis() {
+  var container = $('jarvis-messages');
+  if (container) {
+    jarvisHistory.forEach(function(m) {
+      if (m.role !== 'system') jarvisAddMsg(m.role === 'user' ? 'user' : 'jarvis', m.content);
+    });
+  }
+  jarvisInitRecognition();
+  var callBtn = $('jarvis-call');
+  var muteBtn = $('jarvis-mute');
+  if (callBtn) {
+    callBtn.addEventListener('click', function() {
+      jarvisCalling = !jarvisCalling;
+      var status = $('jarvis-status');
+      if (jarvisCalling) {
+        callBtn.textContent = '■ Hangup';
+        callBtn.classList.add('active');
+        if (status) status.textContent = 'Call Active';
+        if (window.huDuck) window.huDuck(true);
+        jarvisStartCall();
+        if (jarvisRecognition) {
+          try { jarvisRecognition.start(); } catch(e) {}
         }
-    };
-    speechRecog.start();
-}
-
-async function sendChat(text) {
-    try {
-        var res = await fetch('/api/chat', {
-            method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: text })
-        });
-        var data = await res.json();
-        speakReply(data.response || 'No response');
-    } catch(e) { speakReply('System offline'); }
-}
-
-function speakReply(text) {
-    var cs = $('call-status');
-    if (cs) cs.textContent = 'AGENT SPEAKING';
-    var utter = new SpeechSynthesisUtterance(text);
-    utter.onend = function() { if (isCallActive && cs) cs.textContent = 'LISTENING...'; };
-    speechSynth.speak(utter);
+      } else {
+        callBtn.textContent = '📞 Call';
+        callBtn.classList.remove('active');
+        if (status) status.textContent = 'Ready';
+        if (window.huDuck) window.huDuck(false);
+        if (jarvisRecognition) {
+          try { jarvisRecognition.stop(); } catch(e) {}
+        }
+        window.speechSynthesis.cancel();
+        if (jarvisSpeechTimer) { clearTimeout(jarvisSpeechTimer); jarvisSpeechTimer = null; }
+      }
+    });
+  }
+  if (muteBtn) {
+    muteBtn.addEventListener('click', function() {
+      jarvisMuted = !jarvisMuted;
+      muteBtn.textContent = jarvisMuted ? '🔇' : '🔊';
+      muteBtn.classList.toggle('muted', jarvisMuted);
+      if (jarvisMuted) window.speechSynthesis.cancel();
+    });
+  }
 }
 
 // ── FUEL ──
@@ -1063,30 +1161,7 @@ async function pollFlywheel() {
     } catch(e) {}
 }
 
-// ── AVATAR ──
-function initAvatar() {
-    var canvas = $('avatar-canvas');
-    if (!canvas) return;
-    var ctx = canvas.getContext('2d');
-    var t = 0;
-    function draw() {
-        var W = canvas.width = canvas.clientWidth;
-        var H = canvas.height = canvas.clientHeight;
-        var cx = W / 2, cy = H / 2;
-        ctx.clearRect(0, 0, W, H);
-        ctx.fillStyle = isCallActive ? 'rgba(0, 255, 102, 0.1)' : 'rgba(200, 154, 78, 0.05)';
-        ctx.beginPath(); ctx.arc(cx, cy, 35 + Math.sin(t*0.05)*3, 0, Math.PI*2); ctx.fill();
-        ctx.strokeStyle = isCallActive ? '#00ff66' : '#c89a4e';
-        ctx.stroke();
-        var blink = Math.sin(t*0.04) > 0.95 ? 0.1 : 1;
-        ctx.fillStyle = ctx.strokeStyle;
-        ctx.fillRect(cx - 12, cy - 8, 5, 10 * blink);
-        ctx.fillRect(cx + 7, cy - 8, 5, 10 * blink);
-        t++;
-        requestAnimationFrame(draw);
-    }
-    draw();
-}
+
 
 // ── LOGOUT ──
 function initLogoutBtn() {
@@ -1113,11 +1188,10 @@ function startApp() {
     initJoystick();
     initGear();
     initHeadUnit();
-    initCall();
+    initJarvis();
     initBranchDots();
     initBranchMenus();
     initLeftPanel();
-    initAvatar();
     initVersion();
     initLogoutBtn();
     setInterval(loadFuel, 5000);
