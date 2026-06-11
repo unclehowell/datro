@@ -51,24 +51,27 @@ export const config: Config<Props> = {
       render: ({ filterTag }) => {
         const [counts, setCounts] = React.useState({ text: 0, pdf: 0, image: 0, video: 0 });
         
-        React.useEffect(() => {
-          const fetchCounts = async () => {
-            const types = ['text', 'pdf', 'image', 'video'];
-            const newCounts: any = {};
-            for (const type of types) {
-              try {
-                const response = await fetch(`${WAYBACK_BASE}/${type === 'image' ? 'images' : type}/_treeview.json`);
-                const data = await response.json();
-                const filtered = data.filter((item: any) => item.name && item.name.includes('#' + filterTag));
-                newCounts[type] = filtered.length;
-              } catch (e) {
-                newCounts[type] = 0;
-              }
-            }
-            setCounts(newCounts);
-          };
-          fetchCounts();
-        }, [filterTag]);
+React.useEffect(() => {
+           const fetchCounts = async () => {
+             const types = ['text', 'pdf', 'image', 'video'];
+             const newCounts: any = {};
+             for (const type of types) {
+               try {
+                 const endpoint = type === 'image' ? 'wayback/images' : `wayback/${type}`;
+                 const response = await fetch(`${WAYBACK_BASE}/${endpoint}/_treeview.json`);
+                 const data = await response.json();
+                 const filtered = data.filter((item: any) => 
+                   item.name && (item.name.includes('#' + filterTag) || item.name.toLowerCase().includes(filterTag.toLowerCase()))
+                 );
+                 newCounts[type] = filtered.length;
+               } catch (e) {
+                 newCounts[type] = 0;
+               }
+             }
+             setCounts(newCounts);
+           };
+           fetchCounts();
+         }, [filterTag]);
         
         return (
           <div className="flex gap-4 justify-center my-8 flex-wrap">
