@@ -6,6 +6,11 @@ and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
+## [0.0.1.01] - Q2/2026
+Jun-11 - Added emoji media icons (📧📄🖼️▶️) on all 3 slides of bpvsbuckler archive website.
+Jun-11 - Added modal popup gallery to view files from wayback.datro.xyz filtered by #bpvsbuckler tag.
+Jun-11 - Updated index.html to fetch data from wayback.datro.xyz/wayback/{type}/_treeview.json endpoint.
+
 ## [0.0.1.00] - Q2/2026
 Jun-10 - Added bpvsbuckler static website with emoji media icons (📧📄🖼️▶️) and modal popup gallery.
 Jun-10 - Updated _treeview.json files to point to wayback.datro.xyz URLs.

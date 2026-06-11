@@ -259,7 +259,7 @@
     }
 
     async function loadData(type) {
-      const response = await fetch(WAYBACK_BASE + '/' + API_PARAMS[type].file);
+      const response = await fetch(WAYBACK_BASE + '/wayback/' + type + '/_treeview.json');
       const data = await response.json();
       return data;
     }
@@ -268,22 +268,22 @@
       return data.filter(item => item.name && item.name.includes('#' + tag));
     }
 
-    function renderGallery(type, items, filterTag) {
-      document.getElementById('modal-title').textContent = API_PARAMS[type].label;
-      const grid = document.getElementById('media-grid');
-      grid.innerHTML = '';
-      
-      items.forEach(item => {
-        const div = document.createElement('div');
-        div.className = 'media-item';
-        const cleanPath = item.path.replace('wayback/', '');
-        const cleanName = item.name.replace(/_/g, ' ').replace(/#/g, ' ');
-        div.innerHTML = `<a href="${WAYBACK_BASE}/${cleanPath}" target="_blank">${cleanName}</a>`;
-        grid.appendChild(div);
-      });
-      
-      document.getElementById('gallery-modal').classList.add('active');
-    }
+function renderGallery(type, items, filterTag) {
+       document.getElementById('modal-title').textContent = API_PARAMS[type].label;
+       const grid = document.getElementById('media-grid');
+       grid.innerHTML = '';
+       
+       items.forEach(item => {
+         const div = document.createElement('div');
+         div.className = 'media-item';
+         const path = item.path;
+         const cleanName = item.name.replace(/_/g, ' ').replace(/#/g, ' ');
+         div.innerHTML = `<a href="${WAYBACK_BASE}/${path}" target="_blank">${cleanName}</a>`;
+         grid.appendChild(div);
+       });
+       
+       document.getElementById('gallery-modal').classList.add('active');
+     }
 
     document.addEventListener('DOMContentLoaded', () => {
       loadVersion();
