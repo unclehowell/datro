@@ -125,6 +125,12 @@ export const config: Config<Props> = {
         
         return (
           <div className="max-w-4xl mx-auto px-4 py-8 text-slate-200">
+            <div className="flex justify-center gap-4 mb-4">
+              <span className="text-2xl cursor-pointer" title="Email/Text">📧</span>
+              <span className="text-2xl cursor-pointer" title="PDF Document">📄</span>
+              <span className="text-2xl cursor-pointer" title="Image">🖼️</span>
+              <span className="text-2xl cursor-pointer" title="Video">▶️</span>
+            </div>
             {paragraphs}
           </div>
         );
