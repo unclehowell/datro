@@ -238,13 +238,13 @@
     </div>
   </div>
 
-  <script>
+<script>
     const WAYBACK_BASE = 'https://wayback.datro.xyz';
     const API_PARAMS = {
-      text: { file: 'text/_treeview.json', label: '📧 Text/Emails (#bpvsbuckler)' },
-      pdf: { file: 'pdf/_treeview.json', label: '📄 PDF Documents (#bpvsbuckler)' },
-      image: { file: 'images/_treeview.json', label: '🖼️ Images (#bpvsbuckler)' },
-      video: { file: 'video/_treeview.json', label: '▶️ Videos (#bpvsbuckler)' }
+      text: { path: 'wayback/text', label: '📧 Text/Emails' },
+      pdf: { path: 'wayback/pdf', label: '📄 PDF Documents' },
+      image: { path: 'wayback/images', label: '🖼️ Images' },
+      video: { path: 'wayback/video', label: '▶️ Videos' }
     };
 
     async function loadVersion() {
@@ -254,18 +254,19 @@
         document.getElementById('version').textContent = version.trim();
         document.getElementById('version-placeholder').textContent = version.trim();
       } catch (e) {
-        document.getElementById('version').textContent = '0.0.2.00';
+        document.getElementById('version').textContent = 'v0.0.1.04';
       }
     }
 
     async function loadData(type) {
-      const response = await fetch(WAYBACK_BASE + '/wayback/' + type + '/_treeview.json');
+      const endpoint = API_PARAMS[type].path;
+      const response = await fetch(WAYBACK_BASE + '/' + endpoint + '/_treeview.json');
       const data = await response.json();
       return data;
     }
 
-    function filterByTag(data, tag) {
-      return data.filter(item => item.name && item.name.includes('#' + tag));
+function filterByTag(data, tag) {
+      return data.filter(item => item.name && (item.name.toLowerCase().includes('#' + tag) || item.name.toLowerCase().includes(tag)));
     }
 
 function renderGallery(type, items, filterTag) {
@@ -273,14 +274,15 @@ function renderGallery(type, items, filterTag) {
        const grid = document.getElementById('media-grid');
        grid.innerHTML = '';
        
-       items.forEach(item => {
-         const div = document.createElement('div');
-         div.className = 'media-item';
-         const path = item.path;
-         const cleanName = item.name.replace(/_/g, ' ').replace(/#/g, ' ');
-         div.innerHTML = `<a href="${WAYBACK_BASE}/${path}" target="_blank">${cleanName}</a>`;
-         grid.appendChild(div);
-       });
+items.forEach(item => {
+          const div = document.createElement('div');
+          div.className = 'media-item';
+          const path = item.path;
+          const cleanName = item.name.replace(/_/g, ' ').replace(/#/g, ' ');
+          const fullUrl = path.startsWith('http') ? path : WAYBACK_BASE + '/' + path;
+          div.innerHTML = `<a href="${fullUrl}" target="_blank">${cleanName}</a>`;
+          grid.appendChild(div);
+        });
        
        document.getElementById('gallery-modal').classList.add('active');
      }
