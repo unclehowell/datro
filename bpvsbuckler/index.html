@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BPVSBuckler Archive v<span id="version-placeholder">0.0.0.00</span></title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      color: #eee;
+      min-height: 100vh;
+      padding: 2rem;
+    }
+    .header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .version {
+      color: #888;
+      font-size: 0.9rem;
+    }
+    .slides-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+    .slide {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      padding: 1.5rem;
+    }
+    .slide h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: #fff;
+    }
+    .slide-content {
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+    .media-icons {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    .media-icon {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(255,255,255,0.1);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-size: 1.2rem;
+    }
+    .media-icon:hover {
+      background: rgba(255,255,255,0.2);
+      transform: translateY(-2px);
+    }
+    .icon-label {
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: rgba(0,0,0,0.9);
+      z-index: 1000;
+      padding: 2rem;
+      overflow-y: auto;
+    }
+    .modal.active {
+      display: block;
+    }
+    .modal-content {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: #1a1a2e;
+      border-radius: 12px;
+      padding: 1.5rem;
+    }
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1rem;
+    }
+    .modal-title {
+      font-size: 1.5rem;
+    }
+    .close-btn {
+      font-size: 2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      color: #fff;
+    }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .media-item {
+      background: rgba(255,255,255,0.05);
+      padding: 1rem;
+      border-radius: 8px;
+      word-break: break-word;
+    }
+    .media-item a {
+      color: #88c0d0;
+      text-decoration: none;
+    }
+    .media-item a:hover {
+      text-decoration: underline;
+    }
+    .filter-bar {
+      margin-bottom: 1rem;
+    }
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      margin-right: 0.5rem;
+      background: rgba(255,255,255,0.1);
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      cursor: pointer;
+    }
+    .filter-btn.active {
+      background: #88c0d0;
+      color: #000;
+    }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>BPVSBuckler Archive</h1>
+    <p class="version">Version: <span id="version">Loading...</span></p>
+  </div>
+  
+  <div class="slides-container" id="slides">
+    <div class="slide">
+      <h2>Case Overview: BP vs Buckler (1987)</h2>
+      <div class="slide-content">
+        <p>The 1987 case BP Properties Ltd v Buckler concerned Great House Farm, Llandough — property long occupied by the Williams/Buckler family. The court ruled against the family based on the argument that Mrs Mary Williams (referred to as "Mrs Buckler" in court documents) did not formally reject an offer made by BP Properties Ltd, treating that as tacit acceptance.</p>
+        <p>However, she had already explicitly rejected prior licence attempts by BP Pension Trust Ltd, a related BP entity. The judge ruled that BP Properties Ltd was a distinct legal entity, making her prior rejection legally irrelevant. Later, in her son's appeal, the court dismissed the appeal, ruling that "BP companies are all effectively one and the same."</p>
+        <p>This contradictory reasoning — treating the companies as separate when it benefited BP, but as the same when it benefited the Bucklers — represents a procedural inconsistency amounting to bias, which may justify reopening under CPR 52.30 and Limitations Act Section 32.</p>
+      </div>
+      <div class="media-icons">
+        <div class="media-icon" data-type="text" data-filter="bpvsbuckler">
+          <span>📧</span>
+          <span class="icon-label">Emails/Texts (<span id="text-count">0</span>)</span>
+        </div>
+        <div class="media-icon" data-type="pdf" data-filter="bpvsbuckler">
+          <span>📄</span>
+          <span class="icon-label">PDFs (<span id="pdf-count">0</span>)</span>
+        </div>
+        <div class="media-icon" data-type="image" data-filter="bpvsbuckler">
+          <span>🖼️</span>
+          <span class="icon-label">Images (<span id="image-count">0</span>)</span>
+        </div>
+        <div class="media-icon" data-type="video" data-filter="bpvsbuckler">
+          <span>▶️</span>
+          <span class="icon-label">Videos (<span id="video-count">0</span>)</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <h2>Historical Timeline</h2>
+      <div class="slide-content">
+        <p>Great House Farm (Ty Mawr) dates to the early 16th century. The Williams family claim occupation from 1667. In 1870, a Roman soldier in full armor was discovered under the living room floor during renovations. Guglielmo Marconi stayed with the family while conducting wireless telegraphy experiments at Lavernock Point in 1897.</p>
+        <p>Key dates: 1667 (Williams family acquisition), 1876 (quarry agreement with Daniel Thomas), 1916 (agricultural tenancy to John Williams), 1955 (tenancy terminated), 1974 (unilateral license letters), 1982 (land registration), 1987 (court case), 1988 (demolition).</p>
+      </div>
+      <div class="media-icons">
+        <div class="media-icon" data-type="text" data-filter="bpvsbuckler">
+          <span>📧</span>
+          <span class="icon-label">Evidence</span>
+        </div>
+        <div class="media-icon" data-type="pdf" data-filter="bpvsbuckler">
+          <span>📄</span>
+          <span class="icon-label">Documents</span>
+        </div>
+        <div class="media-icon" data-type="image" data-filter="bpvsbuckler">
+          <span>🖼️</span>
+          <span class="icon-label">Photos</span>
+        </div>
+        <div class="media-icon" data-type="video" data-filter="bpvsbuckler">
+          <span>▶️</span>
+          <span class="icon-label">Media</span>
+        </div>
+      </div>
+    </div>
+    
+    <div class="slide">
+      <h2>Bute Estate Chain of Title</h2>
+      <div class="slide-content">
+        <p>The Bute Estate Records (Series D 219, NLW) show manorial leases from 1552-1829 treating the Bute/Pembroke estate as superior landholder. The "Llandough manorial leases and agreements" explicitly covers Great House Farm (c. 166 acres). An 1820 memorandum shows Bute taking control of farms including "Great House Farm alias Cedfin".</p>
+        <p>Family testimony states a 1667 acquisition and a later Daniel Thomas/Bute deal in the early 1900s allowing quarrying in exchange for title. The missing deeds referred to in court records — allegedly stolen from Cardiff Library in 1984 — would prove this chain. The 1900s conveyance would shift legal framing from occupation to ownership.</p>
+      </div>
+      <div class="media-icons">
+        <div class="media-icon" data-type="text" data-filter="bpvsbuckler">
+          <span>📧</span>
+          <span class="icon-label">Records</span>
+        </div>
+        <div class="media-icon" data-type="pdf" data-filter="bpvsbuckler">
+          <span>📄</span>
+          <span class="icon-label">Estate Docs</span>
+        </div>
+        <div class="media-icon" data-type="image" data-filter="bpvsbuckler">
+          <span>🖼️</span>
+          <span class="icon-label">Maps</span>
+        </div>
+        <div class="media-icon" data-type="video" data-filter="bpvsbuckler">
+          <span>▶️</span>
+          <span class="icon-label">Video</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="gallery-modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title" id="modal-title">Gallery</h2>
+        <button class="close-btn" id="close-modal">&times;</button>
+      </div>
+      <div class="filter-bar" id="filter-bar"></div>
+      <div class="media-grid" id="media-grid"></div>
+    </div>
+  </div>
+
+<script>
+    window.BPVSBUCKLER_EMBED = true;
+    const WAYBACK_BASE = 'https://wayback.datro.xyz';
+    const API_PARAMS = {
+      text: { file: 'wayback/text/_treeview.json', label: '📧 Texts (#bpvsbuckler)' },
+      pdf: { file: 'wayback/pdf/_treeview.json', label: '📄 PDFs (#bpvsbuckler)' },
+      image: { file: 'wayback/images/_treeview.json', label: '🖼️ Images (#bpvsbuckler)' },
+      video: { file: 'wayback/video/_treeview.json', label: '▶️ Videos (#bpvsbuckler)' }
+    };
+
+    async function loadVersion() {
+      try {
+        const response = await fetch(WAYBACK_BASE + '/version.txt');
+        const version = await response.text();
+        document.getElementById('version').textContent = version.trim();
+        document.getElementById('version-placeholder').textContent = version.trim();
+      } catch (e) {
+        document.getElementById('version').textContent = '0.0.2.00';
+      }
+    }
+
+    async function loadData(type) {
+      const response = await fetch(WAYBACK_BASE + '/wayback/' + type + '/_treeview.json');
+      const data = await response.json();
+      return data;
+    }
+
+    function filterByTag(data, tag) {
+      return data.filter(item => item.name && item.name.includes('#' + tag));
+    }
+
+    function renderGallery(type, items, filterTag) {
+      document.getElementById('modal-title').textContent = API_PARAMS[type].label;
+      const grid = document.getElementById('media-grid');
+      grid.innerHTML = '';
+      
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'media-item';
+        const path = item.path.startsWith('wayback/') ? item.path.substring(7) : item.path;
+        const cleanName = item.name.replace(/_/g, ' ').replace(/#/g, ' ');
+        div.innerHTML = `<a href="${WAYBACK_BASE}/${path}" target="_blank">${cleanName}</a>`;
+        grid.appendChild(div);
+      });
+      
+      document.getElementById('gallery-modal').classList.add('active');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadVersion();
+      
+      // Load counts
+      Object.keys(API_PARAMS).forEach(async (type) => {
+        try {
+          const data = await loadData(type);
+          const filtered = filterByTag(data, 'bpvsbuckler');
+          document.getElementById(type + '-count').textContent = filtered.length;
+        } catch (e) {
+          document.getElementById(type + '-count').textContent = '0';
+        }
+      });
+
+      // Media icon click handlers
+      document.querySelectorAll('.media-icon').forEach(icon => {
+        icon.addEventListener('click', async (e) => {
+          const type = e.currentTarget.dataset.type;
+          const filter = e.currentTarget.dataset.filter;
+          const data = await loadData(type);
+          const filtered = filterByTag(data, filter);
+          renderGallery(type, filtered, filter);
+        });
+      });
+
+      // Close modal
+      document.getElementById('close-modal').addEventListener('click', () => {
+        document.getElementById('gallery-modal').classList.remove('active');
+      });
+
+      // Close on outside click
+      document.getElementById('gallery-modal').addEventListener('click', (e) => {
+        if (e.target === e.currentTarget) {
+          e.currentTarget.classList.remove('active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
