@@ -891,14 +891,18 @@ function initHeadUnit() {
     if (!audio) return;
 
     audio.src = RMC_STREAM;
-    audio.volume = huVolume;
+    audio.volume = volActual(huVolume);
     audio.play().catch(function() {
         if (huStatus) huStatus.textContent = 'PAUSED';
     });
 
+    function volActual(sliderVal) {
+        return sliderVal * 0.10;
+    }
+
     function setVolume(v) {
         huVolume = Math.max(0, Math.min(1, v));
-        if (!huMuted && !huDucked) audio.volume = huVolume;
+        if (!huMuted && !huDucked) audio.volume = volActual(huVolume);
         var pctStr = Math.round(huVolume * 100);
         if (fill) fill.style.width = pctStr + '%';
         if (knob) knob.style.left = 'calc(' + pctStr + '% - 6px)';
@@ -908,10 +912,10 @@ function initHeadUnit() {
     function duck(on) {
         huDucked = on;
         if (on) {
-            audio.volume = Math.max(0, huVolume * 0.10);
+            audio.volume = volActual(huVolume) * 0.10;
             if (huStatus) huStatus.textContent = 'DUCKED';
         } else {
-            audio.volume = huMuted ? 0 : huVolume;
+            audio.volume = huMuted ? 0 : volActual(huVolume);
             if (huStatus) huStatus.textContent = 'ON AIR';
         }
     }
@@ -921,7 +925,7 @@ function initHeadUnit() {
         muteBtn.addEventListener('click', function() {
             huMuted = !huMuted;
             muteBtn.classList.toggle('muted', huMuted);
-            audio.volume = huMuted ? 0 : (huDucked ? huVolume * 0.10 : huVolume);
+            audio.volume = huMuted ? 0 : (huDucked ? volActual(huVolume) * 0.10 : volActual(huVolume));
             if (huStatus) huStatus.textContent = huMuted ? 'MUTED' : (huDucked ? 'DUCKED' : 'ON AIR');
         });
     }
@@ -1027,22 +1031,11 @@ async function jarvisChat(msg) {
 
 async function jarvisStartCall() {
   var replyEl = jarvisAddMsg('jarvis','');
-  replyEl.innerHTML = '<div class="jarvis-lbl">JARVIS</div><i style="color:#5bc8f5">connecting…</i>';
-  try {
-    var r = await fetch('/api/chat', {
-      method:'POST', headers:{'Content-Type':'application/json'},
-      body: JSON.stringify({message:'call.start', greeting:true})
-    });
-    if (!r.ok) throw new Error('HTTP '+r.status);
-    var d = await r.json();
-    var full = d.response || d.reply || 'yep';
-    replyEl.innerHTML='<div class="jarvis-lbl">JARVIS</div>'+jarvisEsc(full);
-    jarvisHistory.push({role:'assistant',content:full});
-    jarvisSaveHistory();
-    setTimeout(function() { jarvisSpeakNative(full); }, 100);
-  } catch(e) {
-    replyEl.innerHTML='<div class="jarvis-lbl">JARVIS</div><span style="color:#f55">Error: '+e.message+'</span>';
-  }
+  var greeting = 'yep';
+  replyEl.innerHTML = '<div class="jarvis-lbl">JARVIS</div>' + greeting;
+  jarvisHistory.push({role:'assistant',content:greeting});
+  jarvisSaveHistory();
+  setTimeout(function() { jarvisSpeakNative(greeting); }, 100);
 }
 
 function jarvisSpeakNative(text) {
