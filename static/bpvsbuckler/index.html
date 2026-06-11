@@ -25,6 +25,24 @@
       color: #888;
       font-size: 0.9rem;
     }
+    .update-banner {
+      display: none;
+      background: #f59e0b;
+      color: #000;
+      text-align: center;
+      padding: 0.75rem;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+    .update-banner.visible {
+      display: block;
+    }
+    .update-banner a {
+      color: #000;
+      text-decoration: underline;
+      margin-left: 0.5rem;
+    }
     .slides-container {
       max-width: 1200px;
       margin: 0 auto;
@@ -141,11 +159,15 @@
   </style>
 </head>
 <body>
+  <div id="update-banner" class="update-banner">
+    Update available: <span id="latest-version">...</span> &nbsp;|&nbsp; <a href="https://github.com/unclehowell/datro/releases" target="_blank">View release</a>
+  </div>
+
   <div class="header">
     <h1>BPVSBuckler Archive</h1>
-    <p class="version">Version: <span id="version">Loading...</span></p>
+    <p class="version">Version: <span id="version">Loading...</span> <span id="update-badge" style="display:none;margin-left:0.5rem;background:#ef4444;color:#fff;padding:0.15rem 0.4rem;border-radius:999px;font-size:0.75rem;">Update available</span></p>
   </div>
-  
+
   <div class="slides-container" id="slides">
     <div class="slide">
       <h2>Case Overview: BP vs Buckler (1987)</h2>
@@ -173,7 +195,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="slide">
       <h2>Historical Timeline</h2>
       <div class="slide-content">
@@ -199,7 +221,7 @@
         </div>
       </div>
     </div>
-    
+
     <div class="slide">
       <h2>Bute Estate Chain of Title</h2>
       <div class="slide-content">
@@ -253,8 +275,10 @@
         const version = await response.text();
         document.getElementById('version').textContent = version.trim();
         document.getElementById('version-placeholder').textContent = version.trim();
+        return version.trim();
       } catch (e) {
         document.getElementById('version').textContent = 'v0.0.1.04';
+        return 'v0.0.1.04';
       }
     }
 
@@ -265,31 +289,51 @@
       return data;
     }
 
-function filterByTag(data, tag) {
+    function filterByTag(data, tag) {
       return data.filter(item => item.name && (item.name.toLowerCase().includes('#' + tag) || item.name.toLowerCase().includes(tag)));
     }
 
-function renderGallery(type, items, filterTag) {
-       document.getElementById('modal-title').textContent = API_PARAMS[type].label;
-       const grid = document.getElementById('media-grid');
-       grid.innerHTML = '';
-       
-items.forEach(item => {
-          const div = document.createElement('div');
-          div.className = 'media-item';
-          const path = item.path;
-          const cleanName = item.name.replace(/_/g, ' ').replace(/#/g, ' ');
-          const fullUrl = path.startsWith('http') ? path : WAYBACK_BASE + '/' + path;
-          div.innerHTML = `<a href="${fullUrl}" target="_blank">${cleanName}</a>`;
-          grid.appendChild(div);
-        });
-       
-       document.getElementById('gallery-modal').classList.add('active');
-     }
+    function renderGallery(type, items, filterTag) {
+      document.getElementById('modal-title').textContent = API_PARAMS[type].label;
+      const grid = document.getElementById('media-grid');
+      grid.innerHTML = '';
 
-    document.addEventListener('DOMContentLoaded', () => {
-      loadVersion();
-      
+      items.forEach(item => {
+        const div = document.createElement('div');
+        div.className = 'media-item';
+        const path = item.path;
+        const cleanName = item.name.replace(/_/g, ' ').replace(/#/g, ' ');
+        const fullUrl = path.startsWith('http') ? path : WAYBACK_BASE + '/' + path;
+        div.innerHTML = `<a href="${fullUrl}" target="_blank">${cleanName}</a>`;
+        grid.appendChild(div);
+      });
+
+      document.getElementById('gallery-modal').classList.add('active');
+    }
+
+    async function checkForUpdate() {
+      try {
+        const response = await fetch('https://api.github.com/repos/unclehowell/datro/releases/latest');
+        const data = await response.json();
+        const latestTag = data.tag_name || '';
+        const latestVersion = latestTag.replace(/^bpvsbuckler-v/, '');
+        const deployedVersion = document.getElementById('version').textContent.trim();
+
+        document.getElementById('latest-version').textContent = latestVersion;
+
+        if (deployedVersion && latestVersion && deployedVersion !== latestVersion) {
+          document.getElementById('update-banner').classList.add('visible');
+          document.getElementById('update-badge').style.display = 'inline-block';
+        }
+      } catch (e) {
+        console.error('Failed to check for updates:', e);
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      await loadVersion();
+      await checkForUpdate();
+
       // Load counts
       Object.keys(API_PARAMS).forEach(async (type) => {
         try {
