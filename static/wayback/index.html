@@ -179,20 +179,26 @@
           const r = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags');
           if (!r.ok) return null;
           const refs = await r.json();
-          const tags = refs
-            .map(ref => ref.ref.replace('refs/tags/', ''))
-            .filter(t => t.startsWith('wayback-v'))
-            .map(t => t.replace('wayback-v', ''));
-          if (tags.length === 0) return null;
-          tags.sort((a, b) => {
-            const pa = a.split('.').map(Number);
-            const pb = b.split('.').map(Number);
-            for (let i = 0; i < 4; i++) {
-              if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) - (pb[i] || 0);
-            }
-            return 0;
-          });
-          const latest = tags[tags.length - 1];
+          const tagRefs = refs.filter(ref => ref.ref.startsWith('refs/tags/wayback-v'));
+          if (tagRefs.length === 0) return null;
+
+          const withDates = await Promise.allSettled(tagRefs.map(async (ref) => {
+            const ver = ref.ref.replace('refs/tags/wayback-v', '');
+            const sha = ref.object.sha;
+            const cr = await fetch(`https://api.github.com/repos/unclehowell/datro/git/commits/${sha}`);
+            if (!cr.ok) return null;
+            const c = await cr.json();
+            return { ver, date: c.committer?.date || c.author?.date || '' };
+          }));
+
+          const valid = withDates
+            .map(d => d.status === 'fulfilled' ? d.value : null)
+            .filter(d => d && d.date);
+          if (valid.length === 0) return null;
+
+          valid.sort((a, b) => b.date.localeCompare(a.date));
+          const latest = valid[0].ver;
+
           const cv = currentVer.replace('v', '');
           const ca = cv.split('.').map(Number);
           const la = latest.split('.').map(Number);
