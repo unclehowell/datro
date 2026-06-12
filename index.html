@@ -3,69 +3,227 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DATRO Wayback Archive v0.0.1.03</title>
-  <link rel="stylesheet" href="static/archives/_theme-explorer/style.css">
-  <link rel="stylesheet" href="static/archives/_theme-explorer/glyphicon.css">
+  <title>DATRO Wayback Archive</title>
   <style>
-    body { background: #336; color: #ddd; font-family: sans-serif; margin: 0; padding: 1rem; }
-    .tabs { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; }
-    .tab { padding: 0.5rem 1rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 6px; cursor: pointer; color: #aac; font-weight: bold; }
+    * { box-sizing: border-box; }
+    body {
+      background: #336; color: #ddd; font-family: -apple-system,BlinkMacSystemFont,sans-serif;
+      margin: 0; padding: 0.5rem; min-height: 100vh;
+    }
+    .main-title {
+      text-align: center; color: lightslategrey;
+      font-size: clamp(17px,4.5vw,28px); font-weight: bolder; margin: 0.3rem 0;
+    }
+    .main-title .version-tag {
+      display: inline-block; background: rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 0.1rem 0.5rem; font-size: 0.7em;
+      vertical-align: middle; font-weight: normal;
+    }
+    .main-title .self-updating {
+      display: inline-block; background: rgba(200,150,50,0.25);
+      border-radius: 8px; padding: 0.1rem 0.5rem; font-size: 0.65em;
+      vertical-align: middle; font-weight: normal; color: #fd8;
+    }
+    .logo { display: block; margin: 0 auto 0.2rem; max-width: 55px; }
+    .tabs {
+      display: flex; gap: 0.3rem; margin-bottom: 0.5rem;
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      scrollbar-width: none; padding: 0.25rem 0;
+    }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab {
+      flex-shrink: 0; padding: 0.5rem 0.7rem;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 8px; cursor: pointer; color: #aac; font-weight: bold;
+      font-size: clamp(0.75rem,2.5vw,0.9rem); min-height: 44px;
+      display: flex; align-items: center; touch-action: manipulation;
+    }
     .tab.active { background: rgba(255,255,255,0.25); color: #fff; border-color: rgba(255,255,255,0.5); }
-    .tab:hover { background: rgba(255,255,255,0.2); }
-    #search { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 6px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.1); color: #ddd; font-size: 1rem; box-sizing: border-box; }
-    #search::placeholder { color: #889; }
-    .gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem; }
-    .item { background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.5rem; text-align: center; }
-    .item img, .item video { max-width: 100%; max-height: 300px; border-radius: 4px; object-fit: contain; }
-    .item a { color: #aac; text-decoration: none; font-size: 0.85rem; display: block; margin-top: 0.3rem; word-break: break-all; }
-    .item a:hover { color: #fff; }
-    .pagination { display: flex; justify-content: center; align-items: center; gap: 0.5rem; margin-top: 1.5rem; flex-wrap: wrap; }
-    .pagination button { padding: 0.4rem 0.8rem; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 4px; color: #aac; cursor: pointer; font-weight: bold; }
-    .pagination button:hover:not(:disabled) { background: rgba(255,255,255,0.2); color: #fff; }
-    .pagination button:disabled { opacity: 0.3; cursor: default; }
+    .tab:active { background: rgba(255,255,255,0.3); }
+    .count-badge {
+      display: inline-block; background: rgba(255,255,255,0.15);
+      border-radius: 10px; padding: 0.05rem 0.4rem; font-size: 0.65rem; margin-left: 0.25rem;
+    }
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: 0.5rem;
+    }
+    .item {
+      background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.4rem;
+      text-align: center; position: relative;
+    }
+    .item a {
+      color: #aac; text-decoration: none; font-size: 0.75rem;
+      display: block; word-break: break-all;
+    }
+    .item a:active { color: #fff; }
+    .item img, .item video {
+      max-width: 100%; max-height: 200px; border-radius: 4px;
+      object-fit: contain; cursor: pointer; display: block; margin: 0 auto;
+    }
+    .item .name { font-size: 0.65rem; color: #889; margin-top: 0.2rem; word-break: break-word; line-height: 1.2; }
+    .item.pdf a, .item.text a, .item.video a { padding: 1.2rem 0; display: block; font-size: 0.8rem; }
+    .hash-badge {
+      display: inline-block; padding: 0.1rem 0.35rem; border-radius: 6px;
+      font-size: 0.55rem; font-weight: bold; letter-spacing: 0.2px; margin-top: 0.15rem;
+    }
+    .hash-badge.bpvsbuckler { background: rgba(200,100,50,0.3); color: #fca; }
+    .hash-badge.datro { background: rgba(50,150,200,0.3); color: #8cf; }
+    .pagination {
+      display: flex; justify-content: center; align-items: center;
+      gap: 0.25rem; margin-top: 0.75rem; flex-wrap: wrap;
+    }
+    .pagination button {
+      padding: 0.4rem 0.55rem; min-width: 36px; min-height: 36px;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px; color: #aac; cursor: pointer; font-weight: bold;
+      font-size: 0.8rem; touch-action: manipulation;
+    }
+    .pagination button:active:not(:disabled) { background: rgba(255,255,255,0.3); color: #fff; }
+    .pagination button:disabled { opacity: 0.3; }
     .pagination button.active-page { background: rgba(255,255,255,0.3); color: #fff; border-color: rgba(255,255,255,0.5); }
-    .pagination .info { color: #889; font-size: 0.85rem; }
-    .count-badge { display: inline-block; background: rgba(255,255,255,0.15); border-radius: 10px; padding: 0.1rem 0.6rem; font-size: 0.8rem; margin-left: 0.3rem; }
-    .item.pdf a, .item.text a { padding: 2rem 0; display: block; font-size: 1rem; }
-    .main-title { text-align: center; color: lightslategrey; font-size: clamp(20px,6vw,33px); font-weight: bolder; margin-bottom: 0.5rem; }
-    .subtitle { text-align: center; color: #667; font-size: 0.9rem; margin-bottom: 1.5rem; }
-    .logo { display: block; margin: 0 auto 0.5rem; max-width: 90px; }
+    .pagination .info { color: #889; font-size: 0.75rem; }
+    .subtitle { text-align: center; color: #667; font-size: 0.75rem; margin-bottom: 0.5rem; }
+    #hashtag-cloud {
+      max-width: 100%; margin-bottom: 0.5rem;
+      background: rgba(40,40,70,0.92); border: 1px solid rgba(255,255,255,0.15);
+      border-radius: 8px; padding: 0.4rem 0.6rem;
+    }
+    #hashtag-cloud .tag {
+      display: inline-block; margin: 0.15rem; padding: 0.3rem 0.55rem;
+      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 10px; color: #8ac; cursor: pointer; font-size: 0.75rem;
+      min-height: 36px; line-height: 1.4; touch-action: manipulation;
+    }
+    #hashtag-cloud .tag:active { background: rgba(255,255,255,0.25); color: #fff; }
+    #hashtag-cloud .tag.active { background: transparent; color: #aac; border-color: transparent; text-decoration: line-through; opacity: 0.5; }
+    #hashtag-cloud .tag-label { color: #889; font-size: 0.65rem; margin-bottom: 0.2rem; display: flex; justify-content: space-between; align-items: center; }
+    #hashtag-cloud .clear-btn { background: none; border: none; color: #667; cursor: pointer; font-size: 0.65rem; padding: 0.3rem; touch-action: manipulation; }
+    #hashtag-cloud .clear-btn:active { color: #aac; }
+    #all-search {
+      width: 100%; padding: 0.6rem 0.7rem; margin-bottom: 0.5rem;
+      border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);
+      background: rgba(255,255,255,0.1); color: #ddd;
+      font-size: 1rem; box-sizing: border-box; min-height: 44px;
+    }
+    footer { text-align: center; padding: 0.75rem; font-size: 0.7rem; color: #667; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1.5rem; }
+    @media (min-width: 768px) {
+      body { padding: 1rem; }
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
+      .item img, .item video { max-height: 250px; }
+      .item .name { font-size: 0.75rem; }
+      #hashtag-cloud { position: fixed; top: 0.75rem; right: 0.75rem; max-width: 180px; }
+      .tab { font-size: 0.85rem; padding: 0.4rem 0.75rem; }
+    }
+    @media (min-width: 1024px) {
+      .gallery { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
+      .item img, .item video { max-height: 300px; }
+    }
   </style>
 </head>
 <body>
-  <p class="main-title"><img class="main-logo ml-datro" loading="lazy" alt=""><br>Wayback Archive v0.0.1.03</p>
+  <p class="main-title" id="main-title">Wayback Archive <span class="version-tag" id="version-tag">v...</span></p>
 
   <div class="tabs" id="tabs"></div>
-  <input type="text" id="search" placeholder="Filter by hashtag or keyword...">
+  <div id="all-search-wrapper" style="display:none"><input type="text" id="all-search" placeholder="Search all files..."></div>
 
+  <div id="hashtag-cloud"></div>
   <div id="category-info" class="subtitle"></div>
   <div class="gallery" id="gallery"></div>
   <div class="pagination" id="pagination"></div>
 
-  <footer style="text-align:center;padding:1rem;font-size:0.85rem;color:#666;border-top:1px solid rgba(255,255,255,0.1);margin-top:2rem">
-    &copy; 2026 DATRO Consortium.
-  </footer>
+  <footer>&copy; 2026 DATRO Consortium.</footer>
 
   <script>
     (async () => {
       const CATEGORIES = [
-        { name: 'images', label: 'Images', icon: '🖼' },
-        { name: 'pdf', label: 'PDF', icon: '📄' },
-        { name: 'text', label: 'Text', icon: '📝' }
+        { name: 'all', label: 'All', icon: '&#x1F4E6;' },
+        { name: 'images', label: 'Images', icon: '&#x1F5BC;' },
+        { name: 'pdf', label: 'PDF', icon: '&#x1F4C4;' },
+        { name: 'text', label: 'Text', icon: '&#x1F4DD;' },
+        { name: 'video', label: 'Video', icon: '&#x1F3AC;' }
       ];
       const PER_PAGE = 10;
       let allData = {};
       let currentCat = 'images';
       let currentPage = 1;
       let filtered = [];
+      let activeExcludes = new Set();
+      let deployedVersion = '';
 
       const tabsEl = document.getElementById('tabs');
-      const searchEl = document.getElementById('search');
       const galleryEl = document.getElementById('gallery');
       const paginationEl = document.getElementById('pagination');
       const infoEl = document.getElementById('category-info');
+      const hashCloudEl = document.getElementById('hashtag-cloud');
+      const allSearchEl = document.getElementById('all-search');
+      const allSearchWrapper = document.getElementById('all-search-wrapper');
+      const versionTagEl = document.getElementById('version-tag');
+      const mainTitleEl = document.getElementById('main-title');
+
+      async function fetchVersion() {
+        try {
+          const r = await fetch('version.txt');
+          if (r.ok) {
+            const txt = await r.text();
+            deployedVersion = txt.trim();
+          }
+        } catch (e) {}
+        if (!deployedVersion) deployedVersion = 'v0.0.0.00';
+        return deployedVersion;
+      }
+
+      async function checkNewerRelease(currentVer) {
+        try {
+          const r = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags');
+          if (!r.ok) return null;
+          const refs = await r.json();
+          const tagRefs = refs.filter(ref => ref.ref.startsWith('refs/tags/wayback-v'));
+          if (tagRefs.length === 0) return null;
+
+          const withDates = await Promise.allSettled(tagRefs.map(async (ref) => {
+            const ver = ref.ref.replace('refs/tags/wayback-v', '');
+            const sha = ref.object.sha;
+            const cr = await fetch(`https://api.github.com/repos/unclehowell/datro/git/commits/${sha}`);
+            if (!cr.ok) return null;
+            const c = await cr.json();
+            return { ver, date: c.committer?.date || c.author?.date || '' };
+          }));
+
+          const valid = withDates
+            .map(d => d.status === 'fulfilled' ? d.value : null)
+            .filter(d => d && d.date);
+          if (valid.length === 0) return null;
+
+          valid.sort((a, b) => b.date.localeCompare(a.date));
+          const latest = valid[0].ver;
+
+          const cv = currentVer.replace('v', '');
+          const ca = cv.split('.').map(Number);
+          const la = latest.split('.').map(Number);
+          for (let i = 0; i < 4; i++) {
+            if ((la[i] || 0) > (ca[i] || 0)) return latest;
+            if ((la[i] || 0) < (ca[i] || 0)) return null;
+          }
+          return null;
+        } catch (e) { return null; }
+      }
+
+      function extractTags(name) {
+        const tags = (name || '').match(/#\w+/g) || [];
+        return tags.map(t => t.toLowerCase());
+      }
+
+      function displayName(item) {
+        if (item.title) return item.title;
+        const name = item.name || '';
+        const stem = name.lastIndexOf('.') > 0 ? name.slice(0, name.lastIndexOf('.')) : name;
+        return stem.replace(/[-_]/g, ' ').replace(/\s+/g, ' ').trim();
+      }
 
       async function loadCategory(cat) {
+        if (cat === 'all') return [];
         const url = `wayback/${cat}/_treeview.json`;
         const resp = await fetch(url);
         if (!resp.ok) return [];
@@ -73,13 +231,53 @@
         return data.map(item => ({
           ...item,
           _category: cat,
+          _hashtags: extractTags(item.name),
           _tags: (item.name || '').toLowerCase()
         }));
       }
 
+      function renderHashtagCloud() {
+        const tags = ['#bpvsbuckler', '#datro'];
+        hashCloudEl.innerHTML = '<div class="tag-label"><span>Exclude</span><button class="clear-btn" id="hash-clear">clear</button></div>' +
+          tags.map(t =>
+            '<span class="tag' + (activeExcludes.has(t) ? ' active' : '') + '" data-tag="' + t + '">' + t + '</span>'
+          ).join('');
+        hashCloudEl.querySelectorAll('.tag').forEach(el => {
+          el.addEventListener('click', () => {
+            const tag = el.dataset.tag;
+            if (activeExcludes.has(tag)) activeExcludes.delete(tag);
+            else activeExcludes.add(tag);
+            currentPage = 1;
+            applyFilter();
+          });
+        });
+        const clearBtn = document.getElementById('hash-clear');
+        if (clearBtn) clearBtn.addEventListener('click', () => { activeExcludes.clear(); currentPage = 1; applyFilter(); });
+      }
+
       async function init() {
+        const ver = await fetchVersion();
+        versionTagEl.textContent = ver;
+        const newer = await checkNewerRelease(ver);
+        if (newer) {
+          const span = document.createElement('span');
+          span.className = 'self-updating';
+          span.textContent = ' self-updating to v' + newer + ' ';
+          mainTitleEl.appendChild(span);
+        }
+
         for (const cat of CATEGORIES) {
-          allData[cat.name] = await loadCategory(cat.name);
+          if (cat.name === 'all') {
+            const allItems = [];
+            for (const sub of CATEGORIES) {
+              if (sub.name === 'all') continue;
+              allData[sub.name] = await loadCategory(sub.name);
+              allItems.push(...(allData[sub.name] || []));
+            }
+            allData.all = allItems;
+          } else {
+            allData[cat.name] = await loadCategory(cat.name);
+          }
         }
         renderTabs();
         switchCategory(CATEGORIES[0].name);
@@ -87,7 +285,7 @@
 
       function renderTabs() {
         tabsEl.innerHTML = CATEGORIES.map(c =>
-          `<div class="tab${c.name === currentCat ? ' active' : ''}" data-cat="${c.name}">${c.icon} ${c.label}<span class="count-badge">${(allData[c.name] || []).length}</span></div>`
+          '<div class="tab' + (c.name === currentCat ? ' active' : '') + '" data-cat="' + c.name + '">' + c.icon + ' ' + c.label + '<span class="count-badge">' + (allData[c.name] || []).length + '</span></div>'
         ).join('');
         tabsEl.querySelectorAll('.tab').forEach(el => {
           el.addEventListener('click', () => {
@@ -99,22 +297,32 @@
       function switchCategory(cat) {
         currentCat = cat;
         currentPage = 1;
-        document.getElementById('search').value = '';
         tabsEl.querySelectorAll('.tab').forEach(el => {
           el.classList.toggle('active', el.dataset.cat === cat);
         });
+        if (cat === 'all') {
+          allSearchWrapper.style.display = 'block';
+          allSearchEl.value = '';
+        } else {
+          allSearchWrapper.style.display = 'none';
+        }
         applyFilter();
       }
 
       function applyFilter() {
-        const query = searchEl.value.toLowerCase().trim();
-        const items = allData[currentCat] || [];
-        if (!query) {
-          filtered = items;
-        } else {
-          filtered = items.filter(item => item._tags.includes(query));
+        let items = allData[currentCat] || [];
+        const query = currentCat === 'all' ? allSearchEl.value.toLowerCase().trim() : '';
+        if (query) {
+          items = items.filter(item => item._tags.includes(query));
         }
-        infoEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''} in ${currentCat}`;
+        if (activeExcludes.size > 0) {
+          items = items.filter(item =>
+            !item._hashtags.some(t => activeExcludes.has(t))
+          );
+        }
+        filtered = items;
+        infoEl.textContent = filtered.length + ' result' + (filtered.length !== 1 ? 's' : '') + ' in ' + currentCat;
+        renderHashtagCloud();
         renderPage();
       }
 
@@ -132,23 +340,23 @@
         }
 
         galleryEl.innerHTML = pageItems.map(item => {
-          const cat = item._category;
-          const isImage = cat === 'images';
           const ext = (item.path || '').split('.').pop().toLowerCase();
-          const isVideo = ['mp4', 'webm', 'mov', 'avi'].includes(ext);
+          const imgExts = ['jpg','jpeg','png','gif','webp','bmp','svg'];
+          const vidExts = ['mp4', 'webm', 'mov', 'avi'];
+          const isImg = imgExts.includes(ext);
+          const isVid = vidExts.includes(ext);
+          const hash = item._hashtags && item._hashtags.length > 0 ? item._hashtags[0].replace('#', '') : '';
+          const dl = displayName(item);
+          const src = 'wayback/' + item.path;
           let media = '';
-          if (isImage) {
-            if (['jpg','jpeg','png','gif','webp','bmp','svg'].includes(ext)) {
-              media = `<img src="${item.path}" loading="lazy" alt="${item.name}">`;
-            } else if (isVideo) {
-              media = `<video src="${item.path}" controls preload="metadata"></video>`;
-            } else {
-              media = `<a href="${item.path}" target="_blank">${item.name}</a>`;
-            }
+          if (isImg) {
+            media = '<a href="' + src + '" target="_blank"><img src="' + src + '" loading="lazy" alt="' + dl + '"></a>';
+          } else if (isVid) {
+            media = '<a href="' + src + '" target="_blank"><video src="' + src + '" controls preload="metadata"></video></a>';
           } else {
-            media = `<a href="${item.path}" target="_blank">${item.name}</a>`;
+            media = '<a href="' + src + '" target="_blank">' + dl + '</a>';
           }
-          return `<div class="item${isImage ? '' : ' ' + cat}">${media}</div>`;
+          return '<div class="item ' + item._category + '">' + media + '<div class="name">' + dl + '</div>' + (hash ? '<span class="hash-badge ' + hash + '">#' + hash + '</span>' : '') + '</div>';
         }).join('');
 
         renderPagination(totalPages, total);
@@ -156,12 +364,10 @@
 
       function renderPagination(totalPages, total) {
         if (totalPages <= 1) {
-          paginationEl.innerHTML = `<span class="info">${total} item${total !== 1 ? 's' : ''}</span>`;
+          paginationEl.innerHTML = '<span class="info">' + total + ' item' + (total !== 1 ? 's' : '') + '</span>';
           return;
         }
-
-        let html = `<button class="prev" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''}>Back</button>`;
-
+        let html = '<button class="prev" data-page="' + (currentPage - 1) + '"' + (currentPage <= 1 ? ' disabled' : '') + '>Back</button>';
         const maxVisible = 9;
         let startPage = Math.max(1, currentPage - 4);
         let endPage = Math.min(totalPages, startPage + maxVisible - 1);
@@ -169,38 +375,30 @@
           startPage = Math.max(1, endPage - maxVisible + 1);
         }
         if (startPage > 1) {
-          html += `<button data-page="1">1</button>`;
-          if (startPage > 2) html += `<span class="info">...</span>`;
+          html += '<button data-page="1">1</button>';
+          if (startPage > 2) html += '<span class="info">...</span>';
         }
         for (let i = startPage; i <= endPage; i++) {
-          html += `<button data-page="${i}" class="${i === currentPage ? 'active-page' : ''}">${i}</button>`;
+          html += '<button data-page="' + i + '"' + (i === currentPage ? ' class="active-page"' : '') + '>' + i + '</button>';
         }
         if (endPage < totalPages) {
-          if (endPage < totalPages - 1) html += `<span class="info">...</span>`;
-          html += `<button data-page="${totalPages}">${totalPages}</button>`;
+          if (endPage < totalPages - 1) html += '<span class="info">...</span>';
+          html += '<button data-page="' + totalPages + '">' + totalPages + '</button>';
         }
-
-        html += `<button class="next" data-page="${currentPage + 1}" ${currentPage >= totalPages ? 'disabled' : ''}>Next</button>`;
-        html += `<span class="info">Page ${currentPage} of ${totalPages}</span>`;
-
+        html += '<button class="next" data-page="' + (currentPage + 1) + '"' + (currentPage >= totalPages ? ' disabled' : '') + '>Next</button>';
+        html += '<span class="info">Page ' + currentPage + ' of ' + totalPages + '</span>';
         paginationEl.innerHTML = html;
-
         paginationEl.querySelectorAll('button:not(:disabled)').forEach(btn => {
           btn.addEventListener('click', () => {
             const page = parseInt(btn.dataset.page);
-            if (!isNaN(page)) {
-              currentPage = page;
-              renderPage();
-              window.scrollTo({ top: 0, behavior: 'smooth' });
-            }
+            if (!isNaN(page)) { currentPage = page; renderPage(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
           });
         });
       }
 
-      searchEl.addEventListener('input', () => {
-        currentPage = 1;
-        applyFilter();
-      });
+      if (allSearchEl) {
+        allSearchEl.addEventListener('input', () => { currentPage = 1; applyFilter(); });
+      }
 
       await init();
     })();
