@@ -1023,15 +1023,17 @@ async function jarvisChat(msg) {
     replyEl.innerHTML='<div class="jarvis-lbl">JARVIS</div>'+jarvisEsc(full);
     jarvisHistory.push({role:'assistant',content:full});
     jarvisSaveHistory();
-    setTimeout(function() { jarvisSpeakNative(full); }, 100);
+    if (jarvisCalling) {
+      setTimeout(function() { jarvisSpeakNative(full); }, 100);
+    }
   } catch(e) {
-    replyEl.innerHTML='<div class="jarvis-lbl">JARVIS</div><span style="color:#f55">Error: '+e.message+'</span>';
+    if (jarvisCalling) replyEl.innerHTML='<div class="jarvis-lbl">JARVIS</div><span style="color:#f55">Error: '+e.message+'</span>';
   }
 }
 
 async function jarvisStartCall() {
   var replyEl = jarvisAddMsg('jarvis','');
-  var greeting = 'yep';
+  var greeting = 'welcome, sir';
   replyEl.innerHTML = '<div class="jarvis-lbl">JARVIS</div>' + greeting;
   jarvisHistory.push({role:'assistant',content:greeting});
   jarvisSaveHistory();
