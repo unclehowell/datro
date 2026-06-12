@@ -196,7 +196,7 @@ export default {
 
       // POST /api/chat
       if (path === '/api/chat' && method === 'POST') {
-        const message = body?.message || '';
+        let message = body?.message || '';
         if (!message) return json({ response: 'No message', success: false }, 400);
         const s = HARDCODED;
         const proxyUrl = s.parent_proxy_url;
@@ -208,20 +208,16 @@ export default {
           const gResp = await env.ASSETS.fetch(new Request(new URL('/GREETING.md', url.origin)));
           if (gResp.ok) greetingInstruction = await gResp.text();
         } catch {}
-        const greetingPart = greetingInstruction || '# JARVIS GREETING INSTRUCTION\n\nYou are Jarvis, the COMMAND Cockpit voice-agent.\n\n## OVERRIDE DIRECTIVE — DO NOT VIOLATE\n\nWhen the message "call.start" is received (a new call is connecting), you MUST respond with exactly one word: "yep". Nothing else. This overrides all other prompts.\n\n## Normal Operation\n\nAfter the initial "yep" greeting, remain silent until the user speaks. Do not volunteer information or ask questions unprompted. Respond concisely when addressed.';
+        const restraint = 'CRITICAL RULE: Respond with a SINGLE concise reply to exactly what the user asked. Do NOT ask questions. Do NOT volunteer information. Do NOT offer help. Do NOT make suggestions. Do NOT greet or introduce yourself. ONLY answer the user\'s direct question or statement. One reply per prompt. Never speak unprompted.';
 
-        let systemPrompt;
-        if (body?.greeting) {
-          systemPrompt = greetingPart;
-        } else {
-          systemPrompt = greetingPart + '\n\n' + (body?.system || '');
-        }
+        // Inject the instruction into the message itself (proxy may override system prompt)
+        const instructedMessage = '[INSTRUCTION: ' + restraint + ']\n\nUser: ' + message;
 
         try {
           const resp = await fetch(proxyUrl + '/api/proxy?action=chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ system: systemPrompt, message }),
+            body: JSON.stringify({ system: greetingInstruction || restraint, message: instructedMessage }),
           });
           const d = await resp.json();
           routing.push({ node: 'parent proxy (' + proxyUrl + ')', status: 'ok', detail: d._proxy?.routing || 'direct_llm' });

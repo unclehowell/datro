@@ -1,5 +1,12 @@
 # Changelog
 
+## [command-V0.0.2.01] - 2026-06-11
+
+### Fixed
+- fix(command): Agent no longer speaks unprompted — instruction embedded directly in message to bypass proxy system prompt override
+- fix(command): Agent will not respond after call hangup (guarded by jarvisCalling flag)
+- fix(command): Greeting changed to "welcome, sir"
+
 ## [command-V0.0.2.00] - 2026-06-11
 
 ### Added
