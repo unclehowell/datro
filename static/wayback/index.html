@@ -3,10 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DATRO Wayback Archive v0.0.0.10</title>
+  <title>DATRO Wayback Archive</title>
   <style>
     * { box-sizing: border-box; }
-
     body {
       background: #336; color: #ddd; font-family: -apple-system,BlinkMacSystemFont,sans-serif;
       margin: 0; padding: 0.5rem; min-height: 100vh;
@@ -15,9 +14,17 @@
       text-align: center; color: lightslategrey;
       font-size: clamp(17px,4.5vw,28px); font-weight: bolder; margin: 0.3rem 0;
     }
+    .main-title .version-tag {
+      display: inline-block; background: rgba(255,255,255,0.1);
+      border-radius: 8px; padding: 0.1rem 0.5rem; font-size: 0.7em;
+      vertical-align: middle; font-weight: normal;
+    }
+    .main-title .self-updating {
+      display: inline-block; background: rgba(200,150,50,0.25);
+      border-radius: 8px; padding: 0.1rem 0.5rem; font-size: 0.65em;
+      vertical-align: middle; font-weight: normal; color: #fd8;
+    }
     .logo { display: block; margin: 0 auto 0.2rem; max-width: 55px; }
-
-    /* -- TABS (scrollable row on mobile) -- */
     .tabs {
       display: flex; gap: 0.3rem; margin-bottom: 0.5rem;
       overflow-x: auto; -webkit-overflow-scrolling: touch;
@@ -37,8 +44,6 @@
       display: inline-block; background: rgba(255,255,255,0.15);
       border-radius: 10px; padding: 0.05rem 0.4rem; font-size: 0.65rem; margin-left: 0.25rem;
     }
-
-    /* -- GALLERY -- */
     .gallery {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -59,15 +64,12 @@
     }
     .item .name { font-size: 0.65rem; color: #889; margin-top: 0.2rem; word-break: break-word; line-height: 1.2; }
     .item.pdf a, .item.text a, .item.video a { padding: 1.2rem 0; display: block; font-size: 0.8rem; }
-
     .hash-badge {
       display: inline-block; padding: 0.1rem 0.35rem; border-radius: 6px;
       font-size: 0.55rem; font-weight: bold; letter-spacing: 0.2px; margin-top: 0.15rem;
     }
     .hash-badge.bpvsbuckler { background: rgba(200,100,50,0.3); color: #fca; }
     .hash-badge.datro { background: rgba(50,150,200,0.3); color: #8cf; }
-
-    /* -- PAGINATION (bigger touch targets) -- */
     .pagination {
       display: flex; justify-content: center; align-items: center;
       gap: 0.25rem; margin-top: 0.75rem; flex-wrap: wrap;
@@ -82,10 +84,7 @@
     .pagination button:disabled { opacity: 0.3; }
     .pagination button.active-page { background: rgba(255,255,255,0.3); color: #fff; border-color: rgba(255,255,255,0.5); }
     .pagination .info { color: #889; font-size: 0.75rem; }
-
     .subtitle { text-align: center; color: #667; font-size: 0.75rem; margin-bottom: 0.5rem; }
-
-    /* -- HASHTAG CLOUD (positioned below tabs on mobile, sticky sidebar on desktop) -- */
     #hashtag-cloud {
       max-width: 100%; margin-bottom: 0.5rem;
       background: rgba(40,40,70,0.92); border: 1px solid rgba(255,255,255,0.15);
@@ -102,17 +101,13 @@
     #hashtag-cloud .tag-label { color: #889; font-size: 0.65rem; margin-bottom: 0.2rem; display: flex; justify-content: space-between; align-items: center; }
     #hashtag-cloud .clear-btn { background: none; border: none; color: #667; cursor: pointer; font-size: 0.65rem; padding: 0.3rem; touch-action: manipulation; }
     #hashtag-cloud .clear-btn:active { color: #aac; }
-
     #all-search {
       width: 100%; padding: 0.6rem 0.7rem; margin-bottom: 0.5rem;
       border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);
       background: rgba(255,255,255,0.1); color: #ddd;
       font-size: 1rem; box-sizing: border-box; min-height: 44px;
     }
-
     footer { text-align: center; padding: 0.75rem; font-size: 0.7rem; color: #667; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1.5rem; }
-
-    /* -- TABLET+ -- */
     @media (min-width: 768px) {
       body { padding: 1rem; }
       .gallery { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
@@ -128,7 +123,7 @@
   </style>
 </head>
 <body>
-  <p class="main-title">Wayback Archive v0.0.0.09</p>
+  <p class="main-title" id="main-title">Wayback Archive <span class="version-tag" id="version-tag">v...</span></p>
 
   <div class="tabs" id="tabs"></div>
   <div id="all-search-wrapper" style="display:none"><input type="text" id="all-search" placeholder="Search all files..."></div>
@@ -138,18 +133,16 @@
   <div class="gallery" id="gallery"></div>
   <div class="pagination" id="pagination"></div>
 
-  <footer style="text-align:center;padding:1rem;font-size:0.75rem;color:#666;border-top:1px solid rgba(255,255,255,0.1);margin-top:2rem">
-    &copy; 2026 DATRO Consortium.
-  </footer>
+  <footer>&copy; 2026 DATRO Consortium.</footer>
 
   <script>
     (async () => {
       const CATEGORIES = [
-        { name: 'all', label: 'All', icon: '📦' },
-        { name: 'images', label: 'Images', icon: '🖼' },
-        { name: 'pdf', label: 'PDF', icon: '📄' },
-        { name: 'text', label: 'Text', icon: '📝' },
-        { name: 'video', label: 'Video', icon: '🎬' }
+        { name: 'all', label: 'All', icon: '&#x1F4E6;' },
+        { name: 'images', label: 'Images', icon: '&#x1F5BC;' },
+        { name: 'pdf', label: 'PDF', icon: '&#x1F4C4;' },
+        { name: 'text', label: 'Text', icon: '&#x1F4DD;' },
+        { name: 'video', label: 'Video', icon: '&#x1F3AC;' }
       ];
       const PER_PAGE = 10;
       let allData = {};
@@ -157,6 +150,7 @@
       let currentPage = 1;
       let filtered = [];
       let activeExcludes = new Set();
+      let deployedVersion = '';
 
       const tabsEl = document.getElementById('tabs');
       const galleryEl = document.getElementById('gallery');
@@ -165,10 +159,61 @@
       const hashCloudEl = document.getElementById('hashtag-cloud');
       const allSearchEl = document.getElementById('all-search');
       const allSearchWrapper = document.getElementById('all-search-wrapper');
+      const versionTagEl = document.getElementById('version-tag');
+      const mainTitleEl = document.getElementById('main-title');
+
+      async function fetchVersion() {
+        try {
+          const r = await fetch('version.txt');
+          if (r.ok) {
+            const txt = await r.text();
+            deployedVersion = txt.trim();
+          }
+        } catch (e) {}
+        if (!deployedVersion) deployedVersion = 'v0.0.0.00';
+        return deployedVersion;
+      }
+
+      async function checkNewerRelease(currentVer) {
+        try {
+          const r = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags');
+          if (!r.ok) return null;
+          const refs = await r.json();
+          const tags = refs
+            .map(ref => ref.ref.replace('refs/tags/', ''))
+            .filter(t => t.startsWith('wayback-v'))
+            .map(t => t.replace('wayback-v', ''));
+          if (tags.length === 0) return null;
+          tags.sort((a, b) => {
+            const pa = a.split('.').map(Number);
+            const pb = b.split('.').map(Number);
+            for (let i = 0; i < 4; i++) {
+              if ((pa[i] || 0) !== (pb[i] || 0)) return (pa[i] || 0) - (pb[i] || 0);
+            }
+            return 0;
+          });
+          const latest = tags[tags.length - 1];
+          const cv = currentVer.replace('v', '');
+          const ca = cv.split('.').map(Number);
+          const la = latest.split('.').map(Number);
+          for (let i = 0; i < 4; i++) {
+            if ((la[i] || 0) > (ca[i] || 0)) return latest;
+            if ((la[i] || 0) < (ca[i] || 0)) return null;
+          }
+          return null;
+        } catch (e) { return null; }
+      }
 
       function extractTags(name) {
         const tags = (name || '').match(/#\w+/g) || [];
         return tags.map(t => t.toLowerCase());
+      }
+
+      function displayName(item) {
+        if (item.title) return item.title;
+        const name = item.name || '';
+        const stem = name.lastIndexOf('.') > 0 ? name.slice(0, name.lastIndexOf('.')) : name;
+        return stem.replace(/[-_]/g, ' ').replace(/\s+/g, ' ').trim();
       }
 
       async function loadCategory(cat) {
@@ -187,9 +232,9 @@
 
       function renderHashtagCloud() {
         const tags = ['#bpvsbuckler', '#datro'];
-        hashCloudEl.innerHTML = `<div class="tag-label"><span>Exclude</span><button class="clear-btn" id="hash-clear">clear</button></div>` +
+        hashCloudEl.innerHTML = '<div class="tag-label"><span>Exclude</span><button class="clear-btn" id="hash-clear">clear</button></div>' +
           tags.map(t =>
-            `<span class="tag${activeExcludes.has(t) ? ' active' : ''}" data-tag="${t}">${t}</span>`
+            '<span class="tag' + (activeExcludes.has(t) ? ' active' : '') + '" data-tag="' + t + '">' + t + '</span>'
           ).join('');
         hashCloudEl.querySelectorAll('.tag').forEach(el => {
           el.addEventListener('click', () => {
@@ -205,6 +250,16 @@
       }
 
       async function init() {
+        const ver = await fetchVersion();
+        versionTagEl.textContent = ver;
+        const newer = await checkNewerRelease(ver);
+        if (newer) {
+          const span = document.createElement('span');
+          span.className = 'self-updating';
+          span.textContent = ' self-updating to v' + newer + ' ';
+          mainTitleEl.appendChild(span);
+        }
+
         for (const cat of CATEGORIES) {
           if (cat.name === 'all') {
             const allItems = [];
@@ -224,7 +279,7 @@
 
       function renderTabs() {
         tabsEl.innerHTML = CATEGORIES.map(c =>
-          `<div class="tab${c.name === currentCat ? ' active' : ''}" data-cat="${c.name}">${c.icon} ${c.label}<span class="count-badge">${(allData[c.name] || []).length}</span></div>`
+          '<div class="tab' + (c.name === currentCat ? ' active' : '') + '" data-cat="' + c.name + '">' + c.icon + ' ' + c.label + '<span class="count-badge">' + (allData[c.name] || []).length + '</span></div>'
         ).join('');
         tabsEl.querySelectorAll('.tab').forEach(el => {
           el.addEventListener('click', () => {
@@ -250,7 +305,6 @@
 
       function applyFilter() {
         let items = allData[currentCat] || [];
-
         const query = currentCat === 'all' ? allSearchEl.value.toLowerCase().trim() : '';
         if (query) {
           items = items.filter(item => item._tags.includes(query));
@@ -261,7 +315,7 @@
           );
         }
         filtered = items;
-        infoEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''} in ${currentCat}`;
+        infoEl.textContent = filtered.length + ' result' + (filtered.length !== 1 ? 's' : '') + ' in ' + currentCat;
         renderHashtagCloud();
         renderPage();
       }
@@ -286,16 +340,17 @@
           const isImg = imgExts.includes(ext);
           const isVid = vidExts.includes(ext);
           const hash = item._hashtags && item._hashtags.length > 0 ? item._hashtags[0].replace('#', '') : '';
+          const dl = displayName(item);
+          const src = 'wayback/' + item.path;
           let media = '';
           if (isImg) {
-            media = `<a href="${item.path}" target="_blank"><img src="${item.path}" loading="lazy" alt="${item.name}"></a>`;
+            media = '<a href="' + src + '" target="_blank"><img src="' + src + '" loading="lazy" alt="' + dl + '"></a>';
           } else if (isVid) {
-            media = `<a href="${item.path}" target="_blank"><video src="${item.path}" controls preload="metadata"></video></a>`;
+            media = '<a href="' + src + '" target="_blank"><video src="' + src + '" controls preload="metadata"></video></a>';
           } else {
-            media = `<a href="${item.path}" target="_blank">${item.name}</a>`;
+            media = '<a href="' + src + '" target="_blank">' + dl + '</a>';
           }
-          const nameClean = (item.name || '').replace(/\s*#\w+/g, '').trim();
-          return `<div class="item ${item._category}">${media}<div class="name">${nameClean}</div>${hash ? `<span class="hash-badge ${hash}">#${hash}</span>` : ''}</div>`;
+          return '<div class="item ' + item._category + '">' + media + '<div class="name">' + dl + '</div>' + (hash ? '<span class="hash-badge ' + hash + '">#' + hash + '</span>' : '') + '</div>';
         }).join('');
 
         renderPagination(totalPages, total);
@@ -303,10 +358,10 @@
 
       function renderPagination(totalPages, total) {
         if (totalPages <= 1) {
-          paginationEl.innerHTML = `<span class="info">${total} item${total !== 1 ? 's' : ''}</span>`;
+          paginationEl.innerHTML = '<span class="info">' + total + ' item' + (total !== 1 ? 's' : '') + '</span>';
           return;
         }
-        let html = `<button class="prev" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''}>Back</button>`;
+        let html = '<button class="prev" data-page="' + (currentPage - 1) + '"' + (currentPage <= 1 ? ' disabled' : '') + '>Back</button>';
         const maxVisible = 9;
         let startPage = Math.max(1, currentPage - 4);
         let endPage = Math.min(totalPages, startPage + maxVisible - 1);
@@ -314,18 +369,18 @@
           startPage = Math.max(1, endPage - maxVisible + 1);
         }
         if (startPage > 1) {
-          html += `<button data-page="1">1</button>`;
-          if (startPage > 2) html += `<span class="info">...</span>`;
+          html += '<button data-page="1">1</button>';
+          if (startPage > 2) html += '<span class="info">...</span>';
         }
         for (let i = startPage; i <= endPage; i++) {
-          html += `<button data-page="${i}" class="${i === currentPage ? 'active-page' : ''}">${i}</button>`;
+          html += '<button data-page="' + i + '"' + (i === currentPage ? ' class="active-page"' : '') + '>' + i + '</button>';
         }
         if (endPage < totalPages) {
-          if (endPage < totalPages - 1) html += `<span class="info">...</span>`;
-          html += `<button data-page="${totalPages}">${totalPages}</button>`;
+          if (endPage < totalPages - 1) html += '<span class="info">...</span>';
+          html += '<button data-page="' + totalPages + '">' + totalPages + '</button>';
         }
-        html += `<button class="next" data-page="${currentPage + 1}" ${currentPage >= totalPages ? 'disabled' : ''}>Next</button>`;
-        html += `<span class="info">Page ${currentPage} of ${totalPages}</span>`;
+        html += '<button class="next" data-page="' + (currentPage + 1) + '"' + (currentPage >= totalPages ? ' disabled' : '') + '>Next</button>';
+        html += '<span class="info">Page ' + currentPage + ' of ' + totalPages + '</span>';
         paginationEl.innerHTML = html;
         paginationEl.querySelectorAll('button:not(:disabled)').forEach(btn => {
           btn.addEventListener('click', () => {
