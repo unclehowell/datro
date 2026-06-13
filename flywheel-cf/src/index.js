@@ -163,6 +163,48 @@ const AGENT_TOOLS = {
       return result.reply || `Error: ${result.error}`;
     }
   },
+  check_live_site: {
+    description: 'Fetch the current live website HTML for research and verification',
+    args: { branch: 'string' },
+    execute: async (args, ctx) => {
+      const branch = args.branch || ctx.branch;
+      const url = `https://${branch}.${DOMAIN}`;
+      try {
+        const resp = await fetch(url);
+        if (!resp.ok) return `Live site returned ${resp.status}`;
+        const html = await resp.text();
+        return `Live site HTML for ${branch} (${html.length} chars):\n${html.slice(0, 20000)}`;
+      } catch (err) {
+        return `Failed to fetch live site: ${err.message}`;
+      }
+    }
+  },
+  analyze_ux: {
+    description: 'Perform a professional UX and design audit on HTML content',
+    args: { html: 'string', focus: 'string' },
+    execute: async (args, ctx) => {
+      const prompt = `Perform a professional Senior Product Engineer audit of the following HTML. Focus on ${args.focus || 'general UX, visual impact, and conversion'}. Identify 3 concrete improvements.
+      
+      HTML:
+      ${args.html.slice(0, 10000)}`;
+      const result = await queryFinancechequeAPI("You are a Senior UX/Product Engineer.", prompt, ctx.env, 30000);
+      return result.reply || `Error: ${result.error}`;
+    }
+  },
+  self_critique: {
+    description: 'Critique a proposed code change before committing. Output 3 points of improvement.',
+    args: { search: 'string', replace: 'string' },
+    execute: async (args, ctx) => {
+      const prompt = `Critique this proposed HTML change for a Senior Product Engineer standard.
+      
+      SEARCH: ${args.search}
+      REPLACE: ${args.replace}
+      
+      Does it improve visual impact? Is it accessible? Is the CSS efficient? Identify 3 points of improvement.`;
+      const result = await queryFinancechequeAPI("You are a Senior Code Reviewer.", prompt, ctx.env, 30000);
+      return result.reply || `Error: ${result.error}`;
+    }
+  },
   // ── Gitlawv Bounty Tools ──
   gitlawv_bounty_list: {
     description: 'List open gitlawb bounties. Each bounty has an id, title, reward (tokens), repo, and status.',
@@ -291,64 +333,40 @@ async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHt
       ).join('\n\n')
     : '';
 
-  const systemPrompt = `You are the autonomous agentic flywheel for the DATRO monorepo (${GITHUB_REPO}).
+  const systemPrompt = `You are a Senior Product Engineer and Autonomous Agentic Flywheel for the DATRO monorepo (${GITHUB_REPO}).
 
 ## Your Mission
-Analyze branch "${branch}" deeply. You have ${maxIterations} tool iterations to investigate and make changes.
-Use tools to read files, search code, run scans, and write changes. Commit changes via write_file as you go.
+Analyze branch "${branch}" deeply. Your goal is to produce high-standard, professional web improvements that elevate the user experience, visual design, and performance. You have ${maxIterations} tool iterations.
+
+## Senior Engineer Standards
+1. **Visual Impact**: Every release MUST make a noticeable visual difference. Do not just fix meta tags. Add professional Tailwind components, interactive elements, or refined typography.
+2. **Performance (Core Web Vitals)**: Prioritize Interaction to Next Paint (INP), Largest Contentful Paint (LCP), and Cumulative Layout Shift (CLS).
+3. **Professional UX**: Use modern design patterns (spacing, contrast, clear CTAs).
+4. **Clean Code**: Write idiomatic, accessible HTML/CSS. Use Tailwind utility classes where possible.
 
 ## Earn $GITLAWB While Working
-You can earn gitlawb bounties (paid in $GITLAWB tokens on Base L2) by claiming and completing tasks during your release cycle:
-1. **gitlawv_bounty_list** — find open bounties matching this branch's needs
-2. **gitlawv_bounty_claim** — claim a bounty to signal you are working on it
-3. **gitlawv_bounty_submit** — after committing changes, submit the commit URL as bounty completion
-Between every branch release, try to claim at least one bounty. The payout goes to the branch wallet.
+You can earn gitlawb bounties (paid in $GITLAWB tokens on Base L2) by claiming and completing tasks:
+1. **gitlawv_bounty_list** — find open bounties
+2. **gitlawv_bounty_claim** — claim a bounty
+3. **gitlawv_bounty_submit** — submit completion (commit URL)
 
 ## Available Tools
 ${toolDescriptions}
 
 ## Context
 - Branch: ${branch} (category: ${category})
-- Wing files loaded: ${context.wingFiles}
 - Wallet: ${wallet.address} (compute budget: ${wallet.computeBudget})
-- Bias: ${bias?.bias || 3}/5, Risk: ${bias?.risk || 3}/5, Steering: ${bias?.steering || 'CTR'}, Magnitude: ${bias?.magnitude || 0}
-- Directional weights: ${weightStr}
+- Steering: ${steeringLabel}, Risk: ${riskLabel}, Direction: ${weightStr}
 
 ## JOYSTICK STEERING
-The COMMAND cockpit joystick position determines which directional MASTERPLAN files to favour:
-- LEFT → MASTERPLAN.left.md (conservative/defensive)
-- RIGHT → MASTERPLAN.right.md (progressive/expansive)  
-- HIGH/UP → MASTERPLAN.high.md (experimental/innovative)
-- LOW/DOWN → MASTERPLAN.low.md (safe/incremental)
-- Diagonals → combined weighting
-- Center → neutral
-Current weights: ${weightStr}${dirPlanText}
-
-## Memory
-${honchoMem.slice(0, 1500)}
-${brainMem ? '---\n' + brainMem.slice(0, 1000) : ''}
-
-## Research
-${sciHub.slice(0, 500)}
-${dailyDigest.slice(0, 500)}
+${dirPlanText}
 
 ## Protocol
-To use a tool, output:
-TOOL: <tool_name>
-ARG: key=value
-ARG: key=value
-
-When you have made all your changes and want to finish, output:
-DONE
-SUMMARY: <what you changed and why>
-
-## Rules
-- Use read_file and search_code first to understand the codebase
-- Use brainstorm for creative thinking/planning
-- Use write_file to commit changes (it commits immediately to GitHub)
-- Make at least 1 real visual/functional change to index.html
-- Don't just add meta tags — add real UI elements
-- Max 3 write_file calls per run`;
+- Use check_live_site to see what the user actually sees.
+- Use read_file and search_code to understand the source.
+- Use analyze_ux for a deep audit of your current HTML.
+- Use write_file to commit (max 3 calls).
+- Output DONE when finished with a clear SUMMARY.`;
 
   conversation.push(systemPrompt);
   conversation.push(`Current index.html:
@@ -707,6 +725,15 @@ const BEST_PRACTICES = [
     fix: null
   },
   // TIER 5: Performance
+  {
+    tier: 5,
+    category: 'Performance',
+    name: 'INP Optimization',
+    check: (html) => !html || !html.includes('fetchpriority'),
+    source: 'web.dev: fetchpriority hints help optimize Interaction to Next Paint (INP) (web.dev/inp)',
+    description: 'Missing fetchpriority on critical assets — risk of slow initial interaction',
+    fix: null
+  },
   {
     tier: 5,
     category: 'Performance',
@@ -2131,6 +2158,21 @@ async function processBranch(env, branch) {
       await env.FLYWHEEL_STATE.put(bountyKey, JSON.stringify(history.slice(-50)));
       console.log(`Bounty ${agentResult.bounty.action}: ${agentResult.bounty.bountyId} on ${branch}`);
     }
+
+    // ── Release Pruning (keep last 5) ──
+    try {
+      const relsResp = await ghFetch(`https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=100`, token);
+      const rels = await relsResp.json();
+      const branchRels = rels.filter(r => r.tag_name.startsWith(`${branch}-v`));
+      if (branchRels.length > 5) {
+        for (const oldRel of branchRels.slice(5)) {
+          console.log(`Pruning old release: ${oldRel.tag_name}`);
+          await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/${oldRel.id}`, { method: 'DELETE', headers: ghHeaders(token) });
+          await fetch(`https://api.github.com/repos/${GITHUB_REPO}/git/refs/tags/${oldRel.tag_name}`, { method: 'DELETE', headers: ghHeaders(token) });
+        }
+      }
+    } catch (e) { console.log(`Pruning failed: ${e.message}`); }
+
     return { tagName, version, type: 'agent', changes: agentResult.changes, aiError: null, selfImprovements, wallet: wallet.address };
   }
 
