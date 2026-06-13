@@ -869,6 +869,13 @@ const CNEI_SELF_IMPROVEMENTS = [
     check: (code) => !code || !code.includes('risk'),
     description: 'No risk field in bias endpoint — dashboard 2D pad risk axis not wired to flywheel',
     fix: null
+  },
+  {
+    tier: 1,
+    name: 'resource ledger exists',
+    check: (code) => !code || !code.includes('QUOTAS.json'),
+    description: 'No QUOTAS.json reference — cannot track RSI point of reference',
+    fix: null
   }
 ];
 
