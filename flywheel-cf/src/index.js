@@ -319,6 +319,7 @@ async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHt
   const sciHub = await getSciHubIdeas(env, branch, category);
   const dailyDigest = await getDailyBestPractices(env);
   const wallet = await getBranchWallet(env, branch);
+  const quotaStats = await getQuotaStats(env);
 
   const toolDescriptions = Object.entries(AGENT_TOOLS).map(([name, tool]) =>
     `- ${name}: ${tool.description}\n  Args: ${Object.keys(tool.args).length > 0 ? Object.entries(tool.args).map(([k, v]) => `${k} (${v})`).join(', ') : 'none'}`
@@ -343,6 +344,12 @@ Analyze branch "${branch}" deeply. Your goal is to produce high-standard, profes
 2. **Performance (Core Web Vitals)**: Prioritize Interaction to Next Paint (INP), Largest Contentful Paint (LCP), and Cumulative Layout Shift (CLS).
 3. **Professional UX**: Use modern design patterns (spacing, contrast, clear CTAs).
 4. **Clean Code**: Write idiomatic, accessible HTML/CSS. Use Tailwind utility classes where possible.
+
+## Quota-Aware Rationing
+- Current Session Tokens Used: ${quotaStats.session.tokens}
+- Current Session Tool Calls: ${quotaStats.session.tools}
+- Last Ledger (from cnei.datro.xyz): ${JSON.stringify(quotaStats.website)}
+Be mindful of your token budget. If tokens used > 400k, be extremely concise and prioritize only the most critical visual change.
 
 ## Earn $GITLAWB While Working
 You can earn gitlawb bounties (paid in $GITLAWB tokens on Base L2) by claiming and completing tasks:
@@ -897,9 +904,41 @@ async function releaseLock(env) {
 async function getRotationState(env) {
   try {
     const raw = await env.FLYWHEEL_STATE.get('rotation', 'json');
-    if (raw) return { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO', ...raw };
+    if (raw) return { regular_index: 0, last_was_regular: false, lap: 0, mode: 'AUTO', ...raw };
   } catch (_) {}
-  return { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' };
+  return { regular_index: 0, last_was_regular: false, lap: 0, mode: 'AUTO' };
+}
+
+async function updateCneiResourceLedger(env, token) {
+  console.log('Publishing Resource Ledger to cnei.datro.xyz');
+  const stats = await getQuotaStats(env);
+  const ledgerHtml = `
+  <div id="resource-ledger" style="padding: 20px; border: 1px solid #ccc; margin-top: 20px;">
+    <h3>Resource Ledger (RSI Point of Reference)</h3>
+    <p>Last Updated: ${new Date().toISOString()}</p>
+    <ul>
+      <li>Session Tokens Used: ${stats.session.tokens}</li>
+      <li>Session Tool Calls: ${stats.session.tools}</li>
+      <li>Estimated Cost ($): ${(stats.session.tokens * 0.000015).toFixed(4)}</li>
+    </ul>
+    <pre>${JSON.stringify(stats, null, 2)}</pre>
+  </div>`;
+
+  // Update QUOTAS.json
+  await createCommit(token, 'cnei', 'static/cnei/QUOTAS.json', JSON.stringify(stats, null, 2), 'chore(cnei): update resource ledger');
+  
+  // Also inject into index.html if possible
+  const idxFile = await getFileContent(token, 'cnei', 'index.html');
+  if (idxFile) {
+    let html = idxFile.content;
+    const divMatch = html.match(/<div id="resource-ledger">[\s\S]*?<\/div>/);
+    if (divMatch) {
+      html = html.replace(divMatch[0], ledgerHtml);
+    } else {
+      html = html.replace('</body>', ledgerHtml + '</body>');
+    }
+    await createCommit(token, 'cnei', 'index.html', html, 'chore(cnei): publish resource ledger to dashboard');
+  }
 }
 
 async function getFlywheelConfig(env) {
@@ -1190,16 +1229,17 @@ function formatVersion(num) {
 
 function selectBranch(state) {
   let branch;
-  if (state.cnei_queue >= CNEI_RATIO) {
+  // RSI Clock-Cycle: Branch -> CNEI -> Branch
+  // If last run was a regular branch, next is CNEI.
+  if (state.last_was_regular) {
     branch = 'cnei';
-    console.log('CNEI_QUEUE: >=' + CNEI_RATIO + ', selecting cnei branch');
-    state.cnei_queue = 0;
+    state.last_was_regular = false;
+    console.log('RSI Clock-Cycle: Selecting cnei for self-improvement');
   } else {
-    const prevIndex = state.regular_index;
     branch = REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length];
     state.regular_index = (state.regular_index + 1) % REGULAR_BRANCHES.length;
-    if (state.regular_index <= prevIndex) state.lap = (state.lap || 0) + 1;
-    state.cnei_queue = (state.cnei_queue || 0) + 1;
+    state.last_was_regular = true;
+    console.log(`RSI Clock-Cycle: Selecting regular branch: ${branch}`);
   }
   return branch;
 }
@@ -1567,10 +1607,79 @@ Propose your best change using the ---CHANGE--- format.
 Mandatory: At least 1 change MUST affect the visual layout or add functional UI.`;
 }
 
+// ── Quota & Resource Ledger ──────────────────────────────────────────────────
+
+async function getQuotaStats(env) {
+  // Try to fetch latest stats from the cnei website as a point of reference
+  let websiteStats = {};
+  try {
+    const resp = await fetch(`https://cnei.${DOMAIN}/QUOTAS.json`);
+    if (resp.ok) websiteStats = await resp.json();
+  } catch (e) {}
+
+  // Current session usage (tracked in KV or memory)
+  const kvUsage = await env.FLYWHEEL_STATE.get('session_usage', 'json') || { tokens: 0, tools: 0 };
+  
+  return {
+    website: websiteStats,
+    session: kvUsage,
+    timestamp: Date.now()
+  };
+}
+
+async function updateSessionUsage(env, tokens, tools) {
+  const current = await env.FLYWHEEL_STATE.get('session_usage', 'json') || { tokens: 0, tools: 0 };
+  current.tokens += tokens;
+  current.tools += tools;
+  await env.FLYWHEEL_STATE.put('session_usage', JSON.stringify(current), { expirationTtl: 7200 }); // reset every 2h
+}
+
+// ── RSI Tools ─────────────────────────────────────────────────────────────────
+
+const RSI_TOOLS = {
+  fractal_search: {
+    description: 'Recursive search pattern for deep optimization. Searches deeper into a specific file or directory.',
+    args: { path: 'string', pattern: 'string', depth: 'number' },
+    execute: async (args, ctx) => {
+      const depth = parseInt(args.depth || 1);
+      if (depth > 3) return "Fractal depth limit reached.";
+      const results = [];
+      // Logic for deep recursive search
+      const file = await getFileContent(ctx.token, ctx.branch, args.path);
+      if (file && file.content.includes(args.pattern)) {
+        results.push(`Match in ${args.path} at depth ${depth}`);
+      }
+      return results.join('\n') || "No deep patterns found.";
+    }
+  },
+  boolean_simplify: {
+    description: 'Pass complex logic through a Boolean simplifier to remove bloat and technical debt.',
+    args: { logic: 'string' },
+    execute: async (args, ctx) => {
+      const prompt = `Simplify the following Boolean logic or code structure. Remove redundant if-statements and simplify the truth table.
+      
+      LOGIC:
+      ${args.logic}`;
+      const result = await queryFinancechequeAPI("You are a Boolean Logic Optimizer.", prompt, ctx.env, 30000);
+      return result.reply || "Simplification failed.";
+    }
+  }
+};
+
+// Add RSI tools to AGENT_TOOLS
+Object.assign(AGENT_TOOLS, RSI_TOOLS);
+
 async function queryFinancechequeAPI(systemPrompt, userPrompt, env, timeoutMs = 60000) {
   const startTimeAI = Date.now();
   const parentUrl = env.PARENT_PROXY_URL || 'https://www.financecheque.uk';
   const model = env.AI_MODEL || 'openrouter/anthropic/claude-sonnet';
+  
+  // ── Quota Guard ──
+  const stats = await getQuotaStats(env);
+  if (stats.session.tokens > 500000) { // arbitrary session limit for safety
+    console.warn('Quota Guard: Session token limit approached. Shifting to Low Power Mode.');
+  }
+
   const payload = {
     message: `${systemPrompt}\n\n${userPrompt}`,
     chat_only: true,
@@ -1593,7 +1702,13 @@ async function queryFinancechequeAPI(systemPrompt, userPrompt, env, timeoutMs = 
     }
     const data = await resp.json();
     const elapsed = Date.now() - startTimeAI;
-    console.log(`AI query completed in ${elapsed}ms`);
+    
+    // Estimate tokens (crude: 4 chars per token)
+    const promptTokens = Math.ceil((systemPrompt.length + userPrompt.length) / 4);
+    const replyTokens = Math.ceil((data.reply || '').length / 4);
+    await updateSessionUsage(env, promptTokens + replyTokens, 1);
+
+    console.log(`AI query completed in ${elapsed}ms. Est Tokens: ${promptTokens + replyTokens}`);
     return { error: null, reply: data.reply || data.choices?.[0]?.message?.content || '', elapsed };
   } catch (err) {
     clearTimeout(timer);
@@ -2140,6 +2255,12 @@ async function processBranch(env, branch) {
     const release = await createGitHubRelease(token, tagName, branch, version, releaseNotes);
     if (release) {
       await verifyRelease(token, tagName);
+      
+      // If this is cnei, publish the resource ledger
+      if (branch === 'cnei') {
+        await updateCneiResourceLedger(env, token);
+      }
+    }
     }
 
     console.log(`Agentic release ${tagName}: ${agentResult.changes.length} files committed`);
@@ -2224,7 +2345,7 @@ async function triggerOtaAfterCneiRelease(env, tagName) {
 }
 
 async function findAvailableBranch(state, token, gear) {
-  const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
+  const savedState = { regular_index: state.regular_index, last_was_regular: state.last_was_regular, lap: state.lap, mode: state.mode };
   for (let attempt = 0; attempt < 40; attempt++) {
     const branch = selectBranch(state);
     const onCooldown = await isOnCooldown(token, branch, gear);
@@ -2232,7 +2353,7 @@ async function findAvailableBranch(state, token, gear) {
   }
   console.log('All branches on cooldown, skipping run');
   state.regular_index = savedState.regular_index;
-  state.cnei_queue = savedState.cnei_queue;
+  state.last_was_regular = savedState.last_was_regular;
   state.lap = savedState.lap;
   return null;
 }
@@ -2269,7 +2390,7 @@ async function runFlywheel(env, forcedBranch) {
       if (sampleWallet.computeBudget > 5000) effectiveGear = Math.min(10, effectiveGear + 1);
     } catch (_) {}
 
-    console.log(`State: idx=${state.regular_index} cnei=${state.cnei_queue} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
+    console.log(`State: idx=${state.regular_index} last_was_regular=${state.last_was_regular} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
 
     if (state.mode === 'PAUSED' && !forcedBranch) {
       console.log('Flywheel paused, skipping');
@@ -2295,7 +2416,7 @@ async function runFlywheel(env, forcedBranch) {
       }
     }
 
-    const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
+    const savedState = { regular_index: state.regular_index, last_was_regular: state.last_was_regular, lap: state.lap, mode: state.mode };
     console.log(`Selected branch: ${branch}`);
 
     const result = await processBranch(env, branch);
