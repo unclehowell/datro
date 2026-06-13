@@ -227,7 +227,7 @@
 
       async function loadCategory(cat) {
         if (cat === 'all') return [];
-        const url = `wayback/${cat}/_treeview.json`;
+        const url = `${cat}/_treeview.json`;
         const resp = await fetch(url);
         if (!resp.ok) return [];
         const data = await resp.json();
