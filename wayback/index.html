@@ -98,7 +98,7 @@
       min-height: 36px; line-height: 1.4; touch-action: manipulation;
     }
     #hashtag-cloud .tag:active { background: rgba(255,255,255,0.25); color: #fff; }
-    #hashtag-cloud .tag.active { background: transparent; color: #aac; border-color: transparent; text-decoration: line-through; opacity: 0.5; }
+    #hashtag-cloud .tag.active { background: rgba(100,200,100,0.3); color: #afa; border-color: rgba(100,200,100,0.5); }
     #hashtag-cloud .tag-label { color: #889; font-size: 0.65rem; margin-bottom: 0.2rem; display: flex; justify-content: space-between; align-items: center; }
     #hashtag-cloud .clear-btn { background: none; border: none; color: #667; cursor: pointer; font-size: 0.65rem; padding: 0.3rem; touch-action: manipulation; }
     #hashtag-cloud .clear-btn:active { color: #aac; }
@@ -111,6 +111,8 @@
     }
 
     footer { text-align: center; padding: 0.75rem; font-size: 0.7rem; color: #667; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1.5rem; }
+
+    .self-updating { color: #8c8; background: rgba(0,100,0,0.2); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.6rem; vertical-align: middle; }
 
     /* -- TABLET+ -- */
     @media (min-width: 768px) {
@@ -128,7 +130,7 @@
   </style>
 </head>
 <body>
-  <p class="main-title">Wayback Archive v0.0.0.09</p>
+  <p class="main-title" id="main-title">Wayback Archive <span id="version-tag"></span></p>
 
   <div class="tabs" id="tabs"></div>
   <div id="all-search-wrapper" style="display:none"><input type="text" id="all-search" placeholder="Search all files..."></div>
@@ -156,7 +158,8 @@
       let currentCat = 'images';
       let currentPage = 1;
       let filtered = [];
-      let activeExcludes = new Set();
+      let activeFilters = new Set();
+      let deployedVersion = '';
 
       const tabsEl = document.getElementById('tabs');
       const galleryEl = document.getElementById('gallery');
@@ -165,6 +168,56 @@
       const hashCloudEl = document.getElementById('hashtag-cloud');
       const allSearchEl = document.getElementById('all-search');
       const allSearchWrapper = document.getElementById('all-search-wrapper');
+      const versionTagEl = document.getElementById('version-tag');
+      const mainTitleEl = document.getElementById('main-title');
+
+      async function fetchVersion() {
+        try {
+          const r = await fetch('version.txt');
+          if (r.ok) {
+            const txt = await r.text();
+            deployedVersion = txt.trim();
+          }
+        } catch (e) {}
+        if (!deployedVersion) deployedVersion = 'v0.0.0.00';
+        return deployedVersion;
+      }
+
+      async function checkNewerRelease(currentVer) {
+        try {
+          const r = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags');
+          if (!r.ok) return null;
+          const refs = await r.json();
+          const tagRefs = refs.filter(ref => ref.ref.startsWith('refs/tags/wayback-v'));
+          if (tagRefs.length === 0) return null;
+
+          const withDates = await Promise.allSettled(tagRefs.map(async (ref) => {
+            const ver = ref.ref.replace('refs/tags/wayback-v', '');
+            const sha = ref.object.sha;
+            const cr = await fetch(`https://api.github.com/repos/unclehowell/datro/git/commits/${sha}`);
+            if (!cr.ok) return null;
+            const c = await cr.json();
+            return { ver, date: c.committer?.date || c.author?.date || '' };
+          }));
+
+          const valid = withDates
+            .map(d => d.status === 'fulfilled' ? d.value : null)
+            .filter(d => d && d.date);
+          if (valid.length === 0) return null;
+
+          valid.sort((a, b) => b.date.localeCompare(a.date));
+          const latest = valid[0].ver;
+
+          const cv = currentVer.replace('v', '');
+          const ca = cv.split('.').map(Number);
+          const la = latest.split('.').map(Number);
+          for (let i = 0; i < 4; i++) {
+            if ((la[i] || 0) > (ca[i] || 0)) return latest;
+            if ((la[i] || 0) < (ca[i] || 0)) return null;
+          }
+          return null;
+        } catch (e) { return null; }
+      }
 
       function extractTags(item) {
         const tags = (item.name || '').match(/#\w+/g) || [];
@@ -188,24 +241,34 @@
 
       function renderHashtagCloud() {
         const tags = ['#bpvsbuckler', '#datro', '#ccan', '#morgan', '#ceo', '#gui', '#library', '#family'];
-        hashCloudEl.innerHTML = `<div class="tag-label"><span>Exclude</span><button class="clear-btn" id="hash-clear">clear</button></div>` +
+        hashCloudEl.innerHTML = `<div class="tag-label"><span>Filter</span><button class="clear-btn" id="hash-clear">clear</button></div>` +
           tags.map(t =>
-            `<span class="tag${activeExcludes.has(t) ? ' active' : ''}" data-tag="${t}">${t}</span>`
+            `<span class="tag${activeFilters.has(t) ? ' active' : ''}" data-tag="${t}">${t}</span>`
           ).join('');
         hashCloudEl.querySelectorAll('.tag').forEach(el => {
           el.addEventListener('click', () => {
             const tag = el.dataset.tag;
-            if (activeExcludes.has(tag)) activeExcludes.delete(tag);
-            else activeExcludes.add(tag);
+            if (activeFilters.has(tag)) activeFilters.delete(tag);
+            else activeFilters.add(tag);
             currentPage = 1;
             applyFilter();
           });
         });
         const clearBtn = document.getElementById('hash-clear');
-        if (clearBtn) clearBtn.addEventListener('click', () => { activeExcludes.clear(); currentPage = 1; applyFilter(); });
+        if (clearBtn) clearBtn.addEventListener('click', () => { activeFilters.clear(); currentPage = 1; applyFilter(); });
       }
 
       async function init() {
+        const ver = await fetchVersion();
+        versionTagEl.textContent = ver;
+        const newer = await checkNewerRelease(ver);
+        if (newer) {
+          const span = document.createElement('span');
+          span.className = 'self-updating';
+          span.textContent = ' self-updating to v' + newer + ' ';
+          mainTitleEl.appendChild(span);
+        }
+
         for (const cat of CATEGORIES) {
           if (cat.name === 'all') {
             const allItems = [];
@@ -256,9 +319,9 @@
         if (query) {
           items = items.filter(item => item._tags.includes(query));
         }
-        if (activeExcludes.size > 0) {
+        if (activeFilters.size > 0) {
           items = items.filter(item =>
-            !item._hashtags.some(t => activeExcludes.has(t))
+            item._hashtags.some(t => activeFilters.has(t))
           );
         }
         filtered = items;
