@@ -3,40 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Steam Roller Platform | Data Momentum</title>
-    <meta name="description" content="Steam Roller by DATRO: The flywheel architecture that crushes data complexity and paves the way for smooth, unstoppable business momentum.">
+    <title>Steam Roller | Flywheel Architecture Hub</title>
     <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; }
-        .hero { background: #0056b3; color: white; padding: 4rem 2rem; text-align: center; }
-        .hero h1 { margin: 0; font-size: 3rem; }
-        .container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-        .analogy { background: #f4f4f4; padding: 2rem; border-left: 5px solid #0056b3; margin: 2rem 0; }
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background: #f9f9f9; }
+        header { background: #1a1a1a; color: #fff; padding: 2rem; text-align: center; }
+        .container { max-width: 900px; margin: 2rem auto; padding: 2rem; background: #fff; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h1, h2, h3 { color: #0056b3; }
+        .schematic { background: #333; color: #0f0; padding: 1.5rem; font-family: monospace; border-radius: 5px; overflow-x: auto; margin: 1rem 0; }
+        nav { background: #eee; padding: 1rem; text-align: center; }
+        nav a { margin: 0 1rem; text-decoration: none; color: #0056b3; font-weight: bold; }
     </style>
 </head>
 <body>
-    <header class="hero">
+    <header>
         <h1>The Steam Roller</h1>
-        <p>Unstoppable Data Momentum</p>
+        <p>Unstoppable Data Momentum & Flywheel Architecture</p>
     </header>
+    <nav>
+        <a href="#whitepaper">Whitepaper</a>
+        <a href="#schematic">Schematic</a>
+        <a href="#api">API & Cockpit</a>
+    </nav>
     <main class="container">
-        <section class="analogy">
-            <h2>The Flywheel Analogy</h2>
-            <p>Think of our technology like a massive <strong>Steam Roller</strong>. It starts slow, but once it gets going, nothing can stop its momentum. It crushes complex obstacles, levels the playing field, and paves a perfect, smooth surface for your business to operate on.</p>
-            <p>Our "Flywheel" architecture is the engine inside that steam roller. It converts your daily data efforts into pure, unstoppable forward progress. The more you put in, the faster the roller moves, and the smoother your data journey becomes.</p>
+        <section id="whitepaper">
+            <h2>Whitepaper: The Flywheel Engine</h2>
+            <p>The "Steam Roller" is our moniker for the integrated Flywheel architecture deployed on Cloudflare. It automates complex data workflows through a closed-loop agentic system that learns, refines, and executes tasks with increasing momentum.</p>
         </section>
-        
-        <section>
-            <h2>Advanced Flywheel Engine</h2>
-            <p>We've recently upgraded our agentic core with <strong>Diffusion-Style Iterative Refinement</strong>. By treating content generation as an iterative "denoising" process, our engine now critiques its own work in real-time, ensuring higher stability, professional UX, and brand consistency.</p>
+        <section id="schematic">
+            <h2>System Schematic</h2>
+            <div class="schematic">
++-----------+    +-------------+    +--------------+
+| Monday.com|--->| Flywheel/CF |--->| Cloudflare   |
+| (Steering)|    | (Agent Core)|    | Pages/Worker |
++-----------+    +-------------+    +--------------+
+                       ^                   |
+                       |                   v
+                +-------------+     +--------------+
+                | FinanceProxy| <---| IDE / CLI    |
+                +-------------+     +--------------+
+            </div>
         </section>
-
-        <section>
-            <h2>Why Choose Steam Roller?</h2>
-            <ul>
-                <li><strong>Consistent Progress:</strong> Just like a roller, we keep moving forward, regardless of the terrain.</li>
-                <li><strong>Crush Complexity:</strong> No data job is too rough.</li>
-                <li><strong>Paved for Success:</strong> Build your future on a smooth, reliable foundation.</li>
-            </ul>
+        <section id="api">
+            <h2>API & Command Cockpit</h2>
+            <p>Use the <a href="https://command.datro.xyz">Command Cockpit</a> to steer the Steam Roller. Integration is achieved via JSON-based directive files and Monday.com board triggers, which the Flywheel monitors for real-time adjustments.</p>
         </section>
     </main>
 </body>
