@@ -1,0 +1,460 @@
+[https://products.office.com/en-us/CMSImages/Office365Logo_Orange.png?version=b8d100a9-0a8b-8e6a-88e1-ef488fee0470]
+Your message to wales@britishlegion.org.uk couldn't be delivered.
+wales wasn't found at britishlegion.org.uk.
+hywelapbuckler  Office 365      wales
+Action Required                 Recipient
+Unknown To address
+
+How to Fix It
+The address may be misspelled or may not exist. Try one or more of the following:
+
+  *   Send the message again following these steps: In Outlook, open this non-delivery report (NDR) and choose Send Again from the Report ribbon. In Outlook on the web, select this NDR, then select the link "To send this message again, click here." Then delete and retype the entire recipient address. If prompted with an Auto-Complete List suggestion don't select it. After typing the complete address, click Send.
+  *   Contact the recipient (by phone, for example) to check that the address is correct.
+  *   The recipient may have set up email forwarding to an incorrect address. Ask them to check that any forwarding they've set up is working correctly.
+  *   Clear the recipient Auto-Complete List in Outlook or Outlook on the web by following the steps in this article: Fix email delivery issues for error code 5.1.1 in Office 365<https://go.microsoft.com/fwlink/?LinkId=389363>, and then send the message again. Retype the entire recipient address before selecting Send.
+
+Was this helpful? Send feedback to Microsoft<https://go.microsoft.com/fwlink/?LinkId=618497>.
+________________________________
+
+More Info for Email Admins
+Status code 554 5.4.14
+
+Typically this error occurs because the recipient email address is incorrect or doesn't exist at the destination domain. This can usually be fixed by the sender. However, sometimes the issue needs to be fixed by the recipient or the recipient's email admin. If the steps in the How to Fix It section above don't fix the problem, and you're the email admin for the recipient, try one or more of the following:
+
+The email address exists and is correct - Confirm that the recipient address exists, is correct, and is accepting messages.
+
+Synchronize your directories - If you have a hybrid environment and are using directory synchronization make sure the recipient's email address is synced correctly in both Office 365 and in your on-premises directory.
+
+Errant forwarding rule - Check for forwarding rules that aren't behaving as expected. A forwarding rule can be configured by an admin via mail flow rules or mailbox forwarding address settings, or by the recipient via the Inbox Rules feature.
+
+Mail flow settings and MX records are not correct - Misconfigured mail flow settings or MX records can cause this error. Check your Office 365 mail flow settings to make sure your domain and any mail flow connectors are set up correctly. Also, work with your domain registrar to make sure the MX records for your domain are configured correctly.
+
+Mail loop detected - This error also indicates that the receiving organization's email settings are misconfigured, creating a mail loop when a message is sent to an address that isn't found in their directory. This usually won't disrupt mail flow for recipients that actually exist, but the recipient's email admin should fix the misconfiguration to reduce the chance of any other mail flow issues. A common cause for this loop is that the recipient's domain is configured as "Internal Relay" when it should be "Authoritative." Another common cause for the loop is that both the sender and recipient are part of the same organization, but the sender's mailbox is hosted by Office 365, while the recipient's mailbox is hosted on-premises, and an outbound connector from Office 365 to the on-premises email servers is missing or misconfigured. To fix this, the recipient's email admin should create a correctly configured outbound connector in Office 365 to route the message to the on-premises mailbox.
+
+For more information and tips to fix this problem, see Fix email delivery issues for error code 5.4.14 in Office 365<https://go.microsoft.com/fwlink/?LinkId=397497>.
+
+Original Message Details
+Created Date:   5/29/2026 6:48:13 PM
+Sender Address: hywelapbuckler@gmail.com
+Recipient Address:      wales@britishlegion.org.uk
+Subject:        FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance, Planning Approvals, and Displaced Family Tenancy Records for Great House Farm, Llandough (FOIA/EIR Request)
+
+Error Details
+Error:  554 5.4.14 Hop count exceeded - possible mail loop ATTR34 [DB1PEPF000509E3.eurprd03.prod.outlook.com 2026-05-29T18:48:40.226Z 08DEB726FBF8163A]
+Message rejected by:    DB1PEPF000509E3.mail.protection.outlook.com
+
+Notification Details
+Sent by:        CWLP123MB7446.GBRP123.PROD.OUTLOOK.COM
+
+Message Hops
+HOP     TIME (UTC)      FROM    TO      WITH    RELAY TIME
+1       5/29/2026
+6:48:28 PM              mail-ua1-x92c.google.com        SMTP    15 sec
+2       5/29/2026
+6:48:28 PM      mail-ua1-x92c.google.com        AM3PEPF0000A797.mail.protection.outlook.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   *
+3       5/29/2026
+6:48:28 PM      AM3PEPF0000A797.eurprd04.prod.outlook.com       AS4P189CA0028.outlook.office365.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   *
+4       5/29/2026
+6:48:28 PM      AS4P189CA0028.EURP189.PROD.OUTLOOK.COM  LO0P123MB7247.GBRP123.PROD.OUTLOOK.COM  Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384)    *
+5       5/29/2026
+6:48:32 PM      CWXP265CU010.outbound.protection.outlook.com    AM4PEPF00025F96.mail.protection.outlook.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   4 sec
+6       5/29/2026
+6:48:32 PM      AM4PEPF00025F96.EURPRD83.prod.outlook.com       PA7P264CA0465.outlook.office365.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   *
+7       5/29/2026
+6:48:32 PM      PA7P264CA0465.FRAP264.PROD.OUTLOOK.COM  LOYP123MB3391.GBRP123.PROD.OUTLOOK.COM  Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384)    *
+8       5/29/2026
+6:48:36 PM      CWXP265CU009.outbound.protection.outlook.com    AMS0EPF000001B2.mail.protection.outlook.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   4 sec
+9       5/29/2026
+6:48:36 PM      AMS0EPF000001B2.eurprd05.prod.outlook.com       AS4P191CA0025.outlook.office365.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   *
+10      5/29/2026
+6:48:36 PM      AS4P191CA0025.EURP191.PROD.OUTLOOK.COM  CWLP123MB7446.GBRP123.PROD.OUTLOOK.COM  Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384)    *
+
+Original Message Headers
+
+ARC-Seal: i=7; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=O+5IE9+EWr3wuueODbm3l5cax2H0YarmPnuEbetO+4AMOW7WaOxkPuc1HkNhnWpuq8x6vpyoJWCailkgrg3/zbWSWl6dJioJO/dZXv8vwYT+mCr10t2Zf0ONrbFRxqGqjexBFmz+YQqmzlKIr2n4kfVJv7iaI1hg27yafcvfEFrIRhQDqwbZwLSQMfFb/xZIUgD03ljJYNLfPpQymFKve6Y/LDd6nb557+obWtunyQOf2uLzE0Wk6YI55RchqZS+SUEDZMrEZk1UmVJtALSo/O9A6TRwT/nYUXhCD8X7LdZ6GxKGAEC+dse7cjGqyDBAcHaQ/wjQexj74O0WkvyJ/A==
+ARC-Message-Signature: i=7; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001; h=From:Date:Subject:Message-ID:MIME-Version;
+ bh=OuT7v2V2t1zxPGG1Jk0O/QGjbVEDjfU3lkTzcGA1ZLM=;
+ b=D6EUSfgW6OGgvy28i8idw6XDCpxbY1DEhSUapacvupHWbmIOOY7e0uHVrJQyKTlbaVKeD+0N4J4yZ+Qc/EqHuTWDeonKN2KnYqD4wai3yAxk3bRxtKPDFqvCkAv3FoZ1+GcutXmBKV7a3ZqcU9RwAV5fXD32R3H7yovlSAJavz1lY5UTgeNdy+b16uFbaQ3gjFZtmTKFBOs6Ptyul0McAMfRw48iiu3JQJlM6ZJpJcGjRd5d+We/ji9Jx3t9Pxu8G3fBiJLNqlyOO2VnLIYyA2L5MWHkpK5ZBf/ZK0WfG+AfN4USg7+/guv99SeDaGek7Yl2JbP9WoSIUqdSF0pGlg==
+ARC-Authentication-Results: i=7; mx.microsoft.com 1; spf=softfail (sender ip
+ is 2a01:111:f403:c206::3) smtp.rcpttodomain=britishlegion.org.uk
+ smtp.mailfrom=gmail.com; dmarc=fail (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=fail (body hash did not verify)
+ header.d=gmail.com; arc=pass (0 oda=1 ltdi=1
+ spf=[1,3,smtp.mailfrom=gmail.com] dkim=[1,3,header.d=gmail.com]
+ dmarc=[1,3,header.from=gmail.com])
+ARC-Seal: i=6; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=ppfpcS/z7R8ancuvUlna1lZSzUndILyDIhKx5hWejmfsr2sp0unltvb3ItQkZLEfU1BDIkNJ5FchwHATszHULVLNfjDVhQIsinkR3FhAAjNeDfT8JnXapgaH9JD7xXJ2yMcBYrZvlQXDPne8vGAk6FmKJDDP2T3QkCJZqyelDEMf6txfO8X579hCBYO9gVAF5qCviB/srYdlhkRpdvx+SfEhSPuTgJ0A8L54wCWxx2+E+FLHxn5FAMrMJ70UtXbYFIRKy9QS1lJK8sfmBKStrAK5ytRSR87v5wAcxpSQFpnt48mtYbbo28I+9IJZInw5WHRX9KdMR9QdmRNyQLe7+A==
+ARC-Message-Signature: i=6; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001; h=From:Date:Subject:Message-ID:MIME-Version;
+ bh=OuT7v2V2t1zxPGG1Jk0O/QGjbVEDjfU3lkTzcGA1ZLM=;
+ b=zHDMVDCX1NkKQLG5ntM4phcavF3yMzZnlNPAiUfDf47qctYQcyDiVtaO9/d3su1YzDelWgXvzCnHGi1PlETqQg5EQqo8Jl9Kh0eNhL4ix45FynuaQqf/dRaZqcp1g9sBz7Ie/KnYH//pfXIY2hAuWYpeVbUyJXt+7Z9LuQAO0sFMX9YtUS2JkxihxBA8Ut3xosdnNlJKwpx+rayrA7z51bA6So3jWkRl+WYGJQ4wkqT0On2Unhwn/o7T0pIif/4LHoR1+5qEDWHJjTBb9zXnQ+094NWVgPIf6hNTH3W0kH6tXsHu7Dzl0TXvk6KSddBm8FJZ4Xzg2+U9H+U0ykgXgQ==
+ARC-Authentication-Results: i=6; mx.microsoft.com 1; spf=softfail (sender ip
+ is 2a01:111:f403:c206::3) smtp.rcpttodomain=britishlegion.org.uk
+ smtp.mailfrom=gmail.com; dmarc=fail (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=fail (body hash did not verify)
+ header.d=gmail.com; arc=pass (0 oda=1 ltdi=1
+ spf=[1,3,smtp.mailfrom=gmail.com] dkim=[1,3,header.d=gmail.com]
+ dmarc=[1,3,header.from=gmail.com])
+Received: from AS4P191CA0025.EURP191.PROD.OUTLOOK.COM (2603:10a6:20b:5d9::15)
+ by CWLP123MB7446.GBRP123.PROD.OUTLOOK.COM (2603:10a6:400:220::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.15; Fri, 29 May
+ 2026 18:48:36 +0000
+Received: from AMS0EPF000001B2.eurprd05.prod.outlook.com
+ (2603:10a6:20b:5d9:cafe::39) by AS4P191CA0025.outlook.office365.com
+ (2603:10a6:20b:5d9::15) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.14 via Frontend Transport; Fri, 29
+ May 2026 18:48:36 +0000
+Authentication-Results: spf=softfail (sender IP is 2a01:111:f403:c206::3)
+ smtp.mailfrom=gmail.com; dkim=fail (body hash did not verify)
+ header.d=gmail.com;dmarc=fail action=none header.from=gmail.com;compauth=pass
+ reason=130
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ gmail.com discourages use of 2a01:111:f403:c206::3 as permitted sender)
+Received: from CWXP265CU009.outbound.protection.outlook.com
+ (2a01:111:f403:c206::3) by AMS0EPF000001B2.mail.protection.outlook.com
+ (2603:10a6:20f:fff4:0:10:0:6) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.92.5 via Frontend Transport; Fri, 29
+ May 2026 18:48:36 +0000
+ARC-Seal: i=5; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=LvRO+232rfQ0TxswZRA75PShYzD1aF82aaueDX5hG3lvXgBCt1Q/81YwOHl4q389iatjfHQbssbqTJfjx9/Y26XJ3QscNmepcSIJtyKlfuN/5Fm5W5gwgXXEWBdiP3vicuwoMKfoFDqi7nMBz3ACFo9Rmeq5x7ssWMq2lpmCvRFcu7xPErt20ByPX4nFOh10SX/LtYiuj4xkSrRJa28M0aXqtUWtHS8BH+EeeG5dEb69CPpHRC6ItmXhHNN2H7Rj87koY+eH9gUDkATub/frV9jign6zkpeXXgIqJiC3dwm/huQ7bfruV1RUjpXLXUogbbmiYNPSXWFn39ELd9ryAg==
+ARC-Message-Signature: i=5; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001; h=From:Date:Subject:Message-ID:MIME-Version;
+ bh=OuT7v2V2t1zxPGG1Jk0O/QGjbVEDjfU3lkTzcGA1ZLM=;
+ b=iz6CmEyaMrxf42xwr4cHFuBIx0xwuSKyY4wMuL/Q9NDXLdacJfbNCKjz8PfwVYFNHYEC/yCC0icZ2hAnj5J/XTr/RvFaqzTPjjRGL+voMAHUO3NRl0lAKQUDspQb0Fx2mYDzhlBxoEtg5W7JsYCvIRcanLTc8WEGiN7CV/00tUFaBvt+NAD8PGga8F0coXzSKQf6QYhJUYJq93+1qesdBS1P1rNANf95ArbVCJMC+5vKYHsB0Q+YnSuOV9i5r0HXlU2izNW+StsOTyD3y2del5cFVYFDNZUodiOpzAhknFVA1BSIjOYrSklnJ0yCnpwUm+sMgH/sIcoOMr/0vipOmA==
+ARC-Authentication-Results: i=5; mx.microsoft.com 1; spf=softfail (sender ip
+ is 2a01:111:f403:c206::4) smtp.rcpttodomain=britishlegion.org.uk
+ smtp.mailfrom=gmail.com; dmarc=fail (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=fail (body hash did not verify)
+ header.d=gmail.com; arc=pass (0 oda=1 ltdi=1
+ spf=[1,3,smtp.mailfrom=gmail.com] dkim=[1,3,header.d=gmail.com]
+ dmarc=[1,3,header.from=gmail.com])
+ARC-Seal: i=4; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=rKDm5Ha/vRQKBWM9q5j+2+U8D4pFtBRk8q1D7MQbImxMnWxW+WL3ugJKKLqVn2YzlErQ01UZJanq+Gt5ZaleC1M4htYc5AznyC94u0h0BIXkEn5QfzvVKz68B+TzgC8hTwQz4itiUV5tE6W+9kTvBdOzgdOSE/ar7/0e71VYDmaQohBrd5WSp5YPYtRS2+WJWLxF4orF/1BU4jmGjjVsbDv/RujZa9AJzTrWM/z82EyH6fb4Tb2I7g+hi29bFAnt4J0LfyTh/Wtz/989yo7TONYQNASZxC0owVUnjIXAQAzXsKH07FGwGRs8zs66xO2R6aG1EFS4ilpjoPQSsQrZGw==
+ARC-Message-Signature: i=4; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001; h=From:Date:Subject:Message-ID:MIME-Version;
+ bh=OuT7v2V2t1zxPGG1Jk0O/QGjbVEDjfU3lkTzcGA1ZLM=;
+ b=Mqbks4rW38JY4a4J+7mCGiiiZQ//hgO5y94n/5jVmGsiSDzZd8Xzm1R6QiaEEzFfHvPppkT4b0NUJDCb1GBdbEmxILrf82gxwt4mFUiin3qfbpDDeWNMPLeeFMTEI/yPyl4b2S4H/mMKO0xQdqRaNjnvZ0QFtz3zSYts7qeVo7rxrMFzQExpeEyt8zTHCG7Bafu/iMvHS2TpM24KhuT3ng1pSaUi6RTqslJ2kXxE+GVwAiNPeCiYN/Xp+DveMINZE92rCmy/6xTL9+IFt6YMllgWJK2O3LB6p+opCVFvkNL6EHcUxbmcH0N0F+NpBz96zci77OBAemT9EYiRaPtibw==
+ARC-Authentication-Results: i=4; mx.microsoft.com 1; spf=softfail (sender ip
+ is 2a01:111:f403:c206::4) smtp.rcpttodomain=britishlegion.org.uk
+ smtp.mailfrom=gmail.com; dmarc=fail (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=fail (body hash did not verify)
+ header.d=gmail.com; arc=pass (0 oda=1 ltdi=1
+ spf=[1,3,smtp.mailfrom=gmail.com] dkim=[1,3,header.d=gmail.com]
+ dmarc=[1,3,header.from=gmail.com])
+Received: from PA7P264CA0465.FRAP264.PROD.OUTLOOK.COM (2603:10a6:102:398::20)
+ by LOYP123MB3391.GBRP123.PROD.OUTLOOK.COM (2603:10a6:600:116::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.15; Fri, 29 May
+ 2026 18:48:32 +0000
+Received: from AM4PEPF00025F96.EURPRD83.prod.outlook.com
+ (2603:10a6:102:398:cafe::51) by PA7P264CA0465.outlook.office365.com
+ (2603:10a6:102:398::20) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.14 via Frontend Transport; Fri, 29
+ May 2026 18:48:32 +0000
+Authentication-Results-Original: spf=softfail (sender IP is
+ 2a01:111:f403:c206::4) smtp.mailfrom=gmail.com; dkim=fail (body hash did not
+ verify) header.d=gmail.com;dmarc=fail action=none
+ header.from=gmail.com;compauth=pass reason=130
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ gmail.com discourages use of 2a01:111:f403:c206::4 as permitted sender)
+Received: from CWXP265CU010.outbound.protection.outlook.com
+ (2a01:111:f403:c206::4) by AM4PEPF00025F96.mail.protection.outlook.com
+ (2603:10a6:20f:fff4::5) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.92.0 via Frontend Transport; Fri, 29
+ May 2026 18:48:32 +0000
+ARC-Seal: i=3; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=lveyneF2VZlzHqLFmpmeKOFFTBO+fZCkHHe34S4pPo55BAyKaoO9jVGROR3bmZxve/XeG9CdCWGlFZEi7a831k2WwxZnSleL3K5HhMiDj7svK+3xneIsCEbFtbPRJBgclWVIwGV9qfmvkDIPF0xkpl4aB9hhIleRbMdWODEyfe0CM7f3cm/jw5qBavoFlxVrtkRLOb7zaZ4xNguXjS0Ks4Aaa2zHfEV7j1yPaPNlg2B3Z1eIzcREaLqhi4IDAamo9ltvYabxvXDotdyhK46jJkPmtXAutbpG6jv7aiNQs6aZnLTERYeLcOv05z8+VrdsqC8kiSQiLy2aiNQQXzgXVA==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001; h=From:Date:Subject:Message-ID:MIME-Version;
+ bh=OuT7v2V2t1zxPGG1Jk0O/QGjbVEDjfU3lkTzcGA1ZLM=;
+ b=OBm9pRagLfh5MfOnq7KAi/5IkrYV5iZSpRD1wr7fUepnp+dQfng3t2A4LmBEmQnMPTaITjUK/LczZpNaH+D7iFzFL+iVlg52sOlKwNePo1fditkj/+4xSE9trp2fl9noe++oYKJnDQ9+psxcyUrbitnDCJJSej4+6QZrzzSpNwBtKu2+ab2i5EGDgyFoOcvwesczDLoZUYODtIrCMECKxGZ8v7cFfMHbIxGoh48mZSUXEbYD7sf7wIVX+G2eko+nlq/UNSWeYeIna2whpA3wGq4rtZIf02yo+oFV7dw8sDGLOcpWeSutTUlu1WbjGzXw7Csv/IgwrreAfmGkm59wpg==
+ARC-Authentication-Results: i=3; mx.microsoft.com 1; spf=pass (sender ip is
+ 2607:f8b0:4864:20::92c) smtp.rcpttodomain=britishlegion.org.uk
+ smtp.mailfrom=gmail.com; dmarc=pass (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com; arc=pass (0 oda=0 ltdi=1)
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=fl+Cq6HJKfxBVMzAZzdsBjLc115eDWINJLibXglThVndwXizP8VYQDVEBOx6t/4iym5tYZtX6h9mbcNeukn//HheFmewZNTM0XTXmb+GdgEae5zD8xhbWMJp98icqJ5488v6FmL5RLlM45QPq4+ljNc/NB5+jXj73QdpZ4cfu3P8SFTSWBWJUihzAoTtsB/NC9oal09PQTIyQXS9C41gDW7T2rMG/bbWM+TyR1VSGpLu20BB7RILfiBbYpbeOVARczfaMiDhqJMKGFF0PMYUe15qJK9RVO9MTcm2IzzE5GarAncQWQZOIuV8kRiBc/F0/r6We1M575IIFiXYGFWzAQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001; h=From:Date:Subject:Message-ID:MIME-Version;
+ bh=rio4V9XS1CI5+lBK1R+oRamk7Ppgd+aI0azfgC2R22w=;
+ b=NQoYcY6fZfTAwiX8t97h7OzKy0GFXswCUH8a0ExTgSQIp9jBE74YZcBmOzQ06Lucu87DsFTcDCxNy3m0kKDCXIco8cHciioMdrhBV2dV7ULhWxTISU9XSUXCxn4iBDJdyKZfB9YDBkQxcfH+Y7NR8dws0Dkz4Uc0vECTEJPGFX1frPZiPjEWpl0d5jIyKL3gFumjcecCf+1Uq0hD/zU9zFU1CXlnbF02DM/HKMw8JY9GJlVuJMej2CiKWOQAOzuzeASTe/GfEK/i+nDZKAe9oojM5wIfxNza+zp6Zxuw02RwwA6crJ4OxKNq7eWQH2zyipcPnQgE2JVvY/pLA4e9IQ==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 2607:f8b0:4864:20::92c) smtp.rcpttodomain=britishlegion.org.uk
+ smtp.mailfrom=gmail.com; dmarc=pass (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com; arc=pass (0 oda=0 ltdi=1)
+Received: from AS4P189CA0028.EURP189.PROD.OUTLOOK.COM (2603:10a6:20b:5db::18)
+ by LO0P123MB7247.GBRP123.PROD.OUTLOOK.COM (2603:10a6:600:336::12) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.21.71.15; Fri, 29 May
+ 2026 18:48:28 +0000
+Received: from AM3PEPF0000A797.eurprd04.prod.outlook.com
+ (2603:10a6:20b:5db:cafe::64) by AS4P189CA0028.outlook.office365.com
+ (2603:10a6:20b:5db::18) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.21.71.14 via Frontend Transport; Fri, 29
+ May 2026 18:48:28 +0000
+Authentication-Results-Original: spf=pass (sender IP is
+ 2607:f8b0:4864:20::92c) smtp.mailfrom=gmail.com; dkim=pass (signature was
+ verified) header.d=gmail.com;dmarc=pass action=none
+ header.from=gmail.com;compauth=pass reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 2607:f8b0:4864:20::92c as permitted sender) receiver=protection.outlook.com;
+ client-ip=2607:f8b0:4864:20::92c; helo=mail-ua1-x92c.google.com; pr=C
+Received: from mail-ua1-x92c.google.com (2607:f8b0:4864:20::92c) by
+ AM3PEPF0000A797.mail.protection.outlook.com (2603:10a6:20f:fff4:0:6:0:6) with
+ Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id
+ 15.21.92.5 via Frontend Transport; Fri, 29 May 2026 18:48:28 +0000
+Received: by mail-ua1-x92c.google.com with SMTP id a1e0cc1a2514c-9639f50efc6so1173882241.1
+        for <wales@britishlegion.org.uk>; Fri, 29 May 2026 11:48:28 -0700 (PDT)
+ARC-Seal: i=1; a=rsa-sha256; t=1780080507; cv=none;
+        d=google.com; s=arc-20240605;
+        b=i6V2k2FPvF+JZsFcakLpsDGh+CTfRDZ6dJlPz0iijtKXWHZeeuPcLLVLmbgLwOz+3X
+         1rYgQ4gn/crHBRIDxw47XUCgvQXE8BY+6oDXK8QBo2RKX3D3piQeBpiNIbUV9l3u1ak+
+         8EWdXz/tMpi0/PBmtbLPBXRF1BwFhW5Vqt/Ol/wsHVTl1LbqotuhpFgAo9AfIqz+XbAj
+         gbCBahWnDRxe4Bn0TGSbl1ApcZR87gmxTdXAZJkDP78Tin3U4z83CHTOJFxDTmlXtVVD
+         M057O/7G7ZRab2ic+oMCP5qNA7DbDAAYAd1VeY/irQD3txep+FQzQprMe4cP0wvD5MZF
+         g4aw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :dkim-signature;
+        bh=rio4V9XS1CI5+lBK1R+oRamk7Ppgd+aI0azfgC2R22w=;
+        fh=qNKVD+Z5Gl0pw3N6nldtkhihzCdQCU/bNskr3xDu0kY=;
+        b=lLVNHVdXn9J1MW9yvEcaJ1xVMr3gevM3EV9xG6Dgyx8kM8xF57AavD/RLCS0iitWoz
+         ia5ODNZXKgyxNlcXIUyHfU0fhGxfTObhl9CzGz7EbNfGmXb5IwHJjbk6tikXyw2nzD9h
+         NK8VMPKHYn8o9BH+ORQKX6E3WQZVRw8QI/ZREZ3SjLOLDuTgiGg25NQXDxJVt1ttJ+0k
+         6gIP8V7TKafFZ49geRhlLF4ig6nppkO9w3BiRHoP4PSRexKTdxkfNzkRGIVosea5RoVB
+         8zlaHSmfNN3kUnb7LOvrYCZdNYG0NrnGiuwbH7L14PhI9y82GvO85UvO1Yt8i9GQyRs0
+         2EAQ==;
+        darn=britishlegion.org.uk
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20251104; t=1780080507; x=1780685307; darn=britishlegion.org.uk;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :from:to:cc:subject:date:message-id:reply-to;
+        bh=rio4V9XS1CI5+lBK1R+oRamk7Ppgd+aI0azfgC2R22w=;
+        b=Pl6L33/s3VQyORVRfX07Tav8BzPp8fLGkxY9JzNAJkrfllvLpBa0JxGRvOmgM/4VKe
+         r6vZ4XretK+YDbpytEg1yIOVwincyUEUFUid3+mVPOnqmuxKPumz+VTUstTgVvthNxYt
+         KnNF0p5EXZiCyURScOKJ+fdjt51cs1osOqeF2AJfJUDMT49dbvyk6I5rH/RvID0TvU3r
+         n8vDpFe8XiJzg3xvZl6PrjhQZWmFcChjuLKTLWGFMTywuTmh+P8nAkr7I5xVd6I4C7jV
+         WE/6S9fa5HXglgR3Col7vQClKYgHl+o7u1MMPqyQb5JP+/87Xsyw6tUuodZdP6I9k/is
+         jXwA==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20251104; t=1780080507; x=1780685307;
+        h=to:subject:message-id:date:from:in-reply-to:references:mime-version
+         :x-gm-gg:x-gm-message-state:from:to:cc:subject:date:message-id
+         :reply-to;
+        bh=rio4V9XS1CI5+lBK1R+oRamk7Ppgd+aI0azfgC2R22w=;
+        b=rxFyIDY8EQLK/NsqQnlNxYXE0OawucSHXfv6bUIWcottjanjuXY6d9iobx3Tk6nMLb
+         LpwZloqHOrIgz03Qeq7x6Dwa+ZB7WtQM1X8LmAnYV2GJpxSBo7IFAs9S4g+7sYt2gyW2
+         2/pwXqEJgW+jW4BcxThA/ImlO1euBW/6zc9SRgLxUBtIgEZslcNvQEaDjcFiai049LUj
+         lmRAgdRccWKByMdraI3ffu+iBE7q8rl930St0WeZcwjyAU+/LniAUxJpwvVYwGe1c0Hn
+         zHnoQAZc4fpWM4luEv64kNsEy6DmLA6ksjfTP/YdAIF+ngLTRnglhRMvKd4R6bT5k/49
+         FyJQ==
+X-Forwarded-Encrypted: i=1; AFNElJ8Eo6UyygzNF+SIbvCz74YX5eYy1rKOOOg5snBbLo3anvL5zPRjBg+s/bqJiUHS1ZjGpWL09A==@britishlegion.org.uk
+X-Gm-Message-State: AOJu0Yzrd6eJlNKYiORku1seSJIuXlnaxKH1zA2PwzX7sz6nb/ydKOjd
+        899s52lISaLmYjTXm0YtAfmcOuZU0Cgj8DHnT71zixG1bvBj1MXaCf2w8PxUFKlm1FXqEyTCSak
+        u23fwVL28seeG54KRAPwSh/JuiJGg/sk=
+X-Gm-Gg: Acq92OEVvPnQQby1jKXaoNXrifjlyqCdMz/whXfKu6aLA3YauGtCRczF9b6sQXce8MH
+        WVnOioyJC8wDrfAeWSgFgH6XdJ9w01FKAZ30iok9/Gi4C4ZqXMmnm51AJUexxGzIHXi++hmTxK8
+        ExJTC/VPJGVrvr3nqpvek95kBFe8zclpHiGlDBPEji2GtySclAhpRXNXVinXv0yx2PfnlrnSHW9
+        DqeUAX5HbFPaKKJvVwg2GaAzvAZuajNIfeCd35+PjsJ9uKfM3FmrJO+NWr7LMBy+EYMnplXEL2v
+        zgGJUQQTt2xxehSbgpZFKi+tyYuA69S5Q2c9ozYevD+j4FeVH2kX0+rd7Av5rsh2O6x05nFlnof
+        wNquZ9Kkq
+X-Received: by 2002:a05:6102:9d0:b0:631:ff40:22b5 with SMTP id
+ ada2fe7eead31-6c6a72cc962mr255387137.21.1780080506975; Fri, 29 May 2026
+ 11:48:26 -0700 (PDT)
+MIME-Version: 1.0
+References: <CAAuJ3V4j5FhHNM_Y8rXq_gs-6MNqbhVXtwPE3up3Ok9N1CxgUA@mail.gmail.com>
+In-Reply-To: <CAAuJ3V4j5FhHNM_Y8rXq_gs-6MNqbhVXtwPE3up3Ok9N1CxgUA@mail.gmail.com>
+From: Sion Buckler <hywelapbuckler@gmail.com>
+Date: Fri, 29 May 2026 15:48:13 -0300
+X-Gm-Features: AVHnY4JOOg1czPD6K9m606ynsHtDRulktSVe5cP3i0EidLxo-bbNn0FNibtr4_0
+Message-ID: <CAAuJ3V7x+Q05VJ4iDmJXfxy9SpdEYCkimbqqa5icnE39g9VYxg@mail.gmail.com>
+Subject: FORMAL DISCLOSURE NOTICE & LITIGATION HOLD: Historic Significance,
+ Planning Approvals, and Displaced Family Tenancy Records for Great House
+ Farm, Llandough (FOIA/EIR Request)
+To: "Glamro / Swyddfa Cofnodion Morgannwg" <Glamro@cardiff.gov.uk>
+Content-Type: multipart/alternative; boundary="0000000000004a39820652f94ac5"
+BCC: wales@britishlegion.org.uk
+Return-Path: hywelapbuckler@gmail.com
+X-EOPAttributedMessage: 2
+X-EOPTenantAttributedMessage: 9c1b9916-6290-453f-a1c3-a60f22a79bc0:2
+X-MS-TrafficTypeDiagnostic:
+        AM3PEPF0000A797:EE_|LO0P123MB7247:EE_|AM4PEPF00025F96:EE_|LOYP123MB3391:EE_|AMS0EPF000001B2:EE_|CWLP123MB7446:EE_
+X-MS-Office365-Filtering-Correlation-Id: d8a1d495-c39e-4137-c2af-08debdb2e414
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-Microsoft-Antispam-Untrusted: BCL:0;ARA:13230040|704160611799003|7093399015|11063799006|6133799003|3023799007|5023799004|56012099006|5063699009|19002099003|16102099003|18002099003|22082099003|55112099003|8096899003;
+X-Microsoft-Antispam-Message-Info-Original: =?us-ascii?Q?mW/l3UbVL9/ZT3GX1etEDk3dEed9zyuTHIxEwBzIAeIBxn3xB8aOzJ+77ttJ?=
+ =?us-ascii?Q?Mkm5NDdEBae7G06gMN45ct0+6G2Pmo46EzL3CZM6EnjG1nJK8sGmJkXPznML?=
+ =?us-ascii?Q?LvrbesfWI9JMzd0T8zZxCc9Rdgj2KxWBIDonGg0te7ohD0bZrHrGh1BpMMq3?=
+ =?us-ascii?Q?O8OqW1tyWldO6jeCRB3pMds6FRj8p1tTELmDfpsKGXLfT4uw02CYlYRtISYG?=
+ =?us-ascii?Q?CM79oxUjews2ydXYHMKiknIL2wb9bn8TpKPvrmmtbzWoHYsRj00zbrbOliAM?=
+ =?us-ascii?Q?TGWZeHoPRKy4AKkCA1Ln6rK+T8cQ7sT9DtPuPm/rBzZEKlMcm1aLxlCn7DXr?=
+ =?us-ascii?Q?5fYpUBrU+rRrQW7wFHZZxryg+VaAyZCPC0TJem2U5JynZK1fbYHHbzeG4Bs0?=
+ =?us-ascii?Q?NV3217UT1FjNMcRTIHMHHcNig8w7J/qHsA7ifoVCi3mbWsfZrlgheTda3E0i?=
+ =?us-ascii?Q?QvK/vzrJNib1XNTKkuQFht7cmHAgIIiToXCOH1ZJEreXJqHdNEgRakwGTPIe?=
+ =?us-ascii?Q?EzQnOzoO5dsNAiPuepnz5Rk1VKObm/xx951660K+J+8+APYP5xpH3Jhkuc/J?=
+ =?us-ascii?Q?CRJphI/1LymGIVFYapLw3A59N9NLsbX30S3tCPaRY5J9Ju1snhDpmsDRyMf6?=
+ =?us-ascii?Q?VM2BJjoi1p+Gh8c3274FgvDOkWJvdj2oiz875KEi9fDf4X3miRRDaGcMI8e3?=
+ =?us-ascii?Q?vxWxH77t01695L3kJXsMCzalunQatX5hga/nlRHwVUaWFXyC19VLlOQRdxD6?=
+ =?us-ascii?Q?P1sf2FJ2R7fV3ygmNSlwfJ4irji6k/7Ov42pNmcCiIKdhx0KsNF+uHGYqgAn?=
+ =?us-ascii?Q?QJgoDYsYVbX6f5S46S82zFmUsJIgZbYNJz0jx3u4kPawZ/kTn0UozR7Up1xW?=
+ =?us-ascii?Q?JWUQ23Hvq+ppgCLI2uEMXfElOt4XFSM26axNwj2mj2GEi4D96Fz8+b+v0uM2?=
+ =?us-ascii?Q?5e48rzJMzrsHyH+ft49fsV8s9hn9vZ3BWqanKLcoYWQGlwfezuyzgiSgOSu/?=
+ =?us-ascii?Q?2Y+kUCD4tYy/HmtIYUtrEVj3bLn1nh0XHKmMsM9kuaPev8gENZgBLn7l2uUW?=
+ =?us-ascii?Q?C7H9IQbURMnXGh9Os53WatC88/AugOm2rc+iAgpnNcIfU2CrFSYMCb+SzkZc?=
+ =?us-ascii?Q?dCOD666ZIRl/knSjRjsFAoPxDL4g8bAXC7CsulopcY6pzvK23Eo+Qo0JojCZ?=
+ =?us-ascii?Q?rCTSI2q7SyrwiKb0T+8wnofvKJpmUjMGh8NrDNv7RZcwi6TyjrEM2WcbYjdN?=
+ =?us-ascii?Q?6PZIStKn1zUnqRT6B3ifxzH4e1eOZzi4Riqi+cExR29ru8Tq8T7IpSVQHsX9?=
+ =?us-ascii?Q?zC5gU3RqoZ8TjZ2CZQ2ro4tA3BkwcNUbXjgEbeLKXEDdUWTy+oH9v3ji8hQ7?=
+ =?us-ascii?Q?YyetZc8QpzFbGjbkeyCp+3U9G+mPl1U8ptrpa4bCJs4JUTCVq2nq9nOfKCXV?=
+ =?us-ascii?Q?qQM/AiHynXsr0TU3NeBpf0eQ6rzui438Iyb8RjakvGQVqIlPs3HyrzTF73pu?=
+ =?us-ascii?Q?t87oDxamskvDj8B2TjwvgtFY5O0jj/OzJYxQ91DgqMmobNDpJWc/nCPPkXOO?=
+ =?us-ascii?Q?NoF1D6aTriqB4SAXYGRp4jMLiM7hM8vdSgEIBZeohJ6EwRdyN0+8QJXw1Yfn?=
+ =?us-ascii?Q?LP6QP9RcQIe/nxVNasQx9fa6fkjaRO/bNGE4E35zEL2pKISJRFn14/GInPvm?=
+ =?us-ascii?Q?dncR5PAGShmBvX/gIsfliognTxQ62xps+Ub4T2gnD8+jni2xJ5kURHinTPx+?=
+ =?us-ascii?Q?Ans5V7jYXoUsb5o7gydMW8eQtECcK86ALpedIA76Pk9Nhma0SfaE0nx7goOn?=
+ =?us-ascii?Q?/bdGkBUN6jGmq43bayuXE38H648BI7OkyBY5DebkiBUM6XZaEYBdmqlvcFNy?=
+ =?us-ascii?Q?LYSObXz5GdaOwWnSd0NjE/O1PXlbCAb4enBvSq7p4uqI5RFR/oQYqQIE8vED?=
+ =?us-ascii?Q?0WCm8H+AX5qgpFSsE7G12A/GiiEAORZ3WS+PrjloowlFT438x1VgJ4Od/XZ1?=
+ =?us-ascii?Q?RfoC5NTtZZsVdivbZFyWiBdABzLV27iBSk8yWS2ufzzpOIK3rqI9D1aTFUHP?=
+ =?us-ascii?Q?us7WF/ad68HKD85eyoaMrs1pgNayu5ZsDALaD/aw0S4Zx9PijgxMinX1Mgp+?=
+ =?us-ascii?Q?rZbj77qjkTaqTCO4fzIkBJxyJvohZNwMogPLgX1ahnooTfi9amD9A4iRwdEr?=
+ =?us-ascii?Q?cR0rCXD2j98/olk0yzNxDQk6GkmRw6I2X+K4G9NttZ8QJ67gJd8AEF+Mjeu0?=
+ =?us-ascii?Q?+aMT1K0Qih7Y2OTd/qZKWwVEE60xhzqSI7ebJuZTodXdj5B3BRAKXwNXvUdn?=
+ =?us-ascii?Q?SeS6iYdLqq/7Ry8ztmEEuT/DYcs3k+Jf23nY3PsZGWcV8EgyIdrW/X2/5wW4?=
+ =?us-ascii?Q?jnThhdiMZ5tPD2z+lVxeH2Qlnp8SHG4BnfmFqowN9h3tiSEA+0HbnYi1XJMv?=
+ =?us-ascii?Q?MOSkdGv6orHD1TjWh+QYFnc1FES9YIi6nlItRvwzRzawFGMu0Px6lbb4TBO9?=
+ =?us-ascii?Q?sNPLYClbHHY9krUQ0AHz8s58VbLWK66MIQY/aYuKV5n7Wt0NUFlv0H/NwYeD?=
+ =?us-ascii?Q?f9xE3ZWv0MrrxWfVczkc3WYz1ZU5qTvdaoCMoZ/GmWW7naaXEh27q4jubTTS?=
+ =?us-ascii?Q?1XZlhfQ7aGhEOxvmWmYbU4v3g6wsGLl2rMXerxFvJAIVPXoVtEN/AYTU43iA?=
+ =?us-ascii?Q?bIuYqSOOljvljHIrEprX1VqfGUl5Ww8+p5aIJxWHVjsfDW9nmpgsNxThk9Vg?=
+ =?us-ascii?Q?EzR5kHHLFg=3D=3D?=
+X-Forefront-Antispam-Report-Untrusted: CIP:2607:f8b0:4864:20::92c;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-ua1-x92c.google.com;PTR:mail-ua1-x92c.google.com;CAT:NONE;SFS:(13230040)(704160611799003)(7093399015)(11063799006)(6133799003)(3023799007)(5023799004)(56012099006)(5063699009)(19002099003)(16102099003)(18002099003)(22082099003)(55112099003)(8096899003);DIR:INB;
+X-ExternalRecipientOutboundConnectors: 9c1b9916-6290-453f-a1c3-a60f22a79bc0
+X-MS-Exchange-ATPSafeLinks-Stat: 0
+X-MS-Exchange-ATPSafeLinks-BitVector: 40000:0x0|0x0|0x0|0x0|0x0|0x40000;
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LO0P123MB7247
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: AM4PEPF00025F96.EURPRD83.prod.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersPromoted: AM4PEPF00025F96.EURPRD83.prod.outlook.com
+X-MS-Office365-Filtering-Correlation-Id-Prvs: 21be97d4-dd98-472c-f7f4-08debdb2df74
+X-Microsoft-Antispam-Untrusted: BCL:0;ARA:13230040|704160611799003|2040899013|3083799003|35042699022|7093399015|19002099003|18002099003|6133799003|16102099003|22082099003|8096899003|56012099006|3023799007|5023799004|5063699009|11063799006|55112099003;
+X-Microsoft-Antispam-Message-Info-Original: =?us-ascii?Q?Vei/cNGXK/bacIhOcpSrqrqGBqwIVVwNjw+sc1xLx9tSjT6U5kqQsvvg0R1b?=
+ =?us-ascii?Q?ImR2aILGrp71Bfgmf3PNkr7CaWvU7Mm3f9LuoSGQtSpbLtkCb6FBU8/GNIRS?=
+ =?us-ascii?Q?yem9sZhsf5bKIa+deK66uY42jU7AXqdf9xbhG+qyfLunJOqcfuXe/Od5hXDV?=
+ =?us-ascii?Q?6iZzX6hFg3lfSEwdWs4n29PFBcK2Hw4FP7bCyCtIgDmOBCqtA2KEe1OEJ8XO?=
+ =?us-ascii?Q?bLVRBwUl2i/Sv3zqDPnW1WcEi2HbrMEIh8+5PFlmPhX+edyA00n+pva2diSe?=
+ =?us-ascii?Q?68zP5lUy1jgF/wZC5tTd481wut2ZKqInMkwYhJYgR9Du3v30d2Nu2S6HA7il?=
+ =?us-ascii?Q?xqLExiZyuvohJmCKg+vbnC1yRdVy9QVHZISElfTSKjCbUw38jY/Tmu6yqE2D?=
+ =?us-ascii?Q?pRdCTz/kHiDD3Xiq6oegsnDeivjo6d1XLljL4TtIibWxhT5SugtRsgGmStGg?=
+ =?us-ascii?Q?qfsV7yf0EQ1EPxISMOmyhhIsevUOVwfJ6dQva0ZZOnmI3DQubFfal8tnrnmO?=
+ =?us-ascii?Q?rRsPuZAKiPsDINzdg815nfExDrSvnEjsMFYyuXYCPvnwQP3afulpRZrTeuh0?=
+ =?us-ascii?Q?bpyxekfjbgILcskp0ujsNSzDVp3vtbdoaCwMvgrOXq1gO/1lRMrTEkjulj48?=
+ =?us-ascii?Q?sN47pMHJ3H+jTfz76i4YlHurAilJZEESm2X7Tc2lD17VdZoe3BbtsZC5jc0g?=
+ =?us-ascii?Q?hT5dA9XA8TJLZdGqZBDqUX/L8Ujqm7ykD9nUQmSbLOAbkX7lGjF4QNKWt2s1?=
+ =?us-ascii?Q?hcnflmAEdhblAB+Aj7QakZdXuKZn/1r368y5csKRN/iAOiZ2zEF4mP5r3MUD?=
+ =?us-ascii?Q?QFlbhPfwPJd7FaPxM53ZTXWqgm1d5biWJMU6YN85sgBljMp+hNC1eBD5N8tV?=
+ =?us-ascii?Q?i8e+IE686+4XyNM9TKI57otT3tK7yhs7886DLSig236yqtUGSZiY4qQdQE8o?=
+ =?us-ascii?Q?rc4eAUfc5b1gsac3yAJ7WJ9YrYNzJC9HEH3nR3c37JWx4IhtF1Fc6uOz/pdG?=
+ =?us-ascii?Q?gt69O5JEzvjaPfLlzNzIr9PS7sltlv2hsruXse3B3AQH12qvS6QtVTUy/60V?=
+ =?us-ascii?Q?P+SMIbtbiMOZvsCuWk7k3xuinIIYOHMYASXNbSj50aqrMuxhiiOcNCDx5513?=
+ =?us-ascii?Q?FDxUcvOs3Ehvqm22anWVZJ83vtVmL7w1yf5fReMR4rpnTGo4EG97PsF+8G/H?=
+ =?us-ascii?Q?+5zWq9zwj2T433KTDGaGj1/6SRAeu9GsWP18vLlJqHA/ShRHo11Jt9Xl+1Wv?=
+ =?us-ascii?Q?4HF5jRCpa7LX0ZOYyDdZ3BEC4uhQewJ/xApK35oz3umbqbuHj4eqGnJdSuhF?=
+ =?us-ascii?Q?WZtEOSGBj4QerbvW1GoDVHsYgCww/DLn5S6QJNUfa5XMR3iLoOOy6TMssPLC?=
+ =?us-ascii?Q?r2l/nM5EPHUHOxG8IBJC76rh96AxKeAj8b3aeYeXv4T0BHff419iUo5Vv8fS?=
+ =?us-ascii?Q?bNBoJ8O5Yw6r31TGBOraXe4myd8SF1EY3GF0v4eocpuYKqV3jK4zn1ySW18Y?=
+ =?us-ascii?Q?tRvOGwSG3kvBZ329/vdGqKrdTpIGhlS76ipS55OHri4FRy0poMyFPAXv2p+7?=
+ =?us-ascii?Q?IM0gaC+/p41Mej57AU07okmrQSCAFVwGvlYxWtM0zeoU7Jr42KszzmV2YxPY?=
+ =?us-ascii?Q?yBR1v/CcxYBkuBV2Xe4CPds+XVPXjmPhdHtPZpi8YoFOZ3+33Rpr14aCSB3N?=
+ =?us-ascii?Q?9vKHSR60JBykoKfGtnvulWmBxvhjFklSe5DWhzr2JGubONjWOk2HNuzhWQm/?=
+ =?us-ascii?Q?e0yxlRCiu/i5xqqvpItu7IL8BVt6EofYSS3RNLnwf2PnxrylJOlnqzpqJ7w9?=
+ =?us-ascii?Q?0TlSPTsF7tF920GnaZMXKCFa42eBpZXU8MsBx/kvxR4Emb2fW/qME3sI1NLn?=
+ =?us-ascii?Q?8iTnjtW7G1LI7VjLe6/K2sGLnQ+uekH5/0l9q+8CRO2AaH5cRhiXP7Uu6m/e?=
+ =?us-ascii?Q?oO8iEUFXy1oICxmYhZHszEvMuex097n5At4ZE2ZGPzAgd79qg0iWstwayZNe?=
+ =?us-ascii?Q?geOl4KCBzOCwtVhWWbEpUu4xmgJ2+7MFrH4Sp8/WvNuGr77AsccK+9rLqrlo?=
+ =?us-ascii?Q?i1ITJzjPwxvyY0Klkiqf0gtHb60YDxqR1n+zL2iTb6DTqhflrzrbANM6SZiI?=
+ =?us-ascii?Q?cEbO4RD84XrY+X90s0qqwhZliWK3jP3WWKMfrh2RDPWxTYpEaLmIDwCX8uU0?=
+ =?us-ascii?Q?E23wrPYY0mFh5G73b3tY4/pwbJuQUSDhluitPw2s3iVOOavmaNbdsP6UjyuJ?=
+ =?us-ascii?Q?gYb4/jsZXpdhj8oa0kct1ovsChrOFq6Q4XzJKJkie50dmUwTdCeOU7IIBiyd?=
+ =?us-ascii?Q?tgzK3nG/TRr+/pHax1schFV6NVO4J3AfsiWLnJ9RGzcYn0s39+wQOf3z/NQB?=
+ =?us-ascii?Q?jnED9BofqsfGRvjCXgw9rsJ1Nzh2t1tAjENWK/j58j29+CtNjplfmnXg5Yqt?=
+ =?us-ascii?Q?pvBVm3xYoGmgAgTcC8+b1unGxJYhj+o8rqt1A4gZD5fi6tqEAgPSYmoaf8cC?=
+ =?us-ascii?Q?fxlYIlzAkrpAnWHNO91SwmVBEOrbMXTe6oZ/Qa37eIeEJHGQCm9upTJxinmB?=
+ =?us-ascii?Q?0ZACPDnABS8CxHhvELCSMmCGlKupTylgpEegXpzmd5kvJQg7rj3GjMiJCGSP?=
+ =?us-ascii?Q?sfuZjoeXTYbivNU1R8mVMTmYHZe7ovsPV32w0q+5rXTtIQLBmkQUX23GU4tF?=
+ =?us-ascii?Q?nMhmAqa97QqjrOH1rWONFYdOEkf+VdyOqxmo3J7FSEKUZMiz?=
+X-Forefront-Antispam-Report-Untrusted: CIP:2a01:111:f403:c206::4;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CWXP265CU010.outbound.protection.outlook.com;PTR:mail-ukwestazlp170120004.outbound.protection.outlook.com;CAT:NONE;SFS:(13230040)(704160611799003)(2040899013)(3083799003)(35042699022)(7093399015)(19002099003)(18002099003)(6133799003)(16102099003)(22082099003)(8096899003)(56012099006)(3023799007)(5023799004)(5063699009)(11063799006)(55112099003);DIR:INB;
+X-MS-Exchange-ATPSafeLinks-Stat: 0
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LOYP123MB3391
+X-MS-Exchange-Transport-CrossTenantHeadersStripped: AMS0EPF000001B2.eurprd05.prod.outlook.com
+X-MS-Exchange-Transport-CrossTenantHeadersPromoted: AMS0EPF000001B2.eurprd05.prod.outlook.com
+X-MS-PublicTrafficType: Email
+X-MS-Office365-Filtering-Correlation-Id-Prvs:
+        dddb8228-06b9-4da5-279b-08debdb2e20a
+X-Microsoft-Antispam:
+        BCL:0;ARA:13230040|704160611799003|35042699022|3083799003|7093399015|2040899013|8096899003|16102099003|18002099003|22082099003|19002099003|55112099003|5063699009|56012099006|5023799004|6133799003|3023799007|11063799006;
+X-Microsoft-Antispam-Message-Info:
+        =?us-ascii?Q?3n3LbPOWk96MiHwpDcstwkLBwwWF6xp4LmVp5iD1Q67+nTaS/IFV8ocLQM4A?=
+ =?us-ascii?Q?mBRLJAgB3gIVMavMgmALfBPw7aiHxMWAfduGF15CVH6h5Ftvu61fWUiLWrm9?=
+ =?us-ascii?Q?SU6vBs4agOl1z5uLRZPQ4Lgu0ivGTEOr5dK4lG9SqIVaOs4zRuXuwaaXKLvK?=
+ =?us-ascii?Q?hFZGsQcL7plXzEDHUpoDEGkv7Hno6d3ZGPbKXVwta6kAcXq6eUJY3yhY3Dc9?=
+ =?us-ascii?Q?QDtumw0I9r/K8959v0xNDQB+YPogfLa/ABVfdwQ8pPSdoeg8bj7VbL2XbO2W?=
+ =?us-ascii?Q?2s2X8RZveXtuJy1H5JDn0AS9DMb68ULtXI+KCrusphFD5pNetuvQWbYxTl8b?=
+ =?us-ascii?Q?0P6RDJ9KEvq8Qst4OahY+WCStpFp+YDxmiUjVRvHM2RsIpayMShAIb7C/0n/?=
+ =?us-ascii?Q?hOKYGPVLcXGlFsoU3B1UJW4Tbx26u0rJVzuRqLjmGJxJ71V17Vi7M0Nq/U3q?=
+ =?us-ascii?Q?F+Y37+a1ZKI5fkbnaQBWvgHfIxbN0+/IHIs8uo344zr8/EAtlyqsTMvRKWhO?=
+ =?us-ascii?Q?nxqQpKXR8DTLF7/klLQzX9w/2iFUqZCEd0x1MNtZVBvc+cMgvA5zbupvvI1B?=
+ =?us-ascii?Q?vJTpKzcLJA6RGMq2MKwF8tKSt8F0j2zvY19aDKuWSrYfh/NafMSqYl+M9vdv?=
+ =?us-ascii?Q?dqOnk8Ts5kvHemC3uRWGqJKaRPfiOMTCaqaR7RNYO0mnsECUZH+89RQgt9dN?=
+ =?us-ascii?Q?O6JQu0XcnhwMlijSQo/ZIAa/+oqBD2acQYGGp5QekQ+9Kp7WZ0uKaZKvF7bz?=
+ =?us-ascii?Q?mVAa1b7yNur2j7Lu7K6bJrHJ8FigL7n7x6KTt+QVpQeURMdIkjJiLWrwfwsj?=
+ =?us-ascii?Q?qomJE3MevEp9wNITz6dQTREqvqCGRiMtiugCEYmuL8mTwLAwEVLQ8exYZ7ov?=
+ =?us-ascii?Q?vrcvDjLNsOCrMC9aGriVuB6ftat5+8LwvcYGR5N9SGUsbw+z7MTZCzek4oBb?=
+ =?us-ascii?Q?LpwaysHrHn5g4DtRI3GqrWSOdeAWKXEQweU70np0fG7bgQKyF3OjphCZjjkt?=
+ =?us-ascii?Q?p4SYj8kxkKpa38tulYLIQmiVigmJlzfUHC1in5Ev9yc1eVJ7rhdrt81jFjqp?=
+ =?us-ascii?Q?IkWnm9ULRF0FdAJfEanPHXs8q0lF9os5IVtyij0lNHRPn43fRMbYyUN09gWY?=
+ =?us-ascii?Q?5EsBrhXaSgj2iqkKXOpI8s6S7biWoxBvJzFHbxs/lFjngXHdgSqZrIxkp8PD?=
+ =?us-ascii?Q?uI2cTYNEshy7X2yEKEk6MQrMbqtQiPryGlMi9pGNxxuoTjGT6MakNdk8PvkK?=
+ =?us-ascii?Q?MMqJrKEkbAtG9WDqw64q2ADd44FsnpY3dtCHDSODRsxf9SwMOVikcT+y4rUd?=
+ =?us-ascii?Q?XOYSqXkGa46p93tKynWDHtx9W+PGmZBvbBLBn3YvsiETM+dlqRDDqT96BSOh?=
+ =?us-ascii?Q?VnsdG0Vn7OmbXphyAewCBTQE/C54KLWNMTcD3T7CfmbQmdHpcw2VY4VWtBnL?=
+ =?us-ascii?Q?xbvaDonrvLeB824pI/k7JtnWFWE/sq6yzmnjInpdlJLO5rkxkcmYnCGPRZ9w?=
+ =?us-ascii?Q?77vpDyN3RdWQlA9WKRDP/GSQn1oLBrIxUkMNzwgAoXN8bq+ygu15mISEZX7H?=
+ =?us-ascii?Q?py45umbq7cadyHC+m5UlbfdGf2PSbs1ZXH3JHuisA69VAZyJXuur5aEx84O+?=
+ =?us-ascii?Q?qu9vx/77A40cudug2fxRAcQdLRBsuWDYhV178tZ0146Gn1mgOEOvV9Qm254e?=
+ =?us-ascii?Q?Q3f1iW0HHnTA5AEOCEDYxaKxQOThBE+k1r3l1whKEX5/F9BhepRUyp/lY/HG?=
+ =?us-ascii?Q?ugY8QSrfJ2yRwBIZ1ub5Dk2VZ3eeUhm7XboFUly6wOh2607jFXUajzkHkO5d?=
+ =?us-ascii?Q?1b+2NVSKAr6rK/jMtVfzL7tBuJ3K5b+wm30LdO0UsZZ2k5R1oORE7Nq1DnZ6?=
+ =?us-ascii?Q?eIBHSclfayPaT/gmc8AjLdioSg3+symEJRs6u6ZZRctwH0Z5tko84u5PRGG2?=
+ =?us-ascii?Q?xqxxQnBY22RhV8xdokUh/yIMvr+qDNOjCaXGOZLbBZ/KQjifl32wGKn378g9?=
+ =?us-ascii?Q?ZcktjfH1ntU72LcTx1ogdIetS8Vv8UkWmCfmR/54q050EPKmP0FFwXNNR74x?=
+ =?us-ascii?Q?LOfWzUzlbVDirT0LPZRKSqlizYDRsDlH1HaEQO8198hk9sH1NtFKM/EcGJVp?=
+ =?us-ascii?Q?Np+/BT16rzpZg92zRw42lpIolsxNZMXPMQbjXXR0h8sXPzo/6kVwEUWGiq4/?=
+ =?us-ascii?Q?OtkU/Cpw8IF5itlK3wpmm6k7NobPYcCB8d0qK9afpuo6xvUHEhLg60u6TUxR?=
+ =?us-ascii?Q?vy74ntQuXY0zt2uoBlvdDHjDN2v0vAzmBjVuCyRwssPh+yOMlgpmgEyr97NM?=
+ =?us-ascii?Q?AK3i6fI8kVZ0HsW8zidl0MIZ31lyWY0YuqLK73sJabUJ50Rif3+Pc4E6VnTI?=
+ =?us-ascii?Q?wiJMyehJYwAn8HiagrXBw6Ez1Izdut1XtzN9qv4wk49B/KPg4SveCFlQEUpX?=
+ =?us-ascii?Q?ktU9DI2PHNJIA620A6twE9Ez+mxm4dPl3aVkihVLmV+kpqF4QEf9lBbMQtgL?=
+ =?us-ascii?Q?UzYRTSZkS0RckgCaYHu4lJaXRRAL1IinYvF1XtBRyHgOqmcOaLsCzX5A5sIN?=
+ =?us-ascii?Q?LRPqIwydBUx+ywDGQty2hcWCRcMmBqNJuVbv3vxr+tICzxwY2WgXhapNTcim?=
+ =?us-ascii?Q?dbIhidtt0UHP79bidv4/W/RyEn4qwEZpyBr88k98bnFDKrC2DRu1mb9+EQvV?=
+ =?us-ascii?Q?H3ueyPLtiWUMA2iOEvaq/djQhGmnRlg+xDOMzvXU7hrMJbWJ?=
+X-Forefront-Antispam-Report:
+        CIP:2a01:111:f403:c206::3;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:CWXP265CU009.outbound.protection.outlook.com;PTR:mail-ukwestazlp170110003.outbound.protection.outlook.com;CAT:NONE;SFS:(13230040)(704160611799003)(35042699022)(3083799003)(7093399015)(2040899013)(8096899003)(16102099003)(18002099003)(22082099003)(19002099003)(55112099003)(5063699009)(56012099006)(5023799004)(6133799003)(3023799007)(11063799006);DIR:INB;
+X-MS-Exchange-ATPSafeLinks-Stat: 0
+X-OriginatorOrg: britishlegion.org.uk
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 29 May 2026 18:48:36.0684
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: d8a1d495-c39e-4137-c2af-08debdb2e414
+X-MS-Exchange-CrossTenant-Id: 9c1b9916-6290-453f-a1c3-a60f22a79bc0
+X-MS-Exchange-CrossTenant-AuthSource:
+        AMS0EPF000001B2.eurprd05.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: CWLP123MB7446
+

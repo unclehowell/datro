@@ -1,0 +1,169 @@
+[https://products.office.com/en-us/CMSImages/Office365Logo_Orange.png?version=b8d100a9-0a8b-8e6a-88e1-ef488fee0470]
+Your message to lauren.lockhart@dsscotland.org.uk couldn't be delivered.
+The group lauren.lockhart only accepts messages from people in its organization or on its allowed senders list, and your email address isn't on the list.
+hywelapbuckler  Office 365      lauren.lockhart
+Sender          Action Required
+Sender not allowed
+
+How to Fix It
+It appears you aren't in the same organization as the group (or a sub-group) you're sending to or your email address isn't on the group's allowed senders list. Ask the owner of the group to grant you permission to send to it, and then try again. If the group belongs to a different organization than yours, contact the organization's customer service department for assistance. If the group is in your organization and you don't know who the group owner is, you can find it by doing the following in either Outlook on the web or Outlook:
+
+  *   Open your Sent folder and select the original message.
+  *   If you're using Outlook on the web, select the group name located on the To or CC line. If you're using Outlook, double-click the group name located on the To or CC line.
+  *   In Outlook on the web, from the pop-up dialog box, choose Owner. In Outlook, choose Contact. The owner's name is listed under Owner.
+
+The owner of the group may have intentionally chosen to restrict who can send messages to it, and they may not want to adjust the existing restriction. In this case, you'll have to contact the group members by some other means, such as sending an email message to their individual email addresses or contacting them by phone.
+
+Was this helpful? Send feedback to Microsoft<https://go.microsoft.com/fwlink/?LinkId=615007>.
+________________________________
+
+More Info for Email Admins
+Status code: 550 5.7.133
+
+This error occurs when the distribution group, security group, or Microsoft 365 group is configured to accept messages only from authenticated senders (senders in the same organization or those added to the group's allowed senders list).
+
+To fix the issue, the recipient's email admin or the group owner must add the sender's email address to the group's allowed senders list or change the group's delivery management setting to accept messages from senders inside and outside of the organization.
+
+Usually this issue can only be fixed by the recipient's email admin or the group owner.
+
+For more information and steps to fix this error, see Fix email delivery issues for error code 5.7.133 in Office 365<https://go.microsoft.com/fwlink/p/?LinkId=615127>.
+
+Original Message Details
+Created Date:   2/10/2026 7:36:52 AM
+Sender Address: hywelapbuckler@gmail.com
+Recipient Address:      lauren.lockhart@dsscotland.org.uk
+Subject:        Potential Historical Milestone for Down Syndrome Advocacy
+
+Error Details
+Error:  550 5.7.133 RESOLVER.RST.SenderNotAuthenticatedForGroup; authentication required; Delivery restriction check failed because the sender was not authenticated when sending to this group
+Message rejected by:    CWLP123MB2803.GBRP123.PROD.OUTLOOK.COM
+
+Notification Details
+Sent by:        CWLP123MB2803.GBRP123.PROD.OUTLOOK.COM
+
+Message Hops
+HOP     TIME (UTC)      FROM    TO      WITH    RELAY TIME
+1       2/10/2026
+7:37:06 AM              mail-ua1-x92b.google.com        SMTP    14 sec
+2       2/10/2026
+7:37:06 AM      mail-ua1-x92b.google.com        CW2PEPF000056BE.mail.protection.outlook.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   *
+3       2/10/2026
+7:37:11 AM      CW2PEPF000056BE.GBRP265.PROD.OUTLOOK.COM        CWLP265CA0505.outlook.office365.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   5 sec
+4       2/10/2026
+7:37:07 AM      CWLP265CA0505.GBRP265.PROD.OUTLOOK.COM  CWLP123MB2803.GBRP123.PROD.OUTLOOK.COM  Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384)    *
+
+Original Message Headers
+
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=IvJVKhVdwqlaPFusvjvoYGw0D/RaaRSLnqrr/4IZ0kHV+rJarqt3EU/T5XZd0yZa8Q8Kw3l7qtZgoyqUYptffSQgTyqlK9tIV2rBy7EqxIdhq94PLqDnnq+uhjzbs6yL5SlFxnF0ujcxA4dcR9uNaKSWnZGfJXTjcWUvcBJS++8vYmCU69eqWfEq/ONHFB1GOj0ribR5Ld4Lo9PyM4FIkGo9jpHvqAKs8Gvegm6bnz/KehTpriYkU0vIkfPMUkgSDHCNUlwRpzRFgw2ahOfe+l6/CceedOpcSGZUGcOwedtHpWrdy/p195SR206J9XhJT+GYVKSUmL6uXsXMSxCyHQ==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=IfPCHJjbUtLhnYXfaJypEtNlKG32UrE8mENsLDDjApk=;
+ b=kzucvOXrphjIDDIdKg2qqFLJnpdVSrBV+XfuZk5A5kNJ7om0M1e8mDYPHFTvdG7T91wFz6geKxH2ZqpE0ddOPc9nwxXSjM6Omu6c76aEj6JweA520mzsK5OmfoKmNBjvlbmDtNBnX4REHTPZsITGv3sOkRj2B5ekdQRQcpOGPWq+fXfupLdSwbND6iiQB13ncshSMb32w2zkiKm42/2h6wQdRoFieexKZRe2ctRQGDmpWTb3wsSuTIHLezdqmEXejNtsMxEeduQAPTilIwXo2ZdGVjfummEMSoZ2ZkOZmncsnCPqb0fjgObIO+HrIHHoLVwvbvipuSwgIR5Ucs7sUg==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 2607:f8b0:4864:20::92b) smtp.rcpttodomain=dsscotland.org.uk
+ smtp.mailfrom=gmail.com; dmarc=pass (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com; arc=pass (0 oda=0 ltdi=1)
+Received: from CWLP265CA0505.GBRP265.PROD.OUTLOOK.COM (2603:10a6:400:18b::14)
+ by CWLP123MB2803.GBRP123.PROD.OUTLOOK.COM (2603:10a6:400:5b::9) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.16; Tue, 10 Feb
+ 2026 07:37:07 +0000
+Received: from CW2PEPF000056BE.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:400:18b:cafe::1) by CWLP265CA0505.outlook.office365.com
+ (2603:10a6:400:18b::14) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9587.20 via Frontend Transport; Tue,
+ 10 Feb 2026 07:37:11 +0000
+Authentication-Results: spf=pass (sender IP is 2607:f8b0:4864:20::92b)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 2607:f8b0:4864:20::92b as permitted sender) receiver=protection.outlook.com;
+ client-ip=2607:f8b0:4864:20::92b; helo=mail-ua1-x92b.google.com; pr=C
+Received: from mail-ua1-x92b.google.com (2607:f8b0:4864:20::92b) by
+ CW2PEPF000056BE.mail.protection.outlook.com (2603:10a6:408:1::16) with
+ Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id
+ 15.20.9611.8 via Frontend Transport; Tue, 10 Feb 2026 07:37:06 +0000
+Received: by mail-ua1-x92b.google.com with SMTP id a1e0cc1a2514c-9489b08c211so252559241.3
+        for <lauren.lockhart@dsscotland.org.uk>; Mon, 09 Feb 2026 23:37:06 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1770709025; cv=none;
+        d=google.com; s=arc-20240605;
+        b=IWePlW8vkShT+WcQmItBnWuZotnO/GYybtye3B9Szrb5MnkwJ3ijWaMt8+6F6aPmBB
+         xmvHbES9cgwKyDzgVgFywBWsbnJspDu2uRT9AP22yPn2oOsFh5bsbaY0O+MnSEPC7BFe
+         cLT/L1SDFcu60pWRl2xTgSYnwDp+eNzXhrkcQmqGKwDI8FEFo2uXvSqUY5tQzTtJA9jC
+         JQ/A/moGxqshHSRSjKUcH1TdKhqdLcEFglJy8bxE+QK8s4fMrlPoiVU1hvjVtPWMFkMb
+         dpsNOFNKHiqedmwrN9WRV4/ZbTZ6bPdX/6lU8ycJFI/26MK+jDlaNv/ICxS98EKhL96t
+         IicQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=IfPCHJjbUtLhnYXfaJypEtNlKG32UrE8mENsLDDjApk=;
+        fh=JBaJmwEQD3iBfWgN8Caifc+2ujfELx/nIKpjfxglgx4=;
+        b=DPbC2jzCohov1Y3HGAZjAWwIY2tiqdzF3yw6LYXe5bn/dvmlg1Ioavx6ncbgPOTD6T
+         UIaLjpn6v3avB6LeynItSCit93ZKO6srJtZsAgvi3fcoGGy9Dp4onkl8OnZBTzsv3E1U
+         lgyPgWItkdGvGFiicexXnq1BkyKGruSGXkas9xDI50EB9pgaK1nv9FjGcDnlmxg88RMs
+         3Iey1706JGK+zev98LgVn5EmFrbgZHfMNEBftGlvXXzNEjp7RxZMrwSwb+GrybNDNmdR
+         pGmxK4IkCDJCMSiFdo/EkfkB/Fq0NAMHbaUjruR/GZ4alhNVhWTw0BUdIFOOF86dLLMK
+         dW3w==;
+        darn=dsscotland.org.uk
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1770709025; x=1771313825; darn=dsscotland.org.uk;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=IfPCHJjbUtLhnYXfaJypEtNlKG32UrE8mENsLDDjApk=;
+        b=kmVYyyQLvnXy+RNR5YL6rl0rklaWCu8DWE4ceUlhEKN6rxnTlC0CIXuIa/jXP66Y+H
+         x/pIMqmLRNc0fpFu4GIZtkUrycHi72EwYs5PVk6OkT5O6urqkxUbK6kfDvlcN2SpxXB6
+         pOgt18NjLCVmhGRZF8KOrPS1k1mXRn5ibBEPYEIPv25wUj2RUdB7PSXbeSK1kUCO36Bu
+         ZNsuypAlahVbXjXz6bMyvFAwqUlcHBdFSXWPbHRAxon1QORh9XifhqK/wjwn+og2omdr
+         Bl6mw0lbPbu5KtnhrU50aHwTn+WUZJTfGQip9VIgs2RGsp9uwQRulW31iMziRwx7r0Sz
+         LJKg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1770709025; x=1771313825;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=IfPCHJjbUtLhnYXfaJypEtNlKG32UrE8mENsLDDjApk=;
+        b=hQuDgRTl4oSfHXT0VkaqO4RAOvNW6BXia0tw1ZXW03MCLh6ph44oq8JA5lMBD7sil5
+         fXq25iIM0Eo9J7cjbo7TPe91oy6YDOZFnZ0Mriz4Xtz4yIZFghxRfHwPgZ1dRMvkUDPm
+         zTTd7o4uPvwS++4UIgIeA/uBv94540jd98Lpem/QvCoYkZ99y5Jjs1TnTu6B57ye2cpM
+         Kxw2kbIC1yUzbJdfp76C6B1NXAc+j/XK2zirQloML4Nfca393TxxZ8je7f3axnukOfkN
+         B9ibCIfDx93bopTuPEGcjZIqJb/3j9CgWOsF737NZaR9r5HdukAqfyBJCCntwvZbDMhH
+         4WCw==
+X-Forwarded-Encrypted: i=1; AJvYcCUcm+7uKQeSoIgyf3e/PWrNwoIhdua62TudqTiz545NssQdgNwOud2RRF8rxgSFTd9aq2ln72g0wack2RkE/nQ=@dsscotland.org.uk
+X-Gm-Message-State: AOJu0Yx2W/pOoh+TBvIku+klaLLnWfiuK6ErsXOqkh+ckCD077qZ/jS/
+        oExFZRgIyxpH6Ibx8rV/Ftk5729u3vly0Nglfd916azK20yEYxW+N/RuBkNlovYy8qObqkaeXbJ
+        9L5okZQ0ljIXPDnQx6NkmpcSr85R8TVc=
+X-Gm-Gg: AZuq6aKZnldmlgbl9Ceyy4gglmZOylmsd3KAZidQPQjrUx0fCaTnrLEIrR6yOtg3MMl
+        7k5zxpXtDLKjct7xbABmAgae/6uBdLRjBDr9c/fCuwPsGg1tiFWj0Piz356ZFH8PD0myDmhyqGA
+        4Ns8ILKq8ziJEKfDT9ImMMtzcFaGkAu/5Bug/TeD0mIeVGfiymXigepL+atcWx2Ej1ZbVK5dExV
+        Ni5IX2txGSDgrqrbbGbF+ssWUO9vaTndbF8djRa+KcwYER6JItu15RaeibLc3/UXBHzyjWs+3Ic
+        p/EMC6bRo6iIrhVtTc2uXu74W/oZi5hgpC1xUWos1phwMNG1p88=
+X-Received: by 2002:a05:6102:50a6:b0:5f5:2ab7:cefc with SMTP id
+ ada2fe7eead31-5fae8cbb4ebmr4045841137.41.1770709025520; Mon, 09 Feb 2026
+ 23:37:05 -0800 (PST)
+MIME-Version: 1.0
+From: Sion Buckler <hywelapbuckler@gmail.com>
+Date: Tue, 10 Feb 2026 04:36:52 -0300
+X-Gm-Features: AZwV_QhvdpKmiKGMcLhNZZn79Cavu6fpAgbRct9ePLeriBng9S9QPpVpTDfh7Bg
+Message-ID: <CAAuJ3V56SVttx-bXNzin6=Lt9cnsBMXg-2UJLP-tnM0EV2GUNA@mail.gmail.com>
+Subject: =?UTF-8?Q?Potential_Historical_Milestone_for_Down_Syndrome_Adv?=
+        =?UTF-8?Q?ocacy=C2=A0=C2=A0?=
+To: info@downsyndromeuk.co.uk
+CC: info@downs-syndrome.org.uk, info@dsmig.org.uk,
+        elizabeth.corcoran@dsrf-uk.org, hello@dseinternational.org,
+        info@dsscotland.org.uk, shona@dsscotland.org.uk, debbie@dsscotland.org.uk,
+        lauren.lockhart@dsscotland.org.uk, info@downsyndrome.ie,
+        info@kerry.downsyndrome.ie, adminsecretary@downsyndromekerry.ie,
+        info@galway.downsyndrome.ie, chairperson@galway.downsyndrome.ie,
+        treasurer@galway.downsyndrome.ie, secretary@galway.downsyndrome.ie,
+        norahmahony@downsyndrome.ie, ciaraconlon@downsyndrome.ie,
+        lilyreaney@downsyndrome.ie, eilishogan@downsyndrome.ie
+Content-Type: multipart/alternative; boundary="000000000000778238064a7352e7"
+Return-Path: hywelapbuckler@gmail.com
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 8e60181c-032a-40f6-ada2-35c1ffc95eda:0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CW2PEPF000056BE:EE_|CWLP123MB2803:EE_
+X-MS-Office365-Filtering-Correlation-Id: e1214ade-abc9-44ab-f89c-08de68773142
+

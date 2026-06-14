@@ -1,0 +1,7 @@
+onboarding:
+  seen:
+    openclaw_residue_cleanup: true
+
+model:
+  default: deepseek/deepseek-chat
+  provider: openrouter

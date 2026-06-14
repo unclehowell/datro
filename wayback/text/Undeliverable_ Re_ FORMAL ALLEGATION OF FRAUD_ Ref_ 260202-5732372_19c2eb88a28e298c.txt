@@ -1,0 +1,198 @@
+[https://products.office.com/en-us/CMSImages/Office365Logo_Orange.png?version=b8d100a9-0a8b-8e6a-88e1-ef488fee0470]
+Your message to wales@lawsociety.org.uk couldn't be delivered.
+wales@lawsociety.org.uk only accepts messages from people in its organization or on its allowed senders list, and your email address isn't on the list.
+hywelapbuckler  Office 365      wales
+Sender          Action Required
+Sender not allowed
+
+How to Fix It
+It appears you aren't in the same organization as the recipient or your email address isn't on their allowed senders list. Contact the person you're sending your message to (by phone, for example) and tell them to ask their email admin to change the settings on their mailbox so it will accept messages from you.
+
+Was this helpful? Send feedback to Microsoft<https://go.microsoft.com/fwlink/?LinkId=615008>.
+________________________________
+
+More Info for Email Admins
+Status code: 550 5.7.134
+
+This error occurs when the recipient (an Office 365 mailbox) is configured to accept messages only from authenticated senders (senders in the same organization or those added to the recipient's allowed senders list).
+
+To fix the issue, the recipient's email admin must add the sender's email address to the mailbox's allowed senders list, or they must turn off the mailbox's message delivery restrictions setting that requires that all senders to it are authenticated.
+
+This issue can only be fixed by the recipient's email admin.
+
+For more information and steps to fix this issue, see Fix email delivery issues for error code 5.7.134 in Office 365<https://go.microsoft.com/fwlink/p/?LinkId=615128>.
+
+Original Message Details
+Created Date:   2/5/2026 4:52:21 PM
+Sender Address: hywelapbuckler@gmail.com
+Recipient Address:      wales@lawsociety.org.uk
+Subject:        Re: FORMAL ALLEGATION OF FRAUD: Ref: 260202-5732372
+
+Error Details
+Error:  550 5.7.134 RESOLVER.RST.SenderNotAuthenticatedForMailbox; authentication required; Delivery restriction check failed because the sender was not authenticated when sending to this mailbox
+Message rejected by:    CWXP123MB3590.GBRP123.PROD.OUTLOOK.COM
+
+Notification Details
+Sent by:        CWXP123MB3590.GBRP123.PROD.OUTLOOK.COM
+
+Message Hops
+HOP     TIME (UTC)      FROM    TO      WITH    RELAY TIME
+1       2/5/2026
+4:52:35 PM              mail-vs1-f42.google.com SMTP    14 sec
+2       2/5/2026
+4:52:36 PM      mail-vs1-f42.google.com relay.mimecast.com      STARTTLS (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384)       1 sec
+3       2/5/2026
+4:52:41 PM      eu-smtp-inbound-delivery-1.mimecast.com CW2PEPF000056B9.mail.protection.outlook.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   5 sec
+4       2/5/2026
+4:52:42 PM      CW2PEPF000056B9.GBRP265.PROD.OUTLOOK.COM        CWLP123CA0139.outlook.office365.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   1 sec
+5       2/5/2026
+4:52:41 PM      CWLP123CA0139.GBRP123.PROD.OUTLOOK.COM  CWXP123MB3590.GBRP123.PROD.OUTLOOK.COM  Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384)    *
+
+Original Message Headers
+
+ARC-Seal: i=3; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=H5tVePs0W5e+g7xHr9pm04GSN6nL8Ad0/zSCWaVKbZMXX4QdgIzH0hg7jmUZTuO6o8ZwOGRiFdSwB/+aJ48kv4BzGSP9ycfAEiBtAJVfPZoIAaZRQ0hRA5gGgzhCvcoBYxLxu/H9IbK/NlDd0ikTktKWyf70x2d4Y5dQ55yd0fT+CmZkL2Li69D6GIx0xxmHUfdJH9rINZndEIJJkTd5FXivwbkBuz+bRBTBtglOBZF6YeDqKW4CRfld+80Mf98oMh2caHw9b74ZNGzSz20iTnlvkedUsJvxFJTn8IcV6zHWAtpneOncieQOmWI4ENwZYqoRawU3YaOO40aDW81qNA==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=UNy1sSE5yGOYMfxUJ93GiNytT2t1jWXBJjQW5G2lY2k=;
+ b=pRJa5ER+6E3D/TZOotFTbrvNFCY4gVUxSjT0yddh+Ch7KUD8fFwXw92KuUVcoEBVzLyfDMTEyllWwHcxs+NCS/IcWq7Mb7UWa9FbeyZaLEz17Diq1exkt0DQ8FfDLiefIsnAAQ8/kJJkiNwzIy4Jfwx6RoZ1mTZE4xp96K6ohZf2EibGPPsnpQVzeqXlx9l1CbzrvkEQsK60r70jDTH+S7O9EeLj4vVKp++FWPMIV8p5Wuz9BLSldiqUObt65qzGL2ow455675uL9kDcdDQ3vTx8k2dDdVEQHtv8hv3qTT2LeLeEW8nV4OeMDkKSMyerxAjNn4Rh+JdemsfNxUQQTQ==
+ARC-Authentication-Results: i=3; mx.microsoft.com 1; spf=softfail (sender ip
+ is 195.130.217.221) smtp.rcpttodomain=lawsociety.org.uk
+ smtp.mailfrom=gmail.com; dmarc=fail (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=fail (body hash did not verify)
+ header.d=gmail.com; arc=pass (0 oda=0 ltdi=0 93)
+Received: from CWLP123CA0139.GBRP123.PROD.OUTLOOK.COM (2603:10a6:401:87::31)
+ by CWXP123MB3590.GBRP123.PROD.OUTLOOK.COM (2603:10a6:400:9c::5) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.14; Thu, 5 Feb
+ 2026 16:52:41 +0000
+Received: from CW2PEPF000056B9.GBRP265.PROD.OUTLOOK.COM
+ (2603:10a6:401:87:cafe::f3) by CWLP123CA0139.outlook.office365.com
+ (2603:10a6:401:87::31) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9587.14 via Frontend Transport; Thu,
+ 5 Feb 2026 16:52:42 +0000
+Authentication-Results: spf=softfail (sender IP is 195.130.217.221)
+ smtp.mailfrom=gmail.com; dkim=fail (body hash did not verify)
+ header.d=gmail.com;dmarc=fail action=none header.from=gmail.com;
+Received-SPF: SoftFail (protection.outlook.com: domain of transitioning
+ gmail.com discourages use of 195.130.217.221 as permitted sender)
+Received: from eu-smtp-inbound-delivery-1.mimecast.com (195.130.217.221) by
+ CW2PEPF000056B9.mail.protection.outlook.com (10.167.240.4) with Microsoft
+ SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id 15.20.9587.10
+ via Frontend Transport; Thu, 5 Feb 2026 16:52:41 +0000
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed;
+        d=dkim.mimecast.com; s=201903; t=1770310361;
+        h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+         to:to:cc:cc:mime-version:mime-version:content-type:content-type:
+         in-reply-to:in-reply-to:references:references:dkim-signature;
+        bh=UNy1sSE5yGOYMfxUJ93GiNytT2t1jWXBJjQW5G2lY2k=;
+        b=ev94gBP1lOFaH00ehxWbu/Z2lJvY7OvsdJIsDK7587m8TgtbaERGnGH+gFytA+pWJFMhrQ
+        +1eysgiNrA1eMn2nv+XbZfROOMw/oIwMqkn/P8jsieYBv5aNAT+IUTZf1/B5GTh1xFE++l
+        rSkXiQehmk1dPQRtAtXmtI5+oxJ8ZAFzt4Gsc2r3sTQ+jbLwa5Yg3Nyas+r6eI66sBFA8h
+        fWSPobqhzauxvoDhK1wBqt0SAnbl5i7YRwoHLE4+gTh3dGpxT1pTFu+T1Olgf4yPj7AeSr
+        Ce1e1fohfYGQ6k6hXwio0+sMTBt1i3kPtSfgHJECmolvGguJra4ZJzPxCasSOQ==
+ARC-Seal: i=2; s=201903; d=dkim.mimecast.com; t=1770310361; a=rsa-sha256;
+        cv=pass;
+        b=iuVDGthx9L+omgYMV05Ke1hxM0BYFnIIz+5NJ+GLLUX9Qq3588dZWw1TZYi0YofrJRQlrD
+        wCmGpZSeIRRKTI55Bcl3BfGXa9vsms2oRDtunYSJUuZy9seyyfVrdfLHY3iJPJyAT6/PqI
+        OUN2RKhsD83EB4quccx/jaIxlAzoCbBeDUroBb2NL8yv5E37dUF/Phoz/3f4su+zBZ9AQX
+        Ssagdcuvdllx/RE4KYAyNTa/e2dXRdGkuJPAdrmaDLcQdefizPhCJ6P1RtZpXtMYAl/I1v
+        NL3DlPauequQJtugEBmD/cggEu/GKTytqp5pyMykyHLIzbb3KWeaqRNmsHbG5Q==
+ARC-Authentication-Results: i=2;
+        relay.mimecast.com;
+        dkim=pass header.d=gmail.com header.s=20230601 header.b=UTLlLYAW;
+        arc=pass ("google.com:s=arc-20240605:i=1");
+        dmarc=pass (policy=none) header.from=gmail.com;
+        spf=pass (relay.mimecast.com: domain of hywelapbuckler@gmail.com designates 209.85.217.42 as permitted sender) smtp.mailfrom=hywelapbuckler@gmail.com
+Authentication-Results-Original: relay.mimecast.com;    dkim=pass
+ header.d=gmail.com header.s=20230601 header.b=UTLlLYAW;        arc=pass
+ ("google.com:s=arc-20240605:i=1");     dmarc=pass (policy=none)
+ header.from=gmail.com; spf=pass (relay.mimecast.com: domain of
+ hywelapbuckler@gmail.com designates 209.85.217.42 as permitted sender)
+ smtp.mailfrom=hywelapbuckler@gmail.com
+Received: from mail-vs1-f42.google.com (mail-vs1-f42.google.com
+ [209.85.217.42]) by relay.mimecast.com with ESMTP with STARTTLS
+ (version=TLSv1.3, cipher=TLS_AES_256_GCM_SHA384) id
+ uk-mta-156--G5ebUuFNhKfVQchGoKScA-1; Thu, 05 Feb 2026 16:52:36 +0000
+X-MC-Unique: -G5ebUuFNhKfVQchGoKScA-1
+X-Mimecast-MFC-AGG-ID: -G5ebUuFNhKfVQchGoKScA_1770310355
+Received: by mail-vs1-f42.google.com with SMTP id ada2fe7eead31-5fadf645f9bso203953137.0
+        for <wales@lawsociety.org.uk>; Thu, 05 Feb 2026 08:52:35 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1770310354; cv=none;
+        d=google.com; s=arc-20240605;
+        b=Fa8HyzK6SM4PkE4oHtJr2MChaQDuyxKpevDKE7Cb8gyTrE4TKUiBIf+ujfpd8k+F5f
+         Y05BOoq5uy0YB3AsZo3QuQGXeqQCFDQ2ZXGpu9xy+qmxE+ota6gG4CKyIvYqaDv5+E6w
+         y9lhIs8NlMlElCtrEu6Cnl9iXNHS4kFhuX0sd5pxLktiQuYJsSCLDMQbSZ55und4l0OA
+         MlBz3K5ixfLuN47YD/wQC7PfaAlx4c5XQ0VGqCx6jvkxqbobcU9YkYyzP1FseJkAe6J/
+         gSqSeAQ/x4iURNk9KMIRqE+gkym7qthjaAAPtJDJwBe9tcYD5A8raMppbEMfaWS/lHJn
+         HBXQ==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:dkim-signature;
+        bh=PNnrGV65RoxzNj5YA29EteeeRj4jBcs7AgxV2q33U/A=;
+        fh=OEOGuNPKuEJ+pzJSoc5qEYtIvYy4VIMbhPQhyrSPRso=;
+        b=itMpAbKil4PMYxw9q3iRNhs/Xg+97G1a6B3AtoSDF1PyjBittJKyTiV/2e2vf36f/r
+         RhEFnUHDosgw0lae0a3FzOTby3FOfGijqA+1QA4HOxeOGQt9Ij443Udg/bXVfh1TYHAQ
+         VmsHxcgA2lZtptxP9kLmyS9Df6gpWKvkkSON6sXr+mS+a9Q6LbQ+T+sju7GRfPthlxcU
+         Kbn1Y9+zWZY6UpMNDn+oAXzWrYVfHKSNfheQSRa0BFlzygf5RkW5/++EgqAxYg/veJBz
+         CAx4mjRp9czdWgJkwUSZUWLZf7uO1b/T89A7wxH8zNdk0NJXRirqj/NUsQjptS3+hOMB
+         4tlg==;
+        darn=lawsociety.org.uk
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1770310354; x=1770915154; darn=lawsociety.org.uk;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:from:to:cc:subject:date:message-id:reply-to;
+        bh=PNnrGV65RoxzNj5YA29EteeeRj4jBcs7AgxV2q33U/A=;
+        b=UTLlLYAWm1NFt5PMt+PutlIO3obirbqc0k9SMvS+gIVXZl/ZgET2jI1uW3bl5hm+6l
+         wi/Pt8cJ+zsP7VZ+Vn/SUhTnJfMHcNN87gcdwGt2aUULlTt4h/fncSRpJWKYCq2th9F3
+         KdSYbMViHrh3POxfzZcQ6O4tCKkDdqkv3Hlw86X4XvzJJ0/p0dW/Q4whXIrNfBj2k59w
+         NZq8jV4+ixYklZO+nONaR310k7SAoHdl+aD/da2qWcuHs4UCIwpsH6oMvUaHU0FlYo/9
+         /pdWMrnbgzn2ezh8uafmFsTA/ItW9kmtvfM9uEBxpifE1o7s1dqjvz0kQe0kIM3NngrX
+         /jqw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1770310354; x=1770915154;
+        h=cc:to:subject:message-id:date:from:in-reply-to:references
+         :mime-version:x-gm-gg:x-gm-message-state:from:to:cc:subject:date
+         :message-id:reply-to;
+        bh=PNnrGV65RoxzNj5YA29EteeeRj4jBcs7AgxV2q33U/A=;
+        b=J7aIjhJbEYQuLxN6/FcZO1as4BX5jy6utJm/5iCSsT1X2pi3Wvy35g51MBSvBkLClA
+         XVhq06vjplfKxR83ZJJVM7FWa6vpt5MdOD2nDuj2IY17FjxYsGEzk2sHUwkn6sm/sd7N
+         fYfvM2fMO8WuF6dlzkeU3hPqevjxkafWf+5J++Ec7JQ3GgYtSCB2fqorwWZLVSN3Np3B
+         JhiqtiOpXiz+OOHeqpX07vWnihJcGs1RwVWzYAIeGBMuwE4NAVInBTHwyGuA0i2XxHAF
+         cb+ctxENN1OEsx8m0yf1efXEmgC29kqkci3S3m1TBuQXb+hxDB0SsXD6Jiv6A1S+YmCr
+         YPsw==
+X-Forwarded-Encrypted: i=1; AJvYcCXMl5AvFkoV/b6nUmxMxF+Smo55GiITGIdlKSO9JYEMgerY7MKeM3RH1tg4j/bwrVKP3uS2sw==@lawsociety.org.uk
+X-Gm-Message-State: AOJu0Yzi0/C5LAQGGrauwtSJ8pv+OisgrVTaYuH0xryZ17nuAulYwe8a
+        RmiFCe62HsBEchsGVWvLa+fUbHpoG81YimVQIt7IPcDToyZoTTB4rQsOJrhVjCQJaLpT1jHCx7u
+        mo0dJYhMOZEu3z6inV4zenm6vJRcwT9g=
+X-Gm-Gg: AZuq6aL0O2usbUw7w0dHmjHOjBJsyqioHb86jKtGnXExZYk2UdnfmvpCN38BTACzg4z
+        vNvP/MRHneBzl+cd9De2hrp9a1y4TteWjowhFPiHskO/mE/jQSqUkTp480d3nJdBil5EOO1lH5v
+        IXnwY6LesOMb+AZOSKyy7HOnwLdfVEbmn5weMXL6So7Um3BIDg0qYeshJn/8e4B2cIR0D9YFeK/
+        D1P/aoMrNBP1jmw/g+6Fu37m4Fxozu0Kenhcmuaf8Xw+pjWUgdKjCHgKlbq4xNG2fDLj7ovY1xv
+        bmRbwM9iPmuo9/ab10CVsBx9+KXwkVCaX8DowY7dkbYSPWtHKjpzcks1Q2BxnQ==
+X-Received: by 2002:a05:6102:5091:b0:5ed:f13:e58a with SMTP id
+ ada2fe7eead31-5f9395e4679mr2158686137.37.1770310354139; Thu, 05 Feb 2026
+ 08:52:34 -0800 (PST)
+MIME-Version: 1.0
+References: <09D4A82672BD4B928C24A01A6A6D8A7E1DC943BA90A4@CUSTOMERSUPPORT.MAIL.LANDREGISTRY.GOV.UK>
+In-Reply-To: <09D4A82672BD4B928C24A01A6A6D8A7E1DC943BA90A4@CUSTOMERSUPPORT.MAIL.LANDREGISTRY.GOV.UK>
+From: Sion Buckler <hywelapbuckler@gmail.com>
+Date: Thu, 5 Feb 2026 13:52:21 -0300
+X-Gm-Features: AZwV_QhUN0tUVqWyvoG_2YyjQET7jRss5gUvj_cK2oAwpwJajw-YPFluoId1iaQ
+Message-ID: <CAAuJ3V74J7QvSieC--HoCZ30jWJ_SMjzHH86_rjc4Y+caBtJTg@mail.gmail.com>
+Subject: Re: FORMAL ALLEGATION OF FRAUD: Ref: 260202-5732372
+To: Customer Support <customersupport@landregistry.gov.uk>, reportafraud@landregistry.gov.uk
+CC: public.enquiries@sfo.gov.uk, contact@actionfraud.police.uk,
+        wales@lawsociety.org.uk, report@sra.org.uk, post@museumwales.ac.uk
+X-Mimecast-Spam-Score: 1
+X-Mimecast-MFC-PROC-ID: ioWOCkzttEsZnILmnPte47mQGvUhAZeW8uNyPjh15Js_1770310355
+Content-Type: multipart/mixed; boundary="000000000000cd2db5064a167ffc"
+Return-Path: hywelapbuckler@gmail.com
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: 2d4ecdb2-42d1-4250-b794-2caf523719ad:0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: CW2PEPF000056B9:EE_|CWXP123MB3590:EE_
+X-MS-Office365-Filtering-Correlation-Id: e9812ff5-ce1f-4fb3-a14e-08de64d6fa0d
+
