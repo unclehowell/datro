@@ -1,3 +1,4 @@
+const VERSION = '0.0.1.77';
 const GITHUB_REPO = 'unclehowell/datro';
 const GITLAWB_NODE = 'https://node.gitlawb.com';
 const GITLAWB_BOUNTY_LIST_URL = `${GITLAWB_NODE}/api/v1/bounties`;
@@ -292,6 +293,34 @@ const AGENT_TOOLS = {
         return `Gitlawv node unreachable: ${err.message}`;
       }
     }
+  },
+  // ── RSI Tools ──
+  fractal_search: {
+    description: 'Recursive search pattern for deep optimization. Searches deeper into a specific file or directory.',
+    args: { path: 'string', pattern: 'string', depth: 'number' },
+    execute: async (args, ctx) => {
+      const depth = parseInt(args.depth || 1);
+      if (depth > 3) return "Fractal depth limit reached.";
+      const results = [];
+      // Logic for deep recursive search
+      const file = await getFileContent(ctx.token, ctx.branch, args.path);
+      if (file && file.content.includes(args.pattern)) {
+        results.push(`Match in ${args.path} at depth ${depth}`);
+      }
+      return results.join('\n') || "No deep patterns found.";
+    }
+  },
+  boolean_simplify: {
+    description: 'Pass complex logic through a Boolean simplifier to remove bloat and technical debt.',
+    args: { logic: 'string' },
+    execute: async (args, ctx) => {
+      const prompt = `Simplify the following Boolean logic or code structure. Remove redundant if-statements and simplify the truth table.
+      
+      LOGIC:
+      ${args.logic}`;
+      const result = await queryFinancechequeAPI("You are a Boolean Logic Optimizer.", prompt, ctx.env, 30000);
+      return result.reply || "Simplification failed.";
+    }
   }
 };
 
@@ -299,21 +328,29 @@ const AGENT_TOOLS = {
 
 async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHtml, ctx) {
   const token = env.GITHUB_TOKEN;
-  const maxIterations = 6;
+  const maxIterations = 8; // Increased for more thorough goal meeting
   const conversation = [];
   let currentHtml = html;
   const committedFiles = [];
   let agentBounty = null;
 
+  // ── BESPOKE BRANCH LOOP ──
+  const loopFile = await getFileContent(token, branch, 'LOOP.md');
+  const bespokeLoop = loopFile ? loopFile.content : 'Standard RSI review: analyze the target branch, look for potential issues, fix them automatically and do the rerelease.';
+  console.log(`  Bespoke Loop for ${branch}: ${bespokeLoop.slice(0, 100)}...`);
+
   const context = {
     token, branch, env, currentHtml,
     wingFiles: Object.keys(wingFiles || {}).length,
-    domain: DOMAIN
+    domain: DOMAIN,
+    bespokeLoop
   };
 
   const category = computeBranchCategory(branch);
   const bias = await getBiasFromKv(env);
-  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {});
+  const steeringLabel = bias?.steering || 'CTR';
+  const riskLabel = bias?.risk || 3;
+
   const honchoMem = await getHonchoMemory(env, branch);
   const brainMem = await getBrainSummary(token);
   const sciHub = await getSciHubIdeas(env, branch, category);
@@ -344,6 +381,16 @@ Analyze branch "${branch}" deeply. Your goal is to produce high-standard, profes
 2. **Performance (Core Web Vitals)**: Prioritize Interaction to Next Paint (INP), Largest Contentful Paint (LCP), and Cumulative Layout Shift (CLS).
 3. **Professional UX**: Use modern design patterns (spacing, contrast, clear CTAs).
 4. **Clean Code**: Write idiomatic, accessible HTML/CSS. Use Tailwind utility classes where possible.
+
+## BESPOKE BRANCH LOOP
+This branch has a specific execution requirement:
+${bespokeLoop}
+
+## GOAL-ORIENTED PROTOCOL
+1. **Define Goal**: At the start, output "GOAL: <verifiable end state>".
+2. **Execute**: Use tools to reach that goal.
+3. **Verify**: Before finishing, verify the goal is met (e.g., using check_live_site or reading back the file).
+4. **Iterate**: If the goal is not met, continue until ${maxIterations} iterations.
 
 ## Quota-Aware Rationing
 - Current Session Tokens Used: ${quotaStats.session.tokens}
@@ -2268,7 +2315,6 @@ async function processBranch(env, branch) {
         await updateCneiResourceLedger(env, token);
       }
     }
-    }
 
     console.log(`Agentic release ${tagName}: ${agentResult.changes.length} files committed`);
 
@@ -2520,6 +2566,26 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
+    if (url.pathname === '/__version') {
+      return new Response(JSON.stringify({ version: VERSION, repo: GITHUB_REPO }), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
+    if (url.pathname === '/__rsi') {
+      const state = await getRotationState(env);
+      const quotas = await getQuotaStats(env);
+      const lastCnei = await env.FLYWHEEL_STATE.get('last_cnei_release', 'json');
+      return new Response(JSON.stringify({
+        status: 'Darwin-Godel RSI Engine Active',
+        version: VERSION,
+        rotation: state,
+        quotas,
+        last_cnei_release: lastCnei,
+        ota_verified: lastCnei?.tag === `cnei-v${formatVersion(await getMaxBranchReleaseNum(env.GITHUB_TOKEN, 'cnei'))}`
+      }, null, 2), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
     if (url.pathname === '/__cron') {
       const branch = url.searchParams.get('branch');
       ctx.waitUntil(runFlywheel(env, branch || null));
