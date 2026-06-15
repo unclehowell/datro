@@ -47,7 +47,7 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
   backdrop-filter: blur(24px); animation: fadeIn 0.5s ease;
 }
 #splash-overlay.hidden { display: none; }
-.splash-panel {
+.splash-panel { min-height: auto;
   background: var(--bg-secondary); border: 2px solid rgba(245,158,11,0.5);
   border-radius: 1.5rem; padding: 2.5rem 2rem; max-width: 42rem; max-height: 90vh;
   box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: flex; flex-direction: column;
@@ -120,9 +120,9 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 #timeline-view { width: 100%; height: 100%; position: relative; display: flex; flex-direction: column; overflow: hidden; }
 #scene-display { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 4rem; position: relative; overflow-y: auto; }
 
-#narration-area { width: 100%; max-width: 48rem; margin-bottom: 1rem; }
-#narration-label { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 0.5rem; }
-#narration-text { font-family: var(--font-display); font-size: 1.1rem; line-height: 1.6; color: var(--text-secondary); }
+#narration-area { width: 100%; margin-left: 5rem; max-width: 48rem; margin-bottom: 1rem; }
+#narration-label { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 0.5rem; }
+#narration-text { font-size: 1.25rem; font-family: var(--font-display); font-size: 1.1rem; line-height: 1.6; color: var(--text-secondary); }
 #narration-text .word { display: inline-block; transition: color 0.1s; }
 #narration-text .word.active { color: white; }
 
@@ -256,7 +256,7 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
   .voice-slider-label.desktop-label { display: none; }
   .voice-slider-label.mobile-label { display: block; }
 }
-.voice-slider-container input[type="range"] { writing-mode: bt-lr; -webkit-appearance: slider-vertical; width: 0.5rem; height: 5rem; accent-color: var(--accent); cursor: pointer; }
+.voice-slider-container input[type="range"] { -webkit-appearance: slider-horizontal; width: 6rem; height: 0.5rem; accent-color: var(--accent); cursor: pointer; }
 
 #slide-counter {
   position: absolute; top: 1.5rem; right: 1.5rem; z-index: 60;
@@ -265,11 +265,11 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 }
 #slide-counter:hover { color: var(--accent-hover); }
 
-#gallery-btn {
+#gallery-btn { left: 1rem; right: auto; top: 1rem;
   position: absolute; right: 5rem; top: 1.25rem; z-index: 60;
   display: none; cursor: pointer;
 }
-@media (min-width: 1024px) { #gallery-btn { display: block; } }
+@media (min-width: 1024px) { #gallery-btn { left: 1rem; right: auto; top: 1rem; display: block; } }
 
 .gallery-trigger {
   position: relative; display: flex; align-items: center; gap: 0.5rem;

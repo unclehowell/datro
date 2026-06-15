@@ -143,10 +143,18 @@
 
     var ul = document.createElement("ul");
     ul.className = "splash-items";
+    var maxItems = 5;
     for (var i = 0; i < data.items.length; i++) {
+      if (i >= maxItems && i !== data.items.length - 1) continue;
       var li = document.createElement("li");
       li.textContent = data.items[i];
       ul.appendChild(li);
+    }
+    if (data.items.length > maxItems) {
+      var hint = document.createElement("li");
+      hint.style.cssText = "color:#94a3b8;font-style:italic;text-align:center;border:none;";
+      hint.textContent = "Scroll for more...";
+      ul.appendChild(hint);
     }
     panel.appendChild(ul);
 
