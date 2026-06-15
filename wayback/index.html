@@ -55,6 +55,14 @@
       min-height:40px;outline:none;
     }
     #all-search:focus{border-color:rgba(100,150,255,0.4)}
+    #sort-row{display:flex;align-items:center;gap:0.3rem;margin:0.3rem 0}
+    #sort-row label{font-size:0.6rem;color:#667}
+    #sort-select{
+      background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+      border-radius:8px;color:#aac;font-size:0.65rem;padding:0.3rem 0.4rem;
+      min-height:32px;outline:none;cursor:pointer;
+    }
+    #sort-select:focus{border-color:rgba(100,150,255,0.4)}
 
     /* -- GALLERY -- */
     .gallery{
@@ -207,6 +215,13 @@
 
     <div id="content">
       <div id="tag-bar"></div>
+      <div id="sort-row">
+        <label for="sort-select">Sort</label>
+        <select id="sort-select">
+          <option value="desc">Date Z-A</option>
+          <option value="asc">Date A-Z</option>
+        </select>
+      </div>
       <div id="all-search-wrapper" style="display:none">
         <input type="text" id="all-search" placeholder="Search all files...">
       </div>
@@ -259,6 +274,7 @@
       let filtered = [];
       let activeFilters = new Set();
       let currentFile = null;
+      let currentSort = 'desc';
 
       const content = document.getElementById('content');
       const tagBar = document.getElementById('tag-bar');
@@ -268,6 +284,7 @@
       const allSearch = document.getElementById('all-search');
       const allSearchWrapper = document.getElementById('all-search-wrapper');
       const versionTag = document.getElementById('version-tag');
+      const sortSelect = document.getElementById('sort-select');
       const topTabs = document.getElementById('top-tabs');
       const modal = document.getElementById('modal');
       const modalTitle = document.getElementById('modal-title');
@@ -289,6 +306,7 @@
         if(currentCat!=='all')p.set('cat',currentCat);
         if(activeFilters.size)p.set('tag',[...activeFilters].join(','));
         if(currentFile)p.set('file',currentFile.path);
+        if(currentSort!=='desc')p.set('sort',currentSort);
         const q=p.toString();
         window.history.replaceState({},'',q?window.location.pathname+'?'+q:window.location.pathname);
       }
@@ -352,6 +370,11 @@
         if(query)items=items.filter(item=>item._searchText.includes(query));
         if(activeFilters.size>0)items=items.filter(item=>item._hashtags.some(t=>activeFilters.has(t)));
         filtered=items;
+        filtered.sort((a,b)=>{
+          const da=(a.name||'').match(/^(\d{4}-\d{2}-\d{2})/),db=(b.name||'').match(/^(\d{4}-\d{2}-\d{2})/);
+          const va=da?da[1]:'',vb=db?db[1]:'';
+          return currentSort==='asc'?va.localeCompare(vb):vb.localeCompare(va);
+        });
         headerCount.textContent=filtered.length+' item'+(filtered.length!==1?'s':'');
         renderTagBar();
         renderPage();
@@ -462,11 +485,13 @@
       shareCopy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(getShareUrl());shareMsg.textContent='Copied!';setTimeout(()=>{shareMsg.textContent=''},2000)}catch{shareMsg.textContent='Failed'}});
 
       if(allSearch)allSearch.addEventListener('input',()=>{currentPage=1;applyFilter()});
+      sortSelect.addEventListener('change',()=>{currentSort=sortSelect.value;currentPage=1;applyFilter()});
 
       window.addEventListener('popstate',()=>{
         if(modal.style.display==='block'){closeModal();return}
         currentCat=qs('cat')||'images';activeFilters.clear();
         const t=qs('tag');if(t)t.split(',').filter(Boolean).forEach(x=>activeFilters.add(x.startsWith('#')?x:'#'+x));
+        currentSort=qs('sort')||'desc';sortSelect.value=currentSort;
         renderTopTabs();applyFilter();
         const f=qs('file');if(f){const found=(allData.all||[]).find(item=>item.path===f);if(found)openModal(found)}
       });
@@ -483,6 +508,7 @@
         currentCat=qs('cat')||'images';
         const tagParam=qs('tag');
         if(tagParam)tagParam.split(',').filter(Boolean).forEach(t=>activeFilters.add(t.startsWith('#')?t:'#'+t));
+        currentSort=qs('sort')||'desc';sortSelect.value=currentSort;
         renderTopTabs();applyFilter();
         const fileParam=qs('file');
         if(fileParam){const found=(allData.all||[]).find(item=>item.path===fileParam);if(found)openModal(found)}
