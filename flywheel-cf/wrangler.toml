@@ -7,7 +7,6 @@ crons = ["*/10 * * * *"]
 
 [env.production]
 vars = { ENVIRONMENT = "production", CF_ACCOUNT_ID = "77672efb598df743fe4eac6762713248" }
-
-[[kv_namespaces]]
-binding = "FLYWHEEL_STATE"
-id = "ed3052fb8c2249979074b6096abc64f6"
+kv_namespaces = [
+  { binding = "FLYWHEEL_STATE", id = "ed3052fb8c2249979074b6096abc64f6" }
+]
