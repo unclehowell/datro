@@ -2,408 +2,490 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DATRO Wayback Archive v0.0.0.10</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Wayback Archive</title>
   <style>
-    * { box-sizing: border-box; }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;overflow:hidden}
+    body{
+      background:#2a2a4a;color:#ddd;
+      font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+      -webkit-text-size-adjust:100%;touch-action:manipulation;
+    }
+    a{color:#aac;text-decoration:none}
 
-    body {
-      background: #336; color: #ddd; font-family: -apple-system,BlinkMacSystemFont,sans-serif;
-      margin: 0; padding: 0.5rem; min-height: 100vh;
-    }
-    .main-title {
-      text-align: center; color: lightslategrey;
-      font-size: clamp(17px,4.5vw,28px); font-weight: bolder; margin: 0.3rem 0;
-    }
-    .logo { display: block; margin: 0 auto 0.2rem; max-width: 55px; }
+    /* -- APP SHELL -- */
+    #app{display:flex;flex-direction:column;height:100dvh;max-height:100dvh}
 
-    /* -- TABS (scrollable row on mobile) -- */
-    .tabs {
-      display: flex; gap: 0.3rem; margin-bottom: 0.5rem;
-      overflow-x: auto; -webkit-overflow-scrolling: touch;
-      scrollbar-width: none; padding: 0.25rem 0;
+    /* -- HEADER (thin bar) -- */
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0.4rem 0.75rem;background:#22224a;border-bottom:1px solid rgba(255,255,255,0.08);
+      flex-shrink:0;min-height:44px;
     }
-    .tabs::-webkit-scrollbar { display: none; }
-    .tab {
-      flex-shrink: 0; padding: 0.5rem 0.7rem;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 8px; cursor: pointer; color: #aac; font-weight: bold;
-      font-size: clamp(0.75rem,2.5vw,0.9rem); min-height: 44px;
-      display: flex; align-items: center; touch-action: manipulation;
+    header h1{font-size:1rem;font-weight:700;color:#bcc}
+    #version-tag{font-size:0.6rem;color:#667;font-weight:400;margin-left:0.3rem}
+    .header-count{font-size:0.65rem;color:#667;white-space:nowrap}
+
+    /* -- SCROLLABLE CONTENT -- */
+    #content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0.5rem 0.5rem}
+
+    /* -- TAG BAR (scrollable chips) -- */
+    #tag-bar{
+      display:flex;gap:0.3rem;padding:0.4rem 0;overflow-x:auto;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;
     }
-    .tab.active { background: rgba(255,255,255,0.25); color: #fff; border-color: rgba(255,255,255,0.5); }
-    .tab:active { background: rgba(255,255,255,0.3); }
-    .count-badge {
-      display: inline-block; background: rgba(255,255,255,0.15);
-      border-radius: 10px; padding: 0.05rem 0.4rem; font-size: 0.65rem; margin-left: 0.25rem;
+    #tag-bar::-webkit-scrollbar{display:none}
+    #tag-bar .tag{
+      flex-shrink:0;padding:0.25rem 0.55rem;
+      background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+      border-radius:14px;color:#8ac;font-size:0.7rem;cursor:pointer;
+      min-height:32px;display:flex;align-items:center;touch-action:manipulation;
+      transition:all 0.15s;
     }
+    #tag-bar .tag:active{background:rgba(255,255,255,0.2)}
+    #tag-bar .tag.active{background:rgba(80,180,80,0.25);color:#afa;border-color:rgba(80,180,80,0.4)}
+    #tag-bar .tag-clear{background:rgba(200,50,50,0.15);color:#f88;border-color:rgba(200,50,50,0.25)}
+
+    /* -- SEARCH -- */
+    #all-search{
+      width:100%;padding:0.55rem 0.7rem;margin-bottom:0.4rem;
+      border-radius:10px;border:1px solid rgba(255,255,255,0.15);
+      background:rgba(255,255,255,0.07);color:#ddd;font-size:0.9rem;
+      min-height:40px;outline:none;
+    }
+    #all-search:focus{border-color:rgba(100,150,255,0.4)}
 
     /* -- GALLERY -- */
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
-      gap: 0.5rem;
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(140px,1fr));
+      gap:0.4rem;padding-top:0.25rem;
     }
-    .item {
-      background: rgba(255,255,255,0.08); border-radius: 8px; padding: 0.4rem;
-      text-align: center; position: relative;
+    .item{
+      background:rgba(255,255,255,0.06);border-radius:10px;padding:0.4rem;
+      text-align:center;cursor:pointer;transition:background 0.12s;
+      touch-action:manipulation;
     }
-    .item a {
-      color: #aac; text-decoration: none; font-size: 0.75rem;
-      display: block; word-break: break-all;
+    .item:active{background:rgba(255,255,255,0.12)}
+    .item img,.item video{
+      max-width:100%;max-height:180px;border-radius:6px;
+      object-fit:contain;display:block;margin:0 auto;pointer-events:none;
     }
-    .item a:active { color: #fff; }
-    .item img, .item video {
-      max-width: 100%; max-height: 200px; border-radius: 4px;
-      object-fit: contain; cursor: pointer; display: block; margin: 0 auto;
+    .item .file-icon{font-size:2.2rem;padding:0.8rem 0;color:#889}
+    .item .name{font-size:0.6rem;color:#889;margin-top:0.15rem;word-break:break-word;line-height:1.2}
+    .item .item-tags{display:flex;flex-wrap:wrap;gap:0.1rem;justify-content:center;margin-top:0.15rem}
+    .hash-badge{
+      display:inline-block;padding:0.08rem 0.3rem;border-radius:6px;
+      font-size:0.5rem;font-weight:700;letter-spacing:0.2px;
     }
-    .item .name { font-size: 0.65rem; color: #889; margin-top: 0.2rem; word-break: break-word; line-height: 1.2; }
-    .item.pdf a, .item.text a, .item.video a { padding: 1.2rem 0; display: block; font-size: 0.8rem; }
+    .hash-badge.bpvsbuckler{background:rgba(200,100,50,0.3);color:#fca}
+    .hash-badge.datro{background:rgba(50,150,200,0.3);color:#8cf}
+    .hash-badge.ccan{background:rgba(150,200,50,0.3);color:#cf8}
+    .hash-badge.morgan{background:rgba(200,50,150,0.3);color:#f8c}
+    .hash-badge.ceo{background:rgba(200,200,50,0.3);color:#ff8}
+    .hash-badge.gui{background:rgba(50,200,200,0.3);color:#8ff}
+    .hash-badge.library{background:rgba(150,100,200,0.3);color:#c8f}
+    .hash-badge.family{background:rgba(200,150,50,0.3);color:#fc8}
+    .hash-badge.email{background:rgba(100,150,200,0.3);color:#acf}
+    .hash-badge.greathousefarm{background:rgba(100,200,150,0.3);color:#afa}
 
-    .hash-badge {
-      display: inline-block; padding: 0.1rem 0.35rem; border-radius: 6px;
-      font-size: 0.55rem; font-weight: bold; letter-spacing: 0.2px; margin-top: 0.15rem;
+    /* -- PAGINATION -- */
+    .pagination{display:flex;justify-content:center;align-items:center;gap:0.2rem;margin-top:0.6rem;flex-wrap:wrap;padding-bottom:0.25rem}
+    .pagination button{
+      padding:0.35rem 0.5rem;min-width:34px;min-height:34px;
+      background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+      border-radius:8px;color:#aac;cursor:pointer;font-weight:700;font-size:0.75rem;touch-action:manipulation;
     }
-    .hash-badge.bpvsbuckler { background: rgba(200,100,50,0.3); color: #fca; }
-    .hash-badge.datro { background: rgba(50,150,200,0.3); color: #8cf; }
+    .pagination button:active:not(:disabled){background:rgba(255,255,255,0.2);color:#fff}
+    .pagination button:disabled{opacity:0.25}
+    .pagination button.active-page{background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.35)}
+    .pagination .info{color:#667;font-size:0.7rem}
 
-    /* -- PAGINATION (bigger touch targets) -- */
-    .pagination {
-      display: flex; justify-content: center; align-items: center;
-      gap: 0.25rem; margin-top: 0.75rem; flex-wrap: wrap;
+    /* -- BOTTOM TAB BAR -- */
+    #bottom-tabs{
+      display:flex;background:#1e1e3e;border-top:1px solid rgba(255,255,255,0.08);
+      flex-shrink:0;padding:0.2rem 0;padding-bottom:max(0.2rem,env(safe-area-inset-bottom));
     }
-    .pagination button {
-      padding: 0.4rem 0.55rem; min-width: 36px; min-height: 36px;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 6px; color: #aac; cursor: pointer; font-weight: bold;
-      font-size: 0.8rem; touch-action: manipulation;
+    .btab{
+      flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      padding:0.25rem 0;cursor:pointer;color:#667;font-size:0.55rem;gap:0.1rem;
+      transition:color 0.15s;touch-action:manipulation;min-height:48px;
+      border:none;background:none;font-family:inherit;
     }
-    .pagination button:active:not(:disabled) { background: rgba(255,255,255,0.3); color: #fff; }
-    .pagination button:disabled { opacity: 0.3; }
-    .pagination button.active-page { background: rgba(255,255,255,0.3); color: #fff; border-color: rgba(255,255,255,0.5); }
-    .pagination .info { color: #889; font-size: 0.75rem; }
+    .btab .btab-icon{font-size:1.2rem;line-height:1}
+    .btab.active{color:#aac}
+    .btab.active .btab-icon{color:#ccd}
+    .btab:active{color:#889}
 
-    .subtitle { text-align: center; color: #667; font-size: 0.75rem; margin-bottom: 0.5rem; }
-
-    /* -- HASHTAG CLOUD (positioned below tabs on mobile, sticky sidebar on desktop) -- */
-    #hashtag-cloud {
-      max-width: 100%; margin-bottom: 0.5rem;
-      background: rgba(40,40,70,0.92); border: 1px solid rgba(255,255,255,0.15);
-      border-radius: 8px; padding: 0.4rem 0.6rem;
+    /* -- MODAL (bottom sheet on mobile) -- */
+    .modal-overlay{
+      display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.6);z-index:1000;overflow:hidden;
     }
-    #hashtag-cloud .tag {
-      display: inline-block; margin: 0.15rem; padding: 0.3rem 0.55rem;
-      background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-      border-radius: 10px; color: #8ac; cursor: pointer; font-size: 0.75rem;
-      min-height: 36px; line-height: 1.4; touch-action: manipulation;
+    .modal-sheet{
+      position:absolute;bottom:0;left:0;width:100%;
+      max-height:92vh;background:#22224a;border-radius:16px 16px 0 0;
+      display:flex;flex-direction:column;overflow:hidden;
+      animation:sheetUp 0.25s ease-out;
     }
-    #hashtag-cloud .tag:active { background: rgba(255,255,255,0.25); color: #fff; }
-    #hashtag-cloud .tag.active { background: rgba(100,200,100,0.3); color: #afa; border-color: rgba(100,200,100,0.5); }
-    #hashtag-cloud .tag-label { color: #889; font-size: 0.65rem; margin-bottom: 0.2rem; display: flex; justify-content: space-between; align-items: center; }
-    #hashtag-cloud .clear-btn { background: none; border: none; color: #667; cursor: pointer; font-size: 0.65rem; padding: 0.3rem; touch-action: manipulation; }
-    #hashtag-cloud .clear-btn:active { color: #aac; }
-
-    #all-search {
-      width: 100%; padding: 0.6rem 0.7rem; margin-bottom: 0.5rem;
-      border-radius: 8px; border: 1px solid rgba(255,255,255,0.2);
-      background: rgba(255,255,255,0.1); color: #ddd;
-      font-size: 1rem; box-sizing: border-box; min-height: 44px;
+    @keyframes sheetUp{
+      from{transform:translateY(100%)}
+      to{transform:translateY(0)}
     }
-
-    footer { text-align: center; padding: 0.75rem; font-size: 0.7rem; color: #667; border-top: 1px solid rgba(255,255,255,0.1); margin-top: 1.5rem; }
-
-    .self-updating { color: #8c8; background: rgba(0,100,0,0.2); padding: 0.1rem 0.4rem; border-radius: 6px; font-size: 0.6rem; vertical-align: middle; }
-
-    /* -- TABLET+ -- */
-    @media (min-width: 768px) {
-      body { padding: 1rem; }
-      .gallery { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 0.75rem; }
-      .item img, .item video { max-height: 250px; }
-      .item .name { font-size: 0.75rem; }
-      #hashtag-cloud { position: fixed; top: 0.75rem; right: 0.75rem; max-width: 180px; }
-      .tab { font-size: 0.85rem; padding: 0.4rem 0.75rem; }
+    .modal-handle{
+      width:40px;height:4px;border-radius:2px;background:rgba(255,255,255,0.15);
+      margin:0.5rem auto 0.25rem;flex-shrink:0;
     }
-    @media (min-width: 1024px) {
-      .gallery { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 1rem; }
-      .item img, .item video { max-height: 300px; }
+    .modal-header{
+      display:flex;justify-content:space-between;align-items:flex-start;
+      padding:0.25rem 0.75rem 0.5rem;flex-shrink:0;gap:0.5rem;
+    }
+    .modal-header h2{margin:0;font-size:0.85rem;color:#ddd;word-break:break-word;line-height:1.3;flex:1}
+    .modal-close{
+      background:none;border:none;color:#667;font-size:1.4rem;cursor:pointer;
+      padding:0.2rem;line-height:1;flex-shrink:0;touch-action:manipulation;
+    }
+    .modal-close:active{color:#fff}
+    .modal-tags{display:flex;flex-wrap:wrap;gap:0.3rem;padding:0 0.75rem 0.4rem;flex-shrink:0}
+    .modal-tags .hash-badge{font-size:0.65rem;padding:0.15rem 0.45rem}
+    .modal-path{font-size:0.55rem;color:#556;padding:0 0.75rem 0.4rem;word-break:break-all;flex-shrink:0}
+    .modal-path code{background:rgba(255,255,255,0.04);padding:0.05rem 0.25rem;border-radius:4px}
+    .modal-body{overflow-y:auto;padding:0.5rem 0.75rem 1rem;-webkit-overflow-scrolling:touch;flex:1;min-height:100px}
+    .modal-body img,.modal-body video{max-width:100%;max-height:70vh;display:block;margin:0 auto;border-radius:8px}
+    .modal-body embed,.modal-body iframe{width:100%;min-height:50vh;border:none;border-radius:8px}
+    .modal-body pre{
+      white-space:pre-wrap;word-wrap:break-word;max-height:60vh;overflow-y:auto;
+      background:rgba(0,0,0,0.3);padding:0.75rem;border-radius:8px;
+      font-size:0.7rem;line-height:1.5;margin:0;color:#ccc;
+    }
+    .modal-loading{text-align:center;color:#556;padding:2rem;font-size:0.8rem}
+
+    /* -- SHARE BAR in modal -- */
+    .share-bar{display:flex;align-items:center;gap:0.35rem;padding:0.4rem 0.75rem;flex-shrink:0;border-top:1px solid rgba(255,255,255,0.06)}
+    .share-bar span{color:#556;font-size:0.6rem}
+    .share-btn{
+      background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+      border-radius:6px;color:#889;cursor:pointer;padding:0.3rem 0.5rem;
+      font-size:0.7rem;min-height:32px;display:inline-flex;align-items:center;
+      gap:0.2rem;touch-action:manipulation;
+    }
+    .share-btn:active{background:rgba(255,255,255,0.15);color:#aac}
+    .share-btn svg{width:14px;height:14px;fill:currentColor}
+    .share-msg{color:#8c8;font-size:0.6rem;min-height:1em}
+
+    /* -- EMPTY STATE -- */
+    .empty-state{text-align:center;color:#556;padding:3rem 1rem;font-size:0.8rem}
+
+    /* -- DESKTOP OVERRIDES -- */
+    @media(min-width:768px){
+      #content{padding:0 1rem 1rem}
+      header{padding:0.5rem 1rem}
+      header h1{font-size:1.15rem}
+      .gallery{grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:0.65rem}
+      .item img,.item video{max-height:220px}
+      .item .name{font-size:0.7rem}
+      .modal-sheet{max-width:700px;left:50%;transform:translateX(-50%);border-radius:16px;top:5vh;max-height:90vh;bottom:auto;animation:none}
+      @keyframes sheetUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+      .modal-body embed,.modal-body iframe{min-height:60vh}
+    }
+    @media(min-width:1024px){
+      .gallery{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0.75rem}
+      .item img,.item video{max-height:260px}
     }
   </style>
 </head>
 <body>
-  <p class="main-title" id="main-title">Wayback Archive <span id="version-tag"></span></p>
+  <div id="app">
+    <header>
+      <h1>Wayback<span id="version-tag"></span></h1>
+      <span class="header-count" id="header-count"></span>
+    </header>
 
-  <div class="tabs" id="tabs"></div>
-  <div id="all-search-wrapper" style="display:none"><input type="text" id="all-search" placeholder="Search all files..."></div>
+    <div id="content">
+      <div id="tag-bar"></div>
+      <div id="all-search-wrapper" style="display:none">
+        <input type="text" id="all-search" placeholder="Search all files...">
+      </div>
+      <div class="gallery" id="gallery"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
 
-  <div id="hashtag-cloud"></div>
-  <div id="category-info" class="subtitle"></div>
-  <div class="gallery" id="gallery"></div>
-  <div class="pagination" id="pagination"></div>
+    <nav id="bottom-tabs"></nav>
+  </div>
 
-  <footer style="text-align:center;padding:1rem;font-size:0.75rem;color:#666;border-top:1px solid rgba(255,255,255,0.1);margin-top:2rem">
-    &copy; 2026 DATRO Consortium.
-  </footer>
+  <div class="modal-overlay" id="modal">
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-path" id="modal-path"></div>
+      <div class="modal-body" id="modal-body"><div class="modal-loading">Loading...</div></div>
+      <div class="share-bar">
+        <span>Share</span>
+        <button class="share-btn" id="share-twitter">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </button>
+        <button class="share-btn" id="share-facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </button>
+        <button class="share-btn" id="share-copy">
+          <svg viewBox="0 0 24 24"><path d="M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1.001 1.001 0 0 1 3 21l.003-14c0-.552.45-1 1.006-1H7zM5.003 8L5 20h10V8H5.003zM9 6h8v10h2V4H9v2z"/></svg>
+        </button>
+        <span class="share-msg" id="share-msg"></span>
+      </div>
+    </div>
+  </div>
 
   <script>
-    (async () => {
+    (() => {
       const CATEGORIES = [
-        { name: 'all', label: 'All', icon: '📦' },
-        { name: 'images', label: 'Images', icon: '🖼' },
-        { name: 'pdf', label: 'PDF', icon: '📄' },
-        { name: 'text', label: 'Text', icon: '📝' },
-        { name: 'video', label: 'Video', icon: '🎬' }
+        { name: 'all', label: 'All', icon: '\u{1F4E6}' },
+        { name: 'images', label: 'Images', icon: '\u{1F5BC}' },
+        { name: 'pdf', label: 'PDF', icon: '\u{1F4C4}' },
+        { name: 'text', label: 'Text', icon: '\u{1F4DD}' },
+        { name: 'video', label: 'Video', icon: '\u{1F3AC}' }
       ];
       const PER_PAGE = 10;
+      const KNOWN_TAGS = ['#bpvsbuckler','#datro','#ccan','#morgan','#ceo','#gui','#library','#family','#email','#greathousefarm'];
+
       let allData = {};
       let currentCat = 'images';
       let currentPage = 1;
       let filtered = [];
       let activeFilters = new Set();
-      let deployedVersion = '';
+      let currentFile = null;
 
-      const tabsEl = document.getElementById('tabs');
-      const galleryEl = document.getElementById('gallery');
-      const paginationEl = document.getElementById('pagination');
-      const infoEl = document.getElementById('category-info');
-      const hashCloudEl = document.getElementById('hashtag-cloud');
-      const allSearchEl = document.getElementById('all-search');
+      const content = document.getElementById('content');
+      const tagBar = document.getElementById('tag-bar');
+      const gallery = document.getElementById('gallery');
+      const pagination = document.getElementById('pagination');
+      const headerCount = document.getElementById('header-count');
+      const allSearch = document.getElementById('all-search');
       const allSearchWrapper = document.getElementById('all-search-wrapper');
-      const versionTagEl = document.getElementById('version-tag');
-      const mainTitleEl = document.getElementById('main-title');
+      const versionTag = document.getElementById('version-tag');
+      const bottomTabs = document.getElementById('bottom-tabs');
+      const modal = document.getElementById('modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalTags = document.getElementById('modal-tags');
+      const modalPath = document.getElementById('modal-path');
+      const modalBody = document.getElementById('modal-body');
+      const modalClose = document.getElementById('modal-close');
+      const shareTwitter = document.getElementById('share-twitter');
+      const shareFacebook = document.getElementById('share-facebook');
+      const shareCopy = document.getElementById('share-copy');
+      const shareMsg = document.getElementById('share-msg');
 
-      async function fetchVersion() {
-        try {
-          const r = await fetch('version.txt');
-          if (r.ok) {
-            const txt = await r.text();
-            deployedVersion = txt.trim();
-          }
-        } catch (e) {}
-        if (!deployedVersion) deployedVersion = 'v0.0.0.00';
-        return deployedVersion;
+      function qs(k){return new URLSearchParams(window.location.search).get(k)}
+      function ue(path){return encodeURI(path)}
+      function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+      function pushState(){
+        const p=new URLSearchParams();
+        if(currentCat!=='all')p.set('cat',currentCat);
+        if(activeFilters.size)p.set('tag',[...activeFilters].join(','));
+        if(currentFile)p.set('file',currentFile.path);
+        const q=p.toString();
+        window.history.replaceState({},'',q?window.location.pathname+'?'+q:window.location.pathname);
       }
 
-      async function checkNewerRelease(currentVer) {
-        try {
-          const r = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags');
-          if (!r.ok) return null;
-          const refs = await r.json();
-          const tagRefs = refs.filter(ref => ref.ref.startsWith('refs/tags/wayback-v'));
-          if (tagRefs.length === 0) return null;
-
-          const withDates = await Promise.allSettled(tagRefs.map(async (ref) => {
-            const ver = ref.ref.replace('refs/tags/wayback-v', '');
-            const sha = ref.object.sha;
-            const cr = await fetch(`https://api.github.com/repos/unclehowell/datro/git/commits/${sha}`);
-            if (!cr.ok) return null;
-            const c = await cr.json();
-            return { ver, date: c.committer?.date || c.author?.date || '' };
-          }));
-
-          const valid = withDates
-            .map(d => d.status === 'fulfilled' ? d.value : null)
-            .filter(d => d && d.date);
-          if (valid.length === 0) return null;
-
-          valid.sort((a, b) => b.date.localeCompare(a.date));
-          const latest = valid[0].ver;
-
-          const cv = currentVer.replace('v', '');
-          const ca = cv.split('.').map(Number);
-          const la = latest.split('.').map(Number);
-          for (let i = 0; i < 4; i++) {
-            if ((la[i] || 0) > (ca[i] || 0)) return latest;
-            if ((la[i] || 0) < (ca[i] || 0)) return null;
-          }
-          return null;
-        } catch (e) { return null; }
+      function extractTags(item){
+        const t=[];
+        if(Array.isArray(item.tags))t.push(...item.tags.map(x=>x.startsWith('#')?x.toLowerCase():'#'+x.toLowerCase()));
+        return t;
       }
 
-      function extractTags(item) {
-        const tags = (item.name || '').match(/#\w+/g) || [];
-        if (Array.isArray(item.tags)) tags.push(...item.tags.map(t => t.startsWith('#') ? t : '#' + t));
-        return tags.map(t => t.toLowerCase());
+      function cleanName(name){return(name||'').replace(/\s*#\w+/g,'').trim()}
+
+      async function loadCategory(cat){
+        if(cat==='all')return[];
+        try{
+          const r=await fetch(cat+'/_treeview.json');
+          if(!r.ok)return[];
+          const data=await r.json();
+          return data.map(item=>({...item,_category:cat,_hashtags:extractTags(item),_searchText:(item.name||'').toLowerCase()}));
+        }catch{return[]}
       }
 
-      async function loadCategory(cat) {
-        if (cat === 'all') return [];
-        const url = `${cat}/_treeview.json`;
-        const resp = await fetch(url);
-        if (!resp.ok) return [];
-        const data = await resp.json();
-        return data.map(item => ({
-          ...item,
-          _category: cat,
-          _hashtags: extractTags(item),
-          _tags: (item.name || '').toLowerCase()
-        }));
-      }
-
-      function renderHashtagCloud() {
-        const tags = ['#bpvsbuckler', '#datro', '#ccan', '#morgan', '#ceo', '#gui', '#library', '#family'];
-        hashCloudEl.innerHTML = `<div class="tag-label"><span>Filter</span><button class="clear-btn" id="hash-clear">clear</button></div>` +
-          tags.map(t =>
-            `<span class="tag${activeFilters.has(t) ? ' active' : ''}" data-tag="${t}">${t}</span>`
-          ).join('');
-        hashCloudEl.querySelectorAll('.tag').forEach(el => {
-          el.addEventListener('click', () => {
-            const tag = el.dataset.tag;
-            if (activeFilters.has(tag)) activeFilters.delete(tag);
-            else activeFilters.add(tag);
-            currentPage = 1;
-            applyFilter();
-          });
-        });
-        const clearBtn = document.getElementById('hash-clear');
-        if (clearBtn) clearBtn.addEventListener('click', () => { activeFilters.clear(); currentPage = 1; applyFilter(); });
-      }
-
-      async function init() {
-        const ver = await fetchVersion();
-        versionTagEl.textContent = ver;
-        const newer = await checkNewerRelease(ver);
-        if (newer) {
-          const span = document.createElement('span');
-          span.className = 'self-updating';
-          span.textContent = ' self-updating to v' + newer + ' ';
-          mainTitleEl.appendChild(span);
-        }
-
-        for (const cat of CATEGORIES) {
-          if (cat.name === 'all') {
-            const allItems = [];
-            for (const sub of CATEGORIES) {
-              if (sub.name === 'all') continue;
-              allData[sub.name] = await loadCategory(sub.name);
-              allItems.push(...(allData[sub.name] || []));
-            }
-            allData.all = allItems;
-          } else {
-            allData[cat.name] = await loadCategory(cat.name);
-          }
-        }
-        renderTabs();
-        switchCategory(CATEGORIES[0].name);
-      }
-
-      function renderTabs() {
-        tabsEl.innerHTML = CATEGORIES.map(c =>
-          `<div class="tab${c.name === currentCat ? ' active' : ''}" data-cat="${c.name}">${c.icon} ${c.label}<span class="count-badge">${(allData[c.name] || []).length}</span></div>`
+      function renderBottomTabs(){
+        bottomTabs.innerHTML=CATEGORIES.map(c=>
+          '<button class="btab'+(c.name===currentCat?' active':'')+'" data-cat="'+c.name+'">'+
+          '<span class="btab-icon">'+c.icon+'</span><span>'+c.label+'</span>'+
+          '</button>'
         ).join('');
-        tabsEl.querySelectorAll('.tab').forEach(el => {
-          el.addEventListener('click', () => {
-            switchCategory(el.dataset.cat);
-          });
+        bottomTabs.querySelectorAll('.btab').forEach(el=>{
+          el.addEventListener('click',()=>{if(currentFile)closeModal();switchCategory(el.dataset.cat)});
         });
       }
 
-      function switchCategory(cat) {
-        currentCat = cat;
-        currentPage = 1;
-        tabsEl.querySelectorAll('.tab').forEach(el => {
-          el.classList.toggle('active', el.dataset.cat === cat);
+      function renderTagBar(){
+        tagBar.innerHTML=KNOWN_TAGS.map(t=>
+          '<span class="tag'+(activeFilters.has(t)?' active':'')+'" data-tag="'+t+'">'+t+'</span>'
+        ).join('');
+        if(activeFilters.size)tagBar.innerHTML+='<span class="tag tag-clear" id="tag-clear">\u2715 clear</span>';
+        tagBar.querySelectorAll('.tag[data-tag]').forEach(el=>{
+          el.addEventListener('click',()=>{
+            const tag=el.dataset.tag;
+            if(activeFilters.has(tag))activeFilters.delete(tag);else activeFilters.add(tag);
+            currentPage=1;applyFilter();
+          });
         });
-        if (cat === 'all') {
-          allSearchWrapper.style.display = 'block';
-          allSearchEl.value = '';
-        } else {
-          allSearchWrapper.style.display = 'none';
-        }
+        const clearBtn=document.getElementById('tag-clear');
+        if(clearBtn)clearBtn.addEventListener('click',()=>{activeFilters.clear();currentPage=1;applyFilter()});
+      }
+
+      function switchCategory(cat){
+        currentCat=cat;currentPage=1;
+        bottomTabs.querySelectorAll('.btab').forEach(el=>el.classList.toggle('active',el.dataset.cat===cat));
+        allSearchWrapper.style.display=cat==='all'?'block':'none';
+        if(cat==='all')allSearch.value='';
         applyFilter();
       }
 
-      function applyFilter() {
-        let items = allData[currentCat] || [];
-
-        const query = currentCat === 'all' ? allSearchEl.value.toLowerCase().trim() : '';
-        if (query) {
-          items = items.filter(item => item._tags.includes(query));
-        }
-        if (activeFilters.size > 0) {
-          items = items.filter(item =>
-            item._hashtags.some(t => activeFilters.has(t))
-          );
-        }
-        filtered = items;
-        infoEl.textContent = `${filtered.length} result${filtered.length !== 1 ? 's' : ''} in ${currentCat}`;
-        renderHashtagCloud();
+      function applyFilter(){
+        let items=allData[currentCat]||[];
+        const query=currentCat==='all'?allSearch.value.toLowerCase().trim():'';
+        if(query)items=items.filter(item=>item._searchText.includes(query));
+        if(activeFilters.size>0)items=items.filter(item=>item._hashtags.some(t=>activeFilters.has(t)));
+        filtered=items;
+        headerCount.textContent=filtered.length+' item'+(filtered.length!==1?'s':'');
+        renderTagBar();
         renderPage();
+        pushState();
+        content.scrollTop=0;
       }
 
-      function renderPage() {
-        const total = filtered.length;
-        const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
-        if (currentPage > totalPages) currentPage = totalPages;
-        const start = (currentPage - 1) * PER_PAGE;
-        const pageItems = filtered.slice(start, start + PER_PAGE);
+      function renderPage(){
+        const total=filtered.length;
+        const totalPages=Math.max(1,Math.ceil(total/PER_PAGE));
+        if(currentPage>totalPages)currentPage=totalPages;
+        const start=(currentPage-1)*PER_PAGE;
+        const pageItems=filtered.slice(start,start+PER_PAGE);
 
-        if (total === 0) {
-          galleryEl.innerHTML = '<p style="text-align:center;color:#667;padding:2rem">No results found.</p>';
-          paginationEl.innerHTML = '';
+        if(total===0){
+          gallery.innerHTML='<div class="empty-state">No results found.</div>';
+          pagination.innerHTML='';
           return;
         }
 
-        galleryEl.innerHTML = pageItems.map(item => {
-          const ext = (item.path || '').split('.').pop().toLowerCase();
-          const imgExts = ['jpg','jpeg','png','gif','webp','bmp','svg'];
-          const vidExts = ['mp4', 'webm', 'mov', 'avi'];
-          const isImg = imgExts.includes(ext);
-          const isVid = vidExts.includes(ext);
-          const hash = item._hashtags && item._hashtags.length > 0 ? item._hashtags[0].replace('#', '') : '';
-          let media = '';
-          if (isImg) {
-            media = `<a href="${item.path}" target="_blank"><img src="${item.path}" loading="lazy" alt="${item.name}"></a>`;
-          } else if (isVid) {
-            media = `<a href="${item.path}" target="_blank"><video src="${item.path}" controls preload="metadata"></video></a>`;
-          } else {
-            media = `<a href="${item.path}" target="_blank">${item.name}</a>`;
-          }
-          const nameClean = (item.name || '').replace(/\s*#\w+/g, '').trim();
-          return `<div class="item ${item._category}">${media}<div class="name">${nameClean}</div>${hash ? `<span class="hash-badge ${hash}">#${hash}</span>` : ''}</div>`;
+        gallery.innerHTML=pageItems.map((item,i)=>{
+          const ext=(item.path||'').split('.').pop().toLowerCase();
+          const imgs=['jpg','jpeg','png','gif','webp','bmp','svg'];
+          const vids=['mp4','webm','mov','avi'];
+          const isImg=imgs.includes(ext);
+          const isVid=vids.includes(ext);
+          let media;
+          if(isImg)media='<img src="'+ue(item.path)+'" loading="lazy" alt="">';
+          else if(isVid)media='<video src="'+ue(item.path)+'" preload="metadata"></video>';
+          else if(ext==='pdf')media='<div class="file-icon">\u{1F4C4}</div>';
+          else if(ext==='txt')media='<div class="file-icon">\u{1F4DD}</div>';
+          else media='<div class="file-icon">\u{1F4C1}</div>';
+          const name=cleanName(item.name);
+          const tags=item._hashtags||[];
+          return '<div class="item" data-idx="'+(start+i)+'">'+media+
+            '<div class="name">'+esc(name)+'</div>'+
+            (tags.length?'<div class="item-tags">'+tags.map(t=>'<span class="hash-badge '+t.replace('#','')+'">'+t+'</span>').join('')+'</div>':'')+
+            '</div>';
         }).join('');
 
-        renderPagination(totalPages, total);
+        gallery.querySelectorAll('.item').forEach(el=>{
+          el.addEventListener('click',()=>{
+            const idx=parseInt(el.dataset.idx);
+            if(!isNaN(idx)&&filtered[idx])openModal(filtered[idx]);
+          });
+        });
+
+        renderPagination(totalPages,total);
       }
 
-      function renderPagination(totalPages, total) {
-        if (totalPages <= 1) {
-          paginationEl.innerHTML = `<span class="info">${total} item${total !== 1 ? 's' : ''}</span>`;
-          return;
-        }
-        let html = `<button class="prev" data-page="${currentPage - 1}" ${currentPage <= 1 ? 'disabled' : ''}>Back</button>`;
-        const maxVisible = 9;
-        let startPage = Math.max(1, currentPage - 4);
-        let endPage = Math.min(totalPages, startPage + maxVisible - 1);
-        if (endPage - startPage < maxVisible - 1) {
-          startPage = Math.max(1, endPage - maxVisible + 1);
-        }
-        if (startPage > 1) {
-          html += `<button data-page="1">1</button>`;
-          if (startPage > 2) html += `<span class="info">...</span>`;
-        }
-        for (let i = startPage; i <= endPage; i++) {
-          html += `<button data-page="${i}" class="${i === currentPage ? 'active-page' : ''}">${i}</button>`;
-        }
-        if (endPage < totalPages) {
-          if (endPage < totalPages - 1) html += `<span class="info">...</span>`;
-          html += `<button data-page="${totalPages}">${totalPages}</button>`;
-        }
-        html += `<button class="next" data-page="${currentPage + 1}" ${currentPage >= totalPages ? 'disabled' : ''}>Next</button>`;
-        html += `<span class="info">Page ${currentPage} of ${totalPages}</span>`;
-        paginationEl.innerHTML = html;
-        paginationEl.querySelectorAll('button:not(:disabled)').forEach(btn => {
-          btn.addEventListener('click', () => {
-            const page = parseInt(btn.dataset.page);
-            if (!isNaN(page)) { currentPage = page; renderPage(); window.scrollTo({ top: 0, behavior: 'smooth' }); }
+      function renderPagination(totalPages,total){
+        if(totalPages<=1){pagination.innerHTML='<span class="info">'+total+' item'+(total!==1?'s':'')+'</span>';return}
+        let h='<button class="prev" data-page="'+(currentPage-1)+'"'+(currentPage<=1?' disabled':'')+'>Back</button>';
+        let s=Math.max(1,currentPage-4);
+        let e=Math.min(totalPages,s+8);
+        if(e-s<8)s=Math.max(1,e-8);
+        if(s>1){h+='<button data-page="1">1</button>';if(s>2)h+='<span class="info">...</span>'}
+        for(let i=s;i<=e;i++)h+='<button data-page="'+i+'"'+(i===currentPage?' class="active-page"':'')+'>'+i+'</button>';
+        if(e<totalPages){if(e<totalPages-1)h+='<span class="info">...</span>';h+='<button data-page="'+totalPages+'">'+totalPages+'</button>'}
+        h+='<button class="next" data-page="'+(currentPage+1)+'"'+(currentPage>=totalPages?' disabled':'')+'>Next</button>';
+        h+='<span class="info">Page '+currentPage+' of '+totalPages+'</span>';
+        pagination.innerHTML=h;
+        pagination.querySelectorAll('button:not(:disabled)').forEach(btn=>{
+          btn.addEventListener('click',()=>{
+            const p=parseInt(btn.dataset.page);
+            if(!isNaN(p)){currentPage=p;renderPage();content.scrollTop=0}
           });
         });
       }
 
-      if (allSearchEl) {
-        allSearchEl.addEventListener('input', () => { currentPage = 1; applyFilter(); });
+      async function openModal(item){
+        currentFile=item;pushState();
+        modal.style.display='block';
+        document.body.style.overflow='hidden';
+        const encPath=ue(item.path);
+        const ext=(item.path||'').split('.').pop().toLowerCase();
+        const imgs=['jpg','jpeg','png','gif','webp','bmp','svg'];
+        const vids=['mp4','webm','mov','avi'];
+        modalTitle.textContent=cleanName(item.name);
+        modalPath.innerHTML='<code>'+esc(item.path)+'</code>';
+        modalBody.innerHTML='<div class="modal-loading">Loading...</div>';
+        const tags=item._hashtags||[];
+        modalTags.innerHTML=tags.length?tags.map(t=>'<span class="hash-badge '+t.replace('#','')+'">'+t+'</span>').join(''):'';
+
+        if(imgs.includes(ext)){modalBody.innerHTML='<img src="'+encPath+'" alt="">'}
+        else if(vids.includes(ext)){modalBody.innerHTML='<video src="'+encPath+'" controls></video>'}
+        else if(ext==='pdf'){modalBody.innerHTML='<embed src="'+encPath+'" type="application/pdf">'}
+        else if(ext==='txt'){
+          try{
+            const r=await fetch(encPath);
+            if(r.ok)modalBody.innerHTML='<pre>'+esc(await r.text())+'</pre>';
+            else modalBody.innerHTML='<pre style="color:#f88">Error (HTTP '+r.status+'). <a href="'+encPath+'" target="_blank">Open raw</a></pre>';
+          }catch(e){modalBody.innerHTML='<pre style="color:#f88">Error: '+esc(e.message)+'. <a href="'+encPath+'" target="_blank">Open raw</a></pre>'}
+        }
       }
 
-      await init();
+      function closeModal(){
+        modal.style.display='none';currentFile=null;document.body.style.overflow='';pushState();
+      }
+
+      modalClose.addEventListener('click',closeModal);
+      modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.style.display==='block')closeModal()});
+
+      function getShareUrl(){return window.location.href}
+      shareTwitter.addEventListener('click',()=>{window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(getShareUrl())+'&text=Wayback%20Archive','_blank','noopener')});
+      shareFacebook.addEventListener('click',()=>{window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(getShareUrl()),'_blank','noopener')});
+      shareCopy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(getShareUrl());shareMsg.textContent='Copied!';setTimeout(()=>{shareMsg.textContent=''},2000)}catch{shareMsg.textContent='Failed'}});
+
+      if(allSearch)allSearch.addEventListener('input',()=>{currentPage=1;applyFilter()});
+
+      window.addEventListener('popstate',()=>{
+        if(modal.style.display==='block'){closeModal();return}
+        currentCat=qs('cat')||'images';activeFilters.clear();
+        const t=qs('tag');if(t)t.split(',').filter(Boolean).forEach(x=>activeFilters.add(x.startsWith('#')?x:'#'+x));
+        renderBottomTabs();applyFilter();
+        const f=qs('file');if(f){const found=(allData.all||[]).find(item=>item.path===f);if(found)openModal(found)}
+      });
+
+      (async()=>{
+        try{const r=await fetch('version.txt');if(r.ok)versionTag.textContent=' '+(await r.text()).trim()}catch{}
+        for(const cat of CATEGORIES){
+          if(cat.name==='all'){
+            const allItems=[];
+            for(const sub of CATEGORIES){if(sub.name==='all')continue;allData[sub.name]=await loadCategory(sub.name);allItems.push(...(allData[sub.name]||[]))}
+            allData.all=allItems;
+          }else{allData[cat.name]=await loadCategory(cat.name)}
+        }
+        currentCat=qs('cat')||'images';
+        const tagParam=qs('tag');
+        if(tagParam)tagParam.split(',').filter(Boolean).forEach(t=>activeFilters.add(t.startsWith('#')?t:'#'+t));
+        renderBottomTabs();applyFilter();
+        const fileParam=qs('file');
+        if(fileParam){const found=(allData.all||[]).find(item=>item.path===fileParam);if(found)openModal(found)}
+      })();
     })();
   </script>
 </body>
