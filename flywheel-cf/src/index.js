@@ -1,4 +1,3 @@
-const VERSION = '0.0.1.77';
 const GITHUB_REPO = 'unclehowell/datro';
 const GITLAWB_NODE = 'https://node.gitlawb.com';
 const GITLAWB_BOUNTY_LIST_URL = `${GITLAWB_NODE}/api/v1/bounties`;
@@ -23,10 +22,28 @@ const DOMAIN = 'datro.directory';
 const GITHUB_REPO_OBJ = { owner: 'unclehowell', repo: 'datro' };
 const BRAIN_BRANCH = 'brain';
 
-const startTime = Math.floor(Date.now() / 1000);
+const MONDAY_API_URL = 'https://api.monday.com/v2';
+async function mondayApi(token, query, variables = {}) {
+  const resp = await fetch(MONDAY_API_URL, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token },
+    body: JSON.stringify({ query, variables }),
+  });
+  if (!resp.ok) { const t = await resp.text(); throw new Error('Monday ' + resp.status + ': ' + t.slice(0, 200)); }
+  const data = await resp.json();
+  if (data.errors) throw new Error('Monday GraphQL: ' + (data.errors.map(e => e.message).join('; ')));
+  return data.data;
+}
 
-// ── Deterministic Branch Wallet (HKDF → Ed25519 for compute emulation) ──
-
+async function getMondayFile(token, branch, side, fname) {
+  const query = `query ($boardName: String!) { boards (limit: 50, name: $boardName) { id items_page (limit: 100) { items { name column_values { id text } } } } }`;
+  const data = await mondayApi(token, query, { boardName: `Datro-${branch}` });
+  const board = data.boards?.[0];
+  if (!board) return null;
+  const item = board.items_page.items.find(i => i.name === `${side}-${fname}`);
+  if (!item) return null;
+  return item.column_values.find(cv => cv.id === 'text')?.text || '';
+}
 async function deriveBranchWallet(env, branch) {
   const MASTER_SEED = env.MASTER_WALLET_SEED || 'datro-flywheel-default-seed-change-me';
   const seed = new TextEncoder().encode(MASTER_SEED);
@@ -192,20 +209,6 @@ const AGENT_TOOLS = {
       return result.reply || `Error: ${result.error}`;
     }
   },
-  self_critique: {
-    description: 'Critique a proposed code change before committing. Output 3 points of improvement.',
-    args: { search: 'string', replace: 'string' },
-    execute: async (args, ctx) => {
-      const prompt = `Critique this proposed HTML change for a Senior Product Engineer standard.
-      
-      SEARCH: ${args.search}
-      REPLACE: ${args.replace}
-      
-      Does it improve visual impact? Is it accessible? Is the CSS efficient? Identify 3 points of improvement.`;
-      const result = await queryFinancechequeAPI("You are a Senior Code Reviewer.", prompt, ctx.env, 30000);
-      return result.reply || `Error: ${result.error}`;
-    }
-  },
   // ── Gitlawv Bounty Tools ──
   gitlawv_bounty_list: {
     description: 'List open gitlawb bounties. Each bounty has an id, title, reward (tokens), repo, and status.',
@@ -293,34 +296,6 @@ const AGENT_TOOLS = {
         return `Gitlawv node unreachable: ${err.message}`;
       }
     }
-  },
-  // ── RSI Tools ──
-  fractal_search: {
-    description: 'Recursive search pattern for deep optimization. Searches deeper into a specific file or directory.',
-    args: { path: 'string', pattern: 'string', depth: 'number' },
-    execute: async (args, ctx) => {
-      const depth = parseInt(args.depth || 1);
-      if (depth > 3) return "Fractal depth limit reached.";
-      const results = [];
-      // Logic for deep recursive search
-      const file = await getFileContent(ctx.token, ctx.branch, args.path);
-      if (file && file.content.includes(args.pattern)) {
-        results.push(`Match in ${args.path} at depth ${depth}`);
-      }
-      return results.join('\n') || "No deep patterns found.";
-    }
-  },
-  boolean_simplify: {
-    description: 'Pass complex logic through a Boolean simplifier to remove bloat and technical debt.',
-    args: { logic: 'string' },
-    execute: async (args, ctx) => {
-      const prompt = `Simplify the following Boolean logic or code structure. Remove redundant if-statements and simplify the truth table.
-      
-      LOGIC:
-      ${args.logic}`;
-      const result = await queryFinancechequeAPI("You are a Boolean Logic Optimizer.", prompt, ctx.env, 30000);
-      return result.reply || "Simplification failed.";
-    }
   }
 };
 
@@ -328,35 +303,26 @@ const AGENT_TOOLS = {
 
 async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHtml, ctx) {
   const token = env.GITHUB_TOKEN;
-  const maxIterations = 8; // Increased for more thorough goal meeting
+  const maxIterations = 6;
   const conversation = [];
   let currentHtml = html;
   const committedFiles = [];
   let agentBounty = null;
 
-  // ── BESPOKE BRANCH LOOP ──
-  const loopFile = await getFileContent(token, branch, 'LOOP.md');
-  const bespokeLoop = loopFile ? loopFile.content : 'Standard RSI review: analyze the target branch, look for potential issues, fix them automatically and do the rerelease.';
-  console.log(`  Bespoke Loop for ${branch}: ${bespokeLoop.slice(0, 100)}...`);
-
   const context = {
     token, branch, env, currentHtml,
     wingFiles: Object.keys(wingFiles || {}).length,
-    domain: DOMAIN,
-    bespokeLoop
+    domain: DOMAIN
   };
 
   const category = computeBranchCategory(branch);
   const bias = await getBiasFromKv(env);
-  const steeringLabel = bias?.steering || 'CTR';
-  const riskLabel = bias?.risk || 3;
-
+  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {}, env);
   const honchoMem = await getHonchoMemory(env, branch);
   const brainMem = await getBrainSummary(token);
   const sciHub = await getSciHubIdeas(env, branch, category);
   const dailyDigest = await getDailyBestPractices(env);
   const wallet = await getBranchWallet(env, branch);
-  const quotaStats = await getQuotaStats(env);
 
   const toolDescriptions = Object.entries(AGENT_TOOLS).map(([name, tool]) =>
     `- ${name}: ${tool.description}\n  Args: ${Object.keys(tool.args).length > 0 ? Object.entries(tool.args).map(([k, v]) => `${k} (${v})`).join(', ') : 'none'}`
@@ -381,22 +347,6 @@ Analyze branch "${branch}" deeply. Your goal is to produce high-standard, profes
 2. **Performance (Core Web Vitals)**: Prioritize Interaction to Next Paint (INP), Largest Contentful Paint (LCP), and Cumulative Layout Shift (CLS).
 3. **Professional UX**: Use modern design patterns (spacing, contrast, clear CTAs).
 4. **Clean Code**: Write idiomatic, accessible HTML/CSS. Use Tailwind utility classes where possible.
-
-## BESPOKE BRANCH LOOP
-This branch has a specific execution requirement:
-${bespokeLoop}
-
-## GOAL-ORIENTED PROTOCOL
-1. **Define Goal**: At the start, output "GOAL: <verifiable end state>".
-2. **Execute**: Use tools to reach that goal.
-3. **Verify**: Before finishing, verify the goal is met (e.g., using check_live_site or reading back the file).
-4. **Iterate**: If the goal is not met, continue until ${maxIterations} iterations.
-
-## Quota-Aware Rationing
-- Current Session Tokens Used: ${quotaStats.session.tokens}
-- Current Session Tool Calls: ${quotaStats.session.tools}
-- Last Ledger (from cnei.datro.xyz): ${JSON.stringify(quotaStats.website)}
-Be mindful of your token budget. If tokens used > 400k, be extremely concise and prioritize only the most critical visual change.
 
 ## Earn $GITLAWB While Working
 You can earn gitlawb bounties (paid in $GITLAWB tokens on Base L2) by claiming and completing tasks:
@@ -441,7 +391,16 @@ ${headersContent || '(empty)'}
 What improvements should I make? Investigate and then make changes.`);
 
   for (let iter = 0; iter < maxIterations; iter++) {
-    console.log(`Agent iteration ${iter + 1}/${maxIterations}`);
+    console.log(`Agent iteration ${iter + 1}/${maxIterations} (Refinement pass)`);
+
+    // In-context Refinement: Inject the current critique if not the first iteration
+    if (iter > 0) {
+      conversation.push(`REFINEMENT_PASS: The previous output had issues. Critique: 
+      1. Structural integrity (did SEARCH match verbatim?)
+      2. UX/Accessibility adherence
+      3. Brand consistency (Steam Roller analogy).
+      Please refine the previous proposal.`);
+    }
 
     const result = await queryFinancechequeAPI(
       conversation[0],
@@ -470,7 +429,7 @@ What improvements should I make? Investigate and then make changes.`);
 
     const toolMatch = reply.match(/TOOL:\s*(\w+)/);
     if (!toolMatch) {
-      conversation.push('Please use a tool or output DONE when finished.');
+      conversation.push('CRITIQUE: No tool used or DONE not called. Please explicitly use TOOL: <name> or DONE.');
       continue;
     }
 
@@ -916,13 +875,6 @@ const CNEI_SELF_IMPROVEMENTS = [
     check: (code) => !code || !code.includes('risk'),
     description: 'No risk field in bias endpoint — dashboard 2D pad risk axis not wired to flywheel',
     fix: null
-  },
-  {
-    tier: 1,
-    name: 'resource ledger exists',
-    check: (code) => !code || !code.includes('QUOTAS.json'),
-    description: 'No QUOTAS.json reference — cannot track RSI point of reference',
-    fix: null
   }
 ];
 
@@ -958,41 +910,9 @@ async function releaseLock(env) {
 async function getRotationState(env) {
   try {
     const raw = await env.FLYWHEEL_STATE.get('rotation', 'json');
-    if (raw) return { regular_index: 0, last_was_regular: false, lap: 0, mode: 'AUTO', ...raw };
+    if (raw) return { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO', ...raw };
   } catch (_) {}
-  return { regular_index: 0, last_was_regular: false, lap: 0, mode: 'AUTO' };
-}
-
-async function updateCneiResourceLedger(env, token) {
-  console.log('Publishing Resource Ledger to cnei.datro.xyz');
-  const stats = await getQuotaStats(env);
-  const ledgerHtml = `
-  <div id="resource-ledger" style="padding: 20px; border: 1px solid #ccc; margin-top: 20px;">
-    <h3>Resource Ledger (RSI Point of Reference)</h3>
-    <p>Last Updated: ${new Date().toISOString()}</p>
-    <ul>
-      <li>Session Tokens Used: ${stats.session.tokens}</li>
-      <li>Session Tool Calls: ${stats.session.tools}</li>
-      <li>Estimated Cost ($): ${(stats.session.tokens * 0.000015).toFixed(4)}</li>
-    </ul>
-    <pre>${JSON.stringify(stats, null, 2)}</pre>
-  </div>`;
-
-  // Update QUOTAS.json
-  await createCommit(token, 'cnei', 'static/cnei/QUOTAS.json', JSON.stringify(stats, null, 2), 'chore(cnei): update resource ledger');
-  
-  // Also inject into index.html if possible
-  const idxFile = await getFileContent(token, 'cnei', 'index.html');
-  if (idxFile) {
-    let html = idxFile.content;
-    const divMatch = html.match(/<div id="resource-ledger">[\s\S]*?<\/div>/);
-    if (divMatch) {
-      html = html.replace(divMatch[0], ledgerHtml);
-    } else {
-      html = html.replace('</body>', ledgerHtml + '</body>');
-    }
-    await createCommit(token, 'cnei', 'index.html', html, 'chore(cnei): publish resource ledger to dashboard');
-  }
+  return { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' };
 }
 
 async function getFlywheelConfig(env) {
@@ -1283,17 +1203,16 @@ function formatVersion(num) {
 
 function selectBranch(state) {
   let branch;
-  // RSI Clock-Cycle: Branch -> CNEI -> Branch
-  // If last run was a regular branch, next is CNEI.
-  if (state.last_was_regular) {
+  if (state.cnei_queue >= CNEI_RATIO) {
     branch = 'cnei';
-    state.last_was_regular = false;
-    console.log('RSI Clock-Cycle: Selecting cnei for self-improvement');
+    console.log('CNEI_QUEUE: >=' + CNEI_RATIO + ', selecting cnei branch');
+    state.cnei_queue = 0;
   } else {
+    const prevIndex = state.regular_index;
     branch = REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length];
     state.regular_index = (state.regular_index + 1) % REGULAR_BRANCHES.length;
-    state.last_was_regular = true;
-    console.log(`RSI Clock-Cycle: Selecting regular branch: ${branch}`);
+    if (state.regular_index <= prevIndex) state.lap = (state.lap || 0) + 1;
+    state.cnei_queue = (state.cnei_queue || 0) + 1;
   }
   return branch;
 }
@@ -1534,14 +1453,26 @@ function computeDirectionWeights(bias) {
   return w;
 }
 
-async function getDirectionalMasterplans(token, branch, weights) {
+async function getDirectionalMasterplans(token, branch, weights, env) {
   const sides = ['left', 'right', 'high', 'low'];
   const plans = {};
+  const mondayToken = env.MONDAY_API_TOKEN;
   for (const side of sides) {
     if (!weights[side] || weights[side] <= 0) continue;
-    const path = `static/${branch}/MASTERPLAN.${side}.md`;
-    const file = await getFileContent(token, branch, path);
-    if (file) plans[side] = { content: file.content.slice(0, 2000), weight: weights[side] };
+    
+    let content = null;
+    if (mondayToken) {
+      // Sync ONLY MASTERPLAN.md
+      content = await getMondayFile(mondayToken, branch, side, 'MASTERPLAN.md');
+    }
+    
+    if (content === null) {
+      const path = `static/${branch}/MASTERPLAN.${side}.md`;
+      const file = await getFileContent(token, branch, path);
+      if (file) content = file.content.slice(0, 2000);
+    }
+    
+    if (content !== null) plans[side] = { content: content, weight: weights[side] };
   }
   return plans;
 }
@@ -1661,79 +1592,10 @@ Propose your best change using the ---CHANGE--- format.
 Mandatory: At least 1 change MUST affect the visual layout or add functional UI.`;
 }
 
-// ── Quota & Resource Ledger ──────────────────────────────────────────────────
-
-async function getQuotaStats(env) {
-  // Try to fetch latest stats from the cnei website as a point of reference
-  let websiteStats = {};
-  try {
-    const resp = await fetch(`https://cnei.${DOMAIN}/QUOTAS.json`);
-    if (resp.ok) websiteStats = await resp.json();
-  } catch (e) {}
-
-  // Current session usage (tracked in KV or memory)
-  const kvUsage = await env.FLYWHEEL_STATE.get('session_usage', 'json') || { tokens: 0, tools: 0 };
-  
-  return {
-    website: websiteStats,
-    session: kvUsage,
-    timestamp: Date.now()
-  };
-}
-
-async function updateSessionUsage(env, tokens, tools) {
-  const current = await env.FLYWHEEL_STATE.get('session_usage', 'json') || { tokens: 0, tools: 0 };
-  current.tokens += tokens;
-  current.tools += tools;
-  await env.FLYWHEEL_STATE.put('session_usage', JSON.stringify(current), { expirationTtl: 7200 }); // reset every 2h
-}
-
-// ── RSI Tools ─────────────────────────────────────────────────────────────────
-
-const RSI_TOOLS = {
-  fractal_search: {
-    description: 'Recursive search pattern for deep optimization. Searches deeper into a specific file or directory.',
-    args: { path: 'string', pattern: 'string', depth: 'number' },
-    execute: async (args, ctx) => {
-      const depth = parseInt(args.depth || 1);
-      if (depth > 3) return "Fractal depth limit reached.";
-      const results = [];
-      // Logic for deep recursive search
-      const file = await getFileContent(ctx.token, ctx.branch, args.path);
-      if (file && file.content.includes(args.pattern)) {
-        results.push(`Match in ${args.path} at depth ${depth}`);
-      }
-      return results.join('\n') || "No deep patterns found.";
-    }
-  },
-  boolean_simplify: {
-    description: 'Pass complex logic through a Boolean simplifier to remove bloat and technical debt.',
-    args: { logic: 'string' },
-    execute: async (args, ctx) => {
-      const prompt = `Simplify the following Boolean logic or code structure. Remove redundant if-statements and simplify the truth table.
-      
-      LOGIC:
-      ${args.logic}`;
-      const result = await queryFinancechequeAPI("You are a Boolean Logic Optimizer.", prompt, ctx.env, 30000);
-      return result.reply || "Simplification failed.";
-    }
-  }
-};
-
-// Add RSI tools to AGENT_TOOLS
-Object.assign(AGENT_TOOLS, RSI_TOOLS);
-
 async function queryFinancechequeAPI(systemPrompt, userPrompt, env, timeoutMs = 60000) {
   const startTimeAI = Date.now();
   const parentUrl = env.PARENT_PROXY_URL || 'https://www.financecheque.uk';
   const model = env.AI_MODEL || 'openrouter/anthropic/claude-sonnet';
-  
-  // ── Quota Guard ──
-  const stats = await getQuotaStats(env);
-  if (stats.session.tokens > 500000) { // arbitrary session limit for safety
-    console.warn('Quota Guard: Session token limit approached. Shifting to Low Power Mode.');
-  }
-
   const payload = {
     message: `${systemPrompt}\n\n${userPrompt}`,
     chat_only: true,
@@ -1756,13 +1618,7 @@ async function queryFinancechequeAPI(systemPrompt, userPrompt, env, timeoutMs = 
     }
     const data = await resp.json();
     const elapsed = Date.now() - startTimeAI;
-    
-    // Estimate tokens (crude: 4 chars per token)
-    const promptTokens = Math.ceil((systemPrompt.length + userPrompt.length) / 4);
-    const replyTokens = Math.ceil((data.reply || '').length / 4);
-    await updateSessionUsage(env, promptTokens + replyTokens, 1);
-
-    console.log(`AI query completed in ${elapsed}ms. Est Tokens: ${promptTokens + replyTokens}`);
+    console.log(`AI query completed in ${elapsed}ms`);
     return { error: null, reply: data.reply || data.choices?.[0]?.message?.content || '', elapsed };
   } catch (err) {
     clearTimeout(timer);
@@ -1854,7 +1710,7 @@ async function processBranchWithAI(env, branch) {
   console.log(`  Loaded ${releaseNotes.length} previous release notes`);
   const category = computeBranchCategory(branch);
   const bias = await getBiasFromKv(env);
-  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {});
+  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {}, env);
   console.log(`  Bias: ${bias?.bias || 3} (${bias?.steering || 'CTR'}) weights: ${JSON.stringify(bias.weights)}`);
 
   // Research Sci-Hub and Daily Digests
@@ -1892,7 +1748,42 @@ async function processBranchWithAI(env, branch) {
   return { error: null, changes: parsed.changes, html, wingFiles, aiResult: result };
 }
 
-// ── Master Record Visuals ──────────────────────────────────────────────────────
+// ── Recursive Self-Improvement Engine ──
+
+async function selfImprovementCycle(env, branch, mdContent) {
+  console.log(`Running recursive self-improvement for ${branch}`);
+  
+  // 1. Parse goals and resource needs from MD content
+  const goals = mdContent.match(/# GOAL: (.*)/g) || [];
+  const resources = mdContent.match(/# RESOURCE: (.*)/g) || [];
+  
+  // 2. Resource acquisition (simplified autonomous fetch)
+  for (const res of resources) {
+    const url = res.replace('# RESOURCE: ', '').trim();
+    console.log(`Attempting to acquire resource: ${url}`);
+    try {
+      const resp = await fetch(url);
+      if (resp.ok) {
+        const data = await resp.text();
+        // Store acquired resource in KV for next cycles
+        await env.FLYWHEEL_STATE.put(`res_${branch}_${btoa(url)}`, data);
+        console.log(`Resource acquired: ${url}`);
+      }
+    } catch (e) {
+      console.error(`Failed to acquire resource ${url}: ${e.message}`);
+    }
+  }
+
+  // 3. Set new goals (create Monday.com items)
+  const mondayToken = env.MONDAY_API_TOKEN;
+  const boardId = await getBoardId(mondayToken);
+  
+  for (const goal of goals) {
+    const goalText = goal.replace('# GOAL: ', '').trim();
+    console.log(`Setting new goal: ${goalText}`);
+    await mondayApi(mondayToken, `mutation { create_item (board_id: ${boardId}, item_name: "${goalText}") { id } }`);
+  }
+}
 
 function steeringDirToPositions(dir) {
   const map = {
@@ -2250,6 +2141,11 @@ async function processBranch(env, branch) {
   } catch (e) { console.log(`Could not fetch live site for ${branch}: ${e.message}`); }
 
   // ── AGENTIC AI ENGINE (chain-of-thought with tool use) ──
+  
+  // 1. Recursive Self-Improvement Scan
+  const mdContent = Object.values(visualWingFiles).join('\n');
+  await selfImprovementCycle(env, branch, mdContent);
+  
   let commitSha = null;
   let releaseNotes = '';
   const wallet = await getBranchWallet(env, branch);
@@ -2309,11 +2205,6 @@ async function processBranch(env, branch) {
     const release = await createGitHubRelease(token, tagName, branch, version, releaseNotes);
     if (release) {
       await verifyRelease(token, tagName);
-      
-      // If this is cnei, publish the resource ledger
-      if (branch === 'cnei') {
-        await updateCneiResourceLedger(env, token);
-      }
     }
 
     console.log(`Agentic release ${tagName}: ${agentResult.changes.length} files committed`);
@@ -2398,7 +2289,7 @@ async function triggerOtaAfterCneiRelease(env, tagName) {
 }
 
 async function findAvailableBranch(state, token, gear) {
-  const savedState = { regular_index: state.regular_index, last_was_regular: state.last_was_regular, lap: state.lap, mode: state.mode };
+  const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
   for (let attempt = 0; attempt < 40; attempt++) {
     const branch = selectBranch(state);
     const onCooldown = await isOnCooldown(token, branch, gear);
@@ -2406,7 +2297,7 @@ async function findAvailableBranch(state, token, gear) {
   }
   console.log('All branches on cooldown, skipping run');
   state.regular_index = savedState.regular_index;
-  state.last_was_regular = savedState.last_was_regular;
+  state.cnei_queue = savedState.cnei_queue;
   state.lap = savedState.lap;
   return null;
 }
@@ -2443,7 +2334,7 @@ async function runFlywheel(env, forcedBranch) {
       if (sampleWallet.computeBudget > 5000) effectiveGear = Math.min(10, effectiveGear + 1);
     } catch (_) {}
 
-    console.log(`State: idx=${state.regular_index} last_was_regular=${state.last_was_regular} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
+    console.log(`State: idx=${state.regular_index} cnei=${state.cnei_queue} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
 
     if (state.mode === 'PAUSED' && !forcedBranch) {
       console.log('Flywheel paused, skipping');
@@ -2469,7 +2360,7 @@ async function runFlywheel(env, forcedBranch) {
       }
     }
 
-    const savedState = { regular_index: state.regular_index, last_was_regular: state.last_was_regular, lap: state.lap, mode: state.mode };
+    const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
     console.log(`Selected branch: ${branch}`);
 
     const result = await processBranch(env, branch);
@@ -2510,9 +2401,9 @@ async function cleanupPagesDeploys(env) {
 
   const lastCleanup = await env.FLYWHEEL_STATE.get('pages_cleanup_last', 'text');
   const now = Date.now();
-  const FORTY_EIGHT_HOURS = 172800000;
-  if (lastCleanup && (now - parseInt(lastCleanup)) < FORTY_EIGHT_HOURS) {
-    console.log('Pages cleanup: less than 48h since last cleanup, skipping');
+  const TWENTY_FOUR_HOURS = 86400000;
+  if (lastCleanup && (now - parseInt(lastCleanup)) < TWENTY_FOUR_HOURS) {
+    console.log('Pages cleanup: less than 24h since last cleanup, skipping');
     return;
   }
 
@@ -2566,26 +2457,6 @@ export default {
   async fetch(request, env, ctx) {
     const url = new URL(request.url);
 
-    if (url.pathname === '/__version') {
-      return new Response(JSON.stringify({ version: VERSION, repo: GITHUB_REPO }), {
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-      });
-    }
-    if (url.pathname === '/__rsi') {
-      const state = await getRotationState(env);
-      const quotas = await getQuotaStats(env);
-      const lastCnei = await env.FLYWHEEL_STATE.get('last_cnei_release', 'json');
-      return new Response(JSON.stringify({
-        status: 'Darwin-Godel RSI Engine Active',
-        version: VERSION,
-        rotation: state,
-        quotas,
-        last_cnei_release: lastCnei,
-        ota_verified: lastCnei?.tag === `cnei-v${formatVersion(await getMaxBranchReleaseNum(env.GITHUB_TOKEN, 'cnei'))}`
-      }, null, 2), {
-        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
-      });
-    }
     if (url.pathname === '/__cron') {
       const branch = url.searchParams.get('branch');
       ctx.waitUntil(runFlywheel(env, branch || null));
