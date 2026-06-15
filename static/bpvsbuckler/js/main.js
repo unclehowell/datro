@@ -178,7 +178,7 @@
     var bubble = document.getElementById("character-bubble");
     var controlsBar = document.getElementById("controls-bar");
 
-    // Narration
+// Narration
     var narrationArea = document.getElementById("narration-area");
     var narrationText = document.getElementById("narration-text");
     var narrationLabel = document.getElementById("narration-label");
@@ -191,7 +191,8 @@
     for (var w = 0; w < parts.length; w++) {
       var span = document.createElement("span");
       span.className = "word";
-      span.textContent = parts[w] + " ";
+      span.style.marginRight = "0.25rem";
+      span.textContent = parts[w];
       narrationText.appendChild(span);
     }
 
@@ -528,7 +529,7 @@
 
     var text = scene.narration || "";
     var wordCount = text.split(/\s+/).length;
-    var delay = (wordCount * 200) + 2000;
+    var delay = (wordCount * 600) + 4000;
 
     if (state.voiceEnabled && window.speechSynthesis) {
       speechSpeak(text);
@@ -680,8 +681,7 @@
     var bar = document.getElementById("scrubber-bar");
     if (!area || !bar) return;
 
-    // Build ticks
-    bar.innerHTML = '<div id="scrubber-progress"></div>';
+    bar.innerHTML = '<div id="scrubber-progress"></div><div id="scrubber-handle"></div>';
 
     for (var i = 0; i < state.scenes.length; i++) {
       var tick = document.createElement("div");
@@ -694,8 +694,28 @@
     tooltip.className = "scrubber-tooltip";
     area.appendChild(tooltip);
 
-    var dragging = false;
+    area.style.height = "3rem";
+    area.style.top = "-1.5rem";
+    area.style.cursor = "pointer";
+    bar.style.height = "0.5rem";
+    bar.style.background = "rgba(255,255,255,0.15)";
+    bar.style.borderRadius = "0.25rem";
+
     var progressBar = document.getElementById("scrubber-progress");
+    progressBar.style.height = "0.5rem";
+    progressBar.style.background = "#dc2626";
+
+    var handle = document.getElementById("scrubber-handle");
+    if (handle) {
+      handle.style.opacity = "1";
+      handle.style.width = "1rem";
+      handle.style.height = "1rem";
+      handle.style.right = "-0.5rem";
+    }
+
+    tooltip.style.display = "block";
+
+    var dragging = false;
 
     function updateFromEvent(e) {
       var rect = area.getBoundingClientRect();
@@ -726,7 +746,6 @@
       dragging = false;
     });
 
-    // Touch support
     area.addEventListener("touchstart", function(e) {
       dragging = true;
       updateFromEvent(e.touches[0]);
@@ -882,6 +901,22 @@
       state.mobileMenuOpen = false;
       document.getElementById("mobile-menu").classList.remove("open");
       document.getElementById("mobile-menu-overlay").classList.remove("open");
+    });
+    // Mobile menu close button
+    var closeBtn = document.querySelector("#mobile-menu .close-btn");
+    if (closeBtn) {
+      closeBtn.addEventListener("click", function() {
+        state.mobileMenuOpen = false;
+        document.getElementById("mobile-menu").classList.remove("open");
+        document.getElementById("mobile-menu-overlay").classList.remove("open");
+      });
+    }
+    // Mobile menu navigation entries
+    document.querySelectorAll(".mobile-nav-btn").forEach(function(mobileBtn) {
+      mobileBtn.addEventListener("click", function() {
+        var view = mobileBtn.dataset.mobileView;
+        switchView(view);
+      });
     });
 
     // Keyboard controls

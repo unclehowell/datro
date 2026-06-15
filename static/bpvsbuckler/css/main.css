@@ -178,17 +178,15 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 #timeline-controls.minimized { height: 2rem; }
 #timeline-controls:not(.minimized) { height: 7rem; }
 
-#scrubber-area { position: absolute; top: -1rem; left: 0; right: 0; height: 1rem; cursor: pointer; z-index: 20; }
+#scrubber-area { position: absolute; top: -1rem; left: 0; right: 0; height: 2rem; cursor: pointer; z-index: 20; }
 #scrubber-bar { width: 100%; height: 1px; background: rgba(255,255,255,0.1); position: relative; overflow: visible; }
-.scrubber-tick { position: absolute; top: 0; height: 1px; width: 1px; background: rgba(255,255,255,0.3); }
-#scrubber-progress { position: absolute; top: 0; left: 0; height: 1px; background: #dc2626; transition: width 0.1s linear; }
-#scrubber-progress:hover { height: 2px; box-shadow: 0 0 8px rgba(220,38,38,0.7); }
+.scrubber-tick { position: absolute; top: 0; height: 4px; width: 1px; background: rgba(255,255,255,0.3); }
+#scrubber-progress { position: absolute; top: 0; left: 0; height: 4px; background: #ef4444; box-shadow: 0 0 10px rgba(239,68,68,0.75), 0 0 20px rgba(239,68,68,0.35); transition: width 0.1s linear; }
 #scrubber-handle {
   position: absolute; right: -0.375rem; top: 50%; transform: translateY(-50%);
   width: 0.75rem; height: 0.75rem; border-radius: 50%; background: white;
-  box-shadow: 0 0 4px rgba(0,0,0,0.3); opacity: 0; transition: opacity 0.15s;
+  box-shadow: 0 0 10px rgba(239,68,68,0.85); opacity: 1;
 }
-#scrubber-area:hover #scrubber-handle { opacity: 1; }
 .scrubber-tooltip {
   position: absolute; bottom: 100%; transform: translateX(-50%);
   background: var(--bg-secondary); border: 1px solid var(--accent); color: var(--accent);
@@ -210,6 +208,34 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 }
 .ctrl-btn:hover { color: white; background: var(--bg-secondary); }
 .ctrl-btn svg { width: 1.5rem; height: 1.5rem; }
+
+@media (max-width: 767px) {
+  button,
+  input[type="range"],
+  .enter-btn,
+  .gallery-trigger,
+  .tl-btn,
+  .view-toolbar-btn,
+  .source-link,
+  .view-select,
+  #slide-counter {
+    min-height: 44px;
+  }
+  #mobile-menu-btn,
+  #mobile-menu .close-btn,
+  .bubble-close,
+  .ctrl-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
+  .mobile-nav-btn,
+  #nav-desktop .view-nav-btn {
+    min-height: 44px;
+    padding-top: 0.75rem;
+    padding-bottom: 0.75rem;
+  }
+  .gallery-icon { min-width: 44px; min-height: 44px; }
+}
 
 .play-btn {
   width: 4rem; height: 4rem; border-radius: 50%; background: var(--accent); color: black;
@@ -253,11 +279,14 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 .gallery-trigger:hover { color: var(--accent); border-color: rgba(245,158,11,0.5); }
 .gallery-icons {
   position: absolute; inset: 0; display: flex; align-items: center; gap: 0.25rem;
-  background: rgba(0,0,0,0.6); border-radius: var(--radius); opacity: 0; transition: opacity 0.2s;
+  background: rgba(0,0,0,0.6); border-radius: var(--radius); opacity: 1;
   padding: 0 0.5rem;
 }
-.gallery-trigger:hover .gallery-icons { opacity: 1; }
-.gallery-icon { width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center; color: var(--text-muted); }
+.gallery-icon {
+  width: 2rem; height: 2rem; display: flex; align-items: center; justify-content: center;
+  color: var(--text-primary); background: rgba(255,255,255,0.08); border-radius: 0.375rem;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.6);
+}
 
 .tl-btn {
   background: none; border: 1px solid var(--border); color: var(--text-muted); cursor: pointer;
@@ -357,14 +386,33 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 #footer {
   flex-shrink: 0; height: 3.5rem; background: rgba(15,23,42,0.95); border-top: 1px solid var(--border);
   display: flex; align-items: center; justify-content: space-between; padding: 0 1rem;
-  font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-body); z-index: 50;
+  font-size: 0.9rem; color: var(--text-muted); font-family: var(--font-body); z-index: 50;
 }
 #footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
 #footer a:hover { color: var(--accent); }
 .footer-left { display: flex; align-items: center; gap: 0.75rem; }
-.footer-right { display: flex; align-items: center; gap: 1rem; }
-.social-link { color: var(--text-muted); transition: color 0.2s; text-decoration: none; display: flex; align-items: center; }
-.social-link:hover { color: white; }
+.footer-right { display: flex; align-items: center; gap: 0.75rem; }
+.social-link {
+  min-width: 44px; width: 44px; height: 44px; border-radius: 50%;
+  display: inline-flex; align-items: center; justify-content: center;
+  color: white; font-size: 1rem; font-weight: bold; line-height: 1;
+  text-decoration: none; box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+}
+.social-link:hover { color: white; transform: translateY(-1px); filter: brightness(1.08); box-shadow: 0 6px 18px rgba(0,0,0,0.45); }
+.social-link:nth-child(1) { background: #1877f2; }
+.social-link:nth-child(2) { background: linear-gradient(45deg, #f58529, #dd2a7b, #8134af, #515bd4); }
+.social-link:nth-child(3) { background: #000; border: 1px solid rgba(255,255,255,0.2); }
+.cofund-btn, .btc-btn {
+  min-height: 44px; display: inline-flex; align-items: center; justify-content: center;
+  border: none; border-radius: 999px; padding: 0.55rem 1rem; color: white;
+  font-weight: bold; text-decoration: none; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,0.35);
+  transition: transform 0.2s, filter 0.2s, box-shadow 0.2s;
+}
+.cofund-btn { background: #00a862; }
+.cofund-btn:hover { background: #00c875; transform: translateY(-1px); box-shadow: 0 6px 18px rgba(0,168,98,0.35); }
+.btc-btn { background: linear-gradient(135deg, #f7931a, #ffd166); color: #111827; }
+.btc-btn:hover { background: linear-gradient(135deg, #ffb000, #ffe08a); transform: translateY(-1px); box-shadow: 0 6px 18px rgba(247,147,26,0.35); }
 #version-display { font-family: monospace; color: var(--text-muted); }
 #update-notice { display: none; color: var(--accent); margin-left: 0.5rem; }
 #update-notice.visible { display: inline; }
