@@ -22,6 +22,7 @@ const DOMAIN = 'datro.directory';
 const GITHUB_REPO_OBJ = { owner: 'unclehowell', repo: 'datro' };
 const BRAIN_BRANCH = 'brain';
 
+// ── Monday.com API (Index Cards per Branch) ──
 const MONDAY_API_URL = 'https://api.monday.com/v2';
 async function mondayApi(token, query, variables = {}) {
   const resp = await fetch(MONDAY_API_URL, {
@@ -34,7 +35,6 @@ async function mondayApi(token, query, variables = {}) {
   if (data.errors) throw new Error('Monday GraphQL: ' + (data.errors.map(e => e.message).join('; ')));
   return data.data;
 }
-
 async function getMondayFile(token, branch, side, fname) {
   const query = `query ($boardName: String!) { boards (limit: 50, name: $boardName) { id items_page (limit: 100) { items { name column_values { id text } } } } }`;
   const data = await mondayApi(token, query, { boardName: `Datro-${branch}` });
@@ -44,6 +44,200 @@ async function getMondayFile(token, branch, side, fname) {
   if (!item) return null;
   return item.column_values.find(cv => cv.id === 'text')?.text || '';
 }
+async function getBoardId(mondayToken) {
+  const data = await mondayApi(mondayToken, `query { boards (limit: 1) { id } }`);
+  return data.boards?.[0]?.id || null;
+}
+
+// ── Index Card System (KV cache per branch, synced to Monday) ──
+const BRANCH_INDEX_CARD_FIELDS = ['lastRelease', 'lastRun', 'cumulativeFails', 'cycleCount', 'researchTopics', 'hypothesisTree'];
+async function getIndexCard(env, branch) {
+  const key = `index_${branch}`;
+  const cached = await env.FLYWHEEL_STATE.get(key, 'json').catch(() => null);
+  if (cached) return cached;
+  const card = { branch, lastRelease: null, lastRun: null, cumulativeFails: 0, cycleCount: 0, researchTopics: [], hypothesisTree: { root: null, nodes: {} }, updatedAt: Math.floor(Date.now() / 1000) };
+  await env.FLYWHEEL_STATE.put(key, JSON.stringify(card));
+  return card;
+}
+async function updateIndexCard(env, branch, updates) {
+  const card = await getIndexCard(env, branch);
+  Object.assign(card, updates, { updatedAt: Math.floor(Date.now() / 1000) });
+  await env.FLYWHEEL_STATE.put(`index_${branch}`, JSON.stringify(card));
+}
+async function syncIndexCardToMonday(env, branch, card, mondayToken) {
+  if (!mondayToken) return;
+  try {
+    const boardId = await getBoardId(mondayToken);
+    if (!boardId) return;
+    const summary = `Branch: ${branch} | Last: ${card.lastRelease || 'none'} | Cycle: ${card.cycleCount} | Fails: ${card.cumulativeFails}`;
+    await mondayApi(mondayToken, `mutation { create_item (board_id: ${boardId}, item_name: "${branch}: ${summary}") { id } }`);
+  } catch (e) { log(`Monday sync failed for ${branch}: ${e.message}`); }
+}
+
+// ── Arbor Hypothesis Tree ──
+async function addHypothesisNode(env, branch, parentId, label, status = 'proposed') {
+  const card = await getIndexCard(env, branch);
+  const nodeId = `h_${Date.now()}_${Math.random().toString(36).slice(2, 6)}`;
+  const node = { id: nodeId, label, status, parentId, created: Math.floor(Date.now() / 1000), children: [] };
+  if (!card.hypothesisTree.nodes) card.hypothesisTree.nodes = {};
+  if (!card.hypothesisTree.root) card.hypothesisTree.root = nodeId;
+  card.hypothesisTree.nodes[nodeId] = node;
+  if (parentId && card.hypothesisTree.nodes[parentId]) {
+    card.hypothesisTree.nodes[parentId].children.push(nodeId);
+  }
+  await updateIndexCard(env, branch, { hypothesisTree: card.hypothesisTree });
+  return nodeId;
+}
+async function updateHypothesisStatus(env, branch, nodeId, status) {
+  const card = await getIndexCard(env, branch);
+  if (card.hypothesisTree.nodes?.[nodeId]) {
+    card.hypothesisTree.nodes[nodeId].status = status;
+    await updateIndexCard(env, branch, { hypothesisTree: card.hypothesisTree });
+  }
+}
+function renderHypothesisTree(card) {
+  const tree = card.hypothesisTree;
+  if (!tree || !tree.nodes || Object.keys(tree.nodes).length === 0) return '(no hypotheses)';
+  const lines = [];
+  function walk(nodeId, depth) {
+    const node = tree.nodes[nodeId];
+    if (!node) return;
+    lines.push(`${'  '.repeat(depth)}- ${node.label} [${node.status}] (${node.id})`);
+    for (const childId of (node.children || [])) walk(childId, depth + 1);
+  }
+  if (tree.root) walk(tree.root, 0);
+  return lines.join('\n');
+}
+
+const startTime = Math.floor(Date.now() / 1000);
+
+// ── Retry Wrapper & Failure Logging ──
+async function withRetry(fn, label, maxRetries = 3) {
+  for (let attempt = 1; attempt <= maxRetries; attempt++) {
+    try {
+      return await fn();
+    } catch (err) {
+      log(`${label} attempt ${attempt}/${maxRetries} failed: ${err.message}`);
+      if (attempt < maxRetries) {
+        const delay = Math.pow(2, attempt) * 1000 * 60;
+        log(`  backing off ${Math.round(delay/1000)}s`);
+        await new Promise(r => setTimeout(r, delay));
+      } else {
+        log(`${label} exhausted after ${maxRetries} attempts`);
+        throw err;
+      }
+    }
+  }
+}
+
+async function logFailureToKv(env, branch, err, phase) {
+  const key = `failure_${branch}`;
+  const existing = await env.FLYWHEEL_STATE.get(key, 'json').catch(() => null);
+  const history = Array.isArray(existing) ? existing : [];
+  history.push({ phase, error: err.message, stack: err.stack?.slice(0, 500), ts: Math.floor(Date.now() / 1000) });
+  await env.FLYWHEEL_STATE.put(key, JSON.stringify(history.slice(-20)));
+}
+
+async function getMissedHours(env, branch) {
+  const key = `last_run_${branch}`;
+  const last = await env.FLYWHEEL_STATE.get(key, 'text').catch(() => null);
+  if (!last) return 0;
+  const elapsed = Math.floor(Date.now() / 1000) - parseInt(last);
+  const missed = Math.max(0, Math.floor(elapsed / 3600) - 1);
+  return missed;
+}
+
+async function recordRunTimestamp(env, branch) {
+  await env.FLYWHEEL_STATE.put(`last_run_${branch}`, String(Math.floor(Date.now() / 1000)));
+}
+
+// ── Git Diff Analysis ──
+async function getGitDiffSinceLastRelease(token, branch) {
+  try {
+    const releasesResp = await fetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=5`,
+      { headers: ghHeaders(token) }
+    );
+    const releases = await releasesResp.json();
+    const lastRel = Array.isArray(releases) ? releases.find(r => r.tag_name.startsWith(`${branch}-v`) && !r.tag_name.endsWith('-aws')) : null;
+    if (!lastRel || !lastRel.tag_name) return null;
+
+    const compareResp = await fetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/compare/${encodeURIComponent(lastRel.tag_name)}...${encodeURIComponent(branch)}`,
+      { headers: ghHeaders(token) }
+    );
+    if (!compareResp.ok) return null;
+    const diff = await compareResp.json();
+    const files = (diff.files || []).slice(0, 20).map(f => ({
+      path: f.filename, status: f.status, additions: f.additions, deletions: f.deletions
+    }));
+    return { base: lastRel.tag_name, files, total_commits: diff.total_commits || 0, diff };
+  } catch (err) {
+    log(`Git diff failed for ${branch}: ${err.message}`);
+    return null;
+  }
+}
+
+// ── Contextual Research ──
+async function contextualResearch(env, branch, category) {
+  const topics = {
+    finance: ['web3 payment UX patterns 2026', 'financial dashboard accessibility'],
+    frontend: ['Tailwind CSS component patterns 2026', 'interactive UI patterns without JS frameworks'],
+    archive: ['static site performance optimization 2026', 'SEO for archival content'],
+    platform: ['Cloudflare Workers self-improving pipelines 2026', 'recursive CI/CD automation patterns'],
+    general: ['web performance best practices 2026', 'HTML accessibility improvements']
+  };
+  const query = (topics[category] || topics.general).concat([`${branch} site improvement ideas`]).join(', ');
+  try {
+    const controller = new AbortController();
+    const timeout = setTimeout(() => controller.abort(), 3000);
+    const resp = await fetch(`https://api.semanticscholar.org/graph/v1/paper/search?query=${encodeURIComponent(query)}&fields=title,abstract,url&limit=3`, { signal: controller.signal });
+    clearTimeout(timeout);
+    if (!resp.ok) return null;
+    const data = await resp.json();
+    if (!data.data || data.data.length === 0) return null;
+    return data.data.map(p => `- **${p.title}**: ${(p.abstract || '').slice(0, 200)}`).join('\n');
+  } catch (e) {
+    return null;
+  }
+}
+
+async function researchImprovingFlywheel() {
+  const topics = [
+    "recursive self-improving CI/CD patterns 2026",
+    "Cloudflare Workers autonomous agent optimization",
+    "GitHub Actions cron reliability fixes 2026",
+    "closed-loop release engineering patterns"
+  ];
+  return topics.map(t => `- Research: ${t}`).join('\n');
+}
+
+// ── Meta-Improvement Phase (cnei only) ──
+async function metaImproveFlywheel(env, token, recentReleases) {
+  log('Running meta-improvement phase for cnei');
+  const failures = [];
+  for (const rel of (recentReleases || []).slice(0, 10)) {
+    const f = await env.FLYWHEEL_STATE.get(`failure_cnei`, 'json').catch(() => null);
+    if (f) failures.push(...(Array.isArray(f) ? f : []));
+  }
+  const research = await researchImprovingFlywheel();
+  const systemMsg = `You are improving the flywheel worker itself. Recent failures: ${JSON.stringify(failures.slice(-3))}. Research topics: ${research}. Propose 1-2 concrete code improvements for the flywheel's index.js. Output SEARCH/REPLACE blocks.`;
+  const result = await queryFinancechequeAPI(systemMsg, "Analyze failure patterns and propose flywheel self-improvements.", env, 30000);
+  if (result.error || !result.reply) {
+    log(`Meta-improvement AI failed: ${result.error}`);
+    return null;
+  }
+  const improvements = parseAIResponse(result.reply, '');
+  if (improvements.error || improvements.changes.length === 0) {
+    log('No meta-improvements generated');
+    return null;
+  }
+  log(`Meta-improvement generated ${improvements.changes.length} change(s)`);
+  return improvements.changes;
+}
+
+// ── Deterministic Branch Wallet (HKDF → Ed25519 for compute emulation) ──
+
 async function deriveBranchWallet(env, branch) {
   const MASTER_SEED = env.MASTER_WALLET_SEED || 'datro-flywheel-default-seed-change-me';
   const seed = new TextEncoder().encode(MASTER_SEED);
@@ -181,34 +375,6 @@ const AGENT_TOOLS = {
       return result.reply || `Error: ${result.error}`;
     }
   },
-  check_live_site: {
-    description: 'Fetch the current live website HTML for research and verification',
-    args: { branch: 'string' },
-    execute: async (args, ctx) => {
-      const branch = args.branch || ctx.branch;
-      const url = `https://${branch}.${DOMAIN}`;
-      try {
-        const resp = await fetch(url);
-        if (!resp.ok) return `Live site returned ${resp.status}`;
-        const html = await resp.text();
-        return `Live site HTML for ${branch} (${html.length} chars):\n${html.slice(0, 20000)}`;
-      } catch (err) {
-        return `Failed to fetch live site: ${err.message}`;
-      }
-    }
-  },
-  analyze_ux: {
-    description: 'Perform a professional UX and design audit on HTML content',
-    args: { html: 'string', focus: 'string' },
-    execute: async (args, ctx) => {
-      const prompt = `Perform a professional Senior Product Engineer audit of the following HTML. Focus on ${args.focus || 'general UX, visual impact, and conversion'}. Identify 3 concrete improvements.
-      
-      HTML:
-      ${args.html.slice(0, 10000)}`;
-      const result = await queryFinancechequeAPI("You are a Senior UX/Product Engineer.", prompt, ctx.env, 30000);
-      return result.reply || `Error: ${result.error}`;
-    }
-  },
   // ── Gitlawv Bounty Tools ──
   gitlawv_bounty_list: {
     description: 'List open gitlawb bounties. Each bounty has an id, title, reward (tokens), repo, and status.',
@@ -317,7 +483,7 @@ async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHt
 
   const category = computeBranchCategory(branch);
   const bias = await getBiasFromKv(env);
-  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {}, env);
+  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {});
   const honchoMem = await getHonchoMemory(env, branch);
   const brainMem = await getBrainSummary(token);
   const sciHub = await getSciHubIdeas(env, branch, category);
@@ -337,40 +503,64 @@ async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHt
       ).join('\n\n')
     : '';
 
-  const systemPrompt = `You are a Senior Product Engineer and Autonomous Agentic Flywheel for the DATRO monorepo (${GITHUB_REPO}).
+  const systemPrompt = `You are the autonomous agentic flywheel for the DATRO monorepo (${GITHUB_REPO}).
 
 ## Your Mission
-Analyze branch "${branch}" deeply. Your goal is to produce high-standard, professional web improvements that elevate the user experience, visual design, and performance. You have ${maxIterations} tool iterations.
-
-## Senior Engineer Standards
-1. **Visual Impact**: Every release MUST make a noticeable visual difference. Do not just fix meta tags. Add professional Tailwind components, interactive elements, or refined typography.
-2. **Performance (Core Web Vitals)**: Prioritize Interaction to Next Paint (INP), Largest Contentful Paint (LCP), and Cumulative Layout Shift (CLS).
-3. **Professional UX**: Use modern design patterns (spacing, contrast, clear CTAs).
-4. **Clean Code**: Write idiomatic, accessible HTML/CSS. Use Tailwind utility classes where possible.
+Analyze branch "${branch}" deeply. You have ${maxIterations} tool iterations to investigate and make changes.
+Use tools to read files, search code, run scans, and write changes. Commit changes via write_file as you go.
 
 ## Earn $GITLAWB While Working
-You can earn gitlawb bounties (paid in $GITLAWB tokens on Base L2) by claiming and completing tasks:
-1. **gitlawv_bounty_list** — find open bounties
-2. **gitlawv_bounty_claim** — claim a bounty
-3. **gitlawv_bounty_submit** — submit completion (commit URL)
+You can earn gitlawb bounties (paid in $GITLAWB tokens on Base L2) by claiming and completing tasks during your release cycle:
+1. **gitlawv_bounty_list** — find open bounties matching this branch's needs
+2. **gitlawv_bounty_claim** — claim a bounty to signal you are working on it
+3. **gitlawv_bounty_submit** — after committing changes, submit the commit URL as bounty completion
+Between every branch release, try to claim at least one bounty. The payout goes to the branch wallet.
 
 ## Available Tools
 ${toolDescriptions}
 
 ## Context
 - Branch: ${branch} (category: ${category})
+- Wing files loaded: ${context.wingFiles}
 - Wallet: ${wallet.address} (compute budget: ${wallet.computeBudget})
-- Steering: ${steeringLabel}, Risk: ${riskLabel}, Direction: ${weightStr}
+- Bias: ${bias?.bias || 3}/5, Risk: ${bias?.risk || 3}/5, Steering: ${bias?.steering || 'CTR'}, Magnitude: ${bias?.magnitude || 0}
+- Directional weights: ${weightStr}
 
 ## JOYSTICK STEERING
-${dirPlanText}
+The COMMAND cockpit joystick position determines which directional MASTERPLAN files to favour:
+- LEFT → MASTERPLAN.left.md (conservative/defensive)
+- RIGHT → MASTERPLAN.right.md (progressive/expansive)  
+- HIGH/UP → MASTERPLAN.high.md (experimental/innovative)
+- LOW/DOWN → MASTERPLAN.low.md (safe/incremental)
+- Diagonals → combined weighting
+- Center → neutral
+Current weights: ${weightStr}${dirPlanText}
+
+## Memory
+${honchoMem.slice(0, 1500)}
+${brainMem ? '---\n' + brainMem.slice(0, 1000) : ''}
+
+## Research
+${sciHub.slice(0, 500)}
+${dailyDigest.slice(0, 500)}
 
 ## Protocol
-- Use check_live_site to see what the user actually sees.
-- Use read_file and search_code to understand the source.
-- Use analyze_ux for a deep audit of your current HTML.
-- Use write_file to commit (max 3 calls).
-- Output DONE when finished with a clear SUMMARY.`;
+To use a tool, output:
+TOOL: <tool_name>
+ARG: key=value
+ARG: key=value
+
+When you have made all your changes and want to finish, output:
+DONE
+SUMMARY: <what you changed and why>
+
+## Rules
+- Use read_file and search_code first to understand the codebase
+- Use brainstorm for creative thinking/planning
+- Use write_file to commit changes (it commits immediately to GitHub)
+- Make at least 1 real visual/functional change to index.html
+- Don't just add meta tags — add real UI elements
+- Max 3 write_file calls per run`;
 
   conversation.push(systemPrompt);
   conversation.push(`Current index.html:
@@ -391,16 +581,7 @@ ${headersContent || '(empty)'}
 What improvements should I make? Investigate and then make changes.`);
 
   for (let iter = 0; iter < maxIterations; iter++) {
-    console.log(`Agent iteration ${iter + 1}/${maxIterations} (Refinement pass)`);
-
-    // In-context Refinement: Inject the current critique if not the first iteration
-    if (iter > 0) {
-      conversation.push(`REFINEMENT_PASS: The previous output had issues. Critique: 
-      1. Structural integrity (did SEARCH match verbatim?)
-      2. UX/Accessibility adherence
-      3. Brand consistency (Steam Roller analogy).
-      Please refine the previous proposal.`);
-    }
+    console.log(`Agent iteration ${iter + 1}/${maxIterations}`);
 
     const result = await queryFinancechequeAPI(
       conversation[0],
@@ -429,7 +610,7 @@ What improvements should I make? Investigate and then make changes.`);
 
     const toolMatch = reply.match(/TOOL:\s*(\w+)/);
     if (!toolMatch) {
-      conversation.push('CRITIQUE: No tool used or DONE not called. Please explicitly use TOOL: <name> or DONE.');
+      conversation.push('Please use a tool or output DONE when finished.');
       continue;
     }
 
@@ -738,15 +919,6 @@ const BEST_PRACTICES = [
     fix: null
   },
   // TIER 5: Performance
-  {
-    tier: 5,
-    category: 'Performance',
-    name: 'INP Optimization',
-    check: (html) => !html || !html.includes('fetchpriority'),
-    source: 'web.dev: fetchpriority hints help optimize Interaction to Next Paint (INP) (web.dev/inp)',
-    description: 'Missing fetchpriority on critical assets — risk of slow initial interaction',
-    fix: null
-  },
   {
     tier: 5,
     category: 'Performance',
@@ -1453,26 +1625,14 @@ function computeDirectionWeights(bias) {
   return w;
 }
 
-async function getDirectionalMasterplans(token, branch, weights, env) {
+async function getDirectionalMasterplans(token, branch, weights) {
   const sides = ['left', 'right', 'high', 'low'];
   const plans = {};
-  const mondayToken = env.MONDAY_API_TOKEN;
   for (const side of sides) {
     if (!weights[side] || weights[side] <= 0) continue;
-    
-    let content = null;
-    if (mondayToken) {
-      // Sync ONLY MASTERPLAN.md
-      content = await getMondayFile(mondayToken, branch, side, 'MASTERPLAN.md');
-    }
-    
-    if (content === null) {
-      const path = `static/${branch}/MASTERPLAN.${side}.md`;
-      const file = await getFileContent(token, branch, path);
-      if (file) content = file.content.slice(0, 2000);
-    }
-    
-    if (content !== null) plans[side] = { content: content, weight: weights[side] };
+    const path = `static/${branch}/MASTERPLAN.${side}.md`;
+    const file = await getFileContent(token, branch, path);
+    if (file) plans[side] = { content: file.content.slice(0, 2000), weight: weights[side] };
   }
   return plans;
 }
@@ -1710,7 +1870,7 @@ async function processBranchWithAI(env, branch) {
   console.log(`  Loaded ${releaseNotes.length} previous release notes`);
   const category = computeBranchCategory(branch);
   const bias = await getBiasFromKv(env);
-  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {}, env);
+  bias.directionalMasterplans = await getDirectionalMasterplans(token, branch, bias.weights || {});
   console.log(`  Bias: ${bias?.bias || 3} (${bias?.steering || 'CTR'}) weights: ${JSON.stringify(bias.weights)}`);
 
   // Research Sci-Hub and Daily Digests
@@ -1748,42 +1908,7 @@ async function processBranchWithAI(env, branch) {
   return { error: null, changes: parsed.changes, html, wingFiles, aiResult: result };
 }
 
-// ── Recursive Self-Improvement Engine ──
-
-async function selfImprovementCycle(env, branch, mdContent) {
-  console.log(`Running recursive self-improvement for ${branch}`);
-  
-  // 1. Parse goals and resource needs from MD content
-  const goals = mdContent.match(/# GOAL: (.*)/g) || [];
-  const resources = mdContent.match(/# RESOURCE: (.*)/g) || [];
-  
-  // 2. Resource acquisition (simplified autonomous fetch)
-  for (const res of resources) {
-    const url = res.replace('# RESOURCE: ', '').trim();
-    console.log(`Attempting to acquire resource: ${url}`);
-    try {
-      const resp = await fetch(url);
-      if (resp.ok) {
-        const data = await resp.text();
-        // Store acquired resource in KV for next cycles
-        await env.FLYWHEEL_STATE.put(`res_${branch}_${btoa(url)}`, data);
-        console.log(`Resource acquired: ${url}`);
-      }
-    } catch (e) {
-      console.error(`Failed to acquire resource ${url}: ${e.message}`);
-    }
-  }
-
-  // 3. Set new goals (create Monday.com items)
-  const mondayToken = env.MONDAY_API_TOKEN;
-  const boardId = await getBoardId(mondayToken);
-  
-  for (const goal of goals) {
-    const goalText = goal.replace('# GOAL: ', '').trim();
-    console.log(`Setting new goal: ${goalText}`);
-    await mondayApi(mondayToken, `mutation { create_item (board_id: ${boardId}, item_name: "${goalText}") { id } }`);
-  }
-}
+// ── Master Record Visuals ──────────────────────────────────────────────────────
 
 function steeringDirToPositions(dir) {
   const map = {
@@ -2072,211 +2197,247 @@ async function createSimpleRelease(token, branch, tagName, version, notesOverrid
 }
 
 async function processBranch(env, branch) {
-  const token = env.GITHUB_TOKEN;
-  console.log(`Processing branch: ${branch}`);
+  const token = resolveToken(env);
+  return withRetry(async () => {
+    log(`Processing branch: ${branch}`);
 
-  // Check branch exists
-  const resp = await fetch(
-    `https://api.github.com/repos/${GITHUB_REPO}/git/refs/heads/${encodeURIComponent(branch)}`,
-    { headers: ghHeaders(token) }
-  );
-  if (!resp.ok) {
-    console.log(`Branch ${branch} does not exist, skipping`);
-    return { tagName: null, error: 'branch_not_found' };
-  }
-
-  const maxNum = await getMaxBranchReleaseNum(token, branch);
-  const nextNum = maxNum + 1;
-  const version = formatVersion(nextNum);
-  const tagName = `${branch}-v${version}`;
-  console.log(`Max release num: ${maxNum}, Next: ${tagName}`);
-
-  // For cnei, apply self-improvements first
-  let selfImprovements = null;
-  if (branch === 'cnei') {
-    selfImprovements = await applySelfImprovements(token, branch);
-  }
-
-  // Run MCP scans for data-driven UX/bug insight
-  const branchUrl = `https://${branch}.${DOMAIN || 'datro.directory'}`;
-  const mcpResults = await runMcpScans(env, branchUrl);
-  const mcpSection = formatMcpReleaseNotes(mcpResults, branch);
-
-  // ── STEERING-AWARE VISUAL BLOCKS (wing file + joystick → HTML injection) ──
-  const visualWingFiles = await getAllWingFiles(token, branch);
-  const bias = await getBiasFromKv(env);
-  const steeringDir = bias?.steering || 'CTR';
-  const magnitude = bias?.magnitude || 0;
-  const activePositions = steeringDirToPositions(steeringDir);
-  console.log(`Steering: ${steeringDir} → positions: ${JSON.stringify(activePositions)} (magnitude: ${magnitude})`);
-  const visualInstructions = extractVisualInstructions(visualWingFiles, activePositions);
-  const hasVisuals = Object.values(visualInstructions).some(v => v);
-  let visualHtmlChanged = false;
-  if (bias !== null || hasVisuals) {
-    const idxFile = await getFileContent(token, branch, 'index.html');
-    if (idxFile) {
-      const newHtml = injectVisualBars(idxFile.content, visualInstructions);
-      if (newHtml !== idxFile.content) {
-        const commitMsg = activePositions.length > 0
-          ? `chore: apply steering blocks [${steeringDir}] at ${activePositions.join(', ')}`
-          : 'chore: clear steering blocks (center)';
-        await createCommit(token, branch, 'index.html', newHtml, commitMsg);
-        console.log(`Applied steering blocks: ${JSON.stringify(visualInstructions)}`);
-        visualHtmlChanged = true;
-      }
-    }
-  }
-
-  // Fetch current index.html and _headers for AI agent
-  const idxFile = await getFileContent(token, branch, 'index.html');
-  const hdrFile = await getFileContent(token, branch, '_headers');
-  const idxHtml = idxFile ? idxFile.content : '';
-  const hdrContent = hdrFile ? hdrFile.content : '';
-
-  // Fetch live website HTML
-  let liveHtml = '';
-  try {
-    const liveResp = await fetch(`https://${branch}.${DOMAIN}`);
-    if (liveResp.ok) liveHtml = await liveResp.text();
-  } catch (e) { console.log(`Could not fetch live site for ${branch}: ${e.message}`); }
-
-  // ── AGENTIC AI ENGINE (chain-of-thought with tool use) ──
-  
-  // 1. Recursive Self-Improvement Scan
-  const mdContent = Object.values(visualWingFiles).join('\n');
-  await selfImprovementCycle(env, branch, mdContent);
-  
-  let commitSha = null;
-  let releaseNotes = '';
-  const wallet = await getBranchWallet(env, branch);
-
-  const agentResult = await runAgentLoop(env, branch, idxHtml, hdrContent, visualWingFiles, liveHtml, { token, env });
-
-  if (agentResult && agentResult.changes.length > 0) {
-    // Get latest commit SHA for tagging
-    const headResp = await ghFetch(
+    // Check branch exists
+    const resp = await fetch(
       `https://api.github.com/repos/${GITHUB_REPO}/git/refs/heads/${encodeURIComponent(branch)}`,
-      token
+      { headers: ghHeaders(token) }
     );
-    const headData = await headResp.json();
-    commitSha = headData.object.sha;
+    if (!resp.ok) {
+      log(`Branch ${branch} does not exist, skipping`);
+      return { tagName: null, error: 'branch_not_found' };
+    }
 
-    // Build release notes from agent summary
-    const committedPaths = agentResult.changes.map(c => `- \`${c.path}\``).join('\n');
-    let bountyText = '';
-    if (agentResult.bounty) {
-      if (agentResult.bounty.action === 'claimed') {
-        bountyText = `\n### Gitlawv Bounty\n- Claimed bounty \`${agentResult.bounty.bountyId}\` on \`${agentResult.bounty.branch}\`\n- Wallet: \`${wallet.address}\` will receive $GITLAWB on completion`;
-      } else if (agentResult.bounty.action === 'submitted') {
-        bountyText = `\n### Gitlawv Bounty\n- Submitted bounty \`${agentResult.bounty.bountyId}\` — ${agentResult.bounty.submissionUrl}\n- Wallet: \`${wallet.address}\` pending $GITLAWB payout`;
+    const maxNum = await getMaxBranchReleaseNum(token, branch);
+    const nextNum = maxNum + 1;
+    const version = formatVersion(nextNum);
+    const tagName = `${branch}-v${version}`;
+    log(`Max release num: ${maxNum}, Next: ${tagName}`);
+
+    // Update index card pre-flight
+    const card = await getIndexCard(env, branch);
+    await updateIndexCard(env, branch, { lastRun: Math.floor(Date.now() / 1000), cycleCount: (card.cycleCount || 0) + 1 });
+    const mondayToken = env.MONDAY_API_TOKEN;
+
+    // Git diff analysis against last release
+    const diffData = await getGitDiffSinceLastRelease(token, branch);
+    if (diffData) {
+      log(`Diff since ${diffData.base}: ${diffData.total_commits} commits, ${diffData.files.length} files changed`);
+    }
+
+    // Contextual research (topic-specific, not generic)
+    const category = computeBranchCategory(branch);
+    const research = await contextualResearch(env, branch, category);
+    const flywheelResearch = await researchImprovingFlywheel();
+
+    // For cnei, apply self-improvements first + meta-improvement
+    let selfImprovements = null;
+    let metaChanges = null;
+    if (branch === 'cnei') {
+      selfImprovements = await applySelfImprovements(token, branch);
+      const recentReleases = await getPreviousReleaseNotes(token, branch, 10);
+      metaChanges = await metaImproveFlywheel(env, token, recentReleases);
+      if (metaChanges && metaChanges.length > 0) {
+        log(`Applying ${metaChanges.length} meta-improvement(s) to flywheel code`);
+        for (const ch of metaChanges) {
+          await createCommit(token, 'cnei', 'flywheel-cf/src/index.js', ch.replace, `meta(cnei): ${ch.title}`);
+        }
+        selfImprovements = (selfImprovements || []).concat(metaChanges.map(c => ({ name: c.title, applied: true })));
+      }
+      await addHypothesisNode(env, 'cnei', card.hypothesisTree?.root, `cnei-v${version}: meta-cycle`, 'running');
+    }
+
+    // Run MCP scans for data-driven UX/bug insight
+    const branchUrl = `https://${branch}.${DOMAIN || 'datro.directory'}`;
+    const mcpResults = await runMcpScans(env, branchUrl);
+    const mcpSection = formatMcpReleaseNotes(mcpResults, branch);
+
+    // ── STEERING-AWARE VISUAL BLOCKS (wing file + joystick → HTML injection) ──
+    const visualWingFiles = await getAllWingFiles(token, branch);
+    const bias = await getBiasFromKv(env);
+    const steeringDir = bias?.steering || 'CTR';
+    const magnitude = bias?.magnitude || 0;
+    const activePositions = steeringDirToPositions(steeringDir);
+    log(`Steering: ${steeringDir} → positions: ${JSON.stringify(activePositions)} (magnitude: ${magnitude})`);
+    const visualInstructions = extractVisualInstructions(visualWingFiles, activePositions);
+    const hasVisuals = Object.values(visualInstructions).some(v => v);
+    if (bias !== null || hasVisuals) {
+      const idxFile = await getFileContent(token, branch, 'index.html');
+      if (idxFile) {
+        const newHtml = injectVisualBars(idxFile.content, visualInstructions);
+        if (newHtml !== idxFile.content) {
+          const commitMsg = activePositions.length > 0
+            ? `chore: apply steering blocks [${steeringDir}] at ${activePositions.join(', ')}`
+            : 'chore: clear steering blocks (center)';
+          await createCommit(token, branch, 'index.html', newHtml, commitMsg);
+          log(`Applied steering blocks: ${JSON.stringify(visualInstructions)}`);
+        }
       }
     }
-    releaseNotes = [
-      `## Agentic Release: ${tagName}`,
+
+    // Fetch current index.html and _headers for AI agent
+    const idxFile = await getFileContent(token, branch, 'index.html');
+    const hdrFile = await getFileContent(token, branch, '_headers');
+    const idxHtml = idxFile ? idxFile.content : '';
+    const hdrContent = hdrFile ? hdrFile.content : '';
+
+    // Fetch live website HTML
+    let liveHtml = '';
+    try {
+      const liveResp = await fetch(`https://${branch}.${DOMAIN}`);
+      if (liveResp.ok) liveHtml = await liveResp.text();
+    } catch (e) { log(`Could not fetch live site for ${branch}: ${e.message}`); }
+
+    // ── AGENTIC AI ENGINE (chain-of-thought with tool use) ──
+    let commitSha = null;
+    let releaseNotes = '';
+    const wallet = await getBranchWallet(env, branch);
+
+    const agentResult = await runAgentLoop(env, branch, idxHtml, hdrContent, visualWingFiles, liveHtml, { token, env });
+
+    if (agentResult && agentResult.changes.length > 0) {
+      // Get latest commit SHA for tagging
+      const headResp = await ghFetch(
+        `https://api.github.com/repos/${GITHUB_REPO}/git/refs/heads/${encodeURIComponent(branch)}`,
+        token
+      );
+      const headData = await headResp.json();
+      commitSha = headData.object.sha;
+
+      const committedPaths = agentResult.changes.map(c => `- \`${c.path}\``).join('\n');
+      let bountyText = '';
+      if (agentResult.bounty) {
+        if (agentResult.bounty.action === 'claimed') {
+          bountyText = `\n### Gitlawv Bounty\n- Claimed bounty \`${agentResult.bounty.bountyId}\` on \`${agentResult.bounty.branch}\`\n- Wallet: \`${wallet.address}\` will receive $GITLAWB on completion`;
+        } else if (agentResult.bounty.action === 'submitted') {
+          bountyText = `\n### Gitlawv Bounty\n- Submitted bounty \`${agentResult.bounty.bountyId}\` — ${agentResult.bounty.submissionUrl}\n- Wallet: \`${wallet.address}\` pending $GITLAWB payout`;
+        }
+      }
+
+      // Self-reflection: include diff analysis + research sources in release notes
+      const diffSection = diffData ? `\n### Diff Analysis (since ${diffData.base})\n- Commits: ${diffData.total_commits}\n- Files changed:\n${diffData.files.map(f => `  - ${f.path} (${f.status}, +${f.additions}/-${f.deletions})`).join('\n')}` : '';
+      const researchSection = research ? `\n### Contextual Research\n${research}` : '';
+      const hypothesisSection = `\n### Hypothesis Tree\n${renderHypothesisTree(await getIndexCard(env, branch))}`;
+
+      releaseNotes = [
+        `## Agentic Release: ${tagName}`,
+        ``,
+        `The autonomous agent analyzed \`${branch}\` using ${Object.keys(AGENT_TOOLS).length} MCP tools.`,
+        ``,
+        `### Self-Reflection`,
+        `This release addresses gaps identified in prior cycle. Research was contextual to branch category (${category}).`,
+        `Changes grounded in: ${diffData ? `actual diff from ${diffData.base}` : 'live site comparison'} + MCP scans.`,
+        ``,
+        `### Files Changed`,
+        committedPaths,
+        diffSection,
+        ``,
+        `### Agent Summary`,
+        agentResult.summary || 'No summary provided.',
+        ``,
+        `### Wallet`,
+        `- Branch wallet: ${wallet.address}`,
+        `- Compute budget: ${wallet.computeBudget}`,
+        bountyText,
+        researchSection,
+        hypothesisSection,
+        ``,
+        mcpSection
+      ].join('\n');
+
+      // Write MEMORY.md
+      const cycleNum = await getNextCycleNum(token, branch);
+      const agentLesson = `Agentic engine: ${agentResult.changes.length} file(s) committed to \`${branch}\`. Diff: ${diffData ? `${diffData.total_commits} commits since ${diffData.base}` : 'N/A'}. Wallet: ${wallet.address}.`;
+      const pseudoBp = {
+        name: `agent: ${committedPaths.slice(0, 80)}`,
+        description: `Applied ${agentResult.changes.length} agent commits to ${branch}`,
+        source: 'Agentic Flywheel (ReAct loop + MCP tools + Diff Analysis + Index Card)'
+      };
+      await writeMEMORY(token, branch, cycleNum, pseudoBp, agentLesson);
+
+      // Tag release and verify
+      await createGitTag(token, tagName, commitSha);
+      const release = await createGitHubRelease(token, tagName, branch, version, releaseNotes);
+      if (release) {
+        await verifyRelease(token, tagName);
+      }
+
+      log(`Agentic release ${tagName}: ${agentResult.changes.length} files committed`);
+      await updateIndexCard(env, branch, { lastRelease: tagName });
+
+      // Track gitlawv bounty earnings in KV
+      if (agentResult.bounty) {
+        const bountyKey = `bounty_${branch}`;
+        const existing = await env.FLYWHEEL_STATE.get(bountyKey, 'json');
+        const history = Array.isArray(existing) ? existing : [];
+        history.push({
+          bountyId: agentResult.bounty.bountyId,
+          action: agentResult.bounty.action,
+          tagName,
+          timestamp: Math.floor(Date.now() / 1000)
+        });
+        await env.FLYWHEEL_STATE.put(bountyKey, JSON.stringify(history.slice(-50)));
+        log(`Bounty ${agentResult.bounty.action}: ${agentResult.bounty.bountyId} on ${branch}`);
+      }
+
+      // Update hypothesis tree
+      if (branch === 'cnei') {
+        await updateHypothesisStatus(env, 'cnei', card.hypothesisTree?.root, 'completed');
+      }
+
+      // Sync index card to Monday
+      await syncIndexCardToMonday(env, branch, await getIndexCard(env, branch), mondayToken);
+
+      return { tagName, version, type: 'agent', changes: agentResult.changes, aiError: null, selfImprovements, metaChanges, wallet: wallet.address };
+    }
+
+    // ── FALLBACK: Best-practice engine ──
+    log(`Falling back to best-practice engine for ${branch}`);
+    const bpResult = await findAndApplyBestPractice(token, branch);
+
+    if (bpResult) {
+      const diffSection = diffData ? `\n### Diff Analysis (since ${diffData.base})\n- ${diffData.files.map(f => `  - ${f.path}`).join('\n')}` : '';
+      const enhancedNotes = bpResult.notes + '\n\n' + diffSection + '\n\n' + mcpSection;
+      await createGitTag(token, tagName, bpResult.commit);
+      const release = await createGitHubRelease(token, tagName, branch, version, enhancedNotes);
+      if (release) await verifyRelease(token, tagName);
+      log(`Best-practice release ${tagName}: ${bpResult.bestPractice.name}`);
+      await updateIndexCard(env, branch, { lastRelease: tagName });
+      return { tagName, version, type: 'best-practice', aiError: null, selfImprovements, wallet: wallet.address };
+    }
+
+    // ── FALLBACK: Audit-only release ──
+    log(`No improvements found, audit-only release for ${branch}`);
+    const notes = [
+      `## [${tagName}]`,
       ``,
-      `The autonomous agent analyzed \`${branch}\` using ${Object.keys(AGENT_TOOLS).length} MCP tools.`,
+      `### Changed`,
+      `- Agentic analysis: no changes needed after tool-based investigation`,
+      `- Best-practice audit: no Tier 1-2 gaps found in \`index.html\``,
+      `- Branch wallet: ${wallet.address} (compute: ${wallet.computeBudget})`,
+      diffData ? `- Diff since ${diffData.base}: ${diffData.total_commits} commits` : '',
       ``,
-      `### Files Changed`,
-      committedPaths,
-      ``,
-      `### Agent Summary`,
-      agentResult.summary || 'No summary provided.',
-      ``,
-      `### Wallet`,
-      `- Branch wallet: ${wallet.address}`,
-      `- Compute budget: ${wallet.computeBudget}`,
-      bountyText,
+      `### Audit Summary`,
+      `- Branch: \`${branch}\``,
+      `- Category: ${computeBranchCategory(branch)}`,
+      `- Best practices checked: ${BEST_PRACTICES.length}`,
       ``,
       mcpSection
     ].join('\n');
-
-    // Write MEMORY.md
-    const cycleNum = await getNextCycleNum(token, branch);
-    const agentLesson = `Agentic engine: ${agentResult.changes.length} file(s) committed to \`${branch}\`. Wallet: ${wallet.address}. Summary: ${agentResult.summary || ''}`;
-    const pseudoBp = {
-      name: `agent: ${committedPaths.slice(0, 80)}`,
-      description: `Applied ${agentResult.changes.length} agent commits to ${branch}`,
-      source: 'Agentic Flywheel (ReAct loop + MCP tools)'
-    };
-    await writeMEMORY(token, branch, cycleNum, pseudoBp, agentLesson);
-
-    // Tag release and verify
+    commitSha = commitSha || await getDefaultBranchSha(token, branch);
     await createGitTag(token, tagName, commitSha);
-    const release = await createGitHubRelease(token, tagName, branch, version, releaseNotes);
-    if (release) {
-      await verifyRelease(token, tagName);
-    }
-
-    console.log(`Agentic release ${tagName}: ${agentResult.changes.length} files committed`);
-
-    // Track gitlawv bounty earnings in KV
-    if (agentResult.bounty) {
-      const bountyKey = `bounty_${branch}`;
-      const existing = await env.FLYWHEEL_STATE.get(bountyKey, 'json');
-      const history = Array.isArray(existing) ? existing : [];
-      history.push({
-        bountyId: agentResult.bounty.bountyId,
-        action: agentResult.bounty.action,
-        tagName,
-        timestamp: Math.floor(Date.now() / 1000)
-      });
-      await env.FLYWHEEL_STATE.put(bountyKey, JSON.stringify(history.slice(-50)));
-      console.log(`Bounty ${agentResult.bounty.action}: ${agentResult.bounty.bountyId} on ${branch}`);
-    }
-
-    // ── Release Pruning (keep last 5) ──
-    try {
-      const relsResp = await ghFetch(`https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=100`, token);
-      const rels = await relsResp.json();
-      const branchRels = rels.filter(r => r.tag_name.startsWith(`${branch}-v`));
-      if (branchRels.length > 5) {
-        for (const oldRel of branchRels.slice(5)) {
-          console.log(`Pruning old release: ${oldRel.tag_name}`);
-          await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/${oldRel.id}`, { method: 'DELETE', headers: ghHeaders(token) });
-          await fetch(`https://api.github.com/repos/${GITHUB_REPO}/git/refs/tags/${oldRel.tag_name}`, { method: 'DELETE', headers: ghHeaders(token) });
-        }
-      }
-    } catch (e) { console.log(`Pruning failed: ${e.message}`); }
-
-    return { tagName, version, type: 'agent', changes: agentResult.changes, aiError: null, selfImprovements, wallet: wallet.address };
-  }
-
-  // ── FALLBACK: Best-practice engine ──
-  console.log(`Falling back to best-practice engine for ${branch}`);
-  const bpResult = await findAndApplyBestPractice(token, branch);
-
-  if (bpResult) {
-    const enhancedNotes = bpResult.notes + '\n\n' + mcpSection;
-    await createGitTag(token, tagName, bpResult.commit);
-    const release = await createGitHubRelease(token, tagName, branch, version, enhancedNotes);
-    if (release) await verifyRelease(token, tagName);
-    console.log(`Best-practice release ${tagName}: ${bpResult.bestPractice.name}`);
-    return { tagName, version, type: 'best-practice', aiError: null, selfImprovements, wallet: wallet.address };
-  }
-
-  // ── FALLBACK: Audit-only release ──
-  console.log(`No improvements found, audit-only release for ${branch}`);
-  const notes = [
-    `## [${tagName}]`,
-    ``,
-    `### Changed`,
-    `- Agentic analysis: no changes needed after tool-based investigation`,
-    `- Best-practice audit: no Tier 1-2 gaps found in \`index.html\``,
-    `- Branch wallet: ${wallet.address} (compute: ${wallet.computeBudget})`,
-    ``,
-    `### Audit Summary`,
-    `- Branch: \`${branch}\``,
-    `- Category: ${computeBranchCategory(branch)}`,
-    `- Best practices checked: ${BEST_PRACTICES.length}`,
-    ``,
-    mcpSection
-  ].join('\n');
-  commitSha = commitSha || await getDefaultBranchSha(token, branch);
-  await createGitTag(token, tagName, commitSha);
-  const auditRelease = await createSimpleRelease(token, branch, tagName, version, notes);
-  if (auditRelease) await verifyRelease(token, tagName);
-  console.log(`Audit-only release ${tagName}`);
-  return { tagName, version, type: 'audit-only', aiError: null, selfImprovements, wallet: wallet.address };
+    const auditRelease = await createSimpleRelease(token, branch, tagName, version, notes);
+    if (auditRelease) await verifyRelease(token, tagName);
+    log(`Audit-only release ${tagName}`);
+    await updateIndexCard(env, branch, { lastRelease: tagName });
+    return { tagName, version, type: 'audit-only', aiError: null, selfImprovements, wallet: wallet.address };
+  }, `processBranch(${branch})`, 3).catch(async (err) => {
+    await logFailureToKv(env, branch, err, 'processBranch');
+    return { tagName: null, error: err.message };
+  });
 }
 
 async function triggerOtaAfterCneiRelease(env, tagName) {
@@ -2303,17 +2464,18 @@ async function findAvailableBranch(state, token, gear) {
 }
 
 async function runFlywheel(env, forcedBranch) {
-  console.log(`Flywheel triggered at ${new Date().toISOString()}`);
-  if (!env.GITHUB_TOKEN) { console.error('GITHUB_TOKEN not configured'); return; }
+  const token = resolveToken(env);
+  log(`Flywheel triggered at ${new Date().toISOString()}`);
+  if (!token) { log('No token configured (GH_PAT or GITHUB_TOKEN)'); return; }
 
   const locked = await acquireLock(env);
-  if (!locked) { console.log('Another invocation in progress, skipping'); return; }
+  if (!locked) { log('Another invocation in progress, skipping'); return; }
 
   // Update brain memory
   try {
-      await aggregateMemory(env.GITHUB_TOKEN);
+      await aggregateMemory(token);
   } catch (e) {
-      console.log(`Memory aggregation skipped: ${e.message}`);
+      log(`Memory aggregation skipped: ${e.message}`);
   }
 
   try {
@@ -2322,49 +2484,69 @@ async function runFlywheel(env, forcedBranch) {
     const bias = await getBiasFromKv(env);
 
     // ── BURST MODE: auto-advance gear based on bias/risk/wallet ──
-    // Progressive bias (1-2) → faster releases. Conservative (4-5) → slower.
-    // High risk tolerance → faster. High compute budget per branch → faster.
     let effectiveGear = config.gear;
     if ((bias?.bias || 3) <= 2) effectiveGear = Math.min(10, effectiveGear + 2);
     if ((bias?.risk || 3) >= 4) effectiveGear = Math.min(10, effectiveGear + 1);
 
-    // Sample a wallet to see average compute budget
     try {
       const sampleWallet = await getBranchWallet(env, REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length]);
       if (sampleWallet.computeBudget > 5000) effectiveGear = Math.min(10, effectiveGear + 1);
     } catch (_) {}
 
-    console.log(`State: idx=${state.regular_index} cnei=${state.cnei_queue} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
+    log(`State: idx=${state.regular_index} cnei=${state.cnei_queue} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
 
     if (state.mode === 'PAUSED' && !forcedBranch) {
-      console.log('Flywheel paused, skipping');
+      log('Flywheel paused, skipping');
       return;
     }
 
     let branch;
     if (forcedBranch) {
       branch = forcedBranch;
-      console.log(`Forced branch: ${branch}`);
+      log(`Forced branch: ${branch}`);
     } else {
-      branch = await findAvailableBranch(state, env.GITHUB_TOKEN, effectiveGear);
-      if (!branch) {
-        // If no branch available, force cnei for self-improvement
-        const cneiCD = await isOnCooldown(env.GITHUB_TOKEN, 'cnei', effectiveGear);
-        if (!cneiCD) {
-          branch = 'cnei';
-          console.log('No regular branch available, forcing cnei self-improvement');
-        } else {
-          console.log('No available branch found');
-          return;
+      // ── CATCH-UP MECHANISM: Check for missed runs ──
+      let caughtUp = false;
+      for (const b of ALL_BRANCHES) {
+        const missed = await getMissedHours(env, b);
+        if (missed >= 2) {
+          const cd = await isOnCooldown(token, b, effectiveGear);
+          if (!cd) {
+            branch = b;
+            log(`CATCH-UP: ${b} missed ${missed}h, prioritizing`);
+            caughtUp = true;
+            break;
+          }
+        }
+      }
+      if (!caughtUp) {
+        branch = await findAvailableBranch(state, token, effectiveGear);
+        if (!branch) {
+          const cneiCD = await isOnCooldown(token, 'cnei', effectiveGear);
+          if (!cneiCD) {
+            branch = 'cnei';
+            log('No regular branch available, forcing cnei self-improvement');
+          } else {
+            log('No available branch found');
+            return;
+          }
         }
       }
     }
 
     const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
-    console.log(`Selected branch: ${branch}`);
+    log(`Selected branch: ${branch}`);
 
-    const result = await processBranch(env, branch);
-    console.log(`Result: ${JSON.stringify(result)}`);
+    // ── Per-branch isolation: one branch failure doesn't kill others ──
+    let result;
+    try {
+      result = await processBranch(env, branch);
+      log(`Result: ${JSON.stringify(result)}`);
+    } catch (err) {
+      log(`Branch ${branch} failed (isolated): ${err.message}`);
+      await logFailureToKv(env, branch, err, 'runFlywheel');
+      result = { tagName: null, error: err.message };
+    }
 
     await env.FLYWHEEL_STATE.put('last_run_result', JSON.stringify({
       branch,
@@ -2374,6 +2556,9 @@ async function runFlywheel(env, forcedBranch) {
       timestamp: Math.floor(Date.now() / 1000)
     }));
 
+    // Record run timestamp for catch-up tracking
+    await recordRunTimestamp(env, branch);
+
     if (result && (result.error === 'branch_not_found' || !result.error)) {
       await saveRotationState(env, savedState);
       if (branch === 'cnei' && result.tagName && !result.error) {
@@ -2381,8 +2566,8 @@ async function runFlywheel(env, forcedBranch) {
       }
     }
   } catch (err) {
-    console.error(`Fatal error: ${err.message}`);
-    console.error(err.stack);
+    log(`Fatal error: ${err.message}`);
+    log(err.stack);
   } finally {
     await releaseLock(env);
   }
@@ -2401,9 +2586,9 @@ async function cleanupPagesDeploys(env) {
 
   const lastCleanup = await env.FLYWHEEL_STATE.get('pages_cleanup_last', 'text');
   const now = Date.now();
-  const TWENTY_FOUR_HOURS = 86400000;
-  if (lastCleanup && (now - parseInt(lastCleanup)) < TWENTY_FOUR_HOURS) {
-    console.log('Pages cleanup: less than 24h since last cleanup, skipping');
+  const FORTY_EIGHT_HOURS = 172800000;
+  if (lastCleanup && (now - parseInt(lastCleanup)) < FORTY_EIGHT_HOURS) {
+    console.log('Pages cleanup: less than 48h since last cleanup, skipping');
     return;
   }
 
@@ -2449,6 +2634,11 @@ async function cleanupPagesDeploys(env) {
     console.error('Pages cleanup error:', err.message);
   }
 }
+
+function resolveToken(env) {
+  return env.GH_PAT || env.GITHUB_TOKEN;
+}
+function log(str) { console.log(`[flywheel] ${str}`); }
 
 export default {
   async scheduled(event, env, ctx) {
