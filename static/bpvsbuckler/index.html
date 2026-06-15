@@ -54,43 +54,6 @@
     
 
 <div id="root"></div>
-<footer id="bpvsbuckler-version-footer" style="position:fixed;bottom:0;left:0;right:0;background:rgba(15,23,42,0.9);color:#94a3b8;font-size:12px;padding:6px 12px;display:flex;justify-content:space-between;align-items:center;border-top:1px solid rgba(255,255,255,0.1);z-index:9999;font-family:'Courier Prime',monospace;">
-  <span>Deployed: <span id="bpvsbuckler-deployed-version">Loading...</span></span>
-  <span id="bpvsbuckler-update-notice" style="display:none;color:#f59e0b;">Update available: <span id="bpvsbuckler-latest-version">...</span></span>
-</footer>
-<script>
-(function() {
-  function $(sel) { return document.getElementById(sel); }
-  async function init() {
-    try {
-      const [versionRes, releasesRes] = await Promise.all([
-        fetch('version.txt'),
-        fetch('https://api.github.com/repos/unclehowell/datro/releases')
-      ]);
-      const deployed = (await versionRes.text()).trim();
-      const releases = await releasesRes.json();
-      const bpvs = releases.filter(r => r.tag_name && r.tag_name.startsWith('bpvsbuckler-'));
-      bpvs.sort((a, b) => new Date(b.published_at) - new Date(a.published_at));
-      const latest = bpvs[0];
-      if (!latest) return;
-      const latestVersion = latest.tag_name.replace(/^bpvsbuckler-/, '');
-      if ($('bpvsbuckler-deployed-version')) $('bpvsbuckler-deployed-version').textContent = deployed;
-      if ($('bpvsbuckler-latest-version')) $('bpvsbuckler-latest-version').textContent = latestVersion;
-      if (deployed && latestVersion && deployed !== latestVersion) {
-        if ($('bpvsbuckler-update-notice')) $('bpvsbuckler-update-notice').style.display = 'inline';
-      }
-    } catch (e) {
-      if ($('bpvsbuckler-deployed-version')) $('bpvsbuckler-deployed-version').textContent = 'unknown';
-    }
-  }
-  if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', init);
-  } else {
-    init();
-  }
-})();
-</script>
-
 
 <script data-cfasync="false">
 (function() {
@@ -120,5 +83,45 @@
 })();
 </script>
 
-<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="7d4d1992dab4e6b8f502e18d-|49" defer></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0b4f3b568d0d841',t:'MTc4MTM5NDE0OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="7d4d1992dab4e6b8f502e18d-|49" defer></script><script type="3a0767a3a213909609a2b0c8-text/javascript">(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0b4f3b568d0d841',t:'MTc4MTM5NDE0OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="3a0767a3a213909609a2b0c8-|49" defer></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0c2bd249a0e4c58',t:'MTc4MTUzODcxNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+<script defer>
+(function(){
+  function hideEdit(){
+    try{
+      var nodes=document.querySelectorAll('button, [role="button"], a');
+      for(var i=0;i<nodes.length;i++){
+        var el=nodes[i];
+        if(/Edit Content/i.test((el.textContent||el.innerText||el.getAttribute('aria-label')||'')).trim()){ el.style.display='none'; }
+      }
+    }catch(e){}
+  }
+  function patchVersion(){
+    try{
+      fetch('version.txt').then(function(r){return r.text();}).then(function(v){
+        var deployed=(v||'').trim();
+        var root=document.getElementById('root'); if(!root) return;
+        var candidates=root.querySelectorAll('*');
+        var found=null;
+        for(var i=0;i<candidates.length;i++){
+          var el=candidates[i];
+          var txt=(el.textContent||'').trim();
+          if(/^v\d+\.\d+/.test(txt)){ found=el; break; }
+        }
+        if(found){ found.textContent=deployed; }
+        hideEdit();
+        fetch('https://api.github.com/repos/unclehowell/datro/releases').then(function(r){return r.json();}).then(function(list){
+          var bp=list.filter(function(x){return x.tag_name && x.tag_name.startsWith('bpvsbuckler-');});
+          bp.sort(function(a,b){return new Date(b.published_at)-new Date(a.published_at);});
+          var latest=bp[0]; if(!latest) return;
+          var ver=latest.tag_name.replace(/^bpvsbuckler-/,'');
+          if(ver!==deployed && found){ found.textContent=deployed+' (update: '+ver+')'; }
+        }).catch(function(){});
+      }).catch(function(){});
+    }catch(e){}
+  }
+  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',patchVersion);}else{patchVersion();}
+})();
+</script>
+
+</body>
 </html>
