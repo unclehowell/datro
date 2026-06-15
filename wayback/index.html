@@ -28,7 +28,7 @@
     .header-count{font-size:0.65rem;color:#667;white-space:nowrap}
 
     /* -- SCROLLABLE CONTENT -- */
-    #content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0.5rem 0.5rem}
+    #content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0.5rem}
 
     /* -- TAG BAR (scrollable chips) -- */
     #tag-bar{
@@ -102,20 +102,21 @@
     .pagination button.active-page{background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.35)}
     .pagination .info{color:#667;font-size:0.7rem}
 
-    /* -- BOTTOM TAB BAR -- */
-    #bottom-tabs{
-      display:flex;background:#1e1e3e;border-top:1px solid rgba(255,255,255,0.08);
-      flex-shrink:0;padding:0.2rem 0;padding-bottom:max(0.2rem,env(safe-area-inset-bottom));
+    /* -- TOP TABS -- */
+    #top-tabs{
+      display:flex;background:#1e1e3e;border-bottom:1px solid rgba(255,255,255,0.08);
+      flex-shrink:0;overflow-x:auto;scrollbar-width:none;
     }
+    #top-tabs::-webkit-scrollbar{display:none}
     .btab{
-      flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
-      padding:0.25rem 0;cursor:pointer;color:#667;font-size:0.55rem;gap:0.1rem;
-      transition:color 0.15s;touch-action:manipulation;min-height:48px;
+      flex:1 0 auto;padding:0.4rem 0.5rem;cursor:pointer;color:#667;
+      font-size:0.65rem;text-align:center;transition:all 0.15s;
+      touch-action:manipulation;min-height:44px;white-space:nowrap;
       border:none;background:none;font-family:inherit;
+      border-bottom:2px solid transparent;
     }
-    .btab .btab-icon{font-size:1.2rem;line-height:1}
-    .btab.active{color:#aac}
-    .btab.active .btab-icon{color:#ccd}
+    .btab .btab-icon{font-size:1rem;display:block;margin-bottom:0.05rem}
+    .btab.active{color:#bcc;border-bottom-color:#889}
     .btab:active{color:#889}
 
     /* -- MODAL (bottom sheet on mobile) -- */
@@ -202,6 +203,8 @@
       <span class="header-count" id="header-count"></span>
     </header>
 
+    <nav id="top-tabs"></nav>
+
     <div id="content">
       <div id="tag-bar"></div>
       <div id="all-search-wrapper" style="display:none">
@@ -210,8 +213,6 @@
       <div class="gallery" id="gallery"></div>
       <div class="pagination" id="pagination"></div>
     </div>
-
-    <nav id="bottom-tabs"></nav>
   </div>
 
   <div class="modal-overlay" id="modal">
@@ -267,7 +268,7 @@
       const allSearch = document.getElementById('all-search');
       const allSearchWrapper = document.getElementById('all-search-wrapper');
       const versionTag = document.getElementById('version-tag');
-      const bottomTabs = document.getElementById('bottom-tabs');
+      const topTabs = document.getElementById('top-tabs');
       const modal = document.getElementById('modal');
       const modalTitle = document.getElementById('modal-title');
       const modalTags = document.getElementById('modal-tags');
@@ -310,13 +311,13 @@
         }catch{return[]}
       }
 
-      function renderBottomTabs(){
-        bottomTabs.innerHTML=CATEGORIES.map(c=>
+      function renderTopTabs(){
+        topTabs.innerHTML=CATEGORIES.map(c=>
           '<button class="btab'+(c.name===currentCat?' active':'')+'" data-cat="'+c.name+'">'+
           '<span class="btab-icon">'+c.icon+'</span><span>'+c.label+'</span>'+
           '</button>'
         ).join('');
-        bottomTabs.querySelectorAll('.btab').forEach(el=>{
+        topTabs.querySelectorAll('.btab').forEach(el=>{
           el.addEventListener('click',()=>{if(currentFile)closeModal();switchCategory(el.dataset.cat)});
         });
       }
@@ -339,7 +340,7 @@
 
       function switchCategory(cat){
         currentCat=cat;currentPage=1;
-        bottomTabs.querySelectorAll('.btab').forEach(el=>el.classList.toggle('active',el.dataset.cat===cat));
+        topTabs.querySelectorAll('.btab').forEach(el=>el.classList.toggle('active',el.dataset.cat===cat));
         allSearchWrapper.style.display=cat==='all'?'block':'none';
         if(cat==='all')allSearch.value='';
         applyFilter();
@@ -466,7 +467,7 @@
         if(modal.style.display==='block'){closeModal();return}
         currentCat=qs('cat')||'images';activeFilters.clear();
         const t=qs('tag');if(t)t.split(',').filter(Boolean).forEach(x=>activeFilters.add(x.startsWith('#')?x:'#'+x));
-        renderBottomTabs();applyFilter();
+        renderTopTabs();applyFilter();
         const f=qs('file');if(f){const found=(allData.all||[]).find(item=>item.path===f);if(found)openModal(found)}
       });
 
@@ -482,7 +483,7 @@
         currentCat=qs('cat')||'images';
         const tagParam=qs('tag');
         if(tagParam)tagParam.split(',').filter(Boolean).forEach(t=>activeFilters.add(t.startsWith('#')?t:'#'+t));
-        renderBottomTabs();applyFilter();
+        renderTopTabs();applyFilter();
         const fileParam=qs('file');
         if(fileParam){const found=(allData.all||[]).find(item=>item.path===fileParam);if(found)openModal(found)}
       })();
