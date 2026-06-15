@@ -1,127 +1,198 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Great House Farm Dispute</title>
-    <script src="https://cdn.tailwindcss.com" type="7d4d1992dab4e6b8f502e18d-text/javascript"></script>
-    <style type="text/css">@font-face {font-family:Courier Prime;font-style:normal;font-weight:400;src:url(/cf-fonts/s/courier-prime/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Courier Prime;font-style:normal;font-weight:400;src:url(/cf-fonts/s/courier-prime/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Courier Prime;font-style:normal;font-weight:700;src:url(/cf-fonts/s/courier-prime/5.2.8/latin-ext/700/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Courier Prime;font-style:normal;font-weight:700;src:url(/cf-fonts/s/courier-prime/5.2.8/latin/700/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}@font-face {font-family:Special Elite;font-style:normal;font-weight:400;src:url(/cf-fonts/s/special-elite/5.2.8/latin-ext/400/normal.woff2);unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF;font-display:swap;}@font-face {font-family:Special Elite;font-style:normal;font-weight:400;src:url(/cf-fonts/s/special-elite/5.2.8/latin/400/normal.woff2);unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;font-display:swap;}</style>
-    <link href="https://unpkg.com/@measured/puck@0.16.0/dist/index.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Courier Prime', monospace;
-            background-color: #0f172a;
-        }
-        .font-special {
-            font-family: 'Special Elite', cursive;
-        }
-        .puck-root {
-            --puck-color-grey-10: #1e293b;
-            --puck-color-grey-1: #0f172a;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        @keyframes slideInRight {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
-        }
-        .animate-slide-in-right {
-            animation: slideInRight 0.3s ease-out forwards;
-        }
-    </style>
-    <script async src="https://js.stripe.com/v3/buy-button.js" type="7d4d1992dab4e6b8f502e18d-text/javascript"></script>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^18.2.0/",
-    "react": "https://esm.sh/react@^18.2.0",
-    "react-dom/": "https://esm.sh/react-dom@^18.2.0/",
-    "react-dom": "https://esm.sh/react-dom@^18.2.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
-    "jspdf": "https://esm.sh/jspdf@2.5.1",
-    "@measured/puck": "https://esm.sh/@measured/puck@0.16.0?external=react,react-dom"
-  }
-}
-</script>
-  <script type="module" crossorigin src="/assets/index-89LfAgl1.js" data-cfasync="false"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Great House Farm Dispute</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Special+Elite&display=swap" rel="stylesheet">
+  <link href="css/main.css" rel="stylesheet">
 </head>
-<body class="text-slate-200 antialiased overflow-hidden h-screen w-screen">
-    
+<body>
+  <!-- Preloader -->
+  <div id="preloader">
+    <div class="spinner"></div>
+    <div class="preload-text">Loading Great House Farm Story&hellip;</div>
+  </div>
 
-<div id="root"></div>
+  <!-- Splash Overlay -->
+  <div id="splash-overlay">
+    <div class="splash-panel"></div>
+  </div>
 
-<script data-cfasync="false">
-(function() {
-  var done = false;
-  var obs = new MutationObserver(function() {
-    if (done) return;
-    var nav = document.querySelector("nav");
-    if (!nav) return;
-    var links = nav.querySelectorAll("a");
-    var foundBeur = false;
-    for (var i = 0; i < links.length; i++) {
-      if (links[i].textContent.trim() === "Beurcracy") { foundBeur = true; break; }
-    }
-    if (!foundBeur) {
-      var repLink = Array.from(links).find(function(a) { return a.textContent.trim() === "Reparations"; });
-      if (repLink) {
-        var a = document.createElement("a");
-        a.href = "/beurcracy/";
-        a.textContent = "Beurcracy";
-        a.className = repLink.className;
-        repLink.parentNode.insertBefore(a, repLink.nextSibling);
-      }
-    }
-    done = true;
-  });
-  obs.observe(document.body, { childList: true, subtree: true });
-})();
-</script>
+  <!-- Character Bubble -->
+  <div id="character-bubble"></div>
 
-<script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="7d4d1992dab4e6b8f502e18d-|49" defer></script><script type="3a0767a3a213909609a2b0c8-text/javascript">(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0b4f3b568d0d841',t:'MTc4MTM5NDE0OA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script><script src="/cdn-cgi/scripts/7d0fa10a/cloudflare-static/rocket-loader.min.js" data-cf-settings="3a0767a3a213909609a2b0c8-|49" defer></script><script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'a0c2bd249a0e4c58',t:'MTc4MTUzODcxNA=='};var a=document.createElement('script');a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
-<script defer>
-(function(){
-  function hideEdit(){
-    try{
-      var nodes=document.querySelectorAll('button, [role="button"], a');
-      for(var i=0;i<nodes.length;i++){
-        var el=nodes[i];
-        if(/Edit Content/i.test((el.textContent||el.innerText||el.getAttribute('aria-label')||'')).trim()){ el.style.display='none'; }
-      }
-    }catch(e){}
-  }
-  function patchVersion(){
-    try{
-      fetch('version.txt').then(function(r){return r.text();}).then(function(v){
-        var deployed=(v||'').trim();
-        var root=document.getElementById('root'); if(!root) return;
-        var candidates=root.querySelectorAll('*');
-        var found=null;
-        for(var i=0;i<candidates.length;i++){
-          var el=candidates[i];
-          var txt=(el.textContent||'').trim();
-          if(/^v\d+\.\d+/.test(txt)){ found=el; break; }
-        }
-        if(found){ found.textContent=deployed; }
-        hideEdit();
-        fetch('https://api.github.com/repos/unclehowell/datro/releases').then(function(r){return r.json();}).then(function(list){
-          var bp=list.filter(function(x){return x.tag_name && x.tag_name.startsWith('bpvsbuckler-');});
-          bp.sort(function(a,b){return new Date(b.published_at)-new Date(a.published_at);});
-          var latest=bp[0]; if(!latest) return;
-          var ver=latest.tag_name.replace(/^bpvsbuckler-/,'');
-          if(ver!==deployed && found){ found.textContent=deployed+' (update: '+ver+')'; }
-        }).catch(function(){});
-      }).catch(function(){});
-    }catch(e){}
-  }
-  if(document.readyState==='loading'){document.addEventListener('DOMContentLoaded',patchVersion);}else{patchVersion();}
-})();
-</script>
+  <!-- App Root -->
+  <div id="app-root">
+    <!-- Header -->
+    <header id="header">
+      <div style="display:flex;justify-content:space-between;align-items:center;width:100%;padding-bottom:0.75rem;">
+        <div></div>
+        <div id="header-center" style="position:absolute;left:50%;transform:translateX(-50%);top:0.75rem;">
+          <div class="header-brand" data-switch="timeline">Great House Farm Story</div>
+        </div>
+        <div style="display:flex;align-items:center;gap:1rem;">
+          <button id="mobile-menu-btn" aria-label="Menu">
+            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
+          </button>
+        </div>
+      </div>
 
+      <nav id="nav-desktop">
+        <button class="view-nav-btn active-home" data-view="timeline">Home</button>
+        <button class="view-nav-btn" data-view="claim">Reparations</button>
+        <button class="view-nav-btn" data-view="script">Script</button>
+      </nav>
+    </header>
+
+    <!-- Mobile Menu -->
+    <div id="mobile-menu-overlay"></div>
+    <nav id="mobile-menu">
+      <button class="close-btn">✕</button>
+      <button class="mobile-nav-btn" data-mobile-view="timeline">Home</button>
+      <button class="mobile-nav-btn" data-mobile-view="claim">Reparations</button>
+      <button class="mobile-nav-btn" data-mobile-view="script">Script</button>
+    </nav>
+
+    <!-- Main Content -->
+    <div id="main">
+      <!-- Timeline View -->
+      <div id="timeline-view">
+        <div id="scene-display" class="no-scrollbar">
+          <div id="narration-area">
+            <div id="narration-label">NARRATION</div>
+            <div id="narration-text"></div>
+          </div>
+        </div>
+
+        <div id="slide-counter">1 / 100</div>
+
+        <div id="gallery-btn">
+          <div class="gallery-trigger">
+            <div class="gallery-icons">
+              <span class="gallery-icon">📄</span>
+              <span class="gallery-icon">🖼️</span>
+              <span class="gallery-icon">📰</span>
+              <span class="gallery-icon">📧</span>
+              <span class="gallery-icon">📝</span>
+            </div>
+            <svg width="20" height="20" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+        </div>
+
+        <!-- Nav Arrows -->
+        <button class="nav-arrow left" id="prev-scene-btn">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="nav-arrow right" id="next-scene-btn">
+          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
+        </button>
+
+        <!-- Timeline Controls -->
+        <div id="timeline-controls">
+          <div id="scrubber-area">
+            <div id="scrubber-bar">
+              <div id="scrubber-progress"></div>
+              <div id="scrubber-handle"></div>
+            </div>
+            <div class="scrubber-tooltip" style="left:0%">Slide 1: 1100</div>
+          </div>
+          <div id="controls-bar">
+            <button class="ctrl-btn" id="prev-scene-btn-inner" title="Previous">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <button class="play-btn" id="play-btn" title="Play/Pause">
+              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+            </button>
+            <button class="ctrl-btn" id="next-scene-btn-inner" title="Next">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
+            </button>
+            <button class="ctrl-btn" id="voice-toggle-btn" title="Toggle Voice">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
+            </button>
+            <div class="voice-slider-container">
+              <span class="voice-slider-label desktop-label">Voice</span>
+              <span class="voice-slider-label mobile-label">V</span>
+              <input type="range" id="voice-slider" min="0" max="1" step="0.01" value="0.5">
+            </div>
+            <button class="ctrl-btn" id="minimize-btn" title="Minimize Controls">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Claim View -->
+      <div id="claim-view" class="view-page">
+        <div class="view-toolbar">
+          <div class="view-toolbar-left">
+            <span class="view-brand">Great House Farm Story</span>
+          </div>
+          <div class="view-toolbar-right">
+            <button class="view-toolbar-btn" data-switch="timeline">Home</button>
+            <a class="view-toolbar-btn primary" href="#" id="download-claim-btn">Download Brief</a>
+          </div>
+        </div>
+        <div class="puck-content" id="claim-content"></div>
+      </div>
+
+      <!-- Script View -->
+      <div id="script-view" class="view-page">
+        <div class="view-toolbar">
+          <div class="view-toolbar-left">
+            <span class="view-brand">Great House Farm Story</span>
+          </div>
+          <div class="view-toolbar-right">
+            <button class="view-toolbar-btn" data-switch="timeline">Home</button>
+            <a class="view-toolbar-btn primary" href="#" id="download-script-btn">Download Script</a>
+          </div>
+        </div>
+        <div class="puck-content" id="script-content"></div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer">
+      <div class="footer-left">
+        <a href="https://datro.xyz" target="_blank" rel="noopener noreferrer">Williams/Buckler Family Estate</a>
+        <span style="color:#334155">|</span>
+        <span id="version-display">Deployed: <span id="deployed-version">Loading&hellip;</span></span>
+        <span id="update-notice">Update available: <span id="latest-version">&mdash;</span></span>
+      </div>
+      <div class="footer-right">
+        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">f</a>
+        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">&#x1F4F7;</a>
+        <a href="https://x.com" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X">&#x1D4AD;</a>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Archive Modal -->
+  <div id="archive-modal">
+    <div class="archive-panel">
+      <div class="archive-header">
+        <div>
+          <div class="archive-title" id="archive-modal-title"></div>
+        </div>
+        <button id="archive-modal-close" style="background:none;border:none;color:#94a3b8;font-size:1.25rem;cursor:pointer;">✕</button>
+      </div>
+      <div class="archive-body no-scrollbar" id="archive-modal-body"></div>
+    </div>
+  </div>
+
+  <!-- Source Modal -->
+  <div id="source-modal">
+    <div class="source-panel">
+      <button id="source-modal-close" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#94a3b8;font-size:1.25rem;cursor:pointer;">✕</button>
+      <div class="source-icon" id="source-modal-icon"></div>
+      <div class="source-title" id="source-modal-title"></div>
+      <div class="source-type" id="source-modal-type"></div>
+      <a class="source-link" href="#" id="source-modal-link">Access Record</a>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
 </body>
 </html>
