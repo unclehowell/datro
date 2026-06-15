@@ -1,5 +1,12 @@
 # Changelog
 
+## [financecheque-v0.0.1.52] - 2026-06-15
+
+### Fixed
+- - fix: remove console.log from 3 files
+- fix: remove console.log from 3 files
+- fix: remove console.log from 3 files
+
 ## [financecheque-v0.0.1.57] - 2026-06-01
 
 ### Fixed

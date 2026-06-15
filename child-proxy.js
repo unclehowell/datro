@@ -46,7 +46,6 @@ async function register() {
       body: JSON.stringify({ childId: CHILD_ID, machine_id: CHILD_ID, machine_name: os.hostname(), url: SELF_URL }),
     });
     if (res.ok) {
-      console.log(`[child-proxy] Registered as ${CHILD_ID}`);
     } else {
       console.error(`[child-proxy] Registration failed: ${res.status}`);
     }
