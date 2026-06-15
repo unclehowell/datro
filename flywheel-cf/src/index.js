@@ -468,7 +468,7 @@ const AGENT_TOOLS = {
 // ── Agentic Loop (ReAct Pattern: Think → Tool → Observe → Repeat) ──
 
 async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHtml, ctx) {
-  const token = env.GITHUB_TOKEN;
+  const token = resolveToken(env);
   const maxIterations = 6;
   const conversation = [];
   let currentHtml = html;
@@ -1835,7 +1835,7 @@ function parseAIResponse(text, html) {
 }
 
 async function processBranchWithAI(env, branch) {
-  const token = env.GITHUB_TOKEN;
+  const token = resolveToken(env);
   console.log(`AI engine analyzing ${branch}`);
 
   // Research live website
@@ -2723,9 +2723,9 @@ export default {
       const cneiCooldown = Math.floor(cooldown / 2);
       const actualCooldown = branch === 'cnei' ? cneiCooldown : cooldown;
       const now = Math.floor(Date.now() / 1000);
-      const lastRelease = await getLatestReleaseDate(env.GITHUB_TOKEN, branch);
+      const lastRelease = await getLatestReleaseDate(resolveToken(env), branch);
       const elapsed = now - lastRelease;
-      const maxNum = await getMaxBranchReleaseNum(env.GITHUB_TOKEN, branch);
+      const maxNum = await getMaxBranchReleaseNum(resolveToken(env), branch);
       const isCD = lastRelease > 0 && elapsed < actualCooldown;
       const info = {
         branch, gear: config.gear, cooldown: actualCooldown, now, lastRelease,
@@ -2819,12 +2819,12 @@ export default {
     }
     if (url.pathname === '/__agent') {
       const branch = url.searchParams.get('branch') || 'cnei';
-      const prompt = url.searchParams.get('prompt') || 'Analyze this branch and suggest improvements';
-      const idx = await getFileContent(env.GITHUB_TOKEN, branch, 'index.html');
-      const hdr = await getFileContent(env.GITHUB_TOKEN, branch, '_headers');
-      const wingFiles = await getAllWingFiles(env.GITHUB_TOKEN, branch);
+      const tok = resolveToken(env);
+      const idx = await getFileContent(tok, branch, 'index.html');
+      const hdr = await getFileContent(tok, branch, '_headers');
+      const wingFiles = await getAllWingFiles(tok, branch);
       const wallet = await getBranchWallet(env, branch);
-      const result = await runAgentLoop(env, branch, idx ? idx.content : '', hdr ? hdr.content : '', wingFiles, '', { token: env.GITHUB_TOKEN, env });
+      const result = await runAgentLoop(env, branch, idx ? idx.content : '', hdr ? hdr.content : '', wingFiles, '', { token: tok, env });
       return new Response(JSON.stringify({ branch, wallet, agentResult: result }, null, 2), {
         headers: { 'Content-Type': 'application/json' }
       });
