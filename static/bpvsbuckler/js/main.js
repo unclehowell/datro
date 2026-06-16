@@ -45,13 +45,15 @@
     return map[type] || "📄";
   }
 
-  function getWelshFlag(name) {
+function getWelshFlag(name) {
     var keywords = ["williams", "buckler", "family", "marged", "janet", "branwen",
-      "billy", "mary", "rhys", "watkin", "alun michael"];
+      "billy", "mary", "watkin", "alun michael"];
     var lower = name.toLowerCase();
     for (var k = 0; k < keywords.length; k++) {
-      if (lower.indexOf(keywords[k]) !== -1) return "🏴󠁧󠁢󠁷󠁬󠁳󠁿";
+      if (lower.indexOf(keywords[k]) !== -1) return "🏴\U000e0067\U000e0062\U000e0077\U000e006c\U000e0073\U000e007f";
     }
+    return "🇬🇧";
+  }
     return "🇬🇧";
   }
 
@@ -334,29 +336,21 @@
 
     // Set the active button
     document.querySelectorAll(".view-nav-btn").forEach(function(btn) {
-      btn.classList.remove("active", "active-home", "active-claim", "active-script");
+      btn.classList.remove("active", "active-home", "active-script");
       if (btn.dataset.view === view) {
         btn.classList.add("active");
         if (view === "timeline") btn.classList.add("active-home");
-        else if (view === "claim") btn.classList.add("active-claim");
         else if (view === "script") btn.classList.add("active-script");
       }
     });
 
     if (view === "timeline") {
       document.getElementById("timeline-view").style.display = "flex";
-      document.getElementById("claim-view").classList.remove("active");
       document.getElementById("script-view").classList.remove("active");
       var bubble = document.getElementById("character-bubble");
       bubble.classList.remove("visible");
-    } else if (view === "claim") {
-      document.getElementById("timeline-view").style.display = "none";
-      document.getElementById("claim-view").classList.add("active");
-      document.getElementById("script-view").classList.remove("active");
-      renderClaimView();
     } else if (view === "script") {
       document.getElementById("timeline-view").style.display = "none";
-      document.getElementById("claim-view").classList.remove("active");
       document.getElementById("script-view").classList.add("active");
       renderScriptView();
     }
@@ -392,7 +386,7 @@
     title.className = "splash-title";
     title.style.textAlign = "center";
     title.style.marginBottom = "2rem";
-    title.textContent = state.pages.script.title || "THE SCRIPT";
+    title.textContent = state.pages.script.title || "THE TIMELINE";
     container.appendChild(title);
 
     for (var i = 0; i < state.scenes.length; i++) {
@@ -706,8 +700,8 @@
     tooltip.className = "scrubber-tooltip";
     area.appendChild(tooltip);
 
-    area.style.height = "3rem";
-    area.style.top = "-1.5rem";
+    area.style.height = "0.5rem";
+    area.style.top = "0";
     area.style.cursor = "pointer";
     bar.style.height = "0.5rem";
     bar.style.background = "rgba(255,255,255,0.15)";
