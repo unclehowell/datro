@@ -1,218 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Great House Farm Story</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400;1,700&family=Special+Elite&display=swap" rel="stylesheet">
-  <link href="css/main.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Great House Farm Dispute</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/@measured/puck@0.16.0/dist/index.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #0f172a;
+        }
+        .font-special {
+            font-family: 'Special Elite', cursive;
+        }
+        /* Puck Editor Overrides to match theme */
+        .puck-root {
+            --puck-color-grey-10: #1e293b;
+            --puck-color-grey-1: #0f172a;
+        }
+        
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        .animate-slide-in-right {
+            animation: slideInRight 0.3s ease-out forwards;
+        }
+    </style>
+
+    <link rel="stylesheet" href="/index.css">
+    <!-- Stripe Script -->
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^18.2.0/",
+    "react": "https://esm.sh/react@^18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@^18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@^18.2.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "jspdf": "https://esm.sh/jspdf@2.5.1",
+    "@measured/puck": "https://esm.sh/@measured/puck@0.16.0?external=react,react-dom"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-RKNczPHi.js"></script>
 </head>
-<body>
-  <!-- Preloader -->
-  <div id="preloader">
-    <div class="spinner"></div>
-    <div class="preload-text">Loading Great House Farm Story&hellip;</div>
-  </div>
-
-  <!-- Splash Overlay -->
-  <div id="splash-overlay">
-    <div class="splash-panel" style="display:flex;flex-direction:column;justify-content:center;align-items:center;min-height:100vh;box-sizing:border-box;">
-      <button id="enter-btn" style="padding:1rem 3rem;font-size:1.25rem;background:#3b82f6;color:#fff;border:none;border-radius:0.5rem;cursor:pointer;transition:background 0.2s;">Enter</button>
-    </div>
-  </div>
-
-  <!-- Character Bubble -->
-  <div id="character-bubble"></div>
-
-  <!-- App Root -->
-  <div id="app-root">
-    <!-- Header -->
-    <header id="header">
-      <div style="display:flex;justify-content:space-between;align-items:center;width:100%;padding-bottom:0.75rem;">
-        <div></div>
-        <div id="header-center" style="position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);">
-          <div class="header-brand" data-switch="timeline">Great House Farm Story</div>
-        </div>
-        <div style="display:flex;align-items:center;gap:1rem;">
-          <button id="mobile-menu-btn" aria-label="Menu">
-            <svg width="28" height="28" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"/></svg>
-          </button>
-        </div>
-      </div>
-
-      <nav id="nav-desktop">
-        <button class="view-nav-btn active-home" data-view="timeline">Home</button>
-        <button class="view-nav-btn" data-view="claim">Reparations</button>
-        <button class="view-nav-btn" data-view="script">Script</button>
-      </nav>
-    </header>
-
-    <!-- Mobile Menu -->
-    <div id="mobile-menu-overlay"></div>
-    <nav id="mobile-menu">
-      <button class="close-btn">✕</button>
-      <button class="mobile-nav-btn" data-mobile-view="timeline">Home</button>
-      <button class="mobile-nav-btn" data-mobile-view="claim">Reparations</button>
-      <button class="mobile-nav-btn" data-mobile-view="script">Script</button>
-    </nav>
-
-    <!-- Main Content -->
-    <div id="main">
-      <!-- Timeline View -->
-      <div id="timeline-view">
-        <div id="scene-display" class="no-scrollbar">
-          <div id="narration-area">
-            <div id="narration-label">NARRATION</div>
-            <div id="narration-text"></div>
-          </div>
-        </div>
-
-        <div id="slide-counter">1 / 100</div>
-
-        <div id="gallery-btn">
-          <div class="gallery-trigger">
-            <div class="gallery-icons">
-              <span class="gallery-icon">📄</span>
-              <span class="gallery-icon">🖼️</span>
-              <span class="gallery-icon">📰</span>
-              <span class="gallery-icon">📧</span>
-              <span class="gallery-icon">📝</span>
-            </div>
-          </div>
-        </div>
-
-        <!-- Nav Arrows -->
-        <button class="nav-arrow left" id="prev-scene-btn">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="nav-arrow right" id="next-scene-btn">
-          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
-
-        <!-- Timeline Controls -->
-        <div id="timeline-controls">
-          <div id="scrubber-area">
-            <div id="scrubber-bar">
-              <div id="scrubber-progress"></div>
-              <div id="scrubber-handle"></div>
-            </div>
-            <div class="scrubber-tooltip" style="left:0%">Slide 1: 1100</div>
-          </div>
-          <div id="controls-bar">
-            <button class="ctrl-btn" id="prev-scene-btn-inner" title="Previous">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
-            <button class="play-btn" id="play-btn" title="Play/Pause">
-              <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-            </button>
-            <button class="ctrl-btn" id="next-scene-btn-inner" title="Next">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 6 15 12 9 18"/></svg>
-            </button>
-            <button class="ctrl-btn" id="voice-toggle-btn" title="Toggle Voice">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 010 14.14M15.54 8.46a5 5 0 010 7.07"/></svg>
-            </button>
-            <div class="voice-slider-container">
-              <span class="voice-slider-label desktop-label">Voice</span>
-              <span class="voice-slider-label mobile-label">V</span>
-              <input type="range" id="voice-slider" min="0" max="1" step="0.01" value="0.5">
-            </div>
-            <button class="ctrl-btn" id="minimize-btn" title="Minimize/Restore">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-      <!-- Claim View -->
-      <div id="claim-view" class="view-page">
-        <div class="view-toolbar">
-          <div class="view-toolbar-left">
-            <span class="view-brand">Great House Farm Story</span>
-          </div>
-          <div class="view-toolbar-right">
-            <button class="view-toolbar-btn" data-switch="timeline">Home</button>
-            <a class="view-toolbar-btn primary" href="#" id="download-claim-btn">Download Brief</a>
-          </div>
-        </div>
-        <div class="puck-content" id="claim-content"></div>
-      </div>
-
-      <!-- Script View -->
-      <div id="script-view" class="view-page">
-        <div class="view-toolbar">
-          <div class="view-toolbar-left">
-            <span class="view-brand">Great House Farm Story</span>
-          </div>
-          <div class="view-toolbar-right">
-            <button class="view-toolbar-btn" data-switch="timeline">Home</button>
-            <a class="view-toolbar-btn primary" href="#" id="download-script-btn">Download Script</a>
-          </div>
-        </div>
-        <div class="puck-content" id="script-content"></div>
-      </div>
-    </div>
-
-    <!-- Footer -->
-    <footer id="footer">
-      <div class="footer-left">
-        <a href="https://datro.xyz" target="_blank" rel="noopener noreferrer" style="font-size:0.95rem;">Williams/Buckler Family Estate</a>
-        <span style="color:#334155;font-size:0.95rem;">|</span>
-        <span id="version-display" style="font-size:0.95rem;">Version: <span id="deployed-version">v0.0.1.24</span></span>
-        <span id="update-notice">Update available: <span id="latest-version">&mdash;</span></span>
-      </div>
-      <div class="footer-right">
-        <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A//bpvsbuckler.datro.xyz/" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Facebook">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 5 3.66 9.13 8.44 9.88v-6.99H7.9v-2.89h2.54V9.41c0-2.51 1.49-3.89 3.77-3.89 1.09 0 2.23.2 2.23.2v2.45h-1.25c-1.23 0-1.62.77-1.62 1.56v1.87h2.77l-.44 2.89h-2.33V22C18.34 21.13 22 16.99 22 12z" clip-rule="evenodd"/></svg>
-        </a>
-        <a href="https://www.instagram.com/share/?url=https%3A//bpvsbuckler.datro.xyz/&caption=Great%20House%20Farm%20Story%20-%20The%202026%20%C2%A3100%20Million%20Reparation%20Case%2C%20Wales" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Instagram">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.2a9.8 9.8 0 1 0 0 19.6 9.8 9.8 0 0 0 0-19.6zm0 4.8a5 5 0 1 1 0 10 5 5 0 0 1 0-10zm9.2-2.4a1.2 1.2 0 1 1-2.4 0 1.2 1.2 0 0 1 2.4 0z"/></svg>
-        </a>
-        <a href="https://twitter.com/intent/tweet?url=https%3A//bpvsbuckler.datro.xyz/&text=Great%20House%20Farm%20Story%20-%20The%202026%20%C2%A3100%20Million%20Reparation%20Case%2C%20Wales" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="X">
-          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.094-6.514-5.02 6.514H2.45l7.735-8.895L2.25 2.25h4.294l4.68 6.24L18.244 2.25zM17.5 19.25l-7.73-10.24H7.73l7.73 10.24h2.044z"/></svg>
-        </a>
-<stripe-buy-button buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc" publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ"></stripe-buy-button>
-        <button id="btc-donate-btn" style="background:#f7931a;color:#fff;border:none;border-radius:0.25rem;padding:0.25rem 0.75rem;font-size:0.85rem;cursor:pointer;margin-left:0.5rem;">&#x20BF; Donate</button>
-      </div>
-    </footer>
-  </div>
-
-  <!-- Archive Modal -->
-  <div id="archive-modal">
-    <div class="archive-panel">
-      <div class="archive-header">
-        <div>
-          <div class="archive-title" id="archive-modal-title"></div>
-        </div>
-        <button id="archive-modal-close" style="background:none;border:none;color:#94a3b8;font-size:1.25rem;cursor:pointer;">✕</button>
-      </div>
-      <div class="archive-body no-scrollbar" id="archive-modal-body"></div>
-    </div>
-  </div>
-
-  <!-- Source Modal -->
-  <div id="source-modal">
-    <div class="source-panel">
-      <button id="source-modal-close" style="position:absolute;top:1rem;right:1rem;background:none;border:none;color:#94a3b8;font-size:1.25rem;cursor:pointer;">✕</button>
-      <div class="source-icon" id="source-modal-icon"></div>
-      <div class="source-title" id="source-modal-title"></div>
-      <div class="source-type" id="source-modal-type"></div>
-      <a class="source-link" href="#" id="source-modal-link">Access Record</a>
-    </div>
-  </div>
-
-  <script src="js/main.js"></script>
-
-<!-- BTC Modal -->
-<div id="btc-modal" style="display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;">
-  <div style="background:#1e293b;border:2px solid #f7931a;border-radius:1rem;padding:2rem;max-width:28rem;width:90%;text-align:center;">
-    <h3 style="color:#f7931a;font-family:'Special Elite',cursive;margin-bottom:1rem;">Donate Bitcoin</h3>
-    <p style="color:#94a3b8;font-size:0.9rem;margin-bottom:1rem;word-break:break-all;">bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am</p>
-    <button id="btc-copy-btn" style="background:#f7931a;color:#fff;border:none;border-radius:0.5rem;padding:0.5rem 1.5rem;cursor:pointer;font-weight:bold;">Copy Address</button>
-    <button id="btc-close-btn" style="background:transparent;color:#94a3b8;border:1px solid #475569;border-radius:0.5rem;padding:0.5rem 1.5rem;cursor:pointer;margin-left:0.5rem;">Close</button>
-  </div>
-</div>
+<body class="text-slate-200 antialiased overflow-hidden h-screen w-screen">
+    <div id="root"></div>
 </body>
 </html>

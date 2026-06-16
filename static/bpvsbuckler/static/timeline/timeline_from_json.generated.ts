@@ -1,0 +1,4988 @@
+import type { TimelineEntry } from './types';
+
+export const TIMELINE: TimelineEntry[] = [
+  {
+    "year": "1100",
+    "location": "Llandough, Glamorgan",
+    "locationType": "other",
+    "description": "",
+    "narration": "Robert Fitzhamon grants the lordship of Llandough to the Walsche family, establishing feudal control of the area that includes the future Great House Farm.",
+    "scenes": [
+      {
+        "character": "ROBERT FITZHAMON",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "I grant Walsche the Llandough lordship to manage, tax and defend.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LORD WALSCHE",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "We now hold Llandough and its revenues under Fitzhamon's grant.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1215",
+    "location": "Llandough Church",
+    "locationType": "other",
+    "description": "",
+    "narration": "A substantial stone residence, Tŷ Mawr ('Great House'), is constructed beside St Dochdwy's church at Llandough as a manorial house, later known as Great House Farm.",
+    "scenes": [
+      {
+        "character": "MASTER MASON",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We're building a new stone manorial house beside St Dochdwy's.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL FARMER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Local lord's new stone house next to the parish church. Right ho!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1215",
+    "location": "Monastic Estate",
+    "locationType": "other",
+    "description": "",
+    "narration": "Tewkesbury Abbey and the Prior of Cardiff hold Great House and its lands, taking tithes and agricultural income from Llandough for over three centuries.",
+    "scenes": [
+      {
+        "character": "ABBOT'S STEWARD",
+        "icon": "cleric",
+        "side": "left",
+        "color": "#999",
+        "text": "Llandough's produce and tithes are entered as revenue for the abbey.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "VILLAGE WOMAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Our harvest and church payments go into the abbey's accounts.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1444",
+    "location": "Raglan",
+    "locationType": "other",
+    "description": "",
+    "narration": "Sir William Thomas Herbert of Raglan purchases the manor and lordship of Llandough and St Mary Church, bringing them into the Herbert family's territorial network.",
+    "scenes": [
+      {
+        "character": "SIR WILLIAM THOMAS",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We have bought Llandough manor and added it to the Herbert estates.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL PRIEST",
+        "icon": "cleric",
+        "side": "right",
+        "color": "#999",
+        "text": "Llandough's manorial control passes to the Herbert family of Raglan.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1536",
+    "location": "Legal Chambers",
+    "locationType": "other",
+    "description": "",
+    "narration": "Sir Edward Carne, a lawyer and diplomat, purchases the Llandough lordship from the 2nd Earl of Worcester, continuing high‑status lay ownership of the manor.",
+    "scenes": [
+      {
+        "character": "SIR EDWARD CARNE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "I have acquired the Llandough lordship from the Earl of Worcester.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LLANDOUGH TENANT",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The legal lord of Llandough changes from Worcester's line to Carne.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1539",
+    "location": "Great House",
+    "locationType": "other",
+    "description": "",
+    "narration": "Henry VIII's Dissolution of the Monasteries transfers Tewkesbury's ecclesiastical holdings, including Llandough lands, to the Crown as secular property.",
+    "scenes": [
+      {
+        "character": "ROYAL COMMISSIONER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "These former Tewkesbury lands now vest in the Crown by statute.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "OLDER VILLAGER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Control of local church lands moves from abbey to Crown authority.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1543",
+    "location": "Estate Office",
+    "locationType": "other",
+    "description": "",
+    "narration": "Post‑Dissolution grants move Llandough through lay owners and into the wider Herbert–Pembroke orbit, later feeding into what becomes the Bute estate.",
+    "scenes": [
+      {
+        "character": "HERBERT ESTATE LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Llandough is one of several manors consolidated into our estate.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "SMALLHOLDER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The superior owner changes again on paper; our tenure is recorded under them.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1552",
+    "location": "Manorial Court",
+    "locationType": "other",
+    "description": "",
+    "narration": "The Bute–Pembroke estate treats itself as manorial lord, issuing leases for Llandough Farm (about 166 acres) and recording long‑standing occupiers as tenants.",
+    "scenes": [
+      {
+        "character": "MANOR STEWARD",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We register Llandough occupiers as tenants in the Bute–Pembroke books.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "TENANT FARMER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Our occupation is recorded as a tenancy under the Bute–Pembroke estate.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1667",
+    "location": "Great House Farm",
+    "locationType": "other",
+    "description": "",
+    "narration": "A Williams ancestor is admitted to Great House via the manorial court, paying a substantial entry fine remembered in family tradition as a purchase, while estate records treat it as leasehold.",
+    "scenes": [
+      {
+        "character": "WILLIAMS ANCESTOR",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I paid a large court fine to enter Great House as our family's holding.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "HERBERT STEWARD",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Our roll shows the Williams entry as a manorial lease, not freehold.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS ANCESTOR",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "But this is our home now, purchased with honest coin for our heirs.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "HERBERT STEWARD",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The Court Baron record will show this as leasehold under our lordship.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS ANCESTOR",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "We have the receipt. Our children will know we bought this land.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1677",
+    "location": "Estate Records",
+    "locationType": "other",
+    "description": "",
+    "narration": "Through marriage, the Llandough lordship passes into the Talbot estate at Penrice and Margam, while the Williams family continues in occupation at Great House.",
+    "scenes": [
+      {
+        "character": "TALBOT HEIR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "By marriage we acquire Llandough among our Glamorgan holdings.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS FAMILY MEMBER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "The superior lord's name changes; our occupation at Great House continues.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1770",
+    "location": "Estate Transfer",
+    "locationType": "other",
+    "description": "",
+    "narration": "Great House passes through elite owners, including Valentine Morris and Sir Mark Wood, before later consolidation into the Bute estate.",
+    "scenes": [
+      {
+        "character": "VALENTINE MORRIS",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "I treat Great House as one of several Glamorgan assets for income.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL LABOURER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Estate owners change; our local work under their control continues.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1794",
+    "location": "Title Office",
+    "locationType": "other",
+    "description": "",
+    "narration": "Sir Mark Wood acquires title and treats Great House as a revenue asset within his wider property portfolio, before it is surveyed and later taken into Bute hands.",
+    "scenes": [
+      {
+        "character": "SIR MARK WOOD",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "I hold Great House as an income‑producing property in my portfolio.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS FARMER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Our long‑term home appears in someone else's accounts as an asset.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1818",
+    "location": "Estate Records",
+    "locationType": "other",
+    "description": "",
+    "narration": "Lambert Williams of Cardiff enters formal written agreements with the Bute estate between 1818 and 1835, evidencing the Williams family as a recognised legal entity in local property dealings.",
+    "scenes": [
+      {
+        "character": "LAMBERT WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "These written agreements show I deal with the Bute estate directly.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BUTE ESTATE AGENT",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "We sign deeds with Lambert Williams over Llandough premises, 1818–1835.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LAMBERT WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "These documents record our position for future generations to cite.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1818",
+    "location": "Estate Accounts",
+    "locationType": "other",
+    "description": "",
+    "narration": "Chief rents of Llandough are transferred into the manorial rental accounts, simplifying estate bookkeeping and packaging obligations for future buyers.",
+    "scenes": [
+      {
+        "character": "ESTATE ACCOUNTANT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We combine Llandough chief rents into the manorial rental column.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "COTTAGER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Our payments are re‑labelled on paper, but the amounts still fall on us.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1820",
+    "location": "Estate Offices",
+    "locationType": "other",
+    "description": "",
+    "narration": "A land exchange between the Marquess of Bute and Lord Plymouth in Llandough consolidates Great House within Bute's controlled block of estates.",
+    "scenes": [
+      {
+        "character": "BUTE REPRESENTATIVE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "This exchange secures Llandough parcels firmly within the Bute estate.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL OBSERVER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "New memoranda and surveys mark Bute as main landowner here.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1821",
+    "location": "Rent Collection",
+    "locationType": "other",
+    "description": "",
+    "narration": "Llandough and Cogan appear in Bute rentals from 1821 onward, consolidating manorial rents under a single administrative ledger controlled by the estate.",
+    "scenes": [
+      {
+        "character": "RENT COLLECTOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The Bute estate now logs Llandough and Cogan in the master rental.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS FARMER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "We pay to them, though this land has been ours for generations past.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1824",
+    "location": "Survey Office",
+    "locationType": "other",
+    "description": "",
+    "narration": "Following Sir Mark Wood's property auction, surveyor David Stewart records Great House Farm under the alias 'Cedfin' in the Bute estate survey of Glamorgan holdings.",
+    "scenes": [
+      {
+        "character": "SURVEYOR STEWART",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "I record this property as Great House Farm, alias Cedfin, in Bute accounts.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS OCCUPANT",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "The name on their maps matters little; we know who lives and works here.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "SURVEYOR STEWART",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "Tithes of Llandough purchased in 1824 are now under Bute ownership.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1840",
+    "location": "Estate Registry",
+    "locationType": "other",
+    "description": "",
+    "narration": "Census and tithe records shift terminology from 'Great House' to 'Great House Farm,' downgrading the property from a seat of governance to a commercial agricultural unit.",
+    "scenes": [
+      {
+        "character": "CENSUS CLERK",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "I enter this as Great House Farm, removing the designation of Court House.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS ELDER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "They rename our ancestral seat to erase our status and heritage claim.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ESTATE LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "A farm designation supports our treatment of occupants as tenant farmers.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS ELDER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "This administrative sleight-of-hand obscures three centuries of our standing.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1870",
+    "location": "Great House Living Room",
+    "locationType": "other",
+    "description": "",
+    "narration": "The Williams family discovers a Roman soldier in full armor beneath the living room floor while replacing flagstones. This critical archaeological evidence is not formally recorded or disclosed.",
+    "scenes": [
+      {
+        "character": "WILLIAMS FAMILY HEAD",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "We've found a Roman soldier in a stone-lined grave under our floor!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY MEMBER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "This proves the site is ancient and of great historical importance.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS FAMILY HEAD",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "We must tell someone—this could protect our home under the law.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL ANTIQUARIAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Fascinating find, but I doubt authorities will act on family testimony.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS FAMILY HEAD",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "One day this discovery will prove the true significance of this place.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1876",
+    "location": "Estate Offices",
+    "locationType": "other",
+    "description": "",
+    "narration": "The Bute Estate carves out 33 acres from Great House Farm for Llandough Limeworks, treating the land as their own property to lease to industry, ignoring the Williams claim.",
+    "scenes": [
+      {
+        "character": "BUTE AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We sever this land for the Limeworks. It's ours to lease commercially.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS FARMER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "But we live here! You cannot carve up land we've held for two centuries.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BUTE AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Estate records show no Williams ownership—only occupation under our lease.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS FARMER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Our 1667 receipt and occupation prove our right to this property.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BUTE AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Manorial records prevail. You are tenants, not owners, under our title.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1880",
+    "location": "Estate Records",
+    "locationType": "other",
+    "description": "",
+    "narration": "The property is systematically rebranded from 'Court House' to 'Grange' to 'Farm' in successive records, demoting occupants from gentry with tenure to mere tenant farmers.",
+    "scenes": [
+      {
+        "character": "ESTATE CLERK",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We now list it simply as a farm, eliminating all reference to Court House.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS DESCENDANT",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "This linguistic erasure strips our family of its historic manorial standing.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1897",
+    "location": "Great House Farm / Lavernock Point",
+    "locationType": "other",
+    "description": "",
+    "narration": "Thomas Williams of Great House daily carts Guglielmo Marconi and his radio equipment to and from Lavernock Point by horse and cart. On 13 May 1897 Marconi transmits the first wireless signal across op",
+    "scenes": [
+      {
+        "character": "THOMAS WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I cart Mr Marconi and his equipment to Lavernock Point each day from Great House.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "GUGLIELMO MARCONI",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Without Thomas Williams and his horse and cart, these experiments could not proceed.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "THOMAS WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "A Williams was at the mast on the day the signal crossed the water. That is recorded.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "REPORTER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The newspaper notes a Williams present at the mast during the successful transmission.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "THOMAS WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "They may call me a carter. But I am lord of this manor, not a peasant farmer.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1900",
+    "location": "Great House Farm",
+    "locationType": "other",
+    "description": "",
+    "narration": "Mary Williams is born into the family at Great House Farm, inheriting the Williams claim and continuing three centuries of unbroken occupation and assertion of ownership.",
+    "scenes": [
+      {
+        "character": "MIDWIFE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "A healthy daughter! The Williams line at Great House continues.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS MATRIARCH",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "She will know her heritage and defend this land when her time comes.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1920",
+    "location": "Great House Farm",
+    "locationType": "other",
+    "description": "",
+    "narration": "Mary Williams marries Frederick Buckler but retains her maiden name, consistent with local custom and the family's understanding that the Williams lineage embodies the historic basis of title.",
+    "scenes": [
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I marry Frederick Buckler but keep the Williams name for our claim.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FREDERICK BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "The land belongs to your family line; the Williams name must continue.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL PRIEST",
+        "icon": "cleric",
+        "side": "left",
+        "color": "#999",
+        "text": "Mary Williams of Great House Farm weds Frederick Buckler this day.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Our children will know they are Williams heirs to this ancestral home.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1926",
+    "location": "Estate Sale",
+    "locationType": "other",
+    "description": "",
+    "narration": "The Marquess of Bute sells Great House Farm. Sale documents list it under Bute ownership, with no mention of the Williams family's three-century occupation or claim.",
+    "scenes": [
+      {
+        "character": "BUTE ESTATE AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Great House Farm sells as Bute property. Occupants are sitting tenants.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "They sell our home as if we don't exist! Our family has been here since 1667.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "AUCTIONEER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Estate records show clear Bute title. Occupancy doesn't equal ownership.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Where is our 1667 deed? Our family has the receipt of purchase!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BUTE ESTATE AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Manorial court records supersede any claimed private family documents.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1926",
+    "location": "Purchase Agreement",
+    "locationType": "other",
+    "description": "",
+    "narration": "The Penarth Estate Company purchases Great House Farm at auction, acquiring whatever title the Bute estate held, subject to the unresolved Williams possession and claim.",
+    "scenes": [
+      {
+        "character": "PENARTH COMPANY DIRECTOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We purchase Great House Farm as an investment from the Bute auction.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "But you cannot buy what the Bute estate does not own! We hold this land.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "PENARTH COMPANY LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Our purchase includes registered title. Your occupation will be addressed.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Three hundred years of Williams possession is not mere occupation!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1930",
+    "location": "Great House Farm",
+    "locationType": "other",
+    "description": "",
+    "narration": "Despite the 1926 sale, the Williams-Buckler family remains in continuous occupation, maintaining the property and asserting their ownership against external claims.",
+    "scenes": [
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "We stay on our land. No sale can extinguish our family's rightful claim.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FREDERICK BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Our children work this farm and will inherit it as Williams heirs.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1953",
+    "location": "Great House Farm",
+    "locationType": "other",
+    "description": "",
+    "narration": "Frederick Buckler makes the last known rent payment around 1953. From this point, the family pay nothing to any claimant, and their occupation becomes wholly adverse under limitation law.",
+    "scenes": [
+      {
+        "character": "BILLY BUCKLER (YOUNG)",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "This has been our family home for as long as anyone can remember.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "We owe rent to no one. Your grandfather secured this place for our family.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1955",
+    "location": "Title Office / Great House Farm",
+    "locationType": "other",
+    "description": "",
+    "narration": "Frederick Buckler's tenancy expires on 2 February 1955. Adverse possession begins unambiguously. The family attempts to register their possessory claim but lack the formal deeds the registry requires.",
+    "scenes": [
+      {
+        "character": "REGISTRAR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We invite owners to register titles under the land registration system.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "I wish to register our ownership; we have occupied since 1667 and pay no rent.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "REGISTRAR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Do you have a deed, conveyance, or grant? Without documentary title we cannot register.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "We have family history, occupation since 1667, and our ancestor's entry receipt.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "REGISTRAR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Without formal documentation we cannot register your claimed ownership.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1962",
+    "location": "Court — First Possession Order",
+    "locationType": "other",
+    "description": "",
+    "narration": "Western Ground Rents, predecessor to BP Pension Trust, obtains the first possession order against the Bucklers on 11 December 1962 (Judge Temple Morris QC). It is never enforced due to the family's re",
+    "scenes": [
+      {
+        "character": "COURT CLERK",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Possession order granted, 11 December 1962. Registered against the farmhouse and garden.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "We will not leave. This is our home. We will appeal any order they obtain.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "RECORDS CLERK",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The landlord holds the order but has not yet moved to enforce it.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "We file a defence based on adverse possession under the Limitation Act 1939.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Our family has been here since 1667. No court order can make us leave.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1963",
+    "location": "GEC-Marconi Telecommunications Site, Llandough",
+    "locationType": "other",
+    "description": "",
+    "narration": "The Marconi Company (by then part of English Electric) constructs a telecommunications facility adjacent to Great House Farm. Surveys proceed without investigating the Williams ownership claim or Roma",
+    "scenes": [
+      {
+        "character": "MARCONI SURVEYOR",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "This land adjacent to the farm is suitable for our new telecom base station.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Will you investigate Roman remains here? Our family found a soldier in 1870.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARCONI OFFICIAL",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Our planning approval is in order. Family stories are not our concern.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "The soldier we found proves this site has major archaeological importance!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARCONI SURVEYOR",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "We see no heritage listing. Development proceeds as permitted.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1970",
+    "location": "Legal Office",
+    "locationType": "other",
+    "description": "",
+    "narration": "Mary Williams consults solicitors. Legal advice confirms the 1962 possession order was never enforced, the Limitation Act may have run in the family's favour, but court proceedings are essential to es",
+    "scenes": [
+      {
+        "character": "SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Your family's continuous possession since 1667 supports adverse possession.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Then we can prove ownership and settle this once and for all?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "The 1962 order exists but was not enforced. A court must rule on adverse possession.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "What if they refuse to rule on ownership and only address possession?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Ownership is the only issue that can conclusively settle this dispute.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1974",
+    "location": "Court / Great House Farm",
+    "locationType": "other",
+    "description": "",
+    "narration": "BP Pension Trust Ltd applies to enforce the 1962 possession order. Mary files a defence asserting adverse possession. On 31 October 1974, BP Pension Trust issues unilateral licence letters to Mrs Buck",
+    "scenes": [
+      {
+        "character": "COURT CLERK",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "BP Pension Trust applies to enforce the 1962 possession order forthwith.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS' SOLICITOR",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "We file a defence: the landlord's title has been extinguished by adverse possession since 1955.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Warrant to issue but not be enforced until 31 October 1974 pending appeal.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "We received a letter offering us a licence to stay rent-free. We never agreed to that.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "COURT CLERK",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "BP Pension Trust's October 1974 licence letter is now on the court record.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1975",
+    "location": "Estate Agent's Office",
+    "locationType": "other",
+    "description": "",
+    "narration": "The estate interest is transferred by the head of the title chain. Mary Williams argues the sale cannot extinguish her adverse possession claim, which was asserted on record the previous year.",
+    "scenes": [
+      {
+        "character": "ESTATE AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The superior title passes to new holders. Sitting occupants are noted in the file.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "You cannot sell what you do not own! My court case is still pending!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ESTATE AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Our registered title permits this transaction despite the pending occupants' claim.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Adjourned means unresolved—not dismissed! Our adverse possession defence stands!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1976",
+    "location": "Great House Farm",
+    "locationType": "other",
+    "description": "",
+    "narration": "New claimants demand rent. The Williams-Buckler family refuses, asserting continuous adverse possession since at least 1955, while owners rely on the unenforced 1962 order and the 1974 licence letter.",
+    "scenes": [
+      {
+        "character": "NEW OWNER'S AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "You must pay rent or vacate. We hold title to this property.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "We own this farm! Our family has been here for over three centuries!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "NEW OWNER'S AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Registered title is conclusive. Your occupation is without legal right.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Our continuous possession creates title! You've never proven you own it!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "The court has not ruled. Until ownership is determined, we stay.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1978",
+    "location": "Court",
+    "locationType": "other",
+    "description": "",
+    "narration": "Legal proceedings commence to determine possession, but again ownership is not adjudicated. The court focuses on narrow possession questions without resolving the fundamental ownership dispute.",
+    "scenes": [
+      {
+        "character": "OPPOSING COUNSEL",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We seek possession based on our client's registered title to the property.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "Respectfully, ownership must be determined first before possession can be ruled.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "This court will determine possession. Ownership is a separate matter.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "But possession flows from ownership! How can you rule on one without the other?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "We proceed on the possession claim. The ownership issue is not before us.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1978",
+    "location": "Archaeological Rescue Dig",
+    "locationType": "other",
+    "description": "",
+    "narration": "A small rescue excavation near Great House uncovers Roman remains, confirming archaeological significance, but the full extent is not disclosed and development pressures continue.",
+    "scenes": [
+      {
+        "character": "ARCHAEOLOGIST",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "We've found Roman artifacts confirming the Williams family's 1870 discovery.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "PLANNING OFFICER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "This is a limited dig. We've no basis for full site protection at this time.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "This proves our home sits on a major historical site! It must be protected!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "PLANNING OFFICER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Unless Cadw formally lists it, development can proceed subject to conditions.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ARCHAEOLOGIST",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "The full extent of remains likely won't be known until after demolition.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1980",
+    "location": "Court",
+    "locationType": "other",
+    "description": "",
+    "narration": "Possession proceedings drag on. The family argues that without determining ownership, any possession order is premature and procedurally unsafe, but their objection is not addressed.",
+    "scenes": [
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "You cannot lawfully determine possession without first establishing ownership!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "The claim before us is for possession, not a declaration of ownership.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "But if they don't own it, they can't claim possession from us!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "OPPOSING COUNSEL",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Our client has registered title. That is sufficient for this possession claim.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Registered title is not proof of ownership if obtained through defective process!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1982",
+    "location": "Property Transfer",
+    "locationType": "other",
+    "description": "",
+    "narration": "BP Properties Ltd is registered as proprietor of Great House Farm in November 1982, taking whatever title the chain provided. Mary Williams (Mrs Buckler) is still alive and in residence at the time of",
+    "scenes": [
+      {
+        "character": "BP PROPERTIES LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "We are registered as proprietor of Great House Farm from November 1982.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Another transfer! They keep selling our home while our adverse possession claim stands!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Our title is registered. The 1974 licence letter means your claim is not adverse.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "How can you be bona fide when our possession and claim are fully on record?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "We acquired from the registered proprietor. Your claim is against the prior vendor.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1983",
+    "location": "Great House Farm / Legal Office",
+    "locationType": "other",
+    "description": "",
+    "narration": "Mary Williams (Mrs Buckler) dies in 1983. Billy Buckler junior must now claim through her estate. The 1667 deed and later conveyances remain missing, preventing documentary proof of the family's posse",
+    "scenes": [
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "The 1667 deed and manorial records that would prove your claim are missing.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "My mother is gone. Where are the documents she always said we had?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ARCHIVE CLERK",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We have no record of any Williams conveyance in the Bute estate archives.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Convenient that every document proving our ownership has vanished!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Missing deeds raise serious questions. Billy must now claim through her estate.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1984",
+    "location": "BP Properties Offices",
+    "locationType": "other",
+    "description": "",
+    "narration": "BP Properties asserts title and relies on the 1974 licence letters issued by BP Pension Trust, its predecessor. The family never accepted or rejected those letters, and BP Properties now uses them to",
+    "scenes": [
+      {
+        "character": "BP PROPERTIES AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We hold registered title and rely on the 1974 licence letters sent to Mrs Buckler.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "Those letters were sent by BP Pension Trust in 1974—before you even owned this land!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We acquired the benefit of those letters as successors in title to BP Pension Trust.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "My mother never accepted that licence. She disputed it until she died in 1983!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES AGENT",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "She never rejected it in writing. The licence stands under BP Properties Ltd v Buckler.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1985",
+    "location": "Queen's Bench Division, Cardiff",
+    "locationType": "other",
+    "description": "",
+    "narration": "Proceedings before Hollis J in the Queen's Bench Division at Cardiff examine the adverse possession claim and the legal effect of the 1974 licence letters. The identity substitution from Mary Williams",
+    "scenes": [
+      {
+        "character": "OPPOSING COUNSEL",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Our client relies on the 1974 licence granting Mrs Buckler rent-free occupation for life.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "Mary Williams never accepted that licence and contested the name Mrs Buckler!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "The licence document refers to Mrs Buckler. Is that the same person as Mary Williams?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "I am Mary Williams! I never accepted the name Buckler on any legal document!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "OPPOSING COUNSEL",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Mary Williams married Frederick Buckler. Mrs Buckler is her legal married name.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1985",
+    "location": "Heritage Investigation",
+    "locationType": "other",
+    "description": "",
+    "narration": "The family raises the 1870 Roman soldier discovery and requests Cadw investigate before any demolition, but officials say they need formal application and supporting evidence to list.",
+    "scenes": [
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "We found a Roman soldier here in 1870! This site must be protected!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "CADW OFFICER",
+        "icon": "cleric",
+        "side": "right",
+        "color": "#999",
+        "text": "Do you have archaeological reports or documentation of the discovery?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "It was our family's discovery! This proves the site's national importance!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "CADW OFFICER",
+        "icon": "cleric",
+        "side": "right",
+        "color": "#999",
+        "text": "Without documented evidence, we cannot proceed with emergency listing.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "So family testimony of archaeological finds is ignored until it's too late?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1986",
+    "location": "Queen's Bench Division, Cardiff",
+    "locationType": "other",
+    "description": "",
+    "narration": "Hollis J gives judgment on 24 July 1986 in the Queen's Bench Division at Cardiff, ruling against the Bucklers. Fraud and identity-substitution allegations are noted but no investigation is ordered.",
+    "scenes": [
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "We allege fraud in the procurement of title and deliberate document suppression.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "OPPOSING COUNSEL",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "These are serious allegations without proof. Our client's title is registered.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "The missing 1667 deed and identity substitution demand investigation!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "Your fraud allegations are noted, but this court's task is the adverse possession point.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Under Takhar v Gracefield, fraud unravels all—but only if investigated!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1986",
+    "location": "Planning Department",
+    "locationType": "other",
+    "description": "",
+    "narration": "Following the Queen's Bench judgment, BP Properties applies for planning permission to demolish Great House Farm. The application proceeds without disclosing the Roman burial or the pending appeal.",
+    "scenes": [
+      {
+        "character": "PLANNING OFFICER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "BP Properties seeks permission to demolish and redevelop Great House Farm.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL COUNCILLOR",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "What about the family's claim? And the archaeological significance?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "PLANNING OFFICER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The ownership dispute is civil law. We assess the planning merits only.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "You can't permit demolition when ownership is contested and Roman remains exist!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "PLANNING OFFICER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Without official heritage listing, we cannot refuse based on archaeology.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1987",
+    "location": "Court of Appeal (Civil Division)",
+    "locationType": "other",
+    "description": "",
+    "narration": "The Court of Appeal (Dillon LJ) delivers judgment on 31 July 1987 in BP Properties Ltd v Buckler. The appeal is dismissed. The 1974 unilateral licence letter ended adverse possession without need for",
+    "scenes": [
+      {
+        "character": "DILLON LJ",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The unilateral 1974 licence letter ended adverse possession regardless of acceptance.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY BARRISTER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "My Lords—m'Lord—the licence was never accepted. Adverse possession must have continued!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "DILLON LJ",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Adverse possession ceased from receipt of the letters. BP Pension Trust's title revived.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY BARRISTER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The licence substituted Mrs Buckler for Mary Williams without consent or explanation!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "DILLON LJ",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Appeal dismissed. BP Properties Ltd is entitled to possession of the farm.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1987",
+    "location": "Family Meeting",
+    "locationType": "other",
+    "description": "",
+    "narration": "After the Court of Appeal ruling, family members reveal that Frederick Buckler had negotiated or settled legal matters prior to his death without informing the family, causing a lasting rift.",
+    "scenes": [
+      {
+        "character": "DAVID BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Dad said Grandad Frederick 'sorted it legally' before he died in secret.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "What did he sort? He never told us what he signed or agreed to!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MARY WILLIAMS",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I never authorised any settlement. I am the Williams heir, not Frederick!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "DAVID BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "That secrecy caused a rift and left us unsure what rights were signed away.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "If Grandad secretly dealt away our inheritance, that's another fraud!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1987",
+    "location": "European Court Inquiry",
+    "locationType": "other",
+    "description": "",
+    "narration": "Following the Court of Appeal ruling, the family explores an application to the European Court of Human Rights under Article 1 Protocol 1, but face the argument that domestic remedies are not exhauste",
+    "scenes": [
+      {
+        "character": "EUROPEAN RIGHTS LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "You have grounds for an Article 1 Protocol 1 claim on property deprivation.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Finally, a court that might examine what UK courts refused to address!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "GOVERNMENT SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Domestic remedies have not been exhausted. The application is premature.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "EUROPEAN RIGHTS LAWYER",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "Every UK court refused to determine ownership! What remedy remains?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "GOVERNMENT SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Procedural rules bar this application. Domestic courts have ruled conclusively.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Great House Farm — Chainsaw Siege",
+    "locationType": "other",
+    "description": "",
+    "narration": "Five bailiffs and twenty police arrive at dawn. Billy blocks the drive with a car, bars doors and windows. He revs a chainsaw. In a four-hour siege, bailiffs smash the farmhouse doors with pickaxes. C",
+    "scenes": [
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I've blocked the drive. You'll not get in. My children are right behind that door!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BAILIFF",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Open up now or we force entry. We have a court order and police authority.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "They're smashing the doors with pickaxes! The children are right behind it!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "They bashed the door through with the children on the other side! God help us!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BAILIFF",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Hand over the chainsaw. Drop it now.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Great House Farm — Forced Entry",
+    "locationType": "other",
+    "description": "",
+    "narration": "Bailiffs grab the running chainsaw through the broken door and disable it. The four-hour siege ends with police surging in. Branwen leaves with the three young children. Billy and friends hold the int",
+    "scenes": [
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "They grabbed the chainsaw through the door and cut it up. This is our home!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "I am leaving with the boys. Thomas is only three. I cannot keep them safe here.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "POLICE COMMANDER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The premises are being cleared under court order. All occupants must vacate.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ALUN MICHAEL MP",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "I warned the Lord Chancellor. The way this is being handled—somebody will be killed.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I am here to stay. I will fight this to the death. I own this farm.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Great House Farm — Final Eviction",
+    "locationType": "other",
+    "description": "",
+    "narration": "Billy is forcibly removed and taken to Llandough Hospital with injuries sustained during the eviction. Charges follow: assault on two bailiffs, criminal damage, and wanton or furious driving. He refus",
+    "scenes": [
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "You have no right! Get off this land! Ownership was never decided in any court!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "POLICE OFFICER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "You are under arrest. Stop resisting. An ambulance has been called.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "A dozen police on the farm and I won't leave—not until someone rules who owns it.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "POLICE OFFICER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "You face charges of assault on two bailiffs, criminal damage, and furious driving.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I'll not go to hospital—if I leave they come back and take everything we have left.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Llandough Hospital",
+    "locationType": "other",
+    "description": "",
+    "narration": "Billy Buckler lies injured in Llandough Hospital, refusing to leave for fear bailiffs will re-enter the farm. Branwen and three young children are in emergency accommodation. All possessions—and Mary'",
+    "scenes": [
+      {
+        "character": "NURSE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "You have significant injuries and must stay. You are not fit to leave.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "If I leave that hospital they'll take the farm. I won't go—not yet.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Billy is in Llandough Hospital. I have three boys and another coming. We have nothing.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Within hours of getting in they began demolition. Half the outbuilding roof is already off.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "NURSE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The police have barred you from the site. You cannot return. Please rest.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Hospital",
+    "locationType": "other",
+    "description": "",
+    "narration": "Billy Buckler is hospitalised with injuries from the forcible eviction. His pregnant wife Branwen and young children are homeless. All possessions remain sealed inside the empty farmhouse.",
+    "scenes": [
+      {
+        "character": "NURSE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "You have significant injuries from the eviction. You need to rest here.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "I need to get back to protect my home and my family's possessions!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "DOCTOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "You're in no condition to leave. The police have barred you from the site.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "What about my pregnant wife and children? Where are they sleeping tonight?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Billy is in hospital. I have the children and another on the way and nowhere to go.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Emergency Accommodation",
+    "locationType": "other",
+    "description": "",
+    "narration": "Branwen and the children stay with relatives. The family's belongings, farm equipment, and Mary Williams' journal documenting visitors and events are sealed inside Great House.",
+    "scenes": [
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "We're sleeping in my sister's front room with three children and one on the way.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "RELATIVE",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "You can stay as long as needed, but what will happen to your things?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Nan's journal was inside. Names, dates, all the visitors—now locked away.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Everything is locked inside—furniture, clothes, equipment, Nan's journal.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "They've taken our home and trapped our proof inside with it.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Legal Office",
+    "locationType": "other",
+    "description": "",
+    "narration": "The family's lawyers seek an emergency injunction to halt demolition pending heritage review and investigation of fraud allegations, but face procedural obstacles and time pressure.",
+    "scenes": [
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "We need an emergency injunction to stop demolition until Cadw investigates.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "COURT CLERK",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "You must demonstrate irreparable harm and good grounds for the injunction.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Demolition destroys an 800-year-old building and a Roman archaeological site!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "COURT CLERK",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Is the building listed? Has Cadw granted statutory protection?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Not yet, but we've applied! Demolition before listing would be irreversible!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Court",
+    "locationType": "other",
+    "description": "",
+    "narration": "A temporary injunction is granted, halting demolition for a brief period while Cadw considers emergency listing and the family's appeal attempts proceed through legal channels.",
+    "scenes": [
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "I grant a temporary injunction against demolition pending further hearing.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES LAWYER",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "This injunction frustrates our lawful rights following the Court of Appeal ruling!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Heritage protection and fraud allegations must be examined before demolition!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "The injunction is limited in time. Cadw must decide on listing promptly.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Every delay costs our client money and undermines the finality of judgments.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Cadw Offices",
+    "locationType": "other",
+    "description": "",
+    "narration": "Cadw conducts a rushed assessment of Great House Farm for emergency listing, but pressure from BP Properties and lack of accessible documentation impede the evaluation process.",
+    "scenes": [
+      {
+        "character": "CADW INSPECTOR",
+        "icon": "cleric",
+        "side": "left",
+        "color": "#999",
+        "text": "We need detailed architectural and historical evidence for listing.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "The house is 800 years old and sits on a Roman burial site!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "CADW INSPECTOR",
+        "icon": "cleric",
+        "side": "left",
+        "color": "#999",
+        "text": "Can you provide structural surveys, historical documentation, archaeological reports?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "All our family records were sealed inside when they evicted us!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "CADW INSPECTOR",
+        "icon": "cleric",
+        "side": "left",
+        "color": "#999",
+        "text": "Without supporting documentation, emergency listing is difficult to justify.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Press Conference",
+    "locationType": "other",
+    "description": "",
+    "narration": "The family appeals to the media and public, explaining that ownership was never determined, archaeological evidence was suppressed, and heritage protection has been denied.",
+    "scenes": [
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Since 1974, no court has ever ruled who actually owns this property!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JOURNALIST",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Why not? Isn't ownership the fundamental question in a possession case?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Exactly! They avoided that because our 321 years of possession proves ownership!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JOURNALIST",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "What about the archaeological finds your family discovered?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Ignored until it's convenient to dig up what's left after they destroy the house!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Community Meeting",
+    "locationType": "other",
+    "description": "",
+    "narration": "Local residents and councillors express outrage at the eviction and planned demolition, condemning BP Properties for destroying heritage and the authorities for enabling it.",
+    "scenes": [
+      {
+        "character": "LOCAL COUNCILLOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "This eviction and demolition plan is a travesty of justice!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "COMMUNITY MEMBER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "How can they demolish an 800-year-old building on a Roman burial ground?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL COUNCILLOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We've demanded BP halt demolition and the council refuse planning permission!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "PLANNING OFFICER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The council has limited powers once court possession orders are granted.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "COMMUNITY MEMBER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "So corporate interests override heritage, history, and a family's 321-year claim?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "MP's Office",
+    "locationType": "other",
+    "description": "",
+    "narration": "Cardiff MP Alun Michael asks the Lord Chancellor to review the case, highlighting the failure to determine ownership and the procedural anomalies throughout the litigation.",
+    "scenes": [
+      {
+        "character": "ALUN MICHAEL MP",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Lord Chancellor, this case shows serious procedural failures and injustice.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LORD CHANCELLOR'S AIDE",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The courts have ruled at the highest level. What grounds justify review?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ALUN MICHAEL MP",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Ownership was never determined! That's a fundamental defect in every ruling!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LORD CHANCELLOR'S AIDE",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The House of Lords addressed the possession claim comprehensively.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ALUN MICHAEL MP",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "But possession without ownership determination is procedurally unsafe and unjust!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Heritage Waiting Period",
+    "locationType": "other",
+    "description": "",
+    "narration": "As days pass, the temporary injunction approaches expiry. Cadw has not granted emergency listing. BP Properties presses for the injunction to be lifted and demolition to proceed.",
+    "scenes": [
+      {
+        "character": "CADW SPOKESPERSON",
+        "icon": "cleric",
+        "side": "left",
+        "color": "#999",
+        "text": "We are considering, but have not granted, emergency listing for Great House.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JANET HARRIS (BUCKLER)",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "This very old house still has no legal protection against demolition.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "The injunction must be lifted. Our client has been unlawfully delayed.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY SOLICITOR",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "If demolition proceeds before listing, heritage is lost forever!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES LAWYER",
+        "icon": "lawyer",
+        "side": "left",
+        "color": "#999",
+        "text": "Speculation about heritage cannot indefinitely frustrate lawful property rights.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Great House Farm — Demolition",
+    "locationType": "other",
+    "description": "",
+    "narration": "Hours after the final court ruling on 6 December 1988, BP's bulldozers move in overnight. Branwen and the children watch from a caravan nearby as their 800-year-old home is flattened. The site is desc",
+    "scenes": [
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "We watched from the caravan. They took it down to rubble overnight. Amy is in tears.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "DEMOLITION FOREMAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Bulldozed before breakfast. Orders were to flatten everything on the five-acre site.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "All I have left are the clothes I stand up in. They took everything else.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL OBSERVER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The site looks like a battleground. Rubble everywhere. An 800-year house—overnight.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "£30,000 of possessions still inside when the bulldozers came. Gone. All gone.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Llandough Hospital / Magistrates Court",
+    "locationType": "other",
+    "description": "",
+    "narration": "Police take Billy Buckler from his hospital bed to face charges of assault on two bailiffs. He is aged 40, freed on bail. He faces additional charges of criminal damage and wanton or furious driving f",
+    "scenes": [
+      {
+        "character": "POLICE OFFICER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "William Buckler, you are taken from hospital to face charges of assault on two bailiffs.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Taken from a hospital bed to answer charges for defending my own home. This is justice?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "POLICE OFFICER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "You face assault, criminal damage, and wanton or furious driving charges.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "I defended my family. They bashed the door in with my children standing behind it.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Freed on bail. I will fight this to the death. They have no documents for that farm.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Hospital / Court",
+    "locationType": "other",
+    "description": "",
+    "narration": "Lorries move onto the cleared site at 7:30am. The operation takes several days. The council's planning chief describes the area as looking like a battleground and authorises legal action to force BP t",
+    "scenes": [
+      {
+        "character": "PLANNING CHIEF",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The site looks like a battleground. We authorise legal action to force BP to clear it.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "VALE COUNCILLOR",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "BP's decision to flatten everything is disgusting. I am writing to them in protest.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL COUNCILLOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Lorries rolled in at 7:30am. An 800-year building demolished in days for luxury homes.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES AGENT",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "We demolished our lawfully held property. Cleanup is under way as required.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL COUNCILLOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Branwen Buckler stood with her children at the rubble. It was just like a wartime sight.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Demolished Site",
+    "locationType": "other",
+    "description": "",
+    "narration": "Officials report that the cleared farm site resembles a battleground. The local authority begins legal steps to require BP Properties to remove debris and restore basic order.",
+    "scenes": [
+      {
+        "character": "PLANNING CHIEF",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The condition of the site is unacceptable; we will seek enforcement.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL COUNCILLOR",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "We intend to require BP to clear rubble and restore basic order.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "VALE COUNCILLOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We regard BP's complete flattening of the site as wholly unjustified.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BP PROPERTIES AGENT",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "We demolished our own property lawfully. Cleanup is underway.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL COUNCILLOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "This destruction of heritage and a family's home is a disgrace!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1988",
+    "location": "Temporary Accommodation",
+    "locationType": "other",
+    "description": "",
+    "narration": "After losing the farmhouse and contents, the family live in temporary and borrowed accommodation. Billy estimates their lost belongings and livelihood at roughly thirty thousand pounds.",
+    "scenes": [
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "After eviction I have no house, stock, or equipment left to rely on.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "We are staying with family members while we have three children and one due.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I estimate our lost property and livelihood at about thirty thousand pounds.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BRANWEN BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "They've taken everything—our home, our history, our future.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1989",
+    "location": "Court",
+    "locationType": "other",
+    "description": "",
+    "narration": "A threatening-behaviour charge against Billy is withdrawn as out of time. Assault and driving allegations from the eviction events continue, and exclusion conditions remain in place.",
+    "scenes": [
+      {
+        "character": "PROSECUTOR CLARKE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We withdraw the threatening-behaviour count as the summons is late.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Even so, I am still barred from going near the former farm site.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "They evict us by force, then prosecute me for resisting their violence!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "PROSECUTOR CLARKE",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The court order was lawful. Your resistance constituted criminal conduct.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Nothing about this was lawful! Ownership was never proven!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1989",
+    "location": "Court",
+    "locationType": "other",
+    "description": "",
+    "narration": "Billy pleads guilty to remaining charges and is freed, stating that he will continue to contest the loss of the family home and land despite the completed demolition.",
+    "scenes": [
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "I will go on challenging how our home and the land were taken from us.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "The matter is concluded. The property has been demolished.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Demolished, yes—but the fraud, the missing deeds, the suppressed archaeology remain!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "JUDGE",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "Those are civil matters beyond this court's criminal jurisdiction.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "BILLY BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Justice demands investigation! Someone must examine what happened here!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1989",
+    "location": "Demolition Site",
+    "locationType": "other",
+    "description": "",
+    "narration": "Site clearance in March removes remaining physical traces. Lorries export rubble over several days, leaving little to show future residents the contested history beneath.",
+    "scenes": [
+      {
+        "character": "SITE MANAGER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Our job is simple: remove all remnants so the site is ready for housing.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL HISTORIAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "They're erasing the last physical evidence of what happened here.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "SITE MANAGER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We follow orders. The site must be cleared for redevelopment.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL HISTORIAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Rubble removal completes the destruction—house, history, heritage, gone.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1989",
+    "location": "Community Meeting",
+    "locationType": "other",
+    "description": "",
+    "narration": "At a village meeting, residents condemn the demolition and seek ways to stop BP Properties profiting from redevelopment, but are told legal avenues to reverse or claw back are minimal.",
+    "scenes": [
+      {
+        "character": "LOCAL ACTIVIST",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "They used planning and courts to clear obstacles; now profit is the goal.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "COUNCILLOR",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Without title or listing on your side, leverage over BP is almost gone.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL ACTIVIST",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Is there no mechanism to challenge a demolition achieved through suspected fraud?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "COUNCILLOR",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Fraud allegations require proof and investigation—neither has occurred.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL ACTIVIST",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "So BP demolishes under disputed title and profits while the family suffers?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1990",
+    "location": "Press Room",
+    "locationType": "other",
+    "description": "",
+    "narration": "Press coverage moves on, presenting the case as finished: family out, house gone, site in BP's hands. Unresolved questions about missing deeds, licences, and adverse possession fade from public view.",
+    "scenes": [
+      {
+        "character": "NEWSPAPER EDITOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "With no new hearings, we treat this as a closed eviction and demolition story.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL HISTORIAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Key gaps—lost deeds, licence letters, estate records—remain unexplored.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "NEWSPAPER EDITOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Without new evidence or proceedings, there's no story to sustain coverage.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LOCAL HISTORIAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The story is the unanswered questions! Ownership never determined, fraud uninvestigated!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "NEWSPAPER EDITOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Public interest has moved on. The site is being redeveloped.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "1994",
+    "location": "Major Excavation Site",
+    "locationType": "other",
+    "description": "",
+    "narration": "Major excavation at the former farm site uncovers a Roman villa and over eight hundred burials, confirming the land's national archaeological importance after the house is demolished.",
+    "scenes": [
+      {
+        "character": "LEAD ARCHAEOLOGIST",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "These burials and villa remains show this was a site of national importance.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS DESCENDANT",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "Our family's 1870 Roman-soldier account is confirmed only after demolition.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ARCHAEOLOGIST",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "Earlier recognition of this evidence could have triggered protection laws.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "WILLIAMS DESCENDANT",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "They ignored our testimony, demolished the house, then 'discovered' what we told them!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LEAD ARCHAEOLOGIST",
+        "icon": "builder",
+        "side": "left",
+        "color": "#999",
+        "text": "This is one of the largest burial grounds ever excavated in Wales.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "2005",
+    "location": "Heritage Website",
+    "locationType": "other",
+    "description": "",
+    "narration": "Heritage publications celebrate the Llandough archaeology but omit the eviction and demolition story. Modern residents live over the site unaware of the recent dispossession.",
+    "scenes": [
+      {
+        "character": "HERITAGE EDITOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "We present the villa and burials as a heritage success, not an eviction site.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MODERN RESIDENT",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "I learned of Roman remains here, not of a family being removed.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "HERITAGE EDITOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The archaeology is the story we tell—the human cost is not our focus.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "MODERN RESIDENT",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "So the history is sanitized? The Bucklers erased from the site's narrative?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "HERITAGE EDITOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Our remit is archaeological heritage, not contemporary property disputes.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "2024",
+    "location": "Family Communication",
+    "locationType": "other",
+    "description": "",
+    "narration": "Family accounts suggest Frederick Buckler may have secretly settled or sold interests before 1987, contributing to internal rupture and confusion over what was legally agreed.",
+    "scenes": [
+      {
+        "character": "DAVID BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Dad said Grandad 'sorted it legally' when he sold, but never explained how.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "DAVID BUCKLER",
+        "icon": "farmer",
+        "side": "right",
+        "color": "#999",
+        "text": "That secrecy caused a rift and left us unsure what rights were signed away.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "DAVID BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "Nan's journal, naming visitors and dates, was lost with the farmhouse.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY MEMBER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "If Grandad settled secretly, did that undermine Nan's ownership claim?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "DAVID BUCKLER",
+        "icon": "farmer",
+        "side": "left",
+        "color": "#999",
+        "text": "We don't know! The documents and Nan's journal were destroyed with the house!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "2025",
+    "location": "Legal Research",
+    "locationType": "other",
+    "description": "",
+    "narration": "Relatives assert the son's disability raises questions about equal treatment of vulnerable heirs in the legal process.",
+    "scenes": [
+      {
+        "character": "FAMILY ADVOCATE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The son's disability raises questions about equal treatment in the legal process.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "CONTEMPORARY LAWYER",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "Courts favour written, registered rights; oral and equitable claims struggle.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY ADVOCATE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "But three centuries of continuous possession by the Williams-Buckler line created rights!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "CONTEMPORARY LAWYER",
+        "icon": "lawyer",
+        "side": "right",
+        "color": "#999",
+        "text": "Adverse possession claims require court determination—which never occurred.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FAMILY ADVOCATE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Exactly—ownership was never adjudicated! The case remains unresolved!",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "present_day",
+    "location": "Church View Close",
+    "locationType": "other",
+    "description": "",
+    "narration": "Church View Close now covers the site of Great House Farm, the Marconi base, and one of Wales's largest recorded burial excavations, yet no plaque or record notes the clearance or dispute.",
+    "scenes": [
+      {
+        "character": "RESIDENT'S CHILD",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Dad, I want to build a radio and plant a tree and own this house we live in.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FATHER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Don't think that way or say that out loud, son. It brings us big trouble here.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "RESIDENT'S CHILD",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "But why?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "FATHER",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The last family to speak like that are traumatised into silence, three decades later.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "RESIDENT'S CHILD",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Well, I will speak up. And for them too.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "present_day",
+    "location": "Legal Archive",
+    "locationType": "other",
+    "description": "",
+    "narration": "Modern researchers examining the case identify a pattern: ownership never adjudicated, documents missing, archaeology suppressed, identity substituted between Mary Williams and Mrs Buckler, fraud unin",
+    "scenes": [
+      {
+        "character": "LEGAL RESEARCHER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Every court avoided the ownership question—the only issue that mattered.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "HISTORIAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "The 1667 deed, manorial records, Mary Williams' journal—all missing or destroyed.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LEGAL RESEARCHER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The Roman burial was reported in 1870 but ignored until post-demolition excavation.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "HISTORIAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Mary Williams became Mrs Buckler in legal documents without explanation or consent.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LEGAL RESEARCHER",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Under Takhar v Gracefield, fraud unravels all—but only if investigated.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "present_day",
+    "location": "Academic Conference",
+    "locationType": "other",
+    "description": "",
+    "narration": "Legal scholars note the case exemplifies how procedural avoidance, missing documentation, and rushed demolition can circumvent substantive justice and heritage protection.",
+    "scenes": [
+      {
+        "character": "LAW PROFESSOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "This case shows how possession can be determined without addressing ownership.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "HERITAGE EXPERT",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "Demolition before listing creates irreversible loss of heritage and evidence.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LAW PROFESSOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "The Williams-Buckler family asserted ownership for 321 years without force or secrecy.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "HERITAGE EXPERT",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "While corporate claimants operated through licence, substitution, and stealth.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "LAW PROFESSOR",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Justice requires investigation: who owned it? Where are the deeds? Why the rush?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  },
+  {
+    "year": "present_day",
+    "location": "Public Inquiry Call",
+    "locationType": "other",
+    "description": "",
+    "narration": "Advocates call for a public inquiry to examine the combined effect of procedural avoidance, identity substitution, heritage omission, and irreversible consequence in the Great House Farm case.",
+    "scenes": [
+      {
+        "character": "ADVOCATE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "No public inquiry has examined how this dispossession was achieved.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "PARLIAMENTARIAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "What remedy exists when courts avoid ownership and demolition destroys evidence?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ADVOCATE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Declaratory justice: determine who owned it, correct the record, recognise the Williams-Buckler clai",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "PARLIAMENTARIAN",
+        "icon": "worker",
+        "side": "right",
+        "color": "#999",
+        "text": "And if fraud is established, what compensation is owed?",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      },
+      {
+        "character": "ADVOCATE",
+        "icon": "worker",
+        "side": "left",
+        "color": "#999",
+        "text": "Preliminarily quantified at approximately £101.2 million, but truth comes first.",
+        "position": {
+          "x": 0,
+          "y": 0
+        }
+      }
+    ],
+    "sources": [],
+    "attachments": {
+      "gallery": [],
+      "legal": [],
+      "news": [],
+      "notes": [],
+      "report": []
+    }
+  }
+];
