@@ -143,19 +143,20 @@
 
     var ul = document.createElement("ul");
     ul.className = "splash-items";
-    var maxItems = 5;
-    for (var i = 0; i < data.items.length; i++) {
-      if (i >= maxItems && i !== data.items.length - 1) continue;
+    var highlights = [
+      "Originally a monastery",
+      "Later a Roman villa site",
+      "1667: Williams/Buckler family acquired it",
+      "Used as a coach house, court house and manor house",
+      "Marconi stayed here during wireless experiments",
+      "Peerless Jim Featherweight fought his first fight here",
+      "Family ownership claim has never been defeated in any court ruling"
+    ];
+    highlights.forEach(function(text) {
       var li = document.createElement("li");
-      li.textContent = data.items[i];
+      li.textContent = text;
       ul.appendChild(li);
-    }
-    if (data.items.length > maxItems) {
-      var hint = document.createElement("li");
-      hint.style.cssText = "color:#94a3b8;font-style:italic;text-align:center;border:none;";
-      hint.textContent = "Scroll for more...";
-      ul.appendChild(hint);
-    }
+    });
     panel.appendChild(ul);
 
     var btn = document.createElement("button");
@@ -560,10 +561,13 @@
   function toggleMinimize() {
     state.isMinimized = !state.isMinimized;
     var controls = document.getElementById("timeline-controls");
+    var footer = document.getElementById("footer");
     if (state.isMinimized) {
       controls.classList.add("minimized");
+      if (footer) footer.classList.add("minimized");
     } else {
       controls.classList.remove("minimized");
+      if (footer) footer.classList.remove("minimized");
     }
   }
 
@@ -884,7 +888,27 @@
       });
     }
 
-    // Close modals
+  
+  // BTC Modal
+  var btcModal = document.getElementById("btc-modal");
+  var btcBtn = document.getElementById("btc-donate-btn");
+  var btcClose = document.getElementById("btc-close-btn");
+  var btcCopy = document.getElementById("btc-copy-btn");
+  if (btcBtn && btcModal) {
+    btcBtn.onclick = function() { btcModal.style.display = "flex"; };
+  }
+  if (btcClose && btcModal) {
+    btcClose.onclick = function() { btcModal.style.display = "none"; };
+  }
+  if (btcCopy && btcModal) {
+    btcCopy.onclick = function() {
+      navigator.clipboard.writeText("bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am");
+      btcCopy.textContent = "Copied!";
+      setTimeout(function() { btcCopy.textContent = "Copy Address"; }, 2000);
+    };
+  }
+
+  // Close modals
     document.getElementById("archive-modal-close").addEventListener("click", function() {
       document.getElementById("archive-modal").classList.remove("open");
     });
