@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.0.1.31] — 2026-06-16
+
+### Added
+- Sort dropdown (Date A-Z / Z-A) per category — sorts files by leading date in filename
+
 ## [v0.0.1.30] — 2026-06-15
 
 ### Added
