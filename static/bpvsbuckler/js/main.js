@@ -564,10 +564,10 @@
     var footer = document.getElementById("footer");
     if (state.isMinimized) {
       controls.classList.add("minimized");
-      if (footer) footer.classList.add("minimized");
+      if (footer) footer.classList.add("hidden");
     } else {
       controls.classList.remove("minimized");
-      if (footer) footer.classList.remove("minimized");
+      if (footer) footer.classList.remove("hidden");
     }
   }
 
@@ -670,9 +670,9 @@
     modalBody.innerHTML = "";
 
     var grid = document.createElement("div");
-    grid.style.cssText = "display:grid;grid-template-columns:repeat(2,1fr);gap:0.75rem;";
+    grid.style.cssText = "display:grid;grid-template-columns:repeat(4,1fr);gap:0.5rem;";
     if (window.innerWidth >= 768) {
-      grid.style.gridTemplateColumns = "repeat(3, 1fr)";
+      grid.style.gridTemplateColumns = "repeat(6, 1fr)";
     }
 
     for (var i = 0; i < state.scenes.length; i++) {
