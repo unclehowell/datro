@@ -178,7 +178,7 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 #timeline-controls.minimized { height: 2rem; }
 #timeline-controls:not(.minimized) { height: 7rem; }
 
-#scrubber-area { position: absolute; top: -1rem; left: 0; right: 0; height: 2rem; cursor: pointer; z-index: 20; }
+#scrubber-area { position: absolute; top: 0; left: 0; right: 0; height: 0.5rem; cursor: pointer; z-index: 20; }
 #scrubber-bar { width: 100%; height: 1px; background: rgba(255,255,255,0.1); position: relative; overflow: visible; }
 .scrubber-tick { position: absolute; top: 0; height: 4px; width: 1px; background: rgba(255,255,255,0.3); }
 #scrubber-progress { position: absolute; top: 0; left: 0; height: 4px; background: #ef4444; box-shadow: 0 0 10px rgba(239,68,68,0.75), 0 0 20px rgba(239,68,68,0.35); transition: width 0.1s linear; }
