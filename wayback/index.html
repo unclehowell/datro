@@ -418,7 +418,10 @@
           const isImg=imgs.includes(ext);
           const isVid=vids.includes(ext);
           let media;
-          if(isImg)media='<img src="'+ue(item.path)+'" loading="lazy" alt="" style="aspect-ratio:auto">';
+          if(isImg){
+            const thumbPath=item.path.replace(/\.(\w+)$/,'_thumb.$1');
+            media='<img src="'+ue(thumbPath)+'" loading="lazy" alt="" style="aspect-ratio:auto">';
+          }
           else if(isVid)media='<video src="'+ue(item.path)+'" preload="metadata"></video>';
           else if(ext==='pdf')media='<div class="file-icon">\u{1F4C4}</div>';
           else if(ext==='txt')media='<div class="file-icon">\u{1F4DD}</div>';

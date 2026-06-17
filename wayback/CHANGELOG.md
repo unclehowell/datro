@@ -1,5 +1,10 @@
 # Changelog
 
+## [v0.0.1.39] — 2026-06-17
+
+### Added
+- Generated 300px thumbnail images for all 336 images — gallery now serves thumbnails (avg 84% smaller), modal still loads full resolution
+
 ## [v0.0.1.38] — 2026-06-17
 
 ### Added
