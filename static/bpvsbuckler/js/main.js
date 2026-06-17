@@ -165,7 +165,12 @@ function getWelshFlag(name) {
     var btn = document.createElement("button");
     btn.className = "enter-btn";
     btn.textContent = "Enter";
-    btn.onclick = function() { state.showSplash = false; overlay.classList.add("hidden"); };
+    btn.onclick = function() { 
+      state.showSplash = false; 
+      overlay.classList.add("hidden");
+      document.getElementById("preloader").classList.add("hidden");
+      document.getElementById("app-root").classList.add("ready");
+    };
     panel.appendChild(btn);
   }
 
