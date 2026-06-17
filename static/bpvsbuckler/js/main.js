@@ -54,8 +54,6 @@ function getWelshFlag(name) {
     }
     return "🇬🇧";
   }
-    return "🇬🇧";
-  }
 
   function getVoiceProfile(name, isNarrator) {
     if (isNarrator) return { pitch: 0.7, rate: 1.1, voice: "male" };
