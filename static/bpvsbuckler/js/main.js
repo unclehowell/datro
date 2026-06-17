@@ -140,12 +140,13 @@ function getWelshFlag(name) {
 
     var subtitle = document.createElement("p");
     subtitle.className = "splash-subtitle";
-    subtitle.textContent = data.subtitle;
-    panel.appendChild(subtitle);
+    subtitle.textContent = data.subtitle || "";
+    if (data.subtitle) panel.appendChild(subtitle);
+    else { subtitle.style.display = "none"; }
 
     var ul = document.createElement("ul");
     ul.className = "splash-items";
-    var highlights = [
+    var highlights = data.items || [
       "Originally a monastery",
       "Later a Roman villa site",
       "1667: Williams/Buckler family acquired it",
