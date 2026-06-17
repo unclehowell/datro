@@ -3,7 +3,7 @@
 
   // ============ CONFIG ============
   var CONFIG = {
-    title: "Great House Farm Dispute",
+    title: "Great House Farm",
     startingYear: "1979",
     copyright: "Williams/Buckler Family Estate",
     footerCopyright: "Williams/Buckler Family Estate",
