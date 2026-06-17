@@ -74,6 +74,7 @@
       background:rgba(255,255,255,0.06);border-radius:10px;padding:0.4rem;
       text-align:center;cursor:pointer;transition:background 0.12s;
       touch-action:manipulation;
+      content-visibility:auto;contain-intrinsic-size:200px;
     }
     .item:active{background:rgba(255,255,255,0.12)}
     .item img,.item video{
@@ -83,6 +84,16 @@
     .item .file-icon{font-size:2.2rem;padding:0.8rem 0;color:#889}
     .item .name{font-size:0.6rem;color:#889;margin-top:0.15rem;word-break:break-word;line-height:1.2}
     .item .item-tags{display:flex;flex-wrap:wrap;gap:0.1rem;justify-content:center;margin-top:0.15rem}
+    .item{position:relative}
+    .item-edit{
+      position:absolute;top:2px;right:2px;width:22px;height:22px;
+      background:rgba(0,0,0,0.45);border-radius:6px;display:flex;
+      align-items:center;justify-content:center;opacity:0;
+      transition:opacity 0.15s;text-decoration:none;z-index:2;
+    }
+    .item:hover .item-edit,.item:focus-within .item-edit{opacity:1}
+    .item-edit:hover{background:rgba(60,120,255,0.7)}
+    .item-edit svg{width:12px;height:12px;fill:#ddd}
     .hash-badge{
       display:inline-block;padding:0.08rem 0.3rem;border-radius:6px;
       font-size:0.5rem;font-weight:700;letter-spacing:0.2px;
@@ -318,6 +329,10 @@
       }
 
       function cleanName(name){return(name||'').replace(/\s*#\w+/g,'').trim()}
+      function isFolder(item){
+        const p=item.path||'';
+        return p.endsWith('/')||p.endsWith('index.html');
+      }
 
       async function loadCategory(cat){
         if(cat==='all')return[];
@@ -325,7 +340,7 @@
           const r=await fetch(cat+'/_treeview.json');
           if(!r.ok)return[];
           const data=await r.json();
-          return data.map(item=>({...item,_category:cat,_hashtags:extractTags(item),_searchText:(item.name||'').toLowerCase()}));
+          return data.filter(item=>!isFolder(item)).map(item=>({...item,_category:cat,_hashtags:extractTags(item),_searchText:(item.name||'').toLowerCase()}));
         }catch{return[]}
       }
 
@@ -395,6 +410,7 @@
           return;
         }
 
+        const GITHUB_TREEVIEW='https://github.com/unclehowell/datro/blob/wayback/wayback/';
         gallery.innerHTML=pageItems.map((item,i)=>{
           const ext=(item.path||'').split('.').pop().toLowerCase();
           const imgs=['jpg','jpeg','png','gif','webp','bmp','svg'];
@@ -402,14 +418,19 @@
           const isImg=imgs.includes(ext);
           const isVid=vids.includes(ext);
           let media;
-          if(isImg)media='<img src="'+ue(item.path)+'" loading="lazy" alt="">';
+          if(isImg)media='<img src="'+ue(item.path)+'" loading="lazy" alt="" style="aspect-ratio:auto">';
           else if(isVid)media='<video src="'+ue(item.path)+'" preload="metadata"></video>';
           else if(ext==='pdf')media='<div class="file-icon">\u{1F4C4}</div>';
           else if(ext==='txt')media='<div class="file-icon">\u{1F4DD}</div>';
           else media='<div class="file-icon">\u{1F4C1}</div>';
           const name=cleanName(item.name);
+          const cat=item._category;
+          const ghUrl=GITHUB_TREEVIEW+cat+'/_treeview.json';
           const tags=item._hashtags||[];
-          return '<div class="item" data-idx="'+(start+i)+'">'+media+
+          return '<div class="item" data-idx="'+(start+i)+'">'+
+            '<a href="'+ghUrl+'" target="_blank" rel="noopener" class="item-edit" title="Edit on GitHub">'+
+            '<svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>'+
+            '</a>'+media+
             '<div class="name">'+esc(name)+'</div>'+
             (tags.length?'<div class="item-tags">'+tags.map(t=>'<span class="hash-badge '+t.replace('#','')+'">'+t+'</span>').join('')+'</div>':'')+
             '</div>';
@@ -465,8 +486,14 @@
         else if(ext==='txt'){
           try{
             const r=await fetch(encPath);
-            if(r.ok)modalBody.innerHTML='<pre>'+esc(await r.text())+'</pre>';
-            else modalBody.innerHTML='<pre style="color:#f88">Error (HTTP '+r.status+'). <a href="'+encPath+'" target="_blank">Open raw</a></pre>';
+            if(r.ok){
+              const text=await r.text();
+              if(text.startsWith('<!DOCTYPE html>')||text.startsWith('<html')){
+                modalBody.innerHTML='<pre style="color:#f88">Content not found on server. <a href="'+encPath+'" target="_blank">Open raw</a></pre>';
+              }else{
+                modalBody.innerHTML='<pre>'+esc(text)+'</pre>';
+              }
+            }else modalBody.innerHTML='<pre style="color:#f88">Error (HTTP '+r.status+'). <a href="'+encPath+'" target="_blank">Open raw</a></pre>';
           }catch(e){modalBody.innerHTML='<pre style="color:#f88">Error: '+esc(e.message)+'. <a href="'+encPath+'" target="_blank">Open raw</a></pre>'}
         }
       }

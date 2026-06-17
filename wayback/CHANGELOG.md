@@ -1,5 +1,18 @@
 # Changelog
 
+## [v0.0.1.38] — 2026-06-17
+
+### Added
+- Edit icon (pencil) on each result card linking to GitHub treeview for quick metadata editing
+
+### Changed
+- Text filenames standardised to `YYYY-MM-DD_slug_lang_version` format across 1128 entries
+- Folder entries (index.html) hidden from all category results
+
+### Fixed
+- Modal text viewer detects HTML fallthrough and shows proper error instead of rendering page HTML
+- Added `content-visibility: auto` to gallery items for faster rendering / less layout shift
+
 ## [v0.0.1.37] — 2026-06-16
 
 ### Added
