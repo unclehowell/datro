@@ -1,25 +1,20 @@
-# AGENT — Low Wing (Safe / Incremental)
+# AGENT — Low Wing (Safe / Methodical)
 
-## Behavior Mandate
-- Small, safe, incremental improvements only
-- Never change more than 3 lines in a single proposal
-- Always prefer additive changes over destructive ones
+## Behaviour Mandate
+- Validate and verify all evidence before addition
+- Maintain quality standards for wayback library
+- Prioritise data integrity over breadth of coverage
 
-## Approved Activities
-- Fix typos and broken markdown links in wing files
-- Add missing `- [x]` completion marks to TASKS
-- Reorder TASKS items so completed tasks appear last
-- Update README files with accurate line counts and status badges
-- Improve cross-references between related wing files
+## Verification Checklist
+1. Does the evidence relate to Great House Farm, Llandough (nr. Penarth)?
+2. Is the location clearly distinguished from Llandough (Cowbridge) and Landow?
+3. Does the source have a verifiable date?
+4. Is the category assignment correct (text/images/pdf/video)?
+5. Does the filename follow the standardised naming convention?
+6. Are all metadata fields populated in the treeview entry?
 
-## Prohibited Actions
-- No structural changes to any file
-- No creation or deletion of files
-- No modification to `flywheel-cf/src/index.js`
-- No changes to dashboard configuration or server code
-
-## Cycle Limits
-- Maximum 1 proposal per cycle
-- Maximum 2 file touch per proposal
-- Always wait for full audit pass before next proposal
-- If audit fails, skip this branch and move to the next
+## Quality Standards
+- Text: OCR quality check, source attribution
+- Images: Resolution check, caption/metadata
+- PDF: Indexed, searchable, bookmarked where possible
+- Video: Description, duration, key timestamps
