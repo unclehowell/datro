@@ -1,16 +1,20 @@
-# TASKS — High Wing (Experimental / Creative Methods)
+# TASKS — High Wing (High-Risk / Breaking Tasks)
 
 ## Completed
-- [x] Mission reset for cnei
+- [x] First flywheel meta-improvement cycle (self-modifying proposal)
+- [x] Parallel brain aggregation across 3 branches simultaneously
 
 ## In Progress
-- [ ] Use generative AI to hypothesise where undiscovered records may be held
-- [ ] Analyse gaps in current wayback library to prioritise discovery targets
-- [ ] Attempt automated web scraping of archive catalogues for new citations
+- [ ] Strip audit tier for branches with 100% PASS history
+- [ ] Dashboardless mode — flywheel operates headless via CLI
 
-## Pending (Experimental)
-- [ ] Train a small ML model on existing evidence patterns to predict likely record locations
-- [ ] Cross-reference family names (Buckler, Williams, Morgan) across all UK archives
-- [ ] Automated OCR of scanned documents to extract machine-searchable text
-- [ ] Build a knowledge graph of people, places, and events mentioned in evidence
-- [ ] Use satellite imagery to identify archaeological features near the farm
+## Pending (High Risk)
+- [ ] Rename all wing files from `{TYPE}.{side}.md` to `{TYPE}{side}.md`
+- [ ] Replace Express with pure WebSocket server for dashboard
+- [ ] Migrate wing storage from local FS to Cloudflare KV
+- [ ] Collapse 16 wing files into 4 composite files
+- [ ] AI tier direct push to `main` on PASS (no human review)
+- [ ] Auto-create branches from dashboard with live wing file seeding
+- [ ] Remove rollback — "commit and ship" model for high-risk branches
+- [ ] Flywheel proposes changes to OTHER repos (not just datro)
+- [ ] MEMORY.md auto-pruning: delete cycles older than 100 entries

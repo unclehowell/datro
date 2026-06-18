@@ -1,28 +1,24 @@
-# SPEC — Right Wing (Expansive / Discovery)
+# SPEC — Right Wing (Conservative / Stability)
 
-## Secondary & Tertiary Sources
-Beyond foundational sources, seek:
+## Stability Requirements
+- [x] Dashboard must never crash on malformed wing files
+- [x] Flywheel must roll back any change that fails audit
+- [ ] All wing files must pass markdown schema validation before acceptance
+- [ ] Rate-limit flywheel cycles to prevent infinite self-improvement loops
 
-### Newspaper Archives
-- Evening Express / South Wales Echo (Cardiff)
-- Western Mail
-- Glamorgan Gazette
-- Penarth Times
-- Welsh newspapers via NLW and Welsh Newspapers Online
+## Security Standards
+- WebSocket connections must validate origin header
+- Dashboard must reject unrecognized file write paths
+- MCP scan output must be sanitized before storage
+- No secrets or tokens allowed in wing file content
 
-### Academic & Archaeological
-- Cotswold Archaeology Llandough 1994 report
-- RCAHMW (Royal Commission) inventories for Glamorgan
-- Morgannwg journal articles
-- University dissertations on Vale of Glamorgan land history
+## Validation Gates
+- Every AI proposal requires a best-practice check AND an audit pass
+- Audit tier must verify no breaking changes to dependent branches
+- Release tags must be GPG-signed
+- Rollback must restore previous wing file state atomically
 
-### Records of Adjacent Estates
-- Bute Estate records (NLW, Cardiff Central Library)
-- Windsor Estate / Duchy of Lancaster in Glamorgan
-- Romilly Estate papers
-
-### Modern Sources
-- Planning portal records for Church View Close
-- Valuation Office Agency records
-- Environmental Agency flood risk and land use data
-- Welsh Government historic environment records (HER)
+## Production Readiness
+- Uptime monitoring on `datro-flywheel.righteous.workers.dev`
+- Dashboard must gracefully degrade if Cloudflare worker is unreachable
+- Error logs must be structured JSON, not plaintext

@@ -1,29 +1,22 @@
-# SPEC — Left Wing (Conservative / Foundational)
+# SPEC — Left Wing (Aggressive / Proactive)
 
-## Foundational Sources
-The following are the bedrock sources for Great House Farm history:
+## Feature Expansion Targets
+- [x] Deploy self-improving Flywheel Worker on Cloudflare
+- [x] Implement 3-tier AI/best-practice/audit engine
+- [ ] Expand MCP scan coverage to all 16 wing files across every branch
+- [ ] Auto-generate wing files for new branches on creation
 
-### Land Registry
-- Title WA231076 — Great House Farm / Ty Mawr, Llandough
-- Title WA240304 — Church View Close, Llandough
-- Historical first registrations and cautions
+## Performance Goals
+- Push flywheel cycle time below 30s per branch
+- Enable parallel brain aggregation across all branches
+- Implement speculative change proposals before audit passes
 
-### Court Records
-- BP v Buckler 1987 (Chancery Division)
-- Possession proceedings 1988
-- Related appeals and case law
+## Integration
+- Dashboard must support real-time branch tree manipulation
+- WebSocket events must carry full wing-file metadata
+- Bias/risk steering pad must directly influence flywheel proposal thresholds
 
-### Manorial Records
-- Manor of Llandough court rolls and books
-- Manorial incidents and quit rents
-- Copyhold and freehold admissions
-
-### Mapping
-- Ordnance Survey 1st–3rd Edition (1880s–1920s)
-- Tithe maps and apportionments (c. 1840s)
-- Estate maps (Bute, Windsor, Romilly)
-
-### Census & Population
-- Census returns 1841–1911 for Llandough parish
-- Local directories (Kelly's, Slater's)
-- Parish registers (baptisms, marriages, burials)
+## Self-Improvement
+- Flywheel must propose upgrades to itself (meta-meta loop)
+- Wing files must be auto-tuned based on cycle success rates
+- MEMORY.md must grow into a learnable knowledge base consumed by the AI tier

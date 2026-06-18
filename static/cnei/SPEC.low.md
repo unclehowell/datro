@@ -1,24 +1,23 @@
-# SPEC — Low Wing (Methodical / Quality)
+# SPEC — Low Wing (Low-Risk / Incremental)
 
-## Naming Convention
-Evidence added to wayback MUST follow this format:
-`YYYY-MM-DD_category-tag_description_en_vX.X.X`
+## Safe Compliance Items
+- [x] All wing files use consistent `##` heading structure
+- [x] TASKS files use `- [ ]` / `- [x]` checklist format
+- [ ] Every wing file stays under 30 lines
+- [ ] No file exceeds 80-character line width
 
-### Categories
-- `text/` — documents, correspondence, transcripts
-- `images/` — photographs, scans, maps, drawings
-- `pdf/` — PDF documents, reports, academic papers, scanned books
-- `video/` — video recordings, news footage, documentaries
+## Documentation
+- [ ] Add inline comments to `flywheel-cf/src/index.js` tier boundaries
+- [ ] Create a wing file style guide in dashboard help panel
+- [ ] Document the bias/risk steering pad value ranges (-1 to +1)
 
-### Description Rules
-- All lowercase, words separated by hyphens
-- No trailing version components after the 3-part version (vX.X.X only)
-- Language code is always `en` (except Welsh-language sources use `cy`)
-- Category tag describes the type + author/source (e.g. `consortium-evidence`, `text-morgan`, `planning-notice`)
+## Incremental Wins
+- Add wing-file last-modified timestamps to dashboard display
+- Implement auto-save draft recovery for in-progress wing edits
+- Add wing file word/line count to branch tree tooltips
+- Highlight incomplete TASKS (`- [ ]`) in red in dashboard view
 
-## Verification Criteria
-Every entry MUST include:
-1. Complete source attribution (archive name, reference number)
-2. Verified geographic accuracy (Llandough nr. Penarth only)
-3. Accurate dating (use `0000-00-00` where date is unknown)
-4. Tags array in treeview for discoverability
+## Quality of Life
+- Sort branches alphabetically in dashboard tree panel
+- Add keyboard shortcuts: `Ctrl+S` save wing, `Ctrl+E` expand all
+- Preserve scroll position when switching between wing files

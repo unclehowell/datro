@@ -1,18 +1,21 @@
-# TASKS — Left Wing (Conservative / Fundamental Sources)
+# TASKS — Left Wing (Aggressive Feature Tasks)
 
 ## Completed
-- [x] Mission reset — cnei now dedicated to Great House Farm evidence
+- [x] Deploy Flywheel Worker to Cloudflare
+- [x] Implement 3-tier engine (AI → best-practice → audit)
+- [x] Build dashboard with Express + WebSocket on port 3000
+- [x] Create 2D steering pad (bias + risk controls)
+- [x] Implement branch tree panel with all 4 wings
 
 ## In Progress
-- [ ] Enumerate all known land registry entries (title numbers WA231076, WA240304)
-- [ ] Gather Manor of Llandough manorial documents and court rolls
-- [ ] Collect Ordnance Survey maps showing Great House Farm boundaries
-- [ ] Extract tithe map and apportionment data for Llandough parish
-- [ ] Compile census records (1841–1911) for Great House Farm occupants
+- [ ] Auto-create wing files when new branches are detected
+- [ ] Implement real-time dashboard sync across multiple browser tabs
+- [ ] Add drag-and-drop wing file reordering in dashboard
 
-## Pending
-- [ ] Sift Bute Estate records for references to Great House Farm / Ty Mawr
-- [ ] Index BP v Buckler 1987 court case documents and filings
-- [ ] Archive Church View Close planning applications and decisions
-- [ ] Collect historical photographs of the farmhouse and surrounding land
-- [ ] Record oral histories from former residents and neighbours
+## Pending (Aggressive)
+- [ ] Flywheel auto-tunes its own thresholds based on PASS/FAIL ratios
+- [ ] Dashboard push-to-deploy: one-click Cloudflare worker publish
+- [ ] Cross-branch diff view showing wing file deltas
+- [ ] AI tier proposes wing file improvements based on MEMORY.md lessons
+- [ ] MCP scanner watches for new remote branches and seeds wing files
+- [ ] Self-healing dashboard — restarts WebSocket on disconnect

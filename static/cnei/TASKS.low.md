@@ -1,16 +1,22 @@
-# TASKS — Low Wing (Safe / Methodical Verification)
+# TASKS — Low Wing (Low-Risk / QoL Tasks)
 
 ## Completed
-- [x] Mission reset — cnei now dedicated to Great House Farm evidence
+- [x] Wing files use consistent `##` heading format
+- [x] TASKS files use proper `- [ ]` / `- [x]` syntax
+- [x] Dashboard displays wing file list in branch tree
 
 ## In Progress
-- [ ] Verify every citation and source before adding to wayback library
-- [ ] Check all evidence against the correct location (Llandough nr. Penarth, NOT Cowbridge or Landow)
-- [ ] Validate naming convention compliance for every wayback addition
-- [ ] Ensure evidence is placed in the correct category (text/images/pdf/video)
+- [ ] Add line count tooltip to each wing file in dashboard
+- [ ] Implement auto-save draft recovery for wing editor
 
-## Pending
-- [ ] Audit existing wayback entries for location accuracy
-- [ ] Cross-reference treeview names with actual file content
-- [ ] Ensure all citations include full provenance (source name, date, archive reference)
-- [ ] Record verification status in MEMORY.md for each discovery cycle
+## Pending (Low Risk)
+- [ ] Alphabetical sort for branch tree panel
+- [ ] Keyboard shortcut: `Ctrl+S` saves current wing file
+- [ ] Keyboard shortcut: `Ctrl+E` expands/collapses all branches
+- [ ] Highlight incomplete TASKS items in red/orange in the UI
+- [ ] Preserve scroll position when switching between wing files
+- [ ] Add last-edited timestamp to each wing file card
+- [ ] Wing file word count display in dashboard footer
+- [ ] Add loading skeleton while wing files are being fetched
+- [ ] Dashboard dark mode toggle (persisted in localStorage)
+- [ ] Confirm dialog before discarding unsaved wing edits

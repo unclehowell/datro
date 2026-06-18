@@ -1,30 +1,41 @@
-## Cycle 0 — Mission Reset
+## Cycle 1
+### cnei: ai: "Enhance Feature Item Animation and Accessibility" (feature), "Add ARIA Label to Image for Better Screen Reader Experience" (bug)
+**Verdict:** PASS | Applied 2 AI-proposed change(s) to cnei
+**Reference:** AI Uniqueness Engine (financecheque parent proxy ÃÂÃÂÃÂÃÂ¢ÃÂÃÂÃÂÃÂÃÂÃÂÃÂÃÂ LLM)
+### Lesson
+AI uniqueness engine: 2 change(s) applied to `index.html` on `cnei`. Wing files loaded: 0. AI elapsed: 11.1s.
 
-### Primary Objective
-Seek new original evidence and citations related to Great House Farm, Llandough (nr. Penarth, Vale of Glamorgan — NOT Llandough in Cowbridge, NOT Landow/Llandow). Add discovered evidence to the wayback library with standardised names in the correct category (text/images/pdf/video).
+## Cycle 2
+### cnei: ai: "Enhance Feature Item Interactivity with Visual Feedback" (feature)
+**Verdict:** PASS | Applied 1 AI-proposed change(s) to cnei
+**Reference:** AI Uniqueness Engine (financecheque parent proxy ÃÂÃÂ¢ÃÂÃÂÃÂÃÂ LLM)
+### Lesson
+AI uniqueness engine: 1 change(s) applied to `index.html` on `cnei`. Wing files loaded: 0. AI elapsed: 12.0s.
 
-### Geographic Clarification
-- **Correct location:** Great House Farm, Llandough, nr. Penarth, Vale of Glamorgan (CF64 postcode area)
-- **NOT** Llandough (Cowbridge / Y Bont-faen area)
-- **NOT** Landow / Llandow (another village in the Vale of Glamorgan)
+## Cycle 3
+### cnei: ai: "Improve Accessibility and Visual Appeal of Feature Items" (bug)
+**Verdict:** PASS | Applied 1 AI-proposed change(s) to cnei
+**Reference:** AI Uniqueness Engine (financecheque parent proxy ÃÂ¢ÃÂÃÂ LLM)
+### Lesson
+AI uniqueness engine: 1 change(s) applied to `index.html` on `cnei`. Wing files loaded: 0. AI elapsed: 5.6s.
 
-### Evidence Categories Sought
-- Land registry entries (title WA231076, WA240304)
-- Court records (BP v Buckler 1987, possession proceedings)
-- Manor of Llandough records (manorial documents, court rolls)
-- Ordnance Survey maps and historical boundary records
-- Tithe maps and apportionments for Llandough parish
-- Census records for Great House Farm / Ty Mawr
-- Estate records (Bute Estate, Windsor Estate)
-- Planning records for Church View Close
-- Archaeological reports (Cotswold Archaeology Llandough 1994)
-- Newspaper archives mentioning the farm or family
-- Photographs, videos, or oral histories
+## Cycle 4
+### cnei: ai: "Enhance Feature Item Interactivity with Focus State" (bug)
+**Verdict:** PASS | Applied 1 AI-proposed change(s) to cnei
+**Reference:** AI Uniqueness Engine (financecheque parent proxy Ã¢ÂÂ LLM)
+### Lesson
+AI uniqueness engine: 1 change(s) applied to `index.html` on `cnei`. Wing files loaded: 0. AI elapsed: 4.5s.
 
-### Wayback Library Structure
-- `text/` — documents, transcripts, correspondence
-- `images/` — photographs, maps, scans
-- `pdf/` — PDF documents, reports, academic papers
-- `video/` — video recordings
+## Cycle 5
+### cnei: ai: "Enhance Feature Accessibility with ARIA" (bug)
+**Verdict:** PASS | Applied 1 AI-proposed change(s) to cnei
+**Reference:** AI Uniqueness Engine (financecheque parent proxy â LLM)
+### Lesson
+AI uniqueness engine: 1 change(s) applied to `index.html` on `cnei`. Wing files loaded: 0. AI elapsed: 6.7s.
 
-Naming convention: `YYYY-MM-DD_cat-tag_description_en_vX.X.X`
+## Cycle 6
+### cnei: ai: "Enhance Feature Item Accessibility with Focus Styles" (bug)
+**Verdict:** PASS | Applied 1 AI-proposed change(s) to cnei
+**Reference:** AI Uniqueness Engine (financecheque parent proxy → LLM)
+### Lesson
+AI uniqueness engine: 1 change(s) applied to `index.html` on `cnei`. Wing files loaded: 0. AI elapsed: 5.7s.

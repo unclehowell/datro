@@ -1,15 +1,22 @@
-# SPEC — High Wing (Experimental / Meta)
+# SPEC — High Wing (High-Risk / Experimental)
 
-## Primary Mission
-Seek new original evidence and citations about Great House Farm, Llandough (nr. Penarth). Add discovered evidence to the wayback library with standardised filenames in the correct category.
+## Experimental Features
+- Self-modifying flywheel that rewrites its own `index.js` based on aggregated lessons
+- Branch auto-creation from dashboard with zero human review
+- AI tier allowed to push directly to `main` on PASS verdicts
+- Real-time wing file editing via WebSocket with no local backup
 
-## Experimental Methods
-- Use AI to extrapolate likely locations of undiscovered records based on known gaps
-- Generate research hypotheses from existing evidence patterns
-- Automated cross-referencing between multiple archive catalogues
-- Predictive modelling of record types most likely to yield new information
+## Risky Refactors
+- Replace Express backend with pure WebSocket for all dashboard IO
+- Migrate wing file storage to Cloudflare KV with local cache fallback
+- Drop audit tier for branches with >90% historical PASS rate
 
-## Success Criteria
-- Number of new evidence items added to wayback per cycle
-- Number of new citations discovered (even if not yet added)
-- Reduction in identified gaps in the evidence collection
+## Breaking Changes
+- Rename all wing files to `{TYPE}{side}.md` (remove dot) — breaks every existing reference
+- Collapse 16 wing files into 4 composite files (one per type with side sections)
+- Remove dashboard entirely; flywheel must spawn headless UI-less mode
+
+## Known Dangers
+- Meta-improvement loops could diverge and corrupt the entire branch tree
+- Auto-push to `main` has no human-in-the-loop safety valve
+- Cloudflare KV has no atomic multi-key writes — partial updates risk data loss
