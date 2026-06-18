@@ -824,11 +824,10 @@ function getWelshFlag(name) {
     // Update version
     updateVersion();
 
-    // Hide preloader, show app, hide splash
+    // Hide preloader, show app
     setTimeout(function() {
       document.getElementById("preloader").classList.add("hidden");
       document.getElementById("app-root").classList.add("ready");
-      document.getElementById("splash-overlay").classList.add("hidden");
       renderTimelineView();
     }, 800);
   }
