@@ -1,5 +1,21 @@
 # Changelog
 
+## [v0.0.1.42] — 2026-06-18
+
+### Changed
+- Standardised file display format: `date · category · description · en · version` with underscores replaced by spaces in the GUI
+- Media cards now use fixed `4:3` aspect-ratio container with `object-fit: cover` for images/videos — thumbnails crop to fit, file-type icons centered, all with rounded corners and no overflow
+- Remaining trailing suffix garbage after version numbers stripped from display (e.g. `_001`, `-1`)
+
+## [v0.0.1.41] — 2026-06-18
+
+### Changed
+- Title cleanup: file display names now strip everything after the version number
+- PDF viewer: modal now uses an embedded iframe viewer with a direct download fallback link
+- Larger UI: doubled font sizes for hashtags, titles, category tabs, file icons, pagination, search, sort, header
+- Consistent icon dimensions: file-type icons match image/video thumbnail min-height
+- Same gallery sizing: all media items use uniform dimensions regardless of file type
+
 ## [v0.0.1.40] — 2026-06-17
 
 ### Added

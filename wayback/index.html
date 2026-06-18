@@ -77,16 +77,15 @@
       content-visibility:auto;contain-intrinsic-size:280px;
     }
     .item:active{background:rgba(255,255,255,0.12)}
-    .item img,.item video{
-      width:100%;max-height:220px;border-radius:8px;
-      object-fit:contain;display:block;margin:0 auto;pointer-events:none;
-      min-height:180px;
+    .media-wrap{
+      width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(0,0,0,0.2);
     }
-    .item .file-icon{
-      font-size:4.4rem;color:#889;display:flex;align-items:center;
-      justify-content:center;min-height:180px;width:100%;border-radius:8px;
-      background:rgba(255,255,255,0.03);
+    .media-wrap img,.media-wrap video{
+      width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;
     }
+    .media-wrap .file-icon{font-size:4rem;color:#889}
     .item .name{font-size:0.95rem;color:#889;margin-top:0.25rem;word-break:break-word;line-height:1.3}
     .item .item-tags{display:flex;flex-wrap:wrap;gap:0.2rem;justify-content:center;margin-top:0.25rem}
     .item{position:relative}
@@ -210,9 +209,8 @@
       #content{padding:0 1rem 1rem}
       header{padding:0.5rem 1rem}
       header h1{font-size:2rem}
-      .gallery{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:0.75rem}
-      .item img,.item video{max-height:280px}
-      .item .file-icon{min-height:280px;font-size:5rem}
+      .gallery{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.75rem}
+      .media-wrap .file-icon{font-size:5rem}
       .item .name{font-size:1.1rem}
       .modal-sheet{max-width:800px;left:50%;transform:translateX(-50%);border-radius:16px;top:5vh;max-height:90vh;bottom:auto;animation:none}
       @keyframes sheetUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
@@ -220,9 +218,8 @@
       .modal-body .pdf-viewer{min-height:75vh}
     }
     @media(min-width:1024px){
-      .gallery{grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:0.85rem}
-      .item img,.item video{max-height:320px}
-      .item .file-icon{min-height:320px;font-size:5.6rem}
+      .gallery{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:0.85rem}
+      .media-wrap .file-icon{font-size:5.6rem}
     }
   </style>
 </head>
@@ -339,11 +336,30 @@
         return t;
       }
 
-      function cleanName(name){
-        return (name||'')
-          .replace(/\s*#\w+/g,'')
-          .replace(/(v\d+(?:[\.-]\d+)+).*/i,'$1')
-          .trim();
+      function formatItemName(item){
+        const name = item.name || '';
+        const cat = item._category || '';
+        const dateStr = (name.match(/^(\d{4}-\d{2}-\d{2})/) || ['',''])[1];
+        const allVer = name.match(/(v\d+(?:[\.-]\d+)+)/gi);
+        const version = allVer ? allVer[allVer.length-1].toLowerCase().replace(/\./g,'-') : '';
+        const langMatch = name.match(/[_-](\ben\b)[_-]/i);
+        const lang = langMatch ? langMatch[1].toLowerCase() : '';
+        let desc = name;
+        if (dateStr) desc = desc.slice(dateStr.length);
+        if (version && allVer) {
+          const vi = desc.toLowerCase().indexOf(allVer[allVer.length-1].toLowerCase());
+          if (vi >= 0) desc = desc.slice(0, vi);
+        }
+        desc = desc.replace(/_/g,' ').replace(/\s+/g,' ').trim();
+        desc = desc.replace(/#\w+/g,'').trim();
+        desc = desc.replace(/^[-]+|[-]+$/g,'').trim();
+        const parts = [];
+        if (dateStr) parts.push(dateStr);
+        if (cat && cat !== 'all') parts.push(cat);
+        if (desc) parts.push(desc);
+        if (lang) parts.push(lang);
+        if (version) parts.push(version);
+        return parts.join('  ·  ');
       }
       function isFolder(item){
         const p=item.path||'';
@@ -433,23 +449,23 @@
           const vids=['mp4','webm','mov','avi'];
           const isImg=imgs.includes(ext);
           const isVid=vids.includes(ext);
-          let media;
+          let inner;
           if(isImg){
             const thumbPath=item.path.replace(/\.(\w+)$/,'_thumb.$1');
-            media='<img src="'+ue(thumbPath)+'" loading="lazy" alt="" style="aspect-ratio:auto">';
+            inner='<img src="'+ue(thumbPath)+'" loading="lazy" alt="">';
           }
-          else if(isVid)media='<video src="'+ue(item.path)+'" preload="metadata"></video>';
-          else if(ext==='pdf')media='<div class="file-icon" title="PDF document">\u{1F4C4}</div>';
-          else if(ext==='txt')media='<div class="file-icon" title="Text file">\u{1F4DD}</div>';
-          else media='<div class="file-icon" title="File">\u{1F4C1}</div>';
-          const name=cleanName(item.name);
+          else if(isVid)inner='<video src="'+ue(item.path)+'" preload="metadata"></video>';
+          else if(ext==='pdf')inner='<div class="file-icon" title="PDF document">\u{1F4C4}</div>';
+          else if(ext==='txt')inner='<div class="file-icon" title="Text file">\u{1F4DD}</div>';
+          else inner='<div class="file-icon" title="File">\u{1F4C1}</div>';
+          const name=formatItemName(item);
           const cat=item._category;
           const ghUrl=GITHUB_TREEVIEW+cat+'/_treeview.json';
           const tags=item._hashtags||[];
           return '<div class="item" data-idx="'+(start+i)+'">'+
             '<a href="'+ghUrl+'" target="_blank" rel="noopener" class="item-edit" title="Edit on GitHub">'+
             '<svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>'+
-            '</a>'+media+
+            '</a><div class="media-wrap">'+inner+'</div>'+
             '<div class="name">'+esc(name)+'</div>'+
             (tags.length?'<div class="item-tags">'+tags.map(t=>'<span class="hash-badge '+t.replace('#','')+'">'+t+'</span>').join('')+'</div>':'')+
             '</div>';
@@ -493,7 +509,7 @@
         const ext=(item.path||'').split('.').pop().toLowerCase();
         const imgs=['jpg','jpeg','png','gif','webp','bmp','svg'];
         const vids=['mp4','webm','mov','avi'];
-        modalTitle.textContent=cleanName(item.name);
+        modalTitle.textContent=formatItemName(item);
         modalPath.innerHTML='<code>'+esc(item.path)+'</code>';
         modalBody.innerHTML='<div class="modal-loading">Loading...</div>';
         const tags=item._hashtags||[];
