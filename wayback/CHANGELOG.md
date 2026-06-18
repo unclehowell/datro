@@ -1,5 +1,16 @@
 # Changelog
 
+## [v0.0.1.40] — 2026-06-17
+
+### Added
+- Recovered 436 text files from git history and uploaded to R2 — these were lost when media moved from git to R2 at v0.0.1.26
+
+### Changed
+- Rebased text file content onto standardised filenames (`YYYY-MM-DD_slug_lang_version`)
+
+### Remaining
+- 692 text entries in the treeview still have no content in R2 (were added post-migration)
+
 ## [v0.0.1.39] — 2026-06-17
 
 ### Added
