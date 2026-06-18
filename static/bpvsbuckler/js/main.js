@@ -887,7 +887,7 @@ function getWelshFlag(name) {
     }
   }
 
-  // BTC Modal
+// BTC Modal
   var btcModal = document.getElementById("btc-modal");
   var btcBtn = document.getElementById("btc-donate-btn");
   var btcClose = document.getElementById("btc-close-btn");
@@ -906,162 +906,91 @@ function getWelshFlag(name) {
     };
   }
 
-// Close modals
-    document.getElementById("archive-modal-close").addEventListener("click", function() {
+  // Close modals
+  document.getElementById("archive-modal-close").addEventListener("click", function() {
+    document.getElementById("archive-modal").classList.remove("open");
+  });
+  document.getElementById("source-modal").addEventListener("click", function(e) {
+    if (e.target === document.getElementById("source-modal")) {
+      document.getElementById("source-modal").classList.remove("open");
+    }
+  });
+  document.getElementById("archive-modal").addEventListener("click", function(e) {
+    if (e.target === document.getElementById("archive-modal")) {
       document.getElementById("archive-modal").classList.remove("open");
-    });
-    document.getElementById("source-modal").addEventListener("click", function(e) {
-      if (e.target === document.getElementById("source-modal")) {
-        document.getElementById("source-modal").classList.remove("open");
-      }
-    });
-    document.getElementById("archive-modal").addEventListener("click", function(e) {
-      if (e.target === document.getElementById("archive-modal")) {
-        document.getElementById("archive-modal").classList.remove("open");
-      }
-    });
+    }
+  });
 
-    // Mobile menu
-    document.getElementById("mobile-menu-btn").addEventListener("click", function() {
-      state.mobileMenuOpen = !state.mobileMenuOpen;
-      document.getElementById("mobile-menu").classList.toggle("open", state.mobileMenuOpen);
-      document.getElementById("mobile-menu-overlay").classList.toggle("open", state.mobileMenuOpen);
-    });
-    document.getElementById("mobile-menu-overlay").addEventListener("click", function() {
+  // Mobile menu
+  document.getElementById("mobile-menu-btn").addEventListener("click", function() {
+    state.mobileMenuOpen = !state.mobileMenuOpen;
+    document.getElementById("mobile-menu").classList.toggle("open", state.mobileMenuOpen);
+    document.getElementById("mobile-menu-overlay").classList.toggle("open", state.mobileMenuOpen);
+  });
+  document.getElementById("mobile-menu-overlay").addEventListener("click", function() {
+    state.mobileMenuOpen = false;
+    document.getElementById("mobile-menu").classList.remove("open");
+    document.getElementById("mobile-menu-overlay").classList.remove("open");
+  });
+  // Mobile menu close button
+  var closeBtn = document.querySelector("#mobile-menu .close-btn");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", function() {
       state.mobileMenuOpen = false;
       document.getElementById("mobile-menu").classList.remove("open");
       document.getElementById("mobile-menu-overlay").classList.remove("open");
-    });
-    // Mobile menu close button
-    var closeBtn = document.querySelector("#mobile-menu .close-btn");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", function() {
-        state.mobileMenuOpen = false;
-        document.getElementById("mobile-menu").classList.remove("open");
-        document.getElementById("mobile-menu-overlay").classList.remove("open");
-      });
-    }
-    // Mobile menu navigation entries
-    document.querySelectorAll(".mobile-nav-btn").forEach(function(mobileBtn) {
-      mobileBtn.addEventListener("click", function() {
-        var view = mobileBtn.dataset.mobileView;
-        switchView(view);
-      });
-    });
-
-    // Keyboard controls
-    document.addEventListener("keydown", function(e) {
-      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
-      switch(e.key) {
-        case "ArrowLeft":
-          e.preventDefault();
-          if (state.currentView === "timeline") navigateScene(-1);
-          break;
-        case "ArrowRight":
-          e.preventDefault();
-          if (state.currentView === "timeline") navigateScene(1);
-          break;
-        case " ":
-          e.preventDefault();
-          if (state.currentView === "timeline") togglePlay();
-          break;
-        case "Escape":
-          if (state.archiveOpen) closeArchive();
-          if (state.mobileMenuOpen) {
-            state.mobileMenuOpen = false;
-            document.getElementById("mobile-menu").classList.remove("open");
-            document.getElementById("mobile-menu-overlay").classList.remove("open");
-          }
-          break;
-        case "0":
-          if (!e.ctrlKey && !e.metaKey) {
-            state.showSplash = !state.showSplash;
-            var splash = document.getElementById("splash-overlay");
-            splash.classList.toggle("hidden", !state.showSplash);
-          }
-          break;
-        case "1":
-          if (!e.ctrlKey && !e.metaKey) switchView("timeline");
-          break;
-        case "2":
-          if (!e.ctrlKey && !e.metaKey) switchView("claim");
-          break;
-        case "3":
-          if (!e.ctrlKey && !e.metaKey) switchView("script");
-          break;
-      }
     });
   }
+  // Mobile menu navigation entries
+  document.querySelectorAll(".mobile-nav-btn").forEach(function(mobileBtn) {
+    mobileBtn.addEventListener("click", function() {
+      var view = mobileBtn.dataset.mobileView;
+      switchView(view);
     });
-    document.getElementById("archive-modal").addEventListener("click", function(e) {
-      if (e.target === document.getElementById("archive-modal")) {
-        document.getElementById("archive-modal").classList.remove("open");
-      }
-    });
+  });
 
-    // Mobile menu
-    document.getElementById("mobile-menu-btn").addEventListener("click", function() {
-      state.mobileMenuOpen = !state.mobileMenuOpen;
-      document.getElementById("mobile-menu").classList.toggle("open", state.mobileMenuOpen);
-      document.getElementById("mobile-menu-overlay").classList.toggle("open", state.mobileMenuOpen);
-    });
-    document.getElementById("mobile-menu-overlay").addEventListener("click", function() {
-      state.mobileMenuOpen = false;
-      document.getElementById("mobile-menu").classList.remove("open");
-      document.getElementById("mobile-menu-overlay").classList.remove("open");
-    });
-    // Mobile menu close button
-    var closeBtn = document.querySelector("#mobile-menu .close-btn");
-    if (closeBtn) {
-      closeBtn.addEventListener("click", function() {
-        state.mobileMenuOpen = false;
-        document.getElementById("mobile-menu").classList.remove("open");
-        document.getElementById("mobile-menu-overlay").classList.remove("open");
-      });
-    }
-    // Mobile menu navigation entries
-    document.querySelectorAll(".mobile-nav-btn").forEach(function(mobileBtn) {
-      mobileBtn.addEventListener("click", function() {
-        var view = mobileBtn.dataset.mobileView;
-        switchView(view);
-      });
-    });
-
-    // Keyboard controls
-    document.addEventListener("keydown", function(e) {
-      if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
-      switch(e.key) {
-        case "ArrowLeft":
-          e.preventDefault();
-          if (state.currentView === "timeline") navigateScene(-1);
-          break;
-        case "ArrowRight":
-          e.preventDefault();
-          if (state.currentView === "timeline") navigateScene(1);
-          break;
-        case " ":
-          e.preventDefault();
-          if (state.currentView === "timeline") togglePlay();
-          break;
-        case "Escape":
-          document.getElementById("archive-modal").classList.remove("open");
-          document.getElementById("source-modal").classList.remove("open");
+  // Keyboard controls
+  document.addEventListener("keydown", function(e) {
+    if (e.target.tagName === "INPUT" || e.target.tagName === "TEXTAREA") return;
+    switch(e.key) {
+      case "ArrowLeft":
+        e.preventDefault();
+        if (state.currentView === "timeline") navigateScene(-1);
+        break;
+      case "ArrowRight":
+        e.preventDefault();
+        if (state.currentView === "timeline") navigateScene(1);
+        break;
+      case " ":
+        e.preventDefault();
+        if (state.currentView === "timeline") togglePlay();
+        break;
+      case "Escape":
+        if (state.archiveOpen) closeArchive();
+        if (state.mobileMenuOpen) {
           state.mobileMenuOpen = false;
           document.getElementById("mobile-menu").classList.remove("open");
           document.getElementById("mobile-menu-overlay").classList.remove("open");
-          break;
-        case "1":
-          if (!e.ctrlKey && !e.metaKey) switchView("timeline");
-          break;
-        case "2":
-          if (!e.ctrlKey && !e.metaKey) switchView("claim");
-          break;
-        case "3":
-          if (!e.ctrlKey && !e.metaKey) switchView("script");
-          break;
-      }
-    });
-  }
+        }
+        break;
+      case "0":
+        if (!e.ctrlKey && !e.metaKey) {
+          state.showSplash = !state.showSplash;
+          var splash = document.getElementById("splash-overlay");
+          splash.classList.toggle("hidden", !state.showSplash);
+        }
+        break;
+      case "1":
+        if (!e.ctrlKey && !e.metaKey) switchView("timeline");
+        break;
+      case "2":
+        if (!e.ctrlKey && !e.metaKey) switchView("script");
+        break;
+      case "3":
+        if (!e.ctrlKey && !e.metaKey) switchView("script");
+        break;
+    }
+});
 
   // ============ START ============
   document.addEventListener("DOMContentLoaded", init);
