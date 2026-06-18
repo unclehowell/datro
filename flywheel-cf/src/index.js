@@ -1075,8 +1075,8 @@ async function acquireLock(env) {
   return true;
 }
 
-async function releaseLock(env) {
-  await env.FLYWHEEL_STATE.delete('lock');
+function releaseLock(_env) {
+  // Lock has expirationTtl: 3600, no need to explicit delete
 }
 
 async function getRotationState(env) {
@@ -2505,31 +2505,17 @@ async function runFlywheel(env, forcedBranch) {
       branch = forcedBranch;
       log(`Forced branch: ${branch}`);
     } else {
-      // ── CATCH-UP MECHANISM: Check for missed runs ──
-      let caughtUp = false;
-      for (const b of ALL_BRANCHES) {
-        const missed = await getMissedHours(env, b);
-        if (missed >= 2) {
-          const cd = await isOnCooldown(token, b, effectiveGear);
-          if (!cd) {
-            branch = b;
-            log(`CATCH-UP: ${b} missed ${missed}h, prioritizing`);
-            caughtUp = true;
-            break;
-          }
-        }
-      }
-      if (!caughtUp) {
-        branch = await findAvailableBranch(state, token, effectiveGear);
-        if (!branch) {
-          const cneiCD = await isOnCooldown(token, 'cnei', effectiveGear);
-          if (!cneiCD) {
-            branch = 'cnei';
-            log('No regular branch available, forcing cnei self-improvement');
-          } else {
-            log('No available branch found');
-            return;
-          }
+      const scheduled = await findAvailableBranch(state, token, effectiveGear);
+      if (scheduled) {
+        branch = scheduled;
+      } else {
+        const cneiCD = await isOnCooldown(token, 'cnei', effectiveGear);
+        if (!cneiCD) {
+          branch = 'cnei';
+          log('No regular branch available, forcing cnei self-improvement');
+        } else {
+          log('No available branch found');
+          return;
         }
       }
     }
@@ -2548,15 +2534,7 @@ async function runFlywheel(env, forcedBranch) {
       result = { tagName: null, error: err.message };
     }
 
-    await env.FLYWHEEL_STATE.put('last_run_result', JSON.stringify({
-      branch,
-      tagName: result?.tagName,
-      version: result?.version,
-      type: result?.type,
-      timestamp: Math.floor(Date.now() / 1000)
-    }));
-
-    // Record run timestamp for catch-up tracking
+    // Record run timestamp (1 write per cycle, used for cooldown)
     await recordRunTimestamp(env, branch);
 
     if (result && (result.error === 'branch_not_found' || !result.error)) {

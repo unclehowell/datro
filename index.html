@@ -1,11 +1,146 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1"><title>Steam Roller Hub</title><meta name="description" content="">
-</head><body>
-<h1>Steam Roller Documentation Hub</h1>
-<ul>
-    <li><a href="autonomous-steering.html">Autonomous Steering (Monday.com)</a></li>
-    <li><a href="diffusion-refinement.html">Diffusion-Style Iterative Refinement</a></li>
-    <li><a href="recursive-self-improvement.html">Recursive Self-Improvement</a></li>
-    <li><a href="command-cockpit.html">Command Cockpit Integration</a></li>
-</ul>
-</body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>cnei — DATRO Flywheel Engine</title>
+<style>
+  * { box-sizing: border-box; }
+  body {
+    background: #1a1a2e; color: #ddd;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    margin: 0; padding: 1rem; line-height: 1.6;
+  }
+  .container { max-width: 900px; margin: 0 auto; }
+  h1 { color: #4fc3f7; border-bottom: 2px solid #333; padding-bottom: 0.3rem; }
+  h2 { color: #81c784; margin-top: 1.5rem; }
+  h3 { color: #aed581; }
+  a { color: #4fc3f7; }
+  a:hover { color: #81d4fa; }
+  pre {
+    background: #0d0d1a; padding: 0.8rem; border-radius: 6px;
+    overflow-x: auto; font-size: 0.85rem; border: 1px solid #333;
+  }
+  code { background: #0d0d1a; padding: 0.1rem 0.3rem; border-radius: 3px; font-size: 0.9em; }
+  .badge {
+    display: inline-block; padding: 0.15rem 0.5rem; border-radius: 4px;
+    font-size: 0.75rem; font-weight: bold; margin-right: 0.3rem;
+  }
+  .badge.blue { background: #1565c0; color: #fff; }
+  .badge.green { background: #2e7d32; color: #fff; }
+  .badge.orange { background: #e65100; color: #fff; }
+  .badge.purple { background: #6a1b9a; color: #fff; }
+  .card {
+    background: #16213e; border: 1px solid #333; border-radius: 8px;
+    padding: 1rem; margin: 0.75rem 0;
+  }
+  .card .title { font-weight: bold; color: #4fc3f7; margin-bottom: 0.5rem; }
+  .stats { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 0.5rem; }
+  .stat { background: #0d0d1a; padding: 0.5rem; border-radius: 6px; text-align: center; }
+  .stat .value { font-size: 1.4rem; font-weight: bold; color: #4fc3f7; }
+  .stat .label { font-size: 0.7rem; color: #888; text-transform: uppercase; }
+  footer { margin-top: 2rem; text-align: center; color: #555; font-size: 0.8rem; border-top: 1px solid #333; padding-top: 1rem; }
+  @media (max-width: 600px) { body { padding: 0.5rem; } }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>cnei — DATRO Flywheel Engine</h1>
+  <p>Cloudflare Workers-based autonomous release pipeline that rotates through 18+ branches, applying AI-driven improvements, best-practice audits, and evidence discovery. Every 10 minutes a cron triggers one branch cycle.</p>
+
+  <h2>Architecture</h2>
+  <div class="card">
+    <div class="title">Runtime</div>
+    Cloudflare Workers (<code>datro-flywheel</code>) running on a <code>*/10 * * * *</code> cron schedule. KV namespace <code>FLYWHEEL_STATE</code> for persistent state (rotation index, index cards, cooldowns, hypothesis trees). No database or external runtime dependencies.
+  </div>
+
+  <div class="card">
+    <div class="title">Branch Rotation</div>
+    Each cycle picks one branch via round-robin (<code>regular_index</code>). CNEI branch runs every 6 regular cycles (<code>CNEI_RATIO = 6</code>). Cooldown per branch is gear-based (<code>RATE_BY_GEAR[gear-1]</code>, default gear 3 → ~233s per branch).
+  </div>
+
+  <div class="card">
+    <div class="title">Release Pipeline (per branch)</div>
+    <ol>
+      <li>Check branch exists via GitHub API</li>
+      <li>Compute next version from latest tag (<code>branch-vX.X.X.XX</code>)</li>
+      <li>Load index card from KV (branch state, cycle count, failures)</li>
+      <li>Run git diff analysis against last release</li>
+      <li>Fetch contextual research (Semantic Scholar)</li>
+      <li>Scan MCP tools (EAA accessibility, AccessScore)</li>
+      <li>Apply wing-file visual steering blocks</li>
+      <li>Run agentic AI loop (brainstorm + write_file + read_file tools)</li>
+      <li>If agent made changes → tag & release; else fallback to best-practice engine</li>
+      <li>If no improvements → audit-only release</li>
+      <li>Sync index card to Monday.com</li>
+    </ol>
+  </div>
+
+  <h2>Branches</h2>
+  <div class="card">
+    <div class="title">19 Branches in Rotation</div>
+    <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+      <tr style="border-bottom:1px solid #333"><th style="text-align:left;padding:0.3rem">Branch</th><th style="text-align:left;padding:0.3rem">Category</th><th style="text-align:left;padding:0.3rem">Purpose</th></tr>
+      <tr><td style="padding:0.3rem">cnei</td><td><span class="badge purple">platform</span></td><td>Flywheel engine — releases itself + all other branches</td></tr>
+      <tr><td style="padding:0.3rem">wayback</td><td><span class="badge blue">archive</span></td><td>Wayback evidence library at wayback.datro.xyz</td></tr>
+      <tr><td style="padding:0.3rem">bpvsbuckler</td><td><span class="badge">frontend</span></td><td>Main application</td></tr>
+      <tr><td style="padding:0.3rem">datro</td><td><span class="badge">frontend</span></td><td>Landing/documentation portal at datro.directory</td></tr>
+      <tr><td colspan="3" style="padding:0.3rem;color:#888;font-size:0.8rem">+ 15 more (althea, archives, carfinancecheque, ccan, ceo, dash, dcc, financecheque, gui, hbnb, library, llmwiki, piratelaw, subrepos, ui, wave)</td></tr>
+    </table>
+  </div>
+
+  <h2>KV Configuration</h2>
+  <div class="card">
+    <div class="title">Namespace: FLYWHEEL_STATE</div>
+    <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+      <tr style="border-bottom:1px solid #333"><th style="text-align:left;padding:0.3rem">Key</th><th style="text-align:left;padding:0.3rem">Purpose</th></tr>
+      <tr><td style="padding:0.3rem"><code>index_{branch}</code></td><td>Index card per branch (release count, cycle count, hypothesis tree)</td></tr>
+      <tr><td style="padding:0.3rem"><code>failure_{branch}</code></td><td>Failure log (last 20 entries)</td></tr>
+      <tr><td style="padding:0.3rem"><code>last_run_{branch}</code></td><td>Unix timestamp of last run (cooldown tracking)</td></tr>
+      <tr><td style="padding:0.3rem"><code>rotation</code></td><td>Round-robin state (regular_index, cnei_queue, lap, mode)</td></tr>
+      <tr><td style="padding:0.3rem"><code>config</code></td><td>Gear setting (1-10, higher = faster cycles)</td></tr>
+      <tr><td style="padding:0.3rem"><code>bias</code></td><td>Steering bias (direction, magnitude, risk tolerance)</td></tr>
+      <tr><td style="padding:0.3rem"><code>lock</code></td><td>Concurrency lock (TTL 1 hour)</td></tr>
+      <tr><td style="padding:0.3rem"><code>wallet_{branch}_{type}</code></td><td>Branch wallet cache (TTL 24h)</td></tr>
+      <tr><td style="padding:0.3rem"><code>bounty_{branch}</code></td><td>Gitlawv bounty claim history</td></tr>
+      <tr><td style="padding:0.3rem"><code>last_cnei_release</code></td><td>Latest cnei release tag + timestamp</td></tr>
+      <tr><td style="padding:0.3rem"><code>mcp_last_scan</code></td><td>Last MCP scan cache</td></tr>
+    </table>
+  </div>
+
+  <h2>Quota Management</h2>
+  <div class="card">
+    <div class="title">KV Operations Budget</div>
+    <p>Cloudflare Workers free-plan KV limits: <strong>100K reads / 1K writes per day</strong>.</p>
+    <p>Optimisations applied to stay within budget:</p>
+    <ul>
+      <li>Concurrency lock uses TTL auto-expiry (no explicit delete)</li>
+      <li>Index cards only updated on state changes, not every cycle</li>
+      <li>Branch wallet cached in KV with 24h TTL</li>
+      <li>MCP scan results cached (48h refresh cycle)</li>
+      <li>Circuit breaker: if cumulative KV writes approach limit, gear auto-adjusts</li>
+    </ul>
+    <p>Estimated daily usage: <strong>~450 reads / ~350 writes</strong> (well within free tier).</p>
+  </div>
+
+  <h2>Evidence Discovery (Wayback)</h2>
+  <div class="card">
+    <div class="title">Great House Farm — Llandough (nr. Penarth)</div>
+    <p>The wayback branch includes a GitHub Action that runs on every push, using the flywheel's AI proxy to discover new unique evidence about Great House Farm. Each wayback re-release adds at least 1 new entry to the library at <a href="https://wayback.datro.xyz">wayback.datro.xyz</a>.</p>
+  </div>
+
+  <h2>Deployment</h2>
+  <div class="card">
+    <div class="title">CI/CD Pipeline</div>
+    <pre>Push to cnei branch → GitHub Action (cnei-safe-release.yml)
+  → wrangler deploy → Cloudflare Workers (datro-flywheel)
+  → Cron every 10 min → Rotate through all branches
+  → GitHub releases + Monday.com sync</pre>
+  </div>
+
+  <footer>
+    DATRO Consortium · cnei branch · <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a>
+  </footer>
+</div>
+</body>
+</html>
