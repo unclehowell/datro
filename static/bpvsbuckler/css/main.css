@@ -121,8 +121,9 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 #scene-display { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem 4rem; position: relative; overflow-y: auto; }
 
 #narration-area { width: 100%; margin-left: 5rem; margin-left: 5rem; max-width: 48rem; margin-bottom: 1rem; }
-.narration-header { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-#narration-label { font-size: 1.35rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 0.5rem; display: inline-block; }
+.narration-header { display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
+#narration-label { font-size: 1.35rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 0; display: inline-block; }
+.left-icons { display: inline-flex; gap: 0.2rem; }
 #narration-text { font-size: 1.75rem; font-family: var(--font-display); font-size: 1.75rem; font-weight: bold; line-height: 1.6; color: #fff; }
 #narration-text .word { display: inline-block; transition: color 0.1s; }
 #narration-text .word.active { color: white; }
@@ -413,6 +414,7 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
   flex-shrink: 0; height: 3.5rem; background: rgba(15,23,42,0.95); border-top: 1px solid var(--border);
   display: flex; align-items: center; justify-content: space-between; padding: 0 1rem;
   font-size: 1.35rem; color: var(--text-muted); font-family: var(--font-body); z-index: 50;
+  white-space: nowrap;
 }
 #footer a { color: var(--text-muted); text-decoration: none; transition: color 0.2s; }
 #footer a:hover { color: var(--accent); }
@@ -453,26 +455,16 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 
 #footer .social-link,
 #stripe-buy-button,
-#btc-donate-btn {
+#btc-donate-btn,
+#footer button {
   height: 32px !important;
   min-height: 32px !important;
-}
-#footer button,
-#footer .social-link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#footer .social-link,
-#footer button,
-#footer .social-link svg {
-  height: 28px !important;
-  min-height: 28px !important;
+  max-height: 32px !important;
   display: inline-flex !important;
   align-items: center !important;
   justify-content: center !important;
   vertical-align: middle !important;
+  box-sizing: border-box;
 }
 #footer-right>* {
   margin: 0 0.15rem !important;

@@ -41,7 +41,7 @@
   }
 
   function getTypeIcon(type) {
-    var map = { pdf: "📄", image: "🖼️", text: "📧", markdown: "📝", link: "🔗", video: "▶️" };
+    var map = { pdf: "📄", image: "🖼️", text: "📧", markdown: "📝", link: "🔗", video: "🎥" };
     return map[type] || "📄";
   }
 
@@ -97,6 +97,9 @@ function getWelshFlag(name) {
     var utt = new SpeechSynthesisUtterance(text);
     utt.rate = 1.1;
     utt.pitch = 1.0;
+    // map slider 0-1 to actual 0-0.1 (100% slider=10% vol, 10% slider=1% vol)
+    const actualVol = Math.max(0.001, (state.voiceVolume || 0.5) / 10);
+    utt.volume = actualVol;
     // Replace Welsh place names for better pronunciation
     utt.text = text.replace(/Ty Mawr/gi, "Tee-ah-oo-ree Row").replace(/Llandough/gi, "Lan-dock");
     window.speechSynthesis.speak(utt);
@@ -236,49 +239,106 @@ function getWelshFlag(name) {
     const icons = container.querySelectorAll('.gallery-icon');
     const yr = String(scene.year || '');
     const slideNum = (state.currentSceneIndex || 0) + 1;
-    // Highlight if evidence (use year or slide match; simple year-based or always for demo since tags exist)
-    const y = parseInt(yr);
-    const hasEvidence = !isNaN(y) && (y >= 1667 || slideNum === 65 || yr === '1988'); // year/slide match for evidence periods (1667+ and specific 1988 etc)
-    icons.forEach(ic => {
-      ic.classList.toggle('has-evidence', hasEvidence);
+    icons.forEach(async (ic) => {
+      const type = ic.dataset.type;
+      let has = false;
+      try {
+        const ev = await getEvidenceForSlide(type, yr, slideNum);
+        has = ev.length > 0;
+      } catch(e) { has = false; }
+      ic.classList.toggle('has-evidence', has);
       ic.onclick = () => {
-        if (!hasEvidence) return;
+        if (!has) return;
         if (state.isPlaying) togglePlay(); // pause slideshow on click
-        showEvidenceGallery(ic.dataset.type, scene, yr, slideNum);
+        showEvidenceGallery(type, scene, yr, slideNum);
       };
+      ic.onfocus = () => { /* triggers check via await */ };
     });
     if (hasEvidence && state.isPlaying) {
       togglePlay(); // auto-pause slideshow on highlight for evidence slide
     }
   }
 
-  function showEvidenceGallery(type, scene, year, slideNumParam) {
+  const WAYBACK_BASE = 'https://wayback.datro.xyz';
+  let waybackCache = {};
+
+  async function loadWaybackCategory(cat) {
+    if (waybackCache[cat]) return waybackCache[cat];
+    try {
+      const url = `${WAYBACK_BASE}/wayback/${cat}/_treeview.json`;
+      const res = await fetch(url);
+      if (!res.ok) return [];
+      const data = await res.json();
+      const items = (Array.isArray(data) ? data : []).map(item => ({
+        ...item,
+        _category: cat,
+        _hashtags: (item.name || '').match(/#\w+/g) || [],
+        _year: (item.name || '').match(/\d{4}/) ? (item.name.match(/\d{4}/)[0]) : ''
+      }));
+      waybackCache[cat] = items;
+      return items;
+    } catch (e) {
+      console.warn('wayback fetch fail', e);
+      return [];
+    }
+  }
+
+  async function getEvidenceForSlide(type, year, slideNum) {
+    const cat = (type === 'pdf') ? 'pdf' : (type === 'image') ? 'images' : (type === 'video') ? 'video' : 'text';
+    const items = await loadWaybackCategory(cat);
+    const y = String(year || '');
+    const filtered = items.filter(item => {
+      const name = (item.name || '').toLowerCase();
+      const hasYear = !y || name.includes(y);
+      const hasTag = name.includes('#bpvsbuckler');
+      return hasYear && hasTag;
+    });
+    return filtered;
+  }
+
+  function renderGalleryInModal(items, type, year, slideNum, modalBody) {
+    modalBody.innerHTML = '';
+    const gal = document.createElement('div');
+    gal.className = 'gallery';
+    gal.style.cssText = 'display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:0.5rem;padding:0.5rem;overflow:auto;height:100%;';
+    if (!items.length) {
+      gal.innerHTML = '<p style="color:#667;padding:2rem;text-align:center;">No matching evidence found for this slide/year/category on wayback.</p>';
+    }
+    items.forEach(item => {
+      const div = document.createElement('div');
+      div.className = `item ${item._category}`;
+      div.style.cssText = 'background:rgba(255,255,255,0.08);border-radius:8px;padding:0.4rem;text-align:center;';
+      const name = item.name || item.title || 'item';
+      let inner = `<div class="name" style="font-size:0.65rem;color:#889;margin-top:0.2rem;word-break:break-word;">${name}</div>`;
+      const fullUrl = `${WAYBACK_BASE}/${item.path || ''}`.replace(/\/+/g,'/').replace(':/','://');
+      if (item._category === 'images') {
+        inner = `<a href="${fullUrl}" target="_blank" rel="noopener"><img src="${fullUrl}" alt="${name}" style="max-width:100%;max-height:140px;border-radius:4px;object-fit:contain;"></a>` + inner;
+      } else if (item._category === 'video') {
+        inner = `<a href="${fullUrl}" target="_blank" rel="noopener"><video controls style="max-width:100%;max-height:140px;border-radius:4px;" src="${fullUrl}"></video></a>` + inner;
+      } else {
+        inner = `<a href="${fullUrl}" target="_blank" rel="noopener" style="display:block;padding:1.2rem 0;font-size:0.8rem;color:#aac;">${name}</a>`;
+      }
+      div.innerHTML = inner;
+      gal.appendChild(div);
+    });
+    modalBody.appendChild(gal);
+  }
+
+  async function showEvidenceGallery(type, scene, year, slideNumParam) {
     const modal = document.getElementById('evidence-modal');
     if (!modal) return;
-    const iframe = document.getElementById('evidence-iframe');
     const titleEl = document.getElementById('evidence-modal-title');
+    const body = document.getElementById('evidence-modal-body');
+    if (!body) return;
     const slideNum = slideNumParam || (state.currentSceneIndex || 0) + 1;
     const yr = year || (scene ? scene.year : '');
-    // Set title using existing archive style elements
     if (titleEl) {
-      titleEl.innerHTML = 'EVIDENCE • ' + (type ? type.toUpperCase() : 'GALLERY') + ' • SLIDE ' + slideNum + ' • YEAR ' + yr;
+      titleEl.innerHTML = `<span class="archive-category-title">EVIDENCE • ${type ? type.toUpperCase() : 'GALLERY'}</span><br><span class="archive-year-badge">SLIDE ${slideNum} • YEAR ${yr}</span>`;
     }
-    // Filter: pass ?slide= (or ?bpvs_slide) + &year= + &cat= based on icon type. Also #slide-N for wayback support
-    let base = 'https://wayback.datro.xyz/';
-    let qs = [];
-    if (slideNum) qs.push('slide=' + slideNum);
-    // support bpvs_slide example as alternate
-    // if (slideNum) qs.push('bpvs_slide=' + slideNum);
-    if (yr) qs.push('year=' + yr);
-    if (type) {
-      const cat = (type === 'pdf') ? 'pdf' : (type === 'image') ? 'images' : (type === 'video') ? 'video' : 'text';
-      qs.push('cat=' + cat);
-    }
-    let url = base;
-    if (qs.length) url += '?' + qs.join('&');
-    if (slideNum) url += '#slide-' + slideNum;  // or #slide-65 support as per prior
-    if (iframe) iframe.src = url;
+    body.innerHTML = '<div style="padding:2rem;text-align:center;color:#667;">Loading evidence from wayback.datro.xyz ...</div>';
     modal.classList.add('open');
+    const items = await getEvidenceForSlide(type, yr, slideNum);
+    renderGalleryInModal(items, type, yr, slideNum, body);
   }
 
   function showSceneDialogue(scene, dialogueIdx) {

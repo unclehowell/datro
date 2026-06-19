@@ -66,8 +66,8 @@
               <div class="gallery-icons left-icons" id="narration-icons">
                 <span class="gallery-icon" data-type="pdf" title="PDF evidence">📄</span>
                 <span class="gallery-icon" data-type="image" title="Image evidence">🖼️</span>
-                <span class="gallery-icon" data-type="text" title="Text / news evidence">📰</span>
-                <span class="gallery-icon" data-type="video" title="Video evidence">📝</span>
+                <span class="gallery-icon" data-type="text" title="Text / Email (Gmail) evidence">📧</span>
+                <span class="gallery-icon" data-type="video" title="Video evidence">🎥</span>
               </div>
               <div id="narration-label">NARRATION</div>
             </div>
@@ -79,13 +79,7 @@
 
         <!-- gallery-btn kept for compatibility / mobile but icons moved above -->
 
-        <!-- Nav Arrows -->
-        <button class="nav-arrow left" id="prev-scene-btn">
-          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="nav-arrow right" id="next-scene-btn">
-          <svg viewBox="0 0 24 24"><polyline points="9 6 15 12 9 18"/></svg>
-        </button>
+        <!-- outer nav arrows removed; only inner next to play/pause kept -->
 
         <!-- Timeline Controls -->
         <div id="timeline-controls">
@@ -96,10 +90,7 @@
             </div>
             <div class="scrubber-tooltip" style="left:0%">Slide 1: 1100</div>
           </div>
-          <div id="controls-bar">
-            <button class="ctrl-btn" id="prev-scene-btn-inner" title="Previous">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-            </button>
+          <div id="controls-bar" style="position:relative;">
             <button class="play-btn" id="play-btn" title="Play/Pause">
               <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
             </button>
@@ -114,11 +105,11 @@
               <span class="voice-slider-label mobile-label">V</span>
               <input type="range" id="voice-slider" min="0" max="1" step="0.01" value="0.5">
             </div>
-            <button class="ctrl-btn" id="minimize-btn" title="Minimize/Restore">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
-            </button>
+            <!-- expand/collapse float above -->
+            <button class="minimize-toggle" id="minimize-btn" title="Expand/Collapse" style="position:absolute; top:-18px; left:50%; transform:translateX(-50%); z-index:70; background:rgba(15,23,42,0.95); border:1px solid var(--border); color:#94a3b8; padding:0 6px; border-radius:4px 4px 0 0; cursor:pointer; font-size:0.75rem; line-height:1;">▼</button>
           </div>
         </div>
+      </div>
       </div>
 
       <!-- Script View -->
@@ -194,8 +185,8 @@
         </div>
         <button id="evidence-modal-close" style="background:none;border:none;color:#94a3b8;font-size:1.25rem;cursor:pointer;">✕</button>
       </div>
-      <div class="archive-body no-scrollbar" id="evidence-modal-body" style="padding:0; display:block; flex:1; overflow:hidden;">
-        <iframe id="evidence-iframe" style="width:100%; height:100%; border:0; background:#111;" src=""></iframe>
+      <div class="archive-body no-scrollbar" id="evidence-modal-body" style="padding:0; display:block; flex:1; overflow:auto; background:#111;">
+        <!-- gallery populated dynamically from wayback.datro.xyz -->
       </div>
     </div>
   </div>

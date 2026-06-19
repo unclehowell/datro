@@ -4,6 +4,16 @@ It's expected that developers log all changes to this branch in this CHANGELOG.m
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),  
 and [Semantic Versioning](https://semver.org/spec/v2.0.0.html).  
 
+## [0.0.1.45] - 2026
+- Icons updated to match categories: 📄 (pdf), 🖼️ (image), 📧 (text/email gmail 2-in-1), 🎥 (video).
+- Content fed directly from wayback.datro.xyz (fetch _treeview.json filtered by year + #bpvsbuckler + category) into bpvsbuckler gallery (no full iframe). Media remains hosted on wayback.
+- Icons inline left of "NARRATION" title on slide (flex row).
+- Icons highlight only if media detected for slide/year (async check via wayback fetch on render).
+- Volume slider mapped: 100% slider=10% vol, 10% slider=1% vol (actual utt.volume = slider/10).
+- Footer: all text on 1 line; co-fund/btc/social buttons same height (32px).
+- Removed outer/inner prev next except the next button beside play/pause.
+- Expand/collapse (minimize) now also collapses footer; toggle button floats above media bar (absolute top:-18px).
+
 ## [Unreleased]
 
 ## [0.0.1.04] - Q2/2026
