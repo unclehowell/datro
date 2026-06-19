@@ -924,7 +924,10 @@ function getWelshFlag(name) {
     // Render splash (the 'enter' screen). Hide preloader immediately so not stuck on spinner.
     renderSplash();
     var pre = document.getElementById("preloader");
-    if (pre) pre.classList.add("hidden");
+    if (pre) {
+      pre.classList.add("hidden");
+      pre.style.display = 'none'; // stronger hide to prevent stuck loading spinner
+    }
     var root = document.getElementById("app-root");
     if (root) root.classList.add("ready");
 
@@ -1101,7 +1104,7 @@ function getWelshFlag(name) {
         if (state.currentView === "timeline") togglePlay();
         break;
       case "Escape":
-        if (state.archiveOpen) closeArchive();
+        if (state.archiveOpen && typeof closeArchive === 'function') closeArchive();
         if (state.mobileMenuOpen) {
           state.mobileMenuOpen = false;
           document.getElementById("mobile-menu").classList.remove("open");
