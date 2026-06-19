@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flywheel Brain Wiki</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.5.0/github-markdown.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <style>
+        body { padding: 40px; }
+        .markdown-body { max-width: 900px; margin: 0 auto; }
+    </style>
+</head>
+<body class="markdown-body">
+    <div id="content">Loading brain...</div>
+    <script>
+        async function loadBrain() {
+            const res = await fetch('https://raw.githubusercontent.com/unclehowell/datro/brain/BRAIN_CONSOLIDATED.md');
+            const text = await res.text();
+            document.getElementById('content').innerHTML = marked.parse(text);
+        }
+        loadBrain();
+    </script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+name: Flywheel Safe Release
+
+on:
+  push:
+    branches:
+      - cnei
+
+jobs:
+  validate-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Deploy Flywheel to Cloudflare
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          workingDirectory: 'flywheel-cf'

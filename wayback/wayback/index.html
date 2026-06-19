@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Wayback Archive</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;overflow:hidden}
+    body{
+      background:#2a2a4a;color:#ddd;
+      font-family:-apple-system,BlinkMacSystemFont,sans-serif;
+      -webkit-text-size-adjust:100%;touch-action:manipulation;
+    }
+    a{color:#aac;text-decoration:none}
+
+    /* -- APP SHELL -- */
+    #app{display:flex;flex-direction:column;height:100dvh;max-height:100dvh}
+
+    /* -- HEADER (thin bar) -- */
+    header{
+      display:flex;align-items:center;justify-content:space-between;
+      padding:0.4rem 0.75rem;background:#22224a;border-bottom:1px solid rgba(255,255,255,0.08);
+      flex-shrink:0;min-height:44px;
+    }
+    header h1{font-size:1.8rem;font-weight:700;color:#bcc}
+    #version-tag{font-size:0.85rem;color:#667;font-weight:400;margin-left:0.3rem}
+    .header-count{font-size:1rem;color:#667;white-space:nowrap}
+
+    /* -- SCROLLABLE CONTENT -- */
+    #content{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:0 0.5rem}
+
+    /* -- TAG BAR (scrollable chips) -- */
+    #tag-bar{
+      display:flex;gap:0.3rem;padding:0.4rem 0;overflow-x:auto;
+      -webkit-overflow-scrolling:touch;scrollbar-width:none;flex-shrink:0;
+    }
+    #tag-bar::-webkit-scrollbar{display:none}
+    #tag-bar .tag{
+      flex-shrink:0;padding:0.4rem 0.85rem;
+      background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+      border-radius:20px;color:#8ac;font-size:1rem;cursor:pointer;
+      min-height:44px;display:flex;align-items:center;touch-action:manipulation;
+      transition:all 0.15s;
+    }
+    #tag-bar .tag:active{background:rgba(255,255,255,0.2)}
+    #tag-bar .tag.active{background:rgba(80,180,80,0.25);color:#afa;border-color:rgba(80,180,80,0.4)}
+    #tag-bar .tag-clear{background:rgba(200,50,50,0.15);color:#f88;border-color:rgba(200,50,50,0.25)}
+
+    /* -- SEARCH -- */
+    #all-search{
+      width:100%;padding:0.7rem 1rem;margin-bottom:0.4rem;
+      border-radius:12px;border:1px solid rgba(255,255,255,0.15);
+      background:rgba(255,255,255,0.07);color:#ddd;font-size:1.1rem;
+      min-height:48px;outline:none;
+    }
+    #all-search:focus{border-color:rgba(100,150,255,0.4)}
+    #sort-row{display:flex;align-items:center;gap:0.3rem;margin:0.3rem 0}
+    #sort-row label{font-size:0.9rem;color:#667}
+    #sort-select{
+      background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);
+      border-radius:10px;color:#aac;font-size:0.95rem;padding:0.45rem 0.6rem;
+      min-height:42px;outline:none;cursor:pointer;
+    }
+    #sort-select:focus{border-color:rgba(100,150,255,0.4)}
+
+    /* -- GALLERY -- */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fill,minmax(180px,1fr));
+      gap:0.5rem;padding-top:0.25rem;
+    }
+    .item{
+      background:rgba(255,255,255,0.06);border-radius:12px;padding:0.6rem;
+      text-align:center;cursor:pointer;transition:background 0.12s;
+      touch-action:manipulation;
+      content-visibility:auto;contain-intrinsic-size:280px;
+    }
+    .item:active{background:rgba(255,255,255,0.12)}
+    .media-wrap{
+      width:100%;aspect-ratio:4/3;overflow:hidden;border-radius:10px;
+      display:flex;align-items:center;justify-content:center;
+      background:rgba(0,0,0,0.2);
+    }
+    .media-wrap img,.media-wrap video{
+      width:100%;height:100%;object-fit:cover;display:block;pointer-events:none;
+    }
+    .media-wrap .file-icon{font-size:4rem;color:#889}
+    .item .name{font-size:0.95rem;color:#889;margin-top:0.25rem;word-break:break-word;line-height:1.3}
+    .item .item-tags{display:flex;flex-wrap:wrap;gap:0.2rem;justify-content:center;margin-top:0.25rem}
+    .item{position:relative}
+    .item-edit{
+      position:absolute;top:4px;right:4px;width:30px;height:30px;
+      background:rgba(0,0,0,0.45);border-radius:8px;display:flex;
+      align-items:center;justify-content:center;opacity:0;
+      transition:opacity 0.15s;text-decoration:none;z-index:2;
+    }
+    .item:hover .item-edit,.item:focus-within .item-edit{opacity:1}
+    .item-edit:hover{background:rgba(60,120,255,0.7)}
+    .item-edit svg{width:16px;height:16px;fill:#ddd}
+    .hash-badge{
+      display:inline-block;padding:0.2rem 0.5rem;border-radius:8px;
+      font-size:0.85rem;font-weight:700;letter-spacing:0.2px;
+    }
+    .hash-badge.bpvsbuckler{background:rgba(200,100,50,0.3);color:#fca}
+    .hash-badge.datro{background:rgba(50,150,200,0.3);color:#8cf}
+    .hash-badge.ccan{background:rgba(150,200,50,0.3);color:#cf8}
+    .hash-badge.morgan{background:rgba(200,50,150,0.3);color:#f8c}
+    .hash-badge.ceo{background:rgba(200,200,50,0.3);color:#ff8}
+    .hash-badge.gui{background:rgba(50,200,200,0.3);color:#8ff}
+    .hash-badge.library{background:rgba(150,100,200,0.3);color:#c8f}
+    .hash-badge.family{background:rgba(200,150,50,0.3);color:#fc8}
+    .hash-badge.email{background:rgba(100,150,200,0.3);color:#acf}
+    .hash-badge.greathousefarm{background:rgba(100,200,150,0.3);color:#afa}
+
+    /* -- PAGINATION -- */
+    .pagination{display:flex;justify-content:center;align-items:center;gap:0.2rem;margin-top:0.6rem;flex-wrap:wrap;padding-bottom:0.25rem}
+    .pagination button{
+      padding:0.5rem 0.8rem;min-width:44px;min-height:44px;
+      background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);
+      border-radius:10px;color:#aac;cursor:pointer;font-weight:700;font-size:1rem;touch-action:manipulation;
+    }
+    .pagination button:active:not(:disabled){background:rgba(255,255,255,0.2);color:#fff}
+    .pagination button:disabled{opacity:0.25}
+    .pagination button.active-page{background:rgba(255,255,255,0.2);color:#fff;border-color:rgba(255,255,255,0.35)}
+    .pagination .info{color:#667;font-size:0.7rem}
+
+    /* -- TOP TABS -- */
+    #top-tabs{
+      display:flex;background:#1e1e3e;border-bottom:1px solid rgba(255,255,255,0.08);
+      flex-shrink:0;overflow-x:auto;scrollbar-width:none;
+    }
+    #top-tabs::-webkit-scrollbar{display:none}
+    .btab{
+      flex:1 0 auto;padding:0.5rem 0.6rem;cursor:pointer;color:#667;
+      font-size:0.95rem;text-align:center;transition:all 0.15s;
+      touch-action:manipulation;min-height:54px;white-space:nowrap;
+      border:none;background:none;font-family:inherit;
+      border-bottom:3px solid transparent;
+    }
+    .btab .btab-icon{font-size:1.6rem;display:block;margin-bottom:0.1rem}
+    .btab.active{color:#bcc;border-bottom-color:#889}
+    .btab:active{color:#889}
+
+    /* -- MODAL (bottom sheet on mobile) -- */
+    .modal-overlay{
+      display:none;position:fixed;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.6);z-index:1000;overflow:hidden;
+    }
+    .modal-sheet{
+      position:absolute;bottom:0;left:0;width:100%;
+      max-height:92vh;background:#22224a;border-radius:16px 16px 0 0;
+      display:flex;flex-direction:column;overflow:hidden;
+      animation:sheetUp 0.25s ease-out;
+    }
+    @keyframes sheetUp{
+      from{transform:translateY(100%)}
+      to{transform:translateY(0)}
+    }
+    .modal-handle{
+      width:40px;height:4px;border-radius:2px;background:rgba(255,255,255,0.15);
+      margin:0.5rem auto 0.25rem;flex-shrink:0;
+    }
+    .modal-header{
+      display:flex;justify-content:space-between;align-items:flex-start;
+      padding:0.25rem 0.75rem 0.5rem;flex-shrink:0;gap:0.5rem;
+    }
+    .modal-header h2{margin:0;font-size:1.4rem;color:#ddd;word-break:break-word;line-height:1.3;flex:1}
+    .modal-close{
+      background:none;border:none;color:#667;font-size:1.4rem;cursor:pointer;
+      padding:0.2rem;line-height:1;flex-shrink:0;touch-action:manipulation;
+    }
+    .modal-close:active{color:#fff}
+    .modal-tags{display:flex;flex-wrap:wrap;gap:0.3rem;padding:0 0.75rem 0.4rem;flex-shrink:0}
+    .modal-tags .hash-badge{font-size:1rem;padding:0.3rem 0.7rem}
+    .modal-path{font-size:0.55rem;color:#556;padding:0 0.75rem 0.4rem;word-break:break-all;flex-shrink:0}
+    .modal-path code{background:rgba(255,255,255,0.04);padding:0.05rem 0.25rem;border-radius:4px}
+    .modal-body{overflow-y:auto;padding:0.5rem 0.75rem 1rem;-webkit-overflow-scrolling:touch;flex:1;min-height:100px}
+    .modal-body img,.modal-body video{max-width:100%;max-height:70vh;display:block;margin:0 auto;border-radius:8px}
+    .modal-body embed,.modal-body iframe{width:100%;min-height:60vh;border:none;border-radius:8px}
+    .modal-body .pdf-viewer{width:100%;min-height:70vh;border:none;border-radius:8px}
+    .modal-body .pdf-fallback{text-align:center;padding:1rem;color:#889;font-size:0.9rem}
+    .modal-body .pdf-fallback a{color:#8cf}
+    .modal-body pre{
+      white-space:pre-wrap;word-wrap:break-word;max-height:60vh;overflow-y:auto;
+      background:rgba(0,0,0,0.3);padding:1rem;border-radius:8px;
+      font-size:0.85rem;line-height:1.5;margin:0;color:#ccc;
+    }
+    .modal-loading{text-align:center;color:#556;padding:2rem;font-size:1rem}
+
+    /* -- SHARE BAR in modal -- */
+    .share-bar{display:flex;align-items:center;gap:0.35rem;padding:0.4rem 0.75rem;flex-shrink:0;border-top:1px solid rgba(255,255,255,0.06)}
+    .share-bar span{color:#556;font-size:0.6rem}
+    .share-btn{
+      background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);
+      border-radius:8px;color:#889;cursor:pointer;padding:0.45rem 0.7rem;
+      font-size:0.9rem;min-height:40px;display:inline-flex;align-items:center;
+      gap:0.3rem;touch-action:manipulation;
+    }
+    .share-btn:active{background:rgba(255,255,255,0.15);color:#aac}
+    .share-btn svg{width:18px;height:18px;fill:currentColor}
+    .share-msg{color:#8c8;font-size:0.85rem;min-height:1em}
+
+    /* -- EMPTY STATE -- */
+    .empty-state{text-align:center;color:#556;padding:3rem 1rem;font-size:1.1rem}
+
+    /* -- DESKTOP OVERRIDES -- */
+    @media(min-width:768px){
+      #content{padding:0 1rem 1rem}
+      header{padding:0.5rem 1rem}
+      header h1{font-size:2rem}
+      .gallery{grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:0.75rem}
+      .media-wrap .file-icon{font-size:5rem}
+      .item .name{font-size:1.1rem}
+      .modal-sheet{max-width:800px;left:50%;transform:translateX(-50%);border-radius:16px;top:5vh;max-height:90vh;bottom:auto;animation:none}
+      @keyframes sheetUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+      .modal-body embed,.modal-body iframe{min-height:65vh}
+      .modal-body .pdf-viewer{min-height:75vh}
+    }
+    @media(min-width:1024px){
+      .gallery{grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:0.85rem}
+      .media-wrap .file-icon{font-size:5.6rem}
+    }
+  </style>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <h1>Wayback<span id="version-tag"></span></h1>
+      <span class="header-count" id="header-count"></span>
+    </header>
+
+    <nav id="top-tabs"></nav>
+
+    <div id="content">
+      <div id="tag-bar"></div>
+      <div id="sort-row">
+        <label for="sort-select">Sort</label>
+        <select id="sort-select">
+          <option value="desc">Date Z-A</option>
+          <option value="asc">Date A-Z</option>
+        </select>
+      </div>
+      <div id="all-search-wrapper" style="display:none">
+        <input type="text" id="all-search" placeholder="Search all files...">
+      </div>
+      <div class="gallery" id="gallery"></div>
+      <div class="pagination" id="pagination"></div>
+    </div>
+  </div>
+
+  <div class="modal-overlay" id="modal">
+    <div class="modal-sheet">
+      <div class="modal-handle"></div>
+      <div class="modal-header">
+        <h2 id="modal-title"></h2>
+        <button class="modal-close" id="modal-close">&times;</button>
+      </div>
+      <div class="modal-tags" id="modal-tags"></div>
+      <div class="modal-path" id="modal-path"></div>
+      <div class="modal-body" id="modal-body"><div class="modal-loading">Loading...</div></div>
+      <div class="share-bar">
+        <span>Share</span>
+        <button class="share-btn" id="share-twitter">
+          <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+        </button>
+        <button class="share-btn" id="share-facebook">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </button>
+        <button class="share-btn" id="share-copy">
+          <svg viewBox="0 0 24 24"><path d="M7 6V3a1 1 0 0 1 1-1h12a1 1 0 0 1 1 1v14a1 1 0 0 1-1 1h-3v3c0 .552-.45 1-1.007 1H4.007A1.001 1.001 0 0 1 3 21l.003-14c0-.552.45-1 1.006-1H7zM5.003 8L5 20h10V8H5.003zM9 6h8v10h2V4H9v2z"/></svg>
+        </button>
+        <span class="share-msg" id="share-msg"></span>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (() => {
+      const CATEGORIES = [
+        { name: 'all', label: 'All', icon: '\u{1F4E6}' },
+        { name: 'images', label: 'Images', icon: '\u{1F5BC}' },
+        { name: 'pdf', label: 'PDF', icon: '\u{1F4C4}' },
+        { name: 'text', label: 'Text', icon: '\u{1F4DD}' },
+        { name: 'video', label: 'Video', icon: '\u{1F3AC}' }
+      ];
+      const PER_PAGE = 10;
+      const KNOWN_TAGS = ['#bpvsbuckler','#datro','#ccan','#morgan','#ceo','#gui','#library','#family','#email','#greathousefarm'];
+
+      let allData = {};
+      let currentCat = 'images';
+      let currentPage = 1;
+      let filtered = [];
+      let activeFilters = new Set();
+      let currentFile = null;
+      let currentSort = 'desc';
+
+      const content = document.getElementById('content');
+      const tagBar = document.getElementById('tag-bar');
+      const gallery = document.getElementById('gallery');
+      const pagination = document.getElementById('pagination');
+      const headerCount = document.getElementById('header-count');
+      const allSearch = document.getElementById('all-search');
+      const allSearchWrapper = document.getElementById('all-search-wrapper');
+      const versionTag = document.getElementById('version-tag');
+      const sortSelect = document.getElementById('sort-select');
+      const topTabs = document.getElementById('top-tabs');
+      const modal = document.getElementById('modal');
+      const modalTitle = document.getElementById('modal-title');
+      const modalTags = document.getElementById('modal-tags');
+      const modalPath = document.getElementById('modal-path');
+      const modalBody = document.getElementById('modal-body');
+      const modalClose = document.getElementById('modal-close');
+      const shareTwitter = document.getElementById('share-twitter');
+      const shareFacebook = document.getElementById('share-facebook');
+      const shareCopy = document.getElementById('share-copy');
+      const shareMsg = document.getElementById('share-msg');
+
+      function qs(k){return new URLSearchParams(window.location.search).get(k)}
+      function ue(path){return encodeURI(path)}
+      function esc(s){const d=document.createElement('div');d.textContent=s;return d.innerHTML}
+
+      function pushState(){
+        const p=new URLSearchParams();
+        if(currentCat!=='all')p.set('cat',currentCat);
+        if(activeFilters.size)p.set('tag',[...activeFilters].join(','));
+        if(currentFile)p.set('file',currentFile.path);
+        if(currentSort!=='desc')p.set('sort',currentSort);
+        const q=p.toString();
+        window.history.replaceState({},'',q?window.location.pathname+'?'+q:window.location.pathname);
+      }
+
+      function extractTags(item){
+        const t=[];
+        if(Array.isArray(item.tags))t.push(...item.tags.map(x=>x.startsWith('#')?x.toLowerCase():'#'+x.toLowerCase()));
+        return t;
+      }
+
+      function formatItemName(item){
+        const name = item.name || '';
+        const cat = item._category || '';
+        const dateStr = (name.match(/^(\d{4}-\d{2}-\d{2})/) || ['',''])[1];
+        const allVer = name.match(/(v\d+(?:[\.-]\d+)+)/gi);
+        const version = allVer ? allVer[allVer.length-1].toLowerCase().replace(/\./g,'-') : '';
+        const langMatch = name.match(/[_-](\ben\b)[_-]/i);
+        const lang = langMatch ? langMatch[1].toLowerCase() : '';
+        let desc = name;
+        if (dateStr) desc = desc.slice(dateStr.length);
+        if (version && allVer) {
+          const vi = desc.toLowerCase().indexOf(allVer[allVer.length-1].toLowerCase());
+          if (vi >= 0) desc = desc.slice(0, vi);
+        }
+        desc = desc.replace(/_/g,' ').replace(/\s+/g,' ').trim();
+        desc = desc.replace(/#\w+/g,'').trim();
+        desc = desc.replace(/^[-]+|[-]+$/g,'').trim();
+        const parts = [];
+        if (dateStr) parts.push(dateStr);
+        if (cat && cat !== 'all') parts.push(cat);
+        if (desc) parts.push(desc);
+        if (lang) parts.push(lang);
+        if (version) parts.push(version);
+        return parts.join('  ·  ');
+      }
+      function isFolder(item){
+        const p=item.path||'';
+        return p.endsWith('/')||p.endsWith('index.html');
+      }
+
+      async function loadCategory(cat){
+        if(cat==='all')return[];
+        try{
+          const r=await fetch(cat+'/_treeview.json');
+          if(!r.ok)return[];
+          const data=await r.json();
+          return data.filter(item=>!isFolder(item)).map(item=>({...item,_category:cat,_hashtags:extractTags(item),_searchText:(item.name||'').toLowerCase()}));
+        }catch{return[]}
+      }
+
+      function renderTopTabs(){
+        topTabs.innerHTML=CATEGORIES.map(c=>
+          '<button class="btab'+(c.name===currentCat?' active':'')+'" data-cat="'+c.name+'">'+
+          '<span class="btab-icon">'+c.icon+'</span><span>'+c.label+'</span>'+
+          '</button>'
+        ).join('');
+        topTabs.querySelectorAll('.btab').forEach(el=>{
+          el.addEventListener('click',()=>{if(currentFile)closeModal();switchCategory(el.dataset.cat)});
+        });
+      }
+
+      function renderTagBar(){
+        tagBar.innerHTML=KNOWN_TAGS.map(t=>
+          '<span class="tag'+(activeFilters.has(t)?' active':'')+'" data-tag="'+t+'">'+t+'</span>'
+        ).join('');
+        if(activeFilters.size)tagBar.innerHTML+='<span class="tag tag-clear" id="tag-clear">\u2715 clear</span>';
+        tagBar.querySelectorAll('.tag[data-tag]').forEach(el=>{
+          el.addEventListener('click',()=>{
+            const tag=el.dataset.tag;
+            if(activeFilters.has(tag))activeFilters.delete(tag);else activeFilters.add(tag);
+            currentPage=1;applyFilter();
+          });
+        });
+        const clearBtn=document.getElementById('tag-clear');
+        if(clearBtn)clearBtn.addEventListener('click',()=>{activeFilters.clear();currentPage=1;applyFilter()});
+      }
+
+      function switchCategory(cat){
+        currentCat=cat;currentPage=1;
+        topTabs.querySelectorAll('.btab').forEach(el=>el.classList.toggle('active',el.dataset.cat===cat));
+        allSearchWrapper.style.display=cat==='all'?'block':'none';
+        if(cat==='all')allSearch.value='';
+        applyFilter();
+      }
+
+      function applyFilter(){
+        let items=allData[currentCat]||[];
+        const query=currentCat==='all'?allSearch.value.toLowerCase().trim():'';
+        if(query)items=items.filter(item=>item._searchText.includes(query));
+        if(activeFilters.size>0)items=items.filter(item=>item._hashtags.some(t=>activeFilters.has(t)));
+        filtered=items;
+        filtered.sort((a,b)=>{
+          const da=(a.name||'').match(/^(\d{4}-\d{2}-\d{2})/),db=(b.name||'').match(/^(\d{4}-\d{2}-\d{2})/);
+          const va=da?da[1]:'',vb=db?db[1]:'';
+          return currentSort==='asc'?va.localeCompare(vb):vb.localeCompare(va);
+        });
+        headerCount.textContent=filtered.length+' item'+(filtered.length!==1?'s':'');
+        renderTagBar();
+        renderPage();
+        pushState();
+        content.scrollTop=0;
+      }
+
+      function renderPage(){
+        const total=filtered.length;
+        const totalPages=Math.max(1,Math.ceil(total/PER_PAGE));
+        if(currentPage>totalPages)currentPage=totalPages;
+        const start=(currentPage-1)*PER_PAGE;
+        const pageItems=filtered.slice(start,start+PER_PAGE);
+
+        if(total===0){
+          gallery.innerHTML='<div class="empty-state">No results found.</div>';
+          pagination.innerHTML='';
+          return;
+        }
+
+        const GITHUB_TREEVIEW='https://github.com/unclehowell/datro/blob/wayback/wayback/';
+        gallery.innerHTML=pageItems.map((item,i)=>{
+          const ext=(item.path||'').split('.').pop().toLowerCase();
+          const imgs=['jpg','jpeg','png','gif','webp','bmp','svg'];
+          const vids=['mp4','webm','mov','avi'];
+          const isImg=imgs.includes(ext);
+          const isVid=vids.includes(ext);
+          let inner;
+          if(isImg){
+            const thumbPath=item.path.replace(/\.(\w+)$/,'_thumb.$1');
+            inner='<img src="'+ue(thumbPath)+'" loading="lazy" alt="">';
+          }
+          else if(isVid)inner='<video src="'+ue(item.path)+'" preload="metadata"></video>';
+          else if(ext==='pdf')inner='<div class="file-icon" title="PDF document">\u{1F4C4}</div>';
+          else if(ext==='txt')inner='<div class="file-icon" title="Text file">\u{1F4DD}</div>';
+          else inner='<div class="file-icon" title="File">\u{1F4C1}</div>';
+          const name=formatItemName(item);
+          const cat=item._category;
+          const ghUrl=GITHUB_TREEVIEW+cat+'/_treeview.json';
+          const tags=item._hashtags||[];
+          return '<div class="item" data-idx="'+(start+i)+'">'+
+            '<a href="'+ghUrl+'" target="_blank" rel="noopener" class="item-edit" title="Edit on GitHub">'+
+            '<svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04c.39-.39.39-1.02 0-1.41l-2.34-2.34c-.39-.39-1.02-.39-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>'+
+            '</a><div class="media-wrap">'+inner+'</div>'+
+            '<div class="name">'+esc(name)+'</div>'+
+            (tags.length?'<div class="item-tags">'+tags.map(t=>'<span class="hash-badge '+t.replace('#','')+'">'+t+'</span>').join('')+'</div>':'')+
+            '</div>';
+        }).join('');
+
+        gallery.querySelectorAll('.item').forEach(el=>{
+          el.addEventListener('click',()=>{
+            const idx=parseInt(el.dataset.idx);
+            if(!isNaN(idx)&&filtered[idx])openModal(filtered[idx]);
+          });
+        });
+
+        renderPagination(totalPages,total);
+      }
+
+      function renderPagination(totalPages,total){
+        if(totalPages<=1){pagination.innerHTML='<span class="info">'+total+' item'+(total!==1?'s':'')+'</span>';return}
+        let h='<button class="prev" data-page="'+(currentPage-1)+'"'+(currentPage<=1?' disabled':'')+'>Back</button>';
+        let s=Math.max(1,currentPage-4);
+        let e=Math.min(totalPages,s+8);
+        if(e-s<8)s=Math.max(1,e-8);
+        if(s>1){h+='<button data-page="1">1</button>';if(s>2)h+='<span class="info">...</span>'}
+        for(let i=s;i<=e;i++)h+='<button data-page="'+i+'"'+(i===currentPage?' class="active-page"':'')+'>'+i+'</button>';
+        if(e<totalPages){if(e<totalPages-1)h+='<span class="info">...</span>';h+='<button data-page="'+totalPages+'">'+totalPages+'</button>'}
+        h+='<button class="next" data-page="'+(currentPage+1)+'"'+(currentPage>=totalPages?' disabled':'')+'>Next</button>';
+        h+='<span class="info">Page '+currentPage+' of '+totalPages+'</span>';
+        pagination.innerHTML=h;
+        pagination.querySelectorAll('button:not(:disabled)').forEach(btn=>{
+          btn.addEventListener('click',()=>{
+            const p=parseInt(btn.dataset.page);
+            if(!isNaN(p)){currentPage=p;renderPage();content.scrollTop=0}
+          });
+        });
+      }
+
+      async function openModal(item){
+        currentFile=item;pushState();
+        modal.style.display='block';
+        document.body.style.overflow='hidden';
+        const encPath=ue(item.path);
+        const ext=(item.path||'').split('.').pop().toLowerCase();
+        const imgs=['jpg','jpeg','png','gif','webp','bmp','svg'];
+        const vids=['mp4','webm','mov','avi'];
+        modalTitle.textContent=formatItemName(item);
+        modalPath.innerHTML='<code>'+esc(item.path)+'</code>';
+        modalBody.innerHTML='<div class="modal-loading">Loading...</div>';
+        const tags=item._hashtags||[];
+        modalTags.innerHTML=tags.length?tags.map(t=>'<span class="hash-badge '+t.replace('#','')+'">'+t+'</span>').join(''):'';
+
+        if(imgs.includes(ext)){modalBody.innerHTML='<img src="'+encPath+'" alt="">'}
+        else if(vids.includes(ext)){modalBody.innerHTML='<video src="'+encPath+'" controls></video>'}
+        else if(ext==='pdf'){
+          modalBody.innerHTML='<iframe class="pdf-viewer" src="'+encPath+'" type="application/pdf"></iframe>'+
+            '<div class="pdf-fallback">If the PDF does not load, <a href="'+encPath+'" target="_blank" rel="noopener">download it directly</a>.</div>';
+        }
+        else if(ext==='txt'){
+          try{
+            const r=await fetch(encPath);
+            if(r.ok){
+              const text=await r.text();
+              if(text.startsWith('<!DOCTYPE html>')||text.startsWith('<html')){
+                modalBody.innerHTML='<pre style="color:#f88">Content not found on server. <a href="'+encPath+'" target="_blank">Open raw</a></pre>';
+              }else{
+                modalBody.innerHTML='<pre>'+esc(text)+'</pre>';
+              }
+            }else modalBody.innerHTML='<pre style="color:#f88">Error (HTTP '+r.status+'). <a href="'+encPath+'" target="_blank">Open raw</a></pre>';
+          }catch(e){modalBody.innerHTML='<pre style="color:#f88">Error: '+esc(e.message)+'. <a href="'+encPath+'" target="_blank">Open raw</a></pre>'}
+        }
+      }
+
+      function closeModal(){
+        modal.style.display='none';currentFile=null;document.body.style.overflow='';pushState();
+      }
+
+      modalClose.addEventListener('click',closeModal);
+      modal.addEventListener('click',e=>{if(e.target===modal)closeModal()});
+      document.addEventListener('keydown',e=>{if(e.key==='Escape'&&modal.style.display==='block')closeModal()});
+
+      function getShareUrl(){return window.location.href}
+      shareTwitter.addEventListener('click',()=>{window.open('https://twitter.com/intent/tweet?url='+encodeURIComponent(getShareUrl())+'&text=Wayback%20Archive','_blank','noopener')});
+      shareFacebook.addEventListener('click',()=>{window.open('https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(getShareUrl()),'_blank','noopener')});
+      shareCopy.addEventListener('click',async()=>{try{await navigator.clipboard.writeText(getShareUrl());shareMsg.textContent='Copied!';setTimeout(()=>{shareMsg.textContent=''},2000)}catch{shareMsg.textContent='Failed'}});
+
+      if(allSearch)allSearch.addEventListener('input',()=>{currentPage=1;applyFilter()});
+      sortSelect.addEventListener('change',()=>{currentSort=sortSelect.value;currentPage=1;applyFilter()});
+
+      window.addEventListener('popstate',()=>{
+        if(modal.style.display==='block'){closeModal();return}
+        currentCat=qs('cat')||'images';activeFilters.clear();
+        const t=qs('tag');if(t)t.split(',').filter(Boolean).forEach(x=>activeFilters.add(x.startsWith('#')?x:'#'+x));
+        currentSort=qs('sort')||'desc';sortSelect.value=currentSort;
+        renderTopTabs();applyFilter();
+        const f=qs('file');if(f){const found=(allData.all||[]).find(item=>item.path===f);if(found)openModal(found)}
+      });
+
+      (async()=>{
+        try{const r=await fetch('version.txt');if(r.ok)versionTag.textContent=' '+(await r.text()).trim()}catch{}
+        for(const cat of CATEGORIES){
+          if(cat.name==='all'){
+            const allItems=[];
+            for(const sub of CATEGORIES){if(sub.name==='all')continue;allData[sub.name]=await loadCategory(sub.name);allItems.push(...(allData[sub.name]||[]))}
+            allData.all=allItems;
+          }else{allData[cat.name]=await loadCategory(cat.name)}
+        }
+        currentCat=qs('cat')||'images';
+        const tagParam=qs('tag');
+        if(tagParam)tagParam.split(',').filter(Boolean).forEach(t=>activeFilters.add(t.startsWith('#')?t:'#'+t));
+        currentSort=qs('sort')||'desc';sortSelect.value=currentSort;
+        renderTopTabs();applyFilter();
+        const fileParam=qs('file');
+        if(fileParam){const found=(allData.all||[]).find(item=>item.path===fileParam);if(found)openModal(found)}
+      })();
+    })();
+  </script>
+</body>
+</html>

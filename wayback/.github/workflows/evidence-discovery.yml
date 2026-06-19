@@ -1,0 +1,36 @@
+name: Wayback Evidence Discovery
+
+on:
+  push:
+    branches:
+      - wayback
+
+jobs:
+  discover-evidence:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Run evidence discovery
+        id: research
+        run: node _evidence_research.js
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          PARENT_PROXY_URL: ${{ secrets.PARENT_PROXY_URL || 'https://www.financecheque.uk' }}
+
+      - name: Commit new evidence
+        run: |
+          git config user.name "wayback-bot"
+          git config user.email "wayback-bot@users.noreply.github.com"
+          git add -A
+          if git diff --staged --quiet; then
+            echo "No new evidence to commit"
+          else
+            git commit -m "wayback(evidence): add new Great House Farm discovery"
+            git push
+          fi

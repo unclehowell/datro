@@ -1,0 +1,7 @@
+name = "wayback"
+pages_build_output_dir = "wayback"
+compatibility_date = "2025-10-26"
+
+[[r2_buckets]]
+binding = "wayback_media"
+bucket_name = "wayback-media"

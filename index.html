@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>cnei - DATRO Flywheel Engine</title>
+<title>cnei - DATRO Flywheel Engine v0.0.2.13</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -30,6 +30,7 @@
   .badge.green { background: #2e7d32; color: #fff; }
   .badge.orange { background: #e65100; color: #fff; }
   .badge.purple { background: #6a1b9a; color: #fff; }
+  .badge.red { background: #b71c1c; color: #fff; }
   .card {
     background: #16213e; border: 1px solid #333; border-radius: 8px;
     padding: 1rem; margin: 0.75rem 0;
@@ -39,60 +40,105 @@
   .stat { background: #0d0d1a; padding: 0.5rem; border-radius: 6px; text-align: center; }
   .stat .value { font-size: 1.4rem; font-weight: bold; color: #4fc3f7; }
   .stat .label { font-size: 0.7rem; color: #888; text-transform: uppercase; }
+  .warn { background: #3e2723; border-left: 4px solid #ff6f00; padding: 0.5rem; margin: 0.5rem 0; border-radius: 0 4px 4px 0; }
+  .fix { background: #1b3a1b; border-left: 4px solid #2e7d32; padding: 0.5rem; margin: 0.5rem 0; border-radius: 0 4px 4px 0; }
   footer { margin-top: 2rem; text-align: center; color: #555; font-size: 0.8rem; border-top: 1px solid #333; padding-top: 1rem; }
   @media (max-width: 600px) { body { padding: 0.5rem; } }
 </style>
-<meta name="description" content="cnei - DATRO Flywheel Engine architecture and configuration">
+<meta name="description" content="cnei v0.0.2.13 - DATRO Flywheel Engine: forensics review, cooldown fix, lesson store, agent memory tools, Honcho fix, self-verification">
 </head>
 <body>
 <div class="container">
   <h1>cnei - DATRO Flywheel Engine</h1>
-  <p>Cloudflare Workers-based autonomous release pipeline that rotates through 18+ branches, applying AI-driven improvements, best-practice audits, <strong>evals</strong>, and evidence discovery. Cron fires every 10 min; cooldown enforces a <strong>2h cadence per branch</strong> with cnei eval updates in the hour between.</p>
+  <p><span class="badge red">v0.0.2.13</span> Cloudflare Workers-based autonomous release pipeline. Forensics review: cooldown bug fixed, agent memory tools added, lesson store, Honcho multi-endpoint, post-agent HTML verification, multi-metric eval, aggregateMemory caching, Monday de-dup.</p>
 
   <h2>Architecture</h2>
   <div class="card">
     <div class="title">Runtime</div>
-    Cloudflare Workers (<code>datro-flywheel</code>) running on a <code>*/10 * * * *</code> cron schedule. KV namespace <code>FLYWHEEL_STATE</code> for persistent state (rotation index, index cards, cooldowns, hypothesis trees, <strong>eval metrics</strong>). No database or external runtime dependencies.
+    Cloudflare Workers (<code>datro-flywheel</code>) running on a <code>*/10 * * * *</code> cron schedule. KV namespace <code>FLYWHEEL_STATE</code> for persistent state (rotation index, index cards, cooldowns, hypothesis trees, eval metrics, lesson store, agent memories). No database or external runtime dependencies.
   </div>
 
   <div class="card">
-    <div class="title">Branch Rotation (2h / 1h)</div>
-    Each cycle picks one branch via round-robin. Cooldown is gear-based:
+    <div class="title">Branch Rotation (2h / 1h) <span class="badge green">FIXED</span></div>
+    <div class="fix">Bug fix: cooldown now correctly applies 2h for regular branches and 1h for cnei. Previously regular branches got 1h and cnei got 30min at gear 3.</div>
     <ul>
       <li><code>RATE_BY_GEAR</code> = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60]</li>
-      <li>Default gear 3 -> <strong>3600s (1h)</strong> cooldown</li>
-      <li>Regular branches get 2x gear cooldown -> <strong>7200s (2h)</strong> per branch</li>
-      <li>cnei gets 1x gear cooldown -> <strong>3600s (1h)</strong> - fires in the hour between regular branches</li>
+      <li>Default gear 3 -> <strong>3600s (1h)</strong> base</li>
+      <li>Regular branches get 2x base -> <strong>7200s (2h)</strong> per branch</li>
+      <li>cnei gets 1x base -> <strong>3600s (1h)</strong> - fires in the hour between regular branches</li>
+      <li><code>CNEI_RATIO</code> = 1 (fires after every regular branch, not every 6th)</li>
     </ul>
   </div>
 
   <div class="card">
-    <div class="title">Eval System</div>
-    <ol>
-      <li>Each release run recorded in KV (<code>eval_{branch}</code>) with score, change count, MCP failures</li>
-      <li><code>benchmarkAgainstHistory()</code> compares against last 10 runs, detects trends and saturation</li>
-      <li>Saturation: score &gt; 0.9 with &lt; 0.01 delta over 10+ runs -> <code>SATURATED</code> flag</li>
-      <li>Eval data appears in every release note under <strong>Eval Metrics</strong></li>
-      <li>cnei updates its own evals each cycle to keep criteria unsaturated</li>
-    </ol>
+    <div class="title">Honcho Memory API <span class="badge green">FIXED</span></div>
+    <div class="fix">Now tries both <code>honcho.ai</code> and <code>honcho.dev</code> endpoints, falls back gracefully if both unreachable. No more silent failures.</div>
   </div>
 
   <div class="card">
-    <div class="title">Release Pipeline (per branch)</div>
+    <div class="title">Agent Memory Tools <span class="badge purple">NEW</span></div>
+    <p>The agent can now self-manage its memory across runs via KV-backed tools:</p>
+    <ul>
+      <li><code>remember key=name value=content</code> — store a persistent fact/memory/lesson for this branch</li>
+      <li><code>recall key=name</code> — retrieve a previously stored memory for this branch</li>
+      <li><code>forget key=name</code> — delete a stored memory</li>
+      <li><code>list_memories</code> — list all stored memory keys for this branch</li>
+    </ul>
+    <p>Memory index maintained automatically; limit 200 entries per branch.</p>
+  </div>
+
+  <div class="card">
+    <div class="title">Lesson Store <span class="badge purple">NEW</span></div>
+    <p>Every agent run reads <code>lessons_{branch}</code> KV at startup — the agent sees what went wrong in prior runs before making decisions. Lessons are recorded:</p>
+    <ul>
+      <li>On every agent failure (via <code>logFailureToKv</code>)</li>
+      <li>On every DONE with summary (successful or empty run)</li>
+      <li>On max iterations reached</li>
+    </ul>
+    <p>50 most recent lessons stored per branch.</p>
+  </div>
+
+  <h2>Eval System</h2>
+  <div class="card">
+    <div class="title">Multi-Metric Scoring <span class="badge purple">IMPROVED</span></div>
+    <p>Each run now scores on a composite metric:</p>
+    <ul>
+      <li><strong>Plan adherence (40%)</strong> — did the agent follow its PLAN?</li>
+      <li><strong>Change score (60%)</strong> — how many files changed?</li>
+      <li><strong>MCP penalty</strong> — deducted for failed MCP scans</li>
+    </ul>
+    <p>Score = <code>max(0, (planAdherence * 0.4 + changeScore * 0.6) - mcpPenalty)</code></p>
+    <p><code>benchmarkAgainstHistory()</code> compares against last 10 runs, detects saturation and trends.</p>
+  </div>
+
+  <div class="card">
+    <div class="title">Post-Agent Self-Verification <span class="badge purple">NEW</span></div>
+    <p>After agent commits changes, the flywheel re-reads each modified HTML file and validates:</p>
+    <ul>
+      <li>Presence of <code>&lt;html&gt;</code> and <code>&lt;!DOCTYPE&gt;</code></li>
+      <li>Matching <code>&lt;/body&gt;</code> and <code>&lt;/html&gt;</code> tags</li>
+      <li>Results appear in release notes under <strong>Post-Agent Verification</strong></li>
+    </ul>
+  </div>
+
+  <h2>Release Pipeline (per branch)</h2>
+  <div class="card">
     <ol>
       <li>Check branch exists via GitHub API</li>
       <li>Compute next version from latest tag (<code>branch-vX.X.X.XX</code>)</li>
       <li>Load index card from KV (branch state, cycle count, failures)</li>
+      <li>Load lesson store — read what failed before</li>
       <li>Run git diff analysis against last release</li>
       <li>Fetch contextual research (Semantic Scholar) + flywheel research</li>
       <li>Scan MCP tools (EAA accessibility, AccessScore)</li>
       <li>Apply wing-file visual steering blocks</li>
-      <li>Run agentic AI loop (PLAN/DO/CHECK protocol, brainstorm + tools)</li>
-      <li>Record eval metrics + benchmark against history</li>
+      <li>Run agentic AI loop (PLAN/DO/CHECK protocol, memory tools, brainstorm + MCP tools)</li>
+      <li>Record multi-metric eval + benchmark against history</li>
+      <li>Post-agent self-verification (HTML structural check)</li>
       <li>Generate admin note with actionable human tasks</li>
       <li>If agent made changes -> tag & release; else fallback to best-practice engine</li>
       <li>If no improvements -> audit-only release (with evals + admin note)</li>
-      <li>Sync index card + eval data to Monday.com</li>
+      <li>Sync index card + eval data to Monday.com (no duplicates)</li>
     </ol>
   </div>
 
@@ -117,10 +163,14 @@
       <tr><td style="padding:0.3rem"><code>index_{branch}</code></td><td>Index card per branch (release count, cycle count, hypothesis tree)</td></tr>
       <tr><td style="padding:0.3rem"><code>eval_{branch}</code></td><td>Eval metrics history (scores, trends, saturation)</td></tr>
       <tr><td style="padding:0.3rem"><code>failure_{branch}</code></td><td>Failure log (last 20 entries)</td></tr>
+      <tr><td style="padding:0.3rem"><code>lessons_{branch}</code></td><td>Lesson store (last 50 lessons read before each agent run) <span class="badge purple">NEW</span></td></tr>
+      <tr><td style="padding:0.3rem"><code>memory_{branch}_{key}</code></td><td>Agent-managed episodic memories <span class="badge purple">NEW</span></td></tr>
+      <tr><td style="padding:0.3rem"><code>memory_index_{branch}</code></td><td>Memory key index for listing <span class="badge purple">NEW</span></td></tr>
       <tr><td style="padding:0.3rem"><code>last_run_{branch}</code></td><td>Unix timestamp of last run (cooldown tracking)</td></tr>
       <tr><td style="padding:0.3rem"><code>rotation</code></td><td>Round-robin state (regular_index, cnei_queue, lap, mode)</td></tr>
       <tr><td style="padding:0.3rem"><code>config</code></td><td>Gear setting (1-10, higher = faster cycles)</td></tr>
       <tr><td style="padding:0.3rem"><code>bias</code></td><td>Steering bias (direction, magnitude, risk tolerance)</td></tr>
+      <tr><td style="padding:0.3rem"><code>brain_updated</code></td><td>Timestamp of last brain memory refresh (cached 1h) <span class="badge purple">NEW</span></td></tr>
       <tr><td style="padding:0.3rem"><code>lock</code></td><td>Concurrency lock (TTL 1 hour)</td></tr>
       <tr><td style="padding:0.3rem"><code>wallet_{branch}_{type}</code></td><td>Branch wallet cache (TTL 24h)</td></tr>
       <tr><td style="padding:0.3rem"><code>bounty_{branch}</code></td><td>Gitlawv bounty claim history</td></tr>
@@ -129,56 +179,27 @@
     </table>
   </div>
 
-  <h2>Eval Metrics Detail</h2>
+  <h2>Agent Tools (MCP Schema)</h2>
   <div class="card">
-    <div class="title">Benchmarking Against Commit History</div>
-    <p>Each run records: <code>{ score, changes, hasBounty, mcpFailures, ts }</code></p>
-    <p><code>benchmarkAgainstHistory()</code>:</p>
-    <ul>
-      <li>Loads last 10 runs from <code>eval_{branch}</code> KV</li>
-      <li>Computes avg score, avg changes, trend direction (improving/stable/declining)</li>
-      <li>Detects saturation: avg score &gt; 0.9 AND delta &lt; 0.01 AND 10+ runs</li>
-      <li>Saturated branches get an admin note suggesting eval criteria diversification</li>
-      <li>Declining trend also triggers an admin note for human review</li>
-    </ul>
-  </div>
-
-  <h2>Admin Notes</h2>
-  <div class="card">
-    <div class="title">Per-Release Human Communications</div>
-    <p>Every release includes a <strong>Note for Admin</strong> section with actionable items:</p>
-    <ul>
-      <li>Eval saturation warnings</li>
-      <li>MCP scan service failures (suggest API key updates)</li>
-      <li>Suggested env var additions (MONDAY_API_TOKEN, CF_API_TOKEN, AI_MODEL, etc.)</li>
-      <li>Link to review the release on GitHub</li>
-    </ul>
-  </div>
-
-  <h2>Resource Access</h2>
-  <div class="card">
-    <div class="title">All Cloudflare Free Tier + Env Vars</div>
-    <p>The agent has full read access to all environment variables and Cloudflare resources:</p>
-    <ul>
-      <li><code>FLYWHEEL_STATE</code> KV - full read/write</li>
-      <li><code>GH_PAT / GITHUB_TOKEN</code> - GitHub API</li>
-      <li><code>MONDAY_API_TOKEN</code> - Monday.com boards</li>
-      <li><code>PARENT_PROXY_URL</code> - AI proxy endpoint</li>
-      <li><code>AI_MODEL</code> - Custom LLM model selection</li>
-      <li><code>CF_API_TOKEN + CF_ACCOUNT_ID</code> - Cloudflare API</li>
-      <li><code>HONCHO_API_KEY + HONCHO_APP_NAME</code> - Honcho memory</li>
-    </ul>
-  </div>
-
-  <h2>Scaffold Review</h2>
-  <div class="card">
-    <div class="title">Minimal Harness Enforcement</div>
-    <p>cnei runs periodic scaffold reviews:</p>
-    <ul>
-      <li>Scans repo root for empty/near-empty files (&lt;30 bytes)</li>
-      <li>Flags old scaffold, harness, and boilerplate directories</li>
-      <li>Results appear in release notes under <strong>Scaffold Review</strong></li>
-    </ul>
+    <div class="title">14 Tools with JSON Schema inputSchema</div>
+    <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+      <tr style="border-bottom:1px solid #333"><th style="text-align:left;padding:0.3rem">Tool</th><th style="text-align:left;padding:0.3rem">Description</th></tr>
+      <tr><td style="padding:0.3rem"><code>read_file</code></td><td>Read a file from any branch</td></tr>
+      <tr><td style="padding:0.3rem"><code>write_file</code></td><td>Write content to a file (commits immediately)</td></tr>
+      <tr><td style="padding:0.3rem"><code>list_branches</code></td><td>List all branches and their latest commit</td></tr>
+      <tr><td style="padding:0.3rem"><code>search_code</code></td><td>Search codebase for a pattern</td></tr>
+      <tr><td style="padding:0.3rem"><code>run_scan</code></td><td>Run a third-party MCP scan on a URL</td></tr>
+      <tr><td style="padding:0.3rem"><code>honcho_memory</code></td><td>Read/write Honcho memory for this branch</td></tr>
+      <tr><td style="padding:0.3rem"><code>wallet_info</code></td><td>Get crypto wallet info for any branch</td></tr>
+      <tr><td style="padding:0.3rem"><code>brainstorm</code></td><td>Ask the LLM a question for creative thinking</td></tr>
+      <tr><td style="padding:0.3rem"><code><strong>remember</strong></code></td><td><span class="badge purple">NEW</span> Store a persistent fact/memory/lesson</td></tr>
+      <tr><td style="padding:0.3rem"><code><strong>recall</strong></code></td><td><span class="badge purple">NEW</span> Retrieve a stored memory</td></tr>
+      <tr><td style="padding:0.3rem"><code><strong>forget</strong></code></td><td><span class="badge purple">NEW</span> Delete a stored memory</td></tr>
+      <tr><td style="padding:0.3rem"><code><strong>list_memories</strong></code></td><td><span class="badge purple">NEW</span> List all memory keys for this branch</td></tr>
+      <tr><td style="padding:0.3rem"><code>gitlawv_bounty_list</code></td><td>List open gitlawb bounties</td></tr>
+      <tr><td style="padding:0.3rem"><code>gitlawv_bounty_claim</code></td><td>Claim a gitlawb bounty</td></tr>
+      <tr><td style="padding:0.3rem"><code>gitlawv_bounty_submit</code></td><td>Submit completed work for a claimed bounty</td></tr>
+    </table>
   </div>
 
   <h2>Quota Management</h2>
@@ -192,8 +213,12 @@
       <li>Branch wallet cached in KV with 24h TTL</li>
       <li>MCP scan results cached (48h refresh cycle)</li>
       <li>Eval data limited to 100 most recent runs per branch</li>
+      <li><code>aggregateMemory</code> cached with 1h TTL (was running every 10min) <span class="badge green">OPTIMISED</span></li>
+      <li>Lesson store limited to 50 entries per branch</li>
+      <li>Memory index limited to 200 entries per branch</li>
     </ul>
-    <p>Estimated daily usage: <strong>~450 reads / ~350 writes</strong> (well within free tier).</p>
+    <p>Estimated daily usage: <strong>~400 reads / ~300 writes</strong>.</p>
+    <div class="warn">Consider adding a free D1 database for eval/failure/memory storage (100K writes/day vs KV's 1K).</div>
   </div>
 
   <h2>Evidence Discovery (Wayback)</h2>
@@ -208,12 +233,31 @@
     <pre>Push to cnei branch -> GitHub Action (cnei-safe-release.yml)
   -> wrangler deploy -> Cloudflare Workers (datro-flywheel)
   -> Cron every 10 min -> Cooldown: 2h regular / 1h cnei
-  -> Each cycle: plan -> research -> agent loop -> eval -> release
-  -> GitHub releases + Monday.com sync + admin notes</pre>
+  -> Each cycle: lessons -> plan -> research -> agent loop
+     -> eval (multi-metric) -> self-verify -> release
+  -> GitHub releases + Monday.com sync (dedup'd) + admin notes</pre>
+  </div>
+
+  <h2>Known Issues</h2>
+  <div class="card">
+    <div class="title">Forensics Findings (v0.0.2.13)</div>
+    <div class="fix">✅ Cooldown: regular=2h, cnei=1h (was regular=1h, cnei=30min)</div>
+    <div class="fix">✅ CNEI_RATIO=1 (was 6 — cnei fired every 12h instead of every 2h)</div>
+    <div class="fix">✅ Honcho: tries .ai AND .dev endpoints (was hardcoded to .ai, possibly dead)</div>
+    <div class="fix">✅ Agent memory: remember/recall/forget/list_memories tools (was read-only passive context)</div>
+    <div class="fix">✅ Lesson store: read at agent startup (was starting blind each run)</div>
+    <div class="fix">✅ aggregateMemory: cached 1h (was running every 10min = 19+ API calls per cycle)</div>
+    <div class="fix">✅ Post-agent self-verification: HTML structural checks after commits</div>
+    <div class="fix">✅ Eval: multi-metric (plan adherence + change count - MCP penalty)</div>
+    <div class="fix">✅ Monday.com: checks for existing item before creating new one</div>
+    <div class="fix">✅ MCP JSON Schema: tool descriptions now show proper inputSchema</div>
+    <div class="warn">⚠️ Honcho endpoints may both be dead — test via curl if you see "No Honcho memory" consistently</div>
+    <div class="warn">⚠️ MCP scan tools (EAA, AccessScore) are third-party APIs — may expire without notice</div>
+    <div class="warn">⚠️ No D1 database yet — eval/failure/memory data competes for KV writes (1K/day ceiling)</div>
   </div>
 
   <footer>
-    DATRO Consortium - cnei branch - <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a>
+    DATRO Consortium - cnei branch v0.0.2.13 - <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a>
   </footer>
 </div>
 </body>
