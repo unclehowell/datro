@@ -16,7 +16,7 @@ const HONCHO_TENANT_IDS = {
   datro: 'Q-sPB_HUr__vWcP1cc-UQ',
   financecheque: 'oSx32NCcWFHT7gRXWtrGo',
 };
-const RATE_BY_GEAR = [600, 438, 320, 233, 170, 124, 91, 66, 48, 35]; // Compressed: gear1=10min, gear10~35s
+const RATE_BY_GEAR = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60]; // gear1=2h, gear3=1h(default), gear10=1min
 const CNEI_RATIO = Math.floor(137 / REGULAR_BRANCHES.length); // 137/20 = 6
 const DOMAIN = 'datro.directory';
 const GITHUB_REPO_OBJ = { owner: 'unclehowell', repo: 'datro' };
@@ -549,6 +549,21 @@ ${toolDescriptions}
 - Wallet: ${wallet.address} (compute budget: ${wallet.computeBudget})
 - Bias: ${bias?.bias || 3}/5, Risk: ${bias?.risk || 3}/5, Steering: ${bias?.steering || 'CTR'}, Magnitude: ${bias?.magnitude || 0}
 - Directional weights: ${weightStr}
+- Release cadence: 2h per branch, 1h for cnei eval updates
+
+## Available Resources
+All Cloudflare free-tier resources are accessible via env variables:
+- \`FLYWHEEL_STATE\`: KV namespace (read/write, TTL-aware)
+- \`GH_PAT\` / \`GITHUB_TOKEN\`: GitHub API full access
+- \`MONDAY_API_TOKEN\`: Monday.com API (index cards, boards)
+- \`PARENT_PROXY_URL\`: AI proxy (default: financecheque.uk)
+- \`AI_MODEL\`: Custom LLM model (default: openrouter/anthropic/claude-sonnet)
+- \`CF_API_TOKEN\`: Cloudflare API (Pages deploy cleanup)
+- \`CF_ACCOUNT_ID\`: Cloudflare account
+- \`HONCHO_API_KEY\`: Honcho cross-instance memory
+- \`HONCHO_APP_NAME\`: Honcho app identifier
+- \`ENVIRONMENT\`: Deployment environment (production/dev)
+- \`BRAIN_BRANCH_TOKEN\`: Brain memory (honcho digest)
 
 ## JOYSTICK STEERING
 The COMMAND cockpit joystick position determines which directional MASTERPLAN files to favour:
@@ -2045,6 +2060,122 @@ function injectVisualBars(html, instructions) {
   return modified;
 }
 
+// ── Eval System ──────────────────────────────────────────────────────────────
+// Tracks release quality, benchmarks against commit history, detects saturation.
+
+async function getEvalMetrics(env, branch) {
+  const key = `eval_${branch}`;
+  const raw = await env.FLYWHEEL_STATE.get(key, 'json').catch(() => null);
+  return raw || { runs: [], scores: {}, benchmark: {}, lastReview: null };
+}
+
+async function saveEvalMetrics(env, branch, metrics) {
+  const key = `eval_${branch}`;
+  await env.FLYWHEEL_STATE.put(key, JSON.stringify(metrics));
+}
+
+async function recordEvalRun(env, branch, runData) {
+  const metrics = await getEvalMetrics(env, branch);
+  metrics.runs.push({ ...runData, ts: Math.floor(Date.now() / 1000) });
+  if (metrics.runs.length > 100) metrics.runs = metrics.runs.slice(-100);
+  await saveEvalMetrics(env, branch, metrics);
+  return metrics;
+}
+
+async function benchmarkAgainstHistory(token, branch, env) {
+  const metrics = await getEvalMetrics(env, branch);
+  const recent = metrics.runs.slice(-10);
+  if (recent.length < 3) return { status: 'insufficient_data', history: recent.length };
+
+  const avgScore = recent.reduce((s, r) => s + (r.score || 0), 0) / recent.length;
+  const avgChanges = recent.reduce((s, r) => s + (r.changes || 0), 0) / recent.length;
+  const prevScores = metrics.scores;
+  const scoreDelta = prevScores.lastAvg ? avgScore - prevScores.lastAvg : 0;
+  const saturated = avgScore > 0.9 && scoreDelta < 0.01 && recent.length >= 10;
+
+  metrics.scores = {
+    lastAvg: avgScore,
+    best: Math.max(prevScores.best || 0, avgScore),
+    trend: scoreDelta > 0.02 ? 'improving' : scoreDelta < -0.02 ? 'declining' : 'stable',
+    saturated,
+    runCount: (prevScores.runCount || 0) + 1
+  };
+  await saveEvalMetrics(env, branch, metrics);
+
+  return {
+    status: saturated ? 'SATURATED' : 'active',
+    avgScore: avgScore.toFixed(3),
+    avgChanges: avgChanges.toFixed(1),
+    trend: metrics.scores.trend,
+    saturated,
+    history: recent.length,
+    suggestion: saturated
+      ? `Eval saturated for ${branch} — diversify eval criteria or reset baseline`
+      : `Benchmark: ${metrics.scores.trend} (score ${avgScore.toFixed(3)})`
+  };
+}
+
+// ── Admin Notes ──────────────────────────────────────────────────────────────
+
+function generateAdminNote(branch, release, benchmark, mcpResults) {
+  const notes = [];
+
+  // Eval / saturation
+  if (benchmark?.saturated) {
+    notes.push(`EVALS SATURATED for ${branch} (score ${benchmark.avgScore}). Consider adding new eval criteria or reviewing existing ones.`);
+  }
+  if (benchmark?.trend === 'declining') {
+    notes.push(`Eval trend declining for ${branch} (score ${benchmark.avgScore}). May need human review of recent changes.`);
+  }
+
+  // MCP gaps
+  if (mcpResults) {
+    const failing = Object.entries(mcpResults).filter(([, r]) => r.error);
+    if (failing.length > 0) {
+      notes.push(`MCP scan failures: ${failing.map(([k]) => k).join(', ')}. Check if these services are still available or if API keys need updating.`);
+    }
+  }
+
+  // Common resource gaps
+  notes.push(`To help the flywheel: add missing API keys to Cloudflare Workers env variables (e.g., MONDAY_API_TOKEN for monday.com sync, CF_API_TOKEN for Pages cleanup, AI_MODEL for custom LLM model).`);
+
+  // Release-specific
+  if (release?.type === 'agent') {
+    notes.push(`Agent made ${release.changes?.length || 0} change(s) to ${branch}. Review the release at https://github.com/unclehowell/datro/releases/tag/${release.tagName}`);
+  }
+
+  return notes.join('\n');
+}
+
+// ── Scaffold Review ──────────────────────────────────────────────────────────
+
+async function reviewScaffolds(token, branch) {
+  const unnecessary = [];
+  try {
+    const resp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/contents?ref=${branch}`, { headers: ghHeaders(token) });
+    if (!resp.ok) return [];
+    const items = await resp.json();
+    if (!Array.isArray(items)) return [];
+    for (const item of items) {
+      // Flag empty or placeholder files
+      if (item.type === 'file' && item.size < 30 && !item.name.startsWith('.')) {
+        unnecessary.push({ path: item.path, reason: 'Empty/near-empty file (<30 bytes)' });
+      }
+      // Flag old scaffold patterns
+      if (item.name === 'scaffold' || item.name === 'harness' || item.name === 'boilerplate') {
+        const content = await fetch(item.url, { headers: ghHeaders(token) });
+        if (content.ok) {
+          const text = await content.text();
+          if (text.length < 200) {
+            unnecessary.push({ path: item.path, reason: 'Minimal scaffold/harness file — review if still needed' });
+          }
+        }
+      }
+    }
+  } catch (_) {}
+  return unnecessary;
+}
+
 // ── Best Practice Engine ──────────────────────────────────────────────────────
 
 function computeBranchCategory(branch) {
@@ -2372,6 +2503,29 @@ async function processBranch(env, branch) {
 
     const agentResult = await runAgentLoop(env, branch, idxHtml, hdrContent, visualWingFiles, liveHtml, { token, env });
 
+    // ── Eval: record run + benchmark against history ──
+    const evalRun = {
+      score: agentResult?.changes?.length > 0 ? Math.min(1, agentResult.changes.length / 3) : 0,
+      changes: agentResult?.changes?.length || 0,
+      hasBounty: !!agentResult?.bounty,
+      mcpFailures: Object.values(mcpResults || {}).filter(r => r.error).length
+    };
+    await recordEvalRun(env, branch, evalRun);
+    const benchmark = await benchmarkAgainstHistory(token, branch, env);
+    log(`Eval ${branch}: ${benchmark.status} score=${benchmark.avgScore} trend=${benchmark.trend}`);
+
+    // ── Scaffold review (cnei only, periodic) ──
+    let scaffoldIssues = [];
+    if (branch === 'cnei') {
+      scaffoldIssues = await reviewScaffolds(token, branch);
+      if (scaffoldIssues.length > 0) {
+        log(`Scaffold review: ${scaffoldIssues.length} issue(s) found`);
+      }
+    }
+
+    // ── Admin note for the human ──
+    const adminNote = generateAdminNote(branch, { type: 'agent', tagName, changes: agentResult?.changes }, benchmark, mcpResults);
+
     if (agentResult && agentResult.changes.length > 0) {
       // Get latest commit SHA for tagging
       const headResp = await ghFetch(
@@ -2395,6 +2549,9 @@ async function processBranch(env, branch) {
       const diffSection = diffData ? `\n### Diff Analysis (since ${diffData.base})\n- Commits: ${diffData.total_commits}\n- Files changed:\n${diffData.files.map(f => `  - ${f.path} (${f.status}, +${f.additions}/-${f.deletions})`).join('\n')}` : '';
       const researchSection = research ? `\n### Contextual Research\n${research}` : '';
       const hypothesisSection = `\n### Hypothesis Tree\n${renderHypothesisTree(await getIndexCard(env, branch))}`;
+      const scaffoldSection = scaffoldIssues.length > 0 ? `\n### Scaffold Review\n${scaffoldIssues.map(s => `- \`${s.path}\`: ${s.reason}`).join('\n')}` : '';
+      const evalSection = `\n### Eval Metrics\n- Score: ${benchmark.avgScore}\n- Trend: ${benchmark.trend}\n- History: ${benchmark.history} runs\n- Status: ${benchmark.status}`;
+      const adminSection = `\n### 👤 Note for Admin\n${adminNote}`;
 
       releaseNotes = [
         `## Agentic Release: ${tagName}`,
@@ -2418,8 +2575,12 @@ async function processBranch(env, branch) {
         bountyText,
         researchSection,
         hypothesisSection,
+        evalSection,
+        scaffoldSection,
         ``,
-        mcpSection
+        mcpSection,
+        ``,
+        adminSection
       ].join('\n');
 
       // Write MEMORY.md
@@ -2474,7 +2635,9 @@ async function processBranch(env, branch) {
 
     if (bpResult) {
       const diffSection = diffData ? `\n### Diff Analysis (since ${diffData.base})\n- ${diffData.files.map(f => `  - ${f.path}`).join('\n')}` : '';
-      const enhancedNotes = bpResult.notes + '\n\n' + diffSection + '\n\n' + mcpSection;
+      const evalSection = `\n### Eval Metrics\n- Score: ${benchmark.avgScore}\n- Trend: ${benchmark.trend}\n- History: ${benchmark.history} runs\n- Status: ${benchmark.status}`;
+      const adminSection = `\n### 👤 Note for Admin\n${adminNote}`;
+      const enhancedNotes = bpResult.notes + '\n\n' + diffSection + '\n\n' + evalSection + '\n\n' + mcpSection + '\n\n' + adminSection;
       await createGitTag(token, tagName, bpResult.commit);
       const release = await createGitHubRelease(token, tagName, branch, version, enhancedNotes);
       if (release) await verifyRelease(token, tagName);
@@ -2485,6 +2648,8 @@ async function processBranch(env, branch) {
 
     // ── FALLBACK: Audit-only release ──
     log(`No improvements found, audit-only release for ${branch}`);
+    const evalSection = `\n### Eval Metrics\n- Score: ${benchmark.avgScore}\n- Trend: ${benchmark.trend}\n- History: ${benchmark.history} runs\n- Status: ${benchmark.status}`;
+    const adminSection = `\n### 👤 Note for Admin\n${adminNote}`;
     const notes = [
       `## [${tagName}]`,
       ``,
@@ -2499,7 +2664,11 @@ async function processBranch(env, branch) {
       `- Category: ${computeBranchCategory(branch)}`,
       `- Best practices checked: ${BEST_PRACTICES.length}`,
       ``,
-      mcpSection
+      mcpSection,
+      ``,
+      evalSection,
+      ``,
+      adminSection
     ].join('\n');
     commitSha = commitSha || await getDefaultBranchSha(token, branch);
     await createGitTag(token, tagName, commitSha);

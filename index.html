@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>cnei â DATRO Flywheel Engine</title>
+<title>cnei - DATRO Flywheel Engine</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -42,22 +42,39 @@
   footer { margin-top: 2rem; text-align: center; color: #555; font-size: 0.8rem; border-top: 1px solid #333; padding-top: 1rem; }
   @media (max-width: 600px) { body { padding: 0.5rem; } }
 </style>
-<meta name="description" content="">
+<meta name="description" content="cnei - DATRO Flywheel Engine architecture and configuration">
 </head>
 <body>
 <div class="container">
-  <h1>cnei â DATRO Flywheel Engine</h1>
-  <p>Cloudflare Workers-based autonomous release pipeline that rotates through 18+ branches, applying AI-driven improvements, best-practice audits, and evidence discovery. Every 10 minutes a cron triggers one branch cycle.</p>
+  <h1>cnei - DATRO Flywheel Engine</h1>
+  <p>Cloudflare Workers-based autonomous release pipeline that rotates through 18+ branches, applying AI-driven improvements, best-practice audits, <strong>evals</strong>, and evidence discovery. Cron fires every 10 min; cooldown enforces a <strong>2h cadence per branch</strong> with cnei eval updates in the hour between.</p>
 
   <h2>Architecture</h2>
   <div class="card">
     <div class="title">Runtime</div>
-    Cloudflare Workers (<code>datro-flywheel</code>) running on a <code>*/10 * * * *</code> cron schedule. KV namespace <code>FLYWHEEL_STATE</code> for persistent state (rotation index, index cards, cooldowns, hypothesis trees). No database or external runtime dependencies.
+    Cloudflare Workers (<code>datro-flywheel</code>) running on a <code>*/10 * * * *</code> cron schedule. KV namespace <code>FLYWHEEL_STATE</code> for persistent state (rotation index, index cards, cooldowns, hypothesis trees, <strong>eval metrics</strong>). No database or external runtime dependencies.
   </div>
 
   <div class="card">
-    <div class="title">Branch Rotation</div>
-    Each cycle picks one branch via round-robin (<code>regular_index</code>). CNEI branch runs every 6 regular cycles (<code>CNEI_RATIO = 6</code>). Cooldown per branch is gear-based (<code>RATE_BY_GEAR[gear-1]</code>, default gear 3 â ~233s per branch).
+    <div class="title">Branch Rotation (2h / 1h)</div>
+    Each cycle picks one branch via round-robin. Cooldown is gear-based:
+    <ul>
+      <li><code>RATE_BY_GEAR</code> = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60]</li>
+      <li>Default gear 3 -> <strong>3600s (1h)</strong> cooldown</li>
+      <li>Regular branches get 2x gear cooldown -> <strong>7200s (2h)</strong> per branch</li>
+      <li>cnei gets 1x gear cooldown -> <strong>3600s (1h)</strong> - fires in the hour between regular branches</li>
+    </ul>
+  </div>
+
+  <div class="card">
+    <div class="title">Eval System</div>
+    <ol>
+      <li>Each release run recorded in KV (<code>eval_{branch}</code>) with score, change count, MCP failures</li>
+      <li><code>benchmarkAgainstHistory()</code> compares against last 10 runs, detects trends and saturation</li>
+      <li>Saturation: score &gt; 0.9 with &lt; 0.01 delta over 10+ runs -> <code>SATURATED</code> flag</li>
+      <li>Eval data appears in every release note under <strong>Eval Metrics</strong></li>
+      <li>cnei updates its own evals each cycle to keep criteria unsaturated</li>
+    </ol>
   </div>
 
   <div class="card">
@@ -67,13 +84,15 @@
       <li>Compute next version from latest tag (<code>branch-vX.X.X.XX</code>)</li>
       <li>Load index card from KV (branch state, cycle count, failures)</li>
       <li>Run git diff analysis against last release</li>
-      <li>Fetch contextual research (Semantic Scholar)</li>
+      <li>Fetch contextual research (Semantic Scholar) + flywheel research</li>
       <li>Scan MCP tools (EAA accessibility, AccessScore)</li>
       <li>Apply wing-file visual steering blocks</li>
-      <li>Run agentic AI loop (brainstorm + write_file + read_file tools)</li>
-      <li>If agent made changes â tag & release; else fallback to best-practice engine</li>
-      <li>If no improvements â audit-only release</li>
-      <li>Sync index card to Monday.com</li>
+      <li>Run agentic AI loop (PLAN/DO/CHECK protocol, brainstorm + tools)</li>
+      <li>Record eval metrics + benchmark against history</li>
+      <li>Generate admin note with actionable human tasks</li>
+      <li>If agent made changes -> tag & release; else fallback to best-practice engine</li>
+      <li>If no improvements -> audit-only release (with evals + admin note)</li>
+      <li>Sync index card + eval data to Monday.com</li>
     </ol>
   </div>
 
@@ -82,7 +101,7 @@
     <div class="title">19 Branches in Rotation</div>
     <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
       <tr style="border-bottom:1px solid #333"><th style="text-align:left;padding:0.3rem">Branch</th><th style="text-align:left;padding:0.3rem">Category</th><th style="text-align:left;padding:0.3rem">Purpose</th></tr>
-      <tr><td style="padding:0.3rem">cnei</td><td><span class="badge purple">platform</span></td><td>Flywheel engine â releases itself + all other branches</td></tr>
+      <tr><td style="padding:0.3rem">cnei</td><td><span class="badge purple">platform</span></td><td>Flywheel engine - releases itself + all other branches</td></tr>
       <tr><td style="padding:0.3rem">wayback</td><td><span class="badge blue">archive</span></td><td>Wayback evidence library at wayback.datro.xyz</td></tr>
       <tr><td style="padding:0.3rem">bpvsbuckler</td><td><span class="badge">frontend</span></td><td>Main application</td></tr>
       <tr><td style="padding:0.3rem">datro</td><td><span class="badge">frontend</span></td><td>Landing/documentation portal at datro.directory</td></tr>
@@ -96,6 +115,7 @@
     <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
       <tr style="border-bottom:1px solid #333"><th style="text-align:left;padding:0.3rem">Key</th><th style="text-align:left;padding:0.3rem">Purpose</th></tr>
       <tr><td style="padding:0.3rem"><code>index_{branch}</code></td><td>Index card per branch (release count, cycle count, hypothesis tree)</td></tr>
+      <tr><td style="padding:0.3rem"><code>eval_{branch}</code></td><td>Eval metrics history (scores, trends, saturation)</td></tr>
       <tr><td style="padding:0.3rem"><code>failure_{branch}</code></td><td>Failure log (last 20 entries)</td></tr>
       <tr><td style="padding:0.3rem"><code>last_run_{branch}</code></td><td>Unix timestamp of last run (cooldown tracking)</td></tr>
       <tr><td style="padding:0.3rem"><code>rotation</code></td><td>Round-robin state (regular_index, cnei_queue, lap, mode)</td></tr>
@@ -109,6 +129,58 @@
     </table>
   </div>
 
+  <h2>Eval Metrics Detail</h2>
+  <div class="card">
+    <div class="title">Benchmarking Against Commit History</div>
+    <p>Each run records: <code>{ score, changes, hasBounty, mcpFailures, ts }</code></p>
+    <p><code>benchmarkAgainstHistory()</code>:</p>
+    <ul>
+      <li>Loads last 10 runs from <code>eval_{branch}</code> KV</li>
+      <li>Computes avg score, avg changes, trend direction (improving/stable/declining)</li>
+      <li>Detects saturation: avg score &gt; 0.9 AND delta &lt; 0.01 AND 10+ runs</li>
+      <li>Saturated branches get an admin note suggesting eval criteria diversification</li>
+      <li>Declining trend also triggers an admin note for human review</li>
+    </ul>
+  </div>
+
+  <h2>Admin Notes</h2>
+  <div class="card">
+    <div class="title">Per-Release Human Communications</div>
+    <p>Every release includes a <strong>Note for Admin</strong> section with actionable items:</p>
+    <ul>
+      <li>Eval saturation warnings</li>
+      <li>MCP scan service failures (suggest API key updates)</li>
+      <li>Suggested env var additions (MONDAY_API_TOKEN, CF_API_TOKEN, AI_MODEL, etc.)</li>
+      <li>Link to review the release on GitHub</li>
+    </ul>
+  </div>
+
+  <h2>Resource Access</h2>
+  <div class="card">
+    <div class="title">All Cloudflare Free Tier + Env Vars</div>
+    <p>The agent has full read access to all environment variables and Cloudflare resources:</p>
+    <ul>
+      <li><code>FLYWHEEL_STATE</code> KV - full read/write</li>
+      <li><code>GH_PAT / GITHUB_TOKEN</code> - GitHub API</li>
+      <li><code>MONDAY_API_TOKEN</code> - Monday.com boards</li>
+      <li><code>PARENT_PROXY_URL</code> - AI proxy endpoint</li>
+      <li><code>AI_MODEL</code> - Custom LLM model selection</li>
+      <li><code>CF_API_TOKEN + CF_ACCOUNT_ID</code> - Cloudflare API</li>
+      <li><code>HONCHO_API_KEY + HONCHO_APP_NAME</code> - Honcho memory</li>
+    </ul>
+  </div>
+
+  <h2>Scaffold Review</h2>
+  <div class="card">
+    <div class="title">Minimal Harness Enforcement</div>
+    <p>cnei runs periodic scaffold reviews:</p>
+    <ul>
+      <li>Scans repo root for empty/near-empty files (&lt;30 bytes)</li>
+      <li>Flags old scaffold, harness, and boilerplate directories</li>
+      <li>Results appear in release notes under <strong>Scaffold Review</strong></li>
+    </ul>
+  </div>
+
   <h2>Quota Management</h2>
   <div class="card">
     <div class="title">KV Operations Budget</div>
@@ -119,28 +191,29 @@
       <li>Index cards only updated on state changes, not every cycle</li>
       <li>Branch wallet cached in KV with 24h TTL</li>
       <li>MCP scan results cached (48h refresh cycle)</li>
-      <li>Circuit breaker: if cumulative KV writes approach limit, gear auto-adjusts</li>
+      <li>Eval data limited to 100 most recent runs per branch</li>
     </ul>
     <p>Estimated daily usage: <strong>~450 reads / ~350 writes</strong> (well within free tier).</p>
   </div>
 
   <h2>Evidence Discovery (Wayback)</h2>
   <div class="card">
-    <div class="title">Great House Farm â Llandough (nr. Penarth)</div>
+    <div class="title">Great House Farm - Llandough (nr. Penarth)</div>
     <p>The wayback branch includes a GitHub Action that runs on every push, using the flywheel's AI proxy to discover new unique evidence about Great House Farm. Each wayback re-release adds at least 1 new entry to the library at <a href="https://wayback.datro.xyz">wayback.datro.xyz</a>.</p>
   </div>
 
   <h2>Deployment</h2>
   <div class="card">
     <div class="title">CI/CD Pipeline</div>
-    <pre>Push to cnei branch â GitHub Action (cnei-safe-release.yml)
-  â wrangler deploy â Cloudflare Workers (datro-flywheel)
-  â Cron every 10 min â Rotate through all branches
-  â GitHub releases + Monday.com sync</pre>
+    <pre>Push to cnei branch -> GitHub Action (cnei-safe-release.yml)
+  -> wrangler deploy -> Cloudflare Workers (datro-flywheel)
+  -> Cron every 10 min -> Cooldown: 2h regular / 1h cnei
+  -> Each cycle: plan -> research -> agent loop -> eval -> release
+  -> GitHub releases + Monday.com sync + admin notes</pre>
   </div>
 
   <footer>
-    DATRO Consortium Â· cnei branch Â· <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a>
+    DATRO Consortium - cnei branch - <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a>
   </footer>
 </div>
 </body>
