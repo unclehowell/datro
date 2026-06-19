@@ -225,6 +225,58 @@ function getWelshFlag(name) {
 
     // Update slide counter
     document.getElementById("slide-counter").textContent = (idx + 1) + " / " + state.scenes.length;
+
+    // Update left icons for evidence (moved to left of NARRATION)
+    updateNarrationIcons(scene);
+  }
+
+  function updateNarrationIcons(scene) {
+    const container = document.getElementById('narration-icons');
+    if (!container) return;
+    const icons = container.querySelectorAll('.gallery-icon');
+    const yr = String(scene.year || '');
+    // Highlight if likely evidence (years with records in catalogue ~1800-1990s or always for demo)
+    const hasEvidence = !!(yr.match(/1[6-9][0-9]{2}|20[0-2][0-9]/) || parseInt(yr) > 1800);
+    icons.forEach(ic => {
+      ic.classList.toggle('has-evidence', hasEvidence);
+      ic.onclick = () => {
+        if (!hasEvidence) return;
+        if (state.isPlaying) togglePlay(); // pause slideshow
+        showEvidenceGallery(ic.dataset.type, scene, yr);
+      };
+    });
+  }
+
+  function showEvidenceGallery(type, scene, year) {
+    let modal = document.getElementById('evidence-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'evidence-modal';
+      modal.innerHTML = `
+        <div style="position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:5000;display:flex;align-items:center;justify-content:center;" onclick="this.style.display='none'">
+          <div onclick="event.stopImmediatePropagation()" style="width:95%;max-width:980px;height:85vh;background:#0f172a;border:2px solid #475569;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.9);">
+            <div style="padding:8px 12px;background:#1e2937;display:flex;align-items:center;justify-content:space-between;font-size:0.9rem;color:#94a3b8;">
+              <span>Evidence • ${type.toUpperCase()} • Year ${year || scene.year}</span>
+              <button onclick="document.getElementById('evidence-modal').style.display='none'" style="background:none;border:none;color:#94a3b8;font-size:1.4rem;cursor:pointer;line-height:1;">✕</button>
+            </div>
+            <iframe style="width:100%;height:calc(100% - 40px);border:0;background:#111;" src=""></iframe>
+          </div>
+        </div>`;
+      document.body.appendChild(modal);
+    }
+    const iframe = modal.querySelector('iframe');
+    const slideNum = (state.currentSceneIndex || 0) + 1;
+    // Use slide or year filter; wayback supports ?slide=N or ?year=YYYY or search
+    let base = 'https://wayback.datro.xyz/';
+    let qs = [];
+    if (slideNum) qs.push('slide=' + slideNum);
+    if (year) qs.push('year=' + year);
+    if (type) {
+      const cat = (type === 'pdf') ? 'pdf' : (type === 'image') ? 'images' : (type === 'video') ? 'video' : 'text';
+      qs.push('cat=' + cat);
+    }
+    iframe.src = base + (qs.length ? '?' + qs.join('&') : '');
+    modal.style.display = 'flex';
   }
 
   function showSceneDialogue(scene, dialogueIdx) {

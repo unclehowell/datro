@@ -62,24 +62,22 @@
       <div id="timeline-view">
         <div id="scene-display" class="no-scrollbar">
           <div id="narration-area">
-            <div id="narration-label">NARRATION</div>
+            <div class="narration-header">
+              <div class="gallery-icons left-icons" id="narration-icons">
+                <span class="gallery-icon" data-type="pdf" title="PDF evidence">📄</span>
+                <span class="gallery-icon" data-type="image" title="Image evidence">🖼️</span>
+                <span class="gallery-icon" data-type="text" title="Text / news evidence">📰</span>
+                <span class="gallery-icon" data-type="video" title="Video evidence">📝</span>
+              </div>
+              <div id="narration-label">NARRATION</div>
+            </div>
             <div id="narration-text"></div>
           </div>
         </div>
 
         <div id="slide-counter">1 / 100</div>
 
-        <div id="gallery-btn">
-          <div class="gallery-trigger">
-            <div class="gallery-icons">
-              <span class="gallery-icon">📄</span>
-              <span class="gallery-icon">🖼️</span>
-              <span class="gallery-icon">📰</span>
-              <span class="gallery-icon">📧</span>
-              <span class="gallery-icon">📝</span>
-            </div>
-          </div>
-        </div>
+        <!-- gallery-btn kept for compatibility / mobile but icons moved above -->
 
         <!-- Nav Arrows -->
         <button class="nav-arrow left" id="prev-scene-btn">
