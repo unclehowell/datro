@@ -1,3 +1,7 @@
+## bpvsbuckler-v0.0.1.47
+- Critical fix: unstick preloader ("Loading..." forever). Removed crashing unguarded addEventListener on removed #prev-scene-btn / #next-scene-btn (only #next-scene-btn-inner exists). Wired the remaining next button. Removed undefined `hasEvidence` reference in updateNarrationIcons (was ReferenceError on every renderTimelineView after data load).
+- Preloader now hides, splash renders, Enter proceeds to timeline.
+- No other functional changes.
 
 ## bpvsbuckler-v0.0.1.44
 - Full icon integration: icons left of NARRATION (data-type set), highlight (glow has-evidence) for current slide using year/slide match (e.g. >=1667 or 1988/scene65).

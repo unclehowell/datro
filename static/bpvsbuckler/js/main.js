@@ -254,9 +254,7 @@ function getWelshFlag(name) {
       };
       ic.onfocus = () => { /* triggers check via await */ };
     });
-    if (hasEvidence && state.isPlaying) {
-      togglePlay(); // auto-pause slideshow on highlight for evidence slide
-    }
+    // Note: per-icon async highlight + onclick pause handled inside loop; no top-level hasEvidence var
   }
 
   const WAYBACK_BASE = 'https://wayback.datro.xyz';
@@ -968,9 +966,13 @@ function getWelshFlag(name) {
     // Play/Pause
     document.getElementById("play-btn").addEventListener("click", togglePlay);
 
-    // Prev/Next scene
-    document.getElementById("prev-scene-btn").addEventListener("click", function() { navigateScene(-1); });
-    document.getElementById("next-scene-btn").addEventListener("click", function() { navigateScene(1); });
+    // Prev/Next scene (only inner next kept next to play/pause; outer removed)
+    var prevBtn = document.getElementById("prev-scene-btn");
+    if (prevBtn) prevBtn.addEventListener("click", function() { navigateScene(-1); });
+    var nextBtn = document.getElementById("next-scene-btn");
+    if (nextBtn) nextBtn.addEventListener("click", function() { navigateScene(1); });
+    var nextInner = document.getElementById("next-scene-btn-inner");
+    if (nextInner) nextInner.addEventListener("click", function() { navigateScene(1); });
 
     // Voice toggle
     document.getElementById("voice-toggle-btn").addEventListener("click", toggleVoice);
