@@ -263,7 +263,7 @@ function getWelshFlag(name) {
   async function loadWaybackCategory(cat) {
     if (waybackCache[cat]) return waybackCache[cat];
     try {
-      const url = `${WAYBACK_BASE}/wayback/${cat}/_treeview.json`;
+      const url = `${WAYBACK_BASE}/${cat}/_treeview.json`;
       const res = await fetch(url);
       if (!res.ok) return [];
       const data = await res.json();
