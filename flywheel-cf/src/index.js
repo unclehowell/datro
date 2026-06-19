@@ -16,6 +16,31 @@ const HONCHO_TENANT_IDS = {
   datro: 'Q-sPB_HUr__vWcP1cc-UQ',
   financecheque: 'oSx32NCcWFHT7gRXWtrGo',
 };
+
+// ── Branch Purpose Map (bespoke context per branch, stops generic releases) ──
+const BRANCH_PURPOSE = {
+  cnei: 'Metadata and dashboard for the flywheel itself. Documents architecture, configuration, and release history of the autonomous release pipeline.',
+  wayback: 'Historical evidence library for Great House Farm, Llandough (nr. Penarth). A structured archive of text, image, PDF, and video files with search, category browse, and pagination.',
+  bpvsbuckler: 'Main application portal. Primary user-facing service dashboard with authentication and data views.',
+  datro: 'Consortium landing portal and documentation at datro.directory. Project overview and link hub.',
+  financecheque: 'Financial services dashboard with web3 payment UX, transaction tracking, and account management.',
+  carfinancecheque: 'Automotive finance calculator and loan application portal with quote generation.',
+  ccan: 'Climate action network information, resources, and community engagement portal.',
+  ceo: 'Executive dashboard and strategic planning portal with KPIs and reporting.',
+  dash: 'Analytics dashboard with data visualizations, charts, and metric tracking.',
+  dcc: 'Document control centre for managing, reviewing, and approving digital assets and files.',
+  gui: 'UI component library and design system documentation with live previews and code examples.',
+  hbnb: 'Hospitality booking platform (B&B style) with property listings, search, and reservation management.',
+  library: 'Digital library of reference materials, ebooks, and curated reading lists.',
+  llmwiki: 'Wiki of LLM-related knowledge, prompt engineering guides, and AI research synthesis.',
+  subrepos: 'Directory index of sub-repositories and microsites within the monorepo ecosystem.',
+  ui: 'UI component showcase and interaction pattern library with live demos.',
+  wave: 'Web audio visualisation experiment — interactive sound tools, frequency analysis, and audio processing.',
+  althea: 'Alternative/experimental branch for testing new content formats, layouts, and interaction patterns.',
+  archives: 'Static archive of historical documents, preserved content, and legacy records.',
+  pirateclaw: 'Pirate-themed interactive fiction or game content with narrative elements.',
+};
+function branchPurpose(branch) { return BRANCH_PURPOSE[branch] || 'General web presence for the branch. A unique site that should reflect its name and purpose.'; }
 const RATE_BY_GEAR = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60]; // gear1=2h, gear3=1h(default), gear10=1min
 const CNEI_RATIO = 1; // fire cnei after every regular branch to achieve 2h/1h cadence
 const DOMAIN = 'datro.directory';
@@ -600,42 +625,45 @@ async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHt
       ).join('\n\n')
     : '';
 
-  const systemPrompt = `You are the autonomous agentic flywheel for the DATRO monorepo (${GITHUB_REPO}).
+  const purpose = branchPurpose(branch);
+  const systemPrompt = `You are a bespoke solo-developer improving one specific site in the DATRO monorepo (${GITHUB_REPO}). You are NOT a bot — you are a thoughtful developer who makes each release unique.
 
-## Your Mission
-Analyze branch "${branch}" deeply. You have ${maxIterations} tool iterations to investigate and make changes.
-Use tools to read files, search code, run scans, and write changes. Commit changes via write_file as you go.
+## The Site You Are Working On
+**Branch:** ${branch} (category: ${category})
+**Purpose:** ${purpose}
 
-## Earn $GITLAWB While Working
-You can earn gitlawb bounties (paid in $GITLAWB tokens on Base L2) by claiming and completing tasks during your release cycle:
-1. **gitlawv_bounty_list** — find open bounties matching this branch's needs
-2. **gitlawv_bounty_claim** — claim a bounty to signal you are working on it
-3. **gitlawv_bounty_submit** — after committing changes, submit the commit URL as bounty completion
-Between every branch release, try to claim at least one bounty. The payout goes to the branch wallet.
+Your job is to make this specific site better. Read its code, visit the live site, understand what it is FOR, then make changes that are TAILORED to that purpose.
 
-## PLAN — DO — CHECK Protocol
-You MUST follow this three-phase protocol for every release:
+## How to Make Bespoke Releases (NOT generic)
 
-### Phase 1: PLAN
-Before any write_file call, output a PLAN block:
-PLAN:
-- What files you will read to investigate
-- What specific changes you intend to make (list each)
-- For each change: which file, what kind of change, and why
-- Which tools you will use
+### GOOD examples (bespoke, site-specific):
+- "Added an interactive image gallery to wayback with lazy loading — this archive has 23 historical photos"
+- "Restructured the hero section with the consortium's mission statement — datro is a landing portal"
+- "Added a frequency visualizer widget — wave is an audio experimentation tool"
+- "Fixed navigation breadcrumbs for the document library — library has deep category nesting"
 
-After your PLAN, use read_file, search_code, and brainstorm to investigate. Confirm or revise your PLAN based on findings.
+### BAD examples (generic, DO NOT DO):
+- "Added charset meta tag" (every branch already has this or it's irrelevant)
+- "Added viewport meta tag" (same)
+- "No changes needed" (visit the site again, there is ALWAYS something)
+- Any meta-tag-only change
+- Any change that doesn't reference something specific to ${branch}'s site
 
-### Phase 2: DO
-Execute your approved PLAN using write_file calls. Make at least 1 real visual/functional change to index.html.
+## Your Process
+1. **Visit the live site** at https://${branch}.datro.directory (or fetch its HTML)
+2. **Read the source code** in the branch (index.html, CSS, JS)
+3. **Read past release notes** (loaded for you below) — do NOT repeat anything already done
+4. **Understand what makes this site unique** based on its purpose
+5. **Propose 1-2 specific, meaningful changes** that improve the site for its purpose
+6. **Implement changes** using write_file
+7. **Verify** your changes produce valid HTML
 
-### Phase 3: CHECK
-After all write_file calls, verify your outputs:
-CHECK:
-- Did each planned change get executed?
-- List each file changed and confirm the change is correct
-- If you changed index.html, verify it still parses as valid HTML
-- Summarize what was achieved and any deviations from plan
+## Mandatory Rules
+- Every change MUST reference something specific to this branch (a content section, a feature, a layout element that exists)
+- If you can't find anything specific to improve after reading the code and live site, read MORE files (search_code, brainstorm) — don't give up
+- NO generic meta-tag-only changes (charset, viewport, description — these are not bespoke)
+- Max 3 write_file calls
+- If you truly cannot find a branch-specific improvement, output DONE with SUMMARY explaining what you investigated
 
 ## Available Tools
 ${toolDescriptions}
@@ -691,35 +719,36 @@ ARG: key=value
 
 When you have made all your changes and want to finish, output:
 DONE
-SUMMARY: <what you changed and why>
+SUMMARY: <what you changed and why, referencing specifics of ${branch}'s site>
 
 ## Rules
-- Always start with PLAN before any write_file call
-- Use read_file and search_code first to understand the codebase
-- Use brainstorm for creative thinking and planning
-- Use write_file to commit changes (it commits immediately to GitHub)
-- Make at least 1 real visual/functional change to index.html
-- Don't just add meta tags — add real UI elements
-- Max 3 write_file calls per run
-- End with CHECK to verify all planned changes were executed`;
+- PLAN first, then read/analyze, then DO, then CHECK
+- EVERY change must reference something SPECIFIC to ${branch}'s site content or purpose
+- If you can't find anything specific, read more files — don't force a generic change
+- NO meta-tag-only changes (charset, viewport, description, OG tags)
+- Max 3 write_file calls
+- End with CHECK — verify your changes are valid HTML
+- A release with 0 genuine changes is better than a release with 1 generic change`;
 
   conversation.push(systemPrompt);
-  conversation.push(`Current index.html:
+  conversation.push(`## Current index.html (${branch})
 \`\`\`html
 ${currentHtml.slice(0, 30000)}
 \`\`\`
 
-Live website:
+## Live website HTML (${branch})
 \`\`\`html
 ${(liveHtml || '').slice(0, 8000)}
 \`\`\`
 
-_headers:
+## _headers
 \`\`\`
 ${headersContent || '(empty)'}
 \`\`\`
 
-What improvements should I make? Investigate and then make changes.`);
+## Your Task
+You are improving **${branch}** — ${purpose}
+Visit the live site (its HTML is above), read the source code, understand what makes this site unique, and make 1-2 tailored improvements. Reference specific content or features in your changes.`);
 
   let planOutput = false;
   let writeCount = 0;
@@ -2319,7 +2348,7 @@ const CATEGORY_MAP = {
   'Progressive': 'progressive'
 };
 
-async function findAndApplyBestPractice(token, branch) {
+async function findAndApplyBestPractice(token, branch, env) {
   console.log(`Analyzing ${branch} for best-practice improvements`);
 
   // Read TASKS.md to skip already-completed items
@@ -2327,6 +2356,13 @@ async function findAndApplyBestPractice(token, branch) {
   if (completedTasks.length > 0) {
     console.log(`Found ${completedTasks.length} completed tasks in TASKS.md`);
   }
+
+  // Read lesson store to skip previously-applied fixes (prevents charset-loop spam)
+  const lessonKey = `lessons_${branch}`;
+  const lessonRaw = await env.FLYWHEEL_STATE.get(lessonKey, 'json').catch(() => null);
+  const appliedFixes = Array.isArray(lessonRaw)
+    ? lessonRaw.filter(l => l.text && l.text.startsWith('BESTPRACTICE_APPLIED:')).map(l => l.text.replace('BESTPRACTICE_APPLIED:', '').trim())
+    : [];
 
   // Fetch index.html and _headers from the branch
   const idx = await getFileContent(token, branch, 'index.html');
@@ -2345,6 +2381,12 @@ async function findAndApplyBestPractice(token, branch) {
     // Skip if already completed in TASKS.md
     if (bestPracticeMatchesTask(bp, completedTasks)) {
       console.log(`  Skipping "${bp.name}" — already completed per TASKS.md`);
+      continue;
+    }
+
+    // Skip if already applied in a previous run (lesson-store check)
+    if (appliedFixes.includes(bp.name)) {
+      console.log(`  Skipping "${bp.name}" — already applied in a prior run (lesson store)`);
       continue;
     }
 
@@ -2369,6 +2411,9 @@ async function findAndApplyBestPractice(token, branch) {
   }
 
   console.log(`Selected best-practice for ${branch}: ${best.name} (score=${bestScore})`);
+
+  // Record in lesson store so it's never applied again (anti-charset-loop)
+  await learnLesson(env, branch, `BESTPRACTICE_APPLIED:${best.name}`);
 
   // Apply the fix
   const newHtml = best.fix(html);
@@ -2790,7 +2835,7 @@ async function processBranch(env, branch) {
 
     // ── FALLBACK: Best-practice engine ──
     log(`Falling back to best-practice engine for ${branch}`);
-    const bpResult = await findAndApplyBestPractice(token, branch);
+    const bpResult = await findAndApplyBestPractice(token, branch, env);
 
     if (bpResult) {
       const diffSection = diffData ? `\n### Diff Analysis (since ${diffData.base})\n- ${diffData.files.map(f => `  - ${f.path}`).join('\n')}` : '';
@@ -2805,37 +2850,12 @@ async function processBranch(env, branch) {
       return { tagName, version, type: 'best-practice', aiError: null, selfImprovements, wallet: wallet.address };
     }
 
-    // ── FALLBACK: Audit-only release ──
-    log(`No improvements found, audit-only release for ${branch}`);
-    const evalSection = `\n### Eval Metrics\n- Score: ${benchmark.avgScore}\n- Trend: ${benchmark.trend}\n- History: ${benchmark.history} runs\n- Status: ${benchmark.status}`;
-    const adminSection = `\n### 👤 Note for Admin\n${adminNote}`;
-    const notes = [
-      `## [${tagName}]`,
-      ``,
-      `### Changed`,
-      `- Agentic analysis: no changes needed after tool-based investigation`,
-      `- Best-practice audit: no Tier 1-2 gaps found in \`index.html\``,
-      `- Branch wallet: ${wallet.address} (compute: ${wallet.computeBudget})`,
-      diffData ? `- Diff since ${diffData.base}: ${diffData.total_commits} commits` : '',
-      ``,
-      `### Audit Summary`,
-      `- Branch: \`${branch}\``,
-      `- Category: ${computeBranchCategory(branch)}`,
-      `- Best practices checked: ${BEST_PRACTICES.length}`,
-      ``,
-      mcpSection,
-      ``,
-      evalSection,
-      ``,
-      adminSection
-    ].join('\n');
-    commitSha = commitSha || await getDefaultBranchSha(token, branch);
-    await createGitTag(token, tagName, commitSha);
-    const auditRelease = await createSimpleRelease(token, branch, tagName, version, notes);
-    if (auditRelease) await verifyRelease(token, tagName);
-    log(`Audit-only release ${tagName}`);
-    await updateIndexCard(env, branch, { lastRelease: tagName });
-    return { tagName, version, type: 'audit-only', aiError: null, selfImprovements, wallet: wallet.address };
+    // ── FALLBACK: Audit-only — SKIP release if nothing changed ──
+    log(`No improvements found for ${branch}, skipping release (no changes = no tag)`);
+    await learnLesson(env, branch, `Skipped release: agent and best-practice engine both found nothing to change on ${branch}`);
+    // Update index card but DON'T create a tag or release — pointless noise
+    await updateIndexCard(env, branch, { lastRun: Math.floor(Date.now() / 1000), lastRelease: null });
+    return { tagName: null, version: null, type: 'skipped', aiError: null, selfImprovements, wallet: wallet.address };
   }, `processBranch(${branch})`, 3).catch(async (err) => {
     await logFailureToKv(env, branch, err, 'processBranch');
     return { tagName: null, error: err.message };
