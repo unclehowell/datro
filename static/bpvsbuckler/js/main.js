@@ -236,7 +236,7 @@ function getWelshFlag(name) {
     const icons = container.querySelectorAll('.gallery-icon');
     const yr = String(scene.year || '');
     // Highlight if likely evidence (years with records in catalogue ~1800-1990s or always for demo)
-    const hasEvidence = !!(yr.match(/1[6-9][0-9]{2}|20[0-2][0-9]/) || parseInt(yr) > 1800);
+    const hasEvidence = true; // always highlight to demonstrate cross-site evidence gallery feature (real impl can check wayback treeviews or year map)
     icons.forEach(ic => {
       ic.classList.toggle('has-evidence', hasEvidence);
       ic.onclick = () => {
@@ -245,6 +245,9 @@ function getWelshFlag(name) {
         showEvidenceGallery(ic.dataset.type, scene, yr);
       };
     });
+    if (hasEvidence && state.isPlaying) {
+      togglePlay(); // auto-pause when icons highlight for evidence slide
+    }
   }
 
   function showEvidenceGallery(type, scene, year) {

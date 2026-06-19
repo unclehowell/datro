@@ -122,7 +122,7 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 
 #narration-area { width: 100%; margin-left: 5rem; margin-left: 5rem; max-width: 48rem; margin-bottom: 1rem; }
 .narration-header { display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
-#narration-label { font-size: 1.35rem; display: none; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 0.5rem; }
+#narration-label { font-size: 1.35rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 0.5rem; display: inline-block; }
 #narration-text { font-size: 1.75rem; font-family: var(--font-display); font-size: 1.75rem; font-weight: bold; line-height: 1.6; color: #fff; }
 #narration-text .word { display: inline-block; transition: color 0.1s; }
 #narration-text .word.active { color: white; }
