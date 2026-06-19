@@ -1,98 +1,18 @@
-# Changelog
+## v0.0.0.12
+- Added 5 new unique evidence items (no dups by name/date+title similarity):
+  - 1988-07-29 Great House Farmhouse Llandough Cadw Survey Photo (pdf, #bpvs-slide-65)
+  - 1988-07-29 Barn at Great House Farm Llandough Cadw Survey Photo (pdf, #bpvs-slide-65)
+  - 1990-08-00 Great House Farmhouse Llandough GGAT Assessment (pdf)
+  - 1897-00-00 Marconi Wireless Telegraph at Great House Farm (jpg)
+  - 1897-00-00 Marconi Visit to Great House Farm (text excerpt from Rundown)
+  - 1916-00-00 Tree Planting Ceremony John Williams Great House Farm Ownership (text excerpt from Rundown)
+- Appended to images/, pdf/, text/ _treeview.json (and synced to datro/wayback)
+- Used descriptive naming YYYY-MM-DD - Title - EN - V0.0.0.12
+- Prepared for wayback-v0.0.1.44 release
 
-## [cnei-v0.0.0.48] - 2026-06-04
 
-### Fixed
-- fix(cnei): Create Privacy Policy page for legal compliance
-- fix(cnei): Create Terms of Service page for legal compliance
-- fix(cnei): Create Contact page with form and contact details
+## v0.0.0.11
+- Added unique evidence: ATISN 27021 (11 June 2026) Welsh Government response with Cadw inspection photos dated 29/07/1988 of Great House Farm and barn; assessment that the building did not meet listing criteria; note on records at RCAHMW or destroyed. Tagged for slide 65 (1988 events). No duplicates.
+- Added matching image placeholder with #slide-65.
+- Updated treeviews and index title.
 
-### Changed
-- ux(cnei): Add smooth scrolling for better UX
-
-## [bpvsbuckler-v0.0.0.10-aws] - 2026-05-28
-
-### Fixed
-- fix(bpvsbuckler): Remove excessive blank lines
-
-### Changed
-- ux(bpvsbuckler): Add minimum tap target sizes for mobile UX
-
-## [bpvsbuckler-v0.0.0.09-aws] - 2026-05-28
-
-### Fixed
-- fix(bpvsbuckler): Add proper title to 404 page for SEO
-- fix(bpvsbuckler): Create Terms of Service page for legal compliance
-- fix(bpvsbuckler): Remove excessive blank lines
-
-### Changed
-- ux(bpvsbuckler): Add cookie consent banner for GDPR compliance
-
-## [bpvsbuckler-v0.0.0.10] - 2026-05-26
-
-### Added
-- Add Beurcracy pinball page with Land Registry to ICR escalation flow
-- Inject Beurcracy link into SPA nav alongside Home, Reparations, Script
-
-### Changed
-- Strip nav/header/score from beurcracy pinball pages for clean canvas-only display
-
-### Fixed
-- Remove extra injected nav bar causing duplicate navigation
-
-## [bpvsbuckler-v0.0.0.09] - 2026-05-26
-
-### Fixed
-- fix(bpvsbuckler): switch to file-based build, no npm/bun needed
-- fix(bpvsbuckler): restore old SPA download in build command
-- fix(bpvsbuckler): use POSIX-only build command
-- fix(bpvsbuckler): fix build script to use rsync
-- fix(bpvsbuckler): switch source to old pages.dev deployment
-
-### Changed
-- ux(bpvsbuckler): beurcracy pinball page with audio and flippers
-
-## [bpvsbuckler-v0.0.0.08] - 2026-05-26
-
-### Fixed
-- fix(bpvsbuckler): Create Contact page with form and contact details
-- fix(bpvsbuckler): Launch blog with welcome post and index page
-- fix(bpvsbuckler): Create Privacy Policy page for legal compliance
-
-### Changed
-- ux(bpvsbuckler): Add print-friendly styles for better UX
-
-## [bpvsbuckler-v0.0.0.07] - 2026-05-25
-
-### Fixed
-- fix(bpvsbuckler): Remove excessive blank lines
-- fix(bpvsbuckler): Remove excessive blank lines
-- fix(bpvsbuckler): Remove excessive blank lines
-
-### Changed
-- ux(bpvsbuckler): Add hover styles for interactive elements
-
-## [0.0.1.0] - 2026-05-24
-
-### Fixed
-- Identified issue: JSON parse error: Expecting "," delimiter (requires manual fix)
-
-## [bpvsbuckler-v0.0.0.16] - 2026-05-31
-
-### Added
-- feat(bpvsbuckler): Add 13 new timeline entries covering 1916–1993 gaps
-  - 1916 – John Williams granted agricultural tenancy by Marquess of Bute
-  - 1949 – Intended tenancy transfer from John Williams to Frederick Buckler
-  - 1959 – Mary Buckler/Williams asserted hereditary ownership claim
-  - 1969 – Great House Farm sold to BP Pension Trust Ltd
-  - 1970 – Llandough Primary School opened on former farm land
-  - 1974 – Judge Watkin Powell granted leave to enforce 1962 possession order
-  - 1974 – Mary Buckler/Williams opposed eviction through press coverage
-  - 1974 – BP Pension Trust and BP Properties issued life rent-free licence letters
-  - 1974 – Possession warrant withdrawn; Mary remained in occupation
-  - 1979 – Roman villa and bathhouse uncovered during housing development
-  - 1987 – Corinthian Close and Tuscan Close constructed over Roman villa site
-  - 1988 – Final removal of remaining Buckler occupants from Great House Farm
-  - 1993 – The Glamorgan Village Book recorded the Roman villa discovery
-
-## [Unreleased]
