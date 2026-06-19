@@ -622,7 +622,7 @@ function getWelshFlag(name) {
 
     if (state.isPlaying) {
       state.voiceEnabled = true;
-      document.getElementById("voice-slider").value = state.voiceVolume;
+      document.getElementById("voice-slider").value = (state.voiceVolume || 0.5) * 100;
       autoAdvance();
     } else {
       speechStop();
@@ -975,9 +975,11 @@ function getWelshFlag(name) {
     // Voice toggle
     document.getElementById("voice-toggle-btn").addEventListener("click", toggleVoice);
 
-    // Voice volume
+    // Voice volume: slider 0-100 , map to actual vol = slider/1000  (100%=0.1, 10%=0.01)
     document.getElementById("voice-slider").addEventListener("input", function(e) {
-      state.voiceVolume = parseFloat(e.target.value);
+      const pct = parseFloat(e.target.value) || 50;
+      state.voiceVolume = pct / 100;  // keep state 0-1 for compat
+      // actual in speak uses /10
     });
 
     // Minimize toggle
