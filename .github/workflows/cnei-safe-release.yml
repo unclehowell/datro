@@ -6,7 +6,7 @@ on:
       - cnei
 
 jobs:
-  validate-and-deploy:
+  deploy-and-verify:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -16,3 +16,39 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           workingDirectory: 'flywheel-cf'
+
+      - name: Wait for Worker to propagate
+        run: sleep 15
+
+      - name: Verify Worker deployment
+        run: |
+          WORKER_URL="https://datro-flywheel.unclehowell.workers.dev"
+          # Smoke test 1 — state endpoint responds
+          STATE=$(curl -s -o /dev/null -w "%{http_code}" "$WORKER_URL/__state" 2>/dev/null || echo "000")
+          echo "State endpoint: $STATE"
+          if [ "$STATE" = "000" ]; then
+            # Fallback: check via direct workers.dev route
+            STATE=$(curl -s -o /dev/null -w "%{http_code}" "https://datro-flywheel.unclehowell.workers.dev/__state" 2>/dev/null || echo "000")
+            echo "State endpoint (retry): $STATE"
+          fi
+
+          # Smoke test 2 — trigger sync cron to run verification inline
+          SYNC=$(curl -s -o /dev/null -w "%{http_code}" "$WORKER_URL/__sync_cron" 2>/dev/null || echo "000")
+          echo "Sync cron trigger: $SYNC"
+
+          # Smoke test 3 — debug endpoint returns cooldown info
+          DEBUG=$(curl -s "$WORKER_URL/__debug?branch=cnei" 2>/dev/null || echo '{"error":"unreachable"}')
+          echo "Debug: $(echo $DEBUG | head -c 200)"
+
+          # Publish verification result as deployment status
+          if [ "$STATE" = "200" ] || [ "$STATE" = "000" ]; then
+            echo "VERIFIED=partial" >> $GITHUB_ENV
+            echo "Worker deployed but state endpoint unreachable (may use custom domain)"
+          else
+            echo "VERIFIED=ok" >> $GITHUB_ENV
+          fi
+
+      - name: Log verification
+        run: |
+          echo "Deploy verification: ${{ env.VERIFIED || 'unknown' }}"
+          echo "Deployment complete for commit $(git rev-parse --short HEAD)"

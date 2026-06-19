@@ -516,6 +516,30 @@ You can earn gitlawb bounties (paid in $GITLAWB tokens on Base L2) by claiming a
 3. **gitlawv_bounty_submit** — after committing changes, submit the commit URL as bounty completion
 Between every branch release, try to claim at least one bounty. The payout goes to the branch wallet.
 
+## PLAN — DO — CHECK Protocol
+You MUST follow this three-phase protocol for every release:
+
+### Phase 1: PLAN
+Before any write_file call, output a PLAN block:
+PLAN:
+- What files you will read to investigate
+- What specific changes you intend to make (list each)
+- For each change: which file, what kind of change, and why
+- Which tools you will use
+
+After your PLAN, use read_file, search_code, and brainstorm to investigate. Confirm or revise your PLAN based on findings.
+
+### Phase 2: DO
+Execute your approved PLAN using write_file calls. Make at least 1 real visual/functional change to index.html.
+
+### Phase 3: CHECK
+After all write_file calls, verify your outputs:
+CHECK:
+- Did each planned change get executed?
+- List each file changed and confirm the change is correct
+- If you changed index.html, verify it still parses as valid HTML
+- Summarize what was achieved and any deviations from plan
+
 ## Available Tools
 ${toolDescriptions}
 
@@ -544,7 +568,7 @@ ${brainMem ? '---\n' + brainMem.slice(0, 1000) : ''}
 ${sciHub.slice(0, 500)}
 ${dailyDigest.slice(0, 500)}
 
-## Protocol
+## Tool Protocol
 To use a tool, output:
 TOOL: <tool_name>
 ARG: key=value
@@ -555,12 +579,14 @@ DONE
 SUMMARY: <what you changed and why>
 
 ## Rules
+- Always start with PLAN before any write_file call
 - Use read_file and search_code first to understand the codebase
-- Use brainstorm for creative thinking/planning
+- Use brainstorm for creative thinking and planning
 - Use write_file to commit changes (it commits immediately to GitHub)
 - Make at least 1 real visual/functional change to index.html
 - Don't just add meta tags — add real UI elements
-- Max 3 write_file calls per run`;
+- Max 3 write_file calls per run
+- End with CHECK to verify all planned changes were executed`;
 
   conversation.push(systemPrompt);
   conversation.push(`Current index.html:
@@ -580,6 +606,11 @@ ${headersContent || '(empty)'}
 
 What improvements should I make? Investigate and then make changes.`);
 
+  let planOutput = false;
+  let writeCount = 0;
+  let stuckCount = 0;
+  let lastReplyHash = '';
+
   for (let iter = 0; iter < maxIterations; iter++) {
     console.log(`Agent iteration ${iter + 1}/${maxIterations}`);
 
@@ -597,15 +628,58 @@ What improvements should I make? Investigate and then make changes.`);
     const reply = result.reply.trim();
     console.log(`Agent reply (${reply.length} chars)`);
 
+    // Doom-loop guard: detect if agent is repeating itself
+    const replyHash = reply.slice(0, 100);
+    if (replyHash === lastReplyHash) {
+      stuckCount++;
+      console.log(`Doom-loop guard: stuck iteration ${stuckCount}/3`);
+      if (stuckCount >= 3) {
+        conversation.push('You appear to be repeating yourself. Break out of the loop — either make progress with a different tool or output DONE.');
+        stuckCount = 0;
+      }
+    } else {
+      stuckCount = 0;
+      lastReplyHash = replyHash;
+    }
+
+    // Doom-loop guard: detect write_file without prior PLAN
+    if (reply.includes('TOOL: write_file') && !planOutput && iter > 0) {
+      conversation.push('You must output a PLAN block before using write_file. Analyze first, then propose changes.');
+      continue;
+    }
+
     if (reply.startsWith('DONE')) {
       console.log('Agent finished');
       const summary = reply.match(/SUMMARY:\s*([\s\S]*?)$/);
+      if (writeCount === 0 && !reply.includes('no changes')) {
+        console.log('Agent ended with no changes — possible empty run');
+      }
       return {
         changes: committedFiles,
         summary: summary ? summary[1].trim() : 'Agent completed changes',
         html: currentHtml,
         bounty: agentBounty
       };
+    }
+
+    // Track PLAN output
+    if (reply.includes('PLAN:')) {
+      planOutput = true;
+      console.log('Agent produced a PLAN');
+    }
+
+    // Track write_file count
+    if (reply.includes('TOOL: write_file')) {
+      writeCount++;
+      if (writeCount > 3) {
+        conversation.push('Maximum write_file calls (3) reached. Output DONE to finish.');
+        continue;
+      }
+    }
+
+    // Doom-loop guard: max iterations without write_file
+    if (iter >= maxIterations - 2 && writeCount === 0) {
+      conversation.push('You have used most iterations without making changes. Either make a change now or output DONE with SUMMARY: no changes needed.');
     }
 
     const toolMatch = reply.match(/TOOL:\s*(\w+)/);
