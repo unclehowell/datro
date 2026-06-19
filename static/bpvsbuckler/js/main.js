@@ -200,7 +200,7 @@ function getWelshFlag(name) {
     var narrationArea = document.getElementById("narration-area");
     var narrationText = document.getElementById("narration-text");
     var narrationLabel = document.getElementById("narration-label");
-    narrationLabel.textContent = "NARRATION";
+    narrationLabel.textContent = `NARRATOR [${scene.year}]`;
     var narrated = narrationText.sceneInfo ? narrationText.sceneInfo : null;
 
     var narratedText = scene.narration || "";

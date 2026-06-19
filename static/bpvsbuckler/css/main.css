@@ -124,7 +124,7 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 .narration-header { display: flex; align-items: center; gap: 0.4rem; white-space: nowrap; }
 #narration-label { font-size: 1.35rem; text-transform: uppercase; letter-spacing: 0.2em; color: var(--text-muted); margin-bottom: 0; display: inline-block; }
 .left-icons { display: inline-flex; gap: 0.2rem; }
-#narration-text { font-size: 1.75rem; font-family: var(--font-display); font-size: 1.75rem; font-weight: bold; line-height: 1.6; color: #fff; }
+#narration-text { font-size: 1.75rem; font-family: var(--font-display); font-weight: bold; line-height: 1.6; color: #fff; max-height: 50vh; overflow-y: auto; padding-right: 12px; }
 #narration-text .word { display: inline-block; transition: color 0.1s; }
 #narration-text .word.active { color: white; }
 
