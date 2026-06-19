@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>cnei — DATRO Flywheel Engine</title>
+<title>cnei â DATRO Flywheel Engine</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -42,10 +42,11 @@
   footer { margin-top: 2rem; text-align: center; color: #555; font-size: 0.8rem; border-top: 1px solid #333; padding-top: 1rem; }
   @media (max-width: 600px) { body { padding: 0.5rem; } }
 </style>
+<meta name="description" content="">
 </head>
 <body>
 <div class="container">
-  <h1>cnei — DATRO Flywheel Engine</h1>
+  <h1>cnei â DATRO Flywheel Engine</h1>
   <p>Cloudflare Workers-based autonomous release pipeline that rotates through 18+ branches, applying AI-driven improvements, best-practice audits, and evidence discovery. Every 10 minutes a cron triggers one branch cycle.</p>
 
   <h2>Architecture</h2>
@@ -56,7 +57,7 @@
 
   <div class="card">
     <div class="title">Branch Rotation</div>
-    Each cycle picks one branch via round-robin (<code>regular_index</code>). CNEI branch runs every 6 regular cycles (<code>CNEI_RATIO = 6</code>). Cooldown per branch is gear-based (<code>RATE_BY_GEAR[gear-1]</code>, default gear 3 → ~233s per branch).
+    Each cycle picks one branch via round-robin (<code>regular_index</code>). CNEI branch runs every 6 regular cycles (<code>CNEI_RATIO = 6</code>). Cooldown per branch is gear-based (<code>RATE_BY_GEAR[gear-1]</code>, default gear 3 â ~233s per branch).
   </div>
 
   <div class="card">
@@ -70,8 +71,8 @@
       <li>Scan MCP tools (EAA accessibility, AccessScore)</li>
       <li>Apply wing-file visual steering blocks</li>
       <li>Run agentic AI loop (brainstorm + write_file + read_file tools)</li>
-      <li>If agent made changes → tag & release; else fallback to best-practice engine</li>
-      <li>If no improvements → audit-only release</li>
+      <li>If agent made changes â tag & release; else fallback to best-practice engine</li>
+      <li>If no improvements â audit-only release</li>
       <li>Sync index card to Monday.com</li>
     </ol>
   </div>
@@ -81,7 +82,7 @@
     <div class="title">19 Branches in Rotation</div>
     <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
       <tr style="border-bottom:1px solid #333"><th style="text-align:left;padding:0.3rem">Branch</th><th style="text-align:left;padding:0.3rem">Category</th><th style="text-align:left;padding:0.3rem">Purpose</th></tr>
-      <tr><td style="padding:0.3rem">cnei</td><td><span class="badge purple">platform</span></td><td>Flywheel engine — releases itself + all other branches</td></tr>
+      <tr><td style="padding:0.3rem">cnei</td><td><span class="badge purple">platform</span></td><td>Flywheel engine â releases itself + all other branches</td></tr>
       <tr><td style="padding:0.3rem">wayback</td><td><span class="badge blue">archive</span></td><td>Wayback evidence library at wayback.datro.xyz</td></tr>
       <tr><td style="padding:0.3rem">bpvsbuckler</td><td><span class="badge">frontend</span></td><td>Main application</td></tr>
       <tr><td style="padding:0.3rem">datro</td><td><span class="badge">frontend</span></td><td>Landing/documentation portal at datro.directory</td></tr>
@@ -125,21 +126,21 @@
 
   <h2>Evidence Discovery (Wayback)</h2>
   <div class="card">
-    <div class="title">Great House Farm — Llandough (nr. Penarth)</div>
+    <div class="title">Great House Farm â Llandough (nr. Penarth)</div>
     <p>The wayback branch includes a GitHub Action that runs on every push, using the flywheel's AI proxy to discover new unique evidence about Great House Farm. Each wayback re-release adds at least 1 new entry to the library at <a href="https://wayback.datro.xyz">wayback.datro.xyz</a>.</p>
   </div>
 
   <h2>Deployment</h2>
   <div class="card">
     <div class="title">CI/CD Pipeline</div>
-    <pre>Push to cnei branch → GitHub Action (cnei-safe-release.yml)
-  → wrangler deploy → Cloudflare Workers (datro-flywheel)
-  → Cron every 10 min → Rotate through all branches
-  → GitHub releases + Monday.com sync</pre>
+    <pre>Push to cnei branch â GitHub Action (cnei-safe-release.yml)
+  â wrangler deploy â Cloudflare Workers (datro-flywheel)
+  â Cron every 10 min â Rotate through all branches
+  â GitHub releases + Monday.com sync</pre>
   </div>
 
   <footer>
-    DATRO Consortium · cnei branch · <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a>
+    DATRO Consortium Â· cnei branch Â· <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a>
   </footer>
 </div>
 </body>
