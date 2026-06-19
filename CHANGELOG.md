@@ -1,3 +1,9 @@
+## v0.0.0.15
+- Critical UI fix (wayback.datro.xyz showed only stale "Wayback Archive v0.0.0.09", no tabs/gallery/content).
+- Fixed JS loadCategory fetch path (removed erroneous `wayback/` prefix so it loads ${cat}/_treeview.json from CF Pages root).
+- Updated titles in index.html to v0.0.0.15.
+- Deployed via wrangler to wayback project (git data in wayback branch kept in sync via this changelog).
+
 ## v0.0.0.12
 - Added 5 new unique evidence items (no dups by name/date+title similarity):
   - 1988-07-29 Great House Farmhouse Llandough Cadw Survey Photo (pdf, #bpvs-slide-65)
