@@ -185,6 +185,21 @@
     </div>
   </div>
 
+  <!-- Evidence Modal (uses archive-panel style for identical design) -->
+  <div id="evidence-modal">
+    <div class="archive-panel" style="max-width:95vw; width:95%; max-width:980px; height:85vh; display:flex; flex-direction:column;">
+      <div class="archive-header">
+        <div>
+          <div class="archive-title" id="evidence-modal-title">EVIDENCE GALLERY</div>
+        </div>
+        <button id="evidence-modal-close" style="background:none;border:none;color:#94a3b8;font-size:1.25rem;cursor:pointer;">✕</button>
+      </div>
+      <div class="archive-body no-scrollbar" id="evidence-modal-body" style="padding:0; display:block; flex:1; overflow:hidden;">
+        <iframe id="evidence-iframe" style="width:100%; height:100%; border:0; background:#111;" src=""></iframe>
+      </div>
+    </div>
+  </div>
+
   <!-- BTC Modal -->
   <div id="btc-modal" style="display:none;position:fixed;inset:0;z-index:3000;background:rgba(0,0,0,0.9);align-items:center;justify-content:center;">
     <div style="background:#1e293b;border:2px solid #f7931a;border-radius:1rem;padding:2rem;max-width:28rem;width:90%;text-align:center;">

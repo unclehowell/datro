@@ -235,51 +235,50 @@ function getWelshFlag(name) {
     if (!container) return;
     const icons = container.querySelectorAll('.gallery-icon');
     const yr = String(scene.year || '');
-    // Highlight if likely evidence (years with records in catalogue ~1800-1990s or always for demo)
-    const hasEvidence = true; // always highlight to demonstrate cross-site evidence gallery feature (real impl can check wayback treeviews or year map)
+    const slideNum = (state.currentSceneIndex || 0) + 1;
+    // Highlight if evidence (use year or slide match; simple year-based or always for demo since tags exist)
+    const y = parseInt(yr);
+    const hasEvidence = !isNaN(y) && (y >= 1667 || slideNum === 65 || yr === '1988'); // year/slide match for evidence periods (1667+ and specific 1988 etc)
     icons.forEach(ic => {
       ic.classList.toggle('has-evidence', hasEvidence);
       ic.onclick = () => {
         if (!hasEvidence) return;
-        if (state.isPlaying) togglePlay(); // pause slideshow
-        showEvidenceGallery(ic.dataset.type, scene, yr);
+        if (state.isPlaying) togglePlay(); // pause slideshow on click
+        showEvidenceGallery(ic.dataset.type, scene, yr, slideNum);
       };
     });
     if (hasEvidence && state.isPlaying) {
-      togglePlay(); // auto-pause when icons highlight for evidence slide
+      togglePlay(); // auto-pause slideshow on highlight for evidence slide
     }
   }
 
-  function showEvidenceGallery(type, scene, year) {
-    let modal = document.getElementById('evidence-modal');
-    if (!modal) {
-      modal = document.createElement('div');
-      modal.id = 'evidence-modal';
-      modal.innerHTML = `
-        <div style="position:fixed;inset:0;background:rgba(0,0,0,0.9);z-index:5000;display:flex;align-items:center;justify-content:center;" onclick="this.style.display='none'">
-          <div onclick="event.stopImmediatePropagation()" style="width:95%;max-width:980px;height:85vh;background:#0f172a;border:2px solid #475569;border-radius:12px;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,0.9);">
-            <div style="padding:8px 12px;background:#1e2937;display:flex;align-items:center;justify-content:space-between;font-size:0.9rem;color:#94a3b8;">
-              <span>Evidence • ${type.toUpperCase()} • Year ${year || scene.year}</span>
-              <button onclick="document.getElementById('evidence-modal').style.display='none'" style="background:none;border:none;color:#94a3b8;font-size:1.4rem;cursor:pointer;line-height:1;">✕</button>
-            </div>
-            <iframe style="width:100%;height:calc(100% - 40px);border:0;background:#111;" src=""></iframe>
-          </div>
-        </div>`;
-      document.body.appendChild(modal);
+  function showEvidenceGallery(type, scene, year, slideNumParam) {
+    const modal = document.getElementById('evidence-modal');
+    if (!modal) return;
+    const iframe = document.getElementById('evidence-iframe');
+    const titleEl = document.getElementById('evidence-modal-title');
+    const slideNum = slideNumParam || (state.currentSceneIndex || 0) + 1;
+    const yr = year || (scene ? scene.year : '');
+    // Set title using existing archive style elements
+    if (titleEl) {
+      titleEl.innerHTML = 'EVIDENCE • ' + (type ? type.toUpperCase() : 'GALLERY') + ' • SLIDE ' + slideNum + ' • YEAR ' + yr;
     }
-    const iframe = modal.querySelector('iframe');
-    const slideNum = (state.currentSceneIndex || 0) + 1;
-    // Use slide or year filter; wayback supports ?slide=N or ?year=YYYY or search
+    // Filter: pass ?slide= (or ?bpvs_slide) + &year= + &cat= based on icon type. Also #slide-N for wayback support
     let base = 'https://wayback.datro.xyz/';
     let qs = [];
     if (slideNum) qs.push('slide=' + slideNum);
-    if (year) qs.push('year=' + year);
+    // support bpvs_slide example as alternate
+    // if (slideNum) qs.push('bpvs_slide=' + slideNum);
+    if (yr) qs.push('year=' + yr);
     if (type) {
       const cat = (type === 'pdf') ? 'pdf' : (type === 'image') ? 'images' : (type === 'video') ? 'video' : 'text';
       qs.push('cat=' + cat);
     }
-    iframe.src = base + (qs.length ? '?' + qs.join('&') : '');
-    modal.style.display = 'flex';
+    let url = base;
+    if (qs.length) url += '?' + qs.join('&');
+    if (slideNum) url += '#slide-' + slideNum;  // or #slide-65 support as per prior
+    if (iframe) iframe.src = url;
+    modal.classList.add('open');
   }
 
   function showSceneDialogue(scene, dialogueIdx) {
@@ -973,6 +972,23 @@ function getWelshFlag(name) {
   document.getElementById("archive-modal").addEventListener("click", function(e) {
     if (e.target === document.getElementById("archive-modal")) {
       document.getElementById("archive-modal").classList.remove("open");
+    }
+  });
+
+  // Evidence modal close (static, uses archive-panel design)
+  var evClose = document.getElementById("evidence-modal-close");
+  if (evClose) {
+    evClose.addEventListener("click", function() {
+      document.getElementById("evidence-modal").classList.remove("open");
+      var ifr = document.getElementById("evidence-iframe");
+      if (ifr) ifr.src = "about:blank"; // clean
+    });
+  }
+  document.getElementById("evidence-modal").addEventListener("click", function(e) {
+    if (e.target === document.getElementById("evidence-modal")) {
+      document.getElementById("evidence-modal").classList.remove("open");
+      var ifr = document.getElementById("evidence-iframe");
+      if (ifr) ifr.src = "about:blank";
     }
   });
 

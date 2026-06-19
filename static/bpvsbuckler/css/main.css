@@ -277,10 +277,13 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
   #scene-display { padding: 1rem 1rem !important; }
   #narration-text { font-size: 1.35rem !important; line-height: 1.4 !important; }
   .narration-header { gap: 0.35rem; }
-  .left-icons .gallery-icon { width: 28px; height: 28px; font-size: 0.9rem; }
+  .left-icons .gallery-icon { width: 30px; height: 30px; font-size: 1rem; min-width: 44px; min-height: 44px; }
+  .gallery-icon { min-width: 44px; min-height: 44px; }
   .nav-arrow { width: 44px; height: 44px; }
   #slide-counter { font-size: 1rem; top: 0.5rem; right: 0.5rem; }
   #timeline-controls { padding: 0.25rem; }
+  #narration-label { font-size: 1.2rem !important; }
+  #narration-area { margin-left: 0 !important; }
 }
 
 .gallery-trigger {
@@ -320,11 +323,11 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 .tl-btn svg { width: 1.5rem; height: 1.5rem; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
 
 /* Modals */
-#archive-modal, #source-modal, #timeline-picker {
+#archive-modal, #source-modal, #timeline-picker, #evidence-modal {
   position: fixed; inset: 0; z-index: 300; background: rgba(0,0,0,0.9);
   display: none; align-items: center; justify-content: center; padding: 1rem; backdrop-filter: blur(8px);
 }
-#archive-modal.open, #source-modal.open, #timeline-picker.open { display: flex; }
+#archive-modal.open, #source-modal.open, #timeline-picker.open, #evidence-modal.open { display: flex; }
 
 .archive-panel, .source-panel {
   background: var(--bg-secondary); border: 1px solid var(--border); border-radius: 1.5rem;
@@ -473,4 +476,75 @@ html, body { height: 100%; overflow: hidden; font-family: var(--font-body); back
 }
 #footer-right>* {
   margin: 0 0.15rem !important;
+}
+/* Additional mobile fixes for narrator icons and layout */
+@media (max-width: 600px) {
+  .narration-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .left-icons {
+    order: -1;
+    margin-bottom: 0.25rem;
+  }
+  #narration-area {
+    margin-left: 0 !important;
+    padding: 0.5rem;
+  }
+  #narration-text {
+    font-size: 1.2rem !important;
+  }
+  .gallery-icon {
+    width: 28px !important;
+    height: 28px !important;
+    font-size: 0.95rem !important;
+    min-width: 44px;
+    min-height: 44px;
+    padding: 0.25rem;
+  }
+  .left-icons .gallery-icon {
+    width: 28px !important;
+    height: 28px !important;
+    min-width: 44px !important;
+    min-height: 44px !important;
+  }
+  #slide-counter {
+    font-size: 0.9rem;
+  }
+  .nav-arrow {
+    width: 44px;
+    height: 44px;
+  }
+  #scene-display {
+    padding: 0.75rem 0.5rem !important;
+  }
+  #narration-label {
+    font-size: 1.1rem !important;
+  }
+}
+
+/* Enhanced mobile for small screens, touch targets, icons layout */
+@media (max-width: 480px) {
+  .gallery-icon, .left-icons .gallery-icon {
+    width: 26px !important;
+    height: 26px !important;
+    font-size: 0.85rem !important;
+    min-width: 40px !important;
+    min-height: 40px !important;
+  }
+  #narration-text {
+    font-size: 1.1rem !important;
+    line-height: 1.35 !important;
+  }
+  .narration-header {
+    gap: 0.25rem;
+  }
+  #controls-bar {
+    padding: 0 0.5rem;
+    gap: 0.5rem;
+  }
+  .ctrl-btn, .play-btn {
+    min-width: 44px;
+    min-height: 44px;
+  }
 }
