@@ -16,3 +16,8 @@
 - Added matching image placeholder with #slide-65.
 - Updated treeviews and index title.
 
+## v0.0.0.13
+- Added #bpvsbuckler hashtag to all evidence names in treeviews for bpvs integration filtering.
+- Updated index.html JS to support ?slide= ?year= ?hashtag=bpvsbuckler params, hide slide/bpvs tags from cloud UI.
+- Icons and gallery feed support updated in bpvs side.
+
