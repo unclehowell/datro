@@ -21,3 +21,9 @@
 - Updated index.html JS to support ?slide= ?year= ?hashtag=bpvsbuckler params, hide slide/bpvs tags from cloud UI.
 - Icons and gallery feed support updated in bpvs side.
 
+
+## v0.0.0.14
+- Added #bpvsbuckler to all treeview names for filtering from bpvs site.
+- Hide #bpvsbuckler and #slide- tags from hashtag cloud to preserve UI.
+- Enhanced param support for year/category/hashtag filters.
+
