@@ -921,8 +921,15 @@ function getWelshFlag(name) {
 
     state.currentSceneIndex = findStartIndex();
 
-    // Render splash
+    // Render splash (the 'enter' screen). Hide preloader immediately so not stuck on spinner.
     renderSplash();
+    var pre = document.getElementById("preloader");
+    if (pre) pre.classList.add("hidden");
+    var root = document.getElementById("app-root");
+    if (root) root.classList.add("ready");
+
+    // Render timeline content early (behind splash overlay until Enter clicked)
+    renderTimelineView();
 
     // Setup scrubber
     setupScrubber();
@@ -935,13 +942,6 @@ function getWelshFlag(name) {
 
     // Update version
     updateVersion();
-
-    // Hide preloader, show app
-    setTimeout(function() {
-      document.getElementById("preloader").classList.add("hidden");
-      document.getElementById("app-root").classList.add("ready");
-      renderTimelineView();
-    }, 800);
   }
 
   function setupArchiveButtons() {
