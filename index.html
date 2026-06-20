@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>cnei - DATRO Flywheel Engine v0.0.2.13</title>
+<title>cnei - DATRO Flywheel Engine v0.0.2.15</title>
 <style>
   * { box-sizing: border-box; }
   body {
@@ -45,12 +45,21 @@
   footer { margin-top: 2rem; text-align: center; color: #555; font-size: 0.8rem; border-top: 1px solid #333; padding-top: 1rem; }
   @media (max-width: 600px) { body { padding: 0.5rem; } }
 </style>
-<meta name="description" content="cnei v0.0.2.13 - DATRO Flywheel Engine: forensics review, cooldown fix, lesson store, agent memory tools, Honcho fix, self-verification">
+<meta name="description" content="cnei v0.0.2.15 - DATRO Flywheel: 2h/1h cadence, branch quotas, joystick MD bias, wing file seeding, command.datro.xyz steering">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://cnei.datro.xyz/">
 </head>
 <body>
 <div class="container">
   <h1>cnei - DATRO Flywheel Engine</h1>
-  <p><span class="badge red">v0.0.2.13</span> Cloudflare Workers-based autonomous release pipeline. Forensics review: cooldown bug fixed, agent memory tools added, lesson store, Honcho multi-endpoint, post-agent HTML verification, multi-metric eval, aggregateMemory caching, Monday de-dup.</p>
+  <p><span class="badge red">v0.0.2.15</span> Cloudflare Workers autonomous release pipeline. Runs 24/7 on <code>*/10</code> cron: every branch every 2h, cnei every 1h in between. Steered via <a href="https://command.datro.xyz">command.datro.xyz</a> joystick (left/right MD file bias).</p>
+
+  <div class="stats" style="margin:1rem 0">
+    <div class="stat"><div class="value">2h</div><div class="label">Regular branch cadence</div></div>
+    <div class="stat"><div class="value">1h</div><div class="label">CNEI cadence</div></div>
+    <div class="stat"><div class="value">20</div><div class="label">Branches in rotation</div></div>
+    <div class="stat"><div class="value">24/7</div><div class="label">Cron uptime</div></div>
+  </div>
 
   <h2>Architecture</h2>
   <div class="card">
@@ -221,10 +230,27 @@
     <div class="warn">Consider adding a free D1 database for eval/failure/memory storage (100K writes/day vs KV's 1K).</div>
   </div>
 
+  <h2>Branch-Specific Quotas <span class="badge purple">NEW v0.0.2.15</span></h2>
+  <div class="card">
+    <div class="title">Mandatory Unique Improvements Per Release</div>
+    <table style="width:100%;border-collapse:collapse;font-size:0.85rem">
+      <tr style="border-bottom:1px solid #333"><th style="text-align:left;padding:0.3rem">Branch</th><th style="text-align:left;padding:0.3rem">Quota</th></tr>
+      <tr><td style="padding:0.3rem"><code>bpvsbuckler</code></td><td>1 new original timeline event (BP vs Buckler 1987, Great House Farm)</td></tr>
+      <tr><td style="padding:0.3rem"><code>wayback</code></td><td>1 new evidence item (photo, text, video, PDF) added to catalogue</td></tr>
+      <tr><td style="padding:0.3rem"><code>all others</code></td><td>1 unique feature (SEO, legal, agent-readability, or API endpoint) + bug fixes</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <div class="title">Joystick MD Bias <span class="badge green">FIXED</span></div>
+    <div class="fix">Joystick -5..5 scale now normalises to 1..5 flywheel bias. Left/W favours <code>*.left.md</code> wing files; Right/E favours <code>*.right.md</code>. Up/N favours <code>*.high.md</code>; Down/S favours <code>*.low.md</code>. Set via <a href="https://command.datro.xyz">command.datro.xyz</a>.</div>
+    <p>Missing left/right wing files are auto-seeded on first release cycle per branch (<code>ensureWingFiles</code>).</p>
+  </div>
+
   <h2>Evidence Discovery (Wayback)</h2>
   <div class="card">
     <div class="title">Great House Farm - Llandough (nr. Penarth)</div>
-    <p>The wayback branch includes a GitHub Action that runs on every push, using the flywheel's AI proxy to discover new unique evidence about Great House Farm. Each wayback re-release adds at least 1 new entry to the library at <a href="https://wayback.datro.xyz">wayback.datro.xyz</a>.</p>
+    <p>Each wayback re-release adds at least 1 new evidence entry to the library at <a href="https://wayback.datro.xyz">wayback.datro.xyz</a> — enforced by <code>BRANCH_QUOTAS.wayback</code> in the flywheel agent prompt.</p>
   </div>
 
   <h2>Deployment</h2>
@@ -257,7 +283,7 @@
   </div>
 
   <footer>
-    DATRO Consortium - cnei branch v0.0.2.13 - <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a>
+    DATRO Consortium - cnei branch v0.0.2.15 - <a href="https://github.com/unclehowell/datro">github.com/unclehowell/datro</a> - Steer via <a href="https://command.datro.xyz">command.datro.xyz</a>
   </footer>
 </div>
 </body>

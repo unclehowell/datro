@@ -41,6 +41,30 @@ const BRANCH_PURPOSE = {
   pirateclaw: 'Pirate-themed interactive fiction or game content with narrative elements.',
 };
 function branchPurpose(branch) { return BRANCH_PURPOSE[branch] || 'General web presence for the branch. A unique site that should reflect its name and purpose.'; }
+
+// ── Branch-Specific Release Quotas (mandatory unique improvements per cycle) ──
+const BRANCH_QUOTAS = {
+  bpvsbuckler: {
+    label: 'Timeline Event',
+    mandate: 'Add exactly 1 NEW, ORIGINAL timeline event concerning the BP vs Buckler 1987 land ownership dispute at Great House Farm, Llandough (nr. Penarth). The event must be unique — never repeat a prior release. Add to scenes.json, pages.json, or a visible timeline section in index.html.',
+    hints: ['static/bpvsbuckler/data/scenes.json', 'static/bpvsbuckler/data/pages.json', 'index.html', 'static/bpvsbuckler/index.html']
+  },
+  wayback: {
+    label: 'Evidence Catalogue Item',
+    mandate: 'Add exactly 1 NEW item of evidence to the catalogue — photo, text excerpt, video link, or PDF reference concerning Great House Farm / BP vs Buckler 1987 dispute. Find original material online or from archives. Update _treeview.json files or the evidence browse section.',
+    hints: ['images/_treeview.json', 'text/_treeview.json', 'pdf/_treeview.json', 'video/_treeview.json', 'index.html', 'wayback/']
+  }
+};
+function branchQuota(branch) { return BRANCH_QUOTAS[branch] || null; }
+function branchQuotaPrompt(branch) {
+  const q = branchQuota(branch);
+  if (!q) return '';
+  return `\n## MANDATORY BRANCH QUOTA (${q.label})\n${q.mandate}\nRelevant files: ${q.hints.join(', ')}\nThis quota is NON-NEGOTIABLE — the release fails its purpose without it.`;
+}
+
+const WING_FILE_TYPES = ['SPEC', 'AGENT', 'TASKS', 'README', 'MEMORY', 'PLAN', 'CHANGELOG', 'MASTERPLAN'];
+const WING_FILE_SIDES = ['left', 'right'];
+
 const RATE_BY_GEAR = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60]; // gear1=2h, gear3=1h(default), gear10=1min
 const CNEI_RATIO = 1; // fire cnei after every regular branch to achieve 2h/1h cadence
 const DOMAIN = 'datro.directory';
@@ -626,11 +650,12 @@ async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHt
     : '';
 
   const purpose = branchPurpose(branch);
+  const quotaBlock = branchQuotaPrompt(branch);
   const systemPrompt = `You are a bespoke solo-developer improving one specific site in the DATRO monorepo (${GITHUB_REPO}). You are NOT a bot — you are a thoughtful developer who makes each release unique.
 
 ## The Site You Are Working On
 **Branch:** ${branch} (category: ${category})
-**Purpose:** ${purpose}
+**Purpose:** ${purpose}${quotaBlock}
 
 Your job is to make this specific site better. Read its code, visit the live site, understand what it is FOR, then make changes that are TAILORED to that purpose.
 
@@ -1319,12 +1344,27 @@ async function getRotationState(env) {
   return { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' };
 }
 
+function cadenceForGear(gear) {
+  const g = Math.max(1, Math.min(10, gear || 3));
+  const base = RATE_BY_GEAR[g - 1] || 3600;
+  return {
+    gear: g,
+    regularCooldownSec: base * 2,
+    cneiCooldownSec: base,
+    regularCooldownHuman: `${Math.round(base * 2 / 60)}min`,
+    cneiCooldownHuman: `${Math.round(base / 60)}min`,
+    cron: '*/10 * * * *',
+    pattern: 'regular branch (2x base) → cnei (1x base) → repeat'
+  };
+}
+
 async function getFlywheelConfig(env) {
   try {
     const raw = await env.FLYWHEEL_STATE.get('config', 'json');
-    if (raw) return { gear: 3, ...raw };
+    const gear = raw?.gear || 3;
+    if (raw) return { gear: 3, ...raw, cadence: cadenceForGear(gear) };
   } catch (_) {}
-  return { gear: 3 };
+  return { gear: 3, cadence: cadenceForGear(3) };
 }
 
 async function saveRotationState(env, state) {
@@ -1645,7 +1685,7 @@ async function getFileContent(token, branch, path) {
 
 async function getAllWingFiles(token, branch) {
   const sides = ['left', 'right', 'high', 'low'];
-  const types = ['SPEC', 'AGENT', 'TASKS', 'README', 'MEMORY', 'PLAN', 'CHANGELOG'];
+  const types = WING_FILE_TYPES;
   const files = {};
   for (const side of sides) {
     for (const type of types) {
@@ -1655,6 +1695,27 @@ async function getAllWingFiles(token, branch) {
     }
   }
   return files;
+}
+
+async function ensureWingFiles(token, branch) {
+  const purpose = branchPurpose(branch);
+  const quota = branchQuota(branch);
+  let created = 0;
+  for (const type of WING_FILE_TYPES) {
+    for (const side of WING_FILE_SIDES) {
+      const path = `static/${branch}/${type}.${side}.md`;
+      const existing = await getFileContent(token, branch, path);
+      if (existing) continue;
+      const bias = side === 'left' ? 'proactive / creative / expansive' : 'conservative / defensive / stable';
+      const quotaLine = quota ? `\n## Branch Quota\n- ${quota.mandate}` : '';
+      const content = `# ${type} (${side}) — ${branch}\n\n## Purpose\n${purpose}\n\n## Steering Bias\nThis is the **${side.toUpperCase()}** wing file. Favour ${bias} changes when joystick steers ${side === 'left' ? 'LEFT/W' : 'RIGHT/E'}.\n${quotaLine}\n\n## CONSTRAINTS\n- Each release must make a unique, noticeable improvement\n- Fix bugs; ensure mobile UX is acceptable\n- Introduce one new feature per release (SEO, legal compliance, agent readability, or API endpoint)\n\n## PENDING\n- [ ] Review live site at https://${branch}.datro.directory\n- [ ] Apply joystick-weighted MASTERPLAN guidance\n`;
+      await createCommit(token, branch, path, content, `chore(${branch}): seed ${type}.${side}.md wing file`);
+      created++;
+      log(`Seeded wing file: ${path}`);
+    }
+  }
+  if (created > 0) log(`Ensured ${created} wing file(s) for ${branch}`);
+  return created;
 }
 
 function extractHarnessRules(wingFiles) {
@@ -1830,11 +1891,24 @@ async function getPreviousReleaseNotes(token, branch, count = 10) {
   return notes;
 }
 
+function normalizeJoystickScale(v, fallback = 3) {
+  if (typeof v !== 'number' || Number.isNaN(v)) return fallback;
+  if (v >= -5 && v <= 5 && (v < 1 || v > 5)) return Math.max(1, Math.min(5, Math.round((v + 5) / 10 * 4 + 1)));
+  return Math.max(1, Math.min(5, Math.round(v)));
+}
+
 async function getBiasFromKv(env) {
   try {
     const raw = await env.FLYWHEEL_STATE.get('bias', 'json');
-    if (raw && raw.bias) {
-      const result = { bias: 3, steering: 'CTR', risk: 3, magnitude: 0, ...raw };
+    if (raw && (raw.bias !== undefined || raw.steering)) {
+      const result = {
+        bias: normalizeJoystickScale(raw.bias, 3),
+        steering: raw.steering || 'CTR',
+        risk: normalizeJoystickScale(raw.risk, 3),
+        magnitude: typeof raw.magnitude === 'number' ? raw.magnitude : 0,
+        gear: raw.gear,
+        updatedAt: raw.updatedAt
+      };
       result.weights = computeDirectionWeights(result);
       return result;
     }
@@ -1844,16 +1918,27 @@ async function getBiasFromKv(env) {
 
 function computeDirectionWeights(bias) {
   const w = { left: 0, right: 0, high: 0, low: 0 };
-  const b = bias.bias || 0;
-  const r = bias.risk || 0;
-  const mag = bias.magnitude || 0;
+  const b = normalizeJoystickScale(bias.bias, 3);
+  const r = normalizeJoystickScale(bias.risk, 3);
+  const mag = Math.max(0.15, bias.magnitude || 0.5);
   const steering = bias.steering || 'CTR';
-  if (steering === 'CTR' || (b === 0 && r === 0)) return w;
-  const strength = Math.max(0.1, mag);
-  if (steering === 'N' || steering === 'NE' || steering === 'NW') w.high = strength;
-  if (steering === 'S' || steering === 'SE' || steering === 'SW') w.low = strength;
-  if (steering === 'E' || steering === 'NE' || steering === 'SE') w.right = strength;
-  if (steering === 'W' || steering === 'NW' || steering === 'SW') w.left = strength;
+
+  if (steering !== 'CTR') {
+    if (['N', 'NE', 'NW'].includes(steering)) w.high = mag;
+    if (['S', 'SE', 'SW'].includes(steering)) w.low = mag;
+    if (['E', 'NE', 'SE'].includes(steering)) w.right = mag;
+    if (['W', 'NW', 'SW'].includes(steering)) w.left = mag;
+  }
+
+  const leftBias = Math.max(0, (3 - b) / 2) * mag;
+  const rightBias = Math.max(0, (b - 3) / 2) * mag;
+  const lowRisk = Math.max(0, (3 - r) / 2) * mag;
+  const highRisk = Math.max(0, (r - 3) / 2) * mag;
+  w.left = Math.max(w.left, leftBias);
+  w.right = Math.max(w.right, rightBias);
+  w.low = Math.max(w.low, lowRisk);
+  w.high = Math.max(w.high, highRisk);
+
   return w;
 }
 
@@ -2575,6 +2660,8 @@ async function processBranch(env, branch) {
       return { tagName: null, error: 'branch_not_found' };
     }
 
+    await ensureWingFiles(token, branch);
+
     const maxNum = await getMaxBranchReleaseNum(token, branch);
     const nextNum = maxNum + 1;
     const version = formatVersion(nextNum);
@@ -3171,12 +3258,19 @@ export default {
         try {
           const body = await request.json();
           const bias = {
-            bias: typeof body.bias === 'number' ? body.bias : 3,
+            bias: normalizeJoystickScale(body.bias, 3),
             steering: body.steering || 'CTR',
-            risk: typeof body.risk === 'number' ? body.risk : 3,
-            magnitude: typeof body.magnitude === 'number' ? body.magnitude : 0
+            risk: normalizeJoystickScale(body.risk, 3),
+            magnitude: typeof body.magnitude === 'number' ? body.magnitude : 0,
+            gear: typeof body.gear === 'number' ? body.gear : undefined,
+            updatedAt: Math.floor(Date.now() / 1000)
           };
+          bias.weights = computeDirectionWeights(bias);
           await env.FLYWHEEL_STATE.put('bias', JSON.stringify(bias));
+          if (typeof body.gear === 'number') {
+            const cfg = await getFlywheelConfig(env);
+            await env.FLYWHEEL_STATE.put('config', JSON.stringify({ ...cfg, gear: Math.max(1, Math.min(10, body.gear)) }));
+          }
           return new Response(JSON.stringify({ ok: true, bias }), {
             headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
           });
