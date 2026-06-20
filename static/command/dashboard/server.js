@@ -306,6 +306,15 @@ app.get('/api/flywheel/bias', async (req, res) => {
   } catch { res.json({ bias: 3, steering: 'CTR', risk: 3 }); }
 });
 
+// GET /api/flywheel/config
+app.get('/api/flywheel/config', async (req, res) => {
+  const s = HARDCODED;
+  try {
+    const resp = await ghFetch(s.cf_worker_url + '/__config');
+    res.json(await resp.json());
+  } catch { res.json({ gear: 3, cadence: { regularCooldownHuman: '2h', cneiCooldownHuman: '1h' } }); }
+});
+
 // POST /api/flywheel/config
 app.post('/api/flywheel/config', async (req, res) => {
   const s = HARDCODED;

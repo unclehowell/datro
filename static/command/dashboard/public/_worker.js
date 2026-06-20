@@ -279,6 +279,15 @@ export default {
         } catch { return json({ regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' }); }
       }
 
+      // GET /api/flywheel/config
+      if (path === '/api/flywheel/config' && method === 'GET') {
+        const s = HARDCODED;
+        try {
+          const resp = await fetch(s.cf_worker_url + '/__config');
+          return json(await resp.json());
+        } catch { return json({ gear: 3, cadence: { regularCooldownHuman: '2h', cneiCooldownHuman: '1h' } }); }
+      }
+
       // POST /api/flywheel/config
       if (path === '/api/flywheel/config' && method === 'POST') {
         const s = HARDCODED;

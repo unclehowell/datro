@@ -400,21 +400,50 @@ function triggerFlywheel(branch) {
         .catch(function() {});
 }
 
+// Gear → branch cooldown (seconds): regular=2x, cnei=1x (matches flywheel RATE_BY_GEAR)
+var GEAR_CADENCE_SEC = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60];
+
+function formatCadence(sec) {
+    if (sec >= 3600) return (sec / 3600) + 'h';
+    if (sec >= 60) return Math.round(sec / 60) + 'm';
+    return sec + 's';
+}
+
+function updateGearCadenceLabel(g) {
+    var el = $('gear-cadence');
+    if (!el) return;
+    var base = GEAR_CADENCE_SEC[g - 1] || 3600;
+    el.textContent = 'BRANCH ' + formatCadence(base * 2) + ' / CNEI ' + formatCadence(base);
+}
+
 // ── GEAR ──
 function initGear() {
     var slider = $('gear-slider');
     if (!slider) return;
     slider.addEventListener('input', function(e) {
-        var g = parseInt(e.target.value);
+        var g = parseInt(e.target.value, 10);
         config.gear = g;
         var gv = $('gear-value');
         var gvt = $('gear-val-text');
         if (gv) gv.textContent = g;
         if (gvt) gvt.textContent = g;
+        updateGearCadenceLabel(g);
         sendFlywheelConfig();
     });
+    updateGearCadenceLabel(config.gear || 3);
 
-    // Init: send bias on load
+    fetch('/api/flywheel/config').then(function(r) { return r.json(); }).then(function(d) {
+        if (d && d.gear) {
+            config.gear = d.gear;
+            slider.value = d.gear;
+            var gv = $('gear-value');
+            var gvt = $('gear-val-text');
+            if (gv) gv.textContent = d.gear;
+            if (gvt) gvt.textContent = d.gear;
+            updateGearCadenceLabel(d.gear);
+        }
+    }).catch(function() {});
+
     setTimeout(sendFlywheelBias, 1000);
 }
 
