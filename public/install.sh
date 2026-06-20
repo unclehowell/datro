@@ -10,16 +10,28 @@ CHILD_ID="${CHILD_ID:-$(hostname)}"
 PROXY_PORT="${PROXY_PORT:-4001}"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/fcuk-child-proxy}"
 
+# ── Detect Termux / Android for cross-device child proxies (phones too) ────
+IS_TERMUX=false
+if [[ -n "${TERMUX_VERSION:-}" || "$(uname -o 2>/dev/null)" == "Android" || -d "/data/data/com.termux" ]]; then
+  IS_TERMUX=true
+fi
+
 echo "[install] Installing child proxy for FinanceCheque"
 echo "[install] PARENT_URL=$PARENT_URL"
 echo "[install] CHILD_ID=$CHILD_ID"
 echo "[install] PORT=$PROXY_PORT"
+$IS_TERMUX && echo "[install] Termux/Android mode detected - will use pkg, no sudo"
 
 # ── 1. System dependencies ─────────────────────────────────────────────────
 if ! command -v node &>/dev/null; then
   echo "[install] Installing Node.js..."
-  curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
-  apt-get install -y nodejs tmux curl git 2>/dev/null || yum install -y nodejs tmux curl git 2>/dev/null
+  if $IS_TERMUX; then
+    pkg update -y 2>/dev/null || true
+    pkg install -y nodejs tmux curl git 2>/dev/null || true
+  else
+    curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+    apt-get install -y nodejs tmux curl git 2>/dev/null || yum install -y nodejs tmux curl git 2>/dev/null || true
+  fi
 fi
 
 # ── 2. Create install directory ────────────────────────────────────────────
@@ -52,9 +64,14 @@ if ! command -v gemini &>/dev/null; then
   npm install -g @google/gemini-cli 2>/dev/null || (curl -fsSL https://raw.githubusercontent.com/google-gemini/gemini-cli/main/install.sh 2>/dev/null | bash 2>/dev/null || true)
 fi
 
-# groq direct binary fallback
+# groq direct binary fallback (Termux friendly, no sudo)
 if ! command -v groq &>/dev/null; then
-  curl -sL https://github.com/groq/groq-cli/releases/latest/download/groq-linux-amd64 -o /tmp/groq 2>/dev/null && chmod +x /tmp/groq && sudo mv /tmp/groq /usr/local/bin/groq 2>/dev/null || mv /tmp/groq ~/.local/bin/groq 2>/dev/null || true
+  if $IS_TERMUX; then
+    mkdir -p "$HOME/bin"
+    curl -sL https://github.com/groq/groq-cli/releases/latest/download/groq-linux-amd64 -o "$HOME/bin/groq" 2>/dev/null && chmod +x "$HOME/bin/groq" && export PATH="$HOME/bin:$PATH" || true
+  else
+    curl -sL https://github.com/groq/groq-cli/releases/latest/download/groq-linux-amd64 -o /tmp/groq 2>/dev/null && chmod +x /tmp/groq && (sudo mv /tmp/groq /usr/local/bin/groq 2>/dev/null || mv /tmp/groq ~/.local/bin/groq 2>/dev/null || true)
+  fi
 fi
 
 # aider (pip free coding cli)
@@ -204,7 +221,11 @@ lsof -ti :$PROXY_PORT 2>/dev/null | xargs kill -9 2>/dev/null || true
 # ── 11. Start in tmux ──────────────────────────────────────────────────────
 echo "[install] Starting child proxy in tmux..."
 tmux kill-session -t fcuk-child-proxy 2>/dev/null || true
-tmux new-session -d -s fcuk-child-proxy -n proxy "cd $INSTALL_DIR && PARENT_URL=$PARENT_URL CHILD_ID=$CHILD_ID PORT=$PROXY_PORT SELF_URL=http://$(hostname -I | awk '{print $1}'):$PROXY_PORT node child-proxy.js 2>&1"
+SELF_IP="127.0.0.1"
+if ! $IS_TERMUX && command -v hostname >/dev/null; then
+  SELF_IP=$(hostname -I 2>/dev/null | awk '{print $1}' || echo 127.0.0.1)
+fi
+tmux new-session -d -s fcuk-child-proxy -n proxy "cd $INSTALL_DIR && PARENT_URL=$PARENT_URL CHILD_ID=$CHILD_ID PORT=$PROXY_PORT SELF_URL=http://${SELF_IP}:$PROXY_PORT node child-proxy.js 2>&1"
 
 echo "[install] Starting groq service in tmux..."
 tmux kill-session -t fcuk-groq 2>/dev/null || true
@@ -225,3 +246,16 @@ fi
 
 echo "[install] Done! Tmux sessions:"
 tmux ls 2>/dev/null || echo "  (tmux not available)"
+
+# ── Termux / Android specific notes for child proxy on phone ───────────────
+if $IS_TERMUX; then
+  echo ""
+  echo "[install] === Termux / Android instructions ==="
+  echo "[install] To keep the proxy running in background on Android:"
+  echo "[install]   termux-wake-lock"
+  echo "[install]   # Then detach from tmux or use termux-services if set up"
+  echo "[install] The child will register and can participate via polling even if not directly reachable."
+  echo "[install] Install extra if needed: pkg install termux-services"
+  echo "[install] Run 'source ~/.bashrc' or restart Termux for PATH updates."
+  echo "[install] More CLIs = more free capacity contributed to the parent proxy network."
+fi
