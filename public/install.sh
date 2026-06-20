@@ -225,7 +225,8 @@ SELF_IP="127.0.0.1"
 if ! $IS_TERMUX && command -v hostname >/dev/null; then
   SELF_IP=$(hostname -I 2>/dev/null | awk '{print $1}' || echo 127.0.0.1)
 fi
-tmux new-session -d -s fcuk-child-proxy -n proxy "cd $INSTALL_DIR && PARENT_URL=$PARENT_URL CHILD_ID=$CHILD_ID PORT=$PROXY_PORT SELF_URL=http://${SELF_IP}:$PROXY_PORT node child-proxy.js 2>&1"
+PROXY_CMD="export PATH=\"$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:\$PATH\"; cd $INSTALL_DIR && PARENT_URL=$PARENT_URL CHILD_ID=$CHILD_ID PORT=$PROXY_PORT SELF_URL=http://${SELF_IP}:$PROXY_PORT node child-proxy.js 2>&1"
+tmux new-session -d -s fcuk-child-proxy -n proxy "$PROXY_CMD"
 
 echo "[install] Starting groq service in tmux..."
 tmux kill-session -t fcuk-groq 2>/dev/null || true
