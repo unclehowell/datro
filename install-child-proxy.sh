@@ -19,8 +19,13 @@ echo "[install] PORT=$PROXY_PORT"
 # ── 1. System dependencies ─────────────────────────────────────────────────
 if ! command -v node &>/dev/null; then
   echo "[install] Installing Node.js..."
-  curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
-  apt-get install -y nodejs tmux curl git 2>/dev/null || yum install -y nodejs tmux curl git 2>/dev/null
+  if [[ -n "${TERMUX_VERSION:-}" || "$(uname -o 2>/dev/null)" == "Android" || -d "/data/data/com.termux" ]]; then
+    pkg update -y 2>/dev/null || true
+    pkg install -y nodejs tmux curl git 2>/dev/null || true
+  else
+    curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
+    apt-get install -y nodejs tmux curl git 2>/dev/null || yum install -y nodejs tmux curl git 2>/dev/null || true
+  fi
 fi
 
 # ── 2. Create install directory ────────────────────────────────────────────
