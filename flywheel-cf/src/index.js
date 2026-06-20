@@ -1534,55 +1534,44 @@ async function createGitTag(token, tagName, commitSha) {
   return tagData.sha;
 }
 
-async function getMaxBranchReleaseNum(token, branch) {
-  let max = 0, page = 1;
-  while (true) {
-    const resp = await ghFetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/git/matching-refs/tags/${encodeURIComponent(branch)}-v?per_page=100&page=${page}`,
-      token
-    );
-    const refs = await resp.json();
-    if (!Array.isArray(refs) || refs.length === 0) break;
-    for (const r of refs) {
-      const tagName = r.ref.replace('refs/tags/', '');
-      if (tagName.startsWith(`${branch}-v`)) {
-        const versionStr = tagName.split('-v')[1];
-        const parts = versionStr.split('.').map(p => parseInt(p, 10));
-        
-        // Robust calculation: (major*1M) + (minor*10k) + (patch*100) + build
-        let num = 0;
-        if (parts.length >= 4) num = (parts[0]*1000000) + (parts[1]*10000) + (parts[2]*100) + parts[3];
-        else if (parts.length >= 3) num = (parts[0]*10000) + (parts[1]*100) + parts[2];
-        else if (parts.length >= 2) num = (parts[0]*100) + parts[1];
-        else num = parts[0];
+function parseVersionNum(tagName, branch) {
+  if (!tagName || !tagName.startsWith(`${branch}-v`)) return 0;
+  const versionStr = tagName.split('-v')[1];
+  const parts = versionStr.split('.').map(p => parseInt(p, 10));
+  if (parts.length >= 4) return (parts[0] * 1000000) + (parts[1] * 10000) + (parts[2] * 100) + parts[3];
+  if (parts.length >= 3) return (parts[0] * 10000) + (parts[1] * 100) + parts[2];
+  if (parts.length >= 2) return (parts[0] * 100) + parts[1];
+  return parts[0] || 0;
+}
 
-        console.log(`DEBUG: Parsing tag ${tagName} -> versionStr ${versionStr} -> parts ${parts} -> num ${num}`);
-        if (num > max) max = num;
+async function getMaxBranchReleaseNum(token, branch) {
+  const resp = await ghFetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=30`,
+    token
+  );
+  const releases = await resp.json();
+  let max = 0;
+  if (Array.isArray(releases)) {
+    for (const r of releases) {
+      if (r.tag_name?.startsWith(`${branch}-v`) && !r.tag_name.endsWith('-aws')) {
+        max = Math.max(max, parseVersionNum(r.tag_name, branch));
       }
     }
-    if (refs.length < 100) break;
-    page++;
   }
-  console.log(`DEBUG: Max version num for ${branch} is ${max}`);
   return max;
 }
 
 async function getLatestReleaseDate(token, branch) {
-  let page = 1;
-  while (true) {
-    const resp = await ghFetch(
-      `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=100&page=${page}`,
-      token
-    );
-    const releases = await resp.json();
-    if (!Array.isArray(releases) || releases.length === 0) break;
-    for (const r of releases) {
-      if (r.tag_name && r.tag_name.startsWith(`${branch}-v`) && !r.tag_name.endsWith('-aws') && r.published_at) {
-        return new Date(r.published_at).getTime() / 1000;
-      }
+  const resp = await ghFetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=30`,
+    token
+  );
+  const releases = await resp.json();
+  if (!Array.isArray(releases)) return 0;
+  for (const r of releases) {
+    if (r.tag_name?.startsWith(`${branch}-v`) && !r.tag_name.endsWith('-aws') && r.published_at) {
+      return new Date(r.published_at).getTime() / 1000;
     }
-    if (releases.length < 100) break;
-    page++;
   }
   return 0;
 }
