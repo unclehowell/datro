@@ -923,16 +923,16 @@ async function aggregateMemory(token) {
   const branches = await branchesResp.json();
   let consolidatedMemory = "# Flywheel Brain (Aggregated Memory)\n\n";
   
-  for (const b of branches) {
-    if (b.name === BRAIN_BRANCH) continue;
-    const path = `static/${b.name}/MEMORY.md`;
-    const memFile = await getFileContent(token, b.name, path);
+  const targetBranches = ALL_BRANCHES.slice(0, 12);
+  for (const bname of targetBranches) {
+    const path = `static/${bname}/MEMORY.md`;
+    const memFile = await getFileContent(token, bname, path);
     if (memFile) {
-      consolidatedMemory += `## Branch: ${b.name}\n\n${memFile.content}\n\n---\n\n`;
+      consolidatedMemory += `## Branch: ${bname}\n\n${memFile.content.slice(0, 1500)}\n\n---\n\n`;
     }
   }
   
-  await createOrUpdateFile(token, BRAIN_BRANCH, 'BRAIN_CONSOLIDATED.md', consolidatedMemory, 'docs(brain): update consolidated memory');
+  await createCommit(token, BRAIN_BRANCH, 'BRAIN_CONSOLIDATED.md', consolidatedMemory, 'docs(brain): update consolidated memory');
   console.log("Brain memory updated.");
 }
 
@@ -1332,8 +1332,8 @@ async function acquireLock(env) {
   return true;
 }
 
-function releaseLock(_env) {
-  // Lock has expirationTtl: 3600, no need to explicit delete
+async function releaseLock(env) {
+  try { await env.FLYWHEEL_STATE.delete('lock'); } catch (_) {}
 }
 
 async function getRotationState(env) {
@@ -1683,8 +1683,8 @@ async function getFileContent(token, branch, path) {
 
 // ── Wing Files (Harness) ─────────────────────────────────────────────────────
 
-async function getAllWingFiles(token, branch) {
-  const sides = ['left', 'right', 'high', 'low'];
+async function getAllWingFiles(token, branch, extraSides = []) {
+  const sides = ['left', 'right', ...extraSides.filter(s => !['left', 'right'].includes(s))];
   const types = WING_FILE_TYPES;
   const files = {};
   for (const side of sides) {
@@ -1700,9 +1700,12 @@ async function getAllWingFiles(token, branch) {
 async function ensureWingFiles(token, branch) {
   const purpose = branchPurpose(branch);
   const quota = branchQuota(branch);
+  const priority = ['AGENT', 'MASTERPLAN', 'SPEC', 'TASKS'];
   let created = 0;
-  for (const type of WING_FILE_TYPES) {
+  const MAX_SEED_PER_RUN = 2;
+  for (const type of priority) {
     for (const side of WING_FILE_SIDES) {
+      if (created >= MAX_SEED_PER_RUN) return created;
       const path = `static/${branch}/${type}.${side}.md`;
       const existing = await getFileContent(token, branch, path);
       if (existing) continue;
@@ -2707,8 +2710,11 @@ async function processBranch(env, branch) {
     const mcpSection = formatMcpReleaseNotes(mcpResults, branch);
 
     // ── STEERING-AWARE VISUAL BLOCKS (wing file + joystick → HTML injection) ──
-    const visualWingFiles = await getAllWingFiles(token, branch);
     const bias = await getBiasFromKv(env);
+    const extraSides = [];
+    if ((bias?.weights?.high || 0) > 0) extraSides.push('high');
+    if ((bias?.weights?.low || 0) > 0) extraSides.push('low');
+    const visualWingFiles = await getAllWingFiles(token, branch, extraSides);
     const steeringDir = bias?.steering || 'CTR';
     const magnitude = bias?.magnitude || 0;
     const activePositions = steeringDirToPositions(steeringDir);
@@ -3162,6 +3168,12 @@ export default {
       await saveRotationState(env, state);
       return new Response('State reset', { status: 200 });
     }
+    if (url.pathname === '/__unlock') {
+      await releaseLock(env);
+      return new Response(JSON.stringify({ ok: true, message: 'Lock cleared' }), {
+        headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
+      });
+    }
     if (url.pathname === '/__mode') {
       if (request.method === 'POST') {
         try {
@@ -3192,8 +3204,9 @@ export default {
         try {
           const body = await request.json();
           const current = await getFlywheelConfig(env);
-          const updated = { ...current, ...body };
-          await env.FLYWHEEL_STATE.put('config', JSON.stringify(updated));
+          const gear = Math.max(1, Math.min(10, body.gear ?? current.gear ?? 3));
+          const updated = { ...current, ...body, gear, cadence: cadenceForGear(gear) };
+          await env.FLYWHEEL_STATE.put('config', JSON.stringify({ gear: updated.gear, bias: updated.bias, risk: updated.risk }));
           return new Response(JSON.stringify({ ok: true, config: updated }), {
             headers: { 'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*' }
           });
