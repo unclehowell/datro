@@ -26,36 +26,55 @@ fi
 mkdir -p "$INSTALL_DIR"
 cd "$INSTALL_DIR"
 
-# ── 3. Install kiro ────────────────────────────────────────────────────────
-if ! command -v kiro &>/dev/null; then
-  echo "[install] Installing kiro..."
-  if [ -f /usr/local/bin/kiro ]; then
-    echo "[install] kiro already at /usr/local/bin/kiro"
-  elif [ -f /home/ubuntu/kiro-cli-temp ]; then
-    echo "[install] kiro found at /home/ubuntu/kiro-cli-temp"
-    ln -sf /home/ubuntu/kiro-cli-temp /usr/local/bin/kiro 2>/dev/null || true
-  else
-    npm install -g kiro-cli 2>/dev/null || echo "[install] kiro npm install failed (non-fatal)"
+# ── 3-8. Install ALL free IDE/CLIs (gemini, kiro, kilo, groq, opencode + extras) ──
+echo "[install] Installing free CLI/IDE tools (gemini, groq, kiro, kilo, opencode, aider, hermes...) - no paid keys needed if logged into their free tiers"
+
+export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/.opencode/bin:$PATH:/usr/local/bin"
+
+for cmdpkg in \
+  "gemini:@google/gemini-cli" \
+  "gemini:gemini" \
+  "kirox:kiro-cli" \
+  "kiro:kiro-cli" \
+  "kilo:@kilocode/cli" \
+  "groq:groq-cli" \
+  "opencode:@opencode/cli"; do
+  name="${cmdpkg%%:*}"
+  pkg="${cmdpkg#*:}"
+  if ! command -v "$name" &>/dev/null; then
+    echo "[install] Trying install $name ($pkg)..."
+    npm install -g "$pkg" 2>/dev/null || npm install -g "$name" 2>/dev/null || true
   fi
+done
+
+# Special gemini fallback
+if ! command -v gemini &>/dev/null; then
+  npm install -g @google/gemini-cli 2>/dev/null || (curl -fsSL https://raw.githubusercontent.com/google-gemini/gemini-cli/main/install.sh 2>/dev/null | bash 2>/dev/null || true)
 fi
 
-# ── 4. Install kilo ────────────────────────────────────────────────────────
-if ! command -v kilo &>/dev/null; then
-  echo "[install] Installing kilo..."
-  npm install -g @kilocode/cli 2>/dev/null || echo "[install] kilo install skipped (non-fatal)"
-fi
-
-# ── 5. Install groq ────────────────────────────────────────────────────────
+# groq direct binary fallback
 if ! command -v groq &>/dev/null; then
-  echo "[install] Installing groq CLI..."
-  npm install -g groq-cli 2>/dev/null || curl -sL https://github.com/groq/groq-cli/releases/latest/download/groq-linux-amd64 -o /usr/local/bin/groq 2>/dev/null && chmod +x /usr/local/bin/groq 2>/dev/null || echo "[install] groq install skipped (non-fatal)"
+  curl -sL https://github.com/groq/groq-cli/releases/latest/download/groq-linux-amd64 -o /tmp/groq 2>/dev/null && chmod +x /tmp/groq && sudo mv /tmp/groq /usr/local/bin/groq 2>/dev/null || mv /tmp/groq ~/.local/bin/groq 2>/dev/null || true
 fi
 
-# ── 6. Install opencode ────────────────────────────────────────────────────
-if ! command -v opencode &>/dev/null; then
-  echo "[install] Installing opencode..."
-  npm install -g @opencode/cli 2>/dev/null || echo "[install] opencode install skipped (non-fatal)"
+# aider (pip free coding cli)
+if ! command -v aider &>/dev/null; then
+  pip3 install --user --quiet aider-chat 2>/dev/null || pip install --user --quiet aider-chat 2>/dev/null || true
 fi
+
+# hermes for webgui
+if ! command -v hermes &>/dev/null; then
+  pip3 install --user --quiet hermes-agent 2>/dev/null || pip install --user --quiet hermes-agent 2>/dev/null || npm install -g hermes-agent 2>/dev/null || true
+fi
+
+# update PATH and rehash
+export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/.opencode/bin:$PATH"
+hash -r 2>/dev/null || true
+
+echo "[install] CLI check:"
+for c in gemini groq kiro kirox kilo opencode aider hermes; do
+  if command -v $c &>/dev/null; then echo "  ✓ $c"; else echo "  - $c (may need manual auth or re-source PATH)"; fi
+done
 
 # ── 7. Write child-proxy.js ────────────────────────────────────────────────
 echo "[install] Writing child-proxy.js..."
@@ -121,10 +140,15 @@ async function runChat(message) {
 
   const providers = [
     { cmd: "groq", args: ["chat", "--message", prompt], timeout: 30000 },
+    { cmd: "gemini", args: ["-p", prompt], timeout: 45000 },
+    { cmd: "gemini", args: ["chat", "--message", prompt], timeout: 45000 },
     { cmd: process.env.KIRO_PATH || "kirox", args: ["chat", "--non-interactive", "--message", prompt], timeout: 60000 },
     { cmd: "kiro", args: ["chat", "--non-interactive", "--message", prompt], timeout: 30000 },
     { cmd: "opencode", args: ["chat", "--message", prompt], timeout: 60000 },
+    { cmd: "opencode", args: ["run", prompt], timeout: 60000 },
     { cmd: "kilo", args: ["chat", "--message", prompt], timeout: 60000 },
+    { cmd: "kilo", args: ["run", prompt], timeout: 60000 },
+    { cmd: "hermes", args: ["chat", "-z", prompt], timeout: 90000 },
   ];
 
   for (const p of providers) {

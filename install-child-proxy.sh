@@ -27,37 +27,18 @@ fi
 mkdir -p "$INSTALL_DIR"
 cd "$INSTALL_DIR"
 
-# ── 3. Install kiro ────────────────────────────────────────────────────────
-if ! command -v kiro &>/dev/null; then
-  echo "[install] Installing kiro..."
-  if [ -f /usr/local/bin/kiro ]; then
-    echo "[install] kiro already at /usr/local/bin/kiro"
-  elif [ -f /home/ubuntu/kiro-cli-temp ]; then
-    echo "[install] kiro found at /home/ubuntu/kiro-cli-temp"
-    ln -sf /home/ubuntu/kiro-cli-temp /usr/local/bin/kiro 2>/dev/null || true
-  else
-    # Try npm global
-    npm install -g kiro-cli 2>/dev/null || echo "[install] kiro npm install failed (non-fatal)"
-  fi
-fi
+# ── 3-8. Install ALL free CLI/IDE tools (gemini + kiro + kilo + groq + opencode + hermes + aider)
+echo "[install] Installing full set of free IDE/CLIs..."
+export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/.opencode/bin:$PATH"
 
-# ── 4. Install kilo ────────────────────────────────────────────────────────
-if ! command -v kilo &>/dev/null; then
-  echo "[install] Installing kilo..."
-  npm install -g @kilocode/cli 2>/dev/null || echo "[install] kilo install skipped (non-fatal)"
-fi
+npm install -g @google/gemini-cli gemini groq-cli @kilocode/cli @opencode/cli kiro-cli 2>/dev/null || true
+npm install -g hermes-agent 2>/dev/null || pip3 install --user --quiet hermes-agent 2>/dev/null || true
+pip3 install --user --quiet aider-chat 2>/dev/null || true
 
-# ── 5. Install groq ────────────────────────────────────────────────────────
-if ! command -v groq &>/dev/null; then
-  echo "[install] Installing groq CLI..."
-  npm install -g groq-cli 2>/dev/null || curl -sL https://github.com/groq/groq-cli/releases/latest/download/groq-linux-amd64 -o /usr/local/bin/groq 2>/dev/null && chmod +x /usr/local/bin/groq 2>/dev/null || echo "[install] groq install skipped (non-fatal)"
-fi
+# binary fallbacks
+curl -sL https://github.com/groq/groq-cli/releases/latest/download/groq-linux-amd64 -o /tmp/groq$$ && chmod +x /tmp/groq$$ && (mv /tmp/groq$$ /usr/local/bin/groq 2>/dev/null || mv /tmp/groq$$ ~/.local/bin/groq 2>/dev/null || true)
 
-# ── 6. Install opencode ────────────────────────────────────────────────────
-if ! command -v opencode &>/dev/null; then
-  echo "[install] Installing opencode..."
-  npm install -g @opencode/cli 2>/dev/null || echo "[install] opencode install skipped (non-fatal)"
-fi
+for c in gemini groq kiro kirox kilo opencode hermes; do command -v $c &>/dev/null && echo "[install] ✓ $c" || echo "[install] - $c (login may be needed)"; done
 
 # ── 7. Write child-proxy.js ────────────────────────────────────────────────
 echo "[install] Writing child-proxy.js..."
@@ -189,15 +170,21 @@ tmux kill-session -t fcuk-groq 2>/dev/null || true
 tmux new-session -d -s fcuk-groq -n groq "groq serve --port 5000 2>&1" 2>/dev/null || true
 
 # ── 12. Verify ─────────────────────────────────────────────────────────────
-sleep 3
-for i in 1 2 3; do lsof -i :$PROXY_PORT &>/dev/null && break; sleep 1; done
-if lsof -i :$PROXY_PORT &>/dev/null; then
-  echo "[install] SUCCESS: Child proxy running on port $PROXY_PORT"
-  echo "[install] Registered as: $CHILD_ID"
-  echo "[install] Parent proxy: $PARENT_URL"
-  curl -s http://localhost:$PROXY_PORT/health | python3 -m json.tool 2>/dev/null || echo "  Health check: $(curl -s http://localhost:$PROXY_PORT/health)"
-else
-  echo "[install] WARNING: Child proxy does not appear to be running"
+echo "[install] Verifying child proxy on port $PROXY_PORT..."
+# Wait for the service to actually bind and become responsive
+for i in {1..10}; do
+  if lsof -i :$PROXY_PORT &>/dev/null; then
+    # Double check if it's responding to requests
+    if curl -s http://localhost:$PROXY_PORT/health >/dev/null 2>&1; then
+      echo "[install] SUCCESS: Child proxy running and responsive on port $PROXY_PORT"
+      break
+    fi
+  fi
+  sleep 2
+done
+
+if ! lsof -i :$PROXY_PORT &>/dev/null || ! curl -s http://localhost:$PROXY_PORT/health >/dev/null 2>&1; then
+  echo "[install] WARNING: Child proxy does not appear to be running or responsive"
   echo "[install] Check logs: tmux attach -t fcuk-child-proxy"
 fi
 

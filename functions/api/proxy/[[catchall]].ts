@@ -4,6 +4,11 @@ interface Env {
   GEMINI_API_KEY?: string;
   DEEPSEEK_API_KEY?: string;
   GROQ_API_KEY?: string;
+  OPENAI_API_KEY?: string;
+  ANTHROPIC_API_KEY?: string;
+  MISTRAL_API_KEY?: string;
+  TOGETHER_API_KEY?: string;
+  PERPLEXITY_API_KEY?: string;
 }
 
 interface ProxyNode {
@@ -326,51 +331,117 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
 }
 
 async function tryParentLlm(message: string, env: Env): Promise<string | null> {
-  const providers: { key: string | undefined; url: string; model: string; getBody: (msg: string) => any; parseReply: (data: any) => string }[] = [
+  // Effective use of env var API keys for parent proxy fallback to LLMs.
+  // Order: prefer fast/cheap first. All respect provided keys (no hard-coded).
+  const providers: Array<{
+    key?: string;
+    url: string;
+    getBody: (msg: string) => any;
+    headers?: (k: string) => Record<string, string>;
+    parseReply: (data: any) => string;
+    keyInQuery?: boolean;
+  }> = [
+    // Groq - fast, free tier friendly
+    {
+      key: env.GROQ_API_KEY,
+      url: 'https://api.groq.com/openai/v1/chat/completions',
+      getBody: (msg) => ({
+        model: 'llama-3.3-70b-versatile',
+        messages: [{ role: 'system', content: 'You are a helpful AI assistant for Finance Cheque UK. Be concise.' }, { role: 'user', content: msg }],
+        max_tokens: 600,
+      }),
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
+      parseReply: (d) => d?.choices?.[0]?.message?.content || '',
+    },
+    // OpenRouter - multi model router
     {
       key: env.OPENROUTER_API_KEY,
       url: 'https://openrouter.ai/api/v1/chat/completions',
-      model: 'openrouter/auto',
       getBody: (msg) => ({
         model: 'openrouter/auto',
-        messages: [
-          { role: 'system', content: 'You are a helpful AI assistant for Finance Cheque UK. Be concise and friendly.' },
-          { role: 'user', content: msg },
-        ],
+        messages: [{ role: 'system', content: 'You are a helpful AI assistant for Finance Cheque UK. Be concise and friendly.' }, { role: 'user', content: msg }],
         max_tokens: 500,
       }),
-      parseReply: (data) => data?.choices?.[0]?.message?.content || '',
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json', 'HTTP-Referer': 'https://www.financecheque.uk', 'X-Title': 'FinanceCheque UK' }),
+      parseReply: (d) => d?.choices?.[0]?.message?.content || '',
     },
+    // Gemini
     {
       key: env.GEMINI_API_KEY,
       url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
-      model: 'gemini-2.0-flash',
       getBody: (msg) => ({ contents: [{ parts: [{ text: msg }] }] }),
-      parseReply: (data) => data?.candidates?.[0]?.content?.parts?.[0]?.text || '',
+      keyInQuery: true,
+      parseReply: (d) => d?.candidates?.[0]?.content?.parts?.[0]?.text || '',
+    },
+    // OpenAI
+    {
+      key: env.OPENAI_API_KEY,
+      url: 'https://api.openai.com/v1/chat/completions',
+      getBody: (msg) => ({
+        model: 'gpt-4o-mini',
+        messages: [{ role: 'system', content: 'Concise helpful assistant for Finance Cheque UK.' }, { role: 'user', content: msg }],
+        max_tokens: 500,
+      }),
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
+      parseReply: (d) => d?.choices?.[0]?.message?.content || '',
+    },
+    // DeepSeek
+    {
+      key: env.DEEPSEEK_API_KEY,
+      url: 'https://api.deepseek.com/v1/chat/completions',
+      getBody: (msg) => ({
+        model: 'deepseek-chat',
+        messages: [{ role: 'user', content: msg }],
+        max_tokens: 600,
+      }),
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
+      parseReply: (d) => d?.choices?.[0]?.message?.content || '',
+    },
+    // Anthropic
+    {
+      key: env.ANTHROPIC_API_KEY,
+      url: 'https://api.anthropic.com/v1/messages',
+      getBody: (msg) => ({
+        model: 'claude-3-haiku-20240307',
+        max_tokens: 500,
+        messages: [{ role: 'user', content: msg }],
+        system: 'You are a helpful concise AI for Finance Cheque UK.',
+      }),
+      headers: (k) => ({ 'x-api-key': k, 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01' }),
+      parseReply: (d) => d?.content?.[0]?.text || '',
+    },
+    // Groq again? already first. Add mistral etc if key present
+    {
+      key: env.MISTRAL_API_KEY,
+      url: 'https://api.mistral.ai/v1/chat/completions',
+      getBody: (msg) => ({
+        model: 'mistral-small-latest',
+        messages: [{ role: 'user', content: msg }],
+        max_tokens: 500,
+      }),
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
+      parseReply: (d) => d?.choices?.[0]?.message?.content || '',
     },
   ];
 
   for (const p of providers) {
     if (!p.key) continue;
     try {
-      const url = p.key.startsWith('sk-or-')
-        ? p.url
-        : `${p.url}?key=${p.key}`;
-      const resp = await fetch(url, {
+      const fullUrl = p.keyInQuery ? `${p.url}?key=${p.key}` : p.url;
+      const resp = await fetch(fullUrl, {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          ...(p.key.startsWith('sk-or-') ? { 'Authorization': `Bearer ${p.key}`, 'HTTP-Referer': 'https://www.financecheque.uk', 'X-Title': 'FinanceCheque UK' } : {}),
-        },
+        headers: p.headers ? p.headers(p.key) : { 'Content-Type': 'application/json' },
         body: JSON.stringify(p.getBody(message)),
-        signal: AbortSignal.timeout(15000),
+        signal: AbortSignal.timeout(18000),
       });
       if (resp.ok) {
         const data = await resp.json();
         const reply = p.parseReply(data);
-        if (reply) return reply;
+        if (reply && reply.trim()) return reply.trim();
       }
-    } catch {}
+    } catch (e) {
+      // continue to next provider
+    }
   }
   return null;
 }

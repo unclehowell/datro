@@ -219,24 +219,48 @@ function buildPrompt(url, leadAmount, quantity) {
 async function runChat(message) {
   const prompt = message;
 
-  // Priority 1: groq CLI (fastest if installed)
-  try {
-    const { stdout } = await execFileAsync("groq", ["chat", "--message", prompt], {
-      timeout: 30_000, maxBuffer: 1024 * 1024,
-    });
-    if (stdout?.trim()) return stdout.trim();
-  } catch {}
+  // Expanded CLI chain for free IDE/CLIs (gemini, groq, kiro, kilo, opencode, hermes) + agentic
+  // These use their own logins/quota, no local env API keys required.
+  const cliCandidates = [
+    // groq
+    { cmd: "groq", args: ["chat", "--message", prompt] },
+    // gemini (npm global or local)
+    { cmd: process.env.GEMINI_PATH || "gemini", args: ["-p", prompt] },
+    { cmd: "gemini", args: ["chat", "--message", prompt] },
+    // kiro / kirox
+    { cmd: process.env.KIRO_PATH || "/usr/local/bin/kiro", args: ["chat", "--non-interactive", "--message", prompt] },
+    { cmd: "kiro", args: ["chat", "--non-interactive", "--message", prompt] },
+    { cmd: "kirox", args: ["chat", "--non-interactive", "--message", prompt] },
+    // opencode
+    { cmd: "opencode", args: ["chat", "--message", prompt] },
+    { cmd: "opencode", args: ["run", prompt] },
+    // kilo
+    { cmd: "kilo", args: ["chat", "--message", prompt] },
+    { cmd: "kilo", args: ["run", prompt] },
+    // hermes agent (local web capable)
+    { cmd: "hermes", args: ["chat", "-z", prompt] },
+    // hermes with cli flag
+    { cmd: "hermes", args: ["--cli", "chat", prompt] },
+  ];
 
-  // Priority 2: kiro CLI
-  const kiroPath = process.env.KIRO_PATH || "/usr/local/bin/kiro";
-  try {
-    const { stdout } = await execFileAsync(kiroPath, ["chat", "--non-interactive", "--message", prompt], {
-      timeout: 60_000, maxBuffer: 1024 * 1024,
-    });
-    if (stdout?.trim()) return stdout.trim();
-  } catch {}
+  const nodeBinPaths = [
+    "/usr/local/bin", process.env.HOME + "/.npm-global/bin", process.env.HOME + "/.local/bin",
+    process.env.HOME + "/.opencode/bin", "/opt/homebrew/bin"
+  ];
 
-  // Priority 3: local fcuk proxy agent (port 6000, big-pickle model)
+  for (const c of cliCandidates) {
+    try {
+      const env = { ...process.env };
+      env.PATH = nodeBinPaths.filter(Boolean).join(":") + ":" + (env.PATH || "");
+      const { stdout } = await execFileAsync(c.cmd, c.args.filter(Boolean), {
+        timeout: 65000, maxBuffer: 2 * 1024 * 1024, env,
+      });
+      const out = (stdout || "").trim();
+      if (out && out.length > 5 && !out.toLowerCase().startsWith("error")) return out;
+    } catch {}
+  }
+
+  // Priority: local fcuk proxy agent (port 6000) - this machine's own if running
   try {
     const resp = await fetch("http://localhost:6000/v1/chat/completions", {
       method: "POST",
@@ -250,23 +274,7 @@ async function runChat(message) {
     }
   } catch {}
 
-  // Priority 4: opencode CLI
-  try {
-    const { stdout } = await execFileAsync("opencode", ["run", prompt], {
-      timeout: 60_000, maxBuffer: 1024 * 1024,
-    });
-    if (stdout?.trim()) return stdout.trim();
-  } catch {}
-
-  // Priority 5: kilo CLI
-  try {
-    const { stdout } = await execFileAsync("kilo", ["run", prompt], {
-      timeout: 60_000, maxBuffer: 1024 * 1024,
-    });
-    if (stdout?.trim()) return stdout.trim();
-  } catch {}
-
-  // Priority 6: Cloudflare proxy fallback (pirateclaw)
+  // Fallback pirateclaw
   try {
     const resp = await fetch("https://pirateclaw.datro.xyz/v1/chat/completions", {
       method: "POST",
@@ -279,7 +287,7 @@ async function runChat(message) {
     }
   } catch {}
 
-  return `Child proxy ${CHILD_ID} received your message and is online.`;
+  return `Child proxy ${CHILD_ID} received your message and is online (no CLI/LLM responded).`;
 }
 
 // ── Start ─────────────────────────────────────────────────────────────────

@@ -228,6 +228,66 @@ async def peer_reaper():
             del peers[k]
         await asyncio.sleep(10)
 
+# ── CLI-based free providers (no env API keys needed if CLIs are auth'd via login) ──
+CLI_PROVIDERS = [
+    # gemini cli (google login free tier)
+    {"name": "gemini", "cmd": "gemini", "args": ["-p"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+    {"name": "gemini", "cmd": "gemini", "args": ["chat", "--message"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+    # groq cli
+    {"name": "groq", "cmd": "groq", "args": ["chat", "--message"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+    # kirox / kiro
+    {"name": "kirox", "cmd": "kirox", "args": ["chat", "--non-interactive", "--message"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+    {"name": "kiro", "cmd": "kiro", "args": ["chat", "--non-interactive", "--message"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+    # kilo
+    {"name": "kilo", "cmd": "kilo", "args": ["chat", "--message"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+    {"name": "kilo", "cmd": "kilo", "args": ["run"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+    # opencode
+    {"name": "opencode", "cmd": "opencode", "args": ["chat", "--message"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+    {"name": "opencode", "cmd": "opencode", "args": ["run"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+    # hermes cli as agentic
+    {"name": "hermes", "cmd": "hermes", "args": ["chat", "-z"], "prompt_pos": -1, "parse": lambda out: out.strip()},
+]
+
+async def try_cli_chat(prompt: str) -> str | None:
+    """Try free/authenticated CLIs first for chat (agentic capable, no central API keys stored)."""
+    full_prompt = f"You are the FinanceCheque local child proxy. Reply concisely and helpfully.\nUser: {prompt}"
+    for prov in CLI_PROVIDERS:
+        try:
+            cmd_path = prov["cmd"]
+            # expand PATH for common global locations
+            env = os.environ.copy()
+            for pth in [os.path.expanduser("~/.npm-global/bin"), os.path.expanduser("~/.local/bin"), os.path.expanduser("~/.opencode/bin"), "/usr/local/bin"]:
+                if os.path.isdir(pth):
+                    env["PATH"] = f"{pth}:{env.get('PATH','')}"
+            args = list(prov.get("args", []))
+            # append the prompt as last arg or use stdin where possible
+            proc_args = [cmd_path] + args
+            if prov.get("prompt_pos") == -1:
+                proc_args.append(full_prompt)
+            # run with timeout
+            result = subprocess.run(
+                proc_args,
+                capture_output=True,
+                text=True,
+                timeout=45,
+                env=env,
+                cwd=os.path.expanduser("~"),
+            )
+            out = (result.stdout or "") + (result.stderr or "")
+            if result.returncode == 0 and out.strip():
+                cleaned = prov["parse"](out)
+                if cleaned and len(cleaned) > 3 and "error" not in cleaned.lower()[:50]:
+                    log.info(f"CLI success via {prov['name']}")
+                    return cleaned[:2000]
+        except subprocess.TimeoutExpired:
+            continue
+        except FileNotFoundError:
+            continue
+        except Exception as e:
+            log.debug(f"CLI {prov['name']} failed: {e}")
+            continue
+    return None
+
 async def route_to_provider(messages: list[dict], model: str = None) -> dict:
     global _ROUND_ROBIN
     for i in range(len(PROVIDERS)):
@@ -316,6 +376,21 @@ async def route_llm(payload: dict, chat_only: bool = False) -> dict:
     messages = payload.get("messages", [])
     model = payload.get("model")
 
+    # Build plain prompt from last message
+    last = ""
+    if messages:
+        last_msg = messages[-1]
+        last = last_msg.get("content", "") if isinstance(last_msg, dict) else str(last_msg)
+
+    # Prefer CLI tools (gemini, groq, kilo etc) for free/no-local-key usage + agentic
+    if last:
+        cli_reply = await try_cli_chat(last)
+        if cli_reply:
+            stats["routed_local"] += 1
+            return {
+                "choices": [{"index": 0, "message": {"role": "assistant", "content": cli_reply}, "finish_reason": "stop"}]
+            }
+
     result = await route_to_provider(messages, model)
     if result:
         stats["routed_local"] += 1
@@ -344,7 +419,7 @@ async def route_llm(payload: dict, chat_only: bool = False) -> dict:
     stats["errors"] += 1
     return {
         "error": "No available LLM endpoint",
-        "choices": [{"index": 0, "message": {"role": "assistant", "content": "No LLM available. Set API keys in ~/.fcukproxy/.env"}, "finish_reason": "stop"}],
+        "choices": [{"index": 0, "message": {"role": "assistant", "content": "No LLM available. CLI tools or set API keys in ~/.fcukproxy/.env or use parent proxy."}, "finish_reason": "stop"}],
     }
 
 async def sse_format(data: dict) -> str:
