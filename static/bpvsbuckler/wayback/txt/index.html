@@ -169,7 +169,9 @@ ul {
   gtag('config', 'G-6BTNPTMXBF');
 </script>
 <!-- google tracking code end -->
-  </head>
+  
+<script src="db-data.js"></script>
+</head>
   <body>
     <script>
       (async () => {
@@ -185,6 +187,22 @@ ul {
         document.getElementsByTagName('body')[0].innerHTML = htmlString;
            })()
     </script>
-  </body>
+  
+<!-- DB Footer Release -->
+<footer id="db-footer" style="font-size:12px;color:#666;text-align:center;padding:10px;margin-top:20px;border-top:1px solid #eee;">
+  Datro Release • <span id="db-version">loading…</span>
+</footer>
+<script>
+  (function(){
+    try {
+      var el=document.getElementById("db-version");
+      if(el && typeof DB_STATUS !== "undefined") {
+        el.textContent = "v"+DB_STATUS.version+" • "+DB_STATUS.release_date+" • Gateway: "+DB_STATUS.gateway_state+" • Sessions: "+DB_STATUS.active_sessions;
+      }
+    } catch(e) {}
+  })();
+</script>
+
+</body>
 <script src="../_theme-explorer/jquery.min.js"></script>
 </html>

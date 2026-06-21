@@ -11,6 +11,8 @@
  
 
 <body >
+<script src="db-data.js"></script>
+
 
 
     <div class="container" style="margin-top:150px;">
@@ -129,6 +131,22 @@
             noItemsFoundSelector: '.no-apps-found'
         });
     </script>
+
+<!-- DB Footer Release -->
+<footer id="db-footer" style="font-size:12px;color:#666;text-align:center;padding:10px;margin-top:20px;border-top:1px solid #eee;">
+  Datro Release • <span id="db-version">loading…</span>
+</footer>
+<script>
+  (function(){
+    try {
+      var el=document.getElementById("db-version");
+      if(el && typeof DB_STATUS !== "undefined") {
+        el.textContent = "v"+DB_STATUS.version+" • "+DB_STATUS.release_date+" • Gateway: "+DB_STATUS.gateway_state+" • Sessions: "+DB_STATUS.active_sessions;
+      }
+    } catch(e) {}
+  })();
+</script>
+
 </body>
 <script type="text/javascript">
 
