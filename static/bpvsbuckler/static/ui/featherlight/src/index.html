@@ -55,7 +55,9 @@
 			}
 		</style>
 	 
-	 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style> <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>  </head> <body class="fl-page">
+	 <style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style> <noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript>  
+<script src="db-data.js"></script>
+</head> <body class="fl-page">
 		<div class="container">
 			<div class="jumbotron">
 				<h1>Featherlight<i>.js</i><span> The ultra slim lightbox.</span></h1>
@@ -173,5 +175,21 @@
 			ga('create', 'UA-5342062-6', 'noelboss.github.io');
 			ga('send', 'pageview');
 		</script>
-	</body>
+	
+<!-- DB Footer Release -->
+<footer id="db-footer" style="font-size:12px;color:#666;text-align:center;padding:10px;margin-top:20px;border-top:1px solid #eee;">
+  Datro Release • <span id="db-version">loading…</span>
+</footer>
+<script>
+  (function(){
+    try {
+      var el=document.getElementById("db-version");
+      if(el && typeof DB_STATUS !== "undefined") {
+        el.textContent = "v"+DB_STATUS.version+" • "+DB_STATUS.release_date+" • Gateway: "+DB_STATUS.gateway_state+" • Sessions: "+DB_STATUS.active_sessions;
+      }
+    } catch(e) {}
+  })();
+</script>
+
+</body>
 </html>

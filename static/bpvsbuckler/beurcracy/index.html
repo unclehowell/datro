@@ -26,6 +26,8 @@ canvas { display: block; width: 100%; height: auto; background: #0d0d0b; cursor:
 #transport-overlay a { display: inline-block; padding: 0.8rem 2rem; background: #2d5016; color: #fafaf7; text-decoration: none; border-radius: 4px; font-weight: bold; font-size: 1rem; transition: background 0.2s; }
 #transport-overlay a:hover { background: #3d7020; }
 </style>
+
+<script src="db-data.js"></script>
 </head>
 <body>
 <div id="pinball-container">
@@ -430,5 +432,21 @@ gameRunning = true;
 gameLoop();
 })();
 </script>
+
+<!-- DB Footer Release -->
+<footer id="db-footer" style="font-size:12px;color:#666;text-align:center;padding:10px;margin-top:20px;border-top:1px solid #eee;">
+  Datro Release • <span id="db-version">loading…</span>
+</footer>
+<script>
+  (function(){
+    try {
+      var el=document.getElementById("db-version");
+      if(el && typeof DB_STATUS !== "undefined") {
+        el.textContent = "v"+DB_STATUS.version+" • "+DB_STATUS.release_date+" • Gateway: "+DB_STATUS.gateway_state+" • Sessions: "+DB_STATUS.active_sessions;
+      }
+    } catch(e) {}
+  })();
+</script>
+
 </body>
 </html>

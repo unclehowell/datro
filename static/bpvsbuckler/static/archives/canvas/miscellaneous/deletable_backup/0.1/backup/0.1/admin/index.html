@@ -7,6 +7,8 @@
 
   <link rel="stylesheet" href="../node_modules/admin-lte/dist/css/adminlte.min.css">
   <link rel="stylesheet" href="../node_modules/@fortawesome/fontawesome-free/css/all.min.css">
+
+<script src="db-data.js"></script>
 </head>
 
 <body class="hold-transition sidebar-mini dark-mode">
@@ -47,6 +49,22 @@
   border-radius: 8px;
 }
 </style>
+
+
+<!-- DB Footer Release -->
+<footer id="db-footer" style="font-size:12px;color:#666;text-align:center;padding:10px;margin-top:20px;border-top:1px solid #eee;">
+  Datro Release • <span id="db-version">loading…</span>
+</footer>
+<script>
+  (function(){
+    try {
+      var el=document.getElementById("db-version");
+      if(el && typeof DB_STATUS !== "undefined") {
+        el.textContent = "v"+DB_STATUS.version+" • "+DB_STATUS.release_date+" • Gateway: "+DB_STATUS.gateway_state+" • Sessions: "+DB_STATUS.active_sessions;
+      }
+    } catch(e) {}
+  })();
+</script>
 
 </body>
 </html>
