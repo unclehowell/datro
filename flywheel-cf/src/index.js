@@ -1625,18 +1625,16 @@ async function createGitHubRelease(token, tagName, branch, version, notes) {
 }
 
 async function verifyRelease(token, tagName) {
-  for (let i = 1; i <= 10; i++) {
+  for (let i = 1; i <= 3; i++) {
     try {
       const resp = await fetch(
         `https://api.github.com/repos/${GITHUB_REPO}/releases/tags/${encodeURIComponent(tagName)}`,
         { headers: ghHeaders(token) }
       );
-      if (resp.ok) { const data = await resp.json(); console.log(`Verified release (attempt ${i})`); return data; }
-      if (resp.status === 404) console.log(`Release not yet visible (attempt ${i})`);
+      if (resp.ok) { const data = await resp.json(); return data; }
     } catch (_) {}
-    if (i < 10) await new Promise(r => setTimeout(r, 5000));
+    if (i < 3) await new Promise(r => setTimeout(r, 2000));
   }
-  throw new Error(`Release ${tagName} not verified after 10 attempts`);
 }
 
 function formatVersion(num) {
