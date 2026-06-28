@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `—`
-- **Tag**: `pending`
-- **Deployed**: 2026-06-28T08:46:50.977Z
+- **Version**: `0.0.2.13`
+- **Tag**: `financecheque-v0.0.2.13`
+- **Deployed**: 2026-06-28T09:40:51.093Z
 - **URL**: [https://financecheque.datro.directory](https://financecheque.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T08:46:50.977Z*
+*Auto-updated by datro-flywheel at 2026-06-28T09:40:51.093Z*
