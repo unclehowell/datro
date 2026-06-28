@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.1.53`
-- **Tag**: `datro-v0.0.1.53`
-- **Deployed**: 2026-06-28T10:52:47.957Z
+- **Version**: `—`
+- **Tag**: `pending`
+- **Deployed**: 2026-06-28T11:48:48.210Z
 - **URL**: [https://datro.datro.directory](https://datro.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T10:52:47.957Z*
+*Auto-updated by datro-flywheel at 2026-06-28T11:48:48.210Z*
