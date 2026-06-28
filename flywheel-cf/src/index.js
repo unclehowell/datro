@@ -2662,6 +2662,9 @@ async function processBranch(env, branch) {
     const nextNum = maxNum + 1;
     const version = formatVersion(nextNum);
     const tagName = `${branch}-v${version}`;
+    // Last released version (for skip-path brain notes)
+    const lastVer = maxNum > 0 ? formatVersion(maxNum) : null;
+    const lastTag = maxNum > 0 ? `${branch}-v${lastVer}` : null;
     log(`Max release num: ${maxNum}, Next: ${tagName}`);
 
     // Update index card pre-flight
@@ -2946,6 +2949,12 @@ async function processBranch(env, branch) {
     await learnLesson(env, branch, `Skipped release: agent and best-practice engine both found nothing to change on ${branch}`);
     // Update index card but DON'T create a tag or release — pointless noise
     await updateIndexCard(env, branch, { lastRun: Math.floor(Date.now() / 1000), lastRelease: null });
+    // Write brain note with latest tag info (or pending if first release)
+    if (lastTag && lastVer) {
+      await writeBrainNote(token, branch, branchPurpose(branch), lastVer, lastTag, branchUrl);
+    } else {
+      await writeBrainNote(token, branch, branchPurpose(branch), '—', 'pending', branchUrl);
+    }
     return { tagName: null, version: null, type: 'skipped', aiError: null, selfImprovements, wallet: wallet.address };
   }, `processBranch(${branch})`, 3).catch(async (err) => {
     await logFailureToKv(env, branch, err, 'processBranch');
