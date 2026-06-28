@@ -183,15 +183,15 @@ function renderHypothesisTree(card) {
 const startTime = Math.floor(Date.now() / 1000);
 
 // ── Retry Wrapper & Failure Logging ──
-async function withRetry(fn, label, maxRetries = 3) {
+async function withRetry(fn, label, maxRetries = 2) {
   for (let attempt = 1; attempt <= maxRetries; attempt++) {
     try {
       return await fn();
     } catch (err) {
       log(`${label} attempt ${attempt}/${maxRetries} failed: ${err.message}`);
       if (attempt < maxRetries) {
-        const delay = Math.pow(2, attempt) * 1000 * 60;
-        log(`  backing off ${Math.round(delay/1000)}s`);
+        const delay = Math.pow(2, attempt) * 1000;
+        log(`  retrying in ${Math.round(delay/1000)}s`);
         await new Promise(r => setTimeout(r, delay));
       } else {
         log(`${label} exhausted after ${maxRetries} attempts`);
