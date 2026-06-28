@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T12:10:48.004Z
+- **Deployed**: 2026-06-28T13:06:48.806Z
 - **URL**: [https://whitepaper.datro.directory](https://whitepaper.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T12:10:48.004Z*
+*Auto-updated by datro-flywheel at 2026-06-28T13:06:48.806Z*
