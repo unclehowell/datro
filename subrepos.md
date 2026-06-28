@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T12:58:47.932Z
+- **Deployed**: 2026-06-28T13:52:47.959Z
 - **URL**: [https://subrepos.datro.directory](https://subrepos.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T12:58:47.932Z*
+*Auto-updated by datro-flywheel at 2026-06-28T13:52:47.959Z*
