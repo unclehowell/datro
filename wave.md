@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.0.71`
-- **Tag**: `wave-v0.0.0.71`
-- **Deployed**: 2026-06-28T13:02:52.736Z
+- **Version**: `0.0.0.72`
+- **Tag**: `wave-v0.0.0.72`
+- **Deployed**: 2026-06-28T14:48:52.733Z
 - **URL**: [https://wave.datro.directory](https://wave.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T13:02:52.736Z*
+*Auto-updated by datro-flywheel at 2026-06-28T14:48:52.733Z*
