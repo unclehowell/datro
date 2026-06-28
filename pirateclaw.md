@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.1.84`
-- **Tag**: `pirateclaw-v0.0.1.84`
-- **Deployed**: 2026-06-28T11:10:52.592Z
+- **Version**: `0.0.1.85`
+- **Tag**: `pirateclaw-v0.0.1.85`
+- **Deployed**: 2026-06-28T12:54:52.288Z
 - **URL**: [https://pirateclaw.datro.directory](https://pirateclaw.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T11:10:52.592Z*
+*Auto-updated by datro-flywheel at 2026-06-28T12:54:52.288Z*
