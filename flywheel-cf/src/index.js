@@ -2749,7 +2749,13 @@ async function processBranch(env, branch) {
     let releaseNotes = '';
     const wallet = await getBranchWallet(env, branch);
 
-    const agentResult = await runAgentLoop(env, branch, idxHtml, hdrContent, visualWingFiles, liveHtml, { token, env });
+    let agentResult;
+    try {
+      agentResult = await runAgentLoop(env, branch, idxHtml, hdrContent, visualWingFiles, liveHtml, { token, env });
+    } catch (err) {
+      log(`Agent loop failed for ${branch}: ${err.message} — falling through to best-practice engine`);
+      agentResult = { changes: [], summary: '', bounty: null };
+    }
 
     // ── Eval: multi-metric record run + benchmark against history ──
     const planAdherence = agentResult?.summary?.includes('PLAN') || agentResult?.changes?.length > 0 ? 0.8 : 0.2;
