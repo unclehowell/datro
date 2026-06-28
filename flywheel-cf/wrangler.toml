@@ -3,7 +3,7 @@ main = "src/index.js"
 compatibility_date = "2025-01-01"
 
 [triggers]
-crons = ["*/10 * * * *"]
+crons = ["*/2 * * * *"]
 
 [[kv_namespaces]]
 binding = "FLYWHEEL_STATE"

@@ -3,10 +3,14 @@ const GITLAWB_NODE = 'https://node.gitlawb.com';
 const GITLAWB_BOUNTY_LIST_URL = `${GITLAWB_NODE}/api/v1/bounties`;
 
 const ALL_BRANCHES = [
-  "althea", "archives", "bpvsbuckler", "carfinancecheque",
-  "ccan", "ceo", "dash", "datro", "dcc", "financecheque",
-  "gui", "hbnb", "library", "llmwiki", "cnei",
-  "subrepos", "ui", "wave", "wayback", "pirateclaw"
+  "althea", "archives", "bpvsbuckler", "bpvsbuckler-redflag",
+  "bucklervsbp", "bw_base", "carfinancecheque",
+  "ccan", "ceo", "command", "command-agent-endpoint",
+  "dash", "datro", "dcc", "financecheque",
+  "financecheque-monday-agent", "gh-pages", "gui",
+  "hbnb", "library", "llmwiki",
+  "pirateclaw", "rerelease",
+  "subrepos", "ui", "wave", "wayback", "whitepaper"
 ];
 
 const REGULAR_BRANCHES = ALL_BRANCHES.filter(b => b !== 'cnei');
@@ -38,6 +42,15 @@ const BRANCH_PURPOSE = {
   wave: 'Web audio visualisation experiment — interactive sound tools, frequency analysis, and audio processing.',
   althea: 'Alternative/experimental branch for testing new content formats, layouts, and interaction patterns.',
   archives: 'Static archive of historical documents, preserved content, and legacy records.',
+  'bpvsbuckler-redflag': 'Red-flagged evidence review for the BP vs Buckler case. Highlights disputed or sensitive items requiring human attention.',
+  bucklervsbp: 'Defense perspective on the BP vs Buckler land dispute. Counter-narrative and rebuttal evidence.',
+  bw_base: 'Standardisation base — shared templates, CSS, and conventions used across the monorepo.',
+  command: 'Command Cockpit / Jarvis — centralized agent orchestration and task dispatch.',
+  'command-agent-endpoint': 'Agent endpoint for the command cockpit. Receives and routes agent webhooks.',
+  'financecheque-monday-agent': 'Monday.com agent for FinanceCheque — automates board updates and client sync.',
+  'gh-pages': 'Steering & deployment admin. GitHub Pages configuration and workflow orchestration.',
+  rerelease: 'Version rerelease workflow — coordinates multi-branch bump and changelog updates.',
+  whitepaper: 'Algocracy whitepaper — governance framework, voting mechanisms, and DAO structure documentation.',
   pirateclaw: 'Pirate-themed interactive fiction or game content with narrative elements.',
 };
 function branchPurpose(branch) { return BRANCH_PURPOSE[branch] || 'General web presence for the branch. A unique site that should reflect its name and purpose.'; }
@@ -65,8 +78,7 @@ function branchQuotaPrompt(branch) {
 const WING_FILE_TYPES = ['SPEC', 'AGENT', 'TASKS', 'README', 'MEMORY', 'PLAN', 'CHANGELOG', 'MASTERPLAN'];
 const WING_FILE_SIDES = ['left', 'right'];
 
-const RATE_BY_GEAR = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60]; // gear1=2h, gear3=1h(default), gear10=1min
-const CNEI_RATIO = 1; // fire cnei after every regular branch to achieve 2h/1h cadence
+const RATE_BY_GEAR = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60]; // gear1=2h, gear3=1h, gear8=5min, gear10=1min
 const DOMAIN = 'datro.directory';
 const GITHUB_REPO_OBJ = { owner: 'unclehowell', repo: 'datro' };
 const BRAIN_BRANCH = 'brain';
@@ -1361,10 +1373,10 @@ function cadenceForGear(gear) {
 async function getFlywheelConfig(env) {
   try {
     const raw = await env.FLYWHEEL_STATE.get('config', 'json');
-    const gear = raw?.gear || 3;
+    const gear = raw?.gear || 5;
     if (raw) return { gear: 3, ...raw, cadence: cadenceForGear(gear) };
   } catch (_) {}
-  return { gear: 3, cadence: cadenceForGear(3) };
+  return { gear: 5, cadence: cadenceForGear(5) };
 }
 
 async function saveRotationState(env, state) {
@@ -1635,18 +1647,10 @@ function formatVersion(num) {
 }
 
 function selectBranch(state) {
-  let branch;
-  if (state.cnei_queue >= CNEI_RATIO) {
-    branch = 'cnei';
-    console.log('CNEI_QUEUE: >=' + CNEI_RATIO + ', selecting cnei branch');
-    state.cnei_queue = 0;
-  } else {
-    const prevIndex = state.regular_index;
-    branch = REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length];
-    state.regular_index = (state.regular_index + 1) % REGULAR_BRANCHES.length;
-    if (state.regular_index <= prevIndex) state.lap = (state.lap || 0) + 1;
-    state.cnei_queue = (state.cnei_queue || 0) + 1;
-  }
+  const prevIndex = state.regular_index;
+  const branch = REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length];
+  state.regular_index = (state.regular_index + 1) % REGULAR_BRANCHES.length;
+  if (state.regular_index <= prevIndex) state.lap = (state.lap || 0) + 1;
   return branch;
 }
 
@@ -2912,6 +2916,9 @@ async function processBranch(env, branch) {
       // Sync index card to Monday
       await syncIndexCardToMonday(env, branch, await getIndexCard(env, branch), mondayToken);
 
+      // Write to brain branch for vault sync
+      await writeBrainNote(token, branch, branchPurpose(branch), version, tagName, branchUrl);
+
       return { tagName, version, type: 'agent', changes: agentResult.changes, aiError: null, selfImprovements, metaChanges, wallet: wallet.address };
     }
 
@@ -2929,6 +2936,8 @@ async function processBranch(env, branch) {
       if (release) await verifyRelease(token, tagName);
       log(`Best-practice release ${tagName}: ${bpResult.bestPractice.name}`);
       await updateIndexCard(env, branch, { lastRelease: tagName });
+      // Write to brain branch for vault sync
+      await writeBrainNote(token, branch, branchPurpose(branch), version, tagName, branchUrl);
       return { tagName, version, type: 'best-practice', aiError: null, selfImprovements, wallet: wallet.address };
     }
 
@@ -2953,17 +2962,109 @@ async function triggerOtaAfterCneiRelease(env, tagName) {
   console.log(`Recorded cnei release ${tagName} in KV for OTA detection`);
 }
 
+// ── Brain Note Writer (persistent vault notes, survives laptop-off) ──
+// Writes per-branch release notes to the `brain` branch.
+// The local obsidian vault pulls from this branch to stay current.
+const BRAIN_DOMAIN = 'datro.directory';
+
+async function writeBrainNote(token, branch, desc, version, tagName, deployUrl) {
+  const path = `${branch}.md`;
+  const commitMsg = `docs(brain): update ${branch} to ${tagName}`;
+
+  const note = [
+    `# ${branch}`,
+    ``,
+    `**${desc}**`,
+    ``,
+    `## Latest Release`,
+    ``,
+    `- **Version**: \`${version}\``,
+    `- **Tag**: \`${tagName}\``,
+    `- **Deployed**: ${new Date().toISOString()}`,
+    `- **URL**: [${deployUrl}](${deployUrl})`,
+    `- **Status**: deployed`,
+    ``,
+    `---`,
+    ``,
+    `*Auto-updated by datro-flywheel at ${new Date().toISOString()}*`,
+    ``,
+  ].join('\n');
+
+  try {
+    // Try to get existing file to compute base_sha
+    const existing = await getFileContent(token, BRAIN_BRANCH, path);
+    const baseSha = existing?.sha || undefined;
+
+    // Encode content as base64
+    const content = btoa(note);
+
+    const body = {
+      message: commitMsg,
+      content,
+      branch: BRAIN_BRANCH,
+    };
+    if (baseSha) body.sha = baseSha;
+
+    const resp = await fetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/contents/${encodeURIComponent(path)}`,
+      {
+        method: 'PUT',
+        headers: ghHeaders(token),
+        body: JSON.stringify(body),
+      }
+    );
+    if (!resp.ok) {
+      const text = await resp.text().catch(() => '');
+      // 422 can mean the brain branch doesn't exist yet
+      if (resp.status === 422) {
+        // Create the brain branch from the first regular branch
+        const defaultBranch = REGULAR_BRANCHES[0] || 'cnei';
+        const baseRef = await ghFetch(
+          `https://api.github.com/repos/${GITHUB_REPO}/git/refs/heads/${defaultBranch}`,
+          token
+        );
+        if (baseRef.ok) {
+          const refData = await baseRef.json();
+          await ghFetch(
+            `https://api.github.com/repos/${GITHUB_REPO}/git/refs`,
+            token,
+            {
+              method: 'POST',
+              body: JSON.stringify({
+                ref: `refs/heads/${BRAIN_BRANCH}`,
+                sha: refData.object.sha,
+              }),
+            }
+          );
+          // Retry the write
+          delete body.sha;
+          const retry = await fetch(
+            `https://api.github.com/repos/${GITHUB_REPO}/contents/${encodeURIComponent(path)}`,
+            { method: 'PUT', headers: ghHeaders(token), body: JSON.stringify(body) }
+          );
+          if (!retry.ok) console.log(`  ⚠ brain note retry failed for ${branch}: ${await retry.text().catch(() => '')}`);
+          else console.log(`  → Brain note written: ${BRAIN_BRANCH}/${path}`);
+        }
+      } else {
+        console.log(`  ⚠ brain note write failed for ${branch}: ${text.slice(0, 100)}`);
+      }
+    } else {
+      console.log(`  → Brain note written: ${BRAIN_BRANCH}/${path}`);
+    }
+  } catch (err) {
+    console.log(`  ⚠ brain note error for ${branch}: ${err.message}`);
+  }
+}
+
 async function findAvailableBranch(state, token, gear) {
-  const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
+  const savedIdx = state.regular_index;
   for (let attempt = 0; attempt < 40; attempt++) {
     const branch = selectBranch(state);
     const onCooldown = await isOnCooldown(token, branch, gear);
     if (!onCooldown) return branch;
   }
   console.log('All branches on cooldown, skipping run');
-  state.regular_index = savedState.regular_index;
-  state.cnei_queue = savedState.cnei_queue;
-  state.lap = savedState.lap;
+  state.regular_index = savedIdx;
   return null;
 }
 
@@ -3002,7 +3103,7 @@ async function runFlywheel(env, forcedBranch) {
       if (sampleWallet.computeBudget > 5000) effectiveGear = Math.min(10, effectiveGear + 1);
     } catch (_) {}
 
-    log(`State: idx=${state.regular_index} cnei=${state.cnei_queue} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
+    log(`State: idx=${state.regular_index} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
 
     if (state.mode === 'PAUSED' && !forcedBranch) {
       log('Flywheel paused, skipping');
@@ -3018,18 +3119,12 @@ async function runFlywheel(env, forcedBranch) {
       if (scheduled) {
         branch = scheduled;
       } else {
-        const cneiCD = await isOnCooldown(token, 'cnei', effectiveGear);
-        if (!cneiCD) {
-          branch = 'cnei';
-          log('No regular branch available, forcing cnei self-improvement');
-        } else {
-          log('No available branch found');
-          return;
-        }
+        log('All branches on cooldown, skipping run');
+        return;
       }
     }
 
-    const savedState = { regular_index: state.regular_index, cnei_queue: state.cnei_queue, lap: state.lap, mode: state.mode };
+    const savedState = { regular_index: state.regular_index, lap: state.lap, mode: state.mode };
     log(`Selected branch: ${branch}`);
 
     // ── Per-branch isolation: one branch failure doesn't kill others ──
@@ -3153,7 +3248,7 @@ export default {
       });
     }
     if (url.pathname === '/__reset') {
-      const state = { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' };
+      const state = { regular_index: 0, lap: 0, mode: 'AUTO' };
       await saveRotationState(env, state);
       return new Response('State reset', { status: 200 });
     }
