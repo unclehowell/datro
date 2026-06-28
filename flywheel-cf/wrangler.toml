@@ -1,6 +1,10 @@
 name = "datro-flywheel"
 main = "src/index.js"
 compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+
+[limits]
+subrequest_limit = 1000
 
 [triggers]
 crons = ["*/2 * * * *"]
