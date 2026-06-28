@@ -1457,10 +1457,9 @@ async function runMcpScans(env, targetUrl) {
   }
   await Promise.allSettled(promises);
   
-  // FAIL-FAST: If all essential scans failed, reject the whole process
   const successfulScans = Object.values(results).filter(r => !r.error && r.score !== null);
   if (successfulScans.length === 0) {
-    throw new Error("MCP Scans failed: No data retrieved.");
+    console.log(`MCP Scans all failed for ${targetUrl} — continuing without scan data`);
   }
   
   return results;
