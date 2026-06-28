@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T09:28:47.956Z
+- **Deployed**: 2026-06-28T10:44:47.975Z
 - **URL**: [https://ceo.datro.directory](https://ceo.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T09:28:47.956Z*
+*Auto-updated by datro-flywheel at 2026-06-28T10:44:47.975Z*
