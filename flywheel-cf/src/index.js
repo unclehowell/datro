@@ -75,7 +75,7 @@ function branchQuotaPrompt(branch) {
   return `\n## MANDATORY BRANCH QUOTA (${q.label})\n${q.mandate}\nRelevant files: ${q.hints.join(', ')}\nThis quota is NON-NEGOTIABLE — the release fails its purpose without it.`;
 }
 
-const WING_FILE_TYPES = ['SPEC', 'AGENT', 'TASKS', 'README', 'MEMORY', 'PLAN', 'CHANGELOG', 'MASTERPLAN'];
+const WING_FILE_TYPES = ['AGENT', 'MASTERPLAN', 'SPEC', 'TASKS'];
 const WING_FILE_SIDES = ['left', 'right'];
 
 const RATE_BY_GEAR = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60]; // gear1=2h, gear3=1h, gear8=5min, gear10=1min
