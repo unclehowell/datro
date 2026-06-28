@@ -3018,44 +3018,45 @@ async function writeBrainNote(token, branch, desc, version, tagName, deployUrl) 
       `https://api.github.com/repos/${GITHUB_REPO}/contents/${encodeURIComponent(path)}`,
       {
         method: 'PUT',
-        headers: ghHeaders(token),
+        headers: { ...ghHeaders(token), 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
       }
     );
     if (!resp.ok) {
       const text = await resp.text().catch(() => '');
-      // 422 can mean the brain branch doesn't exist yet
-      if (resp.status === 422) {
-        // Create the brain branch from the first regular branch
+      if (resp.status === 422 && text.includes('"ref"')) {
+        // Branch doesn't exist — create it from the first regular branch
         const defaultBranch = REGULAR_BRANCHES[0] || 'cnei';
-        const baseRef = await ghFetch(
-          `https://api.github.com/repos/${GITHUB_REPO}/git/refs/heads/${defaultBranch}`,
-          token
-        );
-        if (baseRef.ok) {
+        try {
+          const baseRef = await ghFetch(
+            `https://api.github.com/repos/${GITHUB_REPO}/git/refs/heads/${defaultBranch}`,
+            token
+          );
           const refData = await baseRef.json();
           await ghFetch(
             `https://api.github.com/repos/${GITHUB_REPO}/git/refs`,
             token,
             {
               method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
               body: JSON.stringify({
                 ref: `refs/heads/${BRAIN_BRANCH}`,
                 sha: refData.object.sha,
               }),
             }
           );
-          // Retry the write
           delete body.sha;
           const retry = await fetch(
             `https://api.github.com/repos/${GITHUB_REPO}/contents/${encodeURIComponent(path)}`,
-            { method: 'PUT', headers: ghHeaders(token), body: JSON.stringify(body) }
+            { method: 'PUT', headers: { ...ghHeaders(token), 'Content-Type': 'application/json' }, body: JSON.stringify(body) }
           );
           if (!retry.ok) console.log(`  ⚠ brain note retry failed for ${branch}: ${await retry.text().catch(() => '')}`);
           else console.log(`  → Brain note written: ${BRAIN_BRANCH}/${path}`);
+        } catch (e) {
+          console.log(`  ⚠ brain branch creation failed for ${branch}: ${e.message}`);
         }
       } else {
-        console.log(`  ⚠ brain note write failed for ${branch}: ${text.slice(0, 100)}`);
+        console.log(`  ⚠ brain note write failed for ${branch}: status=${resp.status} body=${text.slice(0, 200)}`);
       }
     } else {
       console.log(`  → Brain note written: ${BRAIN_BRANCH}/${path}`);
@@ -3147,8 +3148,16 @@ async function runFlywheel(env, forcedBranch) {
       result = { tagName: null, error: err.message };
     }
 
-    // Record run timestamp (1 write per cycle, used for cooldown)
+    // Record run timestamp and last-run summary
     await recordRunTimestamp(env, branch);
+    await env.FLYWHEEL_STATE.put('last_run_result', JSON.stringify({
+      branch,
+      tag: result?.tagName || null,
+      version: result?.version || null,
+      type: result?.type || 'error',
+      error: result?.error || null,
+      timestamp: Math.floor(Date.now() / 1000)
+    }));
 
     if (result && (result.error === 'branch_not_found' || !result.error)) {
       await saveRotationState(env, savedState);
@@ -3315,27 +3324,35 @@ export default {
       });
     }
     if (url.pathname === '/__debug') {
-      const branch = url.searchParams.get('branch') || 'cnei';
-      const config = await getFlywheelConfig(env);
-      const baseCooldown = RATE_BY_GEAR[config.gear - 1] || 3600;
-      const actualCooldown = branch === 'cnei' ? baseCooldown : baseCooldown * 2;
-      const now = Math.floor(Date.now() / 1000);
-      const lastRelease = await getLatestReleaseDate(resolveToken(env), branch);
-      const elapsed = now - lastRelease;
-      const maxNum = await getMaxBranchReleaseNum(resolveToken(env), branch);
-      const isCD = lastRelease > 0 && elapsed < actualCooldown;
-      const info = {
-        branch, gear: config.gear, cooldown: actualCooldown, now, lastRelease,
-        lastReleaseDate: lastRelease ? new Date(lastRelease * 1000).toISOString() : 'none',
-        elapsed, elapsedHours: (elapsed / 3600).toFixed(1),
-        available: !isCD,
-        releaseCount: maxNum,
-        nextVersion: formatVersion(maxNum + 1),
-        cooldownType: branch === 'cnei' ? '1h (gear)' : '2h (gear*2)'
-      };
-      return new Response(JSON.stringify(info, null, 2), {
-        headers: { 'Content-Type': 'application/json' }
-      });
+      try {
+        const branch = url.searchParams.get('branch') || 'cnei';
+        const token = resolveToken(env);
+        if (!token) return new Response('{"error":"No GH_PAT configured"}', { status: 500, headers: { 'Content-Type': 'application/json' } });
+        const config = await getFlywheelConfig(env);
+        const baseCooldown = RATE_BY_GEAR[config.gear - 1] || 3600;
+        const actualCooldown = branch === 'cnei' ? baseCooldown : baseCooldown * 2;
+        const now = Math.floor(Date.now() / 1000);
+        const lastRelease = await getLatestReleaseDate(token, branch);
+        const elapsed = now - lastRelease;
+        const maxNum = await getMaxBranchReleaseNum(token, branch);
+        const isCD = lastRelease > 0 && elapsed < actualCooldown;
+        const info = {
+          branch, gear: config.gear, cooldown: actualCooldown, now, lastRelease,
+          lastReleaseDate: lastRelease ? new Date(lastRelease * 1000).toISOString() : 'none',
+          elapsed, elapsedHours: (elapsed / 3600).toFixed(1),
+          available: !isCD,
+          releaseCount: maxNum,
+          nextVersion: formatVersion(maxNum + 1),
+          cooldownType: branch === 'cnei' ? '1h (gear)' : '2h (gear*2)'
+        };
+        return new Response(JSON.stringify(info, null, 2), {
+          headers: { 'Content-Type': 'application/json' }
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message, stack: err.stack?.slice(0, 500) }, null, 2), {
+          status: 500, headers: { 'Content-Type': 'application/json' }
+        });
+      }
     }
     if (url.pathname === '/__status') {
       const state = await getRotationState(env);
@@ -3422,16 +3439,23 @@ export default {
       });
     }
     if (url.pathname === '/__agent') {
-      const branch = url.searchParams.get('branch') || 'cnei';
-      const tok = resolveToken(env);
-      const idx = await getFileContent(tok, branch, 'index.html');
-      const hdr = await getFileContent(tok, branch, '_headers');
-      const wingFiles = await getAllWingFiles(tok, branch);
-      const wallet = await getBranchWallet(env, branch);
-      const result = await runAgentLoop(env, branch, idx ? idx.content : '', hdr ? hdr.content : '', wingFiles, '', { token: tok, env });
-      return new Response(JSON.stringify({ branch, wallet, agentResult: result }, null, 2), {
-        headers: { 'Content-Type': 'application/json' }
-      });
+      try {
+        const branch = url.searchParams.get('branch') || 'cnei';
+        const tok = resolveToken(env);
+        if (!tok) return new Response('{"error":"No GH_PAT configured"}', { status: 500, headers: { 'Content-Type': 'application/json' } });
+        const idx = await getFileContent(tok, branch, 'index.html');
+        const hdr = await getFileContent(tok, branch, '_headers');
+        const wingFiles = await getAllWingFiles(tok, branch);
+        const wallet = await getBranchWallet(env, branch);
+        const result = await runAgentLoop(env, branch, idx ? idx.content : '', hdr ? hdr.content : '', wingFiles, '', { token: tok, env });
+        return new Response(JSON.stringify({ branch, wallet, agentResult: result }, null, 2), {
+          headers: { 'Content-Type': 'application/json' }
+        });
+      } catch (err) {
+        return new Response(JSON.stringify({ error: err.message, stack: err.stack?.slice(0, 500) }, null, 2), {
+          status: 500, headers: { 'Content-Type': 'application/json' }
+        });
+      }
     }
     if (url.pathname === '/__bounties') {
       const branch = url.searchParams.get('branch');
@@ -3451,6 +3475,19 @@ export default {
       });
     }
 
+    if (url.pathname === '/__failures') {
+      const branch = url.searchParams.get('branch');
+      const failures = {};
+      const branches = branch ? [branch] : ALL_BRANCHES;
+      for (const b of branches) {
+        const data = await env.FLYWHEEL_STATE.get(`failure_${b}`, 'json').catch(() => null);
+        if (data) failures[b] = data;
+      }
+      return new Response(JSON.stringify(failures, null, 2), {
+        headers: { 'Content-Type': 'application/json' }
+      });
+    }
+
     if (url.pathname === '/__pages_cleanup') {
       await cleanupPagesDeploys(env);
       return new Response(JSON.stringify({ ok: true, message: 'Pages cleanup triggered' }), {
@@ -3458,7 +3495,7 @@ export default {
       });
     }
 
-    return new Response('Flywheel Worker. Endpoints: /__cron?branch=X, /__sync_cron, /__state, /__reset, /__mode, /__config, /__debug?branch=X, /__status, /__bias, /__mcp?url=X, /__wallet?branch=X, /__wallets, /__agent?branch=X, /__bounties?branch=X, /__pages_cleanup', {
+    return new Response('Flywheel Worker. Endpoints: /__cron?branch=X, /__sync_cron, /__state, /__reset, /__unlock, /__mode, /__config, /__debug?branch=X, /__status, /__bias, /__mcp?url=X, /__wallet?branch=X, /__wallets, /__agent?branch=X, /__bounties?branch=X, /__failures?branch=X, /__pages_cleanup', {
       headers: { 'Content-Type': 'text/plain' }
     });
   }
