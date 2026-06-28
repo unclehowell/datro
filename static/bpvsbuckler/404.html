@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | DATRO</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://unpkg.com/@measured/puck@0.16.0/dist/index.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Courier Prime', monospace;
+            background-color: #0f172a;
+        }
+        .font-special {
+            font-family: 'Special Elite', cursive;
+        }
+        .puck-root {
+            --puck-color-grey-10: #1e293b;
+            --puck-color-grey-1: #0f172a;
+        }
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        @keyframes slideInRight {
+            from { transform: translateX(100%); }
+            to { transform: translateX(0); }
+        }
+        .animate-slide-in-right {
+            animation: slideInRight 0.3s ease-out forwards;
+        }
+    </style>
+    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
+<script type="importmap">
+{
+  "imports": {
+    "react/": "https://esm.sh/react@^18.2.0/",
+    "react": "https://esm.sh/react@^18.2.0",
+    "react-dom/": "https://esm.sh/react-dom@^18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@^18.2.0",
+    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
+    "jspdf": "https://esm.sh/jspdf@2.5.1",
+    "@measured/puck": "https://esm.sh/@measured/puck@0.16.0?external=react,react-dom"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-89LfAgl1.js"></script>
+</head>
+<body class="text-slate-200 antialiased overflow-hidden h-screen w-screen">
+    
+
+<div id="root"></div>
+
+<script>
+(function() {
+  var added = false;
+  var observer = new MutationObserver(function() {
+    if (added) return;
+    var links = document.querySelectorAll("a");
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].textContent.trim() === "Reparations") {
+        var parent = links[i].parentNode;
+        var found = false;
+        for (var j = 0; j < parent.children.length; j++) {
+          if (parent.children[j].textContent.trim() === "Beurcracy") {
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          var a = document.createElement("a");
+          a.href = "/beurcracy/";
+          a.textContent = "Beurcracy";
+          a.className = links[i].className;
+          parent.insertBefore(a, links[i].nextSibling);
+          added = true;
+        }
+        break;
+      }
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+
+<script>
+(function() {
+  var added = false;
+  var observer = new MutationObserver(function() {
+    if (added) return;
+    var links = document.querySelectorAll("a");
+    for (var i = 0; i < links.length; i++) {
+      if (links[i].textContent.trim() === "Reparations") {
+        var parent = links[i].parentNode;
+        var found = false;
+        for (var j = 0; j < parent.children.length; j++) {
+          if (parent.children[j].textContent.trim() === "Beurcracy") {
+            found = true;
+            break;
+          }
+        }
+        if (!found) {
+          var a = document.createElement("a");
+          a.href = "/beurcracy/";
+          a.textContent = "Beurcracy";
+          a.className = links[i].className;
+          parent.insertBefore(a, links[i].nextSibling);
+          added = true;
+        }
+        break;
+      }
+    }
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+
+<script>
+(function() {
+  var added = false;
+  function addLink() {
+    if (added) return;
+    var buttons = document.querySelectorAll("button");
+    for (var i = 0; i < buttons.length; i++) {
+      var b = buttons[i];
+      if (b.textContent.trim() === "Reparations" || b.textContent.trim().indexOf("Reparations") !== -1) {
+        var parent = b.parentNode;
+        var sibs = parent.querySelectorAll("a, button, span");
+        for (var j = 0; j < sibs.length; j++) {
+          if (sibs[j].textContent.indexOf("Beurcracy") !== -1) return;
+        }
+        var a = document.createElement("a");
+        a.href = "/beurcracy/";
+        a.textContent = "Beurcracy";
+        var homeLink = parent.querySelector('a[href="/"]');
+        if (homeLink) {
+          a.className = homeLink.className;
+        } else {
+          a.className = "px-3 py-1 text-sm uppercase tracking-wider font-special font-bold text-slate-400 hover:text-white transition-colors";
+        }
+        parent.insertBefore(a, b.nextSibling);
+        added = true;
+        return;
+      }
+    }
+  }
+  addLink();
+  var observer = new MutationObserver(addLink);
+  observer.observe(document.body, { childList: true, subtree: true });
+})();
+</script>
+
+</body>
+</html>

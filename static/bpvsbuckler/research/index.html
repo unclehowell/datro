@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Great House Farm — Llandough / Bute Estate Title Research</title>
+<style>
+  :root { --ink: #1a1a1a; --paper: #fafaf7; --accent: #2d5016; --card: #f0ede6; --border: #d4d0c8; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Georgia', serif; background: var(--paper); color: var(--ink); line-height: 1.6; }
+  header { background: var(--ink); color: var(--paper); padding: 2rem 1rem; text-align: center; }
+  header h1 { font-size: 1.8rem; letter-spacing: 0.05em; margin-bottom: 0.3rem; }
+  header p { font-size: 0.9rem; opacity: 0.75; font-style: italic; }
+  main { max-width: 860px; margin: 2rem auto; padding: 0 1.5rem; }
+  section { margin-bottom: 2.5rem; }
+  h2 { font-size: 1.2rem; border-bottom: 2px solid var(--accent); padding-bottom: 0.4rem; margin-bottom: 1rem; color: var(--accent); }
+  .file-card { background: var(--card); border: 1px solid var(--border); padding: 1rem 1.2rem; margin-bottom: 0.8rem; border-radius: 4px; }
+  .file-card h3 { font-size: 1rem; margin-bottom: 0.3rem; }
+  .file-card p { font-size: 0.85rem; color: #555; margin-bottom: 0.5rem; }
+  .file-card a { display: inline-block; margin-right: 1rem; font-size: 0.85rem; color: var(--accent); text-decoration: none; font-weight: bold; }
+  .file-card a:hover { text-decoration: underline; }
+  .tag { display: inline-block; font-size: 0.7rem; background: var(--accent); color: var(--paper); padding: 0.1rem 0.5rem; border-radius: 3px; margin-left: 0.5rem; vertical-align: middle; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.85rem; }
+  th, td { border: 1px solid var(--border); padding: 0.5rem 0.7rem; text-align: left; }
+  th { background: var(--ink); color: var(--paper); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.05em; }
+  td a { color: var(--accent); }
+  footer { text-align: center; padding: 2rem 1rem; font-size: 0.75rem; color: #888; border-top: 1px solid var(--border); margin-top: 3rem; }
+  .toc-list { list-style: none; padding-left: 0; }
+  .toc-list li { padding: 0.3rem 0; }
+  .toc-list li::before { content: "▸ "; color: var(--accent); }
+  .meta { font-size: 0.8rem; color: #777; margin-bottom: 1.5rem; }
+</style>
+
+<script src="db-data.js"></script>
+</head>
+<body>
+
+<header>
+  <h1>Great House Farm — Llandough / Bute Estate Title Research</h1>
+  <p>Branch: greathousefarm &nbsp;|&nbsp; Release: v0.1.0.01 &nbsp;|&nbsp; 13 May 2026</p>
+</header>
+
+<main>
+
+<section>
+  <h2>About This Release</h2>
+  <p class="meta">Research into the chain of title for Great House Farm, Llandough-juxta-Penarth (formerly Ty Mawr), and the identified documentary gaps in the Marquess of Bute's Glamorgan estate records.</p>
+  <p>The branch documents the Williams family claim to Great House Farm, the February 1916 yearly agricultural tenancy granted by the 4th Marquess of Bute to John Williams, and the critical 1895–1938 gap in the Bute Estate Records where the tenancy falls in the dead centre.</p>
+</section>
+
+<section>
+  <h2>Research Files</h2>
+
+  <div class="file-card">
+    <h3>README.md <span class="tag">Primary Document</span></h3>
+    <p>The main research document: background, archival gaps table, key documents, reconstructed chain of title, unresolved questions, and four appendices (Stephenson & Alexander cross-reference, Cardiff Ground Rents Ltd, fee simple absolute question, 1670 vs 1766 date correction).</p>
+    <a href="README.md">View README.md</a>
+  </div>
+
+  <div class="file-card">
+    <h3>CHANGELOG.md <span class="tag">Changelog</span></h3>
+    <p>All notable changes to this research release, including added documents, corrections, and new findings.</p>
+    <a href="CHANGELOG.md">View CHANGELOG.md</a>
+  </div>
+
+  <div class="file-card">
+    <h3>bute-estate-gaps-research.txt <span class="tag">Gap Analysis</span></h3>
+    <p>Focused analysis of the documentary gap by record series, the two-Llandoughs conflation problem, the fee simple absolute question, and a prioritised research to-do list (14 items).</p>
+    <a href="static/greathousefarm/bute-estate-gaps-research.txt">View gap analysis</a>
+  </div>
+
+  <div class="file-card">
+    <h3>bpvsbucker-rundown.txt <span class="tag">Chronology</span></h3>
+    <p>Full chronological rundown from pre-1793 to November 1988 demolition, with 10 discrepancy notes (A–J), evidence assessment, FOI request log, and archival sources summary table.</p>
+    <a href="static/greathousefarm/bpvsbucker-rundown.txt">View full rundown</a>
+  </div>
+
+  <div class="file-card">
+    <h3>foi-requests-great-house-farm.txt <span class="tag">FOI Requests</span></h3>
+    <p>Six Freedom of Information requests to NLW, Glamorgan RO, National Archives, Vale of Glamorgan Council, Cadw, and HM Land Registry — submitted 12 May 2026.</p>
+    <a href="static/greathousefarm/foi-requests-great-house-farm.txt">View FOI requests</a>
+  </div>
+
+  <div class="file-card">
+    <h3>her-record-ggat02038s.txt <span class="tag">HER Record</span></h3>
+    <p>Full HER record (GGAT02038s) from the Heneb (formerly GGAT) Historic Environment Record for Great House Farm. Independently confirms demolition by BP Properties Ltd on 6th December 1988, medieval origins with C12th-C14th pottery, medieval ironwork at National Museum, Vaughan family tenure from C16th, and Bute Estate acquisition in early C19th. With analysis of significance for the BP vs Buckler case.</p>
+    <a href="her-record-ggat02038s.txt">View HER record</a>
+  </div>
+</section>
+
+<section>
+  <h2>Key Research Findings</h2>
+  <table>
+    <tr><th>Finding</th><th>Status</th><th>Impact</th></tr>
+    <tr><td>Two Llandoughs resolved — DSA/6/1158 is Cowbridge, not Penarth</td><td>Resolved</td><td>Eliminates false leads in 1938 sale</td></tr>
+    <tr><td>Cardiff Ground Rents Ltd identified (CH #00598381, est. 1958, active)</td><td>Identified</td><td>Potential parallel/successor entity to WGR</td></tr>
+    <tr><td>"1670" purchase date corrected to 1766</td><td>Corrected</td><td>Aligns with Bute–Windsor marriage</td></tr>
+    <tr><td>1215 construction date corrected to c.1500–1530 (Sir Matwd Cradock)</td><td>Corrected</td><td>Accurate dating of fortified manor</td></tr>
+    <tr><td>1895–1938 documentary gap identified as critical</td><td>Open</td><td>1916 tenancy undocumented in any archive</td></tr>
+    <tr><td>£5m WGR acquisition of Mountjoy interests (1938)</td><td>Documented</td><td>National Archives GB 0214 DA</td></tr>
+    <tr><td>Fee simple absolute claim — unproven in law</td><td>Open</td><td>Requires missing deed documents</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Archival Sources to Investigate</h2>
+  <table>
+    <tr><th>Reference</th><th>Location</th><th>Status</th></tr>
+    <tr><td>NLW GB 0210 E — Glamorgan Deeds (1698–1905)</td><td>NLW Aberystwyth</td><td>On-site visit needed</td></tr>
+    <tr><td>NLW GB 0210 EWIAMS — Williams of Hove (1437–1823)</td><td>NLW Aberystwyth</td><td>On-site visit needed</td></tr>
+    <tr><td>NLW GB 0210 DGETHWIL — Gethin Williams (1687–1889)</td><td>NLW Aberystwyth</td><td>On-site visit needed</td></tr>
+    <tr><td>NLW GB 0210 BUTE — Schedule of Bute Estate Records</td><td>NLW Aberystwyth</td><td>Catalogue only</td></tr>
+    <tr><td>Glamorgan RO DBDT58 — detailed handlist</td><td>Glamorgan RO</td><td>Partial</td></tr>
+    <tr><td>Cadw listing files — Great House Farm</td><td>Cadw</td><td>Pending</td></tr>
+    <tr><td>Vale of Glamorgan planning archives (1970–1988)</td><td>VGBC</td><td>Pending</td></tr>
+    <tr><td>HMLR title register (BP Properties Ltd, Nov 1982)</td><td>HM Land Registry</td><td>Pending — title number needed</td></tr>
+  </table>
+</section>
+
+<section>
+  <h2>Navigation</h2>
+  <ul class="toc-list">
+    <li><a href="README.md">Full Research README</a> — Background, gaps, key documents, chain of title, unresolved questions, appendices</li>
+    <li><a href="CHANGELOG.md">Changelog</a> — What changed in this release</li>
+    <li><a href="static/greathousefarm/bute-estate-gaps-research.txt">Gap Analysis</a> — Focused gap breakdown by record series</li>
+    <li><a href="static/greathousefarm/bpvsbucker-rundown.txt">Full Chronology</a> — Timeline with discrepancy notes</li>
+    <li><a href="static/greathousefarm/foi-requests-great-house-farm.txt">FOI Requests</a> — 6 requests to archives and authorities</li>
+  </ul>
+</section>
+
+</main>
+
+<footer>
+  <p>Compiled by Sion Buckler Esq. (Ret'd), Robin Hill, Dinas Powys — on behalf of the late Mary Williams, Manor of Llandough.</p>
+  <p>Release: greathousefarm-v0.1.0.01 &nbsp;|&nbsp; 13 May 2026 &nbsp;|&nbsp; Research ongoing</p>
+</footer>
+
+
+<!-- DB Footer Release -->
+<footer id="db-footer" style="font-size:12px;color:#666;text-align:center;padding:10px;margin-top:20px;border-top:1px solid #eee;">
+  Datro Release • <span id="db-version">loading…</span>
+</footer>
+<script>
+  (function(){
+    try {
+      var el=document.getElementById("db-version");
+      if(el && typeof DB_STATUS !== "undefined") {
+        el.textContent = "v"+DB_STATUS.version+" • "+DB_STATUS.release_date+" • Gateway: "+DB_STATUS.gateway_state+" • Sessions: "+DB_STATUS.active_sessions;
+      }
+    } catch(e) {}
+  })();
+</script>
+
+</body>
+</html>

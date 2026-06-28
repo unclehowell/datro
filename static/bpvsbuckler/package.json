@@ -1,0 +1,8 @@
+{
+  "name": "bpvsbuckler",
+  "version": "0.0.0.09",
+  "private": true,
+  "scripts": {
+    "build": "mkdir -p dist && for f in *; do [ \"$f\" = \"dist\" ] && continue; [ \"$f\" = \"node_modules\" ] && continue; cp -r \"$f\" dist/; done && cp index.html dist/ 2>/dev/null; true"
+  }
+}
