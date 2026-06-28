@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T14:04:48.124Z
+- **Deployed**: 2026-06-28T15:00:48.355Z
 - **URL**: [https://bpvsbuckler-redflag.datro.directory](https://bpvsbuckler-redflag.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T14:04:48.124Z*
+*Auto-updated by datro-flywheel at 2026-06-28T15:00:48.355Z*
