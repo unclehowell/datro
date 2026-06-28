@@ -1655,7 +1655,20 @@ function selectBranch(state) {
 
 // ── GitHub File API ──────────────────────────────────────────────────────────
 
+const _fcCache = new Map();
+
+function _fcCacheKey(branch, path) {
+  return `${branch}:${path}`;
+}
+
+function clearFileCache() {
+  _fcCache.clear();
+}
+
 async function getFileContent(token, branch, path) {
+  const key = _fcCacheKey(branch, path);
+  const cached = _fcCache.get(key);
+  if (cached !== undefined) return cached;
   try {
     const resp = await ghFetch(
       `https://api.github.com/repos/${GITHUB_REPO}/contents/${encodeURIComponent(path)}?ref=${encodeURIComponent(branch)}`,
@@ -1664,11 +1677,17 @@ async function getFileContent(token, branch, path) {
     const data = await resp.json();
     if (data.content) {
       const decoded = atob(data.content.replace(/\n/g, ''));
-      return { content: decoded, sha: data.sha };
+      const result = { content: decoded, sha: data.sha };
+      _fcCache.set(key, result);
+      return result;
     }
+    _fcCache.set(key, null);
     return null;
   } catch (err) {
-    if (err.message.includes('404')) return null;
+    if (err.message.includes('404')) {
+      _fcCache.set(key, null);
+      return null;
+    }
     throw err;
   }
 }
@@ -2642,6 +2661,7 @@ async function createSimpleRelease(token, branch, tagName, version, notesOverrid
 
 async function processBranch(env, branch) {
   const token = resolveToken(env);
+  clearFileCache();
   return withRetry(async () => {
     log(`Processing branch: ${branch}`);
 
