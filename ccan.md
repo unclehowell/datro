@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T15:58:48.184Z
+- **Deployed**: 2026-06-28T16:54:48.309Z
 - **URL**: [https://ccan.datro.directory](https://ccan.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T15:58:48.184Z*
+*Auto-updated by datro-flywheel at 2026-06-28T16:54:48.309Z*
