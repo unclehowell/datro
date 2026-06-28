@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.0.68`
-- **Tag**: `ui-v0.0.0.68`
-- **Deployed**: 2026-06-28T09:06:55.193Z
+- **Version**: `0.0.0.69`
+- **Tag**: `ui-v0.0.0.69`
+- **Deployed**: 2026-06-28T10:12:55.296Z
 - **URL**: [https://ui.datro.directory](https://ui.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T09:06:55.193Z*
+*Auto-updated by datro-flywheel at 2026-06-28T10:12:55.296Z*
