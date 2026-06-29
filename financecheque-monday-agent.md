@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T18:01:14.952Z
+- **Deployed**: 2026-06-29T22:00:25.074Z
 - **URL**: [https://financecheque-monday-agent.datro.directory](https://financecheque-monday-agent.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T18:01:14.952Z*
+*Auto-updated by datro-flywheel at 2026-06-29T22:00:25.074Z*
