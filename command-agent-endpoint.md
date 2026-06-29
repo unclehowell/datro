@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T17:00:48.346Z
+- **Deployed**: 2026-06-29T17:00:15.071Z
 - **URL**: [https://command-agent-endpoint.datro.directory](https://command-agent-endpoint.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T17:00:48.346Z*
+*Auto-updated by datro-flywheel at 2026-06-29T17:00:15.071Z*
