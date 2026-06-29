@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T16:52:48.054Z
+- **Deployed**: 2026-06-29T13:00:15.356Z
 - **URL**: [https://carfinancecheque.datro.directory](https://carfinancecheque.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T16:52:48.054Z*
+*Auto-updated by datro-flywheel at 2026-06-29T13:00:15.356Z*
