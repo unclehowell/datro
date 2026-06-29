@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T17:08:48.372Z
+- **Deployed**: 2026-06-29T21:00:14.277Z
 - **URL**: [https://financecheque.datro.directory](https://financecheque.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T17:08:48.372Z*
+*Auto-updated by datro-flywheel at 2026-06-29T21:00:14.277Z*
