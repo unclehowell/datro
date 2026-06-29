@@ -6,10 +6,10 @@
 
 - **Version**: `—`
 - **Tag**: `pending`
-- **Deployed**: 2026-06-28T19:01:03.837Z
+- **Deployed**: 2026-06-29T23:00:13.919Z
 - **URL**: [https://gh-pages.datro.directory](https://gh-pages.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-28T19:01:03.837Z*
+*Auto-updated by datro-flywheel at 2026-06-29T23:00:13.919Z*
