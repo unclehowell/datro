@@ -1,86 +1,175 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#007bff"> <!-- Example: use a primary brand color -->
-    <title>DATRO Platform</title>
-    <link rel="icon" href="/favicon.ico" sizes="any">
-    <link rel="icon" href="/favicon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    <link rel="canonical" href="https://cnei.example.com">
-    <meta name="description" content="The DATRO platform provides a comprehensive suite of tools and services for efficient data operations, enabling streamlined workflows and enhanced productivity.">
-    <link rel="prefetch" href="#main-content">
-    <a href="#main-content" id="skip-to-content" class="skip-link">Skip to main content</a>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>COMMAND Cockpit</title>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
-    <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebApplication",
-  "name": "DATRO Platform",
-  "description": "The DATRO platform provides a comprehensive suite of tools and services for efficient data operations, enabling streamlined workflows and enhanced productivity.",
-  "url": "https://cnei.example.com"
-}
-</script>
-<main id="main-content">
- \ \ \ \ <!-- Lazy-loaded images will be added here -->
-<script>
-  // Basic lazy loading polyfill or implementation would go here if browser support is a concern.
-  // For native lazy loading, no additional JS is strictly required for modern browsers.
-</script> <!-- Added ID for skip-to-content -->
-        <!-- Key Features Section -->
-<section id="key-features" aria-labelledby="key-features-heading">
-    <h2 id="key-features-heading">Key Features of the DATRO Platform</h2>
-    <div class="features-grid">
-        <div class="feature-item highlight-animated" role="button" aria-label="Automated Workflows Feature" tabindex="0" onmouseover="this.classList.add('highlight'); this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,123,255,0.3)';" onmouseout="this.classList.remove('highlight'); this.style.transform='scale(1)'; this.style.boxShadow='none';">
-            <img src="/icons/icon-automation.svg" alt="Icon representing automated workflows" aria-label="Automation workflow icon" width="48" height="48">
-            <h3>Automated Workflows</h3>
-            <p>Streamline your data operations with powerful automation capabilities.</p>
-        </div>
-<style>
-html { scroll-behavior: smooth; }
 
-.feature-item.highlight {
-    transform: scale(1.05);
-    transition: transform 0.3s ease-in-out;
-    box-shadow: 0 4px 15px rgba(0,123,255,0.3);
-}
-</style>
-        <div class="feature-item" role="button" tabindex="0" onmouseover="this.classList.add('highlight'); this.style.transform='scale(1.03)'; this.style.boxShadow='0 8px 20px rgba(0,123,255,0.3)';" onmouseout="this.classList.remove('highlight'); this.style.transform='scale(1)'; this.style.boxShadow='none';" onfocus="this.classList.add('focus'); this.style.outline='2px solid #0056b3';" onblur="this.classList.remove('focus'); this.style.outline='none';">
-<style>
-html { scroll-behavior: smooth; }
+<!-- LOGIN SCREEN -->
+<div class="login-overlay" id="login-overlay">
+    <div class="login-panel">
+        <div class="login-version" id="login-version">command-V0.0.2.00</div>
+        <div class="login-title">COMMAND TERMINAL</div>
+        <div class="login-subtitle">AUTHORISED PERSONNEL ONLY</div>
+        <input type="password" class="login-input" id="login-pass" placeholder="KEY" autocomplete="off">
+        <div class="login-error" id="login-error"></div>
+        <button class="login-btn" id="login-btn">VERIFY</button>
+    </div>
+</div>
 
-.feature-item.focus {
-    outline: 2px solid #0056b3;
-    outline-offset: 2px;
-}
-</style>
-            <img src="/icons/icon-analytics.svg" alt="Analytics Icon" width="48" height="48">
-            <h3>Advanced Analytics</h3>
-            <p>Gain deep insights from your data with cutting-edge analytical tools.</p>
-        </div>
-        <div class="feature-item">
-            <img src="/icons/icon-collaboration.svg" alt="Collaboration Icon" width="48" height="48">
-            <h3>Seamless Collaboration</h3>
-            <p>Enhance team productivity with integrated collaboration features.</p>
+<!-- MAIN COCKPIT -->
+<div id="app" style="display:none">
+<div class="cockpit">
+    <canvas id="track-canvas"></canvas>
+    <div id="graph-container" style="display:none;position:absolute;top:0;left:0;width:100%;height:100%;z-index:5"></div>
+
+    <div id="milestone-overlay">
+        <div id="current-milestone" class="ms-title">--</div>
+        <div id="progress-milestone" class="ms-progress">0/24</div>
+    </div>
+
+    <div class="fuel-stack">
+        <div class="fuel-gauge"><span class="fuel-label">API</span><div id="fuel-api" class="fuel-fill" style="height:80%"></div></div>
+        <div class="fuel-gauge"><span class="fuel-label">LLM</span><div id="fuel-llm" class="fuel-fill" style="height:65%"></div></div>
+        <div class="fuel-gauge"><span class="fuel-label">CLI</span><div id="fuel-cli" class="fuel-fill" style="height:90%"></div></div>
+        <div class="fuel-gauge"><span class="fuel-label">IDE</span><div id="fuel-ide" class="fuel-fill" style="height:40%"></div></div>
+    </div>
+
+    <!-- STATUS BAR (version, auto-update toggle) -->
+    <div class="status-bar">
+        <div class="status-bar-inner">
+            <span>v<span class="version-label" id="version-label">--</span></span>
+            <label class="auto-toggle">
+                <input type="checkbox" id="auto-toggle-input">
+                AUTO
+            </label>
+            <button id="logout-btn" style="background:none;border:1px solid #444;color:#666;font-family:monospace;font-size:9px;cursor:pointer;padding:2px 8px">LOCK</button>
         </div>
     </div>
-</section>
-<!-- Lazy-loaded images will be added here -->
+
+    <div class="branch-overlay-backdrop" id="branch-backdrop"></div>
+
+    <!-- LEFT PANEL: MD File Browser -->
+    <div class="branch-slide-menu left" id="left-branch-menu">
+        <div class="branch-menu-header">
+            <span>☰ BRANCHES</span>
+            <button class="branch-close-btn" id="btn-close-left">✕</button>
+        </div>
+        <div class="left-panel-scroll">
+            <div id="left-branch-list"></div>
+        </div>
+        <div class="cache-bar">
+            <span id="cache-status"></span>
+            <button class="deploy-btn" id="btn-deploy">🚀 DEPLOY</button>
+        </div>
+    </div>
+
+    <!-- RIGHT PANEL: Branch list -->
+    <div class="branch-slide-menu right" id="right-branch-menu">
+        <div class="branch-menu-header">▼ BRANCHES</div>
+        <div id="right-branch-list"></div>
+    </div>
+
+    <!-- EDITOR MODAL -->
+    <div class="editor-overlay" id="editor-overlay" style="display:none">
+        <div class="editor-modal">
+            <div class="editor-header">
+                <span id="editor-title"></span>
+                <button class="branch-close-btn" id="btn-close-editor">✕</button>
+            </div>
+            <textarea id="editor-textarea" spellcheck="false"></textarea>
+            <div class="editor-footer">
+                <span id="editor-status"></span>
+                <button class="save-btn" id="btn-save-edit">SAVE</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="dashboard-base">
+        <div class="joystick-area">
+            <button class="arrow-btn" id="btn-left-menu" title="Branches">◀</button>
+            <div class="control-module">
+                <canvas id="joystick-canvas"></canvas>
+            </div>
+            <button class="arrow-btn" id="btn-right-menu" title="Branches">▶</button>
+        </div>
+
+        <div class="center-console">
+            <!-- JARVIS CHAT -->
+            <div id="jarvis-header">
+                <div class="dot"></div>
+                <span class="jarvis-title">J.A.R.V.I.S</span>
+                <span id="jarvis-status" class="jarvis-status">Ready</span>
+                <button id="graph-toggle" class="graph-toggle-btn" title="Toggle graph view">⬡</button>
+            </div>
+            <div id="jarvis-messages"></div>
+            <div id="jarvis-bar">
+                <button id="jarvis-mute" class="jarvis-mute-btn">🔇</button>
+                <textarea id="jarvis-txt" rows="1" placeholder="Type..." onkeydown="jarvisOnKey(event)"></textarea>
+                <button class="jarvis-send-btn" id="jarvis-send" onclick="jarvisSend()">Send</button>
+            </div>
+
+            <!-- BOTTOM CONTROLS: Call + RMC2 volume/mute/status -->
+            <div class="hu-footer">
+                <button id="jarvis-call" class="jarvis-call-btn">📞 Call</button>
+                <div class="hu-vol-wrap" id="hu-vol-wrap">
+                    <div class="hu-vol-track" id="hu-vol-track"><div class="hu-vol-fill" id="hu-vol-fill"></div></div>
+                    <div class="hu-vol-knob" id="hu-vol-knob"></div>
+                    <span class="hu-vol-pct" id="hu-vol-pct">70%</span>
+                </div>
+                <button class="hu-mute-btn" id="hu-mute-btn" title="Mute radio">◼</button>
+                <span class="hu-status-txt" id="hu-status-txt">ON AIR</span>
+            </div>
+            <audio id="rmc-audio" crossorigin="anonymous"></audio>
+            <div class="branch-dots" id="branch-dots"></div>
+            <div class="current-branch-info">
+                <span>ACTIVE_SYS: <span id="active-branch-name">---</span></span>
+                <span>GEAR_MODE: <span id="gear-val-text">3</span></span>
+            </div>
+        </div>
+
+        <div class="right-module">
+            <div class="gear-display" id="gear-value">3</div>
+            <div class="shifter-base">
+                <input type="range" id="gear-slider" min="1" max="10" value="3">
+                <div class="shifter-stick"></div>
+            </div>
+            <div style="font-size:10px;font-family:monospace;opacity:0.5">SEQUENTIAL GEAR</div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- JOYSTICK CONFIRMATION MODAL -->
+<div class="confirm-overlay" id="confirm-overlay" style="display:none">
+    <div class="confirm-modal">
+        <div class="confirm-title">CONFIRM DIRECTION</div>
+        <div class="confirm-body" id="confirm-body">Are you sure?</div>
+        <div class="confirm-actions" id="confirm-actions">
+            <button class="confirm-btn confirm-no" id="confirm-no">NO</button>
+            <button class="confirm-btn confirm-yes" id="confirm-yes">YES</button>
+        </div>
+        <div class="confirm-statement" id="confirm-statement" style="display:none">The flywheel will now favour the MD files in that direction.</div>
+    </div>
+</div>
+
 <script>
-  // Basic lazy loading polyfill or implementation would go here if browser support is a concern.
-  // For native lazy loading, no additional JS is strictly required for modern browsers.
-</script
-    </main>
-</main>
-<!-- Consider deferring non-critical scripts or using dynamic imports here -->
-<!-- Example: <script src="script.js" defer></script> -->
-<script async>
-  // Basic INP optimization: Ensure critical interactions are not blocked
-  // More advanced strategies might involve breaking down long tasks or using web workers.
+// Deregister any stale Service Worker from previous version
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.getRegistrations().then(function(regs) {
+    regs.forEach(function(reg) { reg.unregister(); });
+  });
+  caches.keys().then(function(keys) {
+    keys.forEach(function(k) { caches.delete(k); });
+  });
+}
 </script>
-</main>
-        <!-- Content will be added here -->
-    </main>
+<script src="https://d3js.org/d3.v7.min.js"></script>
+<script src="/racetrack.js"></script>
+<script src="/graph.js"></script>
+<script src="/app.js"></script>
 </body>
 </html>
