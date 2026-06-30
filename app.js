@@ -1170,19 +1170,20 @@ function initGraphToggle() {
         btn.classList.toggle('active', graphViewActive);
         var canvas = $('track-canvas');
         var graphContainer = $('graph-container');
+        if (!canvas || !graphContainer) return;
         if (graphViewActive) {
             canvas.style.display = 'none';
             graphContainer.style.display = 'block';
-            // Stop road animation to save CPU
             if (window.trackStop) window.trackStop();
             if (!graphInitialized) {
                 graphInitialized = true;
-                if (window.graphInit) window.graphInit('graph-container');
+                try {
+                    if (window.graphInit) window.graphInit('graph-container');
+                } catch(e) { console.error('Graph init error:', e); }
             }
         } else {
             canvas.style.display = 'block';
             graphContainer.style.display = 'none';
-            // Restart road animation
             if (window.trackInit) {
                 var cv = $('track-canvas');
                 if (cv) window.trackInit(cv);

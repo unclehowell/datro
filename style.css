@@ -969,6 +969,9 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     width: 100%;
     height: 100%;
     z-index: 5;
+    display: none;
+    clip-path: polygon(8% 0%, 92% 0%, 100% 78%, 0% 78%);
+    background: #050505;
 }
 #graph-container svg {
     display: block;
