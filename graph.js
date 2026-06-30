@@ -32,7 +32,10 @@ var CAT_COLORS = {
 
 var CAT_ORDER = ['platform','frontend','docs','finance','legal','core','experimental'];
 
-// Build nodes and links
+// LEFT = green (#00ff66), RIGHT = blue (#0088ff)
+var LEFT_COLOR = '#00ff66';
+var RIGHT_COLOR = '#0088ff';
+
 var nodes = [];
 var links = [];
 var branchNodes = {};
@@ -59,7 +62,7 @@ BRANCHES.forEach(function(b) {
   nodes.push(bn);
   branchNodes[b] = bn;
 
-  // Left file nodes
+  // Left file nodes (green)
   MD_FILES.forEach(function(f) {
     var fid = 'l:' + b + '/' + f;
     var fn = {
@@ -75,7 +78,7 @@ BRANCHES.forEach(function(b) {
     links.push({ source: 'b:' + b, target: fid, side: 'left' });
   });
 
-  // Right file nodes
+  // Right file nodes (blue)
   MD_FILES.forEach(function(f) {
     var fid = 'r:' + b + '/' + f;
     var fn = {
@@ -92,7 +95,7 @@ BRANCHES.forEach(function(b) {
   });
 });
 
-// Category links: connect branches in the same category
+// Category links
 CAT_ORDER.forEach(function(cat) {
   var members = CATEGORIES[cat] || [];
   for (var i = 0; i < members.length; i++) {
@@ -116,17 +119,17 @@ function initGraph(containerId) {
   var legend = document.createElement('div');
   legend.id = 'graph-legend';
   legend.style.cssText = 'position:absolute;top:12px;right:12px;background:rgba(0,0,0,0.85);padding:10px;border:1px solid #333;border-radius:4px;font-size:10px;z-index:20;font-family:monospace';
-  var legendHtml = '<div style="color:#4ecdc4;margin-bottom:6px;font-weight:bold">CATEGORIES</div>';
+  var legendHtml = '<div style="color:#888;margin-bottom:6px;font-weight:bold">CATEGORIES</div>';
   CAT_ORDER.forEach(function(c) {
     legendHtml += '<div style="display:flex;align-items:center;gap:6px;margin:3px 0"><span style="width:8px;height:8px;border-radius:50%;background:' + (CAT_COLORS[c] || '#888') + '"></span><span style="color:#aaa">' + c + '</span></div>';
   });
-  legendHtml += '<div style="border-top:1px solid #333;margin:6px 0;padding-top:6px;display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:#4ecdc4"></span><span style="color:#4ecdc4">left files</span></div>';
-  legendHtml += '<div style="display:flex;align-items:center;gap:6px;margin:3px 0"><span style="width:8px;height:8px;border-radius:50%;background:#ffd93d"></span><span style="color:#ffd93d">right files</span></div>';
+  legendHtml += '<div style="border-top:1px solid #333;margin:6px 0;padding-top:6px;display:flex;align-items:center;gap:6px"><span style="width:8px;height:8px;border-radius:50%;background:' + LEFT_COLOR + '"></span><span style="color:' + LEFT_COLOR + '">left files</span></div>';
+  legendHtml += '<div style="display:flex;align-items:center;gap:6px;margin:3px 0"><span style="width:8px;height:8px;border-radius:50%;background:' + RIGHT_COLOR + '"></span><span style="color:' + RIGHT_COLOR + '">right files</span></div>';
   legend.innerHTML = legendHtml;
 
   tooltipEl = document.createElement('div');
   tooltipEl.id = 'graph-tooltip';
-  tooltipEl.style.cssText = 'position:fixed;background:rgba(0,0,0,0.92);border:1px solid #4ecdc4;border-radius:4px;padding:8px 12px;font-size:11px;pointer-events:none;display:none;z-index:100;font-family:monospace;max-width:300px';
+  tooltipEl.style.cssText = 'position:fixed;background:rgba(0,0,0,0.92);border:1px solid ' + LEFT_COLOR + ';border-radius:4px;padding:8px 12px;font-size:11px;pointer-events:none;display:none;z-index:100;font-family:monospace;max-width:300px';
 
   var svgEl = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
   svgEl.id = 'graph-svg';
@@ -165,13 +168,11 @@ function buildGraph() {
   var cy = graphHeight / 2;
   var branchR = Math.min(graphWidth, graphHeight) * 0.28;
 
-  // Zoom behavior
   var zoom = d3.zoom()
     .scaleExtent([0.2, 4])
     .on('zoom', function(event) { g.attr('transform', event.transform); });
   svg.call(zoom);
 
-  // Force simulation
   graphSim = d3.forceSimulation(nodes)
     .force('link', d3.forceLink(links).id(function(d) { return d.id; })
       .distance(function(l) { return l.type === 'category' ? 80 : 60; })
@@ -208,11 +209,14 @@ function buildGraph() {
     .join('line')
     .attr('stroke', function(l) {
       if (l.type === 'category') return 'rgba(255,255,255,0.08)';
-      if (l.side === 'left') return '#4ecdc4';
-      return '#ffd93d';
+      if (l.side === 'left') return LEFT_COLOR;
+      return RIGHT_COLOR;
     })
     .attr('stroke-width', function(l) { return l.type === 'category' ? 0.5 : 1; })
-    .attr('stroke-opacity', function(l) { return l.type === 'category' ? 0.15 : 0.3; })
+    .attr('stroke-opacity', function(l) {
+      if (l.type === 'category') return 0.15;
+      return l.side === 'left' ? 0.2 : 0.2;
+    })
     .attr('stroke-dasharray', function(l) { return l.type === 'category' ? '3,3' : null; });
 
   // Nodes
@@ -267,11 +271,11 @@ function buildGraph() {
   node.filter(function(d) { return d.type === 'file'; })
     .append('circle')
     .attr('r', 3.5)
-    .attr('fill', function(d) { return d.side === 'left' ? '#4ecdc4' : '#ffd93d'; })
+    .attr('fill', function(d) { return d.side === 'left' ? LEFT_COLOR : RIGHT_COLOR; })
     .attr('stroke', 'rgba(255,255,255,0.3)')
     .attr('stroke-width', 0.5)
     .on('mouseover', function(event, d) {
-      showTooltip(event, '<span style="color:' + (d.side === 'left' ? '#4ecdc4' : '#ffd93d') + '">' + d.label + '</span> <span style="color:#666">' + d.side + '</span><br><span style="color:#888;font-size:10px">' + d.branch + '</span>');
+      showTooltip(event, '<span style="color:' + (d.side === 'left' ? LEFT_COLOR : RIGHT_COLOR) + '">' + d.label + '</span> <span style="color:#666">' + d.side + '</span><br><span style="color:#888;font-size:10px">' + d.branch + '</span>');
     })
     .on('mousemove', moveTooltip)
     .on('mouseout', hideTooltip);
@@ -280,7 +284,7 @@ function buildGraph() {
   g.append('text')
     .attr('x', cx - branchR - 40)
     .attr('y', 30)
-    .attr('fill', '#4ecdc4')
+    .attr('fill', LEFT_COLOR)
     .attr('font-size', 11)
     .attr('font-family', 'monospace')
     .attr('opacity', 0.5)
@@ -289,13 +293,12 @@ function buildGraph() {
   g.append('text')
     .attr('x', cx + 40)
     .attr('y', 30)
-    .attr('fill', '#ffd93d')
+    .attr('fill', RIGHT_COLOR)
     .attr('font-size', 11)
     .attr('font-family', 'monospace')
     .attr('opacity', 0.5)
     .text('RIGHT HEMISPHERE ▶');
 
-  // Center divider line
   g.append('line')
     .attr('x1', cx)
     .attr('y1', 0)
@@ -334,7 +337,6 @@ function hideTooltip() {
   tooltipEl.style.display = 'none';
 }
 
-// Clean up
 function destroyGraph() {
   if (graphSim) {
     graphSim.stop();

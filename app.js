@@ -445,61 +445,276 @@ function selectBranch(name) {
     triggerFlywheel(name);
 }
 
-// ── BRANCH MENUS (RIGHT PANEL ONLY) ──
-function initBranchMenus() {
-    var rightList = $('right-branch-list');
-    if (!rightList) return;
-    BRANCH_NAMES.forEach(function(name) {
-        var item = document.createElement('div');
-        item.className = 'branch-menu-item';
-        item.dataset.branch = name;
-        var dot = document.createElement('span');
-        dot.className = 'branch-menu-dot';
-        dot.style.backgroundColor = BRANCH_COLORS[name];
-        item.appendChild(dot);
-        var label = document.createElement('span');
-        label.className = 'branch-menu-name';
-        label.textContent = name;
-        item.appendChild(label);
-        var tenantId = HONCHO_TENANT_IDS[name];
-        if (tenantId) {
-            var tenantLabel = document.createElement('span');
-            tenantLabel.className = 'branch-menu-tenant';
-            tenantLabel.textContent = '🏠 ' + tenantId.slice(0, 12) + '…';
-            tenantLabel.title = tenantId;
-            item.appendChild(tenantLabel);
-        }
-        item.onclick = function() {
-            selectBranch(name);
-            closeBranchMenus();
-        };
-        rightList.appendChild(item);
-    });
-
-    var brm = $('btn-right-menu');
-    if (brm) brm.onclick = function() { toggleBranchMenu('right'); };
+// ── SIDE FILES MENUS ──
+function initSideFileMenus() {
+    var closeLeft = $('close-left-files');
+    var closeRight = $('close-right-files');
     var backdrop = $('branch-backdrop');
-    if (backdrop) backdrop.onclick = closeBranchMenus;
+    if (closeLeft) closeLeft.onclick = closeSideMenus;
+    if (closeRight) closeRight.onclick = closeSideMenus;
+    if (backdrop) backdrop.onclick = closeSideMenus;
 }
 
-function toggleBranchMenu(side) {
-    var menu = $(side + '-branch-menu');
-    var backdrop = $('branch-backdrop');
-    var isOpen = menu.classList.contains('open');
-    closeBranchMenus();
-    if (!isOpen) {
-        menu.classList.add('open');
-        if (backdrop) backdrop.classList.add('visible');
-        var btn = $('btn-' + side + '-menu');
-        if (btn) btn.classList.add('active');
-    }
-}
-
-function closeBranchMenus() {
-    document.querySelectorAll('.branch-slide-menu').forEach(function(m) { m.classList.remove('open'); });
+function closeSideMenus() {
+    document.querySelectorAll('.side-files-menu').forEach(function(m) { m.classList.remove('open'); });
     var backdrop = $('branch-backdrop');
     if (backdrop) backdrop.classList.remove('visible');
-    document.querySelectorAll('.arrow-btn').forEach(function(b) { b.classList.remove('active'); });
+    document.querySelectorAll('.indicator-btn').forEach(function(b) { b.classList.remove('active'); });
+}
+
+function openSideMenu(side) {
+    closeSideMenus();
+    var menu = $(side + '-files-menu');
+    var backdrop = $('branch-backdrop');
+    if (!menu) return;
+    menu.classList.add('open');
+    if (backdrop) backdrop.classList.add('visible');
+    var btn = $('indicator-' + side);
+    if (btn) btn.classList.add('active');
+    renderSideFiles(side);
+}
+
+function renderSideFiles(side) {
+    var list = $(side + '-files-list');
+    if (!list) return;
+    list.innerHTML = 'Loading...';
+    fetch('/api/branches')
+        .then(function(r) { return r.json(); })
+        .then(function(branches) {
+            list.innerHTML = '';
+            branches.forEach(function(b) {
+                var header = document.createElement('div');
+                header.className = 'side-branch-header';
+                var expand = document.createElement('span');
+                expand.className = 'branch-expand';
+                expand.textContent = '▶';
+                header.appendChild(expand);
+                var dot = document.createElement('span');
+                dot.className = 'branch-dot';
+                dot.style.backgroundColor = BRANCH_COLORS[b.name] || '#888';
+                header.appendChild(dot);
+                var nameSpan = document.createElement('span');
+                nameSpan.className = 'branch-name';
+                nameSpan.textContent = b.name;
+                header.appendChild(nameSpan);
+                if (b.version) {
+                    var verSpan = document.createElement('span');
+                    verSpan.className = 'branch-version';
+                    var vText = 'v' + b.version;
+                    if (b.name === 'command') vText += ' ◈';
+                    verSpan.textContent = vText;
+                    header.appendChild(verSpan);
+                }
+                list.appendChild(header);
+
+                var children = document.createElement('div');
+                children.className = 'tree-children';
+                children.style.display = 'none';
+                list.appendChild(children);
+
+                var expanded = false;
+                header.onclick = function() {
+                    expanded = !expanded;
+                    children.style.display = expanded ? 'block' : 'none';
+                    expand.textContent = expanded ? '▼' : '▶';
+                    if (expanded) renderSideFileChildren(b.name, side, children);
+                };
+            });
+        })
+        .catch(function() {
+            list.innerHTML = '<div style="padding:14px;color:#f55;font-size:10px">Failed to load branches</div>';
+        });
+}
+
+function renderSideFileChildren(branch, side, container) {
+    container.innerHTML = 'Loading...';
+    var MD_FILES_SIDE = ['AGENT','README','CHANGELOG','MEMORY','SKILLS','HEARTBEAT','SOUL','MASTERPLAN','RULES','TEMPLATE','CONTEXT','GLOSSARY','RESOURCES','TASKS','IDENTITY','SPEC'];
+    container.innerHTML = '';
+    MD_FILES_SIDE.forEach(function(f) {
+        var item = document.createElement('div');
+        item.className = 'side-file-item';
+        var dot = document.createElement('span');
+        dot.className = 'branch-dot';
+        dot.style.backgroundColor = side === 'left' ? 'rgba(0,255,0,0.5)' : 'rgba(0,136,255,0.5)';
+        item.appendChild(dot);
+        var label = document.createElement('span');
+        label.className = 'file-label';
+        label.textContent = f;
+        item.appendChild(label);
+        var exists = document.createElement('span');
+        exists.className = 'file-exists';
+        exists.textContent = '?';
+        item.appendChild(exists);
+        item.onclick = function() {
+            closeSideMenus();
+            var filename = '/' + (side === 'left' ? 'high' : 'right') + '/' + f + '.md';
+            // Check both side paths
+            var paths = [f + '.md', f + '.' + side + '.md', f + '.md'];
+            var sidePath = side === 'left' ? f : f;
+            openMdViewer(branch, sidePath, f);
+        };
+        container.appendChild(item);
+    });
+}
+
+// ── MD VIEWER ──
+var currentViewerFile = null;
+
+function openMdViewer(branch, fileName, displayName) {
+    var overlay = $('md-viewer-overlay');
+    var header = $('md-viewer-header');
+    var body = $('md-viewer-body');
+    if (!overlay || !header || !body) return;
+
+    // Hide road/graph
+    var canvas = $('track-canvas');
+    var graphContainer = $('graph-container');
+    if (canvas) canvas.style.opacity = '0.3';
+    if (graphContainer) graphContainer.style.opacity = '0.3';
+
+    currentViewerFile = { branch: branch, fileName: fileName, displayName: displayName || fileName };
+
+    header.innerHTML = '';
+    var close = document.createElement('button');
+    close.className = 'close-viewer';
+    close.textContent = '✕';
+    close.onclick = closeMdViewer;
+    header.appendChild(close);
+    var title = document.createElement('span');
+    title.className = 'viewer-title';
+    title.textContent = branch + ' / ' + displayName;
+    header.appendChild(title);
+    var actions = document.createElement('div');
+    actions.className = 'viewer-actions';
+    var editBtn = document.createElement('button');
+    editBtn.className = 'viewer-btn edit-btn';
+    editBtn.textContent = 'EDIT';
+    editBtn.onclick = function() {
+        closeMdViewer();
+        openEditor(branch, 'high', fileName);
+    };
+    actions.appendChild(editBtn);
+    var deployBtn = document.createElement('button');
+    deployBtn.className = 'viewer-btn deploy-btn';
+    deployBtn.textContent = 'DEPLOY';
+    deployBtn.onclick = function() { deployMdFile(); };
+    actions.appendChild(deployBtn);
+    header.appendChild(actions);
+
+    body.textContent = 'Loading...';
+    overlay.style.display = 'flex';
+    body.scrollTop = 0;
+
+    // Try to fetch the MD file from GitHub
+    var possiblePaths = [
+        fileName + '.md',
+        fileName,
+    ];
+    if (fileName.indexOf('.') === -1) possiblePaths.unshift(fileName + '.md');
+
+    fetchFromBranch(branch, possiblePaths, body);
+}
+
+function fetchFromBranch(branch, paths, bodyEl) {
+    if (paths.length === 0) {
+        bodyEl.textContent = '// File not found on GitHub';
+        return;
+    }
+    var path = paths[0];
+    fetch('/api/branches/' + encodeURIComponent(branch) + '/files/high/' + encodeURIComponent(path))
+        .then(function(r) {
+            if (!r.ok) throw new Error('Not found');
+            return r.json();
+        })
+        .then(function(data) {
+            bodyEl.textContent = data.content || '(empty)';
+        })
+        .catch(function() {
+            fetchFromBranch(branch, paths.slice(1), bodyEl);
+        });
+}
+
+function closeMdViewer() {
+    var overlay = $('md-viewer-overlay');
+    if (overlay) overlay.style.display = 'none';
+    var canvas = $('track-canvas');
+    var graphContainer = $('graph-container');
+    if (canvas) canvas.style.opacity = '1';
+    if (graphContainer) graphContainer.style.opacity = '1';
+    currentViewerFile = null;
+}
+
+function deployMdFile() {
+    if (!currentViewerFile) return;
+    var status = $('editor-status');
+    var deployBtnEl = document.querySelector('.viewer-btn.deploy-btn');
+    if (deployBtnEl) { deployBtnEl.textContent = '...'; deployBtnEl.disabled = true; }
+
+    var branch = currentViewerFile.branch;
+    var fileName = currentViewerFile.fileName;
+
+    // Get content from cache or fetch it
+    var cacheKey = branch + '/high/' + fileName;
+    var content = editCache[cacheKey];
+    if (content === undefined) {
+        // Try to pull from viewer body
+        var body = $('md-viewer-body');
+        if (body && body.textContent && body.textContent !== 'Loading...' && !body.textContent.startsWith('// File not found')) {
+            content = body.textContent;
+        }
+    }
+    if (content === undefined) content = '';
+
+    var filePath = fileName + (fileName.indexOf('.') === -1 ? '.md' : '');
+
+    fetch('/api/rerelease/' + encodeURIComponent(branch), {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            files: [{ path: filePath, content: content, message: 'Edited via COMMAND Cockpit: ' + fileName }]
+        })
+    })
+    .then(function(r) { return r.json(); })
+    .then(function(data) {
+        if (deployBtnEl) { deployBtnEl.textContent = 'DEPLOY'; deployBtnEl.disabled = false; }
+        var status = $('editor-status');
+        if (data.ok) {
+            // Refresh version
+            if (status) status.textContent = '✓ Deployed & release triggered';
+            setTimeout(function() {
+                closeMdViewer();
+                refreshBranchVersions();
+            }, 1500);
+        } else {
+            if (status) status.textContent = '✗ Deploy failed';
+        }
+    })
+    .catch(function() {
+        if (deployBtnEl) { deployBtnEl.textContent = 'DEPLOY'; deployBtnEl.disabled = false; }
+        var status = $('editor-status');
+        if (status) status.textContent = '✗ Network error';
+    });
+}
+
+function refreshBranchVersions() {
+    // Refresh version label
+    fetch('/api/version')
+        .then(function(r) { return r.json(); })
+        .then(function(d) {
+            currentVersion = d.version || '0.0.0';
+            var el = $('version-label');
+            if (el) el.textContent = currentVersion;
+        })
+        .catch(function() {});
+}
+
+// ── BRANCH MENUS (LEGACY - reuses old button behavior for dashboard ◀▶) ──
+function initBranchMenus() {
+    // Left/right dashboard buttons now open side file menus
+    var btnLeft = $('btn-left-menu');
+    var btnRight = $('btn-right-menu');
+    if (btnLeft) btnLeft.onclick = function() { openSideMenu('left'); };
+    if (btnRight) btnRight.onclick = function() { openSideMenu('right'); };
 }
 
 // ── LEFT PANEL (MD FILE BROWSER) ──
@@ -1131,7 +1346,7 @@ function initJarvis() {
   }
 }
 
-// ── FUEL ──
+// ── FUEL / LEVELS ──
 async function loadFuel() {
     try {
         var res = await fetch('/api/fuel');
@@ -1139,8 +1354,38 @@ async function loadFuel() {
         ['api','llm','cli','ide'].forEach(function(t) {
             var el = $('fuel-' + t);
             if (el) el.style.height = data[t] + '%';
+            var slider = document.querySelector('.level-item[data-level="' + t + '"] .level-slider');
+            if (slider) { slider.value = data[t]; }
+            var val = $('level-val-' + t);
+            if (val) val.textContent = data[t] + '%';
         });
     } catch(e) {}
+}
+
+// ── CONTROLS BAR ──
+function initControlsBar() {
+    var toggle = $('controls-toggle');
+    var bar = $('controls-bar');
+    if (!toggle || !bar) return;
+    toggle.addEventListener('click', function() {
+        bar.classList.toggle('collapsed');
+        toggle.textContent = bar.classList.contains('collapsed') ? '▲' : '▼';
+        var cockpit = document.querySelector('.cockpit');
+        if (cockpit) cockpit.classList.toggle('controls-collapsed', bar.classList.contains('collapsed'));
+    });
+
+    // Level sliders
+    document.querySelectorAll('.level-slider').forEach(function(slider) {
+        slider.addEventListener('input', function() {
+            var item = this.closest('.level-item');
+            if (!item) return;
+            var level = item.dataset.level;
+            var val = $('level-val-' + level);
+            if (val) val.textContent = this.value + '%';
+            var fuelEl = $('fuel-' + level);
+            if (fuelEl) fuelEl.style.height = this.value + '%';
+        });
+    });
 }
 
 // ── FLYWHEEL ──
@@ -1220,12 +1465,14 @@ function startApp() {
     initJarvis();
     initBranchDots();
     initBranchMenus();
-    initLeftPanel();
+    initSideFileMenus();
+    initControlsBar();
     initVersion();
     initLogoutBtn();
     initGraphToggle();
     setInterval(loadFuel, 5000);
     setInterval(pollFlywheel, 3000);
+    loadFuel();
 }
 
 document.addEventListener('DOMContentLoaded', function() {

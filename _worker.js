@@ -13,6 +13,17 @@ function json(data, status = 200) {
   });
 }
 
+function extractVersion(tag, branch) {
+  const prefix = branch + '-v';
+  if (tag.startsWith(prefix)) return tag.slice(prefix.length);
+  return null;
+}
+
+function parseVer(v) {
+  const parts = v.split('.').map(Number);
+  return parts.reduce((a, b, i) => a + b * Math.pow(100, 3 - i), 0);
+}
+
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
@@ -40,7 +51,31 @@ export default {
       const r = await fetch(WORKER + '/__status');
       const s = await r.json();
       const activeBranch = (s.last_run && s.last_run.branch) || 'command';
-      return json(ALL_BRANCHES.map(b => ({ name: b, active: b === activeBranch, purpose: '', url: 'https://' + b + '.datro.directory' })));
+
+      // Fetch release versions from GitHub
+      let branchVersions = {};
+      try {
+        const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100');
+        const releases = await releasesResp.json();
+        if (Array.isArray(releases)) {
+          for (const release of releases) {
+            const tag = release.tag_name || '';
+            for (const b of ALL_BRANCHES) {
+              const ver = extractVersion(tag, b);
+              if (ver && (!branchVersions[b] || parseVer(ver) > parseVer(branchVersions[b]))) {
+                branchVersions[b] = ver;
+              }
+            }
+          }
+        }
+      } catch (e) { /* best-effort */ }
+
+      return json(ALL_BRANCHES.map(b => ({
+        name: b,
+        active: b === activeBranch,
+        version: branchVersions[b] || null,
+        releaseUrl: branchVersions[b] ? ('https://github.com/unclehowell/datro/releases/tag/' + b + '-v' + branchVersions[b]) : null,
+      })));
     }
 
     // File read: GET /api/branches/{branch}/files/{side}/{filename}
@@ -58,10 +93,43 @@ export default {
         const r = await fetch(WORKER + '/__edit_file', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ branch, path: filename, content: body.content, message: 'Edited via COMMAND Cockpit' }),
+          body: JSON.stringify({ branch, path: filename, content: body.content, message: body.message || 'Edited via COMMAND Cockpit' }),
         });
         return cors(r);
       }
+    }
+
+    // Rerelease: POST /api/rerelease/{branch}
+    const rereleaseMatch = path.match(/^\/api\/rerelease\/([^/]+)$/);
+    if (rereleaseMatch && request.method === 'POST') {
+      const branch = rereleaseMatch[1];
+      const body = await request.json();
+      const files = body.files || []; // [{path, content}]
+
+      // Save all files first
+      const results = [];
+      let ok = true;
+      for (const file of files) {
+        try {
+          const r = await fetch(WORKER + '/__edit_file', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ branch, path: file.path, content: file.content, message: file.message || 'Edited via COMMAND Cockpit' }),
+          });
+          const result = await r.json();
+          results.push(result);
+          if (!result.ok) ok = false;
+        } catch (e) {
+          ok = false;
+          results.push({ ok: false, error: e.message });
+        }
+      }
+
+      // Trigger rerelease via flywheel cron
+      const cronR = await fetch(WORKER + '/__cron?branch=' + encodeURIComponent(branch), { method: 'POST' });
+      const cronText = await cronR.text();
+
+      return json({ ok, files: results, trigger: cronText });
     }
 
     if (path === '/api/flywheel/state') {
@@ -99,7 +167,7 @@ export default {
 
     if (path.startsWith('/api/flywheel/trigger/')) {
       const branch = path.replace('/api/flywheel/trigger/', '');
-      const r = await fetch(WORKER + '/__trigger?branch=' + encodeURIComponent(branch), { method: 'POST' });
+      const r = await fetch(WORKER + '/__cron?branch=' + encodeURIComponent(branch), { method: 'POST' });
       return cors(r);
     }
 
