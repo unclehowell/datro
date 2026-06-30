@@ -400,50 +400,21 @@ function triggerFlywheel(branch) {
         .catch(function() {});
 }
 
-// Gear → branch cooldown (seconds): regular=2x, cnei=1x (matches flywheel RATE_BY_GEAR)
-var GEAR_CADENCE_SEC = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60];
-
-function formatCadence(sec) {
-    if (sec >= 3600) return (sec / 3600) + 'h';
-    if (sec >= 60) return Math.round(sec / 60) + 'm';
-    return sec + 's';
-}
-
-function updateGearCadenceLabel(g) {
-    var el = $('gear-cadence');
-    if (!el) return;
-    var base = GEAR_CADENCE_SEC[g - 1] || 3600;
-    el.textContent = 'BRANCH ' + formatCadence(base * 2) + ' / CNEI ' + formatCadence(base);
-}
-
 // ── GEAR ──
 function initGear() {
     var slider = $('gear-slider');
     if (!slider) return;
     slider.addEventListener('input', function(e) {
-        var g = parseInt(e.target.value, 10);
+        var g = parseInt(e.target.value);
         config.gear = g;
         var gv = $('gear-value');
         var gvt = $('gear-val-text');
         if (gv) gv.textContent = g;
         if (gvt) gvt.textContent = g;
-        updateGearCadenceLabel(g);
         sendFlywheelConfig();
     });
-    updateGearCadenceLabel(config.gear || 3);
 
-    fetch('/api/flywheel/config').then(function(r) { return r.json(); }).then(function(d) {
-        if (d && d.gear) {
-            config.gear = d.gear;
-            slider.value = d.gear;
-            var gv = $('gear-value');
-            var gvt = $('gear-val-text');
-            if (gv) gv.textContent = d.gear;
-            if (gvt) gvt.textContent = d.gear;
-            updateGearCadenceLabel(d.gear);
-        }
-    }).catch(function() {});
-
+    // Init: send bias on load
     setTimeout(sendFlywheelBias, 1000);
 }
 
@@ -1187,6 +1158,39 @@ async function pollFlywheel() {
 
 
 
+// ── GRAPH VIEW TOGGLE ──
+var graphViewActive = false;
+var graphInitialized = false;
+
+function initGraphToggle() {
+    var btn = $('graph-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+        graphViewActive = !graphViewActive;
+        btn.classList.toggle('active', graphViewActive);
+        var canvas = $('track-canvas');
+        var graphContainer = $('graph-container');
+        if (graphViewActive) {
+            canvas.style.display = 'none';
+            graphContainer.style.display = 'block';
+            // Stop road animation to save CPU
+            if (window.trackStop) window.trackStop();
+            if (!graphInitialized) {
+                graphInitialized = true;
+                if (window.graphInit) window.graphInit('graph-container');
+            }
+        } else {
+            canvas.style.display = 'block';
+            graphContainer.style.display = 'none';
+            // Restart road animation
+            if (window.trackInit) {
+                var cv = $('track-canvas');
+                if (cv) window.trackInit(cv);
+            }
+        }
+    });
+}
+
 // ── LOGOUT ──
 function initLogoutBtn() {
     var btn = $('logout-btn');
@@ -1218,6 +1222,7 @@ function startApp() {
     initLeftPanel();
     initVersion();
     initLogoutBtn();
+    initGraphToggle();
     setInterval(loadFuel, 5000);
     setInterval(pollFlywheel, 3000);
 }
