@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.1.65`
-- **Tag**: `wayback-v0.0.1.65`
-- **Deployed**: 2026-06-29T06:35:24.426Z
+- **Version**: `0.0.1.66`
+- **Tag**: `wayback-v0.0.1.66`
+- **Deployed**: 2026-06-30T12:00:36.606Z
 - **URL**: [https://wayback.datro.directory](https://wayback.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-29T06:35:24.426Z*
+*Auto-updated by datro-flywheel at 2026-06-30T12:00:36.606Z*
