@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>COMMAND Cockpit</title>
 <link rel="stylesheet" href="/style.css">
+<meta name="description" content="">
 </head>
 <body>
 
@@ -37,7 +38,7 @@
 
     <!-- CONTROLS BAR (collapsible) -->
     <div class="controls-bar" id="controls-bar">
-        <button class="controls-toggle" id="controls-toggle">▼</button>
+        <button class="controls-toggle" id="controls-toggle">â¼</button>
         <div class="controls-inner" id="controls-inner">
             <div class="level-controls">
                 <div class="level-item" data-level="api">
@@ -67,8 +68,8 @@
                 </div>
             </div>
             <div class="indicator-group">
-                <button class="indicator-btn left" id="indicator-left" title="Left MD files">◀</button>
-                <button class="indicator-btn right" id="indicator-right" title="Right MD files">▶</button>
+                <button class="indicator-btn left" id="indicator-left" title="Left MD files">â</button>
+                <button class="indicator-btn right" id="indicator-right" title="Right MD files">â¶</button>
             </div>
         </div>
     </div>
@@ -90,8 +91,8 @@
     <!-- LEFT FILES MENU (green) -->
     <div class="side-files-menu left" id="left-files-menu">
         <div class="side-files-header">
-            <span class="side-files-title">◀ LEFT MD FILES</span>
-            <button class="side-files-close" id="close-left-files">✕</button>
+            <span class="side-files-title">â LEFT MD FILES</span>
+            <button class="side-files-close" id="close-left-files">â</button>
         </div>
         <div class="side-files-scroll" id="left-files-list"></div>
         <div class="side-files-footer">
@@ -102,8 +103,8 @@
     <!-- RIGHT FILES MENU (blue) -->
     <div class="side-files-menu right" id="right-files-menu">
         <div class="side-files-header">
-            <span class="side-files-title">▶ RIGHT MD FILES</span>
-            <button class="side-files-close" id="close-right-files">✕</button>
+            <span class="side-files-title">â¶ RIGHT MD FILES</span>
+            <button class="side-files-close" id="close-right-files">â</button>
         </div>
         <div class="side-files-scroll" id="right-files-list"></div>
         <div class="side-files-footer">
@@ -116,7 +117,7 @@
         <div class="editor-modal">
             <div class="editor-header">
                 <span id="editor-title"></span>
-                <button class="branch-close-btn" id="btn-close-editor">✕</button>
+                <button class="branch-close-btn" id="btn-close-editor">â</button>
             </div>
             <textarea id="editor-textarea" spellcheck="false"></textarea>
             <div class="editor-footer">
@@ -128,11 +129,11 @@
 
     <div class="dashboard-base">
         <div class="joystick-area">
-            <button class="arrow-btn" id="btn-left-menu" title="Branches">◀</button>
+            <button class="arrow-btn" id="btn-left-menu" title="Branches">â</button>
             <div class="control-module">
                 <canvas id="joystick-canvas"></canvas>
             </div>
-            <button class="arrow-btn" id="btn-right-menu" title="Branches">▶</button>
+            <button class="arrow-btn" id="btn-right-menu" title="Branches">â¶</button>
         </div>
 
         <div class="center-console">
@@ -140,23 +141,23 @@
                 <div class="dot"></div>
                 <span class="jarvis-title">J.A.R.V.I.S</span>
                 <span id="jarvis-status" class="jarvis-status">Ready</span>
-                <button id="graph-toggle" class="graph-toggle-btn" title="Toggle graph view">⬡</button>
+                <button id="graph-toggle" class="graph-toggle-btn" title="Toggle graph view">â¬¡</button>
             </div>
             <div id="jarvis-messages"></div>
             <div id="jarvis-bar">
-                <button id="jarvis-mute" class="jarvis-mute-btn">🔇</button>
+                <button id="jarvis-mute" class="jarvis-mute-btn">ð</button>
                 <textarea id="jarvis-txt" rows="1" placeholder="Type..." onkeydown="jarvisOnKey(event)"></textarea>
                 <button class="jarvis-send-btn" id="jarvis-send" onclick="jarvisSend()">Send</button>
             </div>
 
             <div class="hu-footer">
-                <button id="jarvis-call" class="jarvis-call-btn">📞 Call</button>
+                <button id="jarvis-call" class="jarvis-call-btn">ð Call</button>
                 <div class="hu-vol-wrap" id="hu-vol-wrap">
                     <div class="hu-vol-track" id="hu-vol-track"><div class="hu-vol-fill" id="hu-vol-fill"></div></div>
                     <div class="hu-vol-knob" id="hu-vol-knob"></div>
                     <span class="hu-vol-pct" id="hu-vol-pct">70%</span>
                 </div>
-                <button class="hu-mute-btn" id="hu-mute-btn" title="Mute radio">◼</button>
+                <button class="hu-mute-btn" id="hu-mute-btn" title="Mute radio">â¼</button>
                 <span class="hu-status-txt" id="hu-status-txt">ON AIR</span>
             </div>
             <audio id="rmc-audio" crossorigin="anonymous"></audio>
