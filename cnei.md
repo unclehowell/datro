@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.2.17`
-- **Tag**: `cnei-v0.0.2.17`
-- **Deployed**: 2026-06-30T04:15:05.024Z
+- **Version**: `0.0.2.18`
+- **Tag**: `cnei-v0.0.2.18`
+- **Deployed**: 2026-07-01T13:00:33.143Z
 - **URL**: [https://cnei.datro.directory](https://cnei.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-30T04:15:05.024Z*
+*Auto-updated by datro-flywheel at 2026-07-01T13:00:33.143Z*
