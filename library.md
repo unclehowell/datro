@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.1.51`
-- **Tag**: `library-v0.0.1.51`
-- **Deployed**: 2026-06-30T02:00:17.150Z
+- **Version**: `0.0.1.52`
+- **Tag**: `library-v0.0.1.52`
+- **Deployed**: 2026-07-02T07:00:36.334Z
 - **URL**: [https://library.datro.directory](https://library.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-30T02:00:17.150Z*
+*Auto-updated by datro-flywheel at 2026-07-02T07:00:36.334Z*
