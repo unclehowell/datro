@@ -689,7 +689,46 @@ function renderSideFiles(side) {
 function renderSideFileChildren(branch, side, container) {
     container.innerHTML = 'Loading...';
     var MD_FILES_SIDE = ['AGENT','README','CHANGELOG','MEMORY','SKILLS','HEARTBEAT','SOUL','MASTERPLAN','RULES','TEMPLATE','CONTEXT','GLOSSARY','RESOURCES','TASKS','IDENTITY','SPEC'];
+
+    // Add brain files section for Personal (left) and Project (right)
+    var brainFiles = side === 'left'
+      ? ['PERSONALITY','MEMORY','SKILLS','HARNESS','VALUES']
+      : ['MASTERPLAN','CONTEXT','TASKS','RULES','HEARTBEAT'];
+
     container.innerHTML = '';
+    if (side === 'left') {
+      var brainHeader = document.createElement('div');
+      brainHeader.className = 'side-branch-header';
+      brainHeader.style.color = '#00ff66';
+      brainHeader.style.fontSize = '10px';
+      brainHeader.style.textTransform = 'uppercase';
+      brainHeader.style.borderBottom = '1px solid rgba(0,255,102,0.2)';
+      brainHeader.textContent = '🧠 PERSONAL BRAIN';
+      container.appendChild(brainHeader);
+      brainFiles.forEach(function(f) {
+        var item = document.createElement('div');
+        item.className = 'side-file-item';
+        item.style.opacity = '0.8';
+        var dot = document.createElement('span');
+        dot.className = 'branch-dot';
+        dot.style.backgroundColor = 'rgba(0,255,102,0.7)';
+        item.appendChild(dot);
+        var label = document.createElement('span');
+        label.className = 'file-label';
+        label.textContent = f;
+        item.appendChild(label);
+        var exists = document.createElement('span');
+        exists.className = 'file-exists';
+        exists.textContent = '✓';
+        item.appendChild(exists);
+        item.onclick = function() {
+          closeSideMenus();
+          openMdViewer(branch, f, f);
+        };
+        container.appendChild(item);
+      });
+    }
+
     MD_FILES_SIDE.forEach(function(f) {
         var item = document.createElement('div');
         item.className = 'side-file-item';
@@ -759,6 +798,26 @@ function openMdViewer(branch, fileName, displayName) {
     body.textContent = 'Loading...';
     overlay.style.display = 'flex';
     body.scrollTop = 0;
+
+    // Check if this is a brain file (personal or project)
+    var isPersonalBrain = ['PERSONALITY','MEMORY','SKILLS','HARNESS','VALUES'].indexOf(fileName) !== -1;
+    var isProjectBrain = ['MASTERPLAN','CONTEXT','TASKS','RULES','HEARTBEAT'].indexOf(fileName) !== -1;
+
+    if (isPersonalBrain || isProjectBrain) {
+      var prefix = isPersonalBrain ? '/api/brain/personal/' : '/api/brain/' + encodeURIComponent(branch) + '/';
+      fetch(prefix + encodeURIComponent(fileName))
+        .then(function(r) {
+          if (!r.ok) throw new Error('Not found');
+          return r.json();
+        })
+        .then(function(data) {
+          body.textContent = data.content || '(empty)';
+        })
+        .catch(function() {
+          body.textContent = '// Brain file not found on GitHub';
+        });
+      return;
+    }
 
     var possiblePaths = [
         fileName + '.md',
@@ -1606,6 +1665,33 @@ async function pollFlywheel() {
         var pm = $('progress-milestone');
         if (cm) cm.textContent = BRANCH_NAMES[idx]?.toUpperCase() || '--';
         if (pm) pm.textContent = (idx + 1) + '/' + BRANCH_NAMES.length;
+
+        // Update brain state indicator
+        if (data.brain) {
+            var statusEl = $('jarvis-status');
+            if (statusEl && !statusEl.textContent.includes('Call')) {
+                var gear = data.brain.gear || 3;
+                var steering = data.brain.steering || 'CTR';
+                var bias = data.brain.bias || 0;
+                statusEl.textContent = 'G' + gear + ' ' + steering + ' B' + bias;
+            }
+        }
+    } catch(e) {}
+}
+
+async function pollBrainState() {
+    try {
+        var res = await fetch('/api/brain/state');
+        var data = await res.json();
+        var dot = $('jarvis-dot');
+        if (dot) {
+            var hasActivity = data.last_releases && Object.keys(data.last_releases).length > 0;
+            if (hasActivity) {
+                dot.style.background = '#ff4444';
+            } else {
+                dot.style.background = '#00e676';
+            }
+        }
     } catch(e) {}
 }
 
@@ -1647,7 +1733,9 @@ function startApp() {
     initLogoutBtn();
     setInterval(loadFuel, 5000);
     setInterval(pollFlywheel, 3000);
+    setInterval(pollBrainState, 10000);
     loadFuel();
+    pollBrainState();
 }
 
 document.addEventListener('DOMContentLoaded', function() {
