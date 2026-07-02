@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.0.71`
-- **Tag**: `llmwiki-v0.0.0.71`
-- **Deployed**: 2026-06-30T03:00:14.310Z
+- **Version**: `0.0.0.72`
+- **Tag**: `llmwiki-v0.0.0.72`
+- **Deployed**: 2026-07-02T09:00:35.436Z
 - **URL**: [https://llmwiki.datro.directory](https://llmwiki.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-30T03:00:14.310Z*
+*Auto-updated by datro-flywheel at 2026-07-02T09:00:35.436Z*
