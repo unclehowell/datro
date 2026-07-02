@@ -1,6 +1,12 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 :root {
     --bg: #080808;
+    --bg-secondary: #0d0d0d;
+    --bg-tertiary: #151515;
+    --surface: #0e0e0e;
+    --surface-alt: #1a1a1a;
+    --border: #2a2a2a;
+    --border-dim: rgba(255,255,255,0.05);
     --green: #00ff66;
     --red: #ff3333;
     --amber: #d4a84b;
@@ -8,12 +14,33 @@
     --amber-dim: rgba(212,168,75,0.35);
     --text: #d0c8b8;
     --text-dim: #988e7e;
+    --text-muted: #666;
     --blue: #0088ff;
     --blue-dim: rgba(0,136,255,0.25);
     --glow: 0 0 16px rgba(212,168,75,0.25);
     --font-mono: 'Courier New', 'Consolas', monospace;
     --font-sans: 'Segoe UI', 'Roboto', Arial, sans-serif;
     --radius: 4px;
+}
+[data-theme="light"] {
+    --bg: #f0ede6;
+    --bg-secondary: #e8e4dc;
+    --bg-tertiary: #ddd9d0;
+    --surface: #f5f2ec;
+    --surface-alt: #eae6de;
+    --border: #c8c4bc;
+    --border-dim: rgba(0,0,0,0.08);
+    --green: #00994d;
+    --red: #cc2222;
+    --amber: #b8863a;
+    --amber-bright: #8a6b2e;
+    --amber-dim: rgba(184,134,58,0.25);
+    --text: #1a1a1a;
+    --text-dim: #555;
+    --text-muted: #888;
+    --blue: #0055cc;
+    --blue-dim: rgba(0,85,204,0.2);
+    --glow: 0 0 16px rgba(184,134,58,0.15);
 }
 html, body {
     width: 100%; height: 100%;
@@ -28,7 +55,7 @@ html, body {
 .cockpit {
     position: relative;
     width: 100vw; height: 100vh;
-    background: #000;
+    background: var(--bg);
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -48,14 +75,13 @@ html, body {
 #track-canvas {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
-    display: none;
     z-index: 1;
 }
 #graph-container {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
     z-index: 2;
-    background: #050505;
+    background: var(--bg);
 }
 #graph-container svg {
     display: block;
@@ -178,7 +204,7 @@ html, body {
     display: flex;
     align-items: center;
     gap: 14px;
-    background: rgba(0,0,0,0.8);
+    background: var(--surface);
     border: 1px solid var(--amber-dim);
     border-bottom: none;
     padding: 6px 20px;
@@ -200,6 +226,11 @@ html, body {
 .status-btn:hover {
     border-color: var(--amber);
     color: var(--amber-bright);
+}
+.theme-btn {
+    font-size: 16px;
+    padding: 2px 8px;
+    line-height: 1;
 }
 .version-label {
     color: var(--amber-bright);
@@ -243,12 +274,12 @@ html, body {
 .auto-toggle input[type="checkbox"] {
     appearance: none;
     width: 32px; height: 16px;
-    background: #222;
+    background: var(--surface-alt);
     border-radius: 8px;
     position: relative;
     cursor: pointer;
     transition: 0.2s;
-    border: 1px solid #444;
+    border: 1px solid var(--border);
 }
 .auto-toggle input[type="checkbox"]::after {
     content: '';
@@ -272,13 +303,10 @@ html, body {
 .controls-section {
     flex-shrink: 0;
     position: relative;
-    transition: max-height 0.4s ease, opacity 0.3s ease;
-    max-height: 55vh;
     overflow: hidden;
 }
 .controls-section.collapsed {
-    max-height: 0;
-    opacity: 0;
+    display: none;
 }
 .controls-toggle {
     display: block;
@@ -304,10 +332,10 @@ html, body {
     display: flex;
     gap: 0;
     height: 100%;
-    background: #0d0d0d;
-    border-top: 2px solid #1a1a1a;
+    background: var(--bg-secondary);
+    border-top: 2px solid var(--border);
     background-image:
-        radial-gradient(ellipse at 50% 0%, #151515 0%, #0a0a0a 100%);
+        radial-gradient(ellipse at 50% 0%, var(--bg-tertiary) 0%, var(--bg) 100%);
 }
 .controls-col {
     display: flex;
@@ -373,19 +401,19 @@ html, body {
 }
 .arrow-btn:hover {
     border-color: var(--amber-bright);
-    background: #1a1a1a;
+    background: var(--surface-alt);
     box-shadow: 0 0 20px var(--amber-dim);
 }
 .arrow-btn.active {
     border-color: var(--amber-bright);
-    background: #1a1a1a;
+    background: var(--surface-alt);
     box-shadow: 0 0 24px var(--amber-dim);
 }
 .control-module {
     width: 200px; height: 200px;
     position: relative;
-    background: radial-gradient(circle, #1a1a1a, #000);
-    border: 8px solid #181818;
+    background: radial-gradient(circle, var(--surface-alt), var(--bg));
+    border: 8px solid var(--surface-alt);
     border-radius: 50%;
     box-shadow: 0 8px 30px rgba(0,0,0,0.9);
 }
@@ -614,8 +642,8 @@ html, body {
     align-items: center;
     gap: 8px;
     padding: 6px 10px;
-    background: #0a0a0a;
-    border-top: 1px solid #222;
+    background: var(--bg-secondary);
+    border-top: 1px solid var(--border);
     flex-shrink: 0;
     min-height: 36px;
 }
@@ -674,8 +702,8 @@ html, body {
 .hu-mute-btn {
     width: 28px; height: 28px;
     border-radius: 50%;
-    border: 1px solid #444;
-    background: #0a0a0a;
+    border: 1px solid var(--border);
+    background: var(--bg-secondary);
     color: #666;
     font-size: 11px;
     cursor: pointer;
@@ -1201,7 +1229,7 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     min-height: 360px;
     max-height: 65vh;
     padding: 18px;
-    background: #000;
+    background: var(--bg);
     border: none;
     color: var(--text);
     font-family: var(--font-mono);
@@ -1250,7 +1278,7 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     position: fixed;
     top: 0; left: 0; width: 100vw; height: 100vh;
     z-index: 9999;
-    background: #050505;
+    background: var(--bg);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1258,7 +1286,7 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
 .login-panel {
     width: 420px;
     padding: 48px;
-    background: #0e0e0e;
+    background: var(--surface);
     border: 1px solid var(--amber-dim);
     box-shadow: 0 0 80px rgba(0,0,0,0.95);
     text-align: center;
@@ -1289,8 +1317,8 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
 .login-input {
     width: 100%;
     padding: 14px 18px;
-    background: #000;
-    border: 1px solid #444;
+    background: var(--bg);
+    border: 1px solid var(--border);
     color: var(--amber-bright);
     font-family: var(--font-mono);
     font-size: 20px;

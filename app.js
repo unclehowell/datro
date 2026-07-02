@@ -62,7 +62,7 @@ function initLogin() {
 
     function tryLogin() {
         var val = input.value.trim();
-        if (val.toLowerCase() === 'burgerking') {
+        if (val.toLowerCase() === 'hijab') {
             localStorage.setItem('loggedIn', 'true');
             overlay.style.display = 'none';
             $('app').style.display = '';
@@ -142,12 +142,12 @@ function initGraphDefault() {
     var graphContainer = $('graph-container');
     if (!canvas || !graphContainer) return;
 
-    // Graph is default
     graphViewActive = true;
-    canvas.style.display = 'none';
-    graphContainer.style.display = 'block';
+    canvas.style.visibility = 'hidden';
+    canvas.style.pointerEvents = 'none';
+    graphContainer.style.visibility = 'visible';
+    graphContainer.style.pointerEvents = 'auto';
 
-    // Initialize graph
     if (!graphInitialized) {
         graphInitialized = true;
         try {
@@ -169,8 +169,10 @@ function initGraphToggle() {
         var graphContainer = $('graph-container');
         if (!canvas || !graphContainer) return;
         if (graphViewActive) {
-            canvas.style.display = 'none';
-            graphContainer.style.display = 'block';
+            canvas.style.visibility = 'hidden';
+            canvas.style.pointerEvents = 'none';
+            graphContainer.style.visibility = 'visible';
+            graphContainer.style.pointerEvents = 'auto';
             if (window.trackStop) window.trackStop();
             if (!graphInitialized) {
                 graphInitialized = true;
@@ -178,12 +180,13 @@ function initGraphToggle() {
                     if (window.graphInit) window.graphInit('graph-container');
                 } catch(e) { console.error('Graph init error:', e); }
             } else {
-                // Re-render graph if needed
                 if (window.graphResize) window.graphResize();
             }
         } else {
-            canvas.style.display = 'block';
-            graphContainer.style.display = 'none';
+            graphContainer.style.visibility = 'hidden';
+            graphContainer.style.pointerEvents = 'none';
+            canvas.style.visibility = 'visible';
+            canvas.style.pointerEvents = 'auto';
             if (window.trackInit) {
                 var cv = $('track-canvas');
                 if (cv) window.trackInit(cv);
@@ -198,6 +201,29 @@ function initRoad() {
         var cv = $('track-canvas');
         if (cv) window.trackInit(cv);
     }
+}
+
+// ── THEME TOGGLE ──
+function initThemeToggle() {
+    var btn = $('theme-toggle');
+    if (!btn) return;
+    var theme = localStorage.getItem('theme') || 'dark';
+    if (theme === 'light') {
+        document.documentElement.setAttribute('data-theme', 'light');
+        btn.textContent = '🌙';
+    }
+    btn.addEventListener('click', function() {
+        var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+        if (isLight) {
+            document.documentElement.removeAttribute('data-theme');
+            localStorage.setItem('theme', 'dark');
+            btn.textContent = '☀';
+        } else {
+            document.documentElement.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+            btn.textContent = '🌙';
+        }
+    });
 }
 
 // ── FULLSCREEN WINDSHIELD TOGGLE ──
@@ -1480,14 +1506,6 @@ function initJarvis() {
   }
   jarvisInitRecognition();
 
-  // Pre-load voices
-  if (window.speechSynthesis) {
-    window.speechSynthesis.getVoices();
-    window.speechSynthesis.onvoiceschanged = function() {
-      window.speechSynthesis.getVoices();
-    };
-  }
-
   var callBtn = $('jarvis-call');
   var muteBtn = $('jarvis-mute');
   if (callBtn) {
@@ -1496,38 +1514,30 @@ function initJarvis() {
       var status = $('jarvis-status');
       var dot = $('jarvis-dot');
       if (jarvisCalling) {
-        callBtn.textContent = 'Hang Up';
+        callBtn.textContent = '■ Hangup';
         callBtn.classList.add('active');
         if (status) status.textContent = 'Call Active';
         if (dot) dot.style.background = '#ff4444';
         if (window.huDuck) window.huDuck(true);
 
-        // Request mic access explicitly
+        // Request mic for speech recognition
         try {
           navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream) {
-            // Store stream for release on hangup
             window._jarvisMicStream = stream;
-            if (status) status.textContent = 'Mic active';
-          }).catch(function(err) {
-            console.log('Mic access denied:', err);
-            if (status) status.textContent = 'Mic unavailable';
-          });
-        } catch(e) {
-          console.log('getUserMedia not supported');
-        }
+          }).catch(function() {});
+        } catch(e) {}
 
         jarvisStartCall();
         if (jarvisRecognition) {
           try { jarvisRecognition.start(); } catch(e) {}
         }
       } else {
-        callBtn.textContent = 'Call';
+        callBtn.textContent = '📞 Call';
         callBtn.classList.remove('active');
         if (status) status.textContent = 'Ready';
         if (dot) dot.style.background = '#00e676';
         if (window.huDuck) window.huDuck(false);
 
-        // Release mic
         if (window._jarvisMicStream) {
           window._jarvisMicStream.getTracks().forEach(function(t) { t.stop(); });
           window._jarvisMicStream = null;
@@ -1544,7 +1554,7 @@ function initJarvis() {
   if (muteBtn) {
     muteBtn.addEventListener('click', function() {
       jarvisMuted = !jarvisMuted;
-      muteBtn.textContent = jarvisMuted ? 'Muted' : 'Voice';
+      muteBtn.textContent = jarvisMuted ? '🔇' : '🔊';
       muteBtn.classList.toggle('muted', jarvisMuted);
       if (jarvisMuted) window.speechSynthesis.cancel();
     });
@@ -1646,6 +1656,7 @@ function startApp() {
     initBranchMenus();
     initSideFileMenus();
     initControlsBar();
+    initThemeToggle();
     initFullscreenToggle();
     initVersion();
     initLogoutBtn();

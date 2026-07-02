@@ -43,6 +43,7 @@
     <!-- STATUS BAR (thin, between windscreen and controls) -->
     <div class="status-bar">
         <div class="status-bar-inner">
+            <button class="status-btn theme-btn" id="theme-toggle" title="Toggle theme">☀</button>
             <button class="status-btn" id="btn-fullscreen-toggle" title="Toggle fullscreen windscreen">⛶</button>
             <span class="version-label">v<span id="version-label">--</span></span>
             <span id="cache-status" class="cache-status-text"></span>
@@ -74,10 +75,6 @@
                         <button class="arrow-btn" id="btn-right-menu" title="Open right files">▶</button>
                     </div>
                 </div>
-                <div class="indicator-group">
-                    <button class="indicator-btn left" id="indicator-left" title="Left MD files">◀ LEFT</button>
-                    <button class="indicator-btn right" id="indicator-right" title="Right MD files">RIGHT ▶</button>
-                </div>
             </div>
 
             <!-- COLUMN 2: JARVIS -->
@@ -97,7 +94,7 @@
                         <button class="jarvis-send-btn" id="jarvis-send" onclick="jarvisSend()">SEND</button>
                     </div>
                     <div class="hu-footer">
-                        <button id="jarvis-call" class="jarvis-call-btn">🎙 Call</button>
+                        <button id="jarvis-call" class="jarvis-call-btn">📞 Call</button>
                         <div class="hu-vol-wrap" id="hu-vol-wrap">
                             <div class="hu-vol-track" id="hu-vol-track"><div class="hu-vol-fill" id="hu-vol-fill"></div></div>
                             <div class="hu-vol-knob" id="hu-vol-knob"></div>
