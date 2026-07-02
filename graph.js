@@ -347,6 +347,20 @@ function destroyGraph() {
   tooltipEl = null;
 }
 
+function resizeGraph() {
+  if (graphSvg && graphSim) {
+    var container = document.getElementById('graph-container');
+    if (container) {
+      graphWidth = container.clientWidth;
+      graphHeight = container.clientHeight;
+      graphSvg.attr('width', graphWidth).attr('height', graphHeight);
+      graphSim.force('center', d3.forceCenter(graphWidth / 2, graphHeight / 2));
+      graphSim.alpha(0.3).restart();
+    }
+  }
+}
+
 window.graphInit = initGraph;
+window.graphResize = resizeGraph;
 window.graphDestroy = destroyGraph;
 })();

@@ -12,17 +12,10 @@ var BRANCH_COLORS = {
 };
 var BRANCH_NAMES = Object.keys(BRANCH_COLORS);
 
-var HONCHO_TENANT_IDS = {
-    bpvsbuckler: '0lCBWsZN-CS-DyY8THX7H',
-    datro: 'Q-sPB_HUr__vWcP1cc-UQ',
-    financecheque: 'oSx32NCcWFHT7gRXWtrGo',
-};
-
 var config = window._config || { bias: 0, risk: 0, gear: 3, steering: 0 };
 window._config = config;
 
 var currentVersion = '0.0.0';
-var latestVersion = null;
 var autoUpdateEnabled = localStorage.getItem('autoUpdate') !== 'false';
 var updateCheckInterval = null;
 
@@ -44,6 +37,13 @@ var knownFiles = {};
 
 // ── JOYSTICK CONFIRMATION STATE ──
 var joystickCommitted = { x: 0, y: 0 };
+
+// ── CONTROLS FULLSCREEN ──
+var controlsCollapsed = false;
+
+// ── GRAPH STATE ──
+var graphViewActive = true;
+var graphInitialized = false;
 
 // ── LOGIN ──
 function initLogin() {
@@ -136,12 +136,97 @@ function checkForUpdates() {
         .catch(function() {});
 }
 
+// ── GRAPH & ROAD VIEW ──
+function initGraphDefault() {
+    var canvas = $('track-canvas');
+    var graphContainer = $('graph-container');
+    if (!canvas || !graphContainer) return;
+
+    // Graph is default
+    graphViewActive = true;
+    canvas.style.display = 'none';
+    graphContainer.style.display = 'block';
+
+    // Initialize graph
+    if (!graphInitialized) {
+        graphInitialized = true;
+        try {
+            if (window.graphInit) window.graphInit('graph-container');
+        } catch(e) { console.error('Graph init error:', e); }
+    }
+
+    var btn = $('graph-toggle');
+    if (btn) btn.classList.add('active');
+}
+
+function initGraphToggle() {
+    var btn = $('graph-toggle');
+    if (!btn) return;
+    btn.addEventListener('click', function() {
+        graphViewActive = !graphViewActive;
+        btn.classList.toggle('active', graphViewActive);
+        var canvas = $('track-canvas');
+        var graphContainer = $('graph-container');
+        if (!canvas || !graphContainer) return;
+        if (graphViewActive) {
+            canvas.style.display = 'none';
+            graphContainer.style.display = 'block';
+            if (window.trackStop) window.trackStop();
+            if (!graphInitialized) {
+                graphInitialized = true;
+                try {
+                    if (window.graphInit) window.graphInit('graph-container');
+                } catch(e) { console.error('Graph init error:', e); }
+            } else {
+                // Re-render graph if needed
+                if (window.graphResize) window.graphResize();
+            }
+        } else {
+            canvas.style.display = 'block';
+            graphContainer.style.display = 'none';
+            if (window.trackInit) {
+                var cv = $('track-canvas');
+                if (cv) window.trackInit(cv);
+            }
+        }
+    });
+}
+
 // ── ROAD INIT ──
 function initRoad() {
     if (window.trackInit) {
         var cv = $('track-canvas');
         if (cv) window.trackInit(cv);
     }
+}
+
+// ── FULLSCREEN WINDSHIELD TOGGLE ──
+function initFullscreenToggle() {
+    var btn = $('btn-fullscreen-toggle');
+    var controlsSection = $('controls-section');
+    var windscreen = document.querySelector('.windscreen');
+    if (!btn || !controlsSection) return;
+
+    btn.addEventListener('click', function() {
+        controlsCollapsed = !controlsCollapsed;
+        controlsSection.classList.toggle('collapsed', controlsCollapsed);
+        if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
+        btn.textContent = controlsCollapsed ? '⛶' : '⛶';
+        btn.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
+
+        // Resize graph if active
+        if (graphViewActive && window.graphResize) {
+            setTimeout(function() { window.graphResize(); }, 100);
+        }
+    });
+
+    // Also toggle via keyboard: Ctrl+Shift+F
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.key === 'F') {
+            e.preventDefault();
+            btn.click();
+        }
+    });
 }
 
 // ── JOYSTICK ──
@@ -400,21 +485,82 @@ function triggerFlywheel(branch) {
         .catch(function() {});
 }
 
-// ── GEAR ──
+// ── GEAR (SHIFTER WITH NOTCHES + DRAG) ──
+var shifterDragging = false;
+
 function initGear() {
-    var slider = $('gear-slider');
-    if (!slider) return;
-    slider.addEventListener('input', function(e) {
-        var g = parseInt(e.target.value);
+    var base = $('shifter-base');
+    var thumb = $('shifter-thumb');
+    var gearVal = $('gear-value');
+    var gearValText = $('gear-val-text');
+    if (!base || !thumb) return;
+
+    function getNotchPos(notch) {
+        return ((notch - 1) / 9) * 100;
+    }
+
+    function setGear(g, triggerSend) {
+        g = Math.max(1, Math.min(10, Math.round(g)));
         config.gear = g;
-        var gv = $('gear-value');
-        var gvt = $('gear-val-text');
-        if (gv) gv.textContent = g;
-        if (gvt) gvt.textContent = g;
-        sendFlywheelConfig();
+        if (gearVal) gearVal.textContent = g;
+        if (gearValText) gearValText.textContent = g;
+
+        // Update thumb position
+        var pct = getNotchPos(g);
+        thumb.style.left = 'calc(' + pct + '% - 20px)';
+
+        // Update notch active states
+        base.querySelectorAll('.shifter-notch').forEach(function(n) {
+            n.classList.toggle('active', parseInt(n.dataset.val) === g);
+        });
+
+        if (triggerSend !== false) {
+            sendFlywheelConfig();
+        }
+    }
+
+    // Click on notches
+    base.querySelectorAll('.shifter-notch').forEach(function(notch) {
+        notch.addEventListener('click', function() {
+            setGear(parseInt(this.dataset.val));
+        });
     });
 
-    // Init: send bias on load
+    // Drag support
+    function thumbFromClientX(cx) {
+        var rect = base.getBoundingClientRect();
+        var pct = (cx - rect.left) / rect.width;
+        return Math.max(1, Math.min(10, Math.round(pct * 9 + 1)));
+    }
+
+    function onDragStart(e) {
+        shifterDragging = true;
+        var cx = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        if (cx) setGear(thumbFromClientX(cx), false);
+    }
+
+    function onDragMove(e) {
+        if (!shifterDragging) return;
+        var cx = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+        if (cx) setGear(thumbFromClientX(cx), false);
+    }
+
+    function onDragEnd() {
+        if (shifterDragging) {
+            shifterDragging = false;
+            sendFlywheelConfig();
+        }
+    }
+
+    base.addEventListener('mousedown', onDragStart);
+    window.addEventListener('mousemove', onDragMove);
+    window.addEventListener('mouseup', onDragEnd);
+    base.addEventListener('touchstart', onDragStart, { passive: true });
+    window.addEventListener('touchmove', onDragMove, { passive: true });
+    window.addEventListener('touchend', onDragEnd);
+
+    // Init
+    setGear(config.gear || 3);
     setTimeout(sendFlywheelBias, 1000);
 }
 
@@ -522,7 +668,7 @@ function renderSideFiles(side) {
             });
         })
         .catch(function() {
-            list.innerHTML = '<div style="padding:14px;color:#f55;font-size:10px">Failed to load branches</div>';
+            list.innerHTML = '<div style="padding:14px;color:#f55;font-size:12px">Failed to load branches</div>';
         });
 }
 
@@ -535,7 +681,7 @@ function renderSideFileChildren(branch, side, container) {
         item.className = 'side-file-item';
         var dot = document.createElement('span');
         dot.className = 'branch-dot';
-        dot.style.backgroundColor = side === 'left' ? 'rgba(0,255,0,0.5)' : 'rgba(0,136,255,0.5)';
+        dot.style.backgroundColor = side === 'left' ? 'rgba(0,255,102,0.5)' : 'rgba(0,136,255,0.5)';
         item.appendChild(dot);
         var label = document.createElement('span');
         label.className = 'file-label';
@@ -547,9 +693,6 @@ function renderSideFileChildren(branch, side, container) {
         item.appendChild(exists);
         item.onclick = function() {
             closeSideMenus();
-            var filename = '/' + (side === 'left' ? 'high' : 'right') + '/' + f + '.md';
-            // Check both side paths
-            var paths = [f + '.md', f + '.' + side + '.md', f + '.md'];
             var sidePath = side === 'left' ? f : f;
             openMdViewer(branch, sidePath, f);
         };
@@ -566,11 +709,9 @@ function openMdViewer(branch, fileName, displayName) {
     var body = $('md-viewer-body');
     if (!overlay || !header || !body) return;
 
-    // Hide road/graph
-    var canvas = $('track-canvas');
-    var graphContainer = $('graph-container');
-    if (canvas) canvas.style.opacity = '0.3';
-    if (graphContainer) graphContainer.style.opacity = '0.3';
+    // Dim windscreen
+    var windscreen = document.querySelector('.windscreen');
+    if (windscreen) windscreen.style.opacity = '0.3';
 
     currentViewerFile = { branch: branch, fileName: fileName, displayName: displayName || fileName };
 
@@ -605,7 +746,6 @@ function openMdViewer(branch, fileName, displayName) {
     overlay.style.display = 'flex';
     body.scrollTop = 0;
 
-    // Try to fetch the MD file from GitHub
     var possiblePaths = [
         fileName + '.md',
         fileName,
@@ -637,27 +777,22 @@ function fetchFromBranch(branch, paths, bodyEl) {
 function closeMdViewer() {
     var overlay = $('md-viewer-overlay');
     if (overlay) overlay.style.display = 'none';
-    var canvas = $('track-canvas');
-    var graphContainer = $('graph-container');
-    if (canvas) canvas.style.opacity = '1';
-    if (graphContainer) graphContainer.style.opacity = '1';
+    var windscreen = document.querySelector('.windscreen');
+    if (windscreen) windscreen.style.opacity = '1';
     currentViewerFile = null;
 }
 
 function deployMdFile() {
     if (!currentViewerFile) return;
-    var status = $('editor-status');
     var deployBtnEl = document.querySelector('.viewer-btn.deploy-btn');
     if (deployBtnEl) { deployBtnEl.textContent = '...'; deployBtnEl.disabled = true; }
 
     var branch = currentViewerFile.branch;
     var fileName = currentViewerFile.fileName;
 
-    // Get content from cache or fetch it
     var cacheKey = branch + '/high/' + fileName;
     var content = editCache[cacheKey];
     if (content === undefined) {
-        // Try to pull from viewer body
         var body = $('md-viewer-body');
         if (body && body.textContent && body.textContent !== 'Loading...' && !body.textContent.startsWith('// File not found')) {
             content = body.textContent;
@@ -679,25 +814,23 @@ function deployMdFile() {
         if (deployBtnEl) { deployBtnEl.textContent = 'DEPLOY'; deployBtnEl.disabled = false; }
         var status = $('editor-status');
         if (data.ok) {
-            // Refresh version
-            if (status) status.textContent = '✓ Deployed & release triggered';
+            if (status) status.textContent = 'Deployed & release triggered';
             setTimeout(function() {
                 closeMdViewer();
                 refreshBranchVersions();
             }, 1500);
         } else {
-            if (status) status.textContent = '✗ Deploy failed';
+            if (status) status.textContent = 'Deploy failed';
         }
     })
     .catch(function() {
         if (deployBtnEl) { deployBtnEl.textContent = 'DEPLOY'; deployBtnEl.disabled = false; }
         var status = $('editor-status');
-        if (status) status.textContent = '✗ Network error';
+        if (status) status.textContent = 'Network error';
     });
 }
 
 function refreshBranchVersions() {
-    // Refresh version label
     fetch('/api/version')
         .then(function(r) { return r.json(); })
         .then(function(d) {
@@ -708,9 +841,8 @@ function refreshBranchVersions() {
         .catch(function() {});
 }
 
-// ── BRANCH MENUS (LEGACY - reuses old button behavior for dashboard ◀▶) ──
+// ── BRANCH MENUS ──
 function initBranchMenus() {
-    // Left/right dashboard buttons now open side file menus
     var btnLeft = $('btn-left-menu');
     var btnRight = $('btn-right-menu');
     if (btnLeft) btnLeft.onclick = function() { openSideMenu('left'); };
@@ -730,17 +862,20 @@ function initLeftPanel() {
             renderTree();
         });
 
-    var leftBtn = $('btn-left-menu');
-    if (leftBtn) leftBtn.onclick = toggleLeftPanel;
-
     var closeBtn = $('btn-close-left');
     if (closeBtn) closeBtn.onclick = toggleLeftPanel;
 
-    var deployBtn = $('btn-deploy');
+    var deployBtn = $('btn-deploy-legacy');
     if (deployBtn) deployBtn.onclick = deployChanges;
 
     var saveBtn = $('btn-save-edit');
     if (saveBtn) saveBtn.onclick = saveEdit;
+
+    var deployEditBtn = $('btn-deploy-edit');
+    if (deployEditBtn) deployEditBtn.onclick = function() {
+        saveEdit();
+        setTimeout(deployChanges, 500);
+    };
 
     var closeEditorBtn = $('btn-close-editor');
     if (closeEditorBtn) closeEditorBtn.onclick = closeEditor;
@@ -758,6 +893,11 @@ function toggleLeftPanel() {
         var btn = $('btn-left-menu');
         if (btn) btn.classList.add('active');
     }
+}
+
+function closeBranchMenus() {
+    document.querySelectorAll('.branch-slide-menu').forEach(function(m) { m.classList.remove('open'); });
+    document.querySelectorAll('.arrow-btn').forEach(function(b) { b.classList.remove('active'); });
 }
 
 function findBranchData(name) {
@@ -805,7 +945,6 @@ function renderTree() {
 
         header.onclick = function() {
             var isOpen = children.style.display !== 'none';
-            // Close all other branch children
             list.querySelectorAll('.tree-children').forEach(function(c) {
                 if (c !== children) { c.style.display = 'none'; }
             });
@@ -861,7 +1000,6 @@ function renderFileChildren(branch, container) {
 
         header.onclick = function() {
             var isOpen = vchildren.style.display !== 'none';
-            // Close other file children in same container
             container.querySelectorAll('.tree-children').forEach(function(c) {
                 if (c !== vchildren) { c.style.display = 'none'; }
             });
@@ -941,13 +1079,11 @@ function openEditor(branch, side, fileName) {
     status.textContent = '';
     status.className = '';
 
-    // Store current editing context on textarea
     textarea.dataset.cacheKey = cacheKey;
     textarea.dataset.branch = branch;
     textarea.dataset.side = side;
     textarea.dataset.fileName = fileName;
 
-    // Load from cache first
     if (editCache[cacheKey] !== undefined) {
         textarea.value = editCache[cacheKey];
         overlay.style.display = 'flex';
@@ -955,7 +1091,6 @@ function openEditor(branch, side, fileName) {
         return;
     }
 
-    // Fetch from API
     textarea.value = 'Loading...';
     overlay.style.display = 'flex';
 
@@ -970,7 +1105,7 @@ function openEditor(branch, side, fileName) {
         })
         .catch(function(err) {
             textarea.value = '// ' + err.message + '\n\n';
-            status.textContent = '✗ Not found';
+            status.textContent = 'Not found';
             status.className = 'error';
         });
 
@@ -986,7 +1121,7 @@ function saveEdit() {
     if (!cacheKey) return;
 
     editCache[cacheKey] = textarea.value;
-    status.textContent = '✓ Saved (cached)';
+    status.textContent = 'Saved (cached)';
     status.className = '';
     renderCacheStatus();
 
@@ -1006,8 +1141,12 @@ function deployChanges() {
 
     var status = $('cache-status');
     var btn = $('btn-deploy');
-    if (status) status.textContent = '🚀 Deploying...';
+    var legacyStatus = $('cache-status-legacy');
+    var legacyBtn = $('btn-deploy-legacy');
+    if (status) status.textContent = 'Deploying...';
+    if (legacyStatus) legacyStatus.textContent = 'Deploying...';
     if (btn) btn.disabled = true;
+    if (legacyBtn) legacyBtn.disabled = true;
 
     var branchesToTrigger = {};
     var pending = entries.length;
@@ -1037,7 +1176,6 @@ function deployChanges() {
         }).finally(function() {
             pending--;
             if (pending === 0) {
-                // All saves done, trigger rerelease for each branch
                 var triggerBranches = Object.keys(branchesToTrigger);
                 var done = 0;
                 triggerBranches.forEach(function(b) {
@@ -1045,45 +1183,64 @@ function deployChanges() {
                         .then(function() {
                             done++;
                             if (done === triggerBranches.length) {
-                                finishDeploy(failed, status, btn);
+                                finishDeploy(failed, status, btn, legacyStatus, legacyBtn);
                             }
                         })
                         .catch(function() {
                             done++;
                             if (done === triggerBranches.length) {
-                                finishDeploy(true, status, btn);
+                                finishDeploy(true, status, btn, legacyStatus, legacyBtn);
                             }
                         });
                 });
                 if (triggerBranches.length === 0) {
-                    finishDeploy(failed, status, btn);
+                    finishDeploy(failed, status, btn, legacyStatus, legacyBtn);
                 }
             }
         });
     });
 }
 
-function finishDeploy(failed, status, btn) {
+function finishDeploy(failed, status, btn, legacyStatus, legacyBtn) {
     if (failed) {
-        if (status) status.textContent = '✗ Some files failed';
+        if (status) status.textContent = 'Some files failed';
+        if (legacyStatus) legacyStatus.textContent = 'Some files failed';
     } else {
-        if (status) status.textContent = '✓ Deployed & triggered';
+        if (status) status.textContent = 'Deployed & triggered';
+        if (legacyStatus) legacyStatus.textContent = 'Deployed & triggered';
     }
     renderCacheStatus();
     if (btn) btn.disabled = false;
+    if (legacyBtn) legacyBtn.disabled = false;
 }
 
 function renderCacheStatus() {
     var status = $('cache-status');
-    if (!status) return;
+    var legacyStatus = $('cache-status-legacy');
+    var deployBtn = $('btn-deploy');
+    var deployBtnLegacy = $('btn-deploy-legacy');
     var count = Object.keys(editCache).length;
-    if (count > 0) {
-        status.textContent = '📦 ' + count + ' unsaved';
-        status.className = 'has-unsaved';
-    } else {
-        status.textContent = '';
-        status.className = '';
+
+    if (status) {
+        if (count > 0) {
+            status.textContent = count + ' unsaved';
+            status.className = 'has-unsaved';
+        } else {
+            status.textContent = '';
+            status.className = '';
+        }
     }
+    if (legacyStatus) {
+        if (count > 0) {
+            legacyStatus.textContent = count + ' unsaved';
+            legacyStatus.className = 'has-unsaved';
+        } else {
+            legacyStatus.textContent = '';
+            legacyStatus.className = '';
+        }
+    }
+    if (deployBtn) deployBtn.style.display = count > 0 ? '' : 'none';
+    if (deployBtnLegacy) deployBtnLegacy.style.display = count > 0 ? '' : 'none';
 }
 
 // ── HEAD UNIT (RMC2 STREAM + SLIDER VOLUME) ──
@@ -1120,7 +1277,7 @@ function initHeadUnit() {
         if (!huMuted && !huDucked) audio.volume = volActual(huVolume);
         var pctStr = Math.round(huVolume * 100);
         if (fill) fill.style.width = pctStr + '%';
-        if (knob) knob.style.left = 'calc(' + pctStr + '% - 6px)';
+        if (knob) knob.style.left = 'calc(' + pctStr + '% - 7px)';
         if (pct) pct.textContent = pctStr + '%';
     }
 
@@ -1176,7 +1333,6 @@ function initHeadUnit() {
         window.addEventListener('touchend', function() { huDragging = false; });
     }
 
-    // Click console to resume if autoplay blocked
     var console = document.querySelector('.center-console');
     if (console) {
         console.addEventListener('click', function() {
@@ -1191,7 +1347,6 @@ function initHeadUnit() {
     setVolume(huVolume);
     if (huStatus) huStatus.textContent = 'ON AIR';
 }
-
 
 // ── JARVIS ──
 var jarvisCalling = false;
@@ -1226,7 +1381,7 @@ async function jarvisSend(text) {
 
 async function jarvisChat(msg) {
   var replyEl = jarvisAddMsg('jarvis','');
-  replyEl.innerHTML = '<div class="jarvis-lbl">JARVIS</div><i style="color:#5bc8f5">thinking…</i>';
+  replyEl.innerHTML = '<div class="jarvis-lbl">JARVIS</div><i style="color:#5bc8f5">thinking...</i>';
   try {
     var r = await fetch('/api/chat', {
       method:'POST', headers:{'Content-Type':'application/json'},
@@ -1274,6 +1429,9 @@ function jarvisInitRecognition() {
   jarvisRecognition.continuous = true;
   jarvisRecognition.interimResults = true;
   jarvisRecognition.lang = 'en-US';
+
+  var listeningIndicator = null;
+
   jarvisRecognition.onresult = function(event) {
     var finalTranscript = '';
     var interimTranscript = '';
@@ -1284,15 +1442,28 @@ function jarvisInitRecognition() {
     var inp = $('jarvis-txt');
     if (inp) {
       inp.value = finalTranscript || interimTranscript;
+      // Auto-send after 1.5s silence when there's a final result
       if (finalTranscript) {
         if (jarvisSpeechTimer) clearTimeout(jarvisSpeechTimer);
         jarvisSpeechTimer = setTimeout(function() {
-          jarvisSend(inp.value);
-        }, 2000);
+          if (inp.value.trim()) jarvisSend(inp.value);
+        }, 1500);
       }
     }
   };
-  jarvisRecognition.onerror = function() {};
+  jarvisRecognition.onerror = function(event) {
+    console.log('SpeechRecognition error:', event.error);
+    if (event.error === 'not-allowed') {
+      var status = $('jarvis-status');
+      if (status) status.textContent = 'Mic blocked';
+    }
+    // Restart on non-fatal errors
+    if (jarvisCalling && event.error !== 'not-allowed') {
+      setTimeout(function() {
+        try { jarvisRecognition.start(); } catch(e) {}
+      }, 500);
+    }
+  };
   jarvisRecognition.onend = function() {
     if (jarvisCalling && jarvisRecognition) {
       try { jarvisRecognition.start(); } catch(e) {}
@@ -1308,26 +1479,60 @@ function initJarvis() {
     });
   }
   jarvisInitRecognition();
+
+  // Pre-load voices
+  if (window.speechSynthesis) {
+    window.speechSynthesis.getVoices();
+    window.speechSynthesis.onvoiceschanged = function() {
+      window.speechSynthesis.getVoices();
+    };
+  }
+
   var callBtn = $('jarvis-call');
   var muteBtn = $('jarvis-mute');
   if (callBtn) {
     callBtn.addEventListener('click', function() {
       jarvisCalling = !jarvisCalling;
       var status = $('jarvis-status');
+      var dot = $('jarvis-dot');
       if (jarvisCalling) {
-        callBtn.textContent = '■ Hangup';
+        callBtn.textContent = 'Hang Up';
         callBtn.classList.add('active');
         if (status) status.textContent = 'Call Active';
+        if (dot) dot.style.background = '#ff4444';
         if (window.huDuck) window.huDuck(true);
+
+        // Request mic access explicitly
+        try {
+          navigator.mediaDevices.getUserMedia({ audio: true }).then(function(stream) {
+            // Store stream for release on hangup
+            window._jarvisMicStream = stream;
+            if (status) status.textContent = 'Mic active';
+          }).catch(function(err) {
+            console.log('Mic access denied:', err);
+            if (status) status.textContent = 'Mic unavailable';
+          });
+        } catch(e) {
+          console.log('getUserMedia not supported');
+        }
+
         jarvisStartCall();
         if (jarvisRecognition) {
           try { jarvisRecognition.start(); } catch(e) {}
         }
       } else {
-        callBtn.textContent = '📞 Call';
+        callBtn.textContent = 'Call';
         callBtn.classList.remove('active');
         if (status) status.textContent = 'Ready';
+        if (dot) dot.style.background = '#00e676';
         if (window.huDuck) window.huDuck(false);
+
+        // Release mic
+        if (window._jarvisMicStream) {
+          window._jarvisMicStream.getTracks().forEach(function(t) { t.stop(); });
+          window._jarvisMicStream = null;
+        }
+
         if (jarvisRecognition) {
           try { jarvisRecognition.stop(); } catch(e) {}
         }
@@ -1339,52 +1544,60 @@ function initJarvis() {
   if (muteBtn) {
     muteBtn.addEventListener('click', function() {
       jarvisMuted = !jarvisMuted;
-      muteBtn.textContent = jarvisMuted ? '🔇' : '🔊';
+      muteBtn.textContent = jarvisMuted ? 'Muted' : 'Voice';
       muteBtn.classList.toggle('muted', jarvisMuted);
       if (jarvisMuted) window.speechSynthesis.cancel();
     });
   }
 }
 
-// ── FUEL / LEVELS ──
+// ── FUEL / EQ BARS ──
 async function loadFuel() {
     try {
         var res = await fetch('/api/fuel');
         var data = await res.json();
         ['api','llm','cli','ide'].forEach(function(t) {
-            var el = $('fuel-' + t);
-            if (el) el.style.height = data[t] + '%';
-            var slider = document.querySelector('.level-item[data-level="' + t + '"] .level-slider');
-            if (slider) { slider.value = data[t]; }
-            var val = $('level-val-' + t);
-            if (val) val.textContent = data[t] + '%';
+            var group = document.querySelector('.fuel-group[data-metric="' + t + '"]');
+            if (!group) return;
+            var bars = group.querySelectorAll('.fuel-bar');
+            var baseVal = data[t] || 50;
+            bars.forEach(function(bar, i) {
+                var variation = (i - 2) * 5;
+                var h = Math.max(4, Math.min(100, baseVal + variation));
+                bar.style.height = h + '%';
+            });
         });
+        // STEER from gear
+        var steerGroup = document.querySelector('.fuel-group[data-metric="steer"]');
+        if (steerGroup) {
+            var bars = steerGroup.querySelectorAll('.fuel-bar');
+            var baseVal = ((config.gear || 3) / 10) * 100;
+            bars.forEach(function(bar, i) {
+                var variation = (i - 2) * 5;
+                var h = Math.max(4, Math.min(100, baseVal + variation));
+                bar.style.height = h + '%';
+            });
+        }
     } catch(e) {}
 }
 
-// ── CONTROLS BAR ──
+// ── CONTROLS SECTION TOGGLE ──
 function initControlsBar() {
     var toggle = $('controls-toggle');
-    var bar = $('controls-bar');
-    if (!toggle || !bar) return;
-    toggle.addEventListener('click', function() {
-        bar.classList.toggle('collapsed');
-        toggle.textContent = bar.classList.contains('collapsed') ? '▲' : '▼';
-        var cockpit = document.querySelector('.cockpit');
-        if (cockpit) cockpit.classList.toggle('controls-collapsed', bar.classList.contains('collapsed'));
-    });
+    var section = $('controls-section');
+    var windscreen = document.querySelector('.windscreen');
+    if (!toggle || !section) return;
 
-    // Level sliders
-    document.querySelectorAll('.level-slider').forEach(function(slider) {
-        slider.addEventListener('input', function() {
-            var item = this.closest('.level-item');
-            if (!item) return;
-            var level = item.dataset.level;
-            var val = $('level-val-' + level);
-            if (val) val.textContent = this.value + '%';
-            var fuelEl = $('fuel-' + level);
-            if (fuelEl) fuelEl.style.height = this.value + '%';
-        });
+    toggle.addEventListener('click', function() {
+        controlsCollapsed = !controlsCollapsed;
+        section.classList.toggle('collapsed', controlsCollapsed);
+        if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
+        toggle.textContent = controlsCollapsed ? '▲' : '▼';
+        toggle.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
+
+        if (graphViewActive && window.graphResize) {
+            setTimeout(function() { window.graphResize(); }, 150);
+        }
     });
 }
 
@@ -1399,42 +1612,6 @@ async function pollFlywheel() {
         if (cm) cm.textContent = BRANCH_NAMES[idx]?.toUpperCase() || '--';
         if (pm) pm.textContent = (idx + 1) + '/' + BRANCH_NAMES.length;
     } catch(e) {}
-}
-
-
-
-// ── GRAPH VIEW TOGGLE ──
-var graphViewActive = false;
-var graphInitialized = false;
-
-function initGraphToggle() {
-    var btn = $('graph-toggle');
-    if (!btn) return;
-    btn.addEventListener('click', function() {
-        graphViewActive = !graphViewActive;
-        btn.classList.toggle('active', graphViewActive);
-        var canvas = $('track-canvas');
-        var graphContainer = $('graph-container');
-        if (!canvas || !graphContainer) return;
-        if (graphViewActive) {
-            canvas.style.display = 'none';
-            graphContainer.style.display = 'block';
-            if (window.trackStop) window.trackStop();
-            if (!graphInitialized) {
-                graphInitialized = true;
-                try {
-                    if (window.graphInit) window.graphInit('graph-container');
-                } catch(e) { console.error('Graph init error:', e); }
-            }
-        } else {
-            canvas.style.display = 'block';
-            graphContainer.style.display = 'none';
-            if (window.trackInit) {
-                var cv = $('track-canvas');
-                if (cv) window.trackInit(cv);
-            }
-        }
-    });
 }
 
 // ── LOGOUT ──
@@ -1459,6 +1636,8 @@ function initConfirmButtons() {
 function startApp() {
     initConfirmButtons();
     initRoad();
+    initGraphDefault();
+    initGraphToggle();
     initJoystick();
     initGear();
     initHeadUnit();
@@ -1467,9 +1646,9 @@ function startApp() {
     initBranchMenus();
     initSideFileMenus();
     initControlsBar();
+    initFullscreenToggle();
     initVersion();
     initLogoutBtn();
-    initGraphToggle();
     setInterval(loadFuel, 5000);
     setInterval(pollFlywheel, 3000);
     loadFuel();

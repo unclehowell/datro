@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
 <title>COMMAND Cockpit</title>
 <link rel="stylesheet" href="/style.css">
 <meta name="description" content="">
@@ -12,10 +12,10 @@
 <!-- LOGIN SCREEN -->
 <div class="login-overlay" id="login-overlay">
     <div class="login-panel">
-        <div class="login-version" id="login-version">command-V0.0.2.00</div>
+        <div class="login-version" id="login-version">command-V0.0.6.00</div>
         <div class="login-title">COMMAND TERMINAL</div>
         <div class="login-subtitle">AUTHORISED PERSONNEL ONLY</div>
-        <input type="password" class="login-input" id="login-pass" placeholder="KEY" autocomplete="off">
+        <input type="password" class="login-input" id="login-pass" placeholder="KEY" autocomplete="off" inputmode="text" enterkeyhint="go">
         <div class="login-error" id="login-error"></div>
         <button class="login-btn" id="login-btn">VERIFY</button>
     </div>
@@ -23,72 +23,183 @@
 
 <!-- MAIN COCKPIT -->
 <div id="app" style="display:none">
-<div class="cockpit">
-    <canvas id="track-canvas"></canvas>
-    <div id="graph-container"></div>
-    <div id="md-viewer-overlay" class="md-viewer-overlay" style="display:none">
-        <div id="md-viewer-header" class="md-viewer-header"></div>
-        <div id="md-viewer-body" class="md-viewer-body"></div>
+<div class="cockpit" id="cockpit">
+
+    <!-- WINDSHCREEN LAYER -->
+    <div class="windscreen">
+        <canvas id="track-canvas"></canvas>
+        <div id="graph-container"></div>
+        <div id="md-viewer-overlay" class="md-viewer-overlay" style="display:none">
+            <div id="md-viewer-header" class="md-viewer-header"></div>
+            <div id="md-viewer-body" class="md-viewer-body"></div>
+        </div>
     </div>
 
     <div id="milestone-overlay">
         <div id="current-milestone" class="ms-title">--</div>
-        <div id="progress-milestone" class="ms-progress">0/24</div>
+        <div id="progress-milestone" class="ms-progress">0/0</div>
     </div>
 
-    <!-- CONTROLS BAR (collapsible) -->
-    <div class="controls-bar" id="controls-bar">
-        <button class="controls-toggle" id="controls-toggle">â¼</button>
-        <div class="controls-inner" id="controls-inner">
-            <div class="level-controls">
-                <div class="level-item" data-level="api">
-                    <span class="level-label">API</span>
-                    <input type="range" class="level-slider" min="0" max="100" value="80">
-                    <span class="level-val" id="level-val-api">80%</span>
-                </div>
-                <div class="level-item" data-level="llm">
-                    <span class="level-label">LLM</span>
-                    <input type="range" class="level-slider" min="0" max="100" value="65">
-                    <span class="level-val" id="level-val-llm">65%</span>
-                </div>
-                <div class="level-item" data-level="cli">
-                    <span class="level-label">CLI</span>
-                    <input type="range" class="level-slider" min="0" max="100" value="90">
-                    <span class="level-val" id="level-val-cli">90%</span>
-                </div>
-                <div class="level-item" data-level="ide">
-                    <span class="level-label">IDE</span>
-                    <input type="range" class="level-slider" min="0" max="100" value="40">
-                    <span class="level-val" id="level-val-ide">40%</span>
-                </div>
-                <div class="level-item" data-level="steer">
-                    <span class="level-label">STEER</span>
-                    <input type="range" class="level-slider" min="0" max="100" value="50">
-                    <span class="level-val" id="level-val-steer">50%</span>
-                </div>
-            </div>
-            <div class="indicator-group">
-                <button class="indicator-btn left" id="indicator-left" title="Left MD files">â</button>
-                <button class="indicator-btn right" id="indicator-right" title="Right MD files">â¶</button>
-            </div>
-        </div>
-    </div>
-
-    <!-- STATUS BAR -->
+    <!-- STATUS BAR (thin, between windscreen and controls) -->
     <div class="status-bar">
         <div class="status-bar-inner">
-            <span>v<span class="version-label" id="version-label">--</span></span>
+            <button class="status-btn" id="btn-fullscreen-toggle" title="Toggle fullscreen windscreen">⛶</button>
+            <span class="version-label">v<span id="version-label">--</span></span>
+            <span id="cache-status" class="cache-status-text"></span>
+            <button id="btn-deploy" class="deploy-btn" style="display:none">DEPLOY ALL</button>
             <label class="auto-toggle">
                 <input type="checkbox" id="auto-toggle-input">
                 AUTO
             </label>
-            <button id="logout-btn" style="background:none;border:1px solid #444;color:#666;font-family:monospace;font-size:9px;cursor:pointer;padding:2px 8px">LOCK</button>
+            <button class="status-btn" id="logout-btn" title="Lock">LOCK</button>
         </div>
     </div>
 
+    <!-- CONTROLS SECTION (collapsible lower half) -->
+    <div class="controls-section" id="controls-section">
+        <button class="controls-toggle" id="controls-toggle" title="Toggle controls">▼</button>
+        <div class="controls-body" id="controls-body">
+
+            <!-- COLUMN 1: JOYSTICK + INDICATORS -->
+            <div class="controls-col col-left">
+                <div class="col-label">NAVIGATION</div>
+                <div class="joystick-area">
+                    <div class="joystick-side-btns">
+                        <button class="arrow-btn" id="btn-left-menu" title="Open left files">◀</button>
+                    </div>
+                    <div class="control-module">
+                        <canvas id="joystick-canvas"></canvas>
+                    </div>
+                    <div class="joystick-side-btns">
+                        <button class="arrow-btn" id="btn-right-menu" title="Open right files">▶</button>
+                    </div>
+                </div>
+                <div class="indicator-group">
+                    <button class="indicator-btn left" id="indicator-left" title="Left MD files">◀ LEFT</button>
+                    <button class="indicator-btn right" id="indicator-right" title="Right MD files">RIGHT ▶</button>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: JARVIS -->
+            <div class="controls-col col-center">
+                <div class="col-label">J.A.R.V.I.S</div>
+                <div class="center-console" id="center-console">
+                    <div id="jarvis-header">
+                        <div class="dot" id="jarvis-dot"></div>
+                        <span class="jarvis-title">COMMAND COCKPIT</span>
+                        <span id="jarvis-status" class="jarvis-status">Ready</span>
+                        <button id="graph-toggle" class="graph-toggle-btn active" title="Toggle road/graph view">⬡</button>
+                    </div>
+                    <div id="jarvis-messages"></div>
+                    <div id="jarvis-bar">
+                        <button id="jarvis-mute" class="jarvis-mute-btn" title="Toggle voice output">🔊</button>
+                        <textarea id="jarvis-txt" rows="1" placeholder="Type a message..." onkeydown="jarvisOnKey(event)"></textarea>
+                        <button class="jarvis-send-btn" id="jarvis-send" onclick="jarvisSend()">SEND</button>
+                    </div>
+                    <div class="hu-footer">
+                        <button id="jarvis-call" class="jarvis-call-btn">🎙 Call</button>
+                        <div class="hu-vol-wrap" id="hu-vol-wrap">
+                            <div class="hu-vol-track" id="hu-vol-track"><div class="hu-vol-fill" id="hu-vol-fill"></div></div>
+                            <div class="hu-vol-knob" id="hu-vol-knob"></div>
+                            <span class="hu-vol-pct" id="hu-vol-pct">70%</span>
+                        </div>
+                        <button class="hu-mute-btn" id="hu-mute-btn" title="Mute radio">◼</button>
+                        <span class="hu-status-txt" id="hu-status-txt">ON AIR</span>
+                    </div>
+                    <audio id="rmc-audio" crossorigin="anonymous"></audio>
+                    <div class="current-branch-info">
+                        <span>ACTIVE_SYS: <span id="active-branch-name">---</span></span>
+                        <span>GEAR_MODE: <span id="gear-val-text">3</span></span>
+                    </div>
+                    <div class="branch-dots" id="branch-dots"></div>
+                </div>
+            </div>
+
+            <!-- COLUMN 3: GEAR + FUEL GRAPHS -->
+            <div class="controls-col col-right">
+                <div class="col-label">SYSTEMS</div>
+                <div class="right-module">
+                    <div class="gear-display" id="gear-value">3</div>
+                    <div class="shifter-base" id="shifter-base">
+                        <div class="shifter-notch" data-val="1">1</div>
+                        <div class="shifter-notch" data-val="2">2</div>
+                        <div class="shifter-notch" data-val="3">3</div>
+                        <div class="shifter-notch" data-val="4">4</div>
+                        <div class="shifter-notch" data-val="5">5</div>
+                        <div class="shifter-notch" data-val="6">6</div>
+                        <div class="shifter-notch" data-val="7">7</div>
+                        <div class="shifter-notch" data-val="8">8</div>
+                        <div class="shifter-notch" data-val="9">9</div>
+                        <div class="shifter-notch" data-val="10">10</div>
+                        <div class="shifter-thumb" id="shifter-thumb">⬡</div>
+                    </div>
+                    <div class="fuel-grid" id="fuel-grid">
+                        <div class="fuel-group" data-metric="api">
+                            <div class="fuel-label">API</div>
+                            <div class="fuel-bars">
+                                <div class="fuel-bar" style="height:80%"></div>
+                                <div class="fuel-bar" style="height:82%"></div>
+                                <div class="fuel-bar" style="height:75%"></div>
+                                <div class="fuel-bar" style="height:80%"></div>
+                                <div class="fuel-bar" style="height:70%"></div>
+                                <div class="fuel-bar" style="height:78%"></div>
+                            </div>
+                        </div>
+                        <div class="fuel-group" data-metric="llm">
+                            <div class="fuel-label">LLM</div>
+                            <div class="fuel-bars">
+                                <div class="fuel-bar" style="height:65%"></div>
+                                <div class="fuel-bar" style="height:68%"></div>
+                                <div class="fuel-bar" style="height:60%"></div>
+                                <div class="fuel-bar" style="height:65%"></div>
+                                <div class="fuel-bar" style="height:55%"></div>
+                                <div class="fuel-bar" style="height:62%"></div>
+                            </div>
+                        </div>
+                        <div class="fuel-group" data-metric="cli">
+                            <div class="fuel-label">CLI</div>
+                            <div class="fuel-bars">
+                                <div class="fuel-bar" style="height:90%"></div>
+                                <div class="fuel-bar" style="height:88%"></div>
+                                <div class="fuel-bar" style="height:85%"></div>
+                                <div class="fuel-bar" style="height:90%"></div>
+                                <div class="fuel-bar" style="height:80%"></div>
+                                <div class="fuel-bar" style="height:87%"></div>
+                            </div>
+                        </div>
+                        <div class="fuel-group" data-metric="ide">
+                            <div class="fuel-label">IDE</div>
+                            <div class="fuel-bars">
+                                <div class="fuel-bar" style="height:40%"></div>
+                                <div class="fuel-bar" style="height:42%"></div>
+                                <div class="fuel-bar" style="height:38%"></div>
+                                <div class="fuel-bar" style="height:40%"></div>
+                                <div class="fuel-bar" style="height:35%"></div>
+                                <div class="fuel-bar" style="height:45%"></div>
+                            </div>
+                        </div>
+                        <div class="fuel-group" data-metric="steer">
+                            <div class="fuel-label">STEER</div>
+                            <div class="fuel-bars">
+                                <div class="fuel-bar" style="height:50%"></div>
+                                <div class="fuel-bar" style="height:52%"></div>
+                                <div class="fuel-bar" style="height:48%"></div>
+                                <div class="fuel-bar" style="height:50%"></div>
+                                <div class="fuel-bar" style="height:45%"></div>
+                                <div class="fuel-bar" style="height:55%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- OVERLAYS -->
     <div class="branch-overlay-backdrop" id="branch-backdrop"></div>
 
-    <!-- LEFT FILES MENU (green) -->
+    <!-- LEFT FILES MENU -->
     <div class="side-files-menu left" id="left-files-menu">
         <div class="side-files-header">
             <span class="side-files-title">â LEFT MD FILES</span>
@@ -96,11 +207,11 @@
         </div>
         <div class="side-files-scroll" id="left-files-list"></div>
         <div class="side-files-footer">
-            <span class="side-files-badge">GREEN</span>
+            <span class="side-files-badge">GREEN HEMISPHERE</span>
         </div>
     </div>
 
-    <!-- RIGHT FILES MENU (blue) -->
+    <!-- RIGHT FILES MENU -->
     <div class="side-files-menu right" id="right-files-menu">
         <div class="side-files-header">
             <span class="side-files-title">â¶ RIGHT MD FILES</span>
@@ -108,7 +219,20 @@
         </div>
         <div class="side-files-scroll" id="right-files-list"></div>
         <div class="side-files-footer">
-            <span class="side-files-badge">BLUE</span>
+            <span class="side-files-badge">BLUE HEMISPHERE</span>
+        </div>
+    </div>
+
+    <!-- LEFT PANEL (legacy branch browser) -->
+    <div class="branch-slide-menu left-panel-scroll-wrapper left" id="left-branch-menu">
+        <div class="branch-menu-header">
+            <span>BRANCHES</span>
+            <button class="branch-close-btn" id="btn-close-left">✕</button>
+        </div>
+        <div class="left-panel-scroll" id="left-branch-list"></div>
+        <div class="cache-bar">
+            <span id="cache-status-legacy"></span>
+            <button id="btn-deploy-legacy" class="deploy-btn" style="display:none">DEPLOY ALL</button>
         </div>
     </div>
 
@@ -122,65 +246,18 @@
             <textarea id="editor-textarea" spellcheck="false"></textarea>
             <div class="editor-footer">
                 <span id="editor-status"></span>
-                <button class="save-btn" id="btn-save-edit">SAVE</button>
-            </div>
-        </div>
-    </div>
-
-    <div class="dashboard-base">
-        <div class="joystick-area">
-            <button class="arrow-btn" id="btn-left-menu" title="Branches">â</button>
-            <div class="control-module">
-                <canvas id="joystick-canvas"></canvas>
-            </div>
-            <button class="arrow-btn" id="btn-right-menu" title="Branches">â¶</button>
-        </div>
-
-        <div class="center-console">
-            <div id="jarvis-header">
-                <div class="dot"></div>
-                <span class="jarvis-title">J.A.R.V.I.S</span>
-                <span id="jarvis-status" class="jarvis-status">Ready</span>
-                <button id="graph-toggle" class="graph-toggle-btn" title="Toggle graph view">â¬¡</button>
-            </div>
-            <div id="jarvis-messages"></div>
-            <div id="jarvis-bar">
-                <button id="jarvis-mute" class="jarvis-mute-btn">ð</button>
-                <textarea id="jarvis-txt" rows="1" placeholder="Type..." onkeydown="jarvisOnKey(event)"></textarea>
-                <button class="jarvis-send-btn" id="jarvis-send" onclick="jarvisSend()">Send</button>
-            </div>
-
-            <div class="hu-footer">
-                <button id="jarvis-call" class="jarvis-call-btn">ð Call</button>
-                <div class="hu-vol-wrap" id="hu-vol-wrap">
-                    <div class="hu-vol-track" id="hu-vol-track"><div class="hu-vol-fill" id="hu-vol-fill"></div></div>
-                    <div class="hu-vol-knob" id="hu-vol-knob"></div>
-                    <span class="hu-vol-pct" id="hu-vol-pct">70%</span>
+                <div style="display:flex;gap:8px">
+                    <button class="save-btn" id="btn-save-edit">SAVE</button>
+                    <button class="deploy-btn" id="btn-deploy-edit">SAVE & DEPLOY</button>
                 </div>
-                <button class="hu-mute-btn" id="hu-mute-btn" title="Mute radio">â¼</button>
-                <span class="hu-status-txt" id="hu-status-txt">ON AIR</span>
             </div>
-            <audio id="rmc-audio" crossorigin="anonymous"></audio>
-            <div class="branch-dots" id="branch-dots"></div>
-            <div class="current-branch-info">
-                <span>ACTIVE_SYS: <span id="active-branch-name">---</span></span>
-                <span>GEAR_MODE: <span id="gear-val-text">3</span></span>
-            </div>
-        </div>
-
-        <div class="right-module">
-            <div class="gear-display" id="gear-value">3</div>
-            <div class="shifter-base">
-                <input type="range" id="gear-slider" min="1" max="10" value="3">
-                <div class="shifter-stick"></div>
-            </div>
-            <div style="font-size:10px;font-family:monospace;opacity:0.5">SEQUENTIAL GEAR</div>
         </div>
     </div>
+
 </div>
 </div>
 
-<!-- JOYSTICK CONFIRMATION MODAL -->
+<!-- CONFIRMATION MODAL -->
 <div class="confirm-overlay" id="confirm-overlay" style="display:none">
     <div class="confirm-modal">
         <div class="confirm-title">CONFIRM DIRECTION</div>
