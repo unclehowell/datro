@@ -143,10 +143,8 @@ function initGraphDefault() {
     if (!canvas || !graphContainer) return;
 
     graphViewActive = true;
-    canvas.style.visibility = 'hidden';
-    canvas.style.pointerEvents = 'none';
-    graphContainer.style.visibility = 'visible';
-    graphContainer.style.pointerEvents = 'auto';
+    canvas.style.display = 'none';
+    graphContainer.style.display = 'block';
 
     if (!graphInitialized) {
         graphInitialized = true;
@@ -169,10 +167,8 @@ function initGraphToggle() {
         var graphContainer = $('graph-container');
         if (!canvas || !graphContainer) return;
         if (graphViewActive) {
-            canvas.style.visibility = 'hidden';
-            canvas.style.pointerEvents = 'none';
-            graphContainer.style.visibility = 'visible';
-            graphContainer.style.pointerEvents = 'auto';
+            canvas.style.display = 'none';
+            graphContainer.style.display = 'block';
             if (window.trackStop) window.trackStop();
             if (!graphInitialized) {
                 graphInitialized = true;
@@ -183,10 +179,8 @@ function initGraphToggle() {
                 if (window.graphResize) window.graphResize();
             }
         } else {
-            graphContainer.style.visibility = 'hidden';
-            graphContainer.style.pointerEvents = 'none';
-            canvas.style.visibility = 'visible';
-            canvas.style.pointerEvents = 'auto';
+            graphContainer.style.display = 'none';
+            canvas.style.display = 'block';
             if (window.trackInit) {
                 var cv = $('track-canvas');
                 if (cv) window.trackInit(cv);
@@ -229,24 +223,18 @@ function initThemeToggle() {
 // ── FULLSCREEN WINDSHIELD TOGGLE ──
 function initFullscreenToggle() {
     var btn = $('btn-fullscreen-toggle');
-    var controlsSection = $('controls-section');
-    var windscreen = document.querySelector('.windscreen');
-    if (!btn || !controlsSection) return;
+    var cockpit = document.querySelector('.cockpit');
+    if (!btn || !cockpit) return;
 
     btn.addEventListener('click', function() {
         controlsCollapsed = !controlsCollapsed;
-        controlsSection.classList.toggle('collapsed', controlsCollapsed);
-        if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
-        btn.textContent = controlsCollapsed ? '⛶' : '⛶';
+        cockpit.classList.toggle('fullscreen', controlsCollapsed);
         btn.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
-
-        // Resize graph if active
         if (graphViewActive && window.graphResize) {
             setTimeout(function() { window.graphResize(); }, 100);
         }
     });
 
-    // Also toggle via keyboard: Ctrl+Shift+F
     document.addEventListener('keydown', function(e) {
         if (e.ctrlKey && e.shiftKey && e.key === 'F') {
             e.preventDefault();
@@ -1594,17 +1582,14 @@ async function loadFuel() {
 // ── CONTROLS SECTION TOGGLE ──
 function initControlsBar() {
     var toggle = $('controls-toggle');
-    var section = $('controls-section');
-    var windscreen = document.querySelector('.windscreen');
-    if (!toggle || !section) return;
+    var cockpit = document.querySelector('.cockpit');
+    if (!toggle || !cockpit) return;
 
     toggle.addEventListener('click', function() {
         controlsCollapsed = !controlsCollapsed;
-        section.classList.toggle('collapsed', controlsCollapsed);
-        if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
+        cockpit.classList.toggle('fullscreen', controlsCollapsed);
         toggle.textContent = controlsCollapsed ? '▲' : '▼';
         toggle.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
-
         if (graphViewActive && window.graphResize) {
             setTimeout(function() { window.graphResize(); }, 150);
         }
