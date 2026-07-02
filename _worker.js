@@ -196,10 +196,21 @@ export default {
 
     // ── Existing API Routes ──
     if (path === '/api/version') {
-      const r = await fetch(WORKER + '/__status');
-      const s = await r.json();
-      const ver = (s.last_run && s.last_run.version) || '0.0.0';
-      return json({ version: 'command-V' + ver });
+      let targetVer = null;
+      try {
+        const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100');
+        const releases = await releasesResp.json();
+        if (Array.isArray(releases)) {
+          for (const release of releases) {
+            const tag = release.tag_name || '';
+            const ver = extractVersion(tag, 'command');
+            if (ver && (!targetVer || parseVer(ver) > parseVer(targetVer))) {
+              targetVer = ver;
+            }
+          }
+        }
+      } catch(e) {}
+      return json({ version: 'command-V' + (targetVer || '0.0.0') });
     }
 
     if (path === '/api/fuel') {

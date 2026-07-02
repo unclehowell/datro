@@ -72,10 +72,6 @@ html, body {
 .windscreen.fullscreen {
     clip-path: none;
 }
-.cockpit.fullscreen .status-bar,
-.cockpit.fullscreen .controls-section {
-    display: none;
-}
 #track-canvas {
     position: absolute;
     top: 0; left: 0; width: 100%; height: 100%;
@@ -310,7 +306,7 @@ html, body {
     position: relative;
     overflow: hidden;
 }
-.controls-section.collapsed {
+.controls-section.collapsed .controls-body {
     display: none;
 }
 .controls-toggle {

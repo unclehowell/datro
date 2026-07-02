@@ -84,14 +84,17 @@ function initLogin() {
 // ── VERSION & AUTO-UPDATE ──
 function initVersion() {
     var el = $('version-label');
+    var loginVer = $('login-version');
     fetch('/api/version')
         .then(function(r) { return r.json(); })
         .then(function(d) {
             currentVersion = d.version || '0.0.0';
             if (el) el.textContent = currentVersion;
+            if (loginVer) loginVer.textContent = currentVersion;
         })
         .catch(function() {
             if (el) el.textContent = 'local';
+            if (loginVer) loginVer.textContent = 'local';
         });
 
     var toggle = $('auto-toggle-input');
@@ -223,12 +226,14 @@ function initThemeToggle() {
 // ── FULLSCREEN WINDSHIELD TOGGLE ──
 function initFullscreenToggle() {
     var btn = $('btn-fullscreen-toggle');
-    var cockpit = document.querySelector('.cockpit');
-    if (!btn || !cockpit) return;
+    var controlsSection = $('controls-section');
+    var windscreen = document.querySelector('.windscreen');
+    if (!btn || !controlsSection) return;
 
     btn.addEventListener('click', function() {
         controlsCollapsed = !controlsCollapsed;
-        cockpit.classList.toggle('fullscreen', controlsCollapsed);
+        controlsSection.classList.toggle('collapsed', controlsCollapsed);
+        if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
         btn.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
         if (graphViewActive && window.graphResize) {
             setTimeout(function() { window.graphResize(); }, 100);
@@ -1641,12 +1646,14 @@ async function loadFuel() {
 // ── CONTROLS SECTION TOGGLE ──
 function initControlsBar() {
     var toggle = $('controls-toggle');
-    var cockpit = document.querySelector('.cockpit');
-    if (!toggle || !cockpit) return;
+    var controlsSection = $('controls-section');
+    var windscreen = document.querySelector('.windscreen');
+    if (!toggle || !controlsSection) return;
 
     toggle.addEventListener('click', function() {
         controlsCollapsed = !controlsCollapsed;
-        cockpit.classList.toggle('fullscreen', controlsCollapsed);
+        controlsSection.classList.toggle('collapsed', controlsCollapsed);
+        if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
         toggle.textContent = controlsCollapsed ? '▲' : '▼';
         toggle.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
         if (graphViewActive && window.graphResize) {
