@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `—`
-- **Tag**: `pending`
-- **Deployed**: 2026-06-29T23:00:13.919Z
+- **Version**: `0.0.0.01`
+- **Tag**: `gh-pages-v0.0.0.01`
+- **Deployed**: 2026-07-02T01:00:37.447Z
 - **URL**: [https://gh-pages.datro.directory](https://gh-pages.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-29T23:00:13.919Z*
+*Auto-updated by datro-flywheel at 2026-07-02T01:00:37.447Z*
