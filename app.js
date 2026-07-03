@@ -139,14 +139,14 @@ function checkForUpdates() {
         .catch(function() {});
 }
 
-// ── GRAPH & ROAD VIEW ──
+// ── GRAPH & CITY VIEW ──
 function initGraphDefault() {
     var canvas = $('track-canvas');
     var graphContainer = $('graph-container');
-    if (!canvas || !graphContainer) return;
+    if (!graphContainer) return;
 
     graphViewActive = true;
-    canvas.style.display = 'none';
+    if (canvas) canvas.style.display = 'none';
     graphContainer.style.display = 'block';
 
     if (!graphInitialized) {
@@ -168,11 +168,18 @@ function initGraphToggle() {
         btn.classList.toggle('active', graphViewActive);
         var canvas = $('track-canvas');
         var graphContainer = $('graph-container');
-        if (!canvas || !graphContainer) return;
+        if (!graphContainer) return;
         if (graphViewActive) {
-            canvas.style.display = 'none';
+            // Switch to graph view
+            if (canvas) canvas.style.display = 'none';
             graphContainer.style.display = 'block';
             if (window.trackStop) window.trackStop();
+            // Remove any Three.js canvas from windscreen
+            var ws = document.querySelector('.windscreen');
+            if (ws) {
+                var threeCanvas = ws.querySelector('canvas:not(#track-canvas)');
+                if (threeCanvas) threeCanvas.remove();
+            }
             if (!graphInitialized) {
                 graphInitialized = true;
                 try {
@@ -182,12 +189,11 @@ function initGraphToggle() {
                 if (window.graphResize) window.graphResize();
             }
         } else {
+            // Switch to 3D city view
             graphContainer.style.display = 'none';
-            canvas.style.display = 'block';
-            if (window.trackInit) {
-                var cv = $('track-canvas');
-                if (cv) window.trackInit(cv);
-            }
+            if (canvas) canvas.style.display = 'none';
+            var ws2 = document.querySelector('.windscreen');
+            if (ws2 && window.trackInit) window.trackInit(ws2);
         }
     });
 }
@@ -223,30 +229,7 @@ function initThemeToggle() {
     });
 }
 
-// ── FULLSCREEN WINDSHIELD TOGGLE ──
-function initFullscreenToggle() {
-    var btn = $('btn-fullscreen-toggle');
-    var controlsSection = $('controls-section');
-    var windscreen = document.querySelector('.windscreen');
-    if (!btn || !controlsSection) return;
-
-    btn.addEventListener('click', function() {
-        controlsCollapsed = !controlsCollapsed;
-        controlsSection.classList.toggle('collapsed', controlsCollapsed);
-        if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
-        btn.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
-        if (graphViewActive && window.graphResize) {
-            setTimeout(function() { window.graphResize(); }, 100);
-        }
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.shiftKey && e.key === 'F') {
-            e.preventDefault();
-            btn.click();
-        }
-    });
-}
+// ── FULLSCREEN WINDSHIELD TOGGLE (merged into initControlsBar) ──
 
 // ── JOYSTICK ──
 var snapX = 0, snapY = 0;
@@ -1694,6 +1677,13 @@ function initControlsBar() {
             setTimeout(function() { window.graphResize(); }, 150);
         }
     });
+
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.key === 'F') {
+            e.preventDefault();
+            toggle.click();
+        }
+    });
 }
 
 // ── FLYWHEEL ──
@@ -1769,7 +1759,6 @@ function startApp() {
     initSideFileMenus();
     initControlsBar();
     initThemeToggle();
-    initFullscreenToggle();
     initVersion();
     initLogoutBtn();
     setInterval(loadFuel, 5000);

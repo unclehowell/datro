@@ -198,14 +198,29 @@ export default {
     if (path === '/api/version') {
       let targetVer = null;
       try {
-        const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100');
-        const releases = await releasesResp.json();
-        if (Array.isArray(releases)) {
-          for (const release of releases) {
-            const tag = release.tag_name || '';
-            const ver = extractVersion(tag, 'command');
+        // Check tags (lighter than releases, all accessible via refs API)
+        const tagsResp = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags?per_page=100');
+        const tags = await tagsResp.json();
+        if (Array.isArray(tags)) {
+          for (const tag of tags) {
+            const tagName = (tag.ref || '').replace('refs/tags/', '');
+            const ver = extractVersion(tagName, 'command');
             if (ver && (!targetVer || parseVer(ver) > parseVer(targetVer))) {
               targetVer = ver;
+            }
+          }
+        }
+        // Also check first page of releases as fallback
+        if (!targetVer) {
+          const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100');
+          const releases = await releasesResp.json();
+          if (Array.isArray(releases)) {
+            for (const release of releases) {
+              const tag = release.tag_name || '';
+              const ver = extractVersion(tag, 'command');
+              if (ver && (!targetVer || parseVer(ver) > parseVer(targetVer))) {
+                targetVer = ver;
+              }
             }
           }
         }
