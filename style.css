@@ -42,6 +42,40 @@ html[data-theme="light"] {
     --blue-dim: rgba(0,85,204,0.2);
     --glow: 0 0 16px rgba(184,134,58,0.15);
 }
+html[data-theme="light"] .status-btn { border-color: #aaa; color: #555; }
+html[data-theme="light"] .status-btn:hover { border-color: var(--amber); color: var(--amber); }
+html[data-theme="light"] .controls-toggle { background: rgba(255,255,255,0.9); color: var(--amber); border-top-color: var(--border); }
+html[data-theme="light"] .controls-toggle:hover { background: rgba(255,255,255,1); }
+html[data-theme="light"] .jarvis-send-btn { background: var(--amber); color: #fff; border-color: var(--amber); }
+html[data-theme="light"] .jarvis-call-btn { border-color: var(--amber); color: var(--amber); }
+html[data-theme="light"] .graph-toggle-btn { border-color: #4ecdc4; color: #2a9d8f; }
+html[data-theme="light"] .graph-toggle-btn.active { background: rgba(78,205,196,0.2); }
+html[data-theme="light"] .login-panel { background: var(--surface); border-color: var(--border); }
+html[data-theme="light"] .login-title { color: var(--amber); }
+html[data-theme="light"] .login-subtitle { color: var(--text-dim); }
+html[data-theme="light"] .login-input { background: var(--bg); border-color: var(--border); color: var(--text); }
+html[data-theme="light"] .col-label { color: var(--amber); }
+html[data-theme="light"] .jarvis-title { color: var(--amber); }
+html[data-theme="light"] .jarvis-status { color: var(--text-dim); }
+html[data-theme="light"] .fuel-label { color: var(--text); }
+html[data-theme="light"] .fuel-bar { background: var(--amber); }
+html[data-theme="light"] .fuel-remaining { color: var(--text-dim); }
+html[data-theme="light"] .md-viewer-overlay { background: rgba(240,237,230,0.95); }
+html[data-theme="light"] .md-viewer-header { background: var(--surface); border-color: var(--border); color: var(--text); }
+html[data-theme="light"] .md-viewer-body { color: var(--text); }
+html[data-theme="light"] .side-files-menu { background: var(--surface); border-color: var(--border); }
+html[data-theme="light"] .side-files-header { color: var(--text); border-color: var(--border); }
+html[data-theme="light"] .branch-dot { border-color: var(--border); }
+html[data-theme="light"] .gear-display { color: var(--amber); border-color: var(--border); }
+html[data-theme="light"] .shifter-notch { color: var(--text-dim); border-color: var(--border); }
+html[data-theme="light"] .shifter-notch.active { color: var(--amber); border-color: var(--amber); }
+html[data-theme="light"] .auto-toggle { color: var(--text-dim); }
+html[data-theme="light"] #graph-container { background: var(--bg); }
+html[data-theme="light"] .confirm-panel { background: var(--surface); border-color: var(--border); }
+html[data-theme="light"] .confirm-title { color: var(--amber); }
+html[data-theme="light"] .confirm-statement { color: var(--text); }
+html[data-theme="light"] .confirm-btn { border-color: var(--border); color: var(--text); }
+html[data-theme="light"] .confirm-btn.confirm-yes { background: var(--amber); color: #fff; border-color: var(--amber); }
 html, body {
     width: 100%; height: 100%;
     background: var(--bg);
@@ -305,17 +339,15 @@ html, body {
 
 /* ── CONTROLS SECTION (collapsible lower half) ── */
 .controls-section {
-    flex-shrink: 1;
+    flex-shrink: 0;
     position: relative;
     overflow: hidden;
-    transition: max-height 0.3s ease;
-    max-height: 50vh;
-}
-.controls-section.collapsed {
-    max-height: 28px;
 }
 .controls-section.collapsed .controls-body {
-    display: none;
+    max-height: 0;
+    padding: 0;
+    overflow: hidden;
+    border-top: none;
 }
 .controls-toggle {
     display: block;
@@ -340,11 +372,14 @@ html, body {
 .controls-body {
     display: flex;
     gap: 0;
-    height: 100%;
+    height: 38vh;
+    max-height: 38vh;
     background: var(--bg-secondary);
     border-top: 2px solid var(--border);
     background-image:
         radial-gradient(ellipse at 50% 0%, var(--bg-tertiary) 0%, var(--bg) 100%);
+    transition: max-height 0.3s ease, padding 0.3s ease;
+    overflow: hidden;
 }
 .controls-col {
     display: flex;
@@ -858,7 +893,7 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
 .fuel-bar:nth-child(5) { opacity: 0.95; }
 .fuel-bar:nth-child(6) { opacity: 1; }
 .fuel-remaining {
-    font-size: 7px;
+    font-size: 8px;
     font-family: var(--font-mono);
     color: var(--amber-dim);
     text-align: center;

@@ -312,6 +312,12 @@ if (typeof window !== 'undefined') {
         if (!scene) {
             init();
         }
+        // Always ensure canvas is in the DOM
+        if (renderer && renderer.domElement && container) {
+            if (!renderer.domElement.parentNode || renderer.domElement.parentNode !== container) {
+                container.appendChild(renderer.domElement);
+            }
+        }
         // Size renderer to container
         if (renderer && container) {
             var w = container.clientWidth;
