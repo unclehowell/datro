@@ -219,15 +219,16 @@ export default {
 
       // Groq — free tier: check model count as proxy for availability
       try {
+        const gKey = env.GROQ_API_KEY || '';
         const g = await fetch('https://api.groq.com/openai/v1/models', {
-          headers: { 'Authorization': 'Bearer ' + (env.GROQ_API_KEY || '') },
+          headers: { 'Authorization': 'Bearer ' + gKey },
         });
         const gd = await g.json();
         const modelCount = (gd.data || []).length;
         const pct = Math.min(100, Math.round((modelCount / 20) * 100));
         providers.push({ name: 'Groq', model: 'llama-3.3-70b', remaining: modelCount + ' models', pct, tier: 'Free', color: '#f55036' });
       } catch(e) {
-        providers.push({ name: 'Groq', model: 'llama-3.3-70b', remaining: 'N/A', pct: 0, tier: 'Free', color: '#f55036', error: true });
+        providers.push({ name: 'Groq', model: 'llama-3.3-70b', remaining: 'Error', pct: 0, tier: 'Free', color: '#f55036', error: true });
       }
 
       // Gemini — check model availability
@@ -239,13 +240,14 @@ export default {
         const pct = Math.min(100, Math.round((modelCount / 50) * 100));
         providers.push({ name: 'Gemini', model: '2.5-flash', remaining: modelCount + ' models', pct, tier: 'Free', color: '#4285f4' });
       } catch(e) {
-        providers.push({ name: 'Gemini', model: '2.5-flash', remaining: 'N/A', pct: 0, tier: 'Free', color: '#4285f4', error: true });
+        providers.push({ name: 'Gemini', model: '2.5-flash', remaining: 'Error', pct: 0, tier: 'Free', color: '#4285f4', error: true });
       }
 
       // OpenRouter — check credits
       try {
+        const oKey = env.OPENROUTER_API_KEY || '';
         const o = await fetch('https://openrouter.ai/api/v1/credits', {
-          headers: { 'Authorization': 'Bearer ' + (env.OPENROUTER_API_KEY || '') },
+          headers: { 'Authorization': 'Bearer ' + oKey },
         });
         const od = await o.json();
         const total = od.data?.total_credits || 0;
