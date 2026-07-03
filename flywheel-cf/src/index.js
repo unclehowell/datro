@@ -2083,8 +2083,28 @@ Mandatory: At least 1 change MUST affect the visual layout or add functional UI.
 
 async function queryFinancechequeAPI(systemPrompt, userPrompt, env, timeoutMs = 60000) {
   const startTimeAI = Date.now();
-  const parentUrl = env.PARENT_PROXY_URL || 'https://www.financecheque.uk';
-  const model = env.AI_MODEL || 'openrouter/anthropic/claude-sonnet';
+  
+  // Check for phone proxy availability (offload compute)
+  const phoneUrl = env.PHONE_PROXY_URL || process.env.PHONE_PROXY_URL;
+  let parentUrl = env.PARENT_PROXY_URL || 'https://www.financecheque.uk';
+  let model = env.AI_MODEL || 'openrouter/anthropic/claude-sonnet';
+  
+  if (phoneUrl) {
+    try {
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 3000);
+      const resp = await fetch(`${phoneUrl}/health`, { signal: controller.signal });
+      clearTimeout(timer);
+      if (resp.ok) {
+        const data = await resp.json();
+        if (data?.ok && (data?.activeJobs || 0) < 10) {
+          parentUrl = phoneUrl;
+          console.log(`Routing LLM to phone proxy: ${phoneUrl}`);
+        }
+      }
+    } catch {}
+  }
+  
   const payload = {
     message: `${systemPrompt}\n\n${userPrompt}`,
     chat_only: true,
