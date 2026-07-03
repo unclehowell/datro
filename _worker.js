@@ -214,7 +214,86 @@ export default {
     }
 
     if (path === '/api/fuel') {
-      return json({ api: 80, llm: 65, cli: 90, ide: 40 });
+      // Query real provider quotas/balances from Cloudflare Worker
+      const providers = [];
+
+      // Groq — free tier: check model count as proxy for availability
+      try {
+        const g = await fetch('https://api.groq.com/openai/v1/models', {
+          headers: { 'Authorization': 'Bearer ' + (env.GROQ_API_KEY || '') },
+        });
+        const gd = await g.json();
+        const modelCount = (gd.data || []).length;
+        const pct = Math.min(100, Math.round((modelCount / 20) * 100));
+        providers.push({ name: 'Groq', model: 'llama-3.3-70b', remaining: modelCount + ' models', pct, tier: 'Free', color: '#f55036' });
+      } catch(e) {
+        providers.push({ name: 'Groq', model: 'llama-3.3-70b', remaining: 'N/A', pct: 0, tier: 'Free', color: '#f55036', error: true });
+      }
+
+      // Gemini — check model availability
+      try {
+        const gKey = env.GOOGLE_API_KEY || '';
+        const g = await fetch('https://generativelanguage.googleapis.com/v1beta/models?key=' + gKey);
+        const gd = await g.json();
+        const modelCount = (gd.models || []).length;
+        const pct = Math.min(100, Math.round((modelCount / 50) * 100));
+        providers.push({ name: 'Gemini', model: '2.5-flash', remaining: modelCount + ' models', pct, tier: 'Free', color: '#4285f4' });
+      } catch(e) {
+        providers.push({ name: 'Gemini', model: '2.5-flash', remaining: 'N/A', pct: 0, tier: 'Free', color: '#4285f4', error: true });
+      }
+
+      // OpenRouter — check credits
+      try {
+        const o = await fetch('https://openrouter.ai/api/v1/credits', {
+          headers: { 'Authorization': 'Bearer ' + (env.OPENROUTER_API_KEY || '') },
+        });
+        const od = await o.json();
+        const total = od.data?.total_credits || 0;
+        const used = od.data?.total_usage || 0;
+        const remaining = Math.max(0, total - used);
+        const pct = total > 0 ? Math.round((remaining / total) * 100) : (used > 0 ? 5 : 50);
+        providers.push({ name: 'OpenRouter', model: 'gemma-4-31b', remaining: '$' + remaining.toFixed(4), pct, tier: 'Free', color: '#6366f1' });
+      } catch(e) {
+        providers.push({ name: 'OpenRouter', model: 'gemma-4-31b', remaining: 'N/A', pct: 0, tier: 'Free', color: '#6366f1', error: true });
+      }
+
+      // DeepSeek — check balance
+      try {
+        const d = await fetch('https://api.deepseek.com/user/balance', {
+          headers: { 'Authorization': 'Bearer ' + (env.DEEPSEEK_API_KEY || '') },
+        });
+        const dd = await d.json();
+        const bal = parseFloat(dd.balance_infos?.[0]?.total_balance || '0');
+        const pct = bal > 0 ? Math.min(100, Math.round(bal * 20)) : 0;
+        providers.push({ name: 'DeepSeek', model: 'deepseek-chat', remaining: '$' + bal.toFixed(2), pct, tier: 'Pay', color: '#059669' });
+      } catch(e) {
+        providers.push({ name: 'DeepSeek', model: 'deepseek-chat', remaining: '$0.00', pct: 0, tier: 'Pay', color: '#059669', error: true });
+      }
+
+      // OpenAI — check if key works (usage endpoint needs org)
+      try {
+        const oKey = env.OPENAI_API_KEY || '';
+        const o = await fetch('https://api.openai.com/v1/models', {
+          headers: { 'Authorization': 'Bearer ' + oKey },
+        });
+        const ok = o.ok;
+        providers.push({ name: 'OpenAI', model: 'gpt-4o', remaining: ok ? 'Active' : 'No key', pct: ok ? 60 : 0, tier: 'Pay', color: '#10b981' });
+      } catch(e) {
+        providers.push({ name: 'OpenAI', model: 'gpt-4o', remaining: 'N/A', pct: 0, tier: 'Pay', color: '#10b981', error: true });
+      }
+
+      // Hermes (local) — check if ollama is running
+      try {
+        const h = await fetch('http://localhost:11434/api/tags', { signal: AbortSignal.timeout(2000) });
+        const hd = await h.json();
+        const modelCount = (hd.models || []).length;
+        const pct = Math.min(100, modelCount * 15);
+        providers.push({ name: 'Hermes', model: 'ollama', remaining: modelCount + ' local', pct, tier: 'Local', color: '#f59e0b' });
+      } catch(e) {
+        providers.push({ name: 'Hermes', model: 'ollama', remaining: 'Offline', pct: 0, tier: 'Local', color: '#f59e0b', error: true });
+      }
+
+      return json({ providers, ts: Date.now() });
     }
 
     if (path === '/api/branches') {

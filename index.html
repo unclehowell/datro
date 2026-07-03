@@ -12,7 +12,7 @@
 <!-- LOGIN SCREEN -->
 <div class="login-overlay" id="login-overlay">
     <div class="login-panel">
-        <div class="login-version" id="login-version">command-V0.0.9.00</div>
+        <div class="login-version" id="login-version">command-V0.0.10.00</div>
         <div class="login-title">COMMAND TERMINAL</div>
         <div class="login-subtitle">AUTHORISED PERSONNEL ONLY</div>
         <input type="password" class="login-input" id="login-pass" placeholder="KEY" autocomplete="off" inputmode="text" enterkeyhint="go">
@@ -131,50 +131,7 @@
                         <div class="shifter-thumb" id="shifter-thumb">⬡</div>
                     </div>
                     <div class="fuel-grid" id="fuel-grid">
-                        <div class="fuel-group" data-metric="api">
-                            <div class="fuel-label">API</div>
-                            <div class="fuel-bars">
-                                <div class="fuel-bar" style="height:80%"></div>
-                                <div class="fuel-bar" style="height:82%"></div>
-                                <div class="fuel-bar" style="height:75%"></div>
-                                <div class="fuel-bar" style="height:80%"></div>
-                                <div class="fuel-bar" style="height:70%"></div>
-                                <div class="fuel-bar" style="height:78%"></div>
-                            </div>
-                        </div>
-                        <div class="fuel-group" data-metric="llm">
-                            <div class="fuel-label">LLM</div>
-                            <div class="fuel-bars">
-                                <div class="fuel-bar" style="height:65%"></div>
-                                <div class="fuel-bar" style="height:68%"></div>
-                                <div class="fuel-bar" style="height:60%"></div>
-                                <div class="fuel-bar" style="height:65%"></div>
-                                <div class="fuel-bar" style="height:55%"></div>
-                                <div class="fuel-bar" style="height:62%"></div>
-                            </div>
-                        </div>
-                        <div class="fuel-group" data-metric="cli">
-                            <div class="fuel-label">CLI</div>
-                            <div class="fuel-bars">
-                                <div class="fuel-bar" style="height:90%"></div>
-                                <div class="fuel-bar" style="height:88%"></div>
-                                <div class="fuel-bar" style="height:85%"></div>
-                                <div class="fuel-bar" style="height:90%"></div>
-                                <div class="fuel-bar" style="height:80%"></div>
-                                <div class="fuel-bar" style="height:87%"></div>
-                            </div>
-                        </div>
-                        <div class="fuel-group" data-metric="ide">
-                            <div class="fuel-label">IDE</div>
-                            <div class="fuel-bars">
-                                <div class="fuel-bar" style="height:40%"></div>
-                                <div class="fuel-bar" style="height:42%"></div>
-                                <div class="fuel-bar" style="height:38%"></div>
-                                <div class="fuel-bar" style="height:40%"></div>
-                                <div class="fuel-bar" style="height:35%"></div>
-                                <div class="fuel-bar" style="height:45%"></div>
-                            </div>
-                        </div>
+                        <!-- Populated dynamically by loadFuel() -->
                         <div class="fuel-group" data-metric="steer">
                             <div class="fuel-label">STEER</div>
                             <div class="fuel-bars">

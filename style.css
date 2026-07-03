@@ -807,18 +807,21 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
 /* ── FUEL GRID ── */
 .fuel-grid {
     display: flex;
-    gap: 6px;
-    padding: 6px 10px;
+    gap: 4px;
+    padding: 6px 8px;
     width: 100%;
     justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 .fuel-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 4px;
+    gap: 3px;
     flex: 1;
-    max-width: 50px;
+    min-width: 36px;
+    max-width: 48px;
 }
 .fuel-label {
     font-size: 9px;
@@ -846,6 +849,16 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
 .fuel-bar:nth-child(4) { opacity: 0.85; }
 .fuel-bar:nth-child(5) { opacity: 0.95; }
 .fuel-bar:nth-child(6) { opacity: 1; }
+.fuel-remaining {
+    font-size: 7px;
+    font-family: var(--font-mono);
+    color: var(--amber-dim);
+    text-align: center;
+    white-space: nowrap;
+    max-width: 50px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
 /* ── BRANCH MENU ── */
 .branch-slide-menu {

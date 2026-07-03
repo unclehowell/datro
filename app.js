@@ -1618,19 +1618,53 @@ async function loadFuel() {
     try {
         var res = await fetch('/api/fuel');
         var data = await res.json();
-        ['api','llm','cli','ide'].forEach(function(t) {
-            var group = document.querySelector('.fuel-group[data-metric="' + t + '"]');
-            if (!group) return;
-            var bars = group.querySelectorAll('.fuel-bar');
-            var baseVal = data[t] || 50;
-            bars.forEach(function(bar, i) {
-                var variation = (i - 2) * 5;
-                var h = Math.max(4, Math.min(100, baseVal + variation));
-                bar.style.height = h + '%';
-            });
+        var grid = document.getElementById('fuel-grid');
+        if (!grid || !data.providers) return;
+
+        // Preserve STEER group
+        var steerGroup = grid.querySelector('.fuel-group[data-metric="steer"]');
+
+        grid.innerHTML = '';
+        data.providers.forEach(function(p) {
+            var group = document.createElement('div');
+            group.className = 'fuel-group';
+            group.setAttribute('data-metric', p.name.toLowerCase());
+
+            var label = document.createElement('div');
+            label.className = 'fuel-label';
+            label.textContent = p.name;
+            label.title = p.model + ' (' + p.tier + ') — ' + p.remaining;
+
+            var barsContainer = document.createElement('div');
+            barsContainer.className = 'fuel-bars';
+
+            // Generate 6 bars based on percentage
+            for (var i = 0; i < 6; i++) {
+                var bar = document.createElement('div');
+                bar.className = 'fuel-bar';
+                var barPct = Math.max(4, Math.min(100, p.pct + (i - 2) * 3));
+                bar.style.height = barPct + '%';
+                bar.style.background = p.error ? '#666' : p.color;
+                bar.title = p.name + ': ' + p.remaining + ' (' + p.pct + '%)';
+                barsContainer.appendChild(bar);
+            }
+
+            // Remaining text under bars
+            var remaining = document.createElement('div');
+            remaining.className = 'fuel-remaining';
+            remaining.textContent = p.remaining;
+            remaining.title = p.model + ' — ' + p.tier + ' tier';
+
+            group.appendChild(label);
+            group.appendChild(barsContainer);
+            group.appendChild(remaining);
+            grid.appendChild(group);
         });
-        // STEER from gear
-        var steerGroup = document.querySelector('.fuel-group[data-metric="steer"]');
+
+        // Re-add STEER group
+        if (steerGroup) grid.appendChild(steerGroup);
+
+        // Update STEER from gear
         if (steerGroup) {
             var bars = steerGroup.querySelectorAll('.fuel-bar');
             var baseVal = ((config.gear || 3) / 10) * 100;
