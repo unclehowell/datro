@@ -1,15 +1,6 @@
 #!/usr/bin/env node
-/**
- * child-proxy.js — FinanceCheque child proxy
- * Registers with parent proxy, provides OpenAI-compatible chat via CLI chain
- *
- * Usage:
- *   node child-proxy.js
- *   PORT=4001 CHILD_ID=my-machine node child-proxy.js
- */
-
 import express from "express";
-import { execFile, spawn } from "child_process";
+import { execFile } from "child_process";
 import { promises as fsp } from "fs";
 import { promisify } from "util";
 import os from "os";
@@ -17,27 +8,27 @@ import path from "path";
 
 const execFileAsync = promisify(execFile);
 
-// Load machine identity from ~/.fcukproxy/machine.json
-let machineId = "";
-try {
-  const p = path.join(os.homedir(), ".fcukproxy", "machine.json");
-  const cfg = JSON.parse(await fsp.readFile(p, "utf-8"));
-  machineId = cfg.machine_id || "";
-} catch {}
-
 const PARENT_URL = process.env.PARENT_URL || "https://www.financecheque.uk";
-const CHILD_ID   = process.env.CHILD_ID   || machineId || `child-${os.hostname()}`;
+const CHILD_ID   = process.env.CHILD_ID   || `child-${os.hostname()}`;
 const PORT       = Number(process.env.PORT) || 4001;
-// Use tunnel URL if available (makes child proxy reachable from parent proxy via Cloudflare)
-const TUNNEL_URL = process.env.TUNNEL_URL || "https://child-proxy.financecheque.uk";
-const SELF_URL   = process.env.SELF_URL    || TUNNEL_URL;
+const SELF_URL   = process.env.SELF_URL    || `http://${os.hostname()}:${PORT}`;
 
 const app = express();
 app.use(express.json());
-
 let activeJobs = 0;
 
-// ── Register with parent proxy ────────────────────────────────────────────
+let rrIndex = 0;
+const rrFile = path.join(os.homedir(), ".fcukproxy", "round-robin-state.json");
+async function loadRRState() {
+  try {
+    const s = JSON.parse(await fsp.readFile(rrFile, "utf-8"));
+    rrIndex = s.index || 0;
+  } catch {}
+}
+async function saveRRState() {
+  try { await fsp.writeFile(rrFile, JSON.stringify({ index: rrIndex, updated: new Date().toISOString() })); } catch {}
+}
+
 async function register() {
   try {
     const res = await fetch(`${PARENT_URL}/api/proxy?action=register`, {
@@ -54,7 +45,6 @@ async function register() {
   }
 }
 
-// ── Heartbeat every 30s ───────────────────────────────────────────────────
 async function heartbeat() {
   try {
     await fetch(`${PARENT_URL}/api/proxy?action=heartbeat`, {
@@ -64,15 +54,6 @@ async function heartbeat() {
     });
   } catch { /* ignore */ }
 }
-
-// ── Dispatch endpoint (called by parent proxy) ────────────────────────────
-app.post("/dispatch", async (req, res) => {
-  const job = req.body;
-  res.json({ ok: true, childId: CHILD_ID });
-
-  activeJobs++;
-  runJob(job).finally(() => activeJobs--);
-});
 
 app.get("/health", (_req, res) => {
   res.json({ ok: true, childId: CHILD_ID, activeJobs });
@@ -99,7 +80,6 @@ app.post("/chat", async (req, res) => {
   }
 });
 
-// ── OpenAI-compatible endpoint ─────────────────────────────────────────
 app.post("/v1/chat/completions", async (req, res) => {
   const body = req.body || {};
   const messages = body.messages || [];
@@ -122,164 +102,62 @@ app.post("/v1/chat/completions", async (req, res) => {
   }
 });
 
-// ── Find bugs endpoint ──────────────────────────────────────────────────
-app.post("/find-bugs", async (req, res) => {
-  const { repo_context, branch } = req.body || {};
-  if (!repo_context) return res.status(400).json({ ok: false, error: "repo_context is required" });
-
-  const prompt = [
-    `Find the single biggest, most apparent, obvious and crucial bug in this codebase on branch '${branch || "unknown"}'.`,
-    `Read the actual source code below.`,
-    `Return ONLY raw JSON (no markdown) with keys: file_path, bug_description, old_string (exact text to replace), new_string (replacement), commit_message.`,
-    ``,
-    repo_context,
-  ].join("\n");
-
-  try {
-    const reply = await runChat(prompt);
-    return res.json({ ok: true, reply, childId: CHILD_ID });
-  } catch (error) {
-    return res.status(500).json({ ok: false, error: error.message || "find-bugs failed", childId: CHILD_ID });
-  }
+app.get("/v1/models", (_req, res) => {
+  res.json({
+    object: "list",
+    data: [
+      { id: "proxy-router", object: "model", created: Math.floor(Date.now() / 1000), owned_by: "fcuk-proxy" },
+      { id: "kilo-chat", object: "model", created: Math.floor(Date.now() / 1000), owned_by: "kilo" },
+      { id: "opencode-chat", object: "model", created: Math.floor(Date.now() / 1000), owned_by: "opencode" },
+    ],
+  });
 });
 
-// ── Dispatch dator fix (full pipeline) ────────────────────────────────
-app.post("/dispatch-datro-fix", async (req, res) => {
-  const { branch, repo_dir } = req.body || {};
-  if (!branch || !repo_dir) return res.status(400).json({ ok: false, error: "branch and repo_dir required" });
-
-  try {
-    const { execSync } = await import("child_process");
-    const result = execSync(`bash /home/unclehowell/.fcukproxy/multi-branch-release.sh`, {
-      cwd: repo_dir,
-      timeout: 300_000,
-      env: { ...process.env, FORCE_BRANCH: branch },
-    });
-    const output = result.stdout?.toString() || "";
-    res.json({ ok: true, output: output.slice(-2000), childId: CHILD_ID });
-  } catch (error) {
-    res.status(500).json({ ok: false, error: error.message, childId: CHILD_ID });
-  }
-});
-
-// ── Run job via Hermes/Kiro ───────────────────────────────────────────────
-async function runJob(job) {
-  const { id, url, leadAmount, quantity } = job;
-  // Try Kiro CLI first, fall back to Hermes
-  const prompt = buildPrompt(url, leadAmount, quantity);
-
-  // Option 1: Kiro CLI
-  const kiroPath = process.env.KIRO_PATH || "/home/ubuntu/kiro-cli-temp";
-  try {
-    const proc = spawn(kiroPath, ["chat", "--non-interactive", "--message", prompt], {
-      cwd: "/home/ubuntu",
-      env: { ...process.env },
-      timeout: 300_000, // 5 min
-    });
-
-    proc.stdout.on("data", d => console.log(`[kiro][${id}]`, d.toString().trim()));
-    proc.stderr.on("data", d => console.error(`[kiro][${id}]`, d.toString().trim()));
-
-    await new Promise((resolve, reject) => {
-      proc.on("close", code => code === 0 ? resolve(code) : reject(new Error(`kiro exited ${code}`)));
-    });
-    return;
-  } catch (err) {
-    console.warn(`[child-proxy] Kiro failed for job ${id}: ${err.message}. Trying Hermes...`);
-  }
-
-  // Option 2: Hermes workspace dispatch
-  const hermesPath = "/home/ubuntu/hermes-workspace";
-  try {
-    const { stdout } = await execFileAsync("node", [
-      "skills/workspace-dispatch/dispatch.js",
-      "--prompt", prompt,
-    ], { cwd: hermesPath, timeout: 300_000 });
-    console.log(`[child-proxy] Job ${id} completed via Hermes:`, stdout.slice(0, 200));
-  } catch (err) {
-    console.error(`[child-proxy] Hermes also failed for job ${id}:`, err.message);
-  }
-}
-
-function buildPrompt(url, leadAmount, quantity) {
-  return [
-    `You are a lead generation agent for financecheque.uk.`,
-    `Target webapp: ${url}`,
-    `Goal: Generate ${quantity} qualified leads with an estimated value of £${leadAmount} each.`,
-    `Tasks:`,
-    `1. Analyse the target webapp and identify the ideal customer profile.`,
-    `2. Create SEO-optimised content and landing page copy targeting those customers.`,
-    `3. Draft outreach messages for email and social media.`,
-    `4. Identify traffic sources and suggest a campaign strategy.`,
-    `5. Output a structured report with all assets ready to deploy.`,
-    `Be concise and output actionable deliverables only.`,
-  ].join("\n");
-}
+const providers = [
+  { cmd: "groq", args: ["chat", "--message"], timeout: 30000 },
+  { cmd: "gemini", args: ["-p"], timeout: 45000 },
+  { cmd: "gemini", args: ["chat", "--message"], timeout: 45000 },
+  { cmd: process.env.KIRO_PATH || "kirox", args: ["chat", "--non-interactive", "--message"], timeout: 60000 },
+  { cmd: "kiro", args: ["chat", "--non-interactive", "--message"], timeout: 30000 },
+  { cmd: "opencode", args: ["chat", "--message"], timeout: 60000 },
+  { cmd: "opencode", args: ["run"], timeout: 60000 },
+  { cmd: "kilo", args: ["chat", "--message"], timeout: 60000 },
+  { cmd: "kilo", args: ["run"], timeout: 60000 },
+  { cmd: "hermes", args: ["chat", "-z"], timeout: 90000 },
+];
 
 async function runChat(message) {
-  const prompt = message;
+  const prompt = `You are the FinanceCheque child proxy operator. Reply concisely.\nUser message: ${message}`;
+  const total = providers.length;
 
-  // Expanded CLI chain for free IDE/CLIs (gemini, groq, kiro, kilo, opencode, hermes) + agentic
-  // These use their own logins/quota, no local env API keys required.
-  const cliCandidates = [
-    // groq
-    { cmd: "groq", args: ["chat", "--message", prompt] },
-    // gemini (npm global or local)
-    { cmd: process.env.GEMINI_PATH || "gemini", args: ["-p", prompt] },
-    { cmd: "gemini", args: ["chat", "--message", prompt] },
-    // kiro / kirox
-    { cmd: process.env.KIRO_PATH || "/usr/local/bin/kiro", args: ["chat", "--non-interactive", "--message", prompt] },
-    { cmd: "kiro", args: ["chat", "--non-interactive", "--message", prompt] },
-    { cmd: "kirox", args: ["chat", "--non-interactive", "--message", prompt] },
-    // opencode
-    { cmd: "opencode", args: ["chat", "--message", prompt] },
-    { cmd: "opencode", args: ["run", prompt] },
-    // kilo
-    { cmd: "kilo", args: ["chat", "--message", prompt] },
-    { cmd: "kilo", args: ["run", prompt] },
-    // hermes agent (local web capable)
-    { cmd: "hermes", args: ["chat", "-z", prompt] },
-    // hermes with cli flag
-    { cmd: "hermes", args: ["--cli", "chat", prompt] },
-  ];
-
-  const nodeBinPaths = [
-    "/usr/local/bin", process.env.HOME + "/.npm-global/bin", process.env.HOME + "/.local/bin",
-    process.env.HOME + "/.opencode/bin", "/opt/homebrew/bin"
-  ];
-
-  for (const c of cliCandidates) {
+  async function tryProvider(p, idx) {
     try {
-      const env = { ...process.env };
-      env.PATH = nodeBinPaths.filter(Boolean).join(":") + ":" + (env.PATH || "");
-      const { stdout } = await execFileAsync(c.cmd, c.args.filter(Boolean), {
-        timeout: 65000, maxBuffer: 2 * 1024 * 1024, env,
-      });
-      const out = (stdout || "").trim();
-      if (out && out.length > 5 && !out.toLowerCase().startsWith("error")) return out;
+      const args = [...p.args, prompt];
+      const { stdout } = await execFileAsync(p.cmd, args, { timeout: Math.min(p.timeout, 15000), maxBuffer: 1024 * 1024 });
+      const reply = stdout?.trim();
+      if (reply) return { idx, reply };
     } catch {}
+    return null;
   }
 
-  // Priority: local fcuk proxy agent (port 6000) - this machine's own if running
-  try {
-    const resp = await fetch("http://localhost:6000/v1/chat/completions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ model: "proxy-router", messages: [{ role: "user", content: prompt }], max_tokens: 1024 }),
-    });
-    if (resp.ok) {
-      const data = await resp.json();
-      const content = data?.choices?.[0]?.message?.content;
-      if (content && content !== "No LLM available") return content;
-    }
-  } catch {}
+  const results = await Promise.allSettled(
+    providers.map((p, i) => tryProvider(p, (rrIndex + i) % total))
+  );
 
-  // Fallback pirateclaw
+  for (const r of results) {
+    if (r.status === "fulfilled" && r.value) {
+      rrIndex = (r.value.idx + 1) % total;
+      await saveRRState();
+      return r.value.reply;
+    }
+  }
+
   try {
     const resp = await fetch("https://pirateclaw.datro.xyz/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer test" },
       body: JSON.stringify({ model: "auto", messages: [{ role: "user", content: prompt }], max_tokens: 500 }),
+      signal: AbortSignal.timeout(15000),
     });
     if (resp.ok) {
       const data = await resp.json();
@@ -287,13 +165,12 @@ async function runChat(message) {
     }
   } catch {}
 
-  return `Child proxy ${CHILD_ID} received your message and is online (no CLI/LLM responded).`;
+  return `Child proxy ${CHILD_ID} received your message and is online.`;
 }
 
-// ── Start ─────────────────────────────────────────────────────────────────
 app.listen(PORT, "0.0.0.0", async () => {
-  console.log(`[child-proxy] Listening on port ${PORT} (${CHILD_ID})`);
+  await loadRRState();
+  console.log(`[child-proxy] Listening on port ${PORT} (${CHILD_ID}) [rrIndex=${rrIndex}]`);
   await register();
   setInterval(heartbeat, 30_000);
-  setInterval(register, 120_000); // re-register every 2 min to sync url, machine_name
 });
