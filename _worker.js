@@ -1,6 +1,18 @@
 const WORKER = 'https://datro-flywheel.righteous.workers.dev';
 const ALL_BRANCHES = ['althea','archives','bpvsbuckler','bpvsbuckler-redflag','bucklervsbp','bw_base','carfinancecheque','ccan','ceo','cnei','command','command-agent-endpoint','dash','datro','dcc','financecheque','financecheque-monday-agent','gh-pages','gui','hbnb','library','llmwiki','pirateclaw','rerelease','subrepos','ui','wave','wayback','whitepaper'];
 
+// Branch number mapping (second digit of version: v0.{branch}.{X}.{Y})
+const BRANCH_NUM = {
+  command:1, 'command-agent-endpoint':2, cnei:3, ceo:4,
+  financecheque:5, 'financecheque-monday-agent':6, carfinancecheque:7,
+  bpvsbuckler:8, 'bpvsbuckler-redflag':9, bucklervsbp:10,
+  rerelease:11, wayback:12, 'gh-pages':13,
+  gui:14, ui:15, dash:16, althea:17,
+  datro:18, dcc:19, ccan:20,
+  llmwiki:21, pirateclaw:22, whitepaper:23,
+  wave:24, bw_base:25, subrepos:26
+};
+
 const PERSONAL_BRAIN_FILES = ['PERSONALITY','MEMORY','SKILLS','HARNESS','VALUES'];
 const PROJECT_BRAIN_FILES = ['MASTERPLAN','CONTEXT','TASKS','RULES','HEARTBEAT'];
 
@@ -26,14 +38,15 @@ function extractVersion(tag, branch) {
 }
 
 function parseVer(v) {
-  // Version scheme: v0.0.{X}.{Y} where X=hundreds digit, Y=last two digits
-  // Reject old formats (e.g. 0.2.0, 0.0.10.00)
+  // Version scheme: v0.{branch}.{X}.{Y} where X=floor(counter/100), Y=counter%100
+  // Reject old formats
   const parts = v.split('.').map(Number);
   if (parts.length !== 4) return 0;
-  if (parts[0] !== 0 || parts[1] !== 0) return 0; // must start with 0.0
+  if (parts[0] !== 0) return 0;                    // must start with 0
+  if (parts[1] < 1 || parts[1] > 26) return 0;    // branch: 1-26
   if (parts[2] < 0 || parts[2] > 99) return 0;    // X: 0-99
   if (parts[3] < 0 || parts[3] > 99) return 0;    // Y: 0-99
-  // Flat counter: X*100 + Y
+  // Flat counter for comparison: X*100 + Y (branch is just an identifier)
   return parts[2] * 100 + parts[3];
 }
 
@@ -240,13 +253,14 @@ export default {
         try {
           const counter = await kvGet(env, 'METADATA', 'release_counter');
           if (counter) {
+            const branchNum = BRANCH_NUM['command'] || 1;
             const x = Math.floor(counter / 100);
             const y = counter % 100;
-            targetVer = `0.0.${x}.${String(y).padStart(2, '0')}`;
+            targetVer = `0.${branchNum}.${x}.${String(y).padStart(2, '0')}`;
           }
         } catch(e) {}
       }
-      return json({ version: 'command-V' + (targetVer || '0.0.0.01') });
+      return json({ version: 'command-V' + (targetVer || '0.1.0.01') });
     }
 
     if (path === '/api/fuel') {
