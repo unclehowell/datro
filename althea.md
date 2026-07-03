@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.1.53`
-- **Tag**: `althea-v0.0.1.53`
-- **Deployed**: 2026-06-30T16:00:39.962Z
+- **Version**: `0.0.1.54`
+- **Tag**: `althea-v0.0.1.54`
+- **Deployed**: 2026-07-03T02:00:34.988Z
 - **URL**: [https://althea.datro.directory](https://althea.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-06-30T16:00:39.962Z*
+*Auto-updated by datro-flywheel at 2026-07-03T02:00:34.988Z*
