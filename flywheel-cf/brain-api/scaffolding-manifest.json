@@ -1,0 +1,98 @@
+{
+  "schema": "https://cnei.datro.xyz/api/brain/config",
+  "version": "1.0.0",
+  
+  "branches": {
+    "cnei": {
+      "purpose": "Metadata and dashboard for the flywheel itself. Documents architecture, configuration, and release history of the autonomous release pipeline.",
+      "category": "platform",
+      "scaffolding": {
+        "memoryEndpoint": "https://cnei.datro.xyz/api/brain/memory/cnei",
+        "lessonsEndpoint": "https://cnei.datro.xyz/api/brain/lessons/cnei",
+        "honchoWorkspace": "datro-flywheel-brain",
+        "model": "openrouter/anthropic/claude-sonnet",
+        "defaultTools": [
+          "read_file",
+          "write_file", 
+          "search_code",
+          "honcho_memory",
+          "list_memories",
+          "flywheel_config",
+          "brain_recall",
+          "brain_remember"
+        ]
+      }
+    },
+    "command": {
+      "purpose": "Command Cockpit / Jarvis — centralized agent orchestration and task dispatch.",
+      "category": "platform",
+      "scaffolding": {
+        "memoryEndpoint": "https://cnei.datro.xyz/api/brain/memory/command",
+        "lessonsEndpoint": "https://cnei.datro.xyz/api/brain/lessons/command", 
+        "honchoWorkspace": "datro-flywheel-brain",
+        "model": "gpt-4o",
+        "defaultTools": [
+          "read_file",
+          "write_file",
+          "search_code",
+          "run_agent",
+          "dispatch_task",
+          "brain_recall",
+          "brain_remember"
+        ]
+      }
+    },
+    "financecheque": {
+      "purpose": "Financial services dashboard with web3 payment UX, transaction tracking, and account management.",
+      "category": "finance",
+      "scaffolding": {
+        "memoryEndpoint": "https://cnei.datro.xyz/api/brain/memory/financecheque",
+        "lessonsEndpoint": "https://cnei.datro.xyz/api/brain/lessons/financecheque",
+        "honchoWorkspace": "oSx32NCcWFHT7gRXWtrGo",
+        "model": "gpt-4o-mini",
+        "defaultTools": [
+          "read_file",
+          "write_file",
+          "search_code",
+          "web3_check",
+          "transaction_analyze",
+          "brain_recall",
+          "brain_remember"
+        ]
+      }
+    }
+  },
+  
+  "defaultScaffolding": {
+    "memoryEndpoint": "https://cnei.datro.xyz/api/brain/memory/{branch}",
+    "lessonsEndpoint": "https://cnei.datro.xyz/api/brain/lessons/{branch}",
+    "honchoWorkspace": "datro-flywheel-brain",
+    "model": "gpt-4o-mini",
+    "defaultTools": [
+      "read_file",
+      "write_file",
+      "search_code",
+      "brain_recall",
+      "brain_remember"
+    ]
+  },
+  
+  "honchoIntegration": {
+    "endpoint": "https://api.honcho.dev/api/honcho/messages",
+    "fallbackEndpoint": "https://api.honcho.ai/v1/memories",
+    "workspaces": {
+      "cnei": "datro-flywheel-brain",
+      "bpvsbuckler": "0lCBWsZN-CS-DyY8THX7H",
+      "datro": "Q-sPB_HUr__vWcP1cc-UQ",
+      "financecheque": "oSx32NCcWFHT7gRXWtrGo"
+    }
+  },
+  
+  "apiEndpoints": {
+    "brainConfig": "https://cnei.datro.xyz/api/brain/config/{branch}",
+    "brainMemory": "https://cnei.datro.xyz/api/brain/memory/{branch}/{key}",
+    "brainRemember": "https://cnei.datro.xyz/api/brain/remember/{branch}/{key}",
+    "brainLessons": "https://cnei.datro.xyz/api/brain/lessons/{branch}",
+    "flywheelState": "https://datro-flywheel.unclehowell.workers.dev/__state"
+  }
+}

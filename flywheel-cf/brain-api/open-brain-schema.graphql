@@ -1,0 +1,110 @@
+# Open Brain GraphQL Schema
+# External scaffolding for agents/CLI/IDE — cnei branch serves as persistent memory
+
+scalar DateTime
+
+schema {
+  query: Query
+  mutation: Mutation
+}
+
+type Memory {
+  id: ID!
+  key: String!
+  branch: String!
+  content: String!
+  tags: [String!]!
+  embedding: [Float!]
+  createdAt: DateTime!
+  updatedAt: DateTime!
+  source: MemorySource!
+}
+
+enum MemorySource {
+  HONCHO
+  MEM0
+  VAULT
+  CLI
+  AGENT
+}
+
+type Agent {
+  id: ID!
+  name: String!
+  branch: String!
+  config: AgentConfig!
+  lastRun: DateTime
+  memoryKey: String!
+}
+
+type AgentConfig {
+  model: String!
+  maxTokens: Int
+  temperature: Float
+  scaffolding: ScaffoldingConfig
+}
+
+type ScaffoldingConfig {
+  brainEndpoint: String!
+  honchoWorkspace: String!
+  memoryPrefix: String!
+  tools: [String!]!
+}
+
+type BranchState {
+  branch: String!
+  wallet: String!
+  quota: String
+  lastRelease: DateTime
+  cycleCount: Int
+  hypotheses: [Hypothesis!]!
+}
+
+type Hypothesis {
+  id: String!
+  label: String!
+  status: String!
+  parentId: String
+  children: [String!]!
+}
+
+type Query {
+  # Memory queries
+  memory(key: String!): Memory
+  memories(branch: String, tags: [String!], limit: Int): [Memory!]!
+  searchMemory(query: String!, branch: String, k: Int): [Memory!]!
+  
+  # Agent queries
+  agent(name: String!): Agent
+  agents: [Agent!]!
+  agentConfig(branch: String!): AgentConfig
+  
+  # Branch state queries  
+  branchState(branch: String!): BranchState
+  allBranchStates: [BranchState!]!
+  
+  # Brain aggregation
+  brainSummary(branch: String): String
+  lessonsLearned(branch: String!, limit: Int): [Memory!]!
+  
+  # Inference
+  infer(pattern: String!, branch: String): String
+}
+
+type Mutation {
+  # Memory mutations
+  remember(key: String!, content: String!, branch: String!, tags: [String!]): Memory!
+  forget(key: String!): Boolean!
+  updateMemory(id: ID!, content: String!, tags: [String!]): Memory!
+  
+  # Agent mutations
+  registerAgent(name: String!, branch: String!, config: AgentConfigInput!): Agent!
+  updateAgentLastRun(name: String!): Agent!
+  
+  # Hypothesis mutations
+  addHypothesis(branch: String!, label: String!, parentId: String): Hypothesis!
+  updateHypothesisStatus(id: String!, status: String!): Hypothesis!
+  
+  # Learning
+  learnLesson(branch: String!, text: String!): Memory!
+}
