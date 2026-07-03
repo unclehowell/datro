@@ -180,6 +180,8 @@ function initGraphToggle() {
                 var threeCanvas = ws.querySelector('canvas:not(#track-canvas)');
                 if (threeCanvas) threeCanvas.remove();
             }
+            btn.textContent = '⬡';
+            btn.title = 'Switch to 3D world';
             if (!graphInitialized) {
                 graphInitialized = true;
                 try {
@@ -194,6 +196,8 @@ function initGraphToggle() {
             if (canvas) canvas.style.display = 'none';
             var ws2 = document.querySelector('.windscreen');
             if (ws2 && window.trackInit) window.trackInit(ws2);
+            btn.textContent = '🌐';
+            btn.title = 'Switch to graph view';
         }
     });
 }

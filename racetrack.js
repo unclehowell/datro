@@ -57,6 +57,8 @@ function init() {
     renderer.domElement.style.position = 'absolute';
     renderer.domElement.style.top = '0';
     renderer.domElement.style.left = '0';
+    renderer.domElement.style.zIndex = '5';
+    renderer.domElement.id = 'three-canvas';
 
     clock = new THREE.Clock();
 
@@ -303,6 +305,8 @@ function stopLoop() {
 
 // ── Public API ──
 if (typeof window !== 'undefined') {
+    var listenersAttached = false;
+
     window.trackInit = function(containerEl) {
         container = containerEl || document.body;
         if (!scene) {
@@ -312,19 +316,24 @@ if (typeof window !== 'undefined') {
         if (renderer && container) {
             var w = container.clientWidth;
             var h = container.clientHeight;
-            renderer.setSize(w, h);
-            camera.aspect = w / h;
-            camera.updateProjectionMatrix();
+            if (w > 0 && h > 0) {
+                renderer.setSize(w, h);
+                camera.aspect = w / h;
+                camera.updateProjectionMatrix();
+            }
         }
         startLoop();
 
-        document.addEventListener('mousemove', onMouseMove);
-        document.addEventListener('keydown', onKeyDown);
-        document.addEventListener('keyup', onKeyUp);
-        document.addEventListener('pointerlockchange', onPointerLockChange);
-        window.addEventListener('resize', onResize);
-        if (renderer && renderer.domElement) {
-            renderer.domElement.addEventListener('click', onClick);
+        if (!listenersAttached) {
+            document.addEventListener('mousemove', onMouseMove);
+            document.addEventListener('keydown', onKeyDown);
+            document.addEventListener('keyup', onKeyUp);
+            document.addEventListener('pointerlockchange', onPointerLockChange);
+            window.addEventListener('resize', onResize);
+            if (renderer && renderer.domElement) {
+                renderer.domElement.addEventListener('click', onClick);
+            }
+            listenersAttached = true;
         }
     };
 
@@ -348,6 +357,7 @@ if (typeof window !== 'undefined') {
                 document.exitPointerLock();
             }
         }
+        listenersAttached = false;
     };
 }
 })();

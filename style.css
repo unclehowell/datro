@@ -22,7 +22,7 @@
     --font-sans: 'Segoe UI', 'Roboto', Arial, sans-serif;
     --radius: 4px;
 }
-[data-theme="light"] {
+html[data-theme="light"] {
     --bg: #f0ede6;
     --bg-secondary: #e8e4dc;
     --bg-tertiary: #ddd9d0;
@@ -95,6 +95,9 @@ html, body {
 }
 #graph-container .graph-node:hover circle {
     stroke-width: 2.5;
+}
+#three-canvas {
+    z-index: 5 !important;
 }
 /* ── MD VIEWER OVERLAY ── */
 .md-viewer-overlay {
@@ -302,9 +305,14 @@ html, body {
 
 /* ── CONTROLS SECTION (collapsible lower half) ── */
 .controls-section {
-    flex-shrink: 0;
+    flex-shrink: 1;
     position: relative;
     overflow: hidden;
+    transition: max-height 0.3s ease;
+    max-height: 50vh;
+}
+.controls-section.collapsed {
+    max-height: 28px;
 }
 .controls-section.collapsed .controls-body {
     display: none;
