@@ -145,61 +145,67 @@ function initGraphDefault() {
     var graphContainer = $('graph-container');
     if (!graphContainer) return;
 
-    graphViewActive = true;
+    // Start with 3D city as default
+    graphViewActive = false;
+    graphContainer.style.display = 'none';
     if (canvas) canvas.style.display = 'none';
-    graphContainer.style.display = 'block';
 
-    if (!graphInitialized) {
-        graphInitialized = true;
-        try {
-            if (window.graphInit) window.graphInit('graph-container');
-        } catch(e) { console.error('Graph init error:', e); }
+    // Init 3D world
+    if (window.trackInit) {
+        var ws = document.querySelector('.windscreen');
+        if (ws) window.trackInit(ws);
     }
 
     var btn = $('graph-toggle');
-    if (btn) btn.classList.add('active');
+    if (btn) {
+        btn.classList.remove('active');
+        btn.textContent = '🌐';
+        btn.title = 'Switch to graph view';
+    }
 }
 
 function initGraphToggle() {
+    // Event delegation handles this — no direct listener needed
+}
+
+function handleGraphToggle() {
     var btn = $('graph-toggle');
     if (!btn) return;
-    btn.addEventListener('click', function() {
-        graphViewActive = !graphViewActive;
-        btn.classList.toggle('active', graphViewActive);
-        var canvas = $('track-canvas');
-        var graphContainer = $('graph-container');
-        if (!graphContainer) return;
-        if (graphViewActive) {
-            // Switch to graph view
-            if (canvas) canvas.style.display = 'none';
-            graphContainer.style.display = 'block';
-            if (window.trackStop) window.trackStop();
-            // Remove any Three.js canvas from windscreen
-            var ws = document.querySelector('.windscreen');
-            if (ws) {
-                var threeCanvas = ws.querySelector('canvas:not(#track-canvas)');
-                if (threeCanvas) threeCanvas.remove();
-            }
-            btn.textContent = '⬡';
-            btn.title = 'Switch to 3D world';
-            if (!graphInitialized) {
-                graphInitialized = true;
-                try {
-                    if (window.graphInit) window.graphInit('graph-container');
-                } catch(e) { console.error('Graph init error:', e); }
-            } else {
-                if (window.graphResize) window.graphResize();
-            }
-        } else {
-            // Switch to 3D city view
-            graphContainer.style.display = 'none';
-            if (canvas) canvas.style.display = 'none';
-            var ws2 = document.querySelector('.windscreen');
-            if (ws2 && window.trackInit) window.trackInit(ws2);
-            btn.textContent = '🌐';
-            btn.title = 'Switch to graph view';
+
+    graphViewActive = !graphViewActive;
+    btn.classList.toggle('active', graphViewActive);
+    var canvas = $('track-canvas');
+    var graphContainer = $('graph-container');
+    if (!graphContainer) return;
+    if (graphViewActive) {
+        // Switch to graph view
+        if (canvas) canvas.style.display = 'none';
+        graphContainer.style.display = 'block';
+        if (window.trackStop) window.trackStop();
+        var ws = document.querySelector('.windscreen');
+        if (ws) {
+            var threeCanvas = ws.querySelector('canvas:not(#track-canvas)');
+            if (threeCanvas) threeCanvas.remove();
         }
-    });
+        btn.textContent = '⬡';
+        btn.title = 'Switch to 3D world';
+        if (!graphInitialized) {
+            graphInitialized = true;
+            try {
+                if (window.graphInit) window.graphInit('graph-container');
+            } catch(e) { console.error('Graph init error:', e); }
+        } else {
+            if (window.graphResize) window.graphResize();
+        }
+    } else {
+        // Switch to 3D city view
+        graphContainer.style.display = 'none';
+        if (canvas) canvas.style.display = 'none';
+        var ws2 = document.querySelector('.windscreen');
+        if (ws2 && window.trackInit) window.trackInit(ws2);
+        btn.textContent = '🌐';
+        btn.title = 'Switch to graph view';
+    }
 }
 
 // ── ROAD INIT ──
@@ -219,18 +225,21 @@ function initThemeToggle() {
         document.documentElement.setAttribute('data-theme', 'light');
         btn.textContent = '🌙';
     }
-    btn.addEventListener('click', function() {
-        var isLight = document.documentElement.getAttribute('data-theme') === 'light';
-        if (isLight) {
-            document.documentElement.removeAttribute('data-theme');
-            localStorage.setItem('theme', 'dark');
-            btn.textContent = '☀';
-        } else {
-            document.documentElement.setAttribute('data-theme', 'light');
-            localStorage.setItem('theme', 'light');
-            btn.textContent = '🌙';
-        }
-    });
+}
+
+function handleThemeClick() {
+    var btn = $('theme-toggle');
+    if (!btn) return;
+    var isLight = document.documentElement.getAttribute('data-theme') === 'light';
+    if (isLight) {
+        document.documentElement.removeAttribute('data-theme');
+        localStorage.setItem('theme', 'dark');
+        btn.textContent = '☀';
+    } else {
+        document.documentElement.setAttribute('data-theme', 'light');
+        localStorage.setItem('theme', 'light');
+        btn.textContent = '🌙';
+    }
 }
 
 // ── FULLSCREEN WINDSHIELD TOGGLE (merged into initControlsBar) ──
@@ -1666,28 +1675,32 @@ async function loadFuel() {
 
 // ── CONTROLS SECTION TOGGLE ──
 function initControlsBar() {
+    var controlsSection = $('controls-section');
+    if (!controlsSection) return;
+
+    // Keyboard shortcut
+    document.addEventListener('keydown', function(e) {
+        if (e.ctrlKey && e.shiftKey && e.key === 'F') {
+            e.preventDefault();
+            handleControlsToggle();
+        }
+    });
+}
+
+function handleControlsToggle() {
     var toggle = $('controls-toggle');
     var controlsSection = $('controls-section');
     var windscreen = document.querySelector('.windscreen');
     if (!toggle || !controlsSection) return;
 
-    toggle.addEventListener('click', function() {
-        controlsCollapsed = !controlsCollapsed;
-        controlsSection.classList.toggle('collapsed', controlsCollapsed);
-        if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
-        toggle.textContent = controlsCollapsed ? '▲' : '▼';
-        toggle.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
-        if (graphViewActive && window.graphResize) {
-            setTimeout(function() { window.graphResize(); }, 150);
-        }
-    });
-
-    document.addEventListener('keydown', function(e) {
-        if (e.ctrlKey && e.shiftKey && e.key === 'F') {
-            e.preventDefault();
-            toggle.click();
-        }
-    });
+    controlsCollapsed = !controlsCollapsed;
+    controlsSection.classList.toggle('collapsed', controlsCollapsed);
+    if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
+    toggle.textContent = controlsCollapsed ? '▲' : '▼';
+    toggle.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
+    if (graphViewActive && window.graphResize) {
+        setTimeout(function() { window.graphResize(); }, 150);
+    }
 }
 
 // ── FLYWHEEL ──
@@ -1751,7 +1764,6 @@ function initConfirmButtons() {
 // ── START ──
 function startApp() {
     initConfirmButtons();
-    initRoad();
     initGraphDefault();
     initGraphToggle();
     initJoystick();
@@ -1770,6 +1782,30 @@ function startApp() {
     setInterval(pollBrainState, 10000);
     loadFuel();
     pollBrainState();
+
+    // ── EVENT DELEGATION: All toggles via single document listener ──
+    // This survives DOM manipulation, D3 graph rebuilds, fuel bar updates, etc.
+    document.addEventListener('click', function(e) {
+        var target = e.target;
+        // Theme toggle
+        if (target.id === 'theme-toggle' || target.closest('#theme-toggle')) {
+            e.stopPropagation();
+            handleThemeClick();
+            return;
+        }
+        // Controls collapse toggle
+        if (target.id === 'controls-toggle' || target.closest('#controls-toggle')) {
+            e.stopPropagation();
+            handleControlsToggle();
+            return;
+        }
+        // Graph/3D view toggle
+        if (target.id === 'graph-toggle' || target.closest('#graph-toggle')) {
+            e.stopPropagation();
+            handleGraphToggle();
+            return;
+        }
+    }, true); // capture phase — fires before any other handler can intercept
 }
 
 document.addEventListener('DOMContentLoaded', function() {
