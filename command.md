@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.3.01`
-- **Tag**: `command-v0.0.3.01`
-- **Deployed**: 2026-07-01T09:00:36.603Z
+- **Version**: `0.0.100.05`
+- **Tag**: `command-v0.0.100.05`
+- **Deployed**: 2026-07-03T21:00:46.196Z
 - **URL**: [https://command.datro.directory](https://command.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-07-01T09:00:36.603Z*
+*Auto-updated by datro-flywheel at 2026-07-03T21:00:46.196Z*
