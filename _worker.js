@@ -26,8 +26,15 @@ function extractVersion(tag, branch) {
 }
 
 function parseVer(v) {
+  // Version scheme: v0.0.{X}.{Y} where X=hundreds digit, Y=last two digits
+  // Reject old formats (e.g. 0.2.0, 0.0.10.00)
   const parts = v.split('.').map(Number);
-  return parts.reduce((a, b, i) => a + b * Math.pow(100, 3 - i), 0);
+  if (parts.length !== 4) return 0;
+  if (parts[0] !== 0 || parts[1] !== 0) return 0; // must start with 0.0
+  if (parts[2] < 0 || parts[2] > 99) return 0;    // X: 0-99
+  if (parts[3] < 0 || parts[3] > 99) return 0;    // Y: 0-99
+  // Flat counter: X*100 + Y
+  return parts[2] * 100 + parts[3];
 }
 
 // ── KV Helpers ──────────────────────────────────────────────────────
@@ -61,7 +68,7 @@ async function kvList(env, ns, prefix) {
 // ── GitHub raw fetch ────────────────────────────────────────────────
 async function fetchGitHubFile(branch, path) {
   const url = 'https://raw.githubusercontent.com/unclehowell/datro/' + encodeURIComponent(branch) + '/' + encodeURIComponent(path);
-  const r = await fetch(url);
+  const r = await fetch(url, { headers: { 'User-Agent': 'command-dashboard-worker' } });
   if (!r.ok) return null;
   return await r.text();
 }
@@ -198,9 +205,11 @@ export default {
     if (path === '/api/version') {
       let targetVer = null;
       try {
+        const ghHeaders = { 'User-Agent': 'command-dashboard-worker', 'Accept': 'application/vnd.github.v3+json' };
         // Check tags (lighter than releases, all accessible via refs API)
-        const tagsResp = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags?per_page=100');
-        const tags = await tagsResp.json();
+        const tagsResp = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags?per_page=100', { headers: ghHeaders });
+        const tagsText = await tagsResp.text();
+        const tags = JSON.parse(tagsText);
         if (Array.isArray(tags)) {
           for (const tag of tags) {
             const tagName = (tag.ref || '').replace('refs/tags/', '');
@@ -212,8 +221,9 @@ export default {
         }
         // Also check first page of releases as fallback
         if (!targetVer) {
-          const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100');
-          const releases = await releasesResp.json();
+          const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', { headers: ghHeaders });
+          const releasesText = await releasesResp.text();
+          const releases = JSON.parse(releasesText);
           if (Array.isArray(releases)) {
             for (const release of releases) {
               const tag = release.tag_name || '';
@@ -225,7 +235,18 @@ export default {
           }
         }
       } catch(e) {}
-      return json({ version: 'command-V' + (targetVer || '0.0.0') });
+      // Fallback: read counter from KV
+      if (!targetVer) {
+        try {
+          const counter = await kvGet(env, 'METADATA', 'release_counter');
+          if (counter) {
+            const x = Math.floor(counter / 100);
+            const y = counter % 100;
+            targetVer = `0.0.${x}.${String(y).padStart(2, '0')}`;
+          }
+        } catch(e) {}
+      }
+      return json({ version: 'command-V' + (targetVer || '0.0.0.01') });
     }
 
     if (path === '/api/fuel') {
@@ -320,8 +341,26 @@ export default {
 
       let branchVersions = {};
       try {
-        const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100');
-        const releases = await releasesResp.json();
+        const ghHeaders = { 'User-Agent': 'command-dashboard-worker', 'Accept': 'application/vnd.github.v3+json' };
+        // Scan tags (covers all branches)
+        const tagsResp = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags?per_page=100', { headers: ghHeaders });
+        const tagsText = await tagsResp.text();
+        const tags = JSON.parse(tagsText);
+        if (Array.isArray(tags)) {
+          for (const tag of tags) {
+            const tagName = (tag.ref || '').replace('refs/tags/', '');
+            for (const b of ALL_BRANCHES) {
+              const ver = extractVersion(tagName, b);
+              if (ver && (!branchVersions[b] || parseVer(ver) > parseVer(branchVersions[b]))) {
+                branchVersions[b] = ver;
+              }
+            }
+          }
+        }
+        // Also scan releases as fallback
+        const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', { headers: ghHeaders });
+        const releasesText = await releasesResp.text();
+        const releases = JSON.parse(releasesText);
         if (Array.isArray(releases)) {
           for (const release of releases) {
             const tag = release.tag_name || '';
@@ -348,7 +387,9 @@ export default {
     if (fileMatch) {
       const [, branch, side, filename] = fileMatch;
       if (request.method === 'GET') {
-        const raw = await fetch('https://raw.githubusercontent.com/unclehowell/datro/' + encodeURIComponent(branch) + '/' + encodeURIComponent(filename));
+        const raw = await fetch('https://raw.githubusercontent.com/unclehowell/datro/' + encodeURIComponent(branch) + '/' + encodeURIComponent(filename), {
+          headers: { 'User-Agent': 'command-dashboard-worker' }
+        });
         if (!raw.ok) return json({ error: 'File not found' }, 404);
         const content = await raw.text();
         return json({ content, branch, filename, side });
