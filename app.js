@@ -91,10 +91,12 @@ function initVersion() {
             currentVersion = d.version || '0.0.0';
             if (el) el.textContent = currentVersion;
             if (loginVer) loginVer.textContent = currentVersion;
+            if (autoUpdateEnabled) startUpdatePolling();
         })
         .catch(function() {
             if (el) el.textContent = 'local';
             if (loginVer) loginVer.textContent = 'local';
+            if (autoUpdateEnabled) startUpdatePolling();
         });
 
     var toggle = $('auto-toggle-input');
@@ -107,8 +109,6 @@ function initVersion() {
             else stopUpdatePolling();
         });
     }
-
-    if (autoUpdateEnabled) startUpdatePolling();
 }
 
 function startUpdatePolling() {
