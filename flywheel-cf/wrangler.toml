@@ -3,6 +3,10 @@ main = "src/index.js"
 compatibility_date = "2025-01-01"
 compatibility_flags = ["nodejs_compat"]
 
+[vars]
+BRAIN_ENDPOINT = "https://cnei.datro.xyz/api/brain"
+HONCHO_API_ENDPOINT = "https://api.honcho.dev/api/honcho/messages"
+
 [limits]
 subrequest_limit = 1000
 
@@ -14,7 +18,7 @@ binding = "FLYWHEEL_STATE"
 id = "ed3052fb8c2249979074b6096abc64f6"
 
 [env.production]
-vars = { ENVIRONMENT = "production", CF_ACCOUNT_ID = "77672efb598df743fe4eac6762713248" }
+vars = { ENVIRONMENT = "production", CF_ACCOUNT_ID = "77672efb598df743fe4eac6762713248", PHONE_PROXY_URL = "https://phone-proxy.financecheque.uk" }
 
 [[env.production.kv_namespaces]]
 binding = "FLYWHEEL_STATE"
