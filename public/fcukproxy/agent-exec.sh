@@ -45,14 +45,25 @@ log "Repo: $REPO_DIR | Branch: $BRANCH | Timeout: ${TIMEOUT}s"
 
 # ── Step 1: Ensure repo exists and is on correct branch ──────────────────
 if [[ ! -d "$REPO_DIR/.git" ]]; then
-  log "Cloning repo (shallow)..."
-  git clone --depth 1 --single-branch --branch "$BRANCH" "https://github.com/unclehowell/datro.git" "$REPO_DIR" 2>&1 || fail '{"error":"Failed to clone repo"}'
+  log "Cloning repo (sparse checkout)..."
+  git clone --depth 1 --filter=blob:none --sparse --branch "$BRANCH" "https://github.com/unclehowell/datro.git" "$REPO_DIR" 2>&1 || fail '{"error":"Failed to clone repo"}'
+  cd "$REPO_DIR"
+  git sparse-checkout init --cone 2>&1
+  git sparse-checkout set src public/fcukproxy 2>&1
+  log "Sparse checkout initialized"
 fi
 
 cd "$REPO_DIR"
 git fetch --depth 1 origin "$BRANCH" 2>&1 || log "Warning: git fetch failed"
 git checkout "$BRANCH" 2>&1 || git checkout -b "$BRANCH" "origin/$BRANCH" 2>&1
 git pull --depth 1 origin "$BRANCH" 2>&1 || log "Warning: git pull failed"
+
+# Expand sparse-checkout if task needs other directories
+TASK_DIRS=$(echo "$TASK_JSON" | python3 -c "import sys,json; ctx=json.load(sys.stdin).get('context',{}); print(' '.join(ctx.get('dirs',[])))" 2>/dev/null || echo "")
+if [[ -n "$TASK_DIRS" ]]; then
+  log "Expanding sparse-checkout for: $TASK_DIRS"
+  git sparse-checkout add $TASK_DIRS 2>&1 || log "Warning: sparse-checkout expand failed"
+fi
 
 # ── Step 2: Determine task type and execute ──────────────────────────────
 TASK_LOWER=$(echo "$TASK" | tr '[:upper:]' '[:lower:]')
