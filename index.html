@@ -29,6 +29,24 @@
     <div class="windscreen">
         <canvas id="track-canvas"></canvas>
         <div id="graph-container"></div>
+        <!-- 3D NAVIGATION GUIDE OVERLAY -->
+        <div id="nav-guide-overlay" class="nav-guide-overlay" style="display:none">
+            <div class="nav-guide-card">
+                <div class="nav-guide-title">3D SPACE NAVIGATION</div>
+                <div class="nav-guide-keys">
+                    <div class="nav-key-row"><span class="nav-key">W</span><span class="nav-desc">Move Forward</span></div>
+                    <div class="nav-key-row"><span class="nav-key">S</span><span class="nav-desc">Move Backward</span></div>
+                    <div class="nav-key-row"><span class="nav-key">A</span><span class="nav-desc">Move Left</span></div>
+                    <div class="nav-key-row"><span class="nav-key">D</span><span class="nav-desc">Move Right</span></div>
+                    <div class="nav-key-row"><span class="nav-key">Mouse</span><span class="nav-desc">Look Around (click to lock)</span></div>
+                    <div class="nav-key-row"><span class="nav-key">Esc</span><span class="nav-desc">Release Mouse</span></div>
+                </div>
+                <div class="nav-guide-hint">Buildings represent GitHub releases with semantic version labels. Click a building to inspect.</div>
+                <button class="nav-guide-close" id="nav-guide-close">GOT IT</button>
+            </div>
+        </div>
+        <!-- VERSION LAYER LABELS (positioned by 3D mode) -->
+        <div id="version-layers" class="version-layers"></div>
         <div id="md-viewer-overlay" class="md-viewer-overlay" style="display:none">
             <div id="md-viewer-header" class="md-viewer-header"></div>
             <div id="md-viewer-body" class="md-viewer-body"></div>
@@ -44,6 +62,7 @@
     <div class="status-bar">
         <div class="status-bar-inner">
             <button class="status-btn theme-btn" id="theme-toggle" title="Toggle theme">☀</button>
+            <button class="status-btn mode-3d-btn" id="mode-3d-toggle" title="Toggle 3D space mode">🏛</button>
             <span class="version-label">v<span id="version-label">--</span></span>
             <span id="cache-status" class="cache-status-text"></span>
             <button id="btn-deploy" class="deploy-btn" style="display:none">DEPLOY ALL</button>

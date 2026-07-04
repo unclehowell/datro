@@ -70,6 +70,15 @@ html[data-theme="light"] .gear-display { color: var(--amber); border-color: var(
 html[data-theme="light"] .shifter-notch { color: var(--text-dim); border-color: var(--border); }
 html[data-theme="light"] .shifter-notch.active { color: var(--amber); border-color: var(--amber); }
 html[data-theme="light"] .auto-toggle { color: var(--text-dim); }
+html[data-theme="light"] .mode-3d-btn { border-color: #aaa; color: #555; }
+html[data-theme="light"] .mode-3d-btn.active { border-color: var(--amber); color: var(--amber); background: rgba(184,134,58,0.1); }
+html[data-theme="light"] .nav-guide-card { background: var(--surface); border-color: var(--border); }
+html[data-theme="light"] .nav-guide-title { color: var(--amber); }
+html[data-theme="light"] .nav-key { background: var(--bg); border-color: var(--border); color: var(--amber); }
+html[data-theme="light"] .nav-desc { color: var(--text-dim); }
+html[data-theme="light"] .nav-guide-close { border-color: var(--amber); color: var(--amber); }
+html[data-theme="light"] .vl-branch { color: var(--amber); }
+html[data-theme="light"] .vl-version { color: var(--text-dim); }
 html[data-theme="light"] #graph-container { background: var(--bg); }
 html[data-theme="light"] .confirm-panel { background: var(--surface); border-color: var(--border); }
 html[data-theme="light"] .confirm-title { color: var(--amber); }
@@ -1488,6 +1497,135 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(6px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* ── 3D MODE TOGGLE ── */
+.mode-3d-btn {
+    font-size: 16px;
+    padding: 2px 8px;
+    line-height: 1;
+}
+.mode-3d-btn.active {
+    border-color: var(--amber);
+    color: var(--amber-bright);
+    background: rgba(212,168,75,0.12);
+    box-shadow: 0 0 12px var(--amber-dim);
+}
+
+/* ── NAVIGATION GUIDE OVERLAY ── */
+.nav-guide-overlay {
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    z-index: 15;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(3px);
+}
+.nav-guide-card {
+    background: rgba(10,10,10,0.95);
+    border: 1px solid var(--amber-dim);
+    border-radius: var(--radius);
+    padding: 28px 36px;
+    max-width: 380px;
+    text-align: center;
+    box-shadow: 0 20px 80px rgba(0,0,0,0.9);
+}
+.nav-guide-title {
+    font-size: 14px;
+    font-family: var(--font-mono);
+    color: var(--amber-bright);
+    letter-spacing: 3px;
+    margin-bottom: 20px;
+    font-weight: bold;
+}
+.nav-guide-keys {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 18px;
+}
+.nav-key-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    justify-content: space-between;
+}
+.nav-key {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--amber-bright);
+    background: var(--bg-tertiary);
+    border: 1px solid var(--border);
+    border-radius: 3px;
+    padding: 4px 12px;
+    min-width: 60px;
+    text-align: center;
+}
+.nav-desc {
+    font-family: var(--font-sans);
+    font-size: 13px;
+    color: var(--text-dim);
+    text-align: left;
+    flex: 1;
+}
+.nav-guide-hint {
+    font-size: 11px;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    margin-bottom: 18px;
+    line-height: 1.5;
+}
+.nav-guide-close {
+    padding: 8px 28px;
+    background: transparent;
+    border: 1px solid var(--amber);
+    color: var(--amber-bright);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.2s;
+    border-radius: var(--radius);
+}
+.nav-guide-close:hover {
+    background: rgba(212,168,75,0.12);
+    box-shadow: var(--glow);
+}
+
+/* ── VERSION LAYER LABELS ── */
+.version-layers {
+    position: absolute;
+    top: 0; left: 0;
+    z-index: 6;
+    pointer-events: none;
+    padding: 12px;
+}
+.version-layer-label {
+    position: absolute;
+    left: 16px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: var(--font-mono);
+    font-size: 11px;
+    pointer-events: auto;
+    opacity: 0.7;
+    transition: opacity 0.2s;
+}
+.version-layer-label:hover {
+    opacity: 1;
+}
+.vl-branch {
+    color: var(--amber);
+    font-weight: bold;
+    letter-spacing: 1px;
+}
+.vl-version {
+    color: var(--text-dim);
+    font-size: 10px;
 }
 
 /* ── RESPONSIVE ── */

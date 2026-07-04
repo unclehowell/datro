@@ -517,6 +517,59 @@ export default {
       });
     }
 
+    // ── Releases endpoint (for 3D version layers) ──
+    if (path === '/api/releases') {
+      const releases = [];
+      try {
+        const ghHeaders = { 'User-Agent': 'command-dashboard-worker', 'Accept': 'application/vnd.github.v3+json' };
+        const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=100', { headers: ghHeaders });
+        const releasesText = await releasesResp.text();
+        const ghReleases = JSON.parse(releasesText);
+        if (Array.isArray(ghReleases)) {
+          for (const rel of ghReleases) {
+            const tag = rel.tag_name || '';
+            for (const b of ALL_BRANCHES) {
+              const ver = extractVersion(tag, b);
+              if (ver) {
+                releases.push({
+                  branch: b,
+                  version: ver,
+                  tag: tag,
+                  name: rel.name || tag,
+                  date: rel.created_at || '',
+                  url: rel.html_url || '',
+                });
+                break;
+              }
+            }
+          }
+        }
+        // Also check tags for additional releases
+        const tagsResp = await fetch('https://api.github.com/repos/unclehowell/datro/git/refs/tags?per_page=100', { headers: ghHeaders });
+        const tagsText = await tagsResp.text();
+        const tags = JSON.parse(tagsText);
+        if (Array.isArray(tags)) {
+          for (const tag of tags) {
+            const tagName = (tag.ref || '').replace('refs/tags/', '');
+            for (const b of ALL_BRANCHES) {
+              const ver = extractVersion(tagName, b);
+              if (ver && !releases.find(function(r) { return r.branch === b && r.version === ver; })) {
+                releases.push({
+                  branch: b,
+                  version: ver,
+                  tag: tagName,
+                  name: tagName,
+                  date: '',
+                  url: 'https://github.com/unclehowell/datro/releases/tag/' + tagName,
+                });
+              }
+            }
+          }
+        }
+      } catch (e) { /* best-effort */ }
+      return json({ releases: releases, count: releases.length });
+    }
+
     // ── Static assets ──
     return env.ASSETS.fetch(request);
   },

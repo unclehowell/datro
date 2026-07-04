@@ -45,6 +45,9 @@ var controlsCollapsed = false;
 var graphViewActive = true;
 var graphInitialized = false;
 
+// ── 3D MODE STATE ──
+var mode3DEnabled = false;
+
 // ── LOGIN ──
 function initLogin() {
     var overlay = $('login-overlay');
@@ -145,22 +148,46 @@ function initGraphDefault() {
     var graphContainer = $('graph-container');
     if (!graphContainer) return;
 
-    // Start with 3D city as default
-    graphViewActive = false;
-    graphContainer.style.display = 'none';
-    if (canvas) canvas.style.display = 'none';
-
-    // Init 3D world
-    if (window.trackInit) {
+    // When 3D mode is off, graph is default
+    if (!mode3DEnabled) {
+        graphViewActive = true;
+        graphContainer.style.display = 'block';
+        if (canvas) canvas.style.display = 'none';
+        if (window.trackStop) window.trackStop();
         var ws = document.querySelector('.windscreen');
-        if (ws) window.trackInit(ws);
-    }
-
-    var btn = $('graph-toggle');
-    if (btn) {
-        btn.classList.remove('active');
-        btn.textContent = '🌐';
-        btn.title = 'Switch to graph view';
+        if (ws) {
+            var threeCanvas = ws.querySelector('canvas:not(#track-canvas)');
+            if (threeCanvas) threeCanvas.remove();
+        }
+        var btn = $('graph-toggle');
+        if (btn) {
+            btn.classList.add('active');
+            btn.textContent = '⬡';
+            btn.title = 'Switch to 3D world';
+        }
+        if (!graphInitialized) {
+            graphInitialized = true;
+            try {
+                if (window.graphInit) window.graphInit('graph-container');
+            } catch(e) { console.error('Graph init error:', e); }
+        } else {
+            if (window.graphResize) window.graphResize();
+        }
+    } else {
+        // 3D mode: start with 3D city
+        graphViewActive = false;
+        graphContainer.style.display = 'none';
+        if (canvas) canvas.style.display = 'none';
+        if (window.trackInit) {
+            var ws = document.querySelector('.windscreen');
+            if (ws) window.trackInit(ws);
+        }
+        var btn = $('graph-toggle');
+        if (btn) {
+            btn.classList.remove('active');
+            btn.textContent = '🌐';
+            btn.title = 'Switch to graph view';
+        }
     }
 }
 
@@ -206,6 +233,101 @@ function handleGraphToggle() {
         btn.textContent = '🌐';
         btn.title = 'Switch to graph view';
     }
+}
+
+// ── 3D MODE TOGGLE ──
+function handleMode3DToggle() {
+    mode3DEnabled = !mode3DEnabled;
+    var btn = $('mode-3d-toggle');
+    if (btn) btn.classList.toggle('active', mode3DEnabled);
+
+    var controlsSection = $('controls-section');
+    var themeToggle = $('theme-toggle');
+    var graphToggle = $('graph-toggle');
+    var navGuide = $('nav-guide-overlay');
+    var versionLayers = $('version-layers');
+
+    if (mode3DEnabled) {
+        // Enable 3D mode: expand controls, show guide, switch to 3D
+        if (controlsSection) controlsSection.classList.remove('collapsed');
+        var toggle = $('controls-toggle');
+        if (toggle) { toggle.textContent = '▲'; toggle.title = 'Hide controls'; }
+        controlsCollapsed = false;
+
+        // Show navigation guide
+        if (navGuide) navGuide.style.display = 'flex';
+
+        // Show version layers
+        if (versionLayers) versionLayers.style.display = 'block';
+
+        // Switch to 3D city view
+        graphViewActive = false;
+        var graphContainer = $('graph-container');
+        var canvas = $('track-canvas');
+        if (graphContainer) graphContainer.style.display = 'none';
+        if (canvas) canvas.style.display = 'none';
+        if (window.trackStop) window.trackStop();
+        var ws = document.querySelector('.windscreen');
+        if (ws && window.trackInit) window.trackInit(ws);
+        if (graphToggle) {
+            graphToggle.classList.remove('active');
+            graphToggle.textContent = '🌐';
+            graphToggle.title = 'Switch to graph view';
+        }
+    } else {
+        // Disable 3D mode: collapse controls, hide guide, switch to graph
+        if (controlsSection) controlsSection.classList.add('collapsed');
+        var toggle2 = $('controls-toggle');
+        if (toggle2) { toggle2.textContent = '▼'; toggle2.title = 'Show controls'; }
+        controlsCollapsed = true;
+
+        // Hide navigation guide
+        if (navGuide) navGuide.style.display = 'none';
+
+        // Hide version layers
+        if (versionLayers) versionLayers.style.display = 'none';
+
+        // Switch to graph view
+        graphViewActive = true;
+        var graphContainer2 = $('graph-container');
+        var canvas2 = $('track-canvas');
+        if (graphContainer2) graphContainer2.style.display = 'block';
+        if (canvas2) canvas2.style.display = 'none';
+        if (window.trackStop) window.trackStop();
+        var ws2 = document.querySelector('.windscreen');
+        if (ws2) {
+            var threeCanvas = ws2.querySelector('canvas:not(#track-canvas)');
+            if (threeCanvas) threeCanvas.remove();
+        }
+        if (graphToggle) {
+            graphToggle.classList.add('active');
+            graphToggle.textContent = '⬡';
+            graphToggle.title = 'Switch to 3D world';
+        }
+        if (!graphInitialized) {
+            graphInitialized = true;
+            try {
+                if (window.graphInit) window.graphInit('graph-container');
+            } catch(e) { console.error('Graph init error:', e); }
+        } else {
+            if (window.graphResize) window.graphResize();
+        }
+    }
+}
+
+function initNavGuide() {
+    var closeBtn = $('nav-guide-close');
+    if (closeBtn) closeBtn.onclick = hideNavGuide;
+}
+
+function hideNavGuide() {
+    var navGuide = $('nav-guide-overlay');
+    if (navGuide) navGuide.style.display = 'none';
+}
+
+function showNavGuide() {
+    var navGuide = $('nav-guide-overlay');
+    if (navGuide) navGuide.style.display = 'flex';
 }
 
 // ── ROAD INIT ──
@@ -1673,6 +1795,40 @@ async function loadFuel() {
     } catch(e) {}
 }
 
+// ── RELEASE VERSION LAYERS ──
+async function fetchReleasesForLayers() {
+    try {
+        var res = await fetch('/api/releases');
+        var data = await res.json();
+        if (!data.releases) return;
+
+        var versionLayers = $('version-layers');
+        if (!versionLayers) return;
+        versionLayers.innerHTML = '';
+
+        // Group releases by branch
+        var branchMap = {};
+        data.releases.forEach(function(rel) {
+            if (!branchMap[rel.branch]) branchMap[rel.branch] = [];
+            branchMap[rel.branch].push(rel);
+        });
+
+        // Create version layer labels for top branches
+        var topBranches = Object.keys(branchMap).sort().slice(0, 20);
+        topBranches.forEach(function(branch, idx) {
+            var rels = branchMap[branch];
+            var latest = rels[0];
+            var layer = document.createElement('div');
+            layer.className = 'version-layer-label';
+            layer.style.top = (60 + idx * 28) + 'px';
+            layer.innerHTML = '<span class="vl-branch">' + branch + '</span>' +
+                '<span class="vl-version">' + (latest.version || 'v0.0.0') + '</span>';
+            layer.title = branch + ': ' + rels.length + ' releases';
+            versionLayers.appendChild(layer);
+        });
+    } catch(e) {}
+}
+
 // ── CONTROLS SECTION TOGGLE ──
 function initControlsBar() {
     var controlsSection = $('controls-section');
@@ -1777,20 +1933,31 @@ function startApp() {
     initThemeToggle();
     initVersion();
     initLogoutBtn();
+    initNavGuide();
     setInterval(loadFuel, 5000);
     setInterval(pollFlywheel, 3000);
     setInterval(pollBrainState, 10000);
     loadFuel();
     pollBrainState();
 
+    // Fetch releases for 3D version layers
+    if (mode3DEnabled) fetchReleasesForLayers();
+
     // ── EVENT DELEGATION: All toggles via single document listener ──
-    // This survives DOM manipulation, D3 graph rebuilds, fuel bar updates, etc.
+    // Uses data-action attributes for clean, non-conflicting delegation
     document.addEventListener('click', function(e) {
         var target = e.target;
+
         // Theme toggle
         if (target.id === 'theme-toggle' || target.closest('#theme-toggle')) {
             e.stopPropagation();
             handleThemeClick();
+            return;
+        }
+        // 3D mode toggle
+        if (target.id === 'mode-3d-toggle' || target.closest('#mode-3d-toggle')) {
+            e.stopPropagation();
+            handleMode3DToggle();
             return;
         }
         // Controls collapse toggle
@@ -1803,6 +1970,12 @@ function startApp() {
         if (target.id === 'graph-toggle' || target.closest('#graph-toggle')) {
             e.stopPropagation();
             handleGraphToggle();
+            return;
+        }
+        // Navigation guide close
+        if (target.id === 'nav-guide-close' || target.closest('#nav-guide-close')) {
+            e.stopPropagation();
+            hideNavGuide();
             return;
         }
     }, true); // capture phase — fires before any other handler can intercept

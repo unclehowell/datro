@@ -32,6 +32,7 @@ var COLORS = [
 ];
 
 var buildings = [];
+var releaseData = {};
 var raycaster = new THREE.Raycaster();
 var playerHeight = 1.7;
 var speed = 8;
@@ -107,14 +108,21 @@ function init() {
     var startX = -(cols * spacing) / 2;
     var startZ = -(Math.ceil(BRANCHES.length / cols) * spacing) / 2;
 
-    for (var i = 0; i < BRANCHES.length; i++) {
-        var row = Math.floor(i / cols);
-        var col = i % cols;
-        var x = startX + col * spacing + spacing / 2;
-        var z = startZ + row * spacing + spacing / 2;
-
-        createBuilding(BRANCHES[i], x, z, COLORS[i % COLORS.length], i);
-    }
+    // Fetch releases for version labels
+    fetch('/api/releases')
+        .then(function(r) { return r.json(); })
+        .then(function(data) {
+            if (data.releases) {
+                data.releases.forEach(function(rel) {
+                    if (!releaseData[rel.branch]) releaseData[rel.branch] = [];
+                    releaseData[rel.branch].push(rel);
+                });
+            }
+            createBuildings(startX, startZ, cols, spacing);
+        })
+        .catch(function() {
+            createBuildings(startX, startZ, cols, spacing);
+        });
 
     // Skybox stars
     var starGeo = new THREE.BufferGeometry();
@@ -127,10 +135,31 @@ function init() {
     scene.add(new THREE.Points(starGeo, starMat));
 }
 
-function createBuilding(name, x, z, color, idx) {
+function createBuildings(startX, startZ, cols, spacing) {
+    for (var i = 0; i < BRANCHES.length; i++) {
+        var row = Math.floor(i / cols);
+        var col = i % cols;
+        var x = startX + col * spacing + spacing / 2;
+        var z = startZ + row * spacing + spacing / 2;
+
+        var version = '';
+        var rels = releaseData[BRANCHES[i]];
+        if (rels && rels.length > 0) {
+            version = rels[0].version || '';
+        }
+        createBuilding(BRANCHES[i], x, z, COLORS[i % COLORS.length], i, version, rels ? rels.length : 0);
+    }
+}
+
+function createBuilding(name, x, z, color, idx, version, releaseCount) {
     var w = 4 + Math.random() * 3;
     var h = 3 + Math.random() * 8;
     var d = 4 + Math.random() * 3;
+
+    // Scale building height by release count (more releases = taller)
+    if (releaseCount > 0) {
+        h = Math.max(h, 3 + Math.min(releaseCount * 1.5, 12));
+    }
 
     // Main building
     var geo = new THREE.BoxGeometry(w, h, d);
@@ -139,7 +168,7 @@ function createBuilding(name, x, z, color, idx) {
     mesh.position.set(x, h / 2, z);
     mesh.castShadow = true;
     mesh.receiveShadow = true;
-    mesh.userData = { branch: name, index: idx };
+    mesh.userData = { branch: name, index: idx, version: version, releaseCount: releaseCount };
     scene.add(mesh);
     buildings.push(mesh);
 
@@ -174,23 +203,39 @@ function createBuilding(name, x, z, color, idx) {
     glow.position.set(x, h + 0.1, z);
     scene.add(glow);
 
-    // Label (using sprite)
+    // Label (using sprite) — shows branch name + semantic version
     var labelCanvas = document.createElement('canvas');
     labelCanvas.width = 256;
-    labelCanvas.height = 64;
+    labelCanvas.height = 80;
     var lctx = labelCanvas.getContext('2d');
-    lctx.fillStyle = 'rgba(0,0,0,0.7)';
-    lctx.fillRect(0, 0, 256, 64);
-    lctx.font = 'bold 24px Courier New';
+    lctx.fillStyle = 'rgba(0,0,0,0.75)';
+    lctx.fillRect(0, 0, 256, 80);
+
+    // Branch name
+    lctx.font = 'bold 20px Courier New';
     lctx.fillStyle = '#c89a4e';
     lctx.textAlign = 'center';
-    lctx.fillText(name.toUpperCase(), 128, 40);
+    lctx.fillText(name.toUpperCase(), 128, 30);
+
+    // Semantic version label
+    if (version) {
+        lctx.font = '14px Courier New';
+        lctx.fillStyle = '#8ec8a0';
+        lctx.fillText('v' + version, 128, 52);
+    }
+
+    // Release count
+    if (releaseCount > 0) {
+        lctx.font = '11px Courier New';
+        lctx.fillStyle = 'rgba(200,154,78,0.5)';
+        lctx.fillText(releaseCount + ' releases', 128, 70);
+    }
 
     var labelTexture = new THREE.CanvasTexture(labelCanvas);
     var labelMat = new THREE.SpriteMaterial({ map: labelTexture, transparent: true });
     var label = new THREE.Sprite(labelMat);
     label.position.set(x, h + 1.5, z);
-    label.scale.set(4, 1, 1);
+    label.scale.set(5, 1.8, 1);
     scene.add(label);
 }
 
