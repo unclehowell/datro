@@ -42,11 +42,11 @@ var joystickCommitted = { x: 0, y: 0 };
 var controlsCollapsed = false;
 
 // ── GRAPH STATE ──
-var graphViewActive = true;
+var graphViewActive = false;
 var graphInitialized = false;
 
 // ── 3D MODE STATE ──
-var mode3DEnabled = false;
+var mode3DEnabled = true;
 
 // ── LOGIN ──
 function initLogin() {
@@ -148,33 +148,8 @@ function initGraphDefault() {
     var graphContainer = $('graph-container');
     if (!graphContainer) return;
 
-    // When 3D mode is off, graph is default
-    if (!mode3DEnabled) {
-        graphViewActive = true;
-        graphContainer.style.display = 'block';
-        if (canvas) canvas.style.display = 'none';
-        if (window.trackStop) window.trackStop();
-        var ws = document.querySelector('.windscreen');
-        if (ws) {
-            var threeCanvas = ws.querySelector('canvas:not(#track-canvas)');
-            if (threeCanvas) threeCanvas.remove();
-        }
-        var btn = $('graph-toggle');
-        if (btn) {
-            btn.classList.add('active');
-            btn.textContent = '⬡';
-            btn.title = 'Switch to 3D world';
-        }
-        if (!graphInitialized) {
-            graphInitialized = true;
-            try {
-                if (window.graphInit) window.graphInit('graph-container');
-            } catch(e) { console.error('Graph init error:', e); }
-        } else {
-            if (window.graphResize) window.graphResize();
-        }
-    } else {
-        // 3D mode: start with 3D city
+    if (mode3DEnabled) {
+        // 3D mode default: show 3D city
         graphViewActive = false;
         graphContainer.style.display = 'none';
         if (canvas) canvas.style.display = 'none';
@@ -187,6 +162,31 @@ function initGraphDefault() {
             btn.classList.remove('active');
             btn.textContent = '🌐';
             btn.title = 'Switch to graph view';
+        }
+    } else {
+        // Graph mode: show graph
+        graphViewActive = true;
+        graphContainer.style.display = 'block';
+        if (canvas) canvas.style.display = 'none';
+        if (window.trackStop) window.trackStop();
+        var ws2 = document.querySelector('.windscreen');
+        if (ws2) {
+            var threeCanvas = ws2.querySelector('canvas:not(#track-canvas)');
+            if (threeCanvas) threeCanvas.remove();
+        }
+        var btn2 = $('graph-toggle');
+        if (btn2) {
+            btn2.classList.add('active');
+            btn2.textContent = '⬡';
+            btn2.title = 'Switch to 3D world';
+        }
+        if (!graphInitialized) {
+            graphInitialized = true;
+            try {
+                if (window.graphInit) window.graphInit('graph-container');
+            } catch(e) { console.error('Graph init error:', e); }
+        } else {
+            if (window.graphResize) window.graphResize();
         }
     }
 }
@@ -241,26 +241,15 @@ function handleMode3DToggle() {
     var btn = $('mode-3d-toggle');
     if (btn) btn.classList.toggle('active', mode3DEnabled);
 
-    var controlsSection = $('controls-section');
-    var themeToggle = $('theme-toggle');
-    var graphToggle = $('graph-toggle');
     var navGuide = $('nav-guide-overlay');
     var versionLayers = $('version-layers');
+    var graphToggle = $('graph-toggle');
 
     if (mode3DEnabled) {
-        // Enable 3D mode: expand controls, show guide, switch to 3D
-        if (controlsSection) controlsSection.classList.remove('collapsed');
-        var toggle = $('controls-toggle');
-        if (toggle) { toggle.textContent = '▲'; toggle.title = 'Hide controls'; }
-        controlsCollapsed = false;
-
-        // Show navigation guide
+        // Enable 3D mode: show guide, switch to 3D city
         if (navGuide) navGuide.style.display = 'flex';
-
-        // Show version layers
         if (versionLayers) versionLayers.style.display = 'block';
 
-        // Switch to 3D city view
         graphViewActive = false;
         var graphContainer = $('graph-container');
         var canvas = $('track-canvas');
@@ -275,19 +264,10 @@ function handleMode3DToggle() {
             graphToggle.title = 'Switch to graph view';
         }
     } else {
-        // Disable 3D mode: collapse controls, hide guide, switch to graph
-        if (controlsSection) controlsSection.classList.add('collapsed');
-        var toggle2 = $('controls-toggle');
-        if (toggle2) { toggle2.textContent = '▼'; toggle2.title = 'Show controls'; }
-        controlsCollapsed = true;
-
-        // Hide navigation guide
+        // Disable 3D mode: hide guide, switch to graph
         if (navGuide) navGuide.style.display = 'none';
-
-        // Hide version layers
         if (versionLayers) versionLayers.style.display = 'none';
 
-        // Switch to graph view
         graphViewActive = true;
         var graphContainer2 = $('graph-container');
         var canvas2 = $('track-canvas');
@@ -1941,44 +1921,44 @@ function startApp() {
     pollBrainState();
 
     // Fetch releases for 3D version layers
-    if (mode3DEnabled) fetchReleasesForLayers();
+    fetchReleasesForLayers();
 
     // ── EVENT DELEGATION: All toggles via single document listener ──
-    // Uses data-action attributes for clean, non-conflicting delegation
+    // Uses bubbling phase — does NOT block inline handlers (onclick, etc.)
     document.addEventListener('click', function(e) {
         var target = e.target;
 
         // Theme toggle
         if (target.id === 'theme-toggle' || target.closest('#theme-toggle')) {
-            e.stopPropagation();
+            e.stopImmediatePropagation();
             handleThemeClick();
             return;
         }
         // 3D mode toggle
         if (target.id === 'mode-3d-toggle' || target.closest('#mode-3d-toggle')) {
-            e.stopPropagation();
+            e.stopImmediatePropagation();
             handleMode3DToggle();
             return;
         }
         // Controls collapse toggle
         if (target.id === 'controls-toggle' || target.closest('#controls-toggle')) {
-            e.stopPropagation();
+            e.stopImmediatePropagation();
             handleControlsToggle();
             return;
         }
         // Graph/3D view toggle
         if (target.id === 'graph-toggle' || target.closest('#graph-toggle')) {
-            e.stopPropagation();
+            e.stopImmediatePropagation();
             handleGraphToggle();
             return;
         }
         // Navigation guide close
         if (target.id === 'nav-guide-close' || target.closest('#nav-guide-close')) {
-            e.stopPropagation();
+            e.stopImmediatePropagation();
             hideNavGuide();
             return;
         }
-    }, true); // capture phase — fires before any other handler can intercept
+    }); // bubbling phase — inline handlers fire first, then this catches toggles
 }
 
 document.addEventListener('DOMContentLoaded', function() {
