@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FCUK Proxy API Docs</title>
+<style>body{font-family:monospace;background:#0a0a1a;color:#d0c8b8;padding:2rem}code{background:#111;padding:.2em .4em;border:1px solid #333;border-radius:4px;color:#e8b84e}</style>
+</head>
+<body>
+<h1>FCUK Proxy API Documentation</h1>
+<h2>Endpoints</h2>
+<table><tr><th>Endpoint</th><th>Method</th></tr>
+<tr><td>/fcukproxy/install.sh</td><td>GET</td></tr>
+<tr><td>/fcukproxy/child-proxy.mjs</td><td>GET</td></tr>
+<tr><td>/api/proxy?action=register</td><td>POST</td></tr>
+<tr><td>/api/proxy?action=heartbeat</td><td>POST</td></tr>
+<tr><td>/api/proxy?action=health</td><td>GET</td></tr>
+<tr><td>/api/proxy/v1/chat/completions</td><td>POST</td></tr>
+</table>
+<h2>Headers</h2>
+<table><tr><th>Header</th><th>Purpose</th></tr>
+<tr><td>X-Chat-Only: true</td><td>Chat query (no agentic)</td></tr>
+<tr><td>X-Forwarded: true</td><td>Loop prevention</td></tr>
+<tr><td>X-Agentic: true</td><td>Agentic prompt for agent processing</td></tr>
+</table>
+<h2>Routing Policy</h2>
+<pre>
+Parent: F=true→reject, A=true→agentic child, C=true→LLM APIs, else→available child
+Child: F=true→local LLM only, else→forward to parent, fallback after 3 retries
+</pre>
+</body>
+</html>
