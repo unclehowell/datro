@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FCUK Proxy API Docs | FinanceCheque UK</title>
+<style>
+:root {
+  --bg: #0a0a1a;
+  --text: #d0c8b8;
+  --amber: #e8b84e;
+  --accent: #0088cc;
+  --border: #333;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  padding: 2rem;
+  line-height: 1.5;
+}
+h1 { color: var(--amber); margin-bottom: 1rem; }
+h2 { color: var(--accent); margin: 1.5rem 0 0.5rem; }
+code, pre {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  color: var(--amber);
+}
+pre { padding: 1rem; overflow-x: auto; margin: 1rem 0; }
+a { color: var(--accent); }
+table { width: 100%; border-collapse: collapse; margin: 1rem 0; }
+td, th { border: 1px solid var(--border); padding: 0.5rem; text-align: left; }
+th { background: #111; color: var(--amber); }
+section { margin: 2rem 0; padding: 1rem; background: #111; border-radius: 8px; }
+</style>
+</head>
+<body>
+<h1>FCUK Proxy API Documentation</h1>
+
+<section>
+<h2>Install</h2>
+<p>Make any device a child proxy:</p>
+<pre>curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash</pre>
+<p>Agentic node (for compute offload):</p>
+<pre>AGENT_ROLE=agent curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash</pre>
+</section>
+
+<section>
+<h2>Parent Proxy Endpoints</h2>
+<table>
+  <tr><th>Endpoint</th><th>Description</th><th>Method</th></tr>
+  <tr><td>/fcukproxy/install.sh</td><td>Child proxy installer</td><td>GET</td></tr>
+  <tr><td>/fcukproxy/child-proxy.mjs</td><td>Child proxy source code</td><td>GET</td></tr>
+  <tr><td>/api/proxy?action=register</td><td>Register child node with machine info</td><td>POST</td></tr>
+  <tr><td>/api/proxy?action=heartbeat</td><td>Report alive status (every 60s)</td><td>POST</td></tr>
+  <tr><td>/api/proxy?action=health</td><td>List active child proxies</td><td>GET</td></tr>
+  <tr><td>/api/proxy/v1/chat/completions</td><td>OpenAI-compatible chat completions</td><td>POST</td></tr>
+</table>
+</section>
+
+<section>
+<h2>Headers</h2>
+<table>
+  <tr><th>Header</th><th>Value</th><th>Purpose</th></tr>
+  <tr><td>X-Chat-Only</td><td>true</td><td>Chat query (no agentic)</td></tr>
+  <tr><td>X-Forwarded</td><td>true</td><td>Loop prevention (came from parent)</td></tr>
+  <tr><td>X-Agentic</td><td>true</td><td>Agentic prompt for agent processing</td></tr>
+  <tr><td>X-Source-Machine</td><td>machine-id</td><td>Identifies requesting child</td></tr>
+</table>
+</section>
+
+<section>
+<h2>Routing Logic</h2>
+<pre>
+Parent Proxy Decision Tree:
+  IF X-Forwarded == true:
+    → Use LOCAL LLM ONLY (prevent loop)
+  ELSE IF X-Agentic == true:
+    → Route to agentic child (e.g., phone)
+  ELSE IF X-Chat-Only == true:
+    → Respond via LLM APIs (env keys on Cloudflare)
+  ELSE:
+    → Route to available child (not source)
+
+Child Proxy Decision Tree:
+  IF X-Forwarded == true:
+    → Use LOCAL LLM ONLY (prevent loop)
+  ELSE:
+    → Forward to parent proxy
+    → Fallback to local LLM after 3 retries/timeouts
+</pre>
+</section>
+</body>
+</html>
