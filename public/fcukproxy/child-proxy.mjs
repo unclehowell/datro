@@ -236,16 +236,15 @@ const server = http.createServer(async (req, res) => {
 
   // ── Agent Status (list capabilities) ───────────────────────────────────
   if (req.method === 'GET' && path === '/v1/agent/status') {
-    const fs = await import('fs');
+    const { default: fs } = await import('fs');
     const hasExec = fs.existsSync(AGENT_EXEC);
-    const hasGit = (() => { try { execSync('which git'); return true; } catch { return false; } })();
-    const hasNode = true; // we're running in node
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({
       machine_id: CHILD_ID,
       role: AGENT_ROLE,
-      capabilities: { agent_exec: hasExec, git: hasGit, node: hasNode },
-      version: VERSION
+      capabilities: { agent_exec: hasExec, git: true, node: true },
+      version: VERSION,
+      port: PORT
     }));
     return;
   }
