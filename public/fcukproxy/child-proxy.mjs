@@ -6,7 +6,7 @@
  * Implements strict routing policy with loop prevention.
  *
  * Routing Policy (Boolean Logic):
- *   C = Chat-only query  F = X-Forwarded header  A = Agentic prompt
+ *   C = Chat-only query  F = X-Forwarded header  A = X-Agentic header
  *   
  *   Parent Proxy Behavior:
  *     - Receives request from child proxy
@@ -20,6 +20,8 @@
  *     - Received without F: forward to parent proxy
  *     - NEVER queries parent proxy API endpoint for responses
  *     - Fallback to local LLM only after timeout/retry exhaustion
+ *
+ * Version: 0.5.0
  */
 
 import http from 'http';
@@ -30,20 +32,32 @@ const PARENT_URL = process.env.PARENT_URL || 'https://www.financecheque.uk';
 const CHILD_ID = process.env.CHILD_ID || process.env.MACHINE_ID || `child-${os.hostname()}`;
 const PORT = Number(process.env.PORT) || 4001;
 const MACHINE_NAME = process.env.MACHINE_NAME || os.hostname();
-const AGENT_ROLE = process.env.AGENT_ROLE || 'chat'; // 'chat' or 'agent'
+const AGENT_ROLE = process.env.AGENT_ROLE || 'chat';
+const VERSION = '0.5.0';
 
 let activeJobs = 0;
 let retryCount = 0;
+let backoffMs = 1000;
+const MAX_BACKOFF_MS = 30000;
 
-// ── Register with parent proxy ──────────────────────────────────────────
+function nextBackoff() {
+  const jitter = Math.random() * 0.3 + 0.85;
+  backoffMs = Math.min(backoffMs * 2 * jitter, MAX_BACKOFF_MS);
+  return backoffMs;
+}
+
+function resetBackoff() {
+  backoffMs = 1000;
+}
+
 function register() {
   const body = JSON.stringify({
     childId: CHILD_ID,
     machine_id: CHILD_ID,
     machine_name: MACHINE_NAME,
-    url: process.env.SELF_URL || `http://${getLocalIP()}:${PORT}`,
+    url: process.env.SELF_URL || process.env.NGROK_URL || `http://${getLocalIP()}:${PORT}`,
     proxy_port: PORT,
-    version: '0.5.0',
+    version: VERSION,
     role: AGENT_ROLE
   });
   fetch(`${PARENT_URL}/api/proxy?action=register`, {
@@ -56,22 +70,24 @@ function register() {
   }).catch(e => console.error(`[child-proxy] Registration error: ${e.message}`));
 }
 
-// ── Heartbeat ───────────────────────────────────────────────────────────
-function sendHeartbeat() {
+async function sendHeartbeat() {
   const body = JSON.stringify({
     machine_id: CHILD_ID,
     machine_name: MACHINE_NAME,
     load: activeJobs,
     role: AGENT_ROLE
   });
-  fetch(`${PARENT_URL}/api/proxy?action=heartbeat`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body,
-  }).catch(() => {});
+  try {
+    await fetch(`${PARENT_URL}/api/proxy?action=heartbeat`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body,
+    });
+  } catch (e) {
+    console.error(`[child-proxy] Heartbeat error: ${e.message}`);
+  }
 }
 
-// ── Chat route: forward to parent proxy ─────────────────────────────────
 async function routeToParent(messages, model, isAgentic = false) {
   const body = JSON.stringify({
     model: model || 'proxy-router',
@@ -83,7 +99,8 @@ async function routeToParent(messages, model, isAgentic = false) {
   const headers = {
     'Content-Type': 'application/json',
     'X-Chat-Only': 'true',
-    'X-Source-Machine': CHILD_ID
+    'X-Source-Machine': CHILD_ID,
+    'X-Role': AGENT_ROLE
   };
   if (isAgentic) headers['X-Agentic'] = 'true';
   
@@ -103,19 +120,26 @@ async function routeToParent(messages, model, isAgentic = false) {
   }
 }
 
-// ── Local LLM fallback (only for loop prevention or exhausted retries) ───
 async function queryLocalLLM(messages, model) {
   const endpoints = [
-    'http://localhost:6000/v1/chat/completions',
-    'http://localhost:11434/api/chat',
-    'http://localhost:5000/v1/chat/completions'
+    { url: 'http://localhost:6000/v1/chat/completions', format: 'openai' },
+    { url: 'http://localhost:11434/api/chat', format: 'ollama' },
+    { url: 'http://localhost:5000/v1/chat/completions', format: 'openai' },
+    { url: 'http://localhost:8080/v1/chat/completions', format: 'openai' }
   ];
+  
   for (const ep of endpoints) {
     try {
-      const resp = await fetch(ep, {
+      let body;
+      if (ep.format === 'ollama') {
+        body = JSON.stringify({ model: model || 'llama3', messages, stream: false });
+      } else {
+        body = JSON.stringify({ model: model || 'local', messages, max_tokens: 1024, stream: false });
+      }
+      const resp = await fetch(ep.url, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ model: model || 'local', messages, max_tokens: 1024, stream: false }),
+        body,
         signal: AbortSignal.timeout(10000),
       });
       if (resp.ok) {
@@ -129,19 +153,23 @@ async function queryLocalLLM(messages, model) {
   return null;
 }
 
-// ── HTTP Server ─────────────────────────────────────────────────────────
 const server = http.createServer(async (req, res) => {
   const parsed = url.parse(req.url, true);
   const path = parsed.pathname;
 
-  // CORS
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Chat-Only, X-Forwarded, X-Machine-ID');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Chat-Only, X-Forwarded, X-Machine-ID, X-Agentic');
 
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
     res.end();
+    return;
+  }
+
+  if (req.method === 'GET' && path === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ ok: true, machine_id: CHILD_ID, version: VERSION, role: AGENT_ROLE }));
     return;
   }
 
@@ -157,7 +185,6 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  // Read body
   let bodyStr = '';
   for await (const chunk of req) bodyStr += chunk;
 
@@ -172,7 +199,6 @@ const server = http.createServer(async (req, res) => {
 
   const messages = body.messages || [];
   const model = body.model || 'proxy-router';
-  // Boolean routing flags
   const isForwarded = req.headers['x-forwarded'] === 'true';
   const isChatOnly = req.headers['x-chat-only'] === 'true';
   const isAgentic = req.headers['x-agentic'] === 'true';
@@ -185,8 +211,6 @@ const server = http.createServer(async (req, res) => {
     let routedTo = 'unknown';
 
     if (isForwarded) {
-      // ── Loop prevention: forwarded request → use local LLM ONLY ──
-      // This request came FROM parent proxy, must NOT go back
       console.log(`[child-proxy] FORWARDED request → local LLM ONLY (loop prevention) [${model}]`);
       responseData = await queryLocalLLM(messages, model);
       if (!responseData) {
@@ -198,24 +222,24 @@ const server = http.createServer(async (req, res) => {
       routedTo = 'local_llm';
       responseData._proxy = { forwarded: true, routed: routedTo, loop_prevented: true };
     } else {
-      // ── Normal: forward to parent proxy ──
+      if (retryCount > 0) {
+        await new Promise(r => setTimeout(r, nextBackoff()));
+      }
       console.log(`[child-proxy] Routing to parent proxy [${model}] (agentic: ${isAgentic})`);
       responseData = await routeToParent(messages, model, isAgentic);
       
       if (!responseData) {
-        // Parent unreachable after timeout → track retry
         retryCount++;
         console.log(`[child-proxy] Parent unreachable (attempt ${retryCount})`);
         
-        // Only fallback to local LLM after retry exhaustion or long timeout
         if (retryCount >= 3) {
           console.log('[child-proxy] Retry exhausted → local LLM fallback');
           responseData = await queryLocalLLM(messages, model);
           routedTo = 'local_fallback_exhausted';
-          retryCount = 0; // reset
         } else {
-          // Wait for parent with timeout - don't immediately fallback
-          await new Promise(r => setTimeout(r, 5000));
+          const waitMs = nextBackoff();
+          console.log(`[child-proxy] Waiting ${Math.round(waitMs)}ms before retry...`);
+          await new Promise(r => setTimeout(r, waitMs));
           responseData = await routeToParent(messages, model, isAgentic);
           if (!responseData) {
             const lastMsg = messages.length > 0 ? (typeof messages[messages.length-1].content === 'string' ? messages[messages.length-1].content : '') : '';
@@ -223,11 +247,14 @@ const server = http.createServer(async (req, res) => {
               choices: [{ message: { role: 'assistant', content: `Timeout: ${lastMsg}` }, finish_reason: 'stop' }],
             };
             routedTo = 'timeout_no_fallback';
+          } else {
+            routedTo = 'parent_proxy_retry';
+            resetBackoff();
           }
         }
       } else {
         routedTo = 'parent_proxy';
-        retryCount = 0; // reset on success
+        resetBackoff();
       }
       responseData._proxy = { routed: routedTo, forwarded: false };
     }
@@ -244,10 +271,10 @@ const server = http.createServer(async (req, res) => {
 });
 
 server.listen(PORT, () => {
-  console.log(`[child-proxy] Listening on port ${PORT} (machine: ${CHILD_ID}, role: ${AGENT_ROLE})`);
+  console.log(`[child-proxy] Listening on port ${PORT} (machine: ${CHILD_ID}, role: ${AGENT_ROLE}, v${VERSION})`);
   register();
   setInterval(sendHeartbeat, 60000);
-  setInterval(register, 120000); // re-register every 2 min
+  setInterval(register, 120000);
 });
 
 function getLocalIP() {
@@ -260,6 +287,5 @@ function getLocalIP() {
   return '127.0.0.1';
 }
 
-// Graceful shutdown
 process.on('SIGTERM', () => { console.log('[child-proxy] Shutting down'); process.exit(0); });
 process.on('SIGINT', () => { console.log('[child-proxy] Shutting down'); process.exit(0); });

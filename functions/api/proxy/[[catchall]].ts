@@ -21,6 +21,7 @@ interface ProxyNode {
   url?: string;
   avg_response_ms?: number;
   total_requests?: number;
+  registered_at?: string;
 }
 
 interface ChatMessage {
@@ -34,6 +35,37 @@ interface ChatRequest {
   stream?: boolean;
   [key: string]: unknown;
 }
+
+// Rate limiting store (in-memory per worker instance)
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT_MAX = 60; // requests per minute
+const RATE_LIMIT_WINDOW = 60000; // 1 minute in ms
+
+function checkRateLimit(machineId: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitStore.get(machineId);
+  if (!entry || now > entry.resetAt) {
+    rateLimitStore.set(machineId, { count: 1, resetAt: now + RATE_LIMIT_WINDOW });
+    return true;
+  }
+  if (entry.count >= RATE_LIMIT_MAX) {
+    return false;
+  }
+  entry.count++;
+  return true;
+}
+
+// Cleanup dead nodes (older than 2 hours without heartbeat)
+async function cleanupDeadNodes(env: Env): Promise<void> {
+  await env.DB.prepare(
+    `DELETE FROM proxy_nodes WHERE last_seen < datetime('now', '-2 hours')`
+  ).run();
+  await env.DB.prepare(
+    `DELETE FROM proxy_pending WHERE status = 'in_progress' AND created_at < datetime('now', '-5 minutes')`
+  ).run();
+}
+
+const FCUK_PROXY_VERSION = '0.5.0';
 
 // ── Boolean Logic for query routing ──────────────────────────────────────
 // Let:  C = X-Chat-Only header is "true"
@@ -63,7 +95,7 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
   const headers: Record<string, string> = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, X-Machine-ID, X-Chat-Only, X-Forwarded',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Machine-ID, X-Chat-Only, X-Forwarded, X-Agentic',
     'Content-Type': 'application/json',
   };
 
@@ -71,7 +103,15 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     return new Response(null, { status: 204, headers });
   }
 
+  // Cleanup dead nodes periodically (every ~1000 requests, best-effort)
+  cleanupDeadNodes(env).catch(() => {});
+
   try {
+    // Health endpoint
+    if (path === '/api/proxy/health' && method === 'GET') {
+      return await handleHealth(env, headers);
+    }
+    
     // Bare /api/proxy — dispatch by action from query param or body
     if (path === '/api/proxy' && method === 'POST') {
       const actionFromQuery = url.searchParams.get('action');
@@ -119,18 +159,12 @@ async function ensureTable(env: Env): Promise<void> {
       proxy_port INTEGER DEFAULT 6000,
       version TEXT DEFAULT '',
       last_seen TEXT DEFAULT (datetime('now')),
-      registered_at TEXT DEFAULT (datetime('now'))
+      registered_at TEXT DEFAULT (datetime('now')),
+      url TEXT DEFAULT '',
+      avg_response_ms REAL DEFAULT 1000,
+      total_requests INTEGER DEFAULT 0
     )`
   ).run();
-  await env.DB.prepare(
-    `ALTER TABLE proxy_nodes ADD COLUMN url TEXT DEFAULT ''`
-  ).run().catch(() => {});
-  await env.DB.prepare(
-    `ALTER TABLE proxy_nodes ADD COLUMN avg_response_ms REAL DEFAULT 1000`
-  ).run().catch(() => {});
-  await env.DB.prepare(
-    `ALTER TABLE proxy_nodes ADD COLUMN total_requests INTEGER DEFAULT 0`
-  ).run().catch(() => {});
   await env.DB.prepare(
     `CREATE TABLE IF NOT EXISTS proxy_logs (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -164,8 +198,13 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
     return new Response(JSON.stringify({ error: 'machine_id or childId required' }), { status: 400, headers });
   }
 
+  // Rate limiting check
+  if (!checkRateLimit(machine_id)) {
+    return new Response(JSON.stringify({ error: 'Rate limit exceeded. Max 60 registrations/heartbeats per minute.' }), { status: 429, headers });
+  }
+
   let ip_address = body.ip_address || '';
-  let proxy_port = body.proxy_port || 6000;
+  let proxy_port = body.proxy_port || 4001;
   if (!ip_address && body.url) {
     try {
       const u = new URL(body.url);
@@ -175,12 +214,17 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
   }
 
   const machine_name = body.machine_name || machine_id;
-
   const nodeUrl = body.url || '';
+  const version = body.version || 'unknown';
+
+  // Validate version format
+  if (version && !/^[\d.]+$/.test(version)) {
+    console.warn(`Invalid version format from ${machine_id}`);
+  }
 
   await env.DB.prepare(
-    `INSERT INTO proxy_nodes (machine_id, machine_name, ip_address, proxy_port, version, url, last_seen)
-     VALUES (?, ?, ?, ?, ?, ?, datetime('now'))
+    `INSERT INTO proxy_nodes (machine_id, machine_name, ip_address, proxy_port, version, url, last_seen, registered_at)
+     VALUES (?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))
      ON CONFLICT(machine_id) DO UPDATE SET
        machine_name = excluded.machine_name,
        ip_address = excluded.ip_address,
@@ -193,33 +237,74 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
     machine_name,
     ip_address,
     proxy_port,
-    body.version || '',
+    version,
     nodeUrl
   ).run();
 
-  return new Response(JSON.stringify({ ok: true, machine_id }), { status: 200, headers });
+  return new Response(JSON.stringify({ ok: true, machine_id, version: FCUK_PROXY_VERSION }), { status: 200, headers });
 }
 
 async function handleHeartbeat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
   const body = await request.json() as { childId?: string; load?: number; machine_id?: string; machine_name?: string; url?: string };
   const machineId = body.childId || body.machine_id;
-  if (machineId) {
-    const updates: string[] = ["last_seen = datetime('now')"];
-    const binds: any[] = [];
-    if (body.url) {
-      updates.push("url = ?");
-      binds.push(body.url);
-    }
-    if (body.machine_name) {
-      updates.push("machine_name = ?");
-      binds.push(body.machine_name);
-    }
-    binds.push(machineId);
-    await env.DB.prepare(
-      `UPDATE proxy_nodes SET ${updates.join(', ')} WHERE machine_id = ?`
-    ).bind(...binds).run();
+  
+  if (!machineId) {
+    return new Response(JSON.stringify({ error: 'machine_id or childId required' }), { status: 400, headers });
   }
+
+  // Rate limiting check
+  if (!checkRateLimit(machineId)) {
+    return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), { status: 429, headers });
+  }
+
+  const updates: string[] = ["last_seen = datetime('now')"];
+  const binds: any[] = [];
+  if (body.url) {
+    updates.push("url = ?");
+    binds.push(body.url);
+  }
+  if (body.machine_name) {
+    updates.push("machine_name = ?");
+    binds.push(body.machine_name);
+  }
+  binds.push(machineId);
+  await env.DB.prepare(
+    `UPDATE proxy_nodes SET ${updates.join(', ')} WHERE machine_id = ?`
+  ).bind(...binds).run();
+  
   return new Response(JSON.stringify({ ok: true }), { status: 200, headers });
+}
+
+async function handleHealth(env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  
+  // Cleanup dead nodes on health check
+  await env.DB.prepare(
+    `DELETE FROM proxy_nodes WHERE last_seen < datetime('now', '-2 hours')`
+  ).run();
+  
+  const { results: nodes } = await env.DB.prepare(
+    `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen
+     FROM proxy_nodes
+     WHERE last_seen > datetime('now', '-1 hour')
+     ORDER BY last_seen DESC`
+  ).all() as { results: ProxyNode[] };
+  
+  const now = new Date();
+  const nodesWithStatus = nodes.map(n => ({
+    ...n,
+    status: 'online',
+    age_seconds: Math.max(0, Math.floor((now.getTime() - new Date(n.last_seen).getTime()) / 1000))
+  }));
+  
+  return new Response(JSON.stringify({
+    ok: true,
+    status: 'ok',
+    timestamp: now.toISOString(),
+    version: FCUK_PROXY_VERSION,
+    total_node: nodes.length,
+    nodes: nodesWithStatus,
+  }), { status: 200, headers });
 }
 
 async function handleNodes(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
@@ -241,6 +326,12 @@ async function handlePoll(request: Request, env: Env, headers: Record<string, st
   if (!machineId) {
     return new Response(JSON.stringify({ error: 'machine_id required' }), { status: 400, headers });
   }
+  
+  // Rate limiting check
+  if (!checkRateLimit(machineId)) {
+    return new Response(JSON.stringify({ error: 'Rate limit exceeded' }), { status: 429, headers });
+  }
+  
   const pending = await env.DB.prepare(
     `SELECT id, work_id, payload FROM proxy_pending
      WHERE machine_id = ? AND status = 'pending'
@@ -294,17 +385,10 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
     return new Response(JSON.stringify({ error: 'message is required' }), { status: 400, headers });
   }
 
-  // Chat flag enforcement: public website chat is ALWAYS chat-only.
-  // The X-Chat-Only header is set by the parent proxy before forwarding
-  // to child proxies, ensuring the public website cannot trigger agentic
-  // actions on the monorepo.
   const isChatOnly = request.headers.get('X-Chat-Only') === 'true';
   const isForwarded = request.headers.get('X-Forwarded') === 'true';
 
-  // If forwarded (previously routed through another child proxy), skip
-  // child proxy routing to prevent loops. Go directly to LLM fallbacks.
   if (isForwarded) {
-    // Attempt parent's own LLM env var keys
     const reply = await tryParentLlm(message, env);
     if (reply) {
       return new Response(JSON.stringify({ ok: true, reply, _proxy: { forwarded: true, routing: 'direct_llm' } }), { status: 200, headers });
@@ -312,7 +396,6 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
     return new Response(JSON.stringify({ ok: true, reply: `Echo: ${message}` }), { status: 200, headers });
   }
 
-  // For chat-only requests, try routing to child proxy network first
   if (isChatOnly) {
     const childReply = await routeSimpleChatToChild(message, env);
     if (childReply) {
@@ -320,19 +403,20 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
     }
   }
 
-  // Fallback: parent's own LLM env var keys
   const reply = await tryParentLlm(message, env);
   if (reply) {
     return new Response(JSON.stringify({ ok: true, reply, _proxy: { routing: 'direct_llm' } }), { status: 200, headers });
   }
 
-  // Final fallback: echo
   return new Response(JSON.stringify({ ok: true, reply: `Echo: ${message}` }), { status: 200, headers });
 }
 
 async function tryParentLlm(message: string, env: Env): Promise<string | null> {
-  // Effective use of env var API keys for parent proxy fallback to LLMs.
-  // Order: prefer fast/cheap first. All respect provided keys (no hard-coded).
+  const hasAnyKey = Object.values(env).some(v => v && typeof v === 'string' && v.length > 10);
+  if (!hasAnyKey) {
+    return `Echo: ${message}`;
+  }
+  
   const providers: Array<{
     key?: string;
     url: string;
@@ -341,7 +425,6 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
     parseReply: (data: any) => string;
     keyInQuery?: boolean;
   }> = [
-    // Groq - fast, free tier friendly
     {
       key: env.GROQ_API_KEY,
       url: 'https://api.groq.com/openai/v1/chat/completions',
@@ -353,7 +436,6 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
       headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
       parseReply: (d) => d?.choices?.[0]?.message?.content || '',
     },
-    // OpenRouter - multi model router
     {
       key: env.OPENROUTER_API_KEY,
       url: 'https://openrouter.ai/api/v1/chat/completions',
@@ -365,7 +447,6 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
       headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json', 'HTTP-Referer': 'https://www.financecheque.uk', 'X-Title': 'FinanceCheque UK' }),
       parseReply: (d) => d?.choices?.[0]?.message?.content || '',
     },
-    // Gemini
     {
       key: env.GEMINI_API_KEY,
       url: 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent',
@@ -373,7 +454,6 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
       keyInQuery: true,
       parseReply: (d) => d?.candidates?.[0]?.content?.parts?.[0]?.text || '',
     },
-    // OpenAI
     {
       key: env.OPENAI_API_KEY,
       url: 'https://api.openai.com/v1/chat/completions',
@@ -385,7 +465,6 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
       headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
       parseReply: (d) => d?.choices?.[0]?.message?.content || '',
     },
-    // DeepSeek
     {
       key: env.DEEPSEEK_API_KEY,
       url: 'https://api.deepseek.com/v1/chat/completions',
@@ -397,7 +476,6 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
       headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
       parseReply: (d) => d?.choices?.[0]?.message?.content || '',
     },
-    // Anthropic
     {
       key: env.ANTHROPIC_API_KEY,
       url: 'https://api.anthropic.com/v1/messages',
@@ -410,12 +488,33 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
       headers: (k) => ({ 'x-api-key': k, 'Content-Type': 'application/json', 'anthropic-version': '2023-06-01' }),
       parseReply: (d) => d?.content?.[0]?.text || '',
     },
-    // Groq again? already first. Add mistral etc if key present
     {
       key: env.MISTRAL_API_KEY,
       url: 'https://api.mistral.ai/v1/chat/completions',
       getBody: (msg) => ({
         model: 'mistral-small-latest',
+        messages: [{ role: 'user', content: msg }],
+        max_tokens: 500,
+      }),
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
+      parseReply: (d) => d?.choices?.[0]?.message?.content || '',
+    },
+    {
+      key: env.TOGETHER_API_KEY,
+      url: 'https://api.together.xyz/v1/chat/completions',
+      getBody: (msg) => ({
+        model: 'meta-llama/Llama-3.3-70B-Instruct-Turbo',
+        messages: [{ role: 'user', content: msg }],
+        max_tokens: 500,
+      }),
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
+      parseReply: (d) => d?.choices?.[0]?.message?.content || '',
+    },
+    {
+      key: env.PERPLEXITY_API_KEY,
+      url: 'https://api.perplexity.ai/chat/completions',
+      getBody: (msg) => ({
+        model: 'sonar-small-chat',
         messages: [{ role: 'user', content: msg }],
         max_tokens: 500,
       }),
@@ -439,9 +538,7 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
         const reply = p.parseReply(data);
         if (reply && reply.trim()) return reply.trim();
       }
-    } catch (e) {
-      // continue to next provider
-    }
+    } catch (e) {}
   }
   return null;
 }
@@ -461,7 +558,7 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
       { role: 'user', content: message },
     ];
     for (const node of results) {
-      const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port + 1 || 4001}/v1/chat/completions`;
+      const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 4001}/v1/chat/completions`;
       try {
         const resp = await fetch(childUrl, {
           method: 'POST',
@@ -486,8 +583,8 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
 }
 
 async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model: string, originMachineId: string, env?: Env): Promise<{ content: string; timeMs: number } | null> {
-  const childUrl = (node as any).url || `http://${node.ip_address}:${node.proxy_port + 1 || 4001}/v1/chat/completions`;
-  if (!childUrl || childUrl === 'http://:4001') return null;
+  const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 4001}/v1/chat/completions`;
+  if (!childUrl || childUrl === 'http://:4001' || childUrl === 'http://') return null;
   const start = Date.now();
   try {
     const resp = await fetch(childUrl, {
@@ -505,9 +602,15 @@ async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model
     if (resp.ok) {
       const data = await resp.json() as any;
       const content = data?.choices?.[0]?.message?.content || '';
-      if (content) return { content, timeMs };
+      if (content) {
+        if (env) {
+          await env.DB.prepare(
+            `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
+          ).bind(timeMs, timeMs, node.machine_id).run().catch(() => {});
+        }
+        return { content, timeMs };
+      }
     }
-    // Log response time even on failure
     if (env) {
       await env.DB.prepare(
         `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
@@ -515,13 +618,11 @@ async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model
     }
   } catch {
     const timeMs = Date.now() - start;
-    // Child is unreachable (closed ports). Queue work for polling if we have DB access.
     if (env && node.machine_id !== originMachineId) {
       try {
         await queueWorkForNode(env, node.machine_id, { model, messages, max_tokens: 1024 });
       } catch {}
     }
-    // Log high response time for unreachable node
     if (env) {
       await env.DB.prepare(
         `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
@@ -536,23 +637,23 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
   const originMachineId = request.headers.get('X-Machine-ID') || '';
   const isForwarded = request.headers.get('X-Forwarded') === 'true';
   const isChatOnly = request.headers.get('X-Chat-Only') === 'true';
+  const isAgentic = request.headers.get('X-Agentic') === 'true';
   const body = await request.json() as ChatRequest;
   const messages = body.messages || [];
   const model = body.model || 'proxy-router';
 
-  await env.DB.prepare(
-    `UPDATE proxy_nodes SET last_seen = datetime('now') WHERE machine_id = ?`
-  ).bind(originMachineId).run();
+  // Update last_seen if we have an origin machine
+  if (originMachineId) {
+    await env.DB.prepare(
+      `UPDATE proxy_nodes SET last_seen = datetime('now') WHERE machine_id = ?`
+    ).bind(originMachineId).run();
+  }
 
-  // ── Loop prevention: if already forwarded, skip child proxy routing ──
   if (isForwarded) {
     let completionContent = '';
     let routingDecision = 'forwarded_direct_llm';
 
-    // Try parent's own LLM env var keys
-    const lastMsg = messages.length > 0
-      ? (typeof messages[messages.length - 1].content === 'string' ? messages[messages.length - 1].content : '')
-      : '';
+    const lastMsg = messages.length > 0 && typeof messages[messages.length - 1].content === 'string' ? messages[messages.length - 1].content : '';
     if (lastMsg) {
       const reply = await tryParentLlm(lastMsg, env);
       if (reply) completionContent = reply;
@@ -560,9 +661,6 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
 
     if (!completionContent) {
       routingDecision = 'forwarded_echo';
-      const lastMsg = messages.length > 0
-        ? (typeof messages[messages.length - 1].content === 'string' ? messages[messages.length - 1].content : '')
-        : '';
       completionContent = `Echo: ${lastMsg}`;
     }
 
@@ -584,7 +682,6 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     return new Response(JSON.stringify(responseBody), { status: 200, headers: { ...headers, 'X-Chat-Only': 'true', 'X-Forwarded': 'true' } });
   }
 
-  // ── Normal (non-forwarded) routing ──
   const activeNodes = await env.DB.prepare(
     `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen,
             COALESCE(avg_response_ms, 1000) as avg_response_ms
@@ -597,7 +694,6 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
   let routingDecision = 'direct';
   let pollingQueued = false;
 
-  // Priority 1: route to the calling machine's own child proxy (fastest path)
   const callingNode = activeNodes.results?.find(n => n.machine_id === originMachineId);
   if (callingNode && messages.length > 0) {
     routingDecision = 'route_to_calling_child';
@@ -607,7 +703,6 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     }
   }
 
-  // Priority 2: route to other active child proxies on the network (fastest first)
   if (!completionContent && totalNodes > 1 && messages.length > 0) {
     routingDecision = 'route_to_other_children';
     for (const node of activeNodes.results) {
@@ -621,7 +716,6 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     if (!completionContent) pollingQueued = true;
   }
 
-  // Priority 3: parent proxy's own env var LLM keys (fallback)
   if (!completionContent && messages.length > 0) {
     routingDecision = 'direct_llm';
     const lastMsg = typeof messages[messages.length - 1].content === 'string' ? messages[messages.length - 1].content : '';
@@ -631,7 +725,6 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     }
   }
 
-  // Final fallback: echo
   if (!completionContent && messages.length > 0) {
     routingDecision = pollingQueued ? 'polling_queued' : 'echo';
     const lastMsg = messages[messages.length - 1];

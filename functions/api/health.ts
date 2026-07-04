@@ -2,6 +2,8 @@ interface Env {
   DB: D1Database;
 }
 
+const FCUK_PROXY_VERSION = '0.5.0';
+
 export async function onRequest(context: { request: Request; env: Env }): Promise<Response> {
   const { env } = context;
 
@@ -17,31 +19,9 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
   }
 
   try {
+    // Cleanup dead nodes (older than 2 hours)
     await env.DB.prepare(
-      `CREATE TABLE IF NOT EXISTS proxy_nodes (
-        machine_id TEXT PRIMARY KEY,
-        machine_name TEXT NOT NULL DEFAULT '',
-        ip_address TEXT NOT NULL DEFAULT '',
-        proxy_port INTEGER DEFAULT 6000,
-        version TEXT DEFAULT '',
-        last_seen TEXT DEFAULT (datetime('now')),
-        registered_at TEXT DEFAULT (datetime('now'))
-      )`
-    ).run();
-    await env.DB.prepare(
-      `ALTER TABLE proxy_nodes ADD COLUMN url TEXT DEFAULT ''`
-    ).run().catch(() => {});
-
-    await env.DB.prepare(
-      `CREATE TABLE IF NOT EXISTS proxy_logs (
-        id INTEGER PRIMARY KEY AUTOINCREMENT,
-        origin_machine_id TEXT DEFAULT '',
-        endpoint TEXT NOT NULL DEFAULT '',
-        model TEXT DEFAULT '',
-        response_status INTEGER DEFAULT 0,
-        routing_decision TEXT DEFAULT 'direct',
-        created_at TEXT DEFAULT (datetime('now'))
-      )`
+      `DELETE FROM proxy_nodes WHERE last_seen < datetime('now', '-2 hours')`
     ).run();
 
     const { results: nodes } = await env.DB.prepare(
@@ -65,15 +45,27 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
       `SELECT COUNT(*) as count FROM proxy_logs WHERE created_at > datetime('now', '-1 day')`
     ).first() as { count: number };
 
+    const totalNodes = nodes.length;
+    const activeNodes = activeCount?.count || 0;
+
+    const now = new Date();
+    const nodesWithStatus = nodes.map(n => ({
+      ...n,
+      status: 'online',
+      age_seconds: Math.max(0, Math.floor((now.getTime() - new Date(n.last_seen).getTime()) / 1000))
+    }));
+
     return new Response(JSON.stringify({
+      ok: true,
       status: 'ok',
-      timestamp: new Date().toISOString(),
+      timestamp: now.toISOString(),
+      version: FCUK_PROXY_VERSION,
       summary: {
-        total_nodes_registered: nodes.length,
-        active_nodes_last_hour: activeCount?.count || 0,
+        total_nodes_registered: totalNodes,
+        active_nodes_last_hour: activeNodes,
         total_logs_today: todayCount?.count || 0,
       },
-      nodes,
+      nodes: nodesWithStatus,
       logs,
     }), { status: 200, headers: corsHeaders });
 
