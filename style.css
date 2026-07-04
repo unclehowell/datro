@@ -264,24 +264,40 @@ html, body {
     border: 1px solid #555;
     color: #999;
     font-family: var(--font-mono);
-    font-size: 12px;
+    font-size: 13px;
     cursor: pointer;
-    padding: 4px 12px;
+    padding: 3px 10px;
     border-radius: var(--radius);
     transition: 0.15s;
+    line-height: 1.2;
+    height: 26px;
+    min-width: 26px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
 }
 .status-btn:hover {
     border-color: var(--amber);
     color: var(--amber-bright);
 }
+.toggle-btn {
+    font-size: 13px;
+    font-weight: bold;
+}
 .theme-btn {
     font-size: 16px;
-    padding: 2px 8px;
-    line-height: 1;
 }
 .version-label {
     color: var(--amber-bright);
     letter-spacing: 1px;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    height: 26px;
+    display: inline-flex;
+    align-items: center;
+    padding: 0 6px;
+    border: 1px solid transparent;
+    border-radius: var(--radius);
 }
 .cache-status-text {
     font-size: 11px;

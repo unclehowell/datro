@@ -263,6 +263,27 @@ export default {
       return json({ version: 'command-V' + (targetVer || '0.1.0.01') });
     }
 
+    // GET /api/releases — fetch GitHub releases for version labels
+    if (path === '/api/releases') {
+      const ghHeaders = { 'User-Agent': 'command-dashboard-worker', 'Accept': 'application/vnd.github.v3+json' };
+      try {
+        const releasesResp = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=50', { headers: ghHeaders });
+        const releases = await releasesResp.json();
+        const result = (Array.isArray(releases) ? releases : []).map(function(r) {
+          const tag = r.tag_name || '';
+          const parts = tag.split('-v');
+          return {
+            branch: parts[0] || '',
+            version: parts[1] || tag,
+            name: r.name || tag,
+            published: r.published_at || null,
+            tag: tag,
+          };
+        });
+        return json({ releases: result });
+      } catch { return json({ releases: [] }); }
+    }
+
     if (path === '/api/fuel') {
       // Query real provider quotas/balances from Cloudflare Worker
       const providers = [];

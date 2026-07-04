@@ -197,15 +197,16 @@ function initGraphToggle() {
 
 function handleGraphToggle() {
     var btn = $('graph-toggle');
-    if (!btn) return;
+    var btnBar = $('graph-toggle-bar');
+    if (!btn && !btnBar) return;
 
     graphViewActive = !graphViewActive;
-    btn.classList.toggle('active', graphViewActive);
+    if (btn) btn.classList.toggle('active', graphViewActive);
+    if (btnBar) btnBar.classList.toggle('active', graphViewActive);
     var canvas = $('track-canvas');
     var graphContainer = $('graph-container');
     if (!graphContainer) return;
     if (graphViewActive) {
-        // Switch to graph view
         if (canvas) canvas.style.display = 'none';
         graphContainer.style.display = 'block';
         if (window.trackStop) window.trackStop();
@@ -214,24 +215,21 @@ function handleGraphToggle() {
             var threeCanvas = ws.querySelector('canvas:not(#track-canvas)');
             if (threeCanvas) threeCanvas.remove();
         }
-        btn.textContent = '⬡';
-        btn.title = 'Switch to 3D world';
+        if (btn) { btn.textContent = '⬡'; btn.title = 'Switch to 3D world'; }
+        if (btnBar) { btnBar.textContent = '⬡'; btnBar.title = 'Switch to 3D world'; }
         if (!graphInitialized) {
             graphInitialized = true;
-            try {
-                if (window.graphInit) window.graphInit('graph-container');
-            } catch(e) { console.error('Graph init error:', e); }
+            try { if (window.graphInit) window.graphInit('graph-container'); } catch(e) { console.error('Graph init error:', e); }
         } else {
             if (window.graphResize) window.graphResize();
         }
     } else {
-        // Switch to 3D city view
         graphContainer.style.display = 'none';
         if (canvas) canvas.style.display = 'none';
         var ws2 = document.querySelector('.windscreen');
         if (ws2 && window.trackInit) window.trackInit(ws2);
-        btn.textContent = '🌐';
-        btn.title = 'Switch to graph view';
+        if (btn) { btn.textContent = '🌐'; btn.title = 'Switch to graph view'; }
+        if (btnBar) { btnBar.textContent = '🌐'; btnBar.title = 'Switch to graph view'; }
     }
 }
 
@@ -244,6 +242,7 @@ function handleMode3DToggle() {
     var navGuide = $('nav-guide-overlay');
     var versionLayers = $('version-layers');
     var graphToggle = $('graph-toggle');
+    var graphToggleBar = $('graph-toggle-bar');
 
     if (mode3DEnabled) {
         // Enable 3D mode: show guide, switch to 3D city
@@ -258,11 +257,8 @@ function handleMode3DToggle() {
         if (window.trackStop) window.trackStop();
         var ws = document.querySelector('.windscreen');
         if (ws && window.trackInit) window.trackInit(ws);
-        if (graphToggle) {
-            graphToggle.classList.remove('active');
-            graphToggle.textContent = '🌐';
-            graphToggle.title = 'Switch to graph view';
-        }
+        if (graphToggle) { graphToggle.classList.remove('active'); graphToggle.textContent = '🌐'; graphToggle.title = 'Switch to graph view'; }
+        if (graphToggleBar) { graphToggleBar.classList.remove('active'); graphToggleBar.textContent = '🌐'; graphToggleBar.title = 'Switch to graph view'; }
     } else {
         // Disable 3D mode: hide guide, switch to graph
         if (navGuide) navGuide.style.display = 'none';
@@ -279,11 +275,8 @@ function handleMode3DToggle() {
             var threeCanvas = ws2.querySelector('canvas:not(#track-canvas)');
             if (threeCanvas) threeCanvas.remove();
         }
-        if (graphToggle) {
-            graphToggle.classList.add('active');
-            graphToggle.textContent = '⬡';
-            graphToggle.title = 'Switch to 3D world';
-        }
+        if (graphToggle) { graphToggle.classList.add('active'); graphToggle.textContent = '⬡'; graphToggle.title = 'Switch to 3D world'; }
+        if (graphToggleBar) { graphToggleBar.classList.add('active'); graphToggleBar.textContent = '⬡'; graphToggleBar.title = 'Switch to 3D world'; }
         if (!graphInitialized) {
             graphInitialized = true;
             try {
@@ -1825,15 +1818,23 @@ function initControlsBar() {
 
 function handleControlsToggle() {
     var toggle = $('controls-toggle');
+    var toggleBar = $('controls-toggle-bar');
     var controlsSection = $('controls-section');
     var windscreen = document.querySelector('.windscreen');
-    if (!toggle || !controlsSection) return;
+    if (!toggle && !toggleBar) return;
+    if (!controlsSection) return;
 
     controlsCollapsed = !controlsCollapsed;
     controlsSection.classList.toggle('collapsed', controlsCollapsed);
     if (windscreen) windscreen.classList.toggle('fullscreen', controlsCollapsed);
-    toggle.textContent = controlsCollapsed ? '▲' : '▼';
-    toggle.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
+    if (toggle) {
+        toggle.textContent = controlsCollapsed ? '▲' : '▼';
+        toggle.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
+    }
+    if (toggleBar) {
+        toggleBar.textContent = controlsCollapsed ? '▲' : '▼';
+        toggleBar.title = controlsCollapsed ? 'Show controls' : 'Hide controls';
+    }
     if (graphViewActive && window.graphResize) {
         setTimeout(function() { window.graphResize(); }, 150);
     }
@@ -1940,14 +1941,16 @@ function startApp() {
             handleMode3DToggle();
             return;
         }
-        // Controls collapse toggle
-        if (target.id === 'controls-toggle' || target.closest('#controls-toggle')) {
+        // Controls collapse toggle (works for both controls-toggle and controls-toggle-bar)
+        if (target.id === 'controls-toggle' || target.closest('#controls-toggle') ||
+            target.id === 'controls-toggle-bar' || target.closest('#controls-toggle-bar')) {
             e.stopImmediatePropagation();
             handleControlsToggle();
             return;
         }
-        // Graph/3D view toggle
-        if (target.id === 'graph-toggle' || target.closest('#graph-toggle')) {
+        // Graph/3D view toggle (works for both graph-toggle and graph-toggle-bar)
+        if (target.id === 'graph-toggle' || target.closest('#graph-toggle') ||
+            target.id === 'graph-toggle-bar' || target.closest('#graph-toggle-bar')) {
             e.stopImmediatePropagation();
             handleGraphToggle();
             return;
