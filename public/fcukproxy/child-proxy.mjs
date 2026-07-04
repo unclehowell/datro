@@ -346,11 +346,57 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
+// ── Poll for delegated agent tasks (for NAT'd devices) ───────────────────
+async function pollForTasks() {
+  try {
+    const resp = await fetch(`${PARENT_URL}/api/proxy/poll?machine_id=${CHILD_ID}`, {
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!resp.ok) return;
+    const data = await resp.json();
+    if (!data.pending) return;
+
+    console.log(`[child-proxy] Received delegated task: ${data.work_id}`);
+    activeJobs++;
+
+    try {
+      const { execSync } = await import('child_process');
+      const taskJson = JSON.stringify(data.payload);
+      const result = execSync(`bash "${AGENT_EXEC}"`, {
+        input: taskJson,
+        timeout: 300000,
+        encoding: 'utf-8',
+        env: { ...process.env, MACHINE_ID: CHILD_ID, MACHINE_NAME, AGENT_ROLE, PARENT_URL },
+        maxBuffer: 10 * 1024 * 1024
+      });
+
+      await fetch(`${PARENT_URL}/api/proxy/result`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ machine_id: CHILD_ID, work_id: data.work_id, result: JSON.parse(result) }),
+      });
+      console.log(`[child-proxy] Task ${data.work_id} completed`);
+    } catch (e) {
+      console.error(`[child-proxy] Task ${data.work_id} failed: ${e.message}`);
+      await fetch(`${PARENT_URL}/api/proxy/result`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ machine_id: CHILD_ID, work_id: data.work_id, result: { error: e.message } }),
+      });
+    } finally {
+      activeJobs--;
+    }
+  } catch (e) {
+    // Polling errors are silent — not all nodes support polling
+  }
+}
+
 server.listen(PORT, () => {
   console.log(`[child-proxy] Listening on port ${PORT} (machine: ${CHILD_ID}, role: ${AGENT_ROLE}, v${VERSION})`);
   register();
   setInterval(sendHeartbeat, 60000);
   setInterval(register, 120000);
+  setInterval(pollForTasks, 5000);
 });
 
 function getLocalIP() {

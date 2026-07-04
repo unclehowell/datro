@@ -118,32 +118,51 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
 
       const nodeUrl = targetNode.url || `http://${targetNode.ip_address}:${targetNode.proxy_port || 4001}`;
 
+      // Try direct connection first
       try {
         const resp = await fetch(`${nodeUrl}/v1/agent/delegate`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify({ task, context: taskContext, timeout_sec }),
-          signal: AbortSignal.timeout((timeout_sec + 30) * 1000),
+          signal: AbortSignal.timeout(10000),
         });
 
-        const result = await resp.json();
+        if (resp.ok) {
+          const result = await resp.json();
+          await env.DB.prepare(
+            `INSERT INTO proxy_logs (origin_machine_id, endpoint, model, response_status, routing_decision, created_at)
+             VALUES (?, ?, ?, ?, ?, datetime('now'))`
+          ).bind(request.headers.get('X-Machine-ID') || 'unknown', 'agent/delegate', 'agent', 200, `delegate_direct_${targetNode.machine_id}`).run();
 
-        await env.DB.prepare(
-          `INSERT INTO proxy_logs (origin_machine_id, endpoint, model, response_status, routing_decision, created_at)
-           VALUES (?, ?, ?, ?, ?, datetime('now'))`
-        ).bind(request.headers.get('X-Machine-ID') || 'unknown', 'agent/delegate', 'agent', resp.status, `delegate_to_${targetNode.machine_id}`).run();
+          return new Response(JSON.stringify({
+            delegated_to: targetNode.machine_id,
+            device_name: targetNode.machine_name,
+            method: 'direct',
+            ...result
+          }), { status: 200, headers });
+        }
+      } catch {}
 
-        return new Response(JSON.stringify({
-          delegated_to: targetNode.machine_id,
-          device_name: targetNode.machine_name,
-          ...result
-        }), { status: resp.status, headers });
-      } catch (e) {
-        return new Response(JSON.stringify({
-          error: `Delegation failed: ${e instanceof Error ? e.message : 'unknown'}`,
-          target_device: targetNode.machine_id
-        }), { status: 502, headers });
-      }
+      // Direct connection failed (NAT'd device) — queue for polling
+      const workId = `agent_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+      await env.DB.prepare(
+        `INSERT INTO proxy_pending (work_id, machine_id, payload, status, created_at)
+         VALUES (?, ?, ?, 'pending', datetime('now'))`
+      ).bind(workId, targetNode.machine_id, JSON.stringify({ task, context: taskContext, timeout_sec })).run();
+
+      await env.DB.prepare(
+        `INSERT INTO proxy_logs (origin_machine_id, endpoint, model, response_status, routing_decision, created_at)
+         VALUES (?, ?, ?, ?, ?, datetime('now'))`
+      ).bind(request.headers.get('X-Machine-ID') || 'unknown', 'agent/delegate', 'agent', 202, `delegate_queued_${targetNode.machine_id}`).run();
+
+      return new Response(JSON.stringify({
+        status: 'queued',
+        work_id: workId,
+        delegated_to: targetNode.machine_id,
+        device_name: targetNode.machine_name,
+        method: 'polling',
+        message: 'Task queued — device will pick up on next poll cycle (~5s)'
+      }), { status: 202, headers });
     }
 
     return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
