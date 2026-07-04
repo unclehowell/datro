@@ -65,7 +65,7 @@ async function cleanupDeadNodes(env: Env): Promise<void> {
   ).run();
 }
 
-const FCUK_PROXY_VERSION = '0.5.0';
+const FCUK_PROXY_VERSION = '0.6.0';
 
 // ── Boolean Logic for query routing ──────────────────────────────────────
 // Let:  C = X-Chat-Only header is "true"
@@ -95,7 +95,7 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
   const headers: Record<string, string> = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, X-Machine-ID, X-Chat-Only, X-Forwarded, X-Agentic',
+    'Access-Control-Allow-Headers': 'Content-Type, X-Machine-ID, X-Chat-Only, X-Forwarded, X-Agentic, X-Delegate-To',
     'Content-Type': 'application/json',
   };
 
@@ -143,6 +143,15 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === '/api/proxy/v1/chat/completions' && method === 'POST') {
       return await handleChat(request, env, headers);
     }
+
+    // ── Agent Delegation Endpoints ──────────────────────────────────────
+    if (path === '/api/agent/delegate' && method === 'POST') {
+      return await handleAgentDelegate(request, env, headers);
+    }
+    if (path === '/api/agent/status' && method === 'GET') {
+      return await handleAgentStatus(env, headers);
+    }
+
     return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
   } catch (e: unknown) {
     const msg = e instanceof Error ? e.message : 'Internal error';
@@ -763,4 +772,87 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
 
   const respHeaders = { ...headers, 'X-Chat-Only': 'true' };
   return new Response(JSON.stringify(responseBody), { status: responseStatus, headers: respHeaders });
+}
+
+// ── Agent Delegation: route a task to a specific child proxy ─────────────
+async function handleAgentDelegate(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const body = await request.json() as any;
+  const { task, target_device, timeout_sec = 300, context = {} } = body;
+
+  if (!task) {
+    return new Response(JSON.stringify({ error: 'task is required' }), { status: 400, headers });
+  }
+
+  // Find target node
+  let targetNode: any = null;
+  if (target_device) {
+    targetNode = await env.DB.prepare(
+      `SELECT * FROM proxy_nodes WHERE machine_id = ? AND last_seen > datetime('now', '-1 hour')`
+    ).bind(target_device).first();
+  } else {
+    // Auto-select: find least loaded node that isn't the caller
+    const callerId = request.headers.get('X-Machine-ID') || '';
+    targetNode = await env.DB.prepare(
+      `SELECT * FROM proxy_nodes WHERE machine_id != ? AND last_seen > datetime('now', '-1 hour')
+       ORDER BY avg_response_ms ASC, last_seen DESC LIMIT 1`
+    ).bind(callerId).first();
+  }
+
+  if (!targetNode) {
+    return new Response(JSON.stringify({ error: 'No suitable agent node available', available_nodes: [] }), { status: 503, headers });
+  }
+
+  const nodeUrl = targetNode.url || `http://${targetNode.ip_address}:${targetNode.proxy_port || 4001}`;
+  
+  try {
+    const resp = await fetch(`${nodeUrl}/v1/agent/delegate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ task, context, timeout_sec }),
+      signal: AbortSignal.timeout((timeout_sec + 30) * 1000),
+    });
+
+    const result = await resp.json();
+    
+    // Log the delegation
+    await env.DB.prepare(
+      `INSERT INTO proxy_logs (origin_machine_id, endpoint, model, response_status, routing_decision, created_at)
+       VALUES (?, ?, ?, ?, ?, datetime('now'))`
+    ).bind(request.headers.get('X-Machine-ID') || 'unknown', 'agent/delegate', 'agent', resp.status, `delegate_to_${targetNode.machine_id}`).run();
+
+    return new Response(JSON.stringify({
+      delegated_to: targetNode.machine_id,
+      device_name: targetNode.machine_name,
+      ...result
+    }), { status: resp.status, headers });
+  } catch (e) {
+    return new Response(JSON.stringify({
+      error: `Delegation failed: ${e instanceof Error ? e.message : 'unknown'}`,
+      target_device: targetNode.machine_id
+    }), { status: 502, headers });
+  }
+}
+
+// ── Agent Status: list available agents and capabilities ─────────────────
+async function handleAgentStatus(env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const { results: nodes } = await env.DB.prepare(
+    `SELECT machine_id, machine_name, version, last_seen, url, ip_address, proxy_port
+     FROM proxy_nodes WHERE last_seen > datetime('now', '-1 hour')
+     ORDER BY last_seen DESC`
+  ).all();
+
+  const agents = await Promise.all(nodes.map(async (n: any) => {
+    const nodeUrl = n.url || `http://${n.ip_address}:${n.proxy_port || 4001}`;
+    try {
+      const resp = await fetch(`${nodeUrl}/v1/agent/status`, {
+        signal: AbortSignal.timeout(5000),
+      });
+      if (resp.ok) return await resp.json();
+    } catch {}
+    return { machine_id: n.machine_id, role: 'unknown', capabilities: {}, version: n.version };
+  }));
+
+  return new Response(JSON.stringify({ agents, total: agents.length }), { status: 200, headers });
 }

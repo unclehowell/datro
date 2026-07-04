@@ -4,6 +4,7 @@
  *
  * Listens on PORT (default 4001) for OpenAI-compatible chat requests.
  * Implements strict routing policy with loop prevention.
+ * Supports agent delegation: run local tasks via /v1/agent/delegate
  *
  * Routing Policy (Boolean Logic):
  *   C = Chat-only query  F = X-Forwarded header  A = X-Agentic header
@@ -18,10 +19,11 @@
  *   Child Proxy Behavior:
  *     - Received with F header: use local LLM ONLY (loop prevention)
  *     - Received without F: forward to parent proxy
+ *     - Received agent delegation: run locally via agent-exec.sh
  *     - NEVER queries parent proxy API endpoint for responses
  *     - Fallback to local LLM only after timeout/retry exhaustion
  *
- * Version: 0.5.0
+ * Version: 0.6.0
  */
 
 import http from 'http';
@@ -33,7 +35,8 @@ const CHILD_ID = process.env.CHILD_ID || process.env.MACHINE_ID || `child-${os.h
 const PORT = Number(process.env.PORT) || 4001;
 const MACHINE_NAME = process.env.MACHINE_NAME || os.hostname();
 const AGENT_ROLE = process.env.AGENT_ROLE || 'chat';
-const VERSION = '0.5.0';
+const VERSION = '0.6.0';
+const AGENT_EXEC = process.env.AGENT_EXEC || `${process.env.HOME || '/data/data/com.termux/files/home'}/.fcukproxy/agent-exec.sh`;
 
 let activeJobs = 0;
 let retryCount = 0;
@@ -159,7 +162,7 @@ const server = http.createServer(async (req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Chat-Only, X-Forwarded, X-Machine-ID, X-Agentic');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Chat-Only, X-Forwarded, X-Machine-ID, X-Agentic, X-Delegate-To');
 
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
@@ -173,6 +176,80 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  // ── Agent Delegation Endpoint ──────────────────────────────────────────
+  if (req.method === 'POST' && path === '/v1/agent/delegate') {
+    let bodyStr = '';
+    for await (const chunk of req) bodyStr += chunk;
+    let body;
+    try { body = JSON.parse(bodyStr); } catch {
+      res.writeHead(400);
+      res.end(JSON.stringify({ error: 'Invalid JSON' }));
+      return;
+    }
+
+    const task = body.task || body.prompt || '';
+    const context = body.context || {};
+    const timeoutSec = body.timeout_sec || 300;
+
+    if (!task) {
+      res.writeHead(400);
+      res.end(JSON.stringify({ error: 'Missing task/prompt field' }));
+      return;
+    }
+
+    console.log(`[child-proxy] AGENT DELEGATION received: "${task.substring(0, 80)}..."`);
+    activeJobs++;
+
+    try {
+      const { execSync } = await import('child_process');
+      const taskJson = JSON.stringify({ task, context, machine_id: CHILD_ID, timeout_sec: timeoutSec });
+      
+      const result = execSync(`bash "${AGENT_EXEC}"`, {
+        input: taskJson,
+        timeout: timeoutSec * 1000,
+        encoding: 'utf-8',
+        env: { ...process.env, MACHINE_ID: CHILD_ID, MACHINE_NAME, AGENT_ROLE, PARENT_URL },
+        maxBuffer: 10 * 1024 * 1024
+      });
+
+      console.log(`[child-proxy] Agent delegation completed`);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({
+        status: 'completed',
+        device: CHILD_ID,
+        agent: AGENT_ROLE,
+        result: JSON.parse(result)
+      }));
+    } catch (e) {
+      console.error(`[child-proxy] Agent delegation failed: ${e.message}`);
+      res.writeHead(500);
+      res.end(JSON.stringify({
+        status: 'failed',
+        device: CHILD_ID,
+        error: e.message
+      }));
+    } finally {
+      activeJobs--;
+    }
+    return;
+  }
+
+  // ── Agent Status (list capabilities) ───────────────────────────────────
+  if (req.method === 'GET' && path === '/v1/agent/status') {
+    const fs = await import('fs');
+    const hasExec = fs.existsSync(AGENT_EXEC);
+    const hasGit = (() => { try { execSync('which git'); return true; } catch { return false; } })();
+    const hasNode = true; // we're running in node
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({
+      machine_id: CHILD_ID,
+      role: AGENT_ROLE,
+      capabilities: { agent_exec: hasExec, git: hasGit, node: hasNode },
+      version: VERSION
+    }));
+    return;
+  }
+
   if (req.method !== 'POST') {
     res.writeHead(405);
     res.end(JSON.stringify({ error: 'Method not allowed' }));
@@ -181,7 +258,7 @@ const server = http.createServer(async (req, res) => {
 
   if (path !== '/v1/chat/completions' && path !== '/chat') {
     res.writeHead(404);
-    res.end(JSON.stringify({ error: 'Not found. Use POST /v1/chat/completions' }));
+    res.end(JSON.stringify({ error: 'Not found. Use POST /v1/chat/completions or /v1/agent/delegate' }));
     return;
   }
 
