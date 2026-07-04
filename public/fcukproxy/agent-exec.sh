@@ -45,14 +45,14 @@ log "Repo: $REPO_DIR | Branch: $BRANCH | Timeout: ${TIMEOUT}s"
 
 # ── Step 1: Ensure repo exists and is on correct branch ──────────────────
 if [[ ! -d "$REPO_DIR/.git" ]]; then
-  log "Cloning repo..."
-  git clone "https://github.com/unclehowell/datro.git" "$REPO_DIR" 2>&1 || fail '{"error":"Failed to clone repo"}'
+  log "Cloning repo (shallow)..."
+  git clone --depth 1 --single-branch --branch "$BRANCH" "https://github.com/unclehowell/datro.git" "$REPO_DIR" 2>&1 || fail '{"error":"Failed to clone repo"}'
 fi
 
 cd "$REPO_DIR"
-git fetch origin 2>&1 || log "Warning: git fetch failed"
+git fetch --depth 1 origin "$BRANCH" 2>&1 || log "Warning: git fetch failed"
 git checkout "$BRANCH" 2>&1 || git checkout -b "$BRANCH" "origin/$BRANCH" 2>&1
-git pull origin "$BRANCH" 2>&1 || log "Warning: git pull failed"
+git pull --depth 1 origin "$BRANCH" 2>&1 || log "Warning: git pull failed"
 
 # ── Step 2: Determine task type and execute ──────────────────────────────
 TASK_LOWER=$(echo "$TASK" | tr '[:upper:]' '[:lower:]')
