@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>FCUK Proxy Documentation | FinanceCheque UK</title>
+<style>
+:root {
+  --bg: #0a0a1a;
+  --text: #e8b84e;
+  --accent: #0088cc;
+  --dim: #666;
+  --mono: #d0c8b8;
+  --border: #333;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'SF Mono', 'Monaco', monospace;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 2rem;
+}
+h1 { color: var(--accent); margin-bottom: 1rem; }
+h2 { color: var(--text); margin: 1.5rem 0 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
+h3 { color: var(--accent); margin: 1rem 0 0.5rem; }
+code, pre {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 0.2em 0.4em;
+  color: var(--mono);
+}
+pre { padding: 1rem; overflow-x: auto; margin: 1rem 0; }
+a { color: var(--accent); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.card {
+  background: #111;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin: 1rem 0;
+}
+.grid {
+  display: grid;
+  gap: 1rem;
+}
+@media (min-width: 768px) {
+  .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
+}
+.note { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1rem 0; color: var(--dim); }
+.version { color: var(--dim); font-size: 0.9em; }
+</style>
+</head>
+<body>
+<h1>FCUK Proxy Documentation</h1>
+<p class="version">Version: 0.5.0</p>
+
+<h2>Quick Start</h2>
+<div class="card">
+<p>Install a child proxy on any device (laptop, phone, server):</p>
+<pre>curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash</pre>
+<p>This makes your device a <strong>child proxy</strong> on the FinanceCheque network.</p>
+</div>
+
+<h2>Architecture Overview</h2>
+<div class="grid">
+  <div class="card">
+    <h3>Parent Proxy</h3>
+    <p>Hosted on <code>financecheque.uk</code></p>
+    <ul>
+      <li>Routes queries to child proxies</li>
+      <li>LLM API responses via environment keys</li>
+      <li>Never routes back to source machine</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Child Proxy</h3>
+    <p>Runs on your devices (port 4001)</p>
+    <ul>
+      <li>Listens for OpenAI-compatible requests</li>
+      <li>Forwards to parent proxy by default</li>
+      <li>Loop prevention via X-Forwarded header</li>
+    </ul>
+  </div>
+</div>
+
+<h2>Routing Policy</h2>
+<div class="card">
+<h3>Boolean Logic</h3>
+<p><code>C = Chat-only</code> | <code>F = X-Forwarded</code> | <code>A = Agentic prompt</code></p>
+
+<h3>Parent Proxy Decision Tree</h3>
+<pre>
+IF X-Forwarded == true:
+  → Use LOCAL LLM ONLY (loop prevention)
+  → NEVER route to child proxies
+ELSE IF X-Agentic == true:
+  → Route to designated agentic child (e.g., phone)
+ELSE IF X-Chat-Only == true:
+  → Respond via LLM APIs (env keys on Cloudflare)
+ELSE:
+  → Route to available child proxy
+  → NEVER route back to requesting child
+</pre>
+
+<h3>Child Proxy Decision Tree</h3>
+<pre>
+IF X-Forwarded == true:
+  → Use LOCAL LLM ONLY
+  → This request came FROM parent (loop prevention)
+ELSE:
+  → Forward to parent proxy
+  → On timeout/retry exhaustion: local LLM fallback
+  → NEVER query parent API for responses
+</pre>
+</div>
+
+<h2>Endpoints</h2>
+<div class="card">
+<table>
+  <tr><th>Endpoint</th><th>Description</th><th>Method</th></tr>
+  <tr><td><code>/api/proxy?action=register</code></td><td>Register child node</td><td>POST</td></tr>
+  <tr><td><code>/api/proxy?action=heartbeat</code></td><td>Report alive status</td><td>POST</td></tr>
+  <tr><td><code>/api/proxy?action=health</code></td><td>List active children</td><td>GET</td></tr>
+  <tr><td><code>/api/proxy?action=poll</code></td><td>Poll work queue (closed ports)</td><td>GET</td></tr>
+  <tr><td><code>/api/proxy/v1/chat/completions</code></td><td>Chat completions endpoint</td><td>POST</td></tr>
+  <tr><td><code>/__status</code></td><td>Worker status</td><td>GET</td></tr>
+  <tr><td><code>/__health</code></td><td>Health check</td><td>GET</td></tr>
+</table>
+</div>
+
+<h2>Headers</h2>
+<div class="card">
+<table>
+  <tr><th>Header</th><th>Meaning</th><th>Usage</th></tr>
+  <tr><td><code>X-Chat-Only: true</code></td><td>Chat query (no agentic)</td><td>Child → Parent</td></tr>
+  <tr><td><code>X-Forwarded: true</code></td><td>Prevent loop (came from parent)</td><td>Parent → Child</td></tr>
+  <tr><td><code>X-Agentic: true</code></td><td>Agentic prompt (needs agent)</td><td>Child → Parent</td></tr>
+  <tr><td><code>X-Source-Machine</code></td><td>Tell parent who sent request</td><td>Child → Parent</td></tr>
+</table>
+</div>
+
+<h2>Hermes Agent Integration</h2>
+<div class="card">
+<p>When using Hermes agent on a child proxy device:</p>
+<ul>
+  <li>Chat queries route through parent proxy → LLM APIs</li>
+  <li>Agentic prompts route to designated agentic child (e.g., phone)</li>
+  <li>Fallback to localhost only after retry exhaustion</li>
+  <li>Telegram pairing uses same routing logic</li>
+</ul>
+<p>Set role via environment: <code>AGENT_ROLE=agent curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash</code></p>
+</div>
+
+<h2>Environment Variables</h2>
+<pre># Parent Proxy (Cloudflare Worker secrets)
+OPENAI_API_KEY=sk-...
+ANTHROPIC_API_KEY=sk-ant-...
+GEMINI_API_KEY=...
+
+# Child Proxy (local .fcukproxy/machine.json)
+PARENT_URL=https://www.financecheque.uk
+CHILD_ID=auto-generated
+PORT=4001
+AGENT_ROLE=chat|agent</pre>
+</body>
+</html>
