@@ -2,7 +2,7 @@ name: Deploy to Cloudflare Pages
 
 on:
   push:
-    branches: [financecheque]
+    branches: [financecheque, command]
 
 jobs:
   deploy:
@@ -20,6 +20,7 @@ jobs:
       - run: npm run build
 
       - name: Migrate D1 database
+        if: github.ref == 'refs/heads/financecheque'
         continue-on-error: true
         uses: cloudflare/wrangler-action@v3
         with:
@@ -32,4 +33,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name financecheque --branch financecheque
+          command: pages deploy dist --project-name ${{ github.ref == 'refs/heads/command' && 'command' || 'financecheque' }} --branch ${{ github.ref_name }}
