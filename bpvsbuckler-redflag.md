@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.0.19`
-- **Tag**: `bpvsbuckler-redflag-v0.0.0.19`
-- **Deployed**: 2026-07-03T06:00:32.222Z
+- **Version**: `0.0.0.20`
+- **Tag**: `bpvsbuckler-redflag-v0.0.0.20`
+- **Deployed**: 2026-07-05T17:00:19.598Z
 - **URL**: [https://bpvsbuckler-redflag.datro.directory](https://bpvsbuckler-redflag.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-07-03T06:00:32.222Z*
+*Auto-updated by datro-flywheel at 2026-07-05T17:00:19.598Z*
