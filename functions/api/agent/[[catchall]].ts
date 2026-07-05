@@ -71,21 +71,25 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
 
     // GET /api/agent/status — list available agents
     if (path === '/api/agent/status' && method === 'GET') {
+      const now = new Date();
       const { results: nodes } = await env.DB.prepare(
-        `SELECT machine_id, machine_name, proxy_port, version, last_seen, url
+        `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen
          FROM proxy_nodes
          WHERE datetime(last_seen) > datetime('now', '-5 minutes')`
-      ).run();
+      ).all() as { results: any[] };
+
+      const agents = nodes.map(node => ({
+        machine_id: node.machine_id,
+        role: 'agent',
+        capabilities: {},
+        version: node.version || 'unknown',
+        port: node.proxy_port || 4001,
+        status: 'online'
+      }));
 
       return new Response(JSON.stringify({
-        agents: nodes.map(node => ({
-          machine_id: node.machine_id,
-          role: 'agent',
-          capabilities: {},
-          version: node.version || 'unknown',
-          port: node.proxy_port || 4001
-        })),
-        total: nodes.length
+        agents,
+        total: agents.length
       }), { status: 200, headers });
     }
 
