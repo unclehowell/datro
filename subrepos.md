@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.0.40`
-- **Tag**: `subrepos-v0.0.0.40`
-- **Deployed**: 2026-07-02T15:00:33.221Z
+- **Version**: `0.0.0.41`
+- **Tag**: `subrepos-v0.0.0.41`
+- **Deployed**: 2026-07-05T03:00:21.832Z
 - **URL**: [https://subrepos.datro.directory](https://subrepos.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-07-02T15:00:33.221Z*
+*Auto-updated by datro-flywheel at 2026-07-05T03:00:21.832Z*
