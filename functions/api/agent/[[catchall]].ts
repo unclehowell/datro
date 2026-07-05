@@ -159,7 +159,7 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
 
       return new Response(JSON.stringify({
         status: 'queued',
-        work_id,
+        work_id: workId,
         delegated_to: targetNode.machine_id,
         device_name: targetNode.machine_name,
         method: 'polling',
