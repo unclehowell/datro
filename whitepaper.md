@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.0.05`
-- **Tag**: `whitepaper-v0.0.0.05`
-- **Deployed**: 2026-07-03T00:00:36.045Z
+- **Version**: `0.0.0.06`
+- **Tag**: `whitepaper-v0.0.0.06`
+- **Deployed**: 2026-07-05T11:00:19.601Z
 - **URL**: [https://whitepaper.datro.directory](https://whitepaper.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-07-03T00:00:36.045Z*
+*Auto-updated by datro-flywheel at 2026-07-05T11:00:19.601Z*
