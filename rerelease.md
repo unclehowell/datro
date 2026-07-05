@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.0.05`
-- **Tag**: `rerelease-v0.0.0.05`
-- **Deployed**: 2026-07-02T13:00:35.865Z
+- **Version**: `0.0.0.06`
+- **Tag**: `rerelease-v0.0.0.06`
+- **Deployed**: 2026-07-05T01:00:22.308Z
 - **URL**: [https://rerelease.datro.directory](https://rerelease.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-07-02T13:00:35.865Z*
+*Auto-updated by datro-flywheel at 2026-07-05T01:00:22.308Z*
