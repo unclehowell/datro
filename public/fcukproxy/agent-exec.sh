@@ -43,27 +43,31 @@ fail() {
 log "Starting agent execution: '$TASK'"
 log "Repo: $REPO_DIR | Branch: $BRANCH | Timeout: ${TIMEOUT}s"
 
-# ── Step 1: Ensure repo exists and is on correct branch ──────────────────
-if [[ ! -d "$REPO_DIR/.git" ]]; then
-  log "Cloning repo (sparse checkout)..."
-  git clone --depth 1 --filter=blob:none --sparse --branch "$BRANCH" "https://github.com/unclehowell/datro.git" "$REPO_DIR" 2>&1 || fail '{"error":"Failed to clone repo"}'
-  cd "$REPO_DIR"
-  git sparse-checkout init --cone 2>&1
-  git sparse-checkout set src public/fcukproxy 2>&1
-  log "Sparse checkout initialized"
+# Use a temp directory for each task to avoid conflicts with local working tree
+TMP_DIR=$(mktemp -d /tmp/agent-exec.XXXXXX)
+trap 'rm -rf "$TMP_DIR"' EXIT
+
+# Clone or copy the repo
+if [[ -d "$REPO_DIR/.git" ]]; then
+  log "Copying repo to temp directory..."
+  git clone --no-hardlinks "$REPO_DIR" "$TMP_DIR/repo" 2>&1 || fail '{"error":"Failed to clone repo"}'
+else
+  log "Cloning repo from GitHub..."
+  git clone "https://github.com/unclehowell/datro.git" "$TMP_DIR/repo" 2>&1 || fail '{"error":"Failed to clone repo"}'
 fi
 
-cd "$REPO_DIR"
-git fetch --depth 1 origin "$BRANCH" 2>&1 || log "Warning: git fetch failed"
-git checkout "$BRANCH" 2>&1 || git checkout -b "$BRANCH" "origin/$BRANCH" 2>&1
-git pull --depth 1 origin "$BRANCH" 2>&1 || log "Warning: git pull failed"
+cd "$TMP_DIR/repo"
+git fetch origin 2>&1 || log "Warning: git fetch failed"
 
-# Expand sparse-checkout if task needs other directories
-TASK_DIRS=$(echo "$TASK_JSON" | python3 -c "import sys,json; ctx=json.load(sys.stdin).get('context',{}); print(' '.join(ctx.get('dirs',[])))" 2>/dev/null || echo "")
-if [[ -n "$TASK_DIRS" ]]; then
-  log "Expanding sparse-checkout for: $TASK_DIRS"
-  git sparse-checkout add $TASK_DIRS 2>&1 || log "Warning: sparse-checkout expand failed"
+# Checkout the branch - try direct checkout first, then create from origin if needed
+if git checkout "$BRANCH" 2>&1; then
+  log "Checked out branch: $BRANCH"
+else
+  log "Branch '$BRANCH' not found locally, trying origin/$BRANCH"
+  git checkout -b "$BRANCH" "origin/$BRANCH" 2>&1 || fail "{\"error\":\"Failed to checkout branch '$BRANCH'\"}"
 fi
+
+git pull origin "$BRANCH" 2>&1 || log "Warning: git pull failed"
 
 # ── Step 2: Determine task type and execute ──────────────────────────────
 TASK_LOWER=$(echo "$TASK" | tr '[:upper:]' '[:lower:]')
