@@ -4,7 +4,6 @@
  *
  * Listens on PORT (default 4001) for OpenAI-compatible chat requests.
  * Implements strict routing policy with loop prevention.
- * Supports agent delegation: run local tasks via /v1/agent/delegate
  *
  * Routing Policy (Boolean Logic):
  *   C = Chat-only query  F = X-Forwarded header  A = X-Agentic header
@@ -19,11 +18,10 @@
  *   Child Proxy Behavior:
  *     - Received with F header: use local LLM ONLY (loop prevention)
  *     - Received without F: forward to parent proxy
- *     - Received agent delegation: run locally via agent-exec.sh
  *     - NEVER queries parent proxy API endpoint for responses
  *     - Fallback to local LLM only after timeout/retry exhaustion
  *
- * Version: 0.6.0
+ * Version: 0.7.0
  */
 
 import http from 'http';
@@ -35,13 +33,15 @@ const CHILD_ID = process.env.CHILD_ID || process.env.MACHINE_ID || `child-${os.h
 const PORT = Number(process.env.PORT) || 4001;
 const MACHINE_NAME = process.env.MACHINE_NAME || os.hostname();
 const AGENT_ROLE = process.env.AGENT_ROLE || 'chat';
-const VERSION = '0.6.0';
-const AGENT_EXEC = process.env.AGENT_EXEC || `${process.env.HOME || '/data/data/com.termux/files/home'}/.fcukproxy/agent-exec.sh`;
+const VERSION = '0.7.0';
 
 let activeJobs = 0;
 let retryCount = 0;
 let backoffMs = 1000;
 const MAX_BACKOFF_MS = 30000;
+
+// Agent task polling
+let pollingInterval = null;
 
 function nextBackoff() {
   const jitter = Math.random() * 0.3 + 0.85;
@@ -51,6 +51,58 @@ function nextBackoff() {
 
 function resetBackoff() {
   backoffMs = 1000;
+}
+
+// ── Poll for delegated agent tasks (for NAT'd devices) ───────────────────
+async function pollForAgentTasks() {
+  try {
+    const resp = await fetch(`${PARENT_URL}/api/proxy/poll?machine_id=${CHILD_ID}`, {
+      signal: AbortSignal.timeout(5000),
+    });
+    if (!resp.ok) return;
+    const data = await resp.json();
+    if (!data.pending) return;
+
+    console.log(`[child-proxy] Received delegated task: ${data.work_id}`);
+    activeJobs++;
+
+    try {
+      const { execSync } = await import('child_process');
+      const taskJson = JSON.stringify(data.payload);
+      const result = execSync(`bash \"${process.env.HOME}/.fcukproxy/agent-exec.sh\"`, {
+        input: taskJson,
+        timeout: 300000,
+        encoding: 'utf-8',
+        env: { 
+          ...process.env, 
+          MACHINE_ID: CHILD_ID, 
+          MACHINE_NAME, 
+          AGENT_ROLE, 
+          PARENT_URL,
+          HOME: process.env.HOME
+        },
+        maxBuffer: 10 * 1024 * 1024
+      });
+
+      await fetch(`${PARENT_URL}/api/proxy/result`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ machine_id: CHILD_ID, work_id: data.work_id, result: JSON.parse(result) }),
+      });
+      console.log(`[child-proxy] Task ${data.work_id} completed`);
+    } catch (e) {
+      console.error(`[child-proxy] Task ${data.work_id} failed: ${e.message}`);
+      await fetch(`${PARENT_URL}/api/proxy/result`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ machine_id: CHILD_ID, work_id: data.work_id, result: { error: e.message } }),
+      });
+    } finally {
+      activeJobs--;
+    }
+  } catch (e) {
+    // Polling errors are silent — not all nodes support polling
+  }
 }
 
 function register() {
@@ -106,7 +158,7 @@ async function routeToParent(messages, model, isAgentic = false) {
     'X-Role': AGENT_ROLE
   };
   if (isAgentic) headers['X-Agentic'] = 'true';
-  
+   
   try {
     const resp = await fetch(`${PARENT_URL}/api/proxy/v1/chat/completions`, {
       method: 'POST',
@@ -128,9 +180,9 @@ async function queryLocalLLM(messages, model) {
     { url: 'http://localhost:6000/v1/chat/completions', format: 'openai' },
     { url: 'http://localhost:11434/api/chat', format: 'ollama' },
     { url: 'http://localhost:5000/v1/chat/completions', format: 'openai' },
-    { url: 'http://localhost:8080/v1/chat/completions', format: 'openai' }
+    { url: 'http://localhost:8080/v1/chat/completions', format: 'openi' }
   ];
-  
+   
   for (const ep of endpoints) {
     try {
       let body;
@@ -162,7 +214,7 @@ const server = http.createServer(async (req, res) => {
 
   res.setHeader('Access-Control-Allow-Origin', '*');
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Chat-Only, X-Forwarded, X-Machine-ID, X-Agentic, X-Delegate-To');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, X-Chat-Only, X-Forwarded, X-Machine-ID, X-Agentic');
 
   if (req.method === 'OPTIONS') {
     res.writeHead(204);
@@ -170,74 +222,10 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
-  if (req.method === 'GET' && path === '/health') {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ ok: true, machine_id: CHILD_ID, version: VERSION, role: AGENT_ROLE }));
-    return;
-  }
-
-  // ── Agent Delegation Endpoint ──────────────────────────────────────────
-  if (req.method === 'POST' && path === '/v1/agent/delegate') {
-    let bodyStr = '';
-    for await (const chunk of req) bodyStr += chunk;
-    let body;
-    try { body = JSON.parse(bodyStr); } catch {
-      res.writeHead(400);
-      res.end(JSON.stringify({ error: 'Invalid JSON' }));
-      return;
-    }
-
-    const task = body.task || body.prompt || '';
-    const context = body.context || {};
-    const timeoutSec = body.timeout_sec || 300;
-
-    if (!task) {
-      res.writeHead(400);
-      res.end(JSON.stringify({ error: 'Missing task/prompt field' }));
-      return;
-    }
-
-    console.log(`[child-proxy] AGENT DELEGATION received: "${task.substring(0, 80)}..."`);
-    activeJobs++;
-
-    try {
-      const { execSync } = await import('child_process');
-      const taskJson = JSON.stringify({ task, context, machine_id: CHILD_ID, timeout_sec: timeoutSec });
-      
-      const result = execSync(`bash "${AGENT_EXEC}"`, {
-        input: taskJson,
-        timeout: timeoutSec * 1000,
-        encoding: 'utf-8',
-        env: { ...process.env, MACHINE_ID: CHILD_ID, MACHINE_NAME, AGENT_ROLE, PARENT_URL },
-        maxBuffer: 10 * 1024 * 1024
-      });
-
-      console.log(`[child-proxy] Agent delegation completed`);
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({
-        status: 'completed',
-        device: CHILD_ID,
-        agent: AGENT_ROLE,
-        result: JSON.parse(result)
-      }));
-    } catch (e) {
-      console.error(`[child-proxy] Agent delegation failed: ${e.message}`);
-      res.writeHead(500);
-      res.end(JSON.stringify({
-        status: 'failed',
-        device: CHILD_ID,
-        error: e.message
-      }));
-    } finally {
-      activeJobs--;
-    }
-    return;
-  }
-
-  // ── Agent Status (list capabilities) ───────────────────────────────────
+  // Handle GET requests for agent status
   if (req.method === 'GET' && path === '/v1/agent/status') {
     const { default: fs } = await import('fs');
-    const hasExec = fs.existsSync(AGENT_EXEC);
+    const hasExec = fs.existsSync(`${process.env.HOME}/.fcukproxy/agent-exec.sh`);
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({
       machine_id: CHILD_ID,
@@ -249,6 +237,12 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (req.method === 'GET' && path === '/health') {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ ok: true, machine_id: CHILD_ID, version: VERSION, role: AGENT_ROLE }));
+    return;
+  }
+
   if (req.method !== 'POST') {
     res.writeHead(405);
     res.end(JSON.stringify({ error: 'Method not allowed' }));
@@ -257,7 +251,7 @@ const server = http.createServer(async (req, res) => {
 
   if (path !== '/v1/chat/completions' && path !== '/chat') {
     res.writeHead(404);
-    res.end(JSON.stringify({ error: 'Not found. Use POST /v1/chat/completions or /v1/agent/delegate' }));
+    res.end(JSON.stringify({ error: 'Not found. Use POST /v1/chat/completions' }));
     return;
   }
 
@@ -346,57 +340,12 @@ const server = http.createServer(async (req, res) => {
   }
 });
 
-// ── Poll for delegated agent tasks (for NAT'd devices) ───────────────────
-async function pollForTasks() {
-  try {
-    const resp = await fetch(`${PARENT_URL}/api/proxy/poll?machine_id=${CHILD_ID}`, {
-      signal: AbortSignal.timeout(5000),
-    });
-    if (!resp.ok) return;
-    const data = await resp.json();
-    if (!data.pending) return;
-
-    console.log(`[child-proxy] Received delegated task: ${data.work_id}`);
-    activeJobs++;
-
-    try {
-      const { execSync } = await import('child_process');
-      const taskJson = JSON.stringify(data.payload);
-      const result = execSync(`bash "${AGENT_EXEC}"`, {
-        input: taskJson,
-        timeout: 300000,
-        encoding: 'utf-8',
-        env: { ...process.env, MACHINE_ID: CHILD_ID, MACHINE_NAME, AGENT_ROLE, PARENT_URL },
-        maxBuffer: 10 * 1024 * 1024
-      });
-
-      await fetch(`${PARENT_URL}/api/proxy/result`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ machine_id: CHILD_ID, work_id: data.work_id, result: JSON.parse(result) }),
-      });
-      console.log(`[child-proxy] Task ${data.work_id} completed`);
-    } catch (e) {
-      console.error(`[child-proxy] Task ${data.work_id} failed: ${e.message}`);
-      await fetch(`${PARENT_URL}/api/proxy/result`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ machine_id: CHILD_ID, work_id: data.work_id, result: { error: e.message } }),
-      });
-    } finally {
-      activeJobs--;
-    }
-  } catch (e) {
-    // Polling errors are silent — not all nodes support polling
-  }
-}
-
 server.listen(PORT, () => {
   console.log(`[child-proxy] Listening on port ${PORT} (machine: ${CHILD_ID}, role: ${AGENT_ROLE}, v${VERSION})`);
   register();
   setInterval(sendHeartbeat, 60000);
   setInterval(register, 120000);
-  setInterval(pollForTasks, 5000);
+  setInterval(pollForAgentTasks, 5000);
 });
 
 function getLocalIP() {

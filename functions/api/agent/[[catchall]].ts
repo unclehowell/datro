@@ -38,6 +38,15 @@ async function ensureTable(env: Env): Promise<void> {
       created_at TEXT DEFAULT (datetime('now'))
     )`
   ).run();
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS proxy_pending (
+      work_id TEXT PRIMARY KEY,
+      machine_id TEXT NOT NULL,
+      payload TEXT NOT NULL,
+      status TEXT DEFAULT 'pending',
+      created_at TEXT DEFAULT (datetime('now'))
+    )`
+  ).run();
 }
 
 export async function onRequest(context: { request: Request; env: Env }): Promise<Response> {
@@ -63,58 +72,47 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     // GET /api/agent/status — list available agents
     if (path === '/api/agent/status' && method === 'GET') {
       const { results: nodes } = await env.DB.prepare(
-        `SELECT machine_id, machine_name, version, last_seen, url, ip_address, proxy_port
-         FROM proxy_nodes WHERE last_seen > datetime('now', '-1 hour')
-         ORDER BY last_seen DESC`
-      ).all() as { results: ProxyNode[] };
+        `SELECT machine_id, machine_name, role, capabilities, version, port
+         FROM proxy_nodes
+         WHERE datetime(last_seen) > datetime('now', '-5 minutes')`
+      ).run();
 
-      const agents = [];
-      for (const n of nodes) {
-        const nodeUrl = n.url || `http://${n.ip_address}:${n.proxy_port || 4001}`;
-        try {
-          const resp = await fetch(`${nodeUrl}/v1/agent/status`, {
-            signal: AbortSignal.timeout(5000),
-          });
-          if (resp.ok) {
-            const data = await resp.json();
-            agents.push(data);
-          } else {
-            agents.push({ machine_id: n.machine_id, role: 'unknown', capabilities: {}, version: n.version });
-          }
-        } catch {
-          agents.push({ machine_id: n.machine_id, role: 'unknown', capabilities: {}, version: n.version });
-        }
-      }
-
-      return new Response(JSON.stringify({ agents, total: agents.length }), { status: 200, headers });
+      return new Response(JSON.stringify({
+        agents: nodes.map(node => ({
+          machine_id: node.machine_id,
+          role: node.role || 'unknown',
+          capabilities: node.capabilities ? JSON.parse(node.capabilities) : {},
+          version: node.version || 'unknown',
+          port: node.port || 4001
+        })),
+        total: nodes.length
+      }), { status: 200, headers });
     }
 
-    // POST /api/agent/delegate — route task to a child proxy
+    // POST /api/agent/delegate — delegate task to specific device
     if (path === '/api/agent/delegate' && method === 'POST') {
-      const body = await request.json() as any;
-      const { task, target_device, timeout_sec = 300, context: taskContext = {} } = body;
+      const { task, target_device, timeout_sec, context } = await request.json();
+      const requestId = request.headers.get('X-Machine-ID') || 'unknown';
+      
+      // Get target node info
+      const { results: nodes } = await env.DB.prepare(
+        `SELECT machine_id, machine_name, ip_address, proxy_port, url
+         FROM proxy_nodes
+         WHERE machine_id = ? AND datetime(last_seen) > datetime('now', '-5 minutes')`
+      ).bind(target_device).run();
 
-      if (!task) {
-        return new Response(JSON.stringify({ error: 'task is required' }), { status: 400, headers });
+      if (!nodes.length) {
+        return new Response(JSON.stringify({
+          error: `Target device not found or offline: ${target_device}`
+        }), { status: 404, headers });
       }
 
-      // Find target node
-      let targetNode: any = null;
-      if (target_device) {
-        targetNode = await env.DB.prepare(
-          `SELECT * FROM proxy_nodes WHERE machine_id = ? AND last_seen > datetime('now', '-1 hour')`
-        ).bind(target_device).first();
-      } else {
-        const callerId = request.headers.get('X-Machine-ID') || '';
-        targetNode = await env.DB.prepare(
-          `SELECT * FROM proxy_nodes WHERE machine_id != ? AND last_seen > datetime('now', '-1 hour')
-           ORDER BY avg_response_ms ASC, last_seen DESC LIMIT 1`
-        ).bind(callerId).first();
-      }
-
-      if (!targetNode) {
-        return new Response(JSON.stringify({ error: 'No suitable agent node available' }), { status: 503, headers });
-      }
+      const targetNode = nodes[0];
+      const taskContext = {
+        ...context,
+        timestamp: new Date().toISOString(),
+        delegated_by: requestId
+      };
 
       const nodeUrl = targetNode.url || `http://${targetNode.ip_address}:${targetNode.proxy_port || 4001}`;
 
@@ -132,7 +130,7 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
           await env.DB.prepare(
             `INSERT INTO proxy_logs (origin_machine_id, endpoint, model, response_status, routing_decision, created_at)
              VALUES (?, ?, ?, ?, ?, datetime('now'))`
-          ).bind(request.headers.get('X-Machine-ID') || 'unknown', 'agent/delegate', 'agent', 200, `delegate_direct_${targetNode.machine_id}`).run();
+          ).bind(requestId, 'agent/delegate', 'agent', 200, `delegate_direct_${targetNode.machine_id}`).run();
 
           return new Response(JSON.stringify({
             delegated_to: targetNode.machine_id,
@@ -153,11 +151,11 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
       await env.DB.prepare(
         `INSERT INTO proxy_logs (origin_machine_id, endpoint, model, response_status, routing_decision, created_at)
          VALUES (?, ?, ?, ?, ?, datetime('now'))`
-      ).bind(request.headers.get('X-Machine-ID') || 'unknown', 'agent/delegate', 'agent', 202, `delegate_queued_${targetNode.machine_id}`).run();
+      ).bind(requestId, 'agent/delegate', 'agent', 202, `delegate_queued_${targetNode.machine_id}`).run();
 
       return new Response(JSON.stringify({
         status: 'queued',
-        work_id: workId,
+        work_id,
         delegated_to: targetNode.machine_id,
         device_name: targetNode.machine_name,
         method: 'polling',
@@ -165,9 +163,53 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
       }), { status: 202, headers });
     }
 
-    return new Response(JSON.stringify({ error: 'Not found' }), { status: 404, headers });
-  } catch (e: unknown) {
-    const msg = e instanceof Error ? e.message : 'Internal error';
-    return new Response(JSON.stringify({ error: msg }), { status: 500, headers });
+    // GET /api/agent/delegations/:work_id — check delegation status
+    if (path.startsWith('/api/agent/delegations/') && method === 'GET') {
+      const workId = path.split('/').pop();
+      if (!workId) {
+        return new Response(JSON.stringify({ error: 'Missing work ID' }), { status: 400, headers });
+      }
+
+      const { results: [result] } = await env.DB.prepare(
+        `SELECT wp.work_id, wp.status, wp.result, wp.created_at,
+                pn.machine_name
+         FROM proxy_pending wp
+         JOIN proxy_nodes pn ON wp.machine_id = pn.machine_id
+         WHERE wp.work_id = ?`
+      ).bind(workId).run();
+
+      if (!result) {
+        return new Response(JSON.stringify({ error: 'Work ID not found' }), { status: 404, headers });
+      }
+
+      let responseBody = {
+        work_id: result.work_id,
+        status: result.status,
+        device_name: result.machine_name,
+        created_at: result.created_at
+      };
+
+      if (result.result) {
+        try {
+          responseBody.result = JSON.parse(result.result);
+        } catch {
+          responseBody.result = result.result;
+        }
+      }
+
+      return new Response(JSON.stringify(responseBody), { status: 200, headers });
+    }
+
+    // Default: return API info
+    return new Response(JSON.stringify({
+      service: 'FCUK Agent API',
+      version: '0.7.0',
+      endpoints: {
+        GET: ['/api/agent/status', '/api/agent/delegations/:work_id'],
+        POST: ['/api/agent/delegate']
+      }
+    }), { status: 200, headers });
+  } catch (e) {
+    return new Response(JSON.stringify({ error: `Internal server error: ${e.message}` }), { status: 500, headers });
   }
 }
