@@ -1,0 +1,16 @@
+[Unit]
+Description=DeepAgent Child Service
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/home/unclehowell/.fcukproxy/deepagent-venv/bin/python3 /home/unclehowell/.fcukproxy/deepagent-service.py
+Restart=always
+RestartSec=5
+Environment=DEEPAGENT_PORT=6000
+Environment=REPO_DIR=/home/unclehowell/datro
+Environment=MACHINE_ID=eb6a4569f2ecfcb95303ae6594c0ccdb
+EnvironmentFile=/home/unclehowell/.fcukproxy/.env
+
+[Install]
+WantedBy=default.target

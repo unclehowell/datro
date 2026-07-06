@@ -226,11 +226,12 @@ const server = http.createServer(async (req, res) => {
   if (req.method === 'GET' && path === '/v1/agent/status') {
     const { default: fs } = await import('fs');
     const hasExec = fs.existsSync(`${process.env.HOME}/.fcukproxy/agent-exec.sh`);
+    const hasDeepAgent = fs.existsSync(`${process.env.HOME}/.fcukproxy/deepagent-service.py`);
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({
       machine_id: CHILD_ID,
       role: AGENT_ROLE,
-      capabilities: { agent_exec: hasExec, git: true, node: true },
+      capabilities: { agent_exec: hasExec, git: true, node: true, deepagent: hasDeepAgent },
       version: VERSION,
       port: PORT
     }));
@@ -241,6 +242,28 @@ const server = http.createServer(async (req, res) => {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ ok: true, machine_id: CHILD_ID, version: VERSION, role: AGENT_ROLE }));
     return;
+  }
+
+  if (req.method === 'POST' && (path === '/v1/agent/execute' || path === '/v1/agent/delegate')) {
+    let bodyStr = '';
+    for await (const chunk of req) bodyStr += chunk;
+    try {
+      const body = JSON.parse(bodyStr);
+      const deepagentResp = await fetch('http://localhost:6000/v1/agent/execute', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: bodyStr,
+        signal: AbortSignal.timeout(60000),
+      });
+      const data = await deepagentResp.json();
+      res.writeHead(deepagentResp.status, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(data));
+      return;
+    } catch (e) {
+      res.writeHead(502);
+      res.end(JSON.stringify({ error: `DeepAgent unavailable: ${e.message}` }));
+      return;
+    }
   }
 
   if (req.method !== 'POST') {
