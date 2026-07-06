@@ -10,14 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-          cache: npm
-
-      - run: npm ci
-
-      - run: npm run build
+      - name: Build
+        if: github.ref == 'refs/heads/financecheque'
+        run: |
+          npm ci
+          npm run build
 
       - name: Migrate D1 database
         if: github.ref == 'refs/heads/financecheque'
@@ -33,4 +30,4 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: pages deploy dist --project-name ${{ github.ref == 'refs/heads/command' && 'command' || 'financecheque' }} --branch ${{ github.ref_name }}
+          command: pages deploy ${{ github.ref == 'refs/heads/command' && '.' || 'dist' }} --project-name ${{ github.ref == 'refs/heads/command' && 'command' || 'financecheque' }} --branch ${{ github.ref_name }}
