@@ -1,34 +1,39 @@
 import { useState, useEffect } from 'react';
 
+const THEMES = {
+  light: { bg: '#ffffff', text: '#000000', accent: '#e8b84e' },
+  dark: { bg: '#1a1a2e', text: '#d0c8b8', accent: '#e8b84e' },
+  blue: { bg: '#0a1628', text: '#c8d8e8', accent: '#4a90d9' },
+  green: { bg: '#0a1a0a', text: '#c8e8c8', accent: '#4ad94a' },
+  purple: { bg: '#1a0a1a', text: '#e8c8e8', accent: '#d94ad9' }
+};
+
 export function ThemeToggle() {
-  const [dark, setDark] = useState(() => {
+  const [theme, setTheme] = useState(() => {
     if (typeof window !== 'undefined') {
-      return localStorage.getItem('theme') === 'dark' || 
-             (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      return localStorage.getItem('color-theme') || 'dark';
     }
-    return false;
+    return 'dark';
   });
 
   useEffect(() => {
-    document.documentElement.classList.toggle('dark', dark);
-    localStorage.setItem('theme', dark ? 'dark' : 'light');
-  }, [dark]);
+    const t = THEMES[theme] || THEMES.dark;
+    document.documentElement.style.backgroundColor = t.bg;
+    document.documentElement.style.color = t.text;
+    document.documentElement.style.setProperty('--accent', t.accent);
+    localStorage.setItem('color-theme', theme);
+  }, [theme]);
 
   return (
-    <button
-      onClick={() => setDark(!dark)}
-      className="theme-toggle"
-      aria-label="Toggle theme"
-      style={{
-        position: 'fixed', top: '1rem', right: '1rem',
-        background: dark ? '#e8b84e' : '#333',
-        color: dark ? '#000' : '#fff',
-        border: 'none', borderRadius: '50%',
-        width: '40px', height: '40px', cursor: 'pointer',
-        fontSize: '1.2rem', zIndex: 9999
-      }}
-    >
-      {dark ? '☀' : '☾'}
-    </button>
+    <div className="theme-toggle-group" style={{ position: 'fixed', top: '1rem', right: '1rem', zIndex: 9999, display: 'flex', gap: '4px' }}>
+      {Object.keys(THEMES).map(t => (
+        <button key={t} onClick={() => setTheme(t)}
+          style={{
+            width: '32px', height: '32px', borderRadius: '50%', border: theme === t ? '2px solid #e8b84e' : '2px solid transparent',
+            background: THEMES[t].bg, color: THEMES[t].text, cursor: 'pointer', fontSize: '10px'
+          }}
+          title={t}>{t[0].toUpperCase()}</button>
+      ))}
+    </div>
   );
 }
