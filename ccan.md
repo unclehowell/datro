@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.0.84`
-- **Tag**: `ccan-v0.0.0.84`
-- **Deployed**: 2026-07-03T17:00:45.481Z
+- **Version**: `0.0.0.85`
+- **Tag**: `ccan-v0.0.0.85`
+- **Deployed**: 2026-07-06T01:00:22.949Z
 - **URL**: [https://ccan.datro.directory](https://ccan.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-07-03T17:00:45.481Z*
+*Auto-updated by datro-flywheel at 2026-07-06T01:00:22.949Z*
