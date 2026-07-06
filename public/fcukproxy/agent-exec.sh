@@ -44,7 +44,7 @@ log "Starting agent execution: '$TASK'"
 log "Repo: $REPO_DIR | Branch: $BRANCH | Timeout: ${TIMEOUT}s"
 
 # Use a temp directory for each task to avoid conflicts with local working tree
-TMP_DIR=$(mktemp -d /tmp/agent-exec.XXXXXX)
+TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/agent-exec.XXXXXX")
 trap 'rm -rf "$TMP_DIR"' EXIT
 
 # Clone or copy the repo
