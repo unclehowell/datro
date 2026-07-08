@@ -10,3 +10,4 @@
 2026-05-22 14:10:07,356 INFO gateway.run: Cron ticker started (interval=60s)
 2026-05-22 14:10:13,226 INFO tools.tirith_security: cosign not on PATH — installing tirith with SHA-256 verification only (install cosign for full supply chain verification)
 2026-05-22 14:10:13,540 INFO tools.tirith_security: tirith installed to /home/unclehowell/datro/.hermes-live/bin/tirith (SHA-256 only)
+2026-07-08 02:51:25,386 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
