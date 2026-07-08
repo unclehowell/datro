@@ -1,0 +1,151 @@
+2026-07-08 02:52:42,183 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:52:47,203 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:52:52,305 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:52:57,643 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:02,747 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:05,233 ERROR gateway.run: kanban dispatcher: tick failed on board default
+Traceback (most recent call last):
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/gateway/kanban_watchers.py", line 883, in _tick_once_for_board
+    return _kb.dispatch_once(
+           ~~~~~~~~~~~~~~~~~^
+        conn,
+        ^^^^^
+    ...<6 lines>...
+        max_in_progress_per_profile=max_in_progress_per_profile,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/hermes_cli/kanban_db.py", line 6162, in dispatch_once
+    result.reclaimed = release_stale_claims(conn)
+                       ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/hermes_cli/kanban_db.py", line 3235, in release_stale_claims
+    stale = conn.execute(
+            ~~~~~~~~~~~~^
+        "SELECT id, claim_lock, worker_pid, claim_expires, last_heartbeat_at "
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        (now,),
+        ^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: no such table: tasks
+2026-07-08 02:53:07,769 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:12,795 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:17,993 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:23,011 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:28,028 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:33,046 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:38,066 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:43,086 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:48,189 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:53,278 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:53:58,291 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:03,335 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:05,415 ERROR gateway.run: kanban dispatcher: tick failed on board default
+Traceback (most recent call last):
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/gateway/kanban_watchers.py", line 883, in _tick_once_for_board
+    return _kb.dispatch_once(
+           ~~~~~~~~~~~~~~~~~^
+        conn,
+        ^^^^^
+    ...<6 lines>...
+        max_in_progress_per_profile=max_in_progress_per_profile,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/hermes_cli/kanban_db.py", line 6162, in dispatch_once
+    result.reclaimed = release_stale_claims(conn)
+                       ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/hermes_cli/kanban_db.py", line 3235, in release_stale_claims
+    stale = conn.execute(
+            ~~~~~~~~~~~~^
+        "SELECT id, claim_lock, worker_pid, claim_expires, last_heartbeat_at "
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        (now,),
+        ^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: no such table: tasks
+2026-07-08 02:54:08,346 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:13,380 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:18,401 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:23,425 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:28,644 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:33,669 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:38,759 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:44,544 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:50,091 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:54:55,234 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:00,258 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:05,271 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:06,275 ERROR gateway.run: kanban dispatcher: tick failed on board default
+Traceback (most recent call last):
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/gateway/kanban_watchers.py", line 883, in _tick_once_for_board
+    return _kb.dispatch_once(
+           ~~~~~~~~~~~~~~~~~^
+        conn,
+        ^^^^^
+    ...<6 lines>...
+        max_in_progress_per_profile=max_in_progress_per_profile,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/hermes_cli/kanban_db.py", line 6162, in dispatch_once
+    result.reclaimed = release_stale_claims(conn)
+                       ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/hermes_cli/kanban_db.py", line 3235, in release_stale_claims
+    stale = conn.execute(
+            ~~~~~~~~~~~~^
+        "SELECT id, claim_lock, worker_pid, claim_expires, last_heartbeat_at "
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        (now,),
+        ^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: no such table: tasks
+2026-07-08 02:55:10,294 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:15,324 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:20,352 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:25,395 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:30,474 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:35,511 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:40,528 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:45,538 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:50,707 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:55:55,723 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:56:00,738 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:56:06,024 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:56:08,094 ERROR gateway.run: kanban dispatcher: tick failed on board default
+Traceback (most recent call last):
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/gateway/kanban_watchers.py", line 883, in _tick_once_for_board
+    return _kb.dispatch_once(
+           ~~~~~~~~~~~~~~~~~^
+        conn,
+        ^^^^^
+    ...<6 lines>...
+        max_in_progress_per_profile=max_in_progress_per_profile,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/hermes_cli/kanban_db.py", line 6162, in dispatch_once
+    result.reclaimed = release_stale_claims(conn)
+                       ~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/home/unclehowell/.local/lib/python3.13/site-packages/hermes_cli/kanban_db.py", line 3235, in release_stale_claims
+    stale = conn.execute(
+            ~~~~~~~~~~~~^
+        "SELECT id, claim_lock, worker_pid, claim_expires, last_heartbeat_at "
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        (now,),
+        ^^^^^^^
+    ).fetchall()
+    ^
+sqlite3.OperationalError: no such table: tasks
+2026-07-08 02:56:11,292 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:56:16,393 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:56:21,423 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:56:26,450 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:56:31,475 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
+2026-07-08 02:56:36,536 WARNING gateway.run: kanban notifier tick failed: no such table: kanban_notify_subs
