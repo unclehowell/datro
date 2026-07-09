@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.1.61`
-- **Tag**: `dcc-v0.0.1.61`
-- **Deployed**: 2026-07-06T16:00:52.228Z
+- **Version**: `0.0.1.62`
+- **Tag**: `dcc-v0.0.1.62`
+- **Deployed**: 2026-07-09T00:00:37.041Z
 - **URL**: [https://dcc.datro.directory](https://dcc.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-07-06T16:00:52.228Z*
+*Auto-updated by datro-flywheel at 2026-07-09T00:00:37.041Z*
