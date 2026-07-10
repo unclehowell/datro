@@ -181,6 +181,14 @@ async function ensureTable(env: Env): Promise<void> {
       hermes_info TEXT DEFAULT '{}'
     )`
   ).run();
+  // Migrate existing tables: add columns that may not exist, ignore if already present
+  const migrates = [
+    "ALTER TABLE proxy_nodes ADD COLUMN provider_info TEXT DEFAULT '{}'",
+    "ALTER TABLE proxy_nodes ADD COLUMN hermes_info TEXT DEFAULT '{}'",
+  ];
+  for (const sql of migrates) {
+    try { await env.DB.prepare(sql).run(); } catch {}
+  }
   await env.DB.prepare(
     `CREATE TABLE IF NOT EXISTS proxy_logs (
       id INTEGER PRIMARY KEY AUTOINCREMENT,
