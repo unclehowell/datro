@@ -42,6 +42,12 @@
 - `POST /api/proxy/result` — submit polling result
 - `GET /api/proxy/health` — network health status
 
+## Shared Skills (openclaw/agent-skills)
+- Installed at `~/src/openclaw-agent-skills/skills/`
+- Symlinked to `~/.agents/skills/`, `~/.claude/skills/`, `~/.hermes/skills/`, `~/.openclaw/skills/`
+- Skills: `agent-transcript`, `autoreview`, `behavior-validator`, `crabbox`, `handoff-openclaw`, `session-viewer`
+- `handoff-openclaw` is the clipboard-friendly variant (avoids name collision with existing `handoff`)
+
 ## D1 Tables
 - `proxy_nodes` — registered nodes
 - `proxy_logs` — request logs

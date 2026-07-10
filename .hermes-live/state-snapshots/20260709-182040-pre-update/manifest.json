@@ -1,0 +1,18 @@
+{
+  "id": "20260709-182040-pre-update",
+  "timestamp": "20260709-182040",
+  "label": "pre-update",
+  "file_count": 9,
+  "total_size": 843202,
+  "files": {
+    "state.db": 835584,
+    "config.yaml": 598,
+    ".env": 93,
+    "auth.json": 1930,
+    "channel_directory.json": 757,
+    "kanban.db": 4096,
+    "pairing/_rate_limits.json": 46,
+    "pairing/telegram-pending.json": 2,
+    "pairing/telegram-approved.json": 96
+  }
+}

@@ -22,12 +22,14 @@ import (
 )
 
 var (
-	parentURL   = env("PARENT_URL", "https://www.financecheque.uk")
-	machineID   = env("MACHINE_ID", fmt.Sprintf("phone-%d", time.Now().Unix()))
-	machineName = env("MACHINE_NAME", machineID)
-	proxyPort   = env("PROXY_PORT", "6000")
-	pollMs      = envInt("POLL_MS", 2000)
-	dnsServer   = env("DNS_SERVER", "8.8.8.8:53")
+	parentURL    = env("PARENT_URL", "https://www.financecheque.uk")
+	machineID    = env("MACHINE_ID", fmt.Sprintf("phone-%d", time.Now().Unix()))
+	machineName  = env("MACHINE_NAME", machineID)
+	proxyPort    = env("PROXY_PORT", "6000")
+	pollMs       = envInt("POLL_MS", 2000)
+	dnsServer    = env("DNS_SERVER", "8.8.8.8:53")
+	minicpmGGUF  = env("MINICPM_GGUF", "/sdcard/Download/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf")
+	minicpmPort  = env("MINICPM_PORT", "8090")
 
 	client    = &http.Client{Timeout: 15 * time.Second, Transport: &http.Transport{
 		DialContext: (&net.Dialer{
@@ -64,6 +66,7 @@ type Provider struct {
 }
 
 var providers = []Provider{
+	{Name: "minicpm", Key: "", URL: "http://127.0.0.1:" + minicpmPort + "/v1/chat/completions", Model: "MiniCPM5-1B-Agentic-Tooluse"},
 	{Name: "openrouter", Key: "OPENROUTER_API_KEY", URL: "https://openrouter.ai/api/v1/chat/completions", Model: "openrouter/auto"},
 	{Name: "groq", Key: "GROQ_API_KEY", URL: "https://api.groq.com/openai/v1/chat/completions", Model: "llama-3.3-70b-versatile"},
 	{Name: "gemini", Key: "GOOGLE_API_KEY", URL: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent", Model: "gemini-2.0-flash"},
@@ -93,12 +96,22 @@ func shuffle[T any](s []T) {
 }
 
 func register() {
-	b, _ := json.Marshal(map[string]string{
+	ai, _ := json.Marshal(map[string]any{
+		"agents": []map[string]any{
+			{"name": "minicpm", "installed": true, "gguf": minicpmGGUF},
+			{"name": "opencode", "installed": false},
+			{"name": "kilo", "installed": false},
+			{"name": "kiro", "installed": false},
+		},
+		"free_models": []map[string]any{},
+	})
+	b, _ := json.Marshal(map[string]any{
 		"childId":      machineID,
 		"machine_id":   machineID,
 		"machine_name": machineName,
 		"url":          fmt.Sprintf("http://0.0.0.0:%s", proxyPort),
 		"version":      "0.5.0.03",
+		"agent_info":   string(ai),
 	})
 	req, err := http.NewRequest("POST", parentURL+"/api/proxy?action=register", bytes.NewReader(b))
 	if err != nil {
@@ -185,21 +198,22 @@ func processWork(workID string, payload map[string]any) {
 }
 
 func routeLLM(messages []any) map[string]any {
-	prompt := ""
-	for i := len(messages) - 1; i >= 0; i-- {
-		if m, ok := messages[i].(map[string]any); ok {
-			if role, _ := m["role"].(string); role == "user" {
-				prompt, _ = m["content"].(string)
-				break
-			}
-		}
+	// Try cognitive core (MiniCPM on localhost:8090) first
+	if reply := callCognitiveCore(messages); reply != nil {
+		return reply
 	}
+
+	// Fallback: existing provider chain
+	prompt := extractPrompt(messages)
 	if prompt == "" {
 		return map[string]any{"error": "no user message"}
 	}
 
 	shuffle(providers)
 	for _, p := range providers {
+		if p.Name == "minicpm" {
+			continue // already tried above
+		}
 		key := os.Getenv(p.Key)
 		if key == "" {
 			continue
@@ -226,6 +240,171 @@ func routeLLM(messages []any) map[string]any {
 	}
 
 	return map[string]any{"_arch": archInfo, "error": "no LLM available on phone"}
+}
+
+func extractPrompt(messages []any) string {
+	for i := len(messages) - 1; i >= 0; i-- {
+		if m, ok := messages[i].(map[string]any); ok {
+			if role, _ := m["role"].(string); role == "user" {
+				if content, _ := m["content"].(string); content != "" {
+					return content
+				}
+			}
+		}
+	}
+	return ""
+}
+
+func callCognitiveCore(messages []any) map[string]any {
+	// Use a dedicated client with longer timeout for slow on-device inference
+	cogClient := &http.Client{Timeout: 120 * time.Second, Transport: client.Transport}
+
+	tools := []map[string]any{
+		{
+			"type": "function",
+			"function": map[string]any{
+				"name":        "respond_directly",
+				"description": "Respond to the user directly without calling any external tool",
+				"parameters": map[string]any{
+					"type": "object",
+					"properties": map[string]any{
+						"content": map[string]any{"type": "string", "description": "Your response to the user"},
+					},
+					"required": []string{"content"},
+				},
+			},
+		},
+		{
+			"type": "function",
+			"function": map[string]any{
+				"name":        "call_provider",
+				"description": "Route a request to a remote LLM provider (OpenAI, Groq, Gemini, OpenRouter) for complex tasks",
+				"parameters": map[string]any{
+					"type": "object",
+					"properties": map[string]any{
+						"provider": map[string]any{"type": "string", "enum": []string{"openai", "groq", "gemini", "openrouter"}, "description": "The provider to route to"},
+						"prompt":   map[string]any{"type": "string", "description": "The prompt to send to the provider"},
+					},
+					"required": []string{"provider", "prompt"},
+				},
+			},
+		},
+	}
+
+	body := map[string]any{
+		"model":       "minicpm",
+		"messages":    messages,
+		"tools":       tools,
+		"tool_choice": "auto",
+		"max_tokens":  2048,
+		"temperature": 0.3,
+	}
+	bodyJSON, _ := json.Marshal(body)
+	req, _ := http.NewRequest("POST", "http://127.0.0.1:"+minicpmPort+"/v1/chat/completions", bytes.NewReader(bodyJSON))
+	req.Header.Set("Content-Type", "application/json")
+	resp, err := cogClient.Do(req)
+	if err != nil {
+		log.Printf("cognitive core request failed: %v", err)
+		return nil
+	}
+	defer resp.Body.Close()
+	data, _ := io.ReadAll(resp.Body)
+
+	var result map[string]any
+	if err := json.Unmarshal(data, &result); err != nil {
+		return nil
+	}
+
+	choices, _ := result["choices"].([]any)
+	if len(choices) == 0 {
+		return nil
+	}
+	choice, _ := choices[0].(map[string]any)
+	msg, _ := choice["message"].(map[string]any)
+
+	// Check for tool calls
+	toolCalls, _ := msg["tool_calls"].([]any)
+	if len(toolCalls) > 0 {
+		for _, tc := range toolCalls {
+			tcMap, _ := tc.(map[string]any)
+			function, _ := tcMap["function"].(map[string]any)
+			name, _ := function["name"].(string)
+			arguments, _ := function["arguments"].(string)
+
+			var args map[string]any
+			json.Unmarshal([]byte(arguments), &args)
+
+			switch name {
+			case "call_provider":
+				provider, _ := args["provider"].(string)
+				prompt, _ := args["prompt"].(string)
+				for _, p := range providers {
+					if p.Name == provider {
+						key := os.Getenv(p.Key)
+						if key != "" {
+							reply, err := callProvider(p, key, prompt)
+							if err == nil {
+								messages = append(messages, msg)
+								messages = append(messages, map[string]any{
+									"role":       "tool",
+									"tool_call_id": tcMap["id"],
+									"content":    reply,
+								})
+								return callCognitiveCore(messages)
+							}
+						}
+					}
+				}
+				// Provider failed, return error
+				messages = append(messages, msg)
+				messages = append(messages, map[string]any{
+					"role":       "tool",
+					"tool_call_id": tcMap["id"],
+					"content":    fmt.Sprintf("error: provider %s not available", provider),
+				})
+				return callCognitiveCore(messages)
+
+			case "respond_directly":
+				content, _ := args["content"].(string)
+				return map[string]any{
+					"_source":     "minicpm",
+					"_breadcrumb": "minicpm (cognitive core)",
+					"_arch":       archInfo,
+					"choices": []map[string]any{
+						{
+							"index": 0,
+							"message": map[string]any{
+								"role":    "assistant",
+								"content": content,
+							},
+							"finish_reason": "stop",
+						},
+					},
+				}
+			}
+		}
+	}
+
+	// Direct text response from MiniCPM (no tool calls)
+	if content, ok := msg["content"].(string); ok && content != "" {
+		return map[string]any{
+			"_source":     "minicpm",
+			"_breadcrumb": "minicpm (cognitive core)",
+			"_arch":       archInfo,
+			"choices": []map[string]any{
+				{
+					"index": 0,
+					"message": map[string]any{
+						"role":    "assistant",
+						"content": content,
+					},
+					"finish_reason": "stop",
+				},
+			},
+		}
+	}
+
+	return nil
 }
 
 func callProvider(p Provider, key, prompt string) (string, error) {
@@ -266,7 +445,7 @@ func callProvider(p Provider, key, prompt string) (string, error) {
 		return "", fmt.Errorf("gemini: unexpected response: %s", string(data))
 	}
 
-	if p.Name == "groq" || p.Name == "openrouter" || p.Name == "openai" {
+	if p.Name == "minicpm" || p.Name == "groq" || p.Name == "openrouter" || p.Name == "openai" {
 		payload := map[string]any{
 			"model":    p.Model,
 			"messages": []map[string]any{{"role": "user", "content": prompt}},

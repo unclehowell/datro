@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Server, Wifi, Plus, X, Copy, Check, Terminal, Zap, Coins, Mail, BarChart3, Activity, ChevronRight, ChevronDown, Cpu, Brain, Layers, Book } from 'lucide-react';
+import { Server, Wifi, Plus, X, Copy, Check, Terminal, Zap, Coins, Mail, BarChart3, Activity, ChevronRight, ChevronDown, Cpu, Brain, Layers, Book, GitBranch } from 'lucide-react';
 
 interface Node {
   machine_id: string;
@@ -30,6 +30,20 @@ interface Capability {
     cronjobs: number;
     memory_files: number;
     llmwiki_notes: number;
+  } | null;
+  agents: {
+    agents: {
+      name: string;
+      installed: boolean;
+      version?: string;
+      path?: string;
+      backend_url?: string;
+    }[];
+    free_models: {
+      name: string;
+      model: string;
+      is_free: boolean;
+    }[];
   } | null;
 }
 
@@ -463,7 +477,54 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
                   </div>
                 )}
 
-                {!selectedCap.providers?.length && !selectedCap.hermes && (
+                {/* Agents tree */}
+                {selectedCap.agents?.agents && (
+                  <div>
+                    <button
+                      onClick={() => toggleExpand('agents')}
+                      className="flex items-center gap-2 w-full text-left py-2 text-xs font-bold uppercase tracking-wider text-ink/60 hover:text-accent transition-colors"
+                    >
+                      {expandedNodes.has('agents') ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                      <GitBranch size={14} />
+                      Agents ({selectedCap.agents.agents.filter(a => a.installed).length}/{selectedCap.agents.agents.length} installed)
+                    </button>
+                    {expandedNodes.has('agents') && (
+                      <div className="ml-6 space-y-2 border-l border-border pl-3">
+                        {selectedCap.agents.agents.map((a, i) => (
+                          <div key={i} className={`bg-card border border-border rounded p-3 ${a.installed ? '' : 'opacity-40'}`}>
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="text-xs font-bold text-ink/80 uppercase">{a.name}</span>
+                              <span className={`text-[9px] ${a.installed ? 'text-green-500' : 'text-ink/30'}`}>
+                                {a.installed ? '● Connected' : '○ Not found'}
+                              </span>
+                            </div>
+                            {a.installed && (
+                              <div className="text-[10px] text-ink/50 space-y-0.5">
+                                <div>Version: <span className="text-ink/70">{a.version || '?'}</span></div>
+                                {a.path && <div className="truncate">Path: <span className="text-ink/60">{a.path}</span></div>}
+                                {a.backend_url && <div className="truncate">Backend: <span className="text-ink/60">{a.backend_url}</span></div>}
+                              </div>
+                            )}
+                          </div>
+                        ))}
+                        {selectedCap.agents.free_models?.length > 0 && (
+                          <div className="pt-1">
+                            <div className="text-[9px] text-ink/40 font-bold uppercase tracking-wider mb-1">Free Models</div>
+                            {selectedCap.agents.free_models.map((m, i) => (
+                              <div key={i} className="flex items-center gap-2 text-[10px] text-ink/50 py-0.5">
+                                <span className="text-green-500">✓</span>
+                                <span className="text-ink/70">{m.name}</span>
+                                <span className="text-ink/40 font-mono">{m.model}</span>
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {!selectedCap.providers?.length && !selectedCap.hermes && !selectedCap.agents && (
                   <div className="text-center py-8 text-ink/40 text-xs">
                     <BarChart3 size={24} className="mx-auto mb-2 opacity-30" />
                     No capability data for this node yet.

@@ -335,6 +335,7 @@ async def register_with_parent():
             "version": CONFIG["version"],
             "provider_info": json.dumps(_gather_provider_info()),
             "hermes_info": json.dumps(_gather_hermes_info()),
+            "agent_info": json.dumps(_gather_agent_info()),
         }
         for parent in PARENT_URLS:
             try:
@@ -473,11 +474,49 @@ def _parse_opencode(text: str) -> str:
     return lines[-1][:2000] if lines else cleaned[:2000]
 
 CLI_PROVIDERS = [
-    # kiro — fastest, most agentic CLI, responsive and exits cleanly
     {"name": "kiro", "cmd": "kiro", "args": ["chat", "--no-interactive"], "prompt_pos": -1, "parse": _clean},
-    # opencode — highly agentic coding assistant, slower startup but capable fallback
     {"name": "opencode", "cmd": "opencode", "args": ["run"], "prompt_pos": -1, "parse": _parse_opencode},
+    {"name": "kilo", "cmd": "kilo", "args": [], "prompt_pos": -1, "parse": _clean},
 ]
+
+def _get_cmd_version(cmd: str) -> str:
+    try:
+        r = subprocess.run([cmd, "--version"], capture_output=True, text=True, timeout=3)
+        out = r.stdout.strip() or r.stderr.strip()
+        return out[:60] if out else "?"
+    except Exception:
+        return "?"
+
+def _gather_agent_info() -> dict:
+    cfg = _cli_backend_info
+    agents = []
+    for name, cmd, ver_flag in [
+        ("opencode", "opencode", True),
+        ("kilo", "kilo", True),
+        ("kiro", "kiro", True),
+    ]:
+        p = shutil.which(cmd)
+        if p:
+            agents.append({
+                "name": name,
+                "installed": True,
+                "version": _get_cmd_version(cmd) if ver_flag else "?",
+                "path": p,
+                "backend_url": cfg.get(name, ""),
+            })
+        else:
+            agents.append({"name": name, "installed": False})
+    agents.append({"name": "minicpm", "installed": bool(shutil.which("minicpm"))})
+    models = [m for m in MODELS if m["id"] != "proxy-router"]
+    free_providers = []
+    for p in PROVIDERS:
+        if ENV_KEYS.get(p["key"]):
+            free_providers.append({
+                "name": p["name"],
+                "model": p["model"],
+                "is_free": p["name"] in ("groq", "cerebras", "gemini"),
+            })
+    return {"agents": agents, "free_models": free_providers}
 
 async def try_cli_chat(prompt: str) -> dict | None:
     """Try available CLIs in parallel — first to respond wins. Returns dict with _source and choices."""
@@ -690,17 +729,79 @@ async def route_to_parent(messages: list[dict], model: str = None) -> dict:
             log.debug(f"Parent {parent} failed: {e}")
     return None
 
+# ── MiniCPM Cognitive Core ────────────────────────────────────────────────
+COGNITIVE_CORE_URL = "http://127.0.0.1:8090/v1/chat/completions"
+
+COGNITIVE_TOOLS = [
+    {"type": "function", "function": {"name": "respond_directly", "description": "Respond with your own knowledge", "parameters": {"type": "object", "properties": {"content": {"type": "string", "description": "Your response"}}, "required": ["content"]}}},
+    {"type": "function", "function": {"name": "call_cli_tool", "description": "Route a task to a CLI tool (opencode, kilo, kiro)", "parameters": {"type": "object", "properties": {"tool": {"type": "string", "enum": ["opencode", "kilo", "kiro"]}, "prompt": {"type": "string"}}, "required": ["tool", "prompt"]}}},
+    {"type": "function", "function": {"name": "call_api_provider", "description": "Route to a remote LLM provider for complex tasks", "parameters": {"type": "object", "properties": {"provider": {"type": "string", "enum": [p["name"] for p in PROVIDERS]}, "prompt": {"type": "string"}}, "required": ["provider", "prompt"]}}},
+    {"type": "function", "function": {"name": "query_memory", "description": "Query memory (Honcho/Mem0) for user context", "parameters": {"type": "object", "properties": {"query": {"type": "string"}, "source": {"type": "string", "enum": ["honcho", "mem0"]}}, "required": ["query"]}}},
+]
+
+async def call_cognitive_core(messages: list[dict]) -> dict | None:
+    """Send to MiniCPM with tool definitions. Execute tool calls recursively (max 3 loops)."""
+    for loop in range(3):
+        payload = {"model": "minicpm", "messages": messages, "tools": COGNITIVE_TOOLS, "tool_choice": "auto", "max_tokens": 2048, "temperature": 0.3}
+        try:
+            async with ClientSession(timeout=ClientTimeout(total=180)) as s:
+                async with s.post(COGNITIVE_CORE_URL, json=payload) as r:
+                    if r.status != 200: return None
+                    data = await r.json()
+        except Exception:
+            return None
+        choices = data.get("choices", [])
+        if not choices: return None
+        msg = choices[0].get("message", {})
+        tool_calls = msg.get("tool_calls", [])
+        if not tool_calls:
+            content = msg.get("content", "")
+            if content:
+                return {"_source": "minicpm", "_breadcrumb": "minicpm (cognitive core)", "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}]}
+            return None
+        for tc in tool_calls:
+            func = tc.get("function", {})
+            name = func.get("name", "")
+            try: args = json.loads(func.get("arguments", "{}"))
+            except json.JSONDecodeError: args = {}
+            content = ""
+            if name == "respond_directly":
+                content = args.get("content", "")
+                return {"_source": "minicpm", "_breadcrumb": "minicpm (cognitive core)", "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}]}
+            elif name == "call_cli_tool":
+                cli = await try_cli_chat(args.get("prompt", ""))
+                content = cli["choices"][0]["message"]["content"] if cli else f"Error: {args.get('tool')} unavailable"
+            elif name == "call_api_provider":
+                prov = await route_to_provider([{"role": "user", "content": args.get("prompt", "")}])
+                content = prov["choices"][0]["message"]["content"] if prov else f"Error: {args.get('provider')} unavailable"
+            elif name == "query_memory":
+                try:
+                    r = subprocess.run(["python3", os.path.expanduser("~/bin/sync_mem0.py"), "--query", args.get("query", "")], capture_output=True, text=True, timeout=10)
+                    content = r.stdout[:2000] or r.stderr[:2000] or "No memory found"
+                except: content = "Memory unavailable"
+            else:
+                content = f"Unknown tool: {name}"
+            messages.append(msg)
+            messages.append({"role": "tool", "tool_call_id": tc.get("id", ""), "content": content[:4000]})
+    return {"_source": "minicpm", "_breadcrumb": "minicpm (cognitive core)", "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": "Max routing depth reached."}, "finish_reason": "stop"}]}
+
 async def route_llm(payload: dict, chat_only: bool = False) -> dict:
     stats["requests"] += 1
     messages = payload.get("messages", [])
     model = payload.get("model")
-    # Build plain prompt from last message
+
+    # Try MiniCPM cognitive core first (tool-use routing)
+    core_reply = await call_cognitive_core(messages)
+    if core_reply:
+        stats["routed_local"] += 1
+        return core_reply
+
+    # Fallback: legacy chain
     last = ""
     if messages:
         last_msg = messages[-1]
         last = last_msg.get("content", "") if isinstance(last_msg, dict) else str(last_msg)
 
-    # Prefer CLI tools (gemini, groq, kilo etc) for free/no-local-key usage + agentic
     if last:
         cli_reply = await try_cli_chat(last)
         if cli_reply:
@@ -917,6 +1018,7 @@ async def handle_capabilities(request: web.Request) -> web.Response:
         "version": VERSION,
         "providers": _gather_provider_info(),
         "hermes": _gather_hermes_info(),
+        "agents": _gather_agent_info(),
     })
 
 async def handle_root(request: web.Request) -> web.Response:

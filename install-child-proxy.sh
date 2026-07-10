@@ -3,18 +3,50 @@ set -e
 
 # ── Child Proxy One-Liner Installer ────────────────────────────────────────
 # Usage: curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install-child-proxy.sh | bash
-# Or:   bash <(curl -sL https://bit.ly/...)
+# Supports: Linux (apt/yum/apk), Termux/Android, ADB-connected phones
 # ────────────────────────────────────────────────────────────────────────────
 
+MODE="${1:-auto}"  # auto|linux|phone|adb
 PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 CHILD_ID="${CHILD_ID:-$(hostname)}"
 PROXY_PORT="${PROXY_PORT:-4001}"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/fcuk-child-proxy}"
 
-echo "[install] Installing child proxy for FinanceCheque"
-echo "[install] PARENT_URL=$PARENT_URL"
-echo "[install] CHILD_ID=$CHILD_ID"
-echo "[install] PORT=$PROXY_PORT"
+# ── Detect OS ────────────────────────────────────────────────────────────────
+detect_mode() {
+  if [ "$MODE" != "auto" ]; then
+    echo "$MODE"
+    return
+  fi
+  if command -v adb &>/dev/null && adb devices -l 2>/dev/null | grep -q 'device$'; then
+    echo "adb"
+  elif [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
+    echo "termux"
+  elif command -v apt &>/dev/null || command -v yum &>/dev/null || command -v apk &>/dev/null; then
+    echo "linux"
+  elif [[ "$(uname -o 2>/dev/null)" == "Android" ]]; then
+    echo "android"
+  else
+    echo "linux"
+  fi
+}
+
+ACTUAL_MODE=$(detect_mode)
+echo "[install] Mode: $ACTUAL_MODE"
+
+case "$ACTUAL_MODE" in
+  adb)
+    echo "[install] ADB device detected — installing phone proxy"
+    exec bash <(curl -sL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/install-phone-proxy.sh")
+    ;;
+  termux|android)
+    echo "[install] Termux/Android mode"
+    exec bash <(curl -sL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/install-phone-proxy.sh")
+    ;;
+  linux|auto)
+    # ── Standard Linux install below ──
+    ;;
+esac
 
 # ── 1. System dependencies ─────────────────────────────────────────────────
 if ! command -v node &>/dev/null; then

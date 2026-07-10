@@ -1,160 +1,103 @@
 #!/usr/bin/env bash
-# Phone Child Proxy Installer (Termux/Android)
-# Usage: curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install-phone-proxy.sh | bash
+# Phone Child Proxy Installer — Go binary approach
+# Works on: Termux/Android, or pushed via ADB from a laptop
+# Usage:
+#   curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install-phone-proxy.sh | bash
+#   ADB_MODE=1 bash <(curl -sL ...)   # push via ADB from laptop
 
-set -e
+set -euo pipefail
 
 PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 CHILD_ID="${CHILD_ID:-phone-$(date +%s)}"
-PROXY_PORT="${PROXY_PORT:-4001}"
+PROXY_PORT="${PROXY_PORT:-6000}"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/fcuk-phone-proxy}"
+ADB_MODE="${ADB_MODE:-auto}"  # auto|1|0
 
 echo "[install] Installing phone child proxy"
 echo "[install] PARENT_URL=$PARENT_URL"
 echo "[install] CHILD_ID=$CHILD_ID"
+echo "[install] PORT=$PROXY_PORT"
 
-# ── Detect Termux ─────────────────────────────────────────────────────────────
-if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
-  echo "[install] Running in Termux"
-  pkg update -y 2>/dev/null || true
-  pkg install -y nodejs curl git 2>/dev/null || true
-else
-  echo "[install] Not Termux — assuming standard Linux"
+# ── Detect ADB mode ───────────────────────────────────────────────────────────
+if [ "$ADB_MODE" = "auto" ]; then
+  if command -v adb &>/dev/null && adb devices -l 2>/dev/null | grep -q 'device$'; then
+    ADB_MODE=1
+  else
+    ADB_MODE=0
+  fi
 fi
 
-# ── Create directory ───────────────────────────────────────────────────────────
+if [ "$ADB_MODE" = "1" ]; then
+  echo "[install] ADB mode — pushing binary from laptop to phone"
+  # Get the Go source from GitHub
+  TMPDIR=$(mktemp -d)
+  cd "$TMPDIR"
+  echo "[install] Downloading phone proxy source..."
+  curl -sL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/phone-proxy.go" -o phone-proxy.go
+  echo "[install] Building Go binary for arm64..."
+  GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -ldflags="-s -w" -o phone-proxy phone-proxy.go
+  echo "[install] Pushing binary to phone..."
+  adb push phone-proxy /data/local/tmp/phone-proxy
+  adb shell "chmod +x /data/local/tmp/phone-proxy"
+  # Write env file
+  cat > /tmp/phone-env.txt << ENVEOF
+GROQ_API_KEY=
+OPENROUTER_API_KEY=
+GOOGLE_API_KEY=
+OPENAI_API_KEY=
+ENVEOF
+  echo "[install] Created env template at /tmp/phone-env.txt"
+  echo "[install] Edit it with your API keys, then: adb push /tmp/phone-env.txt /data/local/tmp/phone-proxy.env"
+  rm -rf "$TMPDIR"
+  echo "[install] Done. Run '~/bin/phone-proxy.sh start' to start."
+  exit 0
+fi
+
+# ── Termux/Android mode (build Go directly) ──────────────────────────────────
+echo "[install] Termux/Android mode"
+if ! command -v go &>/dev/null; then
+  echo "[install] Go not found, installing..."
+  pkg update -y 2>/dev/null || true
+  pkg install -y golang 2>/dev/null || true
+fi
+
 mkdir -p "$INSTALL_DIR"
 cd "$INSTALL_DIR"
 
-# ── Write mobile-optimized child-proxy.mjs ─────────────────────────────────────
-cat > "$INSTALL_DIR/child-proxy.mjs" << 'PEOF'
-#!/usr/bin/env node
-import http from 'http';
-import urlMod from 'url';
-import os from 'os';
+echo "[install] Downloading and building phone proxy..."
+curl -sL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/phone-proxy.go" -o phone-proxy.go
+GOOS=linux GOARCH=arm64 CGO_ENABLED=0 go build -ldflags="-s -w" -o phone-proxy phone-proxy.go
 
-const PARENT_URL = process.env.PARENT_URL || 'https://www.financecheque.uk';
-const CHILD_ID   = process.env.CHILD_ID || `phone-${Date.now()}`;
-const PORT       = Number(process.env.PORT) || 4001;
-const SELF_URL   = process.env.SELF_URL || `http://localhost:${PORT}`;
+# ── Write start script ────────────────────────────────────────────────────────
+cat > "$INSTALL_DIR/start.sh" << SHTEOF
+#!/data/data/com.termux/files/usr/bin/bash
+cd "$INSTALL_DIR"
+export GROQ_API_KEY="\${GROQ_API_KEY}"
+export OPENROUTER_API_KEY="\${OPENROUTER_API_KEY}"
+export GOOGLE_API_KEY="\${GOOGLE_API_KEY}"
+export MACHINE_ID="$CHILD_ID"
+export MACHINE_NAME="$CHILD_ID"
+export DNS_SERVER="8.8.8.8:53"
+./phone-proxy
+SHTEOF
+chmod +x "$INSTALL_DIR/start.sh"
 
-let activeJobs = 0;
-
-// ── Register ───────────────────────────────────────────────────────────────
-function register() {
-  fetch(`${PARENT_URL}/api/proxy?action=register`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ childId: CHILD_ID, machine_id: CHILD_ID, url: SELF_URL }),
-  }).then(r => r.ok ? console.log('[proxy] Registered') : console.error('[proxy] Register failed'))
-    .catch(e => console.error('[proxy] Register error:', e.message));
-}
-
-// ── Heartbeat ───────────────────────────────────────────────────────────────
-function heartbeat() {
-  fetch(`${PARENT_URL}/api/proxy?action=heartbeat`, {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({ childId: CHILD_ID, load: activeJobs }),
-  }).catch(() => {});
-}
-
-// ── Chat via available providers ─────────────────────────────────────────────
-async function runChat(message) {
-  const prompt = `User: ${message}`;
-  
-  // Try Gemini (uses GEMINI_API_KEY)
-  const geminiKey = process.env.GEMINI_API_KEY;
-  if (geminiKey) {
-    try {
-      const resp = await fetch(
-        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`,
-        { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
-          contents: [{ parts: [{ text: prompt }] }],
-          generationConfig: { maxOutputTokens: 1024 }
-        }) }
-      );
-      if (resp.ok) {
-        const data = await resp.json();
-        const reply = data.candidates?.[0]?.content?.parts?.[0]?.text;
-        if (reply) return reply;
-      }
-    } catch (e) { console.log('[proxy] Gemini failed:', e.message); }
-  }
-  
-  // Try OpenRouter (uses OPENROUTER_API_KEY)
-  const orKey = process.env.OPENROUTER_API_KEY;
-  if (orKey) {
-    try {
-      const resp = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Authorization': `Bearer ${orKey}` },
-        body: JSON.stringify({ model: 'google/gemini-2.0-flash-exp:free', messages: [{ role: 'user', content: prompt }] }),
-      });
-      if (resp.ok) {
-        const data = await resp.json();
-        const reply = data.choices?.[0]?.message?.content;
-        if (reply) return reply;
-      }
-    } catch (e) { console.log('[proxy] OpenRouter failed:', e.message); }
-  }
-  
-  return `Phone proxy ${CHILD_ID} online — no LLM response. Set GEMINI_API_KEY or OPENROUTER_API_KEY.`;
-}
-
-// ── HTTP Server ───────────────────────────────────────────────────────────────
-const server = http.createServer(async (req, res) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Content-Type', 'application/json');
-  
-  if (req.url === '/health') {
-    return res.end(JSON.stringify({ ok: true, childId: CHILD_ID, activeJobs }));
-  }
-  
-  if (req.url === '/chat' && req.method === 'POST') {
-    let body = '';
-    req.on('data', chunk => body += chunk);
-    req.on('end', async () => {
-      try {
-        const { message } = JSON.parse(body);
-        if (!message) return res.end(JSON.stringify({ ok: false, error: 'message required' }));
-        activeJobs++;
-        const reply = await runChat(message);
-        activeJobs--;
-        res.end(JSON.stringify({ ok: true, reply, childId: CHILD_ID }));
-      } catch (e) {
-        res.end(JSON.stringify({ ok: false, error: e.message }));
-      }
-    });
-    return;
-  }
-  
-  res.end(JSON.stringify({ error: 'not found' }));
-});
-
-server.listen(PORT, '0.0.0.0', () => {
-  console.log(`[proxy] Listening on port ${PORT} (${CHILD_ID})`);
-  register();
-  setInterval(heartbeat, 30000);
-});
-PEOF
-
-chmod +x "$INSTALL_DIR/child-proxy.mjs"
-
-# ── Create .env template ───────────────────────────────────────────────────────
-cat > "$INSTALL_DIR/.env" << 'ENVEOF'
-# API Keys for phone proxy
-GEMINI_API_KEY=your-gemini-key-here
-OPENROUTER_API_KEY=your-openrouter-key-here
-PARENT_URL=https://www.financecheque.uk
-CHILD_ID=phone-proxy
-PORT=4001
+# ── Write .env template ───────────────────────────────────────────────────────
+cat > "$INSTALL_DIR/.env" << ENVEOF
+GROQ_API_KEY=your-groq-key
+OPENROUTER_API_KEY=your-openrouter-key
+GOOGLE_API_KEY=your-google-key
+OPENAI_API_KEY=your-openai-key
+PARENT_URL=$PARENT_URL
+CHILD_ID=$CHILD_ID
+PORT=$PROXY_PORT
 ENVEOF
 
-# ── Start via nohup (Termux-friendly) ───────────────────────────────────────
+# ── Start ─────────────────────────────────────────────────────────────────────
 echo "[install] Starting proxy..."
-pkill -f "child-proxy.mjs" 2>/dev/null || true
-nohup node "$INSTALL_DIR/child-proxy.mjs" > "$INSTALL_DIR/proxy.log" 2>&1 &
+cd "$INSTALL_DIR"
+pkill -f "$INSTALL_DIR/phone-proxy" 2>/dev/null || true
+nohup "$INSTALL_DIR/start.sh" > "$INSTALL_DIR/proxy.log" 2>&1 &
 echo $! > "$INSTALL_DIR/proxy.pid"
 
 sleep 3
@@ -166,4 +109,4 @@ else
   echo "[install] WARNING: Check logs: tail -f $INSTALL_DIR/proxy.log"
 fi
 
-echo "[install] Done. Edit .env to add your API keys."
+echo "[install] Done. Edit $INSTALL_DIR/.env to add your API keys."
