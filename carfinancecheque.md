@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.700.02`
-- **Tag**: `carfinancecheque-v0.0.700.02`
-- **Deployed**: 2026-07-08T08:00:37.621Z
+- **Version**: `0.0.700.03`
+- **Tag**: `carfinancecheque-v0.0.700.03`
+- **Deployed**: 2026-07-10T17:01:20.690Z
 - **URL**: [https://carfinancecheque.datro.directory](https://carfinancecheque.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-07-08T08:00:37.621Z*
+*Auto-updated by datro-flywheel at 2026-07-10T17:01:20.690Z*
