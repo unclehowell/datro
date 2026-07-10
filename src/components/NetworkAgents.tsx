@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Server, Wifi, Plus, X, Copy, Check, Terminal, Zap, Coins, Mail } from 'lucide-react';
+import { Server, Wifi, Plus, X, Copy, Check, Terminal, Zap, Coins, Mail, BarChart3, Activity, ChevronRight, ChevronDown, Cpu, Brain, Layers, Book } from 'lucide-react';
 
 interface Node {
   machine_id: string;
@@ -11,6 +11,28 @@ interface Node {
   last_seen: string;
 }
 
+interface Capability {
+  machine_id: string;
+  machine_name: string;
+  version: string;
+  providers: {
+    name: string;
+    key_prefix: string;
+    models: string[];
+    quota_remaining: number | null;
+    quota_limit: number | null;
+  }[];
+  hermes: {
+    tools: number;
+    mcps: number;
+    harnesses: number;
+    loops: number;
+    cronjobs: number;
+    memory_files: number;
+    llmwiki_notes: number;
+  } | null;
+}
+
 interface Props {
   onChatOpen?: () => void;
   onExchange?: () => void;
@@ -19,9 +41,12 @@ interface Props {
 
 export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props) {
   const [nodes, setNodes] = useState<Node[]>([]);
+  const [capabilities, setCapabilities] = useState<Capability[]>([]);
   const [showInstall, setShowInstall] = useState(false);
   const [copied, setCopied] = useState(false);
   const [iframeUrl, setIframeUrl] = useState('');
+  const [selectedCap, setSelectedCap] = useState<Capability | null>(null);
+  const [expandedNodes, setExpandedNodes] = useState<Set<string>>(new Set());
 
   const fetchNodes = useCallback(async () => {
     try {
@@ -32,11 +57,21 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
     } catch {}
   }, []);
 
+  const fetchCapabilities = useCallback(async () => {
+    try {
+      const res = await fetch('/api/proxy/capabilities');
+      if (!res.ok) return;
+      const data = await res.json();
+      setCapabilities(Array.isArray(data) ? data : []);
+    } catch {}
+  }, []);
+
   useEffect(() => {
     fetchNodes();
-    const interval = setInterval(fetchNodes, 15000);
+    fetchCapabilities();
+    const interval = setInterval(() => { fetchNodes(); fetchCapabilities(); }, 15000);
     return () => clearInterval(interval);
-  }, [fetchNodes]);
+  }, [fetchNodes, fetchCapabilities]);
 
   const isActive = (lastSeen: string) => {
     if (!lastSeen) return false;
@@ -52,7 +87,21 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
     setTimeout(() => setCopied(false), 2000);
   };
 
-  const nodeCard = (node: Node | null, i: number, isPlaceholder: boolean) => (
+  const toggleExpand = (id: string) => {
+    setExpandedNodes(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+  };
+
+  const nodeCard = (node: Node | null, i: number, isPlaceholder: boolean) => {
+    const cap = capabilities.find(c => c.machine_id === node?.machine_id);
+    const providerCount = cap?.providers?.length || 0;
+    const hasHermes = cap?.hermes !== null && cap?.hermes !== undefined;
+
+    return (
     <motion.div
       key={node?.machine_id || 'placeholder'}
       initial={{ opacity: 0, y: 20 }}
@@ -61,7 +110,6 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
       className={`flex flex-col items-center gap-3 ${isPlaceholder ? 'pointer-events-auto cursor-pointer group' : 'pointer-events-auto'}`}
       onClick={isPlaceholder ? () => setShowInstall(true) : undefined}
     >
-      {/* Circle */}
       <div className="relative">
         <motion.button
           whileHover={{ scale: 1.05 }}
@@ -90,9 +138,17 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
             </div>
           )}
         </motion.button>
+        {!isPlaceholder && (
+          <button
+            onClick={(e) => { e.stopPropagation(); setSelectedCap(cap || null); }}
+            className="absolute -bottom-1 -right-1 w-7 h-7 rounded-full bg-ink border-2 border-paper flex items-center justify-center hover:bg-accent transition-colors"
+            title="View capabilities"
+          >
+            <BarChart3 size={14} className="text-paper" />
+          </button>
+        )}
       </div>
 
-      {/* Name & icons bar */}
       <div className={`flex flex-col items-center gap-2 w-full max-w-[200px] ${isPlaceholder ? 'opacity-40' : ''}`}>
         <div className="flex items-center justify-center gap-2 w-full">
           {!isPlaceholder && (
@@ -120,7 +176,6 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
           </span>
         </div>
 
-        {/* Subtitle */}
         {!isPlaceholder && (
           <div className="text-[8px] text-ink/40 font-mono truncate w-full text-center">
             {node?.ip_address || '?'}:{node?.proxy_port || 6000} — v{node?.version || '?'}
@@ -130,7 +185,6 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
           <div className="text-[8px] text-ink/20 w-full text-center">Install on your machine</div>
         )}
 
-        {/* Buttons grid */}
         <div className="grid grid-cols-2 gap-1.5 w-full">
           <button
             onClick={() => {
@@ -188,7 +242,8 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
         </div>
       </div>
     </motion.div>
-  );
+    );
+  };
 
   return (
     <>
@@ -274,6 +329,148 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
                 </button>
               </div>
               <iframe src={iframeUrl} className="flex-1 w-full border-0" title="Agent UI" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" />
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Capabilities tree modal */}
+      <AnimatePresence>
+        {selectedCap && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[1000] flex items-center justify-center p-4 bg-black/80 backdrop-blur-md"
+            onClick={() => setSelectedCap(null)}
+          >
+            <motion.div
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              className="w-full max-w-lg bg-paper border border-border shadow-2xl max-h-[80vh] overflow-y-auto"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between p-4 border-b border-border">
+                <div className="flex items-center gap-3">
+                  <BarChart3 size={18} className="text-accent" />
+                  <h3 className="font-bold text-sm">{selectedCap.machine_name}</h3>
+                </div>
+                <button type="button" onClick={() => setSelectedCap(null)} className="text-ink/20 hover:text-ink transition-colors">
+                  <X size={18} />
+                </button>
+              </div>
+
+              <div className="p-4 space-y-3">
+                {/* Providers tree */}
+                {selectedCap.providers?.length > 0 && (
+                  <div>
+                    <button
+                      onClick={() => toggleExpand('providers')}
+                      className="flex items-center gap-2 w-full text-left py-2 text-xs font-bold uppercase tracking-wider text-ink/60 hover:text-accent transition-colors"
+                    >
+                      {expandedNodes.has('providers') ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                      <Activity size={14} />
+                      LLM Providers ({selectedCap.providers.length})
+                    </button>
+                    {expandedNodes.has('providers') && (
+                      <div className="ml-6 space-y-2 border-l border-border pl-3">
+                        {selectedCap.providers.map((p, i) => (
+                          <div key={i} className="bg-card border border-border rounded p-3">
+                            <div className="flex items-center justify-between mb-1">
+                              <span className="text-xs font-bold text-ink/80 uppercase">{p.name}</span>
+                              <span className="text-[9px] font-mono text-ink/40">{p.key_prefix}</span>
+                            </div>
+                            <div className="text-[10px] text-ink/50 space-y-1">
+                              <div>Models: <span className="text-ink/70">{p.models.join(', ') || 'auto'}</span></div>
+                              {p.quota_limit !== null && (
+                                <div className="flex items-center gap-2">
+                                  <span>Quota:</span>
+                                  <div className="flex-1 h-1.5 bg-border rounded-full overflow-hidden">
+                                    <div
+                                      className="h-full bg-accent rounded-full"
+                                      style={{ width: `${Math.min(100, ((p.quota_limit || 0) - (p.quota_remaining || 0)) / (p.quota_limit || 1) * 100)}%` }}
+                                    />
+                                  </div>
+                                  <span className="text-[9px] text-accent">{p.quota_remaining}/{p.quota_limit} free</span>
+                                </div>
+                              )}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {/* Hermes tree */}
+                {selectedCap.hermes && (
+                  <div>
+                    <button
+                      onClick={() => toggleExpand('hermes')}
+                      className="flex items-center gap-2 w-full text-left py-2 text-xs font-bold uppercase tracking-wider text-ink/60 hover:text-accent transition-colors"
+                    >
+                      {expandedNodes.has('hermes') ? <ChevronDown size={14} /> : <ChevronRight size={14} />}
+                      <Brain size={14} />
+                      Hermes Agent
+                    </button>
+                    {expandedNodes.has('hermes') && (
+                      <div className="ml-6 grid grid-cols-2 gap-2 border-l border-border pl-3">
+                        <div className="bg-card border border-border rounded p-2.5 flex items-center gap-2.5">
+                          <Cpu size={14} className="text-ink/40" />
+                          <div>
+                            <div className="text-[10px] text-ink/40">Tools</div>
+                            <div className="text-sm font-bold text-accent">{selectedCap.hermes.tools}</div>
+                          </div>
+                        </div>
+                        <div className="bg-card border border-border rounded p-2.5 flex items-center gap-2.5">
+                          <Layers size={14} className="text-ink/40" />
+                          <div>
+                            <div className="text-[10px] text-ink/40">MCPs</div>
+                            <div className="text-sm font-bold text-accent">{selectedCap.hermes.mcps}</div>
+                          </div>
+                        </div>
+                        <div className="bg-card border border-border rounded p-2.5 flex items-center gap-2.5">
+                          <Activity size={14} className="text-ink/40" />
+                          <div>
+                            <div className="text-[10px] text-ink/40">Harnesses</div>
+                            <div className="text-sm font-bold text-accent">{selectedCap.hermes.harnesses}</div>
+                          </div>
+                        </div>
+                        <div className="bg-card border border-border rounded p-2.5 flex items-center gap-2.5">
+                          <Terminal size={14} className="text-ink/40" />
+                          <div>
+                            <div className="text-[10px] text-ink/40">Cron</div>
+                            <div className="text-sm font-bold text-accent">{selectedCap.hermes.cronjobs}</div>
+                          </div>
+                        </div>
+                        <div className="bg-card border border-border rounded p-2.5 flex items-center gap-2.5">
+                          <Book size={14} className="text-ink/40" />
+                          <div>
+                            <div className="text-[10px] text-ink/40">Memory</div>
+                            <div className="text-sm font-bold text-accent">{selectedCap.hermes.memory_files}</div>
+                          </div>
+                        </div>
+                        <div className="bg-card border border-border rounded p-2.5 flex items-center gap-2.5">
+                          <Book size={14} className="text-ink/40" />
+                          <div>
+                            <div className="text-[10px] text-ink/40">LLMWiki</div>
+                            <div className="text-sm font-bold text-accent">{selectedCap.hermes.llmwiki_notes}</div>
+                          </div>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+
+                {!selectedCap.providers?.length && !selectedCap.hermes && (
+                  <div className="text-center py-8 text-ink/40 text-xs">
+                    <BarChart3 size={24} className="mx-auto mb-2 opacity-30" />
+                    No capability data for this node yet.
+                    <br />Wait for next heartbeat or check agent logs.
+                  </div>
+                )}
+              </div>
             </motion.div>
           </motion.div>
         )}

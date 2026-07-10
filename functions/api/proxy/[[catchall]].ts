@@ -22,6 +22,8 @@ interface ProxyNode {
   avg_response_ms?: number;
   total_requests?: number;
   registered_at?: string;
+  provider_info?: string;
+  hermes_info?: string;
 }
 
 interface ChatMessage {
@@ -131,6 +133,9 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === '/api/proxy/nodes' && method === 'GET') {
       return await handleNodes(request, env, headers);
     }
+    if (path === '/api/proxy/capabilities' && method === 'GET') {
+      return await handleCapabilities(request, env, headers);
+    }
     if (path === '/api/proxy/poll' && method === 'GET') {
       return await handlePoll(request, env, headers);
     }
@@ -171,7 +176,9 @@ async function ensureTable(env: Env): Promise<void> {
       registered_at TEXT DEFAULT (datetime('now')),
       url TEXT DEFAULT '',
       avg_response_ms REAL DEFAULT 1000,
-      total_requests INTEGER DEFAULT 0
+      total_requests INTEGER DEFAULT 0,
+      provider_info TEXT DEFAULT '{}',
+      hermes_info TEXT DEFAULT '{}'
     )`
   ).run();
   await env.DB.prepare(
@@ -225,6 +232,8 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
   const machine_name = body.machine_name || machine_id;
   const nodeUrl = body.url || '';
   const version = body.version || 'unknown';
+  const provider_info = body.provider_info || '{}';
+  const hermes_info = body.hermes_info || '{}';
 
   // Validate version format
   if (version && !/^[\d.]+$/.test(version)) {
@@ -232,14 +241,16 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
   }
 
   await env.DB.prepare(
-    `INSERT INTO proxy_nodes (machine_id, machine_name, ip_address, proxy_port, version, url, last_seen, registered_at)
-     VALUES (?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))
+    `INSERT INTO proxy_nodes (machine_id, machine_name, ip_address, proxy_port, version, url, provider_info, hermes_info, last_seen, registered_at)
+     VALUES (?, ?, ?, ?, ?, ?, ?, ?, datetime('now'), datetime('now'))
      ON CONFLICT(machine_id) DO UPDATE SET
        machine_name = excluded.machine_name,
        ip_address = excluded.ip_address,
        proxy_port = excluded.proxy_port,
        version = excluded.version,
        url = excluded.url,
+       provider_info = excluded.provider_info,
+       hermes_info = excluded.hermes_info,
        last_seen = datetime('now')`
   ).bind(
     machine_id,
@@ -247,7 +258,9 @@ async function handleRegister(request: Request, env: Env, headers: Record<string
     ip_address,
     proxy_port,
     version,
-    nodeUrl
+    nodeUrl,
+    provider_info,
+    hermes_info
   ).run();
 
   return new Response(JSON.stringify({ ok: true, machine_id, version: FCUK_PROXY_VERSION }), { status: 200, headers });
@@ -293,7 +306,8 @@ async function handleHealth(env: Env, headers: Record<string, string>): Promise<
   ).run();
   
   const { results: nodes } = await env.DB.prepare(
-    `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen
+    `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen,
+            provider_info, hermes_info
      FROM proxy_nodes
      WHERE last_seen > datetime('now', '-1 hour')
      ORDER BY last_seen DESC`
@@ -319,13 +333,54 @@ async function handleHealth(env: Env, headers: Record<string, string>): Promise<
 async function handleNodes(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
   await ensureTable(env);
   const { results } = await env.DB.prepare(
-    `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen
+    `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen,
+            provider_info, hermes_info
      FROM proxy_nodes
      WHERE last_seen > datetime('now', '-1 hour')
      ORDER BY last_seen DESC`
   ).all() as { results: ProxyNode[] };
 
   return new Response(JSON.stringify(results), { status: 200, headers });
+}
+
+async function handleCapabilities(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const url = new URL(request.url);
+  const machineId = url.searchParams.get('machine_id');
+
+  if (machineId) {
+    const node = await env.DB.prepare(
+      `SELECT machine_id, machine_name, version, provider_info, hermes_info
+       FROM proxy_nodes WHERE machine_id = ?`
+    ).bind(machineId).first() as ProxyNode | null;
+    if (!node) {
+      return new Response(JSON.stringify({ error: 'Node not found' }), { status: 404, headers });
+    }
+    return new Response(JSON.stringify({
+      machine_id: node.machine_id,
+      machine_name: node.machine_name,
+      version: node.version,
+      providers: node.provider_info ? JSON.parse(node.provider_info) : [],
+      hermes: node.hermes_info ? JSON.parse(node.hermes_info) : null,
+    }), { status: 200, headers });
+  }
+
+  // No machine_id: return all nodes' capabilities
+  const { results } = await env.DB.prepare(
+    `SELECT machine_id, machine_name, version, provider_info, hermes_info
+     FROM proxy_nodes
+     WHERE last_seen > datetime('now', '-1 hour')`
+  ).all() as { results: ProxyNode[] };
+
+  const capabilities = results.map(n => ({
+    machine_id: n.machine_id,
+    machine_name: n.machine_name,
+    version: n.version,
+    providers: n.provider_info ? JSON.parse(n.provider_info) : [],
+    hermes: n.hermes_info ? JSON.parse(n.hermes_info) : null,
+  }));
+
+  return new Response(JSON.stringify(capabilities), { status: 200, headers });
 }
 
 async function handlePoll(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
