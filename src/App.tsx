@@ -1112,20 +1112,7 @@ node child-proxy.js`}</pre>
       {/* Demo Modal Removed - Now integrated into main view when logged in */}
 
       {!user && (
-        <footer className="bg-black text-white/40 p-6 border-t border-white/5">
-          <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <span className="font-bold text-sm tracking-tighter text-white/60">Finance Cheque UK</span>
-            <p className="text-[9px] uppercase tracking-widest">
-              DATRO CONSORTIUM LIMITED • Waterlooville, PO8 0BT • 02031377118
-            </p>
-            <div className="flex gap-4">
-              <button onClick={() => setCurrentPage('how-it-works')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">How It Works</button>
-              <button onClick={() => setCurrentPage('docs')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">Docs</button>
-              <button onClick={() => setCurrentPage('api')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">API</button>
-              <button onClick={() => setCurrentPage('exchange')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">Exchange</button>
-            </div>
-          </div>
-        </footer>
+        <FooterWithVersion setCurrentPage={setCurrentPage} />
       )}
 
       {/* Modals */}
@@ -1354,5 +1341,28 @@ node child-proxy.js`}</pre>
         </div>
       )}
     </div>
+  );
+}
+
+function FooterWithVersion({ setCurrentPage }: { setCurrentPage: (page: any) => void }) {
+  const [ver, setVer] = useState('');
+  useEffect(() => {
+    fetch('/api/version').then(r => r.json()).then(d => setVer(d.version || '')).catch(() => {});
+  }, []);
+  return (
+    <footer className="bg-black text-white/40 p-6 border-t border-white/5">
+      <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+        <span className="font-bold text-sm tracking-tighter text-white/60">Finance Cheque UK{ver ? <span className="ml-2 text-[10px] font-mono text-white/20 align-middle">v{ver}</span> : null}</span>
+        <p className="text-[9px] uppercase tracking-widest">
+          DATRO CONSORTIUM LIMITED • Waterlooville, PO8 0BT • 02031377118
+        </p>
+        <div className="flex gap-4">
+          <button onClick={() => setCurrentPage('how-it-works')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">How It Works</button>
+          <button onClick={() => setCurrentPage('docs')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">Docs</button>
+          <button onClick={() => setCurrentPage('api')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">API</button>
+          <button onClick={() => setCurrentPage('exchange')} className="text-[9px] font-bold uppercase tracking-widest hover:text-accent transition-colors">Exchange</button>
+        </div>
+      </div>
+    </footer>
   );
 }
