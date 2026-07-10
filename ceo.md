@@ -4,12 +4,12 @@
 
 ## Latest Release
 
-- **Version**: `0.0.1.58`
-- **Tag**: `ceo-v0.0.1.58`
-- **Deployed**: 2026-07-08T12:00:37.537Z
+- **Version**: `0.0.1.59`
+- **Tag**: `ceo-v0.0.1.59`
+- **Deployed**: 2026-07-10T20:01:12.248Z
 - **URL**: [https://ceo.datro.directory](https://ceo.datro.directory)
 - **Status**: deployed
 
 ---
 
-*Auto-updated by datro-flywheel at 2026-07-08T12:00:37.537Z*
+*Auto-updated by datro-flywheel at 2026-07-10T20:01:12.248Z*
