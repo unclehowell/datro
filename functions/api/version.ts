@@ -1,8 +1,8 @@
 export async function onRequest(): Promise<Response> {
   return new Response(JSON.stringify({
-    version: "0.5.0.02",
+    version: "0.5.0.04",
     branch: "financecheque",
-    release: "financecheque-v0.5.0.02",
+    release: "financecheque-v0.5.0.04",
   }), {
     status: 200,
     headers: {
