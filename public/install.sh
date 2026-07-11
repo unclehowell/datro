@@ -1,340 +1,217 @@
 #!/bin/bash
 set -e
 
-# ── FinanceCheque Child Proxy One-Liner Installer ──────────────────────────
-# Usage: curl -fsSL https://financecheque.uk/install.sh | bash
+# ── Child Proxy One-Liner Installer ────────────────────────────────────────
+# Usage: curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install-child-proxy.sh | bash
+# Supports: Linux (x86_64/ARM64), Termux/Android, ADB-connected phones
+# Install: child proxy agent + llama-server + MiniCPM-1B local LLM
 # ────────────────────────────────────────────────────────────────────────────
 
+MODE="${1:-auto}"
 PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 CHILD_ID="${CHILD_ID:-$(hostname)}"
-PROXY_PORT="${PROXY_PORT:-4001}"
+PROXY_PORT="${PROXY_PORT:-6000}"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/fcuk-child-proxy}"
+MODEL_QUANT="${MODEL_QUANT:-Q4_K_M}"
 
-# ── Detect Termux / Android for cross-device child proxies (phones too) ────
-IS_TERMUX=false
-if [[ -n "${TERMUX_VERSION:-}" || "$(uname -o 2>/dev/null)" == "Android" || -d "/data/data/com.termux" ]]; then
-  IS_TERMUX=true
-fi
+# ── Detect platform ──────────────────────────────────────────────────────────
+detect_mode() {
+  if [ "$MODE" != "auto" ]; then echo "$MODE"; return; fi
+  if command -v adb &>/dev/null && adb devices -l 2>/dev/null | grep -q 'device$'; then echo "adb"
+  elif [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then echo "termux"
+  elif [[ "$(uname -m)" == "aarch64" ]]; then echo "linux-arm64"
+  elif [[ "$(uname -m)" == "x86_64" ]]; then echo "linux-x64"
+  else echo "linux"
+  fi
+}
 
-echo "[install] Installing child proxy for FinanceCheque"
-echo "[install] PARENT_URL=$PARENT_URL"
-echo "[install] CHILD_ID=$CHILD_ID"
-echo "[install] PORT=$PROXY_PORT"
-$IS_TERMUX && echo "[install] Termux/Android mode detected - will use pkg, no sudo"
+ACTUAL_MODE=$(detect_mode)
+echo "[install] Mode: $ACTUAL_MODE"
 
-# ── 1. System dependencies ─────────────────────────────────────────────────
-if ! command -v node &>/dev/null; then
-  echo "[install] Installing Node.js..."
-  if $IS_TERMUX; then
+# ── Step 0: Install system dependencies ──────────────────────────────────────
+install_deps() {
+  if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
     pkg update -y 2>/dev/null || true
-    pkg install -y nodejs tmux curl git 2>/dev/null || true
+    pkg install -y nodejs python3 golang curl git 2>/dev/null || true
   else
-    curl -fsSL https://deb.nodesource.com/setup_22.x | bash -
-    apt-get install -y nodejs tmux curl git 2>/dev/null || yum install -y nodejs tmux curl git 2>/dev/null || true
+    if command -v apt &>/dev/null; then
+      sudo apt-get update -qq 2>/dev/null || true
+      sudo apt-get install -y -qq curl nodejs python3 python3-pip git 2>/dev/null || true
+    fi
   fi
-fi
+}
 
-# ── 2. Create install directory ────────────────────────────────────────────
-mkdir -p "$INSTALL_DIR"
-cd "$INSTALL_DIR"
+case "$ACTUAL_MODE" in
+  adb|termux|android)
+    echo "[install] Phone/ADB mode"
+    install_deps
+    ;;
+  linux-arm64)
+    echo "[install] Linux ARM64 (Raspberry Pi, etc.)"
+    install_deps
+    ;;
+  linux-x64|linux)
+    echo "[install] Linux x86_64"
+    install_deps
+    ;;
+esac
 
-# ── 3-8. Install ALL free IDE/CLIs (gemini, kiro, kilo, groq, opencode + extras) ──
-echo "[install] Installing free CLI/IDE tools (gemini, groq, kiro, kilo, opencode, aider, hermes...) - no paid keys needed if logged into their free tiers"
+# ── Step 1: Install llama-server + MiniCPM model ────────────────────────────
+echo "[install] Installing llama-server + MiniCPM-1B-Agentic-ToolUse..."
 
-export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/.opencode/bin:$PATH:/usr/local/bin"
+MODEL_REPO="ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse-GGUF"
+LLAMACPP_RELEASE="b9957"
+MODEL_DIR="$INSTALL_DIR/models"
+mkdir -p "$MODEL_DIR"
 
-for cmdpkg in \
-  "gemini:@google/gemini-cli" \
-  "gemini:gemini" \
-  "kirox:kiro-cli" \
-  "kiro:kiro-cli" \
-  "kilo:@kilocode/cli" \
-  "groq:groq-cli" \
-  "opencode:@opencode/cli"; do
-  name="${cmdpkg%%:*}"
-  pkg="${cmdpkg#*:}"
-  if ! command -v "$name" &>/dev/null; then
-    echo "[install] Trying install $name ($pkg)..."
-    npm install -g "$pkg" 2>/dev/null || npm install -g "$name" 2>/dev/null || true
-  fi
-done
+case "$ACTUAL_MODE" in
+  adb|termux|android)
+    # Phone: Android arm64 prebuilt
+    if [ ! -f "$MODEL_DIR/model.gguf" ]; then
+      echo "[install] Downloading MiniCPM Q4_K_M for phone..."
+      curl -sL "https://huggingface.co/$MODEL_REPO/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q4_K_M.gguf" -o "$MODEL_DIR/model.gguf"
+      echo "[install] Downloading llama-server for Android arm64..."
+      curl -sL "https://github.com/ggml-org/llama.cpp/releases/download/$LLAMACPP_RELEASE/llama-$LLAMACPP_RELEASE-bin-android-arm64.tar.gz" -o /tmp/llama.tar.gz
+      mkdir -p "$INSTALL_DIR/llama"
+      tar xzf /tmp/llama.tar.gz -C "$INSTALL_DIR/llama" --strip-components=1
+      export LD_LIBRARY_PATH="$INSTALL_DIR/llama:$LD_LIBRARY_PATH"
+      LLAMA_SERVER="$INSTALL_DIR/llama/llama-server"
+    fi
+    ;;
+  linux-arm64)
+    # ARM64 Linux: Ubuntu/ARM64 prebuilt
+    if [ ! -f "$MODEL_DIR/model.gguf" ]; then
+      # Prefer Q8_0 on server-class ARM64, fallback to Q4_K_M
+      echo "[install] Downloading MiniCPM Q8_0 for ARM64 Linux..."
+      curl -sL "https://huggingface.co/$MODEL_REPO/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf" -o "$MODEL_DIR/model.gguf" ||
+        curl -sL "https://huggingface.co/$MODEL_REPO/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q4_K_M.gguf" -o "$MODEL_DIR/model.gguf"
+      echo "[install] Downloading llama-server for Ubuntu ARM64..."
+      curl -sL "https://github.com/ggml-org/llama.cpp/releases/download/$LLAMACPP_RELEASE/llama-$LLAMACPP_RELEASE-bin-ubuntu-arm64.tar.gz" -o /tmp/llama.tar.gz
+      tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 --wildcards '*/llama-server' '*/libllama*' '*/libggml*' 2>/dev/null || true
+      LLAMA_SERVER="/usr/local/bin/llama-server"
+    fi
+    ;;
+  linux-x64|linux)
+    # x86_64 Linux: laptop/desktop
+    if [ ! -f "$MODEL_DIR/model.gguf" ]; then
+      echo "[install] Downloading MiniCPM Q8_0 for x86_64..."
+      curl -sL "https://huggingface.co/$MODEL_REPO/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf" -o "$MODEL_DIR/model.gguf"
+    fi
+    # llama-server from system package or prebuilt
+    if ! command -v llama-server &>/dev/null; then
+      echo "[install] Downloading llama-server for Ubuntu x86_64..."
+      curl -sL "https://github.com/ggml-org/llama.cpp/releases/download/$LLAMACPP_RELEASE/llama-$LLAMACPP_RELEASE-bin-ubuntu-x64.tar.gz" -o /tmp/llama.tar.gz
+      sudo tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 --wildcards '*/llama-server' 2>/dev/null || true
+    fi
+    LLAMA_SERVER="$(command -v llama-server || echo '/usr/local/bin/llama-server')"
+    ;;
+esac
 
-# Special gemini fallback
-if ! command -v gemini &>/dev/null; then
-  npm install -g @google/gemini-cli 2>/dev/null || (curl -fsSL https://raw.githubusercontent.com/google-gemini/gemini-cli/main/install.sh 2>/dev/null | bash 2>/dev/null || true)
-fi
-
-# groq direct binary fallback (Termux friendly, no sudo)
-if ! command -v groq &>/dev/null; then
-  if $IS_TERMUX; then
-    mkdir -p "$HOME/bin"
-    curl -sL https://github.com/groq/groq-cli/releases/latest/download/groq-linux-amd64 -o "$HOME/bin/groq" 2>/dev/null && chmod +x "$HOME/bin/groq" && export PATH="$HOME/bin:$PATH" || true
-  else
-    curl -sL https://github.com/groq/groq-cli/releases/latest/download/groq-linux-amd64 -o /tmp/groq 2>/dev/null && chmod +x /tmp/groq && (sudo mv /tmp/groq /usr/local/bin/groq 2>/dev/null || mv /tmp/groq ~/.local/bin/groq 2>/dev/null || true)
-  fi
-fi
-
-# aider (pip free coding cli)
-if ! command -v aider &>/dev/null; then
-  pip3 install --user --quiet aider-chat 2>/dev/null || pip install --user --quiet aider-chat 2>/dev/null || true
-fi
-
-# hermes for webgui
-if ! command -v hermes &>/dev/null; then
-  pip3 install --user --quiet hermes-agent 2>/dev/null || pip install --user --quiet hermes-agent 2>/dev/null || npm install -g hermes-agent 2>/dev/null || true
-fi
-
-# update PATH and rehash
+# ── Step 2: Install CLI/IDE tools ────────────────────────────────────────────
+echo "[install] Installing CLI/IDE tools..."
 export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/.opencode/bin:$PATH"
-hash -r 2>/dev/null || true
 
-echo "[install] CLI check:"
-for c in gemini groq kiro kirox kilo opencode aider hermes; do
-  if command -v $c &>/dev/null; then echo "  ✓ $c"; else echo "  - $c (may need manual auth or re-source PATH)"; fi
+npm install -g @opencode/cli 2>/dev/null || true
+npm install -g kiro-cli 2>/dev/null || true
+npm install -g @kilocode/cli 2>/dev/null || true
+
+# Install hermes agent
+npm install -g hermes-agent 2>/dev/null || pip3 install --user --quiet hermes-agent 2>/dev/null || true
+
+# Install aider (coding agent)
+pip3 install --user --quiet aider-chat 2>/dev/null || true
+
+# Install kirox (fallback)
+npm install -g kirox 2>/dev/null || true
+
+for c in opencode kiro kilo hermes aider; do
+  command -v $c &>/dev/null && echo "[install] ✓ $c" || echo "[install] - $c"
 done
 
-# ── 7. Write child-proxy.js ────────────────────────────────────────────────
-echo "[install] Writing child-proxy.js..."
-cat > "$INSTALL_DIR/child-proxy.js" << 'CPEOF'
-#!/usr/bin/env node
-import express from "express";
-import { execFile } from "child_process";
-import { promises as fsp } from "fs";
-import { promisify } from "util";
-import os from "os";
-import path from "path";
+# ── Step 3: Install child proxy agent ────────────────────────────────────────
+echo "[install] Installing child proxy agent..."
+mkdir -p "$INSTALL_DIR"
 
-const execFileAsync = promisify(execFile);
+# Download agent.py
+curl -sL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/agent.py" -o "$INSTALL_DIR/agent.py"
 
-const PARENT_URL = process.env.PARENT_URL || "https://www.financecheque.uk";
-const CHILD_ID   = process.env.CHILD_ID   || `child-${os.hostname()}`;
-const PORT       = Number(process.env.PORT) || 4001;
-const SELF_URL   = process.env.SELF_URL    || `http://${os.hostname()}:${PORT}`;
+# Install Python deps
+pip3 install --user --quiet aiohttp 2>/dev/null || true
 
-const app = express();
-app.use(express.json());
-let activeJobs = 0;
+# ── Step 4: Start llama-server (background) ─────────────────────────────────
+echo "[install] Starting llama-server..."
+LLAMA_PORT="${LLAMA_PORT:-8090}"
 
-let rrIndex = 0;
-const rrFile = path.join(os.homedir(), ".fcukproxy", "round-robin-state.json");
-async function loadRRState() {
-  try {
-    const s = JSON.parse(await fsp.readFile(rrFile, "utf-8"));
-    rrIndex = s.index || 0;
-  } catch {}
-}
-async function saveRRState() {
-  try { await fsp.writeFile(rrFile, JSON.stringify({ index: rrIndex, updated: new Date().toISOString() })); } catch {}
-}
+# Kill existing llama-server
+pkill -f "llama-server.*$LLAMA_PORT" 2>/dev/null || true
+sleep 1
 
-async function register() {
-  try {
-    const res = await fetch(`${PARENT_URL}/api/proxy?action=register`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ childId: CHILD_ID, machine_id: CHILD_ID, machine_name: os.hostname(), url: SELF_URL }),
-    });
-    if (res.ok) {
-    } else {
-      console.error(`[child-proxy] Registration failed: ${res.status}`);
-    }
-  } catch (err) {
-    console.error("[child-proxy] Registration error:", err.message);
-  }
-}
+# Start with limited context for CPU
+nohup "$LLAMA_SERVER" \
+  -m "$MODEL_DIR/model.gguf" \
+  --port "$LLAMA_PORT" --host 127.0.0.1 \
+  -c 2048 -ngl 0 --cont-batching \
+  > "$INSTALL_DIR/llama-server.log" 2>&1 &
 
-async function heartbeat() {
-  try {
-    await fetch(`${PARENT_URL}/api/proxy?action=heartbeat`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ childId: CHILD_ID, machine_id: CHILD_ID, machine_name: os.hostname(), load: activeJobs, url: SELF_URL }),
-    });
-  } catch { /* ignore */ }
-}
+echo "[install] llama-server PID: $!"
 
-app.get("/health", (_req, res) => {
-  res.json({ ok: true, childId: CHILD_ID, activeJobs });
-});
+# ── Step 5: Start child proxy agent (background) ──────────────────────────
+echo "[install] Starting child proxy agent..."
+pkill -f "python.*agent.py.*$PROXY_PORT" 2>/dev/null || true
+sleep 1
 
-app.post("/chat", async (req, res) => {
-  const { message, messages, chat_only } = req.body || {};
-  const text = message || (messages?.length > 0 ? messages[messages.length - 1].content : "");
-  if (!text) return res.status(400).json({ ok: false, error: "message is required" });
+nohup python3 "$INSTALL_DIR/agent.py" --port "$PROXY_PORT" \
+  > "$INSTALL_DIR/agent.log" 2>&1 &
 
-  try {
-    const reply = await runChat(text);
-    return res.json({
-      id: `chatcmpl-${Date.now()}`,
-      object: "chat.completion",
-      created: Math.floor(Date.now() / 1000),
-      model: "child-proxy",
-      choices: [{ index: 0, message: { role: "assistant", content: reply }, finish_reason: "stop" }],
-      usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
-      _proxy: { childId: CHILD_ID },
-    });
-  } catch (error) {
-    return res.status(500).json({ ok: false, error: error.message || "chat failed", childId: CHILD_ID });
-  }
-});
+echo "[install] agent.py PID: $!"
 
-app.post("/v1/chat/completions", async (req, res) => {
-  const body = req.body || {};
-  const messages = body.messages || [];
-  const lastMsg = messages.length > 0 ? messages[messages.length - 1].content : "";
-  if (!lastMsg) return res.status(400).json({ error: "messages required" });
+# ── Step 6: Write Hermes config ──────────────────────────────────────────────
+echo "[install] Writing Hermes config..."
+mkdir -p "$HOME/.hermes"
+cat > "$HOME/.hermes/config.yaml" << 'HERMESEOF'
+model:
+  default: minicpm-local
+  provider: fcuk-proxy
+  base_url: http://localhost:6000/v1
+providers:
+  fcuk-proxy:
+    base_url: http://localhost:6000/v1
+    model: minicpm-local
+    api_key: ''
+fallback_providers: []
+auxiliary:
+  curator:
+    base_url: http://localhost:6000/v1
+    model: minicpm-local
+    api_key: ''
+HERMESEOF
 
-  try {
-    const reply = await runChat(lastMsg);
-    return res.json({
-      id: `chatcmpl-${Date.now()}`,
-      object: "chat.completion",
-      created: Math.floor(Date.now() / 1000),
-      model: body.model || "proxy-router",
-      choices: [{ index: 0, message: { role: "assistant", content: reply || "" }, finish_reason: "stop" }],
-      usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
-      _proxy: { childId: CHILD_ID },
-    });
-  } catch (error) {
-    return res.status(500).json({ error: error.message || "chat failed" });
-  }
-});
+echo "[install] Hermes configured to use local MiniCPM only."
 
-app.get("/v1/models", (_req, res) => {
-  res.json({
-    object: "list",
-    data: [
-      { id: "proxy-router", object: "model", created: Math.floor(Date.now() / 1000), owned_by: "fcuk-proxy" },
-      { id: "kilo-chat", object: "model", created: Math.floor(Date.now() / 1000), owned_by: "kilo" },
-      { id: "opencode-chat", object: "model", created: Math.floor(Date.now() / 1000), owned_by: "opencode" },
-    ],
-  });
-});
+# ── Step 7: Verify ────────────────────────────────────────────────────────
+echo "[install] Verifying services..."
+sleep 5
 
-const providers = [
-  { cmd: "groq", args: ["chat", "--message"], timeout: 30000 },
-  { cmd: "gemini", args: ["-p"], timeout: 45000 },
-  { cmd: "gemini", args: ["chat", "--message"], timeout: 45000 },
-  { cmd: process.env.KIRO_PATH || "kirox", args: ["chat", "--non-interactive", "--message"], timeout: 60000 },
-  { cmd: "kiro", args: ["chat", "--non-interactive", "--message"], timeout: 30000 },
-  { cmd: "opencode", args: ["chat", "--message"], timeout: 60000 },
-  { cmd: "opencode", args: ["run"], timeout: 60000 },
-  { cmd: "kilo", args: ["chat", "--message"], timeout: 60000 },
-  { cmd: "kilo", args: ["run"], timeout: 60000 },
-  { cmd: "hermes", args: ["chat", "-z"], timeout: 90000 },
-];
-
-async function runChat(message) {
-  const prompt = `You are the FinanceCheque child proxy operator. Reply concisely.
-User message: ${message}`;
-  const total = providers.length;
-
-  async function tryProvider(p, idx) {
-    try {
-      const args = [...p.args, prompt];
-      const { stdout } = await execFileAsync(p.cmd, args, { timeout: Math.min(p.timeout, 15000), maxBuffer: 1024 * 1024 });
-      const reply = stdout?.trim();
-      if (reply) return { idx, reply };
-    } catch {}
-    return null;
-  }
-
-  const results = await Promise.allSettled(
-    providers.map((p, i) => tryProvider(p, (rrIndex + i) % total))
-  );
-
-  for (const r of results) {
-    if (r.status === "fulfilled" && r.value) {
-      rrIndex = (r.value.idx + 1) % total;
-      await saveRRState();
-      return r.value.reply;
-    }
-  }
-
-  try {
-    const resp = await fetch("https://pirateclaw.datro.xyz/v1/chat/completions", {
-      method: "POST",
-      headers: { "Content-Type": "application/json", "Authorization": "Bearer test" },
-      body: JSON.stringify({ model: "auto", messages: [{ role: "user", content: prompt }], max_tokens: 500 }),
-      signal: AbortSignal.timeout(15000),
-    });
-    if (resp.ok) {
-      const data = await resp.json();
-      if (data?.choices?.[0]?.message?.content) return data.choices[0].message.content;
-    }
-  } catch {}
-
-  return `Child proxy ${CHILD_ID} received your message and is online.`;
-}
-
-app.listen(PORT, "0.0.0.0", async () => {
-  await loadRRState();
-  console.log(`[child-proxy] Listening on port ${PORT} (${CHILD_ID}) [rrIndex=${rrIndex}]`);
-  await register();
-  setInterval(heartbeat, 30_000);
-});
-CPEOF
-
-# ── 8. Write package.json ──────────────────────────────────────────────────
-echo "[install] Writing package.json..."
-cat > "$INSTALL_DIR/package.json" << 'PKGEOF'
-{
-  "name": "fcuk-child-proxy",
-  "version": "1.0.0",
-  "type": "module",
-  "dependencies": {
-    "express": "^4.18.2"
-  }
-}
-PKGEOF
-
-# ── 9. Install npm deps ────────────────────────────────────────────────────
-echo "[install] Installing npm dependencies..."
-npm install --prefix "$INSTALL_DIR" 2>&1 | tail -3
-
-# ── 10. Kill any existing child proxy on this port ─────────────────────────
-echo "[install] Stopping any existing child proxy on port $PROXY_PORT..."
-lsof -ti :$PROXY_PORT 2>/dev/null | xargs kill -9 2>/dev/null || true
-
-# ── 11. Start in tmux ──────────────────────────────────────────────────────
-echo "[install] Starting child proxy in tmux..."
-tmux kill-session -t fcuk-child-proxy 2>/dev/null || true
-SELF_IP="127.0.0.1"
-if ! $IS_TERMUX && command -v hostname >/dev/null; then
-  SELF_IP=$(hostname -I 2>/dev/null | awk '{print $1}' || echo 127.0.0.1)
-fi
-PROXY_CMD="export PATH=\"$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/bin:/usr/local/bin:\$PATH\"; cd $INSTALL_DIR && PARENT_URL=$PARENT_URL CHILD_ID=$CHILD_ID PORT=$PROXY_PORT SELF_URL=http://${SELF_IP}:$PROXY_PORT node child-proxy.js 2>&1"
-tmux new-session -d -s fcuk-child-proxy -n proxy "$PROXY_CMD"
-
-echo "[install] Starting groq service in tmux..."
-tmux kill-session -t fcuk-groq 2>/dev/null || true
-tmux new-session -d -s fcuk-groq -n groq "groq serve --port 5000 2>&1" 2>/dev/null || true
-
-# ── 12. Verify ─────────────────────────────────────────────────────────────
-sleep 3
-for i in 1 2 3; do lsof -i :$PROXY_PORT &>/dev/null && break; sleep 1; done
-if lsof -i :$PROXY_PORT &>/dev/null; then
-  echo "[install] SUCCESS: Child proxy running on port $PROXY_PORT"
-  echo "[install] Registered as: $CHILD_ID"
-  echo "[install] Parent proxy: $PARENT_URL"
-  curl -s http://localhost:$PROXY_PORT/health | python3 -m json.tool 2>/dev/null || echo "  Health check: $(curl -s http://localhost:$PROXY_PORT/health)"
+if curl -s "http://127.0.0.1:$LLAMA_PORT/v1/chat/completions" -H 'Content-Type: application/json' -d '{"messages":[{"role":"user","content":"hi"}],"max_tokens":5}' >/dev/null 2>&1; then
+  echo "[install] ✓ llama-server responding on port $LLAMA_PORT"
 else
-  echo "[install] WARNING: Child proxy does not appear to be running"
-  echo "[install] Check logs: tmux attach -t fcuk-child-proxy"
+  echo "[install] ! llama-server not responding yet (check $INSTALL_DIR/llama-server.log)"
 fi
 
-echo "[install] Done! Tmux sessions:"
-tmux ls 2>/dev/null || echo "  (tmux not available)"
-
-# ── Termux / Android specific notes for child proxy on phone ───────────────
-if $IS_TERMUX; then
-  echo ""
-  echo "[install] === Termux / Android instructions ==="
-  echo "[install] To keep the proxy running in background on Android:"
-  echo "[install]   termux-wake-lock"
-  echo "[install]   # Then detach from tmux or use termux-services if set up"
-  echo "[install] The child will register and can participate via polling even if not directly reachable."
-  echo "[install] Install extra if needed: pkg install termux-services"
-  echo "[install] Run 'source ~/.bashrc' or restart Termux for PATH updates."
-  echo "[install] More CLIs = more free capacity contributed to the parent proxy network."
+if curl -s "http://127.0.0.1:$PROXY_PORT/health" >/dev/null 2>&1; then
+  echo "[install] ✓ Child proxy agent running on port $PROXY_PORT"
+else
+  echo "[install] ! Child proxy agent not responding (check $INSTALL_DIR/agent.log)"
 fi
+
+echo ""
+echo "[install] ── Done ──────────────────────────────────────────────────"
+echo "[install] Child proxy:      http://127.0.0.1:$PROXY_PORT"
+echo "[install] llama-server:     http://127.0.0.1:$LLAMA_PORT"
+echo "[install] Model:            $MODEL_DIR/model.gguf"
+echo "[install] Hermes config:    $HOME/.hermes/config.yaml"
+echo "[install] Parent proxy:     $PARENT_URL"
+echo "[install] Child ID:         $CHILD_ID"
+echo "[install] ──────────────────────────────────────────────────────────"
+echo "[install] Next: run 'hermes' to start the agent using local MiniCPM"
+echo "[install] Or visit $PARENT_URL to see your node in the network"

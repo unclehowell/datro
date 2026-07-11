@@ -51,6 +51,7 @@ import ConnectionsModal from './components/ConnectionsModal';
 import JobSubmitForm from './components/JobSubmitForm';
 import TopupModal from './components/TopupModal';
 import NetworkAgents from './components/NetworkAgents';
+import ProxyGraph from './components/ProxyGraph';
 import { Smartphone, Apple as AppleIcon, Monitor, PlayCircle, CreditCard } from 'lucide-react';
 import { loadStripe } from '@stripe/stripe-js';
 import { createWallet, creditWallet, transferToAgent, getAgentWallet } from './services/tatumService';
@@ -127,6 +128,7 @@ export default function App() {
   const [activeOAuth, setActiveOAuth] = useState<{ platform: string, icon: any } | null>(null);
   const [isOAuthLoading, setIsOAuthLoading] = useState(false);
   const [authModalTab, setAuthModalTab] = useState<'signin' | 'signup'>('signin');
+  const [showGraph, setShowGraph] = useState(false);
   const [showLogoutWarning, setShowLogoutWarning] = useState(false);
   const [timeLeft, setTimeLeft] = useState(90);
   const [isDemo, setIsDemo] = useState(false);
@@ -637,6 +639,13 @@ export default function App() {
                     >
                       <BookOpen size={16} />
                       Documentation
+                    </button>
+                    <button 
+                      onClick={() => { setShowGraph(true); setIsWalletMenuOpen(false); }}
+                      className="w-full flex items-center gap-3 p-3 hover:bg-card transition-colors text-xs font-bold text-accent"
+                    >
+                      <Layers size={16} />
+                      Network Graph
                     </button>
 
                     <div className="h-[1px] bg-border my-2" />
@@ -1327,6 +1336,43 @@ node child-proxy.js`}</pre>
                     </button>
                   </div>
                 </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
+      {/* Full-screen Proxy Graph Modal */}
+      <AnimatePresence>
+        {showGraph && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[1000] bg-black"
+            onClick={() => setShowGraph(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.95, opacity: 0 }}
+              className="w-full h-full flex flex-col"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="flex items-center justify-between px-6 py-3 bg-[#0a0a0a] border-b border-white/5 z-10">
+                <div className="flex items-center gap-3">
+                  <Layers size={16} className="text-accent" />
+                  <span className="text-xs font-bold uppercase tracking-widest text-white/60">Child Proxy Architecture</span>
+                </div>
+                <div className="flex items-center gap-4">
+                  <span className="text-[9px] text-white/20 font-mono">Drag nodes · Scroll to zoom</span>
+                  <button onClick={() => setShowGraph(false)} className="text-white/30 hover:text-white transition-colors">
+                    <X size={20} />
+                  </button>
+                </div>
+              </div>
+              <div className="flex-1 relative">
+                <ProxyGraph />
               </div>
             </motion.div>
           </motion.div>

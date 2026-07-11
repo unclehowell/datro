@@ -4,3 +4,7 @@ phone-proxy-arm64
 *.tar.gz
 *.zip
 .DS_Store
+node_modules/
+dist/
+.env.local
+*.log

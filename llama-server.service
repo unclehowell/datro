@@ -9,7 +9,7 @@ Type=simple
 User=unclehowell
 Group=unclehowell
 Environment=LD_LIBRARY_PATH=/usr/local/bin
-ExecStart=/usr/local/bin/llama-server -m /home/unclehowell/.fcukproxy/models/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf --port 8090 --host 127.0.0.1 -c 4096 -ngl 0 --cont-batching
+ExecStart=/usr/local/bin/llama-server -m /home/unclehowell/.fcukproxy/models/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf --port 8090 --host 127.0.0.1 -c 8192 -ngl 0 --cont-batching
 ExecReload=/bin/kill -HUP $MAINPID
 Restart=on-failure
 RestartSec=15

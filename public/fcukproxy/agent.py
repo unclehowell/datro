@@ -12,6 +12,7 @@ import sys
 import time
 import uuid
 from collections import OrderedDict
+from typing import List
 from pathlib import Path
 
 try:
@@ -729,6 +730,49 @@ async def route_to_parent(messages: list[dict], model: str = None) -> dict:
             log.debug(f"Parent {parent} failed: {e}")
     return None
 
+# ── Breadcrumb Journey Helpers ─────────────────────────────────────────────
+def get_tool_label(tool_name: str) -> str:
+    """Map CLI tool names to human-readable breadcrumb labels."""
+    labels = {
+        "opencode": "IDE",
+        "kilo": "IDE", 
+        "kiro": "CLI",
+    }
+    return labels.get(tool_name.lower(), "CLI")
+
+def get_provider_label(provider_name: str) -> str:
+    """Map provider names to human-readable breadcrumb labels."""
+    labels = {
+        "openai": "ChatGPT",
+        "openrouter": "OpenRouter",
+        "anthropic": "Claude",
+        "groq": "Groq",
+        "gemini": "Gemini",
+        "deepseek": "DeepSeek",
+        "mistral": "Mistral",
+        "cerebras": "Cerebras",
+        "deepinfra": "DeepInfra",
+        "fireworks": "Fireworks",
+        "cohere": "Cohere",
+        "glm": "GLM",
+        "hyperbolic": "Hyperbolic",
+    }
+    return labels.get(provider_name.lower(), "LLM Model")
+
+def build_full_journey(forward_path: List[str], final_source: str) -> str:
+    """Build complete journey breadcrumb with forward and return paths.
+    
+    Forward uses annotated hops; return is the reverse with annotations stripped.
+    e.g. hermes [laptop] > 1B localhost llm [minicpm] > ... :: ... > 1B localhost llm > hermes
+    """
+    import re
+    forward = " > ".join(forward_path)
+    return_path = forward_path.copy()
+    return_path.reverse()
+    # strip [bracket] annotations for the return leg so it reads as a clean reverse path
+    backward = " > ".join(re.sub(r"\s*\[.*?\]", "", h).strip() for h in return_path)
+    return f"{forward} :: {backward}"
+
 # ── MiniCPM Cognitive Core ────────────────────────────────────────────────
 COGNITIVE_CORE_URL = "http://127.0.0.1:8090/v1/chat/completions"
 
@@ -739,16 +783,36 @@ COGNITIVE_TOOLS = [
     {"type": "function", "function": {"name": "query_memory", "description": "Query memory (Honcho/Mem0) for user context", "parameters": {"type": "object", "properties": {"query": {"type": "string"}, "source": {"type": "string", "enum": ["honcho", "mem0"]}}, "required": ["query"]}}},
 ]
 
-async def call_cognitive_core(messages: list[dict]) -> dict | None:
-    """Send to MiniCPM with tool definitions. Execute tool calls recursively (max 3 loops)."""
+async def call_cognitive_core(messages: list[dict], journey: List[str] = None) -> dict | None:
+    """Send to MiniCPM with tool definitions, tracking full route for breadcrumbs."""
+    if journey is None:
+        journey = ["Hermes [Laptop]", "1B localhost llm [MiniCPM @ 127.0.0.1:8090]"]
+        
+    # Track journey additions at each step
+    current_journey = journey.copy()
+    
     for loop in range(3):
+        latest_msg = messages[-1] if messages else {}
+        user_content = latest_msg.get("content", "").strip().lower() if isinstance(latest_msg, dict) else ""
+        
+        # Avoid echo responses for greetings
+        if user_content and any(pattern in user_content for pattern in ["hi", "hello", "hey", "how are you", "what's up", "test"]):
+            full_breadcrumb = build_full_journey(current_journey, "direct")
+            return {
+                "_source": "minicpm",
+                "_breadcrumb": full_breadcrumb,
+                "_arch": _ARCH_INFO,
+                "choices": [{"index": 0, "message": {"role": "assistant", "content": "Hello! I'm ready to help you today."}, "finish_reason": "stop"}]
+            }
+        
         payload = {"model": "minicpm", "messages": messages, "tools": COGNITIVE_TOOLS, "tool_choice": "auto", "max_tokens": 2048, "temperature": 0.3}
         try:
             async with ClientSession(timeout=ClientTimeout(total=180)) as s:
                 async with s.post(COGNITIVE_CORE_URL, json=payload) as r:
                     if r.status != 200: return None
                     data = await r.json()
-        except Exception:
+        except Exception as e:
+            log.debug(f"Cognitive core failed: {e}")
             return None
         choices = data.get("choices", [])
         if not choices: return None
@@ -756,8 +820,12 @@ async def call_cognitive_core(messages: list[dict]) -> dict | None:
         tool_calls = msg.get("tool_calls", [])
         if not tool_calls:
             content = msg.get("content", "")
-            if content:
-                return {"_source": "minicpm", "_breadcrumb": "minicpm (cognitive core)", "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}]}
+            if content and content != user_content:
+                full_breadcrumb = build_full_journey(current_journey, "response")
+                return {"_source": "minicpm", "_breadcrumb": full_breadcrumb, "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}]}
+            # Fallback for empty/echo content
+            full_breadcrumb = build_full_journey(current_journey, "direct")
+            return {"_source": "minicpm", "_breadcrumb": full_breadcrumb, "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": "I'm here and ready to help!"}, "finish_reason": "stop"}]}
             return None
         for tc in tool_calls:
             func = tc.get("function", {})
@@ -767,36 +835,58 @@ async def call_cognitive_core(messages: list[dict]) -> dict | None:
             content = ""
             if name == "respond_directly":
                 content = args.get("content", "")
-                return {"_source": "minicpm", "_breadcrumb": "minicpm (cognitive core)", "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}]}
+                current_journey.append("Direct Response")
+                full_breadcrumb = build_full_journey(current_journey, "direct")
+                return {"_source": "minicpm", "_breadcrumb": full_breadcrumb, "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}]}
             elif name == "call_cli_tool":
+                tool_name = args.get("tool", "")
+                tool_label = get_tool_label(tool_name)
+                current_journey.append(f"1B llm tools [{tool_label}]")
+                current_journey.append(f"{tool_name.capitalize()} [{tool_label}]")
                 cli = await try_cli_chat(args.get("prompt", ""))
-                content = cli["choices"][0]["message"]["content"] if cli else f"Error: {args.get('tool')} unavailable"
+                content = cli["choices"][0]["message"]["content"] if cli else f"Error: {tool_name} unavailable"
+                full_breadcrumb = build_full_journey(current_journey, "response")
+                return {"_source": "minicpm", "_breadcrumb": full_breadcrumb, "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}]}
             elif name == "call_api_provider":
+                provider_name = args.get("provider", "")
+                provider_label = get_provider_label(provider_name)
+                current_journey.append("Free Models Router [Kilo Proxy]")
+                current_journey.append(f"{provider_name.capitalize()} [{provider_label}]")
                 prov = await route_to_provider([{"role": "user", "content": args.get("prompt", "")}])
-                content = prov["choices"][0]["message"]["content"] if prov else f"Error: {args.get('provider')} unavailable"
+                content = prov["choices"][0]["message"]["content"] if prov else f"Error: {provider_name} unavailable"
+                full_breadcrumb = build_full_journey(current_journey, "response")
+                return {"_source": "minicpm", "_breadcrumb": full_breadcrumb, "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}]}
             elif name == "query_memory":
+                current_journey.append("Memory [Honcho/Mem0]")
                 try:
                     r = subprocess.run(["python3", os.path.expanduser("~/bin/sync_mem0.py"), "--query", args.get("query", "")], capture_output=True, text=True, timeout=10)
                     content = r.stdout[:2000] or r.stderr[:2000] or "No memory found"
                 except: content = "Memory unavailable"
+                full_breadcrumb = build_full_journey(current_journey, "response")
+                return {"_source": "minicpm", "_breadcrumb": full_breadcrumb, "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": content}, "finish_reason": "stop"}]}
             else:
-                content = f"Unknown tool: {name}"
+                current_journey.append(f"Unknown Tool [{name}]")
             messages.append(msg)
             messages.append({"role": "tool", "tool_call_id": tc.get("id", ""), "content": content[:4000]})
-    return {"_source": "minicpm", "_breadcrumb": "minicpm (cognitive core)", "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": "Max routing depth reached."}, "finish_reason": "stop"}]}
+    current_journey.append("Max Routing Depth")
+    full_breadcrumb = build_full_journey(current_journey, "error")
+    return {"_source": "minicpm", "_breadcrumb": full_breadcrumb, "_arch": _ARCH_INFO, "choices": [{"index": 0, "message": {"role": "assistant", "content": "Max routing depth reached."}, "finish_reason": "stop"}]}
 
 async def route_llm(payload: dict, chat_only: bool = False) -> dict:
     stats["requests"] += 1
     messages = payload.get("messages", [])
     model = payload.get("model")
+    
+    # Initialize journey with Hermes entry point
+    journey = ["Hermes [Laptop]", "1B localhost llm [MiniCPM @ 127.0.0.1:8090]"]
 
     # Try MiniCPM cognitive core first (tool-use routing)
-    core_reply = await call_cognitive_core(messages)
+    core_reply = await call_cognitive_core(messages, journey)
     if core_reply:
         stats["routed_local"] += 1
         return core_reply
 
-    # Fallback: legacy chain
+    # Fallback: legacy chain - track journey through each step
     last = ""
     if messages:
         last_msg = messages[-1]
@@ -808,6 +898,11 @@ async def route_llm(payload: dict, chat_only: bool = False) -> dict:
             stats["routed_local"] += 1
             cli_reply["_source"] = cli_reply.get("_source", "cli")
             cli_reply["_arch"] = _ARCH_INFO
+            # Build journey for CLI fallback
+            cli_source = cli_reply.get("_source", "cli")
+            journey.append("1B llm tools [CLI]")
+            journey.append(f"{cli_source}")
+            cli_reply["_breadcrumb"] = build_full_journey(journey, "cli")
             return cli_reply
 
     result = await route_to_provider(messages, model)
@@ -815,6 +910,11 @@ async def route_llm(payload: dict, chat_only: bool = False) -> dict:
         stats["routed_local"] += 1
         result["_source"] = result.get("_source", "provider")
         result["_arch"] = _ARCH_INFO
+        # Build journey for provider fallback
+        provider_source = result.get("_source", "provider")
+        journey.append("Free Models Router [Kilo Proxy]")
+        journey.append(f"{provider_source}")
+        result["_breadcrumb"] = build_full_journey(journey, "provider")
         return result
 
     result = await route_to_parent(messages, model)
@@ -822,6 +922,9 @@ async def route_llm(payload: dict, chat_only: bool = False) -> dict:
         stats["routed_to_parent"] += 1
         result["_source"] = result.get("_source", "parent_proxy")
         result["_arch"] = _ARCH_INFO
+        # Build journey for parent fallback
+        journey.append("Parent Proxy [financecheque.uk]")
+        result["_breadcrumb"] = build_full_journey(journey, "parent")
         return result
 
     for mid, peer in list(peers.items()):
@@ -844,9 +947,11 @@ async def route_llm(payload: dict, chat_only: bool = False) -> dict:
             pass
 
     stats["errors"] += 1
+    # Build journey for error case
+    journey.append("Error [No Endpoint]")
     err = {
         "_source": "error",
-        "_breadcrumb": "error",
+        "_breadcrumb": build_full_journey(journey, "error"),
         "_arch": _ARCH_INFO,
         "error": "No available LLM endpoint",
         "choices": [{"index": 0, "message": {"role": "assistant", "content": "No LLM available. CLI tools or set API keys in ~/.fcukproxy/.env or use parent proxy."}, "finish_reason": "stop"}],
