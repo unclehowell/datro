@@ -218,9 +218,16 @@ html, body {
     font-size: 16px;
     line-height: 1.7;
     color: var(--text);
-    white-space: pre-wrap;
-    word-break: break-word;
     font-family: var(--font-mono);
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: none;
+    width: 100%;
+    box-sizing: border-box;
+}
+.md-viewer-body:focus {
+    background: rgba(255,255,255,0.02);
 }
 .md-viewer-body::-webkit-scrollbar { width: 5px; }
 .md-viewer-body::-webkit-scrollbar-track { background: transparent; }
@@ -1618,6 +1625,10 @@ button:disabled { opacity: 0.3; cursor: not-allowed; }
     z-index: 6;
     pointer-events: none;
     padding: 12px;
+    display: none;
+}
+.version-layers.visible {
+    display: block;
 }
 .version-layer-label {
     position: absolute;

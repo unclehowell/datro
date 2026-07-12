@@ -716,6 +716,8 @@ function closeSideMenus() {
     var backdrop = $('branch-backdrop');
     if (backdrop) backdrop.classList.remove('visible');
     document.querySelectorAll('.indicator-btn').forEach(function(b) { b.classList.remove('active'); });
+    var vl = $('version-layers');
+    if (vl) vl.classList.remove('visible');
 }
 
 function openSideMenu(side) {
@@ -727,6 +729,8 @@ function openSideMenu(side) {
     if (backdrop) backdrop.classList.add('visible');
     var btn = $('indicator-' + side);
     if (btn) btn.classList.add('active');
+    var vl = $('version-layers');
+    if (vl) vl.classList.add('visible');
     renderSideFiles(side);
 }
 
@@ -867,31 +871,28 @@ function openMdViewer(branch, fileName, displayName, side) {
     header.innerHTML = '';
     var close = document.createElement('button');
     close.className = 'close-viewer';
-    close.textContent = '✕';
+    close.textContent = '\u2715';
     close.onclick = closeMdViewer;
     header.appendChild(close);
     var title = document.createElement('span');
     title.className = 'viewer-title';
-    title.textContent = branch + ' / ' + displayName;
+    title.textContent = branch + ' / ' + displayName + '.' + side + '.md';
     header.appendChild(title);
     var actions = document.createElement('div');
     actions.className = 'viewer-actions';
-    var editBtn = document.createElement('button');
-    editBtn.className = 'viewer-btn edit-btn';
-    editBtn.textContent = 'EDIT';
-    editBtn.onclick = function() {
-        closeMdViewer();
-        openEditor(branch, currentViewerFile.side, fileName);
-    };
-    actions.appendChild(editBtn);
+    var saveBtn = document.createElement('button');
+    saveBtn.className = 'viewer-btn edit-btn';
+    saveBtn.textContent = 'SAVE';
+    saveBtn.onclick = function() { saveMdInline(); };
+    actions.appendChild(saveBtn);
     var deployBtn = document.createElement('button');
     deployBtn.className = 'viewer-btn deploy-btn';
     deployBtn.textContent = 'DEPLOY';
-    deployBtn.onclick = function() { deployMdFile(); };
+    deployBtn.onclick = function() { deployMdInline(); };
     actions.appendChild(deployBtn);
     header.appendChild(actions);
 
-    body.textContent = 'Loading...';
+    body.value = 'Loading...';
     overlay.style.display = 'flex';
     body.scrollTop = 0;
 
@@ -907,10 +908,10 @@ function openMdViewer(branch, fileName, displayName, side) {
           return r.json();
         })
         .then(function(data) {
-          body.textContent = data.content || '(empty)';
+          body.value = data.content || '(empty)';
         })
         .catch(function() {
-          body.textContent = '// Brain file not found on GitHub';
+          body.value = '// Brain file not found on GitHub';
         });
       return;
     }
@@ -926,7 +927,7 @@ function openMdViewer(branch, fileName, displayName, side) {
 
 function fetchFromBranch(branch, side, paths, bodyEl) {
     if (paths.length === 0) {
-        bodyEl.textContent = '// File not found on GitHub';
+        bodyEl.value = '// File not found on GitHub';
         return;
     }
     var path = paths[0];
@@ -936,7 +937,7 @@ function fetchFromBranch(branch, side, paths, bodyEl) {
             return r.json();
         })
         .then(function(data) {
-            bodyEl.textContent = data.content || '(empty)';
+            bodyEl.value = data.content || '(empty)';
         })
         .catch(function() {
             fetchFromBranch(branch, side, paths.slice(1), bodyEl);
@@ -951,25 +952,35 @@ function closeMdViewer() {
     currentViewerFile = null;
 }
 
-function deployMdFile() {
+function saveMdInline() {
     if (!currentViewerFile) return;
+    var body = $('md-viewer-body');
+    if (!body) return;
+    var branch = currentViewerFile.branch;
+    var side = currentViewerFile.side;
+    var fileName = currentViewerFile.fileName;
+    var cacheKey = branch + '/' + side + '/' + fileName;
+    editCache[cacheKey] = body.value;
+    renderCacheStatus();
+    var title = document.querySelector('.viewer-title');
+    if (title) title.textContent = branch + ' / ' + fileName + '.' + side + '.md (saved)';
+}
+
+function deployMdInline() {
+    if (!currentViewerFile) return;
+    var body = $('md-viewer-body');
+    if (!body) return;
     var deployBtnEl = document.querySelector('.viewer-btn.deploy-btn');
     if (deployBtnEl) { deployBtnEl.textContent = '...'; deployBtnEl.disabled = true; }
 
     var branch = currentViewerFile.branch;
+    var side = currentViewerFile.side;
     var fileName = currentViewerFile.fileName;
+    var cacheKey = branch + '/' + side + '/' + fileName;
+    var content = body.value;
+    editCache[cacheKey] = content;
 
-    var cacheKey = branch + '/high/' + fileName;
-    var content = editCache[cacheKey];
-    if (content === undefined) {
-        var body = $('md-viewer-body');
-        if (body && body.textContent && body.textContent !== 'Loading...' && !body.textContent.startsWith('// File not found')) {
-            content = body.textContent;
-        }
-    }
-    if (content === undefined) content = '';
-
-    var filePath = fileName + (fileName.indexOf('.') === -1 ? '.md' : '');
+    var filePath = 'static/' + branch + '/' + fileName + '.' + side + '.md';
 
     fetch('/api/rerelease/' + encodeURIComponent(branch), {
         method: 'POST',
@@ -981,21 +992,19 @@ function deployMdFile() {
     .then(function(r) { return r.json(); })
     .then(function(data) {
         if (deployBtnEl) { deployBtnEl.textContent = 'DEPLOY'; deployBtnEl.disabled = false; }
-        var status = $('editor-status');
         if (data.ok) {
-            if (status) status.textContent = 'Deployed & release triggered';
+            delete editCache[cacheKey];
+            renderCacheStatus();
+            var title = document.querySelector('.viewer-title');
+            if (title) title.textContent = branch + ' / ' + fileName + '.' + side + '.md (deployed)';
             setTimeout(function() {
                 closeMdViewer();
                 refreshBranchVersions();
             }, 1500);
-        } else {
-            if (status) status.textContent = 'Deploy failed';
         }
     })
     .catch(function() {
         if (deployBtnEl) { deployBtnEl.textContent = 'DEPLOY'; deployBtnEl.disabled = false; }
-        var status = $('editor-status');
-        if (status) status.textContent = 'Network error';
     });
 }
 
