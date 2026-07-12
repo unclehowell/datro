@@ -1,19 +1,24 @@
+import {
+  ALL_RELEASE_BRANCHES,
+  DEFAULT_GEAR,
+  REGULAR_BRANCHES,
+  applyExactReplacement,
+  assertSafeRepositoryPath,
+  cadenceForGear,
+  cooldownForBranch,
+  formatVersion,
+  isReleaseArtifactPath,
+  normalizeGear,
+  parseAgentToolCall,
+  parseVersionNum,
+  requiresAdmin
+} from './policy.js';
+
 const GITHUB_REPO = 'unclehowell/datro';
 const GITLAWB_NODE = 'https://node.gitlawb.com';
 const GITLAWB_BOUNTY_LIST_URL = `${GITLAWB_NODE}/api/v1/bounties`;
 
-const ALL_BRANCHES = [
-  "althea", "archives", "bpvsbuckler", "bpvsbuckler-redflag",
-  "bucklervsbp", "bw_base", "carfinancecheque",
-  "ccan", "ceo", "command", "command-agent-endpoint",
-  "dash", "datro", "dcc", "financecheque",
-  "financecheque-monday-agent", "gh-pages", "gui",
-  "hbnb", "library", "llmwiki",
-  "pirateclaw", "rerelease",
-  "subrepos", "ui", "wave", "wayback", "whitepaper"
-];
-
-const REGULAR_BRANCHES = ALL_BRANCHES.filter(b => b !== 'cnei');
+const ALL_BRANCHES = ALL_RELEASE_BRANCHES;
 
 const HONCHO_TENANT_IDS = {
   bpvsbuckler: '0lCBWsZN-CS-DyY8THX7H',
@@ -75,10 +80,9 @@ function branchQuotaPrompt(branch) {
   return `\n## MANDATORY BRANCH QUOTA (${q.label})\n${q.mandate}\nRelevant files: ${q.hints.join(', ')}\nThis quota is NON-NEGOTIABLE — the release fails its purpose without it.`;
 }
 
-const WING_FILE_TYPES = ['AGENT', 'MASTERPLAN', 'SPEC', 'TASKS'];
+const WING_FILE_TYPES = ['AGENT', 'CHANGELOG', 'CONTEXT', 'GLOSSARY', 'HEARTBEAT', 'IDENTITY', 'MASTERPLAN', 'MEMORY', 'PLAN', 'README', 'RESOURCES', 'RULES', 'SKILLS', 'SOUL', 'SPEC', 'TASKS', 'TEMPLATE'];
 const WING_FILE_SIDES = ['left', 'right'];
 
-const RATE_BY_GEAR = [7200, 5400, 3600, 2400, 1800, 1200, 600, 300, 120, 60]; // gear1=2h, gear3=1h, gear8=5min, gear10=1min
 const DOMAIN = 'datro.directory';
 const GITHUB_REPO_OBJ = { owner: 'unclehowell', repo: 'datro' };
 const BRAIN_BRANCH = 'brain';
@@ -378,12 +382,37 @@ const AGENT_TOOLS = {
       return file ? file.content.slice(0, 30000) : `File not found: ${args.path}`;
     }
   },
-  write_file: {
-    description: 'Write content to a file on a branch (commits immediately)',
-    args: { path: 'string', branch: 'string', content: 'string', message: 'string' },
+  replace_exact: {
+    description: 'Replace one exact, unique text block in a file on the active branch and verify the commit',
+    args: { path: 'string', old_text: 'string', new_text: 'string', message: 'string' },
     execute: async (args, ctx) => {
-      const commit = await createCommit(ctx.token, args.branch || ctx.branch, args.path, args.content, args.message);
-      return `Committed ${args.path} (${commit.sha.slice(0, 8)})`;
+      const path = assertSafeRepositoryPath(args.path);
+      if (!isReleaseArtifactPath(path)) {
+        throw new Error(`${path} is bookkeeping, not a releasable branch-specific change`);
+      }
+      if (ctx.modifiedPaths.has(path)) {
+        throw new Error(`Only one exact replacement is allowed per file: ${path}`);
+      }
+      const current = await getFileContent(ctx.token, ctx.branch, path);
+      if (!current) throw new Error(`File not found on ${ctx.branch}: ${path}`);
+      const updated = applyExactReplacement(current.content, args.old_text, args.new_text);
+      const message = typeof args.message === 'string' && args.message.trim()
+        ? args.message.trim().slice(0, 200)
+        : `fix(${ctx.branch}): exact branch-specific edit`;
+      const commit = await createCommit(ctx.token, ctx.branch, path, updated, message);
+      const verified = await getFileContent(ctx.token, ctx.branch, path);
+      if (!verified || verified.sha !== commit.blobSha || verified.content !== updated) {
+        throw new Error(`Committed content could not be verified on ${ctx.branch}: ${path}`);
+      }
+      ctx.modifiedPaths.add(path);
+      return JSON.stringify({
+        ok: true,
+        verified: true,
+        branch: ctx.branch,
+        path,
+        commitSha: commit.sha,
+        blobSha: commit.blobSha
+      });
     }
   },
   list_branches: {
@@ -626,7 +655,8 @@ async function runAgentLoop(env, branch, html, headersContent, wingFiles, liveHt
   const context = {
     token, branch, env, currentHtml,
     wingFiles: Object.keys(wingFiles || {}).length,
-    domain: DOMAIN
+    domain: DOMAIN,
+    modifiedPaths: new Set()
   };
 
   const category = computeBranchCategory(branch);
@@ -692,14 +722,14 @@ Your job is to make this specific site better. Read its code, visit the live sit
 3. **Read past release notes** (loaded for you below) — do NOT repeat anything already done
 4. **Understand what makes this site unique** based on its purpose
 5. **Propose 1-2 specific, meaningful changes** that improve the site for its purpose
-6. **Implement changes** using write_file
+6. **Implement changes** using replace_exact
 7. **Verify** your changes produce valid HTML
 
 ## Mandatory Rules
 - Every change MUST reference something specific to this branch (a content section, a feature, a layout element that exists)
 - If you can't find anything specific to improve after reading the code and live site, read MORE files (search_code, brainstorm) — don't give up
 - NO generic meta-tag-only changes (charset, viewport, description — these are not bespoke)
-- Max 3 write_file calls
+- Max 3 replace_exact calls, and only one replacement per file
 - If you truly cannot find a branch-specific improvement, output DONE with SUMMARY explaining what you investigated
 
 ## Available Tools
@@ -749,10 +779,12 @@ ${sciHub.slice(0, 500)}
 ${dailyDigest.slice(0, 500)}
 
 ## Tool Protocol
-To use a tool, output:
+To use a tool, output valid JSON (newlines inside strings must use `\n`):
 TOOL: <tool_name>
-ARG: key=value
-ARG: key=value
+ARGS_JSON:
+```json
+{"key":"value"}
+```
 
 When you have made all your changes and want to finish, output:
 DONE
@@ -763,7 +795,7 @@ SUMMARY: <what you changed and why, referencing specifics of ${branch}'s site>
 - EVERY change must reference something SPECIFIC to ${branch}'s site content or purpose
 - If you can't find anything specific, read more files — don't force a generic change
 - NO meta-tag-only changes (charset, viewport, description, OG tags)
-- Max 3 write_file calls
+- Max 3 replace_exact calls, and only one replacement per file
 - End with CHECK — verify your changes are valid HTML
 - A release with 0 genuine changes is better than a release with 1 generic change`;
 
@@ -823,9 +855,9 @@ Visit the live site (its HTML is above), read the source code, understand what m
       lastReplyHash = replyHash;
     }
 
-    // Doom-loop guard: detect write_file without prior PLAN
-    if (reply.includes('TOOL: write_file') && !planOutput && iter > 0) {
-      conversation.push('You must output a PLAN block before using write_file. Analyze first, then propose changes.');
+    // Doom-loop guard: detect a mutation without prior PLAN
+    if (reply.includes('TOOL: replace_exact') && !planOutput && iter > 0) {
+      conversation.push('You must output a PLAN block before using replace_exact. Analyze first, then propose changes.');
       continue;
     }
 
@@ -852,54 +884,63 @@ Visit the live site (its HTML is above), read the source code, understand what m
       console.log('Agent produced a PLAN');
     }
 
-    // Track write_file count
-    if (reply.includes('TOOL: write_file')) {
+    // Track exact replacement count
+    if (reply.includes('TOOL: replace_exact')) {
       writeCount++;
       if (writeCount > 3) {
-        conversation.push('Maximum write_file calls (3) reached. Output DONE to finish.');
+        conversation.push('Maximum replace_exact calls (3) reached. Output DONE to finish.');
         continue;
       }
     }
 
-    // Doom-loop guard: max iterations without write_file
+    // Doom-loop guard: max iterations without a branch edit
     if (iter >= maxIterations - 2 && writeCount === 0) {
       conversation.push('You have used most iterations without making changes. Either make a change now or output DONE with SUMMARY: no changes needed.');
     }
 
-    const toolMatch = reply.match(/TOOL:\s*(\w+)/);
-    if (!toolMatch) {
+    let toolCall;
+    try {
+      toolCall = parseAgentToolCall(reply);
+    } catch (error) {
+      conversation.push(`Tool call rejected: ${error.message}. Use TOOL plus one ARGS_JSON object.`);
+      continue;
+    }
+    if (!toolCall) {
       conversation.push('Please use a tool or output DONE when finished.');
       continue;
     }
 
-    const toolName = toolMatch[1];
+    const toolName = toolCall.name;
     const tool = AGENT_TOOLS[toolName];
     if (!tool) {
       conversation.push(`Unknown tool: ${toolName}. Available: ${Object.keys(AGENT_TOOLS).join(', ')}`);
       continue;
     }
 
-    const args = {};
-    const argLines = reply.split('\n').filter(l => l.startsWith('ARG:'));
-    for (const line of argLines) {
-      const eq = line.indexOf('=');
-      if (eq > 4) {
-        const key = line.substring(4, eq).trim();
-        const val = line.substring(eq + 1).trim();
-        args[key] = val;
-      }
-    }
+    const args = toolCall.args;
 
     console.log(`Agent calling tool: ${toolName} ${JSON.stringify(args)}`);
 
     try {
       const observation = await tool.execute(args, context);
-      console.log(`Tool result: ${(observation || '').slice(0, 200)}`);
+      const observationText = typeof observation === 'string' ? observation : JSON.stringify(observation);
+      console.log(`Tool result: ${(observationText || '').slice(0, 200)}`);
 
-      if (toolName === 'write_file') {
-        committedFiles.push({ path: args.path, branch: args.branch || branch, message: args.message });
+      if (toolName === 'replace_exact') {
+        const receipt = JSON.parse(observationText);
+        if (!receipt.verified || receipt.branch !== branch) {
+          throw new Error('Exact replacement receipt failed branch verification');
+        }
+        committedFiles.push({
+          path: receipt.path,
+          branch: receipt.branch,
+          message: args.message,
+          verified: true,
+          commitSha: receipt.commitSha,
+          blobSha: receipt.blobSha
+        });
         if (args.path === 'index.html') {
-          const updated = await getFileContent(token, args.branch || branch, 'index.html');
+          const updated = await getFileContent(token, branch, 'index.html');
           if (updated) currentHtml = updated.content;
         }
       }
@@ -910,7 +951,7 @@ Visit the live site (its HTML is above), read the source code, understand what m
         agentBounty = { action: 'submitted', bountyId: args.bountyId, submissionUrl: args.submissionUrl, branch, at: Date.now() };
       }
 
-      conversation.push(`TOOL ${toolName} result:\n${(observation || '').slice(0, 10000)}`);
+      conversation.push(`TOOL ${toolName} result:\n${(observationText || '').slice(0, 10000)}`);
     } catch (err) {
       console.log(`Tool error: ${err.message}`);
       conversation.push(`Tool ${toolName} failed: ${err.message}. Try a different approach.`);
@@ -1356,27 +1397,13 @@ async function getRotationState(env) {
   return { regular_index: 0, cnei_queue: 0, lap: 0, mode: 'AUTO' };
 }
 
-function cadenceForGear(gear) {
-  const g = Math.max(1, Math.min(10, gear || 3));
-  const base = RATE_BY_GEAR[g - 1] || 3600;
-  return {
-    gear: g,
-    regularCooldownSec: base * 2,
-    cneiCooldownSec: base,
-    regularCooldownHuman: `${Math.round(base * 2 / 60)}min`,
-    cneiCooldownHuman: `${Math.round(base / 60)}min`,
-    cron: '*/10 * * * *',
-    pattern: 'regular branch (2x base) → cnei (1x base) → repeat'
-  };
-}
-
 async function getFlywheelConfig(env) {
   try {
     const raw = await env.FLYWHEEL_STATE.get('config', 'json');
-    const gear = raw?.gear || 5;
-    if (raw) return { gear: 3, ...raw, cadence: cadenceForGear(gear) };
+    const gear = normalizeGear(raw?.gear ?? DEFAULT_GEAR);
+    if (raw) return { ...raw, gear, cadence: cadenceForGear(gear) };
   } catch (_) {}
-  return { gear: 5, cadence: cadenceForGear(5) };
+  return { gear: DEFAULT_GEAR, cadence: cadenceForGear(DEFAULT_GEAR) };
 }
 
 async function saveRotationState(env, state) {
@@ -1545,51 +1572,38 @@ async function createGitTag(token, tagName, commitSha) {
   return tagData.sha;
 }
 
-function parseVersionNum(tagName, branch) {
-  if (!tagName || !tagName.startsWith(`${branch}-v`)) return 0;
-  const versionStr = tagName.split('-v')[1];
-  const parts = versionStr.split('.').map(p => parseInt(p, 10));
-  if (parts.length >= 4) return (parts[0] * 1000000) + (parts[1] * 10000) + (parts[2] * 100) + parts[3];
-  if (parts.length >= 3) return (parts[0] * 10000) + (parts[1] * 100) + parts[2];
-  if (parts.length >= 2) return (parts[0] * 100) + parts[1];
-  return parts[0] || 0;
-}
-
 async function getMaxBranchReleaseNum(token, branch) {
   const resp = await ghFetch(
-    `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=30`,
+    `https://api.github.com/repos/${GITHUB_REPO}/git/matching-refs/tags/${encodeURIComponent(`${branch}-v0.`)}`,
     token
   );
-  const releases = await resp.json();
+  const refs = await resp.json();
   let max = 0;
-  if (Array.isArray(releases)) {
-    for (const r of releases) {
-      if (r.tag_name?.startsWith(`${branch}-v`) && !r.tag_name.endsWith('-aws')) {
-        max = Math.max(max, parseVersionNum(r.tag_name, branch));
-      }
+  if (Array.isArray(refs)) {
+    for (const ref of refs) {
+      const tagName = ref.ref?.replace(/^refs\/tags\//, '');
+      const counter = parseVersionNum(tagName, branch);
+      if (counter !== null) max = Math.max(max, counter);
     }
   }
   return max;
 }
 
 async function getLatestReleaseDate(token, branch) {
-  const resp = await ghFetch(
-    `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=30`,
-    token
+  const counter = await getMaxBranchReleaseNum(token, branch);
+  if (counter === 0) return 0;
+  const tagName = `${branch}-v${formatVersion(branch, counter)}`;
+  const resp = await fetch(
+    `https://api.github.com/repos/${GITHUB_REPO}/releases/tags/${encodeURIComponent(tagName)}`,
+    { headers: ghHeaders(token) }
   );
-  const releases = await resp.json();
-  if (!Array.isArray(releases)) return 0;
-  for (const r of releases) {
-    if (r.tag_name?.startsWith(`${branch}-v`) && !r.tag_name.endsWith('-aws') && r.published_at) {
-      return new Date(r.published_at).getTime() / 1000;
-    }
-  }
-  return 0;
+  if (!resp.ok) return 0;
+  const release = await resp.json();
+  return release.published_at ? new Date(release.published_at).getTime() / 1000 : 0;
 }
 
 async function isOnCooldown(token, branch, gear) {
-  const baseCooldown = RATE_BY_GEAR[gear - 1] || 3600;
-  const cooldown = branch === 'cnei' ? baseCooldown : baseCooldown * 2; // regular=2h, cnei=1h at gear 3
+  const cooldown = cooldownForBranch(branch, gear);
   const lastRelease = await getLatestReleaseDate(token, branch);
   if (lastRelease === 0) return false;
   const elapsed = Math.floor(Date.now() / 1000) - lastRelease;
@@ -1635,12 +1649,6 @@ async function verifyRelease(token, tagName) {
     } catch (_) {}
     if (i < 3) await new Promise(r => setTimeout(r, 2000));
   }
-}
-
-function formatVersion(num) {
-  const build = num % 100;
-  const patch = Math.floor(num / 100);
-  return `0.0.${patch}.${String(build).padStart(2, '0')}`;
 }
 
 function selectBranch(state) {
@@ -1709,7 +1717,7 @@ async function getAllWingFiles(token, branch, extraSides = []) {
 async function ensureWingFiles(token, branch) {
   const purpose = branchPurpose(branch);
   const quota = branchQuota(branch);
-  const priority = ['AGENT', 'MASTERPLAN', 'SPEC', 'TASKS'];
+  const priority = WING_FILE_TYPES;
   let created = 0;
   const MAX_SEED_PER_RUN = 2;
   for (const type of priority) {
@@ -1760,12 +1768,17 @@ function extractHarnessPriorities(wingFiles) {
 }
 
 async function createCommit(token, branch, path, content, message) {
+  assertSafeRepositoryPath(path);
   const existing = await getFileContent(token, branch, path);
-  const blobResp = await fetch(
+  if (existing?.content === content) {
+    throw new Error(`Refusing no-op commit for ${branch}:${path}`);
+  }
+  const blobResp = await ghFetch(
     `https://api.github.com/repos/${GITHUB_REPO}/git/blobs`,
+    token,
     {
       method: 'POST',
-      headers: ghHeaders(token),
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ content, encoding: 'utf-8' })
     }
   );
@@ -1778,17 +1791,18 @@ async function createCommit(token, branch, path, content, message) {
   const head = await headResp.json();
   const baseSha = head.object.sha;
 
-  const treeResp = await fetch(
+  const treeResp = await ghFetch(
     `https://api.github.com/repos/${GITHUB_REPO}/git/trees/${baseSha}`,
-    { headers: ghHeaders(token) }
+    token
   );
   const baseTree = await treeResp.json();
 
-  const newTreeResp = await fetch(
+  const newTreeResp = await ghFetch(
     `https://api.github.com/repos/${GITHUB_REPO}/git/trees`,
+    token,
     {
       method: 'POST',
-      headers: ghHeaders(token),
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         base_tree: baseTree.sha,
         tree: [{
@@ -1802,11 +1816,12 @@ async function createCommit(token, branch, path, content, message) {
   );
   const newTree = await newTreeResp.json();
 
-  const commitResp = await fetch(
+  const commitResp = await ghFetch(
     `https://api.github.com/repos/${GITHUB_REPO}/git/commits`,
+    token,
     {
       method: 'POST',
-      headers: ghHeaders(token),
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         message,
         tree: newTree.sha,
@@ -1816,14 +1831,17 @@ async function createCommit(token, branch, path, content, message) {
   );
   const commit = await commitResp.json();
 
-  await fetch(
+  await ghFetch(
     `https://api.github.com/repos/${GITHUB_REPO}/git/refs/heads/${encodeURIComponent(branch)}`,
+    token,
     {
       method: 'PATCH',
-      headers: ghHeaders(token),
+      headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ sha: commit.sha, force: false })
     }
   );
+  _fcCache.set(_fcCacheKey(branch, path), { content, sha: blob.sha });
+  commit.blobSha = blob.sha;
   console.log(`Committed ${path} to ${branch}: ${commit.sha.slice(0, 8)}`);
   return commit;
 }
@@ -2697,10 +2715,10 @@ async function processBranch(env, branch) {
 
     const maxNum = await getMaxBranchReleaseNum(token, branch);
     const nextNum = maxNum + 1;
-    const version = formatVersion(nextNum);
+    const version = formatVersion(branch, nextNum);
     const tagName = `${branch}-v${version}`;
     // Last released version (for skip-path brain notes)
-    const lastVer = maxNum > 0 ? formatVersion(maxNum) : null;
+    const lastVer = maxNum > 0 ? formatVersion(branch, maxNum) : null;
     const lastTag = maxNum > 0 ? `${branch}-v${lastVer}` : null;
     log(`Max release num: ${maxNum}, Next: ${tagName}`);
 
@@ -3144,19 +3162,7 @@ async function runFlywheel(env, forcedBranch) {
   try {
     const state = await getRotationState(env);
     const config = await getFlywheelConfig(env);
-    const bias = await getBiasFromKv(env);
-
-    // ── BURST MODE: auto-advance gear based on bias/risk/wallet ──
-    let effectiveGear = config.gear;
-    if ((bias?.bias || 3) <= 2) effectiveGear = Math.min(10, effectiveGear + 2);
-    if ((bias?.risk || 3) >= 4) effectiveGear = Math.min(10, effectiveGear + 1);
-
-    try {
-      const sampleWallet = await getBranchWallet(env, REGULAR_BRANCHES[state.regular_index % REGULAR_BRANCHES.length]);
-      if (sampleWallet.computeBudget > 5000) effectiveGear = Math.min(10, effectiveGear + 1);
-    } catch (_) {}
-
-    log(`State: idx=${state.regular_index} lap=${state.lap} mode=${state.mode} baseGear=${config.gear} effectiveGear=${effectiveGear}`);
+    log(`State: idx=${state.regular_index} lap=${state.lap} mode=${state.mode} gear=${config.gear} regularCooldown=7200s`);
 
     if (state.mode === 'PAUSED' && !forcedBranch) {
       log('Flywheel paused, skipping');
@@ -3168,7 +3174,7 @@ async function runFlywheel(env, forcedBranch) {
       branch = forcedBranch;
       log(`Forced branch: ${branch}`);
     } else {
-      const scheduled = await findAvailableBranch(state, token, effectiveGear);
+      const scheduled = await findAvailableBranch(state, token, config.gear);
       if (scheduled) {
         branch = scheduled;
       } else {
