@@ -25,17 +25,10 @@ jobs:
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           command: d1 execute financecheque-db --remote --file schema.sql
 
-      - name: Create project if needed
-        continue-on-error: true
-        run: npx wrangler pages project create ${{ github.ref == 'refs/heads/command' && 'command' || 'financecheque' }} --production-branch ${{ github.ref_name }}
-        env:
-          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-
       - name: Deploy to Cloudflare Pages
         run: |
           npm install wrangler 2>/dev/null || true
-          npx --yes wrangler pages deploy ${{ github.ref == 'refs/heads/command' && '.' || 'dist' }} --project-name ${{ github.ref == 'refs/heads/command' && 'command' || 'financecheque' }} --branch ${{ github.ref_name }}
+          npx --yes wrangler pages deploy ${{ github.ref == 'refs/heads/command' && '.' || 'dist' }} --project-name ${{ github.ref == 'refs/heads/command' && 'command-dashboard' || 'financecheque' }} --branch ${{ github.ref_name }}
         env:
           CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
