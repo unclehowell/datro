@@ -240,7 +240,6 @@ function handleMode3DToggle() {
     if (btn) btn.classList.toggle('active', mode3DEnabled);
 
     var navGuide = $('nav-guide-overlay');
-    var versionLayers = $('version-layers');
     var graphToggle = $('graph-toggle');
     var graphToggleBar = $('graph-toggle-bar');
 
@@ -261,7 +260,6 @@ function handleMode3DToggle() {
     } else {
         // Disable 3D mode: hide guide, switch to graph
         if (navGuide) navGuide.style.display = 'none';
-        if (versionLayers) versionLayers.style.display = 'none';
 
         graphViewActive = true;
         var graphContainer2 = $('graph-container');
@@ -715,8 +713,6 @@ function closeSideMenus() {
     var backdrop = $('branch-backdrop');
     if (backdrop) backdrop.classList.remove('visible');
     document.querySelectorAll('.indicator-btn').forEach(function(b) { b.classList.remove('active'); });
-    var vl = $('version-layers');
-    if (vl) vl.classList.remove('visible');
 }
 
 function openSideMenu(side) {
@@ -728,8 +724,6 @@ function openSideMenu(side) {
     if (backdrop) backdrop.classList.add('visible');
     var btn = $('indicator-' + side);
     if (btn) btn.classList.add('active');
-    var vl = $('version-layers');
-    if (vl) vl.classList.add('visible');
     renderSideFiles(side);
 }
 
@@ -1776,40 +1770,6 @@ async function loadFuel() {
     } catch(e) {}
 }
 
-// ── RELEASE VERSION LAYERS ──
-async function fetchReleasesForLayers() {
-    try {
-        var res = await fetch('/api/releases');
-        var data = await res.json();
-        if (!data.releases) return;
-
-        var versionLayers = $('version-layers');
-        if (!versionLayers) return;
-        versionLayers.innerHTML = '';
-
-        // Group releases by branch
-        var branchMap = {};
-        data.releases.forEach(function(rel) {
-            if (!branchMap[rel.branch]) branchMap[rel.branch] = [];
-            branchMap[rel.branch].push(rel);
-        });
-
-        // Create version layer labels for top branches
-        var topBranches = Object.keys(branchMap).sort().slice(0, 20);
-        topBranches.forEach(function(branch, idx) {
-            var rels = branchMap[branch];
-            var latest = rels[0];
-            var layer = document.createElement('div');
-            layer.className = 'version-layer-label';
-            layer.style.top = (60 + idx * 28) + 'px';
-            layer.innerHTML = '<span class="vl-branch">' + branch + '</span>' +
-                '<span class="vl-version">' + (latest.version || 'v0.0.0') + '</span>';
-            layer.title = branch + ': ' + rels.length + ' releases';
-            versionLayers.appendChild(layer);
-        });
-    } catch(e) {}
-}
-
 // ── CONTROLS SECTION TOGGLE ──
 function initControlsBar() {
     var controlsSection = $('controls-section');
@@ -1923,9 +1883,6 @@ function startApp() {
     setInterval(pollBrainState, 10000);
     loadFuel();
     pollBrainState();
-
-    // Fetch releases for 3D version layers
-    fetchReleasesForLayers();
 
     // ── EVENT DELEGATION: All toggles via single document listener ──
     // Uses bubbling phase — does NOT block inline handlers (onclick, etc.)
