@@ -247,7 +247,6 @@ function handleMode3DToggle() {
     if (mode3DEnabled) {
         // Enable 3D mode: show guide, switch to 3D city
         if (navGuide) navGuide.style.display = 'flex';
-        if (versionLayers) versionLayers.style.display = 'block';
 
         graphViewActive = false;
         var graphContainer = $('graph-container');
@@ -1854,11 +1853,6 @@ async function pollFlywheel() {
     try {
         var res = await fetch('/api/flywheel/state');
         var data = await res.json();
-        var idx = (data.regular_index || 0) % BRANCH_NAMES.length;
-        var cm = $('current-milestone');
-        var pm = $('progress-milestone');
-        if (cm) cm.textContent = BRANCH_NAMES[idx]?.toUpperCase() || '--';
-        if (pm) pm.textContent = (idx + 1) + '/' + BRANCH_NAMES.length;
 
         // Update brain state indicator
         if (data.brain) {
