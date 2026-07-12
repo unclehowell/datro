@@ -842,8 +842,7 @@ function renderSideFileChildren(branch, side, container) {
         item.appendChild(exists);
         item.onclick = function() {
             closeSideMenus();
-            var sidePath = side === 'left' ? f : f;
-            openMdViewer(branch, sidePath, f);
+            openMdViewer(branch, f, f, side);
         };
         container.appendChild(item);
     });
@@ -852,7 +851,7 @@ function renderSideFileChildren(branch, side, container) {
 // ── MD VIEWER ──
 var currentViewerFile = null;
 
-function openMdViewer(branch, fileName, displayName) {
+function openMdViewer(branch, fileName, displayName, side) {
     var overlay = $('md-viewer-overlay');
     var header = $('md-viewer-header');
     var body = $('md-viewer-body');
@@ -862,7 +861,8 @@ function openMdViewer(branch, fileName, displayName) {
     var windscreen = document.querySelector('.windscreen');
     if (windscreen) windscreen.style.opacity = '0.3';
 
-    currentViewerFile = { branch: branch, fileName: fileName, displayName: displayName || fileName };
+    side = side || 'high';
+    currentViewerFile = { branch: branch, fileName: fileName, displayName: displayName || fileName, side: side };
 
     header.innerHTML = '';
     var close = document.createElement('button');
@@ -881,7 +881,7 @@ function openMdViewer(branch, fileName, displayName) {
     editBtn.textContent = 'EDIT';
     editBtn.onclick = function() {
         closeMdViewer();
-        openEditor(branch, 'high', fileName);
+        openEditor(branch, currentViewerFile.side, fileName);
     };
     actions.appendChild(editBtn);
     var deployBtn = document.createElement('button');
@@ -916,21 +916,21 @@ function openMdViewer(branch, fileName, displayName) {
     }
 
     var possiblePaths = [
+        fileName + '.' + side + '.md',
         fileName + '.md',
         fileName,
     ];
-    if (fileName.indexOf('.') === -1) possiblePaths.unshift(fileName + '.md');
 
-    fetchFromBranch(branch, possiblePaths, body);
+    fetchFromBranch(branch, side, possiblePaths, body);
 }
 
-function fetchFromBranch(branch, paths, bodyEl) {
+function fetchFromBranch(branch, side, paths, bodyEl) {
     if (paths.length === 0) {
         bodyEl.textContent = '// File not found on GitHub';
         return;
     }
     var path = paths[0];
-    fetch('/api/branches/' + encodeURIComponent(branch) + '/files/high/' + encodeURIComponent(path))
+    fetch('/api/branches/' + encodeURIComponent(branch) + '/files/' + encodeURIComponent(side) + '/' + encodeURIComponent(path))
         .then(function(r) {
             if (!r.ok) throw new Error('Not found');
             return r.json();
@@ -939,7 +939,7 @@ function fetchFromBranch(branch, paths, bodyEl) {
             bodyEl.textContent = data.content || '(empty)';
         })
         .catch(function() {
-            fetchFromBranch(branch, paths.slice(1), bodyEl);
+            fetchFromBranch(branch, side, paths.slice(1), bodyEl);
         });
 }
 

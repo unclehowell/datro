@@ -421,8 +421,10 @@ export default {
     const fileMatch = path.match(/^\/api\/branches\/([^/]+)\/files\/([^/]+)\/(.+)$/);
     if (fileMatch) {
       const [, branch, side, filename] = fileMatch;
+      const type = filename.replace(/\.md$/, '');
+      const githubPath = 'static/' + branch + '/' + type + '.' + side + '.md';
       if (request.method === 'GET') {
-        const raw = await fetch('https://raw.githubusercontent.com/unclehowell/datro/' + encodeURIComponent(branch) + '/' + encodeURIComponent(filename), {
+        const raw = await fetch('https://raw.githubusercontent.com/unclehowell/datro/' + encodeURIComponent(branch) + '/' + encodeURIComponent(githubPath), {
           headers: { 'User-Agent': 'command-dashboard-worker' }
         });
         if (!raw.ok) return json({ error: 'File not found' }, 404);
@@ -434,7 +436,7 @@ export default {
         const r = await fetch(WORKER + '/__edit_file', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ branch, path: filename, content: body.content, message: body.message || 'Edited via COMMAND Cockpit' }),
+          body: JSON.stringify({ branch, path: githubPath, content: body.content, message: body.message || 'Edited via COMMAND Cockpit' }),
         });
         return cors(r);
       }
@@ -498,7 +500,7 @@ export default {
         return cors(r);
       }
       const body = await request.json();
-      const r = await fetch(WORKER + '/__set', {
+      const r = await fetch(WORKER + '/__bias', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body),
@@ -512,7 +514,7 @@ export default {
         return cors(r);
       }
       const { gear } = await request.json();
-      const r = await fetch(WORKER + '/__gear', {
+      const r = await fetch(WORKER + '/__config', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ gear }),
