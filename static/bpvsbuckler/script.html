@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=0.3, maximum-scale=5.0, user-scalable=yes">
+    <title>Great House Farm — Timeline</title>
+    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.3/dist/mermaid.min.js"></script>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            padding: 16px; background: #0f172a; color: #fafaf7;
+            font-family: 'Courier Prime', monospace;
+            display: flex; flex-direction: column; align-items: center;
+            min-height: 100vh; -webkit-overflow-scrolling: touch;
+        }
+        header { text-align: center; margin-bottom: 12px; padding: 0 12px; }
+        h1 { color: #f59e0b; font-size: clamp(18px, 4vw, 28px); margin-bottom: 4px; }
+        .subtitle { color: #94a3b8; font-size: clamp(12px, 2.5vw, 14px); margin-bottom: 6px; }
+        .question {
+            color: #f59e0b; font-size: 13px; font-style: italic;
+            max-width: 600px; margin: 0 auto 12px; text-align: center; line-height: 1.4;
+        }
+        .instruction { color: #94a3b8; font-size: 12px; font-style: italic; }
+        .toolbar {
+            position: fixed; bottom: 20px; right: 20px; z-index: 100;
+            display: flex; flex-direction: column; gap: 6px;
+            background: rgba(15,23,42,0.95); border: 1px solid #f59e0b;
+            border-radius: 10px; padding: 6px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.5); backdrop-filter: blur(8px);
+        }
+        .toolbar button {
+            width: 44px; height: 44px; border: none; border-radius: 8px;
+            background: #1e293b; color: #f59e0b; font-size: 22px; font-weight: bold;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            transition: background 0.15s, transform 0.1s;
+        }
+        .toolbar button:active { background: #f59e0b; color: #0f172a; transform: scale(0.92); }
+        .toolbar .zoom-label { text-align: center; font-size: 11px; color: #888; padding: 2px 0; }
+        .toolbar .divider { height: 1px; background: #333; margin: 2px 4px; }
+        .diagram-container {
+            background: #1e293b; border-radius: 12px; padding: 16px;
+            width: 80vw; max-width: 900px; overflow: hidden; border: 1px solid #334155;
+            -webkit-overflow-scrolling: touch; touch-action: pan-x pan-y pinch-zoom;
+        }
+        .diagram-inner { overflow: auto; width: 100%; height: 100%; -webkit-overflow-scrolling: touch; }
+        .diagram-wrapper {
+            width: 100%; margin: 0 auto;
+            transform-origin: top center; transition: transform 0.15s ease;
+        }
+        .mermaid { width: 100%; }
+        .modal-backdrop {
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.6); z-index: 199;
+        }
+        .modal-backdrop.open { display: block; }
+        .modal {
+            display: none; position: fixed; bottom: 0; left: 0; right: 0;
+            z-index: 200; background: rgba(15,23,42,0.97);
+            border-top: 2px solid #E07000; backdrop-filter: blur(12px);
+            max-height: 60vh; overflow-y: auto; -webkit-overflow-scrolling: touch;
+        }
+        .modal.open { display: block; }
+        .modal-header {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 14px 20px 10px; border-bottom: 1px solid #334155;
+            position: sticky; top: 0; background: rgba(15,23,42,0.98); z-index: 1;
+        }
+        .modal-header h2 { font-size: 16px; line-height: 1.3; }
+        .modal-header .tag {
+            display: inline-block; padding: 2px 10px; border-radius: 12px;
+            font-size: 11px; font-weight: 600; text-transform: uppercase;
+            letter-spacing: 0.5px; margin-left: 8px; vertical-align: middle;
+            background: #E07000; color: #fff;
+        }
+        .modal-close {
+            width: 36px; height: 36px; border: none; border-radius: 50%;
+            background: #334155; color: #fafaf7; font-size: 20px; cursor: pointer;
+            flex-shrink: 0; display: flex; align-items: center; justify-content: center;
+        }
+        .modal-close:active { background: #E07000; color: #0f172a; }
+        .modal-body { padding: 16px 20px 24px; }
+        .modal-body p { line-height: 1.65; font-size: 15px; color: #cbd5e1; margin-bottom: 12px; }
+        .modal-body strong { color: #fafaf7; }
+        .modal-body .source {
+            display: inline-block; background: #1e293b; padding: 2px 8px;
+            border-radius: 4px; font-size: 12px; color: #94a3b8; font-family: monospace; margin-top: 4px;
+        }
+        .legend {
+            display: flex; flex-wrap: wrap; gap: 10px 20px; justify-content: center;
+            margin-top: 12px; padding: 12px 16px; background: #1e293b;
+            border-radius: 8px; border: 1px solid #334155; max-width: 80vw;
+        }
+        .legend-item { display: flex; align-items: center; gap: 6px; font-size: 13px; }
+        .legend-swatch { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
+        @media (min-width: 1024px) {
+            body { padding: 24px; }
+            .diagram-container { padding: 32px; }
+            .modal { left: 50%; transform: translateX(-50%); max-width: 700px; border-radius: 14px 14px 0 0; }
+        }
+        @media (max-height: 500px) and (orientation: landscape) {
+            body { padding: 8px 16px; flex-direction: row; align-items: flex-start; gap: 16px; }
+            header { margin-bottom: 0; writing-mode: vertical-rl; text-orientation: mixed; transform: rotate(180deg); position: sticky; left: 0; }
+            .diagram-container { flex: 1; height: calc(100vh - 16px); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Great House Farm Timeline</h1>
+        <p class="subtitle">Official Record + Family Challenges</p>
+        <p class="question">"Did the 1876 severance leave the Williams homestead outside the remaining estate?"</p>
+        <p class="instruction">Tap any node for details. Tap [i] for the family challenge.</p>
+    </header>
+
+    <div class="diagram-container" id="diagramContainer">
+        <div class="diagram-inner" id="diagramInner">
+            <div class="diagram-wrapper" id="diagramWrapper">
+                <div class="mermaid">
+graph TD
+    classDef ev fill:#2A9D8F,color:#fff,stroke:#1a7a6e,stroke-width:2px
+    classDef info fill:#0f172a,color:#E07000,stroke:#E07000,stroke-width:2px,font-weight:bold,font-size:14px
+
+    E1["1667: Williams family in occupation"]:::ev
+    I1["i"]:::info
+    E2["1800: Bute acquires freehold of Great House"]:::ev
+    I2["i"]:::info
+    E3["1818: Lambert Williams deeds D160/1-4"]:::ev
+    I3["i"]:::info
+    E4["1840: Name shift - Great House to Great House Farm"]:::ev
+    I4["i"]:::info
+    E5["1870: Roman soldier found under floor by Williams family"]:::ev
+    I5["i"]:::info
+    E6["1876: 33 acres severed - Daniel Thomas transaction D153/4-8"]:::ev
+    I6["i"]:::info
+    E7["1880: Medieval ironwork found under floor"]:::ev
+    I7["i"]:::info
+    E8["1897: Marconi wireless experiments at Lavernock Point"]:::ev
+    E9["1900: Mary Williams born at farm"]:::ev
+    E10["1916: Yearly tenancy granted to John Williams"]:::ev
+    I10["i"]:::info
+    E11["1920: Mary marries Frederick Buckler - retains maiden name"]:::ev
+    E12["1926: Bute sells Great House Farm"]:::ev
+    I12["i"]:::info
+    E13["1938: Farm sold at auction - family remains"]:::ev
+    I13["i"]:::info
+    E14["1949: Tenancy transfer to Frederick Buckler - no written agreement"]:::ev
+    I14["i"]:::info
+    E15["1953: Last rent payment by Frederick Buckler"]:::ev
+    I15["i"]:::info
+    E16["1955: High Court possession - farm recovered"]:::ev
+    I16["i"]:::info
+    E17["1959: Mary asserts hereditary ownership - refuses tenancy"]:::ev
+    I17["i"]:::info
+    E18["1962: Second possession order - never executed"]:::ev
+    E19["1963: First archaeological excavation"]:::ev
+    E20["1969: BP acquires estate from Western Ground Rents"]:::ev
+    I20["i"]:::info
+    E21["1974: BP issues licence letters - 1,700 sign petition"]:::ev
+    I21["i"]:::info
+    E22["1978: Roman villa rescue excavation"]:::ev
+    E23["1980: MP Rowlands criticises BP in House of Commons"]:::ev
+    E24["1982: BP Properties registered as proprietor"]:::ev
+    I24["i"]:::info
+    E25["1983: Mary Williams dies at the farm"]:::ev
+    E26["1984: Key deeds missing from Cardiff Library"]:::ev
+    I26["i"]:::info
+    E27["1987: Court of Appeal - BP Properties v Buckler"]:::ev
+    I27["i"]:::info
+    E28["1988: Great House Farm demolished"]:::ev
+    I28["i"]:::info
+    E29["1994: 800+ burials excavated - Burial 631"]:::ev
+    I29["i"]:::info
+    E30["2026: Justice campaign - FOI requests, archive review"]:::ev
+
+    E1 --> I1
+    I1 --> E2
+    E2 --> I2
+    I2 --> E3
+    E3 --> I3
+    I3 --> E4
+    E4 --> I4
+    I4 --> E5
+    E5 --> I5
+    I5 --> E6
+    E6 --> I6
+    I6 --> E7
+    E7 --> I7
+    I7 --> E8
+    E8 --> E9
+    E9 --> E10
+    E10 --> I10
+    I10 --> E11
+    E11 --> E12
+    E12 --> I12
+    I12 --> E13
+    E13 --> I13
+    I13 --> E14
+    E14 --> I14
+    I14 --> E15
+    E15 --> I15
+    I15 --> E16
+    E16 --> I16
+    I16 --> E17
+    E17 --> I17
+    I17 --> E18
+    E18 --> E19
+    E19 --> E20
+    E20 --> I20
+    I20 --> E21
+    E21 --> I21
+    I21 --> E22
+    E22 --> E23
+    E23 --> E24
+    E24 --> I24
+    I24 --> E25
+    E25 --> E26
+    E26 --> I26
+    I26 --> E27
+    E27 --> I27
+    I27 --> E28
+    E28 --> I28
+    I28 --> E29
+    E29 --> I29
+    I29 --> E30
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="legend">
+        <div class="legend-item"><div class="legend-swatch" style="background:#2A9D8F;"></div><span>Official Record</span></div>
+        <div class="legend-item"><div class="legend-swatch" style="background:transparent;border:2px solid #E07000;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:bold;color:#E07000;">i</div><span>Family Challenge</span></div>
+    </div>
+
+    <div class="modal-backdrop" id="modalBackdrop"></div>
+    <div class="modal" id="modalPanel">
+        <div class="modal-header">
+            <div><h2 id="modalTitle"></h2></div>
+            <button class="modal-close" id="modalClose">&times;</button>
+        </div>
+        <div class="modal-body" id="modalBody"></div>
+    </div>
+
+    <div class="toolbar">
+        <button id="btnZoomIn" title="Zoom In">+</button>
+        <div class="zoom-label" id="zoomLabel">100%</div>
+        <button id="btnZoomOut" title="Zoom Out">&minus;</button>
+        <div class="divider"></div>
+        <button id="btnFit" title="Fit to screen">&#8862;</button>
+        <button id="btnReset" title="Reset zoom">&#8634;</button>
+        <div class="divider"></div>
+        <button id="btnRefresh" title="Clear cache and reload">&#8635;</button>
+    </div>
+
+    <script>
+    var EVENTS = {
+        E1: { title: "1667 - Williams Family in Occupation",
+            body: "<p><strong>Official Record:</strong> From at least 1667 the Williams family are recorded in occupation of Great House Farm. Both sides agree the family held a virtual freehold through perpetual occupation; the Bute estate held the absolute (legal) title.</p><p>In 1667 a Williams ancestor would not buy the land in the modern freehold sense; instead they would be admitted to the tenure in the Court Baron. If the family paid a large fine (entry fee), this was often remembered in family lore as a purchase.</p><p class='source'>NLW D 219: Llandough manorial leases</p>"
+        },
+        E2: { title: "1800 - Bute Acquires Freehold",
+            body: "<p><strong>Official Record:</strong> In the early 19th century the freehold of Great House is acquired by the Bute Estate, consolidated through purchases from Valentine Morris, Sir Mark Wood, and Lord Plymouth.</p><p class='source'>DB/E/1-2; Glamorgan Estate rentals (R 1)</p>"
+        },
+        E3: { title: "1818 - Lambert Williams Deeds",
+            body: "<p><strong>Official Record:</strong> Lambert Williams of Cardiff enters formal written agreements with the Bute estate (D160/1-4, spanning 1818-1835). Chief rents of Llandough are transferred to the manorial rental accounts.</p><p>Lambert Williams was a significant figure in Cardiff/Llandough legal circles, a high-status Ward Constable in Cardiff.</p><p class='source'>D160/1-4; Glamorgan Estate rentals; Cardiff Records</p>"
+        },
+        E4: { title: "1840 - Name Shift to Great House Farm",
+            body: "<p><strong>Official Record:</strong> Census and tithe records shift terminology from Great House to Great House Farm. The property was historically referred to as Court House and later Grange before settling on Farm.</p><p class='source'>GGAT HER PRN 02038s; census records; tithe records</p>"
+        },
+        E5: { title: "1870 - Roman Soldier Found",
+            body: "<p><strong>Official Record:</strong> The Williams family discovered a Roman soldier in full armour beneath the living room floor of Ty Mawr while replacing old stone flagboards with a timber floor. The find occurred in a stone-lined cist with bronze or iron armour.</p><p class='source'>Family testimony; South Wales Echo articles; confirmed by 1994 excavation</p>"
+        },
+        E6: { title: "1876 - 33 Acres Severed",
+            body: "<p><strong>Official Record:</strong> Bute severed approximately 33 acres from Great House Farm for the Llandough Limeworks via the Daniel Thomas transaction. The record explicitly mentions land (33a.), formerly part of Great House Farm, for the Llandough Limeworks, 1876-1912.</p><p class='source'>D153/4-8; Bute Estate Records</p>"
+        },
+        E7: { title: "1880 - Medieval Ironwork Found",
+            body: "<p><strong>Official Record:</strong> During building work at Great House, a cache of armour was found under the floor of the rear wing, later identified as medieval ironwork. Now preserved at the National Museum of Wales.</p><p class='source'>RCAHMW Inventory Vol IV Part 2; National Museum of Wales</p>"
+        },
+        E8: { title: "1897 - Marconi Wireless Experiments",
+            body: "<p><strong>Official Record:</strong> Guglielmo Marconi conducted wireless telegraphy experiments at Lavernock Point in May 1897. On 13 May 1897, Marconi transmitted the first wireless signal across open sea from Lavernock Point to Flat Holm island.</p><p class='source'>Marconi historical records; South Wales Echo</p>"
+        },
+        E9: { title: "1900 - Mary Williams Born",
+            body: "<p><strong>Official Record:</strong> Mary Williams is born into the family at Great House Farm, continuing three centuries of unbroken occupation. She would become the central figure in the ownership dispute.</p>"
+        },
+        E10: { title: "1916 - Yearly Tenancy Granted",
+            body: "<p><strong>Official Record:</strong> In February 1916 the Marquess of Bute granted a yearly agricultural tenancy of Great House Farm to John Williams. The document records Bute as freeholder and John Williams as tenant.</p><p class='source'>Bute Estate Records</p>"
+        },
+        E11: { title: "1920 - Mary Marries Frederick Buckler",
+            body: "<p><strong>Official Record:</strong> Mary Williams marries Frederick Buckler but retains her maiden name, consistent with local custom and the family understanding that the Williams lineage embodies the historic basis of title.</p>"
+        },
+        E12: { title: "1926 - Bute Sells Great House Farm",
+            body: "<p><strong>Official Record:</strong> The Marquess of Bute sells Great House Farm. Sale documents list it under Bute ownership, with no mention of the Williams family three-century occupation. The Penarth Estate Company purchases Great House Farm at auction.</p><p class='source'>DSA/6/701; estate sale records</p>"
+        },
+        E13: { title: "1938 - Farm Sold at Auction",
+            body: "<p><strong>Official Record:</strong> 16 November 1938: Great House Farm advertised as sold at auction. Western Ground Rents Ltd bought the urban leaseholds of the Bute Glamorgan Estate from Mountjoy Ltd.</p><p>The Williams family remained in physical occupation. The later history demonstrates that the 1938 sale did not convey vacant possession.</p><p class='source'>Western Mail 16 Nov 1938; DSA/6/1158</p>"
+        },
+        E14: { title: "1949 - Tenancy Transfer",
+            body: "<p><strong>Official Record:</strong> The tenancy of Great House Farm is intended to be transferred from John Williams to his son-in-law Frederick Buckler. No written agreement was executed. Frederick Buckler also failed to pay the rent.</p><p class='source'>BP v Buckler [1987]</p>"
+        },
+        E15: { title: "1953 - Last Rent Payment",
+            body: "<p><strong>Official Record:</strong> Frederick Buckler makes the last known rent payment around 1953. From this point, no rent is paid to any claimant.</p><p class='source'>BP v Buckler [1987]</p>"
+        },
+        E16: { title: "1955 - High Court Possession",
+            body: "<p><strong>Official Record:</strong> High Court possession proceedings brought under Order 14. A possession order was obtained for the whole farm. On 4 July 1955 it was enforced for the farm but NOT for the farmhouse and garden.</p><p>Mary Williams, recently having had a leg amputated, objected very strongly. The Williams occupation of the farmhouse and garden remained undisturbed.</p><p class='source'>BP v Buckler [1987]</p>"
+        },
+        E17: { title: "1959 - Mary Asserts Ownership",
+            body: "<p><strong>Official Record:</strong> Mary Buckler, nee Williams, formally asserts a hereditary ownership claim to Great House Farm. She was offered a tenancy of the farmhouse and garden by Western Ground Rents but refused to accept it.</p><p class='source'>BP v Buckler [1987]</p>"
+        },
+        E18: { title: "1962 - Second Possession Order",
+            body: "<p><strong>Official Record:</strong> 11 December 1962: Possession order made by Judge Temple Morris QC together with mesne profits. The order was never executed.</p><p class='source'>Cardiff County Court; Hansard, July 1961</p>"
+        },
+        E19: { title: "1963 - First Archaeological Excavation",
+            body: "<p><strong>Official Record:</strong> The Barry and Vale Archaeological Group conducted the first recorded excavation on the Great House Farm site, uncovering the corner of a substantial 12th- or 13th-century house.</p><p class='source'>Barry and Vale Archaeological Group records</p>"
+        },
+        E20: { title: "1969 - BP Acquires Estate",
+            body: "<p><strong>Official Record:</strong> December 1969: Western Ground Rents sold to BP Pension Trust Ltd, inheriting the interest in Great House Farm including the farmhouse and garden.</p><p>Western Ground Rents was described in Parliamentary debates as one of the most inhuman and unjust landlords.</p><p class='source'>Hansard; BP v Buckler [1987]</p>"
+        },
+        E21: { title: "1974 - Licence Letters, Petition",
+            body: "<p><strong>Official Record:</strong> BP Pension Trust Ltd applies to enforce the 1962 possession order. 1,700 people sign a petition. 31 October 1974: Warrant withdrawn. 4 November 1974: BP issues licence letters to Mary Buckler purporting to grant her a rent-free licence for life.</p><p>The letters were addressed to Mrs Buckler, a name Mary Williams never used.</p><p class='source'>BP v Buckler [1987]; Cardiff County Court</p>"
+        },
+        E22: { title: "1978 - Roman Villa Excavation",
+            body: "<p><strong>Official Record:</strong> A small rescue excavation near Great House uncovers Roman remains, confirming archaeological significance. Legal proceedings commence to determine possession, but ownership is not adjudicated.</p><p class='source'>GGAT records; court proceedings</p>"
+        },
+        E23: { title: "1980 - Hansard Criticism",
+            body: "<p><strong>Official Record:</strong> Edward Ted Rowlands MP spoke during the Leasehold Reform Act amendments debate. He described Western Ground Rents and the BP Pension Fund as the most rapacious ground landlord.</p><p class='source'>Hansard HC Deb 22 May 1980 vol 985 cc723-65</p>"
+        },
+        E24: { title: "1982 - BP Registered as Proprietor",
+            body: "<p><strong>Official Record:</strong> BP Properties Ltd is registered as proprietor of Great House Farm in November 1982. Mary Williams is still alive and in residence at the time of registration.</p><p class='source'>Land Registry records</p>"
+        },
+        E25: { title: "1983 - Mary Williams Dies",
+            body: "<p><strong>Official Record:</strong> Mary Williams died at the farmhouse, having remained in possession until her death. Her family continued to occupy without a formal legal agreement.</p>"
+        },
+        E26: { title: "1984 - Deeds Missing",
+            body: "<p><strong>Official Record:</strong> The deed of transfer from Bute Estate to Daniel Thomas, along with the index card, went missing from Cardiff Library local history section. Their removal occurred three years before the Court of Appeal case.</p><p class='source'>Cardiff Library records; family testimony</p>"
+        },
+        E27: { title: "1987 - Court of Appeal Judgment",
+            body: "<p><strong>Official Record:</strong> 31 July 1987: In BP Properties Ltd v Buckler [1987] EWCA Civ 2, the Court of Appeal held that the 1974 licence ended adverse possession and forecloses the Buckler ownership claim.</p><p class='source'>BP Properties Ltd v Buckler [1987] EWCA Civ 2</p>"
+        },
+        E28: { title: "1988 - Great House Farm Demolished",
+            body: "<p><strong>Official Record:</strong> 6 December 1988: Great House Farm demolished. Billy is forcibly removed and taken to hospital. His pregnant wife Branwen and young children are left homeless.</p><p class='source'>South Wales Echo Dec 1988; Western Mail Dec 1988</p>"
+        },
+        E29: { title: "1994 - 800+ Burials Excavated",
+            body: "<p><strong>Official Record:</strong> Cotswold Archaeological Trust excavations revealed a monastic cemetery with 800+ burials. Burial 631 (c. AD 340-660) confirmed the site national significance.</p><p class='source'>Thomas and Holbrook 1996; GAT Report 431</p>"
+        },
+        E30: { title: "2026 - Justice Campaign",
+            body: "<p><strong>Official Record:</strong> The family continues to seek justice through new evidence, archival review, and public advocacy. Sion Buckler filed a Freedom of Information request to the Ministry of Defence on 1 May 2026.</p>"
+        }
+    };
+
+    var CHALLENGES = {
+        I1: { title: "1667 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The family argues the 1667 transaction established what was effectively a virtual freehold, even though the estate retained the superior legal title in their ledger. Both sides agree the family held a virtual freehold through perpetual occupation; the dispute is that the Bute estate treated this as a revocable lease rather than a hereditary interest.</p><p>In the 17th century, a fee farm grant or 999-year lease was often perceived by the family as purchase (absolute ownership), while the superior lord maintained it as a lease to preserve manorial rights. If the 1667 deed was a conveyance of equitable title, the Bute records would still show the superior title, creating two parallel truths.</p><p class='source'>Family testimony; NLW D 219</p>"
+        },
+        I2: { title: "1800 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The family argues the Williams family remained in continuous occupation through these estate transfers. Administrative consolidation did not extinguish the family existing equitable or customary rights acquired in 1667.</p><p class='source'>D160/1-4; family testimony</p>"
+        },
+        I3: { title: "1818 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The Lambert Williams deeds show that a Williams was a recognised party in formal agreements with the estate, indicating legal standing, not mere tenant status. If the 1987 case claimed the family were merely squatters, these 1818 deeds contradict that narrative.</p><p class='source'>D160/1-4; Cardiff Records</p>"
+        },
+        I4: { title: "1840 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The name change reflected reduced estate status. By rebranding Court House as Farm, the Bute estate could demote the occupants from Gentry with Tenure to Tenants of a Farm. A Court House was where the Lord steward held the manor courts. The rebranding erased this history.</p><p class='source'>bpvsbucker-rundown.txt; census records</p>"
+        },
+        I5: { title: "1870 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The Roman soldier discovery demonstrates the depth of their long-term occupation and intimate knowledge of the property. The discovery was never recorded in estate documents, suggesting the estate was unaware of or indifferent to the property true significance.</p><p class='source'>Family testimony</p>"
+        },
+        I6: { title: "1876 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The family argues the 1876 severance unintentionally perfected their title to the retained homestead. By severing the 33 acres, Bute effectively acknowledged the farmhouse plot was a separate, identifiable unit. John Williams permitted the quarrying. The family believes Daniel Thomas agreed the Williams family would receive absolute title to the retained farmhouse plot. The key deeds are now missing.</p><p class='source'>Family testimony; D153/4-8; DCOWHS/2</p>"
+        },
+        I7: { title: "1880 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The systematic rebranding was a deliberate erasure of the property manorial status. By recording it as a Grange or Farm, the estate effectively lost the history of the 1667 acquisition, replacing a proprietary history with a tenant-farmer history.</p><p class='source'>bpvsbucker-rundown.txt; Bute Estate Records</p>"
+        },
+        I10: { title: "1916 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The 1916 tenancy was an administrative record that misdescribed an existing occupation as a new grant. Large estates sometimes regularised long-standing occupiers by putting them on formal tenancies, even where those occupiers believed they had stronger rights. From the family perspective, this tenancy may have been experienced as bureaucratic tidying-up of a relationship they already regarded as ownership.</p><p class='source'>bpvsbucker-rundown.txt</p>"
+        },
+        I12: { title: "1926 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The family argues the homestead was not included in the sale. The sale documents listed the property under Bute ownership without mentioning the Williams family three-century occupation.</p><p class='source'>DSA/6/701</p>"
+        },
+        I13: { title: "1938 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The family argues the homestead was still excluded. The company acquired only what remained of the estate title, not the Williams family separately acquired farmhouse plot. The later history of rent arrears, possession proceedings, and adverse possession claims demonstrates that the 1938 sale did not convey vacant possession.</p><p class='source'>DSA/6/1158</p>"
+        },
+        I14: { title: "1949 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The internal succession reflected their understanding of ownership rights. The failure to execute a written agreement was administrative oversight, not an acknowledgment of tenancy.</p>"
+        },
+        I15: { title: "1953 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The cessation of rent payments reflected their belief that they owned the farm, not that they were tenants.</p>"
+        },
+        I16: { title: "1955 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The action was brought against the wrong legal interest. The family held or claimed to hold a freehold interest acquired in 1876, not a tenancy. By seeking possession rather than a declaration of title, the estate avoided a discovery process.</p>"
+        },
+        I17: { title: "1959 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The family relied on oral history and missing deeds to support their claim. The title documents were allegedly stolen from the public library and from the loft of the farmhouse.</p><p class='source'>BP v Buckler [1987]</p>"
+        },
+        I20: { title: "1969 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> BP inherited only what Western Ground Rents had: a disputed title. The family claim, dating from 1667, was never resolved before the transfer.</p><p class='source'>Hansard; family testimony</p>"
+        },
+        I21: { title: "1974 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The licence was manufactured to create evidence of a tenancy relationship that did not exist. Two separate BP entities issued letters simultaneously, corroborating a manufactured narrative. Mary Williams publicly rejected BP ownership claim in newspapers. She told them: It is my land. It is not your permission to give.</p><p class='source'>BP v Buckler [1987]; South Wales Echo</p>"
+        },
+        I24: { title: "1982 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The land was registered while Mary Williams was still alive and in residence. The registration occurred without determination of superior title.</p>"
+        },
+        I26: { title: "1984 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> Key deeds disappeared from archive. The timing of the removal, three years before the critical legal proceedings, suggests deliberate suppression.</p><p class='source'>Family testimony</p>"
+        },
+        I27: { title: "1987 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> The court relied on a mistaken tenancy narrative. The ruling used Mrs Buckler throughout, disconnecting Mary from the Williams hereditary tenure. The deeds that could prove the family title had gone missing while in corporate custody.</p><p class='source'>BP v Buckler [1987]</p>"
+        },
+        I28: { title: "1988 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> Evidence was destroyed before title issues were resolved. The farmhouse was described in planning documents as a dilapidated utility building. Cadw listing was not granted. The demolition was completed within hours of the final ruling.</p><p class='source'>South Wales Echo Dec 1988; Cadw records</p>"
+        },
+        I29: { title: "1994 - Family Challenge",
+            body: "<p><strong>Family Position:</strong> Archaeology could not restore demolished context. The 1994 excavation was framed as a new discovery, ignoring the family 1870 find. The site is now Church View Close: approximately 20 homes built on the ruins.</p><p class='source'>bpvsbucker-rundown.txt</p>"
+        }
+    };
+
+    var modal = document.getElementById('modalPanel');
+    var backdrop = document.getElementById('modalBackdrop');
+    var titleEl = document.getElementById('modalTitle');
+    var bodyEl = document.getElementById('modalBody');
+    var titleText = document.createTextNode('');
+    titleEl.appendChild(titleText);
+    var modalTag = document.createElement('span');
+    modalTag.className = 'tag';
+    titleEl.appendChild(modalTag);
+
+    function openModal(title, body, isChallenge) {
+        titleText.textContent = title + ' ';
+        modalTag.textContent = 'Family Challenge';
+        modalTag.style.display = isChallenge ? '' : 'none';
+        titleEl.style.color = isChallenge ? '#E07000' : '#2A9D8F';
+        modal.style.borderTopColor = isChallenge ? '#E07000' : '#2A9D8F';
+        bodyEl.innerHTML = body;
+        modal.classList.add('open');
+        backdrop.classList.add('open');
+    }
+
+    window.showEvent = function(id) {
+        var d = EVENTS[id];
+        if (!d) return;
+        openModal(d.title, d.body, false);
+    };
+
+    window.showChallenge = function(id) {
+        var d = CHALLENGES[id];
+        if (!d) return;
+        openModal(d.title, d.body, true);
+    };
+
+    document.getElementById('modalClose').addEventListener('click', function() {
+        modal.classList.remove('open');
+        backdrop.classList.remove('open');
+    });
+    backdrop.addEventListener('click', function() {
+        modal.classList.remove('open');
+        backdrop.classList.remove('open');
+    });
+
+    mermaid.initialize({
+        startOnLoad: true,
+        theme: 'dark',
+        flowchart: {
+            useMaxWidth: true,
+            htmlLabels: true,
+            curve: 'basis',
+            nodeSpacing: 10,
+            rankSpacing: 40,
+            diagramPadding: 8
+        }
+    });
+
+    var wrapper = document.getElementById('diagramWrapper');
+    var inner = document.getElementById('diagramInner');
+    var zoomLabel = document.getElementById('zoomLabel');
+    var currentZoom = 1;
+    var ZOOM_STEP = 0.15;
+
+    function applyZoom(z) {
+        currentZoom = Math.max(0.1, Math.min(3.0, z));
+        wrapper.style.transform = 'scale(' + currentZoom + ')';
+        wrapper.style.transformOrigin = 'top center';
+        zoomLabel.textContent = Math.round(currentZoom * 100) + '%';
+    }
+
+    document.getElementById('btnZoomIn').addEventListener('click', function() { applyZoom(currentZoom + ZOOM_STEP); });
+    document.getElementById('btnZoomOut').addEventListener('click', function() { applyZoom(currentZoom - ZOOM_STEP); });
+    document.getElementById('btnReset').addEventListener('click', function() { applyZoom(1); inner.scrollLeft = 0; inner.scrollTop = 0; });
+    document.getElementById('btnFit').addEventListener('click', function() {
+        var svg = wrapper.querySelector('svg');
+        if (!svg) return;
+        var cw = inner.clientWidth - 32;
+        var ch = inner.clientHeight - 32;
+        var sw = svg.getBoundingClientRect().width / currentZoom;
+        var sh = svg.getBoundingClientRect().height / currentZoom;
+        applyZoom(Math.min(cw / sw, ch / sh, 1.0));
+        inner.scrollLeft = 0;
+        inner.scrollTop = 0;
+    });
+    document.getElementById('btnRefresh').addEventListener('click', function() {
+        if ('caches' in window) {
+            caches.keys().then(function(names) {
+                names.forEach(function(name) { caches.delete(name); });
+            });
+        }
+        location.reload(true);
+    });
+
+    inner.addEventListener('wheel', function(e) {
+        if (e.ctrlKey || e.metaKey) {
+            e.preventDefault();
+            applyZoom(currentZoom + (e.deltaY > 0 ? -ZOOM_STEP : ZOOM_STEP));
+        }
+    }, { passive: false });
+
+    setTimeout(function() { document.getElementById('btnFit').click(); }, 1500);
+
+    setTimeout(function() {
+        var clickableNodes = document.querySelectorAll('svg g.ev, svg g.info');
+        clickableNodes.forEach(function(node) {
+            node.style.cursor = 'pointer';
+            node.addEventListener('click', function(e) {
+                e.stopPropagation();
+                var id = node.id;
+                var match = id.match(/^flowchart-([A-Z]\d+)-/);
+                if (match) {
+                    var origId = match[1];
+                    if (node.classList.contains('info') && typeof window.showChallenge === 'function') {
+                        window.showChallenge(origId);
+                    } else if (node.classList.contains('ev') && typeof window.showEvent === 'function') {
+                        window.showEvent(origId);
+                    }
+                }
+            });
+        });
+    }, 2000);
+    </script>
+</body>
+</html>

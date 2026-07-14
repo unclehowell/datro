@@ -1,3 +1,10 @@
+## [0.8.0.17] - 2026-07-14
+
+- Replaced Script page with interactive Mermaid.js timeline of BP vs Buckler dispute
+- Timeline covers 1667-2026 with 30 official events and 21 family challenges
+- Click any node for details; click [i] for family challenge perspective
+- Styled to match bpvsbuckler dark theme (Courier Prime, amber accents)
+
 ## [0.8.0.16] - 2026-07-14
 
 ## [0.8.0.15] - 2026-07-14
