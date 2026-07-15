@@ -178,7 +178,7 @@ export default function App() {
   const character = currentNarration && currentNarration.type === 'character';
 
   return (
-    <div className="flex flex-col w-screen bg-black overflow-hidden select-none text-base" style={{ height: '100dvh', height: '100vh' }} onMouseUp={() => setShowTooltip(false)}>
+    <div className="flex flex-col w-screen bg-black overflow-hidden select-none text-base app-height" onMouseUp={() => setShowTooltip(false)}>
       {/* === MAIN CONTENT AREA === */}
       <div className="flex-1 flex flex-col lg:flex-row min-h-0 overflow-hidden">
 

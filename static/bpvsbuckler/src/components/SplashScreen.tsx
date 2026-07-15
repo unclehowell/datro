@@ -14,7 +14,7 @@ export function SplashScreen({ onEnter, data }: SplashScreenProps) {
   const items = data?.content?.[0]?.props?.items || [];
 
   return (
-    <div className="flex flex-col items-center justify-start w-full bg-black text-center transition-opacity duration-1000 overflow-y-auto overflow-x-hidden no-scrollbar" style={{ minHeight: '100dvh', minHeight: '100vh' }}>
+    <div className="flex flex-col items-center justify-start w-full bg-black text-center transition-opacity duration-1000 overflow-y-auto overflow-x-hidden no-scrollbar splash-height">
       <div className="w-full px-6 py-10 sm:py-16 flex flex-col items-center">
         <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-special text-amber-500 mb-3 tracking-wider animate-fade-in-up text-center">
           {title}
