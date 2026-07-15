@@ -3,103 +3,28 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Great House Farm Dispute</title>
+    <title>Great House Farm</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/@measured/puck@0.16.0/dist/index.css" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Courier Prime', monospace;
-            background-color: #0f172a;
-        }
-        .font-special {
-            font-family: 'Special Elite', cursive;
-        }
-        .puck-root {
-            --puck-color-grey-10: #1e293b;
-            --puck-color-grey-1: #0f172a;
-        }
-        .no-scrollbar::-webkit-scrollbar {
-            display: none;
-        }
-        .no-scrollbar {
-            -ms-overflow-style: none;
-            scrollbar-width: none;
-        }
-        @keyframes slideInRight {
-            from { transform: translateX(100%); }
-            to { transform: translateX(0); }
-        }
-        .animate-slide-in-right {
-            animation: slideInRight 0.3s ease-out forwards;
-        }
-    </style>
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-<script type="importmap">
-{
-  "imports": {
-    "react/": "https://esm.sh/react@^18.2.0/",
-    "react": "https://esm.sh/react@^18.2.0",
-    "react-dom/": "https://esm.sh/react-dom@^18.2.0/",
-    "react-dom": "https://esm.sh/react-dom@^18.2.0",
-    "@google/genai": "https://esm.sh/@google/genai@^1.39.0",
-    "jspdf": "https://esm.sh/jspdf@2.5.1",
-    "@measured/puck": "https://esm.sh/@measured/puck@0.16.0?external=react,react-dom"
-  }
-}
-</script>
-  <script type="module" crossorigin src="/assets/index-89LfAgl1.js" data-cfasync="false"></script>
-
-<script src="db-data.js"></script>
+    <script src="/db-data.js"></script>
+    <style>
+        body{font-family:'Courier Prime',monospace;background-color:#000}
+        .font-special{font-family:'Special Elite',cursive}
+        .no-scrollbar::-webkit-scrollbar{display:none}
+        .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
+        @keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
+        .animate-slide-in-right{animation:slideInRight .3s ease-out forwards}
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+        .animate-fade-in{animation:fadeIn .3s ease-out forwards}
+        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+        .animate-fade-in-up{animation:fadeInUp .3s ease-out forwards}
+        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
+        .animate-pulse-slow{animation:pulse 2s ease-in-out infinite}
+    </style>
+  <script type="module" crossorigin src="/assets/index-CFbN5HKe.js"></script>
 </head>
 <body class="text-slate-200 antialiased overflow-hidden h-screen w-screen">
-    
-
 <div id="root"></div>
-
-<script data-cfasync="false">
-(function() {
-  var done = false;
-  var obs = new MutationObserver(function() {
-    if (done) return;
-    var nav = document.querySelector("nav");
-    if (!nav) return;
-    var links = nav.querySelectorAll("a");
-    var foundBeur = false;
-    for (var i = 0; i < links.length; i++) {
-      if (links[i].textContent.trim() === "Beurcracy") { foundBeur = true; break; }
-    }
-    if (!foundBeur) {
-      var repLink = Array.from(links).find(function(a) { return a.textContent.trim() === "Reparations"; });
-      if (repLink) {
-        var a = document.createElement("a");
-        a.href = "/beurcracy/";
-        a.textContent = "Beurcracy";
-        a.className = repLink.className;
-        repLink.parentNode.insertBefore(a, repLink.nextSibling);
-      }
-    }
-    done = true;
-  });
-  obs.observe(document.body, { childList: true, subtree: true });
-})();
-</script>
-
-
-<!-- DB Footer Release -->
-<footer id="db-footer" style="font-size:12px;color:#666;text-align:center;padding:10px;margin-top:20px;border-top:1px solid #eee;">
-  Datro Release • <span id="db-version">loading…</span>
-</footer>
-<script>
-  (function(){
-    try {
-      var el=document.getElementById("db-version");
-      if(el && typeof DB_STATUS !== "undefined") {
-        el.textContent = "v"+DB_STATUS.version+" • "+DB_STATUS.release_date+" • Gateway: "+DB_STATUS.gateway_state+" • Sessions: "+DB_STATUS.active_sessions;
-      }
-    } catch(e) {}
-  })();
-</script>
-
 </body>
 </html>
