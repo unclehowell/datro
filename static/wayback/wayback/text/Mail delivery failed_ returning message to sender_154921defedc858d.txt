@@ -1,0 +1,584 @@
+This message was created automatically by mail delivery software.
+
+A message that you sent could not be delivered to one or more of its
+recipients. This is a permanent error. The following address(es) failed:
+
+  communication@nca.x.gsi.gov.uk
+    SMTP error from remote mail server after MAIL FROM:<hywelapbuckler@gmail.com> SIZE=10624626:
+    host mail.nca.x.gsi.gov.uk [51.63.17.54]: 552 Too much data.
+
+------ This is a copy of the message, including all the headers. ------
+------ The body of the message is 10482543 characters long; only the first
+------ 32768 or so are included here.
+
+Return-path: <hywelapbuckler@gmail.com>
+Received: from mail6.bemta14.messagelabs.com ([193.109.254.103])
+	by mx.hosting-w.gsi.gov.uk with esmtps (TLSv1.2:DHE-RSA-AES128-SHA:128)
+	(Exim 4.83)
+	(envelope-from <hywelapbuckler@gmail.com>)
+	id 1azVZh-0001dw-Ia
+	for communication@nca.x.gsi.gov.uk; Sun, 08 May 2016 21:45:14 +0100
+Received: from [193.109.254.3] by server-13.bemta-14.messagelabs.com id 18/32-02833-855AF275; Sun, 08 May 2016 20:45:12 +0000
+X-Brightmail-Tracker: H4sIAAAAAAAAA+NgFtrKKsWRWlGSWpSXmKPExsVyMfSWjq7NUv1
+  wg7nbmS2unNzO5MDo0f80LoAxijUzLym/IoE148x7rYJnr/YzVrTO+cXewPh34l7GLkYuDiGB
+  mYwSlx9+YAJxWATus0gc7NoD5kgI/GaRePOzmbWLkRPIyZHo75jFCGLzCghKnJz5hAUiXiTxo
+  WsvmC0k4Clxb+ZjsHoWARWJO4feQdUHSNw4NJ0ZxBYWcJY4dPcxmM0mYCAx68NGdhBbREBJ4l
+  nDLjaQxcwCk1kllv49AjSUA8hxkTgyIW4CI98sJKtnIWRAwswCXhLnDm9ihgirS6yfJwQRVpO
+  4ve0qO4StLbFs4WuoEk2J/u8KEGFTiaMdTcwQtqLElO6HYOUSAjISTzb/YIKIa0l82HCFDcI2
+  kzh2ZC5W9c8XrmFZwMi3ilGjOLWoLLVI19BIL6koMz2jJDcxM0fX0NBELze1uDgxPTUnMalYL
+  zk/dxMjMPIYgGAH49lpzocYJTmYlER5XRn1woX4kvJTKjMSizPii0pzUosPMcpwcChJ8CYt0Q
+  8XEixKTU+tSMvMAaYAmLQEB4+SCK8hSJq3uCAxtzgzHSJ1itGYY8vva2uZOLZNvbeWSYglLz8
+  vVUqc99NioFIBkNKM0jy4QbDUdIlRVkqYlxHoNCGegtSi3MwSVPlXjOIcjErCvLEgC3ky80rg
+  9r0COoUJ6BQ5NrBTShIRUlINjHVfHvzTzv3ouP/wEbkZZ//d2+WQvXNd9RuOHcHfDKWtFbqP+
+  TPNm+kzxzD688JrPp+93/0QnC/hsW9684F3tx7y52q8W+MhIzFTukdo9TSZLbv5JR59ETLXk7
+  LyO//uKH/bzb4pLx7e7HVijpw4/8eO6763XzPOkr3z6uE8RtbKYnOVv+pM4teVWIozEg21mIu
+  KEwGrGdiCSAMAAA==
+X-Env-Sender: hywelapbuckler@gmail.com
+X-Msg-Ref: server-8.tower-184.messagelabs.com!1462740271!41696736!1
+X-Originating-IP: [209.85.218.44]
+X-SpamReason: No, hits=0.0 required=7.0 tests=Mail larger than overall 
+  mail size limit
+X-StarScan-Received:
+X-StarScan-Version: 8.34; banners=-,-,nca.x.gsi.gov.uk
+X-VirusChecked: Checked
+Received: (qmail 28966 invoked from network); 8 May 2016 20:44:32 -0000
+Received: from mail-oi0-f44.google.com (HELO mail-oi0-f44.google.com) (209.85.218.44)
+  by server-8.tower-184.messagelabs.com with AES128-GCM-SHA256 encrypted SMTP; 8 May 2016 20:44:32 -0000
+Received: by mail-oi0-f44.google.com with SMTP id x19so191104332oix.2
+        for <communication@nca.x.gsi.gov.uk>; Sun, 08 May 2016 13:44:32 -0700 (PDT)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20120113;
+        h=mime-version:date:message-id:subject:from:to:cc;
+        bh=oXA6gu/LkBq5ufB/31K0eqi3z3eiCzP1Ea6bvnGEokk=;
+        b=dWpj2/oFCUxD3RWtb0v7f5sPg2GtX/Z/ah/IGngTwiERJp5jSEnXIg7xlXY+Usxufz
+         GdnKpWZFcZf9UnUlePt783PE2/Pm+wufIR9i+UpaWy0t5uz2JWjmEgKnmpWl0KPbmL1F
+         49xr/FbowSS4PiG8gkfF7Y0RwybrqYiYm3DCrkeFZytehpN7oLgDEHRNbt8MbvlnW3jd
+         XNObUnBVsKuKf3rYIaZMpyI52HHJ/adINj1OF7lOMA2o+4Oa2CcVmfXaJXgn6gOplNHj
+         KCgBiDSy8B9JxCrM0MaHj9KUl0jYmnptsi4hxxpUk71FwzQ4B8rSfdB0wl3AVahPkBMP
+         Xeuw==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20130820;
+        h=x-gm-message-state:mime-version:date:message-id:subject:from:to:cc;
+        bh=oXA6gu/LkBq5ufB/31K0eqi3z3eiCzP1Ea6bvnGEokk=;
+        b=PVubEt+0vOQJ2dR856MvK9bKiUm0NMhVNsrCzRyktpux+CGD7a0juHVr67lxSno8ew
+         qvb/Z6sfiCAtufZives/ZWXajNUQ9yry9EoOr7PDT5bITJS+XDVBeCZrKDN58MdJaKXV
+         H54UL47OhFmPhG/IBTgfhI+pDqHY1ZqMJkmR4L6zwo2JIbqV1H4e0HAq3Rfp+LL8i0Hq
+         D7MLWbf8jIbPh36U3M5hh2QqYl8MsRnqEjQRfJ6tXsCzTrqCi+0j6z8QWIsXfPaCsUnK
+         HZm4xghtIEq0XEsbgrOJdO5CG8U7o81v68XtxDTf/5O+jwegFebYyquFTnno8vdJAySU
+         yLIw==
+X-Gm-Message-State: AOPr4FUCjcIvOL/tfSqVjkaxxtK3LLhSTjBT+iDz0GJpHBZy8biIB/FYIah2csI9N2oYEneVilRk5o8uUPZstg==
+MIME-Version: 1.0
+X-Received: by 10.157.37.235 with SMTP id q98mr2827279ota.47.1462740270590;
+ Sun, 08 May 2016 13:44:30 -0700 (PDT)
+Received: by 10.202.3.198 with HTTP; Sun, 8 May 2016 13:44:30 -0700 (PDT)
+Date: Sun, 8 May 2016 17:44:30 -0300
+Message-ID: <CAAuJ3V62CRVUCabZsEsEg9Wt1YQe7mqCG1KWiDn6Z70_3QQwbw@mail.gmail.com>
+Subject: Child abuse, abduction cover-up. ONGOING RIGHTS VIOLATIONS
+From: Hywel Apbuckler <hywelapbuckler@gmail.com>
+To: communication@nca.x.gsi.gov.uk
+Cc: Mark Nicol <mark.nicol@mailonsunday.co.uk>, help@nspcc.org.uk, 
+	Stop It Now Helpline <help@stopitnow.org.uk>, Kat Foy <missingadultsandchildrenuk@gmail.com>, 
+	Kat Foy <missingadultschildren@gmail.com>, 
+	Shaun Hulme <Shaun.Hulme@isonharrison.co.uk>, 
+	"general.enquiries@leeds.gov.uk" <General.Enquiries@leeds.gov.uk>, 
+	"Serena.James@south-wales.pnn.police.uk" <Serena.James@south-wales.pnn.police.uk>, 
+	"Ingham, Karina" <Karina.Ingham@westyorkshire.pnn.police.uk>, 
+	"justice@fathers-rights.co.uk" <justice@fathers-rights.co.uk>, 
+	"office@fathers-4-justice.org" <office@fathers-4-justice.org>, 
+	New Fathers 4 Justice <admin@newfathers4justice.info>
+Content-Type: multipart/mixed; boundary=001a113db9a83e539e05325ac2c8
+
+--001a113db9a83e539e05325ac2c8
+Content-Type: multipart/alternative; boundary=001a113db9a83e539905325ac2c6
+
+--001a113db9a83e539905325ac2c6
+Content-Type: text/plain; charset=UTF-8
+
+Sirs,
+
+Please file the information I am providing you for future reference.
+
+
+   - My name is Hywel of the Buckler Family, Llandough, South Wales.
+   - My UK legal title is Sion Hywel Buckler.
+   - I am a British Subject. I am in Oath: ID: 25148537
+
+Oath is significant to what I'm about to tell you. The 1801 UK 'Society'
+and its 750 'statute' rules may sound organised.
+But as a fail safe British Subject have laws of our land (bill of Rights
+and Magna Carta) and the freedom to leave, form or join ANY 'Society' we
+choose.
+THIS IS DEMOCRACY! I am a British Subject in OATH!
+My child's mother and I attempted to exercise democracy (to check to see if
+we're still in one in Britain), with a letter of conditional acceptance to
+the Births/ Deaths Registrar in Leeds in November 2013. Rather than a
+response, with conditions being met, my child's mother was terrorized, our
+son got harmed during her panic, he was then abducted, hidden, renamed,
+further endangered and I was illegally evicted from our home, denied access
+to my abducted, missing child, my car stolen, successive unwarranted
+attempts for my arrest and then finally (cart before the horse) a court
+hearing was held. Further violations of mine and my son's Magna Carta
+Section 39 Right included NO SUFFICIENT NOTICE OF THE HEARING, NO EVIDENCE,
+NO OPPORTUNITY TO PREPARE A DEFENSE etc . e..g a secret court hearing was
+held and judgement given based on false allegation. I was threatened with 5
+years in jail for emailing asking to know where and how my abducted,
+missing child was or exposing these child snatchers. WHO SECRETLY FLEW MY
+ABDUCTED BOY OUT OF THE COUNTRY AND WERE VIDEO'D THEMSELVES PERFORMING
+RITUALS ON HIM, WHILE THE STATE ATTEMPTED TO KIDNAP AND SILENCE ME.
+
+The efforts to frame, corrupt, discredit, ransom, frame, bait and silence
+me continue on, with three agents ambushing a safe house I have in Santa
+Domingo in the Caribbean last week. The 1801 UK Regime is Britain's new
+Number 1 enemy. It's been two years and I remain hunted and my child held
+captive at an unknown address, forced-fatherless and exploited by state
+sponsored child abusers and a child molester . WHO ARE ALSO INCESTUOUS!
+
+
+On the 6th October 2013 my girlfriend Deborah Stewart of Otley and I had a
+son.
+Our son was born at Harrogate Hospital and returned home with us the
+following day to Stockeld Park in wetherby.
+
+On the 15th Nov 2013 a guest and I witnesses my child's mother exploiting
+and abusing my son. Shortly afterwards she ran off with our son and all our
+cash.
+I have never seen my son since, all effort to see him have been obstructed
+and/or subject to corruption conditions (which contravene my Oath).
+Furthermore all information about my abducted, missing son has been kept
+from me since early 2014.
+
+My son is still being held captive at an unknown address in the hands of
+his abusive mother and her father who is a reported child molester, as I
+recently discovered. My son, also a British Subject, has been renamed, made
+a member of the 1801 UK 'Society' and vaccinated by way of abduction and
+against a letter of conditional acceptance and my expressed denial of
+consent. I am not just a concerned father but I have a duty to Queen and
+County to uphold the rights of British Subjects, which in the case of my
+son are all in violation for the second successive year. Furthermore no
+request has been made for my medical history or records (held by the
+British Armed Forces, Glasgow) which concerns me about his captors and
+abducts who have not only subjected him to a reduced quality of living and
+standard of care at his place of captivity, but are not ensuring the best
+standards of health care possible, as is his human right. Furthermore he
+has, by way of abduction, been forced from Private Health Care to Public
+against my expressed denial of consent and very unnecessarily e.g. a low
+quality of health care is being forced upon him by way of abduction,
+forced-faithlessness etc
+
+I am deeply concerned for my child. Who remains abducted and missing.
+I have reported this to missingchildrenuk, nspcc, west Yorkshire police,
+south wales police and more. ALL HAVE IGNORED THESE CONCERNS FOR TWO
+SUCCESSIVE YEARS. However, considerable effort has been made by my child's
+abductors and captors and the 1801 UK Regime to corrupt, ransom, frame,
+terrorize, kidnap and silence (and even murder) me.
+
+After my child's abduction I was illegally evicted, my car was stolen, a
+website was set up by my child's mother's family attempting to discredit
+me. Successive attempts were made to frame and criminalize me. Two suprise
+attempts were made to arrest me and a secret court hearing was held where
+my legal person (not me the physical human) was threatened with 5 years in
+jail for 'harassment' for emailing my child's captors and abductors asking
+to know where and how he was. 3 weeks after dialogue via email ceased.
+
+Surprise attempts by South Wales and West Yorkshire Police to surprise
+kidnap me (without Warrant) continued, I received threats from ISON
+Harrison Law Firm in Leeds, who along with Judge McLeod of Leeds
+Magistrates Court committed series of document fraud to violate my inherent
+and inalienable section 39 magna carta right and the Good Samaritan Law.
+West Yorkshire Policewomen (Sgt Carol Simmons and PCSO Karina Ingham) also
+ransomed and threatened me via recorded calls before committing document
+fraud.
+
+I will not pay this cartel of my child's abductors a fee or enter into
+contract with them as it is child exploitation. Which they have attempted
+to forge by kidnapping me without warrant. I have a constitutional duty to
+rebel against this tyranny and corruption and I have a duty as a father to
+remain a voice for my abducted missing child, AND AS A WITNESS OF HIS ABUSE
+(where both others have been silenced).
+
+I continue to be ignored. Other than MissingChildrenUK who only yesterday
+asked to view evidence. After two years of ignoring me, threats of
+reporting me for harassment for emailing them every week. A comment on my
+blog lying and attempting to discredit me and an email alleging I am a
+'nutter'. They seem to have depleted all option not to help my son.
+Including a response that he is not missing if he is believed to be with
+the mother. Which I have no confirmation of.
+
+So you see, my son was abducted by his abuser. All information has been
+kept from me. What information I have been able to gather raises more
+concerns. e.g. he was secretly flown out of the country after his
+abduction, subjected to the rituals of a child sex abuser at his home in 7
+newall mount in Otley. In the interim there have been numerous attempts to
+kidnap and silence me. ISON Harrison had my blog about this matter
+censored. My gmails, old Facebook, Skype and other accounts, including my
+TSB bank account, were shut down without warning. In an attempt to frame
+me, a t-shirt I posted to my abducted son's last known address was reported
+as a possible bomb. This effort to paint me as a terrorist is extreme
+considering I am a British Army Reservist, STILL IN OATH!
+
+Last month 3 agents are reported to have tried surprise visiting me, at an
+old safe house I have in Santa Domingo in the Dominican Republic. They
+failed to kidnap and silence me and again were not reported to have ID or
+Warrant. This is after a video was taken this time last year of two black
+helicopters circling my family estate in South Wales and death threats on
+my family local former para trooper (who was then arrested) (Francis Pope).
+
+I cannot be part of a society which commits these crimes and rights
+violations against children. What would posses my own child's mother to
+violate our child's rights is not beyond me. She belongs to a pedophile/
+child abuse ring, she was sexually abused as a child by her father who was
+sexually abused as child. The cycle of child sex abuse continues BY FORCE!
+
+I refuse to be silenced. I will never be accepting. I still live in peace
+and abundance. I'm still a willing and able father. I demand my son's safe
+return to his father and home. For this to happen I demand a response to my
+concerns of two years. I will not enter into contract or pay a fee for the
+safe return of my child as this is exploitation and child trafficking. BY
+the 1801 UK REGIME!
+
+Furthermore a port order request I made in 2013 was ignored (which is the
+protocol to prevent abducted children being registered as citizens of a
+state). A letter of conditional acceptance to the registrar is still being
+ignored by the department, who have not met the conditions of acceptance of
+membership of my abducted child to the UK 'Society'. Instead it has been
+done by way of abduction which is corruption of the very mechanism of
+democracy British Soldiers lay down their lives to defend.
+
+ Under the conditions of this pro-longed injustice, I believe it's now time
+to exercise true democracy in Britain. British Subjects are still free to
+leave, form or join any society we choose. The 1801 UK 'Society' has very
+evidently surpassed becoming a repressive, tyrant regime and now closer
+resembles an evil, tyrannical nationwide cult. It does not serve us and it
+does not defend us. I am, as a British Subject in Oath to the Queen,
+encouraging British Subject to now renounce citizenship from this Regime
+and join/form a new British Society.
+
+I have done as much and I will be inviting my Commander-in-Chief to give my
+new British Societies Act of Union and 'statute' rules Her Royal Assent.
+And I will explain why I have gone to this length and name the agentic
+negligence and corruption of UK Regime and its agents and Citizens as these
+ONGOING crimes took place.
+
+Kind Regards,
+
+Sion Hywel Buckler
+Concerned Father
+Oath Keeper: 25148537
+http://missingmilo.lockernerd.co.uk
+https://www.vmbvoom.com/pitches/united-technocracy-1
+
+
+______________________________________________________________________
+This email has been scanned by the Symantec Email Security.cloud service.
+For more information please visit http://www.symanteccloud.com
+______________________________________________________________________
+--001a113db9a83e539905325ac2c6
+Content-Type: text/html; charset=UTF-8
+Content-Transfer-Encoding: quoted-printable
+
+<div dir=3D"ltr"><div class=3D"gmail_quote"><div dir=3D"ltr">Sirs,<div><br=
+></div><div>Please file the information I am providing you for future refe=
+rence.=C2=A0</div><div><br></div><div><ul><li>My name is Hywel of the Buck=
+ler Family, Llandough, South Wales.=C2=A0<br></li><li>My UK legal title is=
+ Sion Hywel Buckler.<br></li><li>I am a British Subject. I am in Oath: ID:=
+ 25148537<br></li></ul></div><div>Oath is significant to what I&#39;m abou=
+t to tell you. The 1801 UK &#39;Society&#39; and its 750 &#39;statute&#39;=
+ rules may sound organised.=C2=A0</div><div>But as a fail safe British Sub=
+ject have laws of our land (bill of Rights and Magna Carta) and the freedo=
+m to leave, form or join ANY &#39;Society&#39; we choose.=C2=A0</div><div>=
+THIS IS DEMOCRACY! I am a British Subject in OATH!=C2=A0</div><div>My chil=
+d&#39;s mother and I attempted to exercise democracy (to check to see if w=
+e&#39;re still in one in Britain), with a letter of conditional acceptance=
+ to the Births/ Deaths Registrar in Leeds in November 2013. Rather than a =
+response, with conditions being met, my child&#39;s mother was terrorized,=
+ our son got harmed during her panic, he was then abducted, hidden, rename=
+d, further endangered and I was illegally evicted from our home, denied ac=
+cess to my abducted, missing child, my car stolen, successive unwarranted =
+attempts for my arrest and then finally (cart before the horse) a court he=
+aring was held. Further violations of mine and my son&#39;s Magna Carta Se=
+ction 39 Right included NO SUFFICIENT NOTICE OF THE HEARING, NO EVIDENCE, =
+NO OPPORTUNITY TO PREPARE A DEFENSE etc . e..g a secret court hearing was =
+held and judgement given based on false allegation. I was threatened with =
+5 years in jail for emailing asking to know where and how my abducted, mis=
+sing child was or exposing these child snatchers. WHO SECRETLY FLEW MY ABD=
+UCTED BOY OUT OF THE COUNTRY AND WERE VIDEO&#39;D THEMSELVES PERFORMING RI=
+TUALS ON HIM, WHILE THE STATE ATTEMPTED TO KIDNAP AND SILENCE ME.=C2=A0</d=
+iv><div><br></div><div>The efforts to frame, corrupt, discredit, ransom, f=
+rame, bait and silence me continue on, with three agents ambushing a safe =
+house I have in Santa Domingo in the Caribbean last week. The 1801 UK Regi=
+me is Britain&#39;s new Number 1 enemy. It&#39;s been two years and I rema=
+in hunted and my child held captive at an unknown address, forced-fatherle=
+ss and exploited by state sponsored child abusers and a child molester . W=
+HO ARE ALSO INCESTUOUS!=C2=A0</div><div>=C2=A0</div><div><br></div><div>On=
+ the 6th October 2013 my girlfriend Deborah Stewart of Otley and I had a s=
+on.</div><div>Our son was born at Harrogate Hospital and returned home wit=
+h us the following day to Stockeld Park in wetherby.=C2=A0</div><div><br><=
+/div><div>On the 15th Nov 2013 a guest and I witnesses my child&#39;s moth=
+er exploiting and abusing my son. Shortly afterwards she ran off with our =
+son and all our cash.=C2=A0</div><div>I have never seen my son since, all =
+effort to see him have been obstructed and/or subject to corruption condit=
+ions (which contravene my Oath). Furthermore all information about my abdu=
+cted, missing son has been kept from me since early 2014.=C2=A0</div><div>=
+<br></div><div>My son is still being held captive at an unknown address in=
+ the hands of his abusive mother and her father who is a reported child mo=
+lester, as I recently discovered. My son, also a British Subject, has been=
+ renamed, made a member of the 1801 UK &#39;Society&#39; and vaccinated by=
+ way of abduction and against a letter of conditional acceptance and my ex=
+pressed denial of consent. I am not just a concerned father but I have a d=
+uty to Queen and County to uphold the rights of British Subjects, which in=
+ the case of my son are all in violation for the second successive year. F=
+urthermore no request has been made for my medical history or records (hel=
+d by the British Armed Forces, Glasgow) which concerns me about his captor=
+s and abducts who have not only subjected him to a reduced quality of livi=
+ng and standard of care at his place of captivity, but are not ensuring th=
+e best standards of health care possible, as is his human right. Furthermo=
+re he has, by way of abduction, been forced from Private Health Care to Pu=
+blic against my expressed denial of consent and very unnecessarily e.g. a =
+low quality of health care is being forced upon him by way of abduction, f=
+orced-faithlessness etc=C2=A0</div><div><br></div><div>I am deeply concern=
+ed for my child. Who remains abducted and missing.=C2=A0</div><div>I have =
+reported this to missingchildrenuk, nspcc, west Yorkshire police, south wa=
+les police and more. ALL HAVE IGNORED THESE CONCERNS FOR TWO SUCCESSIVE YE=
+ARS. However, considerable effort has been made by my child&#39;s abductor=
+s and captors and the 1801 UK Regime to corrupt, ransom, frame, terrorize,=
+ kidnap and silence (and even murder) me.=C2=A0</div><div><br></div><div>A=
+fter my child&#39;s abduction I was illegally evicted, my car was stolen, =
+a website was set up by my child&#39;s mother&#39;s family attempting to d=
+iscredit me. Successive attempts were made to frame and criminalize me. Tw=
+o suprise attempts were made to arrest me and a secret court hearing was h=
+eld where my legal person (not me the physical human) was threatened with =
+5 years in jail for &#39;harassment&#39; for emailing my child&#39;s capto=
+rs and abductors asking to know where and how he was. 3 weeks after dialog=
+ue via email ceased.</div><div><br></div><div>Surprise attempts by South W=
+ales and West Yorkshire Police to surprise kidnap me (without Warrant) con=
+tinued, I received threats from ISON Harrison Law Firm in Leeds, who along=
+ with Judge McLeod of Leeds Magistrates Court committed series of document=
+ fraud to violate my inherent and inalienable section 39 magna carta right=
+ and the Good Samaritan Law. West Yorkshire Policewomen (Sgt Carol Simmons=
+ and PCSO Karina Ingham) also ransomed and threatened me via recorded call=
+s before committing document fraud.=C2=A0</div><div><br></div><div>I will =
+not pay this cartel of my child&#39;s abductors a fee or enter into contra=
+ct with them as it is child exploitation. Which they have attempted to for=
+ge by kidnapping me without warrant. I have a constitutional duty to rebel=
+ against this tyranny and corruption and I have a duty as a father to rema=
+in a voice for my abducted missing child, AND AS A WITNESS OF HIS ABUSE (w=
+here both others have been silenced).=C2=A0</div><div><br></div><div>I con=
+tinue to be ignored. Other than MissingChildrenUK who only yesterday asked=
+ to view evidence. After two years of ignoring me, threats of reporting me=
+ for harassment for emailing them every week. A comment on my blog lying a=
+nd attempting to discredit me and an email alleging I am a &#39;nutter&#39=
+;. They seem to have depleted all option not to help my son. Including a r=
+esponse that he is not missing if he is believed to be with the mother. Wh=
+ich I have no confirmation of.=C2=A0</div><div><br></div><div>So you see, =
+my son was abducted by his abuser. All information has been kept from me. =
+What information I have been able to gather raises more concerns. e.g. he =
+was secretly flown out of the country after his abduction, subjected to th=
+e rituals of a child sex abuser at his home in 7 newall mount in Otley. In=
+ the interim there have been numerous attempts to kidnap and silence me. I=
+SON Harrison had my blog about this matter censored. My gmails, old Facebo=
+ok, Skype and other accounts, including my TSB bank account, were shut dow=
+n without warning. In an attempt to frame me, a t-shirt I posted to my abd=
+ucted son&#39;s last known address was reported as a possible bomb. This e=
+ffort to paint me as a terrorist is extreme considering I am a British Arm=
+y Reservist, STILL IN OATH!=C2=A0</div><div><br></div><div>Last month 3 ag=
+ents are reported to have tried surprise visiting me, at an old safe house=
+ I have in Santa Domingo in the Dominican Republic. They failed to kidnap =
+and silence me and again were not reported to have ID or Warrant. This is =
+after a video was taken this time last year of two black helicopters circl=
+ing my family estate in South Wales and death threats on my family local f=
+ormer para trooper (who was then arrested) (Francis Pope).</div><div><br><=
+/div><div>I cannot be part of a society which commits these crimes and rig=
+hts violations against children. What would posses my own child&#39;s moth=
+er to violate our child&#39;s rights is not beyond me. She belongs to a pe=
+dophile/ child abuse ring, she was sexually abused as a child by her fathe=
+r who was sexually abused as child. The cycle of child sex abuse continues=
+ BY FORCE!=C2=A0</div><div><br></div><div>I refuse to be silenced. I will =
+never be accepting. I still live in peace and abundance. I&#39;m still a w=
+illing and able father. I demand my son&#39;s safe return to his father an=
+d home. For this to happen I demand a response to my concerns of two years=
+. I will not enter into contract or pay a fee for the safe return of my ch=
+ild as this is exploitation and child trafficking. BY the 1801 UK REGIME!<=
+/div><div><br></div><div>Furthermore a port order request I made in 2013 w=
+as ignored (which is the protocol to prevent abducted children being regis=
+tered as citizens of a state). A letter of conditional acceptance to the r=
+egistrar is still being ignored by the=20department, who have not met the =
+conditions of acceptance of membership of my abducted child to the UK &#39=
+;Society&#39;. Instead it has been done by way of abduction which is corru=
+ption of the very mechanism of democracy British Soldiers lay down their l=
+ives to defend.=C2=A0</div><div><br></div><div>=C2=A0Under the conditions =
+of this pro-longed injustice, I believe it&#39;s now time to exercise true=
+ democracy in Britain. British Subjects are still free to leave, form or j=
+oin any society we choose. The 1801 UK &#39;Society&#39; has very evidentl=
+y surpassed becoming a repressive, tyrant regime and now closer resembles =
+an evil, tyrannical nationwide cult. It does not serve us and it does not =
+defend us. I am, as a British Subject in Oath to the Queen, encouraging Br=
+itish Subject to now renounce citizenship from this Regime and join/form a=
+ new British Society.=C2=A0</div><div><br></div><div>I have done as much a=
+nd I will be inviting my Commander-in-Chief to give my new British Societi=
+es Act of Union and &#39;statute&#39; rules Her Royal Assent. And I will e=
+xplain why I have gone to this length and name the agentic negligence and =
+corruption of UK Regime and its agents and Citizens as these ONGOING crime=
+s took place.=C2=A0</div><div><br></div><div>Kind Regards,</div><div><br><=
+/div><div>Sion Hywel Buckler</div><div>Concerned Father</div><div>Oath Kee=
+per: 25148537</div><div><a href=3D"http://missingmilo.lockernerd.co.uk" ta=
+rget=3D"_blank">http://missingmilo.lockernerd.co.uk</a></div><div><a href=3D=
+"https://www.vmbvoom.com/pitches/united-technocracy-1">https://www.vmbvoom=
+.com/pitches/united-technocracy-1</a><br></div><div><br></div><div><br></d=
+iv><div><div><br></div><div><br></div></div></div>
+</div><br></div>
+<br clear=3D"both">
+______________________________________________________________________<BR>=
+
+This email has been scanned by the Symantec Email Security.cloud service.<=
+BR>
+For more information please visit http://www.symanteccloud.com<BR>
+______________________________________________________________________<BR>=
+
+
+--001a113db9a83e539905325ac2c6--
+--001a113db9a83e539e05325ac2c8
+Content-Type: image/png; name="house.png"
+Content-Disposition: attachment; filename="house.png"
+Content-Transfer-Encoding: base64
+X-Attachment-Id: f_inz0zjdi0
+
+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
+
+The original of this email was scanned for viruses by the Government Secure Intranet virus scanning service supplied by Vodafone in partnership with Symantec. (CCTM Certificate Number 2009/09/0052.) This email has been certified virus free.
+Communications via the GSi may be automatically logged, monitored and/or recorded for legal purposes.

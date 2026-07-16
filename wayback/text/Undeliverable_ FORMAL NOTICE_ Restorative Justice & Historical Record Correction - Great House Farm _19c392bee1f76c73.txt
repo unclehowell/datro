@@ -1,0 +1,241 @@
+[https://products.office.com/en-us/CMSImages/Office365Logo_Orange.png?version=b8d100a9-0a8b-8e6a-88e1-ef488fee0470]
+Your message to law-enquiries@cardiff.ac.uk couldn't be delivered.
+When Office 365 tried to send your message, the receiving email server outside Office 365 reported an error.
+hywelapbuckler  Office 365      law-enquiries
+Sender          Action Required
+Policy violation or system error
+
+How to Fix It
+Check the "Reported Error" from the "Error Details" section shown below for more information about the problem. The error might tell you what went wrong and how to fix it. For example, if the error states that the message was blocked due to a potential virus or because the message was too large, try sending the message again without attachments.
+If you're not able to fix the problem, it's likely that only the recipient's email admin can fix it. Contact the recipient by some other means (by phone, for example) and ask them to tell their email admin about the problem. Give them the "Reported Error" from the "Error Details" section below.
+
+Was this helpful? Send feedback to Microsoft<https://go.microsoft.com/fwlink/p/?LinkID=717199>.
+________________________________
+
+More Info for Email Admins
+Status code: 550 5.0.350
+
+The error reported by the receiving server wasn't specific enough to determine the exact nature of the problem. These errors often indicate the message violates a security or policy setting configured on the recipient's email servers.
+
+If the sender is unable to fix the problem by modifying their message, then it's likely a problem that only the recipient's email admin can fix. Try the following:
+
+Check the error for information about the problem - The "Reported Error" returned by the external email server can be found in the "Error Details" section below. This error might tell you what went wrong and provide clues for how to fix it. For example, if the error states the message was rejected due a Sender Policy Framework (SPF) issue, then you'll have to work with your domain registrar to correctly configure your domain's SPF records.
+
+Check the error for information about where the problem is happening - For example, look for a domain name like contoso.com. A domain name in the error might suggest who is responsible for the error. It could be the recipient's email server, or it could be a third-party service that your organization or the recipient's organization is using to process or filter email messages.
+
+If you can't fix the problem, contact the responsible party's email admin - Give them the error code and error message from this non-delivery report (NDR) to help them troubleshoot the issue. For security or policy violation issues, it might be sufficient for them to just add your sending IP addresses or domain to their allowed senders list.
+
+It's likely that only the recipient's email admin can fix the problem. Unfortunately, it's unlikely Office 365 Support will be able to help with these kinds of externally reported errors.
+
+Original Message Details
+Created Date:   2/7/2026 5:33:58 PM
+Sender Address: hywelapbuckler@gmail.com
+Recipient Address:      law-enquiries@cardiff.ac.uk
+Subject:        FORMAL NOTICE: Restorative Justice & Historical Record Correction - Great House Farm (Tŷ Mawr), Llandough
+
+Error Details
+Error:  550 5.0.350 Remote server returned an error -> 550 Unrouteable address
+Message rejected by:    memlhub02.cf.ac.uk
+
+Notification Details
+Sent by:        LOAP265MB8451.GBRP265.PROD.OUTLOOK.COM
+
+Message Hops
+HOP     TIME (UTC)      FROM    TO      WITH    RELAY TIME
+1       2/7/2026
+5:34:23 PM              mail-ua1-x935.google.com        SMTP    25 sec
+2       2/7/2026
+5:34:24 PM      mail-ua1-x935.google.com        AM3PEPF0000A79B.mail.protection.outlook.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   1 sec
+3       2/7/2026
+5:34:01 PM      AM3PEPF0000A79B.eurprd04.prod.outlook.com       AS9PR06CA0655.outlook.office365.com     Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384)   *
+4       2/7/2026
+5:34:24 PM      AS9PR06CA0655.eurprd06.prod.outlook.com LOAP265MB8451.GBRP265.PROD.OUTLOOK.COM  Microsoft SMTP Server (version=TLS1_2, cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384)    23 sec
+
+Original Message Headers
+
+ARC-Seal: i=3; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=VDV73Bs4/Xg0gH9/B4dSH0NUJDljCreTWDeQRcKGk4n4WeqlUTiglz68b3Ho9uR7SRScStsRN1GpqKygoTTLp/aK+ruQEeG5pSOwP/xgF1+CtZF6yukka4KOtGRe7lrAT/uU8IrBDJ3PBO4xdvZPMdGrFSOoyCAkDuBubj8kk0xEbCZrvWMdLeX3bZXuSdks5kS8xbwkFQhKP7B7kMKGLjoTFrYyUXhDGvy9EiJlyb9f1cIKNhqhdJ1ONJOTGHvkwiv09s6+byRyGIccZo4v7UIJ3WR0DvHddHNjnlK3ILxJONbiB2SdiBrpZ6x9ehrleJ8XJ76eSGBIZzmaQe7XCQ==
+ARC-Message-Signature: i=3; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=d5lBCFOQlQ0Tr3u86Hx/ZvSIm/pwGHGwRSZ7sq7Bn/w=;
+ b=KphnxQYTiGvThiVgAi0tHnCywSDgGA6wtbkMEiGatgz31HmIHkZIR97qM7UBSGQvBreWR1/3a/alsi9r5zf/xhpCbBWpAhoyThjZLVuDpVKJk6nxVgCcildEDOwUfxi4ZrA6yzDUOs4/l2hsBosc6kgTUYrd6W0vd+kgPHYoZlp5nYrEYFxU7VmdapdUZdQ7ckzuqULjo5S7qOAwNCNGzWfx0Kmm+8w7ViISV+X+ZFo2x8PUZ8IfvY75rr/U3ZbUI9Aw5WXcQSJDeHr6QToTPHXUtMujkcue7KxSFI7XXNxapDK5caXlxU9g2s8GJnSKQhm+tvWgZREoDxn9g73oKQ==
+ARC-Authentication-Results: i=3; mx.microsoft.com 1; spf=pass (sender ip is
+ 2607:f8b0:4864:20::935) smtp.rcpttodomain=cardiff.ac.uk
+ smtp.mailfrom=gmail.com; dmarc=pass (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com; arc=pass (0 oda=0 ltdi=1)
+ARC-Seal: i=2; a=rsa-sha256; s=arcselector10001; d=microsoft.com; cv=pass;
+ b=K/SxUfQ2YXJNrc5JkFCDNQSSX5hmrGBS6zgnOvOoFeifMmSpMZ+i0KW0hz53LSoJVRN5AVp2EftpazpHHB8lCSNChWvTxXEEi7iWz/zjnFn59z3XwSoeKsazmLV/KqYLEi6VZhglgl0MAeXufMTpcrSX66RFTciW/dEwrqKINwc+b+WIUrY0MCOMq79QjNDNOiaT3BpWssZ4Lv9o+t778k+4fOmKP+TgpX+BMVLCO3z8RVnbXb7PTvVw9Kva08n4Q9G8jbdP23DvW8JKPo+nQ7JLeEw/xu7XocLS3dIVGc5qXbp7WGIyTolBBgV76XG9cWGG0Lqozm2/wadut56V7A==
+ARC-Message-Signature: i=2; a=rsa-sha256; c=relaxed/relaxed; d=microsoft.com;
+ s=arcselector10001;
+ h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-AntiSpam-MessageData-ChunkCount:X-MS-Exchange-AntiSpam-MessageData-0:X-MS-Exchange-AntiSpam-MessageData-1;
+ bh=fvgQwlTJZ0o4v9v3uLK6e9+EXd3h3oPzZPmkG2s9khY=;
+ b=JRKi22g8gypZJGTjf2D9fEAuibF+YPumWThy3C/npeJJ+VQlv60+H66NeJtAdoEnDzciDqSb2gpGGXrwHUuvFJlIhLdfMqpXRWwHsOvX+iLQbWxARO5zUa5EblgcWZs7UgvHUyValDIG20dB43TiVbbbeIX9/RspLY2xXGxOxS1gVH6BK8xA6qAQb0Dbc/afXN8G5Eubprrcko/Jc+0/Hjcogw01T/ta4mbVBV54aqrPjAowdjkIBc2IRK/n1Iexf1u/zoaCr2ISpe8VmRMfrPDPEwNOgp1k4DnWJ0x/CLRA4PsRAj4ZZhBVuMoJHEu9LCRW0q8EMmbad4yP2bCNQA==
+ARC-Authentication-Results: i=2; mx.microsoft.com 1; spf=pass (sender ip is
+ 2607:f8b0:4864:20::935) smtp.rcpttodomain=cardiff.ac.uk
+ smtp.mailfrom=gmail.com; dmarc=pass (p=none sp=quarantine pct=100)
+ action=none header.from=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com; arc=pass (0 oda=0 ltdi=1)
+Received: from AS9PR06CA0655.eurprd06.prod.outlook.com (2603:10a6:20b:46f::23)
+ by LOAP265MB8451.GBRP265.PROD.OUTLOOK.COM (2603:10a6:600:474::20) with
+ Microsoft SMTP Server (version=TLS1_2,
+ cipher=TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384) id 15.20.9587.15; Sat, 7 Feb
+ 2026 17:34:24 +0000
+Received: from AM3PEPF0000A79B.eurprd04.prod.outlook.com
+ (2603:10a6:20b:46f:cafe::97) by AS9PR06CA0655.outlook.office365.com
+ (2603:10a6:20b:46f::23) with Microsoft SMTP Server (version=TLS1_3,
+ cipher=TLS_AES_256_GCM_SHA384) id 15.20.9587.17 via Frontend Transport; Sat,
+ 7 Feb 2026 17:34:01 +0000
+Authentication-Results: spf=pass (sender IP is 2607:f8b0:4864:20::935)
+ smtp.mailfrom=gmail.com; dkim=pass (signature was verified)
+ header.d=gmail.com;dmarc=pass action=none header.from=gmail.com;compauth=pass
+ reason=100
+Received-SPF: Pass (protection.outlook.com: domain of gmail.com designates
+ 2607:f8b0:4864:20::935 as permitted sender) receiver=protection.outlook.com;
+ client-ip=2607:f8b0:4864:20::935; helo=mail-ua1-x935.google.com; pr=C
+Received: from mail-ua1-x935.google.com (2607:f8b0:4864:20::935) by
+ AM3PEPF0000A79B.mail.protection.outlook.com (2603:10a6:20f:fff4:0:6:0:a) with
+ Microsoft SMTP Server (version=TLS1_3, cipher=TLS_AES_256_GCM_SHA384) id
+ 15.20.9587.10 via Frontend Transport; Sat, 7 Feb 2026 17:34:24 +0000
+Received: by mail-ua1-x935.google.com with SMTP id a1e0cc1a2514c-948af5e704cso762080241.3
+        for <law-enquiries@cardiff.ac.uk>; Sat, 07 Feb 2026 09:34:23 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1770485662; cv=none;
+        d=google.com; s=arc-20240605;
+        b=hM8RUIzxBQBJLMFUEEQQifZ7syWvDKDTLxzciKEmrIp1DpxHWN0s3fI8FdrOgHNo9F
+         pRy0CC99p7/1s1tGP8HoPrsQ0SFR/Krp8P3hn4JtQMNdo43JwVZjhUVecyOqEVwpsdAn
+         fRgjucmrFo5B/M+aMynHWyIQcUFA2TfAQKdbOWQhOLzNGdf1L2qVpVGxBLwx+obDhUrA
+         ikivdZyzPDikhOzsi3cb7AWdG2pYkL8LOuhdW91J9HwbN1L1nWTcLH8S6BNT5WdaxMny
+         jfZt8jLwGzut3hukHwEwZlXW9Y0yHE6mnMiGVa2y7UYankx7xBsyhb92Q/4AmiX3P0kx
+         KIkw==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20240605;
+        h=cc:to:subject:message-id:date:from:mime-version:dkim-signature;
+        bh=fvgQwlTJZ0o4v9v3uLK6e9+EXd3h3oPzZPmkG2s9khY=;
+        fh=rKe57MzjSFSIGbKUl7AT0X9ydMG2CZ6iiT1hKeXGqMw=;
+        b=O6NhBNVxiP81L2gHzPIckImO7FLFVg4aLKZyTb+Y1BKmBO3ozgrBu5g6Ntx3Dn5NGP
+         1Em+3YbhVbsyW8BWgn77Y+ct0uZ2V4UsXlvdWGbhQIOW6Y7VqOVIiFSnCOFgwBwmFY48
+         a21AexTWNWJ4MetaYNWxxHuiWtx+iMVks7sQbtlDAC2IOoh+JWiYDmxkPpDqFkVwPYuA
+         qeRCQRD2knNKB++T+rCw9IBxxzX8BH8g8BoAFpo7ibXbGAn2/qiQO3SkwI9Ug4Hv2XEC
+         IFO0/pV1/kBfcsLCGQMlZIRYaGT9cy5NFAhG1EGFonRErZo0dVxeqwnDBdH3GBx7RlSu
+         k5GA==;
+        darn=cardiff.ac.uk
+ARC-Authentication-Results: i=1; mx.google.com; arc=none
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=gmail.com; s=20230601; t=1770485661; x=1771090461; darn=cardiff.ac.uk;
+        h=cc:to:subject:message-id:date:from:mime-version:from:to:cc:subject
+         :date:message-id:reply-to;
+        bh=fvgQwlTJZ0o4v9v3uLK6e9+EXd3h3oPzZPmkG2s9khY=;
+        b=iHx1itxFd2iaPX3GIafhpJxgvSwDjsv1STMlG2YidVFrPH7/Rg56tPXGAvLdo+zKyB
+         zO2bedNFN7JYHAV+wdw35YahIzyHAvU2TWsMa6yVa8TykUPpBKFGTSstSRpEzzc7UDUv
+         nDO5/Tje+ou6CtGfKc7iEFwL7c3kQuSWhcxmC04XcU3dtdaxGCUrdT6OdWMVV3Hz6eyI
+         G9xaHY99O6MtkgaGEOcEx/hIfUnjAGyqYp8Fyp2Th95DHycQGHE7Jb69ZktoKkWn35Oq
+         r+3hwFFSmC7zRD6qhLRklZlp1jtjf/QRoaBTAaZFOP5RpAoUohB91vcv3qNnEsIy0/ov
+         Cfyg==
+X-Google-DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed;
+        d=1e100.net; s=20230601; t=1770485662; x=1771090462;
+        h=cc:to:subject:message-id:date:from:mime-version:x-gm-gg
+         :x-gm-message-state:from:to:cc:subject:date:message-id:reply-to;
+        bh=fvgQwlTJZ0o4v9v3uLK6e9+EXd3h3oPzZPmkG2s9khY=;
+        b=ehB7ATdpfDr15t7ezZ3SIj9/0cHZu7fJn/x5M9KmVb/tZuXQ81dBn2YDOG5pN1g+75
+         iVgbevjGy5m1YY/iIrs8why8K2OWeb+zDnythMTRc11BGvzYpTPYxzCPkLsepjmEPrgE
+         IKSR6pzKFf5z2BQYzBexhAA4rLALPm8yYVHk5H+gV51ALydpdJvt3/Ll+40E+PhLjTNe
+         AGrOPGAlhcW9Gz7RvU37l9IF62fBWi7A7V34nhGMiOcQ19NgHpvPxgPtwfgSNGZ/QGGb
+         9TMc+il/WO1oscitbmmtUTK2ozBqCyUVr4S86RVsKwAQUvZ7rD9gPZNyJlVlUhT1cG6A
+         +AXA==
+X-Gm-Message-State: AOJu0YycS/W81z/CarsgipN36cqTGr4ZIxD+oT5pyabBfUS1kn/dGo74
+        AHc3vfAF1coE0SBnTCZ17FbTWZr2m1s7z4bh9qavHeviVUXJFAo3htMk/63XINjgR9hC/BljdG4
+        1w1Iro8PpNV6bbra396V1LYoX6dFL2xo=
+X-Gm-Gg: AZuq6aIRjJAu4fsvn3YJFZOaBJE91D7AOXPz61FVb0nppMHR+GA1sYIG1n1JULkjvKW
+        EZK60HJBcuXguTOO8u99MxdoYpn5Z8A9yX4un1z30UCR2WQO/G1J+gUw5XSL0tuiQTPSFkcfWPy
+        2LuO57tQshWw5nOQWsFZ+DgO0kPrj9AxYlZSqjiVEI9hILDpU0cV4esI0aIkgwrljTVtlu8OWs2
+        D48+Q9Ie2akfADmlibrhlNhutjmTXyxJognCahqGWdUGtwBaHvgXaY1Uvpt3JSztKAuzuW4ex4M
+        97oQ65SE0hBFwbEaAmswYPhDViAifG4dVImHHomC
+X-Received: by 2002:a05:6102:3908:b0:5f9:3a22:85a2 with SMTP id
+ ada2fe7eead31-5fae8a7b13bmr1772008137.12.1770485655904; Sat, 07 Feb 2026
+ 09:34:15 -0800 (PST)
+MIME-Version: 1.0
+From: Sion Buckler <hywelapbuckler@gmail.com>
+Date: Sat, 7 Feb 2026 14:33:58 -0300
+X-Gm-Features: AZwV_QhryqoPcxhy3kfzUrxmdMp1wZKk0Xf0OChtjkJb0wBGPBmdr-DWQP4aOoA
+Message-ID: <CAAuJ3V4N2yKEsChM4rhONhFT302wLk4Mhp2Tkj58YPGUDx5YCw@mail.gmail.com>
+Subject: =?UTF-8?Q?FORMAL_NOTICE=3A_Restorative_Justice_=26_Historical_Reco?=
+        =?UTF-8?Q?rd_Correction_=2D_Great_House_Farm_=28T=C5=B7_Mawr=29=2C_Llandough?=
+To: archives@churchinwales.org.uk
+CC: law-enquiries@cardiff.ac.uk, archives@glamorganarchives.gov.uk,
+        law@swansea.ac.uk
+Content-Type: multipart/mixed; boundary="0000000000009a2546064a3f5031"
+Return-Path: hywelapbuckler@gmail.com
+X-EOPAttributedMessage: 0
+X-EOPTenantAttributedMessage: bdb74b30-9568-4856-bdbf-06759778fcbc:0
+X-MS-PublicTrafficType: Email
+X-MS-TrafficTypeDiagnostic: AM3PEPF0000A79B:EE_|LOAP265MB8451:EE_
+X-MS-Office365-Filtering-Correlation-Id: 4164d1d6-8b96-473f-c92e-08de666f228d
+X-MS-Exchange-AtpMessageProperties: SA|SL
+X-OutsideCardiffUni: true
+X-Microsoft-Antispam:
+        BCL:0;ARA:13230040|30052699003|6049299003|7093399015|4042299003|54012099003|8096899003;
+X-Microsoft-Antispam-Message-Info:
+        =?us-ascii?Q?pzqG99/SeMfMprDlrsbt1MsaO0JkQeDu+afAkyAJ5A+bzk8pC2mPQuPD1/Vm?=
+ =?us-ascii?Q?97hIu0g2h+JmczXgPcbtr9cgm900MGtuZagwESC3dc/dwBO9SRi+zkXtFGS5?=
+ =?us-ascii?Q?3c4DTccQPBEsmcS86wWu7zYpHBe0R1awi2sWJJFHE1BFaFaTTwQ94oXkW+cG?=
+ =?us-ascii?Q?QhB620g+hWmKqr43QlvJEVTXim0R1AyYYcYX4SCnLs0WDphHl1RLWWiis59c?=
+ =?us-ascii?Q?IUt+fpsTLEL9BAt6nUcQN+1vKs/Uuw8oVuXELjj1zgyFbqBqp08amrDe0Q32?=
+ =?us-ascii?Q?H8B+2+sXqGhQbE4Dj9vnANkcUr2w9NJSVNXwqTVQPGovxFY02oAb/EWSk6cG?=
+ =?us-ascii?Q?K28yLIkAD9Ddxq2ggy+u5majxWCRTDB5uSK2LSbf5t4oDB6lNQMMRwaVWhnf?=
+ =?us-ascii?Q?B3Gl0miPBglhc6G7OKiGl0O/+1QOYdTOjAm4W9RkbHvmzl24R31SR1H5ufJ7?=
+ =?us-ascii?Q?9Wuk+PB6HnFR/9LyGt1PVL8VWXx3OgRfPDv1R3WBr9tuDngxhX/oMMzvQ1UQ?=
+ =?us-ascii?Q?hM3cL0nnC/mZpJaX+Big0Fa3OCDrcKTQ26qBeOuHZwNVVosGv8pSzhKo9Z9R?=
+ =?us-ascii?Q?sS76FtIPhAkUgKlbpTu/S4iXkhYSICvllyiIGQide2B2kHgoGWfzRebDbUhF?=
+ =?us-ascii?Q?zG9ZFyGZaFKSAvKgO4eO+BMqIJQyxHssnHWt+CeBRtsGYoXijvzDkbJBnqcB?=
+ =?us-ascii?Q?1UnMkQhy9MtN6Vh/MWgx9M636ggmVB3cBSATr72RZTfWgNnOmIYknwBeppZ4?=
+ =?us-ascii?Q?u17cDXIn7BKnZdWRymytci6jasvx5nucQDHXdv4jGTmMHrjxo5SmxBqkmPif?=
+ =?us-ascii?Q?xmdNXyLDB1k70P2zt39D7QTT8lC6sX6Z8EcyGLmtgNn+nOE3/rIus57XuoZ+?=
+ =?us-ascii?Q?AXS9dIDOWcV674yops2bFmbUgLc6yiIsysoOPSa+njsAYlBIGIvPbGtg9Cfu?=
+ =?us-ascii?Q?N3jDMeJhTso6N4tBccGDFc/XD3OKbGj6X7Ny6Fqf7Ye3irN2Z91J/5VOz4EO?=
+ =?us-ascii?Q?52NaIys0weWW/iiWprbNMI1lA//z0NciIqwkqWuooQLw76Uqm+j92wLSeGaq?=
+ =?us-ascii?Q?zBPGRVKrL6wH4wHIdcQXqHpjZiiHQvBfziY7Ajk4IIZVX8/VlYRoVSRpJAxb?=
+ =?us-ascii?Q?KURuvdlmmJOfWm4ttyWBebC8ggBQMuXWSMwlxNGV3LDUR1zuQdU1b7RwIZkN?=
+ =?us-ascii?Q?w8TwE/Rs4T6XO5cFyz43J399yy+WuDccB16NMo0kkRsXJ48wOQPStx/SusZ0?=
+ =?us-ascii?Q?G+ippzRLAKAEUttxsFrSdIbIw92h0kDpEuvUWxjS+tLuj/0FAl7QE/mfjlHj?=
+ =?us-ascii?Q?p9CwI8X3m/FbnOVo00nuvV7bUTNc0so6/hssobZSbcv6n/UE0URGf9cARNXm?=
+ =?us-ascii?Q?3PnudekaUVz/y1llMQAC9LKm4TYvPp5vFXiL8oAH6hRH5Xo2T+gjsQxMFmn4?=
+ =?us-ascii?Q?KJ2PbEh5+5+0nzS//22Unxzdwyyei1P8HhlMtE5Mvx5oGshGDtYxU7bhXIbE?=
+ =?us-ascii?Q?K9gQNBhfCaoFlNgiqEs+ESGwJm32y4FYqw9sCkkVzKXV4hxqG8McCla5lteZ?=
+ =?us-ascii?Q?insum1Cx4dYCEwWBwicDLMPgz0S/u87ejKtPCS+Bflhi7AfhQQN3wdsngj2N?=
+ =?us-ascii?Q?ztDcl275RTIbjZhQbgiqK2zE2IBQ9Qt9ilc5I0JT8MrLsaLCx029Oip4k+3u?=
+ =?us-ascii?Q?rvAuY/v3wgwMX5lwyW0e5VP06X/5YdXZCqr2TSf9Lk//TMWd+vHM05H049kT?=
+ =?us-ascii?Q?i9WSDKy0xNKR/s49VZuqD+H8/PVNngneFL05W9Olr1sXTFjen1UYOojXmjd4?=
+ =?us-ascii?Q?i/8grcUn1xobvxPZ/L4HgIrCW8mf0W1QmIFrfTcsTA1rFAb7he8R4uMYXEY0?=
+ =?us-ascii?Q?iqYAV0oXt5v68AXYk+Sq6oC93C/QQiTRy7UYhT/AfVPF69GxdO2RMsGL2OFa?=
+ =?us-ascii?Q?6diZska+dHqwgkfyRRRAsR26bTIutsJnCtpZfsQwyo46Rdq6kx92TklfYltW?=
+ =?us-ascii?Q?b201/5fVo5kez+I8O4gmkjevxU0hz28n+olBh7RZB7rb9v2hPXOLrXZ6zZUi?=
+ =?us-ascii?Q?eK3+8BvYDZZN7ADIe1ZJfMS2B1L73FSPfOcVC+erQHXJ8z32o9BeZi/5Xizr?=
+ =?us-ascii?Q?pbuV/q1Tily/AaD5HS3GZXtITKNM9b1e0xHhNm7PMRmgGl3zaanRGff6RLAC?=
+ =?us-ascii?Q?CWXJ4AgPS41Grz5PIT2Q5kKYRPj2EEWXmpEAc9OAN0Yzh7npqrJ+Ykkzx20B?=
+ =?us-ascii?Q?7RfD/rmuKVFOEvJ1J2ESmyXmO27rbzJfO0OnujBPdTSaUBgP+hFIMIcTe/C6?=
+ =?us-ascii?Q?tFZMSNKVLvrOvA8KI/ZNkzPWu9Db9j/IcfbxABzQXdRkJjhQ9LfTHMKN8uRq?=
+ =?us-ascii?Q?l9A6a9DqOQCqJjmJ1cOqvy3GlDl2Np5TeNhUXyUBM6AEcvUgdsDLpe57J459?=
+ =?us-ascii?Q?Lc1aqKTwAZ0SvQuJn2CAB9KuDhqoXCZdFVte0HDpuyeWRxzYNx5noBleXOxE?=
+ =?us-ascii?Q?xSFgMjuUPnt5JPWPia0CWzdLPGxUaZc5nXf8HAaijrl9IVVw+8ppGHbNp4zv?=
+ =?us-ascii?Q?e6sTOAdcta/343QIoJdqrrCxC9Gzh603NmIdLTHU++T0g7GAvDUK6/OdaUL0?=
+ =?us-ascii?Q?PP9gNZ1wrJS8wLUHmlDfYppMdc7QXQRarPx7OQI3JBZ83cV8maTvFDJm09bJ?=
+ =?us-ascii?Q?mNSfBzEUMwWiZUeELJpNffnIMduiDGPMGmTNYGcKZeBT0lVxUrhbN0XQq+Km?=
+ =?us-ascii?Q?ZrJUKhGFTlmahPl4jCApUDUBRu0ppWXxdQPqL7FL2OTRmOXoXZgS?=
+X-Forefront-Antispam-Report:
+        CIP:2607:f8b0:4864:20::935;CTRY:;LANG:en;SCL:1;SRV:;IPV:NLI;SFV:NSPM;H:mail-ua1-x935.google.com;PTR:mail-ua1-x935.google.com;CAT:NONE;SFS:(13230040)(30052699003)(6049299003)(7093399015)(4042299003)(54012099003)(8096899003);DIR:INB;
+X-MS-Exchange-ATPSafeLinks-Stat: 0
+X-MS-Exchange-ATPSafeLinks-BitVector: 40000:0x0|0x0|0x0|0x0|0x0|0x40000;
+X-OriginatorOrg: cf.onmicrosoft.com
+X-MS-Exchange-CrossTenant-OriginalArrivalTime: 07 Feb 2026 17:34:24.0053
+ (UTC)
+X-MS-Exchange-CrossTenant-Network-Message-Id: 4164d1d6-8b96-473f-c92e-08de666f228d
+X-MS-Exchange-CrossTenant-Id: bdb74b30-9568-4856-bdbf-06759778fcbc
+X-MS-Exchange-CrossTenant-AuthSource:
+        AM3PEPF0000A79B.eurprd04.prod.outlook.com
+X-MS-Exchange-CrossTenant-AuthAs: Anonymous
+X-MS-Exchange-CrossTenant-FromEntityHeader: Internet
+X-MS-Exchange-Transport-CrossTenantHeadersStamped: LOAP265MB8451
+X-OrganizationHeadersPreserved: LOAP265MB8451.GBRP265.PROD.OUTLOOK.COM
+X-CrossPremisesHeadersFilteredByDsnGenerator:
+        LOAP265MB8451.GBRP265.PROD.OUTLOOK.COM
+
