@@ -1,3 +1,5 @@
+## [0.12.0.40] - 2026-07-16
+
 ## v0.0.0.15
 - Critical UI fix (wayback.datro.xyz showed only stale "Wayback Archive v0.0.0.09", no tabs/gallery/content).
 - Fixed JS loadCategory fetch path (removed erroneous `wayback/` prefix so it loads ${cat}/_treeview.json from CF Pages root).
