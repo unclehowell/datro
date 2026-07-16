@@ -6,7 +6,9 @@ import {
   playClickSound, formatNarration, getWordCountUpTo, getCharIndexAtWord
 } from './lib/utils';
 import { SplashScreen } from './components/SplashScreen';
-import { FacebookIcon, InstagramIcon, InfoIcon } from './components/Icons';
+import { FacebookIcon, InstagramIcon, InfoIcon, ImageIcon, TextIcon, PdfIcon, VideoIcon } from './components/Icons';
+
+const STARTING_SLIDE = 27;
 
 interface NarrationState {
   name: string; icon: string; text: string; type: string;
@@ -15,7 +17,7 @@ interface NarrationState {
 
 export default function App() {
   const [showSplash, setShowSplash] = useState(true);
-  const [sceneIndex, setSceneIndex] = useState(0);
+  const [sceneIndex, setSceneIndex] = useState(STARTING_SLIDE);
   const [characterIndex, setCharacterIndex] = useState(0);
   const [isPlayingState, setIsPlayingState] = useState(false);
   const [volume, setVolume] = useState(0.5);
@@ -55,7 +57,7 @@ export default function App() {
         setCharacterIndex(0);
       } else {
         setIsPlayingState(false);
-        setSceneIndex(0);
+        setSceneIndex(STARTING_SLIDE);
         setCharacterIndex(0);
       }
     }
@@ -180,23 +182,33 @@ export default function App() {
   return (
     <div className="flex flex-col w-screen bg-black overflow-hidden select-none text-base app-height" onMouseUp={() => setShowTooltip(false)}>
       {/* === MAIN CONTENT AREA === */}
-      <div className="flex-1 flex flex-col lg:flex-row min-h-0 overflow-hidden">
+      <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
 
         {/* LEFT PANEL — Narration / Character */}
         <div className="flex-1 flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8 min-h-0 overflow-y-auto no-scrollbar">
 
-          {/* Scene counter — top left on desktop, top center on mobile */}
+          {/* 4 greyed-out media icons — top center on every narrator slide */}
+          {characterIndex === 0 && (
+            <div className="flex items-center gap-4 sm:gap-6 mb-3 sm:mb-5 shrink-0 opacity-20">
+              <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
+              <TextIcon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
+              <PdfIcon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
+              <VideoIcon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
+            </div>
+          )}
+
+          {/* Scene counter — large as possible */}
           <div className="w-full flex items-center justify-between mb-2 sm:mb-4 shrink-0">
-            <div className="text-xs sm:text-sm font-mono text-slate-600">
+            <div className="text-lg sm:text-2xl md:text-3xl font-bold font-mono text-slate-400">
               {sceneIndex + 1} / {timeline.length}
             </div>
-            <div className="text-xs sm:text-sm font-mono text-slate-600">
+            <div className="text-lg sm:text-2xl md:text-3xl font-bold font-mono text-amber-500">
               {currentScene.year}
             </div>
           </div>
 
           {/* Narration card */}
-          <div className={`w-full max-w-2xl p-4 sm:p-6 md:p-8 rounded-2xl bg-slate-900/90 border border-slate-700/50 backdrop-blur-md flex flex-col items-center text-center transition-all duration-500 ${character ? 'opacity-30 scale-95' : 'opacity-100 scale-100'}`}>
+          <div className={`relative w-full max-w-2xl p-4 sm:p-6 md:p-8 rounded-2xl bg-slate-900/90 border border-slate-700/50 backdrop-blur-md flex flex-col items-center text-center transition-all duration-500 ${character ? 'opacity-30 scale-95' : 'opacity-100 scale-100'}`}>
             <div className="text-slate-500 text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-3">NARRATION</div>
             <div className="text-slate-400 text-[10px] sm:text-xs mb-3 font-mono">{currentScene.location}</div>
             {renderHighlightedText(formatNarration(currentScene.narration, currentScene.year))}
@@ -211,9 +223,9 @@ export default function App() {
             )}
           </div>
 
-          {/* Challenge tooltip — inline below narration */}
+          {/* Challenge tooltip — OVER narration card via z-index */}
           {showChallenge === sceneIndex && currentScene.challenge && (
-            <div className="w-full max-w-2xl mt-3 p-4 rounded-xl bg-red-950/90 border border-red-500/40 text-sm text-red-200 animate-fade-in-up">
+            <div className="w-full max-w-2xl mt-3 p-4 rounded-xl bg-red-950/95 border border-red-500/40 text-sm text-red-200 animate-fade-in-up relative z-[60] shadow-[0_0_30px_rgba(220,38,38,0.3)]">
               <div className="flex items-start gap-2">
                 <InfoIcon className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
                 <p className="leading-relaxed">{currentScene.challenge}</p>
@@ -221,9 +233,9 @@ export default function App() {
             </div>
           )}
 
-          {/* Character dialogue — replaces narration when speaking */}
+          {/* Character dialogue */}
           {character && currentNarration && (
-            <div className="w-full max-w-2xl mt-3 sm:mt-4 animate-fade-in-up">
+            <div className="w-full max-w-2xl mt-3 sm:mt-4 animate-fade-in-up relative z-[60]">
               <div className="bg-slate-900/95 border border-amber-500/30 rounded-2xl p-4 sm:p-6 shadow-[0_0_30px_rgba(245,158,11,0.1)]">
                 {/* Character header */}
                 <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-800">
@@ -245,16 +257,6 @@ export default function App() {
               </div>
             </div>
           )}
-        </div>
-
-        {/* RIGHT PANEL — Navigation arrows (desktop only) */}
-        <div className="hidden lg:flex items-center justify-center gap-4 px-2 shrink-0">
-          <button onClick={rewindScene} className="w-14 h-14 xl:w-16 xl:h-16 rounded-full bg-slate-900/90 border-2 border-slate-600 text-white flex items-center justify-center shadow-2xl hover:border-amber-500 hover:text-amber-400 active:scale-95 transition-all">
-            <svg className="w-7 h-7 xl:w-8 xl:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M15 19l-7-7 7-7" /></svg>
-          </button>
-          <button onClick={advanceScene} className="w-14 h-14 xl:w-16 xl:h-16 rounded-full bg-slate-900/90 border-2 border-slate-600 text-white flex items-center justify-center shadow-2xl hover:border-amber-500 hover:text-amber-400 active:scale-95 transition-all">
-            <svg className="w-7 h-7 xl:w-8 xl:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M9 5l7 7-7 7" /></svg>
-          </button>
         </div>
       </div>
 
@@ -281,20 +283,19 @@ export default function App() {
         {/* Controls row */}
         <div className="flex items-center justify-between px-3 sm:px-4 md:px-6 py-2 sm:py-3 gap-2">
 
-          {/* Left: Mobile arrows + BTC */}
+          {/* Left: Volume */}
           <div className="flex items-center gap-2 shrink-0">
-            {/* Mobile arrows */}
-            <button onClick={rewindScene} className="lg:hidden w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-amber-500 flex items-center justify-center active:scale-95 transition-all">
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
-            </button>
-            <button onClick={advanceScene} className="lg:hidden w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-amber-500 flex items-center justify-center active:scale-95 transition-all">
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
-            </button>
-            <button onClick={() => { navigator.clipboard.writeText('bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am'); }} className="text-[10px] sm:text-xs font-bold uppercase text-amber-600 hover:text-amber-400 transition-colors ml-1 hidden sm:block" title="Copy BTC Address">BTC</button>
+            <div className="flex items-center gap-2">
+              <svg className="w-3 h-3 sm:w-4 sm:h-4 text-slate-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" /></svg>
+              <input type="range" min="0" max="1" step="0.01" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} className="w-16 sm:w-20 md:w-24 h-1.5 bg-slate-700 rounded-lg accent-amber-500 cursor-pointer" />
+            </div>
           </div>
 
-          {/* Center: Play + Volume */}
-          <div className="flex items-center gap-3 sm:gap-4">
+          {/* Center: Left arrow + Play/Pause + Right arrow */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            <button onClick={rewindScene} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-amber-500 flex items-center justify-center active:scale-95 transition-all">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
+            </button>
             <button onClick={togglePlay} className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-amber-500 hover:bg-amber-400 text-black flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-transform hover:scale-105 active:scale-95 shrink-0">
               {isPlayingState ? (
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
@@ -302,14 +303,14 @@ export default function App() {
                 <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
               )}
             </button>
-            <div className="flex items-center gap-2">
-              <svg className="w-3 h-3 sm:w-4 sm:h-4 text-slate-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" /></svg>
-              <input type="range" min="0" max="1" step="0.01" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} className="w-16 sm:w-20 md:w-24 h-1.5 bg-slate-700 rounded-lg accent-amber-500 cursor-pointer" />
-            </div>
+            <button onClick={advanceScene} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-amber-500 flex items-center justify-center active:scale-95 transition-all">
+              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
+            </button>
           </div>
 
-          {/* Right: Stripe + Footer info */}
+          {/* Right: BTC + GBP/USD button */}
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
+            <button onClick={() => { navigator.clipboard.writeText('bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am'); }} className="px-3 py-2 sm:px-4 sm:py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 text-[10px] sm:text-xs font-bold uppercase hover:text-white hover:border-amber-500 transition-all active:scale-95" title="Copy BTC Address">BTC</button>
             <stripe-buy-button
               buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc"
               publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ">
@@ -323,7 +324,15 @@ export default function App() {
         <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
           <span className="truncate">Williams/Buckler Family Estate and Trust</span>
           <span className="text-slate-700 hidden sm:inline">|</span>
-          <span className="font-mono text-slate-700 hidden sm:inline">{version}</span>
+          <a
+            href={`https://github.com/unclehowell/datro/tree/bpvsbuckler`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-mono text-slate-700 hover:text-amber-500 transition-colors hidden sm:inline"
+            title="View on GitHub"
+          >
+            {version}
+          </a>
         </div>
         <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><FacebookIcon /></a>

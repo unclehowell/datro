@@ -29,3 +29,32 @@ export const InfoIcon = ({ className }: { className?: string }) => (
     <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
   </svg>
 );
+
+export const ImageIcon = ({ className }: { className?: string }) => (
+  <svg className={className || 'w-5 h-5'} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <rect x="3" y="3" width="18" height="18" rx="2" />
+    <circle cx="8.5" cy="8.5" r="1.5" />
+    <path d="M21 15l-5-5L5 21" />
+  </svg>
+);
+
+export const TextIcon = ({ className }: { className?: string }) => (
+  <svg className={className || 'w-5 h-5'} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <path d="M4 6h16M4 12h10M4 18h14" strokeLinecap="round" />
+  </svg>
+);
+
+export const PdfIcon = ({ className }: { className?: string }) => (
+  <svg className={className || 'w-5 h-5'} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <path d="M7 2h10l5 5v15a2 2 0 01-2 2H5a2 2 0 01-2-2V4a2 2 0 012-2z" />
+    <path d="M14 2v5h5" />
+    <path d="M9 14h6M9 18h4" strokeLinecap="round" />
+  </svg>
+);
+
+export const VideoIcon = ({ className }: { className?: string }) => (
+  <svg className={className || 'w-5 h-5'} fill="none" stroke="currentColor" strokeWidth="1.5" viewBox="0 0 24 24">
+    <rect x="2" y="5" width="15" height="14" rx="2" />
+    <path d="M17 9l5-3v12l-5-3z" />
+  </svg>
+);
