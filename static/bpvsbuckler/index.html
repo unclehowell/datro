@@ -21,7 +21,7 @@
         @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
         .animate-pulse-slow{animation:pulse 2s ease-in-out infinite}
         .app-height{height:100vh;height:100dvh}
-        .splash-height{min-height:100vh;min-height:100dvh}
+        .safe-bottom{padding-bottom:max(1rem, env(safe-area-inset-bottom))}
     </style>
 </head>
 <body class="text-slate-200 antialiased overflow-hidden w-screen">
