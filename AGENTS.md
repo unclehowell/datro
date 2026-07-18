@@ -36,6 +36,17 @@
 - Polling mode: For closed-port machines (e.g. AWS), agent polls `GET /api/proxy/poll` every 2s
 - Direct mode: For open-port machines, `child-proxy.js` listens on port 4001
 
+## AgentOS Child Proxy (Local AI Stack)
+- Located at `agentos/` — full local AI agent stack
+- **Chat mode**: Voice/Text → ollama MiniCPM5-1B (free, local)
+- **Task mode**: Task Router detects intent → routes to opencode/kilo (agentic, MCP tools)
+- Services: GUI (3000), OmniRoute (20128), Voice (3101), Task Router (3200)
+- Model: openbmb/minicpm5 (688MB Q4_K_M via ollama)
+- Voice: edge-tts (local, free neural voices) + Groq Whisper (STT)
+- Install: `cd agentos && ./install.sh`
+- Start: `pm2 start ecosystem.config.js`
+- Scaling: Each laptop runs its own AgentOS stack, connects to parent proxy
+
 ## Key Endpoints
 - `POST /api/proxy/register` — node registration
 - `GET /api/proxy/poll?machine_id=...` — polling work queue

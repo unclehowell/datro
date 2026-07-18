@@ -1,0 +1,11 @@
+# AgentOS dependencies
+gui/node_modules/
+gui/.next/
+gui/dist/
+voice-service/__pycache__/
+omniroute/node_modules/
+
+# Runtime
+*.log
+.env
+.env.local
