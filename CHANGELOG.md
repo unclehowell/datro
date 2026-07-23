@@ -1,5 +1,7 @@
 ## [0.5.1.34] - 2026-07-23
 
+## [0.5.1.34] - 2026-07-23
+
 ### Added
 - feat: unified install.sh — works on laptops (Linux/macOS) AND phones (Termux/Android)
 - feat: phone-agentos binary with embedded WebGUI, local MiniCPM, Groq fallback
