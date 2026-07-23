@@ -1,3 +1,18 @@
+## [0.5.1.34] - 2026-07-23
+
+### Added
+- feat: unified install.sh — works on laptops (Linux/macOS) AND phones (Termux/Android)
+- feat: phone-agentos binary with embedded WebGUI, local MiniCPM, Groq fallback
+- feat: boot persistence via Termux:Boot — auto-starts on reboot regardless of screen lock
+- feat: ADB deployment mode — push full stack from laptop to phone
+- feat: WebGUI identical on phones and laptops (dark theme, chat, pipeline breadcrumb)
+- feat: Termux:Boot APK auto-installed for boot persistence
+
+### Changed
+- refactor: install.sh replaces install-phone-proxy.sh and install-child-proxy.sh
+- refactor: phone binary uses 120s timeout for MiniCPM CPU inference
+- refactor: startup script handles both llama-server and phone-agentos lifecycle
+
 ## [0.5.1.33] - 2026-07-23
 
 ## [0.5.1.16] - 2026-07-22
