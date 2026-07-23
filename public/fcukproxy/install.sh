@@ -1,217 +1,517 @@
 #!/bin/bash
-set -e
+set -euo pipefail
 
-# ── Child Proxy One-Liner Installer ────────────────────────────────────────
-# Usage: curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install-child-proxy.sh | bash
-# Supports: Linux (x86_64/ARM64), Termux/Android, ADB-connected phones
-# Install: child proxy agent + llama-server + MiniCPM-1B local LLM
-# ────────────────────────────────────────────────────────────────────────────
+# ═══════════════════════════════════════════════════════════════════════════════
+# FinanceCheque Child Proxy Installer
+# ═══════════════════════════════════════════════════════════════════════════════
+#
+# One-liner install for scaling your proxy network:
+#
+#   LITE (recommended for most devices):
+#     curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install.sh | PARENT_URL=https://YOUR-HOST bash
+#
+#   FULL (with local LLM — Raspberry Pi, spare laptop):
+#     curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install.sh | MODE=full bash
+#
+#   INTERACTIVE (prompts for everything):
+#     curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install.sh | bash
+#
+# Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
+# ═══════════════════════════════════════════════════════════════════════════════
 
-MODE="${1:-auto}"
-PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
-CHILD_ID="${CHILD_ID:-$(hostname)}"
-PROXY_PORT="${PROXY_PORT:-6000}"
-INSTALL_DIR="${INSTALL_DIR:-$HOME/fcuk-child-proxy}"
-MODEL_QUANT="${MODEL_QUANT:-Q4_K_M}"
+VERSION="1.0.0"
+REPO="unclehowell/datro"
+BRANCH="financecheque"
+RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
+
+# ── Defaults (override via env vars or interactive prompt) ────────────────────
+MODE="${MODE:-}"                     # lite | full | auto (detect)
+PARENT_URL="${PARENT_URL:-}"         # https://your-parent-host.com
+CHILD_ID="${CHILD_ID:-}"             # unique name for this node
+PROXY_PORT="${PROXY_PORT:-6000}"     # port for the child proxy agent
+LLAMA_PORT="${LLAMA_PORT:-8090}"     # port for llama-server (full mode only)
+INSTALL_DIR="${INSTALL_DIR:-$HOME/.fcukproxy}"
+CHAT_ONLY="${CHAT_ONLY:-false}"      # true = no command execution allowed
+AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
+
+# ── Colors ───────────────────────────────────────────────────────────────────
+RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'
+CYAN='\033[0;36m'; BOLD='\033[1m'; NC='\033[0m'
+
+info()  { echo -e "${CYAN}[install]${NC} $*"; }
+ok()    { echo -e "${GREEN}[install] ✓${NC} $*"; }
+warn()  { echo -e "${YELLOW}[install] !${NC} $*"; }
+err()   { echo -e "${RED}[install] ✗${NC} $*" >&2; }
+step()  { echo -e "\n${BOLD}── Step $1: $2 ──${NC}"; }
 
 # ── Detect platform ──────────────────────────────────────────────────────────
-detect_mode() {
-  if [ "$MODE" != "auto" ]; then echo "$MODE"; return; fi
-  if command -v adb &>/dev/null && adb devices -l 2>/dev/null | grep -q 'device$'; then echo "adb"
-  elif [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then echo "termux"
-  elif [[ "$(uname -m)" == "aarch64" ]]; then echo "linux-arm64"
-  elif [[ "$(uname -m)" == "x86_64" ]]; then echo "linux-x64"
-  else echo "linux"
-  fi
-}
+detect_platform() {
+  local os arch
 
-ACTUAL_MODE=$(detect_mode)
-echo "[install] Mode: $ACTUAL_MODE"
+  case "$(uname -s)" in
+    Linux*)  os="linux" ;;
+    Darwin*) os="macos" ;;
+    *)       os="unknown" ;;
+  esac
 
-# ── Step 0: Install system dependencies ──────────────────────────────────────
-install_deps() {
+  case "$(uname -m)" in
+    x86_64|amd64)  arch="x64" ;;
+    aarch64|arm64) arch="arm64" ;;
+    armv7l|armhf)  arch="armv7" ;;
+    *)             arch="unknown" ;;
+  esac
+
+  # Termux override
   if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
-    pkg update -y 2>/dev/null || true
-    pkg install -y nodejs python3 golang curl git 2>/dev/null || true
-  else
-    if command -v apt &>/dev/null; then
-      sudo apt-get update -qq 2>/dev/null || true
-      sudo apt-get install -y -qq curl nodejs python3 python3-pip git 2>/dev/null || true
+    os="termux"
+    arch="arm64"
+  fi
+
+  echo "${os}-${arch}"
+}
+
+# ── Interactive prompts (only when values not set via env) ────────────────────
+prompt_config() {
+  if [[ -z "$MODE" ]]; then
+    echo ""
+    echo -e "${BOLD}Install mode:${NC}"
+    echo "  ${GREEN}lite${NC}   — Python agent only, uses parent's cloud LLMs (recommended)"
+    echo "  ${GREEN}full${NC}   — + llama-server + MiniCPM-1B local LLM (for Raspberry Pi, spare machines)"
+    echo ""
+    read -rp "Mode [lite]: " input
+    MODE="${input:-lite}"
+  fi
+
+  if [[ -z "$PARENT_URL" ]]; then
+    echo ""
+    read -rp "Parent proxy URL [https://www.financecheque.uk]: " input
+    PARENT_URL="${input:-https://www.financecheque.uk}"
+  fi
+
+  if [[ -z "$CHILD_ID" ]]; then
+    local default_id
+    default_id="$(hostname)-$(date +%s | tail -c 5)"
+    echo ""
+    read -rp "Child node ID [$default_id]: " input
+    CHILD_ID="${input:-$default_id}"
+  fi
+
+  if [[ "$CHAT_ONLY" == "false" ]]; then
+    echo ""
+    read -rp "Allow command execution? (y/n) [n]: " input
+    if [[ "${input,,}" == "y" ]]; then
+      CHAT_ONLY="false"
+    else
+      CHAT_ONLY="true"
     fi
   fi
 }
 
-case "$ACTUAL_MODE" in
-  adb|termux|android)
-    echo "[install] Phone/ADB mode"
-    install_deps
-    ;;
-  linux-arm64)
-    echo "[install] Linux ARM64 (Raspberry Pi, etc.)"
-    install_deps
-    ;;
-  linux-x64|linux)
-    echo "[install] Linux x86_64"
-    install_deps
-    ;;
-esac
+# ── Install system dependencies ──────────────────────────────────────────────
+install_deps() {
+  local platform="$1"
 
-# ── Step 1: Install llama-server + MiniCPM model ────────────────────────────
-echo "[install] Installing llama-server + MiniCPM-1B-Agentic-ToolUse..."
+  case "$platform" in
+    termux-*)
+      pkg update -y 2>/dev/null || true
+      pkg install -y python curl git 2>/dev/null || true
+      ;;
+    linux-*)
+      if command -v apt-get &>/dev/null; then
+        sudo apt-get update -qq 2>/dev/null || true
+        sudo apt-get install -y -qq python3 python3-pip curl git 2>/dev/null || true
+      elif command -v yum &>/dev/null; then
+        sudo yum install -y python3 python3-pip curl git 2>/dev/null || true
+      elif command -v dnf &>/dev/null; then
+        sudo dnf install -y python3 python3-pip curl git 2>/dev/null || true
+      elif command -v pacman &>/dev/null; then
+        sudo pacman -Sy --noconfirm python python-pip curl git 2>/dev/null || true
+      fi
+      ;;
+    macos-*)
+      if command -v brew &>/dev/null; then
+        brew install python3 curl git 2>/dev/null || true
+      else
+        err "Homebrew not found. Install: /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
+        exit 1
+      fi
+      ;;
+  esac
 
-MODEL_REPO="ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse-GGUF"
-LLAMACPP_RELEASE="b9957"
-MODEL_DIR="$INSTALL_DIR/models"
-mkdir -p "$MODEL_DIR"
+  # Ensure pip
+  python3 -m pip --version &>/dev/null || {
+    warn "pip not found, trying to install..."
+    python3 -m ensurepip --upgrade 2>/dev/null || true
+  }
+}
 
-case "$ACTUAL_MODE" in
-  adb|termux|android)
-    # Phone: Android arm64 prebuilt
-    if [ ! -f "$MODEL_DIR/model.gguf" ]; then
-      echo "[install] Downloading MiniCPM Q4_K_M for phone..."
-      curl -sL "https://huggingface.co/$MODEL_REPO/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q4_K_M.gguf" -o "$MODEL_DIR/model.gguf"
-      echo "[install] Downloading llama-server for Android arm64..."
-      curl -sL "https://github.com/ggml-org/llama.cpp/releases/download/$LLAMACPP_RELEASE/llama-$LLAMACPP_RELEASE-bin-android-arm64.tar.gz" -o /tmp/llama.tar.gz
-      mkdir -p "$INSTALL_DIR/llama"
-      tar xzf /tmp/llama.tar.gz -C "$INSTALL_DIR/llama" --strip-components=1
-      export LD_LIBRARY_PATH="$INSTALL_DIR/llama:$LD_LIBRARY_PATH"
-      LLAMA_SERVER="$INSTALL_DIR/llama/llama-server"
+# ── Install llama-server + MiniCPM (full mode only) ──────────────────────────
+install_llm() {
+  local platform="$1"
+  local os arch
+
+  IFS='-' read -r os arch <<< "$platform"
+
+  local model_repo="ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse-GGUF"
+  local llamacpp_release="b5541"
+  local model_dir="$INSTALL_DIR/models"
+  mkdir -p "$model_dir"
+
+  local llm_server=""
+
+  case "$platform" in
+    termux-arm64|linux-arm64)
+      # ARM64 (Phone or Raspberry Pi)
+      if [[ ! -f "$model_dir/model.gguf" ]]; then
+        info "Downloading MiniCPM Q4_K_M for ARM64..."
+        curl -sL "https://huggingface.co/$model_repo/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q4_K_M.gguf" \
+          -o "$model_dir/model.gguf"
+      fi
+      if ! command -v llama-server &>/dev/null; then
+        local url
+        if [[ "$os" == "termux" ]]; then
+          url="https://github.com/ggml-org/llama.cpp/releases/download/$llamacpp_release/llama-$llamacpp_release-bin-android-arm64.tar.gz"
+          mkdir -p "$INSTALL_DIR/llama"
+          curl -sL "$url" -o /tmp/llama.tar.gz
+          tar xzf /tmp/llama.tar.gz -C "$INSTALL_DIR/llama" --strip-components=1
+          llm_server="$INSTALL_DIR/llama/llama-server"
+          chmod +x "$llm_server" 2>/dev/null || true
+        else
+          url="https://github.com/ggml-org/llama.cpp/releases/download/$llamacpp_release/llama-$llamacpp_release-bin-ubuntu-arm64.tar.gz"
+          curl -sL "$url" -o /tmp/llama.tar.gz
+          sudo tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 \
+            --wildcards '*/llama-server' '*/libllama*' '*/libggml*' 2>/dev/null || true
+          llm_server="$(command -v llama-server || echo /usr/local/bin/llama-server)"
+        fi
+      else
+        llm_server="$(command -v llama-server)"
+      fi
+      ;;
+    linux-x64|macos-x64)
+      if [[ ! -f "$model_dir/model.gguf" ]]; then
+        info "Downloading MiniCPM Q8_0 for x64..."
+        curl -sL "https://huggingface.co/$model_repo/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf" \
+          -o "$model_dir/model.gguf"
+      fi
+      if ! command -v llama-server &>/dev/null; then
+        local url="https://github.com/ggml-org/llama.cpp/releases/download/$llamacpp_release/llama-$llamacpp_release-bin-ubuntu-x64.tar.gz"
+        curl -sL "$url" -o /tmp/llama.tar.gz
+        sudo tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 \
+          --wildcards '*/llama-server' 2>/dev/null || true
+        llm_server="$(command -v llama-server || echo /usr/local/bin/llama-server)"
+      else
+        llm_server="$(command -v llama-server)"
+      fi
+      ;;
+    macos-arm64)
+      if [[ ! -f "$model_dir/model.gguf" ]]; then
+        info "Downloading MiniCPM Q8_0 for ARM64..."
+        curl -sL "https://huggingface.co/$model_repo/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf" \
+          -o "$model_dir/model.gguf"
+      fi
+      if ! command -v llama-server &>/dev/null; then
+        local url="https://github.com/ggml-org/llama.cpp/releases/download/$llamacpp_release/llama-$llamacpp_release-bin-macos-arm64.tar.gz"
+        curl -sL "$url" -o /tmp/llama.tar.gz
+        sudo tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 \
+          --wildcards '*/llama-server' 2>/dev/null || true
+        llm_server="$(command -v llama-server || echo /usr/local/bin/llama-server)"
+      else
+        llm_server="$(command -v llama-server)"
+      fi
+      ;;
+    *)
+      err "Unsupported platform for full mode: $platform"
+      exit 1
+      ;;
+  esac
+
+  echo "$llm_server"
+}
+
+# ── Download child proxy agent ───────────────────────────────────────────────
+install_agent() {
+  mkdir -p "$INSTALL_DIR"
+
+  info "Downloading child proxy agent..."
+  curl -sL "$RAW_BASE/public/fcukproxy/agent.py" -o "$INSTALL_DIR/agent.py"
+
+  info "Installing Python dependencies..."
+  python3 -m pip install --quiet --user aiohttp 2>/dev/null || \
+    python3 -m pip install --quiet aiohttp 2>/dev/null || true
+}
+
+# ── Write config files ───────────────────────────────────────────────────────
+write_config() {
+  mkdir -p "$INSTALL_DIR"
+
+  # machine.json
+  cat > "$INSTALL_DIR/machine.json" << JSONEOF
+{
+  "machine_id": "$CHILD_ID",
+  "machine_name": "$CHILD_ID",
+  "proxy_port": $PROXY_PORT,
+  "parent": "$PARENT_URL",
+  "version": "$VERSION",
+  "mode": "$MODE",
+  "chat_only": $CHAT_ONLY,
+  "agent_role": "$AGENT_ROLE"
+}
+JSONEOF
+
+  # .env template (only if not exists)
+  if [[ ! -f "$INSTALL_DIR/.env" ]]; then
+    cat > "$INSTALL_DIR/.env" << ENVEOF
+# FinanceCheque Child Proxy — API Keys
+# Add your keys here. The agent hot-reloads every 60s.
+# At minimum, add one provider key (Groq is free):
+#   https://console.groq.com/keys
+
+GROQ_API_KEY=
+OPENROUTER_API_KEY=
+GOOGLE_API_KEY=
+OPENAI_API_KEY=
+ANTHROPIC_API_KEY=
+DEEPSEEK_API_KEY=
+MISTRAL_API_KEY=
+CEREBRAS_API_KEY=
+
+# Parent proxy (where this node registers)
+PARENT_URL=$PARENT_URL
+
+# Node identity
+CHILD_ID=$CHILD_ID
+MACHINE_ID=$CHILD_ID
+PROXY_PORT=$PROXY_PORT
+
+# Role: chat (LLM only), code (agentic), or both
+AGENT_ROLE=$AGENT_ROLE
+
+# Set to true to block command execution
+CHAT_ONLY=$CHAT_ONLY
+ENVEOF
+    info "Created $INSTALL_DIR/.env — add at least one API key"
+  fi
+}
+
+# ── Start services ───────────────────────────────────────────────────────────
+start_services() {
+  local llm_server="${1:-}"
+
+  # Kill existing processes
+  pkill -f "python.*agent.py.*$PROXY_PORT" 2>/dev/null || true
+
+  if [[ "$MODE" == "full" && -n "$llm_server" ]]; then
+    pkill -f "llama-server.*$LLAMA_PORT" 2>/dev/null || true
+    sleep 1
+
+    info "Starting llama-server on port $LLAMA_PORT..."
+    nohup "$llm_server" \
+      -m "$INSTALL_DIR/models/model.gguf" \
+      --port "$LLAMA_PORT" --host 127.0.0.1 \
+      -c 2048 -ngl 0 --cont-batching \
+      > "$INSTALL_DIR/llama-server.log" 2>&1 &
+    echo $! > "$INSTALL_DIR/llama-server.pid"
+    ok "llama-server PID: $!"
+  fi
+
+  sleep 1
+  info "Starting child proxy agent on port $PROXY_PORT..."
+  nohup python3 "$INSTALL_DIR/agent.py" --port "$PROXY_PORT" \
+    > "$INSTALL_DIR/agent.log" 2>&1 &
+  echo $! > "$INSTALL_DIR/agent.pid"
+  ok "agent.py PID: $!"
+}
+
+# ── Create systemd service (optional) ────────────────────────────────────────
+install_service() {
+  if [[ ! -d /etc/systemd/system ]] || [[ "$(id -u)" -eq 0 ]]; then
+    return 0  # skip if no systemd or running as root
+  fi
+
+  local service_dir="$HOME/.config/systemd/user"
+  mkdir -p "$service_dir"
+
+  cat > "$service_dir/fcuk-proxy.service" << SVCEOF
+[Unit]
+Description=FinanceCheque Child Proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=$INSTALL_DIR
+ExecStart=$(command -v python3) $INSTALL_DIR/agent.py --port $PROXY_PORT
+Restart=on-failure
+RestartSec=10
+Environment=HOME=$HOME
+Environment=PATH=$HOME/.local/bin:$HOME/.npm-global/bin:/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=$INSTALL_DIR/.env
+
+[Install]
+WantedBy=default.target
+SVCEOF
+
+  # Enable and start
+  systemctl --user daemon-reload 2>/dev/null || true
+  systemctl --user enable fcuk-proxy 2>/dev/null || true
+  systemctl --user start fcuk-proxy 2>/dev/null || true
+
+  ok "systemd service installed and started"
+  info "Manage: systemctl --user status fcuk-proxy"
+  info "Logs:   journalctl --user -u fcuk-proxy -f"
+}
+
+# ── Create pm2 process (alternative to systemd) ──────────────────────────────
+install_pm2() {
+  if command -v pm2 &>/dev/null; then
+    pm2 delete fcuk-proxy 2>/dev/null || true
+    pm2 start "$INSTALL_DIR/agent.py" --name fcuk-proxy --interpreter python3 -- --port "$PROXY_PORT"
+    pm2 save 2>/dev/null || true
+    ok "pm2 process started"
+    info "Logs: pm2 logs fcuk-proxy"
+  fi
+}
+
+# ── Register with parent and verify ──────────────────────────────────────────
+verify_and_register() {
+  sleep 3
+
+  info "Verifying child proxy..."
+  if curl -sf "http://127.0.0.1:$PROXY_PORT/health" >/dev/null 2>&1; then
+    ok "Child proxy responding on port $PROXY_PORT"
+  else
+    warn "Child proxy not responding yet (may need a few seconds)"
+    warn "Check: tail -f $INSTALL_DIR/agent.log"
+  fi
+
+  if [[ "$MODE" == "full" ]]; then
+    if curl -sf "http://127.0.0.1:$LLAMA_PORT/health" >/dev/null 2>&1 || \
+       curl -sf "http://127.0.0.1:$LLAMA_PORT/v1/models" >/dev/null 2>&1; then
+      ok "llama-server responding on port $LLAMA_PORT"
+    else
+      warn "llama-server not responding yet"
+      warn "Check: tail -f $INSTALL_DIR/llama-server.log"
     fi
-    ;;
-  linux-arm64)
-    # ARM64 Linux: Ubuntu/ARM64 prebuilt
-    if [ ! -f "$MODEL_DIR/model.gguf" ]; then
-      # Prefer Q8_0 on server-class ARM64, fallback to Q4_K_M
-      echo "[install] Downloading MiniCPM Q8_0 for ARM64 Linux..."
-      curl -sL "https://huggingface.co/$MODEL_REPO/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf" -o "$MODEL_DIR/model.gguf" ||
-        curl -sL "https://huggingface.co/$MODEL_REPO/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q4_K_M.gguf" -o "$MODEL_DIR/model.gguf"
-      echo "[install] Downloading llama-server for Ubuntu ARM64..."
-      curl -sL "https://github.com/ggml-org/llama.cpp/releases/download/$LLAMACPP_RELEASE/llama-$LLAMACPP_RELEASE-bin-ubuntu-arm64.tar.gz" -o /tmp/llama.tar.gz
-      tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 --wildcards '*/llama-server' '*/libllama*' '*/libggml*' 2>/dev/null || true
-      LLAMA_SERVER="/usr/local/bin/llama-server"
-    fi
-    ;;
-  linux-x64|linux)
-    # x86_64 Linux: laptop/desktop
-    if [ ! -f "$MODEL_DIR/model.gguf" ]; then
-      echo "[install] Downloading MiniCPM Q8_0 for x86_64..."
-      curl -sL "https://huggingface.co/$MODEL_REPO/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf" -o "$MODEL_DIR/model.gguf"
-    fi
-    # llama-server from system package or prebuilt
-    if ! command -v llama-server &>/dev/null; then
-      echo "[install] Downloading llama-server for Ubuntu x86_64..."
-      curl -sL "https://github.com/ggml-org/llama.cpp/releases/download/$LLAMACPP_RELEASE/llama-$LLAMACPP_RELEASE-bin-ubuntu-x64.tar.gz" -o /tmp/llama.tar.gz
-      sudo tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 --wildcards '*/llama-server' 2>/dev/null || true
-    fi
-    LLAMA_SERVER="$(command -v llama-server || echo '/usr/local/bin/llama-server')"
-    ;;
-esac
+  fi
 
-# ── Step 2: Install CLI/IDE tools ────────────────────────────────────────────
-echo "[install] Installing CLI/IDE tools..."
-export PATH="$HOME/.npm-global/bin:$HOME/.local/bin:$HOME/.opencode/bin:$PATH"
+  # Try to register with parent
+  info "Registering with parent: $PARENT_URL"
+  local payload
+  payload=$(cat << JSONEOF
+{
+  "machine_id": "$CHILD_ID",
+  "machine_name": "$CHILD_ID",
+  "proxy_port": $PROXY_PORT,
+  "version": "$VERSION",
+  "mode": "$MODE",
+  "chat_only": $CHAT_ONLY,
+  "agent_role": "$AGENT_ROLE"
+}
+JSONEOF
+)
+  if curl -sf -X POST "$PARENT_URL/api/proxy?action=register" \
+    -H "Content-Type: application/json" \
+    -d "$payload" >/dev/null 2>&1; then
+    ok "Registered with parent proxy"
+  else
+    warn "Could not register with parent (parent may not be reachable from this network)"
+    info "The agent will retry registration every 60s"
+  fi
+}
 
-npm install -g @opencode/cli 2>/dev/null || true
-npm install -g kiro-cli 2>/dev/null || true
-npm install -g @kilocode/cli 2>/dev/null || true
+# ── Print summary ────────────────────────────────────────────────────────────
+print_summary() {
+  echo ""
+  echo -e "${BOLD}══════════════════════════════════════════════════════════════${NC}"
+  echo -e "${BOLD}  FinanceCheque Child Proxy — Installed${NC}"
+  echo -e "${BOLD}══════════════════════════════════════════════════════════════${NC}"
+  echo ""
+  echo -e "  ${CYAN}Mode:${NC}          $MODE"
+  echo -e "  ${CYAN}Node ID:${NC}       $CHILD_ID"
+  echo -e "  ${CYAN}Parent:${NC}        $PARENT_URL"
+  echo -e "  ${CYAN}Proxy port:${NC}    $PROXY_PORT"
+  if [[ "$MODE" == "full" ]]; then
+    echo -e "  ${CYAN}LLM port:${NC}      $LLAMA_PORT"
+    echo -e "  ${CYAN}Model:${NC}         $INSTALL_DIR/models/model.gguf"
+  fi
+  echo -e "  ${CYAN}Config:${NC}        $INSTALL_DIR/"
+  echo -e "  ${CYAN}Logs:${NC}          $INSTALL_DIR/agent.log"
+  echo ""
+  echo -e "  ${YELLOW}Next steps:${NC}"
+  echo "  1. Add at least one API key to $INSTALL_DIR/.env"
+  echo "     (Groq is free: https://console.groq.com/keys)"
+  echo ""
+  echo "  2. Restart the agent:"
+  echo "     systemctl --user restart fcuk-proxy"
+  echo "     # or: pm2 restart fcuk-proxy"
+  echo "     # or: python3 $INSTALL_DIR/agent.py --port $PROXY_PORT"
+  echo ""
+  echo "  3. Verify it's visible on the parent:"
+  echo "     curl -s $PARENT_URL/api/proxy?action=health | python3 -m json.tool"
+  echo ""
+  echo -e "  ${YELLOW}Scaling:${NC}"
+  echo "  Run this same script on other machines with the same PARENT_URL"
+  echo "  to add more child proxies to your network."
+  echo ""
+  echo -e "${BOLD}══════════════════════════════════════════════════════════════${NC}"
+}
 
-# Install hermes agent
-npm install -g hermes-agent 2>/dev/null || pip3 install --user --quiet hermes-agent 2>/dev/null || true
+# ═══════════════════════════════════════════════════════════════════════════════
+# Main
+# ═══════════════════════════════════════════════════════════════════════════════
+main() {
+  echo -e "${BOLD}FinanceCheque Child Proxy Installer v$VERSION${NC}"
 
-# Install aider (coding agent)
-pip3 install --user --quiet aider-chat 2>/dev/null || true
+  PLATFORM=$(detect_platform)
+  info "Platform: $PLATFORM"
 
-# Install kirox (fallback)
-npm install -g kirox 2>/dev/null || true
+  # Interactive prompts if values not set
+  prompt_config
 
-for c in opencode kiro kilo hermes aider; do
-  command -v $c &>/dev/null && echo "[install] ✓ $c" || echo "[install] - $c"
-done
+  # Validate
+  if [[ -z "$PARENT_URL" ]]; then
+    err "PARENT_URL is required"
+    echo "  Usage: PARENT_URL=https://your-host.com bash install.sh"
+    exit 1
+  fi
 
-# ── Step 3: Install child proxy agent ────────────────────────────────────────
-echo "[install] Installing child proxy agent..."
-mkdir -p "$INSTALL_DIR"
+  if [[ -z "$CHILD_ID" ]]; then
+    CHILD_ID="$(hostname)-$(date +%s | tail -c 5)"
+  fi
 
-# Download agent.py
-curl -sL "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/agent.py" -o "$INSTALL_DIR/agent.py"
+  # Normalize mode
+  case "${MODE,,}" in
+    full|heavy|local)  MODE="full" ;;
+    *)                 MODE="lite" ;;
+  esac
 
-# Install Python deps
-pip3 install --user --quiet aiohttp 2>/dev/null || true
+  info "Mode: $MODE | Node: $CHILD_ID | Parent: $PARENT_URL"
 
-# ── Step 4: Start llama-server (background) ─────────────────────────────────
-echo "[install] Starting llama-server..."
-LLAMA_PORT="${LLAMA_PORT:-8090}"
+  step 1 "System dependencies"
+  install_deps "$PLATFORM"
 
-# Kill existing llama-server
-pkill -f "llama-server.*$LLAMA_PORT" 2>/dev/null || true
-sleep 1
+  step 2 "Child proxy agent"
+  install_agent
 
-# Start with limited context for CPU
-nohup "$LLAMA_SERVER" \
-  -m "$MODEL_DIR/model.gguf" \
-  --port "$LLAMA_PORT" --host 127.0.0.1 \
-  -c 2048 -ngl 0 --cont-batching \
-  > "$INSTALL_DIR/llama-server.log" 2>&1 &
+  step 3 "Configuration"
+  write_config
 
-echo "[install] llama-server PID: $!"
+  LLM_SERVER=""
+  if [[ "$MODE" == "full" ]]; then
+    step 4 "Local LLM (llama-server + MiniCPM)"
+    LLM_SERVER=$(install_llm "$PLATFORM")
+  fi
 
-# ── Step 5: Start child proxy agent (background) ──────────────────────────
-echo "[install] Starting child proxy agent..."
-pkill -f "python.*agent.py.*$PROXY_PORT" 2>/dev/null || true
-sleep 1
+  step 5 "Starting services"
+  start_services "$LLM_SERVER"
 
-nohup python3 "$INSTALL_DIR/agent.py" --port "$PROXY_PORT" \
-  > "$INSTALL_DIR/agent.log" 2>&1 &
+  step 6 "Service persistence"
+  install_service || install_pm2 || warn "No service manager found — agent runs in background only"
 
-echo "[install] agent.py PID: $!"
+  step 7 "Verification"
+  verify_and_register
 
-# ── Step 6: Write Hermes config ──────────────────────────────────────────────
-echo "[install] Writing Hermes config..."
-mkdir -p "$HOME/.hermes"
-cat > "$HOME/.hermes/config.yaml" << 'HERMESEOF'
-model:
-  default: minicpm-local
-  provider: fcuk-proxy
-  base_url: http://localhost:6000/v1
-providers:
-  fcuk-proxy:
-    base_url: http://localhost:6000/v1
-    model: minicpm-local
-    api_key: ''
-fallback_providers: []
-auxiliary:
-  curator:
-    base_url: http://localhost:6000/v1
-    model: minicpm-local
-    api_key: ''
-HERMESEOF
+  print_summary
+}
 
-echo "[install] Hermes configured to use local MiniCPM only."
-
-# ── Step 7: Verify ────────────────────────────────────────────────────────
-echo "[install] Verifying services..."
-sleep 5
-
-if curl -s "http://127.0.0.1:$LLAMA_PORT/v1/chat/completions" -H 'Content-Type: application/json' -d '{"messages":[{"role":"user","content":"hi"}],"max_tokens":5}' >/dev/null 2>&1; then
-  echo "[install] ✓ llama-server responding on port $LLAMA_PORT"
-else
-  echo "[install] ! llama-server not responding yet (check $INSTALL_DIR/llama-server.log)"
-fi
-
-if curl -s "http://127.0.0.1:$PROXY_PORT/health" >/dev/null 2>&1; then
-  echo "[install] ✓ Child proxy agent running on port $PROXY_PORT"
-else
-  echo "[install] ! Child proxy agent not responding (check $INSTALL_DIR/agent.log)"
-fi
-
-echo ""
-echo "[install] ── Done ──────────────────────────────────────────────────"
-echo "[install] Child proxy:      http://127.0.0.1:$PROXY_PORT"
-echo "[install] llama-server:     http://127.0.0.1:$LLAMA_PORT"
-echo "[install] Model:            $MODEL_DIR/model.gguf"
-echo "[install] Hermes config:    $HOME/.hermes/config.yaml"
-echo "[install] Parent proxy:     $PARENT_URL"
-echo "[install] Child ID:         $CHILD_ID"
-echo "[install] ──────────────────────────────────────────────────────────"
-echo "[install] Next: run 'hermes' to start the agent using local MiniCPM"
-echo "[install] Or visit $PARENT_URL to see your node in the network"
+main "$@"
