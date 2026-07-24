@@ -62,6 +62,11 @@ while [[ $# -gt 0 ]]; do
   esac
 done
 
+# Save Groq key to file if provided
+if [[ -n "$GROQ_API_KEY" ]]; then
+  echo "$GROQ_API_KEY" > ~/.groq-key 2>/dev/null || true
+fi
+
 # ── Detect platform ──────────────────────────────────────────────────────────
 detect_platform() {
   local os arch
@@ -162,6 +167,14 @@ install_phone_termux() {
 
   step 4 "Creating startup script"
   create_start_script
+
+  step 4b "Saving Groq API key"
+  if [[ -n "$GROQ_API_KEY" ]]; then
+    echo "$GROQ_API_KEY" > "$HOME/.groq-key" 2>/dev/null || true
+    ok "Groq key saved"
+  else
+    warn "No Groq key — cloud fallback disabled (use --groq-key to set)"
+  fi
 
   step 5 "Installing Termux:Boot for auto-start"
   install_termux_boot
@@ -314,7 +327,7 @@ for i in $(seq 1 60); do
   sleep 1
 done
 
-export GROQ_API_KEY="${GROQ_API_KEY:-}"
+export GROQ_API_KEY="${GROQ_API_KEY:-$(cat ~/.groq-key 2>/dev/null || true)}"
 export PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 export MACHINE_ID="${MACHINE_ID:-phone-$(date +%s)}"
 export MACHINE_NAME="${MACHINE_NAME:-$MACHINE_ID}"
@@ -806,7 +819,7 @@ for i in $(seq 1 30); do
   sleep 2
 done
 
-export GROQ_API_KEY="${GROQ_API_KEY:-}"
+export GROQ_API_KEY="${GROQ_API_KEY:-$(cat ~/.groq-key 2>/dev/null || true)}"
 export PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 export MACHINE_ID="${MACHINE_ID:-phone-$(date +%s)}"
 export MACHINE_NAME="${MACHINE_NAME:-$MACHINE_ID}"
