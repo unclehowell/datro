@@ -291,7 +291,7 @@ pkill -f "llama-server" 2>/dev/null || true
 pkill -f "phone-agentos" 2>/dev/null || true
 sleep 2
 
-export LD_LIBRARY_PATH="$LLAMA_DIR:$TERMUX_HOME:$LD_LIBRARY_PATH"
+export LD_LIBRARY_PATH="$TERMUX_HOME:$LD_LIBRARY_PATH"
 chmod 755 "$LLAMA_BIN" 2>/dev/null || true
 nohup "$LLAMA_BIN" \
   --model "$MODEL" \
