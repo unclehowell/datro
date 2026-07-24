@@ -501,9 +501,9 @@ func chatHandler(w http.ResponseWriter, r *http.Request) {
 func guiHandler(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path
 	if path == "/" || path == "" {
-		path = "/phone-gui/index.html"
+		path = "phone-gui/index.html"
 	} else {
-		path = "/phone-gui" + path
+		path = "phone-gui" + path
 	}
 
 	data, err := guiFS.ReadFile(path)

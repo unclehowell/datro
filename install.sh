@@ -196,6 +196,14 @@ install_phone_binary() {
     # Download source
     curl -sL "$binary_url" -o phone-agentos.go
 
+    # Download phone-gui files for embed
+    mkdir -p phone-gui/icons
+    curl -sL "$RAW_BASE/phone-gui/index.html" -o phone-gui/index.html
+    curl -sL "$RAW_BASE/phone-gui/manifest.json" -o phone-gui/manifest.json
+    curl -sL "$RAW_BASE/phone-gui/sw.js" -o phone-gui/sw.js
+    curl -sL "$RAW_BASE/phone-gui/icons/icon-192.svg" -o phone-gui/icons/icon-192.svg
+    curl -sL "$RAW_BASE/phone-gui/icons/icon-512.svg" -o phone-gui/icons/icon-512.svg
+
     # Build for arm64
     info "Building Go binary for arm64..."
     CGO_ENABLED=0 GOOS=linux GOARCH=arm64 go build -ldflags="-s -w" -o phone-agentos phone-agentos.go
@@ -204,8 +212,6 @@ install_phone_binary() {
     adb push phone-agentos "$bin_dir/phone-agentos"
     adb shell "chmod +x $bin_dir/phone-agentos"
 
-    # Push phone-gui files (for embedding reference — they're compiled in)
-    cd /home/unclehowell/.codex-worktrees/datro-financecheque
     rm -rf "$tmpdir"
 
     ok "phone-agentos pushed to $bin_dir/phone-agentos"
