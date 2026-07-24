@@ -270,43 +270,44 @@ install_phone_llm() {
 }
 
 create_start_script() {
-  local bin_dir="/data/local/tmp"
-  local start_script="$bin_dir/start-agentos.sh"
+  local termux_home="/data/data/com.termux/files/home"
+  local start_script="$termux_home/start-agentos.sh"
 
   cat > "$start_script" << 'STARTEOF'
 #!/data/data/com.termux/files/usr/bin/sh
 # AgentOS Phone — Startup Script
-# Starts llama-server + phone-agentos
 
-BIN_DIR="/data/local/tmp"
-LLAMA_DIR="$BIN_DIR/llama-runtime"
+TERMUX_HOME="/data/data/com.termux/files/home"
+LLAMA_DIR="/data/local/tmp/llama-runtime"
 MODEL="/sdcard/Download/model.gguf"
 LOG_DIR="/sdcard/Download"
 
-# Kill existing instances
+LLAMA_BIN="$TERMUX_HOME/llama-server"
+AGENT_BIN="$TERMUX_HOME/phone-agentos"
+[[ ! -f "$LLAMA_BIN" ]] && LLAMA_BIN="$LLAMA_DIR/llama-server"
+[[ ! -f "$AGENT_BIN" ]] && AGENT_BIN="/data/local/tmp/phone-agentos"
+
 pkill -f "llama-server" 2>/dev/null || true
 pkill -f "phone-agentos" 2>/dev/null || true
 sleep 2
 
-# Start llama-server
-export LD_LIBRARY_PATH="$LLAMA_DIR:$LD_LIBRARY_PATH"
-nohup "$LLAMA_DIR/llama-server" \
+export LD_LIBRARY_PATH="$LLAMA_DIR:$TERMUX_HOME:$LD_LIBRARY_PATH"
+chmod 755 "$LLAMA_BIN" 2>/dev/null || true
+nohup "$LLAMA_BIN" \
   --model "$MODEL" \
   --port 8090 --host 127.0.0.1 \
   --ctx-size 2048 --n-gpu-layers 0 \
   > "$LOG_DIR/llama-server.log" 2>&1 &
 
-# Wait for llama-server to be ready
 echo "Waiting for llama-server..."
-for i in $(seq 1 30); do
+for i in $(seq 1 60); do
   if curl -s http://127.0.0.1:8090/health >/dev/null 2>&1; then
     echo "llama-server ready"
     break
   fi
-  sleep 2
+  sleep 1
 done
 
-# Start phone-agentos
 export GROQ_API_KEY="${GROQ_API_KEY:-}"
 export PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 export MACHINE_ID="${MACHINE_ID:-phone-$(date +%s)}"
@@ -316,10 +317,10 @@ export GUI_PORT="${GUI_PORT:-3000}"
 export MINICPM_PORT="${MINICPM_PORT:-8090}"
 export DNS_SERVER="${DNS_SERVER:-8.8.8.8:53}"
 
-nohup "$BIN_DIR/phone-agentos" > "$LOG_DIR/agentos-output.log" 2>&1 &
+chmod 755 "$AGENT_BIN" 2>/dev/null || true
+nohup "$AGENT_BIN" > "$LOG_DIR/agentos-output.log" 2>&1 &
 echo "phone-agentos started (PID: $!)"
 
-# Verify
 sleep 3
 if curl -s http://127.0.0.1:3000/api/health >/dev/null 2>&1; then
   echo "AgentOS phone: OK"
@@ -361,7 +362,8 @@ install_termux_boot() {
 }
 
 setup_boot_persistence() {
-  local boot_script_dir="$HOME/.termux/boot"
+  local termux_home="/data/data/com.termux/files/home"
+  local boot_script_dir="$termux_home/.termux/boot"
   local boot_script="$boot_script_dir/start-agentos.sh"
 
   mkdir -p "$boot_script_dir"
@@ -371,7 +373,7 @@ setup_boot_persistence() {
 # Auto-start AgentOS on device boot
 # Installed by FinanceCheque installer
 sleep 15
-sh /data/local/tmp/start-agentos.sh > /dev/null 2>&1 &
+sh /data/data/com.termux/files/home/start-agentos.sh > /dev/null 2>&1 &
 BOOLEOF
 
   chmod 755 "$boot_script"
@@ -380,8 +382,9 @@ BOOLEOF
 }
 
 start_phone_services() {
+  local termux_home="/data/data/com.termux/files/home"
   info "Starting services..."
-  sh /data/local/tmp/start-agentos.sh
+  sh "$termux_home/start-agentos.sh"
 }
 
 print_phone_summary() {
