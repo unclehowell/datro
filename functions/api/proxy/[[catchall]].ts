@@ -637,8 +637,11 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
       { role: 'system', content: 'You are a helpful AI assistant for Finance Cheque UK. Be concise and friendly.' },
       { role: 'user', content: message },
     ];
+
+    // Phase 1: Try direct fetch to reachable children
     for (const node of results) {
       const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 4001}/v1/chat/completions`;
+      if (!childUrl || childUrl === 'http://:4001' || childUrl === 'http://' || childUrl.includes('0.0.0.0')) continue;
       try {
         const resp = await fetch(childUrl, {
           method: 'POST',
@@ -649,7 +652,7 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
             'X-Machine-ID': 'parent-proxy',
           },
           body: JSON.stringify({ model: 'proxy-router', messages, max_tokens: 500 }),
-          signal: AbortSignal.timeout(10000),
+          signal: AbortSignal.timeout(8000),
         });
         if (resp.ok) {
           const data = await resp.json() as any;
@@ -658,56 +661,104 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
         }
       } catch {}
     }
+
+    // Phase 2: For NAT'd nodes, queue work via polling and wait for result
+    for (const node of results) {
+      const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 4001}/v1/chat/completions`;
+      const isReachable = childUrl && childUrl !== 'http://:4001' && childUrl !== 'http://' && !childUrl.includes('0.0.0.0');
+      if (isReachable) continue;
+
+      const workId = await queueWorkForNode(env, node.machine_id, {
+        model: 'proxy-router',
+        messages,
+        max_tokens: 500,
+      });
+
+      // Poll for result (child polls every 2s, allow up to 20s)
+      const deadline = Date.now() + 20000;
+      while (Date.now() < deadline) {
+        await new Promise(r => setTimeout(r, 2000));
+        const pending = await env.DB.prepare(
+          `SELECT status, result FROM proxy_pending WHERE work_id = ?`
+        ).bind(workId).first() as any;
+        if (pending && pending.status === 'completed' && pending.result) {
+          const result = JSON.parse(pending.result);
+          const content = result?.choices?.[0]?.message?.content || result?.reply || '';
+          if (content) return content;
+          break;
+        }
+        if (pending && pending.status === 'failed') break;
+      }
+    }
   } catch {}
   return null;
 }
 
 async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model: string, originMachineId: string, env?: Env): Promise<{ content: string; timeMs: number } | null> {
   const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 4001}/v1/chat/completions`;
-  if (!childUrl || childUrl === 'http://:4001' || childUrl === 'http://') return null;
-  const start = Date.now();
-  try {
-    const resp = await fetch(childUrl, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'X-Chat-Only': 'true',
-        'X-Forwarded': 'true',
-        'X-Machine-ID': originMachineId,
-      },
-      body: JSON.stringify({ model, messages, max_tokens: 1024 }),
-      signal: AbortSignal.timeout(25000),
-    });
-    const timeMs = Date.now() - start;
-    if (resp.ok) {
-      const data = await resp.json() as any;
-      const content = data?.choices?.[0]?.message?.content || '';
-      if (content) {
-        if (env) {
-          await env.DB.prepare(
-            `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
-          ).bind(timeMs, timeMs, node.machine_id).run().catch(() => {});
+  const isUnreachable = !childUrl || childUrl === 'http://:4001' || childUrl === 'http://' || childUrl.includes('0.0.0.0');
+
+  if (!isUnreachable) {
+    const start = Date.now();
+    try {
+      const resp = await fetch(childUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Chat-Only': 'true',
+          'X-Forwarded': 'true',
+          'X-Machine-ID': originMachineId,
+        },
+        body: JSON.stringify({ model, messages, max_tokens: 1024 }),
+        signal: AbortSignal.timeout(15000),
+      });
+      const timeMs = Date.now() - start;
+      if (resp.ok) {
+        const data = await resp.json() as any;
+        const content = data?.choices?.[0]?.message?.content || '';
+        if (content) {
+          if (env) {
+            await env.DB.prepare(
+              `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
+            ).bind(timeMs, timeMs, node.machine_id).run().catch(() => {});
+          }
+          return { content, timeMs };
         }
-        return { content, timeMs };
+      }
+      if (env) {
+        await env.DB.prepare(
+          `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
+        ).bind(timeMs, timeMs, node.machine_id).run().catch(() => {});
+      }
+    } catch {
+      const timeMs = Date.now() - start;
+      if (env) {
+        await env.DB.prepare(
+          `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
+        ).bind(30000, 30000, node.machine_id).run().catch(() => {});
       }
     }
-    if (env) {
-      await env.DB.prepare(
-        `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
-      ).bind(timeMs, timeMs, node.machine_id).run().catch(() => {});
-    }
-  } catch {
-    const timeMs = Date.now() - start;
-    if (env && node.machine_id !== originMachineId) {
-      try {
-        await queueWorkForNode(env, node.machine_id, { model, messages, max_tokens: 1024 });
-      } catch {}
-    }
-    if (env) {
-      await env.DB.prepare(
-        `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
-      ).bind(30000, 30000, node.machine_id).run().catch(() => {});
-    }
+  }
+
+  // Phase 2: For NAT'd nodes, queue work via polling and wait for result
+  if (env && node.machine_id !== originMachineId) {
+    try {
+      const workId = await queueWorkForNode(env, node.machine_id, { model, messages, max_tokens: 1024 });
+      const deadline = Date.now() + 20000;
+      while (Date.now() < deadline) {
+        await new Promise(r => setTimeout(r, 2000));
+        const pending = await env.DB.prepare(
+          `SELECT status, result FROM proxy_pending WHERE work_id = ?`
+        ).bind(workId).first() as any;
+        if (pending && pending.status === 'completed' && pending.result) {
+          const result = JSON.parse(pending.result);
+          const content = result?.choices?.[0]?.message?.content || result?.reply || '';
+          if (content) return { content, timeMs: Date.now() - (deadline - 20000) };
+          break;
+        }
+        if (pending && pending.status === 'failed') break;
+      }
+    } catch {}
   }
   return null;
 }
