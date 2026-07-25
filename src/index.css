@@ -179,3 +179,8 @@
 .animate-glow {
   animation: glow 2s ease-in-out infinite;
 }
+
+@keyframes blink {
+  0%, 80%, 100% { opacity: 0.3; }
+  40% { opacity: 1; }
+}

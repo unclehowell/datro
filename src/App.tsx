@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { 
   Bell,
@@ -120,8 +120,10 @@ export default function App() {
   const [isWalletMenuOpen, setIsWalletMenuOpen] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
-  const [chatReply, setChatReply] = useState('');
-  const [isChatting, setIsChatting] = useState(false);
+  const [chatHistory, setChatHistory] = useState<Array<{role: 'user'|'assistant', content: string, source?: string}>>([]);
+  const [chatSending, setChatSending] = useState(false);
+  const [chatPipeline, setChatPipeline] = useState('');
+  const chatMessagesRef = useRef<HTMLDivElement>(null);
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [showAuthModal, setShowAuthModal] = useState(false);
   const [showConnectionsModal, setShowConnectionsModal] = useState(false);
@@ -164,6 +166,13 @@ export default function App() {
 
     return () => clearInterval(timer);
   }, [isDemo]);
+
+  useEffect(() => {
+    if (chatMessagesRef.current) {
+      chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
+    }
+  }, [chatHistory, chatSending]);
+
   const [showWalletNotice, setShowWalletNotice] = useState(false);
   const [demoAgents, setDemoAgents] = useState<{id: number, isOpen: boolean, balance: number, hasInteracted: boolean, title: string, isSpawned: boolean, isAnswered: boolean}[]>([
     { id: 1, isOpen: false, balance: 0, hasInteracted: false, title: 'CEO', isSpawned: true, isAnswered: false },
@@ -1126,74 +1135,112 @@ node child-proxy.js`}</pre>
 
       {/* Modals */}
       <AnimatePresence>
-        {/* Chat popup — bottom-right panel */}
+        {/* Full-page chat — identical to phone AgentOS UI */}
         {showContactModal && (
           <motion.div
-            initial={{ opacity: 0, y: 20, scale: 0.95 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: 20, scale: 0.95 }}
-            className="fixed bottom-24 right-6 z-[1000] w-80 sm:w-96 bg-paper border border-border shadow-2xl frame overflow-hidden"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[1000] flex flex-col"
+            style={{ background: '#09090b', color: '#d0c8b8', fontFamily: "'SF Mono', 'Fira Code', monospace", fontSize: '14px' }}
           >
-            <div className="bg-accent text-white px-4 py-3 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <MessageCircle size={16} />
-                <span className="text-xs font-bold uppercase tracking-widest">Chat</span>
+            {/* Header */}
+            <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 16px', borderBottom: '1px solid #27272a', background: '#18181b', flexShrink: 0 }}>
+              <h1 style={{ fontSize: '16px', fontWeight: 600, color: '#f59e0b', letterSpacing: '0.5px', margin: 0 }}>AgentOS</h1>
+              <span style={{ fontSize: '10px', padding: '2px 6px', borderRadius: '3px', background: '#09090b', border: '1px solid #27272a' }}>parent-proxy</span>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginLeft: 'auto', fontSize: '12px', color: '#71717a' }}>
+                <span>{chatHistory.length > 0 ? 'online' : 'ready'}</span>
+                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22c55e' }} />
               </div>
-              <button onClick={() => setShowContactModal(false)} className="text-white/60 hover:text-white">
-                <X size={16} />
+              <button onClick={() => setShowContactModal(false)} style={{ background: 'none', border: 'none', color: '#71717a', cursor: 'pointer', padding: '4px' }}>
+                <X size={18} />
               </button>
             </div>
-            <div className="p-4 space-y-3">
-              <p className="text-[10px] text-ink/40 uppercase tracking-wider font-bold">Ask anything — chat only, no agentic actions.</p>
-              <textarea
-                value={chatMessage}
-                onChange={(e) => setChatMessage(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' && !e.shiftKey) {
-                    e.preventDefault();
-                    document.getElementById('chat-send-btn')?.click();
-                  }
-                }}
-                placeholder="Type your message..."
-                className="w-full border border-border bg-card p-3 text-sm min-h-20 resize-none"
-              />
-              {chatReply && (
-                <div className="text-xs bg-accent/5 border border-accent/10 p-3 whitespace-pre-wrap max-h-40 overflow-y-auto">
-                  {chatReply}
+
+            {/* Pipeline breadcrumb */}
+            {chatPipeline && (
+              <div style={{ display: 'flex', gap: '4px', padding: '8px 16px', borderBottom: '1px solid #27272a', background: '#18181b', flexShrink: 0, flexWrap: 'wrap' }}>
+                {chatPipeline.split(' → ').map((step, i, arr) => (
+                  <span key={i} style={{ fontSize: '11px', padding: '3px 8px', borderRadius: '4px', background: '#09090b', border: '1px solid ' + (i === arr.length - 1 ? '#f59e0b' : '#27272a'), color: i === arr.length - 1 ? '#f59e0b' : '#71717a' }}>
+                    {step.trim()}
+                  </span>
+                ))}
+              </div>
+            )}
+
+            {/* Messages */}
+            <div ref={chatMessagesRef} style={{ flex: 1, overflowY: 'auto', padding: '16px', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {chatHistory.length === 0 && (
+                <div style={{ textAlign: 'center', color: '#71717a', padding: '40px 20px', fontSize: '13px', lineHeight: 1.8 }}>
+                  <div style={{ color: '#f59e0b', fontSize: '18px', marginBottom: '8px' }}>Finance Cheque UK</div>
+                  <div>Parent proxy chat<br />Routes to child nodes via polling<br /><br />Type a message to begin.</div>
                 </div>
               )}
+              {chatHistory.map((msg, i) => (
+                <div key={i} style={{
+                  maxWidth: '85%', padding: '10px 14px', borderRadius: '12px', fontSize: '14px', lineHeight: 1.5, wordWrap: 'break-word' as const,
+                  alignSelf: msg.role === 'user' ? 'flex-end' : 'flex-start',
+                  background: msg.role === 'user' ? '#f59e0b' : '#18181b',
+                  color: msg.role === 'user' ? '#000' : '#d0c8b8',
+                  border: msg.role === 'assistant' ? '1px solid #27272a' : 'none',
+                  borderBottomRightRadius: msg.role === 'user' ? '4px' : '12px',
+                  borderBottomLeftRadius: msg.role === 'assistant' ? '4px' : '12px',
+                }}>
+                  {msg.content}
+                  {msg.source && <div style={{ fontSize: '10px', color: '#71717a', marginTop: '4px' }}>{msg.source}</div>}
+                </div>
+              ))}
+              {chatSending && (
+                <div style={{ maxWidth: '85%', padding: '10px 14px', borderRadius: '12px', background: '#18181b', border: '1px solid #27272a', alignSelf: 'flex-start', borderBottomLeftRadius: '4px' }}>
+                  <div style={{ display: 'flex', gap: '4px' }}>
+                    {[0, 1, 2].map(i => (
+                      <span key={i} style={{ width: '6px', height: '6px', borderRadius: '50%', background: '#71717a', animation: `blink 1.4s infinite ${i * 0.2}s` }} />
+                    ))}
+                  </div>
+                </div>
+              )}
+            </div>
+
+            {/* Input bar */}
+            <div style={{ display: 'flex', gap: '8px', padding: '12px 16px', borderTop: '1px solid #27272a', background: '#18181b', flexShrink: 0 }}>
+              <textarea
+                rows={1}
+                value={chatMessage}
+                onChange={(e) => { setChatMessage(e.target.value); e.target.style.height = 'auto'; e.target.style.height = Math.min(e.target.scrollHeight, 120) + 'px'; }}
+                onKeyDown={(e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); document.getElementById('fcuk-chat-send')?.click(); } }}
+                placeholder="Ask anything..."
+                style={{ flex: 1, background: '#09090b', border: '1px solid #27272a', borderRadius: '8px', padding: '10px 14px', color: '#d0c8b8', fontFamily: 'inherit', fontSize: '14px', resize: 'none', outline: 'none', maxHeight: '120px' }}
+              />
               <button
-                id="chat-send-btn"
-                disabled={isChatting || !chatMessage.trim()}
+                id="fcuk-chat-send"
+                disabled={chatSending || !chatMessage.trim()}
                 onClick={async () => {
-                  setIsChatting(true);
-                  setChatReply('');
+                  const text = chatMessage.trim();
+                  if (!text || chatSending) return;
+                  setChatSending(true);
+                  setChatMessage('');
+                  const userMsg = { role: 'user' as const, content: text };
+                  setChatHistory(prev => [...prev, userMsg]);
                   try {
                     const resp = await fetch('/api/proxy', {
                       method: 'POST',
                       headers: { 'Content-Type': 'application/json' },
-                      body: JSON.stringify({
-                        message: chatMessage.trim(),
-                        sessionId: 'fcuk-web-' + (localStorage.getItem('fcuk_session_id') || 'anon'),
-                        chat_only: true,
-                        action: 'chat',
-                      }),
+                      body: JSON.stringify({ message: text, chat_only: true, action: 'chat' }),
                     });
                     const data = await resp.json();
-                    setChatReply(data.reply || data.error || 'No response');
+                    const reply = data.reply || data.error || 'No response';
+                    const source = data._proxy?.routing || '';
+                    setChatHistory(prev => [...prev, { role: 'assistant', content: reply, source }]);
+                    if (data._proxy?.routing_decision) setChatPipeline(data._proxy.routing_decision);
                   } catch {
-                    setChatReply('Unable to reach parent proxy.');
+                    setChatHistory(prev => [...prev, { role: 'assistant', content: 'Unable to reach parent proxy.' }]);
                   } finally {
-                    setIsChatting(false);
+                    setChatSending(false);
                   }
                 }}
-                className="w-full bg-ink text-paper py-3 text-xs font-bold uppercase tracking-widest hover:bg-accent disabled:opacity-50 flex items-center justify-center gap-2"
+                style={{ background: '#f59e0b', color: '#000', border: 'none', borderRadius: '8px', padding: '10px 20px', fontFamily: 'inherit', fontSize: '14px', fontWeight: 600, cursor: 'pointer', opacity: chatSending || !chatMessage.trim() ? 0.5 : 1 }}
               >
-                {isChatting ? (
-                  <><div className="w-3 h-3 border-2 border-paper/30 border-t-paper rounded-full animate-spin" /> Sending...</>
-                ) : (
-                  <><Send size={14} /> Send</>
-                )}
+                Send
               </button>
             </div>
           </motion.div>
