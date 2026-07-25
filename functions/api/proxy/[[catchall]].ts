@@ -459,13 +459,13 @@ async function queueWorkForNode(env: Env, machineId: string, payload: any): Prom
 }
 
 async function handleSimpleChat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
-  const body = await request.json() as { message?: string; sessionId?: string };
+  const body = await request.json() as { message?: string; sessionId?: string; chat_only?: boolean; action?: string };
   const message = body.message;
   if (!message || typeof message !== 'string') {
     return new Response(JSON.stringify({ error: 'message is required' }), { status: 400, headers });
   }
 
-  const isChatOnly = request.headers.get('X-Chat-Only') === 'true';
+  const isChatOnly = request.headers.get('X-Chat-Only') === 'true' || body.chat_only === true;
   const isForwarded = request.headers.get('X-Forwarded') === 'true';
 
   if (isForwarded) {
@@ -494,7 +494,7 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
 async function tryParentLlm(message: string, env: Env): Promise<string | null> {
   const hasAnyKey = Object.values(env).some(v => v && typeof v === 'string' && v.length > 10);
   if (!hasAnyKey) {
-    return `Echo: ${message}`;
+    return null;
   }
   
   const providers: Array<{
