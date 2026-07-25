@@ -120,7 +120,7 @@ export default function App() {
   const [isWalletMenuOpen, setIsWalletMenuOpen] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState<Array<{role: 'user'|'assistant', content: string, source?: string}>>([]);
+  const [chatHistory, setChatHistory] = useState<Array<{role: 'user'|'assistant', content: string, source?: string, breadcrumb?: string}>>([]);
   const [chatSending, setChatSending] = useState(false);
   const [chatPipeline, setChatPipeline] = useState('');
   const chatMessagesRef = useRef<HTMLDivElement>(null);
@@ -1187,7 +1187,8 @@ node child-proxy.js`}</pre>
                   borderBottomLeftRadius: msg.role === 'assistant' ? '4px' : '12px',
                 }}>
                   {msg.content}
-                  {msg.source && <div style={{ fontSize: '10px', color: '#71717a', marginTop: '4px' }}>{msg.source}</div>}
+                  {msg.breadcrumb && <div style={{ fontSize: '10px', color: '#71717a', marginTop: '4px', fontFamily: 'monospace' }}>{msg.breadcrumb}</div>}
+                  {msg.source && !msg.breadcrumb && <div style={{ fontSize: '10px', color: '#71717a', marginTop: '4px' }}>{msg.source}</div>}
                 </div>
               ))}
               {chatSending && (
@@ -1230,8 +1231,10 @@ node child-proxy.js`}</pre>
                     const data = await resp.json();
                     const reply = data.reply || data.error || 'No response';
                     const source = data._proxy?.routing || '';
-                    setChatHistory(prev => [...prev, { role: 'assistant', content: reply, source }]);
-                    if (data._proxy?.routing_decision) setChatPipeline(data._proxy.routing_decision);
+                    const breadcrumb = data._breadcrumb || data._proxy?.child_breadcrumb || '';
+                    setChatHistory(prev => [...prev, { role: 'assistant', content: reply, source, breadcrumb }]);
+                    if (breadcrumb) setChatPipeline(breadcrumb);
+                    else if (data._proxy?.routing_decision) setChatPipeline(data._proxy.routing_decision);
                   } catch {
                     setChatHistory(prev => [...prev, { role: 'assistant', content: 'Unable to reach parent proxy.' }]);
                   } finally {

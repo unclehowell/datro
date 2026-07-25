@@ -477,9 +477,15 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
   }
 
   if (isChatOnly) {
-    const childReply = await routeSimpleChatToChild(message, env);
-    if (childReply) {
-      return new Response(JSON.stringify({ ok: true, reply: childReply, _proxy: { routed: true, routing: 'child_proxy' } }), { status: 200, headers });
+    const childResult = await routeSimpleChatToChild(message, env);
+    if (childResult) {
+      return new Response(JSON.stringify({
+        ok: true,
+        reply: childResult.content,
+        _breadcrumb: childResult.breadcrumb,
+        _source: childResult.source,
+        _proxy: { routed: true, routing: 'child_proxy' }
+      }), { status: 200, headers });
     }
   }
 
@@ -623,7 +629,7 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
   return null;
 }
 
-async function routeSimpleChatToChild(message: string, env: Env): Promise<string | null> {
+async function routeSimpleChatToChild(message: string, env: Env): Promise<{ content: string; breadcrumb: string; source: string } | null> {
   try {
     const { results } = await env.DB.prepare(
       `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen,
@@ -642,6 +648,7 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
     for (const node of results) {
       const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 4001}/v1/chat/completions`;
       if (!childUrl || childUrl === 'http://:4001' || childUrl === 'http://' || childUrl.includes('0.0.0.0')) continue;
+      const childLabel = node.machine_name || node.machine_id?.slice(0, 12) || 'child';
       try {
         const resp = await fetch(childUrl, {
           method: 'POST',
@@ -657,7 +664,12 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
         if (resp.ok) {
           const data = await resp.json() as any;
           const content = data?.choices?.[0]?.message?.content || data?.reply || '';
-          if (content) return content;
+          if (content) {
+            const childBreadcrumb = data?._breadcrumb || '';
+            const childSource = data?._source || '';
+            const breadcrumb = `🖥️ ${childLabel} > ${childBreadcrumb}`;
+            return { content, breadcrumb, source: childSource };
+          }
         }
       } catch {}
     }
@@ -668,6 +680,7 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
       const isReachable = childUrl && childUrl !== 'http://:4001' && childUrl !== 'http://' && !childUrl.includes('0.0.0.0');
       if (isReachable) continue;
 
+      const childLabel = node.machine_name || node.machine_id?.slice(0, 12) || 'child';
       const workId = await queueWorkForNode(env, node.machine_id, {
         model: 'proxy-router',
         messages,
@@ -684,7 +697,12 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
         if (pending && pending.status === 'completed' && pending.result) {
           const result = JSON.parse(pending.result);
           const content = result?.choices?.[0]?.message?.content || result?.reply || '';
-          if (content) return content;
+          if (content) {
+            const childBreadcrumb = result?._breadcrumb || '';
+            const childSource = result?._source || '';
+            const breadcrumb = `🖥️ ${childLabel} > ${childBreadcrumb}`;
+            return { content, breadcrumb, source: childSource };
+          }
           break;
         }
         if (pending && pending.status === 'failed') break;
@@ -694,7 +712,7 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<string
   return null;
 }
 
-async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model: string, originMachineId: string, env?: Env): Promise<{ content: string; timeMs: number } | null> {
+async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model: string, originMachineId: string, env?: Env): Promise<{ content: string; timeMs: number; breadcrumb: string } | null> {
   const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 4001}/v1/chat/completions`;
   const isUnreachable = !childUrl || childUrl === 'http://:4001' || childUrl === 'http://' || childUrl.includes('0.0.0.0');
 
@@ -722,7 +740,9 @@ async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model
               `UPDATE proxy_nodes SET avg_response_ms = COALESCE((avg_response_ms * total_requests + ?) / (total_requests + 1), ?), total_requests = COALESCE(total_requests, 0) + 1 WHERE machine_id = ?`
             ).bind(timeMs, timeMs, node.machine_id).run().catch(() => {});
           }
-          return { content, timeMs };
+          const childBreadcrumb = data?._breadcrumb || '';
+          const breadcrumb = `🖥️ ${node.machine_name || node.machine_id?.slice(0, 12) || 'child'} > ${childBreadcrumb}`;
+          return { content, timeMs, breadcrumb };
         }
       }
       if (env) {
@@ -753,7 +773,9 @@ async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model
         if (pending && pending.status === 'completed' && pending.result) {
           const result = JSON.parse(pending.result);
           const content = result?.choices?.[0]?.message?.content || result?.reply || '';
-          if (content) return { content, timeMs: Date.now() - (deadline - 20000) };
+          const childBreadcrumb = result?._breadcrumb || '';
+          const breadcrumb = `🖥️ ${node.machine_name || node.machine_id?.slice(0, 12) || 'child'} > ${childBreadcrumb}`;
+          return { content, timeMs: Date.now() - (deadline - 20000), breadcrumb };
           break;
         }
         if (pending && pending.status === 'failed') break;
@@ -824,6 +846,7 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
   let completionContent = '';
   let routingDecision = 'direct';
   let pollingQueued = false;
+  let childBreadcrumb = '';
 
   const callingNode = activeNodes.results?.find(n => n.machine_id === originMachineId);
   if (callingNode && messages.length > 0) {
@@ -831,6 +854,7 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     const childResult = await routeToChildProxy(callingNode, messages, model, originMachineId, env);
     if (childResult) {
       completionContent = childResult.content;
+      childBreadcrumb = childResult.breadcrumb;
     }
   }
 
@@ -841,6 +865,7 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
       const childResult = await routeToChildProxy(node, messages, model, originMachineId, env);
       if (childResult) {
         completionContent = childResult.content;
+        childBreadcrumb = childResult.breadcrumb;
         if (completionContent) break;
       }
     }
@@ -889,6 +914,7 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
       chat_only: true,
       routing_decision: routingDecision,
       polling_queued: pollingQueued,
+      child_breadcrumb: childBreadcrumb || undefined,
     },
   };
 

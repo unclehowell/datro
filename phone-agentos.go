@@ -221,7 +221,7 @@ func routeLLM(messages []any) map[string]any {
 		if err == nil {
 			return map[string]any{
 				"_source":     fmt.Sprintf("provider:%s", p.Name),
-				"_breadcrumb": fmt.Sprintf("%s (%s)", p.Name, p.Model),
+				"_breadcrumb": fmt.Sprintf("🌐 webgui > 🧠 minicpm5 > 🔄 router > ☁️ %s (%s)", p.Name, p.Model),
 				"_arch":       archInfo,
 				"choices": []map[string]any{
 					{
@@ -362,7 +362,7 @@ func callCognitiveCore(messages []any) map[string]any {
 				content, _ := args["content"].(string)
 				return map[string]any{
 					"_source":     "minicpm",
-					"_breadcrumb": "minicpm (local)",
+					"_breadcrumb": "🌐 webgui > 🧠 minicpm5 > 🔧 tools > ✅ respond_directly",
 					"_arch":       archInfo,
 					"choices": []map[string]any{
 						{
@@ -382,7 +382,7 @@ func callCognitiveCore(messages []any) map[string]any {
 	if content, ok := msg["content"].(string); ok && content != "" {
 		return map[string]any{
 			"_source":     "minicpm",
-			"_breadcrumb": "minicpm (local)",
+			"_breadcrumb": "🌐 webgui > 🧠 minicpm5 > 💬 direct",
 			"_arch":       archInfo,
 			"choices": []map[string]any{
 				{
