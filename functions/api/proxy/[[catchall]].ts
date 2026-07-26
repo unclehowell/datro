@@ -644,10 +644,14 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<{ cont
       { role: 'user', content: message },
     ];
 
-    // Phase 1: Try direct fetch to reachable children
+    // Phase 1: Try direct fetch to all children, track failures for polling
+    const failedNodes: any[] = [];
     for (const node of results) {
       const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 4001}/v1/chat/completions`;
-      if (!childUrl || childUrl === 'http://:4001' || childUrl === 'http://' || childUrl.includes('0.0.0.0')) continue;
+      if (!childUrl || childUrl === 'http://:4001' || childUrl === 'http://' || childUrl.includes('0.0.0.0')) {
+        failedNodes.push(node);
+        continue;
+      }
       const childLabel = node.machine_name || node.machine_id?.slice(0, 12) || 'child';
       try {
         const resp = await fetch(childUrl, {
@@ -672,13 +676,11 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<{ cont
           }
         }
       } catch {}
+      failedNodes.push(node);
     }
 
-    // Phase 2: For NAT'd nodes, queue work via polling and wait for result
-    for (const node of results) {
-      const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 4001}/v1/chat/completions`;
-      const isReachable = childUrl && childUrl !== 'http://:4001' && childUrl !== 'http://' && !childUrl.includes('0.0.0.0');
-      if (isReachable) continue;
+    // Phase 2: Poll for results from all nodes that failed in Phase 1
+    for (const node of failedNodes) {
 
       const childLabel = node.machine_name || node.machine_id?.slice(0, 12) || 'child';
       const workId = await queueWorkForNode(env, node.machine_id, {
