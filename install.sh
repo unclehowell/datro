@@ -16,6 +16,9 @@ set -euo pipefail
 #   FROM LAPTOP TO PHONE (ADB):
 #     bash install.sh --adb
 #
+#   MULTI-INSTANCE (scale on one machine):
+#     bash install.sh --instances 4 --port 6000
+#
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # Features: Child proxy agent, local LLM (MiniCPM), WebGUI, boot persistence
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -37,6 +40,7 @@ INSTALL_DIR="${INSTALL_DIR:-}"
 GROQ_API_KEY="${GROQ_API_KEY:-}"
 ADB_MODE="${ADB_MODE:-0}"
 DRY_RUN="${DRY_RUN:-0}"
+INSTANCES="${INSTANCES:-1}"              # Number of child proxy instances to run
 
 # ── Colors ───────────────────────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'
@@ -58,6 +62,7 @@ while [[ $# -gt 0 ]]; do
     --id)         CHILD_ID="$2"; shift 2 ;;
     --port)       PROXY_PORT="$2"; shift 2 ;;
     --groq-key)   GROQ_API_KEY="$2"; shift 2 ;;
+    --instances)  INSTANCES="$2"; shift 2 ;;
     *)            shift ;;
   esac
 done
@@ -576,11 +581,40 @@ start_services() {
   fi
 
   sleep 1
-  info "Starting child proxy agent on port $PROXY_PORT..."
-  nohup python3 "$INSTALL_DIR/agent.py" --port "$PROXY_PORT" \
-    > "$INSTALL_DIR/agent.log" 2>&1 &
-  echo $! > "$INSTALL_DIR/agent.pid"
-  ok "agent.py PID: $!"
+
+  # Start multiple child proxy instances
+  for ((i=1; i<=INSTANCES; i++)); do
+    local instance_port=$((PROXY_PORT + i - 1))
+    local instance_id="${CHILD_ID}"
+    local instance_dir="$INSTALL_DIR"
+
+    if [[ "$INSTANCES" -gt 1 ]]; then
+      instance_id="${CHILD_ID}-$i"
+      instance_dir="$INSTALL_DIR/instance-$i"
+      mkdir -p "$instance_dir"
+      # Copy agent.py to instance directory
+      cp "$INSTALL_DIR/agent.py" "$instance_dir/agent.py" 2>/dev/null || true
+      # Copy .env
+      cp "$INSTALL_DIR/.env" "$instance_dir/.env" 2>/dev/null || true
+      # Write instance-specific config
+      cat > "$instance_dir/machine.json" << JSONEOF
+{
+  "machine_id": "$instance_id",
+  "machine_name": "$instance_id",
+  "proxy_port": $instance_port,
+  "parent": "$PARENT_URL",
+  "version": "$VERSION",
+  "mode": "$MODE"
+}
+JSONEOF
+    fi
+
+    info "Starting child proxy instance $i on port $instance_port (id: $instance_id)..."
+    nohup python3 "$instance_dir/agent.py" --port "$instance_port" \
+      > "$instance_dir/agent.log" 2>&1 &
+    echo $! > "$instance_dir/agent.pid"
+    ok "Instance $i PID: $! (port $instance_port)"
+  done
 }
 
 # ── Create systemd service ──────────────────────────────────────────────────
@@ -676,7 +710,15 @@ print_laptop_summary() {
   echo -e "  ${CYAN}Mode:${NC}          $MODE"
   echo -e "  ${CYAN}Node ID:${NC}       $CHILD_ID"
   echo -e "  ${CYAN}Parent:${NC}        $PARENT_URL"
-  echo -e "  ${CYAN}Proxy port:${NC}    $PROXY_PORT"
+  echo -e "  ${CYAN}Instances:${NC}     $INSTANCES"
+  if [[ "$INSTANCES" -gt 1 ]]; then
+    for ((i=1; i<=INSTANCES; i++)); do
+      local port=$((PROXY_PORT + i - 1))
+      echo -e "  ${CYAN}  Instance $i:${NC}    port $port (id: ${CHILD_ID}-$i)"
+    done
+  else
+    echo -e "  ${CYAN}Proxy port:${NC}    $PROXY_PORT"
+  fi
   if [[ "$MODE" == "full" ]]; then
     echo -e "  ${CYAN}LLM port:${NC}      $LLAMA_PORT"
     echo -e "  ${CYAN}Model:${NC}         $INSTALL_DIR/models/model.gguf"
@@ -689,6 +731,7 @@ print_laptop_summary() {
   echo "  3. Verify: curl -s $PARENT_URL/api/proxy?action=health"
   echo ""
   echo -e "  ${YELLOW}Scale:${NC} Run this script on other machines with same PARENT_URL"
+  echo "  ${YELLOW}Multi-instance:${NC} Run with --instances N to spawn N proxies on one machine"
   echo ""
   echo -e "${BOLD}══════════════════════════════════════════════════════════════${NC}"
 }
