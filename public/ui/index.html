@@ -196,9 +196,13 @@
     <div class="split-pane" id="paneBottom">
         <div id="agentosChat" style="width:100%;height:100%;display:flex;flex-direction:column;background:#09090b;color:#d0c8b8;font-family:'SF Mono','Fira Code',monospace;font-size:14px;">
             <div style="display:flex;align-items:center;gap:8px;padding:10px 16px;border-bottom:1px solid #27272a;background:#18181b;flex-shrink:0;">
-                <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;"></div>
+                <div style="width:8px;height:8px;border-radius:50%;background:#22c55e;" id="chatStatusDot"></div>
                 <span style="font-size:12px;font-weight:600;color:#f59e0b;">AgentOS</span>
-                <span style="font-size:10px;color:#71717a;">parent-proxy</span>
+                <span style="font-size:10px;color:#71717a;" id="chatAgentName">parent-proxy</span>
+                <div style="flex:1;"></div>
+                <button id="chatFullscreenBtn" title="Fullscreen" style="background:none;border:none;color:#71717a;cursor:pointer;padding:4px;display:flex;align-items:center;transition:color 0.2s;" onmouseover="this.style.color='#f59e0b'" onmouseout="this.style.color='#71717a'">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>
+                </button>
             </div>
             <div id="chatPipeline" style="display:none;gap:4px;padding:6px 16px;border-bottom:1px solid #27272a;background:#18181b;flex-shrink:0;flex-wrap:wrap;"></div>
             <div id="chatMessages" style="flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;">
@@ -302,18 +306,40 @@
         chatSending = true;
         input.value = '';
         addChatMsg('user', text);
+        // Include selected agent ID in request
+        var payload = { message: text, chat_only: true, action: 'chat' };
+        if (selectedAgent) payload.target_machine = selectedAgent;
         fetch('/api/proxy', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: text, chat_only: true, action: 'chat' })
+            body: JSON.stringify(payload)
         }).then(function(r) { return r.json(); }).then(function(d) {
+            if (d.error && (d.error.includes('took too long') || d.error.includes('timeout') || d.error.includes('ECONNR'))) {
+                // Parent proxy timeout — show retry option
+                addChatMsg('assistant', 'Parent proxy timed out. Retrying with AgentOS fallback...', '');
+                document.getElementById('chatStatusDot').style.background = '#f59e0b';
+                // Retry with chat_only=false to trigger AgentOS local fallback
+                var retryPayload = { message: text, chat_only: false, action: 'chat' };
+                if (selectedAgent) retryPayload.target_machine = selectedAgent;
+                return fetch('/api/proxy', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(retryPayload)
+                }).then(function(r2) { return r2.json(); }).then(function(d2) {
+                    var reply2 = d2.reply || d2.error || 'No response';
+                    var bc2 = d2._breadcrumb || d2._proxy?.child_breadcrumb || '';
+                    addChatMsg('assistant', reply2, bc2);
+                    document.getElementById('chatStatusDot').style.background = '#22c55e';
+                });
+            }
             var reply = d.reply || d.error || 'No response';
             var bc = d._breadcrumb || d._proxy?.child_breadcrumb || '';
             addChatMsg('assistant', reply, bc);
             if (bc) setChatPipeline(bc);
             else if (d._proxy?.routing_decision) setChatPipeline(d._proxy.routing_decision);
-        }).catch(function() {
-            addChatMsg('assistant', 'Unable to reach parent proxy.');
+        }).catch(function(err) {
+            addChatMsg('assistant', 'Connection failed. Check your network and try again.');
+            document.getElementById('chatStatusDot').style.background = '#ef4444';
         }).finally(function() { chatSending = false; });
     });
 
@@ -324,6 +350,29 @@
     function setIframeSrc(iframeId, url) {
         document.getElementById(iframeId).src = url;
     }
+
+    // Agent selection from URL params
+    var urlParams = new URLSearchParams(window.location.search);
+    var selectedAgent = urlParams.get('agent') || '';
+    var agentName = urlParams.get('name') || 'parent-proxy';
+    if (selectedAgent) {
+        document.getElementById('chatAgentName').textContent = agentName + ' (' + selectedAgent.slice(0, 8) + ')';
+    }
+
+    // Fullscreen toggle for chat
+    var chatFullscreen = false;
+    document.getElementById('chatFullscreenBtn').addEventListener('click', function() {
+        chatFullscreen = !chatFullscreen;
+        var container = document.getElementById('splitContainer');
+        var btn = document.getElementById('chatFullscreenBtn');
+        if (chatFullscreen) {
+            setViewMode(3); // Full bottom (chat only)
+            btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14h3a2 2 0 0 1 2 2v3m4-5h3a2 2 0 0 0 2-2V9M3 11V8a2 2 0 0 1 2-2h3M21 14v3a2 2 0 0 1-2 2h-3"/></svg>';
+        } else {
+            setViewMode(0); // Return to split
+            btn.innerHTML = '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></svg>';
+        }
+    });
 
     // Initialize on Home with split view
     setViewMode(0);

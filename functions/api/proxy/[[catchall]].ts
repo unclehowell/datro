@@ -504,7 +504,7 @@ async function handleVideoInterception(videoContent: string, env: Env): Promise<
 }
 
 async function handleSimpleChat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
-  const body = await request.json() as { message?: string; sessionId?: string; chat_only?: boolean; action?: string };
+  const body = await request.json() as { message?: string; sessionId?: string; chat_only?: boolean; action?: string; target_machine?: string };
   const message = body.message;
   if (!message || typeof message !== 'string') {
     return new Response(JSON.stringify({ error: 'message is required' }), { status: 400, headers });
@@ -512,6 +512,7 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
 
   const isChatOnly = request.headers.get('X-Chat-Only') === 'true' || body.chat_only === true;
   const isForwarded = request.headers.get('X-Forwarded') === 'true';
+  const targetMachine = body.target_machine;
 
   if (isForwarded) {
     const reply = await tryParentLlm(message, env);
@@ -522,7 +523,7 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
   }
 
   if (isChatOnly) {
-    const childResult = await routeSimpleChatToChild(message, env);
+    const childResult = await routeSimpleChatToChild(message, env, targetMachine);
     if (childResult) {
       // Check for VIDEO: prefix in response
       if (childResult.content.startsWith('VIDEO:')) {
@@ -688,14 +689,21 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
   return null;
 }
 
-async function routeSimpleChatToChild(message: string, env: Env): Promise<{ content: string; breadcrumb: string; source: string } | null> {
+async function routeSimpleChatToChild(message: string, env: Env, targetMachine?: string): Promise<{ content: string; breadcrumb: string; source: string } | null> {
   try {
-    const { results } = await env.DB.prepare(
-      `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen,
+    let query = `SELECT machine_id, machine_name, ip_address, proxy_port, version, url, last_seen,
               COALESCE(avg_response_ms, 1000) as avg_response_ms
        FROM proxy_nodes
-       WHERE last_seen > datetime('now', '-1 hour')
-       ORDER BY avg_response_ms ASC, last_seen DESC`
+       WHERE last_seen > datetime('now', '-1 hour')`;
+    const params: string[] = [];
+    if (targetMachine) {
+      query += ` AND machine_id = ?`;
+      params.push(targetMachine);
+    }
+    query += ` ORDER BY avg_response_ms ASC, last_seen DESC`;
+    const { results } = await (params.length > 0
+      ? env.DB.prepare(query).bind(...params)
+      : env.DB.prepare(query)
     ).all() as { results: any[] };
     if (!results || results.length === 0) return null;
     const messages = [
