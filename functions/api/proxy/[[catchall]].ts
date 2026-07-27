@@ -150,6 +150,9 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === '/api/proxy/v1/chat/completions' && method === 'POST') {
       return await handleChat(request, env, headers);
     }
+    if (path === '/api/tts' && method === 'POST') {
+      return await handleTTS(request, env, headers);
+    }
 
     // ── Agent Delegation Endpoints ──────────────────────────────────────
     if (path === '/api/agent/delegate' && method === 'POST') {
@@ -501,6 +504,59 @@ async function handleVideoInterception(videoContent: string, env: Env): Promise<
     }
   } catch {}
   return null;
+}
+
+async function handleTTS(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  const body = await request.json() as { text?: string; voice?: string; speed?: number; target_machine?: string };
+  const text = body.text;
+  if (!text || typeof text !== 'string') {
+    return new Response(JSON.stringify({ error: 'text is required' }), { status: 400, headers });
+  }
+  const voice = body.voice || 'am_michael';
+  const speed = body.speed || 1.0;
+  const targetMachine = body.target_machine;
+
+  // Find a child proxy to handle TTS
+  let query = `SELECT machine_id, machine_name, ip_address, proxy_port, url
+    FROM proxy_nodes WHERE last_seen > datetime('now', '-1 hour')`;
+  const params: string[] = [];
+  if (targetMachine) {
+    query += ` AND machine_id = ?`;
+    params.push(targetMachine);
+  }
+  query += ` ORDER BY avg_response_ms ASC, last_seen DESC LIMIT 1`;
+
+  const { results } = await (params.length > 0
+    ? env.DB.prepare(query).bind(...params)
+    : env.DB.prepare(query)
+  ).all() as { results: any[] };
+
+  if (!results || results.length === 0) {
+    return new Response(JSON.stringify({ error: 'No child proxy available for TTS' }), { status: 503, headers });
+  }
+
+  const node = results[0];
+  const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 6000}/tts`;
+
+  try {
+    const resp = await fetch(childUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ text, voice, speed, as_base64: true }),
+      signal: AbortSignal.timeout(30000),
+    });
+    if (resp.ok) {
+      const data = await resp.json() as any;
+      return new Response(JSON.stringify({
+        ok: true,
+        audio: data.audio,
+        format: data.format || 'wav',
+        _tts: { node: node.machine_name || node.machine_id, voice },
+      }), { status: 200, headers });
+    }
+  } catch (e) {}
+
+  return new Response(JSON.stringify({ error: 'TTS failed' }), { status: 502, headers });
 }
 
 async function handleSimpleChat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {

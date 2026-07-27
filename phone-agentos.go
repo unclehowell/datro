@@ -786,6 +786,82 @@ func videoServeHandler(w http.ResponseWriter, r *http.Request) {
 	http.ServeFile(w, r, videoPath)
 }
 
+func ttsHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "POST required", http.StatusMethodNotAllowed)
+		return
+	}
+
+	var req struct {
+		Text   string  `json:"text"`
+		Voice  string  `json:"voice"`
+		Speed  float64 `json:"speed"`
+		Base64 bool    `json:"as_base64"`
+	}
+	if err := json.NewDecoder(r.Body).Decode(&req); err != nil {
+		http.Error(w, "invalid json", http.StatusBadRequest)
+		return
+	}
+	if req.Text == "" {
+		http.Error(w, "text required", http.StatusBadRequest)
+		return
+	}
+	if req.Voice == "" {
+		req.Voice = "am_michael"
+	}
+	if req.Speed == 0 {
+		req.Speed = 1.0
+	}
+
+	// Try local kokoro-onnx first
+	modelDir := filepath.Join(os.Getenv("HOME"), ".fcukproxy", "models")
+	kokoroModel := filepath.Join(modelDir, "kokoro-v1.0.int8.onnx")
+	kokoroVoices := filepath.Join(modelDir, "voices-v1.0.bin")
+
+	if _, err := os.Stat(kokoroModel); err == nil {
+		// Use local kokoro
+		cmd := exec.Command("python3", "-c", fmt.Sprintf(`
+import json, base64, io, sys
+sys.path.insert(0, "%s")
+from kokoro_onnx import Kokoro
+import soundfile as sf
+kokoro = Kokoro("%s", "%s")
+samples, sr = kokoro.create(%q, voice=%q, speed=%.2f, lang="en-us")
+buf = io.BytesIO()
+sf.write(buf, samples, sr, format="WAV")
+buf.seek(0)
+audio = base64.b64encode(buf.read()).decode()
+print(json.dumps({"audio": "data:audio/wav;base64," + audio, "format": "wav"}))
+`, modelDir, kokoroModel, kokoroVoices, req.Text, req.Voice, req.Speed))
+
+		out, err := cmd.CombinedOutput()
+		if err == nil {
+			var result map[string]string
+			if json.Unmarshal(out, &result) == nil {
+				w.Header().Set("Content-Type", "application/json")
+				w.Write(out)
+				return
+			}
+		}
+	}
+
+	// Fallback: try voice-service on port 3101
+	voiceURL := "http://127.0.0.1:3101/tts"
+	form := fmt.Sprintf("text=%s&voice=%s&speed=%.2f&as_base64=true",
+		strings.ReplaceAll(req.Text, "&", "%26"),
+		req.Voice, req.Speed)
+	resp, err := http.Post(voiceURL, "application/x-www-form-urlencoded", strings.NewReader(form))
+	if err == nil {
+		defer resp.Body.Close()
+		w.Header().Set("Content-Type", resp.Header.Get("Content-Type"))
+		w.Header().Set("Content-Type", "application/json")
+		io.Copy(w, resp.Body)
+		return
+	}
+
+	http.Error(w, "TTS unavailable", http.StatusServiceUnavailable)
+}
+
 func guiHandler(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path
 	if path == "/" || path == "" {
@@ -840,6 +916,7 @@ func main() {
 	proxyMux.HandleFunc("/v1/chat/completions", chatHandler)
 	proxyMux.HandleFunc("/api/video/render", videoRenderHandler)
 	proxyMux.HandleFunc("/api/video/", videoServeHandler)
+	proxyMux.HandleFunc("/tts", ttsHandler)
 	proxySrv := &http.Server{Addr: "0.0.0.0:" + proxyPort, Handler: proxyMux}
 
 	// GUI server (port 3000) — serves embedded WebGUI + API

@@ -337,6 +337,21 @@
             addChatMsg('assistant', reply, bc);
             if (bc) setChatPipeline(bc);
             else if (d._proxy?.routing_decision) setChatPipeline(d._proxy.routing_decision);
+            // Auto-play TTS for assistant replies
+            if (reply && !d.error) {
+                var ttsPayload = { text: reply, voice: 'am_michael' };
+                if (selectedAgent) ttsPayload.target_machine = selectedAgent;
+                fetch('/api/tts', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(ttsPayload)
+                }).then(function(r) { return r.json(); }).then(function(d) {
+                    if (d.audio) {
+                        var audio = new Audio(d.audio);
+                        audio.play().catch(function() {});
+                    }
+                }).catch(function() {});
+            }
         }).catch(function(err) {
             addChatMsg('assistant', 'Connection failed. Check your network and try again.');
             document.getElementById('chatStatusDot').style.background = '#ef4444';
