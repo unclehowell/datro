@@ -19,9 +19,9 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
   }
 
   try {
-    // Cleanup dead nodes (older than 2 hours)
+    // Cleanup dead nodes (older than 30 minutes)
     await env.DB.prepare(
-      `DELETE FROM proxy_nodes WHERE last_seen < datetime('now', '-2 hours')`
+      `DELETE FROM proxy_nodes WHERE last_seen < datetime('now', '-30 minutes')`
     ).run();
 
     const { results: nodes } = await env.DB.prepare(

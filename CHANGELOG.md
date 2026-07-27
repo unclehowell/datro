@@ -1,3 +1,28 @@
+## [0.5.1.64] - 2026-07-26
+
+### Added
+- feat: video pipeline — LLM outputs `VIDEO: {json}` for video requests, child proxy renders via ffmpeg, `<video>` plays in chat
+- feat: phone `/api/status` endpoint — checks OmniRoute, Hermes, local ollama health
+- feat: phone status cards — tap status dot to show OmniRoute/Hermes/Models indicators
+- feat: chat fullscreen toggle — Maximize2/Minimize2 icon in chat modal header
+- feat: VIDEO: system prompt — teaches LLM to output `VIDEO: {"composition":"TextAnimation",...}` format
+- feat: `/api/video/render` endpoint — accepts video spec JSON, renders via Remotion or ffmpeg fallback
+- feat: `/api/video/:id` endpoint — serves rendered MP4 files
+
+### Changed
+- refactor: breadcrumb shows full chain `🌐 financecheque-uk > 🖥️ child > provider (model)` (4 routing points)
+- refactor: stale node TTL reduced from 2 hours to 30 minutes (both `[[catchall]].ts` and `health.ts`)
+- refactor: OmniRoute Groq provider enabled as cloud fallback (was disabled)
+- refactor: Hermes systemd — fixed `WorkingDirectory` and `HERMES_HOME` env var
+- refactor: `hermes.ts` health check accepts any HTTP response as "online" (even 500 = running but unconfigured)
+
+### Fixed
+- fix: Guacamole iframe replaced with AgentOS chat widget in ui.financecheque.uk
+- fix: breadcrumb parent name now shown (was missing, only showed child name)
+- fix: Hermes systemd service no longer fails on boot (exit code 200/CHDIR)
+
+## [0.5.1.63] - 2026-07-25
+
 ## [0.5.1.61] - 2026-07-25
 
 ## [0.5.1.52] - 2026-07-25

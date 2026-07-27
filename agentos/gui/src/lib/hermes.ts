@@ -17,7 +17,7 @@ export async function getHermesStatus(): Promise<AgentStatus> {
       headers: { Accept: "text/html" },
     });
     clearTimeout(timeout);
-    if (!res.ok) return { online: false, currentTask: null, uptime: 0, memoryUsed: "0MB", activeSessions: 0 };
+    // Any HTTP response means Hermes is running (even 500 = running but unconfigured)
     return { online: true, currentTask: null, uptime: 0, memoryUsed: "N/A", activeSessions: 0 };
   } catch {
     return { online: false, currentTask: null, uptime: 0, memoryUsed: "0MB", activeSessions: 0 };

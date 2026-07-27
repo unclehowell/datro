@@ -58,10 +58,10 @@ function checkRateLimit(machineId: string): boolean {
   return true;
 }
 
-// Cleanup dead nodes (older than 2 hours without heartbeat)
+// Cleanup dead nodes (older than 30 minutes without heartbeat)
 async function cleanupDeadNodes(env: Env): Promise<void> {
   await env.DB.prepare(
-    `DELETE FROM proxy_nodes WHERE last_seen < datetime('now', '-2 hours')`
+    `DELETE FROM proxy_nodes WHERE last_seen < datetime('now', '-30 minutes')`
   ).run();
   await env.DB.prepare(
     `DELETE FROM proxy_pending WHERE status = 'in_progress' AND created_at < datetime('now', '-5 minutes')`
@@ -69,6 +69,7 @@ async function cleanupDeadNodes(env: Env): Promise<void> {
 }
 
 const FCUK_PROXY_VERSION = '0.6.0';
+const PARENT_NAME = 'financecheque-uk';
 
 // ── Boolean Logic for query routing ──────────────────────────────────────
 // Let:  C = X-Chat-Only header is "true"
@@ -458,6 +459,50 @@ async function queueWorkForNode(env: Env, machineId: string, payload: any): Prom
   return workId;
 }
 
+async function handleVideoInterception(videoContent: string, env: Env): Promise<any> {
+  try {
+    const jsonStr = videoContent.replace(/^VIDEO:\s*/, '').trim();
+    const spec = JSON.parse(jsonStr);
+
+    // Find a video-capable child node and POST to its /api/video/render
+    const { results: nodes } = await env.DB.prepare(
+      `SELECT machine_id, machine_name, ip_address, proxy_port, url FROM proxy_nodes ORDER BY avg_response_ms ASC, last_seen DESC`
+    ).all() as { results: ProxyNode[] };
+
+    for (const node of nodes) {
+      const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 6000}/api/video/render`;
+      if (!childUrl || childUrl.includes('0.0.0.0')) continue;
+
+      try {
+        const resp = await fetch(childUrl, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(spec),
+          signal: AbortSignal.timeout(30000),
+        });
+        if (resp.ok) {
+          const result = await resp.json() as any;
+          const videoUrl = result.videoUrl;
+          if (videoUrl) {
+            // Prepend child proxy base URL if relative
+            const fullUrl = videoUrl.startsWith('http') ? videoUrl
+              : `http://${node.ip_address}:${node.proxy_port || 6000}${videoUrl}`;
+            return {
+              ok: true,
+              reply: 'Video rendered successfully.',
+              videoUrl: fullUrl,
+              _breadcrumb: `🌐 ${PARENT_NAME} > 🖥️ ${node.machine_name || 'child'} > 📹 video render`,
+              _source: 'video:local',
+              _proxy: { routed: true, routing: 'child_proxy' }
+            };
+          }
+        }
+      } catch {}
+    }
+  } catch {}
+  return null;
+}
+
 async function handleSimpleChat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
   const body = await request.json() as { message?: string; sessionId?: string; chat_only?: boolean; action?: string };
   const message = body.message;
@@ -479,6 +524,13 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
   if (isChatOnly) {
     const childResult = await routeSimpleChatToChild(message, env);
     if (childResult) {
+      // Check for VIDEO: prefix in response
+      if (childResult.content.startsWith('VIDEO:')) {
+        const videoResult = await handleVideoInterception(childResult.content, env);
+        if (videoResult) {
+          return new Response(JSON.stringify(videoResult), { status: 200, headers });
+        }
+      }
       return new Response(JSON.stringify({
         ok: true,
         reply: childResult.content,
@@ -640,7 +692,7 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<{ cont
     ).all() as { results: any[] };
     if (!results || results.length === 0) return null;
     const messages = [
-      { role: 'system', content: 'You are a helpful AI assistant for Finance Cheque UK. Be concise and friendly.' },
+      { role: 'system', content: 'You are a helpful AI assistant for Finance Cheque UK. Be concise and friendly. When the user asks to create, make, or generate a video, respond with a JSON object prefixed by "VIDEO: ". Format: VIDEO: {"composition":"TextAnimation","duration":3,"props":{"text":"<text>","bgColor":"#1a1a2e","textColor":"#ffffff","animation":"bounce"}}. Available: TextAnimation, Beach, Gradient. Duration: 1-10 seconds.' },
       { role: 'user', content: message },
     ];
 
@@ -671,7 +723,7 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<{ cont
           if (content) {
             const childBreadcrumb = data?._breadcrumb || '';
             const childSource = data?._source || '';
-            const breadcrumb = `🖥️ ${childLabel} > ${childBreadcrumb}`;
+            const breadcrumb = `🌐 ${PARENT_NAME} > 🖥️ ${childLabel} > ${childBreadcrumb}`;
             return { content, breadcrumb, source: childSource };
           }
         }
@@ -702,7 +754,7 @@ async function routeSimpleChatToChild(message: string, env: Env): Promise<{ cont
           if (content) {
             const childBreadcrumb = result?._breadcrumb || '';
             const childSource = result?._source || '';
-            const breadcrumb = `🖥️ ${childLabel} > ${childBreadcrumb}`;
+            const breadcrumb = `🌐 ${PARENT_NAME} > 🖥️ ${childLabel} > ${childBreadcrumb}`;
             return { content, breadcrumb, source: childSource };
           }
           break;
@@ -743,7 +795,7 @@ async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model
             ).bind(timeMs, timeMs, node.machine_id).run().catch(() => {});
           }
           const childBreadcrumb = data?._breadcrumb || '';
-          const breadcrumb = `🖥️ ${node.machine_name || node.machine_id?.slice(0, 12) || 'child'} > ${childBreadcrumb}`;
+          const breadcrumb = `🌐 ${PARENT_NAME} > 🖥️ ${node.machine_name || node.machine_id?.slice(0, 12) || 'child'} > ${childBreadcrumb}`;
           return { content, timeMs, breadcrumb };
         }
       }
@@ -776,7 +828,7 @@ async function routeToChildProxy(node: ProxyNode, messages: ChatMessage[], model
           const result = JSON.parse(pending.result);
           const content = result?.choices?.[0]?.message?.content || result?.reply || '';
           const childBreadcrumb = result?._breadcrumb || '';
-          const breadcrumb = `🖥️ ${node.machine_name || node.machine_id?.slice(0, 12) || 'child'} > ${childBreadcrumb}`;
+          const breadcrumb = `🌐 ${PARENT_NAME} > 🖥️ ${node.machine_name || node.machine_id?.slice(0, 12) || 'child'} > ${childBreadcrumb}`;
           return { content, timeMs: Date.now() - (deadline - 20000), breadcrumb };
           break;
         }
@@ -888,6 +940,30 @@ async function handleChat(request: Request, env: Env, headers: Record<string, st
     const lastMsg = messages[messages.length - 1];
     const userContent = typeof lastMsg.content === 'string' ? lastMsg.content : '';
     completionContent = `Echo: ${userContent}`;
+  }
+
+  // VIDEO: interception — check if response contains VIDEO: prefix
+  if (completionContent.startsWith('VIDEO:')) {
+    const videoResult = await handleVideoInterception(completionContent, env);
+    if (videoResult) {
+      await env.DB.prepare(
+        `INSERT INTO proxy_logs (origin_machine_id, endpoint, model, response_status, routing_decision, created_at)
+         VALUES (?, ?, ?, ?, ?, datetime('now'))`
+      ).bind(originMachineId, 'v1/chat/completions', model, 200, 'video_render').run();
+
+      return new Response(JSON.stringify({
+        id: `chatcmpl-${Date.now()}`,
+        object: 'chat.completion',
+        created: Math.floor(Date.now() / 1000),
+        model,
+        choices: [{ index: 0, message: { role: 'assistant', content: videoResult.reply }, finish_reason: 'stop' }],
+        usage: { prompt_tokens: 0, completion_tokens: 0, total_tokens: 0 },
+        videoUrl: videoResult.videoUrl,
+        _breadcrumb: videoResult._breadcrumb,
+        _source: videoResult._source,
+        _proxy: { origin_machine_id: originMachineId, routing_decision: 'video_render', chat_only: true },
+      }), { status: 200, headers });
+    }
   }
 
   const responseStatus = 200;

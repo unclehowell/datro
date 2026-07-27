@@ -27,13 +27,13 @@ const PROVIDERS = [
   },
   {
     id: "groq",
-    name: "Groq (disabled — no agentic capability)",
+    name: "Groq (cloud fallback)",
     baseUrl: "https://api.groq.com/openai/v1",
     apiKey: process.env.GROQ_API_KEY || "",
     models: ["llama-3.1-8b-instant", "llama-3.3-70b-versatile"],
     chatPath: "/chat/completions",
     modelsPath: "/models",
-    enabled: false, // Disabled: no tool use, no MCP, no agentic harness
+    enabled: true, // Cloud fallback when local LLM unavailable
     priority: 2,
   },
   // OpenRouter DISABLED — paid models, removed per user request

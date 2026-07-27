@@ -44,6 +44,12 @@
     .typing span:nth-child(3) { animation-delay: 0.4s; }
     @keyframes blink { 0%, 80%, 100% { opacity: 0.3; } 40% { opacity: 1; } }
     #providerBadge { font-size: 10px; padding: 2px 6px; border-radius: 3px; background: var(--bg); border: 1px solid var(--border); }
+    .status-cards { display: none; padding: 8px 16px; gap: 6px; background: var(--surface); border-bottom: 1px solid var(--border); flex-shrink: 0; flex-wrap: wrap; }
+    .status-cards.show { display: flex; }
+    .status-card { font-size: 10px; padding: 4px 8px; border-radius: 4px; background: var(--bg); border: 1px solid var(--border); display: flex; align-items: center; gap: 4px; }
+    .status-card .dot { width: 6px; height: 6px; border-radius: 50%; }
+    .status-card .dot.on { background: var(--green); }
+    .status-card .dot.off { background: var(--red); }
     @media (max-width: 480px) { body { font-size: 15px; } .msg { max-width: 90%; } }
   </style>
 </head>
@@ -56,6 +62,7 @@
       <div id="statusDot" class="status-dot offline"></div>
     </div>
   </header>
+  <div id="statusCards" class="status-cards"></div>
   <div id="pipeline"></div>
   <div id="messages">
     <div class="welcome" id="welcome">
@@ -95,11 +102,46 @@
     checkHealth();
     setInterval(checkHealth, 15000);
 
-    function addMsg(role, content, source) {
+    async function checkStatus() {
+      try {
+        const r = await fetch('/api/status');
+        const d = await r.json();
+        const cards = document.getElementById('statusCards');
+        let html = '';
+        const omniOk = d.omniroute?.status === 'ok';
+        html += `<div class="status-card"><div class="dot ${omniOk ? 'on' : 'off'}"></div>OmniRoute</div>`;
+        const hermesOk = d.hermes?.online;
+        html += `<div class="status-card"><div class="dot ${hermesOk ? 'on' : 'off'}"></div>Hermes</div>`;
+        const modelCount = d.models?.length || 0;
+        html += `<div class="status-card"><div class="dot ${modelCount > 0 ? 'on' : 'off'}"></div>Models: ${modelCount}</div>`;
+        cards.innerHTML = html;
+        cards.classList.add('show');
+      } catch(e) {}
+    }
+    checkStatus();
+    setInterval(checkStatus, 30000);
+
+    // Toggle status cards on status dot click
+    statusDot.addEventListener('click', () => {
+      const cards = document.getElementById('statusCards');
+      cards.classList.toggle('show');
+    });
+
+    function addMsg(role, content, source, videoUrl) {
       if (welcome) welcome.remove();
       const div = document.createElement('div');
       div.className = 'msg ' + role;
-      div.textContent = content;
+      if (videoUrl) {
+        const vid = document.createElement('video');
+        vid.src = videoUrl;
+        vid.controls = true;
+        vid.autoplay = true;
+        vid.loop = true;
+        vid.style.cssText = 'max-width:100%;border-radius:8px;';
+        div.appendChild(vid);
+      } else {
+        div.textContent = content;
+      }
       if (source) {
         const s = document.createElement('div');
         s.className = 'source';
@@ -163,7 +205,8 @@
         } else if (data.choices && data.choices.length > 0) {
           const content = data.choices[0].message.content;
           const source = data._breadcrumb || data._source || '';
-          addMsg('assistant', content, source);
+          const videoUrl = data.videoUrl || null;
+          addMsg('assistant', content, source, videoUrl);
           chatHistory.push({ role: 'assistant', content: content });
           showPipeline(data._breadcrumb);
           if (data._source) providerBadge.textContent = data._source;

@@ -162,7 +162,7 @@ install_phone_termux() {
   step 2 "Installing phone-agentos binary"
   install_phone_binary "$platform"
 
-  step 3 "Installing llama-server + MiniCPM model"
+  step 3 "Installing ollama + MiniCPM model"
   install_phone_llm
 
   step 4 "Creating startup script"
@@ -255,37 +255,40 @@ install_phone_binary() {
 }
 
 install_phone_llm() {
-  local bin_dir="/data/local/tmp"
-  local model_dir="/sdcard/Download"
-  local llama_dir="$bin_dir/llama-runtime"
-  local model_file="$model_dir/model.gguf"
-  local model_repo="ewinregirgojr/MiniCPM5-1B-Agentic-Tooluse-GGUF"
-  local llamacpp_release="b9957"
+  local termux_home="/data/data/com.termux/files/home"
+  local ollama_bin="$termux_home/ollama"
 
-  mkdir -p "$llama_dir"
-
-  # Download model if not present
-  if [[ ! -f "$model_file" ]]; then
-    info "Downloading MiniCPM Q4_K_M model (657MB)..."
-    curl -sL "https://huggingface.co/$model_repo/resolve/main/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q4_K_M.gguf" \
-      -o "$model_file"
-    ok "Model downloaded to $model_file"
+  # Install ollama 0.32.1 via Termux package manager
+  if [[ ! -f "$ollama_bin" ]]; then
+    info "Installing ollama 0.32.1 via Termux pkg..."
+    pkg update -y 2>/dev/null || true
+    pkg install -y ollama 2>/dev/null || true
+    if [[ -f "$ollama_bin" ]]; then
+      ok "ollama installed to $ollama_bin"
+    else
+      warn "pkg install ollama failed, trying curl install..."
+      curl -fsSL https://ollama.com/install.sh | sh 2>/dev/null || true
+      ok "ollama installed via curl"
+    fi
   else
-    ok "Model already present at $model_file"
+    ok "ollama already present at $ollama_bin"
   fi
 
-  # Download llama-server for Android arm64
-  if [[ ! -f "$llama_dir/llama-server" ]]; then
-    info "Downloading llama-server for Android arm64..."
-    curl -sL "https://github.com/ggml-org/llama.cpp/releases/download/$llamacpp_release/llama-$llamacpp_release-bin-android-arm64.tar.gz" \
-      -o /tmp/llama.tar.gz
-    tar xzf /tmp/llama.tar.gz -C "$llama_dir" --strip-components=1
-    rm -f /tmp/llama.tar.gz
-    chmod +x "$llama_dir/llama-server" 2>/dev/null || true
-    ok "llama-server installed to $llama_dir"
+  # Verify ollama version
+  local ollama_version
+  ollama_version=$("$ollama_bin" --version 2>/dev/null | grep -oP '[\d.]+')
+  if [[ "$ollama_version" == "0.32.1" ]]; then
+    ok "ollama version: $ollama_version"
   else
-    ok "llama-server already present"
+    warn "ollama version: ${ollama_version:-unknown} (expected 0.32.1)"
   fi
+
+  # Pull MiniCPM model if not already available
+  info "Pulling MiniCPM5-1B model..."
+  export OLLAMA_HOST="127.0.0.1:8090"
+  "$ollama_bin" pull minicpm5 2>/dev/null || \
+    "$ollama_bin" pull openbmb/minicpm5 2>/dev/null || \
+    warn "Model pull failed — will retry on first chat"
 }
 
 create_start_script() {
@@ -297,31 +300,23 @@ create_start_script() {
 # AgentOS Phone — Startup Script
 
 TERMUX_HOME="/data/data/com.termux/files/home"
-LLAMA_DIR="/data/local/tmp/llama-runtime"
-MODEL="/sdcard/Download/model.gguf"
-LOG_DIR="/sdcard/Download"
-
-LLAMA_BIN="$TERMUX_HOME/llama-server"
+OLLAMA_BIN="$TERMUX_HOME/ollama"
 AGENT_BIN="$TERMUX_HOME/phone-agentos"
-[[ ! -f "$LLAMA_BIN" ]] && LLAMA_BIN="$LLAMA_DIR/llama-server"
 [[ ! -f "$AGENT_BIN" ]] && AGENT_BIN="/data/local/tmp/phone-agentos"
 
-pkill -f "llama-server" 2>/dev/null || true
+pkill -f "ollama" 2>/dev/null || true
 pkill -f "phone-agentos" 2>/dev/null || true
 sleep 2
 
+export OLLAMA_HOST="127.0.0.1:8090"
 export LD_LIBRARY_PATH="$TERMUX_HOME:$LD_LIBRARY_PATH"
-chmod 755 "$LLAMA_BIN" 2>/dev/null || true
-nohup "$LLAMA_BIN" \
-  --model "$MODEL" \
-  --port 8090 --host 127.0.0.1 \
-  --ctx-size 2048 --n-gpu-layers 0 \
-  > "$LOG_DIR/llama-server.log" 2>&1 &
+chmod 755 "$OLLAMA_BIN" 2>/dev/null || true
+nohup "$OLLAMA_BIN" serve > "$LOG_DIR/ollama.log" 2>&1 &
 
-echo "Waiting for llama-server..."
+echo "Waiting for ollama..."
 for i in $(seq 1 60); do
   if curl -s http://127.0.0.1:8090/health >/dev/null 2>&1; then
-    echo "llama-server ready"
+    echo "ollama ready"
     break
   fi
   sleep 1

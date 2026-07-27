@@ -32,7 +32,9 @@ import {
   Mail,
   MessageCircle,
   Send,
-  Trash2
+  Trash2,
+  Maximize2,
+  Minimize2
 } from 'lucide-react';
 import LanguageSelector, { Language } from './components/LanguageSelector';
 import HowItWorks from './components/HowItWorks';
@@ -120,7 +122,7 @@ export default function App() {
   const [isWalletMenuOpen, setIsWalletMenuOpen] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState<Array<{role: 'user'|'assistant', content: string, source?: string, breadcrumb?: string}>>([]);
+  const [chatHistory, setChatHistory] = useState<Array<{role: 'user'|'assistant', content: string, source?: string, breadcrumb?: string, videoUrl?: string}>>([]);
   const [chatSending, setChatSending] = useState(false);
   const [chatPipeline, setChatPipeline] = useState('');
   const chatMessagesRef = useRef<HTMLDivElement>(null);
@@ -131,6 +133,7 @@ export default function App() {
   const [isOAuthLoading, setIsOAuthLoading] = useState(false);
   const [authModalTab, setAuthModalTab] = useState<'signin' | 'signup'>('signin');
   const [showGraph, setShowGraph] = useState(false);
+  const [chatFullscreen, setChatFullscreen] = useState(true);
   const [showLogoutWarning, setShowLogoutWarning] = useState(false);
   const [timeLeft, setTimeLeft] = useState(90);
   const [isDemo, setIsDemo] = useState(false);
@@ -1141,8 +1144,8 @@ node child-proxy.js`}</pre>
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[1000] flex flex-col"
-            style={{ background: '#09090b', color: '#d0c8b8', fontFamily: "'SF Mono', 'Fira Code', monospace", fontSize: '14px' }}
+            className={chatFullscreen ? "fixed inset-0 z-[1000] flex flex-col" : "fixed bottom-6 right-6 z-[1000] flex flex-col rounded-xl shadow-2xl overflow-hidden"}
+            style={{ background: '#09090b', color: '#d0c8b8', fontFamily: "'SF Mono', 'Fira Code', monospace", fontSize: '14px', ...(chatFullscreen ? {} : { width: '400px', height: '600px', border: '1px solid #27272a' }) }}
           >
             {/* Header */}
             <div style={{ display: 'flex', alignItems: 'center', gap: '12px', padding: '12px 16px', borderBottom: '1px solid #27272a', background: '#18181b', flexShrink: 0 }}>
@@ -1152,6 +1155,9 @@ node child-proxy.js`}</pre>
                 <span>{chatHistory.length > 0 ? 'online' : 'ready'}</span>
                 <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: '#22c55e' }} />
               </div>
+              <button onClick={() => setChatFullscreen(!chatFullscreen)} style={{ background: 'none', border: 'none', color: '#71717a', cursor: 'pointer', padding: '4px' }}>
+                {chatFullscreen ? <Minimize2 size={16} /> : <Maximize2 size={16} />}
+              </button>
               <button onClick={() => setShowContactModal(false)} style={{ background: 'none', border: 'none', color: '#71717a', cursor: 'pointer', padding: '4px' }}>
                 <X size={18} />
               </button>
@@ -1186,7 +1192,9 @@ node child-proxy.js`}</pre>
                   borderBottomRightRadius: msg.role === 'user' ? '4px' : '12px',
                   borderBottomLeftRadius: msg.role === 'assistant' ? '4px' : '12px',
                 }}>
-                  {msg.content}
+                  {msg.videoUrl ? (
+                    <video src={msg.videoUrl} controls autoPlay loop style={{ maxWidth: '100%', borderRadius: '8px' }} />
+                  ) : msg.content}
                   {msg.breadcrumb && <div style={{ fontSize: '10px', color: '#71717a', marginTop: '4px', fontFamily: 'monospace' }}>{msg.breadcrumb}</div>}
                   {msg.source && !msg.breadcrumb && <div style={{ fontSize: '10px', color: '#71717a', marginTop: '4px' }}>{msg.source}</div>}
                 </div>
@@ -1232,7 +1240,8 @@ node child-proxy.js`}</pre>
                     const reply = data.reply || data.error || 'No response';
                     const source = data._proxy?.routing || '';
                     const breadcrumb = data._breadcrumb || data._proxy?.child_breadcrumb || '';
-                    setChatHistory(prev => [...prev, { role: 'assistant', content: reply, source, breadcrumb }]);
+                    const videoUrl = data.videoUrl || undefined;
+                    setChatHistory(prev => [...prev, { role: 'assistant', content: reply, source, breadcrumb, videoUrl }]);
                     if (breadcrumb) setChatPipeline(breadcrumb);
                     else if (data._proxy?.routing_decision) setChatPipeline(data._proxy.routing_decision);
                   } catch {

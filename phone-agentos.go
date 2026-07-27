@@ -15,7 +15,9 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"os/exec"
 	"os/signal"
+	"path/filepath"
 	"strings"
 	"sync"
 	"syscall"
@@ -202,7 +204,18 @@ func processWork(workID string, payload map[string]any) {
 }
 
 func routeLLM(messages []any) map[string]any {
+	// Prepend VIDEO: tool system prompt
+	messages = prependVideoSystemPrompt(messages)
+
 	if reply := callCognitiveCore(messages); reply != nil {
+		// Check for VIDEO: prefix in response
+		if content, ok := reply["choices"].([]map[string]any); ok && len(content) > 0 {
+			if msg, ok := content[0]["message"].(map[string]any); ok {
+				if text, ok := msg["content"].(string); ok && strings.HasPrefix(text, "VIDEO:") {
+					return handleVideoRequest(text, messages)
+				}
+			}
+		}
 		return reply
 	}
 
@@ -219,6 +232,14 @@ func routeLLM(messages []any) map[string]any {
 		}
 		reply, err := callProvider(p, key, prompt)
 		if err == nil {
+			content := reply
+			// Check for VIDEO: prefix in provider response
+			if strings.HasPrefix(content, "VIDEO:") {
+				videoResult := handleVideoRequest(content, messages)
+				if videoResult != nil {
+					return videoResult
+				}
+			}
 			return map[string]any{
 				"_source":     fmt.Sprintf("provider:%s", p.Name),
 				"_breadcrumb": fmt.Sprintf("🌐 webgui > 🧠 minicpm5 > 🔄 router > ☁️ %s (%s)", p.Name, p.Model),
@@ -228,7 +249,7 @@ func routeLLM(messages []any) map[string]any {
 						"index": 0,
 						"message": map[string]any{
 							"role":    "assistant",
-							"content": reply,
+							"content": content,
 						},
 						"finish_reason": "stop",
 					},
@@ -239,6 +260,86 @@ func routeLLM(messages []any) map[string]any {
 	}
 
 	return map[string]any{"_arch": archInfo, "error": "no LLM available"}
+}
+
+const videoSystemPrompt = `\n\nWhen the user asks you to create, make, or generate a video, you MUST respond with a JSON object prefixed by "VIDEO: ". Do NOT reply with normal text for video requests. Format: VIDEO: {"composition":"TextAnimation","duration":3,"props":{"text":"<text to display>","bgColor":"#1a1a2e","textColor":"#ffffff","animation":"bounce"}}. Available compositions: TextAnimation (text on colored background with bounce/fade/slide), Beach (waves + text), Gradient (animated gradient + text). Duration is in seconds (1-10).`
+
+func prependVideoSystemPrompt(messages []any) []any {
+	hasVideoPrompt := false
+	for _, m := range messages {
+		if msg, ok := m.(map[string]any); ok {
+			if content, ok := msg["content"].(string); ok && strings.Contains(content, "VIDEO:") {
+				hasVideoPrompt = true
+				break
+			}
+		}
+	}
+	if hasVideoPrompt {
+		return messages
+	}
+	// Prepend video system prompt to first system message or add new one
+	for _, m := range messages {
+		if msg, ok := m.(map[string]any); ok {
+			if role, _ := msg["role"].(string); role == "system" {
+				if content, ok := msg["content"].(string); ok {
+					msg["content"] = content + videoSystemPrompt
+					return messages
+				}
+			}
+		}
+	}
+	// No system message found, prepend one
+	newMessages := make([]any, 0, len(messages)+1)
+	newMessages = append(newMessages, map[string]any{"role": "system", "content": "You are a helpful AI assistant." + videoSystemPrompt})
+	return append(newMessages, messages...)
+}
+
+func handleVideoRequest(videoJSON string, messages []any) map[string]any {
+	// Parse VIDEO: {"composition":"TextAnimation",...}
+	jsonStr := strings.TrimPrefix(videoJSON, "VIDEO:")
+	jsonStr = strings.TrimSpace(jsonStr)
+
+	var videoSpec map[string]any
+	if err := json.Unmarshal([]byte(jsonStr), &videoSpec); err != nil {
+		log.Printf("video JSON parse error: %v", err)
+		return nil
+	}
+
+	// Call local video render endpoint
+	renderBody, _ := json.Marshal(videoSpec)
+	resp, err := http.Post("http://127.0.0.1:"+proxyPort+"/api/video/render", "application/json", bytes.NewReader(renderBody))
+	if err != nil {
+		log.Printf("video render request failed: %v", err)
+		return nil
+	}
+	defer resp.Body.Close()
+
+	var renderResult map[string]any
+	if err := json.NewDecoder(resp.Body).Decode(&renderResult); err != nil {
+		log.Printf("video render response parse error: %v", err)
+		return nil
+	}
+
+	videoURL, _ := renderResult["videoUrl"].(string)
+	if videoURL == "" {
+		return nil
+	}
+
+	return map[string]any{
+		"_source":     "video:local",
+		"_breadcrumb": "🌐 parent > 📹 video render",
+		"videoUrl":    videoURL,
+		"choices": []map[string]any{
+			{
+				"index": 0,
+				"message": map[string]any{
+					"role":    "assistant",
+					"content": "Video rendered successfully.",
+				},
+				"finish_reason": "stop",
+			},
+		},
+	}
 }
 
 func extractPrompt(messages []any) string {
@@ -442,6 +543,85 @@ func healthHandler(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
+func statusHandler(w http.ResponseWriter, r *http.Request) {
+	type providerStatus struct {
+		ID       string `json:"id"`
+		Name     string `json:"name"`
+		OK       bool   `json:"ok"`
+		Failures int    `json:"failures"`
+	}
+	type statusResponse struct {
+		Omniroute struct {
+			Status    string           `json:"status"`
+			Providers []providerStatus `json:"providers"`
+		} `json:"omniroute"`
+		Hermes struct {
+			Online bool `json:"online"`
+		} `json:"hermes"`
+		Models []string `json:"models"`
+	}
+
+	resp := statusResponse{}
+
+	// Check OmniRoute (parent proxy health)
+	parentHealthURL := parentURL + "/api/proxy/health"
+	if httpResp, err := httpGet(parentHealthURL, 5*time.Second); err == nil {
+		defer httpResp.Body.Close()
+		var healthData map[string]any
+		if json.NewDecoder(httpResp.Body).Decode(&healthData) == nil {
+			if s, ok := healthData["status"].(string); ok {
+				resp.Omniroute.Status = s
+			}
+			if nodes, ok := healthData["nodes"].([]any); ok {
+				for _, n := range nodes {
+					if node, ok := n.(map[string]any); ok {
+						name, _ := node["machine_name"].(string)
+						if name == "" {
+							name, _ = node["machine_id"].(string)
+						}
+						resp.Omniroute.Providers = append(resp.Omniroute.Providers, providerStatus{
+							ID:   name,
+							Name: name,
+							OK:   true,
+						})
+					}
+				}
+			}
+		}
+	}
+	if resp.Omniroute.Status == "" {
+		resp.Omniroute.Status = "offline"
+	}
+
+	// Check Hermes (parent proxy status)
+	hermesURL := parentURL + "/"
+	if httpResp, err := httpGet(hermesURL, 3*time.Second); err == nil {
+		httpResp.Body.Close()
+		resp.Hermes.Online = httpResp.StatusCode < 500
+	}
+
+	// Check local ollama
+	if httpResp, err := httpGet("http://127.0.0.1:11434/api/tags", 3*time.Second); err == nil {
+		defer httpResp.Body.Close()
+		var ollamaResp struct {
+			Models []struct { Name string `json:"name"` } `json:"models"`
+		}
+		if json.NewDecoder(httpResp.Body).Decode(&ollamaResp) == nil {
+			for _, m := range ollamaResp.Models {
+				resp.Models = append(resp.Models, m.Name)
+			}
+		}
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(resp)
+}
+
+func httpGet(url string, timeout time.Duration) (*http.Response, error) {
+	client := &http.Client{Timeout: timeout}
+	return client.Get(url)
+}
+
 func chatHandler(w http.ResponseWriter, r *http.Request) {
 	if r.Method != "POST" {
 		http.Error(w, "method not allowed", 405)
@@ -498,6 +678,114 @@ func chatHandler(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(result)
 }
 
+var videoDir = "/tmp/phone-videos"
+
+func videoRenderHandler(w http.ResponseWriter, r *http.Request) {
+	if r.Method != "POST" {
+		http.Error(w, "method not allowed", 405)
+		return
+	}
+
+	body, _ := io.ReadAll(r.Body)
+	var spec map[string]any
+	if err := json.Unmarshal(body, &spec); err != nil {
+		http.Error(w, `{"error":"invalid json"}`, 400)
+		return
+	}
+
+	os.MkdirAll(videoDir, 0755)
+	videoID := fmt.Sprintf("v_%d.mp4", time.Now().UnixNano())
+	videoPath := filepath.Join(videoDir, videoID)
+
+	// Try Remotion first, fall back to ffmpeg text animation
+	composition, _ := spec["composition"].(string)
+	duration, _ := spec["duration"].(float64)
+	if duration == 0 {
+		duration = 3
+	}
+	props, _ := spec["props"].(map[string]any)
+	text, _ := props["text"].(string)
+	if text == "" {
+		text = "Hello World"
+	}
+	bgColor, _ := props["bgColor"].(string)
+	if bgColor == "" {
+		bgColor = "#1a1a2e"
+	}
+	textColor, _ := props["textColor"].(string)
+	if textColor == "" {
+		textColor = "#ffffff"
+	}
+
+	// Try Remotion render first
+	remotionDir := os.ExpandEnv("$HOME/src/financecheque-video/tools/render-video")
+	if _, err := os.Stat(remotionDir); err == nil {
+		specJSON, _ := json.Marshal(spec)
+		cmd := exec.Command("npx", "remotion", "render", "src/Root.tsx", composition,
+			"--props", string(specJSON),
+			"--output", videoPath)
+		cmd.Dir = remotionDir
+		cmd.Env = append(os.Environ(), "PATH=/usr/local/bin:/usr/bin:/bin:"+os.ExpandEnv("$HOME/.npm-global/bin"))
+		if output, err := cmd.CombinedOutput(); err == nil {
+			log.Printf("remotion render ok: %s", videoPath)
+			videoURL := fmt.Sprintf("/api/video/%s", videoID)
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(map[string]any{"videoUrl": videoURL, "videoID": videoID})
+			return
+		} else {
+			log.Printf("remotion render failed: %s", string(output))
+		}
+	}
+
+	// Fallback: ffmpeg text animation
+	fontSize := 48
+	if int(duration) > 0 {
+		fontSize = int(64 - duration*2)
+		if fontSize < 24 {
+			fontSize = 24
+		}
+	}
+
+	args := []string{
+		"-y", "-f", "lavfi",
+		"-i", fmt.Sprintf("color=c=%s:s=640x360:d=%.1f:r=30", bgColor, duration),
+		"-vf", fmt.Sprintf("drawtext=text='%s':fontcolor=%s:fontsize=%d:x=(w-text_w)/2:y=(h-text_h)/2:fontfile=/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf",
+			strings.ReplaceAll(text, "'", "\\'"), textColor, fontSize),
+		"-c:v", "libx264", "-pix_fmt", "yuv420p",
+		videoPath,
+	}
+
+	cmd := exec.Command("ffmpeg", args...)
+	if output, err := cmd.CombinedOutput(); err != nil {
+		log.Printf("ffmpeg render failed: %s", string(output))
+		http.Error(w, `{"error":"render failed"}`, 500)
+		return
+	}
+
+	log.Printf("ffmpeg render ok: %s", videoPath)
+	videoURL := fmt.Sprintf("/api/video/%s", videoID)
+	w.Header().Set("Content-Type", "application/json")
+	json.NewEncoder(w).Encode(map[string]any{"videoUrl": videoURL, "videoID": videoID})
+}
+
+func videoServeHandler(w http.ResponseWriter, r *http.Request) {
+	videoID := strings.TrimPrefix(r.URL.Path, "/api/video/")
+	videoID = strings.TrimPrefix(videoID, "/")
+	if videoID == "" || strings.Contains(videoID, "/") {
+		http.NotFound(w, r)
+		return
+	}
+
+	videoPath := filepath.Join(videoDir, videoID)
+	if _, err := os.Stat(videoPath); os.IsNotExist(err) {
+		http.NotFound(w, r)
+		return
+	}
+
+	w.Header().Set("Content-Type", "video/mp4")
+	http.ServeFile(w, r, videoPath)
+}
+
 func guiHandler(w http.ResponseWriter, r *http.Request) {
 	path := r.URL.Path
 	if path == "/" || path == "" {
@@ -550,11 +838,14 @@ func main() {
 	proxyMux := http.NewServeMux()
 	proxyMux.HandleFunc("/health", healthHandler)
 	proxyMux.HandleFunc("/v1/chat/completions", chatHandler)
+	proxyMux.HandleFunc("/api/video/render", videoRenderHandler)
+	proxyMux.HandleFunc("/api/video/", videoServeHandler)
 	proxySrv := &http.Server{Addr: "0.0.0.0:" + proxyPort, Handler: proxyMux}
 
 	// GUI server (port 3000) — serves embedded WebGUI + API
 	guiMux := http.NewServeMux()
 	guiMux.HandleFunc("/api/health", healthHandler)
+	guiMux.HandleFunc("/api/status", statusHandler)
 	guiMux.HandleFunc("/api/chat", chatHandler)
 	guiMux.HandleFunc("/", guiHandler)
 	guiSrv := &http.Server{Addr: "0.0.0.0:" + guiPort, Handler: guiMux}
