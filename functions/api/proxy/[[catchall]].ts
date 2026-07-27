@@ -543,6 +543,13 @@ async function handleSimpleChat(request: Request, env: Env, headers: Record<stri
 
   const reply = await tryParentLlm(message, env);
   if (reply) {
+    // Check for VIDEO: prefix in parent LLM response
+    if (reply.startsWith('VIDEO:')) {
+      const videoResult = await handleVideoInterception(reply, env);
+      if (videoResult) {
+        return new Response(JSON.stringify(videoResult), { status: 200, headers });
+      }
+    }
     return new Response(JSON.stringify({ ok: true, reply, _proxy: { routing: 'direct_llm' } }), { status: 200, headers });
   }
 
@@ -568,7 +575,7 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
       url: 'https://api.groq.com/openai/v1/chat/completions',
       getBody: (msg) => ({
         model: 'llama-3.3-70b-versatile',
-        messages: [{ role: 'system', content: 'You are a helpful AI assistant for Finance Cheque UK. Be concise.' }, { role: 'user', content: msg }],
+        messages: [{ role: 'system', content: 'You are a helpful AI assistant for Finance Cheque UK. Be concise. When the user asks to create, make, or generate a video, respond with a JSON object prefixed by "VIDEO: ". Format: VIDEO: {"composition":"TextAnimation","duration":3,"props":{"text":"<text>","bgColor":"#1a1a2e","textColor":"#ffffff","animation":"bounce"}}. Available: TextAnimation, Beach, Gradient. Duration: 1-10 seconds.' }, { role: 'user', content: msg }],
         max_tokens: 600,
       }),
       headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
