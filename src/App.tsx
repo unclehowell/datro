@@ -122,7 +122,12 @@ export default function App() {
   const [isWalletMenuOpen, setIsWalletMenuOpen] = useState(false);
   const [showContactModal, setShowContactModal] = useState(false);
   const [chatMessage, setChatMessage] = useState('');
-  const [chatHistory, setChatHistory] = useState<Array<{role: 'user'|'assistant', content: string, source?: string, breadcrumb?: string, videoUrl?: string}>>([]);
+  const [chatHistory, setChatHistory] = useState<Array<{role: 'user'|'assistant', content: string, source?: string, breadcrumb?: string, videoUrl?: string, audioUrl?: string}>>(() => {
+    try {
+      const saved = localStorage.getItem('fcuk_chat_history');
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
   const [chatSending, setChatSending] = useState(false);
   const [chatPipeline, setChatPipeline] = useState('');
   const chatMessagesRef = useRef<HTMLDivElement>(null);
@@ -175,6 +180,15 @@ export default function App() {
       chatMessagesRef.current.scrollTop = chatMessagesRef.current.scrollHeight;
     }
   }, [chatHistory, chatSending]);
+
+  // Persist chat history to localStorage
+  useEffect(() => {
+    try {
+      // Only save last 50 messages to avoid storage bloat
+      const toSave = chatHistory.slice(-50);
+      localStorage.setItem('fcuk_chat_history', JSON.stringify(toSave));
+    } catch {}
+  }, [chatHistory]);
 
   const [showWalletNotice, setShowWalletNotice] = useState(false);
   const [demoAgents, setDemoAgents] = useState<{id: number, isOpen: boolean, balance: number, hasInteracted: boolean, title: string, isSpawned: boolean, isAnswered: boolean}[]>([
@@ -1231,19 +1245,42 @@ node child-proxy.js`}</pre>
                   const userMsg = { role: 'user' as const, content: text };
                   setChatHistory(prev => [...prev, userMsg]);
                   try {
-                    const resp = await fetch('/api/proxy', {
+                    // Fire chat and TTS in parallel
+                    const chatPromise = fetch('/api/proxy', {
                       method: 'POST',
                       headers: { 'Content-Type': 'application/json' },
                       body: JSON.stringify({ message: text, chat_only: true, action: 'chat' }),
-                    });
-                    const data = await resp.json();
-                    const reply = data.reply || data.error || 'No response';
-                    const source = data._proxy?.routing || '';
-                    const breadcrumb = data._breadcrumb || data._proxy?.child_breadcrumb || '';
-                    const videoUrl = data.videoUrl || undefined;
-                    setChatHistory(prev => [...prev, { role: 'assistant', content: reply, source, breadcrumb, videoUrl }]);
+                    }).then(r => r.json());
+
+                    const chatData = await chatPromise;
+                    const reply = chatData.reply || chatData.error || 'No response';
+                    const source = chatData._proxy?.routing || '';
+                    const breadcrumb = chatData._breadcrumb || chatData._proxy?.child_breadcrumb || '';
+                    const videoUrl = chatData.videoUrl || undefined;
+
+                    // Start TTS immediately with the reply text
+                    let audioUrl: string | undefined;
+                    if (reply && !chatData.error) {
+                      try {
+                        const ttsResp = await fetch('/api/tts', {
+                          method: 'POST',
+                          headers: { 'Content-Type': 'application/json' },
+                          body: JSON.stringify({ text: reply, voice: 'am_michael' }),
+                        });
+                        const ttsData = await ttsResp.json();
+                        audioUrl = ttsData.audio;
+                      } catch {}
+                    }
+
+                    // Show text and play audio simultaneously
+                    setChatHistory(prev => [...prev, { role: 'assistant', content: reply, source, breadcrumb, videoUrl, audioUrl }]);
                     if (breadcrumb) setChatPipeline(breadcrumb);
-                    else if (data._proxy?.routing_decision) setChatPipeline(data._proxy.routing_decision);
+                    else if (chatData._proxy?.routing_decision) setChatPipeline(chatData._proxy.routing_decision);
+
+                    if (audioUrl) {
+                      const audio = new Audio(audioUrl);
+                      audio.play().catch(() => {});
+                    }
                   } catch {
                     setChatHistory(prev => [...prev, { role: 'assistant', content: 'Unable to reach parent proxy.' }]);
                   } finally {

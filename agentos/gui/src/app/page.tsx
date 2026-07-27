@@ -7,6 +7,7 @@ interface SystemStatus {
   omniroute: { status: string; providers: Array<{ id: string; name: string; ok: boolean }> };
   hermes: { online: boolean; currentTask: string | null; uptime: number; memoryUsed: string; activeSessions: number };
   models: string[];
+  kokoro: { online: boolean; model: string; voice: string };
   timestamp: string;
 }
 
@@ -82,6 +83,14 @@ export default function Dashboard() {
             details={[
               { label: "Available", value: String(status?.models?.length ?? 0) },
               { label: "Primary", value: status?.models?.[0] || "none" },
+            ]}
+          />
+          <StatusCard
+            title="Kokoro TTS"
+            status={status?.kokoro?.online ? "online" : "offline"}
+            details={[
+              { label: "Engine", value: status?.kokoro?.model || "none" },
+              { label: "Voice", value: status?.kokoro?.voice || "none" },
             ]}
           />
         </div>

@@ -153,6 +153,9 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === '/api/tts' && method === 'POST') {
       return await handleTTS(request, env, headers);
     }
+    if (path.startsWith('/api/video/') && method === 'GET') {
+      return await handleVideoProxy(request, env, headers, path);
+    }
 
     // ── Agent Delegation Endpoints ──────────────────────────────────────
     if (path === '/api/agent/delegate' && method === 'POST') {
@@ -487,13 +490,13 @@ async function handleVideoInterception(videoContent: string, env: Env): Promise<
           const result = await resp.json() as any;
           const videoUrl = result.videoUrl;
           if (videoUrl) {
-            // Prepend child proxy base URL if relative
-            const fullUrl = videoUrl.startsWith('http') ? videoUrl
-              : `http://${node.ip_address}:${node.proxy_port || 6000}${videoUrl}`;
+            // Route through parent proxy so browser can access
+            const filename = videoUrl.split('/').pop() || videoUrl.replace(/^.*\//, '');
+            const proxyUrl = `/api/video/${node.machine_id}/${filename}`;
             return {
               ok: true,
               reply: 'Video rendered successfully.',
-              videoUrl: fullUrl,
+              videoUrl: proxyUrl,
               _breadcrumb: `🌐 ${PARENT_NAME} > 🖥️ ${node.machine_name || 'child'} > 📹 video render`,
               _source: 'video:local',
               _proxy: { routed: true, routing: 'child_proxy' }
@@ -557,6 +560,37 @@ async function handleTTS(request: Request, env: Env, headers: Record<string, str
   } catch (e) {}
 
   return new Response(JSON.stringify({ error: 'TTS failed' }), { status: 502, headers });
+}
+
+async function handleVideoProxy(request: Request, env: Env, headers: Record<string, string>, path: string): Promise<Response> {
+  // /api/video/{machine_id}/{filename}
+  const parts = path.replace('/api/video/', '').split('/');
+  if (parts.length < 2) {
+    return new Response(JSON.stringify({ error: 'Invalid video path' }), { status: 400, headers });
+  }
+  const machineId = parts[0];
+  const filename = parts.slice(1).join('/');
+
+  const node = await env.DB.prepare(
+    `SELECT machine_id, ip_address, proxy_port, url FROM proxy_nodes WHERE machine_id = ?`
+  ).bind(machineId).first() as any;
+
+  if (!node) {
+    return new Response(JSON.stringify({ error: 'Node not found' }), { status: 404, headers });
+  }
+
+  const childUrl = `${node.url || `http://${node.ip_address}:${node.proxy_port || 6000}`}/api/video/${filename}`;
+  try {
+    const resp = await fetch(childUrl, { signal: AbortSignal.timeout(15000) });
+    if (resp.ok) {
+      const contentType = resp.headers.get('Content-Type') || 'video/mp4';
+      return new Response(resp.body, {
+        status: 200,
+        headers: { 'Content-Type': contentType, 'Cache-Control': 'public, max-age=3600' },
+      });
+    }
+  } catch {}
+  return new Response('Video not found', { status: 404 });
 }
 
 async function handleSimpleChat(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {

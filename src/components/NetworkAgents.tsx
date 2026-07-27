@@ -333,14 +333,35 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
               initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.95, opacity: 0 }}
+              id="iframeModal"
               className="w-full max-w-4xl h-[80vh] bg-white border border-border rounded-sm shadow-2xl overflow-hidden flex flex-col"
               onClick={e => e.stopPropagation()}
             >
               <div className="flex items-center justify-between p-3 bg-[#0d1117] border-b border-[#30363d]">
                 <span className="text-[10px] text-ink/40 font-mono truncate">{iframeUrl}</span>
-                <button type="button" onClick={() => setIframeUrl('')} className="text-ink/20 hover:text-ink transition-colors flex-shrink-0">
-                  <X size={18} />
-                </button>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={() => {
+                      const modal = document.getElementById('iframeModal');
+                      if (!modal) return;
+                      if (modal.classList.contains('max-w-4xl')) {
+                        modal.classList.remove('max-w-4xl', 'h-[80vh]', 'm-4', 'sm:m-8');
+                        modal.classList.add('max-w-full', 'h-full', 'm-0', 'rounded-none');
+                      } else {
+                        modal.classList.remove('max-w-full', 'h-full', 'm-0', 'rounded-none');
+                        modal.classList.add('max-w-4xl', 'h-[80vh]', 'm-4', 'sm:m-8');
+                      }
+                    }}
+                    className="text-ink/40 hover:text-ink transition-colors flex-shrink-0 p-1"
+                    title="Toggle fullscreen"
+                  >
+                    <Maximize2 size={16} />
+                  </button>
+                  <button type="button" onClick={() => setIframeUrl('')} className="text-ink/20 hover:text-ink transition-colors flex-shrink-0">
+                    <X size={18} />
+                  </button>
+                </div>
               </div>
               <iframe src={iframeUrl} className="flex-1 w-full border-0" title="Agent UI" sandbox="allow-scripts allow-same-origin allow-forms allow-popups" />
             </motion.div>
