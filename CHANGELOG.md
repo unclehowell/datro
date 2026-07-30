@@ -1,8 +1,14 @@
-## [0.5.1.83] - 2026-07-29
+## [0.5.1.84] - 2026-07-30
+
+### Added
+- Chat conversation history sidebar: left slide-out panel with past conversations, auto-save, new session on page refresh
 
 ### Fixed
-- Agent discovery iframe URL changed from `ui.financecheque.uk` to `www.financecheque.uk/ui/` to fix blank iframe (Guacamole service at ai.financecheque.uk unreachable)
-- Lead Value (£ per lead) changed from user input to auto-generated random value [20-45] after URL entry
+- Lead Value starts blank (—) until a URL is entered, then auto-assigns random £20-45
+- Agent network iframe URL changed from absolute `https://www.financecheque.uk/ui/` to relative `/ui/` fixing cross-origin modal issues
+- Wallet balances relabelled from "FCUK" to "credits" next to Generate Leads & Agent Network headings
+
+## [0.5.1.83] - 2026-07-29
 
 ## [0.5.1.81] - 2026-07-27
 

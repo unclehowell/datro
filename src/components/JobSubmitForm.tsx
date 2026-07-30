@@ -18,12 +18,12 @@ function randomLeadValue(): number {
 
 export default function JobSubmitForm({ user, credits, onSubmit, onAuthRequired, onTopup }: JobSubmitFormProps) {
   const [url, setUrl] = useState('');
-  const [leadAmount, setLeadAmount] = useState(randomLeadValue());
+  const [leadAmount, setLeadAmount] = useState<number | null>(null);
   const [quantity, setQuantity] = useState(10);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
-  const creditCost = Math.ceil(leadAmount * quantity * CREDIT_RATE);
+  const creditCost = leadAmount ? Math.ceil(leadAmount * quantity * CREDIT_RATE) : 0;
   const hasEnoughCredits = credits >= creditCost;
 
   const handleUrlChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -38,6 +38,7 @@ export default function JobSubmitForm({ user, credits, onSubmit, onAuthRequired,
     e.preventDefault();
     if (!user) { onAuthRequired(); return; }
     if (!hasEnoughCredits) return;
+    if (leadAmount === null) return;
 
     setIsSubmitting(true);
     try {
@@ -110,7 +111,11 @@ export default function JobSubmitForm({ user, credits, onSubmit, onAuthRequired,
           <PoundSterling size={12} /> Lead Value (£ per lead)
         </label>
         <div className="bg-card border border-border p-4">
-          <div className="text-3xl font-bold text-accent">£{leadAmount}</div>
+          {leadAmount !== null ? (
+            <div className="text-3xl font-bold text-accent">£{leadAmount}</div>
+          ) : (
+            <div className="text-3xl font-bold text-ink/20">—</div>
+          )}
           <div className="text-[10px] text-ink/40 mt-1">Auto-calculated after URL entry</div>
         </div>
       </div>
@@ -149,7 +154,7 @@ export default function JobSubmitForm({ user, credits, onSubmit, onAuthRequired,
         <div className="p-4 border border-border bg-card">
           <div className="text-[10px] font-bold uppercase tracking-widest text-ink/40">Order Total</div>
           <div className="text-2xl font-bold mt-1">{creditCost}</div>
-          <div className="text-[10px] text-ink/30">{quantity} leads × £{leadAmount}/lead</div>
+          <div className="text-[10px] text-ink/30">{quantity} leads × £{leadAmount !== null ? leadAmount : '—'}/lead</div>
         </div>
       </div>
 

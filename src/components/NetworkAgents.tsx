@@ -130,7 +130,7 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
           whileTap={{ scale: 0.95 }}
           onClick={() => {
             if (isPlaceholder) { setShowInstall(true); return; }
-            setIframeUrl(`https://www.financecheque.uk/ui/?agent=${node?.machine_id || ''}&name=${encodeURIComponent(node?.machine_name || 'Agent')}`);
+            setIframeUrl(`/ui/?agent=${node?.machine_id || ''}&name=${encodeURIComponent(node?.machine_name || 'Agent')}`);
           }}
           className={`w-20 h-20 sm:w-24 sm:h-24 rounded-full flex items-center justify-center shadow-xl transition-all ${
             isPlaceholder
@@ -203,7 +203,7 @@ export default function NetworkAgents({ onChatOpen, onExchange, onSpawn }: Props
           <button
             onClick={() => {
               if (isPlaceholder) return;
-            setIframeUrl(`https://www.financecheque.uk/ui/?agent=${node?.machine_id || ''}&name=${encodeURIComponent(node?.machine_name || 'Agent')}`);
+            setIframeUrl(`/ui/?agent=${node?.machine_id || ''}&name=${encodeURIComponent(node?.machine_name || 'Agent')}`);
             }}
             disabled={isPlaceholder}
             className={`flex items-center justify-center gap-1.5 py-2 rounded text-[9px] font-bold uppercase tracking-widest transition-all ${
