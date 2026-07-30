@@ -1,3 +1,9 @@
+## [0.5.1.83] - 2026-07-29
+
+### Fixed
+- Agent discovery iframe URL changed from `ui.financecheque.uk` to `www.financecheque.uk/ui/` to fix blank iframe (Guacamole service at ai.financecheque.uk unreachable)
+- Lead Value (£ per lead) changed from user input to auto-generated random value [20-45] after URL entry
+
 ## [0.5.1.81] - 2026-07-27
 
 ## [0.5.1.77] - 2026-07-27

@@ -12,23 +12,13 @@ interface JobSubmitFormProps {
   onTopup: () => void;
 }
 
-function estimateLeadValue(url: string): number {
-  if (!url) return 50;
-  try {
-    const hostname = new URL(url.startsWith('http') ? url : `https://${url}`).hostname;
-    const s = hostname.toLowerCase();
-    if (s.includes('shop') || s.includes('store') || s.includes('market')) return 200;
-    if (s.includes('blog') || s.includes('news')) return 25;
-    if (s.includes('.co.uk') || s.includes('.com')) return 100;
-    return 75;
-  } catch {
-    return 50;
-  }
+function randomLeadValue(): number {
+  return Math.floor(Math.random() * 26) + 20;
 }
 
 export default function JobSubmitForm({ user, credits, onSubmit, onAuthRequired, onTopup }: JobSubmitFormProps) {
   const [url, setUrl] = useState('');
-  const [leadAmount, setLeadAmount] = useState(50);
+  const [leadAmount, setLeadAmount] = useState(randomLeadValue());
   const [quantity, setQuantity] = useState(10);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -40,7 +30,7 @@ export default function JobSubmitForm({ user, credits, onSubmit, onAuthRequired,
     const val = e.target.value;
     setUrl(val);
     if (val.length > 3) {
-      setLeadAmount(estimateLeadValue(val));
+      setLeadAmount(randomLeadValue());
     }
   };
 
@@ -119,26 +109,9 @@ export default function JobSubmitForm({ user, credits, onSubmit, onAuthRequired,
         <label className="text-[10px] font-bold uppercase tracking-widest text-ink/40 flex items-center gap-2">
           <PoundSterling size={12} /> Lead Value (£ per lead)
         </label>
-        <div className="flex items-center gap-4">
-          <div className="relative flex-1">
-            <span className="absolute left-4 top-1/2 -translate-y-1/2 text-ink/40 font-bold">£</span>
-            <input
-              type="number"
-              min={1}
-              max={10000}
-              value={leadAmount}
-              onChange={e => setLeadAmount(Number(e.target.value))}
-              className="w-full bg-card border border-border pl-8 pr-4 py-4 focus:outline-none focus:border-accent transition-all font-bold text-sm"
-            />
-          </div>
-          <input
-            type="range"
-            min={1}
-            max={500}
-            value={leadAmount}
-            onChange={e => setLeadAmount(Number(e.target.value))}
-            className="flex-1 accent-accent"
-          />
+        <div className="bg-card border border-border p-4">
+          <div className="text-3xl font-bold text-accent">£{leadAmount}</div>
+          <div className="text-[10px] text-ink/40 mt-1">Auto-calculated after URL entry</div>
         </div>
       </div>
 
@@ -176,7 +149,7 @@ export default function JobSubmitForm({ user, credits, onSubmit, onAuthRequired,
         <div className="p-4 border border-border bg-card">
           <div className="text-[10px] font-bold uppercase tracking-widest text-ink/40">Order Total</div>
           <div className="text-2xl font-bold mt-1">{creditCost}</div>
-          <div className="text-[10px] text-ink/30">{quantity} leads × £{leadAmount}</div>
+          <div className="text-[10px] text-ink/30">{quantity} leads × £{leadAmount}/lead</div>
         </div>
       </div>
 
