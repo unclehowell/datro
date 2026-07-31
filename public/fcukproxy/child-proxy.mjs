@@ -33,6 +33,7 @@ const CHILD_ID = process.env.CHILD_ID || process.env.MACHINE_ID || `child-${os.h
 const PORT = Number(process.env.PORT) || 4001;
 const MACHINE_NAME = process.env.MACHINE_NAME || os.hostname();
 const AGENT_ROLE = process.env.AGENT_ROLE || 'chat';
+const EXECUTOR_URL = process.env.AGENT_PORT ? `http://localhost:${process.env.AGENT_PORT}` : 'http://localhost:6000';
 const VERSION = '0.7.0';
 
 let activeJobs = 0;
@@ -249,7 +250,7 @@ const server = http.createServer(async (req, res) => {
     for await (const chunk of req) bodyStr += chunk;
     try {
       const body = JSON.parse(bodyStr);
-      const deepagentResp = await fetch('http://localhost:6000/v1/agent/execute', {
+      const deepagentResp = await fetch(`${EXECUTOR_URL}/v1/agent/execute`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: bodyStr,

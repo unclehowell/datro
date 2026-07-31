@@ -23,7 +23,7 @@ set -euo pipefail
 # Features: Child proxy agent, local LLM (MiniCPM), WebGUI, boot persistence
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="0.6.1"
+VERSION="0.6.2"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -33,7 +33,8 @@ GITHUB_RELEASES="https://github.com/$REPO/releases/download"
 MODE="${MODE:-auto}"                     # auto | lite | full
 PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 CHILD_ID="${CHILD_ID:-}"
-PROXY_PORT="${PROXY_PORT:-6000}"
+PROXY_PORT="${PROXY_PORT:-4001}"         # child-proxy.mjs direct-mode port (registers with parent)
+AGENT_PORT="${AGENT_PORT:-6000}"         # agent.py executor port (child-proxy forwards /v1/agent/delegate here)
 GUI_PORT="${GUI_PORT:-3000}"
 LLAMA_PORT="${LLAMA_PORT:-8090}"
 INSTALL_DIR="${INSTALL_DIR:-}"
@@ -41,6 +42,10 @@ GROQ_API_KEY="${GROQ_API_KEY:-}"
 ADB_MODE="${ADB_MODE:-0}"
 DRY_RUN="${DRY_RUN:-0}"
 INSTANCES="${INSTANCES:-1}"              # Number of child proxy instances to run
+SELF_URL="${SELF_URL:-}"                 # Public URL the parent uses to reach this child (else cloudflared, else polling)
+TUNNEL_ID="${TUNNEL_ID:-}"               # Existing cloudflared tunnel ID (optional; else try to create one)
+TUNNEL_HOSTNAME="${TUNNEL_HOSTNAME:-}"   # e.g. child-proxy.financecheque.uk (default: child-proxy.<PARENT host>)
+CLOUDFLARED_URL="${CLOUDFLARED_URL:-https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64}"
 
 # ── Colors ───────────────────────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'
@@ -63,6 +68,9 @@ while [[ $# -gt 0 ]]; do
     --port)       PROXY_PORT="$2"; shift 2 ;;
     --groq-key)   GROQ_API_KEY="$2"; shift 2 ;;
     --instances)  INSTANCES="$2"; shift 2 ;;
+    --self-url)   SELF_URL="$2"; shift 2 ;;
+    --tunnel-id)  TUNNEL_ID="$2"; shift 2 ;;
+    --tunnel-hostname) TUNNEL_HOSTNAME="$2"; shift 2 ;;
     *)            shift ;;
   esac
 done
@@ -440,38 +448,62 @@ install_laptop() {
   step 1 "System dependencies"
   install_deps "$platform"
 
-  step 2 "Child proxy agent"
+  step 2 "Child proxy stack"
   install_agent
 
   step 3 "Configuration"
   write_config
 
+  step 4 "Reachability (SELF_URL or cloudflared tunnel)"
+  install_tunnel
+
   LLM_SERVER=""
   if [[ "$MODE" == "full" ]]; then
-    step 4 "Local LLM (llama-server + MiniCPM)"
+    step 5 "Local LLM (llama-server + MiniCPM)"
     LLM_SERVER=$(install_llm "$platform")
   fi
 
-  step 5 "Starting services"
+  step 6 "Starting services"
   start_services "$LLM_SERVER"
 
-  step 6 "Service persistence"
+  step 7 "Service persistence"
   install_service || install_pm2 || warn "No service manager found — agent runs in background only"
 
-  step 7 "Verification"
+  step 8 "Verification"
   verify_and_register
 
   print_laptop_summary
 }
 
-# ── Download child proxy agent ───────────────────────────────────────────────
+# ── Download child proxy stack (child-proxy.mjs + agent.py executor) ─────────
 install_agent() {
   mkdir -p "$INSTALL_DIR"
-  info "Downloading child proxy agent..."
+  info "Downloading child proxy stack..."
+  curl -sL "$RAW_BASE/public/fcukproxy/child-proxy.mjs" -o "$INSTALL_DIR/child-proxy.mjs"
   curl -sL "$RAW_BASE/public/fcukproxy/agent.py" -o "$INSTALL_DIR/agent.py"
+  curl -sL "$RAW_BASE/public/fcukproxy/agent-exec.sh" -o "$INSTALL_DIR/agent-exec.sh"
+  curl -sL "$RAW_BASE/public/fcukproxy/deepagent-service.py" -o "$INSTALL_DIR/deepagent-service.py"
+  chmod +x "$INSTALL_DIR/agent-exec.sh" "$INSTALL_DIR/deepagent-service.py" 2>/dev/null || true
+
   info "Installing Python dependencies..."
   python3 -m pip install --quiet --user aiohttp 2>/dev/null || \
     python3 -m pip install --quiet aiohttp 2>/dev/null || true
+
+  # Launcher for child-proxy.mjs (mirrors ~/.fcukproxy/run-proxy.sh)
+  cat > "$INSTALL_DIR/run-proxy.sh" << RUNEOF
+#!/usr/bin/env bash
+export PORT="${PROXY_PORT}"
+export CHILD_ID="${CHILD_ID}"
+export MACHINE_NAME="\$(hostname)"
+export AGENT_ROLE="chat"
+export PARENT_URL="${PARENT_URL}"
+[[ -n "${SELF_URL:-}" ]] && export SELF_URL="${SELF_URL:-}"
+[[ -n "${NGROK_URL:-}" ]] && export NGROK_URL="${NGROK_URL:-}"
+cd "$INSTALL_DIR"
+exec node "$INSTALL_DIR/child-proxy.mjs"
+RUNEOF
+  chmod +x "$INSTALL_DIR/run-proxy.sh"
+  ok "child-proxy.mjs, agent.py, agent-exec.sh, deepagent-service.py, run-proxy.sh ready"
 }
 
 # ── Install llama-server + MiniCPM (full mode only) ──────────────────────────
@@ -535,9 +567,12 @@ write_config() {
   "machine_id": "$CHILD_ID",
   "machine_name": "$CHILD_ID",
   "proxy_port": $PROXY_PORT,
+  "agent_port": $AGENT_PORT,
   "parent": "$PARENT_URL",
   "version": "$VERSION",
-  "mode": "$MODE"
+  "mode": "$MODE",
+  "role": "chat",
+  "url": "${SELF_URL:-}"
 }
 JSONEOF
 
@@ -557,6 +592,9 @@ PARENT_URL=$PARENT_URL
 CHILD_ID=$CHILD_ID
 MACHINE_ID=$CHILD_ID
 PROXY_PORT=$PROXY_PORT
+AGENT_PORT=$AGENT_PORT
+ROLE=chat
+SELF_URL=$SELF_URL
 ENVEOF
     info "Created $INSTALL_DIR/.env"
   fi
@@ -565,7 +603,8 @@ ENVEOF
 # ── Start services ───────────────────────────────────────────────────────────
 start_services() {
   local llm_server="${1:-}"
-  pkill -f "python.*agent.py.*$PROXY_PORT" 2>/dev/null || true
+  pkill -f "node.*child-proxy.mjs" 2>/dev/null || true
+  pkill -f "python.*agent.py.*" 2>/dev/null || true
 
   if [[ "$MODE" == "full" && -n "$llm_server" ]]; then
     pkill -f "llama-server.*$LLAMA_PORT" 2>/dev/null || true
@@ -582,9 +621,10 @@ start_services() {
 
   sleep 1
 
-  # Start multiple child proxy instances
+  # Start multiple child proxy instances (child-proxy.mjs + agent.py executor)
   for ((i=1; i<=INSTANCES; i++)); do
     local instance_port=$((PROXY_PORT + i - 1))
+    local instance_agent_port=$((AGENT_PORT + i - 1))
     local instance_id="${CHILD_ID}"
     local instance_dir="$INSTALL_DIR"
 
@@ -592,28 +632,48 @@ start_services() {
       instance_id="${CHILD_ID}-$i"
       instance_dir="$INSTALL_DIR/instance-$i"
       mkdir -p "$instance_dir"
-      # Copy agent.py to instance directory
       cp "$INSTALL_DIR/agent.py" "$instance_dir/agent.py" 2>/dev/null || true
-      # Copy .env
+      cp "$INSTALL_DIR/agent-exec.sh" "$instance_dir/agent-exec.sh" 2>/dev/null || true
       cp "$INSTALL_DIR/.env" "$instance_dir/.env" 2>/dev/null || true
-      # Write instance-specific config
+      cat > "$instance_dir/run-proxy.sh" << RUNEOF
+#!/usr/bin/env bash
+export PORT="${instance_port}"
+export AGENT_PORT="${instance_agent_port}"
+export CHILD_ID="${instance_id}"
+export MACHINE_NAME="\$(hostname)"
+export AGENT_ROLE="chat"
+export PARENT_URL="${PARENT_URL}"
+[[ -n "${SELF_URL:-}" ]] && export SELF_URL="${SELF_URL:-}"
+cd "$instance_dir"
+exec node "$instance_dir/child-proxy.mjs"
+RUNEOF
+      chmod +x "$instance_dir/run-proxy.sh"
       cat > "$instance_dir/machine.json" << JSONEOF
 {
   "machine_id": "$instance_id",
   "machine_name": "$instance_id",
   "proxy_port": $instance_port,
+  "agent_port": $instance_agent_port,
   "parent": "$PARENT_URL",
   "version": "$VERSION",
-  "mode": "$MODE"
+  "mode": "$MODE",
+  "role": "chat",
+  "url": "${SELF_URL:-}"
 }
 JSONEOF
     fi
 
     info "Starting child proxy instance $i on port $instance_port (id: $instance_id)..."
-    nohup python3 "$instance_dir/agent.py" --port "$instance_port" \
+    PORT="$instance_agent_port" \
+    nohup python3 "$instance_dir/agent.py" \
       > "$instance_dir/agent.log" 2>&1 &
     echo $! > "$instance_dir/agent.pid"
-    ok "Instance $i PID: $! (port $instance_port)"
+    ok "Instance $i agent.py PID: $! (port $instance_agent_port)"
+
+    nohup bash "$instance_dir/run-proxy.sh" \
+      > "$instance_dir/child-proxy.log" 2>&1 &
+    echo $! > "$instance_dir/child-proxy.pid"
+    ok "Instance $i child-proxy PID: $! (port $instance_port)"
   done
 }
 
@@ -626,18 +686,18 @@ install_service() {
   local service_dir="$HOME/.config/systemd/user"
   mkdir -p "$service_dir"
 
-  cat > "$service_dir/fcuk-proxy.service" << SVCEOF
+  # child-proxy.mjs (direct mode, registers with parent)
+  cat > "$service_dir/fcuk-child-proxy.service" << SVCEOF
 [Unit]
-Description=FinanceCheque Child Proxy
+Description=FinanceCheque Child Proxy (child-proxy.mjs)
 After=network-online.target
 Wants=network-online.target
 
 [Service]
 Type=simple
-WorkingDirectory=$INSTALL_DIR
-ExecStart=$(command -v python3) $INSTALL_DIR/agent.py --port $PROXY_PORT
-Restart=on-failure
-RestartSec=10
+ExecStart=$INSTALL_DIR/run-proxy.sh
+Restart=always
+RestartSec=5
 Environment=HOME=$HOME
 Environment=PATH=$HOME/.local/bin:$HOME/.npm-global/bin:/usr/local/bin:/usr/bin:/bin
 EnvironmentFile=$INSTALL_DIR/.env
@@ -646,20 +706,162 @@ EnvironmentFile=$INSTALL_DIR/.env
 WantedBy=default.target
 SVCEOF
 
+  # agent.py executor (child-proxy forwards /v1/agent/delegate here)
+  cat > "$service_dir/fcuk-agent.service" << AGEOF
+[Unit]
+Description=FCUK Agent Proxy — executor + polling + parent proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=$(command -v python3) $INSTALL_DIR/agent.py
+Restart=always
+RestartSec=3
+Environment=PORT=$AGENT_PORT
+Environment=PATH=$HOME/.local/bin:$HOME/.npm-global/bin:/usr/local/bin:/usr/bin:/bin
+EnvironmentFile=$INSTALL_DIR/.env
+
+[Install]
+WantedBy=default.target
+AGEOF
+
+  # cloudflared tunnel (only if a tunnel was set up)
+  if [[ -n "$TUNNEL_ID" ]] && [[ -z "$SELF_URL" ]]; then
+    cat > "$service_dir/cloudflared-child-proxy.service" << TUNEOF
+[Unit]
+Description=Cloudflare Tunnel for fcuk-child-proxy
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/cloudflared tunnel run $TUNNEL_ID
+Restart=always
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+TUNEOF
+  fi
+
+  # heartbeat timer
+  cat > "$service_dir/fcukproxy-heartbeat.service" << HBEOF
+[Unit]
+Description=FCUK Proxy Heartbeat
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/curl -s -m 5 -X POST $PARENT_URL/api/proxy?action=heartbeat -H 'Content-Type: application/json' -d '{"machine_id":"$CHILD_ID","machine_name":"$CHILD_ID"}'
+HBEOF
+
+  cat > "$service_dir/fcukproxy-heartbeat.timer" << HTEOF
+[Unit]
+Description=FCUK Proxy Heartbeat Timer
+
+[Timer]
+OnBootSec=30sec
+OnUnitActiveSec=60sec
+
+[Install]
+WantedBy=timers.target
+HTEOF
+
   systemctl --user daemon-reload 2>/dev/null || true
-  systemctl --user enable fcuk-proxy 2>/dev/null || true
-  systemctl --user start fcuk-proxy 2>/dev/null || true
-  ok "systemd service installed and started"
+  systemctl --user enable --now fcuk-child-proxy 2>/dev/null || true
+  systemctl --user enable --now fcuk-agent 2>/dev/null || true
+  if [[ -n "$TUNNEL_ID" ]] && [[ -z "$SELF_URL" ]]; then
+    systemctl --user enable --now cloudflared-child-proxy 2>/dev/null || true
+  fi
+  systemctl --user enable --now fcukproxy-heartbeat.timer 2>/dev/null || true
+  ok "systemd services installed and started"
 }
 
-# ── Create pm2 process ──────────────────────────────────────────────────────
+# ── Create pm2 processes (alternative to systemd) ───────────────────────────
 install_pm2() {
   if command -v pm2 &>/dev/null; then
-    pm2 delete fcuk-proxy 2>/dev/null || true
-    pm2 start "$INSTALL_DIR/agent.py" --name fcuk-proxy --interpreter python3 -- --port "$PROXY_PORT"
+    pm2 delete fcuk-child-proxy 2>/dev/null || true
+    pm2 delete fcuk-agent 2>/dev/null || true
+    pm2 start "$INSTALL_DIR/run-proxy.sh" --name fcuk-child-proxy --interpreter bash 2>/dev/null || true
+    PORT="$AGENT_PORT" pm2 start "$INSTALL_DIR/agent.py" --name fcuk-agent --interpreter python3 2>/dev/null || true
     pm2 save 2>/dev/null || true
-    ok "pm2 process started"
+    ok "pm2 processes started"
   fi
+}
+
+# ── Set up reachability: SELF_URL override, else cloudflared tunnel ─────────
+install_tunnel() {
+  if [[ -n "$SELF_URL" ]]; then
+    info "Using SELF_URL: $SELF_URL"
+    return 0
+  fi
+
+  if [[ -n "$NGROK_URL" ]]; then
+    info "Using NGROK_URL: $NGROK_URL"
+    SELF_URL="$NGROK_URL"
+    return 0
+  fi
+
+  if [[ "$PLATFORM" == termux-* || "$PLATFORM" == adb-* ]]; then
+    warn "No SELF_URL and no cloudflared on phone — child will use polling mode (parent queues tasks)."
+    return 0
+  fi
+
+  command -v cloudflared &>/dev/null || {
+    info "Installing cloudflared..."
+    local arch
+    case "$(uname -m)" in
+      x86_64|amd64) arch="amd64" ;;
+      aarch64|arm64) arch="arm64" ;;
+      *) warn "cloudflared not available for this arch — using polling mode"; return 0 ;;
+    esac
+    local url="https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-${arch}"
+    curl -sL "$url" -o /tmp/cloudflared && chmod +x /tmp/cloudflared
+    sudo mv /tmp/cloudflared /usr/local/bin/cloudflared 2>/dev/null || mv /tmp/cloudflared ~/.local/bin/cloudflared 2>/dev/null || true
+  }
+
+  if ! command -v cloudflared &>/dev/null; then
+    warn "cloudflared install failed — using polling mode."
+    return 0
+  fi
+
+  if [[ -z "$TUNNEL_ID" ]]; then
+    # Try to find an existing tunnel or create one (requires cloudflared login)
+    TUNNEL_ID=$(cloudflared tunnel list 2>/dev/null | grep -iE "child|proxy" | awk '{print $1}' | head -1)
+    if [[ -z "$TUNNEL_ID" ]]; then
+      info "Creating new cloudflared tunnel fcuk-child-proxy (requires login)..."
+      cloudflared tunnel login 2>/dev/null || {
+        warn "cloudflared login failed — using polling mode."
+        TUNNEL_ID=""
+        return 0
+      }
+      TUNNEL_ID=$(cloudflared tunnel create fcuk-child-proxy 2>/dev/null | grep -oE '[0-9a-f-]{36}' | head -1)
+    fi
+  fi
+
+  [[ -z "$TUNNEL_ID" ]] && { warn "No tunnel available — using polling mode."; return 0; }
+
+  local host="${TUNNEL_HOSTNAME:-child-proxy.${PARENT_URL#https://www.}}"
+  host="${host#https://}"
+  info "Configuring tunnel $TUNNEL_ID → $host → localhost:$PROXY_PORT"
+  cloudflared tunnel route dns "$TUNNEL_ID" "$host" 2>/dev/null || true
+
+  mkdir -p ~/.cloudflared
+  if [[ ! -f ~/.cloudflared/config.yml ]]; then
+    cat > ~/.cloudflared/config.yml << CFLEOF
+tunnel: $TUNNEL_ID
+credentials-file: /home/$USER/.cloudflared/$TUNNEL_ID.json
+no-autoupdate: true
+
+ingress:
+  - hostname: $host
+    service: http://localhost:$PROXY_PORT
+  - service: http_status:404
+CFLEOF
+  fi
+
+  SELF_URL="https://$host"
+  info "Tunnel ready — SELF_URL: $SELF_URL"
 }
 
 # ── Register with parent and verify ──────────────────────────────────────────
@@ -667,9 +869,15 @@ verify_and_register() {
   sleep 3
   info "Verifying child proxy..."
   if curl -sf "http://127.0.0.1:$PROXY_PORT/health" >/dev/null 2>&1; then
-    ok "Child proxy responding on port $PROXY_PORT"
+    ok "Child proxy (child-proxy.mjs) responding on port $PROXY_PORT"
   else
-    warn "Child proxy not responding yet — check: tail -f $INSTALL_DIR/agent.log"
+    warn "Child proxy not responding yet — check: tail -f $INSTALL_DIR/child-proxy.log"
+  fi
+
+  if curl -sf "http://127.0.0.1:$AGENT_PORT/health" >/dev/null 2>&1; then
+    ok "Agent executor (agent.py) responding on port $AGENT_PORT"
+  else
+    warn "Agent executor not responding yet — check: tail -f $INSTALL_DIR/agent.log"
   fi
 
   if [[ "$MODE" == "full" ]]; then
@@ -687,8 +895,11 @@ verify_and_register() {
   "machine_id": "$CHILD_ID",
   "machine_name": "$CHILD_ID",
   "proxy_port": $PROXY_PORT,
+  "agent_port": $AGENT_PORT,
+  "url": "${SELF_URL:-}",
   "version": "$VERSION",
-  "mode": "$MODE"
+  "mode": "$MODE",
+  "role": "chat"
 }
 JSONEOF
 )
@@ -697,7 +908,7 @@ JSONEOF
     -d "$payload" >/dev/null 2>&1; then
     ok "Registered with parent proxy"
   else
-    warn "Could not register with parent — agent will retry every 60s"
+    warn "Could not register with parent — child-proxy.mjs retries every 60s"
   fi
 }
 
@@ -717,7 +928,13 @@ print_laptop_summary() {
       echo -e "  ${CYAN}  Instance $i:${NC}    port $port (id: ${CHILD_ID}-$i)"
     done
   else
-    echo -e "  ${CYAN}Proxy port:${NC}    $PROXY_PORT"
+    echo -e "  ${CYAN}Proxy port:${NC}    $PROXY_PORT (child-proxy.mjs)"
+    echo -e "  ${CYAN}Agent port:${NC}    $AGENT_PORT (agent.py executor)"
+  fi
+  if [[ -n "$SELF_URL" ]]; then
+    echo -e "  ${CYAN}SELF_URL:${NC}      $SELF_URL"
+  else
+    echo -e "  ${CYAN}SELF_URL:${NC}      (none — polling mode, parent queues tasks)"
   fi
   if [[ "$MODE" == "full" ]]; then
     echo -e "  ${CYAN}LLM port:${NC}      $LLAMA_PORT"
@@ -727,11 +944,12 @@ print_laptop_summary() {
   echo ""
   echo -e "  ${YELLOW}Next steps:${NC}"
   echo "  1. Add API keys to $INSTALL_DIR/.env"
-  echo "  2. Restart: systemctl --user restart fcuk-proxy"
-  echo "  3. Verify: curl -s $PARENT_URL/api/proxy?action=health"
+  echo "  2. Restart: systemctl --user restart fcuk-child-proxy fcuk-agent"
+  echo "  3. Verify delegation: curl -s $PARENT_URL/api/agent/status"
   echo ""
   echo -e "  ${YELLOW}Scale:${NC} Run this script on other machines with same PARENT_URL"
   echo "  ${YELLOW}Multi-instance:${NC} Run with --instances N to spawn N proxies on one machine"
+  echo "  ${YELLOW}Tunnel:${NC} Set SELF_URL or use --tunnel-id to make the child directly reachable"
   echo ""
   echo -e "${BOLD}══════════════════════════════════════════════════════════════${NC}"
 }

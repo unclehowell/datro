@@ -27,7 +27,7 @@ log = logging.getLogger(__name__)
 INSTALL_DIR = Path.home() / ".fcukproxy"
 CONFIG_FILE = INSTALL_DIR / "machine.json"
 ENV_FILE = INSTALL_DIR / ".env"
-PROXY_PORT = 6000
+PROXY_PORT = int(os.environ.get("PORT", "6000"))
 MCAST_GRP = "239.255.255.250"
 MCAST_PORT = 6002
 PARENT_URLS = [
@@ -1107,6 +1107,56 @@ async def handle_execute(request: web.Request) -> web.Response:
     except Exception as e:
         return web.json_response({"error": str(e)}, status=500)
 
+async def handle_agent_execute(request: web.Request) -> web.Response:
+    """POST /v1/agent/execute — run a delegated task via agent-exec.sh (mirrors child-proxy.mjs poll path)."""
+    chat_only = request.headers.get("X-Chat-Only", "").lower() == "true"
+    if chat_only:
+        return web.json_response({
+            "error": "chat_only",
+            "message": "This machine is in chat-only mode. Command execution is blocked.",
+        }, status=403)
+    try:
+        body = await request.json()
+    except Exception:
+        return web.json_response({"error": "Invalid JSON"}, status=400)
+    task = body.get("task", "").strip()
+    if not task:
+        return web.json_response({"error": "task is required"}, status=400)
+    exec_sh = INSTALL_DIR / "agent-exec.sh"
+    if not exec_sh.exists():
+        return web.json_response({"error": "agent-exec.sh not installed"}, status=500)
+    timeout_sec = int(body.get("timeout_sec", 300))
+    payload = json.dumps(body)
+    try:
+        proc = await asyncio.create_subprocess_exec(
+            "bash", str(exec_sh),
+            stdin=asyncio.subprocess.PIPE,
+            stdout=asyncio.subprocess.PIPE,
+            stderr=asyncio.subprocess.PIPE,
+            cwd=str(Path.home()),
+        )
+        try:
+            stdout, stderr = await asyncio.wait_for(proc.communicate(payload.encode()), timeout=timeout_sec)
+        except asyncio.TimeoutError:
+            proc.kill()
+            await proc.wait()
+            return web.json_response({"error": f"Task timed out after {timeout_sec}s"}, status=408)
+        out = (stdout or b"").decode(errors="replace").strip()
+        err = (stderr or b"").decode(errors="replace").strip()
+        result = None
+        if out:
+            try:
+                result = json.loads(out)
+            except Exception:
+                result = out
+        if result is None and err:
+            result = err
+        if proc.returncode != 0 and result is None:
+            result = f"Task failed with exit code {proc.returncode}"
+        return web.json_response({"status": "completed", "result": result})
+    except Exception as e:
+        return web.json_response({"error": str(e)}, status=500)
+
 async def handle_env(request: web.Request) -> web.Response:
     return web.json_response({
         "has_keys": bool(ENV_KEYS),
@@ -1139,6 +1189,7 @@ async def handle_root(request: web.Request) -> web.Response:
             "env": "GET /env",
             "capabilities": "GET /v1/agent/capabilities",
             "execute": "POST /execute",
+            "agent_execute": "POST /v1/agent/execute",
         },
         "parent_proxies": PARENT_URLS,
     })
@@ -1149,6 +1200,7 @@ async def main():
     app.router.add_post("/v1/chat/completions", handle_chat)
     app.router.add_get("/v1/models", handle_models)
     app.router.add_post("/execute", handle_execute)
+    app.router.add_post("/v1/agent/execute", handle_agent_execute)
     app.router.add_get("/status", handle_status)
     app.router.add_get("/health", handle_health)
     app.router.add_get("/env", handle_env)
