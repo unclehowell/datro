@@ -1131,46 +1131,49 @@ node child-proxy.js`}</pre>
         </motion.button>
 
         {showLogoutWarning && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
-          >
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              className="w-full max-w-sm bg-paper border border-border p-10 space-y-8 shadow-2xl frame text-center my-8"
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
             >
-              <div className="flex flex-col items-center gap-4">
-                <div className="w-16 h-16 bg-red-500/10 text-red-500 flex items-center justify-center rounded-full">
-                  <Bell size={32} />
-                </div>
-                <h3 className="text-xl font-bold text-ink">Session Expiring</h3>
-                <p className="text-sm text-ink/60">You will be logged out in {timeLeft} seconds.</p>
-              </div>
-              <button 
-                onClick={() => setShowLogoutWarning(false)}
-                className="w-full bg-ink text-paper font-bold py-4 uppercase tracking-widest text-xs hover:bg-accent transition-all"
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="w-full max-w-sm bg-paper border border-border p-10 space-y-8 shadow-2xl frame text-center my-8"
               >
-                Continue Demo
-              </button>
+                <div className="flex flex-col items-center gap-4">
+                  <div className="w-16 h-16 bg-red-500/10 text-red-500 flex items-center justify-center rounded-full">
+                    <Bell size={32} />
+                  </div>
+                  <h3 className="text-xl font-bold text-ink">Session Expiring</h3>
+                  <p className="text-sm text-ink/60">You will be logged out in {timeLeft} seconds.</p>
+                </div>
+                <button
+                  onClick={() => setShowLogoutWarning(false)}
+                  className="w-full bg-ink text-paper font-bold py-4 uppercase tracking-widest text-xs hover:bg-accent transition-all"
+                >
+                  Continue Demo
+                </button>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          </AnimatePresence>
         )}
 
         {showPaymentModal && (
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
-          >
-            <motion.div 
-              initial={{ y: 20, opacity: 0 }}
-              animate={{ y: 0, opacity: 1 }}
-              className="w-full max-w-4xl bg-paper border border-border p-12 space-y-12 shadow-2xl frame my-8"
+          <AnimatePresence>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed top-[106px] left-0 right-0 bottom-0 z-[1000] flex items-start justify-center p-6 bg-black/80 backdrop-blur-md overflow-y-auto"
             >
+              <motion.div
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                className="w-full max-w-4xl bg-paper border border-border p-12 space-y-12 shadow-2xl frame my-8"
+              >
               <div className="flex items-center justify-between">
                 <div className="space-y-2">
                   <h3 className="text-3xl font-bold text-ink tracking-tighter">Select Package</h3>
