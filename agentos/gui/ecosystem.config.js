@@ -45,5 +45,17 @@ module.exports = {
       max_restarts: 3,
       restart_delay: 3000,
     },
+    {
+      name: "hermes-gateway",
+      script: "/home/unclehowell/bin/hermes-gateway.sh",
+      args: "gateway start",
+      cwd: "/home/unclehowell",
+      env: {
+        HOME: "/home/unclehowell",
+      },
+      max_restarts: 10,
+      restart_delay: 5000,
+      autorestart: true,
+    },
   ],
 };

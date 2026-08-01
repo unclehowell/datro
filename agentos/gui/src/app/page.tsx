@@ -7,7 +7,6 @@ interface SystemStatus {
   omniroute: { status: string; providers: Array<{ id: string; name: string; ok: boolean }> };
   hermes: { online: boolean; currentTask: string | null; uptime: number; memoryUsed: string; activeSessions: number };
   models: string[];
-  kokoro: { online: boolean; model: string; voice: string };
   timestamp: string;
 }
 
@@ -50,6 +49,7 @@ export default function Dashboard() {
         <nav className="flex items-center gap-4 text-sm">
           <Link href="/" className="text-accent font-medium">Dashboard</Link>
           <Link href="/chat" className="text-text-secondary hover:text-text-primary transition-colors">Chat</Link>
+          <Link href="/terminal" className="text-text-secondary hover:text-text-primary transition-colors">Terminal</Link>
           <Link href="/settings" className="text-text-secondary hover:text-text-primary transition-colors">Settings</Link>
         </nav>
       </header>
@@ -85,23 +85,17 @@ export default function Dashboard() {
               { label: "Primary", value: status?.models?.[0] || "none" },
             ]}
           />
-          <StatusCard
-            title="Kokoro TTS"
-            status={status?.kokoro?.online ? "online" : "offline"}
-            details={[
-              { label: "Engine", value: status?.kokoro?.model || "none" },
-              { label: "Voice", value: status?.kokoro?.voice || "none" },
-            ]}
-          />
         </div>
 
         <div className="mb-8">
           <h2 className="text-sm font-medium text-text-secondary mb-3">Quick Actions</h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <QuickAction href="/chat" label="Chat" desc="Talk to Hermes" icon="💬" />
+            <QuickAction href="/terminal" label="Terminal" desc="Shell + Keyboard" icon="⌨️" />
             <QuickAction href="http://localhost:9119" label="Hermes" desc="Dashboard" icon="🤖" external />
             <QuickAction href="http://localhost:20128" label="OmniRoute" desc="Providers" icon="🔀" external />
-            <QuickAction href="/settings" label="Settings" desc="Configure" icon="⚙️" />
+            <QuickAction href="/docs" label="Docs" desc="System documentation" icon="📖" />
+          <QuickAction href="/settings" label="Settings" desc="Configure" icon="⚙️" />
           </div>
         </div>
 

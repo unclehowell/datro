@@ -23,7 +23,7 @@ set -euo pipefail
 # Features: Child proxy agent, local LLM (MiniCPM), WebGUI, boot persistence
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="0.6.2"
+VERSION="0.6.3"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -133,18 +133,18 @@ install_deps() {
     linux-*)
       if command -v apt-get &>/dev/null; then
         sudo apt-get update -qq 2>/dev/null || true
-        sudo apt-get install -y -qq python3 python3-pip curl git 2>/dev/null || true
+        sudo apt-get install -y -qq python3 python3-pip curl git nodejs npm 2>/dev/null || true
       elif command -v yum &>/dev/null; then
-        sudo yum install -y python3 python3-pip curl git 2>/dev/null || true
+        sudo yum install -y python3 python3-pip curl git nodejs npm 2>/dev/null || true
       elif command -v dnf &>/dev/null; then
-        sudo dnf install -y python3 python3-pip curl git 2>/dev/null || true
+        sudo dnf install -y python3 python3-pip curl git nodejs npm 2>/dev/null || true
       elif command -v pacman &>/dev/null; then
-        sudo pacman -Sy --noconfirm python python-pip curl git 2>/dev/null || true
+        sudo pacman -Sy --noconfirm python python-pip curl git nodejs npm 2>/dev/null || true
       fi
       ;;
     macos-*)
       if command -v brew &>/dev/null; then
-        brew install python3 curl git 2>/dev/null || true
+        brew install python3 curl git node npm 2>/dev/null || true
       else
         err "Homebrew not found. Install: /bin/bash -c \"\$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)\""
         exit 1
