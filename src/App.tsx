@@ -1263,10 +1263,10 @@ node child-proxy.js`}</pre>
               </div>
             </motion.div>
           </motion.div>
+          </AnimatePresence>
         )}
-      </AnimatePresence>
 
-      {/* Full-screen Proxy Graph Modal */}
+        {/* Full-screen Proxy Graph Modal */}
       <AnimatePresence>
         {showGraph && (
           <motion.div
