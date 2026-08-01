@@ -1221,11 +1221,15 @@ async def main():
     await asyncio.gather(
         periodic_register(),
         periodic_refresh_env(),
-        poll_parent(),
+        poll_parent() if os.environ.get("AGENT_POLL_PARENT", "1") == "1" else noop(),
         bpdu_sender(),
         bpdu_listener(),
         peer_reaper(),
     )
+
+async def noop():
+    while True:
+        await asyncio.sleep(3600)
 
 if __name__ == "__main__":
     asyncio.run(main())

@@ -44,30 +44,38 @@ log "Starting agent execution: '$TASK'"
 log "Repo: $REPO_DIR | Branch: $BRANCH | Timeout: ${TIMEOUT}s"
 
 # Use a temp directory for each task to avoid conflicts with local working tree
-TMP_DIR=$(mktemp -d "${TMPDIR:-/tmp}/agent-exec.XXXXXX")
+# Prefer $TMPDIR; if unset or unwritable (e.g. Android sandbox), fall back to $HOME
+TMP_BASE="${TMPDIR:-/tmp}"
+if ! ( touch "$TMP_BASE/.agent-exec-test" 2>/dev/null && rm -f "$TMP_BASE/.agent-exec-test" ); then
+  TMP_BASE="${HOME:-.}/.fcukproxy-tmp"
+  mkdir -p "$TMP_BASE"
+fi
+TMP_DIR=$(mktemp -d "$TMP_BASE/agent-exec.XXXXXX")
 trap 'rm -rf "$TMP_DIR"' EXIT
 
 # Clone or copy the repo
 if [[ -d "$REPO_DIR/.git" ]]; then
   log "Copying repo to temp directory..."
-  git clone --no-hardlinks "$REPO_DIR" "$TMP_DIR/repo" 2>&1 || fail '{"error":"Failed to clone repo"}'
+  git clone --no-hardlinks --depth 1 --branch "$BRANCH" "$REPO_DIR" "$TMP_DIR/repo" >&2 || \
+    git clone --no-hardlinks "$REPO_DIR" "$TMP_DIR/repo" >&2 || fail '{"error":"Failed to clone repo"}'
 else
   log "Cloning repo from GitHub..."
-  git clone "https://github.com/unclehowell/datro.git" "$TMP_DIR/repo" 2>&1 || fail '{"error":"Failed to clone repo"}'
+  git clone --depth 1 --branch "$BRANCH" "https://github.com/unclehowell/datro.git" "$TMP_DIR/repo" >&2 || \
+    git clone "https://github.com/unclehowell/datro.git" "$TMP_DIR/repo" >&2 || fail '{"error":"Failed to clone repo"}'
 fi
 
 cd "$TMP_DIR/repo"
-git fetch origin 2>&1 || log "Warning: git fetch failed"
+git fetch origin >&2 || log "Warning: git fetch failed"
 
 # Checkout the branch - try direct checkout first, then create from origin if needed
-if git checkout "$BRANCH" 2>&1; then
+if git checkout "$BRANCH" >&2; then
   log "Checked out branch: $BRANCH"
 else
   log "Branch '$BRANCH' not found locally, trying origin/$BRANCH"
-  git checkout -b "$BRANCH" "origin/$BRANCH" 2>&1 || fail "{\"error\":\"Failed to checkout branch '$BRANCH'\"}"
+  git checkout -b "$BRANCH" "origin/$BRANCH" >&2 || fail "{\"error\":\"Failed to checkout branch '$BRANCH'\"}"
 fi
 
-git pull origin "$BRANCH" 2>&1 || log "Warning: git pull failed"
+git pull origin "$BRANCH" >&2 || log "Warning: git pull failed"
 
 # ── Step 2: Determine task type and execute ──────────────────────────────
 TASK_LOWER=$(echo "$TASK" | tr '[:upper:]' '[:lower:]')
@@ -206,18 +214,18 @@ FILE_COUNT=$(echo "$CHANGES" | wc -l | tr -d ' ')
 log "Changes detected: $FILE_COUNT files"
 log "Files: $CHANGED_FILES"
 
-git add -A 2>&1
+git add -A >&2
 COMMIT_MSG="feat(delegation): $(echo "$TASK" | head -c 72)"
-git commit -m "$COMMIT_MSG" 2>&1 || log "Nothing to commit"
+git commit -m "$COMMIT_MSG" >&2 || log "Nothing to commit"
 
 # Generate short hash for tracking
 SHORT_HASH=$(git rev-parse --short HEAD 2>/dev/null || echo "unknown")
 log "Committed: $SHORT_HASH"
 
 # Push to origin
-git push origin "$BRANCH" 2>&1 || {
+git push origin "$BRANCH" >&2 || {
   log "Push failed — attempting force"
-  git push origin "$BRANCH" --force-with-lease 2>&1 || fail '{"error":"Push failed"}'
+  git push origin "$BRANCH" --force-with-lease >&2 || fail '{"error":"Push failed"}'
 }
 
 log "Pushed to origin/$BRANCH"
