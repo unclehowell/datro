@@ -16,17 +16,22 @@ const SCHEDULER_PATH = join(
 );
 
 const DEFAULT_CONFIG: SchedulerConfig = {
-  maxConcurrent: 2,
-  maxConcurrentPerGroup: 1,
-  defaultTimeout: 300000,       // 5 min
-  defaultMaxRetries: 3,
-  retryBackoffMs: 5000,
+  maxConcurrent: 4,
+  maxConcurrentPerGroup: 2,
+  defaultTimeout: 3600000,       // 1 hour (was 5 min)
+  defaultMaxRetries: 5,          // was 3
+  retryBackoffMs: 10000,         // was 5000
   priorityWeights: {
     urgent: 10,
     high: 7,
     normal: 5,
     low: 2,
   },
+  // Long-running task support
+  maxTaskDuration: 86400000,     // 24 hours max per task
+  checkpointInterval: 300,       // checkpoint every 5 min
+  enableBackgroundExecution: true,
+  maxBackgroundJobs: 10,
 };
 
 export class Scheduler {
@@ -129,10 +134,12 @@ export class Scheduler {
   }
 
   async tryStartNext(): Promise<void> {
-    const { maxConcurrent, maxConcurrentPerGroup } = this.state.config;
+    const { maxConcurrent, maxConcurrentPerGroup, maxBackgroundJobs } = this.state.config;
     const activeCount = this.state.running.filter((j) => j.status === "running").length;
+    const bgCount = this.state.backgroundJobs.filter((j) => j.status === "running").length;
 
-    if (activeCount >= maxConcurrent) return;
+    // Allow background jobs to run alongside regular jobs
+    if (activeCount >= maxConcurrent && bgCount >= maxBackgroundJobs) return;
 
     for (const job of this.state.queue) {
       if (job.cancelRequested) continue;
@@ -312,6 +319,83 @@ export class Scheduler {
   }
 
   // ─── Helpers ───────────────────────────────────────────
+
+
+  // ─── Background Jobs ──────────────────────────────
+
+  async startBackgroundJob(sessionId: string, command: string, cwd: string, pid: number, logFile: string): Promise<BackgroundJob> {
+    const job: BackgroundJob = {
+      id: uuid(),
+      sessionId,
+      command,
+      cwd,
+      pid,
+      status: "running",
+      output: "",
+      startedAt: Date.now(),
+      logFile,
+    };
+    this.state.backgroundJobs.push(job);
+    this.emit("background_job_started", job);
+    await this.persist();
+    return job;
+  }
+
+  async updateBackgroundJob(jobId: string, updates: Partial<BackgroundJob>): Promise<void> {
+    const job = this.state.backgroundJobs.find((j) => j.id === jobId);
+    if (!job) return;
+    Object.assign(job, updates);
+    if (updates.status && updates.status !== "running") {
+      job.completedAt = Date.now();
+    }
+    await this.persist();
+  }
+
+  getBackgroundJob(jobId: string): BackgroundJob | undefined {
+    return this.state.backgroundJobs.find((j) => j.id === jobId);
+  }
+
+  listBackgroundJobs(sessionId?: string): BackgroundJob[] {
+    if (sessionId) {
+      return this.state.backgroundJobs.filter((j) => j.sessionId === sessionId);
+    }
+    return [...this.state.backgroundJobs];
+  }
+
+  // ─── Checkpoints ──────────────────────────────────
+
+  async saveCheckpoint(sessionId: string, step: number, state: Record<string, unknown>, artifacts: string[], observations: string[]): Promise<Checkpoint> {
+    const checkpoint: Checkpoint = {
+      id: uuid(),
+      sessionId,
+      step,
+      state,
+      artifacts,
+      observations,
+      timestamp: Date.now(),
+      duration: 0,
+    };
+    this.state.checkpoints.push(checkpoint);
+    // Keep last 100 checkpoints per session
+    const sessionCheckpoints = this.state.checkpoints.filter((c) => c.sessionId === sessionId);
+    if (sessionCheckpoints.length > 100) {
+      this.state.checkpoints = this.state.checkpoints.filter(
+        (c) => c.sessionId !== sessionId || sessionCheckpoints.length - 100 <= this.state.checkpoints.indexOf(c)
+      );
+    }
+    await this.persist();
+    return checkpoint;
+  }
+
+  getCheckpoints(sessionId: string): Checkpoint[] {
+    return this.state.checkpoints
+      .filter((c) => c.sessionId === sessionId)
+      .sort((a, b) => b.timestamp - a.timestamp);
+  }
+
+  getLastCheckpoint(sessionId: string): Checkpoint | undefined {
+    return this.getCheckpoints(sessionId)[0];
+  }
 
   private sortQueue(): void {
     const weights = this.state.config.priorityWeights;

@@ -36,6 +36,8 @@ export interface AgentLoopConfig {
   checkpointEvery: number;
   useLLM: boolean;
   logLevel: "debug" | "info" | "warn" | "error";
+  enableSubagents: boolean;
+  maxSubagentDepth: number;
 }
 
 export interface AgentLoopResult {
@@ -65,9 +67,9 @@ export class AgentLoop {
 
   constructor(config?: Partial<AgentLoopConfig>) {
     this.config = {
-      maxIterations: 50,
-      maxToolRounds: 10,
-      checkpointEvery: 5,
+      maxIterations: 200,
+      maxToolRounds: 20,
+      checkpointEvery: 10,
       useLLM: true,
       logLevel: "info",
       ...config,
@@ -120,6 +122,14 @@ export class AgentLoop {
         sessionId = session.id;
       }
 
+      // Check for checkpoint to resume from
+      const checkpoint = await this.procedureMemory.getLastCheckpoint(sessionId);
+      if (checkpoint && session.completedSteps.length === 0) {
+        this.emitCognition(sessionId, "checkpoint", `Resuming from checkpoint at step ${checkpoint.step}`);
+        await this.sessionManager.updateStatus(sessionId, "resumed");
+        this.emit({ type: "session_resumed", sessionId, checkpoint: checkpoint.step });
+      }
+
       await this.sessionManager.updateStatus(sessionId, "running");
       this.emit({ type: "session_started", sessionId });
 
@@ -163,6 +173,25 @@ export class AgentLoop {
         if (iterations % this.config.checkpointEvery === 0) {
           await this.sessionManager.checkpoint(sessionId);
           this.emit({ type: "checkpoint_saved", sessionId, stateId: `${sessionId}-${Date.now()}` });
+
+          // Save procedure checkpoint for long-running tasks
+          if (session.plan) {
+            const currentStep = session.completedSteps.length;
+            await this.procedureMemory.saveCheckpoint(
+              sessionId,
+              currentStep,
+              {
+                goal: session.goal,
+                iterations,
+                toolCalls,
+                artifacts,
+                proceduresStored,
+                currentMilestone: session.plan.currentMilestone,
+              },
+              artifacts,
+              session.observations.slice(-10)
+            );
+          }
         }
 
         // Get ready nodes
@@ -348,6 +377,11 @@ export class AgentLoop {
       return this.executeWithWorker(sessionId, action.worker as WorkerName, action);
     }
 
+    // Spawn subagent for agent-capable tasks
+    if (this.config.enableSubagents && action.type === "delegate" && action.parameters.agent) {
+      return this.executeSubagent(sessionId, action);
+    }
+
     // Direct tool execution
     if (action.tool) {
       const request: ToolCallRequest = {
@@ -375,6 +409,55 @@ export class AgentLoop {
     };
 
     return this.toolRegistry.execute(request);
+  }
+
+
+  private async executeSubagent(sessionId: string, action: Action): Promise<ToolCallResult> {
+    const agent = String(action.parameters.agent || "opencode");
+    const task = String(action.parameters.task || action.description);
+    const context = String(action.parameters.context || "");
+    const timeout = Number(action.parameters.timeout || 3600000);
+
+    this.emitCognition(sessionId, "subagent", `Spawning ${agent} subagent: ${task.slice(0, 80)}...`);
+
+    try {
+      const { execSync } = require("child_process");
+      const cmd = agent === "opencode"
+        ? `opencode --quiet --task "${task.replace(/"/g, '\"')}"`
+        : agent === "kilo"
+        ? `kilo --quiet --task "${task.replace(/"/g, '\"')}"`
+        : `hermes --yolo --task "${task.replace(/"/g, '\"')}"`;
+
+      const output = execSync(cmd, {
+        cwd: "/home/unclehowell",
+        timeout,
+        env: { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task },
+        encoding: "utf-8",
+      });
+
+      return {
+        id: uuid(),
+        tool: `subagent:${agent}`,
+        success: true,
+        output: output.trim() || `Subagent ${agent} completed successfully`,
+        duration: 0,
+        timestamp: Date.now(),
+        confidence: { score: 0.9, factors: [`${agent} subagent completed`] },
+        retryCount: 0,
+      };
+    } catch (err: any) {
+      return {
+        id: uuid(),
+        tool: `subagent:${agent}`,
+        success: false,
+        output: err.stdout || "",
+        error: err.message || `Subagent ${agent} failed`,
+        duration: 0,
+        timestamp: Date.now(),
+        confidence: { score: 0.2, factors: [`${agent} subagent failed`] },
+        retryCount: 0,
+      };
+    }
   }
 
   private async executeWithWorker(sessionId: string, worker: WorkerName, action: Action): Promise<ToolCallResult> {

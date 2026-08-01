@@ -23,9 +23,11 @@ export type SessionStatus =
   | "blocked"
   | "verifying"
   | "reflecting"
+  | "checkpointing"
   | "completed"
   | "failed"
-  | "cancelled";
+  | "cancelled"
+  | "resumed"; // resumed from checkpoint
 
 export interface Session {
   id: string;
@@ -132,7 +134,7 @@ export interface Action {
 
 // ─── Workers (OpenCode, Kilo, etc.) ───────────────────────
 
-export type WorkerName = "opencode" | "kilo" | "hermes" | "terminal";
+export type WorkerName = "opencode" | "kilo" | "hermes" | "terminal" | "subagent";
 
 export interface WorkerSession {
   id: string;
@@ -161,6 +163,24 @@ export interface WorkerSession {
 
   // Cost
   tokensUsed: number;
+
+  // Subagent support
+  subagentId?: string;
+  subagentAgent?: string;
+  checkpointInterval?: number;
+  lastCheckpoint?: number;
+  checkpoints?: Checkpoint[];
+}
+
+export interface Checkpoint {
+  id: string;
+  sessionId: string;
+  step: number;
+  state: Record<string, unknown>;
+  artifacts: string[];
+  observations: string[];
+  timestamp: number;
+  duration: number;
 }
 
 // ─── Supervisor ────────────────────────────────────────────
@@ -427,6 +447,11 @@ export interface SchedulerConfig {
   defaultMaxRetries: number;
   retryBackoffMs: number;
   priorityWeights: Record<string, number>;
+  // Long-running task support
+  maxTaskDuration: number;          // Max duration for a single task (ms)
+  checkpointInterval: number;       // Checkpoint every N seconds
+  enableBackgroundExecution: boolean; // Allow fire-and-forget execution
+  maxBackgroundJobs: number;        // Max concurrent background jobs
 }
 
 export interface SchedulerState {

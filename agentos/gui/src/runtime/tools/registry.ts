@@ -32,10 +32,10 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
       { name: "cwd", type: "string", description: "Working directory", required: false, default: "/home/unclehowell" },
       { name: "timeout", type: "number", description: "Timeout in milliseconds", required: false, default: 30000 },
     ],
-    timeout: 30000,
-    permissions: ["execute"],
-    retryPolicy: { maxRetries: 1, backoffMs: 1000 },
-    tags: ["bash", "shell", "command", "system"],
+    timeout: 600000,
+    permissions: ["execute", "network", "read", "write", "dangerous"],
+    retryPolicy: { maxRetries: 2, backoffMs: 2000 },
+    tags: ["bash", "shell", "command", "system", "long-running"],
   },
   {
     name: "file_read",
@@ -104,10 +104,10 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
       { name: "command", type: "string", description: "Git subcommand with args (e.g. 'status', 'log --oneline -5')", required: true },
       { name: "cwd", type: "string", description: "Repository path", required: false, default: "/home/unclehowell/datro" },
     ],
-    timeout: 30000,
-    permissions: ["execute", "read"],
-    retryPolicy: { maxRetries: 1, backoffMs: 1000 },
-    tags: ["git", "version-control", "vcs"],
+    timeout: 120000,
+    permissions: ["execute", "read", "write"],
+    retryPolicy: { maxRetries: 2, backoffMs: 2000 },
+    tags: ["git", "version-control", "vcs", "long-running"],
   },
   {
     name: "python",
@@ -118,10 +118,10 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
       { name: "code", type: "string", description: "Python code to execute", required: true },
       { name: "timeout", type: "number", description: "Timeout in milliseconds", required: false, default: 30000 },
     ],
-    timeout: 30000,
-    permissions: ["execute"],
-    retryPolicy: { maxRetries: 0, backoffMs: 0 },
-    tags: ["python", "script", "code"],
+    timeout: 600000,
+    permissions: ["execute", "read", "write"],
+    retryPolicy: { maxRetries: 2, backoffMs: 2000 },
+    tags: ["python", "script", "code", "long-running"],
   },
   {
     name: "service_check",
@@ -147,10 +147,10 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
       { name: "name", type: "string", description: "Process name or config file", required: false },
       { name: "args", type: "string", description: "Additional arguments", required: false },
     ],
-    timeout: 15000,
-    permissions: ["execute"],
-    retryPolicy: { maxRetries: 1, backoffMs: 2000 },
-    tags: ["pm2", "process", "service"],
+    timeout: 60000,
+    permissions: ["execute", "read", "write"],
+    retryPolicy: { maxRetries: 2, backoffMs: 2000 },
+    tags: ["pm2", "process", "service", "long-running"],
   },
   {
     name: "web_fetch",
@@ -161,10 +161,10 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
       { name: "url", type: "string", description: "URL to fetch", required: true },
       { name: "format", type: "string", description: "Response format", required: false, default: "text", enum: ["text", "html", "markdown"] },
     ],
-    timeout: 30000,
-    permissions: ["network"],
-    retryPolicy: { maxRetries: 2, backoffMs: 3000 },
-    tags: ["fetch", "http", "web", "url"],
+    timeout: 60000,
+    permissions: ["network", "read"],
+    retryPolicy: { maxRetries: 3, backoffMs: 5000 },
+    tags: ["fetch", "http", "web", "url", "long-running"],
   },
   {
     name: "memory_search",
@@ -237,6 +237,37 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
     permissions: ["read"],
     retryPolicy: { maxRetries: 0, backoffMs: 0 },
     tags: ["list", "directory", "ls"],
+  },
+  {
+    name: "subagent",
+    category: "agent",
+    capability: "agent",
+    description: "Spawn a subagent (opencode, kilo, or hermes) to run a task independently with unrestricted permissions",
+    parameters: [
+      { name: "agent", type: "string", description: "Agent to spawn (opencode, kilo, hermes)", required: true, enum: ["opencode", "kilo", "hermes"] },
+      { name: "task", type: "string", description: "Task description for the subagent", required: true },
+      { name: "context", type: "string", description: "Additional context or file paths", required: false },
+      { name: "timeout", type: "number", description: "Timeout in milliseconds (default: 1 hour)", required: false, default: 3600000 },
+    ],
+    timeout: 3600000, // 1 hour
+    permissions: ["execute", "read", "write", "network", "dangerous"],
+    retryPolicy: { maxRetries: 1, backoffMs: 5000 },
+    tags: ["subagent", "delegate", "agent", "spawn", "long-running"],
+  },
+  {
+    name: "background_exec",
+    category: "system",
+    capability: "terminal",
+    description: "Execute a shell command in the background and poll for results. Returns a jobId for status checking.",
+    parameters: [
+      { name: "command", type: "string", description: "Shell command to execute in background", required: true },
+      { name: "cwd", type: "string", description: "Working directory", required: false, default: "/home/unclehowell" },
+      { name: "timeout", type: "number", description: "Max runtime in milliseconds", required: false, default: 3600000 },
+    ],
+    timeout: 10000,
+    permissions: ["execute", "read", "write", "network", "dangerous"],
+    retryPolicy: { maxRetries: 0, backoffMs: 0 },
+    tags: ["background", "async", "long-running", "daemon"],
   },
   {
     name: "system_info",
@@ -320,6 +351,8 @@ export class ToolRegistry {
     this.registerExecutor("python", this.execPython.bind(this));
     this.registerExecutor("service_check", this.execServiceCheck.bind(this));
     this.registerExecutor("pm2", this.execPm2.bind(this));
+    this.registerExecutor("subagent", this.execSubagent.bind(this));
+    this.registerExecutor("background_exec", this.execBackgroundExec.bind(this));
     this.registerExecutor("system_info", this.execSystemInfo.bind(this));
     this.registerExecutor("web_fetch", this.execWebFetch.bind(this));
     this.registerExecutor("remotion", this.execRemotion.bind(this));
@@ -583,6 +616,63 @@ export class ToolRegistry {
       return this.buildSuccessResult(req, (stdout + (stderr ? "\nSTDERR: " + stderr : "")).trim());
     } catch (err: any) {
       return this.buildErrorResult(req, [err.stdout, err.stderr, err.message].filter(Boolean).join("\n").trim());
+    }
+  }
+
+  private async execSubagent(req: ToolCallRequest): Promise<ToolCallResult> {
+    const agent = String(req.parameters.agent || "opencode");
+    const task = String(req.parameters.task || "");
+    const context = String(req.parameters.context || "");
+    const timeout = Number(req.parameters.timeout || 3600000);
+
+    try {
+      const { execSync } = require("child_process");
+      const cmd = agent === "opencode"
+        ? `opencode --quiet --task "${task.replace(/"/g, '\"')}"`
+        : agent === "kilo"
+        ? `kilo --quiet --task "${task.replace(/"/g, '\"')}"`
+        : `hermes --yolo --task "${task.replace(/"/g, '\"')}"`;
+
+      const output = execSync(cmd, {
+        cwd: "/home/unclehowell",
+        timeout,
+        env: { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task },
+        encoding: "utf-8",
+      });
+      return this.buildSuccessResult(req, output.trim() || "Subagent task completed");
+    } catch (err: any) {
+      return this.buildErrorResult(req, err.message || "Subagent task failed");
+    }
+  }
+
+  private async execBackgroundExec(req: ToolCallRequest): Promise<ToolCallResult> {
+    const command = String(req.parameters.command || "");
+    const cwd = String(req.parameters.cwd || "/home/unclehowell");
+    const timeout = Number(req.parameters.timeout || 3600000);
+
+    try {
+      const { exec } = require("child_process");
+      const proc = exec(`nohup ${command} > /tmp/background_${Date.now()}.log 2>&1 & echo $!`, {
+        cwd,
+        timeout: 10000,
+        env: { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted" },
+      });
+
+      let jobId = "";
+      proc.stdout?.on("data", (data) => { jobId = data.toString().trim(); });
+
+      await new Promise((resolve) => { proc.on("close", resolve); });
+
+      return this.buildSuccessResult(req, JSON.stringify({
+        jobId,
+        status: "running",
+        command,
+        cwd,
+        logFile: `/tmp/background_${Date.now()}.log`,
+        message: "Background job started. Use the 'terminal' tool with 'tail -f /tmp/background_*.log' to monitor progress.",
+      }));
+    } catch (err: any) {
+      return this.buildErrorResult(req, err.message || "Failed to start background job");
     }
   }
 

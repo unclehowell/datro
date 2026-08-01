@@ -31,6 +31,8 @@ interface VideoJob {
 
 const videoJobs = new Map<string, VideoJob>();
 
+const delegateJobs = new Map<string, { id: string; agent: string; task: string; context: string; status: string; createdAt: number; result: any; completedAt?: number }>();
+
 function generateJobId(): string {
   return "v_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 }
@@ -40,11 +42,13 @@ let agentLoop: AgentLoop | null = null;
 function getAgentLoop(): AgentLoop {
   if (!agentLoop) {
     agentLoop = new AgentLoop({
-      maxIterations: 20,
-      maxToolRounds: 5,
-      checkpointEvery: 5,
+      maxIterations: 200,
+      maxToolRounds: 20,
+      checkpointEvery: 10,
       useLLM: true,
       logLevel: "info",
+      enableSubagents: true,
+      maxSubagentDepth: 3,
     });
   }
   return agentLoop;
@@ -141,6 +145,31 @@ RULES for video requests:
 6. Keep props concise and descriptive.
 
 If it is not a video request and the user wants you to do something on the computer, use EXEC. Never EXEC for video creation.`;
+
+
+async function runDelegate(agent: string, task: string, context?: string): Promise<{ success: boolean; output: string; error?: string }> {
+  // Spawn the agent as a subprocess with unrestricted permissions
+  const env = { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task };
+
+  try {
+    const { execSync } = require("child_process");
+    const cmd = agent === "opencode"
+      ? `opencode --quiet --task "${task.replace(/"/g, '\"')}"`
+      : agent === "kilo"
+      ? `kilo --quiet --task "${task.replace(/"/g, '\"')}"`
+      : `hermes --yolo --task "${task.replace(/"/g, '\"')}"`;
+
+    const output = execSync(cmd, {
+      cwd: "/home/unclehowell",
+      timeout: 3600000, // 1 hour max for delegate tasks
+      env,
+      encoding: "utf-8",
+    });
+    return { success: true, output: output.trim() || "Task completed" };
+  } catch (err: any) {
+    return { success: false, error: err.message || "Delegate task failed", output: err.stdout || "" };
+  }
+}
 
 export async function POST(req: NextRequest) {
   try {
@@ -335,10 +364,15 @@ export async function POST(req: NextRequest) {
       const intent = detectIntent(command);
       const cmdToRun = intent?.command || command;
 
+      // Determine if this is a long-running task (background execution)
+      const isLongRunning = /(npm install|pip install|git clone|make|cargo build|docker build|wget|curl.*-O|tar|xz|gzip|ffmpeg|render|compile|build)/i.test(cmdToRun);
+      const execTimeout = 600000; // 10 min for all exec (was 30s)
+
       try {
         const { stdout, stderr } = await execAsync(cmdToRun, {
           cwd: "/home/unclehowell",
-          timeout: 30000,
+          timeout: execTimeout,
+          env: { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted" },
         });
         const output = (stdout + (stderr ? "\nSTDERR: " + stderr : "")).trim();
         return NextResponse.json({
@@ -360,7 +394,54 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // ── 3d. VIDEO response → render via ai-video tool (background) ──
+    // ── 3d. DELEGATE response → spawn subagent ──────────
+    if (response.startsWith("DELEGATE:")) {
+      const delegateStr = response.slice(9).trim();
+      try {
+        const delegate = JSON.parse(delegateStr);
+        const { agent, task, context } = delegate;
+
+        const jobId = "delegate_" + Date.now().toString(36);
+        delegateJobs.set(jobId, {
+          id: jobId, agent, task, context,
+          status: "running", createdAt: Date.now(), result: null,
+        });
+
+        // Fire and forget — run delegate in background
+        runDelegate(agent, task, context).then((result) => {
+          const job = delegateJobs.get(jobId);
+          if (job) {
+            job.result = result;
+            job.status = result.success ? "done" : "failed";
+            job.completedAt = Date.now();
+          }
+        }).catch((err) => {
+          const job = delegateJobs.get(jobId);
+          if (job) {
+            job.result = { success: false, error: err.message };
+            job.status = "failed";
+            job.completedAt = Date.now();
+          }
+        });
+
+        return NextResponse.json({
+          reply: `Delegated to ${agent}: ${task.slice(0, 100)}... (job ${jobId})`,
+          routed: "delegate",
+          dependency: agent,
+          provider: cloudResult.provider,
+          delegateJobId: jobId,
+          success: true,
+        });
+      } catch {
+        return NextResponse.json({
+          reply: "Invalid delegate format. Use: DELEGATE:{"agent":"opencode","task":"...","context":"..."}",
+          routed: "delegate",
+          success: false,
+        });
+      }
+    }
+
+    // ── 3e. VIDEO response → render via ai-video tool (background) ──
     if (response.startsWith("VIDEO:")) {
       const jsonStr = response.slice(6).trim();
       try {
@@ -432,7 +513,7 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // ── 3e. Unrecognized format → check for remotion video redirect or treat as chat ──
+    // ── 3f. Unrecognized format → check for remotion video redirect or treat as chat ──
     const remotionRedirect = extractJsonTool(response);
     if (remotionRedirect && remotionRedirect.tool === "remotion" && isVideoToolCall("remotion", remotionRedirect.args)) {
       const aiVideoParams = redirectRemotionToAIVideo(remotionRedirect.args);

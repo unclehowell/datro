@@ -15,12 +15,14 @@ const PROCEDURES_DIR = join(process.env.HOME || "/home/unclehowell", ".agentos",
 
 export class ProcedureMemory {
   private procedures: Map<string, Procedure> = new Map();
+  private checkpoints: Map<string, any[]> = new Map(); // sessionId → checkpoints[]
   private initialized = false;
 
   async init(): Promise<void> {
     if (this.initialized) return;
     await mkdir(PROCEDURES_DIR, { recursive: true });
     await this.loadAll();
+    await this.loadCheckpoints();
     this.initialized = true;
   }
 
@@ -241,7 +243,86 @@ export class ProcedureMemory {
     return procs;
   }
 
-  getStats(): { total: number; successful: number; failed: number; avgConfidence: number } {
+
+  // ─── Checkpoints for Long-Running Tasks ─────────
+
+  async saveCheckpoint(sessionId: string, step: number, state: Record<string, unknown>, artifacts: string[], observations: string[]): Promise<void> {
+    await this.init();
+    const sessionCheckpoints = this.checkpoints.get(sessionId) || [];
+    sessionCheckpoints.push({
+      step,
+      state,
+      artifacts,
+      observations,
+      timestamp: Date.now(),
+    });
+    // Keep last 50 checkpoints per session
+    if (sessionCheckpoints.length > 50) {
+      sessionCheckpoints.splice(0, sessionCheckpoints.length - 50);
+    }
+    this.checkpoints.set(sessionId, sessionCheckpoints);
+    await this.persistCheckpoints();
+  }
+
+  async getCheckpoints(sessionId: string): Promise<any[]> {
+    await this.init();
+    return this.checkpoints.get(sessionId) || [];
+  }
+
+  async getLastCheckpoint(sessionId: string): Promise<any | null> {
+    const checkpoints = await this.getCheckpoints(sessionId);
+    return checkpoints.length > 0 ? checkpoints[checkpoints.length - 1] : null;
+  }
+
+  async restoreFromCheckpoint(sessionId: string): Promise<any | null> {
+    const checkpoint = await this.getLastCheckpoint(sessionId);
+    return checkpoint;
+  }
+
+  // ─── Persistence ──────────────────────────────────
+
+  private async persistCheckpoints(): Promise<void> {
+    try {
+      const path = join(PROCEDURES_DIR, "..", "checkpoints");
+      await mkdir(path, { recursive: true });
+      for (const [sessionId, checkpoints] of this.checkpoints) {
+        await writeFile(join(path, `${sessionId}.json`), JSON.stringify(checkpoints, null, 2), "utf-8");
+      }
+    } catch (err) {
+      console.error("Failed to persist checkpoints:", err);
+    }
+  }
+
+  private async loadCheckpoints(): Promise<void> {
+    try {
+      const path = join(PROCEDURES_DIR, "..", "checkpoints");
+      const files = await readdir(path);
+      for (const file of files) {
+        if (!file.endsWith(".json")) continue;
+        try {
+          const sessionId = file.replace(".json", "");
+          const content = await readFile(join(path, file), "utf-8");
+          this.checkpoints.set(sessionId, JSON.parse(content));
+        } catch { /* skip corrupt files */ }
+      }
+    } catch { /* dir doesn't exist yet */ }
+  }
+
+  // ─── Stats ────────────────────────────────────────
+
+  getStats(): { total: number; successful: number; failed: number; avgConfidence: number; checkpoints: number } {
+    const all = Array.from(this.procedures.values());
+    const totalCheckpoints = Array.from(this.checkpoints.values()).reduce((sum, c) => sum + c.length, 0);
+    return {
+      total: all.length,
+      successful: all.filter((p) => p.result === "success").length,
+      failed: all.filter((p) => p.result === "failure").length,
+      avgConfidence: all.reduce((sum, p) => sum + p.confidence, 0) / (all.length || 1),
+      checkpoints: totalCheckpoints,
+    };
+  }
+
+  getStats(): { total: number; successful: number; failed: number; avgConfidence: number; checkpoints: number } {
     const all = Array.from(this.procedures.values());
     return {
       total: all.length,
