@@ -240,6 +240,40 @@ install_agent() {
     python3 -m pip install --quiet aiohttp 2>/dev/null || true
 }
 
+# ── Download video library (scenes/objects engine) ───────────────────────────
+# The video engine is a single-file Pillow+ffmpeg renderer versioned in the
+# financecheque branch. Re-running the installer (or a branch rerelease) pulls
+# the latest library so every child proxy benefits simultaneously.
+VIDEO_LIB_VERSION="0.1.0"
+install_video_lib() {
+  mkdir -p "$INSTALL_DIR"
+
+  info "Downloading video library (scenes/objects engine)..."
+  curl -sL "$RAW_BASE/public/fcukproxy/phone_video.py" -o "$INSTALL_DIR/phone_video.py"
+
+  info "Installing video dependencies (Pillow)..."
+  python3 -m pip install --quiet --user Pillow 2>/dev/null || \
+    python3 -m pip install --quiet Pillow 2>/dev/null || true
+
+  # Ensure ffmpeg is present (used to encode MP4). Optional — chat-only nodes skip.
+  if ! command -v ffmpeg >/dev/null 2>&1 && [[ ! -x "/data/data/com.termux/files/usr/bin/ffmpeg" ]]; then
+    info "ffmpeg not found — installing (video rendering needs it)..."
+    if [[ "$PLATFORM" == termux* ]]; then
+      pkg install -y ffmpeg 2>/dev/null || true
+    elif command -v apt-get >/dev/null 2>&1; then
+      sudo apt-get install -y -qq ffmpeg 2>/dev/null || true
+    elif command -v brew >/dev/null 2>&1; then
+      brew install ffmpeg 2>/dev/null || true
+    else
+      warn "Could not auto-install ffmpeg. Video rendering will be unavailable until it is installed."
+    fi
+  fi
+
+  if [[ -f "$INSTALL_DIR/phone_video.py" ]]; then
+    ok "Video library installed ($VIDEO_LIB_VERSION) — scenes: cat, fox, dog, bird, robot, space, fire, snow, city, nature"
+  fi
+}
+
 # ── Write config files ───────────────────────────────────────────────────────
 write_config() {
   mkdir -p "$INSTALL_DIR"
@@ -449,6 +483,15 @@ print_summary() {
   echo "  3. Verify it's visible on the parent:"
   echo "     curl -s $PARENT_URL/api/proxy?action=health | python3 -m json.tool"
   echo ""
+  echo -e "  ${YELLOW}Video library:${NC}"
+  echo "  Render videos with local compute (Pillow + ffmpeg):"
+  echo "     curl -s -X POST http://127.0.0.1:$PROXY_PORT/v1/video -H 'Content-Type: application/json' \\"
+  echo "       -d '{\"prompt\":\"a cat in a hat\"}'"
+  echo "  Poll:  curl -s http://127.0.0.1:$PROXY_PORT/v1/video/<job_id>"
+  echo "  File:  curl -s http://127.0.0.1:$PROXY_PORT/v1/video/file/<name>.mp4 -o out.mp4"
+  echo "  Update the scene/object library by re-running this installer or"
+  echo "  pulling a new financecheque release (benefits all child proxies)."
+  echo ""
   echo -e "  ${YELLOW}Scaling:${NC}"
   echo "  Run this same script on other machines with the same PARENT_URL"
   echo "  to add more child proxies to your network."
@@ -493,16 +536,19 @@ main() {
   step 2 "Child proxy agent"
   install_agent
 
-  step 3 "Configuration"
+  step 3 "Video library (scenes/objects engine)"
+  install_video_lib
+
+  step 4 "Configuration"
   write_config
 
   LLM_SERVER=""
   if [[ "$MODE" == "full" ]]; then
-    step 4 "Local LLM (llama-server + MiniCPM)"
+    step 5 "Local LLM (llama-server + MiniCPM)"
     LLM_SERVER=$(install_llm "$PLATFORM")
   fi
 
-  step 5 "Starting services"
+  step 6 "Starting services"
   start_services "$LLM_SERVER"
 
   step 6 "Service persistence"
