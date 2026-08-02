@@ -8,3 +8,5 @@ node_modules/
 dist/
 .env.local
 *.log
+__pycache__/
+*.pyc
