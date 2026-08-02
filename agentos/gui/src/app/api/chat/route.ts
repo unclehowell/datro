@@ -128,6 +128,8 @@ MATH: <expression> — ONLY for pure arithmetic with no words, like "42*7".
 
 VIDEO: <JSON> — if the user asks to create/generate/make/render a video or any visual scene. Output ONLY a JSON object: {"template":"<name>","props":{<props>},"duration":<seconds>}. Use the ai-video tool (SVG scene engine) for ALL literal video requests. If the user specifies a duration (e.g. "3 second video", "10 seconds"), set "duration" to that number of seconds. Otherwise default to 5.
 
+DELEGATE: <JSON> — if the user asks you to spawn a subagent or delegate a task to another agent (opencode, kilo, or hermes). Output ONLY a JSON object: {"agent":"<name>","task":"<task description>","context":"<optional context>"}. Use this to spawn independent subagents for long-running or complex tasks.
+
 Available VIDEO templates (ai-video / SVG scene engine):
 - dance: animated character dancing. Props: {"character":"cat","action":"groovy sway","background":"disco floor","palette":["#ff6b6b","#ffd93d"],"motion":"lively"}
 - nature: natural scenes. Props: {"character":"none","action":"waves gently rolling","background":"tropical beach, palm trees, golden sand","palette":["#ff6b6b","#ffa94d","#0077be"],"motion":"calm"}
@@ -143,6 +145,11 @@ RULES for video requests:
 4. NEVER route a video creation request to EXEC. Always use VIDEO.
 5. Do NOT include "text" or "subtitle" props unless the user explicitly asks for text in the video.
 6. Keep props concise and descriptive.
+
+RULES for delegate requests:
+7. If the user asks you to spawn a subagent, delegate a task, or run a task in the background using another agent, use DELEGATE:.
+8. DELEGATE is for long-running tasks, complex multi-step operations, or when the user explicitly asks to use opencode, kilo, or hermes.
+9. Never use EXEC for tasks that should be delegated to a subagent.
 
 If it is not a video request and the user wants you to do something on the computer, use EXEC. Never EXEC for video creation.`;
 
