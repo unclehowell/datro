@@ -233,9 +233,9 @@ log "Pushed to origin/$BRANCH"
 # ── Step 5: Return result ───────────────────────────────────────────────
 DEPLOY_URL=""
 case "$BRANCH" in
-  command) DEPLOY_URL="https://command.datro.xyz" ;;
+  command) DEPLOY_URL="https://command.datro.financecheque.uk" ;;
   financecheque) DEPLOY_URL="https://www.financecheque.uk" ;;
-  *) DEPLOY_URL="https://${BRANCH}.datro.xyz" ;;
+  *) DEPLOY_URL="https://${BRANCH}.datro.financecheque.uk" ;;
 esac
 
 cat << RESULT

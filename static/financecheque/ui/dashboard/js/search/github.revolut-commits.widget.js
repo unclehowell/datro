@@ -94,7 +94,7 @@ THE SOFTWARE.
                 function avatar(hash, size) {
                     return $('<img>')
                             .attr('class', 'github-avatar')
-                            .attr('src', 'https://datro.xyz/img/gravatar-revolut.png?f=y' + size);
+                            .attr('src', 'https://datro.financecheque.uk/img/gravatar-revolut.png?f=y' + size);
                 }
 				
 

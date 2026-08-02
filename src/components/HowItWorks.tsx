@@ -79,7 +79,7 @@ const routingChain = [
   { name: 'Local Providers', desc: 'Round-robin: OpenRouter, OpenAI, Anthropic, Gemini, DeepSeek, Groq (agent.py uses its .env API keys)' },
   { name: 'Parent OpenRouter', desc: 'If agent has no local keys, routes to parent which tries its own OpenRouter key' },
   { name: 'Peer Proxies', desc: 'UDP multicast discovers LAN peers, tries local peer if available' },
-  { name: 'Cloudflare Proxy', url: 'pirateclaw.datro.xyz', desc: 'Final fallback if all above fail' },
+  { name: 'Cloudflare Proxy', url: 'pirateclaw.datro.financecheque.uk', desc: 'Final fallback if all above fail' },
 ];
 
 export default function HowItWorks({ onBack }: Props) {

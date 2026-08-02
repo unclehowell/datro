@@ -101,7 +101,7 @@ function handleAppLaunch(appId, localBaseUrl, onlineDemoUrl) {
         }
     });
 
-    if (hostname.includes("datro")) { // Running on datro.xyz
+    if (hostname.includes("datro")) { // Running on datro.financecheque.uk
         if (onlineDemoUrl) {
             window.location.href = onlineDemoUrl;
         } else {

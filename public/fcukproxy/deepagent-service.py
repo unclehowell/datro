@@ -92,7 +92,7 @@ async def execute_task(request):
         "result": last_content[:4000],
         "machine_id": MACHINE_ID,
         "branch": branch,
-        "deploy_url": f"https://{branch}.datro.xyz" if branch in ("command", "financecheque") else "",
+        "deploy_url": f"https://{branch}.datro.financecheque.uk" if branch in ("command", "financecheque") else "",
     })
 
 

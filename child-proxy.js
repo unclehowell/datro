@@ -153,7 +153,7 @@ async function runChat(message) {
   }
 
   try {
-    const resp = await fetch("https://pirateclaw.datro.xyz/v1/chat/completions", {
+    const resp = await fetch("https://pirateclaw.datro.financecheque.uk/v1/chat/completions", {
       method: "POST",
       headers: { "Content-Type": "application/json", "Authorization": "Bearer test" },
       body: JSON.stringify({ model: "auto", messages: [{ role: "user", content: prompt }], max_tokens: 500 }),
