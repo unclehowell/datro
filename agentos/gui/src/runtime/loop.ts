@@ -36,8 +36,8 @@ export interface AgentLoopConfig {
   checkpointEvery: number;
   useLLM: boolean;
   logLevel: "debug" | "info" | "warn" | "error";
-  enableSubagents: boolean;
-  maxSubagentDepth: number;
+  enableSubagents?: boolean;
+  maxSubagentDepth?: number;
 }
 
 export interface AgentLoopResult {
@@ -72,6 +72,8 @@ export class AgentLoop {
       checkpointEvery: 10,
       useLLM: true,
       logLevel: "info",
+      enableSubagents: true,
+      maxSubagentDepth: 3,
       ...config,
     };
 

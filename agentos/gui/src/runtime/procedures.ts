@@ -322,16 +322,6 @@ export class ProcedureMemory {
     };
   }
 
-  getStats(): { total: number; successful: number; failed: number; avgConfidence: number; checkpoints: number } {
-    const all = Array.from(this.procedures.values());
-    return {
-      total: all.length,
-      successful: all.filter((p) => p.result === "success").length,
-      failed: all.filter((p) => p.result === "failure").length,
-      avgConfidence: all.reduce((sum, p) => sum + p.confidence, 0) / (all.length || 1),
-    };
-  }
-
   // ─── Improve Confidence ─────────────────────────────────
   // When a retrieved procedure succeeds again, boost its confidence
 

@@ -460,6 +460,19 @@ export interface SchedulerState {
   completed: ScheduledJob[];
   failed: ScheduledJob[];
   config: SchedulerConfig;
+  backgroundJobs: BackgroundJob[];
+  checkpoints: Checkpoint[];
+}
+
+export interface Checkpoint {
+  id: string;
+  sessionId: string;
+  step: number;
+  state: Record<string, unknown>;
+  artifacts: string[];
+  observations: string[];
+  timestamp: number;
+  duration: number;
 }
 
 export interface ScheduledJob {
@@ -477,6 +490,19 @@ export interface ScheduledJob {
   cancelRequested: boolean;
 }
 
+export interface BackgroundJob {
+  id: string;
+  sessionId: string;
+  command: string;
+  cwd: string;
+  pid: number;
+  status: "running" | "completed" | "failed" | "cancelled";
+  output: string;
+  startedAt: number;
+  completedAt?: number;
+  logFile?: string;
+}
+
 // ─── Runtime Events (SSE) ─────────────────────────────────
 
 export type RuntimeEvent =
@@ -486,7 +512,7 @@ export type RuntimeEvent =
   | { type: "session_completed"; sessionId: string; summary: string }
   | { type: "session_failed"; sessionId: string; error: string }
   | { type: "session_paused"; sessionId: string }
-  | { type: "session_resumed"; sessionId: string }
+  | { type: "session_resumed"; sessionId: string; checkpoint?: number }
   | { type: "plan_created"; sessionId: string; milestones: number }
   | { type: "plan_revised"; sessionId: string; revision: number }
   | { type: "stage_entered"; sessionId: string; stage: PipelineStageName }

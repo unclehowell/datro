@@ -659,7 +659,7 @@ export class ToolRegistry {
       });
 
       let jobId = "";
-      proc.stdout?.on("data", (data) => { jobId = data.toString().trim(); });
+      proc.stdout?.on("data", (data: { toString(): string }) => { jobId = data.toString().trim(); });
 
       await new Promise((resolve) => { proc.on("close", resolve); });
 

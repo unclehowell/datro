@@ -441,7 +441,7 @@ export async function POST(req: NextRequest) {
         });
       } catch {
         return NextResponse.json({
-          reply: "Invalid delegate format. Use: DELEGATE:{"agent":"opencode","task":"...","context":"..."}",
+          reply: 'Invalid delegate format. Use: DELEGATE:{"agent":"opencode","task":"...","context":"..."}',
           routed: "delegate",
           success: false,
         });

@@ -6,7 +6,7 @@ import { v4 as uuid } from "uuid";
 import { readFile, writeFile, mkdir } from "fs/promises";
 import { join } from "path";
 import {
-  SchedulerState, ScheduledJob, SchedulerConfig, Session,
+  SchedulerState, ScheduledJob, SchedulerConfig, Session, BackgroundJob, Checkpoint,
 } from "./types";
 
 const SCHEDULER_PATH = join(
@@ -37,7 +37,7 @@ const DEFAULT_CONFIG: SchedulerConfig = {
 export class Scheduler {
   private state: SchedulerState;
   private executionCallbacks: Map<string, (job: ScheduledJob) => Promise<void>> = new Map();
-  private listeners: Array<(event: string, job: ScheduledJob) => void> = [];
+  private listeners: Array<(event: string, job: ScheduledJob | BackgroundJob) => void> = [];
 
   constructor(config?: Partial<SchedulerConfig>) {
     this.state = {
@@ -46,6 +46,8 @@ export class Scheduler {
       completed: [],
       failed: [],
       config: { ...DEFAULT_CONFIG, ...config },
+      backgroundJobs: [],
+      checkpoints: [],
     };
   }
 
@@ -290,11 +292,11 @@ export class Scheduler {
 
   // ─── Events ────────────────────────────────────────────
 
-  onEvent(listener: (event: string, job: ScheduledJob) => void): void {
+  onEvent(listener: (event: string, job: ScheduledJob | BackgroundJob) => void): void {
     this.listeners.push(listener);
   }
 
-  private emit(event: string, job: ScheduledJob): void {
+  private emit(event: string, job: ScheduledJob | BackgroundJob): void {
     for (const listener of this.listeners) {
       try { listener(event, job); } catch { /* ignore */ }
     }
