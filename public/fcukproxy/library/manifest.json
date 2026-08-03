@@ -1,0 +1,26 @@
+{
+  "library_version": "0.2.0",
+  "scheme": "fcukproxy-video-library",
+  "default_library_url": "https://www.financecheque.uk/fcukproxy/library",
+  "scenes": [
+    { "name": "cat",    "keywords": ["cat", "kitten", "kitty", "feline"] },
+    { "name": "fox",    "keywords": ["fox", "vulpes"] },
+    { "name": "dog",    "keywords": ["dog", "puppy", "hound"] },
+    { "name": "bird",   "keywords": ["bird", "robin", "eagle", "parrot", "owl"] },
+    { "name": "robot",  "keywords": ["robot", "android", "mech"] },
+    { "name": "space",  "keywords": ["rocket", "space", "galaxy", "planet", "star", "astro", "ufo"] },
+    { "name": "fire",   "keywords": ["fire", "flame", "campfire", "burn"] },
+    { "name": "snow",   "keywords": ["snow", "winter", "snowman", "ice"] },
+    { "name": "city",   "keywords": ["city", "skyline", "neon", "urban", "building"] },
+    { "name": "nature", "keywords": ["nature", "forest", "mountain", "river", "beach", "field", "park", "ocean"] }
+  ],
+  "objects": [
+    { "name": "hat",     "keywords": ["hat", "top hat"] },
+    { "name": "glasses", "keywords": ["glasses", "sunglasses"] },
+    { "name": "crown",   "keywords": ["crown"] },
+    { "name": "bowtie",  "keywords": ["bowtie"] },
+    { "name": "scarf",   "keywords": ["scarf"] },
+    { "name": "tree",    "keywords": ["tree"] },
+    { "name": "building","keywords": ["building", "skyline"] }
+  ]
+}

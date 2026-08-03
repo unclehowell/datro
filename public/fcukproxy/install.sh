@@ -240,15 +240,17 @@ install_agent() {
     python3 -m pip install --quiet aiohttp 2>/dev/null || true
 }
 
-# ── Download video library (scenes/objects engine) ───────────────────────────
-# The video engine is a single-file Pillow+ffmpeg renderer versioned in the
-# financecheque branch. Re-running the installer (or a branch rerelease) pulls
-# the latest library so every child proxy benefits simultaneously.
-VIDEO_LIB_VERSION="0.1.0"
+# ── Download video engine (thin client) + pre-fetch scene/object library ─────
+# The engine (phone_video.py) is a THIN Pillow+ffmpeg renderer. Scenes/objects
+# are NOT bundled: they live in the financecheque branch at
+# public/fcukproxy/library/ and are fetched on demand into ~/.fcukproxy/library,
+# then cached. A branch rerelease + `phone_video.py --update` syncs all child
+# proxies simultaneously — keeping install.sh small and local storage minimal.
+VIDEO_LIB_VERSION="0.2.0"
 install_video_lib() {
   mkdir -p "$INSTALL_DIR"
 
-  info "Downloading video library (scenes/objects engine)..."
+  info "Downloading video engine (thin client, scenes/objects fetched on demand)..."
   curl -sL "$RAW_BASE/public/fcukproxy/phone_video.py" -o "$INSTALL_DIR/phone_video.py"
 
   info "Installing video dependencies (Pillow)..."
@@ -270,7 +272,12 @@ install_video_lib() {
   fi
 
   if [[ -f "$INSTALL_DIR/phone_video.py" ]]; then
-    ok "Video library installed ($VIDEO_LIB_VERSION) — scenes: cat, fox, dog, bird, robot, space, fire, snow, city, nature"
+    # Pre-fetch the manifest + all scenes/objects into the local library cache
+    # so first render is fast and works offline afterwards.
+    info "Pre-fetching scene/object library from financecheque branch..."
+    python3 "$INSTALL_DIR/phone_video.py" --update 2>/dev/null \
+      || warn "Library pre-fetch failed (will be fetched on first render instead)"
+    ok "Video engine installed ($VIDEO_LIB_VERSION) — library: scenes+objects from branch, cached in $INSTALL_DIR/library"
   fi
 }
 
@@ -483,14 +490,17 @@ print_summary() {
   echo "  3. Verify it's visible on the parent:"
   echo "     curl -s $PARENT_URL/api/proxy?action=health | python3 -m json.tool"
   echo ""
-  echo -e "  ${YELLOW}Video library:${NC}"
-  echo "  Render videos with local compute (Pillow + ffmpeg):"
+  echo -e "  ${YELLOW}Video engine (local compute):${NC}"
+  echo "  Render videos on this device (Pillow + ffmpeg). Scenes/objects are"
+  echo "  fetched on demand from the financecheque branch and cached locally:"
   echo "     curl -s -X POST http://127.0.0.1:$PROXY_PORT/v1/video -H 'Content-Type: application/json' \\"
   echo "       -d '{\"prompt\":\"a cat in a hat\"}'"
   echo "  Poll:  curl -s http://127.0.0.1:$PROXY_PORT/v1/video/<job_id>"
   echo "  File:  curl -s http://127.0.0.1:$PROXY_PORT/v1/video/file/<name>.mp4 -o out.mp4"
-  echo "  Update the scene/object library by re-running this installer or"
-  echo "  pulling a new financecheque release (benefits all child proxies)."
+  echo "  Catalog (scenes/objects from branch): curl -s http://127.0.0.1:$PROXY_PORT/v1/video/library"
+  echo "  Update the scene/object library (after a financecheque rerelease):"
+  echo "     python3 $INSTALL_DIR/phone_video.py --update"
+  echo "  A rerelease of the financecheque branch updates ALL child proxies at once."
   echo ""
   echo -e "  ${YELLOW}Scaling:${NC}"
   echo "  Run this same script on other machines with the same PARENT_URL"

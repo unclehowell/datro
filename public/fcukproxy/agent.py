@@ -1172,10 +1172,11 @@ VIDEO_LOCK = asyncio.Lock()
 
 
 def _find_video_engine() -> str:
-    """Locate phone_video.py (canonical engine) in the install dir."""
+    """Locate phone_video.py (canonical engine) — prefer the copy co-located
+    with agent.py, then the install dir."""
     candidates = [
-        INSTALL_DIR / "phone_video.py",
         Path(__file__).resolve().parent / "phone_video.py",
+        INSTALL_DIR / "phone_video.py",
     ]
     for c in candidates:
         if c.exists():
@@ -1183,16 +1184,26 @@ def _find_video_engine() -> str:
     return str(INSTALL_DIR / "phone_video.py")
 
 
+def _load_video_engine_mod():
+    """Import the video engine module from disk (cached import)."""
+    engine_path = _find_video_engine()
+    if not Path(engine_path).exists():
+        return None
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("fcukproxy_video", engine_path)
+    mod = importlib.util.module_from_spec(spec)
+    sys.modules["fcukproxy_video"] = mod
+    spec.loader.exec_module(mod)
+    return mod
+
+
 def _render_video_job(job_id: str, prompt: str) -> None:
     """Background render via the PIL engine (runs in a thread)."""
     job = VIDEO_JOBS[job_id]
     try:
-        engine_path = _find_video_engine()
-        import importlib.util
-        spec = importlib.util.spec_from_file_location("fcukproxy_video", engine_path)
-        mod = importlib.util.module_from_spec(spec)
-        sys.modules["fcukproxy_video"] = mod
-        spec.loader.exec_module(mod)
+        mod = _load_video_engine_mod()
+        if mod is None:
+            raise RuntimeError("video engine (phone_video.py) not installed")
         scene, props, duration = mod.classify(prompt)
         filename = f"video-{job_id[:8]}-{scene}.mp4"
         os.makedirs(mod.OUTDIR, exist_ok=True)
@@ -1202,6 +1213,33 @@ def _render_video_job(job_id: str, prompt: str) -> None:
                    duration=duration, finished=time.time())
     except Exception as e:  # noqa: BLE001
         job.update(status="failed", error=str(e), finished=time.time())
+
+
+async def handle_video_library(request: web.Request) -> web.Response:
+    """GET /v1/video/library — return the scene/object library catalog.
+
+    Served from the remote library manifest (branch public/fcukproxy/library),
+    so the harness can enumerate available scenes/objects without bundling them.
+    """
+    mod = _load_video_engine_mod()
+    if mod is None:
+        return web.json_response({"error": "video engine not installed"}, status=500)
+    try:
+        update_result = {}
+        if hasattr(mod, "update_library"):
+            update_result = mod.update_library(timeout=8)
+        manifest = {}
+        if hasattr(mod, "get_manifest"):
+            manifest = mod.get_manifest()
+        return web.json_response({
+            "library_version": manifest.get("library_version") or getattr(mod, "LIB_VERSION", None),
+            "library_url": getattr(mod, "LIBRARY_URL", None),
+            "scenes": manifest.get("scenes", []),
+            "objects": manifest.get("objects", []),
+            "sync": update_result,
+        })
+    except Exception as e:  # noqa: BLE001
+        return web.json_response({"error": str(e), "library_version": None}, status=500)
 
 
 async def handle_video_create(request: web.Request) -> web.Response:
@@ -1247,15 +1285,10 @@ async def handle_video_file(request: web.Request) -> web.Response:
     """GET /v1/video/file/{name} — serve a rendered mp4."""
     from pathlib import Path as _P
     name = _P(request.match_info.get("name", "")).name
-    engine_path = _find_video_engine()
+    mod = _load_video_engine_mod()
     outdir = INSTALL_DIR / "videos"
-    if engine_path:
+    if mod is not None:
         try:
-            import importlib.util
-            spec = importlib.util.spec_from_file_location("fcukproxy_video_outdir", engine_path)
-            mod = importlib.util.module_from_spec(spec)
-            sys.modules["fcukproxy_video_outdir"] = mod
-            spec.loader.exec_module(mod)
             outdir = _P(mod.OUTDIR)
         except Exception:  # noqa: BLE001
             outdir = INSTALL_DIR / "videos"
@@ -1267,17 +1300,19 @@ async def handle_video_file(request: web.Request) -> web.Response:
 
 async def handle_capabilities(request: web.Request) -> web.Response:
     video_lib_version = None
-    engine_path = _find_video_engine()
-    if engine_path:
+    video_scenes = ["cat", "fox", "dog", "bird", "robot", "space", "fire", "snow", "city", "nature"]
+    video_objects = ["hat", "glasses", "crown", "bowtie", "scarf", "tree", "building"]
+    mod = _load_video_engine_mod()
+    if mod is not None:
         try:
-            import importlib.util
-            spec = importlib.util.spec_from_file_location("fcukproxy_video_ver", engine_path)
-            mod = importlib.util.module_from_spec(spec)
-            sys.modules["fcukproxy_video_ver"] = mod
-            spec.loader.exec_module(mod)
             video_lib_version = getattr(mod, "LIB_VERSION", None)
+            if hasattr(mod, "list_scenes"):
+                video_scenes = mod.list_scenes() or video_scenes
+            if hasattr(mod, "get_manifest"):
+                man = mod.get_manifest()
+                video_objects = [o.get("name") for o in man.get("objects", [])] or video_objects
         except Exception:  # noqa: BLE001
-            video_lib_version = None
+            pass
     return web.json_response({
         "machine_id": CONFIG["machine_id"],
         "machine_name": CONFIG["machine_name"],
@@ -1289,11 +1324,14 @@ async def handle_capabilities(request: web.Request) -> web.Response:
             "capability": "video",
             "engine": "Pillow+ffmpeg (phone_video.py)",
             "library_version": video_lib_version or "unknown",
-            "scenes": ["cat", "fox", "dog", "bird", "robot", "space", "fire", "snow", "city", "nature"],
+            "library_endpoint": "GET /v1/video/library",
+            "scenes": video_scenes,
+            "objects": video_objects,
             "endpoints": {
                 "create": "POST /v1/video",
                 "status": "GET /v1/video/{id}",
                 "file": "GET /v1/video/file/{name}",
+                "library": "GET /v1/video/library",
             },
         },
     })
@@ -1312,7 +1350,7 @@ async def handle_root(request: web.Request) -> web.Response:
             "capabilities": "GET /v1/agent/capabilities",
             "execute": "POST /execute",
             "agent_execute": "POST /v1/agent/execute",
-            "video": "POST /v1/video (render), GET /v1/video/{id} (poll), GET /v1/video/file/{name} (mp4)",
+            "video": "POST /v1/video (render), GET /v1/video/library (catalog), GET /v1/video/{id} (poll), GET /v1/video/file/{name} (mp4)",
         },
         "parent_proxies": PARENT_URLS,
     })
@@ -1325,6 +1363,7 @@ async def main():
     app.router.add_post("/execute", handle_execute)
     app.router.add_post("/v1/agent/execute", handle_agent_execute)
     app.router.add_post("/v1/video", handle_video_create)
+    app.router.add_get("/v1/video/library", handle_video_library)
     app.router.add_get("/v1/video/{id}", handle_video_status)
     app.router.add_get("/v1/video/file/{name:.+}", handle_video_file)
     app.router.add_get("/status", handle_status)

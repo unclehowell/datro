@@ -25,6 +25,13 @@ const VIDEO_API = process.env.VIDEO_API_URL || "http://127.0.0.1:6000/v1/video";
 // Remotion if the endpoint is unreachable.
 const PREFER_LOCAL_ENGINE = (process.env.VIDEO_USE_PIL_ENGINE || "1") === "1";
 
+// Default scene/object list (used only until the remote library catalog loads
+// or when the child-proxy endpoint is unreachable).
+let LIBRARY_SCENES: string[] = ["cat", "fox", "dog", "bird", "robot", "space", "fire", "snow", "city", "nature"];
+let LIBRARY_OBJECTS: string[] = ["hat", "glasses", "crown", "bowtie", "scarf", "tree", "building"];
+let LIBRARY_VERSION = "unknown";
+let LIBRARY_URL = "";
+
 if (!existsSync(OUTPUT_DIR)) {
   mkdirSync(OUTPUT_DIR, { recursive: true });
 }
@@ -103,6 +110,28 @@ function parseVideoApi(url: string): { host: string; port: number; base: string 
     return { host: m?.[1] || "127.0.0.1", port: m?.[2] ? Number(m[2]) : 6000, base: (m?.[3] || "").replace(/\/$/, "") };
   }
 }
+
+// ─── Fetch the remote scene/object library catalog ───
+// The library lives in the financecheque branch (public/fcukproxy/library).
+// The child-proxy agent exposes it at GET /v1/video/library so the harness
+// always knows the current scenes/objects without bundling them.
+async function fetchLibraryCatalog(): Promise<void> {
+  try {
+    const { host, port, base } = parseVideoApi(VIDEO_API);
+    const resp = await httpJson(host, port, `${base}/library`, "GET", undefined, 8000);
+    if (resp.status >= 200 && resp.status < 300 && resp.data?.scenes) {
+      LIBRARY_SCENES = resp.data.scenes.map((s: any) => s.name).filter(Boolean);
+      if (resp.data.objects?.length) {
+        LIBRARY_OBJECTS = resp.data.objects.map((o: any) => o.name).filter(Boolean);
+      }
+      LIBRARY_VERSION = resp.data.library_version || LIBRARY_VERSION;
+      LIBRARY_URL = resp.data.library_url || LIBRARY_URL;
+    }
+  } catch {
+    // endpoint unreachable — keep the default catalog
+  }
+}
+fetchLibraryCatalog();
 
 async function renderViaChildProxy(params: Record<string, unknown>): Promise<{ success: boolean; output?: string; error?: string; metadata?: Record<string, unknown> }> {
   const scene = String(params.scene || params.template || "dance");
@@ -275,14 +304,14 @@ export async function renderAIVideo(params: Record<string, unknown>): Promise<{ 
 // ─── Tool definition ───
 export const aiVideoTool = {
   name: "ai-video",
-  description: "Generate literal video content from scene scripts. Templates: dance, nature, city, space, fire, snow, cat, fox, dog, bird, robot. Produces actual animated content — no text overlays unless explicitly requested.",
+  description: `Generate literal video content from scene scripts. Scene/object library is fetched from the child-proxy library endpoint (financecheque branch) — current library v${LIBRARY_VERSION}. Scenes: ${LIBRARY_SCENES.join(", ")}. Objects (accessories/composables): ${LIBRARY_OBJECTS.join(", ")}. Produces actual animated content — no text overlays unless explicitly requested.`,
   category: "media",
   capability: "video",
   parameters: [
-    { name: "scene", type: "string", description: "Scene template: dance, nature, city, space, fire, snow, cat, fox, dog, bird, robot", required: true },
+    { name: "scene", type: "string", description: `Scene template: ${LIBRARY_SCENES.join(", ")}`, required: true },
     { name: "duration", type: "number", description: "Duration in seconds (1-30)", required: false, default: 5 },
     { name: "prompt", type: "string", description: "Free-form prompt (e.g. 'a red fox in a forest') — preferred over structured props", required: false },
-    { name: "props", type: "object", description: "Scene-specific properties (character, action, background, palette, motion)" },
+    { name: "props", type: "object", description: `Scene-specific properties (character, action, background, palette, motion; accessories: ${LIBRARY_OBJECTS.join(", ")})` },
   ],
   timeout: 600000,
   permissions: ["execute", "write"],
