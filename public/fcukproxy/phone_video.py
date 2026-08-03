@@ -34,6 +34,10 @@ LIBRARY_URL = os.environ.get(
     "FCUK_LIBRARY_URL",
     "https://www.financecheque.uk/fcukproxy/library",
 ).rstrip("/")
+# Fallback mirror (raw.githubusercontent) used when the primary library URL is
+# unreachable or serves non-library content (e.g. a Cloudflare Pages SPA
+# fallback or a failed deploy).
+LIBRARY_URL_FALLBACK = "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/library"
 # Local cache dir for fetched scenes/objects/manifest.
 LIB_CACHE = os.path.join(os.path.expanduser("~"), ".fcukproxy", "library")
 FFMPEG = (
@@ -76,15 +80,23 @@ def _source(rel: str, timeout: int = 15) -> str | None:
                 return f.read()
         except Exception:  # noqa: BLE001
             pass
-    src = _http_get(f"{LIBRARY_URL}/{rel}", timeout=timeout)
-    if src is not None:
+    for base in (LIBRARY_URL, LIBRARY_URL_FALLBACK):
+        src = _http_get(f"{base}/{rel}", timeout=timeout)
+        if src is None:
+            continue
+        if rel == "manifest.json":
+            try:
+                json.loads(src)
+            except Exception:  # noqa: BLE001
+                continue  # primary served an SPA fallback page — try mirror
         try:
             os.makedirs(os.path.dirname(cached), exist_ok=True)
             with open(cached, "w", encoding="utf-8") as f:
                 f.write(src)
         except Exception:  # noqa: BLE001
             pass
-    return src
+        return src
+    return None
 
 
 def get_manifest() -> dict:
@@ -128,7 +140,16 @@ def update_library(timeout: int = 15) -> dict:
     Purges the cache when the library_version changes, then re-fetches every
     scene/object so a branch rerelease propagates to all child proxies.
     """
-    remote = _http_get(f"{LIBRARY_URL}/manifest.json", timeout=timeout)
+    remote = None
+    for base in (LIBRARY_URL, LIBRARY_URL_FALLBACK):
+        candidate = _http_get(f"{base}/manifest.json", timeout=timeout)
+        if candidate:
+            try:
+                json.loads(candidate)
+                remote = candidate
+                break
+            except Exception:  # noqa: BLE001
+                continue
     if not remote:
         return {"ok": False, "error": "could not fetch manifest", "library_version": None}
     try:
