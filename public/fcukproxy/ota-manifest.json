@@ -1,7 +1,7 @@
 {
   "schema": 2,
   "branch": "financecheque",
-  "release_sequence": 2,
+  "release_sequence": 3,
   "updated": "2026-08-04",
   "apps": {
     "child-proxy": {
@@ -35,7 +35,7 @@
       "check": "bash"
     },
     "skills-leadgen": {
-      "version": "0.2.0",
+      "version": "0.3.0",
       "file": "skills/leadgen-strategy.md",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/skills/leadgen-strategy.md",
       "check": "text"

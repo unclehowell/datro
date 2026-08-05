@@ -61,13 +61,13 @@ const MAX_BACKOFF_MS = 30000;
 const ALLOWED_HOSTS = ['raw.githubusercontent.com', 'www.financecheque.uk', 'financecheque.uk'];
 const MANIFEST_MAX_BYTES = 64 * 1024;
 const FILE_MAX_BYTES = 4 * 1024 * 1024;
+const FCUK_DIR = `${process.env.HOME}/.fcukproxy`;
 const RELEASE_SEQUENCE_FILE = `${FCUK_DIR}/.ota-sequence`;
 
 const OTA_MANIFEST_URL = process.env.OTA_URL
   || `${PARENT_URL}/api/proxy/ota/manifest`
   || 'https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/ota-manifest.json';
 const OTA_FALLBACK_URL = 'https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/ota-manifest.json';
-const FCUK_DIR = `${process.env.HOME}/.fcukproxy`;
 const OTA_TMP = `${FCUK_DIR}/.ota`;
 
 // Internal component spec is hard-coded; the manifest may only name versions/URLs.
@@ -87,6 +87,19 @@ function hostOf(url) {
   const m = /^https:\/\/([^/?#]+)/i.exec(url);
   if (!m) return null;
   return m[1].split(':').slice(0, 1)[0].replace(/^\[|\]$/g, '').toLowerCase();
+}
+
+// Numeric dot-version compare; non-numeric parts are ignored.
+function versionLt(a, b) {
+  const pa = String(a).split('.').map((x) => parseInt(x, 10) || 0);
+  const pb = String(b).split('.').map((x) => parseInt(x, 10) || 0);
+  const n = Math.max(pa.length, pb.length);
+  for (let i = 0; i < n; i++) {
+    const va = pa[i] || 0, vb = pb[i] || 0;
+    if (va < vb) return true;
+    if (va > vb) return false;
+  }
+  return false;
 }
 
 function allowedUrl(url) {
@@ -173,6 +186,8 @@ async function checkForUpdate() {
       if (meta.version === localVersion) continue;
       if (typeof meta.version !== 'string' || typeof meta.url !== 'string') continue;
       if (!allowedUrl(meta.url)) { console.error(`[child-proxy] OTA: ${name} bad url, skipping whole update`); return; }
+      // Per-component anti-downgrade: never let a manifest push a component back.
+      if (versionLt(meta.version, localVersion)) { console.error(`[child-proxy] OTA: ${name} manifest offers ${meta.version} < local ${localVersion}, skipping`); continue; }
 
       const tmp = `${OTA_TMP}/${spec.file.replace(/\//g, '__')}`;
       console.log(`[child-proxy] OTA: staging ${name} ${localVersion} → ${meta.version}`);
