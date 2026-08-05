@@ -8,6 +8,9 @@ interface Env {
   MISTRAL_API_KEY?: string;
   TOGETHER_API_KEY?: string;
   PERPLEXITY_API_KEY?: string;
+  NVIDIA_API_KEY?: string;
+  OLLAMA_CLOUD_API_KEY?: string;
+  HF_TOKEN?: string;
 }
 
 interface ChatMessage {
@@ -77,6 +80,24 @@ const providers: { name: string; key: string; url: string; mapModel: (m: string)
     key: 'TOGETHER_API_KEY',
     url: 'https://api.together.xyz/v1/chat/completions',
     mapModel: (m) => m || 'meta-llama/Llama-3.3-70B-Instruct-Turbo',
+  },
+  {
+    name: 'nvidia',
+    key: 'NVIDIA_API_KEY',
+    url: 'https://integrate.api.nvidia.com/v1/chat/completions',
+    mapModel: (m) => m || 'meta/llama-3.3-70b-instruct',
+  },
+  {
+    name: 'ollama',
+    key: 'OLLAMA_CLOUD_API_KEY',
+    url: 'https://ollama.com/api/chat',
+    mapModel: (m) => m || 'llama3.3:70b',
+  },
+  {
+    name: 'huggingface',
+    key: 'HF_TOKEN',
+    url: 'https://router.huggingface.co/v1/chat/completions',
+    mapModel: (m) => m || 'HuggingFaceH4/zephyr-7b-beta',
   },
 ];
 

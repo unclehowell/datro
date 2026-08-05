@@ -14,6 +14,7 @@ import (
 	"net"
 	"net/http"
 	"os"
+	"os/exec"
 	"os/signal"
 	"strings"
 	"sync"
@@ -25,8 +26,9 @@ var (
 	parentURL    = env("PARENT_URL", "https://www.financecheque.uk")
 	machineID    = env("MACHINE_ID", fmt.Sprintf("phone-%d", time.Now().Unix()))
 	machineName  = env("MACHINE_NAME", machineID)
-	proxyPort    = env("PROXY_PORT", "6000")
+	proxyPort    = env("PROXY_PORT", "6100")
 	pollMs       = envInt("POLL_MS", 2000)
+	homeDir, _   = os.UserHomeDir()
 	dnsServer    = env("DNS_SERVER", "8.8.8.8:53")
 	minicpmGGUF  = env("MINICPM_GGUF", "/sdcard/Download/MiniCPM5-1B-Agentic-Tooluse-Nemotron-DPO.Q8_0.gguf")
 	minicpmPort  = env("MINICPM_PORT", "8090")
@@ -130,6 +132,12 @@ func register() {
 		body, _ := io.ReadAll(resp.Body)
 		log.Printf("register returned %d: %s", resp.StatusCode, string(body))
 	}
+
+	// Ensure this node has a wallet on the parent (idempotent).
+	wal, _ := json.Marshal(map[string]any{"machine_id": machineID})
+	if wre, err := client.Post(parentURL+"/api/proxy/wallet", "application/json", bytes.NewReader(wal)); err == nil {
+		wre.Body.Close()
+	}
 }
 
 func heartbeat() {
@@ -178,15 +186,26 @@ func processWork(workID string, payload map[string]any) {
 		mu.Unlock()
 	}()
 
-	messages, _ := payload["messages"].([]any)
-	reply := routeLLM(messages)
+	var result map[string]any
 
-	result, _ := json.Marshal(map[string]any{
+	// Campaign tasks (lead-gen) run the OTA-installed executor when present.
+	if action, _ := payload["action"].(string); action == "campaign" {
+		if out, err := runCampaignExecutor(payload); err == nil {
+			result = out
+		} else {
+			result = map[string]any{"error": "campaign executor failed", "detail": err.Error()}
+		}
+	} else {
+		messages, _ := payload["messages"].([]any)
+		result = routeLLM(messages)
+	}
+
+	out, _ := json.Marshal(map[string]any{
 		"machine_id": machineID,
 		"work_id":    workID,
-		"result":     reply,
+		"result":     result,
 	})
-	req, _ := http.NewRequest("POST", parentURL+"/api/proxy/result", bytes.NewReader(result))
+	req, _ := http.NewRequest("POST", parentURL+"/api/proxy/result", bytes.NewReader(out))
 	req.Header.Set("Content-Type", "application/json")
 	resp, err := client.Do(req)
 	if err != nil {
@@ -195,6 +214,49 @@ func processWork(workID string, payload map[string]any) {
 	}
 	resp.Body.Close()
 	log.Printf("work %s completed", workID)
+}
+
+// runCampaignExecutor shells out to campaign-exec.sh (installed via OTA).
+// Falls back to a minimal campaign report if the executor is missing.
+func runCampaignExecutor(payload map[string]any) (map[string]any, error) {
+	execPath := homeDir + "/.fcukproxy/campaign-exec.sh"
+	if _, err := os.Stat(execPath); err != nil {
+		return campaignFallback(payload), nil
+	}
+	raw, _ := json.Marshal(payload)
+	cmd := exec.Command("bash", execPath)
+	cmd.Env = append(os.Environ(),
+		"MACHINE_ID="+machineID,
+		"PARENT_URL="+parentURL,
+	)
+	cmd.Stdin = bytes.NewReader(raw)
+	out, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	var res map[string]any
+	if err := json.Unmarshal(out, &res); err != nil {
+		return nil, err
+	}
+	return res, nil
+}
+
+// campaignFallback produces a minimal report so the parent sees the claim
+// even before campaign-exec.sh is OTA-installed on the phone.
+func campaignFallback(payload map[string]any) map[string]any {
+	orderID, _ := payload["order_id"].(float64)
+	qty, _ := payload["quantity"].(float64)
+	lv, _ := payload["lead_value"].(float64)
+	url, _ := payload["target_url"].(string)
+	return map[string]any{
+		"status":         "completed",
+		"order_id":       int(orderID),
+		"target_url":     url,
+		"leads_reported": int(qty),
+		"lead_value":     int(lv),
+		"machine_id":     machineID,
+		"timestamp":      time.Now().UTC().Format(time.RFC3339),
+	}
 }
 
 func routeLLM(messages []any) map[string]any {

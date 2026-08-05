@@ -27,7 +27,7 @@ log = logging.getLogger(__name__)
 INSTALL_DIR = Path.home() / ".fcukproxy"
 CONFIG_FILE = INSTALL_DIR / "machine.json"
 ENV_FILE = INSTALL_DIR / ".env"
-PROXY_PORT = int(os.environ.get("PORT", "6000"))
+PROXY_PORT = int(os.environ.get("PORT", "6100"))
 MCAST_GRP = "239.255.255.250"
 MCAST_PORT = 6002
 PARENT_URLS = [
@@ -40,7 +40,51 @@ POLL_INTERVAL = 2
 _ANSI_RE = __import__('re').compile(r'\x1b\[[0-9;]*[a-zA-Z]|\x1b\][0-9;]*[a-zA-Z]|\x1b[\[\]()#][0-9;]*[^\x1b]*')
 def strip_ansi(text: str) -> str:
     return _ANSI_RE.sub('', text).strip()
-VERSION = "0.4.0"
+VERSION = "0.6.0"
+
+# ── OTA self-update ───────────────────────────────────────────────────────
+OTA_MANIFEST_URL = os.environ.get(
+    "OTA_URL",
+    "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/ota-manifest.json",
+)
+
+async def _ota_check():
+    """Compare local version vs manifest; swap + self-exec if newer."""
+    try:
+        async with ClientSession(timeout=ClientTimeout(total=10)) as s:
+            async with s.get(OTA_MANIFEST_URL) as r:
+                if r.status != 200:
+                    return
+                ct = r.headers.get("content-type", "")
+                if "json" not in ct:
+                    return
+                manifest = await r.json()
+        agent_meta = (manifest.get("apps") or {}).get("agent")
+        if not agent_meta:
+            return
+        if agent_meta.get("version", "0") == VERSION:
+            return  # already current
+        import urllib.request
+        src_path = Path(__file__).resolve()
+        data = urllib.request.urlopen(agent_meta["url"], timeout=30).read()
+        decoded = data.decode("utf-8", errors="ignore")
+        if "aiohttp" not in decoded:
+            log.warning("OTA: agent.py payload looks invalid, skipping")
+            return
+        backup = src_path.with_suffix(".py.bak")
+        backup.write_bytes(src_path.read_bytes())
+        src_path.write_bytes(decoded.encode("utf-8"))
+        log.info("OTA: agent.py updated to %s — restarting", agent_meta["version"])
+        os._exit(0)  # let systemd/pm2 restart with new code
+    except Exception as e:
+        log.debug("OTA check failed: %s", e)
+
+def _schedule_ota_check():
+    loop = asyncio.get_event_loop()
+    if loop.is_closed():
+        return
+    loop.create_task(_ota_check())
+    loop.call_later(1800, _schedule_ota_check)
 
 log = logging.getLogger(__name__)
 
@@ -79,6 +123,19 @@ def load_env_keys():
 
 CONFIG = load_config()
 ENV_KEYS = load_env_keys()
+
+# ── Local shared bearer token (agent.py ⇄ child-proxy.mjs) ────────────────
+LOCAL_TOKEN = os.environ.get("FCUK_LOCAL_TOKEN") or ENV_KEYS.get("FCUK_LOCAL_TOKEN") or ""
+AUTH_HEADER = "X-FCUK-Token"
+
+def require_auth(request: web.Request) -> bool:
+    """True when no token configured, or the request carries the right token."""
+    if not LOCAL_TOKEN:
+        return True
+    return request.headers.get(AUTH_HEADER) == LOCAL_TOKEN
+
+def auth_fail() -> web.Response:
+    return web.json_response({"error": "unauthorized"}, status=401)
 
 # Cache backend API URL for CLI tools (read from their config, not probed)
 _cli_backend_info: dict[str, str] = {}
@@ -188,6 +245,9 @@ PROVIDERS = [
     {"name": "cohere", "key": "COHERE_API_KEY", "url": "https://api.cohere.ai/v1/chat/completions", "model": "command-r"},
     {"name": "glm", "key": "GLM_API_KEY", "url": "https://open.bigmodel.cn/api/paas/v4/chat/completions", "model": "glm-4-flash"},
     {"name": "hyperbolic", "key": "HYPERBOLIC_API_KEY", "url": "https://api.hyperbolic.xyz/v1/chat/completions", "model": "meta-llama/Meta-Llama-3-70B-Instruct"},
+    {"name": "nvidia", "key": "NVIDIA_API_KEY", "url": "https://integrate.api.nvidia.com/v1/chat/completions", "model": "meta/llama-3.3-70b-instruct"},
+    {"name": "ollama_cloud", "key": "OLLAMA_CLOUD_API_KEY", "url": "https://ollama.com/api/chat", "model": "llama3.3:70b"},
+    {"name": "hf", "key": "HF_TOKEN", "url": "https://router.huggingface.co/v1/chat/completions", "model": "HuggingFaceH4/zephyr-7b-beta"},
 ]
 
 _ROUND_ROBIN = 0
@@ -1080,6 +1140,8 @@ async def handle_health(request: web.Request) -> web.Response:
     return web.json_response({"status": "ok"})
 
 async def handle_execute(request: web.Request) -> web.Response:
+    if not require_auth(request):
+        return auth_fail()
     chat_only = request.headers.get("X-Chat-Only", "").lower() == "true"
     if chat_only:
         return web.json_response({
@@ -1109,6 +1171,8 @@ async def handle_execute(request: web.Request) -> web.Response:
 
 async def handle_agent_execute(request: web.Request) -> web.Response:
     """POST /v1/agent/execute — run a delegated task via agent-exec.sh (mirrors child-proxy.mjs poll path)."""
+    if not require_auth(request):
+        return auth_fail()
     chat_only = request.headers.get("X-Chat-Only", "").lower() == "true"
     if chat_only:
         return web.json_response({
@@ -1122,10 +1186,13 @@ async def handle_agent_execute(request: web.Request) -> web.Response:
     task = body.get("task", "").strip()
     if not task:
         return web.json_response({"error": "task is required"}, status=400)
-    exec_sh = INSTALL_DIR / "agent-exec.sh"
+    action = body.get("action", "")
+    is_campaign = action == "campaign"
+    exec_name = "campaign-exec.sh" if is_campaign else "agent-exec.sh"
+    exec_sh = INSTALL_DIR / exec_name
     if not exec_sh.exists():
-        return web.json_response({"error": "agent-exec.sh not installed"}, status=500)
-    timeout_sec = int(body.get("timeout_sec", 300))
+        return web.json_response({"error": f"{exec_name} not installed"}, status=500)
+    timeout_sec = int(body.get("timeout_sec", 3600 if is_campaign else 300))
     payload = json.dumps(body)
     try:
         proc = await asyncio.create_subprocess_exec(
@@ -1156,15 +1223,6 @@ async def handle_agent_execute(request: web.Request) -> web.Response:
         return web.json_response({"status": "completed", "result": result})
     except Exception as e:
         return web.json_response({"error": str(e)}, status=500)
-
-async def handle_env(request: web.Request) -> web.Response:
-    return web.json_response({
-        "has_keys": bool(ENV_KEYS),
-        "configured_providers": [
-            k.replace("_API_KEY", "").lower()
-            for k in ENV_KEYS if k.endswith("_API_KEY")
-        ],
-    })
 
 # ─── video generation (lightweight PIL engine) ────────────────────
 VIDEO_JOBS: dict = {}
@@ -1244,6 +1302,8 @@ async def handle_video_library(request: web.Request) -> web.Response:
 
 async def handle_video_create(request: web.Request) -> web.Response:
     """POST /v1/video — queue a video render from a text prompt."""
+    if not require_auth(request):
+        return auth_fail()
     try:
         body = await request.json()
     except Exception:
@@ -1346,7 +1406,6 @@ async def handle_root(request: web.Request) -> web.Response:
             "models": "GET /v1/models",
             "status": "GET /status",
             "health": "GET /health",
-            "env": "GET /env",
             "capabilities": "GET /v1/agent/capabilities",
             "execute": "POST /execute",
             "agent_execute": "POST /v1/agent/execute",
@@ -1368,7 +1427,6 @@ async def main():
     app.router.add_get("/v1/video/file/{name:.+}", handle_video_file)
     app.router.add_get("/status", handle_status)
     app.router.add_get("/health", handle_health)
-    app.router.add_get("/env", handle_env)
     app.router.add_get("/v1/agent/capabilities", handle_capabilities)
 
     runner = web.AppRunner(app)
@@ -1382,6 +1440,7 @@ async def main():
 
     await register_with_parent()
     await _probe_kiro_backend()
+    _schedule_ota_check()
 
     await asyncio.gather(
         periodic_register(),

@@ -10,8 +10,14 @@ interface SystemStatus {
   timestamp: string;
 }
 
+interface NodeStatus {
+  child: { ok?: boolean; version?: string; machine_id?: string; role?: string };
+  agent: { version?: string };
+}
+
 export default function Dashboard() {
   const [status, setStatus] = useState<SystemStatus | null>(null);
+  const [node, setNode] = useState<NodeStatus | null>(null);
   const [time, setTime] = useState("");
 
   useEffect(() => {
@@ -33,6 +39,18 @@ export default function Dashboard() {
     };
     fetchStatus();
     const interval = setInterval(fetchStatus, 15000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const fetchNode = async () => {
+      try {
+        const res = await fetch("/api/node", { signal: AbortSignal.timeout(5000) });
+        if (res.ok) setNode(await res.json());
+      } catch {}
+    };
+    fetchNode();
+    const interval = setInterval(fetchNode, 30000);
     return () => clearInterval(interval);
   }, []);
 
@@ -78,11 +96,12 @@ export default function Dashboard() {
             ]}
           />
           <StatusCard
-            title="Models"
-            status={status?.models?.length ? "online" : "offline"}
+            title="Child Node"
+            status={node?.child?.ok ? "online" : "offline"}
             details={[
-              { label: "Available", value: String(status?.models?.length ?? 0) },
-              { label: "Primary", value: status?.models?.[0] || "none" },
+              { label: "Proxy", value: `v${node?.child?.version || "—"}` },
+              { label: "Agent", value: `v${node?.agent?.version || "—"}` },
+              { label: "Role", value: node?.child?.role || "—" },
             ]}
           />
         </div>
@@ -92,6 +111,8 @@ export default function Dashboard() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
             <QuickAction href="/chat" label="Chat" desc="Talk to Hermes" icon="💬" />
             <QuickAction href="/terminal" label="Terminal" desc="Shell + Keyboard" icon="⌨️" />
+            <QuickAction href="/jobs" label="Jobs" desc="Lead orders + wallet" icon="⚡" />
+            <QuickAction href="/connect" label="Connect" desc="OAuth + LLM keys" icon="🔗" />
             <QuickAction href="http://localhost:9119" label="Hermes" desc="Dashboard" icon="🤖" external />
             <QuickAction href="http://localhost:20128" label="OmniRoute" desc="Providers" icon="🔀" external />
             <QuickAction href="/docs" label="Docs" desc="System documentation" icon="📖" />

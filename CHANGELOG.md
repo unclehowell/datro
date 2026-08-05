@@ -1,3 +1,45 @@
+## [0.5.1.88] - 2026-08-04
+
+Release candidates live-tested across the FCUK swarm: this laptop + connected phone (child-proxy nodes) OTA-update from this branch.
+
+### Added
+- **OTC/OTA first-class**: `ota-manifest.json` + parent-served `/api/proxy/ota/manifest` — branch-level manifest carries per-component versions; `child-proxy.mjs` and `agent.py` compare their local `LOCAL_VERSIONS` against it and self-swap on mismatch (validated, then restart under pm2/systemd). Future releases need only a branch rerelease — no bespoke webapp/GUI/child-proxy edits per node.
+- The `/v1/ota/update` endpoint on child-proxy.mjs lets the GUI trigger a manual OTA check (`X-FCUK-Token` guarded when `FCUK_LOCAL_TOKEN` set).
+- **Lead-gen campaign executor** (`public/fcukproxy/campaign-exec.sh`): long-horizon multi-step campaigns via opencode/kilo + local/cloud LLMs, filesystem-as-context-store, agent-editable `memory.md`, reusable `skills/*.md`, `trace.jsonl` source-of-truth.
+- **Sleep-time compute / reflection** (`public/fcukproxy/reflect.sh`): nightly review of the day's `trace.jsonl` distills durable lessons into `memory.md` (nodes learn offline instead of re-deriving from the LLM).
+- **Node wallets + escrow + lead payout** (`node_wallets`, `orders`, `leads`, `disbursements`, `oauth_tokens` D1 tables + indexes): `POST /api/proxy/wallet`, `GET /api/proxy/wallet`, `GET /api/proxy/orders`, `POST /api/proxy/order/accept`, `POST /api/proxy/lead`. Buyer credits escrowed per order; verified leads credited to the node wallet.
+- **Skills library** (`public/fcukproxy/skills/{leadgen-strategy,local-agent-discharge}.md`) — reusable procedure snippets loaded into every agent prompt.
+- **Free-tier LLM provider keys** wired into `install.sh` (NVIDIA, Ollama Cloud, Cerebras, Mistral, DeepInfra, Fireworks, Cohere, HuggingFace) — paste via the port-3000 GUI → **Connect** page (new `/api/oauth` + `/api/settings` routes).
+- **GUI additions**: new **Jobs** page (lead orders + node wallet) and **Connect** page (OAuth + LLM keys); Dashboard "Child Node" card shows proxy/agent version + role; Dock adds Jobs ⚡ + Connect 🔗.
+- **Agentic CLIs as swarm compute**: `install.sh` now installs `opencode` + `kilo`; child-proxy reports `capabilities` (agent_exec, campaign_exec, agent_py, video, local_llm, opencode, kilo) and `pressure` (cpu/mem/jobs) to the parent.
+
+### Changed
+- Default agent/proxy port migrated **6000 → 6100** across `install.sh`, `child-proxy.mjs`, `agent.py`, `phone-proxy.go`, `phone-agentos.go`, and D1 `proxy_nodes.proxy_port` default.
+- `child-proxy.mjs` now uses an **adaptive poll schedule** (fast after work, backs off to idle) and reports version + capabilities on registration.
+- `phone-proxy.go` / `phone-agentos.go`: added wallet ensure-on-register, campaign executor with graceful fallback report, port 6100.
+- Harness modernized for yolo mode, long-running tasks, and subagent spawning (`dca8633c9`).
+- Video scene/object library versioned into branch (`/v1/video` + `/v1/video/library` + `phone_video.py` thin engine) with `video-update.sh` for rerelease sync (`93a11abff`, `807a93c30`); library URL fallback to raw GitHub when primary serves SPA/garbage (`62d70e249`).
+
+### Fixed
+- `agentos-gui` production build repaired — 5 syntax/type errors from the yolo merge (`5d2515fc5`).
+- `AnimatePresence` closed inside the payment modal conditional / logout warning (`ba04cb445`, `2355d5a56`).
+- `datro.xyz` → `datro.financecheque.uk` across all assets (`152d29148`).
+- `__pycache__` / `.pyc` git-ignored (`9b17dbc4d`).
+
+## [0.5.1.87] - 2026-08-02
+
+- feat: add **clients page** to financecheque.uk website — modal popup + footer link (`c13442d76`, `fdbe2c839`), nav loads clients page in an iframe (`06d8460ed`).
+
+## [0.5.1.86] - 2026-08-01
+
+- test: add **DELEGATE route** to the ROUTER_SYSTEM prompt (`b70c2e762`).
+
+## [0.5.1.85] - 2026-08-01
+
+- feat(fcukproxy): installer deploys **child-proxy.mjs + agent.py executor clone** (`2e14f18e2`).
+- fix(child-proxy): **Termux phone execution** — writable tmp, shallow clone, clean JSON stdout, disabled agent.py double-polling (`05c564ced`).
+- Release: add agentos-gui deployment to install.sh, update version numbers (`47900c5f3`).
+
 ## [0.5.1.84] - 2026-07-30
 
 ### Added

@@ -28,7 +28,7 @@ RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
 MODE="${MODE:-}"                     # lite | full | auto (detect)
 PARENT_URL="${PARENT_URL:-}"         # https://your-parent-host.com
 CHILD_ID="${CHILD_ID:-}"             # unique name for this node
-PROXY_PORT="${PROXY_PORT:-6000}"     # port for the child proxy agent
+PROXY_PORT="${PROXY_PORT:-6100}"     # port for the child proxy agent
 LLAMA_PORT="${LLAMA_PORT:-8090}"     # port for llama-server (full mode only)
 INSTALL_DIR="${INSTALL_DIR:-$HOME/.fcukproxy}"
 CHAT_ONLY="${CHAT_ONLY:-false}"      # true = no command execution allowed
@@ -235,6 +235,23 @@ install_agent() {
   info "Downloading child proxy agent..."
   curl -sL "$RAW_BASE/public/fcukproxy/agent.py" -o "$INSTALL_DIR/agent.py"
 
+  info "Downloading campaign executor..."
+  curl -sL "$RAW_BASE/public/fcukproxy/campaign-exec.sh" -o "$INSTALL_DIR/campaign-exec.sh" 2>/dev/null
+  chmod +x "$INSTALL_DIR/campaign-exec.sh" 2>/dev/null || true
+
+  info "Downloading sleep-time reflect + skills..."
+  curl -sL "$RAW_BASE/public/fcukproxy/reflect.sh" -o "$INSTALL_DIR/reflect.sh" 2>/dev/null || true
+  chmod +x "$INSTALL_DIR/reflect.sh" 2>/dev/null || true
+  mkdir -p "$INSTALL_DIR/skills" 2>/dev/null || true
+  curl -sL "$RAW_BASE/public/fcukproxy/skills/leadgen-strategy.md" -o "$INSTALL_DIR/skills/leadgen-strategy.md" 2>/dev/null || true
+  curl -sL "$RAW_BASE/public/fcukproxy/skills/local-agent-discharge.md" -o "$INSTALL_DIR/skills/local-agent-discharge.md" 2>/dev/null || true
+
+  # Nightly sleep-time compute: node reviews today's traces → distills memory.md
+  if command -v crontab >/dev/null 2>&1; then
+    ( crontab -l 2>/dev/null | grep -v 'fcukproxy/reflect.sh'; \
+      echo "17 3 * * * ${HOME}/.fcukproxy/reflect.sh" ) | crontab - 2>/dev/null || true
+  fi
+
   info "Installing Python dependencies..."
   python3 -m pip install --quiet --user aiohttp 2>/dev/null || \
     python3 -m pip install --quiet aiohttp 2>/dev/null || true
@@ -285,6 +302,15 @@ install_video_lib() {
 write_config() {
   mkdir -p "$INSTALL_DIR"
 
+  # Shared local auth token (agent.py ⇄ child-proxy.mjs on 4001)
+  if [[ -z "$FCUK_LOCAL_TOKEN" && -f "$INSTALL_DIR/.env" ]]; then
+    FCUK_LOCAL_TOKEN=$(grep -E '^FCUK_LOCAL_TOKEN=' "$INSTALL_DIR/.env" | head -1 | cut -d= -f2-)
+  fi
+  if [[ -z "$FCUK_LOCAL_TOKEN" ]]; then
+    FCUK_LOCAL_TOKEN=$(python3 -c "import secrets; print(secrets.token_hex(24))" 2>/dev/null || \
+      (tr -dc 'a-zA-Z0-9' </dev/urandom | head -c 48))
+  fi
+
   # machine.json
   cat > "$INSTALL_DIR/machine.json" << JSONEOF
 {
@@ -306,6 +332,9 @@ JSONEOF
 # Add your keys here. The agent hot-reloads every 60s.
 # At minimum, add one provider key (Groq is free):
 #   https://console.groq.com/keys
+
+# Local shared auth token (agent.py ⇄ child-proxy.mjs) — auto-generated
+FCUK_LOCAL_TOKEN=$FCUK_LOCAL_TOKEN
 
 GROQ_API_KEY=
 OPENROUTER_API_KEY=

@@ -6,6 +6,8 @@ import Link from "next/link";
 const ITEMS = [
   { href: "/", label: "Dashboard", icon: "◉" },
   { href: "/chat", label: "Chat", icon: "💬" },
+  { href: "/jobs", label: "Jobs", icon: "⚡" },
+  { href: "/connect", label: "Connect", icon: "🔗" },
   { href: "/terminal", label: "Terminal", icon: "⌨️" },
   { href: "/docs", label: "Docs", icon: "📖" },
   { href: "/settings", label: "Settings", icon: "⚙️" },

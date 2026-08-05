@@ -20,7 +20,7 @@ const OUTPUT_DIR = "/home/unclehowell/agentos-gui/remotion/out";
 const TMPDIR = process.env.TMPDIR || "/tmp";
 // Local child-proxy video endpoint (agent.py, port 6000). Overridable so the
 // harness can point at any child proxy's /v1/video.
-const VIDEO_API = process.env.VIDEO_API_URL || "http://127.0.0.1:6000/v1/video";
+const VIDEO_API = process.env.VIDEO_API_URL || "http://127.0.0.1:6100/v1/video";
 // When true, always use the PIL engine endpoint; when false, fall back to
 // Remotion if the endpoint is unreachable.
 const PREFER_LOCAL_ENGINE = (process.env.VIDEO_USE_PIL_ENGINE || "1") === "1";
@@ -107,7 +107,7 @@ function parseVideoApi(url: string): { host: string; port: number; base: string 
     return { host: u.hostname, port: Number(u.port || 80), base: u.pathname.replace(/\/$/, "") };
   } catch {
     const m = url.match(/^https?:\/\/([^:/]+):?(\d*)(.*)$/);
-    return { host: m?.[1] || "127.0.0.1", port: m?.[2] ? Number(m[2]) : 6000, base: (m?.[3] || "").replace(/\/$/, "") };
+    return { host: m?.[1] || "127.0.0.1", port: m?.[2] ? Number(m[2]) : 6100, base: (m?.[3] || "").replace(/\/$/, "") };
   }
 }
 

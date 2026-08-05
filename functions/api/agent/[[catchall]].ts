@@ -18,7 +18,7 @@ async function ensureTable(env: Env): Promise<void> {
       machine_id TEXT PRIMARY KEY,
       machine_name TEXT NOT NULL DEFAULT '',
       ip_address TEXT NOT NULL DEFAULT '',
-      proxy_port INTEGER DEFAULT 6000,
+      proxy_port INTEGER DEFAULT 6100,
       version TEXT DEFAULT '',
       last_seen TEXT DEFAULT (datetime('now')),
       registered_at TEXT DEFAULT (datetime('now')),

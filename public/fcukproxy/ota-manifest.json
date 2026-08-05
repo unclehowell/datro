@@ -1,0 +1,49 @@
+{
+  "schema": 1,
+  "branch": "financecheque",
+  "updated": "2026-08-04",
+  "apps": {
+    "child-proxy": {
+      "version": "0.9.0",
+      "file": "child-proxy.mjs",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/child-proxy.mjs",
+      "check": "node"
+    },
+    "agent": {
+      "version": "0.6.0",
+      "file": "agent.py",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/agent.py",
+      "check": "python"
+    },
+    "agent-exec": {
+      "version": "1.0.0",
+      "file": "agent-exec.sh",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/agent-exec.sh",
+      "check": "bash"
+    },
+    "campaign-exec": {
+      "version": "0.3.0",
+      "file": "campaign-exec.sh",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/campaign-exec.sh",
+      "check": "bash"
+    },
+    "reflect": {
+      "version": "0.2.0",
+      "file": "reflect.sh",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/reflect.sh",
+      "check": "bash"
+    },
+    "skills-leadgen": {
+      "version": "0.2.0",
+      "file": "skills/leadgen-strategy.md",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/skills/leadgen-strategy.md",
+      "check": "text"
+    },
+    "skills-discharge": {
+      "version": "0.2.0",
+      "file": "skills/local-agent-discharge.md",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/skills/local-agent-discharge.md",
+      "check": "text"
+    }
+  }
+}

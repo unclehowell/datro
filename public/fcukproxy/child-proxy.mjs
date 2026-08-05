@@ -33,13 +33,132 @@ const CHILD_ID = process.env.CHILD_ID || process.env.MACHINE_ID || `child-${os.h
 const PORT = Number(process.env.PORT) || 4001;
 const MACHINE_NAME = process.env.MACHINE_NAME || os.hostname();
 const AGENT_ROLE = process.env.AGENT_ROLE || 'chat';
-const EXECUTOR_URL = process.env.AGENT_PORT ? `http://localhost:${process.env.AGENT_PORT}` : 'http://localhost:6000';
-const VERSION = '0.7.0';
+const EXECUTOR_URL = process.env.AGENT_PORT ? `http://localhost:${process.env.AGENT_PORT}` : 'http://localhost:6100';
+const LOCAL_TOKEN = process.env.FCUK_LOCAL_TOKEN || '';
+const AUTH_HEADER = 'X-FCUK-Token';
+const authHeader = (h) => h[String(AUTH_HEADER).toLowerCase()] ?? h[AUTH_HEADER] ?? '';
+const VERSION = '0.9.0';
+
+// Local component versions (compared against ota-manifest.json)
+const LOCAL_VERSIONS = {
+  'child-proxy': VERSION,
+  'agent': process.env.AGENT_VERSION || '0.6.0',
+  'agent-exec': '1.0.0',
+  'campaign-exec': '0.3.0',
+  'reflect': '0.2.0',
+  'skills-leadgen': '0.2.0',
+  'skills-discharge': '0.2.0',
+};
 
 let activeJobs = 0;
 let retryCount = 0;
 let backoffMs = 1000;
 const MAX_BACKOFF_MS = 30000;
+
+// ── OTA self-update ───────────────────────────────────────────────────────
+// Prefer the parent-served manifest (swarm-facing, always current after release);
+// fall back to raw GitHub if the parent isn't reachable.
+const OTA_MANIFEST_URL = process.env.OTA_URL
+  || `${PARENT_URL}/api/proxy/ota/manifest`
+  || 'https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/ota-manifest.json';
+const OTA_FALLBACK_URL = 'https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/ota-manifest.json';
+const FCUK_DIR = `${process.env.HOME}/.fcukproxy`;
+const OTA_TMP = `${FCUK_DIR}/.ota`;
+
+async function fetchOtaManifest() {
+  let resp;
+  try {
+    resp = await fetch(OTA_MANIFEST_URL, { signal: AbortSignal.timeout(10000) });
+    if (!resp.ok) throw new Error(`manifest ${resp.status}`);
+  } catch {
+    try {
+      resp = await fetch(OTA_FALLBACK_URL, { signal: AbortSignal.timeout(10000) });
+    } catch {
+      return null;
+    }
+  }
+  if (!resp.ok) return null;
+  const ct = resp.headers.get('content-type') || '';
+  if (!ct.includes('json') && !ct.includes('application/octet-stream')) return null;
+  const text = await resp.text();
+  try {
+    return JSON.parse(text);
+  } catch {
+    return null;
+  }
+}
+
+async function downloadFile(url, destPath) {
+  const resp = await fetch(url, { signal: AbortSignal.timeout(60000) });
+  if (!resp.ok) throw new Error(`HTTP ${resp.status} for ${url}`);
+  const buf = Buffer.from(await resp.arrayBuffer());
+  await (await import('fs')).promises.writeFile(destPath, buf);
+  return buf;
+}
+
+async function validateFile(kind, filePath) {
+  const { execFileSync } = await import('child_process');
+  try {
+    if (kind === 'node') execFileSync('node', ['--check', filePath], { stdio: 'pipe' });
+    else if (kind === 'python') execFileSync('python3', ['-m', 'py_compile', filePath], { stdio: 'pipe' });
+    else if (kind === 'bash') execFileSync('bash', ['-n', filePath], { stdio: 'pipe' });
+    else if (kind === 'text') { const s = await import('fs/promises'); const t = await s.readFile(filePath, 'utf8'); if (!t.length) return false; }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+function dirOf(file) {
+  const i = file.lastIndexOf('/');
+  return i === -1 ? '.' : file.slice(0, i);
+}
+
+async function checkForUpdate() {
+  try {
+    const manifest = await fetchOtaManifest();
+    if (!manifest?.apps) return;
+    const fs = await import('fs');
+    await fs.promises.mkdir(OTA_TMP, { recursive: true });
+
+    for (const [name, meta] of Object.entries(manifest.apps)) {
+      const localVersion = LOCAL_VERSIONS[name];
+      if (!localVersion) continue; // only update components this proxy manages
+      if (meta.version === localVersion) continue;
+
+      const dest = `${FCUK_DIR}/${meta.file}`;
+      const tmp = `${OTA_TMP}/${meta.file}`;
+      console.log(`[child-proxy] OTA: ${name} ${localVersion} → ${meta.version}`);
+
+      await downloadFile(meta.url, tmp);
+      if (!await validateFile(meta.check, tmp)) {
+        console.error(`[child-proxy] OTA: ${name} failed validation, skipping`);
+        continue;
+      }
+      await fs.promises.mkdir(`${FCUK_DIR}/${dirOf(meta.file)}`, { recursive: true });
+      if (fs.existsSync(dest)) await fs.promises.rename(dest, `${dest}.bak`);
+      await fs.promises.rename(tmp, dest);
+      if (meta.check === 'bash') await fs.promises.chmod(dest, 0o755);
+      console.log(`[child-proxy] OTA: ${name} updated to ${meta.version}`);
+
+      // Persist the new version for the next boot
+      const verFile = `${FCUK_DIR}/.ota-version-${name}`;
+      await fs.promises.writeFile(verFile, meta.version);
+
+      if (name === 'child-proxy') {
+        // Let the supervisor (pm2/systemd) restart us with the new code
+        console.log('[child-proxy] OTA: self-restarting with new code');
+        process.exit(42);
+      }
+      if (name === 'agent') {
+        // agent.py is managed separately; drop a marker for its supervisor
+        await fs.promises.writeFile(`${FCUK_DIR}/.ota-restart-agent`, meta.version);
+      }
+    }
+  } catch (e) {
+    console.error(`[child-proxy] OTA check failed: ${e.message}`);
+  }
+}
 
 // Agent task polling
 let pollingInterval = null;
@@ -55,14 +174,32 @@ function resetBackoff() {
 }
 
 // ── Poll for delegated agent tasks (for NAT'd devices) ───────────────────
+// Adaptive schedule: poll fast after work, slow on idle.
+let pollDelayMs = 5000;
+const POLL_AFTER_WORK_MS = 5000;
+const POLL_IDLE_MS = 30000;
+let pollTimer = null;
+
+function scheduleNextPoll() {
+  if (pollTimer) clearTimeout(pollTimer);
+  pollTimer = setTimeout(async () => {
+    let foundWork = false;
+    try {
+      foundWork = await pollForAgentTasks();
+    } catch {}
+    pollDelayMs = foundWork ? POLL_AFTER_WORK_MS : Math.min(pollDelayMs * 1.5, POLL_IDLE_MS);
+    scheduleNextPoll();
+  }, pollDelayMs);
+}
+
 async function pollForAgentTasks() {
   try {
     const resp = await fetch(`${PARENT_URL}/api/proxy/poll?machine_id=${CHILD_ID}`, {
       signal: AbortSignal.timeout(5000),
     });
-    if (!resp.ok) return;
+    if (!resp.ok) return false;
     const data = await resp.json();
-    if (!data.pending) return;
+    if (!data.pending) return false;
 
     console.log(`[child-proxy] Received delegated task: ${data.work_id}`);
     activeJobs++;
@@ -70,9 +207,14 @@ async function pollForAgentTasks() {
     try {
       const { execSync } = await import('child_process');
       const taskJson = JSON.stringify(data.payload);
-      const result = execSync(`bash \"${process.env.HOME}/.fcukproxy/agent-exec.sh\"`, {
+      const isCampaign = data.payload?.action === 'campaign';
+      const execScript = isCampaign
+        ? `${process.env.HOME}/.fcukproxy/campaign-exec.sh`
+        : `${process.env.HOME}/.fcukproxy/agent-exec.sh`;
+      const execTimeout = isCampaign ? 3600000 : 300000;
+      const result = execSync(`bash \"${execScript}\"`, {
         input: taskJson,
-        timeout: 300000,
+        timeout: execTimeout,
         encoding: 'utf-8',
         env: { 
           ...process.env, 
@@ -101,9 +243,58 @@ async function pollForAgentTasks() {
     } finally {
       activeJobs--;
     }
+    return true;
   } catch (e) {
     // Polling errors are silent — not all nodes support polling
+    return false;
   }
+}
+
+async function hasBin(cmd) {
+  try {
+    const { execFileSync } = await import('child_process');
+    execFileSync(cmd, ['--version'], { stdio: 'pipe' });
+    return true;
+  } catch { return false; }
+}
+
+async function getCapabilities() {
+  const { default: fs } = await import('fs');
+  const hasExec = fs.existsSync(`${FCUK_DIR}/agent-exec.sh`);
+  const hasAgent = fs.existsSync(`${FCUK_DIR}/agent.py`);
+  const hasVideo = fs.existsSync(`${FCUK_DIR}/phone_video.py`);
+  const hasCampaign = fs.existsSync(`${FCUK_DIR}/campaign-exec.sh`);
+  let hasOllama = false;
+  try {
+    const r = await fetch('http://localhost:11434/api/tags', { signal: AbortSignal.timeout(2000) });
+    hasOllama = r.ok;
+  } catch {}
+  return {
+    agent_exec: hasExec,
+    campaign_exec: hasCampaign,
+    agent_py: hasAgent,
+    video: hasVideo,
+    local_llm: hasOllama,
+    git: true,
+    node: true,
+    opencode: await hasBin('opencode'),
+    kilo: await hasBin('kilo'),
+  };
+}
+
+async function getPressure() {
+  let cpu = 0;
+  let mem = 0;
+  try {
+    const os = await import('os');
+    const load1 = os.loadavg()[0];
+    const cpus = os.cpus();
+    const totalMem = os.totalmem();
+    const freeMem = os.freemem();
+    cpu = Math.min(100, Math.round((load1 / Math.max(1, cpus.length)) * 100));
+    mem = Math.round(((totalMem - freeMem) / totalMem) * 100);
+  } catch {}
+  return { cpu, mem, jobs: activeJobs };
 }
 
 function register() {
@@ -124,14 +315,25 @@ function register() {
     if (r.ok) console.log(`[child-proxy] Registered as ${CHILD_ID}`);
     else console.error(`[child-proxy] Registration failed: ${r.status}`);
   }).catch(e => console.error(`[child-proxy] Registration error: ${e.message}`));
+
+  // Ensure this node has a wallet on the parent (idempotent).
+  fetch(`${PARENT_URL}/api/proxy/wallet`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ machine_id: CHILD_ID }),
+  }).catch(() => {});
 }
 
 async function sendHeartbeat() {
+  const [capabilities, pressure] = await Promise.all([getCapabilities(), getPressure()]);
   const body = JSON.stringify({
     machine_id: CHILD_ID,
     machine_name: MACHINE_NAME,
     load: activeJobs,
-    role: AGENT_ROLE
+    role: AGENT_ROLE,
+    version: VERSION,
+    capabilities,
+    pressure,
   });
   try {
     await fetch(`${PARENT_URL}/api/proxy?action=heartbeat`, {
@@ -178,7 +380,7 @@ async function routeToParent(messages, model, isAgentic = false) {
 
 async function queryLocalLLM(messages, model) {
   const endpoints = [
-    { url: 'http://localhost:6000/v1/chat/completions', format: 'openai' },
+    { url: 'http://localhost:6100/v1/chat/completions', format: 'openai' },
     { url: 'http://localhost:11434/api/chat', format: 'ollama' },
     { url: 'http://localhost:5000/v1/chat/completions', format: 'openai' },
     { url: 'http://localhost:8080/v1/chat/completions', format: 'openi' }
@@ -224,6 +426,18 @@ const server = http.createServer(async (req, res) => {
   }
 
   // Handle GET requests for agent status
+  if (req.method === 'POST' && path === '/v1/ota/update') {
+    if (LOCAL_TOKEN && authHeader(req.headers) !== LOCAL_TOKEN) {
+      res.writeHead(401, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'unauthorized' }));
+      return;
+    }
+    res.writeHead(202, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ ok: true, message: 'OTA check triggered' }));
+    checkForUpdate();
+    return;
+  }
+
   if (req.method === 'GET' && path === '/v1/agent/status') {
     const { default: fs } = await import('fs');
     const hasExec = fs.existsSync(`${process.env.HOME}/.fcukproxy/agent-exec.sh`);
@@ -246,13 +460,18 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'POST' && (path === '/v1/agent/execute' || path === '/v1/agent/delegate')) {
+    if (LOCAL_TOKEN && authHeader(req.headers) !== LOCAL_TOKEN) {
+      res.writeHead(401, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'unauthorized' }));
+      return;
+    }
     let bodyStr = '';
     for await (const chunk of req) bodyStr += chunk;
     try {
       const body = JSON.parse(bodyStr);
       const deepagentResp = await fetch(`${EXECUTOR_URL}/v1/agent/execute`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json', ...(LOCAL_TOKEN ? { [AUTH_HEADER]: LOCAL_TOKEN } : {}) },
         body: bodyStr,
         signal: AbortSignal.timeout(60000),
       });
@@ -369,7 +588,9 @@ server.listen(PORT, () => {
   register();
   setInterval(sendHeartbeat, 60000);
   setInterval(register, 120000);
-  setInterval(pollForAgentTasks, 5000);
+  scheduleNextPoll();
+  setInterval(checkForUpdate, (Number(process.env.OTA_INTERVAL_MS) || 1800000));
+  checkForUpdate();
 });
 
 function getLocalIP() {

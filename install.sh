@@ -34,7 +34,7 @@ MODE="${MODE:-auto}"                     # auto | lite | full
 PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 CHILD_ID="${CHILD_ID:-}"
 PROXY_PORT="${PROXY_PORT:-4001}"         # child-proxy.mjs direct-mode port (registers with parent)
-AGENT_PORT="${AGENT_PORT:-6000}"         # agent.py executor port (child-proxy forwards /v1/agent/delegate here)
+AGENT_PORT="${AGENT_PORT:-6100}"         # agent.py executor port (child-proxy forwards /v1/agent/delegate here)
 GUI_PORT="${GUI_PORT:-3000}"
 LLAMA_PORT="${LLAMA_PORT:-8090}"
 INSTALL_DIR="${INSTALL_DIR:-}"
@@ -339,7 +339,7 @@ export GROQ_API_KEY="${GROQ_API_KEY:-$(cat ~/.groq-key 2>/dev/null || true)}"
 export PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 export MACHINE_ID="${MACHINE_ID:-phone-$(date +%s)}"
 export MACHINE_NAME="${MACHINE_NAME:-$MACHINE_ID}"
-export PROXY_PORT="${PROXY_PORT:-6000}"
+export PROXY_PORT="${PROXY_PORT:-6100}"
 export GUI_PORT="${GUI_PORT:-3000}"
 export MINICPM_PORT="${MINICPM_PORT:-8090}"
 export DNS_SERVER="${DNS_SERVER:-8.8.8.8:53}"
@@ -483,11 +483,24 @@ install_agent() {
   curl -sL "$RAW_BASE/public/fcukproxy/agent.py" -o "$INSTALL_DIR/agent.py"
   curl -sL "$RAW_BASE/public/fcukproxy/agent-exec.sh" -o "$INSTALL_DIR/agent-exec.sh"
   curl -sL "$RAW_BASE/public/fcukproxy/deepagent-service.py" -o "$INSTALL_DIR/deepagent-service.py"
+  curl -sL "$RAW_BASE/public/fcukproxy/ota-manifest.json" -o "$INSTALL_DIR/ota-manifest.json" 2>/dev/null || true
   chmod +x "$INSTALL_DIR/agent-exec.sh" "$INSTALL_DIR/deepagent-service.py" 2>/dev/null || true
 
   info "Installing Python dependencies..."
   python3 -m pip install --quiet --user aiohttp 2>/dev/null || \
     python3 -m pip install --quiet aiohttp 2>/dev/null || true
+
+  # Agentic CLIs (opencode + kilo) — first-class swarm compute
+  if ! command -v opencode &>/dev/null; then
+    info "Installing opencode CLI (agentic)..."
+    npm install -g @opencode-ai/cli 2>/dev/null || true
+  fi
+  if ! command -v kilo &>/dev/null; then
+    info "Installing kilo CLI (agentic)..."
+    npm install -g @kilocode/cli 2>/dev/null || true
+  fi
+  if command -v opencode &>/dev/null; then OK_OPENCODE=1; else warn "opencode CLI unavailable (offline/install failed)"; fi
+  if command -v kilo &>/dev/null; then OK_KILO=1; else warn "kilo CLI unavailable"; fi
 
   # Launcher for child-proxy.mjs (mirrors ~/.fcukproxy/run-proxy.sh)
   cat > "$INSTALL_DIR/run-proxy.sh" << RUNEOF
@@ -587,6 +600,16 @@ OPENROUTER_API_KEY=
 GOOGLE_API_KEY=
 OPENAI_API_KEY=
 ANTHROPIC_API_KEY=
+
+# Free-tier providers (paste keys via the port-3000 GUI → Connect page)
+NVIDIA_API_KEY=
+OLLAMA_CLOUD_API_KEY=
+CEREBRAS_API_KEY=
+MISTRAL_API_KEY=
+DEEPINFRA_API_KEY=
+FIREWORKS_API_KEY=
+COHERE_API_KEY=
+HF_TOKEN=
 
 # Node identity
 PARENT_URL=$PARENT_URL
@@ -1081,7 +1104,7 @@ export GROQ_API_KEY="${GROQ_API_KEY:-$(cat ~/.groq-key 2>/dev/null || true)}"
 export PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
 export MACHINE_ID="${MACHINE_ID:-phone-$(date +%s)}"
 export MACHINE_NAME="${MACHINE_NAME:-$MACHINE_ID}"
-export PROXY_PORT="${PROXY_PORT:-6000}"
+export PROXY_PORT="${PROXY_PORT:-6100}"
 export GUI_PORT="${GUI_PORT:-3000}"
 export MINICPM_PORT="${MINICPM_PORT:-8090}"
 export DNS_SERVER="${DNS_SERVER:-8.8.8.8:53}"

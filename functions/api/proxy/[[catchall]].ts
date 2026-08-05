@@ -9,6 +9,9 @@ interface Env {
   MISTRAL_API_KEY?: string;
   TOGETHER_API_KEY?: string;
   PERPLEXITY_API_KEY?: string;
+  NVIDIA_API_KEY?: string;
+  OLLAMA_CLOUD_API_KEY?: string;
+  HF_TOKEN?: string;
 }
 
 interface ProxyNode {
@@ -144,6 +147,24 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === '/api/proxy/result' && method === 'POST') {
       return await handleResult(request, env, headers);
     }
+    if (path === '/api/proxy/wallet' && method === 'POST') {
+      return await handleNodeWallet(request, env, headers);
+    }
+    if (path === '/api/proxy/wallet' && method === 'GET') {
+      return await handleNodeWalletGet(request, env, headers);
+    }
+    if (path === '/api/proxy/ota/manifest' && method === 'GET') {
+      return await handleOtaManifest(request, env, headers);
+    }
+    if (path === '/api/proxy/orders' && method === 'GET') {
+      return await handleOrders(request, env, headers);
+    }
+    if (path === '/api/proxy/order/accept' && method === 'POST') {
+      return await handleOrderAccept(request, env, headers);
+    }
+    if (path === '/api/proxy/lead' && method === 'POST') {
+      return await handleLeadReport(request, env, headers);
+    }
     if (path === '/api/proxy/chat' && method === 'POST') {
       return await handleSimpleChat(request, env, headers);
     }
@@ -178,7 +199,7 @@ async function ensureTable(env: Env): Promise<void> {
       machine_id TEXT PRIMARY KEY,
       machine_name TEXT NOT NULL DEFAULT '',
       ip_address TEXT NOT NULL DEFAULT '',
-      proxy_port INTEGER DEFAULT 6000,
+      proxy_port INTEGER DEFAULT 6100,
       version TEXT DEFAULT '',
       last_seen TEXT DEFAULT (datetime('now')),
       registered_at TEXT DEFAULT (datetime('now')),
@@ -220,6 +241,71 @@ async function ensureTable(env: Env): Promise<void> {
       result TEXT DEFAULT '',
       created_at TEXT DEFAULT (datetime('now')),
       completed_at TEXT DEFAULT ''
+    )`
+  ).run();
+  // Node wallets (per child-proxy earnings)
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS node_wallets (
+      wallet_id TEXT PRIMARY KEY,
+      machine_id TEXT NOT NULL UNIQUE,
+      balance INTEGER NOT NULL DEFAULT 0,
+      total_earned INTEGER NOT NULL DEFAULT 0,
+      status TEXT DEFAULT 'active',
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now'))
+    )`
+  ).run();
+  // Orders (buyer lead orders with escrow)
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS orders (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      user_id INTEGER NOT NULL,
+      target_url TEXT NOT NULL,
+      budget_credits INTEGER NOT NULL,
+      quantity INTEGER NOT NULL,
+      lead_value INTEGER NOT NULL,
+      status TEXT DEFAULT 'escrowed',
+      escrow_balance INTEGER NOT NULL DEFAULT 0,
+      campaign_prompt TEXT DEFAULT '',
+      created_at TEXT DEFAULT (datetime('now'))
+    )`
+  ).run();
+  // Leads (attributed results from swarm campaigns)
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS leads (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      order_id INTEGER NOT NULL,
+      machine_id TEXT NOT NULL DEFAULT '',
+      status TEXT NOT NULL DEFAULT 'pending',
+      source TEXT DEFAULT '',
+      value INTEGER NOT NULL DEFAULT 0,
+      created_at TEXT DEFAULT (datetime('now'))
+    )`
+  ).run();
+  // Disbursements (wallet payout ledger per node)
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS disbursements (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      wallet_id TEXT NOT NULL,
+      order_id INTEGER NOT NULL,
+      amount INTEGER NOT NULL,
+      reason TEXT DEFAULT '',
+      created_at TEXT DEFAULT (datetime('now'))
+    )`
+  ).run();
+  // OAuth tokens (connected platforms)
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS oauth_tokens (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      machine_id TEXT NOT NULL,
+      platform TEXT NOT NULL,
+      access_token TEXT,
+      refresh_token TEXT,
+      expires_at TEXT DEFAULT '',
+      scope TEXT DEFAULT '',
+      created_at TEXT DEFAULT (datetime('now')),
+      updated_at TEXT DEFAULT (datetime('now')),
+      UNIQUE (machine_id, platform)
     )`
   ).run();
 }
@@ -476,7 +562,7 @@ async function handleVideoInterception(videoContent: string, env: Env): Promise<
     ).all() as { results: ProxyNode[] };
 
     for (const node of nodes) {
-      const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 6000}/api/video/render`;
+      const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 6100}/api/video/render`;
       if (!childUrl || childUrl.includes('0.0.0.0')) continue;
 
       try {
@@ -539,7 +625,7 @@ async function handleTTS(request: Request, env: Env, headers: Record<string, str
   }
 
   const node = results[0];
-  const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 6000}/tts`;
+  const childUrl = node.url || `http://${node.ip_address}:${node.proxy_port || 6100}/tts`;
 
   try {
     const resp = await fetch(childUrl, {
@@ -579,7 +665,7 @@ async function handleVideoProxy(request: Request, env: Env, headers: Record<stri
     return new Response(JSON.stringify({ error: 'Node not found' }), { status: 404, headers });
   }
 
-  const childUrl = `${node.url || `http://${node.ip_address}:${node.proxy_port || 6000}`}/api/video/${filename}`;
+  const childUrl = `${node.url || `http://${node.ip_address}:${node.proxy_port || 6100}`}/api/video/${filename}`;
   try {
     const resp = await fetch(childUrl, { signal: AbortSignal.timeout(15000) });
     if (resp.ok) {
@@ -751,6 +837,39 @@ async function tryParentLlm(message: string, env: Env): Promise<string | null> {
       url: 'https://api.perplexity.ai/chat/completions',
       getBody: (msg) => ({
         model: 'sonar-small-chat',
+        messages: [{ role: 'user', content: msg }],
+        max_tokens: 500,
+      }),
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
+      parseReply: (d) => d?.choices?.[0]?.message?.content || '',
+    },
+    {
+      key: env.NVIDIA_API_KEY,
+      url: 'https://integrate.api.nvidia.com/v1/chat/completions',
+      getBody: (msg) => ({
+        model: 'meta/llama-3.3-70b-instruct',
+        messages: [{ role: 'user', content: msg }],
+        max_tokens: 500,
+      }),
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
+      parseReply: (d) => d?.choices?.[0]?.message?.content || '',
+    },
+    {
+      key: env.OLLAMA_CLOUD_API_KEY,
+      url: 'https://ollama.com/api/chat',
+      getBody: (msg) => ({
+        model: 'llama3.3:70b',
+        messages: [{ role: 'user', content: msg }],
+        stream: false,
+      }),
+      headers: (k) => ({ 'Authorization': `Bearer ${k}`, 'Content-Type': 'application/json' }),
+      parseReply: (d) => d?.message?.content || d?.choices?.[0]?.message?.content || '',
+    },
+    {
+      key: env.HF_TOKEN,
+      url: 'https://router.huggingface.co/v1/chat/completions',
+      getBody: (msg) => ({
+        model: 'HuggingFaceH4/zephyr-7b-beta',
         messages: [{ role: 'user', content: msg }],
         max_tokens: 500,
       }),
@@ -1186,4 +1305,163 @@ async function handleAgentStatus(env: Env, headers: Record<string, string>): Pro
   }));
 
   return new Response(JSON.stringify({ agents, total: agents.length }), { status: 200, headers });
+}
+
+// ── Node Wallet: credit/balance for child proxies ─────────────────────────
+async function ensureNodeWallet(env: Env, machineId: string): Promise<string> {
+  const walletId = `node-${machineId}`;
+  await env.DB.prepare(
+    `INSERT OR IGNORE INTO node_wallets (wallet_id, machine_id, balance, total_earned, status)
+     VALUES (?, ?, 0, 0, 'active')`
+  ).bind(walletId, machineId).run();
+  return walletId;
+}
+
+async function handleNodeWallet(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const body = await request.json().catch(() => ({})) as any;
+  const machineId = body.machine_id || body.childId;
+  if (!machineId) return new Response(JSON.stringify({ error: 'machine_id required' }), { status: 400, headers });
+
+  const walletId = await ensureNodeWallet(env, machineId);
+
+  // POST credit — paid out when a node submits verified leads
+  if (body.action === 'credit') {
+    const amount = Number(body.amount) || 0;
+    if (amount <= 0) return new Response(JSON.stringify({ error: 'amount required' }), { status: 400, headers });
+    await env.DB.prepare(
+      `UPDATE node_wallets SET balance = balance + ?, total_earned = total_earned + ?, updated_at = datetime('now') WHERE wallet_id = ?`
+    ).bind(amount, amount, walletId).run();
+  }
+
+  // POST payout — move earned credits to a node operator wallet (withdrawal)
+  if (body.action === 'payout') {
+    const amount = Number(body.amount) || 0;
+    const toWallet = body.to_wallet;
+    if (amount <= 0) return new Response(JSON.stringify({ error: 'amount required' }), { status: 400, headers });
+    const row = await env.DB.prepare('SELECT balance FROM node_wallets WHERE wallet_id = ?').bind(walletId).first() as any;
+    if (!row || row.balance < amount) return new Response(JSON.stringify({ error: 'Insufficient balance' }), { status: 402, headers });
+    await env.DB.prepare('UPDATE node_wallets SET balance = balance - ?, updated_at = datetime(\'now\') WHERE wallet_id = ?').bind(amount, walletId).run();
+    if (toWallet) {
+      await env.DB.prepare('INSERT OR IGNORE INTO wallets (wallet_id, balance, credited) VALUES (?, 0, 1)').bind(toWallet).run();
+      await env.DB.prepare('UPDATE wallets SET balance = balance + ? WHERE wallet_id = ?').bind(amount, toWallet).run();
+    }
+  }
+
+  const row = await env.DB.prepare('SELECT balance, total_earned, status FROM node_wallets WHERE wallet_id = ?').bind(walletId).first() as any;
+  return new Response(JSON.stringify({
+    wallet_id: walletId,
+    machine_id: machineId,
+    balance: row?.balance ?? 0,
+    total_earned: row?.total_earned ?? 0,
+    status: row?.status ?? 'active',
+    currency: 'FCUK',
+  }), { status: 200, headers });
+}
+
+async function handleNodeWalletGet(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const url = new URL(request.url);
+  const machineId = url.searchParams.get('machine_id');
+  if (!machineId) return new Response(JSON.stringify({ error: 'machine_id required' }), { status: 400, headers });
+  const walletId = await ensureNodeWallet(env, machineId);
+  const row = await env.DB.prepare('SELECT balance, total_earned, status FROM node_wallets WHERE wallet_id = ?').bind(walletId).first() as any;
+  return new Response(JSON.stringify({
+    wallet_id: walletId,
+    machine_id: machineId,
+    balance: row?.balance ?? 0,
+    total_earned: row?.total_earned ?? 0,
+    status: row?.status ?? 'active',
+    currency: 'FCUK',
+  }), { status: 200, headers });
+}
+
+// ── OTA Manifest: served to the swarm ─────────────────────────────────────
+async function handleOtaManifest(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const url = new URL(request.url);
+  const branch = url.searchParams.get('branch') || 'financecheque';
+  const gh = `https://raw.githubusercontent.com/unclehowell/datro/${branch}/public/fcukproxy`;
+
+  const manifest = {
+    schema: 1,
+    branch,
+    updated: new Date().toISOString().slice(0, 10),
+    apps: {
+      'child-proxy': { version: '0.9.0', file: 'child-proxy.mjs', url: `${gh}/child-proxy.mjs`, check: 'node' },
+      'agent': { version: '0.6.0', file: 'agent.py', url: `${gh}/agent.py`, check: 'python' },
+      'agent-exec': { version: '1.0.0', file: 'agent-exec.sh', url: `${gh}/agent-exec.sh`, check: 'bash' },
+      'campaign-exec': { version: '0.3.0', file: 'campaign-exec.sh', url: `${gh}/campaign-exec.sh`, check: 'bash' },
+      'reflect': { version: '0.2.0', file: 'reflect.sh', url: `${gh}/reflect.sh`, check: 'bash' },
+      'skills-leadgen': { version: '0.2.0', file: 'skills/leadgen-strategy.md', url: `${gh}/skills/leadgen-strategy.md`, check: 'text' },
+      'skills-discharge': { version: '0.2.0', file: 'skills/local-agent-discharge.md', url: `${gh}/skills/local-agent-discharge.md`, check: 'text' },
+    },
+  };
+
+  const respHeaders = { ...headers, 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };
+  return new Response(JSON.stringify(manifest, null, 2), { status: 200, headers: respHeaders });
+}
+
+// ── Orders: swarm view of escrowed lead orders ────────────────────────────
+async function handleOrders(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const url = new URL(request.url);
+  const status = url.searchParams.get('status') || 'escrowed';
+  const { results: orders } = await env.DB.prepare(
+    `SELECT id, user_id, target_url, budget_credits, quantity, lead_value, status, escrow_balance, campaign_prompt, created_at
+     FROM orders WHERE status = ? ORDER BY created_at DESC LIMIT 20`
+  ).bind(status).all();
+  return new Response(JSON.stringify({ orders }), { status: 200, headers });
+}
+
+async function handleOrderAccept(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const body = await request.json().catch(() => ({})) as any;
+  const orderId = Number(body.order_id);
+  const machineId = body.machine_id;
+  if (!orderId || !machineId) return new Response(JSON.stringify({ error: 'order_id and machine_id required' }), { status: 400, headers });
+
+  const order = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(orderId).first() as any;
+  if (!order) return new Response(JSON.stringify({ error: 'Order not found' }), { status: 404, headers });
+  if (order.status !== 'escrowed') return new Response(JSON.stringify({ error: 'Order already claimed' }), { status: 409, headers });
+
+  await env.DB.prepare(`UPDATE orders SET status = 'in_progress' WHERE id = ?`).bind(orderId).run();
+  return new Response(JSON.stringify({ ok: true, order_id: orderId, machine_id: machineId }), { status: 200, headers });
+}
+
+// ── Lead Report: node reports a verified lead → payout to node wallet ─────
+async function handleLeadReport(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  const body = await request.json().catch(() => ({})) as any;
+  const orderId = Number(body.order_id);
+  const machineId = body.machine_id || body.childId;
+  const status = body.status || 'pending';
+  const source = body.source || '';
+  const value = Number(body.value) || 0;
+  if (!orderId || !machineId) return new Response(JSON.stringify({ error: 'order_id and machine_id required' }), { status: 400, headers });
+
+  const leadRes = await env.DB.prepare(
+    `INSERT INTO leads (order_id, machine_id, status, source, value) VALUES (?, ?, ?, ?, ?)`
+  ).bind(orderId, machineId, status, source, value).run();
+
+  let payout = 0;
+  // Verified leads pay out to the node wallet; budget is escrow
+  if (status === 'verified') {
+    const order = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(orderId).first() as any;
+    if (order) {
+      payout = value || Math.floor(order.lead_value);
+      const walletId = await ensureNodeWallet(env, machineId);
+      await env.DB.prepare(
+        `UPDATE node_wallets SET balance = balance + ?, total_earned = total_earned + ?, updated_at = datetime('now') WHERE wallet_id = ?`
+      ).bind(payout, payout, walletId).run();
+      await env.DB.prepare(
+        `INSERT INTO disbursements (wallet_id, order_id, amount, reason) VALUES (?, ?, ?, 'lead')`
+      ).bind(walletId, orderId, payout).run();
+      await env.DB.prepare(
+        `UPDATE orders SET escrow_balance = MAX(escrow_balance - ?, 0), lead_value = ? WHERE id = ?`
+      ).bind(payout, payout, orderId).run();
+    }
+  }
+
+  return new Response(JSON.stringify({ ok: true, lead_id: leadRes.meta.last_row_id, payout }), { status: 200, headers });
 }

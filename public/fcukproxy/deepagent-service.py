@@ -19,7 +19,7 @@ log = logging.getLogger("deepagent")
 from deepagents import create_deep_agent
 from deepagents.backends import LocalShellBackend
 
-PORT = int(os.environ.get("DEEPAGENT_PORT", "6000"))
+PORT = int(os.environ.get("DEEPAGENT_PORT", "6100"))
 REPO_DIR = os.environ.get("REPO_DIR", str(Path.home() / "datro"))
 MACHINE_ID = os.environ.get("MACHINE_ID", "unknown")
 
