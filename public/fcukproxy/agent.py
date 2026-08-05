@@ -40,7 +40,7 @@ POLL_INTERVAL = 2
 _ANSI_RE = __import__('re').compile(r'\x1b\[[0-9;]*[a-zA-Z]|\x1b\][0-9;]*[a-zA-Z]|\x1b[\[\]()#][0-9;]*[^\x1b]*')
 def strip_ansi(text: str) -> str:
     return _ANSI_RE.sub('', text).strip()
-VERSION = "0.7.0"
+VERSION = "0.8.0"
 
 # ── OTA self-update ───────────────────────────────────────────────────────
 # Prefer the parent-served manifest (swarm-facing, current after release);

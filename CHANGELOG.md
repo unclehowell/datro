@@ -1,3 +1,16 @@
+## [0.5.1.90] - 2026-08-05
+
+Child-proxy installer hardening for piped one-liner installs (`curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash`), plus the local_ip crash-loop fix and an OTA sequence bump so every live node self-updates to the hardened agent.
+
+### Fixed
+- `prompt_config` now detects a non-TTY stdin and falls back to defaults/env — `curl … | bash` no longer aborts on `read` EOF via `set -e`.
+- Literal ANSI escape codes in the mode menu (`echo -e`) and `FCUK_LOCAL_TOKEN` defaulted to satisfy `set -u`.
+- pip bootstrap on PEP 668 distros via `get-pip.py` + `--break-system-packages`, with a `--break-system-packages` fallback for `aiohttp`/`Pillow`.
+- Installer writes `local_ip` into `machine.json` and `agent.py` reads it defensively (`CONFIG.get('local_ip', '127.0.0.1')`) — fixes the agent KeyError crash loop on reinstalled nodes.
+
+### Changed
+- `agent.py` 0.7.0 → 0.8.0, `install.sh` 1.0.0 → 1.1.0; `ota-manifest.json` `release_sequence` 3 → 4 (`updated` 2026-08-05) so all nodes OTA-update to the hardened agent.
+
 ## [0.5.1.89] - 2026-08-04
 
 Security hardening release responding to the Fugu quality review (v0.5.1.88 was a canary; this release implements the top blockers).
