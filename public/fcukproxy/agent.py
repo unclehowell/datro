@@ -43,27 +43,39 @@ def strip_ansi(text: str) -> str:
 VERSION = "0.6.0"
 
 # ── OTA self-update ───────────────────────────────────────────────────────
-OTA_MANIFEST_URL = os.environ.get(
-    "OTA_URL",
+# Prefer the parent-served manifest (swarm-facing, current after release);
+# fall back to raw GitHub. Both are JSON regardless of content-type header.
+OTA_MANIFEST_URLS = [
+    os.environ.get("OTA_URL")
+    or os.environ.get("PARENT_URL", "https://www.financecheque.uk")
+    + "/api/proxy/ota/manifest",
     "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/ota-manifest.json",
-)
+]
 
 async def _ota_check():
     """Compare local version vs manifest; swap + self-exec if newer."""
+    manifest = None
+    async with ClientSession(timeout=ClientTimeout(total=10)) as s:
+        for url in OTA_MANIFEST_URLS:
+            try:
+                async with s.get(url) as r:
+                    if r.status != 200:
+                        continue
+                    try:
+                        manifest = await r.json()
+                    except Exception:
+                        continue
+                    break
+            except Exception:
+                continue
+    if not manifest:
+        return
+    agent_meta = (manifest.get("apps") or {}).get("agent")
+    if not agent_meta:
+        return
+    if agent_meta.get("version", "0") == VERSION:
+        return  # already current
     try:
-        async with ClientSession(timeout=ClientTimeout(total=10)) as s:
-            async with s.get(OTA_MANIFEST_URL) as r:
-                if r.status != 200:
-                    return
-                ct = r.headers.get("content-type", "")
-                if "json" not in ct:
-                    return
-                manifest = await r.json()
-        agent_meta = (manifest.get("apps") or {}).get("agent")
-        if not agent_meta:
-            return
-        if agent_meta.get("version", "0") == VERSION:
-            return  # already current
         import urllib.request
         src_path = Path(__file__).resolve()
         data = urllib.request.urlopen(agent_meta["url"], timeout=30).read()
