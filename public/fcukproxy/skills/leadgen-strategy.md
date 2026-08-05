@@ -10,7 +10,8 @@ invent the whole pipeline each time. Follow these steps in order.
 3. **Captured lead** — the qualifying event: a form fill, a reply, a referral,
    or a documented engagement. Record `source` as the platform + format
    (e.g. `x-post-dm`).
-4. **Report** — call `/api/proxy/lead` with order_id, source, status=verified,
-   and the node's machine_id. One lead per captured event, not per asset.
+4. **Report** — call `/api/proxy/lead` with order_id, source, and the node's
+   machine_id. Leads land as `pending`; payout is credited by the server-side
+   verify step. One lead per captured event, not per asset.
 5. **Save output** — write the full asset to the iteration file; keep only a
    one-line summary + a `what worked` line for node memory.

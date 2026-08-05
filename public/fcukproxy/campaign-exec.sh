@@ -101,10 +101,11 @@ trace start "order=$ORDER_ID target=$TARGET_URL"
 report_lead() {
   local source="$1" note="${2:-}"
   log "Reporting lead: source=$source note=$note"
+  # Leads land as 'pending'; payout is credited by the server-side verify step.
   curl -sf -X POST "$PARENT_URL/api/proxy/lead" \
     -H 'Content-Type: application/json' \
     -H "X-FCUK-Token: ${FCUK_LOCAL_TOKEN:-}" \
-    -d "{\"order_id\":$ORDER_ID,\"machine_id\":\"$MACHINE_ID\",\"status\":\"verified\",\"source\":\"$source\",\"value\":$LEAD_VALUE}" \
+    -d "{\"order_id\":$ORDER_ID,\"machine_id\":\"$MACHINE_ID\",\"status\":\"pending\",\"source\":\"$source\"}" \
     >/dev/null 2>&1 \
     && { trace lead "order=$ORDER_ID source=$source ok"; log "Lead reported OK (source=$source)"; } \
     || { trace leaderr "order=$ORDER_ID source=$source" ; log "Lead report failed (source=$source)"; }

@@ -1,16 +1,17 @@
 {
-  "schema": 1,
+  "schema": 2,
   "branch": "financecheque",
+  "release_sequence": 2,
   "updated": "2026-08-04",
   "apps": {
     "child-proxy": {
-      "version": "0.9.0",
+      "version": "0.10.0",
       "file": "child-proxy.mjs",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/child-proxy.mjs",
       "check": "node"
     },
     "agent": {
-      "version": "0.6.0",
+      "version": "0.7.0",
       "file": "agent.py",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/agent.py",
       "check": "python"
@@ -22,7 +23,7 @@
       "check": "bash"
     },
     "campaign-exec": {
-      "version": "0.3.0",
+      "version": "0.4.0",
       "file": "campaign-exec.sh",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/campaign-exec.sh",
       "check": "bash"

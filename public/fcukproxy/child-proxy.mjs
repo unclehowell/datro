@@ -21,7 +21,7 @@
  *     - NEVER queries parent proxy API endpoint for responses
  *     - Fallback to local LLM only after timeout/retry exhaustion
  *
- * Version: 0.7.0
+ * Version: 0.10.0
  */
 
 import http from 'http';
@@ -37,16 +37,16 @@ const EXECUTOR_URL = process.env.AGENT_PORT ? `http://localhost:${process.env.AG
 const LOCAL_TOKEN = process.env.FCUK_LOCAL_TOKEN || '';
 const AUTH_HEADER = 'X-FCUK-Token';
 const authHeader = (h) => h[String(AUTH_HEADER).toLowerCase()] ?? h[AUTH_HEADER] ?? '';
-const VERSION = '0.9.0';
+const VERSION = '0.10.0';
 
 // Local component versions (compared against ota-manifest.json)
 const LOCAL_VERSIONS = {
   'child-proxy': VERSION,
-  'agent': process.env.AGENT_VERSION || '0.6.0',
+  'agent': process.env.AGENT_VERSION || '0.7.0',
   'agent-exec': '1.0.0',
-  'campaign-exec': '0.3.0',
+  'campaign-exec': '0.4.0',
   'reflect': '0.2.0',
-  'skills-leadgen': '0.2.0',
+  'skills-leadgen': '0.3.0',
   'skills-discharge': '0.2.0',
 };
 
@@ -58,6 +58,11 @@ const MAX_BACKOFF_MS = 30000;
 // ── OTA self-update ───────────────────────────────────────────────────────
 // Prefer the parent-served manifest (swarm-facing, always current after release);
 // fall back to raw GitHub if the parent isn't reachable.
+const ALLOWED_HOSTS = ['raw.githubusercontent.com', 'www.financecheque.uk', 'financecheque.uk'];
+const MANIFEST_MAX_BYTES = 64 * 1024;
+const FILE_MAX_BYTES = 4 * 1024 * 1024;
+const RELEASE_SEQUENCE_FILE = `${FCUK_DIR}/.ota-sequence`;
+
 const OTA_MANIFEST_URL = process.env.OTA_URL
   || `${PARENT_URL}/api/proxy/ota/manifest`
   || 'https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/ota-manifest.json';
@@ -65,33 +70,63 @@ const OTA_FALLBACK_URL = 'https://raw.githubusercontent.com/unclehowell/datro/fi
 const FCUK_DIR = `${process.env.HOME}/.fcukproxy`;
 const OTA_TMP = `${FCUK_DIR}/.ota`;
 
-async function fetchOtaManifest() {
-  let resp;
+// Internal component spec is hard-coded; the manifest may only name versions/URLs.
+// Dest paths / validators are NEVER taken from the (untrusted) manifest.
+const COMPONENT_SPEC = {
+  'child-proxy': { file: 'child-proxy.mjs', check: 'node', mode: 0o644 },
+  'agent': { file: 'agent.py', check: 'python', mode: 0o644 },
+  'agent-exec': { file: 'agent-exec.sh', check: 'bash', mode: 0o755 },
+  'campaign-exec': { file: 'campaign-exec.sh', check: 'bash', mode: 0o755 },
+  'reflect': { file: 'reflect.sh', check: 'bash', mode: 0o755 },
+  'skills-leadgen': { file: 'skills/leadgen-strategy.md', check: 'text', mode: 0o644 },
+  'skills-discharge': { file: 'skills/local-agent-discharge.md', check: 'text', mode: 0o644 },
+};
+
+// RFC 3986 host extraction without the WHATWG URL host quirks (ipv6 brackets etc.)
+function hostOf(url) {
+  const m = /^https:\/\/([^/?#]+)/i.exec(url);
+  if (!m) return null;
+  return m[1].split(':').slice(0, 1)[0].replace(/^\[|\]$/g, '').toLowerCase();
+}
+
+function allowedUrl(url) {
+  if (!/^https:/i.test(url)) return false;
+  const host = hostOf(url);
+  if (!host) return false;
+  return ALLOWED_HOSTS.includes(host);
+}
+
+async function readSequence(fs) {
   try {
-    resp = await fetch(OTA_MANIFEST_URL, { signal: AbortSignal.timeout(10000) });
-    if (!resp.ok) throw new Error(`manifest ${resp.status}`);
+    const n = Number(await fs.promises.readFile(RELEASE_SEQUENCE_FILE, 'utf8'));
+    return Number.isInteger(n) && n > 0 ? n : 0;
   } catch {
-    try {
-      resp = await fetch(OTA_FALLBACK_URL, { signal: AbortSignal.timeout(10000) });
-    } catch {
-      return null;
-    }
-  }
-  if (!resp.ok) return null;
-  const ct = resp.headers.get('content-type') || '';
-  if (!ct.includes('json') && !ct.includes('application/octet-stream')) return null;
-  const text = await resp.text();
-  try {
-    return JSON.parse(text);
-  } catch {
-    return null;
+    return 0;
   }
 }
 
+async function fetchOtaManifest() {
+  let resp = null;
+  for (const url of [OTA_MANIFEST_URL, OTA_FALLBACK_URL]) {
+    if (!allowedUrl(url)) continue;
+    try {
+      const r = await fetch(url, { signal: AbortSignal.timeout(10000), redirect: 'error' });
+      if (!r.ok) continue;
+      const text = await r.text();
+      if (Buffer.byteLength(text) > MANIFEST_MAX_BYTES) continue;
+      const json = JSON.parse(text);
+      if (json && typeof json === 'object' && Number.isInteger(json.release_sequence)) return json;
+    } catch { /* try next source */ }
+  }
+  return null;
+}
+
 async function downloadFile(url, destPath) {
-  const resp = await fetch(url, { signal: AbortSignal.timeout(60000) });
+  if (!allowedUrl(url)) throw new Error(`disallowed URL: ${url}`);
+  const resp = await fetch(url, { signal: AbortSignal.timeout(60000), redirect: 'error' });
   if (!resp.ok) throw new Error(`HTTP ${resp.status} for ${url}`);
   const buf = Buffer.from(await resp.arrayBuffer());
+  if (buf.length > FILE_MAX_BYTES) throw new Error(`file too large (${buf.length}) for ${url}`);
   await (await import('fs')).promises.writeFile(destPath, buf);
   return buf;
 }
@@ -114,6 +149,8 @@ function dirOf(file) {
   return i === -1 ? '.' : file.slice(0, i);
 }
 
+// OTA v2: stage + validate ALL changed components first, then swap atomically,
+// then persist markers and restart exactly once.
 async function checkForUpdate() {
   try {
     const manifest = await fetchOtaManifest();
@@ -121,39 +158,60 @@ async function checkForUpdate() {
     const fs = await import('fs');
     await fs.promises.mkdir(OTA_TMP, { recursive: true });
 
+    // Anti-downgrade: only ever move forward through a monotonic release sequence.
+    const seq = Number(manifest.release_sequence) || 0;
+    if (seq <= 0) return;
+    const lastSeq = await readSequence(fs);
+    if (seq <= lastSeq) return; // already applied this or a newer release
+
+    // Phase 1: download + validate every changed component into staging.
+    const staged = [];
     for (const [name, meta] of Object.entries(manifest.apps)) {
+      const spec = COMPONENT_SPEC[name];
       const localVersion = LOCAL_VERSIONS[name];
-      if (!localVersion) continue; // only update components this proxy manages
+      if (!spec || !localVersion) continue; // only managed components
       if (meta.version === localVersion) continue;
+      if (typeof meta.version !== 'string' || typeof meta.url !== 'string') continue;
+      if (!allowedUrl(meta.url)) { console.error(`[child-proxy] OTA: ${name} bad url, skipping whole update`); return; }
 
-      const dest = `${FCUK_DIR}/${meta.file}`;
-      const tmp = `${OTA_TMP}/${meta.file}`;
-      console.log(`[child-proxy] OTA: ${name} ${localVersion} → ${meta.version}`);
-
-      await downloadFile(meta.url, tmp);
-      if (!await validateFile(meta.check, tmp)) {
-        console.error(`[child-proxy] OTA: ${name} failed validation, skipping`);
-        continue;
+      const tmp = `${OTA_TMP}/${spec.file.replace(/\//g, '__')}`;
+      console.log(`[child-proxy] OTA: staging ${name} ${localVersion} → ${meta.version}`);
+      try {
+        await downloadFile(meta.url, tmp);
+        if (!await validateFile(spec.check, tmp)) {
+          console.error(`[child-proxy] OTA: ${name} failed validation, aborting update`);
+          return;
+        }
+      } catch (e) {
+        console.error(`[child-proxy] OTA: ${name} download failed (${e.message}), aborting update`);
+        return;
       }
-      await fs.promises.mkdir(`${FCUK_DIR}/${dirOf(meta.file)}`, { recursive: true });
-      if (fs.existsSync(dest)) await fs.promises.rename(dest, `${dest}.bak`);
+      staged.push({ name, spec, tmp, version: meta.version });
+    }
+
+    // Phase 2: swap all staged files into place atomically.
+    if (!staged.length) return;
+    const pendingChildRestart = staged.some(s => s.name === 'child-proxy');
+    const agentUpdated = staged.some(s => s.name === 'agent');
+
+    for (const { name, spec, tmp, version } of staged) {
+      const dest = `${FCUK_DIR}/${spec.file}`;
+      await fs.promises.mkdir(`${FCUK_DIR}/${dirOf(spec.file)}`, { recursive: true });
+      if (fs.existsSync(dest)) { try { await fs.promises.rename(dest, `${dest}.bak`); } catch {} }
       await fs.promises.rename(tmp, dest);
-      if (meta.check === 'bash') await fs.promises.chmod(dest, 0o755);
-      console.log(`[child-proxy] OTA: ${name} updated to ${meta.version}`);
-
-      // Persist the new version for the next boot
+      await fs.promises.chmod(dest, spec.mode).catch(() => {});
       const verFile = `${FCUK_DIR}/.ota-version-${name}`;
-      await fs.promises.writeFile(verFile, meta.version);
+      await fs.promises.writeFile(verFile, version);
+      console.log(`[child-proxy] OTA: ${name} updated to ${version}`);
+    }
 
-      if (name === 'child-proxy') {
-        // Let the supervisor (pm2/systemd) restart us with the new code
-        console.log('[child-proxy] OTA: self-restarting with new code');
-        process.exit(42);
-      }
-      if (name === 'agent') {
-        // agent.py is managed separately; drop a marker for its supervisor
-        await fs.promises.writeFile(`${FCUK_DIR}/.ota-restart-agent`, meta.version);
-      }
+    // Phase 3: record the applied sequence (only after everything swapped).
+    await fs.promises.writeFile(RELEASE_SEQUENCE_FILE, String(seq));
+
+    if (agentUpdated) await fs.promises.writeFile(`${FCUK_DIR}/.ota-restart-agent`, manifest.apps.agent.version);
+    if (pendingChildRestart) {
+      console.log('[child-proxy] OTA: self-restarting with new code');
+      process.exit(42);
     }
   } catch (e) {
     console.error(`[child-proxy] OTA check failed: ${e.message}`);

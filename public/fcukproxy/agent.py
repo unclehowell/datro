@@ -40,7 +40,7 @@ POLL_INTERVAL = 2
 _ANSI_RE = __import__('re').compile(r'\x1b\[[0-9;]*[a-zA-Z]|\x1b\][0-9;]*[a-zA-Z]|\x1b[\[\]()#][0-9;]*[^\x1b]*')
 def strip_ansi(text: str) -> str:
     return _ANSI_RE.sub('', text).strip()
-VERSION = "0.6.0"
+VERSION = "0.7.0"
 
 # ── OTA self-update ───────────────────────────────────────────────────────
 # Prefer the parent-served manifest (swarm-facing, current after release);
@@ -52,17 +52,33 @@ OTA_MANIFEST_URLS = [
     "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/ota-manifest.json",
 ]
 
+_ALLOWED_HOSTS = ("raw.githubusercontent.com", "www.financecheque.uk", "financecheque.uk")
+_MANIFEST_MAX_BYTES = 64 * 1024
+_FILE_MAX_BYTES = 4 * 1024 * 1024
+_FCUK_DIR = Path.home() / ".fcukproxy"
+_SEQ_FILE = _FCUK_DIR / ".ota-sequence"
+
 async def _ota_check():
-    """Compare local version vs manifest; swap + self-exec if newer."""
+    """Compare local version vs manifest; swap + self-exec if newer.
+
+    Hardened (v2): monotonic release_sequence anti-downgrade, host allowlist,
+    size limits, and a payload-content sanity check. The manifest is untrusted;
+    only the hard-coded 'agent' spec path/validator is ever used.
+    """
     manifest = None
     async with ClientSession(timeout=ClientTimeout(total=10)) as s:
         for url in OTA_MANIFEST_URLS:
+            if not _allowed_url(url):
+                continue
             try:
                 async with s.get(url) as r:
                     if r.status != 200:
                         continue
+                    text = await r.text()
+                    if len(text.encode("utf-8")) > _MANIFEST_MAX_BYTES:
+                        continue
                     try:
-                        manifest = await r.json()
+                        manifest = json.loads(text)
                     except Exception:
                         continue
                     break
@@ -70,15 +86,32 @@ async def _ota_check():
                 continue
     if not manifest:
         return
-    agent_meta = (manifest.get("apps") or {}).get("agent")
-    if not agent_meta:
+    if not isinstance(manifest.get("release_sequence"), int) or manifest["release_sequence"] <= 0:
         return
-    if agent_meta.get("version", "0") == VERSION:
-        return  # already current
     try:
+        _SEQUENCE_FILE_PARSED = _FCUK_DIR / ".ota-sequence"
+        _SEQUENCE_FILE_PARSED.parent.mkdir(parents=True, exist_ok=True)
+        try:
+            last = int(_SEQUENCE_FILE_PARSED.read_text().strip())
+        except Exception:
+            last = 0
+        if manifest["release_sequence"] <= last:
+            return  # anti-downgrade
+        apps = manifest.get("apps") or {}
+        agent_meta = apps.get("agent")
+        if not agent_meta:
+            return
+        if agent_meta.get("version", "0") == VERSION:
+            return  # already current
+        url = agent_meta.get("url")
+        if not isinstance(url, str) or not _allowed_url(url):
+            return
         import urllib.request
         src_path = Path(__file__).resolve()
-        data = urllib.request.urlopen(agent_meta["url"], timeout=30).read()
+        with urllib.request.urlopen(url, timeout=30) as r:
+            data = r.read(_FILE_MAX_BYTES + 1)
+        if len(data) > _FILE_MAX_BYTES:
+            return
         decoded = data.decode("utf-8", errors="ignore")
         if "aiohttp" not in decoded:
             log.warning("OTA: agent.py payload looks invalid, skipping")
@@ -86,10 +119,19 @@ async def _ota_check():
         backup = src_path.with_suffix(".py.bak")
         backup.write_bytes(src_path.read_bytes())
         src_path.write_bytes(decoded.encode("utf-8"))
+        _SEQUENCE_FILE_PARSED.write_text(str(manifest["release_sequence"]))
         log.info("OTA: agent.py updated to %s — restarting", agent_meta["version"])
         os._exit(0)  # let systemd/pm2 restart with new code
     except Exception as e:
         log.debug("OTA check failed: %s", e)
+
+def _allowed_url(url):
+    try:
+        from urllib.parse import urlsplit
+        p = urlsplit(url)
+        return p.scheme == "https" and p.hostname in _ALLOWED_HOSTS
+    except Exception:
+        return False
 
 def _schedule_ota_check():
     loop = asyncio.get_event_loop()

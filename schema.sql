@@ -104,8 +104,14 @@ CREATE TABLE IF NOT EXISTS orders (
   lead_value INTEGER NOT NULL,
   status TEXT DEFAULT 'escrowed',
   escrow_balance INTEGER NOT NULL DEFAULT 0,
+  escrow_remaining INTEGER NOT NULL DEFAULT 0,
+  accepted_node_id TEXT DEFAULT '',
+  leads_paid INTEGER NOT NULL DEFAULT 0,
+  lead_quota INTEGER NOT NULL DEFAULT 0,
+  expires_at TEXT DEFAULT '',
   campaign_prompt TEXT DEFAULT '',
   created_at TEXT DEFAULT (datetime('now')),
+  updated_at TEXT DEFAULT (datetime('now')),
   FOREIGN KEY (user_id) REFERENCES users(id)
 );
 
@@ -131,6 +137,20 @@ CREATE TABLE IF NOT EXISTS disbursements (
   created_at TEXT DEFAULT (datetime('now')),
   FOREIGN KEY (wallet_id) REFERENCES node_wallets(wallet_id),
   FOREIGN KEY (order_id) REFERENCES orders(id)
+);
+
+-- Double-entry ledger: append-only balance changes with UNIQUE idempotency keys
+CREATE TABLE IF NOT EXISTS ledger (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  source TEXT NOT NULL,
+  source_id INTEGER NOT NULL,
+  wallet_id TEXT NOT NULL,
+  order_id INTEGER DEFAULT 0,
+  delta INTEGER NOT NULL,
+  balance_after INTEGER NOT NULL,
+  reason TEXT DEFAULT '',
+  created_at TEXT DEFAULT (datetime('now')),
+  UNIQUE (source, source_id)
 );
 
 -- OAuth tokens (connected platforms)

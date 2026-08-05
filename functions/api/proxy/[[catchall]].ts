@@ -165,6 +165,9 @@ export async function onRequest(context: { request: Request; env: Env }): Promis
     if (path === '/api/proxy/lead' && method === 'POST') {
       return await handleLeadReport(request, env, headers);
     }
+    if (path === '/api/proxy/lead/verify' && method === 'POST') {
+      return await handleLeadVerify(request, env, headers);
+    }
     if (path === '/api/proxy/chat' && method === 'POST') {
       return await handleSimpleChat(request, env, headers);
     }
@@ -216,6 +219,11 @@ async function ensureTable(env: Env): Promise<void> {
     "ALTER TABLE proxy_nodes ADD COLUMN provider_info TEXT DEFAULT '{}'",
     "ALTER TABLE proxy_nodes ADD COLUMN hermes_info TEXT DEFAULT '{}'",
     "ALTER TABLE proxy_nodes ADD COLUMN agent_info TEXT DEFAULT '{}'",
+    "ALTER TABLE orders ADD COLUMN escrow_remaining INTEGER NOT NULL DEFAULT 0",
+    "ALTER TABLE orders ADD COLUMN accepted_node_id TEXT DEFAULT ''",
+    "ALTER TABLE orders ADD COLUMN leads_paid INTEGER NOT NULL DEFAULT 0",
+    "ALTER TABLE orders ADD COLUMN lead_quota INTEGER NOT NULL DEFAULT 0",
+    "ALTER TABLE orders ADD COLUMN expires_at TEXT DEFAULT ''",
   ];
   for (const sql of migrates) {
     try { await env.DB.prepare(sql).run(); } catch {}
@@ -266,6 +274,11 @@ async function ensureTable(env: Env): Promise<void> {
       lead_value INTEGER NOT NULL,
       status TEXT DEFAULT 'escrowed',
       escrow_balance INTEGER NOT NULL DEFAULT 0,
+      escrow_remaining INTEGER NOT NULL DEFAULT 0,
+      accepted_node_id TEXT DEFAULT '',
+      leads_paid INTEGER NOT NULL DEFAULT 0,
+      lead_quota INTEGER NOT NULL DEFAULT 0,
+      expires_at TEXT DEFAULT '',
       campaign_prompt TEXT DEFAULT '',
       created_at TEXT DEFAULT (datetime('now'))
     )`
@@ -291,6 +304,22 @@ async function ensureTable(env: Env): Promise<void> {
       amount INTEGER NOT NULL,
       reason TEXT DEFAULT '',
       created_at TEXT DEFAULT (datetime('now'))
+    )`
+  ).run();
+  // Double-entry ledger: every balance change is an append-only entry with a
+  // UNIQUE idempotency key, so replays cannot double-credit.
+  await env.DB.prepare(
+    `CREATE TABLE IF NOT EXISTS ledger (
+      id INTEGER PRIMARY KEY AUTOINCREMENT,
+      source TEXT NOT NULL,
+      source_id INTEGER NOT NULL,
+      wallet_id TEXT NOT NULL,
+      order_id INTEGER DEFAULT 0,
+      delta INTEGER NOT NULL,
+      balance_after INTEGER NOT NULL,
+      reason TEXT DEFAULT '',
+      created_at TEXT DEFAULT (datetime('now')),
+      UNIQUE (source, source_id)
     )`
   ).run();
   // OAuth tokens (connected platforms)
@@ -1325,27 +1354,11 @@ async function handleNodeWallet(request: Request, env: Env, headers: Record<stri
 
   const walletId = await ensureNodeWallet(env, machineId);
 
-  // POST credit — paid out when a node submits verified leads
-  if (body.action === 'credit') {
-    const amount = Number(body.amount) || 0;
-    if (amount <= 0) return new Response(JSON.stringify({ error: 'amount required' }), { status: 400, headers });
-    await env.DB.prepare(
-      `UPDATE node_wallets SET balance = balance + ?, total_earned = total_earned + ?, updated_at = datetime('now') WHERE wallet_id = ?`
-    ).bind(amount, amount, walletId).run();
-  }
-
-  // POST payout — move earned credits to a node operator wallet (withdrawal)
-  if (body.action === 'payout') {
-    const amount = Number(body.amount) || 0;
-    const toWallet = body.to_wallet;
-    if (amount <= 0) return new Response(JSON.stringify({ error: 'amount required' }), { status: 400, headers });
-    const row = await env.DB.prepare('SELECT balance FROM node_wallets WHERE wallet_id = ?').bind(walletId).first() as any;
-    if (!row || row.balance < amount) return new Response(JSON.stringify({ error: 'Insufficient balance' }), { status: 402, headers });
-    await env.DB.prepare('UPDATE node_wallets SET balance = balance - ?, updated_at = datetime(\'now\') WHERE wallet_id = ?').bind(amount, walletId).run();
-    if (toWallet) {
-      await env.DB.prepare('INSERT OR IGNORE INTO wallets (wallet_id, balance, credited) VALUES (?, 0, 1)').bind(toWallet).run();
-      await env.DB.prepare('UPDATE wallets SET balance = balance + ? WHERE wallet_id = ?').bind(amount, toWallet).run();
-    }
+  // Security: nodes may NOT credit or payout their own wallet from this route.
+  // Balance changes happen only server-side (verified leads, admin payout).
+  // Any credit/payout here is rejected to prevent self-funded accounts.
+  if (body.action === 'credit' || body.action === 'payout') {
+    return new Response(JSON.stringify({ error: 'not allowed from node route' }), { status: 403, headers });
   }
 
   const row = await env.DB.prepare('SELECT balance, total_earned, status FROM node_wallets WHERE wallet_id = ?').bind(walletId).first() as any;
@@ -1377,29 +1390,23 @@ async function handleNodeWalletGet(request: Request, env: Env, headers: Record<s
 }
 
 // ── OTA Manifest: served to the swarm ─────────────────────────────────────
+// Canonical manifest lives in public/fcukproxy/ota-manifest.json; this handler
+// re-fetches and re-serves it so the parent URL is byte-identical to what the
+// static file defines (no drift between the two sources).
+const OTA_CANONICAL_MANIFEST = 'https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/ota-manifest.json';
+
 async function handleOtaManifest(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
-  await ensureTable(env);
-  const url = new URL(request.url);
-  const branch = url.searchParams.get('branch') || 'financecheque';
-  const gh = `https://raw.githubusercontent.com/unclehowell/datro/${branch}/public/fcukproxy`;
-
-  const manifest = {
-    schema: 1,
-    branch,
-    updated: new Date().toISOString().slice(0, 10),
-    apps: {
-      'child-proxy': { version: '0.9.0', file: 'child-proxy.mjs', url: `${gh}/child-proxy.mjs`, check: 'node' },
-      'agent': { version: '0.6.0', file: 'agent.py', url: `${gh}/agent.py`, check: 'python' },
-      'agent-exec': { version: '1.0.0', file: 'agent-exec.sh', url: `${gh}/agent-exec.sh`, check: 'bash' },
-      'campaign-exec': { version: '0.3.0', file: 'campaign-exec.sh', url: `${gh}/campaign-exec.sh`, check: 'bash' },
-      'reflect': { version: '0.2.0', file: 'reflect.sh', url: `${gh}/reflect.sh`, check: 'bash' },
-      'skills-leadgen': { version: '0.2.0', file: 'skills/leadgen-strategy.md', url: `${gh}/skills/leadgen-strategy.md`, check: 'text' },
-      'skills-discharge': { version: '0.2.0', file: 'skills/local-agent-discharge.md', url: `${gh}/skills/local-agent-discharge.md`, check: 'text' },
-    },
-  };
-
   const respHeaders = { ...headers, 'Content-Type': 'application/json', 'Cache-Control': 'no-store' };
-  return new Response(JSON.stringify(manifest, null, 2), { status: 200, headers: respHeaders });
+  try {
+    const upstream = await fetch(OTA_CANONICAL_MANIFEST, { signal: AbortSignal.timeout(10000) });
+    if (!upstream.ok) throw new Error(`manifest fetch ${upstream.status}`);
+    const body = await upstream.text();
+    if (body.length > 64 * 1024) throw new Error('manifest too large');
+    JSON.parse(body); // sanity: must be valid JSON before passing through
+    return new Response(body, { status: 200, headers: respHeaders });
+  } catch (e) {
+    return new Response(JSON.stringify({ error: `manifest unavailable: ${e instanceof Error ? e.message : e}` }), { status: 503, headers: respHeaders });
+  }
 }
 
 // ── Orders: swarm view of escrowed lead orders ────────────────────────────
@@ -1421,47 +1428,103 @@ async function handleOrderAccept(request: Request, env: Env, headers: Record<str
   const machineId = body.machine_id;
   if (!orderId || !machineId) return new Response(JSON.stringify({ error: 'order_id and machine_id required' }), { status: 400, headers });
 
-  const order = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(orderId).first() as any;
-  if (!order) return new Response(JSON.stringify({ error: 'Order not found' }), { status: 404, headers });
-  if (order.status !== 'escrowed') return new Response(JSON.stringify({ error: 'Order already claimed' }), { status: 409, headers });
-
-  await env.DB.prepare(`UPDATE orders SET status = 'in_progress' WHERE id = ?`).bind(orderId).run();
+  // Atomic claim: a single conditional UPDATE — no read-then-write race.
+  const res = await env.DB.prepare(
+    `UPDATE orders SET status = 'in_progress', accepted_node_id = ?, updated_at = datetime('now')
+     WHERE id = ? AND status = 'escrowed'`
+  ).bind(machineId, orderId).run();
+  if (!res.meta.changes) {
+    const order = await env.DB.prepare('SELECT status FROM orders WHERE id = ?').bind(orderId).first() as any;
+    if (!order) return new Response(JSON.stringify({ error: 'Order not found' }), { status: 404, headers });
+    return new Response(JSON.stringify({ error: `Order already claimed (${order.status})` }), { status: 409, headers });
+  }
   return new Response(JSON.stringify({ ok: true, order_id: orderId, machine_id: machineId }), { status: 200, headers });
 }
 
-// ── Lead Report: node reports a verified lead → payout to node wallet ─────
+// ── Lead Report: node reports a lead → always lands as 'pending' ──────────
+// Only the server-side verification path may mark a lead 'verified', and it
+// alone decrements escrow + credits the node wallet via the double-entry ledger.
 async function handleLeadReport(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
   await ensureTable(env);
   const body = await request.json().catch(() => ({})) as any;
   const orderId = Number(body.order_id);
   const machineId = body.machine_id || body.childId;
-  const status = body.status || 'pending';
-  const source = body.source || '';
-  const value = Number(body.value) || 0;
+  const source = typeof body.source === 'string' ? body.source.slice(0, 200) : '';
   if (!orderId || !machineId) return new Response(JSON.stringify({ error: 'order_id and machine_id required' }), { status: 400, headers });
 
-  const leadRes = await env.DB.prepare(
-    `INSERT INTO leads (order_id, machine_id, status, source, value) VALUES (?, ?, ?, ?, ?)`
-  ).bind(orderId, machineId, status, source, value).run();
-
-  let payout = 0;
-  // Verified leads pay out to the node wallet; budget is escrow
-  if (status === 'verified') {
-    const order = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(orderId).first() as any;
-    if (order) {
-      payout = value || Math.floor(order.lead_value);
-      const walletId = await ensureNodeWallet(env, machineId);
-      await env.DB.prepare(
-        `UPDATE node_wallets SET balance = balance + ?, total_earned = total_earned + ?, updated_at = datetime('now') WHERE wallet_id = ?`
-      ).bind(payout, payout, walletId).run();
-      await env.DB.prepare(
-        `INSERT INTO disbursements (wallet_id, order_id, amount, reason) VALUES (?, ?, ?, 'lead')`
-      ).bind(walletId, orderId, payout).run();
-      await env.DB.prepare(
-        `UPDATE orders SET escrow_balance = MAX(escrow_balance - ?, 0), lead_value = ? WHERE id = ?`
-      ).bind(payout, payout, orderId).run();
-    }
+  const order = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(orderId).first() as any;
+  if (!order) return new Response(JSON.stringify({ error: 'Order not found' }), { status: 404, headers });
+  if (order.status === 'escrowed') return new Response(JSON.stringify({ error: 'Order must be accepted before reporting leads' }), { status: 409, headers });
+  if (order.accepted_node_id && order.accepted_node_id !== machineId) {
+    return new Response(JSON.stringify({ error: 'Not the accepted node for this order' }), { status: 403, headers });
   }
 
-  return new Response(JSON.stringify({ ok: true, lead_id: leadRes.meta.last_row_id, payout }), { status: 200, headers });
+  // Nodes can only submit pending leads; 'verified' is server-issued.
+  const leadRes = await env.DB.prepare(
+    `INSERT INTO leads (order_id, machine_id, status, source, value) VALUES (?, ?, 'pending', ?, 0)`
+  ).bind(orderId, machineId, source).run();
+
+  return new Response(JSON.stringify({ ok: true, lead_id: leadRes.meta.last_row_id, status: 'pending', payout: 0 }), { status: 200, headers });
+}
+
+// ── Lead Verify (server-side): mark pending → verified, decrement escrow,
+//    credit the node wallet through the idempotent ledger. ────────────────
+async function handleLeadVerify(request: Request, env: Env, headers: Record<string, string>): Promise<Response> {
+  await ensureTable(env);
+  // Admin-only: this endpoint credits node wallets. Requires FCUK_ADMIN_TOKEN secret.
+  const adminToken = (env as any).FCUK_ADMIN_TOKEN || '';
+  if (!adminToken) return new Response(JSON.stringify({ error: 'verify endpoint not configured' }), { status: 503, headers });
+  const supplied = request.headers.get('x-fcuk-token') || request.headers.get('X-FCUK-Token') || '';
+  if (supplied !== adminToken) return new Response(JSON.stringify({ error: 'forbidden' }), { status: 403, headers });
+
+  const body = await request.json().catch(() => ({})) as any;
+  const leadId = Number(body.lead_id);
+  const orderId = Number(body.order_id);
+  const value = Number(body.value);
+  if (!leadId || !orderId) return new Response(JSON.stringify({ error: 'lead_id and order_id required' }), { status: 400, headers });
+
+  const lead = await env.DB.prepare('SELECT * FROM leads WHERE id = ? AND order_id = ?').bind(leadId, orderId).first() as any;
+  if (!lead) return new Response(JSON.stringify({ error: 'Lead not found' }), { status: 404, headers });
+  if (lead.status === 'verified') return new Response(JSON.stringify({ ok: true, lead_id: leadId, already_verified: true }), { status: 200, headers });
+  if (lead.status !== 'pending') return new Response(JSON.stringify({ error: `Lead not pending (${lead.status})` }), { status: 409, headers });
+
+  const order = await env.DB.prepare('SELECT * FROM orders WHERE id = ?').bind(orderId).first() as any;
+  if (!order) return new Response(JSON.stringify({ error: 'Order not found' }), { status: 404, headers });
+
+  const payout = value > 0 ? value : Math.floor(Number(order.lead_value) || 0);
+  if (payout <= 0) return new Response(JSON.stringify({ error: 'lead value must be positive' }), { status: 400, headers });
+  const escrowRemaining = Number(order.escrow_remaining > 0 ? order.escrow_remaining : order.escrow_balance);
+  if (escrowRemaining < payout) {
+    return new Response(JSON.stringify({ error: 'Insufficient escrow for payout' }), { status: 402, headers });
+  }
+
+  // Idempotent ledger entry: UNIQUE(source='lead', source_id=leadId) prevents double-pay.
+  const walletId = await ensureNodeWallet(env, lead.machine_id);
+  const existing = await env.DB.prepare('SELECT id FROM ledger WHERE source = ? AND source_id = ?')
+    .bind('lead', leadId).first().catch(() => null);
+  if (existing) return new Response(JSON.stringify({ ok: true, lead_id: leadId, already_paid: true }), { status: 200, headers });
+
+  // Update balance, get the new balance atomically via RETURNING.
+  const balanceRow = await env.DB.prepare(
+    `UPDATE node_wallets SET balance = balance + ?, total_earned = total_earned + ?, updated_at = datetime('now')
+     WHERE wallet_id = ? RETURNING balance`
+  ).bind(payout, payout, walletId).first().catch(() => null) as any;
+  const balanceAfter = balanceRow?.balance ?? 0;
+
+  // Mark the lead verified + escrow decrement (guarded so it never goes negative).
+  await env.DB.prepare(`UPDATE leads SET status = 'verified', value = ? WHERE id = ?`).bind(payout, leadId).run();
+  await env.DB.prepare(
+    `UPDATE orders SET escrow_remaining = MAX(escrow_remaining - ?, 0), escrow_balance = MAX(escrow_balance - ?, 0),
+     leads_paid = leads_paid + 1, updated_at = datetime('now') WHERE id = ?`
+  ).bind(payout, payout, orderId).run();
+
+  // Ledger + disbursement rows.
+  await env.DB.prepare(
+    `INSERT INTO ledger (source, source_id, wallet_id, order_id, delta, balance_after, reason) VALUES ('lead', ?, ?, ?, ?, ?, 'lead_payout')`
+  ).bind(leadId, walletId, orderId, payout, balanceAfter).run().catch(() => {});
+  await env.DB.prepare(
+    `INSERT INTO disbursements (wallet_id, order_id, amount, reason) VALUES (?, ?, ?, 'lead')`
+  ).bind(walletId, orderId, payout).run();
+
+  return new Response(JSON.stringify({ ok: true, lead_id: leadId, payout, balance: balanceAfter }), { status: 200, headers });
 }

@@ -1,3 +1,26 @@
+## [0.5.1.89] - 2026-08-04
+
+Security hardening release responding to the Fugu quality review (v0.5.1.88 was a canary; this release implements the top blockers).
+
+### Added
+- **OTA v2 anti-downgrade**: manifests carry a monotonic `release_sequence`; `child-proxy.mjs` and `agent.py` persist the highest applied sequence in `~/.fcukproxy/.ota-sequence` and reject any manifest at an equal or lower sequence (blocks replay/downgrade).
+- **Manifest signature-ready schema v2** with strict size caps (manifest ≤ 64 KiB, artifacts ≤ 4 MiB) and a **host allowlist** (only `raw.githubusercontent.com` and `financecheque.uk`, HTTPS-only, redirects refused).
+- **Path-traversal guard**: OTA destinations/validators now come from a hard-coded internal component spec (`COMPONENT_SPEC`) — never from the (untrusted) manifest.
+- **Atomic component staging**: all changed components are downloaded + validated into staging first; only after every artifact passes is the swap performed, the version markers written, and the restart signalled once.
+- **Byte-identical parent manifest**: `/api/proxy/ota/manifest` now re-fetches and re-serves the canonical `ota-manifest.json` from the branch instead of generating an inline copy (no drift between sources).
+- **Double-entry ledger** (`ledger` table): every wallet balance change is an append-only entry with a `UNIQUE (source, source_id)` idempotency key so replays cannot double-credit.
+- **Server-side lead verification** (`POST /api/proxy/lead/verify`): nodes can only file `pending` leads; only the admin-gated verify endpoint marks a lead verified, decrements escrow (guarded to never go negative), and credits the node wallet through the ledger.
+
+### Changed
+- `POST /api/proxy/wallet` now **rejects `credit`/`payout` actions from the node route** — nodes could previously credit their own wallets arbitrarily (self-funded accounts). Balance changes are server-side only.
+- `handleOrderAccept` is now an **atomic conditional UPDATE** (`WHERE status='escrowed'`) — no read-then-write race for claiming orders.
+- `campaign-exec.sh` reports leads as `pending` (payout arrives via server verification) and `skills/leadgen-strategy.md` documents the new flow.
+- Orders gain `escrow_remaining`, `accepted_node_id`, `leads_paid`, `lead_quota`, `expires_at`, `updated_at` columns (auto-migrated by `ensureTable`).
+- `agent.py` OTA hardened: manifest content-length cap, host allowlist, urlopen size bound, sequence persistence, and only the hard-coded agent spec path used.
+
+### Fixed
+- `agent.py` OTA accepted the manifest based on content-type; now parses JSON regardless of header (raw GitHub serves `text/plain`).
+
 ## [0.5.1.88] - 2026-08-04
 
 Release candidates live-tested across the FCUK swarm: this laptop + connected phone (child-proxy nodes) OTA-update from this branch.
