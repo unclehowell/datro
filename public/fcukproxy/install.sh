@@ -33,6 +33,7 @@ LLAMA_PORT="${LLAMA_PORT:-8090}"     # port for llama-server (full mode only)
 INSTALL_DIR="${INSTALL_DIR:-$HOME/.fcukproxy}"
 CHAT_ONLY="${CHAT_ONLY:-false}"      # true = no command execution allowed
 AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
+FCUK_LOCAL_TOKEN="${FCUK_LOCAL_TOKEN:-}"  # local auth token (auto-generated)
 
 # ── Colors ───────────────────────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'
@@ -72,11 +73,20 @@ detect_platform() {
 
 # ── Interactive prompts (only when values not set via env) ────────────────────
 prompt_config() {
+  # When piped in (curl ... | bash), stdin is not a TTY: `read` would hit EOF
+  # and `set -e` would abort the installer. Fall back to defaults / env vars.
+  if [[ ! -t 0 ]]; then
+    MODE="${MODE:-lite}"
+    PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
+    CHILD_ID="${CHILD_ID:-$(hostname)-$(date +%s | tail -c 5)}"
+    return 0
+  fi
+
   if [[ -z "$MODE" ]]; then
     echo ""
     echo -e "${BOLD}Install mode:${NC}"
-    echo "  ${GREEN}lite${NC}   — Python agent only, uses parent's cloud LLMs (recommended)"
-    echo "  ${GREEN}full${NC}   — + llama-server + MiniCPM-1B local LLM (for Raspberry Pi, spare machines)"
+    echo -e "  ${GREEN}lite${NC}   — Python agent only, uses parent's cloud LLMs (recommended)"
+    echo -e "  ${GREEN}full${NC}   — + llama-server + MiniCPM-1B local LLM (for Raspberry Pi, spare machines)"
     echo ""
     read -rp "Mode [lite]: " input
     MODE="${input:-lite}"
@@ -142,6 +152,11 @@ install_deps() {
   python3 -m pip --version &>/dev/null || {
     warn "pip not found, trying to install..."
     python3 -m ensurepip --upgrade 2>/dev/null || true
+    if ! python3 -m pip --version &>/dev/null; then
+      info "Bootstrapping pip via get-pip.py..."
+      curl -fsSL https://bootstrap.pypa.io/get-pip.py -o /tmp/fcukproxy-get-pip.py \
+        && python3 /tmp/fcukproxy-get-pip.py --user --break-system-packages >/dev/null 2>&1 || true
+    fi
   }
 }
 
@@ -254,7 +269,8 @@ install_agent() {
 
   info "Installing Python dependencies..."
   python3 -m pip install --quiet --user aiohttp 2>/dev/null || \
-    python3 -m pip install --quiet aiohttp 2>/dev/null || true
+    python3 -m pip install --quiet aiohttp 2>/dev/null || \
+    python3 -m pip install --quiet --break-system-packages aiohttp 2>/dev/null || true
 }
 
 # ── Download video engine (thin client) + pre-fetch scene/object library ─────
@@ -272,7 +288,8 @@ install_video_lib() {
 
   info "Installing video dependencies (Pillow)..."
   python3 -m pip install --quiet --user Pillow 2>/dev/null || \
-    python3 -m pip install --quiet Pillow 2>/dev/null || true
+    python3 -m pip install --quiet Pillow 2>/dev/null || \
+    python3 -m pip install --quiet --break-system-packages Pillow 2>/dev/null || true
 
   # Ensure ffmpeg is present (used to encode MP4). Optional — chat-only nodes skip.
   if ! command -v ffmpeg >/dev/null 2>&1 && [[ ! -x "/data/data/com.termux/files/usr/bin/ffmpeg" ]]; then
@@ -316,6 +333,7 @@ write_config() {
 {
   "machine_id": "$CHILD_ID",
   "machine_name": "$CHILD_ID",
+  "local_ip": "127.0.0.1",
   "proxy_port": $PROXY_PORT,
   "parent": "$PARENT_URL",
   "version": "$VERSION",

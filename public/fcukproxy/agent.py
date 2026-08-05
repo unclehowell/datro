@@ -521,7 +521,7 @@ async def bpdu_sender():
     payload = json.dumps({
         "machine_id": CONFIG["machine_id"],
         "machine_name": CONFIG["machine_name"],
-        "ip": CONFIG["local_ip"],
+        "ip": CONFIG.get("local_ip", "127.0.0.1"),
         "port": PROXY_PORT,
         "version": VERSION,
     }).encode()
@@ -1173,7 +1173,7 @@ async def handle_status(request: web.Request) -> web.Response:
     return web.json_response({
         "machine_id": CONFIG["machine_id"],
         "machine_name": CONFIG["machine_name"],
-        "local_ip": CONFIG["local_ip"],
+        "local_ip": CONFIG.get("local_ip", "127.0.0.1"),
         "version": VERSION,
         "uptime_s": int(time.time() - start_time),
         "peers": len(peers),
