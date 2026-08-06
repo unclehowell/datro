@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 FCUK Proxy Web GUI — Finance Cheque UK
-Local dashboard at http://localhost:6001
+Local dashboard at http://localhost:3000
 Shows proxy status, peer list, and live stats.
 """
 import asyncio
@@ -18,7 +18,7 @@ except ImportError:
     from aiohttp import web, ClientSession, ClientTimeout
 
 log = logging.getLogger(__name__)
-GUI_PORT   = 6001
+GUI_PORT   = 3000
 PROXY_PORT = 6000
 
 HTML = """<!DOCTYPE html>
@@ -133,7 +133,7 @@ async function refresh() {
       ['Hostname',   d.machine_name],
       ['Local IP',   d.local_ip],
       ['Proxy Port', '6000'],
-      ['GUI Port',   '6001'],
+      ['GUI Port',   '3000'],
       ['Parent',     d.parent],
       ['Version',    d.version],
     ].map(([k,v]) => `<div class="kv"><span class="k">${k}</span><span class="v">${v}</span></div>`).join('');
