@@ -3,7 +3,11 @@
 // ============================================================
 
 import { v4 as uuid } from "uuid";
+import { homedir } from "os";
+import { join } from "path";
 import { ToolCallRequest, ToolDefinition, ConfidenceScore } from "../types";
+
+const DEFAULT_HOME = homedir();
 
 // ─── Tool Call Emission (Model Output → Structured Request) ─
 
@@ -172,8 +176,8 @@ const INTENT_PATTERNS: Array<{ pattern: RegExp; command: (m: RegExpMatchArray) =
   { pattern: /disk (list|partitions)/i, command: () => "lsblk", description: "Disk partitions" },
   { pattern: /env(ironment)?( vars)?/i, command: () => "env | sort | head -30", description: "Environment variables" },
   { pattern: /which (.+)/i, command: (m) => `which ${m[1]}`, description: "Find command location" },
-  { pattern: /where(is| to find) (.+)/i, command: (m) => `find /home/unclehowell -name "${m[2]}" -type f 2>/dev/null | head -10`, description: "Find file" },
-  { pattern: /generate (a )?website/i, command: () => "bash /home/unclehowell/agentos-gui/scripts/gen-website.sh", description: "Generate website" },
+  { pattern: /where(is| to find) (.+)/i, command: (m) => `find ${DEFAULT_HOME} -name "${m[2]}" -type f 2>/dev/null | head -10`, description: "Find file" },
+  { pattern: /generate (a )?website/i, command: () => `bash ${join(DEFAULT_HOME, "agentos-gui", "scripts", "gen-website.sh")}`, description: "Generate website" },
 ];
 
 export function detectIntent(message: string): IntentMatch | null {

@@ -1,8 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { readFile, stat } from "fs/promises";
 import { join } from "path";
-
-const VIDEO_DIR = "/home/unclehowell/agentos-gui/remotion/out";
+import { REMOTION_OUT_DIR as VIDEO_DIR } from "@/lib/agentos-dir";
 
 export async function GET(
   req: NextRequest,

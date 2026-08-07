@@ -9,9 +9,10 @@ import { v4 as uuid } from "uuid";
 import { readFile, writeFile, readdir, mkdir } from "fs/promises";
 import { existsSync } from "fs";
 import { join, resolve } from "path";
+import { homedir } from "os";
 import { Procedure, ProcedureStep, CostTracker } from "./types";
 
-const PROCEDURES_DIR = join(process.env.HOME || "/home/unclehowell", ".agentos", "procedures");
+const PROCEDURES_DIR = join(homedir(), ".agentos", "procedures");
 
 export class ProcedureMemory {
   private procedures: Map<string, Procedure> = new Map();
@@ -144,7 +145,7 @@ export class ProcedureMemory {
       const filePath = this.extractRedirectPath(lastCommand);
       if (filePath) {
         // Resolve relative paths against home directory (default exec CWD)
-        const resolvedPath = filePath.startsWith("/") ? filePath : resolve(process.env.HOME || "/home/unclehowell", filePath);
+        const resolvedPath = filePath.startsWith("/") ? filePath : resolve(homedir(), filePath);
         if (!existsSync(resolvedPath)) {
           console.log(`[PROCEDURES] File redirect but file not created: ${resolvedPath}`);
           return null;

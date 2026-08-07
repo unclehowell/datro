@@ -7,19 +7,24 @@ set -euo pipefail
 #
 # One-liner install for scaling your proxy network:
 #
-#   LITE (recommended for most devices):
-#     curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install.sh | PARENT_URL=https://YOUR-HOST bash
+#   curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash
+#
+# What it installs:
+#   1. The child proxy agent (Python) on port 6100 — registers with the parent.
+#   2. The AgentOS chat GUI on port 3000 — the web chat interface you talk to.
+#   3. Optional video engine (Pillow + ffmpeg) for on-device renders.
+#   4. Optional local LLM (full mode only).
+#
+# LITE (recommended for most devices):
+#     curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash
 #
 #   FULL (with local LLM — Raspberry Pi, spare laptop):
-#     curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install.sh | MODE=full bash
-#
-#   INTERACTIVE (prompts for everything):
-#     curl -sL https://raw.githubusercontent.com/unclehowell/datro/financecheque/install.sh | bash
+#     curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | MODE=full bash
 #
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.1.0"
+VERSION="1.2.0"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -34,6 +39,13 @@ INSTALL_DIR="${INSTALL_DIR:-$HOME/.fcukproxy}"
 CHAT_ONLY="${CHAT_ONLY:-false}"      # true = no command execution allowed
 AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
 FCUK_LOCAL_TOKEN="${FCUK_LOCAL_TOKEN:-}"  # local auth token (auto-generated)
+
+# Local chat GUI (AgentOS) — served on GUI_PORT with the agent as its LLM backend
+GUI_VERSION="0.5.1.91"               # financecheque release tag the GUI ships from
+GUI_PORT="${GUI_PORT:-3000}"         # the web chat interface
+GUI_DIR="${GUI_DIR:-$INSTALL_DIR/agentos-gui}"
+NODE_VERSION="v22.23.2"              # bundled Node.js for the GUI (pinned LTS)
+NODE_BIN_DIR=""                      # resolved by install_node()
 
 # ── Colors ───────────────────────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'
@@ -460,6 +472,188 @@ install_pm2() {
   fi
 }
 
+# ── Install Node.js (runtime for the local chat GUI) ─────────────────────────
+install_node() {
+  local platform="$1"
+  local os arch
+  IFS='-' read -r os arch <<< "$platform"
+
+  # Reuse an existing modern Node (>= 20) if present
+  if command -v node >/dev/null 2>&1; then
+    local major
+    major="$(node -v 2>/dev/null | tr -d 'v' | cut -d. -f1)"
+    if [[ -n "$major" ]] && (( major >= 20 )); then
+      NODE_BIN_DIR="$(dirname "$(command -v node)")"
+      ok "Using existing Node.js $(node -v)"
+      return 0
+    fi
+    warn "Found Node.js $(node -v) (GUI needs >= 20) — installing bundled Node $NODE_VERSION"
+  fi
+
+  local node_dir="$INSTALL_DIR/node"
+  if [[ -x "$node_dir/bin/node" ]]; then
+    NODE_BIN_DIR="$node_dir/bin"
+    ok "Using bundled Node.js $("$node_dir/bin/node" -v)"
+    return 0
+  fi
+
+  info "Installing Node.js $NODE_VERSION..."
+  local url=""
+  case "$platform" in
+    termux-*)
+      pkg install -y nodejs 2>/dev/null || true
+      NODE_BIN_DIR="$(dirname "$(command -v node)")"
+      ;;
+    linux-x64)   url="https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-x64.tar.xz" ;;
+    linux-arm64) url="https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-linux-arm64.tar.xz" ;;
+    macos-x64)   url="https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-darwin-x64.tar.gz" ;;
+    macos-arm64) url="https://nodejs.org/dist/$NODE_VERSION/node-$NODE_VERSION-darwin-arm64.tar.gz" ;;
+  esac
+
+  if [[ -z "$url" ]]; then
+    err "No Node.js build available for platform $platform — the GUI needs Node >= 20"
+    return 1
+  fi
+
+  mkdir -p "$INSTALL_DIR"
+  if ! curl -fsSL "$url" -o /tmp/fcuk-node.tar.xz; then
+    err "Failed to download Node.js"
+    return 1
+  fi
+  rm -rf "$node_dir" && mkdir -p "$node_dir"
+  tar xf /tmp/fcuk-node.tar.xz -C "$node_dir" --strip-components=1 || { err "Node.js extraction failed"; return 1; }
+  rm -f /tmp/fcuk-node.tar.xz
+
+  if [[ ! -x "$node_dir/bin/node" ]]; then
+    err "Node.js install failed — the GUI cannot run without Node >= 20"
+    return 1
+  fi
+  NODE_BIN_DIR="$node_dir/bin"
+  ok "Node.js $("$node_dir/bin/node" -v) installed at $node_dir"
+}
+
+# ── Install the local chat GUI (AgentOS) — web interface on port 3000 ───────
+install_gui() {
+  info "Downloading AgentOS chat GUI (financecheque-v$GUI_VERSION)..."
+  local tarball="https://github.com/unclehowell/datro/archive/refs/tags/financecheque-v$GUI_VERSION.tar.gz"
+  local tmp_src="/tmp/fcuk-gui-src"
+
+  if ! curl -fsSL "$tarball" -o /tmp/fcuk-gui.tgz; then
+    err "Failed to download GUI release tarball"
+    return 1
+  fi
+  rm -rf "$tmp_src" && mkdir -p "$tmp_src"
+  if ! tar xzf /tmp/fcuk-gui.tgz -C "$tmp_src"; then
+    err "Failed to extract GUI release tarball"
+    return 1
+  fi
+
+  rm -rf "$GUI_DIR"
+  mkdir -p "$(dirname "$GUI_DIR")"
+  if ! cp -a "$tmp_src/datro-financecheque-v$GUI_VERSION/agentos/gui" "$GUI_DIR"; then
+    err "agentos/gui not found in the release tarball"
+    rm -rf "$tmp_src" /tmp/fcuk-gui.tgz
+    return 1
+  fi
+  rm -rf "$tmp_src" /tmp/fcuk-gui.tgz
+  ok "GUI source at $GUI_DIR"
+
+  info "Installing GUI dependencies (npm install — can take a few minutes)..."
+  ( cd "$GUI_DIR"
+    "$NPM_BIN" install --no-audit --no-fund --no-update-notifier >> "$GUI_DIR/install.log" 2>&1
+  ) || { err "npm install failed — see $GUI_DIR/install.log"; return 1; }
+  # npm 11 blocks postinstall scripts until approved — run them so esbuild/sharp work
+  ( cd "$GUI_DIR"
+    "$NPM_BIN" approve-scripts --allow-scripts-pending >> "$GUI_DIR/install.log" 2>&1 || true
+    "$NPM_BIN" rebuild >> "$GUI_DIR/install.log" 2>&1 || true
+  )
+  if [[ ! -x "$GUI_DIR/node_modules/.bin/next" ]]; then
+    err "GUI dependency install failed (next binary missing) — see $GUI_DIR/install.log"
+    return 1
+  fi
+
+  info "Building the GUI (next build — first run is slow on small machines)..."
+  ( cd "$GUI_DIR"
+    NODE_OPTIONS="--max-old-space-size=1400" "$NPX_BIN" next build >> "$GUI_DIR/gui-build.log" 2>&1
+  ) || { err "GUI build failed — see $GUI_DIR/gui-build.log"; return 1; }
+  if [[ ! -d "$GUI_DIR/.next" ]]; then
+    err "GUI build failed (.next missing) — see $GUI_DIR/gui-build.log"
+    return 1
+  fi
+  ok "GUI built (web chat at http://localhost:$GUI_PORT)"
+}
+
+# ── Create systemd service for the GUI (optional) ────────────────────────────
+install_gui_service() {
+  if [[ ! -d /etc/systemd/system ]] || [[ "$(id -u)" -eq 0 ]]; then
+    return 1  # no systemd → caller uses nohup fallback
+  fi
+
+  local service_dir="$HOME/.config/systemd/user"
+  mkdir -p "$service_dir"
+
+  cat > "$service_dir/agentos-gui.service" << SVCEOF
+[Unit]
+Description=AgentOS Child Proxy GUI (port $GUI_PORT)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=$GUI_DIR
+Environment=HOME=$HOME
+Environment=PATH=$NODE_BIN_DIR:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=NODE_ENV=production
+Environment=PORT=$GUI_PORT
+Environment=HOSTNAME=0.0.0.0
+Environment=AGENTOS_GUI_DIR=$GUI_DIR
+Environment=FCUK_AGENT_URL=http://127.0.0.1:$PROXY_PORT/v1
+EnvironmentFile=$INSTALL_DIR/.env
+ExecStart=$GUI_DIR/node_modules/.bin/next start -p $GUI_PORT -H 0.0.0.0
+Restart=on-failure
+RestartSec=5
+
+[Install]
+WantedBy=default.target
+SVCEOF
+
+  systemctl --user daemon-reload 2>/dev/null || true
+  systemctl --user enable agentos-gui 2>/dev/null || true
+  systemctl --user start agentos-gui 2>/dev/null || true
+  ok "GUI systemd service installed and started"
+  return 0
+}
+
+# ── Start the GUI in the background (no systemd) ─────────────────────────────
+start_gui_nohup() {
+  info "Starting GUI in the background (no systemd)..."
+  ( cd "$GUI_DIR"
+    env HOME="$HOME" PATH="$NODE_BIN_DIR:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin" \
+        NODE_ENV=production PORT="$GUI_PORT" HOSTNAME="0.0.0.0" \
+        AGENTOS_GUI_DIR="$GUI_DIR" FCUK_AGENT_URL="http://127.0.0.1:$PROXY_PORT/v1" \
+        nohup ./node_modules/.bin/next start -p "$GUI_PORT" -H 0.0.0.0 >> "$GUI_DIR/gui.log" 2>&1 &
+    echo $! > "$GUI_DIR/gui.pid"
+  )
+  ok "GUI started (PID: $(cat "$GUI_DIR/gui.pid"))"
+}
+
+# ── Verify the GUI is serving ────────────────────────────────────────────────
+verify_gui() {
+  info "Waiting for the GUI on port $GUI_PORT..."
+  local tries=0
+  until curl -sf "http://127.0.0.1:$GUI_PORT/" >/dev/null 2>&1; do
+    tries=$((tries + 1))
+    [[ $tries -ge 60 ]] && break
+    sleep 1
+  done
+  if curl -sf "http://127.0.0.1:$GUI_PORT/" >/dev/null 2>&1; then
+    ok "Chat GUI responding at http://localhost:$GUI_PORT"
+  else
+    warn "GUI not responding yet — check: journalctl --user -u agentos-gui -f"
+    warn "or tail -f $GUI_DIR/gui.log"
+  fi
+}
+
 # ── Register with parent and verify ──────────────────────────────────────────
 verify_and_register() {
   sleep 3
@@ -518,6 +712,7 @@ print_summary() {
   echo -e "  ${CYAN}Node ID:${NC}       $CHILD_ID"
   echo -e "  ${CYAN}Parent:${NC}        $PARENT_URL"
   echo -e "  ${CYAN}Proxy port:${NC}    $PROXY_PORT"
+  echo -e "  ${CYAN}Chat GUI:${NC}      http://localhost:$GUI_PORT"
   if [[ "$MODE" == "full" ]]; then
     echo -e "  ${CYAN}LLM port:${NC}      $LLAMA_PORT"
     echo -e "  ${CYAN}Model:${NC}         $INSTALL_DIR/models/model.gguf"
@@ -526,10 +721,11 @@ print_summary() {
   echo -e "  ${CYAN}Logs:${NC}          $INSTALL_DIR/agent.log"
   echo ""
   echo -e "  ${YELLOW}Next steps:${NC}"
-  echo "  1. Add at least one API key to $INSTALL_DIR/.env"
-  echo "     (Groq is free: https://console.groq.com/keys)"
+  echo "  1. Open the chat GUI:   http://localhost:$GUI_PORT"
+  echo "     (Chat is wired to the child proxy — the parent's LLMs answer.)"
   echo ""
-  echo "  2. Restart the agent:"
+  echo "  2. (Optional) Add at least one API key to $INSTALL_DIR/.env"
+  echo "     (Groq is free: https://console.groq.com/keys) and restart:"
   echo "     systemctl --user restart fcuk-proxy"
   echo "     # or: pm2 restart fcuk-proxy"
   echo "     # or: python3 $INSTALL_DIR/agent.py --port $PROXY_PORT"
@@ -605,14 +801,25 @@ main() {
     LLM_SERVER=$(install_llm "$PLATFORM")
   fi
 
-  step 6 "Starting services"
+  step 6 "Local chat GUI (AgentOS, port $GUI_PORT)"
+  install_node "$PLATFORM" || warn "Node.js install failed — GUI will be skipped"
+  NPM_BIN="$NODE_BIN_DIR/npm"
+  NPX_BIN="$NODE_BIN_DIR/npx"
+  install_gui || warn "GUI install failed — chat still works via the proxy API"
+
+  step 7 "Starting services"
   start_services "$LLM_SERVER"
 
-  step 6 "Service persistence"
+  if [[ -d "$GUI_DIR/.next" ]]; then
+    install_gui_service || start_gui_nohup
+  fi
+
+  step 8 "Service persistence"
   install_service || install_pm2 || warn "No service manager found — agent runs in background only"
 
-  step 7 "Verification"
+  step 9 "Verification"
   verify_and_register
+  verify_gui
 
   print_summary
 }

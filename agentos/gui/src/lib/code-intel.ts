@@ -1,4 +1,6 @@
 import { execSync } from "child_process";
+import { homedir } from "os";
+import { join } from "path";
 
 export interface SymbolInfo {
   name: string;
@@ -27,7 +29,7 @@ export interface RepoIndex {
   indexedAt: string;
 }
 
-const INDEX_DIR = process.env.CODE_INDEX_DIR || "/home/unclehowell/.agentos/code-index";
+const INDEX_DIR = process.env.CODE_INDEX_DIR || join(homedir(), ".agentos", "code-index");
 
 export async function indexRepository(repoPath: string): Promise<RepoIndex> {
   const res = await fetch("http://localhost:3100/index", {

@@ -7,7 +7,10 @@
 
 import { spawn, ChildProcess } from "child_process";
 import { v4 as uuid } from "uuid";
+import { homedir } from "os";
 import { WorkerSession, WorkerName, Artifact, RuntimeEvent } from "./types";
+
+const DEFAULT_HOME = homedir();
 
 // ─── Base Worker Session ───────────────────────────────────
 
@@ -165,7 +168,7 @@ export abstract class BaseWorkerSession {
 export class OpenCodeSession extends BaseWorkerSession {
   private prompt: string;
 
-  constructor(parentSessionId: string, task: string, cwd: string = "/home/unclehowell") {
+  constructor(parentSessionId: string, task: string, cwd: string = DEFAULT_HOME) {
     super("opencode", parentSessionId, task, cwd);
     this.prompt = task;
   }
@@ -228,7 +231,7 @@ export class KiloSession extends BaseWorkerSession {
   private prompt: string;
   private repoPath: string;
 
-  constructor(parentSessionId: string, task: string, cwd: string = "/home/unclehowell") {
+  constructor(parentSessionId: string, task: string, cwd: string = DEFAULT_HOME) {
     super("kilo", parentSessionId, task, cwd);
     this.prompt = task;
     this.repoPath = cwd;

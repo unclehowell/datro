@@ -5,12 +5,13 @@
 import { v4 as uuid } from "uuid";
 import { readFile, writeFile, mkdir } from "fs/promises";
 import { join } from "path";
+import { homedir } from "os";
 import {
   SchedulerState, ScheduledJob, SchedulerConfig, Session, BackgroundJob, Checkpoint,
 } from "./types";
 
 const SCHEDULER_PATH = join(
-  process.env.HOME || "/home/unclehowell",
+  homedir(),
   ".agentos",
   "scheduler.json"
 );
@@ -306,7 +307,7 @@ export class Scheduler {
 
   async persist(): Promise<void> {
     try {
-      await mkdir(join(process.env.HOME || "/home/unclehowell", ".agentos"), { recursive: true });
+      await mkdir(join(homedir(), ".agentos"), { recursive: true });
       await writeFile(SCHEDULER_PATH, JSON.stringify(this.state, null, 2), "utf-8");
     } catch (err) {
       console.error("Failed to persist scheduler:", err);

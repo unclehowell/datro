@@ -7,6 +7,7 @@ import { readFile, writeFile, readdir, stat, mkdir } from "fs/promises";
 import { existsSync } from "fs";
 import { join, dirname } from "path";
 import { promisify } from "util";
+import { homedir } from "os";
 import { v4 as uuid } from "uuid";
 import {
   ToolDefinition,
@@ -19,6 +20,11 @@ import { renderAIVideo } from "./ai-video";
 
 const execAsync = promisify(exec);
 
+// Machine-agnostic defaults: resolved from the real home dir at load time so
+// the same build works on any host. DATRO_DIR can be overridden per-machine.
+const DEFAULT_HOME = homedir();
+const DATRO_DIR = process.env.DATRO_DIR || join(DEFAULT_HOME, "datro");
+
 // ─── Built-in Tool Definitions ─────────────────────────────
 
 const BUILTIN_TOOLS: ToolDefinition[] = [
@@ -29,7 +35,7 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
     description: "Execute shell commands on the host system",
     parameters: [
       { name: "command", type: "string", description: "Shell command to execute", required: true },
-      { name: "cwd", type: "string", description: "Working directory", required: false, default: "/home/unclehowell" },
+      { name: "cwd", type: "string", description: "Working directory", required: false, default: DEFAULT_HOME },
       { name: "timeout", type: "number", description: "Timeout in milliseconds", required: false, default: 30000 },
     ],
     timeout: 600000,
@@ -73,7 +79,7 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
     description: "Find files by name pattern (glob)",
     parameters: [
       { name: "pattern", type: "string", description: "Glob pattern (e.g. **/*.ts)", required: true },
-      { name: "path", type: "string", description: "Root directory to search from", required: false, default: "/home/unclehowell" },
+      { name: "path", type: "string", description: "Root directory to search from", required: false, default: DEFAULT_HOME },
     ],
     timeout: 15000,
     permissions: ["read"],
@@ -87,7 +93,7 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
     description: "Search file contents by regex pattern",
     parameters: [
       { name: "pattern", type: "string", description: "Regex pattern to search for", required: true },
-      { name: "path", type: "string", description: "Directory to search in", required: false, default: "/home/unclehowell" },
+      { name: "path", type: "string", description: "Directory to search in", required: false, default: DEFAULT_HOME },
       { name: "include", type: "string", description: "File pattern to include (e.g. *.ts)", required: false },
     ],
     timeout: 15000,
@@ -102,7 +108,7 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
     description: "Execute git commands",
     parameters: [
       { name: "command", type: "string", description: "Git subcommand with args (e.g. 'status', 'log --oneline -5')", required: true },
-      { name: "cwd", type: "string", description: "Repository path", required: false, default: "/home/unclehowell/datro" },
+      { name: "cwd", type: "string", description: "Repository path", required: false, default: DATRO_DIR },
     ],
     timeout: 120000,
     permissions: ["execute", "read", "write"],
@@ -261,7 +267,7 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
     description: "Execute a shell command in the background and poll for results. Returns a jobId for status checking.",
     parameters: [
       { name: "command", type: "string", description: "Shell command to execute in background", required: true },
-      { name: "cwd", type: "string", description: "Working directory", required: false, default: "/home/unclehowell" },
+      { name: "cwd", type: "string", description: "Working directory", required: false, default: DEFAULT_HOME },
       { name: "timeout", type: "number", description: "Max runtime in milliseconds", required: false, default: 3600000 },
     ],
     timeout: 10000,
@@ -460,7 +466,7 @@ export class ToolRegistry {
 
   private async execTerminal(req: ToolCallRequest): Promise<ToolCallResult> {
     const command = String(req.parameters.command || "");
-    const cwd = String(req.parameters.cwd || "/home/unclehowell");
+    const cwd = String(req.parameters.cwd || DEFAULT_HOME);
     const timeout = Number(req.parameters.timeout || 30000);
 
     try {
@@ -500,7 +506,7 @@ export class ToolRegistry {
 
   private async execFileSearch(req: ToolCallRequest): Promise<ToolCallResult> {
     const pattern = String(req.parameters.pattern || "");
-    const root = String(req.parameters.path || "/home/unclehowell");
+    const root = String(req.parameters.path || DEFAULT_HOME);
     try {
       const { stdout } = await execAsync(`find ${root} -name "${pattern}" -type f 2>/dev/null | head -50`, { timeout: 15000 });
       return this.buildSuccessResult(req, stdout.trim() || "No files found");
@@ -511,7 +517,7 @@ export class ToolRegistry {
 
   private async execFileGrep(req: ToolCallRequest): Promise<ToolCallResult> {
     const pattern = String(req.parameters.pattern || "");
-    const root = String(req.parameters.path || "/home/unclehowell");
+    const root = String(req.parameters.path || DEFAULT_HOME);
     const include = req.parameters.include ? String(req.parameters.include) : undefined;
     const includeArg = include ? `--include="${include}"` : "";
     try {
@@ -526,7 +532,7 @@ export class ToolRegistry {
   }
 
   private async execFileList(req: ToolCallRequest): Promise<ToolCallResult> {
-    const dirPath = String(req.parameters.path || "/home/unclehowell");
+    const dirPath = String(req.parameters.path || DEFAULT_HOME);
     const recursive = Boolean(req.parameters.recursive);
     try {
       const cmd = recursive
@@ -541,7 +547,7 @@ export class ToolRegistry {
 
   private async execGit(req: ToolCallRequest): Promise<ToolCallResult> {
     const command = String(req.parameters.command || "status");
-    const cwd = String(req.parameters.cwd || "/home/unclehowell/datro");
+    const cwd = String(req.parameters.cwd || DATRO_DIR);
     try {
       const { stdout, stderr } = await execAsync(`git ${command}`, { cwd, timeout: 30000 });
       return this.buildSuccessResult(req, (stdout + (stderr ? "\n" + stderr : "")).trim());
@@ -634,7 +640,7 @@ export class ToolRegistry {
         : `hermes --yolo --task "${task.replace(/"/g, '\"')}"`;
 
       const output = execSync(cmd, {
-        cwd: "/home/unclehowell",
+        cwd: DEFAULT_HOME,
         timeout,
         env: { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task },
         encoding: "utf-8",
@@ -647,7 +653,7 @@ export class ToolRegistry {
 
   private async execBackgroundExec(req: ToolCallRequest): Promise<ToolCallResult> {
     const command = String(req.parameters.command || "");
-    const cwd = String(req.parameters.cwd || "/home/unclehowell");
+    const cwd = String(req.parameters.cwd || DEFAULT_HOME);
     const timeout = Number(req.parameters.timeout || 3600000);
 
     try {

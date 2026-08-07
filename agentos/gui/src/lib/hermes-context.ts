@@ -1,10 +1,11 @@
 import fs from "fs";
 import path from "path";
 import { execSync } from "child_process";
+import { homedir } from "os";
 
-const VAULT_PATH = process.env.VAULT_PATH || path.join(process.env.HOME || "/home/unclehowell", "brain");
+const VAULT_PATH = process.env.VAULT_PATH || path.join(homedir(), "brain");
 const PROJECTS_PATH = path.join(VAULT_PATH, "Projects", "datro");
-const HOME = process.env.HOME || "/home/unclehowell";
+const HOME = homedir();
 
 // ============================================================
 // SYSTEM PROMPT — Used only for LLM summarization and chat

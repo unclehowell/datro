@@ -10,6 +10,7 @@
 import { v4 as uuid } from "uuid";
 import { exec } from "child_process";
 import { promisify } from "util";
+import { homedir } from "os";
 import {
   Session, Action, Plan, StepResult, RuntimeEvent,
   ToolCallResult, ToolCallRequest, WorkerName,
@@ -431,7 +432,7 @@ export class AgentLoop {
         : `hermes --yolo --task "${task.replace(/"/g, '\"')}"`;
 
       const output = execSync(cmd, {
-        cwd: "/home/unclehowell",
+        cwd: homedir(),
         timeout,
         env: { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task },
         encoding: "utf-8",
@@ -463,7 +464,7 @@ export class AgentLoop {
   }
 
   private async executeWithWorker(sessionId: string, worker: WorkerName, action: Action): Promise<ToolCallResult> {
-    const cwd = String(action.parameters.cwd || "/home/unclehowell");
+    const cwd = String(action.parameters.cwd || homedir());
     const task = String(action.parameters.task || action.description);
 
     this.emitCognition(sessionId, "worker", `Delegating to ${worker}: ${task.slice(0, 60)}`);

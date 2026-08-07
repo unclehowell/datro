@@ -40,9 +40,9 @@ This will:
 1. Download the FCUK Proxy agent (`~/.fcukproxy/agent.py`)
 2. Generate a unique machine config (`~/.fcukproxy/machine.json`)
 3. Install a systemd user service (Linux) to keep the agent running
-4. Start a local web GUI at **http://localhost:3000**
+4. Install the AgentOS chat GUI — the web chat interface at **http://localhost:3000** (chat routes through the child proxy to the parent's LLMs)
 
-The proxy runs on port `6000` and connects to the parent proxy at `financecheque.uk`. It discovers other child proxies on your local network via UDP multicast.
+The proxy runs on port `6100` and connects to the parent proxy at `financecheque.uk`. It discovers other child proxies on your local network via UDP multicast.
 
 ---
 
@@ -51,8 +51,8 @@ The proxy runs on port `6000` and connects to the parent proxy at `financecheque
 ```
 financecheque.uk (parent proxy)
         │
-        ├── Child Proxy A (your machine, port 6000)
-        │       └── GUI at localhost:3000
+        ├── Child Proxy A (your machine, port 6100)
+        │       └── Chat GUI at localhost:3000
         ├── Child Proxy B (another machine)
         └── Child Proxy C (another machine)
 ```

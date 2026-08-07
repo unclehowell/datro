@@ -13,9 +13,12 @@ import { chatWithCloud } from "@/lib/cloud-router";
 import { isProxyLocked, lockForProxy, unlockProxy, getProxyLock } from "@/lib/proxy-state";
 import { exec } from "child_process";
 import { promisify } from "util";
+import { homedir } from "os";
 import { getRenderJob } from "@/runtime/tools/remotion";
 
 const execAsync = promisify(exec);
+
+const DEFAULT_HOME = homedir();
 
 // ─── Video render jobs (background) ─────────────────────────
 interface VideoJob {
@@ -167,7 +170,7 @@ async function runDelegate(agent: string, task: string, context?: string): Promi
       : `hermes --yolo --task "${task.replace(/"/g, '\"')}"`;
 
     const output = execSync(cmd, {
-      cwd: "/home/unclehowell",
+      cwd: DEFAULT_HOME,
       timeout: 3600000, // 1 hour max for delegate tasks
       env,
       encoding: "utf-8",
@@ -377,7 +380,7 @@ export async function POST(req: NextRequest) {
 
       try {
         const { stdout, stderr } = await execAsync(cmdToRun, {
-          cwd: "/home/unclehowell",
+          cwd: DEFAULT_HOME,
           timeout: execTimeout,
           env: { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted" },
         });

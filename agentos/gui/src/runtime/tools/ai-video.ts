@@ -12,11 +12,10 @@ import { existsSync, mkdirSync, readdirSync, rmSync, unlinkSync } from "fs";
 import { join } from "path";
 import { promisify } from "util";
 import http from "http";
+import { AGENTOS_GUI_DIR, REMOTION_DIR, REMOTION_OUT_DIR } from "@/lib/agentos-dir";
 
 const execAsync = promisify(require("child_process").exec);
 
-const REMOTION_DIR = "/home/unclehowell/agentos-gui/remotion";
-const OUTPUT_DIR = "/home/unclehowell/agentos-gui/remotion/out";
 const TMPDIR = process.env.TMPDIR || "/tmp";
 // Local child-proxy video endpoint (agent.py, port 6000). Overridable so the
 // harness can point at any child proxy's /v1/video.
@@ -32,8 +31,12 @@ let LIBRARY_OBJECTS: string[] = ["hat", "glasses", "crown", "bowtie", "scarf", "
 let LIBRARY_VERSION = "unknown";
 let LIBRARY_URL = "";
 
-if (!existsSync(OUTPUT_DIR)) {
-  mkdirSync(OUTPUT_DIR, { recursive: true });
+if (!existsSync(REMOTION_OUT_DIR)) {
+  try {
+    mkdirSync(REMOTION_OUT_DIR, { recursive: true });
+  } catch {
+    // Build-time safety: the dir will be created lazily at render time.
+  }
 }
 
 interface AIJob {
@@ -173,8 +176,8 @@ async function renderViaChildProxy(params: Record<string, unknown>): Promise<{ s
         const fileResp = await httpJson(host, port, `${base}/file/${encodeURIComponent(st.filename)}`, "GET", undefined, 30000);
         if (fileResp.status === 200 && fileResp.buf) {
           const outputName = `ai-video-${Date.now()}-${st.scene || scene}.mp4`;
-          const outputPath = join(OUTPUT_DIR, outputName);
-          mkdirSync(OUTPUT_DIR, { recursive: true });
+          const outputPath = join(REMOTION_OUT_DIR, outputName);
+          mkdirSync(REMOTION_OUT_DIR, { recursive: true });
           const { writeFileSync } = await import("fs");
           writeFileSync(outputPath, fileResp.buf);
           aiJobs.set(jobId, { id: jobId, status: "done", composition: st.scene || scene, duration: st.duration || duration, props: params, createdAt: started, result: { success: true, output: outputPath } });
@@ -228,8 +231,8 @@ export async function renderAIVideo(params: Record<string, unknown>): Promise<{ 
 
   const composition = sceneToComposition[scene] || "DanceScene";
   const outputName = `ai-video-${Date.now()}-${scene}.mp4`;
-  const outputPath = join(OUTPUT_DIR, outputName);
-  const tempPath = join(OUTPUT_DIR, `temp-${Date.now()}-${scene}.mp4`);
+  const outputPath = join(REMOTION_OUT_DIR, outputName);
+  const tempPath = join(REMOTION_OUT_DIR, `temp-${Date.now()}-${scene}.mp4`);
 
   cleanupShmFiles();
 

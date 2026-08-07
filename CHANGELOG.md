@@ -1,3 +1,17 @@
+## [0.5.1.91] - 2026-08-06
+
+Rerelease: the one-liner installer now deploys the AgentOS chat GUI on port 3000 — the web chat interface wired straight to the child proxy agent (the parent's LLMs answer). This replaces the status-only dashboards, and the legacy `gui.py` status webgui is removed so there are no false webguis.
+
+### Added
+- `install.sh` 1.1.0 → **1.2.0**: installs a bundled Node.js LTS (v22.23.2) when the host's Node is < 20, downloads the `financecheque-v0.5.1.91` release tarball, builds the AgentOS chat GUI, and serves it on **port 3000** with chat wired to the child proxy via `FCUK_AGENT_URL` (default `http://127.0.0.1:6100/v1`).
+- `agentos-gui.service` systemd user unit (nohup background fallback when systemd is unavailable), plus an end-of-install GUI health check on port 3000.
+- Machine-agnostic path resolution: new `src/lib/agentos-dir.ts` (`AGENTOS_GUI_DIR`, `REMOTION_DIR`, `REMOTION_OUT_DIR`) replaces every hardcoded `/mnt/sd/...` and `/home/unclehowell/...` path across the GUI (remotion/ai-video tools, video API routes, chat/loop/worker cwd defaults, tool registry defaults, code-intel index dir, scheduler/session/procedure stores) so the same release builds and runs on any machine.
+
+### Changed
+- `cloud-router.ts`: added the local **fcuk-agent** provider (no API key needed) and made its base URL env-configurable via `FCUK_AGENT_URL`.
+- Removed `public/fcukproxy/gui.py` (the old status-dashboard "webgui"). The chat GUI is the only web interface.
+- README: proxy port corrected to 6100; the local web interface is now documented as the chat GUI on 3000.
+
 ## [0.5.1.90] - 2026-08-05
 
 Child-proxy installer hardening for piped one-liner installs (`curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash`), plus the local_ip crash-loop fix and an OTA sequence bump so every live node self-updates to the hardened agent.

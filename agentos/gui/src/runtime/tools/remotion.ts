@@ -1,14 +1,17 @@
 import { spawn } from "child_process";
 import { existsSync, mkdirSync, readdirSync, rmSync, unlinkSync } from "fs";
 import { join } from "path";
+import { AGENTOS_GUI_DIR, REMOTION_DIR, REMOTION_OUT_DIR } from "@/lib/agentos-dir";
 
-// Static absolute paths (fixed deployment) — dynamic process.env lookups make
-// Turbopack's NFT trace the whole project, which OOMs the build's finalize step.
-const REMOTION_DIR = "/home/unclehowell/agentos-gui/remotion";
-const OUTPUT_DIR = "/home/unclehowell/agentos-gui/remotion/out";
-
-if (!existsSync(OUTPUT_DIR)) {
-  mkdirSync(OUTPUT_DIR, { recursive: true });
+// AGENTOS_GUI_DIR is resolved per-machine (homedir + env override) so the same
+// build runs anywhere. The output dir is created lazily below and guarded so a
+// build never crashes if the path does not exist yet.
+if (!existsSync(REMOTION_OUT_DIR)) {
+  try {
+    mkdirSync(REMOTION_OUT_DIR, { recursive: true });
+  } catch {
+    // Build-time safety: the dir will be created lazily at render time.
+  }
 }
 
 // Chromium discardable-memory files and Remotion webpack bundle dirs are left
@@ -105,7 +108,7 @@ export async function renderVideo(params: Record<string, unknown>): Promise<Rend
   const rawDuration = parseInt(params.duration?.toString() || "5", 10);
   const durationSec = Math.max(1, Math.min(30, Number.isFinite(rawDuration) ? rawDuration : 5));
   const outputName = params.output ? String(params.output) : `video-${Date.now()}.mp4`;
-  const outputPath = join(OUTPUT_DIR, outputName);
+  const outputPath = join(REMOTION_OUT_DIR, outputName);
 
 
 

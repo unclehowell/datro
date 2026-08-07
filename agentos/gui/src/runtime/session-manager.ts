@@ -9,13 +9,14 @@
 import { v4 as uuid } from "uuid";
 import { readFile, writeFile, readdir, mkdir } from "fs/promises";
 import { join } from "path";
+import { homedir } from "os";
 import {
   Session, SessionStatus, SessionLog, Artifact, TimelineEvent,
   CostTracker, VerificationSummary, ConfidenceScore, SerializedSession,
   Plan, Action, StepResult, ReflectionResult,
 } from "./types";
 
-const SESSIONS_DIR = join(process.env.HOME || "/home/unclehowell", ".agentos", "sessions");
+const SESSIONS_DIR = join(homedir(), ".agentos", "sessions");
 
 export class SessionManager {
   private sessions: Map<string, Session> = new Map();

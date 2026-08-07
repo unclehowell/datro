@@ -111,6 +111,16 @@ function getProviders(): CloudProvider[] {
     });
   }
 
+  // Local FCUK child proxy agent — routes via the parent's cloud LLMs, no key needed
+  providers.push({
+    name: "fcuk-agent",
+    baseUrl: process.env.FCUK_AGENT_URL || "http://127.0.0.1:6100/v1",
+    model: "auto",
+    apiKey: "",
+    timeout: 60000,
+    format: "openai",
+  });
+
   return providers;
 }
 
