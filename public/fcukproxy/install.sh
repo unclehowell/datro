@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.2.0"
+VERSION="1.2.1"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -41,7 +41,7 @@ AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
 FCUK_LOCAL_TOKEN="${FCUK_LOCAL_TOKEN:-}"  # local auth token (auto-generated)
 
 # Local chat GUI (AgentOS) — served on GUI_PORT with the agent as its LLM backend
-GUI_VERSION="0.5.1.91"               # financecheque release tag the GUI ships from
+GUI_VERSION="0.5.1.92"               # financecheque release tag the GUI ships from
 GUI_PORT="${GUI_PORT:-3000}"         # the web chat interface
 GUI_DIR="${GUI_DIR:-$INSTALL_DIR/agentos-gui}"
 NODE_VERSION="v22.23.2"              # bundled Node.js for the GUI (pinned LTS)
@@ -393,26 +393,30 @@ ENVEOF
   fi
 }
 
-# ── Start services ───────────────────────────────────────────────────────────
-start_services() {
+# ── Start local LLM (full mode only) ─────────────────────────────────────────
+start_llm() {
   local llm_server="${1:-}"
+  if [[ "$MODE" != "full" || -z "$llm_server" ]]; then
+    return 0
+  fi
 
+  pkill -f "llama-server.*$LLAMA_PORT" 2>/dev/null || true
+  sleep 1
+
+  info "Starting llama-server on port $LLAMA_PORT..."
+  nohup "$llm_server" \
+    -m "$INSTALL_DIR/models/model.gguf" \
+    --port "$LLAMA_PORT" --host 127.0.0.1 \
+    -c 2048 -ngl 0 --cont-batching \
+    > "$INSTALL_DIR/llama-server.log" 2>&1 &
+  echo $! > "$INSTALL_DIR/llama-server.pid"
+  ok "llama-server PID: $!"
+}
+
+# ── Start the agent in the background (fallback when systemd is unavailable) ─
+start_services() {
   # Kill existing processes
   pkill -f "python.*agent.py.*$PROXY_PORT" 2>/dev/null || true
-
-  if [[ "$MODE" == "full" && -n "$llm_server" ]]; then
-    pkill -f "llama-server.*$LLAMA_PORT" 2>/dev/null || true
-    sleep 1
-
-    info "Starting llama-server on port $LLAMA_PORT..."
-    nohup "$llm_server" \
-      -m "$INSTALL_DIR/models/model.gguf" \
-      --port "$LLAMA_PORT" --host 127.0.0.1 \
-      -c 2048 -ngl 0 --cont-batching \
-      > "$INSTALL_DIR/llama-server.log" 2>&1 &
-    echo $! > "$INSTALL_DIR/llama-server.pid"
-    ok "llama-server PID: $!"
-  fi
 
   sleep 1
   info "Starting child proxy agent on port $PROXY_PORT..."
@@ -423,9 +427,12 @@ start_services() {
 }
 
 # ── Create systemd service (optional) ────────────────────────────────────────
+# Returns 0 only if the agent is actually running under systemd. Returns 1 when
+# systemd is unavailable (or the start failed) so the caller falls back to the
+# background/pm2 start — this avoids two agents fighting over PROXY_PORT.
 install_service() {
   if [[ ! -d /etc/systemd/system ]] || [[ "$(id -u)" -eq 0 ]]; then
-    return 0  # skip if no systemd or running as root
+    return 1  # no systemd (or root) → use background/pm2 instead
   fi
 
   local service_dir="$HOME/.config/systemd/user"
@@ -451,14 +458,23 @@ EnvironmentFile=$INSTALL_DIR/.env
 WantedBy=default.target
 SVCEOF
 
-  # Enable and start
+  # Enable and start; only claim success when the agent is actually up under systemd
   systemctl --user daemon-reload 2>/dev/null || true
   systemctl --user enable fcuk-proxy 2>/dev/null || true
-  systemctl --user start fcuk-proxy 2>/dev/null || true
+  if ! systemctl --user start fcuk-proxy 2>/dev/null; then
+    warn "systemd start failed — falling back to a background start"
+    return 1
+  fi
+  sleep 2
+  if ! systemctl --user is-active --quiet fcuk-proxy 2>/dev/null; then
+    warn "fcuk-proxy.service is not active — falling back to a background start"
+    return 1
+  fi
 
   ok "systemd service installed and started"
   info "Manage: systemctl --user status fcuk-proxy"
   info "Logs:   journalctl --user -u fcuk-proxy -f"
+  return 0
 }
 
 # ── Create pm2 process (alternative to systemd) ──────────────────────────────
@@ -492,9 +508,14 @@ install_node() {
 
   local node_dir="$INSTALL_DIR/node"
   if [[ -x "$node_dir/bin/node" ]]; then
-    NODE_BIN_DIR="$node_dir/bin"
-    ok "Using bundled Node.js $("$node_dir/bin/node" -v)"
-    return 0
+    local bmajor
+    bmajor="$("$node_dir/bin/node" -v 2>/dev/null | tr -d 'v' | cut -d. -f1)"
+    if [[ -n "$bmajor" ]] && (( bmajor >= 20 )); then
+      NODE_BIN_DIR="$node_dir/bin"
+      ok "Using bundled Node.js $("$node_dir/bin/node" -v)"
+      return 0
+    fi
+    warn "Bundled Node.js is too old ($("$node_dir/bin/node" -v)) — reinstalling $NODE_VERSION"
   fi
 
   info "Installing Node.js $NODE_VERSION..."
@@ -619,7 +640,15 @@ SVCEOF
 
   systemctl --user daemon-reload 2>/dev/null || true
   systemctl --user enable agentos-gui 2>/dev/null || true
-  systemctl --user start agentos-gui 2>/dev/null || true
+  if ! systemctl --user start agentos-gui 2>/dev/null; then
+    warn "GUI systemd start failed — falling back to a background start"
+    return 1
+  fi
+  sleep 2
+  if ! systemctl --user is-active --quiet agentos-gui 2>/dev/null; then
+    warn "agentos-gui.service is not active — falling back to a background start"
+    return 1
+  fi
   ok "GUI systemd service installed and started"
   return 0
 }
@@ -749,6 +778,14 @@ print_summary() {
   echo "  Run this same script on other machines with the same PARENT_URL"
   echo "  to add more child proxies to your network."
   echo ""
+  if [[ "$PLATFORM" == termux* ]]; then
+    echo -e "  ${YELLOW}Android/Termux:${NC}"
+    echo "  Keep the proxy + GUI alive in the background with:"
+    echo "     termux-wake-lock"
+    echo "  (No systemd on Termux — the GUI runs via nohup and logs to"
+    echo "  $GUI_DIR/gui.log)"
+    echo ""
+  fi
   echo -e "${BOLD}══════════════════════════════════════════════════════════════${NC}"
 }
 
@@ -808,16 +845,20 @@ main() {
   install_gui || warn "GUI install failed — chat still works via the proxy API"
 
   step 7 "Starting services"
-  start_services "$LLM_SERVER"
+  start_llm "$LLM_SERVER"
+
+  if install_service; then
+    info "Child proxy agent managed by systemd (fcuk-proxy.service)"
+  else
+    start_services
+    install_pm2 || warn "No service manager found — agent runs in background only"
+  fi
 
   if [[ -d "$GUI_DIR/.next" ]]; then
     install_gui_service || start_gui_nohup
   fi
 
-  step 8 "Service persistence"
-  install_service || install_pm2 || warn "No service manager found — agent runs in background only"
-
-  step 9 "Verification"
+  step 8 "Verification"
   verify_and_register
   verify_gui
 

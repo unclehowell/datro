@@ -1,3 +1,16 @@
+## [0.5.1.92] - 2026-08-06
+
+Bugfix rerelease after a fresh `curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash` install: the agent started twice (nohup background + systemd) fought over port 6100 and left `fcuk-proxy.service` crash-looping. The installer now prefers systemd for the agent and only falls back to a background/pm2 start when systemd is unavailable or fails — one agent, one owner.
+
+### Fixed
+- `install.sh` 1.2.0 → **1.2.1**: no double-start of the child proxy agent. `install_service` returns success only when `fcuk-proxy.service` is actually active, and the nohup/pm2 fallback runs only if systemd is missing or the unit fails to start. llama-server (full mode) is started separately before this decision.
+- `install_gui_service` also verifies `agentos-gui.service` is active before claiming success (falls back to nohup otherwise).
+- `install_node` now re-validates the version of a previously bundled Node.js (>= 20) instead of blindly reusing it.
+
+### Changed
+- `GUI_VERSION` bumped to `financecheque-v0.5.1.92` so the installer always ships the GUI from this release tag.
+- Termux/Android installs print a `termux-wake-lock` hint so the proxy + GUI survive backgrounding.
+
 ## [0.5.1.91] - 2026-08-06
 
 Rerelease: the one-liner installer now deploys the AgentOS chat GUI on port 3000 — the web chat interface wired straight to the child proxy agent (the parent's LLMs answer). This replaces the status-only dashboards, and the legacy `gui.py` status webgui is removed so there are no false webguis.
