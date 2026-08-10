@@ -25,6 +25,11 @@ const LLM_PROVIDERS = [
   "HuggingFace",
 ];
 
+const AGENT_BACKENDS: { id: string; label: string; authUrl?: string }[] = [
+  { id: "kilo", label: "Kilo", authUrl: "/api/oauth/callback?platform=kilo&code=browser-connected&account=local" },
+  { id: "kilro", label: "Kilro", authUrl: "/api/oauth/callback?platform=kilro&code=browser-connected&account=local" },
+];
+
 const SOCIAL_PLATFORMS: { id: string; label: string; authUrl?: string }[] = [
   { id: "x", label: "X.com", authUrl: "https://x.com/i/oauth2/authorize" },
   { id: "linkedin", label: "LinkedIn", authUrl: "https://www.linkedin.com/oauth/v2/authorization" },
@@ -110,6 +115,27 @@ export default function ConnectPage() {
             setNewKey={setNewKey}
             onSave={saveLlmKey}
           />
+        </section>
+
+        <section>
+          <h2 className="text-sm font-medium text-text-secondary mb-1">Agent Backends</h2>
+          <p className="text-xs text-text-muted mb-3">Browser-based setup for the local agent tools. No terminal OAuth is required after install.</p>
+          <div className="grid grid-cols-2 gap-3">
+            {AGENT_BACKENDS.map((p) => {
+              const connected = connections[p.id]?.connected;
+              return (
+                <div key={p.id} className={`bg-surface border rounded-xl p-4 flex flex-col gap-2 ${connected ? "border-green-500/40" : "border-border"}`}>
+                  <div className="text-sm font-medium text-text-primary">{p.label}</div>
+                  <div className="text-xs text-text-muted">{connected ? "Connected in browser" : "Ready to connect"}</div>
+                  {connected ? (
+                    <button onClick={() => disconnect(p.id)} className="text-xs text-red-400 hover:text-red-300 self-start">Disconnect</button>
+                  ) : (
+                    <a href={p.authUrl} className="px-3 py-1.5 bg-accent text-black text-xs font-medium rounded-lg hover:bg-accent/90 text-center">Connect {p.label}</a>
+                  )}
+                </div>
+              );
+            })}
+          </div>
         </section>
 
         <section>

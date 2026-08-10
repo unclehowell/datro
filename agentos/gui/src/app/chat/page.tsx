@@ -405,10 +405,19 @@ export default function ChatPage() {
 
   useEffect(() => { saveMessages(messages); }, [messages]);
 
-  // ─── Health check + proxy lock polling ─────────────────
+  // ─── First-run setup gate + health polling ─────────────────
   useEffect(() => {
     const check = async () => {
       try {
+        const setupRes = await fetch("/api/setup", { cache: "no-store" });
+        if (setupRes.ok) {
+          const setup = await setupRes.json();
+          if (!setup.complete) {
+            window.location.href = "/setup";
+            return;
+          }
+        }
+
         const res = await fetch("/api/status");
         const data = await res.json();
         const status: Record<string, string> = {};

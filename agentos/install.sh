@@ -1,21 +1,28 @@
 #!/usr/bin/env bash
 # AgentOS Child Proxy — Install Script
 # Sets up: OmniRoute + Ollama + MiniCPM5-1B + Hermes-aware GUI + Voice + Task Router
-# Usage: cd agentos && ./install.sh [--start] [--no-build]
+# Usage: cd agentos && ./install.sh [--start] [--no-start] [--no-build]
 
 set -Eeuo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 AGENTOS_DIR="$SCRIPT_DIR"
-START_SERVICES=0
+START_SERVICES=1
 BUILD_GUI=1
+LOG_FILE="$AGENTOS_DIR/install.log"
+
+# Keep onboarding terminal output quiet. Detailed install logs go here.
+mkdir -p "$AGENTOS_DIR"
+exec >"$LOG_FILE" 2>&1
+trap 'echo "Install failed. See $LOG_FILE for details." >/dev/tty 2>/dev/null || true' ERR
 
 for arg in "$@"; do
   case "$arg" in
     --start) START_SERVICES=1 ;;
+    --no-start) START_SERVICES=0 ;;
     --no-build) BUILD_GUI=0 ;;
     -h|--help)
-      echo "Usage: ./install.sh [--start] [--no-build]"
+      echo "Usage: ./install.sh [--start] [--no-start] [--no-build]" >/dev/tty
       exit 0
       ;;
     *) echo "Unknown option: $arg"; exit 2 ;;
@@ -38,7 +45,7 @@ cat <<BANNER
   AgentOS Child Proxy — Installer
 ============================================
 Pipeline after install:
-  WebGUI :3000 voice/text → /api/chat
+  WebGUI :3000 voice/text → first-run setup → /api/chat
   /api/chat → Task Router :3200 → Hermes :9119 if present → OmniRoute :20128
   OmniRoute → Ollama openbmb/minicpm5
   Task Router → opencode first, then kilo fallback
@@ -113,23 +120,4 @@ if [ "$START_SERVICES" = "1" ]; then
   pm2 start ecosystem.config.js --update-env
 fi
 
-cat <<DONE
-
-============================================
-  Installation Complete
-============================================
-Start services:
-  cd $AGENTOS_DIR && pm2 start ecosystem.config.js --update-env
-
-Open chat:
-  http://localhost:3000
-
-Expected path:
-  voice/text → WebGUI → Task Router → Hermes (if running) → OmniRoute → Ollama MiniCPM5
-  tasks → opencode → kilo fallback
-
-Health checks:
-  curl http://localhost:20128/api/health
-  curl http://localhost:3200/health
-  curl http://localhost:3000/api/status
-DONE
+echo "Success! Open http://localhost:3000 in your browser." >/dev/tty 2>/dev/null || echo "Success! Open http://localhost:3000 in your browser."
