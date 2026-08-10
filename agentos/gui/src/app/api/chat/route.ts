@@ -10,6 +10,8 @@ import { AgentLoop } from "@/runtime/loop";
 import { detectIntent } from "@/runtime/tools/protocol";
 import { Session } from "@/runtime/types";
 import { chatWithCloud } from "@/lib/cloud-router";
+import { complete } from "@/lib/omniroute";
+import { sendToHermes } from "@/lib/hermes";
 import { isProxyLocked, lockForProxy, unlockProxy, getProxyLock } from "@/lib/proxy-state";
 import { exec } from "child_process";
 import { promisify } from "util";
@@ -19,6 +21,83 @@ import { getRenderJob } from "@/runtime/tools/remotion";
 const execAsync = promisify(exec);
 
 const DEFAULT_HOME = homedir();
+
+const TASK_ROUTER_URL = process.env.TASK_ROUTER_URL || "http://localhost:3200";
+
+async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" | "assistant"; content: string }>, msg: string): Promise<{
+  reply: string;
+  routed: string;
+  dependency: string;
+  provider: string;
+  model?: string;
+  backend?: string;
+} | null> {
+  try {
+    const routerRes = await fetch(`${TASK_ROUTER_URL}/route`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: msg, messages }),
+      signal: AbortSignal.timeout(360000),
+    });
+
+    if (!routerRes.ok) throw new Error(`task-router ${routerRes.status}`);
+    const routed = await routerRes.json();
+
+    if (routed.type === "task") {
+      return {
+        reply: routed.result || "Task completed.",
+        routed: "delegate",
+        dependency: routed.backend || "task-router",
+        provider: "task-router",
+        backend: routed.backend,
+      };
+    }
+
+    try {
+      const hermesReply = await sendToHermes(msg, JSON.stringify({ messages: messages.slice(-8), router: routed }));
+      if (hermesReply && hermesReply !== "No response") {
+        return {
+          reply: hermesReply,
+          routed: "chat",
+          dependency: "hermes",
+          provider: "hermes",
+        };
+      }
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : String(err);
+      console.log(`[LOCAL] Hermes unavailable, falling back to MiniCPM via OmniRoute: ${message}`);
+    }
+
+    const completion = await complete({
+      model: "openbmb/minicpm5",
+      messages: [
+        {
+          role: "system",
+          content: "You are Hermes, the local AgentOS chat brain. Answer conversationally and keep responses concise. Do not claim to execute tasks; task execution is handled by the task-router.",
+        },
+        ...messages.slice(-8),
+      ],
+      temperature: 0.7,
+      max_tokens: 700,
+      stream: false,
+    });
+    const reply = completion.choices?.[0]?.message?.content?.trim();
+    if (!reply) throw new Error("empty MiniCPM response");
+
+    return {
+      reply,
+      routed: "chat",
+      dependency: "minicpm5",
+      provider: "omniroute",
+      model: "openbmb/minicpm5",
+    };
+  } catch (err: unknown) {
+    const message = err instanceof Error ? err.message : String(err);
+    console.log(`[LOCAL] AgentOS local route unavailable: ${message}`);
+    return null;
+  }
+}
+
 
 // ─── Video render jobs (background) ─────────────────────────
 interface VideoJob {
@@ -332,7 +411,19 @@ export async function POST(req: NextRequest) {
       }
     }
 
-    // ── 3. Ask cloud LLM to classify and route ──────────────
+    // ── 3. Route through the local AgentOS stack first ──────────────
+    const localMessages = Array.isArray(body.messages) && body.messages.length > 0
+      ? body.messages.map((m: { role?: string; content?: string }) => ({
+        role: m.role === "assistant" ? "assistant" : m.role === "system" ? "system" : "user",
+        content: String(m.content || ""),
+      }))
+      : [{ role: "user", content: msg }];
+    const localResult = await routeThroughLocalStack(localMessages, msg);
+    if (localResult) {
+      return NextResponse.json({ ...localResult, success: true });
+    }
+
+    // ── 4. Cloud fallback if the local stack is unavailable ──────────────
     const cloudResult = await chatWithCloud([
       { role: "system", content: ROUTER_SYSTEM },
       { role: "user", content: msg },
@@ -340,7 +431,7 @@ export async function POST(req: NextRequest) {
 
     if (!cloudResult?.content) {
       return NextResponse.json({
-        reply: "Cloud providers unavailable. Try again in a moment.",
+        reply: "Local AgentOS and cloud fallback are unavailable. Check pm2 status and Ollama, then try again.",
         success: false,
       }, { status: 503 });
     }
