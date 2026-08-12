@@ -3,167 +3,280 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>FCUK Proxy Documentation | FinanceCheque UK</title>
+<title>Child Proxy Documentation | FinanceCheque UK</title>
 <style>
 :root {
   --bg: #0a0a1a;
   --text: #e8b84e;
   --accent: #0088cc;
-  --dim: #666;
+  --dim: #888;
   --mono: #d0c8b8;
-  --border: #333;
+  --border: #2a2a3a;
+  --surface: #111122;
 }
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: 'SF Mono', 'Monaco', monospace;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
   background: var(--bg);
   color: var(--text);
-  line-height: 1.6;
+  line-height: 1.7;
   min-height: 100vh;
   padding: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
 }
-h1 { color: var(--accent); margin-bottom: 1rem; }
-h2 { color: var(--text); margin: 1.5rem 0 0.5rem; border-bottom: 1px solid var(--border); padding-bottom: 0.5rem; }
-h3 { color: var(--accent); margin: 1rem 0 0.5rem; }
-code, pre {
-  background: #111;
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  padding: 0.2em 0.4em;
-  color: var(--mono);
-}
-pre { padding: 1rem; overflow-x: auto; margin: 1rem 0; }
+h1 { color: var(--accent); margin-bottom: 0.25rem; font-size: 1.6rem; }
+.subtitle { color: var(--dim); font-size: 0.85rem; margin-bottom: 2rem; }
+h2 { color: var(--text); margin: 2rem 0 0.75rem; border-bottom: 1px solid var(--border); padding-bottom: 0.4rem; font-size: 1.1rem; }
+h3 { color: var(--accent); margin: 1.2rem 0 0.4rem; font-size: 0.95rem; }
+p { color: var(--dim); font-size: 0.88rem; margin-bottom: 0.75rem; }
+code { background: #111; border: 1px solid var(--border); border-radius: 3px; padding: 0.15em 0.4em; color: var(--mono); font-size: 0.85rem; }
+pre { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 1.2rem; overflow-x: auto; margin: 1rem 0; font-size: 0.82rem; color: var(--mono); line-height: 1.6; }
 a { color: var(--accent); text-decoration: none; }
 a:hover { text-decoration: underline; }
-.card {
-  background: #111;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 1.5rem;
-  margin: 1rem 0;
-}
-.grid {
-  display: grid;
-  gap: 1rem;
-}
-@media (min-width: 768px) {
-  .grid { grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); }
-}
-.note { border-left: 3px solid var(--accent); padding-left: 1rem; margin: 1rem 0; color: var(--dim); }
-.version { color: var(--dim); font-size: 0.9em; }
+.grid { display: grid; gap: 1rem; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); margin: 1rem 0; }
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 1.2rem; }
+.card h3 { margin-top: 0; }
+.card p { margin-bottom: 0; }
+.card ul { color: var(--dim); font-size: 0.85rem; padding-left: 1.2rem; }
+.card li { margin-bottom: 0.3rem; }
+table { width: 100%; border-collapse: collapse; font-size: 0.83rem; margin: 0.5rem 0; }
+th { text-align: left; padding: 0.5rem 0.75rem; color: var(--dim); border-bottom: 1px solid var(--border); }
+td { padding: 0.5rem 0.75rem; color: var(--mono); border-bottom: 1px solid #1a1a2a; }
+tr:last-child td { border-bottom: none; }
+.note { border-left: 3px solid var(--accent); padding: 0.75rem 1rem; margin: 1rem 0; background: rgba(0,136,204,0.05); color: var(--dim); font-size: 0.85rem; }
+.pipeline { display: flex; flex-wrap: wrap; gap: 0; align-items: center; margin: 1rem 0; }
+.pipeline-step { background: var(--surface); border: 1px solid var(--border); border-radius: 4px; padding: 0.3rem 0.75rem; font-size: 0.8rem; color: var(--mono); white-space: nowrap; }
+.pipeline-arrow { color: var(--border); padding: 0 0.3rem; font-size: 1rem; }
+ul.plain { color: var(--dim); font-size: 0.85rem; padding-left: 1.5rem; margin: 0.5rem 0 1rem; }
+ul.plain li { margin-bottom: 0.3rem; }
 </style>
 </head>
 <body>
-<h1>FCUK Proxy Documentation</h1>
-<p class="version">Version: 0.5.0</p>
 
-<h2>Quick Start</h2>
+<h1>FinanceCheque — Child Proxy</h1>
+<p class="subtitle">v0.5.1.93 &middot; <a href="https://github.com/unclehowell/datro/tree/financecheque">github.com/unclehowell/datro</a> &middot; <a href="https://www.financecheque.uk">financecheque.uk</a></p>
+
+<h2>Quick Install</h2>
 <div class="card">
-<p>Install a child proxy on any device (laptop, phone, server):</p>
-<pre>curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash</pre>
-<p>This makes your device a <strong>child proxy</strong> on the FinanceCheque network.</p>
+  <p>Install a child proxy on any Linux machine, Raspberry Pi, or Android phone (Termux):</p>
+  <pre>curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash</pre>
+  <p style="margin-top:0.75rem">This installs:</p>
+  <ul class="plain">
+    <li><strong>child-proxy.mjs</strong> — OpenAI-compatible proxy agent on port 4001, registers with parent</li>
+    <li><strong>agentos-gui</strong> — Next.js WebGUI on <code>localhost:3000</code> (chat, terminal, pipeline view)</li>
+    <li><strong>llama-server + MiniCPM-1B</strong> — local 1B-parameter LLM on port 8090</li>
+    <li><strong>kiro-cli, kilo, hermes</strong> — AI coding and agent CLI tools</li>
+    <li><strong>Whisper STT + Piper TTS</strong> — local speech-to-text and text-to-speech</li>
+    <li><strong>pm2</strong> — process manager with autostart on boot</li>
+  </ul>
+  <p style="margin-top:0.75rem">After install, open: <a href="http://localhost:3000/chat"><code>http://localhost:3000/chat</code></a></p>
 </div>
 
-<h2>Architecture Overview</h2>
+<h2>Architecture</h2>
+<p>The child proxy runs entirely on your local machine. It uses MiniCPM-1B via llama-server for fast, offline inference and falls back to the parent proxy (financecheque.uk) for cloud LLM access when needed. OpenClaw is a separate system and is not part of this stack.</p>
+
 <div class="grid">
   <div class="card">
-    <h3>Parent Proxy</h3>
-    <p>Hosted on <code>financecheque.uk</code></p>
+    <h3>🌐 Parent Proxy (financecheque.uk)</h3>
     <ul>
-      <li>Routes queries to child proxies</li>
-      <li>LLM API responses via environment keys</li>
-      <li>Never routes back to source machine</li>
+      <li>Cloudflare Worker — always-on, globally distributed</li>
+      <li>Routes queries to registered child proxies</li>
+      <li>Cloud LLM fallback (Groq, OpenRouter, Gemini, Mistral)</li>
+      <li>Never routes a request back to its origin child</li>
+      <li>Manages child registry, heartbeats, and job queue</li>
     </ul>
   </div>
   <div class="card">
-    <h3>Child Proxy</h3>
-    <p>Runs on your devices (port 4001)</p>
+    <h3>💻 Child Proxy (this machine)</h3>
     <ul>
-      <li>Listens for OpenAI-compatible requests</li>
-      <li>Forwards to parent proxy by default</li>
-      <li>Loop prevention via X-Forwarded header</li>
+      <li>Runs locally — no public exposure required</li>
+      <li>WebGUI at <code>localhost:3000</code></li>
+      <li>Local LLM at <code>localhost:8090</code> (MiniCPM-1B)</li>
+      <li>Proxy agent at <code>localhost:4001</code> (OpenAI-compatible)</li>
+      <li>Voice: Whisper STT + Piper TTS, push-to-talk in WebGUI</li>
+      <li>Agent tools: kiro-cli, kilo, hermes — all local-first</li>
     </ul>
   </div>
 </div>
 
-<h2>Routing Policy</h2>
-<div class="card">
-<h3>Boolean Logic</h3>
-<p><code>C = Chat-only</code> | <code>F = X-Forwarded</code> | <code>A = Agentic prompt</code></p>
+<h2>Local Machine Stack</h2>
 
-<h3>Parent Proxy Decision Tree</h3>
-<pre>
-IF X-Forwarded == true:
-  → Use LOCAL LLM ONLY (loop prevention)
-  → NEVER route to child proxies
-ELSE IF X-Agentic == true:
-  → Route to designated agentic child (e.g., phone)
-ELSE IF X-Chat-Only == true:
-  → Respond via LLM APIs (env keys on Cloudflare)
-ELSE:
-  → Route to available child proxy
-  → NEVER route back to requesting child
-</pre>
-
-<h3>Child Proxy Decision Tree</h3>
-<pre>
-IF X-Forwarded == true:
-  → Use LOCAL LLM ONLY
-  → This request came FROM parent (loop prevention)
-ELSE:
-  → Forward to parent proxy
-  → On timeout/retry exhaustion: local LLM fallback
-  → NEVER query parent API for responses
-</pre>
+<div class="pipeline">
+  <div class="pipeline-step">🖥️ Browser</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">WebGUI :3000</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">child-proxy :4001</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">MiniCPM-1B :8090</div>
+</div>
+<div class="pipeline" style="margin-top:0.4rem">
+  <div class="pipeline-step">child-proxy :4001</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">parent (financecheque.uk)</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">Cloud LLM (Groq/OpenRouter/etc)</div>
 </div>
 
-<h2>Endpoints</h2>
-<div class="card">
-<table>
-  <tr><th>Endpoint</th><th>Description</th><th>Method</th></tr>
-  <tr><td><code>/api/proxy?action=register</code></td><td>Register child node</td><td>POST</td></tr>
-  <tr><td><code>/api/proxy?action=heartbeat</code></td><td>Report alive status</td><td>POST</td></tr>
-  <tr><td><code>/api/proxy?action=health</code></td><td>List active children</td><td>GET</td></tr>
-  <tr><td><code>/api/proxy?action=poll</code></td><td>Poll work queue (closed ports)</td><td>GET</td></tr>
-  <tr><td><code>/api/proxy/v1/chat/completions</code></td><td>Chat completions endpoint</td><td>POST</td></tr>
-  <tr><td><code>/__status</code></td><td>Worker status</td><td>GET</td></tr>
-  <tr><td><code>/__health</code></td><td>Health check</td><td>GET</td></tr>
+<table style="margin-top:1.5rem">
+  <thead><tr><th>Service</th><th>Port</th><th>Role</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td><code>agentos-gui</code></td><td>3000</td><td>WebGUI (Next.js)</td><td>Chat, terminal, pipeline view — main user interface</td></tr>
+    <tr><td><code>child-proxy</code></td><td>4001</td><td>OpenAI-compatible proxy</td><td>Registers with parent, loop prevention, local LLM fallback</td></tr>
+    <tr><td><code>llama-server</code></td><td>8090</td><td>Local LLM runtime</td><td>MiniCPM-1B Q4_K_M — ~700MB RAM, CPU-only inference</td></tr>
+    <tr><td><code>pty-server</code></td><td>3001</td><td>WebSocket PTY bridge</td><td>Real bash in the browser terminal (xterm.js)</td></tr>
+    <tr><td><code>voice-service</code></td><td>local</td><td>STT / TTS</td><td>Whisper STT + Piper TTS, used by WebGUI chat</td></tr>
+  </tbody>
 </table>
+
+<h2>Agent CLI Tools</h2>
+<p>The installer configures three AI agent CLI tools that all route through the local proxy at <code>localhost:4001</code>:</p>
+
+<div class="grid">
+  <div class="card">
+    <h3>kiro-cli</h3>
+    <p>Kiro AI coding agent. Chat, file editing, code generation. Uses local MiniCPM-1B via child proxy. Run: <code>kiro chat</code></p>
+  </div>
+  <div class="card">
+    <h3>kilo (kilocode)</h3>
+    <p>Kilo coding assistant. Lightweight and fast. Configured to use local proxy at port 4001. Run: <code>kilo</code></p>
+  </div>
+  <div class="card">
+    <h3>hermes</h3>
+    <p>General-purpose agent. Memory, tool use, multi-turn tasks. Config: <code>~/.hermes/config.yaml</code> — local-first, parent fallback. Run: <code>hermes</code></p>
+  </div>
 </div>
 
-<h2>Headers</h2>
-<div class="card">
-<table>
-  <tr><th>Header</th><th>Meaning</th><th>Usage</th></tr>
-  <tr><td><code>X-Chat-Only: true</code></td><td>Chat query (no agentic)</td><td>Child → Parent</td></tr>
-  <tr><td><code>X-Forwarded: true</code></td><td>Prevent loop (came from parent)</td><td>Parent → Child</td></tr>
-  <tr><td><code>X-Agentic: true</code></td><td>Agentic prompt (needs agent)</td><td>Child → Parent</td></tr>
-  <tr><td><code>X-Source-Machine</code></td><td>Tell parent who sent request</td><td>Child → Parent</td></tr>
-</table>
+<div class="note">
+  All CLI tools (kiro, kilo, hermes) use <code>localhost:4001/v1</code> as their LLM base URL. The child proxy routes them to MiniCPM-1B locally or escalates to the parent if needed.
 </div>
 
-<h2>Hermes Agent Integration</h2>
-<div class="card">
-<p>When using Hermes agent on a child proxy device:</p>
-<ul>
-  <li>Chat queries route through parent proxy → LLM APIs</li>
-  <li>Agentic prompts route to designated agentic child (e.g., phone)</li>
-  <li>Fallback to localhost only after retry exhaustion</li>
-  <li>Telegram pairing uses same routing logic</li>
+<h2>Voice Pipeline</h2>
+<p>Voice input and output is available in the WebGUI chat at <code>localhost:3000/chat</code>:</p>
+
+<div class="pipeline">
+  <div class="pipeline-step">🎤 Mic</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">Whisper STT</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">child-proxy :4001</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">MiniCPM-1B :8090</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">Piper TTS</div>
+  <div class="pipeline-arrow">→</div>
+  <div class="pipeline-step">🔊 Speaker</div>
+</div>
+
+<ul class="plain" style="margin-top:0.75rem">
+  <li><strong>Push-to-talk:</strong> mic button in chat — records ~3s audio, transcribes via Whisper, sends to model</li>
+  <li><strong>Continuous voice:</strong> duplex button — loops 3s capture windows automatically</li>
+  <li><strong>STT backend:</strong> Groq Whisper API (fast, free tier) or local <code>openai-whisper</code> (offline)</li>
+  <li><strong>TTS backend:</strong> Piper (local, instant) or Google Cloud TTS (requires API key)</li>
+  <li><strong>Auto-speak:</strong> responses read aloud automatically — toggle in the WebGUI status bar</li>
 </ul>
-<p>Set role via environment: <code>AGENT_ROLE=agent curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash</code></p>
-</div>
 
-<h2>Environment Variables</h2>
-<pre># Parent Proxy (Cloudflare Worker secrets)
-OPENAI_API_KEY=sk-...
-ANTHROPIC_API_KEY=sk-ant-...
-GEMINI_API_KEY=...
+<h2>Routing Policy</h2>
+<p>The proxy uses strict boolean logic to prevent infinite loops between parent and child:</p>
 
-# Child Proxy (local .fcukproxy/machine.json)
-PARENT_URL=https://www.financecheque.uk
-CHILD_ID=auto-generated
-PORT=4001
-AGENT_ROLE=chat|agent</pre>
+<pre>Child Proxy receives a request:
+  IF X-Forwarded: true  →  Use local LLM ONLY (came from parent — loop prevention)
+  ELSE                  →  Forward to parent proxy at financecheque.uk
+                            On timeout/failure: fall back to local LLM
+
+Parent Proxy receives a request:
+  IF X-Forwarded: true  →  Use cloud LLM ONLY (never route to children)
+  IF X-Agentic: true    →  Route to designated agentic child
+  IF X-Chat-Only: true  →  Respond via cloud LLM APIs directly
+  ELSE                  →  Route to available child proxy
+                            NEVER route back to the requesting child</pre>
+
+<h2>Parent Proxy API Endpoints</h2>
+<p>On <code>https://www.financecheque.uk</code>:</p>
+<table>
+  <thead><tr><th>Endpoint</th><th>Method</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>/api/proxy?action=register</code></td><td>POST</td><td>Register this child with the parent network</td></tr>
+    <tr><td><code>/api/proxy?action=heartbeat</code></td><td>POST</td><td>Report alive status (every 30s)</td></tr>
+    <tr><td><code>/api/proxy?action=health</code></td><td>GET</td><td>List all active child nodes</td></tr>
+    <tr><td><code>/api/proxy?action=poll</code></td><td>GET</td><td>Poll work queue (for children behind NAT)</td></tr>
+    <tr><td><code>/api/proxy/v1/chat/completions</code></td><td>POST</td><td>OpenAI-compatible chat via parent (cloud LLM)</td></tr>
+    <tr><td><code>/api/proxy/ota/manifest</code></td><td>GET</td><td>OTA update manifest for child components</td></tr>
+  </tbody>
+</table>
+
+<h2>Child Proxy API Endpoints</h2>
+<p>On <code>http://localhost:4001</code>:</p>
+<table>
+  <thead><tr><th>Endpoint</th><th>Method</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>/v1/chat/completions</code></td><td>POST</td><td>OpenAI-compatible — routes to local LLM or parent</td></tr>
+    <tr><td><code>/health</code></td><td>GET</td><td>Liveness check</td></tr>
+    <tr><td><code>/status</code></td><td>GET</td><td>Detailed status: model, parent conn, active jobs, OTA</td></tr>
+    <tr><td><code>/ota/check</code></td><td>GET</td><td>Check for component updates from parent manifest</td></tr>
+  </tbody>
+</table>
+
+<h2>WebGUI API Endpoints</h2>
+<p>On <code>http://localhost:3000</code>:</p>
+<table>
+  <thead><tr><th>Endpoint</th><th>Method</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>/api/chat</code></td><td>POST</td><td>Send message — routed to local LLM or parent proxy</td></tr>
+    <tr><td><code>/api/status</code></td><td>GET</td><td>Breadcrumb health: webgui, hermes, llama, model, tools, mcp</td></tr>
+    <tr><td><code>/api/voice</code></td><td>POST</td><td>STT (<code>?action=stt</code>) and TTS (<code>?action=tts</code>)</td></tr>
+    <tr><td><code>/api/tools</code></td><td>GET/POST</td><td>List registered tools / execute a tool by name</td></tr>
+    <tr><td><code>/api/sessions</code></td><td>GET</td><td>List active agent sessions</td></tr>
+    <tr><td><code>/api/proxy/status</code></td><td>GET</td><td>Proxy lock status (parent session active?)</td></tr>
+    <tr><td><code>/api/proxy/unlock</code></td><td>POST</td><td>Release proxy lock, start new session</td></tr>
+    <tr><td><code>/api/memory</code></td><td>GET/POST</td><td>Memory search and store</td></tr>
+    <tr><td><code>/api/video/[filename]</code></td><td>GET</td><td>Serve rendered video files</td></tr>
+    <tr><td><code>/api/video/clear</code></td><td>DELETE</td><td>Clear all rendered videos</td></tr>
+  </tbody>
+</table>
+
+<h2>Request Headers</h2>
+<table>
+  <thead><tr><th>Header</th><th>Direction</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>X-Forwarded: true</code></td><td>Parent → Child</td><td>Loop prevention — use local LLM only, never re-forward</td></tr>
+    <tr><td><code>X-Chat-Only: true</code></td><td>Child → Parent</td><td>Chat query only, no agentic routing needed</td></tr>
+    <tr><td><code>X-Agentic: true</code></td><td>Child → Parent</td><td>Agentic prompt — route to an agent-capable child</td></tr>
+    <tr><td><code>X-Source-Machine</code></td><td>Child → Parent</td><td>Identifier of the originating child (loop prevention)</td></tr>
+    <tr><td><code>X-FCUK-Token</code></td><td>Both</td><td>Auth token for child ↔ parent trust</td></tr>
+  </tbody>
+</table>
+
+<h2>OTA Updates</h2>
+<p>The child proxy checks for component updates automatically on startup and every 6 hours, fetching from the parent manifest at <code>/api/proxy/ota/manifest</code>. Updates apply without restarting active sessions.</p>
+<pre># Check manually:
+curl http://localhost:4001/ota/check
+
+# Components updated via OTA:
+#   child-proxy.mjs, agent.py, agent-exec.sh,
+#   campaign-exec.sh, reflect.sh, skills/*</pre>
+
+<h2>Troubleshooting</h2>
+<table>
+  <thead><tr><th>Issue</th><th>Fix</th></tr></thead>
+  <tbody>
+    <tr><td>WebGUI not on :3000</td><td><code>pm2 logs agentos-gui</code> — port conflict or build error</td></tr>
+    <tr><td>Local LLM slow / not ready</td><td><code>pm2 logs llama-server</code> — 1B model takes ~30s to load; needs ~700MB RAM</td></tr>
+    <tr><td>Child not registering with parent</td><td>Check network. Test: <code>curl https://www.financecheque.uk/api/proxy?action=health</code></td></tr>
+    <tr><td>Voice input not working</td><td>Check mic permissions in browser. Set <code>GROQ_API_KEY</code> or install local whisper.</td></tr>
+    <tr><td>Proxy locked in WebGUI</td><td>Parent session active. Click "New Session" in chat header to unlock.</td></tr>
+    <tr><td>Restart everything</td><td><code>pm2 restart all</code></td></tr>
+    <tr><td>View logs</td><td><code>pm2 logs</code></td></tr>
+    <tr><td>Service status</td><td><code>pm2 list</code></td></tr>
+  </tbody>
+</table>
+
+<p style="margin-top:3rem;color:var(--dim);font-size:0.8rem">
+  v0.5.1.93 &middot; <a href="https://github.com/unclehowell/datro/tree/financecheque">Source on GitHub</a> &middot;
+  <a href="https://www.financecheque.uk">financecheque.uk</a> &middot;
+  OpenClaw is a separate system and is not part of the FinanceCheque child proxy stack.
+</p>
+
 </body>
 </html>

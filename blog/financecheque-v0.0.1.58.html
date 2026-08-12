@@ -1,0 +1,22 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Release financecheque-v0.0.1.58 — Financecheque</title>
+<style>body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;max-width:800px;margin:0 auto;padding:2rem;line-height:1.6;color:#333}h1{border-bottom:2px solid #eee;padding-bottom:0.5rem}.meta{color:#666;font-size:0.9rem}.changes{background:#f5f5f5;padding:1rem;border-radius:6px;margin:1rem 0}li{margin-bottom:0.4rem}</style>
+</head><body>
+<h1>Release financecheque-v0.0.1.58</h1>
+<p class="meta">2026-08-12 &middot; Release #158 for financecheque</p>
+<p>This release brings the child proxy install script, documentation, and WebGUI docs into alignment with the actual local machine architecture.</p>
+<div class="changes">
+<li>fix(install.sh): install.sh now installs the full child proxy stack — agentos-gui WebGUI (localhost:3000), child-proxy.mjs (port 4001), llama-server + MiniCPM-1B (port 8090), kiro-cli, kilo, hermes, Whisper STT, Piper TTS, pm2</li>
+<li>fix(install.sh): all services managed by pm2 with autostart on boot</li>
+<li>fix(static/financecheque/fcukproxy/install.sh): was a stub; now a proper redirect to public/install.sh</li>
+<li>docs(docs.html): completely rewritten to accurately document parent proxy API, child proxy API, WebGUI API, local agent tools (kiro, kilo, hermes), voice pipeline (Whisper STT + Piper TTS), routing policy, OTA, and troubleshooting</li>
+<li>docs(agentos/gui/src/app/docs/page.tsx): WebGUI docs page rewritten to reflect actual local stack — MiniCPM-1B local LLM, child-proxy routing, kiro/kilo/hermes CLI tools, voice pipeline, parent proxy API, all local endpoints</li>
+<li>docs(agentos/gui/docs/CHILD_PROXY_ARCHITECTURE.md): rewritten with accurate service table, pipelines, routing policy, and install command</li>
+<li>chore: bump version to 0.5.1.93</li>
+<li>note: OpenClaw is explicitly out of scope for the FinanceCheque child proxy stack</li>
+</div>
+<p>These changes ensure that running the one-liner installer from <code>financecheque.uk/fcukproxy/install.sh</code> results in the same running stack as the reference child proxy (WebGUI at localhost:3000/chat, local LLM, agent CLI tools).</p>
+<p>For full details, see the <a href="https://github.com/unclehowell/datro/releases/tag/financecheque-v0.0.1.58">GitHub release</a>.</p>
+<p><a href="index.html">&larr; Back to blog</a></p>
+</body></html>
