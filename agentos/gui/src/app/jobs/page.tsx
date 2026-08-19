@@ -79,7 +79,7 @@ export default function JobsPage() {
           <Link href="/" className="text-text-secondary hover:text-text-primary transition-colors">Dashboard</Link>
           <Link href="/jobs" className="text-accent font-medium">Jobs</Link>
           <Link href="/connect" className="text-text-secondary hover:text-text-primary transition-colors">Connect</Link>
-          <Link href="/settings" className="text-text-secondary hover:text-text-primary transition-colors">Settings</Link>
+          <Link href="/settings" className="text-text-secondary hover:text-text-primary transition-colors">Apps</Link>
         </nav>
       </header>
 

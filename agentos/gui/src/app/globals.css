@@ -36,11 +36,31 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  font-size: 16px; /* base — all rem values scale from here */
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
 }
+
+/* Ensure inputs, buttons, textareas never render below readable size */
+input, textarea, button, select {
+  font-size: 0.95rem;
+}
+
+/* Explicitly readable message text */
+.msg-text {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.label-sm  { font-size: 0.8rem; }
+.mono-output { font-size: 0.85rem; }
 
 * {
   scrollbar-width: thin;
@@ -74,4 +94,66 @@ body {
 
 .animate-slide-up {
   animation: slide-up 0.2s ease-out;
+}
+
+@keyframes thinking-dots {
+  0%, 20% { content: "."; }
+  40% { content: ".."; }
+  60%, 100% { content: "..."; }
+}
+
+@keyframes blink-cursor {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.thinking-cursor::after {
+  content: "▋";
+  animation: blink-cursor 0.7s ease-in-out infinite;
+  margin-left: 1px;
+}
+
+@keyframes spinner-ring {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.spinner-ring {
+  animation: spinner-ring 0.8s linear infinite;
+}
+
+@keyframes transit-sweep {
+  from { left: -10%; opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  to { left: 110%; opacity: 0; }
+}
+
+.animate-transit-sweep {
+  animation: transit-sweep 1.6s ease-in-out infinite;
+}
+
+@keyframes eq {
+  from { transform: scaleY(0.3); }
+  to { transform: scaleY(1); }
+}
+
+@keyframes voicemail-flash {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  25% { opacity: 0.4; transform: scale(1.15); }
+  50% { opacity: 1; transform: scale(1); }
+  75% { opacity: 0.4; transform: scale(1.15); }
+}
+
+.animate-voicemail-flash {
+  animation: voicemail-flash 0.8s ease-in-out infinite;
+}
+
+@keyframes bounce-gentle {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-3px); }
+}
+
+.animate-bounce-gentle {
+  animation: bounce-gentle 1.2s ease-in-out infinite;
 }

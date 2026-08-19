@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { healthCheck, listModels } from "@/lib/omniroute";
 import { getHermesStatus } from "@/lib/hermes";
+import { getGateState } from "@/lib/llm-gate";
 
 export const dynamic = "force-dynamic";
 
@@ -25,7 +26,7 @@ async function checkOllama(): Promise<{ ok: boolean; model?: string }> {
 
 async function checkTools(): Promise<{ count: number; ok: boolean }> {
   try {
-    const res = await fetch("http://localhost:3000/api/tools", { signal: AbortSignal.timeout(3000) });
+    const res = await fetch("http://localhost:3000/api/tools", { signal: AbortSignal.timeout(2000) });
     if (!res.ok) return { count: 0, ok: false };
     const data = await res.json();
     return { count: data.tools?.length || 0, ok: true };
@@ -36,22 +37,35 @@ async function checkTools(): Promise<{ count: number; ok: boolean }> {
 
 async function checkMcp(): Promise<{ count: number; ok: boolean }> {
   try {
-    const res = await fetch("http://localhost:3000/api/status", { signal: AbortSignal.timeout(3000) });
-    if (!res.ok) return { count: 0, ok: false };
-    return { count: 0, ok: true };
+    const res = await fetch("http://localhost:20128/health", { signal: AbortSignal.timeout(2000) });
+    return { count: 0, ok: res.ok };
   } catch {
     return { count: 0, ok: false };
   }
 }
 
+async function checkVoice(): Promise<{ stt: boolean; realtime: boolean }> {
+  const [stt, realtime] = await Promise.all([
+    fetch("http://localhost:3101/health", { signal: AbortSignal.timeout(2000) })
+      .then((r) => r.ok)
+      .catch(() => false),
+    fetch("http://localhost:3102/health", { signal: AbortSignal.timeout(2000) })
+      .then((r) => r.ok)
+      .catch(() => false),
+  ]);
+  return { stt, realtime };
+}
+
 export async function GET() {
-  const [omniroute, hermes, models, ollama, tools, mcp] = await Promise.all([
+  const [omniroute, hermes, models, ollama, tools, mcp, gate, voice] = await Promise.all([
     healthCheck(),
     getHermesStatus(),
     listModels(),
     checkOllama(),
     checkTools(),
     checkMcp(),
+    getGateState(),
+    checkVoice(),
   ]);
 
   const omniHealthy = omniroute.status === "ok" || (omniroute.providers && omniroute.providers.length > 0);
@@ -90,6 +104,8 @@ export async function GET() {
     models,
     ollama: { ok: ollama.ok, model: ollama.model },
     tools: { count: tools.count, ok: tools.ok },
+    gate,
+    voice,
     breadcrumbs,
     timestamp: new Date().toISOString(),
   });

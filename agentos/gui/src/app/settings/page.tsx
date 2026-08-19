@@ -1,79 +1,176 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo, useRef } from "react";
 import Link from "next/link";
+import { APPS, AppInfo, AppLogo } from "@/lib/app-catalog";
 
-const LLM_PROVIDERS: { key: string; label: string; placeholder?: string }[] = [
-  { key: "GOOGLE_API_KEY", label: "Google Gemini (free)", placeholder: "AIza..." },
-  { key: "GROQ_API_KEY", label: "Groq (free)", placeholder: "gsk_..." },
-  { key: "OPENROUTER_API_KEY", label: "OpenRouter (:free)", placeholder: "sk-or-..." },
-  { key: "NVIDIA_API_KEY", label: "NVIDIA build.nvidia.com", placeholder: "nvapi-..." },
-  { key: "OLLAMA_CLOUD_API_KEY", label: "Ollama Cloud", placeholder: "ollama-..." },
-  { key: "CEREBRAS_API_KEY", label: "Cerebras (free)", placeholder: "" },
-  { key: "MISTRAL_API_KEY", label: "Mistral (free tier)", placeholder: "" },
-  { key: "DEEPINFRA_API_KEY", label: "DeepInfra", placeholder: "" },
-  { key: "FIREWORKS_API_KEY", label: "Fireworks", placeholder: "" },
-  { key: "COHERE_API_KEY", label: "Cohere", placeholder: "" },
-  { key: "HF_TOKEN", label: "HuggingFace Router", placeholder: "hf_..." },
+type KeyMap = Record<string, string>;
+
+const CATEGORIES: { id: "all" | "llm" | "service" | "system"; label: string }[] = [
+  { id: "all", label: "All" },
+  { id: "llm", label: "LLM" },
+  { id: "service", label: "Services" },
+  { id: "system", label: "System" },
 ];
 
-const SERVICES: { key: string; label: string; def: string }[] = [
-  { key: "OMNIRute_URL", label: "OmniRoute URL", def: "http://localhost:20128" },
-  { key: "HERMES_URL", label: "Hermes URL", def: "http://localhost:3001" },
-  { key: "GOOGLE_TTS_API_KEY", label: "Google TTS API Key", def: "" },
-  { key: "MEM0_API_KEY", label: "Mem0 API Key", def: "" },
-];
-
-export default function SettingsPage() {
-  const [keys, setKeys] = useState<Record<string, string>>({});
+export default function AppsPage() {
+  const [keys, setKeys] = useState<KeyMap>({});
   const [loaded, setLoaded] = useState(false);
-  const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
-  const [ota, setOta] = useState<{ checking: boolean; message: string }>({ checking: false, message: "" });
+  const [savedFlash, setSavedFlash] = useState(false);
+  const [error, setError] = useState("");
   const [status, setStatus] = useState<any>(null);
+  const [oauth, setOauth] = useState<{ google: boolean; huggingface: boolean }>({ google: false, huggingface: false });
+  const [revealed, setRevealed] = useState<Set<string>>(new Set());
+  const [modalApp, setModalApp] = useState<AppInfo | null>(null);
+  const [keyValue, setKeyValue] = useState("");
+  const [confirming, setConfirming] = useState<string | null>(null);
+  const [confirmTimer, setConfirmTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
+  const [category, setCategory] = useState<"all" | "llm" | "service" | "system">("all");
+  const [query, setQuery] = useState("");
+  const [ota, setOta] = useState<{ checking: boolean; message: string }>({ checking: false, message: "" });
+  const inputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
     fetch("/api/settings")
       .then((r) => r.json())
       .then((d) => {
-        const all: Record<string, string> = {};
-        for (const p of LLM_PROVIDERS) all[p.key] = "";
-        for (const s of SERVICES) all[s.key] = s.def;
-        Object.assign(all, d.keys || {});
-        setKeys(all);
+        setKeys(d.keys || {});
+        setOauth(d.oauth || {});
         setLoaded(true);
       })
-      .catch(() => {
-        const all: Record<string, string> = {};
-        for (const p of LLM_PROVIDERS) all[p.key] = "";
-        for (const s of SERVICES) all[s.key] = s.def;
-        setKeys(all);
-        setLoaded(true);
-      });
+      .catch(() => setLoaded(true));
     fetch("/api/status")
       .then((r) => r.json())
       .then(setStatus)
       .catch(() => {});
   }, []);
 
-  const set = (k: string, v: string) => setKeys((prev) => ({ ...prev, [k]: v }));
+  useEffect(() => {
+    if (modalApp) setTimeout(() => inputRef.current?.focus(), 50);
+  }, [modalApp]);
 
-  const save = async () => {
+  const isInstalled = (app: AppInfo) => app.alwaysInstalled || Boolean(keys[app.key]);
+
+  const oauthReady = (app: AppInfo) => {
+    if (app.oauthPlatform === "huggingface") return oauth.huggingface;
+    if (app.oauthPlatform === "google-gemini" || app.oauthPlatform === "google-tts") return oauth.google;
+    return false;
+  };
+
+  const toggleReveal = (id: string) =>
+    setRevealed((prev) => {
+      const next = new Set(prev);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
+
+  const openInstall = (app: AppInfo) => {
+    setError("");
+    setKeyValue("");
+    setModalApp(app);
+  };
+
+  const closeModal = () => {
+    setModalApp(null);
+    setError("");
+  };
+
+  const install = async (app: AppInfo) => {
+    const value = keyValue.trim();
+    if (!value) return;
     setSaving(true);
+    setError("");
     try {
-      const resp = await fetch("/api/settings", {
+      const r = await fetch("/api/settings", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(keys),
+        body: JSON.stringify({ [app.key]: value }),
       });
-      if (resp.ok) {
-        setSaved(true);
-        setTimeout(() => setSaved(false), 2500);
+      if (r.ok) {
+        setKeys((prev) => ({ ...prev, [app.key]: value }));
+        closeModal();
+        setSavedFlash(true);
+        setTimeout(() => setSavedFlash(false), 2000);
+      } else {
+        const d = await r.json().catch(() => ({}));
+        setError(d?.error || "Save failed");
       }
+    } catch {
+      setError("Network error — is the local server running?");
     } finally {
       setSaving(false);
     }
   };
+
+  const uninstall = async (app: AppInfo) => {
+    setSaving(true);
+    try {
+      const r = await fetch("/api/settings", {
+        method: "DELETE",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ key: app.key }),
+      });
+      if (r.ok) {
+        setKeys((prev) => {
+          const next = { ...prev };
+          delete next[app.key];
+          return next;
+        });
+      }
+    } catch {}
+    setConfirming(null);
+    if (confirmTimer) clearTimeout(confirmTimer);
+    setSaving(false);
+  };
+
+  const onActionClick = (e: React.MouseEvent, app: AppInfo) => {
+    e.stopPropagation();
+    if (app.alwaysInstalled) return;
+    if (isInstalled(app)) {
+      if (confirming === app.id) uninstall(app);
+      else {
+        setConfirming(app.id);
+        if (confirmTimer) clearTimeout(confirmTimer);
+        setConfirmTimer(
+          setTimeout(() => {
+            setConfirming(null);
+            setConfirmTimer(null);
+          }, 3000)
+        );
+      }
+    } else {
+      openInstall(app);
+    }
+  };
+
+  const onTileTap = (app: AppInfo) => {
+    // Mobile: first tap reveals the install/uninstall button; second tap on
+    // the button acts. Desktop hover reveals it without any tap.
+    if (app.alwaysInstalled) {
+      openInstall(app);
+      return;
+    }
+    toggleReveal(app.id);
+  };
+
+  const visibleApps = useMemo(() => {
+    const q = query.trim().toLowerCase();
+    return APPS.filter((a) => {
+      if (category !== "all" && a.category !== category) return false;
+      if (!q) return true;
+      return (
+        a.name.toLowerCase().includes(q) ||
+        a.vendor.toLowerCase().includes(q) ||
+        a.desc.toLowerCase().includes(q)
+      );
+    });
+  }, [category, query]);
+
+  const installedCount = APPS.filter(isInstalled).length;
+  const apps = visibleApps.filter((a) => a.category !== "system");
+  const systems = visibleApps.filter((a) => a.category === "system");
 
   const triggerOta = async () => {
     setOta({ checking: true, message: "Checking for updates from financecheque branch..." });
@@ -91,67 +188,204 @@ export default function SettingsPage() {
       <header className="border-b border-border px-6 py-3 flex items-center gap-3 shrink-0">
         <Link href="/" className="text-text-muted hover:text-text-primary text-sm">Dashboard</Link>
         <span className="text-text-muted">/</span>
-        <h1 className="text-sm font-medium">Settings</h1>
+        <h1 className="text-sm font-medium">Apps</h1>
+        <span className="text-xs text-text-muted font-mono ml-1">~/.llm_keys</span>
+        <span className="ml-auto flex items-center gap-2">
+          {savedFlash && <span className="text-xs text-success">installed ✓</span>}
+          <span className="text-xs text-text-muted font-mono">{installedCount}/{APPS.length} installed</span>
+        </span>
       </header>
 
-      <main className="flex-1 p-6 max-w-2xl mx-auto w-full space-y-6">
+      <main className="flex-1 p-6 max-w-5xl mx-auto w-full space-y-6">
         {status && (
           <section className="grid grid-cols-3 gap-3">
             <Stat label="Machine" value={status.machine_name || status.machine_id || "—"} />
             <Stat label="Proxy" value={status.version || "—"} />
-            <Stat label="Model" value={status.llm ? "local + cloud" : "local"} />
+            <Stat label="Brain" value={status.llm ? "local + cloud" : "local"} />
           </section>
         )}
 
-        <section>
-          <h2 className="text-sm font-medium text-text-secondary mb-3">Free-tier LLM Providers</h2>
-          <p className="text-xs text-text-muted mb-3">Paste keys for as many as you like. The child proxy auto-routes and fails over across all configured providers.</p>
-          <div className="space-y-3">
-            {LLM_PROVIDERS.map((p) => (
-              <InputField key={p.key} label={p.label} placeholder={p.placeholder} value={loaded ? keys[p.key] || "" : ""} type="password" onChange={(v) => set(p.key, v)} />
+        {/* Search + category filter */}
+        <section className="flex flex-wrap items-center gap-3">
+          <div className="relative">
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search apps…"
+              className="w-56 bg-surface border border-border rounded-lg pl-8 pr-3 py-2 text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-accent/50"
+            />
+            <svg viewBox="0 0 24 24" className="w-4 h-4 absolute left-2.5 top-1/2 -translate-y-1/2 text-text-muted" fill="none" stroke="currentColor" strokeWidth="2">
+              <circle cx="11" cy="11" r="7" />
+              <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+          </div>
+          <div className="flex items-center gap-1 rounded-lg border border-border bg-surface p-1">
+            {CATEGORIES.map((c) => (
+              <button
+                key={c.id}
+                onClick={() => setCategory(c.id)}
+                className={`px-3 py-1.5 text-xs rounded-md transition-colors ${
+                  category === c.id ? "bg-accent text-black font-medium" : "text-text-muted hover:text-text-primary"
+                }`}
+              >
+                {c.label}
+              </button>
             ))}
+          </div>
+          {!loaded && <span className="text-xs text-text-muted ml-auto">loading…</span>}
+        </section>
+
+        {/* Installable apps */}
+        <section>
+          <div className="flex items-end justify-between mb-4">
+            <div>
+              <h2 className="text-sm font-medium text-text-secondary">
+                {category === "system" ? "System apps" : category === "service" ? "Services" : category === "llm" ? "LLM providers" : "App store"}
+              </h2>
+              <p className="text-xs text-text-muted mt-0.5">
+                Hover an icon (or tap it on mobile) to install. Keys unlock the service for the child proxy and stay on this machine.
+              </p>
+            </div>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            {apps.map((app) => (
+              <AppTile
+                key={app.id}
+                app={app}
+                installed={isInstalled(app)}
+                revealed={revealed.has(app.id)}
+                confirming={confirming === app.id}
+                onTileTap={() => onTileTap(app)}
+                onAction={(e) => onActionClick(e, app)}
+              />
+            ))}
+            {apps.length === 0 && <p className="text-xs text-text-muted py-6">No apps match.</p>}
           </div>
         </section>
 
-        <section>
-          <h2 className="text-sm font-medium text-text-secondary mb-3">Services</h2>
-          <div className="space-y-3">
-            {SERVICES.map((s) => (
-              <InputField key={s.key} label={s.label} value={loaded ? keys[s.key] || "" : ""} type={s.key.endsWith("_KEY") ? "password" : "text"} onChange={(v) => set(s.key, v)} />
-            ))}
-          </div>
-        </section>
+        {/* System (local) apps */}
+        {systems.length > 0 && (
+          <section className="pt-2 border-t border-border">
+            <h2 className="text-sm font-medium text-text-secondary mb-1">Local infrastructure</h2>
+            <p className="text-xs text-text-muted mb-4">These ship with the machine — they run the agent itself and can&apos;t be uninstalled.</p>
+            <div className="flex flex-wrap gap-4">
+              {systems.map((app) => (
+                <AppTile
+                  key={app.id}
+                  app={app}
+                  installed
+                  revealed={revealed.has(app.id)}
+                  confirming={false}
+                  onTileTap={() => onTileTap(app)}
+                  onAction={() => {}}
+                />
+              ))}
+            </div>
+          </section>
+        )}
 
-        <div className="flex items-center gap-3">
-          <button
-            onClick={save}
-            disabled={saving}
-            className="px-4 py-2 bg-accent text-black text-sm font-medium rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-50"
-          >
-            {saving ? "Saving..." : "Save to ~/.llm_keys"}
-          </button>
-          {saved && <span className="text-success text-sm">Saved</span>}
-        </div>
-
-        <section className="text-xs text-text-muted border-t border-border pt-4">
-          <p>Keys are stored in <code className="text-text-secondary">~/.llm_keys</code> (0600, server-side only) and read by the local cloud router and agent.py provider pool.</p>
-        </section>
-
-        <section className="border-t border-border pt-4">
-          <h2 className="text-sm font-medium text-text-secondary mb-3">OTA Update</h2>
+        {/* Machine maintenance */}
+        <section className="border-t border-border pt-4 text-xs text-text-muted space-y-3">
           <div className="flex items-center gap-3">
             <button
               onClick={triggerOta}
               disabled={ota.checking}
-              className="px-4 py-2 border border-border text-sm font-medium rounded-lg hover:border-accent/50 transition-colors disabled:opacity-50"
+              className="px-3 py-1.5 border border-border text-sm font-medium rounded-lg hover:border-accent/50 transition-colors disabled:opacity-50"
             >
-              {ota.checking ? "Checking..." : "Check for updates"}
+              {ota.checking ? "Checking…" : "Check for updates"}
             </button>
-            {ota.message && <span className="text-xs text-text-muted">{ota.message}</span>}
+            {ota.message && <span>{ota.message}</span>}
           </div>
-          <p className="text-xs text-text-muted mt-2">Pulls <code className="text-text-secondary">ota-manifest.json</code> from the financecheque branch and self-updates child-proxy, agent.py, and agent-exec.</p>
+          <p>
+            Keys are stored in <code className="text-text-secondary">~/.llm_keys</code> (0600, server-side only) and read live by the cloud
+            router and agent.py provider pool. OAuth access tokens are stored under <code className="text-text-secondary">~/.fcukproxy/oauth</code> and
+            dropped into the same key store so the agent can use them immediately.
+          </p>
         </section>
       </main>
+
+      {/* Install modal */}
+      {modalApp && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={closeModal} />
+          <div className="relative w-full max-w-sm rounded-2xl border border-border bg-surface p-6 shadow-2xl shadow-black/40 animate-slide-up">
+            <div className="flex items-center gap-4">
+              <div className="w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg shadow-black/30 shrink-0" style={{ backgroundColor: modalApp.bg }}>
+                <AppLogo app={modalApp} className="w-9 h-9" />
+              </div>
+              <div className="min-w-0">
+                <div className="text-base font-semibold text-text-primary truncate">{modalApp.name}</div>
+                <div className="text-xs text-text-muted truncate">{modalApp.vendor}</div>
+                <div className="flex items-center gap-1.5 mt-1">
+                  <span className="text-[10px] px-1.5 py-0.5 rounded bg-zinc-800 border border-border text-text-muted uppercase tracking-wide">{modalApp.category}</span>
+                  {isInstalled(modalApp) && <span className="text-[10px] px-1.5 py-0.5 rounded bg-green-500/10 border border-green-500/30 text-green-400">installed</span>}
+                </div>
+              </div>
+            </div>
+
+            <p className="text-xs text-text-muted mt-4 leading-relaxed">{modalApp.desc}</p>
+
+            {modalApp.alwaysInstalled && (
+              <p className="text-xs text-text-muted mt-4 border border-border rounded-lg px-3 py-2 bg-background/40">
+                Built into the machine. No setup required.
+              </p>
+            )}
+
+            {!modalApp.alwaysInstalled && modalApp.auth === "oauth" && oauthReady(modalApp) && (
+              <a
+                href={`/api/settings/oauth?platform=${modalApp.oauthPlatform}`}
+                target="_blank"
+                rel="noreferrer"
+                className="mt-4 w-full inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg border border-border text-sm font-medium text-text-primary hover:border-accent/60 hover:bg-zinc-800/40 transition-colors"
+              >
+                <svg viewBox="0 0 24 24" className="w-4 h-4" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="3"/><path d="M21 12h-6M9 12H3M12 3v6M12 15v6"/></svg>
+                Connect with {modalApp.vendor}
+              </a>
+            )}
+
+            {!modalApp.alwaysInstalled && modalApp.auth !== "none" && (
+              <>
+                <label className="block text-xs text-text-muted mt-4 mb-1">
+                  API key{modalApp.auth === "oauth" && !oauthReady(modalApp) ? " (OAuth client not configured — use a key)" : ""}
+                </label>
+                <input
+                  ref={inputRef}
+                  type="password"
+                  value={keyValue}
+                  placeholder={modalApp.placeholder || `Paste ${modalApp.name} key`}
+                  onChange={(e) => setKeyValue(e.target.value)}
+                  onKeyDown={(e) => { if (e.key === "Enter" && keyValue.trim() && !saving) install(modalApp); }}
+                  autoComplete="off"
+                  spellCheck={false}
+                  className="w-full bg-background border border-border rounded-lg px-3 py-2 text-sm text-text-primary font-mono placeholder-text-muted focus:outline-none focus:border-accent/50"
+                />
+                {modalApp.auth === "oauth" && (
+                  <p className="text-[11px] text-text-muted mt-1.5">
+                    This app can also connect via OAuth instead of a key. Configure{" "}
+                    <code className="text-text-secondary">{modalApp.oauthClientEnv}</code> in the server env to enable the button above.
+                  </p>
+                )}
+                {error && <p className="text-xs text-error mt-2">{error}</p>}
+                <div className="flex items-center gap-2 mt-4">
+                  <button
+                    onClick={() => install(modalApp)}
+                    disabled={saving || !keyValue.trim()}
+                    className="flex-1 px-4 py-2.5 bg-accent text-black text-sm font-medium rounded-lg hover:bg-accent/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                  >
+                    {saving ? "Installing…" : "Install"}
+                  </button>
+                  <button
+                    onClick={closeModal}
+                    className="px-4 py-2.5 border border-border text-sm font-medium rounded-lg text-text-muted hover:text-text-primary hover:border-zinc-600 transition-colors"
+                  >
+                    Cancel
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
@@ -165,17 +399,60 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function InputField({ label, value, type = "text", placeholder, onChange }: { label: string; value: string; type?: string; placeholder?: string; onChange: (v: string) => void }) {
+function AppTile({ app, installed, revealed, confirming, onTileTap, onAction }: {
+  app: AppInfo;
+  installed: boolean;
+  revealed: boolean;
+  confirming: boolean;
+  onTileTap: () => void;
+  onAction: (e: React.MouseEvent) => void;
+}) {
   return (
-    <div>
-      <label className="text-xs text-text-muted block mb-1">{label}</label>
-      <input
-        type={type}
-        value={value}
-        placeholder={placeholder}
-        onChange={(e) => onChange(e.target.value)}
-        className="w-full bg-surface border border-border rounded-lg px-3 py-2 text-sm text-text-primary font-mono focus:outline-none focus:border-accent/50"
-      />
+    <div className="w-28 flex flex-col items-center">
+      <div
+        className={`relative group/app w-28 h-28 rounded-2xl shadow-lg shadow-black/30 flex items-center justify-center cursor-pointer select-none overflow-hidden transition-transform duration-150 active:scale-95 ${
+          installed ? "" : "opacity-90"
+        }`}
+        style={{ backgroundColor: app.bg }}
+        onClick={onTileTap}
+        role="button"
+        aria-label={`${app.name}: ${installed ? "installed" : "not installed"}`}
+      >
+        <AppLogo app={app} className="w-12 h-12" />
+
+        {installed && !app.alwaysInstalled && (
+          <span className="absolute top-1.5 right-1.5 w-2.5 h-2.5 rounded-full bg-green-400 ring-2 ring-black/40" />
+        )}
+        {app.alwaysInstalled && (
+          <span className="absolute top-1.5 right-1.5 text-[9px] font-mono text-black/50">sys</span>
+        )}
+
+        {/* Lower-half install/uninstall overlay */}
+        {!app.alwaysInstalled && (
+          <div
+            className={`absolute inset-x-0 bottom-0 h-[52%] flex items-end justify-center pb-2 bg-gradient-to-t from-black/80 via-black/50 to-transparent transition-opacity duration-150 ${
+              revealed ? "opacity-100" : "opacity-0 group-hover/app:opacity-100"
+            }`}
+          >
+            <button
+              onClick={onAction}
+              className={`pointer-events-auto w-[calc(100%-12px)] py-1 rounded-md text-[11px] font-medium transition-colors ${
+                installed
+                  ? confirming
+                    ? "bg-red-500 text-white"
+                    : "bg-red-500/15 border border-red-500/50 text-red-300 hover:bg-red-500/30"
+                  : "bg-accent text-black hover:bg-accent/90"
+              }`}
+            >
+              {installed ? (confirming ? "Confirm?" : "Uninstall") : "Install"}
+            </button>
+          </div>
+        )}
+      </div>
+      <div className="text-center mt-2 w-full">
+        <div className="text-xs font-medium text-text-primary truncate">{app.name}</div>
+        <div className="text-[10px] text-text-muted truncate">{app.vendor}</div>
+      </div>
     </div>
   );
 }

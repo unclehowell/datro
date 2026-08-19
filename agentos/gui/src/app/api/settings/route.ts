@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
 import { homedir } from "os";
 import { join } from "path";
+import { invalidateKeysCache } from "@/lib/cloud-router";
 
 export const dynamic = "force-dynamic";
 
@@ -54,7 +55,13 @@ function writeKeys(keys: KeyMap) {
 
 export async function GET() {
   const keys = readKeys();
-  return NextResponse.json({ keys, path: KEYS_PATH });
+  // Report which OAuth client credentials are registered so the Apps store
+  // can offer "connect with <provider>" in addition to an API key.
+  const oauth = {
+    google: Boolean(process.env.GOOGLE_OAUTH_CLIENT_ID),
+    huggingface: Boolean(process.env.HF_OAUTH_CLIENT_ID),
+  };
+  return NextResponse.json({ keys, path: KEYS_PATH, oauth });
 }
 
 export async function POST(request: Request) {
@@ -69,5 +76,32 @@ export async function POST(request: Request) {
     current[k] = typeof v === "string" ? v : "";
   }
   writeKeys(current);
+  // Make the keys live for the running process immediately (env + router
+  // cache) so an installed app is at the child proxy's disposal right away.
+  for (const [k, v] of Object.entries(patch)) {
+    if (typeof v === "string") {
+      if (v) process.env[k] = v;
+      else delete process.env[k];
+    }
+  }
+  invalidateKeysCache();
   return NextResponse.json({ ok: true, path: KEYS_PATH });
+}
+
+export async function DELETE(request: Request) {
+  let keys: string[] = [];
+  try {
+    const body = await request.json();
+    keys = Array.isArray(body?.keys) ? body.keys : typeof body?.key === "string" ? [body.key] : [];
+  } catch {}
+  if (keys.length === 0) return NextResponse.json({ error: "key required" }, { status: 400 });
+
+  const current = readKeys();
+  for (const k of keys) {
+    delete current[k];
+    delete process.env[k];
+  }
+  writeKeys(current);
+  invalidateKeysCache();
+  return NextResponse.json({ ok: true, removed: keys, path: KEYS_PATH });
 }

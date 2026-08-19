@@ -19,11 +19,15 @@ const PROVIDERS = [
     name: "Local MiniCPM5-1B (Ollama)",
     baseUrl: "http://localhost:11434",
     apiKey: "ollama",
-    models: ["openbmb/minicpm5"],
+    models: ["minicpm5-32k", "openbmb/minicpm5"],
     chatPath: "/api/chat",
     modelsPath: "/api/tags",
     enabled: true,
     priority: 1,
+    apiFormat: "ollama",
+    keepAlive: process.env.OLLAMA_KEEP_ALIVE || "30m",
+    numCtx: parseInt(process.env.MINICPM_NUM_CTX || "8192", 10),
+    timeout: parseInt(process.env.OLLAMA_TIMEOUT_MS || "600000", 10),
   },
   {
     id: "groq",
@@ -55,6 +59,77 @@ const PROVIDERS = [
 const health = {};
 for (const p of PROVIDERS) {
   health[p.id] = { ok: true, lastCheck: Date.now(), failures: 0 };
+}
+
+// ── Prompt / response cache (Cline-style harness prompt caching) ────────────
+// Exact-match LRU over (model, messages). Keeps repeated agent-loop prompts
+// (constant system prefix + growing history) from re-inferencing on the Celeron.
+// KV-cache reuse is layered on top via keep_alive + num_ctx to ollama.
+const CACHE_MAX = parseInt(process.env.PROMPT_CACHE_MAX || "256", 10);
+const CACHE_TTL_MS = parseInt(process.env.PROMPT_CACHE_TTL_S || "1800", 10) * 1000;
+const responseCache = new Map(); // key -> { ts, value }
+
+let cacheHits = 0;
+let cacheMisses = 0;
+
+function hashKey(s) {
+  let h = 5381;
+  for (let i = 0; i < s.length; i++) h = ((h << 5) + h + s.charCodeAt(i)) | 0;
+  return (h >>> 0).toString(36);
+}
+
+// Translate ollama's native /api/chat response into the OpenAI chat.completion
+// shape that all the GUI clients (LLMClient, omniroute lib) expect.
+function toOpenAIFormat(parsed, model) {
+  const msg = parsed.message || {};
+  return {
+    id: "chatcmpl-" + hashKey(JSON.stringify(parsed).slice(0, 64)),
+    object: "chat.completion",
+    created: Math.floor(Date.now() / 1000),
+    model: parsed.model || model,
+    choices: [
+      {
+        index: 0,
+        message: { role: msg.role || "assistant", content: msg.content || "" },
+        finish_reason: parsed.done_reason || "stop",
+      },
+    ],
+    usage: {
+      prompt_tokens: parsed.prompt_eval_count || 0,
+      completion_tokens: parsed.eval_count || 0,
+      total_tokens: (parsed.prompt_eval_count || 0) + (parsed.eval_count || 0),
+    },
+  };
+}
+
+function cacheKeyFor(reqBody) {
+  const model = reqBody.model || "";
+  const msgs = (reqBody.messages || []).map((m) => `${m.role}\x1f${m.content}`).join("\x1e");
+  return hashKey(model + "\x1e" + msgs);
+}
+
+function cacheGet(reqBody) {
+  const key = cacheKeyFor(reqBody);
+  const entry = responseCache.get(key);
+  if (!entry) {
+    cacheMisses++;
+    return null;
+  }
+  if (Date.now() - entry.ts > CACHE_TTL_MS) {
+    responseCache.delete(key);
+    cacheMisses++;
+    return null;
+  }
+  cacheHits++;
+  return { key, value: entry.value };
+}
+
+function cachePut(reqBody, value) {
+  if (responseCache.size >= CACHE_MAX) {
+    const oldest = responseCache.keys().next().value;
+    if (oldest) responseCache.delete(oldest);
+  }
+  responseCache.set(cacheKeyFor(reqBody), { ts: Date.now(), value });
 }
 
 function log(level, msg, extra = "") {
@@ -109,7 +184,7 @@ function proxyRequest(provider, reqBody, isStream) {
         "Content-Length": Buffer.byteLength(body),
         Authorization: `Bearer ${provider.apiKey}`,
       },
-      timeout: 180000,
+      timeout: provider.timeout || 180000,
     };
 
     const proxyReq = proto.request(options, (proxyRes) => {
@@ -126,7 +201,7 @@ function proxyRequest(provider, reqBody, isStream) {
     proxyReq.on("timeout", () => {
       proxyReq.destroy();
       health[provider.id].failures++;
-      reject(new Error("timeout"));
+      reject(new Error(`timeout after ${provider.timeout || 180000}ms`));
     });
 
     proxyReq.write(body);
@@ -158,7 +233,33 @@ async function handleChatCompletion(req, res) {
   for (const provider of providers) {
     const actualModel = matchModel(requestedModel, provider) || provider.models[0];
     const reqBody = { ...rest, model: actualModel, stream };
-    if (provider.id === "ollama") reqBody.think = false;
+    if (provider.id === "ollama") {
+      reqBody.think = false;
+      reqBody.keep_alive = provider.keepAlive || "30m";
+      reqBody.options = { ...(reqBody.options || {}), num_ctx: provider.numCtx };
+      // OpenAI-style max_tokens must become num_predict for Ollama's /api/chat;
+      // otherwise the reasoning model generates unbounded tokens and blows the timeout.
+      if (reqBody.max_tokens) {
+        reqBody.options.num_predict = reqBody.max_tokens;
+        delete reqBody.max_tokens;
+      }
+    }
+
+    // Cline-style prompt cache: exact-match reuse for non-streaming calls.
+    if (!stream) {
+      const hit = cacheGet(reqBody);
+      if (hit) {
+        log("CACHE", "HIT", `model=${actualModel}`);
+        res.writeHead(200, {
+          "Content-Type": "application/json",
+          "X-Provider": provider.id,
+          "X-Model": actualModel,
+          "X-Cache": "HIT",
+        });
+        res.end(JSON.stringify(hit.value));
+        return;
+      }
+    }
 
     log("INFO", `→ ${provider.name}`, `model=${actualModel} stream=${stream}`);
 
@@ -174,7 +275,32 @@ async function handleChatCompletion(req, res) {
           "Content-Type": proxyRes.headers["content-type"] || "application/json",
           "X-Provider": provider.id,
           "X-Model": actualModel,
+          "X-Cache": "MISS",
         };
+
+        // Buffer non-streaming JSON so we can store it in the prompt cache.
+        if (!stream && (proxyRes.headers["content-type"] || "").includes("json")) {
+          let body = "";
+          proxyRes.on("data", (c) => (body += c));
+          proxyRes.on("end", () => {
+            let outBody = body;
+            try {
+              let parsed = JSON.parse(body);
+              if (provider.apiFormat === "ollama") {
+                parsed = toOpenAIFormat(parsed, actualModel);
+                outBody = JSON.stringify(parsed);
+              }
+              cachePut(reqBody, parsed);
+            } catch {
+              // non-JSON body — don't cache
+            }
+            res.writeHead(proxyRes.statusCode, responseHeaders);
+            res.end(outBody);
+            log("OK", `← ${provider.name}`, `status=${proxyRes.statusCode} (cached)`);
+          });
+          proxyRes.on("error", () => res.destroy());
+          return;
+        }
 
         res.writeHead(proxyRes.statusCode, responseHeaders);
         proxyRes.pipe(res);
@@ -228,6 +354,28 @@ async function handleModels(_req, res) {
   res.end(JSON.stringify({ object: "list", data: allModels }));
 }
 
+function handleCacheStats(_req, res) {
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify({
+    status: "ok",
+    size: responseCache.size,
+    max: CACHE_MAX,
+    ttlMs: CACHE_TTL_MS,
+    hits: cacheHits,
+    misses: cacheMisses,
+    hitRate: cacheHits + cacheMisses > 0 ? (cacheHits / (cacheHits + cacheMisses)).toFixed(3) : 0,
+    providers: PROVIDERS.filter((p) => p.enabled).map((p) => ({ id: p.id, keepAlive: p.keepAlive || null, numCtx: p.numCtx || null })),
+  }));
+}
+
+function handleCacheClear(_req, res) {
+  responseCache.clear();
+  cacheHits = 0;
+  cacheMisses = 0;
+  res.writeHead(200, { "Content-Type": "application/json" });
+  res.end(JSON.stringify({ status: "ok", cleared: true, size: 0 }));
+}
+
 function handleHealth(_req, res) {
   const enabledProviders = PROVIDERS.filter((p) => p.enabled);
   const healthyProviders = enabledProviders.filter((p) => health[p.id]?.ok);
@@ -249,8 +397,8 @@ function handleRoot(_req, res) {
   res.end(JSON.stringify({
     name: "OmniRoute Lite",
     version: "0.1.0",
-    description: "Lightweight OpenAI-compatible proxy with provider failover",
-    endpoints: ["/v1/chat/completions", "/v1/models", "/api/health"],
+    description: "Lightweight OpenAI-compatible proxy with provider failover + prompt caching",
+    endpoints: ["/v1/chat/completions", "/v1/models", "/api/health", "/v1/cache"],
     providers: PROVIDERS.filter((p) => p.enabled).map((p) => p.id),
   }));
 }
@@ -300,6 +448,8 @@ const server = http.createServer(async (req, res) => {
 
   if (req.method === "GET" && url.pathname === "/") return handleRoot(req, res);
   if (req.method === "GET" && url.pathname === "/api/health") return handleHealth(req, res);
+  if (req.method === "GET" && url.pathname === "/v1/cache") return handleCacheStats(req, res);
+  if (req.method === "DELETE" && url.pathname === "/v1/cache") return handleCacheClear(req, res);
   if (req.method === "GET" && url.pathname === "/v1/models") return handleModels(req, res);
   if (req.method === "POST" && url.pathname === "/v1/chat/completions") return handleChatCompletion(req, res);
 

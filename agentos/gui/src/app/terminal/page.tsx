@@ -10,21 +10,21 @@ const KEYS = [
   ["q", "w", "e", "r", "t", "y", "u", "i", "o", "p"],
   ["a", "s", "d", "f", "g", "h", "j", "k", "l"],
   ["Shift", "z", "x", "c", "v", "b", "n", "m", "Backspace"],
-  ["123", ",", "Space", ".", "Enter"],
+  ["123", ",", "Space", ".", "Enter", "Mic"],
 ];
 
 const KEYS_SHIFT = [
   ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"],
   ["A", "S", "D", "F", "G", "H", "J", "K", "L"],
   ["Shift", "Z", "X", "C", "V", "B", "N", "M", "Backspace"],
-  ["123", ",", "Space", ".", "Enter"],
+  ["123", ",", "Space", ".", "Enter", "Mic"],
 ];
 
 const KEYS_SYM = [
   ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"],
   ["-", "/", ":", ";", "(", ")", "$", "&", "@", '"'],
   ["Shift", ".", ",", "?", "!", "'", "`", "~", "Backspace"],
-  ["ABC", "_", "Space", "|", "Enter"],
+  ["ABC", "_", "Space", "|", "Enter", "Mic"],
 ];
 
 const WS_URL = process.env.NEXT_PUBLIC_TERM_WS || "ws://localhost:3001";
@@ -36,8 +36,11 @@ export default function TerminalPage() {
   const wsRef = useRef<WebSocket | null>(null);
   const [connected, setConnected] = useState(false);
   const [showKeyboard, setShowKeyboard] = useState(true);
+  const [micActive, setMicActive] = useState(false);
   const [shift, setShift] = useState(false);
   const [sym, setSym] = useState(false);
+  const recognitionRef = useRef<any>(null);
+  const micActiveRef = useRef(false);
 
   const sendInput = useCallback((data: string) => {
     if (wsRef.current?.readyState === WebSocket.OPEN) {
@@ -156,10 +159,15 @@ export default function TerminalPage() {
       window.removeEventListener("resize", resizeHandler);
       term.dispose();
       wsRef.current?.close();
+      recognitionRef.current?.stop();
     };
   }, [sendInput, sendResize]);
 
   const keyPress = (key: string) => {
+    if (key === "Mic") {
+      toggleMic();
+      return;
+    }
     if (key === "Enter") {
       sendInput("\r");
     } else if (key === "Shift") {
@@ -179,6 +187,59 @@ export default function TerminalPage() {
     }
     terminalRef.current?.focus();
   };
+
+  const toggleMic = useCallback(() => {
+    if (micActiveRef.current) {
+      recognitionRef.current?.stop();
+      micActiveRef.current = false;
+      setMicActive(false);
+      return;
+    }
+
+    const SpeechRecognition = (window as any).SpeechRecognition || (window as any).webkitSpeechRecognition;
+    if (!SpeechRecognition) {
+      console.warn("Speech recognition not supported");
+      return;
+    }
+
+    const recognition = new SpeechRecognition();
+    recognition.continuous = true;
+    recognition.interimResults = true;
+    recognition.lang = "en-US";
+
+    recognition.onresult = (event: any) => {
+      let finalTranscript = "";
+      for (let i = event.resultIndex; i < event.results.length; i++) {
+        if (event.results[i].isFinal) {
+          finalTranscript += event.results[i][0].transcript;
+        }
+      }
+      if (finalTranscript) {
+        sendInput(finalTranscript);
+      }
+    };
+
+    recognition.onerror = (event: any) => {
+      console.error("Speech recognition error:", event.error);
+      if (event.error !== "no-speech" && event.error !== "aborted") {
+        setMicActive(false);
+        micActiveRef.current = false;
+      }
+    };
+
+    recognition.onend = () => {
+      if (micActiveRef.current) {
+        try { recognition.start(); } catch {}
+      } else {
+        setMicActive(false);
+      }
+    };
+
+    recognitionRef.current = recognition;
+    micActiveRef.current = true;
+    setMicActive(true);
+    recognition.start();
+  }, [sendInput]);
 
   const currentKeys = sym ? KEYS_SYM : shift ? KEYS_SHIFT : KEYS;
 
@@ -231,6 +292,9 @@ export default function TerminalPage() {
                 } else if (key === "Shift" || key === "123" || key === "ABC") {
                   cls += (shift || sym) ? "bg-zinc-600 text-white " : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 ";
                   style.flex = "1.3 1 0";
+                } else if (key === "Mic") {
+                  cls += micActive ? "bg-red-600 text-white animate-pulse " : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 ";
+                  style.flex = "1.5 1 0";
                 } else {
                   cls += "bg-zinc-800 text-zinc-200 hover:bg-zinc-700 ";
                 }
@@ -244,7 +308,7 @@ export default function TerminalPage() {
                     className={cls}
                     style={style}
                   >
-                    {key === "Space" ? "" : key === "Backspace" ? "⌫" : key === "Enter" ? "↵" : key === "Shift" ? "⇧" : key === "123" ? "?123" : key === "ABC" ? "ABC" : key}
+                    {key === "Space" ? "" : key === "Backspace" ? "⌫" : key === "Enter" ? "↵" : key === "Shift" ? "⇧" : key === "123" ? "?123" : key === "ABC" ? "ABC" : key === "Mic" ? "🎤" : key}
                   </button>
                 );
               })}

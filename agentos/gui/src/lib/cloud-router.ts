@@ -15,6 +15,7 @@ interface CloudProvider {
   model: string;
   apiKey: string;
   timeout: number;
+  maxTokens?: number;
   format: "openai" | "google";
 }
 
@@ -23,10 +24,17 @@ interface CloudResponse {
   provider: string;
   model: string;
   duration: number;
+  reasoning?: string;
 }
 
 // Load API keys from ~/.llm_keys
 let cachedKeys: Record<string, string> | null = null;
+
+// Called by the settings route whenever keys change so newly installed
+// apps are picked up without restarting the server.
+export function invalidateKeysCache() {
+  cachedKeys = null;
+}
 
 function loadKeys(): Record<string, string> {
   if (cachedKeys) return cachedKeys;
@@ -75,6 +83,23 @@ function getProviders(): CloudProvider[] {
     });
   }
 
+  // DeepSeek — fast, cheap, OpenAI-compatible, with automatic prefix
+  // caching (the shared ROUTER_SYSTEM prompt is cached server-side, so
+  // the router classification gets a big latency cut). deepseek-chat is
+  // the default; set DEEPSEEK_MODEL=deepseek-reasoner for the R1
+  // reasoning harness (reasoning_content is captured and surfaced).
+  const deepseekKey = getKey("DEEPSEEK_API_KEY");
+  if (deepseekKey) {
+    providers.push({
+      name: "deepseek",
+      baseUrl: "https://api.deepseek.com/v1",
+      model: process.env.DEEPSEEK_MODEL || "deepseek-chat",
+      apiKey: deepseekKey,
+      timeout: 30000,
+      format: "openai",
+    });
+  }
+
   const cerebrasKey = getKey("CEREBRAS_API_KEY");
   if (cerebrasKey) {
     providers.push({
@@ -111,6 +136,20 @@ function getProviders(): CloudProvider[] {
     });
   }
 
+  // Local OmniRoute → ollama MiniCPM5-1B (prompt-cached). Primary path so /chat
+  // always has an LLM even with zero cloud keys. Slow (~2 tok/s) but always on,
+  // and it must run FIRST: fcuk-agent's local routing can take minutes on this
+  // Celeron and its abandoned server-side chain spawns heavy CLI agents.
+  providers.push({
+    name: "local-minicpm",
+    baseUrl: process.env.OMNIRUTE_URL || "http://localhost:20128/v1",
+    model: "minicpm5-32k",
+    apiKey: "",
+    timeout: 900000,
+    maxTokens: 100,
+    format: "openai",
+  });
+
   // Local FCUK child proxy agent — routes via the parent's cloud LLMs, no key needed
   providers.push({
     name: "fcuk-agent",
@@ -135,7 +174,7 @@ async function callOpenAI(provider: CloudProvider, messages: Array<{ role: strin
     body: JSON.stringify({
       model: provider.model,
       messages,
-      max_tokens: 500,
+      max_tokens: provider.maxTokens || 500,
       temperature: 0.7,
     }),
     signal: AbortSignal.timeout(provider.timeout),
@@ -147,8 +186,11 @@ async function callOpenAI(provider: CloudProvider, messages: Array<{ role: strin
   }
 
   const data = await response.json();
+  const msg = data.choices?.[0]?.message || {};
   return {
-    content: data.choices?.[0]?.message?.content || "",
+    content: msg.content || "",
+    // DeepSeek reasoner emits its chain-of-thought in reasoning_content.
+    reasoning: msg.reasoning_content || undefined,
     provider: provider.name,
     model: provider.model,
     duration: Date.now() - start,
@@ -202,10 +244,13 @@ export async function chatWithCloud(
       const result = provider.format === "google"
         ? await callGoogle(provider, messages)
         : await callOpenAI(provider, messages);
-      if (result.content) {
+      // Some proxies (fcuk-agent) return provider errors as HTTP 200 text.
+      // Skip those and fall through to the next provider (local fallback).
+      if (result.content && !isFailureContent(result.content)) {
         console.log(`[CLOUD] ${result.provider}/${result.model} responded in ${result.duration}ms`);
         return result;
       }
+      console.log(`[CLOUD] ${provider.name} returned failure-looking content, trying next: ${String(result.content).slice(0, 80)}`);
     } catch (err: any) {
       console.log(`[CLOUD] ${provider.name} failed: ${err.message}`);
     }
@@ -214,6 +259,160 @@ export async function chatWithCloud(
   return null;
 }
 
+function isFailureContent(content: string): boolean {
+  const FAILURE_MARKERS = [
+    /no llm available/i,
+    /no providers? available/i,
+    /all providers failed/i,
+    /\[no endpoint\]/i,
+    /set api keys/i,
+    /no api key/i,
+    /missing.*api key/i,
+    /openai.*(?:api key|key).*required/i,
+  ];
+  return FAILURE_MARKERS.some((re) => re.test(content.slice(0, 300)));
+}
+
 export function hasCloudProviders(): boolean {
   return getProviders().length > 0;
+}
+
+// Streaming variant of chatWithCloud — emits content deltas via onDelta as
+// they arrive. Handles both OpenAI-style SSE (`data: {...}`) and raw ollama
+// NDJSON passthrough (omniroute → ollama streams `{"message":{"content":...}}`
+// lines). Google has no OpenAI-style streaming, so it is buffered and emitted
+// in one shot. A provider that starts with failure-looking content is dropped
+// before anything is forwarded to the caller.
+export async function chatWithCloudStream(
+  messages: Array<{ role: string; content: string }>,
+  onDelta: (delta: string) => void,
+  options?: { preferProvider?: string; signal?: AbortSignal }
+): Promise<CloudResponse | null> {
+  const providers = getProviders();
+  if (providers.length === 0) return null;
+
+  if (options?.preferProvider) {
+    providers.sort((a, b) => (a.name === options.preferProvider ? -1 : b.name === options.preferProvider ? 1 : 0));
+  }
+
+  const externalSignal = options?.signal;
+
+  for (const provider of providers) {
+    if (provider.format === "google") {
+      try {
+        const result = await callGoogle(provider, messages);
+        if (result.content && !isFailureContent(result.content)) {
+          onDelta(result.content);
+          return result;
+        }
+      } catch (err: any) {
+        console.log(`[CLOUD:stream] ${provider.name} failed: ${err.message}`);
+      }
+      continue;
+    }
+
+    let accumulated = "";
+    let emittedLen = 0;
+    let reasoning: string | undefined;
+    const start = Date.now();
+
+    try {
+      const response = await fetch(`${provider.baseUrl}/chat/completions`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${provider.apiKey}`,
+        },
+        body: JSON.stringify({
+          model: provider.model,
+          messages,
+          max_tokens: provider.maxTokens || 500,
+          temperature: 0.7,
+          stream: true,
+        }),
+        signal: externalSignal
+          ? AbortSignal.any([AbortSignal.timeout(provider.timeout), externalSignal])
+          : AbortSignal.timeout(provider.timeout),
+      });
+
+      if (!response.ok || !response.body) {
+        const body = await response.text().catch(() => "");
+        throw new Error(`${provider.name}: ${response.status} ${body.slice(0, 200)}`);
+      }
+
+      const reader = response.body.getReader();
+      const decoder = new TextDecoder();
+      let buf = "";
+      let streamDone = false;
+
+      while (!streamDone) {
+        const { done, value } = await reader.read();
+        if (done) break;
+        buf += decoder.decode(value, { stream: true });
+
+        let nl: number;
+        while ((nl = buf.indexOf("\n")) >= 0) {
+          const line = buf.slice(0, nl).trim();
+          buf = buf.slice(nl + 1);
+          if (!line) continue;
+
+          let delta = "";
+          if (line.startsWith("data:")) {
+            const payload = line.slice(5).trim();
+            if (payload === "[DONE]") { streamDone = true; continue; }
+            try {
+              const json = JSON.parse(payload);
+              const choice = json.choices?.[0];
+              delta = choice?.delta?.content || "";
+              if (choice?.delta?.reasoning_content) reasoning = (reasoning || "") + choice.delta.reasoning_content;
+              if (choice?.finish_reason) streamDone = true;
+            } catch {}
+          } else {
+            // ollama NDJSON passthrough (omniroute → ollama)
+            try {
+              const json = JSON.parse(line);
+              delta = json.message?.content || "";
+              if (json.message?.reasoning) reasoning = (reasoning || "") + json.message.reasoning;
+              if (json.done) streamDone = true;
+            } catch {}
+          }
+
+          if (delta) {
+            accumulated += delta;
+            if (emittedLen === 0 && isFailureContent(accumulated)) {
+              throw new Error(`${provider.name} returned failure-looking content`);
+            }
+            onDelta(delta);
+            emittedLen += delta.length;
+          }
+        }
+      }
+
+      if (!accumulated) continue;
+      console.log(`[CLOUD:stream] ${provider.name}/${provider.model} streamed in ${Date.now() - start}ms`);
+      return {
+        content: accumulated,
+        provider: provider.name,
+        model: provider.model,
+        duration: Date.now() - start,
+        reasoning,
+      };
+    } catch (err: any) {
+      if (emittedLen > 0) {
+        // Already streamed content to the caller — returning a second answer
+        // from another provider would confuse the client, so keep the partial.
+        console.log(`[CLOUD:stream] ${provider.name} failed after streaming ${emittedLen} chars: ${err.message}`);
+        return {
+          content: accumulated,
+          provider: provider.name,
+          model: provider.model,
+          duration: Date.now() - start,
+          reasoning,
+        };
+      }
+      console.log(`[CLOUD:stream] ${provider.name} failed: ${err.message}`);
+    }
+  }
+
+  return null;
 }
