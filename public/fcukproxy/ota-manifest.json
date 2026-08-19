@@ -1,8 +1,8 @@
 {
   "schema": 2,
   "branch": "financecheque",
-  "release_sequence": 4,
-  "updated": "2026-08-05",
+  "release_sequence": 5,
+  "updated": "2026-08-19",
   "apps": {
     "child-proxy": {
       "version": "0.10.0",
@@ -34,6 +34,12 @@
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/reflect.sh",
       "check": "bash"
     },
+    "update-checker": {
+      "version": "1.0.0",
+      "file": "update-checker.sh",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/update-checker.sh",
+      "check": "bash"
+    },
     "skills-leadgen": {
       "version": "0.3.0",
       "file": "skills/leadgen-strategy.md",
@@ -45,6 +51,37 @@
       "file": "skills/local-agent-discharge.md",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/skills/local-agent-discharge.md",
       "check": "text"
+    }
+  },
+  "components": {
+    "agentos-gui": {
+      "version": "1.0.0",
+      "description": "AgentOS GUI (Next.js, port 3000)",
+      "repo": "unclehowell/datro",
+      "branch": "financecheque",
+      "path": "agentos/gui",
+      "install_path": "~/.fcukproxy/agentos-gui",
+      "build": "npm install && npx next build"
+    },
+    "omniroute": {
+      "version": "1.0.0",
+      "description": "OmniRoute LLM proxy (port 20128)",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/agentos/omniroute/proxy.mjs",
+      "install_path": "~/.fcukproxy/omniroute/proxy.mjs"
+    },
+    "voice-service": {
+      "version": "1.0.0",
+      "description": "Whisper STT + edge-tts (port 3101)",
+      "files": [
+        "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/voice-service/server.py",
+        "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/voice-service/realtime-proxy.py"
+      ],
+      "install_path": "~/.local/whisper-stt/"
+    },
+    "install-script": {
+      "version": "1.0.0",
+      "description": "Main installer (self-updating)",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/install.sh"
     }
   }
 }

@@ -52,7 +52,7 @@ warn()  { echo -e "${YELLOW}[fcuk] !${NC} $*"; }
 err()   { echo -e "${RED}[fcuk] ✗${NC} $*" >&2; }
 step()  { echo -e "\n${BOLD}── Step $1/$TOTAL_STEPS: $2 ──${NC}"; }
 
-TOTAL_STEPS=10
+TOTAL_STEPS=12
 
 # ── Detect user ───────────────────────────────────────────────────────────────
 CURRENT_USER="${SUDO_USER:-$(whoami)}"
@@ -79,6 +79,19 @@ detect_platform() {
 
 PLATFORM="$(detect_platform)"
 info "Platform: $PLATFORM | User: $CURRENT_USER | Home: $USER_HOME"
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Self-update check — if a newer install.sh exists, re-run it
+# ═══════════════════════════════════════════════════════════════════════════════
+SELF_UPDATE_SKIP="${SELF_UPDATE_SKIP:-0}"
+if [[ "$SELF_UPDATE_SKIP" != "1" ]]; then
+  REMOTE_SCRIPT=$(curl -sf --max-time 10 "$RAW_BASE/install.sh" 2>/dev/null | head -5 | grep 'VERSION=' | sed 's/VERSION="//;s/".*//' || echo "")
+  if [[ -n "$REMOTE_SCRIPT" && "$REMOTE_SCRIPT" != "$VERSION" ]]; then
+    info "Newer installer available (v$REMOTE_SCRIPT > v$VERSION) — re-running..."
+    export SELF_UPDATE_SKIP=1
+    exec bash <(curl -sfL "$RAW_BASE/install.sh") "$@"
+  fi
+fi
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Step 1: System dependencies
@@ -825,6 +838,85 @@ else
 fi
 
 # ═══════════════════════════════════════════════════════════════════════════════
+# Step 11: Clone datro repo (for OTA updates)
+# ═══════════════════════════════════════════════════════════════════════════════
+step 11 "OTA repository"
+
+DATRO_DIR="$USER_HOME/.fcukproxy/datro"
+if [[ -d "$DATRO_DIR/.git" ]]; then
+  ok "datro repo already cloned"
+  cd "$DATRO_DIR"
+  git fetch origin financecheque 2>/dev/null || true
+  git reset --hard origin/financecheque 2>/dev/null || true
+  ok "datro repo updated"
+else
+  info "Cloning datro repo for OTA..."
+  git clone --branch financecheque --depth 1 "https://github.com/$REPO.git" "$DATRO_DIR" 2>/dev/null || {
+    warn "Clone failed — OTA updates won't work until repo is accessible"
+  }
+  if [[ -d "$DATRO_DIR/.git" ]]; then
+    ok "datro repo cloned"
+  fi
+fi
+
+# Write initial local version
+if [[ ! -f "$USER_HOME/.fcukproxy/.local-version" ]]; then
+  cat "$DATRO_DIR/.version" 2>/dev/null | tr -d '[:space:]' > "$USER_HOME/.fcukproxy/.local-version" || echo "1.0.0" > "$USER_HOME/.fcukproxy/.local-version"
+fi
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Step 12: OTA update checker (self-updating)
+# ═══════════════════════════════════════════════════════════════════════════════
+step 12 "OTA self-updater"
+
+UPDATE_CHECKER="$USER_HOME/.fcukproxy/update-checker.sh"
+if [[ -f "$DATRO_DIR/public/fcukproxy/update-checker.sh" ]]; then
+  cp "$DATRO_DIR/public/fcukproxy/update-checker.sh" "$UPDATE_CHECKER"
+elif [[ ! -f "$UPDATE_CHECKER" ]]; then
+  curl -sfL "$RAW_BASE/public/fcukproxy/update-checker.sh" -o "$UPDATE_CHECKER" 2>/dev/null || true
+fi
+
+if [[ -f "$UPDATE_CHECKER" ]]; then
+  chmod +x "$UPDATE_CHECKER"
+
+  # Create systemd service for update checker
+  write_service "fcuk-update-checker.service" "[Unit]
+Description=FinanceCheque OTA Update Checker
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=$UPDATE_CHECKER
+Environment=HOME=$USER_HOME
+Environment=PATH=$USER_HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
+StandardOutput=journal
+StandardError=journal"
+
+  # Create systemd timer (checks every 4 hours)
+  cat > "$SYSTEMD_DIR/fcuk-update-checker.timer" << TIMEREOF
+[Unit]
+Description=FinanceCheque OTA Update Check (every 4h)
+
+[Timer]
+OnBootSec=5min
+OnUnitActiveSec=4h
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+TIMEREOF
+
+  systemctl --user daemon-reload 2>/dev/null || true
+  systemctl --user enable fcuk-update-checker.timer 2>/dev/null || true
+  systemctl --user start fcuk-update-checker.timer 2>/dev/null || true
+  ok "OTA update checker installed (checks every 4 hours)"
+  ok "Manual check: systemctl --user start fcuk-update-checker.service"
+else
+  warn "Could not install update-checker.sh"
+fi
+
+# ═══════════════════════════════════════════════════════════════════════════════
 # Summary
 # ═══════════════════════════════════════════════════════════════════════════════
 echo ""
@@ -841,12 +933,18 @@ echo -e "  ${CYAN}Ollama:${NC}        http://localhost:$OLLAMA_PORT"
 echo -e "  ${CYAN}Model:${NC}         $OLLAMA_MODEL (688MB)"
 echo -e "  ${CYAN}Parent:${NC}        $PARENT_URL"
 echo -e "  ${CYAN}Machine ID:${NC}    $MACHINE_ID"
+echo -e "  ${CYAN}Version:${NC}       $(cat "$USER_HOME/.fcukproxy/.local-version" 2>/dev/null || echo 'unknown')"
 echo ""
 echo -e "  ${BOLD}Services:${NC}"
 echo "    systemctl --user status whisper-stt"
 echo "    systemctl --user status agentos-gui"
 echo "    systemctl --user status omniroute"
 echo "    systemctl --user status openclaw-gateway"
+echo ""
+echo -e "  ${BOLD}OTA Updates:${NC}"
+echo "    Check now:   $USER_HOME/.fcukproxy/update-checker.sh"
+echo "    Auto-check:  every 4 hours (fcuk-update-checker.timer)"
+echo "    Logs:        journalctl --user -u fcuk-update-checker"
 echo ""
 echo -e "  ${BOLD}Logs:${NC}"
 echo "    journalctl --user -u agentos-gui -f"
