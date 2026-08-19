@@ -17,6 +17,23 @@
   --info: #3b82f6;
 }
 
+[data-theme="light"] {
+  --background: #fafafa;
+  --foreground: #18181b;
+  --accent: #d97706;
+  --accent-dim: #fbbf24;
+  --border: #e4e4e7;
+  --surface: #ffffff;
+  --surface-hover: #f4f4f5;
+  --text-primary: #18181b;
+  --text-secondary: #52525b;
+  --text-muted: #a1a1aa;
+  --success: #16a34a;
+  --warning: #d97706;
+  --error: #dc2626;
+  --info: #2563eb;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

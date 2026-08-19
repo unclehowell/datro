@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import Script from "next/script";
 import Dock from "@/components/Dock";
+import ThemeProvider from "@/components/ThemeProvider";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -40,13 +41,23 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased dark`}
+      suppressHydrationWarning
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-       <body className="h-dvh overflow-hidden flex flex-col bg-zinc-950 text-zinc-100">
-        <main className="flex-1 min-h-0 flex flex-col overflow-y-auto">
-          {children}
-        </main>
-        <Dock />
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){var t=localStorage.getItem('agentos-theme');if(t==='light'){document.documentElement.setAttribute('data-theme','light');}else{document.documentElement.setAttribute('data-theme','dark');}})()`,
+          }}
+        />
+      </head>
+      <body className="h-dvh overflow-hidden flex flex-col bg-background text-foreground">
+        <ThemeProvider>
+          <main className="flex-1 min-h-0 flex flex-col overflow-y-auto">
+            {children}
+          </main>
+          <Dock />
+        </ThemeProvider>
         <Script id="sw-register" strategy="afterInteractive">
           {`if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js').catch(() => {});

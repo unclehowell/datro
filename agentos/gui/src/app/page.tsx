@@ -191,7 +191,7 @@ export default function Dashboard() {
           <div className="bg-surface border border-border rounded-lg p-5">
             {/* Toggle between profiles */}
             <div className="flex items-center gap-2 mb-4">
-              <div className="flex bg-zinc-800/60 rounded-lg p-0.5 border border-border">
+              <div className="flex bg-surface-hover rounded-lg p-0.5 border border-border">
                 {(["hermes-local", "hermes-proxy"] as const).map((key) => {
                   const p = hermesProfiles?.[key === "hermes-local" ? "hermesLocal" : "hermesProxy"];
                   const selected = selectedProfile === key;
@@ -229,9 +229,9 @@ export default function Dashboard() {
                 <div className="flex items-center gap-4">
                   {/* Status dot + label */}
                   <div className="flex items-center gap-2">
-                    <div className={`w-2.5 h-2.5 rounded-full ${running ? "bg-success animate-pulse-dot" : "bg-zinc-600"}`} />
+                    <div className={`w-2.5 h-2.5 rounded-full ${running ? "bg-success animate-pulse-dot" : "bg-text-muted/40"}`} />
                     <span className="text-sm font-medium text-text-primary">{p?.label ?? key}</span>
-                    <span className={`text-xs px-2 py-0.5 rounded-full ${running ? "bg-success/10 text-success" : "bg-zinc-800 text-zinc-500"}`}>
+                    <span className={`text-xs px-2 py-0.5 rounded-full ${running ? "bg-success/10 text-success" : "bg-surface-hover text-text-muted"}`}>
                       {isBusy && startTarget === key ? "starting…" : running ? "running" : "stopped"}
                     </span>
                   </div>
@@ -329,7 +329,7 @@ export default function Dashboard() {
                 {openclaw?.active ? (
                   <Link href="http://localhost:18789" target="_blank" rel="noopener noreferrer" className="text-xs px-3 py-1.5 rounded-lg border border-border text-text-secondary hover:text-accent hover:border-accent/50 transition-colors">Launch</Link>
                 ) : (
-                  <span className="text-xs px-3 py-1.5 rounded-lg border border-border text-zinc-600 opacity-60 cursor-not-allowed" title="Start OpenClaw first">Launch</span>
+                  <span className="text-xs px-3 py-1.5 rounded-lg border border-border text-text-muted opacity-60 cursor-not-allowed" title="Start OpenClaw first">Launch</span>
                 )}
               </div>
               <p className="text-xs text-text-muted mt-3">openclaw-gateway · port 18789</p>
