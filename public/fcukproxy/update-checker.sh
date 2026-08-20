@@ -382,9 +382,32 @@ apply_update() {
   log "Update complete: now at v$latest"
 }
 
+# ── Ensure GUI has a production build (runs on every invocation) ──────────────
+ensure_gui_build() {
+  [[ ! -d "$GUI_DIR/src" ]] && return 0
+  [[ -f "$GUI_DIR/.next/BUILD_ID" ]] && return 0
+
+  log "No production build (.next/BUILD_ID missing) — rebuilding GUI"
+  cd "$GUI_DIR"
+  [[ ! -f "$NPM_BIN" ]] && { log "WARN: npm not found, cannot rebuild"; return 1; }
+
+  PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
+  [[ -f "$GUI_DIR/.next/turbopack" ]] && rm -rf "$GUI_DIR/.next"
+  log "Building GUI..."
+  if PATH="$HOME/.local/node/bin:$PATH" timeout 600 "$HOME/.local/node/bin/npx" next build 2>>"$LOG_FILE" | tail -5; then
+    log "GUI built successfully"
+  else
+    log "ERROR: GUI build failed — port 3000 will not start"
+    return 1
+  fi
+}
+
 # ── Main ──────────────────────────────────────────────────────────────────────
 main() {
   log "Checking for updates..."
+
+  # Always ensure GUI is buildable (even when version is current)
+  ensure_gui_build
 
   local latest
   latest=$(fetch_latest_version) || exit 1
