@@ -35,19 +35,38 @@ log() {
   echo "$msg" | tee -a "$LOG_FILE"
 }
 
-# ── Fetch latest version from parent ──────────────────────────────────────────
+# ── Fetch latest version from parent (+ GitHub fallback) ─────────────────────
 fetch_latest_version() {
+  local parent_version=""
+  local github_version=""
+
+  # 1. Try parent API
   local resp
-  resp=$(curl -sf --max-time 15 "$PARENT_URL/api/version" 2>/dev/null) || {
-    # Fallback: try GitHub raw
-    resp=$(curl -sf --max-time 15 "https://raw.githubusercontent.com/unclehowell/datro/financecheque/.version" 2>/dev/null) || {
-      log "ERROR: Could not fetch version from parent or GitHub"
-      return 1
-    }
-    echo "$resp" | tr -d '[:space:]'
-    return 0
+  resp=$(curl -sf --max-time 15 "$PARENT_URL/api/version" 2>/dev/null) && {
+    parent_version=$(echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).get('version',''))" 2>/dev/null || echo "$resp" | tr -d '[:space:]')
   }
-  echo "$resp" | python3 -c "import sys,json; print(json.load(sys.stdin).get('version',''))" 2>/dev/null || echo "$resp" | tr -d '[:space:]'
+
+  # 2. Always try GitHub raw (may be newer than parent if deploy is pending)
+  resp=$(curl -sf --max-time 15 "https://raw.githubusercontent.com/unclehowell/datro/financecheque/.version" 2>/dev/null) && {
+    github_version=$(echo "$resp" | tr -d '[:space:]')
+  }
+
+  # 3. Return whichever is newer
+  if [[ -n "$parent_version" && -n "$github_version" ]]; then
+    if version_lt "$parent_version" "$github_version"; then
+      log "GitHub version ($github_version) newer than parent ($parent_version)"
+      echo "$github_version"
+    else
+      echo "$parent_version"
+    fi
+  elif [[ -n "$parent_version" ]]; then
+    echo "$parent_version"
+  elif [[ -n "$github_version" ]]; then
+    echo "$github_version"
+  else
+    log "ERROR: Could not fetch version from parent or GitHub"
+    return 1
+  fi
 }
 
 # ── Get local version ─────────────────────────────────────────────────────────
