@@ -331,17 +331,29 @@ apply_update() {
     log "Voice service updated"
   fi
 
-  # 6. Rebuild GUI if needed
+  # 6. Rebuild GUI only if source changed (avoids pointless OOM-risk rebuilds)
   if [[ "$SKIP_REBUILD" != "1" && -d "$GUI_DIR/src" ]]; then
-    log "Installing GUI dependencies..."
-    cd "$GUI_DIR"
-    if [[ -f "$NPM_BIN" ]]; then
-      PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" install 2>>"$LOG_FILE" | tail -3
-      log "Building GUI..."
-      PATH="$HOME/.local/node/bin:$PATH" "$HOME/.local/node/bin/npx" next build 2>>"$LOG_FILE" | tail -5
-      log "GUI built"
+    local NEW_HASH OLD_HASH=""
+    NEW_HASH=$(find "$GUI_DIR/src" -type f -name '*.ts' -o -name '*.tsx' -o -name '*.css' 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1)
+    [[ -f "$GUI_DIR/.last-build-hash" ]] && OLD_HASH=$(cat "$GUI_DIR/.last-build-hash")
+
+    if [[ "$NEW_HASH" != "$OLD_HASH" ]]; then
+      log "GUI source changed — rebuilding..."
+      cd "$GUI_DIR"
+      if [[ -f "$NPM_BIN" ]]; then
+        PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
+        log "Building GUI (may take a few minutes)..."
+        if PATH="$HOME/.local/node/bin:$PATH" timeout 600 "$HOME/.local/node/bin/npx" next build 2>>"$LOG_FILE" | tail -5; then
+          echo "$NEW_HASH" > "$GUI_DIR/.last-build-hash"
+          log "GUI built successfully"
+        else
+          log "WARN: GUI build failed or timed out — keeping previous build"
+        fi
+      else
+        log "WARN: npm not found, skipping build"
+      fi
     else
-      log "WARN: npm not found, skipping build"
+      log "GUI source unchanged — skipping rebuild"
     fi
   fi
 
