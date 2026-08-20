@@ -12,12 +12,13 @@
 // GET ?action=list       → all voicemails (newest first)
 // GET ?action=audio&id=  → stream mp3
 // POST ?action=update    json: { id, played }
+// POST ?action=delete    json: { id } — delete voicemail + audio file
 // POST ?action=progress  json: { taskId, summary }
 //   Creates a 2-hour progress voicemail from a running task
 // ============================================================
 
 import { NextRequest, NextResponse } from "next/server";
-import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync } from "fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, unlinkSync } from "fs";
 import { join } from "path";
 import { homedir } from "os";
 import { buildRouterMessages } from "@/lib/harness";
@@ -372,6 +373,22 @@ export async function POST(req: NextRequest) {
     if (typeof body.played === "boolean") vm.played = body.played;
     saveIndex(records);
     return NextResponse.json({ ok: true });
+  }
+
+  // ── delete: remove voicemail + audio file ──────────────
+  if (action === "delete") {
+    const body = await req.json().catch(() => ({}));
+    if (!body.id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    const records = loadIndex();
+    const idx = records.findIndex((r) => r.id === body.id);
+    if (idx === -1) return NextResponse.json({ error: "Not found" }, { status: 404 });
+    const [removed] = records.splice(idx, 1);
+    // Delete audio file from disk
+    if (removed.audioPath && existsSync(removed.audioPath)) {
+      try { unlinkSync(removed.audioPath); } catch {}
+    }
+    saveIndex(records);
+    return NextResponse.json({ ok: true, deleted: removed.id });
   }
 
   return NextResponse.json({ error: "Unknown action" }, { status: 400 });

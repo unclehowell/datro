@@ -1,3 +1,17 @@
+## [1.4.0] - 2026-08-20
+
+Voicemail management in chat + live version display from GitHub releases.
+
+### Added
+- **Delete voicemail**: new `POST /api/voicemail?action=delete` endpoint removes voicemail record and audio file from disk.
+- **Voicemail panel in chat**: collapsible panel (phone icon in header) lists voicemails with play, timestamp, and delete buttons. Unread count badge on the icon.
+- **Version display in chat header**: shows current installed version (`v1.4.0`) and latest release version fetched from GitHub releases API. Green "up to date" badge when current matches latest; amber badge when an update is available.
+- **`/api/version` now fetches GitHub releases**: `latestRelease` and `releaseUrl` fields added. Falls back to raw `.version` file if no GitHub releases exist.
+
+### Changed
+- `install.sh` 1.3.0 → **1.4.0**
+- Voicemail API: added `unlinkSync` import for audio file deletion.
+
 ## [1.3.0] - 2026-08-19
 
 Memory safety hardening — prevents OOM crashes on low-RAM machines (<=4 GiB). Every systemd service now has cgroup memory caps so no single process can consume all RAM and freeze the box. Adaptive limits scale with detected RAM.

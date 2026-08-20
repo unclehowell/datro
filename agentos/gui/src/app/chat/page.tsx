@@ -386,6 +386,19 @@ export default function ChatPage() {
   const videoRef = useRef<HTMLVideoElement>(null);
   const [clearingStorage, setClearingStorage] = useState(false);
 
+  // ─── Voicemail state ───────────────────────────────────
+  const [voicemails, setVoicemails] = useState<Array<{
+    id: string; userText: string; agentText: string; audioPath: string;
+    timestamp: number; played: boolean; taskId?: string;
+  }>>([]);
+  const [voicemailOpen, setVoicemailOpen] = useState(false);
+  const [deletingVm, setDeletingVm] = useState<string | null>(null);
+
+  // ─── Version state ─────────────────────────────────────
+  const [versionInfo, setVersionInfo] = useState<{
+    local: string; remote: string; latestRelease: string; releaseUrl: string;
+  } | null>(null);
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const recorderRef = useRef<MediaRecorder | null>(null);
   const streamRef = useRef<MediaStream | null>(null);
@@ -463,6 +476,48 @@ export default function ChatPage() {
     };
     fetchTools();
     const iv = setInterval(fetchTools, 30000);
+    return () => clearInterval(iv);
+  }, []);
+
+  // ─── Voicemail list ────────────────────────────────────
+  const fetchVoicemails = useCallback(async () => {
+    try {
+      const res = await fetch("/api/voicemail?action=list");
+      const data = await res.json();
+      if (data.voicemails) setVoicemails(data.voicemails);
+    } catch {}
+  }, []);
+
+  useEffect(() => {
+    fetchVoicemails();
+    const iv = setInterval(fetchVoicemails, 30000);
+    return () => clearInterval(iv);
+  }, [fetchVoicemails]);
+
+  const deleteVoicemail = useCallback(async (id: string) => {
+    setDeletingVm(id);
+    try {
+      await fetch("/api/voicemail?action=delete", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id }),
+      });
+      setVoicemails((prev) => prev.filter((vm) => vm.id !== id));
+    } catch {}
+    setDeletingVm(null);
+  }, []);
+
+  // ─── Version info (fetched from GitHub releases) ──────
+  useEffect(() => {
+    const fetchVersion = async () => {
+      try {
+        const res = await fetch("/api/version");
+        const data = await res.json();
+        setVersionInfo(data);
+      } catch {}
+    };
+    fetchVersion();
+    const iv = setInterval(fetchVersion, 60000);
     return () => clearInterval(iv);
   }, []);
 
@@ -1087,6 +1142,44 @@ export default function ChatPage() {
             </div>
           </>
         )}
+        {/* ─── Version + Voicemail toggle ─── */}
+        <div className="ml-auto flex items-center gap-3 shrink-0">
+          {versionInfo && (
+            <div className="flex items-center gap-2 text-[10px] text-text-muted">
+              <span className="px-1.5 py-0.5 rounded bg-surface border border-border font-mono">
+                v{versionInfo.local}
+              </span>
+              {versionInfo.latestRelease && versionInfo.latestRelease !== "unknown" && versionInfo.latestRelease !== versionInfo.local && (
+                <span className="px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono">
+                  latest: v{versionInfo.latestRelease}
+                </span>
+              )}
+              {versionInfo.latestRelease && versionInfo.latestRelease !== "unknown" && versionInfo.latestRelease === versionInfo.local && (
+                <span className="px-1.5 py-0.5 rounded bg-green-500/10 border border-green-500/30 text-green-400 font-mono">
+                  up to date
+                </span>
+              )}
+            </div>
+          )}
+          <button
+            onClick={() => { setVoicemailOpen(!voicemailOpen); if (!voicemailOpen) fetchVoicemails(); }}
+            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
+              voicemailOpen ? "bg-accent/20 border border-accent/40 text-accent" : "bg-surface border border-border text-text-muted hover:text-text-primary"
+            }`}
+            title="Voicemails"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72" />
+              <path d="M15.05 2A10 10 0 0 1 22 8.95" />
+              <path d="M15.05 6A6 6 0 0 1 18 8.95" />
+            </svg>
+            {voicemails.filter(v => !v.played).length > 0 && (
+              <span className="absolute -mt-5 -mr-5 w-3 h-3 rounded-full bg-red-500 text-[8px] text-white flex items-center justify-center">
+                {voicemails.filter(v => !v.played).length}
+              </span>
+            )}
+          </button>
+        </div>
       </header>
 
       {/* ─── Messages ─── */}
@@ -1186,6 +1279,61 @@ export default function ChatPage() {
         ))}
         <div ref={messagesEndRef} />
       </div>
+
+      {/* ─── Voicemail Panel ─── */}
+      {voicemailOpen && (
+        <div className="border-t border-border bg-surface/90 backdrop-blur-sm px-6 py-3 max-h-48 overflow-y-auto shrink-0 relative z-10">
+          <div className="flex items-center justify-between mb-2">
+            <span className="text-xs font-medium text-text-secondary">Voicemails ({voicemails.length})</span>
+            <button onClick={() => setVoicemailOpen(false)} className="text-text-muted hover:text-text-primary transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+            </button>
+          </div>
+          {voicemails.length === 0 ? (
+            <div className="text-xs text-text-muted py-2">No voicemails yet</div>
+          ) : (
+            <div className="space-y-1.5">
+              {voicemails.map((vm) => (
+                <div key={vm.id} className={`flex items-center gap-2 p-2 rounded-lg border text-xs ${vm.played ? "border-border bg-surface/50" : "border-accent/30 bg-accent/5"}`}>
+                  <button
+                    onClick={() => {
+                      const audio = new Audio(`/api/voicemail?action=audio&id=${vm.id}`);
+                      audio.play();
+                      fetch("/api/voicemail?action=update", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: JSON.stringify({ id: vm.id, played: true }),
+                      });
+                      setVoicemails(prev => prev.map(v => v.id === vm.id ? { ...v, played: true } : v));
+                    }}
+                    className="w-6 h-6 rounded flex items-center justify-center bg-surface border border-border text-text-muted hover:text-accent transition-colors shrink-0"
+                    title="Play"
+                  >
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                  </button>
+                  <div className="flex-1 min-w-0">
+                    <div className="text-text-primary truncate">{vm.userText || "(no speech)"}</div>
+                    <div className="text-text-muted truncate mt-0.5">{vm.agentText}</div>
+                  </div>
+                  <span className="text-[9px] text-text-muted shrink-0">{new Date(vm.timestamp).toLocaleTimeString()}</span>
+                  <button
+                    onClick={() => deleteVoicemail(vm.id)}
+                    disabled={deletingVm === vm.id}
+                    className="w-6 h-6 rounded flex items-center justify-center text-text-muted hover:text-red-400 hover:bg-red-400/10 transition-colors shrink-0 disabled:opacity-30"
+                    title="Delete"
+                  >
+                    {deletingVm === vm.id ? (
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="animate-spin"><circle cx="12" cy="12" r="10" strokeDasharray="30 60"/></svg>
+                    ) : (
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    )}
+                  </button>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      )}
 
       {/* ─── Input Bar ─── */}
       <div className="border-t border-border px-6 py-4 shrink-0 relative z-10 bg-surface/80 backdrop-blur-sm">

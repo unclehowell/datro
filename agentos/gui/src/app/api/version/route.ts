@@ -4,6 +4,8 @@ import { join } from "path";
 import { homedir } from "os";
 
 const STATUS_FILE = join(homedir(), ".fcukproxy", ".update-status");
+const GITHUB_REPO = "unclehowell/datro";
+const GITHUB_BRANCH = "financecheque";
 
 export async function GET() {
   const localVersionFile = join(homedir(), ".fcukproxy", ".local-version");
@@ -25,6 +27,33 @@ export async function GET() {
     }
   } catch {}
 
+  // Fetch latest GitHub release tag
+  let latestRelease = "unknown";
+  let releaseUrl = "";
+  try {
+    const resp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`, {
+      signal: AbortSignal.timeout(5000),
+      headers: { "Accept": "application/vnd.github.v3+json" },
+    });
+    if (resp.ok) {
+      const data = await resp.json();
+      latestRelease = (data.tag_name || "").replace(/^financecheque-v/, "").replace(/^v/, "");
+      releaseUrl = data.html_url || "";
+    }
+  } catch {}
+
+  // Fallback: if no GitHub releases, try the branch .version via raw
+  if (latestRelease === "unknown") {
+    try {
+      const resp = await fetch(`https://raw.githubusercontent.com/${GITHUB_REPO}/${GITHUB_BRANCH}/.version`, {
+        signal: AbortSignal.timeout(5000),
+      });
+      if (resp.ok) {
+        latestRelease = (await resp.text()).trim();
+      }
+    } catch {}
+  }
+
   const upToDate = localVersion === remoteVersion || remoteVersion === "unknown";
 
   // Check if an update is in progress
@@ -41,9 +70,11 @@ export async function GET() {
   return NextResponse.json({
     local: localVersion,
     remote: remoteVersion,
+    latestRelease,
+    releaseUrl,
     upToDate,
     parentReachable,
-    branch: "financecheque",
+    branch: GITHUB_BRANCH,
     update: updateState,
     updateTo,
     checked: new Date().toISOString(),
