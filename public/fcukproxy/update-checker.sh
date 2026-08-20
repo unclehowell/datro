@@ -302,25 +302,7 @@ apply_update() {
   # 2. Regenerate systemd services from repo (picks up memory limits, new services, etc.)
   regenerate_services
 
-  # 3. Copy updated agentos-gui if it exists in the repo
-  if [[ -d "$INSTALL_DIR/agentos/gui/src" && -d "$GUI_DIR/src" ]]; then
-    log "Syncing agentos-gui..."
-    rsync -a --delete \
-      --exclude='.next' \
-      --exclude='node_modules' \
-      --exclude='package-lock.json' \
-      --exclude='.git' \
-      "$INSTALL_DIR/agentos/gui/" "$GUI_DIR/" 2>>"$LOG_FILE"
-    log "GUI source synced"
-  fi
-
-  # 4. Copy updated omniroute
-  if [[ -f "$INSTALL_DIR/agentos/omniroute/proxy.mjs" ]]; then
-    mkdir -p "$HOME/.fcukproxy/omniroute"
-    cp "$INSTALL_DIR/agentos/omniroute/proxy.mjs" "$HOME/.fcukproxy/omniroute/proxy.mjs"
-    chmod +x "$HOME/.fcukproxy/omniroute/proxy.mjs"
-    log "OmniRoute updated"
-  fi
+  # 3. Source sync (rsync GUI, copy omniroute) is handled by sync_source() at the top of main()
 
   # 5. Copy updated voice-service
   if [[ -f "$INSTALL_DIR/public/fcukproxy/voice-service/server.py" ]]; then
@@ -346,6 +328,26 @@ apply_update() {
   # 8. Write new local version
   echo "$latest" > "$LOCAL_VERSION_FILE"
   log "Update complete: now at v$latest"
+}
+
+# ── Sync source from repo to deployed dirs (runs on every invocation) ─────────
+sync_source() {
+  if [[ -d "$INSTALL_DIR/agentos/gui/src" && -d "$GUI_DIR/src" ]]; then
+    rsync -a --delete \
+      --exclude='.next' \
+      --exclude='node_modules' \
+      --exclude='package-lock.json' \
+      --exclude='.git' \
+      "$INSTALL_DIR/agentos/gui/" "$GUI_DIR/" 2>>"$LOG_FILE"
+    log "GUI source synced"
+  fi
+
+  if [[ -f "$INSTALL_DIR/agentos/omniroute/proxy.mjs" ]]; then
+    mkdir -p "$HOME/.fcukproxy/omniroute"
+    cp "$INSTALL_DIR/agentos/omniroute/proxy.mjs" "$HOME/.fcukproxy/omniroute/proxy.mjs"
+    chmod +x "$HOME/.fcukproxy/omniroute/proxy.mjs"
+    log "OmniRoute synced"
+  fi
 }
 
 # ── Ensure GUI has a current production build (runs on every invocation) ──────
@@ -390,6 +392,9 @@ ensure_gui_build() {
 # ── Main ──────────────────────────────────────────────────────────────────────
 main() {
   log "Checking for updates..."
+
+  # Sync source from repo to deployed dirs (picks up API changes etc.)
+  sync_source
 
   # Always ensure GUI is buildable (even when version is current)
   ensure_gui_build
