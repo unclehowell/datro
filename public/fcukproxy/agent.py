@@ -589,10 +589,17 @@ def _parse_opencode(text: str) -> str:
     return lines[-1][:2000] if lines else cleaned[:2000]
 
 CLI_PROVIDERS = [
+    # kiro: headless chat via kiro chat (non-interactive flag keeps it from hanging)
     {"name": "kiro", "cmd": "kiro", "args": ["chat", "--no-interactive"], "prompt_pos": -1, "parse": _clean},
-    {"name": "opencode", "cmd": "opencode", "args": ["run"], "prompt_pos": -1, "parse": _parse_opencode},
-    {"name": "kilo", "cmd": "kilo", "args": [], "prompt_pos": -1, "parse": _clean},
+    # opencode: headless run with a free model so no auth/TUI needed
+    {"name": "opencode", "cmd": "opencode", "args": ["run", "--model", "opencode/longcat-2.0-free"], "prompt_pos": -1, "parse": _parse_opencode},
+    # kilo: headless run with the free kilo-gateway model
+    {"name": "kilo", "cmd": "kilo", "args": ["run", "--model", "kilo/kilo-auto/free"], "prompt_pos": -1, "parse": _parse_opencode},
 ]
+
+# Working directory for CLI tools — must not be $HOME (opencode/kilo refuse to run there)
+_CLI_WORKDIR = os.path.expanduser("~/workspace")
+os.makedirs(_CLI_WORKDIR, exist_ok=True)
 
 def _get_cmd_version(cmd: str) -> str:
     try:
@@ -654,6 +661,8 @@ async def try_cli_chat(prompt: str) -> dict | None:
         proc_args = [cmd_path] + args
         if prov.get("prompt_pos") == -1:
             proc_args.append(full_prompt)
+        # kilo/opencode take ~2-3 min on slow hardware; kiro is fast
+        cli_timeout = 180 if prov["name"] in ("kilo", "opencode") else 30
         try:
             proc = await asyncio.create_subprocess_exec(
                 *proc_args,
@@ -661,12 +670,12 @@ async def try_cli_chat(prompt: str) -> dict | None:
                 stderr=asyncio.subprocess.PIPE,
                 stdin=asyncio.subprocess.DEVNULL,
                 env=env,
-                cwd=os.path.expanduser("~"),
+                cwd=_CLI_WORKDIR,
             )
             try:
-                stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=12)
+                stdout, stderr = await asyncio.wait_for(proc.communicate(), timeout=cli_timeout)
             except asyncio.TimeoutError:
-                log.warning(f"CLI {prov['name']} timed out (12s)")
+                log.warning(f"CLI {prov['name']} timed out ({cli_timeout}s)")
                 proc.kill()
                 await proc.wait()
                 return None

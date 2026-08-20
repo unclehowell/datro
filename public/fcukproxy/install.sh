@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.2.1"
+VERSION="1.2.2"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -41,7 +41,7 @@ AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
 FCUK_LOCAL_TOKEN="${FCUK_LOCAL_TOKEN:-}"  # local auth token (auto-generated)
 
 # Local chat GUI (AgentOS) — served on GUI_PORT with the agent as its LLM backend
-GUI_VERSION="0.5.1.92"               # financecheque release tag the GUI ships from
+GUI_VERSION="0.5.1.93"               # financecheque release tag the GUI ships from
 GUI_PORT="${GUI_PORT:-3000}"         # the web chat interface
 GUI_DIR="${GUI_DIR:-$INSTALL_DIR/agentos-gui}"
 NODE_VERSION="v22.23.2"              # bundled Node.js for the GUI (pinned LTS)
@@ -553,6 +553,118 @@ install_node() {
   ok "Node.js $("$node_dir/bin/node" -v) installed at $node_dir"
 }
 
+# ── Install AI coding tools (kilo, opencode, kiro) ───────────────────────────
+install_ai_tools() {
+  # These tools need Node >= 20 (installed by install_node)
+  local npm_bin="$NODE_BIN_DIR/npm"
+  local local_bin="$HOME/.local/bin"
+  mkdir -p "$local_bin"
+  mkdir -p "$HOME/workspace"
+
+  # ── kilo (kilocode) ──────────────────────────────────────────────────────
+  if command -v kilo >/dev/null 2>&1; then
+    ok "kilo already installed: $(kilo --version 2>/dev/null || echo '?')"
+  else
+    info "Installing kilo (kilocode)..."
+    if [[ -x "$npm_bin" ]]; then
+      "$npm_bin" install -g @kilocode/cli --prefix "$HOME/.local" \
+        --no-audit --no-fund --no-update-notifier 2>/tmp/kilo_install.log \
+        && ok "kilo installed: $(kilo --version 2>/dev/null || echo 'ok')" \
+        || warn "kilo install failed — see /tmp/kilo_install.log"
+    else
+      warn "npm not found — skipping kilo"
+    fi
+  fi
+
+  # Create kilo wrapper (handles home-dir restriction + stale lock cleanup)
+  cat > "$local_bin/kilo-launch" << 'KILOWRAP'
+#!/bin/bash
+# kilo launcher — clears stale locks, redirects home dir to workspace
+for lockdir in "$HOME/.local/state/kilo/locks/"*.lock; do
+  [ -d "$lockdir" ] || continue
+  LPID=$(grep -o '"pid":[0-9]*' "$lockdir/meta.json" 2>/dev/null | grep -o '[0-9]*')
+  if [ -z "$LPID" ] || ! kill -0 "$LPID" 2>/dev/null; then rm -rf "$lockdir"; fi
+done
+DIR="${1:-$PWD}"
+if [ -n "$1" ] && [ -d "$1" ]; then DIR="$1"; shift; else DIR="$PWD"; fi
+if [ "$DIR" = "$HOME" ] || [ "$DIR" = "/" ]; then DIR="$HOME/workspace"; fi
+cd "$DIR" && exec "$HOME/.local/lib/node_modules/@kilocode/cli/bin/kilo" "$@"
+KILOWRAP
+  chmod +x "$local_bin/kilo-launch"
+  # Point kilo/kilocode symlinks to wrapper (non-destructive: only if npm installed the node script)
+  if [[ -f "$HOME/.local/lib/node_modules/@kilocode/cli/bin/kilo" ]]; then
+    ln -sf "$local_bin/kilo-launch" "$local_bin/kilo"
+    ln -sf "$local_bin/kilo-launch" "$local_bin/kilocode"
+    ok "kilo wrapper installed"
+  fi
+
+  # ── opencode ─────────────────────────────────────────────────────────────
+  if [[ -x "$HOME/.opencode/bin/opencode" ]]; then
+    ok "opencode binary already present"
+  else
+    info "Installing opencode..."
+    if [[ -x "$npm_bin" ]]; then
+      "$npm_bin" install -g opencode-ai --prefix "$HOME/.local" \
+        --no-audit --no-fund --no-update-notifier 2>/tmp/opencode_install.log \
+        && ok "opencode installed" \
+        || {
+          # Fallback: direct binary download for Linux x64
+          local oc_url="https://github.com/sst/opencode/releases/latest/download/opencode-linux-x64"
+          mkdir -p "$HOME/.opencode/bin"
+          curl -fsSL "$oc_url" -o "$HOME/.opencode/bin/opencode" \
+            && chmod +x "$HOME/.opencode/bin/opencode" \
+            && ok "opencode binary installed from GitHub" \
+            || warn "opencode install failed"
+        }
+    fi
+  fi
+
+  # Create opencode wrapper (handles home-dir restriction + stale lock cleanup)
+  cat > "$local_bin/opencode" << 'OCWRAP'
+#!/bin/bash
+# opencode wrapper — clears stale locks, redirects home dir to workspace
+for lockdir in "$HOME/.local/state/opencode/locks/"*.lock; do
+  [ -d "$lockdir" ] || continue
+  LPID=$(grep -o '"pid":[0-9]*' "$lockdir/meta.json" 2>/dev/null | grep -o '[0-9]*')
+  if [ -z "$LPID" ] || ! kill -0 "$LPID" 2>/dev/null; then rm -rf "$lockdir"; fi
+done
+if [ -n "$1" ] && [ -d "$1" ]; then DIR="$1"; shift; else DIR="$PWD"; fi
+if [ "$DIR" = "$HOME" ] || [ "$DIR" = "/" ]; then DIR="$HOME/workspace"; fi
+cd "$DIR"
+if command -v opencode >/dev/null 2>&1 && [ "$(command -v opencode)" != "$0" ]; then
+  exec "$(command -v opencode)" "$@"
+elif [ -x "$HOME/.opencode/bin/opencode" ]; then
+  exec "$HOME/.opencode/bin/opencode" "$@"
+fi
+OCWRAP
+  chmod +x "$local_bin/opencode"
+
+  # ── kiro ─────────────────────────────────────────────────────────────────
+  if command -v kiro >/dev/null 2>&1; then
+    ok "kiro already installed: $(kiro --version 2>/dev/null || echo '?')"
+  else
+    info "Installing kiro CLI..."
+    if [[ -x "$npm_bin" ]]; then
+      "$npm_bin" install -g @aws/kiro-cli --prefix "$HOME/.local" \
+        --no-audit --no-fund --no-update-notifier 2>/tmp/kiro_install.log \
+        && ok "kiro installed: $(kiro --version 2>/dev/null || echo 'ok')" \
+        || warn "kiro install failed — see /tmp/kiro_install.log"
+    else
+      warn "npm not found — skipping kiro"
+    fi
+  fi
+
+  # Ensure ~/.local/bin is on PATH in shell configs
+  for rc in "$HOME/.bashrc" "$HOME/.zshrc" "$HOME/.profile"; do
+    if [[ -f "$rc" ]] && ! grep -q '\.local/bin' "$rc" 2>/dev/null; then
+      echo 'export PATH="$HOME/.local/bin:$PATH"' >> "$rc"
+    fi
+  done
+  export PATH="$local_bin:$PATH"
+
+  ok "AI tools step complete (kilo, opencode, kiro)"
+}
+
 # ── Install the local chat GUI (AgentOS) — web interface on port 3000 ───────
 install_gui() {
   info "Downloading AgentOS chat GUI (financecheque-v$GUI_VERSION)..."
@@ -844,7 +956,10 @@ main() {
   NPX_BIN="$NODE_BIN_DIR/npx"
   install_gui || warn "GUI install failed — chat still works via the proxy API"
 
-  step 7 "Starting services"
+  step 7 "AI coding tools (kilo, opencode, kiro)"
+  install_ai_tools || warn "Some AI tools failed to install — proxy still works without them"
+
+  step 8 "Starting services"
   start_llm "$LLM_SERVER"
 
   if install_service; then
@@ -858,7 +973,7 @@ main() {
     install_gui_service || start_gui_nohup
   fi
 
-  step 8 "Verification"
+  step 9 "Verification"
   verify_and_register
   verify_gui
 

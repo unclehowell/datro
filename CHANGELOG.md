@@ -1,3 +1,15 @@
+## [1.4.1] - 2026-08-20
+
+Fixes for GUI rebuild reliability and version API rate limiting.
+
+### Fixed
+- Version API uses `gh` CLI for authenticated GitHub release lookups (avoids unauthenticated rate limit)
+- Version display now correctly shows release URL
+- `ensure_gui_build()` runs on every OTA invocation — catches missing `.next/BUILD_ID` and source changes regardless of version update status
+- Removed duplicate rebuild logic from `apply_update()`
+
+---
+
 ## [1.4.0] - 2026-08-20
 
 Voicemail management in chat + live version display from GitHub releases.

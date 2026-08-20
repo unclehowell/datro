@@ -2,10 +2,37 @@ import { NextResponse } from "next/server";
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import { homedir } from "os";
+import { execSync } from "child_process";
 
 const STATUS_FILE = join(homedir(), ".fcukproxy", ".update-status");
 const GITHUB_REPO = "unclehowell/datro";
 const GITHUB_BRANCH = "financecheque";
+
+function ghReleaseUrl(tag: string): string | null {
+  try {
+    const out = execSync(`gh release view "${tag}" --repo ${GITHUB_REPO} --json url -q .url`, {
+      timeout: 8000,
+      encoding: "utf-8",
+    });
+    return out.trim() || null;
+  } catch {
+    return null;
+  }
+}
+
+function ghLatestFcRelease(): { tag: string; url: string } | null {
+  try {
+    const out = execSync(`gh release list --repo ${GITHUB_REPO} --limit 10 --json tagName,url -q '[.[] | select(.tagName | startswith("financecheque-v"))][0]'`, {
+      timeout: 8000,
+      encoding: "utf-8",
+    });
+    const parsed = JSON.parse(out);
+    if (parsed?.tagName && parsed?.url) {
+      return { tag: parsed.tagName, url: parsed.url };
+    }
+  } catch {}
+  return null;
+}
 
 export async function GET() {
   const localVersionFile = join(homedir(), ".fcukproxy", ".local-version");
@@ -27,38 +54,26 @@ export async function GET() {
     }
   } catch {}
 
-  // Fetch latest GitHub release for financecheque branch
+  // Fetch latest GitHub release for financecheque branch via gh CLI (authenticated)
   let latestRelease = "unknown";
   let releaseUrl = "";
   const releaseTag = `financecheque-v${localVersion}`;
   try {
-    // Try the specific tag first, then fall back to latest
-    let resp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/tags/${releaseTag}`, {
-      signal: AbortSignal.timeout(5000),
-      headers: { "Accept": "application/vnd.github.v3+json" },
-    });
-    if (!resp.ok) {
-      // Try fetching all releases and find the newest financecheque one
-      resp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=10`, {
-        signal: AbortSignal.timeout(5000),
-        headers: { "Accept": "application/vnd.github.v3+json" },
-      });
-      if (resp.ok) {
-        const releases = await resp.json();
-        const fcRelease = Array.isArray(releases)
-          ? releases.find((r: any) => (r.tag_name || "").startsWith("financecheque-v"))
-          : null;
-        if (fcRelease) {
-          latestRelease = (fcRelease.tag_name || "").replace(/^financecheque-v/, "").replace(/^v/, "");
-          releaseUrl = fcRelease.html_url || "";
-        }
-      }
-    } else {
-      const data = await resp.json();
-      latestRelease = (data.tag_name || "").replace(/^financecheque-v/, "").replace(/^v/, "");
-      releaseUrl = data.html_url || "";
+    const url = ghReleaseUrl(releaseTag);
+    if (url) {
+      latestRelease = localVersion;
+      releaseUrl = url;
     }
   } catch {}
+  if (latestRelease === "unknown") {
+    try {
+      const latest = ghLatestFcRelease();
+      if (latest) {
+        latestRelease = latest.tag.replace(/^financecheque-v/, "").replace(/^v/, "");
+        releaseUrl = latest.url;
+      }
+    } catch {}
+  }
 
   // Fallback: if no GitHub releases, try the branch .version via raw
   if (latestRelease === "unknown") {
