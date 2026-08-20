@@ -1,3 +1,22 @@
+## [1.3.0] - 2026-08-19
+
+Memory safety hardening — prevents OOM crashes on low-RAM machines (<=4 GiB). Every systemd service now has cgroup memory caps so no single process can consume all RAM and freeze the box. Adaptive limits scale with detected RAM.
+
+### Added
+- **RAM detection**: installer reads `/proc/meminfo` and computes adaptive `MemoryMax`/`MemoryHigh` limits per service (low-RAM mode for <=4 GiB, standard mode for >4 GiB).
+- **`vm.swappiness=100`**: kernel tuned to swap early instead of OOM-killing; persisted via `/etc/sysctl.d/99-financecheque.conf`.
+- **`OOMScoreAdjust`**: gateway protected (-100), whisper/omniroute sacrificial (+100), agentos-gui killed first (+500) to break OOM death spirals.
+- **`agentos-gui.service` `RestartSec=60`**: prevents rapid kill→restart→kill loop that wastes memory on each cycle.
+
+### Changed
+- `install.sh` 1.2.4 → **1.3.0**: 13 steps (was 12), new step 10 for kernel memory tuning.
+- All 5 systemd services now ship with `MemoryMax` + `MemoryHigh` cgroup caps.
+- `whisper-stt.service`: capped at 192M/128M (low-RAM) or 256M/192M (standard).
+- `whisper-realtime.service`: same caps as whisper-stt.
+- `agentos-gui.service`: capped at 96M/64M (low-RAM) or 128M/96M (standard).
+- `omniroute.service`: capped at 256M/192M (low-RAM) or 512M/384M (standard).
+- `openclaw-gateway.service`: capped at 384M/256M (low-RAM) or 512M/384M (standard).
+
 ## [0.5.1.92] - 2026-08-06
 
 Bugfix rerelease after a fresh `curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash` install: the agent started twice (nohup background + systemd) fought over port 6100 and left `fcuk-proxy.service` crash-looping. The installer now prefers systemd for the agent and only falls back to a background/pm2 start when systemd is unavailable or fails — one agent, one owner.

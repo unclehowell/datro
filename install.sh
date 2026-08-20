@@ -25,7 +25,7 @@ set -euo pipefail
 # Idempotent: safe to re-run on non-fresh installs.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.0.0"
+VERSION="1.3.0"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -52,7 +52,7 @@ warn()  { echo -e "${YELLOW}[fcuk] !${NC} $*"; }
 err()   { echo -e "${RED}[fcuk] ✗${NC} $*" >&2; }
 step()  { echo -e "\n${BOLD}── Step $1/$TOTAL_STEPS: $2 ──${NC}"; }
 
-TOTAL_STEPS=12
+TOTAL_STEPS=13
 
 # ── Detect user ───────────────────────────────────────────────────────────────
 CURRENT_USER="${SUDO_USER:-$(whoami)}"
@@ -79,6 +79,26 @@ detect_platform() {
 
 PLATFORM="$(detect_platform)"
 info "Platform: $PLATFORM | User: $CURRENT_USER | Home: $USER_HOME"
+
+# ── Detect RAM and compute adaptive memory limits ────────────────────────────
+TOTAL_RAM_MB=$(awk '/MemTotal/ {printf "%d", $2/1024}' /proc/meminfo 2>/dev/null || echo 4096)
+info "Total RAM: ${TOTAL_RAM_MB} MiB"
+
+if [[ "$TOTAL_RAM_MB" -le 4096 ]]; then
+  # Low-RAM machine (<=4 GiB): tight caps to prevent OOM freezes
+  MEM_WHISPER_MAX="192M";    MEM_WHISPER_HIGH="128M"
+  MEM_AGENTOS_MAX="96M";     MEM_AGENTOS_HIGH="64M";     MEM_AGENTOS_OOM="500"
+  MEM_OMNIRUTE_MAX="256M";   MEM_OMNIRUTE_HIGH="192M"
+  MEM_GATEWAY_MAX="384M";    MEM_GATEWAY_HIGH="256M";    MEM_GATEWAY_OOM="-100"
+  info "Low-RAM mode: services memory-capped to prevent crashes"
+else
+  # Normal machine (>4 GiB): generous caps
+  MEM_WHISPER_MAX="256M";    MEM_WHISPER_HIGH="192M"
+  MEM_AGENTOS_MAX="128M";    MEM_AGENTOS_HIGH="96M";     MEM_AGENTOS_OOM="500"
+  MEM_OMNIRUTE_MAX="512M";   MEM_OMNIRUTE_HIGH="384M"
+  MEM_GATEWAY_MAX="512M";    MEM_GATEWAY_HIGH="384M";    MEM_GATEWAY_OOM="-100"
+  info "Standard mode: services memory-capped"
+fi
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Self-update check — if a newer install.sh exists, re-run it
@@ -658,7 +678,7 @@ mkdir -p "$USER_HOME/.fcukproxy/voicemails"
 # ═══════════════════════════════════════════════════════════════════════════════
 # Step 9: Systemd services
 # ═══════════════════════════════════════════════════════════════════════════════
-step 9 "Systemd services"
+step 9 "Systemd services (memory-capped)"
 
 SYSTEMD_DIR="$USER_HOME/.config/systemd/user"
 mkdir -p "$SYSTEMD_DIR"
@@ -688,6 +708,9 @@ Environment=WHISPER_PORT=$VOICE_PORT
 Environment=WHISPER_MODEL=tiny
 Restart=on-failure
 RestartSec=5
+MemoryMax=$MEM_WHISPER_MAX
+MemoryHigh=$MEM_WHISPER_HIGH
+OOMScoreAdjust=100
 
 [Install]
 WantedBy=default.target"
@@ -705,6 +728,9 @@ Environment=REALTIME_PORT=$REALTIME_PORT
 Environment=WHISPER_MODEL=tiny
 Restart=on-failure
 RestartSec=5
+MemoryMax=$MEM_WHISPER_MAX
+MemoryHigh=$MEM_WHISPER_HIGH
+OOMScoreAdjust=100
 
 [Install]
 WantedBy=default.target"
@@ -727,7 +753,10 @@ Environment=AGENTOS_GUI_DIR=$GUI_DIR
 EnvironmentFile=$USER_HOME/.fcukproxy/.env
 ExecStart=$GUI_DIR/node_modules/.bin/next start -p $GUI_PORT -H 0.0.0.0
 Restart=on-failure
-RestartSec=5
+RestartSec=60
+MemoryMax=$MEM_AGENTOS_MAX
+MemoryHigh=$MEM_AGENTOS_HIGH
+OOMScoreAdjust=$MEM_AGENTOS_OOM
 
 [Install]
 WantedBy=default.target"
@@ -751,6 +780,8 @@ Environment=PROMPT_CACHE_MAX=256
 Environment=PROMPT_CACHE_TTL_S=1800
 Restart=on-failure
 RestartSec=5
+MemoryMax=$MEM_OMNIRUTE_MAX
+MemoryHigh=$MEM_OMNIRUTE_HIGH
 
 [Install]
 WantedBy=default.target"
@@ -773,6 +804,9 @@ TimeoutStopSec=30
 TimeoutStartSec=30
 SuccessExitStatus=0 143
 OOMPolicy=continue
+OOMScoreAdjust=$MEM_GATEWAY_OOM
+MemoryMax=$MEM_GATEWAY_MAX
+MemoryHigh=$MEM_GATEWAY_HIGH
 KillMode=control-group
 Environment=HOME=$USER_HOME
 Environment=TMPDIR=/tmp
@@ -795,9 +829,29 @@ done
 ok "Services configured"
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# Step 10: Start services + verify
+# Step 10: Kernel memory tuning
 # ═══════════════════════════════════════════════════════════════════════════════
-step 10 "Starting services"
+step 10 "Kernel memory tuning"
+
+# Raise swappiness so the kernel swaps early instead of OOM-killing
+if [[ -f /proc/sys/vm/swappiness ]]; then
+  CURRENT_SWAPPINESS=$(cat /proc/sys/vm/swappiness)
+  if [[ "$CURRENT_SWAPPINESS" -lt 60 ]]; then
+    sudo sysctl -w vm.swappiness=100 2>/dev/null || true
+    # Persist across reboots
+    if ! grep -q 'vm.swappiness' /etc/sysctl.d/99-financecheque.conf 2>/dev/null; then
+      echo 'vm.swappiness = 100' | sudo tee -a /etc/sysctl.d/99-financecheque.conf >/dev/null 2>&1 || true
+    fi
+    ok "swappiness: $CURRENT_SWAPPINESS → 100 (swap early, OOM last)"
+  else
+    ok "swappiness: $CURRENT_SWAPPINESS (already safe)"
+  fi
+fi
+
+# ═══════════════════════════════════════════════════════════════════════════════
+# Step 11: Start services + verify
+# ═══════════════════════════════════════════════════════════════════════════════
+step 11 "Starting services"
 
 # Start in dependency order
 for svc in whisper-stt omniroute openclaw-gateway agentos-gui; do
@@ -838,9 +892,9 @@ else
 fi
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# Step 11: Clone datro repo (for OTA updates)
+# Step 12: Clone datro repo (for OTA updates)
 # ═══════════════════════════════════════════════════════════════════════════════
-step 11 "OTA repository"
+step 12 "OTA repository"
 
 DATRO_DIR="$USER_HOME/.fcukproxy/datro"
 if [[ -d "$DATRO_DIR/.git" ]]; then
@@ -865,9 +919,9 @@ if [[ ! -f "$USER_HOME/.fcukproxy/.local-version" ]]; then
 fi
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# Step 12: OTA update checker (self-updating)
+# Step 13: OTA update checker (self-updating)
 # ═══════════════════════════════════════════════════════════════════════════════
-step 12 "OTA self-updater"
+step 13 "OTA self-updater"
 
 UPDATE_CHECKER="$USER_HOME/.fcukproxy/update-checker.sh"
 if [[ -f "$DATRO_DIR/public/fcukproxy/update-checker.sh" ]]; then
