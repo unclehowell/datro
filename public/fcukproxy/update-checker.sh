@@ -122,7 +122,7 @@ apply_update() {
     log "Installing GUI dependencies..."
     cd "$GUI_DIR"
     if [[ -f "$NPM_BIN" ]]; then
-      PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" ci --no-audit --no-fund 2>>"$LOG_FILE" | tail -3
+      PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" ci 2>>"$LOG_FILE" | tail -3
       log "Building GUI..."
       PATH="$HOME/.local/node/bin:$PATH" "$HOME/.local/node/bin/npx" next build 2>>"$LOG_FILE" | tail -5
       log "GUI built"
