@@ -27,15 +27,33 @@ export async function GET() {
     }
   } catch {}
 
-  // Fetch latest GitHub release tag
+  // Fetch latest GitHub release for financecheque branch
   let latestRelease = "unknown";
   let releaseUrl = "";
+  const releaseTag = `financecheque-v${localVersion}`;
   try {
-    const resp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/latest`, {
+    // Try the specific tag first, then fall back to latest
+    let resp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases/tags/${releaseTag}`, {
       signal: AbortSignal.timeout(5000),
       headers: { "Accept": "application/vnd.github.v3+json" },
     });
-    if (resp.ok) {
+    if (!resp.ok) {
+      // Try fetching all releases and find the newest financecheque one
+      resp = await fetch(`https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=10`, {
+        signal: AbortSignal.timeout(5000),
+        headers: { "Accept": "application/vnd.github.v3+json" },
+      });
+      if (resp.ok) {
+        const releases = await resp.json();
+        const fcRelease = Array.isArray(releases)
+          ? releases.find((r: any) => (r.tag_name || "").startsWith("financecheque-v"))
+          : null;
+        if (fcRelease) {
+          latestRelease = (fcRelease.tag_name || "").replace(/^financecheque-v/, "").replace(/^v/, "");
+          releaseUrl = fcRelease.html_url || "";
+        }
+      }
+    } else {
       const data = await resp.json();
       latestRelease = (data.tag_name || "").replace(/^financecheque-v/, "").replace(/^v/, "");
       releaseUrl = data.html_url || "";
