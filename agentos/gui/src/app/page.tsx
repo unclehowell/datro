@@ -40,6 +40,7 @@ export default function Dashboard() {
   const [hermesProfiles, setHermesProfiles] = useState<HermesProfiles | null>(null);
   const [hermesBusy, setHermesBusy] = useState("");
   const [selectedProfile, setSelectedProfile] = useState<"hermes-local" | "hermes-proxy">("hermes-local");
+  const [updateInfo, setUpdateInfo] = useState<{ local: string; remote: string; upToDate: boolean; update: string; updateTo?: string } | null>(null);
 
   useEffect(() => {
     const tick = () => {
@@ -85,6 +86,28 @@ export default function Dashboard() {
     };
     fetchHermes();
     const interval = setInterval(fetchHermes, 5000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // ─── Version polling + auto-update trigger ────────────────
+  useEffect(() => {
+    let triggered = false;
+    const checkVersion = async () => {
+      try {
+        const res = await fetch("/api/version", { signal: AbortSignal.timeout(8000) });
+        if (!res.ok) return;
+        const data = await res.json();
+        setUpdateInfo(data);
+
+        // Auto-trigger update when remote is newer and no update is running
+        if (!data.upToDate && data.update === "idle" && !triggered) {
+          triggered = true;
+          fetch("/api/update", { method: "POST" }).catch(() => {});
+        }
+      } catch {}
+    };
+    checkVersion();
+    const interval = setInterval(checkVersion, 15000);
     return () => clearInterval(interval);
   }, []);
 
@@ -184,6 +207,32 @@ export default function Dashboard() {
           <div className="text-2xl font-light text-text-primary mb-1">{greeting}</div>
           <div className="text-sm text-text-muted">{time} &mdash; {new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}</div>
         </div>
+
+        {/* ─── OTA Update Banner ──────────────────────────── */}
+        {updateInfo && !updateInfo.upToDate && (
+          <div className={`mb-6 rounded-lg border px-4 py-3 flex items-center gap-3 text-sm ${
+            updateInfo.update === "updating"
+              ? "bg-accent/10 border-accent/30 text-accent"
+              : updateInfo.update === "done"
+                ? "bg-success/10 border-success/30 text-success"
+                : updateInfo.update === "error"
+                  ? "bg-error/10 border-error/30 text-error"
+                  : "bg-info/10 border-info/30 text-info"
+          }`}>
+            <span className="text-base">
+              {updateInfo.update === "updating" ? "⟳" : updateInfo.update === "done" ? "✓" : updateInfo.update === "error" ? "✗" : "↑"}
+            </span>
+            <span className="flex-1">
+              {updateInfo.update === "updating" && `Updating v${updateInfo.local} → v${updateInfo.remote}…`}
+              {updateInfo.update === "done" && `Updated to v${updateInfo.remote} — restarting…`}
+              {updateInfo.update === "error" && `Update failed — will retry`}
+              {updateInfo.update === "idle" && `Update available: v${updateInfo.local} → v${updateInfo.remote}`}
+            </span>
+            {updateInfo.update === "updating" && (
+              <div className="w-4 h-4 border-2 border-accent border-t-transparent rounded-full spinner-ring" />
+            )}
+          </div>
+        )}
 
         {/* ─── Hermes Agents ─────────────────────────────── */}
         <div className="mb-8">
