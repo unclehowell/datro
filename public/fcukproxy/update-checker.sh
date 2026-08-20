@@ -72,6 +72,197 @@ version_lt() {
   return 1
 }
 
+# ── Regenerate systemd services from repo install.sh ─────────────────────────
+# This ensures install.sh changes (memory limits, new services, etc.) propagate
+# to deployed nodes via OTA — not just code changes.
+regenerate_services() {
+  local SYSTEMD_DIR="$HOME/.config/systemd/user"
+  mkdir -p "$SYSTEMD_DIR"
+
+  local VENV_DIR="$HOME/.local/whisper-stt-venv"
+  local WHISPER_DIR="$HOME/.local/whisper-stt"
+  local OMNIRUTE_DIR="$HOME/.fcukproxy/omniroute"
+  local NODE_BIN="$HOME/.local/node/bin/node"
+  local OPENCLAW_BIN="$HOME/.local/lib/node_modules/openclaw/dist/index.js"
+
+  # Read version from repo
+  local REPO_VERSION
+  REPO_VERSION=$(cat "$INSTALL_DIR/.version" 2>/dev/null | tr -d '[:space:]') || REPO_VERSION="1.0.0"
+
+  # ── Detect RAM and compute adaptive memory limits ──
+  local TOTAL_RAM_MB
+  TOTAL_RAM_MB=$(awk '/MemTotal/ {printf "%d", $2/1024}' /proc/meminfo 2>/dev/null || echo 4096)
+
+  local MEM_WHISPER_MAX MEM_WHISPER_HIGH MEM_AGENTOS_MAX MEM_AGENTOS_HIGH MEM_AGENTOS_OOM
+  local MEM_OMNIRUTE_MAX MEM_OMNIRUTE_HIGH MEM_GATEWAY_MAX MEM_GATEWAY_HIGH MEM_GATEWAY_OOM
+
+  if [[ "$TOTAL_RAM_MB" -le 4096 ]]; then
+    MEM_WHISPER_MAX="192M";    MEM_WHISPER_HIGH="128M"
+    MEM_AGENTOS_MAX="96M";     MEM_AGENTOS_HIGH="64M";     MEM_AGENTOS_OOM="500"
+    MEM_OMNIRUTE_MAX="256M";   MEM_OMNIRUTE_HIGH="192M"
+    MEM_GATEWAY_MAX="384M";    MEM_GATEWAY_HIGH="256M";    MEM_GATEWAY_OOM="-100"
+  else
+    MEM_WHISPER_MAX="256M";    MEM_WHISPER_HIGH="192M"
+    MEM_AGENTOS_MAX="128M";    MEM_AGENTOS_HIGH="96M";     MEM_AGENTOS_OOM="500"
+    MEM_OMNIRUTE_MAX="512M";   MEM_OMNIRUTE_HIGH="384M"
+    MEM_GATEWAY_MAX="512M";    MEM_GATEWAY_HIGH="384M";    MEM_GATEWAY_OOM="-100"
+  fi
+
+  log "Regenerating systemd services (RAM: ${TOTAL_RAM_MB}MiB, repo: v$REPO_VERSION)"
+
+  # ── whisper-stt.service ──
+  cat > "$SYSTEMD_DIR/whisper-stt.service" << EOF
+[Unit]
+Description=Local Whisper STT Server (port 3101)
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=$VENV_DIR/bin/python $WHISPER_DIR/server.py
+WorkingDirectory=$WHISPER_DIR
+Environment=WHISPER_PORT=3101
+Environment=WHISPER_MODEL=tiny
+Restart=on-failure
+RestartSec=5
+MemoryMax=$MEM_WHISPER_MAX
+MemoryHigh=$MEM_WHISPER_HIGH
+OOMScoreAdjust=100
+
+[Install]
+WantedBy=default.target
+EOF
+
+  # ── whisper-realtime.service ──
+  cat > "$SYSTEMD_DIR/whisper-realtime.service" << EOF
+[Unit]
+Description=Local OpenAI Realtime WebSocket Proxy (port 3102)
+After=network.target whisper-stt.service
+
+[Service]
+Type=simple
+ExecStart=$VENV_DIR/bin/python $WHISPER_DIR/realtime-proxy.py
+WorkingDirectory=$WHISPER_DIR
+Environment=REALTIME_PORT=3102
+Environment=WHISPER_MODEL=tiny
+Restart=on-failure
+RestartSec=5
+MemoryMax=$MEM_WHISPER_MAX
+MemoryHigh=$MEM_WHISPER_HIGH
+OOMScoreAdjust=100
+
+[Install]
+WantedBy=default.target
+EOF
+
+  # ── agentos-gui.service ──
+  cat > "$SYSTEMD_DIR/agentos-gui.service" << EOF
+[Unit]
+Description=AgentOS GUI (port 3000)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=$GUI_DIR
+Environment=HOME=$HOME
+Environment=PATH=$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
+Environment=NODE_ENV=production
+Environment=PORT=3000
+Environment=HOSTNAME=0.0.0.0
+Environment=AGENTOS_GUI_DIR=$GUI_DIR
+EnvironmentFile=$HOME/.fcukproxy/.env
+ExecStart=$GUI_DIR/node_modules/.bin/next start -p 3000 -H 0.0.0.0
+Restart=on-failure
+RestartSec=60
+MemoryMax=$MEM_AGENTOS_MAX
+MemoryHigh=$MEM_AGENTOS_HIGH
+OOMScoreAdjust=$MEM_AGENTOS_OOM
+
+[Install]
+WantedBy=default.target
+EOF
+
+  # ── omniroute.service ──
+  cat > "$SYSTEMD_DIR/omniroute.service" << EOF
+[Unit]
+Description=OmniRoute LLM Proxy (port 20128)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=$OMNIRUTE_DIR
+ExecStart=$NODE_BIN $OMNIRUTE_DIR/proxy.mjs
+Environment=NODE_ENV=production
+Environment=PORT=20128
+Environment=OLLAMA_KEEP_ALIVE=30m
+Environment=OLLAMA_TIMEOUT_MS=900000
+Environment=MINICPM_NUM_CTX=2048
+Environment=PROMPT_CACHE_MAX=256
+Environment=PROMPT_CACHE_TTL_S=1800
+Restart=on-failure
+RestartSec=5
+MemoryMax=$MEM_OMNIRUTE_MAX
+MemoryHigh=$MEM_OMNIRUTE_HIGH
+
+[Install]
+WantedBy=default.target
+EOF
+
+  # ── openclaw-gateway.service (only if openclaw is installed) ──
+  if [[ -f "$OPENCLAW_BIN" ]]; then
+    cat > "$SYSTEMD_DIR/openclaw-gateway.service" << EOF
+[Unit]
+Description=OpenClaw Gateway
+After=network-online.target
+Wants=network-online.target
+StartLimitBurst=5
+StartLimitIntervalSec=60
+
+[Service]
+ExecStart=$NODE_BIN $OPENCLAW_BIN gateway --port 18789
+Restart=always
+RestartSec=5
+RestartPreventExitStatus=78
+TimeoutStopSec=30
+TimeoutStartSec=30
+SuccessExitStatus=0 143
+OOMPolicy=continue
+OOMScoreAdjust=$MEM_GATEWAY_OOM
+MemoryMax=$MEM_GATEWAY_MAX
+MemoryHigh=$MEM_GATEWAY_HIGH
+KillMode=control-group
+Environment=HOME=$HOME
+Environment=TMPDIR=/tmp
+Environment=PATH=$HOME/.local/node/bin:/usr/local/bin:/usr/bin:/bin
+Environment=OPENCLAW_GATEWAY_PORT=18789
+
+[Install]
+WantedBy=default.target
+EOF
+  fi
+
+  # ── Ensure voice-service venv exists (may be missing on pre-1.3.0 nodes) ──
+  if [[ ! -d "$VENV_DIR/bin" ]]; then
+    log "Creating voice-service venv..."
+    python3 -m venv "$VENV_DIR" 2>/dev/null || true
+    if [[ -d "$VENV_DIR/bin" ]]; then
+      "$VENV_DIR/bin/pip" install --quiet faster-whisper edge-tts Flask websockets 2>>"$LOG_FILE" || true
+      log "Voice venv created"
+    fi
+  fi
+
+  # Enable all services
+  for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway; do
+    if [[ -f "$SYSTEMD_DIR/$svc.service" ]]; then
+      systemctl --user enable "$svc.service" 2>/dev/null || true
+    fi
+  done
+
+  systemctl --user daemon-reload 2>/dev/null || true
+  log "Systemd services regenerated"
+}
+
 # ── Apply update ──────────────────────────────────────────────────────────────
 apply_update() {
   local latest="$1"
@@ -89,7 +280,10 @@ apply_update() {
     log "WARN: datro repo not at $INSTALL_DIR, skipping git pull"
   fi
 
-  # 2. Copy updated agentos-gui if it exists in the repo
+  # 2. Regenerate systemd services from repo (picks up memory limits, new services, etc.)
+  regenerate_services
+
+  # 3. Copy updated agentos-gui if it exists in the repo
   if [[ -d "$INSTALL_DIR/agentos/gui/src" && -d "$GUI_DIR/src" ]]; then
     log "Syncing agentos-gui..."
     rsync -a --delete \
@@ -101,7 +295,7 @@ apply_update() {
     log "GUI source synced"
   fi
 
-  # 3. Copy updated omniroute
+  # 4. Copy updated omniroute
   if [[ -f "$INSTALL_DIR/agentos/omniroute/proxy.mjs" ]]; then
     mkdir -p "$HOME/.fcukproxy/omniroute"
     cp "$INSTALL_DIR/agentos/omniroute/proxy.mjs" "$HOME/.fcukproxy/omniroute/proxy.mjs"
@@ -109,7 +303,7 @@ apply_update() {
     log "OmniRoute updated"
   fi
 
-  # 4. Copy updated voice-service
+  # 5. Copy updated voice-service
   if [[ -f "$INSTALL_DIR/public/fcukproxy/voice-service/server.py" ]]; then
     mkdir -p "$HOME/.local/whisper-stt"
     cp "$INSTALL_DIR/public/fcukproxy/voice-service/server.py" "$HOME/.local/whisper-stt/server.py"
@@ -118,7 +312,7 @@ apply_update() {
     log "Voice service updated"
   fi
 
-  # 5. Rebuild GUI if needed
+  # 6. Rebuild GUI if needed
   if [[ "$SKIP_REBUILD" != "1" && -d "$GUI_DIR/src" ]]; then
     log "Installing GUI dependencies..."
     cd "$GUI_DIR"
@@ -132,17 +326,16 @@ apply_update() {
     fi
   fi
 
-  # 6. Restart services
+  # 7. Restart services
   log "Restarting services..."
-  systemctl --user daemon-reload 2>/dev/null || true
-  for svc in agentos-gui omniroute whisper-stt whisper-realtime; do
+  for svc in whisper-stt whisper-realtime omniroute agentos-gui openclaw-gateway; do
     if systemctl --user is-enabled "$svc.service" >/dev/null 2>&1; then
       systemctl --user restart "$svc.service" 2>/dev/null || true
       log "  Restarted $svc"
     fi
   done
 
-  # 7. Write new local version
+  # 8. Write new local version
   echo "$latest" > "$LOCAL_VERSION_FILE"
   log "Update complete: now at v$latest"
 }
