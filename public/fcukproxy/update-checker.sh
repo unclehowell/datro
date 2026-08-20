@@ -95,6 +95,7 @@ apply_update() {
     rsync -a --delete \
       --exclude='.next' \
       --exclude='node_modules' \
+      --exclude='package-lock.json' \
       --exclude='.git' \
       "$INSTALL_DIR/agentos/gui/" "$GUI_DIR/" 2>>"$LOG_FILE"
     log "GUI source synced"
