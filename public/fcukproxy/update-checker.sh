@@ -331,29 +331,40 @@ apply_update() {
     log "Voice service updated"
   fi
 
-  # 6. Rebuild GUI only if source changed (avoids pointless OOM-risk rebuilds)
-  if [[ "$SKIP_REBUILD" != "1" && -d "$GUI_DIR/src" ]]; then
-    local NEW_HASH OLD_HASH=""
-    NEW_HASH=$(find "$GUI_DIR/src" -type f -name '*.ts' -o -name '*.tsx' -o -name '*.css' 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1)
-    [[ -f "$GUI_DIR/.last-build-hash" ]] && OLD_HASH=$(cat "$GUI_DIR/.last-build-hash")
-
-    if [[ "$NEW_HASH" != "$OLD_HASH" ]]; then
-      log "GUI source changed — rebuilding..."
-      cd "$GUI_DIR"
-      if [[ -f "$NPM_BIN" ]]; then
-        PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
-        log "Building GUI (may take a few minutes)..."
-        if PATH="$HOME/.local/node/bin:$PATH" timeout 600 "$HOME/.local/node/bin/npx" next build 2>>"$LOG_FILE" | tail -5; then
-          echo "$NEW_HASH" > "$GUI_DIR/.last-build-hash"
-          log "GUI built successfully"
-        else
-          log "WARN: GUI build failed or timed out — keeping previous build"
-        fi
+  # 6. Rebuild GUI — forced if no production build exists, otherwise only if source changed
+  local NEEDS_BUILD=0
+  if [[ -d "$GUI_DIR/src" ]]; then
+    if [[ ! -f "$GUI_DIR/.next/BUILD_ID" ]]; then
+      log "No production build found (.next/BUILD_ID missing) — forcing rebuild"
+      NEEDS_BUILD=1
+    elif [[ "$SKIP_REBUILD" != "1" ]]; then
+      local NEW_HASH OLD_HASH=""
+      NEW_HASH=$(find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1)
+      [[ -f "$GUI_DIR/.last-build-hash" ]] && OLD_HASH=$(cat "$GUI_DIR/.last-build-hash")
+      if [[ "$NEW_HASH" != "$OLD_HASH" ]]; then
+        log "GUI source changed — rebuilding"
+        NEEDS_BUILD=1
       else
-        log "WARN: npm not found, skipping build"
+        log "GUI source unchanged — skipping rebuild"
+      fi
+    fi
+  fi
+
+  if [[ "$NEEDS_BUILD" == "1" && -d "$GUI_DIR/src" ]]; then
+    cd "$GUI_DIR"
+    if [[ -f "$NPM_BIN" ]]; then
+      PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
+      log "Building GUI (may take a few minutes)..."
+      # Clean stale turbopack dev build if present
+      [[ -f "$GUI_DIR/.next/turbopack" ]] && rm -rf "$GUI_DIR/.next"
+      if PATH="$HOME/.local/node/bin:$PATH" timeout 600 "$HOME/.local/node/bin/npx" next build 2>>"$LOG_FILE" | tail -5; then
+        find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1 > "$GUI_DIR/.last-build-hash"
+        log "GUI built successfully"
+      else
+        log "ERROR: GUI build failed or timed out — service may not start"
       fi
     else
-      log "GUI source unchanged — skipping rebuild"
+      log "WARN: npm not found, skipping build"
     fi
   fi
 
