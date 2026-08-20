@@ -331,42 +331,8 @@ apply_update() {
     log "Voice service updated"
   fi
 
-  # 6. Rebuild GUI — forced if no production build exists, otherwise only if source changed
-  local NEEDS_BUILD=0
-  if [[ -d "$GUI_DIR/src" ]]; then
-    if [[ ! -f "$GUI_DIR/.next/BUILD_ID" ]]; then
-      log "No production build found (.next/BUILD_ID missing) — forcing rebuild"
-      NEEDS_BUILD=1
-    elif [[ "$SKIP_REBUILD" != "1" ]]; then
-      local NEW_HASH OLD_HASH=""
-      NEW_HASH=$(find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1)
-      [[ -f "$GUI_DIR/.last-build-hash" ]] && OLD_HASH=$(cat "$GUI_DIR/.last-build-hash")
-      if [[ "$NEW_HASH" != "$OLD_HASH" ]]; then
-        log "GUI source changed — rebuilding"
-        NEEDS_BUILD=1
-      else
-        log "GUI source unchanged — skipping rebuild"
-      fi
-    fi
-  fi
-
-  if [[ "$NEEDS_BUILD" == "1" && -d "$GUI_DIR/src" ]]; then
-    cd "$GUI_DIR"
-    if [[ -f "$NPM_BIN" ]]; then
-      PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
-      log "Building GUI (may take a few minutes)..."
-      # Clean stale turbopack dev build if present
-      [[ -f "$GUI_DIR/.next/turbopack" ]] && rm -rf "$GUI_DIR/.next"
-      if PATH="$HOME/.local/node/bin:$PATH" timeout 600 "$HOME/.local/node/bin/npx" next build 2>>"$LOG_FILE" | tail -5; then
-        find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1 > "$GUI_DIR/.last-build-hash"
-        log "GUI built successfully"
-      else
-        log "ERROR: GUI build failed or timed out — service may not start"
-      fi
-    else
-      log "WARN: npm not found, skipping build"
-    fi
-  fi
+  # 6. GUI rebuild is handled by ensure_gui_build() at the top of main()
+  #    (runs on every invocation — no need to rebuild here)
 
   # 7. Restart services
   log "Restarting services..."
@@ -382,22 +348,41 @@ apply_update() {
   log "Update complete: now at v$latest"
 }
 
-# ── Ensure GUI has a production build (runs on every invocation) ──────────────
+# ── Ensure GUI has a current production build (runs on every invocation) ──────
 ensure_gui_build() {
   [[ ! -d "$GUI_DIR/src" ]] && return 0
-  [[ -f "$GUI_DIR/.next/BUILD_ID" ]] && return 0
-
-  log "No production build (.next/BUILD_ID missing) — rebuilding GUI"
-  cd "$GUI_DIR"
   [[ ! -f "$NPM_BIN" ]] && { log "WARN: npm not found, cannot rebuild"; return 1; }
 
+  local NEEDS_BUILD=0
+
+  # No production build at all — force rebuild
+  if [[ ! -f "$GUI_DIR/.next/BUILD_ID" ]]; then
+    log "No production build (.next/BUILD_ID missing) — forcing rebuild"
+    NEEDS_BUILD=1
+  elif [[ "$SKIP_REBUILD" != "1" ]]; then
+    # Source changed since last build — rebuild
+    local NEW_HASH OLD_HASH=""
+    NEW_HASH=$(find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1)
+    [[ -f "$GUI_DIR/.last-build-hash" ]] && OLD_HASH=$(cat "$GUI_DIR/.last-build-hash")
+    if [[ "$NEW_HASH" != "$OLD_HASH" ]]; then
+      log "GUI source changed — rebuilding"
+      NEEDS_BUILD=1
+    else
+      log "GUI source unchanged — skipping rebuild"
+    fi
+  fi
+
+  [[ "$NEEDS_BUILD" != "1" ]] && return 0
+
+  cd "$GUI_DIR"
   PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
   [[ -f "$GUI_DIR/.next/turbopack" ]] && rm -rf "$GUI_DIR/.next"
   log "Building GUI..."
   if PATH="$HOME/.local/node/bin:$PATH" timeout 600 "$HOME/.local/node/bin/npx" next build 2>>"$LOG_FILE" | tail -5; then
+    find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1 > "$GUI_DIR/.last-build-hash"
     log "GUI built successfully"
   else
-    log "ERROR: GUI build failed — port 3000 will not start"
+    log "ERROR: GUI build failed — port 3000 may not start"
     return 1
   fi
 }
