@@ -1,3 +1,13 @@
+## [1.5.2] - 2026-08-21
+
+Voicemail diversion for unanswered calls + live processing indicator.
+
+### Added
+- **Voicemail diversion**: unanswered calls now behave like a real phone. After 40s of dial tone the agent answers with a greeting ("…please leave a message after the beep"), plays the beep, records continuously, and on hang-up submits the recording to the voicemail pipeline (STT → LLM → TTS mp3). Previously unanswered calls rang dial tone for 5 minutes and silently gave up — nothing was ever wired to the voicemail backend.
+- **Processing breadcrumb in voicemail list**: between hanging up and the reply landing in the panel, each pending message shows an animated `stt > think > tts` breadcrumb card (with received time) instead of nothing. Cards clear when the processed voicemail arrives (or after 10 min).
+
+---
+
 ## [1.5.1] - 2026-08-21
 
 Hotfix release — critical security patches + call/settings UX fixes.

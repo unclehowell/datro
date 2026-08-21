@@ -11,6 +11,7 @@ const VOICE_SESSION_KEY = "agentos-voice-session-id";
 // ─── Phone call ack lines ──────────────────────────────────
 const CALL_ACK_LINE = "Hello? Finance Cheque UK speaking. Go ahead, caller.";
 const HOLD_ACK_LINE = "One moment, let me check that for you.";
+const VOICEMAIL_GREETING = "Nobody is available to take your call right now. Please leave a message after the beep.";
 
 interface Message {
   role: "user" | "assistant";
@@ -378,6 +379,27 @@ function ProxyTitle({ pulsing }: { pulsing: boolean }) {
   );
 }
 
+// Animated pipeline breadcrumb shown in the voicemail list while a
+// recorded message is being processed (stt > think > tts).
+function VmProcessingBreadcrumb() {
+  const steps = ["stt", "think", "tts"];
+  return (
+    <div className="flex items-center gap-0 text-[9px] font-mono">
+      {steps.map((s, i) => (
+        <span key={s} className="flex items-center">
+          {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
+          <span
+            className="px-1 py-0.5 rounded border border-accent/30 bg-accent/10 text-accent animate-pulse"
+            style={{ animationDelay: `${i * 350}ms`, animationDuration: "1.4s" }}
+          >
+            {s}
+          </span>
+        </span>
+      ))}
+    </div>
+  );
+}
+
 export default function ChatPage() {
   const [messages, setMessages] = useState<Message[]>([]);
 
@@ -433,6 +455,8 @@ export default function ChatPage() {
   }>>([]);
   const [voicemailOpen, setVoicemailOpen] = useState(false);
   const [deletingVm, setDeletingVm] = useState<string | null>(null);
+  // Voicemails recorded but still processing (hang-up → reply lands)
+  const [pendingVms, setPendingVms] = useState<Array<{ id: string; ts: number }>>([]);
 
   // ─── Version state ─────────────────────────────────────
   const [versionInfo, setVersionInfo] = useState<{
@@ -446,7 +470,7 @@ export default function ChatPage() {
   const duplexRef = useRef(false);
   const speakingRef = useRef(false);
   // ─── Call flow refs ────────────────────────────────────
-  const callPhaseRef = useRef<"idle" | "dialing" | "listening" | "generating">("idle");
+  const callPhaseRef = useRef<"idle" | "dialing" | "listening" | "generating" | "voicemail">("idle");
   const callModeRef = useRef<"act" | "plan">("act");
   const draftRef = useRef("");
   const lastVoiceAtRef = useRef(0);
@@ -458,6 +482,9 @@ export default function ChatPage() {
   const sendCallReplyRef = useRef<(t: string) => Promise<void>>(async () => {});
   const sttFailCountRef = useRef(0);
   const callToastTimerRef = useRef<NodeJS.Timeout | null>(null);
+  // ─── Voicemail recording (unanswered calls) ────────────
+  const vmRecorderRef = useRef<MediaRecorder | null>(null);
+  const vmChunksRef = useRef<Blob[]>([]);
   const spinTimerRef = useRef<NodeJS.Timeout | null>(null);
   const depSpinTimerRef = useRef<NodeJS.Timeout | null>(null);
   const pipelineTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -547,6 +574,8 @@ export default function ChatPage() {
       const res = await fetch("/api/voicemail?action=list");
       const data = await res.json();
       if (data.voicemails) setVoicemails(data.voicemails);
+      // Drop pending placeholders older than 10 min (stuck pipeline).
+      setPendingVms((prev) => prev.filter((p) => Date.now() - p.ts < 600000));
     } catch {}
   }, []);
 
@@ -813,6 +842,46 @@ export default function ChatPage() {
     }
   }, []);
 
+  // ─── Voicemail diversion: no answer → greeting → beep → record ──
+  const submitVoicemail = async (blob: Blob) => {
+    const pendingId = `vm-pending-${Date.now().toString(36)}`;
+    setPendingVms((prev) => [...prev, { id: pendingId, ts: Date.now() }]);
+    showCallToast("Processing your voicemail…");
+    try {
+      const fd = new FormData();
+      fd.append("audio", blob, "voicemail.webm");
+      const res = await fetch("/api/voicemail?action=process", { method: "POST", body: fd });
+      if (!res.ok) throw new Error(String(res.status));
+      showCallToast("Voicemail saved — reply on its way");
+      fetchVoicemails();
+    } catch {
+      showCallToast("Voicemail failed to save");
+    } finally {
+      setPendingVms((prev) => prev.filter((p) => p.id !== pendingId));
+    }
+  };
+
+  const divertToVoicemail = async () => {
+    if (!duplexRef.current) return;
+    callPhaseRef.current = "voicemail";
+    await speakForCall(VOICEMAIL_GREETING);
+    if (!duplexRef.current || callPhaseRef.current !== "voicemail") return;
+    playBeep();
+    const stream = streamRef.current;
+    if (!stream) return;
+    vmChunksRef.current = [];
+    const recorder = new MediaRecorder(stream, { mimeType: "audio/webm;codecs=opus" });
+    recorder.ondataavailable = (e) => { if (e.data.size > 0) vmChunksRef.current.push(e.data); };
+    recorder.onstop = () => {
+      vmRecorderRef.current = null;
+      const blob = new Blob(vmChunksRef.current, { type: "audio/webm" });
+      if (blob.size > 500) void submitVoicemail(blob);
+    };
+    vmRecorderRef.current = recorder;
+    recorder.start(1000);
+    showCallToast("Leave your message… hang up when done");
+  };
+
   const startDuplex = useCallback(async () => {
     if (duplexRef.current) return;
     let stream: MediaStream;
@@ -827,10 +896,11 @@ export default function ChatPage() {
     draftRef.current = "";
     voiceAbortRef.current = false;
 
-    // Connecting tone while the local stack warms up.
+    // Connecting tone while the local stack warms up. No answer within
+    // RING_TIMEOUT_MS → divert to voicemail (greeting + beep + record).
     startDialTone().catch(() => {});
     const ringStart = Date.now();
-    const MAX_RING_MS = 300000;
+    const RING_TIMEOUT_MS = 40000;
     let warm = false;
     while (duplexRef.current && !warm) {
       try {
@@ -841,10 +911,16 @@ export default function ChatPage() {
         warm = core.length === 0 || core.every((s) => s.status === "green");
       } catch {}
       if (warm) break;
-      if (Date.now() - ringStart > MAX_RING_MS) break;
+      if (Date.now() - ringStart > RING_TIMEOUT_MS) break;
       await new Promise((r) => setTimeout(r, 2000));
     }
     if (!duplexRef.current) { stopDialTone(); return; }      // hung up while ringing
+    if (!warm) {
+      // Nobody picked up → voicemail.
+      stopDialTone();
+      await divertToVoicemail();
+      return;
+    }
     stopDialTone();
     playAnswerChime();
     await speakForCall(CALL_ACK_LINE);
@@ -885,6 +961,7 @@ export default function ChatPage() {
 
   const stopDuplex = useCallback(() => {
     const wasActive = duplexRef.current;
+    const wasVoicemail = callPhaseRef.current === "voicemail";
     duplexRef.current = false;
     setDuplexActive(false);
     setVoiceMode(false);
@@ -895,6 +972,11 @@ export default function ChatPage() {
     stopDialTone();
     stopHoldTone();
     if (wasActive) playHangUpTone();
+    // Voicemail recording must be flushed BEFORE the stream dies so the
+    // message survives — its onstop submits it for processing.
+    if (wasVoicemail && vmRecorderRef.current && vmRecorderRef.current.state !== "inactive") {
+      vmRecorderRef.current.stop();
+    }
     if (recorderRef.current?.state === "recording") recorderRef.current.stop();
     if (streamRef.current) { streamRef.current.getTracks().forEach((t) => t.stop()); streamRef.current = null; }
     try { window.speechSynthesis.cancel(); } catch {}
@@ -1534,7 +1616,24 @@ export default function ChatPage() {
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
             </button>
           </div>
-          {voicemails.length === 0 ? (
+          {/* Still processing: hang-up → reply lands. Animated breadcrumb
+              stands in for the message while the pipeline runs. */}
+          {pendingVms.length > 0 && (
+            <div className="space-y-1.5 mb-2">
+              {pendingVms.map((p) => (
+                <div key={p.id} className="flex items-center gap-2 p-2 rounded-lg border border-accent/30 bg-accent/5 text-xs">
+                  <span className="w-6 h-6 rounded flex items-center justify-center bg-surface border border-border text-text-muted shrink-0" title="Processing voicemail">✉</span>
+                  <div className="flex-1 min-w-0">
+                    <VmProcessingBreadcrumb />
+                    <div className="text-[10px] text-text-muted mt-1">
+                      Message received {new Date(p.ts).toLocaleTimeString()} — reply on its way
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
+          {voicemails.length === 0 && pendingVms.length === 0 ? (
             <div className="text-xs text-text-muted py-2">No voicemails yet</div>
           ) : (
             <div className="space-y-1.5">
