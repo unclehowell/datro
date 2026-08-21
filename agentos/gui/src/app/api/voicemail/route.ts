@@ -18,6 +18,7 @@
 // ============================================================
 
 import { NextRequest, NextResponse } from "next/server";
+import { spawnSync } from "child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync, readdirSync, unlinkSync } from "fs";
 import { join } from "path";
 import { homedir } from "os";
@@ -106,12 +107,18 @@ function safeEval(expr: string): number | null {
   try {
     const sanitised = expr.replace(/[^0-9+\-*/%^().\s]/g, "").trim();
     if (!sanitised || !/\d/.test(sanitised)) return null;
-    // Only allow safe chars
-    if (/[^0-9+\-*/%^().\s]/.test(sanitised)) return null;
-    const fn = new Function(`"use strict"; return (${sanitised});`);
-    const result = fn();
-    if (typeof result !== "number" || !isFinite(result)) return null;
-    return result;
+    // Evaluate via a python subprocess with the expression passed on stdin.
+    // new Function() was a sandbox-escape risk; shell interpolation would be
+    // an injection risk — stdin is neither.
+    const res = spawnSync(
+      "python3",
+      ["-c", "import sys; print(eval(sys.stdin.read().replace('^', '**')))"],
+      { input: sanitised, timeout: 5000, encoding: "utf-8" }
+    );
+    if (res.status !== 0) return null;
+    const n = Number.parseFloat(res.stdout.trim());
+    if (!Number.isFinite(n)) return null;
+    return n;
   } catch {
     return null;
   }

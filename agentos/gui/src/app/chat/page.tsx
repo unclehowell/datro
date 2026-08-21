@@ -398,6 +398,8 @@ export default function ChatPage() {
   const [mode, setMode] = useState<"act" | "plan">("act");
   // ─── Separate voice-call session ───────────────────────
   const [voiceMessages, setVoiceMessages] = useState<Message[]>([]);
+  // ─── In-call error toast ───────────────────────────────
+  const [callToast, setCallToast] = useState<string | null>(null);
 
   // ─── Breadcrumb state ──────────────────────────────────
   const [pipelineStep, setPipelineStep] = useState(0);
@@ -454,6 +456,8 @@ export default function ChatPage() {
   const voiceSessionIdRef = useRef<string>("");
   const voiceMessagesRef = useRef<Message[]>([]);
   const sendCallReplyRef = useRef<(t: string) => Promise<void>>(async () => {});
+  const sttFailCountRef = useRef(0);
+  const callToastTimerRef = useRef<NodeJS.Timeout | null>(null);
   const spinTimerRef = useRef<NodeJS.Timeout | null>(null);
   const depSpinTimerRef = useRef<NodeJS.Timeout | null>(null);
   const pipelineTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -757,6 +761,19 @@ export default function ChatPage() {
   };
 
   // ─── Call chunk: STT → draft accumulation (echo-guarded) ──
+  const showCallToast = (msg: string) => {
+    setCallToast(msg);
+    if (callToastTimerRef.current) clearTimeout(callToastTimerRef.current);
+    callToastTimerRef.current = setTimeout(() => setCallToast(null), 4000);
+  };
+
+  // A call that can't hear or answer is a dropped call — hang up cleanly
+  // instead of leaving the caller in silence.
+  const dropCall = (msg: string) => {
+    showCallToast(msg);
+    stopDuplex();
+  };
+
   const processCallChunk = async (audioBlob: Blob) => {
     if (!audioBlob || audioBlob.size < 500) return;
     if (!duplexRef.current) return;                          // hung up mid-chunk → discard
@@ -769,6 +786,7 @@ export default function ChatPage() {
       const sttRes = await fetch("/api/voice?action=stt", { method: "POST", body: sttForm });
       if (!sttRes.ok) throw new Error("STT failed");
       const { text } = await sttRes.json();
+      sttFailCountRef.current = 0;
       // Hang-up during STT must never submit.
       if (!duplexRef.current || callPhaseRef.current !== "listening") return;
       const said = (text || "").trim();
@@ -776,7 +794,14 @@ export default function ChatPage() {
         draftRef.current = `${draftRef.current} ${said}`.trim();
         lastVoiceAtRef.current = Date.now();
       }
-    } catch {}
+    } catch {
+      // STT service down → don't leave the caller in silence.
+      sttFailCountRef.current += 1;
+      if (sttFailCountRef.current >= 3 && duplexRef.current) {
+        sttFailCountRef.current = 0;
+        dropCall("Call dropped — speech recognition unavailable");
+      }
+    }
   };
 
   const finalizeDraft = useCallback(() => {
@@ -1029,7 +1054,9 @@ export default function ChatPage() {
       await speakForCall(reply);
     } catch {
       stopHoldTone();
-      if (duplexRef.current && !voiceAbortRef.current) await speakForCall("Sorry, the line dropped there. Could you say that again?");
+      if (duplexRef.current && !voiceAbortRef.current) {
+        dropCall("Call dropped — assistant unavailable");
+      }
     } finally {
       voiceStreamingRef.current = false;
       if (duplexRef.current) {
@@ -1407,6 +1434,17 @@ export default function ChatPage() {
           </div>
         )}
 
+        {messages.length === 0 && !streaming && (
+          <div className="min-h-[50vh] flex flex-col items-center justify-center text-text-muted gap-4">
+            <div className="text-4xl" aria-hidden>📞</div>
+            <p className="text-sm max-w-xs text-center">
+              Tap the green handset for a voice call, or type below.
+              <br />
+              Mode: <span className="text-accent font-mono">{mode}</span>
+            </p>
+          </div>
+        )}
+
         {messages.map((msg, i) => (
           <div key={i} className={`animate-slide-up flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}>
             <div
@@ -1601,7 +1639,7 @@ export default function ChatPage() {
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
             placeholder={proxyLocked ? "Session locked by parent proxy..." : recording ? "Listening..." : duplexActive ? "On call..." : "Type a message..."}
-            className="flex-1 bg-surface border border-border rounded-lg px-4 py-2.5 text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-accent/50 transition-colors"
+            className={`flex-1 bg-surface border border-border rounded-lg px-4 py-2.5 text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-accent/50 transition-colors ${proxyLocked ? "opacity-50 cursor-not-allowed" : ""}`}
             disabled={streaming || recording || proxyLocked}
           />
 

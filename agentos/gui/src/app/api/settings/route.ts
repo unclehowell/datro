@@ -33,6 +33,14 @@ export const OTHER_KEYS = [
 
 export type KeyMap = Record<string, string>;
 
+// Only these keys may ever be written to ~/.llm_keys. Anything else
+// (PATH, HOME, LD_PRELOAD, ...) is rejected — env-var injection would be
+// privilege escalation on the host.
+const ALLOWED_KEYS = new Set<string>([
+  ...LLM_PROVIDERS.map((p) => p.key),
+  ...OTHER_KEYS,
+]);
+
 function readKeys(): KeyMap {
   const out: KeyMap = {};
   try {
@@ -71,6 +79,13 @@ export async function POST(request: Request) {
   } catch {
     return NextResponse.json({ error: "Invalid JSON" }, { status: 400 });
   }
+  const rejected = Object.keys(patch).filter((k) => !ALLOWED_KEYS.has(k));
+  if (rejected.length > 0) {
+    return NextResponse.json(
+      { error: `Unknown or forbidden keys: ${rejected.join(", ")}`, rejected },
+      { status: 400 }
+    );
+  }
   const current = readKeys();
   for (const [k, v] of Object.entries(patch)) {
     current[k] = typeof v === "string" ? v : "";
@@ -95,6 +110,13 @@ export async function DELETE(request: Request) {
     keys = Array.isArray(body?.keys) ? body.keys : typeof body?.key === "string" ? [body.key] : [];
   } catch {}
   if (keys.length === 0) return NextResponse.json({ error: "key required" }, { status: 400 });
+  const rejected = keys.filter((k) => !ALLOWED_KEYS.has(k));
+  if (rejected.length > 0) {
+    return NextResponse.json(
+      { error: `Unknown or forbidden keys: ${rejected.join(", ")}`, rejected },
+      { status: 400 }
+    );
+  }
 
   const current = readKeys();
   for (const k of keys) {

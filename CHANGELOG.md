@@ -1,3 +1,20 @@
+## [1.5.1] - 2026-08-21
+
+Hotfix release — critical security patches + call/settings UX fixes.
+
+### Security
+- **Settings key allow-list**: `POST/DELETE /api/settings` now reject any key outside the known provider list — env-var injection via `~/.llm_keys` (e.g. `PATH`, `HOME`) returns 400.
+- **Math eval shell injection removed** (`/api/chat`): expressions are piped to python3 via stdin instead of being interpolated into a shell command; backtick payloads no longer execute.
+- **Voicemail math**: replaced `new Function()` evaluation with the same stdin-python subprocess (sandbox-escape risk gone).
+
+### Fixed
+- **Uninstall confirmation is visible**: tile button turns solid pulsing red with a live "Tap again (3…)" countdown, so the first tap clearly registered.
+- **Proxy-lock clarity**: input field is visually disabled (dimmed + not-allowed cursor) while a parent proxy holds the session lock.
+- **Call error recovery**: three consecutive STT failures or an assistant failure now drop the call cleanly — hang-up tone + non-blocking toast ("Call dropped — …") instead of silent dead air.
+- **Chat empty state**: first visit shows a hint (green handset = voice call, current act/plan mode) instead of a blank page.
+
+---
+
 ## [1.5.0] - 2026-08-20
 
 Phone-call UX restored + act/plan mode options in chat.

@@ -25,7 +25,7 @@ export default function AppsPage() {
   const [modalApp, setModalApp] = useState<AppInfo | null>(null);
   const [keyValue, setKeyValue] = useState("");
   const [confirming, setConfirming] = useState<string | null>(null);
-  const [confirmTimer, setConfirmTimer] = useState<ReturnType<typeof setTimeout> | null>(null);
+  const [confirmSeconds, setConfirmSeconds] = useState(3);
   const [category, setCategory] = useState<"all" | "llm" | "service" | "system">("all");
   const [query, setQuery] = useState("");
   const [ota, setOta] = useState<{ checking: boolean; message: string }>({ checking: false, message: "" });
@@ -121,25 +121,25 @@ export default function AppsPage() {
       }
     } catch {}
     setConfirming(null);
-    if (confirmTimer) clearTimeout(confirmTimer);
     setSaving(false);
   };
+
+  // Visible countdown while an uninstall confirmation is pending — without
+  // it users think the first tap didn't register and tap again, cancelling.
+  useEffect(() => {
+    if (!confirming) return;
+    setConfirmSeconds(3);
+    const iv = setInterval(() => setConfirmSeconds((s) => s - 1), 1000);
+    const t = setTimeout(() => setConfirming(null), 3000);
+    return () => { clearInterval(iv); clearTimeout(t); };
+  }, [confirming]);
 
   const onActionClick = (e: React.MouseEvent, app: AppInfo) => {
     e.stopPropagation();
     if (app.alwaysInstalled) return;
     if (isInstalled(app)) {
       if (confirming === app.id) uninstall(app);
-      else {
-        setConfirming(app.id);
-        if (confirmTimer) clearTimeout(confirmTimer);
-        setConfirmTimer(
-          setTimeout(() => {
-            setConfirming(null);
-            setConfirmTimer(null);
-          }, 3000)
-        );
-      }
+      else setConfirming(app.id);
     } else {
       openInstall(app);
     }
@@ -255,6 +255,7 @@ export default function AppsPage() {
                 installed={isInstalled(app)}
                 revealed={revealed.has(app.id)}
                 confirming={confirming === app.id}
+                confirmSeconds={confirmSeconds}
                 onTileTap={() => onTileTap(app)}
                 onAction={(e) => onActionClick(e, app)}
               />
@@ -276,6 +277,7 @@ export default function AppsPage() {
                   installed
                   revealed={revealed.has(app.id)}
                   confirming={false}
+                  confirmSeconds={0}
                   onTileTap={() => onTileTap(app)}
                   onAction={() => {}}
                 />
@@ -399,11 +401,12 @@ function Stat({ label, value }: { label: string; value: string }) {
   );
 }
 
-function AppTile({ app, installed, revealed, confirming, onTileTap, onAction }: {
+function AppTile({ app, installed, revealed, confirming, confirmSeconds, onTileTap, onAction }: {
   app: AppInfo;
   installed: boolean;
   revealed: boolean;
   confirming: boolean;
+  confirmSeconds: number;
   onTileTap: () => void;
   onAction: (e: React.MouseEvent) => void;
 }) {
@@ -439,12 +442,12 @@ function AppTile({ app, installed, revealed, confirming, onTileTap, onAction }: 
               className={`pointer-events-auto w-[calc(100%-12px)] py-1 rounded-md text-[11px] font-medium transition-colors ${
                 installed
                   ? confirming
-                    ? "bg-red-500 text-white"
+                    ? "bg-red-600 text-white animate-pulse"
                     : "bg-red-500/15 border border-red-500/50 text-red-300 hover:bg-red-500/30"
                   : "bg-accent text-black hover:bg-accent/90"
               }`}
             >
-              {installed ? (confirming ? "Confirm?" : "Uninstall") : "Install"}
+              {installed ? (confirming ? `Tap again (${confirmSeconds})` : "Uninstall") : "Install"}
             </button>
           </div>
         )}

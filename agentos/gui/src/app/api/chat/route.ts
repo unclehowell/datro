@@ -13,7 +13,7 @@ import { chatWithCloud } from "@/lib/cloud-router";
 import { complete } from "@/lib/omniroute";
 import { sendToHermes } from "@/lib/hermes";
 import { isProxyLocked, lockForProxy, unlockProxy, getProxyLock } from "@/lib/proxy-state";
-import { exec } from "child_process";
+import { exec, spawn } from "child_process";
 import { promisify } from "util";
 import { homedir } from "os";
 import { getRenderJob } from "@/runtime/tools/remotion";
@@ -184,13 +184,25 @@ function isMathExpr(s: string): boolean {
 
 async function evalMath(expr: string): Promise<string | null> {
   const sanitized = expr.replace(/[^0-9\+\-\*\/\%\.\(\)\s\^]/g, "");
-  if (!sanitized) return null;
+  if (!sanitized || !/\d/.test(sanitized)) return null;
   try {
-    const { stdout } = await execAsync(
-      `python3 -c "print(${sanitized.replace(/\^/g, "**")})"`,
-      { timeout: 5000 }
-    );
-    return stdout.trim();
+    // Expression is passed via stdin — never interpolated into a shell
+    // command (backticks in the old version allowed command substitution).
+    const stdout = await new Promise<string>((resolve, reject) => {
+      const py = spawn("python3", ["-c", "import sys; print(eval(sys.stdin.read().replace('^', '**')))"]);
+      let out = "";
+      const timer = setTimeout(() => { py.kill(); reject(new Error("math eval timeout")); }, 5000);
+      py.stdout.on("data", (d) => (out += d));
+      py.on("error", (e) => { clearTimeout(timer); reject(e); });
+      py.on("close", (code) => {
+        clearTimeout(timer);
+        if (code === 0) resolve(out); else reject(new Error("math eval failed"));
+      });
+      py.stdin.write(sanitized);
+      py.stdin.end();
+    });
+    const val = stdout.trim();
+    return val || null;
   } catch {
     return null;
   }
