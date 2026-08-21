@@ -1,3 +1,20 @@
+## [1.5.0] - 2026-08-20
+
+Phone-call UX restored + act/plan mode options in chat.
+
+### Added
+- **Mode options (act / plan)**: segmented toggle in the chat input bar. Plan mode instructs the brain to analyse and propose a step-by-step plan without executing; Act mode behaves as before. Sent with every request and honoured by both the local stack (Hermes/MiniCPM) and the cloud fallback.
+- **Phone call flow**: the voice-mode button is now a proper phone icon — green handset to start a call, red end-call handset while connected. Click red to hang up.
+- **Call etiquette**: spoken ack line on answer ("Hello? Finance Cheque UK speaking…"), connecting tone while the stack warms, answer chime, hold tone + "one moment" ack while a reply is generated, hang-up tone on disconnect.
+- **Hang-up safety**: hanging up mid-sentence never submits the pending draft; replies that land after hang-up are dropped.
+- **Separate voice agent**: calls run in their own session (`agentos-voice-session-id`) with their own message history (`agentos-voice-call-messages`), so call transcripts never pollute the text conversation. `voiceCall: true` requests short spoken-style replies.
+- **Quiet during calls**: text-message auto-speak narration is muted while on a call; no HUD changes mid-call other than the phone button itself.
+
+### Changed
+- `/api/chat` accepts optional `mode` ("act"|"plan"), `voiceCall` (bool) and `sessionId`; persona adjustments appended to system prompts on all routes.
+
+---
+
 ## [1.4.1] - 2026-08-20
 
 Fixes for GUI rebuild reliability and version API rate limiting.

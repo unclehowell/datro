@@ -24,7 +24,15 @@ const DEFAULT_HOME = homedir();
 
 const TASK_ROUTER_URL = process.env.TASK_ROUTER_URL || "http://localhost:3200";
 
-async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" | "assistant"; content: string }>, msg: string): Promise<{
+// Mode / voice persona adjustments appended to system prompts.
+function personaSuffix(mode?: string, voiceCall?: boolean): string {
+  const parts: string[] = [];
+  if (mode === "plan") parts.push("The user is in PLAN mode: analyze the request and propose a step-by-step plan. Do not execute changes or tools.");
+  if (voiceCall) parts.push("You are on a live phone call. Reply in one to three short spoken sentences. No markdown, no lists, no emojis.");
+  return parts.length ? ` ${parts.join(" ")}` : "";
+}
+
+async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" | "assistant"; content: string }>, msg: string, opts?: { mode?: string; voiceCall?: boolean }): Promise<{
   reply: string;
   routed: string;
   dependency: string;
@@ -73,7 +81,7 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
       messages: [
         {
           role: "system",
-          content: "You are Hermes, the local AgentOS chat brain. Answer conversationally and keep responses concise. Do not claim to execute tasks; task execution is handled by the task-router.",
+          content: "You are Hermes, the local AgentOS chat brain. Answer conversationally and keep responses concise. Do not claim to execute tasks; task execution is handled by the task-router." + personaSuffix(opts?.mode, opts?.voiceCall),
         },
         ...messages.slice(-8),
       ],
@@ -418,14 +426,14 @@ export async function POST(req: NextRequest) {
         content: String(m.content || ""),
       }))
       : [{ role: "user", content: msg }];
-    const localResult = await routeThroughLocalStack(localMessages, msg);
+    const localResult = await routeThroughLocalStack(localMessages, msg, { mode: body.mode, voiceCall: body.voiceCall });
     if (localResult) {
       return NextResponse.json({ ...localResult, success: true });
     }
 
     // ── 4. Cloud fallback if the local stack is unavailable ──────────────
     const cloudResult = await chatWithCloud([
-      { role: "system", content: ROUTER_SYSTEM },
+      { role: "system", content: ROUTER_SYSTEM + personaSuffix(body.mode, body.voiceCall) },
       { role: "user", content: msg },
     ]);
 

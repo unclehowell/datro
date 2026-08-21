@@ -2,8 +2,15 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
+import { startDialTone, stopDialTone, playAnswerChime, startHoldTone, stopHoldTone, playHangUpTone } from "@/lib/voice";
 
 const CHAT_CACHE_KEY = "agentos-chat-messages";
+const VOICE_CACHE_KEY = "agentos-voice-call-messages";
+const VOICE_SESSION_KEY = "agentos-voice-session-id";
+
+// ─── Phone call ack lines ──────────────────────────────────
+const CALL_ACK_LINE = "Hello? Finance Cheque UK speaking. Go ahead, caller.";
+const HOLD_ACK_LINE = "One moment, let me check that for you.";
 
 interface Message {
   role: "user" | "assistant";
@@ -28,6 +35,33 @@ function saveMessages(msgs: Message[]) {
   try {
     localStorage.setItem(CHAT_CACHE_KEY, JSON.stringify(msgs.slice(-100)));
   } catch {}
+}
+
+function loadVoiceMessages(): Message[] {
+  try {
+    const raw = localStorage.getItem(VOICE_CACHE_KEY);
+    if (raw) return JSON.parse(raw);
+  } catch {}
+  return [];
+}
+
+function saveVoiceMessages(msgs: Message[]) {
+  try {
+    localStorage.setItem(VOICE_CACHE_KEY, JSON.stringify(msgs.slice(-100)));
+  } catch {}
+}
+
+function getVoiceSessionId(): string {
+  try {
+    let id = localStorage.getItem(VOICE_SESSION_KEY);
+    if (!id) {
+      id = `call-${Date.now().toString(36)}-${Math.random().toString(36).slice(2, 8)}`;
+      localStorage.setItem(VOICE_SESSION_KEY, id);
+    }
+    return id;
+  } catch {
+    return `call-${Date.now().toString(36)}`;
+  }
 }
 
 // ─── Pipeline breadcrumb steps ─────────────────────────────
@@ -360,6 +394,10 @@ export default function ChatPage() {
   const [voiceMode, setVoiceMode] = useState(false);
   const [autoSpeak, setAutoSpeak] = useState(true);
   const [duplexActive, setDuplexActive] = useState(false);
+  // ─── Mode options (act / plan) ─────────────────────────
+  const [mode, setMode] = useState<"act" | "plan">("act");
+  // ─── Separate voice-call session ───────────────────────
+  const [voiceMessages, setVoiceMessages] = useState<Message[]>([]);
 
   // ─── Breadcrumb state ──────────────────────────────────
   const [pipelineStep, setPipelineStep] = useState(0);
@@ -405,6 +443,17 @@ export default function ChatPage() {
   const chunksRef = useRef<Blob[]>([]);
   const duplexRef = useRef(false);
   const speakingRef = useRef(false);
+  // ─── Call flow refs ────────────────────────────────────
+  const callPhaseRef = useRef<"idle" | "dialing" | "listening" | "generating">("idle");
+  const callModeRef = useRef<"act" | "plan">("act");
+  const draftRef = useRef("");
+  const lastVoiceAtRef = useRef(0);
+  const lastSpeechEndRef = useRef(0);
+  const voiceAbortRef = useRef(false);
+  const voiceStreamingRef = useRef(false);
+  const voiceSessionIdRef = useRef<string>("");
+  const voiceMessagesRef = useRef<Message[]>([]);
+  const sendCallReplyRef = useRef<(t: string) => Promise<void>>(async () => {});
   const spinTimerRef = useRef<NodeJS.Timeout | null>(null);
   const depSpinTimerRef = useRef<NodeJS.Timeout | null>(null);
   const pipelineTimerRef = useRef<NodeJS.Timeout | null>(null);
@@ -417,6 +466,15 @@ export default function ChatPage() {
   useEffect(() => { duplexRef.current = duplexActive; }, [duplexActive]);
 
   useEffect(() => { saveMessages(messages); }, [messages]);
+
+  useEffect(() => {
+    setVoiceMessages(loadVoiceMessages());
+    voiceSessionIdRef.current = getVoiceSessionId();
+  }, []);
+
+  useEffect(() => { saveVoiceMessages(voiceMessages); }, [voiceMessages]);
+
+  useEffect(() => { callModeRef.current = mode; }, [mode]);
 
   // ─── First-run setup gate + health polling ─────────────────
   useEffect(() => {
@@ -633,7 +691,10 @@ export default function ChatPage() {
   }, []);
 
   // ─── TTS with graph ────────────────────────────────────
-  const speakText = useCallback(async (text: string) => {
+  // Text-message narration is muted while on a call (the call
+  // speaks its own replies via speakForCall).
+  const speakText = useCallback(async (text: string, opts?: { call?: boolean }) => {
+    if (duplexRef.current && !opts?.call) return;
     speakingRef.current = true;
     setTtsPulsing(true);
     try {
@@ -646,16 +707,27 @@ export default function ChatPage() {
       const audioData = await res.arrayBuffer();
       await new Promise<void>((resolve) => {
         const audio = new Audio(URL.createObjectURL(new Blob([audioData], { type: "audio/mpeg" })));
-        audio.onended = () => { speakingRef.current = false; setTtsPulsing(false); resolve(); };
-        audio.onerror = () => { speakNative(text); speakingRef.current = false; setTtsPulsing(false); resolve(); };
-        audio.play().catch(() => { speakNative(text); speakingRef.current = false; setTtsPulsing(false); resolve(); });
+        const done = () => {
+          speakingRef.current = false;
+          lastSpeechEndRef.current = Date.now();
+          setTtsPulsing(false);
+          resolve();
+        };
+        audio.onended = done;
+        audio.onerror = () => { speakNative(text); done(); };
+        audio.play().catch(() => { speakNative(text); done(); });
       });
     } catch {
       speakNative(text);
       speakingRef.current = false;
+      lastSpeechEndRef.current = Date.now();
       setTtsPulsing(false);
     }
   }, []);
+
+  const speakForCall = useCallback(async (text: string) => {
+    await speakText(text, { call: true });
+  }, [speakText]);
 
   const speakNative = (text: string) => {
     window.speechSynthesis.cancel();
@@ -665,7 +737,7 @@ export default function ChatPage() {
     window.speechSynthesis.speak(utterance);
   };
 
-  // ─── Voice input ───────────────────────────────────────
+  // ─── Voice input (push-to-talk → text conversation) ────
   const processVoiceInput = async (audioBlob: Blob) => {
     if (!audioBlob || audioBlob.size < 500) return;
     try {
@@ -684,38 +756,123 @@ export default function ChatPage() {
     }
   };
 
-  const startDuplex = useCallback(async () => {
-    if (duplexRef.current) return;
+  // ─── Call chunk: STT → draft accumulation (echo-guarded) ──
+  const processCallChunk = async (audioBlob: Blob) => {
+    if (!audioBlob || audioBlob.size < 500) return;
+    if (!duplexRef.current) return;                          // hung up mid-chunk → discard
+    if (callPhaseRef.current !== "listening") return;        // not accepting speech now
+    if (speakingRef.current) return;                         // echo guard: agent talking
+    if (Date.now() - lastSpeechEndRef.current < 500) return; // echo tail guard
     try {
-      const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-      streamRef.current = stream;
-      duplexRef.current = true;
-      setDuplexActive(true);
-      const loop = async () => {
-        while (duplexRef.current) {
-          await new Promise<void>((resolve) => {
-            const recorder = new MediaRecorder(stream, { mimeType: "audio/webm;codecs=opus" });
-            const chunks: Blob[] = [];
-            recorderRef.current = recorder;
-            recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
-            recorder.onstop = () => {
-              const blob = new Blob(chunks, { type: "audio/webm" });
-              processVoiceInput(blob).then(() => resolve());
-            };
-            recorder.start();
-            setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 3000);
-          });
-        }
-      };
-      loop();
-    } catch { setDuplexActive(false); duplexRef.current = false; }
+      const sttForm = new FormData();
+      sttForm.append("audio", audioBlob, "audio.webm");
+      const sttRes = await fetch("/api/voice?action=stt", { method: "POST", body: sttForm });
+      if (!sttRes.ok) throw new Error("STT failed");
+      const { text } = await sttRes.json();
+      // Hang-up during STT must never submit.
+      if (!duplexRef.current || callPhaseRef.current !== "listening") return;
+      const said = (text || "").trim();
+      if (said) {
+        draftRef.current = `${draftRef.current} ${said}`.trim();
+        lastVoiceAtRef.current = Date.now();
+      }
+    } catch {}
+  };
+
+  const finalizeDraft = useCallback(() => {
+    const t = draftRef.current.trim();
+    draftRef.current = "";
+    if (t && duplexRef.current && callPhaseRef.current === "listening") {
+      callPhaseRef.current = "generating";
+      sendCallReplyRef.current(t);
+    }
   }, []);
 
+  const startDuplex = useCallback(async () => {
+    if (duplexRef.current) return;
+    let stream: MediaStream;
+    try {
+      stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+    } catch { return; }
+    streamRef.current = stream;
+    duplexRef.current = true;
+    setDuplexActive(true);
+    setVoiceMode(true);
+    callPhaseRef.current = "dialing";
+    draftRef.current = "";
+    voiceAbortRef.current = false;
+
+    // Connecting tone while the local stack warms up.
+    startDialTone().catch(() => {});
+    const ringStart = Date.now();
+    const MAX_RING_MS = 300000;
+    let warm = false;
+    while (duplexRef.current && !warm) {
+      try {
+        const res = await fetch("/api/status", { cache: "no-store" });
+        const data = await res.json();
+        const segs = (data.breadcrumbs || []) as Array<{ id?: string; status?: string }>;
+        const core = segs.filter((s) => ["hermes", "ollama", "minicpm5"].includes(s.id || ""));
+        warm = core.length === 0 || core.every((s) => s.status === "green");
+      } catch {}
+      if (warm) break;
+      if (Date.now() - ringStart > MAX_RING_MS) break;
+      await new Promise((r) => setTimeout(r, 2000));
+    }
+    if (!duplexRef.current) { stopDialTone(); return; }      // hung up while ringing
+    stopDialTone();
+    playAnswerChime();
+    await speakForCall(CALL_ACK_LINE);
+    if (!duplexRef.current) return;
+    callPhaseRef.current = "listening";
+    lastVoiceAtRef.current = Date.now();
+
+    // Listening loop: 3s chunks, silence-triggered submit, echo guard.
+    const loop = async () => {
+      while (duplexRef.current) {
+        await new Promise<void>((resolve) => {
+          const recorder = new MediaRecorder(stream, { mimeType: "audio/webm;codecs=opus" });
+          const chunks: Blob[] = [];
+          recorderRef.current = recorder;
+          recorder.ondataavailable = (e) => { if (e.data.size > 0) chunks.push(e.data); };
+          recorder.onstop = () => {
+            const blob = new Blob(chunks, { type: "audio/webm" });
+            processCallChunk(blob).finally(() => resolve());
+          };
+          recorder.start();
+          setTimeout(() => { if (recorder.state === "recording") recorder.stop(); }, 3000);
+        });
+        if (!duplexRef.current) break;
+        // Caller finished their sentence → submit the draft.
+        if (
+          callPhaseRef.current === "listening" &&
+          !speakingRef.current &&
+          draftRef.current &&
+          Date.now() - lastVoiceAtRef.current > 2500 &&
+          Date.now() - lastSpeechEndRef.current > 500
+        ) {
+          finalizeDraft();
+        }
+      }
+    };
+    loop();
+  }, [speakForCall, finalizeDraft]);
+
   const stopDuplex = useCallback(() => {
+    const wasActive = duplexRef.current;
     duplexRef.current = false;
     setDuplexActive(false);
+    setVoiceMode(false);
+    callPhaseRef.current = "idle";
+    voiceAbortRef.current = true;
+    voiceStreamingRef.current = false;
+    draftRef.current = "";                                   // never submit on hang-up
+    stopDialTone();
+    stopHoldTone();
+    if (wasActive) playHangUpTone();
     if (recorderRef.current?.state === "recording") recorderRef.current.stop();
     if (streamRef.current) { streamRef.current.getTracks().forEach((t) => t.stop()); streamRef.current = null; }
+    try { window.speechSynthesis.cancel(); } catch {}
   }, []);
 
   const toggleRecording = useCallback(async () => {
@@ -833,6 +990,56 @@ export default function ChatPage() {
     });
   }, [videoModal]);
 
+  // ─── Call reply: separate voice session, hold-tone flow ──
+  const sendCallReply = async (spoken: string) => {
+    if (voiceStreamingRef.current) return;
+    voiceStreamingRef.current = true;
+    // Immediate hold ack so the caller knows they were heard.
+    speakForCall(HOLD_ACK_LINE).catch(() => {});
+    startHoldTone();
+
+    const userMsg: Message = { role: "user", content: spoken, timestamp: Date.now() };
+    const history = [...voiceMessagesRef.current, userMsg];
+    voiceMessagesRef.current = history;
+    setVoiceMessages(history);
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: history.map((m) => ({ role: m.role, content: m.content })),
+          model,
+          mode: callModeRef.current,
+          voiceCall: true,
+          sessionId: voiceSessionIdRef.current,
+        }),
+      });
+      if (!res.ok) throw new Error(`Chat error: ${res.status}`);
+      const json = await res.json();
+      if (!duplexRef.current || voiceAbortRef.current) return; // hung up while generating → drop
+      const reply = (json.reply || "").trim() || "Sorry, I did not catch that.";
+      const updated: Message[] = [...voiceMessagesRef.current, {
+        role: "assistant", content: reply, timestamp: Date.now(),
+        routed: json.routed, provider: json.provider, dependency: json.dependency,
+      }];
+      voiceMessagesRef.current = updated;
+      setVoiceMessages(updated);
+      stopHoldTone();
+      await speakForCall(reply);
+    } catch {
+      stopHoldTone();
+      if (duplexRef.current && !voiceAbortRef.current) await speakForCall("Sorry, the line dropped there. Could you say that again?");
+    } finally {
+      voiceStreamingRef.current = false;
+      if (duplexRef.current) {
+        callPhaseRef.current = "listening";
+        lastVoiceAtRef.current = Date.now();
+      }
+    }
+  };
+  sendCallReplyRef.current = sendCallReply;
+
   // ─── Send message ──────────────────────────────────────
   const send = async (text?: string, inputType: "text" | "voice" = "text") => {
     const msg = text || input.trim();
@@ -861,7 +1068,7 @@ export default function ChatPage() {
       const res = await fetch("/api/chat", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: chatHistory, model }),
+        body: JSON.stringify({ messages: chatHistory, model, mode }),
       });
 
       if (!res.ok) throw new Error(`Chat error: ${res.status}`);
@@ -1338,19 +1545,40 @@ export default function ChatPage() {
       {/* ─── Input Bar ─── */}
       <div className="border-t border-border px-6 py-4 shrink-0 relative z-10 bg-surface/80 backdrop-blur-sm">
         <div className="flex items-center gap-3">
-          {/* Voice mode button */}
+          {/* Mode options: act / plan */}
+          <div className="flex rounded-lg border border-border overflow-hidden shrink-0" title={mode === "act" ? "Act mode — execute tasks" : "Plan mode — propose plans only"}>
+            {(["act", "plan"] as const).map((m) => (
+              <button
+                key={m}
+                onClick={() => setMode(m)}
+                className={`px-2.5 h-10 text-xs font-medium capitalize transition-colors ${
+                  mode === m ? "bg-accent/25 text-accent" : "bg-surface text-text-muted hover:text-text-primary"
+                }`}
+              >
+                {m}
+              </button>
+            ))}
+          </div>
+
+          {/* Phone button: green = call, red = hang up */}
           <button
             onClick={() => duplexActive ? stopDuplex() : startDuplex()}
             className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
-              duplexActive ? "bg-green-500/20 border border-green-500/40 text-green-400 animate-pulse" : "bg-surface border border-border text-text-muted hover:text-text-primary"
+              duplexActive
+                ? "bg-red-500/20 border border-red-500/40 text-red-400 animate-pulse"
+                : "bg-surface border border-green-500/40 text-green-400 hover:bg-green-500/10"
             }`}
-            title={duplexActive ? "Stop voice mode" : "Start voice mode"}
+            title={duplexActive ? "Hang up" : "Start call"}
           >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
-              <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
-              <line x1="12" x2="12" y1="19" y2="22" />
-            </svg>
+            {duplexActive ? (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.86-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08c-.18-.17-.29-.42-.29-.7 0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.7l-2.48 2.49c-.18.18-.43.29-.71.29-.27 0-.52-.1-.7-.28-.79-.74-1.68-1.37-2.66-1.86-.33-.16-.56-.51-.56-.9v-3.1C15.15 9.25 13.6 9 12 9Z" />
+              </svg>
+            ) : (
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z" />
+              </svg>
+            )}
           </button>
 
           {/* Mic button (push-to-talk) */}
@@ -1372,7 +1600,7 @@ export default function ChatPage() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
-            placeholder={proxyLocked ? "Session locked by parent proxy..." : recording ? "Listening..." : duplexActive ? "Voice mode active..." : "Type a message..."}
+            placeholder={proxyLocked ? "Session locked by parent proxy..." : recording ? "Listening..." : duplexActive ? "On call..." : "Type a message..."}
             className="flex-1 bg-surface border border-border rounded-lg px-4 py-2.5 text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-accent/50 transition-colors"
             disabled={streaming || recording || proxyLocked}
           />
@@ -1392,7 +1620,8 @@ export default function ChatPage() {
 
         {/* Status bar */}
         <div className="flex items-center gap-4 mt-2 text-[10px] text-text-muted">
-          <span>{proxyLocked ? "Locked (parent proxy)" : recording ? "Recording..." : duplexActive ? "Voice mode active" : "Ready"}</span>
+          <span>{proxyLocked ? "Locked (parent proxy)" : recording ? "Recording..." : duplexActive ? "On call" : "Ready"}</span>
+          <span>Mode: {mode}</span>
           <span>Auto-speak: {autoSpeak ? "on" : "off"}</span>
           <span>Model: {model}</span>
           {ttsPulsing && <span className="text-accent">Active</span>}
