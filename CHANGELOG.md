@@ -1,3 +1,20 @@
+## [1.5.3] - 2026-08-22
+
+Greeting MP3, async voicemail processing, playback bar with controls.
+
+### Added
+- **Hardcoded greeting MP3** (`/audio/greeting.mp3`): plays instead of TTS during voicemail diversion — faster, no LLM dependency for greeting
+- **Async voicemail processing**: `POST ?action=process-async` returns `{id}` immediately; client polls `GET ?action=status&id=` for real-time breadcrumb updates (stt → llm → tts → complete)
+- **PlaybackBar component**: music-style controls for voicemail replies — play/pause, clickable seek bar, speed toggle (0.5x/1x/1.5x/2x), skip +10s, delete
+- **In-memory processing status map**: tracks in-flight voicemails for server-side status polling without disk I/O
+- Voicemail panel play button now toggles the PlaybackBar inline
+
+### Changed
+- `submitVoicemail` uses async pipeline instead of blocking synchronous call
+- `divertToVoicemail` plays MP3 greeting with TTS fallback
+
+---
+
 ## [1.5.2] - 2026-08-21
 
 Voicemail diversion for unanswered calls + live processing indicator.

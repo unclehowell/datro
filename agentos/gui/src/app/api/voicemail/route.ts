@@ -49,6 +49,48 @@ export interface VoicemailRecord {
   taskId?: string;     // if this is a task progress update
 }
 
+// ─── In-memory status for async processing ───────────────
+type ProcessingStatus = "queued" | "stt" | "llm" | "tts" | "complete" | "error";
+const processingStatus = new Map<string, {
+  status: ProcessingStatus;
+  userText?: string;
+  agentText?: string;
+  audioPath?: string;
+  error?: string;
+}>();
+
+async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void> {
+  const set = (status: ProcessingStatus, extra?: Partial<{ userText: string; agentText: string; audioPath: string; error: string }>) => {
+    processingStatus.set(id, { status, ...extra });
+  };
+  try {
+    set("stt");
+    let userText = "";
+    try { userText = await runSTT(audioBlob); } catch (e: any) { set("error", { error: `STT failed: ${e?.message}` }); return; }
+    if (!userText) { set("error", { error: "No speech detected" }); return; }
+    set("stt", { userText });
+
+    set("llm", { userText });
+    let agentText = "";
+    try { agentText = await runLLM(userText); } catch { agentText = "(No LLM available)"; }
+
+    set("tts", { userText, agentText });
+    let audioPath = "";
+    try { audioPath = await runTTS(agentText, id); } catch {}
+
+    const record: VoicemailRecord = { id, userText, agentText, audioPath, timestamp: Date.now(), played: false };
+    const records = loadIndex();
+    records.unshift(record);
+    saveIndex(records);
+
+    void unloadOllamaModel();
+    void stopHermesIfIdle();
+    set("complete", { userText, agentText, audioPath });
+  } catch (e: any) {
+    set("error", { error: `Pipeline failed: ${e?.message}` });
+  }
+}
+
 function ensureDir() {
   if (!existsSync(VOICEMAIL_DIR)) mkdirSync(VOICEMAIL_DIR, { recursive: true });
 }
@@ -342,6 +384,26 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, voicemail: record });
   }
 
+  // ── process-async: start pipeline, return id immediately ─
+  if (action === "process-async") {
+    let audioBlob: Blob | null = null;
+    try {
+      const formData = await req.formData();
+      const file = formData.get("audio") as Blob | null;
+      if (!file || file.size < 500) {
+        return NextResponse.json({ error: "No audio or too short" }, { status: 400 });
+      }
+      audioBlob = file;
+    } catch {
+      return NextResponse.json({ error: "Could not parse form data" }, { status: 400 });
+    }
+    const id = makeId();
+    processingStatus.set(id, { status: "queued" });
+    // Fire-and-forget pipeline
+    processVoicemailAsync(id, audioBlob);
+    return NextResponse.json({ ok: true, id, status: "queued" });
+  }
+
   // ── progress: 2-hour task update voicemail ─────────────
   if (action === "progress") {
     const body = await req.json().catch(() => ({}));
@@ -425,6 +487,19 @@ export async function GET(req: NextRequest) {
         "Cache-Control": "no-cache",
       },
     });
+  }
+
+  // ── status: poll async processing progress ─────────────
+  if (action === "status") {
+    const id = req.nextUrl.searchParams.get("id") || "";
+    if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
+    const s = processingStatus.get(id);
+    if (s) return NextResponse.json({ id, ...s });
+    // Check if already completed (in index)
+    const records = loadIndex();
+    const vm = records.find((r) => r.id === id);
+    if (vm) return NextResponse.json({ status: "complete", ...vm });
+    return NextResponse.json({ error: "Not found" }, { status: 404 });
   }
 
   return NextResponse.json({ error: "Unknown action" }, { status: 400 });

@@ -455,6 +455,7 @@ export default function ChatPage() {
   }>>([]);
   const [voicemailOpen, setVoicemailOpen] = useState(false);
   const [deletingVm, setDeletingVm] = useState<string | null>(null);
+  const [playbackVmId, setPlaybackVmId] = useState<string | null>(null);
   // Voicemails recorded but still processing (hang-up → reply lands)
   const [pendingVms, setPendingVms] = useState<Array<{ id: string; ts: number }>>([]);
 
@@ -846,14 +847,31 @@ export default function ChatPage() {
   const submitVoicemail = async (blob: Blob) => {
     const pendingId = `vm-pending-${Date.now().toString(36)}`;
     setPendingVms((prev) => [...prev, { id: pendingId, ts: Date.now() }]);
-    showCallToast("Processing your voicemail…");
+    showCallToast("Processing your voicemail\u2026");
     try {
       const fd = new FormData();
       fd.append("audio", blob, "voicemail.webm");
-      const res = await fetch("/api/voicemail?action=process", { method: "POST", body: fd });
+      const res = await fetch("/api/voicemail?action=process-async", { method: "POST", body: fd });
       if (!res.ok) throw new Error(String(res.status));
-      showCallToast("Voicemail saved — reply on its way");
-      fetchVoicemails();
+      const data = await res.json();
+      showCallToast("Voicemail saved \u2014 reply on its way");
+      // Poll for completion, then refresh list
+      if (data.id) {
+        const poll = setInterval(async () => {
+          try {
+            const sr = await fetch(`/api/voicemail?action=status&id=${data.id}`);
+            const sd = await sr.json();
+            if (sd.status === "complete" || sd.status === "error") {
+              clearInterval(poll);
+              fetchVoicemails();
+            }
+          } catch {}
+        }, 2000);
+        // Safety timeout: stop polling after 5 min
+        setTimeout(() => clearInterval(poll), 300_000);
+      } else {
+        fetchVoicemails();
+      }
     } catch {
       showCallToast("Voicemail failed to save");
     } finally {
@@ -864,7 +882,18 @@ export default function ChatPage() {
   const divertToVoicemail = async () => {
     if (!duplexRef.current) return;
     callPhaseRef.current = "voicemail";
-    await speakForCall(VOICEMAIL_GREETING);
+    // Play hardcoded greeting MP3 instead of TTS
+    try {
+      await new Promise<void>((resolve, reject) => {
+        const audio = new Audio("/audio/greeting.mp3");
+        audio.onended = () => resolve();
+        audio.onerror = () => reject(new Error("greeting failed"));
+        audio.play().catch(reject);
+      });
+    } catch {
+      // Fallback to TTS if MP3 fails
+      await speakForCall(VOICEMAIL_GREETING);
+    }
     if (!duplexRef.current || callPhaseRef.current !== "voicemail") return;
     playBeep();
     const stream = streamRef.current;
@@ -1578,9 +1607,87 @@ export default function ChatPage() {
                       <a href={`/api/video/${videoMatch[1]}`} download className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-zinc-600/30 bg-zinc-800/30 text-zinc-300 text-sm hover:bg-zinc-700/30 transition-colors">
                         <span>&#8681;</span><span>Download</span>
                       </a>
-                    </div>
-                  );
-                }
+    </div>
+  );
+}
+
+// ─── PlaybackBar: music-style voicemail reply player ───────
+function PlaybackBar({ vmId, onDelete, onClose }: { vmId: string; onDelete: () => void; onClose: () => void }) {
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playing, setPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [speed, setSpeed] = useState(1);
+  const tickRef = useRef<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    const audio = new Audio(`/api/voicemail?action=audio&id=${vmId}`);
+    audioRef.current = audio;
+    audio.addEventListener("loadedmetadata", () => setDuration(audio.duration));
+    audio.addEventListener("ended", () => { setPlaying(false); setProgress(0); });
+    audio.addEventListener("play", () => {
+      setPlaying(true);
+      tickRef.current = setInterval(() => { if (audioRef.current) setProgress(audioRef.current.currentTime); }, 100);
+    });
+    audio.addEventListener("pause", () => setPlaying(false));
+    fetch("/api/voicemail?action=update", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id: vmId, played: true }),
+    });
+    return () => {
+      if (tickRef.current) clearInterval(tickRef.current);
+      audio.pause();
+      audio.src = "";
+    };
+  }, [vmId]);
+
+  const togglePlay = () => { if (!audioRef.current) return; playing ? audioRef.current.pause() : audioRef.current.play(); };
+  const toggleSpeed = () => {
+    const speeds = [1, 1.5, 2, 0.5];
+    const next = speeds[(speeds.indexOf(speed) + 1) % speeds.length];
+    setSpeed(next);
+    if (audioRef.current) audioRef.current.playbackRate = next;
+  };
+  const seek = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const pct = (e.clientX - rect.left) / rect.width;
+    if (audioRef.current) { audioRef.current.currentTime = pct * duration; setProgress(pct * duration); }
+  };
+  const fmt = (s: number) => `${Math.floor(s / 60)}:${Math.floor(s % 60).toString().padStart(2, "0")}`;
+  const pct = duration > 0 ? (progress / duration) * 100 : 0;
+
+  return (
+    <div className="bg-surface border border-border rounded-xl p-4">
+      <div className="mb-3">
+        <div className="relative h-2 bg-zinc-800 rounded-full cursor-pointer group" onClick={seek}>
+          <div className="absolute inset-y-0 left-0 bg-accent rounded-full transition-all" style={{ width: `${pct}%` }} />
+          <div className="absolute top-1/2 -translate-y-1/2 w-3 h-3 rounded-full bg-accent border-2 border-surface shadow-lg opacity-0 group-hover:opacity-100 transition-opacity" style={{ left: `calc(${pct}% - 6px)` }} />
+        </div>
+        <div className="flex justify-between mt-1 text-[10px] text-text-muted">
+          <span>{fmt(progress)}</span>
+          <span>{fmt(duration)}</span>
+        </div>
+      </div>
+      <div className="flex items-center justify-center gap-3">
+        <button onClick={toggleSpeed} className="px-2 py-1 rounded bg-zinc-800 text-xs font-mono text-text-muted hover:text-accent transition-colors border border-zinc-700">{speed}x</button>
+        <button onClick={togglePlay} className="w-10 h-10 rounded-full bg-accent/20 border border-accent/30 text-accent flex items-center justify-center hover:bg-accent/30 transition-colors">
+          {playing
+            ? <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+            : <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>}
+        </button>
+        <button onClick={() => { if (audioRef.current) audioRef.current.currentTime = Math.min(audioRef.current.currentTime + 10, duration); }} className="px-2 py-1 rounded bg-zinc-800 text-xs text-text-muted hover:text-accent transition-colors border border-zinc-700" title="Skip 10s">+10s</button>
+      </div>
+      <div className="flex items-center justify-between mt-3 pt-3 border-t border-border">
+        <button onClick={onDelete} className="text-xs text-text-muted hover:text-red-400 transition-colors flex items-center gap-1">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+          Delete
+        </button>
+        <button onClick={onClose} className="text-xs text-text-muted hover:text-text-primary transition-colors">Close</button>
+      </div>
+    </div>
+  );
+}
                 return null;
               })()}
 
@@ -1640,20 +1747,15 @@ export default function ChatPage() {
               {voicemails.map((vm) => (
                 <div key={vm.id} className={`flex items-center gap-2 p-2 rounded-lg border text-xs ${vm.played ? "border-border bg-surface/50" : "border-accent/30 bg-accent/5"}`}>
                   <button
-                    onClick={() => {
-                      const audio = new Audio(`/api/voicemail?action=audio&id=${vm.id}`);
-                      audio.play();
-                      fetch("/api/voicemail?action=update", {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ id: vm.id, played: true }),
-                      });
-                      setVoicemails(prev => prev.map(v => v.id === vm.id ? { ...v, played: true } : v));
-                    }}
+                    onClick={() => setPlaybackVmId(playbackVmId === vm.id ? null : vm.id)}
                     className="w-6 h-6 rounded flex items-center justify-center bg-surface border border-border text-text-muted hover:text-accent transition-colors shrink-0"
-                    title="Play"
+                    title={playbackVmId === vm.id ? "Close player" : "Play"}
                   >
-                    <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    {playbackVmId === vm.id ? (
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                    ) : (
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                    )}
                   </button>
                   <div className="flex-1 min-w-0">
                     <div className="text-text-primary truncate">{vm.userText || "(no speech)"}</div>
@@ -1676,6 +1778,13 @@ export default function ChatPage() {
               ))}
             </div>
           )}
+        </div>
+      )}
+
+      {/* ─── Playback Bar (when voicemail selected) ─── */}
+      {playbackVmId && (
+        <div className="border-t border-border bg-surface/90 backdrop-blur-sm px-6 py-3 shrink-0 relative z-10">
+          <PlaybackBar vmId={playbackVmId} onDelete={() => { deleteVoicemail(playbackVmId); setPlaybackVmId(null); }} onClose={() => setPlaybackVmId(null)} />
         </div>
       )}
 
