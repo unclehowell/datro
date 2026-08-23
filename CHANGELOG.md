@@ -1,17 +1,21 @@
-## [1.5.3] - 2026-08-22
+## [1.5.4] - 2026-08-23
 
-Greeting MP3, async voicemail processing, playback bar with controls.
+GraphRAG knowledge base + voicemail UX fixes.
 
 ### Added
-- **Hardcoded greeting MP3** (`/audio/greeting.mp3`): plays instead of TTS during voicemail diversion — faster, no LLM dependency for greeting
-- **Async voicemail processing**: `POST ?action=process-async` returns `{id}` immediately; client polls `GET ?action=status&id=` for real-time breadcrumb updates (stt → llm → tts → complete)
-- **PlaybackBar component**: music-style controls for voicemail replies — play/pause, clickable seek bar, speed toggle (0.5x/1x/1.5x/2x), skip +10s, delete
-- **In-memory processing status map**: tracks in-flight voicemails for server-side status polling without disk I/O
-- Voicemail panel play button now toggles the PlaybackBar inline
+- **GraphRAG knowledge base**: Python keyword RAG server (port 8050) that provides document context to all LLM calls. 33 legal/research documents indexed, retrieved via TF-IDF scoring.
+- **GraphRAG systemd service**: auto-deployed via OTA with RAM-adaptive memory caps (64-96M)
+- **Voicemail modal overlay**: hang-up now opens a centered modal with processing breadcrumb, which transitions to the PlaybackBar when processing completes — replaces the old bottom panel
+
+### Fixed
+- **`playBeep` import crash**: `playBeep()` was called in `divertToVoicemail` but never imported, causing `ReferenceError` right after the greeting played — recording never started
+- **`PlaybackBar` scope crash**: component was pasted inside a video-result IIFE closure, making it inaccessible at the usage site — page crashed when clicking play on any voicemail
+- **Orphaned IIFE closure**: `return null; })()}` left dangling after PlaybackBar was misplaced inside the video IIFE
 
 ### Changed
-- `submitVoicemail` uses async pipeline instead of blocking synchronous call
-- `divertToVoicemail` plays MP3 greeting with TTS fallback
+- Phone button goes straight to voicemail (greeting → beep → record) instead of starting a full duplex call with 40s warm-up
+- Chat API now queries GraphRAG for relevant context before routing to Hermes/OmniRoute/cloud — injected as system message
+- Stream teardown deferred in `stopDuplex` so recorder `onstop` fires before tracks die
 
 ---
 

@@ -17,6 +17,7 @@ import { exec, spawn } from "child_process";
 import { promisify } from "util";
 import { homedir } from "os";
 import { getRenderJob } from "@/runtime/tools/remotion";
+import { queryGraphRAG } from "@/lib/graphrag";
 
 const execAsync = promisify(exec);
 
@@ -432,22 +433,38 @@ export async function POST(req: NextRequest) {
     }
 
     // ── 3. Route through the local AgentOS stack first ──────────────
+    // Query GraphRAG for knowledge context before routing
+    const { context: ragContext } = await queryGraphRAG(msg);
     const localMessages = Array.isArray(body.messages) && body.messages.length > 0
       ? body.messages.map((m: { role?: string; content?: string }) => ({
         role: m.role === "assistant" ? "assistant" : m.role === "system" ? "system" : "user",
         content: String(m.content || ""),
       }))
       : [{ role: "user", content: msg }];
+    // Prepend RAG context as system message if available
+    if (ragContext) {
+      localMessages.unshift({
+        role: "system" as const,
+        content: `You have access to the following knowledge base context. Use it to answer the user's question when relevant:\n\n${ragContext}`,
+      });
+    }
     const localResult = await routeThroughLocalStack(localMessages, msg, { mode: body.mode, voiceCall: body.voiceCall });
     if (localResult) {
       return NextResponse.json({ ...localResult, success: true });
     }
 
     // ── 4. Cloud fallback if the local stack is unavailable ──────────────
-    const cloudResult = await chatWithCloud([
+    const cloudMessages: Array<{ role: "system" | "user" | "assistant"; content: string }> = [
       { role: "system", content: ROUTER_SYSTEM + personaSuffix(body.mode, body.voiceCall) },
-      { role: "user", content: msg },
-    ]);
+    ];
+    if (ragContext) {
+      cloudMessages.push({
+        role: "system",
+        content: `Knowledge base context for the user's question:\n\n${ragContext}`,
+      });
+    }
+    cloudMessages.push({ role: "user", content: msg });
+    const cloudResult = await chatWithCloud(cloudMessages);
 
     if (!cloudResult?.content) {
       return NextResponse.json({

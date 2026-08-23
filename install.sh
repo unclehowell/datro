@@ -90,6 +90,7 @@ if [[ "$TOTAL_RAM_MB" -le 4096 ]]; then
   MEM_AGENTOS_MAX="96M";     MEM_AGENTOS_HIGH="64M";     MEM_AGENTOS_OOM="500"
   MEM_OMNIRUTE_MAX="256M";   MEM_OMNIRUTE_HIGH="192M"
   MEM_GATEWAY_MAX="384M";    MEM_GATEWAY_HIGH="256M";    MEM_GATEWAY_OOM="-100"
+  MEM_GRAPHRAG_MAX="96M";    MEM_GRAPHRAG_HIGH="64M"
   info "Low-RAM mode: services memory-capped to prevent crashes"
 else
   # Normal machine (>4 GiB): generous caps
@@ -97,6 +98,7 @@ else
   MEM_AGENTOS_MAX="128M";    MEM_AGENTOS_HIGH="96M";     MEM_AGENTOS_OOM="500"
   MEM_OMNIRUTE_MAX="512M";   MEM_OMNIRUTE_HIGH="384M"
   MEM_GATEWAY_MAX="512M";    MEM_GATEWAY_HIGH="384M";    MEM_GATEWAY_OOM="-100"
+  MEM_GRAPHRAG_MAX="128M";   MEM_GRAPHRAG_HIGH="96M"
   info "Standard mode: services memory-capped"
 fi
 
@@ -817,11 +819,29 @@ Environment=OPENCLAW_GATEWAY_PORT=18789
 WantedBy=default.target"
 fi
 
+# ── graphrag.service ──
+GRAPHRAG_DIR="$USER_HOME/.fcukproxy/graphrag"
+write_service "graphrag.service" "[Unit]
+Description=GraphRAG Knowledge Server (port 8050)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=$GRAPHRAG_DIR
+ExecStart=/usr/bin/python3 $GRAPHRAG_DIR/graphrag_server.py
+Restart=on-failure
+RestartSec=10
+MemoryMax=$MEM_GRAPHRAG_MAX
+MemoryHigh=$MEM_GRAPHRAG_HIGH
+
+[Install]
+WantedBy=default.target"
+
 # Reload and enable services
 info "Reloading systemd..."
 systemctl --user daemon-reload 2>/dev/null || true
 
-for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway; do
+for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway graphrag; do
   if [[ -f "$SYSTEMD_DIR/$svc.service" ]]; then
     systemctl --user enable "$svc.service" 2>/dev/null || true
   fi
@@ -854,7 +874,7 @@ fi
 step 11 "Starting services"
 
 # Start in dependency order
-for svc in whisper-stt omniroute openclaw-gateway agentos-gui; do
+for svc in whisper-stt omniroute openclaw-gateway agentos-gui graphrag; do
   if [[ -f "$SYSTEMD_DIR/$svc.service" ]]; then
     info "Starting $svc..."
     systemctl --user start "$svc.service" 2>/dev/null || true

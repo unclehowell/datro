@@ -114,17 +114,20 @@ regenerate_services() {
 
   local MEM_WHISPER_MAX MEM_WHISPER_HIGH MEM_AGENTOS_MAX MEM_AGENTOS_HIGH MEM_AGENTOS_OOM
   local MEM_OMNIRUTE_MAX MEM_OMNIRUTE_HIGH MEM_GATEWAY_MAX MEM_GATEWAY_HIGH MEM_GATEWAY_OOM
+  local MEM_GRAPHRAG_MAX MEM_GRAPHRAG_HIGH
 
   if [[ "$TOTAL_RAM_MB" -le 4096 ]]; then
     MEM_WHISPER_MAX="192M";    MEM_WHISPER_HIGH="128M"
     MEM_AGENTOS_MAX="96M";     MEM_AGENTOS_HIGH="64M";     MEM_AGENTOS_OOM="500"
     MEM_OMNIRUTE_MAX="256M";   MEM_OMNIRUTE_HIGH="192M"
     MEM_GATEWAY_MAX="384M";    MEM_GATEWAY_HIGH="256M";    MEM_GATEWAY_OOM="-100"
+    MEM_GRAPHRAG_MAX="96M";    MEM_GRAPHRAG_HIGH="64M"
   else
     MEM_WHISPER_MAX="256M";    MEM_WHISPER_HIGH="192M"
     MEM_AGENTOS_MAX="128M";    MEM_AGENTOS_HIGH="96M";     MEM_AGENTOS_OOM="500"
     MEM_OMNIRUTE_MAX="512M";   MEM_OMNIRUTE_HIGH="384M"
     MEM_GATEWAY_MAX="512M";    MEM_GATEWAY_HIGH="384M";    MEM_GATEWAY_OOM="-100"
+    MEM_GRAPHRAG_MAX="128M";   MEM_GRAPHRAG_HIGH="96M"
   fi
 
   log "Regenerating systemd services (RAM: ${TOTAL_RAM_MB}MiB, repo: v$REPO_VERSION)"
@@ -261,6 +264,28 @@ WantedBy=default.target
 EOF
   fi
 
+  # ── graphrag.service ──
+  local GRAPHRAG_DIR="$HOME/.fcukproxy/graphrag"
+  if [[ -f "$GRAPHRAG_DIR/graphrag_server.py" ]]; then
+    cat > "$SYSTEMD_DIR/graphrag.service" << EOF
+[Unit]
+Description=GraphRAG Knowledge Server (port 8050)
+After=network.target
+
+[Service]
+Type=simple
+WorkingDirectory=$GRAPHRAG_DIR
+ExecStart=/usr/bin/python3 $GRAPHRAG_DIR/graphrag_server.py
+Restart=on-failure
+RestartSec=10
+MemoryMax=$MEM_GRAPHRAG_MAX
+MemoryHigh=$MEM_GRAPHRAG_HIGH
+
+[Install]
+WantedBy=default.target
+EOF
+  fi
+
   # ── Ensure voice-service venv exists (may be missing on pre-1.3.0 nodes) ──
   if [[ ! -d "$VENV_DIR/bin" ]]; then
     log "Creating voice-service venv..."
@@ -272,7 +297,7 @@ EOF
   fi
 
   # Enable all services
-  for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway; do
+  for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway graphrag; do
     if [[ -f "$SYSTEMD_DIR/$svc.service" ]]; then
       systemctl --user enable "$svc.service" 2>/dev/null || true
     fi
@@ -347,6 +372,20 @@ sync_source() {
     cp "$INSTALL_DIR/agentos/omniroute/proxy.mjs" "$HOME/.fcukproxy/omniroute/proxy.mjs"
     chmod +x "$HOME/.fcukproxy/omniroute/proxy.mjs"
     log "OmniRoute synced"
+  fi
+
+  # Sync graphrag knowledge base
+  if [[ -d "$INSTALL_DIR/agentos/graphrag" ]]; then
+    mkdir -p "$HOME/.fcukproxy/graphrag/input"
+    rsync -a --delete \
+      --exclude='.venv' \
+      --exclude='logs' \
+      --exclude='phone_pdfs' \
+      --exclude='prompts' \
+      --exclude='settings.yaml' \
+      --exclude='.env' \
+      "$INSTALL_DIR/agentos/graphrag/" "$HOME/.fcukproxy/graphrag/" 2>>"$LOG_FILE"
+    log "GraphRAG synced"
   fi
 }
 

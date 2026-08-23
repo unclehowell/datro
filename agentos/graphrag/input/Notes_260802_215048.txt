@@ -1,0 +1,49 @@
+;; Cleaned zone file for bucklerfamily.estate
+;; Excludes NS records and apex/www (already present or conflicting)
+;; Import the rest; then manually fix apex + www as CNAME to datro2.pages.dev
+
+;; A Records
+8928308280fffff.8928308280fffff.8928308280fffff.8928308280fffff.8928308280fffff.8928308280fffff.8928308280fffff.8928308280fffff.8928308280fffff.bucklerfamily.estate. 1 IN A 185.199.108.153 ; cf_tags=cf-proxied:true
+call.bucklerfamily.estate. 1 IN A 192.0.2.1 ; cf_tags=cf-proxied:true
+ccan.bucklerfamily.estate. 1 IN A 192.0.2.1 ; cf_tags=cf-proxied:true
+
+;; CNAME Records
+althea.bucklerfamily.estate. 1 IN CNAME althea-30p.pages.dev. ; cf_tags=cf-proxied:true
+archive.bucklerfamily.estate. 1 IN CNAME bucklerfamily.estate. ; cf_tags=cf-proxied:true
+archives.bucklerfamily.estate. 1 IN CNAME archives-b01.pages.dev. ; cf_tags=cf-proxied:true
+bpvsbuckler.bucklerfamily.estate. 1 IN CNAME bpvsbuckler.pages.dev. ; cf_tags=cf-proxied:true
+bucklervsbp.bucklerfamily.estate. 1 IN CNAME bucklervsbp.pages.dev. ; cf_tags=cf-proxied:true
+calls.bucklerfamily.estate. 1 IN CNAME calls-ck0.pages.dev. ; cf_tags=cf-proxied:true
+ceo.bucklerfamily.estate. 1 IN CNAME ceo-er3.pages.dev. ; cf_tags=cf-proxied:true
+cnei.bucklerfamily.estate. 1 IN CNAME cnei.pages.dev. ; cf_tags=cf-proxied:true
+command.bucklerfamily.estate. 1 IN CNAME command-dashboard-adx.pages.dev. ; cf_tags=cf-proxied:true
+dash.bucklerfamily.estate. 1 IN CNAME dash.datro.pages.dev. ; cf_tags=cf-proxied:true
+dcc.bucklerfamily.estate. 1 IN CNAME dcc-cwd.pages.dev. ; cf_tags=cf-proxied:true
+_domainconnect.bucklerfamily.estate. 1 IN CNAME _domainconnect.gd.domaincontrol.com. ; cf_tags=cf-proxied:true
+gui.bucklerfamily.estate. 1 IN CNAME gui-7ey.pages.dev. ; cf_tags=cf-proxied:true
+hbnb.bucklerfamily.estate. 1 IN CNAME datro.pages.dev. ; cf_tags=cf-proxied:true
+library.bucklerfamily.estate. 1 IN CNAME library-cgm.pages.dev. ; cf_tags=cf-proxied:true
+pirateclaw.bucklerfamily.estate. 1 IN CNAME pirateclaw.pages.dev. ; cf_tags=cf-proxied:true
+projections.bucklerfamily.estate. 1 IN CNAME projections.pages.dev. ; cf_tags=cf-proxied:true
+subrepos.bucklerfamily.estate. 1 IN CNAME subrepos.datro.pages.dev. ; cf_tags=cf-proxied:true
+timeline.bucklerfamily.estate. 1 IN CNAME timeline-as4.pages.dev. ; cf_tags=cf-proxied:true
+wave.bucklerfamily.estate. 1 IN CNAME wave.datro.pages.dev. ; cf_tags=cf-proxied:true
+wayback.bucklerfamily.estate. 1 IN CNAME wayback-81x.pages.dev. ; cf_tags=cf-proxied:true
+zb81807530.bucklerfamily.estate. 1 IN CNAME zmverify.zoho.com. ; cf_tags=cf-proxied:false
+
+;; MX Records
+bucklerfamily.estate. 1 IN MX 86 amir.mx.cloudflare.net.
+bucklerfamily.estate. 1 IN MX 68 linda.mx.cloudflare.net.
+bucklerfamily.estate. 1 IN MX 32 isaac.mx.cloudflare.net.
+send.bucklerfamily.estate. 3600 IN MX 10 feedback-smtp.eu-west-1.amazonses.com.
+
+;; TXT Records
+cf2024-1._domainkey.bucklerfamily.estate. 1 IN TXT "v=DKIM1; h=sha256; k=rsa; p=MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAiweykoi+o48IOGuP7GR3X0MOExCUDY/BCRHoWBnh3rChl7WhdyCxW3jgq1daEjPPqoi7sJvdg5hEQVsgVRQP4DcnQDVjGMbASQtrY4WmB1VebF+RPJB2ECPsEDTpeiI5ZyUAwJaVX7r6bznU67g7LvFq35yIo4sdlmtZGV+i0H4cpYH9+3JJ78k" "m4KXwaf9xUJCWF6nxeD+qG6Fyruw1Qlbds2r85U9dkNDVAS3gioCvELryh1TxKGiVTkg4wqHTyHfWsp7KD3WQHYJn0RyfJJu6YEmL77zonn7p2SRMvTMP3ZEXibnC9gz3nnhR6wcYL8Q7zXypKTMD58bTixDSJwIDAQAB"
+bucklerfamily.estate. 1 IN TXT "v=spf1 include:_spf.mx.cloudflare.net ~all"
+bucklerfamily.estate. 1 IN TXT "zoho-verification=zb81807530.zmverify.zoho.com"
+bucklerfamily.estate. 1 IN TXT "google-site-verification=WO9srh2sUm2zgefTl_V4YuITN7uA307N9xZW5a0bD2c"
+_dmarc.bucklerfamily.estate. 1 IN TXT "v=DMARC1; p=quarantine; rua=mailto:hywelapbuckler@gmail.com; ruf=mailto:hywelapbuckler@gmail.com; sp=quarantine; adkim=r; aspf=r"
+_github-pages-challenge-unclehowell.bucklerfamily.estate. 1 IN TXT "ea291443d87886bcd1c0c722087432"
+resend._domainkey.bucklerfamily.estate. 3600 IN TXT "p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDZCATs6t/8CSG7taV01IngENlYUy24u/GlCip65NtrzQHcz4q71XiFbwJwfHfkAkKPMg/jwJOCZ8N1x8f3X7OY+U/mBSnayYyDl0liCW0Nsr4gc0PIv/o5QAobDkpultdp+NeGLuWNefZCHuJJ2rnzDilQEpun6P9mZ33tsMNpOwIDAQAB"
+send.bucklerfamily.estate. 3600 IN TXT "v=spf1 include:amazonses.com ~all"
+zmail._domainkey.bucklerfamily.estate. 1 IN TXT "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtM6Ti83nAQh8flto9vOAUrGWqRfnD6aNHZ3eOBUWka5K+bQqrP7wGLdNYXAdOSsa49ChiyVPDNzd1qaeqY2NntUNFRjDDme6wyr1ap0DS3UAcIgghXI3GpvPHN2jizj23vPtUz0rI7EfKB7AEhuKAsxEgWZYjNa1aUAqRp5WnBQIDAQAB"
