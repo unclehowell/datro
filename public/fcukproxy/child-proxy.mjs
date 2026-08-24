@@ -27,6 +27,7 @@
 import http from 'http';
 import url from 'url';
 import os from 'os';
+import fs from 'fs';
 
 const PARENT_URL = process.env.PARENT_URL || 'https://www.financecheque.uk';
 const CHILD_ID = process.env.CHILD_ID || process.env.MACHINE_ID || `child-${os.hostname()}`;
@@ -38,11 +39,22 @@ const LOCAL_TOKEN = process.env.FCUK_LOCAL_TOKEN || '';
 const AUTH_HEADER = 'X-FCUK-Token';
 const authHeader = (h) => h[String(AUTH_HEADER).toLowerCase()] ?? h[AUTH_HEADER] ?? '';
 const VERSION = '0.10.0';
+const FCUK_DIR = `${process.env.HOME}/.fcukproxy`;
+
+function readLocalAgentVersion() {
+  try {
+    const content = fs.readFileSync(`${FCUK_DIR}/agent.py`, 'utf8');
+    const m = content.match(/^VERSION\s*=\s*["']([^"']+)["']/m);
+    return m ? m[1] : '0.7.0';
+  } catch {
+    return '0.7.0';
+  }
+}
 
 // Local component versions (compared against ota-manifest.json)
 const LOCAL_VERSIONS = {
   'child-proxy': VERSION,
-  'agent': process.env.AGENT_VERSION || '0.7.0',
+  'agent': process.env.AGENT_VERSION || readLocalAgentVersion(),
   'agent-exec': '1.0.0',
   'campaign-exec': '0.4.0',
   'reflect': '0.2.0',
@@ -61,7 +73,6 @@ const MAX_BACKOFF_MS = 30000;
 const ALLOWED_HOSTS = ['raw.githubusercontent.com', 'www.financecheque.uk', 'financecheque.uk'];
 const MANIFEST_MAX_BYTES = 64 * 1024;
 const FILE_MAX_BYTES = 4 * 1024 * 1024;
-const FCUK_DIR = `${process.env.HOME}/.fcukproxy`;
 const RELEASE_SEQUENCE_FILE = `${FCUK_DIR}/.ota-sequence`;
 
 const OTA_MANIFEST_URL = process.env.OTA_URL
