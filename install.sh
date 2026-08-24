@@ -853,20 +853,37 @@ ok "Services configured"
 # ═══════════════════════════════════════════════════════════════════════════════
 step 10 "Kernel memory tuning"
 
-# Raise swappiness so the kernel swaps early instead of OOM-killing
-if [[ -f /proc/sys/vm/swappiness ]]; then
-  CURRENT_SWAPPINESS=$(cat /proc/sys/vm/swappiness)
-  if [[ "$CURRENT_SWAPPINESS" -lt 60 ]]; then
-    sudo sysctl -w vm.swappiness=100 2>/dev/null || true
-    # Persist across reboots
-    if ! grep -q 'vm.swappiness' /etc/sysctl.d/99-financecheque.conf 2>/dev/null; then
-      echo 'vm.swappiness = 100' | sudo tee -a /etc/sysctl.d/99-financecheque.conf >/dev/null 2>&1 || true
-    fi
-    ok "swappiness: $CURRENT_SWAPPINESS → 100 (swap early, OOM last)"
-  else
-    ok "swappiness: $CURRENT_SWAPPINESS (already safe)"
-  fi
+# Consolidated low-RAM + flash storage tuning
+# Single canonical sysctl config — all memory knobs live here.
+# Swappiness=60: swap early enough to avoid OOM, but not so aggressively it thrashes.
+#   180 caused catastrophic zram thrashing (20K pages/sec swap-in, 28% system CPU).
+#   60 eliminates thrashing while still protecting against OOM.
+SYSCTL_FILE="/etc/sysctl.d/99-lowram-flash.conf"
+if [[ ! -f "$SYSCTL_FILE" ]] || ! grep -q "vm.swappiness = 60" "$SYSCTL_FILE" 2>/dev/null; then
+  cat <<'SYSCTL' | sudo tee "$SYSCTL_FILE" >/dev/null
+# Consolidated low-RAM flash tuning (single canonical config)
+# Swappiness=60: prevents zram thrashing while still protecting against OOM
+#   Previous value of 180 caused 20K pages/sec swap-in and 28% system CPU.
+#   NEVER set above 60 without benchmarking on this hardware.
+vm.swappiness = 60
+vm.page-cluster = 0
+vm.vfs_cache_pressure = 75
+vm.dirty_background_bytes = 67108864
+vm.dirty_bytes = 134217728
+vm.dirty_writeback_centisecs = 1500
+vm.dirty_expire_centisecs = 3000
+vm.watermark_scale_factor = 50
+vm.watermark_boost_factor = 0
+SYSCTL
+  sudo sysctl --system >/dev/null 2>&1
+  ok "wrote $SYSCTL_FILE (swappiness=60, consolidated)"
+else
+  ok "swappiness=60 already configured in $SYSCTL_FILE"
 fi
+# Remove old redundant configs if they exist
+for old in /etc/sysctl.d/99-performance.conf /etc/sysctl.d/99-zram-swappiness.conf; do
+  [[ -f "$old" ]] && sudo rm "$old" 2>/dev/null && ok "removed redundant $old"
+done
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Step 11: Start services + verify
