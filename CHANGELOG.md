@@ -1,3 +1,23 @@
+## [1.5.6] - 2026-08-24
+
+Voicemail list panel + voice-call voicemail save + cross-device scaling fixes.
+
+### Added
+- **Voicemail list panel**: bell icon now opens a slide-out voicemail list with play/replay, delete, unread badge, and timestamps
+- **Voice-call voicemail save**: `sendCallReply` now persists every voice exchange as a playable voicemail via new `POST /api/voicemail?action=save-text`, so users can replay call replies later
+- **GraphRAG knowledge base**: already integrated in chat route; 29 chunks from legal/research documents queried on every prompt
+
+### Fixed
+- **install.sh version strings**: bumped installer VERSION from `0.5.1.93` / `1.5.2` to `1.5.6` across `install.sh`, `public/install.sh`, `public/fcukproxy/install.sh`
+- **Child proxy restart hygiene**: `public/install.sh` now stops/deletes stale pm2 child-proxy and agentos-gui processes and kills bound ports before restarting, preventing `EADDRINUSE` on reinstall
+- **Voicemail modal**: bell icon now reliably opens the voicemail list panel on all screen sizes
+
+### Changed
+- Repo version bumped to `1.5.6`
+- GitHub release tagged as `v1.5.6`
+
+---
+
 ## [1.5.4] - 2026-08-23
 
 GraphRAG knowledge base + voicemail UX fixes.

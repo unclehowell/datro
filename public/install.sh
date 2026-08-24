@@ -28,7 +28,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS, Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="0.5.1.93"
+VERSION="1.5.6"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -287,10 +287,18 @@ cd "$INSTALL_DIR"
 pm2 start ecosystem.config.js --only llama-server 2>/dev/null || true
 sleep 5
 
-# Start child proxy
+# Start child proxy (clean up stale process/port first)
+pm2 stop child-proxy 2>/dev/null || true
+pm2 delete child-proxy 2>/dev/null || true
+pkill -f "child-proxy.mjs" 2>/dev/null || true
+sleep 1
 pm2 start ecosystem.config.js --only child-proxy 2>/dev/null || true
 
-# Start WebGUI
+# Start WebGUI (clean up stale process/port first)
+pm2 stop agentos-gui 2>/dev/null || true
+pm2 delete agentos-gui 2>/dev/null || true
+pkill -f "next start -p ${GUI_PORT}" 2>/dev/null || true
+sleep 1
 pm2 start ecosystem.config.js --only agentos-gui 2>/dev/null || true
 
 pm2 save 2>/dev/null || true
