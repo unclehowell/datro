@@ -1,3 +1,21 @@
+## [1.5.7] - 2026-08-24
+
+OTA auto-update fixes for child nodes.
+
+### Added
+- **OTA manifest trigger**: bumped `release_sequence` to `7` and component versions in `public/fcukproxy/ota-manifest.json` so child proxies detect and apply updates automatically
+- **Dynamic agent version detection**: `child-proxy.mjs` now parses `VERSION` from local `agent.py` instead of using a hardcoded fallback, preventing false-positive re-downloads
+
+### Fixed
+- Phone child proxy no longer skips OTA because of stale `0.7.0` fallback when `agent.py` is already newer
+- Laptop child proxy OTA checks now use GitHub manifest directly via `OTA_URL` override
+
+### Changed
+- Repo version bumped to `1.5.7`
+- GitHub release tagged as `v1.5.7`
+
+---
+
 ## [1.5.6] - 2026-08-24
 
 Voicemail list panel + voice-call voicemail save + cross-device scaling fixes.
