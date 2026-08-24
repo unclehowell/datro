@@ -1212,6 +1212,12 @@ export default function ChatPage() {
       voiceMessagesRef.current = updated;
       setVoiceMessages(updated);
       stopHoldTone();
+      // Save voice exchange as a voicemail so the user can replay it later
+      void fetch("/api/voicemail?action=save-text", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ userText: spoken, agentText: reply }),
+      }).catch(() => {});
       await speakForCall(reply);
     } catch {
       stopHoldTone();
@@ -1576,6 +1582,62 @@ export default function ChatPage() {
           </button>
         </div>
       </header>
+
+      {/* ─── Voicemail List Panel ─── */}
+      {voicemailOpen && (
+        <div className="absolute inset-0 z-40 bg-black/80 backdrop-blur-sm" onClick={() => setVoicemailOpen(false)}>
+          <div className="absolute right-0 top-0 bottom-0 w-full max-w-sm bg-surface border-l border-border shadow-2xl overflow-y-auto" onClick={(e) => e.stopPropagation()}>
+            <div className="flex items-center justify-between p-4 border-b border-border">
+              <h2 className="text-sm font-semibold text-text-primary flex items-center gap-2">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72" />
+                  <path d="M15.05 2A10 10 0 0 1 22 8.95" />
+                  <path d="M15.05 6A6 6 0 0 1 18 8.95" />
+                </svg>
+                Voicemails
+                {voicemails.filter(v => !v.played).length > 0 && (
+                  <span className="px-1.5 py-0.5 rounded-full bg-red-500 text-[10px] text-white">{voicemails.filter(v => !v.played).length} new</span>
+                )}
+              </h2>
+              <button onClick={() => setVoicemailOpen(false)} className="text-text-muted hover:text-text-primary transition-colors">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+              </button>
+            </div>
+            <div className="p-3 space-y-2">
+              {voicemails.length === 0 && (
+                <div className="text-text-muted text-xs text-center py-8">No voicemails yet. Tap the green handset to leave one.</div>
+              )}
+              {voicemails.map((vm) => (
+                <div key={vm.id} className={`p-3 rounded-lg border ${vm.played ? "bg-zinc-800/30 border-zinc-700/50" : "bg-accent/10 border-accent/30"} transition-colors`}>
+                  <div className="flex items-start justify-between gap-2 mb-2">
+                    <div className="flex-1 min-w-0">
+                      <div className="text-xs text-text-primary truncate">{vm.userText || "(no transcript)"}</div>
+                      <div className="text-[10px] text-text-muted mt-1 truncate">{vm.agentText || "(no reply)"}</div>
+                    </div>
+                    {!vm.played && <span className="w-2 h-2 rounded-full bg-red-500 shrink-0 mt-1" />}
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <button
+                      onClick={() => { setVoicemailModalRealId(vm.id); setVoicemailOpen(false); }}
+                      className="flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 rounded bg-accent/20 border border-accent/30 text-accent text-xs hover:bg-accent/30 transition-colors"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                      {vm.played ? "Replay" : "Play"}
+                    </button>
+                    <button
+                      onClick={async () => { await deleteVoicemail(vm.id); }}
+                      className="px-2 py-1.5 rounded bg-zinc-800 border border-zinc-700 text-zinc-400 text-xs hover:text-red-400 hover:border-red-500/30 transition-colors"
+                    >
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                    </button>
+                  </div>
+                  <div className="text-[10px] text-text-muted mt-2">{new Date(vm.timestamp).toLocaleString()}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      )}
 
       {/* ─── Messages ─── */}
       <div className="flex-1 overflow-y-auto min-h-0 p-6 space-y-4 relative z-10">

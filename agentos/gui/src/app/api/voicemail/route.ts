@@ -460,6 +460,33 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ ok: true, deleted: removed.id });
   }
 
+  // ── save-text: create voicemail from text exchange (voice calls) ─
+  if (action === "save-text") {
+    const body = await req.json().catch(() => ({}));
+    const userText = String(body.userText || "").trim();
+    const agentText = String(body.agentText || "").trim();
+    if (!userText || !agentText) {
+      return NextResponse.json({ error: "userText and agentText required" }, { status: 400 });
+    }
+    const id = makeId();
+    let audioPath = "";
+    try {
+      audioPath = await runTTS(agentText, id);
+    } catch {}
+    const record: VoicemailRecord = {
+      id,
+      userText,
+      agentText,
+      audioPath,
+      timestamp: Date.now(),
+      played: false,
+    };
+    const records = loadIndex();
+    records.unshift(record);
+    saveIndex(records);
+    return NextResponse.json({ ok: true, voicemail: record });
+  }
+
   return NextResponse.json({ error: "Unknown action" }, { status: 400 });
 }
 
