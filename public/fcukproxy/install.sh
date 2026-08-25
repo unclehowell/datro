@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.5.7"
+VERSION="1.7.0"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -41,7 +41,7 @@ AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
 FCUK_LOCAL_TOKEN="${FCUK_LOCAL_TOKEN:-}"  # local auth token (auto-generated)
 
 # Local chat GUI (AgentOS) — served on GUI_PORT with the agent as its LLM backend
-GUI_VERSION="0.5.1.93"               # financecheque release tag the GUI ships from
+GUI_VERSION="1.6.0"                  # fallback tag; overridden by latest-release lookup below
 GUI_PORT="${GUI_PORT:-3000}"         # the web chat interface
 GUI_DIR="${GUI_DIR:-$INSTALL_DIR/agentos-gui}"
 NODE_VERSION="v22.23.2"              # bundled Node.js for the GUI (pinned LTS)
@@ -277,6 +277,44 @@ install_agent() {
   if command -v crontab >/dev/null 2>&1; then
     ( crontab -l 2>/dev/null | grep -v 'fcukproxy/reflect.sh'; \
       echo "17 3 * * * ${HOME}/.fcukproxy/reflect.sh" ) | crontab - 2>/dev/null || true
+  fi
+
+  # ── Self-update machinery: every node checks for rereleases every 4 hours ──
+  curl -sL "$RAW_BASE/public/fcukproxy/update-checker.sh" -o "$INSTALL_DIR/update-checker.sh" 2>/dev/null || true
+  chmod +x "$INSTALL_DIR/update-checker.sh" 2>/dev/null || true
+  mkdir -p "$INSTALL_DIR/logs" 2>/dev/null || true
+  if [[ -x "$INSTALL_DIR/update-checker.sh" ]]; then
+    if command -v systemctl >/dev/null 2>&1 && [[ -d /etc/systemd/system ]] && [[ "$(id -u)" -ne 0 ]] \
+       && systemctl --user daemon-reload >/dev/null 2>&1; then
+      mkdir -p "$HOME/.config/systemd/user"
+      cat > "$HOME/.config/systemd/user/fcuk-update-checker.service" << SVCEOF
+[Unit]
+Description=FinanceCheque OTA Update Checker
+
+[Service]
+Type=oneshot
+ExecStart=$INSTALL_DIR/update-checker.sh
+SVCEOF
+      cat > "$HOME/.config/systemd/user/fcuk-update-checker.timer" << TIMEREOF
+[Unit]
+Description=FinanceCheque OTA update check (daily at 4 AM)
+
+[Timer]
+OnCalendar=*-*-* 04:00:00
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+TIMEREOF
+      systemctl --user enable --now fcuk-update-checker.timer >/dev/null 2>&1 || true
+      ok "Self-update enabled (systemd timer, daily 04:00)"
+    elif command -v crontab >/dev/null 2>&1; then
+      ( crontab -l 2>/dev/null | grep -v 'fcukproxy/update-checker.sh'; \
+        echo "42 */4 * * * ${HOME}/.fcukproxy/update-checker.sh >> ${HOME}/.fcukproxy/logs/ota-update.log 2>&1" ) | crontab - 2>/dev/null || true
+      ok "Self-update enabled (cron, every 4h)"
+    else
+      warn "No systemd/cron found — run $INSTALL_DIR/update-checker.sh manually to update"
+    fi
   fi
 
   info "Installing Python dependencies..."
@@ -666,7 +704,32 @@ OCWRAP
 }
 
 # ── Install the local chat GUI (AgentOS) — web interface on port 3000 ───────
+gui_latest_version() {
+  # Always ship the newest release: GitHub API → raw .version on the branch → fallback.
+  local t=""
+  t=$(curl -fsSL --max-time 10 "https://api.github.com/repos/unclehowell/datro/releases/latest" 2>/dev/null \
+      | grep -oE '"tag_name":[[:space:]]*"financecheque-v[^"]+"' | head -1 | sed 's/.*financecheque-v//; s/"//')
+  [[ -n "$t" ]] && { echo "$t"; return; }
+  t=$(curl -fsSL --max-time 10 "https://raw.githubusercontent.com/unclehowell/datro/financecheque/.version" 2>/dev/null | tr -d '[:space:]')
+  [[ -n "$t" ]] && { echo "$t"; return; }
+  echo "$GUI_VERSION"
+}
+
+free_gui_port() {
+  # Reinstall hygiene: stop whatever squats on GUI_PORT (e.g. a legacy chat page)
+  if command -v fuser >/dev/null 2>&1; then
+    fuser -k "${GUI_PORT}/tcp" >/dev/null 2>&1 || true
+    sleep 1
+  elif command -v lsof >/dev/null 2>&1; then
+    local pids
+    pids=$(lsof -ti tcp:"$GUI_PORT" 2>/dev/null || true)
+    [[ -n "$pids" ]] && kill $pids 2>/dev/null || true
+    sleep 1
+  fi
+}
+
 install_gui() {
+  GUI_VERSION="$(gui_latest_version)"
   info "Downloading AgentOS chat GUI (financecheque-v$GUI_VERSION)..."
   local tarball="https://github.com/unclehowell/datro/archive/refs/tags/financecheque-v$GUI_VERSION.tar.gz"
   local tmp_src="/tmp/fcuk-gui-src"
@@ -718,6 +781,7 @@ install_gui() {
 
 # ── Create systemd service for the GUI (optional) ────────────────────────────
 install_gui_service() {
+  free_gui_port
   if [[ ! -d /etc/systemd/system ]] || [[ "$(id -u)" -eq 0 ]]; then
     return 1  # no systemd → caller uses nohup fallback
   fi
@@ -767,6 +831,7 @@ SVCEOF
 
 # ── Start the GUI in the background (no systemd) ─────────────────────────────
 start_gui_nohup() {
+  free_gui_port
   info "Starting GUI in the background (no systemd)..."
   ( cd "$GUI_DIR"
     env HOME="$HOME" PATH="$NODE_BIN_DIR:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin" \

@@ -1,3 +1,14 @@
+## [1.7.0] - 2026-08-25
+
+Installer parity: every Linux device gets the current GUI + self-updates.
+
+### Fixed
+- **Stale GUI on fresh installs**: the one-liner installer (`financecheque.uk/fcukproxy/install.sh`) hardcoded `GUI_VERSION=0.5.1.93`, so phones/Termux and any new node installed a museum-era GUI snapshot (or fell back to the legacy Python chat page). The installer now resolves the **latest financecheque release** dynamically (GitHub API → raw `.version` → fallback), so `localhost:3000` is always identical to the newest rerelease
+- **Port squatting**: before starting the GUI, the installer frees port 3000 from legacy listeners (`fuser`/`lsof`), fixing silent bind failures on devices with an old chat server
+
+### Added
+- **Self-update on every device**: the installer now ships `update-checker.sh` to all installs and schedules it — systemd timer (daily 04:00, persistent) where systemd is available, cron (`42 */4 * * *`) otherwise, with a manual-run hint as last resort. Previously only nodes installed from a datro clone had OTA; Termux phones never self-updated
+
 ## [1.6.0] - 2026-08-24
 
 Voicemail modal experience + LLM stack auto-start.
