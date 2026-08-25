@@ -1,3 +1,7 @@
+## [1.7.5] - 2026-08-25T19:17
+
+Automated flywheel iteration 1/18: new color theme `obsidian`.
+
 ## [1.7.4] - 2026-08-25
 
 OTA infrastructure hardening — the flywheel foundation.
