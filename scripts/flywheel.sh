@@ -19,6 +19,8 @@ set -euo pipefail
 # State is tracked in ~/.fcukproxy/flywheel-state
 # ═══════════════════════════════════════════════════════════════════════════════
 
+export PATH="$HOME/.local/bin:$PATH"
+
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 DATRO_DIR="${DATRO_DIR:-$(cd "$(dirname "$0")/.." && pwd)}"
@@ -30,7 +32,8 @@ MAX_ITERATIONS=18
 mkdir -p "$(dirname "$LOG_FILE")"
 
 log() {
-  echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] $*" | tee -a "$LOG_FILE"
+  echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] $*"
+  echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] $*" >> "$LOG_FILE"
 }
 
 # ── Read current iteration ──
