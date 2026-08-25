@@ -1,3 +1,11 @@
+## [1.7.1] - 2026-08-25
+
+Installer hotfix from a live Termux install.
+
+### Fixed
+- **Silent abort in `write_config`**: a pre-existing `.env` without a `FCUK_LOCAL_TOKEN` line made `grep` exit 1 inside a command substitution, and `set -euo pipefail` killed the installer with no message (caught via `bash -x` on an SM-A075M phone). The grep is now failure-tolerant
+- **Child-node ID collisions**: IDs were `$(hostname)-<epoch-tail>` — every Termux device has hostname `localhost`, so nodes could collide (phone and laptop both claimed `localhost-6630`). IDs now mix hostname + `boot_id` + app path through sha256 → stable, unique 8-hex suffix
+
 ## [1.7.0] - 2026-08-25
 
 Installer parity: every Linux device gets the current GUI + self-updates.

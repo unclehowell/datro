@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.7.0"
+VERSION="1.7.1"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -84,13 +84,26 @@ detect_platform() {
 }
 
 # ── Interactive prompts (only when values not set via env) ────────────────────
+# Stable per-device fingerprint: hostname alone collides (Termux = "localhost"
+# on every Android), so mix in boot_id + app-UID path and hash it.
+node_fingerprint() {
+  local seed
+  seed="$(hostname 2>/dev/null || echo node)-${HOME}"
+  [[ -r /proc/sys/kernel/random/boot_id ]] && seed="${seed}-$(cat /proc/sys/kernel/random/boot_id 2>/dev/null)"
+  printf '%s' "$seed" | sha256sum 2>/dev/null | cut -c1-8 || date +%s | tail -c 5
+}
+
+default_child_id() {
+  echo "$(hostname 2>/dev/null || echo fcuk)-$(node_fingerprint)"
+}
+
 prompt_config() {
   # When piped in (curl ... | bash), stdin is not a TTY: `read` would hit EOF
   # and `set -e` would abort the installer. Fall back to defaults / env vars.
   if [[ ! -t 0 ]]; then
     MODE="${MODE:-lite}"
     PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
-    CHILD_ID="${CHILD_ID:-$(hostname)-$(date +%s | tail -c 5)}"
+    CHILD_ID="${CHILD_ID:-$(default_child_id)}"
     return 0
   fi
 
@@ -111,11 +124,9 @@ prompt_config() {
   fi
 
   if [[ -z "$CHILD_ID" ]]; then
-    local default_id
-    default_id="$(hostname)-$(date +%s | tail -c 5)"
     echo ""
-    read -rp "Child node ID [$default_id]: " input
-    CHILD_ID="${input:-$default_id}"
+    read -rp "Child node ID [$(default_child_id)]: " input
+    CHILD_ID="${input:-$(default_child_id)}"
   fi
 
   if [[ "$CHAT_ONLY" == "false" ]]; then
@@ -371,7 +382,8 @@ write_config() {
 
   # Shared local auth token (agent.py ⇄ child-proxy.mjs on 4001)
   if [[ -z "$FCUK_LOCAL_TOKEN" && -f "$INSTALL_DIR/.env" ]]; then
-    FCUK_LOCAL_TOKEN=$(grep -E '^FCUK_LOCAL_TOKEN=' "$INSTALL_DIR/.env" | head -1 | cut -d= -f2-)
+    # `|| true`: a .env without the token line must not trip set -e/pipefail
+    FCUK_LOCAL_TOKEN=$(grep -E '^FCUK_LOCAL_TOKEN=' "$INSTALL_DIR/.env" | head -1 | cut -d= -f2- || true)
   fi
   if [[ -z "$FCUK_LOCAL_TOKEN" ]]; then
     FCUK_LOCAL_TOKEN=$(python3 -c "import secrets; print(secrets.token_hex(24))" 2>/dev/null || \
