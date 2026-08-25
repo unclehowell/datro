@@ -28,7 +28,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS, Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.7.11"
+VERSION="1.7.12"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"

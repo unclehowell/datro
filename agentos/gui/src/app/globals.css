@@ -279,6 +279,41 @@
   --info: #2563eb;
 }
 
+
+[data-theme="ocean"] {
+  --background: #0a1628;
+  --foreground: #e0f2fe;
+  --accent: #0ea5e9;
+  --accent-dim: #0c4a6e;
+  --border: #1e3a5f;
+  --surface: #0c1929;
+  --surface-hover: #1e3a5f;
+  --text-primary: #e0f2fe;
+  --text-secondary: #7dd3fc;
+  --text-muted: #38bdf8;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #38bdf8;
+}
+
+[data-theme="ocean-light"] {
+  --background: #f0f9ff;
+  --foreground: #0c4a6e;
+  --accent: #0284c7;
+  --accent-dim: #7dd3fc;
+  --border: #bae6fd;
+  --surface: #ffffff;
+  --surface-hover: #e0f2fe;
+  --text-primary: #0c4a6e;
+  --text-secondary: #0369a1;
+  --text-muted: #38bdf8;
+  --success: #16a34a;
+  --warning: #d97706;
+  --error: #dc2626;
+  --info: #0284c7;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
