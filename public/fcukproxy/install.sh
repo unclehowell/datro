@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.7.3"
+VERSION="1.7.4"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -150,7 +150,13 @@ install_deps() {
   case "$platform" in
     termux-*)
       pkg update -y 2>/dev/null || true
-      pkg install -y python curl git 2>/dev/null || true
+      pkg install -y python curl git cronie rsync 2>/dev/null || true
+      # Enable crond via runit (Termux)
+      if [[ -d "$PREFIX/var/service" ]] && [[ ! -d "$PREFIX/var/service/crond" ]]; then
+        ln -sf "$PREFIX/share/cron/rc" "$PREFIX/var/service/crond" 2>/dev/null || true
+        # Start crond now if service directory exists
+        sv up crond 2>/dev/null || true
+      fi
       ;;
     linux-*)
       if command -v apt-get &>/dev/null; then
@@ -323,6 +329,12 @@ TIMEREOF
       systemctl --user enable --now fcuk-update-checker.timer >/dev/null 2>&1 || true
       ok "Self-update enabled (systemd timer, daily 04:00)"
     elif command -v crontab >/dev/null 2>&1; then
+      # Ensure crond is running (Termux via runit, or system cron)
+      if [[ -d "${PREFIX:-}/var/service/crond" ]]; then
+        sv up crond 2>/dev/null || true
+      elif command -v crond >/dev/null 2>&1 && ! pgrep -x crond >/dev/null 2>&1; then
+        crond 2>/dev/null || true
+      fi
       ( crontab -l 2>/dev/null | grep -v 'fcukproxy/update-checker.sh'; \
         echo "42 */4 * * * ${HOME}/.fcukproxy/update-checker.sh >> ${HOME}/.fcukproxy/logs/ota-update.log 2>&1" ) | crontab - 2>/dev/null || true
       ok "Self-update enabled (cron, every 4h)"

@@ -1,3 +1,17 @@
+## [1.7.4] - 2026-08-25
+
+OTA infrastructure hardening — the flywheel foundation.
+
+### Fixed
+- **update-checker.sh: npm/node paths broken on Termux**: hardcoded `~/.local/node/bin/npm` path fails on Termux which installs npm at `$PREFIX/bin/npm`. Now dynamically detects node/npm/npx from bundled path, `command -v`, or `$PREFIX/bin`
+- **update-checker.sh: no git repo = no update**: phones installed via `curl | bash` tarball had no `.git` directory, so `git pull` silently skipped. Added tarball download fallback: when `.git` is missing, fetches the release tarball from GitHub and rsyncs files into place
+- **update-checker.sh: unnecessary rebuilds**: stale `turbopack` marker in `.next` was wiping the build cache on every run, forcing a full `next build` even when source hadn't changed. Now only cleans on source-hash mismatch
+- **update-checker.sh: OOM on low-RAM machines**: `next build` on a 4GB laptop with `MemoryMax=384M` and no heap cap crashes the process. Added `NODE_OPTIONS=--max-old-space-size=512` (384 for <=2GB RAM) and increased systemd service memory limits
+- **update-checker.sh: child-proxy.mjs had no service**: `child-proxy.mjs` file existed but no systemd unit ran it. Added `fcukproxy-child.service` to `regenerate_services()`, enabled by default
+- **/api/version route: `gh: not found` on Termux**: the route called `execSync("gh release list ...")` which requires the GitHub CLI — not present on Android. Replaced with unauthenticated GitHub API `fetch()` calls, no external CLI needed
+- **public/install.sh: cronie missing on Termux**: cron-based OTA scheduling silently failed because no cron daemon existed. Installer now installs `cronie` via `pkg install` and starts `crond` via runit on Termux
+- **All installers: VERSION bumped to 1.7.4**
+
 ## [1.7.3] - 2026-08-25
 
 Installer hotfix #3 — Turbopack can't build on Android.

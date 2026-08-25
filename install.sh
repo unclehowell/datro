@@ -25,7 +25,7 @@ set -euo pipefail
 # Idempotent: safe to re-run on non-fresh installs.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.7.3"
+VERSION="1.7.4"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -837,11 +837,33 @@ MemoryHigh=$MEM_GRAPHRAG_HIGH
 [Install]
 WantedBy=default.target"
 
+# ── fcukproxy-child.service (child-proxy.mjs — HTTP gateway on port 4001) ──
+CHILD_PROXY_FILE="$USER_HOME/.fcukproxy/child-proxy.mjs"
+if [[ -f "$CHILD_PROXY_FILE" ]]; then
+  write_service "fcukproxy-child.service" "[Unit]
+Description=FinanceCheque Child Proxy HTTP Gateway (port 4001)
+After=network-online.target fcuk-proxy.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=$NODE_BIN $CHILD_PROXY_FILE
+WorkingDirectory=$USER_HOME/.fcukproxy
+Environment=HOME=$USER_HOME
+Environment=PATH=$USER_HOME/.local/bin:$USER_HOME/.local/node/bin:/usr/local/bin:/usr/bin:/bin
+Environment=PORT=4001
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target"
+fi
+
 # Reload and enable services
 info "Reloading systemd..."
 systemctl --user daemon-reload 2>/dev/null || true
 
-for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway graphrag; do
+for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway graphrag fcukproxy-child; do
   if [[ -f "$SYSTEMD_DIR/$svc.service" ]]; then
     systemctl --user enable "$svc.service" 2>/dev/null || true
   fi

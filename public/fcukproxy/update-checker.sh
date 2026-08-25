@@ -19,14 +19,29 @@
 set -euo pipefail
 
 PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"
+REPO="unclehowell/datro"
+BRANCH="financecheque"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/.fcukproxy/datro}"
 GUI_DIR="${GUI_DIR:-$HOME/.fcukproxy/agentos-gui}"
 LOCAL_VERSION_FILE="$HOME/.fcukproxy/.local-version"
 LOG_FILE="$HOME/.fcukproxy/logs/ota-update.log"
-NODE_BIN="$HOME/.local/node/bin/node"
-NPM_BIN="$HOME/.local/node/bin/npm"
+TMPDIR="${TMPDIR:-/tmp}"
 SKIP_REBUILD="${SKIP_REBUILD:-0}"
 DRY_RUN="${DRY_RUN:-0}"
+
+# ── Detect node/npm paths (handles Termux $PREFIX/bin vs bundled ~/.local/node) ──
+NODE_BIN=""
+NPM_BIN=""
+NPX_BIN=""
+for candidate_node in "$HOME/.local/node/bin/node" "$(command -v node 2>/dev/null)" "$PREFIX/bin/node"; do
+  if [[ -n "$candidate_node" && -x "$candidate_node" ]]; then NODE_BIN="$candidate_node"; break; fi
+done
+for candidate_npm in "$HOME/.local/node/bin/npm" "$(command -v npm 2>/dev/null)" "${PREFIX:-}/bin/npm"; do
+  if [[ -n "$candidate_npm" && -x "$candidate_npm" ]]; then NPM_BIN="$candidate_npm"; break; fi
+done
+for candidate_npx in "$HOME/.local/node/bin/npx" "$(command -v npx 2>/dev/null)" "${PREFIX:-}/bin/npx"; do
+  if [[ -n "$candidate_npx" && -x "$candidate_npx" ]]; then NPX_BIN="$candidate_npx"; break; fi
+done
 
 mkdir -p "$(dirname "$LOG_FILE")"
 
@@ -101,8 +116,10 @@ regenerate_services() {
   local VENV_DIR="$HOME/.local/whisper-stt-venv"
   local WHISPER_DIR="$HOME/.local/whisper-stt"
   local OMNIRUTE_DIR="$HOME/.fcukproxy/omniroute"
-  local NODE_BIN="$HOME/.local/node/bin/node"
+  local _NODE_BIN="$HOME/.local/node/bin/node"
   local OPENCLAW_BIN="$HOME/.local/lib/node_modules/openclaw/dist/index.js"
+  # Fall back to detected node if bundled path doesn't exist
+  [[ ! -x "$_NODE_BIN" && -n "$NODE_BIN" ]] && _NODE_BIN="$NODE_BIN"
 
   # Read version from repo
   local REPO_VERSION
@@ -214,7 +231,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 WorkingDirectory=$OMNIRUTE_DIR
-ExecStart=$NODE_BIN $OMNIRUTE_DIR/proxy.mjs
+ExecStart=$_NODE_BIN $OMNIRUTE_DIR/proxy.mjs
 Environment=NODE_ENV=production
 Environment=PORT=20128
 Environment=OLLAMA_KEEP_ALIVE=30m
@@ -242,7 +259,7 @@ StartLimitBurst=5
 StartLimitIntervalSec=60
 
 [Service]
-ExecStart=$NODE_BIN $OPENCLAW_BIN gateway --port 18789
+ExecStart=$_NODE_BIN $OPENCLAW_BIN gateway --port 18789
 Restart=always
 RestartSec=5
 RestartPreventExitStatus=78
@@ -286,6 +303,31 @@ WantedBy=default.target
 EOF
   fi
 
+  # ── fcukproxy-child.service (child-proxy.mjs — HTTP gateway on port 4001) ──
+  local CHILD_PROXY="$INSTALL_DIR/child-proxy.mjs"
+  [[ ! -f "$CHILD_PROXY" ]] && CHILD_PROXY="$HOME/.fcukproxy/child-proxy.mjs"
+  if [[ -f "$CHILD_PROXY" ]]; then
+    cat > "$SYSTEMD_DIR/fcukproxy-child.service" << EOF
+[Unit]
+Description=FinanceCheque Child Proxy HTTP Gateway (port 4001)
+After=network-online.target fcuk-proxy.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=$_NODE_BIN $CHILD_PROXY
+WorkingDirectory=$HOME/.fcukproxy
+Environment=HOME=$HOME
+Environment=PATH=$(dirname "$_NODE_BIN"):/usr/local/bin:/usr/bin:/bin
+Environment=PORT=4001
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target
+EOF
+  fi
+
   # ── Ensure voice-service venv exists (may be missing on pre-1.3.0 nodes) ──
   if [[ ! -d "$VENV_DIR/bin" ]]; then
     log "Creating voice-service venv..."
@@ -297,7 +339,7 @@ EOF
   fi
 
   # Enable all services
-  for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway graphrag; do
+  for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway graphrag fcukproxy-child; do
     if [[ -f "$SYSTEMD_DIR/$svc.service" ]]; then
       systemctl --user enable "$svc.service" 2>/dev/null || true
     fi
@@ -313,15 +355,43 @@ apply_update() {
 
   log "Updating from $(get_local_version) → $latest"
 
-  # 1. Git pull the financecheque branch
+  # 1. Update code — git pull if repo exists, tarball download otherwise
   if [[ -d "$INSTALL_DIR/.git" ]]; then
-    log "Pulling latest code..."
+    log "Pulling latest code (git)..."
     cd "$INSTALL_DIR"
-    git fetch origin financecheque 2>>"$LOG_FILE"
-    git reset --hard origin/financecheque 2>>"$LOG_FILE"
-    log "Code updated"
+    git fetch origin "$BRANCH" 2>>"$LOG_FILE"
+    git reset --hard "origin/$BRANCH" 2>>"$LOG_FILE"
+    log "Code updated (git)"
   else
-    log "WARN: datro repo not at $INSTALL_DIR, skipping git pull"
+    log "Downloading release tarball (no git repo)..."
+    local tarball_url="https://github.com/$REPO/archive/refs/tags/financecheque-v${latest}.tar.gz"
+    local tmp_extract="$TMPDIR/fcuk-update-$$"
+    mkdir -p "$tmp_extract"
+    if curl -fsSL --max-time 120 "$tarball_url" -o "$tmp_extract/release.tgz" 2>>"$LOG_FILE"; then
+      tar xzf "$tmp_extract/release.tgz" -C "$tmp_extract" 2>>"$LOG_FILE"
+      local extracted="$tmp_extract/datro-financecheque-v${latest}"
+      if [[ -d "$extracted" ]]; then
+        # Sync fcukproxy scripts
+        mkdir -p "$INSTALL_DIR"
+        rsync -a --delete "$extracted/public/fcukproxy/" "$INSTALL_DIR/" 2>>"$LOG_FILE"
+        # Sync GUI source
+        if [[ -d "$extracted/agentos/gui/src" ]]; then
+          mkdir -p "$(dirname "$GUI_DIR")"
+          rsync -a --delete \
+            --exclude='.next' --exclude='node_modules' --exclude='package-lock.json' \
+            "$extracted/agentos/gui/" "$GUI_DIR/" 2>>"$LOG_FILE"
+          log "GUI source synced (tarball)"
+        fi
+        # Sync version file
+        [[ -f "$extracted/.version" ]] && cp "$extracted/.version" "$INSTALL_DIR/.version"
+        log "Code updated (tarball)"
+      else
+        log "ERROR: Extracted dir not found at $extracted"
+      fi
+    else
+      log "ERROR: Failed to download release tarball"
+    fi
+    rm -rf "$tmp_extract"
   fi
 
   # 2. Regenerate systemd services from repo (picks up memory limits, new services, etc.)
@@ -343,7 +413,7 @@ apply_update() {
 
   # 7. Restart services
   log "Restarting services..."
-  for svc in whisper-stt whisper-realtime omniroute agentos-gui openclaw-gateway; do
+  for svc in whisper-stt whisper-realtime omniroute agentos-gui openclaw-gateway fcukproxy-child; do
     if systemctl --user is-enabled "$svc.service" >/dev/null 2>&1; then
       systemctl --user restart "$svc.service" 2>/dev/null || true
       log "  Restarted $svc"
@@ -392,7 +462,10 @@ sync_source() {
 # ── Ensure GUI has a current production build (runs on every invocation) ──────
 ensure_gui_build() {
   [[ ! -d "$GUI_DIR/src" ]] && return 0
-  [[ ! -f "$NPM_BIN" ]] && { log "WARN: npm not found, cannot rebuild"; return 1; }
+  if [[ -z "$NPM_BIN" ]]; then
+    log "WARN: npm not found — skipping GUI build"
+    return 1
+  fi
 
   local NEEDS_BUILD=0
 
@@ -416,14 +489,23 @@ ensure_gui_build() {
   [[ "$NEEDS_BUILD" != "1" ]] && return 0
 
   cd "$GUI_DIR"
-  PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
+  PATH="$(dirname "$NODE_BIN"):$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
+
+  # Clean stale turbopack marker that forces unnecessary full rebuilds
   [[ -f "$GUI_DIR/.next/turbopack" ]] && rm -rf "$GUI_DIR/.next"
+
   local build_args=()
   if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
     build_args=(--webpack)
   fi
   log "Building GUI (args: ${build_args[*]:-default})..."
-  if PATH="$HOME/.local/node/bin:$PATH" timeout 600 "$HOME/.local/node/bin/npx" next build "${build_args[@]}" 2>>"$LOG_FILE" | tail -5; then
+  # Use NODE_OPTIONS to cap heap so we don't OOM on low-RAM machines
+  local NODE_HEAP="512"
+  local TOTAL_RAM_MB
+  TOTAL_RAM_MB=$(awk '/MemTotal/ {printf "%d", $2/1024}' /proc/meminfo 2>/dev/null || echo 4096)
+  [[ "$TOTAL_RAM_MB" -le 2048 ]] && NODE_HEAP="384"
+  if NODE_OPTIONS="--max-old-space-size=$NODE_HEAP" PATH="$(dirname "$NODE_BIN"):$PATH" \
+     timeout 600 "$NPX_BIN" next build "${build_args[@]}" 2>>"$LOG_FILE" | tail -5; then
     find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1 > "$GUI_DIR/.last-build-hash"
     log "GUI built successfully"
   else

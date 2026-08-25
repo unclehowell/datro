@@ -2,33 +2,22 @@ import { NextResponse } from "next/server";
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
 import { homedir } from "os";
-import { execSync } from "child_process";
 
 const STATUS_FILE = join(homedir(), ".fcukproxy", ".update-status");
 const GITHUB_REPO = "unclehowell/datro";
 const GITHUB_BRANCH = "financecheque";
 
-function ghReleaseUrl(tag: string): string | null {
+async function githubReleasesFc(): Promise<{ tag: string; url: string } | null> {
   try {
-    const out = execSync(`gh release view "${tag}" --repo ${GITHUB_REPO} --json url -q .url`, {
-      timeout: 8000,
-      encoding: "utf-8",
-    });
-    return out.trim() || null;
-  } catch {
-    return null;
-  }
-}
-
-function ghLatestFcRelease(): { tag: string; url: string } | null {
-  try {
-    const out = execSync(`gh release list --repo ${GITHUB_REPO} --limit 10 --json tagName,url -q '[.[] | select(.tagName | startswith("financecheque-v"))][0]'`, {
-      timeout: 8000,
-      encoding: "utf-8",
-    });
-    const parsed = JSON.parse(out);
-    if (parsed?.tagName && parsed?.url) {
-      return { tag: parsed.tagName, url: parsed.url };
+    const resp = await fetch(
+      `https://api.github.com/repos/${GITHUB_REPO}/releases?per_page=20`,
+      { signal: AbortSignal.timeout(8000), headers: { "Accept": "application/vnd.github.v3+json" } },
+    );
+    if (!resp.ok) return null;
+    const releases: any[] = await resp.json();
+    const fc = releases.find((r) => r.tag_name?.startsWith("financecheque-v"));
+    if (fc?.tag_name && fc?.html_url) {
+      return { tag: fc.tag_name, url: fc.html_url };
     }
   } catch {}
   return null;
@@ -54,26 +43,17 @@ export async function GET() {
     }
   } catch {}
 
-  // Fetch latest GitHub release for financecheque branch via gh CLI (authenticated)
+  // Fetch latest GitHub release (unauthenticated API — no gh CLI needed)
   let latestRelease = "unknown";
   let releaseUrl = "";
   const releaseTag = `financecheque-v${localVersion}`;
   try {
-    const url = ghReleaseUrl(releaseTag);
-    if (url) {
-      latestRelease = localVersion;
-      releaseUrl = url;
+    const fc = await githubReleasesFc();
+    if (fc) {
+      latestRelease = fc.tag.replace(/^financecheque-v/, "").replace(/^v/, "");
+      releaseUrl = fc.url;
     }
   } catch {}
-  if (latestRelease === "unknown") {
-    try {
-      const latest = ghLatestFcRelease();
-      if (latest) {
-        latestRelease = latest.tag.replace(/^financecheque-v/, "").replace(/^v/, "");
-        releaseUrl = latest.url;
-      }
-    } catch {}
-  }
 
   // Fallback: if no GitHub releases, try the branch .version via raw
   if (latestRelease === "unknown") {
