@@ -1,3 +1,7 @@
+## [1.7.8] - 2026-08-25T20:00
+
+Automated flywheel iteration 4/18: new color theme `midnight`.
+
 ## [1.7.7] - 2026-08-25T19:40
 
 Automated flywheel iteration 3/18: new color theme `carbon`.
