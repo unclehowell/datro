@@ -1,3 +1,10 @@
+## [1.7.2] - 2026-08-25
+
+Installer hotfix #2 from the same Termux phone.
+
+### Fixed
+- **Hardcoded `/tmp` breaks on Android**: some devices mount `/tmp` as a root-owned tmpfs (Termux uid can't write — `curl` died with exit 23 mid-GUI-download). Every temp path (GUI tarball + extraction, Node/llama archives, pip bootstrap, AI-tool logs) now honors `$TMPDIR` and falls back to `~/.tmp` when `/tmp` isn't writable
+
 ## [1.7.1] - 2026-08-25
 
 Installer hotfix from a live Termux install.

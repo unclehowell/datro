@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.7.1"
+VERSION="1.7.2"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -36,6 +36,9 @@ CHILD_ID="${CHILD_ID:-}"             # unique name for this node
 PROXY_PORT="${PROXY_PORT:-6100}"     # port for the child proxy agent
 LLAMA_PORT="${LLAMA_PORT:-8090}"     # port for llama-server (full mode only)
 INSTALL_DIR="${INSTALL_DIR:-$HOME/.fcukproxy}"
+# /tmp is a root-owned tmpfs on some Android setups — always use a writable temp dir
+TMP_WRITABLE="${TMPDIR:-$( [[ -w /tmp ]] && echo /tmp || echo "$HOME/.tmp" )}"
+mkdir -p "$TMP_WRITABLE" 2>/dev/null || true
 CHAT_ONLY="${CHAT_ONLY:-false}"      # true = no command execution allowed
 AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
 FCUK_LOCAL_TOKEN="${FCUK_LOCAL_TOKEN:-}"  # local auth token (auto-generated)
@@ -177,8 +180,8 @@ install_deps() {
     python3 -m ensurepip --upgrade 2>/dev/null || true
     if ! python3 -m pip --version &>/dev/null; then
       info "Bootstrapping pip via get-pip.py..."
-      curl -fsSL https://bootstrap.pypa.io/get-pip.py -o /tmp/fcukproxy-get-pip.py \
-        && python3 /tmp/fcukproxy-get-pip.py --user --break-system-packages >/dev/null 2>&1 || true
+      curl -fsSL https://bootstrap.pypa.io/get-pip.py -o "$TMP_WRITABLE/fcukproxy-get-pip.py" \
+        && python3 "$TMP_WRITABLE/fcukproxy-get-pip.py" --user --break-system-packages >/dev/null 2>&1 || true
     fi
   }
 }
@@ -210,14 +213,14 @@ install_llm() {
         if [[ "$os" == "termux" ]]; then
           url="https://github.com/ggml-org/llama.cpp/releases/download/$llamacpp_release/llama-$llamacpp_release-bin-android-arm64.tar.gz"
           mkdir -p "$INSTALL_DIR/llama"
-          curl -sL "$url" -o /tmp/llama.tar.gz
-          tar xzf /tmp/llama.tar.gz -C "$INSTALL_DIR/llama" --strip-components=1
+          curl -sL "$url" -o "$TMP_WRITABLE/llama.tar.gz"
+          tar xzf "$TMP_WRITABLE/llama.tar.gz" -C "$INSTALL_DIR/llama" --strip-components=1
           llm_server="$INSTALL_DIR/llama/llama-server"
           chmod +x "$llm_server" 2>/dev/null || true
         else
           url="https://github.com/ggml-org/llama.cpp/releases/download/$llamacpp_release/llama-$llamacpp_release-bin-ubuntu-arm64.tar.gz"
-          curl -sL "$url" -o /tmp/llama.tar.gz
-          sudo tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 \
+          curl -sL "$url" -o "$TMP_WRITABLE/llama.tar.gz"
+          sudo tar xzf "$TMP_WRITABLE/llama.tar.gz" -C /usr/local/bin/ --strip-components=1 \
             --wildcards '*/llama-server' '*/libllama*' '*/libggml*' 2>/dev/null || true
           llm_server="$(command -v llama-server || echo /usr/local/bin/llama-server)"
         fi
@@ -233,8 +236,8 @@ install_llm() {
       fi
       if ! command -v llama-server &>/dev/null; then
         local url="https://github.com/ggml-org/llama.cpp/releases/download/$llamacpp_release/llama-$llamacpp_release-bin-ubuntu-x64.tar.gz"
-        curl -sL "$url" -o /tmp/llama.tar.gz
-        sudo tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 \
+        curl -sL "$url" -o "$TMP_WRITABLE/llama.tar.gz"
+        sudo tar xzf "$TMP_WRITABLE/llama.tar.gz" -C /usr/local/bin/ --strip-components=1 \
           --wildcards '*/llama-server' 2>/dev/null || true
         llm_server="$(command -v llama-server || echo /usr/local/bin/llama-server)"
       else
@@ -249,8 +252,8 @@ install_llm() {
       fi
       if ! command -v llama-server &>/dev/null; then
         local url="https://github.com/ggml-org/llama.cpp/releases/download/$llamacpp_release/llama-$llamacpp_release-bin-macos-arm64.tar.gz"
-        curl -sL "$url" -o /tmp/llama.tar.gz
-        sudo tar xzf /tmp/llama.tar.gz -C /usr/local/bin/ --strip-components=1 \
+        curl -sL "$url" -o "$TMP_WRITABLE/llama.tar.gz"
+        sudo tar xzf "$TMP_WRITABLE/llama.tar.gz" -C /usr/local/bin/ --strip-components=1 \
           --wildcards '*/llama-server' 2>/dev/null || true
         llm_server="$(command -v llama-server || echo /usr/local/bin/llama-server)"
       else
@@ -587,13 +590,13 @@ install_node() {
   fi
 
   mkdir -p "$INSTALL_DIR"
-  if ! curl -fsSL "$url" -o /tmp/fcuk-node.tar.xz; then
+  if ! curl -fsSL "$url" -o "$TMP_WRITABLE/fcuk-node.tar.xz"; then
     err "Failed to download Node.js"
     return 1
   fi
   rm -rf "$node_dir" && mkdir -p "$node_dir"
-  tar xf /tmp/fcuk-node.tar.xz -C "$node_dir" --strip-components=1 || { err "Node.js extraction failed"; return 1; }
-  rm -f /tmp/fcuk-node.tar.xz
+  tar xf "$TMP_WRITABLE/fcuk-node.tar.xz" -C "$node_dir" --strip-components=1 || { err "Node.js extraction failed"; return 1; }
+  rm -f "$TMP_WRITABLE/fcuk-node.tar.xz"
 
   if [[ ! -x "$node_dir/bin/node" ]]; then
     err "Node.js install failed — the GUI cannot run without Node >= 20"
@@ -618,9 +621,9 @@ install_ai_tools() {
     info "Installing kilo (kilocode)..."
     if [[ -x "$npm_bin" ]]; then
       "$npm_bin" install -g @kilocode/cli --prefix "$HOME/.local" \
-        --no-audit --no-fund --no-update-notifier 2>/tmp/kilo_install.log \
+        --no-audit --no-fund --no-update-notifier 2>"$TMP_WRITABLE/kilo_install.log" \
         && ok "kilo installed: $(kilo --version 2>/dev/null || echo 'ok')" \
-        || warn "kilo install failed — see /tmp/kilo_install.log"
+        || warn "kilo install failed — see $TMP_WRITABLE/kilo_install.log"
     else
       warn "npm not found — skipping kilo"
     fi
@@ -655,7 +658,7 @@ KILOWRAP
     info "Installing opencode..."
     if [[ -x "$npm_bin" ]]; then
       "$npm_bin" install -g opencode-ai --prefix "$HOME/.local" \
-        --no-audit --no-fund --no-update-notifier 2>/tmp/opencode_install.log \
+        --no-audit --no-fund --no-update-notifier 2>"$TMP_WRITABLE/opencode_install.log" \
         && ok "opencode installed" \
         || {
           # Fallback: direct binary download for Linux x64
@@ -696,9 +699,9 @@ OCWRAP
     info "Installing kiro CLI..."
     if [[ -x "$npm_bin" ]]; then
       "$npm_bin" install -g @aws/kiro-cli --prefix "$HOME/.local" \
-        --no-audit --no-fund --no-update-notifier 2>/tmp/kiro_install.log \
+        --no-audit --no-fund --no-update-notifier 2>"$TMP_WRITABLE/kiro_install.log" \
         && ok "kiro installed: $(kiro --version 2>/dev/null || echo 'ok')" \
-        || warn "kiro install failed — see /tmp/kiro_install.log"
+        || warn "kiro install failed — see $TMP_WRITABLE/kiro_install.log"
     else
       warn "npm not found — skipping kiro"
     fi
@@ -744,14 +747,14 @@ install_gui() {
   GUI_VERSION="$(gui_latest_version)"
   info "Downloading AgentOS chat GUI (financecheque-v$GUI_VERSION)..."
   local tarball="https://github.com/unclehowell/datro/archive/refs/tags/financecheque-v$GUI_VERSION.tar.gz"
-  local tmp_src="/tmp/fcuk-gui-src"
+  local tmp_src=""$TMP_WRITABLE/fcuk-gui-src""
 
-  if ! curl -fsSL "$tarball" -o /tmp/fcuk-gui.tgz; then
+  if ! curl -fsSL "$tarball" -o "$TMP_WRITABLE/fcuk-gui.tgz"; then
     err "Failed to download GUI release tarball"
     return 1
   fi
   rm -rf "$tmp_src" && mkdir -p "$tmp_src"
-  if ! tar xzf /tmp/fcuk-gui.tgz -C "$tmp_src"; then
+  if ! tar xzf "$TMP_WRITABLE/fcuk-gui.tgz" -C "$tmp_src"; then
     err "Failed to extract GUI release tarball"
     return 1
   fi
@@ -760,10 +763,10 @@ install_gui() {
   mkdir -p "$(dirname "$GUI_DIR")"
   if ! cp -a "$tmp_src/datro-financecheque-v$GUI_VERSION/agentos/gui" "$GUI_DIR"; then
     err "agentos/gui not found in the release tarball"
-    rm -rf "$tmp_src" /tmp/fcuk-gui.tgz
+    rm -rf "$tmp_src" "$TMP_WRITABLE/fcuk-gui.tgz"
     return 1
   fi
-  rm -rf "$tmp_src" /tmp/fcuk-gui.tgz
+  rm -rf "$tmp_src" "$TMP_WRITABLE/fcuk-gui.tgz"
   ok "GUI source at $GUI_DIR"
 
   info "Installing GUI dependencies (npm install — can take a few minutes)..."
