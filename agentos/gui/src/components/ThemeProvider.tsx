@@ -23,6 +23,7 @@ export const THEMES = [
   "matrix", "matrix-light",
     "obsidian", "obsidian-light",
     "slate", "slate-light",
+    "carbon", "carbon-light",
 ] as const;
 
 export type Theme = typeof THEMES[number];
