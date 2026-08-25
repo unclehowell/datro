@@ -209,6 +209,41 @@
   --info: #0891b2;
 }
 
+
+[data-theme="rose"] {
+  --background: #1a0a14;
+  --foreground: #f5e6f0;
+  --accent: #ec4899;
+  --accent-dim: #831843;
+  --border: #4a1942;
+  --surface: #1f0d18;
+  --surface-hover: #4a1942;
+  --text-primary: #f5e6f0;
+  --text-secondary: #d4a0c0;
+  --text-muted: #9a6080;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #f43f5e;
+  --info: #a855f7;
+}
+
+[data-theme="rose-light"] {
+  --background: #fff1f5;
+  --foreground: #4a0519;
+  --accent: #db2777;
+  --accent-dim: #f9a8d4;
+  --border: #fecdd3;
+  --surface: #ffffff;
+  --surface-hover: #ffe4e6;
+  --text-primary: #4a0519;
+  --text-secondary: #9f1239;
+  --text-muted: #f472b6;
+  --success: #16a34a;
+  --warning: #d97706;
+  --error: #e11d48;
+  --info: #9333ea;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

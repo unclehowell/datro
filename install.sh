@@ -25,7 +25,7 @@ set -euo pipefail
 # Idempotent: safe to re-run on non-fresh installs.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.7.9"
+VERSION="1.7.10"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
