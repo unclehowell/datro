@@ -1,3 +1,11 @@
+## [1.7.3] - 2026-08-25
+
+Installer hotfix #3 — Turbopack can't build on Android.
+
+### Fixed
+- **GUI build fails on Android/Termux**: Next.js 16 defaults to Turbopack, which has no native bindings for `android/arm64`. Both `install.sh` and `update-checker.sh` now pass `--webpack` on Termux so the production build succeeds
+- **GUI doesn't survive Termux reboot**: the GUI runs via `nohup` (no systemd on Termux) but the boot script didn't start it. Added GUI auto-start to `~/.termux/boot/start-fcukproxy.sh` and to the installer's `start_gui_nohup()` for future installs
+
 ## [1.7.2] - 2026-08-25
 
 Installer hotfix #2 from the same Termux phone.

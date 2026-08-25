@@ -418,8 +418,12 @@ ensure_gui_build() {
   cd "$GUI_DIR"
   PATH="$HOME/.local/node/bin:$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
   [[ -f "$GUI_DIR/.next/turbopack" ]] && rm -rf "$GUI_DIR/.next"
-  log "Building GUI..."
-  if PATH="$HOME/.local/node/bin:$PATH" timeout 600 "$HOME/.local/node/bin/npx" next build 2>>"$LOG_FILE" | tail -5; then
+  local build_args=()
+  if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
+    build_args=(--webpack)
+  fi
+  log "Building GUI (args: ${build_args[*]:-default})..."
+  if PATH="$HOME/.local/node/bin:$PATH" timeout 600 "$HOME/.local/node/bin/npx" next build "${build_args[@]}" 2>>"$LOG_FILE" | tail -5; then
     find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1 > "$GUI_DIR/.last-build-hash"
     log "GUI built successfully"
   else

@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.7.2"
+VERSION="1.7.3"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -784,8 +784,13 @@ install_gui() {
   fi
 
   info "Building the GUI (next build — first run is slow on small machines)..."
+  local build_args=()
+  # Turbopack has no native bindings for Android/arm64 — use Webpack instead
+  if [[ "$PLATFORM" == termux* ]]; then
+    build_args=(--webpack)
+  fi
   ( cd "$GUI_DIR"
-    NODE_OPTIONS="--max-old-space-size=1400" "$NPX_BIN" next build >> "$GUI_DIR/gui-build.log" 2>&1
+    NODE_OPTIONS="--max-old-space-size=1400" "$NPX_BIN" next build "${build_args[@]}" >> "$GUI_DIR/gui-build.log" 2>&1
   ) || { err "GUI build failed — see $GUI_DIR/gui-build.log"; return 1; }
   if [[ ! -d "$GUI_DIR/.next" ]]; then
     err "GUI build failed (.next missing) — see $GUI_DIR/gui-build.log"
@@ -856,6 +861,31 @@ start_gui_nohup() {
     echo $! > "$GUI_DIR/gui.pid"
   )
   ok "GUI started (PID: $(cat "$GUI_DIR/gui.pid"))"
+
+  # Ensure GUI restarts on Termux boot (no systemd — write a termux-boot script)
+  if [[ "$PLATFORM" == termux* && -d "$HOME/.termux/boot" ]]; then
+    local boot_script="$HOME/.termux/boot/start-fcukproxy.sh"
+    if ! grep -q "AGENTOS_GUI_DIR" "$boot_script" 2>/dev/null; then
+      info "Adding GUI startup to $boot_script..."
+      cat >> "$boot_script" << BOOTEOF
+
+# Start the AgentOS GUI (not managed by runit — started via nohup)
+sleep 10
+GUI_DIR=$HOME/.fcukproxy/agentos-gui
+if [[ -d "\$GUI_DIR/.next" ]] && ! kill -0 \$(cat "\$GUI_DIR/gui.pid" 2>/dev/null) 2>/dev/null; then
+  echo "[boot \$(date +%H:%M:%S)] starting GUI on :$GUI_PORT" >> "\$LOG" 2>&1
+  cd "\$GUI_DIR"
+  env HOME=\$HOME PATH=$NODE_BIN_DIR:\$HOME/.local/bin:\$PREFIX/bin:\$PATH \\
+      NODE_ENV=production PORT=$GUI_PORT HOSTNAME=0.0.0.0 \\
+      AGENTOS_GUI_DIR=\$GUI_DIR FCUK_AGENT_URL=http://127.0.0.1:$PROXY_PORT/v1 \\
+      nohup ./node_modules/.bin/next start -p $GUI_PORT -H 0.0.0.0 >> gui.log 2>&1 &
+  echo \$! > gui.pid
+  echo "[boot \$(date +%H:%M:%S)] GUI PID: \$!" >> "\$LOG" 2>&1
+fi
+BOOTEOF
+      ok "GUI will auto-start on Termux boot"
+    fi
+  fi
 }
 
 # ── Verify the GUI is serving ────────────────────────────────────────────────
