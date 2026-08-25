@@ -24,7 +24,8 @@ import { join } from "path";
 import { homedir } from "os";
 import { buildRouterMessages } from "@/lib/harness";
 import { chatWithCloud } from "@/lib/cloud-router";
-import { getHermesState, stopProfile } from "@/lib/hermes-gate";
+import { getHermesState, startProfile, stopProfile } from "@/lib/hermes-gate";
+import { ensureLLMStack } from "@/lib/llm-gate";
 
 const VOICEMAIL_DIR = join(homedir(), ".fcukproxy", "voicemails");
 const VOICEMAIL_INDEX = join(VOICEMAIL_DIR, "index.json");
@@ -72,7 +73,7 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
 
     set("llm", { userText });
     let agentText = "";
-    try { agentText = await runLLM(userText); } catch { agentText = "(No LLM available)"; }
+    try { await ensureStackForVoicemail(); agentText = await runLLM(userText); } catch { agentText = "(No LLM available)"; }
 
     set("tts", { userText, agentText });
     let audioPath = "";
@@ -280,6 +281,33 @@ async function runTTS(text: string, id: string): Promise<string> {
   return audioPath;
 }
 
+// ─── Stack startup ───────────────────────────────────────
+// A voicemail reply must be generated even if the LLM stack is dormant:
+// bring up Hermes (non-blocking) and Ollama+OmniRoute (awaited, warmed).
+
+async function startHermesForVoicemail(): Promise<void> {
+  try {
+    const hs = await getHermesState();
+    if (!hs.hermesLocal.running && !hs.busy) {
+      void startProfile("hermes-local").then(() =>
+        console.log("[voicemail] hermes-local started")
+      );
+    }
+  } catch (e: any) {
+    console.log("[voicemail] hermes start skipped:", e?.message);
+  }
+}
+
+async function ensureStackForVoicemail(): Promise<void> {
+  await startHermesForVoicemail();
+  try {
+    const gate = await ensureLLMStack();
+    console.log("[voicemail] llm stack:", gate.message || "ready");
+  } catch (e: any) {
+    console.log("[voicemail] llm stack unavailable:", e?.message);
+  }
+}
+
 // ─── Unload ollama model + stop hermes ───────────────────
 
 async function unloadOllamaModel(): Promise<void> {
@@ -349,6 +377,7 @@ export async function POST(req: NextRequest) {
     // 2. LLM reply with harness context (tries ollama directly, then cloud)
     let agentText = "";
     try {
+      await ensureStackForVoicemail();
       agentText = await runLLM(userText);
       console.log("[voicemail] LLM response:", agentText.slice(0, 100));
     } catch (e) {

@@ -1,3 +1,16 @@
+## [1.6.0] - 2026-08-24
+
+Voicemail modal experience + LLM stack auto-start.
+
+### Added
+- **Voicemail modal on hang-up**: ending a diverted call now opens a modal automatically — animated `stt > think > tts` breadcrumb shows live pipeline progress (polled from `?action=status`), then swaps to the reply transcript + playback bar when ready; error state included
+- **LLM stack auto-start**: the voicemail pipeline now wakes Hermes (`hermes-local`) and Ollama/OmniRoute (`ensureLLMStack`) before generating the reply, so voicemails work even when the stack is dormant
+- **Live step highlighting**: breadcrumb steps pulse while active, stay green once complete
+
+### Changed
+- Processing breadcrumb moved out of the voicemail list panel and onto the modal (list stays clean)
+- Voicemail submission no longer flashes a placeholder card in the list
+
 ## [1.5.7] - 2026-08-24
 
 OTA auto-update fixes for child nodes.

@@ -381,21 +381,38 @@ function ProxyTitle({ pulsing }: { pulsing: boolean }) {
 
 // Animated pipeline breadcrumb shown in the voicemail list while a
 // recorded message is being processed (stt > think > tts).
-function VmProcessingBreadcrumb() {
-  const steps = ["stt", "think", "tts"];
+// Animated pipeline breadcrumb shown on the voicemail modal while a
+// recorded message is being processed (stt > think > tts). The active
+// step pulses; completed steps stay lit green.
+function VmProcessingBreadcrumb({ active }: { active: string }) {
+  const steps = [
+    { id: "stt", label: "stt" },
+    { id: "llm", label: "think" },
+    { id: "tts", label: "tts" },
+  ];
+  const activeIdx = steps.findIndex((s) => s.id === active);
   return (
-    <div className="flex items-center gap-0 text-[9px] font-mono">
-      {steps.map((s, i) => (
-        <span key={s} className="flex items-center">
-          {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
-          <span
-            className="px-1 py-0.5 rounded border border-accent/30 bg-accent/10 text-accent animate-pulse"
-            style={{ animationDelay: `${i * 350}ms`, animationDuration: "1.4s" }}
-          >
-            {s}
+    <div className="flex items-center gap-0 text-[10px] font-mono justify-center">
+      {steps.map((s, i) => {
+        const done = activeIdx > i || active === "complete";
+        const isActive = activeIdx === i;
+        return (
+          <span key={s.id} className="flex items-center">
+            {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
+            <span
+              className={`px-1.5 py-0.5 rounded border transition-all ${
+                isActive
+                  ? "border-accent/50 bg-accent/15 text-accent animate-pulse"
+                  : done
+                  ? "border-green-500/30 bg-green-500/10 text-green-400"
+                  : "border-border bg-surface text-text-muted opacity-60"
+              }`}
+            >
+              {s.label}
+            </span>
           </span>
-        </span>
-      ))}
+        );
+      })}
     </div>
   );
 }
@@ -539,6 +556,8 @@ export default function ChatPage() {
   // Voicemail modal: tracks the pending/real ID to show in the overlay
   const [voicemailModalPendingId, setVoicemailModalPendingId] = useState<string | null>(null);
   const [voicemailModalRealId, setVoicemailModalRealId] = useState<string | null>(null);
+  // Live pipeline status for the voicemail modal (stt → llm → tts → complete)
+  const [vmStatus, setVmStatus] = useState<{ status: string; userText?: string; agentText?: string; error?: string } | null>(null);
 
   // ─── Version state ─────────────────────────────────────
   const [versionInfo, setVersionInfo] = useState<{
@@ -930,6 +949,7 @@ export default function ChatPage() {
     setPendingVms((prev) => [...prev, { id: pendingId, ts: Date.now() }]);
     setVoicemailModalPendingId(pendingId);
     setVoicemailModalRealId(null);
+    setVmStatus({ status: "queued" });
     try {
       const fd = new FormData();
       fd.append("audio", blob, "voicemail.webm");
@@ -941,10 +961,13 @@ export default function ChatPage() {
           try {
             const sr = await fetch(`/api/voicemail?action=status&id=${data.id}`);
             const sd = await sr.json();
+            setVmStatus(sd);
             if (sd.status === "complete" || sd.status === "error") {
               clearInterval(poll);
-              setVoicemailModalRealId(data.id);
-              setVoicemailModalPendingId(null);
+              if (sd.status === "complete") {
+                setVoicemailModalRealId(data.id);
+                setVoicemailModalPendingId(null);
+              }
               fetchVoicemails();
             }
           } catch {}
@@ -954,7 +977,7 @@ export default function ChatPage() {
         fetchVoicemails();
       }
     } catch {
-      setVoicemailModalPendingId(null);
+      setVmStatus({ status: "error", error: "Could not save voicemail" });
     } finally {
       setPendingVms((prev) => prev.filter((p) => p.id !== pendingId));
     }
@@ -1755,12 +1778,36 @@ export default function ChatPage() {
           <div className="w-full max-w-md mx-4" onClick={(e) => e.stopPropagation()}>
             {voicemailModalPendingId ? (
               <div className="bg-surface border border-accent/30 rounded-xl p-6 text-center">
-                <div className="text-text-muted text-sm mb-4">Processing your voicemail…</div>
-                <VmProcessingBreadcrumb />
+                {vmStatus?.status === "error" ? (
+                  <>
+                    <div className="text-red-300 text-sm mb-3">{vmStatus.error || "Processing failed"}</div>
+                    <div className="text-text-muted text-xs">Your message was not processed.</div>
+                  </>
+                ) : (
+                  <>
+                    <div className="text-text-muted text-xs mb-1">Voicemail</div>
+                    <VmProcessingBreadcrumb
+                      active={vmStatus?.status === "llm" ? "llm" : vmStatus?.status === "tts" ? "tts" : "stt"}
+                    />
+                    <div className="text-text-muted text-[11px] mt-4">
+                      {vmStatus?.status === "tts"
+                        ? "Generating spoken reply\u2026"
+                        : vmStatus?.status === "llm"
+                        ? "Waking Hermes & Ollama \u2014 thinking\u2026"
+                        : "Transcribing your message\u2026"}
+                    </div>
+                  </>
+                )}
                 <button onClick={() => { setVoicemailModalPendingId(null); setVoicemailModalRealId(null); }} className="mt-6 text-xs text-text-muted hover:text-text-primary transition-colors">Dismiss</button>
               </div>
             ) : voicemailModalRealId ? (
-              <div>
+              <div className="bg-surface border border-border rounded-xl p-4 space-y-3">
+                {vmStatus?.userText && (
+                  <div className="text-[11px] text-text-muted border-l-2 border-border pl-2">{vmStatus.userText}</div>
+                )}
+                {vmStatus?.agentText && (
+                  <div className="text-xs text-text-primary whitespace-pre-wrap border-l-2 border-accent/40 pl-2">{vmStatus.agentText}</div>
+                )}
                 <PlaybackBar
                   vmId={voicemailModalRealId}
                   onDelete={() => { deleteVoicemail(voicemailModalRealId); setVoicemailModalRealId(null); }}
