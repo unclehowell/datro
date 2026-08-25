@@ -522,7 +522,8 @@ main() {
   sync_source
 
   # Always ensure GUI is buildable (even when version is current)
-  ensure_gui_build
+  # Non-fatal: build failures should not block service regeneration or version checks
+  ensure_gui_build || log "WARN: GUI build did not complete (non-fatal)"
 
   local latest
   latest=$(fetch_latest_version) || exit 1
