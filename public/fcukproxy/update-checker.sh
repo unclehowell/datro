@@ -33,7 +33,7 @@ DRY_RUN="${DRY_RUN:-0}"
 NODE_BIN=""
 NPM_BIN=""
 NPX_BIN=""
-for candidate_node in "$HOME/.local/node/bin/node" "$(command -v node 2>/dev/null)" "$PREFIX/bin/node"; do
+for candidate_node in "$HOME/.local/node/bin/node" "$(command -v node 2>/dev/null)" "${PREFIX:-}/bin/node"; do
   if [[ -n "$candidate_node" && -x "$candidate_node" ]]; then NODE_BIN="$candidate_node"; break; fi
 done
 for candidate_npm in "$HOME/.local/node/bin/npm" "$(command -v npm 2>/dev/null)" "${PREFIX:-}/bin/npm"; do
