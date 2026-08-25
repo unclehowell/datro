@@ -314,6 +314,41 @@
   --info: #0284c7;
 }
 
+
+[data-theme="monochrome"] {
+  --background: #111111;
+  --foreground: #ffffff;
+  --accent: #ffffff;
+  --accent-dim: #555555;
+  --border: #333333;
+  --surface: #1a1a1a;
+  --surface-hover: #333333;
+  --text-primary: #ffffff;
+  --text-secondary: #cccccc;
+  --text-muted: #888888;
+  --success: #ffffff;
+  --warning: #ffffff;
+  --error: #ffffff;
+  --info: #ffffff;
+}
+
+[data-theme="monochrome-light"] {
+  --background: #ffffff;
+  --foreground: #111111;
+  --accent: #111111;
+  --accent-dim: #999999;
+  --border: #cccccc;
+  --surface: #f9f9f9;
+  --surface-hover: #f0f0f0;
+  --text-primary: #111111;
+  --text-secondary: #555555;
+  --text-muted: #999999;
+  --success: #111111;
+  --warning: #111111;
+  --error: #111111;
+  --info: #111111;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

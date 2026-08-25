@@ -1,3 +1,7 @@
+## [1.7.13] - 2026-08-25T21:43
+
+Automated flywheel iteration 9/18: new color theme `monochrome`.
+
 ## [1.7.12] - 2026-08-25T21:20
 
 Automated flywheel iteration 8/18: new color theme `ocean`.
