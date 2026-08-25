@@ -16,7 +16,7 @@ const ITEMS = [
 
 export default function Dock() {
   const pathname = usePathname();
-  const { theme, toggle } = useTheme();
+  const { theme, cycle } = useTheme();
 
   return (
     <div className="shrink-0 bg-surface border-t border-border px-2 py-1 flex items-center justify-center">
@@ -40,12 +40,12 @@ export default function Dock() {
         })}
 
         <button
-          onClick={toggle}
+          onClick={cycle}
           className="flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs text-text-muted hover:text-accent hover:bg-surface-hover transition-colors ml-2 border border-transparent hover:border-accent/20"
-          title={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
+          title={`Theme: ${theme} (click for next)`}
         >
-          <span className="text-sm">{theme === "dark" ? "☀️" : "🌙"}</span>
-          <span>{theme === "dark" ? "Light" : "Dark"}</span>
+          <span className="text-sm">🎨</span>
+          <span>{theme}</span>
         </button>
 
         {pathname === "/chat" && (

@@ -2,12 +2,34 @@
 
 import { createContext, useContext, useEffect, useState } from "react";
 
-type Theme = "dark" | "light";
+export const THEMES = [
+  "dark", "light",
+  "obsidian", "obsidian-light",
+  "slate", "slate-light",
+  "carbon", "carbon-light",
+  "midnight", "midnight-light",
+  "forest", "forest-light",
+  "rose", "rose-light",
+  "amber", "amber-light",
+  "ocean", "ocean-light",
+  "monochrome", "monochrome-light",
+  "sunset", "sunset-light",
+  "aurora", "aurora-light",
+  "neon", "neon-light",
+  "lava", "lava-light",
+  "arctic", "arctic-light",
+  "violet", "violet-light",
+  "solarized", "solarized-light",
+  "matrix", "matrix-light",
+] as const;
+
+export type Theme = typeof THEMES[number];
 
 const ThemeContext = createContext<{
   theme: Theme;
+  cycle: () => void;
   toggle: () => void;
-}>({ theme: "dark", toggle: () => {} });
+}>({ theme: "dark", cycle: () => {}, toggle: () => {} });
 
 export function useTheme() {
   return useContext(ThemeContext);
@@ -18,18 +40,28 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("agentos-theme") as Theme | null;
-    const initial = stored || "dark";
+    const stored = localStorage.getItem("agentos-theme");
+    const initial = (stored && THEMES.includes(stored as Theme)) ? (stored as Theme) : "dark";
     setTheme(initial);
     document.documentElement.setAttribute("data-theme", initial);
     setMounted(true);
   }, []);
 
+  const applyTheme = (t: Theme) => {
+    setTheme(t);
+    localStorage.setItem("agentos-theme", t);
+    document.documentElement.setAttribute("data-theme", t);
+  };
+
   const toggle = () => {
-    const next = theme === "dark" ? "light" : "dark";
-    setTheme(next);
-    localStorage.setItem("agentos-theme", next);
-    document.documentElement.setAttribute("data-theme", next);
+    const next = theme.endsWith("-light") ? theme.replace("-light", "") : `${theme}-light` as Theme;
+    applyTheme(next);
+  };
+
+  const cycle = () => {
+    const idx = THEMES.indexOf(theme);
+    const next = THEMES[(idx + 1) % THEMES.length];
+    applyTheme(next);
   };
 
   if (!mounted) {
@@ -37,7 +69,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
   }
 
   return (
-    <ThemeContext.Provider value={{ theme, toggle }}>
+    <ThemeContext.Provider value={{ theme, cycle, toggle }}>
       {children}
     </ThemeContext.Provider>
   );
