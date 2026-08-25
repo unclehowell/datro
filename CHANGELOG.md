@@ -1,3 +1,19 @@
+## [1.7.17] - 2026-08-25T23:09
+
+Automated flywheel iteration 13/18: new color theme `lava`.
+
+## [1.7.16] - 2026-08-25T23:09
+
+Automated flywheel iteration 12/18: new color theme `neon`.
+
+## [1.7.14] - 2026-08-25T23:09
+
+Automated flywheel iteration 10/18: new color theme `sunset`.
+
+## [1.7.15] - 2026-08-25T23:09
+
+Automated flywheel iteration 11/18: new color theme `aurora`.
+
 ## [1.7.13] - 2026-08-25T21:43
 
 Automated flywheel iteration 9/18: new color theme `monochrome`.
