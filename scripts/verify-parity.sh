@@ -48,7 +48,16 @@ LOCAL_VERSION=$(cat "$HOME/.fcukproxy/.local-version" 2>/dev/null | tr -d '[:spa
 if [[ "$LOCAL_VERSION" == "unknown" || "$LOCAL_VERSION" == "none" ]]; then
   issue "version" "local-version file missing or empty"
 elif [[ "$EXPECTED_VERSION" != "unknown" && "$LOCAL_VERSION" != "$EXPECTED_VERSION" ]]; then
-  issue "version" "local=$LOCAL_VERSION expected=$EXPECTED_VERSION"
+  # Only flag as issue if local is BEHIND expected (ahead is fine — may have newer release)
+  IFS='.' read -ra LOCAL_PARTS <<< "$LOCAL_VERSION"
+  IFS='.' read -ra EXPECT_PARTS <<< "$EXPECTED_VERSION"
+  LOCAL_NUM=$(( ${LOCAL_PARTS[0]:-0} * 10000 + ${LOCAL_PARTS[1]:-0} * 100 + ${LOCAL_PARTS[2]:-0} ))
+  EXPECT_NUM=$(( ${EXPECT_PARTS[0]:-0} * 10000 + ${EXPECT_PARTS[1]:-0} * 100 + ${EXPECT_PARTS[2]:-0} ))
+  if [[ "$LOCAL_NUM" -lt "$EXPECT_NUM" ]]; then
+    issue "version" "local=$LOCAL_VERSION behind expected=$EXPECTED_VERSION"
+  else
+    log "OK: version $LOCAL_VERSION (ahead of GitHub $EXPECTED_VERSION)"
+  fi
 else
   log "OK: version $LOCAL_VERSION"
 fi
