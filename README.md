@@ -33,7 +33,7 @@ Register to unlock the full dashboard, top up your wallet, and manage your agent
 Run this one-liner on any Linux or macOS machine:
 
 ```sh
-curl -fsSL https://financecheque.uk/fcukproxy/install.sh | sh
+curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | sh
 ```
 
 This will:
