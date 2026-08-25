@@ -1,3 +1,7 @@
+## [1.7.6] - 2026-08-25T19:20
+
+Automated flywheel iteration 2/18: new color theme `slate`.
+
 ## [1.7.5] - 2026-08-25T19:17
 
 Automated flywheel iteration 1/18: new color theme `obsidian`.
