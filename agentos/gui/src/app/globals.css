@@ -489,6 +489,41 @@
   --info: #2563eb;
 }
 
+
+[data-theme="arctic"] {
+  --background: #0c1220;
+  --foreground: #e8f4fd;
+  --accent: #38bdf8;
+  --accent-dim: #075985;
+  --border: #1e3a5f;
+  --surface: #0f172a;
+  --surface-hover: #1e3a5f;
+  --text-primary: #e8f4fd;
+  --text-secondary: #93c5fd;
+  --text-muted: #60a5fa;
+  --success: #22c55e;
+  --warning: #fbbf24;
+  --error: #f87171;
+  --info: #38bdf8;
+}
+
+[data-theme="arctic-light"] {
+  --background: #f0f9ff;
+  --foreground: #075985;
+  --accent: #0284c7;
+  --accent-dim: #bae6fd;
+  --border: #7dd3fc;
+  --surface: #ffffff;
+  --surface-hover: #e0f2fe;
+  --text-primary: #075985;
+  --text-secondary: #0369a1;
+  --text-muted: #0ea5e9;
+  --success: #16a34a;
+  --warning: #ca8a04;
+  --error: #dc2626;
+  --info: #0284c7;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

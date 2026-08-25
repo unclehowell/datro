@@ -1,3 +1,7 @@
+## [1.7.18] - 2026-08-25T23:20
+
+Automated flywheel iteration 14/18: new color theme `arctic`.
+
 ## [1.7.17] - 2026-08-25T23:09
 
 Automated flywheel iteration 13/18: new color theme `lava`.
