@@ -244,6 +244,41 @@
   --info: #9333ea;
 }
 
+
+[data-theme="amber"] {
+  --background: #1a1207;
+  --foreground: #fef3c7;
+  --accent: #f59e0b;
+  --accent-dim: #92400e;
+  --border: #451a03;
+  --surface: #1c1508;
+  --surface-hover: #451a03;
+  --text-primary: #fef3c7;
+  --text-secondary: #d97706;
+  --text-muted: #b45309;
+  --success: #22c55e;
+  --warning: #fbbf24;
+  --error: #ef4444;
+  --info: #f59e0b;
+}
+
+[data-theme="amber-light"] {
+  --background: #fffbeb;
+  --foreground: #451a03;
+  --accent: #d97706;
+  --accent-dim: #fcd34d;
+  --border: #fde68a;
+  --surface: #ffffff;
+  --surface-hover: #fef3c7;
+  --text-primary: #451a03;
+  --text-secondary: #92400e;
+  --text-muted: #d97706;
+  --success: #16a34a;
+  --warning: #b45309;
+  --error: #dc2626;
+  --info: #2563eb;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);

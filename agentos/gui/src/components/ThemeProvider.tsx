@@ -27,6 +27,7 @@ export const THEMES = [
     "midnight", "midnight-light",
     "forest", "forest-light",
     "rose", "rose-light",
+    "amber", "amber-light",
 ] as const;
 
 export type Theme = typeof THEMES[number];
