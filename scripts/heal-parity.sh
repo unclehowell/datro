@@ -31,7 +31,8 @@ PHONE_SSH="ssh -o BatchMode=yes -o ConnectTimeout=5 -p 8022 192.168.1.59"
 mkdir -p "$(dirname "$LOG_FILE")"
 
 log() {
-  echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] [healer] $*" | tee -a "$LOG_FILE"
+  echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] [healer] $*"
+  echo "[$(date -u +%Y-%m-%dT%H:%M:%SZ)] [healer] $*" >> "$LOG_FILE"
 }
 
 # ── Process issue files ──
