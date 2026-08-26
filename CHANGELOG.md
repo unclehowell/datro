@@ -1,3 +1,7 @@
+## [1.7.22] - 2026-08-26T04:11
+
+Automated flywheel iteration 18/18: new color theme `obsidian`.
+
 ## [1.7.20] - 2026-08-26T01:15
 
 Automated flywheel iteration 16/18: new color theme `solarized`.

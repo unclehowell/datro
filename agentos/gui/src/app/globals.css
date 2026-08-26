@@ -559,6 +559,41 @@
   --info: #00688b;
 }
 
+
+[data-theme="obsidian"] {
+  --background: #000000;
+  --foreground: #e4e4e7;
+  --accent: #06b6d4;
+  --accent-dim: #164e63;
+  --border: #1e293b;
+  --surface: #0f172a;
+  --surface-hover: #1e293b;
+  --text-primary: #e4e4e7;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --error: #ef4444;
+  --info: #06b6d4;
+}
+
+[data-theme="obsidian-light"] {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+  --accent: #0891b2;
+  --accent-dim: #67e8f9;
+  --border: #cbd5e1;
+  --surface: #ffffff;
+  --surface-hover: #f1f5f9;
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #94a3b8;
+  --success: #16a34a;
+  --warning: #d97706;
+  --error: #dc2626;
+  --info: #0284c7;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
