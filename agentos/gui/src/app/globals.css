@@ -524,6 +524,41 @@
   --info: #0284c7;
 }
 
+
+[data-theme="matrix"] {
+  --background: #000a00;
+  --foreground: #00ff41;
+  --accent: #00ff41;
+  --accent-dim: #003b00;
+  --border: #004400;
+  --surface: #001100;
+  --surface-hover: #004400;
+  --text-primary: #00ff41;
+  --text-secondary: #00cc33;
+  --text-muted: #008822;
+  --success: #00ff41;
+  --warning: #ffff00;
+  --error: #ff0000;
+  --info: #00ffff;
+}
+
+[data-theme="matrix-light"] {
+  --background: #f0fff0;
+  --foreground: #003b00;
+  --accent: #008822;
+  --accent-dim: #90ee90;
+  --border: #90ee90;
+  --surface: #ffffff;
+  --surface-hover: #e8ffe8;
+  --text-primary: #003b00;
+  --text-secondary: #005500;
+  --text-muted: #008822;
+  --success: #006400;
+  --warning: #b8860b;
+  --error: #8b0000;
+  --info: #00688b;
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -663,4 +698,6 @@ input, textarea, button, select {
 
 .animate-bounce-gentle {
   animation: bounce-gentle 1.2s ease-in-out infinite;
+}
+te;
 }

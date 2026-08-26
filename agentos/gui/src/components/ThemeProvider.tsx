@@ -35,6 +35,8 @@ export const THEMES = [
     "lava", "lava-light",
     "neon", "neon-light",
     "arctic", "arctic-light",
+    "matrix", "matrix-light",
+    "solarized", "solarized-light",
 ] as const;
 
 export type Theme = typeof THEMES[number];

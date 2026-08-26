@@ -1,3 +1,7 @@
+## [1.7.20] - 2026-08-26T01:15
+
+Automated flywheel iteration 16/18: new color theme `solarized`.
+
 ## [1.7.18] - 2026-08-25T23:20
 
 Automated flywheel iteration 14/18: new color theme `arctic`.
