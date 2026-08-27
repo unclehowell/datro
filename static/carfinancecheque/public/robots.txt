@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+Disallow: /edit
+Disallow: /api/
+
+Sitemap: https://car.financecheque.uk/sitemap.xml
+
+# AI Agents - We support WebMCP and llms.txt
+# See /llms.txt for site description
+# See /.well-known/webmcp.json for available tools

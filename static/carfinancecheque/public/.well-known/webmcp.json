@@ -1,0 +1,82 @@
+{
+  "webmcp": "0.1",
+  "name": "PCP Refund - Car Finance Claims",
+  "description": "Check eligibility and submit claims for mis-sold PCP car finance compensation in the UK. FCA regulated (FRN: 912323). Average refund GBP 1,100. No Win No Fee.",
+  "origin": "https://car.financecheque.uk",
+  "tools": [
+    {
+      "name": "check_pcp_eligibility",
+      "description": "Check if a consumer is eligible for a PCP car finance mis-selling claim. Provide personal details to determine eligibility for compensation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "first_name": {
+            "type": "string",
+            "description": "Consumer first name"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Consumer last name"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "description": "Date of birth in DD/MM/YYYY format"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Contact phone number"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Contact email address"
+          },
+          "building_number": {
+            "type": "string",
+            "description": "Building number or name"
+          },
+          "street": {
+            "type": "string",
+            "description": "Street name"
+          },
+          "city": {
+            "type": "string",
+            "description": "City or town"
+          },
+          "postcode": {
+            "type": "string",
+            "description": "UK postcode"
+          }
+        },
+        "required": ["first_name", "last_name", "date_of_birth", "phone", "email", "building_number", "street", "city", "postcode"]
+      },
+      "endpoint": "https://car.financecheque.uk/claim"
+    },
+    {
+      "name": "get_pcp_claim_info",
+      "description": "Get information about PCP car finance mis-selling claims, eligibility criteria, average compensation amounts, and how the claim process works.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "enum": ["eligibility", "process", "compensation", "faq", "about"],
+            "description": "The topic to get information about"
+          }
+        },
+        "required": ["topic"]
+      },
+      "endpoint": "https://car.financecheque.uk/about"
+    },
+    {
+      "name": "get_latest_news",
+      "description": "Get the latest news and updates about the FCA investigation into PCP car finance mis-selling, court rulings, and consumer guidance.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "endpoint": "https://car.financecheque.uk/news"
+    }
+  ]
+}
