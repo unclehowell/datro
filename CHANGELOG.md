@@ -1,5 +1,19 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.25] - 2026-08-29
+
+### Added
+- feat(carfinancecheque): Add standard WebMCP tool manifest at `/.well-known/mcp.json` declaring loan product, quote and claim submission tools with input schemas, descriptions and authentication requirements
+- feat(carfinancecheque): Extend `/.well-known/webmcp.json` with `get_loan_products` and `get_loan_quote` tools plus API-key/OAuth2 authentication documentation
+- feat(carfinancecheque): Add OpenAPI 3.0 REST API specification (`/openapi.yaml`) covering loan products, quote generation and application workflows with pagination, filtering, error responses and security schemes
+- feat(carfinancecheque): Expose `GET /api/products` Cloudflare function with type filtering and server-side pagination
+- feat(carfinancecheque): Expose `POST /api/quote` Cloudflare function returning illustrative repayment estimates
+- feat(carfinancecheque): Add Schema.org `FinancialService`, `LoanOffer` and `Organization` structured data to `index.html` (FRN 912323, terms, contact info)
+- feat(carfinancecheque): Add semantic HTML, ARIA labels and `data-*` validation/submission metadata to the claim form (fieldsets, legends, autocomplete, patterns, visible submit endpoint)
+- feat(carfinancecheque): Add skip link, landmark labels and ARIA states to shared layout for keyboard and agent accessibility
+- feat(carfinancecheque): Document OAuth2 client-credentials and `X-API-KEY` auth flows for agents in manifests, spec and `llms.txt`/`llms-full.txt`
+- feat(carfinancecheque): Update `robots.txt`, `sitemap.xml`, `llms.txt` and `llms-full.txt` for agent discovery
+
 ## [carfinancecheque-v0.0.0.21] - 2026-06-01
 
 ### Fixed

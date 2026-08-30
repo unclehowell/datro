@@ -1,0 +1,397 @@
+openapi: 3.0.3
+info:
+  title: PCP Refund - Car Finance Claims API
+  description: |
+    Public REST API for car.financecheque.uk, operated by Jigsaw Claims Ltd
+    (FCA FRN: 912323). Supports loan product discovery, illustrative finance
+    quotes and consumer PCP/HP car finance mis-selling claim submissions.
+
+    Consumers use the site directly; agents and partners can discover and
+    invoke the same operations declared in the WebMCP tool manifest at
+    /.well-known/mcp.json. Consumer endpoints are public. Partner
+    server-to-server access uses an API key or OAuth2 client credentials and
+    is scoped so claims submissions remain consumer-authorised.
+  version: "1.0.0"
+  contact:
+    name: PCP Refund / Jigsaw Claims Ltd
+    email: info@jigsawclaims.co.uk
+    url: https://car.financecheque.uk
+  license:
+    name: FCA regulated claims management (FRN 912323)
+servers:
+  - url: https://car.financecheque.uk
+    description: Production
+  - url: http://localhost:8788
+    description: Local development (wrangler pages dev)
+tags:
+  - name: System
+    description: Service health and discovery endpoints
+  - name: Products
+    description: Loan product catalog with pagination and filtering
+  - name: Quotes
+    description: Illustrative finance repayment estimates
+  - name: Applications
+    description: Consumer claim/eligibility submissions
+security:
+  - apiKeyHeader: []
+  - oauth2: [products:read, info:read]
+paths:
+  /api/ping:
+    get:
+      tags: [System]
+      operationId: getPing
+      summary: Service health check
+      description: Returns service status for monitoring and agent readiness checks.
+      security: []
+      responses:
+        "200":
+          description: Service is operational
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                    example: ok
+                  message:
+                    type: string
+                    example: Functions are working!
+  /api/products:
+    get:
+      tags: [Products]
+      operationId: listLoanProducts
+      summary: List loan/claims products
+      description: |
+        List the claims-management and finance products offered. Filter by
+        product type and page through results. Responses are paginated with
+        page/limit and expose total record counts.
+      security: []
+      parameters:
+        - name: type
+          in: query
+          required: false
+          description: Filter products by finance type.
+          schema:
+            type: string
+            enum: [pcp, hp, loan]
+        - name: page
+          in: query
+          required: false
+          description: Page number (1-indexed).
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: limit
+          in: query
+          required: false
+          description: Number of records per page.
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+      responses:
+        "200":
+          description: Paginated product list
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ProductList"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+  /api/quote:
+    post:
+      tags: [Quotes]
+      operationId: createLoanQuote
+      summary: Request an illustrative finance quote
+      description: |
+        Calculate an illustrative monthly repayment, total interest and total
+        payable for a car finance agreement. The result is an estimate only
+        and is subject to broker, lender and funder approval.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/QuoteRequest"
+      responses:
+        "200":
+          description: Illustrative quote calculated
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/QuoteResult"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+  /api/submit-claim:
+    post:
+      tags: [Applications]
+      operationId: submitClaim
+      summary: Submit a PCP/HP mis-selling eligibility enquiry
+      description: |
+        Submit a consumer eligibility check for mis-sold PCP/HP car finance.
+        Accepts application/json or multipart/form-data (signature image).
+        The server validates fields, runs device/fraud checks and forwards to
+        the R2R affiliate API. Consumers must be < 100 years old and opt in to
+        the enquiry; a claims handler follows up by phone/email.
+
+        This operation has its own server-side API key (X-API-KEY held server
+        side). Consumer browser submissions carry no credential and are still
+        accepted with Kount device verification.
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ClaimSubmission"
+          multipart/form-data:
+            schema:
+              $ref: "#/components/schemas/ClaimSubmissionFormData"
+      responses:
+        "200":
+          description: Submission accepted by the platform
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/SubmissionResponse"
+        "400":
+          $ref: "#/components/responses/BadRequest"
+        "422":
+          $ref: "#/components/responses/ValidationError"
+        "500":
+          $ref: "#/components/responses/ServerError"
+components:
+  securitySchemes:
+    apiKeyHeader:
+      type: apiKey
+      in: header
+      name: X-API-KEY
+      description: Partner API key for server-to-server access. Contact info@jigsawclaims.co.uk to register.
+    oauth2:
+      type: oauth2
+      flows:
+        clientCredentials:
+          tokenUrl: https://r2r.theclaimsystem.co.uk/oauth/token
+          scopes:
+            claims:write: Submit consumer claim applications
+            products:read: Read the loan product catalog
+            info:read: Read informational content
+  responses:
+    BadRequest:
+      description: Malformed request
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    ValidationError:
+      description: Request failed validation
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+    ServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            $ref: "#/components/schemas/Error"
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+          enum: [pcp, hp, loan]
+        name:
+          type: string
+        description:
+          type: string
+        feeModel:
+          type: string
+          enum: [No Win No Fee, Free, Fixed]
+        price:
+          type: number
+          description: Fee in GBP for fixed-fee products; 0 for free/NWNF.
+        averageRefund:
+          type: number
+          description: Average compensation figure in GBP where applicable.
+        representativeApr:
+          type: string
+          description: Representative APR range for historical agreements reviewed.
+        features:
+          type: array
+          items:
+            type: string
+      required: [id, type, name]
+    ProductList:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: "#/components/schemas/Product"
+        pagination:
+          type: object
+          properties:
+            page:
+              type: integer
+            limit:
+              type: integer
+            total:
+              type: integer
+            totalPages:
+              type: integer
+    QuoteRequest:
+      type: object
+      required: [principal, termMonths]
+      properties:
+        principal:
+          type: number
+          minimum: 500
+          maximum: 100000
+          description: Amount financed in GBP.
+        termMonths:
+          type: integer
+          minimum: 12
+          maximum: 84
+          description: Repayment term in months.
+        annualRatePct:
+          type: number
+          minimum: 0
+          maximum: 50
+          default: 11.9
+          description: Annual interest rate as a percentage.
+        financeType:
+          type: string
+          enum: [pcp, hp, loan]
+    QuoteResult:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            principal:
+              type: number
+            termMonths:
+              type: integer
+            annualRatePct:
+              type: number
+            monthlyPayment:
+              type: number
+            totalInterest:
+              type: number
+            totalPayable:
+              type: number
+            estimate:
+              type: boolean
+              const: true
+            disclaimer:
+              type: string
+    ClaimSubmission:
+      type: object
+      required: [title, first_name, last_name, date_of_birth, phone, email]
+      properties:
+        title:
+          type: string
+          enum: [Mr, Mrs, Miss, Ms, Dr]
+        first_name:
+          type: string
+          maxLength: 50
+        last_name:
+          type: string
+          maxLength: 50
+        date_of_birth:
+          type: string
+          format: date
+          description: YYYY-MM-DD. Applicant must be over 18.
+        phone:
+          type: string
+        email:
+          type: string
+          format: email
+        buildingNumber:
+          type: string
+        thoroughfare:
+          type: string
+        townOrCity:
+          type: string
+        postcode:
+          type: string
+        session_id:
+          type: string
+          description: Kount/device session identifier.
+        device_session_id:
+          type: string
+        user_agent:
+          type: string
+        signature:
+          type: string
+          description: Base64-encoded consent payload.
+        signature_image:
+          type: string
+          description: Data-URL image of consumer signature.
+    ClaimSubmissionFormData:
+      type: object
+      properties:
+        title:
+          type: string
+        first_name:
+          type: string
+        last_name:
+          type: string
+        date_of_birth:
+          type: string
+        phone:
+          type: string
+        email:
+          type: string
+        buildingNumber:
+          type: string
+        thoroughfare:
+          type: string
+        townOrCity:
+          type: string
+        postcode:
+          type: string
+        session_id:
+          type: string
+        device_session_id:
+          type: string
+        signature:
+          type: string
+        signature_image:
+          type: string
+          format: binary
+          description: Signature PNG as uploaded file part.
+    SubmissionResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [success, authentication-required, error]
+        message:
+          type: string
+        url:
+          type: string
+          description: Redirect URL when authentication-required.
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+        message:
+          type: string
+        errors:
+          type: object
+          additionalProperties:
+            type: string

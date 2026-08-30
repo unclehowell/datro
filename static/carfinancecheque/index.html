@@ -1,8 +1,9 @@
 <!doctype html>
-<html lang="en">
+<html lang="en-GB">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
     <script async src="https://www.googletagmanager.com/gtag/js?id=%VITE_GA_TRACKING_ID%"></script>
     <title>PCP Refund - Claim Mis-Sold Car Finance Compensation | Jigsaw Claims Ltd</title>
     <meta name="description" content="Check if you're eligible for a PCP car finance mis-selling claim. UK consumers may be owed thousands in compensation. FCA regulated. No Win No Fee. Average refund GBP 1,100." />
@@ -18,63 +19,159 @@
     <link rel="canonical" href="https://car.financecheque.uk/" />
     <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM-friendly site description" />
     <link rel="alternate" type="text/plain" href="/llms-full.txt" title="Full site description for AI agents" />
-    <link rel="manifest" href="/sitemap.xml" type="application/xml" />
+    <link rel="alternate" type="application/openapi+yaml" href="/openapi.yaml" title="OpenAPI 3.0 REST API specification" />
+    <link rel="alternate" type="application/json" href="/.well-known/mcp.json" title="WebMCP tool manifest" />
+    <link rel="alternate" type="application/json" href="/.well-known/webmcp.json" title="WebMCP tool manifest (legacy)" />
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
-      "@type": "LegalService",
-      "name": "PCP Refund",
-      "alternateName": "Jigsaw Claims Ltd",
-      "description": "Helping UK consumers reclaim compensation for mis-sold PCP and Hire Purchase car finance agreements. FCA authorised and regulated.",
-      "url": "https://car.financecheque.uk",
-      "logo": "https://car.financecheque.uk/assets/index-ClZTGeYG.js",
-      "address": {
-        "@type": "PostalAddress",
-        "streetAddress": "66 Seymour Grove",
-        "addressLocality": "Manchester",
-        "postalCode": "M16 0LN",
-        "addressCountry": "GB"
-      },
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer service",
-        "email": "info@jigsawclaims.co.uk",
-        "availableLanguage": "English"
-      },
-      "areaServed": {
-        "@type": "Country",
-        "name": "United Kingdom"
-      },
-      "serviceType": "Claims Management",
-      "priceRange": "No Win No Fee",
-      "hasOfferCatalog": {
-        "@type": "OfferCatalog",
-        "name": "PCP Car Finance Claims",
-        "itemListElement": [
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "PCP Eligibility Check",
-              "description": "Free check to see if you're eligible for a PCP car finance mis-selling claim"
-            }
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://car.financecheque.uk/#organization",
+          "name": "Jigsaw Claims Ltd",
+          "alternateName": "PCP Refund",
+          "description": "FCA authorised and regulated claims management company helping UK consumers reclaim compensation for mis-sold PCP and Hire Purchase car finance agreements.",
+          "url": "https://car.financecheque.uk",
+          "email": "info@jigsawclaims.co.uk",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "FCA FRN",
+            "value": "912323"
           },
-          {
-            "@type": "Offer",
-            "itemOffered": {
-              "@type": "Service",
-              "name": "PCP Claims Management",
-              "description": "Full claims management service for mis-sold PCP car finance"
-            }
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "66 Seymour Grove",
+            "addressLocality": "Manchester",
+            "postalCode": "M16 0LN",
+            "addressCountry": "GB"
+          },
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "contactType": "customer service",
+            "email": "info@jigsawclaims.co.uk",
+            "availableLanguage": "English"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "United Kingdom"
           }
-        ]
-      },
-      "aggregateRating": {
-        "@type": "AggregateRating",
-        "ratingValue": "4.8",
-        "bestRating": "5",
-        "reviewCount": "2847"
-      }
+        },
+        {
+          "@type": "FinancialService",
+          "@id": "https://car.financecheque.uk/#service",
+          "name": "PCP Refund",
+          "alternateName": "Mis-sold Car Finance Claims",
+          "description": "Claims management service for mis-sold PCP (Personal Contract Purchase) and HP (Hire Purchase) car finance. FCA authorised and regulated. No Win No Fee.",
+          "url": "https://car.financecheque.uk",
+          "serviceType": "Mis-sold PCP and HP car finance claims management",
+          "priceRange": "No Win No Fee",
+          "provider": {
+            "@id": "https://car.financecheque.uk/#organization"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "United Kingdom"
+          },
+          "potentialAction": {
+            "@type": "CheckAction",
+            "name": "Check PCP Eligibility",
+            "target": "https://car.financecheque.uk/claim"
+          },
+          "hasOfferCatalog": {
+            "@type": "OfferCatalog",
+            "name": "Car Finance Claims",
+            "itemListElement": [
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "PCP Eligibility Check",
+                  "description": "Free check to see if you're eligible for a PCP car finance mis-selling claim",
+                  "url": "https://car.financecheque.uk/claim"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "PCP Claims Management",
+                  "description": "Managed claim for mis-sold PCP car finance. Average refund GBP 1,100. No Win No Fee.",
+                  "url": "https://car.financecheque.uk/about"
+                }
+              },
+              {
+                "@type": "Offer",
+                "itemOffered": {
+                  "@type": "Service",
+                  "name": "HP Claims Management",
+                  "description": "Managed claim for mis-sold Hire Purchase car finance.",
+                  "url": "https://car.financecheque.uk/about"
+                }
+              }
+            ]
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "bestRating": "5",
+            "reviewCount": "2847"
+          }
+        },
+        {
+          "@type": "LoanOffer",
+          "@id": "https://car.financecheque.uk/#loan-offer",
+          "name": "PCP / HP Car Finance Agreement",
+          "description": "Historical PCP and HP car finance agreements (2007-2021) reviewed for mis-selling under discretionary commission arrangements. Representative APR range and amounts describe the underlying finance products consumers held and the value that can be reclaimed.",
+          "annualPercentageRate": "2.9% - 19.9%",
+          "amount": {
+            "@type": "MonetaryAmount",
+            "currency": "GBP",
+            "minValue": 5000,
+            "maxValue": 60000
+          },
+          "offeredBy": {
+            "@id": "https://car.financecheque.uk/#service"
+          },
+          "areaServed": {
+            "@type": "Country",
+            "name": "United Kingdom"
+          },
+          "potentialAction": {
+            "@type": "CheckAction",
+            "name": "Check this agreement for mis-selling",
+            "target": "https://car.financecheque.uk/claim"
+          }
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://car.financecheque.uk/#website",
+          "url": "https://car.financecheque.uk/",
+          "name": "PCP Refund",
+          "inLanguage": "en-GB",
+          "publisher": {
+            "@id": "https://car.financecheque.uk/#organization"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://car.financecheque.uk/#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://car.financecheque.uk/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Check Eligibility",
+              "item": "https://car.financecheque.uk/claim"
+            }
+          ]
+        }
+      ]
     }
     </script>
   </head>
@@ -83,4 +180,3 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-

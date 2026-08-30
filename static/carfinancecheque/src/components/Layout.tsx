@@ -18,13 +18,20 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
 
   return (
     <div className="flex flex-col min-h-screen bg-white">
+      {/* Skip link for keyboard users */}
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[100] focus:bg-brand-accent focus:text-white focus:px-6 focus:py-3 focus:rounded-xl focus:font-bold"
+      >
+        Skip to main content
+      </a>
       {/* Header */}
       <header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between h-20 items-center">
-            <Link to="/" className="flex items-center gap-3">
+            <Link to="/" className="flex items-center gap-3" aria-label="PCP Refund home">
               <div className="bg-slate-900 p-2 rounded-lg">
-                <ShieldCheck className="w-8 h-8 text-brand-accent" />
+                <ShieldCheck className="w-8 h-8 text-brand-accent" aria-hidden="true" />
               </div>
               <div className="flex flex-col">
                 <span className="text-2xl font-display font-black leading-none tracking-tight">PCP REFUND</span>
@@ -33,11 +40,12 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </Link>
 
             {/* Desktop Nav */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-8" aria-label="Primary">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
+                  aria-current={location.pathname === link.path && !link.highlight ? 'page' : undefined}
                   className={`text-xs font-bold uppercase tracking-widest transition-all ${
                     link.highlight
                       ? 'bg-brand-accent text-white py-3 px-6 rounded-full hover:bg-emerald-600 shadow-lg shadow-emerald-500/20'
@@ -50,8 +58,14 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
             </nav>
 
             {/* Mobile Menu Button */}
-            <button className="md:hidden brutal-border p-2" onClick={() => setIsMenuOpen(!isMenuOpen)}>
-              {isMenuOpen ? <X /> : <Menu />}
+            <button
+              className="md:hidden brutal-border p-2"
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              aria-expanded={isMenuOpen}
+              aria-controls="mobile-nav"
+              aria-label={isMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
+            >
+              {isMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
             </button>
           </div>
         </div>
@@ -60,12 +74,13 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
         <AnimatePresence>
           {isMenuOpen && (
             <motion.div
+              id="mobile-nav"
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -20 }}
               className="md:hidden bg-white border-b-4 border-black overflow-hidden"
             >
-              <div className="px-4 py-8 space-y-6">
+              <nav className="px-4 py-8 space-y-6" aria-label="Mobile">
                 {navLinks.map((link) => (
                   <Link
                     key={link.path}
@@ -76,13 +91,13 @@ export const Layout: React.FC<{ children: React.ReactNode }> = ({ children }) =>
                     {link.name}
                   </Link>
                 ))}
-              </div>
+              </nav>
             </motion.div>
           )}
         </AnimatePresence>
       </header>
 
-      <main className="flex-grow">{children}</main>
+      <main id="main-content" className="flex-grow">{children}</main>
 
       {/* Global CTA */}
       <section className="bg-slate-900 text-white py-32 px-4 border-t border-slate-800">

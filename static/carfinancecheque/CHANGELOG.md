@@ -3,6 +3,18 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 
 ---
 
+## [0.0.0.25] - 2026-08-29
+Aug-29 - Release carfinancecheque-v0.0.0.25 addressing all WebMCP agent-readiness feedback points.
+Aug-29 - Add WebMCP tool manifest /.well-known/mcp.json (loan products, quote, claim submission tools + auth requirements).
+Aug-29 - Extend /.well-known/webmcp.json with get_loan_products/get_loan_quote tools and authentication docs.
+Aug-29 - Add OpenAPI 3.0 spec /openapi.yaml covering products, quotes and applications with pagination/filtering/errors.
+Aug-29 - Add GET /api/products (filter + pagination) and POST /api/quote (repayment estimate) Pages Functions.
+Aug-29 - Add Schema.org FinancialService, LoanOffer, Organization structured data to index.html.
+Aug-29 - Refactor claim form to semantic HTML: fieldsets, legends, ARIA, data-* validation/submission metadata.
+Aug-29 - Add skip link and ARIA landmark/menu states to shared layout.
+Aug-29 - Document OAuth2 client-credentials and X-API-KEY auth in manifests, spec and llms.txt files.
+Aug-29 - Update robots.txt, sitemap.xml, llms.txt and llms-full.txt for agent discovery.
+
 ## [0.0.1.15] - Q2/2026
 Apr-29 - Refactor GA to use Vite env variable VITE_GA_TRACKING_ID
 Apr-29 - Fix V3 API spec: change client_ip to ip_address in upstream payload

@@ -1,0 +1,216 @@
+{
+  "name": "PCP Refund - Car Finance Claims",
+  "description": "WebMCP tool manifest for car.financecheque.uk. Check eligibility and submit claims for mis-sold PCP (Personal Contract Purchase) and HP (Hire Purchase) car finance compensation in the UK. Operated by Jigsaw Claims Ltd, FCA authorised and regulated (FRN: 912323). Average refund GBP 1,100. No Win No Fee.",
+  "protocolVersion": "0.1",
+  "version": "1.0.0",
+  "origin": "https://car.financecheque.uk",
+  "contact": {
+    "name": "PCP Refund / Jigsaw Claims Ltd",
+    "email": "info@jigsawclaims.co.uk",
+    "fcaFrn": "912323"
+  },
+  "authentication": {
+    "schema": "public",
+    "description": "Consumer-facing tools are public and require no authentication. The application submission endpoint runs server-side fraud checks (Kount) and forwards to the R2R affiliate API using an X-API-KEY header, so consumers do not need credentials. Partner/agent register access for the same API scope.",
+    "flows": [
+      {
+        "id": "public",
+        "type": "none",
+        "description": "All consumer tools (eligibility check, loan products, quote estimate, info, news) are publicly callable."
+      },
+      {
+        "id": "api-key",
+        "type": "apiKey",
+        "headerName": "X-API-KEY",
+        "in": "header",
+        "description": "Affiliate/partner access for the upstream R2R affiliate API is authenticated server-side with the API-KEY header. The public /api/submit-claim endpoint accepts consumer browser submissions without an agent credential. Partners requiring server-to-server access should contact info@jigsawclaims.co.uk to register an API key."
+      },
+      {
+        "id": "oauth2-client-credentials",
+        "type": "oauth2",
+        "flows": {
+          "clientCredentials": {
+            "tokenUrl": "https://r2r.theclaimsystem.co.uk/oauth/token",
+            "scopes": {
+              "claims:write": "Submit consumer claim applications",
+              "products:read": "Read loan product catalog",
+              "info:read": "Read informational content"
+            }
+          }
+        },
+        "description": "OAuth2 client-credentials flow is defined for future partner integrations with the upstream claims API. Scope boundaries define read-only catalog access versus claim submission."
+      }
+    ]
+  },
+  "tools": [
+    {
+      "name": "check_pcp_eligibility",
+      "description": "Submit a PCP/HP car finance mis-selling eligibility check on behalf of a consumer. Requires consent to process the enquiry. Returns submission status; a claims handler contacts the consumer to finalise.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "title": {
+            "type": "string",
+            "enum": ["Mr", "Mrs", "Miss", "Ms", "Dr"],
+            "description": "Consumer title/salutation"
+          },
+          "first_name": {
+            "type": "string",
+            "description": "Consumer first name"
+          },
+          "last_name": {
+            "type": "string",
+            "description": "Consumer last name"
+          },
+          "date_of_birth": {
+            "type": "string",
+            "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+            "description": "Date of birth in YYYY-MM-DD form"
+          },
+          "phone": {
+            "type": "string",
+            "description": "Contact phone number"
+          },
+          "email": {
+            "type": "string",
+            "format": "email",
+            "description": "Contact email address"
+          },
+          "buildingNumber": {
+            "type": "string",
+            "description": "Building number or name"
+          },
+          "thoroughfare": {
+            "type": "string",
+            "description": "Street name"
+          },
+          "townOrCity": {
+            "type": "string",
+            "description": "City or town"
+          },
+          "postcode": {
+            "type": "string",
+            "description": "UK postcode"
+          }
+        },
+        "required": ["title", "first_name", "last_name", "date_of_birth", "phone", "email", "buildingNumber", "thoroughfare", "townOrCity", "postcode"]
+      },
+      "endpoint": {
+        "url": "https://car.financecheque.uk/api/submit-claim",
+        "method": "POST",
+        "contentType": ["application/json", "multipart/form-data"]
+      },
+      "authentication": "public"
+    },
+    {
+      "name": "get_loan_products",
+      "description": "List the loan/claims products offered. Supports filtering by product type (pcp, hp, loan) and server-side pagination (page, limit).",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "enum": ["pcp", "hp", "loan"],
+            "description": "Filter products by finance type. Omit for all products."
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "default": 1
+          },
+          "limit": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 100,
+            "default": 10
+          }
+        },
+        "required": []
+      },
+      "endpoint": {
+        "url": "https://car.financecheque.uk/api/products",
+        "method": "GET",
+        "queryParams": ["type", "page", "limit"]
+      },
+      "authentication": "public"
+    },
+    {
+      "name": "get_loan_quote",
+      "description": "Return an illustrative repayment estimate for a car finance agreement (principal, term, annual rate). Used to illustrate typical PCP/HP monthly costs. Estimate only, subject to broker/funder approval.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "principal": {
+            "type": "number",
+            "minimum": 500,
+            "maximum": 100000,
+            "description": "Amount financed in GBP"
+          },
+          "termMonths": {
+            "type": "integer",
+            "minimum": 12,
+            "maximum": 84,
+            "description": "Repayment term in months"
+          },
+          "annualRatePct": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 50,
+            "description": "Annual interest rate as a percentage (default 11.9)"
+          },
+          "financeType": {
+            "type": "string",
+            "enum": ["pcp", "hp", "loan"],
+            "description": "Type of finance being estimated"
+          }
+        },
+        "required": ["principal", "termMonths"]
+      },
+      "endpoint": {
+        "url": "https://car.financecheque.uk/api/quote",
+        "method": "POST",
+        "contentType": ["application/json"]
+      },
+      "authentication": "public"
+    },
+    {
+      "name": "get_pcp_claim_info",
+      "description": "Get information about PCP car finance mis-selling claims, eligibility criteria, average compensation amounts, and how the claim process works.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "topic": {
+            "type": "string",
+            "enum": ["eligibility", "process", "compensation", "faq", "about"],
+            "description": "The topic to get information about"
+          }
+        },
+        "required": ["topic"]
+      },
+      "endpoint": {
+        "url": "https://car.financecheque.uk/about",
+        "method": "GET"
+      },
+      "authentication": "public"
+    },
+    {
+      "name": "get_latest_news",
+      "description": "Get the latest news and updates about the FCA investigation into PCP car finance mis-selling, court rulings, and consumer guidance.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {},
+        "required": []
+      },
+      "endpoint": {
+        "url": "https://car.financecheque.uk/news",
+        "method": "GET"
+      },
+      "authentication": "public"
+    }
+  ],
+  "openapi": "https://car.financecheque.uk/openapi.yaml",
+  "docs": {
+    "llmsTxt": "https://car.financecheque.uk/llms.txt",
+    "llmsFull": "https://car.financecheque.uk/llms-full.txt"
+  }
+}
