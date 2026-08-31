@@ -1,0 +1,43 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/skills/skills-state.schema.json",
+  "title": "skill.state",
+  "description": "Durable per-node skill state document written by the FinanceCheque child-proxy harness to ~/.fcukproxy/skills/skill.state.json. Each OTA-managed skill component is tracked here so skills can resume across restarts instead of cold-starting.",
+  "type": "object",
+  "required": ["schema", "updated", "skills"],
+  "properties": {
+    "schema": {
+      "type": "integer",
+      "description": "Schema revision of this document (currently 1).",
+      "minimum": 1
+    },
+    "updated": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 timestamp of the last state write."
+    },
+    "skills": {
+      "type": "object",
+      "description": "Map of OTA-managed skill component name -> skill record.",
+      "additionalProperties": {
+        "$ref": "#/definitions/skillRecord"
+      }
+    }
+  },
+  "definitions": {
+    "skillRecord": {
+      "type": "object",
+      "required": ["name", "version", "enabled", "status", "lastRun", "runCount"],
+      "properties": {
+        "name": { "type": "string", "description": "OTA component name, e.g. skills-leadgen." },
+        "version": { "type": "string", "description": "Installed skill version from the OTA manifest." },
+        "enabled": { "type": "boolean", "description": "Whether the skill is enabled on this node." },
+        "status": { "type": "string", "description": "Last known lifecycle status: idle | ok | error | running." },
+        "lastRun": { "type": ["string", "null"], "format": "date-time", "description": "ISO-8601 timestamp of the last run, or null." },
+        "runCount": { "type": "integer", "minimum": 0, "description": "Number of recorded invocations." },
+        "lastError": { "type": ["string", "null"], "description": "Last error message on failure, or null." },
+        "updated": { "type": "string", "format": "date-time", "description": "ISO-8601 timestamp of last update to this record." }
+      }
+    }
+  }
+}

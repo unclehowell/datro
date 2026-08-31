@@ -21,7 +21,12 @@
  *     - NEVER queries parent proxy API endpoint for responses
  *     - Fallback to local LLM only after timeout/retry exhaustion
  *
- * Version: 0.10.0
+ * Version: 0.11.0
+ *
+ * skill.state — durable per-node skill state layer. Every OTA-managed skill
+ * component is tracked in ~/.fcukproxy/skills/skill.state.json so skills can
+ * resume across restarts instead of cold-starting. A versioned schema lives at
+ * skills/skills-state.schema.json and is itself OTA-managed as "skills-state".
  */
 
 import http from 'http';
@@ -38,7 +43,7 @@ const EXECUTOR_URL = process.env.AGENT_PORT ? `http://localhost:${process.env.AG
 const LOCAL_TOKEN = process.env.FCUK_LOCAL_TOKEN || '';
 const AUTH_HEADER = 'X-FCUK-Token';
 const authHeader = (h) => h[String(AUTH_HEADER).toLowerCase()] ?? h[AUTH_HEADER] ?? '';
-const VERSION = '0.10.0';
+const VERSION = '0.11.0';
 const FCUK_DIR = `${process.env.HOME}/.fcukproxy`;
 
 function readLocalAgentVersion() {
@@ -60,7 +65,99 @@ const LOCAL_VERSIONS = {
   'reflect': '0.2.0',
   'skills-leadgen': '0.3.0',
   'skills-discharge': '0.2.0',
+  'skills-state': '0.1.0',
 };
+
+// ── skill.state: durable per-node skill state ───────────────────────────────
+// State file location mirrors the skills dir so all skill artifacts live together.
+const SKILLS_DIR = `${FCUK_DIR}/skills`;
+const SKILL_STATE_FILE = `${SKILLS_DIR}/skill.state.json`;
+const SKILL_STATE_SCHEMA = 1;
+
+// Default + schema for the skill.state document.
+function defaultSkillState() {
+  return {
+    schema: SKILL_STATE_SCHEMA,
+    updated: new Date().toISOString(),
+    skills: {},
+  };
+}
+
+// Load skill.state.json; return a fresh default if missing or corrupt.
+async function loadSkillState() {
+  try {
+    const raw = await fs.promises.readFile(SKILL_STATE_FILE, 'utf8');
+    const parsed = JSON.parse(raw);
+    if (!parsed || typeof parsed !== 'object') return defaultSkillState();
+    if (!parsed.skills || typeof parsed.skills !== 'object') parsed.skills = {};
+    return parsed;
+  } catch {
+    return defaultSkillState();
+  }
+}
+
+// Persist skill.state.json (atomic write via temp file + rename).
+async function saveSkillState(state) {
+  await fs.promises.mkdir(SKILLS_DIR, { recursive: true });
+  state.schema = SKILL_STATE_SCHEMA;
+  state.updated = new Date().toISOString();
+  const tmp = `${SKILL_STATE_FILE}.tmp`;
+  await fs.promises.writeFile(tmp, JSON.stringify(state, null, 2));
+  await fs.promises.rename(tmp, SKILL_STATE_FILE);
+}
+
+// Merge an individual skill's runtime record into state.
+async function recordSkillState(name, record) {
+  const state = await loadSkillState();
+  const prev = state.skills[name] || {};
+  state.skills[name] = { ...prev, ...record, updated: new Date().toISOString() };
+  await saveSkillState(state);
+  return state.skills[name];
+}
+
+// After an OTA phase passes (or when the harness boots), reconcile installed
+// skill components against skill.state so versions/enabled flags stay accurate.
+async function syncSkillState() {
+  const state = await loadSkillState();
+  let dirty = false;
+  for (const name of Object.keys(LOCAL_VERSIONS)) {
+    if (name !== 'skills-state' && name.startsWith('skills-')) {
+      const version = LOCAL_VERSIONS[name];
+      const prev = state.skills[name] || {};
+      if (prev.version !== version) {
+        state.skills[name] = {
+          name,
+          version,
+          enabled: prev.enabled !== false,
+          status: prev.status || 'idle',
+          lastRun: prev.lastRun || null,
+          runCount: prev.runCount || 0,
+          lastError: prev.lastError || null,
+          updated: new Date().toISOString(),
+        };
+        dirty = true;
+      }
+    }
+  }
+  if (dirty) await saveSkillState(state);
+  return state;
+}
+
+// Mark a skill invocation outcome; returns the updated record.
+async function markSkillRun(name, outcome, errMsg) {
+  const state = await loadSkillState();
+  const prev = state.skills[name] || { name, version: LOCAL_VERSIONS[name] || '', enabled: true, runCount: 0 };
+  state.skills[name] = {
+    ...prev,
+    status: errMsg ? 'error' : (outcome || 'ok'),
+    lastRun: new Date().toISOString(),
+    runCount: (prev.runCount || 0) + 1,
+    lastError: errMsg || null,
+    updated: new Date().toISOString(),
+  };
+  await saveSkillState(state);
+  return state.skills[name];
+}
 
 let activeJobs = 0;
 let retryCount = 0;
@@ -91,6 +188,7 @@ const COMPONENT_SPEC = {
   'reflect': { file: 'reflect.sh', check: 'bash', mode: 0o755 },
   'skills-leadgen': { file: 'skills/leadgen-strategy.md', check: 'text', mode: 0o644 },
   'skills-discharge': { file: 'skills/local-agent-discharge.md', check: 'text', mode: 0o644 },
+  'skills-state': { file: 'skills/skills-state.schema.json', check: 'json', mode: 0o644 },
 };
 
 // RFC 3986 host extraction without the WHATWG URL host quirks (ipv6 brackets etc.)
@@ -162,6 +260,7 @@ async function validateFile(kind, filePath) {
     else if (kind === 'python') execFileSync('python3', ['-m', 'py_compile', filePath], { stdio: 'pipe' });
     else if (kind === 'bash') execFileSync('bash', ['-n', filePath], { stdio: 'pipe' });
     else if (kind === 'text') { const s = await import('fs/promises'); const t = await s.readFile(filePath, 'utf8'); if (!t.length) return false; }
+    else if (kind === 'json') { const s = await import('fs/promises'); const t = await s.readFile(filePath, 'utf8'); JSON.parse(t); if (!t.length) return false; }
     return true;
   } catch {
     return false;
@@ -229,6 +328,9 @@ async function checkForUpdate() {
       const verFile = `${FCUK_DIR}/.ota-version-${name}`;
       await fs.promises.writeFile(verFile, version);
       console.log(`[child-proxy] OTA: ${name} updated to ${version}`);
+      if (name.startsWith('skills-') && name !== 'skills-state') {
+        await recordSkillState(name, { name, version, enabled: true, status: 'idle' });
+      }
     }
 
     // Phase 3: record the applied sequence (only after everything swapped).
@@ -543,6 +645,46 @@ const server = http.createServer(async (req, res) => {
     return;
   }
 
+  if (req.method === 'GET' && path === '/api/skill/state') {
+    if (LOCAL_TOKEN && authHeader(req.headers) !== LOCAL_TOKEN) {
+      res.writeHead(401, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'unauthorized' }));
+      return;
+    }
+    try {
+      const state = await syncSkillState();
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(state));
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: `skill.state unavailable: ${e.message}` }));
+    }
+    return;
+  }
+
+  if (req.method === 'POST' && path === '/api/skill/state') {
+    if (LOCAL_TOKEN && authHeader(req.headers) !== LOCAL_TOKEN) {
+      res.writeHead(401, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: 'unauthorized' }));
+      return;
+    }
+    let bodyStr = '';
+    for await (const chunk of req) bodyStr += chunk;
+    let body;
+    try { body = JSON.parse(bodyStr); } catch { res.writeHead(400); res.end(JSON.stringify({ error: 'Invalid JSON' })); return; }
+    const name = String(body.name || '');
+    if (!name) { res.writeHead(400, { 'Content-Type': 'application/json' }); res.end(JSON.stringify({ error: 'name required' })); return; }
+    try {
+      const rec = await markSkillRun(name, body.status || 'ok', body.error || null);
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify(rec));
+    } catch (e) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ error: `skill.state mark failed: ${e.message}` }));
+    }
+    return;
+  }
+
   if (req.method === 'POST' && (path === '/v1/agent/execute' || path === '/v1/agent/delegate')) {
     if (LOCAL_TOKEN && authHeader(req.headers) !== LOCAL_TOKEN) {
       res.writeHead(401, { 'Content-Type': 'application/json' });
@@ -675,6 +817,7 @@ server.listen(PORT, () => {
   scheduleNextPoll();
   setInterval(checkForUpdate, (Number(process.env.OTA_INTERVAL_MS) || 1800000));
   checkForUpdate();
+  syncSkillState().then((s) => console.log(`[child-proxy] skill.state ready: ${Object.keys(s.skills || {}).length} skill(s)`)).catch(() => {});
 });
 
 function getLocalIP() {

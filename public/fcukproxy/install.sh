@@ -292,6 +292,9 @@ install_agent() {
   mkdir -p "$INSTALL_DIR/skills" 2>/dev/null || true
   curl -sL "$RAW_BASE/public/fcukproxy/skills/leadgen-strategy.md" -o "$INSTALL_DIR/skills/leadgen-strategy.md" 2>/dev/null || true
   curl -sL "$RAW_BASE/public/fcukproxy/skills/local-agent-discharge.md" -o "$INSTALL_DIR/skills/local-agent-discharge.md" 2>/dev/null || true
+  # skill.state: versioned schema seeded on install; the child-proxy harness
+  # maintains the runtime skill.state.json alongside it via OTA.
+  curl -sL "$RAW_BASE/public/fcukproxy/skills/skills-state.schema.json" -o "$INSTALL_DIR/skills/skills-state.schema.json" 2>/dev/null || true
 
   # Nightly sleep-time compute: node reviews today's traces → distills memory.md
   if command -v crontab >/dev/null 2>&1; then

@@ -1,3 +1,12 @@
+## [1.8.0]
+
+Introduce the `skill.state` concept into the child-proxy harness.
+
+- feat: Add a durable per-node skill-state layer written to `~/.fcukproxy/skills/skill.state.json`, tracking every OTA-managed skill's `version`, `enabled`, `status`, `lastRun`, `runCount`, `lastError` and `updated` so skills resume across restarts instead of cold-starting.
+- feat: Add OTA-managed `skills-state` component (versioned `skills-skills-state.schema.json`) to the child-proxy `COMPONENT_SPEC` and `ota-manifest.json`, and reconcile skill versions into state on boot and after each OTA swap.
+- feat: Add authenticated `GET /api/skill/state` (read) and `POST /api/skill/state` (mark run outcome) endpoints to the child-proxy HTTP harness.
+- bump: child-proxy v0.10.0 -> 0.11.0, financecheque release v1.7.24 -> v1.8.0, OTA `release_sequence` 7 -> 8.
+
 ## [1.7.22] - 2026-08-26T04:11
 
 Automated flywheel iteration 18/18: new color theme `obsidian`.

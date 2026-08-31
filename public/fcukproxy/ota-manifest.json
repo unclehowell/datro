@@ -1,8 +1,8 @@
 {
   "schema": 2,
   "branch": "financecheque",
-  "release_sequence": 7,
-  "updated": "2026-08-24",
+  "release_sequence": 8,
+  "updated": "2026-08-31",
   "apps": {
     "child-proxy": {
       "version": "0.11.0",
@@ -51,6 +51,12 @@
       "file": "skills/local-agent-discharge.md",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/skills/local-agent-discharge.md",
       "check": "text"
+    },
+    "skills-state": {
+      "version": "0.1.0",
+      "file": "skills/skills-state.schema.json",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/skills/skills-state.schema.json",
+      "check": "json"
     }
   },
   "components": {
