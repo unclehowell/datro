@@ -27,7 +27,7 @@ export async function complete(req: CompletionRequest): Promise<CompletionRespon
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ stream: false, ...req }),
-    signal: AbortSignal.timeout(30000),
+    signal: AbortSignal.timeout(300000),
   });
   if (!res.ok) throw new Error(`OmniRoute error: ${res.status} ${await res.text()}`);
   return res.json();

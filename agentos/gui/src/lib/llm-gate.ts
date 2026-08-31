@@ -21,7 +21,7 @@ const OMNIROUTE_PORT = 20128;
 const MODEL = process.env.LLM_GATE_MODEL || "minicpm5-32k";
 const IDLE_TIMEOUT_MS = (parseInt(process.env.LLM_IDLE_TIMEOUT_MIN || "30", 10) || 30) * 60_000;
 const START_TIMEOUT_MS = parseInt(process.env.LLM_START_TIMEOUT_S || "180", 10) * 1000;
-const WARM_TIMEOUT_MS = parseInt(process.env.LLM_WARM_TIMEOUT_S || "120", 10) * 1000;
+const WARM_TIMEOUT_MS = parseInt(process.env.LLM_WARM_TIMEOUT_S || "600", 10) * 1000;
 const WATCHDOG_MS = 15_000;
 
 export interface GateState {
@@ -39,6 +39,7 @@ export interface GateState {
 let lastPromptAt = 0;
 let busy = false;
 let warm = false;
+let inflight = 0;
 let startPromise: Promise<GateState> | null = null;
 let watchdogStarted = false;
 
@@ -104,8 +105,21 @@ export function touch(): void {
   lastPromptAt = Date.now();
 }
 
+// Mark an actual LLM request as in-flight. The idle watchdog will never
+// shut the stack down while a completion is being served (cold model loads
+// on this hardware can take minutes, and aborting them mid-answer wastes
+// everything). Call endLLMRequest() from the same caller once done.
+export function beginLLMRequest(): void {
+  inflight += 1;
+  touch();
+}
+
+export function endLLMRequest(): void {
+  inflight = Math.max(0, inflight - 1);
+}
+
 export function isBusy(): boolean {
-  return busy || startPromise !== null;
+  return busy || startPromise !== null || inflight > 0;
 }
 
 async function startOllama(): Promise<void> {
@@ -138,6 +152,7 @@ async function waitForPort(port: number, timeoutMs: number): Promise<boolean> {
 }
 
 async function warmStack(): Promise<boolean> {
+  if (warm) return true;
   try {
     const res = await fetch(`http://${OLLAMA_HOST}:${OMNIROUTE_PORT}/v1/chat/completions`, {
       method: "POST",

@@ -12,12 +12,14 @@ import { Session } from "@/runtime/types";
 import { chatWithCloud } from "@/lib/cloud-router";
 import { complete } from "@/lib/omniroute";
 import { sendToHermes } from "@/lib/hermes";
+import { switchToProfile } from "@/lib/hermes-gate";
 import { isProxyLocked, lockForProxy, unlockProxy, getProxyLock } from "@/lib/proxy-state";
 import { exec, spawn } from "child_process";
 import { promisify } from "util";
 import { homedir } from "os";
 import { getRenderJob } from "@/runtime/tools/remotion";
 import { queryGraphRAG } from "@/lib/graphrag";
+import { ensureLLMStack, beginLLMRequest, endLLMRequest } from "@/lib/llm-gate";
 
 const execAsync = promisify(exec);
 
@@ -33,6 +35,32 @@ function personaSuffix(mode?: string, voiceCall?: boolean): string {
   return parts.length ? ` ${parts.join(" ")}` : "";
 }
 
+// ─── Engage the Main Agent on demand ────────────────────────
+// Nothing LLM runs in the background by default. When a prompt is
+// submitted through the chat page:
+//   1. the Support Agent (hermes-local / ollama-cloud) is stopped if it
+//      is running, and
+//   2. the Main Agent (hermes-proxy / local ollama+MiniCPM stack) is
+//      engaged — systemd units first, then the LLM stack is booted and
+//      warmed so the reply pipeline (omniroute :20128) actually answers.
+async function engageMainAgent(): Promise<void> {
+  try {
+    const profiles = await switchToProfile("hermes-proxy");
+    console.log(`[chat] main agent: hermes-proxy=${profiles.hermesProxy?.running}, hermes-local=${profiles.hermesLocal?.running}`);
+  } catch (e: any) {
+    console.log(`[chat] profile switch skipped: ${e?.message || e}`);
+  }
+  try {
+    // Cold-start the stack if it is down (stop-to-boot with a warm ping so
+    // the first chat reply is not a 30s model-load timeout). Subsequent
+    // messages are cheap: warmStack skips the ping once the model is loaded.
+    const gate = await ensureLLMStack();
+    console.log(`[chat] llm stack: ${gate.message || gate.state}`);
+  } catch (e: any) {
+    console.log(`[chat] llm stack unavailable: ${e?.message || e}`);
+  }
+}
+
 async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" | "assistant"; content: string }>, msg: string, opts?: { mode?: string; voiceCall?: boolean }): Promise<{
   reply: string;
   routed: string;
@@ -41,6 +69,9 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
   model?: string;
   backend?: string;
 } | null> {
+  // Mark the whole local-route window as an LLM request so the idle
+  // watchdog (llm-gate) never shuts the stack down mid-completion.
+  beginLLMRequest();
   try {
     const routerRes = await fetch(`${TASK_ROUTER_URL}/route`, {
       method: "POST",
@@ -104,6 +135,8 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
     const message = err instanceof Error ? err.message : String(err);
     console.log(`[LOCAL] AgentOS local route unavailable: ${message}`);
     return null;
+  } finally {
+    endLLMRequest();
   }
 }
 
@@ -433,6 +466,9 @@ export async function POST(req: NextRequest) {
     }
 
     // ── 3. Route through the local AgentOS stack first ──────────────
+    // Bring the Main Agent up on demand (stop Support, boot ollama +
+    // omniroute, warm the model) so the local stack is actually alive.
+    await engageMainAgent();
     // Query GraphRAG for knowledge context before routing
     const { context: ragContext } = await queryGraphRAG(msg);
     const localMessages = Array.isArray(body.messages) && body.messages.length > 0

@@ -25,7 +25,8 @@ import { homedir } from "os";
 import { buildRouterMessages } from "@/lib/harness";
 import { chatWithCloud } from "@/lib/cloud-router";
 import { getHermesState, startProfile, stopProfile } from "@/lib/hermes-gate";
-import { ensureLLMStack } from "@/lib/llm-gate";
+import { ensureLLMStack, beginLLMRequest, endLLMRequest } from "@/lib/llm-gate";
+import { ensureWhisperSTT } from "@/lib/whisper-gate";
 
 const VOICEMAIL_DIR = join(homedir(), ".fcukproxy", "voicemails");
 const VOICEMAIL_INDEX = join(VOICEMAIL_DIR, "index.json");
@@ -35,7 +36,6 @@ const STT_URL = process.env.VOICE_SERVICE_URL
 const TTS_URL = process.env.VOICE_SERVICE_URL
   ? `${process.env.VOICE_SERVICE_URL}/tts`
   : "http://localhost:3101/tts";
-const OLLAMA_URL = "http://localhost:11434/api/chat";
 const OLLAMA_MODEL = "openbmb/minicpm5";
 
 // ─── Voicemail record ─────────────────────────────────────
@@ -60,6 +60,22 @@ const processingStatus = new Map<string, {
   error?: string;
 }>();
 
+// ─── LLM serialisation ────────────────────────────────────
+// Only one ollama completion may run at a time on this hardware. Two cold
+// loads in parallel (a double-submitted voicemail) each exceed the 5-minute
+// timeout and both come back "(No LLM available)". Queue the LLM phase so
+// concurrent pipelines run strictly one after the other.
+let llmChain: Promise<void> = Promise.resolve();
+function withSerializedLLM<T>(fn: () => Promise<T>): Promise<T> {
+  const run = llmChain.then(fn, fn);
+  llmChain = run.then(() => undefined, () => undefined);
+  return run;
+}
+
+// True when the voicemail pipeline itself started the support daemon, so
+// cleanup only ever stops what we started (never a user-launched profile).
+let hermesStartedHere = false;
+
 async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void> {
   const set = (status: ProcessingStatus, extra?: Partial<{ userText: string; agentText: string; audioPath: string; error: string }>) => {
     processingStatus.set(id, { status, ...extra });
@@ -73,7 +89,12 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
 
     set("llm", { userText });
     let agentText = "";
-    try { await ensureStackForVoicemail(); agentText = await runLLM(userText); } catch { agentText = "(No LLM available)"; }
+    try {
+      agentText = await withSerializedLLM(async () => {
+        await ensureStackForVoicemail();
+        return runLLM(userText);
+      });
+    } catch { agentText = "(No LLM available)"; }
 
     set("tts", { userText, agentText });
     let audioPath = "";
@@ -117,6 +138,8 @@ function makeId() {
 // ─── STT ─────────────────────────────────────────────────
 
 async function runSTT(audioBlob: Blob): Promise<string> {
+  const gate = await ensureWhisperSTT();
+  if (!gate.ok) throw new Error("STT service unavailable");
   const form = new FormData();
   form.append("file", audioBlob, "audio.webm");
   form.append("language", "en");
@@ -199,6 +222,15 @@ function buildContext(): Array<{ role: string; content: string }> {
 }
 
 async function runLLM(userText: string): Promise<string> {
+  beginLLMRequest();
+  try {
+    return await runLLMInner(userText);
+  } finally {
+    endLLMRequest();
+  }
+}
+
+async function runLLMInner(userText: string): Promise<string> {
   const history = buildContext();
 
   // Detect and pre-compute math
@@ -215,40 +247,11 @@ async function runLLM(userText: string): Promise<string> {
     SYSTEM_PROMPT
   );
 
-  // 1. Try local ollama directly
-  try {
-    const res = await fetch(OLLAMA_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        model: OLLAMA_MODEL,
-        messages,
-        stream: false,
-        think: false,
-        options: { num_predict: 256, temperature: 0.7, top_p: 0.95 },
-      }),
-      signal: AbortSignal.timeout(300_000), // 5 min on Celeron
-    });
-    if (res.ok) {
-      const data = await res.json();
-      let content = (data.message?.content || "").trim();
-      if (content) {
-        // Parse [CALC: expr] fallback — model tries to call calculator itself
-        const calcMatch = content.match(/\[CALC:\s*(.+?)\]/i);
-        if (calcMatch) {
-          const calcResult = safeEval(calcMatch[1]);
-          if (calcResult !== null) {
-            content = content.replace(/\[CALC:\s*.+?\]/i, String(calcResult));
-          }
-        }
-        console.log("[voicemail] ollama responded:", content.slice(0, 100));
-        return content;
-      }
-    }
-    console.log("[voicemail] ollama failed:", res.status);
-  } catch (e: any) {
-    console.log("[voicemail] ollama error:", e?.message);
-  }
+  // 1. Try local via the omniroute OpenAI channel — the same warm, cached
+  //    path warmStack() just verified. (Direct ollama fetch flaked on cold
+  //    starts under swap: runner restarts mid-generation -> "fetch failed".)
+  const localReply = await callLocalProxy(messages);
+  if (localReply) return localReply;
 
   // 2. Fall back to cloud providers
   try {
@@ -264,10 +267,55 @@ async function runLLM(userText: string): Promise<string> {
   throw new Error("No LLM available (ollama and cloud both failed)");
 }
 
+async function callLocalProxy(messages: any[]): Promise<string> {
+  const budgetMs = parseInt(process.env.LLM_TIMEOUT_S || "600", 10) * 1000;
+  for (let attempt = 1; attempt <= 2; attempt++) {
+    try {
+      const res = await fetch("http://127.0.0.1:20128/v1/chat/completions", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "minicpm5-32k",
+          messages,
+          max_tokens: 256,
+          temperature: 0.7,
+          top_p: 0.95,
+          stream: false,
+        }),
+        signal: AbortSignal.timeout(budgetMs),
+      });
+      if (res.ok) {
+        const data = await res.json();
+        let content = (data.choices?.[0]?.message?.content || "").trim();
+        if (content) {
+          // Parse [CALC: expr] fallback — model tries to call calculator itself
+          const calcMatch = content.match(/\[CALC:\s*(.+?)\]/i);
+          if (calcMatch) {
+            const calcResult = safeEval(calcMatch[1]);
+            if (calcResult !== null) {
+              content = content.replace(/\[CALC:\s*.+?\]/i, String(calcResult));
+            }
+          }
+          console.log(`[voicemail] local (omniroute) responded:`, content.slice(0, 100));
+          return content;
+        }
+      } else {
+        console.log(`[voicemail] local proxy status (attempt ${attempt}):`, res.status);
+      }
+    } catch (e: any) {
+      console.log(`[voicemail] local proxy error (attempt ${attempt}):`, e?.message);
+      // Runner may have just restarted under swap — retry against the warm model.
+      if (attempt === 1) await new Promise((r) => setTimeout(r, 5000));
+    }
+  }
+  return "";
+}
+
 // ─── TTS → mp3 ───────────────────────────────────────────
 
 async function runTTS(text: string, id: string): Promise<string> {
   const audioPath = join(VOICEMAIL_DIR, `${id}.mp3`);
+  await ensureWhisperSTT();
   const form = new FormData();
   form.append("text", text);
   form.append("voice", "en-GB-SoniaNeural");
@@ -289,6 +337,7 @@ async function startHermesForVoicemail(): Promise<void> {
   try {
     const hs = await getHermesState();
     if (!hs.hermesLocal.running && !hs.busy) {
+      hermesStartedHere = true;
       void startProfile("hermes-local").then(() =>
         console.log("[voicemail] hermes-local started")
       );
@@ -326,15 +375,15 @@ async function unloadOllamaModel(): Promise<void> {
 
 async function stopHermesIfIdle(): Promise<void> {
   try {
+    // Only stop a support daemon THIS pipeline started (never a profile the
+    // user launched from the dashboard). With no lastActivity signal the old
+    // code never stopped anything AND crashed on Object.entries(state.profiles).
+    if (!hermesStartedHere) return;
+    hermesStartedHere = false;
     const state = await getHermesState();
-    for (const [name, profile] of Object.entries(state.profiles)) {
-      if (profile.running && profile.lastActivity) {
-        const idle = Date.now() - profile.lastActivity > 30_000; // 30s idle
-        if (idle) {
-          console.log(`[voicemail] stopping idle hermes: ${name}`);
-          await stopProfile(name);
-        }
-      }
+    if (state.hermesLocal.running && !state.busy) {
+      console.log("[voicemail] stopping support hermes started by this voicemail");
+      await stopProfile("hermes-local");
     }
   } catch (e: any) {
     console.log("[voicemail] hermes cleanup failed:", e?.message);
@@ -377,8 +426,10 @@ export async function POST(req: NextRequest) {
     // 2. LLM reply with harness context (tries ollama directly, then cloud)
     let agentText = "";
     try {
-      await ensureStackForVoicemail();
-      agentText = await runLLM(userText);
+      agentText = await withSerializedLLM(async () => {
+        await ensureStackForVoicemail();
+        return runLLM(userText);
+      });
       console.log("[voicemail] LLM response:", agentText.slice(0, 100));
     } catch (e) {
       console.error("[voicemail] LLM failed:", e);

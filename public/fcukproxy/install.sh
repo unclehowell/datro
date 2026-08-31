@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.7.22"
+VERSION="1.7.24"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -845,6 +845,95 @@ RestartSec=5
 [Install]
 WantedBy=default.target
 SVCEOF
+
+  # ── Hermes profile engines (on-demand Support + Main agents) ──
+  if [[ -d "$INSTALL_DIR/public/fcukproxy/hermes" ]]; then
+    mkdir -p "$HOME/.fcukproxy/hermes"
+    cp -f "$INSTALL_DIR/public/fcukproxy/hermes/"*.sh "$HOME/.fcukproxy/hermes/" 2>/dev/null || true
+    cp -f "$INSTALL_DIR/public/fcukproxy/hermes/"*.mjs "$HOME/.fcukproxy/hermes/" 2>/dev/null || true
+    chmod +x "$HOME/.fcukproxy/hermes/"*.sh 2>/dev/null || true
+  fi
+
+  # ── Task Router (chat pipeline: task-router :3200 → omniroute :20128) ──
+  if [[ -f "$INSTALL_DIR/agentos/task-router.mjs" ]]; then
+    mkdir -p "$HOME/.fcukproxy/omniroute"
+    cp -f "$INSTALL_DIR/agentos/task-router.mjs" "$HOME/.fcukproxy/omniroute/task-router.mjs"
+    chmod +x "$HOME/.fcukproxy/omniroute/task-router.mjs" 2>/dev/null || true
+  fi
+
+  # ── Utility services (all DISABLED by default — on-demand only; the GUI
+  #    is the only service enabled at boot) ──
+  local _NODE="" $_SUB="" _OBIN=""
+  _NODE="$NODE_BIN_DIR/node"
+  [[ -x "$_NODE" ]] || _NODE="$(command -v node || true)"
+  _SUB="$(command -v systemctl || true)"
+  if [[ -n "$_NODE" ]]; then
+    cat > "$service_dir/task-router.service" << TSEOF
+[Unit]
+Description=AgentOS Task Router (port 3200)
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=$HOME/.fcukproxy/omniroute
+ExecStart=$_NODE $HOME/.fcukproxy/omniroute/task-router.mjs
+Environment=NODE_ENV=production
+Environment=PORT=3200
+Environment=OMNIRUTE_URL=http://localhost:20128
+Restart=on-failure
+RestartSec=5
+MemoryMax=256M
+MemoryHigh=192M
+
+[Install]
+WantedBy=default.target
+TSEOF
+
+    cat > "$service_dir/hermes-local.service" << HLEOF
+[Unit]
+Description=Hermes Support Agent (ollama-cloud, port 18789)
+After=network-online.target
+
+[Service]
+Type=simple
+ExecStart=$HOME/.fcukproxy/hermes/hermes-support.sh start
+ExecStop=$HOME/.fcukproxy/hermes/hermes-support.sh stop
+Environment=HOME=$HOME
+Environment=PATH=$NODE_BIN_DIR:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+MemoryMax=512M
+MemoryHigh=384M
+
+[Install]
+WantedBy=default.target
+HLEOF
+
+    cat > "$service_dir/hermes-proxy.service" << HPEOF
+[Unit]
+Description=Hermes Main Agent (local MiniCPM via Ollama + OmniRoute)
+After=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=$HOME/.fcukproxy/hermes/hermes-main.sh start
+ExecStop=$HOME/.fcukproxy/hermes/hermes-main.sh stop
+Environment=HOME=$HOME
+Environment=PATH=$NODE_BIN_DIR:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
+TimeoutStartSec=300
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target
+HPEOF
+  fi
+
+  send "Disabling non-GUI services by default (on-demand only)..." 2>/dev/null || true
+  for _svc in whisper-stt whisper-realtime omniroute task-router hermes-local hermes-proxy openclaw-gateway graphrag fcukproxy-child; do
+    systemctl --user disable "$_svc.service" 2>/dev/null || true
+  done
 
   systemctl --user daemon-reload 2>/dev/null || true
   systemctl --user enable agentos-gui 2>/dev/null || true

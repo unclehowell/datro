@@ -947,6 +947,7 @@ export default function ChatPage() {
   const submitVoicemail = async (blob: Blob) => {
     const pendingId = `vm-pending-${Date.now().toString(36)}`;
     setPendingVms((prev) => [...prev, { id: pendingId, ts: Date.now() }]);
+    setVoicemailOpen(true); // bring the list up so the inline animation is visible
     setVoicemailModalPendingId(pendingId);
     setVoicemailModalRealId(null);
     setVmStatus({ status: "queued" });
@@ -964,16 +965,16 @@ export default function ChatPage() {
             setVmStatus(sd);
             if (sd.status === "complete" || sd.status === "error") {
               clearInterval(poll);
-              if (sd.status === "complete") {
-                setVoicemailModalRealId(data.id);
-                setVoicemailModalPendingId(null);
-              }
+              // The finished voicemail replaces the processing card inline
+              // in the list — no modal popup.
+              setVoicemailModalPendingId(null);
               fetchVoicemails();
             }
           } catch {}
         }, 2000);
         setTimeout(() => clearInterval(poll), 300_000);
       } else {
+        setVoicemailModalPendingId(null);
         fetchVoicemails();
       }
     } catch {
@@ -1627,9 +1628,43 @@ export default function ChatPage() {
               </button>
             </div>
             <div className="p-3 space-y-2">
-              {voicemails.length === 0 && (
+              {voicemails.length === 0 && !voicemailModalPendingId && (
                 <div className="text-text-muted text-xs text-center py-8">No voicemails yet. Tap the green handset to leave one.</div>
               )}
+
+              {/* Processing voicemail — inline animation standing in for the
+                  reply card until it lands. No modal popup. */}
+              {voicemailModalPendingId && (
+                <div className="p-3 rounded-lg border border-dashed border-accent/40 bg-surface/70">
+                  {vmStatus?.status === "error" ? (
+                    <div className="space-y-1">
+                      <div className="text-red-300 text-xs">{vmStatus.error || "Processing failed"}</div>
+                      <div className="text-text-muted text-[10px]">Your message was not processed.</div>
+                      <button
+                        onClick={() => { setVoicemailModalPendingId(null); setVoicemailModalRealId(null); }}
+                        className="text-[10px] text-text-muted hover:text-text-primary transition-colors mt-1"
+                      >
+                        Dismiss
+                      </button>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="text-text-muted text-[10px] mb-1.5">Voicemail</div>
+                      <VmProcessingBreadcrumb
+                        active={vmStatus?.status === "llm" ? "llm" : vmStatus?.status === "tts" ? "tts" : "stt"}
+                      />
+                      <div className="text-text-muted text-[11px] mt-3 animate-pulse">
+                        {vmStatus?.status === "tts"
+                          ? "Generating spoken reply\u2026"
+                          : vmStatus?.status === "llm"
+                          ? "Waking Hermes & Ollama \u2014 thinking\u2026"
+                          : "Transcribing your message\u2026"}
+                      </div>
+                    </>
+                  )}
+                </div>
+              )}
+
               {voicemails.map((vm) => (
                 <div key={vm.id} className={`p-3 rounded-lg border ${vm.played ? "bg-zinc-800/30 border-zinc-700/50" : "bg-accent/10 border-accent/30"} transition-colors`}>
                   <div className="flex items-start justify-between gap-2 mb-2">
@@ -1772,49 +1807,24 @@ export default function ChatPage() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* ─── Voicemail Modal ─── */}
-      {(voicemailModalPendingId || voicemailModalRealId) && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={() => { setVoicemailModalPendingId(null); setVoicemailModalRealId(null); }}>
+      {/* ─── Voicemail Replay Modal (only when the user taps Play/Replay —
+          the processing animation lives inline in the voicemail list) ─── */}
+      {voicemailModalRealId && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={() => setVoicemailModalRealId(null)}>
           <div className="w-full max-w-md mx-4" onClick={(e) => e.stopPropagation()}>
-            {voicemailModalPendingId ? (
-              <div className="bg-surface border border-accent/30 rounded-xl p-6 text-center">
-                {vmStatus?.status === "error" ? (
-                  <>
-                    <div className="text-red-300 text-sm mb-3">{vmStatus.error || "Processing failed"}</div>
-                    <div className="text-text-muted text-xs">Your message was not processed.</div>
-                  </>
-                ) : (
-                  <>
-                    <div className="text-text-muted text-xs mb-1">Voicemail</div>
-                    <VmProcessingBreadcrumb
-                      active={vmStatus?.status === "llm" ? "llm" : vmStatus?.status === "tts" ? "tts" : "stt"}
-                    />
-                    <div className="text-text-muted text-[11px] mt-4">
-                      {vmStatus?.status === "tts"
-                        ? "Generating spoken reply\u2026"
-                        : vmStatus?.status === "llm"
-                        ? "Waking Hermes & Ollama \u2014 thinking\u2026"
-                        : "Transcribing your message\u2026"}
-                    </div>
-                  </>
-                )}
-                <button onClick={() => { setVoicemailModalPendingId(null); setVoicemailModalRealId(null); }} className="mt-6 text-xs text-text-muted hover:text-text-primary transition-colors">Dismiss</button>
-              </div>
-            ) : voicemailModalRealId ? (
-              <div className="bg-surface border border-border rounded-xl p-4 space-y-3">
-                {vmStatus?.userText && (
-                  <div className="text-[11px] text-text-muted border-l-2 border-border pl-2">{vmStatus.userText}</div>
-                )}
-                {vmStatus?.agentText && (
-                  <div className="text-xs text-text-primary whitespace-pre-wrap border-l-2 border-accent/40 pl-2">{vmStatus.agentText}</div>
-                )}
-                <PlaybackBar
-                  vmId={voicemailModalRealId}
-                  onDelete={() => { deleteVoicemail(voicemailModalRealId); setVoicemailModalRealId(null); }}
-                  onClose={() => { setVoicemailModalPendingId(null); setVoicemailModalRealId(null); }}
-                />
-              </div>
-            ) : null}
+            <div className="bg-surface border border-border rounded-xl p-4 space-y-3">
+              {vmStatus?.userText && (
+                <div className="text-[11px] text-text-muted border-l-2 border-border pl-2">{vmStatus.userText}</div>
+              )}
+              {vmStatus?.agentText && (
+                <div className="text-xs text-text-primary whitespace-pre-wrap border-l-2 border-accent/40 pl-2">{vmStatus.agentText}</div>
+              )}
+              <PlaybackBar
+                vmId={voicemailModalRealId}
+                onDelete={() => { setVoicemailModalRealId(null); }}
+                onClose={() => { setVoicemailModalRealId(null); }}
+              />
+            </div>
           </div>
         </div>
       )}

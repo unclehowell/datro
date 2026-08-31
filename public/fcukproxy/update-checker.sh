@@ -248,6 +248,73 @@ MemoryHigh=$MEM_OMNIRUTE_HIGH
 WantedBy=default.target
 EOF
 
+  # ── task-router.service (part of the Main Agent on-demand stack) ──
+  cat > "$SYSTEMD_DIR/task-router.service" << EOF
+[Unit]
+Description=AgentOS Task Router (port 3200)
+After=network-online.target omniroute.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=$OMNIRUTE_DIR
+ExecStart=$_NODE_BIN $OMNIRUTE_DIR/task-router.mjs
+Environment=NODE_ENV=production
+Environment=PORT=3200
+Environment=OMNIRUTE_URL=http://localhost:20128
+Restart=on-failure
+RestartSec=5
+MemoryMax=$MEM_OMNIRUTE_MAX
+MemoryHigh=$MEM_OMNIRUTE_HIGH
+
+[Install]
+WantedBy=default.target
+EOF
+
+  # ── hermes-local.service — Support Agent (ollama-cloud, port 18789) ──
+  cat > "$SYSTEMD_DIR/hermes-local.service" << EOF
+[Unit]
+Description=Hermes Support Agent (ollama-cloud, port 18789)
+After=network-online.target whisper-stt.service
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=$HOME/.fcukproxy/hermes/hermes-support.sh start
+ExecStop=$HOME/.fcukproxy/hermes/hermes-support.sh stop
+Environment=HOME=$HOME
+Environment=PATH=$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
+Restart=on-failure
+RestartSec=5
+TimeoutStopSec=30
+MemoryMax=$MEM_GATEWAY_MAX
+MemoryHigh=$MEM_GATEWAY_HIGH
+
+[Install]
+WantedBy=default.target
+EOF
+
+  # ── hermes-proxy.service — Main Agent (local MiniCPM stack) ──
+  cat > "$SYSTEMD_DIR/hermes-proxy.service" << EOF
+[Unit]
+Description=Hermes Main Agent (local MiniCPM via Ollama + OmniRoute)
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+ExecStart=$HOME/.fcukproxy/hermes/hermes-main.sh start
+ExecStop=$HOME/.fcukproxy/hermes/hermes-main.sh stop
+Environment=HOME=$HOME
+Environment=PATH=$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
+TimeoutStartSec=300
+TimeoutStopSec=30
+
+[Install]
+WantedBy=default.target
+EOF
+
   # ── openclaw-gateway.service (only if openclaw is installed) ──
   if [[ -f "$OPENCLAW_BIN" ]]; then
     cat > "$SYSTEMD_DIR/openclaw-gateway.service" << EOF
@@ -338,15 +405,33 @@ EOF
     fi
   fi
 
-  # Enable all services
-  for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway graphrag fcukproxy-child; do
-    if [[ -f "$SYSTEMD_DIR/$svc.service" ]]; then
-      systemctl --user enable "$svc.service" 2>/dev/null || true
-    fi
+  # ── Copy Hermes profile scripts (Main Agent + Support Agent engines) ──
+  if [[ -d "$INSTALL_DIR/public/fcukproxy/hermes" ]]; then
+    mkdir -p "$HOME/.fcukproxy/hermes"
+    cp -f "$INSTALL_DIR/public/fcukproxy/hermes/"*.sh "$HOME/.fcukproxy/hermes/" 2>/dev/null || true
+    cp -f "$INSTALL_DIR/public/fcukproxy/hermes/"*.mjs "$HOME/.fcukproxy/hermes/" 2>/dev/null || true
+    chmod +x "$HOME/.fcukproxy/hermes/"*.sh 2>/dev/null || true
+  fi
+
+  # ── Copy task-router.mjs alongside omniroute ──
+  if [[ -f "$INSTALL_DIR/agentos/task-router.mjs" ]]; then
+    mkdir -p "$OMNIRUTE_DIR"
+    cp -f "$INSTALL_DIR/agentos/task-router.mjs" "$OMNIRUTE_DIR/task-router.mjs"
+    chmod +x "$OMNIRUTE_DIR/task-router.mjs" 2>/dev/null || true
+  fi
+
+  # Model engines must NOT run by default (thin-client policy): only the GUI
+  # webserver is enabled at boot. Whisper STT, OmniRoute, Task Router, the
+  # Hermes profiles and Ollama all start ON DEMAND and idle-shut-down.
+  if [[ -f "$SYSTEMD_DIR/agentos-gui.service" ]]; then
+    systemctl --user enable agentos-gui.service 2>/dev/null || true
+  fi
+  for svc in whisper-stt whisper-realtime omniroute task-router hermes-local hermes-proxy openclaw-gateway graphrag fcukproxy-child; do
+    systemctl --user disable "$svc.service" 2>/dev/null || true
   done
 
   systemctl --user daemon-reload 2>/dev/null || true
-  log "Systemd services regenerated"
+  log "Systemd services regenerated (only agentos-gui enabled by default)"
 }
 
 # ── Apply update ──────────────────────────────────────────────────────────────
