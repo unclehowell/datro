@@ -1,3 +1,17 @@
+## [1.11.3] - 2026-09-01
+
+Patch release: **auto-update cadence is now every 10 minutes** instead of once daily, so a newer semantic version is pulled within minutes. Nodes that already ran a daily 04:00 timer self-heal to the faster schedule on their very next `update-checker.sh` run, and fresh installs schedule the 10-minute cadence from the start.
+
+### Changed
+
+- ops: Fresh installs now schedule `update-checker.sh` via systemd **`OnCalendar=*:0/10`** (every 10 minutes, persistent) — was daily 04:00 — with the cron fallback updated to `*/10 * * * *` (was `42 */4 * * *`).
+- ops: `update-checker.sh` gained `ensure_update_cadence()`, called **on every invocation** (not just on the apply path). It rewrites `~/.config/systemd/user/fcuk-update-checker.timer` to the 10-minute cadence and re-enables it, so any node running at an older cadence (e.g. daily 04:00) upgrades itself to 10-minutely on its very next run.
+- ops: The 10-minute timer self-heal runs in `main()` alongside `sync_source`/`ensure_gui_build`, so it also fires when a node is already up to date — a fully-caught-up node is still guaranteed to pick up the new cadence once.
+
+### Version
+
+- bump: `.version` `1.11.2` → `1.11.3`; OTA `release_sequence` 13 → 14; financecheque release `v1.11.2` → `v1.11.3`.
+
 ## [1.11.2] - 2026-09-01
 
 Patch release: fix the spurious **"Update failed — will retry"** banner on the port-3000 GUI. A stale `~/.fcukproxy/.update-status` error from an old failed attempt was never reconciled by the systemd-timer update path, so once the parent advanced a version (local 1.11.0 vs remote 1.11.1) the GUI surfaced the leftover failure instead of a clean "Update available". `update-checker.sh` now owns and clears the status file on every completion, the GUI self-heals stale error/done states on read, and an adjacent stdout-pollution bug in the version checker is fixed.

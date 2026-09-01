@@ -456,8 +456,38 @@ EOF
     systemctl --user disable "$svc.service" 2>/dev/null || true
   done
 
+  # ── Self-heal the update cadence to every 10 minutes ─────────────────────
+  ensure_update_cadence
+
   systemctl --user daemon-reload 2>/dev/null || true
   log "Systemd services regenerated (only agentos-gui enabled by default)"
+}
+
+# ── Ensure the OTA self-update cadence is every 10 minutes ──────────────────
+# The installed timer may predate the 10-minute policy (e.g. daily 04:00).
+# Rewriting it here lets a node that runs this checker at ANY cadence upgrade
+# itself to the faster schedule, so a newer semantic version is pulled within
+# minutes, not up to 24h later. Re-enable so it survives even if it had drifted
+# to disabled. Called on every invocation so a node self-corrects even when it
+# is already up to date.
+ensure_update_cadence() {
+  if command -v systemctl >/dev/null 2>&1; then
+    local SYSTEMD_DIR="$HOME/.config/systemd/user"
+    mkdir -p "$SYSTEMD_DIR"
+    cat > "$SYSTEMD_DIR/fcuk-update-checker.timer" << TIMEREOF
+[Unit]
+Description=FinanceCheque OTA update check (every 10 minutes)
+
+[Timer]
+OnCalendar=*:0/10
+Persistent=true
+
+[Install]
+WantedBy=timers.target
+TIMEREOF
+    systemctl --user enable --now fcuk-update-checker.timer >/dev/null 2>&1 || true
+    log "Update cadence set to every 10 minutes"
+  fi
 }
 
 # ── Apply update ──────────────────────────────────────────────────────────────
@@ -642,6 +672,10 @@ main() {
   # Always ensure GUI is buildable (even when version is current)
   # Non-fatal: build failures should not block service regeneration or version checks
   ensure_gui_build || log "WARN: GUI build did not complete (non-fatal)"
+
+  # Ensure the self-update cadence is every 10 minutes (self-heals stale timers
+  # even when there is no update to apply).
+  ensure_update_cadence
 
   local latest
   if ! latest=$(fetch_latest_version); then

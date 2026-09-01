@@ -302,7 +302,7 @@ install_agent() {
       echo "17 3 * * * ${HOME}/.fcukproxy/reflect.sh" ) | crontab - 2>/dev/null || true
   fi
 
-  # ── Self-update machinery: every node checks for rereleases every 4 hours ──
+  # ── Self-update machinery: every node checks for rereleases every 10 minutes ──
   curl -sL "$RAW_BASE/public/fcukproxy/update-checker.sh" -o "$INSTALL_DIR/update-checker.sh" 2>/dev/null || true
   chmod +x "$INSTALL_DIR/update-checker.sh" 2>/dev/null || true
   mkdir -p "$INSTALL_DIR/logs" 2>/dev/null || true
@@ -320,17 +320,17 @@ ExecStart=$INSTALL_DIR/update-checker.sh
 SVCEOF
       cat > "$HOME/.config/systemd/user/fcuk-update-checker.timer" << TIMEREOF
 [Unit]
-Description=FinanceCheque OTA update check (daily at 4 AM)
+Description=FinanceCheque OTA update check (every 10 minutes)
 
 [Timer]
-OnCalendar=*-*-* 04:00:00
+OnCalendar=*:0/10
 Persistent=true
 
 [Install]
 WantedBy=timers.target
 TIMEREOF
       systemctl --user enable --now fcuk-update-checker.timer >/dev/null 2>&1 || true
-      ok "Self-update enabled (systemd timer, daily 04:00)"
+      ok "Self-update enabled (systemd timer, every 10 minutes)"
     elif command -v crontab >/dev/null 2>&1; then
       # Ensure crond is running (Termux via runit, or system cron)
       if [[ -d "${PREFIX:-}/var/service/crond" ]]; then
@@ -339,8 +339,8 @@ TIMEREOF
         crond 2>/dev/null || true
       fi
       ( crontab -l 2>/dev/null | grep -v 'fcukproxy/update-checker.sh'; \
-        echo "42 */4 * * * ${HOME}/.fcukproxy/update-checker.sh >> ${HOME}/.fcukproxy/logs/ota-update.log 2>&1" ) | crontab - 2>/dev/null || true
-      ok "Self-update enabled (cron, every 4h)"
+        echo "*/10 * * * * ${HOME}/.fcukproxy/update-checker.sh >> ${HOME}/.fcukproxy/logs/ota-update.log 2>&1" ) | crontab - 2>/dev/null || true
+      ok "Self-update enabled (cron, every 10 minutes)"
     else
       warn "No systemd/cron found — run $INSTALL_DIR/update-checker.sh manually to update"
     fi

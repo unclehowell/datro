@@ -102,6 +102,11 @@ The financecheque child-proxy stack runs on 2–8 GB machines and is
   `fetch_latest_version`'s `log()` polluted stdout (corrupting the detected
   latest version when GitHub was strictly newer than the parent) was also fixed
   in v1.11.2 by routing `log()` to stderr.
+- **Auto-update only ran once daily** (systemd `OnCalendar=*-*-* 04:00:00`, cron
+  `42 */4 * * *`), so a node could sit on an old version for up to 24h. Fixed
+  in v1.11.3: the cadence is now `OnCalendar=*:0/10` (every 10 minutes, cron
+  `*/10 * * * *`), and `update-checker.sh` self-heals an already-installed
+  node's timer on its next run via `ensure_update_cadence()`.
 
 ## Auto-Release Script (legacy)
 
