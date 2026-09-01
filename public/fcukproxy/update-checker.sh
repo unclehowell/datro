@@ -510,8 +510,14 @@ apply_update() {
     mkdir -p "$tmp_extract"
     if curl -fsSL --max-time 120 "$tarball_url" -o "$tmp_extract/release.tgz" 2>>"$LOG_FILE"; then
       tar xzf "$tmp_extract/release.tgz" -C "$tmp_extract" 2>>"$LOG_FILE"
-      local extracted="$tmp_extract/datro-financecheque-v${latest}"
-      if [[ -d "$extracted" ]]; then
+      # Dynamic directory detection: GitHub tarballs extract to a directory
+      # named after the repo and tag. The pattern is usually
+      # "repo-tag" or "repo-tag-sha", so we glob for the actual dir rather
+      # than hardcoding the expected name (which failed on v1.8.0).
+      local extracted
+      extracted=$(find "$tmp_extract" -maxdepth 1 -type d -name "datro*" | head -1)
+      if [[ -n "$extracted" && -d "$extracted" ]]; then
+        log "Extracted to: $extracted"
         # Sync fcukproxy scripts
         mkdir -p "$INSTALL_DIR"
         rsync -a --delete "$extracted/public/fcukproxy/" "$INSTALL_DIR/" 2>>"$LOG_FILE"
@@ -527,7 +533,8 @@ apply_update() {
         [[ -f "$extracted/.version" ]] && cp "$extracted/.version" "$INSTALL_DIR/.version"
         log "Code updated (tarball)"
       else
-        log "ERROR: Extracted dir not found at $extracted"
+        log "ERROR: Extracted directory not found in $tmp_extract"
+        log "Contents: $(ls -la "$tmp_extract" 2>/dev/null | head -10)"
       fi
     else
       log "ERROR: Failed to download release tarball"

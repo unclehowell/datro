@@ -1,3 +1,26 @@
+## [1.11.4] - 2026-09-01
+
+Patch release: **agent tool-use enforcement** and **tarball extraction robustness**. The child-proxy agent was refusing to execute terminal commands with "I don't have the capability" — fixed by adding a tool-use wrapper script that ensures agent backends (kilo/opencode) have proper tool configuration when spawned by the task router. Also fixes tarball extraction failures when GitHub releases have non-standard internal directory names.
+
+### Fixed
+
+- fix: **Agent refuses to execute commands.** The child-proxy agent was responding with "I don't have the capability to perform external tasks" when asked to install software or run commands. Added `public/fcukproxy/tool-use-wrapper.sh` which ensures agent backends have bash/tool access configured in their config files when spawned in non-interactive mode.
+- fix: **Tarball extraction fails on non-standard directory names.** `update-checker.sh` hardcoded the extracted directory path as `datro-financecheque-v${latest}`, which failed on v1.8.0 (different internal structure). Now dynamically detects the extracted directory via glob (`find ... -type d -name "datro*"`), so releases with any internal path structure extract successfully on the first try.
+- fix: **Agent refusal detection in task router.** `agentos/task-router.mjs` now detects "I cannot" / "I don't have capability" style refusals in agent output and returns a helpful error message pointing to tool-use configuration rather than silently passing through the refusal as a task result.
+
+### Added
+
+- feat: **`tool-use-wrapper.sh`** — wrapper script that ensures agent backends have proper tool configuration. Creates kilo/opencode config files with bash permissions if missing, sets `AGENT_TOOL_ACCESS=full` environment variable, and provides clear "backend not found" errors.
+
+### Changed
+
+- ops: `agentos/task-router.mjs` now invokes agent backends through `tool-use-wrapper.sh` when available, falling back to direct invocation if the wrapper is not present (backward compatible).
+- ops: `update-checker.sh` tarball extraction uses dynamic directory detection with logging of the actual extracted path for debugging.
+
+### Version
+
+- bump: `.version` `1.11.3` → `1.11.4`; OTA `release_sequence` 14 → 15; financecheque release `v1.11.3` → `v1.11.4`.
+
 ## [1.11.3] - 2026-09-01
 
 Patch release: **auto-update cadence is now every 10 minutes** instead of once daily, so a newer semantic version is pulled within minutes. Nodes that already ran a daily 04:00 timer self-heal to the faster schedule on their very next `update-checker.sh` run, and fresh installs schedule the 10-minute cadence from the start.

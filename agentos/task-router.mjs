@@ -89,6 +89,12 @@ function isTask(text) {
   return trimmed.length > 50 && !/\?$/.test(trimmed);
 }
 
+// Path to the tool-use wrapper script (ensures agent backends have exec capabilities)
+const TOOL_WRAPPER = path.join(
+  path.dirname(process.argv[1]), // this script's dir
+  "..", "public", "fcukproxy", "tool-use-wrapper.sh"
+);
+
 async function routeToOpencode(task) {
   return new Promise((resolve, reject) => {
     const timeout = setTimeout(() => {
@@ -96,9 +102,19 @@ async function routeToOpencode(task) {
       reject(new Error("opencode timeout (5 min)"));
     }, 300_000);
 
-    const child = spawn(OPENCODE_BIN, ["run", task], {
+    // Use the tool-use wrapper to ensure proper tool configuration
+    const useWrapper = fs.existsSync(TOOL_WRAPPER);
+    const bin = useWrapper ? TOOL_WRAPPER : OPENCODE_BIN;
+    const args = useWrapper ? ["opencode", task] : ["run", task];
+
+    const child = spawn(bin, args, {
       cwd: process.env.HOME || "/home/unclehowell",
-      env: { ...process.env, NONINTERACTIVE: "1" },
+      env: {
+        ...process.env,
+        NONINTERACTIVE: "1",
+        // Ensure the agent knows it has tool access
+        AGENT_TOOL_ACCESS: "full",
+      },
       stdio: ["pipe", "pipe", "pipe"],
     });
 
@@ -113,7 +129,13 @@ async function routeToOpencode(task) {
       if (code === 0) {
         resolve(stdout || "Task completed (no output)");
       } else {
-        resolve(stderr || stdout || `Task failed with exit code ${code}`);
+        // Detect "I cannot" / "I don't have capability" refusals and provide guidance
+        const output = (stderr || stdout || "").toLowerCase();
+        if (output.includes("cannot perform") || output.includes("don't have the capability") || output.includes("unable to execute")) {
+          resolve(`Agent refused to execute this task. Ensure the agent backend has tool-use configured.\n\nOriginal output:\n${stderr || stdout}`);
+        } else {
+          resolve(stderr || stdout || `Task failed with exit code ${code}`);
+        }
       }
     });
 
@@ -131,9 +153,19 @@ async function routeToKilo(task) {
       reject(new Error("kilo timeout (5 min)"));
     }, 300_000);
 
-    const child = spawn(KILO_BIN, ["--chat", task], {
+    // Use the tool-use wrapper to ensure proper tool configuration
+    const useWrapper = fs.existsSync(TOOL_WRAPPER);
+    const bin = useWrapper ? TOOL_WRAPPER : KILO_BIN;
+    const args = useWrapper ? ["kilo", task] : ["--chat", task];
+
+    const child = spawn(bin, args, {
       cwd: process.env.HOME || "/home/unclehowell",
-      env: { ...process.env, NONINTERACTIVE: "1" },
+      env: {
+        ...process.env,
+        NONINTERACTIVE: "1",
+        // Ensure the agent knows it has tool access
+        AGENT_TOOL_ACCESS: "full",
+      },
       stdio: ["pipe", "pipe", "pipe"],
     });
 
@@ -148,7 +180,13 @@ async function routeToKilo(task) {
       if (code === 0) {
         resolve(stdout || "Task completed (no output)");
       } else {
-        resolve(stderr || stdout || `Task failed with exit code ${code}`);
+        // Detect "I cannot" / "I don't have capability" refusals and provide guidance
+        const output = (stderr || stdout || "").toLowerCase();
+        if (output.includes("cannot perform") || output.includes("don't have the capability") || output.includes("unable to execute")) {
+          resolve(`Agent refused to execute this task. Ensure the agent backend has tool-use configured.\n\nOriginal output:\n${stderr || stdout}`);
+        } else {
+          resolve(stderr || stdout || `Task failed with exit code ${code}`);
+        }
       }
     });
 
