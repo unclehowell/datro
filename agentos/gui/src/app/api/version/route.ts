@@ -15,12 +15,36 @@ async function githubReleasesFc(): Promise<{ tag: string; url: string } | null> 
     );
     if (!resp.ok) return null;
     const releases: any[] = await resp.json();
-    const fc = releases.find((r) => r.tag_name?.startsWith("financecheque-v"));
-    if (fc?.tag_name && fc?.html_url) {
-      return { tag: fc.tag_name, url: fc.html_url };
+    // The list order is not guaranteed to be version-sorted — pick the newest
+    // financecheque release by semantic version, not the first match.
+    let best: any = null;
+    let bestVer: number[] = [];
+    for (const r of releases) {
+      const tag = r?.tag_name ?? "";
+      if (!tag.startsWith("financecheque-v")) continue;
+      const ver = (tag.replace(/^financecheque-v/, "").replace(/^v/, ""))
+        .split(".").map((p: string) => parseInt(p, 10) || 0);
+      if (ver.length === 0) continue;
+      if (!best || compareVer(ver, bestVer) > 0) {
+        best = r;
+        bestVer = ver;
+      }
+    }
+    if (best?.tag_name && best?.html_url) {
+      return { tag: best.tag_name, url: best.html_url };
     }
   } catch {}
   return null;
+}
+
+function compareVer(a: number[], b: number[]): number {
+  const n = Math.max(a.length, b.length);
+  for (let i = 0; i < n; i++) {
+    const av = a[i] || 0;
+    const bv = b[i] || 0;
+    if (av !== bv) return av - bv;
+  }
+  return 0;
 }
 
 export async function GET() {

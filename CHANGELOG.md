@@ -1,3 +1,8 @@
+## [1.11.0] - 2026-09-01
+
+- fix: `GET /api/version` was showing a stale "latest" release (v1.9.0 while v1.10.0 was current) because the GitHub releases list is not guaranteed version-sorted and the route took the first `financecheque-v*` match. It now selects the newest release by semantic-version comparison.
+- bump: OTA `release_sequence` 10 -> 11, financecheque release v1.10.0 -> v1.11.0.
+
 ## [1.10.0] - 2026-09-01
 
 - fix: Stale `.update-status` no longer surfaces as `update: error` on an up-to-date node. `GET /api/version` reports `idle` when the local version already matches remote (and the status is not a live `updating` lock).
