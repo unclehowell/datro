@@ -1,3 +1,19 @@
+## [1.11.6] - 2026-09-01
+
+Patch release: **GUI cache headers — fix broken UI after updates**. After an OTA update rebuilt the GUI, browsers served stale cached HTML referencing old CSS chunk hashes (e.g. `1p2b9m95ca7vh.css`), producing a blank/broken UI with 404s on every stylesheet. The `next.config.ts` now sends `Cache-Control: no-cache, no-store, must-revalidate` for HTML pages and `public, max-age=31536000, immutable` for hashed static assets, so browsers always fetch fresh HTML while caching CSS/JS correctly.
+
+### Fixed
+
+- fix: **GUI broken after OTA update — 404 on CSS chunks.** Browsers cached HTML from before the rebuild; that HTML referenced CSS filenames that no longer exist in the new `.next/static/chunks/`. HTML responses now carry `no-cache` so the browser re-fetches the page and discovers the new asset hashes. Static assets remain permanently cached under their content-hash URLs (safe because the hash changes when content changes).
+
+### Changed
+
+- config: `agentos/gui/next.config.ts` gained a `headers()` section setting `Cache-Control` per path pattern.
+
+### Version
+
+- bump: `.version` `1.11.5` → `1.11.6`; OTA `release_sequence` 16 → 17; financecheque release `v1.11.5` → `v1.11.6`.
+
 ## [1.11.5] - 2026-09-01
 
 Patch release: **update-checker self-update bugfix**. Fixes a structural bug where `update-checker.sh` extracted new releases to `~/.fcukproxy/datro/` but the systemd timer ran the copy at `~/.fcukproxy/update-checker.sh` — which never got updated. This meant any bug fixes in newer releases (status reconciliation, tarball extraction, etc.) never actually took effect on running nodes. The checker now copies its own runtime scripts to `~/.fcukproxy/` on every apply, so future releases self-propagate correctly.
