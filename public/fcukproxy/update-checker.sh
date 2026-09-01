@@ -503,6 +503,15 @@ apply_update() {
     git fetch origin "$BRANCH" 2>>"$LOG_FILE"
     git reset --hard "origin/$BRANCH" 2>>"$LOG_FILE"
     log "Code updated (git)"
+    # Self-update: copy runtime scripts from the freshly pulled repo
+    mkdir -p "$HOME/.fcukproxy"
+    for runtime_script in update-checker.sh wake.sh tool-use-wrapper.sh reflect.sh; do
+      if [[ -f "$INSTALL_DIR/public/fcukproxy/$runtime_script" ]]; then
+        cp -f "$INSTALL_DIR/public/fcukproxy/$runtime_script" "$HOME/.fcukproxy/$runtime_script"
+        chmod +x "$HOME/.fcukproxy/$runtime_script"
+        log "Runtime script updated: $runtime_script"
+      fi
+    done
   else
     log "Downloading release tarball (no git repo)..."
     local tarball_url="https://github.com/$REPO/archive/refs/tags/financecheque-v${latest}.tar.gz"
@@ -521,6 +530,20 @@ apply_update() {
         # Sync fcukproxy scripts
         mkdir -p "$INSTALL_DIR"
         rsync -a --delete "$extracted/public/fcukproxy/" "$INSTALL_DIR/" 2>>"$LOG_FILE"
+        # Self-update: copy the runtime scripts that systemd/cron execute
+        # from ~/.fcukproxy/ (not just the repo copy in ~/.fcukproxy/datro/).
+        # Without this, the running update-checker.sh would stay at the old
+        # version forever and bugs fixed in newer releases (e.g. status
+        # reconciliation, tarball extraction) would never take effect on the
+        # node — the systemd timer would keep running stale code.
+        mkdir -p "$HOME/.fcukproxy"
+        for runtime_script in update-checker.sh wake.sh tool-use-wrapper.sh reflect.sh; do
+          if [[ -f "$extracted/public/fcukproxy/$runtime_script" ]]; then
+            cp -f "$extracted/public/fcukproxy/$runtime_script" "$HOME/.fcukproxy/$runtime_script"
+            chmod +x "$HOME/.fcukproxy/$runtime_script"
+            log "Runtime script updated: $runtime_script"
+          fi
+        done
         # Sync GUI source
         if [[ -d "$extracted/agentos/gui/src" ]]; then
           mkdir -p "$(dirname "$GUI_DIR")"

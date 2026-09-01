@@ -1,3 +1,20 @@
+## [1.11.5] - 2026-09-01
+
+Patch release: **update-checker self-update bugfix**. Fixes a structural bug where `update-checker.sh` extracted new releases to `~/.fcukproxy/datro/` but the systemd timer ran the copy at `~/.fcukproxy/update-checker.sh` — which never got updated. This meant any bug fixes in newer releases (status reconciliation, tarball extraction, etc.) never actually took effect on running nodes. The checker now copies its own runtime scripts to `~/.fcukproxy/` on every apply, so future releases self-propagate correctly.
+
+### Fixed
+
+- fix: **Update-checker never updated itself.** `apply_update()` now copies `update-checker.sh`, `wake.sh`, `tool-use-wrapper.sh`, and `reflect.sh` from the extracted release to `~/.fcukproxy/` (the runtime location where systemd/cron execute them), fixing the root cause of stale-version bugs reappearing on nodes that appeared to be up to date.
+- fix: **Git-based nodes also affected.** The self-update now runs on both the tarball path and the git-pull path, so nodes with a cloned repo also refresh their runtime scripts.
+
+### Changed
+
+- ops: Runtime script self-copy runs in both update paths (git and tarball), with per-script logging.
+
+### Version
+
+- bump: `.version` `1.11.4` → `1.11.5`; OTA `release_sequence` 15 → 16; financecheque release `v1.11.4` → `v1.11.5`.
+
 ## [1.11.4] - 2026-09-01
 
 Patch release: **agent tool-use enforcement** and **tarball extraction robustness**. The child-proxy agent was refusing to execute terminal commands with "I don't have the capability" — fixed by adding a tool-use wrapper script that ensures agent backends (kilo/opencode) have proper tool configuration when spawned by the task router. Also fixes tarball extraction failures when GitHub releases have non-standard internal directory names.
