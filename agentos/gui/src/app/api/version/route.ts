@@ -78,6 +78,12 @@ export async function GET() {
       updateState = s.state || "idle";
       updateTo = s.to;
     } catch {}
+    // A stale terminal status (e.g. a failed attempt from an older version)
+    // must not surface once the node is already up to date.
+    if (upToDate && updateState !== "updating") {
+      updateState = "idle";
+      updateTo = undefined;
+    }
   }
 
   return NextResponse.json({

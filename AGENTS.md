@@ -1,5 +1,16 @@
 # Agent Memory File
 
+## GOLDEN RULE — Never Patch a Single Machine
+
+**Never modify an agent on only one machine.** Every change to any agent (GUI, child-proxy, agent.py, wake.sh, skills, OTA manifest, docs) **must** be shipped as a release of the `financecheque` branch:
+
+1. Commit the change to `financecheque`.
+2. Bump to the **next semantic version** (e.g. v1.9.0 → v1.10.0) in `.version`, `CHANGELOG.md`, and the OTA `release_sequence` in `public/fcukproxy/ota-manifest.json`.
+3. Tag `financecheque-v{N}` and publish a GitHub release on the `financecheque` branch.
+4. Every child-proxy node/agent on every machine detects the new source and auto-updates itself.
+
+Rationale: a hand patch on one laptop goes stale and is lost; a release propagates to **all** machines so they converge on identical code. If a single machine has a problem, first check whether the source of truth (the `financecheque` branch) should change — if so, release it; do not hand-edit that one machine.
+
 ## Version Format
 `v{major}.{minor}.{patch}.{build}`
 - Build is always exactly 2 digits: 00-99

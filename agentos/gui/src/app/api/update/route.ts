@@ -36,7 +36,15 @@ export async function POST() {
 
   // Already updating — return current status
   if (current.state === "updating") {
-    return NextResponse.json(current, { status: 409 });
+    // A lock written before a crash/reboot can leave the node stuck in
+    // "updating" forever. Treat an update that started more than 30 minutes
+    // ago as stale so the node can self-heal and retry.
+    const started = current.started ? Date.parse(current.started) : NaN;
+    if (Number.isFinite(started) && Date.now() - started > 30 * 60_000) {
+      writeStatus({ state: "idle" });
+    } else {
+      return NextResponse.json(current, { status: 409 });
+    }
   }
 
   // Read local + remote versions
@@ -64,10 +72,10 @@ export async function POST() {
   }
 
   if (localVersion === remoteVersion) {
-    return NextResponse.json(
-      { state: "idle", from: localVersion, to: remoteVersion },
-      { status: 200 }
-    );
+    // Already up to date — clear any stale status so the dashboard reports idle
+    const idle: UpdateStatus = { state: "idle", from: localVersion, to: remoteVersion };
+    writeStatus(idle);
+    return NextResponse.json(idle, { status: 200 });
   }
 
   // Start the update in background

@@ -1,3 +1,10 @@
+## [1.10.0] - 2026-09-01
+
+- fix: Stale `.update-status` no longer surfaces as `update: error` on an up-to-date node. `GET /api/version` reports `idle` when the local version already matches remote (and the status is not a live `updating` lock).
+- fix: `/api/update` self-heals a crashed mid-flight lock — an `updating` state older than 30 minutes is treated as stale, cleared, and retried instead of returning `409` forever. POSTing when already up-to-date now also clears any leftover status file so the dashboard returns to `idle`.
+- docs: Add the financecheque **golden rule** to `AGENTS.md` — all agent changes ship via the branch release process, never by hand-patching a single machine.
+- bump: OTA `release_sequence` 9 -> 10, financecheque release v1.9.0 -> v1.10.0.
+
 ## [1.9.0] - 2026-09-01
 
 Hard-line on-demand execution: only the port-3000 WebGUI runs continuously; every dependency (child-proxy, ollama, omniroute, task-router) is woken per prompt and released after the deliverable.
