@@ -19,7 +19,7 @@ import { promisify } from "util";
 import { homedir } from "os";
 import { getRenderJob } from "@/runtime/tools/remotion";
 import { queryGraphRAG } from "@/lib/graphrag";
-import { ensureLLMStack, beginLLMRequest, endLLMRequest } from "@/lib/llm-gate";
+import { ensureLLMStack, beginLLMRequest, endLLMRequest, releaseAfterAnswer } from "@/lib/llm-gate";
 
 const execAsync = promisify(exec);
 
@@ -721,6 +721,11 @@ export async function POST(req: NextRequest) {
       reply: "Sorry, I encountered an error processing your request.",
       error: err.message,
     }, { status: 500 });
+  } finally {
+    // On-demand everywhere: a prompt may have cold-started the LLM stack,
+    // so release it shortly after the answer rather than letting it idle
+    // for the full 30-min timeout. No-op when nothing was started.
+    releaseAfterAnswer();
   }
 }
 

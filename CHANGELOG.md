@@ -1,3 +1,13 @@
+## [1.9.0] - 2026-09-01
+
+Hard-line on-demand execution: only the port-3000 WebGUI runs continuously; every dependency (child-proxy, ollama, omniroute, task-router) is woken per prompt and released after the deliverable.
+
+- feat: Add `releaseAfterAnswer()` to the GUI LLM gate (`agentos/gui/src/lib/llm-gate.ts`) — after a chat reply is delivered the stack is released ~15s later (re-arming while a cold model load is still settling, bounded by `LLM_AFTER_ANSWER_MAX_MS`) instead of idling for the full 30-minute timeout. Wired into `POST /api/chat` (`route.ts`) so both local and parent-proxy prompts stop the stack after the answer.
+- feat: Add `wake.sh` — a single deployable on-demand wrapper (`public/fcukproxy/wake.sh`) to wake/sleep the dependency stack explicitly: `wake` starts child-proxy (:4001) + Main Agent stack (ollama:11434, omniroute:20128, task-router:3200); `sleep` stops them again; `status` reports what is up. Scope to `child`/`llm`/`all`. OTA-managed via the manifest.
+- ops: Restore thin-client policy — `fcukproxy-child.service` (child-proxy :4001) disabled by default; only `agentos-gui.service` (:3000) runs continuously. Deps are disabled and start on demand.
+- ops: GUI build fix — `@tailwindcss/postcss` is now installed for `next build` (was declared in `agentos/gui/package.json` but absent from the node tree), unblocking the previously-OOM-crashing production build.
+- bump: OTA `release_sequence` 8 -> 9, financecheque release v1.8.0 -> v1.9.0.
+
 ## [1.8.0]
 
 Introduce the `skill.state` concept into the child-proxy harness.

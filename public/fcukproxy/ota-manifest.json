@@ -1,8 +1,8 @@
 {
   "schema": 2,
   "branch": "financecheque",
-  "release_sequence": 8,
-  "updated": "2026-08-31",
+  "release_sequence": 9,
+  "updated": "2026-09-01",
   "apps": {
     "child-proxy": {
       "version": "0.11.0",
@@ -57,6 +57,12 @@
       "file": "skills/skills-state.schema.json",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/skills/skills-state.schema.json",
       "check": "json"
+    },
+    "wake": {
+      "version": "0.1.0",
+      "file": "wake.sh",
+      "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/wake.sh",
+      "check": "bash"
     }
   },
   "components": {

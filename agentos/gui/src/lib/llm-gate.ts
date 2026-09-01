@@ -23,6 +23,21 @@ const IDLE_TIMEOUT_MS = (parseInt(process.env.LLM_IDLE_TIMEOUT_MIN || "30", 10) 
 const START_TIMEOUT_MS = parseInt(process.env.LLM_START_TIMEOUT_S || "180", 10) * 1000;
 const WARM_TIMEOUT_MS = parseInt(process.env.LLM_WARM_TIMEOUT_S || "600", 10) * 1000;
 const WATCHDOG_MS = 15_000;
+// After an answer is delivered the stack is released again so nothing LLM
+// keeps running continuously. This is the "stop after the deliverable" gap:
+// without it the stack only went quiet after the (default 30 min) idle timer.
+// AFterAnswerMs is deliberately short — long enough for the reply to flush
+// and for an immediate follow-up to re-arm, short enough that a one-off
+// exchange does not sit warmed for 30 minutes.
+const AFTER_ANSWER_MS = (parseInt(process.env.LLM_AFTER_ANSWER_MS || "15000", 10) || 15000);
+// If the answer was served while the stack was still cold-starting/warming
+// (slow on this Celeron), keep re-arming until the request truly settles,
+// but never hold it longer than this bound so a genuinely huge cold load is
+// not killed mid-way (that would waste everything). Default = warm timeout.
+const AFTER_ANSWER_MAX_MS = (parseInt(process.env.LLM_AFTER_ANSWER_MAX_MS || "600000", 10) || 600000);
+let afterAnswerTimer: NodeJS.Timeout | null = null;
+let afterAnswerArmed = false;
+let afterAnswerSince = 0;
 
 export interface GateState {
   state: "starting" | "up" | "down";
@@ -227,6 +242,31 @@ export async function shutdownLLMStack(reason = "manual"): Promise<GateState> {
   await stopOllama();
   warm = false;
   return { ...(await getGateState()), message: `stopped (${reason})` };
+}
+
+// ─── Stop-after-deliverable ──────────────────────────────────
+// Call once a single prompt has been answered and the reply returned.
+// The stack is released shortly after (AFTER_ANSWER_MS) so a follow-up
+// in bursts re-arms rather than getting killed, but a one-off exchange
+// does not stay warmed for the full idle timeout. Safe no-op if nothing
+// is up or if the stack is already shutting down.
+export function releaseAfterAnswer(): void {
+  touch();
+  if (!afterAnswerArmed) afterAnswerSince = Date.now();
+  if (afterAnswerTimer) clearTimeout(afterAnswerTimer);
+  // If the stack is still busy (e.g. the first model load is warming for
+  // several minutes), don't give up — re-arm so it releases the moment the
+  // deliverable actually settles, up to AFTER_ANSWER_MAX_MS total.
+  const settle = async (): Promise<void> => {
+    if (isBusy() && Date.now() - afterAnswerSince < AFTER_ANSWER_MAX_MS) {
+      afterAnswerTimer = setTimeout(settle, AFTER_ANSWER_MS);
+      return;
+    }
+    afterAnswerArmed = false;
+    await shutdownLLMStack("after-answer");
+  };
+  afterAnswerTimer = setTimeout(settle, AFTER_ANSWER_MS);
+  afterAnswerArmed = true;
 }
 
 // ─── Idle watchdog ─────────────────────────────────────────────
