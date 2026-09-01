@@ -482,7 +482,17 @@ apply_update() {
   # 2. Regenerate systemd services from repo (picks up memory limits, new services, etc.)
   regenerate_services
 
-  # 3. Source sync (rsync GUI, copy omniroute) is handled by sync_source() at the top of main()
+  # 3. Re-sync deployed source AFTER the pull/apply. sync_source() at the top of
+  #    main() ran against the OLD $INSTALL_DIR (the pull had not happened yet), so
+  #    the GUI dir would otherwise hold the previous release's code while the
+  #    repo is already on the new one — the stale-GUI-build bug where a node
+  #    serves an old /api/version bundle after updating.
+  sync_source
+
+  # 4. Rebuild the GUI from the NEWLY synced source. ensure_gui_build() at the
+  #    top of main() also ran pre-pull; rebuilding here guarantees the process
+  #    restarted below serves a bundle whose source matches the pulled commit.
+  ensure_gui_build || log "WARN: GUI rebuild after update did not complete (non-fatal)"
 
   # 5. Copy updated voice-service
   if [[ -f "$INSTALL_DIR/public/fcukproxy/voice-service/server.py" ]]; then
@@ -493,10 +503,7 @@ apply_update() {
     log "Voice service updated"
   fi
 
-  # 6. GUI rebuild is handled by ensure_gui_build() at the top of main()
-  #    (runs on every invocation — no need to rebuild here)
-
-  # 7. Restart services
+  # 7. Restart services (only after rebuild, so the GUI never serves a stale bundle)
   log "Restarting services..."
   for svc in whisper-stt whisper-realtime omniroute agentos-gui openclaw-gateway fcukproxy-child; do
     if systemctl --user is-enabled "$svc.service" >/dev/null 2>&1; then

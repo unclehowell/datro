@@ -3,7 +3,7 @@
 // Session context, plan/act, checkpoints, approvals, caching
 // ============================================================
 
-import { mkdir, readdir, readFile, writeFile } from "fs/promises";
+import { mkdir, readdir, readFile, writeFile, unlink, stat } from "fs/promises";
 import { join } from "path";
 import { LLMClient } from "@/runtime/engines/llm";
 
@@ -66,6 +66,11 @@ export async function buildRouterMessages(
 
 const CHECKPOINT_ROOT = process.env.HOME ? join(process.env.HOME, ".fcukproxy", "checkpoints") : "";
 
+// Cap checkpoint growth per session and by age (WS3). Keeps crashes resumable
+// without letting ~/.fcukproxy/checkpoints balloon across many sessions/prompts.
+const MAX_CHECKPOINTS_PER_SESSION = 50;
+const CHECKPOINT_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000; // 7 days
+
 export interface CheckpointData {
   mode?: string;
   messages?: Array<{ role: string; content: string }>;
@@ -89,10 +94,38 @@ export async function saveCheckpoint(sessionId: string, data: CheckpointData): P
       timestamp: Date.now(),
     };
     await writeFile(join(dir, `${id}.json`), JSON.stringify(checkpoint, null, 2), "utf-8");
+    await pruneCheckpoints(dir);
     return id;
   } catch (err) {
     console.error("[harness] saveCheckpoint failed:", err);
     return null;
+  }
+}
+
+// Keep a session's checkpoint dir bounded: drop anything older than the max age
+// and, after that, the oldest beyond MAX_CHECKPOINTS_PER_SESSION.
+async function pruneCheckpoints(dir: string): Promise<void> {
+  try {
+    const entries = await readdir(dir);
+    const files = entries.filter((f) => f.endsWith(".json"));
+    const now = Date.now();
+    const meta: Array<{ file: string; mtimeMs: number }> = [];
+    for (const f of files) {
+      const p = join(dir, f);
+      try {
+        const st = await stat(p);
+        meta.push({ file: f, mtimeMs: st.mtimeMs });
+      } catch { /* file vanished */ }
+    }
+    // Age eviction
+    const fresh = meta.filter((m) => now - m.mtimeMs <= CHECKPOINT_MAX_AGE_MS);
+    const stale = meta.filter((m) => now - m.mtimeMs > CHECKPOINT_MAX_AGE_MS);
+    await Promise.all(stale.map((m) => unlink(join(dir, m.file)).catch(() => {})));
+    // Count eviction — keep newest N
+    fresh.sort((a, b) => b.mtimeMs - a.mtimeMs);
+    await Promise.all(fresh.slice(MAX_CHECKPOINTS_PER_SESSION).map((m) => unlink(join(dir, m.file)).catch(() => {})));
+  } catch (err) {
+    console.error("[harness] pruneCheckpoints failed:", err);
   }
 }
 

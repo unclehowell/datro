@@ -1,3 +1,34 @@
+## [1.11.1] - 2026-09-01
+
+Phase-1 release: WS0 bug fixes (stale GUI bundle + silent task failure), WS1 docs, WS2 installer consolidation, WS3 checkpoint pruning, WS6 security/routing.
+
+### WS0 — Bug fixes
+
+- fix: **GUI can still serve a stale bundle after an update.** `public/fcukproxy/update-checker.sh` ran `sync_source` + `ensure_gui_build` at the *top of main()*, i.e. BEFORE the git pull / tarball apply. On a git-based node the GUI was re-synced and rebuilt from the OLD `$INSTALL_DIR`, then the new code was pulled and the server restarted — so it kept serving the previous release's `/api/version` logic (the `latest: v1.9.0` symptom). The updater now re-syncs and rebuilds the GUI **after** the pull/apply, then restarts, so a node never serves a bundle whose source is older than the pulled commit.
+- fix: **Agentic tasks silently degraded to chat.** On a thin client only the GUI runs; task-router/omniroute/child-proxy are all stopped by the idle policy and were never gated-started for a prompt. `agentos/gui/src/app/api/chat/route.ts` now gate-starts task-router on demand (new `startTaskRouter()` + `classifyTask()` helpers), retries `/route` once after waking, and returns an explicit `agent_unavailable` message instead of swallowing a task into the conversational fallback when the backend never comes up. A `TASK_ROUTER_TOKEN` (or `FCUK_LOCAL_TOKEN`) is forwarded as a `Bearer` header when one is configured.
+- fix: task-router was bound to all interfaces and `/route` accepted requests from any source. `agentos/task-router.mjs` now binds loopback-only (`127.0.0.1`) by default and enforces a shared-secret header when `TASK_ROUTER_TOKEN` is set.
+- fix: brittle `isTask()` mis-routed politeness lead-ins (`"help me…"`, `"please install…"`) and questions. It now strips `please`/`help me`/`can you` prefixes before matching, keeps short acknowledgements and questions as chat, and treats real action verbs (`install`, `download`, `fix`, `create`, …) as tasks. 13 routing cases unit-checked.
+
+### WS1 — Source of truth & docs
+
+- docs: Rewrote `AGENTS.md` — removed the obsolete `v{major}.{minor}.{patch}.{build}` 4-segment format and legacy cron auto-release script; documented semantic `v1.x.y` as canonical, the golden rule, a canonical installer entrypoint table, the idle-by-default resource contract, the storage contract, and a known-issues ledger.
+- docs: Added `docs/ARCHITECTURE.md` (what runs always-on vs gated, service/port table, chat-routing flow, OTA path) and `docs/LIFECYCLE.md` (idle → warm → active → release states, prompt lifecycle, task-vs-chat discrimination).
+
+### WS2 — Installer consolidation
+
+- ops: `public/install.sh` (legacy duplicate, `VERSION=1.7.22`) is now a thin redirect to the canonical `public/fcukproxy/install.sh`; the `static/financecheque/fcukproxy/install.sh` redirect now points at `public/fcukproxy/install.sh` (was `public/install.sh`).
+- ops: Fresh installs no longer ship stale self-reported versions — `public/fcukproxy/install.sh` `VERSION=1.7.24` → `1.11.1`, `GUI_VERSION` fallback `1.6.0` → `1.11.1`; `gui_latest_version()` now prefers the branch's raw `.version` (no API rate-limit) over the GitHub releases API.
+- bump: Root `.version` `1.11.0` -> `1.11.1`, OTA `release_sequence` 11 -> 12, financecheque release v1.11.0 -> v1.11.1.
+
+### WS3 — Storage caps
+
+- ops: Cap `~/.fcukproxy/checkpoints/` growth — `agentos/gui/src/lib/harness.ts` now evicts checkpoints older than 7 days and keeps only the newest 50 per session on every save (`MAX_CHECKPOINTS_PER_SESSION`, `CHECKPOINT_MAX_AGE_MS`).
+
+### WS6 — Security & routing quick wins
+
+- security: `/route` is loopback-only and protected by an optional shared secret (see WS0 above).
+- routing: `isTask()` politeness-aware classification (see WS0 above).
+
 ## [1.11.0] - 2026-09-01
 
 - fix: `GET /api/version` was showing a stale "latest" release (v1.9.0 while v1.10.0 was current) because the GitHub releases list is not guaranteed version-sorted and the route took the first `financecheque-v*` match. It now selects the newest release by semantic-version comparison.

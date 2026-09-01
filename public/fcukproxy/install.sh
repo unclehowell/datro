@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.7.24"
+VERSION="1.11.1"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -44,7 +44,7 @@ AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
 FCUK_LOCAL_TOKEN="${FCUK_LOCAL_TOKEN:-}"  # local auth token (auto-generated)
 
 # Local chat GUI (AgentOS) — served on GUI_PORT with the agent as its LLM backend
-GUI_VERSION="1.6.0"                  # fallback tag; overridden by latest-release lookup below
+GUI_VERSION="1.11.1"                  # fallback tag; overridden by latest-release lookup below
 GUI_PORT="${GUI_PORT:-3000}"         # the web chat interface
 GUI_DIR="${GUI_DIR:-$INSTALL_DIR/agentos-gui}"
 NODE_VERSION="v22.23.2"              # bundled Node.js for the GUI (pinned LTS)
@@ -735,12 +735,15 @@ OCWRAP
 
 # ── Install the local chat GUI (AgentOS) — web interface on port 3000 ───────
 gui_latest_version() {
-  # Always ship the newest release: GitHub API → raw .version on the branch → fallback.
+  # Always ship the newest release. Prefer the branch's raw .version file: it is
+  # explicit, never rate-limited, and matches what the OTA updater trusts. The
+  # GitHub API is a secondary fallback (rate-limited on unauthenticated nodes);
+  # GUI_VERSION is the last-resort constant.
   local t=""
+  t=$(curl -fsSL --max-time 10 "https://raw.githubusercontent.com/unclehowell/datro/financecheque/.version" 2>/dev/null | tr -d '[:space:]')
+  [[ -n "$t" ]] && { echo "$t"; return; }
   t=$(curl -fsSL --max-time 10 "https://api.github.com/repos/unclehowell/datro/releases/latest" 2>/dev/null \
       | grep -oE '"tag_name":[[:space:]]*"financecheque-v[^"]+"' | head -1 | sed 's/.*financecheque-v//; s/"//')
-  [[ -n "$t" ]] && { echo "$t"; return; }
-  t=$(curl -fsSL --max-time 10 "https://raw.githubusercontent.com/unclehowell/datro/financecheque/.version" 2>/dev/null | tr -d '[:space:]')
   [[ -n "$t" ]] && { echo "$t"; return; }
   echo "$GUI_VERSION"
 }

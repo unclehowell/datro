@@ -14,14 +14,16 @@ import { complete } from "@/lib/omniroute";
 import { sendToHermes } from "@/lib/hermes";
 import { switchToProfile } from "@/lib/hermes-gate";
 import { isProxyLocked, lockForProxy, unlockProxy, getProxyLock } from "@/lib/proxy-state";
-import { exec, spawn } from "child_process";
+import { exec, execFile, spawn } from "child_process";
 import { promisify } from "util";
 import { homedir } from "os";
+import fs from "fs";
 import { getRenderJob } from "@/runtime/tools/remotion";
 import { queryGraphRAG } from "@/lib/graphrag";
-import { ensureLLMStack, beginLLMRequest, endLLMRequest, releaseAfterAnswer } from "@/lib/llm-gate";
+import { ensureLLMStack, beginLLMRequest, endLLMRequest, releaseAfterAnswer, userServiceActive, userService } from "@/lib/llm-gate";
 
 const execAsync = promisify(exec);
+const execFileAsync = promisify(execFile);
 
 const DEFAULT_HOME = homedir();
 
@@ -61,6 +63,96 @@ async function engageMainAgent(): Promise<void> {
   }
 }
 
+// ─── On-demand start of the agentic task backends ──────────
+// Thin-client policy: only the port-3000 GUI runs continuously; task-router,
+// omniroute and the model stack are all disabled at boot. When a prompt arrives
+// that needs the agentic stack (task-router -> opencode/kilo) this helper wakes
+// the task-router user service so the request is not silently swallowed by the
+// chat fallback. Returns true once /route is actually reachable.
+async function startTaskRouter(): Promise<boolean> {
+  try {
+    if (await userServiceActive("task-router")) {
+      return await isTaskRouterUp();
+    }
+    const exists = await new Promise<boolean>((resolve) => {
+      execFileAsync("systemctl", ["--user", "list-unit-files", "task-router.service"], { timeout: 10_000 })
+        .then(({ stdout }) => resolve(/task-router\.service/.test(stdout)))
+        .catch(() => resolve(false));
+    });
+    if (exists) {
+      await userService("task-router", "start");
+    } else {
+      // No unit file on this node — spawn the router directly from the checkout.
+      const candidates = [
+        `${process.env.HOME}/.fcukproxy/omniroute/task-router.mjs`,
+        `${process.env.HOME}/.fcukproxy/datro/agentos/task-router.mjs`,
+      ];
+      const routerFile = candidates.find((f) => fs.existsSync(f)) as string | undefined;
+      if (!routerFile) return false;
+      spawn("node", [routerFile], {
+        env: { ...process.env, PORT: String((parseInt(process.env.TASK_ROUTER_PORT || "3200", 10))) },
+        detached: true,
+        stdio: "ignore",
+      }).unref();
+    }
+    // Wait up to ~15s for the router to come up
+    const deadline = Date.now() + 15_000;
+    while (Date.now() < deadline) {
+      if (await isTaskRouterUp()) return true;
+      await new Promise((r) => setTimeout(r, 1500));
+    }
+    return await isTaskRouterUp();
+  } catch {
+    return false;
+  }
+}
+
+function isTaskRouterUp(): Promise<boolean> {
+  return fetch(`${TASK_ROUTER_URL}/health`, { signal: AbortSignal.timeout(3000) })
+    .then((r) => r.ok)
+    .catch(() => false);
+}
+
+// POST the prompt to the task-router for classification, waking the router on
+// demand (thin-client gating) and retrying once. Returns null only when the
+// backend is still unreachable after a gate-start.
+async function classifyTask(msg: string, messages: Array<{ role: string; content: string }>): Promise<any | null> {
+  const headers: Record<string, string> = { "Content-Type": "application/json" };
+  // WS6: echo the shared-secret token if the router is configured to require one.
+  const token = process.env.TASK_ROUTER_TOKEN || process.env.FCUK_LOCAL_TOKEN || "";
+  if (token) headers["Authorization"] = `Bearer ${token}`;
+
+  const attempt = async (): Promise<Response> => {
+    return fetch(`${TASK_ROUTER_URL}/route`, {
+      method: "POST",
+      headers,
+      body: JSON.stringify({ text: msg, messages }),
+      signal: AbortSignal.timeout(360000),
+    });
+  };
+
+  let res: Response;
+  try {
+    res = await attempt();
+  } catch {
+    // First attempt failed — wake the gated task-router and retry once.
+    const started = await startTaskRouter();
+    if (!started) return null;
+    try {
+      res = await attempt();
+    } catch {
+      return null;
+    }
+  }
+
+  if (!res.ok) return null;
+  try {
+    return await res.json();
+  } catch {
+    return null;
+  }
+}
+
 async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" | "assistant"; content: string }>, msg: string, opts?: { mode?: string; voiceCall?: boolean }): Promise<{
   reply: string;
   routed: string;
@@ -73,15 +165,19 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
   // watchdog (llm-gate) never shuts the stack down mid-completion.
   beginLLMRequest();
   try {
-    const routerRes = await fetch(`${TASK_ROUTER_URL}/route`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ text: msg, messages }),
-      signal: AbortSignal.timeout(360000),
-    });
-
-    if (!routerRes.ok) throw new Error(`task-router ${routerRes.status}`);
-    const routed = await routerRes.json();
+    // Ask the task-router to classify the prompt. On a thin client the router
+    // is gated (stopped) — wake it on demand and retry so tasks are actually
+    // executed instead of silently leaking into the chat fallback below.
+    const routed = await classifyTask(msg, messages);
+    if (!routed) {
+      // Router is genuinely unavailable even after a gate-start + retry.
+      return {
+        reply: `⚠️ The agentic task backend (task-router on ${TASK_ROUTER_URL}) is unavailable right now. I tried to start it on demand but it did not come up. Check that \`opencode\`/the agent stack is installed, then ask again.`,
+        routed: "agent_unavailable",
+        dependency: "task-router",
+        provider: "task-router",
+      };
+    }
 
     if (routed.type === "task") {
       return {
