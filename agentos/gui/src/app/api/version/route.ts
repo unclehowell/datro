@@ -96,17 +96,39 @@ export async function GET() {
   // Check if an update is in progress
   let updateState: string = "idle";
   let updateTo: string | undefined;
+  let statusFinished: string | undefined;
+  let statusFrom: string | undefined;
   if (existsSync(STATUS_FILE)) {
     try {
       const s = JSON.parse(readFileSync(STATUS_FILE, "utf-8"));
       updateState = s.state || "idle";
       updateTo = s.to;
+      statusFinished = s.finished;
+      statusFrom = s.from;
     } catch {}
     // A stale terminal status (e.g. a failed attempt from an older version)
     // must not surface once the node is already up to date.
     if (upToDate && updateState !== "updating") {
       updateState = "idle";
       updateTo = undefined;
+    }
+    // Defensive self-heal: even on a node running older update-checker code
+    // that does not yet reconcile .update-status, a leftover error/done must
+    // not pin the banner to "Update failed — will retry" forever. If the last
+    // write is older than the staleness window (30 min, matching /api/update),
+    // clear it so a fresh check shows the plain "Update available" and the
+    // user's click can kick off a clean retry.
+    if (
+      updateState !== "updating" &&
+      statusFinished &&
+      statusFrom !== localVersion
+    ) {
+      const finished = Date.parse(statusFinished);
+      if (Number.isFinite(finished) && Date.now() - finished > 30 * 60_000) {
+        updateState = "idle";
+        updateTo = undefined;
+        statusFrom = undefined;
+      }
     }
   }
 

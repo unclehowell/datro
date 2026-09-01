@@ -1,3 +1,21 @@
+## [1.11.2] - 2026-09-01
+
+Patch release: fix the spurious **"Update failed — will retry"** banner on the port-3000 GUI. A stale `~/.fcukproxy/.update-status` error from an old failed attempt was never reconciled by the systemd-timer update path, so once the parent advanced a version (local 1.11.0 vs remote 1.11.1) the GUI surfaced the leftover failure instead of a clean "Update available". `update-checker.sh` now owns and clears the status file on every completion, the GUI self-heals stale error/done states on read, and an adjacent stdout-pollution bug in the version checker is fixed.
+
+### Fixed
+
+- fix: **Stale "Update failed — will retry" on the GUI.** `.update-status` was written only by the `/api/update` POST path; when an update completed through the systemd timer (`fcuk-update-checker`) the file was left at the previous `error`/`done` state. `public/fcukproxy/update-checker.sh` now reconciles the file at every terminal exit — writes `idle` on "already up to date" / skip / DRY_RUN, `done` after a successful apply, and `error` on a genuine failure — so the banner reflects reality regardless of which path launched the checker.
+- fix: **Leftover failure can't pin the banner after a fresh release.** `agentos/gui/src/app/api/version/route.ts` now treats a `error`/`done` status whose `finished` timestamp is older than 30 minutes (and whose `from` no longer matches the local version) as stale and clears it on read, so the GUI shows the plain "Update available" and the user's click can start a clean retry even on nodes still running the older (pre-reconcile) checker.
+- fix: **version checker corrupts the detected latest version.** When GitHub's raw `.version` was strictly newer than the parent's reported version, the `log()` call inside `fetch_latest_version` wrote to stdout and was captured into the `$(fetch_latest_version)` substitution, producing a mangled `latest` (log line + version glued together) that broke `version_lt` with arithmetic errors. `log()` now writes to stderr so it never pollutes a stdout consumer.
+
+### Changed
+
+- ops: `update-checker.sh` gained a `write_update_status` helper and an explicit `STATUS_FILE`; the success/failure/up-to-date exits in `main()` all reconcile the status file.
+
+### Version
+
+- bump: `.version` `1.11.1` → `1.11.2`; OTA `release_sequence` 12 → 13; financecheque release `v1.11.1` → `v1.11.2`.
+
 ## [1.11.1] - 2026-09-01
 
 Phase-1 release: WS0 bug fixes (stale GUI bundle + silent task failure), WS1 docs, WS2 installer consolidation, WS3 checkpoint pruning, WS6 security/routing.

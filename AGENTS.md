@@ -94,6 +94,14 @@ The financecheque child-proxy stack runs on 2–8 GB machines and is
 - **`/route` had no auth and a brittle intent matcher** (e.g. "help me…" could
   misroute). Fixed in v1.11.1: loopback-only bind, optional shared-secret, and
   politeness-aware `isTask()`.
+- **GUI could show a spurious "Update failed — will retry"** from a stale
+  `~/.fcukproxy/.update-status` error left behind by the systemd-timer update
+  path after a failed attempt. Fixed in v1.11.2: `update-checker.sh` now
+  reconciles `.update-status` at every terminal exit, and `/api/version` clears
+  stale (>30 min) `error`/`done` states on read. A related bug where
+  `fetch_latest_version`'s `log()` polluted stdout (corrupting the detected
+  latest version when GitHub was strictly newer than the parent) was also fixed
+  in v1.11.2 by routing `log()` to stderr.
 
 ## Auto-Release Script (legacy)
 

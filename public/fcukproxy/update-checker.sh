@@ -24,6 +24,7 @@ BRANCH="financecheque"
 INSTALL_DIR="${INSTALL_DIR:-$HOME/.fcukproxy/datro}"
 GUI_DIR="${GUI_DIR:-$HOME/.fcukproxy/agentos-gui}"
 LOCAL_VERSION_FILE="$HOME/.fcukproxy/.local-version"
+STATUS_FILE="$HOME/.fcukproxy/.update-status"
 LOG_FILE="$HOME/.fcukproxy/logs/ota-update.log"
 TMPDIR="${TMPDIR:-/tmp}"
 SKIP_REBUILD="${SKIP_REBUILD:-0}"
@@ -47,7 +48,32 @@ mkdir -p "$(dirname "$LOG_FILE")"
 
 log() {
   local msg="[$(date -u +%Y-%m-%dT%H:%M:%SZ)] $*"
-  echo "$msg" | tee -a "$LOG_FILE"
+  echo "$msg" >&2 | tee -a "$LOG_FILE"
+}
+
+# ── Reconcile the GUI's update status file on every completion ───────────────
+# The WebGUI banner on port 3000 reads  ~/.fcukproxy/.update-status. Only the
+# /api/update POST wrote it, so when an update completed through the systemd
+# timer path the old file was left stale (e.g. a failed attempt from hours ago
+# kept showing "Update failed — will retry" even after the node caught up).
+# update-checker.sh now owns this file and reconciles it at every terminal exit,
+# so the status reflects reality no matter which path launched us.
+mkdir -p "$(dirname "$STATUS_FILE")"
+
+write_update_status() {
+  local state="$1"
+  local from="${2:-$(get_local_version)}"
+  local to="${3:-$from}"
+  mkdir -p "$(dirname "$STATUS_FILE")"
+  cat > "$STATUS_FILE" <<EOF
+{
+  "state": "$state",
+  "from": "$from",
+  "to": "$to",
+  "started": "$(date -u +%Y-%m-%dT%H:%M:%SZ)",
+  "finished": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}
+EOF
 }
 
 # ── Fetch latest version from parent (+ GitHub fallback) ─────────────────────
@@ -618,10 +644,14 @@ main() {
   ensure_gui_build || log "WARN: GUI build did not complete (non-fatal)"
 
   local latest
-  latest=$(fetch_latest_version) || exit 1
+  if ! latest=$(fetch_latest_version); then
+    write_update_status error "$(get_local_version)" "unknown"
+    exit 1
+  fi
 
   if [[ -z "$latest" ]]; then
     log "ERROR: Empty version from parent"
+    write_update_status error "$(get_local_version)" "unknown"
     exit 1
   fi
 
@@ -632,11 +662,13 @@ main() {
 
   if [[ "$local_version" == "$latest" ]]; then
     log "Already up to date"
+    write_update_status idle "$local_version" "$latest"
     exit 0
   fi
 
   if ! version_lt "$local_version" "$latest"; then
     log "Local version ($local_version) >= remote ($latest) — skipping"
+    write_update_status idle "$local_version" "$latest"
     exit 0
   fi
 
@@ -644,10 +676,14 @@ main() {
 
   if [[ "$DRY_RUN" == "1" ]]; then
     log "DRY RUN — not applying"
+    write_update_status idle "$local_version" "$latest"
     exit 0
   fi
 
   apply_update "$latest"
+  # Successful apply — clear any prior error status so the GUI shows the new
+  # version, not a stale failure.
+  write_update_status done "$local_version" "$latest"
 }
 
 main "$@"
