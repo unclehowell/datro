@@ -239,8 +239,8 @@ export default function Dashboard() {
           <h2 className="text-sm font-medium text-text-secondary mb-3">Hermes Agents</h2>
           <div className="bg-surface border border-border rounded-lg p-5">
             {/* Toggle between profiles */}
-            <div className="flex items-center gap-2 mb-4">
-              <div className="flex bg-surface-hover rounded-lg p-0.5 border border-border">
+            <div className="flex items-center gap-2 mb-4 overflow-x-auto">
+              <div className="flex bg-surface-hover rounded-lg p-0.5 border border-border min-w-0">
                 {(["hermes-local", "hermes-proxy"] as const).map((key) => {
                   const p = hermesProfiles?.[key === "hermes-local" ? "hermesLocal" : "hermesProxy"];
                   const selected = selectedProfile === key;
@@ -249,7 +249,7 @@ export default function Dashboard() {
                     <button
                       key={key}
                       onClick={() => setSelectedProfile(key)}
-                      className={`px-4 py-2 rounded-md text-xs font-mono transition-all ${
+                      className={`px-3 md:px-4 py-2 rounded-md text-xs font-mono transition-all whitespace-nowrap ${
                         selected
                           ? "bg-accent text-black font-semibold"
                           : "text-text-secondary hover:text-text-primary"
@@ -264,6 +264,7 @@ export default function Dashboard() {
                 })}
               </div>
             </div>
+            </div>
 
             {/* Selected profile details + actions */}
             {(() => {
@@ -277,16 +278,16 @@ export default function Dashboard() {
               return (
                 <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                   {/* Status dot + label */}
-                  <div className="flex items-center gap-2">
-                    <div className={`w-2.5 h-2.5 rounded-full ${running ? "bg-success animate-pulse-dot" : "bg-text-muted/40"}`} />
-                    <span className="text-sm font-medium text-text-primary">{p?.label ?? key}</span>
-                    <span className={`text-xs px-2 py-0.5 rounded-full ${running ? "bg-success/10 text-success" : "bg-surface-hover text-text-muted"}`}>
+                  <div className="flex items-center gap-2 min-w-0">
+                    <div className={`w-2.5 h-2.5 rounded-full shrink-0 ${running ? "bg-success animate-pulse-dot" : "bg-text-muted/40"}`} />
+                    <span className="text-sm font-medium text-text-primary truncate">{p?.label ?? key}</span>
+                    <span className={`text-xs px-2 py-0.5 rounded-full shrink-0 ${running ? "bg-success/10 text-success" : "bg-surface-hover text-text-muted"}`}>
                       {isBusy && startTarget === key ? "starting…" : running ? "running" : "stopped"}
                     </span>
                   </div>
 
                   {/* Model + description */}
-                  <div className="flex-1 text-xs text-text-muted font-mono">
+                  <div className="flex-1 text-xs text-text-muted font-mono truncate">
                     {p?.model} — {p?.description}
                   </div>
 
@@ -450,19 +451,19 @@ export default function Dashboard() {
 
 function StatusCard({ title, status, details }: { title: string; status: string; details: { label: string; value: string | number }[] }) {
   return (
-    <div className="bg-surface border border-border rounded-lg p-4">
+    <div className="bg-surface border border-border rounded-lg p-4 min-w-0">
       <div className="flex items-center gap-2 mb-3">
-        <div className={`w-2 h-2 rounded-full ${status === "online" ? "bg-success animate-pulse-dot" : "bg-error"}`} />
-        <h3 className="font-medium text-sm">{title}</h3>
-        <span className={`ml-auto text-xs px-2 py-0.5 rounded-full ${status === "online" ? "bg-success/10 text-success" : "bg-error/10 text-error"}`}>
+        <div className={`w-2 h-2 rounded-full shrink-0 ${status === "online" ? "bg-success animate-pulse-dot" : "bg-error"}`} />
+        <h3 className="font-medium text-sm truncate">{title}</h3>
+        <span className={`ml-auto text-xs px-2 py-0.5 rounded-full shrink-0 ${status === "online" ? "bg-success/10 text-success" : "bg-error/10 text-error"}`}>
           {status}
         </span>
       </div>
       <div className="space-y-1">
         {details.map((d, i) => (
-          <div key={i} className="flex justify-between text-xs">
-            <span className="text-text-muted">{d.label}</span>
-            <span className="text-text-secondary font-mono">{d.value || "—"}</span>
+          <div key={i} className="flex justify-between text-xs gap-2">
+            <span className="text-text-muted shrink-0">{d.label}</span>
+            <span className="text-text-secondary font-mono text-right truncate">{d.value || "—"}</span>
           </div>
         ))}
       </div>

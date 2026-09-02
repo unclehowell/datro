@@ -38,6 +38,17 @@ const TTS_URL = process.env.VOICE_SERVICE_URL
   : "http://localhost:3101/tts";
 const OLLAMA_MODEL = "openbmb/minicpm5";
 
+// Check if required local services are available
+function checkLocalServices(): { stt: boolean; tts: boolean; llm: boolean } {
+  const stt = spawnSync("curl", ["-s", "-o", "/dev/null", "-w", "%{http_code}", "-m", "3", `${STT_URL.replace("/v1/audio/transcriptions", "/health")}`], { encoding: "utf8" });
+  const tts = spawnSync("curl", ["-s", "-o", "/dev/null", "-w", "%{http_code}", "-m", "3", `${TTS_URL.replace("/tts", "/health")}`], { encoding: "utf8" });
+  return {
+    stt: stt.stdout?.trim() === "200",
+    tts: tts.stdout?.trim() === "200",
+    llm: false, // LLM stack is started on-demand
+  };
+}
+
 // ─── Voicemail record ─────────────────────────────────────
 
 export interface VoicemailRecord {
@@ -416,7 +427,15 @@ export async function POST(req: NextRequest) {
     try {
       userText = await runSTT(audioBlob);
     } catch (e) {
-      return NextResponse.json({ error: `STT error: ${String(e)}` }, { status: 500 });
+      const errMsg = String(e);
+      // Provide helpful guidance when Whisper STT is not available
+      if (errMsg.includes("ECONNREFUSED") || errMsg.includes("fetch failed") || errMsg.includes("connect")) {
+        return NextResponse.json({
+          error: "Whisper STT service is not running on this device. Voicemail requires the full stack (install with MODE=full) or a remote VOICE_SERVICE_URL.",
+          detail: errMsg,
+        }, { status: 503 });
+      }
+      return NextResponse.json({ error: `STT error: ${errMsg}` }, { status: 500 });
     }
 
     if (!userText) {
@@ -433,7 +452,7 @@ export async function POST(req: NextRequest) {
       console.log("[voicemail] LLM response:", agentText.slice(0, 100));
     } catch (e) {
       console.error("[voicemail] LLM failed:", e);
-      agentText = "(No LLM available — could not generate a response)";
+      agentText = "(No LLM available — add an API key to .env or install with MODE=full for local LLM)";
     }
 
     // 4. TTS → mp3

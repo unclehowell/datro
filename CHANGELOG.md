@@ -1,3 +1,25 @@
+## [1.11.11] - 2026-09-02
+
+Patch release: **mobile UI overflow fix + better error messages for missing LLM/voicemail**. Fixes horizontal overflow on mobile browsers that caused content to extend beyond the viewport. Also adds clear, actionable error messages when chat or voicemail fail due to missing API keys or services.
+
+### Fixed
+
+- fix: **Mobile UI overflows viewport width** — Added `overflow-x: hidden` and `max-width: 100vw` to html/body. Added `min-width: 0` to flex children to prevent overflow. Added `overflow-wrap: break-word` to text elements. Status cards and Hermes profile sections now truncate long text instead of overflowing.
+- fix: **No helpful error when chat has no LLM** — Chat API now returns a clear message ("No LLM is available. Add an API key to ~/.fcukproxy/.env...") with HTTP 503 and `needsConfig: true` flag, instead of a generic error.
+- fix: **No helpful error when voicemail Whisper STT unavailable** — Voicemail API returns HTTP 503 with actionable guidance when Whisper STT service is not running, instead of a generic 500 error.
+- fix: **Voicemail LLM failure message improved** — Now tells user to add API key or install with MODE=full.
+
+### Changed
+
+- ui: `globals.css` — comprehensive overflow protection for mobile viewports.
+- ui: `page.tsx` — status cards and Hermes profile sections use `truncate` and `shrink-0` to prevent overflow.
+- api: `chat/route.ts` — detects missing LLM/provider errors and returns helpful guidance.
+- api: `voicemail/route.ts` — detects missing Whisper STT and returns actionable error.
+
+### Version
+
+- bump: `.version` `1.11.10` → `1.11.11`; OTA `release_sequence` 21 → 22; financecheque release `v1.11.10` → `v1.11.11`.
+
 ## [1.11.10] - 2026-09-02
 
 Patch release: **Termux crontab cache directory fix**. The `crontab` command on Termux requires `/data/user/0/com.termux/.cache/crontab/` to exist, or it fails with "mkdir: No such file or directory". Both `install.sh` and `update-checker.sh` now create this directory before writing the crontab.

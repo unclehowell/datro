@@ -813,9 +813,18 @@ export async function POST(req: NextRequest) {
     });
   } catch (err: any) {
     console.error("Chat API error:", err);
+    const errMsg = err.message || String(err);
+    // Provide helpful guidance when no LLM is configured
+    if (errMsg.includes("No LLM") || errMsg.includes("API key") || errMsg.includes("provider") || errMsg.includes("ECONNREFUSED")) {
+      return NextResponse.json({
+        reply: "No LLM is available. Add an API key to ~/.fcukproxy/.env (e.g. GROQ_API_KEY=free at console.groq.com) and restart the agent, or install with MODE=full for local LLM.",
+        error: errMsg,
+        needsConfig: true,
+      }, { status: 503 });
+    }
     return NextResponse.json({
       reply: "Sorry, I encountered an error processing your request.",
-      error: err.message,
+      error: errMsg,
     }, { status: 500 });
   } finally {
     // On-demand everywhere: a prompt may have cold-started the LLM stack,
