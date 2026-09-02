@@ -1,3 +1,15 @@
+## [1.11.13] - 2026-09-02
+
+Patch release: **critical build fix**. v1.11.12 shipped with a JSX syntax error in `src/app/page.tsx` (extra `</div>` tag in the Hermes section) that caused `next build` to fail on every node that updated. This release removes the stray tag so the GUI builds and runs again.
+
+### Fixed
+
+- fix: **`next build` fails with "Parsing ecmascript source code failed"** — removed a stray `</div>` tag in the Hermes profiles section that broke the JSX structure. The error was masked by TypeScript's incremental cache on already-built nodes, so v1.11.12 appeared to work until the cache was cleared or a fresh build was attempted.
+
+### Version
+
+- bump: `.version` `1.11.12` → `1.11.13`; OTA `release_sequence` 23 → 24; financecheque release `v1.11.12` → `v1.11.13`.
+
 ## [1.11.12] - 2026-09-02
 
 Minor release: **local-only LLM, tool-calling, logs UI, and chat mobile fix**. Per user feedback: prompts must NEVER leave the device. Local Ollama (minicpm5) is now the primary LLM, with the registered tool catalog passed to it so it can actually use tools (apt install, terminal exec, file ops). Also adds a /logs web UI so users can view agent logs from the phone.

@@ -264,7 +264,6 @@ export default function Dashboard() {
                 })}
               </div>
             </div>
-            </div>
 
             {/* Selected profile details + actions */}
             {(() => {
