@@ -26,7 +26,13 @@ GUI_DIR="${GUI_DIR:-$HOME/.fcukproxy/agentos-gui}"
 LOCAL_VERSION_FILE="$HOME/.fcukproxy/.local-version"
 STATUS_FILE="$HOME/.fcukproxy/.update-status"
 LOG_FILE="$HOME/.fcukproxy/logs/ota-update.log"
-TMPDIR="${TMPDIR:-/tmp}"
+# Termux/Android: /tmp is a root-owned tmpfs, not writable by the app.
+# Use a writable temp dir for tarball extraction and other temp files.
+if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
+  TMPDIR="${TMPDIR:-$HOME/.tmp}"
+else
+  TMPDIR="${TMPDIR:-/tmp}"
+fi
 SKIP_REBUILD="${SKIP_REBUILD:-0}"
 DRY_RUN="${DRY_RUN:-0}"
 
@@ -44,6 +50,7 @@ for candidate_npx in "$HOME/.local/node/bin/npx" "$(command -v npx 2>/dev/null)"
   if [[ -n "$candidate_npx" && -x "$candidate_npx" ]]; then NPX_BIN="$candidate_npx"; break; fi
 done
 
+mkdir -p "$TMPDIR" 2>/dev/null || true
 mkdir -p "$(dirname "$LOG_FILE")"
 
 log() {
@@ -490,6 +497,30 @@ TIMEREOF
   fi
 }
 
+# ── Ensure Termux crontab has the correct environment ─────────────────────────
+# On Termux, cron runs with a minimal PATH and TMPDIR=/tmp (which is not
+# writable). Without these, the update-checker silently fails. This function
+# rewrites the crontab entry to include the required env vars, so future cron
+# runs work correctly. Called on every invocation so a node self-corrects.
+ensure_termux_crontab() {
+  if [[ -z "${TERMUX_VERSION:-}" && ! -d "/data/data/com.termux" ]]; then
+    return 0  # not Termux
+  fi
+  if ! command -v crontab >/dev/null 2>&1; then
+    return 0
+  fi
+  local cron_cmd="*/10 * * * * export TMPDIR=\$HOME/.tmp; export PATH=/data/data/com.termux/files/usr/bin:\$PATH; bash \$HOME/.fcukproxy/update-checker.sh >> \$HOME/.fcukproxy/logs/ota-update.log 2>&1"
+  local current
+  current=$(crontab -l 2>/dev/null || true)
+  # Only rewrite if the entry is missing or lacks TMPDIR
+  if echo "$current" | grep -q "update-checker.sh" && echo "$current" | grep -q "TMPDIR"; then
+    return 0  # already correct
+  fi
+  # Remove old entry and add corrected one
+  ( echo "$current" | grep -v "update-checker.sh"; echo "$cron_cmd" ) | crontab - 2>/dev/null || true
+  log "Termux crontab updated with TMPDIR and PATH"
+}
+
 # ── Apply update ──────────────────────────────────────────────────────────────
 apply_update() {
   local latest="$1"
@@ -667,7 +698,9 @@ ensure_gui_build() {
   [[ "$NEEDS_BUILD" != "1" ]] && return 0
 
   cd "$GUI_DIR"
-  PATH="$(dirname "$NODE_BIN"):$PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
+  # Ensure node_modules/.bin is in PATH so npm/next resolve correctly on Termux
+  local BUILD_PATH="$GUI_DIR/node_modules/.bin:$(dirname "$NODE_BIN"):$PATH"
+  PATH="$BUILD_PATH" "$NPM_BIN" install --ignore-scripts 2>>"$LOG_FILE" | tail -3
 
   # Clean stale turbopack marker that forces unnecessary full rebuilds
   [[ -f "$GUI_DIR/.next/turbopack" ]] && rm -rf "$GUI_DIR/.next"
@@ -682,11 +715,7 @@ ensure_gui_build() {
   local TOTAL_RAM_MB
   TOTAL_RAM_MB=$(awk '/MemTotal/ {printf "%d", $2/1024}' /proc/meminfo 2>/dev/null || echo 4096)
   [[ "$TOTAL_RAM_MB" -le 2048 ]] && NODE_HEAP="384"
-  # Ensure node_modules/.bin is in PATH so next resolves correctly on Termux
-  if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
-    PATH="$GUI_DIR/node_modules/.bin:$PATH"
-  fi
-  if NODE_OPTIONS="--max-old-space-size=$NODE_HEAP" PATH="$(dirname "$NODE_BIN"):$PATH" \
+  if NODE_OPTIONS="--max-old-space-size=$NODE_HEAP" PATH="$BUILD_PATH" \
      timeout 600 "$NPX_BIN" next build "${build_args[@]}" 2>>"$LOG_FILE" | tail -5; then
     find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1 > "$GUI_DIR/.last-build-hash"
     log "GUI built successfully"
@@ -710,6 +739,10 @@ main() {
   # Ensure the self-update cadence is every 10 minutes (self-heals stale timers
   # even when there is no update to apply).
   ensure_update_cadence
+
+  # Ensure Termux crontab has TMPDIR and PATH (self-heals broken cron entries
+  # that would silently fail on Android's read-only /tmp).
+  ensure_termux_crontab
 
   local latest
   if ! latest=$(fetch_latest_version); then

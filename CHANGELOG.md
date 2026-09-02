@@ -1,3 +1,22 @@
+## [1.11.9] - 2026-09-02
+
+Patch release: **Termux auto-update reliability**. Fixes the root cause of child proxies on Android/Termux silently failing to auto-update. The update-checker now self-heals its cron environment and uses a writable temp dir, so all devices (Linux, macOS, Termux) stay current when a new semantic version releases.
+
+### Fixed
+
+- fix: **Termux auto-update silently fails** — `update-checker.sh` now detects Termux and sets `TMPDIR=$HOME/.tmp` (Android's `/tmp` is root-owned and not writable). Tarball extraction no longer fails with "Permission denied".
+- fix: **Cron environment missing on Termux** — added `ensure_termux_crontab()` which rewrites the crontab entry to include `export TMPDIR=$HOME/.tmp` and the full Termux PATH. Runs on every invocation, so a node self-heals even if the crontab was set up by an older installer.
+- fix: **GUI build fails on Termux after OTA update** — `ensure_gui_build()` now adds `$GUI_DIR/node_modules/.bin` to PATH before building, so `next` resolves correctly in the build subshell.
+- fix: **install.sh Termux crontab** — fresh installs on Termux now create the crontab with the correct environment from the start.
+
+### Added
+
+- feat: `ensure_termux_crontab()` in `update-checker.sh` — self-healing crontab for Android/Termux nodes.
+
+### Version
+
+- bump: `.version` `1.11.8` → `1.11.9`; OTA `release_sequence` 19 → 20; financecheque release `v1.11.8` → `v1.11.9`.
+
 ## [1.11.8] - 2026-09-02
 
 Minor release: **mobile-responsive GUI**. The web GUI on port 3000 was designed for desktop — navigation overflowed on small screens, buttons were too small for touch, and zoom was disabled. This release makes the entire dashboard usable on phones and tablets.

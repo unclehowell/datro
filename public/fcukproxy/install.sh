@@ -338,8 +338,16 @@ TIMEREOF
       elif command -v crond >/dev/null 2>&1 && ! pgrep -x crond >/dev/null 2>&1; then
         crond 2>/dev/null || true
       fi
+      # Termux: cron runs with minimal PATH and /tmp is not writable.
+      # Embed TMPDIR + PATH in the crontab entry so the checker works.
+      local cron_line
+      if [[ "$PLATFORM" == termux* ]]; then
+        cron_line="*/10 * * * * export TMPDIR=\$HOME/.tmp; export PATH=/data/data/com.termux/files/usr/bin:\$PATH; bash \$HOME/.fcukproxy/update-checker.sh >> \$HOME/.fcukproxy/logs/ota-update.log 2>&1"
+      else
+        cron_line="*/10 * * * * ${HOME}/.fcukproxy/update-checker.sh >> ${HOME}/.fcukproxy/logs/ota-update.log 2>&1"
+      fi
       ( crontab -l 2>/dev/null | grep -v 'fcukproxy/update-checker.sh'; \
-        echo "*/10 * * * * ${HOME}/.fcukproxy/update-checker.sh >> ${HOME}/.fcukproxy/logs/ota-update.log 2>&1" ) | crontab - 2>/dev/null || true
+        echo "$cron_line" ) | crontab - 2>/dev/null || true
       ok "Self-update enabled (cron, every 10 minutes)"
     else
       warn "No systemd/cron found — run $INSTALL_DIR/update-checker.sh manually to update"
