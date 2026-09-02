@@ -884,7 +884,9 @@ SVCEOF
 
   # ── Utility services (all DISABLED by default — on-demand only; the GUI
   #    is the only service enabled at boot) ──
-  local _NODE="" $_SUB="" _OBIN=""
+  local _NODE=""
+  local _SUB=""
+  local _OBIN=""
   _NODE="$NODE_BIN_DIR/node"
   [[ -x "$_NODE" ]] || _NODE="$(command -v node || true)"
   _SUB="$(command -v systemctl || true)"
