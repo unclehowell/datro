@@ -596,7 +596,11 @@ export async function POST(req: NextRequest) {
       });
     }
     cloudMessages.push({ role: "user", content: msg });
-    const cloudResult = await chatWithCloud(cloudMessages);
+    // Pass the registered tool catalog so the LLM can use real tool-calling
+    // (apt install, terminal exec, file_read, etc.) when appropriate.
+    const toolCatalog = (loop.getToolRegistry?.()?.listTools?.() || []) as any[];
+    const tools = toolCatalog.length > 0 ? toolCatalog : undefined;
+    const cloudResult = await chatWithCloud(cloudMessages, { tools });
 
     if (!cloudResult?.content) {
       return NextResponse.json({

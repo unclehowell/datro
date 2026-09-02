@@ -59,6 +59,22 @@ function getKey(name: string): string {
 function getProviders(): CloudProvider[] {
   const providers: CloudProvider[] = [];
 
+  // Local Ollama (minicpm5) — PRIMARY so prompts never leave the device.
+  // On phones/edge devices, this is the only LLM available and it must work
+  // without any API keys. Listed first so all routing goes through it by default.
+  if (process.env.LLM_LOCAL_ONLY !== "false") {
+    const ollamaUrl = process.env.OLLAMA_BASE_URL || "http://localhost:11434/v1";
+    providers.push({
+      name: "local-ollama",
+      baseUrl: ollamaUrl,
+      model: process.env.OLLAMA_MODEL || "minicpm5-32k",
+      apiKey: "",
+      timeout: 120000,
+      maxTokens: 2048,
+      format: "openai",
+    });
+  }
+
   const orKey = getKey("OPENROUTER_API_KEY");
   if (orKey) {
     providers.push({
@@ -136,47 +152,58 @@ function getProviders(): CloudProvider[] {
     });
   }
 
-  // Local OmniRoute → ollama MiniCPM5-1B (prompt-cached). Primary path so /chat
-  // always has an LLM even with zero cloud keys. Slow (~2 tok/s) but always on,
-  // and it must run FIRST: fcuk-agent's local routing can take minutes on this
-  // Celeron and its abandoned server-side chain spawns heavy CLI agents.
-  providers.push({
-    name: "local-minicpm",
-    baseUrl: process.env.OMNIRUTE_URL || "http://localhost:20128/v1",
-    model: "minicpm5-32k",
-    apiKey: "",
-    timeout: 900000,
-    maxTokens: 100,
-    format: "openai",
-  });
+  // Local OmniRoute → ollama MiniCPM5-1B (prompt-cached). Slow (~2 tok/s) but
+  // always on. Kept as a secondary local fallback if direct ollama is unavailable.
+  // (This is only added if LLM_LOCAL_ONLY is not 'false' AND the direct ollama
+  // provider wasn't already added above.)
+  if (process.env.LLM_LOCAL_ONLY !== "false" && !providers.find(p => p.name === "local-ollama")) {
+    providers.push({
+      name: "local-minicpm",
+      baseUrl: process.env.OMNIRUTE_URL || "http://localhost:20128/v1",
+      model: "minicpm5-32k",
+      apiKey: "",
+      timeout: 900000,
+      maxTokens: 100,
+      format: "openai",
+    });
+  }
 
   // Local FCUK child proxy agent — routes via the parent's cloud LLMs, no key needed
-  providers.push({
-    name: "fcuk-agent",
-    baseUrl: process.env.FCUK_AGENT_URL || "http://127.0.0.1:6100/v1",
-    model: "auto",
-    apiKey: "",
-    timeout: 60000,
-    format: "openai",
-  });
+  // (Only used as a remote fallback when local LLM is disabled via LLM_LOCAL_ONLY=false)
+  if (process.env.LLM_LOCAL_ONLY === "false") {
+    providers.push({
+      name: "fcuk-agent",
+      baseUrl: process.env.FCUK_AGENT_URL || "http://127.0.0.1:6100/v1",
+      model: "auto",
+      apiKey: "",
+      timeout: 60000,
+      format: "openai",
+    });
+  }
 
   return providers;
 }
 
-async function callOpenAI(provider: CloudProvider, messages: Array<{ role: string; content: string }>): Promise<CloudResponse> {
+async function callOpenAI(provider: CloudProvider, messages: Array<{ role: string; content: string }>, options?: { tools?: any[]; tool_choice?: string | object }): Promise<CloudResponse> {
   const start = Date.now();
+  const body: any = {
+    model: provider.model,
+    messages,
+    max_tokens: provider.maxTokens || 500,
+    temperature: 0.7,
+  };
+  // Pass tools to providers that support them (ollama, openai-compatible, etc.)
+  if (options?.tools && options.tools.length > 0) {
+    body.tools = options.tools;
+    if (options.tool_choice) body.tool_choice = options.tool_choice;
+  }
   const response = await fetch(`${provider.baseUrl}/chat/completions`, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       "Authorization": `Bearer ${provider.apiKey}`,
     },
-    body: JSON.stringify({
-      model: provider.model,
-      messages,
-      max_tokens: provider.maxTokens || 500,
-      temperature: 0.7,
-    }),
+    body: JSON.stringify(body),
     signal: AbortSignal.timeout(provider.timeout),
   });
 
@@ -230,7 +257,7 @@ async function callGoogle(provider: CloudProvider, messages: Array<{ role: strin
 
 export async function chatWithCloud(
   messages: Array<{ role: string; content: string }>,
-  options?: { preferProvider?: string }
+  options?: { preferProvider?: string; tools?: any[]; tool_choice?: string | object }
 ): Promise<CloudResponse | null> {
   const providers = getProviders();
   if (providers.length === 0) return null;
@@ -241,9 +268,10 @@ export async function chatWithCloud(
 
   for (const provider of providers) {
     try {
+      const callOpts = { tools: options?.tools, tool_choice: options?.tool_choice };
       const result = provider.format === "google"
         ? await callGoogle(provider, messages)
-        : await callOpenAI(provider, messages);
+        : await callOpenAI(provider, messages, callOpts);
       // Some proxies (fcuk-agent) return provider errors as HTTP 200 text.
       // Skip those and fall through to the next provider (local fallback).
       if (result.content && !isFailureContent(result.content)) {

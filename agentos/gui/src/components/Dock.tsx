@@ -8,6 +8,7 @@ import { useState } from "react";
 const ITEMS = [
   { href: "/", label: "Home", icon: "◉" },
   { href: "/chat", label: "Chat", icon: "💬" },
+  { href: "/logs", label: "Logs", icon: "📋" },
   { href: "/jobs", label: "Jobs", icon: "⚡" },
   { href: "/connect", label: "Connect", icon: "🔗" },
   { href: "/terminal", label: "Terminal", icon: "⌨️" },

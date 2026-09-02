@@ -1,3 +1,27 @@
+## [1.11.12] - 2026-09-02
+
+Minor release: **local-only LLM, tool-calling, logs UI, and chat mobile fix**. Per user feedback: prompts must NEVER leave the device. Local Ollama (minicpm5) is now the primary LLM, with the registered tool catalog passed to it so it can actually use tools (apt install, terminal exec, file ops). Also adds a /logs web UI so users can view agent logs from the phone.
+
+### Changed
+
+- **Local Ollama is now the PRIMARY LLM** — `cloud-router.ts` adds `local-ollama` (default `http://localhost:11434/v1`, model `minicpm5-32k`) as the first provider. Prompts no longer leave the device by default. Set `LLM_LOCAL_ONLY=false` to revert to the previous cloud-first behavior.
+- **Tool-calling support** — `callOpenAI` now accepts a `tools` parameter, and `/api/chat` passes the registered tool catalog (20 tools: terminal, file_read/write/search, git, python, pm2, web_fetch, memory, subagent, etc.) to the LLM. The local minicpm5 LLM can now actually use tools when the user asks it to install software, run commands, etc.
+- **Chat agent prompt is agentic** — the system prompt now tells the LLM it HAS terminal/tools access and should use them.
+
+### Fixed
+
+- fix: **Chat page header overflows viewport on mobile** — pipeline breadcrumbs hidden on mobile (`hidden md:flex`); replaced with compact status pill showing only "green" indicators. Tool/dependency roulette sections hidden on mobile. Header now has `min-w-0` and shrinks properly.
+
+### Added
+
+- feat: **`/logs` page** — web UI to view child proxy / agent logs from any device. Lists available log files (agent.log, agent-exec.log, boot.log, child-proxy.log, ota-update.log, etc.), shows size + modified time, allows selecting a file and viewing its tail. Optional auto-refresh every 3 seconds.
+- feat: **`/api/logs` endpoint** — `GET ?action=list` returns log file metadata; `GET ?action=read&file=NAME&lines=N` returns the last N lines. Whitelisted files only (no path traversal).
+- feat: **Dock has new "Logs" entry** between Chat and Jobs.
+
+### Version
+
+- bump: `.version` `1.11.11` → `1.11.12`; OTA `release_sequence` 22 → 23; financecheque release `v1.11.11` → `v1.11.12`.
+
 ## [1.11.11] - 2026-09-02
 
 Patch release: **mobile UI overflow fix + better error messages for missing LLM/voicemail**. Fixes horizontal overflow on mobile browsers that caused content to extend beyond the viewport. Also adds clear, actionable error messages when chat or voicemail fail due to missing API keys or services.

@@ -1458,16 +1458,16 @@ export default function ChatPage() {
       </div>
 
       {/* ─── Header (simplified: back arrow + breadcrumb) ─── */}
-      <header className="border-b border-border px-4 py-2 flex items-center gap-3 shrink-0 sticky top-0 z-20 bg-surface/80 backdrop-blur-md shadow-lg shadow-black/20">
+      <header className="border-b border-border px-3 md:px-4 py-2 flex items-center gap-2 md:gap-3 shrink-0 sticky top-0 z-20 bg-surface/80 backdrop-blur-md shadow-lg shadow-black/20 min-w-0">
         {/* Back arrow */}
-        <Link href="/" className="text-text-muted hover:text-text-primary transition-colors p-1">
+        <Link href="/" className="text-text-muted hover:text-text-primary transition-colors p-1 shrink-0">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
             <path d="M19 12H5M12 19l-7-7 7-7" />
           </svg>
         </Link>
 
-        {/* Pipeline breadcrumbs */}
-        <div className="flex items-center gap-0 text-[10px] font-mono overflow-x-auto">
+        {/* Pipeline breadcrumbs — hide on mobile, show on tablet+ */}
+        <div className="hidden md:flex items-center gap-0 text-[10px] font-mono overflow-x-auto flex-1 min-w-0">
           {breadcrumbData.map((seg, i) => {
             const colors = STATUS_COLORS[seg.status];
             return (
@@ -1491,8 +1491,15 @@ export default function ChatPage() {
           })}
         </div>
 
+        {/* Mobile: compact status pill only */}
+        <div className="md:hidden flex items-center gap-1 text-[10px] font-mono shrink-0">
+          {breadcrumbData.filter(s => s.status === "green").slice(0, 2).map(s => (
+            <span key={s.id} style={{ color: STATUS_COLORS[s.status].text }}>{s.icon}</span>
+          ))}
+        </div>
+
         {/* Separator */}
-        <span className="text-text-muted mx-0.5">&gt;</span>
+        <span className="text-text-muted mx-0.5 hidden md:inline">&gt;</span>
 
         {/* Fruit Machine Tool Selector */}
         <div
@@ -1501,7 +1508,7 @@ export default function ChatPage() {
             borderColor: currentToolColors.border,
             backgroundColor: currentToolColors.bg,
             boxShadow: spinning ? `0 0 12px ${currentToolColors.border}, inset 0 0 8px ${currentToolColors.bg}` : currentToolColors.glow,
-            minWidth: "100px",
+            minWidth: "90px",
           }}
           title={currentTool.desc}
           onClick={() => {
@@ -1511,7 +1518,7 @@ export default function ChatPage() {
             }
           }}
         >
-          <div className="overflow-hidden h-5 relative" style={{ width: "70px" }}>
+          <div className="overflow-hidden h-5 relative" style={{ width: "60px" }}>
             <div
               className="absolute inset-0 flex flex-col items-center transition-transform"
               style={{
@@ -1533,11 +1540,11 @@ export default function ChatPage() {
           {spinning && <div className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: currentToolColors.text }} />}
         </div>
 
-        {/* Dependency roulette */}
+        {/* Dependency roulette — hide on mobile */}
         {!depSpinning && activeDependency && activeRoute !== "idle" && (
           <>
-            <span className="text-text-muted mx-0.5">&rarr;</span>
-            <div className="relative flex items-center gap-1 px-2 py-1 rounded-lg border shrink-0" style={{ borderColor: STATUS_COLORS.green.border, backgroundColor: STATUS_COLORS.green.bg, minWidth: "80px" }}>
+            <span className="text-text-muted mx-0.5 hidden md:inline">&rarr;</span>
+            <div className="relative items-center gap-1 px-2 py-1 rounded-lg border shrink-0 hidden md:flex" style={{ borderColor: STATUS_COLORS.green.border, backgroundColor: STATUS_COLORS.green.bg, minWidth: "80px" }}>
               <div className="overflow-hidden h-5 relative" style={{ width: "60px" }}>
                 <div className="absolute inset-0 flex flex-col items-center transition-transform" style={{ transform: `translateY(-${depSpinIndex * 20}px)`, transition: "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
                   {(DEPENDENCY_MAP[activeRoute] || DEPENDENCY_MAP.idle).map((dep) => (
