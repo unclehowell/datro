@@ -188,21 +188,21 @@ export default function Dashboard() {
 
   return (
     <div className="flex flex-col min-h-screen">
-      <header className="border-b border-border px-6 py-4 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-black font-bold text-sm">A</div>
-          <h1 className="text-lg font-semibold">AgentOS</h1>
-          <span className="text-text-muted text-xs">UncleHowell</span>
-        </div>
-        <nav className="flex items-center gap-4 text-sm">
-          <Link href="/" className="text-accent font-medium">Dashboard</Link>
-          <Link href="/chat" className="text-text-secondary hover:text-text-primary transition-colors">Chat</Link>
-          <Link href="/terminal" className="text-text-secondary hover:text-text-primary transition-colors">Terminal</Link>
-          <Link href="/settings" className="text-text-secondary hover:text-text-primary transition-colors">Apps</Link>
-        </nav>
-      </header>
+        <header className="border-b border-border px-4 md:px-6 py-3 md:py-4 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-lg bg-accent flex items-center justify-center text-black font-bold text-sm">A</div>
+            <h1 className="text-base md:text-lg font-semibold">AgentOS</h1>
+            <span className="text-text-muted text-xs hidden sm:inline">UncleHowell</span>
+          </div>
+          <nav className="hidden md:flex items-center gap-4 text-sm">
+            <Link href="/" className="text-accent font-medium">Dashboard</Link>
+            <Link href="/chat" className="text-text-secondary hover:text-text-primary transition-colors">Chat</Link>
+            <Link href="/terminal" className="text-text-secondary hover:text-text-primary transition-colors">Terminal</Link>
+            <Link href="/settings" className="text-text-secondary hover:text-text-primary transition-colors">Apps</Link>
+          </nav>
+        </header>
 
-      <main className="flex-1 p-6 max-w-5xl mx-auto w-full">
+      <main className="flex-1 p-4 md:p-6 max-w-5xl mx-auto w-full">
         <div className="mb-8">
           <div className="text-2xl font-light text-text-primary mb-1">{greeting}</div>
           <div className="text-sm text-text-muted">{time} &mdash; {new Date().toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" })}</div>
@@ -275,7 +275,7 @@ export default function Dashboard() {
               const startTarget = hermesBusy.replace("start:", "").replace("stop:", "");
 
               return (
-                <div className="flex items-center gap-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-4">
                   {/* Status dot + label */}
                   <div className="flex items-center gap-2">
                     <div className={`w-2.5 h-2.5 rounded-full ${running ? "bg-success animate-pulse-dot" : "bg-text-muted/40"}`} />
@@ -475,7 +475,7 @@ function ControlButton({ onClick, disabled, busy, children }: { onClick: () => v
     <button
       onClick={onClick}
       disabled={disabled || busy}
-      className="text-xs px-3 py-1.5 rounded-lg border border-border text-text-secondary hover:text-accent hover:border-accent/50 transition-colors disabled:opacity-30 disabled:hover:text-text-secondary disabled:hover:border-border"
+      className="text-xs px-4 py-2.5 min-h-[44px] rounded-lg border border-border text-text-secondary hover:text-accent hover:border-accent/50 transition-colors disabled:opacity-30 disabled:hover:text-text-secondary disabled:hover:border-border active:bg-surface-hover"
     >
       {busy ? "…" : children}
     </button>
@@ -487,13 +487,13 @@ function QuickAction({ href, label, desc, icon, external }: { href: string; labe
     <Link
       href={href}
       {...(external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-      className="bg-surface border border-border rounded-lg p-4 hover:border-accent/50 hover:bg-surface-hover transition-all group"
+      className="bg-surface border border-border rounded-lg p-4 min-h-[72px] flex items-center gap-3 hover:border-accent/50 hover:bg-surface-hover transition-all group active:scale-[0.98]"
     >
-      <div className="flex items-center gap-2 mb-1">
-        <span className="text-base">{icon}</span>
-        <span className="text-sm font-medium group-hover:text-accent transition-colors">{label}</span>
+      <span className="text-2xl">{icon}</span>
+      <div>
+        <div className="text-sm font-medium group-hover:text-accent transition-colors">{label}</div>
+        <div className="text-xs text-text-muted">{desc}</div>
       </div>
-      <div className="text-xs text-text-muted">{desc}</div>
     </Link>
   );
 }

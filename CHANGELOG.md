@@ -1,3 +1,24 @@
+## [1.11.8] - 2026-09-02
+
+Minor release: **mobile-responsive GUI**. The web GUI on port 3000 was designed for desktop — navigation overflowed on small screens, buttons were too small for touch, and zoom was disabled. This release makes the entire dashboard usable on phones and tablets.
+
+### Changed
+
+- ui: **Bottom dock is now a touch-friendly icon bar on mobile** (icons + labels in a 56px-tap-target row), keeps the labeled horizontal bar on desktop (`md:` breakpoint).
+- ui: **Header nav hidden on mobile** — accessible via the bottom dock instead.
+- ui: **Status cards and quick actions reflow to single-column on small screens**; quick actions use a horizontal icon+label layout for easier scanning.
+- ui: **Minimum touch target 44×44px on mobile** for all buttons and links (via CSS media query).
+- ui: **Viewport allows user zoom** (`maximumScale: 5`, `userScalable: true`) so visually impaired users can pinch-zoom.
+- ui: **Added `touch-action: manipulation`** to remove 300ms tap delay on mobile browsers.
+- ui: **Reduced base font size to 15px on mobile** for better fit; desktop stays at 16px.
+- ui: **Increased button padding** (`py-2.5 min-h-[44px]`) for comfortable touch interaction.
+- ui: **Quick actions have `active:scale-[0.98]`** for tactile press feedback on touchscreens.
+- ui: **Prevented overscroll bounce** (`overscroll-behavior-y: none`) for app-like feel on mobile.
+
+### Version
+
+- bump: `.version` `1.11.7` → `1.11.8`; OTA `release_sequence` 18 → 19; financecheque release `v1.11.7` → `v1.11.8`.
+
 ## [1.11.7] - 2026-09-01
 
 Patch release: **Termux/Android GUI build fix**. The GUI build was failing on Termux with "next: not found" even though `node_modules/.bin/next` existed. The subshell that ran `npx next build` didn't have `node_modules/.bin` in PATH on Termux. Both `install.sh` and `update-checker.sh` now explicitly add `$GUI_DIR/node_modules/.bin` to PATH before building on Termux. Also reduces Node heap from 1400MB to 384MB on phones to avoid OOM kills.
