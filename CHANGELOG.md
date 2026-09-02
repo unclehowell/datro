@@ -1,3 +1,20 @@
+## [1.11.7] - 2026-09-01
+
+Patch release: **Termux/Android GUI build fix**. The GUI build was failing on Termux with "next: not found" even though `node_modules/.bin/next` existed. The subshell that ran `npx next build` didn't have `node_modules/.bin` in PATH on Termux. Both `install.sh` and `update-checker.sh` now explicitly add `$GUI_DIR/node_modules/.bin` to PATH before building on Termux. Also reduces Node heap from 1400MB to 384MB on phones to avoid OOM kills.
+
+### Fixed
+
+- fix: **GUI build fails on Termux — "next: not found".** Added `export PATH="$GUI_DIR/node_modules/.bin:$PATH"` before the build step in both `install.sh` and `update-checker.sh` when running on Termux/Android.
+- fix: **Node OOM on low-RAM phones.** Reduced `--max-old-space-size` from 1400MB to 384MB on Termux to match the phone's available memory.
+
+### Changed
+
+- ops: `install.sh` detects Termux and sets lower Node heap + explicit PATH for builds.
+
+### Version
+
+- bump: `.version` `1.11.6` → `1.11.7`; OTA `release_sequence` 17 → 18; financecheque release `v1.11.6` → `v1.11.7`.
+
 ## [1.11.6] - 2026-09-01
 
 Patch release: **GUI cache headers — fix broken UI after updates**. After an OTA update rebuilt the GUI, browsers served stale cached HTML referencing old CSS chunk hashes (e.g. `1p2b9m95ca7vh.css`), producing a blank/broken UI with 404s on every stylesheet. The `next.config.ts` now sends `Cache-Control: no-cache, no-store, must-revalidate` for HTML pages and `public, max-age=31536000, immutable` for hashed static assets, so browsers always fetch fresh HTML while caching CSS/JS correctly.

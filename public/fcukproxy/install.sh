@@ -803,12 +803,16 @@ install_gui() {
 
   info "Building the GUI (next build — first run is slow on small machines)..."
   local build_args=()
+  local node_heap="1400"
   # Turbopack has no native bindings for Android/arm64 — use Webpack instead
   if [[ "$PLATFORM" == termux* ]]; then
     build_args=(--webpack)
+    node_heap="384"  # phones have limited RAM
   fi
   ( cd "$GUI_DIR"
-    NODE_OPTIONS="--max-old-space-size=1400" "$NPX_BIN" next build "${build_args[@]}" >> "$GUI_DIR/gui-build.log" 2>&1
+    # Ensure node_modules/.bin is in PATH so npx/next resolves correctly on Termux
+    export PATH="$GUI_DIR/node_modules/.bin:$PATH"
+    NODE_OPTIONS="--max-old-space-size=$node_heap" "$NPX_BIN" next build "${build_args[@]}" >> "$GUI_DIR/gui-build.log" 2>&1
   ) || { err "GUI build failed — see $GUI_DIR/gui-build.log"; return 1; }
   if [[ ! -d "$GUI_DIR/.next" ]]; then
     err "GUI build failed (.next missing) — see $GUI_DIR/gui-build.log"

@@ -682,6 +682,10 @@ ensure_gui_build() {
   local TOTAL_RAM_MB
   TOTAL_RAM_MB=$(awk '/MemTotal/ {printf "%d", $2/1024}' /proc/meminfo 2>/dev/null || echo 4096)
   [[ "$TOTAL_RAM_MB" -le 2048 ]] && NODE_HEAP="384"
+  # Ensure node_modules/.bin is in PATH so next resolves correctly on Termux
+  if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]]; then
+    PATH="$GUI_DIR/node_modules/.bin:$PATH"
+  fi
   if NODE_OPTIONS="--max-old-space-size=$NODE_HEAP" PATH="$(dirname "$NODE_BIN"):$PATH" \
      timeout 600 "$NPX_BIN" next build "${build_args[@]}" 2>>"$LOG_FILE" | tail -5; then
     find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1 > "$GUI_DIR/.last-build-hash"
