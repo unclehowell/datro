@@ -1,3 +1,15 @@
+## [1.11.10] - 2026-09-02
+
+Patch release: **Termux crontab cache directory fix**. The `crontab` command on Termux requires `/data/user/0/com.termux/.cache/crontab/` to exist, or it fails with "mkdir: No such file or directory". Both `install.sh` and `update-checker.sh` now create this directory before writing the crontab.
+
+### Fixed
+
+- fix: **Termux crontab fails with "mkdir: No such file or directory"** — `ensure_termux_crontab()` and the installer now `mkdir -p` the required crontab cache directories (`$HOME/.cache/crontab` and `/data/user/0/com.termux/.cache/crontab`) before calling `crontab -`.
+
+### Version
+
+- bump: `.version` `1.11.9` → `1.11.10`; OTA `release_sequence` 20 → 21; financecheque release `v1.11.9` → `v1.11.10`.
+
 ## [1.11.9] - 2026-09-02
 
 Patch release: **Termux auto-update reliability**. Fixes the root cause of child proxies on Android/Termux silently failing to auto-update. The update-checker now self-heals its cron environment and uses a writable temp dir, so all devices (Linux, macOS, Termux) stay current when a new semantic version releases.

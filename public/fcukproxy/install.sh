@@ -338,6 +338,9 @@ TIMEREOF
       elif command -v crond >/dev/null 2>&1 && ! pgrep -x crond >/dev/null 2>&1; then
         crond 2>/dev/null || true
       fi
+      # Termux: ensure crontab cache directory exists
+      mkdir -p "$HOME/.cache/crontab" 2>/dev/null || true
+      mkdir -p "/data/user/0/com.termux/.cache/crontab" 2>/dev/null || true
       # Termux: cron runs with minimal PATH and /tmp is not writable.
       # Embed TMPDIR + PATH in the crontab entry so the checker works.
       local cron_line

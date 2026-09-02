@@ -509,6 +509,9 @@ ensure_termux_crontab() {
   if ! command -v crontab >/dev/null 2>&1; then
     return 0
   fi
+  # Ensure Termux crontab cache directory exists (crontab command needs it)
+  mkdir -p "$HOME/.cache/crontab" 2>/dev/null || true
+  mkdir -p "/data/user/0/com.termux/.cache/crontab" 2>/dev/null || true
   local cron_cmd="*/10 * * * * export TMPDIR=\$HOME/.tmp; export PATH=/data/data/com.termux/files/usr/bin:\$PATH; bash \$HOME/.fcukproxy/update-checker.sh >> \$HOME/.fcukproxy/logs/ota-update.log 2>&1"
   local current
   current=$(crontab -l 2>/dev/null || true)
