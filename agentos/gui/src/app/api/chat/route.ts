@@ -819,9 +819,9 @@ export async function POST(req: NextRequest) {
     console.error("Chat API error:", err);
     const errMsg = err.message || String(err);
     // Provide helpful guidance when no LLM is configured
-    if (errMsg.includes("No LLM") || errMsg.includes("API key") || errMsg.includes("provider") || errMsg.includes("ECONNREFUSED")) {
+    if (errMsg.includes("No LLM") || errMsg.includes("API key") || errMsg.includes("provider") || errMsg.includes("ECONNREFUSED") || errMsg.includes("timeout") || errMsg.includes("aborted")) {
       return NextResponse.json({
-        reply: "No LLM is available. Add an API key to ~/.fcukproxy/.env (e.g. GROQ_API_KEY=free at console.groq.com) and restart the agent, or install with MODE=full for local LLM.",
+        reply: "No LLM is available on this device. Add an API key to ~/.fcukproxy/.env (e.g. GROQ_API_KEY=free at console.groq.com) and restart the agent, or install with MODE=full for local Ollama.",
         error: errMsg,
         needsConfig: true,
       }, { status: 503 });

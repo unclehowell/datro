@@ -1,3 +1,22 @@
+## [1.11.15] - 2026-09-02
+
+Patch release: **breadcrumb moved to voicemail reply + chat no-reply fix**. Per user feedback: the full pipeline breadcrumb (webgui → roulette → hermes → ollama → minicpm5 → router → tools → mcp) was chaos design in the chat header. This release moves it to the voicemail reply modal (where it makes sense — it shows the processing pipeline for the voicemail reply). Also fixes the "I no longer get a reply" bug where the chat route would hang or return no content.
+
+### Changed
+
+- ui: **Breadcrumb moved from chat header to voicemail reply modal** — the pipeline steps (webgui, roulette, hermes, ollama, minicpm5, router, tools, mcp) now appear inside the voicemail reply box, showing which steps ran. Chat header is now clean: back arrow + tool select + title.
+- chat: **Tool select is now a clean `<select>` dropdown** in the chat header (not a rotating fruit-machine roulette). Works on mobile and desktop.
+
+### Fixed
+
+- fix: **Chat hangs / returns no content** — v1.11.12 made local-ollama the primary LLM but didn't check if ollama was actually reachable. On devices without ollama (e.g. Termux lite mode), the request would hang for 120s. Now does a 2-second port check first and skips unreachable providers.
+- fix: **Tools param breaks local-ollama** — local ollama (minicpm5) has limited tool-call support that often caused requests to fail silently. Tools are now only passed to providers that have an API key (cloud providers with proper tool support).
+- fix: **Error message timeout/aborted detection** — chat API now recognizes timeout/aborted errors and returns 503 with helpful guidance instead of 500 generic error.
+
+### Version
+
+- bump: `.version` `1.11.14` → `1.11.15`; OTA `release_sequence` 25 → 26; financecheque release `v1.11.14` → `v1.11.15`.
+
 ## [1.11.14] - 2026-09-02
 
 Patch release: **chat input mobile layout + clean tool selector**. The chat input bar had 5 elements (mode, phone, mic, text input, send) on one row that overflowed on phones. The fruit-machine tool selector in the header was also chaos design on small screens. This release:

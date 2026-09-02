@@ -56,23 +56,47 @@ function getKey(name: string): string {
 }
 
 // Free-tier providers in priority order
-function getProviders(): CloudProvider[] {
+async function quickPortCheck(baseUrl: string): Promise<boolean> {
+  try {
+    const u = new URL(baseUrl);
+    const port = u.port || (u.protocol === "https:" ? "443" : "80");
+    const net = await import("net");
+    return new Promise<boolean>((resolve) => {
+      const sock = new net.Socket();
+      const done = () => { sock.destroy(); resolve(true); };
+      const fail = () => { sock.destroy(); resolve(false); };
+      sock.setTimeout(2000);
+      sock.once("connect", done);
+      sock.once("timeout", fail);
+      sock.once("error", fail);
+      sock.connect(parseInt(port, 10), u.hostname);
+    });
+  } catch {
+    return false;
+  }
+}
+
+async function getProviders(): Promise<CloudProvider[]> {
   const providers: CloudProvider[] = [];
 
   // Local Ollama (minicpm5) — PRIMARY so prompts never leave the device.
   // On phones/edge devices, this is the only LLM available and it must work
   // without any API keys. Listed first so all routing goes through it by default.
+  // We do a fast port check first so we don't waste 120s on a hung provider.
   if (process.env.LLM_LOCAL_ONLY !== "false") {
     const ollamaUrl = process.env.OLLAMA_BASE_URL || "http://localhost:11434/v1";
-    providers.push({
-      name: "local-ollama",
-      baseUrl: ollamaUrl,
-      model: process.env.OLLAMA_MODEL || "minicpm5-32k",
-      apiKey: "",
-      timeout: 120000,
-      maxTokens: 2048,
-      format: "openai",
-    });
+    const ollamaReachable = await quickPortCheck(ollamaUrl).catch(() => false);
+    if (ollamaReachable) {
+      providers.push({
+        name: "local-ollama",
+        baseUrl: ollamaUrl,
+        model: process.env.OLLAMA_MODEL || "minicpm5-32k",
+        apiKey: "",
+        timeout: 90000,
+        maxTokens: 1024,
+        format: "openai",
+      });
+    }
   }
 
   const orKey = getKey("OPENROUTER_API_KEY");
@@ -192,8 +216,11 @@ async function callOpenAI(provider: CloudProvider, messages: Array<{ role: strin
     max_tokens: provider.maxTokens || 500,
     temperature: 0.7,
   };
-  // Pass tools to providers that support them (ollama, openai-compatible, etc.)
-  if (options?.tools && options.tools.length > 0) {
+  // Only pass tools to providers that explicitly support them. Local ollama
+  // (minicpm5) has limited/buggy tool support that often causes the request
+  // to hang or fail silently. Pass tools only to providers with proper
+  // tool-call implementation (cloud providers with API key).
+  if (options?.tools && options.tools.length > 0 && provider.apiKey) {
     body.tools = options.tools;
     if (options.tool_choice) body.tool_choice = options.tool_choice;
   }
@@ -259,7 +286,7 @@ export async function chatWithCloud(
   messages: Array<{ role: string; content: string }>,
   options?: { preferProvider?: string; tools?: any[]; tool_choice?: string | object }
 ): Promise<CloudResponse | null> {
-  const providers = getProviders();
+  const providers = await getProviders();
   if (providers.length === 0) return null;
 
   if (options?.preferProvider) {
@@ -301,8 +328,8 @@ function isFailureContent(content: string): boolean {
   return FAILURE_MARKERS.some((re) => re.test(content.slice(0, 300)));
 }
 
-export function hasCloudProviders(): boolean {
-  return getProviders().length > 0;
+export function hasCloudProviders(): Promise<boolean> {
+  return getProviders().then(p => p.length > 0);
 }
 
 // Streaming variant of chatWithCloud — emits content deltas via onDelta as
@@ -316,7 +343,7 @@ export async function chatWithCloudStream(
   onDelta: (delta: string) => void,
   options?: { preferProvider?: string; signal?: AbortSignal }
 ): Promise<CloudResponse | null> {
-  const providers = getProviders();
+  const providers = await getProviders();
   if (providers.length === 0) return null;
 
   if (options?.preferProvider) {

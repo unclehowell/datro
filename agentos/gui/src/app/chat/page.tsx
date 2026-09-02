@@ -1457,8 +1457,8 @@ export default function ChatPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d0d1a]/70 to-[#0d0d1a]/95 pointer-events-none" />
       </div>
 
-      {/* ─── Header (simplified: back arrow + breadcrumb) ─── */}
-      <header className="border-b border-border px-3 md:px-4 py-2 flex items-center gap-2 md:gap-3 shrink-0 sticky top-0 z-20 bg-surface/80 backdrop-blur-md shadow-lg shadow-black/20 min-w-0">
+      {/* ─── Header (simplified: back arrow + tool select) ─── */}
+      <header className="border-b border-border px-3 md:px-4 py-2 flex items-center gap-2 shrink-0 sticky top-0 z-20 bg-surface/80 backdrop-blur-md shadow-lg shadow-black/20 min-w-0">
         {/* Back arrow */}
         <Link href="/" className="text-text-muted hover:text-text-primary transition-colors p-1 shrink-0">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
@@ -1466,162 +1466,20 @@ export default function ChatPage() {
           </svg>
         </Link>
 
-        {/* Pipeline breadcrumbs — hide on mobile, show on tablet+ */}
-        <div className="hidden md:flex items-center gap-0 text-[10px] font-mono overflow-x-auto flex-1 min-w-0">
-          {breadcrumbData.map((seg, i) => {
-            const colors = STATUS_COLORS[seg.status];
-            return (
-              <span key={seg.id} className="flex items-center">
-                {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
-                <span
-                  className="px-1 py-0.5 rounded transition-all duration-300 whitespace-nowrap"
-                  style={{
-                    color: colors.text,
-                    backgroundColor: colors.bg,
-                    border: `1px solid ${colors.border}`,
-                    boxShadow: seg.status === "green" ? colors.glow : "none",
-                    opacity: seg.status === "off" ? 0.35 : 1,
-                  }}
-                  title={seg.label}
-                >
-                  {seg.icon} {seg.label}
-                </span>
-              </span>
-            );
-          })}
-        </div>
-
-        {/* Mobile: compact tool dropdown + status icons */}
-        <div className="md:hidden flex items-center gap-1.5 text-[10px] font-mono shrink-0">
-          <select
-            value={activeRoute}
-            onChange={(e) => setActiveRoute(e.target.value as typeof activeRoute)}
-            className="bg-surface border border-border rounded text-[10px] px-1 py-0.5 text-text-primary max-w-[80px]"
-            title="Tool"
-          >
-            {ALL_TOOLS.map((t) => (
-              <option key={t.id} value={t.id}>{t.icon} {t.label}</option>
-            ))}
-          </select>
-          {breadcrumbData.filter(s => s.status === "green").slice(0, 2).map(s => (
-            <span key={s.id} style={{ color: STATUS_COLORS[s.status].text }}>{s.icon}</span>
-          ))}
-        </div>
-
-        {/* Separator */}
-        <span className="text-text-muted mx-0.5 hidden md:inline">&gt;</span>
-
-        {/* Fruit Machine Tool Selector — desktop only (use a clean dropdown on mobile) */}
-        <div
-          className="relative items-center gap-1.5 px-2 py-1 rounded-lg border transition-all duration-300 cursor-pointer select-none shrink-0 hidden md:flex"
-          style={{
-            borderColor: currentToolColors.border,
-            backgroundColor: currentToolColors.bg,
-            boxShadow: spinning ? `0 0 12px ${currentToolColors.border}, inset 0 0 8px ${currentToolColors.bg}` : currentToolColors.glow,
-            minWidth: "90px",
-          }}
-          title={currentTool.desc}
-          onClick={() => {
-            if (!spinning) {
-              const nextIndex = (ALL_TOOLS.findIndex((t) => t.id === activeRoute) + 1) % ALL_TOOLS.length;
-              setActiveRoute(ALL_TOOLS[nextIndex].id);
-            }
-          }}
+        {/* Tool selector (clean dropdown) */}
+        <select
+          value={activeRoute}
+          onChange={(e) => setActiveRoute(e.target.value as typeof activeRoute)}
+          className="bg-surface border border-border rounded text-xs px-2 py-1 text-text-primary min-w-0 flex-1 md:flex-none md:w-auto"
+          title="Select tool/route"
         >
-          <div className="overflow-hidden h-5 relative" style={{ width: "60px" }}>
-            <div
-              className="absolute inset-0 flex flex-col items-center transition-transform"
-              style={{
-                transform: `translateY(-${spinIndex * 20}px)`,
-                transition: spinning ? "transform 50ms ease-out" : "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)",
-              }}
-            >
-              {ALL_TOOLS.map((tool) => (
-                <div key={tool.id} className="h-5 flex items-center justify-center text-xs font-bold whitespace-nowrap" style={{ color: currentToolColors.text }}>
-                  <span className="mr-1">{tool.icon}</span>
-                  <span>{tool.label}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          {activeProvider && !spinning && (
-            <span className="text-[10px] px-1 py-0.5 rounded bg-zinc-800/50 text-zinc-400 border border-zinc-700">{activeProvider}</span>
-          )}
-          {spinning && <div className="w-2 h-2 rounded-full animate-ping" style={{ backgroundColor: currentToolColors.text }} />}
-        </div>
+          {ALL_TOOLS.map((t) => (
+            <option key={t.id} value={t.id}>{t.icon} {t.label}</option>
+          ))}
+        </select>
 
-        {/* Dependency roulette — hide on mobile */}
-        {!depSpinning && activeDependency && activeRoute !== "idle" && (
-          <>
-            <span className="text-text-muted mx-0.5 hidden md:inline">&rarr;</span>
-            <div className="relative items-center gap-1 px-2 py-1 rounded-lg border shrink-0 hidden md:flex" style={{ borderColor: STATUS_COLORS.green.border, backgroundColor: STATUS_COLORS.green.bg, minWidth: "80px" }}>
-              <div className="overflow-hidden h-5 relative" style={{ width: "60px" }}>
-                <div className="absolute inset-0 flex flex-col items-center transition-transform" style={{ transform: `translateY(-${depSpinIndex * 20}px)`, transition: "transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)" }}>
-                  {(DEPENDENCY_MAP[activeRoute] || DEPENDENCY_MAP.idle).map((dep) => (
-                    <div key={dep.id} className="h-5 flex items-center justify-center text-xs font-bold whitespace-nowrap" style={{ color: STATUS_COLORS.green.text }}>
-                      <span className="mr-1">{dep.icon}</span><span>{dep.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </>
-        )}
-        {depSpinning && (
-          <>
-            <span className="text-text-muted mx-0.5">&rarr;</span>
-            <div className="relative flex items-center gap-1 px-2 py-1 rounded-lg border shrink-0" style={{ borderColor: STATUS_COLORS.amber.border, backgroundColor: STATUS_COLORS.amber.bg, minWidth: "80px" }}>
-              <div className="overflow-hidden h-5 relative" style={{ width: "60px" }}>
-                <div className="absolute inset-0 flex flex-col items-center" style={{ transform: `translateY(-${depSpinIndex * 20}px)`, transition: "transform 40ms ease-out" }}>
-                  {(DEPENDENCY_MAP[activeRoute] || DEPENDENCY_MAP.idle).map((dep) => (
-                    <div key={dep.id} className="h-5 flex items-center justify-center text-xs font-bold whitespace-nowrap" style={{ color: STATUS_COLORS.amber.text }}>
-                      <span className="mr-1">{dep.icon}</span><span>{dep.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="w-1.5 h-1.5 rounded-full animate-ping" style={{ backgroundColor: STATUS_COLORS.amber.text }} />
-            </div>
-          </>
-        )}
-        {/* ─── Version + Voicemail toggle ─── */}
-        <div className="ml-auto flex items-center gap-3 shrink-0">
-          {versionInfo && (
-            <div className="flex items-center gap-2 text-[10px] text-text-muted">
-              <span className="px-1.5 py-0.5 rounded bg-surface border border-border font-mono">
-                v{versionInfo.local}
-              </span>
-              {versionInfo.latestRelease && versionInfo.latestRelease !== "unknown" && versionInfo.latestRelease !== versionInfo.local && (
-                <span className="px-1.5 py-0.5 rounded bg-amber-500/10 border border-amber-500/30 text-amber-400 font-mono">
-                  latest: v{versionInfo.latestRelease}
-                </span>
-              )}
-              {versionInfo.latestRelease && versionInfo.latestRelease !== "unknown" && versionInfo.latestRelease === versionInfo.local && (
-                <span className="px-1.5 py-0.5 rounded bg-green-500/10 border border-green-500/30 text-green-400 font-mono">
-                  up to date
-                </span>
-              )}
-            </div>
-          )}
-          <button
-            onClick={() => { setVoicemailOpen(!voicemailOpen); if (!voicemailOpen) fetchVoicemails(); }}
-            className={`w-8 h-8 rounded-lg flex items-center justify-center transition-all ${
-              voicemailOpen ? "bg-accent/20 border border-accent/40 text-accent" : "bg-surface border border-border text-text-muted hover:text-text-primary"
-            }`}
-            title="Voicemails"
-          >
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72" />
-              <path d="M15.05 2A10 10 0 0 1 22 8.95" />
-              <path d="M15.05 6A6 6 0 0 1 18 8.95" />
-            </svg>
-            {voicemails.filter(v => !v.played).length > 0 && (
-              <span className="absolute -mt-5 -mr-5 w-3 h-3 rounded-full bg-red-500 text-[8px] text-white flex items-center justify-center">
-                {voicemails.filter(v => !v.played).length}
-              </span>
-            )}
-          </button>
-        </div>
+        {/* Title (visible on desktop only) */}
+        <span className="hidden md:inline text-sm font-semibold text-text-primary ml-auto">Chat</span>
       </header>
 
       {/* ─── Voicemail List Panel ─── */}
@@ -1830,6 +1688,29 @@ export default function ChatPage() {
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={() => setVoicemailModalRealId(null)}>
           <div className="w-full max-w-md mx-4" onClick={(e) => e.stopPropagation()}>
             <div className="bg-surface border border-border rounded-xl p-4 space-y-3">
+              {/* Full pipeline breadcrumb in lieu of voicemail reply */}
+              <div className="flex items-center gap-0 text-[10px] font-mono justify-center flex-wrap">
+                {breadcrumbData.map((seg, i) => {
+                  const colors = STATUS_COLORS[seg.status];
+                  return (
+                    <span key={seg.id} className="flex items-center">
+                      {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
+                      <span
+                        className="px-1.5 py-0.5 rounded whitespace-nowrap"
+                        style={{
+                          color: colors.text,
+                          backgroundColor: colors.bg,
+                          border: `1px solid ${colors.border}`,
+                          opacity: seg.status === "off" ? 0.35 : 1,
+                        }}
+                        title={seg.label}
+                      >
+                        {seg.icon} {seg.label}
+                      </span>
+                    </span>
+                  );
+                })}
+              </div>
               {vmStatus?.userText && (
                 <div className="text-[11px] text-text-muted border-l-2 border-border pl-2">{vmStatus.userText}</div>
               )}
