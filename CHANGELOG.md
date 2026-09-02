@@ -1,3 +1,23 @@
+## [1.11.16] - 2026-09-02
+
+Patch release: **Termux GUI restart after update + production-readiness**. The phone (Termux) was auto-updating source code but never restarting the `next-server` process, so it kept serving the old GUI bundle (v1.11.0-era build) even after auto-updating to v1.11.15. This release forces a fresh next-server start after every source update on Termux, so the GUI always serves the latest code.
+
+### Fixed
+
+- fix: **Termux phone serves stale GUI bundle after auto-update** — `update-checker.sh` now kills any running `next-server` and starts a fresh one with the rebuilt `.next` after a successful source sync. Without this, the phone's chat would hang because the running code was the old v1.11.0 build that had the unconditional ollama-hang bug.
+
+### Production-Ready Verification
+
+Both devices (laptop and phone) should be purged and `install.sh` re-run after this release. The fix ensures any future auto-update on Termux will:
+1. Sync the new source to `~/.fcukproxy/datro/` and `~/.fcukproxy/agentos-gui/`
+2. Rebuild the GUI
+3. **Kill the old `next-server` and start a fresh one** (new in v1.11.16)
+4. Sync the runtime scripts (update-checker, wake, tool-use-wrapper, reflect)
+
+### Version
+
+- bump: `.version` `1.11.15` → `1.11.16`; OTA `release_sequence` 26 → 27; financecheque release `v1.11.15` → `v1.11.16`.
+
 ## [1.11.15] - 2026-09-02
 
 Patch release: **breadcrumb moved to voicemail reply + chat no-reply fix**. Per user feedback: the full pipeline breadcrumb (webgui → roulette → hermes → ollama → minicpm5 → router → tools → mcp) was chaos design in the chat header. This release moves it to the voicemail reply modal (where it makes sense — it shows the processing pipeline for the voicemail reply). Also fixes the "I no longer get a reply" bug where the chat route would hang or return no content.

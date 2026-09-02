@@ -632,6 +632,29 @@ apply_update() {
     fi
   done
 
+  # 7b. Termux: kill any old next-server and start a fresh one with the rebuilt .next.
+  # Without this, the phone keeps serving the old GUI bundle that the v1.11.15 chat
+  # fix never reaches (the running next-server is the v1.11.0-era build).
+  if [[ -d "/data/data/com.termux" || -n "${TERMUX_VERSION:-}" ]]; then
+    log "Termux detected — restarting next-server to serve rebuilt GUI"
+    # Kill existing next-server processes (match `next-server` and any node that ran `next start`)
+    pkill -f "next-server" 2>/dev/null || true
+    pkill -f "node node_modules/.bin/next" 2>/dev/null || true
+    sleep 2
+    if [[ -d "$GUI_DIR" && -f "$GUI_DIR/.next/BUILD_ID" ]]; then
+      mkdir -p "$GUI_DIR"
+      ( cd "$GUI_DIR"
+        export PATH="$GUI_DIR/node_modules/.bin:$PATH"
+        setsid nohup node node_modules/.bin/next start -p 3000 -H 0.0.0.0 \
+          > "$GUI_DIR/gui.log" 2>&1 < /dev/null &
+        echo "GUI_PID=$!"
+      ) >> "$LOG_FILE" 2>&1
+      log "Termux GUI restarted (PID: $!)"
+    else
+      log "WARN: Cannot restart Termux GUI — no build at $GUI_DIR/.next/BUILD_ID"
+    fi
+  fi
+
   # 8. Write new local version
   echo "$latest" > "$LOCAL_VERSION_FILE"
   log "Update complete: now at v$latest"
