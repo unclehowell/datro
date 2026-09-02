@@ -1,3 +1,15 @@
+## [1.11.17] - 2026-09-02
+
+Patch release: **install.sh unbound variable fix**. v1.11.16 had a `set -u` shell bug at line 887 — `local _NODE="" $_SUB="" _OBIN=""` doesn't work in bash (can't assign to multiple vars with `local` in one statement). Fresh installs of v1.11.16 would crash with `_SUB: unbound variable` during the systemd service step.
+
+### Fixed
+
+- fix: **install.sh crashes with `_SUB: unbound variable` on fresh install** — replaced the multi-assign `local` with three separate `local` declarations.
+
+### Version
+
+- bump: `.version` `1.11.16` → `1.11.17`; OTA `release_sequence` 27 → 28; financecheque release `v1.11.16` → `v1.11.17`.
+
 ## [1.11.16] - 2026-09-02
 
 Patch release: **Termux GUI restart after update + production-readiness**. The phone (Termux) was auto-updating source code but never restarting the `next-server` process, so it kept serving the old GUI bundle (v1.11.0-era build) even after auto-updating to v1.11.15. This release forces a fresh next-server start after every source update on Termux, so the GUI always serves the latest code.
