@@ -1491,8 +1491,18 @@ export default function ChatPage() {
           })}
         </div>
 
-        {/* Mobile: compact status pill only */}
-        <div className="md:hidden flex items-center gap-1 text-[10px] font-mono shrink-0">
+        {/* Mobile: compact tool dropdown + status icons */}
+        <div className="md:hidden flex items-center gap-1.5 text-[10px] font-mono shrink-0">
+          <select
+            value={activeRoute}
+            onChange={(e) => setActiveRoute(e.target.value as typeof activeRoute)}
+            className="bg-surface border border-border rounded text-[10px] px-1 py-0.5 text-text-primary max-w-[80px]"
+            title="Tool"
+          >
+            {ALL_TOOLS.map((t) => (
+              <option key={t.id} value={t.id}>{t.icon} {t.label}</option>
+            ))}
+          </select>
           {breadcrumbData.filter(s => s.status === "green").slice(0, 2).map(s => (
             <span key={s.id} style={{ color: STATUS_COLORS[s.status].text }}>{s.icon}</span>
           ))}
@@ -1501,9 +1511,9 @@ export default function ChatPage() {
         {/* Separator */}
         <span className="text-text-muted mx-0.5 hidden md:inline">&gt;</span>
 
-        {/* Fruit Machine Tool Selector */}
+        {/* Fruit Machine Tool Selector — desktop only (use a clean dropdown on mobile) */}
         <div
-          className="relative flex items-center gap-1.5 px-2 py-1 rounded-lg border transition-all duration-300 cursor-pointer select-none shrink-0"
+          className="relative items-center gap-1.5 px-2 py-1 rounded-lg border transition-all duration-300 cursor-pointer select-none shrink-0 hidden md:flex"
           style={{
             borderColor: currentToolColors.border,
             backgroundColor: currentToolColors.bg,
@@ -1837,79 +1847,86 @@ export default function ChatPage() {
       )}
 
       {/* ─── Input Bar ─── */}
-      <div className="border-t border-border px-6 py-4 shrink-0 relative z-10 bg-surface/80 backdrop-blur-sm">
-        <div className="flex items-center gap-3">
-          {/* Mode options: act / plan */}
-          <div className="flex rounded-lg border border-border overflow-hidden shrink-0" title={mode === "act" ? "Act mode — execute tasks" : "Plan mode — propose plans only"}>
-            {(["act", "plan"] as const).map((m) => (
-              <button
-                key={m}
-                onClick={() => setMode(m)}
-                className={`px-2.5 h-10 text-xs font-medium capitalize transition-colors ${
-                  mode === m ? "bg-accent/25 text-accent" : "bg-surface text-text-muted hover:text-text-primary"
-                }`}
-              >
-                {m}
-              </button>
-            ))}
+      <div className="border-t border-border px-3 md:px-6 py-3 md:py-4 shrink-0 relative z-10 bg-surface/80 backdrop-blur-sm">
+        {/* Mobile: two rows. Desktop: one row (use md:flex-row override). */}
+        <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
+          {/* Row 1 (mobile) / Left side (desktop): mode toggle + phone + mic */}
+          <div className="flex items-center gap-2 md:gap-3">
+            {/* Mode options: act / plan */}
+            <div className="flex rounded-lg border border-border overflow-hidden shrink-0" title={mode === "act" ? "Act mode — execute tasks" : "Plan mode — propose plans only"}>
+              {(["act", "plan"] as const).map((m) => (
+                <button
+                  key={m}
+                  onClick={() => setMode(m)}
+                  className={`px-2.5 h-10 text-xs font-medium capitalize transition-colors ${
+                    mode === m ? "bg-accent/25 text-accent" : "bg-surface text-text-muted hover:text-text-primary"
+                  }`}
+                >
+                  {m}
+                </button>
+              ))}
+            </div>
+
+            {/* Phone button: green = call, red = hang up */}
+            <button
+              onClick={() => duplexActive ? stopDuplex() : startVoicemail()}
+              className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all shrink-0 ${
+                duplexActive
+                  ? "bg-red-500/20 border border-red-500/40 text-red-400 animate-pulse"
+                  : "bg-surface border border-green-500/40 text-green-400 hover:bg-green-500/10"
+              }`}
+              title={duplexActive ? "Hang up" : "Start call"}
+            >
+              {duplexActive ? (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.86-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08c-.18-.17-.29-.42-.29-.7 0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.7l-2.48 2.49c-.18.18-.43.29-.71.29-.27 0-.52-.1-.7-.28-.79-.74-1.68-1.37-2.66-1.86-.33-.16-.56-.51-.56-.9v-3.1C15.15 9.25 13.6 9 12 9Z" />
+                </svg>
+              ) : (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z" />
+                </svg>
+              )}
+            </button>
+
+            {/* Mic button (push-to-talk) */}
+            <button
+              onClick={toggleRecording}
+              className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all shrink-0 ${
+                recording ? "bg-red-500/20 border border-red-500/40 text-red-400 animate-pulse" : "bg-surface border border-border text-text-muted hover:text-text-primary"
+              }`}
+              title={recording ? "Stop recording" : "Push to talk"}
+            >
+              <svg width="18" height="18" viewBox="0 0 24 24" fill={recording ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
+                <circle cx="12" cy="12" r="10" />
+                <circle cx="12" cy="12" r="3" fill={recording ? "currentColor" : "none"} />
+              </svg>
+            </button>
           </div>
 
-          {/* Phone button: green = call, red = hang up */}
-          <button
-            onClick={() => duplexActive ? stopDuplex() : startVoicemail()}
-            className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
-              duplexActive
-                ? "bg-red-500/20 border border-red-500/40 text-red-400 animate-pulse"
-                : "bg-surface border border-green-500/40 text-green-400 hover:bg-green-500/10"
-            }`}
-            title={duplexActive ? "Hang up" : "Start call"}
-          >
-            {duplexActive ? (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M12 9c-1.6 0-3.15.25-4.6.72v3.1c0 .39-.23.74-.56.9-.98.49-1.87 1.12-2.66 1.86-.18.18-.43.28-.7.28-.28 0-.53-.11-.71-.29L.29 13.08c-.18-.17-.29-.42-.29-.7 0-.28.11-.53.29-.71C3.34 8.78 7.46 7 12 7s8.66 1.78 11.71 4.67c.18.18.29.43.29.71 0 .28-.11.53-.29.7l-2.48 2.49c-.18.18-.43.29-.71.29-.27 0-.52-.1-.7-.28-.79-.74-1.68-1.37-2.66-1.86-.33-.16-.56-.51-.56-.9v-3.1C15.15 9.25 13.6 9 12 9Z" />
-              </svg>
-            ) : (
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.85 21 3 13.15 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.24.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2Z" />
-              </svg>
-            )}
-          </button>
+          {/* Row 2 (mobile) / Right side (desktop): text input + send button */}
+          <div className="flex items-center gap-2 md:gap-3 flex-1 min-w-0">
+            {/* Text input */}
+            <input
+              value={input}
+              onChange={(e) => setInput(e.target.value)}
+              onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
+              placeholder={proxyLocked ? "Session locked by parent proxy..." : recording ? "Listening..." : duplexActive ? "On call..." : "Type a message..."}
+              className={`flex-1 min-w-0 bg-surface border border-border rounded-lg px-3 md:px-4 py-2.5 text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-accent/50 transition-colors ${proxyLocked ? "opacity-50 cursor-not-allowed" : ""}`}
+              disabled={streaming || recording || proxyLocked}
+            />
 
-          {/* Mic button (push-to-talk) */}
-          <button
-            onClick={toggleRecording}
-            className={`w-10 h-10 rounded-lg flex items-center justify-center transition-all ${
-              recording ? "bg-red-500/20 border border-red-500/40 text-red-400 animate-pulse" : "bg-surface border border-border text-text-muted hover:text-text-primary"
-            }`}
-            title={recording ? "Stop recording" : "Push to talk"}
-          >
-            <svg width="18" height="18" viewBox="0 0 24 24" fill={recording ? "currentColor" : "none"} stroke="currentColor" strokeWidth="2">
-              <circle cx="12" cy="12" r="10" />
-              <circle cx="12" cy="12" r="3" fill={recording ? "currentColor" : "none"} />
-            </svg>
-          </button>
-
-          {/* Text input */}
-          <input
-            value={input}
-            onChange={(e) => setInput(e.target.value)}
-            onKeyDown={(e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); send(); } }}
-            placeholder={proxyLocked ? "Session locked by parent proxy..." : recording ? "Listening..." : duplexActive ? "On call..." : "Type a message..."}
-            className={`flex-1 bg-surface border border-border rounded-lg px-4 py-2.5 text-sm text-text-primary placeholder-text-muted focus:outline-none focus:border-accent/50 transition-colors ${proxyLocked ? "opacity-50 cursor-not-allowed" : ""}`}
-            disabled={streaming || recording || proxyLocked}
-          />
-
-          {/* Send button */}
-          <button
-            onClick={() => send()}
-            disabled={!input.trim() || streaming || proxyLocked}
-            className="w-10 h-10 rounded-lg bg-accent/20 border border-accent/30 text-accent flex items-center justify-center hover:bg-accent/30 transition-colors disabled:opacity-30"
-          >
+            {/* Send button */}
+            <button
+              onClick={() => send()}
+              disabled={!input.trim() || streaming || proxyLocked}
+              className="w-10 h-10 rounded-lg bg-accent/20 border border-accent/30 text-accent flex items-center justify-center hover:bg-accent/30 transition-colors disabled:opacity-30 shrink-0"
+            >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <line x1="22" y1="2" x2="11" y2="13" />
               <polygon points="22 2 15 22 11 13 2 9 22 2" />
             </svg>
           </button>
+          </div>
         </div>
 
         {/* Status bar */}

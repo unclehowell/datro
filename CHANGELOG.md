@@ -1,3 +1,18 @@
+## [1.11.14] - 2026-09-02
+
+Patch release: **chat input mobile layout + clean tool selector**. The chat input bar had 5 elements (mode, phone, mic, text input, send) on one row that overflowed on phones. The fruit-machine tool selector in the header was also chaos design on small screens. This release:
+
+### Changed
+
+- ui: **Chat input stacks on mobile** — the input bar now uses `flex-col` on mobile, so mode toggle + phone + mic appear on row 1 and the text input + send button appear on row 2 (under the act/plan button row as requested). On desktop (`md:flex-row`) it returns to a single row.
+- ui: **Text input now `min-w-0`** — prevents flex overflow on narrow screens.
+- ui: **Tool selector hidden on mobile** — the rotating fruit-machine tool roulette (with `translateY` transform animation that looked like chaos) is now `hidden md:flex` only.
+- ui: **Mobile gets a clean `<select>` dropdown** for tool selection, replacing the roulette. Same tool list, just a normal native dropdown that fits in 80px.
+
+### Version
+
+- bump: `.version` `1.11.13` → `1.11.14`; OTA `release_sequence` 24 → 25; financecheque release `v1.11.13` → `v1.11.14`.
+
 ## [1.11.13] - 2026-09-02
 
 Patch release: **critical build fix**. v1.11.12 shipped with a JSX syntax error in `src/app/page.tsx` (extra `</div>` tag in the Hermes section) that caused `next build` to fail on every node that updated. This release removes the stray tag so the GUI builds and runs again.
