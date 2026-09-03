@@ -826,10 +826,22 @@ install_gui() {
     # Ensure node_modules/.bin is in PATH so npx/next resolves correctly on Termux
     export PATH="$GUI_DIR/node_modules/.bin:$PATH"
     # Use the local next binary directly to avoid PATH or npx resolution issues
-    # on platforms where `npx` or `node` aren't on the default PATH
-    local NEXT_BIN="$GUI_DIR/node_modules/.bin/next"
-    if [[ ! -x "$NEXT_BIN" ]]; then NEXT_BIN="$NPX_BIN"; fi
-    NODE_OPTIONS="--max-old-space-size=$node_heap" "$NEXT_BIN" build "${build_args[@]}" >> "$GUI_DIR/gui-build.log" 2>&1
+    # on platforms where `npx` or `node` aren't on the default PATH.
+    # On Termux, /usr/bin/env doesn't exist so we must invoke via node directly.
+    local NEXT_CMD=()
+    if [[ -x "$GUI_DIR/node_modules/.bin/next" ]]; then
+      # Check the shebang: if it uses /usr/bin/env and env isn't available, invoke via node
+      local shebang
+      shebang=$(head -1 "$GUI_DIR/node_modules/.bin/next" 2>/dev/null || true)
+      if [[ "$shebang" == *"/usr/bin/env"* ]] && [[ ! -x "/usr/bin/env" ]]; then
+        NEXT_CMD=("$NODE_BIN" "$GUI_DIR/node_modules/.bin/next")
+      else
+        NEXT_CMD=("$GUI_DIR/node_modules/.bin/next")
+      fi
+    else
+      NEXT_CMD=("$NPX_BIN" "next")
+    fi
+    NODE_OPTIONS="--max-old-space-size=$node_heap" "${NEXT_CMD[@]}" build "${build_args[@]}" >> "$GUI_DIR/gui-build.log" 2>&1
   ) || { err "GUI build failed — see $GUI_DIR/gui-build.log"; return 1; }
   if [[ ! -d "$GUI_DIR/.next" ]]; then
     err "GUI build failed (.next missing) — see $GUI_DIR/gui-build.log"
