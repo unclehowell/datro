@@ -997,11 +997,21 @@ HPEOF
 start_gui_nohup() {
   free_gui_port
   info "Starting GUI in the background (no systemd)..."
+  # On Termux, /usr/bin/env is missing, so we must invoke next via node directly.
+  local NEXT_BIN="./node_modules/.bin/next"
+  local GUI_NODE=""
+  if [[ ! -x "/usr/bin/env" ]]; then
+    GUI_NODE="${NODE_BIN_DIR:-/data/data/com.termux/files/usr/bin}/node"
+    [[ -x "$GUI_NODE" ]] || GUI_NODE="$(command -v node || true)"
+    if [[ -n "$GUI_NODE" && -x "$GUI_NODE" ]]; then
+      NEXT_BIN="$GUI_NODE ./node_modules/.bin/next"
+    fi
+  fi
   ( cd "$GUI_DIR"
     env HOME="$HOME" PATH="$NODE_BIN_DIR:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin" \
         NODE_ENV=production PORT="$GUI_PORT" HOSTNAME="0.0.0.0" \
         AGENTOS_GUI_DIR="$GUI_DIR" FCUK_AGENT_URL="http://127.0.0.1:$PROXY_PORT/v1" \
-        nohup ./node_modules/.bin/next start -p "$GUI_PORT" -H 0.0.0.0 >> "$GUI_DIR/gui.log" 2>&1 &
+        nohup $NEXT_BIN start -p "$GUI_PORT" -H 0.0.0.0 >> "$GUI_DIR/gui.log" 2>&1 &
     echo $! > "$GUI_DIR/gui.pid"
   )
   ok "GUI started (PID: $(cat "$GUI_DIR/gui.pid"))"
