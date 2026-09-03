@@ -91,7 +91,7 @@ let hermesStartedHere = false;
 
 async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void> {
   const now = () => Date.now();
-  const set = (status: ProcessingStatus, extra?: Partial<{ userText: string; agentText: string; audioPath: string; error: string }>) => {
+  const set = (status: ProcessingStatus, extra?: Partial<{ userText: string; agentText: string; audioPath: string; error: string; errorCode: string }>) => {
     const prev = processingStatus.get(id);
     processingStatus.set(id, {
       status,
@@ -103,22 +103,45 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
   try {
     set("stt");
     let userText = "";
-    try { userText = await runSTT(audioBlob); } catch (e: any) { set("error", { error: `STT failed: ${e?.message}` }); return; }
-    if (!userText) { set("error", { error: "No speech detected" }); return; }
+    try { userText = await runSTT(audioBlob); } catch (e: any) {
+      set("error", { error: `STT failed: ${e?.message}`, errorCode: "STT_FAIL" });
+      return;
+    }
+    if (!userText) { set("error", { error: "No speech detected", errorCode: "STT_EMPTY" }); return; }
     set("stt", { userText });
 
     set("llm", { userText });
     let agentText = "";
+    let llmErrorCode: string | undefined;
     try {
       agentText = await withSerializedLLM(async () => {
         await ensureStackForVoicemail();
         return runLLM(userText);
       });
-    } catch { agentText = "(No LLM available)"; }
+    } catch (e: any) {
+      // Distinguish: did the local stack refuse to come up (OLLAMA_DOWN),
+      // or did both ollama AND cloud return nothing (E_NO_PROVIDER)?
+      const msg = String(e?.message || "");
+      if (/ECONNREFUSED|fetch failed|connect/i.test(msg)) llmErrorCode = "OLLAMA_DOWN";
+      else if (/timeout|aborted/i.test(msg)) llmErrorCode = "LLM_TIMEOUT";
+      else llmErrorCode = "E_NO_PROVIDER";
+      agentText = "(No LLM available)";
+    }
+
+    if (llmErrorCode) {
+      set("error", { error: `LLM failed: ${agentText}`, errorCode: llmErrorCode, userText, agentText });
+      return;
+    }
 
     set("tts", { userText, agentText });
     let audioPath = "";
-    try { audioPath = await runTTS(agentText, id); } catch {}
+    try { audioPath = await runTTS(agentText, id); } catch (e: any) {
+      // TTS failure is non-fatal — the voicemail is still saved as text
+      // and the user can read the reply. But we still surface a code in
+      // the in-memory status so the UI can mark the tts stage red.
+      set("error", { error: `TTS failed: ${e?.message}`, errorCode: "TTS_FAIL", userText, agentText, audioPath: "" });
+      return;
+    }
 
     const record: VoicemailRecord = { id, userText, agentText, audioPath, timestamp: Date.now(), played: false };
     const records = loadIndex();

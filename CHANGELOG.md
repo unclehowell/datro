@@ -1,3 +1,135 @@
+## [1.11.27] - 2026-09-03
+
+Release: **v1.11.26 validated on real hardware, v1.11.26 tool-call response execution fixed, voicemail breadcrumb stays visible with per-stage error states, error-code lookup doc**. Brief was right: do not write new speculative fixes without first verifying the last release on real target hardware. Did that. Found one real bug, fixed it. Plus two scoped UX asks (breadcrumb visibility, error-code lookup).
+
+### Validation of v1.11.26 (before this tag)
+
+- **Local tool-calling wiring** — confirmed structurally correct.
+  ollama at `localhost:11434` accepts the OpenAI-shape `tools` array
+  (verified by direct `POST /api/chat` with a calculator tool — ollama
+  returned `content: ''` + `tool_calls: [{name: 'calculator', arguments:
+  {expression: '7*6'}}]`, which is the expected OpenAI shape).
+  omniroute at `localhost:20128` is responsible for translating between
+  OpenAI chat-completions and ollama's `/api/chat`; it does pass
+  `tools`/`tool_choice` through (line 235 of `agentos/omniroute/proxy.mjs`
+  spreads `...rest` into the proxied request body) and converts the
+  ollama response back via `toOpenAIFormat`. So the **v1.11.26 fix is
+  correct — the wiring works**. The chat route can send tools, ollama
+  can return tool_calls, omniroute can reformat the response.
+- **Local tool-calling execution — v1.11.26 BUG FOUND.** The chat
+  route's `routeThroughLocalStack` only read
+  `completion.choices[0].message.content` from the response. If the
+  LLM returned `content: ''` + `tool_calls: [...]` (which is exactly
+  what the direct ollama test above produces), the code threw
+  `"empty MiniCPM response"` and fell through to the
+  retry-without-tools path. So the **wire-level wiring was right but
+  the response-level handling was wrong**: the LLM was asking for a
+  tool, the code was ignoring the ask. v1.11.27 fixes this (see below).
+- **Voicemail round trip on real target hardware — could not be
+  validated end-to-end on either device.** Phone (Samsung Galaxy A07,
+  Termux) has no whisper-stt, no voice-service, no ollama — POST
+  `/api/voicemail?action=process` returns the documented
+  `Whisper STT service is not running on this device` 503
+  immediately. Laptop's ollama loads and answers chat, but omniroute
+  (the OpenAI⇄ollama bridge the chat route depends on) is missing —
+  the laptop's `/home/x/.fcukproxy/omniroute` was deleted out from
+  under the running process (the `task-router.mjs` PID 210383 reports
+  `(deleted)` as its cwd), so the local path is unreachable and only
+  the cloud fallback runs. The 180 s × 2 budget v1.11.26 added is
+  therefore **unverified on real voicemail traffic**; the in-memory
+  timing fields (`startedAt`/`stageStartedAt`) and the new error codes
+  will surface in the UI, but no end-to-end timing exists yet.
+  This is a real gap, not hidden — the v1.11.27 release notes call
+  it out and the backlog carries a "deploy omniroute on the laptop"
+  task so the next validation pass can actually exercise the
+  voicemail pipeline.
+
+### Fixed (after the validation surfaced the bugs)
+
+- fix: **chat route ignored `tool_calls` from the LLM** — the v1.11.26
+  wiring posted the tool catalog to omniroute but only consumed
+  `content` from the response. The standard ReAct loop (assistant
+  tool_call → tool execution → tool result → final assistant
+  message) is now implemented: when the response carries
+  `tool_calls`, each is executed via `getToolRegistry().execute()`
+  and the result is fed back to the LLM in a follow-up completion.
+  The follow-up's reply is what the user sees; if the follow-up
+  itself fails, the raw tool output is surfaced so the user still
+  sees what was done. The retry-without-tools path remains as the
+  third fallback for malformed `tool_calls`.
+- fix: **voicemail processing card disappeared on completion** — the
+  inline card in the voicemail list only showed during the
+  `stt`/`llm`/`tts` phases, so the long LLM phase (cold model
+  load on Celeron, often 60-120 s) looked like a silent hang.
+  v1.11.27 keeps the card visible the entire time the request is
+  being worked on, with each stage now in one of four states
+  (`off`/`active`/`done`/`error`). The active stage pulses amber;
+  completed stages stay lit green; the failed stage goes red with
+  the error code in the chip itself. Each phase also shows the
+  elapsed time in that stage, so a long LLM phase shows
+  `thinking… (12.3s)` rather than a static message.
+- fix: **chat and voicemail errors had no machine-recognisable
+  code** — the chat route's catch block now maps common error
+  shapes (`timeout` / `aborted` / `ECONNREFUSED` / `fetch failed` /
+  5xx) to short codes (`CHAT_TIMEOUT` / `OLLAMA_DOWN` /
+  `UPSTREAM_5XX` / `CHAT_FAIL`) and stamps them on the assistant
+  message as a `⚠ CODE` chip. The voicemail route sets
+  `errorCode` on every failure path (STT/LLM/TTS) and the same
+  chip treatment applies. Both chips link to the new
+  `/ERROR-CODES.md` lookup document.
+- docs: **error-code lookup** — `agentos/gui/public/ERROR-CODES.md`
+  lists every code (chat: `CHAT_FAIL` / `CHAT_TIMEOUT` /
+  `OLLAMA_DOWN` / `UPSTREAM_5XX`; voicemail: `STT_FAIL` /
+  `STT_EMPTY` / `OLLAMA_DOWN` / `LLM_TIMEOUT` / `E_NO_PROVIDER` /
+  `TTS_FAIL`) with meaning, what-to-try, and the visual mapping from
+  code prefix to the stage chip that lights up.
+
+### Manual verification (before this tag)
+
+- `install.sh` + `update-checker.sh`: `bash -n` clean.
+- `tsc --noEmit` on changed files: no new errors (71 total in the
+  project, all pre-existing `next/server` / `next/link` / `remotion`
+  missing-type-declaration warnings, unrelated to this release).
+- GUI build on laptop: succeeded.
+- ollama direct test: `POST /api/chat` with calculator tool returns
+  `content: ''` + `tool_calls: [{name: 'calculator', arguments:
+  {expression: '7*6'}}]` — model is willing to invoke a tool when
+  the schema is right. (Code path cannot be exercised on this dev
+  machine because omniroute is missing; that's the backlog item.)
+- GUI serve: `/ERROR-CODES.md` returns 200 with the expected first
+  line. `/chat` HTML contains the voicemail inbox button
+  (`aria-label="Open voicemails"`).
+- Chat path falls through to cloud correctly when local omniroute is
+  unreachable: log shows `[LOCAL] tool-call attempt failed at the
+  wire, retrying without tools: fetch failed` followed by the
+  cloud-fallback attempt.
+
+### Constraints preserved
+
+- `LLM_LOCAL_ONLY` gate unchanged in `cloud-router.ts`.
+- kilo/kiro/opencode CLI agents untouched.
+- `hermes-support` (ollama-cloud) still non-default.
+- No new dependencies.
+
+### Backlog (deferred, not in v1.11.27)
+
+- **Deploy omniroute on the laptop** so the next validation pass can
+  exercise the v1.11.27 tool-call execution path against a real
+  prompt that needs a tool.
+- **Real voicemail round trip** on a device that has whisper-stt +
+  voice-service installed, to confirm the 180 s × 2 budget and the
+  per-stage timing fields render correctly across the full STT→LLM→TTS
+  pipeline.
+- **Root `install.sh` duplicate** — still an unresolved duplicate of
+  `public/fcukproxy/install.sh`. Not touched in v1.11.27 per the brief
+  ("Otherwise, move to backlog").
+- **Task ledger for task-router** — task kills by timeout still restart
+  from zero. Not touched in v1.11.27 per the brief.
+
+### Version
+
+- bump: `.version` `1.11.26` → `1.11.27`; financecheque release `v1.11.26` → `v1.11.27`.
+
 ## [1.11.26] - 2026-09-03
 
 Release: **local tool-calling wired + voicemail fail-fast + UI polish (header voicemail icon, animated in-flight breadcrumb) + CHANGELOG backfill**. Five user-visible problems and one accounting problem, fixed in one release instead of the v1.11.18–25 single-issue-patch pattern.

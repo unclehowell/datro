@@ -218,8 +218,12 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
     // local path — not only on the rarely-used cloud fallback. v1.11.15
     // disabled local tool-calling because the 1B model emitted garbage
     // tool calls; rather than re-silently-dropping every tool attempt we
-    // try once with tools and retry once without them if the call fails.
-    const toolCatalog = (getAgentLoop().getToolRegistry?.()?.listTools?.() || []) as any[];
+    // try once with tools and, on a clean tool_call response, actually
+    // EXECUTE the tool and feed the result back to the LLM (v1.11.27).
+    // If the LLM emits a malformed tool_call or no tool_call at all, fall
+    // back to a plain chat completion so the user still gets a reply.
+    const loop = getAgentLoop();
+    const toolCatalog = (loop.getToolRegistry?.()?.listTools?.() || []) as any[];
     const tools = toolCatalog.length > 0 ? toolCatalog : undefined;
     const baseMessages = [
       {
@@ -228,10 +232,11 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
       },
       ...messages.slice(-8),
     ];
-    let reply: string | undefined;
-    let usedTools = false;
+
+    // First attempt — pass the tool catalog so the LLM can request a tool.
+    let firstCompletion: any;
     try {
-      const withTools = await complete({
+      firstCompletion = await complete({
         model: "openbmb/minicpm5",
         messages: baseMessages,
         temperature: 0.7,
@@ -239,29 +244,110 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
         stream: false,
         ...(tools ? { tools, tool_choice: "auto" } : {}),
       });
-      reply = withTools.choices?.[0]?.message?.content?.trim() || undefined;
-      usedTools = !!tools;
     } catch (toolErr: unknown) {
-      // minicpm5 sometimes emits malformed tool_calls; fall back to a plain
-      // chat completion so the user still gets a reply.
-      console.log(`[LOCAL] tool-call attempt failed, retrying without tools: ${toolErr instanceof Error ? toolErr.message : String(toolErr)}`);
+      // network/parse error before the LLM even answered — degrade to a
+      // plain chat completion below.
+      console.log(`[LOCAL] tool-call attempt failed at the wire, retrying without tools: ${toolErr instanceof Error ? toolErr.message : String(toolErr)}`);
     }
-    if (!reply) {
-      const withoutTools = await complete({
-        model: "openbmb/minicpm5",
-        messages: baseMessages,
-        temperature: 0.7,
-        max_tokens: 700,
-        stream: false,
-      });
-      reply = withoutTools.choices?.[0]?.message?.content?.trim() || undefined;
-      usedTools = false;
-    }
-    if (!reply) throw new Error("empty MiniCPM response");
-    // Mark tool-attempted so the UI can show the breadcrumb passed through
-    // the tool stage even when the call was rejected by the model.
-    void usedTools;
 
+    const firstMessage = firstCompletion?.choices?.[0]?.message ?? {};
+    const firstToolCalls: any[] = Array.isArray(firstMessage.tool_calls) ? firstMessage.tool_calls : [];
+    const firstContent: string = (firstMessage.content || "").trim();
+
+    // Case 1 — the LLM asked for a tool. Execute it and feed the result back.
+    if (firstToolCalls.length > 0 && tools) {
+      const followUpMessages: any[] = [
+        ...baseMessages,
+        { role: "assistant", content: firstContent || "", tool_calls: firstToolCalls },
+      ];
+      for (const tc of firstToolCalls) {
+        const fn = tc.function || {};
+        const toolName = String(fn.name || "");
+        let args: Record<string, unknown> = {};
+        try { args = typeof fn.arguments === "string" ? JSON.parse(fn.arguments || "{}") : (fn.arguments || {}); }
+        catch { args = {}; }
+        let execResult: { success: boolean; output: string; error?: string };
+        try {
+          const r = await loop.getToolRegistry().execute({
+            id: String(tc.id || `tc-${Date.now()}`),
+            tool: toolName,
+            parameters: args,
+            timestamp: Date.now(),
+          });
+          execResult = { success: !!r.success, output: String(r.output || "").slice(0, 4000), error: r.error };
+        } catch (e: unknown) {
+          execResult = { success: false, output: "", error: e instanceof Error ? e.message : String(e) };
+        }
+        followUpMessages.push({
+          role: "tool",
+          tool_call_id: tc.id,
+          name: toolName,
+          content: execResult.success ? execResult.output : `ERROR: ${execResult.error || "tool execution failed"}`,
+        });
+      }
+      // Ask the LLM to summarise the tool result(s) for the user.
+      let toolReply: string | undefined;
+      try {
+        const finalCompletion = await complete({
+          model: "openbmb/minicpm5",
+          messages: followUpMessages,
+          temperature: 0.5,
+          max_tokens: 700,
+          stream: false,
+        });
+        toolReply = finalCompletion.choices?.[0]?.message?.content?.trim() || undefined;
+      } catch (e: unknown) {
+        console.log(`[LOCAL] follow-up completion after tool exec failed: ${e instanceof Error ? e.message : String(e)}`);
+      }
+      if (toolReply) {
+        return {
+          reply: toolReply,
+          routed: "tool_use",
+          dependency: firstToolCalls[0]?.function?.name || "tools",
+          provider: "omniroute",
+          model: "openbmb/minicpm5",
+        };
+      }
+      // The follow-up summarisation failed. Surface the raw tool output so
+      // the user still sees what was done, rather than a silent fail.
+      const rawOutput = followUpMessages
+        .filter((m) => m.role === "tool")
+        .map((m) => `[${m.name}] ${m.content}`)
+        .join("\n\n");
+      if (rawOutput) {
+        return {
+          reply: rawOutput,
+          routed: "tool_use",
+          dependency: firstToolCalls[0]?.function?.name || "tools",
+          provider: "omniroute",
+          model: "openbmb/minicpm5",
+        };
+      }
+    }
+
+    // Case 2 — the LLM answered with plain content (no tool call, or the
+    // tools attempt came back blank). Use the content as the reply.
+    if (firstContent) {
+      return {
+        reply: firstContent,
+        routed: "chat",
+        dependency: "minicpm5",
+        provider: "omniroute",
+        model: "openbmb/minicpm5",
+      };
+    }
+
+    // Case 3 — the LLM returned a malformed tool_call that we couldn't
+    // route through Case 1, AND no content. Retry without tools.
+    const withoutTools = await complete({
+      model: "openbmb/minicpm5",
+      messages: baseMessages,
+      temperature: 0.7,
+      max_tokens: 700,
+      stream: false,
+    });
+    const reply = withoutTools.choices?.[0]?.message?.content?.trim();
+    if (!reply) throw new Error("empty MiniCPM response");
     return {
       reply,
       routed: "chat",

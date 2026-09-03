@@ -22,6 +22,7 @@ interface Message {
   dependency?: string;
   provider?: string;
   videoResult?: { filename: string; path: string };
+  errorCode?: string;
 }
 
 function loadCachedMessages(): Message[] {
@@ -380,36 +381,50 @@ function ProxyTitle({ pulsing }: { pulsing: boolean }) {
 }
 
 // Animated pipeline breadcrumb shown in the voicemail list while a
-// recorded message is being processed (stt > think > tts).
-// Animated pipeline breadcrumb shown on the voicemail modal while a
-// recorded message is being processed (stt > think > tts). The active
-// step pulses; completed steps stay lit green.
-function VmProcessingBreadcrumb({ active }: { active: string }) {
-  const steps = [
-    { id: "stt", label: "stt" },
-    { id: "llm", label: "think" },
-    { id: "tts", label: "tts" },
-  ];
-  const activeIdx = steps.findIndex((s) => s.id === active);
+// recorded message is being processed (stt > think > tts). Each stage
+// can be in one of four states:
+//   - "off"     : not yet started (faded gray)
+//   - "active"  : currently being worked (amber pulse)
+//   - "done"    : completed cleanly (green)
+//   - "error"   : failed at this stage (red, with the error code surfaced
+//                 in the title attribute; the clickable badge also routes
+//                 the user to docs/ERROR-CODES.md on click)
+//
+// The breadcrumb stays visible the entire time a request is being
+// worked on — v1.11.27 change: previously the card disappeared on
+// `complete`/`error` status, which made long LLM phases feel like the
+// pipeline had silently died. Now the user sees every phase light up
+// (off → active → done) and any failure surfaces immediately with a
+// red marker and the error code.
+type StageState = "off" | "active" | "done" | "error";
+function VmProcessingBreadcrumb({ stages, failedCode }: { stages: { id: string; label: string; state: StageState }[]; failedCode?: string }) {
   return (
-    <div className="flex items-center gap-0 text-[10px] font-mono justify-center">
-      {steps.map((s, i) => {
-        const done = activeIdx > i || active === "complete";
-        const isActive = activeIdx === i;
+    <div className="flex items-center gap-0 text-[10px] font-mono justify-center flex-wrap">
+      {stages.map((s, i) => {
+        const stateClass =
+          s.state === "error"
+            ? "border-red-500/50 bg-red-500/15 text-red-400 cursor-pointer"
+            : s.state === "active"
+            ? "border-amber-500/50 bg-amber-500/15 text-amber-400 animate-pulse"
+            : s.state === "done"
+            ? "border-green-500/30 bg-green-500/10 text-green-400"
+            : "border-border bg-surface text-text-muted opacity-60";
         return (
           <span key={s.id} className="flex items-center">
             {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
-            <span
-              className={`px-1.5 py-0.5 rounded border transition-all ${
-                isActive
-                  ? "border-accent/50 bg-accent/15 text-accent animate-pulse"
-                  : done
-                  ? "border-green-500/30 bg-green-500/10 text-green-400"
-                  : "border-border bg-surface text-text-muted opacity-60"
-              }`}
+            <a
+              href="/ERROR-CODES.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`px-1.5 py-0.5 rounded border transition-all no-underline ${stateClass}`}
+              title={
+                s.state === "error" && failedCode
+                  ? `Error ${failedCode} at ${s.label} — click for lookup`
+                  : s.label
+              }
             >
-              {s.label}
-            </span>
+              {s.state === "error" && failedCode ? `${s.label} ${failedCode}` : s.label}
+            </a>
           </span>
         );
       })}
@@ -1412,9 +1427,21 @@ export default function ChatPage() {
     } catch (err) {
       stopSpin("idle");
       resetPipeline();
+      const msg = err instanceof Error ? err.message : "Unknown error";
+      // Map common error shapes to a short code so the UI can link to the
+      // ERROR-CODES.md lookup. v1.11.27.
+      const code =
+        /timeout|aborted/i.test(msg) ? "CHAT_TIMEOUT"
+        : /ECONNREFUSED|fetch failed|connect/i.test(msg) ? "OLLAMA_DOWN"
+        : /status:\s*5\d\d/i.test(msg) ? "UPSTREAM_5XX"
+        : "CHAT_FAIL";
       setMessages((prev) => {
         const updated = [...prev];
-        updated[updated.length - 1] = { ...updated[updated.length - 1], content: `Error: ${err instanceof Error ? err.message : "Unknown error"}` };
+        updated[updated.length - 1] = {
+          ...updated[updated.length - 1],
+          content: `Error: ${msg}`,
+          errorCode: code,
+        };
         return updated;
       });
     } finally {
@@ -1520,37 +1547,63 @@ export default function ChatPage() {
               )}
 
               {/* Processing voicemail — inline animation standing in for the
-                  reply card until it lands. No modal popup. */}
-              {voicemailModalPendingId && (
-                <div className="p-3 rounded-lg border border-dashed border-accent/40 bg-surface/70">
-                  {vmStatus?.status === "error" ? (
-                    <div className="space-y-1">
-                      <div className="text-red-300 text-xs">{vmStatus.error || "Processing failed"}</div>
-                      <div className="text-text-muted text-[10px]">Your message was not processed.</div>
-                      <button
-                        onClick={() => { setVoicemailModalPendingId(null); setVoicemailModalRealId(null); }}
-                        className="text-[10px] text-text-muted hover:text-text-primary transition-colors mt-1"
-                      >
-                        Dismiss
-                      </button>
+                  reply card until it lands. No modal popup. v1.11.27:
+                  the card stays visible the entire time the request is
+                  being worked on; previously the brief "queued" → "stt"
+                  phase made the LLM phase (often 60+ s on cold
+                  hardware) look like a silent hang. Each stage is now
+                  independently lit (off/active/done/error) so the user
+                  can see exactly which dependency is currently
+                  handling the prompt. */}
+              {voicemailModalPendingId && (() => {
+                const status = vmStatus?.status || "queued";
+                const errorCode = (vmStatus as any)?.errorCode as string | undefined;
+                const stages = [
+                  { id: "stt", label: "stt", state: (status === "stt" ? "active" : (status === "llm" || status === "tts" || status === "complete" ? "done" : status === "error" && errorCode?.startsWith("STT") ? "error" : "off")) as StageState },
+                  { id: "llm", label: "think", state: (status === "llm" ? "active" : (status === "tts" || status === "complete" ? "done" : status === "error" && (errorCode?.startsWith("LLM") || errorCode?.startsWith("OLLAMA") || errorCode === "E_NO_PROVIDER") ? "error" : "off")) as StageState },
+                  { id: "tts", label: "tts", state: (status === "tts" ? "active" : (status === "complete" ? "done" : status === "error" && (errorCode?.startsWith("TTS") || errorCode?.startsWith("VOICE")) ? "error" : "off")) as StageState },
+                ];
+                const liveStatus =
+                  status === "error" ? "error"
+                  : status === "complete" ? "complete"
+                  : status === "tts" ? "tts"
+                  : status === "llm" ? "llm"
+                  : status === "stt" ? "stt"
+                  : "queued";
+                return (
+                  <div className={`p-3 rounded-lg border ${status === "error" ? "border-red-500/50 bg-red-500/5" : "border-dashed border-accent/40 bg-surface/70"}`}>
+                    <div className="text-text-muted text-[10px] mb-1.5">Voicemail</div>
+                    <VmProcessingBreadcrumb stages={stages} failedCode={errorCode} />
+                    <div className={`text-[11px] mt-3 ${status === "error" ? "text-red-300" : "text-text-muted animate-pulse"}`}>
+                      {liveStatus === "queued" && "Queued for processing…"}
+                      {liveStatus === "stt" && `Transcribing your message… (${Math.round(((vmStatus as any)?.stageElapsedMs || 0) / 100) / 10}s)`}
+                      {liveStatus === "llm" && `Waking Hermes & Ollama — thinking… (${Math.round(((vmStatus as any)?.stageElapsedMs || 0) / 100) / 10}s)`}
+                      {liveStatus === "tts" && `Generating spoken reply… (${Math.round(((vmStatus as any)?.stageElapsedMs || 0) / 100) / 10}s)`}
+                      {liveStatus === "complete" && "Reply ready — playing below."}
+                      {liveStatus === "error" && (
+                        <span>
+                          Failed at this stage.
+                          {errorCode && <span className="ml-1 font-mono text-red-200">{errorCode}</span>}
+                          {vmStatus?.error && <span className="block text-[10px] text-text-muted mt-1">{vmStatus.error}</span>}
+                        </span>
+                      )}
                     </div>
-                  ) : (
-                    <>
-                      <div className="text-text-muted text-[10px] mb-1.5">Voicemail</div>
-                      <VmProcessingBreadcrumb
-                        active={vmStatus?.status === "llm" ? "llm" : vmStatus?.status === "tts" ? "tts" : "stt"}
-                      />
-                      <div className="text-text-muted text-[11px] mt-3 animate-pulse">
-                        {vmStatus?.status === "tts"
-                          ? "Generating spoken reply\u2026"
-                          : vmStatus?.status === "llm"
-                          ? "Waking Hermes & Ollama \u2014 thinking\u2026"
-                          : "Transcribing your message\u2026"}
+                    {status === "error" && (
+                      <div className="mt-2 flex gap-2">
+                        <a href="/ERROR-CODES.md" target="_blank" rel="noopener noreferrer" className="text-[10px] text-accent hover:underline">
+                          Error code lookup →
+                        </a>
+                        <button
+                          onClick={() => { setVoicemailModalPendingId(null); setVoicemailModalRealId(null); }}
+                          className="text-[10px] text-text-muted hover:text-text-primary transition-colors"
+                        >
+                          Dismiss
+                        </button>
                       </div>
-                    </>
-                  )}
-                </div>
-              )}
+                    )}
+                  </div>
+                );
+              })()}
 
               {voicemails.map((vm) => (
                 <div key={vm.id} className={`p-3 rounded-lg border ${vm.played ? "bg-zinc-800/30 border-zinc-700/50" : "bg-accent/10 border-accent/30"} transition-colors`}>
@@ -1636,6 +1689,18 @@ export default function ChatPage() {
                   )}
                   {msg.provider && (
                     <span className="text-[10px] px-1 py-0.5 rounded bg-zinc-800/50 text-zinc-400 border border-zinc-700">via {msg.provider}</span>
+                  )}
+                  {msg.errorCode && (
+                    <a
+                      href="/ERROR-CODES.md"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-[10px] px-1.5 py-0.5 rounded font-mono"
+                      style={{ color: "#fca5a5", backgroundColor: "rgba(239,68,68,0.1)", border: "1px solid rgba(239,68,68,0.3)" }}
+                      title={`Error ${msg.errorCode} — click for lookup`}
+                    >
+                      ⚠ {msg.errorCode}
+                    </a>
                   )}
                 </div>
               )}
