@@ -643,13 +643,15 @@ apply_update() {
     sleep 2
     if [[ -d "$GUI_DIR" && -f "$GUI_DIR/.next/BUILD_ID" ]]; then
       mkdir -p "$GUI_DIR"
+      local _gui_pid
       ( cd "$GUI_DIR"
         export PATH="$GUI_DIR/node_modules/.bin:$PATH"
         setsid nohup node node_modules/.bin/next start -p 3000 -H 0.0.0.0 \
           > "$GUI_DIR/gui.log" 2>&1 < /dev/null &
         echo "GUI_PID=$!"
       ) >> "$LOG_FILE" 2>&1
-      log "Termux GUI restarted (PID: $!)"
+      _gui_pid=$(grep -oE 'GUI_PID=[0-9]+' "$LOG_FILE" | tail -1 | cut -d= -f2)
+      log "Termux GUI restarted (PID: ${_gui_pid:-unknown})"
     else
       log "WARN: Cannot restart Termux GUI — no build at $GUI_DIR/.next/BUILD_ID"
     fi
