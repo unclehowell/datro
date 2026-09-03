@@ -741,22 +741,27 @@ ensure_gui_build() {
   local TOTAL_RAM_MB
   TOTAL_RAM_MB=$(awk '/MemTotal/ {printf "%d", $2/1024}' /proc/meminfo 2>/dev/null || echo 4096)
   [[ "$TOTAL_RAM_MB" -le 2048 ]] && NODE_HEAP="384"
-  # Use the local next binary directly to avoid PATH or npx resolution issues
-  # on platforms where `npx` or `node` aren't on the default PATH.
   # On Termux, /usr/bin/env doesn't exist so we must invoke via node directly.
+  # Also ensure the system node (e.g. /data/data/com.termux/files/usr/bin/node)
+  # is on PATH for the build subprocess.
+  local NODE_BIN_RESOLVED="${NODE_BIN:-}"
+  [[ -z "$NODE_BIN_RESOLVED" || ! -x "$NODE_BIN_RESOLVED" ]] && NODE_BIN_RESOLVED="$(command -v node || true)"
+  if [[ -n "$NODE_BIN_RESOLVED" && -x "$NODE_BIN_RESOLVED" ]]; then
+    export PATH="$(dirname "$NODE_BIN_RESOLVED"):$BUILD_PATH"
+  fi
   local NEXT_CMD=()
   if [[ -x "$GUI_DIR/node_modules/.bin/next" ]]; then
     local shebang
     shebang=$(head -1 "$GUI_DIR/node_modules/.bin/next" 2>/dev/null || true)
     if [[ "$shebang" == *"/usr/bin/env"* ]] && [[ ! -x "/usr/bin/env" ]]; then
-      NEXT_CMD=("$NODE_BIN" "$GUI_DIR/node_modules/.bin/next")
+      NEXT_CMD=("$NODE_BIN_RESOLVED" "$GUI_DIR/node_modules/.bin/next")
     else
       NEXT_CMD=("$GUI_DIR/node_modules/.bin/next")
     fi
   else
-    NEXT_CMD=("$NPX_BIN" "next")
+    NEXT_CMD=("$NODE_BIN_RESOLVED" "$GUI_DIR/node_modules/.bin/next")
   fi
-  if NODE_OPTIONS="--max-old-space-size=$NODE_HEAP" PATH="$BUILD_PATH" \
+  if NODE_OPTIONS="--max-old-space-size=$NODE_HEAP" PATH="$PATH" \
      timeout 600 "${NEXT_CMD[@]}" build "${build_args[@]}" 2>>"$LOG_FILE" | tail -5; then
     find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1 > "$GUI_DIR/.last-build-hash"
     log "GUI built successfully"
