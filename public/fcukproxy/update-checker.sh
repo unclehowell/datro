@@ -830,7 +830,7 @@ main() {
   apply_update "$latest"
   # Successful apply — clear any prior error status so the GUI shows the new
   # version, not a stale failure.
-  write_update_status done "$local_version" "$latest"
+  write_update_status ok "$local_version" "$latest"
 }
 
 main "$@"

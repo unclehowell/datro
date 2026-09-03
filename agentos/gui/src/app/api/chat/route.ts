@@ -610,6 +610,7 @@ export async function POST(req: NextRequest) {
     cloudMessages.push({ role: "user", content: msg });
     // Pass the registered tool catalog so the LLM can use real tool-calling
     // (apt install, terminal exec, file_read, etc.) when appropriate.
+    const loop = getAgentLoop();
     const toolCatalog = (loop.getToolRegistry?.()?.listTools?.() || []) as any[];
     const tools = toolCatalog.length > 0 ? toolCatalog : undefined;
     const cloudResult = await chatWithCloud(cloudMessages, { tools });
