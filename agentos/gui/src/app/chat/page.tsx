@@ -1457,7 +1457,7 @@ export default function ChatPage() {
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-[#0d0d1a]/70 to-[#0d0d1a]/95 pointer-events-none" />
       </div>
 
-      {/* ─── Header (simplified: back arrow + tool select) ─── */}
+      {/* ─── Header (back arrow + voicemail inbox) ─── */}
       <header className="border-b border-border px-3 md:px-4 py-2 flex items-center gap-2 shrink-0 sticky top-0 z-20 bg-surface/80 backdrop-blur-md shadow-lg shadow-black/20 min-w-0">
         {/* Back arrow */}
         <Link href="/" className="text-text-muted hover:text-text-primary transition-colors p-1 shrink-0">
@@ -1466,20 +1466,32 @@ export default function ChatPage() {
           </svg>
         </Link>
 
-        {/* Tool selector (clean dropdown) */}
-        <select
-          value={activeRoute}
-          onChange={(e) => setActiveRoute(e.target.value as typeof activeRoute)}
-          className="bg-surface border border-border rounded text-xs px-2 py-1 text-text-primary min-w-0 flex-1 md:flex-none md:w-auto"
-          title="Select tool/route"
-        >
-          {ALL_TOOLS.map((t) => (
-            <option key={t.id} value={t.id}>{t.icon} {t.label}</option>
-          ))}
-        </select>
+        {/* Title */}
+        <span className="text-sm font-semibold text-text-primary">Chat</span>
 
-        {/* Title (visible on desktop only) */}
-        <span className="hidden md:inline text-sm font-semibold text-text-primary ml-auto">Chat</span>
+        {/* Spacer */}
+        <div className="flex-1" />
+
+        {/* Voicemail inbox button — opens the right-side voicemail list.
+            Badge shows the count of voicemails that have not been played
+            yet. Mirrors the icon the user is used to seeing on phone. */}
+        <button
+          onClick={() => setVoicemailOpen((v) => !v)}
+          className="relative p-1.5 rounded text-text-muted hover:text-text-primary hover:bg-surface/60 transition-colors"
+          title="Voicemails"
+          aria-label="Open voicemails"
+        >
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+            <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72" />
+            <path d="M15.05 2A10 10 0 0 1 22 8.95" />
+            <path d="M15.05 6A6 6 0 0 1 18 8.95" />
+          </svg>
+          {voicemails.filter((v) => !v.played).length > 0 && (
+            <span className="absolute -top-0.5 -right-0.5 min-w-[16px] h-4 px-1 rounded-full bg-red-500 text-[10px] text-white flex items-center justify-center">
+              {voicemails.filter((v) => !v.played).length}
+            </span>
+          )}
+        </button>
       </header>
 
       {/* ─── Voicemail List Panel ─── */}
@@ -1627,7 +1639,43 @@ export default function ChatPage() {
                   )}
                 </div>
               )}
-              <div className="whitespace-pre-wrap">{msg.content || (streaming && i === messages.length - 1 ? <span className="text-text-muted animate-pulse">thinking...</span> : "")}</div>
+              <div className="whitespace-pre-wrap">
+                {msg.content
+                  || (streaming && i === messages.length - 1
+                    ? (
+                      <div className="space-y-2">
+                        {/* Horizontal breadcrumb (hermes > ollama > llm > tool) —
+                            lights up each stage as the pipeline advances so the
+                            user sees which dependency is currently handling the
+                            request. Replaces the old flat "thinking…" string. */}
+                        <div className="flex items-center gap-0 text-[10px] font-mono flex-wrap">
+                          {breadcrumbData.map((seg, j) => {
+                            const colors = STATUS_COLORS[seg.status];
+                            return (
+                              <span key={seg.id} className="flex items-center">
+                                {j > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
+                                <span
+                                  className="px-1.5 py-0.5 rounded whitespace-nowrap transition-all"
+                                  style={{
+                                    color: colors.text,
+                                    backgroundColor: colors.bg,
+                                    border: `1px solid ${colors.border}`,
+                                    opacity: seg.status === "off" ? 0.35 : 1,
+                                    boxShadow: seg.status !== "off" ? colors.glow : "none",
+                                  }}
+                                  title={seg.label}
+                                >
+                                  {seg.icon} {seg.label}
+                                </span>
+                              </span>
+                            );
+                          })}
+                        </div>
+                        <div className="text-text-muted animate-pulse text-xs">thinking…</div>
+                      </div>
+                    )
+                    : "")}
+              </div>
 
               {/* Video result (from background render) */}
               {msg.videoResult && (

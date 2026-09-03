@@ -65,6 +65,8 @@ export interface VoicemailRecord {
 type ProcessingStatus = "queued" | "stt" | "llm" | "tts" | "complete" | "error";
 const processingStatus = new Map<string, {
   status: ProcessingStatus;
+  startedAt: number;
+  stageStartedAt: number;
   userText?: string;
   agentText?: string;
   audioPath?: string;
@@ -88,8 +90,15 @@ function withSerializedLLM<T>(fn: () => Promise<T>): Promise<T> {
 let hermesStartedHere = false;
 
 async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void> {
+  const now = () => Date.now();
   const set = (status: ProcessingStatus, extra?: Partial<{ userText: string; agentText: string; audioPath: string; error: string }>) => {
-    processingStatus.set(id, { status, ...extra });
+    const prev = processingStatus.get(id);
+    processingStatus.set(id, {
+      status,
+      startedAt: prev?.startedAt ?? now(),
+      stageStartedAt: prev?.status === status ? (prev.stageStartedAt ?? now()) : now(),
+      ...extra,
+    });
   };
   try {
     set("stt");
@@ -279,7 +288,11 @@ async function runLLMInner(userText: string): Promise<string> {
 }
 
 async function callLocalProxy(messages: any[]): Promise<string> {
-  const budgetMs = parseInt(process.env.LLM_TIMEOUT_S || "600", 10) * 1000;
+  // Voicemail replies are short (max_tokens=256) on a 1B model. Budget
+  // per attempt: 180s. Two attempts: 360s. That covers cold ollama load
+  // + a runner-restart retry. The old 600s×2 budget (~20 min worst case)
+  // made the pipeline feel like it was hanging with no visible progress.
+  const budgetMs = parseInt(process.env.LLM_TIMEOUT_S || "180", 10) * 1000;
   for (let attempt = 1; attempt <= 2; attempt++) {
     try {
       const res = await fetch("http://127.0.0.1:20128/v1/chat/completions", {
@@ -316,7 +329,7 @@ async function callLocalProxy(messages: any[]): Promise<string> {
     } catch (e: any) {
       console.log(`[voicemail] local proxy error (attempt ${attempt}):`, e?.message);
       // Runner may have just restarted under swap — retry against the warm model.
-      if (attempt === 1) await new Promise((r) => setTimeout(r, 5000));
+      if (attempt === 1) await new Promise((r) => setTimeout(r, 3000));
     }
   }
   return "";
@@ -497,7 +510,8 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Could not parse form data" }, { status: 400 });
     }
     const id = makeId();
-    processingStatus.set(id, { status: "queued" });
+    const queuedAt = Date.now();
+    processingStatus.set(id, { status: "queued", startedAt: queuedAt, stageStartedAt: queuedAt });
     // Fire-and-forget pipeline
     processVoicemailAsync(id, audioBlob);
     return NextResponse.json({ ok: true, id, status: "queued" });
@@ -620,7 +634,15 @@ export async function GET(req: NextRequest) {
     const id = req.nextUrl.searchParams.get("id") || "";
     if (!id) return NextResponse.json({ error: "Missing id" }, { status: 400 });
     const s = processingStatus.get(id);
-    if (s) return NextResponse.json({ id, ...s });
+    if (s) {
+      const now = Date.now();
+      return NextResponse.json({
+        id,
+        ...s,
+        elapsedMs: now - (s.startedAt ?? now),
+        stageElapsedMs: now - (s.stageStartedAt ?? now),
+      });
+    }
     // Check if already completed (in index)
     const records = loadIndex();
     const vm = records.find((r) => r.id === id);

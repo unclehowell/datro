@@ -11,6 +11,8 @@ export interface CompletionRequest {
   temperature?: number;
   max_tokens?: number;
   stream?: boolean;
+  tools?: unknown[];
+  tool_choice?: string | object;
 }
 
 export interface CompletionResponse {

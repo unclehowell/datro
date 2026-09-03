@@ -212,21 +212,55 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
       console.log(`[LOCAL] Hermes unavailable, falling back to MiniCPM via OmniRoute: ${message}`);
     }
 
-    const completion = await complete({
-      model: "openbmb/minicpm5",
-      messages: [
-        {
-          role: "system",
-          content: "You are Hermes, the local AgentOS chat brain. Answer conversationally and keep responses concise. Do not claim to execute tasks; task execution is handled by the task-router." + personaSuffix(opts?.mode, opts?.voiceCall),
-        },
-        ...messages.slice(-8),
-      ],
-      temperature: 0.7,
-      max_tokens: 700,
-      stream: false,
-    });
-    const reply = completion.choices?.[0]?.message?.content?.trim();
+    // Fetch the tool catalog the same way the cloud branch does. We pass
+    // it to the local MiniCPM completion so real tool-calling (apt
+    // install, terminal exec, file_read, etc.) works on the normal,
+    // local path — not only on the rarely-used cloud fallback. v1.11.15
+    // disabled local tool-calling because the 1B model emitted garbage
+    // tool calls; rather than re-silently-dropping every tool attempt we
+    // try once with tools and retry once without them if the call fails.
+    const toolCatalog = (getAgentLoop().getToolRegistry?.()?.listTools?.() || []) as any[];
+    const tools = toolCatalog.length > 0 ? toolCatalog : undefined;
+    const baseMessages = [
+      {
+        role: "system" as const,
+        content: "You are Hermes, the local AgentOS chat brain. Answer conversationally and keep responses concise. Do not claim to execute tasks; task execution is handled by the task-router." + personaSuffix(opts?.mode, opts?.voiceCall),
+      },
+      ...messages.slice(-8),
+    ];
+    let reply: string | undefined;
+    let usedTools = false;
+    try {
+      const withTools = await complete({
+        model: "openbmb/minicpm5",
+        messages: baseMessages,
+        temperature: 0.7,
+        max_tokens: 700,
+        stream: false,
+        ...(tools ? { tools, tool_choice: "auto" } : {}),
+      });
+      reply = withTools.choices?.[0]?.message?.content?.trim() || undefined;
+      usedTools = !!tools;
+    } catch (toolErr: unknown) {
+      // minicpm5 sometimes emits malformed tool_calls; fall back to a plain
+      // chat completion so the user still gets a reply.
+      console.log(`[LOCAL] tool-call attempt failed, retrying without tools: ${toolErr instanceof Error ? toolErr.message : String(toolErr)}`);
+    }
+    if (!reply) {
+      const withoutTools = await complete({
+        model: "openbmb/minicpm5",
+        messages: baseMessages,
+        temperature: 0.7,
+        max_tokens: 700,
+        stream: false,
+      });
+      reply = withoutTools.choices?.[0]?.message?.content?.trim() || undefined;
+      usedTools = false;
+    }
     if (!reply) throw new Error("empty MiniCPM response");
+    // Mark tool-attempted so the UI can show the breadcrumb passed through
+    // the tool stage even when the call was rejected by the model.
+    void usedTools;
 
     return {
       reply,

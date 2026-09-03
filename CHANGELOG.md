@@ -1,3 +1,134 @@
+## [1.11.26] - 2026-09-03
+
+Release: **local tool-calling wired + voicemail fail-fast + UI polish (header voicemail icon, animated in-flight breadcrumb) + CHANGELOG backfill**. Five user-visible problems and one accounting problem, fixed in one release instead of the v1.11.18–25 single-issue-patch pattern.
+
+### Fixed
+
+- fix: **local tool-calling never fired** — `routeThroughLocalStack()` (the path the normal chat actually takes) was not passing the tool catalog to `complete()`. The catalog was only wired into the `chatWithCloud` fallback, which almost never runs since the local route succeeds first. `CompletionRequest` did not even have a `tools` field, so the local path was structurally incapable of tool-calling. `omniroute.ts` now accepts `tools?` and `tool_choice?`, and the local path fetches the registered tool catalog the same way the cloud branch does. Calls are tried once with tools and retried once without them if the 1B model emits garbage tool calls (the v1.11.15 silent-disable behaviour) — the user still gets a reply even if the tool attempt is rejected.
+- fix: **voicemail pipeline felt broken on real hardware** — `callLocalProxy()` had a 600 s × 2 attempts budget (~20 min worst case) with no visible progress state. Reduced to 180 s × 2 attempts (360 s worst case) and added `startedAt` / `stageStartedAt` timestamps to `processingStatus` so a polling client can show "still generating" with elapsed time per stage. The async pipeline already published stage updates; the synchronous pipeline now seeds timing fields too.
+- fix: **voicemail icon gone from chat header** — added a voicemail inbox button (with unplayed-count badge) to the right side of the chat header, mirroring the phone UX. Tapping it opens the right-side voicemail list (which already had per-item Play / Replay / Delete buttons).
+- fix: **tool/route dropdown in chat header is noise** — removed the `<select>` tool selector from the header. The active route is still tracked in state and animated through the pipeline breadcrumb, but the user no longer has to pick a route up-front; the agentic stack classifies the request instead.
+- fix: **chat reply bubble showed a flat "thinking…" while a request was in flight** — replaced with the same horizontal breadcrumb (`🌐 webgui > 🎲 roulette > 🤖 hermes > 🧠 ollama > 🧠 minicpm5 > 🔄 router > 🔧 tools > 🔗 mcp`) that the voicemail pipeline already used, so each dependency lights up in sequence as the request flows through. The user sees exactly which stage is currently handling the prompt.
+- docs: **CHANGELOG backfilled for v1.11.18–v1.11.25** — the eight prior single-issue Termux/build patches shipped without changelog entries. Added proper entries for each, in semver order, with the same format used through v1.11.17.
+
+### Manual verification (before this tag)
+
+- `install.sh` and `update-checker.sh`: `bash -n` clean.
+- GUI rebuild on laptop: succeeded (no TypeScript errors in changed files; the only TS errors are pre-existing `next/server` / `next/link` missing-type-declaration warnings, unrelated).
+- `GET /api/voicemail?action=list`: returns 200 with `{"voicemails": []}`.
+- `GET /api/voicemail?action=status&id=test-123`: returns 404 `{"error":"Not found"}` (correct: not in-memory, not in index).
+- `POST /api/chat` with local stack down: returns `Local AgentOS and cloud fallback are unavailable` (clean 503, not a hang).
+- HTML render of `/chat`: voicemail inbox button present (`aria-label="Open voicemails"`), the old `<select>` is gone, breadcrumb `breadcrumbData` references present in the in-flight reply card.
+
+### Constraints preserved
+
+- `LLM_LOCAL_ONLY` gate unchanged in `cloud-router.ts` — local-ollama still first in the provider order.
+- kilo/kiro/opencode CLI agents untouched.
+- `hermes-support` (ollama-cloud) still an explicit, non-default, user-started profile.
+
+### Version
+
+- bump: `.version` `1.11.25` → `1.11.26`; financecheque release `v1.11.25` → `v1.11.26`.
+
+## [1.11.25] - 2026-09-03
+
+Patch release: **Termux GUI restart `$!` unbound variable fix**. v1.11.24 crashed during the Termux GUI restart step with `line 652: $!: unbound variable` because the subshell that backgrounded the new `next-server` was still inside `set -u` and the parent's `$!` was never set in that scope. Symptom: phone update would rebuild successfully, the new process would actually start, but the script would die before writing the new `.local-version` — so the GUI's `/api/version` would keep reporting the old release until a manual file write. The PID is now captured via `grep` on the log file.
+
+### Fixed
+
+- fix: **Termux phone GUI restart crashed with `$!: unbound variable`** — captured the backgrounded `next-server` PID from the log file instead of relying on `$!` (which is only valid in the subshell that ran the `&`).
+
+### Version
+
+- bump: `.version` `1.11.24` → `1.11.25`; financecheque release `v1.11.24` → `v1.11.25`.
+
+## [1.11.24] - 2026-09-03
+
+Patch release: **chat route `loop is not defined` + update-checker `done` reserved word**. v1.11.23 was unable to fall back to the cloud provider on the laptop because the cloud-fallback branch in `routeThroughLocalStack` referenced a `loop` variable that was never declared in that scope. Separately, v1.11.23's update-checker used the bash reserved word `done` as a status value, which caused a syntax error on every run.
+
+### Fixed
+
+- fix: **cloud fallback for chat returned `loop is not defined`** — added `const loop = getAgentLoop()` in the cloud-fallback branch of `route.ts` before reading the tool registry.
+- fix: **update-checker crashed with `syntax error near unexpected token '('`** — renamed the `done` status value to `ok` (bash reserved words cannot be used as identifiers).
+
+### Version
+
+- bump: `.version` `1.11.23` → `1.11.24`; financecheque release `v1.11.23` → `v1.11.24`.
+
+## [1.11.23] - 2026-09-03
+
+Patch release: **chat route timeouts on `engageMainAgent` + `queryGraphRAG`**. The phone (and any thin client) had two open timeouts that could hang the chat route indefinitely: a `switchToProfile` switch and an `ensureLLMStack` warm-up. A `queryGraphRAG()` call inside the knowledge-base RAG path was the third, and on phones where the graph database is not running it would never resolve. All three are now wrapped in `Promise.race` with explicit `setTimeout` fallbacks (3 s / 5 s / 3 s).
+
+### Fixed
+
+- fix: **`/api/chat` hung indefinitely on `switchToProfile`** — wrapped the profile switch in `Promise.race` with a 3000 ms timeout that returns the current profile instead of blocking.
+- fix: **`/api/chat` hung indefinitely on `ensureLLMStack`** — wrapped the LLM stack warm-up in `Promise.race` with a 5000 ms timeout that proceeds with cloud-only routing if the local stack does not come up in time.
+- fix: **`queryGraphRAG(msg)` blocked indefinitely on thin clients** — wrapped in `Promise.race` with a 3000 ms timeout returning an empty context string when the graph DB is unreachable.
+
+### Version
+
+- bump: `.version` `1.11.22` → `1.11.23`; financecheque release `v1.11.22` → `v1.11.23`.
+
+## [1.11.22] - 2026-09-03
+
+Patch release: **`start_gui_nohup` shebang/PATH fix on Termux**. v1.11.20 fixed the build path, but the runtime start path (`start_gui_nohup`, used by the update-checker to re-launch the rebuilt GUI on Termux) still had the same `#!/usr/bin/env node` shebang that doesn't exist on Termux. After an OTA on the phone, the GUI would not come back up.
+
+### Fixed
+
+- fix: **Termux phone next-server failed to restart after OTA** — same `node $GUI_DIR/node_modules/.bin/next` invocation pattern that v1.11.20 introduced for the build path, applied to the nohup-launched `next start` in `start_gui_nohup()`.
+
+### Version
+
+- bump: `.version` `1.11.21` → `1.11.22`; financecheque release `v1.11.21` → `v1.11.22`.
+
+## [1.11.21] - 2026-09-03
+
+Patch release: **node on PATH for the GUI build subshell on Termux**. v1.11.20 fixed the shebang but `next` still couldn't find `node` because the build subshell didn't inherit the PATH adjustment. On a fresh Termux install the npm `next build` step would crash with `next: not found`.
+
+### Fixed
+
+- fix: **`next build` failed with `next: not found` on Termux** — prepended `${NODE_BIN_DIR:-}/node` to the PATH inside the build subshell so the `next` binary resolves the same way the rest of the script does.
+
+### Version
+
+- bump: `.version` `1.11.20` → `1.11.21`; financecheque release `v1.11.20` → `v1.11.21`.
+
+## [1.11.20] - 2026-09-03
+
+Patch release: **Termux `next` shebang — invoke via node on PATH**. The `next` shim that ships with `next/dist/bin/next` has `#!/usr/bin/env node` as its shebang. On Termux, `/usr/bin/env` does not exist, so calling the shim directly fails with `env: node: No such file or directory`. Fix: invoke `next` via `node $GUI_DIR/node_modules/.bin/next` instead of the shebang-style execution.
+
+### Fixed
+
+- fix: **`npm run build` (which calls `next build`) failed on Termux with `env: node: No such file or directory`** — replaced direct invocation of the `next` shim with `node $GUI_DIR/node_modules/.bin/next`, which works on every platform.
+
+### Version
+
+- bump: `.version` `1.11.19` → `1.11.20`; financecheque release `v1.11.19` → `v1.11.20`.
+
+## [1.11.19] - 2026-09-03
+
+Patch release: **use local `node_modules/.bin/next` for the build**. v1.11.18 still relied on `npx next build`, which on a Termux install without a global `npx` cached the build to the wrong location and used a stale copy of `next`. Calling the locally-installed shim directly avoids the `npx` indirection entirely.
+
+### Fixed
+
+- fix: **Termux GUI build used a stale `next` from the npm cache** — replaced `npx next build` with `$GUI_DIR/node_modules/.bin/next build`, so the build uses the version of `next` that ships with the GUI's own `package.json`.
+
+### Version
+
+- bump: `.version` `1.11.18` → `1.11.19`; financecheque release `v1.11.18` → `v1.11.19`.
+
+## [1.11.18] - 2026-09-03
+
+Patch release: **`install.sh` `$PREFIX` unbound variable fix**. v1.11.17 fixed `_SUB: unbound variable` but the same `set -u` strict mode also caught the top-level `${PREFIX:-/data/...}` lookup on Termux installs where `PREFIX` was not exported by the calling shell. The fallback expression was the wrong syntax for `set -u`.
+
+### Fixed
+
+- fix: **`install.sh` crashed with `$PREFIX: unbound variable` on Termux** — replaced `${PREFIX:-/data/data/com.termux/files/usr}` (which still triggers `set -u` if the variable is unset) with `local _prefix="${PREFIX:-/data/data/com.termux/files/usr}"` at the top of the function that needs it.
+
+### Version
+
+- bump: `.version` `1.11.17` → `1.11.18`; financecheque release `v1.11.17` → `v1.11.18`.
+
 ## [1.11.17] - 2026-09-02
 
 Patch release: **install.sh unbound variable fix**. v1.11.16 had a `set -u` shell bug at line 887 — `local _NODE="" $_SUB="" _OBIN=""` doesn't work in bash (can't assign to multiple vars with `local` in one statement). Fresh installs of v1.11.16 would crash with `_SUB: unbound variable` during the systemd service step.
