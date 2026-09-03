@@ -46,8 +46,13 @@ function personaSuffix(mode?: string, voiceCall?: boolean): string {
 //      engaged — systemd units first, then the LLM stack is booted and
 //      warmed so the reply pipeline (omniroute :20128) actually answers.
 async function engageMainAgent(): Promise<void> {
+  // Wrap each step with a timeout so a single failed call doesn't block chat
+  // forever on devices without a working LLM stack (e.g. Termux lite mode).
   try {
-    const profiles = await switchToProfile("hermes-proxy");
+    const profiles = await Promise.race([
+      switchToProfile("hermes-proxy"),
+      new Promise((_, rej) => setTimeout(() => rej(new Error("profile switch timeout")), 3000)),
+    ]);
     console.log(`[chat] main agent: hermes-proxy=${profiles.hermesProxy?.running}, hermes-local=${profiles.hermesLocal?.running}`);
   } catch (e: any) {
     console.log(`[chat] profile switch skipped: ${e?.message || e}`);
@@ -56,7 +61,10 @@ async function engageMainAgent(): Promise<void> {
     // Cold-start the stack if it is down (stop-to-boot with a warm ping so
     // the first chat reply is not a 30s model-load timeout). Subsequent
     // messages are cheap: warmStack skips the ping once the model is loaded.
-    const gate = await ensureLLMStack();
+    const gate = await Promise.race([
+      ensureLLMStack(),
+      new Promise((_, rej) => setTimeout(() => rej(new Error("llm stack timeout")), 5000)),
+    ]);
     console.log(`[chat] llm stack: ${gate.message || gate.state}`);
   } catch (e: any) {
     console.log(`[chat] llm stack unavailable: ${e?.message || e}`);
@@ -565,8 +573,12 @@ export async function POST(req: NextRequest) {
     // Bring the Main Agent up on demand (stop Support, boot ollama +
     // omniroute, warm the model) so the local stack is actually alive.
     await engageMainAgent();
-    // Query GraphRAG for knowledge context before routing
-    const { context: ragContext } = await queryGraphRAG(msg);
+    // Query GraphRAG for knowledge context before routing (with a short
+    // timeout so a hung GraphRAG backend doesn't block the whole chat)
+    const { context: ragContext } = await Promise.race([
+      queryGraphRAG(msg),
+      new Promise((res) => setTimeout(() => res({ context: "" }), 3000)),
+    ]) as { context: string };
     const localMessages = Array.isArray(body.messages) && body.messages.length > 0
       ? body.messages.map((m: { role?: string; content?: string }) => ({
         role: m.role === "assistant" ? "assistant" : m.role === "system" ? "system" : "user",
