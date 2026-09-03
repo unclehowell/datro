@@ -825,7 +825,11 @@ install_gui() {
   ( cd "$GUI_DIR"
     # Ensure node_modules/.bin is in PATH so npx/next resolves correctly on Termux
     export PATH="$GUI_DIR/node_modules/.bin:$PATH"
-    NODE_OPTIONS="--max-old-space-size=$node_heap" "$NPX_BIN" next build "${build_args[@]}" >> "$GUI_DIR/gui-build.log" 2>&1
+    # Use the local next binary directly to avoid PATH or npx resolution issues
+    # on platforms where `npx` or `node` aren't on the default PATH
+    local NEXT_BIN="$GUI_DIR/node_modules/.bin/next"
+    if [[ ! -x "$NEXT_BIN" ]]; then NEXT_BIN="$NPX_BIN"; fi
+    NODE_OPTIONS="--max-old-space-size=$node_heap" "$NEXT_BIN" build "${build_args[@]}" >> "$GUI_DIR/gui-build.log" 2>&1
   ) || { err "GUI build failed — see $GUI_DIR/gui-build.log"; return 1; }
   if [[ ! -d "$GUI_DIR/.next" ]]; then
     err "GUI build failed (.next missing) — see $GUI_DIR/gui-build.log"

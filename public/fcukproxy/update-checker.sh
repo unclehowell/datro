@@ -741,8 +741,12 @@ ensure_gui_build() {
   local TOTAL_RAM_MB
   TOTAL_RAM_MB=$(awk '/MemTotal/ {printf "%d", $2/1024}' /proc/meminfo 2>/dev/null || echo 4096)
   [[ "$TOTAL_RAM_MB" -le 2048 ]] && NODE_HEAP="384"
+  # Use the local next binary directly to avoid PATH or npx resolution issues
+  # on platforms where `npx` or `node` aren't on the default PATH (e.g. Termux)
+  local NEXT_BIN="$GUI_DIR/node_modules/.bin/next"
+  if [[ ! -x "$NEXT_BIN" ]]; then NEXT_BIN="$NPX_BIN"; fi
   if NODE_OPTIONS="--max-old-space-size=$NODE_HEAP" PATH="$BUILD_PATH" \
-     timeout 600 "$NPX_BIN" next build "${build_args[@]}" 2>>"$LOG_FILE" | tail -5; then
+     timeout 600 "$NEXT_BIN" build "${build_args[@]}" 2>>"$LOG_FILE" | tail -5; then
     find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1 > "$GUI_DIR/.last-build-hash"
     log "GUI built successfully"
   else
