@@ -151,9 +151,11 @@ install_deps() {
     termux-*)
       pkg update -y 2>/dev/null || true
       pkg install -y python curl git cronie rsync 2>/dev/null || true
-      # Enable crond via runit (Termux)
-      if [[ -d "$PREFIX/var/service" ]] && [[ ! -d "$PREFIX/var/service/crond" ]]; then
-        ln -sf "$PREFIX/share/cron/rc" "$PREFIX/var/service/crond" 2>/dev/null || true
+      # Enable crond via runit (Termux). PREFIX is set by the Termux
+      # environment but `set -u` flags it; use ${PREFIX:-} to avoid the crash.
+      local _prefix="${PREFIX:-/data/data/com.termux/files/usr}"
+      if [[ -d "$_prefix/var/service" ]] && [[ ! -d "$_prefix/var/service/crond" ]]; then
+        ln -sf "$_prefix/share/cron/rc" "$_prefix/var/service/crond" 2>/dev/null || true
         # Start crond now if service directory exists
         sv up crond 2>/dev/null || true
       fi
