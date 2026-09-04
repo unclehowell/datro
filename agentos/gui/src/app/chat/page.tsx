@@ -569,10 +569,22 @@ export default function ChatPage() {
   // Voicemails recorded but still processing (hang-up → reply lands)
   const [pendingVms, setPendingVms] = useState<Array<{ id: string; ts: number }>>([]);
   // Voicemail modal: tracks the pending/real ID to show in the overlay
-  const [voicemailModalPendingId, setVoicemailModalPendingId] = useState<string | null>(null);
-  const [voicemailModalRealId, setVoicemailModalRealId] = useState<string | null>(null);
+  const [voicemailModalPendingId, setVoicemailModalPendingId] = useState<string | null>(
+    // v1.11.30: hydrate from localStorage on first render. If the tab
+    // was closed mid-processing, we restore the last known pending ID
+    // and re-poll the server — which has the persisted job file.
+    typeof window !== "undefined" ? (localStorage.getItem("fcuk.vm.pendingId") || null) : null
+  );
+  const [voicemailModalRealId, setVoicemailModalRealId] = useState<string | null>(
+    typeof window !== "undefined" ? (localStorage.getItem("fcuk.vm.realId") || null) : null
+  );
   // Live pipeline status for the voicemail modal (stt → llm → tts → complete)
-  const [vmStatus, setVmStatus] = useState<{ status: string; userText?: string; agentText?: string; error?: string } | null>(null);
+  const [vmStatus, setVmStatus] = useState<{
+    status: string; userText?: string; agentText?: string; error?: string;
+    errorCode?: string; stages?: Record<string, { state: string; durationMs?: number; errorCode?: string }>;
+    events?: Array<{ phase: string; ok: boolean; durationMs?: number; detail?: string; error?: string }>;
+    toolsExecuted?: string[]; currentStage?: string | null;
+  } | null>(null);
 
   // ─── Version state ─────────────────────────────────────
   const [versionInfo, setVersionInfo] = useState<{
@@ -726,6 +738,39 @@ export default function ChatPage() {
     fetchVersion();
     const iv = setInterval(fetchVersion, 60000);
     return () => clearInterval(iv);
+  }, []);
+
+  // ─── Voicemail tab-reload hydration ──────────────────────
+  // v1.11.30: if the user closed the tab while a voicemail was
+  // processing, the backend job is still alive (persisted to
+  // ~/.fcukproxy/voicemail/jobs/). Re-attach to it here so the
+  // processing card is visible again instead of gone.
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const realId = localStorage.getItem("fcuk.vm.realId");
+    const pendingId = localStorage.getItem("fcuk.vm.pendingId");
+    if ((realId || pendingId) && !voicemailModalPendingId && !voicemailModalRealId) {
+      setVoicemailOpen(true);
+      if (pendingId) setVoicemailModalPendingId(pendingId);
+      if (realId) {
+        setVoicemailModalRealId(realId);
+        // One-shot status fetch; the regular poll effect below takes
+        // over once vmStatus is populated.
+        fetch(`/api/voicemail?action=status&id=${realId}`)
+          .then((r) => r.json())
+          .then((sd) => {
+            setVmStatus(sd);
+            if (sd.status === "complete" || sd.status === "error") {
+              localStorage.removeItem("fcuk.vm.realId");
+              localStorage.removeItem("fcuk.vm.pendingId");
+            } else {
+              setVoicemailModalPendingId(null);
+              localStorage.removeItem("fcuk.vm.pendingId");
+            }
+          })
+          .catch(() => {});
+      }
+    }
   }, []);
 
   // ─── Pipeline breadcrumb: sequential ignition ──────────
@@ -962,9 +1007,13 @@ export default function ChatPage() {
   const submitVoicemail = async (blob: Blob) => {
     const pendingId = `vm-pending-${Date.now().toString(36)}`;
     setPendingVms((prev) => [...prev, { id: pendingId, ts: Date.now() }]);
-    setVoicemailOpen(true); // bring the list up so the inline animation is visible
+    setVoicemailOpen(true);
     setVoicemailModalPendingId(pendingId);
     setVoicemailModalRealId(null);
+    // v1.11.30: persist the pending ID so a tab close/reopen can
+    // re-attach to the in-flight server-side job.
+    localStorage.setItem("fcuk.vm.pendingId", pendingId);
+    localStorage.removeItem("fcuk.vm.realId");
     setVmStatus({ status: "queued" });
     try {
       const fd = new FormData();
@@ -973,6 +1022,9 @@ export default function ChatPage() {
       if (!res.ok) throw new Error(String(res.status));
       const data = await res.json();
       if (data.id) {
+        // Swap the placeholder pending key for the real server job ID.
+        setVoicemailModalRealId(data.id);
+        localStorage.setItem("fcuk.vm.realId", data.id);
         const poll = setInterval(async () => {
           try {
             const sr = await fetch(`/api/voicemail?action=status&id=${data.id}`);
@@ -980,9 +1032,15 @@ export default function ChatPage() {
             setVmStatus(sd);
             if (sd.status === "complete" || sd.status === "error") {
               clearInterval(poll);
-              // The finished voicemail replaces the processing card inline
-              // in the list — no modal popup.
+              // v1.11.30: the v1.11.29 path cleared the modal here even
+              // on TTS-fail, so the user lost the visible result.
+              // Now we only clear the pending placeholder; the real ID
+              // stays in vmStatus (and localStorage) so the inline
+              // card shows the final state — text reply + playback bar,
+              // or the error chip with the error code linking to
+              // ERROR-CODES.md — until the user dismisses it.
               setVoicemailModalPendingId(null);
+              localStorage.removeItem("fcuk.vm.pendingId");
               fetchVoicemails();
             }
           } catch {}
@@ -990,10 +1048,14 @@ export default function ChatPage() {
         setTimeout(() => clearInterval(poll), 300_000);
       } else {
         setVoicemailModalPendingId(null);
+        localStorage.removeItem("fcuk.vm.pendingId");
         fetchVoicemails();
       }
     } catch {
       setVmStatus({ status: "error", error: "Could not save voicemail" });
+      // Keep the modal open on submission error so the user sees the
+      // message instead of a vanished card. They can dismiss via the
+      // X button.
     } finally {
       setPendingVms((prev) => prev.filter((p) => p.id !== pendingId));
     }
@@ -1499,6 +1561,19 @@ export default function ChatPage() {
         {/* Spacer */}
         <div className="flex-1" />
 
+        {/* Version badge (v1.11.30) */}
+        {versionInfo && (
+          <span
+            className="text-[9px] font-mono px-1.5 py-0.5 rounded border border-border text-text-muted whitespace-nowrap"
+            title={`Installed: v${versionInfo.local}  |  Latest release: v${versionInfo.latestRelease}`}
+          >
+            v{versionInfo.local}
+            {versionInfo.local !== versionInfo.latestRelease && (
+              <span className="text-accent"> → v{versionInfo.latestRelease}</span>
+            )}
+          </span>
+        )}
+
         {/* Voicemail inbox button — opens the right-side voicemail list.
             Badge shows the count of voicemails that have not been played
             yet. Mirrors the icon the user is used to seeing on phone. */}
@@ -1610,7 +1685,7 @@ export default function ChatPage() {
                           Error code lookup →
                         </a>
                         <button
-                          onClick={() => { setVoicemailModalPendingId(null); setVoicemailModalRealId(null); }}
+                          onClick={() => { setVoicemailModalPendingId(null); setVoicemailModalRealId(null); localStorage.removeItem("fcuk.vm.pendingId"); localStorage.removeItem("fcuk.vm.realId"); setVmStatus(null); }}
                           className="text-[10px] text-text-muted hover:text-text-primary transition-colors"
                         >
                           Dismiss

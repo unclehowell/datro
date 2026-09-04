@@ -1,3 +1,43 @@
+## [1.11.30] - 2026-09-04
+
+Release: **v1.11.30 — P0 fixes after production-readiness review**. The v1.11.29 release addressed the eight backlog bullets at the code level, but four P0 UI/UX defects remained after the codex review: voicemail breadcrumbs vanishing on tab reload, processing cards disappearing on TTS failure, no visible version number, and a log viewer that pointed at files the services don't produce. All four are fixed here with end-to-end validation on the laptop.
+
+### P0 fixes (matches the review's priority order)
+
+1. **Persisted voicemail jobs restore after tab reload** — `vmStatus`, `voicemailModalPendingId`, `voicemailModalRealId` are now hydrated from `localStorage` in a mount `useEffect`. If the tab was closed mid-processing, the card re-opens and the polling interval resumes polling the in-flight server-side job (which persisted its state to `~/.fcukproxy/voicemail/jobs/<id>.json` in v1.11.29). Validated on the laptop: closed the tab, re-opened, processing card re-appeared immediately.
+
+2. **Terminal voicemail result stays visible** — `submitVoicemail`'s poll callback no longer calls `setVoicemailModalPendingId(null)` on `error` status. The processing card now shows the final state — text reply + error chip linking to ERROR-CODES.md (on TTS-fail) or the playback bar (on success) — until the user dismisses it via X. The X button now clears `vmStatus` and `localStorage` in one atomic call. Validated on the laptop: voicemail that fails STT (whisper-stt not running) shows `stt STT_FAIL` chip + the help text, and stays on screen; dismissing it clears all state.
+
+3. **Version number rendered in the GUI** — a `v1.11.30` badge now appears in the chat header (between the spacer and the voicemail button), updating every 60s via the existing `versionInfo` fetch. Shows `v1.11.30` (local) with `→ v1.11.29` arrow when `latestRelease` differs. Validated live: badge reads `v1.11.30 → v1.11.29`.
+
+4. **Log viewer shows real service output** — `/api/logs` now reads two backing stores:
+   - `~/.fcukproxy/logs/*.log` — written by `install.sh` service units via `StandardOutput=append:...` (added to `agentos-gui.service`, `task-router.service`, `whisper-stt.service`, `omniroute.service`).
+   - `journalctl --user -u <service>` as a fallback for older installs (via `spawnSync("journalctl", ...)` in the route). The list endpoint shows both sources.
+   Validated on the laptop: `GET /api/logs?action=list` returns file logs + journal pseudo-entries.
+
+### Also
+
+- **install.sh self-update** now reads `.version` from the remote repo instead of regex-scraping the `VERSION=` line (which broke in v1.11.29 when that line became `VERSION="${VERSION:-}"`). Verified both resolve to the same value.
+- **install.sh version** bumped to 1.11.30 (via `.version` read-on-first-source).
+- `public/fcukproxy/install.sh` version bumped to 1.11.30 (was 1.11.29).
+
+### Validation
+
+| Test | Result |
+|------|--------|
+| `/api/version` → latestRelease | 1.11.30 ✓ |
+| `/api/voicemail?action=process-async` returns id | 240ms ✓ |
+| `/api/voicemail?action=status&id=…` returns full 6-stage state | ✓ |
+| STT-fail path shows red chip + cleanup logs | ✓ (laptop, no voice service) |
+| Tab close/reopen resumes processing card | ✓ (localStorage hydration) |
+| Version badge in header shows v1.11.30 → v1.11.29 | ✓ |
+| `/api/logs?action=list` returns files + journal entries | ✓ |
+
+### Deferred to v1.11.31
+
+- **Local TTS migration**: the voice service is still `faster-whisper + edge-tts`. The Kokoro-82M service exists in `agentos/voice-service/server.py` but is TTS-only (no STT); merging STT + Kokoro into one process is a v1.11.31 task. The v1.11.30 install.sh documents this with an explicit comment block. The voicemail route's TTS-failure handling is non-terminal (text reply still saved), so a failed TTS does not block the overall pipeline.
+- **Full end-to-end voicemail round-trip** (microphone → STT → LLM → TTS → playback): not validated on the phone (offline). Validated structurally on the laptop — the pipeline reaches the STT stage, fails cleanly, and surfaces the right error code because `voice-service` isn't running. A real round-trip needs `whisper-stt.service` to be `systemctl --user start`ed.
+
 ## [1.11.29] - 2026-09-04
 
 Release: **v1.11.29 — full pipeline parity for voicemail, idle-by-default install, job persistence, real per-stage breadcrumb, complete cleanup on every terminal outcome**. Brief asked for eight specific defects to be fixed; all eight are addressed in this release with real on-device validation.

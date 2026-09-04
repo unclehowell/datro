@@ -33,7 +33,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || true)"
 if [[ -z "$VERSION" && -n "$SCRIPT_DIR" && -f "$SCRIPT_DIR/.version" ]]; then
   VERSION="$(cat "$SCRIPT_DIR/.version" | tr -d '[:space:]')"
 fi
-VERSION="${VERSION:-1.11.29}"
+VERSION="${VERSION:-1.11.30}"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -112,12 +112,16 @@ fi
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Self-update check — if a newer install.sh exists, re-run it
-# ═══════════════════════════════════════════════════════════════════════════════
+# v1.11.30: the old logic scraped `VERSION=` from the first 5 lines of
+# the remote script. With the v1.11.29 change that line became
+# `VERSION="${VERSION:-}"` (a template, not a literal), so the scrape
+# returned the wrong value and the self-update never fired. Now we
+# read .version from the remote repo — same source the install uses.
 SELF_UPDATE_SKIP="${SELF_UPDATE_SKIP:-0}"
 if [[ "$SELF_UPDATE_SKIP" != "1" ]]; then
-  REMOTE_SCRIPT=$(curl -sf --max-time 10 "$RAW_BASE/install.sh" 2>/dev/null | head -5 | grep 'VERSION=' | sed 's/VERSION="//;s/".*//' || echo "")
-  if [[ -n "$REMOTE_SCRIPT" && "$REMOTE_SCRIPT" != "$VERSION" ]]; then
-    info "Newer installer available (v$REMOTE_SCRIPT > v$VERSION) — re-running..."
+  REMOTE_VERSION=$(curl -sf --max-time 10 "$RAW_BASE/.version" 2>/dev/null | tr -d '[:space:]' || echo "")
+  if [[ -n "$REMOTE_VERSION" && "$REMOTE_VERSION" != "$VERSION" ]]; then
+    info "Newer installer available (v$REMOTE_VERSION > v$VERSION) — re-running..."
     export SELF_UPDATE_SKIP=1
     exec bash <(curl -sfL "$RAW_BASE/install.sh") "$@"
   fi
@@ -722,6 +726,11 @@ write_service() {
   ok "Service $name created"
 }
 
+# v1.11.30: add StandardOutput/StandardError=append: to each service so
+# the /api/logs route (which reads from ~/.fcukproxy/logs/*.log) shows
+# real service output. systemd defaults to journal-only.
+mkdir -p "$USER_HOME/.fcukproxy/logs"
+
 # ── whisper-stt.service ──
 write_service "whisper-stt.service" "[Unit]
 Description=Local Whisper STT Server (port $VOICE_PORT)
@@ -735,6 +744,8 @@ Environment=WHISPER_PORT=$VOICE_PORT
 Environment=WHISPER_MODEL=tiny
 Restart=on-failure
 RestartSec=5
+StandardOutput=append:$USER_HOME/.fcukproxy/logs/whisper-stt.log
+StandardError=append:$USER_HOME/.fcukproxy/logs/whisper-stt.log
 MemoryMax=$MEM_WHISPER_MAX
 MemoryHigh=$MEM_WHISPER_HIGH
 OOMScoreAdjust=100
@@ -787,6 +798,8 @@ Environment=NODE_ENV=production
 Environment=PORT=$TASK_ROUTER_PORT
 Restart=on-failure
 RestartSec=5
+StandardOutput=append:$USER_HOME/.fcukproxy/logs/task-router.log
+StandardError=append:$USER_HOME/.fcukproxy/logs/task-router.log
 MemoryMax=$MEM_OMNIRUTE_MAX
 MemoryHigh=$MEM_OMNIRUTE_HIGH
 
@@ -797,6 +810,11 @@ else
 fi
 
 # ── agentos-gui.service ──
+# v1.11.30: redirect stdout/stderr to the log files that /api/logs
+# reads, so the in-GUI log viewer shows real service output. systemd
+# defaults to journal-only, which the API can't access.
+LOG_DIR="$USER_HOME/.fcukproxy/logs"
+mkdir -p "$LOG_DIR"
 write_service "agentos-gui.service" "[Unit]
 Description=AgentOS GUI (port $GUI_PORT)
 After=network-online.target
@@ -815,6 +833,8 @@ EnvironmentFile=$USER_HOME/.fcukproxy/.env
 ExecStart=$GUI_DIR/node_modules/.bin/next start -p $GUI_PORT -H 0.0.0.0
 Restart=on-failure
 RestartSec=60
+StandardOutput=append:$LOG_DIR/agentos-gui.log
+StandardError=append:$LOG_DIR/agentos-gui.log
 MemoryMax=$MEM_AGENTOS_MAX
 MemoryHigh=$MEM_AGENTOS_HIGH
 OOMScoreAdjust=$MEM_AGENTOS_OOM
@@ -841,6 +861,8 @@ Environment=PROMPT_CACHE_MAX=256
 Environment=PROMPT_CACHE_TTL_S=1800
 Restart=on-failure
 RestartSec=5
+StandardOutput=append:$USER_HOME/.fcukproxy/logs/omniroute.log
+StandardError=append:$USER_HOME/.fcukproxy/logs/omniroute.log
 MemoryMax=$MEM_OMNIRUTE_MAX
 MemoryHigh=$MEM_OMNIRUTE_HIGH
 
