@@ -1707,7 +1707,7 @@ export default function ChatPage() {
                   </div>
                   <div className="flex items-center gap-2">
                     <button
-                      onClick={() => { setVoicemailModalRealId(vm.id); setVoicemailOpen(false); }}
+                      onClick={() => { setVoicemailModalRealId(vm.id); }}
                       className="flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 rounded bg-accent/20 border border-accent/30 text-accent text-xs hover:bg-accent/30 transition-colors"
                     >
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
@@ -1877,8 +1877,57 @@ export default function ChatPage() {
                         <button onClick={() => executeTool(tc.tool, tc.params, i, j)} className="text-xs bg-accent/20 text-accent px-2 py-1 rounded hover:bg-accent/30 transition-colors">Execute</button>
                       )}
                     </div>
-                  ))}
-                </div>
+              ))}
+
+              {/* v1.11.31: Voicemail playback + pipeline breadcrumb renders
+                  INLINE inside the voicemail list panel instead of as a
+                  separate full-screen overlay. Tapping "Play" on a voicemail
+                  shows the playback bar + pipeline breadcrumb directly in
+                  the panel. */}
+              {voicemailModalRealId && voicemailModalRealId !== "__voicemail_card__" && (() => {
+                const vm = voicemails.find((v) => v.id === voicemailModalRealId);
+                if (!vm) return null;
+                return (
+                  <div key={vm.id} className="p-3 rounded-lg border border-accent/30 bg-accent/5">
+                    <div className="text-[10px] text-text-muted mb-2">Voicemail reply</div>
+                    {/* Full pipeline breadcrumb in lieu of voicemail reply */}
+                    <div className="flex items-center gap-0 text-[10px] font-mono justify-center flex-wrap mb-2">
+                      {breadcrumbData.map((seg, i) => {
+                        const colors = STATUS_COLORS[seg.status];
+                        return (
+                          <span key={seg.id} className="flex items-center">
+                            {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
+                            <span
+                              className="px-1.5 py-0.5 rounded whitespace-nowrap"
+                              style={{
+                                color: colors.text,
+                                backgroundColor: colors.bg,
+                                border: `1px solid ${colors.border}`,
+                                opacity: seg.status === "off" ? 0.35 : 1,
+                              }}
+                              title={seg.label}
+                            >
+                              {seg.icon} {seg.label}
+                            </span>
+                          </span>
+                        );
+                      })}
+                    </div>
+                    {vmStatus?.userText && (
+                      <div className="text-[11px] text-text-muted border-l-2 border-border pl-2 mb-2">{vmStatus.userText}</div>
+                    )}
+                    {vmStatus?.agentText && (
+                      <div className="text-xs text-text-primary whitespace-pre-wrap border-l-2 border-accent/40 pl-2 mb-2">{vmStatus.agentText}</div>
+                    )}
+                    <PlaybackBar
+                      vmId={voicemailModalRealId}
+                      onDelete={async () => { await deleteVoicemail(voicemailModalRealId); setVoicemailModalRealId(null); }}
+                      onClose={() => { setVoicemailModalRealId(null); }}
+                    />
+                  </div>
+                );
+              })()}
+            </div>
               )}
             </div>
           </div>
@@ -1886,52 +1935,7 @@ export default function ChatPage() {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* ─── Voicemail Replay Modal (only when the user taps Play/Replay —
-          the processing animation lives inline in the voicemail list) ─── */}
-      {voicemailModalRealId && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm" onClick={() => setVoicemailModalRealId(null)}>
-          <div className="w-full max-w-md mx-4" onClick={(e) => e.stopPropagation()}>
-            <div className="bg-surface border border-border rounded-xl p-4 space-y-3">
-              {/* Full pipeline breadcrumb in lieu of voicemail reply */}
-              <div className="flex items-center gap-0 text-[10px] font-mono justify-center flex-wrap">
-                {breadcrumbData.map((seg, i) => {
-                  const colors = STATUS_COLORS[seg.status];
-                  return (
-                    <span key={seg.id} className="flex items-center">
-                      {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
-                      <span
-                        className="px-1.5 py-0.5 rounded whitespace-nowrap"
-                        style={{
-                          color: colors.text,
-                          backgroundColor: colors.bg,
-                          border: `1px solid ${colors.border}`,
-                          opacity: seg.status === "off" ? 0.35 : 1,
-                        }}
-                        title={seg.label}
-                      >
-                        {seg.icon} {seg.label}
-                      </span>
-                    </span>
-                  );
-                })}
-              </div>
-              {vmStatus?.userText && (
-                <div className="text-[11px] text-text-muted border-l-2 border-border pl-2">{vmStatus.userText}</div>
-              )}
-              {vmStatus?.agentText && (
-                <div className="text-xs text-text-primary whitespace-pre-wrap border-l-2 border-accent/40 pl-2">{vmStatus.agentText}</div>
-              )}
-              <PlaybackBar
-                vmId={voicemailModalRealId}
-                onDelete={() => { setVoicemailModalRealId(null); }}
-                onClose={() => { setVoicemailModalRealId(null); }}
-              />
-            </div>
-          </div>
-        </div>
-      )}
-
-      {/* ─── Input Bar ─── */}
+      {/* ─── Input Bar ─── */}}
       <div className="border-t border-border px-3 md:px-6 py-3 md:py-4 shrink-0 relative z-10 bg-surface/80 backdrop-blur-sm">
         {/* Mobile: two rows. Desktop: one row (use md:flex-row override). */}
         <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
