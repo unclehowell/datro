@@ -21,6 +21,7 @@ import fs from "fs";
 import { getRenderJob } from "@/runtime/tools/remotion";
 import { queryGraphRAG } from "@/lib/graphrag";
 import { ensureLLMStack, beginLLMRequest, endLLMRequest, releaseAfterAnswer, userServiceActive, userService } from "@/lib/llm-gate";
+import { getAgentLoop as sharedGetAgentLoop } from "@/lib/agent-loop";
 
 const execAsync = promisify(exec);
 const execFileAsync = promisify(execFile);
@@ -385,22 +386,10 @@ function generateJobId(): string {
   return "v_" + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 }
 
-let agentLoop: AgentLoop | null = null;
-
-function getAgentLoop(): AgentLoop {
-  if (!agentLoop) {
-    agentLoop = new AgentLoop({
-      maxIterations: 200,
-      maxToolRounds: 20,
-      checkpointEvery: 10,
-      useLLM: true,
-      logLevel: "info",
-      enableSubagents: true,
-      maxSubagentDepth: 3,
-    });
-  }
-  return agentLoop;
-}
+// v1.11.29: getAgentLoop is now in lib/agent-loop.ts so the voicemail
+// route can use the same singleton. Kept this alias so the rest of
+// the file doesn't have to change.
+const getAgentLoop = sharedGetAgentLoop;
 
 // ─── Video template names for redirect detection ───
 const AI_VIDEO_TEMPLATES = ["dance", "nature", "city", "space", "fire", "snow"];

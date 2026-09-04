@@ -25,7 +25,15 @@ set -euo pipefail
 # Idempotent: safe to re-run on non-fresh installs.
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.11.1"
+VERSION="${VERSION:-}"
+# Resolve SCRIPT_DIR early so we can read .version from the script's own tree.
+# The installer is shipped as a single file (root) and a copy under
+# public/fcukproxy/install.sh; both need to know which release they belong to.
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || true)"
+if [[ -z "$VERSION" && -n "$SCRIPT_DIR" && -f "$SCRIPT_DIR/.version" ]]; then
+  VERSION="$(cat "$SCRIPT_DIR/.version" | tr -d '[:space:]')"
+fi
+VERSION="${VERSION:-1.11.29}"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -304,7 +312,24 @@ install_voice_deps
 # Install voice service scripts
 mkdir -p "$WHISPER_DIR/models"
 
-# Download server.py
+# v1.11.29: NOTE on the local-TTS roadmap.
+#
+# The "right" long-term design is a unified local voice service that
+# does STT (faster-whisper) AND TTS (Kokoro-82M ONNX), with no cloud
+# dependency. The Kokoro TTS service is already in the source tree
+# at agentos/voice-service/server.py, and the user spec calls out
+# the current edge-tts dependency as a defect.
+#
+# The blocker is that the GUI currently talks to ONE port (3101) for
+# both /v1/audio/transcriptions and /tts. The Kokoro service is
+# TTS-only; a naive swap breaks STT. Shipping a working combined
+# service in v1.11.29 is too large for one release; the
+# v1.11.30 backlog item is to merge faster-whisper STT and Kokoro
+# TTS into one process so the install can drop edge-tts entirely.
+#
+# Until then, keep using the working combined faster-whisper +
+# edge-tts service. The CHANGELOG for v1.11.29 notes this explicitly
+# and tracks the migration.
 info "Installing voice service scripts..."
 curl -sL "$RAW_BASE/public/fcukproxy/voice-service/server.py" -o "$WHISPER_DIR/server.py" 2>/dev/null || {
   # Fallback: use embedded server.py if download fails
@@ -737,6 +762,40 @@ OOMScoreAdjust=100
 [Install]
 WantedBy=default.target"
 
+# ── task-router.service ──
+# v1.11.29: was missing entirely — the previous install.sh never wrote
+# this unit, so the only way task-router ran was from a hand-spawned
+# process whose cwd could be deleted (the failure mode the laptop hit
+# on 2026-09-03: PID 210383 still alive but its working dir was
+# unlinked, leaving the chat path in a half-up state). The GUI now
+# starts task-router on demand (startTaskRouter() in chat/route.ts),
+# but we also write a service file so a user can `systemctl --user
+# start task-router` manually for long-lived agent sessions.
+TASK_ROUTER_DIR="$USER_HOME/.fcukproxy/omniroute"
+TASK_ROUTER_PORT="${TASK_ROUTER_PORT:-3200}"
+if [[ -f "$TASK_ROUTER_DIR/task-router.mjs" ]]; then
+  write_service "task-router.service" "[Unit]
+Description=AgentOS Task Router (port $TASK_ROUTER_PORT) — wakes on demand for agentic tasks
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=$TASK_ROUTER_DIR
+ExecStart=$NODE_BIN $TASK_ROUTER_DIR/task-router.mjs
+Environment=NODE_ENV=production
+Environment=PORT=$TASK_ROUTER_PORT
+Restart=on-failure
+RestartSec=5
+MemoryMax=$MEM_OMNIRUTE_MAX
+MemoryHigh=$MEM_OMNIRUTE_HIGH
+
+[Install]
+WantedBy=default.target"
+else
+  warn "task-router.mjs not found at $TASK_ROUTER_DIR — service file not written (will be re-attempted on next install once the runtime is deployed)"
+fi
+
 # ── agentos-gui.service ──
 write_service "agentos-gui.service" "[Unit]
 Description=AgentOS GUI (port $GUI_PORT)
@@ -863,12 +922,20 @@ fi
 info "Reloading systemd..."
 systemctl --user daemon-reload 2>/dev/null || true
 
-for svc in whisper-stt whisper-realtime agentos-gui omniroute openclaw-gateway graphrag fcukproxy-child; do
+# v1.11.29 idle-by-default: only the always-on GUI service and the
+# update-checker are enabled at install time. whisper-stt, omniroute,
+# openclaw-gateway, and graphrag are installed as artifacts but their
+# .service files are not enabled — they wake on demand when the first
+# voicemail / chat / agent task needs them (see llm-gate.ts and
+# startTaskRouter() in the GUI route handler). The previous behavior of
+# enabling everything at install violated idle-by-default and left
+# expensive dependencies running before the user even asked.
+for svc in agentos-gui fcukproxy-child fcuk-update-checker; do
   if [[ -f "$SYSTEMD_DIR/$svc.service" ]]; then
     systemctl --user enable "$svc.service" 2>/dev/null || true
   fi
 done
-ok "Services configured"
+ok "Services configured (idle-by-default: whisper-stt/omniroute/openclaw-gateway/graphrag are installed but not enabled)"
 
 # ═══════════════════════════════════════════════════════════════════════════════
 # Step 10: Kernel memory tuning
@@ -913,7 +980,10 @@ done
 step 11 "Starting services"
 
 # Start in dependency order
-for svc in whisper-stt omniroute openclaw-gateway agentos-gui graphrag; do
+# v1.11.29 idle-by-default: only the always-on services start here.
+# Gated services (whisper-stt, omniroute, openclaw-gateway, graphrag)
+# come up on demand; we don't pay their startup cost and RAM at boot.
+for svc in agentos-gui fcukproxy-child fcuk-update-checker; do
   if [[ -f "$SYSTEMD_DIR/$svc.service" ]]; then
     info "Starting $svc..."
     systemctl --user start "$svc.service" 2>/dev/null || true
@@ -937,12 +1007,28 @@ check_port() {
     ERRORS=$((ERRORS + 1))
   fi
 }
+# Like check_port, but a missing service is INFO, not WARN. Used for
+# gated/idle services that intentionally don't start at install time.
+check_port_optional() {
+  local port="$1" name="$2"
+  if curl -s --max-time 3 "http://localhost:$port/" >/dev/null 2>&1 || \
+     curl -s --max-time 3 "http://localhost:$port/health" >/dev/null 2>&1 || \
+     curl -s --max-time 3 "http://localhost:$port/api/hermes" >/dev/null 2>&1; then
+    ok "$name (port $port) responding (already running)"
+  else
+    info "$name (port $port) idle — will start on first use"
+  fi
+}
 
-check_port "$VOICE_PORT" "Voice STT/TTS"
 check_port "$GUI_PORT" "AgentOS GUI"
-check_port "18789" "OpenClaw Gateway"
+# v1.11.29: voice and openclaw-gateway are gated (idle-by-default) and
+# will not be listening right after install. Don't count their absence
+# as an install error — the user gets them on first use.
+check_port_optional "$VOICE_PORT" "Voice STT/TTS (gated)"
+check_port_optional "18789" "OpenClaw Gateway (gated)"
 
-# Check ollama
+# Check ollama — ollama is a system service (not gated by us) so its
+# absence IS a hard error.
 if curl -s --max-time 3 "http://localhost:$OLLAMA_PORT/health" >/dev/null 2>&1; then
   ok "Ollama (port $OLLAMA_PORT) responding"
 else

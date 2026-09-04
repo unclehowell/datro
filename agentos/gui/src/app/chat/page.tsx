@@ -1558,11 +1558,27 @@ export default function ChatPage() {
               {voicemailModalPendingId && (() => {
                 const status = vmStatus?.status || "queued";
                 const errorCode = (vmStatus as any)?.errorCode as string | undefined;
-                const stages = [
-                  { id: "stt", label: "stt", state: (status === "stt" ? "active" : (status === "llm" || status === "tts" || status === "complete" ? "done" : status === "error" && errorCode?.startsWith("STT") ? "error" : "off")) as StageState },
-                  { id: "llm", label: "think", state: (status === "llm" ? "active" : (status === "tts" || status === "complete" ? "done" : status === "error" && (errorCode?.startsWith("LLM") || errorCode?.startsWith("OLLAMA") || errorCode === "E_NO_PROVIDER") ? "error" : "off")) as StageState },
-                  { id: "tts", label: "tts", state: (status === "tts" ? "active" : (status === "complete" ? "done" : status === "error" && (errorCode?.startsWith("TTS") || errorCode?.startsWith("VOICE")) ? "error" : "off")) as StageState },
-                ];
+                // v1.11.29: prefer the route's real per-stage state map
+                // (emitted by lib/pipeline.ts's runPrompt). Fall back to
+                // the legacy 3-stage approximation only if the server
+                // returned a job without the new `stages` field.
+                const serverStages = (vmStatus as any)?.stages as
+                  | Record<string, { state: StageState; durationMs?: number; errorCode?: string }>
+                  | undefined;
+                const stages: { id: string; label: string; state: StageState }[] = serverStages
+                  ? [
+                      { id: "stt", label: "stt", state: serverStages.stt?.state || "off" },
+                      { id: "router", label: "router", state: serverStages.router?.state || "off" },
+                      { id: "hermes", label: "hermes", state: serverStages.hermes?.state || "off" },
+                      { id: "ollama", label: "ollama", state: serverStages.ollama?.state || "off" },
+                      { id: "tools", label: "tools", state: serverStages.tools?.state || "off" },
+                      { id: "tts", label: "tts", state: serverStages.tts?.state || "off" },
+                    ]
+                  : [
+                      { id: "stt", label: "stt", state: (status === "stt" ? "active" : (status === "llm" || status === "tts" || status === "complete" ? "done" : status === "error" && errorCode?.startsWith("STT") ? "error" : "off")) as StageState },
+                      { id: "llm", label: "think", state: (status === "llm" ? "active" : (status === "tts" || status === "complete" ? "done" : status === "error" && (errorCode?.startsWith("LLM") || errorCode?.startsWith("OLLAMA") || errorCode === "E_NO_PROVIDER") ? "error" : "off")) as StageState },
+                      { id: "tts", label: "tts", state: (status === "tts" ? "active" : (status === "complete" ? "done" : status === "error" && (errorCode?.startsWith("TTS") || errorCode?.startsWith("VOICE")) ? "error" : "off")) as StageState },
+                    ];
                 const liveStatus =
                   status === "error" ? "error"
                   : status === "complete" ? "complete"
