@@ -1,3 +1,34 @@
+## [1.11.31] - 2026-09-04
+
+Release: **v1.11.31 — install.sh hermes deployment + voicemail replay integration**. The v1.11.30 release fixed the breadcrumb, version display, and log viewer — but two gaps were found during live testing: the `hermes-local`/`hermes-proxy` systemd units referenced scripts (`hermes-support.sh`, `hermes-main.sh`) under `~/.fcukproxy/hermes/` that `install.sh` never deployed, leaving hermes in a `203/EXEC` failure loop; and the voicemail replay (processing breadcrumb + playback bar) rendered as a separate full-screen overlay instead of inside the voicemail list panel. Both are fixed here.
+
+### Fixes
+
+1. **install.sh deploys hermes scripts** — new Step 5.5 copies `hermes-main.sh` and `hermes-support.sh` from the repo's `agentos/hermes/` (or GitHub `RAW_BASE`) into `~/.fcukproxy/hermes/`, `chmod +x`, and verifies presence. The systemd units already referenced those paths; they just had no files to execute. Verified locally: after deploy, `systemctl --user start hermes-local` transitions from `203/EXEC` to `active (running)`.
+2. **Voicemail replay renders inline** — the `Voicemail Replay Modal` (a `fixed inset-0 z-50` overlay with the pipeline breadcrumb + playback bar) is now rendered inline inside the voicemail list panel, after the voicemail card list. Tapping "Play" on a saved voicemail expands the playback card directly in the panel instead of popping a separate modal. The "Play" button no longer calls `setVoicemailOpen(false)` (which would close the voicemail panel while the replay modal opened over it).
+3. **Structured logging** (`lib/logger.ts`) — already added in v1.11.30 as part of the voicemail route changes; now confirmed working: `GET /api/logs?action=read&file=agentos-gui.log` returns the JSON log file from `~/.fcukproxy/logs/agentos-gui.log` with entries like `{"t":"…","scope":"voicemail","message":"job vm-… started","id":"vm-…"}`.
+
+### Backlog
+
+- Real on-device voicemail round-trip (whisper-stt + warm ollama) — not yet validated on phone (offline)
+- Kokoro-82M local TTS migration (merge STT + TTS into single process)
+- OmniRoute proxy deploy on the laptop (currently working but model load is slow under memory pressure on this 3.7GB machine)
+
+## [1.11.31] - 2026-09-04
+
+Release: **v1.11.31 — install.sh hermes deployment + voicemail replay integration**. The v1.11.30 release fixed the breadcrumb, version display, and log viewer — but two gaps were found during live testing: the `hermes-local`/`hermes-proxy` systemd units referenced scripts (`hermes-support.sh`, `hermes-main.sh`) under `~/.fcukproxy/hermes/` that `install.sh` never deployed, leaving hermes in a `203/EXEC` failure loop; and the voicemail replay (processing breadcrumb + playback bar) rendered as a separate full-screen overlay instead of inside the voicemail list panel. Both are fixed here.
+
+### Fixes
+
+1. **install.sh deploys hermes scripts** — new Step 5.5 copies `hermes-main.sh` and `hermes-support.sh` from the repo's `agentos/hermes/` (or GitHub `RAW_BASE`) into `~/.fcukproxy/hermes/`, `chmod +x`, and verifies presence. The systemd units already referenced those paths; they just had no files to execute. Verified locally: after deploy, `systemctl --user start hermes-local` transitions from `203/EXEC` to `active (running)`.
+2. **Voicemail replay renders inline** — the `Voicemail Replay Modal` (a `fixed inset-0 z-50` overlay with the pipeline breadcrumb + playback bar) is now rendered inline inside the voicemail list panel, after the voicemail card list. Tapping "Play" on a saved voicemail expands the playback card directly in the panel instead of popping a separate modal. The "Play" button no longer calls `setVoicemailOpen(false)` (which would close the voicemail panel while the replay modal opened over it).
+3. **Structured logging** (`lib/logger.ts`) — added in v1.11.30; confirmed working: `GET /api/logs?action=read&file=agentos-gui.log` returns JSON log lines from `~/.fcukproxy/logs/agentos-gui.log`.
+
+### Backlog
+
+- Real on-device voicemail round-trip (whisper-stt + warm ollama) — not yet validated on phone (offline)
+- OmniRoute proxy deploy on the laptop (model load is slow under memory pressure on this 3.7GB machine)
+
 ## [1.11.30] - 2026-09-04
 
 Release: **v1.11.30 — P0 fixes after production-readiness review**. The v1.11.29 release addressed the eight backlog bullets at the code level, but four P0 UI/UX defects remained after the codex review: voicemail breadcrumbs vanishing on tab reload, processing cards disappearing on TTS failure, no visible version number, and a log viewer that pointed at files the services don't produce. All four are fixed here with end-to-end validation on the laptop.

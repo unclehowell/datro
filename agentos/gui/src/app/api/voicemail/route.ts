@@ -66,6 +66,7 @@ import {
 import { join } from "path";
 import { homedir } from "os";
 import { runPrompt, PipelineEvent } from "@/lib/pipeline";
+import { log as plog } from "@/lib/logger";
 import {
   getHermesState,
   stopProfile,
@@ -346,6 +347,7 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
   };
   state.stages.stt = { state: "active", startedAt: now() };
   persistJob(state);
+  plog("voicemail", `job ${state.id} started`, { id: state.id });
 
   const resources: JobResources = {
     hermesStartedHere: false,
@@ -360,10 +362,11 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
     state.status = "error";
     state.error = message;
     state.errorCode = errorCode;
-    state.finishedAt = now();
-    state.currentStage = null;
-    persistJob(state);
-  };
+     state.finishedAt = now();
+     state.currentStage = null;
+     persistJob(state);
++    plog("voicemail", `job ${state.id} failed at ${stage}: ${message}`, { id: state.id, stage, errorCode });
+   };
 
   // The single try/finally that guarantees cleanup. v1.11.29 fix:
   // the previous code had early returns scattered through the
@@ -491,10 +494,11 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
     saveIndex(records);
 
     state.status = "complete";
-    state.finishedAt = now();
-    state.currentStage = null;
-    persistJob(state);
-  } catch (e: any) {
+       state.finishedAt = now();
+       state.currentStage = null;
+       persistJob(state);
++      plog("voicemail", `job ${state.id} complete`, { id: state.id, durationMs: state.finishedAt - state.startedAt });
+   } catch (e: any) {
     // Catch-all for any unexpected exception (e.g. processVoicemailAsync
     // itself crashes). The stage we were in gets the error marker.
     const stage = state.currentStage || "ollama";
@@ -587,9 +591,10 @@ function recoverStaleJobs(): void {
           s.stages[s.currentStage] = { ...s.stages[s.currentStage], state: "error", errorCode: "PIPELINE_RESTART" };
         }
         persistJob(s);
-      }
-    } catch {}
-  }
+        plog("voicemail", `job ${s.id} reaped as stale on boot (was ${s.currentStage || "unknown"})`, { id: s.id, ageMs });
+       }
+     } catch {}
+   }
 }
 
 // Run recovery once per process, lazily on first request.

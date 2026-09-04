@@ -573,7 +573,31 @@ else
 fi
 
 # ═══════════════════════════════════════════════════════════════════════════════
-# Step 6: AgentOS GUI (Next.js web app)
+# Step 5.5: Hermes support scripts
+# ═══════════════════════════════════════════════════════════════════════════════
+step 5.5 "Hermes support scripts"
+
+HERMES_DIR="$USER_HOME/.fcukproxy/hermes"
+mkdir -p "$HERMES_DIR"
+
+for script in hermes-main.sh hermes-support.sh hermes-support.mjs; do
+  if [[ -f "$HERMES_DIR/$script" ]]; then
+    ok "$script already installed"
+  else
+    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+    if [[ -f "$SCRIPT_DIR/agentos/hermes/$script" ]]; then
+      cp "$SCRIPT_DIR/agentos/hermes/$script" "$HERMES_DIR/$script"
+    else
+      curl -sL "$RAW_BASE/agentos/hermes/$script" -o "$HERMES_DIR/$script" 2>/dev/null || true
+    fi
+    if [[ -f "$HERMES_DIR/$script" ]]; then
+      chmod +x "$HERMES_DIR/$script"
+      ok "$script installed"
+    else
+      warn "$script could not be installed"
+    fi
+  fi
+done
 # ═══════════════════════════════════════════════════════════════════════════════
 step 6 "AgentOS GUI (port $GUI_PORT)"
 
