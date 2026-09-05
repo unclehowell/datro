@@ -433,7 +433,7 @@ function VmProcessingBreadcrumb({ stages, failedCode }: { stages: { id: string; 
 }
 
 // ─── PlaybackBar: music-style voicemail reply player ───────
-function PlaybackBar({ vmId, onDelete, onClose }: { vmId: string; onDelete: () => void; onClose: () => void }) {
+function PlaybackBar({ vmId, audioPath, onDelete, onClose }: { vmId: string; audioPath?: string; onDelete: () => void; onClose: () => void }) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
@@ -442,6 +442,7 @@ function PlaybackBar({ vmId, onDelete, onClose }: { vmId: string; onDelete: () =
   const tickRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
+    if (!audioPath) return;
     const audio = new Audio(`/api/voicemail?action=audio&id=${vmId}`);
     audioRef.current = audio;
     audio.addEventListener("loadedmetadata", () => setDuration(audio.duration));
@@ -451,11 +452,13 @@ function PlaybackBar({ vmId, onDelete, onClose }: { vmId: string; onDelete: () =
       tickRef.current = setInterval(() => { if (audioRef.current) setProgress(audioRef.current.currentTime); }, 100);
     });
     audio.addEventListener("pause", () => setPlaying(false));
-    fetch("/api/voicemail?action=update", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id: vmId, played: true }),
-    });
+    if (audioPath) {
+      fetch("/api/voicemail?action=update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: vmId, played: true }),
+      });
+    }
     return () => {
       if (tickRef.current) clearInterval(tickRef.current);
       audio.pause();
@@ -477,6 +480,21 @@ function PlaybackBar({ vmId, onDelete, onClose }: { vmId: string; onDelete: () =
   };
   const fmt = (s: number) => `${Math.floor(s / 60)}:${Math.floor(s % 60).toString().padStart(2, "0")}`;
   const pct = duration > 0 ? (progress / duration) * 100 : 0;
+
+  if (!audioPath) {
+    return (
+      <div className="bg-surface border border-border rounded-xl p-4">
+        <div className="text-xs text-text-muted mb-3">No audio available — TTS failed or was skipped</div>
+        <div className="flex items-center justify-between pt-3 border-t border-border">
+          <button onClick={onDelete} className="text-xs text-text-muted hover:text-red-400 transition-colors flex items-center gap-1">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+            Delete
+          </button>
+          <button onClick={onClose} className="text-xs text-text-muted hover:text-text-primary transition-colors">Close</button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="bg-surface border border-border rounded-xl p-4">
@@ -1720,9 +1738,58 @@ export default function ChatPage() {
                       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
                     </button>
                   </div>
-                  <div className="text-[10px] text-text-muted mt-2">{new Date(vm.timestamp).toLocaleString()}</div>
-                </div>
-              ))}
+                <div className="text-[10px] text-text-muted mt-2">{new Date(vm.timestamp).toLocaleString()}</div>
+                 </div>
+               ))}
+
+              {/* v1.11.32: Voicemail playback renders INLINE inside the voicemail
+                  list panel instead of as a separate full-screen overlay.
+                  Tapping "Play" on a voicemail shows the breadcrumb + PlaybackBar
+                  directly in the panel. */}
+              {voicemailModalRealId && (() => {
+                const vm = voicemails.find((v) => v.id === voicemailModalRealId);
+                if (!vm) return null;
+                return (
+                  <div key={vm.id} className="p-3 rounded-lg border border-accent/30 bg-accent/5">
+                    <div className="text-[10px] text-text-muted mb-2">Voicemail reply</div>
+                    {/* Full pipeline breadcrumb (stt → llm → tts → complete) */}
+                    <div className="flex items-center gap-0 text-[10px] font-mono justify-center flex-wrap mb-2">
+                      {breadcrumbData.map((seg, i) => {
+                        const colors = STATUS_COLORS[seg.status];
+                        return (
+                          <span key={seg.id} className="flex items-center">
+                            {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
+                            <span
+                              className="px-1.5 py-0.5 rounded whitespace-nowrap"
+                              style={{
+                                color: colors.text,
+                                backgroundColor: colors.bg,
+                                border: `1px solid ${colors.border}`,
+                                opacity: seg.status === "off" ? 0.35 : 1,
+                              }}
+                              title={seg.label}
+                            >
+                              {seg.icon} {seg.label}
+                            </span>
+                          </span>
+                        );
+                      })}
+                    </div>
+                    {vmStatus?.userText && (
+                      <div className="text-[11px] text-text-muted border-l-2 border-border pl-2 mb-2">{vmStatus.userText}</div>
+                    )}
+                    {vmStatus?.agentText && (
+                      <div className="text-xs text-text-primary whitespace-pre-wrap border-l-2 border-accent/40 pl-2 mb-2">{vmStatus.agentText}</div>
+                    )}
+                    <PlaybackBar
+                      vmId={voicemailModalRealId}
+                      audioPath={vm.audioPath || ""}
+                      onDelete={() => { deleteVoicemail(voicemailModalRealId).then(() => setVoicemailModalRealId(null)); }}
+                      onClose={() => { setVoicemailModalRealId(null); }}
+                    />
+                  </div>
+                );
+              })()}
             </div>
           </div>
         </div>
@@ -1804,29 +1871,29 @@ export default function ChatPage() {
                             lights up each stage as the pipeline advances so the
                             user sees which dependency is currently handling the
                             request. Replaces the old flat "thinking…" string. */}
-                        <div className="flex items-center gap-0 text-[10px] font-mono flex-wrap">
-                          {breadcrumbData.map((seg, j) => {
-                            const colors = STATUS_COLORS[seg.status];
-                            return (
-                              <span key={seg.id} className="flex items-center">
-                                {j > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
-                                <span
-                                  className="px-1.5 py-0.5 rounded whitespace-nowrap transition-all"
-                                  style={{
-                                    color: colors.text,
-                                    backgroundColor: colors.bg,
-                                    border: `1px solid ${colors.border}`,
-                                    opacity: seg.status === "off" ? 0.35 : 1,
-                                    boxShadow: seg.status !== "off" ? colors.glow : "none",
-                                  }}
-                                  title={seg.label}
-                                >
-                                  {seg.icon} {seg.label}
+                      <div className="flex items-center gap-0 text-[10px] font-mono flex-wrap">
+                            {breadcrumbData.map((seg, j) => {
+                              const colors = STATUS_COLORS[seg.status];
+                              return (
+                                <span key={seg.id} className="flex items-center">
+                                  {j > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
+                                  <span
+                                    className="px-1.5 py-0.5 rounded whitespace-nowrap transition-all"
+                                    style={{
+                                      color: colors.text,
+                                      backgroundColor: colors.bg,
+                                      border: `1px solid ${colors.border}`,
+                                      opacity: seg.status === "off" ? 0.35 : 1,
+                                      boxShadow: seg.status !== "off" ? colors.glow : "none",
+                                    }}
+                                    title={seg.label}
+                                  >
+                                    {seg.icon} {seg.label}
+                                  </span>
                                 </span>
-                              </span>
-                            );
-                          })}
-                        </div>
+                              );
+                            })}
+                          </div>
                         <div className="text-text-muted animate-pulse text-xs">thinking…</div>
                       </div>
                     )
@@ -1856,10 +1923,9 @@ export default function ChatPage() {
                       <a href={`/api/video/${videoMatch[1]}`} download className="inline-flex items-center gap-2 px-3 py-2 rounded-lg border border-zinc-600/30 bg-zinc-800/30 text-zinc-300 text-sm hover:bg-zinc-700/30 transition-colors">
                         <span>&#8681;</span><span>Download</span>
                       </a>
-    </div>
-  );
-}
-
+                    </div>
+                  );
+                }
                 return null;
               })()}
 
@@ -1877,65 +1943,16 @@ export default function ChatPage() {
                         <button onClick={() => executeTool(tc.tool, tc.params, i, j)} className="text-xs bg-accent/20 text-accent px-2 py-1 rounded hover:bg-accent/30 transition-colors">Execute</button>
                       )}
                     </div>
-              ))}
-
-              {/* v1.11.31: Voicemail playback + pipeline breadcrumb renders
-                  INLINE inside the voicemail list panel instead of as a
-                  separate full-screen overlay. Tapping "Play" on a voicemail
-                  shows the playback bar + pipeline breadcrumb directly in
-                  the panel. */}
-              {voicemailModalRealId && voicemailModalRealId !== "__voicemail_card__" && (() => {
-                const vm = voicemails.find((v) => v.id === voicemailModalRealId);
-                if (!vm) return null;
-                return (
-                  <div key={vm.id} className="p-3 rounded-lg border border-accent/30 bg-accent/5">
-                    <div className="text-[10px] text-text-muted mb-2">Voicemail reply</div>
-                    {/* Full pipeline breadcrumb in lieu of voicemail reply */}
-                    <div className="flex items-center gap-0 text-[10px] font-mono justify-center flex-wrap mb-2">
-                      {breadcrumbData.map((seg, i) => {
-                        const colors = STATUS_COLORS[seg.status];
-                        return (
-                          <span key={seg.id} className="flex items-center">
-                            {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
-                            <span
-                              className="px-1.5 py-0.5 rounded whitespace-nowrap"
-                              style={{
-                                color: colors.text,
-                                backgroundColor: colors.bg,
-                                border: `1px solid ${colors.border}`,
-                                opacity: seg.status === "off" ? 0.35 : 1,
-                              }}
-                              title={seg.label}
-                            >
-                              {seg.icon} {seg.label}
-                            </span>
-                          </span>
-                        );
-                      })}
-                    </div>
-                    {vmStatus?.userText && (
-                      <div className="text-[11px] text-text-muted border-l-2 border-border pl-2 mb-2">{vmStatus.userText}</div>
-                    )}
-                    {vmStatus?.agentText && (
-                      <div className="text-xs text-text-primary whitespace-pre-wrap border-l-2 border-accent/40 pl-2 mb-2">{vmStatus.agentText}</div>
-                    )}
-                    <PlaybackBar
-                      vmId={voicemailModalRealId}
-                      onDelete={async () => { await deleteVoicemail(voicemailModalRealId); setVoicemailModalRealId(null); }}
-                      onClose={() => { setVoicemailModalRealId(null); }}
-                    />
-                  </div>
-                );
-              })()}
-            </div>
+                  ))}
+                </div>
               )}
+              </div>
             </div>
-          </div>
-        ))}
-        <div ref={messagesEndRef} />
-      </div>
+          ))}
+          <div ref={messagesEndRef} />
+        </div>
 
-      {/* ─── Input Bar ─── */}}
+      {/* ─── Input Bar ─── */}
       <div className="border-t border-border px-3 md:px-6 py-3 md:py-4 shrink-0 relative z-10 bg-surface/80 backdrop-blur-sm">
         {/* Mobile: two rows. Desktop: one row (use md:flex-row override). */}
         <div className="flex flex-col md:flex-row md:items-center gap-2 md:gap-3">
