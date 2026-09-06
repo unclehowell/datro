@@ -33,7 +33,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || true)"
 if [[ -z "$VERSION" && -n "$SCRIPT_DIR" && -f "$SCRIPT_DIR/.version" ]]; then
   VERSION="$(cat "$SCRIPT_DIR/.version" | tr -d '[:space:]')"
 fi
-VERSION="${VERSION:-1.11.33}"
+VERSION="${VERSION:-1.11.34}"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"

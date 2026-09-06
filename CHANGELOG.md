@@ -1,3 +1,15 @@
+## [1.11.34] - 2026-09-05
+
+Release: **v1.11.34 — hotfix: write_deploy_sha abort under `set -u`**. Live-testing the v1.11.33 OTA on the laptop exposed a bug in the new `write_deploy_sha()` helper: under `set -euo pipefail`, calling it with no arguments hit `-n "$1"` on an unset positional, so the script aborted *immediately after a successful GUI rebuild* — the version was never written to `.local-version`, services were never restarted, and the node kept serving the old bundle. The helper now defaults the argument with `${1:-}` (verified with an isolated repro + `bash -n`). This is the only change over v1.11.33; all WS-01/WS-02 content ships unchanged.
+
+### Fixes
+
+1. **`write_deploy_sha` no longer dies on a bare call** — `local tag="${1:-}"` replaces `-n "$1"`; the git-path, post-build, and empty-install call sites all run safely under `set -u`.
+
+### Backlog
+
+- Stage 1 (WS-03..WS-14) — see `DEVELOPMENT_PLAN.md`; begins only after Stage 0 is validated on both laptop and phone.
+
 ## [1.11.33] - 2026-09-05
 
 Release: **v1.11.33 — Stage 0: deploy identity (WS-01) + unified FCUK_HOME paths (WS-02)**. First release under the staged `DEVELOPMENT_PLAN.md` (Stage 0). WS-01 makes every node able to prove **which commit** it is running (`.deploy-sha` written on every successful sync/apply/build), and fails hard instead of restarting services on a GUI build that never succeeded. WS-02 unifies the previously scattered `~/.fcukproxy` path handling behind a single `fcukHome()` helper so the GUI, agent, hermes, omniroute and service units resolve one canonical state dir (and Termux installs migrate a legacy `/data/data/com.termux/.fcukproxy`).

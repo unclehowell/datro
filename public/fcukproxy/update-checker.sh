@@ -90,12 +90,12 @@ EOF
 # deploy dir, so `git log -1` / .deploy-sha / .version / the GitHub tag can be
 # reconciled (gate T2). Never removes an existing file on failure.
 write_deploy_sha() {
-  local sha=""
+  local sha="" tag="${1:-}"
   if [[ -d "$INSTALL_DIR/.git" ]]; then
     sha=$(git -C "$INSTALL_DIR" rev-parse HEAD 2>/dev/null || true)
   fi
-  if [[ -z "$sha" && -n "$1" ]]; then
-    sha="$1"
+  if [[ -z "$sha" && -n "$tag" ]]; then
+    sha="$tag"
   fi
   [[ -z "$sha" ]] && return 0
   mkdir -p "$HOME/.fcukproxy" "$GUI_DIR" 2>/dev/null || true
