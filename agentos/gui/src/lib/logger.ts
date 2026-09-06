@@ -13,10 +13,10 @@
 // request it's describing.
 
 import { appendFileSync, existsSync, mkdirSync, renameSync, statSync } from "fs";
-import { homedir } from "os";
 import { join } from "path";
+import { fcukHome } from "./fcuk-home";
 
-const LOG_DIR = join(homedir(), ".fcukproxy", "logs");
+const LOG_DIR = join(fcukHome(), "logs");
 const LOG_FILE = join(LOG_DIR, "agentos-gui.log");
 const LOG_MAX_BYTES = 5 * 1024 * 1024; // 5MB
 

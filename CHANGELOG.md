@@ -1,3 +1,30 @@
+## [1.11.33] - 2026-09-05
+
+Release: **v1.11.33 — Stage 0: deploy identity (WS-01) + unified FCUK_HOME paths (WS-02)**. First release under the staged `DEVELOPMENT_PLAN.md` (Stage 0). WS-01 makes every node able to prove **which commit** it is running (`.deploy-sha` written on every successful sync/apply/build), and fails hard instead of restarting services on a GUI build that never succeeded. WS-02 unifies the previously scattered `~/.fcukproxy` path handling behind a single `fcukHome()` helper so the GUI, agent, hermes, omniroute and service units resolve one canonical state dir (and Termux installs migrate a legacy `/data/data/com.termux/.fcukproxy`).
+
+### WS-01 — Deploy identity / OTA source-of-truth
+
+1. **`.deploy-sha` recorded on every successful sync/apply** — `update-checker.sh` writes the deployed commit SHA (or release tag, when no git repo) to both `~/.fcukproxy/.deploy-sha` and `<gui>/.deploy-sha` after each `sync_source()`, each `apply_update()` (git and tarball paths), and each successful GUI build. `install.sh` (root and `public/fcukproxy/install.sh`) does the same after their build steps, so `git log -1` ↔ `.deploy-sha` ↔ `.version` ↔ GitHub tag reconcile on every node (gate T2).
+2. **Failed post-update rebuild is now a hard stop** — `apply_update()` turns the non-fatal `ensure_gui_build || log "WARN:..."` into a hard abort: if the GUI cannot be rebuilt from the freshly pulled source, the update returns failure, writes an `error` update status, and **does not restart the next server** on a bundle that never built. The previous code restarted services regardless of build success, letting a node serve a stale cluster and even claim a successful update.
+3. **`main()` respects `apply_update()`'s return** — a failed apply no longer gets clobbered by the trailing `write_update_status ok ...`, so the GUI banner stops lying about an update that actually failed.
+4. **Root `install.sh` step 6 stops claiming "already built"** — it now re-syncs GUI source from the local checkout (like `update-checker.sh sync_source`), only skips the rebuild when the source hash is unchanged from the last successful build, and **exits non-zero on a failed build** instead of warning and continuing with a broken web UI.
+5. **`package-lock.json` no longer excluded from GUI sync** — the deploy dir previously kept a stale lockfile that silently broke `npm install` and served bundles; it is now synced so the lockfile always matches the pulled `package.json`.
+
+### WS-02 — Unified FCUK_HOME paths
+
+6. **New `fcukHome()` helper** (`agentos/gui/src/lib/fcuk-home.ts`) — returns `FCUK_HOME` (from env, set by the service units) or falls back to `~/.fcukproxy`. All GUI call sites (logger, agentos-dir, tasks, harness, pipeline, setup/oauth/oauth-callback/version/update/logs/voicemail/chat routes) now resolve through it instead of hardcoding `join(homedir(), ".fcukproxy")`.
+7. **`FCUK_HOME` exported into every systemd unit** — `agentos-gui`, `fcuk-proxy`, `hermes-local`, `hermes-proxy`, `fcukproxy-child` (in both `install.sh` and `update-checker.sh`) now pass `FCUK_HOME` so child processes agree on the state dir.
+8. **Termux legacy dual-dir migration** — `public/fcukproxy/install.sh` detects a second `~/.fcukproxy` left under `/data/data/com.termux` by an old install with a different HOME and folds it into the real home dir, preventing the web GUI and agent from reading different states.
+
+### Validation
+
+- `next build --webpack` succeeds from a clean checkout with all WS-02 conversions in place; no new `tsc` errors introduced (verified against baseline by stashing).
+- `bash -n` clean on `install.sh`, `public/fcukproxy/install.sh`, `public/fcukproxy/update-checker.sh`.
+
+### Backlog
+
+- Stage 1 (WS-03..WS-14) — see `DEVELOPMENT_PLAN.md`; begins only after Stage 0 is validated on both laptop and phone.
+
 ## [1.11.31] - 2026-09-04
 
 Release: **v1.11.31 — install.sh hermes deployment + voicemail replay integration**. The v1.11.30 release fixed the breadcrumb, version display, and log viewer — but two gaps were found during live testing: the `hermes-local`/`hermes-proxy` systemd units referenced scripts (`hermes-support.sh`, `hermes-main.sh`) under `~/.fcukproxy/hermes/` that `install.sh` never deployed, leaving hermes in a `203/EXEC` failure loop; and the voicemail replay (processing breadcrumb + playback bar) rendered as a separate full-screen overlay instead of inside the voicemail list panel. Both are fixed here.
@@ -13,21 +40,6 @@ Release: **v1.11.31 — install.sh hermes deployment + voicemail replay integrat
 - Real on-device voicemail round-trip (whisper-stt + warm ollama) — not yet validated on phone (offline)
 - Kokoro-82M local TTS migration (merge STT + TTS into single process)
 - OmniRoute proxy deploy on the laptop (currently working but model load is slow under memory pressure on this 3.7GB machine)
-
-## [1.11.31] - 2026-09-04
-
-Release: **v1.11.31 — install.sh hermes deployment + voicemail replay integration**. The v1.11.30 release fixed the breadcrumb, version display, and log viewer — but two gaps were found during live testing: the `hermes-local`/`hermes-proxy` systemd units referenced scripts (`hermes-support.sh`, `hermes-main.sh`) under `~/.fcukproxy/hermes/` that `install.sh` never deployed, leaving hermes in a `203/EXEC` failure loop; and the voicemail replay (processing breadcrumb + playback bar) rendered as a separate full-screen overlay instead of inside the voicemail list panel. Both are fixed here.
-
-### Fixes
-
-1. **install.sh deploys hermes scripts** — new Step 5.5 copies `hermes-main.sh` and `hermes-support.sh` from the repo's `agentos/hermes/` (or GitHub `RAW_BASE`) into `~/.fcukproxy/hermes/`, `chmod +x`, and verifies presence. The systemd units already referenced those paths; they just had no files to execute. Verified locally: after deploy, `systemctl --user start hermes-local` transitions from `203/EXEC` to `active (running)`.
-2. **Voicemail replay renders inline** — the `Voicemail Replay Modal` (a `fixed inset-0 z-50` overlay with the pipeline breadcrumb + playback bar) is now rendered inline inside the voicemail list panel, after the voicemail card list. Tapping "Play" on a saved voicemail expands the playback card directly in the panel instead of popping a separate modal. The "Play" button no longer calls `setVoicemailOpen(false)` (which would close the voicemail panel while the replay modal opened over it).
-3. **Structured logging** (`lib/logger.ts`) — added in v1.11.30; confirmed working: `GET /api/logs?action=read&file=agentos-gui.log` returns JSON log lines from `~/.fcukproxy/logs/agentos-gui.log`.
-
-### Backlog
-
-- Real on-device voicemail round-trip (whisper-stt + warm ollama) — not yet validated on phone (offline)
-- OmniRoute proxy deploy on the laptop (model load is slow under memory pressure on this 3.7GB machine)
 
 ## [1.11.30] - 2026-09-04
 

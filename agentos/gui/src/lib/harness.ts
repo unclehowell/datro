@@ -6,6 +6,7 @@
 import { mkdir, readdir, readFile, writeFile, unlink, stat } from "fs/promises";
 import { join } from "path";
 import { LLMClient } from "@/runtime/engines/llm";
+import { fcukHome } from "./fcuk-home";
 
 // ─── Deterministic hash (djb2) ────────────────────────────
 
@@ -64,7 +65,7 @@ export async function buildRouterMessages(
 
 // ─── Checkpoints ──────────────────────────────────────────
 
-const CHECKPOINT_ROOT = process.env.HOME ? join(process.env.HOME, ".fcukproxy", "checkpoints") : "";
+const CHECKPOINT_ROOT = join(fcukHome(), "checkpoints");
 
 // Cap checkpoint growth per session and by age (WS3). Keeps crashes resumable
 // without letting ~/.fcukproxy/checkpoints balloon across many sessions/prompts.

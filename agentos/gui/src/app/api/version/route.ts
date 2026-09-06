@@ -1,9 +1,9 @@
 import { NextResponse } from "next/server";
 import { readFileSync, existsSync } from "fs";
 import { join } from "path";
-import { homedir } from "os";
+import { fcukHome } from "@/lib/fcuk-home";
 
-const STATUS_FILE = join(homedir(), ".fcukproxy", ".update-status");
+const STATUS_FILE = join(fcukHome(), ".update-status");
 const GITHUB_REPO = "unclehowell/datro";
 const GITHUB_BRANCH = "financecheque";
 
@@ -48,7 +48,7 @@ function compareVer(a: number[], b: number[]): number {
 }
 
 export async function GET() {
-  const localVersionFile = join(homedir(), ".fcukproxy", ".local-version");
+  const localVersionFile = join(fcukHome(), ".local-version");
   const localVersion = existsSync(localVersionFile)
     ? readFileSync(localVersionFile, "utf-8").trim()
     : "unknown";

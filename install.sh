@@ -33,7 +33,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || true)"
 if [[ -z "$VERSION" && -n "$SCRIPT_DIR" && -f "$SCRIPT_DIR/.version" ]]; then
   VERSION="$(cat "$SCRIPT_DIR/.version" | tr -d '[:space:]')"
 fi
-VERSION="${VERSION:-1.11.30}"
+VERSION="${VERSION:-1.11.33}"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -604,44 +604,71 @@ step 6 "AgentOS GUI (port $GUI_PORT)"
 GUI_DIR="$USER_HOME/.fcukproxy/agentos-gui"
 mkdir -p "$USER_HOME/.fcukproxy"
 
-if [[ -d "$GUI_DIR/.next" ]]; then
-  ok "AgentOS GUI already built"
+# WS-01 (v1.11.33): the "already built" check must not walk past stale source.
+# When this installer runs from a checkout we RE-SYNC the GUI source every run
+# (like update-checker.sh sync_source), then only skip the rebuild when the
+# source hash is unchanged from the last successful build.
+GUI_SRC=0
+if [[ -d "$SCRIPT_DIR/agentos/gui/src" ]]; then
+  info "Re-syncing AgentOS GUI source from repo checkout..."
+  mkdir -p "$GUI_DIR"
+  rsync -a --delete \
+    --exclude='.next' --exclude='node_modules' \
+    "$SCRIPT_DIR/agentos/gui/" "$GUI_DIR/" 2>/dev/null || true
+  GUI_SRC=1
+elif [[ -d "$GUI_DIR/src" ]]; then
+  GUI_SRC=1
 else
-  if [[ -d "$GUI_DIR/src" ]]; then
-    info "GUI source exists, building..."
-  else
-    info "Downloading AgentOS GUI..."
-    # Try to copy from datro repo first, then download
-    SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-    if [[ -d "$SCRIPT_DIR/agentos/gui/src" ]]; then
-      info "Copying from local repo..."
-      cp -r "$SCRIPT_DIR/agentos/gui" "$GUI_DIR"
+  info "Downloading AgentOS GUI (release tarball)..."
+  rm -rf "${TMPDIR:-/tmp}/fcuk-gui" && mkdir -p "${TMPDIR:-/tmp}/fcuk-gui"
+  if curl -fsSL "https://github.com/$REPO/archive/refs/tags/financecheque-v${VERSION}.tar.gz" \
+      -o "${TMPDIR:-/tmp}/fcuk-gui/gui.tgz"; then
+    tar xzf "${TMPDIR:-/tmp}/fcuk-gui/gui.tgz" -C "${TMPDIR:-/tmp}/fcuk-gui"
+    GUISRC=$(find "${TMPDIR:-/tmp}/fcuk-gui" -maxdepth 2 -type d -name "gui" | head -1)
+    if [[ -n "$GUISRC" && -d "$GUISRC/src" ]]; then
+      rm -rf "$GUI_DIR" && mkdir -p "$(dirname "$GUI_DIR")"
+      cp -a "$GUISRC" "$GUI_DIR"
+      GUI_SRC=1
     else
-      info "Downloading from GitHub..."
-      mkdir -p "$GUI_DIR"
-      # Download key files
-      for f in package.json next.config.ts tsconfig.json postcss.config.mjs eslint.config.mjs; do
-        curl -sL "$RAW_BASE/agentos/gui/$f" -o "$GUI_DIR/$f" 2>/dev/null || true
-      done
-      # Download src directory
-      curl -sL "$RAW_BASE/agentos/gui/package-lock.json" -o "$GUI_DIR/package-lock.json" 2>/dev/null || true
+      warn "GUI source not found in release tarball"
+    fi
+  else
+    warn "Failed to download GUI release tarball"
+  fi
+  rm -rf "${TMPDIR:-/tmp}/fcuk-gui"
+fi
+
+if [[ "$GUI_SRC" == "1" ]]; then
+  NEW_HASH=$(find "$GUI_DIR/src" -type f \( -name '*.ts' -o -name '*.tsx' -o -name '*.css' \) 2>/dev/null | sort | xargs md5sum 2>/dev/null | md5sum | cut -d' ' -f1)
+  OLD_HASH=""
+  [[ -f "$GUI_DIR/.last-build-hash" ]] && OLD_HASH=$(cat "$GUI_DIR/.last-build-hash")
+  if [[ -f "$GUI_DIR/.next/BUILD_ID" && "$NEW_HASH" == "$OLD_HASH" ]]; then
+    ok "AgentOS GUI already built (source unchanged)"
+  else
+    # Install dependencies
+    if [[ ! -d "$GUI_DIR/node_modules/.bin/next" ]]; then
+      info "Installing GUI npm dependencies..."
+      PATH="$USER_HOME/.local/node/bin:$PATH" "$USER_HOME/.local/node/bin/npm" install 2>&1 | tail -5 || {
+        warn "npm install had issues"
+      }
+    fi
+
+    # Build — WS-01 (v1.11.33) build-exit gate: only claim success on exit 0
+    info "Building GUI (Next.js production build)..."
+    if PATH="$USER_HOME/.local/node/bin:$PATH" "$USER_HOME/.local/node/bin/npx" next build 2>&1 | tail -5; then
+      printf '%s\n' "$NEW_HASH" > "$GUI_DIR/.last-build-hash"
+      # Record deploy identity
+      SK=$(git -C "$SCRIPT_DIR" rev-parse HEAD 2>/dev/null || echo "financecheque-v$VERSION")
+      printf '%s\n' "$SK" > "$USER_HOME/.fcukproxy/.deploy-sha" 2>/dev/null || true
+      printf '%s\n' "$SK" > "$GUI_DIR/.deploy-sha" 2>/dev/null || true
+      ok "AgentOS GUI built"
+    else
+      err "GUI build FAILED — not continuing with a broken web UI. Run 'cd $GUI_DIR && npx next build' to see the error."
+      exit 1
     fi
   fi
-
-  # Install dependencies
-  info "Installing GUI npm dependencies (this takes a while on first run)..."
-  cd "$GUI_DIR"
-  PATH="$USER_HOME/.local/node/bin:$PATH" "$USER_HOME/.local/node/bin/npm" install 2>&1 | tail -5 || {
-    warn "npm install had issues"
-  }
-
-  # Build
-  info "Building GUI (Next.js production build)..."
-  cd "$GUI_DIR"
-  PATH="$USER_HOME/.local/node/bin:$PATH" "$USER_HOME/.local/node/bin/npx" next build 2>&1 | tail -5 || {
-    warn "Build had issues — try running 'cd $GUI_DIR && npx next build' manually"
-  }
-  ok "AgentOS GUI built"
+else
+  warn "No AgentOS GUI source available — skipping"
 fi
 
 # ═══════════════════════════════════════════════════════════════════════════════
@@ -848,6 +875,7 @@ Wants=network-online.target
 Type=simple
 WorkingDirectory=$GUI_DIR
 Environment=HOME=$USER_HOME
+Environment=FCUK_HOME=$USER_HOME/.fcukproxy
 Environment=PATH=$USER_HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
 Environment=NODE_ENV=production
 Environment=PORT=$GUI_PORT

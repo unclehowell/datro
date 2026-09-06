@@ -4,13 +4,14 @@ import { promisify } from "util";
 import { mkdirSync, readFileSync, writeFileSync } from "fs";
 import { homedir } from "os";
 import { join } from "path";
+import { fcukHome } from "@/lib/fcuk-home";
 
 export const dynamic = "force-dynamic";
 
 const execFileAsync = promisify(execFile);
-const STATE_DIR = join(homedir(), ".fcukproxy", "agentos");
+const STATE_DIR = join(fcukHome(), "agentos");
 const STATE_FILE = join(STATE_DIR, "onboarding.json");
-const TOKEN_FILE = join(homedir(), ".fcukproxy", "oauth", "tokens.json");
+const TOKEN_FILE = join(fcukHome(), "oauth", "tokens.json");
 const OPENCODE_BIN = process.env.OPENCODE_BIN || "opencode";
 const KILO_BIN = process.env.KILO_BIN || "kilo";
 

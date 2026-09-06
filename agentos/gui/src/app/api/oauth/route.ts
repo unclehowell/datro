@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
-import { homedir } from "os";
 import { join } from "path";
+import { fcukHome } from "@/lib/fcuk-home";
 
 export const dynamic = "force-dynamic";
 
-const TOKENS_DIR = join(homedir(), ".fcukproxy", "oauth");
+const TOKENS_DIR = join(fcukHome(), "oauth");
 const TOKENS_FILE = join(TOKENS_DIR, "tokens.json");
 
 function readTokens(): Record<string, any> {

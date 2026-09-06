@@ -83,6 +83,27 @@ write_update_status() {
 EOF
 }
 
+# ── Record what code is actually deployed (deploy identity) ──────────────────
+# WS-01 (v1.11.33): a node must be able to prove which commit it is running.
+# Every successful sync writes .deploy-sha (commit SHA when a git checkout is
+# available, else the release tag/version) into the state dir and the GUI
+# deploy dir, so `git log -1` / .deploy-sha / .version / the GitHub tag can be
+# reconciled (gate T2). Never removes an existing file on failure.
+write_deploy_sha() {
+  local sha=""
+  if [[ -d "$INSTALL_DIR/.git" ]]; then
+    sha=$(git -C "$INSTALL_DIR" rev-parse HEAD 2>/dev/null || true)
+  fi
+  if [[ -z "$sha" && -n "$1" ]]; then
+    sha="$1"
+  fi
+  [[ -z "$sha" ]] && return 0
+  mkdir -p "$HOME/.fcukproxy" "$GUI_DIR" 2>/dev/null || true
+  printf '%s\n' "$sha" > "$HOME/.fcukproxy/.deploy-sha" 2>/dev/null || true
+  printf '%s\n' "$sha" > "$GUI_DIR/.deploy-sha" 2>/dev/null || true
+  log "Deploy SHA recorded: $sha"
+}
+
 # ── Fetch latest version from parent (+ GitHub fallback) ─────────────────────
 fetch_latest_version() {
   local parent_version=""
@@ -237,6 +258,7 @@ Wants=network-online.target
 Type=simple
 WorkingDirectory=$GUI_DIR
 Environment=HOME=$HOME
+Environment=FCUK_HOME=$HOME/.fcukproxy
 Environment=PATH=$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
 Environment=NODE_ENV=production
 Environment=PORT=3000
@@ -316,6 +338,7 @@ Type=simple
 ExecStart=$HOME/.fcukproxy/hermes/hermes-support.sh start
 ExecStop=$HOME/.fcukproxy/hermes/hermes-support.sh stop
 Environment=HOME=$HOME
+Environment=FCUK_HOME=$HOME/.fcukproxy
 Environment=PATH=$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
 Restart=on-failure
 RestartSec=5
@@ -340,6 +363,7 @@ RemainAfterExit=yes
 ExecStart=$HOME/.fcukproxy/hermes/hermes-main.sh start
 ExecStop=$HOME/.fcukproxy/hermes/hermes-main.sh stop
 Environment=HOME=$HOME
+Environment=FCUK_HOME=$HOME/.fcukproxy
 Environment=PATH=$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
 TimeoutStartSec=300
 TimeoutStopSec=30
@@ -418,6 +442,7 @@ Type=simple
 ExecStart=$_NODE_BIN $CHILD_PROXY
 WorkingDirectory=$HOME/.fcukproxy
 Environment=HOME=$HOME
+Environment=FCUK_HOME=$HOME/.fcukproxy
 Environment=PATH=$(dirname "$_NODE_BIN"):/usr/local/bin:/usr/bin:/bin
 Environment=PORT=4001
 Restart=on-failure
@@ -537,6 +562,7 @@ apply_update() {
     git fetch origin "$BRANCH" 2>>"$LOG_FILE"
     git reset --hard "origin/$BRANCH" 2>>"$LOG_FILE"
     log "Code updated (git)"
+    write_deploy_sha
     # Self-update: copy runtime scripts from the freshly pulled repo
     mkdir -p "$HOME/.fcukproxy"
     for runtime_script in update-checker.sh wake.sh tool-use-wrapper.sh reflect.sh; do
@@ -582,12 +608,15 @@ apply_update() {
         if [[ -d "$extracted/agentos/gui/src" ]]; then
           mkdir -p "$(dirname "$GUI_DIR")"
           rsync -a --delete \
-            --exclude='.next' --exclude='node_modules' --exclude='package-lock.json' \
+            --exclude='.next' --exclude='node_modules' \
             "$extracted/agentos/gui/" "$GUI_DIR/" 2>>"$LOG_FILE"
           log "GUI source synced (tarball)"
         fi
-        # Sync version file
+        # Sync version file. package-lock.json is no longer excluded above so
+        # the deployed lockfile always matches the pulled package.json (a stale
+        # lockfile silently breaks `npm install` and served bundles).
         [[ -f "$extracted/.version" ]] && cp "$extracted/.version" "$INSTALL_DIR/.version"
+        write_deploy_sha "$latest"
         log "Code updated (tarball)"
       else
         log "ERROR: Extracted directory not found in $tmp_extract"
@@ -612,7 +641,16 @@ apply_update() {
   # 4. Rebuild the GUI from the NEWLY synced source. ensure_gui_build() at the
   #    top of main() also ran pre-pull; rebuilding here guarantees the process
   #    restarted below serves a bundle whose source matches the pulled commit.
-  ensure_gui_build || log "WARN: GUI rebuild after update did not complete (non-fatal)"
+  #    WS-01 (v1.11.33): a failed post-pull rebuild is a HARD STOP — we must
+  #    not restart the next server on a bundle that never built, must not claim
+  #    success, and must leave the previous version in place so the timer
+  #    retries. The old .next still serves fine.
+  if ! ensure_gui_build; then
+    log "ERROR: GUI rebuild after update FAILED — aborting update, keeping v$(get_local_version)"
+    write_update_status error "$(get_local_version)" "$latest"
+    return 1
+  fi
+  write_deploy_sha
 
   # 5. Copy updated voice-service
   if [[ -f "$INSTALL_DIR/public/fcukproxy/voice-service/server.py" ]]; then
@@ -668,10 +706,10 @@ sync_source() {
     rsync -a --delete \
       --exclude='.next' \
       --exclude='node_modules' \
-      --exclude='package-lock.json' \
       --exclude='.git' \
       "$INSTALL_DIR/agentos/gui/" "$GUI_DIR/" 2>>"$LOG_FILE"
     log "GUI source synced"
+    write_deploy_sha
   fi
 
   if [[ -f "$INSTALL_DIR/agentos/omniroute/proxy.mjs" ]]; then
@@ -829,7 +867,12 @@ main() {
     exit 0
   fi
 
-  apply_update "$latest"
+  if ! apply_update "$latest"; then
+    # apply_update already logged the failure and wrote an error status; do not
+    # clobber it with "ok" below or the GUI banner would lie about the update.
+    log "Update FAILED — keeping previous version"
+    exit 1
+  fi
   # Successful apply — clear any prior error status so the GUI shows the new
   # version, not a stale failure.
   write_update_status ok "$local_version" "$latest"

@@ -1,13 +1,14 @@
 import { NextResponse } from "next/server";
 import { readFileSync, writeFileSync, mkdirSync } from "fs";
-import { homedir } from "os";
 import { join } from "path";
+import { homedir } from "os";
 import { invalidateKeysCache } from "@/lib/cloud-router";
 import { OAUTH_KEY_MAP } from "@/lib/app-catalog";
+import { fcukHome } from "@/lib/fcuk-home";
 
 export const dynamic = "force-dynamic";
 
-const TOKENS_DIR = join(homedir(), ".fcukproxy", "oauth");
+const TOKENS_DIR = join(fcukHome(), "oauth");
 const TOKENS_FILE = join(TOKENS_DIR, "tokens.json");
 const KEYS_PATH = join(homedir(), ".llm_keys");
 

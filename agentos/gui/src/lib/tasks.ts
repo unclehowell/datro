@@ -12,7 +12,8 @@
 import { spawn, ChildProcess } from "child_process";
 import { existsSync, mkdirSync, readFileSync, writeFileSync } from "fs";
 import { join } from "path";
-import { homedir, loadavg, cpus } from "os";
+import { loadavg, cpus } from "os";
+import { fcukHome } from "./fcuk-home";
 
 export type TaskStatus = "queued" | "running" | "paused" | "done" | "failed" | "cancelled";
 export type TaskKind = "video" | "delegate" | "cmd";
@@ -36,7 +37,7 @@ export interface Task {
   meta?: Record<string, unknown>;
 }
 
-const DATA_DIR = process.env.AGENTOS_GUI_DIR || join(homedir(), ".fcukproxy", "agentos-gui");
+const DATA_DIR = process.env.AGENTOS_GUI_DIR || join(fcukHome(), "agentos-gui");
 const STORE_PATH = join(DATA_DIR, "tasks.json");
 const LOG_CAP = 200 * 1024;
 

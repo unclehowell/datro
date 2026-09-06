@@ -18,9 +18,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { existsSync, readFileSync, readdirSync, statSync, mkdirSync } from "fs";
 import { spawnSync } from "child_process";
 import { join } from "path";
-import { homedir } from "os";
+import { fcukHome } from "@/lib/fcuk-home";
 
-const FCUK_DIR = join(homedir(), ".fcukproxy");
+const FCUK_DIR = fcukHome();
 const LOGS_DIR = join(FCUK_DIR, "logs");
 mkdirSync(LOGS_DIR, { recursive: true });
 

@@ -3,9 +3,10 @@ import { readFileSync, writeFileSync, existsSync } from "fs";
 import { join } from "path";
 import { homedir } from "os";
 import { spawn } from "child_process";
+import { fcukHome } from "@/lib/fcuk-home";
 
-const STATUS_FILE = join(homedir(), ".fcukproxy", ".update-status");
-const CHECKER_SCRIPT = join(homedir(), ".fcukproxy", "update-checker.sh");
+const STATUS_FILE = join(fcukHome(), ".update-status");
+const CHECKER_SCRIPT = join(fcukHome(), "update-checker.sh");
 
 interface UpdateStatus {
   state: "idle" | "updating" | "done" | "error";
@@ -48,7 +49,7 @@ export async function POST() {
   }
 
   // Read local + remote versions
-  const localVersionFile = join(homedir(), ".fcukproxy", ".local-version");
+  const localVersionFile = join(fcukHome(), ".local-version");
   const localVersion = existsSync(localVersionFile)
     ? readFileSync(localVersionFile, "utf-8").trim()
     : "unknown";

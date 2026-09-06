@@ -22,6 +22,7 @@ import { getRenderJob } from "@/runtime/tools/remotion";
 import { queryGraphRAG } from "@/lib/graphrag";
 import { ensureLLMStack, beginLLMRequest, endLLMRequest, releaseAfterAnswer, userServiceActive, userService } from "@/lib/llm-gate";
 import { getAgentLoop as sharedGetAgentLoop } from "@/lib/agent-loop";
+import { fcukHome } from "@/lib/fcuk-home";
 
 const execAsync = promisify(exec);
 const execFileAsync = promisify(execFile);
@@ -92,9 +93,10 @@ async function startTaskRouter(): Promise<boolean> {
       await userService("task-router", "start");
     } else {
       // No unit file on this node — spawn the router directly from the checkout.
+      const base = fcukHome();
       const candidates = [
-        `${process.env.HOME}/.fcukproxy/omniroute/task-router.mjs`,
-        `${process.env.HOME}/.fcukproxy/datro/agentos/task-router.mjs`,
+        `${base}/omniroute/task-router.mjs`,
+        `${base}/datro/agentos/task-router.mjs`,
       ];
       const routerFile = candidates.find((f) => fs.existsSync(f)) as string | undefined;
       if (!routerFile) return false;

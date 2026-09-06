@@ -24,7 +24,7 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.11.29"
+VERSION="1.11.33"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
@@ -39,16 +39,33 @@ INSTALL_DIR="${INSTALL_DIR:-$HOME/.fcukproxy}"
 # /tmp is a root-owned tmpfs on some Android setups — always use a writable temp dir
 TMP_WRITABLE="${TMPDIR:-$( [[ -w /tmp ]] && echo /tmp || echo "$HOME/.tmp" )}"
 mkdir -p "$TMP_WRITABLE" 2>/dev/null || true
+
+# WS-02 (v1.11.33): Termux legacy dual-dir migration. An install that ran with a
+# different HOME (e.g. /data/data/com.termux) created a SECOND .fcukproxy
+# outside the Termux home dir, so the web GUI and agent read different states.
+# If that legacy dir exists and the real home dir has nothing, fold it in.
+if [[ -n "${TERMUX_VERSION:-}" || -d "/data/data/com.termux" ]] && \
+   [[ -d "/data/data/com.termux/.fcukproxy" ]] && \
+   [[ ! -d "$HOME/.fcukproxy" ]] && [[ "$INSTALL_DIR" == "$HOME/.fcukproxy" ]]; then
+  info "Detected legacy .fcukproxy at /data/data/com.termux/.fcukproxy — migrating into \$HOME/.fcukproxy..."
+  mkdir -p "$HOME"
+  mv "/data/data/com.termux/.fcukproxy" "$HOME/.fcukproxy" 2>/dev/null || \
+    cp -a "/data/data/com.termux/.fcukproxy" "$HOME/.fcukproxy" 2>/dev/null || true
+fi
 CHAT_ONLY="${CHAT_ONLY:-false}"      # true = no command execution allowed
 AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
 FCUK_LOCAL_TOKEN="${FCUK_LOCAL_TOKEN:-}"  # local auth token (auto-generated)
 
 # Local chat GUI (AgentOS) — served on GUI_PORT with the agent as its LLM backend
-GUI_VERSION="1.11.29"                  # fallback tag; overridden by latest-release lookup below
+GUI_VERSION="1.11.33"                  # fallback tag; overridden by latest-release lookup below
 GUI_PORT="${GUI_PORT:-3000}"         # the web chat interface
 GUI_DIR="${GUI_DIR:-$INSTALL_DIR/agentos-gui}"
 NODE_VERSION="v22.23.2"              # bundled Node.js for the GUI (pinned LTS)
 NODE_BIN_DIR=""                      # resolved by install_node()
+
+# WS-02 (v1.11.33): export the unified state dir so every child process
+# (GUI, agent, hermes, omniroute, service units) resolves one canonical path.
+export FCUK_HOME="${FCUK_HOME:-$INSTALL_DIR}"
 
 # ── Colors ───────────────────────────────────────────────────────────────────
 RED='\033[0;31m'; GREEN='\033[0;32m'; YELLOW='\033[1;33m'; BLUE='\033[0;34m'
@@ -532,6 +549,7 @@ ExecStart=$(command -v python3) $INSTALL_DIR/agent.py --port $PROXY_PORT
 Restart=on-failure
 RestartSec=10
 Environment=HOME=$HOME
+Environment=FCUK_HOME=$INSTALL_DIR
 Environment=PATH=$HOME/.local/bin:$HOME/.npm-global/bin:/usr/local/bin:/usr/bin:/bin
 EnvironmentFile=$INSTALL_DIR/.env
 
@@ -849,6 +867,13 @@ install_gui() {
     err "GUI build failed (.next missing) — see $GUI_DIR/gui-build.log"
     return 1
   fi
+  # Record deploy identity (WS-01): the exact release deployed here, so
+  # `git log -1` ↔ .deploy-sha ↔ .version ↔ GitHub tag reconcile (gate T2).
+  local gui_sha
+  gui_sha=$(git -C "$INSTALL_DIR" rev-parse HEAD 2>/dev/null || true)
+  [[ -z "$gui_sha" ]] && gui_sha="financecheque-v$GUI_VERSION"
+  printf '%s\n' "$gui_sha" > "$INSTALL_DIR/.deploy-sha" 2>/dev/null || true
+  printf '%s\n' "$gui_sha" > "$GUI_DIR/.deploy-sha" 2>/dev/null || true
   ok "GUI built (web chat at http://localhost:$GUI_PORT)"
 }
 
@@ -872,6 +897,7 @@ Wants=network-online.target
 Type=simple
 WorkingDirectory=$GUI_DIR
 Environment=HOME=$HOME
+Environment=FCUK_HOME=$INSTALL_DIR
 Environment=PATH=$NODE_BIN_DIR:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
 Environment=NODE_ENV=production
 Environment=PORT=$GUI_PORT
@@ -942,6 +968,7 @@ Type=simple
 ExecStart=$HOME/.fcukproxy/hermes/hermes-support.sh start
 ExecStop=$HOME/.fcukproxy/hermes/hermes-support.sh stop
 Environment=HOME=$HOME
+Environment=FCUK_HOME=$INSTALL_DIR
 Environment=PATH=$NODE_BIN_DIR:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
 Restart=on-failure
 RestartSec=5
@@ -964,6 +991,7 @@ RemainAfterExit=yes
 ExecStart=$HOME/.fcukproxy/hermes/hermes-main.sh start
 ExecStop=$HOME/.fcukproxy/hermes/hermes-main.sh stop
 Environment=HOME=$HOME
+Environment=FCUK_HOME=$INSTALL_DIR
 Environment=PATH=$NODE_BIN_DIR:$HOME/.local/bin:/usr/local/bin:/usr/bin:/bin
 TimeoutStartSec=300
 TimeoutStopSec=30

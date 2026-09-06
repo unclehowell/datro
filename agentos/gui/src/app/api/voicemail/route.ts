@@ -64,9 +64,9 @@ import {
   renameSync,
 } from "fs";
 import { join } from "path";
-import { homedir } from "os";
 import { runPrompt, PipelineEvent } from "@/lib/pipeline";
 import { log as plog } from "@/lib/logger";
+import { fcukHome } from "@/lib/fcuk-home";
 import {
   getHermesState,
   stopProfile,
@@ -77,9 +77,9 @@ import {
 } from "@/lib/llm-gate";
 import { ensureWhisperSTT, shutdownWhisperSTT } from "@/lib/whisper-gate";
 
-const VOICEMAIL_DIR = join(homedir(), ".fcukproxy", "voicemails");
+const VOICEMAIL_DIR = join(fcukHome(), "voicemails");
 const VOICEMAIL_INDEX = join(VOICEMAIL_DIR, "index.json");
-const VOICEMAIL_JOBS_DIR = join(homedir(), ".fcukproxy", "voicemail", "jobs");
+const VOICEMAIL_JOBS_DIR = join(fcukHome(), "voicemail", "jobs");
 const STT_URL = process.env.VOICE_SERVICE_URL
   ? `${process.env.VOICE_SERVICE_URL}/v1/audio/transcriptions`
   : "http://localhost:3101/v1/audio/transcriptions";

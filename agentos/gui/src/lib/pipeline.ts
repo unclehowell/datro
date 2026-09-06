@@ -32,6 +32,7 @@ import {
 import { exec, execFile, spawn } from "child_process";
 import { promisify } from "util";
 import fs from "fs";
+import { fcukHome } from "./fcuk-home";
 
 const execFileAsync = promisify(execFile);
 
@@ -115,10 +116,10 @@ async function startTaskRouter(): Promise<boolean> {
     if (exists) {
       await userService("task-router", "start");
     } else {
-      const home = process.env.HOME || "";
+      const base = fcukHome();
       const candidates = [
-        `${home}/.fcukproxy/omniroute/task-router.mjs`,
-        `${home}/.fcukproxy/datro/agentos/task-router.mjs`,
+        `${base}/omniroute/task-router.mjs`,
+        `${base}/datro/agentos/task-router.mjs`,
       ];
       const routerFile = candidates.find((f) => fs.existsSync(f)) as string | undefined;
       if (!routerFile) return false;
