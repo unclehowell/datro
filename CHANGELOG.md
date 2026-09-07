@@ -1,3 +1,16 @@
+## [1.11.38] - 2026-09-07
+
+Release: **v1.11.38 — manifest agent version matches reality**. The OTA manifest declared `agent` version `0.9.0` while `agent.py` itself reports `0.8.0` (both the repo copy and the installed copy). That mismatch made the child-proxy updater think an agent update was perpetually available, so `fcuk-proxy` (agent.py :6100) entered an OTA-restart loop on every start. Patch: `public/fcukproxy/ota-manifest.json` now declares `agent: 0.8.0` to match the shipped file — no agent.py change, no code churn.
+
+### Fixes
+
+1. **Manifest drift** — `ota-manifest.json` `agent.version` `0.9.0` → `0.8.0`, matching the `VERSION` constant in `public/fcukproxy/agent.py`.
+
+### Verified
+
+- `grep VERSION public/fcukproxy/agent.py` → `"0.8.0"`; installed `/home/x/.fcukproxy/agent.py` → `"0.8.0"`; manifest now agrees.
+- Release is config-only (no GUI source change) — nodes apply the manifest without a GUI rebuild.
+
 ## [1.11.37] - 2026-09-07
 
 Release: **v1.11.37 — clean plain-text answers from the no-tools retry**. The v1.11.36 fix un-stuck the voicemail/chat LLM answer (the without-tools retry now fires and the pipeline completes instead of `E_NO_PROVIDER`), but live validation showed the 1B model emitting its ReAct habit into the *conversational* answer: `"Let me check that for you.\n<function name="calculate_remainder">…</function>"`. That stub played straight into TTS. Patch: the retry now swaps to a **conversational system prompt** ("no tools, never output XML/function-call syntax, compute arithmetic yourself"), and `pipeline.ts` gains a **ReAct reply cleaner**: if a `<function>` stub still appears, execute it via the tool registry when it names a real tool (real work, like the with-tools path), otherwise strip the XML so chat/voicemail never surface raw markup. Verified: `tsc`, `eslint --max-warnings 0`, and the stub-parse/strip regex against real model output.
