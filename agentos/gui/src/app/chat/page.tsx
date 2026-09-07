@@ -777,27 +777,33 @@ export default function ChatPage() {
     if (typeof window === "undefined") return;
     const realId = localStorage.getItem("fcuk.vm.realId");
     const pendingId = localStorage.getItem("fcuk.vm.pendingId");
-    if ((realId || pendingId) && !voicemailModalPendingId && !voicemailModalRealId) {
+    // v1.11.39: a pending id without a real id is a submit that never reached
+    // the server (hung/busy POST during an OTA rebuild, killed tab, etc.).
+    // There is no server job to attach to — clear it instead of re-opening
+    // the "Queued for processing…" card on every reload forever.
+    if (!realId) {
+      if (pendingId) localStorage.removeItem("fcuk.vm.pendingId");
+      return;
+    }
+    if (!voicemailModalPendingId && !voicemailModalRealId) {
       setVoicemailOpen(true);
       if (pendingId) setVoicemailModalPendingId(pendingId);
-      if (realId) {
-        setVoicemailModalRealId(realId);
-        // One-shot status fetch; the regular poll effect below takes
-        // over once vmStatus is populated.
-        fetch(`/api/voicemail?action=status&id=${realId}`)
-          .then((r) => r.json())
-          .then((sd) => {
-            setVmStatus(sd);
-            if (sd.status === "complete" || sd.status === "error") {
-              localStorage.removeItem("fcuk.vm.realId");
-              localStorage.removeItem("fcuk.vm.pendingId");
-            } else {
-              setVoicemailModalPendingId(null);
-              localStorage.removeItem("fcuk.vm.pendingId");
-            }
-          })
-          .catch(() => {});
-      }
+      setVoicemailModalRealId(realId);
+      // One-shot status fetch; the regular poll effect below takes
+      // over once vmStatus is populated.
+      fetch(`/api/voicemail?action=status&id=${realId}`)
+        .then((r) => r.json())
+        .then((sd) => {
+          setVmStatus(sd);
+          if (sd.status === "complete" || sd.status === "error") {
+            localStorage.removeItem("fcuk.vm.realId");
+            localStorage.removeItem("fcuk.vm.pendingId");
+          } else {
+            setVoicemailModalPendingId(null);
+            localStorage.removeItem("fcuk.vm.pendingId");
+          }
+        })
+        .catch(() => {});
     }
   }, []);
 
@@ -1046,13 +1052,26 @@ export default function ChatPage() {
     try {
       const fd = new FormData();
       fd.append("audio", blob, "voicemail.webm");
-      const res = await fetch("/api/voicemail?action=process-async", { method: "POST", body: fd });
+      // v1.11.39: timeout the submit so a hung POST (busy server during an
+      // OTA rebuild) resolves to an error instead of an eternal "Queued for
+      // processing…" card.
+      const res = await fetch("/api/voicemail?action=process-async", { method: "POST", body: fd, signal: AbortSignal.timeout(30_000) });
       if (!res.ok) throw new Error(String(res.status));
       const data = await res.json();
       if (data.id) {
         // Swap the placeholder pending key for the real server job ID.
         setVoicemailModalRealId(data.id);
         localStorage.setItem("fcuk.vm.realId", data.id);
+        // v1.11.39: if the job never reaches a terminal state within the
+        // poll window, surface a timeout instead of leaving the card on
+        // "Queued for processing…" forever.
+        let settled = false;
+        const settle = () => {
+          settled = true;
+          setVoicemailModalPendingId(null);
+          localStorage.removeItem("fcuk.vm.pendingId");
+          fetchVoicemails();
+        };
         const poll = setInterval(async () => {
           try {
             const sr = await fetch(`/api/voicemail?action=status&id=${data.id}`);
@@ -1060,20 +1079,18 @@ export default function ChatPage() {
             setVmStatus(sd);
             if (sd.status === "complete" || sd.status === "error") {
               clearInterval(poll);
-              // v1.11.30: the v1.11.29 path cleared the modal here even
-              // on TTS-fail, so the user lost the visible result.
-              // Now we only clear the pending placeholder; the real ID
-              // stays in vmStatus (and localStorage) so the inline
-              // card shows the final state — text reply + playback bar,
-              // or the error chip with the error code linking to
-              // ERROR-CODES.md — until the user dismisses it.
-              setVoicemailModalPendingId(null);
-              localStorage.removeItem("fcuk.vm.pendingId");
-              fetchVoicemails();
+              settle();
             }
           } catch {}
         }, 2000);
-        setTimeout(() => clearInterval(poll), 300_000);
+        const watchdog = setTimeout(() => {
+          clearInterval(poll);
+          if (!settled) {
+            setVmStatus({ status: "error", error: "Voicemail processing timed out" });
+            setVoicemailModalPendingId(null);
+            localStorage.removeItem("fcuk.vm.pendingId");
+          }
+        }, 300_000);
       } else {
         setVoicemailModalPendingId(null);
         localStorage.removeItem("fcuk.vm.pendingId");

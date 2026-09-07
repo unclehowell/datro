@@ -1,3 +1,20 @@
+## [1.11.39] - 2026-09-07
+
+Release: **v1.11.39 — no more stuck "Queued for processing…" voicemail card**. Two ways the voicemail card could hang on "Queued for processing…" indefinitely (diagnosed after the v1.11.36–38 OTA window):
+
+1. **Stale pending id re-attachment** — the v1.11.30 tab-reload hydration re-opened the modal whenever `fcuk.vm.pendingId` was in localStorage. But a pending id *without* a real id means the `process-async` POST never reached the server (busy/hung during an OTA rebuild), so there is no job to attach to — yet the card re-opened on **every reload** forever. Fix: hydration only re-attaches when a `realId` exists; a lone pending id is cleared.
+2. **Hanging submit / non-terminal poll** — `process-async` had no timeout (a busy server could hang the fetch), and the 300s poll timeout only cleared the interval, leaving the card "Queued…" even after the job went stale. Fix: 30s submit timeout (AbortSignal) and a terminal watchdog that flips the card to "Voicemail processing timed out" after 5 min if the job never settled.
+
+### Fixes
+
+1. `chat/page.tsx` hydration effect — only re-attach to a server job (`realId`); clear a lone `pendingId`.
+2. `chat/page.tsx` `submitVoicemail` — `AbortSignal.timeout(30_000)` on the POST and a settled-watchdog (300 s) that errors instead of idling on "Queued for processing…".
+
+### Verified
+
+- `tsc --noEmit`, `eslint src --max-warnings 0` green.
+- Live voicemail E2E on the laptop (v1.11.38 server): `process-async` → `stt→router(minicpm retry, no tools)→tts`, `provider: omniroute`, reply **"Yes, 12 multiplied by 6 equals 72."**, record + audio persisted.
+
 ## [1.11.38] - 2026-09-07
 
 Release: **v1.11.38 — manifest agent version matches reality**. The OTA manifest declared `agent` version `0.9.0` while `agent.py` itself reports `0.8.0` (both the repo copy and the installed copy). That mismatch made the child-proxy updater think an agent update was perpetually available, so `fcuk-proxy` (agent.py :6100) entered an OTA-restart loop on every start. Patch: `public/fcukproxy/ota-manifest.json` now declares `agent: 0.8.0` to match the shipped file — no agent.py change, no code churn.
