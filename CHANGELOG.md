@@ -1,3 +1,18 @@
+## [1.11.37] - 2026-09-07
+
+Release: **v1.11.37 — clean plain-text answers from the no-tools retry**. The v1.11.36 fix un-stuck the voicemail/chat LLM answer (the without-tools retry now fires and the pipeline completes instead of `E_NO_PROVIDER`), but live validation showed the 1B model emitting its ReAct habit into the *conversational* answer: `"Let me check that for you.\n<function name="calculate_remainder">…</function>"`. That stub played straight into TTS. Patch: the retry now swaps to a **conversational system prompt** ("no tools, never output XML/function-call syntax, compute arithmetic yourself"), and `pipeline.ts` gains a **ReAct reply cleaner**: if a `<function>` stub still appears, execute it via the tool registry when it names a real tool (real work, like the with-tools path), otherwise strip the XML so chat/voicemail never surface raw markup. Verified: `tsc`, `eslint --max-warnings 0`, and the stub-parse/strip regex against real model output.
+
+### Fixes
+
+1. **No-tools retry prompt** — retry uses a conversational system prompt so the 1B model answers in plain text instead of emitting `<function>` XML.
+2. **ReAct stub execution/strip** — `parseReActStub()` + `stripReActReply()` in `pipeline.ts`: stubs naming a real registry tool are executed (output returned as the answer); otherwise all `<function>` XML is removed before the reply reaches chat/voicemail TTS.
+
+### Verified
+
+- `tsc --noEmit`, `eslint src --max-warnings 0` green.
+- Regex round-trip on the exact failing output (`calculate_remainder` with `a=12,b=6`) → parsed, stripped to plain text, self-closing tags removed.
+- v1.11.36's E2E result stands: voicemail `stt→router→minicpm(retry)→tts` completes with `provider: omniroute`.
+
 ## [1.11.36] - 2026-09-07
 
 Release: **v1.11.36 — voicemail/chat LLM answer fix**. Live voicemail testing of v1.11.35 showed STT and routing now work (first successful transcriptions on the laptop after the whisper‑stt venv rebuild), but the **answer stage failed with a misleading `E_NO_PROVIDER`**. `pipeline.ts` sent the 17‑tool ReAct catalog to the local 1B model; ollama rejected it (`500 "Failed to parse tools: Unsupported tool type"`), the catch block then **swallowed the error without the no‑tools retry its comment promised**, and with hermes down nothing answered. Patch: retry `complete()` once **without** tools, and gate‑start `hermes-proxy` (:9119) before the hermes stage so it doesn't hard‑fail from a merely exited service. Verified: `tsc`, `eslint --max-warnings 0`; a direct no‑tools completion through omniroute returns HTTP 200.

@@ -203,6 +203,35 @@ async function classifyTask(msg: string, messages: Array<{ role: string; content
 
 // ─── Main entry point ──────────────────────────────────────
 
+// ─── ReAct response cleanup (v1.11.37) ──────────────────────
+// The 1B model is trained to emit <function>…</function> tool-call XML.
+// When the tool catalog is rejected (ollama can't parse the schema for
+// the non-tooling model) we retry WITHOUT tools, but the model still
+// reaches for tool syntax. Clean the reply:
+//   1. If a stub names a real registry tool, execute it and return the
+//      output as the answer (legit real work, same as the with-tools path).
+//   2. Otherwise strip every <function>…</function> stub so the user
+//      never hears XML in chat or voicemail TTS.
+const REACT_FUNCTION_RE = /<function\s+name=["']([^"']+)["']\s*>([\s\S]*?)<\/function>|<function\s+name=["']([^"']+)["'][^>]*\/>/g;
+const REACT_PARAM_RE = /<param\s+name=["']([^"']+)["']\s*>([\s\S]*?)<\/param>/g;
+
+function parseReActStub(content: string): Array<{ name: string; args: Record<string, string> }> {
+  const out: Array<{ name: string; args: Record<string, string> }> = [];
+  for (const m of content.matchAll(REACT_FUNCTION_RE)) {
+    const name = m[1] || m[3] || "";
+    const args: Record<string, string> = {};
+    for (const p of (m[2] || "").matchAll(REACT_PARAM_RE)) {
+      args[p[1]] = p[2]?.trim() || "";
+    }
+    if (name) out.push({ name, args });
+  }
+  return out;
+}
+
+function stripReActReply(content: string): string {
+  return content.replace(REACT_FUNCTION_RE, "").replace(/\s*\n\s*/g, "\n").trim();
+}
+
 export async function runPrompt(
   msg: string,
   history: Array<{ role: "system" | "user" | "assistant"; content: string }>,
@@ -293,8 +322,18 @@ export async function runPrompt(
     } catch {
       // First (with-tools) call failed — retry without tools. timed() already
       // emitted an ok=false minicpm event for the tools attempt.
+      // v1.11.37: ALSO swap to a conversational system prompt for the retry so
+      // the 1B model answers in plain text instead of emitting <function> XML
+      // into the reply (its ReAct habit even without a tools schema).
+      const noToolsSystem: { role: "system"; content: string } = {
+        role: "system",
+        content: "You are Hermes, the local AgentOS chat brain. Answer conversationally in plain text and keep responses concise. You do NOT have tools available — never output XML, JSON, or function-call syntax. Compute simple arithmetic yourself and state the result.",
+      };
       try {
-        firstCompletion = await timed("minicpm", () => complete({ ...minicpmBase }), onPhase);
+        firstCompletion = await timed("minicpm", () => complete({
+          ...minicpmBase,
+          messages: [noToolsSystem, ...history.slice(-8)],
+        }), onPhase);
       } catch {
         // Second attempt failed too; timed() emitted ok=false — fall through.
       }
@@ -348,6 +387,51 @@ export async function runPrompt(
     }
 
     if (firstContent) {
+      // v1.11.37: even without a tools schema the 1B model may emit ReAct
+      // <function>…</function> XML into a plain answer. If a stub names a REAL
+      // registry tool, execute it (legit real work) and return its output;
+      // otherwise strip the XML so chat/voicemail never surfaces raw markup.
+      const stubs = parseReActStub(firstContent);
+      if (stubs.length > 0) {
+        for (const stub of stubs) {
+          try {
+            const r = await loop.getToolRegistry().execute({
+              id: `stub-${Date.now()}`,
+              tool: stub.name,
+              parameters: stub.args,
+              timestamp: Date.now(),
+            });
+            const output = String(r.output || "").slice(0, 4000);
+            if (r.success && output) {
+              onPhase({ phase: "tools", ok: true, detail: stub.name });
+              return {
+                reply: output,
+                routed: "tool_use",
+                provider: "tools",
+                backend: stub.name,
+                events,
+                toolCalls: [stub.name],
+                toolsExecuted: [stub.name],
+              };
+            }
+          } catch {
+            /* registry doesn't know the tool — strip instead */
+          }
+        }
+        const cleaned = stripReActReply(firstContent);
+        if (cleaned) {
+          onPhase({ phase: "ollama", ok: true });
+          return {
+            reply: cleaned,
+            routed: "chat",
+            provider: "omniroute",
+            model: "openbmb/minicpm5",
+            events,
+            toolCalls,
+            toolsExecuted,
+          };
+        }
+      }
       onPhase({ phase: "ollama", ok: true });
       return {
         reply: firstContent,
