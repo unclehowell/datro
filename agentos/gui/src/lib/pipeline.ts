@@ -140,6 +140,37 @@ async function startTaskRouter(): Promise<boolean> {
   }
 }
 
+// ─── hermes gate (mirrors startTaskRouter) ─────────────────────
+
+const HERMES_PORT = parseInt(process.env.HERMES_PORT || "9119", 10);
+
+function isHermesUp(): Promise<boolean> {
+  return fetch(`http://localhost:${HERMES_PORT}/api/skills`, { signal: AbortSignal.timeout(3000) })
+    .then((r) => r.ok)
+    .catch(() => false);
+}
+
+async function startHermes(): Promise<boolean> {
+  try {
+    if (await userServiceActive("hermes-proxy")) return await isHermesUp();
+    const exists = await new Promise<boolean>((resolve) => {
+      execFileAsync("systemctl", ["--user", "list-unit-files", "hermes-proxy.service"], { timeout: 10_000 })
+        .then(({ stdout }) => resolve(/hermes-proxy\.service/.test(stdout)))
+        .catch(() => resolve(false));
+    });
+    if (!exists) return false;
+    await userService("hermes-proxy", "start");
+    const deadline = Date.now() + 15_000;
+    while (Date.now() < deadline) {
+      if (await isHermesUp()) return true;
+      await new Promise((r) => setTimeout(r, 1500));
+    }
+    return await isHermesUp();
+  } catch {
+    return false;
+  }
+}
+
 async function classifyTask(msg: string, messages: Array<{ role: string; content: string }>): Promise<any | null> {
   if (!(await isTaskRouterUp())) {
     const started = await startTaskRouter();
@@ -208,6 +239,10 @@ export async function runPrompt(
 
     // 2. Local: hermes → minicpm (via omniroute) with ReAct tool loop
     try {
+      // v1.11.36: gate-start hermes-proxy (user service, :9119) like the
+      // router/omniroute so the stage has a fair chance instead of
+      // hard-failing with "fetch failed" when the service exited.
+      await startHermes();
       const hermesReply = await timed("hermes", () => sendToHermes(msg, JSON.stringify({ messages: history.slice(-8), router: routed })), onPhase);
       const reply = hermesReply.value;
       if (reply && reply !== "No response") {
@@ -238,17 +273,31 @@ export async function runPrompt(
     ];
 
     let firstCompletion: any;
+    const minicpmBase = {
+      model: "openbmb/minicpm5",
+      messages: baseMessages,
+      temperature: 0.7,
+      max_tokens: 700,
+      stream: false,
+    };
     try {
+      // v1.11.36: the tool catalog (ReAct) is rejected by the local 1B model
+      // (ollama → 500 "Failed to parse tools"). When the tool-using call fails
+      // we retry ONCE without tools so a plain conversational answer still
+      // comes back; without this retry voicemail/chat surfaced a misleading
+      // E_NO_PROVIDER when hermes was also down.
       firstCompletion = await timed("minicpm", () => complete({
-        model: "openbmb/minicpm5",
-        messages: baseMessages,
-        temperature: 0.7,
-        max_tokens: 700,
-        stream: false,
+        ...minicpmBase,
         ...(tools ? { tools, tool_choice: "auto" } : {}),
       }), onPhase);
     } catch {
-      // Phase event already emitted with ok=false; fall through to without-tools retry
+      // First (with-tools) call failed — retry without tools. timed() already
+      // emitted an ok=false minicpm event for the tools attempt.
+      try {
+        firstCompletion = await timed("minicpm", () => complete({ ...minicpmBase }), onPhase);
+      } catch {
+        // Second attempt failed too; timed() emitted ok=false — fall through.
+      }
     }
 
     const firstMessage = firstCompletion?.value?.choices?.[0]?.message ?? {};

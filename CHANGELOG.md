@@ -1,3 +1,18 @@
+## [1.11.36] - 2026-09-07
+
+Release: **v1.11.36 — voicemail/chat LLM answer fix**. Live voicemail testing of v1.11.35 showed STT and routing now work (first successful transcriptions on the laptop after the whisper‑stt venv rebuild), but the **answer stage failed with a misleading `E_NO_PROVIDER`**. `pipeline.ts` sent the 17‑tool ReAct catalog to the local 1B model; ollama rejected it (`500 "Failed to parse tools: Unsupported tool type"`), the catch block then **swallowed the error without the no‑tools retry its comment promised**, and with hermes down nothing answered. Patch: retry `complete()` once **without** tools, and gate‑start `hermes-proxy` (:9119) before the hermes stage so it doesn't hard‑fail from a merely exited service. Verified: `tsc`, `eslint --max-warnings 0`; a direct no‑tools completion through omniroute returns HTTP 200.
+
+### Fixes
+
+1. **No‑tools retry** — `routeThroughLocalStack()` now retries `openbmb/minicpm5` with `tools`/`tool_choice` removed when the tool‑using call fails, so a plain conversational answer comes back instead of `E_NO_PROVIDER`.
+2. **hermes gate‑start** — `startHermes()` mirrors `startTaskRouter()`: starts the `hermes-proxy` user service if inactive and waits (≤15 s) for `:9119` before the hermes phase runs; best‑effort, no output change if hermes is unavailable.
+
+### Verified live (laptop)
+
+- `whisper-stt.service` healthy after the venv rebuild (transcription of a real voicemail completed in 9.7 s).
+- Direct omniroute → ollama completion (no tools) answers successfully.
+- Idle-by-default preserved: gate releases ollama / omniroute / whisper after the answer.
+
 ## [1.11.35] - 2026-09-07
 
 Release: **v1.11.35 — Stage 1: WS-03/04/08/09/10/13/14**. The Stage‑1 batch after Stage 0 landed on both nodes. Ships the voicemail pipeline hardening (real STT abort + text‑only transcripts + quota/prune), an OTA task ledger for crash‑resume, adaptive update cadence, refusal retries in task routing, a fresh chat‑route decomposition with honest chips + WS nonce + retry‑once, the release gates (version‑constants lint, shellcheck at error severity, CI, smoke test) and the explicit storage contract. **Deliberate deviation (WS‑07 note):** the child‑proxy gateway binds `:4001` (`fcukproxy-child.service`) and proxies to `agent.py` on `:6100` (`PROXY_PORT`); `6100` is agent.py's own port — see `docs/ARCHITECTURE.md`.
