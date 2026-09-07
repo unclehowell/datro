@@ -327,7 +327,7 @@ export async function runPrompt(
       // into the reply (its ReAct habit even without a tools schema).
       const noToolsSystem: { role: "system"; content: string } = {
         role: "system",
-        content: "You are Hermes, the local AgentOS chat brain. Answer conversationally in plain text and keep responses concise. You do NOT have tools available — never output XML, JSON, or function-call syntax. Compute simple arithmetic yourself and state the result.",
+        content: "You are Hermes, the local AgentOS chat brain. Answer conversationally in plain text and keep responses concise. You do NOT have tools available — never output XML, JSON, or function-call syntax. Compute simple arithmetic yourself and state ONLY the final result (e.g. \"35\"), with no working-out or alternative methods." + (opts.systemSuffix || ""),
       };
       try {
         firstCompletion = await timed("minicpm", () => complete({
