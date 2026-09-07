@@ -1,3 +1,20 @@
+## [1.11.40] - 2026-09-07
+
+Release: **v1.11.40 — one voice-clip reply card + final-answer-only voicemail**. Two voicemail annoyances:
+
+1. **The reply was spread across three cards/segments.** Once the prompt responded, the voicemail panel showed the plain list-item card, a separate "Voicemail reply" card that ALSO pasted the whole chat pipeline breadcrumb (`webgui > roulette(…) > hermes > ollama > minicpm5 > router > tools > mcp`) on top, and the verbose LLM working text next to the audio player. Now the active voicemail renders as a **single card** containing only the concise final answer + the voice clip (PlaybackBar) — the breadcrumb and the duplicate item are gone.
+2. **The reply was verbose.** A "5 multiplied by 7" prompt produced a full working-out paragraph with two alternative methods. With the voicemail system suffix, replies are now the **final answer or deliverable only** (e.g. just "35").
+
+### Fixes
+
+1. `chat/page.tsx` — the active voicemail (`voicemailModalRealId`) now renders inline as the single reply card (final answer + PlaybackBar); the duplicate list-item and the separate breadcrumb-pasting "Voicemail reply" card were removed.
+2. `lib/pipeline.ts` — the no-tools retry system prompt also appends the caller's `systemSuffix` and now demands "state ONLY the final result … no working-out or alternative methods".
+3. `api/voicemail/route.ts` — strict `systemSuffix`: answer with only the final answer/deliverable; no preamble/explanation/markdown; "35" for a calculation.
+
+### Verified
+
+- `tsc --noEmit` clean for changed files; `eslint src --max-warnings 0` green.
+
 ## [1.11.39] - 2026-09-07
 
 Release: **v1.11.39 — no more stuck "Queued for processing…" voicemail card**. Two ways the voicemail card could hang on "Queued for processing…" indefinitely (diagnosed after the v1.11.36–38 OTA window):

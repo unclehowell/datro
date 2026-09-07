@@ -1764,82 +1764,54 @@ export default function ChatPage() {
                 );
               })()}
 
-              {voicemails.map((vm) => (
-                <div key={vm.id} className={`p-3 rounded-lg border ${vm.played ? "bg-zinc-800/30 border-zinc-700/50" : "bg-accent/10 border-accent/30"} transition-colors`}>
-                  <div className="flex items-start justify-between gap-2 mb-2">
-                    <div className="flex-1 min-w-0">
-                      <div className="text-xs text-text-primary truncate">{vm.userText || "(no transcript)"}</div>
-                      <div className="text-[10px] text-text-muted mt-1 truncate">{vm.agentText || "(no reply)"}</div>
+              {voicemails.map((vm) => {
+                // v1.11.40: an active voicemail renders as ONE card — the
+                // voice clip (PlaybackBar) + concise final answer — in place
+                // of the plain list item. Replaces the old "Voicemail reply"
+                // card that duplicated the item AND pasted the whole chat
+                // pipeline breadcrumb (webgui > roulette(…) > …) on top.
+                if (voicemailModalRealId === vm.id) {
+                  return (
+                    <div key={vm.id} className="p-3 rounded-lg border border-accent/40 bg-accent/5">
+                      <div className="text-[10px] text-text-muted mb-2">Voicemail reply</div>
+                      <div className="text-sm text-text-primary whitespace-pre-wrap mb-2">{vm.agentText || vmStatus?.agentText || "(no reply)"}</div>
+                      <div className="text-[11px] text-text-muted border-l-2 border-border pl-2 mb-2">{vm.userText || vmStatus?.userText || "(no transcript)"}</div>
+                      <PlaybackBar
+                        vmId={vm.id}
+                        audioPath={vm.audioPath || ""}
+                        onDelete={() => { deleteVoicemail(vm.id).then(() => setVoicemailModalRealId(null)); }}
+                        onClose={() => { setVoicemailModalRealId(null); }}
+                      />
                     </div>
-                    {!vm.played && <span className="w-2 h-2 rounded-full bg-red-500 shrink-0 mt-1" />}
-                  </div>
-                  <div className="flex items-center gap-2">
-                    <button
-                      onClick={() => { setVoicemailModalRealId(vm.id); }}
-                      className="flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 rounded bg-accent/20 border border-accent/30 text-accent text-xs hover:bg-accent/30 transition-colors"
-                    >
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                      {vm.played ? "Replay" : "Play"}
-                    </button>
-                    <button
-                      onClick={async () => { await deleteVoicemail(vm.id); }}
-                      className="px-2 py-1.5 rounded bg-zinc-800 border border-zinc-700 text-zinc-400 text-xs hover:text-red-400 hover:border-red-500/30 transition-colors"
-                    >
-                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-                    </button>
-                  </div>
-                <div className="text-[10px] text-text-muted mt-2">{new Date(vm.timestamp).toLocaleString()}</div>
-                 </div>
-               ))}
-
-              {/* v1.11.32: Voicemail playback renders INLINE inside the voicemail
-                  list panel instead of as a separate full-screen overlay.
-                  Tapping "Play" on a voicemail shows the breadcrumb + PlaybackBar
-                  directly in the panel. */}
-              {voicemailModalRealId && (() => {
-                const vm = voicemails.find((v) => v.id === voicemailModalRealId);
-                if (!vm) return null;
+                  );
+                }
                 return (
-                  <div key={vm.id} className="p-3 rounded-lg border border-accent/30 bg-accent/5">
-                    <div className="text-[10px] text-text-muted mb-2">Voicemail reply</div>
-                    {/* Full pipeline breadcrumb (stt → llm → tts → complete) */}
-                    <div className="flex items-center gap-0 text-[10px] font-mono justify-center flex-wrap mb-2">
-                      {breadcrumbData.map((seg, i) => {
-                        const colors = STATUS_COLORS[seg.status];
-                        return (
-                          <span key={seg.id} className="flex items-center">
-                            {i > 0 && <span className="text-text-muted mx-0.5">&gt;</span>}
-                            <span
-                              className="px-1.5 py-0.5 rounded whitespace-nowrap"
-                              style={{
-                                color: colors.text,
-                                backgroundColor: colors.bg,
-                                border: `1px solid ${colors.border}`,
-                                opacity: seg.status === "off" ? 0.35 : 1,
-                              }}
-                              title={seg.label}
-                            >
-                              {seg.icon} {seg.label}
-                            </span>
-                          </span>
-                        );
-                      })}
+                  <div key={vm.id} className={`p-3 rounded-lg border ${vm.played ? "bg-zinc-800/30 border-zinc-700/50" : "bg-accent/10 border-accent/30"} transition-colors`}>
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <div className="flex-1 min-w-0">
+                        <div className="text-xs text-text-primary truncate">{vm.userText || "(no transcript)"}</div>
+                        <div className="text-[10px] text-text-muted mt-1 truncate">{vm.agentText || "(no reply)"}</div>
+                      </div>
+                      {!vm.played && <span className="w-2 h-2 rounded-full bg-red-500 shrink-0 mt-1" />}
                     </div>
-                    {vmStatus?.userText && (
-                      <div className="text-[11px] text-text-muted border-l-2 border-border pl-2 mb-2">{vmStatus.userText}</div>
-                    )}
-                    {vmStatus?.agentText && (
-                      <div className="text-xs text-text-primary whitespace-pre-wrap border-l-2 border-accent/40 pl-2 mb-2">{vmStatus.agentText}</div>
-                    )}
-                    <PlaybackBar
-                      vmId={voicemailModalRealId}
-                      audioPath={vm.audioPath || ""}
-                      onDelete={() => { deleteVoicemail(voicemailModalRealId).then(() => setVoicemailModalRealId(null)); }}
-                      onClose={() => { setVoicemailModalRealId(null); }}
-                    />
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => { setVoicemailModalRealId(vm.id); }}
+                        className="flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 rounded bg-accent/20 border border-accent/30 text-accent text-xs hover:bg-accent/30 transition-colors"
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        {vm.played ? "Replay" : "Play"}
+                      </button>
+                      <button
+                        onClick={async () => { await deleteVoicemail(vm.id); }}
+                        className="px-2 py-1.5 rounded bg-zinc-800 border border-zinc-700 text-zinc-400 text-xs hover:text-red-400 hover:border-red-500/30 transition-colors"
+                      >
+                        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+                      </button>
+                    </div>
                   </div>
                 );
-              })()}
+              })}
             </div>
           </div>
         </div>

@@ -553,7 +553,7 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
       pipelineResult = await withSerializedLLM(async () => {
         await ensureStackForVoicemail(resources);
         return runPrompt(userText, [...history, { role: "user", content: userText }], {
-          systemSuffix: "",
+          systemSuffix: " This reply is spoken aloud as a short voicemail. Answer with ONLY the final answer or deliverable requested — no preamble, no explanation, no working-out, no alternative methods, no markdown. For a calculation, reply with just the result (e.g. \"35\").",
           voiceCall: true,
           onPhase: (evt: PipelineEvent) => {
             // Translate the chat-pipeline phase into a voicemail stage.
