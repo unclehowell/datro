@@ -1,0 +1,71 @@
+name: CI (merge gate)
+
+# WS-13 (v1.11.35): the branch merge gate. Runs on every push to the release
+# branches and on pull requests. Failing these checks means the release cannot
+# be tagged: shell syntax must be clean, the GUI must typecheck and lint, no
+# hardcoded release version outside .version, and the release surface must
+# smoke-test against the live parent.
+
+on:
+  push:
+    branches: [financecheque, command]
+  pull_request:
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  lint:
+    name: Shell + version-constant lint
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Shellcheck (tracked shell scripts)
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq shellcheck
+          bash scripts/shellcheck-all.sh
+
+      - name: Release-version literal lint (WS-06 rule)
+        run: bash scripts/check-version-constants.sh
+
+  gui:
+    name: GUI lint + typecheck
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: agentos/gui
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: agentos/gui/package-lock.json
+
+      - name: npm ci
+        run: npm ci
+
+      - name: ESLint (CI calibration, zero warnings)
+        run: npm run lint:ci
+
+      - name: TypeScript (tsconfig.ci.json, excludes remotion/.next)
+        run: npx tsc --noEmit -p tsconfig.ci.json
+
+  smoke:
+    name: Release-surface smoke test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Static + live smoke test
+        run: node scripts/smoke-test.mjs
+        env:
+          FCUK_SMOKE_BASE: ${{ secrets.FCUK_SMOKE_BASE }}

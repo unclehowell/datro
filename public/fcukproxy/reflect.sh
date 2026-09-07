@@ -33,12 +33,14 @@ log "reviewed ${TOTAL_ITERS} iterations, ${TOTAL_LEADS} leads (${LEAD_OK} ok / $
 
 # Compile a compact daily digest for memory. Pure shell — no LLM needed, so a
 # reflect pass costs nothing even on a low-spec node.
-cat > "${FCUK_DIR}/.reflect-digest-$DATE.md" << EOF | log "wrote digest"
+cat > "${FCUK_DIR}/.reflect-digest-$DATE.md" << EOF
 ## Daily digest $DATE (node $MACHINE_ID)
 - Iterations run today: ${TOTAL_ITERS}
 - Leads reported: ${TOTAL_LEADS} (${LEAD_OK} ok / ${LEAD_FAIL} fail)
 - Work dirs: $(ls -1 "${FCUK_DIR}/campaigns" 2>/dev/null | wc -l) order(s)
 EOF
+log "wrote digest"
+echo "  digest: ${FCUK_DIR}/.reflect-digest-$DATE.md"
 
 # Append a dated digest line to persistent memory (only the numbers, cheap).
 {

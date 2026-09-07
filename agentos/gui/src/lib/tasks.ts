@@ -130,7 +130,7 @@ export class TaskManager {
       return true;
     }
     if (this.active && this.active.task.id === id) {
-      try { process.kill(-this.active.child.pid, "SIGKILL"); } catch {}
+      if (this.active.child.pid != null) { try { process.kill(-this.active.child.pid, "SIGKILL"); } catch {} }
       try { this.active.child.kill("SIGKILL"); } catch {}
       task.status = "cancelled";
       task.completedAt = Date.now();
@@ -284,7 +284,7 @@ export class TaskManager {
   }
 
   private pause(task: Task, child: ChildProcess): void {
-    try { process.kill(-child.pid, "SIGSTOP"); } catch {}
+    if (child.pid != null) { try { process.kill(-child.pid, "SIGSTOP"); } catch {} }
     try { child.kill("SIGSTOP"); } catch {}
     if (this.resumeSince.has(task.id)) {
       this.activeMs.set(task.id, (this.activeMs.get(task.id) || 0) + (Date.now() - (this.resumeSince.get(task.id) || Date.now())));
@@ -296,7 +296,7 @@ export class TaskManager {
   }
 
   private resume(task: Task, child: ChildProcess): void {
-    try { process.kill(-child.pid, "SIGCONT"); } catch {}
+    if (child.pid != null) { try { process.kill(-child.pid, "SIGCONT"); } catch {} }
     try { child.kill("SIGCONT"); } catch {}
     this.resumeSince.set(task.id, Date.now());
     task.status = "running";
@@ -340,7 +340,7 @@ export class TaskManager {
 const GLOBAL_KEY = "__agentosTaskManager";
 
 function getGlobal(): { [key: string]: TaskManager } {
-  return globalThis as { [key: string]: TaskManager };
+  return globalThis as unknown as { [key: string]: TaskManager };
 }
 
 export function getTaskManager(): TaskManager {

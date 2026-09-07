@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback, useMemo } from "react";
 import Link from "next/link";
+import RouteChip from "@/components/chat/RouteChip";
 import { startDialTone, stopDialTone, playAnswerChime, startHoldTone, stopHoldTone, playHangUpTone, playBeep } from "@/lib/voice";
 
 const CHAT_CACHE_KEY = "agentos-chat-messages";
@@ -17,12 +18,22 @@ interface Message {
   role: "user" | "assistant";
   content: string;
   timestamp: number;
+  // WS-03 (v1.11.35): per-message nonce so identical text sent twice is never
+  // mixed up by the server, and a request that is auto-retried once carries the
+  // same nonce (the retry is the SAME logical message, not a duplicate).
+  nonce?: string;
   toolCalls?: Array<{ tool: string; params: Record<string, string>; result?: string }>;
   routed?: string;
   dependency?: string;
   provider?: string;
   videoResult?: { filename: string; path: string };
   errorCode?: string;
+}
+
+function makeNonce(): string {
+  return typeof crypto !== "undefined" && typeof crypto.randomUUID === "function"
+    ? crypto.randomUUID()
+    : "n-" + Date.now().toString(36) + Math.random().toString(36).slice(2, 10);
 }
 
 function loadCachedMessages(): Message[] {
@@ -83,11 +94,6 @@ const STATUS_COLORS = {
   amber: { text: "#f59e0b", bg: "rgba(245,158,11,0.1)", border: "rgba(245,158,11,0.3)", glow: "0 0 8px rgba(245,158,11,0.4)" },
   red:   { text: "#ef4444", bg: "rgba(239,68,68,0.1)", border: "rgba(239,68,68,0.3)", glow: "0 0 8px rgba(239,68,68,0.4)" },
   off:   { text: "#525252", bg: "rgba(30,30,30,0.3)", border: "rgba(50,50,50,0.3)", glow: "none" },
-};
-
-const ROUTE_ICONS: Record<string, string> = {
-  chat: "\uD83D\uDCAC", exec: "\u2699\uFE0F", math: "\uD83E\uDDEE",
-  video: "\uD83C\uDFAC", tool: "\uD83D\uDD27", mcp: "\uD83D\uDD17", idle: "\u23FA",
 };
 
 const ALL_TOOLS = [
@@ -466,7 +472,11 @@ function PlaybackBar({ vmId, audioPath, onDelete, onClose }: { vmId: string; aud
     };
   }, [vmId]);
 
-  const togglePlay = () => { if (!audioRef.current) return; playing ? audioRef.current.pause() : audioRef.current.play(); };
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+    if (playing) audioRef.current.pause();
+    else audioRef.current.play();
+  };
   const toggleSpeed = () => {
     const speeds = [1, 1.5, 2, 0.5];
     const next = speeds[(speeds.indexOf(speed) + 1) % speeds.length];
@@ -1358,7 +1368,7 @@ export default function ChatPage() {
     const msg = text || input.trim();
     if (!msg || streaming || proxyLocked) return;
 
-    const userMsg: Message = { role: "user", content: msg, timestamp: Date.now() };
+    const userMsg: Message = { role: "user", content: msg, timestamp: Date.now(), nonce: makeNonce() };
     setMessages((prev) => [...prev, userMsg]);
     if (!text) setInput("");
     setStreaming(true);
@@ -1373,18 +1383,41 @@ export default function ChatPage() {
 
     startSpin();
 
-    const assistantMsg: Message = { role: "assistant", content: "", timestamp: Date.now() };
+    const assistantMsg: Message = { role: "assistant", content: "", timestamp: Date.now(), nonce: makeNonce() };
     setMessages((prev) => [...prev, assistantMsg]);
 
     try {
-      const chatHistory = [...messages, userMsg].map((m) => ({ role: m.role, content: m.content }));
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: chatHistory, model, mode }),
-      });
+      const chatHistory = [...messages, userMsg].map((m) => ({ role: m.role, content: m.content, nonce: m.nonce }));
+      const body = { messages: chatHistory, model, mode, nonce: userMsg.nonce };
+      let res: Response;
+      let attempt = 0;
+      for (;;) {
+        attempt++;
+        try {
+          res = await fetch("/api/chat", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(body),
+          });
+          // WS-03: retry-once. Only transient-looking failures qualify: network
+          // errors, HTTP 429/5xx. A 4xx (auth/validation) or a completed
+          // response never retries, and the nonce is unchanged so the server
+          // treats the retry as the same logical message.
+          if (res.ok) break;
+          if (attempt >= 2 || (res.status >= 400 && res.status < 500 && res.status !== 429)) {
+            break;
+          }
+          await new Promise((r) => setTimeout(r, 1200));
+          continue;
+        } catch {
+          // Network-level failure — retry once.
+          if (attempt >= 2) throw new Error(`Chat error: network`);
+          await new Promise((r) => setTimeout(r, 1200));
+          continue;
+        }
+      }
 
-      if (!res.ok) throw new Error(`Chat error: ${res.status}`);
+      if (!res!.ok) throw new Error(`Chat error: ${res!.status}`);
 
       const rawText = await res.text();
       let accumulated = "";
@@ -1835,19 +1868,7 @@ export default function ChatPage() {
             >
               {msg.role === "assistant" && msg.content && (
                 <div className="flex items-center gap-1.5 mb-2 flex-wrap">
-                  {msg.routed && (
-                    <span className="text-[10px] px-1.5 py-0.5 rounded font-mono" style={{ color: STATUS_COLORS.green.text, backgroundColor: STATUS_COLORS.green.bg, border: `1px solid ${STATUS_COLORS.green.border}` }}>
-                      {ROUTE_ICONS[msg.routed] || "\uD83D\uDD27"} {msg.routed.toUpperCase()}
-                    </span>
-                  )}
-                  {msg.dependency && (
-                    <span className="text-[10px] px-1.5 py-0.5 rounded font-mono" style={{ color: STATUS_COLORS.green.text, backgroundColor: STATUS_COLORS.green.bg, border: `1px solid ${STATUS_COLORS.green.border}` }}>
-                      {msg.dependency}
-                    </span>
-                  )}
-                  {msg.provider && (
-                    <span className="text-[10px] px-1 py-0.5 rounded bg-zinc-800/50 text-zinc-400 border border-zinc-700">via {msg.provider}</span>
-                  )}
+                  <RouteChip routed={msg.routed} dependency={msg.dependency} provider={msg.provider} />
                   {msg.errorCode && (
                     <a
                       href="/ERROR-CODES.md"

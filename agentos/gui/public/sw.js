@@ -1,4 +1,7 @@
-const CACHE_NAME = "agentos-v1";
+// v1.11.35 (WS-05): bumped agentos-v1 -> agentos-v2 so browsers holding an
+// old cache drop it on first visit and start fetching fresh assets. Any future
+// cache-invalidating change MUST bump this string again.
+const CACHE_NAME = "agentos-v2";
 const PRECACHE = ["/chat", "/manifest.json", "/icons/icon-192.svg", "/icons/icon-512.svg"];
 
 self.addEventListener("install", (e) => {

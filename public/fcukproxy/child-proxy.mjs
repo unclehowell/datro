@@ -36,14 +36,24 @@ import fs from 'fs';
 
 const PARENT_URL = process.env.PARENT_URL || 'https://www.financecheque.uk';
 const CHILD_ID = process.env.CHILD_ID || process.env.MACHINE_ID || `child-${os.hostname()}`;
-const PORT = Number(process.env.PORT) || 4001;
 const MACHINE_NAME = process.env.MACHINE_NAME || os.hostname();
 const AGENT_ROLE = process.env.AGENT_ROLE || 'chat';
-const EXECUTOR_URL = process.env.AGENT_PORT ? `http://localhost:${process.env.AGENT_PORT}` : 'http://localhost:6100';
+// Port topology (WS-07): this gateway (child-proxy.mjs) listens on PORT (:4001,
+// `fcukproxy-child.service`). It proxies OpenAI-style requests to the *Python*
+// child-proxy agent (agent.py, `fcuk-proxy.service`) which listens on
+// AGENT_PORT (:6100). Two distinct processes, two ports — never collapse them
+// onto one number or the gateway would proxy into itself.
+const GATEWAY_PORT_DEFAULT = 4001;
+const AGENT_PORT_DEFAULT = 6100; // agent.py PROXY_PORT default
+const PORT = Number(process.env.PORT) || GATEWAY_PORT_DEFAULT;
+const EXECUTOR_URL = process.env.AGENT_PORT ? `http://localhost:${process.env.AGENT_PORT}` : `http://localhost:${AGENT_PORT_DEFAULT}`;
 const LOCAL_TOKEN = process.env.FCUK_LOCAL_TOKEN || '';
 const AUTH_HEADER = 'X-FCUK-Token';
 const authHeader = (h) => h[String(AUTH_HEADER).toLowerCase()] ?? h[AUTH_HEADER] ?? '';
-const VERSION = '0.11.0';
+const VERSION = '0.11.1';
+// Parent ⇄ child protocol version. Bump on any breaking change to the JSON
+// bodies sent to /api/proxy (register/heartbeat/route/execute).
+const PROTOCOL_SCHEMA = 2;
 const FCUK_DIR = `${process.env.HOME}/.fcukproxy`;
 
 function readLocalAgentVersion() {
@@ -485,6 +495,7 @@ async function getPressure() {
 
 function register() {
   const body = JSON.stringify({
+    schema: PROTOCOL_SCHEMA,
     childId: CHILD_ID,
     machine_id: CHILD_ID,
     machine_name: MACHINE_NAME,
@@ -513,6 +524,7 @@ function register() {
 async function sendHeartbeat() {
   const [capabilities, pressure] = await Promise.all([getCapabilities(), getPressure()]);
   const body = JSON.stringify({
+    schema: PROTOCOL_SCHEMA,
     machine_id: CHILD_ID,
     machine_name: MACHINE_NAME,
     load: activeJobs,
@@ -534,6 +546,7 @@ async function sendHeartbeat() {
 
 async function routeToParent(messages, model, isAgentic = false) {
   const body = JSON.stringify({
+    schema: PROTOCOL_SCHEMA,
     model: model || 'proxy-router',
     messages,
     max_tokens: 1024,
@@ -566,7 +579,7 @@ async function routeToParent(messages, model, isAgentic = false) {
 
 async function queryLocalLLM(messages, model) {
   const endpoints = [
-    { url: 'http://localhost:6100/v1/chat/completions', format: 'openai' },
+    { url: `http://localhost:${AGENT_PORT_DEFAULT}/v1/chat/completions`, format: 'openai' },
     { url: 'http://localhost:11434/api/chat', format: 'ollama' },
     { url: 'http://localhost:5000/v1/chat/completions', format: 'openai' },
     { url: 'http://localhost:8080/v1/chat/completions', format: 'openi' }
@@ -630,6 +643,7 @@ const server = http.createServer(async (req, res) => {
     const hasDeepAgent = fs.existsSync(`${process.env.HOME}/.fcukproxy/deepagent-service.py`);
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({
+      schema: PROTOCOL_SCHEMA,
       machine_id: CHILD_ID,
       role: AGENT_ROLE,
       capabilities: { agent_exec: hasExec, git: true, node: true, deepagent: hasDeepAgent },
@@ -640,8 +654,39 @@ const server = http.createServer(async (req, res) => {
   }
 
   if (req.method === 'GET' && path === '/health') {
+    // Real state, not a static ok: error if we've failed hard, else active if a
+    // job is in flight, else idle. Also probe the Python agent so an observer
+    // sees the whole local topology, not just this gateway.
+    let state = activeJobs > 0 ? 'active' : 'idle';
+    let agentHealth = null;
+    try {
+      const probe = await fetch(`${EXECUTOR_URL}/health`, {
+        headers: { 'Content-Type': 'application/json' },
+        signal: AbortSignal.timeout(2500),
+      });
+      agentHealth = probe.ok ? { ok: true } : { ok: false, http: probe.status };
+    } catch { agentHealth = { ok: false, http: 0 }; }
+    if (!agentHealth.ok) state = 'error';
+    const now = Date.now();
     res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ ok: true, machine_id: CHILD_ID, version: VERSION, role: AGENT_ROLE }));
+    res.end(JSON.stringify({
+      ok: true,
+      schema: PROTOCOL_SCHEMA,
+      machine_id: CHILD_ID,
+      version: VERSION,
+      protocol_version: PROTOCOL_SCHEMA,
+      state,
+      jobs: activeJobs,
+      gateway_port: PORT,
+      agent_port: AGENT_PORT_DEFAULT,
+      agent_reached: agentHealth.ok,
+      agent_http: agentHealth.http,
+      versions: LOCAL_VERSIONS,
+      uptime_s: Math.round(process.uptime()),
+      memory_mb: Math.round(process.memoryUsage().rss / 1048576),
+      role: AGENT_ROLE,
+      ts: new Date(now).toISOString()
+    }));
     return;
   }
 

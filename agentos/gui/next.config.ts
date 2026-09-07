@@ -1,6 +1,10 @@
 import type { NextConfig } from "next";
 
-const nextConfig: NextConfig = {
+// Cast via `as` (not a typed annotation) so the `eslint.ignoreDuringBuilds`
+// key is accepted even though this Next release's NextConfig type no longer
+// declares it. Runtime behaviour is preserved: `next build` must NOT fail on
+// lint warnings during OTA rebuilds (lint is enforced separately in CI).
+const nextConfig = {
   experimental: {
     serverActions: {
       bodySizeLimit: "50mb",
@@ -37,6 +41,6 @@ const nextConfig: NextConfig = {
       },
     ];
   },
-};
+} as NextConfig;
 
 export default nextConfig;

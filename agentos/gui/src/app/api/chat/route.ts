@@ -12,7 +12,7 @@ import { Session } from "@/runtime/types";
 import { chatWithCloud } from "@/lib/cloud-router";
 import { complete } from "@/lib/omniroute";
 import { sendToHermes } from "@/lib/hermes";
-import { switchToProfile } from "@/lib/hermes-gate";
+import { switchToProfile, type HermesState } from "@/lib/hermes-gate";
 import { isProxyLocked, lockForProxy, unlockProxy, getProxyLock } from "@/lib/proxy-state";
 import { exec, execFile, spawn } from "child_process";
 import { promisify } from "util";
@@ -20,7 +20,7 @@ import { homedir } from "os";
 import fs from "fs";
 import { getRenderJob } from "@/runtime/tools/remotion";
 import { queryGraphRAG } from "@/lib/graphrag";
-import { ensureLLMStack, beginLLMRequest, endLLMRequest, releaseAfterAnswer, userServiceActive, userService } from "@/lib/llm-gate";
+import { ensureLLMStack, beginLLMRequest, endLLMRequest, releaseAfterAnswer, userServiceActive, userService, type GateState } from "@/lib/llm-gate";
 import { getAgentLoop as sharedGetAgentLoop } from "@/lib/agent-loop";
 import { fcukHome } from "@/lib/fcuk-home";
 
@@ -51,9 +51,9 @@ async function engageMainAgent(): Promise<void> {
   // Wrap each step with a timeout so a single failed call doesn't block chat
   // forever on devices without a working LLM stack (e.g. Termux lite mode).
   try {
-    const profiles = await Promise.race([
+    const profiles = await Promise.race<HermesState>([
       switchToProfile("hermes-proxy"),
-      new Promise((_, rej) => setTimeout(() => rej(new Error("profile switch timeout")), 3000)),
+      new Promise<never>((_, rej) => setTimeout(() => rej(new Error("profile switch timeout")), 3000)),
     ]);
     console.log(`[chat] main agent: hermes-proxy=${profiles.hermesProxy?.running}, hermes-local=${profiles.hermesLocal?.running}`);
   } catch (e: any) {
@@ -63,9 +63,9 @@ async function engageMainAgent(): Promise<void> {
     // Cold-start the stack if it is down (stop-to-boot with a warm ping so
     // the first chat reply is not a 30s model-load timeout). Subsequent
     // messages are cheap: warmStack skips the ping once the model is loaded.
-    const gate = await Promise.race([
+    const gate = await Promise.race<GateState>([
       ensureLLMStack(),
-      new Promise((_, rej) => setTimeout(() => rej(new Error("llm stack timeout")), 5000)),
+      new Promise<never>((_, rej) => setTimeout(() => rej(new Error("llm stack timeout")), 5000)),
     ]);
     console.log(`[chat] llm stack: ${gate.message || gate.state}`);
   } catch (e: any) {
@@ -843,8 +843,10 @@ export async function POST(req: NextRequest) {
     if (response.startsWith("VIDEO:")) {
       const jsonStr = response.slice(6).trim();
       try {
-        const videoParams = JSON.parse(jsonStr);
-        let { template, props = {}, duration = 5 } = videoParams;
+        const videoParams = JSON.parse(jsonStr) as { template?: string; props?: Record<string, unknown>; duration?: number };
+        const { template } = videoParams;
+        const props = videoParams.props ?? {};
+        let duration = videoParams.duration ?? 5;
         // Fallback: honor explicit duration in the user message if the router missed it
         const durationMatch = msg.match(/\b(\d{1,2})\s*(?:second|sec|s)\b/i);
         if (durationMatch) {

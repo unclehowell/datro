@@ -30,13 +30,29 @@ VERSION="${VERSION:-}"
 # The installer is shipped as a single file (root) and a copy under
 # public/fcukproxy/install.sh; both need to know which release they belong to.
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" 2>/dev/null && pwd || true)"
+# WS-06 (v1.11.35): this file is a repo-local install helper. When run outside a
+# checkout (no .version next to it) it is not the canonical entrypoint — defer
+# to the advertised network installer instead of drifting into a stale copy.
+if [[ ! -f "$SCRIPT_DIR/.version" ]]; then
+  exec bash -c 'curl -fsSL https://www.financecheque.uk/fcukproxy/install.sh | bash' "$@"
+fi
 if [[ -z "$VERSION" && -n "$SCRIPT_DIR" && -f "$SCRIPT_DIR/.version" ]]; then
   VERSION="$(cat "$SCRIPT_DIR/.version" | tr -d '[:space:]')"
 fi
-VERSION="${VERSION:-1.11.34}"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
+# WS-06 (v1.11.35): never hardcode a release version. Outside a checkout we
+# resolve from the branch's .version (the source the OTA updater trusts), and
+# only fail if neither is available — a version we cannot prove is a version
+# we must not claim to be.
+if [[ -z "$VERSION" ]]; then
+  VERSION="$(curl -fsSL --max-time 10 "$RAW_BASE/.version" 2>/dev/null | tr -d '[:space:]')" || true
+fi
+if [[ -z "$VERSION" ]]; then
+  echo -e "${RED}[fcuk] ✗${NC} Could not determine the release version (no .version in the checkout and the raw .version download failed). Check network access to raw.githubusercontent.com." >&2
+  exit 1
+fi
 
 # ── Defaults ──────────────────────────────────────────────────────────────────
 PARENT_URL="${PARENT_URL:-https://www.financecheque.uk}"

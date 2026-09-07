@@ -24,10 +24,23 @@ set -euo pipefail
 # Supports: Linux x86_64, Linux ARM64, macOS (Intel/Apple Silicon), Termux/Android
 # ═══════════════════════════════════════════════════════════════════════════════
 
-VERSION="1.11.34"
 REPO="unclehowell/datro"
 BRANCH="financecheque"
 RAW_BASE="https://raw.githubusercontent.com/$REPO/$BRANCH"
+
+# WS-06 (v1.11.35): the installer never hardcodes a release version. VERSION
+# (written into machine.json) and GUI_VERSION (the GUI tarball tag) are both
+# resolved from the branch's .version file — the exact source the OTA updater
+# trusts — so an install always proceeds at the release the branch is at.
+fetch_repo_version() {
+  curl -fsSL --max-time 10 "$RAW_BASE/.version" 2>/dev/null | tr -d '[:space:]' || true
+}
+VERSION="$(fetch_repo_version)"
+GUI_VERSION="$VERSION"
+if [[ -z "$VERSION" ]]; then
+  echo -e "${RED}[install] ✗${NC} Could not determine the release version (.version download failed). Check network access to raw.githubusercontent.com." >&2
+  exit 1
+fi
 
 # ── Defaults (override via env vars or interactive prompt) ────────────────────
 MODE="${MODE:-}"                     # lite | full | auto (detect)
@@ -57,8 +70,8 @@ AGENT_ROLE="${AGENT_ROLE:-chat}"     # chat | code | both
 FCUK_LOCAL_TOKEN="${FCUK_LOCAL_TOKEN:-}"  # local auth token (auto-generated)
 
 # Local chat GUI (AgentOS) — served on GUI_PORT with the agent as its LLM backend
-GUI_VERSION="1.11.34"                  # fallback tag; overridden by latest-release lookup below
-GUI_PORT="${GUI_PORT:-3000}"         # the web chat interface
+GUI_VERSION="${GUI_VERSION:-$VERSION}"     # resolved from .version above
+GUI_PORT="${GUI_PORT:-3000}"               # the web chat interface
 GUI_DIR="${GUI_DIR:-$INSTALL_DIR/agentos-gui}"
 NODE_VERSION="v22.23.2"              # bundled Node.js for the GUI (pinned LTS)
 NODE_BIN_DIR=""                      # resolved by install_node()

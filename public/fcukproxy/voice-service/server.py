@@ -14,6 +14,7 @@ import logging
 import os
 import shutil
 import tempfile
+import threading
 import time
 from pathlib import Path
 
@@ -44,6 +45,12 @@ log.info(f"Model '{MODEL_SIZE}' loaded.")
 
 app = Flask(__name__)
 
+# WS-04 (v1.11.35): server-side abort. A transcription continuously checks
+# _ABORT between whisper segments; POST /v1/audio/abort sets it so the in-flight
+# transcribe stops instead of burning 60s of CPU. Work is single-stream (one
+# model), so a module-level event is sufficient and avoids per-run bookkeeping.
+_ABORT = threading.Event()
+
 
 def transcribe_blob(audio_bytes: bytes, filename: str, language: str | None) -> dict:
     suffix = Path(filename).suffix or ".webm"
@@ -60,14 +67,26 @@ def transcribe_blob(audio_bytes: bytes, filename: str, language: str | None) -> 
             temperature=0.0,
             vad_filter=True,
         )
-        text = " ".join(s.text.strip() for s in segments).strip()
+        parts = []
+        for s in segments:
+            if _ABORT.is_set():
+                break
+            parts.append(s.text.strip())
+        text = " ".join(parts).strip()
+        aborted = _ABORT.is_set()
+        if aborted:
+            _ABORT.clear()
         elapsed = time.monotonic() - t0
-        log.info(f"Transcribed {elapsed:.2f}s lang={info.language} {text[:80]!r}")
+        log.info(
+            f"Transcribed {elapsed:.2f}s lang={info.language} "
+            f"{'(aborted) ' if aborted else ''}{text[:80]!r}"
+        )
         return {
             "text": text,
             "language": info.language,
             "duration": info.duration,
             "provider": "local-whisper",
+            "aborted": aborted,
         }
     finally:
         os.unlink(tmp_path)
@@ -82,6 +101,16 @@ def transcribe():
     language = (request.form.get("language") or "en").strip() or "en"
     result = transcribe_blob(audio_bytes, audio_file.filename or "audio.webm", language)
     return jsonify(result)
+
+
+@app.route("/v1/audio/abort", methods=["POST"])
+def abort_transcription():
+    """Cancel the in-flight transcription. Genuinely stops the whisper job
+    between segments (not just the client fetch)."""
+    run_id = (request.form.get("run_id") or "").strip()
+    _ABORT.set()
+    log.info(f"abort requested run_id={run_id or '(none)'}")
+    return jsonify({"ok": True, "aborted": True})
 
 
 @app.route("/tts", methods=["POST"])
@@ -142,4 +171,6 @@ def health():
 
 if __name__ == "__main__":
     log.info(f"Starting whisper-stt server on port {PORT}")
-    app.run(host="127.0.0.1", port=PORT, debug=False)
+    # threaded=True so POST /v1/audio/abort is reachable while a transcription
+    # runs (WS-04: server-side abort must not be blocked by the transcribe).
+    app.run(host="127.0.0.1", port=PORT, debug=False, threaded=True)

@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "lint:ci": "eslint src --max-warnings 0",
+    "typecheck": "tsc --noEmit -p tsconfig.ci.json"
   },
   "dependencies": {
     "@types/uuid": "^10.0.0",

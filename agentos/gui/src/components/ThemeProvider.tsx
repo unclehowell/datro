@@ -53,16 +53,26 @@ export function useTheme() {
 }
 
 export default function ThemeProvider({ children }: { children: React.ReactNode }) {
-  const [theme, setTheme] = useState<Theme>("dark");
+  // Lazy initializer keeps SSR/dumb-server first render predictable ("dark")
+  // while picking up any persisted theme as soon as window exists; the effect
+  // below only syncs the DOM attribute (no setState in the effect — CI lint).
+  const [theme, setTheme] = useState<Theme>(() => {
+    if (typeof window !== "undefined") {
+      const stored = localStorage.getItem("agentos-theme");
+      if (stored && THEMES.includes(stored as Theme)) return stored as Theme;
+    }
+    return "dark";
+  });
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
-    const stored = localStorage.getItem("agentos-theme");
-    const initial = (stored && THEMES.includes(stored as Theme)) ? (stored as Theme) : "dark";
-    setTheme(initial);
-    document.documentElement.setAttribute("data-theme", initial);
     setMounted(true);
   }, []);
+
+  useEffect(() => {
+    if (!mounted) return;
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [mounted, theme]);
 
   const applyTheme = (t: Theme) => {
     setTheme(t);
@@ -71,7 +81,7 @@ export default function ThemeProvider({ children }: { children: React.ReactNode 
   };
 
   const toggle = () => {
-    const next = theme.endsWith("-light") ? theme.replace("-light", "") : `${theme}-light` as Theme;
+    const next = (theme.endsWith("-light") ? theme.replace("-light", "") : `${theme}-light`) as Theme;
     applyTheme(next);
   };
 

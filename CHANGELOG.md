@@ -1,3 +1,47 @@
+## [1.11.35] - 2026-09-07
+
+Release: **v1.11.35 — Stage 1: WS-03/04/08/09/10/13/14**. The Stage‑1 batch after Stage 0 landed on both nodes. Ships the voicemail pipeline hardening (real STT abort + text‑only transcripts + quota/prune), an OTA task ledger for crash‑resume, adaptive update cadence, refusal retries in task routing, a fresh chat‑route decomposition with honest chips + WS nonce + retry‑once, the release gates (version‑constants lint, shellcheck at error severity, CI, smoke test) and the explicit storage contract. **Deliberate deviation (WS‑07 note):** the child‑proxy gateway binds `:4001` (`fcukproxy-child.service`) and proxies to `agent.py` on `:6100` (`PROXY_PORT`); `6100` is agent.py's own port — see `docs/ARCHITECTURE.md`.
+
+### WS-04 — Voicemail pipeline hardening
+
+1. **Real STT abort** — `voice-service/server.py` transcribes on a worker and POST `/v1/audio/abort` sets a threading event so an in‑flight Whisper pass stops between segments instead of draining the whole audio; `runSTT` in `voicemail/route.ts` drives it with a 60s AbortController and reports the partial transcript.
+2. **Text‑only transcripts** — a failed or empty recognition is still recorded: `errorCode: "STT_FAIL"` / `"STT_EMPTY"`, an explanatory `agentText`, and no audio path, so a broken mic never turns into an invisible, silent voicemail.
+3. **Storage bounds** — keep the newest 20 recordings, prune job JSON older than 7 days, enforce a 750 MB quota (`VOICEMAIL_QUOTA_MB` env) that rejects new jobs with `QUOTA_EXCEEDED` (507).
+
+### WS-08 — OTA task ledger
+
+4. **Crash‑resume ledger** — `task-router.mjs` writes one JSON per task to `~/.fcukproxy/ledger/tasks/` (`running` → terminal, rewritten on backend retry), exposes `GET /ledger`, and reports `inFlight` from `/health`; entries are pruned after 7 days.
+
+### WS-09 — Adaptive update cadence
+
+5. **`update-checker.sh` self‑tunes** — reads `~/.fcukproxy/.update-interval` (default 10 min, clamp 5–60), backs off (up) on fetch failure/empty version, steps down on success, resets to default after a successful apply, and rewrites the systemd timer / Termux cron in the same run.
+
+### WS-10 — Refusal hardening in task routing
+
+6. **One retry with a tool‑use directive** — on a backend refusal (`isRefusal()`), both `routeToOpencode` and `routeToKilo` retry once with `TOOL_USE_DIRECTIVE` appended and `AGENT_TOOL_ACCESS=full`/`NONINTERACTIVE=1` set; a shared `runBackend()` helper replaces the duplicated spawn code (and a latent TDZ).
+
+### WS-03 — Chat decomposition + honest chips + WS nonce
+
+7. **`components/chat/RouteChip.tsx`** — behaviour‑neutral extraction of the per‑message route/dependency/provider chips into a pure memoised component (the pattern for further `chat/page.tsx` decomposition).
+8. **Honest chip** — the chip renders only server‑measured `routed`/`dependency`/`provider`; it never invents a confidence, timing or "fast" label.
+9. **WS nonce + retry‑once** — every user message carries a `nonce`; `/api/chat` requests auto‑retry once on transient failures (network / 429 / 5xx) with the **same nonce**, so a retry is the same logical message, never a duplicate.
+
+### WS-13 — Release gates
+
+10. **`scripts/check-version-constants.sh`** — asserts the current `.version` literal appears nowhere outside `.version`/docs (vendored/third‑party and generated dirs excluded; comment‑line and `RELEASE-LITERAL-OK` escapes honoured).
+11. **`scripts/shellcheck-all.sh`** — gates at `error` severity by default (`SHELLCHECK_SEVERITY` overrides): 25/25 scripts clean. **`reflect.sh` fixed (SC2260):** the `cat > file <<EOF | log …` pipe was dead code, so the digest log never ran; it now writes the heredoc and logs the digest separately.
+12. **CI + smoke test** — `.github/workflows/ci.yml` runs shell + version lint, GUI `npm ci` + `lint:ci` + tsc, and `scripts/smoke-test.mjs` against the manifest.
+
+### WS-14 — Storage contract
+
+13. **Explicit bounds** in `AGENTS.md` for voicemails, ledger, OTA state and `.deploy-sha` semantics (commit SHA on git nodes, release tag on tarball nodes).
+
+### Fixes / housekeeping
+
+- `update-checker.sh` and `install.sh`: resolver‑era cleanup (no hardcoded patch versions; canonical redirects locked).
+- AgentOS GUI: `ThemeProvider` guard, terminal/page fixes, stricter ESLint calibration, `tsconfig.ci.json` for CI typecheck.
+- Backlog after Stage 1: WS-11 (parent‑proxy review findings), WS-12 (Kokoro STT/TTS merge or explicit defer), plus device‑gate validation (phone).
+
 ## [1.11.34] - 2026-09-05
 
 Release: **v1.11.34 — hotfix: write_deploy_sha abort under `set -u`**. Live-testing the v1.11.33 OTA on the laptop exposed a bug in the new `write_deploy_sha()` helper: under `set -euo pipefail`, calling it with no arguments hit `-n "$1"` on an unset positional, so the script aborted *immediately after a successful GUI rebuild* — the version was never written to `.local-version`, services were never restarted, and the node kept serving the old bundle. The helper now defaults the argument with `${1:-}` (verified with an isolated repro + `bash -n`). This is the only change over v1.11.33; all WS-01/WS-02 content ships unchanged.

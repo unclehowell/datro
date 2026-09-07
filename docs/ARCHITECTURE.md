@@ -13,13 +13,22 @@ dependency is woken per prompt and released after the deliverable.
 
 ```
                 financecheque.uk (parent proxy / Cloudflare Pages + D1)
-                                   │
-              ┌────────────────────┼────────────────────┐
-              │                    │                    │
-        Child Proxy A          Child Proxy B        Child Proxy C
-        (port 6100)            (port 6100)          (port 6100)
+                                    │
+              ┌─────────────────────┼─────────────────────┐
+              │                     │                     │
+        Child Proxy A           Child Proxy B         Child Proxy C
+        gateway :4001            gateway :4001         gateway :4001
+         agent :6100              agent :6100           agent :6100
               └─────── each runs the AgentOS local stack ───────┘
 ```
+
+Each node exposes two local proxy ports, by design (they are two processes and
+must never share one number):
+
+- `child-proxy` **gateway** (Node, `child-proxy.mjs`, `fcukproxy-child.service`)
+  on **:4001** — the OpenAI-compatible HTTP gateway that talks to the parent.
+- **Python agent** (`agent.py`, `fcuk-proxy.service`) on **:6100** (`PROXY_PORT`,
+  not to be confused with the gateway) — the executor behind the gateway.
 
 Each node independently owns:
 
@@ -81,7 +90,8 @@ WebGUI :3000 ──> POST /api/chat
 
 ## Child proxy (`child-proxy.js`, `public/fcukproxy/agent.py`)
 
-- The node's connection to the parent on port 6100 / 4001.
+- The node's connection to the parent runs on the gateway port 4001; the gateway
+  proxies to the Python agent on 6100 (see the diagram above).
 - Registers with the parent, polls for work, reports results, earns credits.
 - Local peer discovery via UDP multicast.
 

@@ -278,7 +278,7 @@ export default function TerminalPage() {
             <div key={ri} className="flex justify-center gap-0.5 mb-0.5 last:mb-0">
               {row.map((key) => {
                 let cls = "flex items-center justify-center rounded text-sm font-mono transition-colors active:scale-95 select-none font-medium ";
-                let style: React.CSSProperties = { height: "44px", minWidth: 0, flex: "1 1 0" };
+                const style: React.CSSProperties = { height: "44px", minWidth: 0, flex: "1 1 0" };
 
                 if (key === "Space") {
                   cls += "bg-zinc-800 text-zinc-300 hover:bg-zinc-700 ";

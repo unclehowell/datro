@@ -14,7 +14,6 @@ interface ProxySession {
   error?: string;
 }
 declare global {
-  // eslint-disable-next-line no-var
   var __proxySessions: Map<string, ProxySession> | undefined;
 }
 const sessions = globalThis.__proxySessions || new Map<string, ProxySession>();

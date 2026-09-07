@@ -495,30 +495,67 @@ EOF
   log "Systemd services regenerated (only agentos-gui enabled by default)"
 }
 
-# ── Ensure the OTA self-update cadence is every 10 minutes ──────────────────
-# The installed timer may predate the 10-minute policy (e.g. daily 04:00).
-# Rewriting it here lets a node that runs this checker at ANY cadence upgrade
-# itself to the faster schedule, so a newer semantic version is pulled within
-# minutes, not up to 24h later. Re-enable so it survives even if it had drifted
-# to disabled. Called on every invocation so a node self-corrects even when it
-# is already up to date.
+# ── Ensure the OTA self-update cadence (adaptive, WS-09 v1.11.35) ─────────────
+# Base cadence is every 10 minutes, but the effective interval is read from
+# ~/.fcukproxy/.update-interval each run so a node can back off when checks
+# keep failing (rate limits, no network) and speed back up once healthy.
+# Rewriting the timer here lets a node that runs this checker at ANY cadence
+# upgrade itself to the schedule it wants, so a newer semantic version is
+# pulled within minutes, not up to 24h later. Re-enable so it survives even if
+# it had drifted to disabled. Called on every invocation so a node
+# self-corrects even when it is already up to date.
+read_update_interval() {
+  local I
+  I="$(cat "$HOME/.fcukproxy/.update-interval" 2>/dev/null || true)"
+  [[ "$I" =~ ^[0-9]+$ ]] || I="10"
+  # Clamp to sane bounds: never faster than every 5 min, never slower than 60.
+  if (( I < 5 )); then I="5"; fi
+  if (( I > 60 )); then I="60"; fi
+  printf '%s' "$I"
+}
+step_update_interval() {
+  # $1 = "up" (back off after trouble) or "down"/"reset" (back to normal).
+  local I base new
+  I="$(read_update_interval)"
+  base="${UPDATE_INTERVAL_DEFAULT:-10}"
+  case "$1" in
+    up)
+      new=$(( I * 2 ))
+      if (( new > 60 )); then new="60"; fi
+      ;;
+    reset)
+      new="$base"
+      ;;
+    *)
+      # down: halve toward the default
+      new=$(( I / 2 ))
+      if (( new < base )); then new="$base"; fi
+      ;;
+  esac
+  if [[ "$new" != "$I" ]]; then
+    printf '%s\n' "$new" > "$HOME/.fcukproxy/.update-interval"
+    log "Update cadence $1: every ${I} -> every ${new} minutes"
+    ensure_update_cadence
+  fi
+}
 ensure_update_cadence() {
+  local I="$(read_update_interval)"
   if command -v systemctl >/dev/null 2>&1; then
     local SYSTEMD_DIR="$HOME/.config/systemd/user"
     mkdir -p "$SYSTEMD_DIR"
     cat > "$SYSTEMD_DIR/fcuk-update-checker.timer" << TIMEREOF
 [Unit]
-Description=FinanceCheque OTA update check (every 10 minutes)
+Description=FinanceCheque OTA update check (every ${I} minutes)
 
 [Timer]
-OnCalendar=*:0/10
+OnCalendar=*:0/${I}
 Persistent=true
 
 [Install]
 WantedBy=timers.target
 TIMEREOF
     systemctl --user enable --now fcuk-update-checker.timer >/dev/null 2>&1 || true
-    log "Update cadence set to every 10 minutes"
+    log "Update cadence set to every ${I} minutes"
   fi
 }
 
@@ -534,10 +571,11 @@ ensure_termux_crontab() {
   if ! command -v crontab >/dev/null 2>&1; then
     return 0
   fi
+  local I="$(read_update_interval)"
   # Ensure Termux crontab cache directory exists (crontab command needs it)
   mkdir -p "$HOME/.cache/crontab" 2>/dev/null || true
   mkdir -p "/data/user/0/com.termux/.cache/crontab" 2>/dev/null || true
-  local cron_cmd="*/10 * * * * export TMPDIR=\$HOME/.tmp; export PATH=/data/data/com.termux/files/usr/bin:\$PATH; bash \$HOME/.fcukproxy/update-checker.sh >> \$HOME/.fcukproxy/logs/ota-update.log 2>&1"
+  local cron_cmd="*/${I} * * * * export TMPDIR=\$HOME/.tmp; export PATH=/data/data/com.termux/files/usr/bin:\$PATH; bash \$HOME/.fcukproxy/update-checker.sh >> \$HOME/.fcukproxy/logs/ota-update.log 2>&1"
   local current
   current=$(crontab -l 2>/dev/null || true)
   # Only rewrite if the entry is missing or lacks TMPDIR
@@ -832,12 +870,16 @@ main() {
 
   local latest
   if ! latest=$(fetch_latest_version); then
+    # WS-09: a failing check backs the cadence off (doubling, capped at 60 min)
+    # so a node with no network / rate-limited doesn't hammer the parent.
+    step_update_interval up
     write_update_status error "$(get_local_version)" "unknown"
     exit 1
   fi
 
   if [[ -z "$latest" ]]; then
     log "ERROR: Empty version from parent"
+    step_update_interval up
     write_update_status error "$(get_local_version)" "unknown"
     exit 1
   fi
@@ -846,6 +888,9 @@ main() {
   local_version=$(get_local_version)
 
   log "Local: v$local_version | Remote: v$latest"
+
+  # Reachable + answered: step the cadence back down toward the 10-min default.
+  step_update_interval down
 
   if [[ "$local_version" == "$latest" ]]; then
     log "Already up to date"
@@ -873,6 +918,9 @@ main() {
     log "Update FAILED — keeping previous version"
     exit 1
   fi
+  # Successful apply — sync the cadence back to the fast default so the next
+  # release is picked up quickly.
+  step_update_interval reset
   # Successful apply — clear any prior error status so the GUI shows the new
   # version, not a stale failure.
   write_update_status ok "$local_version" "$latest"

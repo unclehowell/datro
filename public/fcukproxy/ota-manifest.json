@@ -1,11 +1,11 @@
 {
   "schema": 2,
   "branch": "financecheque",
-  "release_sequence": 16,
-  "updated": "2026-09-05",
+  "release_sequence": 17,
+  "updated": "2026-09-07",
   "apps": {
     "child-proxy": {
-      "version": "0.11.0",
+      "version": "0.11.1",
       "file": "child-proxy.mjs",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/child-proxy.mjs",
       "check": "node"
@@ -29,13 +29,13 @@
       "check": "bash"
     },
     "reflect": {
-      "version": "0.2.0",
+      "version": "0.2.1",
       "file": "reflect.sh",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/reflect.sh",
       "check": "bash"
     },
     "update-checker": {
-      "version": "1.0.0",
+      "version": "1.1.0",
       "file": "update-checker.sh",
       "url": "https://raw.githubusercontent.com/unclehowell/datro/financecheque/public/fcukproxy/update-checker.sh",
       "check": "bash"

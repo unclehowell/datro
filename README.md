@@ -42,7 +42,10 @@ This will:
 3. Install a systemd user service (Linux) to keep the agent running
 4. Install the AgentOS chat GUI — the web chat interface at **http://localhost:3000** (chat routes through the child proxy to the parent's LLMs)
 
-The proxy runs on port `6100` and connects to the parent proxy at `financecheque.uk`. It discovers other child proxies on your local network via UDP multicast.
+The node runs a child-proxy **gateway** on port `4001` (OpenAI-compatible) that
+proxies to the Python agent on port `6100`, and connects to the parent proxy at
+`financecheque.uk`. It discovers other child proxies on your local network via UDP
+multicast.
 
 ---
 
@@ -51,7 +54,7 @@ The proxy runs on port `6100` and connects to the parent proxy at `financecheque
 ```
 financecheque.uk (parent proxy)
         │
-        ├── Child Proxy A (your machine, port 6100)
+        ├── Child Proxy A (your machine, gateway :4001 → agent :6100)
         │       └── Chat GUI at localhost:3000
         ├── Child Proxy B (another machine)
         └── Child Proxy C (another machine)

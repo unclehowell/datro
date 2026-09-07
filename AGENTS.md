@@ -74,11 +74,24 @@ The financecheque child-proxy stack runs on 2–8 GB machines and is
 
 ## Storage Contract
 
+All paths under `~/.fcukproxy`. Explicit upper bounds so no state dir grows
+unbounded on a small node:
+
 - Checkpoints: `~/.fcukproxy/checkpoints/`. Bounded per session — keep the
   newest `MAX_CHECKPOINTS_PER_SESSION` (50) and evict anything older than 7 days
   (`agentos/gui/src/lib/harness.ts`, WS3).
 - Skills state: `~/.fcukproxy/skills/skill.state.json` (durable per-node skill
   state).
+- Voicemails: `~/.fcukproxy/voicemails/` (recordings) + `~/.fcukproxy/voicemail/jobs/`
+  (job JSON). Recordings are pruned with each voicemail list fetch / delete:
+  keep the newest **20**, evict the rest (WS-04, v1.11.35). Job files older than
+  7 days are removed.
+- Task ledger (WS-08, v1.11.35): `~/.fcukproxy/ledger/tasks/` — one JSON per
+  task for crash-resume; files are removed when the task reaches a terminal
+  state or after 7 days.
+- OTA: `~/.fcukproxy/.version`, `.local-version`, `.deploy-sha`, `.update-status`,
+  `.last-build-hash`, `.update-interval` (WS-09). `.deploy-sha` holds the commit SHA
+  (git nodes) or release tag (tarball nodes).
 - Budget roughly: model size + ~50 MB state. Check `du -sh ~/.fcukproxy`.
 
 ## Known-Issues Ledger

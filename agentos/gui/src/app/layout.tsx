@@ -60,7 +60,12 @@ export default function RootLayout({
         </ThemeProvider>
         <Script id="sw-register" strategy="afterInteractive">
           {`if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js').catch(() => {});
+            navigator.serviceWorker.register('/sw.js').then((reg) => {
+              // WS-05: actively look for a newer service worker on every load so
+              // a stale controller (e.g. a v1.11.27-era cache) is replaced on the
+              // next visit instead of lingering silently.
+              reg.update().catch(() => {});
+            }).catch(() => {});
           }`}
         </Script>
       </body>

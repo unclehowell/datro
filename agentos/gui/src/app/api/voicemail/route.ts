@@ -62,6 +62,7 @@ import {
   readdirSync,
   unlinkSync,
   renameSync,
+  statSync,
 } from "fs";
 import { join } from "path";
 import { runPrompt, PipelineEvent } from "@/lib/pipeline";
@@ -74,6 +75,7 @@ import {
 } from "@/lib/hermes-gate";
 import {
   releaseAfterAnswer,
+  ensureLLMStack,
 } from "@/lib/llm-gate";
 import { ensureWhisperSTT, shutdownWhisperSTT } from "@/lib/whisper-gate";
 
@@ -83,9 +85,20 @@ const VOICEMAIL_JOBS_DIR = join(fcukHome(), "voicemail", "jobs");
 const STT_URL = process.env.VOICE_SERVICE_URL
   ? `${process.env.VOICE_SERVICE_URL}/v1/audio/transcriptions`
   : "http://localhost:3101/v1/audio/transcriptions";
+const STT_ABORT_URL = process.env.VOICE_SERVICE_URL
+  ? `${process.env.VOICE_SERVICE_URL}/v1/audio/abort`
+  : "http://localhost:3101/v1/audio/abort";
 const TTS_URL = process.env.VOICE_SERVICE_URL
   ? `${process.env.VOICE_SERVICE_URL}/tts`
   : "http://localhost:3101/tts";
+
+// WS-04 (v1.11.35) storage bounds:
+// - Recorders are pruned to the newest MAX_VOICEMAIL_KEEP on every index save.
+// - A new recording is rejected with QUOTA_EXCEEDED once the dir exceeds this.
+const MAX_VOICEMAIL_KEEP = 20;
+const VOICEMAIL_QUOTA_MB = Number(process.env.VOICEMAIL_QUOTA_MB || "750") || 750;
+const VOICEMAIL_QUOTA_BYTES = VOICEMAIL_QUOTA_MB * 1024 * 1024;
+const VOICEMAIL_JOB_MAX_AGE_MS = 7 * 24 * 60 * 60 * 1000;
 const OLLAMA_MODEL = "openbmb/minicpm5";
 
 export const dynamic = "force-dynamic";
@@ -108,6 +121,10 @@ export interface VoicemailRecord {
   timestamp: number;
   played: boolean;
   taskId?: string;
+  // WS-04: true when this record was saved despite a pipeline failure
+  // (e.g. STT_FAIL) — a text-only record with no audio, kept so the
+  // caller's voicemail is not silently lost.
+  errorCode?: string;
 }
 
 // Per-job state. Persisted to ~/.fcukproxy/voicemail/jobs/<id>.json so
@@ -196,9 +213,73 @@ function loadIndex(): VoicemailRecord[] {
   }
 }
 
+function pruneVoicemails(records: VoicemailRecord[]): void {
+  // Keep only the newest MAX_VOICEMAIL_KEEP recordings on disk. The index
+  // may retain more ids (so history still lists them), but their audio is
+  // evicted — quoted by the Storage Contract in AGENTS.md.
+  const keep = new Set(records.slice(0, MAX_VOICEMAIL_KEEP).map((r) => r.id));
+  try {
+    for (const d of readdirSync(VOICEMAIL_DIR, { withFileTypes: true })) {
+      if (!d.isFile()) continue;
+      if (d.name === "index.json") continue;
+      const id = d.name.replace(/\.(mp3|webm|m4a|ogg)$/, "");
+      if (keep.has(id)) continue;
+      try {
+        unlinkSync(join(VOICEMAIL_DIR, d.name));
+      } catch {
+        /* already gone */
+      }
+    }
+  } catch {
+    /* dir may be gone */
+  }
+}
+
+function voicemailQuotaOk(): boolean {
+  try {
+    let total = 0;
+    for (const d of readdirSync(VOICEMAIL_DIR, { withFileTypes: true })) {
+      if (!d.isFile() || d.name === "index.json") continue;
+      try {
+        total += statSync(join(VOICEMAIL_DIR, d.name)).size;
+      } catch {
+        /* skip */
+      }
+    }
+    return total < VOICEMAIL_QUOTA_BYTES;
+  } catch {
+    return true;
+  }
+}
+
+let lastJobPruneAt = 0;
+function pruneJobs(): void {
+  // oldest job records roll off after VOICEMAIL_JOB_MAX_AGE_MS; run at most
+  // once an hour to keep persistJob cheap.
+  const now = Date.now();
+  if (now - lastJobPruneAt < 3_600_000) return;
+  lastJobPruneAt = now;
+  try {
+    ensureJobDir();
+    for (const d of readdirSync(VOICEMAIL_JOBS_DIR)) {
+      if (!d.endsWith(".json")) continue;
+      const p = join(VOICEMAIL_JOBS_DIR, d);
+      try {
+        if (now - statSync(p).mtimeMs > VOICEMAIL_JOB_MAX_AGE_MS) unlinkSync(p);
+      } catch {
+        /* skip */
+      }
+    }
+  } catch {
+    /* dir may be gone */
+  }
+}
+
 function saveIndex(records: VoicemailRecord[]) {
   ensureDir();
   writeFileSync(VOICEMAIL_INDEX, JSON.stringify(records.slice(0, 200), null, 2), "utf-8");
+  pruneVoicemails(records);
+  pruneJobs();
 }
 
 function makeId() {
@@ -225,20 +306,49 @@ interface JobResources {
 
 // ─── STT ────────────────────────────────────────────────────
 
-async function runSTT(audioBlob: Blob): Promise<string> {
+const STT_TIMEOUT_MS = 60_000;
+
+// WS-04: the 60s ceiling now GENUINELY stops the transcription job instead of
+// only abandoning the client fetch. On timeout we call the abort endpoint so
+// whisper stops between segments and the model frees up immediately.
+async function serverAbortSTT(): Promise<void> {
+  try {
+    await fetch(STT_ABORT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `run_id=voicemail`,
+      signal: AbortSignal.timeout(3000),
+    });
+  } catch {
+    /* abort best-effort */
+  }
+}
+
+async function runSTT(audioBlob: Blob): Promise<{ text: string; aborted: boolean }> {
   const gate = await ensureWhisperSTT();
   if (!gate.ok) throw new Error("STT service unavailable");
   const form = new FormData();
   form.append("file", audioBlob, "audio.webm");
   form.append("language", "en");
-  const res = await fetch(STT_URL, {
-    method: "POST",
-    body: form,
-    signal: AbortSignal.timeout(60_000),
-  });
+  form.append("run_id", "voicemail-" + Date.now().toString(36));
+  const ctl = new AbortController();
+  const timer = setTimeout(() => {
+    ctl.abort();
+    void serverAbortSTT();
+  }, STT_TIMEOUT_MS);
+  let res: Response;
+  try {
+    res = await fetch(STT_URL, {
+      method: "POST",
+      body: form,
+      signal: ctl.signal,
+    });
+  } finally {
+    clearTimeout(timer);
+  }
   if (!res.ok) throw new Error(`STT failed: ${res.status}`);
   const data = await res.json();
-  return (data.text || "").trim();
+  return { text: (data.text || "").trim(), aborted: !!data.aborted };
 }
 
 // ─── TTS → mp3 (non-fatal on failure) ──────────────────────
@@ -365,7 +475,7 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
      state.finishedAt = now();
      state.currentStage = null;
      persistJob(state);
-+    plog("voicemail", `job ${state.id} failed at ${stage}: ${message}`, { id: state.id, stage, errorCode });
+    plog("voicemail", `job ${state.id} failed at ${stage}: ${message}`, { id: state.id, stage, errorCode });
    };
 
   // The single try/finally that guarantees cleanup. v1.11.29 fix:
@@ -377,15 +487,54 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
   try {
     // ── 1. STT ────────────────────────────────────────────
     let userText = "";
+    let sttAborted = false;
     try {
-      userText = await runSTT(audioBlob);
+      const stt = await runSTT(audioBlob);
+      userText = stt.text;
+      sttAborted = stt.aborted;
     } catch (e: any) {
+      // WS-04: STT failure still saves a TEXT-ONLY record so the caller's
+      // voicemail is not silently lost (marked errorCode so the UI shows
+      // "could not be transcribed"). audioPath stays "" — no empty audio.
+      const record: VoicemailRecord = {
+        id,
+        userText: "",
+        agentText: "Voicemail could not be transcribed (speech-to-text error).",
+        audioPath: "",
+        timestamp: Date.now(),
+        played: false,
+        errorCode: "STT_FAIL",
+      };
+      const records = loadIndex();
+      records.unshift(record);
+      saveIndex(records);
       finishWithError("stt", "STT_FAIL", `STT failed: ${e?.message || e}`);
       return;
     }
     if (!userText) {
+      if (sttAborted) {
+        // User hung up / client gave up mid-transcription with zero
+        // recognised text — record it as a text-only voicemail rather
+        // than dropping the reply entirely.
+        const record: VoicemailRecord = {
+          id,
+          userText: "",
+          agentText: "Voicemail transcription was aborted before any speech was recognised.",
+          audioPath: "",
+          timestamp: Date.now(),
+          played: false,
+          errorCode: "STT_EMPTY",
+        };
+        const records = loadIndex();
+        records.unshift(record);
+        saveIndex(records);
+      }
       finishWithError("stt", "STT_EMPTY", "No speech detected in recording");
       return;
+    }
+    if (sttAborted) {
+      // Partial text recognised under abort — still answer with what we have.
+      plog("voicemail", `job ${id} transcribed partial text under abort (${userText.length} chars)`);
     }
     state.stages.stt = { state: "done", startedAt: state.stages.stt.startedAt, durationMs: now() - (state.stages.stt.startedAt || now()) };
     state.userText = userText;
@@ -497,7 +646,7 @@ async function processVoicemailAsync(id: string, audioBlob: Blob): Promise<void>
        state.finishedAt = now();
        state.currentStage = null;
        persistJob(state);
-+      plog("voicemail", `job ${state.id} complete`, { id: state.id, durationMs: state.finishedAt - state.startedAt });
+      plog("voicemail", `job ${state.id} complete`, { id: state.id, durationMs: state.finishedAt - state.startedAt });
    } catch (e: any) {
     // Catch-all for any unexpected exception (e.g. processVoicemailAsync
     // itself crashes). The stage we were in gets the error marker.
@@ -625,6 +774,12 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Could not parse form data" }, { status: 400 });
     }
 
+    // WS-04: reject new recordings once the voicemail dir exceeds quota
+    // (VOICEMAIL_QUOTA_MB / ~/.fcukproxy/voicemails).
+    if (!voicemailQuotaOk()) {
+      return NextResponse.json({ ok: false, error: "Voicemail storage quota exceeded", errorCode: "QUOTA_EXCEEDED" }, { status: 507 });
+    }
+
     const id = makeId();
     const queuedAt = Date.now();
     const state: JobState = {
@@ -667,6 +822,12 @@ export async function POST(req: NextRequest) {
     } catch {
       return NextResponse.json({ error: "Could not parse form data" }, { status: 400 });
     }
+
+    // WS-04: reject new recordings once the voicemail dir exceeds quota.
+    if (!voicemailQuotaOk()) {
+      return NextResponse.json({ ok: false, error: "Voicemail storage quota exceeded", errorCode: "QUOTA_EXCEEDED" }, { status: 507 });
+    }
+
     const id = makeId();
     const queuedAt = Date.now();
     const state: JobState = {

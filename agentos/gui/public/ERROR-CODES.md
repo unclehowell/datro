@@ -1,7 +1,7 @@
 # Error code lookup
 
 Short, machine-recognisable error codes surfaced in the chat and voicemail
-UIs as a clickable badge. Click the badge to open this document. v1.11.27.
+UIs as a clickable badge. Click the badge to open this document. v1.11.35.
 
 If you see a code not listed here, please file an issue with the full
 text from the chat/voicemail card and the device the request was made
@@ -73,6 +73,11 @@ display "still generating" indicators without polling the LLM.
 
 ## Changelog
 
+- **v1.11.35** — Re-verified every code below against the runtime
+  (`chat/route.ts` + `page.tsx` send-failure mapping, and
+  `api/voicemail/route.ts` `classifyError`/stage emitters). Table matches
+  reality; `docs/ERROR-CODES.md` is now a symlink to this file (single
+  source of truth).
 - **v1.11.27** — Initial version. Surfaced error codes on the chat and
   voicemail UIs, created this document, added stage timing fields to
   `/api/voicemail?action=status`.
