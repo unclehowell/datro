@@ -6,49 +6,55 @@ The AgentOS harness is the runtime infrastructure that manages agent sessions, t
 
 ## Pipeline Architecture
 
+Local-first routing. The chat/voice path prefers the on-node stack and only
+reaches a cloud LLM when the entire local stack is unavailable:
+
 ```
 User Input (text/voice)
     ↓
-WebGUI (Next.js)
+WebGUI (Next.js) / voicemail
     ↓
-Router (cloud LLM: Groq → OpenRouter → Cerebras → Google → Mistral)
+Classifier (task-router :3200 — local, classifies CHAT vs TASK)
+    ├─ CHAT → Hermes built-in (local) → MiniCPM5-1B via OmniRoute (:20128)
+    └─ TASK → opencode → kilo → kiro (delegate, located locally)
+             (each refused → retried once with a tool-use directive)
     ↓
-Dispatcher (classify: CHAT/EXEC/MATH/VIDEO/TOOL)
-    ↓
-Executor (tool registry, shell, remotion)
+Cloud LLM fallback — only if the local stack is entirely unavailable
+(Router: Groq → OpenRouter → Cerebras → Google → Mistral, then the
+ROUTER_SYSTEM classifier parses EXEC:/MATH:/VIDEO:/DELEGATE: prefixes)
     ↓
 Response (text/voice/video)
 ```
 
 ## Components
 
-### 1. Cloud Router (`src/lib/cloud-router.ts`)
-- Priority chain: Groq → OpenRouter → Cerebras → Google → Mistral
-- API keys from `~/.llm_keys`
-- Free-tier providers, no paid cloud LLMs
-- Timeout: 15-30s per provider
+### 1. Local Router / Classifier (`agentos/task-router.mjs`)
+- Runs on :3200 (loopback-only, optional shared-secret).
+- Classifies each prompt as `chat` (→ ollama via OmniRoute) or `task`
+  (→ opencode → kilo → kiro fallback chain, each executed via the
+  tool-use wrapper so files/tools/permissions are granted).
+- Per-task ledger for crash-resume; refusal detection with a single
+  tool-use directive retry.
 
-### 2. Chat API (`src/app/api/chat/route.ts`)
-- Pure switchboard: every prompt goes to cloud LLM
-- Cloud LLM classifies as CHAT/EXEC/MATH/VIDEO
-- Only pure math (`2+2`) bypasses LLM
-- Returns: reply, routed, dependency, provider
+### 2. Chat Route (`src/app/api/chat/route.ts`)
+- `routeThroughLocalStack()` first: attempts classify → task-router → local
+  brain (Hermes / MiniCPM5 via OmniRoute), all locally.
+- Only if the entire local stack is unavailable does it fall back to the
+  cloud-LLM priority chain (Groq → OpenRouter → Cerebras → Google → Mistral).
+- Returns: reply, routed, dependency, provider.
 
 ### 3. Tool Registry (`src/runtime/tools/registry.ts`)
-- 17 tools with executors
-- Each tool has: name, category, capability, parameters, timeout, permissions
-- Tools registered at startup, executed via `ToolRegistry.execute()`
+- Tools registered at startup, executed via `ToolRegistry.execute()`.
+- Both the chat route and the agent loop share this registry.
 
 ### 4. Agent Loop (`src/runtime/loop.ts`)
-- Hybrid architecture: LLM planner + tool executor
-- Procedure-first planning: check procedures before generating plans
-- LLM fallback: if no procedure matches, generate plan from prompt
-- Dual parsing: JSON array format + terminal command format
+- Hybrid architecture: LLM planner + tool executor.
+- Procedure-first planning: check procedures (procedures/skills) before
+  generating plans. LLM fallback only when no procedure matches.
 
 ### 5. Session Manager (`src/runtime/session-manager.ts`)
-- Lifecycle: queued → planning → running → completed/failed
-- Persistence: sessions saved to disk
-- Events: SSE streaming for real-time updates
+- Lifecycle: queued → planning → running → completed/failed.
+- Persistence: sessions saved to disk. Events: SSE streaming for real-time updates.
 
 ## Scaffolding Patterns
 
@@ -64,7 +70,8 @@ Response (text/voice/video)
 - If procedure matches, execute directly (no LLM)
 
 ### Skills
-- Loaded from `~/.agents/skills/`
+- Loaded from `~/.fcukproxy/skills/` (durable per-node state tracked in
+  `~/.fcukproxy/skills/skill.state.json`, per the OTA manifest).
 - YAML frontmatter: name, description, mode
 - Markdown body: instructions, examples, edge cases
 - Agent reads skill and follows procedure
