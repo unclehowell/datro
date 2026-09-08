@@ -1,3 +1,29 @@
+## [1.11.41] - 2026-09-07
+
+Release: **v1.11.41 — play/pause voicemail button, LLM knows its version, hands for the local 1B brain**. Three asks:
+
+1. **Two clicks to hear a voicemail.** The list-item "Play/Replay" button only *expanded* the item into a reply card whose own audioplayer needed a second click. Now that button is a **direct play/pause toggle** — one click plays the clip inline, the same button pauses, and the card's red "unplayed" dot clears immediately.
+2. **"What's your version?"** Hermes/MiniCPM couldn't state its version because the running version was never in the prompt. A runtime `currentVersion()` helper (reads `~/.fcukproxy/.local-version`, repo `.version` fallback) is now injected into the system prompts, so the LLM answers with the deployed `v{X}.{Y}.{Z}`.
+3. **The 1B brain had no hands.** The tool-using attempt always failed on MiniCPM-1B (ollama rejects the tools schema → 500), so the no-tools retry ran with a prompt that *forbade* any tool syntax — the model could never run a command or delegate. Now:
+   - the no-tools retry prompt says real tools ARE available and to reach for a `<function>` ReAct stub (the pipeline already executes such stubs via `parseReActStub`);
+   - the `delegate` tool finally has an **executor** (it was registered in the catalog but had no executor → "No executor for tool: delegate");
+   - `kiro` was added to delegate/subagent/chat-route/task-router as a delegation backend, invoked headless (`kiro-cli chat --no-interactive --trust-all-tools`);
+   - agent binaries are resolved against `~/.local/bin` + `~/.npm-global/bin` so `kilo` works even though the GUI service PATH only includes `~/.local/bin:/usr/local/bin:/usr/bin:/bin`.
+
+### Fixes
+
+1. `chat/page.tsx` — inline play/pause toggle on the voicemail list button (shared audio element, `playbackVmId` state, plays→marks read).
+2. `lib/version.ts` (new) — `currentVersion()` runtime reader (never a hardcoded literal, keeping `check-version-constants.sh` green).
+3. `lib/pipeline.ts` + `app/api/chat/route.ts` — inject `running AgentOS v{version}` into base/no-tools/cloud/router prompts; no-tools retry prompt now permits ReAct stubs for real tools (terminal, delegate, file_read, python, system_info).
+4. `runtime/tools/registry.ts` — register the `delegate` executor; add `kiro` to the delegate/subagent enums; `execSubagent` resolves binaries across the global install dirs and runs kiro headless.
+5. `task-router.mjs` — `kiro` backend as the final agentic fallback (opencode → kilo → kiro), with health check and startup log.
+6. `public/fcukproxy/update-checker.sh` — skip `regenerate_services`/`daemon-reload` during an active graphical (x11/wayland/mir) session so OTA can never kill the desktop via `systemd-xdg-autostart-generator`.
+
+### Verified
+
+- `tsc --noEmit` clean for changed files (pre-existing remotion/`api/settings` annotations unchanged); `eslint src --max-warnings 0` green.
+- `kiro-cli chat --no-interactive --trust-all-tools` confirmed against the installed `@aws/kiro-cli`; `node --check task-router.mjs` clean.
+
 ## [1.11.40] - 2026-09-07
 
 Release: **v1.11.40 — one voice-clip reply card + final-answer-only voicemail**. Two voicemail annoyances:
