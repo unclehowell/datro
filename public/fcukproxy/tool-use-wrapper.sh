@@ -16,7 +16,9 @@
 set -euo pipefail
 
 DEBUG="${TOOL_USE_DEBUG:-0}"
-log() { [[ "$DEBUG" == "1" ]] && echo "[tool-use-wrapper] $*" >&2; }
+# NB: must never return non-zero — this script runs under `set -e`, and a
+# failing `log` (DEBUG=0) would abort before the backend ever spawns.
+log() { [[ "$DEBUG" == "1" ]] && echo "[tool-use-wrapper] $*" >&2 || true; }
 
 BACKEND="${1:-}"
 TASK="${2:-}"
@@ -51,14 +53,31 @@ ensure_opencode_config() {
   local CONFIG_DIR="$HOME/.config/opencode"
   mkdir -p "$CONFIG_DIR"
 
-  # OpenCode uses opencode.json for configuration
+  # OpenCode uses opencode.json for configuration. V1 configs use the
+  # singular "permission" key ("permissions" = v2, rejected by opencode 1.x).
   local CONFIG_FILE="$CONFIG_DIR/opencode.json"
+  # Repair an existing v2-style config ("permissions") left by older wrappers —
+  # opencode 1.x refuses to start with it, so the delegate silently fails.
+  if [[ -f "$CONFIG_FILE" ]] && grep -q '"permissions"' "$CONFIG_FILE"; then
+    log "Repairing opencode config (v2 'permissions' -> v1 'permission')"
+    cat > "$CONFIG_FILE" <<'OPEOF'
+{
+  "permission": {
+    "bash": "allow",
+    "edit": "allow",
+    "webfetch": "allow"
+  }
+}
+OPEOF
+  fi
   if [[ ! -f "$CONFIG_FILE" ]]; then
     log "Creating opencode config"
     cat > "$CONFIG_FILE" <<'OPEOF'
 {
-  "permissions": {
-    "bash": "allow"
+  "permission": {
+    "bash": "allow",
+    "edit": "allow",
+    "webfetch": "allow"
   }
 }
 OPEOF

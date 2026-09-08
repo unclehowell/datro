@@ -1,3 +1,14 @@
+## [1.11.44] - 2026-09-08
+
+Release: **v1.11.44 — tool-use wrapper env fixes**. The wrapper silently aborted before spawning any backend under `set -euo pipefail` (its `log()` helper returns non-zero when `TOOL_USE_DEBUG` is unset), and it wrote an opencode v2-style `"permissions"` config that opencode 1.x rejects at startup — so any wrapper-mediated delegation (opencode or kilo via the task router) failed with exit 1 and no output.
+
+### Fixes
+
+1. `public/fcukproxy/tool-use-wrapper.sh` — `log()` now always returns 0 (`|| true`), fixing the `set -e` abort that killed the wrapper before the backend spawned.
+2. Same file — opencode config now written/auto-repaired with the v1 `"permission"` key (`bash`, `edit`, `webfetch` allowed); an existing v2 `"permissions"` config is rewritten to v1 so opencode 1.x starts.
+
+Verified end-to-end through the task router: opencode times out (5-min cap) and the kilo fallback (`kilo run`) now creates the requested file.
+
 ## [1.11.43] - 2026-09-08
 
 Release: **v1.11.43 — delegate backends speak the current CLI**. kilo (v7.5.15, an opencode-API fork) dropped the old `--chat` / `--quiet --task` flags; the canonical non-interactive form is now `run <message>` on both kilo and opencode. The task router and GUI still spawned the stale flag forms, so delegated file-execution tasks through kilo produced usage help instead of files.
