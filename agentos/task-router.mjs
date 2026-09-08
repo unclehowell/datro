@@ -25,6 +25,7 @@ const ROUTER_TOKEN = process.env.TASK_ROUTER_TOKEN || "";
 const OMNIRUTE_URL = process.env.OMNIRUTE_URL || "http://localhost:20128";
 const OPENCODE_BIN = process.env.OPENCODE_BIN || "opencode";
 const KILO_BIN = process.env.KILO_BIN || "kilo";
+const KIRO_BIN = process.env.KIRO_BIN || "kiro-cli";
 
 // Task detection patterns (applied AFTER politeness prefixes are stripped)
 // WS6: these are the fast-path fallback. Politeness lead-ins ("please help me
@@ -293,6 +294,21 @@ async function routeToKilo(task) {
   return first;
 }
 
+async function routeToKiro(task) {
+  // kiro-cli (npm: @aws/kiro-cli) takes a chat subcommand; run it
+  // headless with trust-all-tools so agentic prompts execute end-to-end.
+  const run = () =>
+    runBackend({
+      bin: KIRO_BIN,
+      args: ["chat", "--no-interactive", "--trust-all-tools", task],
+      label: "kiro",
+      timeoutMs: 300_000,
+      env: { ...process.env, NONINTERACTIVE: "1", AGENT_TOOL_ACCESS: "full" },
+    });
+  const out = await run();
+  return backendOutput(out, "kiro");
+}
+
 async function routeTask(task) {
   // WS-08: ledger the run BEFORE dispatching so a crash mid-task leaves a
   // recoverable record (GET /ledger). Cleared on every terminal outcome.
@@ -317,9 +333,19 @@ async function routeTask(task) {
     ledgerClear(taskId);
     return { backend: "kilo", result };
   } catch (err) {
+    ledgerWrite({ ...base, backend: "kiro", status: "running", note: `kilo failed: ${err.message}` });
+    console.log(`[task-router] kilo failed: ${err.message}, trying kiro...`);
+  }
+
+  // Final fallback to kiro (AWS kiro-cli)
+  try {
+    const result = await routeToKiro(task);
+    ledgerClear(taskId);
+    return { backend: "kiro", result };
+  } catch (err) {
     ledgerWrite({ ...base, backend: "none", status: "failed", note: err.message });
-    console.log(`[task-router] kilo failed: ${err.message}`);
-    return { backend: "none", result: "No agentic backend available. Install opencode or kilo." };
+    console.log(`[task-router] kiro failed: ${err.message}`);
+    return { backend: "none", result: "No agentic backend available. Install opencode, kilo, or kiro." };
   }
 }
 
@@ -343,6 +369,7 @@ const server = http.createServer(async (req, res) => {
       backends: {
         opencode: await checkBinary(OPENCODE_BIN),
         kilo: await checkBinary(KILO_BIN),
+        kiro: await checkBinary(KIRO_BIN),
       },
       inFlight: ledgerList().filter((e) => e.status === "running").length,
     }));
@@ -418,5 +445,6 @@ server.listen(PORT, HOST, () => {
   console.log(`[task-router] Running on http://${HOST}:${PORT}`);
   console.log(`[task-router] opencode: ${OPENCODE_BIN}`);
   console.log(`[task-router] kilo: ${KILO_BIN}`);
+  console.log(`[task-router] kiro: ${KIRO_BIN}`);
   console.log(`[task-router] auth: ${ROUTER_TOKEN ? "required (shared secret)" : "loopback-only (no token configured)"}`);
 });

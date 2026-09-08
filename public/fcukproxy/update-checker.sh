@@ -164,6 +164,17 @@ version_lt() {
 # This ensures install.sh changes (memory limits, new services, etc.) propagate
 # to deployed nodes via OTA — not just code changes.
 regenerate_services() {
+  # Never regenerate units or call daemon-reload during an active graphical session.
+  local _rg_session _rg_type=""
+  _rg_session=$(loginctl show-user "$(id -un)" --property=Sessions --value 2>/dev/null | tr ' ' '\n' | head -1)
+  if [[ -n "$_rg_session" ]]; then
+    _rg_type=$(loginctl show-session "$_rg_session" --property=Type --value 2>/dev/null || true)
+  fi
+  if [[ "$_rg_type" == "x11" || "$_rg_type" == "wayland" || "$_rg_type" == "mir" ]]; then
+    log "Skipping regenerate_services: active graphical session (type=$_rg_type)"
+    return 0
+  fi
+
   local SYSTEMD_DIR="$HOME/.config/systemd/user"
   mkdir -p "$SYSTEMD_DIR"
 
@@ -491,6 +502,8 @@ EOF
   # ── Self-heal the update cadence to every 10 minutes ─────────────────────
   ensure_update_cadence
 
+  # Only reload the user systemd daemon when NOT inside an active graphical
+  # session. (Handled by the early return at the top of this function.)
   systemctl --user daemon-reload 2>/dev/null || true
   log "Systemd services regenerated (only agentos-gui enabled by default)"
 }
@@ -539,6 +552,18 @@ step_update_interval() {
   fi
 }
 ensure_update_cadence() {
+  # Never touch systemd units or call daemon-reload while a graphical session
+  # is active — doing so triggers systemd-xdg-autostart-generator which kills
+  # the desktop session. The timer is already running; leave it alone.
+  local _chk_session _chk_type=""
+  _chk_session=$(loginctl show-user "$(id -un)" --property=Sessions --value 2>/dev/null | tr ' ' '\n' | head -1)
+  if [[ -n "$_chk_session" ]]; then
+    _chk_type=$(loginctl show-session "$_chk_session" --property=Type --value 2>/dev/null || true)
+  fi
+  if [[ "$_chk_type" == "x11" || "$_chk_type" == "wayland" || "$_chk_type" == "mir" ]]; then
+    return 0
+  fi
+
   local I="$(read_update_interval)"
   if command -v systemctl >/dev/null 2>&1; then
     local SYSTEMD_DIR="$HOME/.config/systemd/user"

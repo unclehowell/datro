@@ -207,7 +207,7 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
     capability: "software_engineer",
     description: "Delegate a task to a specialist agent (OpenCode, Kilo, etc.)",
     parameters: [
-      { name: "agent", type: "string", description: "Agent to delegate to", required: true, enum: ["opencode", "kilo", "hermes"] },
+      { name: "agent", type: "string", description: "Agent to delegate to", required: true, enum: ["opencode", "kilo", "kiro", "hermes"] },
       { name: "task", type: "string", description: "Task description for the agent", required: true },
       { name: "context", type: "string", description: "Additional context or file paths", required: false },
     ],
@@ -250,7 +250,7 @@ const BUILTIN_TOOLS: ToolDefinition[] = [
     capability: "agent",
     description: "Spawn a subagent (opencode, kilo, or hermes) to run a task independently with unrestricted permissions",
     parameters: [
-      { name: "agent", type: "string", description: "Agent to spawn (opencode, kilo, hermes)", required: true, enum: ["opencode", "kilo", "hermes"] },
+      { name: "agent", type: "string", description: "Agent to spawn (opencode, kilo, kiro, hermes)", required: true, enum: ["opencode", "kilo", "kiro", "hermes"] },
       { name: "task", type: "string", description: "Task description for the subagent", required: true },
       { name: "context", type: "string", description: "Additional context or file paths", required: false },
       { name: "timeout", type: "number", description: "Timeout in milliseconds (default: 1 hour)", required: false, default: 3600000 },
@@ -358,6 +358,7 @@ export class ToolRegistry {
     this.registerExecutor("service_check", this.execServiceCheck.bind(this));
     this.registerExecutor("pm2", this.execPm2.bind(this));
     this.registerExecutor("subagent", this.execSubagent.bind(this));
+    this.registerExecutor("delegate", this.execSubagent.bind(this));
     this.registerExecutor("background_exec", this.execBackgroundExec.bind(this));
     this.registerExecutor("system_info", this.execSystemInfo.bind(this));
     this.registerExecutor("web_fetch", this.execWebFetch.bind(this));
@@ -633,16 +634,37 @@ export class ToolRegistry {
 
     try {
       const { execSync } = require("child_process");
-      const cmd = agent === "opencode"
-        ? `opencode --quiet --task "${task.replace(/"/g, '\"')}"`
-        : agent === "kilo"
-        ? `kilo --quiet --task "${task.replace(/"/g, '\"')}"`
-        : `hermes --yolo --task "${task.replace(/"/g, '\"')}"`;
+      // Resolve the agent binary against a PATH that includes the common
+      // global install dirs (kilo → ~/.npm-global/bin, opencode/kiro →
+      // ~/.local/bin) even when the invoking service has a minimal PATH.
+      const baseDirs = [process.env.FCUK_HOME, join(homedir(), ".npm-global"), join(homedir(), ".local"), join(homedir(), ".npm", "bin")]
+        .filter((d): d is string => Boolean(d))
+        .map((d) => join(d, "bin"));
+      const envPath = [...baseDirs, process.env.PATH || "/usr/local/bin:/usr/bin:/bin"].join(":");
+      const resolveBin = (name: string): string => {
+        try { return execSync(`command -v ${name}`, { env: { ...process.env, PATH: envPath }, encoding: "utf-8" }).trim() || name; }
+        catch { return name; }
+      };
+      const fullTask = context ? `${task}\n\nContext:\n${context}` : task;
+      const safe = (s: string) => s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+      let cmd: string;
+      if (agent === "opencode") {
+        cmd = `${resolveBin("opencode")} --quiet --task "${safe(fullTask)}"`;
+      } else if (agent === "kilo") {
+        cmd = `${resolveBin("kilo")} --quiet --task "${safe(fullTask)}"`;
+      } else if (agent === "kiro") {
+        // kiro-cli ships as `kiro-cli` (npm bin name) with a `chat [INPUT]`
+        // subcommand; run non-interactive with trust-all-tools so agentic
+        // prompts actually execute instead of stopping for approval.
+        cmd = `${resolveBin("kiro-cli")} chat --no-interactive --trust-all-tools "${safe(fullTask)}"`;
+      } else {
+        cmd = `hermes --yolo --task "${safe(fullTask)}"`;
+      }
 
       const output = execSync(cmd, {
         cwd: DEFAULT_HOME,
         timeout,
-        env: { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task },
+        env: { ...process.env, PATH: envPath, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task },
         encoding: "utf-8",
       });
       return this.buildSuccessResult(req, output.trim() || "Subagent task completed");
