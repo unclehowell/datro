@@ -14,7 +14,7 @@ import { complete } from "@/lib/omniroute";
 import { sendToHermes } from "@/lib/hermes";
 import { switchToProfile, type HermesState } from "@/lib/hermes-gate";
 import { isProxyLocked, lockForProxy, unlockProxy, getProxyLock } from "@/lib/proxy-state";
-import { exec, execFile, spawn } from "child_process";
+import { exec, execFile, execFileSync, spawn } from "child_process";
 import { promisify } from "util";
 import { homedir } from "os";
 import { join } from "path";
@@ -164,6 +164,15 @@ async function classifyTask(msg: string, messages: Array<{ role: string; content
   } catch {
     return null;
   }
+}
+
+// ── ReAct stub cleanup (parity with lib/pipeline.ts v1.11.37) ───────────
+// The 1B MiniCPM model emits <function name="…">…</function> tool-call XML
+// even when no tools schema is passed. Strip it so raw XML never reaches the
+// chat UI (voicemail already does this via pipeline.ts::stripReActReply).
+const REACT_FUNCTION_RE = /<function\s+name=["']([^"']+)["']\s*>([\s\S]*?)<\/function>|<function\s+name=["']([^"']+)["'][^>]*\/>/g;
+function stripReActReply(content: string): string {
+  return content.replace(REACT_FUNCTION_RE, "").replace(/\s*\n\s*/g, "\n").trim();
 }
 
 async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" | "assistant"; content: string }>, msg: string, opts?: { mode?: string; voiceCall?: boolean }): Promise<{
@@ -351,7 +360,11 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
       max_tokens: 700,
       stream: false,
     });
-    const reply = withoutTools.choices?.[0]?.message?.content?.trim();
+    let reply = withoutTools.choices?.[0]?.message?.content?.trim();
+    // Parity with the voicemail path (pipeline.ts v1.11.37): strip any
+    // <function …>…</function> ReAct stub the 1B model emits even without a
+    // tools schema, so raw XML never leaks into the chat UI.
+    if (reply) reply = stripReActReply(reply);
     if (!reply) throw new Error("empty MiniCPM response");
     return {
       reply,
@@ -519,22 +532,22 @@ async function runDelegate(agent: string, task: string, context?: string): Promi
   const env = { ...process.env, PATH: envPath, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task };
 
   try {
-    const { execSync } = require("child_process");
+    // Resolve the binary via PATH once (`command -v` on a fixed name is safe).
     const resolveBin = (name: string): string => {
-      try { return execSync(`command -v ${name}`, { env: { ...process.env, PATH: envPath }, encoding: "utf-8" }).trim() || name; }
+      try { return execFileSync("sh", ["-c", `command -v ${name}`], { env: { ...process.env, PATH: envPath }, encoding: "utf-8" }).trim() || name; }
       catch { return name; }
     };
     const fullTask = context ? `${task}\n\nContext:\n${context}` : task;
-    const safe = (s: string) => s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
-    const cmd = agent === "opencode"
-      ? `${resolveBin("opencode")} run "${safe(fullTask)}"`
-      : agent === "kilo"
-      ? `${resolveBin("kilo")} run "${safe(fullTask)}"`
-      : agent === "kiro"
-      ? `${resolveBin("kiro-cli")} chat --no-interactive --trust-all-tools "${safe(fullTask)}"`
-      : `hermes --yolo --task "${safe(fullTask)}"`;
+    // argv-array exec (no shell interpolation) — the task string travels as a
+    // single argument, so $(...)/backticks/;/| in it can never be executed.
+    let exe: string;
+    let exeArgs: string[];
+    if (agent === "opencode") { exe = resolveBin("opencode"); exeArgs = ["run", fullTask]; }
+    else if (agent === "kilo") { exe = resolveBin("kilo"); exeArgs = ["run", fullTask]; }
+    else if (agent === "kiro") { exe = resolveBin("kiro-cli"); exeArgs = ["chat", "--no-interactive", "--trust-all-tools", fullTask]; }
+    else { exe = resolveBin("hermes"); exeArgs = ["--yolo", "--task", fullTask]; }
 
-    const output = execSync(cmd, {
+    const output = execFileSync(exe, exeArgs, {
       cwd: DEFAULT_HOME,
       timeout: 3600000, // 1 hour max for delegate tasks
       env,

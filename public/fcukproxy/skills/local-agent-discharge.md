@@ -3,8 +3,9 @@ When a node reports it can run local agentic CLIs (opencode/kilo), prefer
 discharging real work there before falling back to a cloud LLM. This keeps
 long-horizon campaigns running on node compute and lowers per-lead LLM cost.
 
-- **opencode available** → use `opencode --non-interactive -m "<task>"`.
+- **opencode available** → use `opencode run "<task>"`.
 - **kilo available** → use `kilo run "<task>"`.
+- **kiro available** → use `kiro-cli chat --no-interactive --trust-all-tools "<task>"`.
 - **Neither** → route through the local agent's `/v1/chat/completions`.
 - Capability probe: `command -v opencode`, `command -v kilo`.
 - Always write full outputs to the order's `strategy/` dir; only summaries

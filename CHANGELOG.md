@@ -1,3 +1,19 @@
+## [1.11.45] - 2026-09-08
+
+Release: **v1.11.45 — agentic tasks actually get done across the delegate backends**. opencode/kilo (both consume the opencode permission schema) ran non-interactively with no `external_directory` grant, so any real file work outside the cwd (~/Documents, ~/Downloads, …) hit opencode/kilo’s “ask” permission — which cannot be answered in `run` mode — and the backend refused with “I can’t manipulate your downloads directory.” The wrapper now grants `external_directory` (plus bash/edit/webfetch) in every config it writes or repairs, so delegated file tasks execute. Also closes the plan’s remaining delegate/harness items.
+
+### Fixes
+
+1. `public/fcukproxy/tool-use-wrapper.sh` — opencode/kilo configs now include `"external_directory": "allow"` (write + repair); kiro gains a wrapper branch (with kiro→kiro-cli binary resolution) and the same config preflight.
+2. `agentos/task-router.mjs` — `routeToKiro` now mirrors opencode/kilo: routed through the wrapper + one refusal retry with a tool-use directive.
+3. `agentos/gui/src/app/api/chat/route.ts` — `runDelegate` replaced its shell-string `execSync` with an argv-array `execFileSync`, removing the command-substitution injection class ($(), backticks, ;, |) entirely.
+4. Same file — ReAct-stub cleanup `stripReActReply` now applies to the no-tools retry branch (parity with `lib/pipeline.ts` v1.11.37), so raw `<function>` XML never leaks into the chat UI.
+5. `agentos/gui/docs/AGENT_HARNESS.md` — pipeline diagram and skills path updated to the local-first implementation actually in code.
+6. `public/fcukproxy/skills/local-agent-discharge.md` — corrected invocation syntax (opencode/kilo `run`, kiro chat) to match task-router.
+7. Removed stray `agentos/gui/src/app/api/chat/route.ts.bak-20260813-044530` (git history preserved it).
+
+Verified end-to-end via the wrapper: opencode, kilo, and kiro each create files/directories under `~/Downloads` (previously refused).
+
 ## [1.11.44] - 2026-09-08
 
 Release: **v1.11.44 — tool-use wrapper env fixes**. The wrapper silently aborted before spawning any backend under `set -euo pipefail` (its `log()` helper returns non-zero when `TOOL_USE_DEBUG` is unset), and it wrote an opencode v2-style `"permissions"` config that opencode 1.x rejects at startup — so any wrapper-mediated delegation (opencode or kilo via the task router) failed with exit 1 and no output.

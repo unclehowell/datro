@@ -300,18 +300,37 @@ async function routeToKilo(task) {
 }
 
 async function routeToKiro(task) {
-  // kiro-cli (npm: @aws/kiro-cli) takes a chat subcommand; run it
-  // headless with trust-all-tools so agentic prompts execute end-to-end.
+  // kiro-cli (npm: @aws/kiro-cli) takes a chat subcommand; run it headless
+  // with trust-all-tools so agentic prompts execute end-to-end. Route through
+  // the same tool-use wrapper so kiro gets the config preflight parity that
+  // opencode/kilo receive (and the external_directory permission grant).
+  const useWrapper = fs.existsSync(TOOL_WRAPPER);
+  const bin = useWrapper ? TOOL_WRAPPER : KIRO_BIN;
+  const mkArgs = (t) => (useWrapper ? ["kiro", t] : ["chat", "--no-interactive", "--trust-all-tools", t]);
   const run = () =>
     runBackend({
-      bin: KIRO_BIN,
-      args: ["chat", "--no-interactive", "--trust-all-tools", task],
+      bin,
+      args: mkArgs(task),
       label: "kiro",
       timeoutMs: 300_000,
       env: { ...process.env, NONINTERACTIVE: "1", AGENT_TOOL_ACCESS: "full" },
     });
   const out = await run();
-  return backendOutput(out, "kiro");
+  const first = backendOutput(out, "kiro");
+  if (typeof first !== "string" && first.refusal) {
+    console.log(`[task-router] kiro refused — retrying once with tool-use directive`);
+    const retry = await runBackend({
+      bin,
+      args: mkArgs(task + TOOL_USE_DIRECTIVE),
+      label: "kiro (tool-use retry)",
+      timeoutMs: 300_000,
+      env: { ...process.env, NONINTERACTIVE: "1", AGENT_TOOL_ACCESS: "full" },
+    });
+    const second = backendOutput(retry, "kiro");
+    if (typeof second === "string") return second;
+    return `Agent refused to execute this task after a tool-use retry. Unless the backend is misconfigured, it should have used its tools.\n\nOriginal output:\n${first.output}`;
+  }
+  return first;
 }
 
 async function routeTask(task) {
