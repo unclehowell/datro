@@ -649,9 +649,9 @@ export class ToolRegistry {
       const safe = (s: string) => s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
       let cmd: string;
       if (agent === "opencode") {
-        cmd = `${resolveBin("opencode")} --quiet --task "${safe(fullTask)}"`;
+        cmd = `${resolveBin("opencode")} run "${safe(fullTask)}"`;
       } else if (agent === "kilo") {
-        cmd = `${resolveBin("kilo")} --quiet --task "${safe(fullTask)}"`;
+        cmd = `${resolveBin("kilo")} run "${safe(fullTask)}"`;
       } else if (agent === "kiro") {
         // kiro-cli ships as `kiro-cli` (npm bin name) with a `chat [INPUT]`
         // subcommand; run non-interactive with trust-all-tools so agentic

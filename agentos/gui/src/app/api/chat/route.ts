@@ -527,9 +527,9 @@ async function runDelegate(agent: string, task: string, context?: string): Promi
     const fullTask = context ? `${task}\n\nContext:\n${context}` : task;
     const safe = (s: string) => s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
     const cmd = agent === "opencode"
-      ? `${resolveBin("opencode")} --quiet --task "${safe(fullTask)}"`
+      ? `${resolveBin("opencode")} run "${safe(fullTask)}"`
       : agent === "kilo"
-      ? `${resolveBin("kilo")} --quiet --task "${safe(fullTask)}"`
+      ? `${resolveBin("kilo")} run "${safe(fullTask)}"`
       : agent === "kiro"
       ? `${resolveBin("kiro-cli")} chat --no-interactive --trust-all-tools "${safe(fullTask)}"`
       : `hermes --yolo --task "${safe(fullTask)}"`;

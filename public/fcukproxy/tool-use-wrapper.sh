@@ -94,9 +94,9 @@ BIN_PATH=$(check_backend "$BACKEND") || {
 case "$BACKEND" in
   kilo)
     ensure_kilo_config
-    # kilo --chat runs in non-interactive mode; tools must be configured
-    # via the config file which we ensured above
-    exec "$BIN_PATH" --chat "$TASK"
+    # kilo run executes non-interactively; tools must be configured via the
+    # config file (ensured above).
+    exec "$BIN_PATH" run "$TASK"
     ;;
   opencode)
     ensure_opencode_config
