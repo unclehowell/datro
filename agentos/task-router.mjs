@@ -91,10 +91,15 @@ function isTask(text) {
 }
 
 // Path to the tool-use wrapper script (ensures agent backends have exec capabilities)
-const TOOL_WRAPPER = path.join(
-  path.dirname(process.argv[1]), // this script's dir
-  "..", "public", "fcukproxy", "tool-use-wrapper.sh"
-);
+// Git nodes run this file from $INSTALL_DIR/agentos/, so the script-relative
+// candidate resolves to $INSTALL_DIR/public/fcukproxy/tool-use-wrapper.sh.
+// Tarball nodes deploy the router to ~/.fcukproxy/omniroute/ while the wrapper
+// goes to ~/.fcukproxy/, so we check the deployed home-dir candidate too.
+const TOOL_WRAPPER_CANDIDATES = [
+  path.join(path.dirname(process.argv[1]), "..", "public", "fcukproxy", "tool-use-wrapper.sh"),
+  path.join(os.homedir(), ".fcukproxy", "tool-use-wrapper.sh"),
+];
+const TOOL_WRAPPER = TOOL_WRAPPER_CANDIDATES.find((p) => fs.existsSync(p)) || "";
 
 // ── WS-08: file-backed task resume ledger ──────────────────
 // One JSON per in-flight task so a task-router crash or restart doesn't
@@ -267,7 +272,7 @@ async function routeToKilo(task) {
   // Use the tool-use wrapper to ensure proper tool configuration
   const useWrapper = fs.existsSync(TOOL_WRAPPER);
   const bin = useWrapper ? TOOL_WRAPPER : KILO_BIN;
-  const mkArgs = (t) => (useWrapper ? ["kilo", t] : ["--chat", t]);
+  const mkArgs = (t) => (useWrapper ? ["kilo", t] : ["run", t]);
   const run = () =>
     runBackend({
       bin,

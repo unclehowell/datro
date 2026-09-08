@@ -426,9 +426,9 @@ export class AgentLoop {
     try {
       const { execSync } = require("child_process");
       const cmd = agent === "opencode"
-        ? `opencode --quiet --task "${task.replace(/"/g, '\"')}"`
+        ? `opencode run "${task.replace(/"/g, '\"')}"`
         : agent === "kilo"
-        ? `kilo --quiet --task "${task.replace(/"/g, '\"')}"`
+        ? `kilo run "${task.replace(/"/g, '\"')}"`
         : `hermes --yolo --task "${task.replace(/"/g, '\"')}"`;
 
       const output = execSync(cmd, {

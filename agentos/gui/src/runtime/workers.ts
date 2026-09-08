@@ -174,24 +174,16 @@ export class OpenCodeSession extends BaseWorkerSession {
   }
 
   protected async spawnProcess(): Promise<ChildProcess> {
-    // OpenCode CLI: non-interactive mode
-    // Pipe prompt via stdin, capture stdout
-    const proc = spawn("opencode", ["--quiet"], {
+    // OpenCode CLI: non-interactive mode via `run <message>`
+    const proc = spawn("opencode", ["run", this.prompt], {
       cwd: this.session.cwd,
       env: {
         ...process.env,
         TERM: "dumb",
         NO_COLOR: "1",
       },
-      stdio: ["pipe", "pipe", "pipe"],
+      stdio: ["ignore", "pipe", "pipe"],
     });
-
-    // Send the prompt
-    if (proc.stdin) {
-      proc.stdin.write(this.prompt);
-      proc.stdin.end();
-    }
-
     return proc;
   }
 
@@ -238,22 +230,16 @@ export class KiloSession extends BaseWorkerSession {
   }
 
   protected async spawnProcess(): Promise<ChildProcess> {
-    // Kilo CLI: repository-focused editing
-    const proc = spawn("kilo", ["--quiet"], {
+    // Kilo CLI: repository-focused editing, non-interactive via `run <message>`
+    const proc = spawn("kilo", ["run", this.prompt], {
       cwd: this.session.cwd,
       env: {
         ...process.env,
         TERM: "dumb",
         NO_COLOR: "1",
       },
-      stdio: ["pipe", "pipe", "pipe"],
+      stdio: ["ignore", "pipe", "pipe"],
     });
-
-    if (proc.stdin) {
-      proc.stdin.write(this.prompt);
-      proc.stdin.end();
-    }
-
     return proc;
   }
 

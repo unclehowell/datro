@@ -1,3 +1,19 @@
+## [1.11.43] - 2026-09-08
+
+Release: **v1.11.43 — delegate backends speak the current CLI**. kilo (v7.5.15, an opencode-API fork) dropped the old `--chat` / `--quiet --task` flags; the canonical non-interactive form is now `run <message>` on both kilo and opencode. The task router and GUI still spawned the stale flag forms, so delegated file-execution tasks through kilo produced usage help instead of files.
+
+### Fixes
+
+1. `public/fcukproxy/tool-use-wrapper.sh` — kilo branch now `exec kilo run "$TASK"` instead of `--chat`.
+2. `agentos/task-router.mjs` — kilo fallback args `run <task>`; `TOOL_WRAPPER` resolution now also checks `~/.fcukproxy/tool-use-wrapper.sh`, so tarball nodes (which deploy the router to `~/.fcukproxy/omniroute/` but the wrapper to `~/.fcukproxy/`) actually use the wrapper instead of silently skipping it and falling into the broken `--chat` path.
+3. `agentos/gui/src/app/api/chat/route.ts`, `runtime/tools/registry.ts`, `runtime/loop.ts` — delegate/subagent executors use `opencode run "..."` / `kilo run "..."` instead of `--quiet --task "..."`.
+4. `agentos/gui/src/runtime/workers.ts` — `OpenCodeSession`/`KiloSession` spawn `run <prompt>` (message as argv) instead of spawning `--quiet` and piping the prompt via stdin.
+
+### Verified
+
+- Empirical: `kilo run "<task>"` creates the requested file on the laptop (`/home/x/.npm-global/bin/kilo`, v7.5.15); both `kilo --chat` and `kilo --quiet --task` print usage only.
+- `node --check agentos/task-router.mjs`, `bash -n public/fcukproxy/tool-use-wrapper.sh` clean; GUI `tsc --noEmit` unchanged from known baseline (pre-existing remotion + `.next/types` noise).
+
 ## [1.11.42] - 2026-09-08
 
 Release: **v1.11.42 — task-router ships on tarball OTA nodes**. The v1.11.41 release added the task router, but tarball OTA nodes never received `agentos/task-router.mjs`: the tarball branch of `apply_update()` syncs `public/fcukproxy/` into `$INSTALL_DIR` and the GUI into `$GUI_DIR`, and both `install.sh` and `regenerate_services()` only copy the router *if* `$INSTALL_DIR/agentos/task-router.mjs` already exists — which it never does on tarball installs, so `task-router.service` crash-looped on `MODULE_NOT_FOUND` (`~/.fcukproxy/omniroute/task-router.mjs`).
