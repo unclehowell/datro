@@ -645,6 +645,8 @@ export default function ChatPage() {
   const depSpinTimerRef = useRef<NodeJS.Timeout | null>(null);
   const pipelineTimerRef = useRef<NodeJS.Timeout | null>(null);
   const JarvisPulseRef = useRef<NodeJS.Timeout | null>(null);
+  // Shared inline voicemail player (list-item play/pause toggle, v1.11.41)
+  const inlineVmAudioRef = useRef<HTMLAudioElement | null>(null);
 
   useEffect(() => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -753,6 +755,32 @@ export default function ChatPage() {
     } catch {}
     setDeletingVm(null);
   }, []);
+
+  const toggleInlinePlay = useCallback((vm: { id: string; audioPath?: string }) => {
+    if (playbackVmId === vm.id) {
+      inlineVmAudioRef.current?.pause();
+      setPlaybackVmId(null);
+      return;
+    }
+    if (inlineVmAudioRef.current) {
+      inlineVmAudioRef.current.pause();
+    }
+    const audio = new Audio(`/api/voicemail?action=audio&id=${vm.id}`);
+    inlineVmAudioRef.current = audio;
+    audio.addEventListener("ended", () => setPlaybackVmId(null));
+    audio.play().then(() => {
+      setPlaybackVmId(vm.id);
+      setVoicemails((prev) => prev.map((v) => v.id === vm.id ? { ...v, played: true } : v));
+      fetch("/api/voicemail?action=update", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ id: vm.id, played: true }),
+      });
+    }).catch(() => setPlaybackVmId(null));
+  }, [playbackVmId]);
+
+  // Clean up the inline player on unmount
+  useEffect(() => () => { inlineVmAudioRef.current?.pause(); }, []);
 
   // ─── Version info (fetched from GitHub releases) ──────
   useEffect(() => {
@@ -1796,11 +1824,15 @@ export default function ChatPage() {
                     </div>
                     <div className="flex items-center gap-2">
                       <button
-                        onClick={() => { setVoicemailModalRealId(vm.id); }}
+                        onClick={() => { toggleInlinePlay(vm); }}
                         className="flex-1 flex items-center justify-center gap-1.5 px-2 py-1.5 rounded bg-accent/20 border border-accent/30 text-accent text-xs hover:bg-accent/30 transition-colors"
                       >
-                        <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
-                        {vm.played ? "Replay" : "Play"}
+                        {playbackVmId === vm.id ? (
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+                        ) : (
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                        )}
+                        {playbackVmId === vm.id ? "Pause" : vm.played ? "Replay" : "Play"}
                       </button>
                       <button
                         onClick={async () => { await deleteVoicemail(vm.id); }}

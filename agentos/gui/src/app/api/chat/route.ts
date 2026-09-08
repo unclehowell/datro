@@ -17,12 +17,14 @@ import { isProxyLocked, lockForProxy, unlockProxy, getProxyLock } from "@/lib/pr
 import { exec, execFile, spawn } from "child_process";
 import { promisify } from "util";
 import { homedir } from "os";
+import { join } from "path";
 import fs from "fs";
 import { getRenderJob } from "@/runtime/tools/remotion";
 import { queryGraphRAG } from "@/lib/graphrag";
 import { ensureLLMStack, beginLLMRequest, endLLMRequest, releaseAfterAnswer, userServiceActive, userService, type GateState } from "@/lib/llm-gate";
 import { getAgentLoop as sharedGetAgentLoop } from "@/lib/agent-loop";
 import { fcukHome } from "@/lib/fcuk-home";
+import { currentVersion } from "@/lib/version";
 
 const execAsync = promisify(exec);
 const execFileAsync = promisify(execFile);
@@ -231,7 +233,7 @@ async function routeThroughLocalStack(messages: Array<{ role: "system" | "user" 
     const baseMessages = [
       {
         role: "system" as const,
-        content: "You are Hermes, the local AgentOS chat brain. Answer conversationally and keep responses concise. Do not claim to execute tasks; task execution is handled by the task-router." + personaSuffix(opts?.mode, opts?.voiceCall),
+        content: `You are Hermes, the local AgentOS chat brain running AgentOS v${currentVersion()}. Answer conversationally and keep responses concise. Do not claim to execute tasks; task execution is handled by the task-router.` + personaSuffix(opts?.mode, opts?.voiceCall),
       },
       ...messages.slice(-8),
     ];
@@ -469,7 +471,7 @@ function extractJsonTool(msg: string): { tool: string; args: Record<string, unkn
 }
 
 // ─── System prompt: the router asks the cloud LLM to classify ─
-const ROUTER_SYSTEM = `You are Jarvis, an AI router. Classify the user message and respond in EXACTLY one of these formats. ONLY output the prefix and content, nothing else:
+const ROUTER_SYSTEM = `You are Jarvis, an AI router on AgentOS v${currentVersion()}. Classify the user message and respond in EXACTLY one of these formats. ONLY output the prefix and content, nothing else:
 
 CHAT: <response> — for questions, jokes, greetings, explanations, opinions, or anything you can answer from knowledge.
 
@@ -479,7 +481,7 @@ MATH: <expression> — ONLY for pure arithmetic with no words, like "42*7".
 
 VIDEO: <JSON> — if the user asks to create/generate/make/render a video or any visual scene. Output ONLY a JSON object: {"template":"<name>","props":{<props>},"duration":<seconds>}. Use the ai-video tool (SVG scene engine) for ALL literal video requests. If the user specifies a duration (e.g. "3 second video", "10 seconds"), set "duration" to that number of seconds. Otherwise default to 5.
 
-DELEGATE: <JSON> — if the user asks you to spawn a subagent or delegate a task to another agent (opencode, kilo, or hermes). Output ONLY a JSON object: {"agent":"<name>","task":"<task description>","context":"<optional context>"}. Use this to spawn independent subagents for long-running or complex tasks.
+DELEGATE: <JSON> — if the user asks you to spawn a subagent or delegate a task to another agent (opencode, kilo, kiro, or hermes). Output ONLY a JSON object: {"agent":"<name>","task":"<task description>","context":"<optional context>"}. Use this to spawn independent subagents for long-running or complex tasks.
 
 Available VIDEO templates (ai-video / SVG scene engine):
 - dance: animated character dancing. Props: {"character":"cat","action":"groovy sway","background":"disco floor","palette":["#ff6b6b","#ffd93d"],"motion":"lively"}
@@ -506,16 +508,31 @@ If it is not a video request and the user wants you to do something on the compu
 
 
 async function runDelegate(agent: string, task: string, context?: string): Promise<{ success: boolean; output: string; error?: string }> {
-  // Spawn the agent as a subprocess with unrestricted permissions
-  const env = { ...process.env, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task };
+  // Spawn the agent as a subprocess with unrestricted permissions.
+  // Resolve binaries against a PATH that also includes the global install
+  // dirs so kilo (~/.npm-global/bin) and opencode/kiro (~/.local/bin) work
+  // even when the invoking service runs with a minimal PATH.
+  const baseDirs = [fcukHome(), join(homedir(), ".npm-global"), join(homedir(), ".local"), join(homedir(), ".npm", "bin")]
+    .filter(Boolean)
+    .map((d) => join(d, "bin"));
+  const envPath = [...baseDirs, process.env.PATH || "/usr/local/bin:/usr/bin:/bin"].join(":");
+  const env = { ...process.env, PATH: envPath, HERMES_YOLO: "1", EXEC_MODE: "unrestricted", DELEGATE_TASK: task };
 
   try {
     const { execSync } = require("child_process");
+    const resolveBin = (name: string): string => {
+      try { return execSync(`command -v ${name}`, { env: { ...process.env, PATH: envPath }, encoding: "utf-8" }).trim() || name; }
+      catch { return name; }
+    };
+    const fullTask = context ? `${task}\n\nContext:\n${context}` : task;
+    const safe = (s: string) => s.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
     const cmd = agent === "opencode"
-      ? `opencode --quiet --task "${task.replace(/"/g, '\"')}"`
+      ? `${resolveBin("opencode")} --quiet --task "${safe(fullTask)}"`
       : agent === "kilo"
-      ? `kilo --quiet --task "${task.replace(/"/g, '\"')}"`
-      : `hermes --yolo --task "${task.replace(/"/g, '\"')}"`;
+      ? `${resolveBin("kilo")} --quiet --task "${safe(fullTask)}"`
+      : agent === "kiro"
+      ? `${resolveBin("kiro-cli")} chat --no-interactive --trust-all-tools "${safe(fullTask)}"`
+      : `hermes --yolo --task "${safe(fullTask)}"`;
 
     const output = execSync(cmd, {
       cwd: DEFAULT_HOME,

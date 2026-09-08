@@ -33,6 +33,7 @@ import { exec, execFile, spawn } from "child_process";
 import { promisify } from "util";
 import fs from "fs";
 import { fcukHome } from "./fcuk-home";
+import { currentVersion } from "./version";
 
 const execFileAsync = promisify(execFile);
 
@@ -296,7 +297,7 @@ export async function runPrompt(
     const baseMessages = [
       {
         role: "system" as const,
-        content: "You are Hermes, the local AgentOS chat brain. Answer conversationally and keep responses concise. Tool calls you make WILL be executed (apt install, terminal exec, file_read, calculator, etc.) — you may use them when they actually help the user." + (opts.systemSuffix || ""),
+        content: `You are Hermes, the local AgentOS chat brain running AgentOS v${currentVersion()}. Answer conversationally and keep responses concise. Tool calls you make WILL be executed (apt install, terminal exec, file_read, calculator, etc.) — you may use them when they actually help the user.` + (opts.systemSuffix || ""),
       },
       ...history.slice(-8),
     ];
@@ -327,7 +328,7 @@ export async function runPrompt(
       // into the reply (its ReAct habit even without a tools schema).
       const noToolsSystem: { role: "system"; content: string } = {
         role: "system",
-        content: "You are Hermes, the local AgentOS chat brain. Answer conversationally in plain text and keep responses concise. You do NOT have tools available — never output XML, JSON, or function-call syntax. Compute simple arithmetic yourself and state ONLY the final result (e.g. \"35\"), with no working-out or alternative methods." + (opts.systemSuffix || ""),
+        content: `You are Hermes, the local AgentOS chat brain running AgentOS v${currentVersion()}. Answer conversationally in plain text and keep responses concise. REAL TOOLS ARE AVAILABLE — to use one, output a single ReAct stub and the pipeline will execute it exactly: <function name="terminal"><param name="command">ls -la</param></function>. Available tools: terminal (run any shell command), delegate (offload an agentic prompt to a stronger CLI agent), file_read, python, system_info. For plain questions, compute simple arithmetic yourself and state ONLY the final result (e.g. "35"), with no working-out or alternative methods. For prompts that demand real computer action, use a tool stub instead of pretending to act.` + (opts.systemSuffix || ""),
       };
       try {
         firstCompletion = await timed("minicpm", () => complete({
@@ -450,7 +451,7 @@ export async function runPrompt(
       const cloudTools = toolCatalogForCloud.length > 0 ? toolCatalogForCloud : undefined;
       try {
         const { value: cloud } = await timed("cloud", () => chatWithCloud([
-          { role: "system" as const, content: "You are Hermes, the local AgentOS chat brain." + (opts.systemSuffix || "") },
+          { role: "system" as const, content: `You are Hermes, the local AgentOS chat brain running AgentOS v${currentVersion()}.` + (opts.systemSuffix || "") },
           ...history.slice(-8),
           { role: "user" as const, content: msg },
         ], { tools: cloudTools }), onPhase);
