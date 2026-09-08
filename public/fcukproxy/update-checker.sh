@@ -675,6 +675,26 @@ apply_update() {
             "$extracted/agentos/gui/" "$GUI_DIR/" 2>>"$LOG_FILE"
           log "GUI source synced (tarball)"
         fi
+        # Mirror the full agentos/ assets into $INSTALL_DIR/agentos/ so the
+        # regenerate_services/sync_source checks below find real files on
+        # tarball nodes too (git nodes already have them via the clone).
+        # Without this a tarball node never received agentos/task-router.mjs,
+        # leaving task-router.service crash-looping on MODULE_NOT_FOUND.
+        if [[ -d "$extracted/agentos" ]]; then
+          mkdir -p "$INSTALL_DIR/agentos"
+          rsync -a --delete \
+            --exclude='.git' --exclude='node_modules' --exclude='.next' \
+            "$extracted/agentos/" "$INSTALL_DIR/agentos/" 2>>"$LOG_FILE"
+          log "AgentOS assets synced (tarball)"
+        fi
+        # Deploy task-router immediately — regenerate_services may be skipped
+        # entirely during an active graphical session, so we must not rely on it.
+        if [[ -f "$INSTALL_DIR/agentos/task-router.mjs" ]]; then
+          mkdir -p "$HOME/.fcukproxy/omniroute"
+          cp -f "$INSTALL_DIR/agentos/task-router.mjs" "$HOME/.fcukproxy/omniroute/task-router.mjs"
+          chmod +x "$HOME/.fcukproxy/omniroute/task-router.mjs" 2>/dev/null || true
+          log "Task router deployed (tarball)"
+        fi
         # Sync version file. package-lock.json is no longer excluded above so
         # the deployed lockfile always matches the pulled package.json (a stale
         # lockfile silently breaks `npm install` and served bundles).
@@ -780,6 +800,30 @@ sync_source() {
     cp "$INSTALL_DIR/agentos/omniroute/proxy.mjs" "$HOME/.fcukproxy/omniroute/proxy.mjs"
     chmod +x "$HOME/.fcukproxy/omniroute/proxy.mjs"
     log "OmniRoute synced"
+  fi
+
+  # Sync task-router alongside omniroute. On git nodes it arrives via the
+  # clone; on tarball nodes apply_update mirrors agentos/ so this stays fresh.
+  if [[ -f "$INSTALL_DIR/agentos/task-router.mjs" ]]; then
+    mkdir -p "$HOME/.fcukproxy/omniroute"
+    cp "$INSTALL_DIR/agentos/task-router.mjs" "$HOME/.fcukproxy/omniroute/task-router.mjs"
+    chmod +x "$HOME/.fcukproxy/omniroute/task-router.mjs"
+    log "Task router synced"
+  else
+    # Self-heal for tarball nodes mid-transition: the apply that brought us to
+    # the current version may have run OLD update-checker code which never
+    # mirrored agentos/ into INSTALL_DIR, leaving task-router.me missing and
+    # task-router.service crash-looping. Pull the file straight from the repo.
+    mkdir -p "$HOME/.fcukproxy/omniroute"
+    if curl -fsSL --max-time 60 \
+        "https://raw.githubusercontent.com/$REPO/$BRANCH/agentos/task-router.mjs" \
+        -o "$HOME/.fcukproxy/omniroute/task-router.mjs" 2>>"$LOG_FILE"; then
+      chmod +x "$HOME/.fcukproxy/omniroute/task-router.mjs"
+      log "Task router self-healed from GitHub"
+    else
+      log "WARN: task-router self-heal fetch failed (non-fatal)"
+      rm -f "$HOME/.fcukproxy/omniroute/task-router.mjs" 2>/dev/null || true
+    fi
   fi
 
   # Sync graphrag knowledge base

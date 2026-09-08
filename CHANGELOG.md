@@ -1,3 +1,16 @@
+## [1.11.42] - 2026-09-08
+
+Release: **v1.11.42 — task-router ships on tarball OTA nodes**. The v1.11.41 release added the task router, but tarball OTA nodes never received `agentos/task-router.mjs`: the tarball branch of `apply_update()` syncs `public/fcukproxy/` into `$INSTALL_DIR` and the GUI into `$GUI_DIR`, and both `install.sh` and `regenerate_services()` only copy the router *if* `$INSTALL_DIR/agentos/task-router.mjs` already exists — which it never does on tarball installs, so `task-router.service` crash-looped on `MODULE_NOT_FOUND` (`~/.fcukproxy/omniroute/task-router.mjs`).
+
+### Fixes
+
+1. `public/fcukproxy/update-checker.sh` — tarball branch of `apply_update()` now mirrors the extracted `agentos/` assets into `$INSTALL_DIR/agentos/` and immediately deploys `task-router.mjs` to `~/.fcukproxy/omniroute/`. The deploy is unconditional (not based on `regenerate_services`, which may be skipped during an active graphical session).
+2. `public/fcukproxy/update-checker.sh` — `sync_source()` (runs on every invocation, even up-to-date) now syncs task-router alongside omniroute and **self-heals from GitHub** when local source is missing, so a node whose transition to v1.11.42 was applied by old checker code still recovers within one cycle without waiting for another release.
+
+### Verified
+
+- `bash -n` syntax clean. Deployment path exercised against the actual broken laptop state (`MODULE_NOT_FOUND`, restart counter >10k).
+
 ## [1.11.41] - 2026-09-07
 
 Release: **v1.11.41 — play/pause voicemail button, LLM knows its version, hands for the local 1B brain**. Three asks:
