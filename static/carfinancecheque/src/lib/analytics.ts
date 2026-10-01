@@ -28,19 +28,27 @@ export function initGA() {
   });
 
   // Consent banner logic
-  var banner = document.getElementById('consent-banner');
   var consent = localStorage.getItem('cookie_consent');
-  if (!consent) {
-    banner.style.display = 'block';
-  } else {
+  if (consent) {
     updateConsent(consent === 'granted');
   }
-  document.getElementById('consent-accept').addEventListener('click', function() {
+  var banner = document.getElementById('consent-banner');
+  var acceptBtn = document.getElementById('consent-accept');
+  var rejectBtn = document.getElementById('consent-reject');
+  // Never let missing banner markup crash app startup (blank page)
+  if (!banner || !acceptBtn || !rejectBtn) {
+    console.warn('Consent banner markup missing from index.html');
+    return;
+  }
+  if (!consent) {
+    banner.style.display = 'block';
+  }
+  acceptBtn.addEventListener('click', function() {
     localStorage.setItem('cookie_consent', 'granted');
     updateConsent(true);
     banner.style.display = 'none';
   });
-  document.getElementById('consent-reject').addEventListener('click', function() {
+  rejectBtn.addEventListener('click', function() {
     localStorage.setItem('cookie_consent', 'denied');
     updateConsent(false);
     banner.style.display = 'none';

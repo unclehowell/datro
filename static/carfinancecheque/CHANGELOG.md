@@ -3,6 +3,11 @@ It's expected that developers log all changes to this directory, in this CHANGEL
 
 ---
 
+## [0.0.0.26] - 2026-10-01
+Oct-01 - Fix blank page: restore cookie consent banner markup removed from index.html (initGA crashed on null banner before React mounted).
+Oct-01 - Harden initGA() to skip banner wiring when markup is missing instead of throwing.
+Oct-01 - Replace unresolved %VITE_GA_TRACKING_ID% placeholder in gtag loader script with G-DEJB79ND9N.
+
 ## [0.0.0.25] - 2026-08-29
 Aug-29 - Release carfinancecheque-v0.0.0.25 addressing all WebMCP agent-readiness feedback points.
 Aug-29 - Add WebMCP tool manifest /.well-known/mcp.json (loan products, quote, claim submission tools + auth requirements).

@@ -1,5 +1,12 @@
 # Changelog
 
+## [carfinancecheque-v0.0.0.26] - 2026-10-01
+
+### Fixed
+- fix(carfinancecheque): Repair blank page on car.financecheque.uk — restore cookie consent banner markup dropped from `index.html` in the WebMCP update, which made `initGA()` throw before React mounted
+- fix(carfinancecheque): Make `initGA()` tolerate missing consent banner markup so it can never block app startup again
+- fix(carfinancecheque): Replace unresolved `%VITE_GA_TRACKING_ID%` placeholder in gtag loader with the GA4 ID
+
 ## [carfinancecheque-v0.0.0.25] - 2026-08-29
 
 ### Added
