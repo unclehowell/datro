@@ -1,5 +1,19 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.10] - 2026-10-03
+
+### Changed
+- Timeline brought in line with the Great House Farm Wiki (greathousefarmwiki.wordpress.com): 99 -> 112 scenes
+- Corrected: Mary Williams born 10 Aug 1913 and married 1936; 1938 Bute reversion to WGR replaces the unrecorded 1926 "Penarth Estate Company" sale; 1955 High Court order and 1962 Cardiff County Court order; 1986 High Court judgment dated 10 July (Hollis J); 1978-79 Roman villa marked as a separate site; 1994 excavation is an early-medieval cemetery (1,026 burials); "armour" find given its Museum Wales provenance (Church Farm, 1858)
+- Added: 1877 Daniel Thomas sale and the two parcels, 1877 Bute lease, 1908, 1928, 1944, 1950-52 papers taken, 1963 committal, 1965 offer, 1967, 1977 open day, 1982 GGAT warning, 1987 amalgamation, 1988 House of Lords and first eviction attempt, 1989 ECHR decision and planning, 1990 evaluation, 1992, 1993, 2019, 2026 campaign
+- Removed scenes with no supporting record: 1978 and 1980 hearings, 1986 demolition application, Roman villa scenes, 2024 duplicate
+- Challenges reworded as family contentions, per the Wiki's evidence standard
+- Splash key events, llms.txt and api/timeline.json regenerated
+
+### Added
+- GitHub Actions deploy to the bpvsbuckler Cloudflare Pages project on every push
+
+
 ## [bpvsbuckler-v0.0.0.09] - 2026-06-01
 
 ### Added
