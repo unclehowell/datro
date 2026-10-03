@@ -1,0 +1,66 @@
+name: Move Pages custom domains to bucklerfamily.estate
+
+on:
+  push:
+    branches:
+      - hbnb
+    paths:
+      - '.github/workflows/migrate-domains.yml'
+  workflow_dispatch:
+
+jobs:
+  migrate:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+      NEW_APEX: bucklerfamily.estate
+    steps:
+      - name: Add <sub>.bucklerfamily.estate for every datro.xyz / greathousefarm.estate domain
+        run: |
+          cf() { curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "$@"; }
+          base="https://api.cloudflare.com/client/v4"
+          acct="$base/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
+          zone=$(cf "$base/zones?name=$NEW_APEX" | jq -r '.result[0].id // empty')
+          [ -n "$zone" ] || { echo "::error::$NEW_APEX zone not found"; exit 1; }
+          echo "Existing $NEW_APEX DNS records:"
+          cf "$base/zones/$zone/dns_records?per_page=100" | jq -r '.result[] | "  \(.type)\t\(.name)\t\(.content)"'
+          projects=""; page=1
+          while :; do
+            p=$(cf "$acct?page=$page" | jq -r '.result[]?.name')
+            [ -z "$p" ] && break
+            projects="$projects $p"; page=$((page+1))
+          done
+          echo "Pages projects:$projects"
+          for name in $projects; do
+            case "$name" in *financecheque*) echo "skip $name (financecheque)"; continue;; esac
+            target=$(cf "$acct/$name" | jq -r '.result.subdomain')
+            for d in $(cf "$acct/$name/domains" | jq -r '.result[].name'); do
+              sub=$(echo "$d" | sed -nE 's/^([a-z0-9-]+)\.(datro\.xyz|greathousefarm\.estate)$/\1/p')
+              [ -n "$sub" ] || continue
+              [ "$sub" = world ] && { echo "skip $d (world purged)"; continue; }
+              new="$sub.$NEW_APEX"
+              echo "== $name: $d -> $new (target $target)"
+              existing=$(cf "$base/zones/$zone/dns_records?name=$new" | jq -r '.result[] | "\(.type) \(.content)"')
+              if [ -z "$existing" ]; then
+                cf -X POST -d "{\"type\":\"CNAME\",\"name\":\"$new\",\"content\":\"$target\",\"proxied\":true}" "$base/zones/$zone/dns_records" | jq -c '{dns: .success, errors: [.errors[].message]}'
+              else
+                echo "   DNS record already present, left as is: $existing"
+              fi
+              cf -X POST -d "{\"name\":\"$new\"}" "$acct/$name/domains" | jq -c '{attach: .success, errors: [.errors[].message]}'
+              case "$d" in *.greathousefarm.estate)
+                cf -X DELETE "$acct/$name/domains/$d" | jq -c '{removed_greathousefarm: .success}';;
+              esac
+            done
+          done
+
+      - name: Summary
+        run: |
+          cf() { curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$@"; }
+          acct="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
+          page=1
+          while :; do
+            names=$(cf "$acct?page=$page" | jq -r '.result[]?.name'); [ -z "$names" ] && break
+            for n in $names; do echo "$n ($(cf "$acct/$n" | jq -r '.result.subdomain'), prod branch $(cf "$acct/$n" | jq -r '.result.production_branch')):"; cf "$acct/$n/domains" | jq -r '.result[] | "    \(.name)\t\(.status)"'; done
+            page=$((page+1))
+          done

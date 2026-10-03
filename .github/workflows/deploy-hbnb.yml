@@ -22,7 +22,7 @@ jobs:
     env:
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
-      CUSTOM_DOMAIN: hbnb.greathousefarm.estate
+      CUSTOM_DOMAIN: hbnb.bucklerfamily.estate
     steps:
       - uses: actions/checkout@v4
 
@@ -66,30 +66,20 @@ jobs:
       - name: Deploy to Cloudflare Pages
         run: npx --yes wrangler@3 pages deploy build --project-name=${{ steps.project.outputs.name }} --branch=hbnb --commit-dirty=true
 
-      - name: Ensure DNS record in Cloudflare
-        continue-on-error: true
+      - name: Ensure DNS record and custom domain
         run: |
           cf() { curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "$@"; }
           base="https://api.cloudflare.com/client/v4"
-          echo "Zones in this account:"
-          cf "$base/zones?per_page=50" | jq -r '.result[] | "\(.name)\t\(.status)\t\(.name_servers|join(","))\t\(.original_registrar // "-")"'
-          target=$(cf "$base/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/${{ steps.project.outputs.name }}" | jq -r '.result.subdomain')
-          echo "Pages target: $target"
+          proj="$base/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/${{ steps.project.outputs.name }}"
+          target=$(cf "$proj" | jq -r '.result.subdomain')
           apex=$(echo "$CUSTOM_DOMAIN" | awk -F. '{print $(NF-1)"."$NF}')
           zone=$(cf "$base/zones?name=$apex" | jq -r '.result[0].id // empty')
-          if [ -z "$zone" ]; then
-            echo "::warning::Zone $apex is not in this Cloudflare account; cannot create DNS for $CUSTOM_DOMAIN"
-            exit 0
+          if [ -z "$zone" ]; then echo "::error::Zone $apex not in this Cloudflare account"; exit 1; fi
+          existing=$(cf "$base/zones/$zone/dns_records?name=$CUSTOM_DOMAIN" | jq -r '.result[] | "\(.type) \(.content)"')
+          if [ -z "$existing" ]; then
+            cf -X POST -d "{\"type\":\"CNAME\",\"name\":\"$CUSTOM_DOMAIN\",\"content\":\"$target\",\"proxied\":true}" "$base/zones/$zone/dns_records" | jq -c '{success, errors}'
+          else
+            echo "DNS record present: $existing"
           fi
-          rec=$(cf "$base/zones/$zone/dns_records?name=$CUSTOM_DOMAIN" | jq -r '.result[0].id // empty')
-          body="{\"type\":\"CNAME\",\"name\":\"$CUSTOM_DOMAIN\",\"content\":\"$target\",\"proxied\":true}"
-          if [ -n "$rec" ]; then cf -X PUT -d "$body" "$base/zones/$zone/dns_records/$rec" | jq '{success, errors}'
-          else cf -X POST -d "$body" "$base/zones/$zone/dns_records" | jq '{success, errors}'; fi
-
-      - name: Attach custom domain
-        continue-on-error: true
-        run: |
-          api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/${{ steps.project.outputs.name }}/domains"
-          curl -sS -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
-            -d "{\"name\":\"$CUSTOM_DOMAIN\"}" "$api" | jq '{success, errors, status: .result.status}'
-          curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api" | jq -r '.result[] | "\(.name)\t\(.status)"'
+          cf -X POST -d "{\"name\":\"$CUSTOM_DOMAIN\"}" "$proj/domains" | jq -c '{success, errors: [.errors[].message]}'
+          cf "$proj/domains" | jq -r '.result[] | "\(.name)\t\(.status)"'
