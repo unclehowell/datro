@@ -59,6 +59,10 @@
     }
     .item .name { font-size: 0.8rem; color: #ccd; margin-top: 0.2rem; word-break: break-word; line-height: 1.2; font-weight: 500; }
     .item.pdf a, .item.text a, .item.video a { padding: 1.2rem 0; display: block; font-size: 0.8rem; }
+    .pdf-link { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; padding: 1rem !important; }
+    .pdf-link svg { opacity: 0.8; }
+    .pdf-link:hover svg { opacity: 1; }
+    .pdf-label { font-size: 0.7rem; color: #f87171; font-weight: 500; }
 
     .hash-badge {
       display: inline-block; padding: 0.1rem 0.35rem; border-radius: 6px;
@@ -168,8 +172,25 @@
       // render tabs immediately so UI is never just the title
       renderTabs();
 
-      // set version immediately (dynamic, no hardcode)
+      // Dynamic version from GitHub releases API
       (async function updateWaybackVersion() {
+        try {
+          const res = await fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=10', {
+            headers: { 'Accept': 'application/vnd.github.v3+json' }
+          });
+          if (res.ok) {
+            const releases = await res.json();
+            const wb = releases.find(r => r.tag_name && r.tag_name.startsWith('wayback-v'));
+            if (wb) {
+              const ver = wb.tag_name.replace('wayback-', '');
+              const titleEl = document.getElementById('main-title');
+              if (titleEl) titleEl.textContent = `DATRO Wayback Archive ${ver}`;
+              document.title = `DATRO Wayback Archive ${ver}`;
+              return;
+            }
+          }
+        } catch(e) {}
+        // fallback to version.txt
         try {
           const ver = (await xhrGet('version.txt')).trim();
           const titleEl = document.getElementById('main-title');
@@ -344,6 +365,23 @@
         renderPage();
       }
 
+      function xhrBlob(url) {
+        return new Promise((resolve, reject) => {
+          const xhr = new XMLHttpRequest();
+          xhr.open('GET', url, true);
+          xhr.responseType = 'blob';
+          xhr.onload = function() {
+            if (xhr.status >= 200 && xhr.status < 300) {
+              const ct = xhr.getResponseHeader('content-type') || '';
+              if (ct.includes('text/html')) { reject(new Error('Cloudflare challenge')); return; }
+              resolve(URL.createObjectURL(xhr.response));
+            } else reject(new Error('HTTP ' + xhr.status));
+          };
+          xhr.onerror = function() { reject(new Error('Network error')); };
+          xhr.send();
+        });
+      }
+
       function renderPage() {
         const total = filtered.length;
         const totalPages = Math.max(1, Math.ceil(total / PER_PAGE));
@@ -367,15 +405,61 @@
           let media = '';
           const safe = `/${getSafePath(item.path)}`;
           if (isImg) {
-            media = `<a href="${safe}" target="_blank"><img src="${safe}" loading="lazy" alt="${item.name}"></a>`;
+            media = `<a href="${safe}" target="_blank"><img data-xhr-src="${safe}" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect fill='%23334' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' fill='%23667' font-size='12'%3ELoading...%3C/text%3E%3C/svg%3E" alt="${item.name}"></a>`;
           } else if (isVid) {
-            media = `<a href="${safe}" target="_blank"><video src="${safe}" controls preload="metadata"></video></a>`;
+            media = `<a href="${safe}" target="_blank"><video data-xhr-src="${safe}" controls preload="metadata" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='100' height='100'%3E%3Crect fill='%23334' width='100' height='100'/%3E%3Ctext x='50' y='55' text-anchor='middle' fill='%23667' font-size='12'%3ELoading...%3C/text%3E%3C/svg%3E"></video></a>`;
+          } else if (ext === 'pdf') {
+            const pdfIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="%23f87171" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>`;
+            media = `<a href="${safe}" target="_blank" class="pdf-link" data-xhr-pdf="${safe}">${pdfIcon}<span class="pdf-label">Open PDF</span></a>`;
+          } else if (ext === 'txt') {
+            const txtIcon = `<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="%2360a5fa" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><line x1="10" y1="9" x2="8" y2="9"/></svg>`;
+            media = `<a href="${safe}" target="_blank" class="pdf-link" data-xhr-txt="${safe}">${txtIcon}<span class="pdf-label" style="color:%2360a5fa">Open Text</span></a>`;
           } else {
             media = `<a href="${safe}" target="_blank">${item.name}</a>`;
           }
           const nameClean = (item.name || '').replace(/\s*#\w+/g, '').trim();
           return `<div class="item ${item._category}">${media}<div class="name">${nameClean}</div>${hash ? `<span class="hash-badge ${hash}">#${hash}</span>` : ''}</div>`;
         }).join('');
+
+        // Load media via XHR to bypass Cloudflare challenge
+        galleryEl.querySelectorAll('[data-xhr-src]').forEach(el => {
+          const url = el.getAttribute('data-xhr-src');
+          xhrBlob(url).then(blobUrl => {
+            el.src = blobUrl;
+          }).catch(() => {
+            el.alt = 'Failed to load';
+          });
+        });
+
+        // Load PDFs via XHR and open in new tab
+        galleryEl.querySelectorAll('[data-xhr-pdf]').forEach(el => {
+          const url = el.getAttribute('data-xhr-pdf');
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            el.querySelector('.pdf-label').textContent = 'Loading...';
+            xhrBlob(url).then(blobUrl => {
+              window.open(blobUrl, '_blank');
+              el.querySelector('.pdf-label').textContent = 'Open PDF';
+            }).catch(() => {
+              el.querySelector('.pdf-label').textContent = 'Failed to load';
+            });
+          });
+        });
+
+        // Load text files via XHR and open in new tab
+        galleryEl.querySelectorAll('[data-xhr-txt]').forEach(el => {
+          const url = el.getAttribute('data-xhr-txt');
+          el.addEventListener('click', (e) => {
+            e.preventDefault();
+            el.querySelector('.pdf-label').textContent = 'Loading...';
+            xhrBlob(url).then(blobUrl => {
+              window.open(blobUrl, '_blank');
+              el.querySelector('.pdf-label').textContent = 'Open Text';
+            }).catch(() => {
+              el.querySelector('.pdf-label').textContent = 'Failed to load';
+            });
+          });
+        });
 
         renderPagination(totalPages, total);
       }
