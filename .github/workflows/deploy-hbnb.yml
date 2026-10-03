@@ -52,15 +52,15 @@ jobs:
         id: project
         run: |
           api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
-          names=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api" | jq -r '.result[].name')
-          echo "Existing Pages projects:"; echo "$names"
-          if echo "$names" | grep -qx hbnb; then name=hbnb
-          elif echo "$names" | grep -qx hotspotbnb; then name=hotspotbnb
+          exists() { curl -fsS -o /dev/null -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api/$1"; }
+          if exists hbnb; then name=hbnb
+          elif exists hotspotbnb; then name=hotspotbnb
           else
             name=hbnb
             curl -fsS -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
               -d '{"name":"hbnb","production_branch":"hbnb"}' "$api" | jq '.success'
           fi
+          echo "Using Pages project: $name"
           echo "name=$name" >> "$GITHUB_OUTPUT"
 
       - name: Deploy to Cloudflare Pages
