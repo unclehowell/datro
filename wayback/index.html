@@ -365,7 +365,7 @@
           const isVid = vidExts.includes(ext);
           const hash = item._hashtags && item._hashtags.length > 0 ? item._hashtags[0].replace('#', '') : '';
           let media = '';
-          const safe = `https://wayback.datro.xyz/${getSafePath(item.path)}`;
+          const safe = `/${getSafePath(item.path)}`;
           if (isImg) {
             media = `<a href="${safe}" target="_blank"><img src="${safe}" loading="lazy" alt="${item.name}"></a>`;
           } else if (isVid) {
