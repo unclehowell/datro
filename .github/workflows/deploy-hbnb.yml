@@ -52,7 +52,7 @@ jobs:
         id: project
         run: |
           api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
-          names=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api?per_page=100" | jq -r '.result[].name')
+          names=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api" | jq -r '.result[].name')
           echo "Existing Pages projects:"; echo "$names"
           if echo "$names" | grep -qx hbnb; then name=hbnb
           elif echo "$names" | grep -qx hotspotbnb; then name=hotspotbnb
