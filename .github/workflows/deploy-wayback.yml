@@ -1,0 +1,59 @@
+name: Deploy wayback gallery host fix
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+    steps:
+      - name: Rebuild site from live assets with same-host image URLs
+        run: |
+          set -euo pipefail
+          python3 - << 'PY'
+          import json, os, urllib.parse, urllib.request
+          from pathlib import Path
+          base = "https://wayback.bucklerfamily.estate"
+          root = Path("site")
+          root.mkdir(exist_ok=True)
+          opener = urllib.request.build_opener()
+          opener.addheaders = [("User-Agent", "Mozilla/5.0")]
+          urllib.request.install_opener(opener)
+
+          def get(url):
+              with urllib.request.urlopen(url, timeout=60) as r:
+                  return r.read()
+
+          html = get(base + "/").decode("utf-8", "replace")
+          html = html.replace("https://wayback.datro.xyz/${getSafePath(item.path)}", "/${getSafePath(item.path)}")
+          if "wayback.datro.xyz" in html:
+              raise SystemExit("datro.xyz still in index")
+          (root / "index.html").write_text(html)
+          (root / "_headers").write_text("/*.json\n  Content-Type: application/json\n  X-Content-Type-Options: nosniff\n")
+          n = 0
+          for cat in ("images", "pdf", "text"):
+              raw = get(f"{base}/{cat}/_treeview.json")
+              (root / cat).mkdir(exist_ok=True)
+              (root / cat / "_treeview.json").write_bytes(raw)
+              items = json.loads(raw)
+              for item in items:
+                  rel = item.get("path") or ""
+                  if not rel or rel.endswith("/"):
+                      continue
+                  dest = root / rel
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  if dest.exists():
+                      continue
+                  url = base + "/" + urllib.parse.quote(rel, safe="/")
+                  try:
+                      dest.write_bytes(get(url))
+                      n += 1
+                  except Exception as e:
+                      print("skip", rel, e)
+              print(cat, len(items))
+          print("downloaded", n)
+          PY
+          npx --yes wrangler@3 pages deploy site --project-name=wayback --commit-dirty=true
