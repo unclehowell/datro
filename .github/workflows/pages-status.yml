@@ -1,0 +1,26 @@
+name: Pages deployment status
+
+on:
+  push:
+    branches:
+      - hbnb
+    paths:
+      - '.github/workflows/pages-status.yml'
+  workflow_dispatch:
+
+jobs:
+  status:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+      PROJECTS: althea wave dash subrepos
+    steps:
+      - run: |
+          cf() { curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$@"; }
+          acct="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
+          for p in $PROJECTS; do
+            echo "== $p"
+            cf "$acct/$p" | jq -c '.result | {source: .source.type, repo: .source.config.repo_name, prod: .production_branch, root: .build_config.root_dir, cmd: .build_config.build_command, out: .build_config.destination_dir, latest: .latest_deployment.latest_stage, canonical: .canonical_deployment.url}'
+            cf "$acct/$p/deployments" | jq -r '.result[:4][] | "  \(.created_on[0:16]) \(.environment) \(.deployment_trigger.metadata.branch // "-") \(.latest_stage.name)=\(.latest_stage.status) \(.url)"'
+          done
