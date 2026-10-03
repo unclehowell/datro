@@ -1,0 +1,75 @@
+name: Deploy hbnb to Cloudflare Pages
+
+on:
+  push:
+    branches:
+      - hbnb
+    paths:
+      - 'static/hbnb/**'
+      - '.github/workflows/deploy-hbnb.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-hbnb
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: static/hbnb
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+      CUSTOM_DOMAIN: hbnb.greathousefarm.estate
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+          cache-dependency-path: static/hbnb/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Build
+        run: CI=false npm run build
+
+      - name: Check build output
+        run: grep -q 'Hotspot' build/index.html
+
+      - name: Check Cloudflare credentials
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo "::error::CLOUDFLARE_API_TOKEN repository secret is not set; cannot deploy."
+            exit 1
+          fi
+
+      - name: Pick Pages project (hbnb, hotspotbnb, or create hbnb)
+        id: project
+        run: |
+          api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
+          names=$(curl -fsS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api?per_page=100" | jq -r '.result[].name')
+          echo "Existing Pages projects:"; echo "$names"
+          if echo "$names" | grep -qx hbnb; then name=hbnb
+          elif echo "$names" | grep -qx hotspotbnb; then name=hotspotbnb
+          else
+            name=hbnb
+            curl -fsS -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
+              -d '{"name":"hbnb","production_branch":"hbnb"}' "$api" | jq '.success'
+          fi
+          echo "name=$name" >> "$GITHUB_OUTPUT"
+
+      - name: Deploy to Cloudflare Pages
+        run: npx --yes wrangler@3 pages deploy build --project-name=${{ steps.project.outputs.name }} --branch=hbnb --commit-dirty=true
+
+      - name: Attach custom domain
+        continue-on-error: true
+        run: |
+          api="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects/${{ steps.project.outputs.name }}/domains"
+          curl -sS -X POST -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" \
+            -d "{\"name\":\"$CUSTOM_DOMAIN\"}" "$api" | jq '{success, errors, status: .result.status}'
+          curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$api" | jq -r '.result[] | "\(.name)\t\(.status)"'
