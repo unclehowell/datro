@@ -1,7 +1,7 @@
 {
   "title": "Great House Farm Story — Timeline",
   "description": "The complete chronological account of the Williams-Buckler family and Great House Farm, Llandough, including HER record GGAT02038s.",
-  "total_entries": 112,
+  "total_entries": 111,
   "last_updated": "2026-10-03",
   "version": "0.0.0.08",
   "summary": {
@@ -23,8 +23,9 @@
       "1667: Williams occupation begins, per Mary Williams's statement",
       "1877: farmhouse and ~10 acres sold to Daniel Thomas; two parcels (family reconstruction)",
       "1938: Bute reversion conveyed to Western Ground Rents",
+      "15 Apr 1974: Mary Williams's open day to save the house (Daily Telegraph, 16 Apr 1974)",
       "1974: BP licence letters; 1987 Court of Appeal: BP Properties Ltd v Buckler [1987] EWCA Civ 2",
-      "29 Nov 1988 possession; 30 Nov - 6 Dec 1988 demolition by BP Properties Ltd",
+      "29 Apr 1988 chainsaw stand-off; possession end of Nov 1988; injunction refused 5 Dec; farmhouse demolished by BP Properties Ltd 6 Dec 1988",
       "1994: early-medieval cemetery excavated (1,026 burials published total)",
       "2026: records campaign and complaints; see greathousefarmwiki.wordpress.com"
     ]
@@ -1858,25 +1859,34 @@
     },
     {
       "year": "1974",
-      "location": "South Wales / Great House Farm",
+      "location": "Great House Farm — Open Day",
       "locationType": "other",
       "description": "",
-      "narration": "Mary Buckler publicly opposes the threatened eviction through press coverage in South Wales, drawing attention to the family's long occupation and the disputed basis of BP's title.",
+      "narration": "On 15 April 1974 Mary Williams, then 60, opens the farmhouse to the public 'to show what the nation is losing'. Hundreds come. The Daily Telegraph reports next day that planning permission for about 13 houses has been given to the BP Petroleum Pension Trust, that about 1,000 people have signed a petition, and that Mary will refuse to move.",
       "scenes": [
         {
-          "character": "NEWS REPORTER",
+          "character": "MARY WILLIAMS",
           "icon": "worker",
           "side": "left",
-          "text": "Mrs Buckler, do you have any comment on the eviction proceedings?"
+          "text": "I will refuse to move, because not only is this my home, it is part of the nation's heritage."
         },
         {
-          "character": "MARY BUCKLER",
+          "character": "REPORTER",
           "icon": "worker",
           "side": "right",
-          "text": "My family has lived here for generations. This land belongs to the Williams line."
+          "text": "The ownership has been disputed for years, Mrs Williams?"
+        },
+        {
+          "character": "MARY WILLIAMS",
+          "icon": "worker",
+          "side": "left",
+          "text": "For 25 years. But my family has lived here for more than 400 years, and my solicitors tell me I have a valid claim to it."
         }
       ],
-      "sources": [],
+      "sources": [
+        "Daily Telegraph, 16 April 1974, 'Open day to save ancient Welsh house', Godfrey Francis (transcript GHF-E090-N03: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n03)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -1890,7 +1900,7 @@
       "location": "Court / Great House Farm",
       "locationType": "other",
       "description": "",
-      "narration": "On 3 July 1974 BP Pension Trust brings a new possession action. Mary pleads ownership and the Limitation Act 1939, and the newspapers report her claim. The action is part-heard and never relisted.",
+      "narration": "On 3 July 1974 BP Pension Trust brings a new possession action. Mary pleads ownership and the Limitation Act 1939. The action is part-heard and never relisted.",
       "scenes": [
         {
           "character": "COURT CLERK",
@@ -2119,28 +2129,28 @@
       }
     },
     {
-      "year": "1977",
-      "location": "Great House Farm — Open Day",
+      "year": "1970s",
+      "location": "Western Mail — Letters",
       "locationType": "other",
       "description": "",
-      "narration": "On 19 November 1977 the Western Mail reports a public open day at Great House Farm. Hundreds attend, Mary refuses to sell because she regards the house as part of the nation's heritage, and a preservation petition gathers about 1,000 signatures.",
+      "narration": "William Rees writes to the Western Mail ('Grievous loss', dated 19/11/7? in the copy held; the year is unclear) that demolishing Great House Farm would erase the site of the Celtic monastery of St Dochdwy. He traces its descent from Tewkesbury Abbey to the Crown at the Dissolution, then to Herbert and to Bute.",
       "scenes": [
         {
-          "character": "MARY WILLIAMS",
-          "icon": "farmer",
+          "character": "WILLIAM REES",
+          "icon": "worker",
           "side": "left",
-          "text": "I won't sell. This house belongs to the nation's heritage."
+          "text": "The demolition of Great House Farm would erase from memory one of the early historical sites of Glamorgan."
         },
         {
-          "character": "REPORTER",
+          "character": "READER",
           "icon": "worker",
           "side": "right",
-          "text": "Hundreds came to the open day, and the petition is near a thousand names."
+          "text": "So the farm marks the old monastery of St Dochdwy?"
         }
       ],
       "sources": [
-        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)",
-        "Western Mail, 19 November 1977"
+        "Western Mail, 'Grievous loss', letter from William Rees, 19/11/7? (transcript GHF-E090-N04: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n04)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
       ],
       "attachments": {
         "gallery": [],
@@ -2574,7 +2584,7 @@
       "location": "Great House Farm — First Eviction Attempt",
       "locationType": "other",
       "description": "",
-      "narration": "The family are given 28 days to find somewhere else to live. On 29 April 1988 they refuse to leave and the bailiffs withdraw.",
+      "narration": "After the House of Lords refusal the family are given 28 days to find somewhere else to live. On 29 April 1988 five bailiffs and about 15 police arrive. Billy blocks the narrow drive with a tractor, locks the doors and bars the windows.",
       "scenes": [
         {
           "character": "BAILIFF",
@@ -2590,6 +2600,59 @@
         }
       ],
       "sources": [
+        "'Chainsaw farmer vows to fight on', Andrew Penman, c. 30 April 1988 (transcript GHF-E090-N07: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n07)",
+        "South Wales Echo, 29 April 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1988",
+      "location": "Great House Farm — Chainsaw Stand-off",
+      "locationType": "other",
+      "description": "",
+      "narration": "The bailiffs smash the gate lock and break at the doors with poleaxes. When an axe comes through a door with his children behind it, Billy starts a chainsaw and pushes it through the door, and the bailiffs back off. After a four-hour stand-off they withdraw. Branwen leaves with the children, aged two, three and four. BP says it regrets the events; the police say they were there to prevent a breach of the peace, not to help the bailiffs.",
+      "scenes": [
+        {
+          "character": "BILLY BUCKLER",
+          "icon": "worker",
+          "side": "left",
+          "text": "They started smashing the doors with poleaxes. My children were right behind the door when the axe came through."
+        },
+        {
+          "character": "BAILIFF",
+          "icon": "worker",
+          "side": "right",
+          "text": "Stand back from the door!"
+        },
+        {
+          "character": "BILLY BUCKLER",
+          "icon": "worker",
+          "side": "left",
+          "text": "That's when I started my chainsaw and pushed it through the door. They backed off then."
+        },
+        {
+          "character": "BRANWEN BUCKLER",
+          "icon": "worker",
+          "side": "right",
+          "text": "I'm taking the children away from here."
+        },
+        {
+          "character": "BILLY BUCKLER",
+          "icon": "worker",
+          "side": "left",
+          "text": "They have got no documents for it. If it's theirs, why have I never paid a penny in rent for it in my life?"
+        }
+      ],
+      "sources": [
+        "'Chainsaw farmer vows to fight on', Andrew Penman, c. 30 April 1988 (transcript GHF-E090-N07: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n07)",
+        "South Wales Echo, 30 April 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
       ],
       "attachments": {
@@ -2651,6 +2714,56 @@
     },
     {
       "year": "1988",
+      "location": "MP's Office",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 12 May 1988 the South Wales Echo reports that the Cardiff MP Alun Michael has asked the Lord Chancellor to look at the case of the farmer who fought off bailiffs with a chainsaw. Billy warns that someone will be killed.",
+      "scenes": [
+        {
+          "character": "ALUN MICHAEL MP",
+          "icon": "worker",
+          "side": "left",
+          "text": "Lord Chancellor, this case shows serious procedural failures and injustice."
+        },
+        {
+          "character": "LORD CHANCELLOR'S AIDE",
+          "icon": "worker",
+          "side": "right",
+          "text": "The courts have ruled at the highest level. What grounds justify review?"
+        },
+        {
+          "character": "ALUN MICHAEL MP",
+          "icon": "worker",
+          "side": "left",
+          "text": "Ownership was never determined! That's a fundamental defect in every ruling!"
+        },
+        {
+          "character": "LORD CHANCELLOR'S AIDE",
+          "icon": "worker",
+          "side": "right",
+          "text": "The House of Lords addressed the possession claim comprehensively."
+        },
+        {
+          "character": "ALUN MICHAEL MP",
+          "icon": "worker",
+          "side": "left",
+          "text": "But possession without ownership determination is procedurally unsafe and unjust!"
+        }
+      ],
+      "sources": [
+        "South Wales Echo, 12 May 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1988",
       "location": "Cadw Offices",
       "locationType": "other",
       "description": "",
@@ -2700,92 +2813,42 @@
     },
     {
       "year": "1988",
-      "location": "Great House Farm — Chainsaw Siege",
-      "locationType": "other",
-      "description": "",
-      "narration": "On 29 November 1988 BP obtains possession. The family's account: five bailiffs and twenty police arrive at dawn; Billy blocks the drive with a car and bars the doors and windows; in a four-hour siege the bailiffs break in with pickaxes. A contemporary press source for these details is still to be identified.",
-      "scenes": [
-        {
-          "character": "BILLY BUCKLER",
-          "icon": "farmer",
-          "side": "left",
-          "text": "I've blocked the drive. You'll not get in. My children are right behind that door!"
-        },
-        {
-          "character": "BAILIFF",
-          "icon": "worker",
-          "side": "right",
-          "text": "Open up now or we force entry. We have a court order and police authority."
-        },
-        {
-          "character": "BILLY BUCKLER",
-          "icon": "farmer",
-          "side": "left",
-          "text": "They're smashing the doors with pickaxes! The children are right behind it!"
-        },
-        {
-          "character": "BRANWEN BUCKLER",
-          "icon": "farmer",
-          "side": "right",
-          "text": "They bashed the door through with the children on the other side! God help us!"
-        },
-        {
-          "character": "BAILIFF",
-          "icon": "worker",
-          "side": "left",
-          "text": "Hand over the chainsaw. Drop it now."
-        }
-      ],
-      "sources": [
-        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
-      ],
-      "attachments": {
-        "gallery": [],
-        "legal": [],
-        "news": [],
-        "notes": [],
-        "report": []
-      }
-    },
-    {
-      "year": "1988",
       "location": "Great House Farm — Forced Entry",
       "locationType": "other",
       "description": "",
-      "narration": "Bailiffs grab the running chainsaw through the broken door and disable it. The four-hour siege ends with police surging in. Branwen leaves with the three young children. Billy and friends hold the interior of the house. possessions are thrown into the road. The family is left homeless with nothing but the clothes they stand in.",
+      "narration": "BP obtains possession at the end of November 1988; the press places the forced entry on Wednesday 30 November. Within hours, the family say, demolition begins: half the roof is already off one of the outbuildings. Eight other people living at the farm are made homeless with the family.",
       "scenes": [
         {
-          "character": "BILLY BUCKLER",
-          "icon": "farmer",
-          "side": "left",
-          "text": "They grabbed the chainsaw through the door and cut it up. This is our home!"
-        },
-        {
           "character": "BRANWEN BUCKLER",
-          "icon": "farmer",
-          "side": "right",
-          "text": "I am leaving with the boys. Thomas is only three. I cannot keep them safe here."
-        },
-        {
-          "character": "POLICE COMMANDER",
           "icon": "worker",
           "side": "left",
-          "text": "The premises are being cleared under court order. All occupants must vacate."
+          "text": "They are already taking the roof off the outbuildings. They will flatten the farmhouse next."
         },
         {
-          "character": "ALUN MICHAEL MP",
+          "character": "BAILIFF",
           "icon": "worker",
           "side": "right",
-          "text": "I warned the Lord Chancellor. The way this is being handled—somebody will be killed."
+          "text": "The property is now in the possession of BP Properties."
+        },
+        {
+          "character": "TENANT",
+          "icon": "worker",
+          "side": "left",
+          "text": "Billy opened his doors to everyone. Now we're all back on the bus in the lay-by."
         },
         {
           "character": "BILLY BUCKLER",
-          "icon": "farmer",
-          "side": "left",
-          "text": "I am here to stay. I will fight this to the death. I own this farm."
+          "icon": "worker",
+          "side": "right",
+          "text": "This is my family's home."
         }
       ],
-      "sources": [],
+      "sources": [
+        "South Wales Echo, 30 November 1988, 'Angry scenes as farmer evicted' (transcript GHF-E090-N14: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n14)",
+        "South Wales Echo, 30 November 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
+        "South Wales Echo, 3 December 1988, 'Billy's unhappy family' (transcript GHF-E090-N09: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n09)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -2799,7 +2862,7 @@
       "location": "Great House Farm — Final Eviction",
       "locationType": "other",
       "description": "",
-      "narration": "Billy is forcibly removed and taken to Llandough Hospital with injuries sustained during the eviction. Charges follow: assault on two bailiffs, criminal damage, and wanton or furious driving. He refuses to cooperate. He is charged and remanded. The family loses its home and its patriarch in a single morning.",
+      "narration": "Billy is taken to Llandough Hospital after the eviction. He is later charged with assaulting two bailiffs, criminal damage, and wanton or furious driving.",
       "scenes": [
         {
           "character": "BILLY BUCKLER",
@@ -2832,7 +2895,11 @@
           "text": "I'll not go to hospital—if I leave they come back and take everything we have left."
         }
       ],
-      "sources": [],
+      "sources": [
+        "South Wales Echo, 3 December 1988 (transcript GHF-E090-N08: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08)",
+        "South Wales Echo, 3 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -2846,7 +2913,7 @@
       "location": "Llandough Hospital",
       "locationType": "other",
       "description": "",
-      "narration": "Billy Buckler lies injured in Llandough Hospital, refusing to leave for fear bailiffs will re-enter the farm. Branwen and three young children are in emergency accommodation. All possessions—and Mary's lifetime of possessions, photographs, heirlooms and legal documents are destroyed or scattered in the road.",
+      "narration": "Billy Buckler lies injured in Llandough Hospital from the eviction of 30 November. Branwen and the three young children have nowhere to go. The family say Mary's lifetime of possessions, photographs, heirlooms and legal documents were left in the house or scattered in the road.",
       "scenes": [
         {
           "character": "NURSE",
@@ -2864,7 +2931,7 @@
           "character": "BRANWEN BUCKLER",
           "icon": "farmer",
           "side": "left",
-          "text": "Billy is in Llandough Hospital. I have three boys and another coming. We have nothing."
+          "text": "Billy is in Llandough Hospital. I have three children and another coming. We have nothing."
         },
         {
           "character": "BILLY BUCKLER",
@@ -2879,7 +2946,10 @@
           "text": "The police have barred you from the site. You cannot return. Please rest."
         }
       ],
-      "sources": [],
+      "sources": [
+        "Press Archive transcript GHF-E090-N08 (South Wales Echo, 3 December 1988): https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -3034,7 +3104,7 @@
       "location": "Court",
       "locationType": "other",
       "description": "",
-      "narration": "A temporary injunction is granted, halting demolition for a brief period while Cadw considers emergency listing and the family's appeal attempts proceed through legal channels.",
+      "narration": "A High Court judge grants an interim injunction that the farmhouse and its contents must not be touched. On 2 December Mr Justice Anthony Evans allows Branwen to collect belongings from the house if BP's solicitors agree. Cadw considers emergency 'spot-listing' and sends an inspector.",
       "scenes": [
         {
           "character": "JUDGE",
@@ -3067,7 +3137,11 @@
           "text": "Every delay costs our client money and undermines the finality of judgments."
         }
       ],
-      "sources": [],
+      "sources": [
+        "South Wales Echo, 3 December 1988, 'History fight to save farm', Peter Bibby (transcript GHF-E090-N08: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08)",
+        "South Wales Echo, 2 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -3172,90 +3246,40 @@
     },
     {
       "year": "1988",
-      "location": "MP's Office",
+      "location": "Cardiff — Injunction Hearing",
       "locationType": "other",
       "description": "",
-      "narration": "Cardiff MP Alun Michael asks the Lord Chancellor to review the case, highlighting the failure to determine ownership and the procedural anomalies throughout the litigation.",
+      "narration": "On Monday 5 December 1988 Judge Norman Francis dismisses the Bucklers' application to keep the injunction until the European Commission of Human Rights has considered their case. Their solicitor, Colin Jongman, says there are no more steps to take. Cadw says the house is not of sufficient architectural merit to list.",
       "scenes": [
         {
-          "character": "ALUN MICHAEL MP",
+          "character": "JUDGE NORMAN FRANCIS",
           "icon": "worker",
           "side": "left",
-          "text": "Lord Chancellor, this case shows serious procedural failures and injustice."
+          "text": "It would be novel for a court in this country to hold up the effects of a judgment until the Court of Human Rights rules on it."
         },
         {
-          "character": "LORD CHANCELLOR'S AIDE",
+          "character": "COLIN JONGMAN",
           "icon": "worker",
           "side": "right",
-          "text": "The courts have ruled at the highest level. What grounds justify review?"
-        },
-        {
-          "character": "ALUN MICHAEL MP",
-          "icon": "worker",
-          "side": "left",
-          "text": "Ownership was never determined! That's a fundamental defect in every ruling!"
-        },
-        {
-          "character": "LORD CHANCELLOR'S AIDE",
-          "icon": "worker",
-          "side": "right",
-          "text": "The House of Lords addressed the possession claim comprehensively."
-        },
-        {
-          "character": "ALUN MICHAEL MP",
-          "icon": "worker",
-          "side": "left",
-          "text": "But possession without ownership determination is procedurally unsafe and unjust!"
-        }
-      ],
-      "sources": [],
-      "attachments": {
-        "gallery": [],
-        "legal": [],
-        "news": [],
-        "notes": [],
-        "report": []
-      }
-    },
-    {
-      "year": "1988",
-      "location": "Heritage Waiting Period",
-      "locationType": "other",
-      "description": "",
-      "narration": "As days pass, the temporary injunction approaches expiry. Cadw has not granted emergency listing. BP Properties presses for the injunction to be lifted and demolition to proceed.",
-      "scenes": [
-        {
-          "character": "CADW SPOKESPERSON",
-          "icon": "cleric",
-          "side": "left",
-          "text": "We are considering, but have not granted, emergency listing for Great House."
+          "text": "There are no more steps that can be taken now that the building can be knocked down."
         },
         {
           "character": "JANET HARRIS (BUCKLER)",
-          "icon": "farmer",
-          "side": "right",
-          "text": "This very old house still has no legal protection against demolition."
-        },
-        {
-          "character": "BP PROPERTIES LAWYER",
-          "icon": "lawyer",
+          "icon": "worker",
           "side": "left",
-          "text": "The injunction must be lifted. Our client has been unlawfully delayed."
+          "text": "It is reputed to be 800 years old, and yet it seems they can destroy it on what is a whim."
         },
         {
-          "character": "FAMILY SOLICITOR",
-          "icon": "lawyer",
+          "character": "CADW SPOKESPERSON",
+          "icon": "worker",
           "side": "right",
-          "text": "If demolition proceeds before listing, heritage is lost forever!"
-        },
-        {
-          "character": "BP PROPERTIES LAWYER",
-          "icon": "lawyer",
-          "side": "left",
-          "text": "Speculation about heritage cannot indefinitely frustrate lawful property rights."
+          "text": "The house is not of sufficient architectural merit."
         }
       ],
-      "sources": [],
+      "sources": [
+        "Western Mail, 6 December 1988, 'Farmer fails in final eviction hearing' (transcript GHF-E090-N10: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n10)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -3269,40 +3293,36 @@
       "location": "Great House Farm — Demolition",
       "locationType": "other",
       "description": "",
-      "narration": "The outbuildings are demolished on 30 November 1988 and the farmhouse on 5–6 December 1988, the day after Cadw decides not to list. Branwen and the children watch from a caravan nearby as the family's centuries-old home is flattened.",
+      "narration": "The outbuildings are demolished from 30 November. Just after 4am on 6 December 1988 a twenty-strong team with bulldozers moves in, and by breakfast no building is left standing. Branwen and the three children watch their home flattened.",
       "scenes": [
         {
           "character": "BRANWEN BUCKLER",
-          "icon": "farmer",
+          "icon": "worker",
           "side": "left",
-          "text": "We watched from the caravan. They took it down to rubble overnight. Amy is in tears."
+          "text": "Great House Farm was more than just a house. It was the family history, with all the people born or died there over 400 years."
         },
         {
           "character": "DEMOLITION FOREMAN",
           "icon": "worker",
           "side": "right",
-          "text": "Bulldozed before breakfast. Orders were to flatten everything on the five-acre site."
+          "text": "Clear the farmhouse first."
         },
         {
-          "character": "BILLY BUCKLER",
-          "icon": "farmer",
+          "character": "BRANWEN BUCKLER",
+          "icon": "worker",
           "side": "left",
-          "text": "All I have left are the clothes I stand up in. They took everything else."
+          "text": "Now we are left with no home, no plans, no income and no Christmas."
         },
         {
           "character": "LOCAL OBSERVER",
           "icon": "worker",
           "side": "right",
-          "text": "The site looks like a battleground. Rubble everywhere. Centuries of history, gone in days."
-        },
-        {
-          "character": "BILLY BUCKLER",
-          "icon": "farmer",
-          "side": "left",
-          "text": "£30,000 of possessions still inside when the bulldozers came. Gone. All gone."
+          "text": "Bulldozed before breakfast."
         }
       ],
       "sources": [
+        "'Tears flow as 800 year-old farm house is razed at last', c. 7 December 1988 (transcript GHF-E090-N11: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n11)",
+        "South Wales Echo, 6 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
       ],
       "attachments": {
@@ -3319,7 +3339,7 @@
       "location": "Llandough Hospital / Magistrates Court",
       "locationType": "other",
       "description": "",
-      "narration": "Police take Billy Buckler from his hospital bed to face charges of assault on two bailiffs. He is aged 40, freed on bail. He faces additional charges of criminal damage and wanton or furious driving for the eviction and destruction of the property. The charges are widely seen as punitive and politically motivated.",
+      "narration": "Police take Billy Buckler from his hospital bed to face charges of assaulting two bailiffs. On 9 December magistrates free him on bail, with conditions keeping him away from the site.",
       "scenes": [
         {
           "character": "POLICE OFFICER",
@@ -3352,7 +3372,11 @@
           "text": "Freed on bail. I will fight this to the death. They have no documents for that farm."
         }
       ],
-      "sources": [],
+      "sources": [
+        "South Wales Echo, 3 and 10 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
+        "January 1989 (transcript GHF-E090-N12: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n12)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -3363,43 +3387,46 @@
     },
     {
       "year": "1988",
-      "location": "Hospital / Court",
+      "location": "Community Meeting",
       "locationType": "other",
       "description": "",
-      "narration": "Lorries move onto the cleared site at 7:30am. The operation takes several days. The council's planning chief describes the area as looking like a battleground and authorises legal action to force BP to clear the site. The destruction of Great House Farm is total and irreversible.",
+      "narration": "A Vale of Glamorgan councillor and BP pensioner calls the demolition 'disgusting'. On 8 December Llandough villagers meet local councillors to express their anger and to seek a way to stop BP profiting from the demolition.",
       "scenes": [
         {
-          "character": "PLANNING CHIEF",
+          "character": "LOCAL ACTIVIST",
           "icon": "worker",
           "side": "left",
-          "text": "The site looks like a battleground. We authorise legal action to force BP to clear it."
+          "text": "They used planning and courts to clear obstacles; now profit is the goal."
         },
         {
-          "character": "VALE COUNCILLOR",
+          "character": "COUNCILLOR",
           "icon": "worker",
           "side": "right",
-          "text": "BP's decision to flatten everything is disgusting. I am writing to them in protest."
+          "text": "Without title or listing on your side, leverage over BP is almost gone."
         },
         {
-          "character": "LOCAL COUNCILLOR",
+          "character": "LOCAL ACTIVIST",
           "icon": "worker",
           "side": "left",
-          "text": "Lorries rolled in at 7:30am. An 800-year building demolished in days for luxury homes."
+          "text": "Is there no mechanism to challenge a demolition achieved through suspected fraud?"
         },
         {
-          "character": "BP PROPERTIES AGENT",
+          "character": "COUNCILLOR",
           "icon": "worker",
           "side": "right",
-          "text": "We demolished our lawfully held property. Cleanup is under way as required."
+          "text": "Fraud allegations require proof and investigation—neither has occurred."
         },
         {
-          "character": "LOCAL COUNCILLOR",
+          "character": "LOCAL ACTIVIST",
           "icon": "worker",
           "side": "left",
-          "text": "Branwen Buckler stood with her children at the rubble. It was just like a wartime sight."
+          "text": "So BP demolishes under disputed title and profits while the family suffers?"
         }
       ],
-      "sources": [],
+      "sources": [
+        "South Wales Echo, 7 and 9 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -3444,47 +3471,6 @@
           "icon": "worker",
           "side": "left",
           "text": "This destruction of heritage and a family's home is a disgrace!"
-        }
-      ],
-      "sources": [],
-      "attachments": {
-        "gallery": [],
-        "legal": [],
-        "news": [],
-        "notes": [],
-        "report": []
-      }
-    },
-    {
-      "year": "1988",
-      "location": "Temporary Accommodation",
-      "locationType": "other",
-      "description": "",
-      "narration": "After losing the farmhouse and contents, the family live in temporary and borrowed accommodation. Billy estimates their lost belongings and livelihood at roughly thirty thousand pounds.",
-      "scenes": [
-        {
-          "character": "BILLY BUCKLER",
-          "icon": "farmer",
-          "side": "left",
-          "text": "After eviction I have no house, stock, or equipment left to rely on."
-        },
-        {
-          "character": "BRANWEN BUCKLER",
-          "icon": "farmer",
-          "side": "right",
-          "text": "We are staying with family members while we have three children and one due."
-        },
-        {
-          "character": "BILLY BUCKLER",
-          "icon": "farmer",
-          "side": "left",
-          "text": "I estimate our lost property and livelihood at about thirty thousand pounds."
-        },
-        {
-          "character": "BRANWEN BUCKLER",
-          "icon": "farmer",
-          "side": "right",
-          "text": "They've taken everything—our home, our history, our future."
         }
       ],
       "sources": [],
@@ -3658,7 +3644,7 @@
       "location": "Court",
       "locationType": "other",
       "description": "",
-      "narration": "A threatening-behaviour charge against Billy is withdrawn as out of time. Assault and driving allegations from the eviction events continue, and exclusion conditions remain in place.",
+      "narration": "In January 1989 the Crown Prosecution Service withdraws, as out of time, a summons alleging threatening behaviour on 29 April 1988. The charges of assault and wanton and furious driving from November remain, and Billy is ordered not to go within half a mile of the site.",
       "scenes": [
         {
           "character": "PROSECUTOR CLARKE",
@@ -3691,7 +3677,10 @@
           "text": "Nothing about this was lawful! Ownership was never proven!"
         }
       ],
-      "sources": [],
+      "sources": [
+        "'Charge against evicted farmer dropped', January 1989 (transcript GHF-E090-N12: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n12)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -3705,7 +3694,7 @@
       "location": "Court",
       "locationType": "other",
       "description": "",
-      "narration": "Billy pleads guilty to remaining charges and is freed, stating that he will continue to contest the loss of the family home and land despite the completed demolition.",
+      "narration": "On 23 March 1989 Billy pleads guilty to the remaining charges and is freed. He vows to fight on over the loss of his home and more than 70 acres of land.",
       "scenes": [
         {
           "character": "BILLY BUCKLER",
@@ -3738,7 +3727,48 @@
           "text": "Justice demands investigation! Someone must examine what happened here!"
         }
       ],
-      "sources": [],
+      "sources": [
+        "South Wales Echo, 23 and 24 March 1989 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1989",
+      "location": "Temporary Accommodation",
+      "locationType": "other",
+      "description": "",
+      "narration": "The family live with Billy's sister in Penarth. Billy plans to convert an old bus into a home, and says about £30,000 of his possessions were taken from the site after the demolition.",
+      "scenes": [
+        {
+          "character": "BILLY BUCKLER",
+          "icon": "worker",
+          "side": "left",
+          "text": "They have taken everything from me and my family. I have lost my livelihood."
+        },
+        {
+          "character": "BRANWEN BUCKLER",
+          "icon": "worker",
+          "side": "right",
+          "text": "We have three children, and another on the way."
+        },
+        {
+          "character": "BILLY BUCKLER",
+          "icon": "worker",
+          "side": "left",
+          "text": "I shall just have to start from scratch."
+        }
+      ],
+      "sources": [
+        "South Wales Echo, 1989, 'From farm to a bus', Peter Collins (transcript GHF-E090-N13: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n13)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -3752,7 +3782,7 @@
       "location": "Demolition Site",
       "locationType": "other",
       "description": "",
-      "narration": "Site clearance in March removes remaining physical traces. Lorries export rubble over several days, leaving little to show future residents the contested history beneath.",
+      "narration": "On 20 March 1989 lorries move onto the site at 7.30am to clear the rubble; the operation takes several days.",
       "scenes": [
         {
           "character": "SITE MANAGER",
@@ -3779,54 +3809,10 @@
           "text": "Rubble removal completes the destruction—house, history, heritage, gone."
         }
       ],
-      "sources": [],
-      "attachments": {
-        "gallery": [],
-        "legal": [],
-        "news": [],
-        "notes": [],
-        "report": []
-      }
-    },
-    {
-      "year": "1989",
-      "location": "Community Meeting",
-      "locationType": "other",
-      "description": "",
-      "narration": "At a village meeting, residents condemn the demolition and seek ways to stop BP Properties profiting from redevelopment, but are told legal avenues to reverse or claw back are minimal.",
-      "scenes": [
-        {
-          "character": "LOCAL ACTIVIST",
-          "icon": "worker",
-          "side": "left",
-          "text": "They used planning and courts to clear obstacles; now profit is the goal."
-        },
-        {
-          "character": "COUNCILLOR",
-          "icon": "worker",
-          "side": "right",
-          "text": "Without title or listing on your side, leverage over BP is almost gone."
-        },
-        {
-          "character": "LOCAL ACTIVIST",
-          "icon": "worker",
-          "side": "left",
-          "text": "Is there no mechanism to challenge a demolition achieved through suspected fraud?"
-        },
-        {
-          "character": "COUNCILLOR",
-          "icon": "worker",
-          "side": "right",
-          "text": "Fraud allegations require proof and investigation—neither has occurred."
-        },
-        {
-          "character": "LOCAL ACTIVIST",
-          "icon": "worker",
-          "side": "left",
-          "text": "So BP demolishes under disputed title and profits while the family suffers?"
-        }
+      "sources": [
+        "South Wales Echo, 20 March 1989 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15)",
+        "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
       ],
-      "sources": [],
       "attachments": {
         "gallery": [],
         "legal": [],

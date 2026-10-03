@@ -1,5 +1,14 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.11] - 2026-10-03
+
+### Fixed
+- Dates corrected from the transcribed press cuttings (Press Archive, GHF-E090-N01 to N15, on the Great House Farm Wiki): the chainsaw stand-off was on 29 April 1988, not 29 November; the "1977" open day was 15 April 1974 (Daily Telegraph, 16 April 1974); the Rees "Grievous loss" letter is marked year-unclear
+- 1988: the April stand-off, Alun Michael MP (12 May), the forced entry of 30 November, the interim injunction, the 5 December hearing before Judge Norman Francis and the 4am demolition of 6 December now follow the press reports; each scene cites its transcript
+- 1989: charges, bail, guilty plea (23 March), site clearance (20 March) and "From farm to a bus" dated and sourced; duplicate clearance scene removed (112 -> 111 scenes)
+- Splash events, llms.txt and api/timeline.json regenerated
+
+
 ## [bpvsbuckler-v0.0.0.10] - 2026-10-03
 
 ### Changed
