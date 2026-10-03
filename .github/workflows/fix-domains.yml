@@ -1,0 +1,59 @@
+name: Fix bucklerfamily.estate subdomain targets
+
+on:
+  push:
+    branches:
+      - hbnb
+    paths:
+      - '.github/workflows/fix-domains.yml'
+  workflow_dispatch:
+
+jobs:
+  fix:
+    runs-on: ubuntu-latest
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+    steps:
+      - name: Repoint wave/dash/subrepos and detach www from datro
+        run: |
+          cf() { curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" -H "Content-Type: application/json" "$@"; }
+          base="https://api.cloudflare.com/client/v4"
+          acct="$base/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
+          zone=$(cf "$base/zones?name=bucklerfamily.estate" | jq -r '.result[0].id')
+          # sub:project — DNS currently points at *.datro.pages.dev (the hbnb project's branch aliases)
+          for pair in wave:wave dash:dash subrepos:subrepos; do
+            sub=${pair%%:*}; proj=${pair##*:}
+            name="$sub.bucklerfamily.estate"
+            target=$(cf "$acct/$proj" | jq -r '.result.subdomain')
+            rec=$(cf "$base/zones/$zone/dns_records?name=$name&type=CNAME" | jq -r '.result[0] | "\(.id) \(.content)"')
+            id=${rec%% *}; cur=${rec#* }
+            if [ "$cur" = "$target" ]; then echo "$name already -> $target"; continue; fi
+            echo "$name: $cur -> $target"
+            cf -X PATCH -d "{\"content\":\"$target\",\"proxied\":true}" "$base/zones/$zone/dns_records/$id" | jq -c '{success, errors}'
+          done
+          echo "Detach www.bucklerfamily.estate from datro project:"
+          cf -X DELETE "$acct/datro/domains/www.bucklerfamily.estate" | jq -c '{success, errors}'
+
+      - name: Wait for custom domains to verify
+        run: |
+          cf() { curl -sS -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" "$@"; }
+          acct="https://api.cloudflare.com/client/v4/accounts/$CLOUDFLARE_ACCOUNT_ID/pages/projects"
+          projects="hbnb cnei archives althea wayback ceo projections timeline pirateclaw command-dashboard bpvsbuckler bucklervsbp subrepos wave dash calls library gui dcc"
+          for i in $(seq 1 12); do
+            pending=0; out=""
+            for p in $projects; do
+              s=$(cf "$acct/$p/domains" | jq -r '.result[] | select(.name|endswith(".bucklerfamily.estate")) | "\(.name)=\(.status)"')
+              out="$out $s"; echo "$s" | grep -qv '=active' && pending=$((pending+1))
+            done
+            echo "round $i:$out"
+            [ $pending -eq 0 ] && break
+            # nudge verification of non-active domains
+            for p in $projects; do
+              for d in $(cf "$acct/$p/domains" | jq -r '.result[] | select((.name|endswith(".bucklerfamily.estate")) and .status!="active") | .name'); do
+                cf -X PATCH "$acct/$p/domains/$d" > /dev/null
+              done
+            done
+            sleep 30
+          done
+          for p in $projects; do cf "$acct/$p/domains" | jq -r '.result[] | select(.name|endswith(".bucklerfamily.estate")) | "\(.name)\t\(.status)\t\(.verification_data.error_message // "")"'; done
