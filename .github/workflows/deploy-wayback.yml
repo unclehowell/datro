@@ -2,37 +2,60 @@ name: Deploy wayback gallery host fix
 
 on:
   workflow_dispatch:
+  push:
+    branches:
+      - gh-pages
+    paths:
+      - .github/workflows/deploy-wayback.yml
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     env:
-      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+      CLOUDFLARE_API_TOKEN: \${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: \${{ secrets.CLOUDFLARE_ACCOUNT_ID || '42a4a8d7bfb96321118ada213638d050' }}
+
     steps:
-      - name: Rebuild site from live assets with same-host image URLs
+      - name: Rebuild site from live assets with same-host URLs and archive the ITV clip
+        shell: bash
         run: |
           set -euo pipefail
-          python3 - << 'PY'
-          import json, os, urllib.parse, urllib.request
+
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg python3-pip
+          python3 -m pip install --disable-pip-version-check -q --upgrade "yt-dlp[default]"
+
+          python3 - <<'PY'
+          import json, subprocess, urllib.parse, urllib.request
           from pathlib import Path
+
           base = "https://wayback.bucklerfamily.estate"
           root = Path("site")
           root.mkdir(exist_ok=True)
+
           opener = urllib.request.build_opener()
           opener.addheaders = [("User-Agent", "Mozilla/5.0")]
           urllib.request.install_opener(opener)
 
           def get(url):
-              with urllib.request.urlopen(url, timeout=60) as r:
+              with urllib.request.urlopen(url, timeout=120) as r:
                   return r.read()
 
           html = get(base + "/").decode("utf-8", "replace")
-          html = html.replace("https://wayback.datro.xyz/${getSafePath(item.path)}", "/${getSafePath(item.path)}")
+          html = html.replace(
+              "https://wayback.datro.xyz/\${getSafePath(item.path)}",
+              "/\${getSafePath(item.path)}",
+          )
           if "wayback.datro.xyz" in html:
               raise SystemExit("datro.xyz still in index")
-          (root / "index.html").write_text(html)
-          (root / "_headers").write_text("/*.json\n  Content-Type: application/json\n  X-Content-Type-Options: nosniff\n")
+          (root / "index.html").write_text(html, encoding="utf-8")
+          (root / "_headers").write_text(
+              "/*.json\n"
+              "  Content-Type: application/json\n"
+              "  X-Content-Type-Options: nosniff\n",
+              encoding="utf-8",
+          )
+
           n = 0
           for cat in ("images", "pdf", "text"):
               raw = get(f"{base}/{cat}/_treeview.json")
@@ -54,6 +77,103 @@ jobs:
                   except Exception as e:
                       print("skip", rel, e)
               print(cat, len(items))
-          print("downloaded", n)
+          print("downloaded existing assets", n)
+
+          video_dir = root / "video"
+          video_dir.mkdir(exist_ok=True)
+          video_name = "1988-00-00_video_itv-news_great-house-farm_400-years_en_v0.0.0.10.mp4"
+          raw_template = "/tmp/itv-source.%(ext)s"
+          out_path = video_dir / video_name
+          url = "https://www.youtube.com/watch?v=4GXmR7mAas0"
+
+          cmd = [
+              "yt-dlp",
+              "--remote-components", "ejs:github",
+              "--js-runtimes", "node",
+              "--extractor-args", "youtube:player_client=android_vr,web_safari",
+              "--no-playlist",
+              "--format", "worstvideo*+worstaudio/worst",
+              "--merge-output-format", "mp4",
+              "--output", raw_template,
+              url,
+          ]
+          subprocess.run(cmd, check=True)
+
+          raw_candidates = [
+              p for p in sorted(Path("/tmp").glob("itv-source.*"))
+              if p.suffix.lower() not in {".part", ".ytdl"}
+          ]
+          if not raw_candidates:
+              raise SystemExit("yt-dlp produced no source file")
+          source = raw_candidates[0]
+          print("downloaded source", source, source.stat().st_size)
+
+          def encode(path, height, fps, vb, ab, ar):
+              subprocess.run([
+                  "ffmpeg", "-y", "-i", str(source),
+                  "-vf", f"scale=-2:{height},fps={fps}",
+                  "-c:v", "libx264", "-preset", "veryfast",
+                  "-b:v", vb, "-maxrate", vb,
+                  "-bufsize", str(int(int(vb[:-1]) * 2)) + "k",
+                  "-c:a", "aac", "-b:a", ab,
+                  "-ac", "1", "-ar", str(ar),
+                  "-movflags", "+faststart",
+                  str(path),
+              ], check=True)
+
+          encode(out_path, 180, 12, "52k", "16k", 24000)
+          size = out_path.stat().st_size
+          print("archived mp4 bytes", size)
+
+          if size >= 24 * 1024 * 1024:
+              fallback = video_dir / ("fallback-" + video_name)
+              encode(fallback, 144, 10, "42k", "12k", 22050)
+              fallback_size = fallback.stat().st_size
+              if fallback_size >= 25 * 1024 * 1024:
+                  raise SystemExit(
+                      f"compressed archive video still exceeds 25 MiB: {fallback_size}"
+                  )
+              fallback.replace(out_path)
+              print("used compact fallback", fallback_size)
+
+          video_index = [{
+              "name": video_name[:-4] + " #itv #bpvsbuckler #greathousefarm",
+              "path": "video/" + video_name,
+              "tags": ["#itv", "#bpvsbuckler", "#greathousefarm"]
+          }]
+          (video_dir / "_treeview.json").write_text(
+              json.dumps(video_index, ensure_ascii=False, indent=2) + "\n",
+              encoding="utf-8",
+          )
+
+          thumb_name = "1988-00-00_image_itv-news_great-house-farm_400-years_thumbnail_en_v0.0.0.10.jpg"
+          thumb_url = "https://i.ytimg.com/vi/4GXmR7mAas0/maxresdefault.jpg"
+          try:
+              thumb = get(thumb_url)
+              thumb_path = root / "images" / thumb_name
+              thumb_path.parent.mkdir(exist_ok=True)
+              thumb_path.write_bytes(thumb)
+              img_index = json.loads(
+                  (root / "images" / "_treeview.json").read_text(encoding="utf-8")
+              )
+              img_index = [
+                  x for x in img_index
+                  if x.get("path") != "images/" + thumb_name
+              ]
+              img_index.append({
+                  "name": thumb_name[:-4] + " #itv #bpvsbuckler #greathousefarm",
+                  "path": "images/" + thumb_name,
+                  "tags": ["#itv", "#bpvsbuckler", "#greathousefarm"]
+              })
+              (root / "images" / "_treeview.json").write_text(
+                  json.dumps(img_index, ensure_ascii=False, indent=2) + "\n",
+                  encoding="utf-8",
+              )
+              print("archived thumbnail", thumb_path.stat().st_size)
+          except Exception as e:
+              print("thumbnail fetch skipped", e)
+
+          print("final video", out_path, out_path.stat().st_size)
           PY
+
           npx --yes wrangler@3 pages deploy site --project-name=wayback --commit-dirty=true
