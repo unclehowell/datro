@@ -1,3 +1,10 @@
+## v0.0.0.87 (FOI reply attachments)
+- Added 36 original attachments from public-authority replies (FOI/EIR/complaints/records enquiries, Feb–Oct 2026) under `pdf/foi/`, unaltered, with `manifest.json` (Gmail message id, subject, original filename, SHA-256) and `README.md`.
+- Catalogue numbers match the wiki's FOI & Public-Authority Reply Register (GHF-E106-R01 … R41).
+- Added 35 entries to `pdf/_treeview.json` and 1 to `images/_treeview.json` (tags: foi, bpvsbuckler).
+- Deploy note: media normally lives in R2; these files are also committed under `wayback/pdf/foi/` so they are served if the Pages deploy includes them. Sync `pdf/foi/` to the R2 bucket if the domain routes `/pdf/*` to R2.
+- Not retrievable automatically (too large for the mail connector): Museum Wales FOI 2026-032 (22 Sep, 28.5 MB), Vale of Glamorgan 00211027 (14 Sep, 27 MB), Cadw listed buildings (21 May, 11.6 MB).
+
 ## v0.0.0.18 (rollback + R2 fix)
 - Rolled back wayback branch ~3 releases (to 1dc674553) because recent changes diminished UX (small catalogue, over-reduced treeviews).
 - Restored full previous catalogue treeviews (~337 images etc) with relative R2-served paths.

@@ -1,0 +1,44 @@
+# FOI and public-authority reply attachments
+
+Original attachments from replies received by the Buckler family from public bodies (FOI, EIR, complaints and records enquiries), extracted unaltered from the family's mailbox on 5 October 2026. Catalogue numbers match the FOI & Public-Authority Reply Register on greathousefarmwiki.wordpress.com (/records-access-chronology/foi-reply-register/). `manifest.json` gives the Gmail message id, email subject and date, original filename and SHA-256 of each file.
+
+Not included: signature images and logos; images the family had sent that were quoted back; subject-access (SAR) disclosure letters (personal data); and three messages too large to retrieve automatically (Museum Wales FOI 2026-032, 22 Sep 2026, 28.5 MB; Vale of Glamorgan FOI 00211027, 14 Sep 2026, 27 MB; Cadw listed buildings, 21 May 2026, 11.6 MB).
+
+| Catalogue | Date | Authority | What it is | File | SHA-256 (first 12) |
+|---|---|---|---|---|---|
+| existing (wiki media 45) | 2026-02-13 | HM Land Registry | Holding letter: paper files being retrieved | [2026-02-13_hmlr_wa231076_holding-letter.pdf](2026-02-13_hmlr_wa231076_holding-letter.pdf) | `ae129b5a69c5` |
+| GHF-E106-R34-A1 | 2026-02-26 | The National Archives | Manorial Documents Register: HMC 9.311 Llandough manor return | [2026-02-26_tna_hmc-9-311_llandough-manor-return.jpg](2026-02-26_tna_hmc-9-311_llandough-manor-return.jpg) | `da2330be6485` |
+| existing (wiki media 42) | 2026-03-23 | HM Land Registry | Letter: registration history of Ty Mawr Farm | [2026-03-23_hmlr_wa231076_registration-history.pdf](2026-03-23_hmlr_wa231076_registration-history.pdf) | `63ad64559874` |
+| GHF-E106-R35-A1 | 2026-04-13 | HM Land Registry | FOI F260213 response | [2026-04-13_hmlr_foi-f260213_response.pdf](2026-04-13_hmlr_foi-f260213_response.pdf) | `1eab2e746abc` |
+| existing (wiki media 41) | 2026-04-19 | HM Land Registry | Stage one complaint decision | [2026-04-19_hmlr_stage-one-complaint-decision.pdf](2026-04-19_hmlr_stage-one-complaint-decision.pdf) | `f6cde74eb335` |
+| existing (wiki media 43) | 2026-04-21 | HM Land Registry | Stage two acknowledgement | [2026-04-21_hmlr_stage-two-acknowledgement.pdf](2026-04-21_hmlr_stage-two-acknowledgement.pdf) | `d6413d6dff07` |
+| GHF-E106-R36-A1 | 2026-04-27 | Ministry of Justice | Central Correspondence Team reply TO130237 | [2026-04-27_moj_to130237_reply.pdf](2026-04-27_moj_to130237_reply.pdf) | `31b674f58832` |
+| existing (wiki media 38) | 2026-05-25 | HM Land Registry | Stage two complaint decision | [2026-05-25_hmlr_stage-two-complaint-decision.pdf](2026-05-25_hmlr_stage-two-complaint-decision.pdf) | `49c74028cee0` |
+| GHF-E106-R40-A3 | 2026-05-28 | RCAHMW | RC26-0205 order form 2021 | [2026-05-28_rcahmw_rc26-0205_les08-order-form-2021.docx](2026-05-28_rcahmw_rc26-0205_les08-order-form-2021.docx) | `291e3be8baf2` |
+| GHF-E106-R40-A2 | 2026-05-28 | RCAHMW | RC26-0205 price list 2026 | [2026-05-28_rcahmw_rc26-0205_les16-price-list-2026.pdf](2026-05-28_rcahmw_rc26-0205_les16-price-list-2026.pdf) | `08666a9e23e1` |
+| GHF-E106-R40-A1 | 2026-05-28 | RCAHMW | RC26-0205 licence fees 2026 | [2026-05-28_rcahmw_rc26-0205_les17-licence-fees-2026.pdf](2026-05-28_rcahmw_rc26-0205_les17-licence-fees-2026.pdf) | `6c2e0f5ed166` |
+| GHF-E106-R37-A2 | 2026-06-11 | Welsh Government (Cadw) | ATISN 27021 doc 1: farmhouse survey photo, 29 July 1988 | [2026-06-11_welsh-government_atisn-27021_doc1-1988-07-29-farmhouse-survey-photo.pdf](2026-06-11_welsh-government_atisn-27021_doc1-1988-07-29-farmhouse-survey-photo.pdf) | `bd5ea3d06db5` |
+| GHF-E106-R37-A3 | 2026-06-11 | Welsh Government (Cadw) | ATISN 27021 doc 2: barn survey photo, 29 July 1988 | [2026-06-11_welsh-government_atisn-27021_doc2-1988-07-29-barn-survey-photo.pdf](2026-06-11_welsh-government_atisn-27021_doc2-1988-07-29-barn-survey-photo.pdf) | `283a8719ed5c` |
+| GHF-E106-R37-A1 | 2026-06-11 | Welsh Government (Cadw) | ATISN 27021 response letter | [2026-06-11_welsh-government_atisn-27021_response-letter.pdf](2026-06-11_welsh-government_atisn-27021_response-letter.pdf) | `67c11e5a9c15` |
+| GHF-E106-R27-A1 | 2026-07-13 | HM Land Registry | N610CGV letter (WA231076) | [2026-07-13_hmlr_n610cgv_letter.pdf](2026-07-13_hmlr_n610cgv_letter.pdf) | `5c193fa242fd` |
+| GHF-E106-R38-A1 | 2026-07-16 | South Wales Police | FOI 719/26 response | [2026-07-16_south-wales-police_foi-719-26_response.pdf](2026-07-16_south-wales-police_foi-719-26_response.pdf) | `d6b3e44366c1` |
+| GHF-E106-R29-A1 | 2026-07-22 | DCMS | FOI2026/06174 response | [2026-07-22_dcms_foi2026-06174_response.pdf](2026-07-22_dcms_foi2026-06174_response.pdf) | `c53f4d343823` |
+| GHF-E106-R41-A1 | 2026-07-24 | Post Office Limited | FOI2026/00751 response | [2026-07-24_post-office_foi2026-00751_response.pdf](2026-07-24_post-office_foi2026-00751_response.pdf) | `e3c2c5ae6d52` |
+| GHF-E106-10 (wiki media 40) | 2026-07-30 | HM Land Registry | Schedule of first-registration documents WA231076 / WA240304 | [2026-07-30_hmlr_first-registration-schedule.pdf](2026-07-30_hmlr_first-registration-schedule.pdf) | `d8ef59d25215` |
+| GHF-E106-R28-A1 | 2026-08-10 | Information Commissioner’s Office | IC-546505-W6P0 letter | [2026-08-10_ico_ic-546505-w6p0_letter.pdf](2026-08-10_ico_ic-546505-w6p0_letter.pdf) | `fe1c863b6f90` |
+| GHF-E106-R26-A1 | 2026-08-12 | Ministry of Justice | FOI 260805002 response | [2026-08-12_moj_260805002_foia-response.pdf](2026-08-12_moj_260805002_foia-response.pdf) | `00eabac7457b` |
+| GHF-E106-R29-A2 | 2026-08-19 | DCMS | IR2026/06711 internal review response | [2026-08-19_dcms_ir2026-06711_response.pdf](2026-08-19_dcms_ir2026-06711_response.pdf) | `03d9c97c149e` |
+| GHF-E106-R24-A2 | 2026-09-07 | Glamorgan Archives | Bute catalogue documents (41 Word files, zipped) | [2026-09-07_glamorgan-archives_bute-catalogue-documents.zip](2026-09-07_glamorgan-archives_bute-catalogue-documents.zip) | `892e94db5ef5` |
+| GHF-E106-R24-A1 | 2026-09-07 | Glamorgan Archives | Digital photography order form | [2026-09-07_glamorgan-archives_digital-photography-order-form-2025.docx](2026-09-07_glamorgan-archives_digital-photography-order-form-2025.docx) | `6df6162232f5` |
+| GHF-E106-R26-A2 | 2026-09-09 | Ministry of Justice | FOI internal review 260813002 extension letter | [2026-09-09_moj_260813002_foi-ir-extension-letter.pdf](2026-09-09_moj_260813002_foi-ir-extension-letter.pdf) | `ed23a948b393` |
+| GHF-E106-R16-A1 | 2026-09-22 | Wales Office | 26FOI 103 response letter | [2026-09-22_wales-office_26foi-103_response.pdf](2026-09-22_wales-office_26foi-103_response.pdf) | `d92caba80e4c` |
+| GHF-E106-R15-A1 | 2026-09-23 | The National Archives | CAS-347296 item 01: release schedule (on Discovery) | [2026-09-23_tna_cas-347296_item01-release-schedule-on-discovery.csv](2026-09-23_tna_cas-347296_item01-release-schedule-on-discovery.csv) | `7050146d5c76` |
+| GHF-E106-R15-A2 | 2026-09-23 | The National Archives | CAS-347296 item 02: high-level delivery schedule | [2026-09-23_tna_cas-347296_item02-high-level-delivery-schedule.csv](2026-09-23_tna_cas-347296_item02-high-level-delivery-schedule.csv) | `2fa452194df3` |
+| GHF-E106-R15-A3 | 2026-09-23 | The National Archives | CAS-347296 item 03: Collection 27 series 11 manifest | [2026-09-23_tna_cas-347296_item03-collect27-series11-manifest.csv](2026-09-23_tna_cas-347296_item03-collect27-series11-manifest.csv) | `10681e85f7a9` |
+| GHF-E106-R01-A1 | 2026-09-29 | RCAHMW | RC26-0375 order form (Welsh) | [2026-09-29_rcahmw_rc26-0375_les08-order-form-2023.docx](2026-09-29_rcahmw_rc26-0375_les08-order-form-2023.docx) | `8c01766df737` |
+| GHF-E106-R01-A2 | 2026-09-29 | RCAHMW | RC26-0375 price list 2026 (Welsh) | [2026-09-29_rcahmw_rc26-0375_les16-price-list-2026.pdf](2026-09-29_rcahmw_rc26-0375_les16-price-list-2026.pdf) | `9aa42a9dc070` |
+| GHF-E106-R39-A1 | 2026-09-29 | South Wales Police | FOI 1040/26 response | [2026-09-29_south-wales-police_foi-1040-26_response.pdf](2026-09-29_south-wales-police_foi-1040-26_response.pdf) | `aab396139217` |
+| GHF-E106-R24-A3 | 2026-09-30 | Glamorgan Archives | Bute 10 catalogue document (resent under 2026/4097b) | [2026-09-30_glamorgan-archives_bute-10.doc](2026-09-30_glamorgan-archives_bute-10.doc) | `1e3aaf941bbe` |
+| GHF-E106-R33-A2 | 2026-10-05 | Amgueddfa Cymru | FOI 2026-036: record 63.24/1 rowel spur | [2026-10-05_museum-wales_foi-2026-036_63-24-1-rowel-spur.pdf](2026-10-05_museum-wales_foi-2026-036_63-24-1-rowel-spur.pdf) | `c1c0fa5e25d5` |
+| GHF-E106-R33-A3 | 2026-10-05 | Amgueddfa Cymru | FOI 2026-036: record 63.24/2 spearhead | [2026-10-05_museum-wales_foi-2026-036_63-24-2-spearhead.pdf](2026-10-05_museum-wales_foi-2026-036_63-24-2-spearhead.pdf) | `cfadaeb03c94` |
+| GHF-E106-R33-A1 | 2026-10-05 | Amgueddfa Cymru | FOI 2026-036: letter of 22 Nov 1931, file 63.24 | [2026-10-05_museum-wales_foi-2026-036_63-24-letter-1931.pdf](2026-10-05_museum-wales_foi-2026-036_63-24-letter-1931.pdf) | `34a54e6f76e5` |
