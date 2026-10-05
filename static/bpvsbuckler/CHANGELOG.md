@@ -1,5 +1,19 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.48] - 2026-10-05
+
+### Added
+- Every dated event in the Great House Farm Wiki's Master Timeline (greathousefarmwiki.wordpress.com/timeline/) is now in the site timeline: 111 -> 132 scenes. New: c.650 St Dochdwy's early monastery (family account); 11 Nov 1891 geese theft court report; 23 Feb 1905 Bute conveyance; Frederick Buckler's birth (1910-11); 15 May 1924 agreement; eldest son's birth (c.1937-40); the c.1940 limitation contention (marked as a family contention); William (Billy) Buckler's birth (c.1948-49); 10 Oct 1952 agents' letter; 29 Mar 1961 deed; eldest son's household leaving (1968-69); 16 Jun 1970 village green VG41; 25 Jul 1972 housing permission; 13 Mar 1983 GGAT warehouse fire (Roman villa finds, separate site); 10 Oct 1989 Oakview sale (WA513690); 8 Feb 1990 GGAT Appendix B missing from the planning file; 10 Nov 1994 woodland to Forest of Cardiff (WA735527); 1995-96 South Wales Electricity rights and Persimmon correspondence; 22 Dec 2005 woodland division; 2025-26 records requests; 3 Oct 2026 press transcription
+- Each new scene cites the Master Timeline and the wiki page it links to; existing scenes are unchanged
+- scripts/build-timeline-exports.mjs rebuilds api/timeline.json and llms.txt from the timeline data
+
+### Fixed
+- The opening slide is found by year (1897) instead of a fixed index, so added events no longer shift it
+
+### Note
+- Release numbered 0.0.0.48 to follow the latest published tag (bpvsbuckler-v0.0.0.47); the 0.0.0.10-0.0.0.11 changelog entries of 3 Oct were not tagged
+
+
 ## [bpvsbuckler-v0.0.0.11] - 2026-10-03
 
 ### Fixed

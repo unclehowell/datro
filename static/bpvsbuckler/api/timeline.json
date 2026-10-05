@@ -1,11 +1,11 @@
 {
   "title": "Great House Farm Story — Timeline",
   "description": "The complete chronological account of the Williams-Buckler family and Great House Farm, Llandough, including HER record GGAT02038s.",
-  "total_entries": 111,
-  "last_updated": "2026-10-03",
-  "version": "0.0.0.08",
+  "total_entries": 132,
+  "last_updated": "2026-10-05",
+  "version": "0.0.0.48",
   "summary": {
-    "earliest_year": "1100",
+    "earliest_year": "c.650",
     "latest_year": "2026",
     "subjects": [
       "Great House Farm",
@@ -31,6 +31,38 @@
     ]
   },
   "entries": [
+    {
+      "year": "c.650",
+      "location": "St Dochdwy's, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "St Dochdwy's church, beside the farm, is thought to stand on the site of an early monastery. This rests on the family's account; the published reference is still awaited, and how the site relates to the two parcels is unclear.",
+      "scenes": [
+        {
+          "character": "FAMILY HISTORIAN",
+          "icon": "farmer",
+          "side": "left",
+          "text": "The church next to the farm is said to have begun as a monastery."
+        },
+        {
+          "character": "ARCHIVIST",
+          "icon": "archive",
+          "side": "right",
+          "text": "Then we need the published reference before we rely on it."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Archaeology and Heritage (greathousefarmwiki.wordpress.com/archaeology/)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
     {
       "year": "1100",
       "location": "Llandough, Glamorgan",
@@ -982,6 +1014,38 @@
       }
     },
     {
+      "year": "1891",
+      "location": "Llandough — Court Report",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 11 November 1891 three geese are stolen from \"Mr. John Williams, Great House Farm, Llandough\". The newspaper report of the court case is contemporary evidence that John Williams was occupying the farm.",
+      "scenes": [
+        {
+          "character": "COURT REPORTER",
+          "icon": "archive",
+          "side": "left",
+          "text": "Three geese taken from John Williams of Great House Farm, Llandough."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "A court report from 1891 that names him at the farm. That is a record, not a memory."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Press Archive — Newspaper Transcripts (greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n01) — GHF-E090-N01"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "1897",
       "location": "Great House Farm / Lavernock Point",
       "locationType": "other",
@@ -1019,6 +1083,38 @@
       }
     },
     {
+      "year": "1905",
+      "location": "HM Land Registry — WA231076 File",
+      "locationType": "other",
+      "description": "",
+      "narration": "A Bute conveyance dated 23 February 1905 later appears on the WA231076 registration file and is noted on the woodland title WA735527. On the wiki's current interpretation it concerns Parcel A; what it conveyed has still to be confirmed.",
+      "scenes": [
+        {
+          "character": "LAND REGISTRY CLERK",
+          "icon": "archive",
+          "side": "left",
+          "text": "A Bute conveyance of 23 February 1905 is listed among the deeds on this file."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "Then the deed itself should show which land Bute was dealing with in 1905."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "1908",
       "location": "Great House Farm",
       "locationType": "other",
@@ -1040,6 +1136,38 @@
       ],
       "sources": [
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1910–11",
+      "location": "Frederick Buckler — Birth",
+      "locationType": "other",
+      "description": "",
+      "narration": "Frederick Buckler is born in 1910 or 1911. The year is worked back from his death in 1967 at the age of 56; his birth and death certificates are still awaited.",
+      "scenes": [
+        {
+          "character": "ARCHIVIST",
+          "icon": "archive",
+          "side": "left",
+          "text": "Died 1967, aged 56, puts his birth in 1910 or 1911."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "We will order the certificates to settle it."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Frederick Buckler (greathousefarmwiki.wordpress.com/frederick-buckler/)"
       ],
       "attachments": {
         "gallery": [],
@@ -1102,6 +1230,38 @@
       ],
       "sources": [
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1924",
+      "location": "HM Land Registry — WA231076 File",
+      "locationType": "other",
+      "description": "",
+      "narration": "An agreement dated 15 May 1924 appears on the WA231076 registration file. Its contents and effect are unknown, and it is not yet clear which parcel it concerns.",
+      "scenes": [
+        {
+          "character": "LAND REGISTRY CLERK",
+          "icon": "archive",
+          "side": "left",
+          "text": "An agreement of 15 May 1924 is listed on the file. The document itself is not described."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "Until we see it, we cannot say what it did or which land it covered."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration)"
       ],
       "attachments": {
         "gallery": [],
@@ -1213,6 +1373,38 @@
       }
     },
     {
+      "year": "c.1937–40",
+      "location": "Great House Farm",
+      "locationType": "other",
+      "description": "",
+      "narration": "Frederick and Mary's eldest son is born at about this time. The date rests on family belief; his birth entry has still to be traced.",
+      "scenes": [
+        {
+          "character": "FAMILY MEMBER",
+          "icon": "farmer",
+          "side": "left",
+          "text": "The eldest boy was born a year or so after the wedding."
+        },
+        {
+          "character": "ARCHIVIST",
+          "icon": "archive",
+          "side": "right",
+          "text": "The GRO index will give the exact date once the entry is found."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — The Williams / Buckler Family (greathousefarmwiki.wordpress.com/williams-buckler-family/)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "1938",
       "location": "Bute Estate Office",
       "locationType": "other",
@@ -1275,6 +1467,39 @@
       }
     },
     {
+      "year": "c.1940",
+      "location": "Great House Farm",
+      "locationType": "other",
+      "description": "",
+      "narration": "The family contend that by about 1940 twelve years of rent-free occupation of the house parcel, counted from the last rent paid in 1928, would have been complete.",
+      "scenes": [
+        {
+          "character": "FAMILY SOLICITOR",
+          "icon": "lawyer",
+          "side": "left",
+          "text": "No rent on the house since 1928. Twelve years on, the family say their title by possession was complete."
+        },
+        {
+          "character": "ESTATE AGENT",
+          "icon": "worker",
+          "side": "right",
+          "text": "The landlord will say the family were tenants of the whole farm throughout."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — 1938–39: Sale to WGR and the Revised Tenancy (greathousefarmwiki.wordpress.com/1939-revised-tenancy/#c1940)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      },
+      "challenge": "CHALLENGE: This is the family's contention. It depends on the house parcel being outside the 1916 and 1939 tenancies after 1928, which is still being tested against the records."
+    },
+    {
       "year": "1944",
       "location": "Great House Farm",
       "locationType": "other",
@@ -1296,6 +1521,38 @@
       ],
       "sources": [
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "c.1948–49",
+      "location": "Great House Farm",
+      "locationType": "other",
+      "description": "",
+      "narration": "William (Billy) Buckler is born at the farm. He lives there until the eviction of 1988.",
+      "scenes": [
+        {
+          "character": "MARY WILLIAMS",
+          "icon": "farmer",
+          "side": "left",
+          "text": "Another son, born here in the farmhouse."
+        },
+        {
+          "character": "FREDERICK BUCKLER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "He will grow up on this land, as you did."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — The Williams / Buckler Family (greathousefarmwiki.wordpress.com/williams-buckler-family/#william)"
       ],
       "attachments": {
         "gallery": [],
@@ -1367,6 +1624,38 @@
         "report": []
       },
       "challenge": "CHALLENGE: The family contend the documents that proved their title were taken from their home shortly before the first possession proceedings."
+    },
+    {
+      "year": "1952",
+      "location": "Landlords' Agents' Office",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 10 October 1952 the landlords' agents decide not to proceed with the letting to Frederick Buckler.",
+      "scenes": [
+        {
+          "character": "LANDLORDS' AGENT",
+          "icon": "worker",
+          "side": "left",
+          "text": "We have decided not to proceed with the letting to Mr Buckler."
+        },
+        {
+          "character": "FREDERICK BUCKLER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "Then what am I, if not your tenant?"
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Frederick Buckler (greathousefarmwiki.wordpress.com/frederick-buckler/#tenancy-1949)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
     },
     {
       "year": "1953",
@@ -1469,6 +1758,38 @@
       ],
       "sources": [
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1961",
+      "location": "HM Land Registry — WA231076 File",
+      "locationType": "other",
+      "description": "",
+      "narration": "A deed dated 29 March 1961 appears on the WA231076 registration file. Its contents are unknown, and it is not yet clear which parcel it concerns.",
+      "scenes": [
+        {
+          "character": "LAND REGISTRY CLERK",
+          "icon": "archive",
+          "side": "left",
+          "text": "A deed of 29 March 1961 is listed on the file."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "Another document we know exists but have never seen."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration)"
       ],
       "attachments": {
         "gallery": [],
@@ -1701,6 +2022,38 @@
       }
     },
     {
+      "year": "1968–69",
+      "location": "Great House Farm",
+      "locationType": "other",
+      "description": "",
+      "narration": "Between September 1968 and September 1969 the eldest son's household leaves the farm, according to the family's account.",
+      "scenes": [
+        {
+          "character": "FAMILY MEMBER",
+          "icon": "farmer",
+          "side": "left",
+          "text": "His family moved out of the farm around then."
+        },
+        {
+          "character": "ARCHIVIST",
+          "icon": "archive",
+          "side": "right",
+          "text": "This is the family account; we date it from what relatives remember."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — The Williams / Buckler Family (greathousefarmwiki.wordpress.com/williams-buckler-family/#rumoured-sale)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "1969",
       "location": "Great House Farm, Llandough",
       "locationType": "other",
@@ -1799,6 +2152,70 @@
         }
       ],
       "sources": [],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1970",
+      "location": "Leckwith Road, Llandough",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 16 June 1970 land by Leckwith Road is registered as village green VG41. The wiki's current reconstruction places it in Parcel A; the boundary has still to be confirmed (timeline ref. GHF-E033-VG41).",
+      "scenes": [
+        {
+          "character": "REGISTRATION OFFICER",
+          "icon": "archive",
+          "side": "left",
+          "text": "The land by Leckwith Road is entered in the register as village green VG41."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "If the green lies inside the house parcel, it was registered while Mary was living there."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Redevelopment and Church View Close (greathousefarmwiki.wordpress.com/redevelopment/)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1972",
+      "location": "Planning Office",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 25 July 1972 an earlier planning permission for housing on the site is granted, while Mary Williams is still living in the farmhouse.",
+      "scenes": [
+        {
+          "character": "PLANNING OFFICER",
+          "icon": "worker",
+          "side": "left",
+          "text": "Permission is granted for housing on the site."
+        },
+        {
+          "character": "MARY WILLIAMS",
+          "icon": "farmer",
+          "side": "right",
+          "text": "Housing, on the land around a house I am living in."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Redevelopment and Church View Close (greathousefarmwiki.wordpress.com/redevelopment/)"
+      ],
       "attachments": {
         "gallery": [],
         "legal": [],
@@ -2262,6 +2679,38 @@
       ],
       "sources": [
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1983",
+      "location": "GGAT Warehouse, Swansea",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 13 March 1983 a fire at GGAT's Swansea warehouse destroys the finds from the Llandough Roman villa excavation. The villa is a separate site from Great House Farm.",
+      "scenes": [
+        {
+          "character": "ARCHAEOLOGIST",
+          "icon": "archive",
+          "side": "left",
+          "text": "Years of finds from the Llandough villa dig have been lost in the fire."
+        },
+        {
+          "character": "LOCAL HISTORIAN",
+          "icon": "worker",
+          "side": "right",
+          "text": "That was the villa south of the church, not Great House Farm, but it is still a loss to Llandough."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Press Archive — Newspaper Transcripts (greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n06) — GHF-E090-N06 (South Wales Echo, 18 March 1983)"
       ],
       "attachments": {
         "gallery": [],
@@ -3823,6 +4272,38 @@
     },
     {
       "year": "1989",
+      "location": "HM Land Registry — WA513690",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 10 October 1989 BP sells Oakview (title WA513690). How this land relates to the two parcels is unclear.",
+      "scenes": [
+        {
+          "character": "CONVEYANCER",
+          "icon": "lawyer",
+          "side": "left",
+          "text": "BP Properties sells Oakview, title WA513690."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "We need to plot that title against the farm boundaries."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#later-dealings)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1989",
       "location": "Vale of Glamorgan Planning",
       "locationType": "other",
       "description": "",
@@ -3843,6 +4324,38 @@
       ],
       "sources": [
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1990",
+      "location": "Vale of Glamorgan Planning",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 8 February 1990 GGAT sends further comments on the outline application (Appendix B). They are missing from the planning file.",
+      "scenes": [
+        {
+          "character": "PLANNING CLERK",
+          "icon": "archive",
+          "side": "left",
+          "text": "The file refers to further GGAT comments as Appendix B."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "But Appendix B is not in the file we were given."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Redevelopment and Church View Close (greathousefarmwiki.wordpress.com/redevelopment/)"
       ],
       "attachments": {
         "gallery": [],
@@ -4085,6 +4598,70 @@
       "challenge": "CHALLENGE: The site was developed into 20 houses, permanently erasing the physical evidence. No public inquiry was held into the demolition or the family's eviction."
     },
     {
+      "year": "1994",
+      "location": "Woodland — WA735527",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 10 November 1994 the woodland, title WA735527, is transferred to Forest of Cardiff. The wiki places the woodland in Parcel A.",
+      "scenes": [
+        {
+          "character": "CONVEYANCER",
+          "icon": "lawyer",
+          "side": "left",
+          "text": "The woodland title passes to Forest of Cardiff."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "That is the half of the land we are asking to have back."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Woodland (greathousefarmwiki.wordpress.com/woodland/)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "1995–96",
+      "location": "HM Land Registry — WA231076 File",
+      "locationType": "other",
+      "description": "",
+      "narration": "Rights are granted to South Wales Electricity, and there is correspondence with Persimmon. This is the last dealing on the registration file.",
+      "scenes": [
+        {
+          "character": "LAND REGISTRY CLERK",
+          "icon": "archive",
+          "side": "left",
+          "text": "The last entries on the file are the electricity rights and the Persimmon letters."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "Then the paper trail on this title stops in the mid-1990s."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#later-dealings)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "2005",
       "location": "Heritage Website",
       "locationType": "other",
@@ -4134,6 +4711,38 @@
       }
     },
     {
+      "year": "2005",
+      "location": "Woodland — WA735527",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 22 December 2005 part of the woodland title is divided off.",
+      "scenes": [
+        {
+          "character": "LAND REGISTRY CLERK",
+          "icon": "archive",
+          "side": "left",
+          "text": "Part of the woodland is split off into a separate title."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "One more change to trace on the Parcel A land."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Woodland (greathousefarmwiki.wordpress.com/woodland/)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
       "year": "2019",
       "location": "RCAHMW National Archive",
       "locationType": "other",
@@ -4155,6 +4764,38 @@
       ],
       "sources": [
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "2025–26",
+      "location": "Public Bodies",
+      "locationType": "other",
+      "description": "",
+      "narration": "The family make records requests to public bodies, logged step by step in the wiki's Records Access Chronology.",
+      "scenes": [
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "left",
+          "text": "Every request, reply and refusal goes on the public record."
+        },
+        {
+          "character": "RECORDS OFFICER",
+          "icon": "archive",
+          "side": "right",
+          "text": "Your request has been received and will be dealt with under the Act."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Records Access Chronology (greathousefarmwiki.wordpress.com/records-access-chronology/)"
       ],
       "attachments": {
         "gallery": [],
@@ -4187,6 +4828,38 @@
       "sources": [
         "Great House Farm Wiki (greathousefarmwiki.wordpress.com)",
         "greathousefarmwiki.wordpress.com/where-things-stand/"
+      ],
+      "attachments": {
+        "gallery": [],
+        "legal": [],
+        "news": [],
+        "notes": [],
+        "report": []
+      }
+    },
+    {
+      "year": "2026",
+      "location": "Great House Farm Wiki — Press Archive",
+      "locationType": "other",
+      "description": "",
+      "narration": "On 3 October 2026 fifteen newspaper cuttings from the family archive, Google Drive and email are transcribed onto the wiki, from the 1891 court report to the 1989 coverage.",
+      "scenes": [
+        {
+          "character": "ARCHIVIST",
+          "icon": "archive",
+          "side": "left",
+          "text": "Fifteen cuttings transcribed, each with its date and paper."
+        },
+        {
+          "character": "FAMILY RESEARCHER",
+          "icon": "farmer",
+          "side": "right",
+          "text": "Now the press record can be checked by anyone."
+        }
+      ],
+      "sources": [
+        "Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/)",
+        "Great House Farm Wiki — Press Archive — Newspaper Transcripts (greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/)"
       ],
       "attachments": {
         "gallery": [],

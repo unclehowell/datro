@@ -8,7 +8,8 @@ import {
 import { SplashScreen } from './components/SplashScreen';
 import { FacebookIcon, InstagramIcon, InfoIcon, ImageIcon, TextIcon, PdfIcon, VideoIcon } from './components/Icons';
 
-const STARTING_SLIDE = 27;
+// Open on the 1897 Marconi scene; looked up by year so new events don't shift it.
+const STARTING_SLIDE = Math.max(0, timeline.findIndex((s) => s.year === '1897'));
 
 interface NarrationState {
   name: string; icon: string; text: string; type: string;
