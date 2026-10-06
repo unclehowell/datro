@@ -28,14 +28,18 @@ ACCOUNTS = {
     received="An old farmhouse of no special note.",
     words=[('"sub-medieval"', 'A technical dating term, later read as "not old enough to matter".')],
     known="A house of the 17th century or earlier, on a site occupied since the Middle Ages, possibly with a medieval core."),
+'ghf-15450101-1': dict(
+    received="The lord of the manor owned the farm.",
+    words=[],
+    known="Lordship of a manor and ownership of a farm within it are separate interests. Over this period the Herberts held the lordship while the Vaughans held Great House as a freehold. The sources for the lordship are secondary (the Western Mail letter and Cardiff Records) and differ on 1767–1793; the Herbert estate papers have not yet been checked."),
 'ghf-15520101-1': dict(
     received="A farm let on ordinary leases.",
     words=[],
-    known="The land had a continuous written record for nearly three centuries. Its title has a documented root."),
+    known="The farm is on written record from 1552. The 1829 end date belongs to the bundle as a whole, not to the farm, and no event in 1829 is recorded. The individual deeds have not yet been inspected; they should show who granted the leases and on what terms."),
 'ghf-15600101-1': dict(
-    received="A gentry family's farm, later sold on.",
+    received="One chain of owners: the Herberts, then the Vaughans, then Bute.",
     words=[],
-    known="The freehold chain of the land: traced in the Western Mail letter from Tewkesbury Abbey to the Crown and the Herberts, then the Vaughans, then Bute. Parcel A's title descends from this chain."),
+    known="Two separate lines. The lordship of the manor: Tewkesbury Abbey, the Crown, the Herberts from 1545, Bute from 1793. The ownership of the farm: a freehold within the manor, held by the Vaughans until the late 18th century and by Bute from the early 19th. How the farm passed from the Vaughans to Bute is not yet documented. Parcel A's title descends from the farm freehold, not from the lordship."),
 'ghf-16670101-1': dict(
     received="Tenant farmers who lived on someone else's land.",
     words=[('"tenants"', 'The estate\'s description of the family, repeated in every later account.')],
@@ -43,7 +47,7 @@ ACCOUNTS = {
 'ghf-18000101-1': dict(
     received="Bute owned the farm, and everything after descends from Bute.",
     words=[],
-    known="Bute owned the whole farm only until 1877. The house was the manor's court house."),
+    known="Bute held the lordship from 1793 and the farm freehold from the early 19th century: two interests, now in one hand. Bute owned the whole farm only until 1877. The house was the manor's court house."),
 'ghf-18400101-1': dict(
     received="It was always just a farm.",
     words=[('"Great House Farm"', 'A name that reduced the manor\'s court house to a farmhouse.')],
@@ -89,7 +93,7 @@ ACCOUNTS = {
 'ghf-19280101-1': dict(
     received="Nothing happened in 1928. The tenancy of the whole farm carried on.",
     words=[],
-    known="The bargain of 1877 came due. The quarrying ended, and the freehold of the house passed to the Williamses. From that day they never paid a penny to anyone for it again. Parcel A's chain was complete: the Vaughans, Bute, Daniel Thomas, the Williamses."),
+    known="The bargain of 1877 came due. The quarrying ended, and the freehold of the house passed to the Williamses. From that day they never paid a penny to anyone for it again. Parcel A's freehold chain was complete: the Vaughans, then Bute (by the early 19th century), then Daniel Thomas (1877), then the Williamses (1928)."),
 'ghf-19360101-1': dict(
     received="Frederick joined the tenant family on the farm.",
     words=[],

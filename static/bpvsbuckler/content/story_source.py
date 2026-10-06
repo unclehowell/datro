@@ -155,35 +155,42 @@ sc('P', 'ghf-12000101-1', '1200-01-01', '12th – 14th century', "Medieval occup
    'Archaeological record',
    "Pottery of the 12th to 14th centuries is later found on the slope north-east of the house. The Royal Commission classes the house as sub-medieval, probably 17th century.",
    [HER, ARCH], aliases=['ghf-12150102-1', 'ghf-12150101-1', 'ghf-11000101-1'])
-sc('P', 'ghf-15520101-1', '1552-01-01', '1552 – 1829', "Manorial leases", 'Llandough manorial leases', 'AB',
+sc('P', 'ghf-15450101-1', '1545-01-01', '1536 – 1793', "The lordship of the manor", 'Manor of Llandough', 'AB',
+   'Public record',
+   "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. In 1543 the Crown grants the manor to Lord Clinton and Say and Robert Turwitt; by 1545 it is held by Sir George Herbert of Swansea. The Western Mail letter says the Herberts hold it until the Earl of Bute buys it in 1793; Cardiff Records places it with William Hurst and others from 1767, and also dates Bute's purchase to 1793.",
+   [press('N04', "Western Mail, 'Grievous loss' (letter giving the manorial descent)", 'ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg'),
+    w('/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/', 'Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence')],
+   ledger={'W': 'Lordship of the manor: Sir George Herbert (by 1545) and his family'})
+sc('P', 'ghf-15520101-1', '1552-01-01', '1552 – 1824', "Manorial leases", 'Llandough manorial leases', 'AB',
    'Estate papers',
-   "The Llandough manorial leases, 1552–1829, list \"Cydfin Farm or Ty Mawr Farm (107 a.)\".",
+   "The National Library of Wales holds a Bute Estate bundle of Llandough manorial leases and agreements (D 219), dated 1552–1829 as a whole. Within it are leases of \"Cydfin Farm or Ty Mawr Farm (107 a.)\", dated 1552–1824.",
    [{'type': 'Estate papers', 'title': 'National Library of Wales, Bute Estate Records D 219: Llandough manorial leases and agreements, 1552–1829',
      'url': 'https://archives.library.wales/index.php/llandough-manorial-leases-and-agreements'},
     w('/great-house-farm/name-variations/', 'Name & Location Variations')],
    aliases=['ghf-15430101-1', 'ghf-15390101-1', 'ghf-15360101-1', 'ghf-14440101-1'],
-   ledger={'W': 'Manor of Llandough: Cydfin or Tŷ Mawr, 107 acres, on written leases'})
+   ledger={'W': 'Farm (Cydfin or Tŷ Mawr, 107 acres): leases on record 1552–1824 · lordship of the manor: the Herberts'})
 sc('P', 'ghf-15600101-1', '1560-01-01', 'Mid 16th – late 18th century', "The Vaughans", 'Great House Farm', 'AB',
    'Heritage record',
-   "From the mid-16th to the late 18th century the Vaughan family hold Great House, the chief freehold farm of the parish.",
-   [HER, press('N04', "Western Mail, 'Grievous loss' (letter tracing the descent)", 'ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg')],
-   ledger={'W': 'Freehold: the Vaughans (root traced via Tewkesbury Abbey, the Crown and the Herberts)'})
+   "From the mid-16th to the late 18th century the Vaughan family hold Great House as the chief freehold farm of the parish. The lordship of the manor is a separate interest, held over the same period by the Herberts.",
+   [HER],
+   ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts (a separate interest)'})
 sc('P', 'ghf-16670101-1', '1667-01-01', '1667', "The Williams family at Great House", 'Great House Farm', 'A',
    "Mary's statement",
    "Mary Williams's statement (c. 1974) records her family at Great House from 1667.",
    [MARY, w('/williams-buckler-family/', 'The Williams / Buckler Family — origins')],
    aliases=['ghf-16770101-1'],
-   ledger={'W': 'Freehold: the Vaughans · in the house: the Williamses'})
-sc('P', 'ghf-18000101-1', '1800-01-01', 'Early 19th century', "The Bute Estate", 'Great House', 'AB',
+   ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts · in the house: the Williamses'})
+sc('P', 'ghf-18000101-1', '1800-01-01', '1793 – early 19th century', "The Bute Estate", 'Great House', 'AB',
    'Heritage record',
-   "Early in the 19th century the Bute Estate acquires the freehold of Great House. The manorial courts of Llandough and Leckwith are held in the house.",
+   "In 1793 the Earl of Bute buys the lordship of the manor of Llandough. Early in the 19th century the Bute Estate also acquires the freehold of Great House. From then the lordship and the farm are held by the same owner. The manorial courts of Llandough and Leckwith are held in the house.",
    [HER, w('/bute-estate/', 'The Bute Estate'),
+    w('/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/', 'Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence'),
     {'type': 'Estate papers', 'title': 'National Library of Wales, Bute Estate Records R1: Glamorgan Estate rentals',
      'url': 'https://archives.library.wales/index.php/glamorgan-estate-rentals'},
     w('/great-house-farm/name-variations/', 'Name & Location Variations (Stewart survey, D/d B E/1–2)')],
    aliases=['ghf-17700101-1', 'ghf-17940101-1',
             'ghf-18180101-2', 'ghf-18180101-1', 'ghf-18200101-1', 'ghf-18210101-1', 'ghf-18240101-1'],
-   ledger={'W': 'Freehold: the Bute Estate · tenants: the Williamses'})
+   ledger={'W': 'Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses'})
 sc('P', 'ghf-18400101-1', '1840-01-01', 'c. 1840', "Great House Farm", 'Census and tithe records', 'AB',
    'Public record',
    "Census and tithe records begin to describe the house as \"Great House Farm\".",

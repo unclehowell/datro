@@ -429,15 +429,59 @@
    "moved": []
   },
   {
+   "id": "ghf-15450101-1",
+   "act": "P",
+   "date": "1545-01-01",
+   "when": "1536 – 1793",
+   "title": "The lordship of the manor",
+   "place": "Manor of Llandough",
+   "parcel": "AB",
+   "basis": "Public record",
+   "narration": "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. In 1543 the Crown grants the manor to Lord Clinton and Say and Robert Turwitt; by 1545 it is held by Sir George Herbert of Swansea. The Western Mail letter says the Herberts hold it until the Earl of Bute buys it in 1793; Cardiff Records places it with William Hurst and others from 1767, and also dates Bute's purchase to 1793.",
+   "case": null,
+   "evidence": [
+    {
+     "type": "Newspaper",
+     "title": "Western Mail, 'Grievous loss' (letter giving the manorial descent)",
+     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n04",
+     "image": "/media/ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg"
+    },
+    {
+     "type": "Wiki page",
+     "title": "Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence",
+     "url": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
+    }
+   ],
+   "image": null,
+   "aliases": [],
+   "no": 3,
+   "ref": "P.3",
+   "cast": [
+    "bute"
+   ],
+   "received": "The lord of the manor owned the farm.",
+   "received_words": [],
+   "known": "Lordship of a manor and ownership of a farm within it are separate interests. Over this period the Herberts held the lordship while the Vaughans held Great House as a freehold. The sources for the lordship are secondary (the Western Mail letter and Cardiff Records) and differ on 1767–1793; the Herbert estate papers have not yet been checked.",
+   "ledger": [
+    [
+     "W",
+     "Lordship of the manor: Sir George Herbert (by 1545) and his family"
+    ]
+   ],
+   "moved": [
+    "W"
+   ]
+  },
+  {
    "id": "ghf-15520101-1",
    "act": "P",
    "date": "1552-01-01",
-   "when": "1552 – 1829",
+   "when": "1552 – 1824",
    "title": "Manorial leases",
    "place": "Llandough manorial leases",
    "parcel": "AB",
    "basis": "Estate papers",
-   "narration": "The Llandough manorial leases, 1552–1829, list \"Cydfin Farm or Ty Mawr Farm (107 a.)\".",
+   "narration": "The National Library of Wales holds a Bute Estate bundle of Llandough manorial leases and agreements (D 219), dated 1552–1829 as a whole. Within it are leases of \"Cydfin Farm or Ty Mawr Farm (107 a.)\", dated 1552–1824.",
    "case": null,
    "evidence": [
     {
@@ -458,16 +502,18 @@
     "ghf-15360101-1",
     "ghf-14440101-1"
    ],
-   "no": 3,
-   "ref": "P.3",
-   "cast": [],
+   "no": 4,
+   "ref": "P.4",
+   "cast": [
+    "bute"
+   ],
    "received": "A farm let on ordinary leases.",
    "received_words": [],
-   "known": "The land had a continuous written record for nearly three centuries. Its title has a documented root.",
+   "known": "The farm is on written record from 1552. The 1829 end date belongs to the bundle as a whole, not to the farm, and no event in 1829 is recorded. The individual deeds have not yet been inspected; they should show who granted the leases and on what terms.",
    "ledger": [
     [
      "W",
-     "Manor of Llandough: Cydfin or Tŷ Mawr, 107 acres, on written leases"
+     "Farm (Cydfin or Tŷ Mawr, 107 acres): leases on record 1552–1824 · lordship of the manor: the Herberts"
     ]
    ],
    "moved": [
@@ -483,33 +529,27 @@
    "place": "Great House Farm",
    "parcel": "AB",
    "basis": "Heritage record",
-   "narration": "From the mid-16th to the late 18th century the Vaughan family hold Great House, the chief freehold farm of the parish.",
+   "narration": "From the mid-16th to the late 18th century the Vaughan family hold Great House as the chief freehold farm of the parish. The lordship of the manor is a separate interest, held over the same period by the Herberts.",
    "case": null,
    "evidence": [
     {
      "type": "Heritage record",
      "title": "Historic Environment Record GGAT 02038s (Archwilio)",
      "url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
-    },
-    {
-     "type": "Newspaper",
-     "title": "Western Mail, 'Grievous loss' (letter tracing the descent)",
-     "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n04",
-     "image": "/media/ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg"
     }
    ],
    "image": null,
    "aliases": [],
-   "no": 4,
-   "ref": "P.4",
+   "no": 5,
+   "ref": "P.5",
    "cast": [],
-   "received": "A gentry family's farm, later sold on.",
+   "received": "One chain of owners: the Herberts, then the Vaughans, then Bute.",
    "received_words": [],
-   "known": "The freehold chain of the land: traced in the Western Mail letter from Tewkesbury Abbey to the Crown and the Herberts, then the Vaughans, then Bute. Parcel A's title descends from this chain.",
+   "known": "Two separate lines. The lordship of the manor: Tewkesbury Abbey, the Crown, the Herberts from 1545, Bute from 1793. The ownership of the farm: a freehold within the manor, held by the Vaughans until the late 18th century and by Bute from the early 19th. How the farm passed from the Vaughans to Bute is not yet documented. Parcel A's title descends from the farm freehold, not from the lordship.",
    "ledger": [
     [
      "W",
-     "Freehold: the Vaughans (root traced via Tewkesbury Abbey, the Crown and the Herberts)"
+     "Farm freehold: the Vaughans · lordship of the manor: the Herberts (a separate interest)"
     ]
    ],
    "moved": [
@@ -543,8 +583,8 @@
    "aliases": [
     "ghf-16770101-1"
    ],
-   "no": 5,
-   "ref": "P.5",
+   "no": 6,
+   "ref": "P.6",
    "cast": [
     "mary"
    ],
@@ -559,7 +599,7 @@
    "ledger": [
     [
      "W",
-     "Freehold: the Vaughans · in the house: the Williamses"
+     "Farm freehold: the Vaughans · lordship of the manor: the Herberts · in the house: the Williamses"
     ]
    ],
    "moved": [
@@ -570,12 +610,12 @@
    "id": "ghf-18000101-1",
    "act": "P",
    "date": "1800-01-01",
-   "when": "Early 19th century",
+   "when": "1793 – early 19th century",
    "title": "The Bute Estate",
    "place": "Great House",
    "parcel": "AB",
    "basis": "Heritage record",
-   "narration": "Early in the 19th century the Bute Estate acquires the freehold of Great House. The manorial courts of Llandough and Leckwith are held in the house.",
+   "narration": "In 1793 the Earl of Bute buys the lordship of the manor of Llandough. Early in the 19th century the Bute Estate also acquires the freehold of Great House. From then the lordship and the farm are held by the same owner. The manorial courts of Llandough and Leckwith are held in the house.",
    "case": null,
    "evidence": [
     {
@@ -587,6 +627,11 @@
      "type": "Wiki page",
      "title": "The Bute Estate",
      "url": "https://greathousefarmwiki.wordpress.com/bute-estate/"
+    },
+    {
+     "type": "Wiki page",
+     "title": "Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence",
+     "url": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
     },
     {
      "type": "Estate papers",
@@ -609,18 +654,18 @@
     "ghf-18210101-1",
     "ghf-18240101-1"
    ],
-   "no": 6,
-   "ref": "P.6",
+   "no": 7,
+   "ref": "P.7",
    "cast": [
     "bute"
    ],
    "received": "Bute owned the farm, and everything after descends from Bute.",
    "received_words": [],
-   "known": "Bute owned the whole farm only until 1877. The house was the manor's court house.",
+   "known": "Bute held the lordship from 1793 and the farm freehold from the early 19th century: two interests, now in one hand. Bute owned the whole farm only until 1877. The house was the manor's court house.",
    "ledger": [
     [
      "W",
-     "Freehold: the Bute Estate · tenants: the Williamses"
+     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
     ]
    ],
    "moved": [
@@ -654,8 +699,8 @@
    "aliases": [
     "ghf-18800101-1"
    ],
-   "no": 7,
-   "ref": "P.7",
+   "no": 8,
+   "ref": "P.8",
    "cast": [],
    "received": "It was always just a farm.",
    "received_words": [
@@ -668,7 +713,7 @@
    "ledger": [
     [
      "W",
-     "Freehold: the Bute Estate · tenants: the Williamses"
+     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
     ]
    ],
    "moved": []
@@ -700,7 +745,7 @@
    "aliases": [
     "ghf-19311122-1"
    ],
-   "no": 8,
+   "no": 9,
    "ref": "I.1",
    "cast": [],
    "received": "A chance find, of no consequence.",
@@ -709,7 +754,7 @@
    "ledger": [
     [
      "W",
-     "Freehold: the Bute Estate · tenants: the Williamses"
+     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
     ]
    ],
    "moved": []
@@ -746,7 +791,7 @@
    "aliases": [
     "ghf-18800101-2"
    ],
-   "no": 9,
+   "no": 10,
    "ref": "I.2",
    "cast": [
     "rcahmw"
@@ -762,7 +807,7 @@
    "ledger": [
     [
      "W",
-     "Freehold: the Bute Estate · tenants: the Williamses"
+     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
     ]
    ],
    "moved": []
@@ -787,7 +832,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 10,
+   "no": 11,
    "ref": "I.3",
    "cast": [
     "bute"
@@ -798,7 +843,7 @@
    "ledger": [
     [
      "W",
-     "Freehold: the Bute Estate · tenants: the Williamses"
+     "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
     ]
    ],
    "moved": []
@@ -845,7 +890,7 @@
    "aliases": [
     "ghf-18771106-1"
    ],
-   "no": 11,
+   "no": 12,
    "ref": "I.4",
    "cast": [
     "mary",
@@ -891,7 +936,7 @@
    ],
    "image": "/media/ghf-e090-n01-1891-farmyard-theft.jpg",
    "aliases": [],
-   "no": 12,
+   "no": 13,
    "ref": "I.5",
    "cast": [
     "john"
@@ -932,7 +977,7 @@
    ],
    "image": "/media/ghf-e090-n02-1897-marconi-lavernock.jpg",
    "aliases": [],
-   "no": 13,
+   "no": 14,
    "ref": "I.6",
    "cast": [],
    "received": "An unproven family story.",
@@ -982,7 +1027,7 @@
    "aliases": [
     "ghf-19050223-1"
    ],
-   "no": 14,
+   "no": 15,
    "ref": "I.7",
    "cast": [
     "mary",
@@ -1038,7 +1083,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 15,
+   "no": 16,
    "ref": "I.8",
    "cast": [
     "mary"
@@ -1088,7 +1133,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 16,
+   "no": 17,
    "ref": "II.1",
    "cast": [
     "john",
@@ -1156,7 +1201,7 @@
    "aliases": [
     "ghf-19240515-1"
    ],
-   "no": 17,
+   "no": 18,
    "ref": "II.2",
    "cast": [
     "mary",
@@ -1165,7 +1210,7 @@
    ],
    "received": "Nothing happened in 1928. The tenancy of the whole farm carried on.",
    "received_words": [],
-   "known": "The bargain of 1877 came due. The quarrying ended, and the freehold of the house passed to the Williamses. From that day they never paid a penny to anyone for it again. Parcel A's chain was complete: the Vaughans, Bute, Daniel Thomas, the Williamses.",
+   "known": "The bargain of 1877 came due. The quarrying ended, and the freehold of the house passed to the Williamses. From that day they never paid a penny to anyone for it again. Parcel A's freehold chain was complete: the Vaughans, then Bute (by the early 19th century), then Daniel Thomas (1877), then the Williamses (1928).",
    "ledger": [
     [
      "A",
@@ -1217,7 +1262,7 @@
     "ghf-19100101-1",
     "ghf-19370101-1"
    ],
-   "no": 18,
+   "no": 19,
    "ref": "II.3",
    "cast": [
     "mary",
@@ -1267,7 +1312,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 19,
+   "no": 20,
    "ref": "II.4",
    "cast": [
     "bute",
@@ -1324,7 +1369,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 20,
+   "no": 21,
    "ref": "II.5",
    "cast": [
     "john",
@@ -1371,7 +1416,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 21,
+   "no": 22,
    "ref": "II.6",
    "cast": [],
    "received": "Not an event. The family were tenants throughout.",
@@ -1420,7 +1465,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 22,
+   "no": 23,
    "ref": "II.7",
    "cast": [
     "john",
@@ -1465,7 +1510,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 23,
+   "no": 24,
    "ref": "II.8",
    "cast": [
     "billy"
@@ -1519,7 +1564,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 24,
+   "no": 25,
    "ref": "III.1",
    "cast": [
     "john",
@@ -1578,7 +1623,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 25,
+   "no": 26,
    "ref": "III.2",
    "cast": [
     "mary"
@@ -1636,7 +1681,7 @@
    "aliases": [
     "ghf-19530101-1"
    ],
-   "no": 26,
+   "no": 27,
    "ref": "III.3",
    "cast": [
     "frederick"
@@ -1685,7 +1730,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 27,
+   "no": 28,
    "ref": "III.4",
    "cast": [
     "mary",
@@ -1750,7 +1795,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 28,
+   "no": 29,
    "ref": "III.5",
    "cast": [
     "mary",
@@ -1809,7 +1854,7 @@
    "aliases": [
     "ghf-19610329-1"
    ],
-   "no": 29,
+   "no": 30,
    "ref": "III.6",
    "cast": [
     "mary",
@@ -1874,7 +1919,7 @@
    "aliases": [
     "ghf-19630101-1"
    ],
-   "no": 30,
+   "no": 31,
    "ref": "III.7",
    "cast": [
     "frederick"
@@ -1923,7 +1968,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 31,
+   "no": 32,
    "ref": "III.8",
    "cast": [],
    "received": "Another offer refused by an occupier with no title.",
@@ -1979,7 +2024,7 @@
    "aliases": [
     "ghf-19680901-1"
    ],
-   "no": 32,
+   "no": 33,
    "ref": "III.9",
    "cast": [
     "eldest"
@@ -2023,7 +2068,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 33,
+   "no": 34,
    "ref": "III.10",
    "cast": [
     "mary",
@@ -2075,7 +2120,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 34,
+   "no": 35,
    "ref": "IV.1",
    "cast": [
     "wgr",
@@ -2140,7 +2185,7 @@
    "aliases": [
     "ghf-19700616-1"
    ],
-   "no": 35,
+   "no": 36,
    "ref": "IV.2",
    "cast": [
     "mary"
@@ -2196,7 +2241,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 36,
+   "no": 37,
    "ref": "IV.3",
    "cast": [
     "rcahmw"
@@ -2246,7 +2291,7 @@
    ],
    "image": "/media/ghf-e090-n03-1974-open-day-telegraph.jpg",
    "aliases": [],
-   "no": 37,
+   "no": 38,
    "ref": "IV.4",
    "cast": [
     "mary"
@@ -2300,7 +2345,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 38,
+   "no": 39,
    "ref": "IV.5",
    "cast": [
     "mary",
@@ -2366,7 +2411,7 @@
     "ghf-19741031-2",
     "ghf-19740919-1"
    ],
-   "no": 39,
+   "no": 40,
    "ref": "IV.6",
    "cast": [
     "mary",
@@ -2428,7 +2473,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 40,
+   "no": 41,
    "ref": "IV.7",
    "cast": [],
    "received": "A local antiquarian's objection.",
@@ -2470,7 +2515,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 41,
+   "no": 42,
    "ref": "IV.8",
    "cast": [
     "bp",
@@ -2523,7 +2568,7 @@
    ],
    "image": "/media/ghf-e090-n16-1980-hansard-rowlands.jpg",
    "aliases": [],
-   "no": 42,
+   "no": 43,
    "ref": "IV.9",
    "cast": [
     "wgr",
@@ -2590,7 +2635,7 @@
     "ghf-press-19800417-n05",
     "ghf-19830313-1"
    ],
-   "no": 43,
+   "no": 44,
    "ref": "IV.10",
    "cast": [
     "ggat"
@@ -2639,7 +2684,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 44,
+   "no": 45,
    "ref": "IV.11",
    "cast": [
     "mary",
@@ -2696,7 +2741,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 45,
+   "no": 46,
    "ref": "IV.12",
    "cast": [
     "bp"
@@ -2752,7 +2797,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 46,
+   "no": 47,
    "ref": "IV.13",
    "cast": [
     "mary"
@@ -2803,7 +2848,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 47,
+   "no": 48,
    "ref": "IV.14",
    "cast": [
     "hmlr"
@@ -2859,7 +2904,7 @@
    "aliases": [
     "ghf-19840113-1"
    ],
-   "no": 48,
+   "no": 49,
    "ref": "V.1",
    "cast": [
     "billy",
@@ -2918,7 +2963,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 49,
+   "no": 50,
    "ref": "V.2",
    "cast": [
     "mary",
@@ -2969,7 +3014,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 50,
+   "no": 51,
    "ref": "V.3",
    "cast": [
     "rcahmw"
@@ -3018,7 +3063,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 51,
+   "no": 52,
    "ref": "V.4",
    "cast": [],
    "received": "An administrative tidying of the register.",
@@ -3068,7 +3113,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 52,
+   "no": 53,
    "ref": "V.5",
    "cast": [
     "bp",
@@ -3125,7 +3170,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 53,
+   "no": 54,
    "ref": "V.6",
    "cast": [
     "courts"
@@ -3173,7 +3218,7 @@
    "aliases": [
     "ghf-press-n15-01"
    ],
-   "no": 54,
+   "no": 55,
    "ref": "VI.1",
    "cast": [
     "billy"
@@ -3222,7 +3267,7 @@
     "ghf-press-n07",
     "ghf-press-n15-02"
    ],
-   "no": 55,
+   "no": 56,
    "ref": "VI.2",
    "cast": [
     "mary",
@@ -3281,7 +3326,7 @@
     "ghf-press-n15-03",
     "ghf-19880503-1"
    ],
-   "no": 56,
+   "no": 57,
    "ref": "VI.3",
    "cast": [
     "billy",
@@ -3334,7 +3379,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 57,
+   "no": 58,
    "ref": "VI.4",
    "cast": [
     "cadw"
@@ -3390,7 +3435,7 @@
     "ghf-press-n15-04",
     "ghf-press-n09"
    ],
-   "no": 58,
+   "no": 59,
    "ref": "VI.5",
    "cast": [
     "billy"
@@ -3445,7 +3490,7 @@
    "aliases": [
     "ghf-press-n15-11"
    ],
-   "no": 59,
+   "no": 60,
    "ref": "VI.6",
    "cast": [
     "mary"
@@ -3494,7 +3539,7 @@
     "ghf-press-n15-05",
     "ghf-press-n08"
    ],
-   "no": 60,
+   "no": 61,
    "ref": "VI.7",
    "cast": [
     "bp",
@@ -3544,7 +3589,7 @@
     "ghf-press-n15-06",
     "ghf-press-n15-10"
    ],
-   "no": 61,
+   "no": 62,
    "ref": "VI.8",
    "cast": [
     "billy"
@@ -3589,7 +3634,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 62,
+   "no": 63,
    "ref": "VI.9",
    "cast": [
     "cadw"
@@ -3632,7 +3677,7 @@
    "aliases": [
     "ghf-press-n10"
    ],
-   "no": 63,
+   "no": 64,
    "ref": "VI.10",
    "cast": [
     "cadw",
@@ -3699,7 +3744,7 @@
     "ghf-press-n15-12",
     "ghf-19881211-1"
    ],
-   "no": 64,
+   "no": 65,
    "ref": "VI.11",
    "cast": [],
    "received": "An old farmhouse of no special merit was cleared for housing.",
@@ -3766,7 +3811,7 @@
     "ghf-press-n15-08",
     "ghf-press-n15-09"
    ],
-   "no": 65,
+   "no": 66,
    "ref": "VI.12",
    "cast": [
     "billy"
@@ -3811,7 +3856,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 66,
+   "no": 67,
    "ref": "VI.13",
    "cast": [
     "rcahmw"
@@ -3853,7 +3898,7 @@
    "aliases": [
     "ghf-press-n15-14"
    ],
-   "no": 67,
+   "no": 68,
    "ref": "VII.1",
    "cast": [],
    "received": null,
@@ -3912,7 +3957,7 @@
     "ghf-19890115-1",
     "ghf-press-n15-13"
    ],
-   "no": 68,
+   "no": 69,
    "ref": "VII.2",
    "cast": [
     "billy"
@@ -3953,7 +3998,7 @@
    ],
    "image": "/media/ghf-e090-n13-1989-farm-to-bus.jpg",
    "aliases": [],
-   "no": 69,
+   "no": 70,
    "ref": "VII.3",
    "cast": [
     "billy"
@@ -3998,7 +4043,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 70,
+   "no": 71,
    "ref": "VII.4",
    "cast": [],
    "received": "Strasbourg confirmed the eviction was lawful and the property was BP's.",
@@ -4054,7 +4099,7 @@
     "ghf-19891108-1",
     "ghf-19891010-1"
    ],
-   "no": 71,
+   "no": 72,
    "ref": "VII.5",
    "cast": [
     "bp",
@@ -4102,7 +4147,7 @@
    "aliases": [
     "ghf-19900208-1"
    ],
-   "no": 72,
+   "no": 73,
    "ref": "VII.6",
    "cast": [
     "ggat"
@@ -4159,7 +4204,7 @@
    "aliases": [
     "ghf-19901015-1"
    ],
-   "no": 73,
+   "no": 74,
    "ref": "VII.7",
    "cast": [
     "bp",
@@ -4205,7 +4250,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 74,
+   "no": 75,
    "ref": "VII.8",
    "cast": [],
    "received": null,
@@ -4243,7 +4288,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 75,
+   "no": 76,
    "ref": "VII.9",
    "cast": [
     "ideal"
@@ -4283,7 +4328,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 76,
+   "no": 77,
    "ref": "VII.10",
    "cast": [
     "billy"
@@ -4325,7 +4370,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 77,
+   "no": 78,
    "ref": "VII.11",
    "cast": [
     "ggat"
@@ -4370,7 +4415,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 78,
+   "no": 79,
    "ref": "VII.12",
    "cast": [],
    "received": null,
@@ -4425,7 +4470,7 @@
    "aliases": [
     "ghf-19931213-1"
    ],
-   "no": 79,
+   "no": 80,
    "ref": "VII.13",
    "cast": [
     "bp",
@@ -4481,7 +4526,7 @@
    "aliases": [
     "ghf-19940421-1"
    ],
-   "no": 80,
+   "no": 81,
    "ref": "VII.14",
    "cast": [],
    "received": "A successful rescue excavation.",
@@ -4529,7 +4574,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 81,
+   "no": 82,
    "ref": "VII.15",
    "cast": [
     "ideal"
@@ -4586,7 +4631,7 @@
    "aliases": [
     "ghf-19950628-1"
    ],
-   "no": 82,
+   "no": 83,
    "ref": "VII.16",
    "cast": [],
    "received": null,
@@ -4639,7 +4684,7 @@
    "aliases": [
     "ghf-20051222-1"
    ],
-   "no": 83,
+   "no": 84,
    "ref": "VII.17",
    "cast": [],
    "received": null,
@@ -4677,7 +4722,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 84,
+   "no": 85,
    "ref": "VII.18",
    "cast": [
     "ggat"
@@ -4719,7 +4764,7 @@
    "aliases": [
     "ghf-20260123-1"
    ],
-   "no": 85,
+   "no": 86,
    "ref": "VIII.1",
    "cast": [
     "mary",
@@ -4769,7 +4814,7 @@
    "aliases": [
     "ghf-20260213-1"
    ],
-   "no": 86,
+   "no": 87,
    "ref": "VIII.2",
    "cast": [
     "hmlr"
@@ -4814,7 +4859,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 87,
+   "no": 88,
    "ref": "VIII.3",
    "cast": [
     "hmlr"
@@ -4872,7 +4917,7 @@
    ],
    "image": "/media/1988-cadw-barn.jpg",
    "aliases": [],
-   "no": 88,
+   "no": 89,
    "ref": "VIII.4",
    "cast": [
     "cadw"
@@ -4924,7 +4969,7 @@
    "aliases": [
     "ghf-20260602-1"
    ],
-   "no": 89,
+   "no": 90,
    "ref": "VIII.5",
    "cast": [
     "hmlr"
@@ -4964,7 +5009,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 90,
+   "no": 91,
    "ref": "VIII.6",
    "cast": [],
    "received": null,
@@ -5007,7 +5052,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 91,
+   "no": 92,
    "ref": "VIII.7",
    "cast": [
     "bute"
@@ -5059,7 +5104,7 @@
    "aliases": [
     "ghf-20260918-1"
    ],
-   "no": 92,
+   "no": 93,
    "ref": "VIII.8",
    "cast": [
     "hmlr",
@@ -5102,7 +5147,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 93,
+   "no": 94,
    "ref": "VIII.9",
    "cast": [
     "bp",
@@ -5148,7 +5193,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 94,
+   "no": 95,
    "ref": "VIII.10",
    "cast": [],
    "received": null,
@@ -5191,7 +5236,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 95,
+   "no": 96,
    "ref": "VIII.11",
    "cast": [
     "hmlr",
@@ -5244,7 +5289,7 @@
    "aliases": [
     "ghf-20261005-1"
    ],
-   "no": 96,
+   "no": 97,
    "ref": "VIII.12",
    "cast": [
     "rcahmw"
@@ -5307,7 +5352,7 @@
     "ghf-20260922-1",
     "ghf-20261003-1"
    ],
-   "no": 97,
+   "no": 98,
    "ref": "VIII.13",
    "cast": [],
    "received": null,
@@ -5350,7 +5395,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 98,
+   "no": 99,
    "ref": "O.1",
    "cast": [],
    "received": "A squatter was evicted after losing in court.",
@@ -5403,7 +5448,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 99,
+   "no": 100,
    "ref": "O.2",
    "cast": [
     "mary"
@@ -5453,7 +5498,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 100,
+   "no": 101,
    "ref": "O.3",
    "cast": [
     "wgr",
@@ -5499,7 +5544,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 101,
+   "no": 102,
    "ref": "O.4",
    "cast": [
     "bp"
@@ -5549,7 +5594,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 102,
+   "no": 103,
    "ref": "O.5",
    "cast": [
     "courts"
@@ -5605,7 +5650,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 103,
+   "no": 104,
    "ref": "O.6",
    "cast": [
     "billy"
@@ -5656,7 +5701,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 104,
+   "no": 105,
    "ref": "O.7",
    "cast": [],
    "received": "An old building was cleared for housing.",
@@ -5710,7 +5755,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 105,
+   "no": 106,
    "ref": "O.8",
    "cast": [
     "mps"
@@ -5755,7 +5800,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 106,
+   "no": 107,
    "ref": "O.9",
    "cast": [
     "mary"
@@ -5806,7 +5851,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 107,
+   "no": 108,
    "ref": "O.10",
    "cast": [
     "cadw"
@@ -5856,7 +5901,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 108,
+   "no": 109,
    "ref": "O.11",
    "cast": [
     "mary",
@@ -5912,7 +5957,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 109,
+   "no": 110,
    "ref": "E.1",
    "cast": [],
    "received": "A landlord and its successors recovered their farm from tenants who stayed on without paying, and the courts confirmed it.",
@@ -5986,7 +6031,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 110,
+   "no": 111,
    "ref": "E.2",
    "cast": [],
    "received": "It was always one farm, and nobody suggested otherwise.",
@@ -6043,7 +6088,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 111,
+   "no": 112,
    "ref": "E.3",
    "cast": [],
    "received": "A modern estate on a former farm.",
@@ -6086,7 +6131,7 @@
    ],
    "image": null,
    "aliases": [],
-   "no": 112,
+   "no": 113,
    "ref": "E.4",
    "cast": [],
    "received": null,
@@ -6129,7 +6174,7 @@
    ],
    "image": "/media/1988-cadw-farmhouse.jpg",
    "aliases": [],
-   "no": 113,
+   "no": 114,
    "ref": "E.5",
    "cast": [],
    "received": null,

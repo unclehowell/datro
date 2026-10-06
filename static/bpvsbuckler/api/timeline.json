@@ -19,9 +19,9 @@
     "transcript": "https://bpvsbuckler.bucklerfamily.estate/story/transcript.txt",
     "llms": "https://bpvsbuckler.bucklerfamily.estate/llms.txt"
   },
-  "version": "v0.0.0.57",
+  "version": "v0.0.0.58",
   "last_updated": "2026-10-06",
-  "total_entries": 113,
+  "total_entries": 114,
   "acts": [
     {
       "id": "P",
@@ -373,26 +373,70 @@
     {
       "order": 3,
       "ref": "P.3",
+      "id": "ghf-15450101-1",
+      "act": "P",
+      "date": "1545-01-01",
+      "when": "1536 – 1793",
+      "title": "The lordship of the manor",
+      "place": "Manor of Llandough",
+      "parcel": "AB",
+      "basis": "Public record",
+      "narration": "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. In 1543 the Crown grants the manor to Lord Clinton and Say and Robert Turwitt; by 1545 it is held by Sir George Herbert of Swansea. The Western Mail letter says the Herberts hold it until the Earl of Bute buys it in 1793; Cardiff Records places it with William Hurst and others from 1767, and also dates Bute's purchase to 1793.",
+      "family_case": null,
+      "title_ledger": {
+        "Great House (one farm)": "Lordship of the manor: Sir George Herbert (by 1545) and his family"
+      },
+      "title_moves": [
+        "Great House (one farm)"
+      ],
+      "received_account": "The lord of the manor owned the farm.",
+      "received_wording": [],
+      "what_we_now_know": "Lordship of a manor and ownership of a farm within it are separate interests. Over this period the Herberts held the lordship while the Vaughans held Great House as a freehold. The sources for the lordship are secondary (the Western Mail letter and Cardiff Records) and differ on 1767–1793; the Herbert estate papers have not yet been checked.",
+      "cast": [
+        "bute"
+      ],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "Western Mail, 'Grievous loss' (letter giving the manorial descent)",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n04",
+          "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg"
+        },
+        {
+          "type": "Wiki page",
+          "title": "Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence",
+          "url": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-15450101-1"
+    },
+    {
+      "order": 4,
+      "ref": "P.4",
       "id": "ghf-15520101-1",
       "act": "P",
       "date": "1552-01-01",
-      "when": "1552 – 1829",
+      "when": "1552 – 1824",
       "title": "Manorial leases",
       "place": "Llandough manorial leases",
       "parcel": "AB",
       "basis": "Estate papers",
-      "narration": "The Llandough manorial leases, 1552–1829, list \"Cydfin Farm or Ty Mawr Farm (107 a.)\".",
+      "narration": "The National Library of Wales holds a Bute Estate bundle of Llandough manorial leases and agreements (D 219), dated 1552–1829 as a whole. Within it are leases of \"Cydfin Farm or Ty Mawr Farm (107 a.)\", dated 1552–1824.",
       "family_case": null,
       "title_ledger": {
-        "Great House (one farm)": "Manor of Llandough: Cydfin or Tŷ Mawr, 107 acres, on written leases"
+        "Great House (one farm)": "Farm (Cydfin or Tŷ Mawr, 107 acres): leases on record 1552–1824 · lordship of the manor: the Herberts"
       },
       "title_moves": [
         "Great House (one farm)"
       ],
       "received_account": "A farm let on ordinary leases.",
       "received_wording": [],
-      "what_we_now_know": "The land had a continuous written record for nearly three centuries. Its title has a documented root.",
-      "cast": [],
+      "what_we_now_know": "The farm is on written record from 1552. The 1829 end date belongs to the bundle as a whole, not to the farm, and no event in 1829 is recorded. The individual deeds have not yet been inspected; they should show who granted the leases and on what terms.",
+      "cast": [
+        "bute"
+      ],
       "evidence": [
         {
           "type": "Estate papers",
@@ -415,8 +459,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-15520101-1"
     },
     {
-      "order": 4,
-      "ref": "P.4",
+      "order": 5,
+      "ref": "P.5",
       "id": "ghf-15600101-1",
       "act": "P",
       "date": "1560-01-01",
@@ -425,29 +469,23 @@
       "place": "Great House Farm",
       "parcel": "AB",
       "basis": "Heritage record",
-      "narration": "From the mid-16th to the late 18th century the Vaughan family hold Great House, the chief freehold farm of the parish.",
+      "narration": "From the mid-16th to the late 18th century the Vaughan family hold Great House as the chief freehold farm of the parish. The lordship of the manor is a separate interest, held over the same period by the Herberts.",
       "family_case": null,
       "title_ledger": {
-        "Great House (one farm)": "Freehold: the Vaughans (root traced via Tewkesbury Abbey, the Crown and the Herberts)"
+        "Great House (one farm)": "Farm freehold: the Vaughans · lordship of the manor: the Herberts (a separate interest)"
       },
       "title_moves": [
         "Great House (one farm)"
       ],
-      "received_account": "A gentry family's farm, later sold on.",
+      "received_account": "One chain of owners: the Herberts, then the Vaughans, then Bute.",
       "received_wording": [],
-      "what_we_now_know": "The freehold chain of the land: traced in the Western Mail letter from Tewkesbury Abbey to the Crown and the Herberts, then the Vaughans, then Bute. Parcel A's title descends from this chain.",
+      "what_we_now_know": "Two separate lines. The lordship of the manor: Tewkesbury Abbey, the Crown, the Herberts from 1545, Bute from 1793. The ownership of the farm: a freehold within the manor, held by the Vaughans until the late 18th century and by Bute from the early 19th. How the farm passed from the Vaughans to Bute is not yet documented. Parcel A's title descends from the farm freehold, not from the lordship.",
       "cast": [],
       "evidence": [
         {
           "type": "Heritage record",
           "title": "Historic Environment Record GGAT 02038s (Archwilio)",
           "url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
-        },
-        {
-          "type": "Newspaper",
-          "title": "Western Mail, 'Grievous loss' (letter tracing the descent)",
-          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n04",
-          "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg"
         }
       ],
       "image": null,
@@ -455,8 +493,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-15600101-1"
     },
     {
-      "order": 5,
-      "ref": "P.5",
+      "order": 6,
+      "ref": "P.6",
       "id": "ghf-16670101-1",
       "act": "P",
       "date": "1667-01-01",
@@ -468,7 +506,7 @@
       "narration": "Mary Williams's statement (c. 1974) records her family at Great House from 1667.",
       "family_case": null,
       "title_ledger": {
-        "Great House (one farm)": "Freehold: the Vaughans · in the house: the Williamses"
+        "Great House (one farm)": "Farm freehold: the Vaughans · lordship of the manor: the Herberts · in the house: the Williamses"
       },
       "title_moves": [
         "Great House (one farm)"
@@ -503,27 +541,27 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-16670101-1"
     },
     {
-      "order": 6,
-      "ref": "P.6",
+      "order": 7,
+      "ref": "P.7",
       "id": "ghf-18000101-1",
       "act": "P",
       "date": "1800-01-01",
-      "when": "Early 19th century",
+      "when": "1793 – early 19th century",
       "title": "The Bute Estate",
       "place": "Great House",
       "parcel": "AB",
       "basis": "Heritage record",
-      "narration": "Early in the 19th century the Bute Estate acquires the freehold of Great House. The manorial courts of Llandough and Leckwith are held in the house.",
+      "narration": "In 1793 the Earl of Bute buys the lordship of the manor of Llandough. Early in the 19th century the Bute Estate also acquires the freehold of Great House. From then the lordship and the farm are held by the same owner. The manorial courts of Llandough and Leckwith are held in the house.",
       "family_case": null,
       "title_ledger": {
-        "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
+        "Great House (one farm)": "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [
         "Great House (one farm)"
       ],
       "received_account": "Bute owned the farm, and everything after descends from Bute.",
       "received_wording": [],
-      "what_we_now_know": "Bute owned the whole farm only until 1877. The house was the manor's court house.",
+      "what_we_now_know": "Bute held the lordship from 1793 and the farm freehold from the early 19th century: two interests, now in one hand. Bute owned the whole farm only until 1877. The house was the manor's court house.",
       "cast": [
         "bute"
       ],
@@ -537,6 +575,11 @@
           "type": "Wiki page",
           "title": "The Bute Estate",
           "url": "https://greathousefarmwiki.wordpress.com/bute-estate/"
+        },
+        {
+          "type": "Wiki page",
+          "title": "Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence",
+          "url": "https://greathousefarmwiki.wordpress.com/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/"
         },
         {
           "type": "Estate papers",
@@ -562,8 +605,8 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18000101-1"
     },
     {
-      "order": 7,
-      "ref": "P.7",
+      "order": 8,
+      "ref": "P.8",
       "id": "ghf-18400101-1",
       "act": "P",
       "date": "1840-01-01",
@@ -575,7 +618,7 @@
       "narration": "Census and tithe records begin to describe the house as \"Great House Farm\".",
       "family_case": null,
       "title_ledger": {
-        "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
+        "Great House (one farm)": "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
       "received_account": "It was always just a farm.",
@@ -606,7 +649,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18400101-1"
     },
     {
-      "order": 8,
+      "order": 9,
       "ref": "I.1",
       "id": "ghf-18580101-1",
       "act": "I",
@@ -619,7 +662,7 @@
       "narration": "Workmen at Llandough Church Farm find about six skeletons, a medieval spearhead and a spur. The bones are reburied by the church stile.",
       "family_case": null,
       "title_ledger": {
-        "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
+        "Great House (one farm)": "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
       "received_account": "A chance find, of no consequence.",
@@ -645,7 +688,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18580101-1"
     },
     {
-      "order": 9,
+      "order": 10,
       "ref": "I.2",
       "id": "ghf-18700101-1",
       "act": "I",
@@ -658,7 +701,7 @@
       "narration": "Family tradition records a soldier in armour found beneath the dining-room floor. The Daily Telegraph (1974) and the Royal Commission (1988) record the account.",
       "family_case": null,
       "title_ledger": {
-        "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
+        "Great House (one farm)": "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
       "received_account": "Family folklore.",
@@ -696,7 +739,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18700101-1"
     },
     {
-      "order": 10,
+      "order": 11,
       "ref": "I.3",
       "id": "ghf-18760101-1",
       "act": "I",
@@ -709,7 +752,7 @@
       "narration": "The Bute Estate lets about 33 acres of the farm to the Llandough Limeworks, which work it until about 1912.",
       "family_case": null,
       "title_ledger": {
-        "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
+        "Great House (one farm)": "Lordship of the manor (1793) and farm freehold (early 19th century): the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
       "received_account": "Part of the farm let for quarrying.",
@@ -730,7 +773,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18760101-1"
     },
     {
-      "order": 11,
+      "order": 12,
       "ref": "I.4",
       "id": "ghf-18770101-1",
       "act": "I",
@@ -792,7 +835,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18770101-1"
     },
     {
-      "order": 12,
+      "order": 13,
       "ref": "I.5",
       "id": "ghf-18911111-1",
       "act": "I",
@@ -828,7 +871,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18911111-1"
     },
     {
-      "order": 13,
+      "order": 14,
       "ref": "I.6",
       "id": "ghf-18970501-1",
       "act": "I",
@@ -862,7 +905,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-18970501-1"
     },
     {
-      "order": 14,
+      "order": 15,
       "ref": "I.7",
       "id": "ghf-19080101-1",
       "act": "I",
@@ -920,7 +963,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19080101-1"
     },
     {
-      "order": 15,
+      "order": 16,
       "ref": "I.8",
       "id": "ghf-19130810-1",
       "act": "I",
@@ -960,7 +1003,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19130810-1"
     },
     {
-      "order": 16,
+      "order": 17,
       "ref": "II.1",
       "id": "ghf-19160201-1",
       "act": "II",
@@ -1018,7 +1061,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19160201-1"
     },
     {
-      "order": 17,
+      "order": 18,
       "ref": "II.2",
       "id": "ghf-19280101-1",
       "act": "II",
@@ -1040,7 +1083,7 @@
       ],
       "received_account": "Nothing happened in 1928. The tenancy of the whole farm carried on.",
       "received_wording": [],
-      "what_we_now_know": "The bargain of 1877 came due. The quarrying ended, and the freehold of the house passed to the Williamses. From that day they never paid a penny to anyone for it again. Parcel A's chain was complete: the Vaughans, Bute, Daniel Thomas, the Williamses.",
+      "what_we_now_know": "The bargain of 1877 came due. The quarrying ended, and the freehold of the house passed to the Williamses. From that day they never paid a penny to anyone for it again. Parcel A's freehold chain was complete: the Vaughans, then Bute (by the early 19th century), then Daniel Thomas (1877), then the Williamses (1928).",
       "cast": [
         "mary",
         "john",
@@ -1070,7 +1113,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19280101-1"
     },
     {
-      "order": 18,
+      "order": 19,
       "ref": "II.3",
       "id": "ghf-19360101-1",
       "act": "II",
@@ -1120,7 +1163,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19360101-1"
     },
     {
-      "order": 19,
+      "order": 20,
       "ref": "II.4",
       "id": "ghf-19380101-1",
       "act": "II",
@@ -1169,7 +1212,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19380101-1"
     },
     {
-      "order": 20,
+      "order": 21,
       "ref": "II.5",
       "id": "ghf-19390501-1",
       "act": "II",
@@ -1213,7 +1256,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19390501-1"
     },
     {
-      "order": 21,
+      "order": 22,
       "ref": "II.6",
       "id": "ghf-19400101-1",
       "act": "II",
@@ -1249,7 +1292,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19400101-1"
     },
     {
-      "order": 22,
+      "order": 23,
       "ref": "II.7",
       "id": "ghf-19440101-1",
       "act": "II",
@@ -1291,7 +1334,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19440101-1"
     },
     {
-      "order": 23,
+      "order": 24,
       "ref": "II.8",
       "id": "ghf-19480101-1",
       "act": "II",
@@ -1327,7 +1370,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19480101-1"
     },
     {
-      "order": 24,
+      "order": 25,
       "ref": "III.1",
       "id": "ghf-19490202-1",
       "act": "III",
@@ -1383,7 +1426,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19490202-1"
     },
     {
-      "order": 25,
+      "order": 26,
       "ref": "III.2",
       "id": "ghf-19500601-1",
       "act": "III",
@@ -1431,7 +1474,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19500601-1"
     },
     {
-      "order": 26,
+      "order": 27,
       "ref": "III.3",
       "id": "ghf-19521010-1",
       "act": "III",
@@ -1474,7 +1517,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19521010-1"
     },
     {
-      "order": 27,
+      "order": 28,
       "ref": "III.4",
       "id": "ghf-19550202-1",
       "act": "III",
@@ -1531,7 +1574,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19550202-1"
     },
     {
-      "order": 28,
+      "order": 29,
       "ref": "III.5",
       "id": "ghf-19590101-1",
       "act": "III",
@@ -1580,7 +1623,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19590101-1"
     },
     {
-      "order": 29,
+      "order": 30,
       "ref": "III.6",
       "id": "ghf-19621211-1",
       "act": "III",
@@ -1637,7 +1680,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19621211-1"
     },
     {
-      "order": 30,
+      "order": 31,
       "ref": "III.7",
       "id": "ghf-19630601-1",
       "act": "III",
@@ -1680,7 +1723,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19630601-1"
     },
     {
-      "order": 31,
+      "order": 32,
       "ref": "III.8",
       "id": "ghf-19650301-1",
       "act": "III",
@@ -1726,7 +1769,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19650301-1"
     },
     {
-      "order": 32,
+      "order": 33,
       "ref": "III.9",
       "id": "ghf-19640101-1",
       "act": "III",
@@ -1769,7 +1812,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19640101-1"
     },
     {
-      "order": 33,
+      "order": 34,
       "ref": "III.10",
       "id": "ghf-19670101-1",
       "act": "III",
@@ -1813,7 +1856,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19670101-1"
     },
     {
-      "order": 34,
+      "order": 35,
       "ref": "IV.1",
       "id": "ghf-19691231-1",
       "act": "IV",
@@ -1863,7 +1906,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19691231-1"
     },
     {
-      "order": 35,
+      "order": 36,
       "ref": "IV.2",
       "id": "ghf-19720725-1",
       "act": "IV",
@@ -1913,7 +1956,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19720725-1"
     },
     {
-      "order": 36,
+      "order": 37,
       "ref": "IV.3",
       "id": "ghf-19740101-1",
       "act": "IV",
@@ -1954,7 +1997,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19740101-1"
     },
     {
-      "order": 37,
+      "order": 38,
       "ref": "IV.4",
       "id": "ghf-19740415-1",
       "act": "IV",
@@ -2001,7 +2044,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19740415-1"
     },
     {
-      "order": 38,
+      "order": 39,
       "ref": "IV.5",
       "id": "ghf-19740703-1",
       "act": "IV",
@@ -2051,7 +2094,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19740703-1"
     },
     {
-      "order": 39,
+      "order": 40,
       "ref": "IV.6",
       "id": "ghf-19741031-1",
       "act": "IV",
@@ -2112,7 +2155,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19741031-1"
     },
     {
-      "order": 40,
+      "order": 41,
       "ref": "IV.7",
       "id": "ghf-19741119-1",
       "act": "IV",
@@ -2152,7 +2195,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19741119-1"
     },
     {
-      "order": 41,
+      "order": 42,
       "ref": "IV.8",
       "id": "ghf-19750523-1",
       "act": "IV",
@@ -2196,7 +2239,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19750523-1"
     },
     {
-      "order": 42,
+      "order": 43,
       "ref": "IV.9",
       "id": "ghf-19800522-1",
       "act": "IV",
@@ -2235,7 +2278,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19800522-1"
     },
     {
-      "order": 43,
+      "order": 44,
       "ref": "IV.10",
       "id": "ghf-19821001-1",
       "act": "IV",
@@ -2292,7 +2335,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19821001-1"
     },
     {
-      "order": 44,
+      "order": 45,
       "ref": "IV.11",
       "id": "ghf-19821119-1",
       "act": "IV",
@@ -2341,7 +2384,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19821119-1"
     },
     {
-      "order": 45,
+      "order": 46,
       "ref": "IV.12",
       "id": "ghf-19830223-1",
       "act": "IV",
@@ -2389,7 +2432,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19830223-1"
     },
     {
-      "order": 46,
+      "order": 47,
       "ref": "IV.13",
       "id": "ghf-19830326-1",
       "act": "IV",
@@ -2437,7 +2480,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19830326-1"
     },
     {
-      "order": 47,
+      "order": 48,
       "ref": "IV.14",
       "id": "ghf-19830408-1",
       "act": "IV",
@@ -2473,7 +2516,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19830408-1"
     },
     {
-      "order": 48,
+      "order": 49,
       "ref": "V.1",
       "id": "ghf-19840522-1",
       "act": "V",
@@ -2531,7 +2574,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19840522-1"
     },
     {
-      "order": 49,
+      "order": 50,
       "ref": "V.2",
       "id": "ghf-19860710-1",
       "act": "V",
@@ -2579,7 +2622,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19860710-1"
     },
     {
-      "order": 50,
+      "order": 51,
       "ref": "V.3",
       "id": "ghf-19860711-1",
       "act": "V",
@@ -2615,7 +2658,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19860711-1"
     },
     {
-      "order": 51,
+      "order": 52,
       "ref": "V.4",
       "id": "ghf-19870202-1",
       "act": "V",
@@ -2660,7 +2703,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19870202-1"
     },
     {
-      "order": 52,
+      "order": 53,
       "ref": "V.5",
       "id": "ghf-19870731-1",
       "act": "V",
@@ -2717,7 +2760,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19870731-1"
     },
     {
-      "order": 53,
+      "order": 54,
       "ref": "V.6",
       "id": "ghf-19880303-1",
       "act": "V",
@@ -2752,7 +2795,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880303-1"
     },
     {
-      "order": 54,
+      "order": 55,
       "ref": "VI.1",
       "id": "ghf-19880429-1",
       "act": "VI",
@@ -2795,7 +2838,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880429-1"
     },
     {
-      "order": 55,
+      "order": 56,
       "ref": "VI.2",
       "id": "ghf-19880429-2",
       "act": "VI",
@@ -2850,7 +2893,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880429-2"
     },
     {
-      "order": 56,
+      "order": 57,
       "ref": "VI.3",
       "id": "ghf-19880512-1",
       "act": "VI",
@@ -2894,7 +2937,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880512-1"
     },
     {
-      "order": 57,
+      "order": 58,
       "ref": "VI.4",
       "id": "ghf-19880729-1",
       "act": "VI",
@@ -2941,7 +2984,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19880729-1"
     },
     {
-      "order": 58,
+      "order": 59,
       "ref": "VI.5",
       "id": "ghf-19881130-1",
       "act": "VI",
@@ -3000,7 +3043,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881130-1"
     },
     {
-      "order": 59,
+      "order": 60,
       "ref": "VI.6",
       "id": "ghf-19881201-1",
       "act": "VI",
@@ -3042,7 +3085,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881201-1"
     },
     {
-      "order": 60,
+      "order": 61,
       "ref": "VI.7",
       "id": "ghf-19881202-1",
       "act": "VI",
@@ -3087,7 +3130,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881202-1"
     },
     {
-      "order": 61,
+      "order": 62,
       "ref": "VI.8",
       "id": "ghf-19881209-1",
       "act": "VI",
@@ -3131,7 +3174,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881209-1"
     },
     {
-      "order": 62,
+      "order": 63,
       "ref": "VI.9",
       "id": "ghf-19881203-1",
       "act": "VI",
@@ -3171,7 +3214,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881203-1"
     },
     {
-      "order": 63,
+      "order": 64,
       "ref": "VI.10",
       "id": "ghf-19881205-1",
       "act": "VI",
@@ -3215,7 +3258,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881205-1"
     },
     {
-      "order": 64,
+      "order": 65,
       "ref": "VI.11",
       "id": "ghf-19881206-1",
       "act": "VI",
@@ -3280,7 +3323,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881206-1"
     },
     {
-      "order": 65,
+      "order": 66,
       "ref": "VI.12",
       "id": "ghf-19881208-1",
       "act": "VI",
@@ -3333,7 +3376,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881208-1"
     },
     {
-      "order": 66,
+      "order": 67,
       "ref": "VI.13",
       "id": "ghf-19881212-1",
       "act": "VI",
@@ -3373,7 +3416,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19881212-1"
     },
     {
-      "order": 67,
+      "order": 68,
       "ref": "VII.1",
       "id": "ghf-19890320-1",
       "act": "VII",
@@ -3408,7 +3451,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890320-1"
     },
     {
-      "order": 68,
+      "order": 69,
       "ref": "VII.2",
       "id": "ghf-19890323-1",
       "act": "VII",
@@ -3464,7 +3507,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890323-1"
     },
     {
-      "order": 69,
+      "order": 70,
       "ref": "VII.3",
       "id": "ghf-19890325-1",
       "act": "VII",
@@ -3500,7 +3543,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890325-1"
     },
     {
-      "order": 70,
+      "order": 71,
       "ref": "VII.4",
       "id": "ghf-19890414-1",
       "act": "VII",
@@ -3543,7 +3586,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19890414-1"
     },
     {
-      "order": 71,
+      "order": 72,
       "ref": "VII.5",
       "id": "ghf-19891107-1",
       "act": "VII",
@@ -3592,7 +3635,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19891107-1"
     },
     {
-      "order": 72,
+      "order": 73,
       "ref": "VII.6",
       "id": "ghf-19900313-1",
       "act": "VII",
@@ -3639,7 +3682,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900313-1"
     },
     {
-      "order": 73,
+      "order": 74,
       "ref": "VII.7",
       "id": "ghf-19900801-1",
       "act": "VII",
@@ -3692,7 +3735,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19900801-1"
     },
     {
-      "order": 74,
+      "order": 75,
       "ref": "VII.8",
       "id": "ghf-19910821-1",
       "act": "VII",
@@ -3725,7 +3768,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19910821-1"
     },
     {
-      "order": 75,
+      "order": 76,
       "ref": "VII.9",
       "id": "ghf-19920514-1",
       "act": "VII",
@@ -3760,7 +3803,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920514-1"
     },
     {
-      "order": 76,
+      "order": 77,
       "ref": "VII.10",
       "id": "ghf-19920515-1",
       "act": "VII",
@@ -3797,7 +3840,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920515-1"
     },
     {
-      "order": 77,
+      "order": 78,
       "ref": "VII.11",
       "id": "ghf-19920727-1",
       "act": "VII",
@@ -3832,7 +3875,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920727-1"
     },
     {
-      "order": 78,
+      "order": 79,
       "ref": "VII.12",
       "id": "ghf-19920903-1",
       "act": "VII",
@@ -3870,7 +3913,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19920903-1"
     },
     {
-      "order": 79,
+      "order": 80,
       "ref": "VII.13",
       "id": "ghf-19931203-1",
       "act": "VII",
@@ -3931,7 +3974,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19931203-1"
     },
     {
-      "order": 80,
+      "order": 81,
       "ref": "VII.14",
       "id": "ghf-19940504-1",
       "act": "VII",
@@ -3976,7 +4019,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19940504-1"
     },
     {
-      "order": 81,
+      "order": 82,
       "ref": "VII.15",
       "id": "ghf-19940728-1",
       "act": "VII",
@@ -4021,7 +4064,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19940728-1"
     },
     {
-      "order": 82,
+      "order": 83,
       "ref": "VII.16",
       "id": "ghf-19941110-1",
       "act": "VII",
@@ -4069,7 +4112,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-19941110-1"
     },
     {
-      "order": 83,
+      "order": 84,
       "ref": "VII.17",
       "id": "ghf-20050101-1",
       "act": "VII",
@@ -4114,7 +4157,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20050101-1"
     },
     {
-      "order": 84,
+      "order": 85,
       "ref": "VII.18",
       "id": "ghf-20190320-1",
       "act": "VII",
@@ -4149,7 +4192,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20190320-1"
     },
     {
-      "order": 85,
+      "order": 86,
       "ref": "VIII.1",
       "id": "ghf-20251117-1",
       "act": "VIII",
@@ -4189,7 +4232,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20251117-1"
     },
     {
-      "order": 86,
+      "order": 87,
       "ref": "VIII.2",
       "id": "ghf-20260323-1",
       "act": "VIII",
@@ -4236,7 +4279,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260323-1"
     },
     {
-      "order": 87,
+      "order": 88,
       "ref": "VIII.3",
       "id": "ghf-20260419-1",
       "act": "VIII",
@@ -4278,7 +4321,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260419-1"
     },
     {
-      "order": 88,
+      "order": 89,
       "ref": "VIII.4",
       "id": "ghf-20260521-1",
       "act": "VIII",
@@ -4329,7 +4372,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260521-1"
     },
     {
-      "order": 89,
+      "order": 90,
       "ref": "VIII.5",
       "id": "ghf-20260730-1",
       "act": "VIII",
@@ -4371,7 +4414,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260730-1"
     },
     {
-      "order": 90,
+      "order": 91,
       "ref": "VIII.6",
       "id": "ghf-20260825-1",
       "act": "VIII",
@@ -4409,7 +4452,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260825-1"
     },
     {
-      "order": 91,
+      "order": 92,
       "ref": "VIII.7",
       "id": "ghf-20260908-1",
       "act": "VIII",
@@ -4444,7 +4487,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260908-1"
     },
     {
-      "order": 92,
+      "order": 93,
       "ref": "VIII.8",
       "id": "ghf-20260917-1",
       "act": "VIII",
@@ -4494,7 +4537,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260917-1"
     },
     {
-      "order": 93,
+      "order": 94,
       "ref": "VIII.9",
       "id": "ghf-20260923-1",
       "act": "VIII",
@@ -4530,7 +4573,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260923-1"
     },
     {
-      "order": 94,
+      "order": 95,
       "ref": "VIII.10",
       "id": "ghf-20260925-1",
       "act": "VIII",
@@ -4568,7 +4611,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260925-1"
     },
     {
-      "order": 95,
+      "order": 96,
       "ref": "VIII.11",
       "id": "ghf-20260927-1",
       "act": "VIII",
@@ -4609,7 +4652,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260927-1"
     },
     {
-      "order": 96,
+      "order": 97,
       "ref": "VIII.12",
       "id": "ghf-20260929-1",
       "act": "VIII",
@@ -4656,7 +4699,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20260929-1"
     },
     {
-      "order": 97,
+      "order": 98,
       "ref": "VIII.13",
       "id": "ghf-20261006-1",
       "act": "VIII",
@@ -4712,7 +4755,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-20261006-1"
     },
     {
-      "order": 98,
+      "order": 99,
       "ref": "O.1",
       "id": "ghf-obvious-01",
       "act": "O",
@@ -4755,7 +4798,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-01"
     },
     {
-      "order": 99,
+      "order": 100,
       "ref": "O.2",
       "id": "ghf-obvious-02",
       "act": "O",
@@ -4805,7 +4848,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-02"
     },
     {
-      "order": 100,
+      "order": 101,
       "ref": "O.3",
       "id": "ghf-obvious-03",
       "act": "O",
@@ -4851,7 +4894,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-03"
     },
     {
-      "order": 101,
+      "order": 102,
       "ref": "O.4",
       "id": "ghf-obvious-04",
       "act": "O",
@@ -4891,7 +4934,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-04"
     },
     {
-      "order": 102,
+      "order": 103,
       "ref": "O.5",
       "id": "ghf-obvious-05",
       "act": "O",
@@ -4936,7 +4979,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-05"
     },
     {
-      "order": 103,
+      "order": 104,
       "ref": "O.6",
       "id": "ghf-obvious-06",
       "act": "O",
@@ -4987,7 +5030,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-06"
     },
     {
-      "order": 104,
+      "order": 105,
       "ref": "O.7",
       "id": "ghf-obvious-07",
       "act": "O",
@@ -5031,7 +5074,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-07"
     },
     {
-      "order": 105,
+      "order": 106,
       "ref": "O.8",
       "id": "ghf-obvious-08",
       "act": "O",
@@ -5077,7 +5120,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-08"
     },
     {
-      "order": 106,
+      "order": 107,
       "ref": "O.9",
       "id": "ghf-obvious-09",
       "act": "O",
@@ -5122,7 +5165,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-09"
     },
     {
-      "order": 107,
+      "order": 108,
       "ref": "O.10",
       "id": "ghf-obvious-10",
       "act": "O",
@@ -5168,7 +5211,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-10"
     },
     {
-      "order": 108,
+      "order": 109,
       "ref": "O.11",
       "id": "ghf-obvious-11",
       "act": "O",
@@ -5209,7 +5252,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-11"
     },
     {
-      "order": 109,
+      "order": 110,
       "ref": "E.1",
       "id": "ghf-99990101-1",
       "act": "E",
@@ -5278,7 +5321,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-1"
     },
     {
-      "order": 110,
+      "order": 111,
       "ref": "E.2",
       "id": "ghf-99990101-4",
       "act": "E",
@@ -5335,7 +5378,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-4"
     },
     {
-      "order": 111,
+      "order": 112,
       "ref": "E.3",
       "id": "ghf-99990101-2",
       "act": "E",
@@ -5378,7 +5421,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-2"
     },
     {
-      "order": 112,
+      "order": 113,
       "ref": "E.4",
       "id": "ghf-99990101-3",
       "act": "E",
@@ -5416,7 +5459,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-3"
     },
     {
-      "order": 113,
+      "order": 114,
       "ref": "E.5",
       "id": "ghf-99990102-1",
       "act": "E",

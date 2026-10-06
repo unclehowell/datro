@@ -1,5 +1,13 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.58] - 2026-10-06
+
+### Fixed
+- The lordship of the manor and the ownership of the farm are now told as two separate lines. New scene "The lordship of the manor" (1536–1793): Tewkesbury Abbey, the Crown, Sir George Herbert by 1545, Bute in 1793 (noting that Cardiff Records places the manor with William Hurst and others from 1767). "The Vaughans" now says they held the farm as a freehold while the Herberts held the lordship. "The Bute Estate" now gives both dates: the lordship bought in 1793, the farm freehold acquired early in the 19th century
+- "Manorial leases": 1552–1829 is the date range of the whole National Library of Wales bundle (D 219); the farm's own leases run 1552–1824. No event in 1829 is recorded
+- Parcel A's freehold chain now reads: the Vaughans, then Bute (by the early 19th century), then Daniel Thomas (1877), then the Williamses (1928)
+- Prologue scene references after P.2 move up by one (the new scene is P.3)
+
 ## [bpvsbuckler-v0.0.0.57] - 2026-10-06
 
 ### Design
