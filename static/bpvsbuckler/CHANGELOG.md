@@ -9,6 +9,9 @@
 - New `/story/transcript.txt` narration transcript
 - Regenerated `/api/timeline.json`, `/llms.txt` and `sitemap.xml`
 - Deploy workflow now builds the exports and ships `story/`
+- Editorial/forensic chronology expanded from 149 to 172 events, including the 1949 and 1965 tenancy strands as explicit evidential pivots
+- Added discrete dated entries for the South Wales Echo N15-01 to N15-16 search extracts and the 17 April 1980 Neath Guardian context report
+- Narrator slides now expose small links back to the Great House Farm Wiki Evidence Library, Press Articles Index, and event-specific Wiki evidence pages
 
 ## [bpvsbuckler-v0.0.0.48] - 2026-10-05
 
