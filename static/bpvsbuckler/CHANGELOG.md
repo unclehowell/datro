@@ -1,5 +1,14 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.51] - 2026-10-06
+
+Evidence-link repair. Story wording, scene order, scene ids, evidence titles and catalogue references are unchanged.
+
+### Fixed
+- Cadw survey photographs of the farmhouse and barn, 29 July 1988 (ATISN 27021), in VI.5 and VIII.6: `archaeology/#cadw-1988` no longer exists; now link to the ATISN 27021 response entry (GHF-E106-R37) in the FOI & Public-Authority Reply Register, `records-access-chronology/foi-reply-register/#R37`
+- Mary Williams — 1965 offer (III.11): `mary-williams/#offer-1965` no longer exists; now links to the Chronology section of the Mary Williams page, `mary-williams/#chronology`, which holds the 2 March 1965 entry
+- The Williams / Buckler Family (P.5, II.10, III.12, III.14, IV.17, VII.14): the page's sections no longer carry anchors, so `#origins`, `#william` and `#rumoured-sale` are removed and these entries link to `williams-buckler-family/`
+
 ## [bpvsbuckler-v0.0.0.50] - 2026-10-06
 
 Re-release as a documentary storyboard.

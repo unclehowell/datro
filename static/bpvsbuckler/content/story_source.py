@@ -34,9 +34,9 @@ TL = w('/timeline/', 'Master Timeline')
 LRT = lambda a, t='Land Registry Titles': w('/land-registry-titles/#' + a, t, 'Land Registry record')
 RAC = w('/records-access-chronology/', 'Records Access Chronology', 'Official correspondence')
 CADW_PH = {'type': 'Photograph', 'title': 'Cadw survey photograph of the farmhouse, 29 July 1988 (released 2026, ATISN 27021)',
-           'url': f'{WIKI}/archaeology/#cadw-1988', 'image': '/media/1988-cadw-farmhouse.jpg'}
+           'url': f'{WIKI}/records-access-chronology/foi-reply-register/#R37', 'image': '/media/1988-cadw-farmhouse.jpg'}
 CADW_BARN = {'type': 'Photograph', 'title': 'Cadw survey photograph of the barn, 29 July 1988 (released 2026, ATISN 27021)',
-             'url': f'{WIKI}/archaeology/#cadw-1988', 'image': '/media/1988-cadw-barn.jpg'}
+             'url': f'{WIKI}/records-access-chronology/foi-reply-register/#R37', 'image': '/media/1988-cadw-barn.jpg'}
 CADW_CRIT = w('/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/',
               'Cadw — Forensic Critique', 'Analysis')
 GGAT_REV = w('/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/',
@@ -152,7 +152,7 @@ sc('P', 'ghf-15600101-1', '1560-01-01', 'Mid 16th – late 18th century', 'The V
 sc('P', 'ghf-16670101-1', '1667-01-01', '1667', 'The Williamses arrive', 'Great House Farm', 'A',
    "Mary's statement",
    "By Mary Williams's account, her family's life at Great House begins in 1667. Family tradition remembers it as a purchase; later estate records treat the family as tenants. No earlier written source has yet been found.",
-   [MARY, w('/williams-buckler-family/#origins', 'The Williams / Buckler Family — origins')],
+   [MARY, w('/williams-buckler-family/', 'The Williams / Buckler Family — origins')],
    case='The family hold, from Mary\'s statement and the 1974 Daily Telegraph report, that their ancestors acquired Tŷ Mawr in about 1667.',
    aliases=['ghf-16770101-1'])
 sc('P', 'ghf-18000101-1', '1800-01-01', 'Early 19th century', 'The Bute Estate takes the freehold', 'Great House', 'AB',
@@ -274,7 +274,7 @@ sc('II', 'ghf-19440101-1', '1944-01-01', '1944', 'Frederick runs the farm', 'Gre
 sc('II', 'ghf-19480101-1', '1948-01-01', 'c. 1948 – 49', 'Billy is born', 'Great House Farm', 'A',
    'Family account',
    'William (Billy) Buckler is born at the farm. He will live there until the eviction of 1988.',
-   [w('/williams-buckler-family/#william', 'The Williams / Buckler Family — William')])
+   [w('/williams-buckler-family/', 'The Williams / Buckler Family — William')])
 
 # ---------------------------------------------------------------- ACT III
 sc('III', 'ghf-19490202-1', '1949-02-02', '2 February 1949', 'An unwritten tenancy', 'Great House Farm', 'B',
@@ -324,12 +324,12 @@ sc('III', 'ghf-19630601-1', '1963-06-01', 'June 1963', 'Committal', 'Cardiff Cou
 sc('III', 'ghf-19650301-1', '1965-03-02', 'January – March 1965', 'Another tenancy refused', "WGR agents' office", 'A',
    'Document',
    "WGR will not let Frederick the fields. On 2 March its agents offer 'Mrs Williams' a weekly tenancy of the farmhouse and garden at £2 a week. It is not signed or returned, and no rent is paid.",
-   [w('/1962-possession-order/#offer-1965', 'The 1965 offer'), w('/mary-williams/#offer-1965', 'Mary Williams — 1965 offer')],
+   [w('/1962-possession-order/#offer-1965', 'The 1965 offer'), w('/mary-williams/#chronology', 'Mary Williams — 1965 offer')],
    case="The family see it as another attempt to turn what Mary claimed as her own into a tenancy she never accepted.")
 sc('III', 'ghf-19640101-1', '1965-06-01', '1964 – 67 (date uncertain)', 'A rumoured sale', 'Family account', '?',
    'Family account',
    'A cousin\'s account says the eldest son sold "our land parcel" through a solicitor, without his parents knowing. What was sold, if anything, is unknown; no document has been found.',
-   [w('/williams-buckler-family/#rumoured-sale', 'The Williams / Buckler Family — rumoured sale')])
+   [w('/williams-buckler-family/', 'The Williams / Buckler Family — rumoured sale')])
 sc('III', 'ghf-19670101-1', '1967-01-01', '1967', 'Frederick dies', 'Great House Farm', 'A',
    'Family account',
    'Frederick Buckler dies, aged 56. Mary takes back her maiden name, Williams, and stays on in the farmhouse. An estate paper gives December 1965; the family take 1967.',
@@ -337,7 +337,7 @@ sc('III', 'ghf-19670101-1', '1967-01-01', '1967', 'Frederick dies', 'Great House
 sc('III', 'ghf-19680901-1', '1968-09-01', '1968 – 69', 'The eldest son leaves', 'Great House Farm', 'A',
    'Family account',
    "The eldest son's household leaves the farm.",
-   [w('/williams-buckler-family/#rumoured-sale', 'The Williams / Buckler Family')])
+   [w('/williams-buckler-family/', 'The Williams / Buckler Family')])
 
 # ---------------------------------------------------------------- ACT IV
 sc('IV', 'ghf-19691231-1', '1969-12-31', '31 December 1969', 'BP buys in', 'Great House Farm', 'AB',
@@ -420,7 +420,7 @@ sc('IV', 'ghf-19830313-1', '1983-03-13', '13 March 1983', 'Fire at the warehouse
 sc('IV', 'ghf-19830326-1', '1983-03-26', '26 March 1983', 'Mary dies', 'Great House Farm', 'A',
    'Family account',
    'Mary Williams dies in the farmhouse where she was born, weeks after the registration was applied for. Her son Billy inherits her claim.',
-   [w('/mary-williams/#death', 'Mary Williams — death'), w('/williams-buckler-family/#william', 'The Williams / Buckler Family — William')],
+   [w('/mary-williams/#death', 'Mary Williams — death'), w('/williams-buckler-family/', 'The Williams / Buckler Family — William')],
    case='Whether Mary was ever told of the registration is being pursued with HM Land Registry.')
 sc('IV', 'ghf-19830408-1', '1983-04-08', '8 – 12 April 1983', 'Letters after her death', 'HM Land Registry — WA240304', 'A',
    'Land Registry record',
@@ -604,7 +604,7 @@ sc('VII', 'ghf-19920514-1', '1992-05-14', '14 May 1992', 'Twenty houses', 'Vale 
 sc('VII', 'ghf-19920515-1', '1992-05-15', '15 May 1992', 'Billy dies', 'Llandough', 'A',
    'Family account',
    'Billy Buckler dies of a heart attack in Llandough Hospital. After a funeral at Bethesda Chapel, Dinas Powys, he is buried at Michaelston-le-Pit. He was born in the farmhouse and defended it to the end.',
-   [w('/williams-buckler-family/#william', 'The Williams / Buckler Family — William')])
+   [w('/williams-buckler-family/', 'The Williams / Buckler Family — William')])
 sc('VII', 'ghf-19920727-1', '1992-07-27', '27 July 1992', 'A warning, half missing', 'GGAT', '?',
    'Planning file',
    'GGAT warns the council that the 1990 assessment showed significant deposits — medieval, possibly earlier, and human bone — and urges mitigation. Page 2 of the letter is missing from the file.',
