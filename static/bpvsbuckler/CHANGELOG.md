@@ -1,5 +1,22 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.53] - 2026-10-06
+
+The story retold as a legal thriller about the title chain.
+
+### Content
+- Narration rewritten around the two titles to Parcel A. The true title runs Vaughan → Bute → Daniel Thomas (1877) → Williams (1928), with its papers taken in 1950. The synthetic Parcel A is built beside it, move by move: the 1916 "whole farm" wording, Frederick's unwritten fields tenancy (1949), the 1955 "whole of the farm" order, the refused tenancies of 1959 and 1965, the unenforced 1962 order, the 1969 handover, the 1974 licence letters, the 1975 BP-to-BP conveyance of "the farmhouse and garden", the 1983 separate registration, and the 1987 merger into the fields title. Each scene now says what the move did to Parcel A and why it mattered
+- The 1969 sale is told precisely: Parcel B passes by deed (Bute → WGR → BP); for the house, what passes is the case against Mary (the 1962 order), with no deed to Parcel A behind it
+- The 23 May 1975 conveyance is restored as its own scene ("A deed for the mimic")
+- The Court of Appeal scene now explains that the judges found adverse possession running from 1955, and that BP won only through the 1962 order and the 1974 letters; the judgment decided possession, never ownership
+- Epilogue "How it was done": the moves in order, and the two doors in English law they went through (possession without ownership tried; registration without a rival claim decided)
+- Acts retitled: The Root, The Split, Two Words, The Mimic, The Handover, Possession Not Ownership, Bulldozed Before Breakfast, Built Over, The Buried Title, Today
+
+### Design
+- New storyline diagram, after the family's drawing: the true Parcel A (green, buried after 1950 but running on), the synthetic Parcel A (red, dashed), Parcel B (blue), and the merged "A & B" title (gold) from 1987. Every move is a dot that opens its scene. Full-size on the Storyboard; compact in the player, with the current scene marked
+- Every scene shows "The titles after this scene": the state of each title, with the lane that moves in that scene marked
+- Title moves added to the printable script, llms.txt and api/timeline.json (`title_ledger`, `title_moves`)
+
 ## [bpvsbuckler-v0.0.0.52] - 2026-10-06
 
 The story retold as a narrated film.

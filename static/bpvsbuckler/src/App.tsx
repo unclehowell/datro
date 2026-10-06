@@ -138,7 +138,7 @@ export default function App() {
       <main className="main">
         {view === 'scene' && <SceneView scene={scene} spoken={playing ? spoken : -1} copied={copied} onCopy={() => {
           navigator.clipboard?.writeText(`Tŷ Mawr, scene ${scene.ref} (no. ${scene.no}), "${scene.title}", ${scene.when}. ${sceneUrl(scene)}`).then(() => setCopied(true), () => setCopied(false));
-        }} onCast={() => open('cast')} />}
+        }} onCast={() => open('cast')} onPick={go} />}
         {view === 'board' && <Board onPick={go} />}
         {view === 'cast' && <Cast onPick={go} />}
       </main>
@@ -199,7 +199,7 @@ function Frame({ scene, small }: { scene: Scene; small?: boolean }) {
   );
 }
 
-function SceneView({ scene, spoken, copied, onCopy, onCast }: { scene: Scene; spoken: number; copied: boolean; onCopy: () => void; onCast: () => void }) {
+function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: Scene; spoken: number; copied: boolean; onCopy: () => void; onCast: () => void; onPick: (i: number) => void }) {
   const words = scene.narration.split(/\s+/);
   const cast = S.cast.filter((c) => scene.cast.includes(c.id));
   return (
@@ -219,6 +219,8 @@ function SceneView({ scene, spoken, copied, onCopy, onCast }: { scene: Scene; sp
           {cast.map((c) => <button key={c.id} className="chip" onClick={onCast}>{c.name}</button>)}
         </div>
         {scene.case && <section className="case"><h2>The family's case</h2><p>{scene.case}</p></section>}
+        <Ledger scene={scene} />
+        <Storyline current={scene.no - 1} onPick={onPick} compact />
         <section className="ev">
           <h2>Evidence ({scene.evidence.length})</h2>
           <ul>
@@ -243,7 +245,10 @@ function Board({ onPick }: { onPick: (i: number) => void }) {
   return (
     <div className="sheet">
       <h1>Storyboard</h1>
-      <p className="intro">The whole story, in order, one panel a scene: from the church beside the Great House to the houses that stand on it today. Pick a panel to open the scene and the evidence behind it.</p>
+      <p className="intro">A legal thriller in a hundred scenes: how a family's title to their house was buried, and a mimic of it built, move by move, until BP held the house it never proved it owned. Pick a panel to open the scene, the titles after it, and the evidence.</p>
+      <h2 className="sl-head">The storyline</h2>
+      <p className="intro">One title buried, one built beside it. Each dot is a move; pick one to open the scene.</p>
+      <Storyline onPick={onPick} />
       <div className="legend">
         <span><i className="p-A" />House parcel (A)</span><span><i className="p-B" />Fields (B)</span>
         <span><i className="p-AB" />Whole farm (A + B)</span><span><i className="p-x" />Unknown, or not the farm</span>
@@ -291,6 +296,78 @@ function Cast({ onPick }: { onPick: (i: number) => void }) {
   );
 }
 
+// ---- the grand storyline: the true Parcel A, the synthetic Parcel A forged
+// beside it, Parcel B, and the 1987 merger (after the family's diagram)
+const LANE_Y: Record<string, number> = { W: 92, A: 34, S: 92, B: 150, M: 124 };
+const LANE_CLASS: Record<string, string> = { W: 'ln-w', A: 'ln-a', S: 'ln-s', B: 'ln-b', M: 'ln-m' };
+const XS: [number, number][] = [[600, 0], [1550, 30], [1877, 120], [1916, 210], [1949, 290], [1990, 860], [2027, 1000]];
+const yearOf = (d: string) => (d.startsWith('9999') ? 2026.6 : +d.slice(0, 4) + (+d.slice(5, 7) - 1) / 12);
+function X(y: number) {
+  const v = Math.max(XS[0][0], Math.min(XS[XS.length - 1][0], y));
+  for (let i = 1; i < XS.length; i++) {
+    const [y0, x0] = XS[i - 1], [y1, x1] = XS[i];
+    if (v <= y1) return 20 + (x0 + ((v - y0) / (y1 - y0)) * (x1 - x0)) * 0.96;
+  }
+  return 980;
+}
+function Storyline({ current, onPick, compact }: { current?: number; onPick: (i: number) => void; compact?: boolean }) {
+  const x = X;
+  const marks = scenes.flatMap((s, i) => s.moved.map((lane) => ({ s, i, lane })));
+  const cur = current !== undefined ? scenes[current] : null;
+  const ticks = [1877, 1916, 1928, 1950, 1962, 1975, 1987, 1994, 2026];
+  return (
+    <figure className={`storyline${compact ? ' compact' : ''}`} style={{ margin: 0 }}>
+      <div className="sl-scroll">
+        <svg viewBox="0 0 1000 205" role="img" aria-label="Storyline: the true Parcel A title is buried while a synthetic Parcel A is built beside it and merged into Parcel B in 1987">
+          {/* one farm, split in 1877 */}
+          <path className="ln ln-w" d={`M${x(600)} 92 H${x(1877) - 14}`} />
+          <path className="ln ln-a" d={`M${x(1877) - 14} 92 C${x(1877)} 92 ${x(1877) - 6} 34 ${x(1877) + 10} 34 H${x(1950)}`} />
+          <path className="ln ln-a buried" d={`M${x(1950)} 34 H${x(2027)}`} />
+          <path className="ln ln-b" d={`M${x(1877) - 14} 92 C${x(1877)} 92 ${x(1877) - 6} 150 ${x(1877) + 10} 150 H${x(1987) - 10}`} />
+          {/* the synthetic Parcel A: a description in 1916, a construct from 1949, merged in 1987 */}
+          <path className="ln ln-s seed" d={`M${x(1916) - 24} 150 C${x(1916) - 10} 150 ${x(1916) - 18} 92 ${x(1916)} 92 H${x(1949)}`} />
+          <path className="ln ln-s" d={`M${x(1949)} 92 H${x(1987) - 10} C${x(1987) + 4} 92 ${x(1987)} 124 ${x(1987) + 14} 124`} />
+          <path className="ln ln-b" d={`M${x(1987) - 10} 150 C${x(1987) + 4} 150 ${x(1987)} 124 ${x(1987) + 14} 124`} />
+          <path className="ln ln-m" d={`M${x(1987) + 14} 124 H${x(2027)}`} />
+          <text className="sl-lbl" x={x(600) + 2} y={82}>Great House: one farm</text>
+          <text className="sl-lbl a" x={x(1877) + 14} y={24}>Parcel A: the true title (Bute → Thomas → Williams)</text>
+          <text className="sl-lbl a" x={x(1950) + 6} y={52}>deeds taken 1950 · buried, never extinguished</text>
+          <text className="sl-lbl s" x={x(1949) + 6} y={82}>Synthetic Parcel A: tenancies, orders, licence, conveyance, registration</text>
+          <text className="sl-lbl b" x={x(1877) + 14} y={168}>Parcel B: the fields (Bute → WGR → BP)</text>
+          <text className="sl-lbl m" x={x(1987) + 18} y={114}>merged 1987: "A &amp; B"</text>
+          {ticks.map((t) => (
+            <g key={t} className="tick-y"><line x1={x(t)} x2={x(t)} y1={180} y2={185} /><text x={x(t)} y={198}>{t}</text></g>
+          ))}
+          {cur && <line className="sl-now" x1={x(yearOf(cur.date))} x2={x(yearOf(cur.date))} y1={10} y2={178} />}
+          {marks.map(({ s, i, lane }) => (
+            <circle key={s.id + lane} className={`mk ${LANE_CLASS[lane]}${current === i ? ' on' : ''}`}
+              cx={x(yearOf(s.date))} cy={LANE_Y[lane]} r={current === i ? 7 : 4.5}
+              onClick={() => onPick(i)} tabIndex={compact ? -1 : 0}
+              onKeyDown={(e) => { if (e.key === 'Enter') onPick(i); }}>
+              <title>{`${s.ref} ${s.when}: ${s.title}`}</title>
+            </circle>
+          ))}
+        </svg>
+      </div>
+    </figure>
+  );
+}
+
+function Ledger({ scene }: { scene: Scene }) {
+  if (!scene.ledger.length) return null;
+  return (
+    <section className="ledger" aria-label="The titles after this scene">
+      <h2>The titles after this scene</h2>
+      {scene.ledger.map(([lane, text]) => (
+        <div key={lane} className={`lrow${scene.moved.includes(lane) ? ' moved' : ''}`}>
+          <i className={LANE_CLASS[lane]} />
+          <div><b>{S.lanes[lane]}{scene.moved.includes(lane) && <span className="tag">moves here</span>}</b><span>{text}</span></div>
+        </div>
+      ))}
+    </section>
+  );
+}
+
 function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () => void; onCast: () => void }) {
   const [btc, setBtc] = useState(false);
   useEffect(() => {
@@ -309,7 +386,7 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
       <div className="tx">
         <h1>Tŷ Mawr</h1>
         <div className="sub">The Great House Farm story, Llandough</div>
-        <p className="log">For three hundred years the Williamses lived in the Great House beside St Dochdwy's church. In 1877 the farm was cut in two, and the house was promised to them. Then their papers vanished, an oil company's pension fund bought in, and the courts gave BP the house without ever asking who owned it. On 6 December 1988 it was bulldozed before breakfast. A thousand graves came out of the ground, and twenty houses went up. There has been no inquiry and no reparation. This is how it was done.</p>
+        <p className="log">In 1877 Great House Farm was cut in two: the house went one way, the fields another. The Williamses came to own the house. Then their deeds vanished from a blanket box, and over thirty years a second, synthetic title to the house was built on paper, from tenancies they refused, orders against a fields tenant, a licence never accepted, and a conveyance between two BP companies. In 1987 it was folded into the fields. The courts gave BP possession without ever deciding who owned the house, and on 6 December 1988 it was bulldozed before breakfast. The family's title was buried. It was never extinguished. This is how it was done, move by move.</p>
         <div className="btns">
           <button className="btn primary" onClick={onPlay}>{Icon.play} Play from the beginning</button>
           <button className="btn" onClick={onBoard}>{Icon.grid} Open the storyboard</button>

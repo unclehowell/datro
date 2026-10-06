@@ -19,7 +19,8 @@ const SITE = 'https://bpvsbuckler.bucklerfamily.estate';
 const WIKI = 'https://greathousefarmwiki.wordpress.com';
 const root = new URL('..', import.meta.url).pathname;
 const story = JSON.parse(readFileSync(root + 'src/data/story.json', 'utf8'));
-const { acts, cast, scenes, aliases } = story;
+const { acts, cast, scenes, aliases, lanes } = story;
+const movedLines = (s) => s.ledger.filter(([l]) => s.moved.includes(l)).map(([l, t]) => `${lanes[l]}: ${t}`);
 
 // Guards: strict date order, unique ids, evidence on every scene.
 const ids = new Set();
@@ -58,6 +59,8 @@ const entries = scenes.map((s) => ({
   basis: s.basis,
   narration: s.narration,
   family_case: s.case,
+  title_ledger: Object.fromEntries(s.ledger.map(([l, t]) => [lanes[l], t])),
+  title_moves: s.moved.map((l) => lanes[l]),
   cast: s.cast,
   evidence: s.evidence.map((e) => (e.image ? { ...e, image: SITE + e.image } : e)),
   image: s.image ? SITE + s.image : null,
@@ -104,6 +107,8 @@ const blocks = scenes.map((s) => {
   const a = actOf(s.act);
   const lines = [`### ${s.ref} (${s.no}). ${s.when} — ${s.title}`, '', `${a.label}: ${a.title} · Scene id: ${s.id}${isoDate(s.date) ? ` · Date: ${s.date}` : ''} · Parcel: ${PARCEL[s.parcel] || 'n/a'} · Basis: ${s.basis}`, '', s.narration, ''];
   if (s.case) lines.push(`> The family's case: ${s.case}`, '');
+  for (const m of movedLines(s)) lines.push(`> Title move — ${m}`);
+  if (s.moved.length) lines.push('');
   for (const e of s.evidence) lines.push(`- ${e.type}: ${e.title} — ${e.url}`);
   return lines.join('\n');
 });
@@ -150,6 +155,7 @@ const actHtml = acts
 <h3>${esc(s.title)}</h3>
 ${img}<p class="narr">${esc(s.narration)}</p>
 ${s.case ? `<p class="case"><b>The family's case.</b> ${esc(s.case)}</p>` : ''}
+${movedLines(s).map((m) => `<p class="case"><b>Title move.</b> ${esc(m)}</p>`).join('')}
 <p class="tags">${tags}</p>
 <ul class="ev">${ev}</ul>
 <p class="play"><a href="${url(s)}">Open scene ${s.ref} in the player</a></p>

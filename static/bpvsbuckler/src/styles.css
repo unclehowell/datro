@@ -11,6 +11,7 @@
   --parcel-ab: #c8a64e;    /* both / whole farm (wiki: gold) */
   --parcel-x: #8a8f94;     /* not the farm / unknown */
   --case: #2f3a2c;         /* the family's case panel */
+  --synthetic: #d4574b;    /* the synthetic Parcel A (red, dashed) */
   --serif: 'Newsreader', 'Iowan Old Style', Georgia, serif;
   --sans: 'Instrument Sans', 'Segoe UI', system-ui, sans-serif;
   color-scheme: dark;
@@ -169,3 +170,40 @@ button.chip:hover, a.chip:hover { color: var(--limewash); }
   .facts { grid-template-columns: repeat(3, 1fr); gap: 6px 14px; }
 }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+/* ---------------- title ledger and storyline */
+.ledger { margin: 0 0 18px; max-width: 40em; border-top: 1px solid var(--slate-3); padding-top: 14px; }
+.ledger h2 { font-size: 13px; font-weight: 600; color: var(--lias); margin: 0 0 10px; letter-spacing: .02em; text-transform: uppercase; }
+.lrow { display: grid; grid-template-columns: 6px 1fr; gap: 12px; padding: 7px 0; font-size: 14px; line-height: 1.45; color: var(--lias); }
+.lrow i { border-radius: 3px; }
+.lrow b { display: block; font-weight: 600; color: var(--limewash); font-size: 13px; }
+.lrow .tag { display: inline-block; margin: 0 0 2px 8px; font-size: 11px; padding: 0 6px; border-radius: 3px; background: var(--slate-3); color: var(--limewash); vertical-align: 1px; }
+.lrow > div > span { display: block; }
+.lrow > div, .scene > div { min-width: 0; }
+.lrow.moved { color: var(--limewash); }
+.lrow i.ln-w, .lrow i.ln-m { background: var(--parcel-ab); }
+.lrow i.ln-a { background: var(--parcel-a); }
+.lrow i.ln-b { background: var(--parcel-b); }
+.lrow i.ln-s { background: repeating-linear-gradient(180deg, var(--synthetic) 0 6px, transparent 6px 10px); }
+.storyline { margin: 8px 0 26px; }
+.storyline.compact { margin: 0 0 26px; max-width: 40em; }
+.sl-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.storyline svg { display: block; width: 100%; min-width: 760px; height: auto; }
+.storyline.compact svg { min-width: 560px; }
+.sl-head { font-family: var(--serif); font-weight: 400; font-size: 26px; margin: 26px 0 4px; }
+.ln { fill: none; stroke-width: 5; stroke-linecap: round; }
+.ln-w, .ln-m { stroke: var(--parcel-ab); }
+.ln-a { stroke: var(--parcel-a); }
+.ln-a.buried { stroke-opacity: .38; stroke-dasharray: 2 7; }
+.ln-b { stroke: var(--parcel-b); }
+.ln-s { stroke: var(--synthetic); stroke-dasharray: 9 6; stroke-linecap: butt; }
+.ln-s.seed { stroke-width: 2.5; stroke-opacity: .6; stroke-dasharray: 3 5; }
+.sl-lbl { font: 600 12px var(--sans); fill: var(--lias); }
+.sl-lbl.a { fill: #a9cc98; } .sl-lbl.s { fill: #ec8f86; } .sl-lbl.b { fill: #9dbbdb; } .sl-lbl.m { fill: #e0c57e; }
+.tick-y line { stroke: var(--slate-3); }
+.tick-y text { font: 11px var(--sans); fill: var(--lias); text-anchor: middle; }
+.sl-now { stroke: var(--limewash); stroke-opacity: .55; stroke-dasharray: 2 3; }
+.mk { stroke: var(--slate); stroke-width: 2; cursor: pointer; }
+.mk.ln-w, .mk.ln-m { fill: var(--parcel-ab); } .mk.ln-a { fill: var(--parcel-a); } .mk.ln-b { fill: var(--parcel-b); } .mk.ln-s { fill: var(--synthetic); }
+.mk.on { stroke: var(--limewash); stroke-width: 2.5; }
+.mk:hover, .mk:focus-visible { stroke: var(--limewash); outline: none; }
