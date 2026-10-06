@@ -23,7 +23,7 @@ ACCOUNTS = {
 'ghf-06500101-1': dict(
     received="A village church with a farm next to it.",
     words=[],
-    known="One of the oldest Christian sites in Wales, and the ground beside it the site of the largest early medieval cemetery yet found in Wales. The house next to it was the manor's house, not an ordinary farmhouse."),
+    known="One of the oldest Christian sites in Wales, and the ground beside it the site of what its excavators call \"by far the largest Early-medieval burial population so far recovered from Wales\". The heritage record states that the manorial courts of Llandough and Leckwith were held in the house."),
 'ghf-12000101-1': dict(
     received="An old farmhouse of no special note.",
     words=[('"sub-medieval"', 'A technical dating term, later read as "not old enough to matter".')],
@@ -68,7 +68,7 @@ ACCOUNTS = {
 'ghf-18770101-1': dict(
     received="Nothing changed: Bute went on owning the farm, and the Williamses went on renting it.",
     words=[],
-    known="From 1877 there are two parcels with two owners: Parcel A, the house, owned by Thomas; Parcel B, the fields, owned by Bute. Anything Bute sells after 1877 can only be Parcel B. And the bargain made with a family who had already lived there for two hundred years was that when the quarrying ended, the house would be theirs."),
+    known="On Mary's statement, from 1877 there are two parcels with two owners: Parcel A, the house, owned by Thomas; Parcel B, the fields, kept by Bute. Anything Bute sells after 1877 can only be Parcel B. Her statement says the freehold of the house was to pass to the Williamses when quarrying ended. The deed is missing; the wiki notes that whether the 1877 deal was a sale or a quarry lease is still to be tested against the Bute papers."),
 'ghf-18911111-1': dict(
     received="A minor court report.",
     words=[],
@@ -93,7 +93,7 @@ ACCOUNTS = {
 'ghf-19280101-1': dict(
     received="Nothing happened in 1928. The tenancy of the whole farm carried on.",
     words=[],
-    known="The bargain of 1877 came due. The quarrying ended, and the freehold of the house passed to the Williamses. From that day they never paid a penny to anyone for it again. Parcel A's freehold chain was complete: the Vaughans, then Bute (by the early 19th century), then Daniel Thomas (1877), then the Williamses (1928)."),
+    known="On Mary's statement, the bargain of 1877 came due: the quarrying ended and the freehold of the house passed to the Williamses, and they never paid rent on it again. The wiki treats 1928 as the strongest evidence-based date for the Williams freehold. The freehold line of the house: the Vaughans, then Bute (by the early 19th century), then Daniel Thomas (1877), then the Williamses (1928)."),
 'ghf-19360101-1': dict(
     received="Frederick joined the tenant family on the farm.",
     words=[],
@@ -109,7 +109,7 @@ ACCOUNTS = {
 'ghf-19400101-1': dict(
     received="Not an event. The family were tenants throughout.",
     words=[],
-    known="Title by possession to Parcel A was complete by 1940, in addition to the 1877–1928 title. From 1940 there was no basis, with or without papers, for treating the family's occupation of the house as permissive."),
+    known="Twelve years' rent-free possession from 1928 gives the family title to Parcel A by possession by 1940, in addition to the 1877–1928 title. The wiki notes this depends on what title the Thomases held. On either footing, from 1940 there was no basis for treating the family's occupation of the house as permission from Western Ground Rents, which never owned it."),
 'ghf-19440101-1': dict(
     received="The tenant farm was failing.",
     words=[],
@@ -126,15 +126,15 @@ ACCOUNTS = {
 'ghf-19500601-1': dict(
     received="If the family ever had documents, they could not produce them.",
     words=[('"No such documents were, however, ever produced."', 'Court of Appeal, 1987.')],
-    known="Imagine it. The papers that proved your home was yours, kept safe in a blanket box for generations, carried out of the house by a stranger an estate agent had put under your roof. It happened a year after Mary relied on them, and within three years of the landlord's first court case. For the rest of her life she was told to produce documents that had been taken from her. The title was never extinguished. Only its proof was taken."),
+    known="The papers that proved the family's title, kept in a blanket box, were carried out of the house by a lodger an estate agent had placed under their roof, and handed to that agent. It happened a year after Mary refused a tenancy of the farmhouse and asserted ownership, and within three years of the landlord's first court case; Mary believed the two were connected. For the rest of her life she was told to produce documents that had been taken from her. The title was never extinguished. Only its proof was taken."),
 'ghf-19521010-1': dict(
     received="The tenant stopped paying rent on the farm.",
     words=[],
     known="Rent stopped on the fields, Parcel B. No rent had been paid on Parcel A since 1928."),
 'ghf-19550202-1': dict(
     received="The landlord recovered the farm in 1955; the family stayed on in the house only through the landlord's forbearance, and from 1955 their occupation was adverse to the landlord.",
-    words=[('"the whole of the farm"', 'The order\'s description, quoted in 1987.'), ('adverse possession "from 1955"', 'The clock the courts later counted on the house.')],
-    known="An order against a tenant of the fields can only give back the fields, and that is what was taken. On the family's account the woodland went too, to a couple in Llandough and later to a charity. Mary was not a party and was never heard. She had just come home from hospital, having lost a leg, to find the landlord's men taking the farm around her, and she stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact."),
+    words=[('"the whole of the farm"', 'The order\'s description, quoted in 1987.'), ('adverse possession from 1955', 'The clock the courts later counted on the house.')],
+    known="An order against a tenant of the fields can only give back the fields, and that is what was taken. Mary was not a party and was never heard. She had just come home from hospital and stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact. The family's account is that the woodland of Parcel A was taken in 1955 too, passing to a couple in Llandough and later to the Forest of Cardiff. (Family account, not yet recorded on the wiki.)"),
 'ghf-19590101-1': dict(
     received="The landlord offered the occupier a tenancy, and she refused it.",
     words=[('"the farmhouse and garden"', 'The landlord\'s description of what it offered to let.')],
@@ -167,7 +167,7 @@ ACCOUNTS = {
 'ghf-19720725-1': dict(
     received="Ordinary planning of an under-used farm.",
     words=[('"the site"', 'Both parcels treated as one development site.')],
-    known="The land south of the farmhouse, part of Parcel A, was taken by the council and later laid out as a green. Permission was granted over a house whose ownership was disputed."),
+    known="Permission was granted over a house whose ownership was disputed, while its owner lived in it. In 1990 a condition of the outline permission provided for a 0.25-acre village green beside the church. The family's account is that the land south of the farmhouse, part of Parcel A, was taken by the council and laid out as a green in the 1980s. (Family account, not yet recorded on the wiki.)"),
 'ghf-19740101-1': dict(
     received="A routine, incomplete survey.",
     words=[],
@@ -181,9 +181,9 @@ ACCOUNTS = {
     words=[('"part-heard"', 'Treated afterwards as if nothing had been decided because nothing needed deciding.')],
     known="The only time Mary's title to Parcel A was put before a court. It was never decided, and so never extinguished. Her statement set out the two parcels; no lawyer of hers ever built a case on it."),
 'ghf-19741031-1': dict(
-    received="BP kindly let an elderly, ill woman live in the house rent-free for the rest of her life.",
+    received="BP kindly let an elderly, ill woman stay in the house rent free.",
     words=[('"licence"', 'BP\'s letters, as the courts later described them.'), ('"because of her ill health"', 'BP\'s explanation to the press in 1988.')],
-    known="A woman in a wheelchair, who had lost a leg, was told by an oil company's pension fund that she could stay in her own house, as a favour, for the rest of her life. She never asked for it. She never accepted it. It arrived at the very moment her claim to own the house was in front of a judge. Thirteen years later it was used to take the house anyway."),
+    known="A woman in a wheelchair, who had lost a leg, was told by an oil company's pension fund that she could stay in her own house under licence. She never asked for it. She never accepted it. It arrived while her claim to own the house stood undecided before the county court. Thirteen years later the Court of Appeal relied on it to give BP possession."),
 'ghf-19741119-1': dict(
     received="A local antiquarian's objection.",
     words=[],
@@ -211,7 +211,7 @@ ACCOUNTS = {
 'ghf-19830326-1': dict(
     received="The licensee died and the licence ended.",
     words=[('"licensee"', 'How BP would describe her.')],
-    known="She died in the house she was born in, seventy years later, still saying it was hers. She never signed a tenancy, never accepted a licence, and was never once heard on whether the house was her own."),
+    known="She died in the house she was born in, aged sixty-nine, still saying it was hers. She never signed a tenancy, never accepted a licence, and was never once heard on whether the house was her own."),
 'ghf-19830408-1': dict(
     received="Routine registration correspondence.",
     words=[],
@@ -284,7 +284,7 @@ ACCOUNTS = {
     known="On the same day, both doors closed: the court refused to wait for Strasbourg, and Cadw refused to list. Nothing now protected the house, and everyone knew it."),
 'ghf-19881206-1': dict(
     received="An old farmhouse of no special merit was cleared for housing.",
-    words=[('"Bulldozed before breakfast"', 'The headline.'), ('"suddenly and completely demolished"', 'The heritage record, 1991.')],
+    words=[('"Bulldozed before breakfast"', 'The headline.'), ('"suddenly and completely destroyed"', 'The Royal Commission\'s archive record (NMR 6048945).')],
     known="At four in the morning, in the dark, before anyone could stop it. Branwen and her three small children watched their home come down. A thousand people had signed to save it. An MP had asked for the case to be looked at again. Strasbourg had not yet heard it. None of it mattered by breakfast. The house was destroyed before it was ever fully recorded. The title to Parcel A was not destroyed with it."),
 'ghf-19881208-1': dict(
     received="",
@@ -358,7 +358,7 @@ ACCOUNTS = {
 'ghf-19941110-1': dict(
     received="",
     words=[],
-    known="On the family's account the woodland, part of Parcel A, had been taken in 1955. The charity has not used it."),
+    known="The Forest of Cardiff says it bought the woodland in 1994. The family's account is that this woodland, part of Parcel A, had been taken in 1955, and that the charity has not used it. (Family account, not yet recorded on the wiki.)"),
 'ghf-20050101-1': dict(
     received="",
     words=[],
@@ -424,7 +424,7 @@ ACCOUNTS = {
 'ghf-obvious-01': dict(
     received="A squatter was evicted after losing in court.",
     words=[["\"squatter\"", "How the case was understood in the press and in the street."]],
-    known="A squatter moves into a place that is not theirs. The Williamses were born in this house, married in it and died in it for three hundred and twenty-one years. They owned it from 1928, and by possession from 1940. Nobody who lives somewhere for three centuries is a squatter."),
+    known="A squatter moves into a place that is not theirs. The Williamses were born in this house, married in it and died in it for three hundred and twenty-one years. On Mary's statement they owned it from 1928, and on the family's case by possession from 1940. Nobody who lives somewhere for three centuries is a squatter."),
 'ghf-obvious-02': dict(
     received="She lived there by the landlord's permission.",
     words=[["\"licence\"", "1974; relied on in 1986 and 1987."]],
@@ -447,7 +447,7 @@ ACCOUNTS = {
     known="He physically stood in their way, so he was removed: to hospital, to the dock, then barred from the site by his bail. With him out of the way there was nobody left between BP and the house. It came down within the week."),
 'ghf-obvious-07': dict(
     received="An old building was cleared for housing.",
-    words=[["\"suddenly and completely demolished\"", "The heritage record, 1991."]],
+    words=[["\"suddenly and completely destroyed\"", "The Royal Commission's archive record (NMR 6048945)."]],
     known="You don't start bulldozers at four in the morning by accident. It was done in the dark, the morning after the last protection fell and before Strasbourg could be heard, so that it could not be stopped and could never be undone."),
 'ghf-obvious-08': dict(
     received="Nobody much cared about an old farmhouse.",

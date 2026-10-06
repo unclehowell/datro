@@ -1,5 +1,33 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.59] - 2026-10-06
+
+Every scene checked against the Great House Farm Wiki (213 pages): each quotation, date, number and named fact traced to a wiki page, and every scene now links to at least one.
+
+### Corrected
+- 1974 letters: BP wrote that Mary could remain "under licence"; "for life" / "for the rest of her life" removed (not on the wiki)
+- 1955: the wiki records Mary's recent return from hospital (1987 judgment), not an amputation at that date; the leg amputation is kept where her c. 1974 statement records it
+- Armour account: in a Royal Commission record (NMR 6048942) and the 1974 Daily Telegraph, not in the 1988 report
+- Rubble examination: the record does not name who made it; attribution to R. F. Suggett removed
+- "County treasure": GGAT's 1989 planning report describes the house as having been listed as a "county treasure"; Cadw states it was never listed
+- 1991 record: the exact Royal Commission wording ("suddenly and completely destroyed … amid considerable local controversy", NMR 6048945); the HER entry compiled 21 August 1991
+- Cemetery: "by far the largest Early-medieval burial population so far recovered from Wales" (the excavators' words)
+- Lordship: "Lord Clynton and Say", as Cardiff Records spells it; Cogan/Bute 1793 wording
+- D 219 quotation in the catalogue's exact form
+- 1950: Mr Knapp, Penarth estate agent, and the lodger Bruce Sutherland named as in the statement; papers given to Mr Knapp
+- Cadw "YYY": "marginally below the bar" (21 May) and "did not meet the criteria" (10 July); no destruction record
+- House of Lords papers: survive (YHL/PO/JO/10/11/2536), found September 2026; "catalogued in May 2026" removed
+- "Preservation notice to eleven public bodies" removed (not on the wiki); the June 2026 request to HM Land Registry not to destroy material is kept
+- Mary died aged sixty-nine
+- 1877, 1928 and 1940: stated on Mary's statement and the family's case, with the wiki's notes that the 1877 deal's character (sale or quarry lease) and the 1940 point depend on documents still to be tested
+
+### Marked as family account, not yet recorded on the wiki
+- The woodland of Parcel A taken in 1955, passed to a couple in Llandough and later to the Forest of Cardiff, which has not used it
+- The land south of the farmhouse taken by the council and laid out as a green in the 1980s
+
+### Evidence
+- Wiki links added where scenes cited only outside sources or needed the page a statement comes from (Case Analysis, Source Conflicts Register, Forensic Master Chronology, Register Additions A-080, 1988 Possession and Demolition, Bute Estate, 1990 GGAT transcription, Legal Review)
+
 ## [bpvsbuckler-v0.0.0.58] - 2026-10-06
 
 ### Fixed

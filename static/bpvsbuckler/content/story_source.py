@@ -153,17 +153,17 @@ sc('P', 'ghf-06500101-1', '0650-01-01', 'c. AD 650', "St Dochdwy's church", "St 
    ledger={'W': 'Church land, Llandough'})
 sc('P', 'ghf-12000101-1', '1200-01-01', '12th – 14th century', "Medieval occupation", 'Great House — north-east slope', 'A',
    'Archaeological record',
-   "Pottery of the 12th to 14th centuries is later found on the slope north-east of the house. The Royal Commission classes the house as sub-medieval, probably 17th century.",
-   [HER, ARCH], aliases=['ghf-12150102-1', 'ghf-12150101-1', 'ghf-11000101-1'])
+   "In 1962–63 E. J. Beare reports pottery of the 12th to 14th centuries on the slope north-east of the house. The Royal Commission classes the house as sub-medieval, probably 17th century, possibly with a medieval core.",
+   [HER, ARCH, GGAT_REV], aliases=['ghf-12150102-1', 'ghf-12150101-1', 'ghf-11000101-1'])
 sc('P', 'ghf-15450101-1', '1545-01-01', '1536 – 1793', "The lordship of the manor", 'Manor of Llandough', 'AB',
    'Public record',
-   "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. In 1543 the Crown grants the manor to Lord Clinton and Say and Robert Turwitt; by 1545 it is held by Sir George Herbert of Swansea. The Western Mail letter says the Herberts hold it until the Earl of Bute buys it in 1793; Cardiff Records places it with William Hurst and others from 1767, and also dates Bute's purchase to 1793.",
+   "Llandough belongs to Tewkesbury Abbey until the Dissolution of 1536–39. Cardiff Records states that in 1543 Henry VIII granted the manor to Lord Clynton and Say and Robert Turwitt, and that by 1545 it was held by Sir George Herbert. The Western Mail letter says the Herberts held it until the Earl of Bute bought it in 1793; Cardiff Records places it with William Hurst and others from 1767, and says Llandough's history followed that of Cogan, bought by Bute in 1793.",
    [press('N04', "Western Mail, 'Grievous loss' (letter giving the manorial descent)", 'ghf-e090-n03-n04-1974-open-day-and-grievous-loss-page.jpg'),
     w('/anomalies-register/llandough-penarth-cydfin-ty-mawr-manorial-evidence/', 'Llandough (Penarth): Cydfin / Tŷ Mawr and pre-1877 manorial evidence')],
    ledger={'W': 'Lordship of the manor: Sir George Herbert (by 1545) and his family'})
 sc('P', 'ghf-15520101-1', '1552-01-01', '1552 – 1824', "Manorial leases", 'Llandough manorial leases', 'AB',
    'Estate papers',
-   "The National Library of Wales holds a Bute Estate bundle of Llandough manorial leases and agreements (D 219), dated 1552–1829 as a whole. Within it are leases of \"Cydfin Farm or Ty Mawr Farm (107 a.)\", dated 1552–1824.",
+   "The National Library of Wales holds a Bute Estate bundle of Llandough manorial leases and agreements (D 219), dated 1552–1829 as a whole. Its catalogue identifies leases of \"Cydfin Farm or Ty Mawr Farm, (107 a.)\", dated 1552–1824.",
    [{'type': 'Estate papers', 'title': 'National Library of Wales, Bute Estate Records D 219: Llandough manorial leases and agreements, 1552–1829',
      'url': 'https://archives.library.wales/index.php/llandough-manorial-leases-and-agreements'},
     w('/great-house-farm/name-variations/', 'Name & Location Variations')],
@@ -172,7 +172,7 @@ sc('P', 'ghf-15520101-1', '1552-01-01', '1552 – 1824', "Manorial leases", 'Lla
 sc('P', 'ghf-15600101-1', '1560-01-01', 'Mid 16th – late 18th century', "The Vaughans", 'Great House Farm', 'AB',
    'Heritage record',
    "From the mid-16th to the late 18th century the Vaughan family hold Great House as the chief freehold farm of the parish. The lordship of the manor is a separate interest, held over the same period by the Herberts.",
-   [HER],
+   [HER, w('/bute-estate/', 'The Bute Estate (Vaughan chief freehold farm)'), w('/1990-ggat-archaeological-assessment-great-house-farm-llandough-transcription/', '1990 GGAT Assessment — transcription (Vaughan phase)')],
    ledger={'W': 'Farm freehold: the Vaughans · lordship of the manor: the Herberts (a separate interest)'})
 sc('P', 'ghf-16670101-1', '1667-01-01', '1667', "The Williams family at Great House", 'Great House Farm', 'A',
    "Mary's statement",
@@ -205,8 +205,8 @@ sc('I', 'ghf-18580101-1', '1858-01-01', 'c. 1858', "Burials at Church Farm", 'Ch
    aliases=['ghf-19311122-1'])
 sc('I', 'ghf-18700101-1', '1870-01-01', 'c. 1870', "The armour under the floor", 'Great House — dining room', 'A',
    'Family account',
-   "Family tradition records a soldier in armour found beneath the dining-room floor. The Daily Telegraph (1974) and the Royal Commission (1988) record the account.",
-   [press('N03', 'Daily Telegraph, 16 April 1974 (dates the find to "about 1870")'), HER, ARCH],
+   "Family tradition records a soldier in armour, with his horse, a lance and a shield, found beneath the dining-room floor. The account is in a Royal Commission record (NMR 6048942) and the Daily Telegraph of 16 April 1974. No primary record of a find has been located.",
+   [press('N03', 'Daily Telegraph, 16 April 1974 (dates the find to "about 1870")'), HER, ARCH, w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis')],
    aliases=['ghf-18800101-2'])
 sc('I', 'ghf-18760101-1', '1876-01-01', '1876 – c. 1912', "The limeworks", 'Llandough Limeworks', 'A',
    'Estate papers',
@@ -216,7 +216,7 @@ sc('I', 'ghf-18770101-1', '1877-01-01', '1877', "Division of the farm", 'Bute Es
    "Mary's statement",
    "Mary Williams's statement records that in 1877 the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas, and kept about 9 acres. The Williamses remained as tenants of both. The deed is missing.",
    [MARY, w('/1877-agreement/#sale-1877', 'The 1877 Agreement — the sale'), w('/1877-agreement/#plan', 'The 1877 Agreement — plan'),
-    w('/the-two-parcels/', 'The Two Parcels'), w('/1877-agreement/#sale-1877', 'The 1877 Agreement — Bute lease')],
+    w('/the-two-parcels/', 'The Two Parcels'), w('/1877-agreement/#sale-1877', 'The 1877 Agreement — Bute lease'), w('/forensic-master-chronology-authoritative-corrected-6-october-2026/', 'Forensic Master Chronology (6 October 2026)', 'Analysis')],
    aliases=['ghf-18771106-1'],
    ledger={'W': None,
            'A': 'Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends',
@@ -254,7 +254,7 @@ sc('II', 'ghf-19280101-1', '1928-01-01', '1928', "Last rent on the house", 'Grea
    "Mary's statement",
    "Mary Williams's statement records that in 1928 the last quarry machinery left, and John Williams paid a final rent of about £4 to Alfred Thomas. She saw the receipt. It is missing.",
    [MARY, w('/1877-agreement/#takes-effect', 'The 1877 Agreement — takes effect 1928'),
-    LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration (15 May 1924 agreement)')],
+    LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration (15 May 1924 agreement)'), w('/forensic-master-chronology-authoritative-corrected-6-october-2026/', 'Forensic Master Chronology (6 October 2026)', 'Analysis'), w('/the-two-parcels/', 'The Two Parcels')],
    aliases=['ghf-19240515-1'],
    ledger={'A': 'Freehold: the Williamses (Bute → Thomas → Williams; 1877 agreement and 1928 receipt kept at the house)'})
 sc('II', 'ghf-19360101-1', '1936-01-01', '1936', "Marriage", 'Great House Farm', 'A',
@@ -276,7 +276,7 @@ sc('II', 'ghf-19390501-1', '1939-05-01', 'May 1939', "The 1939 tenancy", 'Great 
 sc('II', 'ghf-19400101-1', '1940-01-01', 'c. 1940', "Twelve years", 'Great House Farm', 'A',
    'Family case',
    "By 1940, twelve years after 1928, no rent has been paid on the house.",
-   [w('/1939-revised-tenancy/#c1940', '1938–39 — c. 1940')],
+   [w('/1939-revised-tenancy/#c1940', '1938–39 — c. 1940'), w('/forensic-master-chronology-authoritative-corrected-6-october-2026/', 'Forensic Master Chronology (6 October 2026)', 'Analysis')],
    ledger={'A': 'Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)'})
 sc('II', 'ghf-19440101-1', '1944-01-01', '1944', "Farm management", 'Great House Farm', 'B',
    "Mary's statement",
@@ -291,13 +291,13 @@ sc('II', 'ghf-19480101-1', '1948-01-01', 'c. 1948 – 49', "Birth of William Buc
 sc('III', 'ghf-19490202-1', '1949-02-02', '2 February 1949', "The 1949 tenancy", 'Great House Farm', 'B',
    'Court record',
    "John Williams surrenders his tenancy. Frederick Buckler's yearly tenancy from Western Ground Rents begins on 2 February 1949. It is not put in writing.",
-   [w('/frederick-buckler/#tenancy-1949', "Frederick Buckler — the 1949 tenancy", 'Court record'), JUDG, w('/the-two-parcels/', 'The Two Parcels')],
+   [w('/frederick-buckler/#tenancy-1949', "Frederick Buckler — the 1949 tenancy", 'Court record'), JUDG, w('/the-two-parcels/', 'The Two Parcels'), w('/scrutiny-and-accountability/case-analysis-connections-patterns-questions/', 'Case Analysis — Connections, Patterns and Questions', 'Analysis')],
    ledger={'S': 'Attempt 1 to make Mary look permitted: her house spoken of as part of Frederick\'s unwritten fields tenancy (Mary rejects it; she still holds the paper title)',
            'B': 'Freehold: Western Ground Rents · tenant: Frederick Buckler (unwritten, from 1949)'})
 sc('III', 'ghf-19500601-1', '1950-06-01', 'June 1950 – c. 1952', "The blanket box", 'Great House Farm', 'A',
    "Mary's statement",
-   "Mary Williams's statement records that a lodger placed by a Penarth estate agent stayed about two years and told her he had taken \"the papers which were in the blanket box including the agreement relating to the farm\" and given them to the agent.",
-   [MARY, w('/1877-agreement/#papers-taken', 'The 1877 Agreement — papers taken')],
+   "Mary Williams's statement records that in June 1950 Mr Knapp, a Penarth estate agent, placed a lodger, Bruce Sutherland, at the farmhouse. He stayed about two years, and later told her he had taken \"the papers which were in the blanket box including the agreement relating to the farm\" and given them to Mr Knapp.",
+   [MARY, w('/1877-agreement/#papers-taken', 'The 1877 Agreement — papers taken'), w('/scrutiny-and-accountability/case-analysis-connections-patterns-questions/', 'Case Analysis — Connections, Patterns and Questions', 'Analysis'), w('/scrutiny-and-accountability/master-scrutiny-issue-register/additions-2026-10-06/', 'Register Additions — 6 October 2026 (A-080: Mr Knapp)', 'Analysis')],
    ledger={'A': 'Freehold: the Williamses · their deeds taken from the blanket box (missing from now on; title buried, not extinguished)'})
 sc('III', 'ghf-19521010-1', '1952-10-10', '1952 – 53', "Last rent on the fields", "Landlords' agents", 'B',
    'Court record',
@@ -306,9 +306,9 @@ sc('III', 'ghf-19521010-1', '1952-10-10', '1952 – 53', "Last rent on the field
    aliases=['ghf-19530101-1'])
 sc('III', 'ghf-19550202-1', '1955-02-02', '2 February 1955', "The 1955 possession order", 'High Court / Great House Farm', 'AB',
    'Court record',
-   "On 2 February 1955 Western Ground Rents obtains a High Court order for possession against Frederick Buckler, described as \"the whole of the farm\". On 4 July 1955 possession is taken of everything except the farmhouse and garden. Mary Williams had recently returned from hospital.",
-   [w('/1955-possession-order/#order', 'The 1955 Possession Order', 'Court record'), w('/1955-possession-order/#enforcement', 'The 1955 Possession Order — enforcement', 'Court record')],
-   ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)',
+   "On 2 February 1955 Western Ground Rents obtains a High Court order for possession against Frederick Buckler, by summary judgment, described as \"the whole of the farm\". On 4 July 1955 possession is taken of everything except the farmhouse and garden; the 1987 judgment attributes the exception to Mary's recent return from hospital and her strong objection.",
+   [w('/1955-possession-order/#order', 'The 1955 Possession Order', 'Court record'), w('/1955-possession-order/#enforcement', 'The 1955 Possession Order — enforcement', 'Court record'), w('/scrutiny-and-accountability/case-analysis-connections-patterns-questions/', 'Case Analysis — Connections, Patterns and Questions', 'Analysis')],
+   ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland: the family account is that it was taken in 1955 (not yet on the wiki)',
            'S': 'Attempt 2: High Court order against the fields tenant for "the whole of the farm" (house not taken; Mary never heard)',
            'B': 'Freehold and possession: Western Ground Rents (fields taken 4 July 1955)'})
 sc('III', 'ghf-19590101-1', '1959-01-01', '1959', "1959 tenancy offer", 'Great House Farm', 'A',
@@ -354,8 +354,8 @@ sc('IV', 'ghf-19691231-1', '1969-12-31', '31 December 1969', "Conveyance to BP P
 sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', "Village green and planning permission", 'Planning office', 'AB',
    'Planning file',
    "On 16 June 1970 land beside Leckwith Road is registered as village green VG41. On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
-   [REDEV, TL], aliases=['ghf-19700616-1'],
-   ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland taken 1955 · land south of the farmhouse taken by the council: village green VG41 (1970)'})
+   [REDEV, TL, ], aliases=['ghf-19700616-1'],
+   ledger={'A': 'Freehold: the Williamses (Mary in the house) · land beside Leckwith Road registered as village green VG41 (1970)'})
 sc('IV', 'ghf-19740101-1', '1974-01-01', '1974', "Royal Commission survey", 'Great House — interior', 'A',
    'Heritage record',
    "H. J. Thomas surveys the ground floor for the Royal Commission. The house \"remained partially recorded because of problems of access created by an ownership dispute\".",
@@ -373,7 +373,7 @@ sc('IV', 'ghf-19740703-1', '1974-07-03', '3 July 1974', "1974 possession action"
    ledger={'A': 'Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)'})
 sc('IV', 'ghf-19741031-1', '1974-10-31', 'September – October 1974', "The 1974 letters", 'Great House Farm', 'A',
    'Court record',
-   "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary was not given notice. On 31 October the warrant is withdrawn and BP writes to Mary allowing her to remain in the farmhouse rent-free for life. She does not accept.",
+   "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary had not been given notice. On 31 October the warrant is withdrawn, and BP writes to \"Mrs Buckler (Mrs Williams)\" that she may remain in the farmhouse under licence. She does not accept.",
    [w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record'), JUDG,
     w('/1974-licence-letters/#warrant', 'The 1974 Licence Letters — the warrant', 'Court record')],
    aliases=['ghf-19741031-2', 'ghf-19740919-1'],
@@ -530,8 +530,8 @@ sc('VI', 'ghf-19881208-1', '1988-12-07', '7 – 9 December 1988', "Local reactio
    aliases=['ghf-press-n15-08', 'ghf-press-n15-09'])
 sc('VI', 'ghf-19881212-1', '1988-12-12', 'December 1988', "Royal Commission in the rubble", 'Great House Farm — rubble', 'A',
    'Heritage record',
-   "R. F. Suggett of the Royal Commission examines the rubble, records a fireplace jamb and an ogee-stopped beam, and notes the loss of a carved stone capital by the front door.",
-   [HER, ARCH])
+   "An examination of the rubble, recorded in the heritage record, notes a fireplace jamb and an ogee-stopped beam with torus, and the loss of the carved stone capital kept by the front door.",
+   [HER, ARCH, w('/demolition-1988/', '1988: Possession and Demolition'), w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis')])
 
 # ---------------------------------------------------------------- ACT VII
 sc('VII', 'ghf-19890320-1', '1989-03-20', '20 March 1989', "Site clearance", 'Great House Farm', 'A',
@@ -556,8 +556,8 @@ sc('VII', 'ghf-19890414-1', '1989-04-14', '14 April 1989', "European Commission 
     {'type': 'Court record', 'title': 'Buckler v United Kingdom, Commission decision (PDF)', 'url': WIKI + '/wp-content/uploads/2026/09/wp-1790112811838.pdf'}])
 sc('VII', 'ghf-19891107-1', '1989-11-07', 'October – November 1989', "Outline application", 'Vale of Glamorgan planning', 'AB',
    'Planning file',
-   "BP applies for outline planning permission for housing (89/01396/OUT, received 8 November 1989). GGAT advises an archaeological assessment and is then commissioned by BP to carry it out. Its report calls the farmhouse \"a county treasure\".",
-   [REDEV, GGAT_REV, LRT('later-dealings', 'Land Registry Titles — later dealings')],
+   "BP applies for outline planning permission for housing (89/01396/OUT, received 8 November 1989). In the same document GGAT advises an archaeological assessment, prices the work at £2,000 and discloses negotiations with BP's agents; it is then commissioned to carry out the assessment. GGAT's 1989 planning report describes the farmhouse as having been listed as a \"county treasure\"; Cadw states it was never listed.",
+   [REDEV, GGAT_REV, LRT('later-dealings', 'Land Registry Titles — later dealings'), w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis'), LEGAL],
    aliases=['ghf-19891108-1', 'ghf-19891010-1'])
 sc('VII', 'ghf-19900313-1', '1990-03-13', 'February – March 1990', "Outline permission", 'Vale of Glamorgan planning', 'AB',
    'Planning file',
@@ -569,8 +569,8 @@ sc('VII', 'ghf-19900801-1', '1990-08-01', 'August – October 1990', "Evaluation
    [ARCH, GGAT_REV, REDEV], aliases=['ghf-19901015-1'])
 sc('VII', 'ghf-19910821-1', '1991-08-21', '21 August 1991', "Heritage record entry", 'Historic Environment Record', 'A',
    'Heritage record',
-   "The Historic Environment Record records that the house and buildings \"were suddenly and completely demolished by B.P. Properties Ltd. on 6th December 1988 amid considerable local controversy\".",
-   [HER])
+   "The regional Historic Environment Record entry for Great House Farm (GGAT02038s) is compiled on 21 August 1991. The Royal Commission's archive record (NMR 6048945) states: \"The house and farm buildings were suddenly and completely destroyed by B.P. Properties Ltd. on 6th December 1988 amid considerable local controversy.\"",
+   [HER, CADW_CRIT, w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis')])
 sc('VII', 'ghf-19920514-1', '1992-05-14', '14 May 1992', "Reserved matters application", 'Vale of Glamorgan planning', 'AB',
    'Planning file',
    "On 14 May 1992 Ideal Homes Wales applies for approval of 20 houses (92/00671/RES).",
@@ -641,8 +641,8 @@ sc('VIII', 'ghf-20260419-1', '2026-04-19', '19 April – 25 May 2026', "Complain
    ledger={'M': "Land Registry, May 2026: 'registered correctly'"})
 sc('VIII', 'ghf-20260521-1', '2026-05-21', '21 May 2026', "Cadw disclosure", 'Cadw', 'A',
    'Official correspondence',
-   "On 21 May 2026 Cadw releases two photographs of 29 July 1988, coded \"YYY\". It says its paper file is \"quite likely\" destroyed; in July, \"most likely\".",
-   [RAC, CADW_CRIT, CADW_PH], image='/media/1988-cadw-barn.jpg')
+   "On 21 May 2026 Cadw releases two photographs of 29 July 1988, coded \"YYY\", which it describes as \"marginally below the bar\"; on 10 July it says the code meant the building did not meet the criteria. It says its paper file is \"quite likely\" destroyed, and later \"most likely\"; it holds no destruction record.",
+   [RAC, CADW_CRIT, CADW_PH, w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis')], image='/media/1988-cadw-barn.jpg')
 sc('VIII', 'ghf-20260730-1', '2026-07-30', 'June – July 2026', "Schedule of registration documents", 'HM Land Registry', 'AB',
    'Official correspondence',
    "On 30 July 2026 HM Land Registry supplies a schedule of 43 documents on the first-registration files. The 31 December 1969 conveyance and the 1971 abstract are not listed.",
@@ -658,20 +658,20 @@ sc('VIII', 'ghf-20260908-1', '2026-09-08', '8 September 2026', "Glamorgan Archiv
    [w('/1877-agreement/#glamorgan-2026-4097b', 'The 1877 Agreement — Glamorgan Archives reply', 'Official correspondence')])
 sc('VIII', 'ghf-20260917-1', '2026-09-17', '17 – 21 September 2026', "Complaints and correspondence", 'Cadw / Stephen Doughty MP', 'A',
    'Official correspondence',
-   "17–21 September 2026: formal complaint to Cadw; letters to Stephen Doughty MP; records request to Heneb. A Land Registry agent states the title was \"closed in 2005\".",
-   [RAC, w('/restoration-campaign/', 'The Restoration Campaign'), LRT('hmlr-2026', 'Land Registry Titles — 2026 complaint')],
+   "September 2026: the family make a formal complaint to Cadw (investigation commenced 29 September), write to Stephen Doughty MP on 18 and 19 September, and request records from Heneb on 20 September. On 21 September an HM Land Registry support agent states the title was \"closed in 2005\".",
+   [RAC, w('/restoration-campaign/', 'The Restoration Campaign'), LRT('hmlr-2026', 'Land Registry Titles — 2026 complaint'), w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis')],
    aliases=['ghf-20260918-1'])
 sc('VIII', 'ghf-20260923-1', '2026-09-23', '23 September 2026', "House of Lords papers", 'The National Archives', 'A',
    'Official correspondence',
-   "On 23 September 2026 The National Archives identifies the House of Lords papers in BP Properties Ltd v Buckler, catalogued in May 2026.",
-   [RAC])
+   "On 23 September 2026 The National Archives reports that the House of Lords judicial papers in BP Properties Ltd v Buckler survive (YHL/PO/JO/10/11/2536). Earlier searches had not found them.",
+   [RAC, w('/records-access-chronology/source-conflicts-register/', 'Source Conflicts Register', 'Analysis'), LEGAL])
 sc('VIII', 'ghf-20260925-1', '2026-09-25', '25 – 27 September 2026', "Woodland offer", 'Forest of Cardiff', 'A',
    'Official correspondence',
    "On 25 September 2026 the Forest of Cardiff offers the family a route to ownership of the woodland. On 27 September the family decline.",
    [w('/woodland/', 'Woodland'), RAC])
 sc('VIII', 'ghf-20260927-1', '2026-09-27', '27 – 29 September 2026', "Complaints to Heneb and the Reviewer", 'Heneb / HM Land Registry', 'AB',
    'Official correspondence',
-   "27–29 September 2026: complaint to Heneb about GGAT's role, 1982–1995; referral of HM Land Registry to the Independent Complaints Reviewer (ICR/090/26); preservation notice to eleven public bodies.",
+   "27–29 September 2026: the family's formal complaint to Heneb and GGAT Ltd about GGAT's role, 1982–1995 (an investigating officer is appointed on 29 September); HM Land Registry's handling referred to the Independent Complaints Reviewer (ICR/090/26).",
    [GGAT_REV, RAC])
 sc('VIII', 'ghf-20260929-1', '2026-09-29', '29 September – 5 October 2026', "Archive releases", 'Cadw / RCAHMW / Museum Wales', 'A',
    'Official correspondence',
