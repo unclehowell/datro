@@ -1,11 +1,10 @@
-# Great House Farm Story — LLMs.txt
+# Tŷ Mawr — The Great House Farm Story — llms.txt
 
-> The complete story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, Vale of Glamorgan, Wales, told event by event in strict chronological order.
-> Every event is drawn from the Great House Farm Wiki evidence catalogue: https://greathousefarmwiki.wordpress.com/
-> Structured JSON (every event with an ISO sort date and stable id): https://bpvsbuckler.bucklerfamily.estate/api/timeline.json
-> Readable full story (static HTML, no JavaScript needed): https://bpvsbuckler.bucklerfamily.estate/story/
-> Plain narration script: https://bpvsbuckler.bucklerfamily.estate/story/transcript.txt
-> Narrated player (press play): https://bpvsbuckler.bucklerfamily.estate/ — deep link to any event with ?event=<id> or ?year=<year>
+> The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, Vale of Glamorgan, Wales, in 129 scenes across 8 acts with a prologue and epilogue, in strict date order.
+> Every scene is drawn from the Great House Farm Wiki evidence catalogue (https://greathousefarmwiki.wordpress.com/) and carries its evidence links.
+> Structured JSON (acts, cast, scenes, evidence, stable ids): https://bpvsbuckler.bucklerfamily.estate/api/timeline.json
+> Printable script (static HTML, no JavaScript needed): https://bpvsbuckler.bucklerfamily.estate/story/
+> Storyboard: https://bpvsbuckler.bucklerfamily.estate/?view=storyboard · Cast: https://bpvsbuckler.bucklerfamily.estate/?view=cast · Any scene: https://bpvsbuckler.bucklerfamily.estate/?event=<id>
 
 ## About
 
@@ -26,1612 +25,1186 @@ Truth labels follow the Wiki: documented fact, family evidence, reconstruction, 
 
 ## Full Timeline
 
-149 events, in strict chronological order.
+129 scenes, in strict date order.
 
-### 1. c.650 — St Dochdwy's, Llandough
+### P.1 (1). c. AD 650 — The church beside the farm
 
-Event id: ghf-06500101-1 · Date: 0650-01-01
+Prologue: An Ancient Place · Scene id: ghf-06500101-1 · Date: 0650-01-01 · Parcel: Not yet known · Basis: Family account
 
-St Dochdwy's church, beside the farm, is thought to stand on the site of an early monastery. This rests on the family's account; the published reference is still awaited, and how the site relates to the two parcels is unclear.
+Beside the farm stands St Dochdwy's church, thought to stand on the site of an early Christian monastery. The published reference for this is still being traced.
 
-- **FAMILY HISTORIAN**: The church next to the farm is said to have begun as a monastery.
-- **ARCHIVIST**: Then we need the published reference before we rely on it.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Archaeology and Heritage (greathousefarmwiki.wordpress.com/archaeology/)
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
+- Wiki page: Master Timeline — https://greathousefarmwiki.wordpress.com/timeline/
 
-### 2. 1100 — Llandough, Glamorgan
+### P.2 (2). 12th – 14th century — Medieval occupation
 
-Event id: ghf-11000101-1 · Date: 1100-01-01
+Prologue: An Ancient Place · Scene id: ghf-12000101-1 · Date: 1200-01-01 · Parcel: House parcel (A) · Basis: Archaeological record
 
-Robert Fitzhamon grants the lordship of Llandough to the Walsche family, establishing feudal control of the area that includes the future Great House Farm.
+People are living on the site in the Middle Ages: pottery of the 12th to early 14th centuries is later found on the slope just north-east of the house. The Royal Commission classes the house, Tŷ Mawr ('Great House'), as sub-medieval and probably 17th-century, possibly with a medieval core like Brynwell in neighbouring Leckwith.
 
-- **ROBERT FITZHAMON**: I grant Walsche the Llandough lordship to manage, tax and defend.
-- **LORD WALSCHE**: We now hold Llandough and its revenues under Fitzhamon's grant.
+- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-### 3. 1200s — Llandough Church
+### P.3 (3). 1552 – 1829 — Cydfin, or Tŷ Mawr
 
-Event id: ghf-12000101-1 · Date: 1200-01-01
+Prologue: An Ancient Place · Scene id: ghf-15520101-1 · Date: 1552-01-01 · Parcel: Whole farm (A + B) · Basis: Estate papers
 
-The site beside St Dochdwy's church at Llandough is occupied in the medieval period: sherds of 12th- to early 14th-century pottery were later found on the slope just north-east of the house. The house itself, Tŷ Mawr ('Great House'), was classed by the Royal Commission as a sub-medieval house, probably 17th-century, possibly with a medieval core.
+The Llandough manorial leases later kept in the Bute estate papers run from 1552 to 1829. The catalogue lists leases of 'Cydfin Farm or Ty Mawr Farm (107 a.)' — the farm's older name.
 
-- **MASTER MASON**: There has been building beside St Dochdwy's for generations.
-- **LOCAL FARMER**: The pottery on the slope says folk have lived here a long time.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Estate papers: National Library of Wales, Bute Estate Records D 219: Llandough manorial leases and agreements, 1552–1829 — https://archives.library.wales/index.php/llandough-manorial-leases-and-agreements
+- Wiki page: Name & Location Variations — https://greathousefarmwiki.wordpress.com/great-house-farm/name-variations/
 
-### 4. 1215 — Monastic Estate
+### P.4 (4). Mid 16th – late 18th century — The Vaughans of Great House
 
-Event id: ghf-12150101-1 · Date: 1215-01-01
+Prologue: An Ancient Place · Scene id: ghf-15600101-1 · Date: 1560-01-01 · Parcel: Whole farm (A + B) · Basis: Heritage record
 
-Tewkesbury Abbey and the Prior of Cardiff hold Great House and its lands, taking tithes and agricultural income from Llandough for over three centuries.
+Great House is the chief freehold farm of the parish. The Vaughans, a minor gentry family, hold it from the mid-16th century until the late 18th; their memorials survive in Llandough church and churchyard.
 
-- **ABBOT'S STEWARD**: Llandough's produce and tithes are entered as revenue for the abbey.
-- **VILLAGE WOMAN**: Our harvest and church payments go into the abbey's accounts.
+- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
 
-### 5. 1215 — Great House Site — NE Slope
+### P.5 (5). 1667 — The Williamses arrive
 
-Event id: ghf-12150102-1 · Date: 1215-01-02
+Prologue: An Ancient Place · Scene id: ghf-16670101-1 · Date: 1667-01-01 · Parcel: House parcel (A) · Basis: Mary's statement
 
-Archaeological evidence confirms medieval occupation of the Great House site: sherds of C12th, C13th and early C14th pottery on the steep slope immediately NE of the house. The HER classifies Great House as a sub-medieval direct-entry house with clear affinities to Brynwell, a medieval farmhouse in neighbouring Leckwith parish. A reported 'armour' find is dealt with under c.1870 and c.1880.
+By Mary Williams's account, her family's life at Great House begins in 1667. Family tradition remembers it as a purchase; later estate records treat the family as tenants. No earlier written source has yet been found.
 
-- **HER OFFICER**: C12th-C14th pottery sherds on the NE slope confirm continuous occupation from that date.
-- **RCAHMW INSPECTOR**: The core of the house may have been medieval — cross-passage end-chimney plan with masonry partitions and external wall batter.
-- **ARCHAEOLOGIST**: Medieval ironwork found under the rear wing floor c.1880, now at the National Museum of Wales.
-- **RCAHMW INSPECTOR**: Great House has affinities with Brynwell, a medieval farmhouse in Leckwith, also modernised by the Bute Estate in the C19th.
-- Source: GGAT HER PRN 02038s via Archwilio; RCAHMW Inventory Vol IV Part 2; Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+> The family's case: The family hold, from Mary's statement and the 1974 Daily Telegraph report, that their ancestors acquired Tŷ Mawr in about 1667.
 
-### 6. 1444 — Raglan
+- Mary's statement: Mary Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
+- Wiki page: The Williams / Buckler Family — origins — https://greathousefarmwiki.wordpress.com/williams-buckler-family/#origins
 
-Event id: ghf-14440101-1 · Date: 1444-01-01
+### P.6 (6). Early 19th century — The Bute Estate takes the freehold
 
-Sir William Thomas Herbert of Raglan purchases the manor and lordship of Llandough and St Mary Church, bringing them into the Herbert family's territorial network.
+Prologue: An Ancient Place · Scene id: ghf-18000101-1 · Date: 1800-01-01 · Parcel: Whole farm (A + B) · Basis: Heritage record
 
-- **SIR WILLIAM THOMAS**: We have bought Llandough manor and added it to the Herbert estates.
-- **LOCAL PRIEST**: Llandough's manorial control passes to the Herbert family of Raglan.
+Early in the 19th century the Bute Estate acquires the freehold of Great House. The manorial courts for Llandough and Leckwith are held in the house, and the estate modernises it, as it does neighbouring Brynwell.
 
-### 7. 1536 — Legal Chambers
+- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
+- Wiki page: The Bute Estate — https://greathousefarmwiki.wordpress.com/bute-estate/
 
-Event id: ghf-15360101-1 · Date: 1536-01-01
+### P.7 (7). 1818 – 1821 — Llandough enters Bute's books
 
-Sir Edward Carne, a lawyer and diplomat, purchases the Llandough lordship from the 2nd Earl of Worcester, continuing high‑status lay ownership of the manor.
+Prologue: An Ancient Place · Scene id: ghf-18180101-2 · Date: 1818-01-01 · Parcel: Whole farm (A + B) · Basis: Estate papers
 
-- **SIR EDWARD CARNE**: I have acquired the Llandough lordship from the Earl of Worcester.
-- **LLANDOUGH TENANT**: The legal lord of Llandough changes from Worcester's line to Carne.
+From 1818 the chief rents of Llandough are taken into the Bute manorial rental, and from 1821 Llandough and Cogan appear in the Bute estate rentals.
 
-### 8. 1539 — Great House
+- Estate papers: National Library of Wales, Bute Estate Records R1: Glamorgan Estate rentals — https://archives.library.wales/index.php/glamorgan-estate-rentals
 
-Event id: ghf-15390101-1 · Date: 1539-01-01
+### P.8 (8). 1824 — Stewart's survey
 
-Henry VIII's Dissolution of the Monasteries transfers Tewkesbury's ecclesiastical holdings, including Llandough lands, to the Crown as secular property.
+Prologue: An Ancient Place · Scene id: ghf-18240101-1 · Date: 1824-01-01 · Parcel: Whole farm (A + B) · Basis: Estate papers
 
-- **ROYAL COMMISSIONER**: These former Tewkesbury lands now vest in the Crown by statute.
-- **OLDER VILLAGER**: Control of local church lands moves from abbey to Crown authority.
+David Stewart surveys and values the Bute Glamorgan estate. The wiki's research records the farm under the name 'Cedfin'; the exact wording in the survey is still to be checked.
 
-### 9. 1543 — Estate Office
+- Wiki page: Name & Location Variations (Stewart survey, D/d B E/1–2) — https://greathousefarmwiki.wordpress.com/great-house-farm/name-variations/
 
-Event id: ghf-15430101-1 · Date: 1543-01-01
+### P.9 (9). c. 1840 — From "Great House" to "farm"
 
-Post‑Dissolution grants move Llandough through lay owners and into the wider Herbert–Pembroke orbit, later feeding into what becomes the Bute estate.
+Prologue: An Ancient Place · Scene id: ghf-18400101-1 · Date: 1840-01-01 · Parcel: Whole farm (A + B) · Basis: Public record
 
-- **HERBERT ESTATE LAWYER**: Llandough is one of several manors consolidated into our estate.
-- **SMALLHOLDER**: The superior owner changes again on paper; our tenure is recorded under them.
+Census and tithe records start describing the place in different ways — 'Great House', then 'Great House Farm'. The records alone do not show the change was deliberate.
 
-### 10. 1552 — Manorial Court
+> The family's case: The family's case is that re-describing the manorial court house as a mere farmhouse wore away its standing, and theirs, and hid what the building was.
 
-Event id: ghf-15520101-1 · Date: 1552-01-01
+- Wiki page: Farmhouse Nomenclature — https://greathousefarmwiki.wordpress.com/great-house-farm/farmhouse-nomenclature/
+- Wiki page: Name & Location Variations — https://greathousefarmwiki.wordpress.com/great-house-farm/name-variations/
 
-The Bute–Pembroke estate treats itself as manorial lord, issuing leases for Llandough Farm (about 166 acres) and recording long‑standing occupiers as tenants.
+### I.1 (10). c. 1858 — Bones by the church
 
-- **MANOR STEWARD**: We register Llandough occupiers as tenants in the Bute–Pembroke books.
-- **TENANT FARMER**: Our occupation is recorded as a tenancy under the Bute–Pembroke estate.
+Act I: The Bargain · Scene id: ghf-18580101-1 · Date: 1858-01-01 · Parcel: Not Great House Farm land · Basis: Museum record
 
-### 11. 1560 — Great House Farm
+Workmen digging foundations at Llandough Church Farm find about six skeletons with a medieval iron spearhead and a rowel spur. The bones are reburied by the church stile. A 1931 letter records the finds for the National Museum, which takes in the spur and spearhead in 1963 (accession 63.24).
 
-Event id: ghf-15600101-1 · Date: 1560-01-01
+- Museum record: 1931 letter, Museum Wales file 63.24 — https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e106-r33-a1-1931-letter-museum-wales-file-63-24/
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-The Vaughan family, a minor gentry family, become the chief freehold farmers of Great House from the mid C16th. They occupy the property for over two centuries, until the late C18th. Several memorial inscriptions relating to the family are preserved in Llandough parish church and churchyard. The Vaughans represent the established local gentry class who held the chief freehold farm of the parish for generations.
+### I.2 (11). c. 1870 — The soldier under the floor
 
-- **VAUGHAN PATRIARCH**: Our family, the Vaughans, are now established as the chief freehold farmers of Great House.
-- **PARISH CLERIC**: The Vaughan family memorials will be preserved in our church and churchyard for centuries to come.
-- **VAUGHAN PATRIARCH**: We are minor gentry — not the highest rank, but we hold this land as freeholders, not tenants.
-- **LOCAL RECORDER**: The Vaughans will hold Great House from the mid C16th through to the late C18th — more than two centuries.
-- Source: GGAT HER PRN 02038s via Archwilio
+Act I: The Bargain · Scene id: ghf-18700101-1 · Date: 1870-01-01 · Parcel: House parcel (A) · Basis: Family account
 
-### 12. 1667 — Great House Farm
+Family tradition tells of a soldier in armour, with horse, lance and small shield, found beneath the dining-room floor. The Daily Telegraph repeats the story in 1974, and in 1988 the Royal Commission notes a report of 'armour' under the rear wing. No primary record of the find has been located, and the 1988 note dates it to c. 1880. Museum Wales says the medieval ironwork it holds came from Church Farm in 1858, not Great House.
 
-Event id: ghf-16670101-1 · Date: 1667-01-01
+> The family's case: The family see the find as proof of the site's antiquity — a lead nobody followed up before the house was destroyed.
 
-According to Mary Williams's own statement, the Williams family's occupation of Great House begins in 1667. No earlier written source has yet been found; family tradition remembers the entry as a purchase, while estate records treat the family as tenants.
+- Newspaper: Daily Telegraph, 16 April 1974 (dates the find to "about 1870") — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n03
+- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-> CHALLENGE: The family contend that their occupation from 1667 amounted to ownership in all but name, and that this claim was asserted for more than 300 years. An earlier written source is still being sought.
+### I.3 (12). 1876 – c. 1912 — The limeworks
 
-- **WILLIAMS ANCESTOR**: I paid a large court fine to enter Great House as our family's holding.
-- **HERBERT STEWARD**: Our roll shows the Williams entry as a manorial lease, not freehold.
-- **WILLIAMS ANCESTOR**: But this is our home now, purchased with honest coin for our heirs.
-- **HERBERT STEWARD**: The Court Baron record will show this as leasehold under our lordship.
-- **WILLIAMS ANCESTOR**: We have the receipt. Our children will know we bought this land.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act I: The Bargain · Scene id: ghf-18760101-1 · Date: 1876-01-01 · Parcel: House parcel (A) · Basis: Estate papers
 
-### 13. 1677 — Estate Records
+The Bute Estate lets about 33 acres that had been part of Great House Farm for the Llandough Limeworks, which work the stone until about 1912.
 
-Event id: ghf-16770101-1 · Date: 1677-01-01
+> The family's case: The family's case, from Mary's statement, is that the farm was given up for quarrying on terms that the freehold of the house parcel would pass to her grandfather once quarrying ended. That agreement is among the missing papers.
 
-Through marriage, the Llandough lordship passes into the Talbot estate at Penrice and Margam, while the Williams family continues in occupation at Great House.
+- Wiki page: Llandough Limeworks — https://greathousefarmwiki.wordpress.com/llandough-limeworks/
 
-- **TALBOT HEIR**: By marriage we acquire Llandough among our Glamorgan holdings.
-- **WILLIAMS FAMILY MEMBER**: The superior lord's name changes; our occupation at Great House continues.
+### I.4 (13). 1877 — The farm is split in two
 
-### 14. 1770 — Estate Transfer
+Act I: The Bargain · Scene id: ghf-18770101-1 · Date: 1877-01-01 · Parcel: Whole farm (A + B) · Basis: Mary's statement
 
-Event id: ghf-17700101-1 · Date: 1770-01-01
+The Bute Estate serves notice to quit, then sells the farmhouse and about 10 acres to the quarryman Daniel Thomas, keeping about 9 acres of fields. The Williamses become tenants of both. From here the farm is two parcels: the house (Parcel A) and the eastern fields (Parcel B). The deed is missing.
 
-Great House passes through elite owners, including Valentine Morris and Sir Mark Wood, before later consolidation into the Bute estate.
+> The family's case: The family contend that the 1877 sale took the house parcel out of the Bute title for good, so it could never pass to WGR or BP.
 
-- **VALENTINE MORRIS**: I treat Great House as one of several Glamorgan assets for income.
-- **LOCAL LABOURER**: Estate owners change; our local work under their control continues.
+- Mary's statement: Mary Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
+- Wiki page: The 1877 Agreement — the sale — https://greathousefarmwiki.wordpress.com/1877-agreement/#sale-1877
+- Wiki page: The 1877 Agreement — plan — https://greathousefarmwiki.wordpress.com/1877-agreement/#plan
+- Wiki page: The Two Parcels — https://greathousefarmwiki.wordpress.com/the-two-parcels/
 
-### 15. 1794 — Title Office
+### I.5 (14). 6 November 1877 — The Bute lease
 
-Event id: ghf-17940101-1 · Date: 1794-01-01
+Act I: The Bargain · Scene id: ghf-18771106-1 · Date: 1877-11-06 · Parcel: Fields (B) · Basis: Estate papers
 
-Sir Mark Wood acquires title and treats Great House as a revenue asset within his wider property portfolio, before it is surveyed and later taken into Bute hands.
+The Bute Estate grants John Williams a lease, held today at Glamorgan Archives. On the family's reconstruction it covers the fields, Parcel B. A copy is still to be obtained.
 
-- **SIR MARK WOOD**: I hold Great House as an income‑producing property in my portfolio.
-- **WILLIAMS FARMER**: Our long‑term home appears in someone else's accounts as an asset.
+- Wiki page: The 1877 Agreement — Bute lease — https://greathousefarmwiki.wordpress.com/1877-agreement/#sale-1877
 
-### 16. 1800 — Great House
+### I.6 (15). 11 November 1891 — Three geese
 
-Event id: ghf-18000101-1 · Date: 1800-01-01
+Act I: The Bargain · Scene id: ghf-18911111-1 · Date: 1891-11-11 · Parcel: Whole farm (A + B) · Basis: Newspaper
 
-In the early C19th, the freehold of Great House is acquired by the Bute Estate — one of the largest landed estates in Wales, controlled by the Marquess of Bute. The manorial courts for Llandough and Leckwith are held in Great House, confirming its historic role as a seat of local governance. The Bute Estate modernises the property in the C19th, as it did with neighbouring Brynwell farmhouse in Leckwith.
+Three geese are stolen from "Mr. John Williams, Great House Farm, Llandough". The court report is contemporary proof that John Williams is living at the farm.
 
-- **BUTE ESTATE AGENT**: The Bute Estate now holds the freehold of Great House. We will modernise the property.
-- **COURT OFFICIAL**: The manorial courts for Llandough and Leckwith shall be held in Great House from this time.
-- **BUTE ESTATE AGENT**: We will also modernise Brynwell in Leckwith, which shares Great House medieval origins.
-- **LOCAL TENANT**: The Bute Estate are new landlords. They hold the freehold now.
-- Source: GGAT HER PRN 02038s via Archwilio; RCAHMW Inventory Vol IV Part 2
+- Newspaper: 1891 court report — farmyard theft — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n01
 
-### 17. 1818 — Estate Records
+### I.7 (16). May 1897 — Marconi
 
-Event id: ghf-18180101-1 · Date: 1818-01-01
+Act I: The Bargain · Scene id: ghf-18970501-1 · Date: 1897-05-01 · Parcel: Not yet known · Basis: Family account
 
-Lambert Williams of Cardiff enters formal written agreements with the Bute estate between 1818 and 1835, evidencing the Williams family as a recognised legal entity in local property dealings.
+Marconi's wireless trials at Lavernock Point send the first signals across open sea, to Flat Holm. Family tradition holds that Thomas Williams of Great House carted Marconi and his equipment to the point. The trials are documented; the family's part is not yet proved.
 
-- **LAMBERT WILLIAMS**: These written agreements show I deal with the Bute estate directly.
-- **BUTE ESTATE AGENT**: We sign deeds with Lambert Williams over Llandough premises, 1818–1835.
-- **LAMBERT WILLIAMS**: These documents record our position for future generations to cite.
+- Newspaper: Press report of the Lavernock trials, 1897 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n02
 
-### 18. 1818 — Estate Accounts
+### I.8 (17). 23 February 1905 — A Bute conveyance
 
-Event id: ghf-18180101-2 · Date: 1818-01-01
+Act I: The Bargain · Scene id: ghf-19050223-1 · Date: 1905-02-23 · Parcel: House parcel (A) · Basis: Land Registry record
 
-Chief rents of Llandough are transferred into the manorial rental accounts, simplifying estate bookkeeping and packaging obligations for future buyers.
+A Bute conveyance of this date later turns up on the WA231076 registration file and is noted on the woodland title WA735527. On the current reading it concerns Parcel A; what it conveyed is still to be confirmed.
 
-- **ESTATE ACCOUNTANT**: We combine Llandough chief rents into the manorial rental column.
-- **COTTAGER**: Our payments are re‑labelled on paper, but the amounts still fall on us.
+- Land Registry record: Land Registry Titles — deeds before registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration
 
-### 19. 1820 — Estate Offices
+### I.9 (18). 1908 — John Williams takes over
 
-Event id: ghf-18200101-1 · Date: 1820-01-01
+Act I: The Bargain · Scene id: ghf-19080101-1 · Date: 1908-01-01 · Parcel: Whole farm (A + B) · Basis: Mary's statement
 
-A land exchange between the Marquess of Bute and Lord Plymouth in Llandough consolidates Great House within Bute's controlled block of estates.
+Mary's grandfather dies. Her father, John Williams, takes over both tenancies: the house from the Thomas side, the fields from Bute.
 
-- **BUTE REPRESENTATIVE**: This exchange secures Llandough parcels firmly within the Bute estate.
-- **LOCAL OBSERVER**: New memoranda and surveys mark Bute as main landowner here.
+- Mary's statement: Mary Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
+- Wiki page: John Williams — 1908 — https://greathousefarmwiki.wordpress.com/john-williams/#y1908
 
-### 20. 1821 — Rent Collection
+### I.10 (19). 1910 or 1911 — Frederick Buckler is born
 
-Event id: ghf-18210101-1 · Date: 1821-01-01
+Act I: The Bargain · Scene id: ghf-19100101-1 · Date: 1910-01-01 · Parcel: n/a · Basis: Family account
 
-Llandough and Cogan appear in Bute rentals from 1821 onward, consolidating manorial rents under a single administrative ledger controlled by the estate.
+Frederick Buckler is born. The year is worked back from his death in 1967, aged 56; his certificates are awaited.
 
-- **RENT COLLECTOR**: The Bute estate now logs Llandough and Cogan in the master rental.
-- **WILLIAMS FARMER**: We pay to them, though this land has been ours for generations past.
+- Wiki page: Frederick Buckler — https://greathousefarmwiki.wordpress.com/frederick-buckler/
 
-### 21. 1824 — Survey Office
+### I.11 (20). 10 August 1913 — Mary is born
 
-Event id: ghf-18240101-1 · Date: 1824-01-01
+Act I: The Bargain · Scene id: ghf-19130810-1 · Date: 1913-08-10 · Parcel: House parcel (A) · Basis: Mary's statement
 
-Following Sir Mark Wood's property auction, surveyor David Stewart records Great House Farm under the alias 'Cedfin' in the Bute estate survey of Glamorgan holdings.
+Mary Williams is born in the farmhouse, the daughter of John Williams. She will live there for the rest of her life.
 
-- **SURVEYOR STEWART**: I record this property as Great House Farm, alias Cedfin, in Bute accounts.
-- **WILLIAMS OCCUPANT**: The name on their maps matters little; we know who lives and works here.
-- **SURVEYOR STEWART**: Tithes of Llandough purchased in 1824 are now under Bute ownership.
+- Wiki page: Mary Williams — https://greathousefarmwiki.wordpress.com/mary-williams/
+- Mary's statement: Mary Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
 
-### 22. 1840 — Estate Registry
+### II.1 (21). February 1916 — "The whole farm"
 
-Event id: ghf-18400101-1 · Date: 1840-01-01
+Act II: Two Parcels · Scene id: ghf-19160201-1 · Date: 1916-02-01 · Parcel: Whole farm (A + B) · Basis: Court record
 
-Census and tithe records use changing descriptions including 'Great House' and 'Great House Farm'. The family interpret the change as part of a wider loss of the property's historic status, but the records do not by themselves prove an intentional 'downgrading'.
+Bute lets "the whole farm" to John Williams on a yearly tenancy. The tenancy is known only from the 1987 judgment and the 1989 Commission decision; the document itself has not been found.
 
-> CHALLENGE: The family contend that re-describing Tŷ Mawr from manorial court house to farm house eroded their standing and obscured the property's significance.
+> The family's case: The family's case is that "whole farm" is a later description, and that without the original plan it cannot show the house parcel was ever in this tenancy.
 
-- **CENSUS CLERK**: I enter this as Great House Farm, removing the designation of Court House.
-- **WILLIAMS ELDER**: They rename our ancestral seat to erase our status and heritage claim.
-- **ESTATE LAWYER**: A farm designation supports our treatment of occupants as tenant farmers.
-- **WILLIAMS ELDER**: This administrative sleight-of-hand obscures generations of our standing.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Court record: The 1916 Tenancy — https://greathousefarmwiki.wordpress.com/1916-tenancy/#grant
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
+- Wiki page: The Farm / Whole Farm Nomenclature — https://greathousefarmwiki.wordpress.com/the-two-parcels/whole-farm-nomenclature/
 
-### 23. 1858 — Llandough Church Farm
+### II.2 (22). 15 May 1924 — An agreement on file
 
-Event id: ghf-18580101-1 · Date: 1858-01-01
+Act II: Two Parcels · Scene id: ghf-19240515-1 · Date: 1924-05-15 · Parcel: Not yet known · Basis: Land Registry record
 
-About 1858, while foundations are dug for new buildings at Llandough Church Farm, workmen find a medieval iron spearhead and a rowel spur, with about six skeletons. The bones are reburied near the stile on the south side of the church. The finds lie in the 100-metre square beside the church that also holds the 1994 cemetery site.
+An agreement of this date sits on the WA231076 registration file. Its contents and effect are unknown, and which parcel it concerns is not yet clear.
 
-- **WORKMAN**: Bones, and old iron with them. A spearhead and a spur.
-- **ARCHIVIST**: Reburied by the stile, south of the church. The same ground the 1994 diggers would reach.
-- Source: GHF-E106-R33-A1 — 1931 letter, Museum Wales file 63.24 (https://greathousefarmwiki.wordpress.com/evidence-library/ghf-e106-r33-a1-1931-letter-museum-wales-file-63-24/); Archaeology and Heritage (https://greathousefarmwiki.wordpress.com/archaeology/)
+- Land Registry record: Land Registry Titles — deeds before registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration
 
-### 24. c.1870 — Great House — Dining Room
+### II.3 (23). 1928 — The last rent
 
-Event id: ghf-18700101-1 · Date: 1870-01-01
+Act II: Two Parcels · Scene id: ghf-19280101-1 · Date: 1928-01-01 · Parcel: House parcel (A) · Basis: Mary's statement
 
-Family tradition holds that a soldier in armour, with horse, lance and small shield, was found under the dining-room floor. A Daily Telegraph article of 16 April 1974 dates the find to 'about 1870', and RCAHMW holds a note of the story. No primary record of the find has been located; Museum Wales says the similar medieval objects in its collection came from Church Farm, Llandough, in 1858.
+The last quarry machinery leaves. John Williams pays a final rent of about £4 to Alfred Thomas, and from then on, Mary recalls, he regards the farm as his own. She saw the receipt; it is now missing.
 
-> CHALLENGE: The family regard the tradition as evidence of the site's antiquity that was never investigated. The Wiki records it as a documented tradition, not a proven find.
+> The family's case: The family's case is that the 1877 bargain took effect in 1928, making John Williams freeholder of the house parcel.
 
-- **WILLIAMS FAMILY HEAD**: We've found a soldier in armour under the floor!
-- **FAMILY MEMBER**: This proves the site is ancient and of great historical importance.
-- **LOCAL ANTIQUARIAN**: Fascinating, but without a record the authorities will treat it as a story.
-- **WILLIAMS FAMILY HEAD**: Then the family will remember it, until someone looks properly.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Mary's statement: Mary Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
+- Wiki page: The 1877 Agreement — takes effect 1928 — https://greathousefarmwiki.wordpress.com/1877-agreement/#takes-effect
 
-### 25. 1876 — Estate Offices
+### II.4 (24). 1936 — Mary marries Frederick
 
-Event id: ghf-18760101-1 · Date: 1876-01-01
+Act II: Two Parcels · Scene id: ghf-19360101-1 · Date: 1936-01-01 · Parcel: House parcel (A) · Basis: Family account
 
-From 1876 the Bute Estate lets about 33 acres that had formed part of Great House Farm for the Llandough Limeworks, which work until about 1912. How that land relates to the family's two parcels is still being tested.
+Mary marries Frederick Buckler, who comes to live with her at the farmhouse. They will have seven children.
 
-> CHALLENGE: The family allege they permitted quarrying in exchange for absolute freehold of their land parcel. This oral agreement was never formally recorded — a pattern of convenient documentation gaps.
+- Wiki page: Frederick Buckler — marriage — https://greathousefarmwiki.wordpress.com/frederick-buckler/#marriage
 
-- **BUTE AGENT**: We sever this land for the Limeworks. It's ours to lease commercially.
-- **WILLIAMS FARMER**: But we live here! You cannot carve up land we've held for two centuries.
-- **BUTE AGENT**: Estate records show no Williams ownership—only occupation under our lease.
-- **WILLIAMS FARMER**: Our 1667 receipt and occupation prove our right to this property.
-- **BUTE AGENT**: Manorial records prevail. You are tenants, not owners, under our title.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### II.5 (25). c. 1937 – 40 — The eldest son
 
-### 26. 1877 — Bute Estate Office
+Act II: Two Parcels · Scene id: ghf-19370101-1 · Date: 1937-01-01 · Parcel: n/a · Basis: Family account
 
-Event id: ghf-18770101-1 · Date: 1877-01-01
+Frederick and Mary's eldest son is born. The date rests on family belief; his birth entry has still to be traced.
 
-Mary's statement records that the Bute Estate serves notice to quit, then sells the farmhouse and about 10 acres to the quarryman Daniel Thomas, keeping about 9 acres of fields. The Williams family hold tenancies from both. On the family's reconstruction this creates two parcels: the house (Parcel A) and the eastern fields (Parcel B). The deed is missing.
+- Wiki page: The Williams / Buckler Family — https://greathousefarmwiki.wordpress.com/williams-buckler-family/
 
-> CHALLENGE: The family contend the 1877 sale took the house parcel out of the Bute title chain for good, so it never passed to WGR or BP. The deed is missing, and the claim is being tested against the records.
+### II.6 (26). 1938 — Sold to Western Ground Rents
 
-- **BUTE ESTATE AGENT**: The farmhouse and ten acres go to Daniel Thomas. The estate keeps the fields.
-- **JOHN WILLIAMS**: Then we rent the house from Thomas and the fields from Bute. Two landlords, two parcels.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act II: Two Parcels · Scene id: ghf-19380101-1 · Date: 1938-01-01 · Parcel: Fields (B) · Basis: Court record
 
-### 27. 1877 — Glamorgan Archives
+Bute conveys its reversion on the 1916 tenancy to Western Ground Rents Ltd.
 
-Event id: ghf-18771106-1 · Date: 1877-11-06
+> The family's case: If the house parcel left Bute's hands in 1877, it cannot have been part of this sale. The family expect the 1938 conveyance, when it is produced, to show only the eastern fields being sold.
 
-On 6 November 1877 the Bute Estate grants John Williams a counterpart lease. On the family's reconstruction it covers the fields (Parcel B). The lease is held at Glamorgan Archives and is still to be obtained.
+- Wiki page: 1938–39: Sale to WGR and the Revised Tenancy — https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/#y1938
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 
-- **ARCHIVIST**: A Bute counterpart lease to John Williams, dated 6 November 1877.
-- **FAMILY RESEARCHER**: That should show exactly which land Bute kept.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### II.7 (27). May 1939 — The revised tenancy
 
-### 28. 1880 — Estate Records
+Act II: Two Parcels · Scene id: ghf-19390501-1 · Date: 1939-05-01 · Parcel: Fields (B) · Basis: Document
 
-Event id: ghf-18800101-1 · Date: 1880-01-01
+WGR grants John Williams a revised tenancy. Its plan shows the fields east of the house.
 
-Later records use different descriptions for the property, including 'Court House', 'Grange' and 'Farm'. The family interpret this changing nomenclature as obscuring the site's historic status; the Wiki treats that interpretation as a contention, not a proven motive.
+> The family's case: The family have seen the 1939 tenancy: it covers the eastern fields only. The house parcel is not in it.
 
-- **ESTATE CLERK**: We now list it simply as a farm, eliminating all reference to Court House.
-- **WILLIAMS DESCENDANT**: This linguistic erasure strips our family of its historic manorial standing.
+- Wiki page: 1938–39: the 1939 tenancy — https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/#y1939
+- Wiki page: The 1939 tenancy plan — https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/#plan
 
-### 29. 1880 — Great House — Rear Wing
+### II.8 (28). c. 1940 — Twelve years
 
-Event id: ghf-18800101-2 · Date: 1880-01-01
+Act II: Two Parcels · Scene id: ghf-19400101-1 · Date: 1940-01-01 · Parcel: House parcel (A) · Basis: Family case
 
-R.F. Suggett's December 1988 note in the HER records a report of 'armour' found under the floor of the rear wing c.1880, and suggests it may be the medieval ironwork at the National Museum. Museum Wales has since said those objects were found at Church Farm, Llandough, in 1858, and that it holds nothing similar from Great House Farm.
+Twelve years on from 1928, John Williams is still in the house. On Mary's account, no rent has been paid on it since.
 
-- **WORKMAN**: We found armour under the floor of the rear wing! Looks medieval to me.
-- **FAMILY MEMBER**: This proves Great House is more than a simple farm — it has a medieval past!
-- **MUSEUM CURATOR**: We will take this medieval ironwork into the National Museum collection for study and preservation.
-- **LOCAL HISTORIAN**: Another clue to Great House deeper history, though the full truth will not be revealed until long after this house is gone.
-- Source: GGAT HER PRN 02038s via Archwilio — Supplementary Notes (R.F. Sugget, December 1988); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+> The family's case: The family's case is that twelve years' rent-free occupation of the house parcel from 1928 gave John Williams title by about 1940, if he did not already own it under the 1877 bargain.
 
-### 30. 1891 — Llandough — Court Report
+- Wiki page: 1938–39 — c. 1940 — https://greathousefarmwiki.wordpress.com/1939-revised-tenancy/#c1940
 
-Event id: ghf-18911111-1 · Date: 1891-11-11
+### II.9 (29). 1944 — Frederick runs the farm
 
-On 11 November 1891 three geese are stolen from "Mr. John Williams, Great House Farm, Llandough". The newspaper report of the court case is contemporary evidence that John Williams was occupying the farm.
+Act II: Two Parcels · Scene id: ghf-19440101-1 · Date: 1944-01-01 · Parcel: Fields (B) · Basis: Mary's statement
 
-- **COURT REPORTER**: Three geese taken from John Williams of Great House Farm, Llandough.
-- **FAMILY RESEARCHER**: A court report from 1891 that names him at the farm. That is a record, not a memory.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Press Archive — Newspaper Transcripts (greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n01) — GHF-E090-N01
+The War Agricultural Executive Committee is unhappy with the farm, and Frederick Buckler takes over running it as manager for John Williams.
 
-### 31. 1897 — Great House Farm / Lavernock Point
+- Mary's statement: Mary Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
+- Wiki page: John Williams — 1944 — https://greathousefarmwiki.wordpress.com/john-williams/#y1944
 
-Event id: ghf-18970501-1 · Date: 1897-05-01
+### II.10 (30). c. 1948 – 49 — Billy is born
 
-Family tradition holds that Thomas Williams of Great House carted Guglielmo Marconi and his equipment to Lavernock Point, where Marconi's May 1897 trials sent wireless signals across the Bristol Channel to Flat Holm. The trials are independently documented; the family's part in them has not yet been proved.
+Act II: Two Parcels · Scene id: ghf-19480101-1 · Date: 1948-01-01 · Parcel: House parcel (A) · Basis: Family account
 
-- **THOMAS WILLIAMS**: I cart Mr Marconi and his equipment to Lavernock Point each day from Great House.
-- **GUGLIELMO MARCONI**: Without a horse and cart, these experiments could not proceed.
-- **THOMAS WILLIAMS**: They may call me a carter. But this farm has been ours for generations.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+William (Billy) Buckler is born at the farm. He will live there until the eviction of 1988.
 
-### 32. 1905 — HM Land Registry — WA231076 File
+- Wiki page: The Williams / Buckler Family — William — https://greathousefarmwiki.wordpress.com/williams-buckler-family/#william
 
-Event id: ghf-19050223-1 · Date: 1905-02-23
+### III.1 (31). 2 February 1949 — An unwritten tenancy
 
-A Bute conveyance dated 23 February 1905 later appears on the WA231076 registration file and is noted on the woodland title WA735527. On the wiki's current interpretation it concerns Parcel A; what it conveyed has still to be confirmed.
+Act III: The Papers Vanish · Scene id: ghf-19490202-1 · Date: 1949-02-02 · Parcel: Fields (B) · Basis: Court record
 
-- **LAND REGISTRY CLERK**: A Bute conveyance of 23 February 1905 is listed among the deeds on this file.
-- **FAMILY RESEARCHER**: Then the deed itself should show which land Bute was dealing with in 1905.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration)
+John Williams surrenders his tenancy, and his son-in-law Frederick Buckler's yearly tenancy from WGR begins. It is never put in writing. Mary is not named in it.
 
-### 33. 1908 — Great House Farm
+> The family's case: The family's case is that this unwritten tenancy of the fields was later treated as a tenancy of "the farm", blurring the line between the two parcels.
 
-Event id: ghf-19080101-1 · Date: 1908-01-01
+- Court record: Frederick Buckler — the 1949 tenancy — https://greathousefarmwiki.wordpress.com/frederick-buckler/#tenancy-1949
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
+- Wiki page: The Two Parcels — https://greathousefarmwiki.wordpress.com/the-two-parcels/
 
-Mary's grandfather dies, and John Williams takes over both tenancies, the house from the Thomas side and the fields from Bute (Mary's statement).
+### III.2 (32). June 1950 – c. 1952 — The blanket box
 
-- **JOHN WILLIAMS**: I take on both tenancies now, the house and the fields.
-- **NEIGHBOUR**: Two landlords for one farm. That will cause trouble one day.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act III: The Papers Vanish · Scene id: ghf-19500601-1 · Date: 1950-06-01 · Parcel: House parcel (A) · Basis: Mary's statement
 
-### 34. 1910–11 — Frederick Buckler — Birth
+A Penarth estate agent puts a lodger in the farmhouse. He stays about two years, and later tells Mary he took 'the papers which were in the blanket box including the agreement relating to the farm' and handed them to the agent.
 
-Event id: ghf-19100101-1 · Date: 1910-01-01
+> The family's case: The family contend that the documents proving their title were taken from their home just before the first possession proceedings — and that the missing title papers recorded around 1951 are those same papers.
 
-Frederick Buckler is born in 1910 or 1911. The year is worked back from his death in 1967 at the age of 56; his birth and death certificates are still awaited.
+- Mary's statement: Mary Williams's statement (c. 1974) — https://greathousefarmwiki.wordpress.com/mary-williams-statement/
+- Wiki page: The 1877 Agreement — papers taken — https://greathousefarmwiki.wordpress.com/1877-agreement/#papers-taken
 
-- **ARCHIVIST**: Died 1967, aged 56, puts his birth in 1910 or 1911.
-- **FAMILY RESEARCHER**: We will order the certificates to settle it.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Frederick Buckler (greathousefarmwiki.wordpress.com/frederick-buckler/)
+### III.3 (33). 10 October 1952 — The letting is dropped
 
-### 35. 1913 — Great House Farm
+Act III: The Papers Vanish · Scene id: ghf-19521010-1 · Date: 1952-10-10 · Parcel: Fields (B) · Basis: Court record
 
-Event id: ghf-19130810-1 · Date: 1913-08-10
+WGR's agents write that they will not go ahead with the letting to Frederick.
 
-Mary Williams is born at Great House Farm on 10 August 1913, the daughter of John Williams. She lives there all her life.
+- Court record: Frederick Buckler — 1952 letter — https://greathousefarmwiki.wordpress.com/frederick-buckler/#tenancy-1949
 
-- **MIDWIFE**: A healthy daughter! The Williams line at Great House continues.
-- **WILLIAMS MATRIARCH**: She will know her heritage and defend this land when her time comes.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### III.4 (34). 1953 — The last rent on the fields
 
-### 36. 1916 — Great House Farm, Llandough
+Act III: The Papers Vanish · Scene id: ghf-19530101-1 · Date: 1953-01-01 · Parcel: Fields (B) · Basis: Court record
 
-Event id: ghf-19160201-1 · Date: 1916-02-01
+Frederick makes his last rent payment. The family say they paid nothing further to anyone.
 
-In February 1916 the Bute Estate lets the whole farm to John Williams on a yearly tenancy. The tenancy is known from the 1987 judgment and the 1989 Commission decision; no original document has been located.
+- Court record: Frederick Buckler — tenancy — https://greathousefarmwiki.wordpress.com/frederick-buckler/#tenancy-1949
+- Wiki page: Master Timeline — https://greathousefarmwiki.wordpress.com/timeline/
 
-- **JOHN WILLIAMS**: The Marquess of Bute grants me the agricultural tenancy of Great House Farm.
-- **MARQUESS OF BUTE**: We record John Williams as agricultural tenant at Great House Farm.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### III.5 (35). 2 February 1955 — The first possession order
 
-### 37. 1924 — HM Land Registry — WA231076 File
+Act III: The Papers Vanish · Scene id: ghf-19550202-1 · Date: 1955-02-02 · Parcel: Whole farm (A + B) · Basis: Court record
 
-Event id: ghf-19240515-1 · Date: 1924-05-15
+The High Court makes a possession order against Frederick Buckler alone, worded for the whole farm. Mary is not a party. On 4 July 1955 the landlord takes everything except the farmhouse and garden — Mary has just come out of hospital and objects strongly — and the family stay on in the house.
 
-An agreement dated 15 May 1924 appears on the WA231076 registration file. Its contents and effect are unknown, and it is not yet clear which parcel it concerns.
+> The family's case: The family contend the order was about the fields Frederick rented, worded as if the two parcels were one. Mary, who claimed the house, was never heard.
 
-- **LAND REGISTRY CLERK**: An agreement of 15 May 1924 is listed on the file. The document itself is not described.
-- **FAMILY RESEARCHER**: Until we see it, we cannot say what it did or which land it covered.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration)
+- Court record: The 1955 Possession Order — https://greathousefarmwiki.wordpress.com/1955-possession-order/#order
+- Court record: The 1955 Possession Order — enforcement — https://greathousefarmwiki.wordpress.com/1955-possession-order/#enforcement
 
-### 38. 1928 — Great House Farm
+### III.6 (36). 1959 — Mary says no
 
-Event id: ghf-19280101-1 · Date: 1928-01-01
+Act III: The Papers Vanish · Scene id: ghf-19590101-1 · Date: 1959-01-01 · Parcel: House parcel (A) · Basis: Court record
 
-The last quarry machinery leaves, and Mary recalled that a final rent of about £4 was paid to Alfred Thomas in 1928. She also recalled that her father then regarded the farm as his own. The receipt is missing.
+WGR offers Mary a tenancy of the farmhouse and garden. She refuses: the house is hers. She tells them documents prove it — but the papers from the blanket box are gone.
 
-> CHALLENGE: The family contend that twelve years' rent-free occupation of the house parcel from 1928 was complete by about 1940.
+- Court record: The 1962 Possession Order — 1959 refusal — https://greathousefarmwiki.wordpress.com/1962-possession-order/#refusal-1959
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 
-- **ALFRED THOMAS**: That's the last rent, about four pounds.
-- **JOHN WILLIAMS**: And after this, the farm is ours.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### III.7 (37). 29 March 1961 — A deed on file
 
-### 39. 1931 — Cogan Pill
+Act III: The Papers Vanish · Scene id: ghf-19610329-1 · Date: 1961-03-29 · Parcel: Not yet known · Basis: Land Registry record
 
-Event id: ghf-19311122-1 · Date: 1931-11-22
+A deed of this date sits on the WA231076 registration file. Its contents are unknown, and which parcel it concerns is not yet clear.
 
-On 22 November 1931 a letter headed Cogan Pill records the 1858 Church Farm finds for the National Museum. The spur and spearhead are later donated in 1963 and accessioned as 63.24. In 2026 the Museum will at first say it holds nothing relevant.
+- Land Registry record: Land Registry Titles — deeds before registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration
 
-- **LETTER WRITER**: Found at Llandough Church Farm, about 1858, when digging foundations.
-- **FAMILY**: The Museum had this file all along.
-- Source: GHF-E106-R33 — Museum Wales reply (https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ghf-e106-r33-amgueddfa-cymru-reply-further-collections-search-following-8-september-2026-foi/)
+### III.8 (38). 11 December 1962 — The second possession order
 
-### 40. 1936 — Great House Farm
+Act III: The Papers Vanish · Scene id: ghf-19621211-1 · Date: 1962-12-11 · Parcel: House parcel (A) · Basis: Court record
 
-Event id: ghf-19360101-1 · Date: 1936-01-01
+Judge Temple Morris QC orders possession of the farmhouse and garden, with mesne profits back to 1955, against Frederick and Mary on WGR's claim. The order is not enforced.
 
-Mary Williams marries Frederick Buckler, who joins her at the farmhouse. They have seven children, among them William (Billy). After Frederick's death in 1967 Mary reverts to her maiden name, Williams.
+> The family's case: The family question whether a county court could hear the case at all: its limit in 1962 was a rateable value of £100.
 
-- **MARY WILLIAMS**: I marry Frederick Buckler, and he comes to live with us at the farmhouse.
-- **FREDERICK BUCKLER**: This house is your family's; I'll help keep the farm going.
-- **LOCAL PRIEST**: Mary Williams of Great House Farm weds Frederick Buckler this day.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Court record: The 1962 Possession Order — https://greathousefarmwiki.wordpress.com/1962-possession-order/#order
 
-### 41. c.1937–40 — Great House Farm
+### III.9 (39). 1963 — Three skeletons
 
-Event id: ghf-19370101-1 · Date: 1937-01-01
+Act III: The Papers Vanish · Scene id: ghf-19630101-1 · Date: 1963-01-01 · Parcel: Not yet known · Basis: Archaeological record
 
-Frederick and Mary's eldest son is born at about this time. The date rests on family belief; his birth entry has still to be traced.
+Three skeletons are reported in a utility trench near the church. The account comes from a secondary research file; the 1963 record itself is still being traced.
 
-- **FAMILY MEMBER**: The eldest boy was born a year or so after the wedding.
-- **ARCHIVIST**: The GRO index will give the exact date once the entry is found.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — The Williams / Buckler Family (greathousefarmwiki.wordpress.com/williams-buckler-family/)
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-### 42. 1938 — Bute Estate Office
+### III.10 (40). June 1963 — Committal
 
-Event id: ghf-19380101-1 · Date: 1938-01-01
+Act III: The Papers Vanish · Scene id: ghf-19630601-1 · Date: 1963-06-01 · Parcel: House parcel (A) · Basis: Court record
 
-The Bute Estate conveys its reversion on the 1916 tenancy to Western Ground Rents Ltd (WGR). The family contend this was not a sale of the whole farm: on their reconstruction the house parcel (Parcel A) had passed out of Bute hands in 1877.
+The mesne profits under the 1962 order are partly enforced against Frederick, and committal proceedings follow.
 
-- **BUTE ESTATE AGENT**: The reversion on the Williams tenancy passes to Western Ground Rents.
-- **JOHN WILLIAMS**: Then what did they sell? The house was never theirs to sell after 1877.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Court record: The 1962 Possession Order — committal — https://greathousefarmwiki.wordpress.com/1962-possession-order/#committal
 
-### 43. 1939 — Great House Farm
+### III.11 (41). January – March 1965 — Another tenancy refused
 
-Event id: ghf-19390501-1 · Date: 1939-05-01
+Act III: The Papers Vanish · Scene id: ghf-19650301-1 · Date: 1965-03-02 · Parcel: House parcel (A) · Basis: Document
 
-In May 1939 WGR grants John Williams a revised tenancy. Its plan shows the fields east of the house. The family contend it covered the eastern fields (Parcel B) only, not the farmhouse.
+WGR will not let Frederick the fields. On 2 March its agents offer 'Mrs Williams' a weekly tenancy of the farmhouse and garden at £2 a week. It is not signed or returned, and no rent is paid.
 
-- **WGR AGENT**: Here is your revised tenancy, with the plan attached.
-- **JOHN WILLIAMS**: The plan shows the fields to the east. The house is not on it.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+> The family's case: The family see it as another attempt to turn what Mary claimed as her own into a tenancy she never accepted.
 
-### 44. c.1940 — Great House Farm
+- Wiki page: The 1965 offer — https://greathousefarmwiki.wordpress.com/1962-possession-order/#offer-1965
+- Wiki page: Mary Williams — 1965 offer — https://greathousefarmwiki.wordpress.com/mary-williams/#offer-1965
 
-Event id: ghf-19400101-1 · Date: 1940-01-01
+### III.12 (42). 1964 – 67 (date uncertain) — A rumoured sale
 
-The family contend that by about 1940 twelve years of rent-free occupation of the house parcel, counted from the last rent paid in 1928, would have been complete.
+Act III: The Papers Vanish · Scene id: ghf-19640101-1 · Date: 1965-06-01 · Parcel: Not yet known · Basis: Family account
 
-> CHALLENGE: This is the family's contention. It depends on the house parcel being outside the 1916 and 1939 tenancies after 1928, which is still being tested against the records.
+A cousin's account says the eldest son sold "our land parcel" through a solicitor, without his parents knowing. What was sold, if anything, is unknown; no document has been found.
 
-- **FAMILY SOLICITOR**: No rent on the house since 1928. Twelve years on, the family say their title by possession was complete.
-- **ESTATE AGENT**: The landlord will say the family were tenants of the whole farm throughout.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — 1938–39: Sale to WGR and the Revised Tenancy (greathousefarmwiki.wordpress.com/1939-revised-tenancy/#c1940)
+- Wiki page: The Williams / Buckler Family — rumoured sale — https://greathousefarmwiki.wordpress.com/williams-buckler-family/#rumoured-sale
 
-### 45. 1944 — Great House Farm
+### III.13 (43). 1967 — Frederick dies
 
-Event id: ghf-19440101-1 · Date: 1944-01-01
+Act III: The Papers Vanish · Scene id: ghf-19670101-1 · Date: 1967-01-01 · Parcel: House parcel (A) · Basis: Family account
 
-The War Agricultural Executive Committee is dissatisfied with the farm, and Frederick Buckler runs it as manager for John Williams (Mary's statement).
+Frederick Buckler dies, aged 56. Mary takes back her maiden name, Williams, and stays on in the farmhouse. An estate paper gives December 1965; the family take 1967.
 
-- **WAEC OFFICER**: Production must improve. The war needs every acre.
-- **FREDERICK BUCKLER**: I'll run the farm for John. We'll meet the quota.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Wiki page: Frederick Buckler — death — https://greathousefarmwiki.wordpress.com/frederick-buckler/#death
 
-### 46. c.1948–49 — Great House Farm
+### III.14 (44). 1968 – 69 — The eldest son leaves
 
-Event id: ghf-19480101-1 · Date: 1948-01-01
+Act III: The Papers Vanish · Scene id: ghf-19680901-1 · Date: 1968-09-01 · Parcel: House parcel (A) · Basis: Family account
 
-William (Billy) Buckler is born at the farm. He lives there until the eviction of 1988.
+The eldest son's household leaves the farm.
 
-- **MARY WILLIAMS**: Another son, born here in the farmhouse.
-- **FREDERICK BUCKLER**: He will grow up on this land, as you did.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — The Williams / Buckler Family (greathousefarmwiki.wordpress.com/williams-buckler-family/#william)
+- Wiki page: The Williams / Buckler Family — https://greathousefarmwiki.wordpress.com/williams-buckler-family/#rumoured-sale
 
-### 47. 1949 — Great House Farm, Llandough
+### IV.1 (45). 31 December 1969 — BP buys in
 
-Event id: ghf-19490202-1 · Date: 1949-02-02
+Act IV: Mary's Stand · Scene id: ghf-19691231-1 · Date: 1969-12-31 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
-On 2 February 1949 John Williams's tenancy is surrendered and Frederick Buckler's unwritten yearly tenancy from WGR begins.
+WGR sells to BP Pension Trust Ltd. This conveyance is later recited as the root of BP's title — yet it is missing from the Land Registry files.
 
-- **FAMILY SOLICITOR**: The tenancy is to be transferred from John Williams to Frederick Buckler.
-- **FREDERICK BUCKLER**: I am to take over the agricultural tenancy from John Williams.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Land Registry record: Land Registry Titles — conveyances — https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances
 
-### 48. 1950 — Great House Farm — Blanket Box
+### IV.2 (46). 16 June 1970 — The village green
 
-Event id: ghf-19500601-1 · Date: 1950-06-01
+Act IV: Mary's Stand · Scene id: ghf-19700616-1 · Date: 1970-06-16 · Parcel: House parcel (A) · Basis: Public record
 
-In June 1950 a Penarth estate agent places a lodger at the farmhouse. He stays about two years, and later tells Mary he took 'the papers which were in the blanket box including the agreement relating to the farm' and gave them to the agent. Mary links the loss to WGR's first possession application.
+Land by Leckwith Road is registered as village green VG41. The current reconstruction places it in Parcel A; the boundary is still to be confirmed.
 
-> CHALLENGE: The family contend the documents that proved their title were taken from their home shortly before the first possession proceedings.
+- Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
+- Wiki page: Master Timeline — https://greathousefarmwiki.wordpress.com/timeline/
 
-- **LODGER**: I took the papers from the blanket box, the farm agreement too, and gave them to the agent.
-- **MARY WILLIAMS**: Those were the papers that proved the farm was ours.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### IV.3 (47). 25 July 1972 — Permission for houses
 
-### 49. 1952 — Landlords' Agents' Office
+Act IV: Mary's Stand · Scene id: ghf-19720725-1 · Date: 1972-07-25 · Parcel: Whole farm (A + B) · Basis: Planning file
 
-Event id: ghf-19521010-1 · Date: 1952-10-10
+Planning permission for housing on the site is granted — while Mary is still living in the farmhouse.
 
-On 10 October 1952 the landlords' agents decide not to proceed with the letting to Frederick Buckler.
+- Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
 
-- **LANDLORDS' AGENT**: We have decided not to proceed with the letting to Mr Buckler.
-- **FREDERICK BUCKLER**: Then what am I, if not your tenant?
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Frederick Buckler (greathousefarmwiki.wordpress.com/frederick-buckler/#tenancy-1949)
+### IV.4 (48). 1974 — A survey in difficult circumstances
 
-### 50. 1953 — Great House Farm
+Act IV: Mary's Stand · Scene id: ghf-19740101-1 · Date: 1974-01-01 · Parcel: House parcel (A) · Basis: Heritage record
 
-Event id: ghf-19530101-1 · Date: 1953-01-01
+H.J. Thomas surveys the ground floor for the Royal Commission. The first floor and roof cannot be examined: the house 'remained partially recorded because of problems of access created by an ownership dispute'.
 
-Frederick Buckler makes the last known rent payment around 1953. The family say that after the last known rent payment they paid nothing further to any claimant. Whether and when their occupation became adverse, and what limitation regime applied, remains a legal question to be tested against the title and tenancy documents.
+- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-- **BILLY BUCKLER (YOUNG)**: This has been our family home for as long as anyone can remember.
-- **MARY WILLIAMS**: We owe rent to no one. Your grandfather secured this place for our family.
+### IV.5 (49). 15 April 1974 — Open day
 
-### 51. 1955 — Title Office / Great House Farm
+Act IV: Mary's Stand · Scene id: ghf-19740415-1 · Date: 1974-04-15 · Parcel: House parcel (A) · Basis: Newspaper
 
-Event id: ghf-19550202-1 · Date: 1955-02-02
+Mary, now 60, opens her home to the public 'to show what the nation is losing'. Hundreds come and about a thousand sign a petition. The Daily Telegraph reports that permission for about 13 houses has gone to the BP pension trust, that Mary will refuse to move, that ownership has been disputed for some 25 years, and that her solicitors say she has a valid claim.
 
-On 2 February 1955 the High Court makes a possession order against Frederick Buckler alone, worded for the whole farm. Mary is not a party. On 4 July 1955 possession is taken of everything except the farmhouse and garden, and the family stay on in the house.
+> The family's case: Mary was claiming ownership in public, with legal backing, more than ten years before the case that took her home.
 
-> CHALLENGE: The family contend that the order concerned the farmland Frederick had rented, but was worded for the whole farm, treating two parcels as one. Mary, who claimed the house, was not a party.
+- Newspaper: Daily Telegraph, 16 April 1974, 'Open day to save ancient Welsh house' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n03
+- Wiki page: The 1974 Licence Letters — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#action
 
-- **REGISTRAR**: We invite owners to register titles under the land registration system.
-- **MARY WILLIAMS**: I wish to register our ownership; we have occupied since 1667 and pay no rent.
-- **REGISTRAR**: Do you have a deed, conveyance, or grant? Without documentary title we cannot register.
-- **MARY WILLIAMS**: We have family history, occupation since 1667, and our ancestor's entry receipt.
-- **REGISTRAR**: Without formal documentation we cannot register your claimed ownership.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### IV.6 (50). 3 July 1974 — Mary pleads ownership
 
-### 52. 1959 — Great House Farm, Llandough
+Act IV: Mary's Stand · Scene id: ghf-19740703-1 · Date: 1974-07-03 · Parcel: House parcel (A) · Basis: Court record
 
-Event id: ghf-19590101-1 · Date: 1959-01-01
+BP Pension Trust brings a new possession action. Mary pleads that she owns the house, and the Limitation Act 1939. The case is part-heard and never relisted.
 
-In 1959 Mary refuses a tenancy of the farmhouse and garden and asserts ownership. When she tells WGR that documents prove her title, none can be produced: the family papers had been taken from the blanket box in 1950–52.
+> The family's case: The family contend BP let the title fight lapse, withdrew the warrant and sent a licence instead — and that her claim was never extinguished.
 
-- **MARY BUCKLER**: The Williams family has held Great House for centuries. I assert our hereditary ownership.
-- **LEGAL ADVISOR**: The claim rests on ancestral title predating the Bute estate records.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Court record: The 1974 Licence Letters — the action — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#action
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 
-### 53. 1961 — HM Land Registry — WA231076 File
+### IV.7 (51). 19 September 1974 — Leave to enforce
 
-Event id: ghf-19610329-1 · Date: 1961-03-29
+Act IV: Mary's Stand · Scene id: ghf-19740919-1 · Date: 1974-09-19 · Parcel: House parcel (A) · Basis: Court record
 
-A deed dated 29 March 1961 appears on the WA231076 registration file. Its contents are unknown, and it is not yet clear which parcel it concerns.
+The county court (Judge Watkin Powell, per the family archive) gives BP leave to enforce the 1962 order, with no warrant before 31 October. Mary was given no notice; her solicitors appeal.
 
-- **LAND REGISTRY CLERK**: A deed of 29 March 1961 is listed on the file.
-- **FAMILY RESEARCHER**: Another document we know exists but have never seen.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration)
+- Court record: The 1974 Licence Letters — the warrant — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#warrant
 
-### 54. 1962 — Cardiff County Court
+### IV.8 (52). 31 October 1974 — The licence letters
 
-Event id: ghf-19621211-1 · Date: 1962-12-11
+Act IV: Mary's Stand · Scene id: ghf-19741031-1 · Date: 1974-10-31 · Parcel: House parcel (A) · Basis: Court record
 
-On 11 December 1962 Judge Temple Morris QC, in Cardiff County Court, orders possession of the farmhouse and garden, with mesne profits since 1955, against Frederick and Mary Buckler on WGR's claim. The order is not enforced before 1974. An open question is whether the county court had jurisdiction, given its £100 rateable-value limit in 1962.
+BP Pension Trust writes to Mary 'licensing' her to stay at the farm rent-free for life, and the warrant is withdrawn the same day. Mary never asked for a licence and rejects the idea that BP owns her house.
 
-- **COURT CLERK**: Possession order granted, 11 December 1962. Registered against the farmhouse and garden.
-- **MARY WILLIAMS**: We will not leave. This is our home. We will appeal any order they obtain.
-- **RECORDS CLERK**: The landlord holds the order but has not yet moved to enforce it.
-- **FAMILY SOLICITOR**: We file a defence based on adverse possession under the Limitation Act 1939.
-- **MARY WILLIAMS**: Our family has been here since 1667. No court order can make us leave.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+> The family's case: These one-sided letters, never accepted, became the foundation of the case that took her home.
 
-### 55. 1963 — Llandough — Utility Trench
+- Court record: The 1974 Licence Letters — https://greathousefarmwiki.wordpress.com/1974-licence-letters/#letters
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
 
-Event id: ghf-19630101-1 · Date: 1963-01-01
+### IV.9 (53). 19 November, 1970s (year unclear) — "Grievous loss"
 
-In 1963 three skeletons are reported in utility-trench works near the church. The account comes from a secondary research file; the underlying 1963 record is still being traced. In the same year the National Museum takes in the spur and spearhead found at Church Farm in 1858.
+Act IV: Mary's Stand · Scene id: ghf-19741119-1 · Date: 1974-11-19 · Parcel: House parcel (A) · Basis: Newspaper
 
-- **ARCHIVIST**: Three skeletons in a trench, and nobody kept the report. We are still looking for it.
-- **FAMILY**: Every time the ground near the church is opened, burials come up.
-- Source: Great House Farm Wiki — Master Timeline (https://greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Archaeology and Heritage (https://greathousefarmwiki.wordpress.com/archaeology/)
+William Rees writes to the Western Mail that demolishing Great House Farm would erase the site of St Dochdwy's Celtic monastery, tracing its descent from Tewkesbury Abbey to the Crown, to Herbert and to Bute. The cutting is dated '19/11/7?'; the year is unclear.
 
-### 56. 1963 — Cardiff County Court
+- Newspaper: Western Mail, 'Grievous loss' (letter) — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n04
+- Wiki page: The Restoration Campaign — https://greathousefarmwiki.wordpress.com/restoration-campaign/#open-day-1974
 
-Event id: ghf-19630601-1 · Date: 1963-06-01
+### IV.10 (54). 23 May 1975 — BP Properties
 
-In June 1963 the mesne profits under the 1962 order are partly enforced against Frederick, and committal proceedings follow.
+Act IV: Mary's Stand · Scene id: ghf-19750523-1 · Date: 1975-05-23 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
-- **COURT OFFICER**: Mesne profits are due under the 1962 order.
-- **FREDERICK BUCKLER**: We pay what we can. We are not leaving the house.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+BP Pension Trust transfers its interest to BP Properties Ltd.
 
-### 57. 1964 — Family Account
+> The family's case: Mary maintains that no transfer between BP companies can defeat the ownership she pleaded in 1974.
 
-Event id: ghf-19640101-1 · Date: 1964-01-01
+- Land Registry record: Land Registry Titles — conveyances — https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances
 
-A cousin's account says the eldest son sold 'our land parcel' some time in 1964–67. No document has been found, and the account remains unverified.
+### IV.11 (55). 1978 – 79 — The Roman villa (a separate site)
 
-- **COUSIN**: I always heard the eldest son sold our land parcel.
-- **FAMILY MEMBER**: Then where is the deed? Nobody has ever seen one.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act IV: Mary's Stand · Scene id: ghf-19780101-1 · Date: 1978-01-01 · Parcel: Not Great House Farm land · Basis: Archaeological record
 
-### 58. 1965 — WGR Agents' Office
+GGAT excavates the Llandough Roman villa, south of the church. It is a separate site, not Great House Farm; the Neath Guardian reports the dig in April 1980.
 
-Event id: ghf-19650301-1 · Date: 1965-03-01
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
+- Newspaper: Neath Guardian, 17 April 1980 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n05
 
-In January–March 1965 WGR refuses to let Frederick the fields. On 2 March it offers a weekly tenancy of the farmhouse to 'Mrs Williams'. It is never signed.
+### IV.12 (56). 22 May 1980 — "The most rapacious ground landlord"
 
-- **WGR AGENT**: A weekly tenancy of the farmhouse, for Mrs Williams to sign.
-- **MARY WILLIAMS**: I will not sign for my own house.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act IV: Mary's Stand · Scene id: ghf-19800522-1 · Date: 1980-05-22 · Parcel: n/a · Basis: Parliament
 
-### 59. 1967 — Great House Farm
+Ted Rowlands MP tells the Commons that Western Ground Rents, 'the most rapacious ground landlord' in South Wales, has been bought by the BP pension fund. The landlord that sued Frederick in 1955 is now inside the BP group.
 
-Event id: ghf-19670101-1 · Date: 1967-01-01
+- Newspaper: Hansard, 22 May 1980 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n16
 
-Frederick Buckler dies aged 56. Mary reverts to her maiden name, Williams, and stays on in the farmhouse.
+### IV.13 (57). 1 October 1982 — GGAT asks for a dig
 
-- **MARY WILLIAMS**: Frederick is gone. I am a Williams again, and this is still my home.
-- **NEIGHBOUR**: She'll not be moved, that one.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act IV: Mary's Stand · Scene id: ghf-19821001-1 · Date: 1982-10-01 · Parcel: Whole farm (A + B) · Basis: Planning file
 
-### 60. 1968–69 — Great House Farm
+GGAT tells the planners that occupation may continue north of the church, and asks for 'thorough investigative work prior to the development'.
 
-Event id: ghf-19680901-1 · Date: 1968-09-01
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
+- Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 
-Between September 1968 and September 1969 the eldest son's household leaves the farm, according to the family's account.
+### IV.14 (58). 19 – 30 November 1982 — First registration
 
-- **FAMILY MEMBER**: His family moved out of the farm around then.
-- **ARCHIVIST**: This is the family account; we date it from what relatives remember.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — The Williams / Buckler Family (greathousefarmwiki.wordpress.com/williams-buckler-family/#rumoured-sale)
+Act IV: Mary's Stand · Scene id: ghf-19821119-1 · Date: 1982-11-19 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
-### 61. 1969 — Great House Farm, Llandough
+BP Pension Trust transfers to BP Properties Ltd, and on 30 November Linklaters & Paines apply to register the land for the first time, as title WA231076. Mary is alive and living in the farmhouse throughout.
 
-Event id: ghf-19691231-1 · Date: 1969-12-31
+> The family's case: The family contend that nobody asked Mary, the woman living in the house, what she claimed.
 
-On 31 December 1969 WGR sells to BP Pension Trust Ltd. The conveyance is missing from the Land Registry files released so far.
+- Land Registry record: Land Registry Titles — first registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
+- Analysis: 1982–83 Registration & Opportunity to Object — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1982-83-registration-opportunity-to-object/
 
-- **BP SOLICITOR**: BP Pension Trust Ltd now holds the freehold of Great House Farm.
-- **ESTATE AGENT**: The farm is sold as part of a portfolio to BP Pension Trust.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### IV.15 (59). 23 February 1983 — The farmhouse title
 
-### 62. 1970 — Leckwith Road, Llandough
+Act IV: Mary's Stand · Scene id: ghf-19830223-1 · Date: 1983-02-23 · Parcel: House parcel (A) · Basis: Land Registry record
 
-Event id: ghf-19700616-1 · Date: 1970-06-16
+BP's solicitors apply to register the farmhouse and garden as a separate title, WA240304, certifying they know of no question or doubt affecting the title. Mary is living in the farmhouse.
 
-On 16 June 1970 land by Leckwith Road is registered as village green VG41. The wiki's current reconstruction places it in Parcel A; the boundary has still to be confirmed (timeline ref. GHF-E033-VG41).
+> The family's case: The family's case is that this registration took in the house parcel without disclosing Mary's claim to own it.
 
-- **REGISTRATION OFFICER**: The land by Leckwith Road is entered in the register as village green VG41.
-- **FAMILY RESEARCHER**: If the green lies inside the house parcel, it was registered while Mary was living there.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Redevelopment and Church View Close (greathousefarmwiki.wordpress.com/redevelopment/)
+- Land Registry record: Land Registry Titles — first registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
+- Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-### 63. 1972 — Planning Office
+### IV.16 (60). 13 March 1983 — Fire at the warehouse (a separate site)
 
-Event id: ghf-19720725-1 · Date: 1972-07-25
+Act IV: Mary's Stand · Scene id: ghf-19830313-1 · Date: 1983-03-13 · Parcel: Not Great House Farm land · Basis: Newspaper
 
-On 25 July 1972 an earlier planning permission for housing on the site is granted, while Mary Williams is still living in the farmhouse.
+A fire at GGAT's Swansea warehouse destroys the finds from the Llandough Roman villa — the separate site south of the church.
 
-- **PLANNING OFFICER**: Permission is granted for housing on the site.
-- **MARY WILLIAMS**: Housing, on the land around a house I am living in.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Redevelopment and Church View Close (greathousefarmwiki.wordpress.com/redevelopment/)
+- Newspaper: South Wales Echo, 18 March 1983 — burnt relics — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n06
 
-### 64. 1974 — Great House — Interior
+### IV.17 (61). 26 March 1983 — Mary dies
 
-Event id: ghf-19740101-1 · Date: 1974-01-01
+Act IV: Mary's Stand · Scene id: ghf-19830326-1 · Date: 1983-03-26 · Parcel: House parcel (A) · Basis: Family account
 
-The ground floor of Great House is surveyed in unusual circumstances by H.J. Thomas for the Royal Commission (RCAHMW). Much detail is concealed and the first floor and roof trusses cannot be examined: the house 'remained partially recorded because of problems of access created by an ownership dispute'.
+Mary Williams dies in the farmhouse where she was born, weeks after the registration was applied for. Her son Billy inherits her claim.
 
-- **H.J.T. (RCAHMW)**: I have surveyed the ground floor of Great House. The circumstances are most unusual. Much detail is concealed and I cannot access the first floor or roof trusses.
-- **FAMILY SOURCE**: The ownership dispute means access is restricted. The surveyors cannot see the full house.
-- **H.J.T. (RCAHMW)**: The house will remain partially recorded. Problems of access created by the ownership dispute prevent a complete survey.
-- **RCAHMW RECORDER**: The Inventory of Farmhouses and Cottages will note that Great House plan was not published because of incomplete information.
-- Source: GGAT HER PRN 02038s via Archwilio; RCAHMW Inventory Vol IV Part 2; Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+> The family's case: Whether Mary was ever told of the registration is being pursued with HM Land Registry.
 
-### 65. 1974 — Great House Farm — Open Day
+- Wiki page: Mary Williams — death — https://greathousefarmwiki.wordpress.com/mary-williams/#death
+- Wiki page: The Williams / Buckler Family — William — https://greathousefarmwiki.wordpress.com/williams-buckler-family/#william
 
-Event id: ghf-19740415-1 · Date: 1974-04-15
+### IV.18 (62). 8 – 12 April 1983 — Letters after her death
 
-On 15 April 1974 Mary Williams, then 60, opens the farmhouse to the public 'to show what the nation is losing'. Hundreds come. The Daily Telegraph reports next day that planning permission for about 13 houses has been given to the BP Petroleum Pension Trust, that about 1,000 people have signed a petition, and that Mary will refuse to move.
+Act IV: Mary's Stand · Scene id: ghf-19830408-1 · Date: 1983-04-08 · Parcel: House parcel (A) · Basis: Land Registry record
 
-- **MARY WILLIAMS**: I will refuse to move, because not only is this my home, it is part of the nation's heritage.
-- **REPORTER**: The ownership has been disputed for years, Mrs Williams?
-- **MARY WILLIAMS**: For 25 years. But my family has lived here for more than 400 years, and my solicitors tell me I have a valid claim to it.
-- Source: Daily Telegraph, 16 April 1974, 'Open day to save ancient Welsh house', Godfrey Francis (transcript GHF-E090-N03: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n03); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Two weeks after Mary's death, Linklaters and the Land Registry exchange letters on the farmhouse file, including form D23; more letters follow on 12 May. What the Registry asked about the family's occupation, and what it was told, is in those letters. The family are ordering them.
 
-### 66. 1974 — Court / Great House Farm
+- Land Registry record: Land Registry Titles — first registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
 
-Event id: ghf-19740703-1 · Date: 1974-07-03
+### V.1 (63). 13 January 1984 — A new edition of the register
 
-On 3 July 1974 BP Pension Trust brings a new possession action. Mary pleads ownership and the Limitation Act 1939. The action is part-heard and never relisted.
+Act V: The Courts · Scene id: ghf-19840113-1 · Date: 1984-01-13 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
-> CHALLENGE: The family contend the action was dropped in the face of press support for Mary. BP later relied on licence letters she never asked for and always disputed.
+An application on form A3 is made on the main title and a new edition of the register issued — four months before BP sues.
 
-- **COURT CLERK**: BP Pension Trust applies to enforce the 1962 possession order forthwith.
-- **MARY WILLIAMS' SOLICITOR**: We file a defence: the landlord's title has been extinguished by adverse possession since 1955.
-- **JUDGE**: Warrant to issue but not be enforced until 31 October 1974 pending appeal.
-- **MARY WILLIAMS**: We received a letter offering us a licence to stay rent-free. We never agreed to that.
-- **COURT CLERK**: BP Pension Trust's October 1974 licence letter is now on the court record.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Land Registry record: Land Registry Titles — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
 
-### 67. 1974 — Cardiff County Court
+### V.2 (64). 22 May 1984 — BP's writ
 
-Event id: ghf-19740919-1 · Date: 1974-09-19
+Act V: The Courts · Scene id: ghf-19840522-1 · Date: 1984-05-22 · Parcel: House parcel (A) · Basis: Court record
 
-On 19 September 1974 the county court judge (Judge Watkin Powell, per the family archive) gives BP leave to enforce the 1962 order, but no warrant is to issue before 31 October. Mary's solicitors appeal because she was given no notice.
+BP Properties issues its writ for possession, relying on the 1974 licence letters. The same year, the family say, the library copy of the Bute–Thomas deed is reported missing from Cardiff Library.
 
-- **JUDGE WATKIN POWELL**: Leave is granted to enforce the 1962 possession order.
-- **BP BARRISTER**: My Lord, we seek enforcement of the existing possession order.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+> The family's case: The licence Mary rejected became the whole of BP's case. A public copy of the deed that could answer it went missing the same year.
 
-### 68. 1974 — Great House Farm, Llandough
+- Court record: BP Properties Ltd v Buckler — the writ — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#writ
+- Wiki page: The 1877 Agreement — library copy missing — https://greathousefarmwiki.wordpress.com/1877-agreement/#library-1984
 
-Event id: ghf-19741031-1 · Date: 1974-10-31
+### V.3 (65). 10 July 1986 — Judgment for BP
 
-On 31 October 1974 BP Pension Trust Ltd sends Mary letters purporting to licence her to remain at Great House Farm rent-free for life. These letters later decide the case against the family.
+Act V: The Courts · Scene id: ghf-19860710-1 · Date: 1986-07-10 · Parcel: House parcel (A) · Basis: Court record
 
-- **BP MANAGER**: We issue this licence allowing Mrs Buckler to remain rent-free for life.
-- **MARY BUCKLER**: BP says I may stay, but I have never accepted they own this land.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Mr Justice Hollis finds for BP: the 1974 letters gave Mary a licence, so her possession was not adverse. He suspends the possession order for six months.
 
-### 69. 1974 — Great House Farm, Llandough
+> The family's case: In the family's account, ownership of the house parcel was never tried: the documents behind it were never examined, and the defence ran on adverse possession — a defence that began with the fields in 1955 and was stretched to cover her house.
 
-Event id: ghf-19741031-2 · Date: 1974-10-31
+- Court record: BP Properties Ltd v Buckler — High Court — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#high-court
+- Analysis: BP v Buckler: Scope, Decided & Undecided — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/court-judicial-issues/bp-v-buckler-scope-decided-undecided/
 
-On 31 October 1974, the day the licence letters are sent, the possession warrant is withdrawn and Mary remains in the farmhouse.
+### V.4 (66). 1986 – 87 — A file goes missing
 
-- **COURT OFFICIAL**: The possession warrant is withdrawn. Mrs Buckler may remain in occupation.
-- **MARY BUCKLER**: I shall stay at Great House. No warrant will move me from my home.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act V: The Courts · Scene id: ghf-19860711-1 · Date: 1986-07-11 · Parcel: House parcel (A) · Basis: Official correspondence
 
-### 70. 1970s — Western Mail — Letters
+During the trial and appeal, the Royal Commission's correspondence between C.N. Johns and Mrs Buckler goes missing. It may have recorded Mary's own account of her title, given to an independent public body.
 
-Event id: ghf-19741119-1 · Date: 1974-11-19
+- Analysis: Legal Review — the loss pattern — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#loss-pattern
 
-William Rees writes to the Western Mail ('Grievous loss', dated 19/11/7? in the copy held; the year is unclear) that demolishing Great House Farm would erase the site of the Celtic monastery of St Dochdwy. He traces its descent from Tewkesbury Abbey to the Crown at the Dissolution, then to Herbert and to Bute.
+### V.5 (67). 2 February 1987 — Two titles become one
 
-- **WILLIAM REES**: The demolition of Great House Farm would erase from memory one of the early historical sites of Glamorgan.
-- **READER**: So the farm marks the old monastery of St Dochdwy?
-- Source: Western Mail, 'Grievous loss', letter from William Rees, 19/11/7? (transcript GHF-E090-N04: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n04); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act V: The Courts · Scene id: ghf-19870202-1 · Date: 1987-02-02 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
-### 71. 1975 — Estate Agent's Office
+With the appeal still pending, an application is made to amalgamate BP's two titles — the main title and the separate farmhouse title — into one.
 
-Event id: ghf-19750523-1 · Date: 1975-05-23
+> The family's case: The family ask why the separate record of the house parcel was being folded away in the middle of the appeal. They are pursuing it with HM Land Registry.
 
-On 23 May 1975 BP Pension Trust transfers its interest to BP Properties Ltd. Mary maintains that no transfer can defeat the ownership she asserted in court the previous year.
+- Land Registry record: Land Registry Titles — amalgamation — https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration
+- Analysis: 1987 HMLR Amalgamation During Appeal — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/procedural-fairness-notice/1987-hmlr-amalgamation-during-appeal/
 
-- **ESTATE AGENT**: The superior title passes to new holders. Sitting occupants are noted in the file.
-- **MARY WILLIAMS**: You cannot sell what you do not own! My court case is still pending!
-- **ESTATE AGENT**: Our registered title permits this transaction despite the pending occupants' claim.
-- **MARY WILLIAMS**: Adjourned means unresolved—not dismissed! Our adverse possession defence stands!
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### V.6 (68). 31 July 1987 — The Court of Appeal
 
-### 72. 1978 — Llandough Roman Villa (separate site)
+Act V: The Courts · Scene id: ghf-19870731-1 · Date: 1987-07-31 · Parcel: House parcel (A) · Basis: Court record
 
-Event id: ghf-19780101-1 · Date: 1978-01-01
+Dillon LJ, Mustill LJ and Sir Edward Eveleigh dismiss the appeal in BP Properties Ltd v Buckler. They hold that the 1962 action stopped time running, and that BP's 1974 letters made Mary's possession permissive whether she accepted them or not. The title documents she spoke of were not produced.
 
-GGAT excavates the Llandough Roman Villa (PRN 00768s), south of the church, in 1978–79. This is a separate site, not Great House Farm; earlier versions of this timeline wrongly placed the villa on the farm.
+> The family's case: The family contend the court decided possession of the whole farm without the documents on the house parcel before it — the 1877 agreement, the 1938 conveyance, the 1939 tenancy plan — and without the 1974 press report of Mary claiming ownership or the evidence that she rejected the licence.
 
-- **ARCHAEOLOGIST**: The villa is south of the church. Great House is to the north.
-- **LOCAL RESIDENT**: So the Roman villa and the farm are two different places.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Court record: BP Properties Ltd v Buckler [1987] EWCA Civ 2 — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/
+- Analysis: BP Properties Ltd v Buckler — what it omits — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#omits
 
-### 73. 1980 — House of Commons
+### V.7 (69). 3 March 1988 — The last appeal
 
-Event id: ghf-19800522-1 · Date: 1980-05-22
+Act V: The Courts · Scene id: ghf-19880303-1 · Date: 1988-03-03 · Parcel: House parcel (A) · Basis: Court record
 
-On 22 May 1980 Ted Rowlands MP tells the House of Commons that Western Ground Rents, 'the most rapacious ground landlord' in South Wales, has been bought by the BP pension fund. The landlord that sued Frederick in 1955 is now inside the BP group.
+The House of Lords refuses leave to appeal. The family are given 28 days to find somewhere else to live.
 
-- **TED ROWLANDS MP**: The most rapacious ground landlord, Western Ground Rents, has been bought by the BP pension fund.
-- **FAMILY**: So the landlord of 1955 and the owner of 1987 were one and the same family of companies.
-- Source: GHF-E090-N16 — Hansard, 22 May 1980 (https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n16)
+- Court record: BP Properties Ltd v Buckler — House of Lords — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#house-of-lords
 
-### 74. 1982 — GGAT
+### VI.1 (70). 29 April 1988, morning — The bailiffs come
 
-Event id: ghf-19821001-1 · Date: 1982-10-01
+Act VI: The Siege · Scene id: ghf-19880429-1 · Date: 1988-04-29 · Parcel: House parcel (A) · Basis: Newspaper
 
-On 1 October 1982 GGAT tells the planning authority that occupation may continue north of the church, and asks for 'thorough investigative work prior to the development'.
+Five bailiffs and about fifteen police arrive. Billy blocks the narrow drive with a tractor, locks the doors and bars the windows.
 
-- **GGAT ARCHAEOLOGIST**: There must be thorough investigative work before any development.
-- **PLANNING OFFICER**: Noted for the file.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+- Newspaper: 'Chainsaw farmer vows to fight on', c. 30 April 1988 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n07
+- Newspaper: South Wales Echo, 29 April 1988 (search extract GHF-E090-N15-01) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### 75. 1982 — Property Transfer
+### VI.2 (71). 29 April 1988 — The chainsaw
 
-Event id: ghf-19821119-1 · Date: 1982-11-19
+Act VI: The Siege · Scene id: ghf-19880429-2 · Date: 1988-04-29 · Parcel: House parcel (A) · Basis: Newspaper
 
-Between 19 and 30 November 1982 BP Pension Trust transfers to BP Properties Ltd, and first registration is applied for (title WA231076); a second application (WA240304) follows on 23 February 1983. Mary Williams is alive and living in the farmhouse throughout. The family contend no inquiry was made of her.
+The bailiffs smash the gate lock and break at the doors with poleaxes. When an axe comes through a door with his children behind it, Billy starts a chainsaw and pushes it through, and the bailiffs fall back. After a four-hour stand-off they withdraw. Branwen leaves with the children, aged two, three and four. The next day Billy will not leave the farm even for medical attention, in case they come back.
 
-- **BP PROPERTIES LAWYER**: We are registered as proprietor of Great House Farm from November 1982.
-- **MARY WILLIAMS**: Another transfer! They keep selling our home while our adverse possession claim stands!
-- **BP PROPERTIES LAWYER**: Our title is registered. The 1974 licence letter means your claim is not adverse.
-- **BILLY BUCKLER**: How can you be bona fide when our possession and claim are fully on record?
-- **BP PROPERTIES LAWYER**: We acquired from the registered proprietor. Your claim is against the prior vendor.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+> The family's case: BP told the press Mary had been allowed to stay rent-free because of ill health. Billy told them the family owned the farm.
 
-### 76. 1983 — HM Land Registry — WA240304
+- Newspaper: 'Chainsaw farmer vows to fight on' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n07
+- Newspaper: South Wales Echo, 30 April 1988 (search extract GHF-E090-N15-02) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-Event id: ghf-19830223-1 · Date: 1983-02-23
+### VI.3 (72). 3 May 1988 — To Strasbourg
 
-On 23 February 1983 BP's solicitors, Linklaters & Paines, apply to register the farmhouse and garden as a separate title, WA240304, and certify that they know of no question or doubt affecting the title. Mary Williams is living in the farmhouse. The Wiki's present question is what the application, notices, requisitions and original register show about the ownership claim then on the record.
+Act VI: The Siege · Scene id: ghf-19880503-1 · Date: 1988-05-03 · Parcel: House parcel (A) · Basis: Court record
 
-> The family's case is that this registration took in the house parcel without disclosing Mary's ownership claim.
+Billy applies to the European Commission of Human Rights.
 
-- **LINKLATERS & PAINES**: We know of no question or doubt affecting the title.
-- **FAMILY**: Mary was sitting in that house, claiming it as her own. That was the question.
-- **ARCHIVIST**: The certificate was given a month before she died.
-- Source: Land Registry Titles (https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration); Legal Review, F3 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#fraud)
+- Court record: BP Properties Ltd v Buckler — ECHR — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#echr
 
-### 77. 1983 — GGAT Warehouse, Swansea
+### VI.4 (73). 12 May 1988 — The MP writes
 
-Event id: ghf-19830313-1 · Date: 1983-03-13
+Act VI: The Siege · Scene id: ghf-19880512-1 · Date: 1988-05-12 · Parcel: House parcel (A) · Basis: Newspaper
 
-On 13 March 1983 a fire at GGAT's Swansea warehouse destroys the finds from the Llandough Roman villa excavation. The villa is a separate site from Great House Farm.
+Cardiff MP Alun Michael asks the Lord Chancellor to look at the case of the farmer who fought off bailiffs with a chainsaw. Billy warns that someone will be killed.
 
-- **ARCHAEOLOGIST**: Years of finds from the Llandough villa dig have been lost in the fire.
-- **LOCAL HISTORIAN**: That was the villa south of the church, not Great House Farm, but it is still a loss to Llandough.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Press Archive — Newspaper Transcripts (greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n06) — GHF-E090-N06 (South Wales Echo, 18 March 1983)
+- Newspaper: South Wales Echo, 12 May 1988 (search extract GHF-E090-N15-03) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-### 78. 1983 — Great House Farm / Legal Office
+### VI.5 (74). 29 July 1988 — Cadw comes to look
 
-Event id: ghf-19830326-1 · Date: 1983-03-26
+Act VI: The Siege · Scene id: ghf-19880729-1 · Date: 1988-07-29 · Parcel: House parcel (A) · Basis: Photograph
 
-Mary Williams dies at the farmhouse on 26 March 1983, and her son William (Billy) inherits her claim. The farm agreement had been taken from the family's blanket box in 1950–52, so the family's case rests on Mary's statement and their long occupation.
+Cadw inspects and photographs the farmhouse and barn while considering them for listing. These two photographs are all that survive of its visit: no file, no notes, no record of who decided. In 2026 Cadw gives three different explanations of the code it marked them with.
 
-> CHALLENGE: First registration was applied for while Mary was alive and in occupation, and she died weeks later. Whether she was ever notified is being pursued with HM Land Registry.
+- Photograph: Cadw survey photograph of the farmhouse, 29 July 1988 (released 2026, ATISN 27021) — https://greathousefarmwiki.wordpress.com/archaeology/#cadw-1988
+- Photograph: Cadw survey photograph of the barn, 29 July 1988 (released 2026, ATISN 27021) — https://greathousefarmwiki.wordpress.com/archaeology/#cadw-1988
+- Analysis: Cadw — Forensic Critique — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/
 
-- **FAMILY SOLICITOR**: The 1667 deed and manorial records that would prove your claim are missing.
-- **BILLY BUCKLER**: My mother is gone. Where are the documents she always said we had?
-- **ARCHIVE CLERK**: We have no record of any Williams conveyance in the Bute estate archives.
-- **BILLY BUCKLER**: Convenient that every document proving our ownership has vanished!
-- **FAMILY SOLICITOR**: Missing deeds raise serious questions. Billy must now claim through her estate.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### VI.6 (75). 29 – 30 November 1988 — Forced entry
 
-### 79. 1983 — HM Land Registry — WA240304
+Act VI: The Siege · Scene id: ghf-19881130-1 · Date: 1988-11-30 · Parcel: House parcel (A) · Basis: Newspaper
 
-Event id: ghf-19830408-1 · Date: 1983-04-08
+BP obtains possession and the bailiffs force their way in. Within hours, the family say, demolition begins: half the roof is already off an outbuilding. Billy is taken to Llandough Hospital. Eight other people living at the farm are made homeless with the family.
 
-On 8 and 12 April 1983, two weeks after Mary's death, Linklaters and the Land Registry exchange letters on the farmhouse file, including form D23. On 12 May further letters follow on the main title. What the Registry asked about the family's occupation, and what it was told, is in those letters, which the family is now ordering.
+- Newspaper: South Wales Echo front page — 'Angry scenes as farmer evicted' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n14
+- Newspaper: South Wales Echo, 30 November 1988 (search extract GHF-E090-N15-04) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
+- Newspaper: South Wales Echo, 3 December 1988 — 'Billy's unhappy family' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n09
 
-- **ARCHIVIST**: Three batches of letters, all after Mary died.
-- **FAMILY**: Whatever they asked about us, we were never told.
-- Source: Land Registry Titles (https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration)
+### VI.7 (76). 1 December 1988 — Everything in the road
 
-### 80. 1984 — HM Land Registry — WA231076
+Act VI: The Siege · Scene id: ghf-19881201-1 · Date: 1988-12-01 · Parcel: House parcel (A) · Basis: Newspaper
 
-Event id: ghf-19840113-1 · Date: 1984-01-13
+Billy lies injured in Llandough Hospital. Branwen and the three children have nowhere to go. Mary's lifetime of possessions — photographs, heirlooms, legal papers — is left in the house or scattered in the road. Billy later says he has only the clothes he stood up in.
 
-On 13 January 1984 an application on form A3 is made on the main title and a new edition of the register is issued, four months before BP's writ for possession.
+- Newspaper: South Wales Echo, 3 December 1988 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08
+- Newspaper: South Wales Echo, 13 December 1988 (search extract GHF-E090-N15-11) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-- **ARCHIVIST**: A change to the register, then the writ. The order matters.
-- **FAMILY**: They were tidying the paperwork before coming for the house.
-- Source: Land Registry Titles (https://greathousefarmwiki.wordpress.com/land-registry-titles/)
+### VI.8 (77). 2 December 1988 — An injunction
 
-### 81. 1984 — BP Properties Offices
+Act VI: The Siege · Scene id: ghf-19881202-1 · Date: 1988-12-02 · Parcel: House parcel (A) · Basis: Newspaper
 
-Event id: ghf-19840522-1 · Date: 1984-05-22
+A High Court judge orders that the farmhouse and its contents must not be touched. Mr Justice Anthony Evans lets Branwen go in to collect belongings if BP's solicitors agree. BP says it plans to demolish and build new homes on the 10-acre site.
 
-On 22 May 1984 BP Properties issues its writ for possession, relying on the 1974 licence letters. In the same year the library copy of the Bute–Thomas deed is reported missing from Cardiff Library.
+- Newspaper: South Wales Echo, 3 December 1988 — 'History fight to save farm' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08
+- Newspaper: South Wales Echo, 2 December 1988 (search extract GHF-E090-N15-05) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-- **BP PROPERTIES AGENT**: We hold registered title and rely on the 1974 licence letters sent to Mrs Buckler.
-- **FAMILY SOLICITOR**: Those letters were sent by BP Pension Trust in 1974—before you even owned this land!
-- **BP PROPERTIES AGENT**: We acquired the benefit of those letters as successors in title to BP Pension Trust.
-- **BILLY BUCKLER**: My mother never accepted that licence. She disputed it until she died in 1983!
-- **BP PROPERTIES AGENT**: She never rejected it in writing. The licence stands under BP Properties Ltd v Buckler.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### VI.9 (78). 3 December 1988 — From hospital bed to the dock
 
-### 82. 1986 — High Court, Cardiff
+Act VI: The Siege · Scene id: ghf-19881209-1 · Date: 1988-12-03 · Parcel: House parcel (A) · Basis: Newspaper
 
-Event id: ghf-19860710-1 · Date: 1986-07-10
+Police take Billy from his hospital bed to be charged with assaulting two bailiffs, criminal damage, and wanton or furious driving. A charge is not a conviction.
 
-On 10 July 1986 Mr Justice Hollis gives judgment for BP Properties in the High Court at Cardiff. He holds that the 1974 letters gave Mary a valid licence, so she was not in adverse possession. The possession order is suspended for six months.
+- Newspaper: South Wales Echo, 3 December 1988 (search extract GHF-E090-N15-06) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
+- Newspaper: South Wales Echo, 3 December 1988 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15
 
-- **FAMILY SOLICITOR**: We allege fraud in the procurement of title and deliberate document suppression.
-- **OPPOSING COUNSEL**: These are serious allegations without proof. Our client's title is registered.
-- **FAMILY SOLICITOR**: The missing 1667 deed and identity substitution demand investigation!
-- **JUDGE**: Your fraud allegations are noted, but this court's task is the adverse possession point.
-- **FAMILY SOLICITOR**: Under Takhar v Gracefield, fraud unravels all—but only if investigated!
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### VI.10 (79). 3 – 5 December 1988 — 48 hours to decide
 
-### 83. 1986 — Royal Commission (RCAHMW)
+Act VI: The Siege · Scene id: ghf-19881203-1 · Date: 1988-12-03 · Parcel: House parcel (A) · Basis: Official correspondence
 
-Event id: ghf-19860711-1 · Date: 1986-07-11
+Over one weekend, with no access to the inside, Cadw assesses the house for emergency 'spot-listing'. In public it says it is considering listing; in July it had already coded the house just below the bar.
 
-From around 1986–87, during the trial and the appeal, the Royal Commission's correspondence between C. N. Johns and Mrs Buckler goes missing. It may have recorded Mary's own account of her title to an independent public body.
+- Analysis: Cadw — Forensic Critique — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/
+- Newspaper: South Wales Echo, 3 December 1988 — Cadw considering spot-listing — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08
 
-- **RCAHMW**: The Johns–Buckler correspondence has been missing since 1986/87.
-- **FAMILY**: Another record lost just when we needed it.
-- Source: Legal Review, section 1.3 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#loss-pattern)
+### VI.11 (80). Monday 5 December 1988 — The final hearing
 
-### 84. 1987 — HM Land Registry
+Act VI: The Siege · Scene id: ghf-19881205-1 · Date: 1988-12-05 · Parcel: House parcel (A) · Basis: Newspaper
 
-Event id: ghf-19870202-1 · Date: 1987-02-02
+Judge Norman Francis refuses to keep the injunction in place until the European Commission can hear the family. Their solicitor, Colin Jongman, says there is nothing more they can do. The same day Cadw says the house is not of sufficient architectural merit to list.
 
-On 2 February 1987, while the appeal is pending, an application is made to amalgamate BP's two titles into one.
+- Newspaper: Western Mail, 6 December 1988 — 'Farmer fails in final eviction hearing' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n10
 
-> CHALLENGE: The family question why the titles were merged during the appeal; this is being pursued with HM Land Registry.
+### VI.12 (81). 6 December 1988, 4am — Bulldozed before breakfast
 
-- **REGISTRY CLERK**: An application to amalgamate the two titles.
-- **FAMILY RESEARCHER**: While the appeal was still being decided?
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VI: The Siege · Scene id: ghf-19881206-1 · Date: 1988-12-06 · Parcel: House parcel (A) · Basis: Newspaper
 
-### 85. 1987 — Court of Appeal (Civil Division)
+Just after 4am a twenty-strong team with bulldozers moves in. By breakfast no building is left standing. Branwen and the three children watch their home flattened. The house the Royal Commission never finished recording is gone.
 
-Event id: ghf-19870731-1 · Date: 1987-07-31
+> The family's case: The house was destroyed the morning after the listing refusal, before its fabric could be recorded or the European Commission could hear the family.
 
-On 31 July 1987 the Court of Appeal (Dillon LJ, with Mustill LJ and Sir Edward Eveleigh) dismisses the appeal in BP Properties Ltd v Buckler. It holds that the 1962 action stopped time running, and that BP's 1974 letters made Mary's possession permissive whether or not she accepted them. It records that the claimed title documents were not produced. The present forensic question is whether the documentary root and title to Parcel A were fully examined in the surviving litigation record.
+- Newspaper: 'Tears flow as 800 year-old farm house is razed at last' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n11
+- Newspaper: South Wales Echo, 6 December 1988 (search extract GHF-E090-N15-07) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
+- Newspaper: South Wales Echo, 21 December 1988 (reader's letter on "Bulldozed Before Breakfast") (search extract GHF-E090-N15-12) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
+- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
 
-> CHALLENGE: The family contend the courts decided possession of the whole farm without the documents bearing on the house parcel ever being before them, and that a licence she rejected was used to defeat her claim.
+### VI.13 (82). 7 – 9 December 1988 — Anger in the village, and bail
 
-- **DILLON LJ**: The unilateral 1974 licence letter ended adverse possession regardless of acceptance.
-- **FAMILY BARRISTER**: My Lords—m'Lord—the licence was never accepted. Adverse possession must have continued!
-- **DILLON LJ**: Adverse possession ceased from receipt of the letters. BP Pension Trust's title revived.
-- **FAMILY BARRISTER**: The licence substituted Mrs Buckler for Mary Williams without consent or explanation!
-- **DILLON LJ**: Appeal dismissed. BP Properties Ltd is entitled to possession of the farm.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VI: The Siege · Scene id: ghf-19881208-1 · Date: 1988-12-07 · Parcel: House parcel (A) · Basis: Newspaper
 
-### 86. 1988 — House of Lords
+A Vale of Glamorgan councillor, himself a BP pensioner, calls the demolition 'disgusting'. On 8 December villagers meet their councillors in anger, and a bid is launched to stop BP profiting from it. The family recall the council's planning chief saying the cleared site looked like a battleground. On 9 December magistrates bail Billy on condition he stays away from the site.
 
-Event id: ghf-19880303-1 · Date: 1988-03-03
+- Newspaper: South Wales Echo, 7 December 1988 (search extract GHF-E090-N15-08) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
+- Newspaper: South Wales Echo, 9 December 1988 (search extract GHF-E090-N15-09) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
+- Newspaper: South Wales Echo, 10 December 1988 (search extract GHF-E090-N15-10) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
+- Wiki page: 1988: Possession and Demolition — https://greathousefarmwiki.wordpress.com/demolition-1988/
 
-On 3 March 1988 the House of Lords refuses leave to appeal.
+### VI.14 (83). December 1988 — Sifting the rubble
 
-- **CLERK OF THE HOUSE**: Leave to appeal is refused.
-- **BILLY BUCKLER**: Then there is nowhere left in this country to go.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VI: The Siege · Scene id: ghf-19881212-1 · Date: 1988-12-12 · Parcel: House parcel (A) · Basis: Heritage record
 
-### 87. 1988 — Great House Farm — First Eviction Attempt
+R.F. Suggett of the Royal Commission examines the rubble. He finds a fireplace jamb and an ogee-stopped beam with torus, a form uncommon in Glamorgan, and records the loss of a carved stone capital that stood by the front door, probably from the old church.
 
-Event id: ghf-19880429-1 · Date: 1988-04-29
+- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-After the House of Lords refusal the family are given 28 days to find somewhere else to live. On 29 April 1988 five bailiffs and about 15 police arrive. Billy blocks the narrow drive with a tractor, locks the doors and bars the windows.
+### VII.1 (84). January 1989 — A charge dropped
 
-- **BAILIFF**: You were given twenty-eight days. Time's up.
-- **BILLY BUCKLER**: We are not leaving our home.
-- Source: 'Chainsaw farmer vows to fight on', Andrew Penman, c. 30 April 1988 (transcript GHF-E090-N07: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n07); South Wales Echo, 29 April 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19890115-1 · Date: 1989-01-15 · Parcel: House parcel (A) · Basis: Newspaper
 
-### 88. 1988 — Great House Farm — Chainsaw Stand-off
+Billy's bail conditions are changed, and the prosecution drops, as out of time, a summons for threatening behaviour on 29 April 1988. The November charges remain, and he is ordered not to go within half a mile of the site.
 
-Event id: ghf-19880429-2 · Date: 1988-04-29
+- Newspaper: 'Charge against evicted farmer dropped', January 1989 — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n12
+- Newspaper: South Wales Echo, 6 January 1989 (search extract GHF-E090-N15-13) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-The bailiffs smash the gate lock and break at the doors with poleaxes. When an axe comes through a door with his children behind it, Billy starts a chainsaw and pushes it through the door, and the bailiffs back off. After a four-hour stand-off they withdraw. Branwen leaves with the children, aged two, three and four. BP says it regrets the events; the police say they were there to prevent a breach of the peace, not to help the bailiffs.
+### VII.2 (85). 20 March 1989 — Clearing the site
 
-- **BILLY BUCKLER**: They started smashing the doors with poleaxes. My children were right behind the door when the axe came through.
-- **BAILIFF**: Stand back from the door!
-- **BILLY BUCKLER**: That's when I started my chainsaw and pushed it through the door. They backed off then.
-- **BRANWEN BUCKLER**: I'm taking the children away from here.
-- **BILLY BUCKLER**: They have got no documents for it. If it's theirs, why have I never paid a penny in rent for it in my life?
-- Source: 'Chainsaw farmer vows to fight on', Andrew Penman, c. 30 April 1988 (transcript GHF-E090-N07: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n07); South Wales Echo, 30 April 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19890320-1 · Date: 1989-03-20 · Parcel: House parcel (A) · Basis: Newspaper
 
-### 89. 1988 — European Commission of Human Rights
+At 7.30am lorries move onto the site to clear what is left. The work takes several days.
 
-Event id: ghf-19880503-1 · Date: 1988-05-03
+- Newspaper: South Wales Echo, 20 March 1989 (search extract GHF-E090-N15-14) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-On 3 May 1988 William Buckler applies to the European Commission of Human Rights.
+### VII.3 (86). 23 March 1989 — "I will fight on"
 
-- **EUROPEAN RIGHTS LAWYER**: You have grounds for an Article 1 Protocol 1 claim on property deprivation.
-- **BILLY BUCKLER**: Finally, a court that might examine what UK courts refused to address!
-- **GOVERNMENT SOLICITOR**: Domestic remedies have not been exhausted. The application is premature.
-- **EUROPEAN RIGHTS LAWYER**: Every UK court refused to determine ownership! What remedy remains?
-- **GOVERNMENT SOLICITOR**: Procedural rules bar this application. Domestic courts have ruled conclusively.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19890323-1 · Date: 1989-03-23 · Parcel: House parcel (A) · Basis: Newspaper
 
-### 90. 1988 — MP's Office
+Billy pleads guilty to the remaining charges and is freed. He vows to fight on over the loss of his home and, he says, more than 70 acres of land.
 
-Event id: ghf-19880512-1 · Date: 1988-05-12
+- Newspaper: South Wales Echo, 23 March 1989 (search extract GHF-E090-N15-15) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
+- Newspaper: South Wales Echo, 24 March 1989 (search extract GHF-E090-N15-16) — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-On 12 May 1988 the South Wales Echo reports that the Cardiff MP Alun Michael has asked the Lord Chancellor to look at the case of the farmer who fought off bailiffs with a chainsaw. Billy warns that someone will be killed.
+### VII.4 (87). 1989 — From farm to a bus
 
-- **ALUN MICHAEL MP**: Lord Chancellor, this case shows serious procedural failures and injustice.
-- **LORD CHANCELLOR'S AIDE**: The courts have ruled at the highest level. What grounds justify review?
-- **ALUN MICHAEL MP**: Ownership was never determined! That's a fundamental defect in every ruling!
-- **LORD CHANCELLOR'S AIDE**: The House of Lords addressed the possession claim comprehensively.
-- **ALUN MICHAEL MP**: But possession without ownership determination is procedurally unsafe and unjust!
-- Source: South Wales Echo, 12 May 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19890325-1 · Date: 1989-03-25 · Parcel: House parcel (A) · Basis: Newspaper
 
-### 91. 1988 — Cadw Offices
+The family live with Billy's sister in Penarth. Billy plans to turn an old bus into a home, and says about £30,000 of his possessions were taken from the site after the demolition.
 
-Event id: ghf-19880729-1 · Date: 1988-07-29
+- Newspaper: South Wales Echo, 1989 — 'From farm to a bus' — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n13
 
-On 29 July 1988 Cadw inspects and photographs the farmhouse and barn while considering it for listing. Only those two photographs survive today: Cadw has no file, no notes and no record of who decided, and in 2026 it gave three different explanations of what its code meant.
+### VII.5 (88). 14 April 1989 — Strasbourg says no
 
-- **CADW INSPECTOR**: Farmhouse and barn photographed for the listing survey.
-- **FAMILY**: They came, they took two photographs, and that is all that is left of the file.
-- **ARCHIVIST**: Cadw cannot say whether it ever saw the 1974 survey or GGAT's 1982 warning.
-- Source: Cadw — Forensic Critique v8.0.0 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/); Records Access Chronology (https://greathousefarmwiki.wordpress.com/records-access-chronology/)
+Act VII: Built Over · Scene id: ghf-19890414-1 · Date: 1989-04-14 · Parcel: House parcel (A) · Basis: Court record
 
-### 92. 1988 — Great House Farm — Forced Entry
+The European Commission accepts that the possession order interfered with Billy's home, but finds it lawful and justified, and declares Buckler v United Kingdom inadmissible.
 
-Event id: ghf-19881130-1 · Date: 1988-11-30
+- Court record: BP Properties Ltd v Buckler — ECHR — https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#echr
+- Court record: Buckler v United Kingdom, Commission decision (PDF) — https://greathousefarmwiki.wordpress.com/wp-content/uploads/2026/09/wp-1790112811838.pdf
 
-BP obtains possession at the end of November 1988; the press places the forced entry on Wednesday 30 November. Within hours, the family say, demolition begins: half the roof is already off one of the outbuildings. Eight other people living at the farm are made homeless with the family.
+### VII.6 (89). 10 October 1989 — Oakview sold
 
-- **BRANWEN BUCKLER**: They are already taking the roof off the outbuildings. They will flatten the farmhouse next.
-- **BAILIFF**: The property is now in the possession of BP Properties.
-- **TENANT**: Billy opened his doors to everyone. Now we're all back on the bus in the lay-by.
-- **BILLY BUCKLER**: This is my family's home.
-- Source: South Wales Echo, 30 November 1988, 'Angry scenes as farmer evicted' (transcript GHF-E090-N14: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n14); South Wales Echo, 30 November 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); South Wales Echo, 3 December 1988, 'Billy's unhappy family' (transcript GHF-E090-N09: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n09); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19891010-1 · Date: 1989-10-10 · Parcel: Not yet known · Basis: Land Registry record
 
-### 93. 1988 — Great House Farm — Final Eviction
+BP sells Oakview, title WA513690. How this land relates to the two parcels is unclear.
 
-Event id: ghf-19881130-2 · Date: 1988-11-30
+- Land Registry record: Land Registry Titles — later dealings — https://greathousefarmwiki.wordpress.com/land-registry-titles/#later-dealings
 
-Billy is taken to Llandough Hospital after the eviction. He is later charged with assaulting two bailiffs, criminal damage, and wanton or furious driving.
+### VII.7 (90). October – November 1989 — BP applies to build
 
-- **BILLY BUCKLER**: You have no right! Get off this land! Ownership was never decided in any court!
-- **POLICE OFFICER**: You are under arrest. Stop resisting. An ambulance has been called.
-- **BILLY BUCKLER**: A dozen police on the farm and I won't leave—not until someone rules who owns it.
-- **POLICE OFFICER**: You face charges of assault on two bailiffs, criminal damage, and furious driving.
-- **BILLY BUCKLER**: I'll not go to hospital—if I leave they come back and take everything we have left.
-- Source: South Wales Echo, 3 December 1988 (transcript GHF-E090-N08: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08); South Wales Echo, 3 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19891107-1 · Date: 1989-11-07 · Parcel: Whole farm (A + B) · Basis: Planning file
 
-### 94. 1988 — Llandough Hospital
+BP lodges outline application 89/01396/OUT for housing (received 8 November). GGAT advises that it should not be decided without an archaeological assessment, prices the work at £2,000, and discloses talks with BP's agents — then BP commissions GGAT to do it. The same report calls the farmhouse a "county treasure".
 
-Event id: ghf-19881201-1 · Date: 1988-12-01
+- Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
+- Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 
-Billy Buckler lies injured in Llandough Hospital from the eviction of 30 November. Branwen and the three young children have nowhere to go. The family say Mary's lifetime of possessions, photographs, heirlooms and legal documents were left in the house or scattered in the road.
+### VII.8 (91). 8 February 1990 — Missing comments
 
-- **NURSE**: You have significant injuries and must stay. You are not fit to leave.
-- **BILLY BUCKLER**: If I leave that hospital they'll take the farm. I won't go—not yet.
-- **BRANWEN BUCKLER**: Billy is in Llandough Hospital. I have three children and another coming. We have nothing.
-- **BILLY BUCKLER**: Within hours of getting in they began demolition. Half the outbuilding roof is already off.
-- **NURSE**: The police have barred you from the site. You cannot return. Please rest.
-- Source: Press Archive transcript GHF-E090-N08 (South Wales Echo, 3 December 1988): https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08; Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19900208-1 · Date: 1990-02-08 · Parcel: Whole farm (A + B) · Basis: Planning file
 
-### 95. 1988 — Court
+GGAT sends further comments on the application (Appendix B). They are missing from the planning file.
 
-Event id: ghf-19881202-1 · Date: 1988-12-02
+- Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
 
-A High Court judge grants an interim injunction that the farmhouse and its contents must not be touched. On 2 December Mr Justice Anthony Evans allows Branwen to collect belongings from the house if BP's solicitors agree. Cadw considers emergency 'spot-listing' and sends an inspector.
+### VII.9 (92). 13 March 1990 — "Unfortunately demolished"
 
-- **JUDGE**: I grant a temporary injunction against demolition pending further hearing.
-- **BP PROPERTIES LAWYER**: This injunction frustrates our lawful rights following the Court of Appeal ruling!
-- **FAMILY SOLICITOR**: Heritage protection and fraud allegations must be examined before demolition!
-- **JUDGE**: The injunction is limited in time. Cadw must decide on listing promptly.
-- **BP PROPERTIES LAWYER**: Every delay costs our client money and undermines the finality of judgments.
-- Source: South Wales Echo, 3 December 1988, 'History fight to save farm', Peter Bibby (transcript GHF-E090-N08: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n08); South Wales Echo, 2 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19900313-1 · Date: 1990-03-13 · Parcel: Whole farm (A + B) · Basis: Planning file
 
-### 96. 1988 — Cadw — Listing Assessment
+Outline permission is granted with 18 conditions. The officer's report notes that the Local Plan said the farm buildings should be kept, but 'they were unfortunately demolished a little while ago'. No building preservation notice had ever been served.
 
-Event id: ghf-19881203-1 · Date: 1988-12-03
+- Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
+- Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-Over the weekend of 3 to 5 December 1988 Cadw assesses the farmhouse for emergency spot-listing in about 48 hours, with no access to the interior. Publicly it says it is 'considering' listing, although in July it had coded the house just below the bar.
+### VII.10 (93). August 1990 — Eight trenches
 
-- **CADW**: We are considering spot-listing and have sent an inspector.
-- **FAMILY**: Forty-eight hours, across a weekend, without setting foot inside.
-- Source: Cadw — Forensic Critique v8.0.0, Part VI (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/)
+Act VII: Built Over · Scene id: ghf-19900801-1 · Date: 1990-08-01 · Parcel: Not yet known · Basis: Archaeological record
 
-### 97. 1988 — Cardiff — Injunction Hearing
+GGAT digs eight machine trenches for BP. Early-medieval burials are found. The eastern area 'could not be investigated', yet is marked as low potential.
 
-Event id: ghf-19881205-1 · Date: 1988-12-05
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
+- Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 
-On Monday 5 December 1988 Judge Norman Francis dismisses the Bucklers' application to keep the injunction until the European Commission of Human Rights has considered their case. Their solicitor, Colin Jongman, says there are no more steps to take. Cadw says the house is not of sufficient architectural merit to list.
+### VII.11 (94). 15 October 1990 — Condition 17 signed off
 
-- **JUDGE NORMAN FRANCIS**: It would be novel for a court in this country to hold up the effects of a judgment until the Court of Human Rights rules on it.
-- **COLIN JONGMAN**: There are no more steps that can be taken now that the building can be knocked down.
-- **JANET HARRIS (BUCKLER)**: It is reputed to be 800 years old, and yet it seems they can destroy it on what is a whim.
-- **CADW SPOKESPERSON**: The house is not of sufficient architectural merit.
-- Source: Western Mail, 6 December 1988, 'Farmer fails in final eviction hearing' (transcript GHF-E090-N10: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n10); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19901015-1 · Date: 1990-10-15 · Parcel: Whole farm (A + B) · Basis: Planning file
 
-### 98. 1988 — Great House Farm — Demolition
+The council records the archaeological evaluation condition as met, on the strength of GGAT's eight trenches.
 
-Event id: ghf-19881206-1 · Date: 1988-12-06
+- Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
 
-The outbuildings are demolished from 30 November. Just after 4am on 6 December 1988 a twenty-strong team with bulldozers moves in, and by breakfast no building is left standing. Branwen and the three children watch their home flattened.
+### VII.12 (95). 21 August 1991 — The official record
 
-> CHALLENGE: Demolition destroyed the house before its fabric could be fully recorded: the Royal Commission's survey was never completed, and features were lost in the rubble.
+Act VII: Built Over · Scene id: ghf-19910821-1 · Date: 1991-08-21 · Parcel: House parcel (A) · Basis: Heritage record
 
-- **BRANWEN BUCKLER**: Great House Farm was more than just a house. It was the family history, with all the people born or died there over 400 years.
-- **DEMOLITION FOREMAN**: Clear the farmhouse first.
-- **BRANWEN BUCKLER**: Now we are left with no home, no plans, no income and no Christmas.
-- **LOCAL OBSERVER**: Bulldozed before breakfast.
-- Source: 'Tears flow as 800 year-old farm house is razed at last', c. 7 December 1988 (transcript GHF-E090-N11: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n11); South Wales Echo, 6 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+The regional Historic Environment Record writes up Great House Farm. It records that the house and farm buildings 'were suddenly and completely demolished by B.P. Properties Ltd. on 6th December 1988 amid considerable local controversy'.
 
-### 99. 1988 — Community Meeting
+- Heritage record: Historic Environment Record GGAT 02038s (Archwilio) — https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s
 
-Event id: ghf-19881208-1 · Date: 1988-12-08
+### VII.13 (96). 14 May 1992 — Twenty houses
 
-A Vale of Glamorgan councillor, himself a BP pensioner, calls the demolition 'disgusting'. On 8 December Llandough villagers meet their councillors in anger. The family also recall the council's planning chief saying the cleared site looked like a battleground.
+Act VII: Built Over · Scene id: ghf-19920514-1 · Date: 1992-05-14 · Parcel: Whole farm (A + B) · Basis: Planning file
 
-- **COUNCILLOR**: As a BP pensioner I say this plainly: what they did here was disgusting.
-- **VILLAGER**: An old house beside our church, flattened before breakfast. We want answers.
-- Source: South Wales Echo, 7 and 9 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); 1988: Possession and Demolition (https://greathousefarmwiki.wordpress.com/demolition-1988/)
+Ideal Homes Wales applies for approval of 20 detached houses on the farm (92/00671/RES) — more than a year before BP transfers the land to it.
 
-### 100. 1988 — Llandough Hospital / Magistrates Court
+- Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
 
-Event id: ghf-19881209-1 · Date: 1988-12-09
+### VII.14 (97). 15 May 1992 — Billy dies
 
-Police take Billy Buckler from his hospital bed to face charges of assaulting two bailiffs. On 9 December magistrates free him on bail, with conditions keeping him away from the site.
+Act VII: Built Over · Scene id: ghf-19920515-1 · Date: 1992-05-15 · Parcel: House parcel (A) · Basis: Family account
 
-- **POLICE OFFICER**: William Buckler, you are taken from hospital to face charges of assault on two bailiffs.
-- **BILLY BUCKLER**: Taken from a hospital bed to answer charges for defending my own home. This is justice?
-- **POLICE OFFICER**: You face assault, criminal damage, and wanton or furious driving charges.
-- **BILLY BUCKLER**: I defended my family. They bashed the door in with my children standing behind it.
-- **BILLY BUCKLER**: Freed on bail. I will fight this to the death. They have no documents for that farm.
-- Source: South Wales Echo, 3 and 10 December 1988 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); January 1989 (transcript GHF-E090-N12: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n12); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Billy Buckler dies of a heart attack in Llandough Hospital. After a funeral at Bethesda Chapel, Dinas Powys, he is buried at Michaelston-le-Pit. He was born in the farmhouse and defended it to the end.
 
-### 101. 1988 — Great House Farm — HER Record
+- Wiki page: The Williams / Buckler Family — William — https://greathousefarmwiki.wordpress.com/williams-buckler-family/#william
 
-Event id: ghf-19881211-1 · Date: 1988-12-11
+### VII.15 (98). 27 July 1992 — A warning, half missing
 
-The Glamorgan-Gwent Historic Environment Record (PRN 02038s) independently confirms that Great House Farm was suddenly and completely demolished by B.P. Properties Ltd. on 6th December 1988 amid considerable local controversy. The record documents the 800-year history of the site, including the medieval finds, Vaughan family tenure, Bute Estate ownership, and the disputed demolition. The HER cross-references the RCAHMW Inventory Vol IV Part 2 and provides official archaeological corroboration of the family account.
+Act VII: Built Over · Scene id: ghf-19920727-1 · Date: 1992-07-27 · Parcel: Not yet known · Basis: Planning file
 
-- **HER OFFICER**: Great House Farm was suddenly and completely demolished by B.P. Properties Ltd. on 6th December 1988 amid considerable local controversy.
-- **RCAHMW INVENTOR**: Classified as a sub-medieval house of direct-entry type — plan not published due to incomplete information from the 1974 survey.
-- **HER OFFICER**: The record documents C12th-C14th pottery, medieval ironwork, Vaughan family tenure, and Bute Estate acquisition.
-- **ARCHAEOLOGIST**: Seven related archaeological events from 1990 to 2013 will follow this official record.
-- Source: GGAT HER PRN 02038s via Archwilio (https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s)
+GGAT warns the council that the 1990 assessment showed significant deposits — medieval, possibly earlier, and human bone — and urges mitigation. Page 2 of the letter is missing from the file.
 
-### 102. 1988 — Great House Farm — Demolition Rubble
+- Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 
-Event id: ghf-19881212-1 · Date: 1988-12-12
+### VII.16 (99). 3 September 1992 — Approved anyway
 
-In December 1988 R.F. Suggett of the Royal Commission examines the rubble. He records a fireplace jamb, an ogee-stopped beam with torus (a form uncommon in Glamorgan), and the loss of the carved dressed-stone capital kept by the front door, presumably from the old church.
+Act VII: Built Over · Scene id: ghf-19920903-1 · Date: 1992-09-03 · Parcel: Whole farm (A + B) · Basis: Planning file
 
-- **R.F. SUGGET**: A fireplace jamb has since been found in the rubble. The carved stone capital by the front door was lost during demolition.
-- **RCAHMW OFFICER**: The ogee-stopped beam with torus is a form of decoration not particularly common in Glamorgan. Lost now.
-- **R.F. SUGGET**: The capital by the front door presumably came from the old church. Now it is gone along with the house.
-- **LOCAL OBSERVER**: Examination of the rubble brought to light no new features except the ogee-stopped beam with torus.
-- Source: GGAT HER PRN 02038s — Supplementary Notes (R.F. Sugget, December 1988); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Thirty-eight days after GGAT's warning, the 20 houses are approved with no new archaeological condition. GGAT then records no action on the site for 466 days.
 
-### 103. 1989 — Court
+- Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
+- Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 
-Event id: ghf-19890115-1 · Date: 1989-01-15
+### VII.17 (100). 3 December 1993 — Groundworks begin
 
-In January 1989 the Crown Prosecution Service withdraws, as out of time, a summons alleging threatening behaviour on 29 April 1988. The charges of assault and wanton and furious driving from November remain, and Billy is ordered not to go within half a mile of the site.
+Act VII: Built Over · Scene id: ghf-19931203-1 · Date: 1993-12-03 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
-- **PROSECUTOR CLARKE**: We withdraw the threatening-behaviour count as the summons is late.
-- **BILLY BUCKLER**: Even so, I am still barred from going near the former farm site.
-- **BILLY BUCKLER**: They evict us by force, then prosecute me for resisting their violence!
-- **PROSECUTOR CLARKE**: The court order was lawful. Your resistance constituted criminal conduct.
-- **BILLY BUCKLER**: Nothing about this was lawful! Ownership was never proven!
-- Source: 'Charge against evicted farmer dropped', January 1989 (transcript GHF-E090-N12: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n12); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+BP transfers the site to Ideal Homes, and groundworks start before the archaeological condition has been met.
 
-### 104. 1989 — Demolition Site
+- Land Registry record: Land Registry Titles — later dealings — https://greathousefarmwiki.wordpress.com/land-registry-titles/#later-dealings
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-Event id: ghf-19890320-1 · Date: 1989-03-20
+### VII.18 (101). 13 December 1993 — "A difference of opinion"
 
-On 20 March 1989 lorries move onto the site at 7.30am to clear the rubble; the operation takes several days.
+Act VII: Built Over · Scene id: ghf-19931213-1 · Date: 1993-12-13 · Parcel: Whole farm (A + B) · Basis: Planning file
 
-- **SITE MANAGER**: Our job is simple: remove all remnants so the site is ready for housing.
-- **LOCAL HISTORIAN**: They're erasing the last physical evidence of what happened here.
-- **SITE MANAGER**: We follow orders. The site must be cleared for redevelopment.
-- **LOCAL HISTORIAN**: Rubble removal completes the destruction—house, history, heritage, gone.
-- Source: South Wales Echo, 20 March 1989 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+With work already under way, GGAT urges a breach-of-condition notice, saying the archaeological condition (recorded as condition 18) has not been met. The developer relies on counsel's opinion that the condition is discharged; the council accepts it, later telling the MP it was 'a difference of opinion'.
 
-### 105. 1989 — Court
+- Planning file: Redevelopment and Church View Close — https://greathousefarmwiki.wordpress.com/redevelopment/
+- Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-Event id: ghf-19890323-1 · Date: 1989-03-23
+### VII.19 (102). March – July 1994 — A thousand graves
 
-On 23 March 1989 Billy pleads guilty to the remaining charges and is freed. He vows to fight on over the loss of his home and more than 70 acres of land.
+Act VII: Built Over · Scene id: ghf-19940504-1 · Date: 1994-03-21 · Parcel: Not yet known · Basis: Archaeological record
 
-- **BILLY BUCKLER**: I will go on challenging how our home and the land were taken from us.
-- **JUDGE**: The matter is concluded. The property has been demolished.
-- **BILLY BUCKLER**: Demolished, yes—but the fraud, the missing deeds, the suppressed archaeology remain!
-- **JUDGE**: Those are civil matters beyond this court's criminal jurisdiction.
-- **BILLY BUCKLER**: Justice demands investigation! Someone must examine what happened here!
-- Source: South Wales Echo, 23 and 24 March 1989 (transcript GHF-E090-N15: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n15); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Under a Home Office licence and an agreement for 'preservation by record', the Cotswold Archaeological Trust excavates an early-medieval cemetery on the farm — many burials just below the topsoil, in the zone the 1990 evaluation called low potential. Published totals reach 1,026 burials, then the largest early-medieval burial population recovered in Wales. Between 21 April and at least 3 May the licence has lapsed while work continues; on 28 April GGAT's officer orders 'no further work', under an authority still unidentified. Removing remains without a licence was an offence under the Burial Act 1857.
 
-### 106. 1989 — Temporary Accommodation
+> The family's case: The site went under 20 houses, and the evidence with it.
 
-Event id: ghf-19890325-1 · Date: 1989-03-25
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
+- Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
 
-The family live with Billy's sister in Penarth. Billy plans to convert an old bus into a home, and says about £30,000 of his possessions were taken from the site after the demolition.
+### VII.20 (103). 28 July 1994 — Who owns the dead
 
-- **BILLY BUCKLER**: They have taken everything from me and my family. I have lost my livelihood.
-- **BRANWEN BUCKLER**: We have three children, and another on the way.
-- **BILLY BUCKLER**: I shall just have to start from scratch.
-- Source: South Wales Echo, 1989, 'From farm to a bus', Peter Collins (transcript GHF-E090-N13: https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n13); Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19940728-1 · Date: 1994-07-28 · Parcel: Not yet known · Basis: Museum record
 
-### 107. 1989 — European Commission of Human Rights
+Ideal Homes Wales, as landowner, gives the human remains and finds from 'Great House Farm, Llandough' to the National Museum (accession 95.56H). Ownership of finds follows ownership of the land.
 
-Event id: ghf-19890414-1 · Date: 1989-04-14
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
+- Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-On 14 April 1989 the European Commission accepts that the possession order interfered with William Buckler's home, but holds it lawful and justified, and declares the application inadmissible.
+### VII.21 (104). 10 November 1994 — The woodland
 
-- **COMMISSION**: The interference was lawful and justified. The application is inadmissible.
-- **BILLY BUCKLER**: They admit it was my home, and still say it was lawful.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-19941110-1 · Date: 1994-11-10 · Parcel: House parcel (A) · Basis: Land Registry record
 
-### 108. 1989 — HM Land Registry — WA513690
+The woodland, title WA735527, passes to the Forest of Cardiff. The wiki places it in Parcel A.
 
-Event id: ghf-19891010-1 · Date: 1989-10-10
+- Wiki page: Woodland — https://greathousefarmwiki.wordpress.com/woodland/
+- Land Registry record: Land Registry Titles — later dealings — https://greathousefarmwiki.wordpress.com/land-registry-titles/#later-dealings
 
-On 10 October 1989 BP sells Oakview (title WA513690). How this land relates to the two parcels is unclear.
+### VII.22 (105). 28 June 1995 – 1996 — The last dealing
 
-- **CONVEYANCER**: BP Properties sells Oakview, title WA513690.
-- **FAMILY RESEARCHER**: We need to plot that title against the farm boundaries.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#later-dealings)
+Act VII: Built Over · Scene id: ghf-19950628-1 · Date: 1995-06-28 · Parcel: Whole farm (A + B) · Basis: Land Registry record
 
-### 109. 1989 — Vale of Glamorgan Planning
+Rights are granted to South Wales Electricity, and there is correspondence with Persimmon — the last dealing on the registration file.
 
-Event id: ghf-19891107-1 · Date: 1989-11-07
+- Land Registry record: Land Registry Titles — later dealings — https://greathousefarmwiki.wordpress.com/land-registry-titles/#later-dealings
 
-In October–November 1989 BP lodges outline application 89/01396/OUT for housing. The planning report records that buildings the Local Plan said should be kept had already been demolished. Outline permission follows on 13 March 1990, with 18 conditions.
+### VII.23 (106). 2005 — The cemetery in print
 
-- **PLANNING OFFICER**: The buildings the Local Plan wanted kept have already gone.
-- **COUNCILLOR**: Then there is nothing left to protect but the ground.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VII: Built Over · Scene id: ghf-20050101-1 · Date: 2005-01-01 · Parcel: Not yet known · Basis: Archaeological record
 
-### 110. 1989 — GGAT — Consultee Report
+The excavation is published in Medieval Archaeology: 1,026 burials, 814 of them articulated. It tells the story of the cemetery, not of the family whose home stood beside it.
 
-Event id: ghf-19891108-1 · Date: 1989-11-08
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
+- Publication: Holbrook and Thomas, Medieval Archaeology 49 (2005) — https://greathousefarmwiki.wordpress.com/archaeology/
 
-In its report on BP's outline application, GGAT advises that the application should not be decided without an archaeological assessment, specifies the trenching, prices the work at £2,000 over two weeks, and discloses negotiations with BP's agents. BP then commissions GGAT to do the work. The same report describes the farmhouse as having been listed as a 'county treasure'.
+### VII.24 (107). 22 December 2005 — The woodland divided
 
-- **GGAT**: Assessment needed: machine trenching, two weeks, about two thousand pounds.
-- **FAMILY**: The adviser to the council became the contractor to BP in the same breath.
-- Source: GGAT — Forensic Review v4.0.3 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/); Redevelopment (https://greathousefarmwiki.wordpress.com/redevelopment/)
+Act VII: Built Over · Scene id: ghf-20051222-1 · Date: 2005-12-22 · Parcel: House parcel (A) · Basis: Land Registry record
 
-### 111. 1990 — Vale of Glamorgan Planning
+Part of the woodland title is divided off.
 
-Event id: ghf-19900208-1 · Date: 1990-02-08
+- Wiki page: Woodland — https://greathousefarmwiki.wordpress.com/woodland/
 
-On 8 February 1990 GGAT sends further comments on the outline application (Appendix B). They are missing from the planning file.
+### VII.25 (108). 20 March 2019 — Twenty-eight years late
 
-- **PLANNING CLERK**: The file refers to further GGAT comments as Appendix B.
-- **FAMILY RESEARCHER**: But Appendix B is not in the file we were given.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Redevelopment and Church View Close (greathousefarmwiki.wordpress.com/redevelopment/)
+Act VII: Built Over · Scene id: ghf-20190320-1 · Date: 2019-03-20 · Parcel: Not yet known · Basis: Heritage record
 
-### 112. 1990 — Vale of Glamorgan Planning
+GGAT's 1990 assessment is finally added to the national record, about 28 years after it was written.
 
-Event id: ghf-19900313-1 · Date: 1990-03-13
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
 
-On 13 March 1990 outline permission is granted with 18 conditions, including archaeological access, evaluation and mitigation. The officer's report had noted that the Local Plan said the farm buildings should be retained, but 'they were unfortunately demolished a little while ago'. No building preservation notice had ever been served.
+### VIII.1 (109). November 2025 — Back to the records
 
-- **PLANNING OFFICER**: The buildings should be retained. However, they were unfortunately demolished a little while ago.
-- **FAMILY**: The plan said keep them. BP knocked them down first, and the council moved on.
-- Source: Redevelopment (https://greathousefarmwiki.wordpress.com/redevelopment/); Legal Review, section 4.4 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#criticism-register)
+Act VIII: The Reckoning · Scene id: ghf-20251117-1 · Date: 2025-11-17 · Parcel: n/a · Basis: Official correspondence
 
-### 113. 1990 — GGAT Field Evaluation
+Mary's grandchildren begin a records campaign. The Royal Commission says it cannot advise on a legal case but holds archives on the site; Llandough Community Council says it cannot help; the Vale of Glamorgan passes the request to its information team.
 
-Event id: ghf-19900801-1 · Date: 1990-08-01
+- Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-In August 1990 GGAT digs eight machine trenches for BP. The eastern area 'could not be investigated', yet is zoned low potential. Early-medieval burials are found.
+### VIII.2 (110). 23 – 29 January 2026 — Bounced
 
-- **GGAT ARCHAEOLOGIST**: Eight trenches. The eastern area could not be investigated.
-- **FAMILY RESEARCHER**: So how could it be called low potential?
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VIII: The Reckoning · Scene id: ghf-20260123-1 · Date: 2026-01-23 · Parcel: n/a · Basis: Official correspondence
 
-### 114. 1990 — Vale of Glamorgan Planning
+The family's request to Cadw bounces: both its published addresses return 'address not found', the first of at least eight failures this year. On 29 January the family apply to HM Land Registry to record the interest left out at first registration.
 
-Event id: ghf-19901015-1 · Date: 1990-10-15
+- Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-On 15 October 1990 the council records condition 17, the archaeological evaluation, as complied with, on the strength of GGAT's eight-trench evaluation of August.
+### VIII.3 (111). 13 February 2026 — Retrieving the files
 
-- **ARCHIVIST**: Ground that could not be investigated was signed off as low potential.
-- **FAMILY**: And four years later the burials were found right there.
-- Source: Redevelopment (https://greathousefarmwiki.wordpress.com/redevelopment/)
+Act VIII: The Reckoning · Scene id: ghf-20260213-1 · Date: 2026-02-13 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
-### 115. 1991 — Glamorgan-Gwent HER
+HM Land Registry sends a holding reply: it is retrieving the historic paper files.
 
-Event id: ghf-19910821-1 · Date: 1991-08-21
+- Land Registry record: Land Registry Titles — 2026 complaint — https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026
+- Official correspondence: HMLR holding letter, 13 February 2026 (PDF) — https://github.com/unclehowell/datro/blob/wayback/wayback/pdf/foi/2026-02-13_hmlr_wa231076_holding-letter.pdf
 
-The Glamorgan-Gwent Historic Environment Record compiles its official record of Great House Farm (PRN 02038s), synthesising archaeological assessments, the RCAHMW Inventory, and the supplementary notes of R.F. Sugget. This is followed by the first related archaeological event — an assessment of land at Great House Farm in 1990 (GGATE000877). The HER record will become the definitive archaeological account of the site, independently corroborating the demolition and documenting eight centuries of history.
+### VIII.4 (112). 23 March 2026 — "No evidence of a mistake"
 
-- **HER COMPILER**: PRN 02038s is now compiled. It records eight centuries of history at Great House Farm.
-- **ARCHAEOLOGICAL ASSESSOR**: Land at Great House Farm: an archaeological assessment is commissioned for 1990.
-- **HER COMPILER**: The record cross-references the RCAHMW Inventory Vol IV Part 2 and seven related events through 2013.
-- **HER OFFICER**: This official record independently corroborates the demolition on 6 December 1988.
-- Source: GGAT HER PRN 02038s — Compiled 21-08-1991; GGATE000877: Great House Farm Archaeological Assessment (1990)
+Act VIII: The Reckoning · Scene id: ghf-20260323-1 · Date: 2026-03-23 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
-### 116. 1992 — Vale of Glamorgan Planning
+The Land Registry sets out the registration history of Tŷ Mawr Farm and says there is 'no evidence of a mistake in the register'. It treats the farm as one holding and does not explain how the house parcel entered BP's title.
 
-Event id: ghf-19920514-1 · Date: 1992-05-14
+- Land Registry record: Land Registry Titles — 2026 complaint — https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026
 
-On 14 May 1992 Ideal Homes Wales applies for approval of 20 detached houses on the farm site (92/00671/RES), more than a year before BP transfers the land to it.
+### VIII.5 (113). 19 April – 25 May 2026 — Complaint refused, twice
 
-- **IDEAL HOMES WALES**: Twenty detached houses, on the former farm site.
-- **ARCHIVIST**: Applied for before the land had been transferred. On what interest?
-- Source: Redevelopment (https://greathousefarmwiki.wordpress.com/redevelopment/)
+Act VIII: The Reckoning · Scene id: ghf-20260419-1 · Date: 2026-04-19 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
-### 117. 1992 — Llandough
+The stage-one complaint of fraud and maladministration is refused: the Registry will not look behind the 1987 judgment. On 25 May the stage-two decision says the title is 'registered correctly'.
 
-Event id: ghf-19920515-1 · Date: 1992-05-15
+> The family's case: Both decisions rest on a judgment about possession, not on any deed to the farmhouse.
 
-William (Billy) Buckler dies at Llandough Hospital on 15 May 1992 after a heart attack. He is buried at Michaelston-le-Pit after a funeral at Bethesda Chapel, Dinas Powys. He had been born in the farmhouse and defended it to the end.
+- Land Registry record: Land Registry Titles — 2026 complaint — https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026
 
-- **FAMILY**: Billy was born in that house and fought for it all his life. He did not live to see the truth come out.
-- **FAMILY**: We carry on for him.
-- Source: The Williams / Buckler Family (https://greathousefarmwiki.wordpress.com/williams-buckler-family/)
+### VIII.6 (114). 21 May 2026 — Cadw's two photographs
 
-### 118. 1992 — GGAT
+Act VIII: The Reckoning · Scene id: ghf-20260521-1 · Date: 2026-05-21 · Parcel: House parcel (A) · Basis: Official correspondence
 
-Event id: ghf-19920727-1 · Date: 1992-07-27
+Cadw releases its two photographs of 29 July 1988, coded 'YYY' — 'marginally below the bar', it says. It has no other record and says the paper file is 'quite likely' destroyed. In July its review says 'most likely' destroyed, though there is no record of destruction.
 
-On 27 July 1992 GGAT warns the council that the 1990 assessment showed significant archaeological deposits, including medieval and possibly earlier material and human bone, and urges mitigation. Page 2 of the letter is missing from the file.
+- Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
+- Analysis: Cadw — Forensic Critique — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/
+- Photograph: Cadw survey photograph of the farmhouse, 29 July 1988 (released 2026, ATISN 27021) — https://greathousefarmwiki.wordpress.com/archaeology/#cadw-1988
 
-- **GGAT**: Significant deposits, including human bone. Mitigation is needed.
-- **ARCHIVIST**: And the second page of that warning is gone.
-- Source: GGAT — Forensic Review v4.0.3, Test 9 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/)
+### VIII.7 (115). 2 – 3 June 2026 — Asking to see the originals
 
-### 119. 1992 — Vale of Glamorgan Planning
+Act VIII: The Reckoning · Scene id: ghf-20260602-1 · Date: 2026-06-02 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
-Event id: ghf-19920903-1 · Date: 1992-09-03
+The family ask to inspect the original Land Registry files and ask that nothing be destroyed while the matter is open. For months there is no real answer, and several Registry addresses bounce.
 
-On 3 September 1992, 38 days after GGAT's warning, the reserved matters for 20 houses are approved with no new archaeological condition. GGAT then records no act on the site for 466 days.
+- Land Registry record: Land Registry Titles — 2026 complaint — https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026
 
-- **COUNCIL**: Reserved matters approved.
-- **FAMILY**: Thirty-eight days after the warning about human bone. No new condition.
-- Source: Redevelopment (https://greathousefarmwiki.wordpress.com/redevelopment/); GGAT — Forensic Review v4.0.3 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/)
+### VIII.8 (116). 30 July 2026 — The missing root
 
-### 120. 1993 — Former Farm Site
+Act VIII: The Reckoning · Scene id: ghf-20260730-1 · Date: 2026-07-30 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
-Event id: ghf-19931203-1 · Date: 1993-12-03
+Six months after the first request, the Registry releases a schedule of the 43 documents on the first-registration files. The 31 December 1969 conveyance — recited as BP's root of title — is not among them, nor is the 1971 abstract.
 
-On 3 December 1993 BP transfers the site to Ideal Homes, and groundworks begin before the archaeological condition has been met.
+- Land Registry record: Land Registry Titles — deeds before registration — https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration
 
-- **SITE FOREMAN**: Groundworks start Monday.
-- **GGAT ARCHAEOLOGIST**: Not before the archaeological condition is met.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+### VIII.9 (117). 25 August 2026 — "Not held"
 
-### 121. 1993 — GGAT / Vale of Glamorgan
+Act VIII: The Reckoning · Scene id: ghf-20260825-1 · Date: 2026-08-25 · Parcel: Not yet known · Basis: Official correspondence
 
-Event id: ghf-19931213-1 · Date: 1993-12-13
+Museum Wales refuses the family's request as 'not held', while saying in the same letter that it has found records of other discoveries at Great House Farm and Church Farm — which it withholds as 'not in scope'.
 
-On 13 December 1993, with groundworks already under way, GGAT recommends urgent consideration of a breach-of-condition notice, saying condition 18 has not been fulfilled. The developer relies on counsel's opinion that it has been discharged, and the council accepts that, later telling the MP it was 'a difference of opinion'.
+- Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-- **GGAT**: Condition 18 has not been fulfilled. A breach notice should be considered urgently.
-- **COUNCIL**: A difference of opinion.
-- Source: Redevelopment (https://greathousefarmwiki.wordpress.com/redevelopment/); Legal Review, section 4.4 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#criticism-register)
+### VIII.10 (118). 8 September 2026 — A lead to 1877
 
-### 122. 1994 — Cemetery Excavation, Former Farm Site
+Act VIII: The Reckoning · Scene id: ghf-20260908-1 · Date: 2026-09-08 · Parcel: House parcel (A) · Basis: Official correspondence
 
-Event id: ghf-19940421-1 · Date: 1994-04-21
+Glamorgan Archives hold no deeds for the 1877 Daniel Thomas sale, but point to Bute X.6(12), the Bute trustees' 1877 book of payments and receipts, now at Cardiff Library. A capital payment from Daniel Thomas in that book would prove the sale.
 
-From 21 April to at least 3 May 1994 the Home Office licence to remove human remains has lapsed while work goes on. On 28 April GGAT's officer orders the excavation contractor to do 'no further work' until a brief is approved; under what authority is still unidentified. Removing remains without a licence was an offence under the Burial Act 1857.
+- Official correspondence: The 1877 Agreement — Glamorgan Archives reply — https://greathousefarmwiki.wordpress.com/1877-agreement/#glamorgan-2026-4097b
 
-- **GGAT OFFICER**: No further work until the brief is approved.
-- **ARCHIVIST**: The licence had lapsed. What was lifted in those days, and on whose say-so?
-- Source: GGAT — Forensic Review v4.0.3, Tests 8 and 10 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/)
+### VIII.11 (119). 17 – 21 September 2026 — Complaints to Cadw and the MP
 
-### 123. 1994 — Cemetery Excavation, Former Farm Site
+Act VIII: The Reckoning · Scene id: ghf-20260917-1 · Date: 2026-09-17 · Parcel: House parcel (A) · Basis: Official correspondence
 
-Event id: ghf-19940504-1 · Date: 1994-05-04
+The family serve a formal complaint on Cadw over its 1988 listing decision and its lost file; Cadw's own address blocks it, so it is re-served on the Chief Inspector on 20 September. On 18 and 19 September they write to their MP, Stephen Doughty, with a view to a referral to the Parliamentary Ombudsman. On 20 September they ask Heneb for its records on the site. On 21 September a Land Registry agent tells them the title was 'closed in 2005' — contradicting the Registry's own history.
 
-In 1994, after a Home Office licence (21 March) and agreement to 'preservation by record', the Cotswold Archaeological Trust excavates an early-medieval cemetery on the former farm site. Burials are found in the zone GGAT's 1990 evaluation had called low potential, many just below the topsoil. Published totals reach 1,026 burials, the largest early-medieval burial population then recovered from Wales.
+- Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
+- Wiki page: The Restoration Campaign — https://greathousefarmwiki.wordpress.com/restoration-campaign/
+- Land Registry record: Land Registry Titles — 2026 complaint — https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026
 
-> CHALLENGE: The site was developed into 20 houses, permanently erasing the physical evidence. No public inquiry was held into the demolition or the family's eviction.
+### VIII.12 (120). 22 September 2026 — The wiki goes live
 
-- **LEAD ARCHAEOLOGIST**: This is an early-medieval cemetery, and a very large one.
-- **WILLIAMS DESCENDANT**: And the 1990 report said this ground was low potential.
-- **ARCHAEOLOGIST**: Many burials are only centimetres below the topsoil.
-- **LEAD ARCHAEOLOGIST**: This is one of the largest burial grounds ever excavated in Wales.
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VIII: The Reckoning · Scene id: ghf-20260922-1 · Date: 2026-09-22 · Parcel: n/a · Basis: Wiki
 
-### 124. 1994 — National Museum of Wales
+The family launch the Great House Farm Wiki, a public archive where every document is shown first, labelled by type, then explained. Nothing is kept secret.
 
-Event id: ghf-19940728-1 · Date: 1994-07-28
+- Wiki page: Great House Farm Wiki — Main Page — https://greathousefarmwiki.wordpress.com/
+- Wiki page: Evidence Library — https://greathousefarmwiki.wordpress.com/evidence-library/
 
-On 28 July 1994 Ideal Homes Wales, as landowner, donates the excavated human remains and finds from 'Great House Farm, Llandough' to the National Museum (accession 95.56H). Ownership of finds follows ownership of the land.
+### VIII.13 (121). 23 September 2026 — The Lords papers
 
-- **MUSEUM**: Accession 95.56H: Great House Farm, Llandough. Donated by Ideal Homes Wales.
-- **FAMILY**: If the house parcel was ours, so were the finds from it.
-- Source: Archaeology and Heritage (https://greathousefarmwiki.wordpress.com/archaeology/); Legal Review, section 2.3 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#land)
+Act VIII: The Reckoning · Scene id: ghf-20260923-1 · Date: 2026-09-23 · Parcel: House parcel (A) · Basis: Official correspondence
 
-### 125. 1994 — Woodland — WA735527
+The National Archives identifies the House of Lords papers in BP Properties Ltd v Buckler (YHL/PO/JO/10/11/2536), only added to its catalogue in May 2026. Earlier searches had found nothing.
 
-Event id: ghf-19941110-1 · Date: 1994-11-10
+- Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-On 10 November 1994 the woodland, title WA735527, is transferred to Forest of Cardiff. The wiki places the woodland in Parcel A.
+### VIII.14 (122). 25 – 27 September 2026 — An offer on the woodland
 
-- **CONVEYANCER**: The woodland title passes to Forest of Cardiff.
-- **FAMILY RESEARCHER**: That is the half of the land we are asking to have back.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Woodland (greathousefarmwiki.wordpress.com/woodland/)
+Act VIII: The Reckoning · Scene id: ghf-20260925-1 · Date: 2026-09-25 · Parcel: House parcel (A) · Basis: Official correspondence
 
-### 126. 1995–96 — HM Land Registry — WA231076 File
+The Forest of Cardiff, which holds the woodland title, offers the family a route to ownership. On 27 September the family decline the terms. No price is recorded for the charity's 1994 acquisition.
 
-Event id: ghf-19950628-1 · Date: 1995-06-28
+- Wiki page: Woodland — https://greathousefarmwiki.wordpress.com/woodland/
+- Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-Rights are granted to South Wales Electricity, and there is correspondence with Persimmon. This is the last dealing on the registration file.
+### VIII.15 (123). 27 – 29 September 2026 — Heneb and the Reviewer
 
-- **LAND REGISTRY CLERK**: The last entries on the file are the electricity rights and the Persimmon letters.
-- **FAMILY RESEARCHER**: Then the paper trail on this title stops in the mid-1990s.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Land Registry Titles (greathousefarmwiki.wordpress.com/land-registry-titles/#later-dealings)
+Act VIII: The Reckoning · Scene id: ghf-20260927-1 · Date: 2026-09-27 · Parcel: Whole farm (A + B) · Basis: Official correspondence
 
-### 127. 2005 — Medieval Archaeology
+The family complain to Heneb about GGAT's role from 1982 to 1995, and take the Land Registry to the Independent Complaints Reviewer. On 28 September a preservation notice goes to eleven public bodies. Heneb appoints an investigator; the Reviewer opens case ICR/090/26.
 
-Event id: ghf-20050101-1 · Date: 2005-01-01
+- Analysis: GGAT — Forensic Review — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/
+- Official correspondence: Records Access Chronology — https://greathousefarmwiki.wordpress.com/records-access-chronology/
 
-The 1994 excavation is published in Medieval Archaeology: 1,026 burials in all, 814 of them articulated. The publication tells the story of the cemetery; it does not tell the story of the family whose home stood beside it.
+### VIII.16 (124). 29 September 2026 — The armour on record
 
-- **ARCHIVIST**: One of the largest early-medieval cemeteries in Wales, found on the farm's ground.
-- **FAMILY**: And not a word about the family who lived there.
-- Source: Archaeology and Heritage (https://greathousefarmwiki.wordpress.com/archaeology/); Holbrook and Thomas, Medieval Archaeology 49 (2005)
+Act VIII: The Reckoning · Scene id: ghf-20260929-1 · Date: 2026-09-29 · Parcel: House parcel (A) · Basis: Official correspondence
 
-### 128. 2005 — Woodland — WA735527
+Cadw's complaint investigation begins. The same day the Royal Commission answers four requests together: its archive holds the 1974 newspaper report and an older note of the soldier in armour under the dining-room floor — so the story was on record long before the demolition.
 
-Event id: ghf-20051222-1 · Date: 2005-12-22
+- Heritage record: Archaeology and Heritage — https://greathousefarmwiki.wordpress.com/archaeology/
+- Wiki page: Where Things Stand — https://greathousefarmwiki.wordpress.com/where-things-stand/
 
-On 22 December 2005 part of the woodland title is divided off.
+### VIII.17 (125). 3 October 2026 — The cuttings
 
-- **LAND REGISTRY CLERK**: Part of the woodland is split off into a separate title.
-- **FAMILY RESEARCHER**: One more change to trace on the Parcel A land.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Woodland (greathousefarmwiki.wordpress.com/woodland/)
+Act VIII: The Reckoning · Scene id: ghf-20261003-1 · Date: 2026-10-03 · Parcel: n/a · Basis: Wiki
 
-### 129. 2019 — RCAHMW National Archive
+Fifteen newspaper cuttings from the family archive are transcribed onto the wiki, from the 1891 court report to the coverage of 1989.
 
-Event id: ghf-20190320-1 · Date: 2019-03-20
+- Wiki page: Press Archive — Newspaper Transcripts — https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/
+- Wiki page: Press Articles Index — https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/
 
-On 20 March 2019 GGAT's 1990 assessment is accessioned to the national record, about 28 years after it was written.
+### VIII.18 (126). 5 October 2026 — The museum releases its file
 
-- **ARCHIVIST**: The 1990 Great House Farm assessment, accessioned today.
-- **FAMILY RESEARCHER**: Twenty-eight years later. Where was it all that time?
-- Source: Great House Farm Wiki (greathousefarmwiki.wordpress.com)
+Act VIII: The Reckoning · Scene id: ghf-20261005-1 · Date: 2026-10-05 · Parcel: Not Great House Farm land · Basis: Museum record
 
-### 130. 2025 — Royal Commission (RCAHMW)
+After three requests and two refusals, Museum Wales releases the Church Farm file: the 1931 letter and the records of the medieval spur and spearhead found beside the church in 1858.
 
-Event id: ghf-20251117-1 · Date: 2025-11-17
+- Official correspondence: Museum Wales reply (GHF-E106-R33) — https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ghf-e106-r33-amgueddfa-cymru-reply-further-collections-search-following-8-september-2026-foi/
 
-In November 2025 the family's records campaign begins. The Royal Commission says it cannot advise on a legal case but holds archives on the site; Llandough Community Council says it cannot help; the Vale of Glamorgan refers the family's request about BP v Buckler to its Information Governance team.
+### VIII.19 (127). 6 October 2026 — The legal review
 
-- **FAMILY**: We start asking every public body what it holds.
-- **RECORDS OFFICER**: We hold archives on the site, but we cannot advise on a legal case.
-- Source: Records Access Chronology (https://greathousefarmwiki.wordpress.com/records-access-chronology/)
+Act VIII: The Reckoning · Scene id: ghf-20261006-1 · Date: 2026-10-06 · Parcel: House parcel (A) · Basis: Analysis
 
-### 131. 2026 — Cadw / Welsh Government
+The family publish a review of the whole record from three angles: fraud, land and human rights. Its central finding: no record yet surfaced shows how the house parcel ever entered BP's title.
 
-Event id: ghf-20260123-1 · Date: 2026-01-23
+- Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
 
-On 23 January 2026 the family's records request to Cadw bounces: cadw@gov.wales and foi@gov.wales both return 'address not found'. Cadw's published addresses will fail to deliver the family's mail at least eight times this year. On 29 January the family apply to HM Land Registry to record the interest left out at first registration.
+### E.1 (128). Today — What is proven, what is missing
 
-- **FAMILY**: The address on Cadw's own website does not work.
-- **ARCHIVIST**: Eight failed deliveries to Cadw before the year is out.
-- Source: Records Access Chronology (https://greathousefarmwiki.wordpress.com/records-access-chronology/)
+Epilogue: Where Things Stand · Scene id: ghf-99990101-1 · Parcel: House parcel (A) · Basis: Analysis
 
-### 132. 2026 — HM Land Registry
+The family's case is that the courts decided possession and never tried the house parcel on its documents — the 1877 agreement, the 1928 change, the 1938 conveyance, the 1939 tenancy plan. Those papers, BP's 1969 root of title, Cadw's file and GGAT's missing pages are still being sought. HM Land Registry, Cadw, Heneb/GGAT and the Vale of Glamorgan Council are under complaint or review, and the Independent Complaints Reviewer's deadline falls about 25 November 2026.
 
-Event id: ghf-20260323-1 · Date: 2026-03-23
+- Wiki page: Where Things Stand — https://greathousefarmwiki.wordpress.com/where-things-stand/
+- Analysis: Legal Review — Fraud, Land and Human Rights — https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/
+- Wiki page: Missing Records Register — https://greathousefarmwiki.wordpress.com/missing-records-register/
 
-On 23 March 2026 HM Land Registry sets out the registration history of Tŷ Mawr Farm and says there is 'no evidence of a mistake in the register'. It treats the farm as one holding and does not explain the root of title to the house parcel.
+### E.2 (129). Today — What the family ask for
 
-- **HM LAND REGISTRY**: There is no evidence of a mistake in the register.
-- **FAMILY**: Then show us the deed that put our house in BP's title.
-- Source: Land Registry Titles (https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026)
+Epilogue: Where Things Stand · Scene id: ghf-99990102-1 · Parcel: House parcel (A) · Basis: Family case
 
-### 133. 2026 — HM Land Registry
+A ruling that they own the house parcel. The woodland and the green back, or reparations where that can't be done. Reparations for the houses built on family land. The return of the estate's artefacts. A true heritage record. Every body involved is being given the chance to put things right before the family go back to court.
 
-Event id: ghf-20260419-1 · Date: 2026-04-19
+> The family's case: The family's case is that fraud and deliberate concealment kept the title documents from the courts — so the judgment can be challenged under Takhar v Gracefield, with limitation postponed under section 32 of the Limitation Act 1980.
 
-On 19 April 2026 the stage-one complaint is rejected: the Land Registry says it cannot look behind the 1987 judgment. On 25 May the stage-two decision says the title has been 'registered correctly'. Both decisions rest on a judgment that decided possession, not on any deed to the farmhouse.
-
-- **LAND REGISTRAR**: The title has been registered correctly. There are no grounds for rectification or indemnity.
-- **FAMILY**: You relied on a judgment that came after the registration and never looked at title.
-- Source: Land Registry Titles (https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026)
-
-### 134. 2026 — Cadw Listed Buildings
-
-Event id: ghf-20260521-1 · Date: 2026-05-21
-
-On 21 May 2026 Cadw releases two photographs from 29 July 1988, coded 'YYY', which it says means 'marginally below the bar'. It has no other electronic record, says the paper files are 'quite likely' destroyed, and promises a search. On 2 and 10 July its review says the file has 'most likely' been destroyed, though no destruction record exists.
-
-- **CADW**: The paper files have most likely been destroyed.
-- **FAMILY**: Most likely? With no record of destruction at all?
-- Source: Records Access Chronology (https://greathousefarmwiki.wordpress.com/records-access-chronology/); Cadw — Forensic Critique v8.0.0 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/)
-
-### 135. 2026 — HM Land Registry
-
-Event id: ghf-20260602-1 · Date: 2026-06-02
-
-On 2 and 3 June 2026 the family ask to inspect the original Land Registry files and ask that nothing be destroyed while the matter is open. The request goes unanswered in substance for months, and several Registry addresses bounce.
-
-- **FAMILY**: Let us see the originals, and do not destroy them.
-- **ARCHIVIST**: Still no substantive answer by the end of September.
-- Source: Land Registry Titles (https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026)
-
-### 136. 2026 — HM Land Registry
-
-Event id: ghf-20260730-1 · Date: 2026-07-30
-
-On 30 July 2026, six months after the first request, the Land Registry releases a schedule of the 43 documents on the first-registration files. The 31 December 1969 conveyance, recited as BP's root of title, is not among them, nor is the 1971 abstract.
-
-- **HM LAND REGISTRY**: Forty-three documents survive on the two files.
-- **FAMILY**: And the one deed BP's title rests on is not one of them.
-- Source: Land Registry Titles (https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration)
-
-### 137. 2026 — Amgueddfa Cymru — Museum Wales
-
-Event id: ghf-20260825-1 · Date: 2026-08-25
-
-On 25 August 2026 the Museum refuses the family's request as 'not held', while saying in the same letter that its searches found records of other discoveries at Great House Farm and Church Farm, which it withholds as 'not in scope'. Those records will be released only on 5 October, after two further request numbers.
-
-- **MUSEUM**: Not held. Other records found are not in scope.
-- **FAMILY**: You found them and kept them back.
-- Source: Records Access Chronology (https://greathousefarmwiki.wordpress.com/records-access-chronology/)
-
-### 138. 2026 — Glamorgan Archives
-
-Event id: ghf-20260908-1 · Date: 2026-09-08
-
-On 8 September 2026 Glamorgan Archives reply that they hold no deeds for the 1877 Daniel Thomas transaction, but point to Bute X.6(12), the Bute trustees' 1877 abstract of payments and receipts, now at Cardiff Library. A capital payment from Daniel Thomas in that book would prove the sale.
-
-- **ARCHIVIST, GLAMORGAN ARCHIVES**: Bute X.6(12), payments and receipts for 1877, may be worth searching.
-- **FAMILY**: If Daniel Thomas paid for the house, it will be written there.
-- Source: The 1877 Agreement (https://greathousefarmwiki.wordpress.com/1877-agreement/#glamorgan-2026-4097b)
-
-### 139. 2026 — Cadw / Welsh Government
-
-Event id: ghf-20260917-1 · Date: 2026-09-17
-
-On 17 September 2026 the family serve a formal stage-one complaint on Cadw over its 1988 listing decision and the loss of its file. Cadw's own address blocks it; it is re-served on the Chief Inspector on 20 September. On 21 September a Land Registry support agent tells the family the title was 'closed in 2005', contradicting the Registry's own history.
-
-- **FAMILY**: Ten matters, set out in full. We ask Cadw to put things right.
-- **HMLR SUPPORT**: The title was closed in 2005.
-- Source: Records Access Chronology (https://greathousefarmwiki.wordpress.com/records-access-chronology/); Land Registry Titles (https://greathousefarmwiki.wordpress.com/land-registry-titles/#hmlr-2026)
-
-### 140. 2026 — Great House Farm Wiki
-
-Event id: ghf-20260922-1 · Date: 2026-09-22
-
-On 22 September 2026 the family launch the Great House Farm Wiki, a public evidence archive. Every document is shown first, labelled by type, then explained, so that anyone can follow the story on the record. Nothing is kept secret.
-
-- **FAMILY**: Every request, every reply and every refusal now goes on the public record.
-- **ARCHIVIST**: Evidence first, then what it means. That is how this story will be told.
-- Source: Great House Farm Wiki (https://greathousefarmwiki.wordpress.com/); Where Things Stand (https://greathousefarmwiki.wordpress.com/where-things-stand/)
-
-### 141. 2026 — The National Archives
-
-Event id: ghf-20260923-1 · Date: 2026-09-23
-
-On 23 September 2026 The National Archives identifies the House of Lords judicial papers in BP Properties Limited v Buckler (YHL/PO/JO/10/11/2536), released on its catalogue only in May 2026. Earlier searches had found nothing.
-
-- **THE NATIONAL ARCHIVES**: Judicial Papers A–C 1–63, item 19: B.P. Properties Limited v Buckler.
-- **FAMILY**: The Lords papers were there all along. Now we can read them.
-- Source: Records Access Chronology (https://greathousefarmwiki.wordpress.com/records-access-chronology/)
-
-### 142. 2026 — Forest of Cardiff — Woodland
-
-Event id: ghf-20260925-1 · Date: 2026-09-25
-
-On 25 September 2026 the Forest of Cardiff, which holds the woodland title WA735527, offers the family a route to ownership. On 27 September the family decline the terms. No price is recorded for the charity's 1994 acquisition.
-
-- **FOREST OF CARDIFF**: We can offer a route to ownership of the woodland.
-- **FAMILY**: The woodland is ours to have back, not to buy back.
-- Source: Woodland (https://greathousefarmwiki.wordpress.com/woodland/); Records Access Chronology (https://greathousefarmwiki.wordpress.com/records-access-chronology/)
-
-### 143. 2026 — Heneb / HM Land Registry
-
-Event id: ghf-20260927-1 · Date: 2026-09-27
-
-On 27 September 2026 the family lodge a formal complaint with Heneb over GGAT's role from 1982 to 1995 and the heritage record, and refer HM Land Registry to the Independent Complaints Reviewer. On 28 September a preservation notice goes to eleven public bodies. Heneb appoints an investigating officer on 29 September; the Reviewer opens case ICR/090/26.
-
-- **FAMILY**: Every body involved is now on notice: keep every record.
-- **HENEB**: An investigating officer has been appointed.
-- Source: GGAT — Forensic Review v4.0.3 (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/ggat-forensic-review-and-evidence-schedule-v4-0-3/); Records Access Chronology (https://greathousefarmwiki.wordpress.com/records-access-chronology/)
-
-### 144. 2026 — Cadw / RCAHMW
-
-Event id: ghf-20260929-1 · Date: 2026-09-29
-
-On 29 September 2026 Cadw's complaints investigation begins. The same day the Royal Commission answers four requests together (RC26-0375). Its archive holds a 1974 newspaper report and an older note of the story of a soldier in armour found under the dining-room floor, so the story was on record long before the demolition.
-
-- **CADW**: Your complaint is now under investigation.
-- **ARCHIVIST**: The armour story is older than the demolition. It is on the record from 1974.
-- Source: Archaeology and Heritage (https://greathousefarmwiki.wordpress.com/archaeology/); Where Things Stand (https://greathousefarmwiki.wordpress.com/where-things-stand/)
-
-### 145. 2026 — Great House Farm Wiki — Press Archive
-
-Event id: ghf-20261003-1 · Date: 2026-10-03
-
-On 3 October 2026 fifteen newspaper cuttings from the family archive, Google Drive and email are transcribed onto the wiki, from the 1891 court report to the 1989 coverage.
-
-- **ARCHIVIST**: Fifteen cuttings transcribed, each with its date and paper.
-- **FAMILY RESEARCHER**: Now the press record can be checked by anyone.
-- Source: Great House Farm Wiki — Master Timeline (greathousefarmwiki.wordpress.com/timeline/); Great House Farm Wiki — Press Archive — Newspaper Transcripts (greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/)
-
-### 146. 2026 — Amgueddfa Cymru — Museum Wales
-
-Event id: ghf-20261005-1 · Date: 2026-10-05
-
-On 5 October 2026, after three requests and two refusals, the Museum releases the Church Farm file: the 1931 letter and the records of the medieval spur and spearhead found beside the church in 1858.
-
-- **MUSEUM**: Accession 63.24: a rowel spur and a spearhead, Llandough Church Farm, about 1858.
-- **FAMILY**: Three requests to get one file. But it is out now, on the record.
-- Source: GHF-E106-R33 (https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/ghf-e106-r33-amgueddfa-cymru-reply-further-collections-search-following-8-september-2026-foi/)
-
-### 147. 2026 — Legal Review
-
-Event id: ghf-20261006-1 · Date: 2026-10-06
-
-On 6 October 2026 the family publish a review of the whole record from three angles: fraud, land and human rights. It identifies the 1974 licence-letter timing as an inference requiring the original papers; notes that the separate farmhouse title was later merged into BP's main title; and identifies the absence, in the material currently surfaced, of a demonstrated documentary root showing how Parcel A entered the BP chain.
-
-- **ARCHIVIST**: Every step BP took in 1974 avoided a trial of who owned the house.
-- **FAMILY**: The case can be reopened, and we will reopen it.
-- Source: Legal Review — Fraud, Land and Human Rights (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/)
-
-### 148. Present day — Where Things Stand
-
-Event id: ghf-99990101-1
-
-Where things stand. The family's present case is that the documentary title to the house parcel has not yet been shown to have been fully examined in the surviving court record. The 1955, 1962, 1974 and 1980s proceedings must be read from their original files before making a broader statement about what ownership issues were or were not litigated. The 1877 agreement, 1928 change, 1938 conveyance and 1939 tenancy remain important documentary tests. BP demolished the house on 6 December 1988, immediately after the 5 December listing decision, before the building could be fully recorded. Key records are missing, and public-authority handling is now being investigated.
-
-- **FAMILY**: Possession was decided. Ownership never was.
-- **ARCHIVIST**: The documents that decide title have never been before a court.
-- **FAMILY**: The records are coming back, one by one.
-- Source: Where Things Stand (https://greathousefarmwiki.wordpress.com/where-things-stand/); Legal Review — Fraud, Land and Human Rights (https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/legal-review-fraud-land-human-rights/)
-
-### 149. Present day — What the Family Seek
-
-Event id: ghf-99990102-1
-
-What the family seek: a ruling that they own the house parcel; possession of the woodland and the green, or reparations where that can no longer be given; reparations for the houses built on family land; the return of estate artefacts; and a true heritage record. Every body involved is being given the chance to put things right before the family goes back to court. The Independent Complaints Reviewer deadline falls about 25 November 2026.
-
-> The family's case is that fraud and concealment kept the title documents from the courts, opening the way to reopen the judgment under section 32 of the Limitation Act 1980 and the rule in Takhar v Gracefield.
-
-- **FAMILY**: Give us back what can be given back, and make good what cannot.
-- **FAMILY**: The story is not over. It is being reopened.
-- Source: Family Reparations & Remedy Roadmap (https://greathousefarmwiki.wordpress.com/family-reparations-remedy-roadmap/); Where Things Stand (https://greathousefarmwiki.wordpress.com/where-things-stand/)
+- Wiki page: Family Reparations & Remedy Roadmap — https://greathousefarmwiki.wordpress.com/family-reparations-remedy-roadmap/
+- Wiki page: Where Things Stand — https://greathousefarmwiki.wordpress.com/where-things-stand/
 
 ---
-Full structured data at https://bpvsbuckler.bucklerfamily.estate/api/timeline.json · Readable story at https://bpvsbuckler.bucklerfamily.estate/story/
+Structured data: https://bpvsbuckler.bucklerfamily.estate/api/timeline.json · Script: https://bpvsbuckler.bucklerfamily.estate/story/

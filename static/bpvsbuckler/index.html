@@ -1,38 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-GB">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Great House Farm — the story, told in order</title>
-    <meta name="description" content="Press play and listen to the whole story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough, event by event in strict chronological order, from the Great House Farm Wiki evidence catalogue.">
-    <link rel="alternate" type="text/html" href="https://bpvsbuckler.bucklerfamily.estate/story/" title="The full story as a readable page">
-    <link rel="alternate" type="application/json" href="https://bpvsbuckler.bucklerfamily.estate/api/timeline.json" title="Timeline JSON">
-    <link rel="alternate" type="text/plain" href="https://bpvsbuckler.bucklerfamily.estate/llms.txt" title="llms.txt">
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
-    <script async src="https://js.stripe.com/v3/buy-button.js"></script>
-    <style>
-        body{font-family:'Courier Prime',monospace;background-color:#000;height:100vh;height:100dvh;overflow:hidden}
-        .font-special{font-family:'Special Elite',cursive}
-        .no-scrollbar::-webkit-scrollbar{display:none}
-        .no-scrollbar{-ms-overflow-style:none;scrollbar-width:none}
-        @keyframes slideInRight{from{transform:translateX(100%)}to{transform:translateX(0)}}
-        .animate-slide-in-right{animation:slideInRight .3s ease-out forwards}
-        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-        .animate-fade-in{animation:fadeIn .3s ease-out forwards}
-        @keyframes fadeInUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
-        .animate-fade-in-up{animation:fadeInUp .3s ease-out forwards}
-        @keyframes pulse{0%,100%{opacity:1}50%{opacity:.6}}
-        .animate-pulse-slow{animation:pulse 2s ease-in-out infinite}
-        .app-height{height:100vh;height:100dvh}
-        .safe-bottom{padding-bottom:max(1rem, env(safe-area-inset-bottom))}
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tŷ Mawr — The Great House Farm Story</title>
+  <meta name="description" content="The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough, told scene by scene in date order, with the evidence for every scene. A storyboard for documentary development.">
+  <meta property="og:title" content="Tŷ Mawr — The Great House Farm Story">
+  <meta property="og:description" content="Three hundred years in one farmhouse, a split in 1877, missing papers, and bulldozers before breakfast on 6 December 1988. Every scene, with its evidence.">
+  <meta property="og:image" content="https://bpvsbuckler.bucklerfamily.estate/media/1988-cadw-farmhouse.jpg">
+  <meta name="theme-color" content="#232a31">
+  <link rel="alternate" type="text/html" href="https://bpvsbuckler.bucklerfamily.estate/story/" title="The full script as a readable page">
+  <link rel="alternate" type="application/json" href="https://bpvsbuckler.bucklerfamily.estate/api/timeline.json" title="Timeline JSON">
+  <link rel="alternate" type="text/plain" href="https://bpvsbuckler.bucklerfamily.estate/llms.txt" title="llms.txt">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 </head>
-<body class="text-slate-200 antialiased overflow-hidden w-screen">
+<body>
 <div id="root"></div>
 <noscript>
-  <p style="color:#e2e8f0;padding:16px;font-family:Georgia,serif">This narrated player needs JavaScript. Read the whole story, every event in order, at
-  <a style="color:#f59e0b" href="/story/">/story/</a>; for machines, see <a style="color:#f59e0b" href="/llms.txt">/llms.txt</a> and <a style="color:#f59e0b" href="/api/timeline.json">/api/timeline.json</a>.</p>
+  <p style="color:#ecebe6;padding:16px;font-family:Georgia,serif">This storyboard needs JavaScript. Read the whole story, every scene in order, at
+  <a style="color:#c8a64e" href="/story/">/story/</a>; for machines, see <a style="color:#c8a64e" href="/llms.txt">/llms.txt</a> and <a style="color:#c8a64e" href="/api/timeline.json">/api/timeline.json</a>.</p>
 </noscript>
 <script type="module" src="/src/main.tsx"></script>
 </body>

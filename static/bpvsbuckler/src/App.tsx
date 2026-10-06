@@ -1,381 +1,334 @@
-import React, { useState, useEffect, useCallback, useRef } from 'react';
-import { timeline } from './data/timeline';
-import { pageContent } from './data/pages';
-import {
-  getCharacterIcon, isWelsh, getVoiceParams,
-  playClickSound, formatNarration, getWordCountUpTo, getCharIndexAtWord
-} from './lib/utils';
-import { SplashScreen } from './components/SplashScreen';
-import { FacebookIcon, InstagramIcon, InfoIcon, ImageIcon, TextIcon, PdfIcon, VideoIcon } from './components/Icons';
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import story from './data/story.json';
+import meta from './data/meta.json';
+import type { Story, Scene } from './data/story.d';
 
-// The story always starts at the very first event and plays straight through in
-// chronological order. A deep link (?event=<id> or ?year=<year>) starts elsewhere.
-const FIRST_SLIDE = 0;
-const STARTING_SLIDE = (() => {
+const S = story as unknown as Story;
+const scenes = S.scenes;
+const SITE = 'https://bpvsbuckler.bucklerfamily.estate';
+const actOf = (id: string) => S.acts.find((a) => a.id === id)!;
+const PARCEL: Record<string, [string, string]> = {
+  A: ['A', 'House parcel (A)'],
+  B: ['B', 'Fields (B)'],
+  AB: ['AB', 'Whole farm (A + B)'],
+  '?': ['q', 'Parcel not yet known'],
+  x: ['x', 'Not Great House Farm land'],
+  '': ['', ''],
+};
+
+type View = 'splash' | 'scene' | 'board' | 'cast';
+function readUrl(): { view: View; index: number } {
   try {
-    const q = new URLSearchParams(window.location.search);
-    const id = q.get('event');
-    if (id) { const i = timeline.findIndex((s) => s.id === id); if (i >= 0) return i; }
+    const q = new URLSearchParams(location.search);
+    const v = q.get('view');
+    if (v === 'storyboard') return { view: 'board', index: 0 };
+    if (v === 'cast') return { view: 'cast', index: 0 };
+    let id = q.get('event');
+    if (id) {
+      id = (S.aliases as Record<string, string>)[id] || id;
+      const i = scenes.findIndex((s) => s.id === id);
+      if (i >= 0) return { view: 'scene', index: i };
+    }
     const y = q.get('year');
     if (y) {
-      const want = y === 'present-day' ? 'present_day' : y;
-      const i = timeline.findIndex((s) => s.year === want || s.year.includes(want) || s.date?.startsWith(want));
-      if (i >= 0) return i;
+      const i = scenes.findIndex((s) => s.date.startsWith(y) || s.when.includes(y));
+      if (i >= 0) return { view: 'scene', index: i };
     }
   } catch (_e) { /* no URL */ }
-  return FIRST_SLIDE;
-})();
-
-interface NarrationState {
-  name: string; icon: string; text: string; type: string;
-  year: string; side: string; index: number;
+  return { view: 'splash', index: 0 };
 }
+const sceneUrl = (s: Scene) => `${SITE}/?event=${s.id}`;
+const speakable = (t: string) =>
+  t.replace(/Tŷ Mawr/g, 'Tee Mower').replace(/Llandough/g, 'Lan-dock').replace(/Dochdwy/g, 'Dok-doo-ee')
+   .replace(/WGR/g, 'W G R').replace(/GGAT/g, 'G GAT').replace(/LJ\b/g, 'Lord Justice');
+
+const Icon = {
+  play: <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" /></svg>,
+  pause: <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z" /></svg>,
+  prev: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d="M15 5l-7 7 7 7" /></svg>,
+  next: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2" aria-hidden="true"><path d="M9 5l7 7-7 7" /></svg>,
+  grid: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z" /></svg>,
+  doc: <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true"><path d="M6 3h9l4 4v14H6zM9 12h7M9 16h7" /></svg>,
+};
 
 export default function App() {
-  const [showSplash, setShowSplash] = useState(true);
-  const [sceneIndex, setSceneIndex] = useState(STARTING_SLIDE);
-  const [characterIndex, setCharacterIndex] = useState(0);
-  const [isPlayingState, setIsPlayingState] = useState(false);
-  const [volume, setVolume] = useState(0.5);
-  const [currentNarration, setCurrentNarration] = useState<NarrationState | null>(null);
-  const [tooltip, setTooltip] = useState<{ index: number; year: string; left: number } | null>(null);
-  const [showTooltip, setShowTooltip] = useState(false);
-  const [showChallenge, setShowChallenge] = useState<number | null>(null);
-  const [version, setVersion] = useState('...');
-  const isPlayingRef = useRef(isPlayingState);
+  const init = useMemo(readUrl, []);
+  const [view, setView] = useState<View>(init.view);
+  const [index, setIndex] = useState(init.index);
+  const [playing, setPlaying] = useState(false);
+  const [volume, setVolume] = useState(0.8);
+  const [spoken, setSpoken] = useState(-1);
+  const [copied, setCopied] = useState(false);
+  const scene = scenes[index];
+  const playingRef = useRef(playing);
+  playingRef.current = playing;
 
-  const currentScene = timeline[sceneIndex];
-  const hasChallenge = !!currentScene?.challenge;
-
-  const getSlideProgress = () =>
-    ((sceneIndex + characterIndex / (currentScene.scenes.length + 1)) / timeline.length) * 100;
-
+  // URL <-> state
   useEffect(() => {
-    fetch('https://api.github.com/repos/unclehowell/datro/releases?per_page=30')
-      .then(r => r.json())
-      .then((data: any) => {
-        const bpRelease = Array.isArray(data)
-          ? data.find((r: any) => r.tag_name?.startsWith('bpvsbuckler-'))
-          : null;
-        setVersion(bpRelease?.tag_name || 'v0.8.0.00');
-      })
-      .catch(() => setVersion('v0.8.0.00'));
+    const q = view === 'scene' ? `?event=${scene.id}` : view === 'board' ? '?view=storyboard' : view === 'cast' ? '?view=cast' : '';
+    if (location.search !== q) history.replaceState(null, '', location.pathname + q);
+    document.title = view === 'scene' ? `${scene.ref} ${scene.title} — Tŷ Mawr` : 'Tŷ Mawr — The Great House Farm Story';
+  }, [view, index]);
+  useEffect(() => {
+    const on = () => { const r = readUrl(); setView(r.view); setIndex(r.index); };
+    addEventListener('popstate', on);
+    return () => removeEventListener('popstate', on);
   }, []);
 
-  const advanceScene = useCallback(() => {
-    if (characterIndex < currentScene.scenes.length) {
-      playClickSound('click');
-      setCharacterIndex(p => p + 1);
-    } else {
-      playClickSound('beep');
-      if (sceneIndex < timeline.length - 1) {
-        setSceneIndex(p => p + 1);
-        setCharacterIndex(0);
-      } else {
-        // End of the story: stop on the final event rather than looping.
-        setIsPlayingState(false);
-      }
-    }
-  }, [sceneIndex, characterIndex, currentScene.scenes.length]);
+  const go = useCallback((i: number) => {
+    setIndex(Math.max(0, Math.min(scenes.length - 1, i)));
+    setView('scene');
+    setCopied(false);
+    document.querySelector('.main')?.scrollTo({ top: 0 });
+  }, []);
+  const open = (v: View) => { history.pushState(null, '', location.pathname); setPlaying(false); setView(v); };
 
-  const rewindScene = useCallback(() => {
-    if (characterIndex > 0) {
-      playClickSound('click');
-      setCharacterIndex(p => p - 1);
-    } else {
-      playClickSound('beep');
-      if (sceneIndex > 0) {
-        const prev = sceneIndex - 1;
-        setSceneIndex(prev);
-        setCharacterIndex(timeline[prev].scenes.length);
-      } else {
-        setSceneIndex(timeline.length - 1);
-        setCharacterIndex(0);
-      }
-    }
-  }, [sceneIndex, characterIndex]);
-
-  const handleProgressClick = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left;
-    const progress = Math.max(0, Math.min(1, x / rect.width));
-    const idx = Math.min(timeline.length - 1, Math.floor(progress * timeline.length));
-    const scene = timeline[idx];
-    setTooltip({ index: idx + 1, year: scene.year, left: (idx / timeline.length) * 100 });
-    if (e.buttons === 1) {
-      setSceneIndex(idx);
-      setCharacterIndex(0);
-      setShowTooltip(true);
-    }
-  };
-
-  useEffect(() => { isPlayingRef.current = isPlayingState; }, [isPlayingState]);
-
+  // narration
   useEffect(() => {
-    try {
-      const url = new URL(window.location.href);
-      url.searchParams.delete('year');
-      url.searchParams.set('event', timeline[sceneIndex].id);
-      window.history.replaceState(null, '', url.toString());
-    } catch (_e) { /* ignore */ }
-  }, [sceneIndex]);
-
-  useEffect(() => {
-    window.speechSynthesis?.cancel();
-    let timeoutId: ReturnType<typeof setTimeout>;
-    const speak = async () => {
-      let text = '', speaker = '', iconType = 'narrator', side = 'center', charIdx = 0;
-      if (characterIndex === 0) {
-        text = formatNarration(currentScene.narration, currentScene.year);
-        speaker = 'Narrator';
-        iconType = currentScene.locationType;
-        side = 'narrator';
-      } else {
-        const char = currentScene.scenes[characterIndex - 1];
-        if (char) {
-          text = char.text;
-          speaker = char.character;
-          iconType = char.icon;
-          side = char.side;
-          charIdx = characterIndex - 1;
-        }
-      }
-      if (!text) return;
-      setHighlightIndex(-1);
-      setCurrentNarration({ name: speaker, icon: iconType, text, type: characterIndex === 0 ? 'narrator' : 'character', year: currentScene.year, side, index: charIdx });
-
-      const cleanText = text.replace(/Ty Mawr/gi, 'Tea-mou Rhough').replace(/Llandough/gi, 'Lan-dock');
-
-      const speakWithHighlight = () => new Promise<void>((resolve) => {
-        if (!window.speechSynthesis) { resolve(); return; }
-        const utterance = new SpeechSynthesisUtterance(cleanText);
-        const params = getVoiceParams(speaker, characterIndex === 0);
-        utterance.pitch = params.pitch;
-        utterance.rate = params.rate;
-        utterance.volume = isPlayingState ? volume : 0;
-        utterance.onboundary = (event) => {
-          if (event.name === 'word') {
-            const wordIdx = getWordCountUpTo(text, event.charIndex);
-            setHighlightIndex(getCharIndexAtWord(text, wordIdx));
-          }
-        };
-        utterance.onend = () => resolve();
-        window.speechSynthesis.speak(utterance);
-        if (!isPlayingState) {
-          setTimeout(() => { window.speechSynthesis?.cancel(); resolve(); }, text.length * 200 + 2000);
-        }
-      });
-
-      if (isPlayingState) {
-        await speakWithHighlight();
-        if (isPlayingRef.current) advanceScene();
-      } else {
-        speakWithHighlight();
-      }
+    const synth = window.speechSynthesis;
+    synth?.cancel();
+    setSpoken(-1);
+    if (view !== 'scene' || !playing || !synth) return;
+    const text = `${scene.when}. ${scene.title}. ${scene.narration}`;
+    const offset = scene.when.length + scene.title.length + 4;
+    const u = new SpeechSynthesisUtterance(speakable(text));
+    u.lang = 'en-GB'; u.rate = 0.95; u.volume = volume;
+    const voice = synth.getVoices().find((v) => v.lang === 'en-GB');
+    if (voice) u.voice = voice;
+    // spoken text is lightly altered, so map word positions rather than characters
+    u.onboundary = (e) => {
+      if (e.name !== 'word') return;
+      const before = speakable(text).slice(0, e.charIndex).split(/\s+/).length - 1;
+      const head = text.slice(0, offset).split(/\s+/).filter(Boolean).length;
+      setSpoken(before - head);
     };
-    timeoutId = setTimeout(speak, 300);
-    return () => { clearTimeout(timeoutId); window.speechSynthesis?.cancel(); };
-  }, [sceneIndex, characterIndex, isPlayingState, volume, currentScene, advanceScene]);
+    let t: ReturnType<typeof setTimeout>;
+    u.onend = () => { setSpoken(1e9); t = setTimeout(() => { if (!playingRef.current) return; if (index < scenes.length - 1) go(index + 1); else setPlaying(false); }, 900); };
+    const s = setTimeout(() => synth.speak(u), 250);
+    return () => { clearTimeout(s); clearTimeout(t); synth.cancel(); };
+  }, [view, index, playing, volume]);
 
-  const [highlightIndex, setHighlightIndex] = useState(-1);
+  // keyboard
+  useEffect(() => {
+    const k = (e: KeyboardEvent) => {
+      if (view !== 'scene' || (e.target as HTMLElement).closest('input')) return;
+      if (e.key === 'ArrowRight') go(index + 1);
+      else if (e.key === 'ArrowLeft') go(index - 1);
+      else if (e.key === ' ') { e.preventDefault(); setPlaying((p) => !p); }
+    };
+    addEventListener('keydown', k);
+    return () => removeEventListener('keydown', k);
+  }, [view, index, go]);
 
-  const togglePlay = () => {
-    setIsPlayingState(p => !p);
-    if (!isPlayingState) window.speechSynthesis?.cancel();
-  };
+  if (view === 'splash') return <Splash onPlay={() => { go(0); setPlaying(true); }} onBoard={() => setView('board')} onCast={() => setView('cast')} />;
 
-  if (showSplash) return <SplashScreen onEnter={() => { setShowSplash(false); setIsPlayingState(true); }} data={pageContent.splash} />;
-
-  const renderHighlightedText = (text: string) => {
-    const words = text.split(' ');
-    let ci = 0;
-    return (
-      <p className="font-special leading-relaxed text-slate-100 text-base sm:text-lg md:text-xl lg:text-2xl">
-        {words.map((w, i) => {
-          const start = ci, end = ci + w.length;
-          ci += w.length + 1;
-          return <span key={i} className={`inline-block mr-1.5 sm:mr-2 transition-colors duration-100 ${highlightIndex >= start && highlightIndex < end ? 'text-amber-400 scale-105 font-bold' : highlightIndex >= start ? 'opacity-100' : highlightIndex >= 0 ? 'opacity-50' : 'opacity-100'}`}>{w}</span>;
-        })}
-      </p>
-    );
-  };
-
-  const narrator = currentNarration && currentNarration.type === 'narrator';
-  const character = currentNarration && currentNarration.type === 'character';
-
+  const act = actOf(scene.act);
   return (
-    <div className="flex flex-col w-screen bg-black overflow-hidden select-none text-base app-height" onMouseUp={() => setShowTooltip(false)}>
-      {/* === MAIN CONTENT AREA === */}
-      <div className="flex-1 flex flex-col min-h-0 overflow-hidden">
-
-        {/* LEFT PANEL — Narration / Character */}
-        <div className="flex-1 flex flex-col items-center justify-center p-3 sm:p-4 md:p-6 lg:p-8 min-h-0 overflow-y-auto no-scrollbar">
-
-          {/* 4 greyed-out media icons — top center on every narrator slide */}
-          {characterIndex === 0 && (
-            <div className="flex items-center gap-4 sm:gap-6 mb-3 sm:mb-5 shrink-0 opacity-20">
-              <ImageIcon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
-              <TextIcon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
-              <PdfIcon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
-              <VideoIcon className="w-5 h-5 sm:w-6 sm:h-6 text-slate-400" />
-            </div>
-          )}
-
-          {/* Scene counter — large as possible */}
-          <div className="w-full flex items-center justify-between mb-2 sm:mb-4 shrink-0">
-            <div className="text-lg sm:text-2xl md:text-3xl font-bold font-mono text-slate-400">
-              {sceneIndex + 1} / {timeline.length}
-            </div>
-            <div className="text-lg sm:text-2xl md:text-3xl font-bold font-mono text-amber-500">
-              {currentScene.year}
-            </div>
-          </div>
-
-          {/* Narration card */}
-          <div className={`relative w-full max-w-2xl p-4 sm:p-6 md:p-8 rounded-2xl bg-slate-900/90 border border-slate-700/50 backdrop-blur-md flex flex-col items-center text-center transition-all duration-500 ${character ? 'opacity-30 scale-95' : 'opacity-100 scale-100'}`}>
-            <div className="text-slate-500 text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-3">NARRATION</div>
-            <div className="text-slate-400 text-[10px] sm:text-xs mb-3 font-mono">{currentScene.location}</div>
-            {renderHighlightedText(formatNarration(currentScene.narration, currentScene.year))}
-            <div className="mt-3 w-full text-left space-y-1">
-              <div className="text-[9px] sm:text-[10px] font-mono text-slate-600 break-all">
-                <a href="https://greathousefarmwiki.wordpress.com/evidence-library/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 underline underline-offset-2">greathousefarmwiki.wordpress.com/evidence-library/</a>
-                <span className="mx-1">·</span>
-                <a href="https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 underline underline-offset-2">press-articles-index/</a>
-              </div>
-              {Array.from(new Set((currentScene.sources || []).flatMap((s: any) => String(s).match(/https?:\/\/greathousefarmwiki\.wordpress\.com[^\s\)\]]*/g) || []))).slice(0, 3).map((url: string) => (
-                <div key={url} className="text-[9px] sm:text-[10px] font-mono text-slate-700 break-all">
-                  <a href={url} target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 underline underline-offset-2">{url.replace("https://","")}</a>
+    <div className="shell">
+      <header className="top">
+        <a className="brand" href="/" onClick={(e) => { e.preventDefault(); open('splash'); }}>Tŷ Mawr<small>The Great House Farm story</small></a>
+        <div className="where">{view === 'scene' && <><b>{act.label}: {act.title}</b> ({act.span})</>}</div>
+        <nav className="tabs" aria-label="Views">
+          <button className="tab" aria-current={view === 'scene' ? 'page' : undefined} onClick={() => go(index)}>Play</button>
+          <button className="tab" aria-current={view === 'board' ? 'page' : undefined} onClick={() => open('board')}>Storyboard</button>
+          <button className="tab" aria-current={view === 'cast' ? 'page' : undefined} onClick={() => open('cast')}>Cast</button>
+          <a className="tab" href="/story/">Script</a>
+        </nav>
+      </header>
+      <main className="main">
+        {view === 'scene' && <SceneView scene={scene} spoken={playing ? spoken : -1} copied={copied} onCopy={() => {
+          navigator.clipboard?.writeText(`Tŷ Mawr, scene ${scene.ref} (no. ${scene.no}), "${scene.title}", ${scene.when}. ${sceneUrl(scene)}`).then(() => setCopied(true), () => setCopied(false));
+        }} onCast={() => open('cast')} />}
+        {view === 'board' && <Board onPick={go} />}
+        {view === 'cast' && <Cast onPick={go} />}
+      </main>
+      {view === 'scene' && (
+        <footer className="transport">
+          <div className="acts" role="group" aria-label="Scenes by act">
+            {S.acts.map((a) => {
+              const list = scenes.map((s, i) => [s, i] as const).filter(([s]) => s.act === a.id);
+              return (
+                <div key={a.id} className="actseg" style={{ flex: list.length }}>
+                  <span className="lbl">{a.label === 'Prologue' || a.label === 'Epilogue' ? a.label : a.label.replace('Act ', '')} {a.title}</span>
+                  {list.map(([s, i]) => (
+                    <button key={s.id} className={`tick${i === index ? ' on' : i < index ? ' seen' : ''}`} title={`${s.ref} ${s.when}: ${s.title}`} aria-label={`Scene ${s.ref}, ${s.title}`} onClick={() => go(i)} />
+                  ))}
                 </div>
-              ))}
-            </div>
-            {hasChallenge && characterIndex === 0 && (
-              <button
-                onClick={() => setShowChallenge(showChallenge === sceneIndex ? null : sceneIndex)}
-                className="mt-4 flex items-center gap-2 text-red-400 text-xs sm:text-sm cursor-pointer hover:text-red-300 transition-colors select-none"
-              >
-                <InfoIcon className="w-4 h-4 sm:w-5 sm:h-5 animate-pulse-slow" />
-                <span className="font-bold uppercase tracking-wider">Challenge the Narrative</span>
-              </button>
-            )}
+              );
+            })}
           </div>
+          <label className="voice"><span>Voice</span><input type="range" min="0" max="1" step="0.05" value={volume} onChange={(e) => setVolume(+e.target.value)} aria-label="Narration volume" /></label>
+          <div className="ctl">
+            <button onClick={() => go(index - 1)} aria-label="Previous scene" disabled={index === 0}>{Icon.prev}</button>
+            <button className="play" onClick={() => setPlaying((p) => !p)} aria-label={playing ? 'Pause narration' : 'Play narration'}>{playing ? Icon.pause : Icon.play}</button>
+            <button onClick={() => go(index + 1)} aria-label="Next scene" disabled={index === scenes.length - 1}>{Icon.next}</button>
+          </div>
+          <div className="count">{scene.no} of {scenes.length}</div>
+        </footer>
+      )}
+    </div>
+  );
+}
 
-          {/* Challenge tooltip — OVER narration card via z-index */}
-          {showChallenge === sceneIndex && currentScene.challenge && (
-            <div className="w-full max-w-2xl mt-3 p-4 rounded-xl bg-red-950/95 border border-red-500/40 text-sm text-red-200 animate-fade-in-up relative z-[60] shadow-[0_0_30px_rgba(220,38,38,0.3)]">
-              <div className="flex items-start gap-2">
-                <InfoIcon className="w-4 h-4 text-red-400 shrink-0 mt-0.5" />
-                <p className="leading-relaxed">{currentScene.challenge}</p>
-              </div>
-            </div>
-          )}
+function ParcelChip({ p }: { p: string }) {
+  const [cls, label] = PARCEL[p] || PARCEL[''];
+  if (!label) return null;
+  return <span className="chip"><i className={`p-${cls}`} />{label}</span>;
+}
 
-          {/* Character dialogue */}
-          {character && currentNarration && (
-            <div className="w-full max-w-2xl mt-3 sm:mt-4 animate-fade-in-up relative z-[60]">
-              <div className="bg-slate-900/95 border border-amber-500/30 rounded-2xl p-4 sm:p-6 shadow-[0_0_30px_rgba(245,158,11,0.1)]">
-                {/* Character header */}
-                <div className="flex items-center gap-3 mb-4 pb-3 border-b border-slate-800">
-                  <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-full border-2 border-amber-500 bg-slate-800 flex items-center justify-center text-2xl sm:text-3xl shrink-0 shadow-[0_0_15px_rgba(245,158,11,0.3)]">
-                    {getCharacterIcon(currentNarration.icon)}
-                  </div>
-                  <div className="flex flex-col min-w-0">
-                    <span className="font-bold text-white text-sm sm:text-lg leading-tight truncate">{currentNarration.name}</span>
-                    <div className="flex items-center gap-2 text-xs text-slate-500">
-                      {isWelsh(currentNarration.name) ? <span>{'\uD83C\uDFF4'}</span> : <span>{'\uD83C\uDDEC\uD83C\uDDE7'}</span>}
-                      <span>{currentScene.year}</span>
-                      <span>{'\u2022'}</span>
-                      <span className="truncate">{currentScene.location}</span>
-                    </div>
-                  </div>
-                </div>
-                {/* Character text */}
-                <p className="font-special leading-relaxed text-white text-sm sm:text-base md:text-lg">{currentNarration.text}</p>
-              </div>
-            </div>
-          )}
+function Frame({ scene, small }: { scene: Scene; small?: boolean }) {
+  const [cls] = PARCEL[scene.parcel] || PARCEL[''];
+  const img = scene.image;
+  const photo = img && /cadw/.test(img);
+  const year = scene.when.replace(/^(Today)$/, 'Today');
+  if (small) return (
+    <div className="pf">
+      {img ? <img src={img} alt="" loading="lazy" /> : <div className="yr">{year.length > 22 ? scene.date.slice(0, 4).replace(/^0/, 'c. ') : year}</div>}
+      <span className={`parcelbar p-${cls}`} />
+    </div>
+  );
+  const cap = img ? scene.evidence.find((e) => e.image === img)?.title : '';
+  return (
+    <figure className={`frame${photo ? ' photo' : ''}`} style={{ margin: 0 }}>
+      {img ? <img src={img} alt={cap || scene.title} /> : (
+        <div className="card"><div className="yr">{year}</div><div className="pl">{scene.place}</div></div>
+      )}
+      <span className={`parcelbar p-${cls}`} />
+      {cap && <figcaption>{cap}</figcaption>}
+    </figure>
+  );
+}
+
+function SceneView({ scene, spoken, copied, onCopy, onCast }: { scene: Scene; spoken: number; copied: boolean; onCopy: () => void; onCast: () => void }) {
+  const words = scene.narration.split(/\s+/);
+  const cast = S.cast.filter((c) => scene.cast.includes(c.id));
+  return (
+    <article className="scene">
+      <Frame scene={scene} />
+      <div>
+        <div className="slate"><span className="ref">Scene {scene.ref}</span><span>no. {scene.no} of {scenes.length}</span></div>
+        <div className="when">{scene.when}</div>
+        <h1>{scene.title}</h1>
+        {scene.place && <div className="place">{scene.place}</div>}
+        <p className={`narr${spoken >= 0 ? ' speaking' : ''}`}>
+          {words.map((w, i) => <span key={i} className={`w${i <= spoken ? ' done' : ''}`}>{w}{' '}</span>)}
+        </p>
+        <div className="chips">
+          <ParcelChip p={scene.parcel} />
+          <span className="chip">Basis: {scene.basis}</span>
+          {cast.map((c) => <button key={c.id} className="chip" onClick={onCast}>{c.name}</button>)}
         </div>
-      </div>
-
-      {/* === BOTTOM CONTROLS BAR === */}
-      <div className="shrink-0 bg-slate-950 border-t border-slate-800 z-50">
-
-        {/* Progress bar */}
-        <div className="w-full h-5 cursor-pointer group relative" onMouseMove={handleProgressClick} onMouseDown={handleProgressClick} onMouseLeave={() => setTooltip(null)}>
-          {tooltip && (
-            <div className="absolute bottom-full mb-1 bg-slate-900 border border-amber-500 text-amber-500 text-[10px] sm:text-xs px-2 py-1 rounded shadow-lg whitespace-nowrap z-50 pointer-events-none -translate-x-1/2" style={{ left: `${tooltip.left}%` }}>
-              Slide {tooltip.index}: {tooltip.year}
-            </div>
-          )}
-          <div className="absolute top-1/2 -translate-y-1/2 left-0 w-full h-1 bg-slate-800/50">
-            {timeline.map((_, i) => (
-              <div key={i} className={`absolute top-0 h-full z-10 pointer-events-none ${timeline[i].challenge ? 'bg-red-500/60 w-[2px]' : 'bg-white/20 w-px'}`} style={{ left: `${(i / timeline.length) * 100}%` }} />
+        {scene.case && <section className="case"><h2>The family's case</h2><p>{scene.case}</p></section>}
+        <section className="ev">
+          <h2>Evidence ({scene.evidence.length})</h2>
+          <ul>
+            {scene.evidence.map((e, i) => (
+              <li key={i}><a href={e.url} target="_blank" rel="noopener noreferrer">
+                <span className="thumb" style={e.image ? { backgroundImage: `url("${e.image}")` } : undefined}>{e.image ? '' : e.type.split(' ')[0]}</span>
+                <span className="t">{e.title}<span className="k">{e.type}</span></span>
+              </a></li>
             ))}
-            <div className="absolute top-0 left-0 h-full bg-red-600 transition-all duration-100 ease-linear group-hover:shadow-[0_0_8px_rgba(220,38,38,0.6)]" style={{ width: `${getSlideProgress()}%` }}>
-              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-3 h-3 bg-white rounded-full opacity-0 group-hover:opacity-100 shadow-sm transition-opacity" />
-            </div>
-          </div>
-        </div>
-
-        {/* Controls row */}
-        <div className="flex items-center justify-between px-3 sm:px-4 md:px-6 py-2 sm:py-3 gap-2">
-
-          {/* Left: Volume */}
-          <div className="flex items-center gap-2 shrink-0">
-            <div className="flex items-center gap-2">
-              <svg className="w-3 h-3 sm:w-4 sm:h-4 text-slate-500 shrink-0" fill="currentColor" viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02z" /></svg>
-              <input type="range" min="0" max="1" step="0.01" value={volume} onChange={(e) => setVolume(parseFloat(e.target.value))} className="w-16 sm:w-20 md:w-24 h-1.5 bg-slate-700 rounded-lg accent-amber-500 cursor-pointer" />
-            </div>
-          </div>
-
-          {/* Center: Left arrow + Play/Pause + Right arrow */}
-          <div className="flex items-center gap-2 sm:gap-3">
-            <button onClick={rewindScene} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-amber-500 flex items-center justify-center active:scale-95 transition-all">
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M15 19l-7-7 7-7" /></svg>
-            </button>
-            <button onClick={togglePlay} className="w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 rounded-full bg-amber-500 hover:bg-amber-400 text-black flex items-center justify-center shadow-[0_0_20px_rgba(245,158,11,0.4)] transition-transform hover:scale-105 active:scale-95 shrink-0">
-              {isPlayingState ? (
-                <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z" /></svg>
-              ) : (
-                <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z" /></svg>
-              )}
-            </button>
-            <button onClick={advanceScene} className="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-slate-900 border border-slate-700 text-slate-300 hover:text-white hover:border-amber-500 flex items-center justify-center active:scale-95 transition-all">
-              <svg className="w-5 h-5 sm:w-6 sm:h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" d="M9 5l7 7-7 7" /></svg>
-            </button>
-          </div>
-
-          {/* Right: BTC + GBP/USD button */}
-          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-            <button onClick={() => { navigator.clipboard.writeText('bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am'); }} className="px-3 py-2 sm:px-4 sm:py-2 rounded-lg bg-slate-900 border border-slate-700 text-slate-300 text-[10px] sm:text-xs font-bold uppercase hover:text-white hover:border-amber-500 transition-all active:scale-95" title="Copy BTC Address">BTC</button>
-            <stripe-buy-button
-              buy-button-id="buy_btn_1RuDNARibisCfpBQBMKwrMVc"
-              publishable-key="pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ">
-            </stripe-buy-button>
-          </div>
+          </ul>
+        </section>
+        <div className="cite">
+          <button onClick={onCopy}>{copied ? 'Reference copied' : 'Copy reference'}</button>
+          <span>Cite as scene {scene.ref} · permanent link ?event={scene.id}</span>
         </div>
       </div>
+    </article>
+  );
+}
 
-      {/* === FOOTER === */}
-      <div className="shrink-0 h-10 sm:h-11 bg-slate-950 border-t border-slate-800/50 flex items-center justify-between px-3 sm:px-4 md:px-6 text-[10px] sm:text-xs text-slate-600 z-50">
-        <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-          <span className="truncate">Williams/Buckler Family Estate and Trust</span>
-          <span className="text-slate-700 hidden sm:inline">|</span>
-          <a
-            href={`https://github.com/unclehowell/datro/tree/bpvsbuckler`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="font-mono text-slate-700 hover:text-amber-500 transition-colors hidden sm:inline"
-            title="View on GitHub"
-          >
-            {version}
-          </a>
+function Board({ onPick }: { onPick: (i: number) => void }) {
+  return (
+    <div className="sheet">
+      <h1>Storyboard</h1>
+      <p className="intro">Every event in the Great House Farm Wiki, in date order, one panel each. Pick a panel to open the scene, its evidence and the family's case.</p>
+      <div className="legend">
+        <span><i className="p-A" />House parcel (A)</span><span><i className="p-B" />Fields (B)</span>
+        <span><i className="p-AB" />Whole farm (A + B)</span><span><i className="p-x" />Unknown, or not the farm</span>
+      </div>
+      {S.acts.map((a) => (
+        <section key={a.id}>
+          <div className="acthead">
+            <div className="n">{a.label}<br /><span style={{ fontSize: 14 }}>{a.span}</span></div>
+            <div><h2>{a.title}</h2><p>{a.logline}</p></div>
+          </div>
+          <div className="grid">
+            {scenes.map((s, i) => s.act !== a.id ? null : (
+              <button key={s.id} className="panel" onClick={() => onPick(i)}>
+                <Frame scene={s} small />
+                <div className="meta"><span>{s.ref}</span><span>{s.when.length > 26 ? s.date.slice(0, 4) : s.when}</span></div>
+                <div className="ti">{s.title}</div>
+                <div className="ex">{s.narration}</div>
+              </button>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  );
+}
+
+function Cast({ onPick }: { onPick: (i: number) => void }) {
+  return (
+    <div className="cast">
+      <h1>Cast</h1>
+      <p className="intro">The people and bodies in the story, and the scenes they appear in.</p>
+      {S.cast.map((c) => {
+        const in_ = scenes.map((s, i) => [s, i] as const).filter(([s]) => s.cast.includes(c.id));
+        return (
+          <div className="person" key={c.id}>
+            <div><h2>{c.name}</h2>{c.years && <div className="yrs">{c.years}</div>}</div>
+            <div>
+              <p>{c.role}</p>
+              <div className="chips">{in_.map(([s, i]) => <button key={s.id} className="chip" onClick={() => onPick(i)} title={s.title}>{s.ref}</button>)}</div>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  );
+}
+
+function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () => void; onCast: () => void }) {
+  const [btc, setBtc] = useState(false);
+  useEffect(() => {
+    if (document.querySelector('script[data-stripe]')) return;
+    const s = document.createElement('script');
+    s.src = 'https://js.stripe.com/v3/buy-button.js'; s.async = true; s.dataset.stripe = '1';
+    document.head.appendChild(s);
+  }, []);
+  const evidence = scenes.reduce((n, s) => n + s.evidence.length, 0);
+  return (
+    <div className="splash">
+      <figure className="ph" style={{ margin: 0 }}>
+        <img src="/media/1988-cadw-farmhouse.jpg" alt="Great House Farm, Llandough: the limewashed farmhouse behind its stone wall, July 1988" />
+        <figcaption>The farmhouse on 29 July 1988, photographed by Cadw. It was demolished on 6 December.</figcaption>
+      </figure>
+      <div className="tx">
+        <h1>Tŷ Mawr</h1>
+        <div className="sub">The Great House Farm story, Llandough</div>
+        <p className="log">For three centuries, by the family's account, the Williamses lived beside St Dochdwy's church. In 1877 the farm was split in two. A century later their papers were gone, BP owned the fields, and the courts gave BP the house. On 6 December 1988 it was bulldozed before breakfast. This is the whole story, in order, with the evidence for every scene.</p>
+        <div className="btns">
+          <button className="btn primary" onClick={onPlay}>{Icon.play} Play from the beginning</button>
+          <button className="btn" onClick={onBoard}>{Icon.grid} Open the storyboard</button>
+          <a className="btn" href="/story/">{Icon.doc} Read the script</a>
         </div>
-        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
-          <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><FacebookIcon /></a>
-          <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors"><InstagramIcon /></a>
-          <a href="https://x.com" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-            <svg className="w-3 h-3 sm:w-4 sm:h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" /></svg>
-          </a>
+        <div className="facts">
+          <div><b>{scenes.length}</b>scenes</div>
+          <div><b>{S.acts.length - 2}</b>acts, with prologue and epilogue</div>
+          <div><b>{evidence}</b>evidence links</div>
+        </div>
+        <p className="howto">For producers, researchers and cast: every scene has a reference (for example VI.9) and a permanent link, and every claim links to the document behind it on the <a href="https://greathousefarmwiki.wordpress.com/">Great House Farm Wiki</a>. Where something rests on the family's account rather than a document, the scene says so. See the <a href="#" onClick={(e) => { e.preventDefault(); onCast(); }}>cast list</a>, or download the data as <a href="/api/timeline.json">JSON</a>.</p>
+        <div className="support">
+          <span>Support the family's campaign:</span>
+          {React.createElement('stripe-buy-button', { 'buy-button-id': 'buy_btn_1RuDNARibisCfpBQBMKwrMVc', 'publishable-key': 'pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ' })}
+          <button onClick={() => { navigator.clipboard?.writeText('bc1qddlu48vwmq0zrey0pgc8h02q9edq3jd8pwe3am'); setBtc(true); }}>{btc ? 'Bitcoin address copied' : 'Copy Bitcoin address'}</button>
+        </div>
+        <div className="foot" style={{ padding: '28px 0 0' }}>
+          <span>Williams/Buckler Family Estate and Trust · release {meta.version}</span>
+          <a href="https://github.com/unclehowell/datro/tree/bpvsbuckler">Source</a>
         </div>
       </div>
     </div>

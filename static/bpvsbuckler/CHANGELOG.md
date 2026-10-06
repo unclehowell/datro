@@ -1,5 +1,25 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.50] - 2026-10-06
+
+Re-release as a documentary storyboard.
+
+### Content
+- Rebuilt the story as 129 scenes in a prologue, eight acts and an epilogue, each with a scene reference (e.g. VI.12), a short title, place, parcel (A, B, both, unknown), basis (document, court record, newspaper, Mary's statement, family account…) and the family's case
+- Every scene in the wiki's Master Timeline is covered; added the 13 February 2026 Land Registry holding reply, the 18–19 September 2026 letters to Stephen Doughty MP and the 20 September 2026 Heneb records request
+- Newspaper cuttings (N07–N16 and the South Wales Echo extracts N15-01 to N15-16) are now evidence on the scene they report, instead of 23 separate scenes that retold the same events; duplicate scenes on the medieval pottery, the armour find and the HER record merged
+- Removed events that belong to Llandough near Cowbridge (Walsh 1100, Herbert 1444, Carne 1536, Talbot 1677) or to Piercefield (Morris 1770, Wood 1794), and others with no source (Tewkesbury 1215, Dissolution 1539, Bute–Pembroke 1552, Lambert Williams, Bute–Plymouth exchange, 1880 names); replaced with sourced entries (NLW Bute D 219 leases 1552–1829, Bute rentals R1 1818–21)
+- Narration rewritten in the present tense without drafting notes; contested points moved into "The family's case"; the 1876 note no longer calls the quarry bargain "oral"
+- Every scene now has at least one specific evidence link (previously 17 had none)
+- Old event ids redirect to the merged scene
+
+### Design
+- New player: photo or cutting beside the scene, readable evidence list with thumbnails, cast and parcel tags, "Copy reference" for citing, act-segmented scene bar, keyboard controls, narration that highlights as it reads
+- New Storyboard and Cast views; new printable script at /story/ (/script.html now redirects there)
+- Splash with the 1988 Cadw photograph of the farmhouse; correct release label
+- Cadw photographs and press cuttings added under /media/
+- Removed the development Tailwind CDN and placeholder social links; donation buttons moved to the opening page
+
 ## [bpvsbuckler-v0.0.0.49] - 2026-10-06
 
 ### Added

@@ -1,156 +1,163 @@
-// Rebuilds every agent-readable export of the story from src/data/timeline.ts,
-// so the player, the JSON API, llms.txt, the static story page, the plain
-// narration transcript and the sitemap never drift apart.
+// Rebuilds every reader- and agent-facing export of the story from
+// src/data/story.json (itself written by content/story_source.py), so the
+// player, the script page, the JSON API, llms.txt, the transcript and the
+// sitemap never drift apart.
 //
 // Usage (from static/bpvsbuckler):
 //   node scripts/build-timeline-exports.mjs [version] [date]
 //
 // Outputs:
-//   api/timeline.json      structured events (id, ISO sort date, narration, voices, sources)
+//   src/data/meta.json     release label shown in the player
+//   api/timeline.json      acts, cast and scenes with evidence
 //   llms.txt               "Full Timeline" section regenerated
-//   story/index.html       the whole story as static HTML with schema.org JSON-LD
-//   story/transcript.txt   the narration script, one event after another
-//   sitemap.xml            site map including one deep link per event
+//   story/index.html       the printable script (acts, cast, every scene)
+//   story/transcript.txt   the narration script
+//   sitemap.xml            site map with one deep link per scene
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 
 const SITE = 'https://bpvsbuckler.bucklerfamily.estate';
 const WIKI = 'https://greathousefarmwiki.wordpress.com';
-
 const root = new URL('..', import.meta.url).pathname;
-const src = readFileSync(root + 'src/data/timeline.ts', 'utf8');
-const timeline = JSON.parse(src.slice(src.indexOf('= [') + 2, src.lastIndexOf(']') + 1));
+const story = JSON.parse(readFileSync(root + 'src/data/story.json', 'utf8'));
+const { acts, cast, scenes, aliases } = story;
 
-// Guard: the story must be in strict chronological order with unique ids.
+// Guards: strict date order, unique ids, evidence on every scene.
 const ids = new Set();
-timeline.forEach((e, i) => {
-  if (!e.id || !e.date) throw new Error(`event ${i} (${e.year}) has no id/date`);
-  if (ids.has(e.id)) throw new Error(`duplicate id ${e.id}`);
-  ids.add(e.id);
-  if (i && timeline[i - 1].date > e.date) {
-    throw new Error(`out of order: ${timeline[i - 1].id} (${timeline[i - 1].date}) before ${e.id} (${e.date})`);
-  }
+scenes.forEach((s, i) => {
+  if (!s.id || !s.date) throw new Error(`scene ${i} has no id/date`);
+  if (ids.has(s.id)) throw new Error(`duplicate id ${s.id}`);
+  ids.add(s.id);
+  if (i && scenes[i - 1].date > s.date) throw new Error(`out of order: ${scenes[i - 1].id} before ${s.id}`);
+  if (!s.evidence?.length) throw new Error(`no evidence on ${s.id}`);
 });
 
-const apiPath = root + 'api/timeline.json';
-const api = JSON.parse(readFileSync(apiPath, 'utf8'));
-const [version = api.version, date = api.last_updated] = process.argv.slice(2);
-const label = (y) => (y === 'present_day' ? 'Present day' : y);
+const metaPath = root + 'src/data/meta.json';
+const prevMeta = JSON.parse(readFileSync(metaPath, 'utf8'));
+const [version = prevMeta.version, date = prevMeta.updated] = process.argv.slice(2);
+writeFileSync(metaPath, JSON.stringify({ version, updated: date }) + '\n');
+
 const isoDate = (d) => (d.startsWith('9999') ? null : d);
-const playerUrl = (e) => `${SITE}/?event=${encodeURIComponent(e.id)}`;
+const url = (s) => `${SITE}/?event=${encodeURIComponent(s.id)}`;
+const actOf = (id) => acts.find((a) => a.id === id);
+const PARCEL = { A: 'House parcel (A)', B: 'Fields (B)', AB: 'Whole farm (A + B)', '?': 'Not yet known', x: 'Not Great House Farm land', '': '' };
+const castName = (id) => cast.find((c) => c.id === id).name;
+const DESC =
+  'The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, told scene by scene in date order, with the evidence for every scene. Built as a storyboard for documentary development; every event is drawn from the Great House Farm Wiki.';
 
 // --- api/timeline.json --------------------------------------------------
-const entries = timeline.map((e, i) => {
-  const out = {
-    order: i + 1,
-    id: e.id,
-    date: isoDate(e.date),
-    year: e.year,
-    location: e.location,
-    locationType: e.locationType,
-    description: e.description,
-    narration: e.narration,
-    scenes: e.scenes.map(({ character, icon, side, text }) => ({ character, icon, side, text })),
-    sources: e.sources,
-    attachments: e.attachments,
-    url: playerUrl(e),
-  };
-  if (e.challenge) out.challenge = e.challenge;
-  return out;
-});
-const years = timeline.map((e) => e.year).filter((y) => /\d/.test(y));
-Object.assign(api, {
-  title: 'Great House Farm Story — Timeline',
-  description:
-    'The complete story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough, told event by event in strict chronological order, drawn from the Great House Farm Wiki evidence catalogue.',
-  ordering: 'Entries are in strict chronological order by "date" (ISO 8601; null for present-day summaries, which come last).',
-  source_of_truth: `${WIKI}/`,
-  formats: {
-    player: `${SITE}/`,
-    story_html: `${SITE}/story/`,
-    transcript: `${SITE}/story/transcript.txt`,
-    llms: `${SITE}/llms.txt`,
-  },
-  total_entries: entries.length,
-  last_updated: date,
-  version,
-  entries,
-});
-api.summary.earliest_year = years[0];
-api.summary.latest_year = years[years.length - 1];
-writeFileSync(apiPath, JSON.stringify(api, null, 2) + '\n');
+const entries = scenes.map((s) => ({
+  order: s.no,
+  ref: s.ref,
+  id: s.id,
+  act: s.act,
+  date: isoDate(s.date),
+  when: s.when,
+  title: s.title,
+  place: s.place,
+  parcel: s.parcel,
+  basis: s.basis,
+  narration: s.narration,
+  family_case: s.case,
+  cast: s.cast,
+  evidence: s.evidence.map((e) => (e.image ? { ...e, image: SITE + e.image } : e)),
+  image: s.image ? SITE + s.image : null,
+  previous_ids: s.aliases,
+  url: url(s),
+}));
+writeFileSync(
+  root + 'api/timeline.json',
+  JSON.stringify(
+    {
+      title: 'Tŷ Mawr — The Great House Farm Story',
+      description: DESC,
+      ordering: 'Scenes are in strict date order by "date" (ISO 8601; null for the two present-day epilogue scenes, which come last). "ref" is act.scene, "order" the running number.',
+      parcels: PARCEL,
+      source_of_truth: `${WIKI}/`,
+      formats: { player: `${SITE}/`, storyboard: `${SITE}/?view=storyboard`, cast: `${SITE}/?view=cast`, script: `${SITE}/story/`, transcript: `${SITE}/story/transcript.txt`, llms: `${SITE}/llms.txt` },
+      version,
+      last_updated: date,
+      total_entries: entries.length,
+      acts,
+      cast: cast.map(({ match, ...c }) => c),
+      redirects: aliases,
+      entries,
+    },
+    null,
+    2,
+  ) + '\n',
+);
 
 // --- llms.txt -----------------------------------------------------------
 const llmsPath = root + 'llms.txt';
 const llms = readFileSync(llmsPath, 'utf8');
-const head = llms.slice(0, llms.indexOf('## Full Timeline'));
-const blocks = timeline.map((e, i) => {
-  const d = isoDate(e.date);
-  const lines = [`### ${i + 1}. ${label(e.year)} — ${e.location}`, '', `Event id: ${e.id}${d ? ` · Date: ${d}` : ''}`, '', e.narration, ''];
-  if (e.challenge) lines.push(`> ${e.challenge}`, '');
-  for (const c of e.scenes) lines.push(`- **${c.character}**: ${c.text}`);
-  if (e.sources.length) lines.push(`- Source: ${e.sources.join('; ')}`);
+const about = llms.slice(llms.indexOf('## About'), llms.indexOf('## Full Timeline'));
+const head = `# Tŷ Mawr — The Great House Farm Story — llms.txt
+
+> The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, Vale of Glamorgan, Wales, in ${scenes.length} scenes across ${acts.length - 2} acts with a prologue and epilogue, in strict date order.
+> Every scene is drawn from the Great House Farm Wiki evidence catalogue (${WIKI}/) and carries its evidence links.
+> Structured JSON (acts, cast, scenes, evidence, stable ids): ${SITE}/api/timeline.json
+> Printable script (static HTML, no JavaScript needed): ${SITE}/story/
+> Storyboard: ${SITE}/?view=storyboard · Cast: ${SITE}/?view=cast · Any scene: ${SITE}/?event=<id>
+
+`;
+const blocks = scenes.map((s) => {
+  const a = actOf(s.act);
+  const lines = [`### ${s.ref} (${s.no}). ${s.when} — ${s.title}`, '', `${a.label}: ${a.title} · Scene id: ${s.id}${isoDate(s.date) ? ` · Date: ${s.date}` : ''} · Parcel: ${PARCEL[s.parcel] || 'n/a'} · Basis: ${s.basis}`, '', s.narration, ''];
+  if (s.case) lines.push(`> The family's case: ${s.case}`, '');
+  for (const e of s.evidence) lines.push(`- ${e.type}: ${e.title} — ${e.url}`);
   return lines.join('\n');
 });
 writeFileSync(
   llmsPath,
-  head +
-    `## Full Timeline\n\n${timeline.length} events, in strict chronological order.\n\n` +
-    blocks.join('\n\n') +
-    `\n\n---\nFull structured data at ${SITE}/api/timeline.json · Readable story at ${SITE}/story/\n`,
+  head + about + `## Full Timeline\n\n${scenes.length} scenes, in strict date order.\n\n` + blocks.join('\n\n') + `\n\n---\nStructured data: ${SITE}/api/timeline.json · Script: ${SITE}/story/\n`,
 );
 
-// --- story/index.html ---------------------------------------------------
-const esc = (s) =>
-  String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const linkify = (s) =>
-  esc(s).replace(/(https?:\/\/[^\s)]+|greathousefarmwiki\.wordpress\.com[^\s)]*)/g, (u) => {
-    const href = u.startsWith('http') ? u : `https://${u}`;
-    return `<a href="${href}">${u}</a>`;
-  });
-
+// --- story/index.html (the script) -----------------------------------------
+const esc = (s) => String(s ?? '').replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const jsonLd = {
   '@context': 'https://schema.org',
   '@type': 'ItemList',
-  name: 'The Great House Farm Story',
-  description: api.description,
+  name: 'Tŷ Mawr — The Great House Farm Story',
+  description: DESC,
   url: `${SITE}/story/`,
-  numberOfItems: timeline.length,
+  numberOfItems: scenes.length,
   itemListOrder: 'https://schema.org/ItemListOrderAscending',
-  itemListElement: timeline.map((e, i) => ({
+  itemListElement: scenes.map((s) => ({
     '@type': 'ListItem',
-    position: i + 1,
-    item: {
-      '@type': 'Event',
-      '@id': `${SITE}/story/#${e.id}`,
-      name: `${label(e.year)} — ${e.location}`,
-      ...(isoDate(e.date) ? { startDate: e.date } : {}),
-      location: { '@type': 'Place', name: e.location },
-      description: e.narration,
-      url: playerUrl(e),
-    },
+    position: s.no,
+    item: { '@type': 'Event', '@id': `${SITE}/story/#${s.id}`, name: `${s.when} — ${s.title}`, ...(isoDate(s.date) ? { startDate: s.date } : {}), location: { '@type': 'Place', name: s.place || 'Llandough' }, description: s.narration, url: url(s) },
   })),
 };
-
-let decade = '';
-const sections = timeline
-  .map((e, i) => {
-    const d = isoDate(e.date);
-    const dec = d ? (Number(d.slice(0, 4)) < 1800 ? 'Before 1800' : `${d.slice(0, 3)}0s`) : 'Today';
-    const h = dec !== decade ? `<h2 id="${esc(dec.replace(/\s+/g, '-').toLowerCase())}">${esc(dec)}</h2>\n` : '';
-    decade = dec;
-    const voices = e.scenes.length
-      ? `<ul class="voices">${e.scenes.map((c) => `<li><b>${esc(c.character)}:</b> ${esc(c.text)}</li>`).join('')}</ul>`
-      : '';
-    const challenge = e.challenge ? `<p class="challenge">${esc(e.challenge)}</p>` : '';
-    const sources = e.sources.length
-      ? `<p class="src">Sources: ${e.sources.map(linkify).join(' · ')}</p>`
-      : '';
-    return `${h}<article id="${e.id}">
-<h3><span class="n">${i + 1}.</span> ${d ? `<time datetime="${d}">${esc(label(e.year))}</time>` : esc(label(e.year))} — ${esc(e.location)}</h3>
-<p>${esc(e.narration)}</p>
-${challenge}${voices}${sources}
-<p class="play"><a href="${playerUrl(e)}">▶ Play from here</a></p>
+const castHtml = cast
+  .map((c) => {
+    const refs = scenes.filter((s) => s.cast.includes(c.id)).map((s) => `<a href="#${s.id}">${s.ref}</a>`).join(', ');
+    return `<div class="person"><h3>${esc(c.name)}${c.years ? ` <span>${esc(c.years)}</span>` : ''}</h3><p>${esc(c.role)}</p><p class="refs">Scenes: ${refs || '—'}</p></div>`;
+  })
+  .join('\n');
+const contents = acts.map((a) => `<li><a href="#act-${a.id}">${esc(a.label)}: ${esc(a.title)}</a> <span>${esc(a.span)}</span></li>`).join('');
+const actHtml = acts
+  .map((a) => {
+    const body = scenes
+      .filter((s) => s.act === a.id)
+      .map((s) => {
+        const ev = s.evidence.map((e) => `<li><span class="k">${esc(e.type)}</span> <a href="${esc(e.url)}">${esc(e.title)}</a></li>`).join('');
+        const img = s.image ? `<figure><img src="${esc(s.image)}" alt="" loading="lazy"></figure>` : '';
+        const tags = [PARCEL[s.parcel], `Basis: ${s.basis}`, ...s.cast.map(castName)].filter(Boolean).map(esc).join(' · ');
+        return `<article id="${s.id}" class="p-${s.parcel === '?' ? 'q' : s.parcel}">
+<div class="slug"><b>${s.ref}</b> <span>${s.no}</span></div>
+<div class="body">
+<p class="when">${isoDate(s.date) ? `<time datetime="${s.date}">${esc(s.when)}</time>` : esc(s.when)}${s.place ? ` · ${esc(s.place)}` : ''}</p>
+<h3>${esc(s.title)}</h3>
+${img}<p class="narr">${esc(s.narration)}</p>
+${s.case ? `<p class="case"><b>The family's case.</b> ${esc(s.case)}</p>` : ''}
+<p class="tags">${tags}</p>
+<ul class="ev">${ev}</ul>
+<p class="play"><a href="${url(s)}">Open scene ${s.ref} in the player</a></p>
+</div>
 </article>`;
+      })
+      .join('\n');
+    return `<section id="act-${a.id}"><header class="act"><p>${esc(a.label)} · ${esc(a.span)}</p><h2>${esc(a.title)}</h2><p class="log">${esc(a.logline)}</p></header>\n${body}</section>`;
   })
   .join('\n');
 
@@ -159,37 +166,50 @@ const html = `<!doctype html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Great House Farm Story — every event in order</title>
-<meta name="description" content="${esc(api.description)}">
+<title>Tŷ Mawr — script and scene list</title>
+<meta name="description" content="${esc(DESC)}">
 <link rel="canonical" href="${SITE}/story/">
 <link rel="alternate" type="application/json" href="${SITE}/api/timeline.json" title="Timeline JSON">
 <link rel="alternate" type="text/plain" href="${SITE}/llms.txt" title="llms.txt">
 <link rel="alternate" type="text/plain" href="${SITE}/story/transcript.txt" title="Narration transcript">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,300;0,6..72,400;0,6..72,500;1,6..72,400&display=swap" rel="stylesheet">
 <script type="application/ld+json">${JSON.stringify(jsonLd).replace(/</g, '\\u003c')}</script>
 <style>
-:root{--bg:#fbf8f2;--fg:#1c1a17;--muted:#5d564c;--accent:#9a5b0c;--rule:#e2d9c8;--warn:#8b1e1e}
-@media (prefers-color-scheme:dark){:root{--bg:#121110;--fg:#ece6dc;--muted:#a69d90;--accent:#f0a83a;--rule:#2c2925;--warn:#f08a8a}}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:17px/1.6 Georgia,'Times New Roman',serif}
-main{max-width:760px;margin:0 auto;padding:24px 16px 80px}
-header p{color:var(--muted)}a{color:var(--accent)}h1{font-size:1.9rem;line-height:1.2;margin:.2em 0}
-h2{font-size:1.1rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);border-top:1px solid var(--rule);padding-top:1.2em;margin-top:2em}
-h3{font-size:1.05rem;margin:1.4em 0 .3em}.n{color:var(--muted);font-weight:normal}
-article{scroll-margin-top:16px}.voices{margin:.4em 0;padding-left:1.1em;color:var(--muted)}.voices li{margin:.15em 0}
-.challenge{border-left:3px solid var(--warn);padding-left:10px;font-style:italic}.src{font-size:.85rem;color:var(--muted);overflow-wrap:anywhere}
-.play{font-size:.9rem;margin:.2em 0 0}.cta{display:inline-block;background:var(--accent);color:var(--bg);padding:10px 16px;border-radius:6px;text-decoration:none;font-weight:bold}
-nav{font-size:.9rem;color:var(--muted)}
+:root{--bg:#f4f3ef;--fg:#1f252b;--muted:#5c636a;--rule:#d6d4cc;--a:#4f8a3e;--b:#4277a8;--ab:#a8831f;--x:#8a8f94;--case:#e6eedf}
+@media screen and (prefers-color-scheme:dark){:root{--bg:#232a31;--fg:#ecebe6;--muted:#b9b6ab;--rule:#3a4550;--a:#79a565;--b:#6b95bd;--ab:#c8a64e;--case:#2f3a2c}}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.55 'Instrument Sans',system-ui,sans-serif}
+main{max-width:860px;margin:0 auto;padding:32px 20px 80px}a{color:inherit}
+h1,h2,h3,.narr,.case,.log,.lede{font-family:Newsreader,Georgia,serif}
+.top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+h1{font-weight:300;font-size:64px;line-height:1;margin:28px 0 6px;letter-spacing:-.03em}.lede{font-size:20px;color:var(--muted);margin:0 0 20px;max-width:36em}
+.toc{columns:2;padding-left:1.2em;font-size:15px}.toc span{color:var(--muted)}
+.key{display:flex;flex-wrap:wrap;gap:16px;font-size:13px;color:var(--muted)}.key i{display:inline-block;width:14px;height:4px;margin-right:6px;vertical-align:middle}
+h2.sec{font-weight:400;font-size:30px;margin:48px 0 8px;border-top:1px solid var(--rule);padding-top:24px}
+.person{display:grid;grid-template-columns:230px 1fr;gap:4px 24px;padding:10px 0;border-top:1px solid var(--rule)}.person h3{margin:0;font-size:19px;font-weight:500;grid-row:span 2}.person h3 span{display:block;font:13px 'Instrument Sans',sans-serif;color:var(--muted)}.person p{margin:0}.refs{font-size:13px;color:var(--muted)}
+.act{border-top:2px solid var(--fg);margin-top:56px;padding-top:14px}.act p{margin:0;color:var(--muted);font-size:14px}.act h2{font-weight:400;font-size:40px;margin:2px 0 4px;letter-spacing:-.01em}.act .log{font-style:italic;font-size:18px}
+article{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:22px 0;border-top:1px solid var(--rule);break-inside:avoid;scroll-margin-top:12px}
+.slug{border-left:4px solid var(--x);padding-left:10px}.p-A .slug{border-color:var(--a)}.p-B .slug{border-color:var(--b)}.p-AB .slug{border-color:var(--ab)}
+.slug b{display:block;font-family:Newsreader,serif;font-size:19px;font-weight:500}.slug span{font-size:12px;color:var(--muted)}
+.when{margin:0;font-size:14px;color:var(--muted)}h3{font-size:24px;font-weight:400;margin:2px 0 8px;line-height:1.2}
+.narr{font-size:19px;line-height:1.55;margin:0 0 12px}.case{background:var(--case);border-left:3px solid var(--a);padding:10px 14px;margin:0 0 12px;font-size:17px}
+.tags{font-size:13px;color:var(--muted);margin:0 0 6px}.ev{list-style:none;padding:0;margin:0;font-size:14px}.ev li{margin:3px 0;overflow-wrap:anywhere}.ev .k{color:var(--muted)}
+.play{font-size:13px;margin:8px 0 0}figure{margin:0 0 12px}figure img{max-width:100%;max-height:340px;border-radius:3px}
+@media (max-width:640px){h1{font-size:44px}.toc{columns:1}.person{grid-template-columns:1fr}article{grid-template-columns:1fr;gap:6px}}
+@media print{body{font-size:11pt;background:#fff;color:#000}main{max-width:none;padding:0}.play,.top a.btn{display:none}a{text-decoration:none}.ev a::after{content:" (" attr(href) ")";font-size:8pt;color:#555}section{break-before:page}figure img{max-height:6cm}}
 </style>
 </head>
 <body>
 <main>
-<header>
-<p>Williams/Buckler Family Estate and Trust</p>
-<h1>The Great House Farm Story</h1>
-<p>${timeline.length} events, from c. AD 650 to today, in strict chronological order. Every event is drawn from the <a href="${WIKI}/">Great House Farm Wiki</a> evidence catalogue, where each document is shown in full.</p>
-<p><a class="cta" href="${SITE}/">▶ Press play and listen to the story</a></p>
-<nav>Also available as <a href="${SITE}/api/timeline.json">JSON</a> · <a href="${SITE}/llms.txt">llms.txt</a> · <a href="${SITE}/story/transcript.txt">plain transcript</a>. Updated ${esc(date)} (v${esc(version)}).</nav>
-</header>
-${sections}
+<div class="top"><span>Williams/Buckler Family Estate and Trust · release ${esc(version)}, ${esc(date)}</span><span><a href="${SITE}/">Player</a> · <a href="${SITE}/?view=storyboard">Storyboard</a> · <a href="${SITE}/api/timeline.json">JSON</a> · <a href="${SITE}/story/transcript.txt">Transcript</a></span></div>
+<h1>Tŷ Mawr</h1>
+<p class="lede">The Great House Farm story: script and scene list. ${scenes.length} scenes in date order, from c. AD 650 to today, each with its evidence on the <a href="${WIKI}/">Great House Farm Wiki</a>. Cite scenes by reference (for example VI.9). Print this page for a paper copy; each act starts on a new page.</p>
+<div class="key"><span><i style="background:var(--a)"></i>House parcel (A)</span><span><i style="background:var(--b)"></i>Fields (B)</span><span><i style="background:var(--ab)"></i>Whole farm (A + B)</span><span><i style="background:var(--x)"></i>Unknown, or not the farm</span></div>
+<h2 class="sec">Contents</h2>
+<ol class="toc">${contents}<li><a href="#cast">Cast</a></li></ol>
+<h2 class="sec" id="cast">Cast</h2>
+${castHtml}
+${actHtml}
 </main>
 </body>
 </html>
@@ -199,32 +219,28 @@ writeFileSync(root + 'story/index.html', html);
 
 // --- story/transcript.txt ----------------------------------------------
 const transcript = [
-  'THE GREAT HOUSE FARM STORY',
-  `Narration script, ${timeline.length} events in strict chronological order. Source: ${WIKI}/`,
+  'TŶ MAWR — THE GREAT HOUSE FARM STORY',
+  `Narration script: ${scenes.length} scenes in date order. Release ${version}, ${date}. Source: ${WIKI}/`,
   '',
-  ...timeline.map((e, i) => {
-    const lines = [`${i + 1}. ${label(e.year).toUpperCase()} — ${e.location}`, '', `NARRATOR: ${e.narration}`];
-    for (const c of e.scenes) lines.push(`${c.character}: ${c.text}`);
-    return lines.join('\n') + '\n';
-  }),
+  ...acts.flatMap((a) => [
+    `${a.label.toUpperCase()}: ${a.title.toUpperCase()} (${a.span})`,
+    '',
+    ...scenes.filter((s) => s.act === a.id).map((s) => [`${s.ref}  ${s.when.toUpperCase()} — ${s.title}${s.place ? ` (${s.place})` : ''}`, '', `NARRATOR: ${s.narration}`, ...(s.case ? [`THE FAMILY'S CASE: ${s.case}`] : []), ''].join('\n')),
+  ]),
 ].join('\n');
 writeFileSync(root + 'story/transcript.txt', transcript);
 
 // --- sitemap.xml --------------------------------------------------------
-const today = date;
 const urls = [
-  [`${SITE}/`, '1.0'],
-  [`${SITE}/story/`, '0.9'],
-  [`${SITE}/api/timeline.json`, '0.9'],
-  [`${SITE}/llms.txt`, '0.8'],
-  [`${SITE}/story/transcript.txt`, '0.7'],
-  ...timeline.map((e) => [playerUrl(e), '0.5']),
+  [`${SITE}/`, '1.0'], [`${SITE}/story/`, '0.9'], [`${SITE}/?view=storyboard`, '0.8'], [`${SITE}/?view=cast`, '0.6'],
+  [`${SITE}/api/timeline.json`, '0.8'], [`${SITE}/llms.txt`, '0.7'], [`${SITE}/story/transcript.txt`, '0.6'],
+  ...scenes.map((s) => [url(s), '0.5']),
 ];
 writeFileSync(
   root + 'sitemap.xml',
   `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n${urls
-    .map(([u, p]) => `  <url><loc>${esc(u)}</loc><lastmod>${today}</lastmod><priority>${p}</priority></url>`)
+    .map(([u, p]) => `  <url><loc>${esc(u)}</loc><lastmod>${date}</lastmod><priority>${p}</priority></url>`)
     .join('\n')}\n</urlset>\n`,
 );
 
-console.log(`exports rebuilt: ${entries.length} entries, v${version}, ${date}`);
+console.log(`exports rebuilt: ${scenes.length} scenes, ${acts.length} acts, ${version}, ${date}`);

@@ -1,30 +1,30 @@
-# BP vs Buckler — Great House Farm Dispute Timeline
+# Tŷ Mawr — The Great House Farm Story
 
-**Website:** [bpvsbuckler.datro.xyz](https://bpvsbuckler.datro.xyz)
+**Website:** [bpvsbuckler.bucklerfamily.estate](https://bpvsbuckler.bucklerfamily.estate)
 
-Interactive React SPA documenting the BP Properties Ltd vs Buckler (1987) case and the 800-year history of Ty Mawr (Great House Farm), Llandough.
+A storyboard of the true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, built for documentary development: something a studio, producers and cast can read, play and cite. Every scene is drawn from the [Great House Farm Wiki](https://greathousefarmwiki.wordpress.com/) and links to its evidence.
 
-## Features
+## What's on the site
 
-- **Timeline** — Chronological slide deck with narration, character scenes, and source references
-- **Splash Page** — Case overview with key facts
-- **Claim Page** — Forensic Evaluation and Restitutionary Brief
-- **Script Page** — Full chronological script for presentation
-- **Slide Media Icons** — Each slide has Docs, Video, Audio, URL, and Info icon buttons (future: WayBack file-explorer modal integration)
-- **Puck CMS** — Edit page content inline via Puck visual editor
+- **Play** (`/?event=<id>`) — one scene at a time, narrated, with the scene's photo or press cutting, evidence, parcel, basis and the family's case
+- **Storyboard** (`/?view=storyboard`) — every scene as a panel, grouped into a prologue, eight acts and an epilogue
+- **Cast** (`/?view=cast`) — the people and bodies in the story and the scenes they appear in
+- **Script** (`/story/`) — the printable script and scene list; each act starts on a new page when printed
+- **Data** — `/api/timeline.json`, `/llms.txt`, `/story/transcript.txt`, `sitemap.xml`
 
-## Deployment
+Scenes are cited by reference (act.scene, e.g. `VI.12`) or by permanent id (`?event=ghf-19881206-1`). Ids from earlier releases redirect to the scene that now carries that event.
 
-This branch is deployed to Cloudflare Pages at `bpvsbuckler.pages.dev` with custom domain `bpvsbuckler.datro.xyz`.
+## Editing the story
 
-To rebuild/deploy:
-```bash
-# Content is in content/data.json — edit and run:
-python3 content/rebuild.py
+The story lives in one file: `content/story_source.py`.
 
-# Cloudflare Pages auto-deploys from the git branch
-```
+1. Edit the scene (or add one with `sc(...)` in date order). Rules: one scene per event; newspaper cuttings are evidence on the scene they report, not scenes of their own; every scene needs at least one evidence link; narration in the present tense; the family's contentions go in `case`.
+2. Run `python3 content/story_source.py` — writes `src/data/story.json` and checks order, ids and evidence.
+3. Run `node scripts/build-timeline-exports.mjs <version> <date>` — rebuilds the script page, JSON, llms.txt, transcript and sitemap.
+4. Commit and push to the `bpvsbuckler` branch. GitHub Actions builds with Vite and deploys to Cloudflare Pages.
+
+Photos and cuttings are in `media/` (from the `wayback` branch).
 
 ## Licensing
 
-Copyright DATRO Consortium Ltd
+Copyright DATRO Consortium Ltd. Cadw photographs © Crown copyright, released to the family under ATISN 27021. Newspaper cuttings are reproduced from the family archive as evidence, with their transcripts on the wiki.
