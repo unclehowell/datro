@@ -43,7 +43,7 @@ const actOf = (id) => acts.find((a) => a.id === id);
 const PARCEL = { A: 'House parcel (A)', B: 'Fields (B)', AB: 'Whole farm (A + B)', '?': 'Not yet known', x: 'Not Great House Farm land', '': '' };
 const castName = (id) => cast.find((c) => c.id === id).name;
 const DESC =
-  'The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, told scene by scene in date order, with the evidence for every scene. Told as a narrated film, from the church beside the Great House to the dispossession of the family and the silence that followed; every scene links to its evidence on the Great House Farm Wiki.';
+  'The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, told scene by scene in date order, with the evidence for every scene. Each scene gives what happened, the received account and its wording, and what we now know; every scene links to its evidence on the Great House Farm Wiki.';
 
 // --- api/timeline.json --------------------------------------------------
 const entries = scenes.map((s) => ({
@@ -61,7 +61,9 @@ const entries = scenes.map((s) => ({
   family_case: s.case,
   title_ledger: Object.fromEntries(s.ledger.map(([l, t]) => [lanes[l], t])),
   title_moves: s.moved.map((l) => lanes[l]),
-  words: s.words.map(([said, meant]) => ({ said, meant })),
+  received_account: s.received,
+  received_wording: s.received_words.map(([said, note]) => ({ said, note })),
+  what_we_now_know: s.known,
   cast: s.cast,
   evidence: s.evidence.map((e) => (e.image ? { ...e, image: SITE + e.image } : e)),
   image: s.image ? SITE + s.image : null,
@@ -108,7 +110,9 @@ const blocks = scenes.map((s) => {
   const a = actOf(s.act);
   const lines = [`### ${s.ref} (${s.no}). ${s.when} — ${s.title}`, '', `${a.label}: ${a.title} · Scene id: ${s.id}${isoDate(s.date) ? ` · Date: ${s.date}` : ''} · Parcel: ${PARCEL[s.parcel] || 'n/a'} · Basis: ${s.basis}`, '', s.narration, ''];
   if (s.case) lines.push(`> The family's case: ${s.case}`, '');
-  for (const [q, m] of s.words) lines.push(`> The words: ${q} — ${m}`);
+  if (s.received) lines.push(`> The received account: ${s.received}`);
+  for (const [q, m] of s.received_words) lines.push(`> Wording: ${q} — ${m}`);
+  if (s.known) lines.push(`> What we now know: ${s.known}`);
   for (const m of movedLines(s)) lines.push(`> Title move — ${m}`);
   if (s.moved.length) lines.push('');
   for (const e of s.evidence) lines.push(`- ${e.type}: ${e.title} — ${e.url}`);
@@ -157,7 +161,7 @@ const actHtml = acts
 <h3>${esc(s.title)}</h3>
 ${img}<p class="narr">${esc(s.narration)}</p>
 ${s.case ? `<p class="case"><b>The family's case.</b> ${esc(s.case)}</p>` : ''}
-${s.words.map(([q, m]) => `<p class="case"><b>The words: ${esc(q)}.</b> ${esc(m)}</p>`).join('')}
+${s.received ? `<p class="case"><b>The received account.</b> ${esc(s.received)}</p>` : ''}${s.received_words.map(([q, m]) => `<p class="case"><b>Wording: ${esc(q)}</b> ${esc(m)}</p>`).join('')}${s.known ? `<p class="case"><b>What we now know.</b> ${esc(s.known)}</p>` : ''}
 ${movedLines(s).map((m) => `<p class="case"><b>Title move.</b> ${esc(m)}</p>`).join('')}
 <p class="tags">${tags}</p>
 <ul class="ev">${ev}</ul>

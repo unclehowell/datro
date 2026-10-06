@@ -1,6 +1,6 @@
 {
   "title": "Tŷ Mawr — The Great House Farm Story",
-  "description": "The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, told scene by scene in date order, with the evidence for every scene. Told as a narrated film, from the church beside the Great House to the dispossession of the family and the silence that followed; every scene links to its evidence on the Great House Farm Wiki.",
+  "description": "The true story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough-juxta-Penarth, told scene by scene in date order, with the evidence for every scene. Each scene gives what happened, the received account and its wording, and what we now know; every scene links to its evidence on the Great House Farm Wiki.",
   "ordering": "Scenes are in strict date order by \"date\" (ISO 8601; null for the two present-day epilogue scenes, which come last). \"ref\" is act.scene, \"order\" the running number.",
   "parcels": {
     "A": "House parcel (A)",
@@ -19,79 +19,79 @@
     "transcript": "https://bpvsbuckler.bucklerfamily.estate/story/transcript.txt",
     "llms": "https://bpvsbuckler.bucklerfamily.estate/llms.txt"
   },
-  "version": "v0.0.0.55",
+  "version": "v0.0.0.56",
   "last_updated": "2026-10-06",
   "total_entries": 102,
   "acts": [
     {
       "id": "P",
       "label": "Prologue",
-      "title": "The Root",
+      "title": "To 1857",
       "span": "c. 650 – 1857",
-      "logline": "Before the farm is ever divided, its title has a root: the church, the manor, the Vaughans, the Bute Estate."
+      "logline": "The church, the manor and the house, to the arrival of the quarry."
     },
     {
       "id": "I",
       "label": "Act I",
-      "title": "The Split",
+      "title": "Division",
       "span": "1858 – 1915",
-      "logline": "1877: the house goes one way and the fields another. Two parcels, two owners, two chains of title."
+      "logline": "The limeworks, and the 1877 division of the farm."
     },
     {
       "id": "II",
       "label": "Act II",
-      "title": "Two Words",
+      "title": "Tenancies",
       "span": "1916 – 1948",
-      "logline": "\"The whole farm.\" A tenancy describes two parcels as one, just as the house becomes the family's own."
+      "logline": "The 1916 and 1939 tenancies, the 1928 rent, and the 1938 sale to Western Ground Rents."
     },
     {
       "id": "III",
       "label": "Act III",
-      "title": "The Mimic",
+      "title": "Possession proceedings",
       "span": "1949 – 1968",
-      "logline": "The deeds vanish. Then, one move at a time, a second Parcel A is built on paper out of tenancies and court orders."
+      "logline": "The 1949 tenancy, the papers, the 1955 and 1962 orders, and the tenancy offers."
     },
     {
       "id": "IV",
       "label": "Act IV",
-      "title": "The Handover",
+      "title": "BP",
       "span": "1969 – 1983",
-      "logline": "BP takes the fields by deed and the mimic by order, licence and conveyance. Then it registers both."
+      "logline": "The 1969 and 1975 conveyances, the 1974 action and letters, and first registration."
     },
     {
       "id": "V",
       "label": "Act V",
-      "title": "Possession, Not Ownership",
+      "title": "BP Properties Ltd v Buckler",
       "span": "1984 – March 1988",
-      "logline": "The mimic is folded into the fields, and the courts decide who may live in the house. Never who owns it."
+      "logline": "The writ, the judgments, and the amalgamation of the titles."
     },
     {
       "id": "VI",
       "label": "Act VI",
-      "title": "Bulldozed Before Breakfast",
+      "title": "Eviction and demolition",
       "span": "April – December 1988",
-      "logline": "A chainsaw at the door, a forced eviction, a listing refused, and bulldozers at 4am."
+      "logline": "The eviction attempts, the listing decision and the demolition."
     },
     {
       "id": "VII",
       "label": "Act VII",
-      "title": "Built Over",
+      "title": "Development",
       "span": "1989 – 2019",
-      "logline": "BP sells the merged title, twenty houses go up, and a thousand graves are taken out of the ground."
+      "logline": "Planning, the sale to Ideal Homes, the cemetery excavation and the houses."
     },
     {
       "id": "VIII",
       "label": "Act VIII",
-      "title": "The Buried Title",
+      "title": "Records",
       "span": "2025 – 2026",
-      "logline": "Mary's grandchildren dig for the true Parcel A. The state says its register is correct."
+      "logline": "The family's records requests and complaints, and the replies."
     },
     {
       "id": "E",
       "label": "Epilogue",
       "title": "Today",
       "span": "Now",
-      "logline": "How it was done, who holds what, and what was never decided."
+      "logline": "The sequence, the site today, and the family's requests."
     }
   ],
   "cast": [
@@ -99,37 +99,37 @@
       "id": "mary",
       "name": "Mary Williams (Mrs Buckler)",
       "years": "1913 – 1983",
-      "role": "Born in the farmhouse and died in it. Owner of Parcel A on her family's title; refused every tenancy and licence, pleaded ownership in 1974, and was never allowed to prove it."
+      "role": "Born in the farmhouse in 1913 and died there in 1983. Refused the tenancies offered in 1959 and 1965 and the 1974 letters; pleaded ownership in 1974."
     },
     {
       "id": "john",
       "name": "John Williams",
       "years": "d. after 1949",
-      "role": "Mary's father. Paid the last rent on Parcel A in 1928; from then on it was the family's."
+      "role": "Mary's father. Tenant of the house and fields from 1908; paid the last rent on the house in 1928."
     },
     {
       "id": "frederick",
       "name": "Frederick Buckler",
       "years": "1910/11 – 1967",
-      "role": "Mary's husband. Held an unwritten tenancy of the fields (Parcel B). Every order against him was later used against the house."
+      "role": "Mary's husband. Held an unwritten yearly tenancy from 1949; the 1955 and 1962 orders were made against him."
     },
     {
       "id": "billy",
       "name": "William \"Billy\" Buckler",
       "years": "c. 1948 – 1992",
-      "role": "Mary's son, born at the farm. Inherited her claim, fought BP's possession case, held the bailiffs off with a chainsaw, and was evicted in November 1988."
+      "role": "Mary's son, born at the farm. Defendant in BP Properties Ltd v Buckler; evicted in November 1988."
     },
     {
       "id": "branwen",
       "name": "Branwen Buckler",
       "years": "",
-      "role": "Billy's wife. Watched the farmhouse bulldozed with their three young children."
+      "role": "William's wife; mother of their three children."
     },
     {
       "id": "eldest",
       "name": "Frederick and Mary's eldest son",
       "years": "b. c. 1937–40",
-      "role": "Left the farm in 1968. A cousin says he sold \"our land parcel\" behind his parents' backs."
+      "role": "Left the farm in 1968. A cousin's account records a sale of \"our land parcel\"."
     },
     {
       "id": "thomas",
@@ -141,43 +141,43 @@
       "id": "bute",
       "name": "The Bute Estate",
       "years": "",
-      "role": "Freeholders of the whole farm from the early 19th century. Sold Parcel A in 1877 and Parcel B in 1938."
+      "role": "Freeholders from the early 19th century; sold the farmhouse parcel to Daniel Thomas in 1877 and their remaining interest to Western Ground Rents in 1938."
     },
     {
       "id": "wgr",
       "name": "Western Ground Rents Ltd",
       "years": "",
-      "role": "Bought Parcel B from Bute in 1938. Built the case against the house: the 1955 and 1962 orders and the tenancy offers. Sold to BP in 1969, and was later bought by the BP pension fund."
+      "role": "Bought Bute's interest in 1938; brought the 1955 and 1962 actions; conveyed to BP Pension Trust in 1969."
     },
     {
       "id": "bp",
       "name": "BP Pension Trust / BP Properties Ltd",
       "years": "",
-      "role": "Took Parcel B by deed in 1969 and the case against the house with it. Conveyed \"the farmhouse and garden\" between its own companies in 1975, registered both, merged them in 1987, won possession, demolished the house and sold the land."
+      "role": "Acquired from Western Ground Rents in 1969; registered the land in 1982–83; obtained possession in 1986–88; demolished the buildings in 1988; transferred the site to Ideal Homes in 1993."
     },
     {
       "id": "hmlr",
       "name": "HM Land Registry",
       "years": "",
-      "role": "Registered BP's two titles in 1982–83 and merged the farmhouse title into the fields title during the appeal. In 2026 it says the title is 'registered correctly'."
+      "role": "Registered titles WA231076 and WA240304 in 1982–83 and amalgamated them in 1987."
     },
     {
       "id": "cadw",
       "name": "Cadw",
       "years": "",
-      "role": "The Welsh heritage body. Looked at the house for listing in July and December 1988, refused to list it the day before it was demolished, and has lost its file."
+      "role": "The Welsh heritage body. Considered the house for listing in July and December 1988 and did not list it."
     },
     {
       "id": "ggat",
       "name": "GGAT (now Heneb)",
       "years": "",
-      "role": "The regional archaeological trust. Advised the planners, then worked for BP and the developer on the site, 1982–1995."
+      "role": "The regional archaeological trust. Advised the planning authority and worked on the site, 1982–1995."
     },
     {
       "id": "rcahmw",
       "name": "Royal Commission (RCAHMW)",
       "years": "",
-      "role": "Began recording the house in 1974 and was never let finish; sifted its rubble in 1988."
+      "role": "Recorded the house in part in 1974 and examined the rubble in 1988."
     },
     {
       "id": "courts",
@@ -283,11 +283,11 @@
       "act": "P",
       "date": "0650-01-01",
       "when": "c. AD 650",
-      "title": "The church beside the house",
+      "title": "St Dochdwy's church",
       "place": "St Dochdwy's, Llandough",
       "parcel": "?",
       "basis": "Family account",
-      "narration": "Long before there is a farm, there is a church. St Dochdwy's at Llandough is one of the oldest Christian sites in Wales, the seat of an early monastery. Beside it, on the slope above the river, stands the place that will become Tŷ Mawr: the Great House. This is a story about who owns that ground, and how the answer was buried.",
+      "narration": "St Dochdwy's church stands at Llandough, on the site of an early monastery. Great House stands beside it.",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Church land, Llandough"
@@ -295,7 +295,9 @@
       "title_moves": [
         "Great House (one farm)"
       ],
-      "words": [],
+      "received_account": "A village church with a farm next to it.",
+      "received_wording": [],
+      "what_we_now_know": "One of the oldest Christian sites in Wales, and the ground beside it the site of the largest early medieval cemetery yet found in Wales. The house next to it was the manor's house, not an ordinary farmhouse.",
       "cast": [],
       "evidence": [
         {
@@ -320,17 +322,24 @@
       "act": "P",
       "date": "1200-01-01",
       "when": "12th – 14th century",
-      "title": "An old house",
+      "title": "Medieval occupation",
       "place": "Great House — north-east slope",
       "parcel": "A",
       "basis": "Archaeological record",
-      "narration": "In the Middle Ages people live and work on this slope; their pottery is still in the ground eight hundred years later. The house that grows here is old and grand: a long stone house the Royal Commission will judge sub-medieval, probably of the seventeenth century, perhaps built around something older still.",
+      "narration": "Pottery of the 12th to 14th centuries is later found on the slope north-east of the house. The Royal Commission classes the house as sub-medieval, probably 17th century.",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Church land, Llandough"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "An old farmhouse of no special note.",
+      "received_wording": [
+        {
+          "said": "\"sub-medieval\"",
+          "note": "A technical dating term, later read as \"not old enough to matter\"."
+        }
+      ],
+      "what_we_now_know": "A house of the 17th century or earlier, on a site occupied since the Middle Ages, possibly with a medieval core.",
       "cast": [
         "rcahmw"
       ],
@@ -361,11 +370,11 @@
       "act": "P",
       "date": "1552-01-01",
       "when": "1552 – 1829",
-      "title": "Cydfin, or Tŷ Mawr",
+      "title": "Manorial leases",
       "place": "Llandough manorial leases",
       "parcel": "AB",
       "basis": "Estate papers",
-      "narration": "In the manor's leases it goes by an older name: Cydfin, or Tŷ Mawr, a farm of a hundred and seven acres. Every lease is written, signed and kept. Remember that. For three centuries this land's paper trail is unbroken.",
+      "narration": "The Llandough manorial leases, 1552–1829, list \"Cydfin Farm or Ty Mawr Farm (107 a.)\".",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Manor of Llandough: Cydfin or Tŷ Mawr, 107 acres, on written leases"
@@ -373,7 +382,9 @@
       "title_moves": [
         "Great House (one farm)"
       ],
-      "words": [],
+      "received_account": "A farm let on ordinary leases.",
+      "received_wording": [],
+      "what_we_now_know": "The land had a continuous written record for nearly three centuries. Its title has a documented root.",
       "cast": [],
       "evidence": [
         {
@@ -403,11 +414,11 @@
       "act": "P",
       "date": "1560-01-01",
       "when": "Mid 16th – late 18th century",
-      "title": "The Vaughans of Great House",
+      "title": "The Vaughans",
       "place": "Great House Farm",
       "parcel": "AB",
       "basis": "Heritage record",
-      "narration": "The title has a root. A letter to the Western Mail will one day trace it from Tewkesbury Abbey to the Crown and the Herberts. From the middle of the sixteenth century the Vaughans, a minor gentry family, hold Great House as the chief freehold farm of the parish. Their memorials are still in the church next door.",
+      "narration": "From the mid-16th to the late 18th century the Vaughan family hold Great House, the chief freehold farm of the parish.",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Freehold: the Vaughans (root traced via Tewkesbury Abbey, the Crown and the Herberts)"
@@ -415,7 +426,9 @@
       "title_moves": [
         "Great House (one farm)"
       ],
-      "words": [],
+      "received_account": "A gentry family's farm, later sold on.",
+      "received_wording": [],
+      "what_we_now_know": "The freehold chain of the land: traced in the Western Mail letter from Tewkesbury Abbey to the Crown and the Herberts, then the Vaughans, then Bute. Parcel A's title descends from this chain.",
       "cast": [],
       "evidence": [
         {
@@ -441,11 +454,11 @@
       "act": "P",
       "date": "1667-01-01",
       "when": "1667",
-      "title": "The Williamses arrive",
+      "title": "The Williams family at Great House",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Mary's statement",
-      "narration": "In 1667 the Williams family come to Great House. Mary Williams, born there two and a half centuries later, will say her ancestors bought it. From now on, for more than three hundred years, there is a Williams in the house.",
+      "narration": "Mary Williams's statement (c. 1974) records her family at Great House from 1667.",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Freehold: the Vaughans · in the house: the Williamses"
@@ -453,7 +466,14 @@
       "title_moves": [
         "Great House (one farm)"
       ],
-      "words": [],
+      "received_account": "Tenant farmers who lived on someone else's land.",
+      "received_wording": [
+        {
+          "said": "\"tenants\"",
+          "note": "The estate's description of the family, repeated in every later account."
+        }
+      ],
+      "what_we_now_know": "Three centuries of continuous occupation by one family. Mary's account is that her ancestors bought it; the estate's records call them tenants. Their status changes in 1877 and 1928, not here.",
       "cast": [
         "mary"
       ],
@@ -482,11 +502,11 @@
       "act": "P",
       "date": "1800-01-01",
       "when": "Early 19th century",
-      "title": "The Marquesses of Bute",
+      "title": "The Bute Estate",
       "place": "Great House",
       "parcel": "AB",
       "basis": "Heritage record",
-      "narration": "Early in the nineteenth century the Bute Estate, the greatest landowner in South Wales, takes the freehold. The manor courts of Llandough and Leckwith sit in the house itself. By 1818 Llandough's rents are in Bute's books, and in 1824 the estate's surveyor walks the farm and writes it down. One owner, one farm, one title.",
+      "narration": "Early in the 19th century the Bute Estate acquires the freehold of Great House. The manorial courts of Llandough and Leckwith are held in the house.",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
@@ -494,7 +514,9 @@
       "title_moves": [
         "Great House (one farm)"
       ],
-      "words": [],
+      "received_account": "Bute owned the farm, and everything after descends from Bute.",
+      "received_wording": [],
+      "what_we_now_know": "Bute owned the whole farm only until 1877. The house was the manor's court house.",
       "cast": [
         "bute"
       ],
@@ -539,17 +561,24 @@
       "act": "P",
       "date": "1840-01-01",
       "when": "c. 1840",
-      "title": "The Great House shrinks",
+      "title": "Great House Farm",
       "place": "Census and tithe records",
       "parcel": "AB",
       "basis": "Public record",
-      "narration": "Then, on paper, the Great House begins to shrink. In the census and the tithe returns it stops being 'Great House' and becomes 'Great House Farm': no longer the court house of a manor, just a farmhouse. It is the first time the records describe the place as something less than it is. In this story, how a thing is described will matter as much as what it is.",
+      "narration": "Census and tithe records begin to describe the house as \"Great House Farm\".",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "It was always just a farm.",
+      "received_wording": [
+        {
+          "said": "\"Great House Farm\"",
+          "note": "A name that reduced the manor's court house to a farmhouse."
+        }
+      ],
+      "what_we_now_know": "The first change in how the place was described. Later descriptions, especially \"the whole farm\", decide the case.",
       "cast": [],
       "evidence": [
         {
@@ -576,17 +605,19 @@
       "act": "I",
       "date": "1858-01-01",
       "when": "c. 1858",
-      "title": "Bones by the church",
+      "title": "Burials at Church Farm",
       "place": "Church Farm, Llandough",
       "parcel": "x",
       "basis": "Museum record",
-      "narration": "Workmen digging foundations beside the church find six skeletons, a medieval spearhead and a spur. The bones are put back in the ground by the churchyard stile. Llandough's dead lie close under the surface. Nobody yet asks how many there are.",
+      "narration": "Workmen at Llandough Church Farm find about six skeletons, a medieval spearhead and a spur. The bones are reburied by the church stile.",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "A chance find, of no consequence.",
+      "received_wording": [],
+      "what_we_now_know": "The first record that the ground beside the church held burials. The 1994 excavation found more than a thousand.",
       "cast": [],
       "evidence": [
         {
@@ -613,17 +644,24 @@
       "act": "I",
       "date": "1870-01-01",
       "when": "c. 1870",
-      "title": "The soldier under the floor",
+      "title": "The armour under the floor",
       "place": "Great House — dining room",
       "parcel": "A",
       "basis": "Family account",
-      "narration": "Under the dining-room floor of the Great House, the family will always say, lies a soldier in armour, with his horse, his lance and a small shield. The story is told for a hundred years. It reaches the Daily Telegraph and the Royal Commission's files. Nobody ever lifts the floor to look.",
+      "narration": "Family tradition records a soldier in armour found beneath the dining-room floor. The Daily Telegraph (1974) and the Royal Commission (1988) record the account.",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "Family folklore.",
+      "received_wording": [
+        {
+          "said": "\"reported\"",
+          "note": "The word the records use, which keeps it at a distance."
+        }
+      ],
+      "what_we_now_know": "An account on public record since 1974, never investigated before the house was demolished.",
       "cast": [
         "rcahmw"
       ],
@@ -657,17 +695,19 @@
       "act": "I",
       "date": "1876-01-01",
       "when": "1876 – c. 1912",
-      "title": "The quarrymen",
+      "title": "The limeworks",
       "place": "Llandough Limeworks",
       "parcel": "A",
       "basis": "Estate papers",
-      "narration": "Limestone brings the quarrymen. The Bute Estate lets about thirty-three acres of the farm to the Llandough Limeworks, and for the next thirty-five years the quarry eats into the land.",
+      "narration": "The Bute Estate lets about 33 acres of the farm to the Llandough Limeworks, which work it until about 1912.",
       "family_case": null,
       "title_ledger": {
         "Great House (one farm)": "Freehold: the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "Part of the farm let for quarrying.",
+      "received_wording": [],
+      "what_we_now_know": "The quarrying is the reason for the 1877 division, and its end in 1928 is the date the house passes to the family.",
       "cast": [
         "bute"
       ],
@@ -689,11 +729,11 @@
       "act": "I",
       "date": "1877-01-01",
       "when": "1877",
-      "title": "The split",
+      "title": "Division of the farm",
       "place": "Bute Estate Office",
       "parcel": "AB",
       "basis": "Mary's statement",
-      "narration": "1877. The move that everything turns on. The Bute Estate sells the farmhouse, its buildings and about ten acres to the quarryman Daniel Thomas. Call it Parcel A. Bute keeps nine acres of fields on the top. Call that Parcel B. From today they are two pieces of land with two owners and two chains of title. The Williamses stay on as tenants of both: of the house under Thomas, of the fields under Bute. And, as Mary will tell it, with a promise: when the quarrying ends, the freehold of the house comes to them. Hold on to this. Bute no longer owns the house. Anything Bute sells after today can only be Parcel B.",
+      "narration": "Mary Williams's statement records that in 1877 the Bute Estate sold the farmhouse, buildings and about 10 acres to Daniel Thomas, and kept about 9 acres. The Williamses remained as tenants of both. The deed is missing.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
@@ -703,12 +743,9 @@
         "Parcel A: the true title",
         "Parcel B: the fields"
       ],
-      "words": [
-        {
-          "said": "sold to Daniel Thomas … retained by the Bute Estate",
-          "meant": "Mary's account of the split: Parcel A (house and about 10 acres) to Thomas, Parcel B (about 9 acres on the top) kept by Bute."
-        }
-      ],
+      "received_account": "Nothing changed: Bute went on owning the farm, and the Williamses went on renting it.",
+      "received_wording": [],
+      "what_we_now_know": "From 1877 there are two parcels with two owners: Parcel A (the house) owned by Thomas, Parcel B (the fields) owned by Bute. Anything Bute sells after 1877 can only be Parcel B. The agreement provided that the freehold of Parcel A would pass to the Williamses when quarrying ended.",
       "cast": [
         "mary",
         "thomas",
@@ -754,18 +791,20 @@
       "act": "I",
       "date": "1891-11-11",
       "when": "11 November 1891",
-      "title": "Three geese",
+      "title": "Theft of geese",
       "place": "Llandough — court report",
       "parcel": "AB",
       "basis": "Newspaper",
-      "narration": "Fourteen years later three geese are stolen from \"Mr. John Williams, Great House Farm, Llandough\". The thief goes to court, and the newspaper records, in passing, who lives at the house.",
+      "narration": "Three geese are stolen from \"Mr. John Williams, Great House Farm, Llandough\". The theft is reported from court.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
         "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "A minor court report.",
+      "received_wording": [],
+      "what_we_now_know": "Contemporary proof that John Williams lived at the house in 1891.",
       "cast": [
         "john"
       ],
@@ -788,18 +827,20 @@
       "act": "I",
       "date": "1897-05-01",
       "when": "May 1897",
-      "title": "Marconi",
+      "title": "Marconi at Lavernock",
       "place": "Lavernock Point",
       "parcel": "?",
       "basis": "Family account",
-      "narration": "In May 1897 Marconi sends the first wireless signals across open sea, from Lavernock Point to Flat Holm. In the family's memory it is Thomas Williams of Great House who carts his equipment down to the point.",
+      "narration": "Marconi's wireless trials at Lavernock Point, May 1897. Family tradition records that Thomas Williams of Great House carted his equipment.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: Daniel Thomas (bought from Bute) · tenants: the Williamses, promised the freehold when quarrying ends",
         "Parcel B: the fields": "Freehold: the Bute Estate · tenants: the Williamses"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "An unproven family story.",
+      "received_wording": [],
+      "what_we_now_know": "The trials are documented; the family's part is their own account.",
       "cast": [],
       "evidence": [
         {
@@ -820,11 +861,11 @@
       "act": "I",
       "date": "1908-01-01",
       "when": "1908",
-      "title": "Two landlords",
+      "title": "John Williams",
       "place": "Great House Farm",
       "parcel": "AB",
       "basis": "Mary's statement",
-      "narration": "Mary's grandfather dies, and her father, John Williams, takes over both tenancies: the house from the Thomases, the fields from Bute. Two parcels, two landlords, one family farming them as one. On the ground it looks like one farm. On paper it is two.",
+      "narration": "Mary's grandfather dies. John Williams takes over the house from the Thomases and the fields from Bute.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Thomases · tenant: John Williams",
@@ -834,7 +875,14 @@
         "Parcel A: the true title",
         "Parcel B: the fields"
       ],
-      "words": [],
+      "received_account": "John Williams became the tenant of the farm.",
+      "received_wording": [
+        {
+          "said": "\"the tenant\"",
+          "note": "Singular, as if there were one tenancy of one farm."
+        }
+      ],
+      "what_we_now_know": "Two tenancies from two landlords: Parcel A from the Thomases, Parcel B from Bute.",
       "cast": [
         "mary",
         "john",
@@ -871,18 +919,20 @@
       "act": "I",
       "date": "1913-08-10",
       "when": "10 August 1913",
-      "title": "Mary is born",
+      "title": "Birth of Mary Williams",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Mary's statement",
-      "narration": "On 10 August 1913 Mary Williams is born in the farmhouse. She will live in it for the rest of her life, and she will die in it.",
+      "narration": "Mary Williams is born in the farmhouse on 10 August 1913.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Thomases · tenant: John Williams",
         "Parcel B: the fields": "Freehold: the Bute Estate · tenant: John Williams"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "A tenant's daughter.",
+      "received_wording": [],
+      "what_we_now_know": "The owner of Parcel A from 1928 by her family's title. She lived in the house until her death in 1983.",
       "cast": [
         "mary"
       ],
@@ -909,11 +959,11 @@
       "act": "II",
       "date": "1916-02-01",
       "when": "February 1916",
-      "title": "\"The whole farm\"",
+      "title": "The 1916 tenancy",
       "place": "Great House Farm",
       "parcel": "AB",
       "basis": "Court record",
-      "narration": "February 1916. Bute lets John Williams \"the whole farm\" on a yearly tenancy. Read those words with what we now know. Bute has not owned the house since 1877. It owns the fields, Parcel B, and nothing else here. So \"the whole farm\" is a landlord describing land it does not own as if it did. The words are Bute's, not the family's. The tenancy itself has never been found; only those three words survive, quoted seventy years later by the Court of Appeal as the start of the story. From here on there are two Great House Farms: the real one, in two parcels, and a mythical one, a single estate that exists only on paper. Call it the synthetic farm. Every case against the family will be fought over the synthetic farm.",
+      "narration": "Bute grants John Williams a yearly tenancy described as \"the whole farm\". The document has not been found.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Thomases · tenant: John Williams",
@@ -923,16 +973,21 @@
       "title_moves": [
         "Synthetic Parcel A"
       ],
-      "words": [
+      "received_account": "The Williamses were yearly tenants of the whole farm from 1916, and every later right flows from that tenancy.",
+      "received_wording": [
         {
           "said": "\"the whole farm\"",
-          "meant": "Both parcels, described as one by a landlord (Bute) that by then owned only Parcel B. The birth of the synthetic farm."
+          "note": "Quoted by the Court of Appeal in 1987 as the start of the history."
+        },
+        {
+          "said": "\"since 1916\"",
+          "note": "The European Commission's date for the family's occupation."
         }
       ],
+      "what_we_now_know": "In 1916 Bute owned only Parcel B. It could not let the house, which Thomas owned. \"The whole farm\" is a landlord's description of land it did not own: the birth of a single, synthetic farm that existed only on paper. Every later case was fought over that synthetic farm.",
       "cast": [
         "john",
-        "bute",
-        "courts"
+        "bute"
       ],
       "evidence": [
         {
@@ -962,11 +1017,11 @@
       "act": "II",
       "date": "1928-01-01",
       "when": "1928",
-      "title": "The last rent",
+      "title": "Last rent on the house",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Mary's statement",
-      "narration": "In 1928 the last of the quarry machinery leaves. John Williams pays a final rent of about four pounds to Alfred Thomas, and the bargain of 1877 comes due: the quarrying is over, and the freehold of the house passes to the family. Mary sees the receipt. From this year the true Parcel A has a complete chain: the Vaughans, Bute, Daniel Thomas, the Williamses. The family pay no more rent on the house, to anyone, ever again.",
+      "narration": "Mary Williams's statement records that in 1928 the last quarry machinery left, and John Williams paid a final rent of about £4 to Alfred Thomas. She saw the receipt. It is missing.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Bute → Thomas → Williams; 1877 agreement and 1928 receipt kept at the house)",
@@ -976,12 +1031,13 @@
       "title_moves": [
         "Parcel A: the true title"
       ],
-      "words": [],
+      "received_account": "Nothing happened in 1928. The tenancy of the whole farm carried on.",
+      "received_wording": [],
+      "what_we_now_know": "The 1877 agreement took effect: quarrying ended and the freehold of Parcel A passed to the Williamses. From 1928 no rent was paid on Parcel A to anyone. Parcel A's chain is complete: Vaughan, Bute, Daniel Thomas, Williams.",
       "cast": [
         "mary",
         "john",
-        "thomas",
-        "bute"
+        "thomas"
       ],
       "evidence": [
         {
@@ -1013,11 +1069,11 @@
       "act": "II",
       "date": "1936-01-01",
       "when": "1936",
-      "title": "Mary marries Frederick",
+      "title": "Marriage",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Family account",
-      "narration": "Mary marries Frederick Buckler, a farmer, and he comes to live with her in the house. They will have seven children; the first, a son, is born within a few years. Note who owns what: the house is Mary's family's. Frederick will farm the fields.",
+      "narration": "Mary Williams marries Frederick Buckler, who comes to live at the farmhouse. They have seven children.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Bute → Thomas → Williams; 1877 agreement and 1928 receipt kept at the house)",
@@ -1025,7 +1081,9 @@
         "Parcel B: the fields": "Freehold: the Bute Estate · tenant: John Williams"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "Frederick joined the tenant family on the farm.",
+      "received_wording": [],
+      "what_we_now_know": "Frederick married into the house, which was Mary's family's. His later tenancy was of the fields only.",
       "cast": [
         "mary",
         "frederick"
@@ -1061,11 +1119,11 @@
       "act": "II",
       "date": "1938-01-01",
       "when": "1938",
-      "title": "Bute sells out",
+      "title": "Sale to Western Ground Rents",
       "place": "Bute Estate Office",
       "parcel": "B",
       "basis": "Court record",
-      "narration": "In 1938 Bute sells its interest to a property company, Western Ground Rents. The deed passes Bute's \"reversion\": its interest as landlord of the land it still owns and lets. That is Parcel B, the fields. It cannot include Parcel A; Bute sold that sixty years ago. So Western Ground Rents buys two things: the fields, and the habit of calling them \"the whole farm\". It has no deed to the house, and it never will.",
+      "narration": "The Bute Estate conveys its reversion on the 1916 tenancy to Western Ground Rents Ltd.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Bute → Thomas → Williams; 1877 agreement and 1928 receipt kept at the house)",
@@ -1075,12 +1133,14 @@
       "title_moves": [
         "Parcel B: the fields"
       ],
-      "words": [
+      "received_account": "Western Ground Rents bought the farm, and became the Williamses' landlord for all of it.",
+      "received_wording": [
         {
-          "said": "Bute's \"reversion\"",
-          "meant": "Bute's interest as landlord of what it still owned and let: Parcel B. It could not include Parcel A."
+          "said": "\"the reversion\"",
+          "note": "Read later as the reversion on the whole farm."
         }
       ],
+      "what_we_now_know": "Bute could only convey what it owned: Parcel B and its landlord's interest in the fields. Western Ground Rents acquired no deed to Parcel A, then or ever.",
       "cast": [
         "bute",
         "wgr"
@@ -1108,11 +1168,11 @@
       "act": "II",
       "date": "1939-05-01",
       "when": "May 1939",
-      "title": "The plan",
+      "title": "The 1939 tenancy",
       "place": "Great House Farm",
       "parcel": "B",
       "basis": "Document",
-      "narration": "A year later Western Ground Rents gives John Williams a new tenancy, with a plan. The plan shows the fields east of the house. The house is not on it. The new landlord's own document draws the line of 1877: its tenancy is of Parcel B, and only Parcel B. It is the last written tenancy there will ever be.",
+      "narration": "Western Ground Rents grants John Williams a revised tenancy, with a plan.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Bute → Thomas → Williams; 1877 agreement and 1928 receipt kept at the house)",
@@ -1122,12 +1182,9 @@
       "title_moves": [
         "Parcel B: the fields"
       ],
-      "words": [
-        {
-          "said": "the tenancy plan",
-          "meant": "The fields east of the house: Parcel B only. The landlord's own document leaves the house out."
-        }
-      ],
+      "received_account": "A renewal of the farm tenancy.",
+      "received_wording": [],
+      "what_we_now_know": "The plan shows the fields east of the house only: Parcel B. The landlord's own document leaves the house out. It is the last written tenancy.",
       "cast": [
         "john",
         "wgr"
@@ -1159,7 +1216,7 @@
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Family case",
-      "narration": "By 1940 the Williamses, John and his daughter Mary in the house, have lived there twelve years without paying anyone a penny for it. In law, twelve years is enough. So from 1940 the family hold Parcel A twice over: by the bargain of 1877, and by time. Even without a single paper, there is from now on no basis for anyone to call Mary's occupation of her house permissive. Everything that follows has to pretend this year never happened.",
+      "narration": "By 1940, twelve years after 1928, no rent has been paid on the house.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)",
@@ -1169,15 +1226,10 @@
       "title_moves": [
         "Parcel A: the true title"
       ],
-      "words": [
-        {
-          "said": "twelve years, rent-free",
-          "meant": "Title by possession to Parcel A, complete by 1940, on top of the 1877–1928 bargain."
-        }
-      ],
-      "cast": [
-        "mary"
-      ],
+      "received_account": "Not an event. The family were tenants throughout.",
+      "received_wording": [],
+      "what_we_now_know": "Title by possession to Parcel A was complete by 1940, in addition to the 1877–1928 title. From 1940 there was no basis, with or without papers, for treating the family's occupation of the house as permissive.",
+      "cast": [],
       "evidence": [
         {
           "type": "Wiki page",
@@ -1196,11 +1248,11 @@
       "act": "II",
       "date": "1944-01-01",
       "when": "1944",
-      "title": "War on the land",
+      "title": "Farm management",
       "place": "Great House Farm",
       "parcel": "B",
       "basis": "Mary's statement",
-      "narration": "The war is on, the farm is struggling, and the War Agricultural Committee wants it run better. Frederick takes over the fields as manager for his father-in-law.",
+      "narration": "The War Agricultural Executive Committee is dissatisfied with the farm. Frederick Buckler takes over running it as manager for John Williams.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)",
@@ -1208,8 +1260,11 @@
         "Parcel B: the fields": "Freehold: Western Ground Rents · tenant: John Williams (1939 plan: fields only)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "The tenant farm was failing.",
+      "received_wording": [],
+      "what_we_now_know": "Frederick managed the fields, Parcel B.",
       "cast": [
+        "john",
         "frederick"
       ],
       "evidence": [
@@ -1235,11 +1290,11 @@
       "act": "II",
       "date": "1948-01-01",
       "when": "c. 1948 – 49",
-      "title": "Billy is born",
+      "title": "Birth of William Buckler",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Family account",
-      "narration": "William Buckler, Billy, is born at the farm. He will be the last of the family to live there, and the one they evict.",
+      "narration": "William (Billy) Buckler is born at the farm.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)",
@@ -1247,7 +1302,9 @@
         "Parcel B: the fields": "Freehold: Western Ground Rents · tenant: John Williams (1939 plan: fields only)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "Mary's son and heir, who defended the house in court and was evicted in 1988.",
       "cast": [
         "billy"
       ],
@@ -1269,11 +1326,11 @@
       "act": "III",
       "date": "1949-02-02",
       "when": "2 February 1949",
-      "title": "Nothing in writing",
+      "title": "The 1949 tenancy",
       "place": "Great House Farm",
       "parcel": "B",
       "basis": "Court record",
-      "narration": "February 1949. John Williams gives up his tenancy of the fields, and Frederick takes them on from Western Ground Rents. Nothing is written down: no lease, no plan. And now the first attempt to make Mary's occupation look permissive: the landlord begins to speak of Frederick's fields tenancy as a tenancy of \"the farm\", house and all, as if the house were his and she lived there by his tenancy. Mary rejects it. The house is hers, it was never in any tenancy of the fields, and she has the paper title in the blanket box to prove it. Note who blurs the two parcels here. Not the family. The landlord's own 1939 plan shows it knew exactly where the line was.",
+      "narration": "John Williams surrenders his tenancy. Frederick Buckler's yearly tenancy from Western Ground Rents begins on 2 February 1949. It is not put in writing.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)",
@@ -1284,14 +1341,15 @@
         "Synthetic Parcel A",
         "Parcel B: the fields"
       ],
-      "words": [
+      "received_account": "Frederick became the tenant of the farm, and the family lived in the farmhouse under his tenancy.",
+      "received_wording": [
         {
-          "said": "\"the farm\" (Frederick's tenancy)",
-          "meant": "Never written down. On the facts, the fields: Parcel B. Speaking of it as the farm, house and all, is the first attempt to make Mary look permitted."
+          "said": "\"the farm\"",
+          "note": "Used for Frederick's tenancy in every later account."
         }
       ],
+      "what_we_now_know": "An unwritten tenancy of the fields, Parcel B. Mary was not a party and rejected any suggestion that the house was in it; she then held the paper title to Parcel A. Describing it as a tenancy of \"the farm\" was the first attempt to make her occupation of her own house look permissive.",
       "cast": [
-        "mary",
         "john",
         "frederick",
         "wgr"
@@ -1328,7 +1386,7 @@
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Mary's statement",
-      "narration": "1950. An estate agent from Penarth places a lodger in the farmhouse. He stays two years. Before he goes, he tells Mary what he has done: he has taken the papers from the family's blanket box, 'including the agreement relating to the farm', and handed them to the agent. Mary will say she believed it was connected with the landlord's first move against the farm, which comes within three years. Think about what it means. The true Parcel A still exists, and its chain is still complete. But the paper that proves it has left the house a year after she produced it as her answer. From now on, every time Mary says 'the house is mine', she will be asked for documents she no longer has.",
+      "narration": "Mary Williams's statement records that a lodger placed by a Penarth estate agent stayed about two years and told her he had taken \"the papers which were in the blanket box including the agreement relating to the farm\" and given them to the agent.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses · their deeds taken from the blanket box (missing from now on; title buried, not extinguished)",
@@ -1338,7 +1396,14 @@
       "title_moves": [
         "Parcel A: the true title"
       ],
-      "words": [],
+      "received_account": "If the family ever had documents, they could not produce them.",
+      "received_wording": [
+        {
+          "said": "\"No such documents were, however, ever produced.\"",
+          "note": "Court of Appeal, 1987."
+        }
+      ],
+      "what_we_now_know": "The family's paper title to Parcel A left the house in 1950–52, a year after Mary relied on it and within three years of the landlord's first proceedings. Mary believed the two were connected. The title was not extinguished; its proof was removed.",
       "cast": [
         "mary"
       ],
@@ -1365,11 +1430,11 @@
       "act": "III",
       "date": "1952-10-10",
       "when": "1952 – 53",
-      "title": "The last rent on the fields",
+      "title": "Last rent on the fields",
       "place": "Landlords' agents",
       "parcel": "B",
       "basis": "Court record",
-      "narration": "In October 1952 the landlord's agents write that they will not go on with a letting to Frederick. He pays his last rent on the fields the next year. After that the family pay no one for anything.",
+      "narration": "On 10 October 1952 the landlord's agents write that they will not proceed with a letting to Frederick. He pays his last rent in 1953.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses · their deeds taken from the blanket box (missing from now on; title buried, not extinguished)",
@@ -1377,7 +1442,9 @@
         "Parcel B: the fields": "Freehold: Western Ground Rents · tenant: Frederick Buckler (unwritten, from 1949)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "The tenant stopped paying rent on the farm.",
+      "received_wording": [],
+      "what_we_now_know": "Rent stopped on the fields, Parcel B. No rent had been paid on Parcel A since 1928.",
       "cast": [
         "frederick"
       ],
@@ -1406,11 +1473,11 @@
       "act": "III",
       "date": "1955-02-02",
       "when": "2 February 1955",
-      "title": "The first order",
+      "title": "The 1955 possession order",
       "place": "High Court / Great House Farm",
       "parcel": "AB",
       "basis": "Court record",
-      "narration": "February 1955. Western Ground Rents sues Frederick, its tenant of the fields, and gets a High Court order for possession of \"the whole of the farm\". Now unpack it. The tenancy that ended was a tenancy of the fields. The landlord was the owner of the fields. An order giving a landlord back what it let can only reach Parcel B. \"The whole of the farm\" is the synthetic farm again: borrowed words that reach over the house without the landlord ever proving a right to it. Mary, who owns the house, is not a party and is never heard. On 4 July the order is enforced. The fields are taken. The family's account is that the woodland on the north side of Parcel A goes too, to a couple in Llandough, and later to a charity that has never touched it. The house is left: Mary, just home from hospital after losing a leg, stands her ground. Years later this order will be read as the day a twelve-year clock started running on her house. It wasn't. Whatever clock started in 1955 was a clock on the fields. The second attempt to make Mary's occupation look permissive is an insinuation, and it will later be mistaken for a fact.",
+      "narration": "On 2 February 1955 Western Ground Rents obtains a High Court order for possession against Frederick Buckler, described as \"the whole of the farm\". On 4 July 1955 possession is taken of everything except the farmhouse and garden. Mary Williams had recently returned from hospital.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)",
@@ -1422,16 +1489,18 @@
         "Synthetic Parcel A",
         "Parcel B: the fields"
       ],
-      "words": [
+      "received_account": "The landlord recovered the farm in 1955; the family stayed on in the house only through the landlord's forbearance, and from 1955 their occupation was adverse to the landlord.",
+      "received_wording": [
         {
           "said": "\"the whole of the farm\"",
-          "meant": "As a matter of law, only what the landlord let and owned: Parcel B. As enforced on 4 July 1955: the fields (and, on the family's account, the woodland). Not the house."
+          "note": "The order's description, quoted in 1987."
         },
         {
           "said": "adverse possession \"from 1955\"",
-          "meant": "The clock the 1987 court counted. It can only have been a clock on the fields; Parcel A was never Western Ground Rents's."
+          "note": "The clock the courts later counted on the house."
         }
       ],
+      "what_we_now_know": "An order against a tenant of the fields can only return what was let and owned: Parcel B. It was enforced on the fields. On the family's account the woodland on the north of Parcel A was taken too, passing to a couple in Llandough and later to the Forest of Cardiff. Mary was not a party and was never heard. Any clock that started in 1955 was a clock on Parcel B. That the order reached the house was an insinuation, later read as fact: the second attempt to make Mary's occupation look permissive.",
       "cast": [
         "mary",
         "frederick",
@@ -1461,11 +1530,11 @@
       "act": "III",
       "date": "1959-01-01",
       "when": "1959",
-      "title": "Mary says no",
+      "title": "1959 tenancy offer",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "The third attempt. In 1959 Western Ground Rents offers Mary a tenancy of \"the farmhouse and garden\", on their own. Notice the words. Not \"the farm\" this time. The landlord names the house parcel by itself: Parcel A, less the woodland to the north and the land to the south already being taken from around it. It knows exactly which piece is separate, and exactly which piece it has no deed to. Why else offer a tenancy of a house you say you own? If she signs, she becomes a tenant, and a tenant's occupation is permissive by definition. She refuses. The house is hers, she tells them, through her grandfather, and there are documents to prove it. The documents are in someone else's hands. The court will one day record that they were \"never produced\".",
+      "narration": "Western Ground Rents offers Mary a tenancy of the farmhouse and garden. She refuses, stating that the house is hers through her grandfather and that documents prove it.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)",
@@ -1475,12 +1544,14 @@
       "title_moves": [
         "Synthetic Parcel A"
       ],
-      "words": [
+      "received_account": "The landlord offered the occupier a tenancy, and she refused it.",
+      "received_wording": [
         {
           "said": "\"the farmhouse and garden\"",
-          "meant": "Parcel A (the farmhouse, yard and garden), less the woodland to the north and the land to the south already taken. The landlord now names the house parcel on its own."
+          "note": "The landlord's description of what it offered to let."
         }
       ],
+      "what_we_now_know": "\"The farmhouse and garden\" is Parcel A (farmhouse, buildings, yard and garden), less the woodland to the north and the land to the south already taken. The landlord named the house parcel on its own, which shows it knew it was separate. An owner does not need its occupier to accept a tenancy. Third attempt to make her occupation look permissive.",
       "cast": [
         "mary",
         "wgr"
@@ -1508,11 +1579,11 @@
       "act": "III",
       "date": "1962-12-11",
       "when": "11 December 1962",
-      "title": "The 1962 order",
+      "title": "The 1962 possession order",
       "place": "Cardiff County Court",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "The fourth attempt, and the one that will matter most. 11 December 1962: in Cardiff County Court, Judge Temple Morris QC orders Frederick and Mary out of \"the farmhouse and garden\", and to pay for every year back to 1955. Again the house parcel, named on its own. For the first time Mary is a party. But this is a possession order, not a ruling on title. It treats her as someone holding over on the old \"whole farm\" tenancy, a permitted occupier who has outstayed her welcome, when she was never in that tenancy at all. Western Ground Rents proves no deed to the house, because it has none. And then it does nothing. The order is never carried out. It goes into a drawer. Twenty-five years from now, it is what will save BP's case.",
+      "narration": "On 11 December 1962 Cardiff County Court (Judge Temple Morris QC) orders possession of the farmhouse and garden, with mesne profits from 1955, against Frederick and Mary, on Western Ground Rents' claim. The order is not enforced.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)",
@@ -1522,21 +1593,22 @@
       "title_moves": [
         "Synthetic Parcel A"
       ],
-      "words": [
+      "received_account": "The court confirmed the landlord's right to the house in 1962, and that order kept the landlord's title alive.",
+      "received_wording": [
         {
           "said": "\"the farmhouse and garden\"",
-          "meant": "Parcel A (the farmhouse, yard and garden), less the woodland to the north and the land to the south already taken, ordered back as if held over from a tenancy it was never in."
+          "note": "Again named on its own."
         },
         {
-          "said": "possession order",
-          "meant": "Who may occupy, not who owns. No deed to the house was proved."
+          "said": "\"mesne profits since 1955\"",
+          "note": "Money for occupation, as if the house had been the landlord's since 1955."
         }
       ],
+      "what_we_now_know": "A possession order, not a decision on title. It treated Mary as holding over from a tenancy she was never in. No deed to the house was proved, because Western Ground Rents had none. It was left unenforced, and in 1987 it was used to stop the clock. Fourth attempt.",
       "cast": [
         "mary",
         "frederick",
         "wgr",
-        "bp",
         "courts"
       ],
       "evidence": [
@@ -1564,11 +1636,11 @@
       "act": "III",
       "date": "1963-06-01",
       "when": "June 1963",
-      "title": "Committal",
+      "title": "Committal proceedings",
       "place": "Cardiff County Court",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "The landlord goes after Frederick for the money under the order, and committal proceedings follow. Possession is not taken. The money, not the house, is enforced. The threat of prison now hangs over the family for staying in their own home.",
+      "narration": "The mesne profits under the 1962 order are partly enforced against Frederick, and committal proceedings follow.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)",
@@ -1576,7 +1648,9 @@
         "Parcel B: the fields": "Freehold and possession: Western Ground Rents (fields taken 4 July 1955)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "A tenant in arrears was pursued for the money.",
+      "received_wording": [],
+      "what_we_now_know": "The money was enforced; possession of the house was not.",
       "cast": [
         "frederick"
       ],
@@ -1605,11 +1679,11 @@
       "act": "III",
       "date": "1965-03-02",
       "when": "January – March 1965",
-      "title": "Two pounds a week",
+      "title": "1965 tenancy offer",
       "place": "Landlords' agents",
       "parcel": "A",
       "basis": "Document",
-      "narration": "The fifth attempt. 2 March 1965: the agents offer 'Mrs Williams' a weekly tenancy of the farmhouse and garden at two pounds a week. The same trap as 1959: sign, and the owner becomes a tenant. Mary does not sign it, does not send it back, and does not pay. Even the landlord's own records now count her occupation as adverse: hers, not theirs. Step back and look at the pattern. An owner who holds the deed to a house does not need to fold it into someone else's tenancy, word an order against the wrong tenant, offer the occupier a tenancy, then another. An owner sues on its deed. Western Ground Rents never once did.",
+      "narration": "On 2 March 1965 the landlord's agents offer \"Mrs Williams\" a weekly tenancy of the farmhouse and garden at £2 a week. It is not signed or returned and no rent is paid.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)",
@@ -1619,16 +1693,15 @@
       "title_moves": [
         "Synthetic Parcel A"
       ],
-      "words": [
+      "received_account": "Another offer refused by an occupier with no title.",
+      "received_wording": [
         {
-          "said": "weekly tenancy to \"Mrs Williams\"",
-          "meant": "An offer that only makes sense if the offeror needed her to become a tenant. Not signed; her occupation treated as adverse from then."
+          "said": "\"Mrs Williams\"",
+          "note": "Offered as to a tenant."
         }
       ],
-      "cast": [
-        "mary",
-        "wgr"
-      ],
+      "what_we_now_know": "The same offer as 1959. The estate's own records treat her occupation as adverse from this date. Fifth attempt. An owner holding a deed would sue on it; Western Ground Rents never did.",
+      "cast": [],
       "evidence": [
         {
           "type": "Wiki page",
@@ -1652,11 +1725,11 @@
       "act": "III",
       "date": "1965-06-01",
       "when": "1964 – 68",
-      "title": "A rumoured sale",
+      "title": "Reported sale by the eldest son",
       "place": "Great House Farm",
       "parcel": "?",
       "basis": "Family account",
-      "narration": "Somewhere in these years, a cousin will later say, the eldest son sells \"our land parcel\" through a solicitor, behind his parents' backs. What he sold, and to whom, has never come to light. In 1968 he and his household leave the farm.",
+      "narration": "A cousin's account says the eldest son sold \"our land parcel\" through a solicitor without his parents' knowledge. No document has been found. In 1968 his household leaves the farm.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)",
@@ -1664,7 +1737,9 @@
         "Parcel B: the fields": "Freehold and possession: Western Ground Rents (fields taken 4 July 1955)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "What was sold, if anything, is unknown.",
       "cast": [
         "eldest"
       ],
@@ -1693,11 +1768,11 @@
       "act": "III",
       "date": "1967-01-01",
       "when": "1967",
-      "title": "Frederick dies",
+      "title": "Death of Frederick Buckler",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Family account",
-      "narration": "Frederick Buckler dies at fifty-six. With him goes the only tenant there ever was. Mary takes back her maiden name, Williams, and stays on in the house she was born in: an owner who has never been a tenant.",
+      "narration": "Frederick Buckler dies, aged 56. Mary takes back the name Williams and remains in the farmhouse.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)",
@@ -1707,7 +1782,14 @@
       "title_moves": [
         "Parcel B: the fields"
       ],
-      "words": [],
+      "received_account": "The tenant died; his widow stayed on.",
+      "received_wording": [
+        {
+          "said": "\"widow\"",
+          "note": "As though her right in the house came through him."
+        }
+      ],
+      "what_we_now_know": "The only tenant there had ever been, of the fields, died. Mary remained the owner in occupation of Parcel A.",
       "cast": [
         "mary",
         "frederick"
@@ -1730,11 +1812,11 @@
       "act": "IV",
       "date": "1969-12-31",
       "when": "31 December 1969",
-      "title": "The handover",
+      "title": "Conveyance to BP Pension Trust",
       "place": "Great House Farm",
       "parcel": "AB",
       "basis": "Land Registry record",
-      "narration": "31 December 1969. Western Ground Rents sells out to the BP Pension Trust, the pension fund of British Petroleum. The conveyance speaks of \"Great House Farm\", one estate: the synthetic farm passes one more time in a single phrase. Look at what can actually pass. Parcel B, the fields, passes with a proper chain: Bute, Western Ground Rents, BP. For the house, Western Ground Rents has no deed to hand over. What it has is a case: the 1962 order, the refused tenancies, the \"whole farm\" wording. That is what BP takes on for Parcel A: not the house, but the claim against it. This conveyance will later be recited as the root of BP's title. Today it is missing from the Land Registry's files.",
+      "narration": "On 31 December 1969 Western Ground Rents conveys its interest at Great House Farm to BP Pension Trust Ltd. The conveyance is not on the Land Registry files.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)",
@@ -1745,14 +1827,19 @@
         "Parcel B: the fields",
         "Synthetic Parcel A"
       ],
-      "words": [
+      "received_account": "BP bought Great House Farm. This deed is the root of BP's title.",
+      "received_wording": [
         {
           "said": "\"Great House Farm\"",
-          "meant": "The synthetic farm in one phrase. By deed: Parcel B. For Parcel A: only the 1962 order and the case against Mary. The deed itself is now missing."
+          "note": "One estate, in one phrase."
+        },
+        {
+          "said": "\"root of title\"",
+          "note": "How BP's later deeds recite it."
         }
       ],
+      "what_we_now_know": "By deed, Parcel B passed (Bute, Western Ground Rents, BP). For Parcel A there was no deed to pass; what passed was the 1962 order and the case against Mary. The root deed is now missing.",
       "cast": [
-        "bute",
         "wgr",
         "bp",
         "hmlr"
@@ -1775,11 +1862,11 @@
       "act": "IV",
       "date": "1972-07-25",
       "when": "1970 – 72",
-      "title": "Plans drawn around her",
+      "title": "Village green and planning permission",
       "place": "Planning office",
       "parcel": "AB",
       "basis": "Planning file",
-      "narration": "Around Mary, the plans are already being drawn. The council takes the land south of her farmhouse, part of Parcel A, and in 1970 it is registered as village green VG41; by the 1980s it is laid out as a green. In July 1972 planning permission is granted for houses on the site, with Mary still living in the middle of it. Piece by piece, Parcel A is being taken from around her. The development needs the house. The house needs a title.",
+      "narration": "On 16 June 1970 land beside Leckwith Road is registered as village green VG41. On 25 July 1972 planning permission is granted for housing on the site, while Mary lives in the farmhouse.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland taken 1955 · land south of the farmhouse taken by the council: village green VG41 (1970)",
@@ -1789,7 +1876,14 @@
       "title_moves": [
         "Parcel A: the true title"
       ],
-      "words": [],
+      "received_account": "Ordinary planning of an under-used farm.",
+      "received_wording": [
+        {
+          "said": "\"the site\"",
+          "note": "Both parcels treated as one development site."
+        }
+      ],
+      "what_we_now_know": "The land south of the farmhouse, part of Parcel A, was taken by the council and later laid out as a green. Permission was granted over a house whose ownership was disputed.",
       "cast": [
         "mary"
       ],
@@ -1818,11 +1912,11 @@
       "act": "IV",
       "date": "1974-01-01",
       "when": "1974",
-      "title": "Half a survey",
+      "title": "Royal Commission survey",
       "place": "Great House — interior",
       "parcel": "A",
       "basis": "Heritage record",
-      "narration": "The Royal Commission sends a surveyor to record the old house. He gets as far as the ground floor. The rest, he notes, cannot be examined 'because of problems of access created by an ownership dispute'. A public body writes it down in 1974: the ownership of this house is disputed.",
+      "narration": "H. J. Thomas surveys the ground floor for the Royal Commission. The house \"remained partially recorded because of problems of access created by an ownership dispute\".",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland taken 1955 · land south of the farmhouse taken by the council: village green VG41 (1970)",
@@ -1830,7 +1924,9 @@
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "A routine, incomplete survey.",
+      "received_wording": [],
+      "what_we_now_know": "A public body recorded in 1974 that the ownership of the house was disputed.",
       "cast": [
         "rcahmw"
       ],
@@ -1861,7 +1957,7 @@
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "On 15 April 1974 Mary, now sixty, opens her home to the public 'to show what the nation is losing'. Hundreds come, and a thousand sign a petition. She tells the Daily Telegraph that ownership of the house has been disputed for twenty-five years, that she will refuse to move, and that her solicitors say she has a valid claim. It is in a national newspaper: she claims to own the house.",
+      "narration": "On 15 April 1974 Mary opens the farmhouse to the public. The Daily Telegraph reports her saying ownership has been disputed for 25 years and her solicitors tell her she has a valid claim.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold: the Williamses (Mary in the house) · woodland taken 1955 · land south of the farmhouse taken by the council: village green VG41 (1970)",
@@ -1869,7 +1965,14 @@
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "A campaign to save an old building.",
+      "received_wording": [
+        {
+          "said": "\"valid claim\"",
+          "note": "Reported as a claim, not a title."
+        }
+      ],
+      "what_we_now_know": "A public statement of ownership of Parcel A, in a national newspaper, ten years before BP's writ.",
       "cast": [
         "mary"
       ],
@@ -1897,11 +2000,11 @@
       "act": "IV",
       "date": "1974-07-03",
       "when": "3 July 1974",
-      "title": "Mary pleads ownership",
+      "title": "1974 possession action",
       "place": "County court",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "BP Pension Trust brings a new county court action for possession of the house. On 3 July 1974 Mary does what nobody has yet let her do: in court, in her defence, she pleads that the house is hers, and the Limitation Act besides. Her statement tells the history in her own words: the farmhouse, buildings and about ten acres sold by Bute to Daniel Thomas; about nine acres on the top kept by Bute. The two parcels, from the woman who lived on one of them. Now the question of title is finally before a judge. The hearing is part heard and adjourned, and BP never brings it back. Her claim to own the house is never decided, then or ever. It is never extinguished. And no lawyer of hers ever builds the case her statement contains.",
+      "narration": "BP Pension Trust brings a county court action for possession. On 3 July 1974 Mary pleads ownership and the Limitation Act 1939. Her statement describes the 1877 sale. The case is part heard and adjourned, and not relisted.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
@@ -1911,16 +2014,16 @@
       "title_moves": [
         "Parcel A: the true title"
       ],
-      "words": [
+      "received_account": "An action that went nowhere.",
+      "received_wording": [
         {
-          "said": "ownership and the Limitation Act",
-          "meant": "Mary's plea of title to Parcel A, in court. Adjourned and never decided, so never extinguished."
+          "said": "\"part-heard\"",
+          "note": "Treated afterwards as if nothing had been decided because nothing needed deciding."
         }
       ],
+      "what_we_now_know": "The only time Mary's title to Parcel A was put before a court. It was never decided, and so never extinguished. Her statement set out the two parcels; no lawyer of hers ever built a case on it.",
       "cast": [
         "mary",
-        "thomas",
-        "bute",
         "bp",
         "courts"
       ],
@@ -1947,11 +2050,11 @@
       "act": "IV",
       "date": "1974-10-31",
       "when": "September – October 1974",
-      "title": "The licence letters",
+      "title": "The 1974 letters",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "The sixth attempt, and the one that works. Instead of fighting the title case it started, BP reaches back for the old 1962 order. On 19 September it gets leave to enforce it; Mary is given no notice. Then, on 31 October, BP withdraws the warrant and writes to her instead, 'licensing' her to stay in the farmhouse rent-free for the rest of her life. Why would an owner need a licence? She doesn't, and she never accepts it. But a licence does not need to be accepted to be useful. On paper, from today, BP can say she lives there with its permission. A tenancy refused, a tenancy refused, an order never enforced, and now a licence nobody asked for: sequence, stealth, force and licence. It is how you build permission when you have no deed. BP keeps the letters.",
+      "narration": "On 19 September 1974 BP is given leave to enforce the 1962 order; Mary was not given notice. On 31 October the warrant is withdrawn and BP writes to Mary allowing her to remain in the farmhouse rent-free for life. She does not accept.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
@@ -1961,12 +2064,18 @@
       "title_moves": [
         "Synthetic Parcel A"
       ],
-      "words": [
+      "received_account": "BP kindly let an elderly, ill woman live in the house rent-free for the rest of her life.",
+      "received_wording": [
         {
           "said": "\"licence\"",
-          "meant": "Permission offered to an owner who never asked for it and never accepted it. The sixth attempt, and the one the courts relied on."
+          "note": "BP's letters, as the courts later described them."
+        },
+        {
+          "said": "\"because of her ill health\"",
+          "note": "BP's explanation to the press in 1988."
         }
       ],
+      "what_we_now_know": "Permission offered to an owner who never asked for it, and never accepted it, at the moment her plea of ownership was before the court. Sixth attempt to make her occupation look permissive, and the one the courts relied on.",
       "cast": [
         "mary",
         "bp"
@@ -2002,11 +2111,11 @@
       "act": "IV",
       "date": "1974-11-19",
       "when": "19 November, 1970s (year unclear)",
-      "title": "\"Grievous loss\"",
+      "title": "Letter to the Western Mail",
       "place": "Western Mail — letters",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "A letter to the Western Mail warns that pulling down Great House would wipe out the site of St Dochdwy's Celtic monastery, and traces the land back through Tewkesbury Abbey, the Crown, the Herberts and Bute. The true chain of title is printed in a newspaper. Nobody follows it.",
+      "narration": "A letter to the Western Mail, dated 19 November (year unclear), warns that demolition would erase the site of St Dochdwy's monastery and traces the land's descent.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
@@ -2014,10 +2123,10 @@
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
       "title_moves": [],
-      "words": [],
-      "cast": [
-        "bute"
-      ],
+      "received_account": "A local antiquarian's objection.",
+      "received_wording": [],
+      "what_we_now_know": "The chain of title and the site's importance were in print before the demolition.",
+      "cast": [],
       "evidence": [
         {
           "type": "Newspaper",
@@ -2042,11 +2151,11 @@
       "act": "IV",
       "date": "1975-05-23",
       "when": "23 May 1975",
-      "title": "A deed for the mimic",
+      "title": "The 1975 conveyance",
       "place": "BP Pension Trust / BP Properties",
       "parcel": "A",
       "basis": "Land Registry record",
-      "narration": "Now the paper. 23 May 1975: the BP Pension Trust conveys \"the farmhouse and garden\" to its sister company, BP Properties, with a plan. The Court of Appeal will later call it \"the actual conveyance of the farmhouse and garden\". Stop there. One BP company conveys Mary's house to another while she lives in it and claims it in court. The seller has no deed to the house from Bute, from the Thomases, or from anyone. And this is the plainest proof that BP knew the house was a separate piece of land: it needed a separate deed for it. After today the synthetic Parcel A has something it never had before, a conveyance of its own.",
+      "narration": "On 23 May 1975 BP Pension Trust conveys property at Great House Farm, with a plan, to BP Properties Ltd. The Court of Appeal later calls it \"the actual conveyance of the farmhouse and garden\".",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
@@ -2056,16 +2165,15 @@
       "title_moves": [
         "Synthetic Parcel A"
       ],
-      "words": [
+      "received_account": "An internal transfer within the BP group.",
+      "received_wording": [
         {
           "said": "\"the actual conveyance of the farmhouse and garden\"",
-          "meant": "Parcel A, conveyed from one BP company to another, with no earlier deed to it behind it. Proof BP treated the house as a separate piece of land."
+          "note": "Court of Appeal, 1987."
         }
       ],
+      "what_we_now_know": "A conveyance of Parcel A between two BP companies, while Mary lived in it and claimed it, with no earlier deed to Parcel A behind it. It shows BP treated the house as a separate parcel. From here the synthetic Parcel A has a deed.",
       "cast": [
-        "mary",
-        "thomas",
-        "bute",
         "bp",
         "courts"
       ],
@@ -2087,11 +2195,11 @@
       "act": "IV",
       "date": "1980-05-22",
       "when": "22 May 1980",
-      "title": "\"The most rapacious ground landlord\"",
+      "title": "Hansard",
       "place": "House of Commons",
       "parcel": "",
       "basis": "Parliament",
-      "narration": "In May 1980 Ted Rowlands MP tells the House of Commons that Western Ground Rents, 'the most rapacious ground landlord' in South Wales, has been bought by the BP pension fund. The company that built the case against the house in the 1950s and 60s, and the company that inherited it, are now one family.",
+      "narration": "On 22 May 1980 Ted Rowlands MP tells the House of Commons that Western Ground Rents, \"the most rapacious ground landlord\" in South Wales, has been bought by the BP pension fund.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
@@ -2099,7 +2207,9 @@
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "Western Ground Rents, which brought the 1955 and 1962 actions, and BP, which relied on them, were by 1980 the same group.",
       "cast": [
         "wgr",
         "bp",
@@ -2124,11 +2234,11 @@
       "act": "IV",
       "date": "1982-10-01",
       "when": "1 October 1982",
-      "title": "A warning about the ground",
+      "title": "GGAT advice",
       "place": "GGAT",
       "parcel": "AB",
       "basis": "Planning file",
-      "narration": "In October 1982 GGAT, the regional archaeological trust, warns the planners that the ancient settlement may run north of the church, under the farm, and asks for thorough investigation before anything is built.",
+      "narration": "On 1 October 1982 GGAT advises the planners that occupation may continue north of the church and asks for investigation before development.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
@@ -2136,7 +2246,9 @@
         "Parcel B: the fields": "Freehold: BP Pension Trust (Bute → WGR → BP, by deed)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "Routine archaeological advice.",
+      "received_wording": [],
+      "what_we_now_know": "The warning that came true in 1994.",
       "cast": [
         "ggat"
       ],
@@ -2179,11 +2291,11 @@
       "act": "IV",
       "date": "1982-11-19",
       "when": "19 – 30 November 1982",
-      "title": "First registration: the fields",
+      "title": "First registration",
       "place": "HM Land Registry",
       "parcel": "AB",
       "basis": "Land Registry record",
-      "narration": "November 1982: BP's solicitors apply to register the land at HM Land Registry for the first time, as one main title. Once land is registered, the register is the title. Mary is seventy and living in the farmhouse. Nothing on the file shows anyone asking her what she claims.",
+      "narration": "On 30 November 1982 Linklaters & Paines apply to register BP Properties as owner of the land, title WA231076. Mary is living in the farmhouse.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
@@ -2193,16 +2305,17 @@
       "title_moves": [
         "Parcel B: the fields"
       ],
-      "words": [
+      "received_account": "BP registered the land it owned.",
+      "received_wording": [
         {
-          "said": "first registration",
-          "meant": "BP's main title. On paper Parcel B (the fields)."
+          "said": "\"registered proprietor\"",
+          "note": "The status the courts later relied on."
         }
       ],
+      "what_we_now_know": "Nothing on the file shows the occupier being asked what she claimed.",
       "cast": [
         "mary",
-        "bp",
-        "hmlr"
+        "bp"
       ],
       "evidence": [
         {
@@ -2227,11 +2340,11 @@
       "act": "IV",
       "date": "1983-02-23",
       "when": "23 February 1983",
-      "title": "First registration: the mimic",
+      "title": "Farmhouse title",
       "place": "HM Land Registry",
       "parcel": "A",
       "basis": "Land Registry record",
-      "narration": "February 1983: a second application, for \"the farmhouse and garden\" as a separate title, resting on the 1975 conveyance between the two BP companies. The solicitors certify that they know of \"no question or doubt\" affecting the title. The woman who pleaded ownership in court nine years ago is living in the house. Now the Land Registry holds, in its own files, the fields under one number and the house under another. It knows they are two. And the synthetic Parcel A is no longer just a conveyance. It is a registered title, issued by the state.",
+      "narration": "On 23 February 1983 BP's solicitors apply to register the farmhouse and garden as a separate title, WA240304, on the 1975 conveyance, certifying they know of no question or doubt affecting the title.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)",
@@ -2241,19 +2354,16 @@
       "title_moves": [
         "Synthetic Parcel A"
       ],
-      "words": [
-        {
-          "said": "\"the farmhouse and garden\" as a separate title",
-          "meant": "The synthetic Parcel A, registered on the 1975 BP-to-BP conveyance."
-        },
+      "received_account": "A routine second registration.",
+      "received_wording": [
         {
           "said": "\"no question or doubt\"",
-          "meant": "Certified while the owner who had pleaded ownership in 1974 lived in the house."
+          "note": "The solicitors' certificate."
         }
       ],
+      "what_we_now_know": "The synthetic Parcel A became a registered title. The certificate was given while the owner who had pleaded ownership in 1974 lived in the house. The Land Registry now held the fields and the house as two titles: it knew they were two.",
       "cast": [
-        "bp",
-        "hmlr"
+        "bp"
       ],
       "evidence": [
         {
@@ -2278,11 +2388,11 @@
       "act": "IV",
       "date": "1983-03-26",
       "when": "26 March 1983",
-      "title": "Mary dies",
+      "title": "Death of Mary Williams",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Family account",
-      "narration": "On 26 March 1983, a month later, Mary Williams dies in the farmhouse where she was born. She dies an owner who never signed a tenancy and never accepted a licence, with her claim never decided. Her son Billy inherits it, and the house, and the fight.",
+      "narration": "Mary Williams dies in the farmhouse on 26 March 1983. Her son William inherits her estate.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim passes to Billy Buckler, in occupation · never decided, never extinguished",
@@ -2292,10 +2402,16 @@
       "title_moves": [
         "Parcel A: the true title"
       ],
-      "words": [],
+      "received_account": "The licensee died and the licence ended.",
+      "received_wording": [
+        {
+          "said": "\"licensee\"",
+          "note": "How BP would describe her."
+        }
+      ],
+      "what_we_now_know": "She died the owner of Parcel A, never having accepted a tenancy or licence, her claim never decided.",
       "cast": [
-        "mary",
-        "billy"
+        "mary"
       ],
       "evidence": [
         {
@@ -2320,11 +2436,11 @@
       "act": "IV",
       "date": "1983-04-08",
       "when": "8 April – 12 May 1983",
-      "title": "Letters after her death",
+      "title": "Registration correspondence",
       "place": "HM Land Registry",
       "parcel": "A",
       "basis": "Land Registry record",
-      "narration": "Two weeks after Mary's death, BP's solicitors and the Land Registry are writing to each other about the farmhouse file, including an 'inside examination' form. What the Registry asked about the family living in the house, and what it was told, is in those letters.",
+      "narration": "On 8 and 12 April and 12 May 1983 Linklaters and the Land Registry exchange letters on the farmhouse file, including form D23.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim passes to Billy Buckler, in occupation · never decided, never extinguished",
@@ -2332,10 +2448,10 @@
         "Parcel B: the fields": "Registered: BP Properties, main title WA231076 (applied 30 November 1982)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "Routine registration correspondence.",
+      "received_wording": [],
+      "what_we_now_know": "What the Registry asked about the occupiers, and what it was told, is in these letters. The family have asked for them.",
       "cast": [
-        "mary",
-        "bp",
         "hmlr"
       ],
       "evidence": [
@@ -2356,11 +2472,11 @@
       "act": "V",
       "date": "1984-05-22",
       "when": "1984",
-      "title": "BP's writ",
+      "title": "The writ",
       "place": "BP Properties",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "May 1984. BP Properties serves Billy with a writ for possession of \"Great House Farm and adjoining land\". The synthetic farm again: the house wrapped back inside \"the farm\", a year after BP registered it as a separate title. BP does not ask the court to declare that it owns the house. It asks only for possession. And Billy's side answers on BP's terms: adverse possession, twelve years counted from 1955. Think about what that concedes. Adverse to whom? To the owners of \"the farm\". But their only real title was to the fields. The family end up claiming adverse possession of a mythical estate, with the clock started by an order about Parcel B, when their own title to Parcel A was complete by 1928 and secured by possession by 1940. Mary's own case, the 1877 split, is never run. That same year, the family learn, the library's copy of the 1877 deed goes missing.",
+      "narration": "On 22 May 1984 BP Properties issues a writ for possession of Great House Farm and adjoining land against William Buckler. The defence relies on adverse possession from 1955.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim passes to Billy Buckler, in occupation · never decided, never extinguished",
@@ -2368,18 +2484,19 @@
         "Parcel B: the fields": "Registered: BP Properties, main title WA231076 (applied 30 November 1982)"
       },
       "title_moves": [],
-      "words": [
+      "received_account": "BP, the owner, sued to recover its land from a squatter.",
+      "received_wording": [
         {
           "said": "\"Great House Farm and adjoining land\"",
-          "meant": "The house wrapped back into the synthetic farm, a year after BP registered it separately."
+          "note": "The writ's description."
         },
         {
-          "said": "adverse possession from 1955",
-          "meant": "The family's defence, fought on the other side's map: possession adverse to owners of \"the farm\", whose real title was only to Parcel B."
+          "said": "\"adverse possession\"",
+          "note": "The only defence argued."
         }
       ],
+      "what_we_now_know": "The house was wrapped back into \"the farm\" a year after BP registered it separately. BP asked for possession, not a declaration of ownership. The defence fought on BP's map: adverse possession of a synthetic farm whose real owner's title was to Parcel B only, with the clock counted from 1955, when the family's title to Parcel A dated from 1928 and by possession from 1940. In the same year the library copy of the 1877 deed was reported missing.",
       "cast": [
-        "mary",
         "billy",
         "bp"
       ],
@@ -2413,11 +2530,11 @@
       "act": "V",
       "date": "1986-07-10",
       "when": "10 July 1986",
-      "title": "Judgment for BP",
+      "title": "High Court judgment",
       "place": "High Court, Cardiff",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "10 July 1986, the High Court at Cardiff. Mr Justice Hollis finds for BP: the 1974 letters gave Mary a licence, so her possession was never adverse. The sixth attempt has done its work. Both sides have argued about the synthetic farm. Nobody has argued about Parcel A. The deed of 1877, the receipt of 1928, the 1939 plan that left the house out: none of it is before the judge. The question of who owns the house is never put.",
+      "narration": "On 10 July 1986 Mr Justice Hollis gives judgment for BP, holding that the 1974 letters gave Mary a licence.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim passes to Billy Buckler, in occupation · never decided, never extinguished",
@@ -2425,7 +2542,14 @@
         "Parcel B: the fields": "Registered: BP Properties, main title WA231076 (applied 30 November 1982)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "The court found that BP owned the house and the family were there by BP's permission.",
+      "received_wording": [
+        {
+          "said": "\"licence\"",
+          "note": "The finding."
+        }
+      ],
+      "what_we_now_know": "The court decided possession. The question of who owned Parcel A was not put to it, and the 1877, 1928 and 1939 documents were not before it.",
       "cast": [
         "mary",
         "bp",
@@ -2454,11 +2578,11 @@
       "act": "V",
       "date": "1986-07-11",
       "when": "1986 – 87",
-      "title": "A file goes missing",
+      "title": "Royal Commission correspondence",
       "place": "Royal Commission (RCAHMW)",
       "parcel": "A",
       "basis": "Official correspondence",
-      "narration": "While the case goes on, the Royal Commission's correspondence with Mrs Buckler goes missing from its files: letters in which she may have told an independent public body, in her own words, why the house was hers.",
+      "narration": "During the trial and appeal, the Royal Commission's correspondence with Mrs Buckler goes missing.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim passes to Billy Buckler, in occupation · never decided, never extinguished",
@@ -2466,7 +2590,9 @@
         "Parcel B: the fields": "Registered: BP Properties, main title WA231076 (applied 30 November 1982)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "A record of Mary's own account to a public body was lost while the case was live.",
       "cast": [
         "rcahmw"
       ],
@@ -2488,11 +2614,11 @@
       "act": "V",
       "date": "1987-02-02",
       "when": "2 February 1987",
-      "title": "The merger",
+      "title": "Amalgamation of titles",
       "place": "HM Land Registry",
       "parcel": "AB",
       "basis": "Land Registry record",
-      "narration": "2 February 1987, with Billy's appeal still waiting to be heard: an application to fold the farmhouse title into the main title for the fields. Here is the proof that they knew. You cannot merge two titles unless there are two. Since 1983 BP and the Land Registry have held the house and the fields as separate titles, while the case was argued in court as if they had always been one farm. The merger makes the fiction true on paper, in the middle of the appeal. From now on there is no separate record of the house to examine, no line on the register where its missing root could be noticed. The synthetic Parcel A disappears into Parcel B. The true Parcel A is still there, underneath. It has never been extinguished. It has been buried.",
+      "narration": "On 2 February 1987, with the appeal pending, an application is made to amalgamate WA240304 (farmhouse and garden) into WA231076.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim passes to Billy Buckler, in occupation · never decided, never extinguished",
@@ -2501,17 +2627,15 @@
       "title_moves": [
         "Merged title: \"Parcel A & B\""
       ],
-      "words": [
+      "received_account": "An administrative tidying of the register.",
+      "received_wording": [
         {
-          "said": "amalgamation",
-          "meant": "Two titles joined into one: the synthetic Parcel A folded into Parcel B. Proof that both BP and the Registry knew they were two."
+          "said": "\"amalgamation\"",
+          "note": "The register's term."
         }
       ],
-      "cast": [
-        "billy",
-        "bp",
-        "hmlr"
-      ],
+      "what_we_now_know": "Two titles cannot be merged unless there are two. BP and the Land Registry held the house and the fields separately from 1983 while the case was argued as one farm. The merger folded the synthetic Parcel A into Parcel B during the appeal.",
+      "cast": [],
       "evidence": [
         {
           "type": "Land Registry record",
@@ -2535,11 +2659,11 @@
       "act": "V",
       "date": "1987-07-31",
       "when": "31 July 1987",
-      "title": "The Court of Appeal",
+      "title": "Court of Appeal",
       "place": "Court of Appeal, London",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "31 July 1987, the Court of Appeal. Here is the twist. The judges find that Frederick and Mary were in adverse possession of the house from 1955. The clock was running against the landlord. So why does BP win? Because of two of the attempts. The 1962 order, never enforced, was brought within twelve years and so stopped the clock. And the 1974 letters made Mary's possession permissive, the court holds, whether she accepted them or not. Now look at what is in front of the judges. A conveyance they themselves call \"the actual conveyance of the farmhouse and garden\": a separate deed for the house. Yet the case is decided as one farm, with the clock started in 1955 by an order about the fields. Count from 1928, as the house's own history requires, and the twelve years were up in 1940, fifteen years before any order. Mary's title documents, the judgment notes, were \"never produced\". Nobody asks where they went. BP is recorded as having \"the paper title to the farm\": paper to the fields, and for the house only a deed between two BP companies. BP Properties Ltd v Buckler goes into the law books as a leading case on adverse possession. It decided possession. It never decided ownership.",
+      "narration": "On 31 July 1987 the Court of Appeal (Dillon LJ, Mustill LJ, Sir Edward Eveleigh) dismisses the appeal in BP Properties Ltd v Buckler. It finds adverse possession from 1955, but holds that the 1962 action stopped time and the 1974 letters made the possession permissive.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · never adjudicated, never extinguished (judgment decides possession only)",
@@ -2549,23 +2673,23 @@
         "Parcel A: the true title",
         "Merged title: \"Parcel A & B\""
       ],
-      "words": [
+      "received_account": "The courts finally settled that BP owned Great House Farm.",
+      "received_wording": [
         {
           "said": "\"the paper title to the farm\"",
-          "meant": "Paper to Parcel B; for Parcel A, only a deed between two BP companies."
+          "note": "The court's description of BP's position."
         },
         {
-          "said": "\"never produced\"",
-          "meant": "Mary's title documents, taken from the blanket box in 1950–52."
+          "said": "\"No such documents were, however, ever produced.\"",
+          "note": "On Mary's title documents."
         },
         {
-          "said": "adverse possession from 1955, stopped by the 1962 order and the 1974 licence",
-          "meant": "The clock was counted on the synthetic farm. On Parcel A it had run out in 1940."
+          "said": "\"since November 1982 they have been the registered proprietors\"",
+          "note": "The court's recital."
         }
       ],
+      "what_we_now_know": "The court decided possession, not ownership. It counted the clock from 1955, from an order about Parcel B; counted from 1928, it ran out in 1940. BP's paper title was to Parcel B; for Parcel A it had only the 1975 BP-to-BP conveyance, which the court itself called the conveyance of the farmhouse and garden. Mary's documents were not produced because they were taken in 1950–52.",
       "cast": [
-        "mary",
-        "frederick",
         "bp",
         "courts"
       ],
@@ -2592,18 +2716,20 @@
       "act": "V",
       "date": "1988-03-03",
       "when": "3 March 1988",
-      "title": "Twenty-eight days",
+      "title": "House of Lords",
       "place": "House of Lords",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "On 3 March 1988 the House of Lords refuses leave to appeal. The family are given twenty-eight days to leave a house the Williamses have lived in for three hundred years, on an order that never said whose house it was.",
+      "narration": "On 3 March 1988 the House of Lords refuses leave to appeal. The family are given 28 days to leave.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · never adjudicated, never extinguished (judgment decides possession only)",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · right to possession upheld (1962 order + 1974 licence)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "The end of the legal road.",
+      "received_wording": [],
+      "what_we_now_know": "The end of the possession case. Ownership of Parcel A had still never been decided.",
       "cast": [
         "courts"
       ],
@@ -2625,18 +2751,20 @@
       "act": "VI",
       "date": "1988-04-29",
       "when": "29 April 1988, morning",
-      "title": "The bailiffs come",
+      "title": "First eviction attempt",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "29 April 1988. Five bailiffs and fifteen police officers come up the lane. Billy blocks the narrow drive with a tractor, locks the doors and bars the windows.",
+      "narration": "On 29 April 1988 five bailiffs and about fifteen police arrive. William Buckler blocks the drive with a tractor and secures the house.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · never adjudicated, never extinguished (judgment decides possession only)",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · right to possession upheld (1962 order + 1974 licence)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "An occupier resisting a lawful order.",
+      "received_wording": [],
+      "what_we_now_know": "Possession was being enforced over a house whose ownership no court had decided.",
       "cast": [
         "billy"
       ],
@@ -2670,18 +2798,28 @@
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "The bailiffs smash the gate and take poleaxes to the doors. When an axe comes through a door with his three small children behind it, Billy starts a chainsaw and pushes it through. The bailiffs fall back. After four hours they leave. Branwen takes the children away. BP tells the press it let Mary stay out of kindness. Billy tells them the farm is theirs. Both are talking about the 1974 letters. Only one of them knows what they were for.",
+      "narration": "The bailiffs break the gate and doors. William Buckler pushes a running chainsaw through a door. After four hours the bailiffs withdraw. BP tells the press Mary had been allowed to stay rent-free because of ill health.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · never adjudicated, never extinguished (judgment decides possession only)",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · right to possession upheld (1962 order + 1974 licence)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "The \"chainsaw farmer\": a violent squatter.",
+      "received_wording": [
+        {
+          "said": "\"chainsaw farmer\"",
+          "note": "The headline."
+        },
+        {
+          "said": "\"because of her ill health\"",
+          "note": "BP's account of 1974."
+        }
+      ],
+      "what_we_now_know": "A man defending his home, with his children behind the door, on land his family owned.",
       "cast": [
         "mary",
         "billy",
-        "branwen",
         "bp"
       ],
       "evidence": [
@@ -2711,18 +2849,20 @@
       "act": "VI",
       "date": "1988-05-12",
       "when": "May 1988",
-      "title": "\"Someone will be killed\"",
+      "title": "Strasbourg and the MP",
       "place": "Alun Michael MP's office",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "Billy takes his case to the European Commission of Human Rights in Strasbourg. On 12 May the Cardiff MP Alun Michael asks the Lord Chancellor to look at it again. Billy warns that someone is going to be killed.",
+      "narration": "On 3 May 1988 William Buckler applies to the European Commission of Human Rights. On 12 May Alun Michael MP asks the Lord Chancellor to review the case.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · never adjudicated, never extinguished (judgment decides possession only)",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · right to possession upheld (1962 order + 1974 licence)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "Both were pending when the house was demolished.",
       "cast": [
         "billy",
         "mps"
@@ -2753,18 +2893,20 @@
       "act": "VI",
       "date": "1988-07-29",
       "when": "29 July 1988",
-      "title": "Cadw comes to look",
+      "title": "Cadw inspection",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Photograph",
-      "narration": "On 29 July Cadw, the Welsh heritage body, comes to look at the house for listing, and photographs the farmhouse and the barn. Listing would protect the building, whoever owned it. Those two photographs are all that is left of the visit. No notes, no file, no record of who decided.",
+      "narration": "On 29 July 1988 Cadw inspects and photographs the farmhouse and barn while considering them for listing.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · never adjudicated, never extinguished (judgment decides possession only)",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · right to possession upheld (1962 order + 1974 licence)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "Cadw looked at the house and found it not good enough to list.",
+      "received_wording": [],
+      "what_we_now_know": "Two photographs survive. There is no file, no notes and no record of who decided.",
       "cast": [
         "cadw"
       ],
@@ -2798,11 +2940,11 @@
       "act": "VI",
       "date": "1988-11-30",
       "when": "29 – 30 November 1988",
-      "title": "Forced entry",
+      "title": "Eviction",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "29 November. The bailiffs come back, and this time they force their way in. Within hours, the family say, the demolition has begun: half the roof is already off an outbuilding. Billy is taken to Llandough Hospital. Eight other people living at the farm lose their homes with the family. For the first time in three hundred years, there is no Williams in the house.",
+      "narration": "On 29–30 November 1988 bailiffs enter the farmhouse. William Buckler is taken to Llandough Hospital. Eight other residents are made homeless.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler, evicted 29 November 1988 · never adjudicated, never extinguished",
@@ -2812,7 +2954,14 @@
         "Parcel A: the true title",
         "Merged title: \"Parcel A & B\""
       ],
-      "words": [],
+      "received_account": "The lawful owner recovered possession.",
+      "received_wording": [
+        {
+          "said": "\"possession\"",
+          "note": "What BP was given."
+        }
+      ],
+      "what_we_now_know": "BP took possession of Parcel A, which it had never been shown to own.",
       "cast": [
         "billy"
       ],
@@ -2850,22 +2999,22 @@
       "act": "VI",
       "date": "1988-12-01",
       "when": "1 December 1988",
-      "title": "Everything in the road",
+      "title": "Belongings",
       "place": "Llandough Hospital",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "Billy lies injured in hospital. Branwen and the children have nowhere to go. Mary's whole life, her photographs, the family heirlooms, the legal papers, is left in the house or thrown into the road. Billy has the clothes he stands in.",
+      "narration": "The family's belongings, including Mary's papers and photographs, are left in the house or put in the road.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler, evicted 29 November 1988 · never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "The family's remaining papers were lost with the house.",
       "cast": [
-        "mary",
-        "billy",
-        "branwen"
+        "mary"
       ],
       "evidence": [
         {
@@ -2892,20 +3041,21 @@
       "act": "VI",
       "date": "1988-12-02",
       "when": "2 December 1988",
-      "title": "Do not touch the house",
+      "title": "Injunction",
       "place": "High Court",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "On 2 December a High Court judge orders that the farmhouse and everything in it must not be touched. Branwen may go in for her belongings, if BP's solicitors agree. BP says it means to demolish and build new homes on the ten acres.",
+      "narration": "On 2 December 1988 a High Court judge orders that the farmhouse and its contents must not be touched. BP states it plans to demolish and build homes.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler, evicted 29 November 1988 · never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "The injunction lasted three days.",
       "cast": [
-        "branwen",
         "bp",
         "courts"
       ],
@@ -2936,18 +3086,20 @@
       "act": "VI",
       "date": "1988-12-03",
       "when": "3 December 1988",
-      "title": "From hospital bed to the dock",
+      "title": "Charges",
       "place": "Llandough Hospital / magistrates",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "Police take Billy from his hospital bed and charge him with assaulting two bailiffs, criminal damage, and furious driving.",
+      "narration": "William Buckler is taken from hospital and charged with assaulting two bailiffs, criminal damage, and wanton or furious driving.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler, evicted 29 November 1988 · never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "The violent squatter was charged.",
+      "received_wording": [],
+      "what_we_now_know": "The owner's son was prosecuted for resisting the enforcement of a possession order.",
       "cast": [
         "billy"
       ],
@@ -2978,18 +3130,20 @@
       "act": "VI",
       "date": "1988-12-03",
       "when": "3 – 5 December 1988",
-      "title": "One weekend",
+      "title": "Spot-listing",
       "place": "Cadw",
       "parcel": "A",
       "basis": "Official correspondence",
-      "narration": "Over one weekend, without setting foot inside, Cadw considers emergency listing. In public it says it is looking at the house. In July it had already marked it just below the bar.",
+      "narration": "Over the weekend of 3–5 December 1988 Cadw considers spot-listing without access to the interior.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler, evicted 29 November 1988 · never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "Cadw gave the house fair consideration.",
+      "received_wording": [],
+      "what_we_now_know": "Cadw had already coded the house just below the bar in July.",
       "cast": [
         "cadw"
       ],
@@ -3016,18 +3170,25 @@
       "act": "VI",
       "date": "1988-12-05",
       "when": "Monday 5 December 1988",
-      "title": "Nothing more we can do",
+      "title": "Final hearing; listing refused",
       "place": "Cardiff",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "Monday 5 December. Judge Norman Francis refuses to keep the injunction in place until Strasbourg can hear the family. Their solicitor says there is nothing more they can do. The same day Cadw announces that the house is not of sufficient merit to list. Nothing now protects it.",
+      "narration": "On 5 December 1988 Judge Norman Francis refuses to continue the injunction pending the European Commission. The same day Cadw states the house is not of sufficient merit to list.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler, evicted 29 November 1988 · never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "The house was not worth listing, and the courts had ruled.",
+      "received_wording": [
+        {
+          "said": "\"not of sufficient architectural merit\"",
+          "note": "Cadw, 5 December 1988."
+        }
+      ],
+      "what_we_now_know": "Both protections ended on the same day.",
       "cast": [
         "cadw",
         "courts"
@@ -3053,11 +3214,11 @@
       "act": "VI",
       "date": "1988-12-06",
       "when": "6 December 1988, 4am",
-      "title": "Bulldozed before breakfast",
+      "title": "Demolition",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "6 December 1988. Just after four in the morning, a twenty-strong team arrives with bulldozers. By breakfast no building is left standing. Branwen and the children watch their home go. The old court house of the manor, the soldier under the floor, the evidence of what the house was: gone before the day has begun. You can demolish a house. You cannot demolish a title. The true Parcel A is still there, under the rubble, undecided.",
+      "narration": "From about 4am on 6 December 1988 the farmhouse and buildings are demolished.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
@@ -3066,10 +3227,19 @@
       "title_moves": [
         "Parcel A: the true title"
       ],
-      "words": [],
-      "cast": [
-        "branwen"
+      "received_account": "An old farmhouse of no special merit was cleared for housing.",
+      "received_wording": [
+        {
+          "said": "\"Bulldozed before breakfast\"",
+          "note": "The headline."
+        },
+        {
+          "said": "\"suddenly and completely demolished\"",
+          "note": "The heritage record, 1991."
+        }
       ],
+      "what_we_now_know": "The house was destroyed the morning after the listing refusal, before it was fully recorded and while the European Commission application was pending. The title to Parcel A was not destroyed with it.",
+      "cast": [],
       "evidence": [
         {
           "type": "Newspaper",
@@ -3109,21 +3279,22 @@
       "act": "VI",
       "date": "1988-12-07",
       "when": "7 – 9 December 1988",
-      "title": "Like a battlefield",
+      "title": "Local reaction and bail",
       "place": "Llandough",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "Llandough is furious. A county councillor, himself a BP pensioner, calls it 'disgusting'. Villagers confront their councillors. The council's planning chief, the family remember, says the site looks like a battlefield. On 9 December magistrates bail Billy on condition that he stays away from the land he was born on.",
+      "narration": "A Vale of Glamorgan councillor calls the demolition \"disgusting\". Villagers meet their councillors on 8 December. On 9 December William Buckler is bailed on condition he stays away from the site.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "He was barred from the land his family had owned.",
       "cast": [
-        "billy",
-        "bp"
+        "billy"
       ],
       "evidence": [
         {
@@ -3161,18 +3332,20 @@
       "act": "VI",
       "date": "1988-12-12",
       "when": "December 1988",
-      "title": "In the rubble",
+      "title": "Royal Commission in the rubble",
       "place": "Great House Farm — rubble",
       "parcel": "A",
       "basis": "Heritage record",
-      "narration": "In the rubble a Royal Commission investigator finds what the bulldozers left: a carved fireplace jamb, and a moulded beam of a kind rare in Glamorgan. And he records what is lost: a carved stone capital that stood by the front door, probably taken long ago from the old church.",
+      "narration": "R. F. Suggett of the Royal Commission examines the rubble, records a fireplace jamb and an ogee-stopped beam, and notes the loss of a carved stone capital by the front door.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "A minor record of a lost farmhouse.",
+      "received_wording": [],
+      "what_we_now_know": "Evidence of a house of quality, recorded only after it was destroyed.",
       "cast": [
         "rcahmw"
       ],
@@ -3199,18 +3372,20 @@
       "act": "VII",
       "date": "1989-03-20",
       "when": "20 March 1989",
-      "title": "Clearing the site",
+      "title": "Site clearance",
       "place": "Great House Farm",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "On 20 March 1989, at half past seven in the morning, the lorries move in to carry away what is left.",
+      "narration": "On 20 March 1989 lorries clear the site.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": null,
       "cast": [],
       "evidence": [
         {
@@ -3232,18 +3407,20 @@
       "act": "VII",
       "date": "1989-03-23",
       "when": "January – March 1989",
-      "title": "\"I will fight on\"",
+      "title": "Charges resolved",
       "place": "Court",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "In January one charge is dropped as out of time, and Billy is told not to come within half a mile of the site. On 23 March he pleads guilty to the rest and walks free. He will fight on, he says, for his home and for more than seventy acres of land.",
+      "narration": "In January 1989 one charge is dropped as out of time and William Buckler is barred from within half a mile of the site. On 23 March he pleads guilty to the remaining charges and is freed.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": null,
       "cast": [
         "billy"
       ],
@@ -3286,18 +3463,20 @@
       "act": "VII",
       "date": "1989-03-25",
       "when": "1989",
-      "title": "From farm to a bus",
+      "title": "Rehousing",
       "place": "Penarth",
       "parcel": "A",
       "basis": "Newspaper",
-      "narration": "The family who lived in the Great House now live with Billy's sister in Penarth. Billy plans to make a home in an old bus. Thirty thousand pounds' worth of his belongings, he says, were taken from the site after the demolition.",
+      "narration": "The family live with William Buckler's sister in Penarth. He plans to live in a converted bus and says about £30,000 of possessions were taken from the site.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": null,
       "cast": [
         "billy"
       ],
@@ -3320,27 +3499,26 @@
       "act": "VII",
       "date": "1989-04-14",
       "when": "14 April 1989",
-      "title": "Strasbourg says no",
+      "title": "European Commission decision",
       "place": "European Commission of Human Rights",
       "parcel": "A",
       "basis": "Court record",
-      "narration": "In April 1989 Strasbourg rules. The European Commission accepts that the eviction interfered with Billy's home, but finds it lawful, to protect BP's rights as owner. It says Billy had no 'possession' in law, because the domestic courts had held the property belonged to another. But the domestic courts never held that. They decided possession. Strasbourg never saw a title deed either.",
+      "narration": "On 14 April 1989 the European Commission of Human Rights declares Buckler v United Kingdom inadmissible.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [
+      "received_account": "Strasbourg confirmed the eviction was lawful and the property was BP's.",
+      "received_wording": [
         {
           "said": "\"the property belonged to another\"",
-          "meant": "What Strasbourg understood the courts to have held. They had decided possession only."
+          "note": "The Commission's reading of the domestic judgments."
         }
       ],
-      "cast": [
-        "billy",
-        "bp"
-      ],
+      "what_we_now_know": "The Commission relied on the domestic courts, which had decided possession, not ownership. It did not see the title documents.",
+      "cast": [],
       "evidence": [
         {
           "type": "Court record",
@@ -3364,18 +3542,20 @@
       "act": "VII",
       "date": "1989-11-07",
       "when": "October – November 1989",
-      "title": "BP applies to build",
+      "title": "Outline application",
       "place": "Vale of Glamorgan planning",
       "parcel": "AB",
       "basis": "Planning file",
-      "narration": "In November 1989 BP applies for permission to build houses on the farm. GGAT advises that nothing should be decided without an archaeological assessment. Then BP hires GGAT to do it. Their report calls the lost farmhouse 'a county treasure'.",
+      "narration": "BP applies for outline planning permission for housing (89/01396/OUT, received 8 November 1989). GGAT advises an archaeological assessment and is then commissioned by BP to carry it out. Its report calls the farmhouse \"a county treasure\".",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "Routine planning with archaeological advice.",
+      "received_wording": [],
+      "what_we_now_know": "The adviser to the council became the developer's contractor on the same site.",
       "cast": [
         "bp",
         "ggat"
@@ -3411,19 +3591,28 @@
       "act": "VII",
       "date": "1990-03-13",
       "when": "February – March 1990",
-      "title": "\"Unfortunately demolished\"",
+      "title": "Outline permission",
       "place": "Vale of Glamorgan planning",
       "parcel": "AB",
       "basis": "Planning file",
-      "narration": "In March 1990 outline permission is granted. The planning officer notes that the Local Plan said the farm buildings should be kept, 'however they were unfortunately demolished a little while ago'. No preservation notice was ever served. Part of the archaeologists' advice is missing from the file.",
+      "narration": "On 13 March 1990 outline permission is granted with 18 conditions. The officer's report notes the farm buildings \"were unfortunately demolished a little while ago\". GGAT's further comments of 8 February 1990 are missing from the file.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
-      "cast": [],
+      "received_account": null,
+      "received_wording": [
+        {
+          "said": "\"unfortunately demolished\"",
+          "note": "The officer's report."
+        }
+      ],
+      "what_we_now_know": "The Local Plan had required the buildings to be kept. No preservation notice had been served.",
+      "cast": [
+        "ggat"
+      ],
       "evidence": [
         {
           "type": "Planning file",
@@ -3449,18 +3638,25 @@
       "act": "VII",
       "date": "1990-08-01",
       "when": "August – October 1990",
-      "title": "Eight trenches",
+      "title": "Evaluation trenches",
       "place": "Former farm site",
       "parcel": "?",
       "basis": "Archaeological record",
-      "narration": "In August 1990 GGAT cuts eight trenches for BP. They find early medieval burials. A large area they could not investigate is marked as low potential, and in October the council signs the archaeology off.",
+      "narration": "In August 1990 GGAT digs eight trenches for BP and finds early medieval burials. An area that could not be investigated is marked low potential. In October the council records the condition as met.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [
+        {
+          "said": "\"low potential\"",
+          "note": "GGAT's zoning."
+        }
+      ],
+      "what_we_now_know": "The 1994 excavation found burials in the area marked low potential.",
       "cast": [
         "bp",
         "ggat"
@@ -3495,18 +3691,20 @@
       "act": "VII",
       "date": "1991-08-21",
       "when": "21 August 1991",
-      "title": "The obituary",
+      "title": "Heritage record entry",
       "place": "Historic Environment Record",
       "parcel": "A",
       "basis": "Heritage record",
-      "narration": "In 1991 the official heritage record writes the house's obituary. It 'was suddenly and completely demolished by B.P. Properties Ltd. on 6th December 1988 amid considerable local controversy'.",
+      "narration": "The Historic Environment Record records that the house and buildings \"were suddenly and completely demolished by B.P. Properties Ltd. on 6th December 1988 amid considerable local controversy\".",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": null,
       "cast": [],
       "evidence": [
         {
@@ -3526,20 +3724,21 @@
       "act": "VII",
       "date": "1992-05-14",
       "when": "14 May 1992",
-      "title": "Twenty houses",
+      "title": "Reserved matters application",
       "place": "Vale of Glamorgan planning",
       "parcel": "AB",
       "basis": "Planning file",
-      "narration": "In May 1992 Ideal Homes applies to build twenty detached houses on the farm, on land BP has not yet transferred to it.",
+      "narration": "On 14 May 1992 Ideal Homes Wales applies for approval of 20 houses (92/00671/RES).",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Billy Buckler · house demolished 6 December 1988 · title never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "BP had not yet transferred the land to Ideal Homes.",
       "cast": [
-        "bp",
         "ideal"
       ],
       "evidence": [
@@ -3560,11 +3759,11 @@
       "act": "VII",
       "date": "1992-05-15",
       "when": "15 May 1992",
-      "title": "Billy dies",
+      "title": "Death of William Buckler",
       "place": "Llandough",
       "parcel": "A",
       "basis": "Family account",
-      "narration": "The next day, 15 May 1992, Billy Buckler dies of a heart attack in Llandough Hospital, in the village where he was born. He is buried at Michaelston-le-Pit. He never gets his home back. His mother's claim passes, undecided, to his children.",
+      "narration": "William Buckler dies on 15 May 1992 in Llandough Hospital and is buried at Michaelston-le-Pit.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's heirs · never adjudicated, never extinguished",
@@ -3573,7 +3772,9 @@
       "title_moves": [
         "Parcel A: the true title"
       ],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "Mary's claim to Parcel A passed, undecided, to his heirs.",
       "cast": [
         "billy"
       ],
@@ -3595,18 +3796,20 @@
       "act": "VII",
       "date": "1992-07-27",
       "when": "27 July 1992",
-      "title": "A warning, half missing",
+      "title": "GGAT letter",
       "place": "GGAT",
       "parcel": "?",
       "basis": "Planning file",
-      "narration": "In July 1992 GGAT warns the council that the ground holds significant remains, medieval and perhaps older, and human bone. Page two of the letter is missing from the file.",
+      "narration": "On 27 July 1992 GGAT writes to the council that the 1990 assessment showed significant deposits, including human bone, and urges mitigation. Page 2 is missing from the file.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's heirs · never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": null,
       "cast": [
         "ggat"
       ],
@@ -3628,18 +3831,20 @@
       "act": "VII",
       "date": "1992-09-03",
       "when": "3 September 1992",
-      "title": "Approved anyway",
+      "title": "Reserved matters approved",
       "place": "Vale of Glamorgan planning",
       "parcel": "AB",
       "basis": "Planning file",
-      "narration": "Thirty-eight days later the twenty houses are approved, with no new archaeological condition.",
+      "narration": "On 3 September 1992 the 20 houses are approved without a new archaeological condition.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's heirs · never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076, BP Properties · in possession from 29 November 1988"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": null,
       "cast": [],
       "evidence": [
         {
@@ -3664,11 +3869,11 @@
       "act": "VII",
       "date": "1993-12-03",
       "when": "December 1993",
-      "title": "The diggers move in",
+      "title": "Transfer to Ideal Homes",
       "place": "Former farm site",
       "parcel": "AB",
       "basis": "Land Registry record",
-      "narration": "In December 1993 BP transfers the merged title to Ideal Homes. The synthetic Parcel A now passes to a buyer as if it were the real thing, folded inside the fields. The diggers move in before the archaeology has been dealt with. GGAT asks the council to stop the work. The developer produces a barrister's opinion that the condition is met. The council accepts it: 'a difference of opinion', it later tells the MP.",
+      "narration": "On 3 December 1993 BP transfers the site to Ideal Homes and groundworks begin. On 13 December GGAT asks the council for a breach-of-condition notice. The council accepts the developer's counsel's opinion that the condition is discharged.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's heirs · never adjudicated, never extinguished",
@@ -3677,11 +3882,17 @@
       "title_moves": [
         "Merged title: \"Parcel A & B\""
       ],
-      "words": [],
+      "received_account": "BP sold its land to a developer.",
+      "received_wording": [
+        {
+          "said": "\"a difference of opinion\"",
+          "note": "The council to the MP."
+        }
+      ],
+      "what_we_now_know": "The merged title, including the synthetic Parcel A, passed to a buyer as though it were one parcel.",
       "cast": [
         "bp",
         "ggat",
-        "mps",
         "ideal"
       ],
       "evidence": [
@@ -3719,18 +3930,25 @@
       "act": "VII",
       "date": "1994-03-21",
       "when": "March – July 1994",
-      "title": "A thousand graves",
+      "title": "Cemetery excavation",
       "place": "Former farm site",
       "parcel": "?",
       "basis": "Archaeological record",
-      "narration": "In the spring of 1994 the excavators find what the trenches missed. Burial after burial lies just below the topsoil, in the ground the 1990 report called low potential. By the end there are more than a thousand: the largest early medieval burial ground ever found in Wales. For at least two weeks of the dig, the Home Office licence to remove the dead has run out. The work goes on.",
+      "narration": "March–July 1994: the Cotswold Archaeological Trust excavates an early medieval cemetery on the site. Published totals reach 1,026 burials. The Home Office licence lapsed between 21 April and at least 3 May while work continued.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's heirs · never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076 transferred by BP to Ideal Homes (December 1993); later Persimmon Homes (Wales)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "A successful rescue excavation.",
+      "received_wording": [
+        {
+          "said": "\"preservation by record\"",
+          "note": "The agreed basis of the excavation."
+        }
+      ],
+      "what_we_now_know": "The largest early medieval burial population then recovered in Wales, from ground marked low potential in 1990.",
       "cast": [],
       "evidence": [
         {
@@ -3757,18 +3975,25 @@
       "act": "VII",
       "date": "1994-07-28",
       "when": "28 July 1994",
-      "title": "Who owns the dead",
+      "title": "Finds to the National Museum",
       "place": "National Museum of Wales",
       "parcel": "?",
       "basis": "Museum record",
-      "narration": "In July 1994 Ideal Homes, as owner of the land, gives the human remains and finds to the National Museum of Wales. Finds belong to whoever owns the land. So the merged title decides, once more, who owns what came out of Parcel A. The dead of St Dochdwy's pass from a developer to the state.",
+      "narration": "On 28 July 1994 Ideal Homes Wales, as landowner, gives the human remains and finds to the National Museum of Wales (95.56H).",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's heirs · never adjudicated, never extinguished",
         "Merged title: \"Parcel A & B\"": "WA231076 transferred by BP to Ideal Homes (December 1993); later Persimmon Homes (Wales)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "The landowner donated the finds.",
+      "received_wording": [
+        {
+          "said": "\"as landowner\"",
+          "note": "The basis of the gift."
+        }
+      ],
+      "what_we_now_know": "Ownership of finds follows ownership of land. The finds from Parcel A were given away on the strength of the merged title.",
       "cast": [
         "ideal"
       ],
@@ -3795,11 +4020,11 @@
       "act": "VII",
       "date": "1994-11-10",
       "when": "1994 – 96",
-      "title": "Church View Close",
+      "title": "Woodland title and houses",
       "place": "Woodland — WA735527",
       "parcel": "A",
       "basis": "Land Registry record",
-      "narration": "In November 1994 the Forest of Cardiff's title to the woodland, the half of Parcel A the family say was taken in 1955, is registered. The power lines go in. The houses go up. Church View Close is built over the farm, and new titles are carved out of the merged one, house by house.",
+      "narration": "On 10 November 1994 the woodland passes to the Forest of Cardiff (WA735527). In 1995–96 rights are granted to South Wales Electricity. The houses of Church View Close are built.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's heirs · never adjudicated, never extinguished · woodland now registered to the Forest of Cardiff (WA735527) · land to the south a village green",
@@ -3809,7 +4034,9 @@
         "Merged title: \"Parcel A & B\"",
         "Parcel A: the true title"
       ],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "On the family's account the woodland, part of Parcel A, had been taken in 1955. The charity has not used it.",
       "cast": [],
       "evidence": [
         {
@@ -3841,18 +4068,20 @@
       "act": "VII",
       "date": "2005-01-01",
       "when": "2005",
-      "title": "The cemetery in print",
+      "title": "Publication",
       "place": "Medieval Archaeology",
       "parcel": "?",
       "basis": "Archaeological record",
-      "narration": "In 2005 the cemetery is published in a learned journal: 1,026 burials. It tells the story of the dead. It does not tell the story of the family whose home stood over them, or of how that home came down.",
+      "narration": "The excavation is published in Medieval Archaeology 49 (2005): 1,026 burials, 814 articulated. On 22 December 2005 part of the woodland title is divided off.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's heirs · never adjudicated, never extinguished · woodland now registered to the Forest of Cardiff (WA735527) · land to the south a village green",
         "Merged title: \"Parcel A & B\"": "WA231076 and the house titles carved from it (Church View Close)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "The publication does not mention the family or the house's demolition.",
       "cast": [],
       "evidence": [
         {
@@ -3884,18 +4113,20 @@
       "act": "VII",
       "date": "2019-03-20",
       "when": "20 March 2019",
-      "title": "Nearly thirty years late",
+      "title": "1990 assessment archived",
       "place": "RCAHMW national archive",
       "parcel": "?",
       "basis": "Heritage record",
-      "narration": "In 2019 GGAT's 1990 report on Great House Farm is finally added to the national record, nearly thirty years after it was written, and thirty years after the house was gone.",
+      "narration": "On 20 March 2019 GGAT's 1990 assessment is added to the national record.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's heirs · never adjudicated, never extinguished · woodland now registered to the Forest of Cardiff (WA735527) · land to the south a village green",
         "Merged title: \"Parcel A & B\"": "WA231076 and the house titles carved from it (Church View Close)"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "Twenty-nine years after it was written.",
       "cast": [
         "ggat"
       ],
@@ -3917,11 +4148,11 @@
       "act": "VIII",
       "date": "2025-11-17",
       "when": "November 2025 – January 2026",
-      "title": "The grandchildren",
+      "title": "Records requests begin",
       "place": "Royal Commission and others",
       "parcel": "",
       "basis": "Official correspondence",
-      "narration": "In November 2025 Mary's grandchildren start digging for the buried title. The community council says it cannot help. Cadw's email addresses bounce, the first of many. In January 2026 they ask the Land Registry to put back on the register the claim that was left off it in 1983.",
+      "narration": "From November 2025 Mary's grandchildren request records from public bodies. On 29 January 2026 they apply to HM Land Registry to record the interest omitted at first registration.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
@@ -3930,11 +4161,12 @@
       "title_moves": [
         "Parcel A: the true title"
       ],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": null,
       "cast": [
         "mary",
-        "hmlr",
-        "cadw"
+        "hmlr"
       ],
       "evidence": [
         {
@@ -3956,25 +4188,26 @@
       "act": "VIII",
       "date": "2026-03-23",
       "when": "February – March 2026",
-      "title": "\"No evidence of a mistake\"",
+      "title": "Land Registry reply",
       "place": "HM Land Registry",
       "parcel": "AB",
       "basis": "Official correspondence",
-      "narration": "The Land Registry retrieves its old paper files. In March it replies: there is 'no evidence of a mistake in the register'. It treats the farm as one holding, exactly as the 1916 tenancy did. It does not say how the house got into BP's title.",
+      "narration": "On 23 March 2026 HM Land Registry sets out the registration history and states there is \"no evidence of a mistake in the register\".",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "WA231076 and the house titles carved from it (Church View Close)"
       },
       "title_moves": [],
-      "words": [
+      "received_account": "The register is right.",
+      "received_wording": [
         {
           "said": "\"no evidence of a mistake in the register\"",
-          "meant": "The register treats the farm as one holding, exactly as the 1916 wording did."
+          "note": "HMLR, 23 March 2026."
         }
       ],
+      "what_we_now_know": "The reply treats the farm as one holding, as the 1916 wording did, and does not explain how Parcel A entered BP's title.",
       "cast": [
-        "bp",
         "hmlr"
       ],
       "evidence": [
@@ -4002,11 +4235,11 @@
       "act": "VIII",
       "date": "2026-04-19",
       "when": "19 April – 25 May 2026",
-      "title": "\"Registered correctly\"",
+      "title": "Complaint decisions",
       "place": "HM Land Registry",
       "parcel": "AB",
       "basis": "Official correspondence",
-      "narration": "The family complain. The Registry will not look behind the 1987 judgment. In May it rules that the title is 'registered correctly'. It is relying on a judgment about possession to answer a question about ownership: the same substitution the whole scheme was built on.",
+      "narration": "On 19 April 2026 HM Land Registry refuses the stage-one complaint. On 25 May the stage-two decision states the title is \"registered correctly\".",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
@@ -4015,12 +4248,14 @@
       "title_moves": [
         "Merged title: \"Parcel A & B\""
       ],
-      "words": [
+      "received_account": "The matter has been examined and closed.",
+      "received_wording": [
         {
           "said": "\"registered correctly\"",
-          "meant": "Correct only if a judgment about possession can answer a question about ownership."
+          "note": "HMLR, 25 May 2026."
         }
       ],
+      "what_we_now_know": "The decisions rely on the 1987 judgment, which decided possession, to answer a question of ownership.",
       "cast": [
         "hmlr"
       ],
@@ -4042,18 +4277,25 @@
       "act": "VIII",
       "date": "2026-05-21",
       "when": "21 May 2026",
-      "title": "Cadw's two photographs",
+      "title": "Cadw disclosure",
       "place": "Cadw",
       "parcel": "A",
       "basis": "Official correspondence",
-      "narration": "Cadw releases its two photographs from July 1988, marked 'YYY': 'marginally below the bar', it says. Everything else is gone. The file is 'quite likely' destroyed, it says; by July, 'most likely'. There is no record of anyone destroying it.",
+      "narration": "On 21 May 2026 Cadw releases two photographs of 29 July 1988, coded \"YYY\". It says its paper file is \"quite likely\" destroyed; in July, \"most likely\".",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": "The house was assessed and narrowly failed.",
+      "received_wording": [
+        {
+          "said": "\"marginally below the bar\"",
+          "note": "Cadw's reading of YYY."
+        }
+      ],
+      "what_we_now_know": "There is no record of the file's destruction.",
       "cast": [
         "cadw"
       ],
@@ -4086,22 +4328,21 @@
       "act": "VIII",
       "date": "2026-07-30",
       "when": "June – July 2026",
-      "title": "The missing root",
+      "title": "Schedule of registration documents",
       "place": "HM Land Registry",
       "parcel": "AB",
       "basis": "Official correspondence",
-      "narration": "In June the family ask to see the Registry's original files, and ask that nothing be destroyed. Six months after their first request, the Registry lists the forty-three documents behind BP's first registration. The 1969 conveyance, the root BP's title recites, is not among them. Neither is any deed that carries the house from Bute, or from the Thomases, or from the Williamses, to anyone.",
+      "narration": "On 30 July 2026 HM Land Registry supplies a schedule of 43 documents on the first-registration files. The 31 December 1969 conveyance and the 1971 abstract are not listed.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "The deed recited as the root of BP's title is not on file. No document on file conveys Parcel A to Western Ground Rents or BP.",
       "cast": [
-        "thomas",
-        "bute",
-        "bp",
         "hmlr"
       ],
       "evidence": [
@@ -4129,18 +4370,25 @@
       "act": "VIII",
       "date": "2026-08-25",
       "when": "25 August 2026",
-      "title": "\"Not held\"",
+      "title": "Museum Wales reply",
       "place": "Museum Wales",
       "parcel": "?",
       "basis": "Official correspondence",
-      "narration": "Museum Wales refuses the family's request: the information is 'not held'. In the same letter it says it has found records of other discoveries at Great House Farm, and withholds them as 'not in scope'.",
+      "narration": "On 25 August 2026 Museum Wales replies that the information is \"not held\", and in the same letter says it has found records of other discoveries at Great House Farm, which it withholds as \"not in scope\".",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [
+        {
+          "said": "\"not held\"",
+          "note": "Museum Wales."
+        }
+      ],
+      "what_we_now_know": null,
       "cast": [],
       "evidence": [
         {
@@ -4160,20 +4408,21 @@
       "act": "VIII",
       "date": "2026-09-08",
       "when": "8 September 2026",
-      "title": "A lead to 1877",
+      "title": "Glamorgan Archives reply",
       "place": "Glamorgan Archives",
       "parcel": "A",
       "basis": "Official correspondence",
-      "narration": "Glamorgan Archives hold no deed for the 1877 sale. But they point to the Bute trustees' book of payments for that year, now in Cardiff. If Daniel Thomas paid Bute for the house, it will be written there: the first link of the true chain, in Bute's own hand.",
+      "narration": "On 8 September 2026 Glamorgan Archives report no deeds for the 1877 sale, and identify Bute X.6(12), the trustees' 1877 book of payments, at Cardiff Library.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "A payment by Daniel Thomas recorded in that book would document the 1877 sale of Parcel A.",
       "cast": [
-        "thomas",
         "bute"
       ],
       "evidence": [
@@ -4194,18 +4443,20 @@
       "act": "VIII",
       "date": "2026-09-17",
       "when": "17 – 21 September 2026",
-      "title": "Complaints",
+      "title": "Complaints and correspondence",
       "place": "Cadw / Stephen Doughty MP",
       "parcel": "A",
       "basis": "Official correspondence",
-      "narration": "In September the family lodge a formal complaint against Cadw, whose own address blocks it. They write to their MP, Stephen Doughty, asking for the Parliamentary Ombudsman. They ask Heneb, the successor to GGAT, for its files. A Land Registry agent tells them the title was 'closed in 2005', which the Registry's own history contradicts.",
+      "narration": "17–21 September 2026: formal complaint to Cadw; letters to Stephen Doughty MP; records request to Heneb. A Land Registry agent states the title was \"closed in 2005\".",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "The statement contradicts the Registry's own history.",
       "cast": [
         "hmlr",
         "cadw",
@@ -4242,18 +4493,20 @@
       "act": "VIII",
       "date": "2026-09-23",
       "when": "23 September 2026",
-      "title": "The Lords papers",
+      "title": "House of Lords papers",
       "place": "The National Archives",
       "parcel": "A",
       "basis": "Official correspondence",
-      "narration": "The National Archives finds the House of Lords papers in BP Properties v Buckler, added to its catalogue only in May 2026. For thirty-eight years, searches had found nothing.",
+      "narration": "On 23 September 2026 The National Archives identifies the House of Lords papers in BP Properties Ltd v Buckler, catalogued in May 2026.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": null,
       "cast": [
         "bp",
         "courts"
@@ -4276,18 +4529,20 @@
       "act": "VIII",
       "date": "2026-09-25",
       "when": "25 – 27 September 2026",
-      "title": "An offer on the woodland",
+      "title": "Woodland offer",
       "place": "Forest of Cardiff",
       "parcel": "A",
       "basis": "Official correspondence",
-      "narration": "The Forest of Cardiff, which holds the woodland cut from Parcel A, offers the family a route to owning it, on its own terms. They turn it down. You do not buy back what was never yours to sell.",
+      "narration": "On 25 September 2026 the Forest of Cardiff offers the family a route to ownership of the woodland. On 27 September the family decline.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "The woodland is part of Parcel A.",
       "cast": [],
       "evidence": [
         {
@@ -4312,18 +4567,20 @@
       "act": "VIII",
       "date": "2026-09-27",
       "when": "27 – 29 September 2026",
-      "title": "Keep everything",
+      "title": "Complaints to Heneb and the Reviewer",
       "place": "Heneb / HM Land Registry",
       "parcel": "AB",
       "basis": "Official correspondence",
-      "narration": "The family take the Land Registry to its Independent Complaints Reviewer, and complain to Heneb about GGAT's part from 1982 to 1995. A preservation notice goes to eleven public bodies: keep everything.",
+      "narration": "27–29 September 2026: complaint to Heneb about GGAT's role, 1982–1995; referral of HM Land Registry to the Independent Complaints Reviewer (ICR/090/26); preservation notice to eleven public bodies.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": null,
       "cast": [
         "hmlr",
         "ggat"
@@ -4351,18 +4608,20 @@
       "act": "VIII",
       "date": "2026-09-29",
       "when": "29 September – 5 October 2026",
-      "title": "On record all along",
+      "title": "Archive releases",
       "place": "Cadw / RCAHMW / Museum Wales",
       "parcel": "A",
       "basis": "Official correspondence",
-      "narration": "The Royal Commission opens its archive: the 1974 newspaper report, and an old note of the soldier in armour under the dining-room floor. Museum Wales, after two refusals, releases its file on the bones found by the church in 1858. The story was on record all along.",
+      "narration": "On 29 September 2026 the Royal Commission releases its records, including the 1974 newspaper report and a note of the armour. On 5 October Museum Wales releases its Church Farm file.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "Both were on record before the demolition.",
       "cast": [
         "rcahmw"
       ],
@@ -4396,21 +4655,21 @@
       "act": "VIII",
       "date": "2026-10-06",
       "when": "September – October 2026",
-      "title": "The question",
+      "title": "Publication of the record",
       "place": "Great House Farm Wiki",
       "parcel": "A",
       "basis": "Analysis",
-      "narration": "The family put everything they have found in public: every document and every cutting, from the geese of 1891 to the bus of 1989. And they ask the one question that no court, no registry and no minister has ever answered: by what deed did the house pass from the Williamses, or from anyone, to BP? No such deed has ever been produced.",
+      "narration": "September–October 2026: the family publish the documents and press cuttings on the Great House Farm Wiki, with a legal review.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
-      "cast": [
-        "bp"
-      ],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "No deed has been produced by which Parcel A passed from the Williamses, or from anyone, to BP.",
+      "cast": [],
       "evidence": [
         {
           "type": "Analysis",
@@ -4452,22 +4711,42 @@
       "act": "E",
       "date": null,
       "when": "Today",
-      "title": "How it was done",
+      "title": "The sequence",
       "place": "The two titles",
       "parcel": "AB",
       "basis": "Analysis",
-      "narration": "So here is how it was done. Not with one forged deed, but with a sequence. First, two words in 1916 made two parcels one farm, in a landlord's document, never the family's. Then six attempts to make Mary's occupation of her own house look permissive: her house spoken of as part of her husband's fields tenancy; an order against the fields tenant worded for the whole farm; a tenancy offered, and refused; a possession order made and left in a drawer; another tenancy offered, and refused; and a licence she never asked for and never accepted. Alongside them, the woodland and the land to the south were taken from around her. Then the paper: BP took the fields by deed and the case against the house with them; one BP company conveyed the house to another; the state registered it, then folded it into the fields. The family, for their part, were led into claiming adverse possession of the mythical farm, counted from an order about the fields, when Parcel A had been theirs since 1928 and by possession since 1940. And the courts, asked only who had the right to possession, never had to ask who owned the house. In English law, possession can be awarded without ownership ever being tried, and a title can be registered without any court deciding a rival claim to the same land. Neither step, on its own, decides the older title. Every move went through one of those two doors.",
+      "narration": "1916 to 1987: a tenancy, two possession orders, three tenancy offers, licence letters, a conveyance, two registrations and an amalgamation.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
-      "cast": [
-        "mary",
-        "bp"
+      "received_account": "A landlord and its successors recovered their farm from tenants who stayed on without paying, and the courts confirmed it.",
+      "received_wording": [
+        {
+          "said": "\"the whole farm\"",
+          "note": "1916."
+        },
+        {
+          "said": "\"the whole of the farm\"",
+          "note": "1955."
+        },
+        {
+          "said": "\"licence\"",
+          "note": "1974."
+        },
+        {
+          "said": "\"the paper title to the farm\"",
+          "note": "1987."
+        },
+        {
+          "said": "\"registered correctly\"",
+          "note": "2026."
+        }
       ],
+      "what_we_now_know": "Parcel A was the family's from 1928, and by possession from 1940. It was never shown to belong to Western Ground Rents or BP. A synthetic single farm was described in 1916; six attempts (1949, 1955, 1959, 1962, 1965, 1974) treated Mary's occupation as permissive; the woodland and the land to the south were taken; the 1975 conveyance and 1983 registration gave the synthetic Parcel A a deed and a title; the 1987 amalgamation folded it into Parcel B. The courts decided possession and never decided ownership. Possession can be awarded without ownership being tried, and land can be registered without a rival claim being decided. Neither decides the older title.",
+      "cast": [],
       "evidence": [
         {
           "type": "Wiki page",
@@ -4501,27 +4780,30 @@
       "act": "E",
       "date": null,
       "when": "Today",
-      "title": "Who knew",
+      "title": "The two parcels in the record",
       "place": "The two parcels",
       "parcel": "AB",
       "basis": "Analysis",
-      "narration": "So who knew the farm was two? Mary did, in her way. Her 1974 statement tells of the house and ten acres sold to Daniel Thomas, and the nine acres Bute kept. But her deeds were gone, and no lawyer of hers ever turned that history into a case about two parcels. If the family had grasped what it meant, they would have shouted it from the rooftops; it was their whole case. The other side never needed it explained. Western Ground Rents offered tenancies of \"the farmhouse and garden\" alone, and sued for it alone. BP conveyed it alone, between its own companies, registered it alone, and then merged it. The Land Registry issued two titles and joined them into one. The Court of Appeal read a conveyance of \"the farmhouse and garden\". Everyone made a mess of this case: the drafting, the lawyers, the courts, the Registry. A haze over the two parcels might be forgiven once. But the people who knew best treated the two parcels as one whenever that helped, and as two whenever that helped more. The family call it what it looks like: a conspiracy against them.",
+      "narration": "Records of 1877–1987 describe the property both as one farm and as separate parts.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
-      "cast": [
-        "mary",
-        "thomas",
-        "bute",
-        "wgr",
-        "bp",
-        "hmlr",
-        "courts"
+      "received_account": "It was always one farm, and nobody suggested otherwise.",
+      "received_wording": [
+        {
+          "said": "\"the whole farm\"",
+          "note": "One farm."
+        },
+        {
+          "said": "\"the farmhouse and garden\"",
+          "note": "One part, named on its own."
+        }
       ],
+      "what_we_now_know": "Mary's 1974 statement describes the 1877 split; no lawyer of hers built a case on it. Western Ground Rents offered tenancies of, and sued for, the farmhouse and garden alone. BP conveyed it alone in 1975, registered it alone in 1983, and merged it in 1987. The Land Registry held two titles and joined them. The Court of Appeal read a conveyance of the farmhouse and garden. Those who knew the parcels were separate treated them as one where that helped and as two where that helped. The family's case is that this was a conspiracy against them.",
+      "cast": [],
       "evidence": [
         {
           "type": "Mary's statement",
@@ -4555,24 +4837,21 @@
       "act": "E",
       "date": null,
       "when": "Today",
-      "title": "Who holds it now",
+      "title": "The site today",
       "place": "Church View Close, Llandough",
       "parcel": "A",
       "basis": "Analysis",
-      "narration": "Today twenty houses stand on Great House Farm, on titles carved from the merged one. BP has sold up and gone. The Land Registry says the title is 'registered correctly'. A thousand of Llandough's dead lie in the stores of the National Museum. The woodland belongs to a charity. The house is gone, and so is the heritage file that might have saved it. And underneath all of it lies the true Parcel A: Vaughan, Bute, Daniel Thomas, Williams. Buried. Never decided. Never extinguished.",
+      "narration": "Church View Close, twenty houses, stands on the site. The woodland is registered to the Forest of Cardiff. The human remains are held by the National Museum of Wales.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
-      "cast": [
-        "thomas",
-        "bute",
-        "bp",
-        "hmlr"
-      ],
+      "received_account": "A modern estate on a former farm.",
+      "received_wording": [],
+      "what_we_now_know": "The title to Parcel A has never been decided and never extinguished.",
+      "cast": [],
       "evidence": [
         {
           "type": "Wiki page",
@@ -4601,18 +4880,20 @@
       "act": "E",
       "date": null,
       "when": "Today",
-      "title": "Not in the history",
+      "title": "Village history",
       "place": "Llandough Community Council",
       "parcel": "A",
       "basis": "Public record",
-      "narration": "The village's own history page tells of the Roman villa, the lost monastery, and the hundreds of burials dug up in 1994. It does not mention the Great House, the family who lived in it for three hundred years, or the morning it was bulldozed. There has been no public inquiry. No apology. No reparation.",
+      "narration": "Llandough Community Council's page on the village's history describes the Roman villa, the monastery and the 1994 burials. It does not mention Great House, the Williams family or the demolition.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "There has been no public inquiry, apology or reparation.",
       "cast": [],
       "evidence": [
         {
@@ -4637,18 +4918,20 @@
       "act": "E",
       "date": null,
       "when": "Today",
-      "title": "What the family ask for",
+      "title": "The family's requests",
       "place": "The family",
       "parcel": "A",
       "basis": "Family case",
-      "narration": "The family ask for what was taken. A ruling, at last, on who owns Parcel A. The woodland and the green back, or reparation where that cannot be done. Reparation for the houses built on their land. The estate's artefacts returned. A true record of the Great House in the nation's heritage. And a public inquiry into how all of it was allowed to happen. Every body involved is being given the chance to put it right, before the family go back to court.",
+      "narration": "The family ask for: a ruling on the ownership of Parcel A; the return of the woodland and the green, or reparation; reparation for the houses built on the land; the return of the estate's artefacts; a true heritage record; and a public inquiry.",
       "family_case": null,
       "title_ledger": {
         "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
         "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
       },
       "title_moves": [],
-      "words": [],
+      "received_account": null,
+      "received_wording": [],
+      "what_we_now_know": "Every body involved is being given the opportunity to put it right before the family return to court.",
       "cast": [],
       "evidence": [
         {

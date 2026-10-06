@@ -1,5 +1,20 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.56] - 2026-10-06
+
+Every scene restructured into three layers.
+
+### Content
+- **What happened**: each scene's event rewritten as a minimal, neutral description, with neutral titles. This is the text the narrator reads
+- **The received account**: what the unquestioned narrative would have people believe occurred, with the wordings of the time that reinforce it (e.g. "the whole farm", "the whole of the farm", "the farmhouse and garden", "licence", "no question or doubt", "the paper title to the farm", "registered correctly")
+- **What we now know**: what the event and its wording truly meant, on the two-parcel reading
+- Act titles, loglines and cast descriptions made neutral
+- The analysis layers live in `content/accounts.py`, one entry per scene, checked complete at build time
+
+### Design
+- Player shows the event, then "The received account" and "What we now know", then the title ledger and storyline
+- Script page, llms.txt and api/timeline.json carry `received_account`, `received_wording` and `what_we_now_know` (replacing `words`)
+
 ## [bpvsbuckler-v0.0.0.55] - 2026-10-06
 
 ### Content

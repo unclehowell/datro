@@ -218,8 +218,8 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: S
           <span className="chip">Basis: {scene.basis}</span>
           {cast.map((c) => <button key={c.id} className="chip" onClick={onCast}>{c.name}</button>)}
         </div>
+        <Accounts scene={scene} />
         {scene.case && <section className="case"><h2>The family's case</h2><p>{scene.case}</p></section>}
-        <Words scene={scene} />
         <Ledger scene={scene} />
         <Storyline current={scene.no - 1} onPick={onPick} compact />
         <section className="ev">
@@ -246,7 +246,7 @@ function Board({ onPick }: { onPick: (i: number) => void }) {
   return (
     <div className="sheet">
       <h1>Storyboard</h1>
-      <p className="intro">A legal thriller in a hundred scenes: how a family's title to their house was buried, and a mimic of it built, move by move, until BP held the house it never proved it owned. Pick a panel to open the scene, the titles after it, and the evidence.</p>
+      <p className="intro">Every event in date order, one panel each. Each scene gives what happened, the received account of it, and what we now know, with the evidence. Pick a panel to open it.</p>
       <h2 className="sl-head">The storyline</h2>
       <p className="intro">One title buried, one built beside it. Each dot is a move; pick one to open the scene.</p>
       <Storyline onPick={onPick} />
@@ -280,7 +280,7 @@ function Cast({ onPick }: { onPick: (i: number) => void }) {
   return (
     <div className="cast">
       <h1>Cast</h1>
-      <p className="intro">The family, the companies, the courts and the public bodies, and the scenes they appear in.</p>
+      <p className="intro">The people, companies, courts and public bodies in the record, and the scenes they appear in.</p>
       {S.cast.map((c) => {
         const in_ = scenes.map((s, i) => [s, i] as const).filter(([s]) => s.cast.includes(c.id));
         return (
@@ -354,15 +354,26 @@ function Storyline({ current, onPick, compact }: { current?: number; onPick: (i:
   );
 }
 
-function Words({ scene }: { scene: Scene }) {
-  if (!scene.words.length) return null;
+function Accounts({ scene }: { scene: Scene }) {
+  if (!scene.received && !scene.received_words.length && !scene.known) return null;
   return (
-    <section className="words" aria-label="The words, and what they meant">
-      <h2>The words, and what they meant</h2>
-      <dl>
-        {scene.words.map(([q, m]) => (<React.Fragment key={q}><dt>{q}</dt><dd>{m}</dd></React.Fragment>))}
-      </dl>
-    </section>
+    <>
+      {(scene.received || scene.received_words.length > 0) && (
+        <section className="acct recv" aria-label="The received account">
+          <h2>The received account</h2>
+          {scene.received && <p>{scene.received}</p>}
+          {scene.received_words.length > 0 && (
+            <dl>{scene.received_words.map(([q, m]) => (<React.Fragment key={q}><dt>{q}</dt><dd>{m}</dd></React.Fragment>))}</dl>
+          )}
+        </section>
+      )}
+      {scene.known && (
+        <section className="acct known" aria-label="What we now know">
+          <h2>What we now know</h2>
+          <p>{scene.known}</p>
+        </section>
+      )}
+    </>
   );
 }
 
@@ -399,7 +410,7 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
       <div className="tx">
         <h1>Tŷ Mawr</h1>
         <div className="sub">The Great House Farm story, Llandough</div>
-        <p className="log">In 1877 Great House Farm was cut in two: the house went one way, the fields another. The Williamses came to own the house. Then their deeds vanished from a blanket box, and over thirty years a second, synthetic title to the house was built on paper, from tenancies they refused, orders against a fields tenant, a licence never accepted, and a conveyance between two BP companies. In 1987 it was folded into the fields. The courts gave BP possession without ever deciding who owned the house, and on 6 December 1988 it was bulldozed before breakfast. The family's title was buried. It was never extinguished. This is how it was done, move by move.</p>
+        <p className="log">Great House Farm, Llandough: the Williams family's home from 1667 until 1988, when BP Properties Ltd obtained possession and demolished the buildings. Each scene sets out what happened, the received account of it and the words used to describe it, and what we now know, with the documents behind it.</p>
         <div className="btns">
           <button className="btn primary" onClick={onPlay}>{Icon.play} Play from the beginning</button>
           <button className="btn" onClick={onBoard}>{Icon.grid} Open the storyboard</button>

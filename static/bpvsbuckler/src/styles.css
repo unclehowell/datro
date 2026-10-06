@@ -208,10 +208,15 @@ button.chip:hover, a.chip:hover { color: var(--limewash); }
 .mk.on { stroke: var(--limewash); stroke-width: 2.5; }
 .mk:hover, .mk:focus-visible { stroke: var(--limewash); outline: none; }
 
-/* ---------------- the words, and what they meant */
-.words { margin: 0 0 22px; max-width: 40em; background: var(--slate-2); border-left: 3px solid var(--parcel-ab); border-radius: 0 4px 4px 0; padding: 14px 18px; }
-.words h2 { font-size: 13px; font-weight: 600; color: var(--lias); margin: 0 0 8px; letter-spacing: .02em; text-transform: uppercase; }
-.words dl { margin: 0; }
-.words dt { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--limewash); margin-top: 8px; }
-.words dt:first-child { margin-top: 0; }
-.words dd { margin: 2px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--lias); }
+/* ---------------- received account / what we now know */
+.acct { margin: 0 0 18px; max-width: 40em; border-radius: 0 4px 4px 0; padding: 14px 18px; background: var(--slate-2); }
+.acct h2 { font-size: 13px; font-weight: 600; margin: 0 0 6px; letter-spacing: .02em; text-transform: uppercase; }
+.acct p { margin: 0; font-family: var(--serif); font-size: 17px; line-height: 1.55; }
+.acct.recv { border-left: 3px solid var(--parcel-x); }
+.acct.recv h2 { color: var(--lias); }
+.acct.recv p { color: var(--lias); }
+.acct.known { border-left: 3px solid var(--parcel-a); background: var(--case); margin-bottom: 26px; }
+.acct.known h2 { color: #b9d4a9; }
+.acct dl { margin: 10px 0 0; }
+.acct dt { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--limewash); margin-top: 8px; }
+.acct dd { margin: 2px 0 0; font-size: 14px; line-height: 1.5; color: var(--lias); }
