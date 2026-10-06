@@ -238,7 +238,7 @@ sc('II', 'ghf-19160201-1', '1916-02-01', 'February 1916', '"The whole farm"', 'G
    'Court record',
    'February 1916. Bute lets John Williams "the whole farm" on a yearly tenancy. But Bute has not owned the house since 1877. It can only let the fields. Two words, "whole farm", describe two parcels as if they were one, and put the house inside a tenancy from a landlord who no longer owns it. Nobody notices. Seventy years later a court will quote those two words and build on them. This is the seed of a second Parcel A: not the land itself, but a description of it.',
    [w('/1916-tenancy/#grant', 'The 1916 Tenancy', 'Court record'), JUDG, w('/the-two-parcels/whole-farm-nomenclature/', 'The Farm / Whole Farm Nomenclature')],
-   ledger={'S': 'Seed: the words "the whole farm" in a Bute tenancy (Bute can only let Parcel B)'})
+   ledger={'S': 'Seed (a landlord\'s wording, not the family\'s): the words "the whole farm" in a Bute tenancy (Bute can only let Parcel B)'})
 sc('II', 'ghf-19280101-1', '1928-01-01', '1928', 'The last rent', 'Great House Farm', 'A',
    "Mary's statement",
    'In 1928 the last of the quarry machinery leaves. John Williams pays a final rent of about four pounds to Alfred Thomas, and the bargain of 1877 comes due: the quarrying is over, and the freehold of the house passes to the family. Mary sees the receipt. From this year the true Parcel A has a complete chain: the Vaughans, Bute, Daniel Thomas, the Williamses. The family pay no more rent on the house, to anyone, ever again.',
@@ -264,9 +264,9 @@ sc('II', 'ghf-19390501-1', '1939-05-01', 'May 1939', 'The plan', 'Great House Fa
    ledger={'B': 'Freehold: Western Ground Rents · tenant: John Williams (1939 plan: fields only)'})
 sc('II', 'ghf-19400101-1', '1940-01-01', 'c. 1940', 'Twelve years', 'Great House Farm', 'A',
    'Family case',
-   'By 1940 John Williams has lived in the house for twelve years without paying anyone a penny for it. In law, twelve years is enough. So the family now hold Parcel A twice over: by the bargain of 1877, and by time. Any other claim to the house that might once have existed is, from now on, out of time.',
+   "By 1940 the Williamses, John and his daughter Mary in the house, have lived there twelve years without paying anyone a penny for it. In law, twelve years is enough. So from 1940 the family hold Parcel A twice over: by the bargain of 1877, and by time. Even without a single paper, there is from now on no basis for anyone to call Mary's occupation of her house permissive. Everything that follows has to pretend this year never happened.",
    [w('/1939-revised-tenancy/#c1940', '1938–39 — c. 1940')],
-   ledger={'A': 'Freehold: the Williamses, by the 1877 bargain and by twelve years rent-free'})
+   ledger={'A': 'Freehold: the Williamses, by the 1877 bargain and by title by possession (twelve years rent-free, 1928–1940)'})
 sc('II', 'ghf-19440101-1', '1944-01-01', '1944', 'War on the land', 'Great House Farm', 'B',
    "Mary's statement",
    'The war is on, the farm is struggling, and the War Agricultural Committee wants it run better. Frederick takes over the fields as manager for his father-in-law.',
@@ -279,13 +279,13 @@ sc('II', 'ghf-19480101-1', '1948-01-01', 'c. 1948 – 49', 'Billy is born', 'Gre
 # ---------------------------------------------------------------- ACT III
 sc('III', 'ghf-19490202-1', '1949-02-02', '2 February 1949', 'Nothing in writing', 'Great House Farm', 'B',
    'Court record',
-   "February 1949. John Williams gives up his tenancy of the fields, and Frederick takes them on from Western Ground Rents. This time nothing is written down: no lease, no plan. Mary, who owns the house, is not a party to it. That gap is the opening. A tenancy with no plan has no edges, and from now on the landlord will speak of Frederick's tenancy as a tenancy of \"the farm\", house and all. The fields tenant is about to become the handle on the house.",
+   "February 1949. John Williams gives up his tenancy of the fields, and Frederick takes them on from Western Ground Rents. Nothing is written down: no lease, no plan. And now the first attempt to make Mary's occupation look permissive: the landlord begins to speak of Frederick's fields tenancy as a tenancy of \"the farm\", house and all, as if the house were his and she lived there by his tenancy. Mary rejects it. The house is hers, it was never in any tenancy of the fields, and she has the paper title in the blanket box to prove it. Note who blurs the two parcels here. Not the family. The landlord's own 1939 plan shows it knew exactly where the line was.",
    [w('/frederick-buckler/#tenancy-1949', "Frederick Buckler — the 1949 tenancy", 'Court record'), JUDG, w('/the-two-parcels/', 'The Two Parcels')],
-   ledger={'S': 'Move 1: Frederick\'s unwritten fields tenancy, spoken of as a tenancy of "the farm"',
+   ledger={'S': 'Attempt 1 to make Mary look permitted: her house spoken of as part of Frederick\'s unwritten fields tenancy (Mary rejects it; she still holds the paper title)',
            'B': 'Freehold: Western Ground Rents · tenant: Frederick Buckler (unwritten, from 1949)'})
 sc('III', 'ghf-19500601-1', '1950-06-01', 'June 1950 – c. 1952', 'The blanket box', 'Great House Farm', 'A',
    "Mary's statement",
-   "1950. An estate agent from Penarth places a lodger in the farmhouse. He stays two years. Before he goes, he tells Mary what he has done: he has taken the papers from the family's blanket box, 'including the agreement relating to the farm', and handed them to the agent. Think about what that means. The true Parcel A still exists. Its chain is still complete. But the family's copy of it, the paper that proves it, has just left the house. From now on, every time Mary says 'the house is mine', she will be asked for documents she no longer has.",
+   "1950. An estate agent from Penarth places a lodger in the farmhouse. He stays two years. Before he goes, he tells Mary what he has done: he has taken the papers from the family's blanket box, 'including the agreement relating to the farm', and handed them to the agent. Mary will say she believed it was connected with the landlord's first move against the farm, which comes within three years. Think about what it means. The true Parcel A still exists, and its chain is still complete. But the paper that proves it has left the house a year after she produced it as her answer. From now on, every time Mary says 'the house is mine', she will be asked for documents she no longer has.",
    [MARY, w('/1877-agreement/#papers-taken', 'The 1877 Agreement — papers taken')],
    ledger={'A': 'Freehold: the Williamses · their deeds taken from the blanket box (missing from now on; title buried, not extinguished)'})
 sc('III', 'ghf-19521010-1', '1952-10-10', '1952 – 53', 'The last rent on the fields', "Landlords' agents", 'B',
@@ -295,22 +295,23 @@ sc('III', 'ghf-19521010-1', '1952-10-10', '1952 – 53', 'The last rent on the f
    aliases=['ghf-19530101-1'])
 sc('III', 'ghf-19550202-1', '1955-02-02', '2 February 1955', 'The first order', 'High Court / Great House Farm', 'AB',
    'Court record',
-   'February 1955. Western Ground Rents sues Frederick, its fields tenant, and gets a High Court order for possession of "the whole of the farm". Mary is not in the case. Nobody asks who owns the house. On 4 July they come to enforce it. They take the fields, and they leave the house: Mary is just home from hospital and stands her ground. So the order, as worded, covers both parcels; as carried out, only the fields. That ambiguity is the second move. Later it will be read as the moment the clock started on the house, in 1955, instead of 1928.',
+   "February 1955. The second attempt to make Mary's occupation look permissive. Western Ground Rents sues Frederick, its fields tenant, and gets a High Court order for possession of \"the whole of the farm\". Mary, who owns the house, is not in the case and is never heard. On 4 July they come to enforce it. Mary is just home from hospital, having lost a leg. They take the fields. They do not take the house: she stands her ground. But the family's account is that the woodland half of Parcel A goes too, passed to a couple in Llandough, who later give it to a charity, the Forest of Cardiff. The charity has not touched those woods since. Read the order for what it is. An order against a fields tenant can only start a clock on the fields. Western Ground Rents never owned the house, so there was no clock on the house for it to start. Later, that order will be read as the moment the clock started on her home.",
    [w('/1955-possession-order/#order', 'The 1955 Possession Order', 'Court record'), w('/1955-possession-order/#enforcement', 'The 1955 Possession Order — enforcement', 'Court record')],
-   ledger={'S': 'Move 2: High Court order against Frederick for "the whole of the farm" (enforced on the fields only)',
+   ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland half of Parcel A taken in 1955 (family account)',
+           'S': 'Attempt 2: High Court order against the fields tenant for "the whole of the farm" (house not taken; Mary never heard)',
            'B': 'Freehold and possession: Western Ground Rents (fields taken 4 July 1955)'})
 sc('III', 'ghf-19590101-1', '1959-01-01', '1959', 'Mary says no', 'Great House Farm', 'A',
    'Court record',
-   'Move three. In 1959 Western Ground Rents offers Mary a tenancy of the farmhouse and garden, on their own. Why offer a tenancy of a house you already own? Because if she signs, she becomes a tenant, and a tenant cannot claim to own. She refuses. The house is hers, she tells them, through her grandfather, and there are documents to prove it. The documents are in someone else\'s hands. The court will one day record that they were "never produced".',
+   "The third attempt. In 1959 Western Ground Rents offers Mary a tenancy of the farmhouse and garden, on their own. Why offer a tenancy of a house you claim to own already? Because if she signs, she becomes a tenant, and a tenant's occupation is permissive by definition. She refuses. The house is hers, she tells them, through her grandfather, and there are documents to prove it. The documents are in someone else's hands. The court will one day record that they were \"never produced\".",
    [w('/1962-possession-order/#refusal-1959', 'The 1962 Possession Order — 1959 refusal', 'Court record'), JUDG],
-   ledger={'S': 'Move 3: tenancy of the farmhouse and garden offered to Mary (refused)'})
+   ledger={'S': 'Attempt 3: tenancy of her own farmhouse and garden offered to Mary (refused)'})
 sc('III', 'ghf-19621211-1', '1962-12-11', '11 December 1962', 'The 1962 order', 'Cardiff County Court', 'A',
    'Court record',
-   "Move four, and the one that will matter most. 11 December 1962: in Cardiff County Court, Judge Temple Morris QC orders Frederick and Mary out of the farmhouse and garden, and to pay for every year back to 1955. For the first time Mary is named. But this is a possession order, not a ruling on title: it treats her as someone holding over on the old 'whole farm' tenancy, not as an owner. Western Ground Rents proves no deed to the house, because it has none. And then it does nothing. The order is never carried out. It goes into a drawer. Twenty-five years from now, it is what will save BP's case.",
+   "The fourth attempt, and the one that will matter most. 11 December 1962: in Cardiff County Court, Judge Temple Morris QC orders Frederick and Mary out of the farmhouse and garden, and to pay for every year back to 1955. For the first time Mary is named. But it is a possession order, not a ruling on title: it treats her as someone holding over on the old 'whole farm' tenancy, a permitted occupier who has outstayed her welcome, not as an owner. Western Ground Rents proves no deed to the house, because it has none. And then it does nothing. The order is never carried out. It goes into a drawer. Twenty-five years from now, it is what will save BP's case.",
    [w('/1962-possession-order/#order', 'The 1962 Possession Order', 'Court record'),
     LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration (29 March 1961 deed)')],
    aliases=['ghf-19610329-1'],
-   ledger={'S': 'Move 4: county court possession order for the farmhouse and garden (WGR v Frederick and Mary) · never enforced'})
+   ledger={'S': 'Attempt 4: county court possession order for the farmhouse and garden, treating Mary as holding over (no deed proven; never enforced)'})
 sc('III', 'ghf-19630601-1', '1963-06-01', 'June 1963', 'Committal', 'Cardiff County Court', 'A',
    'Court record',
    'The landlord goes after Frederick for the money under the order, and committal proceedings follow. Possession is not taken. The money, not the house, is enforced. The threat of prison now hangs over the family for staying in their own home.',
@@ -318,9 +319,9 @@ sc('III', 'ghf-19630601-1', '1963-06-01', 'June 1963', 'Committal', 'Cardiff Cou
    aliases=['ghf-19630101-1'])
 sc('III', 'ghf-19650301-1', '1965-03-02', 'January – March 1965', 'Two pounds a week', "Landlords' agents", 'A',
    'Document',
-   "Move five. 2 March 1965: the agents offer 'Mrs Williams' a weekly tenancy of the farmhouse and garden at two pounds a week. It is the same trap as 1959: sign, and the owner becomes a tenant. Mary does not sign it, does not send it back, and does not pay. And now even the landlord's own records count her occupation as adverse: hers, not theirs. Every attempt to make her a tenant has failed.",
+   "The fifth attempt. 2 March 1965: the agents offer 'Mrs Williams' a weekly tenancy of the farmhouse and garden at two pounds a week. The same trap as 1959: sign, and the owner becomes a tenant. Mary does not sign it, does not send it back, and does not pay. Even the landlord's own records now count her occupation as adverse: hers, not theirs. Step back and look at the pattern. An owner who holds the deed to a house does not need to fold it into someone else's tenancy, word an order against the wrong tenant, offer the occupier a tenancy, then another. An owner sues on its deed. Western Ground Rents never once did.",
    [w('/1962-possession-order/#offer-1965', 'The 1965 offer'), w('/mary-williams/#chronology', 'Mary Williams — 1965 offer')],
-   ledger={'S': 'Move 5: weekly tenancy offered to "Mrs Williams" (not signed; her occupation now treated as adverse)'})
+   ledger={'S': 'Attempt 5: weekly tenancy offered to "Mrs Williams" (not signed; her occupation now treated as adverse)'})
 sc('III', 'ghf-19640101-1', '1965-06-01', '1964 – 68', 'A rumoured sale', 'Great House Farm', '?',
    'Family account',
    'Somewhere in these years, a cousin will later say, the eldest son sells "our land parcel" through a solicitor, behind his parents\' backs. What he sold, and to whom, has never come to light. In 1968 he and his household leave the farm.',
@@ -341,8 +342,9 @@ sc('IV', 'ghf-19691231-1', '1969-12-31', '31 December 1969', 'The handover', 'Gr
            'S': 'Held by BP Pension Trust: the 1962 order and the case against Mary (no deed to Parcel A; the 1969 root conveyance now missing)'})
 sc('IV', 'ghf-19720725-1', '1972-07-25', '1970 – 72', 'Plans drawn around her', 'Planning office', 'AB',
    'Planning file',
-   'Around Mary, the plans are already being drawn. In 1970 land by Leckwith Road is registered as a village green. In July 1972 planning permission is granted for houses on the site, with Mary still living in the middle of it. The development needs the house. The house needs a title.',
-   [REDEV, TL], aliases=['ghf-19700616-1'])
+   "Around Mary, the plans are already being drawn. The council takes the land south of her farmhouse, part of Parcel A, and in 1970 it is registered as village green VG41; by the 1980s it is laid out as a green. In July 1972 planning permission is granted for houses on the site, with Mary still living in the middle of it. Piece by piece, Parcel A is being taken from around her. The development needs the house. The house needs a title.",
+   [REDEV, TL], aliases=['ghf-19700616-1'],
+   ledger={'A': 'Freehold: the Williamses (Mary in the house) · woodland taken 1955 · land south of the farmhouse taken by the council: village green VG41 (1970)'})
 sc('IV', 'ghf-19740101-1', '1974-01-01', '1974', 'Half a survey', 'Great House — interior', 'A',
    'Heritage record',
    "The Royal Commission sends a surveyor to record the old house. He gets as far as the ground floor. The rest, he notes, cannot be examined 'because of problems of access created by an ownership dispute'. A public body writes it down in 1974: the ownership of this house is disputed.",
@@ -360,11 +362,11 @@ sc('IV', 'ghf-19740703-1', '1974-07-03', '3 July 1974', 'Mary pleads ownership',
    ledger={'A': 'Freehold claimed by Mary, in occupation · ownership pleaded in court, 3 July 1974 (adjourned, never decided)'})
 sc('IV', 'ghf-19741031-1', '1974-10-31', 'September – October 1974', 'The licence letters', 'Great House Farm', 'A',
    'Court record',
-   "Move six, and the cleverest. Instead of fighting the title case it started, BP reaches back for the old 1962 order. On 19 September it gets leave to enforce it; Mary is given no notice. Then, on 31 October, BP withdraws the warrant and writes to her instead, 'licensing' her to stay in the farmhouse rent-free for the rest of her life. Why would an owner need a licence? She doesn't, and she never accepts it. But a licence does not need to be accepted to be useful. On paper, from today, BP can say she lives there with its permission. BP keeps the letters.",
+   "The sixth attempt, and the one that works. Instead of fighting the title case it started, BP reaches back for the old 1962 order. On 19 September it gets leave to enforce it; Mary is given no notice. Then, on 31 October, BP withdraws the warrant and writes to her instead, 'licensing' her to stay in the farmhouse rent-free for the rest of her life. Why would an owner need a licence? She doesn't, and she never accepts it. But a licence does not need to be accepted to be useful. On paper, from today, BP can say she lives there with its permission. A tenancy refused, a tenancy refused, an order never enforced, and now a licence nobody asked for: sequence, stealth, force and licence. It is how you build permission when you have no deed. BP keeps the letters.",
    [w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record'), JUDG,
     w('/1974-licence-letters/#warrant', 'The 1974 Licence Letters — the warrant', 'Court record')],
    aliases=['ghf-19741031-2', 'ghf-19740919-1'],
-   ledger={'S': 'Move 6: BP\'s "licence" letters to Mary, 31 October 1974 (never accepted); 1962 warrant withdrawn'})
+   ledger={'S': 'Attempt 6: BP\'s "licence" letters to Mary, 31 October 1974 (never accepted); 1962 warrant withdrawn'})
 sc('IV', 'ghf-19741119-1', '1974-11-19', '19 November, 1970s (year unclear)', '"Grievous loss"', 'Western Mail — letters', 'A',
    'Newspaper',
    "A letter to the Western Mail warns that pulling down Great House would wipe out the site of St Dochdwy's Celtic monastery, and traces the land back through Tewkesbury Abbey, the Crown, the Herberts and Bute. The true chain of title is printed in a newspaper. Nobody follows it.",
@@ -372,9 +374,9 @@ sc('IV', 'ghf-19741119-1', '1974-11-19', '19 November, 1970s (year unclear)', '"
     w('/restoration-campaign/#open-day-1974', 'The Restoration Campaign')])
 sc('IV', 'ghf-19750523-1', '1975-05-23', '23 May 1975', 'A deed for the mimic', 'BP Pension Trust / BP Properties', 'A',
    'Land Registry record',
-   "Move seven. 23 May 1975: the BP Pension Trust conveys property at Great House Farm to its sister company, BP Properties, with a plan. The Court of Appeal will later call this 'the actual conveyance of the farmhouse and garden'. Stop there. One BP company is conveying Mary's house to another, while Mary lives in it and claims it in court. The seller has no deed to the house from Bute, from the Thomases or from anyone. But after today, the synthetic Parcel A has something it never had before: a conveyance of its own.",
+   "Now the paper. 23 May 1975: the BP Pension Trust conveys property at Great House Farm to its sister company, BP Properties, with a plan. The Court of Appeal will later call this 'the actual conveyance of the farmhouse and garden'. Stop there. One BP company is conveying Mary's house to another, while Mary lives in it and claims it in court. The seller has no deed to the house from Bute, from the Thomases or from anyone. But after today, the synthetic Parcel A has something it never had before: a conveyance of its own.",
    [LRT('conveyances', 'Land Registry Titles — conveyances')],
-   ledger={'S': 'Move 7: conveyance BP Pension Trust → BP Properties of "the farmhouse and garden" (no earlier deed to Parcel A behind it)'})
+   ledger={'S': 'Paper: conveyance BP Pension Trust → BP Properties of "the farmhouse and garden" (no earlier deed to Parcel A behind it)'})
 sc('IV', 'ghf-19800522-1', '1980-05-22', '22 May 1980', '"The most rapacious ground landlord"', 'House of Commons', '',
    'Parliament',
    "In May 1980 Ted Rowlands MP tells the House of Commons that Western Ground Rents, 'the most rapacious ground landlord' in South Wales, has been bought by the BP pension fund. The company that built the case against the house in the 1950s and 60s, and the company that inherited it, are now one family.",
@@ -389,15 +391,15 @@ sc('IV', 'ghf-19821001-1', '1982-10-01', '1 October 1982', 'A warning about the 
    aliases=['ghf-19780101-1', 'ghf-press-19800417-n05', 'ghf-19830313-1'])
 sc('IV', 'ghf-19821119-1', '1982-11-19', '19 – 30 November 1982', 'First registration: the fields', 'HM Land Registry', 'AB',
    'Land Registry record',
-   "Move eight. November 1982: BP's solicitors apply to register the land at HM Land Registry for the first time, as one main title. Once land is registered, the register is the title. Mary is seventy and living in the farmhouse. Nothing on the file shows anyone asking her what she claims.",
+   "November 1982: BP's solicitors apply to register the land at HM Land Registry for the first time, as one main title. Once land is registered, the register is the title. Mary is seventy and living in the farmhouse. Nothing on the file shows anyone asking her what she claims.",
    [LRT('first-registration', 'Land Registry Titles — first registration'),
     w('/scrutiny-and-accountability/procedural-fairness-notice/1982-83-registration-opportunity-to-object/', '1982–83 Registration & Opportunity to Object', 'Analysis')],
    ledger={'B': 'Registered: BP Properties, main title WA231076 (applied 30 November 1982)'})
 sc('IV', 'ghf-19830223-1', '1983-02-23', '23 February 1983', 'First registration: the mimic', 'HM Land Registry', 'A',
    'Land Registry record',
-   "Move nine. February 1983: a second application, for the farmhouse and garden as a separate title, resting on the 1975 conveyance between the two BP companies. The solicitors certify that they know of no question or doubt affecting the title. The woman who pleaded ownership in court nine years ago is living in the house. Now the synthetic Parcel A is not just a conveyance. It is a registered title, issued by the state.",
+   "February 1983: a second application, for the farmhouse and garden as a separate title, resting on the 1975 conveyance between the two BP companies. The solicitors certify that they know of no question or doubt affecting the title. The woman who pleaded ownership in court nine years ago is living in the house. Now the synthetic Parcel A is not just a conveyance. It is a registered title, issued by the state.",
    [LRT('first-registration', 'Land Registry Titles — first registration'), LEGAL],
-   ledger={'S': 'Move 9: registered as a separate title, WA240304, on the 1975 conveyance ("no question or doubt")'})
+   ledger={'S': 'Paper: registered as a separate title, WA240304, on the 1975 conveyance ("no question or doubt")'})
 sc('IV', 'ghf-19830326-1', '1983-03-26', '26 March 1983', 'Mary dies', 'Great House Farm', 'A',
    'Family account',
    'On 26 March 1983, a month later, Mary Williams dies in the farmhouse where she was born. She dies an owner who never signed a tenancy and never accepted a licence, with her claim never decided. Her son Billy inherits it, and the house, and the fight.',
@@ -417,7 +419,7 @@ sc('V', 'ghf-19840522-1', '1984-05-22', '1984', "BP's writ", 'BP Properties', 'A
    aliases=['ghf-19840113-1'])
 sc('V', 'ghf-19860710-1', '1986-07-10', '10 July 1986', 'Judgment for BP', 'High Court, Cardiff', 'A',
    'Court record',
-   "10 July 1986, the High Court at Cardiff. Mr Justice Hollis finds for BP: the 1974 letters gave Mary a licence, so her possession was never adverse. Move six has done its work. The deed of 1877, the receipt of 1928, the 1939 plan that left the house out: none of it is before him. The question of who owns the house is never put.",
+   "10 July 1986, the High Court at Cardiff. Mr Justice Hollis finds for BP: the 1974 letters gave Mary a licence, so her possession was never adverse. The sixth attempt has done its work. The deed of 1877, the receipt of 1928, the 1939 plan that left the house out: none of it is before him. The question of who owns the house is never put.",
    [w('/bp-properties-v-buckler/#high-court', 'BP Properties Ltd v Buckler — High Court', 'Court record'),
     w('/scrutiny-and-accountability/court-judicial-issues/bp-v-buckler-scope-decided-undecided/', 'BP v Buckler: Scope, Decided & Undecided', 'Analysis')])
 sc('V', 'ghf-19860711-1', '1986-07-11', '1986 – 87', 'A file goes missing', 'Royal Commission (RCAHMW)', 'A',
@@ -426,14 +428,14 @@ sc('V', 'ghf-19860711-1', '1986-07-11', '1986 – 87', 'A file goes missing', 'R
    [w('/scrutiny-and-accountability/legal-review-fraud-land-human-rights/#loss-pattern', 'Legal Review — the loss pattern', 'Analysis')])
 sc('V', 'ghf-19870202-1', '1987-02-02', '2 February 1987', 'The merger', 'HM Land Registry', 'AB',
    'Land Registry record',
-   "Move ten. 2 February 1987, with Billy's appeal still waiting to be heard: an application to fold the separate farmhouse title into the main title for the fields. The synthetic Parcel A disappears into Parcel B. From now on there is no separate record of the house to examine, no line on the register where its missing root could be noticed. There is just one title, and it says 'BP'. The true Parcel A is still there, underneath. It has never been extinguished. It has simply been buried.",
+   "2 February 1987, with Billy's appeal still waiting to be heard: an application to fold the separate farmhouse title into the main title for the fields. The synthetic Parcel A disappears into Parcel B. From now on there is no separate record of the house to examine, no line on the register where its missing root could be noticed. There is just one title, and it says 'BP'. The true Parcel A is still there, underneath. It has never been extinguished. It has simply been buried.",
    [LRT('first-registration', 'Land Registry Titles — amalgamation'),
     w('/scrutiny-and-accountability/procedural-fairness-notice/1987-hmlr-amalgamation-during-appeal/', '1987 HMLR Amalgamation During Appeal', 'Analysis')],
    ledger={'S': None, 'B': None,
            'M': 'Registered: BP Properties, WA231076 = Parcel B + synthetic Parcel A (farmhouse title folded in, 2 February 1987)'})
 sc('V', 'ghf-19870731-1', '1987-07-31', '31 July 1987', 'The Court of Appeal', 'Court of Appeal, London', 'A',
    'Court record',
-   "31 July 1987, the Court of Appeal. Here is the twist. The judges find that Frederick and Mary were in adverse possession of the house from 1955. The clock was running against the landlord. So why does BP win? Because of two moves. The 1962 order, never enforced, was brought within twelve years and so stopped the clock. And the 1974 letters made Mary's possession permissive, the court holds, whether she accepted them or not. Her title documents, the judgment notes, were 'never produced'. Nobody asks where they went. BP is recorded as having 'the paper title to the farm'. Nobody tests that paper against 1877. BP Properties Ltd v Buckler goes into the law books as a leading case on adverse possession. It decided possession. It never decided ownership.",
+   "31 July 1987, the Court of Appeal. Here is the twist. The judges find that Frederick and Mary were in adverse possession of the house from 1955. The clock was running against the landlord. So why does BP win? Because of two of the attempts. The 1962 order, never enforced, was brought within twelve years and so stopped the clock. And the 1974 letters made Mary's possession permissive, the court holds, whether she accepted them or not. But look at where the clock was started: 1955, the year of an order against a fields tenant, as if the house were part of the fields. Count from 1928, as the house's own history requires, and the twelve years were up in 1940, fifteen years before any order. Her title documents, the judgment notes, were 'never produced'. Nobody asks where they went. BP is recorded as having 'the paper title to the farm'. Nobody tests that paper against 1877. BP Properties Ltd v Buckler goes into the law books as a leading case on adverse possession. It decided possession. It never decided ownership.",
    [JUDG, w('/bp-properties-v-buckler/#omits', 'BP Properties Ltd v Buckler — what it omits', 'Analysis')],
    ledger={'A': 'Freehold claim: Billy Buckler · never adjudicated, never extinguished (judgment decides possession only)',
            'M': 'WA231076, BP Properties · right to possession upheld (1962 order + 1974 licence)'})
@@ -592,10 +594,11 @@ sc('VII', 'ghf-19940728-1', '1994-07-28', '28 July 1994', 'Who owns the dead', '
    [ARCH, LEGAL])
 sc('VII', 'ghf-19941110-1', '1994-11-10', '1994 – 96', 'Church View Close', 'Woodland — WA735527', 'A',
    'Land Registry record',
-   "In November 1994 the woodland above the house, part of the true Parcel A, passes to the Forest of Cardiff under a title of its own. The power lines go in. The houses go up. Church View Close is built over the farm, and new titles are carved out of the merged one, house by house.",
+   "In November 1994 the Forest of Cardiff's title to the woodland, the half of Parcel A the family say was taken in 1955, is registered. The power lines go in. The houses go up. Church View Close is built over the farm, and new titles are carved out of the merged one, house by house.",
    [w('/woodland/', 'Woodland'), LRT('later-dealings', 'Land Registry Titles — later dealings'), REDEV],
    aliases=['ghf-19950628-1'],
-   ledger={'M': 'WA231076 and the house titles carved from it (Church View Close) · woodland to the Forest of Cardiff, WA735527'})
+   ledger={'M': 'WA231076 and the house titles carved from it (Church View Close)',
+           'A': "Freehold claim: Mary's heirs · never adjudicated, never extinguished · woodland now registered to the Forest of Cardiff (WA735527) · land to the south a village green"})
 sc('VII', 'ghf-20050101-1', '2005-01-01', '2005', 'The cemetery in print', 'Medieval Archaeology', '?',
    'Archaeological record',
    'In 2005 the cemetery is published in a learned journal: 1,026 burials. It tells the story of the dead. It does not tell the story of the family whose home stood over them, or of how that home came down.',
@@ -675,7 +678,7 @@ sc('VIII', 'ghf-20261006-1', '2026-10-06', 'September – October 2026', 'The qu
 # ---------------------------------------------------------------- EPILOGUE
 sc('E', 'ghf-99990101-1', '9999-01-01', 'Today', 'How it was done', 'The two titles', 'AB',
    'Analysis',
-   "So here is how it was done. Not with one forged deed, but with ten moves, each lawful on its own. Two words in 1916 made two parcels one farm. An unwritten tenancy of the fields became a handle on the house. A court order against the tenant was worded for the whole farm. Tenancies were offered to the owner, and refused. A possession order was made and left in a drawer. BP took the fields by deed and the case against the house with them. A licence was sent to a woman who never asked for one. One BP company conveyed the house to another. The state registered it, then folded it into the fields. And the courts, asked only who had the right to possession, never had to ask who owned the house. In English law, possession can be awarded without ownership ever being tried, and a title can be registered without any court deciding a rival claim to the same land. Neither step, on its own, decides the older title. Every move went through one of those two doors.",
+   "So here is how it was done. Not with one forged deed, but with a sequence. First, two words in 1916 made two parcels one farm, in a landlord's document, never the family's. Then six attempts to make Mary's occupation of her own house look permissive: her house spoken of as part of her husband's fields tenancy; an order against the fields tenant worded for the whole farm; a tenancy offered, and refused; a possession order made and left in a drawer; another tenancy offered, and refused; and a licence she never asked for and never accepted. Alongside them, the woodland and the land to the south were taken from around her. Then the paper: BP took the fields by deed and the case against the house with them; one BP company conveyed the house to another; the state registered it, then folded it into the fields. And the courts, asked only who had the right to possession, counted the clock on her house from an order about the fields, and never had to ask who owned it. In English law, possession can be awarded without ownership ever being tried, and a title can be registered without any court deciding a rival claim to the same land. Neither step, on its own, decides the older title. Every move went through one of those two doors.",
    [w('/the-two-parcels/', 'The Two Parcels — the title test'), JUDG, LRT('first-registration', 'Land Registry Titles'), LEGAL])
 sc('E', 'ghf-99990101-2', '9999-01-02', 'Today', 'Who holds it now', 'Church View Close, Llandough', 'A',
    'Analysis',

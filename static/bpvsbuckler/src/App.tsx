@@ -332,7 +332,7 @@ function Storyline({ current, onPick, compact }: { current?: number; onPick: (i:
           <text className="sl-lbl" x={x(600) + 2} y={82}>Great House: one farm</text>
           <text className="sl-lbl a" x={x(1877) + 14} y={24}>Parcel A: the true title (Bute → Thomas → Williams)</text>
           <text className="sl-lbl a" x={x(1950) + 6} y={52}>deeds taken 1950 · buried, never extinguished</text>
-          <text className="sl-lbl s" x={x(1949) + 6} y={82}>Synthetic Parcel A: tenancies, orders, licence, conveyance, registration</text>
+          <text className="sl-lbl s" x={x(1949) + 6} y={82}>Synthetic Parcel A: six attempts to make Mary look permitted, then deed and register</text>
           <text className="sl-lbl b" x={x(1877) + 14} y={168}>Parcel B: the fields (Bute → WGR → BP)</text>
           <text className="sl-lbl m" x={x(1987) + 18} y={114}>merged 1987: "A &amp; B"</text>
           {ticks.map((t) => (

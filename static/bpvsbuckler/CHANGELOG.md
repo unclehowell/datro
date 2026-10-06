@@ -1,5 +1,16 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.54] - 2026-10-06
+
+### Content
+- The ploys against Mary are now named for what they were: six attempts to make her occupation of her own house look permissive (1949 house spoken of as part of Frederick's fields tenancy, which she rejected while still holding the paper title; the 1955 "whole of the farm" order against the fields tenant; the 1959 and 1965 tenancy offers; the unenforced 1962 order treating her as holding over; the 1974 licence letters). The 1975 conveyance, 1983 registration and 1987 merger are told as the paper steps that followed
+- 1940: the family's title by possession (rent-free since 1928) is now Mary's household's, and the narration says plainly that from 1940 there was no basis to call her occupation permissive
+- 1955: Mary just home from hospital after losing a leg; the family's account that the woodland half of Parcel A was taken in 1955, passed to a couple in Llandough and later to the Forest of Cardiff, which has left it untouched; and why an order against a fields tenant could only start a clock on the fields
+- 1970–72: the council's taking of the land south of the farmhouse, registered as village green VG41 and laid out as a green in the 1980s
+- The conflation of the two parcels is attributed to the landlords' documents, never the family; the 1965 and 1974 scenes set out what the sequence of tenancies, orders and licence implies about the deed nobody produced
+- Court of Appeal scene: the clock was started in 1955 from an order about the fields; counted from 1928, twelve years ran out in 1940
+- Title ledger and storyline labels updated to match
+
 ## [bpvsbuckler-v0.0.0.53] - 2026-10-06
 
 The story retold as a legal thriller about the title chain.
