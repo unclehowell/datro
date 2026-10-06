@@ -1,5 +1,18 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.55] - 2026-10-06
+
+### Content
+- The story is now unpacked on the two-parcel reading throughout. "The whole farm" (1916) is named as the birth of a synthetic, single-estate farm that existed only on paper; every case against the family was fought over it
+- 1955: why an order against the fields tenant could only reach Parcel B, so any clock that started then was a clock on the fields; the insinuation that it reached the house was later mistaken for fact
+- "The farmhouse and garden" (1959, 1962, 1975, 1983) explained as Parcel A, less the woodland to the north and the land to the south already taken, and as proof the landlords treated the house parcel as separate
+- 1974: Mary's statement of the 1877 split, the case no lawyer of hers ever built
+- 1984–87: the family's defence of adverse possession from 1955 shown as a claim to a mythical estate, fought on the other side's map, when Parcel A had been theirs since 1928 and by possession since 1940; the 1987 merger as proof that BP and the Land Registry knew the parcels were two; the Court of Appeal reading a separate conveyance of "the farmhouse and garden" yet deciding one farm
+- New epilogue scene "Who knew": what the family knew, what WGR, BP, the Land Registry and the court plainly knew, the mess everyone made of the case, and the family's conclusion that it was a conspiracy against them
+
+### Design
+- New panel on 22 scenes, "The words, and what they meant": each phrase of the time (e.g. "the whole farm", "the farmhouse and garden", "the paper title to the farm", "registered correctly") decoded on the two-parcel reading; also in the printable script, llms.txt and api/timeline.json (`words`)
+
 ## [bpvsbuckler-v0.0.0.54] - 2026-10-06
 
 ### Content

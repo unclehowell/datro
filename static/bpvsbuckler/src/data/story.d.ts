@@ -5,6 +5,6 @@ export interface Scene {
   id: string; act: string; no: number; ref: string; date: string; when: string; title: string; place: string;
   parcel: string; basis: string; narration: string; case: string | null; evidence: Evidence[];
   image: string | null; aliases: string[]; cast: string[];
-  ledger: [string, string][]; moved: string[];
+  ledger: [string, string][]; moved: string[]; words: [string, string][];
 }
 export interface Story { title: string; acts: Act[]; cast: CastMember[]; lanes: Record<string, string>; aliases: Record<string, string>; scenes: Scene[] }

@@ -207,3 +207,11 @@ button.chip:hover, a.chip:hover { color: var(--limewash); }
 .mk.ln-w, .mk.ln-m { fill: var(--parcel-ab); } .mk.ln-a { fill: var(--parcel-a); } .mk.ln-b { fill: var(--parcel-b); } .mk.ln-s { fill: var(--synthetic); }
 .mk.on { stroke: var(--limewash); stroke-width: 2.5; }
 .mk:hover, .mk:focus-visible { stroke: var(--limewash); outline: none; }
+
+/* ---------------- the words, and what they meant */
+.words { margin: 0 0 22px; max-width: 40em; background: var(--slate-2); border-left: 3px solid var(--parcel-ab); border-radius: 0 4px 4px 0; padding: 14px 18px; }
+.words h2 { font-size: 13px; font-weight: 600; color: var(--lias); margin: 0 0 8px; letter-spacing: .02em; text-transform: uppercase; }
+.words dl { margin: 0; }
+.words dt { font-family: var(--serif); font-size: 18px; font-style: italic; color: var(--limewash); margin-top: 8px; }
+.words dt:first-child { margin-top: 0; }
+.words dd { margin: 2px 0 0; font-size: 14.5px; line-height: 1.5; color: var(--lias); }

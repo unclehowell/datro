@@ -219,6 +219,7 @@ function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: S
           {cast.map((c) => <button key={c.id} className="chip" onClick={onCast}>{c.name}</button>)}
         </div>
         {scene.case && <section className="case"><h2>The family's case</h2><p>{scene.case}</p></section>}
+        <Words scene={scene} />
         <Ledger scene={scene} />
         <Storyline current={scene.no - 1} onPick={onPick} compact />
         <section className="ev">
@@ -350,6 +351,18 @@ function Storyline({ current, onPick, compact }: { current?: number; onPick: (i:
         </svg>
       </div>
     </figure>
+  );
+}
+
+function Words({ scene }: { scene: Scene }) {
+  if (!scene.words.length) return null;
+  return (
+    <section className="words" aria-label="The words, and what they meant">
+      <h2>The words, and what they meant</h2>
+      <dl>
+        {scene.words.map(([q, m]) => (<React.Fragment key={q}><dt>{q}</dt><dd>{m}</dd></React.Fragment>))}
+      </dl>
+    </section>
   );
 }
 
