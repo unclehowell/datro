@@ -1,5 +1,17 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.52] - 2026-10-06
+
+The story retold as a narrated film.
+
+### Content
+- Narration rewritten as a film script: present tense, the most plausible account the evidence supports, told plainly instead of in the wiki's catalogue voice. The theme is the title chain, the family, and how the house was taken: the 1877 split, the 1928 last rent, the "whole farm" wording, the papers taken from the blanket box, the possession orders, BP's registration of the house while Mary lived in it, the courts deciding possession but never ownership, the demolition, the thousand graves, and the silence since
+- "The family's case" notes folded into the narration
+- Acts retitled: The Great House, The Bargain, The House Is Theirs, The Papers Vanish, BP, Possession Not Ownership, Bulldozed Before Breakfast, Built Over, The Silence, Today
+- 129 scenes tightened to 99: administrative and side-site scenes merged into the scenes they belong to, keeping every evidence link; every old scene id still redirects. Scene references after VI.2 change as a result (e.g. "Bulldozed before breakfast" is now VI.11)
+- Epilogue rebuilt as a build-up to today: who holds the land, the register and the dead; the village history that leaves the Great House out; no inquiry, no apology, no reparation; what the family ask for
+- Opening page, Storyboard and Cast introductions rewritten to match
+
 ## [bpvsbuckler-v0.0.0.51] - 2026-10-06
 
 Evidence-link repair. Story wording, scene order, scene ids, evidence titles and catalogue references are unchanged.

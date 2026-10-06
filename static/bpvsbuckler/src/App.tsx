@@ -243,7 +243,7 @@ function Board({ onPick }: { onPick: (i: number) => void }) {
   return (
     <div className="sheet">
       <h1>Storyboard</h1>
-      <p className="intro">Every event in the Great House Farm Wiki, in date order, one panel each. Pick a panel to open the scene, its evidence and the family's case.</p>
+      <p className="intro">The whole story, in order, one panel a scene: from the church beside the Great House to the houses that stand on it today. Pick a panel to open the scene and the evidence behind it.</p>
       <div className="legend">
         <span><i className="p-A" />House parcel (A)</span><span><i className="p-B" />Fields (B)</span>
         <span><i className="p-AB" />Whole farm (A + B)</span><span><i className="p-x" />Unknown, or not the farm</span>
@@ -274,7 +274,7 @@ function Cast({ onPick }: { onPick: (i: number) => void }) {
   return (
     <div className="cast">
       <h1>Cast</h1>
-      <p className="intro">The people and bodies in the story, and the scenes they appear in.</p>
+      <p className="intro">The family, the companies, the courts and the public bodies, and the scenes they appear in.</p>
       {S.cast.map((c) => {
         const in_ = scenes.map((s, i) => [s, i] as const).filter(([s]) => s.cast.includes(c.id));
         return (
@@ -309,7 +309,7 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
       <div className="tx">
         <h1>Tŷ Mawr</h1>
         <div className="sub">The Great House Farm story, Llandough</div>
-        <p className="log">For three centuries, by the family's account, the Williamses lived beside St Dochdwy's church. In 1877 the farm was split in two. A century later their papers were gone, BP owned the fields, and the courts gave BP the house. On 6 December 1988 it was bulldozed before breakfast. This is the whole story, in order, with the evidence for every scene.</p>
+        <p className="log">For three hundred years the Williamses lived in the Great House beside St Dochdwy's church. In 1877 the farm was cut in two, and the house was promised to them. Then their papers vanished, an oil company's pension fund bought in, and the courts gave BP the house without ever asking who owned it. On 6 December 1988 it was bulldozed before breakfast. A thousand graves came out of the ground, and twenty houses went up. There has been no inquiry and no reparation. This is how it was done.</p>
         <div className="btns">
           <button className="btn primary" onClick={onPlay}>{Icon.play} Play from the beginning</button>
           <button className="btn" onClick={onBoard}>{Icon.grid} Open the storyboard</button>
@@ -320,7 +320,7 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
           <div><b>{S.acts.length - 2}</b>acts, with prologue and epilogue</div>
           <div><b>{evidence}</b>evidence links</div>
         </div>
-        <p className="howto">For producers, researchers and cast: every scene has a reference (for example VI.9) and a permanent link, and every claim links to the document behind it on the <a href="https://greathousefarmwiki.wordpress.com/">Great House Farm Wiki</a>. Where something rests on the family's account rather than a document, the scene says so. See the <a href="#" onClick={(e) => { e.preventDefault(); onCast(); }}>cast list</a>, or download the data as <a href="/api/timeline.json">JSON</a>.</p>
+        <p className="howto">For producers, researchers and cast: every scene has a reference (for example VI.9) and a permanent link, and every scene links to the documents behind it on the <a href="https://greathousefarmwiki.wordpress.com/">Great House Farm Wiki</a>. See the <a href="#" onClick={(e) => { e.preventDefault(); onCast(); }}>cast list</a>, or download the data as <a href="/api/timeline.json">JSON</a>.</p>
         <div className="support">
           <span>Support the family's campaign:</span>
           {React.createElement('stripe-buy-button', { 'buy-button-id': 'buy_btn_1RuDNARibisCfpBQBMKwrMVc', 'publishable-key': 'pk_live_51OqlLnRibisCfpBQQsDU3l2hhMLoKwTcdiokINqNA4wWaLeBM5qkMyJDV3B6TIToBOKCh4WhEzff7isJCLYIJaUB0088uetffQ' })}
