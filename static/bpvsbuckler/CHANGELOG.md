@@ -1,5 +1,15 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.49] - 2026-10-06
+
+### Added
+- 149 chronological events taken from the Great House Farm Wiki evidence catalogue, in strict date order; the player starts at the first event (c. AD 650) and stops at the end
+- `?event=<id>` and `?year=<year>` deep links
+- New `/story/` page with schema.org JSON-LD
+- New `/story/transcript.txt` narration transcript
+- Regenerated `/api/timeline.json`, `/llms.txt` and `sitemap.xml`
+- Deploy workflow now builds the exports and ships `story/`
+
 ## [bpvsbuckler-v0.0.0.48] - 2026-10-05
 
 ### Added
