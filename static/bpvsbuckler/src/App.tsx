@@ -236,6 +236,18 @@ export default function App() {
             <div className="text-slate-500 text-[10px] sm:text-xs uppercase tracking-[0.2em] mb-3">NARRATION</div>
             <div className="text-slate-400 text-[10px] sm:text-xs mb-3 font-mono">{currentScene.location}</div>
             {renderHighlightedText(formatNarration(currentScene.narration, currentScene.year))}
+            <div className="mt-3 w-full text-left space-y-1">
+              <div className="text-[9px] sm:text-[10px] font-mono text-slate-600 break-all">
+                <a href="https://greathousefarmwiki.wordpress.com/evidence-library/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 underline underline-offset-2">greathousefarmwiki.wordpress.com/evidence-library/</a>
+                <span className="mx-1">·</span>
+                <a href="https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 underline underline-offset-2">press-articles-index/</a>
+              </div>
+              {Array.from(new Set((currentScene.sources || []).flatMap((s: any) => String(s).match(/https?:\/\/greathousefarmwiki\.wordpress\.com[^\s\)\]]*/g) || []))).slice(0, 3).map((url: string) => (
+                <div key={url} className="text-[9px] sm:text-[10px] font-mono text-slate-700 break-all">
+                  <a href={url} target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 underline underline-offset-2">{url.replace("https://","")}</a>
+                </div>
+              ))}
+            </div>
             {hasChallenge && characterIndex === 0 && (
               <button
                 onClick={() => setShowChallenge(showChallenge === sceneIndex ? null : sceneIndex)}
