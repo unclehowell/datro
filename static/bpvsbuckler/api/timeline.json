@@ -19,9 +19,9 @@
     "transcript": "https://bpvsbuckler.bucklerfamily.estate/story/transcript.txt",
     "llms": "https://bpvsbuckler.bucklerfamily.estate/llms.txt"
   },
-  "version": "v0.0.0.56",
+  "version": "v0.0.0.57",
   "last_updated": "2026-10-06",
-  "total_entries": 102,
+  "total_entries": 113,
   "acts": [
     {
       "id": "P",
@@ -85,6 +85,13 @@
       "title": "Records",
       "span": "2025 – 2026",
       "logline": "The family's records requests and complaints, and the replies."
+    },
+    {
+      "id": "O",
+      "label": "Stating the obvious",
+      "title": "Stating the obvious",
+      "span": "Plainly",
+      "logline": "What should have been said out loud all along."
     },
     {
       "id": "E",
@@ -473,7 +480,7 @@
           "note": "The estate's description of the family, repeated in every later account."
         }
       ],
-      "what_we_now_know": "Three centuries of continuous occupation by one family. Mary's account is that her ancestors bought it; the estate's records call them tenants. Their status changes in 1877 and 1928, not here.",
+      "what_we_now_know": "For more than three hundred years one family lived in the house where the manor's courts sat, beside one of the oldest churches in Wales. Generation after generation was born there, married there and died there. Mary's account is that her ancestors bought it. Whatever the estate's books called them, the Williamses were the people of the Great House. Not squatters. Not passing tenants. The family of the house.",
       "cast": [
         "mary"
       ],
@@ -745,7 +752,7 @@
       ],
       "received_account": "Nothing changed: Bute went on owning the farm, and the Williamses went on renting it.",
       "received_wording": [],
-      "what_we_now_know": "From 1877 there are two parcels with two owners: Parcel A (the house) owned by Thomas, Parcel B (the fields) owned by Bute. Anything Bute sells after 1877 can only be Parcel B. The agreement provided that the freehold of Parcel A would pass to the Williamses when quarrying ended.",
+      "what_we_now_know": "From 1877 there are two parcels with two owners: Parcel A, the house, owned by Thomas; Parcel B, the fields, owned by Bute. Anything Bute sells after 1877 can only be Parcel B. And the bargain made with a family who had already lived there for two hundred years was that when the quarrying ended, the house would be theirs.",
       "cast": [
         "mary",
         "thomas",
@@ -1033,7 +1040,7 @@
       ],
       "received_account": "Nothing happened in 1928. The tenancy of the whole farm carried on.",
       "received_wording": [],
-      "what_we_now_know": "The 1877 agreement took effect: quarrying ended and the freehold of Parcel A passed to the Williamses. From 1928 no rent was paid on Parcel A to anyone. Parcel A's chain is complete: Vaughan, Bute, Daniel Thomas, Williams.",
+      "what_we_now_know": "The bargain of 1877 came due. The quarrying ended, and the freehold of the house passed to the Williamses. From that day they never paid a penny to anyone for it again. Parcel A's chain was complete: the Vaughans, Bute, Daniel Thomas, the Williamses.",
       "cast": [
         "mary",
         "john",
@@ -1403,7 +1410,7 @@
           "note": "Court of Appeal, 1987."
         }
       ],
-      "what_we_now_know": "The family's paper title to Parcel A left the house in 1950–52, a year after Mary relied on it and within three years of the landlord's first proceedings. Mary believed the two were connected. The title was not extinguished; its proof was removed.",
+      "what_we_now_know": "Imagine it. The papers that proved your home was yours, kept safe in a blanket box for generations, carried out of the house by a stranger an estate agent had put under your roof. It happened a year after Mary relied on them, and within three years of the landlord's first court case. For the rest of her life she was told to produce documents that had been taken from her. The title was never extinguished. Only its proof was taken.",
       "cast": [
         "mary"
       ],
@@ -1500,7 +1507,7 @@
           "note": "The clock the courts later counted on the house."
         }
       ],
-      "what_we_now_know": "An order against a tenant of the fields can only return what was let and owned: Parcel B. It was enforced on the fields. On the family's account the woodland on the north of Parcel A was taken too, passing to a couple in Llandough and later to the Forest of Cardiff. Mary was not a party and was never heard. Any clock that started in 1955 was a clock on Parcel B. That the order reached the house was an insinuation, later read as fact: the second attempt to make Mary's occupation look permissive.",
+      "what_we_now_know": "An order against a tenant of the fields can only give back the fields, and that is what was taken. On the family's account the woodland went too, to a couple in Llandough and later to a charity. Mary was not a party and was never heard. She had just come home from hospital, having lost a leg, to find the landlord's men taking the farm around her, and she stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact.",
       "cast": [
         "mary",
         "frederick",
@@ -1972,7 +1979,7 @@
           "note": "Reported as a claim, not a title."
         }
       ],
-      "what_we_now_know": "A public statement of ownership of Parcel A, in a national newspaper, ten years before BP's writ.",
+      "what_we_now_know": "A woman of sixty, who had lost a leg, opened her home to the nation. Hundreds came. A thousand signed. She told a national newspaper the house was hers. The public stood with Mary. It changed nothing.",
       "cast": [
         "mary"
       ],
@@ -2075,7 +2082,7 @@
           "note": "BP's explanation to the press in 1988."
         }
       ],
-      "what_we_now_know": "Permission offered to an owner who never asked for it, and never accepted it, at the moment her plea of ownership was before the court. Sixth attempt to make her occupation look permissive, and the one the courts relied on.",
+      "what_we_now_know": "A woman in a wheelchair, who had lost a leg, was told by an oil company's pension fund that she could stay in her own house, as a favour, for the rest of her life. She never asked for it. She never accepted it. It arrived at the very moment her claim to own the house was in front of a judge. Thirteen years later it was used to take the house anyway.",
       "cast": [
         "mary",
         "bp"
@@ -2409,7 +2416,7 @@
           "note": "How BP would describe her."
         }
       ],
-      "what_we_now_know": "She died the owner of Parcel A, never having accepted a tenancy or licence, her claim never decided.",
+      "what_we_now_know": "She died in the house she was born in, seventy years later, still saying it was hers. She never signed a tenancy, never accepted a licence, and was never once heard on whether the house was her own.",
       "cast": [
         "mary"
       ],
@@ -2688,7 +2695,7 @@
           "note": "The court's recital."
         }
       ],
-      "what_we_now_know": "The court decided possession, not ownership. It counted the clock from 1955, from an order about Parcel B; counted from 1928, it ran out in 1940. BP's paper title was to Parcel B; for Parcel A it had only the 1975 BP-to-BP conveyance, which the court itself called the conveyance of the farmhouse and garden. Mary's documents were not produced because they were taken in 1950–52.",
+      "what_we_now_know": "The court decided possession, not ownership. It counted the clock from 1955, from an order about the fields; counted from 1928, it had run out in 1940. BP's paper title was to the fields; for the house it had only a deed between two BP companies, which the court itself called the conveyance of the farmhouse and garden. Mary's documents were not produced because they had been taken from her. The family lost in the High Court, lost on appeal, and were refused by the Lords. Every defeat was on who may live in the house. Nobody ever asked who owned it.",
       "cast": [
         "bp",
         "courts"
@@ -2816,7 +2823,7 @@
           "note": "BP's account of 1974."
         }
       ],
-      "what_we_now_know": "A man defending his home, with his children behind the door, on land his family owned.",
+      "what_we_now_know": "Billy was a father with his three small children behind a door an axe had just come through. The papers called him the chainsaw farmer. Nobody called the men with the axes anything at all. He was defending his home, on land his family had owned since 1928 and lived on since 1667.",
       "cast": [
         "mary",
         "billy",
@@ -2961,7 +2968,7 @@
           "note": "What BP was given."
         }
       ],
-      "what_we_now_know": "BP took possession of Parcel A, which it had never been shown to own.",
+      "what_we_now_know": "Billy was hurt and taken to hospital. Eight people lost their homes with the family that day. A family that had lived in the house for three hundred and twenty-one years was put out in an afternoon, by an order that never said whose house it was.",
       "cast": [
         "billy"
       ],
@@ -3012,7 +3019,7 @@
       "title_moves": [],
       "received_account": null,
       "received_wording": [],
-      "what_we_now_know": "The family's remaining papers were lost with the house.",
+      "what_we_now_know": "Mary's photographs, the family heirlooms, the papers, everything left of three centuries, in the house or in the road. Whatever remained of the family's own records went with it.",
       "cast": [
         "mary"
       ],
@@ -3099,7 +3106,7 @@
       "title_moves": [],
       "received_account": "The violent squatter was charged.",
       "received_wording": [],
-      "what_we_now_know": "The owner's son was prosecuted for resisting the enforcement of a possession order.",
+      "what_we_now_know": "He was taken from his hospital bed and charged. With Billy in hospital, then in the dock, then bailed away from the site, there was no one left standing between BP and the house. Within three days it was gone.",
       "cast": [
         "billy"
       ],
@@ -3188,7 +3195,7 @@
           "note": "Cadw, 5 December 1988."
         }
       ],
-      "what_we_now_know": "Both protections ended on the same day.",
+      "what_we_now_know": "On the same day, both doors closed: the court refused to wait for Strasbourg, and Cadw refused to list. Nothing now protected the house, and everyone knew it.",
       "cast": [
         "cadw",
         "courts"
@@ -3238,7 +3245,7 @@
           "note": "The heritage record, 1991."
         }
       ],
-      "what_we_now_know": "The house was destroyed the morning after the listing refusal, before it was fully recorded and while the European Commission application was pending. The title to Parcel A was not destroyed with it.",
+      "what_we_now_know": "At four in the morning, in the dark, before anyone could stop it. Branwen and her three small children watched their home come down. A thousand people had signed to save it. An MP had asked for the case to be looked at again. Strasbourg had not yet heard it. None of it mattered by breakfast. The house was destroyed before it was ever fully recorded. The title to Parcel A was not destroyed with it.",
       "cast": [],
       "evidence": [
         {
@@ -3476,7 +3483,7 @@
       "title_moves": [],
       "received_account": null,
       "received_wording": [],
-      "what_we_now_know": null,
+      "what_we_now_know": "The family who had lived in the Great House for three centuries were now planning to live in a bus.",
       "cast": [
         "billy"
       ],
@@ -3517,7 +3524,7 @@
           "note": "The Commission's reading of the domestic judgments."
         }
       ],
-      "what_we_now_know": "The Commission relied on the domestic courts, which had decided possession, not ownership. It did not see the title documents.",
+      "what_we_now_know": "Strasbourg relied on the British courts, which had decided possession, not ownership. It never saw a title deed. Another loss, on a question nobody had ever asked.",
       "cast": [],
       "evidence": [
         {
@@ -3774,7 +3781,7 @@
       ],
       "received_account": null,
       "received_wording": [],
-      "what_we_now_know": "Mary's claim to Parcel A passed, undecided, to his heirs.",
+      "what_we_now_know": "He was in his forties. He died in the village where he was born, without his home, without ever having had the one question that mattered answered. Mary's claim to the house passed, undecided, to his children.",
       "cast": [
         "billy"
       ],
@@ -4706,6 +4713,503 @@
     },
     {
       "order": 98,
+      "ref": "O.1",
+      "id": "ghf-obvious-01",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "They were not squatters",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "The Williams family lived at Great House from 1667 to 1988.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "A squatter was evicted after losing in court.",
+      "received_wording": [
+        {
+          "said": "\"squatter\"",
+          "note": "How the case was understood in the press and in the street."
+        }
+      ],
+      "what_we_now_know": "A squatter moves into a place that is not theirs. The Williamses were born in this house, married in it and died in it for three hundred and twenty-one years. They owned it from 1928, and by possession from 1940. Nobody who lives somewhere for three centuries is a squatter.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Mary's statement",
+          "title": "Mary Williams's statement (c. 1974)",
+          "url": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+        },
+        {
+          "type": "Wiki page",
+          "title": "The Williams / Buckler Family",
+          "url": "https://greathousefarmwiki.wordpress.com/williams-buckler-family/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-01"
+    },
+    {
+      "order": 99,
+      "ref": "O.2",
+      "id": "ghf-obvious-02",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "Mary never asked for permission",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "Mary Williams refused the tenancies offered in 1959 and 1965 and did not accept the 1974 letters.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "She lived there by the landlord's permission.",
+      "received_wording": [
+        {
+          "said": "\"licence\"",
+          "note": "1974; relied on in 1986 and 1987."
+        }
+      ],
+      "what_we_now_know": "You cannot be given permission you refuse. Every offer of a tenancy, and the licence, was an attempt to turn an owner into a guest in her own house. She said no every time.",
+      "cast": [
+        "mary"
+      ],
+      "evidence": [
+        {
+          "type": "Court record",
+          "title": "The 1959 refusal",
+          "url": "https://greathousefarmwiki.wordpress.com/1962-possession-order/#refusal-1959"
+        },
+        {
+          "type": "Wiki page",
+          "title": "The 1965 offer",
+          "url": "https://greathousefarmwiki.wordpress.com/1962-possession-order/#offer-1965"
+        },
+        {
+          "type": "Court record",
+          "title": "The 1974 Licence Letters",
+          "url": "https://greathousefarmwiki.wordpress.com/1974-licence-letters/#letters"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-02"
+    },
+    {
+      "order": 100,
+      "ref": "O.3",
+      "id": "ghf-obvious-03",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "Nobody produced a deed to the house",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "No conveyance of the farmhouse parcel to Western Ground Rents or to BP, earlier than the 1975 conveyance between two BP companies, has been produced.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "BP owned the farm.",
+      "received_wording": [
+        {
+          "said": "\"the paper title to the farm\"",
+          "note": "Court of Appeal, 1987."
+        }
+      ],
+      "what_we_now_know": "If Western Ground Rents or BP had a deed to the house, they would have produced it at the first hearing and the case would have been over in a day. They used tenancy offers, orders, a licence and their own conveyance instead. People with deeds don't need tricks.",
+      "cast": [
+        "wgr",
+        "bp"
+      ],
+      "evidence": [
+        {
+          "type": "Land Registry record",
+          "title": "Land Registry Titles — deeds before registration",
+          "url": "https://greathousefarmwiki.wordpress.com/land-registry-titles/#deeds-before-registration"
+        },
+        {
+          "type": "Land Registry record",
+          "title": "Land Registry Titles — conveyances",
+          "url": "https://greathousefarmwiki.wordpress.com/land-registry-titles/#conveyances"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-03"
+    },
+    {
+      "order": 101,
+      "ref": "O.4",
+      "id": "ghf-obvious-04",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "They knew it was two parcels",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "In 1983 BP registered the farmhouse and garden as a separate title. In 1987 it was amalgamated with the main title.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "It was always one farm.",
+      "received_wording": [
+        {
+          "said": "\"the whole farm\"",
+          "note": "1916 onwards."
+        }
+      ],
+      "what_we_now_know": "You cannot merge two titles unless there are two. BP knew. The Land Registry knew. The court read a separate conveyance of the farmhouse and garden. The only people never told what that meant were the family.",
+      "cast": [
+        "bp"
+      ],
+      "evidence": [
+        {
+          "type": "Land Registry record",
+          "title": "Land Registry Titles — first registration and amalgamation",
+          "url": "https://greathousefarmwiki.wordpress.com/land-registry-titles/#first-registration"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-04"
+    },
+    {
+      "order": 102,
+      "ref": "O.5",
+      "id": "ghf-obvious-05",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "Losing on possession is not losing on ownership",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "The High Court (1986), the Court of Appeal (1987), the House of Lords (1988) and the European Commission of Human Rights (1989) ruled against the family on possession.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "They lost every case, so they must have been wrong.",
+      "received_wording": [
+        {
+          "said": "\"lost\"",
+          "note": "Every headline."
+        }
+      ],
+      "what_we_now_know": "They lost every round of an argument about who could live in the house. Nobody ever asked who owned it. You can lose a hundred times on the wrong question and still be right about the real one.",
+      "cast": [
+        "courts"
+      ],
+      "evidence": [
+        {
+          "type": "Court record",
+          "title": "BP Properties Ltd v Buckler [1987] EWCA Civ 2",
+          "url": "https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/"
+        },
+        {
+          "type": "Analysis",
+          "title": "BP v Buckler: Scope, Decided & Undecided",
+          "url": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/court-judicial-issues/bp-v-buckler-scope-decided-undecided/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-05"
+    },
+    {
+      "order": 103,
+      "ref": "O.6",
+      "id": "ghf-obvious-06",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "William Buckler was the last obstacle",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "William Buckler was injured during the eviction of 29–30 November 1988, charged from hospital on 3 December, and bailed on 9 December on condition he stayed away from the site. The house was demolished on 6 December.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "A violent man was arrested and charged.",
+      "received_wording": [
+        {
+          "said": "\"chainsaw farmer\"",
+          "note": "The headline."
+        }
+      ],
+      "what_we_now_know": "He physically stood in their way, so he was removed: to hospital, to the dock, then barred from the site by his bail. With him out of the way there was nobody left between BP and the house. It came down within the week.",
+      "cast": [
+        "billy"
+      ],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "South Wales Echo — 'Angry scenes as farmer evicted'",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n14",
+          "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-e090-n14-1988-echo-front-page.jpg"
+        },
+        {
+          "type": "Newspaper",
+          "title": "South Wales Echo, 3 December 1988 (search extract GHF-E090-N15-06)",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "South Wales Echo, 9 December 1988 (search extract GHF-E090-N15-09)",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-06"
+    },
+    {
+      "order": 104,
+      "ref": "O.7",
+      "id": "ghf-obvious-07",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "Four in the morning was chosen",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "Listing was refused on 5 December 1988. Demolition began at about 4am on 6 December. The European Commission application was pending.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "An old building was cleared for housing.",
+      "received_wording": [
+        {
+          "said": "\"suddenly and completely demolished\"",
+          "note": "The heritage record, 1991."
+        }
+      ],
+      "what_we_now_know": "You don't start bulldozers at four in the morning by accident. It was done in the dark, the morning after the last protection fell and before Strasbourg could be heard, so that it could not be stopped and could never be undone.",
+      "cast": [],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "'Tears flow as 800 year-old farm house is razed at last'",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n11",
+          "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-e090-n11-1988-tears-flow-razed.jpg"
+        },
+        {
+          "type": "Heritage record",
+          "title": "Historic Environment Record GGAT 02038s (Archwilio)",
+          "url": "https://archwilio.org.uk/her/chi3/report/page.php?watprn=GGAT02038s"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-07"
+    },
+    {
+      "order": 105,
+      "ref": "O.8",
+      "id": "ghf-obvious-08",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "The public was on their side",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "In 1974 about 1,000 people signed a petition to save the house. In 1988 villagers protested the demolition and an MP asked for the case to be reviewed.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "Nobody much cared about an old farmhouse.",
+      "received_wording": [],
+      "what_we_now_know": "The public stood with the family. A thousand signatures, an MP, a furious village. It made no difference. Where the public could not be persuaded, force and stealth were used instead.",
+      "cast": [
+        "mps"
+      ],
+      "evidence": [
+        {
+          "type": "Newspaper",
+          "title": "Daily Telegraph, 16 April 1974",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-archive-transcripts/#n03",
+          "image": "https://bpvsbuckler.bucklerfamily.estate/media/ghf-e090-n03-1974-open-day-telegraph.jpg"
+        },
+        {
+          "type": "Newspaper",
+          "title": "South Wales Echo, 12 May 1988 (search extract GHF-E090-N15-03)",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/"
+        },
+        {
+          "type": "Newspaper",
+          "title": "South Wales Echo, 7 December 1988 (search extract GHF-E090-N15-08)",
+          "url": "https://greathousefarmwiki.wordpress.com/evidence-library/press-articles-index/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-08"
+    },
+    {
+      "order": 106,
+      "ref": "O.9",
+      "id": "ghf-obvious-09",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "The papers did not leave on their own",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "Mary Williams's statement records that the family papers were taken from the blanket box in 1950–52 by a lodger placed in the house by an estate agent, and given to the agent.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "If they ever had papers, they couldn't produce them.",
+      "received_wording": [
+        {
+          "said": "\"never produced\"",
+          "note": "Court of Appeal, 1987."
+        }
+      ],
+      "what_we_now_know": "Title deeds don't walk out of a blanket box. They were taken, by a man an estate agent put in the house, and handed to that agent. Thirty-five years later a court noted that they had never been produced.",
+      "cast": [
+        "mary"
+      ],
+      "evidence": [
+        {
+          "type": "Mary's statement",
+          "title": "Mary Williams's statement (c. 1974)",
+          "url": "https://greathousefarmwiki.wordpress.com/mary-williams-statement/"
+        },
+        {
+          "type": "Wiki page",
+          "title": "The 1877 Agreement — papers taken",
+          "url": "https://greathousefarmwiki.wordpress.com/1877-agreement/#papers-taken"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-09"
+    },
+    {
+      "order": 107,
+      "ref": "O.10",
+      "id": "ghf-obvious-10",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "A decision with no file",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "Cadw holds two photographs of 29 July 1988 and no other record of its 1988 listing consideration.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "Cadw assessed the house properly and it fell just short.",
+      "received_wording": [
+        {
+          "said": "\"marginally below the bar\"",
+          "note": "Cadw, 2026."
+        }
+      ],
+      "what_we_now_know": "A public body decided the fate of a three-hundred-year-old house and kept no file, no notes and no name. A decision nobody can examine is a decision nobody can challenge.",
+      "cast": [
+        "cadw"
+      ],
+      "evidence": [
+        {
+          "type": "Photograph",
+          "title": "Cadw survey photograph of the farmhouse, 29 July 1988 (released 2026, ATISN 27021)",
+          "url": "https://greathousefarmwiki.wordpress.com/records-access-chronology/foi-reply-register/#R37",
+          "image": "https://bpvsbuckler.bucklerfamily.estate/media/1988-cadw-farmhouse.jpg"
+        },
+        {
+          "type": "Analysis",
+          "title": "Cadw — Forensic Critique",
+          "url": "https://greathousefarmwiki.wordpress.com/scrutiny-and-accountability/government-public-authority-involvement/cadw-forensic-critique-v8-0-0/"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-10"
+    },
+    {
+      "order": 108,
+      "ref": "O.11",
+      "id": "ghf-obvious-11",
+      "act": "O",
+      "date": null,
+      "when": "Plainly",
+      "title": "They never asked a court who owned the house",
+      "place": "",
+      "parcel": "",
+      "basis": "Analysis",
+      "narration": "BP's 1974 action, in which Mary pleaded ownership, was adjourned and not relisted. The 1984 writ sought possession, not a declaration of ownership.",
+      "family_case": null,
+      "title_ledger": {
+        "Parcel A: the true title": "Freehold claim: Mary's grandchildren · application to the Land Registry, January 2026",
+        "Merged title: \"Parcel A & B\"": "Land Registry, May 2026: 'registered correctly'"
+      },
+      "title_moves": [],
+      "received_account": "The courts settled who owned Great House Farm.",
+      "received_wording": [],
+      "what_we_now_know": "In 1974 the question of ownership was in front of a judge, and BP walked away from it. In 1984 it asked only for possession. If you were sure you owned the house, you would ask a court to say so. They never did.",
+      "cast": [
+        "mary",
+        "bp"
+      ],
+      "evidence": [
+        {
+          "type": "Court record",
+          "title": "The 1974 Licence Letters — the action",
+          "url": "https://greathousefarmwiki.wordpress.com/1974-licence-letters/#action"
+        },
+        {
+          "type": "Court record",
+          "title": "BP Properties Ltd v Buckler — the writ",
+          "url": "https://greathousefarmwiki.wordpress.com/bp-properties-v-buckler/#writ"
+        }
+      ],
+      "image": null,
+      "previous_ids": [],
+      "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-obvious-11"
+    },
+    {
+      "order": 109,
       "ref": "E.1",
       "id": "ghf-99990101-1",
       "act": "E",
@@ -4774,7 +5278,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-1"
     },
     {
-      "order": 99,
+      "order": 110,
       "ref": "E.2",
       "id": "ghf-99990101-4",
       "act": "E",
@@ -4831,7 +5335,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-4"
     },
     {
-      "order": 100,
+      "order": 111,
       "ref": "E.3",
       "id": "ghf-99990101-2",
       "act": "E",
@@ -4874,7 +5378,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-2"
     },
     {
-      "order": 101,
+      "order": 112,
       "ref": "E.4",
       "id": "ghf-99990101-3",
       "act": "E",
@@ -4912,7 +5416,7 @@
       "url": "https://bpvsbuckler.bucklerfamily.estate/?event=ghf-99990101-3"
     },
     {
-      "order": 102,
+      "order": 113,
       "ref": "E.5",
       "id": "ghf-99990102-1",
       "act": "E",

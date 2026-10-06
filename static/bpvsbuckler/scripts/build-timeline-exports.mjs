@@ -37,7 +37,7 @@ const prevMeta = JSON.parse(readFileSync(metaPath, 'utf8'));
 const [version = prevMeta.version, date = prevMeta.updated] = process.argv.slice(2);
 writeFileSync(metaPath, JSON.stringify({ version, updated: date }) + '\n');
 
-const isoDate = (d) => (d.startsWith('9999') ? null : d);
+const isoDate = (d) => (d.startsWith('99') ? null : d);
 const url = (s) => `${SITE}/?event=${encodeURIComponent(s.id)}`;
 const actOf = (id) => acts.find((a) => a.id === id);
 const PARCEL = { A: 'House parcel (A)', B: 'Fields (B)', AB: 'Whole farm (A + B)', '?': 'Not yet known', x: 'Not Great House Farm land', '': '' };
@@ -238,7 +238,7 @@ const transcript = [
   ...acts.flatMap((a) => [
     `${a.label.toUpperCase()}: ${a.title.toUpperCase()} (${a.span})`,
     '',
-    ...scenes.filter((s) => s.act === a.id).map((s) => [`${s.ref}  ${s.when.toUpperCase()} — ${s.title}${s.place ? ` (${s.place})` : ''}`, '', `NARRATOR: ${s.narration}`, ...(s.case ? [`THE FAMILY'S CASE: ${s.case}`] : []), ''].join('\n')),
+    ...scenes.filter((s) => s.act === a.id).map((s) => [`${s.ref}  ${s.when.toUpperCase()} — ${s.title}${s.place ? ` (${s.place})` : ''}`, '', `NARRATOR: ${s.narration}`, ...(s.received ? [`NARRATOR (the received account): ${s.received}`] : []), ...(s.known ? [`NARRATOR (what we now know): ${s.known}`] : []), ...(s.case ? [`THE FAMILY'S CASE: ${s.case}`] : []), ''].join('\n')),
   ]),
 ].join('\n');
 writeFileSync(root + 'story/transcript.txt', transcript);

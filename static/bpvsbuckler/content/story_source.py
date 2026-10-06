@@ -68,6 +68,8 @@ ACTS = [
      'logline': 'Planning, the sale to Ideal Homes, the cemetery excavation and the houses.'},
     {'id': 'VIII', 'label': 'Act VIII', 'title': 'Records', 'span': '2025 – 2026',
      'logline': 'The family\'s records requests and complaints, and the replies.'},
+    {'id': 'O', 'label': 'Stating the obvious', 'title': 'Stating the obvious', 'span': 'Plainly',
+     'logline': 'What should have been said out loud all along.'},
     {'id': 'E', 'label': 'Epilogue', 'title': 'Today', 'span': 'Now',
      'logline': 'The sequence, the site today, and the family\'s requests.'},
 ]
@@ -676,6 +678,52 @@ sc('VIII', 'ghf-20261006-1', '2026-10-06', 'September – October 2026', "Public
    [LEGAL, w('/', 'Great House Farm Wiki — Main Page'), w('/evidence-library/', 'Evidence Library'),
     w('/evidence-library/press-archive-transcripts/', 'Press Archive — Newspaper Transcripts'), w('/evidence-library/press-articles-index/', 'Press Articles Index')],
    aliases=['ghf-20260922-1', 'ghf-20261003-1'])
+
+# ---------------------------------------------------------------- STATING THE OBVIOUS
+sc('O', 'ghf-obvious-01', '9998-01-01', 'Plainly', "They were not squatters", '', '',
+   'Analysis',
+   "The Williams family lived at Great House from 1667 to 1988.",
+   [MARY, w('/williams-buckler-family/', 'The Williams / Buckler Family')])
+sc('O', 'ghf-obvious-02', '9998-01-02', 'Plainly', "Mary never asked for permission", '', '',
+   'Analysis',
+   "Mary Williams refused the tenancies offered in 1959 and 1965 and did not accept the 1974 letters.",
+   [w('/1962-possession-order/#refusal-1959', 'The 1959 refusal', 'Court record'), w('/1962-possession-order/#offer-1965', 'The 1965 offer'), w('/1974-licence-letters/#letters', 'The 1974 Licence Letters', 'Court record')])
+sc('O', 'ghf-obvious-03', '9998-01-03', 'Plainly', "Nobody produced a deed to the house", '', '',
+   'Analysis',
+   "No conveyance of the farmhouse parcel to Western Ground Rents or to BP, earlier than the 1975 conveyance between two BP companies, has been produced.",
+   [LRT('deeds-before-registration', 'Land Registry Titles — deeds before registration'), LRT('conveyances', 'Land Registry Titles — conveyances')])
+sc('O', 'ghf-obvious-04', '9998-01-04', 'Plainly', "They knew it was two parcels", '', '',
+   'Analysis',
+   "In 1983 BP registered the farmhouse and garden as a separate title. In 1987 it was amalgamated with the main title.",
+   [LRT('first-registration', 'Land Registry Titles — first registration and amalgamation')])
+sc('O', 'ghf-obvious-05', '9998-01-05', 'Plainly', "Losing on possession is not losing on ownership", '', '',
+   'Analysis',
+   "The High Court (1986), the Court of Appeal (1987), the House of Lords (1988) and the European Commission of Human Rights (1989) ruled against the family on possession.",
+   [JUDG, w('/scrutiny-and-accountability/court-judicial-issues/bp-v-buckler-scope-decided-undecided/', 'BP v Buckler: Scope, Decided & Undecided', 'Analysis')])
+sc('O', 'ghf-obvious-06', '9998-01-06', 'Plainly', "William Buckler was the last obstacle", '', '',
+   'Analysis',
+   "William Buckler was injured during the eviction of 29–30 November 1988, charged from hospital on 3 December, and bailed on 9 December on condition he stayed away from the site. The house was demolished on 6 December.",
+   [press('N14', "South Wales Echo — 'Angry scenes as farmer evicted'", 'ghf-e090-n14-1988-echo-front-page.jpg'), echo('06', '3 December 1988'), echo('09', '9 December 1988')])
+sc('O', 'ghf-obvious-07', '9998-01-07', 'Plainly', "Four in the morning was chosen", '', '',
+   'Analysis',
+   "Listing was refused on 5 December 1988. Demolition began at about 4am on 6 December. The European Commission application was pending.",
+   [press('N11', "'Tears flow as 800 year-old farm house is razed at last'", 'ghf-e090-n11-1988-tears-flow-razed.jpg'), HER])
+sc('O', 'ghf-obvious-08', '9998-01-08', 'Plainly', "The public was on their side", '', '',
+   'Analysis',
+   "In 1974 about 1,000 people signed a petition to save the house. In 1988 villagers protested the demolition and an MP asked for the case to be reviewed.",
+   [press('N03', "Daily Telegraph, 16 April 1974", 'ghf-e090-n03-1974-open-day-telegraph.jpg'), echo('03', '12 May 1988'), echo('08', '7 December 1988')])
+sc('O', 'ghf-obvious-09', '9998-01-09', 'Plainly', "The papers did not leave on their own", '', '',
+   'Analysis',
+   "Mary Williams's statement records that the family papers were taken from the blanket box in 1950–52 by a lodger placed in the house by an estate agent, and given to the agent.",
+   [MARY, w('/1877-agreement/#papers-taken', 'The 1877 Agreement — papers taken')])
+sc('O', 'ghf-obvious-10', '9998-01-10', 'Plainly', "A decision with no file", '', '',
+   'Analysis',
+   "Cadw holds two photographs of 29 July 1988 and no other record of its 1988 listing consideration.",
+   [CADW_PH, CADW_CRIT])
+sc('O', 'ghf-obvious-11', '9998-01-11', 'Plainly', "They never asked a court who owned the house", '', '',
+   'Analysis',
+   "BP's 1974 action, in which Mary pleaded ownership, was adjourned and not relisted. The 1984 writ sought possession, not a declaration of ownership.",
+   [w('/1974-licence-letters/#action', 'The 1974 Licence Letters — the action', 'Court record'), w('/bp-properties-v-buckler/#writ', 'BP Properties Ltd v Buckler — the writ', 'Court record')])
 
 # ---------------------------------------------------------------- EPILOGUE
 sc('E', 'ghf-99990101-1', '9999-01-01', 'Today', "The sequence", 'The two titles', 'AB',

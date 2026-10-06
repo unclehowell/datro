@@ -1,5 +1,18 @@
 # Changelog
 
+## [bpvsbuckler-v0.0.0.57] - 2026-10-06
+
+### Design
+- The parcel storyline (true Parcel A, synthetic Parcel A, Parcel B, merged "A & B") now fills the top of every scene, with the scene marked; on phones it scrolls to the current scene
+- The scene's photograph or press cutting appears as a picture-in-picture thumbnail on the storyline, with "Enlarge" opening it full size (Esc or click to close)
+- The narrator now reads the event, then "The received account", then "What we now know", with word-by-word highlighting through all three
+- The transcript at /story/transcript.txt includes the received account and what we now know
+
+### Content
+- "What we now know" rewritten on 18 key scenes to tell the family's story and the injustices plainly: three centuries in the manor's house, the papers taken, Mary home from losing a leg in 1955, the licence sent to a woman in a wheelchair, the eviction, the 4am demolition, the bus, Billy's death
+- New segment "Stating the obvious" (O.1–O.11), each narrated: they were not squatters; Mary never asked for permission; nobody produced a deed to the house; they knew it was two parcels; losing on possession is not losing on ownership; William Buckler was the last obstacle; four in the morning was chosen; the public was on their side; the papers did not leave on their own; a decision with no file; they never asked a court who owned the house
+- Opening page rewritten to set out the other side: what people heard, and what this site shows
+
 ## [bpvsbuckler-v0.0.0.56] - 2026-10-06
 
 Every scene restructured into three layers.

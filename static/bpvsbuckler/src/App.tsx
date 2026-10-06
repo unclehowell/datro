@@ -42,6 +42,23 @@ const speakable = (t: string) =>
   t.replace(/Tŷ Mawr/g, 'Tee Mower').replace(/Llandough/g, 'Lan-dock').replace(/Dochdwy/g, 'Dok-doo-ee')
    .replace(/WGR/g, 'W G R').replace(/GGAT/g, 'G GAT').replace(/LJ\b/g, 'Lord Justice');
 
+// What the narrator reads, in order: the event, then the received account and
+// what we now know. Labels are spoken but not shown as highlighted text.
+type Seg = { key: string; text: string; show: boolean };
+const segmentsOf = (s: Scene): Seg[] => [
+  { key: 'head', text: `${s.when}. ${s.title}.`, show: false },
+  { key: 'event', text: s.narration, show: true },
+  ...(s.received ? [{ key: 'rl', text: 'The received account.', show: false }, { key: 'received', text: s.received, show: true }] : []),
+  ...(s.known ? [{ key: 'kl', text: 'What we now know.', show: false }, { key: 'known', text: s.known, show: true }] : []),
+];
+const wordsOf = (t: string) => t.split(/\s+/).filter(Boolean);
+function segmentBases(s: Scene) {
+  const base: Record<string, number> = {};
+  let n = 0;
+  for (const g of segmentsOf(s)) { base[g.key] = n; n += wordsOf(g.text).length; }
+  return base;
+}
+
 const Icon = {
   play: <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4.5v15l13-7.5z" /></svg>,
   pause: <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4h4.5v16H6zM13.5 4H18v16h-4.5z" /></svg>,
@@ -89,18 +106,21 @@ export default function App() {
     synth?.cancel();
     setSpoken(-1);
     if (view !== 'scene' || !playing || !synth) return;
-    const text = `${scene.when}. ${scene.title}. ${scene.narration}`;
-    const offset = scene.when.length + scene.title.length + 4;
-    const u = new SpeechSynthesisUtterance(speakable(text));
+    // speak word by word so highlighting can map the engine's position back to
+    // the displayed words, even where pronunciation fixes change the spelling
+    const toks = segmentsOf(scene).flatMap((g) => wordsOf(g.text)).map(speakable);
+    const starts: number[] = [];
+    let at = 0;
+    for (const t of toks) { starts.push(at); at += t.length + 1; }
+    const u = new SpeechSynthesisUtterance(toks.join(' '));
     u.lang = 'en-GB'; u.rate = 0.95; u.volume = volume;
     const voice = synth.getVoices().find((v) => v.lang === 'en-GB');
     if (voice) u.voice = voice;
-    // spoken text is lightly altered, so map word positions rather than characters
     u.onboundary = (e) => {
       if (e.name !== 'word') return;
-      const before = speakable(text).slice(0, e.charIndex).split(/\s+/).length - 1;
-      const head = text.slice(0, offset).split(/\s+/).filter(Boolean).length;
-      setSpoken(before - head);
+      let lo = 0, hi = starts.length - 1;
+      while (lo < hi) { const mid = (lo + hi + 1) >> 1; if (starts[mid] <= e.charIndex) lo = mid; else hi = mid - 1; }
+      setSpoken(lo);
     };
     let t: ReturnType<typeof setTimeout>;
     u.onend = () => { setSpoken(1e9); t = setTimeout(() => { if (!playingRef.current) return; if (index < scenes.length - 1) go(index + 1); else setPlaying(false); }, 900); };
@@ -200,28 +220,25 @@ function Frame({ scene, small }: { scene: Scene; small?: boolean }) {
 }
 
 function SceneView({ scene, spoken, copied, onCopy, onCast, onPick }: { scene: Scene; spoken: number; copied: boolean; onCopy: () => void; onCast: () => void; onPick: (i: number) => void }) {
-  const words = scene.narration.split(/\s+/);
+  const base = segmentBases(scene);
   const cast = S.cast.filter((c) => scene.cast.includes(c.id));
   return (
     <article className="scene">
-      <Frame scene={scene} />
+      <Stage key={scene.id} scene={scene} onPick={onPick} />
       <div>
         <div className="slate"><span className="ref">Scene {scene.ref}</span><span>no. {scene.no} of {scenes.length}</span></div>
         <div className="when">{scene.when}</div>
         <h1>{scene.title}</h1>
         {scene.place && <div className="place">{scene.place}</div>}
-        <p className={`narr${spoken >= 0 ? ' speaking' : ''}`}>
-          {words.map((w, i) => <span key={i} className={`w${i <= spoken ? ' done' : ''}`}>{w}{' '}</span>)}
-        </p>
+        <p className={`narr${spoken >= 0 ? ' speaking' : ''}`}><Spoken text={scene.narration} base={base.event} spoken={spoken} /></p>
         <div className="chips">
           <ParcelChip p={scene.parcel} />
           <span className="chip">Basis: {scene.basis}</span>
           {cast.map((c) => <button key={c.id} className="chip" onClick={onCast}>{c.name}</button>)}
         </div>
-        <Accounts scene={scene} />
+        <Accounts scene={scene} base={base} spoken={spoken} />
         {scene.case && <section className="case"><h2>The family's case</h2><p>{scene.case}</p></section>}
         <Ledger scene={scene} />
-        <Storyline current={scene.no - 1} onPick={onPick} compact />
         <section className="ev">
           <h2>Evidence ({scene.evidence.length})</h2>
           <ul>
@@ -302,7 +319,7 @@ function Cast({ onPick }: { onPick: (i: number) => void }) {
 const LANE_Y: Record<string, number> = { W: 92, A: 34, S: 92, B: 150, M: 124 };
 const LANE_CLASS: Record<string, string> = { W: 'ln-w', A: 'ln-a', S: 'ln-s', B: 'ln-b', M: 'ln-m' };
 const XS: [number, number][] = [[600, 0], [1550, 30], [1877, 120], [1916, 210], [1949, 290], [1990, 860], [2027, 1000]];
-const yearOf = (d: string) => (d.startsWith('9999') ? 2026.6 : +d.slice(0, 4) + (+d.slice(5, 7) - 1) / 12);
+const yearOf = (d: string) => (d.startsWith('99') ? 2026.6 : +d.slice(0, 4) + (+d.slice(5, 7) - 1) / 12);
 function X(y: number) {
   const v = Math.max(XS[0][0], Math.min(XS[XS.length - 1][0], y));
   for (let i = 1; i < XS.length; i++) {
@@ -316,9 +333,16 @@ function Storyline({ current, onPick, compact }: { current?: number; onPick: (i:
   const marks = scenes.flatMap((s, i) => s.moved.map((lane) => ({ s, i, lane })));
   const cur = current !== undefined ? scenes[current] : null;
   const ticks = [1877, 1916, 1928, 1950, 1962, 1975, 1987, 1994, 2026];
+  const scroller = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    // on narrow screens the diagram scrolls; bring this scene's marker into view
+    const el = scroller.current;
+    if (!el || !cur || el.scrollWidth <= el.clientWidth) return;
+    el.scrollLeft = (x(yearOf(cur.date)) / 1000) * el.scrollWidth - el.clientWidth / 2;
+  }, [current]);
   return (
     <figure className={`storyline${compact ? ' compact' : ''}`} style={{ margin: 0 }}>
-      <div className="sl-scroll">
+      <div className="sl-scroll" ref={scroller}>
         <svg viewBox="0 0 1000 205" role="img" aria-label="Storyline: the true Parcel A title is buried while a synthetic Parcel A is built beside it and merged into Parcel B in 1987">
           {/* one farm, split in 1877 */}
           <path className="ln ln-w" d={`M${x(600)} 92 H${x(1877) - 14}`} />
@@ -335,7 +359,7 @@ function Storyline({ current, onPick, compact }: { current?: number; onPick: (i:
           <text className="sl-lbl a" x={x(1950) + 6} y={52}>deeds taken 1950 · buried, never extinguished</text>
           <text className="sl-lbl s" x={x(1949) + 6} y={82}>Synthetic Parcel A: six attempts to make Mary look permitted, then deed and register</text>
           <text className="sl-lbl b" x={x(1877) + 14} y={168}>Parcel B: the fields (Bute → WGR → BP)</text>
-          <text className="sl-lbl m" x={x(1987) + 18} y={114}>merged 1987: "A &amp; B"</text>
+          <text className="sl-lbl m" x={x(2027)} y={114} textAnchor="end">merged 1987: "A &amp; B"</text>
           {ticks.map((t) => (
             <g key={t} className="tick-y"><line x1={x(t)} x2={x(t)} y1={180} y2={185} /><text x={x(t)} y={198}>{t}</text></g>
           ))}
@@ -354,14 +378,54 @@ function Storyline({ current, onPick, compact }: { current?: number; onPick: (i:
   );
 }
 
-function Accounts({ scene }: { scene: Scene }) {
+function Spoken({ text, base, spoken }: { text: string; base: number; spoken: number }) {
+  return <>{wordsOf(text).map((w, i) => <span key={i} className={`w${base + i <= spoken ? ' done' : ''}`}>{w}{' '}</span>)}</>;
+}
+
+// The scene's stage: the two-titles storyline with this scene marked, and the
+// scene's picture as a picture-in-picture thumbnail that opens full size.
+function Stage({ scene, onPick }: { scene: Scene; onPick: (i: number) => void }) {
+  const ev = scene.evidence.find((e) => e.image && e.image === scene.image) || scene.evidence.find((e) => e.image);
+  const img = scene.image || ev?.image || null;
+  const cap = ev?.title || scene.title;
+  const [big, setBig] = useState(false);
+  useEffect(() => {
+    if (!big) return;
+    const k = (e: KeyboardEvent) => { if (e.key === 'Escape') setBig(false); };
+    addEventListener('keydown', k);
+    return () => removeEventListener('keydown', k);
+  }, [big]);
+  return (
+    <div className={`stage${img ? ' has-pip' : ''}`}>
+      <div className="stage-h">The two titles to Parcel A <span>· this scene marked</span></div>
+      <Storyline current={scene.no - 1} onPick={onPick} />
+      {img && (
+        <button className="pip" onClick={() => setBig(true)} aria-label={`Enlarge: ${cap}`}>
+          <img src={img} alt={cap} />
+          <span>Enlarge</span>
+        </button>
+      )}
+      {big && img && (
+        <div className="lightbox" role="dialog" aria-modal="true" aria-label={cap} onClick={() => setBig(false)}>
+          <figure onClick={(e) => e.stopPropagation()}>
+            <img src={img} alt={cap} />
+            <figcaption>{cap}</figcaption>
+          </figure>
+          <button className="lb-close" onClick={() => setBig(false)} aria-label="Close">×</button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function Accounts({ scene, base, spoken }: { scene: Scene; base: Record<string, number>; spoken: number }) {
   if (!scene.received && !scene.received_words.length && !scene.known) return null;
   return (
     <>
       {(scene.received || scene.received_words.length > 0) && (
         <section className="acct recv" aria-label="The received account">
           <h2>The received account</h2>
-          {scene.received && <p>{scene.received}</p>}
+          {scene.received && <p className={spoken >= 0 ? 'speaking' : ''}><Spoken text={scene.received} base={base.received} spoken={spoken} /></p>}
           {scene.received_words.length > 0 && (
             <dl>{scene.received_words.map(([q, m]) => (<React.Fragment key={q}><dt>{q}</dt><dd>{m}</dd></React.Fragment>))}</dl>
           )}
@@ -370,7 +434,7 @@ function Accounts({ scene }: { scene: Scene }) {
       {scene.known && (
         <section className="acct known" aria-label="What we now know">
           <h2>What we now know</h2>
-          <p>{scene.known}</p>
+          <p className={spoken >= 0 ? 'speaking' : ''}><Spoken text={scene.known} base={base.known} spoken={spoken} /></p>
         </section>
       )}
     </>
@@ -410,7 +474,7 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
       <div className="tx">
         <h1>Tŷ Mawr</h1>
         <div className="sub">The Great House Farm story, Llandough</div>
-        <p className="log">Great House Farm, Llandough: the Williams family's home from 1667 until 1988, when BP Properties Ltd obtained possession and demolished the buildings. Each scene sets out what happened, the received account of it and the words used to describe it, and what we now know, with the documents behind it.</p>
+        <p className="log">For three hundred and twenty-one years the Williams family lived in the Great House at Llandough, the manor's house beside one of the oldest churches in Wales. They always said it was theirs. Nobody listened. What people heard was a squatter who lost in court, lost on appeal, lost in Strasbourg, and lost the listing; a “chainsaw farmer”; a house “bulldozed before breakfast”. This is the other side. Each scene gives what happened, what we were all told it meant, and what we now know.</p>
         <div className="btns">
           <button className="btn primary" onClick={onPlay}>{Icon.play} Play from the beginning</button>
           <button className="btn" onClick={onBoard}>{Icon.grid} Open the storyboard</button>
@@ -418,7 +482,7 @@ function Splash({ onPlay, onBoard, onCast }: { onPlay: () => void; onBoard: () =
         </div>
         <div className="facts">
           <div><b>{scenes.length}</b>scenes</div>
-          <div><b>{S.acts.length - 2}</b>acts, with prologue and epilogue</div>
+          <div><b>{S.acts.filter((a) => a.label.startsWith('Act ')).length}</b>acts, with prologue and epilogue</div>
           <div><b>{evidence}</b>evidence links</div>
         </div>
         <p className="howto">For producers, researchers and cast: every scene has a reference (for example VI.9) and a permanent link, and every scene links to the documents behind it on the <a href="https://greathousefarmwiki.wordpress.com/">Great House Farm Wiki</a>. See the <a href="#" onClick={(e) => { e.preventDefault(); onCast(); }}>cast list</a>, or download the data as <a href="/api/timeline.json">JSON</a>.</p>

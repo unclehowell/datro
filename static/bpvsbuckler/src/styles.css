@@ -220,3 +220,24 @@ button.chip:hover, a.chip:hover { color: var(--limewash); }
 .acct dl { margin: 10px 0 0; }
 .acct dt { font-family: var(--serif); font-size: 17px; font-style: italic; color: var(--limewash); margin-top: 8px; }
 .acct dd { margin: 2px 0 0; font-size: 14px; line-height: 1.5; color: var(--lias); }
+
+/* ---------------- stage: storyline with picture-in-picture */
+.stage { position: sticky; top: 0; background: #1b2126; border-radius: 4px; padding: 16px 16px 12px; align-self: start; }
+.stage.has-pip { padding-bottom: 150px; }
+.stage-h { font-size: 13px; font-weight: 600; color: var(--lias); text-transform: uppercase; letter-spacing: .02em; margin-bottom: 6px; }
+.stage-h span { text-transform: none; font-weight: 400; letter-spacing: 0; }
+.stage .storyline { margin: 0; }
+.pip { position: absolute; right: 14px; bottom: 14px; width: 190px; height: 128px; padding: 0; border: 1px solid var(--slate-3); border-radius: 4px; overflow: hidden; background: #111; box-shadow: 0 6px 20px rgba(0,0,0,.45); }
+.pip img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.pip span { position: absolute; left: 0; right: 0; bottom: 0; font-size: 12px; padding: 4px 8px; background: rgba(20,24,28,.82); color: var(--limewash); text-align: left; }
+.pip:hover, .pip:focus-visible { border-color: var(--limewash); }
+.lightbox { position: fixed; inset: 0; z-index: 50; background: rgba(10,12,14,.92); display: flex; align-items: center; justify-content: center; padding: 24px 16px; }
+.lightbox figure { margin: 0; max-width: 100%; max-height: 100%; display: flex; flex-direction: column; align-items: center; }
+.lightbox img { max-width: min(1200px, 92vw); max-height: 82vh; object-fit: contain; background: #111; }
+.lightbox figcaption { color: var(--lias); font-size: 14px; margin-top: 10px; text-align: center; max-width: 60em; }
+.lb-close { position: fixed; top: 12px; right: 16px; width: 44px; height: 44px; border-radius: 999px; border: 1px solid var(--slate-3); background: var(--slate-2); font-size: 26px; line-height: 1; }
+.acct p .w { transition: color .12s; }
+.acct p.speaking .w { color: #8d9298; }
+.acct p.speaking .w.done { color: var(--limewash); }
+.acct.recv p.speaking .w.done { color: var(--limewash); }
+@media (max-width: 1000px) { .stage { position: relative; } .stage.has-pip { padding-bottom: 130px; } .pip { width: 150px; height: 104px; } }

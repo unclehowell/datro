@@ -39,7 +39,7 @@ ACCOUNTS = {
 'ghf-16670101-1': dict(
     received="Tenant farmers who lived on someone else's land.",
     words=[('"tenants"', 'The estate\'s description of the family, repeated in every later account.')],
-    known="Three centuries of continuous occupation by one family. Mary's account is that her ancestors bought it; the estate's records call them tenants. Their status changes in 1877 and 1928, not here."),
+    known="For more than three hundred years one family lived in the house where the manor's courts sat, beside one of the oldest churches in Wales. Generation after generation was born there, married there and died there. Mary's account is that her ancestors bought it. Whatever the estate's books called them, the Williamses were the people of the Great House. Not squatters. Not passing tenants. The family of the house."),
 'ghf-18000101-1': dict(
     received="Bute owned the farm, and everything after descends from Bute.",
     words=[],
@@ -64,7 +64,7 @@ ACCOUNTS = {
 'ghf-18770101-1': dict(
     received="Nothing changed: Bute went on owning the farm, and the Williamses went on renting it.",
     words=[],
-    known="From 1877 there are two parcels with two owners: Parcel A (the house) owned by Thomas, Parcel B (the fields) owned by Bute. Anything Bute sells after 1877 can only be Parcel B. The agreement provided that the freehold of Parcel A would pass to the Williamses when quarrying ended."),
+    known="From 1877 there are two parcels with two owners: Parcel A, the house, owned by Thomas; Parcel B, the fields, owned by Bute. Anything Bute sells after 1877 can only be Parcel B. And the bargain made with a family who had already lived there for two hundred years was that when the quarrying ended, the house would be theirs."),
 'ghf-18911111-1': dict(
     received="A minor court report.",
     words=[],
@@ -89,7 +89,7 @@ ACCOUNTS = {
 'ghf-19280101-1': dict(
     received="Nothing happened in 1928. The tenancy of the whole farm carried on.",
     words=[],
-    known="The 1877 agreement took effect: quarrying ended and the freehold of Parcel A passed to the Williamses. From 1928 no rent was paid on Parcel A to anyone. Parcel A's chain is complete: Vaughan, Bute, Daniel Thomas, Williams."),
+    known="The bargain of 1877 came due. The quarrying ended, and the freehold of the house passed to the Williamses. From that day they never paid a penny to anyone for it again. Parcel A's chain was complete: the Vaughans, Bute, Daniel Thomas, the Williamses."),
 'ghf-19360101-1': dict(
     received="Frederick joined the tenant family on the farm.",
     words=[],
@@ -122,7 +122,7 @@ ACCOUNTS = {
 'ghf-19500601-1': dict(
     received="If the family ever had documents, they could not produce them.",
     words=[('"No such documents were, however, ever produced."', 'Court of Appeal, 1987.')],
-    known="The family's paper title to Parcel A left the house in 1950–52, a year after Mary relied on it and within three years of the landlord's first proceedings. Mary believed the two were connected. The title was not extinguished; its proof was removed."),
+    known="Imagine it. The papers that proved your home was yours, kept safe in a blanket box for generations, carried out of the house by a stranger an estate agent had put under your roof. It happened a year after Mary relied on them, and within three years of the landlord's first court case. For the rest of her life she was told to produce documents that had been taken from her. The title was never extinguished. Only its proof was taken."),
 'ghf-19521010-1': dict(
     received="The tenant stopped paying rent on the farm.",
     words=[],
@@ -130,7 +130,7 @@ ACCOUNTS = {
 'ghf-19550202-1': dict(
     received="The landlord recovered the farm in 1955; the family stayed on in the house only through the landlord's forbearance, and from 1955 their occupation was adverse to the landlord.",
     words=[('"the whole of the farm"', 'The order\'s description, quoted in 1987.'), ('adverse possession "from 1955"', 'The clock the courts later counted on the house.')],
-    known="An order against a tenant of the fields can only return what was let and owned: Parcel B. It was enforced on the fields. On the family's account the woodland on the north of Parcel A was taken too, passing to a couple in Llandough and later to the Forest of Cardiff. Mary was not a party and was never heard. Any clock that started in 1955 was a clock on Parcel B. That the order reached the house was an insinuation, later read as fact: the second attempt to make Mary's occupation look permissive."),
+    known="An order against a tenant of the fields can only give back the fields, and that is what was taken. On the family's account the woodland went too, to a couple in Llandough and later to a charity. Mary was not a party and was never heard. She had just come home from hospital, having lost a leg, to find the landlord's men taking the farm around her, and she stood her ground for her house. Any clock that started in 1955 was a clock on the fields. That the order reached the house was an insinuation, later read as fact."),
 'ghf-19590101-1': dict(
     received="The landlord offered the occupier a tenancy, and she refused it.",
     words=[('"the farmhouse and garden"', 'The landlord\'s description of what it offered to let.')],
@@ -171,7 +171,7 @@ ACCOUNTS = {
 'ghf-19740415-1': dict(
     received="A campaign to save an old building.",
     words=[('"valid claim"', 'Reported as a claim, not a title.')],
-    known="A public statement of ownership of Parcel A, in a national newspaper, ten years before BP's writ."),
+    known="A woman of sixty, who had lost a leg, opened her home to the nation. Hundreds came. A thousand signed. She told a national newspaper the house was hers. The public stood with Mary. It changed nothing."),
 'ghf-19740703-1': dict(
     received="An action that went nowhere.",
     words=[('"part-heard"', 'Treated afterwards as if nothing had been decided because nothing needed deciding.')],
@@ -179,7 +179,7 @@ ACCOUNTS = {
 'ghf-19741031-1': dict(
     received="BP kindly let an elderly, ill woman live in the house rent-free for the rest of her life.",
     words=[('"licence"', 'BP\'s letters, as the courts later described them.'), ('"because of her ill health"', 'BP\'s explanation to the press in 1988.')],
-    known="Permission offered to an owner who never asked for it, and never accepted it, at the moment her plea of ownership was before the court. Sixth attempt to make her occupation look permissive, and the one the courts relied on."),
+    known="A woman in a wheelchair, who had lost a leg, was told by an oil company's pension fund that she could stay in her own house, as a favour, for the rest of her life. She never asked for it. She never accepted it. It arrived at the very moment her claim to own the house was in front of a judge. Thirteen years later it was used to take the house anyway."),
 'ghf-19741119-1': dict(
     received="A local antiquarian's objection.",
     words=[],
@@ -207,7 +207,7 @@ ACCOUNTS = {
 'ghf-19830326-1': dict(
     received="The licensee died and the licence ended.",
     words=[('"licensee"', 'How BP would describe her.')],
-    known="She died the owner of Parcel A, never having accepted a tenancy or licence, her claim never decided."),
+    known="She died in the house she was born in, seventy years later, still saying it was hers. She never signed a tenancy, never accepted a licence, and was never once heard on whether the house was her own."),
 'ghf-19830408-1': dict(
     received="Routine registration correspondence.",
     words=[],
@@ -232,7 +232,7 @@ ACCOUNTS = {
 'ghf-19870731-1': dict(
     received="The courts finally settled that BP owned Great House Farm.",
     words=[('"the paper title to the farm"', 'The court\'s description of BP\'s position.'), ('"No such documents were, however, ever produced."', 'On Mary\'s title documents.'), ('"since November 1982 they have been the registered proprietors"', 'The court\'s recital.')],
-    known="The court decided possession, not ownership. It counted the clock from 1955, from an order about Parcel B; counted from 1928, it ran out in 1940. BP's paper title was to Parcel B; for Parcel A it had only the 1975 BP-to-BP conveyance, which the court itself called the conveyance of the farmhouse and garden. Mary's documents were not produced because they were taken in 1950–52."),
+    known="The court decided possession, not ownership. It counted the clock from 1955, from an order about the fields; counted from 1928, it had run out in 1940. BP's paper title was to the fields; for the house it had only a deed between two BP companies, which the court itself called the conveyance of the farmhouse and garden. Mary's documents were not produced because they had been taken from her. The family lost in the High Court, lost on appeal, and were refused by the Lords. Every defeat was on who may live in the house. Nobody ever asked who owned it."),
 'ghf-19880303-1': dict(
     received="The end of the legal road.",
     words=[],
@@ -245,7 +245,7 @@ ACCOUNTS = {
 'ghf-19880429-2': dict(
     received="The \"chainsaw farmer\": a violent squatter.",
     words=[('"chainsaw farmer"', 'The headline.'), ('"because of her ill health"', 'BP\'s account of 1974.')],
-    known="A man defending his home, with his children behind the door, on land his family owned."),
+    known="Billy was a father with his three small children behind a door an axe had just come through. The papers called him the chainsaw farmer. Nobody called the men with the axes anything at all. He was defending his home, on land his family had owned since 1928 and lived on since 1667."),
 'ghf-19880512-1': dict(
     received="",
     words=[],
@@ -257,11 +257,11 @@ ACCOUNTS = {
 'ghf-19881130-1': dict(
     received="The lawful owner recovered possession.",
     words=[('"possession"', 'What BP was given.')],
-    known="BP took possession of Parcel A, which it had never been shown to own."),
+    known="Billy was hurt and taken to hospital. Eight people lost their homes with the family that day. A family that had lived in the house for three hundred and twenty-one years was put out in an afternoon, by an order that never said whose house it was."),
 'ghf-19881201-1': dict(
     received="",
     words=[],
-    known="The family's remaining papers were lost with the house."),
+    known="Mary's photographs, the family heirlooms, the papers, everything left of three centuries, in the house or in the road. Whatever remained of the family's own records went with it."),
 'ghf-19881202-1': dict(
     received="",
     words=[],
@@ -269,7 +269,7 @@ ACCOUNTS = {
 'ghf-19881209-1': dict(
     received="The violent squatter was charged.",
     words=[],
-    known="The owner's son was prosecuted for resisting the enforcement of a possession order."),
+    known="He was taken from his hospital bed and charged. With Billy in hospital, then in the dock, then bailed away from the site, there was no one left standing between BP and the house. Within three days it was gone."),
 'ghf-19881203-1': dict(
     received="Cadw gave the house fair consideration.",
     words=[],
@@ -277,11 +277,11 @@ ACCOUNTS = {
 'ghf-19881205-1': dict(
     received="The house was not worth listing, and the courts had ruled.",
     words=[('"not of sufficient architectural merit"', 'Cadw, 5 December 1988.')],
-    known="Both protections ended on the same day."),
+    known="On the same day, both doors closed: the court refused to wait for Strasbourg, and Cadw refused to list. Nothing now protected the house, and everyone knew it."),
 'ghf-19881206-1': dict(
     received="An old farmhouse of no special merit was cleared for housing.",
     words=[('"Bulldozed before breakfast"', 'The headline.'), ('"suddenly and completely demolished"', 'The heritage record, 1991.')],
-    known="The house was destroyed the morning after the listing refusal, before it was fully recorded and while the European Commission application was pending. The title to Parcel A was not destroyed with it."),
+    known="At four in the morning, in the dark, before anyone could stop it. Branwen and her three small children watched their home come down. A thousand people had signed to save it. An MP had asked for the case to be looked at again. Strasbourg had not yet heard it. None of it mattered by breakfast. The house was destroyed before it was ever fully recorded. The title to Parcel A was not destroyed with it."),
 'ghf-19881208-1': dict(
     received="",
     words=[],
@@ -302,11 +302,11 @@ ACCOUNTS = {
 'ghf-19890325-1': dict(
     received="",
     words=[],
-    known=""),
+    known="The family who had lived in the Great House for three centuries were now planning to live in a bus."),
 'ghf-19890414-1': dict(
     received="Strasbourg confirmed the eviction was lawful and the property was BP's.",
     words=[('"the property belonged to another"', 'The Commission\'s reading of the domestic judgments.')],
-    known="The Commission relied on the domestic courts, which had decided possession, not ownership. It did not see the title documents."),
+    known="Strasbourg relied on the British courts, which had decided possession, not ownership. It never saw a title deed. Another loss, on a question nobody had ever asked."),
 'ghf-19891107-1': dict(
     received="Routine planning with archaeological advice.",
     words=[],
@@ -330,7 +330,7 @@ ACCOUNTS = {
 'ghf-19920515-1': dict(
     received="",
     words=[],
-    known="Mary's claim to Parcel A passed, undecided, to his heirs."),
+    known="He was in his forties. He died in the village where he was born, without his home, without ever having had the one question that mattered answered. Mary's claim to the house passed, undecided, to his children."),
 'ghf-19920727-1': dict(
     received="",
     words=[],
@@ -416,6 +416,51 @@ ACCOUNTS = {
     received="",
     words=[],
     known="No deed has been produced by which Parcel A passed from the Williamses, or from anyone, to BP."),
+# ---------------------------------------------------------------- STATING THE OBVIOUS
+'ghf-obvious-01': dict(
+    received="A squatter was evicted after losing in court.",
+    words=[["\"squatter\"", "How the case was understood in the press and in the street."]],
+    known="A squatter moves into a place that is not theirs. The Williamses were born in this house, married in it and died in it for three hundred and twenty-one years. They owned it from 1928, and by possession from 1940. Nobody who lives somewhere for three centuries is a squatter."),
+'ghf-obvious-02': dict(
+    received="She lived there by the landlord's permission.",
+    words=[["\"licence\"", "1974; relied on in 1986 and 1987."]],
+    known="You cannot be given permission you refuse. Every offer of a tenancy, and the licence, was an attempt to turn an owner into a guest in her own house. She said no every time."),
+'ghf-obvious-03': dict(
+    received="BP owned the farm.",
+    words=[["\"the paper title to the farm\"", "Court of Appeal, 1987."]],
+    known="If Western Ground Rents or BP had a deed to the house, they would have produced it at the first hearing and the case would have been over in a day. They used tenancy offers, orders, a licence and their own conveyance instead. People with deeds don't need tricks."),
+'ghf-obvious-04': dict(
+    received="It was always one farm.",
+    words=[["\"the whole farm\"", "1916 onwards."]],
+    known="You cannot merge two titles unless there are two. BP knew. The Land Registry knew. The court read a separate conveyance of the farmhouse and garden. The only people never told what that meant were the family."),
+'ghf-obvious-05': dict(
+    received="They lost every case, so they must have been wrong.",
+    words=[["\"lost\"", "Every headline."]],
+    known="They lost every round of an argument about who could live in the house. Nobody ever asked who owned it. You can lose a hundred times on the wrong question and still be right about the real one."),
+'ghf-obvious-06': dict(
+    received="A violent man was arrested and charged.",
+    words=[["\"chainsaw farmer\"", "The headline."]],
+    known="He physically stood in their way, so he was removed: to hospital, to the dock, then barred from the site by his bail. With him out of the way there was nobody left between BP and the house. It came down within the week."),
+'ghf-obvious-07': dict(
+    received="An old building was cleared for housing.",
+    words=[["\"suddenly and completely demolished\"", "The heritage record, 1991."]],
+    known="You don't start bulldozers at four in the morning by accident. It was done in the dark, the morning after the last protection fell and before Strasbourg could be heard, so that it could not be stopped and could never be undone."),
+'ghf-obvious-08': dict(
+    received="Nobody much cared about an old farmhouse.",
+    words=[],
+    known="The public stood with the family. A thousand signatures, an MP, a furious village. It made no difference. Where the public could not be persuaded, force and stealth were used instead."),
+'ghf-obvious-09': dict(
+    received="If they ever had papers, they couldn't produce them.",
+    words=[["\"never produced\"", "Court of Appeal, 1987."]],
+    known="Title deeds don't walk out of a blanket box. They were taken, by a man an estate agent put in the house, and handed to that agent. Thirty-five years later a court noted that they had never been produced."),
+'ghf-obvious-10': dict(
+    received="Cadw assessed the house properly and it fell just short.",
+    words=[["\"marginally below the bar\"", "Cadw, 2026."]],
+    known="A public body decided the fate of a three-hundred-year-old house and kept no file, no notes and no name. A decision nobody can examine is a decision nobody can challenge."),
+'ghf-obvious-11': dict(
+    received="The courts settled who owned Great House Farm.",
+    words=[],
+    known="In 1974 the question of ownership was in front of a judge, and BP walked away from it. In 1984 it asked only for possession. If you were sure you owned the house, you would ask a court to say so. They never did."),
 # ---------------------------------------------------------------- EPILOGUE
 'ghf-99990101-1': dict(
     received="A landlord and its successors recovered their farm from tenants who stayed on without paying, and the courts confirmed it.",
