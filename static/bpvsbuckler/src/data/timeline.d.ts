@@ -16,6 +16,10 @@ export interface Attachments {
 }
 
 export interface Scene {
+  /** Stable identifier, e.g. ghf-19881206-1. Used for deep links (?event=). */
+  id: string;
+  /** ISO 8601 sort date (YYYY-MM-DD); 9999-… for present-day summaries. */
+  date: string;
   year: string;
   location: string;
   locationType: string;

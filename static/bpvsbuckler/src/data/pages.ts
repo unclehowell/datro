@@ -19,7 +19,7 @@ export const pageContent = {
           { text: '1986–88: The High Court, Court of Appeal and House of Lords decide for BP, holding that the 1974 letters made her possession permissive.' },
           { text: '1988: On 29 April Billy holds off the bailiffs with a chainsaw. At the end of November BP takes possession; on 5 December the court refuses to keep the injunction, Cadw declines to list, and the farmhouse is bulldozed before breakfast on 6 December.' },
           { text: '1990–94: Housing is approved, and an early-medieval cemetery of 1,026 burials is excavated, partly in ground the 1990 evaluation had called low potential.' },
-          { text: "2026: The family's records campaign and complaints to public bodies are under way. They allege fraud and concealment and estimate reparations above £100 million; no court or public body has yet made such a finding." },
+          { text: "2025–26: The family recover the missing records. Cadw, Heneb and HM Land Registry's Independent Complaints Reviewer open investigations. The family's case is that fraud and concealment kept the title documents from the courts, and that the case can be reopened." },
         ]
       }
     }]

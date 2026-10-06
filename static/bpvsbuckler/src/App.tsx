@@ -8,8 +8,23 @@ import {
 import { SplashScreen } from './components/SplashScreen';
 import { FacebookIcon, InstagramIcon, InfoIcon, ImageIcon, TextIcon, PdfIcon, VideoIcon } from './components/Icons';
 
-// Open on the 1897 Marconi scene; looked up by year so new events don't shift it.
-const STARTING_SLIDE = Math.max(0, timeline.findIndex((s) => s.year === '1897'));
+// The story always starts at the very first event and plays straight through in
+// chronological order. A deep link (?event=<id> or ?year=<year>) starts elsewhere.
+const FIRST_SLIDE = 0;
+const STARTING_SLIDE = (() => {
+  try {
+    const q = new URLSearchParams(window.location.search);
+    const id = q.get('event');
+    if (id) { const i = timeline.findIndex((s) => s.id === id); if (i >= 0) return i; }
+    const y = q.get('year');
+    if (y) {
+      const want = y === 'present-day' ? 'present_day' : y;
+      const i = timeline.findIndex((s) => s.year === want || s.year.includes(want) || s.date?.startsWith(want));
+      if (i >= 0) return i;
+    }
+  } catch (_e) { /* no URL */ }
+  return FIRST_SLIDE;
+})();
 
 interface NarrationState {
   name: string; icon: string; text: string; type: string;
@@ -57,9 +72,8 @@ export default function App() {
         setSceneIndex(p => p + 1);
         setCharacterIndex(0);
       } else {
+        // End of the story: stop on the final event rather than looping.
         setIsPlayingState(false);
-        setSceneIndex(STARTING_SLIDE);
-        setCharacterIndex(0);
       }
     }
   }, [sceneIndex, characterIndex, currentScene.scenes.length]);
@@ -96,6 +110,15 @@ export default function App() {
   };
 
   useEffect(() => { isPlayingRef.current = isPlayingState; }, [isPlayingState]);
+
+  useEffect(() => {
+    try {
+      const url = new URL(window.location.href);
+      url.searchParams.delete('year');
+      url.searchParams.set('event', timeline[sceneIndex].id);
+      window.history.replaceState(null, '', url.toString());
+    } catch (_e) { /* ignore */ }
+  }, [sceneIndex]);
 
   useEffect(() => {
     window.speechSynthesis?.cancel();

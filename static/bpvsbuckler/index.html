@@ -3,7 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Great House Farm</title>
+    <title>Great House Farm — the story, told in order</title>
+    <meta name="description" content="Press play and listen to the whole story of the Williams/Buckler family and Great House Farm (Tŷ Mawr), Llandough, event by event in strict chronological order, from the Great House Farm Wiki evidence catalogue.">
+    <link rel="alternate" type="text/html" href="https://bpvsbuckler.bucklerfamily.estate/story/" title="The full story as a readable page">
+    <link rel="alternate" type="application/json" href="https://bpvsbuckler.bucklerfamily.estate/api/timeline.json" title="Timeline JSON">
+    <link rel="alternate" type="text/plain" href="https://bpvsbuckler.bucklerfamily.estate/llms.txt" title="llms.txt">
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:wght@400;700&family=Special+Elite&display=swap" rel="stylesheet">
     <script async src="https://js.stripe.com/v3/buy-button.js"></script>
@@ -26,6 +30,10 @@
 </head>
 <body class="text-slate-200 antialiased overflow-hidden w-screen">
 <div id="root"></div>
+<noscript>
+  <p style="color:#e2e8f0;padding:16px;font-family:Georgia,serif">This narrated player needs JavaScript. Read the whole story, every event in order, at
+  <a style="color:#f59e0b" href="/story/">/story/</a>; for machines, see <a style="color:#f59e0b" href="/llms.txt">/llms.txt</a> and <a style="color:#f59e0b" href="/api/timeline.json">/api/timeline.json</a>.</p>
+</noscript>
 <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>

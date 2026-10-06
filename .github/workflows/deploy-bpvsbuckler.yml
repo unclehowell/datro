@@ -32,14 +32,16 @@ jobs:
       - name: Build
         run: |
           npm install --no-audit --no-fund
+          node scripts/build-timeline-exports.mjs
           npx vite build
 
       - name: Add the site's static folders (evidence, research, api, archives, ...)
         run: |
-          rsync -a --exclude dist --exclude node_modules --exclude src --exclude index.html \
+          rsync -a --exclude dist --exclude node_modules --exclude src --exclude /index.html \
             --exclude package.json --exclude package-lock.json --exclude tsconfig.json --exclude vite.config.ts \
             --exclude '.hermes-live' --exclude logs --exclude scripts ./ dist/
           grep -q 'assets/index-' dist/index.html
+          test -f dist/story/index.html && test -f dist/story/transcript.txt && test -f dist/llms.txt
 
       - name: Deploy to Cloudflare Pages
         run: npx --yes wrangler@3 pages deploy dist --project-name=bpvsbuckler --branch=bpvsbuckler --commit-dirty=true
